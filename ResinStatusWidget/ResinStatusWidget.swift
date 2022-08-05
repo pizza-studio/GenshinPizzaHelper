@@ -22,6 +22,7 @@ let defaultQueryResult = (
     )
 )
 
+
 let defaultExpedition: Expedition = Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sara.png", remainedTimeStr: "0", statusStr: "Finished")
 
 
@@ -462,3 +463,4 @@ extension Text {
         }
     }
 }
+
