@@ -62,7 +62,6 @@ class ViewModel: ObservableObject {
                 completion(requestResult)
                 let dictionary = try? JSONSerialization.jsonObject(with: data)
                 print(dictionary ?? "None")
-                
             }
         }.resume()
     }
