@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF6C5257289E00B100EA224F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5256289E00B100EA224F /* ContentView.swift */; };
 		EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F91D82886B58800AE7A62 /* Assets.xcassets */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
@@ -46,7 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BF6C5255289D6CFF00EA224F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		BF6C5256289E00B100EA224F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EA0F91D82886B58800AE7A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
@@ -132,8 +133,8 @@
 			children = (
 				EA1B76762886B89F007A5216 /* Info.plist */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
+				BF6C5256289E00B100EA224F /* ContentView.swift */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
-				EA7F67C7289D6A0800D2CE29 /* ContentView.swift */,
 				EABD7DC72886B2DA00B7F0FD /* Model.swift */,
 				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,
 				EABD7DBF2886B2D300B7F0FD /* Preview Content */,
@@ -263,8 +264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EABD7DC82886B2DA00B7F0FD /* Model.swift in Sources */,
-				EA7F67C8289D6A0800D2CE29 /* ContentView.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
+				BF6C5257289E00B100EA224F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
