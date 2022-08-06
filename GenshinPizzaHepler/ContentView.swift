@@ -108,8 +108,6 @@ struct ContentView: View {
                             cookie = unsavedCookie
                             unsavedCookie = ""
                         }
-                        print("hi")
-                        
                         server = unsavedServer
                         isSaveAlert = true
                         WidgetCenter.shared.reloadAllTimelines()
@@ -135,8 +133,6 @@ struct ContentView: View {
                             cookie = unsavedCookie
                             unsavedCookie = ""
                         }
-                        print("hi")
-                        
                         server = unsavedServer
                         isSaveAlert = true
                         WidgetCenter.shared.reloadAllTimelines()

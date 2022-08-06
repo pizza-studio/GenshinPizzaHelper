@@ -51,7 +51,7 @@ struct Provider: TimelineProvider {
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
         let userDefaults = UserDefaults(suiteName: "group.GenshinPizzaHelper")!
         let uid = userDefaults.string(forKey: "uid")
         let cookie = userDefaults.string(forKey: "cookie")
