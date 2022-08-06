@@ -37,18 +37,4 @@ struct ResinLoader {
             completion(result)
         }
     }
-    
-    static func get_data(from requestResult: RequestResult?) -> (isValid: Bool, retcode: Int, data: UserData?) {
-        var result: (isValid: Bool, retcode: Int, data: UserData?) = (false, 1, nil)
-            
-        if requestResult == nil {
-            result = (false, 1, nil)
-        } else if requestResult!.retcode != 0 {
-            result = (false, requestResult!.retcode, nil)
-        } else {
-            result = (true, requestResult!.retcode, requestResult!.data!)
-        }
-        
-        return result
-    }
 }
