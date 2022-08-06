@@ -23,6 +23,10 @@
 		BF6C5276289E137200EA224F /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
 		BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
+		BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
+		BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
+		BF6C527E289E180000EA224F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527D289E180000EA224F /* Error.swift */; };
+		BF6C527F289E180000EA224F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527D289E180000EA224F /* Error.swift */; };
 		EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F91D82886B58800AE7A62 /* Assets.xcassets */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
@@ -71,6 +75,8 @@
 		BF6C5271289E12DA00EA224F /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
 		BF6C5274289E137200EA224F /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
 		BF6C5277289E153400EA224F /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		BF6C527A289E168A00EA224F /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		BF6C527D289E180000EA224F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		EA0F91D82886B58800AE7A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
@@ -133,15 +139,17 @@
 				BF6C5262289E100600EA224F /* RecoveryTime.swift */,
 				BF6C5265289E10AB00EA224F /* UserData.swift */,
 				BF6C5268289E10EB00EA224F /* Expedition.swift */,
+				BF6C527D289E180000EA224F /* Error.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		BF6C525E289E0F2A00EA224F /* API */ = {
+		BF6C525E289E0F2A00EA224F /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				BF6C527A289E168A00EA224F /* HttpMethod.swift */,
 			);
-			path = API;
+			path = Request;
 			sourceTree = "<group>";
 		};
 		BF6C5270289E12B500EA224F /* CommonTools */ = {
@@ -178,10 +186,10 @@
 			isa = PBXGroup;
 			children = (
 				BF6C525B289E095F00EA224F /* .gitignore */,
-				BF6C5258289E02B600EA224F /* .github */,
 				EA7F67C9289D711200D2CE29 /* README.md */,
 				EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */,
-				BF6C525E289E0F2A00EA224F /* API */,
+				BF6C5258289E02B600EA224F /* .github */,
+				BF6C525E289E0F2A00EA224F /* Request */,
 				BF6C5270289E12B500EA224F /* CommonTools */,
 				BF6C525D289E0F2200EA224F /* Models */,
 				EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */,
@@ -328,6 +336,8 @@
 			files = (
 				BF6C526C289E120400EA224F /* RequestResult.swift in Sources */,
 				EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */,
+				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
+				BF6C527F289E180000EA224F /* Error.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				BF6C526F289E120D00EA224F /* Expedition.swift in Sources */,
 				BF6C526B289E116700EA224F /* Model.swift in Sources */,
@@ -346,6 +356,8 @@
 				BF6C5263289E100600EA224F /* RecoveryTime.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				BF6C5269289E10EB00EA224F /* Expedition.swift in Sources */,
+				BF6C527E289E180000EA224F /* Error.swift in Sources */,
+				BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* Model.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
 				BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */,
