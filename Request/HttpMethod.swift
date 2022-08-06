@@ -30,7 +30,9 @@ struct HttpMethod<T: Codable> {
         _ method: Method,
         _ urlStr: String,
         _ region: Region,
-        _ bodyJson: [String: Any],
+        _ serverID: String,
+        _ uid: String,
+        _ cookie: String,
         completion: @escaping(
             _ dataProcessed: T,
             _ errorType: String?
@@ -38,27 +40,59 @@ struct HttpMethod<T: Codable> {
     ) {
         let networkReachability = NetworkReachability()
 
+        func get_ds_token(uid: String, server_id: String) -> String {
+            let s: String
+            switch region {
+            case .cn:
+                s = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
+            case .global:
+                s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
+            }
+            let t = String(Int(Date().timeIntervalSince1970))
+            let r = String(Int.random(in: 100000..<200000))
+            let q = "role_id=\(uid)&server=\(server_id)"
+            let c = "salt=\(s)&t=\(t)&r=\(r)&b=&q=\(q)".md5
+            return t + "," + r + "," + c
+        }
+
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
 
                 // 请求url前缀，后跟request的类型
                 let baseStr: String
+                let appVersion: String
+                let userAgent: String
+                let clientType: String
                 switch region {
                 case .cn:
                     baseStr = "https://api-takumi-record.mihoyo.com/"
+                    appVersion = "2.11.1"
+                    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1"
+                    clientType = "5"
                 case .global:
-                    // TODO: 国际服改baseURL
+                    // TODO: 国际服改Request Header
                     baseStr = "https://api-takumi-record.mihoyo.com/"
+                    appVersion = "2.11.1"
+                    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1"
+                    clientType = "5"
                 }
                 // 由前缀和后缀共同组成的url
-                let url = URL(string: baseStr + urlStr)!
+                var url = URLComponents(string: baseStr + urlStr)!
+                url.queryItems = [
+                    URLQueryItem(name: "server", value: serverID),
+                    URLQueryItem(name: "role_id", value: uid)
+                ]
                 // 初始化请求
-                var request = URLRequest(url: url)
+                var request = URLRequest(url: url.url!)
                 // 将请求数据类型设置为 application/json
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                // 添加token
-                let token = UserDefaults.standard.string(forKey: "token")
-                request.setValue("Bearer \(token ?? "")", forHTTPHeaderField: "Authorization")
+                request.allHTTPHeaderFields = [
+                    "DS": get_ds_token(uid: uid, server_id: serverID),
+                    "x-rpc-app_version": appVersion,
+                    "User-Agent": userAgent,
+                    "x-rpc-client_type": clientType,
+                    "Referer": "https://webstatic.mihoyo.com/",
+                    "Cookie": cookie
+                ]
                 // http方法
                 switch method {
                 case .post:
@@ -68,9 +102,6 @@ struct HttpMethod<T: Codable> {
                 case .put:
                     request.httpMethod = "PUT"
                 }
-                // 转成数据
-                let jsonData = try? JSONSerialization.data(withJSONObject: bodyJson)
-                request.httpBody = jsonData
                 // 开始请求
                 URLSession.shared.dataTask(
                     with: request
