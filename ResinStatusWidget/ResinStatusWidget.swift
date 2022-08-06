@@ -53,13 +53,7 @@ struct Provider: TimelineProvider {
         }
         
         if hasFetchInfo {
-            ResinLoader.fetch(uid: uid!, server_id: server.id, cookie: cookie!) { requestResult in
-                let queryResult: QueryResult
-                if requestResult == nil {
-                    queryResult = (false, 1, nil)
-                } else {
-                    queryResult = ResinLoader.get_data(from: requestResult)
-                }
+            ResinLoader.fetch(uid: uid!, server_id: server.id, cookie: cookie!) { queryResult in
                 let entry = ResinEntry(date: currentDate, queryResult: queryResult)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
