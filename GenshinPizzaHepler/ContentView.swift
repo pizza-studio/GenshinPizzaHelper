@@ -79,7 +79,7 @@ struct ContentView: View {
                             }
                     }
                     Spacer()
-                    Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/4278c0248fb3451885ea94bc5045889b")!)
+                    Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/7157256924214d78acbf356378747d2d")!)
                         .font(.caption)
                     
                 }
