@@ -18,8 +18,9 @@ extension API {
             uid: String,
             cookie: String,
             completion: @escaping (
+                _ retCode: Int,
                 _ userLoginData: RequestResult?,
-                _ errorType: String?
+                _ errorInfo: String?
             ) -> ()
         ) {
             // 请求类别
@@ -37,13 +38,13 @@ extension API {
                 ) { returnData in
                     // 异步返回相应数据
                     if returnData == nil {
-                        completion(returnData, "Return Data found nil")
+                        completion(-1, returnData, "Return Data found nil")
                         return
                     }
                     if returnData!.retcode != 0 {
-                        completion(returnData, returnData!.message)
+                        completion(returnData!.retcode, returnData, returnData!.message)
                     } else {
-                        completion(returnData, nil)
+                        completion(0, returnData, nil)
                     }
                 }
         }
