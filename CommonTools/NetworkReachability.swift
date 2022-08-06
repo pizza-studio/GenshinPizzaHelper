@@ -8,6 +8,7 @@
 import Foundation
 import SystemConfiguration
 
+// 检查网络可用性
 class NetworkReachability: ObservableObject {
     @Published private(set) var reachable: Bool = false
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "https://api-takumi-record.mihoyo.com")

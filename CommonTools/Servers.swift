@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 服务器类型
 enum Server: String, CaseIterable, Identifiable {
     case china = "官服"
     case bilibili = "B服"
@@ -19,4 +20,12 @@ enum Server: String, CaseIterable, Identifiable {
             return "cn_qd01"
         }
     }
+}
+
+// 地区类型，用于区分请求的Host URL
+enum Region {
+    // 国服，含官服和B服
+    case cn
+    // 国际服
+    case global
 }

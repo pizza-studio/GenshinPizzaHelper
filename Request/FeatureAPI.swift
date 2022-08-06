@@ -9,8 +9,12 @@ import Foundation
 
 extension API {
     struct Features {
-        /// 获取活动列表
+        /// 获取信息
         /// - Parameters:
+        ///  - region: 服务器地区
+        ///  - serverID: 服务器ID
+        ///  - uid: 用户UID
+        ///  - cookie: 用户Cookie
         ///  - completion: 数据
         static func fetchInfos (
             region: Region,
@@ -36,7 +40,7 @@ extension API {
                     uid,
                     cookie
                 ) { returnData in
-                    // 异步返回相应数据
+                    // 根据结果返回相应数据
                     if returnData == nil {
                         completion(-1, returnData, "Return Data found nil")
                         return

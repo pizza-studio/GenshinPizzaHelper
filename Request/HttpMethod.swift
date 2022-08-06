@@ -13,18 +13,15 @@ enum Method {
     case put
 }
 
-enum Region {
-    case cn
-    case global
-}
-
 struct HttpMethod<T: Codable> {
 
     /// 综合的http post方法接口
     /// - Parameters:
     ///   - method:Method, http方法的类型
     ///   - urlStr:String，url的字符串后缀，即request的类型
-    ///   - httpBody:String，包含所有请求参数
+    ///   - region:Region，请求的服务器地区类型
+    ///   - serverID: String，服务器ID
+    ///   - cookie: String， 用户Cookie
     ///   - completion:异步返回处理好的data以及报错的类型
     static func commonRequest (
         _ method: Method,
@@ -83,7 +80,7 @@ struct HttpMethod<T: Codable> {
                 ]
                 // 初始化请求
                 var request = URLRequest(url: url.url!)
-                // 将请求数据类型设置为 application/json
+                // 设置请求头
                 request.allHTTPHeaderFields = [
                     "DS": get_ds_token(uid: uid, server_id: serverID),
                     "x-rpc-app_version": appVersion,
@@ -138,7 +135,7 @@ struct HttpMethod<T: Codable> {
 }
 
 class API {
-
+    // API方法类，在这里只是一个空壳，以extension的方法扩展
 }
 
 // String的扩展，让其具有直接加键值对的功能

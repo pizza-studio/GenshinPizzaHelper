@@ -9,7 +9,6 @@ import Foundation
 import CommonCrypto
 
 public extension String {
-    /* ################################################################## */
     /**
      - returns: the String, as an MD5 hash.
      */
