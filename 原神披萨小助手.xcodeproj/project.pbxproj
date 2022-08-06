@@ -21,6 +21,8 @@
 		BF6C5273289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		BF6C5275289E137200EA224F /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		BF6C5276289E137200EA224F /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
+		BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
+		BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
 		EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F91D82886B58800AE7A62 /* Assets.xcassets */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
@@ -68,6 +70,7 @@
 		BF6C5268289E10EB00EA224F /* Expedition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expedition.swift; sourceTree = "<group>"; };
 		BF6C5271289E12DA00EA224F /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
 		BF6C5274289E137200EA224F /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
+		BF6C5277289E153400EA224F /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		EA0F91D82886B58800AE7A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 			children = (
 				BF6C5271289E12DA00EA224F /* md5.swift */,
 				BF6C5274289E137200EA224F /* Servers.swift */,
+				BF6C5277289E153400EA224F /* NetworkReachability.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
@@ -327,6 +331,7 @@
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				BF6C526F289E120D00EA224F /* Expedition.swift in Sources */,
 				BF6C526B289E116700EA224F /* Model.swift in Sources */,
+				BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
 				BF6C526E289E120A00EA224F /* UserData.swift in Sources */,
 				BF6C526D289E120700EA224F /* RecoveryTime.swift in Sources */,
@@ -346,6 +351,7 @@
 				BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */,
 				BF6C5257289E00B100EA224F /* ContentView.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
+				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
