@@ -36,7 +36,15 @@ extension API {
                     cookie
                 ) { returnData in
                     // 异步返回相应数据
-                    completion(returnData, nil)
+                    if returnData == nil {
+                        completion(returnData, "Return Data found nil")
+                        return
+                    }
+                    if returnData!.retcode != 0 {
+                        completion(returnData, returnData!.message)
+                    } else {
+                        completion(returnData, nil)
+                    }
                 }
         }
     }
