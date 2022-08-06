@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		BF6C5257289E00B100EA224F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5256289E00B100EA224F /* ContentView.swift */; };
+		BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C525F289E0FAD00EA224F /* RequestResult.swift */; };
+		BF6C5263289E100600EA224F /* RecoveryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5262289E100600EA224F /* RecoveryTime.swift */; };
+		BF6C5266289E10AB00EA224F /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5265289E10AB00EA224F /* UserData.swift */; };
+		BF6C5269289E10EB00EA224F /* Expedition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5268289E10EB00EA224F /* Expedition.swift */; };
+		BF6C526B289E116700EA224F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* Model.swift */; };
 		EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F91D82886B58800AE7A62 /* Assets.xcassets */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
 		EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */; };
 		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		EA30F9B52886B4C800AE7BEA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* Model.swift */; };
 		EA7F67CA289D711200D2CE29 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA7F67C9289D711200D2CE29 /* README.md */; };
 		EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
@@ -50,6 +54,10 @@
 		BF6C5256289E00B100EA224F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF6C525A289E02B600EA224F /* ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ios.yml; sourceTree = "<group>"; };
 		BF6C525B289E095F00EA224F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = GenshinPizzaHepler/.gitignore; sourceTree = "<group>"; };
+		BF6C525F289E0FAD00EA224F /* RequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
+		BF6C5262289E100600EA224F /* RecoveryTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryTime.swift; sourceTree = "<group>"; };
+		BF6C5265289E10AB00EA224F /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		BF6C5268289E10EB00EA224F /* Expedition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expedition.swift; sourceTree = "<group>"; };
 		EA0F91D82886B58800AE7A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
@@ -105,6 +113,24 @@
 			path = workflows;
 			sourceTree = "<group>";
 		};
+		BF6C525D289E0F2200EA224F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF6C525F289E0FAD00EA224F /* RequestResult.swift */,
+				BF6C5262289E100600EA224F /* RecoveryTime.swift */,
+				BF6C5265289E10AB00EA224F /* UserData.swift */,
+				BF6C5268289E10EB00EA224F /* Expedition.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BF6C525E289E0F2A00EA224F /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		EA30F9A22886B49200AE7BEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +158,8 @@
 				BF6C5258289E02B600EA224F /* .github */,
 				EA7F67C9289D711200D2CE29 /* README.md */,
 				EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */,
+				BF6C525E289E0F2A00EA224F /* API */,
+				BF6C525D289E0F2200EA224F /* Models */,
 				EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */,
 				EA30F9A72886B49200AE7BEA /* ResinStatusWidget */,
 				EA30F9A22886B49200AE7BEA /* Frameworks */,
@@ -275,7 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */,
-				EA30F9B52886B4C800AE7BEA /* Model.swift in Sources */,
+				BF6C526B289E116700EA224F /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,8 +311,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6C5266289E10AB00EA224F /* UserData.swift in Sources */,
+				BF6C5263289E100600EA224F /* RecoveryTime.swift in Sources */,
+				BF6C5269289E10EB00EA224F /* Expedition.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* Model.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
+				BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */,
 				BF6C5257289E00B100EA224F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
