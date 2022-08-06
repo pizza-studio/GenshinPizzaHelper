@@ -34,8 +34,7 @@ struct HttpMethod<T: Codable> {
         _ uid: String,
         _ cookie: String,
         completion: @escaping(
-            _ dataProcessed: T,
-            _ errorType: String?
+            _ dataProcessed: T
         ) -> ()
     ) {
         let networkReachability = NetworkReachability()
@@ -127,7 +126,7 @@ struct HttpMethod<T: Codable> {
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
                             let requestResult = try? decoder.decode(T.self, from: data)
-                            completion(requestResult!, nil)
+                            completion(requestResult!)
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
                             print(dictionary ?? "None")
                         }

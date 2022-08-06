@@ -34,9 +34,9 @@ extension API {
                     serverID,
                     uid,
                     cookie
-                ) { returnData, errorInfo in
+                ) { returnData in
                     // 异步返回相应数据
-                    completion(returnData, errorInfo)
+                    completion(returnData, nil)
                 }
         }
     }
