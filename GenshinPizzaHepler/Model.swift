@@ -14,10 +14,6 @@ class ViewModel: ObservableObject {
     @Published var result: QueryResult = (false, 1, nil)
     
     func get_data(uid: String, server_id: String, cookie: String) -> (isValid: Bool, retcode: Int, data: UserData?) {
-        
-        
-        
-
         fetch(uid: uid, server_id: server_id, cookie: cookie) {
             if $0 == nil {
                 self.result = (false, 1, nil)
@@ -26,14 +22,9 @@ class ViewModel: ObservableObject {
             } else {
                 self.result = (true, $0!.retcode, $0!.data!)
             }
-            
-            
         }
-        
         return result
     }
-
-
 
     func fetch(uid: String, server_id: String, cookie: String, completion: @escaping ((RequestResult?) -> Void)) {
         
@@ -74,10 +65,7 @@ class ViewModel: ObservableObject {
                 
             }
         }.resume()
-
     }
-    
-    
 }
 
 

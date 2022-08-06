@@ -29,7 +29,6 @@ let defaultExpedition: Expedition = Expedition(avatarSideIcon: "https://upload-b
 struct Provider: TimelineProvider {
     typealias QueryResult = (isValid: Bool, retcode: Int, data: UserData?)
     
-    
     func placeholder(in context: Context) -> ResinEntry {
         ResinEntry(date: Date(), queryResult: defaultQueryResult)
     }
@@ -69,28 +68,16 @@ struct Provider: TimelineProvider {
             let entry = ResinEntry(date: currentDate, queryResult: (false, 1, nil))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)}
-        
-        
     }
 }
 
-
-
-
-
-
-
 struct WidgetViewEntryView : View {
     var entry: Provider.Entry
-
     @Environment(\.widgetFamily) var family: WidgetFamily
-    
     @ViewBuilder
     var body: some View {
-        
         let queryResult = entry.queryResult
         let userData: UserData? = entry.queryResult.data
-        
         
         let backgroundColors: [Color] = [
             Color("backgroundColor1"),
@@ -109,7 +96,6 @@ struct WidgetViewEntryView : View {
                 default:
                     MainInfo(userData: userData!)
                 }
-
             } else {
                 // 未获取到信息显示错误码
                 Text("ERROR\n\(queryResult.retcode)")
@@ -117,13 +103,12 @@ struct WidgetViewEntryView : View {
                     .foregroundColor(.white)
             }
         }
-        
     }
 }
 
 struct MainInfoWithDetail: View {
     let userData: UserData
-    
+
     var body: some View {
         HStack {
             Spacer()
@@ -152,9 +137,7 @@ struct DetailInfo: View {
         let isHomeCoinFull: Image = (currentHomeCoin == 2400) ? Image(systemName: "exclamationmark.circle") : Image(systemName: "leaf.arrow.triangle.circlepath")
         
         VStack(alignment: .leading, spacing: 13) {
-
             Group {
-                
                 HStack(alignment: .center ,spacing: 8) {
                     Image("洞天宝钱")
                         .resizable()
@@ -173,7 +156,6 @@ struct DetailInfo: View {
                 }
                 
                 HStack(alignment: .center ,spacing: 8) {
-                    
                     Image("派遣探索")
                         .resizable()
                         .scaledToFit()
@@ -192,11 +174,9 @@ struct DetailInfo: View {
                             .font(.system(.caption, design: .rounded))
                             .minimumScaleFactor(0.2)
                     }
-                    
                 }
                 
                 HStack(alignment: .center ,spacing: 8) {
-                    
                     Image("每日任务")
                         .resizable()
                         .scaledToFit()
@@ -215,10 +195,8 @@ struct DetailInfo: View {
                             .font(.system(.caption, design: .rounded))
                             .minimumScaleFactor(0.2)
                     }
-                    
                 }
                 HStack(alignment: .center ,spacing: 8) {
-                    
                     Image("参量质变仪")
                         .resizable()
                         .scaledToFit()
@@ -233,7 +211,6 @@ struct DetailInfo: View {
                             .font(.system(.body, design: .rounded))
                             .minimumScaleFactor(0.2)
                     }
-                    
                 }
             }
         }
@@ -245,7 +222,6 @@ struct DetailInfo: View {
 
 struct MainInfo: View {
     let userData: UserData
-    
     
     var body: some View {
         let resinFull: Bool = userData.currentResin == 160
@@ -266,7 +242,6 @@ struct MainInfo: View {
                     Image(systemName: "hourglass.circle")
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
-                    
                 }
                 RecoveryTimeText(recoveryTimeDeltaInt: userData.resinRecoveryTimeInt)
             }
@@ -280,7 +255,6 @@ struct MainInfo: View {
 @main
 struct WidgetView: Widget {
     let kind: String = "WidgetView"
-    
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
@@ -302,7 +276,6 @@ struct WidgetView_Previews: PreviewProvider {
             WidgetViewEntryView(entry: ResinEntry(date: Date(), queryResult: defaultQueryResult))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
                 .previewDevice("iPhone 12 Pro")
-            
         }
     }
 }
@@ -336,15 +309,12 @@ struct RecoveryTimeText: View {
             .foregroundColor(Color("textColor3"))
             .lineSpacing(1)
         }
-
     }
 }
 
 struct ResinView: View {
     let currentResin: Int
     var condensedResin: Int { currentResin/40 }
-    
-    
     
     let textColors: [Color] = [
         Color("textColor1"),
@@ -353,7 +323,6 @@ struct ResinView: View {
     ]
     
     var body: some View {
-        
         
         VStack(spacing: 0) {
             if condensedResin > 0 {
@@ -378,19 +347,9 @@ struct ResinView: View {
 //                .gradientForeground(colors: textColors)
                 .foregroundColor(Color("textColor3"))
                 .shadow(radius: 1)
-
-
         }
-        
     }
 }
-
-
-
-
-
-
-
 
 enum Server: String, CaseIterable, Identifiable {
     case china = "官服"

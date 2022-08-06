@@ -10,7 +10,6 @@ import WidgetKit
 
 struct ContentView: View {
     @StateObject var viewModel = ViewModel()
-//
     @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String?
     @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String?
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
@@ -46,33 +45,22 @@ struct ContentView: View {
         }
     }
     
-    
     var data: UserData? { viewModel.result.data }
-
-   
     
     var body: some View {
-        
         VStack {
-            
             VStack(alignment: .leading) {
                 Text("UID")
                 TextField("请输入UID", text: $unsavedUid)
                     .textFieldStyle(.roundedBorder)
                 
                 if let uid = uid {
-//                    Text("当前UID为：\(uid)")
-//                        .font(.caption)
-//                        .foregroundColor(.blue)
                     Button("当前UID为：\(uid)") {
                         unsavedUid = uid
                     }
                         .font(.caption)
                         .foregroundColor(.blue)
                 }
-                
-                
-
                 Text("Cookie")
                     .padding(.top)
                 TextField("请输入Cookie", text: $unsavedCookie)
@@ -95,10 +83,6 @@ struct ContentView: View {
                         .font(.caption)
                     
                 }
-                
-
-                
-                
                 Text("服务器")
                     .padding(.top)
                 Picker("请选择服务器", selection: $unsavedServer) {
@@ -108,8 +92,6 @@ struct ContentView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                
-                
                 Text("当前服务器：\(server.rawValue)")
                     .font(.caption)
                     .foregroundColor(.blue)
@@ -131,10 +113,6 @@ struct ContentView: View {
                         server = unsavedServer
                         isSaveAlert = true
                         WidgetCenter.shared.reloadAllTimelines()
-                        
-                        
-                        
-                        
                     } label: {
                         Text("保存数据")
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -145,10 +123,8 @@ struct ContentView: View {
                         Alert(
                             title: Text("已保存"),
                             message: Text("UID: \(uid ?? "") \n Cookie: \(cookie ?? "") \n服务器: \(server.rawValue)")
-                            
                         )
                     }
-                    
                 } else {
                     Button {
                         if unsavedUid != "" {
@@ -164,10 +140,6 @@ struct ContentView: View {
                         server = unsavedServer
                         isSaveAlert = true
                         WidgetCenter.shared.reloadAllTimelines()
-                        
-                        
-                        
-                        
                     } label: {
                         Text("保存数据")
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -177,12 +149,9 @@ struct ContentView: View {
                         Alert(
                             title: Text("已保存"),
                             message: Text("UID: \(uid ?? "") \n Cookie: \(cookie ?? "") \n服务器: \(server.rawValue)")
-                            
                         )
                     }
                 }
-                
-                
                 if #available(iOS 15.0, *) {
                     Button {
                         
@@ -212,17 +181,12 @@ struct ContentView: View {
                     }
                     .foregroundColor(hasUidAndCookie ? .green : .gray)
                 }
-                
-                
-            
-            
                 if #available(iOS 15.0, *) {
                     Button(role: .destructive) {
                         isPresentingConfirm = true
                     } label: {
                         Text("清空数据")
                             .frame(minWidth: 0, maxWidth: .infinity)
-                        
                     }
                     .confirmationDialog("Sure?", isPresented: $isPresentingConfirm) {
                         Button("确认清空数据", role: .destructive) {
@@ -242,24 +206,15 @@ struct ContentView: View {
                     } label: {
                         Text("清空数据")
                             .frame(minWidth: 0, maxWidth: .infinity)
-                        
                     }
                     .foregroundColor(.red)
                 }
             }
-            
             Text(strResult)
-            
-            
             Spacer()
-            
-            
-            
-            
         }
         .frame(maxWidth: 500)
         .padding()
-       
     }
 }
 
@@ -272,16 +227,7 @@ struct ContentView_Previews: PreviewProvider {
             
         }
     }
-        
 }
-
-
-
-
-
-
-
-
 
 enum Server: String, CaseIterable, Identifiable {
     case china = "官服"

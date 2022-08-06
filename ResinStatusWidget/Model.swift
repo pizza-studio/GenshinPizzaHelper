@@ -17,7 +17,6 @@ struct ResinEntry: TimelineEntry {
     }
 }
 
-
 struct ResinLoader {
     
     static func fetch(uid: String, server_id: String, cookie: String, completion: @escaping ((RequestResult?) -> Void)) {
@@ -76,8 +75,6 @@ struct ResinLoader {
     }
 }
 
-
-
 //MODEL START
 
 struct RequestResult: Codable {
@@ -86,7 +83,6 @@ struct RequestResult: Codable {
     let message: String
     let retcode: Int
 }
-
 
 struct RecoveryTime: Codable {
     let day: Int
@@ -171,11 +167,7 @@ struct UserData: Codable {
     }
 }
 
-
-
 // MODEL END
-
-
 
 import CommonCrypto
 public extension String {
