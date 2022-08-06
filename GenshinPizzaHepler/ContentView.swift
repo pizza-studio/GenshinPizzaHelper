@@ -91,7 +91,9 @@ struct ContentView: View {
                             .tag(server)
                     }
                 }
-                .pickerStyle(.inline)
+                .pickerStyle(.wheel)
+                .frame(height: 75)
+                .clipped()
                 Text("当前服务器：\(server.rawValue)")
                     .font(.caption)
                     .foregroundColor(.blue)
