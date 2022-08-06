@@ -228,20 +228,3 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
-
-enum Server: String, CaseIterable, Identifiable {
-    case china = "官服"
-    case bilibili = "B服"
-    
-    var id: String {
-        switch self {
-        case .china:
-            return "cn_gf01"
-        case .bilibili:
-            return "cn_qd01"
-        }
-    }
-}
-
-
-
