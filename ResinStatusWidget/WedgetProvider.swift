@@ -27,9 +27,7 @@ struct ResinLoader {
                                 serverID: server_id,
                                 uid: uid,
                                 cookie: cookie) { retCode, userLoginData, errorInfo in
-            if retCode < 0 {
-                result = (false, -1, nil)
-            } else if retCode > 0 {
+            if retCode != 0 {
                 result = (false, retCode, nil)
             } else {
                 result = (true, retCode, userLoginData!.data!)

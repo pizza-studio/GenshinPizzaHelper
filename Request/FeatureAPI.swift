@@ -42,7 +42,7 @@ extension API {
                 ) { returnData in
                     // 根据结果返回相应数据
                     if returnData == nil {
-                        completion(-1, returnData, "Return Data found nil")
+                        completion(-999, returnData, "Return Data found nil")
                         return
                     }
                     if returnData!.retcode != 0 {

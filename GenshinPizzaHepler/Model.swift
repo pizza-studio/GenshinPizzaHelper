@@ -20,9 +20,7 @@ class ViewModel: ObservableObject {
                                 uid: uid,
                                 cookie: cookie)
         { retCode, userLoginData, errorInfo in
-            if retCode < 0 {
-                self.result = (false, -1, nil)
-            } else if retCode > 0 {
+            if retCode != 0 {
                 self.result = (false, retCode, nil)
             } else {
                 self.result = (true, retCode, userLoginData!.data!)
