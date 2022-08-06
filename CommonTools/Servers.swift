@@ -9,8 +9,12 @@ import Foundation
 
 // 服务器类型
 enum Server: String, CaseIterable, Identifiable {
-    case china = "官服"
-    case bilibili = "B服"
+    case china = "天空岛"
+    case bilibili = "世界树"
+    case us = "America"
+    case eu = "Europe"
+    case asia = "Asia"
+    case cht = "TW/HK/MO"
 
     var id: String {
         switch self {
@@ -18,6 +22,23 @@ enum Server: String, CaseIterable, Identifiable {
             return "cn_gf01"
         case .bilibili:
             return "cn_qd01"
+        case .us:
+            return "os_usa"
+        case .eu:
+            return "os_euro"
+        case .asia:
+            return "os_asia"
+        case .cht:
+            return "os_cht"
+        }
+    }
+
+    var region: Region {
+        switch self {
+        case .china, .bilibili:
+            return .cn
+        case .us, .asia, .eu, .cht:
+            return .global
         }
     }
 }
