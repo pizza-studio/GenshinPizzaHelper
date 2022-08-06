@@ -91,6 +91,7 @@ struct ContentView: View {
                             .tag(server)
                     }
                 }
+                .pickerStyle(.inline)
                 Text("当前服务器：\(server.rawValue)")
                     .font(.caption)
                     .foregroundColor(.blue)
