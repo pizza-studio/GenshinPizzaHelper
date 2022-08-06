@@ -152,7 +152,7 @@ struct ContentView: View {
                     Button {
                         
                         if hasUidAndCookie {
-                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!)
+                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region)
                         }
                         //                    isFetchAlert = hasUidAndCookie
                         WidgetCenter.shared.reloadAllTimelines()
@@ -167,7 +167,7 @@ struct ContentView: View {
                     Button {
                         
                         if hasUidAndCookie {
-                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!)
+                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region)
                         }
                         //                    isFetchAlert = hasUidAndCookie
                         WidgetCenter.shared.reloadAllTimelines()

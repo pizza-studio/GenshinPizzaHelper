@@ -20,10 +20,10 @@ struct ResinEntry: TimelineEntry {
 struct ResinLoader {
     typealias QueryResult = (isValid: Bool, retcode: Int, data: UserData?)
     
-    static func fetch(uid: String, server_id: String, cookie: String, completion: @escaping ((QueryResult) -> Void)) {
+    static func fetch(uid: String, server_id: String, cookie: String, region: Region, completion: @escaping ((QueryResult) -> Void)) {
         var result: QueryResult = (false, 1, nil)
 
-        API.Features.fetchInfos(region: .cn,
+        API.Features.fetchInfos(region: region,
                                 serverID: server_id,
                                 uid: uid,
                                 cookie: cookie) { retCode, userLoginData, errorInfo in
@@ -64,7 +64,7 @@ struct Provider: TimelineProvider {
         }
 
         if hasFetchInfo {
-            ResinLoader.fetch(uid: uid!, server_id: server.id, cookie: cookie!) { queryResult in
+            ResinLoader.fetch(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region) { queryResult in
                 let entry = ResinEntry(date: currentDate, queryResult: queryResult)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)

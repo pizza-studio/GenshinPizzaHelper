@@ -14,8 +14,8 @@ class ViewModel: ObservableObject {
     
     @Published var result: QueryResult = (false, 1, nil)
 
-    func get_data(uid: String, server_id: String, cookie: String) -> (isValid: Bool, retcode: Int, data: UserData?) {
-        API.Features.fetchInfos(region: .cn,
+    func get_data(uid: String, server_id: String, cookie: String, region: Region) -> (isValid: Bool, retcode: Int, data: UserData?) {
+        API.Features.fetchInfos(region: region,
                                 serverID: server_id,
                                 uid: uid,
                                 cookie: cookie)
