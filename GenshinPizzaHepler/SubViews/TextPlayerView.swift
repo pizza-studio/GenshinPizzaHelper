@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct TextPlayerView: View {
+    var title: String
     var text: String
+    var nvTitle: String? = nil
 
     var body: some View {
-        VStack {
-            Text(text)
-                .padding()
-            Spacer()
+        List {
+            Section(header: Text(title)) {
+                Text(text)
+            }
         }
+        .navigationBarTitle(nvTitle ?? title, displayMode: .inline)
     }
 }

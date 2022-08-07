@@ -59,7 +59,7 @@ struct ContentView: View {
                         TextField("请输入Cookie", text: $unsavedCookie)
                             .textFieldStyle(.roundedBorder)
                         if cookie != nil {
-                            NavigationLink(destination: TextPlayerView(text: cookie!)) {
+                            NavigationLink(destination: TextPlayerView(title: "Cookie", text: cookie!)) {
                                 Text("查看Cookie")
                             }
                         }
