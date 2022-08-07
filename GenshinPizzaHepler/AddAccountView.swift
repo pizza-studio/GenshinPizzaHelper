@@ -22,6 +22,8 @@ struct AddAccountView: View {
 
     @State private var isPresentingConfirm: Bool = false
     @State private var isAlertShow: Bool = false
+    @State private var connectStatus: ConnectStatus = .unknown
+    @State private var errorInfo: String = ""
 
     var body: some View {
         List {
@@ -40,7 +42,35 @@ struct AddAccountView: View {
             }
 
             Section {
-
+                Button(action: {
+                    connectStatus = .testing
+                    API.Features.fetchInfos(region: unsavedServer.region,
+                                            serverID: unsavedServer.id,
+                                            uid: unsavedUid,
+                                            cookie: unsavedCookie)
+                    { retCode, userLoginData, errorInfo in
+                        if retCode != 0 {
+                            connectStatus = .fail
+                        } else {
+                            connectStatus = .success
+                        }
+                    }
+                }) {
+                    HStack {
+                        Text("测试连接")
+                        Spacer()
+                        switch connectStatus {
+                        case .unknown:
+                            Text("")
+                        case .success:
+                            Image(systemName: "checkmark")
+                        case .fail:
+                            Image(systemName: "xmark")
+                        case .testing:
+                            ProgressView()
+                        }
+                    }
+                }
             }
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
