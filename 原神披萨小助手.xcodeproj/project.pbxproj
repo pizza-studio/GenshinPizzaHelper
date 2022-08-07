@@ -41,6 +41,7 @@
 		BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254A289F67F600FEFA49 /* SettingsView.swift */; };
 		BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */; };
 		BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
+		BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42551289F755E00FEFA49 /* TextEditorView.swift */; };
 		EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F91D82886B58800AE7A62 /* Assets.xcassets */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
@@ -103,6 +104,7 @@
 		BFE4254A289F67F600FEFA49 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPreviewerView.swift; sourceTree = "<group>"; };
+		BFE42551289F755E00FEFA49 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		EA0F91D82886B58800AE7A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				BFE42546289E987800FEFA49 /* TextPlayerView.swift */,
 				BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */,
+				BFE42551289F755E00FEFA49 /* TextEditorView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
+				BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */,
 				BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

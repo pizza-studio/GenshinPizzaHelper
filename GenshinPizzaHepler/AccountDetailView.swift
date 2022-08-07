@@ -9,13 +9,15 @@ import SwiftUI
 
 struct AccountDetailView: View {
     @StateObject var viewModel = ViewModel()
-    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String?
-    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String?
+    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = "0"
+    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = "0"
     @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String?
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
     var body: some View {
         List {
-            InfoPreviewer(title: "账户名", content: accountName ?? uid ?? "0")
+            NavigationLink(destination: TextEditorView(content: $accountName)) {
+                InfoPreviewer(title: "账户名", content: accountName)
+            }
             NavigationLink(destination: TextPlayerView(title: "Cookie", text: cookie!)) {
                 Text("Cookie")
             }
