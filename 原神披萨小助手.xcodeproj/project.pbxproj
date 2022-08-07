@@ -57,10 +57,6 @@
 		BFE42579289FE2E200FEFA49 /* RecoveryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256C289FE2E100FEFA49 /* RecoveryTime.swift */; };
 		BFE4257A289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256D289FE2E100FEFA49 /* HomeCoinInfo.swift */; };
 		BFE4257B289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256D289FE2E100FEFA49 /* HomeCoinInfo.swift */; };
-		BFE4257F289FE2F000FEFA49 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4257C289FE2F000FEFA49 /* UserData.swift */; };
-		BFE42580289FE2F000FEFA49 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4257C289FE2F000FEFA49 /* UserData.swift */; };
-		BFE42583289FE2F000FEFA49 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4257E289FE2F000FEFA49 /* Error.swift */; };
-		BFE42584289FE2F000FEFA49 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4257E289FE2F000FEFA49 /* Error.swift */; };
 		EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F91D82886B58800AE7A62 /* Assets.xcassets */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
@@ -68,6 +64,10 @@
 		EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */; };
 		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA7F67CA289D711200D2CE29 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA7F67C9289D711200D2CE29 /* README.md */; };
+		EA9AB148289FEEDC0092EA69 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AB146289FEEDC0092EA69 /* Error.swift */; };
+		EA9AB149289FEEDC0092EA69 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AB146289FEEDC0092EA69 /* Error.swift */; };
+		EA9AB14A289FEEDC0092EA69 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AB147289FEEDC0092EA69 /* UserData.swift */; };
+		EA9AB14B289FEEDC0092EA69 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AB147289FEEDC0092EA69 /* UserData.swift */; };
 		EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
 		EABD7DC82886B2DA00B7F0FD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* Model.swift */; };
@@ -130,8 +130,6 @@
 		BFE4256B289FE2E100FEFA49 /* TransformerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerInfo.swift; sourceTree = "<group>"; };
 		BFE4256C289FE2E100FEFA49 /* RecoveryTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryTime.swift; sourceTree = "<group>"; };
 		BFE4256D289FE2E100FEFA49 /* HomeCoinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoinInfo.swift; sourceTree = "<group>"; };
-		BFE4257C289FE2F000FEFA49 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = "../../GenshinPizzaHepler的副本/Models/UserData.swift"; sourceTree = "<group>"; };
-		BFE4257E289FE2F000FEFA49 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = "../../GenshinPizzaHepler的副本/Models/Error.swift"; sourceTree = "<group>"; };
 		EA0F91D82886B58800AE7A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
@@ -144,6 +142,8 @@
 		EA30F9AC2886B49300AE7BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedgetProvider.swift; sourceTree = "<group>"; };
 		EA7F67C9289D711200D2CE29 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EA9AB146289FEEDC0092EA69 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		EA9AB147289FEEDC0092EA69 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "原神披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinPizzaHeplerApp.swift; sourceTree = "<group>"; };
 		EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -190,11 +190,11 @@
 		BF6C525D289E0F2200EA224F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BFE42562289FE2D800FEFA49 /* DecodeTool */,
 				BFE42566289FE2E100FEFA49 /* Detail */,
-				BFE4257E289FE2F000FEFA49 /* Error.swift */,
+				BFE42562289FE2D800FEFA49 /* DecodeTool */,
+				EA9AB146289FEEDC0092EA69 /* Error.swift */,
+				EA9AB147289FEEDC0092EA69 /* UserData.swift */,
 				BF6C525F289E0FAD00EA224F /* RequestResult.swift */,
-				BFE4257C289FE2F000FEFA49 /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -452,6 +452,7 @@
 			files = (
 				BF6C526C289E120400EA224F /* RequestResult.swift in Sources */,
 				BFE42573289FE2E200FEFA49 /* WeeklyBossesInfo.swift in Sources */,
+				EA9AB149289FEEDC0092EA69 /* Error.swift in Sources */,
 				EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */,
 				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
 				BFE42571289FE2E200FEFA49 /* ExpeditionInfo.swift in Sources */,
@@ -467,10 +468,9 @@
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
 				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
+				EA9AB14B289FEEDC0092EA69 /* UserData.swift in Sources */,
 				BFE4256F289FE2E100FEFA49 /* ResinInfo.swift in Sources */,
-				BFE42584289FE2F000FEFA49 /* Error.swift in Sources */,
 				BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */,
-				BFE42580289FE2F000FEFA49 /* UserData.swift in Sources */,
 				BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
 				BFE4257B289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */,
 				BFE42577289FE2E200FEFA49 /* TransformerInfo.swift in Sources */,
@@ -495,9 +495,9 @@
 				BFE42570289FE2E200FEFA49 /* ExpeditionInfo.swift in Sources */,
 				BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */,
 				BFE42564289FE2D800FEFA49 /* TransformerData.swift in Sources */,
-				BFE42583289FE2F000FEFA49 /* Error.swift in Sources */,
 				BFE4257A289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */,
 				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
+				EA9AB148289FEEDC0092EA69 /* Error.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* Model.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
@@ -508,7 +508,7 @@
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
-				BFE4257F289FE2F000FEFA49 /* UserData.swift in Sources */,
+				EA9AB14A289FEEDC0092EA69 /* UserData.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
 				BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */,
