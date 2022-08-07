@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct TextEditorView: View {
+    var title: String
+    var note: String? = nil
     @Binding var content: String
 
     var body: some View {
-        List {
-            TextEditor(text: $content)
+        if note == nil {
+            List {
+                TextEditor(text: $content)
+            }
+            .navigationBarTitle(title, displayMode: .inline)
+        } else {
+            List {
+                Section(footer: Text(note!)) {
+                    TextEditor(text: $content)
+                }
+            }
+            .navigationBarTitle(title, displayMode: .inline)
         }
     }
 }

@@ -15,11 +15,11 @@ struct AccountDetailView: View {
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
     var body: some View {
         List {
-            NavigationLink(destination: TextEditorView(content: $accountName)) {
+            NavigationLink(destination: TextEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: $accountName)) {
                 InfoPreviewer(title: "帐号名", content: accountName)
             }
 
-            NavigationLink(destination: TextEditorView(content: $uid)) {
+            NavigationLink(destination: TextEditorView(title: "UID", content: $uid)) {
                 InfoPreviewer(title: "UID", content: uid)
             }
             NavigationLink(destination: TextPlayerView(title: "Cookie", text: cookie!)) {
