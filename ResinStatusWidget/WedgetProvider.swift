@@ -53,7 +53,14 @@ struct Provider: TimelineProvider {
         let userDefaults = UserDefaults(suiteName: "group.GenshinPizzaHelper")!
         let uid = userDefaults.string(forKey: "uid")
         let cookie = userDefaults.string(forKey: "cookie")
-        let server_name = userDefaults.string(forKey: "server") ?? "官服"
+        var server_name = userDefaults.string(forKey: "server") ?? "天空岛"
+        if server_name == "官服" {
+            userDefaults.set("天空岛", forKey: "server")
+            server_name = "天空岛"
+        } else if server_name == "B服" {
+            userDefaults.set("世界树", forKey: "server")
+            server_name = "世界树"
+        }
         let server = Server(rawValue: server_name)!
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
