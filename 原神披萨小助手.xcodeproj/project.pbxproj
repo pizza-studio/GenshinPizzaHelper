@@ -271,11 +271,11 @@
 			children = (
 				EA1B76762886B89F007A5216 /* Info.plist */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
+				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BF6C5256289E00B100EA224F /* ContentView.swift */,
+				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
-				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
-				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
 				EABD7DC72886B2DA00B7F0FD /* Model.swift */,
 				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,

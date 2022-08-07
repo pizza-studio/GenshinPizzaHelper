@@ -10,6 +10,7 @@ import SwiftUI
 struct AccountInfoView: View {
     var accountName:String
     var uid: String
+    var region: String
     var serverName: String
 
     var body: some View {
@@ -19,6 +20,8 @@ struct AccountInfoView: View {
                 .padding(.vertical)
             HStack {
                 Text("UID: \(uid)")
+                Spacer()
+                Text("地区: \(region)")
                 Spacer()
                 Text("服务器: \(serverName)")
             }

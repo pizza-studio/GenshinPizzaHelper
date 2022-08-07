@@ -19,7 +19,7 @@ struct SettingsView: View {
             List {
                 Section (header: Text("帐户")) {
                     NavigationLink(destination: AccountDetailView()) {
-                        AccountInfoView(accountName: accountName ?? uid ?? "0", uid: uid ?? "0", serverName: server.rawValue)
+                        AccountInfoView(accountName: accountName ?? uid ?? "0", uid: uid ?? "0",region: server.region.value, serverName: server.rawValue)
                     }
                 }
             }

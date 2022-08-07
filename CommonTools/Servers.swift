@@ -49,4 +49,13 @@ enum Region {
     case cn
     // 国际服
     case global
+
+    var value: String {
+        switch self {
+        case .cn:
+            return "中国"
+        case .global:
+            return "国际"
+        }
+    }
 }
