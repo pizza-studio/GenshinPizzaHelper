@@ -23,6 +23,7 @@ struct AddAccountView: View {
     @State private var isPresentingConfirm: Bool = false
     @State private var isAlertShow: Bool = false
     @State private var connectStatus: ConnectStatus = .unknown
+    @State private var errorCode: String = ""
     @State private var errorInfo: String = ""
 
     var body: some View {
@@ -48,9 +49,11 @@ struct AddAccountView: View {
                                             serverID: unsavedServer.id,
                                             uid: unsavedUid,
                                             cookie: unsavedCookie)
-                    { retCode, userLoginData, errorInfo in
+                    { retCode, userLoginData, errInfo in
                         if retCode != 0 {
                             connectStatus = .fail
+                            errorCode = String(retCode)
+                            errorInfo = errInfo ?? "Unknown Error"
                         } else {
                             connectStatus = .success
                         }
@@ -64,12 +67,18 @@ struct AddAccountView: View {
                             Text("")
                         case .success:
                             Image(systemName: "checkmark")
+                                .foregroundColor(.green)
                         case .fail:
                             Image(systemName: "xmark")
+                                .foregroundColor(.red)
                         case .testing:
                             ProgressView()
                         }
                     }
+                }
+                if connectStatus == .fail {
+                    InfoPreviewer(title: "错误码", content: errorCode)
+                    InfoPreviewer(title: "错误内容", content: errorInfo)
                 }
             }
         }
