@@ -54,7 +54,7 @@ struct ContentView: View {
                     TextField("请输入UID", text: $unsavedUid)
                         .textFieldStyle(.roundedBorder)
                 }
-                Section(header: Text("Cookie"), footer: Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/7157256924214d78acbf356378747d2d")!)
+                Section(header: Text("Cookie"), footer: Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
                     .font(.caption)) {
                         TextField("请输入Cookie", text: $unsavedCookie)
                             .textFieldStyle(.roundedBorder)
@@ -120,7 +120,7 @@ struct ContentView: View {
                         Text("保存数据")
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
-                    .padding(.top)
+                    .padding()
                     .alert(isPresented: $isSaveAlert) {
                         Alert(
                             title: Text("已保存"),
@@ -156,6 +156,7 @@ struct ContentView: View {
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .foregroundColor(hasUidAndCookie ? .green : .gray)
+                    .padding()
                 }
                 if #available(iOS 15.0, *) {
                     Button(role: .destructive) {
@@ -184,6 +185,7 @@ struct ContentView: View {
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .foregroundColor(.red)
+                    .padding()
                 }
                 Text(strResult)
                 Spacer()
