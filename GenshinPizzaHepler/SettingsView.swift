@@ -18,7 +18,9 @@ struct SettingsView: View {
         NavigationView {
             List {
                 Section (header: Text("帐户")) {
-                    AccountInfoView(accountName: accountName ?? uid ?? "0", uid: uid ?? "0", serverName: server.rawValue)
+                    NavigationLink(destination: AccountDetailView()) {
+                        AccountInfoView(accountName: accountName ?? uid ?? "0", uid: uid ?? "0", serverName: server.rawValue)
+                    }
                 }
             }
             .navigationTitle("设置")
