@@ -88,7 +88,7 @@ struct AccountDetailView: View {
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .confirmationDialog("Sure?", isPresented: $isPresentingConfirm) {
-                        Button("确认清空数据", role: .destructive) {
+                        Button("删除", role: .destructive) {
                             cleanAccount()
                         }
                     } message: {
