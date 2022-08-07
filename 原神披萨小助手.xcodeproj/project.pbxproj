@@ -72,6 +72,18 @@
 		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
 		EABD7DC82886B2DA00B7F0FD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* Model.swift */; };
 		EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DCC2886B3D700B7F0FD /* icon.png */; };
+		EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
+		EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */; };
+		EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
+		EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */; };
+		EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
+		EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */; };
+		EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
+		EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */; };
+		EAF43C9228A0161C00D89787 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
+		EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
+		EAF43C9528A0163A00D89787 /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
+		EAF43C9728A0166100D89787 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +161,13 @@
 		EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EABD7DC72886B2DA00B7F0FD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EABD7DCC2886B3D700B7F0FD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinInfoBar.swift; sourceTree = "<group>"; };
+		EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpeditionInfoBar.swift; sourceTree = "<group>"; };
+		EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskInfoBar.swift; sourceTree = "<group>"; };
+		EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerInfoBar.swift; sourceTree = "<group>"; };
+		EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBackgroundView.swift; sourceTree = "<group>"; };
+		EAF43C9428A0163A00D89787 /* WidgetMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMainView.swift; sourceTree = "<group>"; };
+		EAF43C9628A0166100D89787 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,21 +241,25 @@
 		BFE42537289E4FF700FEFA49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */,
+				EAF43C9428A0163A00D89787 /* WidgetMainView.swift */,
+				EAF43C9628A0166100D89787 /* ErrorView.swift */,
 				BFE42538289E500F00FEFA49 /* MainInfoView.swift */,
+				BFE4253E289E51C900FEFA49 /* MainInfoSubViews */,
 				BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */,
+				EAF43C8328A0120400D89787 /* InfoBars */,
 				BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */,
-				BFE4253E289E51C900FEFA49 /* SubViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BFE4253E289E51C900FEFA49 /* SubViews */ = {
+		BFE4253E289E51C900FEFA49 /* MainInfoSubViews */ = {
 			isa = PBXGroup;
 			children = (
-				BFE4253F289E51E100FEFA49 /* ResinView.swift */,
 				BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */,
+				BFE4253F289E51E100FEFA49 /* ResinView.swift */,
 			);
-			path = SubViews;
+			path = MainInfoSubViews;
 			sourceTree = "<group>";
 		};
 		BFE4254E289F6BA100FEFA49 /* SubViews */ = {
@@ -347,6 +370,17 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EAF43C8328A0120400D89787 /* InfoBars */ = {
+			isa = PBXGroup;
+			children = (
+				EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */,
+				EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */,
+				EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */,
+				EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */,
+			);
+			path = InfoBars;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -450,8 +484,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
 				BF6C526C289E120400EA224F /* RequestResult.swift in Sources */,
 				BFE42573289FE2E200FEFA49 /* WeeklyBossesInfo.swift in Sources */,
+				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
 				EA9AB149289FEEDC0092EA69 /* Error.swift in Sources */,
 				EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */,
 				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
@@ -463,7 +499,9 @@
 				BFE42540289E51E100FEFA49 /* ResinView.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				BF6C526B289E116700EA224F /* WedgetProvider.swift in Sources */,
+				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
 				BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */,
+				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
 				BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
 				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
@@ -473,6 +511,7 @@
 				BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */,
 				BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
 				BFE4257B289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */,
+				EAF43C9228A0161C00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BFE42577289FE2E200FEFA49 /* TransformerInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,17 +532,22 @@
 				BFE42557289FA00700FEFA49 /* ResinView.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
 				BFE42570289FE2E200FEFA49 /* ExpeditionInfo.swift in Sources */,
+				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */,
 				BFE42564289FE2D800FEFA49 /* TransformerData.swift in Sources */,
+				EAF43C9728A0166100D89787 /* ErrorView.swift in Sources */,
 				BFE4257A289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */,
 				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
+				EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */,
 				EA9AB148289FEEDC0092EA69 /* Error.swift in Sources */,
+				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* Model.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
 				BFE42572289FE2E200FEFA49 /* WeeklyBossesInfo.swift in Sources */,
 				BFE4256E289FE2E100FEFA49 /* ResinInfo.swift in Sources */,
 				BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */,
+				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				BF6C5257289E00B100EA224F /* ContentView.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
@@ -511,8 +555,10 @@
 				EA9AB14A289FEEDC0092EA69 /* UserData.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
+				EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */,
 				BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */,
 				BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
+				EAF43C9528A0163A00D89787 /* WidgetMainView.swift in Sources */,
 				BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
