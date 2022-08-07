@@ -125,13 +125,13 @@ struct HttpMethod<T: Codable> {
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
                             print(dictionary ?? "None")
                             
-                            do {
-                                let requestResult = try decoder.decode(T.self, from: data)
-                            } catch {
-                                print("\(error)")
-                            }
-//                            let requestResult = try? decoder.decode(T.self, from: data)
-//                            completion(requestResult)
+//                            do {
+//                                let requestResult = try decoder.decode(T.self, from: data)
+//                            } catch {
+//                                print("\(error)")
+//                            }
+                            let requestResult = try? decoder.decode(T.self, from: data)
+                            completion(requestResult)
                         }
                     }
                 }.resume()
