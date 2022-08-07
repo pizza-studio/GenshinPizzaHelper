@@ -9,17 +9,28 @@ import SwiftUI
 
 struct SettingsView: View {
     @StateObject var viewModel = ViewModel()
-    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String?
-    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String?
-    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String?
+    @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 0
+    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
+    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
+    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
 
     var body: some View {
         NavigationView {
             List {
                 Section (header: Text("帐号")) {
-                    NavigationLink(destination: AccountDetailView()) {
-                        AccountInfoView(accountName: accountName ?? uid ?? "0", uid: uid ?? "0",region: server.region.value, serverName: server.rawValue)
+                    if accountNum != 1 {
+                        Label("添加帐户", systemImage: "plus.circle")
+                    } else {
+                        NavigationLink(destination: AccountDetailView()) {
+                            AccountInfoView(accountName: accountName, uid: uid,region: server.region.value, serverName: server.rawValue)
+                        }
+//                        Label("添加帐户", systemImage: "plus.circle")
+                    }
+                }
+                .onAppear {
+                    if uid != "" && cookie != "" {
+                        accountNum = 1
                     }
                 }
             }

@@ -215,6 +215,7 @@
 		BFE4254E289F6BA100FEFA49 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
 				BFE42546289E987800FEFA49 /* TextPlayerView.swift */,
 				BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */,
 				BFE42551289F755E00FEFA49 /* TextEditorView.swift */,
@@ -274,9 +275,8 @@
 			children = (
 				EA1B76762886B89F007A5216 /* Info.plist */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
-				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BF6C5256289E00B100EA224F /* ContentView.swift */,
-				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
+				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
