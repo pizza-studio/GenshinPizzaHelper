@@ -32,3 +32,10 @@ class NetworkReachability: ObservableObject {
         return isNetworkReachable(with: flags)
     }
 }
+
+enum ConnectStatus {
+    case unknown
+    case success
+    case fail
+    case testing
+}

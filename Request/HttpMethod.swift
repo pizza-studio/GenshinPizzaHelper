@@ -67,10 +67,10 @@ struct HttpMethod<T: Codable> {
                     clientType = "5"
                 case .global:
                     // TODO: 国际服改Request Header
-                    baseStr = "https://api-takumi-record.mihoyo.com/"
-                    appVersion = "2.11.1"
-                    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1"
-                    clientType = "5"
+                    baseStr = "https://bbs-api-os.hoyolab.com/"
+                    appVersion = "2.9.1"
+                    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
+                    clientType = "2"
                 }
                 // 由前缀和后缀共同组成的url
                 var url = URLComponents(string: baseStr + urlStr)!
@@ -121,11 +121,17 @@ struct HttpMethod<T: Codable> {
                         DispatchQueue.main.async {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-                            let requestResult = try? decoder.decode(T.self, from: data)
-                            completion(requestResult)
+                            
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
                             print(dictionary ?? "None")
+                            
+//                            do {
+//                                let requestResult = try decoder.decode(T.self, from: data)
+//                            } catch {
+//                                print("\(error)")
+//                            }
+                            let requestResult = try? decoder.decode(T.self, from: data)
+                            completion(requestResult)
                         }
                     }
                 }.resume()

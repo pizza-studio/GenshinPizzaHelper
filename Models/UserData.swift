@@ -8,25 +8,56 @@
 import Foundation
 
 struct UserData: Codable {
+    
+    // 树脂
+    // decode
     let currentResin: Int
-    let currentHomeCoin: Int
-    var currentExpeditionNum: Int {
-        expeditions.currentOngoingTask
-    }
-    let finishedTaskNum: Int
-
-    let transformer: TransformerData
-    var transformerTimeSecondInt: Int {
-        transformer.recoveryTime.secondDelta
-    }
-
-    let expeditions: [Expedition]
-
+    let maxResin: Int
     let resinRecoveryTime: String
-    var resinRecoveryHour: Float {
-        (Float(resinRecoveryTime) ?? 0.0)/(60*60)
+    
+    var resinInfo: ResinInfo {
+        ResinInfo(currentResin, maxResin, Int(resinRecoveryTime)!)
     }
-    var resinRecoveryTimeInt: Int {
-        Int(resinRecoveryTime)!
+    
+    // 每日任务
+    let finishedTaskNum: Int
+    let totalTaskNum: Int
+    let isExtraTaskRewardReceived: Bool
+    
+    var dailyTaskInfo: DailyTaskInfo {
+        DailyTaskInfo(totalTaskNum: totalTaskNum, finishedTaskNum: finishedTaskNum, isTaskRewardReceived: isExtraTaskRewardReceived)
+    }
+    
+    // 周本
+    let remainResinDiscountNum: Int
+    let resinDiscountNumLimit: Int
+    
+    var weeklyBossesInfo: WeeklyBossesInfo {
+        WeeklyBossesInfo(remainResinDiscountNum: remainResinDiscountNum, resinDiscountNumLimit: resinDiscountNumLimit)
+    }
+    
+    // 派遣探索
+    let currentExpeditionNum: Int
+    let maxExpeditionNum: Int
+    let expeditions: [Expedition]
+    
+    var expeditionInfo: ExpeditionInfo {
+        ExpeditionInfo(currentExpedition: currentExpeditionNum, maxExpedition: maxExpeditionNum, expeditions: expeditions)
+    }
+    
+    // 洞天宝钱
+    let currentHomeCoin: Int
+    let maxHomeCoin: Int
+    let homeCoinRecoveryTime: String
+    
+    var homeCoinInfo: HomeCoinInfo {
+        HomeCoinInfo(currentHomeCoin, maxHomeCoin, Int(homeCoinRecoveryTime)!)
+    }
+    
+    // 参量质变仪
+    let transformer: TransformerData
+    
+    var transformerInfo: TransformerInfo {
+        TransformerInfo(transformer)
     }
 }

@@ -36,8 +36,8 @@ struct ContentView: View {
             洞天宝钱：\(data!.currentHomeCoin)/2400
             探索派遣：\(data!.currentExpeditionNum)/5
             每日委托：\(data!.finishedTaskNum)/4
-            树脂溢出剩余：\(Int(data!.resinRecoveryHour))小时
-            参量质变仪：\(data!.transformerTimeSecondInt/(3600*24))天
+            树脂溢出剩余：\(data!.resinInfo.recoveryTime.describeIntervalLong)
+            参量质变仪：\(data!.transformerInfo.recoveryTime.describeIntervalShort)
             """
             return strResult
         } else {
@@ -48,56 +48,36 @@ struct ContentView: View {
     var data: UserData? { viewModel.result.data }
     
     var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                Text("UID")
-                TextField("请输入UID", text: $unsavedUid)
-                    .textFieldStyle(.roundedBorder)
-                
-                if let uid = uid {
-                    Button("当前UID为：\(uid)") {
-                        unsavedUid = uid
-                    }
-                        .font(.caption)
-                        .foregroundColor(.blue)
+        NavigationView {
+            List {
+                Section(header: Text("UID"), footer: Text("当前UID：\(uid ?? "nil")")) {
+                    TextField("请输入UID", text: $unsavedUid)
+                        .textFieldStyle(.roundedBorder)
                 }
-                Text("Cookie")
-                    .padding(.top)
-                TextField("请输入Cookie", text: $unsavedCookie)
-                    .textFieldStyle(.roundedBorder)
-                HStack {
-                    if cookie != nil {
-                        Button("已设置Cookie，点击查看") {
-                            isAlert = true
-                        }
-                            .font(.caption)
-                            .foregroundColor(.blue)
-                            .alert(isPresented: $isAlert) {
-                                Alert(title: Text("Cookie"),
-                                      message: Text(cookie!)
-                                )
+                Section(header: Text("Cookie"), footer: Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
+                    .font(.caption)) {
+                        TextField("请输入Cookie", text: $unsavedCookie)
+                            .textFieldStyle(.roundedBorder)
+                        if cookie != nil {
+                            NavigationLink(destination: TextPlayerView(title: "Cookie", text: cookie!)) {
+                                Text("查看Cookie")
                             }
+                        }
                     }
-                    Spacer()
-                    Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/4278c0248fb3451885ea94bc5045889b")!)
-                        .font(.caption)
-                    
-                }
-                Text("服务器")
-                    .padding(.top)
-                Picker("请选择服务器", selection: $unsavedServer) {
-                    ForEach(Server.allCases) { server in
-                        Text(server.rawValue)
-                            .tag(server)
-                    }
-                }
-                .pickerStyle(.segmented)
-                Text("当前服务器：\(server.rawValue)")
-                    .font(.caption)
-                    .foregroundColor(.blue)
-            }
 
-            VStack {
+                Section(header: Text("服务器"), footer: Text("当前服务器：\(server.rawValue)")) {
+                    VStack(alignment: .leading) {
+                        Section {
+                            Picker("请选择服务器", selection: $unsavedServer) {
+                                ForEach(Server.allCases, id: \.self) { server in
+                                    Text(server.rawValue)
+                                        .tag(server)
+                                }
+                            }
+                        }
+                    }
+                }
+
                 if #available(iOS 15.0, *) {
                     Button {
                         if unsavedUid != "" {
@@ -140,7 +120,7 @@ struct ContentView: View {
                         Text("保存数据")
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
-                    .padding(.top)
+                    .padding()
                     .alert(isPresented: $isSaveAlert) {
                         Alert(
                             title: Text("已保存"),
@@ -150,9 +130,9 @@ struct ContentView: View {
                 }
                 if #available(iOS 15.0, *) {
                     Button {
-                        
+
                         if hasUidAndCookie {
-                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!)
+                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region)
                         }
                         //                    isFetchAlert = hasUidAndCookie
                         WidgetCenter.shared.reloadAllTimelines()
@@ -162,12 +142,12 @@ struct ContentView: View {
                     }
                     .tint(hasUidAndCookie ? .green : .gray)
                     .buttonStyle(.borderedProminent)
-                    
+
                 } else {
                     Button {
-                        
+
                         if hasUidAndCookie {
-                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!)
+                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region)
                         }
                         //                    isFetchAlert = hasUidAndCookie
                         WidgetCenter.shared.reloadAllTimelines()
@@ -176,6 +156,7 @@ struct ContentView: View {
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .foregroundColor(hasUidAndCookie ? .green : .gray)
+                    .padding()
                 }
                 if #available(iOS 15.0, *) {
                     Button(role: .destructive) {
@@ -204,13 +185,15 @@ struct ContentView: View {
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .foregroundColor(.red)
+                    .padding()
                 }
+                Text(strResult)
+                Spacer()
             }
-            Text(strResult)
-            Spacer()
+            .navigationViewStyle(.stack)
+            .navigationBarTitle("原神披萨小助手")
         }
-        .frame(maxWidth: 500)
-        .padding()
+        .ignoresSafeArea()
     }
 }
 

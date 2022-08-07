@@ -15,7 +15,7 @@ struct DetailInfo: View {
         let currentHomeCoin: Int = userData.currentHomeCoin
         let currentExpeditionNum: Int = userData.currentExpeditionNum
         let finishedTaskNum: Int = userData.finishedTaskNum
-        let transformerTimeSecondInt: Int = userData.transformerTimeSecondInt
+        let transformerTimeSecondInt: Int = userData.transformerInfo.recoveryTime.second
 
         let isExpeditionAllComplete: Image = (currentExpeditionNum == 0) ? Image(systemName: "exclamationmark.circle") : Image(systemName: "clock.arrow.circlepath")
         let isDailyTaskAllComplete: Image = (finishedTaskNum == 4) ? Image(systemName: "checkmark.circle") : Image(systemName: "questionmark.circle")
