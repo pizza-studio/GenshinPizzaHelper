@@ -11,7 +11,7 @@ struct AccountDetailView: View {
     @StateObject var viewModel = ViewModel()
     @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = "0"
     @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = "0"
-    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String?
+    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
     var body: some View {
         List {
@@ -22,7 +22,7 @@ struct AccountDetailView: View {
             NavigationLink(destination: TextEditorView(title: "UID", content: $uid)) {
                 InfoPreviewer(title: "UID", content: uid)
             }
-            NavigationLink(destination: TextPlayerView(title: "Cookie", text: cookie!)) {
+            NavigationLink(destination: TextEditorView(title: "Cookie", content: $cookie)) {
                 Text("Cookie")
             }
             Picker("服务器", selection: $server) {
