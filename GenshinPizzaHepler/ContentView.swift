@@ -65,7 +65,7 @@ struct ContentView: View {
 //                        }
 //                    }
                 }
-                Section(header: Text("Cookie"), footer: Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/f8aa59c65b2f4685ba700b08790315e7")!)
+                Section(header: Text("Cookie"), footer: Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
                     .font(.caption)) {
 //                        VStack(alignment: .leading) {
                             TextField("请输入Cookie", text: $unsavedCookie)
@@ -110,6 +110,7 @@ struct ContentView: View {
 
 //                VStack {
                     if #available(iOS 15.0, *) {
+                        
                         Button {
                             if unsavedUid != "" {
                                 uid = unsavedUid
@@ -151,7 +152,7 @@ struct ContentView: View {
                             Text("保存数据")
                                 .frame(minWidth: 0, maxWidth: .infinity)
                         }
-                        .padding(.top)
+                        .padding()
                         .alert(isPresented: $isSaveAlert) {
                             Alert(
                                 title: Text("已保存"),
@@ -187,6 +188,7 @@ struct ContentView: View {
                                 .frame(minWidth: 0, maxWidth: .infinity)
                         }
                         .foregroundColor(hasUidAndCookie ? .green : .gray)
+                        .padding()
                     }
                     if #available(iOS 15.0, *) {
                         Button(role: .destructive) {
@@ -215,6 +217,7 @@ struct ContentView: View {
                                 .frame(minWidth: 0, maxWidth: .infinity)
                         }
                         .foregroundColor(.red)
+                        .padding()
                     }
 //                }
                 Text(strResult)
