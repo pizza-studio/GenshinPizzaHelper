@@ -65,7 +65,7 @@ struct ContentView: View {
 //                        }
 //                    }
                 }
-                Section(header: Text("Cookie"), footer: Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/7157256924214d78acbf356378747d2d")!)
+                Section(header: Text("Cookie"), footer: Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/f8aa59c65b2f4685ba700b08790315e7")!)
                     .font(.caption)) {
 //                        VStack(alignment: .leading) {
                             TextField("请输入Cookie", text: $unsavedCookie)
