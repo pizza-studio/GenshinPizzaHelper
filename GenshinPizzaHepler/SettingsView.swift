@@ -20,7 +20,9 @@ struct SettingsView: View {
             List {
                 Section (header: Text("帐号")) {
                     if accountNum != 1 {
-                        Label("添加帐户", systemImage: "plus.circle")
+                        NavigationLink(destination: AddAccountView()) {
+                            Label("添加帐户", systemImage: "plus.circle")
+                        }
                     } else {
                         NavigationLink(destination: AccountDetailView()) {
                             AccountInfoView(accountName: accountName, uid: uid,region: server.region.value, serverName: server.rawValue)

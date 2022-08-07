@@ -20,3 +20,17 @@ struct InfoPreviewer: View {
         }
     }
 }
+
+struct InfoEditor: View {
+    var title: String
+    @Binding var content: String
+
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer()
+            TextEditor(text: $content)
+                .foregroundColor(.gray)
+        }
+    }
+}
