@@ -51,6 +51,16 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("原神披萨小助手")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        let _ = viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }) {
+                        Image(systemName: "arrow.counterclockwise")
+                    }
+                }
+            }
         }
         .ignoresSafeArea()
         .navigationViewStyle(.stack)
