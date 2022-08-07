@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct SettingsView: View {
     @StateObject var viewModel = ViewModel()
@@ -15,10 +16,12 @@ struct SettingsView: View {
     @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
 
+    @State var userData: UserData? = nil
+
     var body: some View {
         NavigationView {
             List {
-                Section (header: Text("帐号")) {
+                Section (header: Text("我的帐号")) {
                     if accountNum != 1 {
                         NavigationLink(destination: AddAccountView()) {
                             Label("添加帐户", systemImage: "plus.circle")
@@ -31,12 +34,23 @@ struct SettingsView: View {
                     }
                 }
                 .onAppear {
+                    API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { _, data, _ in
+                        userData = data?.data
+                    }
                     if uid != "" && cookie != "" {
                         accountNum = 1
+                        let _ = viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }
+                }
+                if userData != nil {
+                    Section {
+                        GameInfoBlock(userData: userData!)
+                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
                 }
             }
-            .navigationTitle("设置")
+            .navigationTitle("原神披萨小助手")
         }
         .ignoresSafeArea()
         .navigationViewStyle(.stack)
