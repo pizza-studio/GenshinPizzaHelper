@@ -55,9 +55,9 @@ struct UserData: Codable {
     }
     
     // 参量质变仪
-    let transformerData: TransformerData
+    let transformer: TransformerData
     
     var transformerInfo: TransformerInfo {
-        TransformerInfo(transformerData)
+        TransformerInfo(transformer)
     }
 }

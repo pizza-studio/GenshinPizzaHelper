@@ -121,11 +121,17 @@ struct HttpMethod<T: Codable> {
                         DispatchQueue.main.async {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-                            let requestResult = try? decoder.decode(T.self, from: data)
-                            completion(requestResult)
+                            
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
                             print(dictionary ?? "None")
+                            
+                            do {
+                                let requestResult = try decoder.decode(T.self, from: data)
+                            } catch {
+                                print("\(error)")
+                            }
+//                            let requestResult = try? decoder.decode(T.self, from: data)
+//                            completion(requestResult)
                         }
                     }
                 }.resume()

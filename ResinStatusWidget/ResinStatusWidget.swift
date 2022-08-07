@@ -33,7 +33,7 @@ let defaultQueryResult = (
         maxHomeCoin: 2400,
         homeCoinRecoveryTime: "123",
         
-        transformerData: TransformerData(recoveryTime: TransformerData.TransRecoveryTime(day: 4, hour: 3, minute: 0, second: 0), obtained: true)
+        transformer: TransformerData(recoveryTime: TransformerData.TransRecoveryTime(day: 4, hour: 3, minute: 0, second: 0), obtained: true)
     )
 )
 
