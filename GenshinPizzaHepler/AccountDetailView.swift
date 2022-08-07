@@ -16,23 +16,22 @@ struct AccountDetailView: View {
     var body: some View {
         List {
             NavigationLink(destination: TextEditorView(content: $accountName)) {
-                InfoPreviewer(title: "账户名", content: accountName)
+                InfoPreviewer(title: "帐号名", content: accountName)
+            }
+
+            NavigationLink(destination: TextEditorView(content: $uid)) {
+                InfoPreviewer(title: "UID", content: uid)
             }
             NavigationLink(destination: TextPlayerView(title: "Cookie", text: cookie!)) {
                 Text("Cookie")
             }
-            Picker("请选择服务器", selection: $server) {
+            Picker("服务器", selection: $server) {
                 ForEach(Server.allCases, id: \.self) { server in
                     Text(server.rawValue)
                         .tag(server)
                 }
             }
         }
-    }
-}
-
-struct AccountDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountDetailView()
+        .navigationBarTitle("帐号信息", displayMode: .inline)
     }
 }
