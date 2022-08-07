@@ -51,47 +51,22 @@ struct ContentView: View {
         NavigationView {
             List {
                 Section(header: Text("UID"), footer: Text("当前UID：\(uid ?? "nil")")) {
-//                    VStack(alignment: .leading) {
-//                        Text("UID")
-                        TextField("请输入UID", text: $unsavedUid)
-                            .textFieldStyle(.roundedBorder)
-
-//                        if let uid = uid {
-//                            Button("当前UID为：\(uid)") {
-//                                unsavedUid = uid
-//                            }
-//                                .font(.caption)
-//                                .foregroundColor(.blue)
-//                        }
-//                    }
+                    TextField("请输入UID", text: $unsavedUid)
+                        .textFieldStyle(.roundedBorder)
                 }
                 Section(header: Text("Cookie"), footer: Link("获取cookie的脚本点这里", destination: URL(string: "https://www.icloud.com/shortcuts/7157256924214d78acbf356378747d2d")!)
                     .font(.caption)) {
-//                        VStack(alignment: .leading) {
-                            TextField("请输入Cookie", text: $unsavedCookie)
-                                .textFieldStyle(.roundedBorder)
-                            if cookie != nil {
-                                NavigationLink(destination: TextPlayerView(text: cookie!)) {
-                                    Text("查看Cookie")
-                                }
-//                                Button("已设置Cookie，点击查看") {
-//                                    isAlert = true
-//                                }
-//                                .font(.caption)
-//                                .foregroundColor(.blue)
-//                                .alert(isPresented: $isAlert) {
-//                                    Alert(title: Text("Cookie"),
-//                                          message: Text(cookie!)
-//                                    )
-//                                }
+                        TextField("请输入Cookie", text: $unsavedCookie)
+                            .textFieldStyle(.roundedBorder)
+                        if cookie != nil {
+                            NavigationLink(destination: TextPlayerView(text: cookie!)) {
+                                Text("查看Cookie")
                             }
-//                        }
+                        }
                     }
 
                 Section(header: Text("服务器"), footer: Text("当前服务器：\(server.rawValue)")) {
                     VStack(alignment: .leading) {
-//                        Text("服务器")
-//                            .padding(.top)
                         Section {
                             Picker("请选择服务器", selection: $unsavedServer) {
                                 ForEach(Server.allCases, id: \.self) { server in
@@ -100,129 +75,119 @@ struct ContentView: View {
                                 }
                             }
                         }
-
-//                        Text("当前服务器：\(server.rawValue)")
-//                            .font(.caption)
-//                            .foregroundColor(.blue)
                     }
                 }
 
-
-//                VStack {
-                    if #available(iOS 15.0, *) {
-                        Button {
-                            if unsavedUid != "" {
-                                uid = unsavedUid
-                                unsavedUid = ""
-                            }
-                            if unsavedCookie != "" {
-                                cookie = unsavedCookie
-                                unsavedCookie = ""
-                            }
-                            server = unsavedServer
-                            isSaveAlert = true
-                            WidgetCenter.shared.reloadAllTimelines()
-                        } label: {
-                            Text("保存数据")
-                                .frame(minWidth: 0, maxWidth: .infinity)
+                if #available(iOS 15.0, *) {
+                    Button {
+                        if unsavedUid != "" {
+                            uid = unsavedUid
+                            unsavedUid = ""
                         }
-                        .buttonStyle(.borderedProminent)
-                        .padding(.top)
-                        .alert(isPresented: $isSaveAlert) {
-                            Alert(
-                                title: Text("已保存"),
-                                message: Text("UID: \(uid ?? "") \n Cookie: \(cookie ?? "") \n服务器: \(server.rawValue)")
-                            )
+                        if unsavedCookie != "" {
+                            cookie = unsavedCookie
+                            unsavedCookie = ""
                         }
-                    } else {
-                        Button {
-                            if unsavedUid != "" {
-                                uid = unsavedUid
-                                unsavedUid = ""
-                            }
-                            if unsavedCookie != "" {
-                                cookie = unsavedCookie
-                                unsavedCookie = ""
-                            }
-                            server = unsavedServer
-                            isSaveAlert = true
-                            WidgetCenter.shared.reloadAllTimelines()
-                        } label: {
-                            Text("保存数据")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                        }
-                        .padding(.top)
-                        .alert(isPresented: $isSaveAlert) {
-                            Alert(
-                                title: Text("已保存"),
-                                message: Text("UID: \(uid ?? "") \n Cookie: \(cookie ?? "") \n服务器: \(server.rawValue)")
-                            )
-                        }
+                        server = unsavedServer
+                        isSaveAlert = true
+                        WidgetCenter.shared.reloadAllTimelines()
+                    } label: {
+                        Text("保存数据")
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
-                    if #available(iOS 15.0, *) {
-                        Button {
-
-                            if hasUidAndCookie {
-                                let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region)
-                            }
-                            //                    isFetchAlert = hasUidAndCookie
-                            WidgetCenter.shared.reloadAllTimelines()
-                        } label: {
-                            Text("抓取信息")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                        }
-                        .tint(hasUidAndCookie ? .green : .gray)
-                        .buttonStyle(.borderedProminent)
-
-                    } else {
-                        Button {
-
-                            if hasUidAndCookie {
-                                let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region)
-                            }
-                            //                    isFetchAlert = hasUidAndCookie
-                            WidgetCenter.shared.reloadAllTimelines()
-                        } label: {
-                            Text("抓取信息")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                        }
-                        .foregroundColor(hasUidAndCookie ? .green : .gray)
+                    .buttonStyle(.borderedProminent)
+                    .padding(.top)
+                    .alert(isPresented: $isSaveAlert) {
+                        Alert(
+                            title: Text("已保存"),
+                            message: Text("UID: \(uid ?? "") \n Cookie: \(cookie ?? "") \n服务器: \(server.rawValue)")
+                        )
                     }
-                    if #available(iOS 15.0, *) {
-                        Button(role: .destructive) {
-                            isPresentingConfirm = true
-                        } label: {
-                            Text("清空数据")
-                                .frame(minWidth: 0, maxWidth: .infinity)
+                } else {
+                    Button {
+                        if unsavedUid != "" {
+                            uid = unsavedUid
+                            unsavedUid = ""
                         }
-                        .confirmationDialog("Sure?", isPresented: $isPresentingConfirm) {
-                            Button("确认清空数据", role: .destructive) {
-                                uid = nil
-                                cookie = nil
-                                server = .china
-                            }
-                        } message: {
-                            Text("确认要清空储存的UID和Cookie吗？")
+                        if unsavedCookie != "" {
+                            cookie = unsavedCookie
+                            unsavedCookie = ""
                         }
-                        .buttonStyle(.borderedProminent)
-                    } else {
-                        Button() {
+                        server = unsavedServer
+                        isSaveAlert = true
+                        WidgetCenter.shared.reloadAllTimelines()
+                    } label: {
+                        Text("保存数据")
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .padding(.top)
+                    .alert(isPresented: $isSaveAlert) {
+                        Alert(
+                            title: Text("已保存"),
+                            message: Text("UID: \(uid ?? "") \n Cookie: \(cookie ?? "") \n服务器: \(server.rawValue)")
+                        )
+                    }
+                }
+                if #available(iOS 15.0, *) {
+                    Button {
+
+                        if hasUidAndCookie {
+                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region)
+                        }
+                        //                    isFetchAlert = hasUidAndCookie
+                        WidgetCenter.shared.reloadAllTimelines()
+                    } label: {
+                        Text("抓取信息")
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .tint(hasUidAndCookie ? .green : .gray)
+                    .buttonStyle(.borderedProminent)
+
+                } else {
+                    Button {
+
+                        if hasUidAndCookie {
+                            let _ = viewModel.get_data(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region)
+                        }
+                        //                    isFetchAlert = hasUidAndCookie
+                        WidgetCenter.shared.reloadAllTimelines()
+                    } label: {
+                        Text("抓取信息")
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .foregroundColor(hasUidAndCookie ? .green : .gray)
+                }
+                if #available(iOS 15.0, *) {
+                    Button(role: .destructive) {
+                        isPresentingConfirm = true
+                    } label: {
+                        Text("清空数据")
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .confirmationDialog("Sure?", isPresented: $isPresentingConfirm) {
+                        Button("确认清空数据", role: .destructive) {
                             uid = nil
                             cookie = nil
                             server = .china
-                        } label: {
-                            Text("清空数据")
-                                .frame(minWidth: 0, maxWidth: .infinity)
                         }
-                        .foregroundColor(.red)
+                    } message: {
+                        Text("确认要清空储存的UID和Cookie吗？")
                     }
-//                }
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button() {
+                        uid = nil
+                        cookie = nil
+                        server = .china
+                    } label: {
+                        Text("清空数据")
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .foregroundColor(.red)
+                }
                 Text(strResult)
                 Spacer()
             }
-//            .frame(maxWidth: 500)
-//            .padding()
-//            .ignoresSafeArea(edges: [.horizontal, .bottom])
             .navigationViewStyle(.stack)
             .navigationBarTitle("原神披萨小助手")
         }
