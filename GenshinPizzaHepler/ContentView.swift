@@ -36,8 +36,8 @@ struct ContentView: View {
             洞天宝钱：\(data!.currentHomeCoin)/2400
             探索派遣：\(data!.currentExpeditionNum)/5
             每日委托：\(data!.finishedTaskNum)/4
-            树脂溢出剩余：\(Int(data!.resinRecoveryHour))小时
-            参量质变仪：\(data!.transformerTimeSecondInt/(3600*24))天
+            树脂溢出剩余：\(data!.resinInfo.recoveryTime.describeIntervalLong)
+            参量质变仪：\(data!.transformerInfo.recoveryTime.describeIntervalShort)
             """
             return strResult
         } else {

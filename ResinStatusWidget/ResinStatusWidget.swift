@@ -8,22 +8,35 @@
 import WidgetKit
 import SwiftUI
 
+let defaultExpedition: Expedition = Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sara.png", remainedTimeStr: "0", statusStr: "Finished")
 
 let defaultQueryResult = (
     true,
     0,
     UserData(
         currentResin: 90,
-        currentHomeCoin: 1200,
+        maxResin: 160,
+        resinRecoveryTime: "123",
+
         finishedTaskNum: 3,
-        transformer: TransformerData(recoveryTime: RecoveryTime(day: 4, hour: 3, minute: 0, second: 0)),
+        totalTaskNum: 4,
+        isExtraTaskRewardReceived: false,
+
+        remainResinDiscountNum: 2,
+        resinDiscountNumLimit: 3,
+
+        currentExpeditionNum: 2,
+        maxExpeditionNum: 5,
         expeditions: [defaultExpedition],
-        resinRecoveryTime: "57600"
+
+        currentHomeCoin: 1200,
+        maxHomeCoin: 2400,
+        homeCoinRecoveryTime: "123",
+        
+        transformerData: TransformerData(recoveryTime: TransformerData.TransRecoveryTime(day: 4, hour: 3, minute: 0, second: 0), obtained: true)
     )
 )
 
-
-let defaultExpedition: Expedition = Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sara.png", remainedTimeStr: "0", statusStr: "Finished")
 
 struct WidgetViewEntryView : View {
     var entry: Provider.Entry

@@ -15,7 +15,7 @@ struct MainInfo: View {
         let resinFull: Bool = userData.currentResin == 160
         let homeCoinFull: Bool = userData.currentHomeCoin == 2400
         let allExpeditionComplete: Bool = userData.currentExpeditionNum == 0
-        let transformerCompleted: Bool = userData.transformerTimeSecondInt == 0
+        let transformerCompleted: Bool = userData.transformerInfo.isComplete
         let anyToNotice: Bool = (resinFull || homeCoinFull || allExpeditionComplete || transformerCompleted)
 
         VStack(spacing: 4){
@@ -31,7 +31,7 @@ struct MainInfo: View {
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                 }
-                RecoveryTimeText(recoveryTimeDeltaInt: userData.resinRecoveryTimeInt)
+                RecoveryTimeText(recoveryTimeDeltaInt: userData.resinInfo.recoveryTime.second)
             }
             .frame(maxWidth: 130)
         }
