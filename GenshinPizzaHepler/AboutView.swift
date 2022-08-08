@@ -37,13 +37,14 @@ struct AboutView: View {
                         .font(.callout)
                 }
                 Link(destination: URL(string: "https://hakubill.tech")!) {
-                    Text("Haku Bill")
+                    Text("Bill Haku")
                         .padding(.horizontal)
                         .font(.callout)
                 }
             }
             Text("交流群：813912474")
                 .font(.callout)
+                .padding(.bottom)
         }
     }
 }
