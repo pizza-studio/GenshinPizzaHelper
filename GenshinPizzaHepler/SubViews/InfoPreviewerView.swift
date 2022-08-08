@@ -24,6 +24,7 @@ struct InfoPreviewer: View {
 struct InfoEditor: View {
     var title: String
     @Binding var content: String
+    var keyboardType: UIKeyboardType = .default
 
     var body: some View {
         HStack {
@@ -31,6 +32,7 @@ struct InfoEditor: View {
             Spacer()
             TextEditor(text: $content)
                 .foregroundColor(.gray)
+                .keyboardType(keyboardType)
         }
     }
 }

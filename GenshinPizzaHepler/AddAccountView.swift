@@ -30,7 +30,7 @@ struct AddAccountView: View {
         List {
             Section {
                 InfoEditor(title: "帐号名", content: $unsavedName)
-                InfoEditor(title: "UID", content: $unsavedUid)
+                InfoEditor(title: "UID", content: $unsavedUid, keyboardType: .numberPad)
                 NavigationLink(destination: TextEditorView(title: "Cookie", content: $unsavedCookie)) {
                     Text("Cookie")
                 }

@@ -16,12 +16,14 @@ struct TextEditorView: View {
         if note == nil {
             List {
                 TextEditor(text: $content)
+                    .frame(height: 500)
             }
             .navigationBarTitle(title, displayMode: .inline)
         } else {
             List {
                 Section(footer: Text(note!)) {
                     TextEditor(text: $content)
+                        .frame(height: 500)
                 }
             }
             .navigationBarTitle(title, displayMode: .inline)
