@@ -31,8 +31,8 @@ struct AboutView: View {
             Text("开发者")
                 .font(.callout)
             HStack {
-                Link(destination: URL(string: "https://github.com/CanglongCl")!) {
-                    Text("CanglongCI")
+                Link(destination: URL(string: "https://space.bilibili.com/13079935")!) {
+                    Text("Lava丨")
                         .padding(.horizontal)
                         .font(.callout)
                 }
