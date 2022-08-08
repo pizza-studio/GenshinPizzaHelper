@@ -17,6 +17,7 @@ struct SettingsView: View {
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
 
     @State var userData: UserData? = nil
+    @State var isHelpSheepShow: Bool = false
 
     var body: some View {
         NavigationView {
@@ -43,10 +44,11 @@ struct SettingsView: View {
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                 }
-                if userData != nil {
+                if accountNum >= 1 {
                     Section {
-                        GameInfoBlock(userData: userData!)
+                        GameInfoBlock(userData: userData)
                             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .animation(.linear)
                     }
                 }
             }
@@ -55,11 +57,26 @@ struct SettingsView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         let _ = viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
+                        userData = nil
+                        API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { _, data, _ in
+                            userData = data?.data
+                        }
                         WidgetCenter.shared.reloadAllTimelines()
                     }) {
                         Image(systemName: "arrow.counterclockwise")
                     }
                 }
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button(action: {
+                        isHelpSheepShow.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                    }
+                    Spacer()
+                }
+            }
+            .sheet(isPresented: $isHelpSheepShow) {
+                HelpSheetView(isShow: $isHelpSheepShow)
             }
         }
         .ignoresSafeArea()
