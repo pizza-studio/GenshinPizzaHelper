@@ -11,17 +11,58 @@ struct TextEditorView: View {
     var title: String
     var note: String? = nil
     @Binding var content: String
+    var showPasteButton: Bool = false
+
+    var body: some View {
+        List {
+            if showPasteButton {
+                Section {
+                    Button("粘贴自剪贴板") {
+                        content = UIPasteboard.general.string ?? ""
+                    }
+                }
+            }
+            Section(footer: Text(note ?? "")) {
+                TextEditor(text: $content)
+                    .frame(height: 500)
+            }
+        }
+        .navigationBarTitle(title, displayMode: .inline)
+    }
+}
+
+struct TextFieldEditorView: View {
+    var title: String
+    var note: String? = nil
+    @Binding var content: String
+    var keyboardType: UIKeyboardType = .default
 
     var body: some View {
         if note == nil {
             List {
-                TextEditor(text: $content)
+                if #available(iOS 15.0, *) {
+                    TextField("", text: $content)
+                        .keyboardType(keyboardType)
+                        .submitLabel(.done)
+                } else {
+                    // Fallback on earlier versions
+                    TextField("", text: $content)
+                        .keyboardType(keyboardType)
+                }
             }
             .navigationBarTitle(title, displayMode: .inline)
         } else {
             List {
                 Section(footer: Text(note!)) {
-                    TextEditor(text: $content)
+                    if #available(iOS 15.0, *) {
+                        TextField(note!, text: $content)
+                            .keyboardType(keyboardType)
+                            .submitLabel(.done)
+                    } else {
+                        // Fallback on earlier versions
+                        TextField(note!, text: $content)
+                            .keyboardType(keyboardType)
+                    }
                 }
             }
             .navigationBarTitle(title, displayMode: .inline)

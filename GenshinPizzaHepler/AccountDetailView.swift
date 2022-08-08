@@ -23,13 +23,13 @@ struct AccountDetailView: View {
     var body: some View {
         List {
             Section {
-                NavigationLink(destination: TextEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: $accountName)) {
+                NavigationLink(destination: TextFieldEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: $accountName)) {
                     InfoPreviewer(title: "帐号名", content: accountName)
                 }
-                NavigationLink(destination: TextEditorView(title: "UID", content: $uid)) {
+                NavigationLink(destination: TextFieldEditorView(title: "UID", content: $uid, keyboardType: .numberPad)) {
                     InfoPreviewer(title: "UID", content: uid)
                 }
-                NavigationLink(destination: TextEditorView(title: "Cookie", content: $cookie)) {
+                NavigationLink(destination: TextEditorView(title: "Cookie", content: $cookie, showPasteButton: true)) {
                     Text("Cookie")
                 }
                 Picker("服务器", selection: $server) {
