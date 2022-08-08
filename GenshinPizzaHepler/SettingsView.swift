@@ -34,13 +34,9 @@ struct SettingsView: View {
                         NavigationLink(destination: AccountDetailView()) {
                             AccountInfoView(accountName: accountName, uid: uid,region: server.region.value, serverName: server.rawValue)
                         }
-//                        Label("添加帐户", systemImage: "plus.circle")
                     }
                 }
                 .onAppear {
-//                    API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { result in
-//                        userData = data?.data
-//                    }
                     if uid != "" && cookie != "" {
                         accountNum = 1
                         viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
@@ -48,38 +44,28 @@ struct SettingsView: View {
                     }
                 }
                 if accountNum >= 1 {
-                switch result {
-                case .success(let userData):
                     Section {
-                        if !isGameBlockAvailable {
+                        switch result {
+                        case .success(let userData):
+                            GameInfoBlock(userData: userData)
+                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .animation(.linear)
+                        case .failure( _) :
                             HStack {
                                 Spacer()
                                 Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
                                     .foregroundColor(.red)
                                 Spacer()
                             }
-                        } else {
-                            GameInfoBlock(userData: userData)
-                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .animation(.linear)
                         }
-                        GameInfoBlock(userData: userData)
-                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
-                case .failure( _) :
-                    EmptyView()
                 }
             }
             .navigationTitle("原神披萨小助手")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        let _ = viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
-                        userData = nil
-                        API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { retCode, data, _ in
-                            isGameBlockAvailable = retCode == 0
-                            userData = data?.data
-                        }
+                        viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
                         WidgetCenter.shared.reloadAllTimelines()
                     }) {
                         Image(systemName: "arrow.counterclockwise")
