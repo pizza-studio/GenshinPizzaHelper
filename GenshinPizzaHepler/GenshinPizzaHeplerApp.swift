@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct GenshinPizzaHeplerApp: App {
+    let viewModel: ViewModel = .shared
+    
     var body: some Scene {
         WindowGroup {
             SettingsView()
+                .environmentObject(viewModel)
         }
     }
 }

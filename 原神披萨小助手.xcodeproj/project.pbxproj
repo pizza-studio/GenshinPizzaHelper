@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF6C5257289E00B100EA224F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5256289E00B100EA224F /* ContentView.swift */; };
 		BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C525F289E0FAD00EA224F /* RequestResult.swift */; };
 		BF6C526B289E116700EA224F /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
 		BF6C526C289E120400EA224F /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C525F289E0FAD00EA224F /* RequestResult.swift */; };
@@ -122,7 +121,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BF6C5256289E00B100EA224F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF6C525A289E02B600EA224F /* ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ios.yml; sourceTree = "<group>"; };
 		BF6C525B289E095F00EA224F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = GenshinPizzaHepler/.gitignore; sourceTree = "<group>"; };
 		BF6C525F289E0FAD00EA224F /* RequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
@@ -365,7 +363,6 @@
 			children = (
 				EA1B76762886B89F007A5216 /* Info.plist */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
-				BF6C5256289E00B100EA224F /* ContentView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
@@ -577,7 +574,6 @@
 				BFE4256E289FE2E100FEFA49 /* ResinInfo.swift in Sources */,
 				BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
-				BF6C5257289E00B100EA224F /* ContentView.swift in Sources */,
 				EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestView.swift in Sources */,

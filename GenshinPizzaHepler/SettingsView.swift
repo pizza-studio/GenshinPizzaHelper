@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct SettingsView: View {
-    @StateObject var viewModel = ViewModel.shared
+    @EnvironmentObject var viewModel: ViewModel
     @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 0
     @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
     @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
