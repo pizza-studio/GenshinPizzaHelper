@@ -15,7 +15,7 @@ class ViewModel: ObservableObject {
     
     static let shared = ViewModel()
 
-    func get_data(uid: String, server_id: String, cookie: String, region: Region) {
+    func getData(uid: String, server_id: String, cookie: String, region: Region) {
         API.Features.fetchInfos(region: region,
                                 serverID: server_id,
                                 uid: uid,

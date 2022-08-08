@@ -15,8 +15,7 @@ struct SettingsView: View {
     @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
     @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
-
-    @State var userData: UserData? = nil
+    
     @State var isHelpSheepShow: Bool = false
     @State var isGameBlockAvailable: Bool = true
     
@@ -39,7 +38,7 @@ struct SettingsView: View {
                 .onAppear {
                     if uid != "" && cookie != "" {
                         accountNum = 1
-                        viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
+                        viewModel.getData(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                 }
@@ -65,7 +64,7 @@ struct SettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
+                        viewModel.getData(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
                         WidgetCenter.shared.reloadAllTimelines()
                     }) {
                         Image(systemName: "arrow.counterclockwise")
