@@ -17,7 +17,11 @@ struct GameInfoBlock: View {
 
     var body: some View {
         if userData == nil {
-            ProgressView()
+            HStack {
+                Spacer()
+                ProgressView()
+                Spacer()
+            }
         } else {
             MainInfoWithDetail(userData: userData!)
                 .background(LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing))
