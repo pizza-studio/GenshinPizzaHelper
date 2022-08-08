@@ -11,23 +11,23 @@ struct TextEditorView: View {
     var title: String
     var note: String? = nil
     @Binding var content: String
+    var showPasteButton: Bool = false
 
     var body: some View {
-        if note == nil {
-            List {
+        List {
+            if showPasteButton {
+                Section {
+                    Button("粘贴自剪贴板") {
+                        content = UIPasteboard.general.string ?? ""
+                    }
+                }
+            }
+            Section(footer: Text(note ?? "")) {
                 TextEditor(text: $content)
                     .frame(height: 500)
             }
-            .navigationBarTitle(title, displayMode: .inline)
-        } else {
-            List {
-                Section(footer: Text(note!)) {
-                    TextEditor(text: $content)
-                        .frame(height: 500)
-                }
-            }
-            .navigationBarTitle(title, displayMode: .inline)
         }
+        .navigationBarTitle(title, displayMode: .inline)
     }
 }
 
