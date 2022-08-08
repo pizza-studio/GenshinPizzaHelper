@@ -18,6 +18,7 @@ struct SettingsView: View {
 
     @State var userData: UserData? = nil
     @State var isHelpSheepShow: Bool = false
+    @State var isGameBlockAvailable: Bool = true
 
     var body: some View {
         NavigationView {
@@ -35,7 +36,8 @@ struct SettingsView: View {
                     }
                 }
                 .onAppear {
-                    API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { _, data, _ in
+                    API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { retCode, data, _ in
+                        isGameBlockAvailable = retCode == 0
                         userData = data?.data
                     }
                     if uid != "" && cookie != "" {
@@ -46,9 +48,18 @@ struct SettingsView: View {
                 }
                 if accountNum >= 1 {
                     Section {
-                        GameInfoBlock(userData: userData)
-                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            .animation(.linear)
+                        if !isGameBlockAvailable {
+                            HStack {
+                                Spacer()
+                                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
+                        } else {
+                            GameInfoBlock(userData: userData)
+                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .animation(.linear)
+                        }
                     }
                 }
             }
@@ -58,7 +69,8 @@ struct SettingsView: View {
                     Button(action: {
                         let _ = viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
                         userData = nil
-                        API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { _, data, _ in
+                        API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { retCode, data, _ in
+                            isGameBlockAvailable = retCode == 0
                             userData = data?.data
                         }
                         WidgetCenter.shared.reloadAllTimelines()

@@ -31,19 +31,20 @@ struct AboutView: View {
             Text("开发者")
                 .font(.callout)
             HStack {
-                Link(destination: URL(string: "https://github.com/CanglongCl")!) {
-                    Text("CanglongCI")
+                Link(destination: URL(string: "https://space.bilibili.com/13079935")!) {
+                    Text("Lava丨")
                         .padding(.horizontal)
                         .font(.callout)
                 }
                 Link(destination: URL(string: "https://hakubill.tech")!) {
-                    Text("Haku Bill")
+                    Text("Bill Haku")
                         .padding(.horizontal)
                         .font(.callout)
                 }
             }
             Text("交流群：813912474")
                 .font(.callout)
+                .padding(.bottom)
         }
     }
 }
