@@ -17,6 +17,7 @@ struct SettingsView: View {
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
 
     @State var userData: UserData? = nil
+    @State var isHelpSheepShow: Bool = false
 
     var body: some View {
         NavigationView {
@@ -60,6 +61,17 @@ struct SettingsView: View {
                         Image(systemName: "arrow.counterclockwise")
                     }
                 }
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button(action: {
+                        isHelpSheepShow.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                    }
+                    Spacer()
+                }
+            }
+            .sheet(isPresented: $isHelpSheepShow) {
+                HelpSheetView()
             }
         }
         .ignoresSafeArea()
