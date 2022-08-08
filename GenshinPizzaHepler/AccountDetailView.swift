@@ -29,7 +29,7 @@ struct AccountDetailView: View {
                 NavigationLink(destination: TextFieldEditorView(title: "UID", content: $uid, keyboardType: .numberPad)) {
                     InfoPreviewer(title: "UID", content: uid)
                 }
-                NavigationLink(destination: TextEditorView(title: "Cookie", content: $cookie, showPasteButton: true)) {
+                NavigationLink(destination: TextEditorView(title: "Cookie", content: $cookie, showPasteButton: true, showShortCutsLink: true)) {
                     Text("Cookie")
                 }
                 Picker("服务器", selection: $server) {

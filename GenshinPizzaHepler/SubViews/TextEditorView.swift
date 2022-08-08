@@ -12,11 +12,15 @@ struct TextEditorView: View {
     var note: String? = nil
     @Binding var content: String
     var showPasteButton: Bool = false
+    var showShortCutsLink: Bool = false
 
     var body: some View {
         List {
             if showPasteButton {
                 Section {
+                    if showPasteButton {
+                        Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
+                    }
                     Button("粘贴自剪贴板") {
                         content = UIPasteboard.general.string ?? ""
                     }
