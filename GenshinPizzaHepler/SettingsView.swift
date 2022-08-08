@@ -71,7 +71,7 @@ struct SettingsView: View {
                 }
             }
             .sheet(isPresented: $isHelpSheepShow) {
-                HelpSheetView()
+                HelpSheetView(isShow: $isHelpSheepShow)
             }
         }
         .ignoresSafeArea()
