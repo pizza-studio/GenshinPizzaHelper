@@ -31,8 +31,8 @@ struct HttpMethod<T: Codable> {
         _ uid: String,
         _ cookie: String,
         completion: @escaping(
-            _ dataProcessed: T?
-        ) -> ()
+            (Result<T, RequestError>) -> ()
+        )
     ) {
         let networkReachability = NetworkReachability()
 
@@ -105,16 +105,19 @@ struct HttpMethod<T: Codable> {
                     // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
                     print(error ?? "ErrorInfo nil")
                     if let error = error {
+                        completion(.failure(.dataTaskError(error.localizedDescription)))
                         print(
                             "DataTask error in General HttpMethod: " +
                             error.localizedDescription + "\n"
                         )
                     } else {
                         guard let data = data else {
+                            completion(.failure(.noResponseData))
                             print("found response data nil")
                             return
                         }
                         guard response is HTTPURLResponse else {
+                            completion(.failure(.responseError))
                             print("response error")
                             return
                         }
@@ -125,13 +128,21 @@ struct HttpMethod<T: Codable> {
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
                             print(dictionary ?? "None")
                             
+                            do {
+                                let requestResult = try decoder.decode(T.self, from: data)
+                                completion(.success(requestResult))
+                            } catch {
+                                print(error)
+                                completion(.failure(.decodeError(error.localizedDescription)))
+                            }
+                            
+                            
 //                            do {
 //                                let requestResult = try decoder.decode(T.self, from: data)
 //                            } catch {
 //                                print("\(error)")
 //                            }
-                            let requestResult = try? decoder.decode(T.self, from: data)
-                            completion(requestResult)
+                            
                         }
                     }
                 }.resume()

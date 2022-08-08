@@ -22,14 +22,16 @@ extension API {
             uid: String,
             cookie: String,
             completion: @escaping (
-                _ retCode: Int,
-                _ userLoginData: RequestResult?,
-                _ errorInfo: String?
+                FetchResult
             ) -> ()
         ) {
             // 请求类别
             let urlStr = "game_record/app/genshin/api/dailyNote"
-
+            
+            if (uid == "") || (cookie == "") {
+                completion(.failure(.noFetchInfo))
+            }
+            
             // 请求
             HttpMethod<RequestResult>
                 .commonRequest(
@@ -39,16 +41,45 @@ extension API {
                     serverID,
                     uid,
                     cookie
-                ) { returnData in
-                    // 根据结果返回相应数据
-                    if returnData == nil {
-                        completion(-999, returnData, "Return Data found nil")
-                        return
-                    }
-                    if returnData!.retcode != 0 {
-                        completion(returnData!.retcode, returnData, returnData!.message)
-                    } else {
-                        completion(0, returnData, nil)
+                ) { result in
+                    switch result {
+                        
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let userData = requestResult.data
+                        let retcode = requestResult.retcode
+                        let message = requestResult.message
+                        
+                        switch requestResult.retcode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(userData!))
+                        case 10001:
+                            print("fail 10001")
+                            completion(.failure(.cookieInvalid(retcode, message)))
+                        case 10102, 10103, 10104:
+                            print("fail nomatch")
+                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                        case 1008:
+                            print("fail 1008")
+                            completion(.failure(.accountInvalid(retcode, message)))
+                        case -1:
+                            print("fail -1")
+                            completion(.failure(.dataNotFound(retcode, message)))
+                        default:
+                            print("unknowerror")
+                            completion(.failure(.unknownError(retcode, message)))
+                        }
+                        
+                    case .failure(let requestError):
+                        
+                        switch requestError {
+                        case .decodeError(let message):
+                            completion(.failure(.decodeError(message)))
+                        default:
+                            completion(.failure(.requestError(requestError)))
+                        }
+                        
                     }
                 }
         }

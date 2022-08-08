@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddAccountView: View {
-    @StateObject var viewModel = ViewModel()
     @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 0
     @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
     @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
@@ -23,7 +22,6 @@ struct AddAccountView: View {
     @State private var isPresentingConfirm: Bool = false
     @State private var isAlertShow: Bool = false
     @State private var connectStatus: ConnectStatus = .unknown
-    @State private var errorCode: String = ""
     @State private var errorInfo: String = ""
 
     var body: some View {
@@ -42,45 +40,7 @@ struct AddAccountView: View {
                 }
             }
 
-            Section {
-                Button(action: {
-                    connectStatus = .testing
-                    API.Features.fetchInfos(region: unsavedServer.region,
-                                            serverID: unsavedServer.id,
-                                            uid: unsavedUid,
-                                            cookie: unsavedCookie)
-                    { retCode, userLoginData, errInfo in
-                        if retCode != 0 {
-                            connectStatus = .fail
-                            errorCode = String(retCode)
-                            errorInfo = errInfo ?? "Unknown Error"
-                        } else {
-                            connectStatus = .success
-                        }
-                    }
-                }) {
-                    HStack {
-                        Text("测试连接")
-                        Spacer()
-                        switch connectStatus {
-                        case .unknown:
-                            Text("")
-                        case .success:
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.green)
-                        case .fail:
-                            Image(systemName: "xmark")
-                                .foregroundColor(.red)
-                        case .testing:
-                            ProgressView()
-                        }
-                    }
-                }
-                if connectStatus == .fail {
-                    InfoPreviewer(title: "错误码", content: errorCode)
-                    InfoPreviewer(title: "错误内容", content: errorInfo)
-                }
-            }
+            TestView(unsavedUid: $unsavedUid, unsavedCookie: $unsavedCookie, unsavedServer: $unsavedServer)
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
         .toolbar {

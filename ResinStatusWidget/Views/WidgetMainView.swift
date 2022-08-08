@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct WidgetMainView: View {
+    @Environment(\.widgetFamily) var family: WidgetFamily
+    let userData: UserData
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        switch family {
+        case .systemSmall:
+            MainInfo(userData: userData)
+        case .systemMedium:
+            MainInfoWithDetail(userData: userData)
+        default:
+            MainInfoWithDetail(userData: userData)
+        }
     }
 }
 
