@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct SettingsView: View {
-    @StateObject var viewModel = ViewModel()
+    @StateObject var viewModel = ViewModel.shared
     @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 0
     @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
     @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
@@ -19,6 +19,8 @@ struct SettingsView: View {
     @State var userData: UserData? = nil
     @State var isHelpSheepShow: Bool = false
     @State var isGameBlockAvailable: Bool = true
+    
+    var result: FetchResult { viewModel.result }
 
     var body: some View {
         NavigationView {
@@ -36,17 +38,18 @@ struct SettingsView: View {
                     }
                 }
                 .onAppear {
-                    API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { retCode, data, _ in
-                        isGameBlockAvailable = retCode == 0
-                        userData = data?.data
-                    }
+//                    API.Features.fetchInfos(region: server.region, serverID: server.id, uid: uid, cookie: cookie) { result in
+//                        userData = data?.data
+//                    }
                     if uid != "" && cookie != "" {
                         accountNum = 1
-                        let _ = viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
+                        viewModel.get_data(uid: uid, server_id: server.id, cookie: cookie, region: server.region)
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                 }
                 if accountNum >= 1 {
+                switch result {
+                case .success(let userData):
                     Section {
                         if !isGameBlockAvailable {
                             HStack {
@@ -60,7 +63,11 @@ struct SettingsView: View {
                                 .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .animation(.linear)
                         }
+                        GameInfoBlock(userData: userData)
+                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
+                case .failure( _) :
+                    EmptyView()
                 }
             }
             .navigationTitle("原神披萨小助手")

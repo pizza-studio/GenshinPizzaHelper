@@ -10,22 +10,18 @@ import SwiftUI
 
 class ViewModel: ObservableObject {
     // TODO: 增加错误信息说明
-    typealias QueryResult = (isValid: Bool, retcode: Int, data: UserData?)
     
-    @Published var result: QueryResult = (false, 1, nil)
+    @Published var result: FetchResult = .failure(.defaultStatus)
+    
+    static let shared = ViewModel()
 
-    func get_data(uid: String, server_id: String, cookie: String, region: Region) -> (isValid: Bool, retcode: Int, data: UserData?) {
+    func get_data(uid: String, server_id: String, cookie: String, region: Region) {
         API.Features.fetchInfos(region: region,
                                 serverID: server_id,
                                 uid: uid,
                                 cookie: cookie)
-        { retCode, userLoginData, errorInfo in
-            if retCode != 0 {
-                self.result = (false, retCode, nil)
-            } else {
-                self.result = (true, retCode, userLoginData!.data!)
-            }
-        }
-        return result
+        { self.result = $0 }
     }
+    
+
 }

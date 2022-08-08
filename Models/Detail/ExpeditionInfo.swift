@@ -27,7 +27,7 @@ struct ExpeditionInfo {
         }?.recoveryTime.second ?? 0)
     }
     
-    var isAllComplete: Bool { currentOngoingTask == 0 }
+    var isAllCompleted: Bool { currentOngoingTask == 0 }
     var allCompleteTime: RecoveryTime {
         RecoveryTime(second: expeditions.max {
             $0.recoveryTime.second < $1.recoveryTime.second
