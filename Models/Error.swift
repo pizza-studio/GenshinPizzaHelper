@@ -52,9 +52,9 @@ extension FetchError {
             return "错误码\(retcode)：UID有误"
         case .dataNotFound(let retcode, _):
             return "错误码\(retcode)：数据未找到"
-        case .decodeError(_):
+        case .decodeError( _):
             return "解码错误"
-        case .requestError(let requestError):
+        case .requestError( _):
             return "网络错误"
         case .unknownError(let retcode, _):
             return "未知错误码：\(retcode)"
@@ -68,7 +68,7 @@ extension FetchError {
             
         case .noFetchInfo:
             return ""
-        case .cookieInvalid(_, let message):
+        case .cookieInvalid(_, _):
             return ""
         case .unmachedAccountCookie(_, let message):
             return message
