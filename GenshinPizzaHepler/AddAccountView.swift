@@ -31,7 +31,7 @@ struct AddAccountView: View {
             Section {
                 InfoEditor(title: "帐号名", content: $unsavedName)
                 InfoEditor(title: "UID", content: $unsavedUid, keyboardType: .numberPad)
-                NavigationLink(destination: TextEditorView(title: "Cookie", content: $unsavedCookie, showPasteButton: true)) {
+                NavigationLink(destination: TextEditorView(title: "Cookie", content: $unsavedCookie, showPasteButton: true, showShortCutsLink: true)) {
                     Text("Cookie")
                 }
                 Picker("服务器", selection: $unsavedServer) {
