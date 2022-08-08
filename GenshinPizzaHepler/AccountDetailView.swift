@@ -8,27 +8,59 @@
 import SwiftUI
 
 struct AccountDetailView: View {
-    @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 1
-    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
-    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
-    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
-    @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
+    @EnvironmentObject var viewModel: ViewModel
+    
+    @Binding var account: Account
+    
+    var bindingName: Binding<String> {
+        Binding($account.config.name)!
+    }
+    var bindingUid: Binding<String> {
+        Binding($account.config.uid)!
+    }
+    var bindingCookie: Binding<String> {
+        Binding($account.config.cookie)!
+    }
+    var bindingServer: Binding<Server> {
+        Binding(projectedValue: $account.config.server)
+    }
+    
+    var name: String {
+        account.config.name!
+    }
+    var uid: String {
+        account.config.uid!
+    }
+    var cookie: String {
+        account.config.cookie!
+    }
+    var server: Server {
+        account.config.server
+    }
+    
+//    @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 1
+//    @State var accountName: String = ""
+//    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
+//    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
+//    @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
 
     @State private var isPresentingConfirm: Bool = false
+    @State private var toDelete: Bool = false
 
     var body: some View {
+        
         List {
             Section {
-                NavigationLink(destination: TextFieldEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: $accountName)) {
-                    InfoPreviewer(title: "帐号名", content: accountName)
+                NavigationLink(destination: TextFieldEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: bindingName)) {
+                    InfoPreviewer(title: "帐号名", content: name)
                 }
-                NavigationLink(destination: TextFieldEditorView(title: "UID", content: $uid, keyboardType: .numberPad)) {
+                NavigationLink(destination: TextFieldEditorView(title: "UID", content: bindingUid, keyboardType: .numberPad)) {
                     InfoPreviewer(title: "UID", content: uid)
                 }
-                NavigationLink(destination: TextEditorView(title: "Cookie", content: $cookie, showPasteButton: true)) {
+                NavigationLink(destination: TextEditorView(title: "Cookie", content: bindingCookie, showPasteButton: true)) {
                     Text("Cookie")
                 }
-                Picker("服务器", selection: $server) {
+                Picker("服务器", selection: $account.config.server) {
                     ForEach(Server.allCases, id: \.self) { server in
                         Text(server.rawValue)
                             .tag(server)
@@ -36,7 +68,7 @@ struct AccountDetailView: View {
                 }
             }
 
-            TestSectionView(uid: $uid, cookie: $cookie, server: $server)
+            TestSectionView(uid: bindingUid, cookie: bindingCookie, server: bindingServer)
             
             Section {
                 if #available(iOS 15.0, *) {
@@ -55,7 +87,7 @@ struct AccountDetailView: View {
                     }
                 } else {
                     Button() {
-                        cleanAccount()
+                        toDelete = false
                     } label: {
                         Text("删除帐号")
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -66,13 +98,13 @@ struct AccountDetailView: View {
             }
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
+        .onDisappear {
+            viewModel.saveAccount()
+            if toDelete { cleanAccount() }
+        }
     }
 
     func cleanAccount() {
-        accountNum -= 1
-        accountName = ""
-        uid = ""
-        cookie = ""
-        server = .china
+        viewModel.deleteAccount(account: account)
     }
 }

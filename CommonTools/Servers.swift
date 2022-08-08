@@ -59,3 +59,15 @@ enum Region {
         }
     }
 }
+
+// extention for CoreData to save Server
+extension AccountConfiguration {
+    var server: Server {
+        get {
+            return Server(rawValue: self.serverRawValue!)!
+        }
+        set {
+            self.serverRawValue = newValue.rawValue
+        }
+    }
+}

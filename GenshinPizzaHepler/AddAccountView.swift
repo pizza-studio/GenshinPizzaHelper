@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct AddAccountView: View {
-    @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 0
-    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
-    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
-    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
-    @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
+    @EnvironmentObject var viewModel: ViewModel
 
     @State private var unsavedName: String = "我的帐号"
     @State private var unsavedUid: String = ""
@@ -58,12 +54,7 @@ struct AddAccountView: View {
                         unsavedName = unsavedUid
                     }
 
-                    accountName = unsavedName
-                    uid = unsavedUid
-                    cookie = unsavedCookie
-                    server = unsavedServer
-
-                    accountNum += 1
+                    viewModel.addAccount(name: unsavedName, uid: unsavedUid, cookie: unsavedCookie, server: unsavedServer)
                 }
             }
         }

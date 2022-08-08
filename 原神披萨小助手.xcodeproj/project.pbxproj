@@ -64,6 +64,9 @@
 		EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
 		EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */; };
 		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA6502AD28A142CF005647D0 /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA6502AB28A142CF005647D0 /* AccountConfiguration.xcdatamodeld */; };
+		EA6502AE28A149E0005647D0 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
+		EA6502B028A149E6005647D0 /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA6502AB28A142CF005647D0 /* AccountConfiguration.xcdatamodeld */; };
 		EA75DD0228A095150099E70A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0128A095150099E70A /* Result.swift */; };
 		EA75DD0328A095150099E70A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0128A095150099E70A /* Result.swift */; };
 		EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */; };
@@ -164,6 +167,7 @@
 		EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinStatusWidget.swift; sourceTree = "<group>"; };
 		EA30F9AC2886B49300AE7BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedgetProvider.swift; sourceTree = "<group>"; };
+		EA6502AC28A142CF005647D0 /* Configuration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Configuration.xcdatamodel; sourceTree = "<group>"; };
 		EA75DD0128A095150099E70A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeHandler.swift; sourceTree = "<group>"; };
 		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
@@ -220,7 +224,7 @@
 			path = workflows;
 			sourceTree = "<group>";
 		};
-		BF6C525D289E0F2200EA224F /* Models */ = {
+		BF6C525D289E0F2200EA224F /* FetchedModels */ = {
 			isa = PBXGroup;
 			children = (
 				BFE42566289FE2E100FEFA49 /* Detail */,
@@ -230,7 +234,7 @@
 				EA75DD0128A095150099E70A /* Result.swift */,
 				BFE42562289FE2D800FEFA49 /* DecodeTool */,
 			);
-			path = Models;
+			path = FetchedModels;
 			sourceTree = "<group>";
 		};
 		BF6C525E289E0F2A00EA224F /* Request */ = {
@@ -341,7 +345,7 @@
 				BF6C5258289E02B600EA224F /* .github */,
 				BF6C525E289E0F2A00EA224F /* Request */,
 				BF6C5270289E12B500EA224F /* CommonTools */,
-				BF6C525D289E0F2200EA224F /* Models */,
+				BF6C525D289E0F2200EA224F /* FetchedModels */,
 				EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */,
 				EA30F9A72886B49200AE7BEA /* ResinStatusWidget */,
 				EA30F9A22886B49200AE7BEA /* Frameworks */,
@@ -373,6 +377,7 @@
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
 				EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */,
+				EA6502AB28A142CF005647D0 /* AccountConfiguration.xcdatamodeld */,
 				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,
 				EABD7DBF2886B2D300B7F0FD /* Preview Content */,
 			);
@@ -512,11 +517,13 @@
 				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
 				EA75DD0B28A0BF450099E70A /* TestSectionView.swift in Sources */,
 				BFE42571289FE2E200FEFA49 /* ExpeditionInfo.swift in Sources */,
+				EA6502AE28A149E0005647D0 /* ViewModel.swift in Sources */,
 				EA75DD0628A09EC80099E70A /* ErrorCodeHandler.swift in Sources */,
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				BFE42565289FE2D800FEFA49 /* TransformerData.swift in Sources */,
 				BFE42575289FE2E200FEFA49 /* DailyTaskInfo.swift in Sources */,
+				EA6502B028A149E6005647D0 /* AccountConfiguration.xcdatamodeld in Sources */,
 				BFE42579289FE2E200FEFA49 /* RecoveryTime.swift in Sources */,
 				BFE42540289E51E100FEFA49 /* ResinView.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
@@ -575,6 +582,7 @@
 				BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */,
+				EA6502AD28A142CF005647D0 /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
@@ -869,6 +877,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EA6502AB28A142CF005647D0 /* AccountConfiguration.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EA6502AC28A142CF005647D0 /* Configuration.xcdatamodel */,
+			);
+			currentVersion = EA6502AC28A142CF005647D0 /* Configuration.xcdatamodel */;
+			path = AccountConfiguration.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EABD7DAE2886B2D200B7F0FD /* Project object */;
 }
