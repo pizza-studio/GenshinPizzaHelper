@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct TestView: View {
+struct TestSectionView: View {
     @State var connectStatus: ConnectStatus = .unknown
     
-    @Binding var unsavedUid: String
-    @Binding var unsavedCookie: String
-    @Binding var unsavedServer: Server
+    @Binding var uid: String
+    @Binding var cookie: String
+    @Binding var server: Server
     
     @State private var errorInfo: String = ""
     @State private var errorMessage: String = ""
@@ -21,10 +21,10 @@ struct TestView: View {
         Section {
             Button(action: {
                 connectStatus = .testing
-                API.Features.fetchInfos(region: unsavedServer.region,
-                                        serverID: unsavedServer.id,
-                                        uid: unsavedUid,
-                                        cookie: unsavedCookie)
+                API.Features.fetchInfos(region: server.region,
+                                        serverID: server.id,
+                                        uid: uid,
+                                        cookie: cookie)
                 { result in
                     switch result {
                     case .success( _):

@@ -36,7 +36,7 @@ struct AccountDetailView: View {
                 }
             }
 
-            TestView(unsavedUid: $uid, unsavedCookie: $cookie, unsavedServer: $server)
+            TestView(uid: $uid, cookie: $cookie, server: $server)
             
             Section {
                 if #available(iOS 15.0, *) {

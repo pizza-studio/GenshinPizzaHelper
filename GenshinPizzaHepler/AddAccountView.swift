@@ -40,7 +40,7 @@ struct AddAccountView: View {
                 }
             }
 
-            TestView(unsavedUid: $unsavedUid, unsavedCookie: $unsavedCookie, unsavedServer: $unsavedServer)
+            TestView(uid: $unsavedUid, cookie: $unsavedCookie, server: $unsavedServer)
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
         .toolbar {
