@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameInfoBlock: View {
-    var userData: UserData
+    var userData: UserData?
     let backgroundColors: [Color] = [
         Color("backgroundColor1"),
         Color("backgroundColor2"),
@@ -16,7 +16,11 @@ struct GameInfoBlock: View {
     ]
 
     var body: some View {
-        MainInfoWithDetail(userData: userData)
-            .background(LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing))
+        if userData == nil {
+            ProgressView()
+        } else {
+            MainInfoWithDetail(userData: userData!)
+                .background(LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing))
+        }
     }
 }
