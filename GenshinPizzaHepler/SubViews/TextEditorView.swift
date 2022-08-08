@@ -18,7 +18,7 @@ struct TextEditorView: View {
         List {
             if showPasteButton {
                 Section {
-                    if showPasteButton {
+                    if showShortCutsLink {
                         Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
                     }
                     Button("粘贴自剪贴板") {
