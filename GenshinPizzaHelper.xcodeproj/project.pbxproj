@@ -344,6 +344,21 @@
 			path = DecodeTool;
 			sourceTree = "<group>";
 		};
+		EAAF330828A276360018EFAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
+				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
+				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
+				EA75DD0928A0BF450099E70A /* TestSectionView.swift */,
+				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
+				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
+				BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */,
+				BFE4254E289F6BA100FEFA49 /* SubViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EABD7DAD2886B2D200B7F0FD = {
 			isa = PBXGroup;
 			children = (
@@ -375,15 +390,8 @@
 			isa = PBXGroup;
 			children = (
 				EA1B76762886B89F007A5216 /* Info.plist */,
+				EAAF330828A276360018EFAB /* View */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
-				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
-				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
-				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
-				EA75DD0928A0BF450099E70A /* TestSectionView.swift */,
-				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
-				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
-				BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */,
-				BFE4254E289F6BA100FEFA49 /* SubViews */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
 				EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */,
 				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,
