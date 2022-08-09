@@ -1,0 +1,876 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C525F289E0FAD00EA224F /* RequestResult.swift */; };
+		BF6C526B289E116700EA224F /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
+		BF6C526C289E120400EA224F /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C525F289E0FAD00EA224F /* RequestResult.swift */; };
+		BF6C5272289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
+		BF6C5273289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
+		BF6C5275289E137200EA224F /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
+		BF6C5276289E137200EA224F /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
+		BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
+		BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
+		BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
+		BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
+		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
+		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
+		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
+		BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
+		BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */; };
+		BFE42540289E51E100FEFA49 /* ResinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253F289E51E100FEFA49 /* ResinView.swift */; };
+		BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
+		BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
+		BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
+		BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42546289E987800FEFA49 /* TextPlayerView.swift */; };
+		BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */; };
+		BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254A289F67F600FEFA49 /* SettingsView.swift */; };
+		BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */; };
+		BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
+		BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42551289F755E00FEFA49 /* TextEditorView.swift */; };
+		BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42553289F87C800FEFA49 /* AddAccountView.swift */; };
+		BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */; };
+		BFE42557289FA00700FEFA49 /* ResinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253F289E51E100FEFA49 /* ResinView.swift */; };
+		BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
+		BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */; };
+		BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
+		BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
+		BFE42564289FE2D800FEFA49 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42563289FE2D800FEFA49 /* TransformerData.swift */; };
+		BFE42565289FE2D800FEFA49 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42563289FE2D800FEFA49 /* TransformerData.swift */; };
+		BFE4256E289FE2E100FEFA49 /* ResinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42567289FE2E100FEFA49 /* ResinInfo.swift */; };
+		BFE4256F289FE2E100FEFA49 /* ResinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42567289FE2E100FEFA49 /* ResinInfo.swift */; };
+		BFE42570289FE2E200FEFA49 /* ExpeditionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42568289FE2E100FEFA49 /* ExpeditionInfo.swift */; };
+		BFE42571289FE2E200FEFA49 /* ExpeditionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42568289FE2E100FEFA49 /* ExpeditionInfo.swift */; };
+		BFE42572289FE2E200FEFA49 /* WeeklyBossesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42569289FE2E100FEFA49 /* WeeklyBossesInfo.swift */; };
+		BFE42573289FE2E200FEFA49 /* WeeklyBossesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42569289FE2E100FEFA49 /* WeeklyBossesInfo.swift */; };
+		BFE42574289FE2E200FEFA49 /* DailyTaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256A289FE2E100FEFA49 /* DailyTaskInfo.swift */; };
+		BFE42575289FE2E200FEFA49 /* DailyTaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256A289FE2E100FEFA49 /* DailyTaskInfo.swift */; };
+		BFE42576289FE2E200FEFA49 /* TransformerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256B289FE2E100FEFA49 /* TransformerInfo.swift */; };
+		BFE42577289FE2E200FEFA49 /* TransformerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256B289FE2E100FEFA49 /* TransformerInfo.swift */; };
+		BFE42578289FE2E200FEFA49 /* RecoveryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256C289FE2E100FEFA49 /* RecoveryTime.swift */; };
+		BFE42579289FE2E200FEFA49 /* RecoveryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256C289FE2E100FEFA49 /* RecoveryTime.swift */; };
+		BFE4257A289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256D289FE2E100FEFA49 /* HomeCoinInfo.swift */; };
+		BFE4257B289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4256D289FE2E100FEFA49 /* HomeCoinInfo.swift */; };
+		BFE4258628A0AC1600FEFA49 /* HelpSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */; };
+		BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
+		EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F91D82886B58800AE7A62 /* Assets.xcassets */; };
+		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
+		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
+		EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
+		EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */; };
+		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA6829DC28A2523800E57462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
+		EA75DD0228A095150099E70A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0128A095150099E70A /* Result.swift */; };
+		EA75DD0328A095150099E70A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0128A095150099E70A /* Result.swift */; };
+		EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */; };
+		EA75DD0628A09EC80099E70A /* ErrorCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */; };
+		EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
+		EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
+		EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
+		EA75DD0B28A0BF450099E70A /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
+		EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
+		EA7F67CA289D711200D2CE29 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA7F67C9289D711200D2CE29 /* README.md */; };
+		EA9AB148289FEEDC0092EA69 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AB146289FEEDC0092EA69 /* Error.swift */; };
+		EA9AB149289FEEDC0092EA69 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AB146289FEEDC0092EA69 /* Error.swift */; };
+		EA9AB14A289FEEDC0092EA69 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AB147289FEEDC0092EA69 /* UserData.swift */; };
+		EA9AB14B289FEEDC0092EA69 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AB147289FEEDC0092EA69 /* UserData.swift */; };
+		EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
+		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
+		EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
+		EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DCC2886B3D700B7F0FD /* icon.png */; };
+		EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
+		EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */; };
+		EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
+		EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */; };
+		EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
+		EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */; };
+		EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
+		EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */; };
+		EAF43C9228A0161C00D89787 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
+		EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
+		EAF43C9528A0163A00D89787 /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
+		EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA30F9AD2886B49300AE7BEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA30F9A02886B49200AE7BEA;
+			remoteInfo = ResinStatusWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EA30F9B32886B49300AE7BEA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BF6C525A289E02B600EA224F /* ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ios.yml; sourceTree = "<group>"; };
+		BF6C525F289E0FAD00EA224F /* RequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
+		BF6C5271289E12DA00EA224F /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
+		BF6C5274289E137200EA224F /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
+		BF6C5277289E153400EA224F /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		BF6C527A289E168A00EA224F /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
+		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
+		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
+		BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoWithDetailView.swift; sourceTree = "<group>"; };
+		BFE4253F289E51E100FEFA49 /* ResinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinView.swift; sourceTree = "<group>"; };
+		BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryTimeTextView.swift; sourceTree = "<group>"; };
+		BFE42543289E523D00FEFA49 /* TimeTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTools.swift; sourceTree = "<group>"; };
+		BFE42546289E987800FEFA49 /* TextPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPlayerView.swift; sourceTree = "<group>"; };
+		BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoView.swift; sourceTree = "<group>"; };
+		BFE4254A289F67F600FEFA49 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
+		BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPreviewerView.swift; sourceTree = "<group>"; };
+		BFE42551289F755E00FEFA49 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
+		BFE42553289F87C800FEFA49 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
+		BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoBlockView.swift; sourceTree = "<group>"; };
+		BFE42563289FE2D800FEFA49 /* TransformerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerData.swift; sourceTree = "<group>"; };
+		BFE42567289FE2E100FEFA49 /* ResinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResinInfo.swift; sourceTree = "<group>"; };
+		BFE42568289FE2E100FEFA49 /* ExpeditionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpeditionInfo.swift; sourceTree = "<group>"; };
+		BFE42569289FE2E100FEFA49 /* WeeklyBossesInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfo.swift; sourceTree = "<group>"; };
+		BFE4256A289FE2E100FEFA49 /* DailyTaskInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTaskInfo.swift; sourceTree = "<group>"; };
+		BFE4256B289FE2E100FEFA49 /* TransformerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerInfo.swift; sourceTree = "<group>"; };
+		BFE4256C289FE2E100FEFA49 /* RecoveryTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryTime.swift; sourceTree = "<group>"; };
+		BFE4256D289FE2E100FEFA49 /* HomeCoinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoinInfo.swift; sourceTree = "<group>"; };
+		BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSheetView.swift; sourceTree = "<group>"; };
+		BFE4258728A0AE2700FEFA49 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		EA0F91D82886B58800AE7A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
+		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
+		EA1B76762886B89F007A5216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EA30F99B2886B46C00AE7BEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ResinStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA30F9A32886B49200AE7BEA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		EA30F9A52886B49200AE7BEA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinStatusWidget.swift; sourceTree = "<group>"; };
+		EA30F9AC2886B49300AE7BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedgetProvider.swift; sourceTree = "<group>"; };
+		EA6829DB28A2523800E57462 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EA75DD0128A095150099E70A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeHandler.swift; sourceTree = "<group>"; };
+		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
+		EA7F67C9289D711200D2CE29 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EA9AB146289FEEDC0092EA69 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		EA9AB147289FEEDC0092EA69 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "原神披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinPizzaHeplerApp.swift; sourceTree = "<group>"; };
+		EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EABD7DCC2886B3D700B7F0FD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinInfoBar.swift; sourceTree = "<group>"; };
+		EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpeditionInfoBar.swift; sourceTree = "<group>"; };
+		EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskInfoBar.swift; sourceTree = "<group>"; };
+		EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerInfoBar.swift; sourceTree = "<group>"; };
+		EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBackgroundView.swift; sourceTree = "<group>"; };
+		EAF43C9428A0163A00D89787 /* WidgetMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMainView.swift; sourceTree = "<group>"; };
+		EAF43C9628A0166100D89787 /* WidgetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetErrorView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA30F99E2886B49200AE7BEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */,
+				EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EABD7DB32886B2D200B7F0FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF6C5258289E02B600EA224F /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				BF6C5259289E02B600EA224F /* workflows */,
+			);
+			path = .github;
+			sourceTree = "<group>";
+		};
+		BF6C5259289E02B600EA224F /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				BF6C525A289E02B600EA224F /* ios.yml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		BF6C525D289E0F2200EA224F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFE42566289FE2E100FEFA49 /* Detail */,
+				EA9AB146289FEEDC0092EA69 /* Error.swift */,
+				EA9AB147289FEEDC0092EA69 /* UserData.swift */,
+				BF6C525F289E0FAD00EA224F /* RequestResult.swift */,
+				EA75DD0128A095150099E70A /* Result.swift */,
+				BFE42562289FE2D800FEFA49 /* DecodeTool */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BF6C525E289E0F2A00EA224F /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				BF6C527A289E168A00EA224F /* HttpMethod.swift */,
+				BFE42534289E203A00FEFA49 /* FeatureAPI.swift */,
+				EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		BF6C5270289E12B500EA224F /* CommonTools */ = {
+			isa = PBXGroup;
+			children = (
+				BF6C5271289E12DA00EA224F /* md5.swift */,
+				BF6C5274289E137200EA224F /* Servers.swift */,
+				BF6C5277289E153400EA224F /* NetworkReachability.swift */,
+				BFE42543289E523D00FEFA49 /* TimeTools.swift */,
+			);
+			path = CommonTools;
+			sourceTree = "<group>";
+		};
+		BFE42537289E4FF700FEFA49 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */,
+				EAF43C9428A0163A00D89787 /* WidgetMainView.swift */,
+				EAF43C9628A0166100D89787 /* WidgetErrorView.swift */,
+				BFE42538289E500F00FEFA49 /* MainInfoView.swift */,
+				BFE4253E289E51C900FEFA49 /* MainInfoSubViews */,
+				BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */,
+				EAF43C8328A0120400D89787 /* InfoBars */,
+				BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BFE4253E289E51C900FEFA49 /* MainInfoSubViews */ = {
+			isa = PBXGroup;
+			children = (
+				BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */,
+				BFE4253F289E51E100FEFA49 /* ResinView.swift */,
+			);
+			path = MainInfoSubViews;
+			sourceTree = "<group>";
+		};
+		BFE4254E289F6BA100FEFA49 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
+				BFE42546289E987800FEFA49 /* TextPlayerView.swift */,
+				BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */,
+				BFE42551289F755E00FEFA49 /* TextEditorView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		BFE42562289FE2D800FEFA49 /* DecodeTool */ = {
+			isa = PBXGroup;
+			children = (
+				BFE42563289FE2D800FEFA49 /* TransformerData.swift */,
+			);
+			path = DecodeTool;
+			sourceTree = "<group>";
+		};
+		BFE42566289FE2E100FEFA49 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BFE42567289FE2E100FEFA49 /* ResinInfo.swift */,
+				BFE42568289FE2E100FEFA49 /* ExpeditionInfo.swift */,
+				BFE42569289FE2E100FEFA49 /* WeeklyBossesInfo.swift */,
+				BFE4256A289FE2E100FEFA49 /* DailyTaskInfo.swift */,
+				BFE4256B289FE2E100FEFA49 /* TransformerInfo.swift */,
+				BFE4256C289FE2E100FEFA49 /* RecoveryTime.swift */,
+				BFE4256D289FE2E100FEFA49 /* HomeCoinInfo.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		EA30F9A22886B49200AE7BEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA30F9A32886B49200AE7BEA /* WidgetKit.framework */,
+				EA30F9A52886B49200AE7BEA /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA30F9A72886B49200AE7BEA /* ResinStatusWidget */ = {
+			isa = PBXGroup;
+			children = (
+				BFE42537289E4FF700FEFA49 /* Views */,
+				EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */,
+				EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */,
+				EA0F91D82886B58800AE7A62 /* Assets.xcassets */,
+				EA30F9AC2886B49300AE7BEA /* Info.plist */,
+			);
+			path = ResinStatusWidget;
+			sourceTree = "<group>";
+		};
+		EABD7DAD2886B2D200B7F0FD = {
+			isa = PBXGroup;
+			children = (
+				EA6829DB28A2523800E57462 /* .gitignore */,
+				EA7F67C9289D711200D2CE29 /* README.md */,
+				EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */,
+				BF6C5258289E02B600EA224F /* .github */,
+				BF6C525E289E0F2A00EA224F /* Request */,
+				BF6C5270289E12B500EA224F /* CommonTools */,
+				BF6C525D289E0F2200EA224F /* Models */,
+				EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */,
+				EA30F9A72886B49200AE7BEA /* ResinStatusWidget */,
+				EA30F9A22886B49200AE7BEA /* Frameworks */,
+				EABD7DB72886B2D200B7F0FD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EABD7DB72886B2D200B7F0FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */,
+				EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */ = {
+			isa = PBXGroup;
+			children = (
+				EA1B76762886B89F007A5216 /* Info.plist */,
+				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
+				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
+				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
+				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
+				EA75DD0928A0BF450099E70A /* TestSectionView.swift */,
+				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
+				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
+				BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */,
+				BFE4254E289F6BA100FEFA49 /* SubViews */,
+				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
+				EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */,
+				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,
+				EABD7DBF2886B2D300B7F0FD /* Preview Content */,
+			);
+			path = GenshinPizzaHepler;
+			sourceTree = "<group>";
+		};
+		EABD7DBF2886B2D300B7F0FD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EABD7DCC2886B3D700B7F0FD /* icon.png */,
+				EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EAF43C8328A0120400D89787 /* InfoBars */ = {
+			isa = PBXGroup;
+			children = (
+				EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */,
+				EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */,
+				EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */,
+				EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */,
+			);
+			path = InfoBars;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA30F9B02886B49300AE7BEA /* Build configuration list for PBXNativeTarget "ResinStatusWidgetExtension" */;
+			buildPhases = (
+				EA30F99D2886B49200AE7BEA /* Sources */,
+				EA30F99E2886B49200AE7BEA /* Frameworks */,
+				EA30F99F2886B49200AE7BEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ResinStatusWidgetExtension;
+			productName = ResinStatusWidgetExtension;
+			productReference = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		EABD7DB52886B2D200B7F0FD /* GenshinPizzaHepler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHepler" */;
+			buildPhases = (
+				EABD7DB22886B2D200B7F0FD /* Sources */,
+				EABD7DB32886B2D200B7F0FD /* Frameworks */,
+				EABD7DB42886B2D200B7F0FD /* Resources */,
+				EA30F9B32886B49300AE7BEA /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA30F9AE2886B49300AE7BEA /* PBXTargetDependency */,
+			);
+			name = GenshinPizzaHepler;
+			productName = GenshinPizzaHepler;
+			productReference = EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EABD7DAE2886B2D200B7F0FD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					EA30F9A02886B49200AE7BEA = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					EABD7DB52886B2D200B7F0FD = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = EABD7DB12886B2D200B7F0FD /* Build configuration list for PBXProject "GenshinPizzaHelper" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EABD7DAD2886B2D200B7F0FD;
+			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EABD7DB52886B2D200B7F0FD /* GenshinPizzaHepler */,
+				EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA30F99F2886B49200AE7BEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
+				EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EABD7DB42886B2D200B7F0FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA6829DC28A2523800E57462 /* .gitignore in Resources */,
+				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
+				EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */,
+				EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA30F99D2886B49200AE7BEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
+				BF6C526C289E120400EA224F /* RequestResult.swift in Sources */,
+				BFE42573289FE2E200FEFA49 /* WeeklyBossesInfo.swift in Sources */,
+				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
+				EA9AB149289FEEDC0092EA69 /* Error.swift in Sources */,
+				EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */,
+				EA75DD0328A095150099E70A /* Result.swift in Sources */,
+				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
+				EA75DD0B28A0BF450099E70A /* TestSectionView.swift in Sources */,
+				BFE42571289FE2E200FEFA49 /* ExpeditionInfo.swift in Sources */,
+				EA75DD0628A09EC80099E70A /* ErrorCodeHandler.swift in Sources */,
+				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
+				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
+				BFE42565289FE2D800FEFA49 /* TransformerData.swift in Sources */,
+				BFE42575289FE2E200FEFA49 /* DailyTaskInfo.swift in Sources */,
+				BFE42579289FE2E200FEFA49 /* RecoveryTime.swift in Sources */,
+				BFE42540289E51E100FEFA49 /* ResinView.swift in Sources */,
+				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
+				BF6C526B289E116700EA224F /* WedgetProvider.swift in Sources */,
+				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
+				BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */,
+				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
+				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
+				BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */,
+				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
+				EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */,
+				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
+				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
+				EA9AB14B289FEEDC0092EA69 /* UserData.swift in Sources */,
+				BFE4256F289FE2E100FEFA49 /* ResinInfo.swift in Sources */,
+				BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */,
+				BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
+				BFE4257B289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */,
+				EAF43C9228A0161C00D89787 /* WidgetBackgroundView.swift in Sources */,
+				BFE42577289FE2E200FEFA49 /* TransformerInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EABD7DB22886B2D200B7F0FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE42574289FE2E200FEFA49 /* DailyTaskInfo.swift in Sources */,
+				BFE42576289FE2E200FEFA49 /* TransformerInfo.swift in Sources */,
+				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
+				BFE42578289FE2E200FEFA49 /* RecoveryTime.swift in Sources */,
+				BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */,
+				BFE4258628A0AC1600FEFA49 /* HelpSheetView.swift in Sources */,
+				BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */,
+				BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */,
+				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
+				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
+				BFE42557289FA00700FEFA49 /* ResinView.swift in Sources */,
+				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
+				BFE42570289FE2E200FEFA49 /* ExpeditionInfo.swift in Sources */,
+				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
+				BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */,
+				BFE42564289FE2D800FEFA49 /* TransformerData.swift in Sources */,
+				EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */,
+				EA75DD0228A095150099E70A /* Result.swift in Sources */,
+				BFE4257A289FE2E200FEFA49 /* HomeCoinInfo.swift in Sources */,
+				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
+				EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */,
+				EA9AB148289FEEDC0092EA69 /* Error.swift in Sources */,
+				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,
+				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
+				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
+				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
+				BFE42572289FE2E200FEFA49 /* WeeklyBossesInfo.swift in Sources */,
+				BFE4256E289FE2E100FEFA49 /* ResinInfo.swift in Sources */,
+				BF6C5260289E0FAD00EA224F /* RequestResult.swift in Sources */,
+				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
+				EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */,
+				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
+				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
+				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
+				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
+				EA9AB14A289FEEDC0092EA69 /* UserData.swift in Sources */,
+				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
+				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
+				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
+				EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */,
+				BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */,
+				BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
+				EAF43C9528A0163A00D89787 /* WidgetMainView.swift in Sources */,
+				BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA30F9AE2886B49300AE7BEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
+			targetProxy = EA30F9AD2886B49300AE7BEA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EA30F9B12886B49300AE7BEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ResinStatusWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ResinStatusWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EA30F9B22886B49300AE7BEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ResinStatusWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ResinStatusWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EABD7DC22886B2D300B7F0FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EABD7DC32886B2D300B7F0FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EABD7DC52886B2D300B7F0FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 90;
+				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "原神披萨小助手";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.5.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
+				PRODUCT_NAME = "原神披萨小助手";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EABD7DC62886B2D300B7F0FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 90;
+				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "原神披萨小助手";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.5.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
+				PRODUCT_NAME = "原神披萨小助手";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA30F9B02886B49300AE7BEA /* Build configuration list for PBXNativeTarget "ResinStatusWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA30F9B12886B49300AE7BEA /* Debug */,
+				EA30F9B22886B49300AE7BEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EABD7DB12886B2D200B7F0FD /* Build configuration list for PBXProject "GenshinPizzaHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EABD7DC22886B2D300B7F0FD /* Debug */,
+				EABD7DC32886B2D300B7F0FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHepler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EABD7DC52886B2D300B7F0FD /* Debug */,
+				EABD7DC62886B2D300B7F0FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EABD7DAE2886B2D200B7F0FD /* Project object */;
+}
