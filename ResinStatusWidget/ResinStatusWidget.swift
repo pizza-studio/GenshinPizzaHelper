@@ -39,7 +39,7 @@ struct WidgetView: Widget {
     let kind: String = "WidgetView"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectAccountIntent.self, provider: Provider()) { entry in
             WidgetViewEntryView(entry: entry)
         }
         .configurationDisplayName("原神状态")
@@ -49,16 +49,5 @@ struct WidgetView: Widget {
     }
 }
 
-struct WidgetView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            WidgetViewEntryView(entry: ResinEntry(date: Date(), result: FetchResult.defaultFetchResult))
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-                .previewDevice("iPhone 12 Pro")
-            WidgetViewEntryView(entry: ResinEntry(date: Date(), result: FetchResult.defaultFetchResult))
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-                .previewDevice("iPhone 12 Pro")
-        }
-    }
-}
+
 

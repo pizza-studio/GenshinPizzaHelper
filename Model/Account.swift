@@ -23,3 +23,16 @@ struct Account {
     
     
 }
+
+extension AccountConfiguration {
+    func fetchResult(_ completion: @escaping (FetchResult) -> ()) {
+        guard (uid != nil) || (cookie != nil) else { return }
+        
+        API.Features.fetchInfos(region: self.server.region,
+                                serverID: self.server.id,
+                                uid: self.uid!,
+                                cookie: self.cookie!)
+        { completion($0) }
+    }
+}
+

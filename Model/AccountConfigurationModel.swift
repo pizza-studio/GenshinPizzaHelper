@@ -9,15 +9,21 @@ import Foundation
 import CoreData
 
 class AccountConfigurationModel {
-
+    
     // CoreData
     
     static let shared: AccountConfigurationModel = AccountConfigurationModel()
     
     let container: NSPersistentContainer
     
-    init() {
+    private init() {
+        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.GenshinPizzaHelper")!
+        let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
+        let description = NSPersistentStoreDescription(url: storeURL)
+
         container = NSPersistentContainer(name: "AccountConfiguration")
+        container.persistentStoreDescriptions = [description]
+        
         container.loadPersistentStores { _, error in
             if let error = error {
                 print("ERROR LOADING CORE DATA. \(error.localizedDescription)")
