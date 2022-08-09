@@ -18,7 +18,7 @@
                BlueprintIdentifier = "EA30F9A02886B49200AE7BEA"
                BuildableName = "ResinStatusWidgetExtension.appex"
                BlueprintName = "ResinStatusWidgetExtension"
-               ReferencedContainer = "container:&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.xcodeproj">
+               ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -32,7 +32,7 @@
                BlueprintIdentifier = "EABD7DB52886B2D200B7F0FD"
                BuildableName = "&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.app"
                BlueprintName = "GenshinPizzaHepler"
-               ReferencedContainer = "container:&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.xcodeproj">
+               ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "EABD7DB52886B2D200B7F0FD"
             BuildableName = "&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.app"
             BlueprintName = "GenshinPizzaHepler"
-            ReferencedContainer = "container:&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.xcodeproj">
+            ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -100,7 +100,7 @@
             BlueprintIdentifier = "EABD7DB52886B2D200B7F0FD"
             BuildableName = "&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.app"
             BlueprintName = "GenshinPizzaHepler"
-            ReferencedContainer = "container:&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.xcodeproj">
+            ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
