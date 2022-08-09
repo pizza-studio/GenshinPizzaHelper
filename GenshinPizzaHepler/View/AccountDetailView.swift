@@ -67,8 +67,4 @@ struct AccountDetailView: View {
             viewModel.saveAccount()
         }
     }
-
-    func cleanAccount() {
-        viewModel.deleteAccount(account: account)
-    }
 }
