@@ -22,6 +22,7 @@ struct Account {
         self.config = config
         self.result = result
     }
+    
 }
 
 class ViewModel: ObservableObject {
@@ -41,9 +42,11 @@ class ViewModel: ObservableObject {
                 print("ERROR LOADING CORE DATA. \(error.localizedDescription)")
             }
         }
+        fetchAccount()
     }
     
     func fetchAccount() {
+        // 从Core Data更新账号信息
         let request = NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
         
         do {
@@ -56,6 +59,7 @@ class ViewModel: ObservableObject {
     }
     
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
+        // 新增账号至Core Data
         let newAccount = AccountConfiguration(context: container.viewContext)
         newAccount.name = name
         newAccount.uid = uid
@@ -84,9 +88,12 @@ class ViewModel: ObservableObject {
             let idx = accounts.firstIndex { account.config.uuid == $0.config.uuid }!
             account.config.fetchResult { result in
                 self.accounts[idx] = Account(config: account.config, result: result)
+                print("account refreshed")
             }
         }
+        
     }
+    
 }
 
 extension AccountConfiguration {

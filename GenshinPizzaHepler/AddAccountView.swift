@@ -9,8 +9,10 @@ import SwiftUI
 
 struct AddAccountView: View {
     @EnvironmentObject var viewModel: ViewModel
+    
+    @Environment(\.presentationMode) var presentationMode
 
-    @State private var unsavedName: String = "我的帐号"
+    @State private var unsavedName: String = "我的账号"
     @State private var unsavedUid: String = ""
     @State private var unsavedCookie: String = ""
     @State private var unsavedServer: Server = .china
@@ -23,7 +25,8 @@ struct AddAccountView: View {
     var body: some View {
         List {
             Section {
-                InfoEditor(title: "帐号名", content: $unsavedName)
+                InfoEditor(title: "帐号名", content: $unsavedName, placeholderText: "我的账号")
+                
                 InfoEditor(title: "UID", content: $unsavedUid, keyboardType: .numberPad)
                 NavigationLink(destination: TextEditorView(title: "Cookie", content: $unsavedCookie, showPasteButton: true, showShortCutsLink: true)) {
                     Text("Cookie")
@@ -53,8 +56,8 @@ struct AddAccountView: View {
                     if unsavedName == "" {
                         unsavedName = unsavedUid
                     }
-
                     viewModel.addAccount(name: unsavedName, uid: unsavedUid, cookie: unsavedCookie, server: unsavedServer)
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
         }
