@@ -19,6 +19,8 @@
 		<dict>
 			<key>INIntentCategory</key>
 			<string>information</string>
+			<key>INIntentDescription</key>
+			<string>为你的小组件选择显示的账号</string>
 			<key>INIntentDescriptionID</key>
 			<string>zQrKVi</string>
 			<key>INIntentEligibleForWidgets</key>
