@@ -42,26 +42,18 @@ struct Provider: IntentTimelineProvider {
 //        let uid = userDefaults.string(forKey: "uid")
 //        let cookie = userDefaults.string(forKey: "cookie")
 //        var server_name = userDefaults.string(forKey: "server") ?? "天空岛"
-        func noFetchInfoResult () {
-            let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
-            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-            completion(timeline)
-            print("Config is empty")
-            return
-        }
-        
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
         
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
-        if configs.isEmpty || (configuration.accountIntent == nil) {
-            noFetchInfoResult()
-        }
-        
-        if configuration.accountIntent == nil {
-            noFetchInfoResult()
+        if configs.isEmpty || (configuration.accountIntent == nil) || (configuration.accountIntent == nil) {
+            let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
+            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+            completion(timeline)
+            print("Config is empty")
+            return
         }
         
         let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
@@ -76,7 +68,11 @@ struct Provider: IntentTimelineProvider {
                 print("Widget Fetch succeed")
             }
         } else {
-            noFetchInfoResult()
+            let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
+            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+            completion(timeline)
+            print("Config is empty")
+            return
         }
     }
 }
