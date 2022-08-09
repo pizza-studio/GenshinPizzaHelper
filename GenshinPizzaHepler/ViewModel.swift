@@ -13,16 +13,12 @@ struct Account {
     var config: AccountConfiguration
     var result: FetchResult
     
-    var refreshedAccount: Account {
-        Account(config: config, result: config.fetchResult())
-    }
-    
     init(config: AccountConfiguration) {
         self.config = config
         self.result = .failure(.defaultStatus)
     }
     
-    private init(config: AccountConfiguration, result: FetchResult) {
+    init(config: AccountConfiguration, result: FetchResult) {
         self.config = config
         self.result = result
     }
@@ -51,11 +47,8 @@ class ViewModel: ObservableObject {
         let request = NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
         
         do {
-            accounts = []
             let accountConfigs = try container.viewContext.fetch(request)
-            accountConfigs.forEach { accountConfig in
-                accounts.append(Account(config: accountConfig))
-            }
+            accounts = accountConfigs.map { Account(config: $0)}
             refreshData()
         } catch {
             print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
@@ -68,6 +61,7 @@ class ViewModel: ObservableObject {
         newAccount.uid = uid
         newAccount.cookie = cookie
         newAccount.server = server
+        newAccount.uuid = UUID()
         saveAccount()
     }
     
@@ -86,22 +80,24 @@ class ViewModel: ObservableObject {
     }
     
     func refreshData() {
-        accounts = accounts.map { $0.refreshedAccount }
+        accounts.forEach { account in
+            let idx = accounts.firstIndex { account.config.uuid == $0.config.uuid }!
+            account.config.fetchResult { result in
+                self.accounts[idx] = Account(config: account.config, result: result)
+            }
+        }
     }
 }
 
 extension AccountConfiguration {
-    func fetchResult() -> FetchResult {
-        var result: FetchResult = .failure(.defaultStatus)
-        guard (uid != nil) || (cookie != nil) else { return .failure(.noFetchInfo) }
+    func fetchResult(_ completion: @escaping (FetchResult) -> ()) {
+        guard (uid != nil) || (cookie != nil) else { return }
         
         API.Features.fetchInfos(region: self.server.region,
                                 serverID: self.server.id,
                                 uid: self.uid!,
                                 cookie: self.cookie!)
-        { result = $0 }
-        
-        return result
+        { completion($0) }
     }
 }
 

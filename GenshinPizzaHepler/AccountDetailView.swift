@@ -37,15 +37,8 @@ struct AccountDetailView: View {
     var server: Server {
         account.config.server
     }
-    
-//    @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 1
-//    @State var accountName: String = ""
-//    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
-//    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
-//    @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
 
     @State private var isPresentingConfirm: Bool = false
-    @State private var toDelete: Bool = false
 
     var body: some View {
         
@@ -70,37 +63,36 @@ struct AccountDetailView: View {
 
             TestSectionView(uid: bindingUid, cookie: bindingCookie, server: bindingServer)
             
-            Section {
-                if #available(iOS 15.0, *) {
-                    Button(role: .destructive) {
-                        isPresentingConfirm = true
-                    } label: {
-                        Text("删除帐号")
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    }
-                    .confirmationDialog("Sure?", isPresented: $isPresentingConfirm) {
-                        Button("删除", role: .destructive) {
-                            cleanAccount()
-                        }
-                    } message: {
-                        Text("确认要删除该帐号吗？")
-                    }
-                } else {
-                    Button() {
-                        toDelete = false
-                    } label: {
-                        Text("删除帐号")
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    }
-                    .foregroundColor(.red)
-                    .padding()
-                }
-            }
+//            Section {
+//                if #available(iOS 15.0, *) {
+//                    Button(role: .destructive) {
+//                        isPresentingConfirm = true
+//                    } label: {
+//                        Text("删除帐号")
+//                            .frame(minWidth: 0, maxWidth: .infinity)
+//                    }
+//                    .confirmationDialog("Sure?", isPresented: $isPresentingConfirm) {
+//                        Button("删除", role: .destructive) {
+//                            cleanAccount()
+//                        }
+//                    } message: {
+//                        Text("确认要删除该帐号吗？")
+//                    }
+//                } else {
+//                    Button() {
+//                        toDelete = false
+//                    } label: {
+//                        Text("删除帐号")
+//                            .frame(minWidth: 0, maxWidth: .infinity)
+//                    }
+//                    .foregroundColor(.red)
+//                    .padding()
+//                }
+//            }
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
         .onDisappear {
             viewModel.saveAccount()
-            if toDelete { cleanAccount() }
         }
     }
 
