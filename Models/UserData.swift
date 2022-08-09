@@ -61,3 +61,31 @@ struct UserData: Codable {
         TransformerInfo(transformer)
     }
 }
+
+extension UserData {
+    static let defaultData = UserData(
+        // 用于测试和提供小组件预览视图的默认数据
+        currentResin: 90,
+        maxResin: 160,
+        resinRecoveryTime: "123",
+
+        finishedTaskNum: 3,
+        totalTaskNum: 4,
+        isExtraTaskRewardReceived: false,
+
+        remainResinDiscountNum: 2,
+        resinDiscountNumLimit: 3,
+
+        currentExpeditionNum: 2,
+        maxExpeditionNum: 5,
+        expeditions: [defaultExpedition],
+
+        currentHomeCoin: 1200,
+        maxHomeCoin: 2400,
+        homeCoinRecoveryTime: "123",
+        
+        transformer: TransformerData(recoveryTime: TransformerData.TransRecoveryTime(day: 4, hour: 3, minute: 0, second: 0), obtained: true)
+    )
+    
+    private static let defaultExpedition: Expedition = Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sara.png", remainedTimeStr: "0", statusStr: "Finished")
+}

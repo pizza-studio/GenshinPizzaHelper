@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AccountDetailView: View {
-    @StateObject var viewModel = ViewModel()
     @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 1
     @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
     @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
@@ -16,9 +15,6 @@ struct AccountDetailView: View {
     @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
 
     @State private var isPresentingConfirm: Bool = false
-    @State private var connectStatus: ConnectStatus = .unknown
-    @State private var errorCode: String = ""
-    @State private var errorInfo: String = ""
 
     var body: some View {
         List {
@@ -40,45 +36,8 @@ struct AccountDetailView: View {
                 }
             }
 
-            Section {
-                Button(action: {
-                    connectStatus = .testing
-                    API.Features.fetchInfos(region: server.region,
-                                            serverID: server.id,
-                                            uid: uid,
-                                            cookie: cookie)
-                    { retCode, userLoginData, errInfo in
-                        if retCode != 0 {
-                            connectStatus = .fail
-                            errorCode = String(retCode)
-                            errorInfo = errInfo ?? "Unknown Error"
-                        } else {
-                            connectStatus = .success
-                        }
-                    }
-                }) {
-                    HStack {
-                        Text("测试连接")
-                        Spacer()
-                        switch connectStatus {
-                        case .unknown:
-                            Text("")
-                        case .success:
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.green)
-                        case .fail:
-                            Image(systemName: "xmark")
-                                .foregroundColor(.red)
-                        case .testing:
-                            ProgressView()
-                        }
-                    }
-                }
-                if connectStatus == .fail {
-                    InfoPreviewer(title: "错误码", content: errorCode)
-                    InfoPreviewer(title: "错误内容", content: errorInfo)
-                }
-            }
+            TestSectionView(uid: $uid, cookie: $cookie, server: $server)
+            
             Section {
                 if #available(iOS 15.0, *) {
                     Button(role: .destructive) {
