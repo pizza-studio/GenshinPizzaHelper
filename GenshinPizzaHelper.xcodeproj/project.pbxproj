@@ -457,7 +457,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EABD7DB12886B2D200B7F0FD /* Build configuration list for PBXProject "原神披萨小助手" */;
+			buildConfigurationList = EABD7DB12886B2D200B7F0FD /* Build configuration list for PBXProject "GenshinPizzaHelper" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -852,7 +852,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EABD7DB12886B2D200B7F0FD /* Build configuration list for PBXProject "原神披萨小助手" */ = {
+		EABD7DB12886B2D200B7F0FD /* Build configuration list for PBXProject "GenshinPizzaHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EABD7DC22886B2D300B7F0FD /* Debug */,

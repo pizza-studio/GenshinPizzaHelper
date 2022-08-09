@@ -193,7 +193,7 @@ build/
 # c.f. http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
 #!Podfile.lock
-#
+#GenshinPizzaHelper.xcodeproj/project.xcworkspace/xcuserdata
 # RUBY:
 #
 # c.f. http://yehudakatz.com/2010/12/16/clarifying-the-roles-of-the-gemspec-and-gemfile/
@@ -216,4 +216,5 @@ build/
 # UNKNOWN: recommended by others, but I can't discover what these files are
 #
 
-./原神披萨小助手.xcodeproj/xcuserdata
+./GenshinPizzaHelper.xcodeproj/xcuserdata
+**/xcuserdata/
