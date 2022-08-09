@@ -28,10 +28,9 @@ struct SettingsView: View {
         NavigationView {
             List {
                 Section(header: Text("我的帐号")) {
-                    // BUG: info not automaticly update
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         NavigationLink(destination: AccountDetailView(account: $account)) {
-                            AccountInfoView(accountConfig: account.config)
+                            AccountInfoView(accountConfig: $account.config)
                         }
                     }
                     .onDelete { indexSet in
