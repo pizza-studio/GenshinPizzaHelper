@@ -51,8 +51,10 @@ class ViewModel: ObservableObject {
         
         do {
             let accountConfigs = try container.viewContext.fetch(request)
-            accounts = accountConfigs.map { Account(config: $0)}
-            refreshData()
+            if (accountConfigs != accounts.map { $0.config }) {
+                accounts = accountConfigs.map { Account(config: $0) }
+                refreshData()
+            }
         } catch {
             print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
         }
@@ -91,7 +93,6 @@ class ViewModel: ObservableObject {
                 print("account refreshed")
             }
         }
-        
     }
     
 }
@@ -107,5 +108,4 @@ extension AccountConfiguration {
         { completion($0) }
     }
 }
-
 

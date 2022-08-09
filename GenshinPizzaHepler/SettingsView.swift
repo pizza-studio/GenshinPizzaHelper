@@ -41,7 +41,7 @@ struct SettingsView: View {
                     }
                 }
                 .onAppear {
-                    viewModel.refreshData()
+                    withAnimation { viewModel.refreshData() }
                     WidgetCenter.shared.reloadAllTimelines()
                 }
                 
@@ -50,18 +50,12 @@ struct SettingsView: View {
                     Section(header: Text(account.config.name!), footer: Text("UID: "+account.config.uid!)) {
                         switch account.result {
                         case .success(let userData):
-                            if #available(iOS 15.0, *) {
-                                GameInfoBlock(userData: userData)
-                                    
-                                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                    .mask { RoundedRectangle(cornerRadius: 20, style: .continuous) }
-                                    .aspectRatio(170/364, contentMode: .fill)
-                                    .animation(.linear)
-                            } else {
-                                GameInfoBlock(userData: userData)
-                                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                    .animation(.linear)
-                            }
+                            GameInfoBlock(userData: userData)
+                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                                .aspectRatio(170/364, contentMode: .fill)
+                                .animation(.linear)
+                                .listRowBackground(Color.white.opacity(0))
                         case .failure( _) :
                             HStack {
                                 Spacer()
@@ -69,16 +63,11 @@ struct SettingsView: View {
                                     .foregroundColor(.red)
                                 Spacer()
                             }
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .aspectRatio(170/364, contentMode: .fill)
                         }
                     }
-                    .listRowBackground(Color.white.opacity(0))
-                    
-                    
                 }
-                
-                
-                
-                
             }
             .navigationTitle("原神披萨小助手")
             .toolbar {
