@@ -32,7 +32,7 @@ struct AboutView: View {
                 .font(.callout)
             HStack {
                 Link(destination: URL(string: "https://space.bilibili.com/13079935")!) {
-                    Text("Lava丨")
+                    Text("Lava")
                         .padding(.horizontal)
                         .font(.callout)
                 }
