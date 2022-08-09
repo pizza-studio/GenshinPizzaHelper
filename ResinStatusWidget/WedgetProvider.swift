@@ -42,15 +42,7 @@ struct Provider: IntentTimelineProvider {
 //        let uid = userDefaults.string(forKey: "uid")
 //        let cookie = userDefaults.string(forKey: "cookie")
 //        var server_name = userDefaults.string(forKey: "server") ?? "天空岛"
-        
-        let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
-        
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
-        
-        let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
-        if configs.isEmpty {
+        func noFetchInfoResult () {
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
@@ -58,30 +50,33 @@ struct Provider: IntentTimelineProvider {
             return
         }
         
-        print(configs.first!.uuid!, configuration)
         
-        let config = configs.first { $0.uuid == selectedAccountUUID }!
+        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        let currentDate = Date()
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
         
-
-        
-
-        config.fetchResult { result in
-            let entry = ResinEntry(date: currentDate, result: result)
-            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-            completion(timeline)
-            print("Widget Fetch succeed")
+        let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
+        if configs.isEmpty || (configuration.accountIntent == nil) {
+            noFetchInfoResult()
         }
         
-//        if hasFetchInfo {
-//            ResinLoader.fetch(uid: uid!, server_id: server.id, cookie: cookie!, region: server.region) { result in
-//                let entry = ResinEntry(date: currentDate, result: result)
-//                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-//                completion(timeline)
-//            }
-//        } else {
-//            let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
-//            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-//            completion(timeline)
-//        }
+        if configuration.accountIntent == nil {
+            noFetchInfoResult()
+        }
+        
+        let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
+        
+        print(configs.first!.uuid!, configuration)
+        
+        if let config = configs.first(where: { $0.uuid == selectedAccountUUID }) {
+            config.fetchResult { result in
+                let entry = ResinEntry(date: currentDate, result: result)
+                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                completion(timeline)
+                print("Widget Fetch succeed")
+            }
+        } else {
+            noFetchInfoResult()
+        }
     }
 }

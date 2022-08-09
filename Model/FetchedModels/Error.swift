@@ -43,7 +43,8 @@ extension FetchError {
             return "请先刷新以获取树脂状态"
             
         case .noFetchInfo:
-            return "未找到Cookie和UID"
+            return "请长按小组件选择账号"
+            
         case .cookieInvalid(let retcode, _):
             return "错误码\(retcode)：Cookie无效"
         case .unmachedAccountCookie(let retcode, _):

@@ -53,7 +53,7 @@ enum Region {
     var value: String {
         switch self {
         case .cn:
-            return "中国"
+            return "中国大陆"
         case .global:
             return "国际"
         }

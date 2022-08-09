@@ -53,7 +53,8 @@ struct AddAccountView: View {
                         isAlertShow.toggle()
                         return
                     }
-                    if unsavedName == "" {
+                    if (unsavedName == "我的账号") || (unsavedName == "") {
+//                        unsavedName = String(unsavedUid.suffix(4))
                         unsavedName = unsavedUid
                     }
                     viewModel.addAccount(name: unsavedName, uid: unsavedUid, cookie: unsavedCookie, server: unsavedServer)
