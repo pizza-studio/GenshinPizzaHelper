@@ -9,22 +9,6 @@ import Foundation
 import SwiftUI
 import CoreData
 
-struct Account {
-    var config: AccountConfiguration
-    var result: FetchResult
-    
-    init(config: AccountConfiguration) {
-        self.config = config
-        self.result = .failure(.defaultStatus)
-    }
-    
-    init(config: AccountConfiguration, result: FetchResult) {
-        self.config = config
-        self.result = result
-    }
-    
-}
-
 class ViewModel: ObservableObject {
     
     static let shared = ViewModel()
@@ -33,56 +17,36 @@ class ViewModel: ObservableObject {
 
     // CoreData
     
-    let container: NSPersistentContainer
+    let accountConfigurationModel: AccountConfigurationModel = .shared
     
     init() {
-        container = NSPersistentContainer(name: "AccountConfiguration")
-        container.loadPersistentStores { _, error in
-            if let error = error {
-                print("ERROR LOADING CORE DATA. \(error.localizedDescription)")
-            }
-        }
         fetchAccount()
     }
     
     func fetchAccount() {
         // 从Core Data更新账号信息
-        let request = NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
-        
-        do {
-            let accountConfigs = try container.viewContext.fetch(request)
-            if (accountConfigs != accounts.map { $0.config }) {
-                accounts = accountConfigs.map { Account(config: $0) }
-                refreshData()
-            }
-        } catch {
-            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+        let accountConfigs = accountConfigurationModel.fetchAccountConfigs()
+        if (accountConfigs != self.accounts.map { $0.config }) {
+            accounts = accountConfigs.map { Account(config: $0) }
+            print("account fetched")
+            refreshData()
         }
     }
     
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
         // 新增账号至Core Data
-        let newAccount = AccountConfiguration(context: container.viewContext)
-        newAccount.name = name
-        newAccount.uid = uid
-        newAccount.cookie = cookie
-        newAccount.server = server
-        newAccount.uuid = UUID()
-        saveAccount()
+        accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: server)
+        fetchAccount()
     }
     
     func deleteAccount(account: Account) {
-        container.viewContext.delete(account.config)
-        saveAccount()
+        accountConfigurationModel.deleteAccount(account: account)
+        fetchAccount()
     }
     
     func saveAccount() {
-        do {
-            try container.viewContext.save()
-            fetchAccount()
-        } catch {
-            print("ERROR SAVING. \(error.localizedDescription)")
-        }
+        accountConfigurationModel.saveAccountConfigs()
+        fetchAccount()
     }
     
     func refreshData() {

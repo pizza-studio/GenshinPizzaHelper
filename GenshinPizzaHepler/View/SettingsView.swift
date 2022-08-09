@@ -27,7 +27,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section (header: Text("我的帐号")) {
+                Section(header: Text("我的帐号")) {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         NavigationLink(destination: AccountDetailView(account: $account)) {
                             AccountInfoView(accountConfig: account.config)
@@ -74,7 +74,9 @@ struct SettingsView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        viewModel.fetchAccount()
                         viewModel.refreshData()
+                        print(accounts.first?.config.uid ?? "nil")
                         WidgetCenter.shared.reloadAllTimelines()
                     }) {
                         Image(systemName: "arrow.counterclockwise")
