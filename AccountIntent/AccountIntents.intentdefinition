@@ -41,7 +41,7 @@
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
-					<string>AccountIntent</string>
+					<string>accountIntent</string>
 					<key>INIntentParameterObjectType</key>
 					<string>AccountIntent</string>
 					<key>INIntentParameterObjectTypeNamespace</key>

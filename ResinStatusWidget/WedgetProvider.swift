@@ -43,6 +43,8 @@ struct Provider: IntentTimelineProvider {
 //        let cookie = userDefaults.string(forKey: "cookie")
 //        var server_name = userDefaults.string(forKey: "server") ?? "天空岛"
         
+        let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
+        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
@@ -52,11 +54,14 @@ struct Provider: IntentTimelineProvider {
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
+            print("Config is empty")
             return
         }
         
-        let config = configs.first { $0.uuid == UUID(uuidString: configuration.identifier!)! }!
-
+        print(configs.first!.uuid!, configuration)
+        
+        let config = configs.first { $0.uuid == selectedAccountUUID }!
+        
 
         
 
@@ -64,6 +69,7 @@ struct Provider: IntentTimelineProvider {
             let entry = ResinEntry(date: currentDate, result: result)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
+            print("Widget Fetch succeed")
         }
         
 //        if hasFetchInfo {
