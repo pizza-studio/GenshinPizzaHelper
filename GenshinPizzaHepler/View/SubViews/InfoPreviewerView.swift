@@ -33,7 +33,7 @@ struct InfoEditor: View {
             Spacer()
             TextEditor(text: $content)
                 .multilineTextAlignment(.trailing)
-                .foregroundColor(content == placeholderText ? .gray : .black)
+                .foregroundColor(content == placeholderText ? Color(UIColor.systemGray) : .primary)
                 .keyboardType(keyboardType)
                 .onTapGesture { if content == placeholderText { content = "" } }
         }
