@@ -15,7 +15,7 @@ struct MainInfoWithDetail: View {
         HStack {
             Spacer()
             MainInfo(userData: userData)
-                .padding(.trailing)
+                .padding(.vertical)
             Spacer()
             DetailInfo(userData: userData)
                 .padding(.vertical)
