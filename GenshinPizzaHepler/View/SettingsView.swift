@@ -17,12 +17,9 @@ struct SettingsView: View {
 //    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
 //    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
 //    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
-//    @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
     
-    @State var isHelpSheepShow: Bool = false
     @State var isGameBlockAvailable: Bool = true
-    
-    
+    @State private var sheetType: SettingsViewSheetType? = nil
 
     var body: some View {
         NavigationView {
@@ -41,10 +38,14 @@ struct SettingsView: View {
                     }
                 }
                 .onAppear {
+                    // 检查是否同意过用户协议
+                    let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
+                    if !isPolicyShown {
+                        sheetType = .userPolicy
+                    }
                     withAnimation { viewModel.refreshData() }
                     WidgetCenter.shared.reloadAllTimelines()
                 }
-                
                 
                 ForEach(viewModel.accounts, id: \.config.uuid) { account in
                     Section(header: Text(account.config.name!), footer: Text("UID: "+account.config.uid!)) {
@@ -85,7 +86,7 @@ struct SettingsView: View {
                 
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button(action: {
-                        isHelpSheepShow.toggle()
+                        sheetType = .help
                     }) {
                         Image(systemName: "info.circle")
                     }
@@ -93,12 +94,27 @@ struct SettingsView: View {
                 }
                 
             }
-            .sheet(isPresented: $isHelpSheepShow) {
-                HelpSheetView(isShow: $isHelpSheepShow)
+            .sheet(item: $sheetType) { item in
+                switch item {
+                case .help:
+                    HelpSheetView(sheet: $sheetType)
+                case .userPolicy:
+                    UserPolicyView(sheet: $sheetType)
+                        .allowAutoDismiss(false)
+                }
             }
             
         }
         .ignoresSafeArea()
         .navigationViewStyle(.stack)
     }
+}
+
+enum SettingsViewSheetType: Identifiable {
+    var id: Int {
+        hashValue
+    }
+
+    case help
+    case userPolicy
 }
