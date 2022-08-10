@@ -11,10 +11,20 @@ struct DailyTaskInfoBar: View {
     let dailyTaskInfo: DailyTaskInfo
     
     var isTaskRewardReceivedImage: Image {
-        dailyTaskInfo.isTaskRewardReceived ? Image(systemName: "checkmark.circle") : Image(systemName: "questionmark.circle")
+        if !dailyTaskInfo.isTaskRewardReceived {
+            if dailyTaskInfo.finishedTaskNum == dailyTaskInfo.totalTaskNum {
+                return Image(systemName: "exclamationmark.circle")
+            } else {
+                return Image(systemName: "questionmark.circle")
+            }
+        } else  {
+            return Image(systemName: "checkmark.circle")
+        }
     }
     
     var body: some View {
+        
+        
         HStack(alignment: .center ,spacing: 8) {
             Image("每日任务")
                 .resizable()
