@@ -17,6 +17,9 @@ struct HelpSheetView: View {
                     Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
                 }
                 Section {
+                    NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/policy.html")) {
+                        Text("用户协议与免责声明")
+                    }
                     NavigationLink(destination: AboutView()) {
                         Text("关于小助手")
                     }
