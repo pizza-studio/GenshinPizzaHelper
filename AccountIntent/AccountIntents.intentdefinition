@@ -37,7 +37,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>账号名称</string>
+					<string>账号</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>EnqoJ9</string>
 					<key>INIntentParameterDisplayPriority</key>
