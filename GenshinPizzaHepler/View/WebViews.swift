@@ -42,7 +42,7 @@ struct WebBroswerView: UIViewRepresentable {
 }
 
 struct UserPolicyView: View {
-    @Binding var isShow: Bool
+    @Binding var sheet: SettingsViewSheetType?
 
     var body: some View {
         NavigationView {
@@ -58,7 +58,7 @@ struct UserPolicyView: View {
                         Button("同意") {
                             UserDefaults.standard.setValue(true, forKey: "isPolicyShown")
                             UserDefaults.standard.synchronize()
-                            isShow.toggle()
+                            sheet = nil
                         }
                     }
                 }

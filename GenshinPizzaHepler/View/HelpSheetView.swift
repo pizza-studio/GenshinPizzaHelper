@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HelpSheetView: View {
-    @Binding var isShow: Bool
+    @Binding var sheet: SettingsViewSheetType?
 
     var body: some View {
         NavigationView {
@@ -26,7 +26,7 @@ struct HelpSheetView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("完成") {
-                        isShow.toggle()
+                        sheet = nil
                     }
                 }
             }

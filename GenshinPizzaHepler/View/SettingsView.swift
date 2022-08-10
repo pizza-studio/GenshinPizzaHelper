@@ -18,9 +18,8 @@ struct SettingsView: View {
 //    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
 //    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
     
-    @State var isSheetShow: Bool = false
     @State var isGameBlockAvailable: Bool = true
-    @State private var sheetType: sheetType = .userPolicy
+    @State private var sheetType: SettingsViewSheetType? = nil
 
     var body: some View {
         NavigationView {
@@ -43,7 +42,6 @@ struct SettingsView: View {
                     let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
                     if !isPolicyShown {
                         sheetType = .userPolicy
-                        isSheetShow.toggle()
                     }
                     withAnimation { viewModel.refreshData() }
                     WidgetCenter.shared.reloadAllTimelines()
@@ -89,7 +87,6 @@ struct SettingsView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button(action: {
                         sheetType = .help
-                        isSheetShow.toggle()
                     }) {
                         Image(systemName: "info.circle")
                     }
@@ -97,12 +94,13 @@ struct SettingsView: View {
                 }
                 
             }
-            .sheet(isPresented: $isSheetShow) {
-                switch sheetType {
+            .sheet(item: $sheetType) { item in
+                switch item {
                 case .help:
-                    HelpSheetView(isShow: $isSheetShow)
+                    HelpSheetView(sheet: $sheetType)
                 case .userPolicy:
-                    UserPolicyView(isShow: $isSheetShow)
+                    UserPolicyView(sheet: $sheetType)
+                        .allowAutoDismiss(false)
                 }
             }
             
@@ -112,7 +110,11 @@ struct SettingsView: View {
     }
 }
 
-private enum sheetType {
+enum SettingsViewSheetType: Identifiable {
+    var id: Int {
+        hashValue
+    }
+
     case help
     case userPolicy
 }
