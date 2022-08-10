@@ -40,8 +40,8 @@ struct SettingsView: View {
                 }
                 .onAppear {
                     // 检查是否同意过用户协议
-                    let isPrivacyShown = UserDefaults.standard.bool(forKey: "isPrivacyShown")
-                    if !isPrivacyShown {
+                    let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
+                    if !isPolicyShown {
                         sheetType = .userPolicy
                         isSheetShow.toggle()
                     }
@@ -102,7 +102,7 @@ struct SettingsView: View {
                 case .help:
                     HelpSheetView(isShow: $isSheetShow)
                 case .userPolicy:
-                    UserPolicyView()
+                    UserPolicyView(isShow: $isSheetShow)
                 }
             }
             

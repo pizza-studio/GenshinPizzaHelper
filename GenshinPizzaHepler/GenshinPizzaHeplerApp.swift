@@ -13,7 +13,10 @@ struct GenshinPizzaHeplerApp: App {
 
     init() {
         let defaultStandard = UserDefaults.standard
-        defaultStandard.setValue(false, forKey: "isPolicyShown")
+        let isPolicySaved = defaultStandard.bool(forKey: "isPolicyShown")
+        if !isPolicySaved {
+            defaultStandard.setValue(false, forKey: "isPolicyShown")
+        }
     }
     
     var body: some Scene {

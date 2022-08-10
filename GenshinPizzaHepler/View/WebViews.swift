@@ -42,6 +42,8 @@ struct WebBroswerView: UIViewRepresentable {
 }
 
 struct UserPolicyView: View {
+    @Binding var isShow: Bool
+
     var body: some View {
         NavigationView {
             WebBroswerView(url: "http://zhuaiyuwen.xyz/static/policy.html")
@@ -55,6 +57,8 @@ struct UserPolicyView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("同意") {
                             UserDefaults.standard.setValue(true, forKey: "isPolicyShown")
+                            UserDefaults.standard.synchronize()
+                            isShow.toggle()
                         }
                     }
                 }
