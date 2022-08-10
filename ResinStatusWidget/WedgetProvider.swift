@@ -38,16 +38,18 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getTimeline(for configuration: SelectAccountIntent, in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
-//        let userDefaults = UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-//        let uid = userDefaults.string(forKey: "uid")
-//        let cookie = userDefaults.string(forKey: "cookie")
-//        var server_name = userDefaults.string(forKey: "server") ?? "天空岛"
+        
+        
+        
+        
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
         
-        let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
+        let accountConfigurationModel = AccountConfigurationModel.shared
+        let configs = accountConfigurationModel.fetchAccountConfigs()
+        
         if configs.isEmpty || (configuration.accountIntent == nil) || (configuration.accountIntent == nil) {
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
@@ -75,4 +77,11 @@ struct Provider: IntentTimelineProvider {
             return
         }
     }
+}
+
+func migrateDataFromUserDefault(_ name: String, _ uid: String, _ cookie: String, _ serverRawValue: String) {
+    let accountConfigurationModel = AccountConfigurationModel.shared
+    
+    accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: Server(rawValue: serverRawValue)!)
+    
 }

@@ -21,9 +21,25 @@ class ViewModel: ObservableObject {
     
     init() {
         fetchAccount()
+        // 尝试从UserDefault迁移数据
+        if accounts.isEmpty {
+            if let userDefaults = UserDefaults(suiteName: "group.GenshinPizzaHelper") {
+                if let name = userDefaults.string(forKey: "accountName"),
+                    let uid = userDefaults.string(forKey: "uid"),
+                    let cookie = userDefaults.string(forKey: "cookie"),
+                    var serverName = userDefaults.string(forKey: "server") {
+                    if serverName == "国服" { serverName = "天空岛"}
+                    if serverName == "B服" { serverName = "世界树" }
+                    accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: Server(rawValue: serverName)!)
+                }
+            }
+        }
     }
     
     func fetchAccount() {
+        // 尝试从UserDefault迁移数据
+        
+        
         // 从Core Data更新账号信息
         let accountConfigs = accountConfigurationModel.fetchAccountConfigs()
         if (accountConfigs != self.accounts.map { $0.config }) {
