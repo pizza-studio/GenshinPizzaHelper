@@ -19,35 +19,16 @@ class ViewModel: ObservableObject {
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
     
+    
     init() {
         fetchAccount()
         // 尝试从UserDefault迁移数据
         if accounts.isEmpty {
-            if let userDefaults = UserDefaults(suiteName: "group.GenshinPizzaHelper") {
-                if let name = userDefaults.string(forKey: "accountName"),
-                    let uid = userDefaults.string(forKey: "uid"),
-                    let cookie = userDefaults.string(forKey: "cookie"),
-                    var serverName = userDefaults.string(forKey: "server") {
-                    
-                    if serverName == "国服" { serverName = "天空岛"}
-                    if serverName == "B服" { serverName = "世界树" }
-                    
-                    accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: Server(rawValue: serverName)!)
-                    fetchAccount()
-                    
-                    userDefaults.removeObject(forKey: "accountName")
-                    userDefaults.removeObject(forKey: "uid")
-                    userDefaults.removeObject(forKey: "cookie")
-                    userDefaults.removeObject(forKey: "server")
-                }
-            }
+            migrateDataFromUserDefault()
         }
     }
     
     func fetchAccount() {
-        // 尝试从UserDefault迁移数据
-        
-        
         // 从Core Data更新账号信息
         let accountConfigs = accountConfigurationModel.fetchAccountConfigs()
         if (accountConfigs != self.accounts.map { $0.config }) {
@@ -79,6 +60,32 @@ class ViewModel: ObservableObject {
             account.config.fetchResult { result in
                 self.accounts[idx] = Account(config: account.config, result: result)
                 print("account refreshed")
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    fileprivate func migrateDataFromUserDefault() {
+        // 迁移数据UserDefault
+        if let userDefaults = UserDefaults(suiteName: "group.GenshinPizzaHelper") {
+            if let name = userDefaults.string(forKey: "accountName"),
+               let uid = userDefaults.string(forKey: "uid"),
+               let cookie = userDefaults.string(forKey: "cookie"),
+               var serverName = userDefaults.string(forKey: "server") {
+                
+                if serverName == "国服" { serverName = "天空岛"}
+                if serverName == "B服" { serverName = "世界树" }
+                
+                accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: Server(rawValue: serverName)!)
+                fetchAccount()
+                
+                userDefaults.removeObject(forKey: "accountName")
+                userDefaults.removeObject(forKey: "uid")
+                userDefaults.removeObject(forKey: "cookie")
+                userDefaults.removeObject(forKey: "server")
             }
         }
     }
