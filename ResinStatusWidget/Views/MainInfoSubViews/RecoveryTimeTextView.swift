@@ -9,24 +9,13 @@ import Foundation
 import SwiftUI
 
 struct RecoveryTimeText: View {
-    let recoveryTimeDeltaInt: Int
-    var recoveryTime: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        dateFormatter.doesRelativeDateFormatting = true
-        dateFormatter.locale = Locale(identifier: "zh_CN")
-
-        let date = Date().adding(seconds: recoveryTimeDeltaInt)
-
-        return dateFormatter.string(from: date)
-    }
+    let resinInfo: ResinInfo
 
     var body: some View {
 
         VStack(alignment: .leading, spacing: 1) {
             Group{
-                Text("\(secondsToHoursMinutesSeconds(recoveryTimeDeltaInt))\n\(recoveryTime) 回满")
+                Text("\(resinInfo.recoveryTime.describeIntervalLong)\n\(resinInfo.recoveryTime.completeTimePointFromNow) 回满")
             }
             .font(.caption)
             .lineLimit(2)
