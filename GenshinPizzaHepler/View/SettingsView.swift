@@ -17,12 +17,10 @@ struct SettingsView: View {
 //    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountName: String = ""
 //    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
 //    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
-//    @AppStorage("server", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var server: Server = .china
     
-    @State var isHelpSheepShow: Bool = false
+    @State var isSheetShow: Bool = false
     @State var isGameBlockAvailable: Bool = true
-    
-    
+    @State private var sheetType: sheetType = .userPolicy
 
     var body: some View {
         NavigationView {
@@ -41,10 +39,15 @@ struct SettingsView: View {
                     }
                 }
                 .onAppear {
+                    // 检查是否同意过用户协议
+                    let isPrivacyShown = UserDefaults.standard.bool(forKey: "isPrivacyShown")
+                    if !isPrivacyShown {
+                        sheetType = .userPolicy
+                        isSheetShow.toggle()
+                    }
                     withAnimation { viewModel.refreshData() }
                     WidgetCenter.shared.reloadAllTimelines()
                 }
-                
                 
                 ForEach(viewModel.accounts, id: \.config.uuid) { account in
                     Section(header: Text(account.config.name!), footer: Text("UID: "+account.config.uid!)) {
@@ -85,7 +88,8 @@ struct SettingsView: View {
                 
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button(action: {
-                        isHelpSheepShow.toggle()
+                        sheetType = .help
+                        isSheetShow.toggle()
                     }) {
                         Image(systemName: "info.circle")
                     }
@@ -93,12 +97,22 @@ struct SettingsView: View {
                 }
                 
             }
-            .sheet(isPresented: $isHelpSheepShow) {
-                HelpSheetView(isShow: $isHelpSheepShow)
+            .sheet(isPresented: $isSheetShow) {
+                switch sheetType {
+                case .help:
+                    HelpSheetView(isShow: $isSheetShow)
+                case .userPolicy:
+                    UserPolicyView()
+                }
             }
             
         }
         .ignoresSafeArea()
         .navigationViewStyle(.stack)
     }
+}
+
+private enum sheetType {
+    case help
+    case userPolicy
 }

@@ -10,6 +10,11 @@ import SwiftUI
 @main
 struct GenshinPizzaHeplerApp: App {
     let viewModel: ViewModel = .shared
+
+    init() {
+        let defaultStandard = UserDefaults.standard
+        defaultStandard.setValue(false, forKey: "isPolicyShown")
+    }
     
     var body: some Scene {
         WindowGroup {
