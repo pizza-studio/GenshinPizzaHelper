@@ -12,7 +12,6 @@ struct GenshinPizzaHeplerApp: App {
     let viewModel: ViewModel = .shared
 
     init() {
-        viewModel.fetchAccount()
         
         let defaultStandard = UserDefaults.standard
         let isPolicySaved = defaultStandard.bool(forKey: "isPolicyShown")

@@ -28,9 +28,17 @@ class ViewModel: ObservableObject {
                     let uid = userDefaults.string(forKey: "uid"),
                     let cookie = userDefaults.string(forKey: "cookie"),
                     var serverName = userDefaults.string(forKey: "server") {
+                    
                     if serverName == "国服" { serverName = "天空岛"}
                     if serverName == "B服" { serverName = "世界树" }
+                    
                     accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: Server(rawValue: serverName)!)
+                    fetchAccount()
+                    
+                    userDefaults.removeObject(forKey: "accountName")
+                    userDefaults.removeObject(forKey: "uid")
+                    userDefaults.removeObject(forKey: "cookie")
+                    userDefaults.removeObject(forKey: "server")
                 }
             }
         }
