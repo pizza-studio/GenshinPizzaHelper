@@ -44,7 +44,7 @@ struct WebBroswerView: UIViewRepresentable {
 struct UserPolicyView: View {
     var body: some View {
         NavigationView {
-            WebBroswerView(url: "https://zhuaiyuwen.xyz")
+            WebBroswerView(url: "http://zhuaiyuwen.xyz/static/policy.html")
                 .ignoresSafeArea()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
