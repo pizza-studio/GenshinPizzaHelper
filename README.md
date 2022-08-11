@@ -27,7 +27,7 @@
 
 - iOS 16 Watch App以及小组件支持
 
-- 捐赠二维码
+- ~~捐赠二维码~~
 
 - First Tab: Rolling 显示每个账号的小组件预览
 
