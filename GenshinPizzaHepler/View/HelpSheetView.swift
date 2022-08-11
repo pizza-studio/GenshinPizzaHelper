@@ -20,6 +20,9 @@ struct HelpSheetView: View {
                     NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/policy.html")) {
                         Text("用户协议与免责声明")
                     }
+                    NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html").navigationTitle("支持我们")) {
+                        Text("支持我们")
+                    }
                     NavigationLink(destination: AboutView()) {
                         Text("关于小助手")
                     }
