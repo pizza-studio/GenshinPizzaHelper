@@ -29,9 +29,9 @@ class IntentHandler: INExtension, SelectAccountIntentHandling {
 
 extension WidgetViewConfiguration {
     init(_ intent: SelectAccountIntent, _ noticeMessage: String?) {
-        self.showAccountName = intent.showAccountName!.boolValue
-        self.showTransformer = intent.showTransformer!.boolValue
-        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: intent.noticeExpeditionWhenAllCompleted!.boolValue, expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue)!)
-        self.showWeeklyBosses = intent.showWeeklyBosses!.boolValue
+        self.showAccountName = intent.showAccountName?.boolValue ?? false
+        self.showTransformer = intent.showTransformer?.boolValue ?? true
+        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: intent.noticeExpeditionWhenAllCompleted?.boolValue ?? true, expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue) ?? .byNum)
+        self.showWeeklyBosses = intent.showWeeklyBosses?.boolValue ?? true
     }
 }
