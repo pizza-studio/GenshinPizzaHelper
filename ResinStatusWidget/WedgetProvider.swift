@@ -45,12 +45,13 @@ struct Provider: IntentTimelineProvider {
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 7, to: currentDate)!
         
         let accountConfigurationModel = AccountConfigurationModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
         
-        if configs.isEmpty || (configuration.accountIntent == nil) || (configuration.accountIntent == nil) {
+        // 如果还没设置账号
+        if configs.isEmpty {
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
@@ -58,10 +59,20 @@ struct Provider: IntentTimelineProvider {
             return
         }
         
+        // 如果有BUG导致获取不到Intent但是已经存了账号
+        if (configuration.accountIntent == nil) {
+            configs.first!.fetchResult { result in
+                let entry = ResinEntry(date: currentDate, result: result)
+                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                completion(timeline)
+                print("Widget Fetch succeed")
+        } 
+        
         let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
         
         print(configs.first!.uuid!, configuration)
         
+        // 正常情况
         if let config = configs.first(where: { $0.uuid == selectedAccountUUID }) {
             config.fetchResult { result in
                 let entry = ResinEntry(date: currentDate, result: result)
@@ -70,6 +81,7 @@ struct Provider: IntentTimelineProvider {
                 print("Widget Fetch succeed")
             }
         } else {
+            // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
