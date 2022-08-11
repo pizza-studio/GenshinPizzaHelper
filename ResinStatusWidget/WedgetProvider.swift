@@ -39,18 +39,15 @@ struct Provider: IntentTimelineProvider {
 
     func getTimeline(for configuration: SelectAccountIntent, in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
         
-        
-        
-        
-        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        let refreshDate = Calendar.current.date(byAdding: .minute, value: 8, to: currentDate)!
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 7, to: currentDate)!
         
         let accountConfigurationModel = AccountConfigurationModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
         
-        if configs.isEmpty || (configuration.accountIntent == nil) || (configuration.accountIntent == nil) {
+        // 如果还没设置账号或者获取不到账号信息，报错并要求选择账号
+        if configs.isEmpty || (configuration.accountIntent == nil) {
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
@@ -62,6 +59,7 @@ struct Provider: IntentTimelineProvider {
         
         print(configs.first!.uuid!, configuration)
         
+        // 正常情况
         if let config = configs.first(where: { $0.uuid == selectedAccountUUID }) {
             config.fetchResult { result in
                 let entry = ResinEntry(date: currentDate, result: result)
@@ -70,6 +68,7 @@ struct Provider: IntentTimelineProvider {
                 print("Widget Fetch succeed")
             }
         } else {
+            // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
@@ -77,11 +76,6 @@ struct Provider: IntentTimelineProvider {
             return
         }
     }
+        
 }
 
-func migrateDataFromUserDefault(_ name: String, _ uid: String, _ cookie: String, _ serverRawValue: String) {
-    let accountConfigurationModel = AccountConfigurationModel.shared
-    
-    accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: Server(rawValue: serverRawValue)!)
-    
-}
