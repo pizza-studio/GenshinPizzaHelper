@@ -39,10 +39,6 @@ struct Provider: IntentTimelineProvider {
 
     func getTimeline(for configuration: SelectAccountIntent, in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
         
-        
-        
-        
-        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 7, to: currentDate)!
@@ -50,23 +46,14 @@ struct Provider: IntentTimelineProvider {
         let accountConfigurationModel = AccountConfigurationModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
         
-        // 如果还没设置账号
-        if configs.isEmpty {
+        // 如果还没设置账号或者获取不到账号信息，报错并要求选择账号
+        if configs.isEmpty || (configuration.accountIntent == nil) {
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Config is empty")
             return
         }
-        
-        // 如果有BUG导致获取不到Intent但是已经存了账号
-        if (configuration.accountIntent == nil) {
-            configs.first!.fetchResult { result in
-                let entry = ResinEntry(date: currentDate, result: result)
-                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                completion(timeline)
-                print("Widget Fetch succeed")
-        } 
         
         let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
         
@@ -89,11 +76,6 @@ struct Provider: IntentTimelineProvider {
             return
         }
     }
+        
 }
 
-func migrateDataFromUserDefault(_ name: String, _ uid: String, _ cookie: String, _ serverRawValue: String) {
-    let accountConfigurationModel = AccountConfigurationModel.shared
-    
-    accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: Server(rawValue: serverRawValue)!)
-    
-}
