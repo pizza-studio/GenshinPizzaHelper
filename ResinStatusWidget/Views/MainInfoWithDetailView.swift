@@ -21,7 +21,7 @@ struct MainInfoWithDetail: View {
                 
             Spacer()
             DetailInfo(userData: userData, viewConfig: viewConfig)
-                .padding([.vertical, .trailing])
+                .padding([.vertical])
             Spacer()
         }
         
