@@ -59,13 +59,22 @@ struct Provider: IntentTimelineProvider {
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Config is empty")
-        } else if configuration.accountIntent == nil{
-            // 如果还未选择账号，默认获取第一个
-            configs.first!.fetchResult { result in
-                let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig)
+        } else if configuration.accountIntent == nil {
+            if configs.count == 1 {
+                // 如果还未选择账号且只有一个账号，默认获取第一个
+                configs.first!.fetchResult { result in
+                    let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig)
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                    print("Widget Fetch succeed")
+                }
+            } else {
+                // 如果还没设置账号，要求进入App获取账号
+                viewConfig.addMessage("请长按进入小组件设置账号信息")
+                let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
-                print("Widget Fetch succeed")
+                print("Need to choose account")
             }
         } else {
             let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
