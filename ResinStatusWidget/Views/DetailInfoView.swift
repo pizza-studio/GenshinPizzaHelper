@@ -10,16 +10,22 @@ import SwiftUI
 
 struct DetailInfo: View {
     let userData: UserData
+    let viewConfig: WidgetViewConfiguration
 
     var body: some View {
 
         VStack(alignment: .leading, spacing: 13) {
+            
             HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
-            ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo)
+            
             DailyTaskInfoBar(dailyTaskInfo: userData.dailyTaskInfo)
-            if userData.transformerInfo.obtained {
+            
+            ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
+            
+            if userData.transformerInfo.obtained && viewConfig.showTransformer {
                 TransformerInfoBar(transformerInfo: userData.transformerInfo)
             }
+            
         }
         .padding(.trailing)
     }

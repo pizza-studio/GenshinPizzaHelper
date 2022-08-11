@@ -23,7 +23,7 @@ struct GameInfoBlock: View {
                 Spacer()
             }
         } else {
-            MainInfoWithDetail(userData: userData!)
+            MainInfoWithDetail(userData: userData!, viewConfig: .defaultConfig)
                 .background(LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing))
         }
     }

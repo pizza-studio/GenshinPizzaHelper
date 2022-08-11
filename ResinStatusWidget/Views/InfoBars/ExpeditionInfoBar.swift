@@ -9,9 +9,13 @@ import SwiftUI
 
 struct ExpeditionInfoBar: View {
     let expeditionInfo: ExpeditionInfo
+    let expeditionViewConfig: ExpeditionViewConfiguration
     
+    var notice: Bool {
+        expeditionViewConfig.noticeExpeditionWhenAllCompleted ? expeditionInfo.allCompleted : expeditionInfo.anyCompleted
+    }
     var isExpeditionAllCompleteImage: Image {
-        expeditionInfo.isAllCompleted ? Image(systemName: "exclamationmark.circle") : Image(systemName: "clock.arrow.circlepath")
+        notice ? Image(systemName: "exclamationmark.circle") : Image(systemName: "clock.arrow.circlepath")
     }
     
     var body: some View {
@@ -24,15 +28,30 @@ struct ExpeditionInfoBar: View {
             isExpeditionAllCompleteImage
                 .foregroundColor(Color("textColor3"))
                 .font(.system(size: 14))
-            HStack(alignment: .lastTextBaseline, spacing:1) {
-                Text("\(expeditionInfo.currentOngoingTask)")
-                    .foregroundColor(Color("textColor3"))
-                    .font(.system(.body, design: .rounded))
-                    .minimumScaleFactor(0.2)
-                Text(" / 5")
-                    .foregroundColor(Color("textColor3"))
-                    .font(.system(.caption, design: .rounded))
-                    .minimumScaleFactor(0.2)
+            
+            if expeditionViewConfig.showExpeditionCompleteTime {
+                if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
+                    Text("\(expeditionInfo.allCompleteTime.completeTimePointFromNow) 全部完成")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.system(.body, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                } else {
+                    Text("\(expeditionInfo.nextCompleteTime.completeTimePointFromNow) 下一个完成")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.system(.body, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                }
+            } else {
+                HStack(alignment: .lastTextBaseline, spacing:1) {
+                    Text("\(expeditionInfo.currentOngoingTask)")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.system(.body, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                    Text(" / 5")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.system(.caption, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                }
             }
         }
     }

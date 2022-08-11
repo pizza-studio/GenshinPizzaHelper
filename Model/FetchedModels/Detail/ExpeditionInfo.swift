@@ -20,14 +20,14 @@ struct ExpeditionInfo {
         .count
     }
     
-    var atLeastOneComplete: Bool { currentOngoingTask < maxExpedition }
-    var atLeastOneCompleteTime: RecoveryTime {
+    var anyCompleted: Bool { currentOngoingTask < maxExpedition }
+    var nextCompleteTime: RecoveryTime {
         RecoveryTime(second: expeditions.min {
             $0.recoveryTime.second < $1.recoveryTime.second
         }?.recoveryTime.second ?? 0)
     }
     
-    var isAllCompleted: Bool { currentOngoingTask == 0 }
+    var allCompleted: Bool { currentOngoingTask == 0 }
     var allCompleteTime: RecoveryTime {
         RecoveryTime(second: expeditions.max {
             $0.recoveryTime.second < $1.recoveryTime.second

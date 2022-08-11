@@ -23,5 +23,15 @@ class IntentHandler: INExtension, SelectAccountIntentHandling {
 
         completion(collection, nil)
     }
-    
+
+}
+
+
+extension WidgetViewConfiguration {
+    init(_ intent: SelectAccountIntent, _ noticeMessage: String?) {
+        self.showAccountName = intent.showAccountName!.boolValue
+        self.showTransformer = intent.showTransformer!.boolValue
+        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: intent.noticeExpeditionWhenAllCompleted!.boolValue, showExpeditionCompleteTime: intent.showExpeditionCompleteTime!.boolValue)
+        self.showWeeklyBosses = intent.showWeeklyBosses!.boolValue
+    }
 }
