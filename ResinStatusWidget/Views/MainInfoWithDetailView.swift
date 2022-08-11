@@ -14,13 +14,16 @@ struct MainInfoWithDetail: View {
 
     var body: some View {
         HStack {
+            
             Spacer()
             MainInfo(userData: userData, viewConfig: viewConfig)
-                .padding(.vertical)
+                .padding()
+                
             Spacer()
             DetailInfo(userData: userData, viewConfig: viewConfig)
-                .padding(.vertical)
+                .padding([.vertical, .trailing])
             Spacer()
         }
+        
     }
 }

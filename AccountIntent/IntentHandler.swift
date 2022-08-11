@@ -31,7 +31,7 @@ extension WidgetViewConfiguration {
     init(_ intent: SelectAccountIntent, _ noticeMessage: String?) {
         self.showAccountName = intent.showAccountName!.boolValue
         self.showTransformer = intent.showTransformer!.boolValue
-        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: intent.noticeExpeditionWhenAllCompleted!.boolValue, showExpeditionCompleteTime: intent.showExpeditionCompleteTime!.boolValue)
+        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: intent.noticeExpeditionWhenAllCompleted!.boolValue, expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue)!)
         self.showWeeklyBosses = intent.showWeeklyBosses!.boolValue
     }
 }

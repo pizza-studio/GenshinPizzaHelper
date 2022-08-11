@@ -29,19 +29,8 @@ struct ExpeditionInfoBar: View {
                 .foregroundColor(Color("textColor3"))
                 .font(.system(size: 14))
             
-            if expeditionViewConfig.showExpeditionCompleteTime {
-                if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
-                    Text("\(expeditionInfo.allCompleteTime.completeTimePointFromNow) 全部完成")
-                        .foregroundColor(Color("textColor3"))
-                        .font(.system(.body, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                } else {
-                    Text("\(expeditionInfo.nextCompleteTime.completeTimePointFromNow) 下一个完成")
-                        .foregroundColor(Color("textColor3"))
-                        .font(.system(.body, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                }
-            } else {
+            switch expeditionViewConfig.expeditionShowingMethod {
+            case .byNum, .unknown:
                 HStack(alignment: .lastTextBaseline, spacing:1) {
                     Text("\(expeditionInfo.currentOngoingTask)")
                         .foregroundColor(Color("textColor3"))
@@ -51,6 +40,34 @@ struct ExpeditionInfoBar: View {
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.caption, design: .rounded))
                         .minimumScaleFactor(0.2)
+                }
+            case .byTimePoint:
+                if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
+                    Text("\(expeditionInfo.allCompleteTime.completeTimePointFromNow)")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.system(.body, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                        .lineLimit(1)
+                } else {
+                    Text("\(expeditionInfo.nextCompleteTime.completeTimePointFromNow)")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.system(.body, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                        .lineLimit(1)
+                }
+            case .byTimeInterval:
+                if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
+                    Text("\(expeditionInfo.allCompleteTime.describeIntervalLong)")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.system(.body, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                        .lineLimit(1)
+                } else {
+                    Text("\(expeditionInfo.nextCompleteTime.describeIntervalLong)")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.system(.body, design: .rounded))
+                        .minimumScaleFactor(0.2)
+                        .lineLimit(1)
                 }
             }
         }

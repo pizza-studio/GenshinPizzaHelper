@@ -115,6 +115,7 @@
 		EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
 		EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
 		EA7F67CA289D711200D2CE29 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA7F67C9289D711200D2CE29 /* README.md */; };
+		EA8087B728A5387B00FF78F1 /* AccountIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EAAF331128A296520018EFAB /* AccountIntents.intentdefinition */; };
 		EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
@@ -744,6 +745,7 @@
 				BFE4258628A0AC1600FEFA49 /* HelpSheetView.swift in Sources */,
 				BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */,
 				BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */,
+				EA8087B728A5387B00FF78F1 /* AccountIntents.intentdefinition in Sources */,
 				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
@@ -814,7 +816,7 @@
 				CODE_SIGN_ENTITLEMENTS = AccountIntent/AccountIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 120;
-				DEVELOPMENT_TEAM = L7XRJ79BCH;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AccountIntent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AccountIntent;
@@ -841,7 +843,7 @@
 				CODE_SIGN_ENTITLEMENTS = AccountIntent/AccountIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 120;
-				DEVELOPMENT_TEAM = L7XRJ79BCH;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AccountIntent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AccountIntent;
@@ -870,7 +872,7 @@
 				CODE_SIGN_ENTITLEMENTS = ResinStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 120;
-				DEVELOPMENT_TEAM = L7XRJ79BCH;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ResinStatusWidget;
@@ -898,7 +900,7 @@
 				CODE_SIGN_ENTITLEMENTS = ResinStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 120;
-				DEVELOPMENT_TEAM = L7XRJ79BCH;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ResinStatusWidget;
@@ -1042,7 +1044,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 120;
 				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
-				DEVELOPMENT_TEAM = L7XRJ79BCH;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
@@ -1075,7 +1077,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 120;
 				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
-				DEVELOPMENT_TEAM = L7XRJ79BCH;
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;

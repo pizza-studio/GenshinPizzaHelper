@@ -61,9 +61,7 @@ struct Provider: IntentTimelineProvider {
             print("Config is empty")
         } else if configuration.accountIntent == nil{
             // 如果还未选择账号，默认获取第一个
-            let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
-            
-            configs.first(where: { $0.uuid == selectedAccountUUID })!.fetchResult { result in
+            configs.first!.fetchResult { result in
                 let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)

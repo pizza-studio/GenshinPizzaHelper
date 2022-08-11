@@ -23,14 +23,14 @@ struct WidgetViewConfiguration {
     init() {
         showAccountName  = false
         showTransformer = true
-        expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, showExpeditionCompleteTime: false)
+        expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
         showWeeklyBosses = true
     }
     
     init(showAccountName: Bool, showTransformer: Bool, noticeExpeditionWhenAllCompleted: Bool, showExpeditionCompleteTime: Bool, showWeeklyBosses: Bool, noticeMessage: String?) {
         self.showAccountName  = showAccountName
         self.showTransformer = showTransformer
-        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: noticeExpeditionWhenAllCompleted, showExpeditionCompleteTime: showExpeditionCompleteTime)
+        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: noticeExpeditionWhenAllCompleted, expeditionShowingMethod: .byNum)
         self.showWeeklyBosses = showWeeklyBosses
     }
     
@@ -39,5 +39,6 @@ struct WidgetViewConfiguration {
 
 struct ExpeditionViewConfiguration {
     let noticeExpeditionWhenAllCompleted: Bool
-    let showExpeditionCompleteTime: Bool
+    let expeditionShowingMethod: ExpeditionShowingMethod
 }
+
