@@ -57,13 +57,13 @@ struct ExpeditionInfoBar: View {
                 }
             case .byTimeInterval:
                 if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
-                    Text("\(expeditionInfo.allCompleteTime.describeIntervalLong)")
+                    Text("\(expeditionInfo.allCompleteTime.describeIntervalShort)")
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
                         .lineLimit(1)
                 } else {
-                    Text("\(expeditionInfo.nextCompleteTime.describeIntervalLong)")
+                    Text("\(expeditionInfo.nextCompleteTime.describeIntervalShort)")
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
