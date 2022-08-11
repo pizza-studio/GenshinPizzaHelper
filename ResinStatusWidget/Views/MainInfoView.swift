@@ -12,14 +12,12 @@ struct MainInfo: View {
     let userData: UserData
 
     var body: some View {
-        let resinFull: Bool = userData.currentResin == 160
-        let homeCoinFull: Bool = userData.currentHomeCoin == 2400
-        let allExpeditionComplete: Bool = userData.currentExpeditionNum == 0
-        let transformerCompleted: Bool = userData.transformerInfo.isComplete
-        let anyToNotice: Bool = (resinFull || homeCoinFull || allExpeditionComplete || transformerCompleted)
+        
+        let transformerCompleted: Bool = userData.transformerInfo.isComplete && userData.transformerInfo.obtained
+        let anyToNotice: Bool = (userData.resinInfo.isFull || userData.homeCoinInfo.isFull || userData.expeditionInfo.isAllCompleted || transformerCompleted)
 
         VStack(spacing: 4){
-            ResinView(currentResin: userData.currentResin)
+            ResinView(resinInfo: userData.resinInfo)
 
             HStack {
                 if anyToNotice {
@@ -31,7 +29,7 @@ struct MainInfo: View {
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                 }
-                RecoveryTimeText(recoveryTimeDeltaInt: userData.resinInfo.recoveryTime.second)
+                RecoveryTimeText(resinInfo: userData.resinInfo)
             }
             .frame(maxWidth: 130)
         }

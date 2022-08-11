@@ -12,8 +12,9 @@ struct WidgetErrorView: View {
     
     var body: some View {
         Text(error.description)
-            .font(.title2)
-            .foregroundColor(.white)
+            .font(.title3)
+            .foregroundColor(.gray)
+            .padding()
     }
 }
 

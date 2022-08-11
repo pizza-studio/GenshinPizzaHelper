@@ -53,9 +53,21 @@ enum Region {
     var value: String {
         switch self {
         case .cn:
-            return "中国"
+            return "中国大陆"
         case .global:
             return "国际"
+        }
+    }
+}
+
+// extention for CoreData to save Server
+extension AccountConfiguration {
+    var server: Server {
+        get {
+            return Server(rawValue: self.serverRawValue!)!
+        }
+        set {
+            self.serverRawValue = newValue.rawValue
         }
     }
 }

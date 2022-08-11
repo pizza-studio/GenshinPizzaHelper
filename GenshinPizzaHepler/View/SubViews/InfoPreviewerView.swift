@@ -25,14 +25,18 @@ struct InfoEditor: View {
     var title: String
     @Binding var content: String
     var keyboardType: UIKeyboardType = .default
+    var placeholderText: String = ""
 
     var body: some View {
         HStack {
             Text(title)
             Spacer()
             TextEditor(text: $content)
-                .foregroundColor(.gray)
+                .multilineTextAlignment(.trailing)
+                .foregroundColor(content == placeholderText ? Color(UIColor.systemGray) : .primary)
                 .keyboardType(keyboardType)
+                .onTapGesture { if content == placeholderText { content = "" } }
         }
     }
 }
+

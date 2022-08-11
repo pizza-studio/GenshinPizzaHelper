@@ -2,14 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSUserActivityTypes</key>
+	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>SelectAccountIntent</string>
+		<string>group.GenshinPizzaHelper</string>
 	</array>
 </dict>
 </plist>

@@ -11,51 +11,51 @@ struct UserData: Codable {
     
     // 树脂
     // decode
-    let currentResin: Int
-    let maxResin: Int
-    let resinRecoveryTime: String
+    private let currentResin: Int
+    private let maxResin: Int
+    private let resinRecoveryTime: String
     
     var resinInfo: ResinInfo {
         ResinInfo(currentResin, maxResin, Int(resinRecoveryTime)!)
     }
     
     // 每日任务
-    let finishedTaskNum: Int
-    let totalTaskNum: Int
-    let isExtraTaskRewardReceived: Bool
+    private let finishedTaskNum: Int
+    private let totalTaskNum: Int
+    private let isExtraTaskRewardReceived: Bool
     
     var dailyTaskInfo: DailyTaskInfo {
         DailyTaskInfo(totalTaskNum: totalTaskNum, finishedTaskNum: finishedTaskNum, isTaskRewardReceived: isExtraTaskRewardReceived)
     }
     
     // 周本
-    let remainResinDiscountNum: Int
-    let resinDiscountNumLimit: Int
+    private let remainResinDiscountNum: Int
+    private let resinDiscountNumLimit: Int
     
     var weeklyBossesInfo: WeeklyBossesInfo {
         WeeklyBossesInfo(remainResinDiscountNum: remainResinDiscountNum, resinDiscountNumLimit: resinDiscountNumLimit)
     }
     
     // 派遣探索
-    let currentExpeditionNum: Int
-    let maxExpeditionNum: Int
-    let expeditions: [Expedition]
+    private let currentExpeditionNum: Int
+    private let maxExpeditionNum: Int
+    private let expeditions: [Expedition]
     
     var expeditionInfo: ExpeditionInfo {
         ExpeditionInfo(currentExpedition: currentExpeditionNum, maxExpedition: maxExpeditionNum, expeditions: expeditions)
     }
     
     // 洞天宝钱
-    let currentHomeCoin: Int
-    let maxHomeCoin: Int
-    let homeCoinRecoveryTime: String
+    private let currentHomeCoin: Int
+    private let maxHomeCoin: Int
+    private let homeCoinRecoveryTime: String
     
     var homeCoinInfo: HomeCoinInfo {
         HomeCoinInfo(currentHomeCoin, maxHomeCoin, Int(homeCoinRecoveryTime)!)
     }
     
     // 参量质变仪
-    let transformer: TransformerData
+    private let transformer: TransformerData
     
     var transformerInfo: TransformerInfo {
         TransformerInfo(transformer)

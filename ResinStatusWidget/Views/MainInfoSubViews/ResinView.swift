@@ -9,15 +9,10 @@ import Foundation
 import SwiftUI
 
 struct ResinView: View {
-    let currentResin: Int
-    var condensedResin: Int { currentResin/40 }
-
-    let textColors: [Color] = [
-        Color("textColor1"),
-        Color("textColor2"),
-        Color("textColor3")
-    ]
-
+    let resinInfo: ResinInfo
+    
+    var condensedResin: Int { resinInfo.currentResin / 40 }
+    
     var body: some View {
 
         VStack(spacing: 0) {
@@ -37,7 +32,7 @@ struct ResinView: View {
                     .frame(maxWidth: 100, maxHeight: 30)
             }
 
-            Text("\(currentResin)")
+            Text("\(resinInfo.currentResin)")
                 .font(.system(size: 50 , design: .rounded))
                 .fontWeight(.medium)
 //                .gradientForeground(colors: textColors)

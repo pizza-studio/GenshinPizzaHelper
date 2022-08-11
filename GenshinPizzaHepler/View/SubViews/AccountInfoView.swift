@@ -8,22 +8,19 @@
 import SwiftUI
 
 struct AccountInfoView: View {
-    var accountName:String
-    var uid: String
-    var region: String
-    var serverName: String
+    @Binding var accountConfig: AccountConfiguration
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(accountName)
+            Text(accountConfig.name!)
                 .bold()
                 .padding(.vertical)
             HStack {
-                Text("UID: \(uid)")
+                Text("UID: \(accountConfig.uid!)")
                 Spacer()
-                Text("地区: \(region)")
+                Text("地区: \(accountConfig.server.region.value)")
                 Spacer()
-                Text("服务器: \(serverName)")
+                Text("服务器: \(accountConfig.server.rawValue)")
             }
             .font(.caption)
         }

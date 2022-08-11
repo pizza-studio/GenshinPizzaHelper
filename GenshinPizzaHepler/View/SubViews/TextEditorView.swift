@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TextEditorView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
     var title: String
     var note: String? = nil
     @Binding var content: String

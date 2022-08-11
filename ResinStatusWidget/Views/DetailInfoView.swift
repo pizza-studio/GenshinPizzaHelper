@@ -17,7 +17,9 @@ struct DetailInfo: View {
             HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
             ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo)
             DailyTaskInfoBar(dailyTaskInfo: userData.dailyTaskInfo)
-            TransformerInfoBar(transformerInfo: userData.transformerInfo)
+            if userData.transformerInfo.obtained {
+                TransformerInfoBar(transformerInfo: userData.transformerInfo)
+            }
         }
         .padding(.trailing)
     }
