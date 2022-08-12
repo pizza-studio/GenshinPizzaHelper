@@ -10,10 +10,10 @@ import SwiftUI
 struct WebImage: View {
     var urlStr: String
 
-    @State var imageData: UIImage? = nil
+    @State private var imageData: UIImage? = nil
 
     var body: some View {
-        if #available(iOSApplicationExtension 15.0, *) {
+        if #available(iOS 15.0, *) {
             AsyncImage(url: URL(string: urlStr)) { image in
                 image.resizable()
             } placeholder: {
