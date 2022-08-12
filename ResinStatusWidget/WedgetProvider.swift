@@ -47,35 +47,47 @@ struct Provider: IntentTimelineProvider {
         let configs = accountConfigurationModel.fetchAccountConfigs()
         
         // 如果还没设置账号或者获取不到账号信息，报错并要求选择账号
-        if configs.isEmpty || (configuration.accountIntent == nil) {
+        if configs.isEmpty {
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Config is empty")
-            return
-        }
-        
-        let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
-        
-        print(configs.first!.uuid!, configuration)
-        
-        // 正常情况
-        if let config = configs.first(where: { $0.uuid == selectedAccountUUID }) {
-            config.fetchResult { result in
-                let entry = ResinEntry(date: currentDate, result: result)
+        } else if configuration.accountIntent == nil {
+            if configs.count == 1 {
+                configs.first!.fetchResult { result in
+                    let entry = ResinEntry(date: currentDate, result: result)
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                    print("Widget Fetch succeed")
+                }
+            } else {
+                let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
-                print("Widget Fetch succeed")
+                print("Config is empty")
             }
         } else {
-            // 有时候删除账号，Intent没更新就会出现这样的情况
-            let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
-            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-            completion(timeline)
-            print("Config is empty")
-            return
+            let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
+            
+            print(configs.first!.uuid!, configuration)
+            
+            // 正常情况
+            if let config = configs.first(where: { $0.uuid == selectedAccountUUID }) {
+                config.fetchResult { result in
+                    let entry = ResinEntry(date: currentDate, result: result)
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                    print("Widget Fetch succeed")
+                }
+            } else {
+                // 有时候删除账号，Intent没更新就会出现这样的情况
+                let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo))
+                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                completion(timeline)
+                print("Config is empty")
+                return
+            }
         }
     }
-        
 }
 
