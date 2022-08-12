@@ -33,5 +33,7 @@ extension WidgetViewConfiguration {
         self.showTransformer = intent.showTransformer?.boolValue ?? true
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: intent.noticeExpeditionWhenAllCompleted?.boolValue ?? true, expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue) ?? .byNum)
         self.showWeeklyBosses = intent.showWeeklyBosses?.boolValue ?? true
+        // TODO: 改成Intent中的东西
+        self.bgColors = ColorHandler(colorName: .purple)
     }
 }

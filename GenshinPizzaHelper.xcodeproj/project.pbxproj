@@ -45,6 +45,8 @@
 		BFFD820E28A5F64800616CE1 /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* ColorHandler.swift */; };
 		BFFD820F28A5F64800616CE1 /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* ColorHandler.swift */; };
 		BFFD821028A5F64800616CE1 /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* ColorHandler.swift */; };
+		BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
+		BFFD821228A5F9A100616CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA099FEB28A2AE660023B4AF /* StoreURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA099FEA28A2AE660023B4AF /* StoreURL.swift */; };
 		EA099FEC28A2AE660023B4AF /* StoreURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA099FEA28A2AE660023B4AF /* StoreURL.swift */; };
 		EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099FF428A2B7220023B4AF /* Intents.framework */; };
@@ -76,7 +78,6 @@
 		EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09A02728A2C45E0023B4AF /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
-		EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F91D82886B58800AE7A62 /* Assets.xcassets */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -212,7 +213,7 @@
 		EA099FF928A2B7220023B4AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA09A02328A2BA820023B4AF /* AccountIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AccountIntent.entitlements; sourceTree = "<group>"; };
 		EA09A02428A2C2E60023B4AF /* IntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
-		EA0F91D82886B58800AE7A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA0F91D82886B58800AE7A62 /* Assets(Abandoned).xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets(Abandoned).xcassets"; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
 		EA1B76762886B89F007A5216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -388,7 +389,7 @@
 				BFE42537289E4FF700FEFA49 /* Views */,
 				EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */,
 				EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */,
-				EA0F91D82886B58800AE7A62 /* Assets.xcassets */,
+				EA0F91D82886B58800AE7A62 /* Assets(Abandoned).xcassets */,
 				EA30F9AC2886B49300AE7BEA /* Info.plist */,
 				EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */,
 			);
@@ -627,6 +628,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFD821228A5F9A100616CE1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,9 +637,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
-				EA0F91D92886B58800AE7A62 /* Assets.xcassets in Resources */,
 				EA56E09728A26C0D00A64262 /* ExpeditionInfo.swift~new-ui in Resources */,
 				EA56E08F28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD in Resources */,
+				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

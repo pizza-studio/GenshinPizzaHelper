@@ -20,11 +20,14 @@ class ColorHandler {
 
 enum ColorTypes {
     case purple
+    case yellow
 
     var description: String {
         switch self {
         case .purple:
             return "刻晴紫"
+        case .yellow:
+            return "出金黄"
         }
     }
 
@@ -35,6 +38,11 @@ enum ColorTypes {
                 Color("bgColor.purple.1"),
                 Color("bgColor.purple.2"),
                 Color("bgColor.purple.3")
+            ]
+        case .yellow:
+            return [
+                Color("bgColor.yellow.1"),
+                Color("bgColor.yellow.2")
             ]
         }
     }
