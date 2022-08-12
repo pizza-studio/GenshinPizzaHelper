@@ -30,9 +30,15 @@ struct MainInfo: View {
 
             HStack {
                 if needToLoginImediately {
-                    Image(systemName: "exclamationmark.circle")
-                        .foregroundColor(Color("textColor3"))
-                        .font(.title3)
+                    if needToLoginSoon {
+                        Image("exclamationmark.circle.questionmark")
+                            .foregroundColor(Color("textColor3"))
+                            .font(.title3)
+                    } else {
+                        Image(systemName: "exclamationmark.circle")
+                            .foregroundColor(Color("textColor3"))
+                            .font(.title3)
+                    }
                 } else if needToLoginSoon {
                     Image("hourglass.circle.questionmark")
                         .foregroundColor(Color("textColor3"))
