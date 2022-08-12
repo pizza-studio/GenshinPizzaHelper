@@ -9,9 +9,9 @@ import SwiftUI
 
 struct WidgetBackgroundView: View {
     let backgroundColors: [Color] = [
-        Color("backgroundColor1"),
-        Color("backgroundColor2"),
-        Color("backgroundColor3")
+        Color("bgColor.purple.1"),
+        Color("bgColor.purple.2"),
+        Color("bgColor.purple.3")
     ]
     
     var body: some View {

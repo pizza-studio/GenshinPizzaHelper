@@ -17,6 +17,7 @@ let defaultQueryResult = (
 struct WidgetViewEntryView : View {
     let entry: Provider.Entry
     var result: FetchResult { entry.result }
+    var viewConfig: WidgetViewConfiguration { entry.viewConfig }
     
     @ViewBuilder
     var body: some View {
@@ -26,9 +27,9 @@ struct WidgetViewEntryView : View {
             
             switch result {
             case .success(let userData):
-                WidgetMainView(userData: userData)
+                WidgetMainView(userData: userData, viewConfig: viewConfig)
             case .failure(let error):
-                WidgetErrorView(error: error)
+                WidgetErrorView(error: error, message: viewConfig.noticeMessage ?? "")
             }
         }
     }
