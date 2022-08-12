@@ -24,11 +24,8 @@ struct TransformerInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isTransformerCompleteImage
-                .resizable()
-                .scaledToFit()
-                .font(Font.title.bold())
-                .overlayRingProgressBar(transformerInfo.percentage)
-                .frame(width: 15, height: 15)
+                .overlayImageWithRingProgressBar(transformerInfo.percentage)
+                .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing:1) {
                 Text(transformerInfo.recoveryTime.describeIntervalShort)

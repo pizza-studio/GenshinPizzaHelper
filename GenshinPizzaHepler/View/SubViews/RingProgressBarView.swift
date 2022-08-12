@@ -91,3 +91,13 @@ extension View {
     }
     
 }
+
+extension Image {
+    func overlayImageWithRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5) -> some View {
+        self
+            .resizable()
+            .scaledToFit()
+            .font(Font.title.bold())
+            .overlayRingProgressBar(progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgroundOpacity: backgroundOpacity)
+    }
+}

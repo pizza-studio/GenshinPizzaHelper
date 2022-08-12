@@ -26,11 +26,8 @@ struct ExpeditionInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isExpeditionAllCompleteImage
-                .resizable()
-                .scaledToFit()
-                .font(Font.title.bold())
-                .overlayRingProgressBar(expeditionViewConfig.noticeExpeditionWhenAllCompleted ? expeditionInfo.allCompletedPercentage : expeditionInfo.nextCompletePercentage)
-                .frame(width: 15, height: 15)
+                .overlayImageWithRingProgressBar(expeditionViewConfig.noticeExpeditionWhenAllCompleted ? expeditionInfo.allCompletedPercentage : expeditionInfo.nextCompletePercentage)
+                .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
             
             switch expeditionViewConfig.expeditionShowingMethod {

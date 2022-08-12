@@ -22,11 +22,8 @@ struct HomeCoinInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isHomeCoinFullImage
-                .resizable()
-                .scaledToFit()
-                .font(Font.title.bold())
-                .overlayRingProgressBar(homeCoinInfo.percentage)
-                .frame(width: 15, height: 15)
+                .overlayImageWithRingProgressBar(homeCoinInfo.percentage)
+                .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing:1) {
                 Text("\(homeCoinInfo.currentHomeCoin)")

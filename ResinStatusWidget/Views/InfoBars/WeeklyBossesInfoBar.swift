@@ -24,11 +24,8 @@ struct WeeklyBossesInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isWeeklyBossesFinishedImage
-                .resizable()
-                .scaledToFit()
-                .font(Font.title.bold())
-                .overlayRingProgressBar(1.0)
-                .frame(width: 15, height: 15)
+                .overlayImageWithRingProgressBar(1.0)
+                .frame(width: 13, height: 13)
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing:1) {
                 Text("\(weeklyBossesInfo.remainResinDiscountNum)")

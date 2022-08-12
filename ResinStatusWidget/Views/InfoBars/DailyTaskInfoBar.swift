@@ -33,11 +33,8 @@ struct DailyTaskInfoBar: View {
                 .shadow(color: .white, radius: 1)
             
             isTaskRewardReceivedImage
-                .resizable()
-                .scaledToFit()
-                .font(Font.title.bold())
-                .overlayRingProgressBar(1.0)
-                .frame(width: 15, height: 15)
+                .overlayImageWithRingProgressBar(1.0)
+                .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
             
             HStack(alignment: .lastTextBaseline, spacing:1) {
