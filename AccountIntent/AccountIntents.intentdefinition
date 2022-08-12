@@ -218,7 +218,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>所有派遣探索完成才提示</string>
+					<string>完成全部探索派遣后提示</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>UrxPco</string>
 					<key>INIntentParameterDisplayPriority</key>
