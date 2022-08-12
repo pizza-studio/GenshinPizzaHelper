@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct RingProgressBar: View {
+    @Binding var progress: CGFloat
+
     var thickness: CGFloat = 2
     var width: CGFloat = 15
     var startAngle = -90.0
-    @Binding var progress: CGFloat
+    var hasCircleBackground: Bool = true
+    var foregroundColors: [Color] = ColorHandler(colorName: .yellow).colors
+    var backgroundColor: Color = Color(.systemGray6)
 
     var body: some View {
         ZStack {
-            Circle()
-                .stroke(Color(.systemGray6), lineWidth: thickness)
+            if hasCircleBackground {
+                Circle()
+                    .stroke(backgroundColor, lineWidth: thickness)
+            }
 
             RingShape(progress: progress, thickness: thickness, startAngle: startAngle)
-                .fill(AngularGradient(gradient: Gradient(colors: ColorHandler(colorName: .yellow).colors), center: .center, startAngle: .degrees(startAngle), endAngle: .degrees(360 * 0.3 + startAngle)))
+                .fill(AngularGradient(gradient: Gradient(colors: foregroundColors), center: .center, startAngle: .degrees(startAngle), endAngle: .degrees(360 * 0.3 + startAngle)))
         }
         .frame(width: width, height: width, alignment: .center)
         .animation(Animation.easeInOut(duration: 1.0), value: progress)
