@@ -14,16 +14,14 @@ struct MainInfoWithDetail: View {
 
     var body: some View {
         HStack {
-            
             Spacer()
             MainInfo(userData: userData, viewConfig: viewConfig)
                 .padding()
-                
             Spacer()
             DetailInfo(userData: userData, viewConfig: viewConfig)
                 .padding([.vertical])
+                .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
             Spacer()
         }
-        
     }
 }
