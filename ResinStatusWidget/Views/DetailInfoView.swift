@@ -22,10 +22,13 @@ struct DetailInfo: View {
             
             ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
             
-            if userData.transformerInfo.obtained && viewConfig.showTransformer {
-                TransformerInfoBar(transformerInfo: userData.transformerInfo)
+            if !userData.weeklyBossesInfo.isComplete {
+                WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
+            } else {
+                if userData.transformerInfo.obtained && viewConfig.showTransformer {
+                    TransformerInfoBar(transformerInfo: userData.transformerInfo)
+                }
             }
-            
         }
         .padding(.trailing)
     }

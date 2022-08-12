@@ -116,6 +116,8 @@
 		EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
 		EA7F67CA289D711200D2CE29 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA7F67C9289D711200D2CE29 /* README.md */; };
 		EA8087B728A5387B00FF78F1 /* AccountIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EAAF331128A296520018EFAB /* AccountIntents.intentdefinition */; };
+		EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
+		EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
@@ -237,6 +239,7 @@
 		EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeHandler.swift; sourceTree = "<group>"; };
 		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
 		EA7F67C9289D711200D2CE29 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
 		EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountConfigurationModel.swift; sourceTree = "<group>"; };
 		EAAF330E28A27AFE0018EFAB /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EAAF331128A296520018EFAB /* AccountIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = AccountIntents.intentdefinition; sourceTree = "<group>"; };
@@ -515,6 +518,7 @@
 				EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */,
 				EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */,
 				EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */,
+				EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */,
 			);
 			path = InfoBars;
 			sourceTree = "<group>";
@@ -698,6 +702,7 @@
 				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
 				EAAF331228A2975C0018EFAB /* AccountIntents.intentdefinition in Sources */,
 				EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
+				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
 				EA56E08928A26C0D00A64262 /* RequestResult.swift in Sources */,
 				EA56E09928A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
@@ -761,6 +766,7 @@
 				EA56E09428A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */,
 				EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */,
 				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
+				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */,
 				EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */,
 				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,

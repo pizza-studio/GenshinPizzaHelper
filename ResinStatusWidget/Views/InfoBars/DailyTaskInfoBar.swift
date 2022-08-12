@@ -41,7 +41,7 @@ struct DailyTaskInfoBar: View {
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)
-                Text(" / 4")
+                Text(" / \(dailyTaskInfo.totalTaskNum)")
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
