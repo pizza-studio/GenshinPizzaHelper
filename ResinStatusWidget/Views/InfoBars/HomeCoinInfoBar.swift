@@ -11,7 +11,7 @@ struct HomeCoinInfoBar: View {
     let homeCoinInfo: HomeCoinInfo
     
     var isHomeCoinFullImage: Image {
-        (homeCoinInfo.isFull) ? Image(systemName: "exclamationmark.circle") : Image(systemName: "leaf.fill")
+        (homeCoinInfo.isFull) ? Image(systemName: "exclamationmark") : Image(systemName: "leaf.fill")
     }
     
     var body: some View {

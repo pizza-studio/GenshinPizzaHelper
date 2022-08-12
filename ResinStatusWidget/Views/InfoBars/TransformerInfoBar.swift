@@ -11,7 +11,7 @@ struct TransformerInfoBar: View {
     let transformerInfo: TransformerInfo
     
     var isTransformerCompleteImage: Image {
-        transformerInfo.isComplete ? Image(systemName: "exclamationmark.circle") : Image(systemName: "hourglass.circle")
+        transformerInfo.isComplete ? Image(systemName: "exclamationmark") : Image(systemName: "hourglass")
     }
     
     var body: some View {
@@ -24,8 +24,12 @@ struct TransformerInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isTransformerCompleteImage
+                .resizable()
+                .scaledToFit()
+                .font(Font.title.bold())
+                .overlayRingProgressBar(transformerInfo.percentage)
+                .frame(width: 15, height: 15)
                 .foregroundColor(Color("textColor3"))
-                .font(.system(size: 14))
             HStack(alignment: .lastTextBaseline, spacing:1) {
                 Text(transformerInfo.recoveryTime.describeIntervalShort)
                     .foregroundColor(Color("textColor3"))
