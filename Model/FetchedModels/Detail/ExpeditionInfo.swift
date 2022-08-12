@@ -20,12 +20,15 @@ struct ExpeditionInfo {
         .count
     }
     
+    
+    
     var anyCompleted: Bool { currentOngoingTask < maxExpedition }
     var nextCompleteTime: RecoveryTime {
         RecoveryTime(second: expeditions.min {
             $0.recoveryTime.second < $1.recoveryTime.second
         }?.recoveryTime.second ?? 0)
     }
+    var nextCompletePercentage: Double { Double(nextCompleteTime.second / 72000) }
     
     var allCompleted: Bool { currentOngoingTask == 0 }
     var allCompleteTime: RecoveryTime {
@@ -33,6 +36,7 @@ struct ExpeditionInfo {
             $0.recoveryTime.second < $1.recoveryTime.second
         }?.recoveryTime.second ?? 0)
     }
+    var allCompletedPercentage: Double { Double(allCompleteTime.second / 72000) }
 }
 
 struct Expedition: Codable {
