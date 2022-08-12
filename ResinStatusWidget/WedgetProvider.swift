@@ -51,15 +51,17 @@ struct Provider: IntentTimelineProvider {
         
         var viewConfig: WidgetViewConfiguration = .defaultConfig
         
-        
-        if configs.isEmpty {
+        guard !configs.isEmpty else {
             // 如果还没设置账号，要求进入App获取账号
             viewConfig.addMessage("请进入App设置账号信息")
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Config is empty")
-        } else if configuration.accountIntent == nil {
+            return
+        }
+        
+        guard configuration.accountIntent != nil else {
             if configs.count == 1 {
                 // 如果还未选择账号且只有一个账号，默认获取第一个
                 configs.first!.fetchResult { result in
@@ -76,28 +78,31 @@ struct Provider: IntentTimelineProvider {
                 completion(timeline)
                 print("Need to choose account")
             }
-        } else {
-            let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
-            viewConfig = WidgetViewConfiguration(configuration, nil)
-            print(configs.first!.uuid!, configuration)
-            
-            // 正常情况
-            if let config = configs.first(where: { $0.uuid == selectedAccountUUID }) {
-                config.fetchResult { result in
-                    let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    completion(timeline)
-                    print("Widget Fetch succeed")
-                }
-            } else {
-                // 有时候删除账号，Intent没更新就会出现这样的情况
-                viewConfig.addMessage("请长按进入小组件设置账号信息")
-                let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
-                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                completion(timeline)
-                print("Need to choose account")
-            }
+            return
         }
+        
+        let selectedAccountUUID = UUID(uuidString: configuration.accountIntent!.identifier!)
+        viewConfig = WidgetViewConfiguration(configuration, nil)
+        print(configs.first!.uuid!, configuration)
+        
+        // 正常情况
+        guard let config = configs.first(where: { $0.uuid == selectedAccountUUID }) else {
+            // 有时候删除账号，Intent没更新就会出现这样的情况
+            viewConfig.addMessage("请长按进入小组件重新设置账号信息")
+            let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
+            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+            completion(timeline)
+            print("Need to choose account")
+            return
+        }
+        
+        config.fetchResult { result in
+            let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig)
+            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+            completion(timeline)
+            print("Widget Fetch succeed")
+        }
+        
         
     }
         
