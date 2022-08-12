@@ -13,7 +13,7 @@ struct TransformerInfo {
     
     var isComplete: Bool { recoveryTime.isComplete }
     
-    var percentage: Double { Double(recoveryTime.second) / 604800.0 }
+    var percentage: Double { (604800.0 - Double(recoveryTime.second)) / 604800.0 }
     
     init(_ transformerData: TransformerData) {
         self.obtained = transformerData.obtained
