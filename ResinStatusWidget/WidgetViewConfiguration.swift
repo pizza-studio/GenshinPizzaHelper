@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct WidgetViewConfiguration {
     let showAccountName: Bool
@@ -13,6 +14,7 @@ struct WidgetViewConfiguration {
     let expeditionViewConfig: ExpeditionViewConfiguration
     let showWeeklyBosses: Bool
     var noticeMessage: String?
+    let bgColors: ColorHandler
     
     mutating func addMessage(_ msg: String) {
         self.noticeMessage = msg
@@ -25,6 +27,7 @@ struct WidgetViewConfiguration {
         showTransformer = true
         expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
         showWeeklyBosses = true
+        bgColors = ColorHandler(colorName: .purple)
     }
     
     init(showAccountName: Bool, showTransformer: Bool, noticeExpeditionWhenAllCompleted: Bool, showExpeditionCompleteTime: Bool, showWeeklyBosses: Bool, noticeMessage: String?) {
@@ -32,9 +35,8 @@ struct WidgetViewConfiguration {
         self.showTransformer = showTransformer
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: noticeExpeditionWhenAllCompleted, expeditionShowingMethod: .byNum)
         self.showWeeklyBosses = showWeeklyBosses
+        self.bgColors = ColorHandler(colorName: .purple)
     }
-    
-    
 }
 
 struct ExpeditionViewConfiguration {
