@@ -23,6 +23,9 @@ struct DetailInfo: View {
             ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
             
             if !userData.weeklyBossesInfo.isComplete {
+                if userData.transformerInfo.obtained && viewConfig.showTransformer && userData.transformerInfo.isComplete {
+                    TransformerInfoBar(transformerInfo: userData.transformerInfo)
+                }
                 WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
             } else {
                 if userData.transformerInfo.obtained && viewConfig.showTransformer {
