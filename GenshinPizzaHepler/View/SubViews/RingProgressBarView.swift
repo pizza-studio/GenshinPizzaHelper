@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RingProgressBar: View {
-    @Binding var progress: CGFloat
+    var progress: CGFloat
 
     var thickness: CGFloat = 2
     var width: CGFloat = 15
@@ -32,7 +32,7 @@ struct RingProgressBar: View {
     }
 }
 
-private struct RingShape: Shape {
+struct RingShape: Shape {
 
     var progress: Double
     var thickness: CGFloat
@@ -51,4 +51,43 @@ private struct RingShape: Shape {
 
         return path.strokedPath(.init(lineWidth: thickness, lineCap: .round))
     }
+}
+
+struct OverlayRingProgressBar: ViewModifier {
+    let progress: Double
+    let thickness: CGFloat
+    let startAngle: Double
+    let showBackgound: Bool
+    let backgoundOpacity: Double
+    
+    func body(content: Content) -> some View {
+        GeometryReader { g in
+            
+            // 圆内接正方形变长
+            let r = g.size.width - 0.8
+            let frameWidth = ( sqrt(2)/2 * r ) * 0.85
+            
+            ZStack {
+                if showBackgound {
+                    Circle()
+                        .stroke(lineWidth: thickness)
+                        .opacity(backgoundOpacity)
+                }
+                
+                RingShape(progress: Double(progress), thickness: thickness, startAngle: -90)
+                    
+                content
+                    .frame(width: frameWidth, height: frameWidth)
+                
+            }
+            .animation(.easeInOut(duration: 1.0), value: progress)
+        }
+    }
+}
+
+extension View {
+    func overlayRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5) -> some View {
+        modifier(OverlayRingProgressBar(progress: progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgoundOpacity: backgroundOpacity))
+    }
+    
 }

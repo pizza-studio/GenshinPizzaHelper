@@ -11,7 +11,7 @@ struct HomeCoinInfoBar: View {
     let homeCoinInfo: HomeCoinInfo
     
     var isHomeCoinFullImage: Image {
-        (homeCoinInfo.isFull) ? Image(systemName: "exclamationmark.circle") : Image(systemName: "leaf.arrow.triangle.circlepath")
+        (homeCoinInfo.isFull) ? Image(systemName: "exclamationmark.circle") : Image(systemName: "leaf")
     }
     
     var body: some View {
@@ -22,8 +22,12 @@ struct HomeCoinInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isHomeCoinFullImage
+                .resizable()
+                .scaledToFit()
+                .font(Font.title.bold())
+                .overlayRingProgressBar(0.3)
+                .frame(width: 15, height: 15)
                 .foregroundColor(Color("textColor3"))
-                .font(.system(size: 14))
             HStack(alignment: .lastTextBaseline, spacing:1) {
                 Text("\(homeCoinInfo.currentHomeCoin)")
                     .foregroundColor(Color("textColor3"))
