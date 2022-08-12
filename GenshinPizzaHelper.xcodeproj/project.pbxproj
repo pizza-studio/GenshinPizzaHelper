@@ -42,6 +42,9 @@
 		BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
 		BFE4258628A0AC1600FEFA49 /* HelpSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */; };
 		BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
+		BFFD820E28A5F64800616CE1 /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* ColorHandler.swift */; };
+		BFFD820F28A5F64800616CE1 /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* ColorHandler.swift */; };
+		BFFD821028A5F64800616CE1 /* ColorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* ColorHandler.swift */; };
 		EA099FEB28A2AE660023B4AF /* StoreURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA099FEA28A2AE660023B4AF /* StoreURL.swift */; };
 		EA099FEC28A2AE660023B4AF /* StoreURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA099FEA28A2AE660023B4AF /* StoreURL.swift */; };
 		EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099FF428A2B7220023B4AF /* Intents.framework */; };
@@ -202,6 +205,7 @@
 		BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoBlockView.swift; sourceTree = "<group>"; };
 		BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSheetView.swift; sourceTree = "<group>"; };
 		BFE4258728A0AE2700FEFA49 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		BFFD820D28A5F64800616CE1 /* ColorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHandler.swift; sourceTree = "<group>"; };
 		EA099FEA28A2AE660023B4AF /* StoreURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreURL.swift; sourceTree = "<group>"; };
 		EA099FF328A2B7220023B4AF /* AccountIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccountIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA099FF428A2B7220023B4AF /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
@@ -450,6 +454,7 @@
 				EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */,
 				EAAF330E28A27AFE0018EFAB /* Account.swift */,
 				BF6C5274289E137200EA224F /* Servers.swift */,
+				BFFD820D28A5F64800616CE1 /* ColorHandler.swift */,
 				EA56E07528A26C0D00A64262 /* FetchedModels */,
 			);
 			path = Model;
@@ -678,6 +683,7 @@
 				EA09A02728A2C45E0023B4AF /* WedgetProvider.swift in Sources */,
 				EA09A01828A2B8B80023B4AF /* RecoveryTime.swift in Sources */,
 				EA09A01928A2B8B90023B4AF /* HomeCoinInfo.swift in Sources */,
+				BFFD821028A5F64800616CE1 /* ColorHandler.swift in Sources */,
 				EA09A01128A2B8A90023B4AF /* Result.swift in Sources */,
 				EA09A01728A2B8B60023B4AF /* TransformerInfo.swift in Sources */,
 				EA09A00128A2B75C0023B4AF /* AccountIntents.intentdefinition in Sources */,
@@ -724,6 +730,7 @@
 				EA56E08728A26C0D00A64262 /* Error.swift in Sources */,
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
 				EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */,
+				BFFD820F28A5F64800616CE1 /* ColorHandler.swift in Sources */,
 				EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EA56E08D28A26C0D00A64262 /* UserData.swift in Sources */,
 				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
@@ -745,6 +752,7 @@
 				BFE4258628A0AC1600FEFA49 /* HelpSheetView.swift in Sources */,
 				BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */,
 				BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */,
+				BFFD820E28A5F64800616CE1 /* ColorHandler.swift in Sources */,
 				EA8087B728A5387B00FF78F1 /* AccountIntents.intentdefinition in Sources */,
 				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
