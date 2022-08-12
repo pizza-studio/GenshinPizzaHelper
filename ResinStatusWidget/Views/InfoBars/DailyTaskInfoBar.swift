@@ -50,6 +50,7 @@ struct DailyTaskInfoBar: View {
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.caption, design: .rounded))
                         .minimumScaleFactor(0.2)
+                        .lineLimit(1)
                 }
             }
         }
