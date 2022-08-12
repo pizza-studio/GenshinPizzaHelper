@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RingProgressBar: View {
-    var thickness: CGFloat = 10.0
-    var width: CGFloat = 20.0
+    var thickness: CGFloat = 2
+    var width: CGFloat = 15
     var startAngle = -90.0
     @Binding var progress: CGFloat
 
@@ -26,11 +26,11 @@ struct RingProgressBar: View {
     }
 }
 
-struct RingShape: Shape {
+private struct RingShape: Shape {
 
-    var progress: Double = 0.0
-    var thickness: CGFloat = 30.0
-    var startAngle: Double = -90.0
+    var progress: Double
+    var thickness: CGFloat
+    var startAngle: Double
 
     var animatableData: Double {
         get { progress }
