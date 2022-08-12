@@ -91,13 +91,11 @@ struct Provider: IntentTimelineProvider {
                 }
             } else {
                 // 有时候删除账号，Intent没更新就会出现这样的情况
-                viewConfig.addMessage("请长按小组件进入设置以选择账号")
-                configs.first(where: { $0.uuid == selectedAccountUUID })!.fetchResult { result in
-                    let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    completion(timeline)
-                    print("Widget Fetch succeed")
-                }
+                viewConfig.addMessage("请长按进入小组件设置账号信息")
+                let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
+                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                completion(timeline)
+                print("Need to choose account")
             }
         }
         
