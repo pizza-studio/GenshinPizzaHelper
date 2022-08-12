@@ -16,15 +16,25 @@ struct MainInfo: View {
         
         let transformerCompleted: Bool = userData.transformerInfo.isComplete && userData.transformerInfo.obtained && viewConfig.showTransformer
         let expeditionCompleted: Bool = viewConfig.expeditionViewConfig.noticeExpeditionWhenAllCompleted ? userData.expeditionInfo.allCompleted : userData.expeditionInfo.anyCompleted
-
-        let anyToNotice: Bool = (userData.resinInfo.isFull || userData.homeCoinInfo.isFull || expeditionCompleted || transformerCompleted)
+        let weeklyBossesNotice: Bool = viewConfig.showWeeklyBosses && !userData.weeklyBossesInfo.isComplete && Calendar.current.isDateInWeekend(Date())
+        let dailyTaskNotice: Bool = !userData.dailyTaskInfo.isTaskRewardReceived && (userData.dailyTaskInfo.finishedTaskNum == userData.dailyTaskInfo.totalTaskNum)
+        
+        // 需要马上上号
+        let needToLoginImediately: Bool = (userData.resinInfo.isFull || userData.homeCoinInfo.isFull || expeditionCompleted || transformerCompleted || dailyTaskNotice)
+        // 可以晚些再上号，包括每日任务和周本
+        let needToLoginSoon: Bool = !userData.dailyTaskInfo.isTaskRewardReceived || weeklyBossesNotice
+        
 
         VStack(spacing: 4){
             ResinView(resinInfo: userData.resinInfo)
 
             HStack {
-                if anyToNotice {
+                if needToLoginImediately {
                     Image(systemName: "exclamationmark.circle")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.title3)
+                } else if needToLoginSoon {
+                    Image("hourglass.circle.questionmark")
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                 } else {

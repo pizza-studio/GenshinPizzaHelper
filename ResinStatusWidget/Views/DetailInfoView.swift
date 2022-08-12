@@ -22,7 +22,7 @@ struct DetailInfo: View {
             
             ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
             
-            if !userData.weeklyBossesInfo.isComplete {
+            if !userData.weeklyBossesInfo.isComplete && viewConfig.showWeeklyBosses {
                 if userData.transformerInfo.obtained && viewConfig.showTransformer && userData.transformerInfo.isComplete {
                     TransformerInfoBar(transformerInfo: userData.transformerInfo)
                 }
