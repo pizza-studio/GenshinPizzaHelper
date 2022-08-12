@@ -15,7 +15,7 @@ struct HomeCoinInfo {
     
     var isFull: Bool { recoveryTime.isComplete }
     
-    var percentage: Double { Double(currentHomeCoin / maxHomeCoin) }
+    var percentage: Double { Double(currentHomeCoin) / Double(maxHomeCoin) }
     
     init(_ currentHomeCoin: Int, _ maxHomeCoin: Int, _ homeCoinRecoverySecond: Int) {
         self.currentHomeCoin = currentHomeCoin

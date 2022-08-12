@@ -25,7 +25,7 @@ struct HomeCoinInfoBar: View {
                 .resizable()
                 .scaledToFit()
                 .font(Font.title.bold())
-                .overlayRingProgressBar(0.3)
+                .overlayRingProgressBar(homeCoinInfo.percentage)
                 .frame(width: 15, height: 15)
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing:1) {

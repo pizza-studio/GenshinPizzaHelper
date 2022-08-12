@@ -18,7 +18,7 @@ struct ResinInfo {
         RecoveryTime(second: resinRecoverySecond)
     }
     
-    var percentage: Double { Double(currentResin / maxResin) }
+    var percentage: Double { Double(currentResin) / Double(maxResin) }
     
     init(_ currentResin: Int, _ maxResin: Int, _ resinRecoverySecond: Int) {
         self.currentResin = currentResin

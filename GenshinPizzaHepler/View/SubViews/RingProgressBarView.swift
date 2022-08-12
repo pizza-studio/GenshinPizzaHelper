@@ -65,7 +65,7 @@ struct OverlayRingProgressBar: ViewModifier {
             
             // 圆内接正方形变长
             let r = g.size.width - 0.8
-            let frameWidth = ( sqrt(2)/2 * r ) * 0.85
+            let frameWidth = ( sqrt(2)/2 * r ) * 0.83
             
             ZStack {
                 if showBackgound {
