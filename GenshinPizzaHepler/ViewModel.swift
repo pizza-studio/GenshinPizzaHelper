@@ -34,7 +34,7 @@ class ViewModel: ObservableObject {
     }
     
     @objc
-    private func fetchAccount() {
+    func fetchAccount() {
         // 从Core Data更新账号信息
         // 检查是否有更改，如果有更改则更新
         DispatchQueue.main.async {
@@ -90,9 +90,22 @@ class ViewModel: ObservableObject {
 extension Array where Element == Account {
     func isEqualTo(_ newAccountConfigs: [AccountConfiguration]) -> Bool {
         if (self.count == 0) && (newAccountConfigs.count == 0) { return true }
-        if self.count < newAccountConfigs.count { return false }
-        let accountUUIDs = self.map { $0.config.uuid ?? UUID() }
-        let newAccountsUUIDs = newAccountConfigs.map { $0.uuid! }
-        return (accountUUIDs.allSatisfy { newAccountsUUIDs.contains($0) } && newAccountsUUIDs.allSatisfy { accountUUIDs.contains($0) })
+        if self.count != newAccountConfigs.count { return false }
+        
+        var isSame = true
+        
+        self.forEach { account in
+            guard let uuid = account.config.uuid else { isSame = false; return }
+            guard let compareAccount = (newAccountConfigs.first { $0.uuid == uuid }) else { isSame = false; return }
+            if !(compareAccount.uid == account.config.uid && compareAccount.cookie == account.config.cookie && compareAccount.server == account.config.server) { isSame = false }
+        }
+        
+        newAccountConfigs.forEach { config in
+            guard let uuid = config.uuid else { isSame = false; return }
+            guard let compareAccount = (self.first { $0.config.uuid == uuid }?.config) else { isSame = false; return }
+            if !(compareAccount.uid == config.uid && compareAccount.cookie == config.cookie && compareAccount.server == config.server) { isSame = false }
+        }
+        
+        return isSame
     }
 }

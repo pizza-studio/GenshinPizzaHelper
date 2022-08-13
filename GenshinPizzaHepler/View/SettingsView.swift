@@ -43,6 +43,7 @@ struct SettingsView: View {
                     if !isPolicyShown {
                         sheetType = .userPolicy
                     }
+                    viewModel.fetchAccount()
                     WidgetCenter.shared.reloadAllTimelines()
                 }
                 
