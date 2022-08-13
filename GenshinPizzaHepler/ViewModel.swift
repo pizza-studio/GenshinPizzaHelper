@@ -15,14 +15,8 @@ class ViewModel: ObservableObject {
     
     static let shared = ViewModel()
     
-    @Published var accounts: [Account] = [] {
-        didSet {
-            configs = accounts.map { $0.config }
-        }
-    }
+    @Published var accounts: [Account] = []
     
-    var configs: [AccountConfiguration] = []
-    // CoreData
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
     
@@ -42,8 +36,10 @@ class ViewModel: ObservableObject {
     @objc
     private func fetchAccount() {
         // 从Core Data更新账号信息
+        // 检查是否有更改，如果有更改则更新
         DispatchQueue.main.async {
             let accountConfigs = self.accountConfigurationModel.fetchAccountConfigs()
+
             if !self.accounts.isEqualTo(accountConfigs) {
                 self.accounts = accountConfigs.map { Account(config: $0) }
                 self.refreshData()
@@ -51,6 +47,14 @@ class ViewModel: ObservableObject {
             }
         }
         
+    }
+    
+    func forceFetchAccount() {
+        // 强制从云端Core Data更新账号信息
+        accounts = []
+        accounts = accountConfigurationModel.fetchAccountConfigs().map { Account(config: $0) }
+        self.refreshData()
+        print("force account fetched")
     }
     
     func addAccount(name: String, uid: String, cookie: String, server: Server) {

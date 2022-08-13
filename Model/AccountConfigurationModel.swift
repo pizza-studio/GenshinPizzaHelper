@@ -33,6 +33,9 @@ class AccountConfigurationModel {
             }
         }
         
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        
         container.viewContext.refreshAllObjects()
         
         // 尝试从UserDefault迁移数据
@@ -44,6 +47,7 @@ class AccountConfigurationModel {
     
     func fetchAccountConfigs() -> [AccountConfiguration] {
         // 从Core Data更新账号信息
+        container.viewContext.refreshAllObjects()
         let request = NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
         
         do {
