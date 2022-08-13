@@ -39,11 +39,14 @@ struct AccountDetailView: View {
     }
 
     @State private var isPresentingConfirm: Bool = false
+    @State private var isSheetShow: Bool = false
 
     var body: some View {
         
         List {
-            Section {
+            Section(header: Text("帐号配置"), footer: Button("支持我们") {
+                isSheetShow.toggle()
+            }) {
                 NavigationLink(destination: TextFieldEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: bindingName)) {
                     InfoPreviewer(title: "帐号名", content: name)
                 }
@@ -65,6 +68,13 @@ struct AccountDetailView: View {
         .navigationBarTitle("帐号信息", displayMode: .inline)
         .onDisappear {
             viewModel.saveAccount()
+        }
+        .sheet(isPresented: $isSheetShow) {
+            NavigationView {
+                WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html")
+                    .navigationTitle("支持我们")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 }
