@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 import CoreData
 
-class ViewModel: ObservableObject {
+@MainActor class ViewModel: ObservableObject {
     
     static let shared = ViewModel()
     
-    @Published var accounts: [Account] = []
+    @Published var accounts: [Account] = [] 
 
     // CoreData
     
@@ -22,13 +22,18 @@ class ViewModel: ObservableObject {
     
     init() {
         fetchAccount()
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchAccount),
+                                               name: .NSPersistentStoreRemoteChange, object: accountConfigurationModel.container.persistentStoreCoordinator)
     }
-    
+
+    @objc
     func fetchAccount() {
         // 从Core Data更新账号信息
         let accountConfigs = accountConfigurationModel.fetchAccountConfigs()
         if (accountConfigs != self.accounts.map { $0.config }) {
-            accounts = accountConfigs.map { Account(config: $0) }
+            DispatchQueue.main.async {
+                self.accounts = accountConfigs.map { Account(config: $0) }
+            }
             print("account fetched")
             refreshData()
         }

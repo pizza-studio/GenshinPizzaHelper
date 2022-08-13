@@ -21,14 +21,19 @@ class AccountConfigurationModel {
         let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
 
         container = NSPersistentCloudKitContainer(name: "AccountConfiguration")
-        container.persistentStoreDescriptions.first!.url = storeURL
-        container.persistentStoreDescriptions.first!.cloudKitContainerOptions = .init(containerIdentifier: "iCloud.com.Canglong.GenshinPizzaHepler")
+        let description = container.persistentStoreDescriptions.first!
+        description.url = storeURL
+        
+        description.cloudKitContainerOptions = .init(containerIdentifier: "iCloud.com.Canglong.GenshinPizzaHepler")
+        description.setOption(true as NSNumber, forKey: "NSPersistentStoreRemoteChangeNotificationOptionKey")
         
         container.loadPersistentStores { _, error in
             if let error = error {
                 print("ERROR LOADING CORE DATA. \(error.localizedDescription)")
             }
         }
+        
+        container.viewContext.refreshAllObjects()
         
         // 尝试从UserDefault迁移数据
         if fetchAccountConfigs().isEmpty {
