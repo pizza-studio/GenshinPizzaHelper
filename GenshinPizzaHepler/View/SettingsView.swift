@@ -75,7 +75,6 @@ struct SettingsView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        viewModel.fetchAccount()
                         viewModel.refreshData()
                         print(accounts.first?.config.uid ?? "nil")
                         WidgetCenter.shared.reloadAllTimelines()

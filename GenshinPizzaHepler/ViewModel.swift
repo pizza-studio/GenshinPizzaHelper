@@ -8,35 +8,49 @@
 import Foundation
 import SwiftUI
 import CoreData
+import StoreKit
 
-@MainActor class ViewModel: ObservableObject {
+@MainActor
+class ViewModel: ObservableObject {
     
     static let shared = ViewModel()
     
-    @Published var accounts: [Account] = [] 
-
+    @Published var accounts: [Account] = [] {
+        didSet {
+            configs = accounts.map { $0.config }
+        }
+    }
+    
+    var configs: [AccountConfiguration] = []
     // CoreData
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
     
     
     init() {
-        fetchAccount()
-        NotificationCenter.default.addObserver(self, selector: #selector(fetchAccount),
-                                               name: .NSPersistentStoreRemoteChange, object: accountConfigurationModel.container.persistentStoreCoordinator)
+        self.fetchAccount()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(fetchAccount),
+                                               name: .NSPersistentStoreRemoteChange,
+                                               object: accountConfigurationModel.container.persistentStoreCoordinator)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(fetchAccount),
+//                                               name: NSNotification.Name.NSPersistentStoreCoordinatorStoresDidChange,
+//                                               object: accountConfigurationModel.container.persistentStoreCoordinator)
     }
-
+    
     @objc
-    func fetchAccount() {
+    private func fetchAccount() {
         // 从Core Data更新账号信息
-        let accountConfigs = accountConfigurationModel.fetchAccountConfigs()
-        if (accountConfigs != self.accounts.map { $0.config }) {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            let accountConfigs = self.accountConfigurationModel.fetchAccountConfigs()
+            if !self.accounts.isEqualTo(accountConfigs) {
                 self.accounts = accountConfigs.map { Account(config: $0) }
+                self.refreshData()
+                print("account fetched")
             }
-            print("account fetched")
-            refreshData()
         }
+        
     }
     
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
@@ -55,6 +69,7 @@ import CoreData
         fetchAccount()
     }
     
+    
     func refreshData() {
         accounts.forEach { account in
             let idx = accounts.firstIndex { account.config.uuid == $0.config.uuid }!
@@ -68,3 +83,12 @@ import CoreData
 }
 
 
+extension Array where Element == Account {
+    func isEqualTo(_ newAccountConfigs: [AccountConfiguration]) -> Bool {
+        if (self.count == 0) && (newAccountConfigs.count == 0) { return true }
+        if self.count < newAccountConfigs.count { return false }
+        let accountUUIDs = self.map { $0.config.uuid! }
+        let newAccountsUUIDs = newAccountConfigs.map { $0.uuid! }
+        return (accountUUIDs.allSatisfy { newAccountsUUIDs.contains($0) } && newAccountsUUIDs.allSatisfy { accountUUIDs.contains($0) })
+    }
+}
