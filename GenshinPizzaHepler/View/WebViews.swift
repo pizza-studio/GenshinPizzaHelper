@@ -62,6 +62,8 @@ struct UserPolicyView: View {
                         }
                     }
                 }
+                .navigationTitle("用户协议")
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

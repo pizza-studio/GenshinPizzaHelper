@@ -10,15 +10,17 @@ import SwiftUI
 
 struct MainInfoWithDetail: View {
     let userData: UserData
+    let viewConfig: WidgetViewConfiguration
 
     var body: some View {
         HStack {
             Spacer()
-            MainInfo(userData: userData)
-                .padding(.vertical)
+            MainInfo(userData: userData, viewConfig: viewConfig)
+                .padding()
             Spacer()
-            DetailInfo(userData: userData)
-                .padding(.vertical)
+            DetailInfo(userData: userData, viewConfig: viewConfig)
+                .padding([.vertical])
+                .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
             Spacer()
         }
     }

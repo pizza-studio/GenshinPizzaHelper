@@ -59,6 +59,9 @@ struct AddAccountView: View {
                     }
                     viewModel.addAccount(name: unsavedName, uid: unsavedUid, cookie: unsavedCookie, server: unsavedServer)
                     presentationMode.wrappedValue.dismiss()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        ReviewHandler.requestReview()
+                    }
                 }
             }
         }

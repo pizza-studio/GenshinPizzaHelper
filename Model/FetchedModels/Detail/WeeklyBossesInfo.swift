@@ -11,5 +11,5 @@ struct WeeklyBossesInfo {
     let remainResinDiscountNum: Int
     let resinDiscountNumLimit: Int
     
-    var isComplete: Bool { resinDiscountNumLimit == remainResinDiscountNum }
+    var isComplete: Bool { remainResinDiscountNum == 0 }
 }

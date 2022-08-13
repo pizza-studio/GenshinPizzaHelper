@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WidgetErrorView: View {
     let error: FetchError
+    let message: String
     
     var body: some View {
         Text(error.description)
@@ -18,8 +19,3 @@ struct WidgetErrorView: View {
     }
 }
 
-struct WidgetErrorView_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetErrorView(error: .unknownError(1, "2"))
-    }
-}
