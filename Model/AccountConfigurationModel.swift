@@ -14,15 +14,15 @@ class AccountConfigurationModel {
     
     static let shared: AccountConfigurationModel = AccountConfigurationModel()
     
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer
     
     private init() {
         let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.GenshinPizzaHelper")!
         let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
-        let description = NSPersistentStoreDescription(url: storeURL)
 
-        container = NSPersistentContainer(name: "AccountConfiguration")
-        container.persistentStoreDescriptions = [description]
+        container = NSPersistentCloudKitContainer(name: "AccountConfiguration")
+        container.persistentStoreDescriptions.first!.url = storeURL
+        container.persistentStoreDescriptions.first!.cloudKitContainerOptions = .init(containerIdentifier: "iCloud.com.Canglong.GenshinPizzaHepler")
         
         container.loadPersistentStores { _, error in
             if let error = error {
