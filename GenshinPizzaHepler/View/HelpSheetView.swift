@@ -29,6 +29,9 @@ struct HelpSheetView: View {
                     }
                 }
                 Section {
+                    NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/faq.html").navigationTitle("FAQ")) {
+                        Text("常见使用问题（FAQ）")
+                    }
                     NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/policy.html").navigationTitle("用户协议")) {
                         Text("用户协议与免责声明")
                     }
