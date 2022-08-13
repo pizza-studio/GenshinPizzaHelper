@@ -13,12 +13,12 @@ struct DailyTaskInfoBar: View {
     var isTaskRewardReceivedImage: Image {
         if !dailyTaskInfo.isTaskRewardReceived {
             if dailyTaskInfo.finishedTaskNum == dailyTaskInfo.totalTaskNum {
-                return Image(systemName: "exclamationmark.circle")
+                return Image(systemName: "exclamationmark")
             } else {
-                return Image(systemName: "questionmark.circle")
+                return Image(systemName: "questionmark")
             }
         } else  {
-            return Image(systemName: "checkmark.circle")
+            return Image(systemName: "checkmark")
         }
     }
     
@@ -33,8 +33,9 @@ struct DailyTaskInfoBar: View {
                 .shadow(color: .white, radius: 1)
             
             isTaskRewardReceivedImage
+                .overlayImageWithRingProgressBar(1.0)
+                .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
-                .font(.system(size: 14))
             
             HStack(alignment: .lastTextBaseline, spacing:1) {
                 Text("\(dailyTaskInfo.finishedTaskNum)")

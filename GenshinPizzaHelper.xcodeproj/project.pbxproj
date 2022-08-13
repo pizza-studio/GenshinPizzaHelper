@@ -99,16 +99,12 @@
 		EA56E08B28A26C0D00A64262 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
 		EA56E08C28A26C0D00A64262 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07928A26C0D00A64262 /* UserData.swift */; };
 		EA56E08D28A26C0D00A64262 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07928A26C0D00A64262 /* UserData.swift */; };
-		EA56E08E28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD in Resources */ = {isa = PBXBuildFile; fileRef = EA56E07B28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD */; };
-		EA56E08F28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD in Resources */ = {isa = PBXBuildFile; fileRef = EA56E07B28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD */; };
 		EA56E09028A26C0D00A64262 /* ResinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07C28A26C0D00A64262 /* ResinInfo.swift */; };
 		EA56E09128A26C0D00A64262 /* ResinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07C28A26C0D00A64262 /* ResinInfo.swift */; };
 		EA56E09228A26C0D00A64262 /* ExpeditionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07D28A26C0D00A64262 /* ExpeditionInfo.swift */; };
 		EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07D28A26C0D00A64262 /* ExpeditionInfo.swift */; };
 		EA56E09428A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07E28A26C0D00A64262 /* WeeklyBossesInfo.swift */; };
 		EA56E09528A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07E28A26C0D00A64262 /* WeeklyBossesInfo.swift */; };
-		EA56E09628A26C0D00A64262 /* ExpeditionInfo.swift~new-ui in Resources */ = {isa = PBXBuildFile; fileRef = EA56E07F28A26C0D00A64262 /* ExpeditionInfo.swift~new-ui */; };
-		EA56E09728A26C0D00A64262 /* ExpeditionInfo.swift~new-ui in Resources */ = {isa = PBXBuildFile; fileRef = EA56E07F28A26C0D00A64262 /* ExpeditionInfo.swift~new-ui */; };
 		EA56E09828A26C0D00A64262 /* DailyTaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08028A26C0D00A64262 /* DailyTaskInfo.swift */; };
 		EA56E09928A26C0D00A64262 /* DailyTaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08028A26C0D00A64262 /* DailyTaskInfo.swift */; };
 		EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08128A26C0D00A64262 /* TransformerInfo.swift */; };
@@ -239,11 +235,9 @@
 		EA56E07728A26C0D00A64262 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		EA56E07828A26C0D00A64262 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		EA56E07928A26C0D00A64262 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		EA56E07B28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ExpeditionInfo.swift~HEAD"; sourceTree = "<group>"; };
 		EA56E07C28A26C0D00A64262 /* ResinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResinInfo.swift; sourceTree = "<group>"; };
 		EA56E07D28A26C0D00A64262 /* ExpeditionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpeditionInfo.swift; sourceTree = "<group>"; };
 		EA56E07E28A26C0D00A64262 /* WeeklyBossesInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfo.swift; sourceTree = "<group>"; };
-		EA56E07F28A26C0D00A64262 /* ExpeditionInfo.swift~new-ui */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ExpeditionInfo.swift~new-ui"; sourceTree = "<group>"; };
 		EA56E08028A26C0D00A64262 /* DailyTaskInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTaskInfo.swift; sourceTree = "<group>"; };
 		EA56E08128A26C0D00A64262 /* TransformerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerInfo.swift; sourceTree = "<group>"; };
 		EA56E08228A26C0D00A64262 /* RecoveryTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryTime.swift; sourceTree = "<group>"; };
@@ -425,11 +419,9 @@
 		EA56E07A28A26C0D00A64262 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				EA56E07B28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD */,
 				EA56E07C28A26C0D00A64262 /* ResinInfo.swift */,
 				EA56E07D28A26C0D00A64262 /* ExpeditionInfo.swift */,
 				EA56E07E28A26C0D00A64262 /* WeeklyBossesInfo.swift */,
-				EA56E07F28A26C0D00A64262 /* ExpeditionInfo.swift~new-ui */,
 				EA56E08028A26C0D00A64262 /* DailyTaskInfo.swift */,
 				EA56E08128A26C0D00A64262 /* TransformerInfo.swift */,
 				EA56E08228A26C0D00A64262 /* RecoveryTime.swift */,
@@ -651,8 +643,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
-				EA56E09728A26C0D00A64262 /* ExpeditionInfo.swift~new-ui in Resources */,
-				EA56E08F28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD in Resources */,
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,9 +653,7 @@
 			files = (
 				EA6829DC28A2523800E57462 /* .gitignore in Resources */,
 				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
-				EA56E09628A26C0D00A64262 /* ExpeditionInfo.swift~new-ui in Resources */,
 				EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */,
-				EA56E08E28A26C0D00A64262 /* ExpeditionInfo.swift~HEAD in Resources */,
 				EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

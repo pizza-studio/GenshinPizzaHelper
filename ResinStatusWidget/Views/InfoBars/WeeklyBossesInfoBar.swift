@@ -11,7 +11,7 @@ struct WeeklyBossesInfoBar: View {
     let weeklyBossesInfo: WeeklyBossesInfo
     
     var isWeeklyBossesFinishedImage: Image {
-        weeklyBossesInfo.isComplete ? Image(systemName: "checkmark.circle") : Image(systemName: "questionmark.circle")
+        weeklyBossesInfo.isComplete ? Image(systemName: "checkmark") : Image(systemName: "questionmark")
     }
     
     var body: some View {
@@ -24,8 +24,9 @@ struct WeeklyBossesInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isWeeklyBossesFinishedImage
+                .overlayImageWithRingProgressBar(1.0)
+                .frame(width: 13, height: 13)
                 .foregroundColor(Color("textColor3"))
-                .font(.system(size: 14))
             HStack(alignment: .lastTextBaseline, spacing:1) {
                 Text("\(weeklyBossesInfo.remainResinDiscountNum)")
                     .foregroundColor(Color("textColor3"))
