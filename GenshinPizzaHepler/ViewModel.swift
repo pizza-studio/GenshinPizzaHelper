@@ -87,7 +87,7 @@ extension Array where Element == Account {
     func isEqualTo(_ newAccountConfigs: [AccountConfiguration]) -> Bool {
         if (self.count == 0) && (newAccountConfigs.count == 0) { return true }
         if self.count < newAccountConfigs.count { return false }
-        let accountUUIDs = self.map { $0.config.uuid! }
+        let accountUUIDs = self.map { $0.config.uuid ?? UUID() }
         let newAccountsUUIDs = newAccountConfigs.map { $0.uuid! }
         return (accountUUIDs.allSatisfy { newAccountsUUIDs.contains($0) } && newAccountsUUIDs.allSatisfy { accountUUIDs.contains($0) })
     }
