@@ -51,7 +51,7 @@ struct SettingsView: View {
                     Section(header: Text(account.config.name!), footer: Text("UID: "+account.config.uid!)) {
                         switch account.result {
                         case .success(let userData):
-                            GameInfoBlock(userData: userData, backgroundColor: WidgetBackgroundColor(rawValue: viewModel.accounts.distance(from: viewModel.accounts.startIndex, to: viewModel.accounts.firstIndex(of: account)!) % 14)!, accountName: nil)
+                            GameInfoBlock(userData: userData, backgroundColor: WidgetBackgroundColor(rawValue: viewModel.accounts.distance(from: viewModel.accounts.startIndex, to: viewModel.accounts.firstIndex(of: account)!) % 14)!, accountName: account.config.name)
                                 .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                                 .aspectRatio(170/364, contentMode: .fill)
@@ -64,8 +64,10 @@ struct SettingsView: View {
                                     .foregroundColor(.red)
                                 Spacer()
                             }
+                            
                             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                             .aspectRatio(170/364, contentMode: .fill)
+                            
                         }
                     }
                 }

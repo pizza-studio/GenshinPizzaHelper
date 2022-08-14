@@ -59,13 +59,14 @@ struct OverlayRingProgressBar: ViewModifier {
     let startAngle: Double
     let showBackgound: Bool
     let backgoundOpacity: Double
+    let scaler: Double
     
     func body(content: Content) -> some View {
         GeometryReader { g in
             
             // 圆内接正方形变长
             let r = g.size.width - 0.8
-            let frameWidth = ( sqrt(2)/2 * r ) * 0.83
+            let frameWidth = ( sqrt(2)/2 * r ) * scaler
             
             ZStack {
                 if showBackgound {
@@ -86,18 +87,18 @@ struct OverlayRingProgressBar: ViewModifier {
 }
 
 extension View {
-    func overlayRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5) -> some View {
-        modifier(OverlayRingProgressBar(progress: progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgoundOpacity: backgroundOpacity))
+    func overlayRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5, scaler: Double = 0.83) -> some View {
+        modifier(OverlayRingProgressBar(progress: progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgoundOpacity: backgroundOpacity, scaler: scaler))
     }
     
 }
 
 extension Image {
-    func overlayImageWithRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5) -> some View {
+    func overlayImageWithRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5, scaler: Double = 0.83) -> some View {
         self
             .resizable()
             .scaledToFit()
             .font(Font.title.bold())
-            .overlayRingProgressBar(progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgroundOpacity: backgroundOpacity)
+            .overlayRingProgressBar(progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgroundOpacity: backgroundOpacity, scaler: scaler)
     }
 }

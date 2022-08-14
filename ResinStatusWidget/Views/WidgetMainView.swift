@@ -18,6 +18,7 @@ struct WidgetMainView: View {
         switch family {
         case .systemSmall:
             MainInfo(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
+                .padding()
         case .systemMedium:
             MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
         default:
