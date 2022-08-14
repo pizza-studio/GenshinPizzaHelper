@@ -17,11 +17,11 @@ struct WidgetMainView: View {
     var body: some View {
         switch family {
         case .systemSmall:
-            MainInfo(userData: userData, viewConfig: viewConfig, accountName: accountName)
+            MainInfo(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
         case .systemMedium:
-            MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: accountName)
+            MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
         default:
-            MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: accountName)
+            MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
         }
     }
 }

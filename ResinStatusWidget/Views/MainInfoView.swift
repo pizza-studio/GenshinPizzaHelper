@@ -28,42 +28,37 @@ struct MainInfo: View {
         // 可以晚些再上号，包括每日任务和周本
         let needToLoginSoon: Bool = !userData.dailyTaskInfo.isTaskRewardReceived || weeklyBossesNotice
         
-
+        
         VStack(alignment: .leading, spacing: 0) {
-//            ResinView(resinInfo: userData.resinInfo, accountName: viewConfig.showAccountName ? accountName : nil)
-//                .frame(maxWidth: 130)
-            // TODO: adjust style
-            if let accountName = accountNameTest {
+//            Spacer()
+            if let accountName = accountName {
+                
                 Text(accountName)
                     .font(.caption)
                     .foregroundColor(Color("textColor3"))
-                    .minimumScaleFactor(0.2)
-
-            }
-            Text("")
-                .frame(height: 10)
-
-            // 剩余树脂数字
-            HStack {
-                Spacer()
-                VStack(spacing: 0) {
-                    Text("\(userData.resinInfo.currentResin)")
-                        .font(.system(size: 50 , design: .rounded))
-                        .fontWeight(.medium)
-                    //                .gradientForeground(colors: textColors)
-                        .foregroundColor(Color("textColor3"))
-                        .shadow(radius: 1)
-                }
+            } else {
                 Image("树脂")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 30)
-                Spacer()
+                    .frame(maxHeight: 30)
             }
 
-            Text("")
-                .frame(height: 10)
-
+            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                
+                Text("\(userData.resinInfo.currentResin)")
+                    .font(.system(size: 50 , design: .rounded))
+                    .fontWeight(.medium)
+                    .foregroundColor(Color("textColor3"))
+                    .shadow(radius: 1)
+//                    .minimumScaleFactor(0.5)
+                if accountName != nil {
+                    Image("树脂")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 30)
+                }
+            }
+//            Spacer()
             HStack {
                 if needToLoginImediately {
                     if needToLoginSoon {
@@ -86,7 +81,7 @@ struct MainInfo: View {
                 }
                 RecoveryTimeText(resinInfo: userData.resinInfo)
             }
-            .frame(maxWidth: 130)
+//            Spacer()
         }
     }
 }
