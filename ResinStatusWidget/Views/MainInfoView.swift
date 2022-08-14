@@ -27,7 +27,7 @@ struct MainInfo: View {
         
 
         VStack(spacing: 4){
-            ResinView(resinInfo: userData.resinInfo)
+            ResinView(resinInfo: userData.resinInfo, accountName: viewConfig.showAccountName ? accountName : nil)
 
             HStack {
                 if needToLoginImediately {
@@ -49,7 +49,7 @@ struct MainInfo: View {
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                 }
-                RecoveryTimeText(resinInfo: userData.resinInfo, showAccountName: viewConfig.showAccountName, accountName: accountName)
+                RecoveryTimeText(resinInfo: userData.resinInfo)
             }
             .frame(maxWidth: 130)
         }
