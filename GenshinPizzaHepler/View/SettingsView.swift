@@ -43,7 +43,7 @@ struct SettingsView: View {
                     if !isPolicyShown {
                         sheetType = .userPolicy
                     }
-                    withAnimation { viewModel.refreshData() }
+                    viewModel.fetchAccount()
                     WidgetCenter.shared.reloadAllTimelines()
                 }
                 
@@ -75,7 +75,6 @@ struct SettingsView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        viewModel.fetchAccount()
                         viewModel.refreshData()
                         print(accounts.first?.config.uid ?? "nil")
                         WidgetCenter.shared.reloadAllTimelines()

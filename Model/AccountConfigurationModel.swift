@@ -14,21 +14,29 @@ class AccountConfigurationModel {
     
     static let shared: AccountConfigurationModel = AccountConfigurationModel()
     
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer
     
     private init() {
         let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.GenshinPizzaHelper")!
         let storeURL = containerURL.appendingPathComponent("AccountConfiguration.splite")
-        let description = NSPersistentStoreDescription(url: storeURL)
 
-        container = NSPersistentContainer(name: "AccountConfiguration")
-        container.persistentStoreDescriptions = [description]
+        container = NSPersistentCloudKitContainer(name: "AccountConfiguration")
+        let description = container.persistentStoreDescriptions.first!
+        description.url = storeURL
+        
+        description.cloudKitContainerOptions = .init(containerIdentifier: "iCloud.com.Canglong.GenshinPizzaHepler")
+        description.setOption(true as NSNumber, forKey: "NSPersistentStoreRemoteChangeNotificationOptionKey")
         
         container.loadPersistentStores { _, error in
             if let error = error {
                 print("ERROR LOADING CORE DATA. \(error.localizedDescription)")
             }
         }
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        
+        container.viewContext.refreshAllObjects()
         
         // 尝试从UserDefault迁移数据
         if fetchAccountConfigs().isEmpty {
@@ -39,6 +47,7 @@ class AccountConfigurationModel {
     
     func fetchAccountConfigs() -> [AccountConfiguration] {
         // 从Core Data更新账号信息
+        container.viewContext.refreshAllObjects()
         let request = NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
         
         do {
