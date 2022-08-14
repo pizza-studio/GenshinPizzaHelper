@@ -14,7 +14,7 @@ struct RingProgressBar: View {
     var width: CGFloat = 15
     var startAngle = -90.0
     var hasCircleBackground: Bool = true
-    var foregroundColors: [Color] = ColorHandler(colorName: .yellow).colors
+    var foregroundColors: [Color] = ColorHandler(widgetBackgroundColor: .yellow).colors
     var backgroundColor: Color = Color(.systemGray6)
 
     var body: some View {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameInfoBlock: View {
     var userData: UserData?
-    let bgColor = ColorHandler(colorName: .purple)
+    let backgroundColor: WidgetBackgroundColor
     let accountName: String?
 
     var body: some View {
@@ -21,7 +21,7 @@ struct GameInfoBlock: View {
             }
         } else {
             MainInfoWithDetail(userData: userData!, viewConfig: .defaultConfig, accountName: accountName)
-                .background(LinearGradient(colors: bgColor.colors, startPoint: .topLeading, endPoint: .bottomTrailing))
+                .background(LinearGradient(colors: backgroundColor.colors, startPoint: .topLeading, endPoint: .bottomTrailing))
         }
     }
 }

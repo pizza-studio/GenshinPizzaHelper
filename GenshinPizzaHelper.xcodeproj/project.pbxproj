@@ -407,9 +407,9 @@
 				BFE42537289E4FF700FEFA49 /* Views */,
 				EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */,
 				EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */,
+				EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */,
 				EA0F91D82886B58800AE7A62 /* Assets(Abandoned).xcassets */,
 				EA30F9AC2886B49300AE7BEA /* Info.plist */,
-				EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */,
 			);
 			path = ResinStatusWidget;
 			sourceTree = "<group>";
