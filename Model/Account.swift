@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Account {
+struct Account: Equatable {
+    static func == (lhs: Account, rhs: Account) -> Bool {
+        return lhs.config == rhs.config
+    }
+
     var config: AccountConfiguration
     var result: FetchResult
     
@@ -20,6 +24,7 @@ struct Account {
         self.config = config
         self.result = result
     }
+    
     
     
 }

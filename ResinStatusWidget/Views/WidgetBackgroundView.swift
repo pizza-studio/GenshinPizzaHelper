@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct WidgetBackgroundView: View {
-    let backgroundColors: [Color] = [
-        Color("bgColor.purple.1"),
-        Color("bgColor.purple.2"),
-        Color("bgColor.purple.3")
-    ]
+    let backgroundColors: [Color]
     
     var body: some View {
         LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing)

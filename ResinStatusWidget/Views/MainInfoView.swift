@@ -11,6 +11,11 @@ import SwiftUI
 struct MainInfo: View {
     let userData: UserData
     let viewConfig: WidgetViewConfiguration
+    let accountName: String?
+    let accountNameTest = "我的帐号"
+    
+
+    var condensedResin: Int { userData.resinInfo.currentResin / 40 }
 
     var body: some View {
         
@@ -24,10 +29,41 @@ struct MainInfo: View {
         // 可以晚些再上号，包括每日任务和周本
         let needToLoginSoon: Bool = !userData.dailyTaskInfo.isTaskRewardReceived || weeklyBossesNotice
         
-
-        VStack(spacing: 4){
-            ResinView(resinInfo: userData.resinInfo)
-
+        
+        
+        VStack(alignment: .leading, spacing: 0) {
+//            Spacer()
+            if let accountName = accountName {
+                
+                HStack(alignment: .lastTextBaseline, spacing: 2) {
+                    Image(systemName: "person.fill")
+                    Text(accountName)
+                    
+                }
+                .font(.footnote)
+                .foregroundColor(Color("textColor3"))
+                Spacer()
+                
+            }
+            
+            
+            
+            HStack(alignment: .firstTextBaseline, spacing: 2) {
+                
+                Text("\(userData.resinInfo.currentResin)")
+                    .font(.system(size: 50 , design: .rounded))
+                    .fontWeight(.medium)
+                    .foregroundColor(Color("textColor3"))
+                    .shadow(radius: 1)
+                Image("树脂")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 30)
+                    .alignmentGuide(.firstTextBaseline) { context in
+                        context[.bottom] - 0.17 * context.height
+                    }
+            }
+            Spacer()
             HStack {
                 if needToLoginImediately {
                     if needToLoginSoon {
@@ -50,7 +86,14 @@ struct MainInfo: View {
                 }
                 RecoveryTimeText(resinInfo: userData.resinInfo)
             }
-            .frame(maxWidth: 130)
+//            Spacer()
         }
+    }
+}
+
+struct preview: PreviewProvider {
+    static var previews: some View {
+        MainInfo(userData: UserData.defaultData, viewConfig: WidgetViewConfiguration.defaultConfig, accountName: nil)
+            .background(LinearGradient(colors: WidgetBackgroundColor.purple.colors, startPoint: .topLeading, endPoint: .bottomTrailing))
     }
 }

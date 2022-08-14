@@ -13,6 +13,7 @@ struct ResinEntry: TimelineEntry {
     let date: Date
     let result: FetchResult
     let viewConfig: WidgetViewConfiguration
+    var accountName: String? = nil
 }
 
 struct ResinLoader {
@@ -30,11 +31,11 @@ struct ResinLoader {
 struct Provider: IntentTimelineProvider {
 
     func placeholder(in context: Context) -> ResinEntry {
-        ResinEntry(date: Date(), result: FetchResult.defaultFetchResult, viewConfig: .defaultConfig)
+        ResinEntry(date: Date(), result: FetchResult.defaultFetchResult, viewConfig: .defaultConfig, accountName: "荧")
     }
 
     func getSnapshot(for configuration: SelectAccountIntent, in context: Context, completion: @escaping (ResinEntry) -> ()) {
-        let entry = ResinEntry(date: Date(), result: FetchResult.defaultFetchResult, viewConfig: .defaultConfig)
+        let entry = ResinEntry(date: Date(), result: FetchResult.defaultFetchResult, viewConfig: .defaultConfig, accountName: "荧")
         completion(entry)
     }
 
@@ -85,7 +86,7 @@ struct Provider: IntentTimelineProvider {
         viewConfig = WidgetViewConfiguration(configuration, nil)
         print(configs.first!.uuid!, configuration)
         
-        // 正常情况
+        
         guard let config = configs.first(where: { $0.uuid == selectedAccountUUID }) else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             viewConfig.addMessage("请长按进入小组件重新设置账号信息")
@@ -96,8 +97,9 @@ struct Provider: IntentTimelineProvider {
             return
         }
         
+        // 正常情况
         config.fetchResult { result in
-            let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig)
+            let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig, accountName: config.name)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Widget Fetch succeed")

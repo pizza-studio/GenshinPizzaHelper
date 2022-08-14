@@ -14,7 +14,11 @@ struct WidgetViewConfiguration {
     let expeditionViewConfig: ExpeditionViewConfiguration
     let showWeeklyBosses: Bool
     var noticeMessage: String?
-    let bgColors: ColorHandler
+    
+//    let colorHandler: ColorHandler
+    var backgroundColor: WidgetBackgroundColor
+//    { colorHandler.colors }
+    var backgroundColors: [Color] { backgroundColor.colors }
     
     mutating func addMessage(_ msg: String) {
         self.noticeMessage = msg
@@ -27,7 +31,7 @@ struct WidgetViewConfiguration {
         showTransformer = true
         expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
         showWeeklyBosses = true
-        bgColors = ColorHandler(colorName: .purple)
+        backgroundColor = .purple
     }
     
     init(showAccountName: Bool, showTransformer: Bool, noticeExpeditionWhenAllCompleted: Bool, showExpeditionCompleteTime: Bool, showWeeklyBosses: Bool, noticeMessage: String?) {
@@ -35,7 +39,7 @@ struct WidgetViewConfiguration {
         self.showTransformer = showTransformer
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: noticeExpeditionWhenAllCompleted, expeditionShowingMethod: .byNum)
         self.showWeeklyBosses = showWeeklyBosses
-        self.bgColors = ColorHandler(colorName: .purple)
+        backgroundColor = .purple
     }
 }
 
