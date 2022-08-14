@@ -11,6 +11,7 @@ import SwiftUI
 struct MainInfo: View {
     let userData: UserData
     let viewConfig: WidgetViewConfiguration
+    let accountName: String?
 
     var body: some View {
         
@@ -48,7 +49,7 @@ struct MainInfo: View {
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                 }
-                RecoveryTimeText(resinInfo: userData.resinInfo)
+                RecoveryTimeText(resinInfo: userData.resinInfo, showAccountName: viewConfig.showAccountName, accountName: accountName)
             }
             .frame(maxWidth: 130)
         }

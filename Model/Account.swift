@@ -22,6 +22,7 @@ struct Account {
     }
     
     
+    
 }
 
 extension AccountConfiguration {

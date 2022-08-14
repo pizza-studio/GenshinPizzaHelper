@@ -18,6 +18,7 @@ struct WidgetViewEntryView : View {
     let entry: Provider.Entry
     var result: FetchResult { entry.result }
     var viewConfig: WidgetViewConfiguration { entry.viewConfig }
+    var accountName: String? { entry.accountName }
     
     @ViewBuilder
     var body: some View {
@@ -27,7 +28,7 @@ struct WidgetViewEntryView : View {
             
             switch result {
             case .success(let userData):
-                WidgetMainView(userData: userData, viewConfig: viewConfig)
+                WidgetMainView(userData: userData, viewConfig: viewConfig, accountName: accountName)
             case .failure(let error):
                 WidgetErrorView(error: error, message: viewConfig.noticeMessage ?? "")
             }

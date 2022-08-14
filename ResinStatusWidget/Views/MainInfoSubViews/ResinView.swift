@@ -11,6 +11,7 @@ import SwiftUI
 struct ResinView: View {
     let resinInfo: ResinInfo
     
+    
     var condensedResin: Int { resinInfo.currentResin / 40 }
     
     var body: some View {
