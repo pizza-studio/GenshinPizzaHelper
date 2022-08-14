@@ -9,6 +9,10 @@ import Foundation
 
 struct UserData: Codable {
     
+    var accountName: String?
+    
+    mutating func addName(_ name: String) { accountName = name }
+    
     // 树脂
     // decode
     private let currentResin: Int
@@ -64,6 +68,8 @@ struct UserData: Codable {
 
 extension UserData {
     static let defaultData = UserData(
+        accountName: "荧",
+        
         // 用于测试和提供小组件预览视图的默认数据
         currentResin: 90,
         maxResin: 160,

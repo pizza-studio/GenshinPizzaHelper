@@ -11,6 +11,7 @@ import SwiftUI
 struct RecoveryTimeText: View {
     let resinInfo: ResinInfo
 
+
     var body: some View {
 
         VStack(alignment: .leading, spacing: 1) {
