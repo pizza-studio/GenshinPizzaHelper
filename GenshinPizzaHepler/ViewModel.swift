@@ -51,7 +51,6 @@ class ViewModel: ObservableObject {
     
     func forceFetchAccount() {
         // 强制从云端Core Data更新账号信息
-        accounts = []
         accounts = accountConfigurationModel.fetchAccountConfigs().map { Account(config: $0) }
         self.refreshData()
         print("force account fetched")
