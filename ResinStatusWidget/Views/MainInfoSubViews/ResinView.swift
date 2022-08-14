@@ -11,6 +11,7 @@ import SwiftUI
 struct ResinView: View {
     let resinInfo: ResinInfo
     let accountName: String?
+    let accountNameTest = "我的帐号"
     
     
     var condensedResin: Int { resinInfo.currentResin / 40 }
@@ -20,17 +21,17 @@ struct ResinView: View {
         VStack(spacing: 0) {
             
             // TODO: adjust style
-            if let accountName = accountName {
-                HStack {
+            if let accountName = accountNameTest {
+                VStack(alignment: .leading) {
+                    Text(accountName)
+                        .font(.caption)
+                        .font(.system(size: 15))
+                        .foregroundColor(Color("textColor3"))
+                        .minimumScaleFactor(0.2)
                     Image("树脂")
                         .resizable()
                         .scaledToFit()
                         .frame(maxHeight: 30)
-                    Text(accountName)
-//                        .font(.caption2)
-                        .font(.system(size: 15))
-                        .foregroundColor(Color("textColor3"))
-                        .minimumScaleFactor(0.2)
                 }
                 
             } else {

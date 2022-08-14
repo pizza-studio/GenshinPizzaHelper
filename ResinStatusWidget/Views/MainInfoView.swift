@@ -12,6 +12,9 @@ struct MainInfo: View {
     let userData: UserData
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
+    let accountNameTest = "我的帐号"
+
+    var condensedResin: Int { userData.resinInfo.currentResin / 40 }
 
     var body: some View {
         
@@ -26,8 +29,40 @@ struct MainInfo: View {
         let needToLoginSoon: Bool = !userData.dailyTaskInfo.isTaskRewardReceived || weeklyBossesNotice
         
 
-        VStack(spacing: 4){
-            ResinView(resinInfo: userData.resinInfo, accountName: viewConfig.showAccountName ? accountName : nil)
+        VStack(alignment: .leading, spacing: 0) {
+//            ResinView(resinInfo: userData.resinInfo, accountName: viewConfig.showAccountName ? accountName : nil)
+//                .frame(maxWidth: 130)
+            // TODO: adjust style
+            if let accountName = accountNameTest {
+                Text(accountName)
+                    .font(.caption)
+                    .foregroundColor(Color("textColor3"))
+                    .minimumScaleFactor(0.2)
+
+            }
+            Text("")
+                .frame(height: 10)
+
+            // 剩余树脂数字
+            HStack {
+                Spacer()
+                VStack(spacing: 0) {
+                    Text("\(userData.resinInfo.currentResin)")
+                        .font(.system(size: 50 , design: .rounded))
+                        .fontWeight(.medium)
+                    //                .gradientForeground(colors: textColors)
+                        .foregroundColor(Color("textColor3"))
+                        .shadow(radius: 1)
+                }
+                Image("树脂")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 30)
+                Spacer()
+            }
+
+            Text("")
+                .frame(height: 10)
 
             HStack {
                 if needToLoginImediately {
