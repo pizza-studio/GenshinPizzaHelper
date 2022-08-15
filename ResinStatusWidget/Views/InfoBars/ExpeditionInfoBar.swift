@@ -14,8 +14,12 @@ struct ExpeditionInfoBar: View {
     var notice: Bool {
         expeditionViewConfig.noticeExpeditionWhenAllCompleted ? expeditionInfo.allCompleted : expeditionInfo.anyCompleted
     }
-    var isExpeditionAllCompleteImage: Image {
-        notice ? Image(systemName: "exclamationmark") : Image(systemName: "figure.walk")
+    var isExpeditionAllCompleteImage: some View {
+        notice
+        ? Image(systemName: "exclamationmark")
+            .overlayImageWithRingProgressBar(expeditionViewConfig.noticeExpeditionWhenAllCompleted ? expeditionInfo.allCompletedPercentage : expeditionInfo.nextCompletePercentage, scaler: 0.78)
+        : Image(systemName: "figure.walk")
+            .overlayImageWithRingProgressBar(expeditionViewConfig.noticeExpeditionWhenAllCompleted ? expeditionInfo.allCompletedPercentage : expeditionInfo.nextCompletePercentage, scaler: 1, offset: (0.3, 0))
     }
     
     var body: some View {
@@ -26,7 +30,7 @@ struct ExpeditionInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isExpeditionAllCompleteImage
-                .overlayImageWithRingProgressBar(expeditionViewConfig.noticeExpeditionWhenAllCompleted ? expeditionInfo.allCompletedPercentage : expeditionInfo.nextCompletePercentage, scaler: 0.95)
+                
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
             
