@@ -32,7 +32,7 @@ extension WidgetViewConfiguration {
     init(_ intent: SelectAccountIntent, _ noticeMessage: String?) {
         self.showAccountName = intent.showAccountName?.boolValue ?? false
         self.showTransformer = intent.showTransformer?.boolValue ?? true
-        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: intent.noticeExpeditionWhenAllCompleted?.boolValue ?? true, expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue) ?? .byNum)
+        self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: (intent.expeditionNoticeMethod.rawValue != 2), expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue) ?? .byNum)
         self.showWeeklyBosses = intent.showWeeklyBosses?.boolValue ?? true
         // TODO: 改成Intent中的东西
 //        self.colorHandler = ColorHandler(widgetBackgroundColor: .purple)

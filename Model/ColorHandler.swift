@@ -51,7 +51,9 @@ extension WidgetBackgroundColor {
             return "雷元素"
         case .glass:
             return "草元素"
-
+        case .intertwinedFate:
+            return "纠缠之缘"
+            
         }
     }
 
@@ -136,6 +138,12 @@ extension WidgetBackgroundColor {
                 Color("bgColor.glass.1"),
                 Color("bgColor.glass.2"),
                 Color("bgColor.glass.3")
+            ]
+        case .intertwinedFate:
+            return [
+                Color("bgColor.intertwinedFate.1"),
+                Color("bgColor.intertwinedFate.2"),
+                Color("bgColor.intertwinedFate.3")
             ]
         }
     }

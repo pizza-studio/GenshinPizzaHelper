@@ -130,7 +130,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>异世界红</string>
+					<string>★★★★★红</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>ft3ye3</string>
 					<key>INEnumValueIndex</key>
@@ -208,6 +208,59 @@
 					<key>INEnumValueName</key>
 					<string>glass</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>纠缠之缘</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>wnGFsd</string>
+					<key>INEnumValueIndex</key>
+					<integer>14</integer>
+					<key>INEnumValueName</key>
+					<string>intertwinedFate</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>INEnumDisplayName</key>
+			<string>Expedition Notice Method</string>
+			<key>INEnumDisplayNameID</key>
+			<string>fYQAf4</string>
+			<key>INEnumGeneratesHeader</key>
+			<true/>
+			<key>INEnumName</key>
+			<string>ExpeditionNoticeMethod</string>
+			<key>INEnumType</key>
+			<string>Regular</string>
+			<key>INEnumValues</key>
+			<array>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>（未知）</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>2yWIH0</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>全部完成时</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>81ss5Y</string>
+					<key>INEnumValueIndex</key>
+					<integer>1</integer>
+					<key>INEnumValueName</key>
+					<string>allCompleted</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>下一个完成时</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>a5PB3w</string>
+					<key>INEnumValueIndex</key>
+					<integer>2</integer>
+					<key>INEnumValueName</key>
+					<string>nextCompleted</string>
+				</dict>
 			</array>
 		</dict>
 	</array>
@@ -235,7 +288,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>29</integer>
+			<integer>31</integer>
 			<key>INIntentName</key>
 			<string>SelectAccount</string>
 			<key>INIntentParameters</key>
@@ -433,35 +486,27 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>完成全部探索派遣后提示</string>
+					<string>探索派遣提醒于</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>UrxPco</string>
+					<string>lbRsap</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>5</integer>
+					<key>INIntentParameterEnumType</key>
+					<string>ExpeditionNoticeMethod</string>
+					<key>INIntentParameterEnumTypeNamespace</key>
+					<string>Yil1CB</string>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>pBbhtd</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>0tpwtm</string>
+						<string>allCompleted</string>
 					</dict>
 					<key>INIntentParameterName</key>
-					<string>noticeExpeditionWhenAllCompleted</string>
+					<string>expeditionNoticeMethod</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${noticeExpeditionWhenAllCompleted}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>sgk0dC</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Configuration</string>
 						</dict>
@@ -471,11 +516,31 @@
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>There are ${count} options matching ‘${expeditionNoticeMethod}’.</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>l4a3No</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>DisambiguationIntroduction</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>Just to confirm, you wanted ‘${expeditionNoticeMethod}’?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>e0kZEQ</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Confirmation</string>
+						</dict>
 					</array>
 					<key>INIntentParameterTag</key>
-					<integer>19</integer>
+					<integer>31</integer>
 					<key>INIntentParameterType</key>
-					<string>Boolean</string>
+					<string>Integer</string>
 				</dict>
 				<dict>
 					<key>INIntentParameterConfigurable</key>
