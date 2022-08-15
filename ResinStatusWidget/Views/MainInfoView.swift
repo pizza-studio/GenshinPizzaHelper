@@ -53,6 +53,7 @@ struct MainInfo: View {
                 Text("\(userData.resinInfo.currentResin)")
                     .font(.system(size: 50 , design: .rounded))
                     .fontWeight(.medium)
+                    .fixedSize()
                     .foregroundColor(Color("textColor3"))
                     .shadow(radius: 1)
                 Image("树脂")

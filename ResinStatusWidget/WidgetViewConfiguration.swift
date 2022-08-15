@@ -27,7 +27,7 @@ struct WidgetViewConfiguration {
     
     static let defaultConfig = Self()
     init() {
-        showAccountName  = false
+        showAccountName = true
         showTransformer = true
         expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
         showWeeklyBosses = true
