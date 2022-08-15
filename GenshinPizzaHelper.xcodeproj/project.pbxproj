@@ -119,6 +119,7 @@
 		EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		EA6829DC28A2523800E57462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
+		EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */; };
 		EA75DD0628A09EC80099E70A /* ErrorCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */; };
 		EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
@@ -817,6 +818,7 @@
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
 				EA56E08628A26C0D00A64262 /* Error.swift in Sources */,
+				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				EA56E09828A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
@@ -870,7 +872,7 @@
 				INFOPLIST_FILE = AccountIntent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AccountIntent;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -897,7 +899,7 @@
 				INFOPLIST_FILE = AccountIntent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AccountIntent;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

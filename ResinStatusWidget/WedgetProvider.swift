@@ -41,8 +41,6 @@ struct Provider: IntentTimelineProvider {
 
     func getTimeline(for configuration: SelectAccountIntent, in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
         
-        
-        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 7, to: currentDate)!
@@ -63,6 +61,7 @@ struct Provider: IntentTimelineProvider {
         }
         
         guard configuration.accountIntent != nil else {
+            print("no account intent got")
             if configs.count == 1 {
                 // 如果还未选择账号且只有一个账号，默认获取第一个
                 configs.first!.fetchResult { result in

@@ -10,6 +10,7 @@ import Intents
 
 class IntentHandler: INExtension, SelectAccountIntentHandling {
     func provideAccountIntentOptionsCollection(for intent: SelectAccountIntent, with completion: @escaping (INObjectCollection<AccountIntent>?, Error?) -> Void) {
+        print("handling intent")
         let accountConfigurationModel = AccountConfigurationModel.shared
         let accountConfigs: [AccountConfiguration] = accountConfigurationModel.fetchAccountConfigs()
 
