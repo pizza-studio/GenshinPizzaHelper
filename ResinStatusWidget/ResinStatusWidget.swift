@@ -38,7 +38,8 @@ struct WidgetViewEntryView : View {
 
 @main
 struct WidgetView: Widget {
-    let kind: String = "WidgetView"
+//    let kind: String = "WidgetView"
+    let kind: String = "com.Canglong.GenshinPizzaHepler.MainWidget"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SelectAccountIntent.self, provider: Provider()) { entry in
