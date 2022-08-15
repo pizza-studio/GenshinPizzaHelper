@@ -19,6 +19,7 @@ struct WidgetViewConfiguration {
     var backgroundColor: WidgetBackgroundColor
 //    { colorHandler.colors }
     var backgroundColors: [Color] { backgroundColor.colors }
+    var backgroundIconName: String? { backgroundColor.iconName }
     
     mutating func addMessage(_ msg: String) {
         self.noticeMessage = msg
@@ -27,7 +28,7 @@ struct WidgetViewConfiguration {
     
     static let defaultConfig = Self()
     init() {
-        showAccountName  = false
+        showAccountName = true
         showTransformer = true
         expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
         showWeeklyBosses = true

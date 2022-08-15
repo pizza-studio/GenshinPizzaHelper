@@ -51,7 +51,30 @@ extension WidgetBackgroundColor {
             return "雷元素"
         case .glass:
             return "草元素"
-
+        case .intertwinedFate:
+            return "纠缠之缘"
+            
+        }
+    }
+    
+    var iconName: String? {
+        switch self {
+        case .wind:
+            return "风元素图标"
+        case .water:
+            return "水元素图标"
+        case .ice:
+            return "冰元素图标"
+        case .fire:
+            return "火元素图标"
+        case .stone:
+            return "岩元素图标"
+        case .thunder:
+            return "雷元素图标"
+        case .glass:
+            return "草元素图标"
+        default:
+            return nil
         }
     }
 
@@ -136,6 +159,12 @@ extension WidgetBackgroundColor {
                 Color("bgColor.glass.1"),
                 Color("bgColor.glass.2"),
                 Color("bgColor.glass.3")
+            ]
+        case .intertwinedFate:
+            return [
+                Color("bgColor.intertwinedFate.1"),
+                Color("bgColor.intertwinedFate.2"),
+                Color("bgColor.intertwinedFate.3")
             ]
         }
     }

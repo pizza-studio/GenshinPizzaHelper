@@ -60,6 +60,8 @@ struct OverlayRingProgressBar: ViewModifier {
     let showBackgound: Bool
     let backgoundOpacity: Double
     let scaler: Double
+    let offset: (x: Double, y: Double)
+    
     
     func body(content: Content) -> some View {
         GeometryReader { g in
@@ -78,8 +80,8 @@ struct OverlayRingProgressBar: ViewModifier {
                 RingShape(progress: Double(progress), thickness: thickness, startAngle: -90)
                     
                 content
+                    .offset(x: offset.x, y: offset.y)
                     .frame(width: frameWidth, height: frameWidth)
-                
             }
             .animation(.easeInOut(duration: 1.0), value: progress)
         }
@@ -87,18 +89,18 @@ struct OverlayRingProgressBar: ViewModifier {
 }
 
 extension View {
-    func overlayRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5, scaler: Double = 0.83) -> some View {
-        modifier(OverlayRingProgressBar(progress: progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgoundOpacity: backgroundOpacity, scaler: scaler))
+    func overlayRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5, scaler: Double = 0.83, offset: (x: Double, y: Double) = (0, 0)) -> some View {
+        modifier(OverlayRingProgressBar(progress: progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgoundOpacity: backgroundOpacity, scaler: scaler, offset: offset))
     }
     
 }
 
 extension Image {
-    func overlayImageWithRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5, scaler: Double = 0.83) -> some View {
+    func overlayImageWithRingProgressBar(_ progress: Double, thickness: CGFloat = 1.0, startAngle: Double = -90, showBackgound: Bool = true, backgroundOpacity: Double = 0.5, scaler: Double = 0.83, offset: (x: Double, y: Double) = (0, 0)) -> some View {
         self
             .resizable()
             .scaledToFit()
             .font(Font.title.bold())
-            .overlayRingProgressBar(progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgroundOpacity: backgroundOpacity, scaler: scaler)
+            .overlayRingProgressBar(progress, thickness: thickness, startAngle: startAngle, showBackgound: showBackgound, backgroundOpacity: backgroundOpacity, scaler: scaler, offset: offset)
     }
 }

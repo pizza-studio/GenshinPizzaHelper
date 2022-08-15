@@ -24,7 +24,8 @@ struct WidgetViewEntryView : View {
     var body: some View {
         
         ZStack {
-            WidgetBackgroundView(backgroundColors: viewConfig.backgroundColors)
+            
+            WidgetBackgroundView(backgroundColors: viewConfig.backgroundColors, backgroundIconName: viewConfig.backgroundIconName)
             
             switch result {
             case .success(let userData):
@@ -39,6 +40,7 @@ struct WidgetViewEntryView : View {
 @main
 struct WidgetView: Widget {
     let kind: String = "WidgetView"
+//    let kind: String = "com.Canglong.GenshinPizzaHepler.MainWidget"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SelectAccountIntent.self, provider: Provider()) { entry in

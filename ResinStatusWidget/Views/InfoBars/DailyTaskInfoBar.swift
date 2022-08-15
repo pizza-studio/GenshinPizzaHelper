@@ -10,15 +10,15 @@ import SwiftUI
 struct DailyTaskInfoBar: View {
     let dailyTaskInfo: DailyTaskInfo
     
-    var isTaskRewardReceivedImage: Image {
+    var isTaskRewardReceivedImage: some View {
         if !dailyTaskInfo.isTaskRewardReceived {
             if dailyTaskInfo.finishedTaskNum == dailyTaskInfo.totalTaskNum {
-                return Image(systemName: "exclamationmark")
+                return Image(systemName: "exclamationmark").overlayImageWithRingProgressBar(1.0, scaler: 0.78)
             } else {
-                return Image(systemName: "questionmark")
+                return Image(systemName: "questionmark").overlayImageWithRingProgressBar(1.0)
             }
         } else  {
-            return Image(systemName: "checkmark")
+            return Image(systemName: "checkmark").overlayImageWithRingProgressBar(1.0, scaler: 0.70)
         }
     }
     
@@ -33,7 +33,7 @@ struct DailyTaskInfoBar: View {
                 .shadow(color: .white, radius: 1)
             
             isTaskRewardReceivedImage
-                .overlayImageWithRingProgressBar(1.0)
+                
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
             

@@ -53,6 +53,7 @@ struct MainInfo: View {
                 Text("\(userData.resinInfo.currentResin)")
                     .font(.system(size: 50 , design: .rounded))
                     .fontWeight(.medium)
+                    .minimumScaleFactor(0.8)
                     .foregroundColor(Color("textColor3"))
                     .shadow(radius: 1)
                 Image("树脂")
@@ -62,6 +63,7 @@ struct MainInfo: View {
                     .alignmentGuide(.firstTextBaseline) { context in
                         context[.bottom] - 0.17 * context.height
                     }
+                    .shadow(radius: 0.8)
             }
             Spacer()
             HStack {
@@ -80,7 +82,7 @@ struct MainInfo: View {
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                 } else {
-                    Image(systemName: "hourglass.circle")
+                    Image("hourglass.circle")
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                 }
