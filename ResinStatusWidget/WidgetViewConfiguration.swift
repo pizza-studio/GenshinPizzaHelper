@@ -19,6 +19,7 @@ struct WidgetViewConfiguration {
     var backgroundColor: WidgetBackgroundColor
 //    { colorHandler.colors }
     var backgroundColors: [Color] { backgroundColor.colors }
+    var backgroundIconName: String? { backgroundColor.iconName }
     
     mutating func addMessage(_ msg: String) {
         self.noticeMessage = msg

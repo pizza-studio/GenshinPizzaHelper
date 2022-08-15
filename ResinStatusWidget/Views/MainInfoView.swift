@@ -63,6 +63,7 @@ struct MainInfo: View {
                     .alignmentGuide(.firstTextBaseline) { context in
                         context[.bottom] - 0.17 * context.height
                     }
+                    .shadow(radius: 0.8)
             }
             Spacer()
             HStack {

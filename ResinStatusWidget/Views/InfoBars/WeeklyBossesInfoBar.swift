@@ -18,7 +18,7 @@ struct WeeklyBossesInfoBar: View {
         
         
         HStack(alignment: .center ,spacing: 8) {
-            Image("北陆单手剑原胚")
+            Image("征讨领域")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)

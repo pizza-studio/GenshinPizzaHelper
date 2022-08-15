@@ -24,7 +24,8 @@ struct WidgetViewEntryView : View {
     var body: some View {
         
         ZStack {
-            WidgetBackgroundView(backgroundColors: viewConfig.backgroundColors)
+            
+            WidgetBackgroundView(backgroundColors: viewConfig.backgroundColors, backgroundIconName: viewConfig.backgroundIconName)
             
             switch result {
             case .success(let userData):

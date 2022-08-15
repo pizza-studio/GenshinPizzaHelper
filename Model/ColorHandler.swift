@@ -56,6 +56,27 @@ extension WidgetBackgroundColor {
             
         }
     }
+    
+    var iconName: String? {
+        switch self {
+        case .wind:
+            return "风元素图标"
+        case .water:
+            return "水元素图标"
+        case .ice:
+            return "冰元素图标"
+        case .fire:
+            return "火元素图标"
+        case .stone:
+            return "岩元素图标"
+        case .thunder:
+            return "雷元素图标"
+        case .glass:
+            return "草元素图标"
+        default:
+            return nil
+        }
+    }
 
     var colors: [Color] {
         switch self {
