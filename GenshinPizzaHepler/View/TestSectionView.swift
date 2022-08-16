@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TestSectionView: View {
-    @State var connectStatus: ConnectStatus = .unknown
+    @Binding var connectStatus: ConnectStatus
     
     @Binding var uid: String
     @Binding var cookie: String

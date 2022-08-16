@@ -14,7 +14,7 @@ struct AddAccountView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State private var unsavedName: String = "我的账号"
-    @State private var unsavedUid: String = ""
+    @State private var unsavedUid: String = "12345678"
     @State private var unsavedCookie: String = ""
     @State private var unsavedServer: Server = .china
     
@@ -27,38 +27,29 @@ struct AddAccountView: View {
     
     @State private var accountsForSelected: [FetchedAccount] = []
     @State private var selectedAccount: FetchedAccount?
-
+    
+    var shownUid: String {
+        if let selectedAccount = selectedAccount {
+            return "UID: " + selectedAccount.gameUid
+        } else { return "" }
+    }
+    
     var body: some View {
         List {
-            Button("登录米游社账号") { isWebShown.toggle() }
-            Button("cookie") {
-                DispatchQueue.main.async {
-                    if isWebShown == false {
-                        print("unsaved cookie is: "+unsavedCookie)
-                        API.Features.getUserGameRolesByCookie(unsavedCookie, unsavedServer.region) { result in
-                            switch result {
-                            case .failure(let fetchError):
-                                print(fetchError)
-                            case .success(let fetchedAccountArray):
-                                accountsForSelected = fetchedAccountArray
-                                if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
-                            }
-                        }
+            Button (action: {isWebShown.toggle()}) {
+                HStack {
+                    Text("登录米游社账号")
+                    Spacer()
+                    if !accountsForSelected.isEmpty {
+                        Image(systemName: "checkmark").foregroundColor(.green)
                     }
                 }
             }
             
-//            if accountsForSelected.count != 0 {
-                Section {
+            if accountsForSelected.count != 0 {
+                Section(footer: Text(shownUid)) {
                     InfoEditor(title: "自定义帐号名", content: $unsavedName, placeholderText: unsavedName)
-                    
-//                    HStack {
-//                        Text("UID")
-//                        Spacer()
-//                        Text(selectedAccount!.gameUid)
-//                    }
-
-                    if !accountsForSelected.isEmpty {
+                    if accountsForSelected.count > 1 {
                         Picker("请选择账号", selection: $selectedAccount) {
                             ForEach(accountsForSelected, id: \.gameUid) { account in
                                 Text(account.nickname + "（\(account.gameUid)）")
@@ -67,9 +58,9 @@ struct AddAccountView: View {
                         }
                     }
                     
-//                }
+                }
 
-                TestSectionView(uid: $unsavedUid, cookie: $unsavedCookie, server: $unsavedServer)
+                TestSectionView(connectStatus: $connectStatus, uid: $unsavedUid, cookie: $unsavedCookie, server: $unsavedServer)
             }
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
@@ -112,35 +103,52 @@ struct AddAccountView: View {
                             switch result {
                             case .failure(let fetchError):
                                 print(fetchError)
+                                API.Features.fetchInfos(region: unsavedServer.region,
+                                                        serverID: unsavedServer.id,
+                                                        uid: unsavedUid,
+                                                        cookie: unsavedCookie) { result in
+                                    API.Features.getUserGameRolesByCookie(unsavedCookie, unsavedServer.region) { result in
+                                        switch result {
+                                        case .failure(let fetchError):
+                                            print(fetchError)
+                                        case .success(let fetchedAccountArray):
+                                            accountsForSelected = fetchedAccountArray
+                                            if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
+                                            API.Features.fetchInfos(region: unsavedServer.region,
+                                                                    serverID: unsavedServer.id,
+                                                                    uid: unsavedUid,
+                                                                    cookie: unsavedCookie) { result in
+                                                switch result {
+                                                case .success(_ ):
+                                                    connectStatus = .success
+                                                case .failure(_ ):
+                                                    connectStatus = .fail
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             case .success(let fetchedAccountArray):
                                 accountsForSelected = fetchedAccountArray
-                                
                                 if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
-                                // TODO: 需要review——如果之前登陆过其他账号，需要随便发一次请求才能正确抓到信息（我也不知道为什么）
                                 API.Features.fetchInfos(region: unsavedServer.region,
                                                         serverID: unsavedServer.id,
                                                         uid: unsavedUid,
                                                         cookie: unsavedCookie) { result in
                                     switch result {
+                                    case .success(_ ):
+                                        connectStatus = .success
                                     case .failure(_ ):
-                                        API.Features.getUserGameRolesByCookie(unsavedCookie, unsavedServer.region) { result in
-                                            switch result {
-                                            case .failure(let fetchError):
-                                                print(fetchError)
-                                            case .success(let fetchedAccountArray):
-                                                accountsForSelected = fetchedAccountArray
-                                                if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
-                                            }
-                                        }
-                                    case .success(_):
-                                        return
+                                        connectStatus = .fail
                                     }
                                 }
+                                
                             }
                         }
                     }
                     
                 }
+                
             }
             
         }

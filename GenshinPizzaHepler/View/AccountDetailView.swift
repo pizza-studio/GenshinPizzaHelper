@@ -40,10 +40,17 @@ struct AccountDetailView: View {
 
     @State private var isPresentingConfirm: Bool = false
     @State private var isSheetShow: Bool = false
+    
+    @State private var isWebShown: Bool = false
 
+    @State private var connectStatus: ConnectStatus = .unknown
+    
     var body: some View {
         
+        
+        
         List {
+            Button("重新登录米游社账号") { isWebShown.toggle() }
             Section(header: Text("帐号配置"), footer: Button("支持我们") {
                 isSheetShow.toggle()
             }) {
@@ -63,7 +70,7 @@ struct AccountDetailView: View {
                     }
                 }
             }
-            TestSectionView(uid: bindingUid, cookie: bindingCookie, server: bindingServer)
+            TestSectionView(connectStatus: $connectStatus, uid: bindingUid, cookie: bindingCookie, server: bindingServer)
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
         .onDisappear {
@@ -75,6 +82,9 @@ struct AccountDetailView: View {
                     .navigationTitle("支持我们")
                     .navigationBarTitleDisplayMode(.inline)
             }
+        }
+        .sheet(isPresented: $isWebShown) {
+            GetCookieWebView(isShown: $isWebShown, cookie: bindingCookie, region: server.region)
         }
     }
 }
