@@ -82,6 +82,59 @@ extension API {
                         
                     }
                 }
+
         }
+        
+        static func getUserGameRolesByCookie (
+            _ cookie: String,
+            _ region: Region,
+            completion: @escaping (
+                Result<[FetchedAccount], FetchError>
+            ) -> ()
+        ) {
+            let urlStr = "binding/api/getUserGameRolesByCookie"
+            
+            guard cookie != "" else { completion(.failure(.noFetchInfo)); print("no cookie got"); return}
+            
+            HttpMethod<RequestAccountListResult>
+                .commonRequest(.get, urlStr, region, cookie) { result in
+                    switch result {
+                    case .failure(let requestError):
+                        
+                        switch requestError {
+                        case .decodeError(let message):
+                            completion(.failure(.decodeError(message)))
+                        default:
+                            completion(.failure(.requestError(requestError)))
+                        }
+                    case .success(let requestAccountResult):
+                        print("request succeed")
+                        let accountListData = requestAccountResult.data
+                        let retcode = requestAccountResult.retcode
+                        let message = requestAccountResult.message
+                        
+                        switch retcode {
+                        case 0:
+                            print("get accountListData succeed")
+                            if accountListData!.list.isEmpty {
+                                completion(.failure(.accountUnbound))
+                            } else {
+                                completion(.success(accountListData!.list))
+                            }
+                        case 10001:
+                            print("fail 10001")
+                            completion(.failure(.cookieInvalid(retcode, message)))
+                        default:
+                            print("unknowerror")
+                            completion(.failure(.unknownError(retcode, message)))
+                        }
+                    }
+                    
+                    
+                    
+                }
+        }
+
     }
+    
 }

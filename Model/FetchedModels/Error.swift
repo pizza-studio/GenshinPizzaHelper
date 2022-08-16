@@ -19,6 +19,8 @@ struct ErrorCode: Codable {
     var message: String?
 }
 
+
+
 enum FetchError: Error {
     case noFetchInfo
     
@@ -34,6 +36,8 @@ enum FetchError: Error {
     case unknownError(Int, String)
     
     case defaultStatus
+    
+    case accountUnbound 
 }
 
 extension FetchError {
@@ -46,9 +50,9 @@ extension FetchError {
             return "请长按小组件选择账号"
             
         case .cookieInvalid(let retcode, _):
-            return "错误码\(retcode)：Cookie无效"
+            return "错误码\(retcode)：Cookie失效，请重新登录"
         case .unmachedAccountCookie(let retcode, _):
-            return "错误码\(retcode)：Cookie与UID不匹配"
+            return "错误码\(retcode)：米游社账号与UID不匹配"
         case .accountInvalid(let retcode, _):
             return "错误码\(retcode)：UID有误"
         case .dataNotFound(let retcode, _):
@@ -59,6 +63,8 @@ extension FetchError {
             return "网络错误"
         case .unknownError(let retcode, _):
             return "未知错误码：\(retcode)"
+        default:
+            return ""
         }
     }
     
@@ -92,6 +98,11 @@ extension FetchError {
             }
         case .unknownError(_, let message):
             return message
+        default:
+            return ""
         }
+    
     }
 }
+
+
