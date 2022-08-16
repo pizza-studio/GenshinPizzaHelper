@@ -114,35 +114,12 @@ struct AddAccountView: View {
                                         case .success(let fetchedAccountArray):
                                             accountsForSelected = fetchedAccountArray
                                             if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
-                                            API.Features.fetchInfos(region: unsavedServer.region,
-                                                                    serverID: unsavedServer.id,
-                                                                    uid: unsavedUid,
-                                                                    cookie: unsavedCookie) { result in
-                                                switch result {
-                                                case .success(_ ):
-                                                    connectStatus = .success
-                                                case .failure(_ ):
-                                                    connectStatus = .fail
-                                                }
-                                            }
                                         }
                                     }
                                 }
                             case .success(let fetchedAccountArray):
                                 accountsForSelected = fetchedAccountArray
                                 if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
-                                API.Features.fetchInfos(region: unsavedServer.region,
-                                                        serverID: unsavedServer.id,
-                                                        uid: unsavedUid,
-                                                        cookie: unsavedCookie) { result in
-                                    switch result {
-                                    case .success(_ ):
-                                        connectStatus = .success
-                                    case .failure(_ ):
-                                        connectStatus = .fail
-                                    }
-                                }
-                                
                             }
                         }
                     }
