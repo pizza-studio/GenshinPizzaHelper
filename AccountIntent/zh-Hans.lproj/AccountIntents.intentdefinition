@@ -296,7 +296,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>总是显示</string>
+					<string>始终显示</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>lMTFKb</string>
 					<key>INEnumValueIndex</key>
@@ -306,7 +306,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>总是不显示</string>
+					<string>始终不显示</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>TDccRa</string>
 					<key>INEnumValueIndex</key>
