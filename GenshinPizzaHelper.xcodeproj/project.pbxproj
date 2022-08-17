@@ -356,8 +356,8 @@
 				EAF43C9628A0166100D89787 /* WidgetErrorView.swift */,
 				BFE42538289E500F00FEFA49 /* MainInfoView.swift */,
 				BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */,
-				BFE4253E289E51C900FEFA49 /* MainInfoSubViews */,
 				BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */,
+				BFE4253E289E51C900FEFA49 /* MainInfoSubViews */,
 				EAF43C8328A0120400D89787 /* InfoBars */,
 			);
 			path = Views;
