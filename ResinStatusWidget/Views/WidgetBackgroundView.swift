@@ -11,6 +11,7 @@ struct WidgetBackgroundView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     let backgroundColors: [Color]
     let backgroundIconName: String?
+    let darkModeOn: Bool
     
     var body: some View {
         ZStack{
@@ -25,7 +26,8 @@ struct WidgetBackgroundView: View {
                         .frame(width: g.size.width, height: g.size.height)
                 }
             }
-            if colorScheme == .dark {
+            
+            if colorScheme == .dark && darkModeOn {
                 Color.black
                     .opacity(0.3)
             }

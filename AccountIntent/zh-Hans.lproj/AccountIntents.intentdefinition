@@ -341,7 +341,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>33</integer>
+			<integer>35</integer>
 			<key>INIntentName</key>
 			<string>SelectAccount</string>
 			<key>INIntentParameters</key>
@@ -714,6 +714,50 @@
 					<integer>33</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>使用深色模式（跟随系统）</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>mKzz1P</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>8</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<true/>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>否</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>ppnCJD</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>是</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>gxv19W</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>isDarkModeOn</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>35</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>

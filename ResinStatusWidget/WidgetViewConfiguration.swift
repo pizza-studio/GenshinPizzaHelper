@@ -15,6 +15,8 @@ struct WidgetViewConfiguration {
     let weeklyBossesShowingMethod: WeeklyBossesShowingMethod
     var noticeMessage: String?
     
+    let isDarkModeOn: Bool
+    
 //    let colorHandler: ColorHandler
     var backgroundColor: WidgetBackgroundColor
 //    { colorHandler.colors }
@@ -33,6 +35,7 @@ struct WidgetViewConfiguration {
         expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
         weeklyBossesShowingMethod = .disappearAfterCompleted
         backgroundColor = .purple
+        isDarkModeOn = true
     }
     
     init(showAccountName: Bool, showTransformer: Bool, noticeExpeditionWhenAllCompleted: Bool, showExpeditionCompleteTime: Bool, showWeeklyBosses: Bool, noticeMessage: String?) {
@@ -41,6 +44,7 @@ struct WidgetViewConfiguration {
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: noticeExpeditionWhenAllCompleted, expeditionShowingMethod: .byNum)
         self.weeklyBossesShowingMethod = .disappearAfterCompleted
         backgroundColor = .purple
+        isDarkModeOn = true
     }
 }
 

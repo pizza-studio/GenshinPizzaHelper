@@ -37,5 +37,6 @@ extension WidgetViewConfiguration {
         // TODO: 改成Intent中的东西
 //        self.colorHandler = ColorHandler(widgetBackgroundColor: .purple)
         self.backgroundColor = WidgetBackgroundColor.init(rawValue: intent.backgoundColor.rawValue) ?? .purple
+        self.isDarkModeOn = intent.isDarkModeOn?.boolValue ?? true
     }
 }
