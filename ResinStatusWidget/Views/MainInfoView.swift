@@ -21,7 +21,7 @@ struct MainInfo: View {
         
         let transformerCompleted: Bool = userData.transformerInfo.isComplete && userData.transformerInfo.obtained && viewConfig.showTransformer
         let expeditionCompleted: Bool = viewConfig.expeditionViewConfig.noticeExpeditionWhenAllCompleted ? userData.expeditionInfo.allCompleted : userData.expeditionInfo.anyCompleted
-        let weeklyBossesNotice: Bool = viewConfig.showWeeklyBosses && !userData.weeklyBossesInfo.isComplete && Calendar.current.isDateInWeekend(Date())
+        let weeklyBossesNotice: Bool = (viewConfig.weeklyBossesShowingMethod != .neverShow) && !userData.weeklyBossesInfo.isComplete && Calendar.current.isDateInWeekend(Date())
         let dailyTaskNotice: Bool = !userData.dailyTaskInfo.isTaskRewardReceived && (userData.dailyTaskInfo.finishedTaskNum == userData.dailyTaskInfo.totalTaskNum)
         
         // 需要马上上号
@@ -93,9 +93,9 @@ struct MainInfo: View {
     }
 }
 
-struct preview: PreviewProvider {
-    static var previews: some View {
-        MainInfo(userData: UserData.defaultData, viewConfig: WidgetViewConfiguration.defaultConfig, accountName: nil)
-            .background(LinearGradient(colors: WidgetBackgroundColor.purple.colors, startPoint: .topLeading, endPoint: .bottomTrailing))
-    }
-}
+//struct preview: PreviewProvider {
+//    static var previews: some View {
+//        MainInfo(userData: UserData.defaultData, viewConfig: WidgetViewConfiguration.defaultConfig, accountName: nil)
+//            .background(LinearGradient(colors: WidgetBackgroundColor.purple.colors, startPoint: .topLeading, endPoint: .bottomTrailing))
+//    }
+//}

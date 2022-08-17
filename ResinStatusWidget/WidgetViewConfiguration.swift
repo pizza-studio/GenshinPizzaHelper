@@ -12,7 +12,7 @@ struct WidgetViewConfiguration {
     let showAccountName: Bool
     let showTransformer: Bool
     let expeditionViewConfig: ExpeditionViewConfiguration
-    let showWeeklyBosses: Bool
+    let weeklyBossesShowingMethod: WeeklyBossesShowingMethod
     var noticeMessage: String?
     
 //    let colorHandler: ColorHandler
@@ -31,7 +31,7 @@ struct WidgetViewConfiguration {
         showAccountName = true
         showTransformer = true
         expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
-        showWeeklyBosses = true
+        weeklyBossesShowingMethod = .disappearAfterCompleted
         backgroundColor = .purple
     }
     
@@ -39,7 +39,7 @@ struct WidgetViewConfiguration {
         self.showAccountName  = showAccountName
         self.showTransformer = showTransformer
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: noticeExpeditionWhenAllCompleted, expeditionShowingMethod: .byNum)
-        self.showWeeklyBosses = showWeeklyBosses
+        self.weeklyBossesShowingMethod = .disappearAfterCompleted
         backgroundColor = .purple
     }
 }
