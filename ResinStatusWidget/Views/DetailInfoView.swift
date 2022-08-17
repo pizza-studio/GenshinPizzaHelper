@@ -22,15 +22,26 @@ struct DetailInfo: View {
             
             ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
             
-            if !userData.weeklyBossesInfo.isComplete && viewConfig.showWeeklyBosses {
-                if userData.transformerInfo.obtained && viewConfig.showTransformer && userData.transformerInfo.isComplete {
-                    TransformerInfoBar(transformerInfo: userData.transformerInfo)
+            switch viewConfig.weeklyBossesShowingMethod {
+            case .disappearAfterCompleted, .unknown:
+                if userData.transformerInfo.obtained && viewConfig.showTransformer {
+                    if userData.weeklyBossesInfo.isComplete {
+                        TransformerInfoBar(transformerInfo: userData.transformerInfo)
+                    }
                 }
-                WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
-            } else {
+            case .neverShow, .alwaysShow:
                 if userData.transformerInfo.obtained && viewConfig.showTransformer {
                     TransformerInfoBar(transformerInfo: userData.transformerInfo)
                 }
+            }
+            
+            switch viewConfig.weeklyBossesShowingMethod {
+            case .disappearAfterCompleted, .unknown:
+                if !userData.weeklyBossesInfo.isComplete { WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo) }
+            case .neverShow:
+                EmptyView()
+            case .alwaysShow:
+                WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
             }
         }
         .padding(.trailing)

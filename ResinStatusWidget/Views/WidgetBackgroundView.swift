@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct WidgetBackgroundView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     let backgroundColors: [Color]
     let backgroundIconName: String?
+    let darkModeOn: Bool
     
     var body: some View {
         ZStack{
@@ -22,17 +24,14 @@ struct WidgetBackgroundView: View {
                         .opacity(0.05)
                         .padding()
                         .frame(width: g.size.width, height: g.size.height)
-//                        .blur(radius: 0.5)
                 }
-//                Image(backgroundIconName)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .opacity(0.05)
-//                    .padding()
-                    
+            }
+            
+            if colorScheme == .dark && darkModeOn {
+                Color.black
+                    .opacity(0.3)
             }
         }
-        
     }
 }
 
