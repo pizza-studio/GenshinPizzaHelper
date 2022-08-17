@@ -25,11 +25,35 @@ struct GetCookieWebView: View {
             return "https://m.hoyolab.com/#/home"
         }
     }
+    
+    var httpHeaderFields: [ String : String ] {
+        switch region {
+        case .cn:
+            return [
+                "Host": "m.bbs.mihoyo.com",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+                "Connection": "keep-alive",
+                "Accept-Encoding": "gzip, deflate, br",
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
+                "Cookie": ""
+            ]
+        case .global:
+            return [
+                "Host": "m.hoyolab.com",
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "accept-language": "zh-CN,zh-Hans;q=0.9",
+                "accept-encoding": "gzip, deflate, br",
+                "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
+            ]
+        }
+    }
+    
 
     var body: some View {
         
         NavigationView {
-            CookieGetterWebView(url: url, dataStore: dataStore)
+            CookieGetterWebView(url: url, dataStore: dataStore, httpHeaderFields: httpHeaderFields)
 //                .ignoresSafeArea()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -40,7 +64,6 @@ struct GetCookieWebView: View {
                                     cookies.forEach {
                                         print($0.name, $0.value)
                                         cookie = cookie + $0.name + "=" + $0.value + "; "
-                                        dataStore.httpCookieStore.delete($0)
                                     }
                                 }
                                 isShown.toggle()
@@ -57,6 +80,7 @@ struct GetCookieWebView: View {
 struct CookieGetterWebView: UIViewRepresentable {
     var url: String = ""
     let dataStore: WKWebsiteDataStore
+    let httpHeaderFields: [ String : String ]
     
     
     func makeUIView(context: Context) -> WKWebView {
@@ -74,14 +98,7 @@ struct CookieGetterWebView: UIViewRepresentable {
                 }
         HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
-        request.allHTTPHeaderFields = [
-            "Host": "m.bbs.mihoyo.com",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-            "Connection": "keep-alive",
-            "Accept-Encoding": "gzip, deflate, br",
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
-        ]
+        request.allHTTPHeaderFields = httpHeaderFields
         let webview = WKWebView()
         webview.configuration.websiteDataStore = dataStore
         webview.load(request)
@@ -92,16 +109,8 @@ struct CookieGetterWebView: UIViewRepresentable {
     func updateUIView(_ uiView: WKWebView, context: Context) {
         if let url = URL(string: self.url) {
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
-            request.httpShouldHandleCookies = false 
-            request.allHTTPHeaderFields = [
-                "Host": "m.bbs.mihoyo.com",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-                "Connection": "keep-alive",
-                "Accept-Encoding": "gzip, deflate, br",
-                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
-                "Cookie": ""
-            ]
+            request.httpShouldHandleCookies = false
+            request.allHTTPHeaderFields = httpHeaderFields
             print(request.description)
             uiView.load(request)
         }

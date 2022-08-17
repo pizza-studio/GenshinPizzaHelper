@@ -162,6 +162,7 @@ struct HttpMethod<T: Codable> {
         _ urlStr: String,
         _ region: Region,
         _ cookie: String,
+        _ serverId: String?,
         completion: @escaping(
             (Result<T, RequestError>) -> ()
         )
@@ -181,15 +182,18 @@ struct HttpMethod<T: Codable> {
                     appVersion = "2.11.1"
                     userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1"
                 case .global:
-                    baseStr = "https://bbs-api-os.hoyolab.com/"
+                    baseStr = "https://api-account-os.hoyolab.com/"
                     appVersion = "2.9.1"
                     userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
                 }
                 // 由前缀和后缀共同组成的url
                 var url = URLComponents(string: baseStr + urlStr)!
-                url.queryItems = [
-                    URLQueryItem(name: "game_biz", value: "hk4e_cn"),
-                ]
+                switch region {
+                case .cn:
+                    url.queryItems = [URLQueryItem(name: "game_biz", value: "hk4e_cn")]
+                case .global:
+                    url.queryItems = [URLQueryItem(name: "game_biz", value: "hk4e_global"), URLQueryItem(name: "region", value: serverId)]
+                }
                 // 初始化请求
                 var request = URLRequest(url: url.url!)
                 // 设置请求头
