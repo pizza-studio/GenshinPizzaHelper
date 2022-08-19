@@ -71,7 +71,7 @@ struct GetCookieWebView: View {
                         }
                     }
                 }
-                .navigationTitle("请登录")
+                .navigationTitle("请完成登录")
                 .navigationBarTitleDisplayMode(.inline)
         }
     }
