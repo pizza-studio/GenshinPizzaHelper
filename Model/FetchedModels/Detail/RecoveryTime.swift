@@ -20,14 +20,16 @@ struct RecoveryTime {
     
     var isComplete: Bool { second == 0 }
     
-    var describeIntervalLong: String {
+    var describeIntervalLong: String? {
+        guard second != 0 else { return nil }
         // 描述为 X天 或 X小时X分钟
         if second / 3600 >= 24 {
             return "\(second / (3600 * 24))天"
         }
         return "\(second / 3600)小时\((second % 3600) / 60)分钟"
     }
-    var describeIntervalShort: String {
+    var describeIntervalShort: String? {
+        guard second != 0 else { return nil }
         // 描述为 X天 或 X小时 或 X分钟
         if second / 3600 >= 24 {
             return "\(second / (3600 * 24))天"
@@ -37,7 +39,8 @@ struct RecoveryTime {
             return "\((second % 3600) / 60)分钟"
         }
     }
-    var completeTimePointFromNow: String {
+    var completeTimePointFromNow: String? {
+        guard second != 0 else { return nil }
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
@@ -48,6 +51,7 @@ struct RecoveryTime {
 
         return dateFormatter.string(from: date)
     }
+    
     
 }
 
