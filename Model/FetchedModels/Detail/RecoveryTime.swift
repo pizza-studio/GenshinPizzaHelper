@@ -22,14 +22,14 @@ struct RecoveryTime {
     
     var describeIntervalLong: String {
         // 描述为 X天 或 X小时X分钟
-        if second / 3600 > 24 {
+        if second / 3600 >= 24 {
             return "\(second / (3600 * 24))天"
         }
         return "\(second / 3600)小时\((second % 3600) / 60)分钟"
     }
     var describeIntervalShort: String {
         // 描述为 X天 或 X小时 或 X分钟
-        if second / 3600 > 24 {
+        if second / 3600 >= 24 {
             return "\(second / (3600 * 24))天"
         } else if second / 3600 > 0 {
             return "\(second / 3600)小时"

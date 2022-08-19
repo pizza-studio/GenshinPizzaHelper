@@ -38,14 +38,15 @@ struct AddAccountView: View {
     
     var body: some View {
         List {
-            if connectStatus != .success {
+            if (connectStatus == .fail) || (connectStatus == .unknown) {
                 Section(footer: HStack {
                     Text("你也可以")
                     NavigationLink(destination: AddAccountDetailView(unsavedName: $unsavedName, unsavedUid: $unsavedUid, unsavedCookie: $unsavedCookie, unsavedServer: $unsavedServer, connectStatus: $connectStatus)) {
                         Text("手动设置账号")
                     }
                 }) {
-                    Menu("登录米游社账号") {
+                    
+                    Menu {
                         Button("国服") {
                             region = .cn
                             isWebShown = true
@@ -54,16 +55,20 @@ struct AddAccountView: View {
                             region = .global
                             isWebShown = true
                         }
+                    } label: {
+                        Text("登录米游社账号")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
             }
             
             if let loginError = loginError {
                 Section(footer: Text("DEBUG：" + loginError.message).foregroundColor(Color(UIColor.systemGray))) {
-                    Text("米游社登录错误，请尝试重新登陆")
-                        .foregroundColor(Color.red)
                     Text(loginError.description)
-                        .foregroundColor(Color(UIColor.systemGray))
+                        .foregroundColor(.secondary)
                 }
             }
             
@@ -82,7 +87,7 @@ struct AddAccountView: View {
                 }
             }
             
-            if connectStatus == .success {
+            if (connectStatus == .success) || (connectStatus == .testing) {
                 NavigationLink(destination: AddAccountDetailView(unsavedName: $unsavedName, unsavedUid: $unsavedUid, unsavedCookie: $unsavedCookie, unsavedServer: $unsavedServer, connectStatus: $connectStatus)) {
                     Text("查看账号详情")
                 }
@@ -102,7 +107,7 @@ struct AddAccountView: View {
             }
             
         }
-        .navigationBarTitle("帐号信息", displayMode: .inline)
+        .navigationBarTitle("添加账号", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("完成") {
@@ -131,6 +136,7 @@ struct AddAccountView: View {
                 unsavedUid = selectedAccount.gameUid
                 unsavedServer = Server.id(selectedAccount.region)
             }
+            connectStatus = .testing
             API.Features.fetchInfos(region: unsavedServer.region,
                                     serverID: unsavedServer.id,
                                     uid: unsavedUid,

@@ -25,11 +25,11 @@ enum FetchError: Error {
     case noFetchInfo
     
     case cookieInvalid(Int, String) // 10001
-    case unmachedAccountCookie(Int, String) // 10102, 10103, 10104
+    case unmachedAccountCookie(Int, String) // 10103, 10104
     case accountInvalid(Int, String) // 1008
-    case dataNotFound(Int, String) // -1
+    case dataNotFound(Int, String) // -1, 10102
     
-    case notLoginError(Int, String)
+    case notLoginError(Int, String) // -100
     
     case decodeError(String)
     
@@ -57,14 +57,14 @@ extension FetchError {
             return "错误码\(retcode)：米游社账号与UID不匹配"
         case .accountInvalid(let retcode, _):
             return "错误码\(retcode)：UID有误"
-        case .dataNotFound(let retcode, _):
-            return "错误码\(retcode)：数据未找到"
+        case .dataNotFound( _, _):
+            return "请前往米游社（或Hoyolab）打开旅行便笺功能"
         case .decodeError( _):
             return "解码错误"
         case .requestError( _):
             return "网络错误"
-        case .notLoginError(let retcode, _):
-            return "错误码\(retcode)：未登录，请重试"
+        case .notLoginError( _, _):
+            return "未获取到登录信息，请重试"
         case .unknownError(let retcode, _):
             return "未知错误码：\(retcode)"
         default:
@@ -79,16 +79,16 @@ extension FetchError {
             
         case .noFetchInfo:
             return ""
-        case .notLoginError(_, let message):
-            return message
+        case .notLoginError(let retcode, let message):
+            return "(\(retcode))" + message
         case .cookieInvalid(_, _):
             return ""
         case .unmachedAccountCookie(_, let message):
             return message
         case .accountInvalid(_, let message):
             return message
-        case .dataNotFound(_, let message):
-            return message
+        case .dataNotFound(let retcode, let message):
+            return "(\(retcode))" + message
         case .decodeError(let message):
             return message
         case .requestError(let requestError):

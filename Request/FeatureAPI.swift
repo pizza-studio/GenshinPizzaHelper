@@ -57,13 +57,13 @@ extension API {
                         case 10001:
                             print("fail 10001")
                             completion(.failure(.cookieInvalid(retcode, message)))
-                        case 10102, 10103, 10104:
+                        case 10103, 10104:
                             print("fail nomatch")
                             completion(.failure(.unmachedAccountCookie(retcode, message)))
                         case 1008:
                             print("fail 1008")
                             completion(.failure(.accountInvalid(retcode, message)))
-                        case -1:
+                        case -1, 10102:
                             print("fail -1")
                             completion(.failure(.dataNotFound(retcode, message)))
                         default:

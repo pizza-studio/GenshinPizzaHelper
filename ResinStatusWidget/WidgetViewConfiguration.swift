@@ -33,7 +33,7 @@ struct WidgetViewConfiguration {
         showAccountName = true
         showTransformer = true
         expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
-        weeklyBossesShowingMethod = .disappearAfterCompleted
+        weeklyBossesShowingMethod = .alwaysShow
         backgroundColor = .purple
         isDarkModeOn = true
     }
