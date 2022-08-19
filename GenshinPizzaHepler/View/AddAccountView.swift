@@ -110,7 +110,7 @@ struct AddAccountView: View {
         .navigationBarTitle("添加账号", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("完成") {
+                Button("保存") {
                     if (unsavedUid == "") || (unsavedCookie == "") {
                         isAlertShow.toggle()
                         return
