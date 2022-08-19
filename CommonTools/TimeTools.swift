@@ -7,7 +7,7 @@
 
 import Foundation
 
-func secondsToHoursMinutesSeconds(_ seconds: Int) -> String {
+func secondsToHoursMinutes(_ seconds: Int) -> String {
     if seconds / 3600 > 24 {
         return "\(seconds / (3600 * 24))天"
     }

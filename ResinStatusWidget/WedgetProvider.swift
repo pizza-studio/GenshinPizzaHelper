@@ -100,6 +100,14 @@ struct Provider: IntentTimelineProvider {
         // 正常情况
         config.fetchResult { result in
             let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig, accountName: config.name)
+            
+            switch result {
+            case .success(let userData):
+                UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData)
+            case .failure(_ ):
+                break
+            }
+            
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Widget Fetch succeed")
