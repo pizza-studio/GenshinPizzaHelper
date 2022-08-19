@@ -17,9 +17,6 @@ struct AddAccountDetailView: View {
     var body: some View {
         List {
             Section(header: Text("账号配置")) {
-                NavigationLink(destination: TextFieldEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: $unsavedName)) {
-                    InfoPreviewer(title: "帐号名", content: unsavedName)
-                }
                 NavigationLink(destination: TextFieldEditorView(title: "UID", content: $unsavedUid, keyboardType: .numberPad)) {
                     InfoPreviewer(title: "UID", content: unsavedUid)
                 }
