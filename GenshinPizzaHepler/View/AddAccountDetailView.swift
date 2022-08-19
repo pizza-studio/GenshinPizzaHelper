@@ -12,10 +12,11 @@ struct AddAccountDetailView: View {
     @Binding var unsavedUid: String
     @Binding var unsavedCookie: String
     @Binding var unsavedServer: Server
+    @Binding var connectStatus: ConnectStatus
     
     var body: some View {
         List {
-            Section {
+            Section(header: Text("账号配置")) {
                 NavigationLink(destination: TextFieldEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: $unsavedName)) {
                     InfoPreviewer(title: "帐号名", content: unsavedName)
                 }
@@ -31,6 +32,9 @@ struct AddAccountDetailView: View {
                             .tag(server)
                     }
                 }
+            }
+            if (unsavedUid != "") && (unsavedCookie != "") {
+                TestSectionView(connectStatus: $connectStatus, uid: $unsavedUid, cookie: $unsavedCookie, server: $unsavedServer)
             }
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)

@@ -79,6 +79,8 @@ extension FetchError {
             
         case .noFetchInfo:
             return ""
+        case .notLoginError(_, let message):
+            return message
         case .cookieInvalid(_, _):
             return ""
         case .unmachedAccountCookie(_, let message):
