@@ -29,6 +29,8 @@ enum FetchError: Error {
     case accountInvalid(Int, String) // 1008
     case dataNotFound(Int, String) // -1
     
+    case notLoginError(Int, String)
+    
     case decodeError(String)
     
     case requestError(RequestError)
@@ -61,6 +63,8 @@ extension FetchError {
             return "解码错误"
         case .requestError( _):
             return "网络错误"
+        case .notLoginError(let retcode, _):
+            return "错误码\(retcode)：未登录，请重试"
         case .unknownError(let retcode, _):
             return "未知错误码：\(retcode)"
         default:

@@ -149,14 +149,6 @@ struct HttpMethod<T: Codable> {
         }
     }
     
-    /// 综合的http post方法接口
-    /// - Parameters:
-    ///   - method:Method, http方法的类型
-    ///   - urlStr:String，url的字符串后缀，即request的类型
-    ///   - region:Region，请求的服务器地区类型
-    ///   - serverID: String，服务器ID
-    ///   - cookie: String， 用户Cookie
-    ///   - completion:异步返回处理好的data以及报错的类型
     static func commonRequest (
         _ method: Method,
         _ urlStr: String,
@@ -171,7 +163,9 @@ struct HttpMethod<T: Codable> {
 
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
-
+                
+                
+                
                 // 请求url前缀，后跟request的类型
                 let baseStr: String
                 let appVersion: String
@@ -253,13 +247,6 @@ struct HttpMethod<T: Codable> {
                                 print(error)
                                 completion(.failure(.decodeError(error.localizedDescription)))
                             }
-                            
-                            
-//                            do {
-//                                let requestResult = try decoder.decode(T.self, from: data)
-//                            } catch {
-//                                print("\(error)")
-//                            }
                             
                         }
                     }

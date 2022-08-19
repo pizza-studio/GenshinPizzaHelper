@@ -14,7 +14,7 @@ struct AddAccountView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State private var unsavedName: String = "我的账号"
-    @State private var unsavedUid: String = "12345678"
+    @State private var unsavedUid: String = ""
     @State private var unsavedCookie: String = ""
     @State private var unsavedServer: Server = .china
     
@@ -31,24 +31,35 @@ struct AddAccountView: View {
     
     @State private var region: Region = .cn
     
+    @State private var loginError: FetchError?
     
     
     var body: some View {
         List {
-            
-            Menu("登录米游社账号") {
-                Button("国服") {
-                    region = .cn
-                    isWebShown = true
+            Section(footer: HStack {
+                Text("你也可以")
+                NavigationLink(destination: AddAccountDetailView(unsavedName: $unsavedName, unsavedUid: $unsavedUid, unsavedCookie: $unsavedCookie, unsavedServer: $unsavedServer)) {
+                    Text("手动设置账号")
                 }
-                Button("国际服") {
-                    region = .global
-                    isWebShown = true
+            }) {
+                Menu("登录米游社账号") {
+                    Button("国服") {
+                        region = .cn
+                        isWebShown = true
+                    }
+                    Button("国际服") {
+                        region = .global
+                        isWebShown = true
+                    }
                 }
             }
             
-            // FOR DEBUG
-            TextField("COOKIE", text: $unsavedCookie)
+            if let loginError = loginError {
+                HStack {
+                    Text("米游社登录错误，请尝试重新登陆")
+                        .foregroundColor(Color(UIColor.systemGray))
+                }
+            }
             
             if accountsForSelected.count != 0 {
                 Section(footer: Text("UID: " + selectedAccount!.gameUid)) {
@@ -63,6 +74,8 @@ struct AddAccountView: View {
                         }
                     }
                 }
+            }
+            if (unsavedUid != "") && (unsavedCookie != "") {
                 TestSectionView(connectStatus: $connectStatus, uid: $unsavedUid, cookie: $unsavedCookie, server: $unsavedServer)
             }
         }
@@ -115,66 +128,26 @@ struct AddAccountView: View {
             GetCookieWebView(isShown: $isWebShown, cookie: $unsavedCookie, region: region)
         }
         .onChange(of: isWebShown) { isWebShown in
-            getAccountsForSelect(isWebShown)
+            DispatchQueue.main.async {
+                if !isWebShown {
+                    getAccountsForSelect()
+                }
+            }
             
         }
     }
     
-    fileprivate func getAccountsForSelect(_ isWebShown: Bool) {
-        DispatchQueue.main.async {
-            if isWebShown == false {
-                DispatchQueue.main.async {
-                    API.Features.getUserGameRolesByCookie(unsavedCookie, region) { result in
-                        switch result {
-                        case .failure(let fetchError):
-                            switch region {
-                            case .cn:
-                                print(fetchError)
-                                API.Features.fetchInfos(region: unsavedServer.region,
-                                                        serverID: unsavedServer.id,
-                                                        uid: unsavedUid,
-                                                        cookie: unsavedCookie) { result in
-                                    API.Features.getUserGameRolesByCookie(unsavedCookie, region) { result in
-                                        switch result {
-                                        case .failure(let fetchError):
-                                            print(fetchError)
-                                        case .success(let fetchedAccountArray):
-                                            accountsForSelected = fetchedAccountArray
-                                            if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
-                                        }
-                                    }
-                                }
-                            case .global:
-                                print(fetchError)
-                                let globalServers: [Server] = [.cht, .asia, .eu, .us]
-                                globalServers.forEach { server in
-                                    API.Features.fetchInfos(region: region,
-                                                            serverID: server.id,
-                                                            uid: unsavedUid,
-                                                            cookie: unsavedCookie) { result in
-                                        API.Features.getUserGameRolesByCookie(unsavedCookie, region) { result in
-                                            switch result {
-                                            case .failure(let fetchError):
-                                                print(fetchError)
-                                            case .success(let fetchedAccountArray):
-                                                accountsForSelected = fetchedAccountArray
-                                                if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
-                                            }
-                                        }
-                                    }
-                                }
-                                
-                            }
-                            
-                        case .success(let fetchedAccountArray):
-                            accountsForSelected = fetchedAccountArray
-                            if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
-                        }
-                    }
-                }
-                
+    fileprivate func getAccountsForSelect() {
+        
+        API.Features.getUserGameRolesByCookie(unsavedCookie, region) { result in
+            switch result {
+            case .success(let fetchedAccountArray):
+                accountsForSelected = fetchedAccountArray
+                if !accountsForSelected.isEmpty { selectedAccount = accountsForSelected.first! }
+                loginError = nil
+            case .failure(let fetchError):
+                loginError = fetchError
             }
-            
         }
     }
 }

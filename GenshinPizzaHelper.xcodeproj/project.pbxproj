@@ -92,6 +92,7 @@
 		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
+		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
 		EA56E08628A26C0D00A64262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07628A26C0D00A64262 /* Error.swift */; };
 		EA56E08728A26C0D00A64262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07628A26C0D00A64262 /* Error.swift */; };
 		EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07728A26C0D00A64262 /* RequestResult.swift */; };
@@ -239,6 +240,7 @@
 		EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinStatusWidget.swift; sourceTree = "<group>"; };
 		EA30F9AC2886B49300AE7BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedgetProvider.swift; sourceTree = "<group>"; };
+		EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailView.swift; sourceTree = "<group>"; };
 		EA56E07628A26C0D00A64262 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		EA56E07728A26C0D00A64262 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		EA56E07828A26C0D00A64262 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
+				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
 				EA79FDC828AB9A5600B50D6F /* AccountDetailView copy.swift */,
 				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
 				BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */,
@@ -817,6 +820,7 @@
 				EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EADCC0AC28A52BD800358B5E /* WidgetViewConfiguration.swift in Sources */,
+				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
 				EA56E08628A26C0D00A64262 /* Error.swift in Sources */,

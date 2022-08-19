@@ -92,6 +92,7 @@ extension API {
                 Result<[FetchedAccount], FetchError>
             ) -> ()
         ) {
+            
             let urlStr = "binding/api/getUserGameRolesByCookie"
             
             guard cookie != "" else { completion(.failure(.noFetchInfo)); print("no cookie got"); return}
@@ -99,52 +100,18 @@ extension API {
             
             switch region {
             case .cn:
-                HttpMethod<RequestAccountListResult>
-                    .commonRequest(.get, urlStr, region, cookie, nil) { result in
-                        switch result {
-                        case .failure(let requestError):
-                            
-                            switch requestError {
-                            case .decodeError(let message):
-                                completion(.failure(.decodeError(message)))
-                            default:
-                                completion(.failure(.requestError(requestError)))
-                            }
-                        case .success(let requestAccountResult):
-                            print("request succeed")
-                            let accountListData = requestAccountResult.data
-                            let retcode = requestAccountResult.retcode
-                            let message = requestAccountResult.message
-                            
-                            switch retcode {
-                            case 0:
-                                print("get accountListData succeed")
-                                if accountListData!.list.isEmpty {
-                                    completion(.failure(.accountUnbound))
-                                } else {
-                                    completion(.success(accountListData!.list))
-                                }
-                            case 10001:
-                                print("fail 10001")
-                                completion(.failure(.cookieInvalid(retcode, message)))
-                            default:
-                                print("unknowerror")
-                                completion(.failure(.unknownError(retcode, message)))
-                            }
-                        }
-                    }
-            case .global:
-                var accounts: [FetchedAccount] = []
-                let group = DispatchGroup()
-                let globalServers: [Server] = [.cht, .asia, .eu, .us]
-                globalServers.forEach { server in
-                    group.enter()
+                API.Features.fetchInfos(region: region, serverID: "cn_gf01", uid: "12345678", cookie: cookie) { _ in
                     HttpMethod<RequestAccountListResult>
-                        .commonRequest(.get, urlStr, region, cookie, server.id) { result in
-                            group.enter()
+                        .commonRequest(.get, urlStr, region, cookie, nil) { result in
                             switch result {
                             case .failure(let requestError):
-                                return
+                                
+                                switch requestError {
+                                case .decodeError(let message):
+                                    completion(.failure(.decodeError(message)))
+                                default:
+                                    completion(.failure(.requestError(requestError)))
+                                }
                             case .success(let requestAccountResult):
                                 print("request succeed")
                                 let accountListData = requestAccountResult.data
@@ -153,14 +120,63 @@ extension API {
                                 
                                 switch retcode {
                                 case 0:
-                                    accounts.append(contentsOf: accountListData!.list)
-                                    group.leave()
+                                    print("get accountListData succeed")
+                                    if accountListData!.list.isEmpty {
+                                        completion(.failure(.accountUnbound))
+                                    } else {
+                                        completion(.success(accountListData!.list))
+                                    }
+                                case 10001:
+                                    print("fail 10001")
+                                    completion(.failure(.cookieInvalid(retcode, message)))
+                                case -100:
+                                    print("fail -100")
+                                    completion(.failure(.notLoginError(retcode, message)))
                                 default:
                                     print("unknowerror")
+                                    completion(.failure(.unknownError(retcode, message)))
                                 }
                             }
-                            group.leave()
                         }
+                }
+            case .global:
+                
+                var accounts: [FetchedAccount] = []
+                let group = DispatchGroup()
+                let globalServers: [Server] = [.cht, .asia, .eu, .us]
+                globalServers.forEach { server in
+                    group.enter()
+                    API.Features.fetchInfos(region: region, serverID: server.id, uid: "12345678", cookie: cookie) { _ in
+                        HttpMethod<RequestAccountListResult>
+                            .commonRequest(.get, urlStr, region, cookie, server.id) { result in
+                                group.enter()
+                                switch result {
+                                case .failure(let requestError):
+                                    completion(.failure(.requestError(requestError)))
+                                case .success(let requestAccountResult):
+                                    print("request succeed")
+                                    let accountListData = requestAccountResult.data
+                                    let retcode = requestAccountResult.retcode
+                                    let message = requestAccountResult.message
+                                    
+                                    switch retcode {
+                                    case 0:
+                                        accounts.append(contentsOf: accountListData!.list)
+                                        group.leave()
+                                    case 10001:
+                                        print("fail 10001")
+                                        completion(.failure(.cookieInvalid(retcode, message)))
+                                    case -100:
+                                        print("fail -100")
+                                        completion(.failure(.notLoginError(retcode, message)))
+                                    default:
+                                        print("unknowerror")
+                                        completion(.failure(.unknownError(retcode, message)))
+                                    }
+                                }
+                                group.leave()
+                            }
+                    }
                 }
                 group.notify(queue: DispatchQueue.main) {
                     if accounts.isEmpty { completion(.failure(.accountUnbound)) }
