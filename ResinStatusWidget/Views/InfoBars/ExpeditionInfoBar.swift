@@ -54,7 +54,7 @@ struct ExpeditionInfoBar: View {
                         .minimumScaleFactor(0.2)
                         .lineLimit(1)
                 } else {
-                    Text(expeditionInfo.nextCompleteTime.completeTimePointFromNow ?? "\(expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask)个待领取")
+                    Text(expeditionInfo.nextCompleteTime.completeTimePointFromNow ?? "\(expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask)个已完成")
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
@@ -68,7 +68,7 @@ struct ExpeditionInfoBar: View {
                         .minimumScaleFactor(0.2)
                         .lineLimit(1)
                 } else {
-                    Text(expeditionInfo.nextCompleteTime.describeIntervalShort ?? "\(expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask)个待领取")
+                    Text(expeditionInfo.nextCompleteTime.describeIntervalShort ?? "\(expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask)个已完成")
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
