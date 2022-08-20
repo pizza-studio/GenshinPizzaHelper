@@ -103,7 +103,7 @@ struct Provider: IntentTimelineProvider {
             
             switch result {
             case .success(let userData):
-                UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData)
+                UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
             case .failure(_ ):
                 break
             }

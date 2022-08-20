@@ -18,8 +18,9 @@ struct GenshinPizzaHeplerApp: App {
         if !isPolicySaved {
             defaultStandard.setValue(false, forKey: "isPolicyShown")
         }
+        
         UserNotificationCenter.shared.askPermission()
-        UserNotificationCenter.shared.createResinNotification(for: "hi", with: ResinInfo(10, 10, 600))
+        
     }
     
     var body: some Scene {

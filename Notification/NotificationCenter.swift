@@ -23,37 +23,51 @@ class UserNotificationCenter {
         }
     }
     
-    private func createNotification(in second: Int, for accountName: String, object: Object, title: String, body: String) {
-        let timeInterval = TimeInterval(second)
-        let id = accountName + object.rawValue
-        
+    func createNotificationContent(object: Object, title: String?, body: String) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
-        content.title = title
+        if let title = title {
+            content.title = title
+        }
         content.body = body
         
+//        if let url = imageURL(of: object) {
+//            do {
+//                let attachment = try UNNotificationAttachment(identifier: object.rawValue, url: url)
+//                content.attachments = [attachment]
+//                print("user notification: attach image success")
+//            } catch {
+//                print(error)
+//            }
+//        }
+        
+        return content
+    }
+    
+    private func createNotification(in second: Int, for accountName: String, object: Object, title: String, body: String, uid: String) {
+        let timeInterval = TimeInterval(second)
+        let id = uid + object.rawValue
+        
+        let content = createNotificationContent(object: object, title: title, body: body)
+                
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         
         center.add(request)
+        print(request)
+        print("user notification: success create ")
     }
     
-    private func createNotification(at date: DateComponents, for accountName: String, object: Object, title: String, body: String) {
-        let id = accountName + object.rawValue
+    func createNotification(at date: DateComponents, for accountName: String, object: Object, title: String, body: String, uid: String) {
+        let id = uid + object.rawValue
         
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.subtitle = body
-        
-        if let url = imageURL(of: object) {
-            content.attachments = [try! UNNotificationAttachment(identifier: object.rawValue, url: url)]
-        }
+        let content = createNotificationContent(object: object, title: title, body: body)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
         
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         
         center.add(request)
-        print("success create user notification")
+        print("Adding user notification: \(request)")
     }
     
     func imageURL(of object: Object) -> URL? {
@@ -78,19 +92,19 @@ class UserNotificationCenter {
     let resinNotificationTimeFromFull: Int = 545
     var resinNotificationTimeDescription: String { secondsToHoursMinutes(resinNotificationTimeFromFull) }
     
-    func createResinNotification(for accountName: String, with resinInfo: ResinInfo) {
+    func createResinNotification(for accountName: String, with resinInfo: ResinInfo, uid: String) {
         print("creating resin user notification")
         guard resinInfo.recoveryTime.second > resinNotificationTimeFromFull else { return }
         guard allowResinNotification else { return }
-        let title = "\(accountName)的树脂即将回满"
-        let body = "\(accountName)的树脂还有\(resinNotificationTimeDescription)回满。"
-        
+        let title = "「\(accountName)」的原萃树脂即将回满"
+        let body = "「\(accountName)」现有\(resinInfo.currentResin)个原萃树脂，将在\(resinNotificationTimeDescription)后回满。"
         createNotification(
             in: resinInfo.recoveryTime.second - resinNotificationTimeFromFull,
             for: accountName,
             object: .resin,
             title: title,
-            body: body
+            body: body,
+            uid: uid
         )
     }
     
@@ -99,18 +113,19 @@ class UserNotificationCenter {
     let homeCoinNotificationTimeFromFull: Int = 60 * 60
     var homeCoinNotificationTimeDescription: String { secondsToHoursMinutes(homeCoinNotificationTimeFromFull) }
     
-    func createHomeCoinNotification(for accountName: String, with homeCoinInfo: HomeCoinInfo) {
+    func createHomeCoinNotification(for accountName: String, with homeCoinInfo: HomeCoinInfo, uid: String) {
         guard homeCoinInfo.recoveryTime.second > homeCoinNotificationTimeFromFull else { return }
         guard allowHomeCoinNotification else { return }
-        let title = "\(accountName)的洞天宝钱即将回满"
-        let body = "\(accountName)的洞天宝钱还有\(homeCoinNotificationTimeDescription))回满。"
+        let title = "「\(accountName)」的洞天财瓮即将填满"
+        let body = "「\(accountName)」现有\(homeCoinInfo.currentHomeCoin)个洞天宝钱，将在\(homeCoinNotificationTimeDescription)后回满。"
         
         createNotification(
             in: homeCoinInfo.recoveryTime.second - homeCoinNotificationTimeFromFull,
             for: accountName,
             object: .homeCoin,
             title: title,
-            body: body
+            body: body,
+            uid: uid
         )
     }
     
@@ -118,79 +133,82 @@ class UserNotificationCenter {
     let allowExpeditionNotification = true
     let noticeExpeditionBy: ExpeditionNoticeMethod = .allCompleted
     
-    func createExpeditionNotification(for accountName: String, with expeditionInfo: ExpeditionInfo) {
+    func createExpeditionNotification(for accountName: String, with expeditionInfo: ExpeditionInfo, uid: String) {
         guard !expeditionInfo.allCompleted && allowExpeditionNotification else { return }
         let object: Object = .expedition
-        let title = "\(accountName)的探索派遣已全部完成"
-        let body = "\(accountName)的探索派遣已全部完成。"
+        let title = "「\(accountName)」的探索派遣已全部完成"
+        let body = "「\(accountName)」的探索派遣已全部完成。"
         
-        createNotification(in: expeditionInfo.allCompleteTime.second, for: accountName, object: object, title: title, body: body)
+        createNotification(in: expeditionInfo.allCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
     }
     
     
     let allowWeeklyBossesNotification = true
     let weeklyBossesNotificationTimePoint = DateComponents(hour: 7, weekday: 6)
     
-    func createWeeklyBossesNotification(for accountName: String, with weeklyBossesInfo: WeeklyBossesInfo) {
+    func createWeeklyBossesNotification(for accountName: String, with weeklyBossesInfo: WeeklyBossesInfo, uid: String) {
         guard Date() < Calendar.current.nextDate(after: Date(), matching: weeklyBossesNotificationTimePoint, matchingPolicy: .nextTime)! else { return }
         guard weeklyBossesInfo.remainResinDiscountNum != 0 else {
             deleteNotification(for: accountName, object: .weeklyBosses); return
         }
         guard allowWeeklyBossesNotification else { return }
-        let title = "\(accountName)的征讨领域树脂折扣还未用尽。"
-        let body = "\(accountName)的征讨领域树脂折扣还有\(weeklyBossesInfo.remainResinDiscountNum))次。"
+        let title = "「\(accountName)」的周本树脂折扣还未用尽。"
+        let body = "「\(accountName)」的周本树脂折扣树脂折扣还剩\(weeklyBossesInfo.remainResinDiscountNum))次。"
         
-        createNotification(at: weeklyBossesNotificationTimePoint, for: accountName, object: .weeklyBosses, title: title, body: body)
+        createNotification(at: weeklyBossesNotificationTimePoint, for: accountName, object: .weeklyBosses, title: title, body: body, uid: uid)
     }
+    
+    
     
     let allowTransformerNotification = true
     
-    func createTransformerNotification(for accountName: String, with transformerInfo: TransformerInfo) {
+    func createTransformerNotification(for accountName: String, with transformerInfo: TransformerInfo, uid: String) {
         guard !transformerInfo.isComplete && allowTransformerNotification else { return }
-        let title = "\(accountName)的参量质变仪已经可以使用"
-        let body = "\(accountName)的参量质变仪已经可以使用。"
+        let title = "「\(accountName)」的参量质变仪已经可以使用"
+        let body = "「\(accountName)」的参量质变仪已经可以使用。"
         let object: Object = .transformer
         
-        createNotification(in: transformerInfo.recoveryTime.second, for: accountName, object: object, title: title, body: body)
+        createNotification(in: transformerInfo.recoveryTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
         
     }
     
+    
+    
     let allowDailyTaskNotification = true
+    var dailyTaskNotificationDateComponents = DateComponents(hour: 13, minute: 50)
     
-    var dailyTaskNotificationDateComponents = DateComponents(hour: 19)
-    
-    func createDailyTaskNotification(for accountName: String, with dailyTaskInfo: DailyTaskInfo) {
+    func createDailyTaskNotification(for accountName: String, with dailyTaskInfo: DailyTaskInfo, uid: String) {
         guard Date() < Calendar.current.nextDate(after: Date(), matching: dailyTaskNotificationDateComponents, matchingPolicy: .nextTime)! else { return }
         guard !dailyTaskInfo.isTaskRewardReceived else {
             deleteNotification(for: accountName, object: .dailyTask); return
         }
         guard allowWeeklyBossesNotification else { return }
-        let title = "\(accountName)的每日委托奖励还未领取"
-        let body = "\(accountName)的每日委托还剩\(dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum))个未完成。"
+        let title = "「\(accountName)」的每日委托奖励还未领取"
+        let body = "「\(accountName)」的每日委托还剩余\(dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum))个未完成。"
         
-        createNotification(at: weeklyBossesNotificationTimePoint, for: accountName, object: .dailyTask, title: title, body: body)
+        createNotification(at: weeklyBossesNotificationTimePoint, for: accountName, object: .dailyTask, title: title, body: body, uid: uid)
     }
     
-    func deleteNotification(for accountName: String, object: Object) {
-        let id = accountName + object.rawValue
+    func deleteNotification(for uid: String, object: Object) {
+        let id = uid + object.rawValue
         center.removePendingNotificationRequests(withIdentifiers: [id])
     }
     
     
-    func deleteAllNotification(for accountName: String) {
+    func deleteAllNotification(for uid: String) {
         let removeIdentifiers: [String] = Object.allCases.map { object in
-            accountName + object.rawValue
+            uid + object.rawValue
         }
         center.removePendingNotificationRequests(withIdentifiers: removeIdentifiers)
     }
     
-    func createAllNotification(for accountName: String, with userData: UserData) {
-        createResinNotification(for: accountName, with: userData.resinInfo)
-        createHomeCoinNotification(for: accountName, with: userData.homeCoinInfo)
-        createExpeditionNotification(for: accountName, with: userData.expeditionInfo)
-        createWeeklyBossesNotification(for: accountName, with: userData.weeklyBossesInfo)
-        createTransformerNotification(for: accountName, with: userData.transformerInfo)
-        createDailyTaskNotification(for: accountName, with: userData.dailyTaskInfo)
+    func createAllNotification(for accountName: String, with userData: UserData, uid: String) {
+        createResinNotification(for: accountName, with: userData.resinInfo, uid: uid)
+        createHomeCoinNotification(for: accountName, with: userData.homeCoinInfo, uid: uid)
+        createExpeditionNotification(for: accountName, with: userData.expeditionInfo, uid: uid)
+        createWeeklyBossesNotification(for: accountName, with: userData.weeklyBossesInfo, uid: uid)
+        createTransformerNotification(for: accountName, with: userData.transformerInfo, uid: uid)
+        createDailyTaskNotification(for: accountName, with: userData.dailyTaskInfo, uid: uid)
     }
     
 }
