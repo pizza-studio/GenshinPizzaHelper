@@ -18,7 +18,9 @@ struct HelpSheetView: View {
                     Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
                 }
                 Section {
-                    Button("从iCloud同步账号配置") { viewModel.forceFetchAccount() }
+                    NavigationLink(destination: NotificationSettingView()) {
+                        Text("通知设置")
+                    }
                 }
                 Section {
                     Button("在App Store评分") {

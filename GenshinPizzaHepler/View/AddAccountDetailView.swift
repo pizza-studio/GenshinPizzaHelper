@@ -17,9 +17,7 @@ struct AddAccountDetailView: View {
     var body: some View {
         List {
             Section(header: Text("账号配置")) {
-                NavigationLink(destination: TextFieldEditorView(title: "UID", content: $unsavedUid, keyboardType: .numberPad)) {
-                    InfoPreviewer(title: "UID", content: unsavedUid)
-                }
+                InfoEditor(title: "UID", content: $unsavedUid, keyboardType: .numberPad)
                 NavigationLink(destination: TextEditorView(title: "Cookie", content: $unsavedCookie, showPasteButton: true, showShortCutsLink: true)) {
                     Text("Cookie")
                 }

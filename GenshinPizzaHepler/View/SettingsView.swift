@@ -22,7 +22,40 @@ struct SettingsView: View {
     @State private var sheetType: SettingsViewSheetType? = nil
 
     var body: some View {
+        Button("notification") {
+            
+            viewModel.accounts.forEach { account in
+                let config = account.config
+                config.fetchResult { result in
+                    switch result {
+                    case .success(let userData):
+                        UserNotificationCenter.shared.createAllNotification(for: config.name!, with: userData, uid: config.uid!)
+                    case .failure(_):
+                        break
+                    }
+
+                    
+                }
+            }
+            UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+                guard !requests.isEmpty else { print("????no request") ; return}
+                requests.forEach { request in
+                    if let localTrigger = request.trigger as? UNTimeIntervalNotificationTrigger {
+                        print("User Notification \(request.identifier): \(localTrigger.timeInterval)")
+                    } else if let dateTrigger = request.trigger as? UNCalendarNotificationTrigger {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateStyle = .short
+                        dateFormatter.timeStyle = .short
+                        dateFormatter.doesRelativeDateFormatting = true
+                        dateFormatter.locale = Locale(identifier: "zh_CN")
+                        print("User Notification \(request.identifier): \(dateFormatter.string(from: dateTrigger.nextTriggerDate() ?? Date()))")
+                    }
+                    
+                }
+            }
+        }
         NavigationView {
+            
             List {
                 Section(header: Text("我的帐号")) {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
