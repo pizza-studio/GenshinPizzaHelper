@@ -218,6 +218,16 @@
 					<key>INEnumValueName</key>
 					<string>intertwinedFate</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>胡桃·安神</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>c2tvNh</string>
+					<key>INEnumValueIndex</key>
+					<integer>15</integer>
+					<key>INEnumValueName</key>
+					<string>hutao</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>

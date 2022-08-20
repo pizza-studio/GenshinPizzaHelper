@@ -11,11 +11,21 @@ struct WidgetBackgroundView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     let backgroundColors: [Color]
     let backgroundIconName: String?
+    let backgroundImageName: String?
     let darkModeOn: Bool
     
     var body: some View {
         ZStack{
-            LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing)
+            if !backgroundColors.isEmpty {
+                LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing)
+            }
+            
+            if let backgroundImageName = backgroundImageName {
+                Image(backgroundImageName)
+                    .resizable()
+                    .scaledToFill()
+            }
+            
             if let backgroundIconName = backgroundIconName {
                 GeometryReader { g in
                     Image(backgroundIconName)

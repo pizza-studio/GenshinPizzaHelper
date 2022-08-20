@@ -53,7 +53,8 @@ extension WidgetBackgroundColor {
             return "草元素"
         case .intertwinedFate:
             return "纠缠之缘"
-            
+        default:
+            return ""
         }
     }
     
@@ -73,6 +74,15 @@ extension WidgetBackgroundColor {
             return "雷元素图标"
         case .glass:
             return "草元素图标"
+        default:
+            return nil
+        }
+    }
+    
+    var imageName: String? {
+        switch self {
+        case .hutao:
+            return "hutao"
         default:
             return nil
         }
@@ -166,6 +176,8 @@ extension WidgetBackgroundColor {
                 Color("bgColor.intertwinedFate.2"),
                 Color("bgColor.intertwinedFate.3")
             ]
+        default:
+            return []
         }
     }
 }
