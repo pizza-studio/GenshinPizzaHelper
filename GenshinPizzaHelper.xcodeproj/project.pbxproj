@@ -86,6 +86,7 @@
 		EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09A02728A2C45E0023B4AF /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
 		EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
+		EA2FF0E928B093AE0050C016 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -149,6 +150,20 @@
 		EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EADCC0AC28A52BD800358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
+		EAEC41E228B096170056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
+		EAEC41E328B096180056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
+		EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F328B0994C0056D182 /* 参量质变仪.png */; };
+		EAEC41F828B0994C0056D182 /* 参量质变仪.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F328B0994C0056D182 /* 参量质变仪.png */; };
+		EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F328B0994C0056D182 /* 参量质变仪.png */; };
+		EAEC41FA28B0994C0056D182 /* 树脂.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F428B0994C0056D182 /* 树脂.png */; };
+		EAEC41FB28B0994C0056D182 /* 树脂.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F428B0994C0056D182 /* 树脂.png */; };
+		EAEC41FC28B0994C0056D182 /* 树脂.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F428B0994C0056D182 /* 树脂.png */; };
+		EAEC41FD28B0994C0056D182 /* 周本.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F528B0994C0056D182 /* 周本.png */; };
+		EAEC41FE28B0994C0056D182 /* 周本.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F528B0994C0056D182 /* 周本.png */; };
+		EAEC41FF28B0994C0056D182 /* 周本.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F528B0994C0056D182 /* 周本.png */; };
+		EAEC420028B0994C0056D182 /* 洞天宝钱.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F628B0994C0056D182 /* 洞天宝钱.png */; };
+		EAEC420128B0994C0056D182 /* 洞天宝钱.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F628B0994C0056D182 /* 洞天宝钱.png */; };
+		EAEC420228B0994C0056D182 /* 洞天宝钱.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F628B0994C0056D182 /* 洞天宝钱.png */; };
 		EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
 		EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */; };
 		EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
@@ -236,6 +251,7 @@
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
 		EA1B76762886B89F007A5216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EA2FF0E828B093AE0050C016 /* 每日任务.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "每日任务.png"; sourceTree = "<group>"; };
 		EA30F99B2886B46C00AE7BEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ResinStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA30F9A32886B49200AE7BEA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -274,6 +290,10 @@
 		EABD7DCC2886B3D700B7F0FD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		EAEC41F328B0994C0056D182 /* 参量质变仪.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "参量质变仪.png"; sourceTree = "<group>"; };
+		EAEC41F428B0994C0056D182 /* 树脂.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "树脂.png"; sourceTree = "<group>"; };
+		EAEC41F528B0994C0056D182 /* 周本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周本.png"; sourceTree = "<group>"; };
+		EAEC41F628B0994C0056D182 /* 洞天宝钱.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "洞天宝钱.png"; sourceTree = "<group>"; };
 		EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinInfoBar.swift; sourceTree = "<group>"; };
 		EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpeditionInfoBar.swift; sourceTree = "<group>"; };
 		EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskInfoBar.swift; sourceTree = "<group>"; };
@@ -401,6 +421,18 @@
 			path = AccountIntent;
 			sourceTree = "<group>";
 		};
+		EA2FF0DB28B0922D0050C016 /* NotificationImages */ = {
+			isa = PBXGroup;
+			children = (
+				EAEC41F328B0994C0056D182 /* 参量质变仪.png */,
+				EAEC41F628B0994C0056D182 /* 洞天宝钱.png */,
+				EAEC41F428B0994C0056D182 /* 树脂.png */,
+				EAEC41F528B0994C0056D182 /* 周本.png */,
+				EA2FF0E828B093AE0050C016 /* 每日任务.png */,
+			);
+			path = NotificationImages;
+			sourceTree = "<group>";
+		};
 		EA30F9A22886B49200AE7BEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */,
+				EA2FF0DB28B0922D0050C016 /* NotificationImages */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -669,7 +702,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAEC41FF28B0994C0056D182 /* 周本.png in Resources */,
+				EAEC41FC28B0994C0056D182 /* 树脂.png in Resources */,
+				EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */,
 				BFFD821228A5F9A100616CE1 /* Assets.xcassets in Resources */,
+				EAEC420228B0994C0056D182 /* 洞天宝钱.png in Resources */,
+				EAEC41E328B096180056D182 /* 每日任务.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,8 +715,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAEC41FB28B0994C0056D182 /* 树脂.png in Resources */,
+				EAEC41FE28B0994C0056D182 /* 周本.png in Resources */,
+				EAEC420128B0994C0056D182 /* 洞天宝钱.png in Resources */,
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
+				EAEC41E228B096170056D182 /* 每日任务.png in Resources */,
+				EAEC41F828B0994C0056D182 /* 参量质变仪.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,9 +730,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6829DC28A2523800E57462 /* .gitignore in Resources */,
+				EA2FF0E928B093AE0050C016 /* 每日任务.png in Resources */,
 				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
+				EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */,
+				EAEC420028B0994C0056D182 /* 洞天宝钱.png in Resources */,
 				EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */,
+				EAEC41FD28B0994C0056D182 /* 周本.png in Resources */,
 				EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */,
+				EAEC41FA28B0994C0056D182 /* 树脂.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

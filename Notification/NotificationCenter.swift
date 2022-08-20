@@ -42,22 +42,44 @@ class UserNotificationCenter {
         
         let content = UNMutableNotificationContent()
         content.title = title
-        content.body = body
+        content.subtitle = body
+        
+        if let url = imageURL(of: object) {
+            content.attachments = [try! UNNotificationAttachment(identifier: object.rawValue, url: url)]
+        }
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
         
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         
         center.add(request)
+        print("success create user notification")
     }
     
+    func imageURL(of object: Object) -> URL? {
+        switch object {
+        case .resin:
+            return Bundle.main.url(forResource: "树脂", withExtension: "png")
+        case .homeCoin:
+            return Bundle.main.url(forResource: "洞天宝钱", withExtension: "png")
+        case .expedition:
+            return Bundle.main.url(forResource: "派遣探索", withExtension: "png")
+        case .weeklyBosses:
+            return Bundle.main.url(forResource: "周本", withExtension: "png")
+        case .transformer:
+            return Bundle.main.url(forResource: "参量质变仪", withExtension: "png")
+        case .dailyTask:
+            return Bundle.main.url(forResource: "每日任务", withExtension: "png")
+        }
+    }
     
     // TODO: 用UserDefault储存
     let allowResinNotification = true
-    let resinNotificationTimeFromFull: Int = 60 * 60
+    let resinNotificationTimeFromFull: Int = 545
     var resinNotificationTimeDescription: String { secondsToHoursMinutes(resinNotificationTimeFromFull) }
     
     func createResinNotification(for accountName: String, with resinInfo: ResinInfo) {
+        print("creating resin user notification")
         guard resinInfo.recoveryTime.second > resinNotificationTimeFromFull else { return }
         guard allowResinNotification else { return }
         let title = "\(accountName)的树脂即将回满"
@@ -94,23 +116,15 @@ class UserNotificationCenter {
     
     
     let allowExpeditionNotification = true
-    let expeditionNotificationTimeFromFinished: Int = 60 * 60
-    var expeditionNotificationTimeDescription: String { secondsToHoursMinutes(expeditionNotificationTimeFromFinished) }
     let noticeExpeditionBy: ExpeditionNoticeMethod = .allCompleted
     
     func createExpeditionNotification(for accountName: String, with expeditionInfo: ExpeditionInfo) {
-        guard expeditionInfo.allCompleteTime.second > expeditionNotificationTimeFromFinished else { return }
-        guard allowExpeditionNotification else { return }
-        let title = "\(accountName)的探索派遣即将全部完成"
-        let body = "\(accountName)的探索派遣还有\(expeditionNotificationTimeDescription))回满。"
+        guard !expeditionInfo.allCompleted && allowExpeditionNotification else { return }
+        let object: Object = .expedition
+        let title = "\(accountName)的探索派遣已全部完成"
+        let body = "\(accountName)的探索派遣已全部完成。"
         
-        createNotification(
-            in: expeditionInfo.allCompleteTime.second - expeditionNotificationTimeFromFinished,
-            for: accountName,
-            object: .expedition,
-            title: title,
-            body: body
-        )
+        createNotification(in: expeditionInfo.allCompleteTime.second, for: accountName, object: object, title: title, body: body)
     }
     
     
@@ -119,7 +133,9 @@ class UserNotificationCenter {
     
     func createWeeklyBossesNotification(for accountName: String, with weeklyBossesInfo: WeeklyBossesInfo) {
         guard Date() < Calendar.current.nextDate(after: Date(), matching: weeklyBossesNotificationTimePoint, matchingPolicy: .nextTime)! else { return }
-        guard weeklyBossesInfo.remainResinDiscountNum != 0 else { return }
+        guard weeklyBossesInfo.remainResinDiscountNum != 0 else {
+            deleteNotification(for: accountName, object: .weeklyBosses); return
+        }
         guard allowWeeklyBossesNotification else { return }
         let title = "\(accountName)的征讨领域树脂折扣还未用尽。"
         let body = "\(accountName)的征讨领域树脂折扣还有\(weeklyBossesInfo.remainResinDiscountNum))次。"
@@ -128,22 +144,15 @@ class UserNotificationCenter {
     }
     
     let allowTransformerNotification = true
-    let transformerNotificationTimeFromFinished: Int = 60 * 60
-    var transformerNotificationTimeDescription: String { secondsToHoursMinutes(transformerNotificationTimeFromFinished) }
     
     func createTransformerNotification(for accountName: String, with transformerInfo: TransformerInfo) {
-        guard transformerInfo.recoveryTime.second > transformerNotificationTimeFromFinished else { return }
-        guard allowTransformerNotification else { return }
-        let title = "\(accountName)的探索派遣即将全部完成"
-        let body = "\(accountName)的探索派遣还有\(expeditionNotificationTimeDescription))回满。"
+        guard !transformerInfo.isComplete && allowTransformerNotification else { return }
+        let title = "\(accountName)的参量质变仪已经可以使用"
+        let body = "\(accountName)的参量质变仪已经可以使用。"
+        let object: Object = .transformer
         
-        createNotification(
-            in: transformerInfo.recoveryTime.second - transformerNotificationTimeFromFinished,
-            for: accountName,
-            object: .transformer,
-            title: title,
-            body: body
-        )
+        createNotification(in: transformerInfo.recoveryTime.second, for: accountName, object: object, title: title, body: body)
+        
     }
     
     let allowDailyTaskNotification = true
@@ -152,7 +161,9 @@ class UserNotificationCenter {
     
     func createDailyTaskNotification(for accountName: String, with dailyTaskInfo: DailyTaskInfo) {
         guard Date() < Calendar.current.nextDate(after: Date(), matching: dailyTaskNotificationDateComponents, matchingPolicy: .nextTime)! else { return }
-        guard !dailyTaskInfo.isTaskRewardReceived else { return }
+        guard !dailyTaskInfo.isTaskRewardReceived else {
+            deleteNotification(for: accountName, object: .dailyTask); return
+        }
         guard allowWeeklyBossesNotification else { return }
         let title = "\(accountName)的每日委托奖励还未领取"
         let body = "\(accountName)的每日委托还剩\(dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum))个未完成。"
@@ -160,15 +171,20 @@ class UserNotificationCenter {
         createNotification(at: weeklyBossesNotificationTimePoint, for: accountName, object: .dailyTask, title: title, body: body)
     }
     
+    func deleteNotification(for accountName: String, object: Object) {
+        let id = accountName + object.rawValue
+        center.removePendingNotificationRequests(withIdentifiers: [id])
+    }
+    
+    
     func deleteAllNotification(for accountName: String) {
         let removeIdentifiers: [String] = Object.allCases.map { object in
             accountName + object.rawValue
         }
-        center.removeDeliveredNotifications(withIdentifiers: removeIdentifiers)
+        center.removePendingNotificationRequests(withIdentifiers: removeIdentifiers)
     }
     
     func createAllNotification(for accountName: String, with userData: UserData) {
-        deleteAllNotification(for: accountName)
         createResinNotification(for: accountName, with: userData.resinInfo)
         createHomeCoinNotification(for: accountName, with: userData.homeCoinInfo)
         createExpeditionNotification(for: accountName, with: userData.expeditionInfo)
