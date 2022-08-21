@@ -109,20 +109,19 @@ class UserNotificationCenter {
     }
     
     
+    
+    // 树脂
     var allowResinNotification: Bool {
         userDefaults?.bool(forKey: "allowResinNotification") ?? true
     }
     var resinNotificationNum: Double {
         userDefaults?.double(forKey: "resinNotificationNum") ?? 150
     }
-    var resinNotificationTimeFromFull: Int { Int(resinNotificationNum * 8 * 60) }
-    var resinNotificationTimeDescription: String { secondsToHoursMinutes(resinNotificationTimeFromFull) }
+    
     
     func createResinNotification(for accountName: String, with resinInfo: ResinInfo, uid: String) {
-        print("creating resin user notification")
-        print("\(resinInfo.recoveryTime.second)")
-        print("\(resinNotificationTimeFromFull)")
-        print("\(allowResinNotification)")
+        let resinNotificationTimeFromFull = (resinInfo.maxResin - Int(resinNotificationNum)) * 8 * 60
+        var resinNotificationTimeDescription: String { secondsToHoursMinutes(resinNotificationTimeFromFull) }
         guard resinInfo.recoveryTime.second > resinNotificationTimeFromFull else { return }
         guard allowResinNotification else { return }
         
