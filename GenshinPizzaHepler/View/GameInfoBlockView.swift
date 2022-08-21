@@ -20,10 +20,6 @@ struct GameInfoBlock: View {
         if let userData = userData {
                         HStack {
                 Spacer()
-                
-                
-                
-                
                 VStack(alignment: .leading, spacing: 5) {
                     if let accountName = accountName {
                         
@@ -68,7 +64,7 @@ struct GameInfoBlock: View {
                     .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
                 Spacer()
             }
-                        .background(WidgetBackgroundView(background: WidgetBackground.randomBackground, darkModeOn: true))
+                        .background(WidgetBackgroundView(background: WidgetBackground.randomElementBackground, darkModeOn: true))
 
         } else {
             HStack {

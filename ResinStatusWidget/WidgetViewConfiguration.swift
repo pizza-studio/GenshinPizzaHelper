@@ -20,7 +20,7 @@ struct WidgetViewConfiguration {
     var randomBackground: Bool
     let selectedBackground: WidgetBackground
     var background: WidgetBackground {
-        randomBackground ? WidgetBackground.randomBackground : selectedBackground
+        randomBackground ? WidgetBackground.randomElementOrNamecardBackground : selectedBackground
     }
     
     mutating func addMessage(_ msg: String) {
