@@ -145,7 +145,7 @@ struct NotificationSettingView: View {
                     Text("探索派遣提醒通知")
                 }
                 if allowExpeditionNotification {
-                    Picker("派遣探索提醒于", selection: noticeExpeditionBy) {
+                    Picker("派遣探索提醒于（未完工）", selection: noticeExpeditionBy) {
                         Text("全部完成时")
                             .tag(ExpeditionNoticeMethod.allCompleted)
                         Text("任一完成时")
@@ -171,13 +171,13 @@ struct NotificationSettingView: View {
                 if allowWeeklyBossesNotification {
                     DatePicker("提醒时间", selection: weeklyBossesNotificationTime, displayedComponents: .hourAndMinute)
                     Picker("提醒日期", selection: weeklyBossesWeekday) {
-                        Text("星期日").tag(1)
                         Text("星期一").tag(2)
                         Text("星期二").tag(3)
                         Text("星期三").tag(4)
                         Text("星期四").tag(5)
                         Text("星期五").tag(6)
                         Text("星期六").tag(7)
+                        Text("星期日").tag(1)
                     }
                 }
             }
