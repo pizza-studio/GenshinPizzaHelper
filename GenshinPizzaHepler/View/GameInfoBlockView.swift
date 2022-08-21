@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GameInfoBlock: View {
     var userData: UserData?
-    let backgroundColor: WidgetBackgroundColor
     let accountName: String?
 
     let viewConfig = WidgetViewConfiguration.defaultConfig
@@ -18,10 +17,8 @@ struct GameInfoBlock: View {
     
     var body: some View {
         
-        
         if let userData = userData {
-
-            HStack {
+                        HStack {
                 Spacer()
                 
                 
@@ -71,7 +68,8 @@ struct GameInfoBlock: View {
                     .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
                 Spacer()
             }
-                .background(LinearGradient(colors: backgroundColor.colors, startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .background(WidgetBackgroundView(background: WidgetBackground.randomBackground, darkModeOn: true))
+
         } else {
             HStack {
                 Spacer()
@@ -79,5 +77,7 @@ struct GameInfoBlock: View {
                 Spacer()
             }
         }
+
+        
     }
 }

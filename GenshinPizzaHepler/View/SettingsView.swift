@@ -22,38 +22,6 @@ struct SettingsView: View {
     @State private var sheetType: SettingsViewSheetType? = nil
 
     var body: some View {
-        Button("notification") {
-            
-            viewModel.accounts.forEach { account in
-                let config = account.config
-                config.fetchResult { result in
-                    switch result {
-                    case .success(let userData):
-                        UserNotificationCenter.shared.createAllNotification(for: config.name!, with: userData, uid: config.uid!)
-                    case .failure(_):
-                        break
-                    }
-
-                    
-                }
-            }
-            UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-                guard !requests.isEmpty else { print("????no request") ; return}
-                requests.forEach { request in
-                    if let localTrigger = request.trigger as? UNTimeIntervalNotificationTrigger {
-                        print("User Notification \(request.identifier): \(localTrigger.timeInterval)")
-                    } else if let dateTrigger = request.trigger as? UNCalendarNotificationTrigger {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateStyle = .short
-                        dateFormatter.timeStyle = .short
-                        dateFormatter.doesRelativeDateFormatting = true
-                        dateFormatter.locale = Locale(identifier: "zh_CN")
-                        print("User Notification \(request.identifier): \(dateFormatter.string(from: dateTrigger.nextTriggerDate() ?? Date()))")
-                    }
-                    
-                }
-            }
-        }
         NavigationView {
             
             List {
@@ -84,7 +52,7 @@ struct SettingsView: View {
                     Section(header: Text(account.config.name!), footer: Text("UID: "+account.config.uid!)) {
                         switch account.result {
                         case .success(let userData):
-                            GameInfoBlock(userData: userData, backgroundColor: WidgetBackgroundColor(rawValue: viewModel.accounts.distance(from: viewModel.accounts.startIndex, to: viewModel.accounts.firstIndex(of: account)!) % 14 + 4)!, accountName: account.config.name)
+                            GameInfoBlock(userData: userData, accountName: account.config.name)
                                 .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                                 .aspectRatio(170/364, contentMode: .fill)

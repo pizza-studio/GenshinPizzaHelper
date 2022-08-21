@@ -7,30 +7,30 @@
 
 import SwiftUI
 
-struct RingProgressBar: View {
-    var progress: CGFloat
-
-    var thickness: CGFloat = 2
-    var width: CGFloat = 15
-    var startAngle = -90.0
-    var hasCircleBackground: Bool = true
-    var foregroundColors: [Color] = ColorHandler(widgetBackgroundColor: .yellow).colors
-    var backgroundColor: Color = Color(.systemGray6)
-
-    var body: some View {
-        ZStack {
-            if hasCircleBackground {
-                Circle()
-                    .stroke(backgroundColor, lineWidth: thickness)
-            }
-
-            RingShape(progress: progress, thickness: thickness, startAngle: startAngle)
-                .fill(AngularGradient(gradient: Gradient(colors: foregroundColors), center: .center, startAngle: .degrees(startAngle), endAngle: .degrees(360 * 0.3 + startAngle)))
-        }
-        .frame(width: width, height: width, alignment: .center)
-        .animation(Animation.easeInOut(duration: 1.0), value: progress)
-    }
-}
+//struct RingProgressBar: View {
+//    var progress: CGFloat
+//
+//    var thickness: CGFloat = 2
+//    var width: CGFloat = 15
+//    var startAngle = -90.0
+//    var hasCircleBackground: Bool = true
+//    var foregroundColors: [Color] = ColorHandler(widgetBackgroundColor: .yellow).colors
+//    var backgroundColor: Color = Color(.systemGray6)
+//
+//    var body: some View {
+//        ZStack {
+//            if hasCircleBackground {
+//                Circle()
+//                    .stroke(backgroundColor, lineWidth: thickness)
+//            }
+//
+//            RingShape(progress: progress, thickness: thickness, startAngle: startAngle)
+//                .fill(AngularGradient(gradient: Gradient(colors: foregroundColors), center: .center, startAngle: .degrees(startAngle), endAngle: .degrees(360 * 0.3 + startAngle)))
+//        }
+//        .frame(width: width, height: width, alignment: .center)
+//        .animation(Animation.easeInOut(duration: 1.0), value: progress)
+//    }
+//}
 
 struct RingShape: Shape {
 
