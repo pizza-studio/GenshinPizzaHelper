@@ -80,6 +80,7 @@ struct NotificationSettingView: View {
         })
     }
     
+    
     // TODO: Ignore UIDs var ignoreUids: [String] = []
     
     
@@ -145,7 +146,7 @@ struct NotificationSettingView: View {
                     Text("探索派遣提醒通知")
                 }
                 if allowExpeditionNotification {
-                    Picker("派遣探索提醒于（未完工）", selection: noticeExpeditionBy) {
+                    Picker("派遣探索提醒于", selection: noticeExpeditionBy) {
                         Text("全部完成时")
                             .tag(ExpeditionNoticeMethod.allCompleted)
                         Text("任一完成时")

@@ -179,11 +179,21 @@ class UserNotificationCenter {
     // TODO: 探索派遣提醒方式
     func createExpeditionNotification(for accountName: String, with expeditionInfo: ExpeditionInfo, uid: String) {
         guard !expeditionInfo.allCompleted && allowExpeditionNotification else { return }
-        let object: Object = .expedition
-        let title = "「\(accountName)」的探索派遣已全部完成"
-        let body = "「\(accountName)」的探索派遣已全部完成。"
+        switch noticeExpeditionBy {
+        case .unknown, .allCompleted:
+            guard !expeditionInfo.allCompleted && allowExpeditionNotification else { return }
+            let object: Object = .expedition
+            let title = "「\(accountName)」的探索派遣已全部完成"
+            let body = "「\(accountName)」的探索派遣已全部完成。"
+            createNotification(in: expeditionInfo.allCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
+        case .nextCompleted:
+            guard !expeditionInfo.anyCompleted && allowExpeditionNotification else { return }
+            let object: Object = .expedition
+            let title = "「\(accountName)」的部分探索派遣已完成"
+            let body = "「\(accountName)」的部分探索派遣已完成。"
+            createNotification(in: expeditionInfo.nextCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
+        }
         
-        createNotification(in: expeditionInfo.allCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
     }
     
     
