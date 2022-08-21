@@ -28,7 +28,7 @@ struct NotificationSettingView: View {
     }
     
     @AppStorage("allowWeeklyBossesNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowWeeklyBossesNotification: Bool = true
-    @AppStorage("weeklyBossesNotificationTimePointData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var weeklyBossesNotificationTimePointData: Data = try! JSONEncoder().encode(DateComponents(calendar: Calendar.current, hour: 7, minute: 0, weekday: 6))
+    @AppStorage("weeklyBossesNotificationTimePointData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var weeklyBossesNotificationTimePointData: Data = try! JSONEncoder().encode(DateComponents(calendar: Calendar.current, hour: 19, minute: 0, weekday: 7))
     var weeklyBossesNotificationTime: Binding<Date> {
         .init(get: {
             let dateComponents = try! JSONDecoder().decode(DateComponents.self, from: weeklyBossesNotificationTimePointData)
@@ -64,7 +64,7 @@ struct NotificationSettingView: View {
     
     
     @AppStorage("allowDailyTaskNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowDailyTaskNotification: Bool = true
-    @AppStorage("dailyTaskNotificationTimePointData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var dailyTaskNotificationTimePointData: Data = try! JSONEncoder().encode(DateComponents(calendar: Calendar.current, hour: 7, minute: 0))
+    @AppStorage("dailyTaskNotificationTimePointData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var dailyTaskNotificationTimePointData: Data = try! JSONEncoder().encode(DateComponents(calendar: Calendar.current, hour: 19, minute: 0))
     var dailyTaskNotificationTime: Binding<Date> {
         .init(get: {
             let dateComponents = try! JSONDecoder().decode(DateComponents.self, from: dailyTaskNotificationTimePointData)

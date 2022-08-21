@@ -45,8 +45,10 @@ class ViewModel: ObservableObject {
                 self.refreshData()
                 print("account fetched")
             }
+            if #available(iOSApplicationExtension 15.0, iOS 15.0, *) {
+                self.accountConfigurationModel.donateIntent()
+            }
         }
-        
     }
     
     func forceFetchAccount() {

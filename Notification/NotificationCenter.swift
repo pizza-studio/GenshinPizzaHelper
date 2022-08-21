@@ -24,10 +24,10 @@ class UserNotificationCenter {
                 userDefaults.set(true, forKey: "allowExpeditionNotification")
                 userDefaults.set(1, forKey: "noticeExpeditionMethodRawValue")
                 userDefaults.set(true, forKey: "allowWeeklyBossesNotification")
-                userDefaults.set((try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 7, minute: 0, weekday: 6))), forKey: "weeklyBossesNotificationTimePointData")
+                userDefaults.set((try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0, weekday: 7))), forKey: "weeklyBossesNotificationTimePointData")
                 userDefaults.set(true, forKey: "allowTransformerNotification")
                 userDefaults.set(true, forKey: "allowDailyTaskNotification")
-                userDefaults.set((try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 7, minute: 0))), forKey: "dailyTaskNotificationTimePointData")
+                userDefaults.set((try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0))), forKey: "dailyTaskNotificationTimePointData")
             }
         }
         
@@ -192,7 +192,7 @@ class UserNotificationCenter {
         userDefaults?.bool(forKey: "allowWeeklyBossesNotification") ?? true
     }
     var weeklyBossesNotificationTimePoint: DateComponents {
-        let data = userDefaults?.data(forKey: "weeklyBossesNotificationTimePointData") ?? (try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 7, minute: 0, weekday: 6)))
+        let data = userDefaults?.data(forKey: "weeklyBossesNotificationTimePointData") ?? (try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0, weekday: 7)))
         let dateComponents = try! JSONDecoder().decode(DateComponents.self, from: data)
         return dateComponents
     }
@@ -230,7 +230,7 @@ class UserNotificationCenter {
         userDefaults?.bool(forKey: "allowDailyTaskNotification") ?? true
     }
     var dailyTaskNotificationDateComponents: DateComponents {
-        let data = userDefaults?.data(forKey: "dailyTaskNotificationTimePointData") ?? (try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 7, minute: 0)))
+        let data = userDefaults?.data(forKey: "dailyTaskNotificationTimePointData") ?? (try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0)))
         let dateComponents = try! JSONDecoder().decode(DateComponents.self, from: data)
         return dateComponents
     }
@@ -242,7 +242,7 @@ class UserNotificationCenter {
         }
         guard allowDailyTaskNotification else { return }
         let title = "「\(accountName)」的每日委托奖励还未领取"
-        let body = "「\(accountName)」的每日委托还剩余\(dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum))个未完成。"
+        let body = "「\(accountName)」的每日委托还剩余\(dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum)个未完成。"
         
         createNotification(at: dailyTaskNotificationDateComponents, for: accountName, object: .dailyTask, title: title, body: body, uid: uid)
     }

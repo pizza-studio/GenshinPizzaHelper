@@ -348,12 +348,35 @@
 			<string>zQrKVi</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
-			<key>INIntentIneligibleForSuggestions</key>
-			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>35</integer>
+			<integer>36</integer>
 			<key>INIntentName</key>
 			<string>SelectAccount</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key>accountIntent</key>
+				<dict>
+					<key>INIntentParameterCombinationIsPrimary</key>
+					<true/>
+					<key>INIntentParameterCombinationSubtitle</key>
+					<string>description</string>
+					<key>INIntentParameterCombinationSubtitleID</key>
+					<string>U9SDXc</string>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>summary</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>7VeRVB</string>
+				</dict>
+				<key>accountIntent,backgoundColor,showAccountName,showTransformer,expeditionNoticeMethod,expeditionShowingMethod,weeklyBossesShowingMethod,isDarkModeOn</key>
+				<dict>
+					<key>INIntentParameterCombinationIsLinked</key>
+					<true/>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+				</dict>
+			</dict>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
