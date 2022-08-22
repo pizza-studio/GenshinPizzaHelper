@@ -24,6 +24,7 @@ struct ContentView: View {
         TabView(selection: index) {
             HomeView()
                 .tag(0)
+                .environmentObject(viewModel)
                 .tabItem {
                     Label("主页", systemImage: "house")
                 }

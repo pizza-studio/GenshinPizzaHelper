@@ -16,27 +16,20 @@ struct GameInfoBlock: View {
     
     
     var body: some View {
-        
         if let userData = userData {
-                        HStack {
+            HStack {
                 Spacer()
                 VStack(alignment: .leading, spacing: 5) {
                     if let accountName = accountName {
-                        
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             Image(systemName: "person.fill")
                             Text(accountName)
-                            
                         }
                         .font(.footnote)
                         .foregroundColor(Color("textColor3"))
-                        
                     }
-                    
-                    
-                    
                     HStack(alignment: .firstTextBaseline, spacing: 2) {
-                        
+
                         Text("\(userData.resinInfo.currentResin)")
                             .font(.system(size: 50 , design: .rounded))
                             .fontWeight(.medium)
@@ -57,14 +50,15 @@ struct GameInfoBlock: View {
                         RecoveryTimeText(resinInfo: userData.resinInfo)
                     }
                 }
-                    .padding()
+                .padding()
                 Spacer()
                 DetailInfo(userData: userData, viewConfig: viewConfig)
                     .padding([.vertical])
                     .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
                 Spacer()
             }
-                        .background(WidgetBackgroundView(background: WidgetBackground.randomElementBackground, darkModeOn: true))
+            .background(AppBlockBackgroundView(background: WidgetBackground.randomNamecardBackground, darkModeOn: true))
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
 
         } else {
             HStack {
@@ -73,7 +67,5 @@ struct GameInfoBlock: View {
                 Spacer()
             }
         }
-
-        
     }
 }

@@ -25,9 +25,7 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationView {
-            
             List {
-
                 Section(header: Text("我的帐号")) {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         NavigationLink(destination: AccountDetailView(account: $account)) {
@@ -58,33 +56,9 @@ struct SettingsView: View {
                         break
                     }
                 })
-                
-                ForEach(viewModel.accounts, id: \.config.uuid) { account in
-                    Section(header: Text(account.config.name!), footer: Text("UID: "+account.config.uid!)) {
-                        switch account.result {
-                        case .success(let userData):
-                            GameInfoBlock(userData: userData, accountName: account.config.name)
-                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                                .aspectRatio(170/364, contentMode: .fill)
-                                .animation(.linear)
-                                .listRowBackground(Color.white.opacity(0))
-                        case .failure( _) :
-                            HStack {
-                                Spacer()
-                                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
-                                    .foregroundColor(.red)
-                                Spacer()
-                            }
-                            
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .aspectRatio(170/364, contentMode: .fill)
-                            
-                        }
-                    }
-                }
+
             }
-            .navigationTitle("原神披萨小助手")
+            .navigationTitle("设置")
             .toolbar {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
