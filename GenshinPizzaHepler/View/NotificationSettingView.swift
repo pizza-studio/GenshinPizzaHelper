@@ -190,29 +190,20 @@ struct IgnoreNotificationAccountView: View {
     var configs: [AccountConfiguration] { viewModel.accounts.map { $0.config } }
     
     // TODO: IGNORE NOTIFICATION ACCOUNT VIEW
-    
-    @State var ignoreUids: [String] = []
+    @AppStorage("notificationIgnoreUidsData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var data: Data = try! JSONEncoder().encode(Array<String>())
+    var ignoreUids: Binding<[String]> {
+        .init {
+            return try! JSONDecoder().decode([String].self, from: data)
+        } set: { uids in
+            data = try! JSONEncoder().encode(uids)
+        }
 
-    func binding(_ uid: String) -> Binding<Bool> {
-        let isOn = Binding<Bool> (get: {
-            !ignoreUids.contains(uid)
-        }, set: { allow in
-            if allow {
-                ignoreUids.append(uid)
-            } else {
-                ignoreUids = ignoreUids.filter { $0 != uid }
-            }
-        })
-        return isOn
     }
     
     var body: some View {
         List {
             ForEach(configs, id: \.uuid) { config in
-                IgnoreNotificationAccountItem(isOn: !ignoreUids.contains(config.uid!), ignoreUids: $ignoreUids, config: config)
-//                Toggle(isOn: binding(config.uid!)) {
-//                    Text("\(config.name!)(\(config.uid!))")
-//                }
+                IgnoreNotificationAccountItem(isOn: !ignoreUids.wrappedValue.contains(config.uid!), ignoreUids: ignoreUids, config: config)
             }
         }
     }
@@ -248,9 +239,4 @@ private struct IgnoreNotificationAccountItem: View {
             }
         }
     }
-}
-
-fileprivate struct AllowAccount {
-    let config: AccountConfiguration
-    var isAllow: Bool
 }

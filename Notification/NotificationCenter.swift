@@ -42,10 +42,11 @@ class UserNotificationCenter {
                 userDefaults.set(true, forKey: "allowExpeditionNotification")
                 userDefaults.set(1, forKey: "noticeExpeditionMethodRawValue")
                 userDefaults.set(true, forKey: "allowWeeklyBossesNotification")
-                userDefaults.set((try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0, weekday: 7))), forKey: "weeklyBossesNotificationTimePointData")
+                userDefaults.set(try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0, weekday: 7)), forKey: "weeklyBossesNotificationTimePointData")
                 userDefaults.set(true, forKey: "allowTransformerNotification")
                 userDefaults.set(true, forKey: "allowDailyTaskNotification")
                 userDefaults.set((try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0))), forKey: "dailyTaskNotificationTimePointData")
+                userDefaults.set(try! JSONEncoder().encode(Array<String>()), forKey: "notificationIgnoreUidsData")
             }
         }
         
@@ -299,9 +300,16 @@ class UserNotificationCenter {
         }
         center.removePendingNotificationRequests(withIdentifiers: removeIdentifiers)
     }
-    
+
+    var ignoreUids: [String] {
+        let data = userDefaults?.data(forKey: "notificationIgnoreUidsData") ?? (try! JSONEncoder().encode(Array<String>()))
+        let ignoreUids: [String] = try! JSONDecoder().decode([String].self, from: data)
+        return ignoreUids
+    }
+
     func createAllNotification(for accountName: String, with userData: UserData, uid: String) {
         print("Creating all notification")
+        guard !ignoreUids.contains(uid) else { return }
         createResinNotification(for: accountName, with: userData.resinInfo, uid: uid)
         createHomeCoinNotification(for: accountName, with: userData.homeCoinInfo, uid: uid)
         createExpeditionNotification(for: accountName, with: userData.expeditionInfo, uid: uid)
