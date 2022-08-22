@@ -11,6 +11,8 @@ import WidgetKit
 struct SettingsView: View {
     @EnvironmentObject var viewModel: ViewModel
     var accounts: [Account] { viewModel.accounts }
+
+    @Environment(\.scenePhase) var scenePhase
     
     
 //    @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 0
@@ -39,15 +41,23 @@ struct SettingsView: View {
                         Label("添加帐户", systemImage: "plus.circle")
                     }
                 }
-                .onAppear {
-                    // 检查是否同意过用户协议
-                    let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
-                    if !isPolicyShown {
-                        sheetType = .userPolicy
+                .onChange(of: scenePhase, perform: { newPhase in
+                    switch newPhase {
+                    case .active:
+                        // 检查是否同意过用户协议
+                        let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
+                        if !isPolicyShown {
+                            sheetType = .userPolicy
+                        }
+                        viewModel.fetchAccount()
+                        viewModel.refreshData()
+                        UIApplication.shared.applicationIconBadgeNumber = 0
+                    case .inactive:
+                        WidgetCenter.shared.reloadAllTimelines()
+                    default:
+                        break
                     }
-                    viewModel.fetchAccount()
-                    WidgetCenter.shared.reloadAllTimelines()
-                }
+                })
                 
                 ForEach(viewModel.accounts, id: \.config.uuid) { account in
                     Section(header: Text(account.config.name!), footer: Text("UID: "+account.config.uid!)) {

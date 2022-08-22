@@ -320,7 +320,6 @@ class UserNotificationCenter {
         createDailyTaskNotification(for: accountName, with: userData.dailyTaskInfo, uid: uid)
     }
     
-    
     enum Object: String, CaseIterable {
         case resin = "resin"
         case homeCoin = "homeCoin"
