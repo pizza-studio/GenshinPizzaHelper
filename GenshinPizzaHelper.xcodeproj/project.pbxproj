@@ -26,6 +26,8 @@
 		BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
 		BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
 		BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
+		BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
+		BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -236,6 +238,8 @@
 		BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticSupport.swift; sourceTree = "<group>"; };
 		BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRecognizer.swift; sourceTree = "<group>"; };
 		BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBlockBackgroundView.swift; sourceTree = "<group>"; };
+		BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDisplayView.swift; sourceTree = "<group>"; };
+		BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayContentModel.swift; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -528,6 +532,8 @@
 				BF70210828B3909F00A6BBA9 /* ContentView.swift */,
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
+				BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */,
+				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
@@ -535,7 +541,6 @@
 				EA07C65528B11DB40030E338 /* NotificationSettingView.swift */,
 				EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */,
 				EA79FDC828AB9A5600B50D6F /* AccountDetailView copy.swift */,
-				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
 				BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */,
 				BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */,
 				EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */,
@@ -554,6 +559,7 @@
 				BF6C5274289E137200EA224F /* Servers.swift */,
 				BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */,
 				EA56E07528A26C0D00A64262 /* FetchedModels */,
+				BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -884,6 +890,7 @@
 				EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EA099FEB28A2AE660023B4AF /* StoreURL.swift in Sources */,
 				EA56E09028A26C0D00A64262 /* ResinInfo.swift in Sources */,
+				BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
 				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BFFD823628A680E000616CE1 /* WebImageView.swift in Sources */,
@@ -914,6 +921,7 @@
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
 				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
+				BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */,
 				EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EADCC0AC28A52BD800358B5E /* WidgetViewConfiguration.swift in Sources */,

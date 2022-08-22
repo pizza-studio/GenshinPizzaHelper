@@ -34,6 +34,8 @@ struct AddAccountView: View {
     @State private var loginError: FetchError?
     
     @State private var userData: UserData?
+
+    @Namespace var animation
     
     
     var body: some View {
@@ -98,7 +100,7 @@ struct AddAccountView: View {
             }
             
             if let userData = userData {
-                GameInfoBlock(userData: userData, accountName: unsavedName)
+                GameInfoBlock(userData: userData, accountName: unsavedName, animation: animation, widgetBackground: WidgetBackground.randomNamecardBackground)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .aspectRatio(170/364, contentMode: .fill)

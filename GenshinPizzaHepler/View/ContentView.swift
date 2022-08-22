@@ -20,20 +20,31 @@ struct ContentView: View {
         }
     )}
 
+    @State var isPopUpViewShow: Bool = false
+    @StateObject var detail = DisplayContentModel()
+    @Namespace var animation
+
     var body: some View {
-        TabView(selection: index) {
-            HomeView()
-                .tag(0)
-                .environmentObject(viewModel)
-                .tabItem {
-                    Label("主页", systemImage: "house")
-                }
-            SettingsView()
-                .tag(1)
-                .environmentObject(viewModel)
-                .tabItem {
-                    Label("设置", systemImage: "gear")
-                }
+        ZStack {
+            TabView(selection: index) {
+                HomeView(animation: animation)
+                    .tag(0)
+                    .environmentObject(viewModel)
+                    .environmentObject(detail)
+                    .tabItem {
+                        Label("主页", systemImage: "house")
+                    }
+                SettingsView()
+                    .tag(1)
+                    .environmentObject(viewModel)
+                    .tabItem {
+                        Label("设置", systemImage: "gear")
+                    }
+            }
+
+            if detail.show {
+                AccountDisplayView(detail: detail, animation: animation)
+            }
         }
     }
 }
