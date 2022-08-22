@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    func application(_ application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: UIApplication.ExtensionPointIdentifier) -> Bool {
+        let nc = UNUserNotificationCenter.current()
+        nc.delegate = self
+
+        return true
+    }
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.actionIdentifier {
         case "OPEN_GENSHIN_ACTION":
