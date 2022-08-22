@@ -21,7 +21,6 @@ struct GenshinPizzaHeplerApp: App {
         }
         
         UserNotificationCenter.shared.askPermission()
-        UserNotificationCenter.shared.testNotification()
         
     }
     

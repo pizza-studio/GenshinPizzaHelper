@@ -91,7 +91,7 @@ struct NotificationSettingView: View {
             }
             Section {
                 Toggle(isOn: $allowResinNotification.animation()) {
-                    Text("原粹树脂提醒推送")
+                    Text("原粹树脂提醒")
                 }
                 if allowResinNotification {
                     HStack {
@@ -114,7 +114,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowHomeCoinNotification.animation()) {
-                    Text("洞天宝钱提醒推送")
+                    Text("洞天宝钱提醒")
                 }
                 if allowHomeCoinNotification {
                     HStack {
@@ -138,7 +138,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowExpeditionNotification.animation()) {
-                    Text("探索派遣提醒推送")
+                    Text("探索派遣提醒")
                 }
                 if allowExpeditionNotification {
                     Picker("提醒于", selection: noticeExpeditionBy) {
@@ -152,7 +152,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowDailyTaskNotification.animation()) {
-                    Text("每日任务提醒推送")
+                    Text("每日任务提醒")
                 }
                 if allowDailyTaskNotification {
                     DatePicker("提醒时间", selection: dailyTaskNotificationTime, displayedComponents: .hourAndMinute)
@@ -161,7 +161,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowWeeklyBossesNotification.animation()) {
-                    Text("周本折扣提醒推送")
+                    Text("周本折扣提醒")
                 }
                 if allowWeeklyBossesNotification {
                     DatePicker("提醒时间", selection: weeklyBossesNotificationTime, displayedComponents: .hourAndMinute)
@@ -178,10 +178,10 @@ struct NotificationSettingView: View {
             }
             
             Toggle(isOn: $allowTransformerNotification.animation()) {
-                Text("参量质变仪提醒推送")
+                Text("参量质变仪提醒")
             }
         }
-        .navigationBarTitle("通知设置", displayMode: .inline)
+        .navigationBarTitle("推送设置", displayMode: .inline)
     }
 }
 
