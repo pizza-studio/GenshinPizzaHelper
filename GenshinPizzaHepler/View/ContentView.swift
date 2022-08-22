@@ -14,8 +14,7 @@ struct ContentView: View {
         get: { self.selection },
         set: {
             if $0 != self.selection {
-//                simpleTaptic(type: .medium)
-                print("taped here!!")
+                simpleTaptic(type: .medium)
             }
             self.selection = $0
         }

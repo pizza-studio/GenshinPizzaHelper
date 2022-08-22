@@ -21,6 +21,10 @@
 		BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210628B33D8300A6BBA9 /* AppDelegate.swift */; };
 		BF70210928B3909F00A6BBA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210828B3909F00A6BBA9 /* ContentView.swift */; };
 		BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210A28B3910800A6BBA9 /* HomeView.swift */; };
+		BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
+		BF70210F28B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
+		BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
+		BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -228,6 +232,8 @@
 		BF70210628B33D8300A6BBA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF70210828B3909F00A6BBA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF70210A28B3910800A6BBA9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticSupport.swift; sourceTree = "<group>"; };
+		BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRecognizer.swift; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -380,6 +386,8 @@
 				EA099FEA28A2AE660023B4AF /* StoreURL.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
 				BFFD823928A73A5400616CE1 /* ReviewHandler.swift */,
+				BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */,
+				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
@@ -779,6 +787,7 @@
 				EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */,
 				EA09A01328A2B8B00023B4AF /* ResinInfo.swift in Sources */,
+				BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EA09A01E28A2B8E80023B4AF /* ErrorCodeHandler.swift in Sources */,
 				EA09A01B28A2B8D30023B4AF /* Servers.swift in Sources */,
 				EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */,
@@ -827,6 +836,7 @@
 				EA56E09B28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BF6C526B289E116700EA224F /* WedgetProvider.swift in Sources */,
 				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
+				BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */,
 				BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */,
 				EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */,
@@ -875,6 +885,7 @@
 				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BFFD823628A680E000616CE1 /* WebImageView.swift in Sources */,
 				BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */,
+				BF70210F28B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EA56E08A28A26C0D00A64262 /* Result.swift in Sources */,
 				EAAF330F28A27AFE0018EFAB /* Account.swift in Sources */,
 				EA56E09428A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */,
@@ -904,6 +915,7 @@
 				EADCC0AC28A52BD800358B5E /* WidgetViewConfiguration.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
+				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EA56E08628A26C0D00A64262 /* Error.swift in Sources */,
