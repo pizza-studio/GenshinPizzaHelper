@@ -32,13 +32,17 @@ struct NotificationSettingNavigator: View {
     var body: some View {
         Section {
             Toggle(isOn: masterSwitch.animation()) {
-                Text("开启通知")
+                Text("通知推送")
             }
             if masterSwitch.wrappedValue {
                 NavigationLink(destination: NotificationSettingView()) {
-                    Text("通知设置")
+                    Text("推送设置")
                 }
                 .animation(.easeInOut, value: masterSwitch.wrappedValue)
+            }
+        } footer: {
+            if masterSwitch.wrappedValue {
+                Text("通知功能需要账号添加至小组件后才能生效")
             }
         }
     }
