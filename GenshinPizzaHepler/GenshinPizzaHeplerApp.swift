@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct GenshinPizzaHeplerApp: App {
     let viewModel: ViewModel = .shared
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     init() {
         

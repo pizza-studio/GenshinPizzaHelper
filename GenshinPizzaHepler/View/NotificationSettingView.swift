@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NotificationSettingView: View {
+    @EnvironmentObject var viewModel: ViewModel
     @AppStorage("allowResinNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowResinNotification: Bool = true
     @AppStorage("resinNotificationNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var resinNotificationNum: Double = 150
     @State var showResinSlider: Bool = false
@@ -59,10 +60,7 @@ struct NotificationSettingView: View {
         })
     }
     
-    
     @AppStorage("allowTransformerNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowTransformerNotification: Bool = true
-    
-    
     @AppStorage("allowDailyTaskNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowDailyTaskNotification: Bool = true
     @AppStorage("dailyTaskNotificationTimePointData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var dailyTaskNotificationTimePointData: Data = try! JSONEncoder().encode(DateComponents(calendar: Calendar.current, hour: 19, minute: 0))
     var dailyTaskNotificationTime: Binding<Date> {
@@ -80,23 +78,29 @@ struct NotificationSettingView: View {
         })
     }
     
+    
     // TODO: Ignore UIDs var ignoreUids: [String] = []
     
     
     var body: some View {
         List {
             Section {
+                NavigationLink(destination: IgnoreNotificationAccountView().environmentObject(viewModel)) {
+                    Text("启用帐号")
+                }
+            }
+            Section {
                 Toggle(isOn: $allowResinNotification.animation()) {
-                    Text("原萃树脂提醒通知")
+                    Text("原粹树脂提醒")
                 }
                 if allowResinNotification {
                     HStack {
-                        Text("原萃树脂回复提醒阈值")
+                        Text("提醒阈值")
                         Spacer()
                         Button(action: {
                             withAnimation{ showResinSlider.toggle() }
                         }) {
-                            Text("\(Int(resinNotificationNum))")
+                            Text("\(Int(resinNotificationNum))树脂")
                         }
                     }
                     if showResinSlider {
@@ -110,17 +114,17 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowHomeCoinNotification.animation()) {
-                    Text("洞天宝钱提醒通知")
+                    Text("洞天宝钱提醒")
                 }
                 if allowHomeCoinNotification {
                     HStack {
-                        Text("洞天宝钱提醒时间（小时）")
+                        Text("提醒时间")
                         Spacer()
                         Button(action: {
                             withAnimation{ showHomeCoinSlider.toggle() }
                             
                         }) {
-                            Text("\(Int(homeCoinNotificationHourBeforeFull))")
+                            Text("充满前\(Int(homeCoinNotificationHourBeforeFull))小时")
                         }
                     }
                     if showHomeCoinSlider {
@@ -130,25 +134,17 @@ struct NotificationSettingView: View {
                                label: {Text("提醒阈值：\(homeCoinNotificationHourBeforeFull)")})
                     }
                 }
-            } footer: {
-                if allowHomeCoinNotification {
-                    HStack(spacing: 0) {
-                        Text("将在洞天宝钱回满前")
-                        Text("\(Int(homeCoinNotificationHourBeforeFull))")
-                        Text("小时提醒")
-                    }
-                }
             }
             
             Section {
                 Toggle(isOn: $allowExpeditionNotification.animation()) {
-                    Text("探索派遣提醒通知")
+                    Text("探索派遣提醒")
                 }
                 if allowExpeditionNotification {
-                    Picker("派遣探索提醒于（未完工）", selection: noticeExpeditionBy) {
+                    Picker("提醒于", selection: noticeExpeditionBy) {
                         Text("全部完成时")
                             .tag(ExpeditionNoticeMethod.allCompleted)
-                        Text("任一完成时")
+                        Text("下一个完成时")
                             .tag(ExpeditionNoticeMethod.nextCompleted)
                     }
                 }
@@ -156,17 +152,16 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowDailyTaskNotification.animation()) {
-                    Text("每日任务提醒通知")
+                    Text("每日任务提醒")
                 }
                 if allowDailyTaskNotification {
-                    // TODO: 每日任务提醒时间 - 每天几点钟
                     DatePicker("提醒时间", selection: dailyTaskNotificationTime, displayedComponents: .hourAndMinute)
                 }
             }
             
             Section {
                 Toggle(isOn: $allowWeeklyBossesNotification.animation()) {
-                    Text("周本折扣提醒通知")
+                    Text("周本折扣提醒")
                 }
                 if allowWeeklyBossesNotification {
                     DatePicker("提醒时间", selection: weeklyBossesNotificationTime, displayedComponents: .hourAndMinute)
@@ -182,27 +177,66 @@ struct NotificationSettingView: View {
                 }
             }
             
-            
             Toggle(isOn: $allowTransformerNotification.animation()) {
-                Text("参量质变仪提醒通知")
+                Text("参量质变仪提醒")
             }
-            
-            
-            
-            
         }
-        .navigationBarTitle("通知设置", displayMode: .inline)
-        
-        
+        .navigationBarTitle("推送设置", displayMode: .inline)
     }
 }
 
-enum SheetType: Identifiable {
-    var id: Int {
-        hashValue
-    }
-    case resinWheel
+struct IgnoreNotificationAccountView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    var configs: [AccountConfiguration] { viewModel.accounts.map { $0.config } }
     
+    // TODO: IGNORE NOTIFICATION ACCOUNT VIEW
+    @AppStorage("notificationIgnoreUidsData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var data: Data = try! JSONEncoder().encode(Array<String>())
+    var ignoreUids: Binding<[String]> {
+        .init {
+            return try! JSONDecoder().decode([String].self, from: data)
+        } set: { uids in
+            data = try! JSONEncoder().encode(uids)
+        }
 
+    }
+    
+    var body: some View {
+        List {
+            ForEach(configs, id: \.uuid) { config in
+                IgnoreNotificationAccountItem(isOn: !ignoreUids.wrappedValue.contains(config.uid!), ignoreUids: ignoreUids, config: config)
+            }
+        }
+    }
 }
 
+private struct IgnoreNotificationAccountItem: View {
+    @State var isOn: Bool
+    @Binding var ignoreUids: [String]
+    var config: AccountConfiguration
+
+    var body: some View {
+        Toggle(isOn: $isOn) {
+            Text("\(config.name!) (\(config.uid!))")
+        }
+        .onAppear {
+            if !isOn {
+                ignoreUids.append(config.uid!)
+            } else {
+                ignoreUids = ignoreUids.filter { item in
+                    item != config.uid!
+                }
+            }
+        }
+        .onChange(of: isOn) { newValue in
+            if !newValue {
+                ignoreUids.append(config.uid!)
+                print("Added \(config.uid!) into ignore list")
+            } else {
+                ignoreUids = ignoreUids.filter { item in
+                    item != config.uid!
+                }
+                print("Removed \(config.uid!) from ignore list")
+            }
+        }
+    }
+}
