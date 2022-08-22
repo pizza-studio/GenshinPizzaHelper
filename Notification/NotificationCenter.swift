@@ -239,7 +239,7 @@ class UserNotificationCenter {
         }
         guard allowWeeklyBossesNotification else { return }
         let title = "「\(accountName)」周本折扣提醒"
-        let body = "「\(accountName)」的周本树脂折扣树脂折扣还剩\(weeklyBossesInfo.remainResinDiscountNum))次。"
+        let body = "「\(accountName)」的周本树脂折扣树脂折扣还剩\(weeklyBossesInfo.remainResinDiscountNum)次。"
         
         createNotification(at: weeklyBossesNotificationTimePoint, for: accountName, object: .weeklyBosses, title: title, body: body, uid: uid)
     }
