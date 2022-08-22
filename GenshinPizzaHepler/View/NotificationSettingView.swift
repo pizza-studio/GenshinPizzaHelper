@@ -88,12 +88,12 @@ struct NotificationSettingView: View {
         List {
             Section {
                 NavigationLink(destination: IgnoreNotificationAccountView()) {
-                    Text("账号设置")
+                    Text("启用帐号")
                 }
             }
             Section {
                 Toggle(isOn: $allowResinNotification.animation()) {
-                    Text("原粹树脂推送")
+                    Text("原粹树脂提醒推送")
                 }
                 if allowResinNotification {
                     HStack {
@@ -116,7 +116,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowHomeCoinNotification.animation()) {
-                    Text("洞天宝钱推送")
+                    Text("洞天宝钱提醒推送")
                 }
                 if allowHomeCoinNotification {
                     HStack {
@@ -140,7 +140,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowExpeditionNotification.animation()) {
-                    Text("探索派遣推送")
+                    Text("探索派遣提醒推送")
                 }
                 if allowExpeditionNotification {
                     Picker("提醒于", selection: noticeExpeditionBy) {
@@ -154,7 +154,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowDailyTaskNotification.animation()) {
-                    Text("每日任务推送")
+                    Text("每日任务提醒推送")
                 }
                 if allowDailyTaskNotification {
                     DatePicker("提醒时间", selection: dailyTaskNotificationTime, displayedComponents: .hourAndMinute)
@@ -163,7 +163,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowWeeklyBossesNotification.animation()) {
-                    Text("周本折扣推送")
+                    Text("周本折扣提醒推送")
                 }
                 if allowWeeklyBossesNotification {
                     DatePicker("提醒时间", selection: weeklyBossesNotificationTime, displayedComponents: .hourAndMinute)
@@ -179,18 +179,11 @@ struct NotificationSettingView: View {
                 }
             }
             
-            
             Toggle(isOn: $allowTransformerNotification.animation()) {
-                Text("参量质变仪推送")
+                Text("参量质变仪提醒推送")
             }
-            
-            
-            
-            
         }
         .navigationBarTitle("通知设置", displayMode: .inline)
-        
-        
     }
 }
 
