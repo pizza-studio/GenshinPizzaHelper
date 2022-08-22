@@ -216,7 +216,7 @@ private struct IgnoreNotificationAccountItem: View {
 
     var body: some View {
         Toggle(isOn: $isOn) {
-            Text("\(config.name!)(\(config.uid!))")
+            Text("\(config.name!) (\(config.uid!))")
         }
         .onAppear {
             if !isOn {
