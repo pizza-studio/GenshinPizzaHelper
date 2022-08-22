@@ -15,11 +15,11 @@ class UserNotificationCenter {
     
     // Define the custom actions.
     let openGenshin = UNNotificationAction(identifier: "OPEN_GENSHIN_ACTION",
-          title: "打开「原神」",
-          options: [])
+                                           title: "打开「原神」",
+                                           options: [.foreground])
     let openNotificationSetting = UNNotificationAction(identifier: "OPEN_NOTIFICATION_SETTING_ACTION",
-          title: "通知设置",
-          options: [])
+                                                       title: "通知设置",
+                                                       options: [])
     // Define the notification type
     var normalNotificationCategory: UNNotificationCategory {
         UNNotificationCategory(identifier: "NORMAL_NOTIFICATION",
