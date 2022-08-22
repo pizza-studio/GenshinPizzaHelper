@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NotificationSettingView: View {
+    @EnvironmentObject var viewModel: ViewModel
     @AppStorage("allowResinNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowResinNotification: Bool = true
     @AppStorage("resinNotificationNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var resinNotificationNum: Double = 150
     @State var showResinSlider: Bool = false
@@ -59,10 +60,7 @@ struct NotificationSettingView: View {
         })
     }
     
-    
     @AppStorage("allowTransformerNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowTransformerNotification: Bool = true
-    
-    
     @AppStorage("allowDailyTaskNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowDailyTaskNotification: Bool = true
     @AppStorage("dailyTaskNotificationTimePointData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var dailyTaskNotificationTimePointData: Data = try! JSONEncoder().encode(DateComponents(calendar: Calendar.current, hour: 19, minute: 0))
     var dailyTaskNotificationTime: Binding<Date> {
@@ -87,7 +85,7 @@ struct NotificationSettingView: View {
     var body: some View {
         List {
             Section {
-                NavigationLink(destination: IgnoreNotificationAccountView()) {
+                NavigationLink(destination: IgnoreNotificationAccountView().environmentObject(viewModel)) {
                     Text("启用帐号")
                 }
             }
@@ -194,11 +192,9 @@ struct IgnoreNotificationAccountView: View {
     // TODO: IGNORE NOTIFICATION ACCOUNT VIEW
     
     @State var ignoreUids: [String] = []
-    var bindings: [Binding<Bool>] {
-        configs.map { binding($0.uid!) }
-    }
+
     func binding(_ uid: String) -> Binding<Bool> {
-        .init(get: {
+        let isOn = Binding<Bool> (get: {
             !ignoreUids.contains(uid)
         }, set: { allow in
             if allow {
@@ -207,21 +203,51 @@ struct IgnoreNotificationAccountView: View {
                 ignoreUids = ignoreUids.filter { $0 != uid }
             }
         })
+        return isOn
     }
     
     var body: some View {
         List {
             ForEach(configs, id: \.uuid) { config in
-                Toggle(isOn: binding(config.uid!)) {
-                    Text("\(config.name!)(\(config.uid!))")
+                IgnoreNotificationAccountItem(isOn: !ignoreUids.contains(config.uid!), ignoreUids: $ignoreUids, config: config)
+//                Toggle(isOn: binding(config.uid!)) {
+//                    Text("\(config.name!)(\(config.uid!))")
+//                }
+            }
+        }
+    }
+}
+
+private struct IgnoreNotificationAccountItem: View {
+    @State var isOn: Bool
+    @Binding var ignoreUids: [String]
+    var config: AccountConfiguration
+
+    var body: some View {
+        Toggle(isOn: $isOn) {
+            Text("\(config.name!)(\(config.uid!))")
+        }
+        .onAppear {
+            if !isOn {
+                ignoreUids.append(config.uid!)
+            } else {
+                ignoreUids = ignoreUids.filter { item in
+                    item != config.uid!
                 }
             }
-
         }
-        
+        .onChange(of: isOn) { newValue in
+            if !newValue {
+                ignoreUids.append(config.uid!)
+                print("Added \(config.uid!) into ignore list")
+            } else {
+                ignoreUids = ignoreUids.filter { item in
+                    item != config.uid!
+                }
+                print("Removed \(config.uid!) from ignore list")
+            }
+        }
     }
-    
-    
 }
 
 fileprivate struct AllowAccount {
