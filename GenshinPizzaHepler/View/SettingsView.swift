@@ -25,6 +25,7 @@ struct SettingsView: View {
         NavigationView {
             
             List {
+
                 Section(header: Text("我的帐号")) {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         NavigationLink(destination: AccountDetailView(account: $account)) {

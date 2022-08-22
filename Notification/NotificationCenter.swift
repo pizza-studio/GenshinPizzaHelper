@@ -19,7 +19,7 @@ class UserNotificationCenter {
                                            options: [.foreground])
     let openNotificationSetting = UNNotificationAction(identifier: "OPEN_NOTIFICATION_SETTING_ACTION",
                                                        title: "通知设置",
-                                                       options: [])
+                                                       options: [.foreground])
     // Define the notification type
     var normalNotificationCategory: UNNotificationCategory {
         UNNotificationCategory(identifier: "NORMAL_NOTIFICATION",
@@ -69,7 +69,7 @@ class UserNotificationCenter {
     }
     
     func askPermission() {
-        center.requestAuthorization(options: [.alert, .sound, .badge, .provisional]) { guarted, error in
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { guarted, error in
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -83,6 +83,8 @@ class UserNotificationCenter {
         }
         content.body = body
         content.categoryIdentifier = "NORMAL_NOTIFICATION"
+        content.sound = .default
+        content.badge = 1
         
         return content
     }
