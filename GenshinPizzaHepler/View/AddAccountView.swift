@@ -35,6 +35,8 @@ struct AddAccountView: View {
     
     @State private var userData: UserData?
 
+    @State private var alermType: AlertType = .accountNotSaved
+
     @Namespace var animation
     
     
@@ -51,11 +53,13 @@ struct AddAccountView: View {
                     Menu {
                         Button("国服") {
                             region = .cn
-                            isWebShown = true
+                            alermType = .webRemind
+                            isAlertShow.toggle()
                         }
                         Button("国际服") {
                             region = .global
-                            isWebShown = true
+                            alermType = .webRemind
+                            isAlertShow.toggle()
                         }
                     } label: {
                         Text("登录米游社账号")
@@ -114,13 +118,18 @@ struct AddAccountView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("保存") {
                     if (unsavedUid == "") || (unsavedCookie == "") {
+                        alermType = .accountNotSaved
                         isAlertShow.toggle()
                         return
                     }
                     if unsavedName == "" {
                         unsavedName = unsavedUid
                     }
-                    if connectStatus != .success { isAlertShow.toggle(); return }
+                    if connectStatus != .success {
+                        alermType = .accountNotSaved
+                        isAlertShow.toggle()
+                        return
+                    }
                     viewModel.addAccount(name: unsavedName, uid: unsavedUid, cookie: unsavedCookie, server: unsavedServer)
                     presentationMode.wrappedValue.dismiss()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -130,7 +139,12 @@ struct AddAccountView: View {
             }
         }
         .alert(isPresented: $isAlertShow) {
-            Alert(title: Text("尚未完成账号设置"))
+            switch alermType {
+            case .accountNotSaved:
+                return Alert(title: Text("尚未完成账号设置"))
+            case .webRemind:
+                return Alert(title: Text("提示"), message: Text("请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"), dismissButton: .default(Text("好"), action: openWebView))
+            }
         }
         .onChange(of: selectedAccount) { value in
             if let selectedAccount = value {
@@ -180,4 +194,13 @@ struct AddAccountView: View {
             }
         }
     }
+
+    private func openWebView() -> Void {
+        isWebShown.toggle()
+    }
+}
+
+private enum AlertType {
+    case accountNotSaved
+    case webRemind
 }
