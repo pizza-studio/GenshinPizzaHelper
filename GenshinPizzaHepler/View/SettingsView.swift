@@ -39,6 +39,7 @@ struct SettingsView: View {
                         Label("添加帐户", systemImage: "plus.circle")
                     }
                 }
+                // TODO: 将检查用户协议改到ContentView去
                 .onChange(of: scenePhase, perform: { newPhase in
                     switch newPhase {
                     case .active:
@@ -57,6 +58,14 @@ struct SettingsView: View {
                     }
                 })
 
+                // 通知设置
+                NotificationSettingNavigator()
+
+                // 更多
+                NavigationLink(destination: HelpSheetView()) {
+                    Text("更多")
+                }
+
             }
             .navigationTitle("设置")
             .toolbar {
@@ -71,20 +80,9 @@ struct SettingsView: View {
                     }
                 }
                 
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Button(action: {
-                        sheetType = .help
-                    }) {
-                        Image(systemName: "info.circle")
-                    }
-                    Spacer()
-                }
-                
             }
             .sheet(item: $sheetType) { item in
                 switch item {
-                case .help:
-                    HelpSheetView(sheet: $sheetType)
                 case .userPolicy:
                     UserPolicyView(sheet: $sheetType)
                         .allowAutoDismiss(false)
@@ -102,6 +100,5 @@ enum SettingsViewSheetType: Identifiable {
         hashValue
     }
 
-    case help
     case userPolicy
 }
