@@ -60,7 +60,6 @@ struct HomeView: View {
                                 .cornerRadius(20)
                                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                                 .aspectRatio(170/364, contentMode: .fill)
-                                .animation(.linear)
                                 .listRowBackground(Color.white.opacity(0))
                                 .onTapGesture {
                                     if detail.animationDone {

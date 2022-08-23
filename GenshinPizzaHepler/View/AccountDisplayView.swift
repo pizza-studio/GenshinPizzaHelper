@@ -113,12 +113,12 @@ struct AccountDisplayView: View {
     }
 
     private func closeView() -> Void {
-        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+        withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
             if detail.animationDone {
                 simpleTaptic(type: .light)
                 detail.animationDone = false
                 detail.show.toggle()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.43) {
                     detail.animationDone = true
                 }
             }
@@ -263,7 +263,7 @@ private struct AccountDisplayContentView: View {
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
                 .padding(-10)
                 .ignoresSafeArea(.all)
-                .blurMaterial(dark: true),
+                .blurMaterial(),
             alignment: .trailing
         )
     }
@@ -271,16 +271,11 @@ private struct AccountDisplayContentView: View {
 
 
 extension View {
-    func blurMaterial(dark: Bool = false) -> some View {
+    func blurMaterial() -> some View {
         if #available(iOS 15.0, *) {
-            if dark {
-                return AnyView(self.overlay(.ultraThinMaterial).preferredColorScheme(.dark))
-            } else {
-                return AnyView(self.overlay(.ultraThinMaterial))
-            }
+            return AnyView(self.overlay(.ultraThinMaterial).preferredColorScheme(.dark))
         } else {
             return AnyView(self.blur(radius: 10))
         }
-//        return AnyView(self.blur(radius: 10))
     }
 }
