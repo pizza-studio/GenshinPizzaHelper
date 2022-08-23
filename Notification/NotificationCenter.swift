@@ -90,6 +90,7 @@ class UserNotificationCenter {
     }
     
     private func createNotification(in second: Int, for accountName: String, object: Object, title: String, body: String, uid: String, idSuffix: String = "") {
+        guard second > 0 else { return }
         let timeInterval = TimeInterval(second)
         let id = uid + object.rawValue
         
