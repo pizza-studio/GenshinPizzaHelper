@@ -16,7 +16,7 @@ class ViewModel: ObservableObject {
     static let shared = ViewModel()
     
     @Published var accounts: [Account] = []
-    
+    @Published var backgrounds: [WidgetBackground] = []
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
     
@@ -76,11 +76,13 @@ class ViewModel: ObservableObject {
     
     
     func refreshData() {
+        backgrounds = []
         accounts.forEach { account in
             let idx = accounts.firstIndex { account.config.uuid == $0.config.uuid }!
             account.config.fetchResult { result in
                 self.accounts[idx] = Account(config: account.config, result: result)
                 print("account refreshed")
+                self.backgrounds.append(WidgetBackground.randomNamecardBackground)
             }
         }
     }

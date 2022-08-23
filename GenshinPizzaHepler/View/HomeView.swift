@@ -53,10 +53,11 @@ struct HomeView: View {
                     }
 
                     ForEach(viewModel.accounts, id: \.config.uuid) { account in
-                        if let widgetBackground = WidgetBackground.randomNamecardBackground {
+
+                        if let idx = viewModel.accounts.firstIndex(of: account) {
                             switch account.result {
                             case .success(let userData):
-                                GameInfoBlock(userData: userData, accountName: account.config.name, animation: animation, widgetBackground: widgetBackground)
+                                GameInfoBlock(userData: userData, accountName: account.config.name, animation: animation, widgetBackground: viewModel.backgrounds[idx])
                                     .padding()
                                     .cornerRadius(20)
                                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
@@ -68,7 +69,7 @@ struct HomeView: View {
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
                                             detail.userData = userData
                                             detail.accountName = account.config.name!
-                                            detail.widgetBackground = widgetBackground
+                                            detail.widgetBackground = viewModel.backgrounds[idx]
                                             detail.viewConfig = WidgetViewConfiguration.defaultConfig
                                             detail.show = true
                                         }
