@@ -28,6 +28,8 @@
 		BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
 		BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
 		BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */; };
+		BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
+		BF70211A28B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -240,6 +242,7 @@
 		BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBlockBackgroundView.swift; sourceTree = "<group>"; };
 		BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDisplayView.swift; sourceTree = "<group>"; };
 		BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayContentModel.swift; sourceTree = "<group>"; };
+		BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundsPreviewView.swift; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -538,6 +541,7 @@
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
+				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
 				EA07C65528B11DB40030E338 /* NotificationSettingView.swift */,
 				EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */,
 				EA79FDC828AB9A5600B50D6F /* AccountDetailView copy.swift */,
@@ -830,6 +834,7 @@
 				BFFD822D28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
+				BF70211A28B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
 				EA56E08928A26C0D00A64262 /* RequestResult.swift in Sources */,
 				EA56E09928A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
@@ -915,6 +920,7 @@
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
+				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,

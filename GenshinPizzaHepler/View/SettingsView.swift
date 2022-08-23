@@ -61,6 +61,12 @@ struct SettingsView: View {
                 // 通知设置
                 NotificationSettingNavigator()
 
+                Section {
+                    NavigationLink(destination: BackgroundsPreviewView()) {
+                        Text("背景名片预览")
+                    }
+                }
+
                 // 更多
                 NavigationLink(destination: HelpSheetView()) {
                     Text("更多")
