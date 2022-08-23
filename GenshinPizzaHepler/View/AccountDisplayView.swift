@@ -78,14 +78,14 @@ struct AccountDisplayView: View {
                     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                     print("save image success")
                 } label: {
-                    Label("保存本页面至相簿", systemImage: "arrow.turn.up.forward.iphone.fill")
+                    Label("保存本页面至相册", systemImage: "arrow.turn.up.forward.iphone.fill")
                 }
                 Button {
                     let image = gameInfoBlock.asUiImage()
                     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                     print("save image success")
                 } label: {
-                    Label("保存卡片指相簿", systemImage: "platter.2.filled.iphone")
+                    Label("保存卡片至相册", systemImage: "platter.2.filled.iphone")
                 }
 
 
