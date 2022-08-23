@@ -77,9 +77,7 @@ struct NotificationSettingView: View {
             }
         })
     }
-    
-    
-    // TODO: Ignore UIDs var ignoreUids: [String] = []
+
     
     
     var body: some View {
@@ -144,7 +142,7 @@ struct NotificationSettingView: View {
                     Picker("提醒于", selection: noticeExpeditionBy) {
                         Text("全部完成时")
                             .tag(ExpeditionNoticeMethod.allCompleted)
-                        Text("下一个完成时")
+                        Text("任一完成时")
                             .tag(ExpeditionNoticeMethod.nextCompleted)
                     }
                 }
