@@ -13,7 +13,7 @@ struct AddAccountView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var unsavedName: String = "我的账号"
+    @State private var unsavedName: String = "我的帐号"
     @State private var unsavedUid: String = ""
     @State private var unsavedCookie: String = ""
     @State private var unsavedServer: Server = .china

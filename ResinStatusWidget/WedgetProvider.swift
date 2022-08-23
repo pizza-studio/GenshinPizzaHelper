@@ -52,7 +52,7 @@ struct Provider: IntentTimelineProvider {
         
         guard !configs.isEmpty else {
             // 如果还没设置账号，要求进入App获取账号
-            viewConfig.addMessage("请进入App设置账号信息")
+            viewConfig.addMessage("请进入App设置帐号信息")
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
@@ -73,7 +73,7 @@ struct Provider: IntentTimelineProvider {
                 }
             } else {
                 // 如果还没设置账号，要求进入App获取账号
-                viewConfig.addMessage("请长按进入小组件设置账号信息")
+                viewConfig.addMessage("请长按进入小组件设置帐号信息")
                 let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
@@ -89,7 +89,7 @@ struct Provider: IntentTimelineProvider {
         
         guard let config = configs.first(where: { $0.uuid == selectedAccountUUID }) else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
-            viewConfig.addMessage("请长按进入小组件重新设置账号信息")
+            viewConfig.addMessage("请长按进入小组件重新设置帐号信息")
             let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
