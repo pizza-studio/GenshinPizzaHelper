@@ -13,7 +13,7 @@ struct InfoPreviewer: View {
 
     var body: some View {
         HStack {
-            Text(title)
+            Text(LocalizedStringKey(title))
             Spacer()
             Text(content)
                 .foregroundColor(.gray)
