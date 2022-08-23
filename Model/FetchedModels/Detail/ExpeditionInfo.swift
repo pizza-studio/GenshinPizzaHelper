@@ -43,7 +43,13 @@ struct Expedition: Codable {
     let avatarSideIcon: String
     let remainedTimeStr: String
     let statusStr: String
-    
+
+    var charactersEnglishName: String {
+        let components = avatarSideIcon.components(separatedBy: "_")
+        let fileName = components.last ?? ""
+        return (fileName as NSString).deletingPathExtension
+    }
+
     var avatarSideIconUrl: URL { URL(string: avatarSideIcon)! }
     var recoveryTime: RecoveryTime {
         RecoveryTime(second: Int(remainedTimeStr)!)
@@ -57,4 +63,12 @@ struct Expedition: Codable {
         case remainedTimeStr = "remainedTime"
         case statusStr = "status"
     }
+
+//    var characterName: String {
+//        switch charactersEnglishName {
+//        default:
+//            break
+//        }
+//    }
+
 }
