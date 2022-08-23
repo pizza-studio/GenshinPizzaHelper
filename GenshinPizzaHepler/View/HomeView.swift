@@ -23,7 +23,7 @@ struct HomeView: View {
         let day = calendar.component(.day, from: date)
         let weekday = calendar.component(.weekday, from: date)
 
-        return "\(month)月\(day)日 \(weekdays[weekday])"
+        return "\(month)月\(day)日 \(weekdays[(weekday + 6) % 7])"
     }
     
     var body: some View {
