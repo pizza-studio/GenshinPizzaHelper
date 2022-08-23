@@ -12,118 +12,182 @@ struct AccountDisplayView: View {
     var animation: Namespace.ID
     var accountName: String { detail.accountName }
     var accountUUIDString: String { detail.accountUUIDString }
-    @State private var isToolbarShow: Bool = false
-    @State private var viewState = CGSize.zero
+    
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
+    fileprivate var gameInfoBlock: some View {
+        GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
+            .padding()
+            .animation(.linear)
+    }
 
     var body: some View {
-        VStack {
-            Text("")
-                .frame(height: 50)
-            HStack {
-                VStack(alignment: .leading, spacing: 5) {
-                    if let accountName = detail.accountName {
-                        HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            Image(systemName: "person.fill")
-                            Text(accountName)
-                        }
-                        .font(.footnote)
-                        .foregroundColor(Color("textColor3"))
-                        .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
-                    }
-                    HStack(alignment: .firstTextBaseline, spacing: 2) {
-
-                        Text("\(detail.userData.resinInfo.currentResin)")
-                            .font(.system(size: 50 , design: .rounded))
-                            .fontWeight(.medium)
-                            .foregroundColor(Color("textColor3"))
-                            .shadow(radius: 1)
-                            .matchedGeometryEffect(id: "\(accountUUIDString)curResin", in: animation)
-                        Image("树脂")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 30)
-                            .alignmentGuide(.firstTextBaseline) { context in
-                                context[.bottom] - 0.17 * context.height
-                            }
-                            .matchedGeometryEffect(id: "\(accountUUIDString)Resinlogo", in: animation)
-                    }
-                    HStack {
-                        Image(systemName: "hourglass.circle")
-                            .foregroundColor(Color("textColor3"))
-                            .font(.title3)
-                        RecoveryTimeText(resinInfo: detail.userData.resinInfo)
-                    }
-                    .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
-                }
-                Spacer()
-            }
-            HStack {
-                DetailInfo(userData: detail.userData, viewConfig: detail.viewConfig)
-                    .padding(.vertical)
-                    .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
-                Spacer()
-            }
-            Spacer()
-
-            if isToolbarShow {
+        ZStack(alignment: .bottomTrailing) {
+            VStack {
+                Text("")
+                    .frame(height: 50)
                 HStack {
-                    Image(systemName: "xmark")
-                        .onTapGesture {
-                            closeView()
+                    VStack(alignment: .leading, spacing: 5) {
+                        if let accountName = detail.accountName {
+                            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                                Image(systemName: "person.fill")
+                                Text(accountName)
+                            }
+                            .font(.footnote)
+                            .foregroundColor(Color("textColor3"))
+                            .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
                         }
+                        HStack(alignment: .firstTextBaseline, spacing: 2) {
+
+                            Text("\(detail.userData.resinInfo.currentResin)")
+                                .font(.system(size: 50 , design: .rounded))
+                                .fontWeight(.medium)
+                                .foregroundColor(Color("textColor3"))
+                                .shadow(radius: 1)
+                                .matchedGeometryEffect(id: "\(accountUUIDString)curResin", in: animation)
+                            Image("树脂")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 30)
+                                .alignmentGuide(.firstTextBaseline) { context in
+                                    context[.bottom] - 0.17 * context.height
+                                }
+                                .matchedGeometryEffect(id: "\(accountUUIDString)Resinlogo", in: animation)
+                        }
+                        HStack {
+                            Image(systemName: "hourglass.circle")
+                                .foregroundColor(Color("textColor3"))
+                                .font(.title3)
+                            RecoveryTimeText(resinInfo: detail.userData.resinInfo)
+                        }
+                        .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
+                    }
                     Spacer()
-                    // TODO: Share Button
-                    Menu {
-                        Button("保存到相册") {
-                            let image = mainContent.asUiImage()
-                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                            print("save image success")
-                        }
-                    } label: {
-                        Image(systemName: "square.and.arrow.up")
-                    }
                 }
-                .ignoresSafeArea()
-                .background(Color(UIColor.secondarySystemBackground).opacity(0.6).padding([.horizontal, .bottom], -50).padding(.top, -20))
+                HStack {
+                    DetailInfo(userData: detail.userData, viewConfig: detail.viewConfig)
+                        .padding(.vertical)
+                        .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
+                    Spacer()
+                }
+                Spacer()
             }
+            Menu {
+                Button {
+                    let image = mainContent.asUiImage()
+                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    print("save image success")
+                } label: {
+                    Label("保存本页面至相簿", systemImage: "arrow.turn.up.forward.iphone.fill")
+                }
+                Button {
+                    let image = gameInfoBlock.asUiImage()
+                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    print("save image success")
+                } label: {
+                    Label("保存卡片指相簿", systemImage: "platter.2.filled.iphone")
+                }
+
+
+            } label: {
+                Image(systemName: "square.and.arrow.up.circle.fill")
+                    .font(.title)
+            }
+
         }
+
+
         .padding(.horizontal, 25)
-        .background(AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
-            .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
-            .padding(.vertical, -10)
-            .ignoresSafeArea(.all)
-            .blur(radius: 5)
-            .onTapGesture {
-                withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                    isToolbarShow.toggle()
-                }
-            }
-        )
-        .offset(x: viewState.width, y: viewState.height)
-        .gesture (
-            DragGesture()
-                .onChanged { value in
-                    if value.translation.height > 0 {
-                        self.viewState = value.translation
-                    }
-                }
-                .onEnded { value in
-                    self.viewState = CGSize.zero
-                    if value.translation.height > 75 {
-                        closeView()
-                    }
-            }
+
+        .background(
+            AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
+                .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
+                .padding(-10)
+                .ignoresSafeArea(.all)
+                .blurMaterial()
+                .onTapGesture(perform: {
+                    closeView()
+                }),
+            alignment: .trailing
         )
     }
 
     private func closeView() -> Void {
         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-            detail.show.toggle()
+            if detail.animationDone {
+                simpleTaptic(type: .light)
+                detail.animationDone = false
+                detail.show.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    detail.animationDone = true
+                }
+            }
         }
     }
 }
+
+struct GameInfoBlockForSave: View {
+    var userData: UserData
+    let accountName: String
+    var accountUUIDString: String = UUID().uuidString
+
+    let viewConfig = WidgetViewConfiguration.defaultConfig
+    var animation: Namespace.ID
+
+    var widgetBackground: WidgetBackground
+
+    var body: some View {
+        HStack {
+            Spacer()
+            VStack(alignment: .leading, spacing: 5) {
+                if let accountName = accountName {
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Image(systemName: "person.fill")
+                        Text(accountName)
+                    }
+                    .font(.footnote)
+                    .foregroundColor(Color("textColor3"))
+                    .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
+                }
+                HStack(alignment: .firstTextBaseline, spacing: 2) {
+
+                    Text("\(userData.resinInfo.currentResin)")
+                        .font(.system(size: 50 , design: .rounded))
+                        .fontWeight(.medium)
+                        .foregroundColor(Color("textColor3"))
+                        .shadow(radius: 1)
+                        .matchedGeometryEffect(id: "\(accountUUIDString)curResin", in: animation)
+                    Image("树脂")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 30)
+                        .alignmentGuide(.firstTextBaseline) { context in
+                            context[.bottom] - 0.17 * context.height
+                        }
+                        .matchedGeometryEffect(id: "\(accountUUIDString)Resinlogo", in: animation)
+                }
+                HStack {
+                    Image(systemName: "hourglass.circle")
+                        .foregroundColor(Color("textColor3"))
+                        .font(.title3)
+                    RecoveryTimeText(resinInfo: userData.resinInfo)
+                }
+                .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
+            }
+            .padding()
+            Spacer()
+            DetailInfo(userData: userData, viewConfig: viewConfig)
+                .padding(.vertical)
+                .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
+                .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
+            Spacer()
+        }
+        .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true)
+            .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation))
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+}
+
 
 private struct AccountDisplayContentView: View {
     @ObservedObject var detail: DisplayContentModel
@@ -132,63 +196,91 @@ private struct AccountDisplayContentView: View {
     var accountUUIDString: String { detail.accountUUIDString }
 
     var body: some View {
-        VStack {
-            Text("")
-                .frame(height: 50)
-            HStack {
-                VStack(alignment: .leading, spacing: 5) {
-                    if let accountName = detail.accountName {
-                        HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            Image(systemName: "person.fill")
-                            Text(accountName)
-                        }
-                        .font(.footnote)
-                        .foregroundColor(Color("textColor3"))
-                        .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
-                    }
-                    HStack(alignment: .firstTextBaseline, spacing: 2) {
-
-                        Text("\(detail.userData.resinInfo.currentResin)")
-                            .font(.system(size: 50 , design: .rounded))
-                            .fontWeight(.medium)
-                            .foregroundColor(Color("textColor3"))
-                            .shadow(radius: 1)
-                            .matchedGeometryEffect(id: "\(accountUUIDString)curResin", in: animation)
-                        Image("树脂")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 30)
-                            .alignmentGuide(.firstTextBaseline) { context in
-                                context[.bottom] - 0.17 * context.height
+        ZStack(alignment: .bottomTrailing) {
+            VStack {
+                Text("")
+                    .frame(height: 50)
+                HStack {
+                    VStack(alignment: .leading, spacing: 5) {
+                        if let accountName = detail.accountName {
+                            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                                Image(systemName: "person.fill")
+                                Text(accountName)
                             }
-                            .matchedGeometryEffect(id: "\(accountUUIDString)Resinlogo", in: animation)
-                    }
-                    HStack {
-                        Image(systemName: "hourglass.circle")
+                            .font(.footnote)
                             .foregroundColor(Color("textColor3"))
-                            .font(.title3)
-                        RecoveryTimeText(resinInfo: detail.userData.resinInfo)
+                            .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
+                        }
+                        HStack(alignment: .firstTextBaseline, spacing: 2) {
+
+                            Text("\(detail.userData.resinInfo.currentResin)")
+                                .font(.system(size: 50 , design: .rounded))
+                                .fontWeight(.medium)
+                                .foregroundColor(Color("textColor3"))
+                                .shadow(radius: 1)
+                                .matchedGeometryEffect(id: "\(accountUUIDString)curResin", in: animation)
+                            Image("树脂")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 30)
+                                .alignmentGuide(.firstTextBaseline) { context in
+                                    context[.bottom] - 0.17 * context.height
+                                }
+                                .matchedGeometryEffect(id: "\(accountUUIDString)Resinlogo", in: animation)
+                        }
+                        HStack {
+                            Image(systemName: "hourglass.circle")
+                                .foregroundColor(Color("textColor3"))
+                                .font(.title3)
+                            RecoveryTimeText(resinInfo: detail.userData.resinInfo)
+                        }
+                        .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
                     }
-                    .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
+                    Spacer()
+                }
+                HStack {
+                    DetailInfo(userData: detail.userData, viewConfig: detail.viewConfig)
+                        .padding(.vertical)
+                        .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
+                    Spacer()
                 }
                 Spacer()
+                Text("")
+                    .frame(height: 75)
             }
-            HStack {
-                DetailInfo(userData: detail.userData, viewConfig: detail.viewConfig)
-                    .padding(.vertical)
-                    .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
-                Spacer()
-            }
-            Spacer()
-            Text("")
-                .frame(height: 75)
+            .padding(.horizontal, 25)
+            Image("AppIconHD")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 25, height: 25)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .padding()
+
         }
-        .padding(.horizontal, 25)
-        .background(AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
-            .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
-            .padding(.vertical, -10)
-            .ignoresSafeArea(.all)
-            .blur(radius: 5)
+
+        .background(
+            AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
+                .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
+                .padding(-10)
+                .ignoresSafeArea(.all)
+                .blurMaterial(dark: true),
+            alignment: .trailing
         )
+    }
+}
+
+
+extension View {
+    func blurMaterial(dark: Bool = false) -> some View {
+        if #available(iOS 15.0, *) {
+            if dark {
+                return AnyView(self.overlay(.ultraThinMaterial).preferredColorScheme(.dark))
+            } else {
+                return AnyView(self.overlay(.ultraThinMaterial))
+            }
+        } else {
+            return AnyView(self.blur(radius: 10))
+        }
+//        return AnyView(self.blur(radius: 10))
     }
 }

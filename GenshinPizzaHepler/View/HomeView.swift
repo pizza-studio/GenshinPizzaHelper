@@ -63,14 +63,25 @@ struct HomeView: View {
                                 .animation(.linear)
                                 .listRowBackground(Color.white.opacity(0))
                                 .onTapGesture {
-                                    simpleTaptic(type: .light)
-                                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                                        detail.userData = userData
-                                        detail.accountName = account.config.name!
-                                        detail.accountUUIDString = account.config.uuid!.uuidString
-                                        detail.widgetBackground = account.background
-                                        detail.viewConfig = WidgetViewConfiguration.defaultConfig
-                                        detail.show = true
+                                    if detail.animationDone {
+                                        simpleTaptic(type: .light)
+                                        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                                            detail.userData = userData
+                                            detail.accountName = account.config.name!
+                                            detail.accountUUIDString = account.config.uuid!.uuidString
+                                            detail.widgetBackground = account.background
+                                            detail.viewConfig = WidgetViewConfiguration.defaultConfig
+                                            detail.show = true
+                                        }
+                                    }
+                                }
+                                .contextMenu {
+                                    Button("保存图片") {
+                                        let view = GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
+                                            .padding()
+                                            .animation(.linear)
+                                        let image = view.asUiImage()
+                                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                                     }
                                 }
                         case .failure( _) :
