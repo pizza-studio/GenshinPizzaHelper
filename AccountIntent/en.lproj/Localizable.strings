@@ -6,8 +6,10 @@
   
 */
 
+// Used for copy and paste to edit this file
 "" = "";
 
+// Settings view
 "原神披萨小助手" = "Genshin Pizza Helper";
 "主页" = "Home";
 "设置" = "Settings";
@@ -31,12 +33,23 @@
 "开发者" = "Developers";
 "交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
 
+// Account detail
 "重新登录米游社帐号" = "Relogin HoyoLab account";
 "帐号配置" = "Account configuration";
 "帐号名" = "Account name";
 "服务器" = "Server";
 "测试连接" = "Test connect status";
 "错误内容" = "Error details";
+"帐号信息" = "Account Infos";
 
 "你可以添加自定义的帐号备注" = "You can add custom account notes";
 "粘贴自剪贴板" = "Paste from clipboard";
+
+// Add account
+"登录米游社帐号" = "Login via HoyoLab";
+"你也可以" = "You can also";
+"手动设置帐号" = "configure your account manually";
+"保存" = "Save";
+"国服" = "China Mainland players";
+"国际服" = "Global players";
+"登录帐号获取Cookie" = "Get cookie via HoyoLab";

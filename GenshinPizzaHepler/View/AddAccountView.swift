@@ -46,7 +46,7 @@ struct AddAccountView: View {
                 Section(footer: HStack {
                     Text("你也可以")
                     NavigationLink(destination: AddAccountDetailView(unsavedName: $unsavedName, unsavedUid: $unsavedUid, unsavedCookie: $unsavedCookie, unsavedServer: $unsavedServer, connectStatus: $connectStatus)) {
-                        Text("手动设置账号")
+                        Text("手动设置帐号")
                     }
                 }) {
                     
@@ -62,7 +62,7 @@ struct AddAccountView: View {
                             isAlertShow.toggle()
                         }
                     } label: {
-                        Text("登录米游社账号")
+                        Text("登录米游社帐号")
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             
                     }
@@ -83,7 +83,7 @@ struct AddAccountView: View {
                     InfoEditor(title: "自定义帐号名", content: $unsavedName, placeholderText: unsavedName)
                     // 如果该账号绑定的UID不止一个，则显示Picker选择账号
                     if accountsForSelected.count > 1 {
-                        Picker("请选择账号", selection: $selectedAccount) {
+                        Picker("请选择帐号", selection: $selectedAccount) {
                             ForEach(accountsForSelected, id: \.gameUid) { account in
                                 Text(account.nickname + "（\(account.gameUid)）")
                                     .tag(account as FetchedAccount?)
@@ -95,7 +95,7 @@ struct AddAccountView: View {
             
             if (connectStatus == .success) || (connectStatus == .testing) {
                 NavigationLink(destination: AddAccountDetailView(unsavedName: $unsavedName, unsavedUid: $unsavedUid, unsavedCookie: $unsavedCookie, unsavedServer: $unsavedServer, connectStatus: $connectStatus)) {
-                    Text("查看账号详情")
+                    Text("查看帐号详情")
                 }
             }
             
@@ -113,7 +113,7 @@ struct AddAccountView: View {
             }
             
         }
-        .navigationBarTitle("添加账号", displayMode: .inline)
+        .navigationBarTitle("添加帐号", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("保存") {
@@ -141,7 +141,7 @@ struct AddAccountView: View {
         .alert(isPresented: $isAlertShow) {
             switch alermType {
             case .accountNotSaved:
-                return Alert(title: Text("尚未完成账号设置"))
+                return Alert(title: Text("尚未完成帐号设置"))
             case .webRemind:
                 return Alert(title: Text("提示"), message: Text("请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"), dismissButton: .default(Text("好"), action: openWebView))
             }

@@ -46,9 +46,6 @@ struct AccountDetailView: View {
     @State private var connectStatus: ConnectStatus = .unknown
     
     var body: some View {
-        
-        
-        
         List {
             Button("重新登录米游社帐号") { isWebShown.toggle() }
             Section(header: Text("帐号配置"), footer: Button("支持我们") {

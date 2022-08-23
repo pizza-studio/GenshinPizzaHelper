@@ -24,7 +24,7 @@ struct TextEditorView: View {
                 Section {
                     if showShortCutsLink {
                         Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
-                        Button("登录账号获取Cookie") { isWebShown.toggle() }
+                        Button("登录帐号获取Cookie") { isWebShown.toggle() }
                     }
                     Button("粘贴自剪贴板") {
                         content = UIPasteboard.general.string ?? ""
