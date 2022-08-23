@@ -74,19 +74,6 @@ struct SettingsView: View {
 
             }
             .navigationTitle("设置")
-            .toolbar {
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        withAnimation { viewModel.refreshData() }
-                        print(accounts.first?.config.uid ?? "nil")
-                        WidgetCenter.shared.reloadAllTimelines()
-                    }) {
-                        Image(systemName: "arrow.counterclockwise")
-                    }
-                }
-                
-            }
             .sheet(item: $sheetType) { item in
                 switch item {
                 case .userPolicy:
@@ -96,7 +83,7 @@ struct SettingsView: View {
             }
             
         }
-        .ignoresSafeArea()
+//        .ignoresSafeArea()
         .navigationViewStyle(.stack)
     }
 }
