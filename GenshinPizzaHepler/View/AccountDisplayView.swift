@@ -13,6 +13,7 @@ struct AccountDisplayView: View {
     var accountName: String { detail.accountName }
     var accountUUIDString: String { detail.accountUUIDString }
     @State private var isToolbarShow: Bool = false
+    @State private var viewState = CGSize.zero
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
 
@@ -100,11 +101,19 @@ struct AccountDisplayView: View {
                 }
             }
         )
+        .offset(x: viewState.width, y: viewState.height)
         .gesture (
-            DragGesture().onEnded { value in
-                if value.translation.height > 75 {
-                    closeView()
+            DragGesture()
+                .onChanged { value in
+                    if value.translation.height > 0 {
+                        self.viewState = value.translation
+                    }
                 }
+                .onEnded { value in
+                    self.viewState = CGSize.zero
+                    if value.translation.height > 75 {
+                        closeView()
+                    }
             }
         )
     }
