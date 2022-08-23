@@ -75,6 +75,6 @@ struct AccountDisplayView: View {
         .padding(.horizontal, 25)
 //        .background(Color(UIColor.secondarySystemBackground))
         .background(AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
-            .matchedGeometryEffect(id: "\(detail.accountName)bg", in: animation).blur(radius: 10))
+            .matchedGeometryEffect(id: "\(detail.accountName)bg", in: animation).ignoresSafeArea().blur(radius: 10))
     }
 }
