@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  GenshinPizzaHelper
+
+  Created by Bill Haku on 2022/8/23.
+  
+*/
+
+"" = "";
+
+"原神披萨小助手" = "Genshin Pizza Helper";
+"主页" = "Home";
+"设置" = "Settings";
+"我的帐号" = "My accounts";
+"添加帐号" = "Add an account";
+"通知推送" = "Notification";
+"通知推送设置" = "Notification Settings";
+"背景名片预览" = "Background namecard preview";
+"更多" = "More";
+
+"通知功能需要帐号添加至小组件后才能生效" = "Notification is only available after Widget is added on your device";
+"地区: %@" = "Region: %@";
+"服务器: %@" = "Server: %@";
+
+"获取Cookie的脚本" = "Shortcut to get Cookie";
+"在App Store评分" = "Review at App Store";
+"支持我们" = "Donate us";
+"常见使用问题（FAQ）" = "FAQ";
+"用户协议与免责声明" = "User policy (Simplified Chinese)";
+"关于小助手" = "About App";
+"开发者" = "Developers";
+"交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
+

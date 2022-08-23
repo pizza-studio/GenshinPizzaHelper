@@ -36,7 +36,7 @@ struct SettingsView: View {
                         indexSet.forEach { viewModel.deleteAccount(account: accounts[$0]) }
                     }
                     NavigationLink(destination: AddAccountView()) {
-                        Label("添加帐户", systemImage: "plus.circle")
+                        Label("添加帐号", systemImage: "plus.circle")
                     }
                 }
                 // TODO: 将检查用户协议改到ContentView去
