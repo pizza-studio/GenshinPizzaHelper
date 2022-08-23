@@ -12,22 +12,12 @@ struct AccountDisplayView: View {
     var animation: Namespace.ID
     var accountName: String { detail.accountName }
     var accountUUIDString: String { detail.accountUUIDString }
+    @State private var isToolbarShow: Bool = false
 
     var body: some View {
         VStack {
-            HStack {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .frame(width: 15, height: 15, alignment: .center)
-                    .onTapGesture {
-                        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                            detail.show.toggle()
-                        }
-                    }
-                Spacer()
-            }
             Text("")
-                .frame(height: 25)
+                .frame(height: 50)
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
                     if let accountName = detail.accountName {
@@ -73,15 +63,46 @@ struct AccountDisplayView: View {
                 Spacer()
             }
             Spacer()
+            if isToolbarShow {
+                HStack {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 15, height: 15, alignment: .center)
+                        .onTapGesture {
+                            closeView()
+                        }
+                    Spacer()
+                    // TODO: Share Button
+                }
+                .ignoresSafeArea()
+                .background(Color(UIColor.secondarySystemBackground).opacity(0.6).padding([.horizontal, .bottom], -50).padding(.top, -20))
+            }
         }
         .padding(.horizontal, 25)
-//        .background(Color(UIColor.secondarySystemBackground))
         .background(AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
             .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
             .padding(.vertical, -10)
             .ignoresSafeArea(.all)
             .blur(radius: 5)
         )
+        .gesture (
+            DragGesture().onEnded { value in
+                if value.translation.height > 75 {
+                    closeView()
+                }
+            }
+        )
+        .onTapGesture {
+            withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                isToolbarShow.toggle()
+            }
+        }
+    }
+
+    private func closeView() -> Void {
+        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+            detail.show.toggle()
+        }
     }
 }
 
