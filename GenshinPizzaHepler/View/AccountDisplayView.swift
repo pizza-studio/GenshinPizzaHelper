@@ -10,6 +10,8 @@ import SwiftUI
 struct AccountDisplayView: View {
     @ObservedObject var detail: DisplayContentModel
     var animation: Namespace.ID
+    var accountName: String { detail.accountName }
+    var accountUUIDString: String { detail.accountUUIDString }
 
     var body: some View {
         VStack {
@@ -35,7 +37,7 @@ struct AccountDisplayView: View {
                         }
                         .font(.footnote)
                         .foregroundColor(Color("textColor3"))
-                        .matchedGeometryEffect(id: "\(String(describing: detail.userData.accountName))\(String(describing: detail.accountName))name", in: animation)
+                        .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
                     }
                     HStack(alignment: .firstTextBaseline, spacing: 2) {
 
@@ -44,7 +46,7 @@ struct AccountDisplayView: View {
                             .fontWeight(.medium)
                             .foregroundColor(Color("textColor3"))
                             .shadow(radius: 1)
-                            .matchedGeometryEffect(id: "\(String(describing: detail.userData.accountName))\(detail.userData.resinInfo.currentResin)curResin", in: animation)
+                            .matchedGeometryEffect(id: "\(accountUUIDString)curResin", in: animation)
                         Image("树脂")
                             .resizable()
                             .scaledToFit()
@@ -52,7 +54,7 @@ struct AccountDisplayView: View {
                             .alignmentGuide(.firstTextBaseline) { context in
                                 context[.bottom] - 0.17 * context.height
                             }
-                            .matchedGeometryEffect(id: "\(String(describing: detail.userData.accountName))\(detail.userData.resinInfo.currentResin)Resinlogo", in: animation)
+                            .matchedGeometryEffect(id: "\(accountUUIDString)Resinlogo", in: animation)
                     }
                     HStack {
                         Image(systemName: "hourglass.circle")
@@ -60,14 +62,14 @@ struct AccountDisplayView: View {
                             .font(.title3)
                         RecoveryTimeText(resinInfo: detail.userData.resinInfo)
                     }
-                    .matchedGeometryEffect(id: "\(String(describing: detail.userData.accountName))\(detail.userData.resinInfo.currentResin)recovery", in: animation)
+                    .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
                 }
                 Spacer()
             }
             HStack {
                 DetailInfo(userData: detail.userData, viewConfig: detail.viewConfig)
                     .padding(.vertical)
-                    .matchedGeometryEffect(id: "\(String(describing: detail.userData.accountName))\(detail.userData.resinInfo.currentResin)detail", in: animation)
+                    .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
                 Spacer()
             }
             Spacer()
@@ -75,6 +77,8 @@ struct AccountDisplayView: View {
         .padding(.horizontal, 25)
 //        .background(Color(UIColor.secondarySystemBackground))
         .background(AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
-            .matchedGeometryEffect(id: "\(detail.accountName)bg", in: animation).ignoresSafeArea().blur(radius: 10))
+            .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation).ignoresSafeArea().blur(radius: 10))
     }
 }
+
+

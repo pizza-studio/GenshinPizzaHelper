@@ -53,39 +53,37 @@ struct HomeView: View {
                     }
 
                     ForEach(viewModel.accounts, id: \.config.uuid) { account in
-
-                        if let idx = viewModel.accounts.firstIndex(of: account) {
-                            switch account.result {
-                            case .success(let userData):
-                                GameInfoBlock(userData: userData, accountName: account.config.name, animation: animation, widgetBackground: viewModel.backgrounds[idx])
-                                    .padding()
-                                    .cornerRadius(20)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                                    .aspectRatio(170/364, contentMode: .fill)
-                                    .animation(.linear)
-                                    .listRowBackground(Color.white.opacity(0))
-                                    .onTapGesture {
-                                        simpleTaptic(type: .light)
-                                        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                                            detail.userData = userData
-                                            detail.accountName = account.config.name!
-                                            detail.widgetBackground = viewModel.backgrounds[idx]
-                                            detail.viewConfig = WidgetViewConfiguration.defaultConfig
-                                            detail.show = true
-                                        }
-                                    }
-                            case .failure( _) :
-                                HStack {
-                                    Spacer()
-                                    Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
-                                        .padding()
-                                        .foregroundColor(.red)
-                                    Spacer()
-                                }
+                        switch account.result {
+                        case .success(let userData):
+                            GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background)
+                                .padding()
+                                .cornerRadius(20)
                                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                                 .aspectRatio(170/364, contentMode: .fill)
-
+                                .animation(.linear)
+                                .listRowBackground(Color.white.opacity(0))
+                                .onTapGesture {
+                                    simpleTaptic(type: .light)
+                                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                                        detail.userData = userData
+                                        detail.accountName = account.config.name!
+                                        detail.accountUUIDString = account.config.uuid!.uuidString
+                                        detail.widgetBackground = account.background
+                                        detail.viewConfig = WidgetViewConfiguration.defaultConfig
+                                        detail.show = true
+                                    }
+                                }
+                        case .failure( _) :
+                            HStack {
+                                Spacer()
+                                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                                    .padding()
+                                    .foregroundColor(.red)
+                                Spacer()
                             }
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .aspectRatio(170/364, contentMode: .fill)
+
                         }
                     }
                 }

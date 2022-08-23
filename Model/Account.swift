@@ -14,6 +14,7 @@ struct Account: Equatable {
 
     var config: AccountConfiguration
     var result: FetchResult
+    var background: WidgetBackground = WidgetBackground.randomNamecardBackground
     
     init(config: AccountConfiguration) {
         self.config = config
