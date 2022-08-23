@@ -14,4 +14,6 @@ class DisplayContentModel: ObservableObject {
     @Published var widgetBackground = WidgetBackground.randomNamecardBackground
     @Published var viewConfig = WidgetViewConfiguration.defaultConfig
     @Published var show = false
+
+    var animationDone: Bool = true
 }

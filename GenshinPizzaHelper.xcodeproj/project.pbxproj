@@ -194,6 +194,7 @@
 		EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */; };
+		EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,6 +331,7 @@
 		EAF43C9628A0166100D89787 /* WidgetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetErrorView.swift; sourceTree = "<group>"; };
 		EAFB231F28A26C56006A8EDC /* AccountConfiguration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccountConfiguration.xcdatamodel; sourceTree = "<group>"; };
 		EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingNavigator.swift; sourceTree = "<group>"; };
+		EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +439,7 @@
 				BFE42551289F755E00FEFA49 /* TextEditorView.swift */,
 				BFFD823128A651F500616CE1 /* RingProgressBarView.swift */,
 				BFFD823528A680E000616CE1 /* WebImageView.swift */,
+				EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
+				EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */,
 				EA56E09828A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
 				EA56E08C28A26C0D00A64262 /* UserData.swift in Sources */,
