@@ -23,52 +23,47 @@ enum SimpleTapticType {
 }
 
 func simpleTaptic(type: SimpleTapticType) {
-    let isTurnOnTaptic = UserDefaults.standard.bool(forKey: "isTurnOnTaptic")
-    if isTurnOnTaptic {
-        let feedbackGenerator = UINotificationFeedbackGenerator()
-        switch type {
-        case .success:
-            feedbackGenerator.notificationOccurred(.success)
-        case .warning:
-            feedbackGenerator.notificationOccurred(.warning)
-        case .error:
-            feedbackGenerator.notificationOccurred(.error)
-        case .light:
-            let impactGenerator = UIImpactFeedbackGenerator(style: .light)
-            impactGenerator.prepare()
-            impactGenerator.impactOccurred()
-        case .medium:
-            let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
-            impactGenerator.prepare()
-            impactGenerator.impactOccurred()
-        case .heavy:
-            let impactGenerator = UIImpactFeedbackGenerator(style: .heavy)
-            impactGenerator.prepare()
-            impactGenerator.impactOccurred()
-        case .rigid:
-            let impactGenerator = UIImpactFeedbackGenerator(style: .rigid)
-            impactGenerator.prepare()
-            impactGenerator.impactOccurred()
-        case .soft:
-            let impactGenerator = UIImpactFeedbackGenerator(style: .soft)
-            impactGenerator.prepare()
-            impactGenerator.impactOccurred()
-        case .selection:
-            let selectionGenerator = UISelectionFeedbackGenerator()
-            selectionGenerator.selectionChanged()
-        }
-        if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6s Plus" || UIDevice.modelName == "iPhone SE"{
-            switch type {
-            case .success, .warning, .error, .heavy, .medium, .rigid:
-                AudioServicesPlaySystemSound(1519) // Actuate `Peek` feedback (weak boom)
-            case .light, .soft, .selection:
-                AudioServicesPlaySystemSound(1520) // Actuate `Pop` feedback (strong boom)
-            }
-        }
-        print("Taptic Success")
-    } else {
-        print("Taptic not Enabled")
+    let feedbackGenerator = UINotificationFeedbackGenerator()
+    switch type {
+    case .success:
+        feedbackGenerator.notificationOccurred(.success)
+    case .warning:
+        feedbackGenerator.notificationOccurred(.warning)
+    case .error:
+        feedbackGenerator.notificationOccurred(.error)
+    case .light:
+        let impactGenerator = UIImpactFeedbackGenerator(style: .light)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
+    case .medium:
+        let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
+    case .heavy:
+        let impactGenerator = UIImpactFeedbackGenerator(style: .heavy)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
+    case .rigid:
+        let impactGenerator = UIImpactFeedbackGenerator(style: .rigid)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
+    case .soft:
+        let impactGenerator = UIImpactFeedbackGenerator(style: .soft)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
+    case .selection:
+        let selectionGenerator = UISelectionFeedbackGenerator()
+        selectionGenerator.selectionChanged()
     }
+    if UIDevice.modelName == "iPhone 6s" || UIDevice.modelName == "iPhone 6s Plus" || UIDevice.modelName == "iPhone SE"{
+        switch type {
+        case .success, .warning, .error, .heavy, .medium, .rigid:
+            AudioServicesPlaySystemSound(1519) // Actuate `Peek` feedback (weak boom)
+        case .light, .soft, .selection:
+            AudioServicesPlaySystemSound(1520) // Actuate `Pop` feedback (strong boom)
+        }
+    }
+    print("Taptic Success")
 }
 
 class CHTaptic {
