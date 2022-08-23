@@ -26,8 +26,9 @@ struct GenshinPizzaHeplerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(viewModel)
+//            ContentView()
+//                .environmentObject(viewModel)
+            ExpeditionsView(expeditions: Expedition.defaultExpeditions)
         }
     }
 }
