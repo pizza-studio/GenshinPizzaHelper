@@ -419,6 +419,7 @@
 		BFE42537289E4FF700FEFA49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EAFC5CD428B5303C00770BBB /* LargeWidgetView.swift */,
 				EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */,
 				EAF43C9428A0163A00D89787 /* WidgetMainView.swift */,
 				EAF43C9628A0166100D89787 /* WidgetErrorView.swift */,
@@ -427,7 +428,6 @@
 				BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */,
 				BFE4253E289E51C900FEFA49 /* MainInfoSubViews */,
 				EAF43C8328A0120400D89787 /* InfoBars */,
-				EAFC5CD428B5303C00770BBB /* LargeWidgetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

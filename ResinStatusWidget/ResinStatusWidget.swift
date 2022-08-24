@@ -48,7 +48,7 @@ struct WidgetView: Widget {
         }
         .configurationDisplayName("原神状态")
         .description("查询树脂恢复状态")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
         
     }
 }

@@ -21,6 +21,8 @@ struct WidgetMainView: View {
                 .padding()
         case .systemMedium:
             MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
+        case .systemLarge:
+            LargeWidgetView(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
         default:
             MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
         }

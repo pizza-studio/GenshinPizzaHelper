@@ -50,6 +50,13 @@ struct WidgetBackgroundView: View {
                     Image(backgroundImageName)
                         .resizable()
                         .scaledToFill()
+                case .systemLarge:
+                    GeometryReader { g in
+                        Image(backgroundImageName)
+                            .resizable()
+                            .scaledToFill()
+                            .offset(x: -g.size.width)
+                    }
                 default:
                     Image(backgroundImageName)
                         .resizable()

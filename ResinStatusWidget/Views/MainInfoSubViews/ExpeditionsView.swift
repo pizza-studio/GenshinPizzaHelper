@@ -12,10 +12,13 @@ struct ExpeditionsView: View {
 
     var body: some View {
         VStack {
+            Spacer()
             ForEach(expeditions, id: \.charactersEnglishName) { expedition in
                 EachExpeditionView(expedition: expedition)
+                Spacer()
             }
         }
+//        .background(WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true))
     }
 }
 
