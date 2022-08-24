@@ -725,7 +725,7 @@
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>disappearAfterCompleted</string>
+						<string>neverShow</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>weeklyBossesShowingMethod</string>

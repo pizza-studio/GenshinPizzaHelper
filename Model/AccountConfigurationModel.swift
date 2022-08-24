@@ -122,7 +122,7 @@ class AccountConfigurationModel {
                 intent.showTransformer = true
                 intent.expeditionNoticeMethod = .allCompleted
                 intent.expeditionShowingMethod = .byNum
-                intent.weeklyBossesShowingMethod = .alwaysShow
+                intent.weeklyBossesShowingMethod = .neverShow
                 intent.isDarkModeOn = true
                 intent.showMaterialsInLargeSizeWidget = true
                 if let shortcut = INShortcut(intent: intent) {
