@@ -24,11 +24,12 @@
 "地区: %@" = "Region: %@";
 "服务器: %@" = "Server: %@";
 
-"获取Cookie的脚本" = "Shortcut to get Cookie";
-"在App Store评分" = "Review at App Store";
+"获取Cookie的脚本" = "Shortcuts to get Cookie";
+"在App Store评分" = "Rate on the App Store";
 "支持我们" = "Donate us";
 "常见使用问题（FAQ）" = "FAQ";
 "用户协议与免责声明" = "User policy (Simplified Chinese)";
+"用户协议" = "User policy";
 "关于小助手" = "About App";
 "开发者" = "Developers";
 "交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
@@ -54,6 +55,18 @@
 "国际服" = "Global players";
 "登录帐号获取Cookie" = "Get cookie via HoYoLAB";
 
+"请完成登录" = "Please finish login";
+"完成" = "Done";
+"未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
+"尚未完成帐号设置" = "Account configuration is not finished";
+"好" = "OK";
+"提示" = "Tips";
+"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nWe promise that you account infos will only be stored on your local device and private iCloud, only used to request HoYoLAB for your Genshin account infos. ";
+"自定义帐号名" = "Custom account name";
+"请选择帐号" = "Choose your account";
+"查看帐号详情" = "Account detail infos";
+"我的帐号" = "My account";
+
 // Game Info block
 "%@\n%@ 回满" = "%@\n%@ done";
 "0小时0分钟\n树脂已全部回满" = "0 h 0 min\nResin is full";
@@ -70,4 +83,10 @@
 "星期四" = "Thursday";
 "星期五" = "Friday";
 "星期六" = "Saturday";
-"" = "";
+
+// Notification settings
+"推送设置" = "Notification Settings";
+"启用帐号" = "Enabled accounts";
+"原粹树脂提醒" = "Original Resin Notification";
+"提醒阈值" = "Threshold value";
+"%lld树脂" = "%lld Resins";

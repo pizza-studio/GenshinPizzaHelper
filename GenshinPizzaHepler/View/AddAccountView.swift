@@ -13,7 +13,10 @@ struct AddAccountView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var unsavedName: String = "我的帐号"
+    @State private var unsavedName: String {
+        let localized = NSLocalizedString("我的帐号", comment: "my account")
+        return String(format: localized)
+    }
     @State private var unsavedUid: String = ""
     @State private var unsavedCookie: String = ""
     @State private var unsavedServer: Server = .china
@@ -73,7 +76,7 @@ struct AddAccountView: View {
             
             if let loginError = loginError {
                 Section(footer: Text("DEBUG：" + loginError.message).foregroundColor(Color(UIColor.systemGray))) {
-                    Text(loginError.description)
+                    Text(LocalizedStringKey(loginError.description))
                         .foregroundColor(.secondary)
                 }
             }

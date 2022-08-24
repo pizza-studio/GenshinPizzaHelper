@@ -30,7 +30,7 @@ struct InfoEditor: View {
 
     var body: some View {
         HStack {
-            Text(title)
+            Text(LocalizedStringKey(title))
             Spacer()
             TextEditor(text: $content)
                 .multilineTextAlignment(.trailing)
