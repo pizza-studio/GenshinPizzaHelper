@@ -30,7 +30,7 @@ struct HomeCoinInfoBar: View {
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing:1) {
-                Text(LocalizedStringKey(homeCoinInfo.currentHomeCoin))
+                Text("\(homeCoinInfo.currentHomeCoin)")
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)
