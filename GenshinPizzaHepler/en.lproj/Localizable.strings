@@ -6,9 +6,6 @@
   
 */
 
-// Used for copy and paste to edit this file
-"" = "";
-
 // Settings view
 "原神披萨小助手" = "Genshin Pizza Helper";
 "主页" = "Home";
@@ -229,3 +226,9 @@
 "风元素" = "Anemo";
 "冰元素" = "Cyro";
 "岩元素" = "Geo";
+
+// Widget
+"原神状态" = "Genshin Status";
+
+// Used for copy and paste to edit this file
+"查询树脂恢复状态" = "Check the resin recovery status";
