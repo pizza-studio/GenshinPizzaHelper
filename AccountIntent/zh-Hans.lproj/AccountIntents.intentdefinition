@@ -381,28 +381,12 @@
 			<string>zQrKVi</string>
 			<key>INIntentEligibleForWidgets</key>
 			<true/>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>39</integer>
+			<integer>41</integer>
 			<key>INIntentName</key>
 			<string>SelectAccount</string>
-			<key>INIntentParameterCombinations</key>
-			<dict>
-				<key></key>
-				<dict>
-					<key>INIntentParameterCombinationIsPrimary</key>
-					<true/>
-					<key>INIntentParameterCombinationSubtitle</key>
-					<string>为原神披萨小助手配置</string>
-					<key>INIntentParameterCombinationSubtitleID</key>
-					<string>UqmTP9</string>
-					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
-					<true/>
-					<key>INIntentParameterCombinationTitle</key>
-					<string>配置小组件</string>
-					<key>INIntentParameterCombinationTitleID</key>
-					<string>87WYHP</string>
-				</dict>
-			</dict>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
@@ -532,55 +516,11 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>显示账号的自定义名称</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>nqqAbg</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>4</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>2sA6YK</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>XnDLoc</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>showAccountName</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
-					<key>INIntentParameterTag</key>
-					<integer>25</integer>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
 					<string>显示参量质变仪</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>MVmO5f</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>5</integer>
+					<integer>4</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -628,7 +568,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>lbRsap</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>6</integer>
+					<integer>5</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>ExpeditionNoticeMethod</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
@@ -688,7 +628,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>dUyzRX</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>7</integer>
+					<integer>6</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>ExpeditionShowingMethod</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
@@ -748,7 +688,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>hT68r4</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>8</integer>
+					<integer>7</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>WeeklyBossesShowingMethod</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
@@ -756,7 +696,7 @@
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>disappearAfterCompleted</string>
+						<string>neverShow</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>weeklyBossesShowingMethod</string>
@@ -808,7 +748,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>mKzz1P</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>9</integer>
+					<integer>8</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -841,6 +781,50 @@
 					</array>
 					<key>INIntentParameterTag</key>
 					<integer>35</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>显示今日材料（仅大尺寸）</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>K2iJCd</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>9</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<true/>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>否</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>mRXrdK</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>是</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>PS8etl</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>showMaterialsInLargeSizeWidget</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>41</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
