@@ -13,10 +13,7 @@ struct AddAccountView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var unsavedName: String {
-        let localized = NSLocalizedString("我的帐号", comment: "my account")
-        return String(format: localized)
-    }
+    @State private var unsavedName: String = String(format: NSLocalizedString("我的帐号", comment: "my account"))
     @State private var unsavedUid: String = ""
     @State private var unsavedCookie: String = ""
     @State private var unsavedServer: Server = .china

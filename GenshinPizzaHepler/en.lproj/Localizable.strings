@@ -87,6 +87,18 @@
 // Notification settings
 "推送设置" = "Notification Settings";
 "启用帐号" = "Enabled accounts";
-"原粹树脂提醒" = "Original Resin Notification";
+"原粹树脂提醒" = "Original resin notification";
 "提醒阈值" = "Threshold value";
-"%lld树脂" = "%lld Resins";
+"%lld树脂" = "%lld resins";
+"洞天宝钱提醒" = "Realm currency notification";
+"提醒时间" = "Send at";
+"充满前%lld小时" = "%lld hours before it is full";
+"探索派遣提醒" = "Expedition notification";
+"提醒于" = "Send at";
+"全部完成时" = "All done";
+"任一完成时" = "Any one done";
+"每日委托提醒" = "Daily commission notification";
+"提醒时间" = "Send at";
+"周本折扣提醒" = "Weekly boss notification";
+"提醒日期" = "Send on";
+"参量质变仪提醒" = "Parametric transformer notification";

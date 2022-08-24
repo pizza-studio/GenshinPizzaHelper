@@ -150,7 +150,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowDailyTaskNotification.animation()) {
-                    Text("每日任务提醒")
+                    Text("每日委托提醒")
                 }
                 if allowDailyTaskNotification {
                     DatePicker("提醒时间", selection: dailyTaskNotificationTime, displayedComponents: .hourAndMinute)
