@@ -17,7 +17,6 @@ class ViewModel: ObservableObject {
     
     @Published var accounts: [Account] = []
     
-    
     let accountConfigurationModel: AccountConfigurationModel = .shared
     
     

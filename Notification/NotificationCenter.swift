@@ -89,7 +89,8 @@ class UserNotificationCenter {
         return content
     }
     
-    private func createNotification(in second: Int, for accountName: String, object: Object, title: String, body: String, uid: String) {
+    private func createNotification(in second: Int, for accountName: String, object: Object, title: String, body: String, uid: String, idSuffix: String = "") {
+        guard second > 0 else { return }
         let timeInterval = TimeInterval(second)
         let id = uid + object.rawValue
         
@@ -103,8 +104,8 @@ class UserNotificationCenter {
         print("user notification: success create ")
     }
     
-    private func createNotification(at date: DateComponents, for accountName: String, object: Object, title: String, body: String, uid: String) {
-        let id = uid + object.rawValue
+    private func createNotification(at date: DateComponents, for accountName: String, object: Object, title: String, body: String, uid: String, idSuffix: String = "") {
+        let id = uid + object.rawValue + idSuffix
         
         let content = createNotificationContent(object: object, title: title, body: body)
         
@@ -153,7 +154,7 @@ class UserNotificationCenter {
         }
         
         let title = "「\(accountName)」原粹树脂提醒"
-        let body = "「\(accountName)」现有\(resinNotificationNum)原粹树脂，将在\(resinNotificationTimeDescription)后回满。"
+        let body = "「\(accountName)」现有\(Int(resinNotificationNum))原粹树脂，将在\(resinNotificationTimeDescription)后回满。"
         createNotification(
             in: resinInfo.recoveryTime.second - resinNotificationTimeFromFull,
             for: accountName,
@@ -181,8 +182,17 @@ class UserNotificationCenter {
             deleteNotification(for: uid, object: .homeCoin); return
         }
         guard allowHomeCoinNotification else { return }
+
+        var currentHomeCoinWhenNotify: Int {
+            let totalTime: Double = Double(homeCoinInfo.recoveryTime.second) / homeCoinInfo.percentage
+            var recoveryPercentageWhenNotify: Double {
+                1 - ( Double(homeCoinNotificationHourBeforeFull) / totalTime )
+            }
+            return Int( Double(homeCoinInfo.maxHomeCoin) * recoveryPercentageWhenNotify )
+        }
+
         let title = "「\(accountName)」洞天宝钱提醒"
-        let body = "「\(accountName)」的洞天财瓮即将将在\(homeCoinNotificationTimeDescription)后填满。"
+        let body = "「\(accountName)」的洞天财瓮现有\(currentHomeCoinWhenNotify)洞天宝钱，将在\(homeCoinNotificationTimeDescription)后填满。"
         
         createNotification(
             in: homeCoinInfo.recoveryTime.second - homeCoinNotificationTimeFromFull,
@@ -212,13 +222,19 @@ class UserNotificationCenter {
             let body = "「\(accountName)」的探索派遣已全部完成。"
             createNotification(in: expeditionInfo.allCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
         case .nextCompleted:
-            guard !expeditionInfo.anyCompleted && allowExpeditionNotification else {
+            guard !expeditionInfo.allCompleted && allowExpeditionNotification else {
                 deleteNotification(for: uid, object: .expedition); return
             }
-            let object: Object = .expedition
-            let title = "「\(accountName)」探索派遣提醒"
-            let body = "「\(accountName)」已有探索派遣完成。"
-            createNotification(in: expeditionInfo.nextCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
+            expeditionInfo.expeditions.forEach { expedition in
+                let charID = expedition.charactersEnglishName
+                let charName = expedition.characterName
+                let object: Object = .expedition
+                let title = "「\(accountName)」探索派遣提醒"
+                let body = "「\(accountName)」\(charName)的探索派遣已完成。"
+
+                createNotification(in: expeditionInfo.nextCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid, idSuffix: charID)
+            }
+
         }
     }
     
@@ -235,7 +251,7 @@ class UserNotificationCenter {
     private func createWeeklyBossesNotification(for accountName: String, with weeklyBossesInfo: WeeklyBossesInfo, uid: String) {
         guard Date() < Calendar.current.nextDate(after: Date(), matching: weeklyBossesNotificationTimePoint, matchingPolicy: .nextTime)! else { return }
         guard weeklyBossesInfo.remainResinDiscountNum != 0 else {
-            deleteNotification(for: accountName, object: .weeklyBosses); return
+            deleteNotification(for: uid, object: .weeklyBosses); return
         }
         guard allowWeeklyBossesNotification else { return }
         let title = "「\(accountName)」周本折扣提醒"
@@ -275,7 +291,7 @@ class UserNotificationCenter {
     private func createDailyTaskNotification(for accountName: String, with dailyTaskInfo: DailyTaskInfo, uid: String) {
         guard Date() < Calendar.current.nextDate(after: Date(), matching: dailyTaskNotificationDateComponents, matchingPolicy: .nextTime)! else { return }
         guard !dailyTaskInfo.isTaskRewardReceived else {
-            deleteNotification(for: accountName, object: .dailyTask); return
+            deleteNotification(for: uid, object: .dailyTask); return
         }
         guard allowDailyTaskNotification else { return }
         let title = "「\(accountName)」每日委托提醒"

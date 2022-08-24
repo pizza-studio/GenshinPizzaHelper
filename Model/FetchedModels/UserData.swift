@@ -84,7 +84,7 @@ extension UserData {
 
         currentExpeditionNum: 2,
         maxExpeditionNum: 5,
-        expeditions: [defaultExpedition],
+        expeditions: Expedition.defaultExpeditions,
 
         currentHomeCoin: 1200,
         maxHomeCoin: 2400,
@@ -93,5 +93,15 @@ extension UserData {
         transformer: TransformerData(recoveryTime: TransformerData.TransRecoveryTime(day: 4, hour: 3, minute: 0, second: 0), obtained: true)
     )
     
-    private static let defaultExpedition: Expedition = Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sara.png", remainedTimeStr: "0", statusStr: "Finished")
+    
+}
+
+extension Expedition {
+    static let defaultExpedition: Expedition = Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sara.png", remainedTimeStr: "0", statusStr: "Finished")
+
+    static let defaultExpeditions: [Expedition] = [Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Yelan.png", remainedTimeStr: "0", statusStr: "Finished"),
+    Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Fischl.png", remainedTimeStr: "37036", statusStr: "Ongoing"),
+    Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Fischl.png", remainedTimeStr: "22441", statusStr: "Ongoing"),
+    Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Keqing.png", remainedTimeStr: "22441", statusStr: "Ongoing"),
+    Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Bennett.png", remainedTimeStr: "22441", statusStr: "Ongoing")]
 }

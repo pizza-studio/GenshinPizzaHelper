@@ -19,6 +19,23 @@
 		BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
 		BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
 		BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210628B33D8300A6BBA9 /* AppDelegate.swift */; };
+		BF70210928B3909F00A6BBA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210828B3909F00A6BBA9 /* ContentView.swift */; };
+		BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210A28B3910800A6BBA9 /* HomeView.swift */; };
+		BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
+		BF70210F28B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
+		BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
+		BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
+		BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
+		BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
+		BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */; };
+		BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
+		BF70211A28B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
+		BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
+		BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
+		BF70212D28B50D7800A6BBA9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
+		BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
+		BF70213428B5259300A6BBA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -121,6 +138,10 @@
 		EA56E09F28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08328A26C0D00A64262 /* HomeCoinInfo.swift */; };
 		EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
+		EA5F4D1128B6274E00C95A7E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1028B6274E00C95A7E /* MaterialView.swift */; };
+		EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1028B6274E00C95A7E /* MaterialView.swift */; };
+		EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
+		EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EA6829DC28A2523800E57462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
 		EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */; };
@@ -181,6 +202,13 @@
 		EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */; };
+		EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */; };
+		EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */; };
+		EAFC5CD028B518FC00770BBB /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */; };
+		EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */; };
+		EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */; };
+		EAFC5CD528B5303C00770BBB /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD428B5303C00770BBB /* LargeWidgetView.swift */; };
+		EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD428B5303C00770BBB /* LargeWidgetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +252,18 @@
 		BF6C5277289E153400EA224F /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		BF6C527A289E168A00EA224F /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		BF70210628B33D8300A6BBA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF70210828B3909F00A6BBA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF70210A28B3910800A6BBA9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticSupport.swift; sourceTree = "<group>"; };
+		BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRecognizer.swift; sourceTree = "<group>"; };
+		BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBlockBackgroundView.swift; sourceTree = "<group>"; };
+		BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDisplayView.swift; sourceTree = "<group>"; };
+		BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayContentModel.swift; sourceTree = "<group>"; };
+		BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundsPreviewView.swift; sourceTree = "<group>"; };
+		BF70211B28B4B52500A6BBA9 /* ViewTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTools.swift; sourceTree = "<group>"; };
+		BF70212F28B50D7800A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF70213628B5259300A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF70213928B65E5200A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -277,6 +317,8 @@
 		EA56E08228A26C0D00A64262 /* RecoveryTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryTime.swift; sourceTree = "<group>"; };
 		EA56E08328A26C0D00A64262 /* HomeCoinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoinInfo.swift; sourceTree = "<group>"; };
 		EA56E08528A26C0D00A64262 /* TransformerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerData.swift; sourceTree = "<group>"; };
+		EA5F4D1028B6274E00C95A7E /* MaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProviders.swift; sourceTree = "<group>"; };
 		EA6829DB28A2523800E57462 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EA75DD0428A09EC80099E70A /* ErrorCodeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeHandler.swift; sourceTree = "<group>"; };
 		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
@@ -308,6 +350,10 @@
 		EAF43C9628A0166100D89787 /* WidgetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetErrorView.swift; sourceTree = "<group>"; };
 		EAFB231F28A26C56006A8EDC /* AccountConfiguration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccountConfiguration.xcdatamodel; sourceTree = "<group>"; };
 		EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingNavigator.swift; sourceTree = "<group>"; };
+		EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpeditionsView.swift; sourceTree = "<group>"; };
+		EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachExpeditionView.swift; sourceTree = "<group>"; };
+		EAFC5CD428B5303C00770BBB /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +422,9 @@
 				EA099FEA28A2AE660023B4AF /* StoreURL.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
 				BFFD823928A73A5400616CE1 /* ReviewHandler.swift */,
+				BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */,
+				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
+				BF70211B28B4B52500A6BBA9 /* ViewTools.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
@@ -383,6 +432,7 @@
 		BFE42537289E4FF700FEFA49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EAFC5CD428B5303C00770BBB /* LargeWidgetView.swift */,
 				EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */,
 				EAF43C9428A0163A00D89787 /* WidgetMainView.swift */,
 				EAF43C9628A0166100D89787 /* WidgetErrorView.swift */,
@@ -391,6 +441,7 @@
 				BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */,
 				BFE4253E289E51C900FEFA49 /* MainInfoSubViews */,
 				EAF43C8328A0120400D89787 /* InfoBars */,
+				EA5F4D1028B6274E00C95A7E /* MaterialView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -399,6 +450,8 @@
 			isa = PBXGroup;
 			children = (
 				BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */,
+				EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */,
+				EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */,
 			);
 			path = MainInfoSubViews;
 			sourceTree = "<group>";
@@ -412,6 +465,7 @@
 				BFE42551289F755E00FEFA49 /* TextEditorView.swift */,
 				BFFD823128A651F500616CE1 /* RingProgressBarView.swift */,
 				BFFD823528A680E000616CE1 /* WebImageView.swift */,
+				EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -511,15 +565,20 @@
 		EAAF330828A276360018EFAB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF70210828B3909F00A6BBA9 /* ContentView.swift */,
+				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
+				BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */,
+				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
+				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
 				EA07C65528B11DB40030E338 /* NotificationSettingView.swift */,
 				EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */,
 				EA79FDC828AB9A5600B50D6F /* AccountDetailView copy.swift */,
-				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
+				BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */,
 				BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */,
 				EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */,
 				EA75DD0928A0BF450099E70A /* TestSectionView.swift */,
@@ -537,6 +596,8 @@
 				BF6C5274289E137200EA224F /* Servers.swift */,
 				BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */,
 				EA56E07528A26C0D00A64262 /* FetchedModels */,
+				BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */,
+				EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -576,6 +637,8 @@
 			children = (
 				BF70210628B33D8300A6BBA9 /* AppDelegate.swift */,
 				EA1B76762886B89F007A5216 /* Info.plist */,
+				BF70213028B50D7800A6BBA9 /* Localizable.strings */,
+				BF70213728B5259300A6BBA9 /* InfoPlist.strings */,
 				EAAF330828A276360018EFAB /* View */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
@@ -693,6 +756,7 @@
 			knownRegions = (
 				Base,
 				"zh-Hans",
+				en,
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
@@ -729,7 +793,9 @@
 				EAEC420128B0994C0056D182 /* 洞天宝钱.png in Resources */,
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
+				BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */,
 				EAEC41E228B096170056D182 /* 每日任务.png in Resources */,
+				BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */,
 				EAEC41F828B0994C0056D182 /* 参量质变仪.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -743,9 +809,11 @@
 				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
 				EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */,
 				EAEC420028B0994C0056D182 /* 洞天宝钱.png in Resources */,
+				BF70212D28B50D7800A6BBA9 /* Localizable.strings in Resources */,
 				EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */,
 				EAEC41FD28B0994C0056D182 /* 周本.png in Resources */,
 				EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */,
+				BF70213428B5259300A6BBA9 /* InfoPlist.strings in Resources */,
 				EAEC41FA28B0994C0056D182 /* 树脂.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -773,6 +841,7 @@
 				EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */,
 				EA09A01328A2B8B00023B4AF /* ResinInfo.swift in Sources */,
+				BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EA09A01E28A2B8E80023B4AF /* ErrorCodeHandler.swift in Sources */,
 				EA09A01B28A2B8D30023B4AF /* Servers.swift in Sources */,
 				EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */,
@@ -799,13 +868,17 @@
 				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA56E09D28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
+				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
 				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
 				EA7F9C7028B0172D00DEAFEB /* NotificationCenter.swift in Sources */,
 				EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */,
 				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
 				BFFD822D28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
+				EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */,
+				EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */,
 				EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
+				BF70211A28B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
 				EA56E08928A26C0D00A64262 /* RequestResult.swift in Sources */,
 				EA56E09928A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
@@ -821,13 +894,17 @@
 				EA56E09B28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BF6C526B289E116700EA224F /* WedgetProvider.swift in Sources */,
 				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
+				BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */,
+				EAFC5CD028B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */,
 				EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */,
 				EA56E08B28A26C0D00A64262 /* Result.swift in Sources */,
 				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
+				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
 				EA099FEC28A2AE660023B4AF /* StoreURL.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
+				BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
 				BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */,
 				EA56E08728A26C0D00A64262 /* Error.swift in Sources */,
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
@@ -864,11 +941,16 @@
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
 				EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EA099FEB28A2AE660023B4AF /* StoreURL.swift in Sources */,
+				BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
+				EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */,
 				EA56E09028A26C0D00A64262 /* ResinInfo.swift in Sources */,
+				EAFC5CD528B5303C00770BBB /* LargeWidgetView.swift in Sources */,
+				BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
 				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BFFD823628A680E000616CE1 /* WebImageView.swift in Sources */,
 				BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */,
+				BF70210F28B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EA56E08A28A26C0D00A64262 /* Result.swift in Sources */,
 				EAAF330F28A27AFE0018EFAB /* Account.swift in Sources */,
 				EA56E09428A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */,
@@ -884,28 +966,38 @@
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				EA56E09228A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
+				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
+				EA5F4D1128B6274E00C95A7E /* MaterialView.swift in Sources */,
+				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
+				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
 				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
+				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
+				BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */,
 				EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EADCC0AC28A52BD800358B5E /* WidgetViewConfiguration.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
+				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
+				EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EA56E08628A26C0D00A64262 /* Error.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
+				EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */,
 				EA56E09828A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
 				EA56E08C28A26C0D00A64262 /* UserData.swift in Sources */,
+				BF70210928B3909F00A6BBA9 /* ContentView.swift in Sources */,
 				EA79FDC528AB83B600B50D6F /* OptionalAccounts.swift in Sources */,
 				EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */,
 				EA79FDC928AB9A5600B50D6F /* AccountDetailView copy.swift in Sources */,
@@ -934,10 +1026,27 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BF70213028B50D7800A6BBA9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF70212F28B50D7800A6BBA9 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		BF70213728B5259300A6BBA9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF70213628B5259300A6BBA9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		BFFD823028A650C300616CE1 /* AccountIntents.intentdefinition */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BFFD822F28A650C300616CE1 /* zh-Hans */,
+				BF70213928B65E5200A6BBA9 /* en */,
 			);
 			name = AccountIntents.intentdefinition;
 			sourceTree = "<group>";
@@ -1059,6 +1168,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1119,6 +1229,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1184,7 +1295,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "原神披萨小助手";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "为了方便扫描二维码，请保存图片至相册";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1218,7 +1329,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "原神披萨小助手";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "为了方便扫描二维码，请保存图片至相册";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

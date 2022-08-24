@@ -77,9 +77,7 @@ struct NotificationSettingView: View {
             }
         })
     }
-    
-    
-    // TODO: Ignore UIDs var ignoreUids: [String] = []
+
     
     
     var body: some View {
@@ -144,7 +142,7 @@ struct NotificationSettingView: View {
                     Picker("提醒于", selection: noticeExpeditionBy) {
                         Text("全部完成时")
                             .tag(ExpeditionNoticeMethod.allCompleted)
-                        Text("下一个完成时")
+                        Text("任一完成时")
                             .tag(ExpeditionNoticeMethod.nextCompleted)
                     }
                 }
@@ -152,7 +150,7 @@ struct NotificationSettingView: View {
             
             Section {
                 Toggle(isOn: $allowDailyTaskNotification.animation()) {
-                    Text("每日任务提醒")
+                    Text("每日委托提醒")
                 }
                 if allowDailyTaskNotification {
                     DatePicker("提醒时间", selection: dailyTaskNotificationTime, displayedComponents: .hourAndMinute)

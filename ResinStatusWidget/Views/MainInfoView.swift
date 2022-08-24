@@ -88,7 +88,6 @@ struct MainInfo: View {
                 }
                 RecoveryTimeText(resinInfo: userData.resinInfo)
             }
-//            Spacer()
         }
     }
 }

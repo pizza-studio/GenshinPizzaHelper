@@ -49,12 +49,12 @@ extension FetchError {
             return "请先刷新以获取树脂状态"
             
         case .noFetchInfo:
-            return "请长按小组件选择账号"
+            return "请长按小组件选择帐号"
             
         case .cookieInvalid(let retcode, _):
             return "错误码\(retcode)：Cookie失效，请重新登录"
         case .unmachedAccountCookie(let retcode, _):
-            return "错误码\(retcode)：米游社账号与UID不匹配"
+            return "错误码\(retcode)：米游社帐号与UID不匹配"
         case .accountInvalid(let retcode, _):
             return "错误码\(retcode)：UID有误"
         case .dataNotFound( _, _):

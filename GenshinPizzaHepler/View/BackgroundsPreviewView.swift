@@ -17,47 +17,35 @@ struct BackgroundsPreviewView: View {
     }
 
     var body: some View {
-        NavigationView {
-            if #available(iOS 15.0, *) {
-                List {
-
-                    ForEach(searchResults, id: \.self) { backgroundImageName in
-                        Section {
-                            WidgetBackgroundView(background: generateBackground(backgroundImageName), darkModeOn: false)
-                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        } header: {
-                            Text(backgroundImageName)
-                        }
-
-
-
+        if #available(iOS 15.0, *) {
+            List {
+                ForEach(searchResults, id: \.self) { backgroundImageName in
+                    Section {
+                        WidgetBackgroundView(background: generateBackground(backgroundImageName), darkModeOn: false)
+                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    } header: {
+                        Text(LocalizedStringKey(backgroundImageName))
                     }
                 }
-                .listStyle(.insetGrouped)
-                .searchable(text: $searchText)
-                .navigationTitle("背景名片预览")
-            } else {
-                List {
-
-                    ForEach(backgroundOptions, id: \.self) { backgroundImageName in
-                        Section {
-                            WidgetBackgroundView(background: generateBackground(backgroundImageName), darkModeOn: false)
-                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        } header: {
-                            Text(backgroundImageName)
-                        }
-
-
-
-                    }
-                }
-                .listStyle(.insetGrouped)
-                .navigationTitle("背景名片预览")
             }
-
-
+            .listStyle(.insetGrouped)
+            .searchable(text: $searchText)
+            .navigationTitle("背景名片预览")
+        } else {
+            List {
+                ForEach(backgroundOptions, id: \.self) { backgroundImageName in
+                    Section {
+                        WidgetBackgroundView(background: generateBackground(backgroundImageName), darkModeOn: false)
+                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    } header: {
+                        Text(LocalizedStringKey(backgroundImageName))
+                    }
+                }
+            }
+            .listStyle(.insetGrouped)
+            .navigationTitle("背景名片预览")
         }
     }
 

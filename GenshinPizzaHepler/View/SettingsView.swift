@@ -25,9 +25,7 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationView {
-            
             List {
-
                 Section(header: Text("我的帐号")) {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         NavigationLink(destination: AccountDetailView(account: $account)) {
@@ -38,9 +36,10 @@ struct SettingsView: View {
                         indexSet.forEach { viewModel.deleteAccount(account: accounts[$0]) }
                     }
                     NavigationLink(destination: AddAccountView()) {
-                        Label("添加帐户", systemImage: "plus.circle")
+                        Label("添加帐号", systemImage: "plus.circle")
                     }
                 }
+                // TODO: 将检查用户协议改到ContentView去
                 .onChange(of: scenePhase, perform: { newPhase in
                     switch newPhase {
                     case .active:
@@ -58,59 +57,25 @@ struct SettingsView: View {
                         break
                     }
                 })
-                
-                ForEach(viewModel.accounts, id: \.config.uuid) { account in
-                    Section(header: Text(account.config.name!), footer: Text("UID: "+account.config.uid!)) {
-                        switch account.result {
-                        case .success(let userData):
-                            GameInfoBlock(userData: userData, accountName: account.config.name)
-                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                                .aspectRatio(170/364, contentMode: .fill)
-                                .animation(.linear)
-                                .listRowBackground(Color.white.opacity(0))
-                        case .failure( _) :
-                            HStack {
-                                Spacer()
-                                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
-                                    .foregroundColor(.red)
-                                Spacer()
-                            }
-                            
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .aspectRatio(170/364, contentMode: .fill)
-                            
-                        }
+
+                // 通知设置
+                NotificationSettingNavigator()
+
+                Section {
+                    NavigationLink(destination: BackgroundsPreviewView()) {
+                        Text("背景名片预览")
                     }
                 }
+
+                // 更多
+                NavigationLink(destination: HelpSheetView()) {
+                    Text("更多")
+                }
+
             }
-            .navigationTitle("原神披萨小助手")
-            .toolbar {
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        withAnimation { viewModel.refreshData() }
-                        print(accounts.first?.config.uid ?? "nil")
-                        WidgetCenter.shared.reloadAllTimelines()
-                    }) {
-                        Image(systemName: "arrow.counterclockwise")
-                    }
-                }
-                
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Button(action: {
-                        sheetType = .help
-                    }) {
-                        Image(systemName: "info.circle")
-                    }
-                    Spacer()
-                }
-                
-            }
+            .navigationTitle("设置")
             .sheet(item: $sheetType) { item in
                 switch item {
-                case .help:
-                    HelpSheetView(sheet: $sheetType)
                 case .userPolicy:
                     UserPolicyView(sheet: $sheetType)
                         .allowAutoDismiss(false)
@@ -118,7 +83,7 @@ struct SettingsView: View {
             }
             
         }
-        .ignoresSafeArea()
+//        .ignoresSafeArea()
         .navigationViewStyle(.stack)
     }
 }
@@ -128,6 +93,5 @@ enum SettingsViewSheetType: Identifiable {
         hashValue
     }
 
-    case help
     case userPolicy
 }
