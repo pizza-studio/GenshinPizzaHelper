@@ -251,7 +251,7 @@ class UserNotificationCenter {
     private func createWeeklyBossesNotification(for accountName: String, with weeklyBossesInfo: WeeklyBossesInfo, uid: String) {
         guard Date() < Calendar.current.nextDate(after: Date(), matching: weeklyBossesNotificationTimePoint, matchingPolicy: .nextTime)! else { return }
         guard weeklyBossesInfo.remainResinDiscountNum != 0 else {
-            deleteNotification(for: accountName, object: .weeklyBosses); return
+            deleteNotification(for: uid, object: .weeklyBosses); return
         }
         guard allowWeeklyBossesNotification else { return }
         let title = "「\(accountName)」周本折扣提醒"
@@ -291,7 +291,7 @@ class UserNotificationCenter {
     private func createDailyTaskNotification(for accountName: String, with dailyTaskInfo: DailyTaskInfo, uid: String) {
         guard Date() < Calendar.current.nextDate(after: Date(), matching: dailyTaskNotificationDateComponents, matchingPolicy: .nextTime)! else { return }
         guard !dailyTaskInfo.isTaskRewardReceived else {
-            deleteNotification(for: accountName, object: .dailyTask); return
+            deleteNotification(for: uid, object: .dailyTask); return
         }
         guard allowDailyTaskNotification else { return }
         let title = "「\(accountName)」每日委托提醒"
