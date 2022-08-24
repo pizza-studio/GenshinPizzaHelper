@@ -34,6 +34,7 @@ struct TransformerInfoBar: View {
             HStack(alignment: .lastTextBaseline, spacing:1) {
                 Text(LocalizedStringKey(transformerInfo.recoveryTime.describeIntervalShort ?? "可使用"))
                     .foregroundColor(Color("textColor3"))
+                    .lineLimit(1)
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)
             }
