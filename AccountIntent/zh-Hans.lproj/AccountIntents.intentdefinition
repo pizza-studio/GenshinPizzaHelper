@@ -365,7 +365,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>Yil1CB</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21G72</string>
+	<string>21F79</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>13F100</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -437,6 +437,8 @@
 					<integer>2</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<true/>
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
