@@ -221,3 +221,11 @@
 "稻妻・神樱" = "";
 "钟离・天星" = "Zhongli";
 
+// Elements
+"火元素" = "Pyro";
+"水元素" = "Hydro";
+"草元素" = "Dendro";
+"雷元素" = "Electro";
+"风元素" = "Anemo";
+"冰元素" = "Cyro";
+"岩元素" = "Geo";
