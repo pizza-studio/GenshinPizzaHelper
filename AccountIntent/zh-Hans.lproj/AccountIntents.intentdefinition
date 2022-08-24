@@ -402,6 +402,19 @@
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>87WYHP</string>
 				</dict>
+				<key>showMaterialsInLargeSizeWidget,randomBackground,accountIntent,showTransformer,expeditionNoticeMethod,expeditionShowingMethod,isDarkModeOn,weeklyBossesShowingMethod</key>
+				<dict>
+					<key>INIntentParameterCombinationSubtitle</key>
+					<string>为原神披萨小助手配置小组件</string>
+					<key>INIntentParameterCombinationSubtitleID</key>
+					<string>HhPs2Q</string>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>配置小组件</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>6CfAGO</string>
+				</dict>
 			</dict>
 			<key>INIntentParameters</key>
 			<array>

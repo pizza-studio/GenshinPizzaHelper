@@ -115,9 +115,16 @@ class AccountConfigurationModel {
         if #available(iOS 15.0, iOSApplicationExtension 15.0, *) {
             var relevantShortcuts: [INRelevantShortcut] = []
             configs.forEach { config in
-                print("donating widget for \(config.name ?? "")")
+//                print("donating widget for \(config.name ?? "")")
                 let intent = SelectAccountIntent()
                 intent.accountIntent = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
+                intent.randomBackground = true
+                intent.showTransformer = true
+                intent.expeditionNoticeMethod = .allCompleted
+                intent.expeditionShowingMethod = .byNum
+                intent.weeklyBossesShowingMethod = .alwaysShow
+                intent.isDarkModeOn = true
+                intent.showMaterialsInLargeSizeWidget = true
                 if let shortcut = INShortcut(intent: intent) {
                     let relevantShortcut = INRelevantShortcut(shortcut: shortcut)
                     relevantShortcut.shortcutRole = .information
@@ -125,18 +132,18 @@ class AccountConfigurationModel {
                     relevantShortcut.relevanceProviders = [INDateRelevanceProvider(start: Date(), end: Date(timeIntervalSinceNow: 1800))]
                     relevantShortcuts.append(relevantShortcut)
                 }
+                INInteraction(intent: intent, response: nil).donate { error in
+                    if let error = error {
+                        print(error)
+                    }
+                }
             }
             INRelevantShortcutStore.default.setRelevantShortcuts(relevantShortcuts) { error in
                 if let error = error {
                     print(error)
                 }
             }
-            
         }
-        
-        
-        
-        
     }
     
 }
