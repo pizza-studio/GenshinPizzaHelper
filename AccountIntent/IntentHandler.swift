@@ -53,5 +53,6 @@ extension WidgetViewConfiguration {
         self.randomBackground = intent.randomBackground?.boolValue ?? false
         self.selectedBackground = intent.backgound ?? WidgetBackground.defaultBackground
         self.isDarkModeOn = intent.isDarkModeOn?.boolValue ?? true
+        self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget?.boolValue ?? true
     }
 }

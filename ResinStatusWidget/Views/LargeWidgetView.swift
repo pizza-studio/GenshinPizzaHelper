@@ -13,23 +13,30 @@ struct LargeWidgetView: View {
     let accountName: String?
 
     var body: some View {
-
-        HStack() {
+        VStack {
             Spacer()
-            VStack(alignment: .leading) {
+            HStack() {
                 Spacer()
-                mainInfo()
-                Spacer(minLength: 18)
-                detailInfo()
+                VStack(alignment: .leading) {
+                    mainInfo()
+                    Spacer(minLength: 18)
+                    detailInfo()
+                }
+                
+                Spacer(minLength: 30)
+                VStack(alignment: .leading) {
+                    ExpeditionsView(expeditions: userData.expeditionInfo.expeditions)
+                    if viewConfig.showMaterialsInLargeSizeWidget {
+                        Spacer(minLength: 15)
+                        MaterialView()
+                    }
+                }
+                .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
                 Spacer()
             }
-            .padding()
-            
-            ExpeditionsView(expeditions: userData.expeditionInfo.expeditions)
-                .padding()
             Spacer()
         }
-        
+        .padding()
     }
 
 
@@ -109,7 +116,7 @@ struct LargeWidgetView: View {
 
     @ViewBuilder
     func detailInfo() -> some View {
-        VStack(alignment: .leading, spacing: 13) {
+        VStack(alignment: .leading, spacing: 17) {
 
             if userData.homeCoinInfo.maxHomeCoin != 0 {
                 HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)

@@ -16,6 +16,8 @@ struct WidgetViewConfiguration {
     var noticeMessage: String?
     
     let isDarkModeOn: Bool
+
+    let showMaterialsInLargeSizeWidget: Bool
     
     var randomBackground: Bool
     let selectedBackground: WidgetBackground
@@ -37,6 +39,7 @@ struct WidgetViewConfiguration {
         selectedBackground = .defaultBackground
         randomBackground = false
         isDarkModeOn = true
+        showMaterialsInLargeSizeWidget = true
     }
     
     init(showAccountName: Bool, showTransformer: Bool, noticeExpeditionWhenAllCompleted: Bool, showExpeditionCompleteTime: Bool, showWeeklyBosses: Bool, noticeMessage: String?) {
@@ -47,6 +50,7 @@ struct WidgetViewConfiguration {
         self.randomBackground = false
         self.selectedBackground = .defaultBackground
         isDarkModeOn = true
+        showMaterialsInLargeSizeWidget = true
     }
 }
 

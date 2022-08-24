@@ -27,6 +27,9 @@ struct EachExpeditionView: View {
 
         }
         .foregroundColor(Color("textColor3"))
+
+//        webView(url: expedition.avatarSideIconUrl)
+//            .border(.black, width: 3)
 //        .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
 //        .background(WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true))
     }
@@ -36,14 +39,14 @@ struct EachExpeditionView: View {
         GeometryReader { g in
             if useAsyncImage {
                 WebImage(urlStr: expedition.avatarSideIcon)
-                    .scaleEffect(1.2)
+                    .scaleEffect(1.5)
                     .scaledToFit()
-                    .offset(x: -g.size.width * 0.05, y: -g.size.height * 0.17)
+                    .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
             } else {
                 NetworkImage(url: expedition.avatarSideIconUrl)
-                    .scaleEffect(1.2)
+                    .scaleEffect(1.5)
                     .scaledToFit()
-                    .offset(x: -g.size.width * 0.05, y: -g.size.height * 0.17)
+                    .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
             }
         }
         .frame(maxWidth: 50, maxHeight: 50)
