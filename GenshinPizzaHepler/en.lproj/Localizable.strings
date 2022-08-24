@@ -229,6 +229,10 @@
 
 // Widget
 "原神状态" = "Genshin Status";
+"已全部完成" = "All done";
+"%lld个已完成" = "%lld done";
+"（未领取）" = " (Not received)";
+"（可使用）" = "Available now";
 
 // Used for copy and paste to edit this file
 "查询树脂恢复状态" = "Check the resin recovery status";

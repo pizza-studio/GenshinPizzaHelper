@@ -48,13 +48,13 @@ struct ExpeditionInfoBar: View {
                 }
             case .byTimePoint:
                 if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
-                    Text(expeditionInfo.allCompleteTime.completeTimePointFromNow ?? "已全部完成")
+                    Text(LocalizedStringKey(expeditionInfo.allCompleteTime.completeTimePointFromNow ?? "已全部完成"))
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
                         .lineLimit(1)
                 } else {
-                    Text(expeditionInfo.nextCompleteTime.completeTimePointFromNow ?? "\(expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask)个已完成")
+                    Text(LocalizedStringKey(expeditionInfo.nextCompleteTime.completeTimePointFromNow ?? "\(expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask)个已完成"))
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
@@ -62,13 +62,13 @@ struct ExpeditionInfoBar: View {
                 }
             case .byTimeInterval:
                 if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
-                    Text(expeditionInfo.allCompleteTime.describeIntervalShort ?? "已全部完成")
+                    Text(LocalizedStringKey(expeditionInfo.allCompleteTime.describeIntervalShort ?? "已全部完成"))
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
                         .lineLimit(1)
                 } else {
-                    Text(expeditionInfo.nextCompleteTime.describeIntervalShort ?? "\(expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask)个已完成")
+                    Text(LocalizedStringKey(expeditionInfo.nextCompleteTime.describeIntervalShort ?? "\(expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask)个已完成"))
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
