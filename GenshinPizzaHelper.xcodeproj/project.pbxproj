@@ -34,6 +34,8 @@
 		BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
 		BF70212D28B50D7800A6BBA9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
 		BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
+		BF70213428B5259300A6BBA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -250,6 +252,7 @@
 		BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundsPreviewView.swift; sourceTree = "<group>"; };
 		BF70211B28B4B52500A6BBA9 /* ViewTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTools.swift; sourceTree = "<group>"; };
 		BF70212F28B50D7800A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF70213628B5259300A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -452,7 +455,6 @@
 			children = (
 				EA09A02328A2BA820023B4AF /* AccountIntent.entitlements */,
 				BFFD823028A650C300616CE1 /* AccountIntents.intentdefinition */,
-				BF70213028B50D7800A6BBA9 /* Localizable.strings */,
 				EA09A02428A2C2E60023B4AF /* IntentHandler.swift */,
 				EA099FF928A2B7220023B4AF /* Info.plist */,
 			);
@@ -614,6 +616,8 @@
 			children = (
 				BF70210628B33D8300A6BBA9 /* AppDelegate.swift */,
 				EA1B76762886B89F007A5216 /* Info.plist */,
+				BF70213028B50D7800A6BBA9 /* Localizable.strings */,
+				BF70213728B5259300A6BBA9 /* InfoPlist.strings */,
 				EAAF330828A276360018EFAB /* View */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
@@ -770,6 +774,7 @@
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
 				BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */,
 				EAEC41E228B096170056D182 /* 每日任务.png in Resources */,
+				BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */,
 				EAEC41F828B0994C0056D182 /* 参量质变仪.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -787,6 +792,7 @@
 				EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */,
 				EAEC41FD28B0994C0056D182 /* 周本.png in Resources */,
 				EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */,
+				BF70213428B5259300A6BBA9 /* InfoPlist.strings in Resources */,
 				EAEC41FA28B0994C0056D182 /* 树脂.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -995,6 +1001,14 @@
 				BF70212F28B50D7800A6BBA9 /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		BF70213728B5259300A6BBA9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF70213628B5259300A6BBA9 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		BFFD823028A650C300616CE1 /* AccountIntents.intentdefinition */ = {

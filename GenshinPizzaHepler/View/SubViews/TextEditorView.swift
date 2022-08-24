@@ -65,7 +65,7 @@ struct TextFieldEditorView: View {
             .navigationBarTitle(title, displayMode: .inline)
         } else {
             List {
-                Section(footer: Text(note!)) {
+                Section(footer: Text(LocalizedStringKey(note!))) {
                     if #available(iOS 15.0, *) {
                         TextField(note!, text: $content)
                             .keyboardType(keyboardType)
