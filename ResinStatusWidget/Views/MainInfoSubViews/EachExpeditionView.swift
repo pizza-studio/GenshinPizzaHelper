@@ -10,6 +10,7 @@ import SwiftUI
 struct EachExpeditionView: View {
     let expedition: Expedition
     let viewConfig: WidgetViewConfiguration = .defaultConfig
+    var useAsyncImage: Bool = false
 
     var body: some View {
         HStack {
@@ -28,20 +29,22 @@ struct EachExpeditionView: View {
         .foregroundColor(Color("textColor3"))
 //        .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
 //        .background(WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true))
-
-
-
-
     }
 
     @ViewBuilder
     func webView(url: URL) -> some View {
         GeometryReader { g in
-            NetworkImage(url: expedition.avatarSideIconUrl)
-                .scaleEffect(1.2)
-                .scaledToFit()
-                .offset(x: -g.size.width * 0.05, y: -g.size.height * 0.17)
-//                .border(.blue, width: 3)
+            if useAsyncImage {
+                WebImage(urlStr: expedition.avatarSideIcon)
+                    .scaleEffect(1.2)
+                    .scaledToFit()
+                    .offset(x: -g.size.width * 0.05, y: -g.size.height * 0.17)
+            } else {
+                NetworkImage(url: expedition.avatarSideIconUrl)
+                    .scaleEffect(1.2)
+                    .scaledToFit()
+                    .offset(x: -g.size.width * 0.05, y: -g.size.height * 0.17)
+            }
         }
         .frame(maxWidth: 50, maxHeight: 50)
     }

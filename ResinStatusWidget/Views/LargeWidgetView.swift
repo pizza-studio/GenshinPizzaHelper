@@ -14,17 +14,17 @@ struct LargeWidgetView: View {
 
     var body: some View {
 
-        HStack(alignment: .top) {
+        HStack() {
             Spacer()
             VStack(alignment: .leading) {
                 Spacer()
                 mainInfo()
-                Spacer()
-                DetailInfo(userData: userData, viewConfig: viewConfig)
+                Spacer(minLength: 18)
+                detailInfo()
                 Spacer()
             }
             .padding()
-            Spacer()
+            
             ExpeditionsView(expeditions: userData.expeditionInfo.expeditions)
                 .padding()
             Spacer()
@@ -105,6 +105,36 @@ struct LargeWidgetView: View {
                 RecoveryTimeText(resinInfo: userData.resinInfo)
             }
         }
+    }
+
+    @ViewBuilder
+    func detailInfo() -> some View {
+        VStack(alignment: .leading, spacing: 13) {
+
+            if userData.homeCoinInfo.maxHomeCoin != 0 {
+                HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
+            }
+
+            if userData.dailyTaskInfo.totalTaskNum != 0 {
+                DailyTaskInfoBar(dailyTaskInfo: userData.dailyTaskInfo)
+            }
+
+            if userData.expeditionInfo.maxExpedition != 0 {
+                ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
+            }
+
+            if userData.transformerInfo.obtained && viewConfig.showTransformer {
+                TransformerInfoBar(transformerInfo: userData.transformerInfo)
+            }
+
+            switch viewConfig.weeklyBossesShowingMethod {
+            case .neverShow:
+                EmptyView()
+            default:
+                WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
+            }
+        }
+        .padding(.trailing)
     }
 }
 
