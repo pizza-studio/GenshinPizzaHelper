@@ -24,19 +24,24 @@ struct RecoveryTime {
         guard second != 0 else { return nil }
         // 描述为 X天 或 X小时X分钟
         if second / 3600 >= 24 {
-            return "\(second / (3600 * 24))天"
+            let localizedString = NSLocalizedString("%lld天", comment: "day")
+            return String(format: localizedString, second / (3600 * 24))
         }
-        return "\(second / 3600)小时\((second % 3600) / 60)分钟"
+        let localizedString = NSLocalizedString("%lld小时%lld分钟", comment: "hour & min")
+        return String(format: localizedString, second / 3600, (second % 3600) / 60)
     }
     var describeIntervalShort: String? {
         guard second != 0 else { return nil }
         // 描述为 X天 或 X小时 或 X分钟
         if second / 3600 >= 24 {
-            return "\(second / (3600 * 24))天"
+            let localizedString = NSLocalizedString("%lld天", comment: "day")
+            return String(format: localizedString, second / (3600 * 24))
         } else if second / 3600 > 0 {
-            return "\(second / 3600)小时"
+            let localizedString = NSLocalizedString("%lld小时", comment: "hour")
+            return String(format: localizedString, second / 3600)
         } else {
-            return "\((second % 3600) / 60)分钟"
+            let localizedString = NSLocalizedString("%lld分钟", comment: "min")
+            return String(format: localizedString, (second % 3600) / 60)
         }
     }
     var completeTimePointFromNow: String? {
@@ -45,7 +50,7 @@ struct RecoveryTime {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         dateFormatter.doesRelativeDateFormatting = true
-        dateFormatter.locale = Locale(identifier: "zh_CN")
+        dateFormatter.locale = Locale(identifier: Locale.current.identifier)
         
         let date = Calendar.current.date(byAdding: .second, value: second, to: Date())!
 

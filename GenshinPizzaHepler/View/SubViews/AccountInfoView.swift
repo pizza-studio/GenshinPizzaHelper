@@ -17,8 +17,8 @@ struct AccountInfoView: View {
                 .padding(.vertical)
             HStack {
                 Text("UID: \(accountConfig.uid!)")
-                Spacer()
-                Text("地区: \(accountConfig.server.region.value)")
+//                Spacer()
+//                Text("地区: \(accountConfig.server.region.value)")
                 Spacer()
                 Text("服务器: \(accountConfig.server.rawValue)")
             }

@@ -16,6 +16,10 @@ struct HomeView: View {
 
     func getDate() -> String{
         let weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+        let weekdaysLocalized = weekdays.map { (item) -> String in
+            let localizedStr = NSLocalizedString(item, comment: "week days")
+            return String(format: localizedStr)
+        }
 
         let calendar = Calendar.current
         let date = Date()
@@ -23,7 +27,8 @@ struct HomeView: View {
         let day = calendar.component(.day, from: date)
         let weekday = calendar.component(.weekday, from: date)
 
-        return "\(month)月\(day)日 \(weekdays[(weekday + 6) % 7])"
+        let localizedString = NSLocalizedString("%lld月%lld日 %@", comment: "today")
+        return String(format: localizedString, month, day, weekdaysLocalized[(weekday + 6) % 7])
     }
     
     var body: some View {

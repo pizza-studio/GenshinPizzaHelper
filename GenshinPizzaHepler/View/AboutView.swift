@@ -42,7 +42,7 @@ struct AboutView: View {
                         .font(.callout)
                 }
             }
-            Text("交流群：813912474")
+            Text("交流群：813912474 829996515")
                 .font(.callout)
                 .padding(.bottom)
         }

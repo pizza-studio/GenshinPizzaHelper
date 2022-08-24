@@ -25,7 +25,7 @@ struct BackgroundsPreviewView: View {
                             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     } header: {
-                        Text(backgroundImageName)
+                        Text(LocalizedStringKey(backgroundImageName))
                     }
                 }
             }
@@ -40,7 +40,7 @@ struct BackgroundsPreviewView: View {
                             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     } header: {
-                        Text(backgroundImageName)
+                        Text(LocalizedStringKey(backgroundImageName))
                     }
                 }
             }
