@@ -6,73 +6,67 @@
 
 "1Ev2Th-lMTFKb" = "Just to confirm, you wanted ‘始终显示’?";
 
-"2sA6YK" = "false";
+"2yWIH0" = "（未知）";
 
-"2yWIH0" = "(Unknown)";
-
-"3m73ML" = "(Unknown)";
+"3m73ML" = "（未知）";
 
 "3xS9bp" = "Widget Background Color";
 
-"52SZIK" = "★★Green";
+"52SZIK" = "★★緑";
 
-"7Mpxy7" = "(Unknown)";
+"7Mpxy7" = "（未知）";
 
-"81ss5Y" = "All done";
+"81ss5Y" = "全部完成の時";
 
-"87WYHP" = "Widget configuration";
-
-"89DxTH" = "Anemo";
+"89DxTH" = "風元素";
 
 "9W1NzG" = "true";
 
-"Az9Qxm" = "Disappear after finished";
+"Az9Qxm" = "完了後表示しない";
 
-"DKesAN" = "Time to finish";
+"DKesAN" = "完了所要時間";
 
-"DYkkLk" = "★★★★★Gold";
+"DYkkLk" = "★★★★★金";
 
-"EnqoJ9" = "Account";
+"EnqoJ9" = "アカウント";
 
-"H3Ih3C" = "★Gray";
+"H3Ih3C" = "★灰";
 
-"I4e2SF" = "Pyro";
+"I4e2SF" = "炎元素";
 
-"K2iJCd" = "Show today's materials (Big size only)";
+"K2iJCd" = "今日の材料を表示（大サイズのみ）";
 
-"MVmO5f" = "Show parametric transformer";
+"MVmO5f" = "参量物質変化器を表示";
 
-"NEV35Z" = "Number of Ongoing Expedition";
+"NEV35Z" = "探索派遣中人数";
 
-"NKtRSE" = "Geo";
+"NKtRSE" = "岩元素";
 
 "PLml4M" = "Weekly Bosses Showing Method";
 
-"S20R6h" = "Cyro";
+"PS8etl" = "はい";
 
-"TAftI9" = "Dendro";
+"S20R6h" = "氷元素";
 
-"TDccRa" = "Never show";
+"TAftI9" = "草元素";
 
-"UqmTP9" = "Configure for Genshin Pizza";
+"TDccRa" = "消して表示しない";
 
 "Vs9Whf" = "Widget Background Type";
 
-"XnDLoc" = "true";
-
-"YrOyp9" = "★★★Blue";
+"YrOyp9" = "★★★青";
 
 "a0FhAC-9W1NzG" = "There are ${count} options matching ‘true’.";
 
 "a0FhAC-vl1bDD" = "There are ${count} options matching ‘false’.";
 
-"a5PB3w" = "Next done";
+"a5PB3w" = "次回の完了時間";
 
-"bMiiOE" = "(Unknown)";
+"bMiiOE" = "（未知）";
 
-"cjQ7ix-3m73ML" = "Just to confirm, you wanted ‘(Unknown)’?";
+"cjQ7ix-3m73ML" = "Just to confirm, you wanted ‘（未知）’?";
 
-"cjQ7ix-DKesAN" = "Just to confirm, you wanted ‘Time to finish’?";
+"cjQ7ix-DKesAN" = "Just to confirm, you wanted ‘完成所需时间’?";
 
 "cjQ7ix-NEV35Z" = "Just to confirm, you wanted ‘正在探索人数’?";
 
@@ -86,7 +80,7 @@
 
 "d7jH4f-lMTFKb" = "There are ${count} options matching ‘始终显示’.";
 
-"dUyzRX" = "Expedition Display Method";
+"dUyzRX" = "探索派遣表示フォーム";
 
 "e0kZEQ-2yWIH0" = "Just to confirm, you wanted ‘（未知）’?";
 
@@ -94,19 +88,19 @@
 
 "e0kZEQ-a5PB3w" = "Just to confirm, you wanted ‘下一个完成时’?";
 
-"f8OJzI" = "Widget background";
+"f8OJzI" = "ウィジェット背景";
 
 "fFVHow" = "namecard";
 
 "fYQAf4" = "Expedition Notice Method";
 
-"ft3ye3" = "★★★★★Red";
+"ft3ye3" = "★★★★★赤";
 
-"gknWkx" = "Random Background";
+"gknWkx" = "ランダムな背景";
 
-"gxv19W" = "Yes";
+"gxv19W" = "はい";
 
-"hT68r4" = "Weekly Boss Display Method";
+"hT68r4" = "週ボス表示フォーム";
 
 "k2M7XL" = "Expedition Showing Method";
 
@@ -118,25 +112,25 @@
 
 "l4a3No-a5PB3w" = "There are ${count} options matching ‘下一个完成时’.";
 
-"lMTFKb" = "Always show";
+"lMTFKb" = "常に表示";
 
-"lbRsap" = "Expedition remind for";
+"lbRsap" = "探索派遣通知時間";
 
 "ll3vKn" = "false";
 
-"lnnUEA" = "Hydro";
+"lnnUEA" = "水元素";
 
-"mKzz1P" = "Dark mode (following system)";
+"mKzz1P" = "ダークモードを使用する（システムに従う）";
 
-"nqqAbg" = "Show custom account name";
+"mRXrdK" = "いいえ";
 
 "oi0S30" = "color";
 
-"pmxRYI" = "★★★★Purple";
+"pmxRYI" = "★★★★紫";
 
-"ppnCJD" = "No";
+"ppnCJD" = "いいえ";
 
-"qijLJm" = "Account name";
+"qijLJm" = "アカウント名";
 
 "rfBAEx-3m73ML" = "There are ${count} options matching ‘（未知）’.";
 
@@ -146,17 +140,17 @@
 
 "rfBAEx-vFlGnC" = "There are ${count} options matching ‘完成时间点’.";
 
-"sCNVNi" = "Electro";
+"sCNVNi" = "雷元素";
 
-"sWpemX" = "Choose account";
+"sWpemX" = "アカウントを選択";
 
-"vFlGnC" = "Finished time";
+"vFlGnC" = "完成時間";
 
-"vK3j6C" = "Background";
+"vK3j6C" = "背景";
 
 "vl1bDD" = "false";
 
-"wnGFsd" = "Intertwined Fate";
+"wnGFsd" = "紡がれた運命";
 
-"zQrKVi" = "Choose the displayed account for the widget";
+"zQrKVi" = "ウィジェットの表示されたアカウントを選択";
 

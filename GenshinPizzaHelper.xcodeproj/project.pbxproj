@@ -268,6 +268,9 @@
 		BF70212F28B50D7800A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF70213628B5259300A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF70213928B65E5200A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AccountIntents.strings; sourceTree = "<group>"; };
+		BF70213C28B7202200A6BBA9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AccountIntents.strings; sourceTree = "<group>"; };
+		BF70213D28B7203700A6BBA9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF70213E28B7203B00A6BBA9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -763,6 +766,7 @@
 				Base,
 				"zh-Hans",
 				en,
+				ja,
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
@@ -1040,6 +1044,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF70212F28B50D7800A6BBA9 /* en */,
+				BF70213D28B7203700A6BBA9 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1048,6 +1053,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF70213628B5259300A6BBA9 /* en */,
+				BF70213E28B7203B00A6BBA9 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1057,6 +1063,7 @@
 			children = (
 				BFFD822F28A650C300616CE1 /* zh-Hans */,
 				BF70213928B65E5200A6BBA9 /* en */,
+				BF70213C28B7202200A6BBA9 /* ja */,
 			);
 			name = AccountIntents.intentdefinition;
 			sourceTree = "<group>";
