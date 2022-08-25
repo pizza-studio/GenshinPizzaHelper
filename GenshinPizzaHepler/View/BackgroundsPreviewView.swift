@@ -27,6 +27,7 @@ struct BackgroundsPreviewView: View {
                     } header: {
                         Text(LocalizedStringKey(backgroundImageName))
                     }
+                    .textCase(.none)
                 }
             }
             .listStyle(.insetGrouped)
@@ -42,6 +43,7 @@ struct BackgroundsPreviewView: View {
                     } header: {
                         Text(LocalizedStringKey(backgroundImageName))
                     }
+                    .textCase(.none)
                 }
             }
             .listStyle(.insetGrouped)
