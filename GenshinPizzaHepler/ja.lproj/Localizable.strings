@@ -82,23 +82,23 @@
 "星期六" = "土曜日";
 
 // Notification settings
-"推送设置" = "Notification Settings";
-"启用帐号" = "Enabled accounts";
-"原粹树脂提醒" = "Original resin notification";
-"提醒阈值" = "Threshold value";
-"%lld树脂" = "%lld resins";
-"洞天宝钱提醒" = "Realm currency notification";
-"提醒时间" = "Send at";
-"充满前%lld小时" = "%lld hours before it is full";
-"探索派遣提醒" = "Expedition notification";
-"提醒于" = "Send at";
-"全部完成时" = "All done";
-"任一完成时" = "Any one done";
-"每日委托提醒" = "Daily commission notification";
-"提醒时间" = "Send at";
-"周本折扣提醒" = "Weekly boss notification";
-"提醒日期" = "Send on";
-"参量质变仪提醒" = "Parametric transformer notification";
+"推送设置" = "通知設定";
+"启用帐号" = "有効なアカウント";
+"原粹树脂提醒" = "天然樹脂通知";
+"提醒阈值" = "通知閾値";
+"%lld树脂" = "%lld樹脂";
+"洞天宝钱提醒" = "洞天宝銭通知";
+"提醒时间" = "通知時間";
+"充满前%lld小时" = "満タンになる%lld時間前に";
+"探索派遣提醒" = "探索派遣通知";
+"提醒于" = "通知時間";
+"全部完成时" = "全部完成";
+"任一完成时" = "いずれに完成";
+"每日委托提醒" = "デイリー依頼通知";
+"提醒时间" = "通知時間";
+"周本折扣提醒" = "週ボス通知";
+"提醒日期" = "通知日付";
+"参量质变仪提醒" = "参量物質変化器通知";
 
 // namecards
 "丽莎・沙漏" = "Lisa";
