@@ -24,6 +24,7 @@ struct InAppMaterialNavigator: View {
                 .blurMaterialBackground()
                 .padding(.horizontal)
                 .onTapGesture {
+                    simpleTaptic(type: .light)
                     withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
                         showMaterialDetail.toggle()
                     }
@@ -34,6 +35,7 @@ struct InAppMaterialNavigator: View {
                 .blurMaterialBackground()
                 .padding(.horizontal)
                 .onTapGesture {
+                    simpleTaptic(type: .light)
                     withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
                         showMaterialDetail.toggle()
                     }
