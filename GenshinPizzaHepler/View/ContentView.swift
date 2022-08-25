@@ -9,7 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: ViewModel
+
+    @Environment(\.scenePhase) var scenePhase
+
     @State var selection: Int = 0
+
+    @State private var sheetType: ContentViewSheetType? = nil
+
     var index: Binding<Int> { Binding(
         get: { self.selection },
         set: {
@@ -47,5 +53,37 @@ struct ContentView: View {
                 AccountDisplayView(detail: detail, animation: animation)
             }
         }
+        .onChange(of: scenePhase, perform: { newPhase in
+            switch newPhase {
+            case .active:
+                // 检查是否同意过用户协议
+                let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
+                if !isPolicyShown {
+                    sheetType = .userPolicy
+                }
+                viewModel.fetchAccount()
+                viewModel.refreshData()
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            case .inactive:
+                WidgetCenter.shared.reloadAllTimelines()
+            default:
+                break
+            }
+        })
+        .sheet(item: $sheetType) { item in
+            switch item {
+            case .userPolicy:
+                UserPolicyView(sheet: $sheetType)
+                    .allowAutoDismiss(false)
+            }
+        }
     }
+}
+
+enum ContentViewSheetType: Identifiable {
+    var id: Int {
+        hashValue
+    }
+
+    case userPolicy
 }
