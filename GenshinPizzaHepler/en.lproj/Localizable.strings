@@ -11,45 +11,45 @@
 "主页" = "Home";
 "设置" = "Settings";
 "我的帐号" = "My accounts";
-"添加帐号" = "Add an account";
-"通知推送" = "Notification";
+"添加帐号" = "Add Account";
+"通知推送" = "Notifications";
 "通知推送设置" = "Notification Settings";
-"背景名片预览" = "Background namecard preview";
+"背景名片预览" = "Background Namecard Preview";
 "更多" = "More";
 
-"通知功能需要帐号添加至小组件后才能生效" = "Notification is only available after Widget is added on your device";
+"通知功能需要帐号添加至小组件后才能生效" = "Notification will be available after adding the Widget of the account to your device";
 "地区: %@" = "Region: %@";
 "服务器: %@" = "Server: %@";
 
-"获取Cookie的脚本" = "Shortcuts to get Cookie";
-"在App Store评分" = "Rate on the App Store";
+"获取Cookie的脚本" = "Shortcuts for Grabbing Cookie";
+"在App Store评分" = "Rate in App Store";
 "支持我们" = "Donate us";
 "常见使用问题（FAQ）" = "FAQ";
-"用户协议与免责声明" = "User policy (Simplified Chinese)";
-"用户协议" = "User policy";
+"用户协议与免责声明" = "User Policy (Simplified Chinese)";
+"用户协议" = "User Policy";
 "关于小助手" = "About App";
 "开发者" = "Developers";
 "交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
 
 // Account detail
-"重新登录米游社帐号" = "Relogin HoYoLAB account";
-"帐号配置" = "Account configuration";
-"帐号名" = "Account name";
+"重新登录米游社帐号" = "Relogin to HoYoLAB";
+"帐号配置" = "Account Configuration";
+"帐号名" = "Account Name";
 "服务器" = "Server";
-"测试连接" = "Test connect status";
-"错误内容" = "Error details";
+"测试连接" = "Test Connection";
+"错误内容" = "Error Details";
 "帐号信息" = "Account Infos";
 
-"你可以添加自定义的帐号备注" = "You can add custom account notes";
-"粘贴自剪贴板" = "Paste from clipboard";
+"你可以添加自定义的帐号备注" = "Your custom account name displayed on Widget";
+"粘贴自剪贴板" = "Paste from Clipboard";
 
 // Add account
 "登录米游社帐号" = "Login via HoYoLAB";
 "你也可以" = "You can also";
 "手动设置帐号" = "configure your account manually";
 "保存" = "Save";
-"国服" = "China Mainland players";
-"国际服" = "Global players";
+"国服" = "China Mainland Players";
+"国际服" = "Global Players";
 "登录帐号获取Cookie" = "Get cookie via HoYoLAB";
 
 "请完成登录" = "Please finish login";
@@ -58,19 +58,19 @@
 "尚未完成帐号设置" = "Account configuration is not finished";
 "好" = "OK";
 "提示" = "Tips";
-"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nWe promise that you account infos will only be stored on your local device and private iCloud, only used to request HoYoLAB for your Genshin account infos. ";
-"自定义帐号名" = "Custom account name";
-"请选择帐号" = "Choose your account";
-"查看帐号详情" = "Account detail infos";
-"我的帐号" = "My account";
+"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. ";
+"自定义帐号名" = "Custom Account Name";
+"请选择帐号" = "Choose Your Accounts";
+"查看帐号详情" = "Login Info Details";
+"我的帐号" = "My Account";
 
 // Game Info block
-"%@\n%@ 回满" = "%@\n%@ done";
-"0小时0分钟\n树脂已全部回满" = "0 h 0 min\nResin is full";
-"%lld天" = "%lld day(s)";
-"%lld小时" = "%lld hour(s)";
-"%lld分钟" = "%lld min(s)";
-"%lld小时%lld分钟" = "%lld hour(s) %lld min(s)";
+"%@\n%@ 回满" = "%@\Refill at %@";
+"0小时0分钟\n树脂已全部回满" = "0 Hr 0 Min\nResin is fully capped";
+"%lld天" = "%lld Day";
+"%lld小时" = "%lld Hr";
+"%lld分钟" = "%lld Min";
+"%lld小时%lld分钟" = "%lld Hr %lld Min";
 "可使用" = "Available";
 "%lld月%lld日 %@" = "%lld.%lld %@";
 "星期日" = "Sunday";
@@ -83,22 +83,22 @@
 
 // Notification settings
 "推送设置" = "Notification Settings";
-"启用帐号" = "Enabled accounts";
-"原粹树脂提醒" = "Original resin notification";
-"提醒阈值" = "Threshold value";
-"%lld树脂" = "%lld resins";
-"洞天宝钱提醒" = "Realm currency notification";
+"启用帐号" = "Enabled Accounts";
+"原粹树脂提醒" = "Original Resin";
+"提醒阈值" = "Resin Threshold";
+"%lld树脂" = "%lld Resins";
+"洞天宝钱提醒" = "Realm Currency";
 "提醒时间" = "Send at";
-"充满前%lld小时" = "%lld hours before it is full";
-"探索派遣提醒" = "Expedition notification";
-"提醒于" = "Send at";
+"充满前%lld小时" = "%lld hours before Full";
+"探索派遣提醒" = "Expedition";
+"提醒于" = "Send when";
 "全部完成时" = "All done";
-"任一完成时" = "Any one done";
-"每日委托提醒" = "Daily commission notification";
+"任一完成时" = "Each done";
+"每日委托提醒" = "Daily Commission";
 "提醒时间" = "Send at";
-"周本折扣提醒" = "Weekly boss notification";
+"周本折扣提醒" = "Weekly Boss";
 "提醒日期" = "Send on";
-"参量质变仪提醒" = "Parametric transformer notification";
+"参量质变仪提醒" = "Parametric Transformer";
 
 // namecards
 "丽莎・沙漏" = "Lisa";
@@ -232,7 +232,7 @@
 "已全部完成" = "All done";
 "%lld个已完成" = "%lld done";
 "（未领取）" = " (Not received)";
-"（可使用）" = "Available now";
+"（可使用）" = "Available";
 
 // Used for copy and paste to edit this file
-"查询树脂恢复状态" = "Check the resin recovery status";
+"查询树脂恢复状态" = "Check your resin recovery status";
