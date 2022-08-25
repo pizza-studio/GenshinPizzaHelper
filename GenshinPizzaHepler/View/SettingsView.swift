@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WidgetKit
 
 struct SettingsView: View {
     @EnvironmentObject var viewModel: ViewModel
