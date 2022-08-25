@@ -15,11 +15,13 @@ class IntentHandler: INExtension, SelectAccountIntentHandling {
         
         var intents: [WidgetBackground] = []
         colorOptions.forEach { colorName in
-            let intent = WidgetBackground.init(identifier: colorName, display: colorName)
+            let name = colorName.localized
+            let intent = WidgetBackground.init(identifier: colorName, display: name)
             intents.append(intent)
         }
         namecardOptions.forEach { namecardName in
-            let intent = WidgetBackground.init(identifier: namecardName, display: namecardName)
+            let name = namecardName.localized
+            let intent = WidgetBackground.init(identifier: namecardName, display: name)
             intents.append(intent)
         }
         completion(INObjectCollection(items: intents), nil)
