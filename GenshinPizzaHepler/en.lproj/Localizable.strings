@@ -66,11 +66,11 @@
 
 // Game Info block
 "%@\n%@ 回满" = "Refill in %@\n%@";
-"0小时0分钟\n树脂已全部回满" = "0 Hr 0 Min\nResin is fully capped";
-"%lld天" = "%lld Day";
-"%lld小时" = "%lld Hr";
-"%lld分钟" = "%lld Min";
-"%lld小时%lld分钟" = "%lld Hr %lld Min";
+"0小时0分钟\n树脂已全部回满" = "0 ʜʀ 0 ᴍɪɴ\nResin is fully capped";
+"%lld天" = "%lld ᴅᴀʏ";
+"%lld小时" = "%lld ʜʀ";
+"%lld分钟" = "%lld ᴍɪɴ";
+"%lld小时%lld分钟" = "%lld ʜʀ %lld ᴍɪɴ";
 "可使用" = "Available";
 "%lld月%lld日 %@" = "%lld.%lld %@";
 "星期日" = "Sunday";
