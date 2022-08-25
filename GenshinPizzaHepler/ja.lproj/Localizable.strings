@@ -32,16 +32,16 @@
 "交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
 
 // Account detail
-"重新登录米游社帐号" = "Relogin HoYoLAB account";
-"帐号配置" = "Account configuration";
-"帐号名" = "Account name";
-"服务器" = "Server";
-"测试连接" = "Test connect status";
-"错误内容" = "Error details";
-"帐号信息" = "Account Infos";
+"重新登录米游社帐号" = "HoYoLABに再度ログインします";
+"帐号配置" = "アカウント設定";
+"帐号名" = "アカウント名";
+"服务器" = "サーバー";
+"测试连接" = "接続状況をテストする";
+"错误内容" = "エラーの詳細";
+"帐号信息" = "アカウント情報";
 
-"你可以添加自定义的帐号备注" = "You can add custom account notes";
-"粘贴自剪贴板" = "Paste from clipboard";
+"你可以添加自定义的帐号备注" = "カスタムアカウントノートを追加することができる";
+"粘贴自剪贴板" = "クリップボードから貼り付ける";
 
 // Add account
 "登录米游社帐号" = "Login via HoYoLAB";
