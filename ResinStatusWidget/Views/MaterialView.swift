@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MaterialView: View {
-    let talentMaterialProvider: TalentMaterialProvider = .init()
-    let weaponMaterialProvider: WeaponMaterialProvider = .init()
+    var today: MaterialWeekday = .today()
+    var talentMaterialProvider: TalentMaterialProvider { .init(weekday: today) }
+    var weaponMaterialProvider: WeaponMaterialProvider { .init(weekday: today) }
 
     var body: some View {
         if Calendar.current.dateComponents([.weekday], from: Date()).weekday != 1 {

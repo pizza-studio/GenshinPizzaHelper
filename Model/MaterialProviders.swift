@@ -8,7 +8,7 @@
 import Foundation
 
 struct WeaponMaterialProvider {
-    var weekday: MaterialWeekday = .today
+    var weekday: MaterialWeekday = .today()
 
     var todaysMaterials: [WeaponMaterial] {
         var materials: [WeaponMaterial] = .init()
@@ -102,7 +102,7 @@ struct WeaponMaterialProvider {
 }
 
 struct TalentMaterialProvider {
-    private let weekday: MaterialWeekday = .today
+    var weekday: MaterialWeekday = .today()
 
     var todaysMaterials: [TalentMaterial] {
         var materials: [TalentMaterial] = .init()
@@ -204,7 +204,7 @@ enum MaterialWeekday {
     case wednesdayAndSaturday
     case sunday
 
-    static var today: Self {
+    static func today() -> Self {
         let weekdayNum = Calendar.current.dateComponents([.weekday], from: Date()).weekday!
         switch weekdayNum {
         case 1:
