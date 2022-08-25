@@ -27,9 +27,9 @@ struct WeaponMaterialProvider {
     }
 
     var todayMondstadtMaterials: [WeaponMaterial] {
-        let decarabian: WeaponMaterial = .init(imageString: "weapon.Decarabian", localizedName: "高塔孤王")
-        let borealWolf: WeaponMaterial = .init(imageString: "weapon.BorealWolf", localizedName: "凛风奔狼")
-        let dandelionGladiator: WeaponMaterial = .init(imageString: "weapon.DandelionGladiator", localizedName: "狮牙斗士")
+        let decarabian: WeaponMaterial = .init(imageString: "weapon.Decarabian", localizedName: "「高塔孤王」")
+        let borealWolf: WeaponMaterial = .init(imageString: "weapon.BorealWolf", localizedName: "「凛风奔狼」")
+        let dandelionGladiator: WeaponMaterial = .init(imageString: "weapon.DandelionGladiator", localizedName: "「狮牙斗士」")
 
         switch weekday {
         case .mondayAndThursday:
@@ -44,9 +44,9 @@ struct WeaponMaterialProvider {
     }
 
     var todayLiyueMaterials: [WeaponMaterial] {
-        let guyun: WeaponMaterial = .init(imageString: "weapon.Guyun", localizedName: "孤云寒林")
-        let mistVeiled: WeaponMaterial = .init(imageString: "weapon.MistVeiled", localizedName: "雾海云间")
-        let aerosiderite: WeaponMaterial = .init(imageString: "weapon.Aerosiderite", localizedName: "漆黑陨铁")
+        let guyun: WeaponMaterial = .init(imageString: "weapon.Guyun", localizedName: "「孤云寒林」")
+        let mistVeiled: WeaponMaterial = .init(imageString: "weapon.MistVeiled", localizedName: "「雾海云间」")
+        let aerosiderite: WeaponMaterial = .init(imageString: "weapon.Aerosiderite", localizedName: "「漆黑陨铁」")
 
         switch weekday {
         case .mondayAndThursday:
@@ -61,9 +61,9 @@ struct WeaponMaterialProvider {
     }
 
     var todayInazumaMaterials: [WeaponMaterial] {
-        let distantSea: WeaponMaterial = .init(imageString: "weapon.DistantSea", localizedName: "远海夷地")
-        let narukami: WeaponMaterial = .init(imageString: "weapon.Narukami", localizedName: "鸣神御灵")
-        let kijin: WeaponMaterial = .init(imageString: "weapon.Kijin", localizedName: "今昔剧画")
+        let distantSea: WeaponMaterial = .init(imageString: "weapon.DistantSea", localizedName: "「远海夷地」")
+        let narukami: WeaponMaterial = .init(imageString: "weapon.Narukami", localizedName: "「鸣神御灵」")
+        let kijin: WeaponMaterial = .init(imageString: "weapon.Kijin", localizedName: "「今昔剧画」")
 
         switch weekday {
         case .mondayAndThursday:
@@ -78,9 +78,9 @@ struct WeaponMaterialProvider {
     }
 
     var todaySumeruMaterials: [WeaponMaterial] {
-        let forestDew: WeaponMaterial = .init(imageString: "weapon.ForestDew", localizedName: "谧林涓露")
-        let oasisGarden: WeaponMaterial = .init(imageString: "weapon.OasisGarden", localizedName: "绿洲花园")
-        let scorchingMight: WeaponMaterial = .init(imageString: "weapon.ScorchingMight", localizedName: "烈日威权")
+        let forestDew: WeaponMaterial = .init(imageString: "weapon.ForestDew", localizedName: "「谧林涓露」")
+        let oasisGarden: WeaponMaterial = .init(imageString: "weapon.OasisGarden", localizedName: "「绿洲花园」")
+        let scorchingMight: WeaponMaterial = .init(imageString: "weapon.ScorchingMight", localizedName: "「烈日威权」")
 
         switch weekday {
         case .mondayAndThursday:
@@ -121,9 +121,9 @@ struct TalentMaterialProvider {
     }
 
     var todayMondstadtMaterials: [TalentMaterial] {
-        let freedom: TalentMaterial = .init(imageString: "talent.Freedom", localizedName: "自由")
-        let resistance: TalentMaterial = .init(imageString: "talent.Resistance", localizedName: "抗争")
-        let ballad: TalentMaterial = .init(imageString: "talent.Ballad", localizedName: "诗文")
+        let freedom: TalentMaterial = .init(imageString: "talent.Freedom", localizedName: "「自由」")
+        let resistance: TalentMaterial = .init(imageString: "talent.Resistance", localizedName: "「抗争」")
+        let ballad: TalentMaterial = .init(imageString: "talent.Ballad", localizedName: "「诗文」")
 
         switch weekday {
         case .mondayAndThursday:
@@ -138,9 +138,9 @@ struct TalentMaterialProvider {
     }
 
     var todayLiyueMaterials: [TalentMaterial] {
-        let prosperity: TalentMaterial = .init(imageString: "talent.Prosperity", localizedName: "繁荣")
-        let diligence: TalentMaterial = .init(imageString: "talent.Diligence", localizedName: "勤劳")
-        let gold: TalentMaterial = .init(imageString: "talent.Gold", localizedName: "黄金")
+        let prosperity: TalentMaterial = .init(imageString: "talent.Prosperity", localizedName: "「繁荣」")
+        let diligence: TalentMaterial = .init(imageString: "talent.Diligence", localizedName: "「勤劳」")
+        let gold: TalentMaterial = .init(imageString: "talent.Gold", localizedName: "「黄金」")
 
         switch weekday {
         case .mondayAndThursday:
@@ -155,9 +155,9 @@ struct TalentMaterialProvider {
     }
 
     var todayInazumaMaterials: [TalentMaterial] {
-        let transience: TalentMaterial = .init(imageString: "talent.Transience", localizedName: "浮世")
-        let elegance: TalentMaterial = .init(imageString: "talent.Elegance", localizedName: "风雅")
-        let light: TalentMaterial = .init(imageString: "talent.Light", localizedName: "天光")
+        let transience: TalentMaterial = .init(imageString: "talent.Transience", localizedName: "「浮世」")
+        let elegance: TalentMaterial = .init(imageString: "talent.Elegance", localizedName: "「风雅」")
+        let light: TalentMaterial = .init(imageString: "talent.Light", localizedName: "「天光」")
 
         switch weekday {
         case .mondayAndThursday:
@@ -172,9 +172,9 @@ struct TalentMaterialProvider {
     }
 
     var todaySumeruMaterials: [TalentMaterial] {
-        let admonition: TalentMaterial = .init(imageString: "talent.Admonition", localizedName: "诤言")
-        let ingenuity: TalentMaterial = .init(imageString: "talent.Ingenuity", localizedName: "巧思")
-        let praxis: TalentMaterial = .init(imageString: "talent.Praxis", localizedName: "笃行")
+        let admonition: TalentMaterial = .init(imageString: "talent.Admonition", localizedName: "「诤言」")
+        let ingenuity: TalentMaterial = .init(imageString: "talent.Ingenuity", localizedName: "「巧思」")
+        let praxis: TalentMaterial = .init(imageString: "talent.Praxis", localizedName: "「笃行」")
 
         switch weekday {
         case .mondayAndThursday:

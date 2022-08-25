@@ -21,12 +21,21 @@ struct InAppMaterialNavigator: View {
     var body: some View {
         VStack {
             HStack {
-                Text("今日材料")
-                    .font(.caption2)
-                    .padding(.top)
-                    .padding(.leading, 25)
-                    .padding(.bottom, -10)
-                Spacer()
+                if today != .sunday {
+                    Text("今日材料")
+                        .font(.caption)
+                        .padding(.top)
+                        .padding(.leading, 25)
+                        .padding(.bottom, -10)
+//                        .foregroundColor(Color("materialTextColor"))
+                    Spacer()
+                } else {
+                    Text("今日材料：星期日所有材料均可获取")
+                        .font(.caption)
+                        .padding()
+//                        .foregroundColor(Color("materialTextColor"))
+
+                }
             }
             if !showMaterialDetail {
                 materials()
@@ -88,6 +97,7 @@ struct InAppMaterialNavigator: View {
                             .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
                             .frame(width: imageWidth)
                         Text(material.localizedName)
+                            .foregroundColor(Color("materialTextColor"))
 
                     }
 
@@ -103,6 +113,7 @@ struct InAppMaterialNavigator: View {
                             .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
                             .frame(width: imageWidth)
                         Text(material.localizedName)
+                            .foregroundColor(Color("materialTextColor"))
                     }
                 }
             }
@@ -116,7 +127,7 @@ private extension View {
         if #available(iOS 15.0, *) {
             return AnyView(self.background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)))
         } else {
-            return AnyView(self)
+            return AnyView(self.background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(Color(UIColor.systemGray6))))
         }
     }
 }
