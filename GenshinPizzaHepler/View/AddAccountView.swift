@@ -51,12 +51,10 @@ struct AddAccountView: View {
                     Menu {
                         Button("国服") {
                             region = .cn
-                            alermType = .webRemind
                             openWebView()
                         }
                         Button("国际服") {
                             region = .global
-                            alermType = .webRemind
                             openWebView()
                         }
                     } label: {
@@ -116,7 +114,6 @@ struct AddAccountView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("保存") {
                     if (unsavedUid == "") || (unsavedCookie == "") {
-                        alermType = .accountNotSaved
                         isAlertShow.toggle()
                         return
                     }
@@ -124,7 +121,6 @@ struct AddAccountView: View {
                         unsavedName = unsavedUid
                     }
                     if connectStatus != .success {
-                        alermType = .accountNotSaved
                         isAlertShow.toggle()
                         return
                     }
