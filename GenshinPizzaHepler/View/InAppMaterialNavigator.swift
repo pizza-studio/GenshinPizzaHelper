@@ -19,30 +19,30 @@ struct InAppMaterialNavigator: View {
     @Namespace var animationMaterial
 
     var body: some View {
-        if !showMaterialDetail {
-            materials()
-                .blurMaterialBackground()
-                .padding(.horizontal)
-                .onTapGesture {
-                    simpleTaptic(type: .light)
-                    withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
-                        showMaterialDetail.toggle()
-                    }
-                }
-        } else {
-            materialsDetail()
-                .padding(.vertical)
-                .blurMaterialBackground()
-                .padding(.horizontal)
-                .onTapGesture {
-                    simpleTaptic(type: .light)
-                    withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
-                        showMaterialDetail.toggle()
-                    }
-                }
+        VStack {
+            HStack {
+                Text("今日材料")
+                    .font(.caption2)
+                    .padding(.top)
+                    .padding(.leading, 25)
+                    .padding(.bottom, -10)
+                Spacer()
+            }
+            if !showMaterialDetail {
+                materials()
+            } else {
+                materialsDetail()
+                    .padding(.vertical)
+            }
         }
-
-
+        .blurMaterialBackground()
+        .padding(.horizontal)
+        .onTapGesture {
+            simpleTaptic(type: .light)
+            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                showMaterialDetail.toggle()
+            }
+        }
     }
 
     @ViewBuilder
