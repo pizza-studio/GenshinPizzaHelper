@@ -27,6 +27,7 @@ struct BackgroundsPreviewView: View {
                     } header: {
                         Text(LocalizedStringKey(backgroundImageName))
                     }
+                    .textCase(.none)
                 }
             }
             .listStyle(.insetGrouped)
@@ -42,6 +43,7 @@ struct BackgroundsPreviewView: View {
                     } header: {
                         Text(LocalizedStringKey(backgroundImageName))
                     }
+                    .textCase(.none)
                 }
             }
             .listStyle(.insetGrouped)
@@ -53,11 +55,12 @@ struct BackgroundsPreviewView: View {
         if searchText.isEmpty {
             return backgroundOptions
         } else {
-            return backgroundOptions.filter { $0.contains(searchText) }
+            return backgroundOptions.filter { "\(NSLocalizedString($0, comment: ""))".lowercased().contains(searchText.lowercased()) }
         }
     }
 
 }
+
 @available(iOS 15.0, *)
 struct BackgroundsPreviewView_Previews: PreviewProvider {
 

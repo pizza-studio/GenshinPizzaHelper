@@ -42,7 +42,7 @@
 
 "MVmO5f" = "Show parametric transformer";
 
-"NEV35Z" = "Number of under expedition";
+"NEV35Z" = "Number of Ongoing Expedition";
 
 "NKtRSE" = "Geo";
 
@@ -86,7 +86,7 @@
 
 "d7jH4f-lMTFKb" = "There are ${count} options matching ‘始终显示’.";
 
-"dUyzRX" = "Expedition display form";
+"dUyzRX" = "Expedition Display Method";
 
 "e0kZEQ-2yWIH0" = "Just to confirm, you wanted ‘（未知）’?";
 
@@ -102,11 +102,11 @@
 
 "ft3ye3" = "★★★★★Red";
 
-"gknWkx" = "Random background";
+"gknWkx" = "Random Background";
 
 "gxv19W" = "Yes";
 
-"hT68r4" = "Weekly boss display form";
+"hT68r4" = "Weekly Boss Display Method";
 
 "k2M7XL" = "Expedition Showing Method";
 
@@ -120,13 +120,13 @@
 
 "lMTFKb" = "Always show";
 
-"lbRsap" = "Expedition remind at";
+"lbRsap" = "Expedition remind for";
 
 "ll3vKn" = "false";
 
 "lnnUEA" = "Hydro";
 
-"mKzz1P" = "Use dark mode (follow system)";
+"mKzz1P" = "Dark mode (following system)";
 
 "nqqAbg" = "Show custom account name";
 
