@@ -11,11 +11,6 @@ import WidgetKit
 struct SettingsView: View {
     @EnvironmentObject var viewModel: ViewModel
     var accounts: [Account] { viewModel.accounts }
-
-//    @AppStorage("accountNum", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var accountNum: Int = 0
-//    @AppStorage("accountName", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var s: String = ""
-//    @AppStorage("uid", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var uid: String = ""
-//    @AppStorage("cookie", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var cookie: String = ""
     
     @State var isGameBlockAvailable: Bool = true
 
