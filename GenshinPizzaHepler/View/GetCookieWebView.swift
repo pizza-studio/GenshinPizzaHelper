@@ -9,7 +9,9 @@ import SwiftUI
 import WebKit
 
 struct GetCookieWebView: View {
-    
+
+    @State var isAlertShow: Bool = false
+
     @Binding var isShown: Bool
     @Binding var cookie: String
     let region: Region
@@ -73,6 +75,13 @@ struct GetCookieWebView: View {
                 }
                 .navigationTitle("请完成登录")
                 .navigationBarTitleDisplayMode(.inline)
+        }
+        .alert(isPresented: $isAlertShow) {
+            Alert(title: Text("提示"), message: Text("请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"), dismissButton: .default(Text("好"))
+                  )
+        }
+        .onAppear {
+            isAlertShow.toggle()
         }
     }
 }

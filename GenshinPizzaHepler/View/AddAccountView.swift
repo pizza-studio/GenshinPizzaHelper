@@ -54,12 +54,14 @@ struct AddAccountView: View {
                         Button("国服") {
                             region = .cn
                             alermType = .webRemind
-                            isAlertShow.toggle()
+//                            isAlertShow.toggle()
+                            openWebView()
                         }
                         Button("国际服") {
                             region = .global
                             alermType = .webRemind
-                            isAlertShow.toggle()
+//                            isAlertShow.toggle()
+                            openWebView()
                         }
                     } label: {
                         Text("登录米游社帐号")
@@ -139,12 +141,13 @@ struct AddAccountView: View {
             }
         }
         .alert(isPresented: $isAlertShow) {
-            switch alermType {
-            case .accountNotSaved:
-                return Alert(title: Text("尚未完成帐号设置"))
-            case .webRemind:
-                return Alert(title: Text("提示"), message: Text("请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"), dismissButton: .default(Text("好"), action: openWebView))
-            }
+            Alert(title: Text("尚未完成帐号设置"))
+//            switch alermType {
+//            case .accountNotSaved:
+//                return Alert(title: Text("尚未完成帐号设置"))
+//            case .webRemind:
+//                return Alert(title: Text("提示"), message: Text("请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"), dismissButton: .default(Text("好"), action: openWebView))
+//            }
         }
         .onChange(of: selectedAccount) { value in
             if let selectedAccount = value {
