@@ -12,55 +12,55 @@
 
 "3xS9bp" = "Widget Background Color";
 
-"52SZIK" = "★★绿";
+"52SZIK" = "★★緑";
 
 "7Mpxy7" = "（未知）";
 
-"81ss5Y" = "全部完成时";
+"81ss5Y" = "全部完成の時";
 
-"89DxTH" = "风元素";
+"89DxTH" = "風元素";
 
 "9W1NzG" = "true";
 
-"Az9Qxm" = "完成后不显示";
+"Az9Qxm" = "完了後表示しない";
 
-"DKesAN" = "完成所需时间";
+"DKesAN" = "完了所要時間";
 
 "DYkkLk" = "★★★★★金";
 
-"EnqoJ9" = "帐号";
+"EnqoJ9" = "アカウント";
 
 "H3Ih3C" = "★灰";
 
-"I4e2SF" = "火元素";
+"I4e2SF" = "炎元素";
 
-"K2iJCd" = "显示今日材料（仅大尺寸）";
+"K2iJCd" = "今日の材料を表示（大サイズのみ）";
 
-"MVmO5f" = "显示参量质变仪";
+"MVmO5f" = "参量物質変化器を表示";
 
-"NEV35Z" = "正在探索人数";
+"NEV35Z" = "探索派遣中人数";
 
 "NKtRSE" = "岩元素";
 
 "PLml4M" = "Weekly Bosses Showing Method";
 
-"PS8etl" = "是";
+"PS8etl" = "はい";
 
-"S20R6h" = "冰元素";
+"S20R6h" = "氷元素";
 
 "TAftI9" = "草元素";
 
-"TDccRa" = "始终不显示";
+"TDccRa" = "消して表示しない";
 
 "Vs9Whf" = "Widget Background Type";
 
-"YrOyp9" = "★★★蓝";
+"YrOyp9" = "★★★青";
 
 "a0FhAC-9W1NzG" = "There are ${count} options matching ‘true’.";
 
 "a0FhAC-vl1bDD" = "There are ${count} options matching ‘false’.";
 
-"a5PB3w" = "下一个完成时";
+"a5PB3w" = "次回の完了時間";
 
 "bMiiOE" = "（未知）";
 
@@ -80,7 +80,7 @@
 
 "d7jH4f-lMTFKb" = "There are ${count} options matching ‘始终显示’.";
 
-"dUyzRX" = "派遣探索展示方式";
+"dUyzRX" = "探索派遣表示フォーム";
 
 "e0kZEQ-2yWIH0" = "Just to confirm, you wanted ‘（未知）’?";
 
@@ -88,19 +88,19 @@
 
 "e0kZEQ-a5PB3w" = "Just to confirm, you wanted ‘下一个完成时’?";
 
-"f8OJzI" = "小组件背景";
+"f8OJzI" = "ウィジェット背景";
 
 "fFVHow" = "namecard";
 
 "fYQAf4" = "Expedition Notice Method";
 
-"ft3ye3" = "★★★★★红";
+"ft3ye3" = "★★★★★赤";
 
-"gknWkx" = "随机背景";
+"gknWkx" = "ランダムな背景";
 
-"gxv19W" = "是";
+"gxv19W" = "はい";
 
-"hT68r4" = "周本信息展示方式";
+"hT68r4" = "週ボス表示フォーム";
 
 "k2M7XL" = "Expedition Showing Method";
 
@@ -112,25 +112,25 @@
 
 "l4a3No-a5PB3w" = "There are ${count} options matching ‘下一个完成时’.";
 
-"lMTFKb" = "始终显示";
+"lMTFKb" = "常に表示";
 
-"lbRsap" = "探索派遣提醒于";
+"lbRsap" = "探索派遣通知時間";
 
 "ll3vKn" = "false";
 
 "lnnUEA" = "水元素";
 
-"mKzz1P" = "使用深色模式（跟随系统）";
+"mKzz1P" = "ダークモードを使用する（システムに従う）";
 
-"mRXrdK" = "否";
+"mRXrdK" = "いいえ";
 
 "oi0S30" = "color";
 
 "pmxRYI" = "★★★★紫";
 
-"ppnCJD" = "否";
+"ppnCJD" = "いいえ";
 
-"qijLJm" = "帐号名称";
+"qijLJm" = "アカウント名";
 
 "rfBAEx-3m73ML" = "There are ${count} options matching ‘（未知）’.";
 
@@ -142,15 +142,15 @@
 
 "sCNVNi" = "雷元素";
 
-"sWpemX" = "选择帐号";
+"sWpemX" = "アカウントを選択";
 
-"vFlGnC" = "完成时间点";
+"vFlGnC" = "完成時間";
 
 "vK3j6C" = "背景";
 
 "vl1bDD" = "false";
 
-"wnGFsd" = "纠缠之缘";
+"wnGFsd" = "紡がれた運命";
 
-"zQrKVi" = "为你的小组件选择显示的帐号";
+"zQrKVi" = "ウィジェットの表示されたアカウントを選択";
 
