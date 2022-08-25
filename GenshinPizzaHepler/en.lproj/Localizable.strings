@@ -58,7 +58,7 @@
 "尚未完成帐号设置" = "Account configuration is not finished";
 "好" = "OK";
 "提示" = "Tips";
-"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nWe promise that you account infos will only be stored on your local device and private iCloud, only used to request HoYoLAB for your Genshin account infos. ";
+"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nWe promise that your account infos will only be stored on your local device and private iCloud, only used to request HoYoLAB for your Genshin account infos. ";
 "自定义帐号名" = "Custom account name";
 "请选择帐号" = "Choose your account";
 "查看帐号详情" = "Account detail infos";

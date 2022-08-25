@@ -44,25 +44,25 @@
 "粘贴自剪贴板" = "クリップボードから貼り付ける";
 
 // Add account
-"登录米游社帐号" = "Login via HoYoLAB";
-"你也可以" = "You can also";
-"手动设置帐号" = "configure your account manually";
-"保存" = "Save";
-"国服" = "China Mainland players";
-"国际服" = "Global players";
-"登录帐号获取Cookie" = "Get cookie via HoYoLAB";
+"登录米游社帐号" = "HoYoLABからログイン";
+"你也可以" = "または";
+"手动设置帐号" = "アカウントを手動で設定する";
+"保存" = "完了";
+"国服" = "中国本土のプレーヤー";
+"国际服" = "グローバルプレーヤー";
+"登录帐号获取Cookie" = "HoYoLABからCookieを取得する";
 
-"请完成登录" = "Please finish login";
-"完成" = "Done";
-"未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
-"尚未完成帐号设置" = "Account configuration is not finished";
-"好" = "OK";
-"提示" = "Tips";
-"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nWe promise that you account infos will only be stored on your local device and private iCloud, only used to request HoYoLAB for your Genshin account infos. ";
-"自定义帐号名" = "Custom account name";
-"请选择帐号" = "Choose your account";
-"查看帐号详情" = "Account detail infos";
-"我的帐号" = "My account";
+"请完成登录" = "ログインを完了してください";
+"完成" = "完了";
+"未获取到登录信息，请重试" = "Cookieの取得に失敗しました。もう一度やり直してください";
+"尚未完成帐号设置" = "アカウントの設定が完了していません";
+"好" = "はい";
+"提示" = "チップス";
+"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "次のウェブページでHoYoLABへのログインが完了したら、『完了』をクリックしてください。\nアカウント情報は、原神アカウント情報のHoYoLABにリクエストするためにのみ使用される、ローカルデバイスとプライベートiCloudにのみ保存されることを約束します。";
+"自定义帐号名" = "カスタムアカウント名";
+"请选择帐号" = "アカウントを選択してください";
+"查看帐号详情" = "アカウントの詳細情報";
+"我的帐号" = "マイアカウント";
 
 // Game Info block
 "%@\n%@ 回满" = "%@\n%@ done";
