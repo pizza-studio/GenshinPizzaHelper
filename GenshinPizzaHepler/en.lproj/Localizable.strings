@@ -220,6 +220,17 @@
 "钟离・天星" = "Zhongli: Planet Befall";
 "提纳里·沐露" = "Tighnari: Dew-Kissed";
 
+// Background colors
+"★灰" = "★ Gray";
+"★★绿" = "★★ Green";
+"★★★蓝" = "★★★ Blue";
+"★★★★紫" = "★★★★ Purple";
+"★★★★★红" = "★★★★★ Red";
+"★★★★★金" = "★★★★★ Gold";
+
+"纠缠之缘" = "Intertwined Fate";
+
+
 // Elements
 "火元素" = "Pyro";
 "水元素" = "Hydro";
