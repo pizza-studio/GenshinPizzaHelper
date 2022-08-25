@@ -31,29 +31,20 @@ struct SettingsView: View {
                         Label("添加帐号", systemImage: "plus.circle")
                     }
                 }
-                // TODO: 将检查用户协议改到ContentView去
-
-
                 // 通知设置
                 NotificationSettingNavigator()
-
                 Section {
                     NavigationLink(destination: BackgroundsPreviewView()) {
                         Text("背景名片预览")
                     }
                 }
-
                 // 更多
                 NavigationLink(destination: HelpSheetView()) {
                     Text("更多")
                 }
-
             }
             .navigationTitle("设置")
-
-            
         }
-//        .ignoresSafeArea()
         .navigationViewStyle(.stack)
     }
 }
