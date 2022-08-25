@@ -65,21 +65,21 @@
 "我的帐号" = "マイアカウント";
 
 // Game Info block
-"%@\n%@ 回满" = "%@\n%@ done";
-"0小时0分钟\n树脂已全部回满" = "0 h 0 min\nResin is full";
-"%lld天" = "%lld day(s)";
-"%lld小时" = "%lld hour(s)";
-"%lld分钟" = "%lld min(s)";
-"%lld小时%lld分钟" = "%lld hour(s) %lld min(s)";
-"可使用" = "Available";
-"%lld月%lld日 %@" = "%lld.%lld %@";
-"星期日" = "Sunday";
-"星期一" = "Monday";
-"星期二" = "Tuesday";
-"星期三" = "Wednesday";
-"星期四" = "Thursday";
-"星期五" = "Friday";
-"星期六" = "Saturday";
+"%@\n%@ 回满" = "%@\n%@ 完成";
+"0小时0分钟\n树脂已全部回满" = "0時間0分\n樹脂はいっぱいです";
+"%lld天" = "%lld日";
+"%lld小时" = "%lld時間";
+"%lld分钟" = "%lld分";
+"%lld小时%lld分钟" = "%lld時間%lld分";
+"可使用" = "利用可能";
+"%lld月%lld日 %@" = "%lld月%lld日 %@";
+"星期日" = "日曜日";
+"星期一" = "月曜日";
+"星期二" = "火曜日";
+"星期三" = "水曜日";
+"星期四" = "木曜日";
+"星期五" = "金曜日";
+"星期六" = "土曜日";
 
 // Notification settings
 "推送设置" = "Notification Settings";

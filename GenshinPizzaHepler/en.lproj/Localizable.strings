@@ -68,9 +68,9 @@
 "%@\n%@ 回满" = "%@\n%@ done";
 "0小时0分钟\n树脂已全部回满" = "0 h 0 min\nResin is full";
 "%lld天" = "%lld day(s)";
-"%lld小时" = "%lld hour(s)";
-"%lld分钟" = "%lld min(s)";
-"%lld小时%lld分钟" = "%lld hour(s) %lld min(s)";
+"%lld小时" = "%lld h";
+"%lld分钟" = "%lld min";
+"%lld小时%lld分钟" = "%lld h %lld min";
 "可使用" = "Available";
 "%lld月%lld日 %@" = "%lld.%lld %@";
 "星期日" = "Sunday";
