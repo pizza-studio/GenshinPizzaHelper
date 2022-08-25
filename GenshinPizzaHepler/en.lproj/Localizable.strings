@@ -65,7 +65,7 @@
 "我的帐号" = "My Account";
 
 // Game Info block
-"%@\n%@ 回满" = "%@\Refill at %@";
+"%@\n%@ 回满" = "Refill in %@\n%@";
 "0小时0分钟\n树脂已全部回满" = "0 Hr 0 Min\nResin is fully capped";
 "%lld天" = "%lld Day";
 "%lld小时" = "%lld Hr";
