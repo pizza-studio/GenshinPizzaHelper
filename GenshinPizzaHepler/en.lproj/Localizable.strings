@@ -251,22 +251,18 @@
 "查询树脂恢复状态" = "Check your resin recovery status";
 
 // Notification
-"打开「原神」" = "";
-"通知设置" = "";
-"「%@」原粹树脂提醒" = "";
-"「%@」现有%lld原粹树脂，将在%@后回满。" = "";
-"「%@」洞天宝钱提醒" = "";
-"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@后填满。" = "";
-"「%@」探索派遣提醒" = "";
-"「%@」的探索派遣已全部完成。" = "";
-"「%@」探索派遣提醒" = "";
-"「%@」%@的探索派遣已完成。" = "";
-"「%@」周本折扣提醒" = "";
-"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "";
-"「%@」参量质变仪提醒" = "";
-"「%@」的参量质变仪已经可以使用。" = "";
-"「%@」每日委托提醒" = "";
-"「%@」的每日委托还剩余%lld个未完成。" = "";
-"「%@」的每日委托奖励还未领取。" = "";
-
-
+"打开「原神」" = "Open Genshin Impact";
+"通知设置" = "Notification Settings";
+"「%@」原粹树脂提醒" = "%@'s Original Resin Notification";
+"「%@」现有%lld原粹树脂，将在%@后回满。" = "%@ has %lld original resins now, which will be full in %@.";
+"「%@」洞天宝钱提醒" = "%@'s Realm Currency Notification";
+"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@后填满。" = "%@'s Tubby has %lld realm currency now, which will be full in %@.";
+"「%@」探索派遣提醒" = "%@'s Expedition Notification";
+"「%@」的探索派遣已全部完成。" = "All expeditions of %@ are finished.";
+"「%@」周本折扣提醒" = "%@'s Weekly Bosses";
+"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "There are still 3 weekly bosses resin discounts remaining for %@.";
+"「%@」参量质变仪提醒" = "%@'s Parametric Transformer Notification";
+"「%@」的参量质变仪已经可以使用。" = "%@'s Parametric Transformer is available now.";
+"「%@」每日委托提醒" = "%@'s Daily Commission Notification";
+"「%@」的每日委托还剩余%lld个未完成。" = "There are still %lld daily commissions unfinished for %@.";
+"「%@」的每日委托奖励还未领取。" = "%@'s bonus reward is not received.";
