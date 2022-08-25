@@ -19,6 +19,7 @@ struct RecoveryTimeText: View {
                 .minimumScaleFactor(0.2)
                 .foregroundColor(Color("textColor3"))
                 .lineSpacing(1)
+                .fixedSize()
         } else {
             Text("0小时0分钟\n树脂已全部回满")
                 .font(.caption)
@@ -26,6 +27,7 @@ struct RecoveryTimeText: View {
                 .minimumScaleFactor(0.2)
                 .foregroundColor(Color("textColor3"))
                 .lineSpacing(1)
+                .fixedSize()
         }
     }
     
