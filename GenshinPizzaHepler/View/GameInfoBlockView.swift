@@ -52,7 +52,7 @@ struct GameInfoBlock: View {
                         Image(systemName: "hourglass.circle")
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
-                        RecoveryTimeText(resinInfo: userData.resinInfo)
+                        recoveryTimeText(resinInfo: userData.resinInfo)
                     }
                     .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
                 }
@@ -74,6 +74,27 @@ struct GameInfoBlock: View {
                 ProgressView()
                 Spacer()
             }
+        }
+    }
+
+    @ViewBuilder
+    func recoveryTimeText(resinInfo: ResinInfo) -> some View {
+        if resinInfo.recoveryTime.second != 0 {
+            Text(LocalizedStringKey("\(resinInfo.recoveryTime.describeIntervalLong!)\n\(resinInfo.recoveryTime.completeTimePointFromNow!) 回满"))
+                .font(.caption)
+                .lineLimit(2)
+                .minimumScaleFactor(0.2)
+                .foregroundColor(Color("textColor3"))
+                .lineSpacing(1)
+                .fixedSize()
+        } else {
+            Text("0小时0分钟\n树脂已全部回满")
+                .font(.caption)
+                .lineLimit(2)
+                .minimumScaleFactor(0.2)
+                .foregroundColor(Color("textColor3"))
+                .lineSpacing(1)
+                .fixedSize()
         }
     }
 }
