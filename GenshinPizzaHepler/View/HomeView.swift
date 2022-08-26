@@ -14,21 +14,10 @@ struct HomeView: View {
     var animation: Namespace.ID
     @EnvironmentObject var detail: DisplayContentModel
 
-    func getDate() -> String{
-        let weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-        let weekdaysLocalized = weekdays.map { (item) -> String in
-            let localizedStr = NSLocalizedString(item, comment: "week days")
-            return String(format: localizedStr)
-        }
-
-        let calendar = Calendar.current
-        let date = Date()
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        let weekday = calendar.component(.weekday, from: date)
-
-        let localizedString = NSLocalizedString("%lld月%lld日 %@", comment: "today")
-        return String(format: localizedString, month, day, weekdaysLocalized[(weekday + 6) % 7])
+    func getDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        return formatter.string(from: Date())
     }
     
     var body: some View {
