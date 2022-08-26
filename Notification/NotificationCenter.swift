@@ -92,7 +92,7 @@ class UserNotificationCenter {
     private func createNotification(in second: Int, for accountName: String, object: Object, title: String, body: String, uid: String, idSuffix: String = "") {
         guard second > 0 else { return }
         let timeInterval = TimeInterval(second)
-        let id = uid + object.rawValue
+        let id = uid + object.rawValue + idSuffix
         
         let content = createNotificationContent(object: object, title: title, body: body)
                 
@@ -226,6 +226,9 @@ class UserNotificationCenter {
                 deleteNotification(for: uid, object: .expedition); return
             }
             expeditionInfo.expeditions.forEach { expedition in
+                guard !expedition.isComplete else {
+                    deleteNotification(for: uid, object: .expedition, idSuffix: expedition.charactersEnglishName); return
+                }
                 let charID = expedition.charactersEnglishName
                 let charName = expedition.characterName
                 let object: Object = .expedition
@@ -306,8 +309,8 @@ class UserNotificationCenter {
         createNotification(at: dailyTaskNotificationDateComponents, for: accountName, object: .dailyTask, title: title, body: body, uid: uid)
     }
     
-    func deleteNotification(for uid: String, object: Object) {
-        let id = uid + object.rawValue
+    func deleteNotification(for uid: String, object: Object, idSuffix: String = "") {
+        let id = uid + object.rawValue + idSuffix
         center.removePendingNotificationRequests(withIdentifiers: [id])
     }
     
