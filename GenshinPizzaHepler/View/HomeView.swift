@@ -66,44 +66,59 @@ struct HomeView: View {
                             .padding(.trailing, 16)
                     }
                     InAppMaterialNavigator()
-                    ForEach(viewModel.accounts, id: \.config.uuid) { account in
-                        switch account.result {
-                        case .success(let userData):
-                            GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background)
-                                .padding()
-                                .listRowBackground(Color.white.opacity(0))
-                                .onTapGesture {
-                                    simpleTaptic(type: .light)
-                                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                                        detail.userData = userData
-                                        detail.accountName = account.config.name!
-                                        detail.accountUUIDString = account.config.uuid!.uuidString
-                                        detail.widgetBackground = account.background
-                                        detail.viewConfig = WidgetViewConfiguration.defaultConfig
-                                        detail.show = true
-                                    }
-                                }
-                                .contextMenu {
-                                    Button("保存图片") {
-                                        let view = GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
-                                            .padding()
-                                            .animation(.linear)
-                                        let image = view.asUiImage()
-                                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                                    }
-                                }
-                        case .failure( _) :
-                            HStack {
-                                Spacer()
-                                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                    ForEach($viewModel.accounts, id: \.config.uuid) { $account in
+                        if account.fetchComplete {
+                            switch account.result {
+                            case .success(let userData):
+                                GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background)
                                     .padding()
-                                    .foregroundColor(.red)
-                                Spacer()
+                                    .listRowBackground(Color.white.opacity(0))
+                                    .onTapGesture {
+                                        simpleTaptic(type: .light)
+                                        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                                            detail.userData = userData
+                                            detail.accountName = account.config.name!
+                                            detail.accountUUIDString = account.config.uuid!.uuidString
+                                            detail.widgetBackground = account.background
+                                            detail.viewConfig = WidgetViewConfiguration.defaultConfig
+                                            detail.show = true
+                                        }
+                                    }
+                                    .contextMenu {
+                                        Button("保存图片") {
+                                            let view = GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
+                                                .padding()
+                                                .animation(.linear)
+                                            let image = view.asUiImage()
+                                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                                        }
+                                    }
+                            case .failure( _) :
+                                HStack {
+                                    NavigationLink {
+                                        AccountDetailView(account: $account)
+                                    } label: {
+                                        ZStack {
+                                            Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                                                .padding()
+                                                .foregroundColor(.red)
+                                            HStack {
+                                                Spacer()
+                                                Text(account.config.name!)
+                                                    .foregroundColor(Color(UIColor.systemGray4))
+                                                    .font(.caption2)
+                                                    .padding(.horizontal)
+                                            }
+                                        }
+                                        .padding(.horizontal)
+                                    }
+                                }
                             }
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .aspectRatio(170/364, contentMode: .fill)
-
+                        } else {
+                            ProgressView()
+                                .padding()
                         }
+
                     }
                 }
             }
