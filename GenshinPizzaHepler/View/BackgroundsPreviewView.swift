@@ -28,6 +28,7 @@ struct BackgroundsPreviewView: View {
                         Text(LocalizedStringKey(backgroundImageName))
                     }
                     .textCase(.none)
+                    .listRowBackground(Color.white.opacity(0))
                 }
             }
             .listStyle(.insetGrouped)
@@ -44,6 +45,7 @@ struct BackgroundsPreviewView: View {
                         Text(LocalizedStringKey(backgroundImageName))
                     }
                     .textCase(.none)
+                    .listRowBackground(Color.white.opacity(0))
                 }
             }
             .listStyle(.insetGrouped)
