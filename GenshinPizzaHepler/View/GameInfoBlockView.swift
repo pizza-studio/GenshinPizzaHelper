@@ -66,8 +66,8 @@ struct GameInfoBlock: View {
             }
             .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true)
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation))
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-
+//            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         } else {
             HStack {
                 Spacer()
