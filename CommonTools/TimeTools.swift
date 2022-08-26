@@ -9,9 +9,11 @@ import Foundation
 
 func secondsToHoursMinutes(_ seconds: Int) -> String {
     if seconds / 3600 > 24 {
-        return "\(seconds / (3600 * 24))天"
+        let cn = "%lld天"
+        return String(format: NSLocalizedString(cn, comment: "day"), seconds / (3600 * 24))
     }
-    return "\(seconds / 3600)小时\((seconds % 3600) / 60)分钟"
+    let cn = "%lld小时%lld分钟"
+    return String(format: NSLocalizedString(cn, comment: "day"), seconds / 3600, (seconds % 3600) / 60)
 }
 
 func secondsToHrOrDay(_ seconds: Int) -> String {

@@ -25,6 +25,7 @@ struct HomeView: View {
             ScrollView {
                 VStack {
                     Button("show notification") {
+
                         let center = UNUserNotificationCenter.current()
                         center.getPendingNotificationRequests(completionHandler: { requests in
                             for request in requests {
@@ -74,6 +75,7 @@ struct HomeView: View {
                                     .padding()
                                     .listRowBackground(Color.white.opacity(0))
                                     .onTapGesture {
+                                        UserNotificationCenter.shared.deleteAllNotification(for: account.config.uid!)
                                         UserNotificationCenter.shared.createAllNotification(for: account.config.name!, with: userData, uid: account.config.uid!)
                                         simpleTaptic(type: .light)
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {

@@ -195,7 +195,7 @@ class UserNotificationCenter {
 
         let titleCN = "「%@」洞天宝钱提醒"
         let title = String(format: NSLocalizedString(titleCN, comment: "noti title"), accountName)
-        let bodyCN = "「%@」的洞天财瓮现有%lld)洞天宝钱，将在%@后填满。"
+        let bodyCN = "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@后填满。"
         let body = String(format: NSLocalizedString(bodyCN, comment: "no body"), accountName, currentHomeCoinWhenNotify, homeCoinNotificationTimeDescription)
         
         createNotification(
@@ -243,7 +243,7 @@ class UserNotificationCenter {
                 let bodyCN = "%@的探索派遣已完成。"
                 let body = String(format: NSLocalizedString(bodyCN, comment: "noti body"), charName)
 
-                createNotification(in: expeditionInfo.nextCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid, idSuffix: charID)
+                createNotification(in: expedition.recoveryTime.second, for: accountName, object: object, title: title, body: body, uid: uid, idSuffix: charID)
             }
 
         }
@@ -286,7 +286,7 @@ class UserNotificationCenter {
         let titleCN = "「%@」参量质变仪提醒"
         let title = String(format: NSLocalizedString(titleCN, comment: "notification title"), accountName)
         let bodyCN = "「%@」的参量质变仪已经可以使用。"
-        let body = String(format: bodyCN, accountName)
+        let body = String(format: NSLocalizedString(bodyCN, comment: "body"), accountName)
         let object: Object = .transformer
         
         createNotification(in: transformerInfo.recoveryTime.second, for: accountName, object: object, title: title, body: body, uid: uid)

@@ -263,7 +263,7 @@
 "「%@」参量质变仪提醒" = "%@'s Parametric Transformer Notification";
 "「%@」的参量质变仪已经可以使用。" = "%@'s Parametric Transformer is available now.";
 "「%@」每日委托提醒" = "%@'s Daily Commission Notification";
-"「%@」的每日委托还剩余%lld个未完成。" = "There are still %lld daily commissions unfinished for %@.";
+"「%@」的每日委托还剩余%lld个未完成。" = "%@ still has %lld unfinished daily commissions.";
 "「%@」的每日委托奖励还未领取。" = "%@'s bonus reward is not received.";
 "%@的探索派遣已完成。" = "%@'s expedition is finished.";
 
