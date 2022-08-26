@@ -42,7 +42,8 @@ struct NotificationSettingNavigator: View {
             }
         } footer: {
             if masterSwitch.wrappedValue {
-                Text("通知功能需要帐号添加至小组件后才能生效")
+//                Text("通知功能需要帐号添加至小组件后才能生效")
+                Text("通知功能需要帐号添加至小组件后才能生效。通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。")
             }
         }
     }
