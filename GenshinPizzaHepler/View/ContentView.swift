@@ -59,12 +59,9 @@ struct ContentView: View {
             case .active:
                 // 检查是否同意过用户协议
                 let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
-                if !isPolicyShown {
-                    sheetType = .userPolicy
-                }
+                if !isPolicyShown { sheetType = .userPolicy }
                 viewModel.fetchAccount()
                 viewModel.refreshData()
-                UIApplication.shared.applicationIconBadgeNumber = 0
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
             default:
