@@ -56,15 +56,12 @@ struct HomeView: View {
                             .clipShape(Circle()) // 正円形に切り抜く
                             .padding(.trailing, 16)
                     }
-
+                    InAppMaterialNavigator()
                     ForEach(viewModel.accounts, id: \.config.uuid) { account in
                         switch account.result {
                         case .success(let userData):
                             GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background)
                                 .padding()
-                                .cornerRadius(20)
-                                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                                .aspectRatio(170/364, contentMode: .fill)
                                 .listRowBackground(Color.white.opacity(0))
                                 .onTapGesture {
                                     if detail.animationDone {
