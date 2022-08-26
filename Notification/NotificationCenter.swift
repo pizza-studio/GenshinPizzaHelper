@@ -15,10 +15,10 @@ class UserNotificationCenter {
     
     // Define the custom actions.
     let openGenshin = UNNotificationAction(identifier: "OPEN_GENSHIN_ACTION",
-                                           title: "打开「原神」",
+                                           title: "打开「原神」".localized,
                                            options: [.foreground])
     let openNotificationSetting = UNNotificationAction(identifier: "OPEN_NOTIFICATION_SETTING_ACTION",
-                                                       title: "通知设置",
+                                                       title: "通知设置".localized,
                                                        options: [.foreground])
     // Define the notification type
     var normalNotificationCategory: UNNotificationCategory {
@@ -153,8 +153,8 @@ class UserNotificationCenter {
             deleteNotification(for: uid, object: .resin); return
         }
         
-        let title = "「\(accountName)」原粹树脂提醒"
-        let body = "「\(accountName)」现有\(Int(resinNotificationNum))原粹树脂，将在\(resinNotificationTimeDescription)后回满。"
+        let title = "「\(accountName)」原粹树脂提醒".localized
+        let body = "「\(accountName)」现有\(Int(resinNotificationNum))原粹树脂，将在\(resinNotificationTimeDescription)后回满。".localized
         createNotification(
             in: resinInfo.recoveryTime.second - resinNotificationTimeFromFull,
             for: accountName,
@@ -191,8 +191,8 @@ class UserNotificationCenter {
             return Int( Double(homeCoinInfo.maxHomeCoin) * recoveryPercentageWhenNotify )
         }
 
-        let title = "「\(accountName)」洞天宝钱提醒"
-        let body = "「\(accountName)」的洞天财瓮现有\(currentHomeCoinWhenNotify)洞天宝钱，将在\(homeCoinNotificationTimeDescription)后填满。"
+        let title = "「\(accountName)」洞天宝钱提醒".localized
+        let body = "「\(accountName)」的洞天财瓮现有\(currentHomeCoinWhenNotify)洞天宝钱，将在\(homeCoinNotificationTimeDescription)后填满。".localized
         
         createNotification(
             in: homeCoinInfo.recoveryTime.second - homeCoinNotificationTimeFromFull,
@@ -218,8 +218,8 @@ class UserNotificationCenter {
                 deleteNotification(for: uid, object: .expedition); return
             }
             let object: Object = .expedition
-            let title = "「\(accountName)」探索派遣提醒"
-            let body = "「\(accountName)」的探索派遣已全部完成。"
+            let title = "「\(accountName)」探索派遣提醒".localized
+            let body = "「\(accountName)」的探索派遣已全部完成。".localized
             createNotification(in: expeditionInfo.allCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
         case .nextCompleted:
             guard !expeditionInfo.allCompleted && allowExpeditionNotification else {
@@ -232,8 +232,8 @@ class UserNotificationCenter {
                 let charID = expedition.charactersEnglishName
                 let charName = expedition.characterName
                 let object: Object = .expedition
-                let title = "「\(accountName)」探索派遣提醒"
-                let body = "\(charName)的探索派遣已完成。"
+                let title = "「\(accountName)」探索派遣提醒".localized
+                let body = "\(charName)的探索派遣已完成。".localized
 
                 createNotification(in: expeditionInfo.nextCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid, idSuffix: charID)
             }
@@ -257,8 +257,8 @@ class UserNotificationCenter {
             deleteNotification(for: uid, object: .weeklyBosses); return
         }
         guard allowWeeklyBossesNotification else { return }
-        let title = "「\(accountName)」周本折扣提醒"
-        let body = "「\(accountName)」的周本树脂折扣树脂折扣还剩\(weeklyBossesInfo.remainResinDiscountNum)次。"
+        let title = "「\(accountName)」周本折扣提醒".localized
+        let body = "「\(accountName)」的周本树脂折扣树脂折扣还剩\(weeklyBossesInfo.remainResinDiscountNum)次。".localized
         
         createNotification(at: weeklyBossesNotificationTimePoint, for: accountName, object: .weeklyBosses, title: title, body: body, uid: uid)
     }
@@ -273,8 +273,8 @@ class UserNotificationCenter {
         guard !transformerInfo.isComplete && allowTransformerNotification && transformerInfo.obtained else {
             deleteNotification(for: uid, object: .transformer); return
         }
-        let title = "「\(accountName)」参量质变仪提醒"
-        let body = "「\(accountName)」的参量质变仪已经可以使用。"
+        let title = "「\(accountName)」参量质变仪提醒".localized
+        let body = "「\(accountName)」的参量质变仪已经可以使用。".localized
         let object: Object = .transformer
         
         createNotification(in: transformerInfo.recoveryTime.second, for: accountName, object: object, title: title, body: body, uid: uid)
@@ -297,12 +297,12 @@ class UserNotificationCenter {
             deleteNotification(for: uid, object: .dailyTask); return
         }
         guard allowDailyTaskNotification else { return }
-        let title = "「\(accountName)」每日委托提醒"
+        let title = "「\(accountName)」每日委托提醒".localized
         var body: String {
             if dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum != 0 {
-                return "「\(accountName)」的每日委托还剩余\(dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum)个未完成。"
+                return "「\(accountName)」的每日委托还剩余\(dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum)个未完成。".localized
             } else {
-                return "「\(accountName)」的每日委托奖励还未领取。"
+                return "「\(accountName)」的每日委托奖励还未领取。".localized
             }
         }
         
