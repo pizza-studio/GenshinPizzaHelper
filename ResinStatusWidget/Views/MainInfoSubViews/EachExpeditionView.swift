@@ -54,6 +54,7 @@ struct EachExpeditionView: View {
 
     @ViewBuilder
     func percentageBar(_ percentage: Double) -> some View {
+
         let cornerRadius: CGFloat = 3
         if #available(iOS 15.0, iOSApplicationExtension 15.0, *) {
             GeometryReader { g in
