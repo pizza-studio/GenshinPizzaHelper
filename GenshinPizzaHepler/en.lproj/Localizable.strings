@@ -230,7 +230,6 @@
 
 "纠缠之缘" = "Intertwined Fate";
 
-
 // Elements
 "火元素" = "Pyro";
 "水元素" = "Hydro";
@@ -266,3 +265,9 @@
 "「%@」每日委托提醒" = "%@'s Daily Commission Notification";
 "「%@」的每日委托还剩余%lld个未完成。" = "There are still %lld daily commissions unfinished for %@.";
 "「%@」的每日委托奖励还未领取。" = "%@'s bonus reward is not received.";
+
+// Homeview
+"同意" = "Agree";
+"拒绝" = "Disagree";
+
+"" = "";
