@@ -316,10 +316,15 @@ class UserNotificationCenter {
     
     
     func deleteAllNotification(for uid: String) {
-        let removeIdentifiers: [String] = Object.allCases.map { object in
-            uid + object.rawValue
+        Object.allCases.forEach { object in
+            center.getDeliveredNotifications { notifications in
+                notifications.forEach { notification in
+                    if notification.request.identifier.contains(uid + object.rawValue) {
+                        self.center.removePendingNotificationRequests(withIdentifiers: [notification.request.identifier])
+                    }
+                }
+            }
         }
-        center.removePendingNotificationRequests(withIdentifiers: removeIdentifiers)
     }
 
     var ignoreUids: [String] {
