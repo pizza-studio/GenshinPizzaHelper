@@ -104,12 +104,12 @@ struct AccountDisplayView: View {
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
                 .padding(-10)
                 .ignoresSafeArea(.all)
-                .blurMaterial()
-                .onTapGesture(perform: {
-                    closeView()
-                }),
+                .blurMaterial(),
             alignment: .trailing
         )
+        .onTapGesture {
+            closeView()
+        }
     }
 
     private func closeView() -> Void {
