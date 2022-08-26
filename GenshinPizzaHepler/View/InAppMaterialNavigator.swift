@@ -122,7 +122,7 @@ struct InAppMaterialNavigator: View {
     }
 }
 
-private extension View {
+extension View {
     func blurMaterialBackground() -> some View {
         if #available(iOS 15.0, *) {
             return AnyView(self.background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)))

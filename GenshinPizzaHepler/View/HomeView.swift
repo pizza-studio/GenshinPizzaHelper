@@ -65,7 +65,17 @@ struct HomeView: View {
                             .clipShape(Circle()) // 正円形に切り抜く
                             .padding(.trailing, 16)
                     }
-                    InAppMaterialNavigator()
+                    if viewModel.accounts.isEmpty {
+                        NavigationLink(destination: AddAccountView()) {
+                            Label("请先添加帐号", systemImage: "plus.circle")
+                        }
+                        .padding()
+                        .blurMaterialBackground()
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .padding(.top, 30)
+                    } else {
+                        InAppMaterialNavigator()
+                    }
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         if account.fetchComplete {
                             switch account.result {
