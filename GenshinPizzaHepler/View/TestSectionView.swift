@@ -21,20 +21,6 @@ struct TestSectionView: View {
         Section {
             Button(action: {
                 connectStatus = .testing
-                API.Features.fetchInfos(region: server.region,
-                                        serverID: server.id,
-                                        uid: uid,
-                                        cookie: cookie)
-                { result in
-                    switch result {
-                    case .success( _):
-                        connectStatus = .success
-                    case .failure(let error):
-                        connectStatus = .fail
-                        errorInfo = error.description
-                        errorMessage = error.message
-                    }
-                }
             }) {
                 HStack {
                     Text("测试连接")
@@ -57,6 +43,42 @@ struct TestSectionView: View {
                 InfoPreviewer(title: "错误内容", content: errorInfo)
                 InfoPreviewer(title: "DEBUG", content: errorMessage)
                     .foregroundColor(.gray)
+            }
+        }
+        .onAppear {
+            if connectStatus == .testing {
+                API.Features.fetchInfos(region: server.region,
+                                        serverID: server.id,
+                                        uid: uid,
+                                        cookie: cookie)
+                { result in
+                    switch result {
+                    case .success( _):
+                        connectStatus = .success
+                    case .failure(let error):
+                        connectStatus = .fail
+                        errorInfo = error.description
+                        errorMessage = error.message
+                    }
+                }
+            }
+        }
+        .onChange(of: connectStatus) { newValue in
+            if newValue == .testing {
+                API.Features.fetchInfos(region: server.region,
+                                        serverID: server.id,
+                                        uid: uid,
+                                        cookie: cookie)
+                { result in
+                    switch result {
+                    case .success( _):
+                        connectStatus = .success
+                    case .failure(let error):
+                        connectStatus = .fail
+                        errorInfo = error.description
+                        errorMessage = error.message
+                    }
+                }
             }
         }
     }

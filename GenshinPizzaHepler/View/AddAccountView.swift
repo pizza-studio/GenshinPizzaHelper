@@ -142,20 +142,6 @@ struct AddAccountView: View {
                 unsavedServer = Server.id(selectedAccount.region)
             }
             connectStatus = .testing
-            API.Features.fetchInfos(region: unsavedServer.region,
-                                    serverID: unsavedServer.id,
-                                    uid: unsavedUid,
-                                    cookie: unsavedCookie)
-            {
-                result in
-                switch result {
-                case .success(let userData):
-                    connectStatus = .success
-                    self.userData = userData
-                case .failure( _):
-                    connectStatus = .fail
-                }
-            }
         }
         .sheet(isPresented: $isWebShown) {
             GetCookieWebView(isShown: $isWebShown, cookie: $unsavedCookie, region: region)

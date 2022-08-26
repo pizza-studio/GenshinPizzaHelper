@@ -83,5 +83,8 @@ struct AccountDetailView: View {
         .sheet(isPresented: $isWebShown) {
             GetCookieWebView(isShown: $isWebShown, cookie: bindingCookie, region: server.region)
         }
+        .onAppear {
+            connectStatus = .testing
+        }
     }
 }
