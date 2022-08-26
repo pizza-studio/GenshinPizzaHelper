@@ -56,7 +56,7 @@ struct HomeView: View {
                             .clipShape(Circle()) // 正円形に切り抜く
                             .padding(.trailing, 16)
                     }
-
+                    InAppMaterialNavigator()
                     ForEach(viewModel.accounts, id: \.config.uuid) { account in
                         switch account.result {
                         case .success(let userData):
