@@ -137,7 +137,11 @@ struct LargeWidgetView: View {
             switch viewConfig.weeklyBossesShowingMethod {
             case .neverShow:
                 EmptyView()
-            default:
+            case .disappearAfterCompleted:
+                if !userData.weeklyBossesInfo.isComplete {
+                    WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
+                }
+            case .alwaysShow, .unknown:
                 WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
             }
         }
