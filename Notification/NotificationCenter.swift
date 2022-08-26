@@ -173,7 +173,7 @@ class UserNotificationCenter {
         userDefaults?.double(forKey: "homeCoinNotificationHourBeforeFull") ?? 8
     }
     private var homeCoinNotificationTimeFromFull: Int {
-        Int(homeCoinNotificationHourBeforeFull * 60 * 60)
+        Int(homeCoinNotificationHourBeforeFull) * 60 * 60
     }
     private var homeCoinNotificationTimeDescription: String { secondsToHoursMinutes(homeCoinNotificationTimeFromFull) }
     
@@ -184,9 +184,9 @@ class UserNotificationCenter {
         guard allowHomeCoinNotification else { return }
 
         var currentHomeCoinWhenNotify: Int {
-            let totalTime: Double = Double(homeCoinInfo.recoveryTime.second) / homeCoinInfo.percentage
+            let totalTime: Double = Double(homeCoinInfo.recoveryTime.second) / (1.0 - homeCoinInfo.percentage)
             var recoveryPercentageWhenNotify: Double {
-                1 - ( Double(homeCoinNotificationHourBeforeFull) / totalTime )
+                1 - ( Double(homeCoinNotificationTimeFromFull) / totalTime )
             }
             return Int( Double(homeCoinInfo.maxHomeCoin) * recoveryPercentageWhenNotify )
         }

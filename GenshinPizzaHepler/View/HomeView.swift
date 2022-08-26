@@ -35,6 +35,15 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack {
+                    Button("show notification") {
+                        let center = UNUserNotificationCenter.current()
+                        center.getPendingNotificationRequests(completionHandler: { requests in
+                            for request in requests {
+                                print(request)
+                                print(request.content.title, request.content.body)
+                            }
+                        })
+                    }
                     HStack {
                         Text(getDate())
                             .foregroundColor(.gray)
@@ -64,6 +73,7 @@ struct HomeView: View {
                                 .padding()
                                 .listRowBackground(Color.white.opacity(0))
                                 .onTapGesture {
+                                    UserNotificationCenter.shared.createAllNotification(for: account.config.name!, with: userData, uid: account.config.uid!)
                                     if detail.animationDone {
                                         simpleTaptic(type: .light)
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
