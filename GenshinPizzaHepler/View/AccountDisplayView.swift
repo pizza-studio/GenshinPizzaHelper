@@ -12,6 +12,7 @@ struct AccountDisplayView: View {
     var animation: Namespace.ID
     var accountName: String { detail.accountName }
     var accountUUIDString: String { detail.accountUUIDString }
+    @State private var animationDone: Bool = false
     
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
@@ -69,6 +70,14 @@ struct AccountDisplayView: View {
 
                     }
                     expeditionsView()
+                        .animation(.easeInOut(duration: 1.5))
+                        .offset(x: animationDone ? 0 : 5000)
+                        .onAppear {
+                            animationDone.toggle()
+                        }
+                        .onDisappear {
+                            animationDone.toggle()
+                        }
                 }
                 Spacer()
             }
@@ -95,10 +104,7 @@ struct AccountDisplayView: View {
 //            }
 
         }
-
-
         .padding(.horizontal, 25)
-
         .background(
             AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
