@@ -88,7 +88,7 @@ struct InAppMaterialNavigator: View {
         let imageWidth = UIScreen.main.bounds.width * 1/8
         HStack {
             Spacer()
-            VStack {
+            VStack(alignment: .leading) {
                 ForEach(talentMaterialProvider.todaysMaterials, id: \.imageString) { material in
                     HStack {
                         Image(material.imageString)
@@ -104,7 +104,7 @@ struct InAppMaterialNavigator: View {
                 }
             }
             Spacer()
-            VStack {
+            VStack(alignment: .leading) {
                 ForEach(weaponMaterialProvider.todaysMaterials, id: \.imageString) { material in
                     HStack {
                         Image(material.imageString)
