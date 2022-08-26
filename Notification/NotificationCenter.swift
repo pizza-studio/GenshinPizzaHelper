@@ -230,7 +230,7 @@ class UserNotificationCenter {
                 let charName = expedition.characterName
                 let object: Object = .expedition
                 let title = "「\(accountName)」探索派遣提醒"
-                let body = "「\(accountName)」\(charName)的探索派遣已完成。"
+                let body = "\(charName)的探索派遣已完成。"
 
                 createNotification(in: expeditionInfo.nextCompleteTime.second, for: accountName, object: object, title: title, body: body, uid: uid, idSuffix: charID)
             }

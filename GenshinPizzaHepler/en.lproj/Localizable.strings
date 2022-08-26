@@ -265,37 +265,38 @@
 "「%@」每日委托提醒" = "%@'s Daily Commission Notification";
 "「%@」的每日委托还剩余%lld个未完成。" = "There are still %lld daily commissions unfinished for %@.";
 "「%@」的每日委托奖励还未领取。" = "%@'s bonus reward is not received.";
+"%@的探索派遣已完成。" = "%@'s expedition is finished.";
 
 // Homeview
 "同意" = "Agree";
 "拒绝" = "Disagree";
 
 // Daily materials
-"高塔孤王" = "";
-"凛风奔狼" = "";
-"狮牙斗士" = "";
-"孤云寒林" = "";
-"雾海云间" = "";
-"漆黑陨铁" = "";
-"远海夷地" = "";
-"鸣神御灵" = "";
-"今昔剧画" = "";
-"谧林涓露" = "";
-"绿洲花园" = "";
-"烈日威权" = "";
-"自由" = "";
-"抗争" = "";
-"诗文" = "";
-"繁荣" = "";
-"勤劳" = "";
-"黄金" = "";
-"浮世" = "";
-"风雅" = "";
-"天光" = "";
-"诤言" = "";
-"巧思" = "";
-"笃行" = "";
+"高塔孤王" = "Decarabian";
+"凛风奔狼" = "Boreal Wolf";
+"狮牙斗士" = "Dandelion Gladiator";
+"孤云寒林" = "Guyun";
+"雾海云间" = "Mist Veiled";
+"漆黑陨铁" = "Aerosiderite";
+"远海夷地" = "Distant Sea";
+"鸣神御灵" = "Narukami";
+"今昔剧画" = "Mask";
+"谧林涓露" = "Forest Dew";
+"绿洲花园" = "Oasis Garden";
+"烈日威权" = "Scorching Might";
+"自由" = "Freedom";
+"抗争" = "Resistance";
+"诗文" = "Ballad";
+"繁荣" = "Prosperity";
+"勤劳" = "Diligence";
+"黄金" = "Gold";
+"浮世" = "Transience";
+"风雅" = "Elegance";
+"天光" = "Light";
+"诤言" = "Admonition";
+"巧思" = "Ingenuity";
+"笃行" = "Praxis";
 
-"今日材料" = "";
-"已完成" = "";
-"" = "";
+"今日材料" = "Today's Materials";
+
+"已完成" = "Finished";
