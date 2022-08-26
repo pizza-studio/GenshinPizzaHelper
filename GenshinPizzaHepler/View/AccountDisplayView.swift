@@ -127,7 +127,6 @@ struct AccountDisplayView: View {
     func expeditionsView() -> some View {
         VStack(alignment: .leading, spacing: 15) {
             ForEach(detail.userData.expeditionInfo.expeditions, id: \.charactersEnglishName) { expedition in
-                let idx = detail.userData.expeditionInfo.expeditions.firstIndex(where: {$0.charactersEnglishName == expedition.charactersEnglishName})!
                 InAppEachExpeditionView(expedition: expedition, useAsyncImage: true)
             }
         }
