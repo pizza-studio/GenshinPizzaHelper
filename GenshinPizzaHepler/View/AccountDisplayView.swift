@@ -67,7 +67,6 @@ struct AccountDisplayView: View {
                         DetailInfo(userData: detail.userData, viewConfig: detail.viewConfig)
                             .padding(.horizontal)
                             .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
-
                     }
                     expeditionsView()
                 }
@@ -112,14 +111,8 @@ struct AccountDisplayView: View {
 
     private func closeView() -> Void {
         withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
-            if detail.animationDone {
-                simpleTaptic(type: .light)
-                detail.animationDone = false
-                detail.show.toggle()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.43) {
-                    detail.animationDone = true
-                }
-            }
+            simpleTaptic(type: .light)
+            detail.show.toggle()
         }
     }
 

@@ -83,7 +83,6 @@ struct OverlayRingProgressBar: ViewModifier {
                     .offset(x: offset.x, y: offset.y)
                     .frame(width: frameWidth, height: frameWidth)
             }
-            .animation(.easeInOut(duration: 1.0), value: progress)
         }
     }
 }
