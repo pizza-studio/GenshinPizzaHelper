@@ -53,6 +53,16 @@ class UserNotificationCenter {
         center.setNotificationCategories([normalNotificationCategory])
         
     }
+
+    func printAllNotificationRequest() {
+        let center = UNUserNotificationCenter.current()
+        center.getPendingNotificationRequests(completionHandler: { requests in
+            for request in requests {
+                print(request)
+                print(request.content.title, request.content.body)
+            }
+        })
+    }
     
     func testNotification() {
         let timeInterval = TimeInterval(10)
@@ -148,14 +158,14 @@ class UserNotificationCenter {
     
     private func createResinNotification(for accountName: String, with resinInfo: ResinInfo, uid: String) {
         let resinNotificationTimeFromFull = (resinInfo.maxResin - Int(resinNotificationNum)) * 8 * 60
-        var resinNotificationTimeDescription: String { secondsToHoursMinutes(resinNotificationTimeFromFull) }
+        var resinNotificationTimeDescription: String { relativeTimePointFromNow(second: resinNotificationTimeFromFull) }
         guard (resinInfo.recoveryTime.second > resinNotificationTimeFromFull) && allowResinNotification else {
             deleteNotification(for: uid, object: .resin); return
         }
         
         let titleCN = "「%@」原粹树脂提醒"
         let title = String(format: NSLocalizedString(titleCN, comment: "noti title"), accountName)
-        let bodyCN = "「%@」现有%lld原粹树脂，将在%@后回满。"
+        let bodyCN = "「%@」现有%lld原粹树脂，将在%@ 回满。"
         let body = String(format: NSLocalizedString(bodyCN, comment: "noti body"), accountName, Int(resinNotificationNum), resinNotificationTimeDescription)
         createNotification(
             in: resinInfo.recoveryTime.second - resinNotificationTimeFromFull,
@@ -177,7 +187,7 @@ class UserNotificationCenter {
     private var homeCoinNotificationTimeFromFull: Int {
         Int(homeCoinNotificationHourBeforeFull) * 60 * 60
     }
-    private var homeCoinNotificationTimeDescription: String { secondsToHoursMinutes(homeCoinNotificationTimeFromFull) }
+    private var homeCoinNotificationTimeDescription: String { relativeTimePointFromNow(second: homeCoinNotificationTimeFromFull) }
     
     private func createHomeCoinNotification(for accountName: String, with homeCoinInfo: HomeCoinInfo, uid: String) {
         guard (homeCoinInfo.recoveryTime.second > homeCoinNotificationTimeFromFull) && allowHomeCoinNotification else {
@@ -195,7 +205,7 @@ class UserNotificationCenter {
 
         let titleCN = "「%@」洞天宝钱提醒"
         let title = String(format: NSLocalizedString(titleCN, comment: "noti title"), accountName)
-        let bodyCN = "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@后填满。"
+        let bodyCN = "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。"
         let body = String(format: NSLocalizedString(bodyCN, comment: "no body"), accountName, currentHomeCoinWhenNotify, homeCoinNotificationTimeDescription)
         
         createNotification(

@@ -31,3 +31,15 @@ extension Date {
         return Calendar.current.date(byAdding: .second, value: seconds, to: self)!
     }
 }
+
+func relativeTimePointFromNow(second: Int) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .short
+    dateFormatter.timeStyle = .short
+    dateFormatter.doesRelativeDateFormatting = true
+    dateFormatter.locale = Locale(identifier: Locale.current.identifier)
+
+    let date = Calendar.current.date(byAdding: .second, value: second, to: Date())!
+
+    return dateFormatter.string(from: date)
+}

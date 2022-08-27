@@ -255,9 +255,9 @@
 "打开「原神」" = "Open Genshin Impact";
 "通知设置" = "Notification Settings";
 "「%@」原粹树脂提醒" = "%@'s Original Resin Notification";
-"「%@」现有%lld原粹树脂，将在%@后回满。" = "%@ has %lld original resins now, which will be full in %@.";
+"「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ has %lld original resins now, which will be full at %@.";
 "「%@」洞天宝钱提醒" = "%@'s Realm Currency Notification";
-"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@后填满。" = "%@'s Tubby has %lld realm currency now, which will be full in %@.";
+"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@'s Tubby has %lld realm currency now, which will be full at %@.";
 "「%@」探索派遣提醒" = "%@'s Expedition Notification";
 "「%@」的探索派遣已全部完成。" = "All expeditions of %@ are finished.";
 "「%@」周本折扣提醒" = "%@'s Weekly Bosses";
