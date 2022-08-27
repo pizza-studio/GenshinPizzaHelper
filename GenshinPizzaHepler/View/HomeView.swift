@@ -14,21 +14,10 @@ struct HomeView: View {
     var animation: Namespace.ID
     @EnvironmentObject var detail: DisplayContentModel
 
-    func getDate() -> String{
-        let weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-        let weekdaysLocalized = weekdays.map { (item) -> String in
-            let localizedStr = NSLocalizedString(item, comment: "week days")
-            return String(format: localizedStr)
-        }
-
-        let calendar = Calendar.current
-        let date = Date()
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        let weekday = calendar.component(.weekday, from: date)
-
-        let localizedString = NSLocalizedString("%lld月%lld日 %@", comment: "today")
-        return String(format: localizedString, month, day, weekdaysLocalized[(weekday + 6) % 7])
+    func getDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        return formatter.string(from: Date())
     }
     
     var body: some View {
@@ -47,25 +36,34 @@ struct HomeView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .padding(16)
-                        Spacer()
+                        Spacer(minLength: UIScreen.main.bounds.width * 1/3)
                         // Not used
-                        Image("avator")
-                            .resizable() // 画像のサイズを変更可能にする
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 36, height: 36, alignment: .center)
-                            .clipShape(Circle()) // 正円形に切り抜く
-                            .padding(.trailing, 16)
+//                        Image("avator")
+//                            .resizable() // 画像のサイズを変更可能にする
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 36, height: 36, alignment: .center)
+//                            .clipShape(Circle()) // 正円形に切り抜く
+//                            .padding(.trailing, 16)
                     }
-                    InAppMaterialNavigator()
-                    ForEach(viewModel.accounts, id: \.config.uuid) { account in
-                        switch account.result {
-                        case .success(let userData):
-                            GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background)
-                                .padding()
-                                .listRowBackground(Color.white.opacity(0))
-                                .onTapGesture {
-                                    if detail.animationDone {
-                                        simpleTaptic(type: .light)
+                    if viewModel.accounts.isEmpty {
+                        NavigationLink(destination: AddAccountView()) {
+                            Label("请先添加帐号", systemImage: "plus.circle")
+                        }
+                        .padding()
+                        .blurMaterialBackground()
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .padding(.top, 30)
+                    } else {
+                        InAppMaterialNavigator()
+                    }
+                    ForEach($viewModel.accounts, id: \.config.uuid) { $account in
+                        if account.fetchComplete {
+                            switch account.result {
+                            case .success(let userData):
+                                GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background)
+                                    .padding()
+                                    .listRowBackground(Color.white.opacity(0))
+                                    .onTapGesture {
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
                                             detail.userData = userData
                                             detail.accountName = account.config.name!
@@ -75,28 +73,41 @@ struct HomeView: View {
                                             detail.show = true
                                         }
                                     }
-                                }
-                                .contextMenu {
-                                    Button("保存图片") {
-                                        let view = GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
-                                            .padding()
-                                            .animation(.linear)
-                                        let image = view.asUiImage()
-                                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                                    .contextMenu {
+                                        Button("保存图片") {
+                                            let view = GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
+                                                .padding()
+                                                .animation(.linear)
+                                            let image = view.asUiImage()
+                                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                                        }
+                                    }
+                            case .failure( _) :
+                                HStack {
+                                    NavigationLink {
+                                        AccountDetailView(account: $account)
+                                    } label: {
+                                        ZStack {
+                                            Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                                                .padding()
+                                                .foregroundColor(.red)
+                                            HStack {
+                                                Spacer()
+                                                Text(account.config.name!)
+                                                    .foregroundColor(Color(UIColor.systemGray4))
+                                                    .font(.caption2)
+                                                    .padding(.horizontal)
+                                            }
+                                        }
+                                        .padding(.horizontal)
                                     }
                                 }
-                        case .failure( _) :
-                            HStack {
-                                Spacer()
-                                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
-                                    .padding()
-                                    .foregroundColor(.red)
-                                Spacer()
                             }
-                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .aspectRatio(170/364, contentMode: .fill)
-
+                        } else {
+                            ProgressView()
+                                .padding()
                         }
+
                     }
                 }
             }

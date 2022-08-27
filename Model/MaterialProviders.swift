@@ -97,6 +97,12 @@ struct WeaponMaterialProvider {
     struct WeaponMaterial {
         let imageString: String
         let localizedName: String
+
+        init(imageString: String, localizedName: String) {
+            self.imageString = imageString
+            let localizedString = NSLocalizedString(localizedName, comment: "weapon name")
+            self.localizedName = String(format: localizedString)
+        }
     }
 
 }
@@ -191,6 +197,12 @@ struct TalentMaterialProvider {
     struct TalentMaterial {
         let imageString: String
         let localizedName: String
+
+        init(imageString: String, localizedName: String) {
+            self.imageString = imageString
+            let localizedString = NSLocalizedString(localizedName, comment: "talent material name")
+            self.localizedName = String(format: localizedString)
+        }
     }
 
 }

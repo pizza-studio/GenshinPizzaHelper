@@ -88,7 +88,7 @@ struct InAppMaterialNavigator: View {
         let imageWidth = UIScreen.main.bounds.width * 1/8
         HStack {
             Spacer()
-            VStack {
+            VStack(alignment: .leading) {
                 ForEach(talentMaterialProvider.todaysMaterials, id: \.imageString) { material in
                     HStack {
                         Image(material.imageString)
@@ -104,7 +104,7 @@ struct InAppMaterialNavigator: View {
                 }
             }
             Spacer()
-            VStack {
+            VStack(alignment: .leading) {
                 ForEach(weaponMaterialProvider.todaysMaterials, id: \.imageString) { material in
                     HStack {
                         Image(material.imageString)
@@ -122,7 +122,7 @@ struct InAppMaterialNavigator: View {
     }
 }
 
-private extension View {
+extension View {
     func blurMaterialBackground() -> some View {
         if #available(iOS 15.0, *) {
             return AnyView(self.background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)))

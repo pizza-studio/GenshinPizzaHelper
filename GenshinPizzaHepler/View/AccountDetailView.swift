@@ -51,7 +51,7 @@ struct AccountDetailView: View {
             Section(header: Text("帐号配置"), footer: Button("支持我们") {
                 isSheetShow.toggle()
             }) {
-                NavigationLink(destination: TextFieldEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: bindingName)) {
+                NavigationLink(destination: TextFieldEditorView(title: "帐号名".localized, note: "你可以自定义显示在小组件上的帐号名称", content: bindingName)) {
                     InfoPreviewer(title: "帐号名", content: name)
                 }
                 NavigationLink(destination: TextFieldEditorView(title: "UID", content: bindingUid, keyboardType: .numberPad)) {
@@ -82,6 +82,9 @@ struct AccountDetailView: View {
         }
         .sheet(isPresented: $isWebShown) {
             GetCookieWebView(isShown: $isWebShown, cookie: bindingCookie, region: server.region)
+        }
+        .onAppear {
+            connectStatus = .testing
         }
     }
 }

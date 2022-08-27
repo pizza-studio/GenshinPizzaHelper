@@ -25,7 +25,7 @@ struct RecoveryTime {
         // 描述为 X天 或 X小时X分钟
         if second / 3600 >= 24 {
             let localizedString = NSLocalizedString("%lld天", comment: "day")
-            return String(format: localizedString, second / (3600 * 24))
+            return String(format: localizedString, second / (3600 * 24) + 1)
         }
         let localizedString = NSLocalizedString("%lld小时%lld分钟", comment: "hour & min")
         return String(format: localizedString, second / 3600, (second % 3600) / 60)
@@ -35,7 +35,7 @@ struct RecoveryTime {
         // 描述为 X天 或 X小时 或 X分钟
         if second / 3600 >= 24 {
             let localizedString = NSLocalizedString("%lld天", comment: "day")
-            return String(format: localizedString, second / (3600 * 24))
+            return String(format: localizedString, 1 + second / (3600 * 24))
         } else if second / 3600 > 0 {
             let localizedString = NSLocalizedString("%lld小时", comment: "hour")
             return String(format: localizedString, second / 3600)

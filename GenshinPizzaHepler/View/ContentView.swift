@@ -62,6 +62,7 @@ struct ContentView: View {
                 if !isPolicyShown { sheetType = .userPolicy }
                 viewModel.fetchAccount()
                 viewModel.refreshData()
+                UIApplication.shared.applicationIconBadgeNumber = -1
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
             default:

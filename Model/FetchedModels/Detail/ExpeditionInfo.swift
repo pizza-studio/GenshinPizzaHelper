@@ -90,6 +90,10 @@ struct Expedition: Codable {
     }
 
     var characterName: String {
+        return self.characterCNName.localized
+    }
+
+    var characterCNName: String {
         switch charactersEnglishName {
         case "Aether":
             return "空"
@@ -217,7 +221,7 @@ struct Expedition: Codable {
             return "达达利亚"
 
         default:
-            return "未知角色"
+            return "（未知角色）"
         }
     }
 

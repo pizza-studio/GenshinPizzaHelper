@@ -17,7 +17,7 @@
 "背景名片预览" = "Background Namecard Preview";
 "更多" = "More";
 
-"通知功能需要帐号添加至小组件后才能生效" = "Notification will be available after adding the Widget of the account to your device";
+"通知功能需要帐号添加至小组件后才能生效。通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "The notification feature requires an account to be added to the widget before it can take effect. The notification schedule is related to the widget refresh, the notification can be deviated if your widget has not been refreshed for a long while.";
 "地区: %@" = "Region: %@";
 "服务器: %@" = "Server: %@";
 
@@ -40,7 +40,7 @@
 "错误内容" = "Error Details";
 "帐号信息" = "Account Infos";
 
-"你可以添加自定义的帐号备注" = "Your custom account name displayed on Widget";
+"你可以自定义显示在小组件上的帐号名称" = "Your custom account name displayed on Widget";
 "粘贴自剪贴板" = "Paste from Clipboard";
 
 // Add account
@@ -230,7 +230,6 @@
 
 "纠缠之缘" = "Intertwined Fate";
 
-
 // Elements
 "火元素" = "Pyro";
 "水元素" = "Hydro";
@@ -249,3 +248,121 @@
 
 // Used for copy and paste to edit this file
 "查询树脂恢复状态" = "Check your resin recovery status";
+
+// Notification
+"打开「原神」" = "Open Genshin Impact";
+"通知设置" = "Notification Settings";
+"「%@」原粹树脂提醒" = "%@'s Original Resin Notification";
+"「%@」现有%lld原粹树脂，将在%@后回满。" = "%@ has %lld original resins now, which will be full in %@.";
+"「%@」洞天宝钱提醒" = "%@'s Realm Currency Notification";
+"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@后填满。" = "%@'s Tubby has %lld realm currency now, which will be full in %@.";
+"「%@」探索派遣提醒" = "%@'s Expedition Notification";
+"「%@」的探索派遣已全部完成。" = "All expeditions of %@ are finished.";
+"「%@」周本折扣提醒" = "%@'s Weekly Bosses";
+"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "There are still 3 weekly bosses resin discounts remaining for %@.";
+"「%@」参量质变仪提醒" = "%@'s Parametric Transformer Notification";
+"「%@」的参量质变仪已经可以使用。" = "%@'s Parametric Transformer is available now.";
+"「%@」每日委托提醒" = "%@'s Daily Commission Notification";
+"「%@」的每日委托还剩余%lld个未完成。" = "%@ still has %lld unfinished daily commissions.";
+"「%@」的每日委托奖励还未领取。" = "%@'s bonus reward is not received.";
+"%@的探索派遣已完成。" = "%@'s expedition is finished.";
+
+// Homeview
+"同意" = "Agree";
+"拒绝" = "Disagree";
+
+// Daily materials
+"「高塔孤王」" = "Decarabian";
+"「凛风奔狼」" = "Boreal Wolf";
+"「狮牙斗士」" = "Dandelion Gladiator";
+"「孤云寒林」" = "Guyun";
+"「雾海云间」" = "Mist Veiled";
+"「漆黑陨铁」" = "Aerosiderite";
+"「远海夷地」" = "Distant Sea";
+"「鸣神御灵」" = "Narukami";
+"「今昔剧画」" = "Mask";
+"「谧林涓露」" = "Forest Dew";
+"「绿洲花园」" = "Oasis Garden";
+"「烈日威权」" = "Scorching Might";
+"「自由」" = "Freedom";
+"「抗争」" = "Resistance";
+"「诗文」" = "Ballad";
+"「繁荣」" = "Prosperity";
+"「勤劳」" = "Diligence";
+"「黄金」" = "Gold";
+"「浮世」" = "Transience";
+"「风雅」" = "Elegance";
+"「天光」" = "Light";
+"「诤言」" = "Admonition";
+"「巧思」" = "Ingenuity";
+"「笃行」" = "Praxis";
+
+"今日材料" = "Today's Materials";
+
+"已完成" = "Finished";
+
+
+// Char's name
+"空" = "Aether";
+"荧" = "Lumine";
+"琴" = "Jean";
+"安柏" = "Amber";
+"凯亚" = "Kaeya";
+"丽莎" = "Lisa";
+"温迪" = "Venti";
+"雷泽" = "Razor";
+"班尼特" = "Bennett";
+"诺艾尔" = "Noelle";
+"菲谢尔·冯·露弗施洛斯·那菲多特" = "Fischl von Luftschloss Narfidort";
+"迪卢克" = "Diluc";
+"可莉" = "Klee";
+"迪奥娜" = "Diona";
+"芭芭拉" = "Barbara";
+"砂糖" = "Sucrose";
+"阿贝多" = "Albedo";
+"莫娜" = "Mona";
+"罗莎莉亚" = "Rosaria";
+"优菈" = "Eula";
+"香菱" = "Xiangling";
+"刻晴" = "Keqing";
+"凝光" = "Ningguang";
+"七七" = "Qiqi";
+"行秋" = "Xingqiu";
+"重云" = "Chongyun";
+"北斗" = "Beidou";
+"辛焱" = "Xinyan";
+"钟离" = "Zhongli";
+"魈" = "Xiao";
+"甘雨" = "Ganyu";
+"胡桃" = "Hu Tao";
+"烟绯" = "Yanfei";
+"云堇" = "Yun Jin";
+"申鹤" = "Shenhe";
+"夜兰" = "Yelan";
+"枫原万叶" = "Kazuha";
+"宵宫" = "Yoimiya";
+"神里绫华" = "Ayaka";
+"神里绫人" = "Ayato";
+"托马" = "Thoma";
+"早柚" = "Sayu";
+"八重神子" = "Yae Miko";
+"荒泷一斗" = "Itto";
+"久岐忍" = "Shinobu";
+"五郎" = "Gorou";
+"珊瑚宫心海" = "Kokomi";
+"九条裟罗" = "Sara";
+"鹿野院平藏" = "Heizou";
+"雷电将军" = "Shogun";
+"赛诺" = "Cyno";
+"提纳里" = "Tighnari";
+"柯莱" = "Collei";
+"多莉" = "Dori";
+"艾尔海森" = "Alhaitham";
+"迪希雅" = "Dehya";
+"妮露" = "Nilou";
+"纳西妲" = "Nahida";
+"林尼" = "Lyney";
+"琳妮特" = "Lynette";
+"伊安珊" = "Iansan";
+"达达利亚" = "Tartaglia";
+"（未知角色）" = "(unknown)";
