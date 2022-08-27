@@ -16,7 +16,7 @@ struct BackgroundOptions {
 }
 
 extension WidgetBackground {
-    static let defaultBackground: WidgetBackground = WidgetBackground.init(identifier: "★★★★紫", display: "★★★★紫")
+    static let defaultBackground: WidgetBackground = WidgetBackground.init(identifier: "纪行・熄星", display: "纪行・熄星")
     static var randomBackground: WidgetBackground {
         let pickedBackgroundId = BackgroundOptions.allOptions.randomElement()!
         return WidgetBackground.init(identifier: pickedBackgroundId, display: pickedBackgroundId)

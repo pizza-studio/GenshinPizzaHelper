@@ -118,6 +118,7 @@
 		EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
+		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EA56E08628A26C0D00A64262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07628A26C0D00A64262 /* Error.swift */; };
 		EA56E08728A26C0D00A64262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07628A26C0D00A64262 /* Error.swift */; };
 		EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07728A26C0D00A64262 /* RequestResult.swift */; };
@@ -176,7 +177,6 @@
 		EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DCC2886B3D700B7F0FD /* icon.png */; };
 		EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
-		EADCC0AC28A52BD800358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EAEC41E228B096170056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EAEC41E328B096180056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
@@ -994,12 +994,12 @@
 				EA75DD0528A09EC80099E70A /* ErrorCodeHandler.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
+				EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */,
 				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
 				BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */,
 				EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
-				EADCC0AC28A52BD800358B5E /* WidgetViewConfiguration.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
