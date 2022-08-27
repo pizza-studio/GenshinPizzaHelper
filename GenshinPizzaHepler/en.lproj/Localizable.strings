@@ -81,6 +81,8 @@
 "星期五" = "Friday";
 "星期六" = "Saturday";
 
+"保存图片" = "Save Image";
+
 // Notification settings
 "推送设置" = "Notification Settings";
 "启用帐号" = "Enabled Accounts";
@@ -382,4 +384,5 @@
 "无返回数据" = "No Response Data";
 "无响应" = "No Response";
 "未知错误" = "Unknown Error";
+
 

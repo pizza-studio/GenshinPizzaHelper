@@ -75,7 +75,7 @@ struct HomeView: View {
                                         }
                                     }
                                     .contextMenu {
-                                        Button("保存图片") {
+                                        Button("保存图片".localized) {
                                             let view = GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
                                                 .padding()
                                                 .animation(.linear)
