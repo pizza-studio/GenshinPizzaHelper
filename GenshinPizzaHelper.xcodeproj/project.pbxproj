@@ -36,6 +36,8 @@
 		BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
 		BF70213428B5259300A6BBA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */; };
+		BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -272,6 +274,8 @@
 		BF70213C28B7202200A6BBA9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		BF70213D28B7203700A6BBA9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF70213E28B7203B00A6BBA9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
+				BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +441,7 @@
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 				BF70211B28B4B52500A6BBA9 /* ViewTools.swift */,
 				EA196B0128B769340091FAE0 /* StringLocalized.swift */,
+				BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 		EA30F9A22886B49200AE7BEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */,
 				EAE326C528A79A0C0009908E /* CloudKit.framework */,
 				EA30F9A32886B49200AE7BEA /* WidgetKit.framework */,
 				EA30F9A52886B49200AE7BEA /* SwiftUI.framework */,
@@ -997,6 +1004,7 @@
 				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
 				BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */,
+				BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */,
 				EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EADCC0AC28A52BD800358B5E /* WidgetViewConfiguration.swift in Sources */,

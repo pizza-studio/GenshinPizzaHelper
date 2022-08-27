@@ -11,6 +11,7 @@ import SwiftUI
 struct GenshinPizzaHeplerApp: App {
     let viewModel: ViewModel = .shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject var storeManger = StoreManager()
 
     init() {
         
@@ -26,7 +27,7 @@ struct GenshinPizzaHeplerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(storeManager: storeManger)
                 .environmentObject(viewModel)
         }
     }

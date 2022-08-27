@@ -31,6 +31,8 @@ struct ContentView: View {
     @StateObject var detail = DisplayContentModel()
     @Namespace var animation
 
+    @StateObject var storeManager: StoreManager
+
     var body: some View {
         ZStack {
             TabView(selection: index) {
