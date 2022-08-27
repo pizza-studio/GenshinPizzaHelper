@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HelpSheetView: View {
     @EnvironmentObject var viewModel: ViewModel
+    let localeID = Locale.current.identifier
+
+    @StateObject var storeManager: StoreManager
 
     var body: some View {
         List {
@@ -16,11 +19,13 @@ struct HelpSheetView: View {
                 Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
             }
 
-            Section {
+            Section(footer: NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html").navigationTitle("支持我们")) {
+                Text("通过微信支付或支付宝支持我们")
+            }) {
                 Button("在App Store评分") {
                     ReviewHandler.requestReview()
                 }
-                NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html").navigationTitle("支持我们")) {
+                NavigationLink(destination: GlobalDonateView(storeManager: storeManager)) {
                     Text("支持我们")
                 }
             }

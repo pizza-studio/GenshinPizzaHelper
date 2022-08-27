@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import StoreKit
 
 @main
 struct GenshinPizzaHeplerApp: App {
     let viewModel: ViewModel = .shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject var storeManger = StoreManager()
+    @StateObject var storeManager = StoreManager()
+
+    let productIDs = [
+            "Canglong.GenshinPizzaHepler.IAP.6"
+        ]
 
     init() {
         
@@ -27,8 +32,12 @@ struct GenshinPizzaHeplerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(storeManager: storeManger)
+            ContentView(storeManager: storeManager)
                 .environmentObject(viewModel)
+                .onAppear {
+                    SKPaymentQueue.default().add(storeManager)
+                    storeManager.getProducts(productIDs: productIDs)
+                }
         }
     }
 }

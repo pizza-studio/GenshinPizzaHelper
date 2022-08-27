@@ -13,6 +13,7 @@ struct SettingsView: View {
     
     @State var isGameBlockAvailable: Bool = true
 
+    @StateObject var storeManager: StoreManager
 
     var body: some View {
         NavigationView {
@@ -38,7 +39,7 @@ struct SettingsView: View {
                     }
                 }
                 // 更多
-                NavigationLink(destination: HelpSheetView()) {
+                NavigationLink(destination: HelpSheetView(storeManager: storeManager)) {
                     Text("更多")
                 }
             }
