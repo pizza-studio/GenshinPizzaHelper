@@ -75,7 +75,7 @@ struct AddAccountView: View {
             }
             
             if unsavedUid != "" {
-                Section(footer: Text("UID: " + unsavedUid)) {
+                Section {
                     InfoEditor(title: "自定义帐号名", content: $unsavedName, placeholderText: unsavedName)
                     // 如果该账号绑定的UID不止一个，则显示Picker选择账号
                     if accountsForSelected.count > 1 {
@@ -86,6 +86,10 @@ struct AddAccountView: View {
                             }
                         }
                     }
+                } header: {
+                    Text("UID: " + unsavedUid)
+                } footer: {
+                    Text("你可以自定义显示在小组件上的帐号名称")
                 }
             }
             
