@@ -372,14 +372,14 @@
 "（未知角色）" = "（未知のキャラクター）";
 
 // Errors description
-"请先刷新以获取树脂状态" = "Please refresh to get genshin status";
-"请长按小组件选择帐号" = "Please long press the widget to config your account";
-"错误码%@：Cookie失效，请重新登录" = "Error code %@: Cookie is invalid, please login HoYoLab again.";
+"请先刷新以获取树脂状态" = "樹脂の状態を得るためにリフレッシュしてください";
+"请长按小组件选择帐号" = "ウィジェットをロング押してアカウントを選んでください";
+"错误码%@：Cookie失效，请重新登录" = "エラーコード %@: Cookieが無効になりました。HoYoLABに再度ログインしてください";
 "错误码%@：米游社帐号与UID不匹配" = "Error code %@: HoYoLAB account does not match UID";
 "错误码%@：UID有误" = "Error code %@: invalid UID";
-"请前往米游社（或Hoyolab）打开旅行便笺功能" = "Please open Real-Time Notes in HoYoLAB app first";
-"解码错误：请检查网络环境" = "Decode Error: please check your network status";
-"网络错误" = "Network Error";
+"请前往米游社（或Hoyolab）打开旅行便笺功能" = "HoYoLAB Appで「リアルタイムノート」を開けてください";
+"解码错误：请检查网络环境" = "デコードエラー：ネットワーク環境を確認してください";
+"网络错误" = "ネットワークエラー";
 "未获取到登录信息，请重试" = "Failed to fetch your login infos, please re-login HoYoLAB";
 "未知错误码：%@" = "Unknown Error %@";
 
