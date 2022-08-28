@@ -17,7 +17,8 @@
 "背景名片预览" = "Background Namecard Preview";
 "更多" = "More";
 
-"通知功能需要帐号添加至小组件后才能生效。通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "The notification feature requires an account to be added to the widget before it can take effect. The notification schedule is related to the widget refresh, the notification can be deviated if your widget has not been refreshed for a long while.";
+"通知使用提示" = "Tips: How to use Notification?";
+"通知功能需要帐号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "The notification feature requires the account to be added to the Widget before it can take effect \nThe notification schedule is related to the widget refresh, the notification can be deviated if your widget has not been refreshed for a long while.";
 "地区: %@" = "Region: %@";
 "服务器: %@" = "Server: %@";
 

@@ -14,6 +14,8 @@ struct NotificationSettingNavigator: View {
     @AppStorage("allowWeeklyBossesNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowWeeklyBossesNotification: Bool = true
     @AppStorage("allowTransformerNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowTransformerNotification: Bool = true
     @AppStorage("allowDailyTaskNotification", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var allowDailyTaskNotification: Bool = true
+
+    @State var isNotificationHintShow: Bool = false
     
     var masterSwitch: Binding<Bool> {
         .init(get: {
@@ -42,9 +44,13 @@ struct NotificationSettingNavigator: View {
             }
         } footer: {
             if masterSwitch.wrappedValue {
-//                Text("通知功能需要帐号添加至小组件后才能生效")
-                Text("通知功能需要帐号添加至小组件后才能生效。通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。")
+                Button("通知使用提示") {
+                    isNotificationHintShow = true
+                }
             }
+        }
+        .alert(isPresented: $isNotificationHintShow) {
+            Alert(title: Text("通知功能需要帐号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。"))
         }
     }
 }
