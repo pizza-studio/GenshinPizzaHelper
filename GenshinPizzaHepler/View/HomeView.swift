@@ -36,7 +36,7 @@ struct HomeView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .padding(16)
-                        Spacer(minLength: UIScreen.main.bounds.width * 1/3)
+                        Spacer(minLength: UIScreen.main.bounds.width * 1/10)
                         // Not used
 //                        Image("avator")
 //                            .resizable() // 画像のサイズを変更可能にする
