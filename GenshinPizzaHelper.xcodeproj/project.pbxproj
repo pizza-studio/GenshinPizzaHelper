@@ -143,7 +143,6 @@
 		EA56E09F28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08328A26C0D00A64262 /* HomeCoinInfo.swift */; };
 		EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
-		EA5F4D1128B6274E00C95A7E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1028B6274E00C95A7E /* MaterialView.swift */; };
 		EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1028B6274E00C95A7E /* MaterialView.swift */; };
 		EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
@@ -202,7 +201,6 @@
 		EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */; };
 		EAF43C9228A0161C00D89787 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
 		EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
-		EAF43C9528A0163A00D89787 /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
 		EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
 		EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
@@ -212,7 +210,6 @@
 		EAFC5CD028B518FC00770BBB /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */; };
 		EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */; };
 		EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */; };
-		EAFC5CD528B5303C00770BBB /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD428B5303C00770BBB /* LargeWidgetView.swift */; };
 		EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD428B5303C00770BBB /* LargeWidgetView.swift */; };
 /* End PBXBuildFile section */
 
@@ -960,7 +957,6 @@
 				BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
 				EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */,
 				EA56E09028A26C0D00A64262 /* ResinInfo.swift in Sources */,
-				EAFC5CD528B5303C00770BBB /* LargeWidgetView.swift in Sources */,
 				BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
 				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
@@ -985,7 +981,6 @@
 				EA56E09228A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
-				EA5F4D1128B6274E00C95A7E /* MaterialView.swift in Sources */,
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
@@ -1023,7 +1018,6 @@
 				EA56E09E28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */,
 				BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
-				EAF43C9528A0163A00D89787 /* WidgetMainView.swift in Sources */,
 				BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

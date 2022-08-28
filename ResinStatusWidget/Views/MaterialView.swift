@@ -20,7 +20,6 @@ struct MaterialView: View {
                         Image(material.imageString)
                             .resizable()
                             .scaledToFit()
-//                            .padding(.horizontal, 3)
                     }
                 }
                 HStack(spacing: -5) {
@@ -28,12 +27,15 @@ struct MaterialView: View {
                         Image(material.imageString)
                             .resizable()
                             .scaledToFit()
-//                            .padding(.horizontal, 3)
                     }
                 }
             }
         } else {
-            EmptyView()
+            Text("（星期日所有材料均可获取）")
+                .foregroundColor(Color("textColor3"))
+                .font(.caption)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
         }
     }
 }
