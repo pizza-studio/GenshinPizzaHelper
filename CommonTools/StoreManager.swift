@@ -24,6 +24,12 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                     print("Appended \(fetchedProduct.productIdentifier)")
                 }
             }
+            DispatchQueue.main.async {
+                self.myProducts = self.myProducts.sorted {
+                    $0.price.decimalValue < $1.price.decimalValue
+                }
+                print("Appended sorted")
+            }
         } else {
             print("Response products found empty")
         }
@@ -74,5 +80,9 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
                 queue.finishTransaction(transaction)
             }
         }
+    }
+
+    private func sortArray(product1: SKProduct, product2: SKProduct) -> Bool {
+        return product1.price.decimalValue < product2.price.decimalValue
     }
 }

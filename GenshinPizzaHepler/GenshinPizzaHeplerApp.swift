@@ -16,7 +16,11 @@ struct GenshinPizzaHeplerApp: App {
 
     let productIDs = [
             "Canglong.GenshinPizzaHepler.IAP.6",
-            "Canglong.GenshinPizzaHepler.IAP.30"
+            "Canglong.GenshinPizzaHepler.IAP.30",
+            "Canglong.GenshinPizzaHepler.IAP.98",
+            "Canglong.GenshinPizzaHepler.IAP.198",
+            "Canglong.GenshinPizzaHepler.IAP.328",
+            "Canglong.GenshinPizzaHepler.IAP.648"
         ]
 
     init() {
