@@ -14,16 +14,16 @@ struct GlobalDonateView: View {
     var body: some View {
         List {
             Section {
-                Text("请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于Apple Developer Program （苹果开发者计划）会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。")
+                Text("请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。")
                     .padding()
             }
             Section {
                 NavigationLink {
-                    WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html").navigationTitle("支持我们")
+                    WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html").navigationTitle("通过微信或支付宝捐赠")
                 } label: {
-                    Text("通过微信支付或支付宝捐赠")
-                        .bold()
+                    Text("通过微信或支付宝捐赠")
                         .foregroundColor(.accentColor)
+                        .font(Font.body.weight(.medium))
                 }
             }
             Section(header: Text("捐赠项目")) {
@@ -45,7 +45,7 @@ struct GlobalDonateView: View {
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
                         .foregroundColor(.white)
-                        .background(Color.blue)
+                        .background(Color.accentColor)
                         .clipShape(Capsule())
                     }
                 }
