@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct GlobalDonateView: View {
     @StateObject var storeManager: StoreManager
@@ -24,10 +25,17 @@ struct GlobalDonateView: View {
                     //Purchase particular ILO product
                     storeManager.purchaseProduct(product: product)
                 }) {
-                    Text("Buy for \(product.price) \(product.priceLocale)")
+                    Text("支付\(priceLocalized(product: product))")
                 }
                 .foregroundColor(.blue)
             }
         }
+    }
+
+    private func priceLocalized(product: SKProduct) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = product.priceLocale
+        return numberFormatter.string(from: product.price) ?? "Price Error"
     }
 }

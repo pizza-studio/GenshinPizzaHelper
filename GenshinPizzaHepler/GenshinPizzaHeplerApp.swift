@@ -15,7 +15,8 @@ struct GenshinPizzaHeplerApp: App {
     @StateObject var storeManager = StoreManager()
 
     let productIDs = [
-            "Canglong.GenshinPizzaHepler.IAP.6"
+            "Canglong.GenshinPizzaHepler.IAP.6",
+            "Canglong.GenshinPizzaHepler.IAP.30"
         ]
 
     init() {
