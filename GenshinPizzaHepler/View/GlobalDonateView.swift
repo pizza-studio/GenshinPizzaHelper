@@ -17,6 +17,15 @@ struct GlobalDonateView: View {
                 Text("请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于Apple Developer Program （苹果开发者计划）会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。")
                     .padding()
             }
+            Section {
+                NavigationLink {
+                    WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html").navigationTitle("支持我们")
+                } label: {
+                    Text("通过微信支付或支付宝捐赠")
+                        .bold()
+                        .foregroundColor(.accentColor)
+                }
+            }
             Section(header: Text("捐赠项目")) {
                 if storeManager.myProducts.isEmpty {
                     ProgressView()
@@ -30,14 +39,14 @@ struct GlobalDonateView: View {
                                 .font(.caption2)
                         }
                         Spacer()
-                        Button(action: {
-                            //Purchase particular ILO product
+                        Button("支付") {
                             storeManager.purchaseProduct(product: product)
-                        }) {
-                            Text("支付")
                         }
-                        .buttonStyle(BlueCapsuleButton())
-                        .foregroundColor(.blue)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .clipShape(Capsule())
                     }
                 }
             }
@@ -54,13 +63,4 @@ struct GlobalDonateView: View {
     }
 }
 
-private struct BlueCapsuleButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .clipShape(Capsule())
-    }
-}
+

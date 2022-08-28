@@ -34,6 +34,14 @@ struct SettingsView: View {
                 // 通知设置
                 NotificationSettingNavigator()
                 Section {
+                    Button("在App Store评分") {
+                        ReviewHandler.requestReview()
+                    }
+                    NavigationLink(destination: GlobalDonateView(storeManager: storeManager)) {
+                        Text("支持我们")
+                    }
+                }
+                Section {
                     NavigationLink(destination: BackgroundsPreviewView()) {
                         Text("背景名片预览")
                     }
