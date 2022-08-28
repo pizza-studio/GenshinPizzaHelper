@@ -56,6 +56,8 @@
 "完成" = "Done";
 "未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
 "尚未完成帐号设置" = "Account configuration is not finished";
+"添加账号前…" = "Before adding your account...";
+"请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure you have opened and can access \"Real-Time Notes\" in HoYoLAB App.";
 "好" = "OK";
 "提示" = "Tips";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. ";
@@ -80,6 +82,8 @@
 "星期四" = "Thursday";
 "星期五" = "Friday";
 "星期六" = "Saturday";
+
+"保存图片" = "Save Image";
 
 // Notification settings
 "推送设置" = "Notification Settings";
@@ -253,9 +257,9 @@
 "打开「原神」" = "Open Genshin Impact";
 "通知设置" = "Notification Settings";
 "「%@」原粹树脂提醒" = "%@'s Original Resin Notification";
-"「%@」现有%lld原粹树脂，将在%@后回满。" = "%@ has %lld original resins now, which will be full in %@.";
+"「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ has %lld original resins now, which will be full at %@.";
 "「%@」洞天宝钱提醒" = "%@'s Realm Currency Notification";
-"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@后填满。" = "%@'s Tubby has %lld realm currency now, which will be full in %@.";
+"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@'s Tubby has %lld realm currency now, which will be full at %@.";
 "「%@」探索派遣提醒" = "%@'s Expedition Notification";
 "「%@」的探索派遣已全部完成。" = "All expeditions of %@ are finished.";
 "「%@」周本折扣提醒" = "%@'s Weekly Bosses";
@@ -298,9 +302,11 @@
 "「笃行」" = "Praxis";
 
 "今日材料" = "Today's Materials";
+"今日材料：星期日所有材料均可获取" = "Today's Materials: All avaliable in Sunday";
 
+// large size widget
 "已完成" = "Finished";
-
+"（星期日所有材料均可获取）" = "(All materials are avaliable in Sunday)";
 
 // Char's name
 "空" = "Aether";
@@ -366,3 +372,21 @@
 "伊安珊" = "Iansan";
 "达达利亚" = "Tartaglia";
 "（未知角色）" = "(unknown)";
+
+// Errors description
+"请先刷新以获取树脂状态" = "Please refresh to get genshin status";
+"请长按小组件选择帐号" = "Please long press the widget to config your account";
+"错误码%@：Cookie失效，请重新登录" = "Error code %@: Cookie is invalid, please login HoYoLab again.";
+"错误码%@：米游社帐号与UID不匹配" = "Error code %@: HoYoLAB account does not match UID";
+"错误码%@：UID有误" = "Error code %@: invalid UID";
+"请前往米游社（或Hoyolab）打开旅行便笺功能" = "Please open Real-Time Notes in HoYoLAB app first";
+"解码错误：请检查网络环境" = "Decode Error: please check your network status";
+"网络错误" = "Network Error";
+"未获取到登录信息，请重试" = "Failed to fetch your login infos, please re-login HoYoLAB";
+"未知错误码：%@" = "Unknown Error %@";
+
+"无返回数据" = "No Response Data";
+"无响应" = "No Response";
+"未知错误" = "Unknown Error";
+
+

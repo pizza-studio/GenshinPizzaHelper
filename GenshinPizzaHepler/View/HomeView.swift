@@ -64,7 +64,9 @@ struct HomeView: View {
                                     .padding()
                                     .listRowBackground(Color.white.opacity(0))
                                     .onTapGesture {
-                                        simpleTaptic(type: .medium)
+//                                        UserNotificationCenter.shared.createAllNotification(for: account.config.name!, with: userData, uid: account.config.uid!)
+//                                        UserNotificationCenter.shared.printAllNotificationRequest()
+//                                        simpleTaptic(type: .medium)
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
                                             detail.userData = userData
                                             detail.accountName = account.config.name!
@@ -75,7 +77,7 @@ struct HomeView: View {
                                         }
                                     }
                                     .contextMenu {
-                                        Button("保存图片") {
+                                        Button("保存图片".localized) {
                                             let view = GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
                                                 .padding()
                                                 .animation(.linear)

@@ -29,7 +29,7 @@ struct WeeklyBossesInfoBar: View {
                 .frame(width: 13, height: 13)
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing:1) {
-                Text("\(weeklyBossesInfo.remainResinDiscountNum)")
+                Text("\(weeklyBossesInfo.hasUsedResinDiscountNum)")
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)

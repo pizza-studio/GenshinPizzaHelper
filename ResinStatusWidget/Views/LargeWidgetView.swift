@@ -66,12 +66,7 @@ struct LargeWidgetView: View {
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3"))
-
-
             }
-
-
-
             HStack(alignment: .firstTextBaseline, spacing: 2) {
 
                 Text("\(userData.resinInfo.currentResin)")

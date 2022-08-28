@@ -23,7 +23,10 @@ struct AddAccountView: View {
     @State private var errorInfo: String = ""
     
     @State private var isPresentingConfirm: Bool = false
+
     @State private var isAlertShow: Bool = false
+    @State private var alertType: AlertType = .accountNotSaved
+
     @State private var isWebShown: Bool = false
     
     @State private var accountsForSelected: [FetchedAccount] = []
@@ -118,6 +121,7 @@ struct AddAccountView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("保存") {
                     if (unsavedUid == "") || (unsavedCookie == "") {
+                        alertType = .accountNotSaved
                         isAlertShow.toggle()
                         return
                     }
@@ -125,6 +129,7 @@ struct AddAccountView: View {
                         unsavedName = unsavedUid
                     }
                     if connectStatus != .success {
+                        alertType = .accountNotSaved
                         isAlertShow.toggle()
                         return
                     }
@@ -136,8 +141,20 @@ struct AddAccountView: View {
                 }
             }
         }
+        .onAppear {
+            if viewModel.accounts.isEmpty {
+                alertType = .firstAddAccountHint
+                isAlertShow = true
+            }
+        }
         .alert(isPresented: $isAlertShow) {
-            Alert(title: Text("尚未完成帐号设置"))
+            switch alertType {
+            case .accountNotSaved:
+                return Alert(title: Text("尚未完成帐号设置"))
+            case .firstAddAccountHint:
+                return Alert(title: Text("添加账号前…"),
+                             message: Text("请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能"))
+            }
         }
         .onChange(of: selectedAccount) { value in
             if let selectedAccount = value {
@@ -181,4 +198,5 @@ struct AddAccountView: View {
 
 private enum AlertType {
     case accountNotSaved
+    case firstAddAccountHint
 }

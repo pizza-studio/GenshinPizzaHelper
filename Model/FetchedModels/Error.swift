@@ -46,27 +46,27 @@ extension FetchError {
     var description: String {
         switch self {
         case .defaultStatus:
-            return "请先刷新以获取树脂状态"
+            return "请先刷新以获取树脂状态".localized
             
         case .noFetchInfo:
-            return "请长按小组件选择帐号"
+            return "请长按小组件选择帐号".localized
             
         case .cookieInvalid(let retcode, _):
-            return "错误码\(retcode)：Cookie失效，请重新登录"
+            return String(format: NSLocalizedString("错误码%@：Cookie失效，请重新登录", comment: "错误码%@：Cookie失效，请重新登录"), retcode)
         case .unmachedAccountCookie(let retcode, _):
-            return "错误码\(retcode)：米游社帐号与UID不匹配"
+            return String(format: NSLocalizedString("错误码%@：米游社帐号与UID不匹配", comment: "错误码%@：米游社帐号与UID不匹配"), retcode)
         case .accountInvalid(let retcode, _):
-            return "错误码\(retcode)：UID有误"
+            return String(format: NSLocalizedString("错误码%@：UID有误", comment: "错误码%@：UID有误"), retcode)
         case .dataNotFound( _, _):
-            return "请前往米游社（或Hoyolab）打开旅行便笺功能"
+            return "请前往米游社（或Hoyolab）打开旅行便笺功能".localized
         case .decodeError( _):
-            return "解码错误"
+            return "解码错误：请检查网络环境".localized
         case .requestError( _):
-            return "网络错误"
+            return "网络错误".localized
         case .notLoginError( _, _):
-            return "未获取到登录信息，请重试"
+            return "未获取到登录信息，请重试".localized
         case .unknownError(let retcode, _):
-            return "未知错误码：\(retcode)"
+            return String(format: NSLocalizedString("未知错误码：%@", comment: "未知错误码：%@"), retcode)
         default:
             return ""
         }
@@ -96,11 +96,11 @@ extension FetchError {
             case .dataTaskError(let message):
                 return "\(message)"
             case .noResponseData:
-                return "无返回数据"
+                return "无返回数据".localized
             case .responseError:
-                return "无响应"
+                return "无响应".localized
             default:
-                return "未知错误"
+                return "未知错误".localized
             }
         case .unknownError(_, let message):
             return message
