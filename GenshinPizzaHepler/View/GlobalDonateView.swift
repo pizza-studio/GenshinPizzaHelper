@@ -10,25 +10,54 @@ import StoreKit
 
 struct GlobalDonateView: View {
     @StateObject var storeManager: StoreManager
-    
+    let locale = Locale.current
+    @State private var isWechatAlipayShow: Bool = Locale.current.identifier == "zh_CN"
+    let is_zh_CN: Bool = Locale.current.identifier == "zh_CN"
     var body: some View {
         List {
             Section {
                 Text("请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。")
                     .padding()
             }
-            Section {
-                NavigationLink {
-                    WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html").navigationTitle("通过微信或支付宝捐赠")
-                } label: {
-                    Text("通过微信或支付宝捐赠")
-                        .foregroundColor(.accentColor)
-                        .font(Font.body.weight(.medium))
+            if is_zh_CN {
+                Section(footer: isWechatAlipayShow ? Text("您可以长按保存图片到对应App中扫描") : nil) {
+                    Button("通过微信或支付宝支付") {
+                        withAnimation() {
+                            isWechatAlipayShow.toggle()
+                        }
+                    }
+                    if isWechatAlipayShow {
+                        HStack {
+                            Image("WechatDonateQRCode")
+                                .resizable()
+                                .frame(maxHeight: 300)
+                                .aspectRatio(contentMode: .fit)
+                            Image("AlipayDonateQRCode")
+                                .resizable()
+                                .frame(maxHeight: 300)
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        .contextMenu {
+                            Button("保存微信支付图片".localized) {
+                                let uiImage = UIImage(named: "WechatDonateQRCode")
+                                UIImageWriteToSavedPhotosAlbum(uiImage!, nil, nil, nil)
+                            }
+                            Button("保存支付宝图片".localized) {
+                                let uiImage = UIImage(named: "AlipayDonateQRCode")
+                                UIImageWriteToSavedPhotosAlbum(uiImage!, nil, nil, nil)
+                            }
+                        }
+                    }
                 }
             }
+
             Section(header: Text("捐赠项目")) {
                 if storeManager.myProducts.isEmpty {
-                    ProgressView()
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                        Spacer()
+                    }
                 }
                 ForEach(storeManager.myProducts, id: \.self) { product in
                     HStack {
@@ -47,6 +76,38 @@ struct GlobalDonateView: View {
                         .foregroundColor(.white)
                         .background(Color.accentColor)
                         .clipShape(Capsule())
+                    }
+                }
+            }
+
+            if !is_zh_CN {
+                Section(footer: isWechatAlipayShow ? Text("您可以长按保存图片到对应App中扫描") : nil) {
+                    Button("通过微信或支付宝支付") {
+                        withAnimation() {
+                            isWechatAlipayShow.toggle()
+                        }
+                    }
+                    if isWechatAlipayShow {
+                        HStack {
+                            Image("WechatDonateQRCode")
+                                .resizable()
+                                .frame(maxHeight: 300)
+                                .aspectRatio(contentMode: .fit)
+                            Image("AlipayDonateQRCode")
+                                .resizable()
+                                .frame(maxHeight: 300)
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        .contextMenu {
+                            Button("保存微信支付图片".localized) {
+                                let uiImage = UIImage(named: "WechatDonateQRCode")
+                                UIImageWriteToSavedPhotosAlbum(uiImage!, nil, nil, nil)
+                            }
+                            Button("保存支付宝图片".localized) {
+                                let uiImage = UIImage(named: "AlipayDonateQRCode")
+                                UIImageWriteToSavedPhotosAlbum(uiImage!, nil, nil, nil)
+                            }
+                        }
                     }
                 }
             }
