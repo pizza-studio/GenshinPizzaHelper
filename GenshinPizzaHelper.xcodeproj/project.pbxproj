@@ -39,6 +39,7 @@
 		BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */; };
 		BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
 		BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
+		BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -275,6 +276,7 @@
 		BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
+		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -587,7 +589,6 @@
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */,
 				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
-				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
@@ -597,6 +598,8 @@
 				EA79FDC828AB9A5600B50D6F /* AccountDetailView copy.swift */,
 				BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */,
 				BFE4258528A0AC1500FEFA49 /* HelpSheetView.swift */,
+				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
+				BF70214528BC82D400A6BBA9 /* ContactUsView.swift */,
 				BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */,
 				EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */,
 				EA75DD0928A0BF450099E70A /* TestSectionView.swift */,
@@ -981,6 +984,7 @@
 				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA196B0228B769340091FAE0 /* StringLocalized.swift in Sources */,
 				EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */,
+				BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */,
 				BFFD823228A651F500616CE1 /* RingProgressBarView.swift in Sources */,
 				EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */,
 				EA7F9C6F28AFF9B300DEAFEB /* NotificationCenter.swift in Sources */,

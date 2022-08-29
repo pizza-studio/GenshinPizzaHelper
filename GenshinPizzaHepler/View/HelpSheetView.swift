@@ -25,6 +25,9 @@ struct HelpSheetView: View {
                 NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/policy.html").navigationTitle("用户协议")) {
                     Text("用户协议与免责声明")
                 }
+                NavigationLink(destination: ContactUsView()) {
+                    Text("开发者与联系方式")
+                }
                 NavigationLink(destination: AboutView()) {
                     Text("关于小助手")
                 }
