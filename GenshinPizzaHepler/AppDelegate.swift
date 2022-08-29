@@ -21,7 +21,12 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         case "OPEN_GENSHIN_ACTION":
             let genshinGameURL = URL(string: "yuanshengame://")!
             UIApplication.shared.open(genshinGameURL) { success in
-                print(success)
+                print("open genshin success")
+            }
+        case "OPEN_NOTIFICATION_SETTING_ACTION":
+            let url = URL(string: "ophelper://settings/")!
+            UIApplication.shared.open(url) { success in
+                print("open notification settings success")
             }
         default:
             break

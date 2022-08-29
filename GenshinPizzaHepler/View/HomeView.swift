@@ -64,8 +64,9 @@ struct HomeView: View {
                                     .padding()
                                     .listRowBackground(Color.white.opacity(0))
                                     .onTapGesture {
-//                                        UserNotificationCenter.shared.createAllNotification(for: account.config.name!, with: userData, uid: account.config.uid!)
-//                                        UserNotificationCenter.shared.printAllNotificationRequest()
+                                        UserNotificationCenter.shared.createAllNotification(for: account.config.name!, with: userData, uid: account.config.uid!)
+                                        UserNotificationCenter.shared.printAllNotificationRequest()
+                                        UserNotificationCenter.shared.testNotification()
                                         simpleTaptic(type: .medium)
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
                                             detail.userData = userData
