@@ -66,6 +66,7 @@
 "请选择帐号" = "Choose Your Account";
 "查看帐号详情" = "Login Info Details";
 "我的帐号" = "My Account";
+"请先添加帐号" = "Add an Account";
 
 // Game Info block
 "%@\n%@ 回满" = "Refill in %@\n%@";
