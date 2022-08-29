@@ -16,7 +16,7 @@ struct ContactUsView: View {
             // developer - lava
             Section (header: Text("开发者")) {
                 HStack {
-                    Image("avatar-lava")
+                    Image("avatar.lava")
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 50, height: 50)
@@ -34,24 +34,15 @@ struct ContactUsView: View {
                     }
                 }
                 if isLavaDetailShow {
-//                    Link(destination: URL(string: "https://hakubill.tech")!) {
-//                        Label {
-//                            Text("个人主页")
-//                        } icon: {
-//                            Image("homepage")
-//                                .resizable()
-//                                .scaledToFit()
-//                        }
-//                    }
-//                    Link(destination: URL(string: "mailto:i@hakubill.tech")!) {
-//                        Label {
-//                            Text("i@hakubill.tech")
-//                        } icon: {
-//                            Image("email")
-//                                .resizable()
-//                                .scaledToFit()
-//                        }
-//                    }
+                    Link(destination: URL(string: "mailto:daicanglong@gmail.com")!) {
+                        Label {
+                            Text("daicanglong@gmail.com")
+                        } icon: {
+                            Image("email")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
                     Link(destination: URL(string: "https://space.bilibili.com/13079935")!) {
                         Label {
                             Text("Bilibili主页")
@@ -75,7 +66,7 @@ struct ContactUsView: View {
             // developer - hakubill
             Section {
                 HStack {
-                    Image("avatar-hakubill")
+                    Image("avatar.hakubill")
                         .resizable()
                         .clipShape(Circle())
                         .frame(width: 50, height: 50)
