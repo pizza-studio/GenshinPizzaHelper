@@ -66,6 +66,7 @@
 "请选择帐号" = "アカウントを選択してください";
 "查看帐号详情" = "アカウントの詳細情報";
 "我的帐号" = "マイアカウント";
+"请先添加帐号" = "アカウントを追加してください";
 
 // Game Info block
 "%@\n%@ 回满" = "%@\n%@ 完成";
@@ -377,9 +378,9 @@
 // Errors description
 "请先刷新以获取树脂状态" = "樹脂の状態を得るためにリフレッシュしてください";
 "请长按小组件选择帐号" = "ウィジェットを長押してアカウントを選んでください";
-"错误码%@：Cookie失效，请重新登录" = "エラーコード %@: Cookieが無効になりました。HoYoLABに再度ログインしてください";
-"错误码%@：米游社帐号与UID不匹配" = "Error code %@: HoYoLAB account does not match UID";
-"错误码%@：UID有误" = "Error code %@: invalid UID";
+"错误码%lld：Cookie失效，请重新登录" = "エラーコード %lld: Cookieが無効になりました。HoYoLABに再度ログインしてください";
+"错误码%lld：米游社帐号与UID不匹配" = "Error code %@lld HoYoLAB account does not match UID";
+"错误码%lld：UID有误" = "Error code %lld: invalid UID";
 "请前往米游社（或Hoyolab）打开旅行便笺功能" = "HoYoLAB Appで「リアルタイムノート」を開けてください";
 "解码错误：请检查网络环境" = "デコードエラー：ネットワーク環境を確認してください";
 "网络错误" = "ネットワークエラー";

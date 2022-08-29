@@ -52,11 +52,11 @@ extension FetchError {
             return "请长按小组件选择帐号".localized
             
         case .cookieInvalid(let retcode, _):
-            return String(format: NSLocalizedString("错误码%@：Cookie失效，请重新登录", comment: "错误码%@：Cookie失效，请重新登录"), retcode)
+            return String(format: NSLocalizedString("错误码%lld：Cookie失效，请重新登录", comment: "错误码%@：Cookie失效，请重新登录"), retcode)
         case .unmachedAccountCookie(let retcode, _):
-            return String(format: NSLocalizedString("错误码%@：米游社帐号与UID不匹配", comment: "错误码%@：米游社帐号与UID不匹配"), retcode)
+            return String(format: NSLocalizedString("错误码%lld：米游社帐号与UID不匹配", comment: "错误码%@：米游社帐号与UID不匹配"), retcode)
         case .accountInvalid(let retcode, _):
-            return String(format: NSLocalizedString("错误码%@：UID有误", comment: "错误码%@：UID有误"), retcode)
+            return String(format: NSLocalizedString("错误码%lld：UID有误", comment: "错误码%@：UID有误"), retcode)
         case .dataNotFound( _, _):
             return "请前往米游社（或Hoyolab）打开旅行便笺功能".localized
         case .decodeError( _):

@@ -49,7 +49,7 @@ struct AccountDetailView: View {
         List {
             Button("重新登录米游社帐号") { isWebShown.toggle() }
             Section(header: Text("帐号配置")) {
-                NavigationLink(destination: TextFieldEditorView(title: "帐号名".localized, note: "你可以自定义显示在小组件上的帐号名称", content: bindingName)) {
+                NavigationLink(destination: TextFieldEditorView(title: "帐号名".localized, note: "你可以自定义显示在小组件上的帐号名称".localized, content: bindingName)) {
                     InfoPreviewer(title: "帐号名", content: name)
                 }
                 NavigationLink(destination: TextFieldEditorView(title: "UID", content: bindingUid, keyboardType: .numberPad)) {

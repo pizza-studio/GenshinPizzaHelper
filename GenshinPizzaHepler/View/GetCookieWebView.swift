@@ -24,7 +24,7 @@ struct GetCookieWebView: View {
         case .cn:
             return "https://m.bbs.mihoyo.com/ys/#/login"
         case .global:
-            return "https://m.hoyolab.com/#/login"
+            return "https://m.hoyolab.com/#/timeline"
         }
     }
     
@@ -56,7 +56,6 @@ struct GetCookieWebView: View {
         
         NavigationView {
             CookieGetterWebView(url: url, dataStore: dataStore, httpHeaderFields: httpHeaderFields)
-//                .ignoresSafeArea()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("完成") {
