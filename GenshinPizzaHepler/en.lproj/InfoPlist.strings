@@ -7,3 +7,4 @@
 */
 
 "CFBundleDisplayName" = "Genshin Pizza";
+"NSPhotoLibraryAddUsageDescription" = "Please allow images to be saved";
