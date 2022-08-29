@@ -65,7 +65,7 @@ class UserNotificationCenter {
     }
     
     func testNotification() {
-        let timeInterval = TimeInterval(10)
+        let timeInterval = TimeInterval(5)
         let id = "12345678"
         
         let content = createNotificationContent(object: .resin, title: "hi", body: "hh")

@@ -56,5 +56,3 @@ struct SettingsView: View {
         .navigationViewStyle(.stack)
     }
 }
-
-

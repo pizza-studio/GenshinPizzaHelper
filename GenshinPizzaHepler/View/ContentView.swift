@@ -32,6 +32,8 @@ struct ContentView: View {
     @Namespace var animation
 
     @StateObject var storeManager: StoreManager
+    
+    @State var isJumpToSettingsView: Bool = false
 
     var body: some View {
         ZStack {
@@ -78,6 +80,17 @@ struct ContentView: View {
                     .allowAutoDismiss(false)
             }
         }
+        .onOpenURL { url in
+            switch url.host {
+            case "settings":
+                print("jump to settings")
+                isJumpToSettingsView.toggle()
+                self.selection = 1
+            default:
+                return
+            }
+        }
+        .navigate(to: NotificationSettingView().environmentObject(viewModel), when: $isJumpToSettingsView)
     }
 }
 
