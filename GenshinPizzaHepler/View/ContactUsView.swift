@@ -165,6 +165,8 @@ struct ContactUsView: View {
                 }
             }
         }
+        .navigationTitle("开发者与联系方式")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
