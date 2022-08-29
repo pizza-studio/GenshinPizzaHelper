@@ -390,4 +390,24 @@
 "无响应" = "No Response";
 "未知错误" = "Unknown Error";
 
+// Donate page
+"请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。" = "Please note that the following is all no-cost donations and we will not provide you with any additional services. \nWe promise that your donation will only be used to cover the direct costs of the App development process, including but not limited to the annual fee for Apple Developer Program, etc. Any amount donated beyond this cost will be re-donated in full. Thank you for your support.";
+"您可以长按保存图片到对应App中扫描" = "You can long press to save the image for scanning";
+"通过微信或支付宝支付" = "Pay via WeChat or Alipay";
+"保存微信支付图片" = "Save WeChat payment QR code";
+"保存支付宝图片" = "Save Alipay QR code";
+"捐赠项目" = "Optional Donations";
+"支付" = "PAY";
 
+// Contact & About
+"开发者与联系方式" = "Developers & Contact Infos";
+"「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。" = "Genshin Pizza Helper is not affiliated with miHoYo Co., Ltd. and its subsidiaries.";
+"原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。" = "Genshin Impact, game content and materials are trademarks and copyrights of HoYoverse.";
+"用户交流群" = "User Communication Groups";
+"QQ群1: 813912474" = "QQ Group 1: 813912474";
+"QQ群2: 829996515" = "QQ Group 2: 829996515";
+"Discord频道: Genshin Pizza Helper" = "Join Discord Server";
+"个人主页" = "Personal Homepage";
+"Bilibili主页" = "Bilibili Homepage";
+"GitHub主页" = "GitHub Homepage";
+"水里的碳酸钙" = "Bill Haku";

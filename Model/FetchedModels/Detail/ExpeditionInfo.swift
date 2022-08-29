@@ -101,7 +101,7 @@ struct Expedition: Codable {
             return "荧"
         case "Gunnhildr", "Jean":
             return "琴"
-        case "Amber":
+        case "Amber", "Ambor":
             return "安柏"
         case "Kaeya", "Alberich":
             return "凯亚"

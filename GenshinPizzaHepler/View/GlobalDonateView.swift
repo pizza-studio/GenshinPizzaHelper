@@ -18,6 +18,7 @@ struct GlobalDonateView: View {
             Section {
                 Text("请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。")
                     .padding()
+                    .fixedSize(horizontal: false, vertical: true)
             }
             if is_zh_CN {
                 Section(footer: isWechatAlipayShow ? Text("您可以长按保存图片到对应App中扫描") : nil) {
