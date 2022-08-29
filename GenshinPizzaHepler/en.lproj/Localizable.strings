@@ -377,9 +377,9 @@
 // Errors description
 "请先刷新以获取树脂状态" = "Please refresh to get genshin status";
 "请长按小组件选择帐号" = "Please long press the widget to config your account";
-"错误码%@：Cookie失效，请重新登录" = "Error code %@: Cookie is invalid, please login HoYoLab again.";
-"错误码%@：米游社帐号与UID不匹配" = "Error code %@: HoYoLAB account does not match UID";
-"错误码%@：UID有误" = "Error code %@: invalid UID";
+"错误码%lld：Cookie失效，请重新登录" = "Error code %lld: Cookie is invalid, please login HoYoLab again.";
+"错误码%lld：米游社帐号与UID不匹配" = "Error code %lld: HoYoLAB account does not match UID";
+"错误码%lld：UID有误" = "Error code %lld: invalid UID";
 "请前往米游社（或Hoyolab）打开旅行便笺功能" = "Please open Real-Time Notes in HoYoLAB app first";
 "解码错误：请检查网络环境" = "Decode Error: please check your network status";
 "网络错误" = "Network Error";
