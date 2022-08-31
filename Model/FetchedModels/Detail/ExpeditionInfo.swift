@@ -175,7 +175,7 @@ struct Expedition: Codable {
             return "神里绫华"
         case "Ayato", "KamisatoAyato":
             return "神里绫人"
-        case "Thoma":
+        case "Thoma", "Tohma":
             return "托马"
         case "Sayu":
             return "早柚"
