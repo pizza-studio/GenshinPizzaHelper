@@ -8,4 +8,4 @@
 
 "CFBundleDisplayName" = "原神ピザ助手";
 "NSPhotoLibraryAddUsageDescription" = "画像を保存することを許可してください";
-"NSCameraUsageDescription" = "カメラの使用は必要だ";
+"NSCameraUsageDescription" = "HoYoLAB でカメラで写真を撮って写真をアップロードしたい場合は、カメラの使用を許可してください。";
