@@ -1326,6 +1326,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "原神披萨小助手";
+				INFOPLIST_KEY_NSCameraUsageDescription = "我们需要使用您的相机";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1360,6 +1361,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "原神披萨小助手";
+				INFOPLIST_KEY_NSCameraUsageDescription = "我们需要使用您的相机";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -8,3 +8,4 @@
 
 "CFBundleDisplayName" = "Genshin Pizza";
 "NSPhotoLibraryAddUsageDescription" = "Please allow images to be saved";
+"NSCameraUsageDescription" = "We need to access your camera";
