@@ -9,6 +9,24 @@ import Foundation
 import Intents
 
 class IntentHandler: INExtension, SelectAccountIntentHandling {
+    func provideBackgoundOptionsCollection(for intent: SelectAccountIntent, with completion: @escaping (INObjectCollection<WidgetBackground>?, Error?) -> Void) {
+        let colorOptions: [String] = BackgroundOptions.colors
+        let namecardOptions: [String] = BackgroundOptions.namecards
+        
+        var intents: [WidgetBackground] = []
+        colorOptions.forEach { colorName in
+            let name = colorName.localized
+            let intent = WidgetBackground.init(identifier: colorName, display: name)
+            intents.append(intent)
+        }
+        namecardOptions.forEach { namecardName in
+            let name = namecardName.localized
+            let intent = WidgetBackground.init(identifier: namecardName, display: name)
+            intents.append(intent)
+        }
+        completion(INObjectCollection(items: intents), nil)
+    }
+    
     func provideAccountIntentOptionsCollection(for intent: SelectAccountIntent, with completion: @escaping (INObjectCollection<AccountIntent>?, Error?) -> Void) {
         print("handling intent")
         let accountConfigurationModel = AccountConfigurationModel.shared
@@ -30,13 +48,13 @@ class IntentHandler: INExtension, SelectAccountIntentHandling {
 
 extension WidgetViewConfiguration {
     init(_ intent: SelectAccountIntent, _ noticeMessage: String?) {
-        self.showAccountName = intent.showAccountName?.boolValue ?? false
+        self.showAccountName = true
         self.showTransformer = intent.showTransformer?.boolValue ?? true
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: (intent.expeditionNoticeMethod.rawValue != 2), expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue) ?? .byNum)
         self.weeklyBossesShowingMethod = intent.weeklyBossesShowingMethod
-        // TODO: 改成Intent中的东西
-//        self.colorHandler = ColorHandler(widgetBackgroundColor: .purple)
-        self.backgroundColor = WidgetBackgroundColor.init(rawValue: intent.backgoundColor.rawValue) ?? .purple
+        self.randomBackground = intent.randomBackground?.boolValue ?? false
+        self.selectedBackground = intent.backgound ?? WidgetBackground.defaultBackground
         self.isDarkModeOn = intent.isDarkModeOn?.boolValue ?? true
+        self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget?.boolValue ?? true
     }
 }

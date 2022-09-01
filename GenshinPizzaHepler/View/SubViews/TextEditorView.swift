@@ -15,6 +15,8 @@ struct TextEditorView: View {
     @Binding var content: String
     var showPasteButton: Bool = false
     var showShortCutsLink: Bool = false
+    
+    @State private var isWebShown: Bool = false
 
     var body: some View {
         List {
@@ -22,6 +24,7 @@ struct TextEditorView: View {
                 Section {
                     if showShortCutsLink {
                         Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
+                        Button("登录帐号获取Cookie") { isWebShown.toggle() }
                     }
                     Button("粘贴自剪贴板") {
                         content = UIPasteboard.general.string ?? ""
@@ -34,6 +37,9 @@ struct TextEditorView: View {
             }
         }
         .navigationBarTitle(title, displayMode: .inline)
+        .sheet(isPresented: $isWebShown) {
+            GetCookieWebView(isShown: $isWebShown, cookie: $content, region: .cn)
+        }
     }
 }
 
@@ -59,7 +65,7 @@ struct TextFieldEditorView: View {
             .navigationBarTitle(title, displayMode: .inline)
         } else {
             List {
-                Section(footer: Text(note!)) {
+                Section(footer: Text(LocalizedStringKey(note!))) {
                     if #available(iOS 15.0, *) {
                         TextField(note!, text: $content)
                             .keyboardType(keyboardType)

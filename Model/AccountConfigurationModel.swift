@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import Intents
 
 class AccountConfigurationModel {
     
@@ -58,6 +59,7 @@ class AccountConfigurationModel {
             print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
             return []
         }
+        
     }
     
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
@@ -102,6 +104,44 @@ class AccountConfigurationModel {
                 userDefaults.removeObject(forKey: "uid")
                 userDefaults.removeObject(forKey: "cookie")
                 userDefaults.removeObject(forKey: "server")
+            }
+        }
+    }
+
+    func donateIntent() {
+        INInteraction.deleteAll()
+        let configs = fetchAccountConfigs()
+        
+        if #available(iOS 15.0, iOSApplicationExtension 15.0, *) {
+            var relevantShortcuts: [INRelevantShortcut] = []
+            configs.forEach { config in
+//                print("donating widget for \(config.name ?? "")")
+                let intent = SelectAccountIntent()
+                intent.accountIntent = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
+                intent.randomBackground = true
+                intent.showTransformer = true
+                intent.expeditionNoticeMethod = .allCompleted
+                intent.expeditionShowingMethod = .byNum
+                intent.weeklyBossesShowingMethod = .neverShow
+                intent.isDarkModeOn = true
+                intent.showMaterialsInLargeSizeWidget = true
+                if let shortcut = INShortcut(intent: intent) {
+                    let relevantShortcut = INRelevantShortcut(shortcut: shortcut)
+                    relevantShortcut.shortcutRole = .information
+                    relevantShortcut.widgetKind = "WidgetView"
+                    relevantShortcut.relevanceProviders = [INDateRelevanceProvider(start: Date(), end: Date(timeIntervalSinceNow: 1800))]
+                    relevantShortcuts.append(relevantShortcut)
+                }
+                INInteraction(intent: intent, response: nil).donate { error in
+                    if let error = error {
+                        print(error)
+                    }
+                }
+            }
+            INRelevantShortcutStore.default.setRelevantShortcuts(relevantShortcuts) { error in
+                if let error = error {
+                    print(error)
+                }
             }
         }
     }

@@ -6,10 +6,22 @@
 //
 
 import SwiftUI
+import StoreKit
 
 @main
 struct GenshinPizzaHeplerApp: App {
     let viewModel: ViewModel = .shared
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject var storeManager = StoreManager()
+
+    let productIDs = [
+            "Canglong.GenshinPizzaHepler.IAP.6",
+            "Canglong.GenshinPizzaHepler.IAP.30",
+            "Canglong.GenshinPizzaHepler.IAP.98",
+            "Canglong.GenshinPizzaHepler.IAP.198",
+            "Canglong.GenshinPizzaHepler.IAP.328",
+            "Canglong.GenshinPizzaHepler.IAP.648"
+        ]
 
     init() {
         
@@ -19,12 +31,18 @@ struct GenshinPizzaHeplerApp: App {
             defaultStandard.setValue(false, forKey: "isPolicyShown")
         }
         
+        UserNotificationCenter.shared.askPermission()
+        
     }
     
     var body: some Scene {
         WindowGroup {
-            SettingsView()
+            ContentView(storeManager: storeManager)
                 .environmentObject(viewModel)
+                .onAppear {
+                    SKPaymentQueue.default().add(storeManager)
+                    storeManager.getProducts(productIDs: productIDs)
+                }
         }
     }
 }

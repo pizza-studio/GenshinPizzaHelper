@@ -16,11 +16,17 @@ struct DetailInfo: View {
 
         VStack(alignment: .leading, spacing: 13) {
             
-            HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
+            if userData.homeCoinInfo.maxHomeCoin != 0 {
+                HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
+            }
             
-            DailyTaskInfoBar(dailyTaskInfo: userData.dailyTaskInfo)
+            if userData.dailyTaskInfo.totalTaskNum != 0 {
+                DailyTaskInfoBar(dailyTaskInfo: userData.dailyTaskInfo)
+            }
             
-            ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
+            if userData.expeditionInfo.maxExpedition != 0 {
+                ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
+            }
             
             switch viewConfig.weeklyBossesShowingMethod {
             case .disappearAfterCompleted, .unknown:

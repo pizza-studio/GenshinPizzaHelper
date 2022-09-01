@@ -14,15 +14,20 @@ struct Account: Equatable {
 
     var config: AccountConfiguration
     var result: FetchResult
-    
+    var background: WidgetBackground = WidgetBackground.randomNamecardBackground
+
+    var fetchComplete: Bool
+
     init(config: AccountConfiguration) {
         self.config = config
         self.result = .failure(.defaultStatus)
+        self.fetchComplete = false
     }
     
     init(config: AccountConfiguration, result: FetchResult) {
         self.config = config
         self.result = result
+        self.fetchComplete = true
     }
     
     

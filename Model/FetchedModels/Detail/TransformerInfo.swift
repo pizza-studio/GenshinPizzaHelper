@@ -23,3 +23,4 @@ struct TransformerInfo {
                                          transformerData.recoveryTime.second)
     }
 }
+

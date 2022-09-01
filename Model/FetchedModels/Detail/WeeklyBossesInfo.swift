@@ -10,6 +10,7 @@ import Foundation
 struct WeeklyBossesInfo {
     let remainResinDiscountNum: Int
     let resinDiscountNumLimit: Int
+    var hasUsedResinDiscountNum: Int { resinDiscountNumLimit - remainResinDiscountNum }
     
     var isComplete: Bool { remainResinDiscountNum == 0 }
 }

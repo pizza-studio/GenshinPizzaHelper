@@ -15,7 +15,7 @@ struct WebImage: View {
     var body: some View {
         if #available(iOS 15.0, *) {
             AsyncImage(url: URL(string: urlStr)) { image in
-                image.resizable()
+                image.resizable().aspectRatio(contentMode: .fit)
             } placeholder: {
                 ProgressView()
             }
@@ -37,8 +37,9 @@ struct WebImage: View {
                     }
             } else {
                 Image(uiImage: imageData!)
-                    .resizable()
+                    .resizable().aspectRatio(contentMode: .fit)
             }
         }
     }
 }
+

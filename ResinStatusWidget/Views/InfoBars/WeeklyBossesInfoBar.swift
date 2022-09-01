@@ -10,8 +10,10 @@ import SwiftUI
 struct WeeklyBossesInfoBar: View {
     let weeklyBossesInfo: WeeklyBossesInfo
     
-    var isWeeklyBossesFinishedImage: Image {
-        weeklyBossesInfo.isComplete ? Image(systemName: "checkmark") : Image(systemName: "questionmark")
+    var isWeeklyBossesFinishedImage: some View {
+        weeklyBossesInfo.isComplete
+        ? Image(systemName: "checkmark").overlayImageWithRingProgressBar(1.0, scaler: 0.70)
+        : Image(systemName: "questionmark").overlayImageWithRingProgressBar(1.0)
     }
     
     var body: some View {
@@ -24,11 +26,10 @@ struct WeeklyBossesInfoBar: View {
                 .frame(width: 25)
                 .shadow(color: .white, radius: 1)
             isWeeklyBossesFinishedImage
-                .overlayImageWithRingProgressBar(1.0)
                 .frame(width: 13, height: 13)
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing:1) {
-                Text("\(weeklyBossesInfo.remainResinDiscountNum)")
+                Text("\(weeklyBossesInfo.hasUsedResinDiscountNum)")
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)

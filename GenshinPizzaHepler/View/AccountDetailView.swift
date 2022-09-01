@@ -40,14 +40,16 @@ struct AccountDetailView: View {
 
     @State private var isPresentingConfirm: Bool = false
     @State private var isSheetShow: Bool = false
+    
+    @State private var isWebShown: Bool = false
 
+    @State private var connectStatus: ConnectStatus = .unknown
+    
     var body: some View {
-        
         List {
-            Section(header: Text("帐号配置"), footer: Button("支持我们") {
-                isSheetShow.toggle()
-            }) {
-                NavigationLink(destination: TextFieldEditorView(title: "帐号名", note: "你可以添加自定义的帐号备注", content: bindingName)) {
+            Button("重新登录米游社帐号") { isWebShown.toggle() }
+            Section(header: Text("帐号配置")) {
+                NavigationLink(destination: TextFieldEditorView(title: "帐号名".localized, note: "你可以自定义显示在小组件上的帐号名称".localized, content: bindingName)) {
                     InfoPreviewer(title: "帐号名", content: name)
                 }
                 NavigationLink(destination: TextFieldEditorView(title: "UID", content: bindingUid, keyboardType: .numberPad)) {
@@ -63,7 +65,7 @@ struct AccountDetailView: View {
                     }
                 }
             }
-            TestSectionView(uid: bindingUid, cookie: bindingCookie, server: bindingServer)
+            TestSectionView(connectStatus: $connectStatus, uid: bindingUid, cookie: bindingCookie, server: bindingServer)
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
         .onDisappear {
@@ -75,6 +77,12 @@ struct AccountDetailView: View {
                     .navigationTitle("支持我们")
                     .navigationBarTitleDisplayMode(.inline)
             }
+        }
+        .sheet(isPresented: $isWebShown) {
+            GetCookieWebView(isShown: $isWebShown, cookie: bindingCookie, region: server.region)
+        }
+        .onAppear {
+            connectStatus = .testing
         }
     }
 }

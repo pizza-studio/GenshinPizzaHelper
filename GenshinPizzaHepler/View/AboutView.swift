@@ -28,23 +28,16 @@ struct AboutView: View {
                 .fontWeight(.regular)
                 .foregroundColor(.secondary)
             Spacer()
-            Text("开发者")
-                .font(.callout)
-            HStack {
-                Link(destination: URL(string: "https://space.bilibili.com/13079935")!) {
-                    Text("Lava")
-                        .padding(.horizontal)
-                        .font(.callout)
-                }
-                Link(destination: URL(string: "https://hakubill.tech")!) {
-                    Text("Bill Haku")
-                        .padding(.horizontal)
-                        .font(.callout)
-                }
+
+            NavigationLink(destination: ContactUsView()) {
+                Text("开发者与联系方式")
+                    .padding()
+                    .font(.callout)
             }
-            Text("交流群：813912474")
-                .font(.callout)
-                .padding(.bottom)
+            Text("「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。")
+                .font(.caption2)
+            Text("原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。")
+                .font(.caption2)
         }
     }
 }

@@ -25,7 +25,7 @@ struct WidgetViewEntryView : View {
         
         ZStack {
             
-            WidgetBackgroundView(backgroundColors: viewConfig.backgroundColors, backgroundIconName: viewConfig.backgroundIconName, darkModeOn: viewConfig.isDarkModeOn)
+            WidgetBackgroundView(background: viewConfig.background, darkModeOn: viewConfig.isDarkModeOn)
             
             switch result {
             case .success(let userData):
@@ -48,7 +48,7 @@ struct WidgetView: Widget {
         }
         .configurationDisplayName("原神状态")
         .description("查询树脂恢复状态")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
         
     }
 }

@@ -42,7 +42,7 @@ struct WebBroswerView: UIViewRepresentable {
 }
 
 struct UserPolicyView: View {
-    @Binding var sheet: SettingsViewSheetType?
+    @Binding var sheet: ContentViewSheetType?
 
     var body: some View {
         NavigationView {
@@ -67,3 +67,4 @@ struct UserPolicyView: View {
         }
     }
 }
+

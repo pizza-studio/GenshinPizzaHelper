@@ -6,16 +6,26 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct WidgetBackgroundView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    let backgroundColors: [Color]
-    let backgroundIconName: String?
+    @Environment(\.widgetFamily) var widgetFamily: WidgetFamily
+    let background: WidgetBackground
     let darkModeOn: Bool
+    
+    var backgroundColors: [Color] { background.colors }
+    var backgroundIconName: String? { background.iconName }
+    var backgroundImageName: String? { background.imageName }
+    
     
     var body: some View {
         ZStack{
-            LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing)
+            
+            if !backgroundColors.isEmpty {
+                LinearGradient(colors: backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing)
+            }
+            
             if let backgroundIconName = backgroundIconName {
                 GeometryReader { g in
                     Image(backgroundIconName)
@@ -26,6 +36,35 @@ struct WidgetBackgroundView: View {
                         .frame(width: g.size.width, height: g.size.height)
                 }
             }
+            
+            if let backgroundImageName = backgroundImageName {
+                switch widgetFamily {
+                case .systemSmall:
+                    GeometryReader { g in
+                        Image(backgroundImageName)
+                            .resizable()
+                            .scaledToFill()
+                            .offset(x: -g.size.width)
+                    }
+                case .systemMedium:
+                    Image(backgroundImageName)
+                        .resizable()
+                        .scaledToFill()
+                case .systemLarge:
+                    GeometryReader { g in
+                        Image(backgroundImageName)
+                            .resizable()
+                            .scaledToFill()
+                            .offset(x: -g.size.width)
+                    }
+                default:
+                    Image(backgroundImageName)
+                        .resizable()
+                        .scaledToFill()
+                }
+            }
+            
+            
             
             if colorScheme == .dark && darkModeOn {
                 Color.black

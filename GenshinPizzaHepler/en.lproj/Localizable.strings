@@ -1,0 +1,414 @@
+/* 
+  Localizable.strings
+  GenshinPizzaHelper
+
+  Created by Bill Haku on 2022/8/23.
+  
+*/
+
+// Settings view
+"原神披萨小助手" = "Genshin Pizza Helper";
+"主页" = "Home";
+"设置" = "Settings";
+"我的帐号" = "My accounts";
+"添加帐号" = "Add Account";
+"通知推送" = "Notifications";
+"通知推送设置" = "Notification Settings";
+"背景名片预览" = "Background Namecard Preview";
+"更多" = "More";
+
+"通知使用提示" = "Tips: How to use Notification?";
+"通知功能需要帐号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "The notification feature requires the account to be added to the Widget before it can take effect \nThe notification schedule is related to the widget refresh, the notification can be deviated if your widget has not been refreshed for a long while.";
+"地区: %@" = "Region: %@";
+"服务器: %@" = "Server: %@";
+
+"获取Cookie的脚本" = "Shortcuts for Grabbing Cookie";
+"在App Store评分" = "Rate in App Store";
+"支持我们" = "Donate us";
+"常见使用问题（FAQ）" = "FAQ";
+"用户协议与免责声明" = "User Policy (Simplified Chinese)";
+"用户协议" = "User Policy";
+"关于小助手" = "About App";
+"开发者" = "Developers";
+"交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
+
+// Account detail
+"重新登录米游社帐号" = "Relogin to HoYoLAB";
+"帐号配置" = "Account Configuration";
+"帐号名" = "Account Name";
+"服务器" = "Server";
+"测试连接" = "Test Connection";
+"错误内容" = "Error Details";
+"帐号信息" = "Account Infos";
+
+"你可以自定义显示在小组件上的帐号名称" = "Your custom account name displayed on Widget";
+"粘贴自剪贴板" = "Paste from Clipboard";
+
+// Add account
+"登录米游社帐号" = "Login via HoYoLAB";
+"你也可以" = "You can also";
+"手动设置帐号" = "configure your account manually";
+"保存" = "Save";
+"国服" = "China Mainland Players";
+"国际服" = "Global Players";
+"登录帐号获取Cookie" = "Get Cookie via HoYoLAB";
+
+"请完成登录" = "Please finish login";
+"完成" = "Done";
+"未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
+"尚未完成帐号设置" = "Account configuration is not finished";
+"添加账号前…" = "Before adding your account...";
+"请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure you have opened and can access \"Real-Time Notes\" in HoYoLAB App.";
+"好" = "OK";
+"提示" = "Tips";
+"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. ";
+"自定义帐号名" = "Custom Account Name";
+"请选择帐号" = "Choose Your Account";
+"查看帐号详情" = "Login Info Details";
+"我的帐号" = "My Account";
+"请先添加帐号" = "Add an Account";
+
+// Game Info block
+"%@\n%@ 回满" = "Refill in %@\n%@";
+"0小时0分钟\n树脂已全部回满" = "0 ʜʀ 0 ᴍɪɴ\nResin is fully capped";
+"%lld天" = "%lld ᴅᴀʏ";
+"%lld小时" = "%lld ʜʀ";
+"%lld分钟" = "%lld ᴍɪɴ";
+"%lld小时%lld分钟" = "%lld ʜʀ %lld ᴍɪɴ";
+"可使用" = "Available";
+"%lld月%lld日 %@" = "%lld.%lld %@";
+"星期日" = "Sunday";
+"星期一" = "Monday";
+"星期二" = "Tuesday";
+"星期三" = "Wednesday";
+"星期四" = "Thursday";
+"星期五" = "Friday";
+"星期六" = "Saturday";
+
+"保存图片" = "Save Image";
+
+// Notification settings
+"推送设置" = "Notification Settings";
+"启用帐号" = "Enabled Accounts";
+"原粹树脂提醒" = "Original Resin";
+"提醒阈值" = "Resin Threshold";
+"%lld树脂" = "%lld Resins";
+"洞天宝钱提醒" = "Realm Currency";
+"提醒时间" = "Send at";
+"充满前%lld小时" = "%lld hours before Full";
+"探索派遣提醒" = "Expedition";
+"提醒于" = "Send when";
+"全部完成时" = "All done";
+"任一完成时" = "Each done";
+"每日委托提醒" = "Daily Commission";
+"提醒时间" = "Send at";
+"周本折扣提醒" = "Weekly Boss";
+"提醒日期" = "Send on";
+"参量质变仪提醒" = "Parametric Transformer";
+
+// namecards
+"柯莱·豹蔚" = "Collei: Good Virtue";
+"丽莎・沙漏" = "Lisa: Tempus Fugit";
+"菲谢尔・夜鸦" = "Fischl: Night Raven";
+"纪行・绕尘" = "Travel Notes: Sub-Space Recreation";
+"莫娜・天星" = "Mona: Starry Sky";
+"纪行・海蓝" = "Travel Notes: Azure Main";
+"优菈・冰印" = "Eula: Ice-Sealed";
+"成就・雪峰" = "Achievement: Snowy Summit";
+"庆典・一揆" = "Celebration: Ikki";
+"鹿野院平藏・鞠毬" = "Shikanoin Heizou: Temari";
+"阿贝多・阳花" = "Albedo: Sun Blossom";
+"纪行・容彩" = "Travel Notes: Irodori";
+"稻妻・珊瑚宫之纹" = "Inazuma: Sangonomiya Crest";
+"成就・深秘" = "Achievement: Deep & Dark";
+"庆典・慧果" = "Celebration: Fruit of Wisdom";
+"珊瑚宫心海・渊" = "Sangonomiya Kokomi: The Deep";
+"公子・魔装" = "Childe: Foul Legacy";
+"庆典・斗剧" = "Celebration: Battlesong";
+"重云・灵刃" = "Chongyun: Spirit Blade";
+"可莉・爆弹" = "Klee: Explosive";
+"雷泽・奔狼" = "Razor: Wolvensprint";
+"宵宫・琉金火花" = "Yoimiya: Auratus Spark";
+"蒙德・风吟" = "Mondstadt: Whistling Wind";
+"成就・强弓" = "Achievement: Bowmaster";
+"埃洛伊・曙光记" = "Aloy: Dawn";
+"庆典・觥筹" = "Celebration: Binge Vessel";
+"纪行・风花" = "Travel Notes: Windblume";
+"成就・旅居" = "Achievement: Vacation Home";
+"忍冬・古树" = "Frost­bearing: Ancient Tree";
+"成就・层岩" = "Achievement: Chasm";
+"胡桃·安神" = "Hu Tao: Spirit Soother";
+"七七・冷藏" = "Qiqi: Cold Storage";
+"璃月・云间" = "Liyue: In the Clouds";
+"庆典・光鳞" = "Celebration: Shining Scale";
+"流明・辉石" = "Lumens: Stone of Light";
+"枫原万叶・秋山椛狩" = "Kaedehara Kazuha: Autumn Maple-Viewing";
+"庆典・无相" = "Celebration: Hypostasis";
+"罗莎莉亚・苦役" = "Rosaria: Indenture";
+"成就・雪乡" = "Achievement: Snowy Land";
+"云堇・对韵" = "Yun Jin: Rhyme";
+"稻妻・神里之纹" = "Inazuma: Kamisato Crest";
+"温迪・天青" = "Venti: Azure Sky";
+"甘雨・麟迹" = "Ganyu: Qilin";
+"稻妻・雷电之纹" = "Inazuma: Raiden Emblem";
+"庆典・浩瀚" = "Celebration: Vastness";
+"纪行・盛夏" = "Travel Notes: Midsummer";
+"纪行・白英" = "Travel Notes: Lyratum";
+"纪行・天命" = "Travel Notes: Divine Will";
+"九条裟罗・天狗" = "Kujou Sara: Tengu";
+"成就・敲针" = "Achievement: Nails";
+"纪行・熄星" = "Travel Notes: Fading Star";
+"成就・游遍" = "Achievement: Explorer";
+"稻妻・常世" = "Inazuma: Tokoyo";
+"魈・傩面" = "Xiao: Mask";
+"纪行・流彩" = "Travel Notes: Flowing Hues";
+"刻晴・雷楔" = "Keqing: Lightning Stiletto";
+"蒙德・祝愿" = "Mondstadt: Blessing";
+"纪行・鸣神大社" = "Travel Notes: Grand Narukami Shrine";
+"北斗・拔锚" = "Beidou: Weighing Anchor";
+"申鹤・栉掠" = "Shenhe: Comb";
+"香菱・出锅" = "Xiangling: Fresh from the Pan";
+"凝光・凤仪" = "Ningguang: Phoenix";
+"夜兰・一掷" = "Yelan: Throw";
+"成就・石龙" = "Achievement: Stone Dragon";
+"成就・遍历" = "Achievement: Traversal";
+"纪行・捕风" = "Travel Notes: Catch the Wind";
+"稻妻・九条之纹" = "Inazuma: Kujou Insignia";
+"行秋・雨虹" = "Xingqiu: Rainbow";
+"神里绫人・涟漪" = "Kamisato Ayato: Ripple";
+"雷电将军・开眼" = "Raiden Shogun: Enlighten­ment";
+"庆典・棋谭" = "Celebration: Mechanicus";
+"八重神子・梦狐" = "Yae Miko: Kitsune Dreaming";
+"琴・风向" = "Jean: The Winds' Course";
+"庆典・魔球" = "Celebration: Kaboomball";
+"芭芭拉・流淌" = "Barbara: Flow";
+"成就・相逢" = "Achievement: Reunion";
+"成就・雷音" = "Achievement: Thunderclap";
+"托马・炎袖" = "Thoma: Blazing Guard";
+"璃月・岩寂" = "Liyue: Stillness of Stone";
+"成就・挑战・其二" = "Achievement: Challenger II";
+"迪奥娜・呜喵" = "Diona: Meow!";
+"成就・合扇" = "Achievement: Cliffhanger";
+"纪行・蛰醒" = "Travel Notes: Awakening";
+"成就・挑战・其三" = "Achievement: Challenger III";
+"纪行・白垩" = "Travel Notes: Chalk";
+"神里绫华・扇子" = "Kamisato Ayaka: Folding Fan";
+"成就・山民" = "Achievement: Hill Dwellers";
+"庆典・躲猫" = "Celebration: Peekaboo!";
+"成就・挑战" = "Achievement: Challenger";
+"班尼特・认可" = "Bennett: Recognition";
+"成就・侠行" = "Achievement: Hero";
+"迪卢克・燃烧" = "Diluc: Flames";
+"稻妻・鹫羽" = "Inazuma: Eagleplume";
+"成就・门扉" = "Achievement: Gate";
+"纪行・神将" = "Travel Notes: Heavenly General";
+"安柏・兔兔" = "Amber: Bunny";
+"辛焱・唱罢" = "Xinyan: Song's End";
+"纪行・逐月" = "Travel Notes: Moonchaser";
+"五郎・悠犬" = "Gorou: Leisurely Hound";
+"成就・繁花" = "Achievement: Full Bloom";
+"纪行・明霄" = "Travel Notes: Mingxiao";
+"早柚・不倒貉貉" = "Sayu: Muji-Muji Daruma";
+"烟绯・公正" = "Yanfei: Impartial";
+"砂糖・创生" = "Sucrose: Bio-Alchemy";
+"诺艾尔・守护" = "Noelle: Protector";
+"凯亚・孔雀" = "Kaeya: Pavo Ocellus";
+"成就・壶歌" = "Achievement: Tea Time";
+"璃月・千帆" = "Liyue: A Thousand Ships";
+"庆典・妙算" = "Celebration: Wondrous Calculation";
+"庆典・灯昼" = "Celebration: Lantern-Light";
+"成就・殊技" = "Achievement: Virtuoso";
+"一斗・鬼颜" = "Itto: Oni Face";
+"庆典・盛宴" = "Celebration: Feast";
+"久岐忍・络" = "Kuki Shinobu: Net";
+"蒙德・英名" = "Mondstadt: Hero's Fame";
+"稻妻・神樱" = "Inazuma: Sacred Sakura";
+"钟离・天星" = "Zhongli: Planet Befall";
+"提纳里·沐露" = "Tighnari: Dew-Kissed";
+
+// Background colors
+"★灰" = "★ Gray";
+"★★绿" = "★★ Green";
+"★★★蓝" = "★★★ Blue";
+"★★★★紫" = "★★★★ Purple";
+"★★★★★红" = "★★★★★ Red";
+"★★★★★金" = "★★★★★ Gold";
+
+"纠缠之缘" = "Intertwined Fate";
+
+// Elements
+"火元素" = "Pyro";
+"水元素" = "Hydro";
+"草元素" = "Dendro";
+"雷元素" = "Electro";
+"风元素" = "Anemo";
+"冰元素" = "Cyro";
+"岩元素" = "Geo";
+
+// Widget
+"原神状态" = "Genshin Status";
+"已全部完成" = "All done";
+"%lld个已完成" = "%lld done";
+"（未领取）" = " (Not received)";
+"（可使用）" = "Available";
+
+// Used for copy and paste to edit this file
+"查询树脂恢复状态" = "Check your resin recovery status";
+
+// Notification
+"打开「原神」" = "Open Genshin Impact";
+"通知设置" = "Notification Settings";
+"「%@」原粹树脂提醒" = "%@'s Original Resin Notification";
+"「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ has %lld original resins now, which will be full at %@.";
+"「%@」洞天宝钱提醒" = "%@'s Realm Currency Notification";
+"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@'s Tubby has %lld realm currency now, which will be full at %@.";
+"「%@」探索派遣提醒" = "%@'s Expedition Notification";
+"「%@」的探索派遣已全部完成。" = "All expeditions of %@ are finished.";
+"「%@」周本折扣提醒" = "%@'s Weekly Bosses";
+"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "There are still 3 weekly bosses resin discounts remaining for %@.";
+"「%@」参量质变仪提醒" = "%@'s Parametric Transformer Notification";
+"「%@」的参量质变仪已经可以使用。" = "%@'s Parametric Transformer is available now.";
+"「%@」每日委托提醒" = "%@'s Daily Commission Notification";
+"「%@」的每日委托还剩余%lld个未完成。" = "%@ still has %lld unfinished daily commissions.";
+"「%@」的每日委托奖励还未领取。" = "%@'s bonus reward is not received.";
+"%@的探索派遣已完成。" = "%@'s expedition is finished.";
+
+// Homeview
+"同意" = "Agree";
+"拒绝" = "Disagree";
+
+// Daily materials
+"「高塔孤王」" = "Decarabian";
+"「凛风奔狼」" = "Boreal Wolf";
+"「狮牙斗士」" = "Dandelion Gladiator";
+"「孤云寒林」" = "Guyun";
+"「雾海云间」" = "Mist Veiled";
+"「漆黑陨铁」" = "Aerosiderite";
+"「远海夷地」" = "Distant Sea";
+"「鸣神御灵」" = "Narukami";
+"「今昔剧画」" = "Mask";
+"「谧林涓露」" = "Forest Dew";
+"「绿洲花园」" = "Oasis Garden";
+"「烈日威权」" = "Scorching Might";
+"「自由」" = "Freedom";
+"「抗争」" = "Resistance";
+"「诗文」" = "Ballad";
+"「繁荣」" = "Prosperity";
+"「勤劳」" = "Diligence";
+"「黄金」" = "Gold";
+"「浮世」" = "Transience";
+"「风雅」" = "Elegance";
+"「天光」" = "Light";
+"「诤言」" = "Admonition";
+"「巧思」" = "Ingenuity";
+"「笃行」" = "Praxis";
+
+"今日材料" = "Today's Materials";
+"今日材料：星期日所有材料均可获取" = "Today's Materials: All avaliable in Sunday";
+
+// large size widget
+"已完成" = "Finished";
+"（星期日所有材料均可获取）" = "(All materials are avaliable in Sunday)";
+
+// Char's name
+"空" = "Aether";
+"荧" = "Lumine";
+"琴" = "Jean";
+"安柏" = "Amber";
+"凯亚" = "Kaeya";
+"丽莎" = "Lisa";
+"温迪" = "Venti";
+"雷泽" = "Razor";
+"班尼特" = "Bennett";
+"诺艾尔" = "Noelle";
+"菲谢尔·冯·露弗施洛斯·那菲多特" = "Fischl von Luftschloss Narfidort";
+"迪卢克" = "Diluc";
+"可莉" = "Klee";
+"迪奥娜" = "Diona";
+"芭芭拉" = "Barbara";
+"砂糖" = "Sucrose";
+"阿贝多" = "Albedo";
+"莫娜" = "Mona";
+"罗莎莉亚" = "Rosaria";
+"优菈" = "Eula";
+"香菱" = "Xiangling";
+"刻晴" = "Keqing";
+"凝光" = "Ningguang";
+"七七" = "Qiqi";
+"行秋" = "Xingqiu";
+"重云" = "Chongyun";
+"北斗" = "Beidou";
+"辛焱" = "Xinyan";
+"钟离" = "Zhongli";
+"魈" = "Xiao";
+"甘雨" = "Ganyu";
+"胡桃" = "Hu Tao";
+"烟绯" = "Yanfei";
+"云堇" = "Yun Jin";
+"申鹤" = "Shenhe";
+"夜兰" = "Yelan";
+"枫原万叶" = "Kazuha";
+"宵宫" = "Yoimiya";
+"神里绫华" = "Ayaka";
+"神里绫人" = "Ayato";
+"托马" = "Thoma";
+"早柚" = "Sayu";
+"八重神子" = "Yae Miko";
+"荒泷一斗" = "Itto";
+"久岐忍" = "Shinobu";
+"五郎" = "Gorou";
+"珊瑚宫心海" = "Kokomi";
+"九条裟罗" = "Sara";
+"鹿野院平藏" = "Heizou";
+"雷电将军" = "Shogun";
+"赛诺" = "Cyno";
+"提纳里" = "Tighnari";
+"柯莱" = "Collei";
+"多莉" = "Dori";
+"艾尔海森" = "Alhaitham";
+"迪希雅" = "Dehya";
+"妮露" = "Nilou";
+"纳西妲" = "Nahida";
+"林尼" = "Lyney";
+"琳妮特" = "Lynette";
+"伊安珊" = "Iansan";
+"达达利亚" = "Tartaglia";
+"（未知角色）" = "(unknown)";
+
+// Errors description
+"请先刷新以获取树脂状态" = "Please refresh to get genshin status";
+"请长按小组件选择帐号" = "Please long press the widget to config your account";
+"错误码%lld：Cookie失效，请重新登录" = "Error code %lld: Cookie is invalid, please login HoYoLab again.";
+"错误码%lld：米游社帐号与UID不匹配" = "Error code %lld: HoYoLAB account does not match UID";
+"错误码%lld：UID有误" = "Error code %lld: invalid UID";
+"请前往米游社（或Hoyolab）打开旅行便笺功能" = "Please open Real-Time Notes in HoYoLAB app first";
+"解码错误：请检查网络环境" = "Decode Error: please check your network status";
+"网络错误" = "Network Error";
+"未获取到登录信息，请重试" = "Failed to fetch your login infos, please re-login HoYoLAB";
+"未知错误码：%@" = "Unknown Error %@";
+
+"无返回数据" = "No Response Data";
+"无响应" = "No Response";
+"未知错误" = "Unknown Error";
+
+// Donate page
+"请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。" = "Please note that the following is all no-cost donations and we will not provide you with any additional services. \nWe promise that your donation will only be used to cover the direct costs of the App development process, including but not limited to the annual fee for Apple Developer Program, etc. Any amount donated beyond this cost will be re-donated in full. Thank you for your support.";
+"您可以长按保存图片到对应App中扫描" = "You can long press to save the image for scanning";
+"通过微信或支付宝支付" = "Pay via WeChat or Alipay";
+"保存微信支付图片" = "Save WeChat payment QR code";
+"保存支付宝图片" = "Save Alipay QR code";
+"捐赠项目" = "Optional Donations";
+"支付" = "PAY";
+
+// Contact & About
+"开发者与联系方式" = "Developers & Contact Infos";
+"「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。" = "Genshin Pizza Helper is not affiliated with miHoYo Co., Ltd. and its subsidiaries.";
+"原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。" = "Genshin Impact, game content and materials are trademarks and copyrights of HoYoverse.";
+"用户交流群" = "User Communication Groups";
+"QQ群1: 813912474" = "QQ Group 1: 813912474";
+"QQ群2: 829996515" = "QQ Group 2: 829996515";
+"Discord频道: Genshin Pizza Helper" = "Join Discord Server";
+"个人主页" = "Personal Homepage";
+"Bilibili主页" = "Bilibili Homepage";
+"GitHub主页" = "GitHub Homepage";
+"水里的碳酸钙" = "Bill Haku";

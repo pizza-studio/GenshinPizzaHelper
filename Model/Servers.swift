@@ -41,6 +41,26 @@ enum Server: String, CaseIterable, Identifiable {
             return .global
         }
     }
+    
+    static func id(_ id: String) -> Self {
+        switch id {
+        case "cn_gf01":
+            return .china
+        case "cn_qd01":
+            return .bilibili
+        case "os_usa":
+            return .us
+        case "os_euro":
+            return .eu
+        case "os_asia":
+            return .asia
+        case "os_cht":
+            return .cht
+        default:
+            return .china
+        }
+    }
+    
 }
 
 // 地区类型，用于区分请求的Host URL

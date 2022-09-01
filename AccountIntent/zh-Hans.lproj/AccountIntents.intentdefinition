@@ -316,6 +316,49 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>INEnumDisplayName</key>
+			<string>Widget Background Type</string>
+			<key>INEnumDisplayNameID</key>
+			<string>Vs9Whf</string>
+			<key>INEnumGeneratesHeader</key>
+			<true/>
+			<key>INEnumName</key>
+			<string>WidgetBackgroundType</string>
+			<key>INEnumType</key>
+			<string>Regular</string>
+			<key>INEnumValues</key>
+			<array>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>unknown</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>RPNDde</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>color</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>oi0S30</string>
+					<key>INEnumValueIndex</key>
+					<integer>1</integer>
+					<key>INEnumValueName</key>
+					<string>color</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>namecard</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>fFVHow</string>
+					<key>INEnumValueIndex</key>
+					<integer>2</integer>
+					<key>INEnumValueName</key>
+					<string>namecard</string>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.2</string>
@@ -333,7 +376,7 @@
 			<key>INIntentCategory</key>
 			<string>information</string>
 			<key>INIntentDescription</key>
-			<string>为你的小组件选择显示的账号</string>
+			<string>为你的小组件选择显示的帐号</string>
 			<key>INIntentDescriptionID</key>
 			<string>zQrKVi</string>
 			<key>INIntentEligibleForWidgets</key>
@@ -341,7 +384,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>35</integer>
+			<integer>41</integer>
 			<key>INIntentName</key>
 			<string>SelectAccount</string>
 			<key>INIntentParameters</key>
@@ -350,7 +393,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>账号</string>
+					<string>帐号</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>EnqoJ9</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -387,71 +430,11 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>背景颜色</string>
+					<string>随机背景</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>vK3j6C</string>
+					<string>gknWkx</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>2</integer>
-					<key>INIntentParameterEnumType</key>
-					<string>WidgetBackgroundColor</string>
-					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Yil1CB</string>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>purple</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>backgoundColor</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${backgoundColor}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>EO8XKx</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${backgoundColor}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>jGxsjM</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
-						</dict>
-					</array>
-					<key>INIntentParameterTag</key>
-					<integer>29</integer>
-					<key>INIntentParameterType</key>
-					<string>Integer</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>显示账号的自定义名称</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>nqqAbg</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>3</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -459,14 +442,14 @@
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>2sA6YK</string>
+						<string>ll3vKn</string>
 						<key>INIntentParameterMetadataTrueDisplayName</key>
 						<string>true</string>
 						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>XnDLoc</string>
+						<string>ktBsgM</string>
 					</dict>
 					<key>INIntentParameterName</key>
-					<string>showAccountName</string>
+					<string>randomBackground</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -483,9 +466,53 @@
 						</dict>
 					</array>
 					<key>INIntentParameterTag</key>
-					<integer>25</integer>
+					<integer>39</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>背景</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>vK3j6C</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterName</key>
+					<string>backgound</string>
+					<key>INIntentParameterObjectType</key>
+					<string>WidgetBackground</string>
+					<key>INIntentParameterObjectTypeNamespace</key>
+					<string>Yil1CB</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>randomBackground</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>BooleanHasExactValue</string>
+					</dict>
+					<key>INIntentParameterSupportsDynamicEnumeration</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>37</integer>
+					<key>INIntentParameterType</key>
+					<string>Object</string>
 				</dict>
 				<dict>
 					<key>INIntentParameterConfigurable</key>
@@ -671,7 +698,7 @@
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>disappearAfterCompleted</string>
+						<string>neverShow</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>weeklyBossesShowingMethod</string>
@@ -759,6 +786,50 @@
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
 				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>显示今日材料（仅大尺寸）</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>K2iJCd</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>9</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<true/>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>否</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>mRXrdK</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>是</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>PS8etl</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>showMaterialsInLargeSizeWidget</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>41</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
+				</dict>
 			</array>
 			<key>INIntentResponse</key>
 			<dict>
@@ -777,7 +848,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>选择账号</string>
+			<string>选择帐号</string>
 			<key>INIntentTitleID</key>
 			<string>sWpemX</string>
 			<key>INIntentType</key>
@@ -790,7 +861,7 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>账号名称</string>
+			<string>帐号名称</string>
 			<key>INTypeDisplayNameID</key>
 			<string>qijLJm</string>
 			<key>INTypeLastPropertyTag</key>
@@ -834,6 +905,73 @@
 					<integer>3</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>4</integer>
+					<key>INTypePropertyName</key>
+					<string>alternativeSpeakableMatches</string>
+					<key>INTypePropertySupportsMultipleValues</key>
+					<true/>
+					<key>INTypePropertyTag</key>
+					<integer>4</integer>
+					<key>INTypePropertyType</key>
+					<string>SpeakableString</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>INTypeDisplayName</key>
+			<string>小组件背景</string>
+			<key>INTypeDisplayNameID</key>
+			<string>f8OJzI</string>
+			<key>INTypeLastPropertyTag</key>
+			<integer>102</integer>
+			<key>INTypeName</key>
+			<string>WidgetBackground</string>
+			<key>INTypeProperties</key>
+			<array>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>1</integer>
+					<key>INTypePropertyName</key>
+					<string>identifier</string>
+					<key>INTypePropertyTag</key>
+					<integer>1</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>2</integer>
+					<key>INTypePropertyName</key>
+					<string>displayString</string>
+					<key>INTypePropertyTag</key>
+					<integer>2</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>3</integer>
+					<key>INTypePropertyEnumType</key>
+					<string>WidgetBackgroundType</string>
+					<key>INTypePropertyEnumTypeNamespace</key>
+					<string>Yil1CB</string>
+					<key>INTypePropertyName</key>
+					<string>pronunciationHint</string>
+					<key>INTypePropertyTag</key>
+					<integer>101</integer>
+					<key>INTypePropertyType</key>
+					<string>Integer</string>
 				</dict>
 				<dict>
 					<key>INTypePropertyDefault</key>
