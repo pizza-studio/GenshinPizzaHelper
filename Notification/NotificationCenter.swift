@@ -158,7 +158,7 @@ class UserNotificationCenter {
     
     private func createResinNotification(for accountName: String, with resinInfo: ResinInfo, uid: String) {
         let resinNotificationTimeFromFull = (resinInfo.maxResin - Int(resinNotificationNum)) * 8 * 60
-        var resinNotificationTimeDescription: String { relativeTimePointFromNow(second: resinNotificationTimeFromFull) }
+        var resinNotificationTimeDescription: String { relativeTimePointFromNow(second: resinInfo.recoveryTime.second) }
         guard (resinInfo.currentResin < Int(resinNotificationNum)) && allowResinNotification else {
             deleteNotification(for: uid, object: .resin); return
         }
