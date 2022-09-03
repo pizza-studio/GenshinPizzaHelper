@@ -19,7 +19,7 @@ struct NotificationSettingNavigator: View {
     
     var masterSwitch: Binding<Bool> {
         .init(get: {
-            return (allowResinNotification || allowHomeCoinNotification || allowExpeditionNotification || allowWeeklyBossesNotification || allowDailyTaskNotification)
+            return (allowResinNotification || allowHomeCoinNotification || allowExpeditionNotification || allowWeeklyBossesNotification || allowDailyTaskNotification || allowTransformerNotification)
         }, set: { newValue in
             withAnimation {
                 allowResinNotification = newValue
@@ -27,6 +27,7 @@ struct NotificationSettingNavigator: View {
                 allowExpeditionNotification = newValue
                 allowWeeklyBossesNotification = newValue
                 allowDailyTaskNotification = newValue
+                allowTransformerNotification = newValue
             }
         })
     }
