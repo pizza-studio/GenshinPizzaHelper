@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/7.
-//
+//  添加帐号的View
 
 import SwiftUI
 import WebKit

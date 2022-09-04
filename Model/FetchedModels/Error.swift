@@ -3,7 +3,7 @@
 //  原神披萨小助手
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  错误信息
 
 import Foundation
 
@@ -18,8 +18,6 @@ struct ErrorCode: Codable {
     var code: Int
     var message: String?
 }
-
-
 
 enum FetchError: Error {
     case noFetchInfo

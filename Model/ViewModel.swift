@@ -3,7 +3,7 @@
 //  Genshin Resin Checker
 //
 //  Created by 戴藏龙 on 2022/7/12.
-//
+//  View中用于加载信息的工具类
 
 import Foundation
 import SwiftUI
@@ -26,10 +26,6 @@ class ViewModel: ObservableObject {
                                                selector: #selector(fetchAccount),
                                                name: .NSPersistentStoreRemoteChange,
                                                object: accountConfigurationModel.container.persistentStoreCoordinator)
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(fetchAccount),
-//                                               name: NSNotification.Name.NSPersistentStoreCoordinatorStoresDidChange,
-//                                               object: accountConfigurationModel.container.persistentStoreCoordinator)
     }
     
     @objc

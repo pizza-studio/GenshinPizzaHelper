@@ -3,7 +3,7 @@
 //  原神披萨小助手
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  计算md5的扩展
 
 import Foundation
 import CommonCrypto

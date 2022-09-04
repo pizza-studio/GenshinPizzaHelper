@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/16.
-//
+//  获取Cookie的网页View
 
 import SwiftUI
 import WebKit

@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/7.
-//
+//  设置View
 
 import SwiftUI
 
@@ -47,7 +47,7 @@ struct SettingsView: View {
                     }
                 }
                 // 更多
-                NavigationLink(destination: HelpSheetView(storeManager: storeManager)) {
+                NavigationLink(destination: MoreView(storeManager: storeManager)) {
                     Text("更多")
                 }
             }

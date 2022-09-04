@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/7.
-//
+//  设置页的帐号信息Block
 
 import SwiftUI
 
@@ -17,8 +17,6 @@ struct AccountInfoView: View {
                 .padding(.vertical)
             HStack {
                 Text("UID: \(accountConfig.uid!)")
-//                Spacer()
-//                Text("地区: \(accountConfig.server.region.value)")
                 Spacer()
                 Text("服务器: \(accountConfig.server.rawValue)")
             }

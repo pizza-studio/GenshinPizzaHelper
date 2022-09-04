@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/25.
-//
+//  主页今日材料页面
 
 import SwiftUI
 
@@ -27,14 +27,11 @@ struct InAppMaterialNavigator: View {
                         .padding(.top)
                         .padding(.leading, 25)
                         .padding(.bottom, -10)
-//                        .foregroundColor(Color("materialTextColor"))
                     Spacer()
                 } else {
                     Text("今日材料：星期日所有材料均可获取")
                         .font(.caption)
                         .padding()
-//                        .foregroundColor(Color("materialTextColor"))
-
                 }
             }
             if !showMaterialDetail {

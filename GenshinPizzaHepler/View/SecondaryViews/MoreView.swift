@@ -3,11 +3,11 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/8.
-//
+//  更多页面
 
 import SwiftUI
 
-struct HelpSheetView: View {
+struct MoreView: View {
     @EnvironmentObject var viewModel: ViewModel
     let localeID = Locale.current.identifier
 

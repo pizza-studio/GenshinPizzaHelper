@@ -3,7 +3,7 @@
 //  ResinStatusWidgetExtension
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  Widget树脂部分布局
 
 import Foundation
 import SwiftUI
@@ -32,7 +32,6 @@ struct MainInfo: View {
         
         
         VStack(alignment: .leading, spacing: 0) {
-//            Spacer()
             if let accountName = accountName {
                 
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
@@ -45,8 +44,6 @@ struct MainInfo: View {
                 Spacer()
                 
             }
-            
-            
             
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 
@@ -91,10 +88,3 @@ struct MainInfo: View {
         }
     }
 }
-
-//struct preview: PreviewProvider {
-//    static var previews: some View {
-//        MainInfo(userData: UserData.defaultData, viewConfig: WidgetViewConfiguration.defaultConfig, accountName: nil)
-//            .background(LinearGradient(colors: WidgetBackgroundColor.purple.colors, startPoint: .topLeading, endPoint: .bottomTrailing))
-//    }
-//}

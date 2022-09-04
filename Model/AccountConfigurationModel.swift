@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/9.
-//
+//  基于CoreData配置帐号所需核心信息
 
 import Foundation
 import CoreData

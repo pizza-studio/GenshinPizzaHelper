@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/10.
-//
+//  封装了使用WKWebView的各种网页
 
 import SwiftUI
 import SafariServices
@@ -67,4 +67,3 @@ struct UserPolicyView: View {
         }
     }
 }
-

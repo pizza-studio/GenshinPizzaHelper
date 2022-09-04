@@ -3,7 +3,7 @@
 //  GenshinPizzaHelper
 //
 //  Created by Bill Haku on 2022/8/12.
-//
+//  Widget和App内的背景支持
 
 import Foundation
 import SwiftUI

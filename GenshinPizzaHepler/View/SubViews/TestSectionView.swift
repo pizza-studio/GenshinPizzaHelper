@@ -3,7 +3,7 @@
 //  原神披萨小助手
 //
 //  Created by 戴藏龙 on 2022/8/8.
-//
+//  测试连接部分的View
 
 import SwiftUI
 
