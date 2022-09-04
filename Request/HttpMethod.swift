@@ -15,12 +15,13 @@ enum Method {
 
 struct HttpMethod<T: Codable> {
 
-    /// 综合的http post方法接口
+    /// 综合的http 各种方法接口
     /// - Parameters:
     ///   - method:Method, http方法的类型
     ///   - urlStr:String，url的字符串后缀，即request的类型
     ///   - region:Region，请求的服务器地区类型
     ///   - serverID: String，服务器ID
+    ///   - uid: String, UID
     ///   - cookie: String， 用户Cookie
     ///   - completion:异步返回处理好的data以及报错的类型
     static func commonRequest (
@@ -134,22 +135,22 @@ struct HttpMethod<T: Codable> {
                                 print(error)
                                 completion(.failure(.decodeError(error.localizedDescription)))
                             }
-                            
-                            
-//                            do {
-//                                let requestResult = try decoder.decode(T.self, from: data)
-//                            } catch {
-//                                print("\(error)")
-//                            }
-                            
                         }
                     }
                 }.resume()
             }
         }
     }
-    
-    static func commonRequest (
+
+    /// 返回游戏内帐号信息的请求方法接口
+    /// - Parameters:
+    ///   - method:Method, http方法的类型
+    ///   - urlStr:String，url的字符串后缀，即request的类型
+    ///   - region:Region，请求的服务器地区类型
+    ///   - cookie: String， 用户Cookie
+    ///   - serverID: String，服务器ID
+    ///   - completion:异步返回处理好的data以及报错的类型
+    static func gameAccountRequest (
         _ method: Method,
         _ urlStr: String,
         _ region: Region,
@@ -163,9 +164,6 @@ struct HttpMethod<T: Codable> {
 
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
-                
-                
-                
                 // 请求url前缀，后跟request的类型
                 let baseStr: String
                 let appVersion: String
@@ -256,7 +254,7 @@ struct HttpMethod<T: Codable> {
     }
 }
 
-class API {
+public class API {
     // API方法类，在这里只是一个空壳，以extension的方法扩展
 }
 
