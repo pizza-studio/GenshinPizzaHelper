@@ -22,7 +22,7 @@
 
 - PR原则上需要完成Code Review后才能合并。一般不由自己合并。合并的PR原则上应当在远端删除源分支。PR的comment中最好一并关闭相关的已解决的issue.
 
-- 关于Commit和其他的命名和使用规范可以参考[这篇博客](https://jaeger.itscoder.com/dev/2018/09/12/using-git-in-project.html )
+- 关于Commit和其他的命名和使用规范可以参考[这篇博客](https://jaeger.itscoder.com/dev/2018/09/12/using-git-in-project.html)。
 
 ## 关于项目的若干说明
 
@@ -36,15 +36,17 @@
 
 ### Tag
 
-在主要的功能完成时可以在最后合并的commit上打上tag. 将要发布测试版和正式版时必须打上Tag标记。Tag的格式为: `v<Version>-<Suffix>-<Build>`, 例如:
-
-`v2.0.0-309`: 2.0.0版本正式版，build号为309
+在主要的功能完成时可以在最后合并的commit上打上tag. 将要发布测试版和正式版时必须打上Tag标记。Tag的格式为: `v<Version>-<Suffix (Optional)>-<Build>`, 例如:
 
 `v2.0.0-Beta.1-258`: 2.0.0的第1个Beta版，build号为258
 
 `v2.0.0-RC.2-308`: 2.0.0版本的第2个RC版(Release Candidate)，build号为308
 
+`v2.0.0-309`: 2.0.0版本正式版，build号为309
+
 使用Beta版标记或RC版标记提交TF测试的版本。使用RC版标记提交正式版审核的版本。提交正式版审核和TF测试的的版本时Tag中均不包含正式版本的tag。仅当正式版审核通过发布后再在对应的RC版上补上正式版的Tag.
+
+关于版本号的更多标准，请参考这篇[规范](https://semver.org)。
 
 ## 项目需求
 
