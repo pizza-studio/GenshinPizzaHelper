@@ -1,5 +1,29 @@
 # 原神披萨小助手
 
+## 开发规范
+
+- **鉴于各位开发SwiftUI程序的经验可能不多，为了提高代码质量，保证程序水平，各位可以参考这一份[Swift / SwiftUI开发代码规范](https://github.com/Bill-Haku/wiki/wiki/SwiftUI-Coding-Standards )**
+
+- 其他例如Android开发等也有许多相似的经验和习惯，可以参考。
+
+### 其他的一些注意事项
+
+- 请在每一个文件的头部自动生成的注释的最后一行补充说明该文件内的代码的主要内容和目的，以便其他开发者了解阅读。
+
+- Xcode左侧各文件夹内的文件已经按照字典序排列，在新添加文件时，请保持该顺序。
+
+- 有关注释的使用等，再次不再赘述。可以参考前面提到的代码规范和其他业内习惯。
+
+## Git使用说明
+
+- **本仓库dev分支包含最新的已完成内容，main分支包含最新的已发布内容。dev分支原则上不允许直接Push commit进入；main分支不允许直接Push commit进入。**应当使用提出PR的方式合并入dev，再合并入main.
+
+- 使用Git时，遵循多Commit，多Branch，多PR的原则。
+
+- PR原则上需要完成Code Review后才能合并。一般不由自己合并。合并的PR原则上应当在远端删除源分支。PR的comment中最好一并关闭相关的已解决的issue.
+
+- 关于Commit和其他的命名和使用规范可以参考[这篇博客](https://jaeger.itscoder.com/dev/2018/09/12/using-git-in-project.html )
+
 ## 项目需求
 
 - ~~国际服⭐️~~
