@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/9.
-//
+//  Account所需的所有信息
 
 import Foundation
 

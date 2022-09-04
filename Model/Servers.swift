@@ -3,7 +3,7 @@
 //  原神披萨小助手
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  返回识别服务器信息的工具类
 
 import Foundation
 

@@ -3,7 +3,7 @@
 //  ResinStatusWidgetExtension
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  恢复时间部分布局
 
 import Foundation
 import SwiftUI

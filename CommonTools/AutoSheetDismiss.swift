@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/10.
-//
+//  控制Sheet能否滑下关闭
 
 import Foundation
 import SwiftUI

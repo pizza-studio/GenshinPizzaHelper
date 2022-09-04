@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/20.
-//
+//  通知功能提供
 
 import Foundation
 import UserNotifications

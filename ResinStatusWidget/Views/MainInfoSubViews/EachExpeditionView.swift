@@ -3,7 +3,7 @@
 //  GenshinPizzaHelper
 //
 //  Created by 戴藏龙 on 2022/8/23.
-//
+//  每条探索派遣信息View
 
 import SwiftUI
 
@@ -27,11 +27,6 @@ struct EachExpeditionView: View {
 
         }
         .foregroundColor(Color("textColor3"))
-
-//        webView(url: expedition.avatarSideIconUrl)
-//            .border(.black, width: 3)
-//        .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
-//        .background(WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true))
     }
 
     @ViewBuilder
@@ -89,27 +84,3 @@ struct EachExpeditionView: View {
 
     }
 }
-
-struct NetworkImage: View {
-
-  let url: URL?
-
-  var body: some View {
-
-    Group {
-     if let url = url, let imageData = try? Data(contentsOf: url),
-       let uiImage = UIImage(data: imageData) {
-
-       Image(uiImage: uiImage)
-         .resizable()
-//         .aspectRatio(contentMode: .fill)
-      }
-      else {
-       Image("placeholder-image")
-      }
-    }
-  }
-
-}
-
-

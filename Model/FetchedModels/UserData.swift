@@ -3,7 +3,7 @@
 //  原神披萨小助手
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  小组件和主页用到的各类数据和处理工具
 
 import Foundation
 
