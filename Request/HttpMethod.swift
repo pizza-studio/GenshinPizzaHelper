@@ -6,6 +6,7 @@
 //  HTTP请求方法
 
 import Foundation
+import CFNetwork
 
 enum Method {
     case post
@@ -43,6 +44,8 @@ struct HttpMethod<T: Codable> {
             let sessionUseProxy = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.bool(forKey: "useProxy")
             let sessionProxyHost = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyHost")
             let sessionProxyPort = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyPort")
+            let sessionProxyUserName = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyUserName")
+            let sessionProxyPassword = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyUserPassword")
             if sessionUseProxy {
                 guard let sessionProxyHost = sessionProxyHost else {
                     print("Proxy host error")
@@ -51,6 +54,16 @@ struct HttpMethod<T: Codable> {
                 guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
                     print("Proxy port error")
                     return sessionConfiguration
+                }
+
+                if sessionProxyUserName != nil && sessionProxyUserName != "" && sessionProxyPassword != nil && sessionProxyPassword != "" {
+                    print("Proxy add authorization")
+                    let userPasswordString = "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
+                    let userPasswordData = userPasswordString.data(using: String.Encoding.utf8)
+                    let base64EncodedCredential = userPasswordData!.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+                    let authString = "Basic \(base64EncodedCredential)"
+                    sessionConfiguration.httpAdditionalHeaders = ["Proxy-Authorization": authString]
+                    sessionConfiguration.httpAdditionalHeaders = ["Authorization" : authString]
                 }
 
                 print("Use Proxy \(sessionProxyHost):\(sessionProxyPort)")
