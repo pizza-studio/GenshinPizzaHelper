@@ -269,6 +269,9 @@
 		BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
+		BFCC064A28C5EA6A003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
+		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -772,6 +775,7 @@
 				"zh-Hans",
 				en,
 				ja,
+				fr,
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
@@ -1043,6 +1047,7 @@
 			children = (
 				BF70212F28B50D7800A6BBA9 /* en */,
 				BF70213D28B7203700A6BBA9 /* ja */,
+				BFCC064B28C5EA76003E4A54 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1052,6 +1057,7 @@
 			children = (
 				BF70213628B5259300A6BBA9 /* en */,
 				BF70213E28B7203B00A6BBA9 /* ja */,
+				BFCC064C28C5EA79003E4A54 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1062,6 +1068,7 @@
 				BFFD822F28A650C300616CE1 /* zh-Hans */,
 				BF70213928B65E5200A6BBA9 /* en */,
 				BF70213C28B7202200A6BBA9 /* ja */,
+				BFCC064A28C5EA6A003E4A54 /* fr */,
 			);
 			name = AccountIntents.intentdefinition;
 			sourceTree = "<group>";
