@@ -207,9 +207,6 @@ struct TalentMaterialProvider {
 
 }
 
-
-
-
 enum MaterialWeekday {
     case mondayAndThursday
     case tuesdayAndFriday

@@ -13,39 +13,11 @@ struct HomeView: View {
 
     var animation: Namespace.ID
     @EnvironmentObject var detail: DisplayContentModel
-
-    func getDate() -> String {
-        let formatter = DateFormatter()
-//        formatter.dateStyle = .full
-        formatter.setLocalizedDateFormatFromTemplate("MMMMd EEEE")
-        return formatter.string(from: Date())
-    }
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    HStack {
-                        Text(getDate())
-                            .foregroundColor(.gray)
-                            .font(.system(size: 14))
-                            .padding(16)
-                        Spacer()
-                    }.frame(height: 16, alignment: .topLeading)
-                    HStack {
-                        Text("原神披萨小助手")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .padding(16)
-                        Spacer(minLength: UIScreen.main.bounds.width * 1/10)
-                        // Not used
-//                        Image("avator")
-//                            .resizable() // 画像のサイズを変更可能にする
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 36, height: 36, alignment: .center)
-//                            .clipShape(Circle()) // 正円形に切り抜く
-//                            .padding(.trailing, 16)
-                    }
                     if viewModel.accounts.isEmpty {
                         NavigationLink(destination: AddAccountView()) {
                             Label("请先添加帐号", systemImage: "plus.circle")
@@ -116,7 +88,8 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationBarHidden(true)
+            .navigationTitle("原神披萨小助手")
+            .navigationBarTitleDisplayMode(.large)
         }
         .navigationViewStyle(.stack)
     }
