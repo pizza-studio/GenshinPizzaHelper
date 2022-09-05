@@ -28,8 +28,22 @@ struct InAppMaterialNavigator: View {
                         .padding(.leading, 25)
                         .padding(.bottom, -10)
                     Spacer()
+                    Text(getDate())
+                        .font(.caption)
+                        .padding(.top)
+                        .padding(.trailing, 25)
+                        .padding(.bottom, -10)
                 } else {
-                    Text("今日材料：星期日所有材料均可获取")
+                    Text("今日材料")
+                        .font(.caption)
+                        .padding()
+                    Spacer()
+                    Text("所有材料均可获取")
+                        .multilineTextAlignment(.center)
+                        .font(.caption)
+                        .padding()
+                    Spacer()
+                    Text(getDate())
                         .font(.caption)
                         .padding()
                 }
@@ -116,6 +130,12 @@ struct InAppMaterialNavigator: View {
             }
             Spacer()
         }
+    }
+
+    func getDate() -> String {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("MMMMd EEEE")
+        return formatter.string(from: Date())
     }
 }
 

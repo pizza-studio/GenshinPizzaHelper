@@ -45,7 +45,6 @@ struct ContentView: View {
                     .tabItem {
                         Label("主页", systemImage: "house")
                     }
-                    .statusBar(hidden: true)
                 SettingsView(storeManager: storeManager)
                     .tag(1)
                     .environmentObject(viewModel)

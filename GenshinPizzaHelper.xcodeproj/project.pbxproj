@@ -78,7 +78,7 @@
 		BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823928A73A5400616CE1 /* ReviewHandler.swift */; };
 		EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07C65528B11DB40030E338 /* NotificationSettingView.swift */; };
 		EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099FF428A2B7220023B4AF /* Intents.framework */; };
-		EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EA09A00D28A2B8660023B4AF /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EA09A00E28A2B8700023B4AF /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
@@ -113,7 +113,7 @@
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
 		EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */; };
-		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
@@ -269,6 +269,9 @@
 		BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
+		BFCC064A28C5EA6A003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
+		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -772,6 +775,7 @@
 				"zh-Hans",
 				en,
 				ja,
+				fr,
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
@@ -1027,11 +1031,13 @@
 /* Begin PBXTargetDependency section */
 		EA099FFB28A2B7220023B4AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = EA099FF228A2B7220023B4AF /* AccountIntent */;
 			targetProxy = EA099FFA28A2B7220023B4AF /* PBXContainerItemProxy */;
 		};
 		EA30F9AE2886B49300AE7BEA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
 			targetProxy = EA30F9AD2886B49300AE7BEA /* PBXContainerItemProxy */;
 		};
@@ -1043,6 +1049,7 @@
 			children = (
 				BF70212F28B50D7800A6BBA9 /* en */,
 				BF70213D28B7203700A6BBA9 /* ja */,
+				BFCC064B28C5EA76003E4A54 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1052,6 +1059,7 @@
 			children = (
 				BF70213628B5259300A6BBA9 /* en */,
 				BF70213E28B7203B00A6BBA9 /* ja */,
+				BFCC064C28C5EA79003E4A54 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1062,6 +1070,7 @@
 				BFFD822F28A650C300616CE1 /* zh-Hans */,
 				BF70213928B65E5200A6BBA9 /* en */,
 				BF70213C28B7202200A6BBA9 /* ja */,
+				BFCC064A28C5EA6A003E4A54 /* fr */,
 			);
 			name = AccountIntents.intentdefinition;
 			sourceTree = "<group>";
@@ -1090,6 +1099,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.AccountIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1117,6 +1127,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.AccountIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1145,6 +1156,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1173,6 +1185,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1324,6 +1337,7 @@
 				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "原神披萨小助手";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1359,6 +1373,7 @@
 				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "原神披萨小助手";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
