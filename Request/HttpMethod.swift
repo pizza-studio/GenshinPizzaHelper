@@ -37,6 +37,35 @@ struct HttpMethod<T: Codable> {
     ) {
         let networkReachability = NetworkReachability()
 
+        func getSessionConfiguration() -> URLSessionConfiguration {
+            let sessionConfiguration = URLSessionConfiguration.default
+
+            let sessionUseProxy = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.bool(forKey: "useProxy")
+            let sessionProxyHost = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyHost")
+            let sessionProxyPort = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyPort")
+            if sessionUseProxy {
+                guard let sessionProxyHost = sessionProxyHost else {
+                    print("Proxy host error")
+                    return sessionConfiguration
+                }
+                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
+                    print("Proxy port error")
+                    return sessionConfiguration
+                }
+
+                print("Use Proxy \(sessionProxyHost):\(sessionProxyPort)")
+
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPEnable as String] = true
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPProxy as String] = sessionProxyHost
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPPort as String] = sessionProxyPort
+                sessionConfiguration.connectionProxyDictionary?[kCFProxyTypeHTTP as String] = "\(sessionProxyHost):\(sessionProxyPort)"
+                sessionConfiguration.connectionProxyDictionary?[kCFProxyTypeHTTPS as String] = "\(sessionProxyHost):\(sessionProxyPort)"
+            } else {
+                print("No Proxy")
+            }
+            return sessionConfiguration
+        }
+
         func get_ds_token(uid: String, server_id: String) -> String {
             let s: String
             switch region {
@@ -99,7 +128,8 @@ struct HttpMethod<T: Codable> {
                     request.httpMethod = "PUT"
                 }
                 // 开始请求
-                URLSession.shared.dataTask(
+                let session = URLSession.init(configuration: getSessionConfiguration())
+                session.dataTask(
                     with: request
                 ) { data, response, error in
                     // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
