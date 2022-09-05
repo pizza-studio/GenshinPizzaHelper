@@ -77,6 +77,7 @@ struct GlobalDonateView: View {
                         .foregroundColor(.white)
                         .background(Color.accentColor)
                         .clipShape(Capsule())
+                        .buttonStyle(BorderlessButtonStyle())
                     }
                 }
             }
