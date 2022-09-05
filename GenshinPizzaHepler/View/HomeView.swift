@@ -16,7 +16,8 @@ struct HomeView: View {
 
     func getDate() -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .full
+//        formatter.dateStyle = .full
+        formatter.setLocalizedDateFormatFromTemplate("MMMMd EEEE")
         return formatter.string(from: Date())
     }
     
