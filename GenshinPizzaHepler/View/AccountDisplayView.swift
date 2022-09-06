@@ -13,7 +13,7 @@ struct AccountDisplayView: View {
     var accountName: String { detail.accountName }
     var accountUUIDString: String { detail.accountUUIDString }
     @State private var animationDone: Bool = false
-    
+    @Binding var bgFadeOutAnimation: Bool
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
     fileprivate var gameInfoBlock: some View {
@@ -97,7 +97,7 @@ struct AccountDisplayView: View {
         }
         .padding(.horizontal, 25)
         .background(
-            AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
+            AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
                 .padding(-10)
                 .ignoresSafeArea(.all)
@@ -157,6 +157,7 @@ struct GameInfoBlockForSave: View {
     var animation: Namespace.ID
 
     var widgetBackground: WidgetBackground
+    @State var bgFadeOutAnimation: Bool = false
 
     var body: some View {
         HStack {
@@ -204,7 +205,7 @@ struct GameInfoBlockForSave: View {
                 .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
             Spacer()
         }
-        .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true)
+        .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
             .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation))
         .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
@@ -216,6 +217,7 @@ private struct AccountDisplayContentView: View {
     var animation: Namespace.ID
     var accountName: String { detail.accountName }
     var accountUUIDString: String { detail.accountUUIDString }
+    @State var bgFadeOutAnimation: Bool = false
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -281,7 +283,7 @@ private struct AccountDisplayContentView: View {
         }
 
         .background(
-            AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true)
+            AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
                 .padding(-10)
                 .ignoresSafeArea(.all)

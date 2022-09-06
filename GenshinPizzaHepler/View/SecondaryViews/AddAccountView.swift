@@ -39,7 +39,8 @@ struct AddAccountView: View {
     @State private var userData: UserData?
 
     @Namespace var animation
-    
+
+    @State var bgFadeOutAnimation: Bool = false
     
     var body: some View {
         List {
@@ -107,7 +108,7 @@ struct AddAccountView: View {
             }
             
             if let userData = userData {
-                GameInfoBlock(userData: userData, accountName: unsavedName, animation: animation, widgetBackground: WidgetBackground.randomNamecardBackground)
+                GameInfoBlock(userData: userData, accountName: unsavedName, animation: animation, widgetBackground: WidgetBackground.randomNamecardBackground, bgFadeOutAnimation: $bgFadeOutAnimation)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .aspectRatio(170/364, contentMode: .fill)

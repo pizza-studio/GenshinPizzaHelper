@@ -13,6 +13,8 @@ struct HomeView: View {
 
     var animation: Namespace.ID
     @EnvironmentObject var detail: DisplayContentModel
+
+    @Binding var bgFadeOutAnimation: Bool
     
     var body: some View {
         NavigationView {
@@ -33,7 +35,7 @@ struct HomeView: View {
                         if account.fetchComplete {
                             switch account.result {
                             case .success(let userData):
-                                GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background)
+                                GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
                                     .padding()
                                     .listRowBackground(Color.white.opacity(0))
                                     .onTapGesture {

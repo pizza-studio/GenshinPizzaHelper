@@ -26,6 +26,8 @@ struct ContactUsView: View {
                             .padding(.vertical, 5)
                     }
                     Spacer()
+                    Image(systemName: "chevron.right")
+                        .rotationEffect(.degrees(isLavaDetailShow ? 90 : 0))
                 }
                 .onTapGesture {
                     simpleTaptic(type: .light)
@@ -76,6 +78,8 @@ struct ContactUsView: View {
                             .padding(.vertical, 5)
                     }
                     Spacer()
+                    Image(systemName: "chevron.right")
+                        .rotationEffect(.degrees(isHakubillDetailShow ? 90 : 0))
                 }
                 .onTapGesture {
                     simpleTaptic(type: .light)
