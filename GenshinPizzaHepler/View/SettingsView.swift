@@ -17,6 +17,8 @@ struct SettingsView: View {
 
     @StateObject var storeManager: StoreManager
 
+    @State var isWidgetTipsSheetShow: Bool = false
+
     var body: some View {
         NavigationView {
             List {
@@ -38,6 +40,8 @@ struct SettingsView: View {
                         Spacer()
                         EditModeButton(editMode: $editMode)
                     }
+                } footer: {
+                    Button("如何自定义配置小组件和更换小组件背景？") { isWidgetTipsSheetShow.toggle() }
                 }
                 // 通知设置
                 NotificationSettingNavigator()
