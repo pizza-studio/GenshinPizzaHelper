@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State var editMode: EditMode = .inactive
+
     @EnvironmentObject var viewModel: ViewModel
     var accounts: [Account] { viewModel.accounts }
     
@@ -18,7 +20,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("我的帐号")) {
+                Section {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         NavigationLink(destination: AccountDetailView(account: $account)) {
                             AccountInfoView(accountConfig: $account.config)
@@ -29,6 +31,12 @@ struct SettingsView: View {
                     }
                     NavigationLink(destination: AddAccountView()) {
                         Label("添加帐号", systemImage: "plus.circle")
+                    }
+                } header: {
+                    HStack {
+                        Text("我的帐号")
+                        Spacer()
+                        EditModeButton(editMode: $editMode)
                     }
                 }
                 // 通知设置
@@ -54,8 +62,30 @@ struct SettingsView: View {
                     Text("更多")
                 }
             }
+            .environment(\.editMode, $editMode)
             .navigationTitle("设置")
         }
         .navigationViewStyle(.stack)
+    }
+}
+
+private struct EditModeButton: View {
+    @Binding var editMode: EditMode
+    var body: some View {
+        Button {
+            withAnimation(.easeInOut(duration: 0.1)) {
+                if editMode.isEditing {
+                    editMode = .inactive
+                } else {
+                    editMode = .active
+                }
+            }
+        } label: {
+            if editMode.isEditing {
+                Text("完成")
+            } else {
+                Text("编辑")
+            }
+        }
     }
 }
