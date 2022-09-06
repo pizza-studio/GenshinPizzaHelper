@@ -70,6 +70,9 @@ struct SettingsView: View {
             .navigationTitle("设置")
         }
         .navigationViewStyle(.stack)
+        .sheet(isPresented: $isWidgetTipsSheetShow) {
+            WidgetTipsView()
+        }
     }
 }
 
