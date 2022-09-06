@@ -19,7 +19,7 @@ struct WidgetTipsView: View {
                 }
 
                 Section (header: Text("如何添加小组件？")) {
-                    NavigationLink(destination: WebBroswerView(url: "https://support.apple.com/guide/iphone/iphb8f1bf206/").navigationTitle("如何添加小组件？").navigationBarTitleDisplayMode(.inline)) {
+                    NavigationLink(destination: WebBroswerView(url: "https://support.apple.com/HT207122").navigationTitle("如何添加小组件？").navigationBarTitleDisplayMode(.inline)) {
                         Label("关于如何添加小组件，请参考Apple支持文档", systemImage: "safari")
                             .padding(.vertical)
                     }
