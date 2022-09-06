@@ -79,9 +79,9 @@ private struct EditModeButton: View {
             }
         } label: {
             if editMode.isEditing {
-                Text("完成".localized)
+                Text("完成")
             } else {
-                Text("编辑".localized)
+                Text("编辑")
             }
         }
     }
