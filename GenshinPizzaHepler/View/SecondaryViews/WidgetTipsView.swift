@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WidgetTipsView: View {
+    @Binding var isSheetShow: Bool
+
     var body: some View {
         NavigationView {
             List {
@@ -25,6 +27,13 @@ struct WidgetTipsView: View {
                     }
                     Label("如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件", systemImage: "exclamationmark.circle")
                         .padding(.vertical)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("完成") {
+                        isSheetShow.toggle()
+                    }
                 }
             }
             .navigationTitle("小组件使用提示")
