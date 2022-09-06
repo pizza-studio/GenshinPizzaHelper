@@ -71,7 +71,7 @@ struct SettingsView: View {
         }
         .navigationViewStyle(.stack)
         .sheet(isPresented: $isWidgetTipsSheetShow) {
-            WidgetTipsView()
+            WidgetTipsView(isSheetShow: $isWidgetTipsSheetShow)
         }
     }
 }
