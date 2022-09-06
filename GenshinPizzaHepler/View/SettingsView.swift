@@ -41,7 +41,9 @@ struct SettingsView: View {
                         EditModeButton(editMode: $editMode)
                     }
                 } footer: {
-                    Button("如何添加、配置小组件和更换小组件背景？") { isWidgetTipsSheetShow.toggle() }
+                    Button { isWidgetTipsSheetShow.toggle() } label: {
+                        Text("如何添加、配置小组件和更换小组件背景？").multilineTextAlignment(.leading)
+                    }
                 }
                 // 通知设置
                 NotificationSettingNavigator()
