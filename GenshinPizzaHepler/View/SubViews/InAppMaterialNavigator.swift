@@ -68,7 +68,7 @@ struct InAppMaterialNavigator: View {
     @ViewBuilder
     func materials() -> some View {
         if today != .sunday {
-            let imageWidth = UIScreen.main.bounds.width * 1/10
+            let imageWidth = CGFloat(40)
             HStack(spacing: 0) {
                 Spacer()
                 ForEach(talentMaterialProvider.todaysMaterials, id: \.imageString) { material in
@@ -79,7 +79,7 @@ struct InAppMaterialNavigator: View {
                         .frame(width: imageWidth)
                         .padding(.vertical)
                 }
-                Spacer(minLength: UIScreen.main.bounds.width * 1/30)
+                Spacer()
                 ForEach(weaponMaterialProvider.todaysMaterials, id: \.imageString) { material in
                     Image(material.imageString)
                         .resizable()
@@ -96,7 +96,7 @@ struct InAppMaterialNavigator: View {
 
     @ViewBuilder
     func materialsDetail() -> some View {
-        let imageWidth = UIScreen.main.bounds.width * 1/8
+        let imageWidth = CGFloat(50)
         HStack {
             Spacer()
             VStack(alignment: .leading) {
@@ -109,9 +109,7 @@ struct InAppMaterialNavigator: View {
                             .frame(width: imageWidth)
                         Text(material.localizedName)
                             .foregroundColor(Color("materialTextColor"))
-
                     }
-
                 }
             }
             Spacer()
