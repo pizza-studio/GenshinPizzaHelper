@@ -18,6 +18,8 @@ struct AppBlockBackgroundView: View {
     var backgroundIconName: String? { background.iconName }
     var backgroundImageName: String? { background.imageName }
 
+    @Binding var bgFadeOutAnimation: Bool
+
 
     var body: some View {
         ZStack{
@@ -40,6 +42,13 @@ struct AppBlockBackgroundView: View {
                 Image(backgroundImageName)
                     .resizable()
                     .scaledToFill()
+                    .opacity(bgFadeOutAnimation ? 0 : 1)
+                    .animation(.easeInOut(duration: 0.2), value: bgFadeOutAnimation)
+                    .onChange(of: background) { new in
+                        withAnimation {
+                            self.bgFadeOutAnimation = false
+                        }
+                    }
             }
 
             if colorScheme == .dark && darkModeOn {
