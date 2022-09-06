@@ -42,6 +42,9 @@ struct SettingsView: View {
                     }
                 }
                 Section {
+                    NavigationLink(destination: GuideVideoLinkView()) {
+                        Text("App介绍视频")
+                    }
                     NavigationLink(destination: BackgroundsPreviewView()) {
                         Text("背景名片预览")
                     }

@@ -87,9 +87,9 @@
 
 ### 国际化工作流程介绍
 
-1. 开发过程中，在`Localizable(English).strings`文件中添加原始中文原文，但是不添加翻译。如果有遗漏也不必担心，将在后面步骤检查补充。
+1. 开发过程中，不添加国际化相关内容。
 
-2. 版本全部开发结束后，切换测试语言为English，将`Localizable(English).strings`文件中的新增的内容复制到其他语言的国际化文件中。
+2. 版本全部开发结束后，切换测试语言为English，将新增的页面和修改的页面的内容添加到`Localizable(English).strings`文件中，然后复制到其他语言的国际化文件中。
 
 3. 在`Localizable(English).strings`文件中完成英语内容的翻译。
 
