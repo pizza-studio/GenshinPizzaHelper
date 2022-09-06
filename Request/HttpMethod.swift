@@ -6,6 +6,7 @@
 //  HTTP请求方法
 
 import Foundation
+import CFNetwork
 
 enum Method {
     case post
@@ -36,6 +37,47 @@ struct HttpMethod<T: Codable> {
         )
     ) {
         let networkReachability = NetworkReachability()
+
+        func getSessionConfiguration() -> URLSessionConfiguration {
+            let sessionConfiguration = URLSessionConfiguration.default
+
+            let sessionUseProxy = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.bool(forKey: "useProxy")
+            let sessionProxyHost = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyHost")
+            let sessionProxyPort = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyPort")
+            let sessionProxyUserName = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyUserName")
+            let sessionProxyPassword = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyUserPassword")
+            if sessionUseProxy {
+                guard let sessionProxyHost = sessionProxyHost else {
+                    print("Proxy host error")
+                    return sessionConfiguration
+                }
+                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
+                    print("Proxy port error")
+                    return sessionConfiguration
+                }
+
+                if sessionProxyUserName != nil && sessionProxyUserName != "" && sessionProxyPassword != nil && sessionProxyPassword != "" {
+                    print("Proxy add authorization")
+                    let userPasswordString = "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
+                    let userPasswordData = userPasswordString.data(using: String.Encoding.utf8)
+                    let base64EncodedCredential = userPasswordData!.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+                    let authString = "Basic \(base64EncodedCredential)"
+                    sessionConfiguration.httpAdditionalHeaders = ["Proxy-Authorization": authString]
+                    sessionConfiguration.httpAdditionalHeaders = ["Authorization" : authString]
+                }
+
+                print("Use Proxy \(sessionProxyHost):\(sessionProxyPort)")
+
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPEnable as String] = true
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPProxy as String] = sessionProxyHost
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPPort as String] = sessionProxyPort
+                sessionConfiguration.connectionProxyDictionary?[kCFProxyTypeHTTP as String] = "\(sessionProxyHost):\(sessionProxyPort)"
+                sessionConfiguration.connectionProxyDictionary?[kCFProxyTypeHTTPS as String] = "\(sessionProxyHost):\(sessionProxyPort)"
+            } else {
+                print("No Proxy")
+            }
+            return sessionConfiguration
+        }
 
         func get_ds_token(uid: String, server_id: String) -> String {
             let s: String
@@ -99,7 +141,8 @@ struct HttpMethod<T: Codable> {
                     request.httpMethod = "PUT"
                 }
                 // 开始请求
-                URLSession.shared.dataTask(
+                let session = URLSession.init(configuration: getSessionConfiguration())
+                session.dataTask(
                     with: request
                 ) { data, response, error in
                     // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
