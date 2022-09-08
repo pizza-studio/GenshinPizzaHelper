@@ -6,6 +6,7 @@
 //  检查网络可用性
 
 import Foundation
+#if !os(watchOS)
 import SystemConfiguration
 
 // 检查网络可用性
@@ -32,6 +33,11 @@ class NetworkReachability: ObservableObject {
         return isNetworkReachable(with: flags)
     }
 }
+#else
+class NetworkReachability: ObservableObject {
+    @Published private(set) var reachable: Bool = true
+}
+#endif
 
 enum ConnectStatus {
     case unknown

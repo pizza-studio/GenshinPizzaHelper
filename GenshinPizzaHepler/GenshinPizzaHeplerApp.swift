@@ -11,7 +11,9 @@ import StoreKit
 @main
 struct GenshinPizzaHeplerApp: App {
     let viewModel: ViewModel = .shared
+    #if !os(watchOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    #endif
     @StateObject var storeManager = StoreManager()
 
     let productIDs = [
@@ -30,19 +32,23 @@ struct GenshinPizzaHeplerApp: App {
         if !isPolicySaved {
             defaultStandard.setValue(false, forKey: "isPolicyShown")
         }
-        
+        #if !os(watchOS)
         UserNotificationCenter.shared.askPermission()
-        
+        #endif
     }
     
     var body: some Scene {
         WindowGroup {
+            #if os(watchOS)
+            ContentView()
+            #else
             ContentView(storeManager: storeManager)
                 .environmentObject(viewModel)
                 .onAppear {
                     SKPaymentQueue.default().add(storeManager)
                     storeManager.getProducts(productIDs: productIDs)
                 }
+            #endif
         }
     }
 }
