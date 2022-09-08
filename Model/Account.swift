@@ -45,4 +45,3 @@ extension AccountConfiguration {
         { completion($0) }
     }
 }
-

@@ -13,11 +13,16 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                if viewModel.accounts.isEmpty {
-                    Label("请先添加帐号", systemImage: "plus.circle")
+            if viewModel.accounts.isEmpty {
+                VStack {
+                    Text("请等待帐号从iCloud同步")
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                    Image(systemName: "icloud.and.arrow.down")
+                    ProgressView()
                 }
-                else {
+            } else {
+                List {
                     ForEach(viewModel.accounts, id: \.config.uuid) { account in
                         Text(account.config.name ?? "no name")
                     }
