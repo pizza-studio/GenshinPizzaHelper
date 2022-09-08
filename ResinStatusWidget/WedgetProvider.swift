@@ -7,6 +7,16 @@
 
 import Foundation
 import SwiftUI
+
+#if os(watchOS)
+struct ResinEntry {
+    let date: Date
+    let result: FetchResult
+    let viewConfig: WidgetViewConfiguration
+    var accountName: String? = nil
+}
+
+#else
 import WidgetKit
 
 struct ResinEntry: TimelineEntry {
@@ -112,9 +122,6 @@ struct Provider: IntentTimelineProvider {
             completion(timeline)
             print("Widget Fetch succeed")
         }
-        
-        
     }
-        
 }
-
+#endif

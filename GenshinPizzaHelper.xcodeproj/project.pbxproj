@@ -80,9 +80,13 @@
 		BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
 		BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
-		BFCC06A328C9BD6C003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		BFCC06A428C9BD80003E4A54 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		BFCC06A528C9BD9E003E4A54 /* AccountIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823028A650C300616CE1 /* AccountIntents.intentdefinition */; };
+		BFCC06B028CA1984003E4A54 /* WatchGameInfoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */; };
+		BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
+		BFCC06B228CA1D20003E4A54 /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
+		BFCC06B428CA1EBD003E4A54 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
+		BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -371,6 +375,8 @@
 		BFCC067328C9B6A2003E4A54 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		BFCC06A928C9C0C7003E4A54 /* WatchHelper WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchHelper WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		BFCC06AA28C9C0CE003E4A54 /* WatchHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchHelper.entitlements; sourceTree = "<group>"; };
+		BFCC06AE28CA1984003E4A54 /* WatchHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WatchHelper-Bridging-Header.h"; sourceTree = "<group>"; };
+		BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchGameInfoBlock.swift; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -577,7 +583,7 @@
 			isa = PBXGroup;
 			children = (
 				BFCC06A928C9C0C7003E4A54 /* WatchHelper WatchKit Extension.entitlements */,
-				BFCC066528C9B6A1003E4A54 /* ContentView.swift */,
+				BFCC06AB28CA190E003E4A54 /* View */,
 				BFCC066728C9B6A1003E4A54 /* NotificationController.swift */,
 				BFCC066928C9B6A1003E4A54 /* NotificationView.swift */,
 				BFCC066B28C9B6A1003E4A54 /* ComplicationController.swift */,
@@ -595,6 +601,32 @@
 				BFCC067028C9B6A2003E4A54 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BFCC06AB28CA190E003E4A54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC066528C9B6A1003E4A54 /* ContentView.swift */,
+				BFCC06AD28CA1927003E4A54 /* SecondaryViews */,
+				BFCC06AC28CA1921003E4A54 /* SubViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BFCC06AC28CA1921003E4A54 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */,
+				BFCC06AE28CA1984003E4A54 /* WatchHelper-Bridging-Header.h */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		BFCC06AD28CA1927003E4A54 /* SecondaryViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SecondaryViews;
 			sourceTree = "<group>";
 		};
 		BFE42537289E4FF700FEFA49 /* Views */ = {
@@ -709,13 +741,13 @@
 		EA56E07A28A26C0D00A64262 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				EA56E07C28A26C0D00A64262 /* ResinInfo.swift */,
 				EA56E07D28A26C0D00A64262 /* ExpeditionInfo.swift */,
-				EA56E07E28A26C0D00A64262 /* WeeklyBossesInfo.swift */,
 				EA56E08028A26C0D00A64262 /* DailyTaskInfo.swift */,
-				EA56E08128A26C0D00A64262 /* TransformerInfo.swift */,
-				EA56E08228A26C0D00A64262 /* RecoveryTime.swift */,
 				EA56E08328A26C0D00A64262 /* HomeCoinInfo.swift */,
+				EA56E08228A26C0D00A64262 /* RecoveryTime.swift */,
+				EA56E07C28A26C0D00A64262 /* ResinInfo.swift */,
+				EA56E08128A26C0D00A64262 /* TransformerInfo.swift */,
+				EA56E07E28A26C0D00A64262 /* WeeklyBossesInfo.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -942,6 +974,7 @@
 				TargetAttributes = {
 					BFCC065528C9B6A0003E4A54 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 					BFCC065D28C9B6A1003E4A54 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -1061,6 +1094,7 @@
 				BFCC068428C9BBC8003E4A54 /* OptionalAccounts.swift in Sources */,
 				BFCC069A28C9BBD3003E4A54 /* StoreManager.swift in Sources */,
 				BFCC066828C9B6A1003E4A54 /* NotificationController.swift in Sources */,
+				BFCC06B028CA1984003E4A54 /* WatchGameInfoBlock.swift in Sources */,
 				BFCC068828C9BBC8003E4A54 /* ViewModel.swift in Sources */,
 				BFCC06A528C9BD9E003E4A54 /* AccountIntents.intentdefinition in Sources */,
 				BFCC068628C9BBC8003E4A54 /* BackgroundOptions.swift in Sources */,
@@ -1075,8 +1109,10 @@
 				BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */,
 				BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */,
 				BFCC069028C9BBC8003E4A54 /* HomeCoinInfo.swift in Sources */,
+				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
 				BFCC069528C9BBC8003E4A54 /* WeeklyBossesInfo.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
+				BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */,
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
 				BFCC068728C9BBC8003E4A54 /* Error.swift in Sources */,
@@ -1086,9 +1122,9 @@
 				BFCC068B28C9BBC8003E4A54 /* DisplayContentModel.swift in Sources */,
 				BFCC069828C9BBCF003E4A54 /* HttpMethod.swift in Sources */,
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
+				BFCC06B228CA1D20003E4A54 /* WedgetProvider.swift in Sources */,
 				BFCC069728C9BBCF003E4A54 /* FeatureAPI.swift in Sources */,
 				BFCC06A428C9BD80003E4A54 /* WidgetViewConfiguration.swift in Sources */,
-				BFCC06A328C9BD6C003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
 				BFCC068F28C9BBC8003E4A54 /* TransformerInfo.swift in Sources */,
 				BFCC069228C9BBC8003E4A54 /* DailyTaskInfo.swift in Sources */,
@@ -1124,6 +1160,7 @@
 				EA09A01828A2B8B80023B4AF /* RecoveryTime.swift in Sources */,
 				EA09A01928A2B8B90023B4AF /* HomeCoinInfo.swift in Sources */,
 				BFFD821028A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
+				BFCC06B428CA1EBD003E4A54 /* ViewModel.swift in Sources */,
 				EA09A01128A2B8A90023B4AF /* Result.swift in Sources */,
 				EA09A01728A2B8B60023B4AF /* TransformerInfo.swift in Sources */,
 				EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */,
@@ -1350,6 +1387,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WatchHelper/WatchHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 590;
@@ -1359,12 +1397,19 @@
 				INFOPLIST_KEY_CFBundleDisplayName = WatchHelper;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WatchHelper WatchKit Extension/View/SubViews/WatchHelper-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 8.5;
@@ -1377,6 +1422,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WatchHelper/WatchHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 590;
@@ -1386,12 +1432,18 @@
 				INFOPLIST_KEY_CFBundleDisplayName = WatchHelper;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WatchHelper WatchKit Extension/View/SubViews/WatchHelper-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 8.5;

@@ -7,7 +7,9 @@
 
 import Foundation
 import SwiftUI
+#if !os(watchOS)
 import WidgetKit
+#endif
 
 struct AppBlockBackgroundView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
