@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some View {
-        Text("Genshin Pizza Helper")
-            .padding()
+        NavigationView {
+            List {
+                if viewModel.accounts.isEmpty {
+                    Label("请先添加帐号", systemImage: "plus.circle")
+                }
+                else {
+                    ForEach($viewModel.accounts, id: \.config.uuid) { $account in
+                        Text(account.config.name ?? "no name")
+                    }
+                }
+            }
+        }
     }
 }
 

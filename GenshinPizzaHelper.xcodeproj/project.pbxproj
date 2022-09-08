@@ -366,6 +366,8 @@
 		BFCC067028C9B6A2003E4A54 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BFCC067228C9B6A2003E4A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFCC067328C9B6A2003E4A54 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		BFCC06A928C9C0C7003E4A54 /* WatchHelper WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchHelper WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		BFCC06AA28C9C0CE003E4A54 /* WatchHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchHelper.entitlements; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 		BFCC065728C9B6A0003E4A54 /* WatchHelper */ = {
 			isa = PBXGroup;
 			children = (
+				BFCC06AA28C9C0CE003E4A54 /* WatchHelper.entitlements */,
 				BFCC065828C9B6A1003E4A54 /* Assets.xcassets */,
 			);
 			path = WatchHelper;
@@ -568,6 +571,7 @@
 		BFCC066228C9B6A1003E4A54 /* WatchHelper WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BFCC06A928C9C0C7003E4A54 /* WatchHelper WatchKit Extension.entitlements */,
 				BFCC066528C9B6A1003E4A54 /* ContentView.swift */,
 				BFCC066728C9B6A1003E4A54 /* NotificationController.swift */,
 				BFCC066928C9B6A1003E4A54 /* NotificationView.swift */,
@@ -1338,9 +1342,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WatchHelper/WatchHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = WatchHelper_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchHelper;
@@ -1364,9 +1369,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WatchHelper/WatchHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = WatchHelper_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchHelper;
@@ -1388,9 +1394,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchHelper WatchKit Extension/WatchHelper WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchHelper WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchHelper WatchKit Extension/Info.plist";
@@ -1418,6 +1426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchHelper WatchKit Extension/WatchHelper WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchHelper WatchKit Extension/Preview Content\"";

@@ -41,6 +41,7 @@ struct GenshinPizzaHeplerApp: App {
         WindowGroup {
             #if os(watchOS)
             ContentView()
+                .environmentObject(viewModel)
             #else
             ContentView(storeManager: storeManager)
                 .environmentObject(viewModel)
