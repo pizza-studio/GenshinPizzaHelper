@@ -10,9 +10,7 @@ import SwiftUI
 struct WatchGameInfoBlock: View {
     var userData: Result<UserData, FetchError>
     let accountName: String?
-    var accountUUIDString: String
-
-//    let viewConfig = WidgetViewConfiguration.defaultConfig
+    var uid: String
 
     @State var bindingBool = false
 
@@ -24,11 +22,14 @@ struct WatchGameInfoBlock: View {
                     Text(accountName ?? "Name Nil")
                         .font(.caption)
                     Spacer()
-                    Text(accountUUIDString)
-                        .font(.caption)
+                    Text(uid)
+                        .font(.caption2)
                 }
                 Text("\(data.resinInfo.currentResin)")
-                    .font(.title)
+                    .font(.system(size: 50 , design: .rounded))
+                    .fontWeight(.medium)
+                    .foregroundColor(Color("textColor3"))
+                    .shadow(radius: 1)
             }
             .padding()
             .background(AppBlockBackgroundView(background: .randomBackground, darkModeOn: false, bgFadeOutAnimation: $bindingBool))
