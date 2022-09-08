@@ -9,18 +9,24 @@ import Foundation
 import SwiftUI
 import CoreData
 import StoreKit
+import WatchConnectivity
 
 @MainActor
-class ViewModel: ObservableObject {
+class ViewModel: NSObject, ObservableObject {
     
     static let shared = ViewModel()
     
     @Published var accounts: [Account] = []
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
+
+    var session: WCSession
     
-    
-    init() {
+    init(session: WCSession = .default) {
+        self.session = session
+        super.init()
+        self.session.delegate = self
+        session.activate()
         self.fetchAccount()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(fetchAccount),
@@ -79,9 +85,35 @@ class ViewModel: ObservableObject {
             }
         }
     }
-    
 }
 
+extension ViewModel: WCSessionDelegate {
+    #if !os(watchOS)
+    func sessionDidBecomeInactive(_ session: WCSession) {
+
+    }
+
+    func sessionDidDeactivate(_ session: WCSession) {
+
+    }
+    #endif
+
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("The session has completed activation.")
+            }
+        }
+
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            let accounts = message["accounts"] as? [Account]
+            print(accounts == nil ? "data nil" : "data received")
+            self.accounts = accounts ?? []
+        }
+    }
+}
 
 extension Array where Element == Account {
     func isEqualTo(_ newAccountConfigs: [AccountConfiguration]) -> Bool {

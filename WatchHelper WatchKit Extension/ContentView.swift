@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @ObservedObject var viewModel = ViewModel()
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
@@ -18,7 +18,7 @@ struct ContentView: View {
                     Label("请先添加帐号", systemImage: "plus.circle")
                 }
                 else {
-                    ForEach($viewModel.accounts, id: \.config.uuid) { $account in
+                    ForEach(viewModel.accounts, id: \.config.uuid) { account in
                         Text(account.config.name ?? "no name")
                     }
                 }
