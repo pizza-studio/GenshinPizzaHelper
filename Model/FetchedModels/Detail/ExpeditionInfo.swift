@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/7.
-//
+//  探索派遣信息
 
 import Foundation
 
@@ -57,14 +57,15 @@ struct Expedition: Codable {
     let remainedTimeStr: String
     let statusStr: String
 
-    var totalTime: Double {
-        switch charactersEnglishName {
-        case "Chongyun", "Fischl", "Bennett", "Sara", "Keqing":
-            return Double(15 * 60 * 60)
-        default:
-            return Double(20 * 60 * 60)
-        }
-    }
+//    var totalTime: Double {
+//        switch charactersEnglishName {
+//        case "Chongyun", "Fischl", "Bennett", "Sara", "Keqing":
+//            return Double(15 * 60 * 60)
+//        default:
+//            return Double(20 * 60 * 60)
+//        }
+//    }
+    let totalTime: Double = Double(20 * 60 * 60)
     var percentage: Double {
         (totalTime - Double(recoveryTime.second)) / totalTime
     }

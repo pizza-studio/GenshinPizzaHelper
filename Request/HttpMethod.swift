@@ -3,9 +3,10 @@
 //  原神披萨小助手
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  HTTP请求方法
 
 import Foundation
+import CFNetwork
 
 enum Method {
     case post
@@ -15,12 +16,13 @@ enum Method {
 
 struct HttpMethod<T: Codable> {
 
-    /// 综合的http post方法接口
+    /// 综合的http 各种方法接口
     /// - Parameters:
     ///   - method:Method, http方法的类型
     ///   - urlStr:String，url的字符串后缀，即request的类型
     ///   - region:Region，请求的服务器地区类型
     ///   - serverID: String，服务器ID
+    ///   - uid: String, UID
     ///   - cookie: String， 用户Cookie
     ///   - completion:异步返回处理好的data以及报错的类型
     static func commonRequest (
@@ -35,6 +37,47 @@ struct HttpMethod<T: Codable> {
         )
     ) {
         let networkReachability = NetworkReachability()
+
+        func getSessionConfiguration() -> URLSessionConfiguration {
+            let sessionConfiguration = URLSessionConfiguration.default
+
+            let sessionUseProxy = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.bool(forKey: "useProxy")
+            let sessionProxyHost = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyHost")
+            let sessionProxyPort = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyPort")
+            let sessionProxyUserName = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyUserName")
+            let sessionProxyPassword = UserDefaults(suiteName: "group.GenshinPizzaHelper")!.string(forKey: "proxyUserPassword")
+            if sessionUseProxy {
+                guard let sessionProxyHost = sessionProxyHost else {
+                    print("Proxy host error")
+                    return sessionConfiguration
+                }
+                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
+                    print("Proxy port error")
+                    return sessionConfiguration
+                }
+
+                if sessionProxyUserName != nil && sessionProxyUserName != "" && sessionProxyPassword != nil && sessionProxyPassword != "" {
+                    print("Proxy add authorization")
+                    let userPasswordString = "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
+                    let userPasswordData = userPasswordString.data(using: String.Encoding.utf8)
+                    let base64EncodedCredential = userPasswordData!.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+                    let authString = "Basic \(base64EncodedCredential)"
+                    sessionConfiguration.httpAdditionalHeaders = ["Proxy-Authorization": authString]
+                    sessionConfiguration.httpAdditionalHeaders = ["Authorization" : authString]
+                }
+
+                print("Use Proxy \(sessionProxyHost):\(sessionProxyPort)")
+
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPEnable as String] = true
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPProxy as String] = sessionProxyHost
+                sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPPort as String] = sessionProxyPort
+                sessionConfiguration.connectionProxyDictionary?[kCFProxyTypeHTTP as String] = "\(sessionProxyHost):\(sessionProxyPort)"
+                sessionConfiguration.connectionProxyDictionary?[kCFProxyTypeHTTPS as String] = "\(sessionProxyHost):\(sessionProxyPort)"
+            } else {
+                print("No Proxy")
+            }
+            return sessionConfiguration
+        }
 
         func get_ds_token(uid: String, server_id: String) -> String {
             let s: String
@@ -98,7 +141,8 @@ struct HttpMethod<T: Codable> {
                     request.httpMethod = "PUT"
                 }
                 // 开始请求
-                URLSession.shared.dataTask(
+                let session = URLSession.init(configuration: getSessionConfiguration())
+                session.dataTask(
                     with: request
                 ) { data, response, error in
                     // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
@@ -134,22 +178,22 @@ struct HttpMethod<T: Codable> {
                                 print(error)
                                 completion(.failure(.decodeError(error.localizedDescription)))
                             }
-                            
-                            
-//                            do {
-//                                let requestResult = try decoder.decode(T.self, from: data)
-//                            } catch {
-//                                print("\(error)")
-//                            }
-                            
                         }
                     }
                 }.resume()
             }
         }
     }
-    
-    static func commonRequest (
+
+    /// 返回游戏内帐号信息的请求方法接口
+    /// - Parameters:
+    ///   - method:Method, http方法的类型
+    ///   - urlStr:String，url的字符串后缀，即request的类型
+    ///   - region:Region，请求的服务器地区类型
+    ///   - cookie: String， 用户Cookie
+    ///   - serverID: String，服务器ID
+    ///   - completion:异步返回处理好的data以及报错的类型
+    static func gameAccountRequest (
         _ method: Method,
         _ urlStr: String,
         _ region: Region,
@@ -163,9 +207,6 @@ struct HttpMethod<T: Codable> {
 
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
-                
-                
-                
                 // 请求url前缀，后跟request的类型
                 let baseStr: String
                 let appVersion: String
@@ -256,7 +297,7 @@ struct HttpMethod<T: Codable> {
     }
 }
 
-class API {
+public class API {
     // API方法类，在这里只是一个空壳，以extension的方法扩展
 }
 

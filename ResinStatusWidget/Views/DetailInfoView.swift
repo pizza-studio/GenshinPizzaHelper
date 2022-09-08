@@ -3,7 +3,7 @@
 //  ResinStatusWidgetExtension
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  其他游戏内信息
 
 import Foundation
 import SwiftUI

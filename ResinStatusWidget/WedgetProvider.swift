@@ -3,7 +3,7 @@
 //  Genshin Resin Checker
 //
 //  Created by 戴藏龙 on 2022/7/12.
-//
+//  Widget功能提供
 
 import Foundation
 import SwiftUI

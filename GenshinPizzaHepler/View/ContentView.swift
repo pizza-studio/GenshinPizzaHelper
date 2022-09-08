@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/22.
-//
+//  根View
 
 import SwiftUI
 import WidgetKit
@@ -35,17 +35,18 @@ struct ContentView: View {
     
     @State var isJumpToSettingsView: Bool = false
 
+    @State var bgFadeOutAnimation: Bool = false
+
     var body: some View {
         ZStack {
             TabView(selection: index) {
-                HomeView(animation: animation)
+                HomeView(animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
                     .tag(0)
                     .environmentObject(viewModel)
                     .environmentObject(detail)
                     .tabItem {
                         Label("主页", systemImage: "house")
                     }
-                    .statusBar(hidden: true)
                 SettingsView(storeManager: storeManager)
                     .tag(1)
                     .environmentObject(viewModel)
@@ -55,7 +56,7 @@ struct ContentView: View {
             }
 
             if detail.show {
-                AccountDisplayView(detail: detail, animation: animation)
+                AccountDisplayView(detail: detail, animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
             }
         }
         .onChange(of: scenePhase, perform: { newPhase in
@@ -64,8 +65,15 @@ struct ContentView: View {
                 // 检查是否同意过用户协议
                 let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
                 if !isPolicyShown { sheetType = .userPolicy }
-                viewModel.fetchAccount()
-                viewModel.refreshData()
+                DispatchQueue.main.async {
+                    bgFadeOutAnimation = true
+                }
+                DispatchQueue.main.async {
+                    viewModel.fetchAccount()
+                }
+                DispatchQueue.main.async {
+                    viewModel.refreshData()
+                }
                 UIApplication.shared.applicationIconBadgeNumber = -1
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()

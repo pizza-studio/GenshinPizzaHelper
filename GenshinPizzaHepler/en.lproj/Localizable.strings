@@ -6,6 +6,7 @@
   
 */
 
+// MARK: - 2.0 & above
 // Settings view
 "原神披萨小助手" = "Genshin Pizza Helper";
 "主页" = "Home";
@@ -69,7 +70,7 @@
 "请先添加帐号" = "Add an Account";
 
 // Game Info block
-"%@\n%@ 回满" = "Refill in %@\n%@";
+"%@\n%@ 回满" = "Replenished in %@\n%@";
 "0小时0分钟\n树脂已全部回满" = "0 ʜʀ 0 ᴍɪɴ\nResin is fully capped";
 "%lld天" = "%lld ᴅᴀʏ";
 "%lld小时" = "%lld ʜʀ";
@@ -412,3 +413,35 @@
 "Bilibili主页" = "Bilibili Homepage";
 "GitHub主页" = "GitHub Homepage";
 "水里的碳酸钙" = "Bill Haku";
+
+// MARK: - 2.1
+// Home View
+"所有材料均可获取" = "All farmable on Sunday";
+
+// Proxy
+"代理设置" = "Proxy Settings";
+"启用代理" = "Enable Proxy";
+"代理配置" = "Proxy Configuration";
+"端口" = "Port";
+"认证信息（可选）" = "Authorization (Optional)";
+"用户名" = "Username";
+"密码" = "Password";
+
+// Setting View
+"完成" = "Done";
+"编辑" = "Edit";
+
+//Widget Tips
+"如何添加、配置小组件和更换小组件背景？" = "How to add, configure Widget and change Widget background?";
+"小组件使用提示" = "Widget Tips";
+"如何配置小组件和修改小组件背景？" = "How to configure Widget and change Widget background?";
+"长按小组件，选择编辑\"原神披萨小助手\"" = "Long press the Widget, tap Edit \"Genshin Pizza\"";
+"根据提示选择设置项或启用/关闭功能或修改背景" = "Turn on/off or modify the functions as you need or modify the background";
+"如何添加小组件？" = "How to add a Widget to your Home Screen";
+"关于如何添加小组件，请参考Apple支持文档" = "About how to add a Widget, please refer to the Apple Support Documents";
+"如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件" = "If you failed to find our Widget in the Widget list, reboot and wait for 10 minutes, then try again";
+
+// App Introduce Video
+"App介绍视频" = "App Introduction Videos";
+"打开Bilibili观看" = "Watch on Bilibili";
+"打开YouTube观看" = "Watch on YouTube";

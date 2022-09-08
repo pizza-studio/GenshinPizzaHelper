@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/20.
-//
+//  通知功能提供
 
 import Foundation
 import UserNotifications
@@ -158,8 +158,8 @@ class UserNotificationCenter {
     
     private func createResinNotification(for accountName: String, with resinInfo: ResinInfo, uid: String) {
         let resinNotificationTimeFromFull = (resinInfo.maxResin - Int(resinNotificationNum)) * 8 * 60
-        var resinNotificationTimeDescription: String { relativeTimePointFromNow(second: resinNotificationTimeFromFull) }
-        guard (resinInfo.recoveryTime.second > resinNotificationTimeFromFull) && allowResinNotification else {
+        var resinNotificationTimeDescription: String { relativeTimePointFromNow(second: resinInfo.recoveryTime.second) }
+        guard (resinInfo.currentResin < Int(resinNotificationNum)) && allowResinNotification else {
             deleteNotification(for: uid, object: .resin); return
         }
         

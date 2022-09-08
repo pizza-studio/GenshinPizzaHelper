@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/22.
-//
+//  Taptic Engine支持
 
 import Foundation
 import UIKit

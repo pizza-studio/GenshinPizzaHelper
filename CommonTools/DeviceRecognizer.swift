@@ -3,7 +3,7 @@
 //  GenshinPizzaHelper
 //
 //  Created by Bill Haku on 2022/8/22.
-//
+//  机型识别工具
 
 import Foundation
 import SwiftUI

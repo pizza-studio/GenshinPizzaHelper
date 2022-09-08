@@ -3,7 +3,7 @@
 //  原神披萨小助手
 //
 //  Created by Bill Haku on 2022/8/6.
-//
+//  主要功能的API
 
 import Foundation
 
@@ -11,11 +11,11 @@ extension API {
     struct Features {
         /// 获取信息
         /// - Parameters:
-        ///  - region: 服务器地区
-        ///  - serverID: 服务器ID
-        ///  - uid: 用户UID
-        ///  - cookie: 用户Cookie
-        ///  - completion: 数据
+        ///     - region: 服务器地区
+        ///     - serverID: 服务器ID
+        ///     - uid: 用户UID
+        ///     - cookie: 用户Cookie
+        ///     - completion: 数据
         static func fetchInfos (
             region: Region,
             serverID: String,
@@ -79,12 +79,16 @@ extension API {
                         default:
                             completion(.failure(.requestError(requestError)))
                         }
-                        
                     }
                 }
-
         }
-        
+        /// 获取游戏内帐号信息
+        /// - Parameters:
+        ///     - region: 服务器地区
+        ///     - cookie: 用户Cookie
+        ///     - completion: 数据
+        ///
+        /// 只需要Cookie和服务器地区即可返回游戏内的帐号信息等。使用时不知为何需要先随便发送一个请求。
         static func getUserGameRolesByCookie (
             _ cookie: String,
             _ region: Region,
@@ -97,15 +101,14 @@ extension API {
             
             guard cookie != "" else { completion(.failure(.noFetchInfo)); print("no cookie got"); return}
             
-            
             switch region {
             case .cn:
+                // 先随便发送一个请求
                 API.Features.fetchInfos(region: region, serverID: "cn_gf01", uid: "12345678", cookie: cookie) { _ in
                     HttpMethod<RequestAccountListResult>
-                        .commonRequest(.get, urlStr, region, cookie, nil) { result in
+                        .gameAccountRequest(.get, urlStr, region, cookie, nil) { result in
                             switch result {
                             case .failure(let requestError):
-                                
                                 switch requestError {
                                 case .decodeError(let message):
                                     completion(.failure(.decodeError(message)))
@@ -146,9 +149,10 @@ extension API {
                 let globalServers: [Server] = [.cht, .asia, .eu, .us]
                 globalServers.forEach { server in
                     group.enter()
+                    // 先随便发送一个请求
                     API.Features.fetchInfos(region: region, serverID: server.id, uid: "12345678", cookie: cookie) { _ in
                         HttpMethod<RequestAccountListResult>
-                            .commonRequest(.get, urlStr, region, cookie, server.id) { result in
+                            .gameAccountRequest(.get, urlStr, region, cookie, server.id) { result in
                                 group.enter()
                                 switch result {
                                 case .failure(let requestError):
@@ -182,11 +186,7 @@ extension API {
                     if accounts.isEmpty { completion(.failure(.accountUnbound)) }
                     else { completion(.success(accounts)) }
                 }
-                
             }
-            
         }
-
     }
-    
 }

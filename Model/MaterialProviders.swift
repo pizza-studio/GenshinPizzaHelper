@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/24.
-//
+//  提供今日材料信息的工具类
 
 import Foundation
 
@@ -206,9 +206,6 @@ struct TalentMaterialProvider {
     }
 
 }
-
-
-
 
 enum MaterialWeekday {
     case mondayAndThursday

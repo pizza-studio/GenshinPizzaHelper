@@ -3,12 +3,13 @@
 //  GenshinPizzaHelper
 //
 //  Created by Bill Haku on 2022/8/23.
-//
+//  View的一些高效扩展
 
 import Foundation
 import SwiftUI
 
 extension View {
+    /// 将View转化为UIImage
     func asUiImage() -> UIImage {
         var uiImage = UIImage(systemName: "exclamationmark.triangle.fill")!
         let controller = UIHostingController(rootView: self)

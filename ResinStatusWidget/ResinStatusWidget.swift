@@ -3,7 +3,7 @@
 //  WidgetView
 //
 //  Created by 戴藏龙 on 2022/7/13.
-//
+//  Widget主View
 
 import WidgetKit
 import SwiftUI
@@ -22,9 +22,7 @@ struct WidgetViewEntryView : View {
     
     @ViewBuilder
     var body: some View {
-        
         ZStack {
-            
             WidgetBackgroundView(background: viewConfig.background, darkModeOn: viewConfig.isDarkModeOn)
             
             switch result {
@@ -40,7 +38,6 @@ struct WidgetViewEntryView : View {
 @main
 struct WidgetView: Widget {
     let kind: String = "WidgetView"
-//    let kind: String = "com.Canglong.GenshinPizzaHepler.MainWidget"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SelectAccountIntent.self, provider: Provider()) { entry in

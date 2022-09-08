@@ -3,7 +3,7 @@
 //  GenshinPizzaHelper
 //
 //  Created by Bill Haku on 2022/8/12.
-//
+//  封装了iOS 14与iOS 15中两种方法的异步加载网络图片的View
 
 import SwiftUI
 
@@ -43,3 +43,20 @@ struct WebImage: View {
     }
 }
 
+struct NetworkImage: View {
+    let url: URL?
+    
+    var body: some View {
+        Group {
+            if let url = url, let imageData = try? Data(contentsOf: url),
+               let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                //         .aspectRatio(contentMode: .fill)
+            }
+            else {
+                Image("placeholder-image")
+            }
+        }
+    }
+}
