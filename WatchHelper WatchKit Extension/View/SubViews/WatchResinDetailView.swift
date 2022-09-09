@@ -16,13 +16,14 @@ struct WatchResinDetailView: View {
                 Image("树脂")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: 25)
+                    .frame(height: 25)
                 Text("原粹树脂")
                     .foregroundColor(Color("textColor.originResin"))
             }
             Text("\(resinInfo.currentResin)")
                 .font(.system(size: 40, design: .rounded))
                 .fontWeight(.medium)
+//                .frame(maxHeight: 40)
             recoveryTimeText()
         }
     }
@@ -30,7 +31,7 @@ struct WatchResinDetailView: View {
     @ViewBuilder
     func recoveryTimeText() -> some View {
         if resinInfo.recoveryTime.second != 0 {
-            Text(LocalizedStringKey("\(resinInfo.recoveryTime.completeTimePointFromNow!) 回满"))
+            Text("\(resinInfo.recoveryTime.completeTimePointFromNow!) 回满")
                 .foregroundColor(.gray)
                 .lineLimit(1)
                 .minimumScaleFactor(0.3)

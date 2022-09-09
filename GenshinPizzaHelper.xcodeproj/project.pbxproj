@@ -628,8 +628,8 @@
 		BFCC06AC28CA1921003E4A54 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */,
 				BFCC06B828CAF660003E4A54 /* WatchAccountDetailItemView.swift */,
+				BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */,
 				BFCC06AE28CA1984003E4A54 /* WatchHelper-Bridging-Header.h */,
 				EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */,
 			);
