@@ -22,12 +22,16 @@ struct WatchAccountDetailView: View {
                         Divider()
                         WatchResinDetailView(resinInfo: data.resinInfo)
                         Divider()
-                        VStack(spacing: 5) {
+                        VStack(alignment: .leading, spacing: 5) {
                             WatchAccountDetailItemView(title: "洞天宝钱", value: "\(data.homeCoinInfo.currentHomeCoin)", icon: Image("洞天宝钱"))
+                            Divider()
                             WatchAccountDetailItemView(title: "每日委托", value: "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)", icon: Image("每日任务"))
-                            WatchAccountDetailItemView(title: "探索派遣", value: "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)", icon: Image("派遣探索"))
+                            Divider()
                             WatchAccountDetailItemView(title: "参量质变仪", value: "\(data.transformerInfo.recoveryTime.describeIntervalShort ?? "可使用".localized)", icon: Image("参量质变仪"))
+                            Divider()
                             WatchAccountDetailItemView(title: "周本折扣", value: "\(data.weeklyBossesInfo.hasUsedResinDiscountNum) / \(data.weeklyBossesInfo.resinDiscountNumLimit)", icon: Image("征讨领域"))
+                            Divider()
+                            WatchAccountDetailItemView(title: "探索派遣", value: "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)", icon: Image("派遣探索"))
                         }
                         Divider()
                         VStack(alignment: .leading, spacing: 10) {

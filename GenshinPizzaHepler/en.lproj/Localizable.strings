@@ -453,10 +453,10 @@
 "每日委托" = "Daily Commission";
 "探索派遣" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
-"周本折扣" = "Weekly Boss Discount";
+"周本折扣" = "Weekly Boss";
 "可使用" = "Available";
-"" = "";
-"" = "";
+"%@ 回满" = "Replenished at %@";
+"树脂已全部回满" = "Resin is fully replenished";
 "" = "";
 "" = "";
 "" = "";

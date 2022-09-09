@@ -13,20 +13,21 @@ struct WatchAccountDetailItemView: View {
     var icon: Image?
 
     var body: some View {
-        HStack {
-            if let icon = icon {
-                icon
-                    .resizable()
-                    .scaledToFit()
+        VStack(alignment: .leading) {
+            HStack {
+                if let icon = icon {
+                    icon
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                        .scaledToFit()
+                }
+                Text(LocalizedStringKey(title))
+                    .foregroundColor(.gray)
+                    .font(.subheadline)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
             }
-            Text(LocalizedStringKey(title))
-                .foregroundColor(.gray)
-                .font(.subheadline)
-                .lineSpacing(1)
-                .minimumScaleFactor(0.3)
-            Spacer()
             Text(value)
         }
-        .frame(maxHeight: 20)
     }
 }
