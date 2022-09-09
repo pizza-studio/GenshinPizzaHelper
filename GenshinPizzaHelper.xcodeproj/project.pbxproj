@@ -89,6 +89,11 @@
 		BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
 		BFCC06B728CAF60B003E4A54 /* WatchAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC06B628CAF60B003E4A54 /* WatchAccountDetailView.swift */; };
 		BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC06B828CAF660003E4A54 /* WatchAccountDetailItemView.swift */; };
+		BFCC06BA28CAFEA2003E4A54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
+		BFCC06BB28CAFEA5003E4A54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		BFCC06BC28CAFEA6003E4A54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		BFCC06BD28CAFEA7003E4A54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		BFCC06BE28CAFEAB003E4A54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -1027,6 +1032,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EACBDA5628C9E92800CEE176 /* Assets.xcassets in Resources */,
+				BFCC06BE28CAFEAB003E4A54 /* Localizable.strings in Resources */,
+				BFCC06BD28CAFEA7003E4A54 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1035,8 +1042,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFCC067128C9B6A2003E4A54 /* Preview Assets.xcassets in Resources */,
+				BFCC06BA28CAFEA2003E4A54 /* Localizable.strings in Resources */,
 				EACBDA5528C9E92800CEE176 /* Assets.xcassets in Resources */,
 				BFCC068128C9B7C6003E4A54 /* Assets.xcassets in Resources */,
+				BFCC06BB28CAFEA5003E4A54 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1045,6 +1054,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEC41FF28B0994C0056D182 /* 周本.png in Resources */,
+				BFCC06BC28CAFEA6003E4A54 /* InfoPlist.strings in Resources */,
 				EAEC41FC28B0994C0056D182 /* 树脂.png in Resources */,
 				EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */,
 				EA196B0528B76B5E0091FAE0 /* Localizable.strings in Resources */,
