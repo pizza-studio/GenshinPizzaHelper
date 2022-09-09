@@ -19,7 +19,7 @@ struct WatchAccountDetailItemView: View {
                     .resizable()
                     .scaledToFit()
             }
-            Text(title)
+            Text(LocalizedStringKey(title))
                 .foregroundColor(.gray)
                 .font(.subheadline)
                 .lineSpacing(1)
