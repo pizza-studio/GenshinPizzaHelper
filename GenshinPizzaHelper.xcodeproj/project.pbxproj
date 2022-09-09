@@ -87,6 +87,8 @@
 		BFCC06B228CA1D20003E4A54 /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
 		BFCC06B428CA1EBD003E4A54 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
+		BFCC06B728CAF60B003E4A54 /* WatchAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC06B628CAF60B003E4A54 /* WatchAccountDetailView.swift */; };
+		BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC06B828CAF660003E4A54 /* WatchAccountDetailItemView.swift */; };
 		BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42534289E203A00FEFA49 /* FeatureAPI.swift */; };
 		BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -377,6 +379,8 @@
 		BFCC06AA28C9C0CE003E4A54 /* WatchHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchHelper.entitlements; sourceTree = "<group>"; };
 		BFCC06AE28CA1984003E4A54 /* WatchHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WatchHelper-Bridging-Header.h"; sourceTree = "<group>"; };
 		BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchGameInfoBlock.swift; sourceTree = "<group>"; };
+		BFCC06B628CAF60B003E4A54 /* WatchAccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAccountDetailView.swift; sourceTree = "<group>"; };
+		BFCC06B828CAF660003E4A54 /* WatchAccountDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAccountDetailItemView.swift; sourceTree = "<group>"; };
 		BFE42534289E203A00FEFA49 /* FeatureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureAPI.swift; sourceTree = "<group>"; };
 		BFE42538289E500F00FEFA49 /* MainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoView.swift; sourceTree = "<group>"; };
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -617,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */,
+				BFCC06B828CAF660003E4A54 /* WatchAccountDetailItemView.swift */,
 				BFCC06AE28CA1984003E4A54 /* WatchHelper-Bridging-Header.h */,
 			);
 			path = SubViews;
@@ -625,6 +630,7 @@
 		BFCC06AD28CA1927003E4A54 /* SecondaryViews */ = {
 			isa = PBXGroup;
 			children = (
+				BFCC06B628CAF60B003E4A54 /* WatchAccountDetailView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -1106,12 +1112,14 @@
 				BFCC069628C9BBC8003E4A54 /* RecoveryTime.swift in Sources */,
 				BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */,
 				BFCC069C28C9BBD3003E4A54 /* StringLocalized.swift in Sources */,
+				BFCC06B728CAF60B003E4A54 /* WatchAccountDetailView.swift in Sources */,
 				BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */,
 				BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */,
 				BFCC069028C9BBC8003E4A54 /* HomeCoinInfo.swift in Sources */,
 				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
 				BFCC069528C9BBC8003E4A54 /* WeeklyBossesInfo.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
+				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
 				BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */,
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,

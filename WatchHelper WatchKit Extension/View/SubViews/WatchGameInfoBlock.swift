@@ -10,7 +10,7 @@ import SwiftUI
 struct WatchGameInfoBlock: View {
     var userData: Result<UserData, FetchError>
     let accountName: String?
-    var uid: String
+    var uid: String?
 
     @State var bindingBool = false
 
