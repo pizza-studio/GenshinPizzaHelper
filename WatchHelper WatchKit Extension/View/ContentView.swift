@@ -34,6 +34,7 @@ struct ContentView: View {
                             .listRowBackground(Color.white.opacity(0))
                     }
                 }
+                .listStyle(.carousel)
             }
         }
 //        .onAppear {
