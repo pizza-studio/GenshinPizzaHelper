@@ -13,13 +13,12 @@ struct WatchResinDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text("原粹树脂")
-                    .foregroundColor(Color("textColor.originResin"))
-                Spacer()
                 Image("树脂")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: 20)
+                    .frame(maxHeight: 25)
+                Text("原粹树脂")
+                    .foregroundColor(Color("textColor.originResin"))
             }
             Text("\(resinInfo.currentResin)")
                 .font(.system(size: 40, design: .rounded))
