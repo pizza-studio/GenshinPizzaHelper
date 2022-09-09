@@ -30,7 +30,7 @@ struct WatchAccountDetailView: View {
                             WatchAccountDetailItemView(title: "周本折扣", value: "\(data.weeklyBossesInfo.hasUsedResinDiscountNum) / \(data.weeklyBossesInfo.resinDiscountNumLimit)", icon: Image("征讨领域"))
                         }
                         Divider()
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 10) {
                             ForEach(data.expeditionInfo.expeditions, id: \.charactersEnglishName) { expedition in
                                 WatchEachExpeditionView(expedition: expedition, useAsyncImage: true)
                                     .frame(maxHeight: 40)
@@ -65,6 +65,7 @@ private struct WatchEachExpeditionView: View {
     var body: some View {
         HStack {
             webView(url: expedition.avatarSideIconUrl)
+                .padding(.trailing)
             VStack(alignment: .leading) {
                 Text(expedition.recoveryTime.describeIntervalLong ?? "已完成".localized)
                     .font(.footnote)
