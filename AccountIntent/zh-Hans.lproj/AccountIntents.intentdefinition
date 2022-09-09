@@ -159,7 +159,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>Yil1CB</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21F79</string>
+	<string>21G83</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>13F100</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -178,7 +178,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>41</integer>
+			<integer>42</integer>
 			<key>INIntentName</key>
 			<string>SelectAccount</string>
 			<key>INIntentParameters</key>
@@ -301,8 +301,10 @@
 					</dict>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
+					<key>INIntentParameterSupportsMultipleValues</key>
+					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>37</integer>
+					<integer>42</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
