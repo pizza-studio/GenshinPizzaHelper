@@ -18,18 +18,19 @@ struct WatchGameInfoBlock: View {
         switch userData {
         case .success(let data):
             VStack(alignment: .leading) {
-                HStack {
-                    Text(accountName ?? "Name Nil")
-                        .font(.caption)
+                Text(accountName ?? "Name Nil")
+                    .font(.caption)
+                HStack(alignment: .bottom) {
+                    Text("\(data.resinInfo.currentResin)")
+                        .font(.system(size: 50 , design: .rounded))
+                        .fontWeight(.medium)
+                        .foregroundColor(Color("textColor3"))
+                        .shadow(radius: 1)
                     Spacer()
-                    Text(uid)
-                        .font(.caption2)
+                    Image("树脂")
+                        .resizable()
+                        .frame(width: 40, height: 40)
                 }
-                Text("\(data.resinInfo.currentResin)")
-                    .font(.system(size: 50 , design: .rounded))
-                    .fontWeight(.medium)
-                    .foregroundColor(Color("textColor3"))
-                    .shadow(radius: 1)
             }
             .padding()
             .background(AppBlockBackgroundView(background: .randomBackground, darkModeOn: false, bgFadeOutAnimation: $bindingBool))
