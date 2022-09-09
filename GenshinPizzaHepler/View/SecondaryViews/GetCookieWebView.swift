@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WebKit
+import SafariServices
 
 struct GetCookieWebView: View {
 
@@ -24,7 +25,7 @@ struct GetCookieWebView: View {
         case .cn:
             return "https://m.bbs.mihoyo.com/ys/#/login"
         case .global:
-            return "https://m.hoyolab.com/#/timeline"
+            return "https://m.hoyolab.com/"
         }
     }
     
@@ -76,7 +77,7 @@ struct GetCookieWebView: View {
                 .navigationBarTitleDisplayMode(.inline)
         }
         .alert(isPresented: $isAlertShow) {
-            Alert(title: Text("提示"), message: Text("请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"), dismissButton: .default(Text("好"))
+            Alert(title: Text("提示"), message: Text("请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"), dismissButton: .default(Text("好"))
                   )
         }
         .onAppear {
@@ -112,8 +113,7 @@ struct CookieGetterWebView: UIViewRepresentable {
         webview.load(request)
         return webview
     }
-    
-    
+
     func updateUIView(_ uiView: WKWebView, context: Context) {
         if let url = URL(string: self.url) {
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
