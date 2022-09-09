@@ -158,6 +158,8 @@
 		EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09A02728A2C45E0023B4AF /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
+		EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */; };
+		EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		EA196B0228B769340091FAE0 /* StringLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringLocalized.swift */; };
 		EA196B0328B769340091FAE0 /* StringLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringLocalized.swift */; };
 		EA196B0428B769640091FAE0 /* StringLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringLocalized.swift */; };
@@ -415,6 +417,7 @@
 		EA09A02428A2C2E60023B4AF /* IntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
+		EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchResinDetailView.swift; sourceTree = "<group>"; };
 		EA196B0128B769340091FAE0 /* StringLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLocalized.swift; sourceTree = "<group>"; };
 		EA1B76762886B89F007A5216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EA2FF0E828B093AE0050C016 /* 每日任务.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "每日任务.png"; sourceTree = "<group>"; };
@@ -628,6 +631,7 @@
 				BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */,
 				BFCC06B828CAF660003E4A54 /* WatchAccountDetailItemView.swift */,
 				BFCC06AE28CA1984003E4A54 /* WatchHelper-Bridging-Header.h */,
+				EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1108,6 +1112,7 @@
 				BFCC068328C9BBC8003E4A54 /* RequestResult.swift in Sources */,
 				BFCC068A28C9BBC8003E4A54 /* Account.swift in Sources */,
 				BFCC068428C9BBC8003E4A54 /* OptionalAccounts.swift in Sources */,
+				EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */,
 				BFCC069A28C9BBD3003E4A54 /* StoreManager.swift in Sources */,
 				BFCC066828C9B6A1003E4A54 /* NotificationController.swift in Sources */,
 				BFCC06B028CA1984003E4A54 /* WatchGameInfoBlock.swift in Sources */,
@@ -1122,6 +1127,7 @@
 				BFCC069628C9BBC8003E4A54 /* RecoveryTime.swift in Sources */,
 				BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */,
 				BFCC069C28C9BBD3003E4A54 /* StringLocalized.swift in Sources */,
+				EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */,
 				BFCC06B728CAF60B003E4A54 /* WatchAccountDetailView.swift in Sources */,
 				BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */,
 				BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */,
