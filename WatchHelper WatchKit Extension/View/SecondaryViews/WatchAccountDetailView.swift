@@ -18,12 +18,6 @@ struct WatchAccountDetailView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     Group {
-//                        HStack {
-//                            Text("UID")
-//                                .foregroundColor(.gray)
-//                            Spacer()
-//                            Text(uid ?? "0")
-//                        }
                         Divider()
                         WatchResinDetailView(resinInfo: data.resinInfo)
                         Divider()
@@ -76,15 +70,8 @@ private struct WatchEachExpeditionView: View {
             webView(url: expedition.avatarSideIconUrl)
                 .padding(.trailing)
             VStack(alignment: .leading) {
-                if let timeIntervalDescription = expedition.recoveryTime.describeIntervalLong {
-                    Text(timeIntervalDescription)
-                        .font(.footnote)
-                } else {
-                    Text("已完成".localized)
-                        .font(.footnote)
-
-                }
-
+                Text(expedition.recoveryTime.describeIntervalLong ?? "已完成".localized)
+                    .font(.footnote)
                 percentageBar(expedition.percentage)
             }
         }
