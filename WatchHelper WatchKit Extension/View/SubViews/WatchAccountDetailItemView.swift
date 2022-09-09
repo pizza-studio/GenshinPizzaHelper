@@ -10,13 +10,23 @@ import SwiftUI
 struct WatchAccountDetailItemView: View {
     var title: String
     var value: String
+    var icon: Image?
 
     var body: some View {
-        VStack(alignment: .leading) {
+        HStack {
+            if let icon = icon {
+                icon
+                    .resizable()
+                    .scaledToFit()
+            }
             Text(title)
                 .foregroundColor(.gray)
                 .font(.subheadline)
+                .lineSpacing(1)
+                .minimumScaleFactor(0.3)
+            Spacer()
             Text(value)
         }
+        .frame(maxHeight: 20)
     }
 }
