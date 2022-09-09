@@ -20,9 +20,16 @@ struct WidgetViewConfiguration {
     let showMaterialsInLargeSizeWidget: Bool
     
     var randomBackground: Bool
-    let selectedBackground: WidgetBackground
+    var selectedBackgrounds: [WidgetBackground]
     var background: WidgetBackground {
-        randomBackground ? WidgetBackground.randomElementOrNamecardBackground : selectedBackground
+        guard !randomBackground else {
+            return WidgetBackground.randomElementOrNamecardBackground
+        }
+        if selectedBackgrounds.isEmpty {
+            return .defaultBackground
+        } else {
+            return selectedBackgrounds.randomElement()!
+        }
     }
     
     mutating func addMessage(_ msg: String) {
@@ -36,7 +43,7 @@ struct WidgetViewConfiguration {
         showTransformer = true
         expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum)
         weeklyBossesShowingMethod = .alwaysShow
-        selectedBackground = .defaultBackground
+        selectedBackgrounds = [.defaultBackground]
         randomBackground = false
         isDarkModeOn = true
         showMaterialsInLargeSizeWidget = true
@@ -48,7 +55,7 @@ struct WidgetViewConfiguration {
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: noticeExpeditionWhenAllCompleted, expeditionShowingMethod: .byNum)
         self.weeklyBossesShowingMethod = .disappearAfterCompleted
         self.randomBackground = false
-        self.selectedBackground = .defaultBackground
+        self.selectedBackgrounds = [.defaultBackground]
         isDarkModeOn = true
         showMaterialsInLargeSizeWidget = true
     }

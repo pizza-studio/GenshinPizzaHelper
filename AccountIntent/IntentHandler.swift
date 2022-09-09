@@ -53,7 +53,7 @@ extension WidgetViewConfiguration {
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: (intent.expeditionNoticeMethod.rawValue != 2), expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue) ?? .byNum)
         self.weeklyBossesShowingMethod = intent.weeklyBossesShowingMethod
         self.randomBackground = intent.randomBackground?.boolValue ?? false
-        self.selectedBackground = intent.backgound ?? WidgetBackground.defaultBackground
+        self.selectedBackgrounds = intent.backgound ?? [WidgetBackground.defaultBackground]
         self.isDarkModeOn = intent.isDarkModeOn?.boolValue ?? true
         self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget?.boolValue ?? true
     }
