@@ -18,7 +18,6 @@ struct WatchAccountDetailView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     Group {
-                        WatchAccountDetailItemView(title: "UID", value: uid ?? "0")
                         Divider()
                         WatchResinDetailView(resinInfo: data.resinInfo)
                         Divider()

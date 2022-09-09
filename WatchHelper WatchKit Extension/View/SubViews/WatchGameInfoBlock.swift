@@ -33,7 +33,7 @@ struct WatchGameInfoBlock: View {
                 }
             }
             .padding()
-            .background(AppBlockBackgroundView(background: .randomBackground, darkModeOn: false, bgFadeOutAnimation: $bindingBool))
+            .background(AppBlockBackgroundView(background: .randomNamecardBackground, darkModeOn: false, bgFadeOutAnimation: $bindingBool))
         case .failure(_):
             Text("Error")
         }
