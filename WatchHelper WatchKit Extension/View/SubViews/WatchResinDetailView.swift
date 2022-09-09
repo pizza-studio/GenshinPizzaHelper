@@ -18,12 +18,11 @@ struct WatchResinDetailView: View {
                     .scaledToFit()
                     .frame(height: 25)
                 Text("原粹树脂")
-                    .foregroundColor(Color("textColor.originResin"))
+                    .foregroundColor(.gray)
             }
             Text("\(resinInfo.currentResin)")
                 .font(.system(size: 40, design: .rounded))
                 .fontWeight(.medium)
-//                .frame(maxHeight: 40)
             recoveryTimeText()
         }
     }
@@ -33,13 +32,13 @@ struct WatchResinDetailView: View {
         if resinInfo.recoveryTime.second != 0 {
             Text("\(resinInfo.recoveryTime.completeTimePointFromNow!) 回满")
                 .foregroundColor(.gray)
-                .lineLimit(1)
                 .minimumScaleFactor(0.3)
+                .font(.footnote)
         } else {
             Text("树脂已全部回满")
                 .foregroundColor(.gray)
-                .lineLimit(1)
                 .minimumScaleFactor(0.3)
+                .font(.footnote)
         }
     }
 }
