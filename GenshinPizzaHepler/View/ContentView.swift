@@ -75,6 +75,9 @@ struct ContentView: View {
                     viewModel.refreshData()
                 }
                 UIApplication.shared.applicationIconBadgeNumber = -1
+
+                // 同步watch数据
+                syncWatch()
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
             default:
@@ -99,6 +102,14 @@ struct ContentView: View {
             }
         }
         .navigate(to: NotificationSettingView().environmentObject(viewModel), when: $isJumpToSettingsView)
+    }
+
+    private func syncWatch() {
+        let messages: [String: Any] = ["accounts": viewModel.accounts]
+
+        self.viewModel.session.sendMessage(messages, replyHandler: nil) { error in
+            print("error: \(error.localizedDescription)")
+        }
     }
 }
 

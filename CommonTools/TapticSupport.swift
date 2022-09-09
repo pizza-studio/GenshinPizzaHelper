@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+#if !os(watchOS)
 import CoreHaptics
 import AudioToolbox
 
@@ -101,3 +102,4 @@ class CHTaptic {
         }
     }
 }
+#endif

@@ -6,7 +6,6 @@
 //  HTTP请求方法
 
 import Foundation
-import CFNetwork
 
 enum Method {
     case post
@@ -68,11 +67,13 @@ struct HttpMethod<T: Codable> {
 
                 print("Use Proxy \(sessionProxyHost):\(sessionProxyPort)")
 
+                #if !os(watchOS)
                 sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPEnable as String] = true
                 sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPProxy as String] = sessionProxyHost
                 sessionConfiguration.connectionProxyDictionary?[kCFNetworkProxiesHTTPPort as String] = sessionProxyPort
                 sessionConfiguration.connectionProxyDictionary?[kCFProxyTypeHTTP as String] = "\(sessionProxyHost):\(sessionProxyPort)"
                 sessionConfiguration.connectionProxyDictionary?[kCFProxyTypeHTTPS as String] = "\(sessionProxyHost):\(sessionProxyPort)"
+                #endif
             } else {
                 print("No Proxy")
             }
