@@ -21,7 +21,7 @@ struct GlobalDonateView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             if is_zh_CN {
-                Section(footer: isWechatAlipayShow ? Text("您可以长按保存图片到对应App中扫描") : nil) {
+                Section(footer: isWechatAlipayShow ? Text("您可以长按保存图片到对应App中扫描").font(.footnote) : nil) {
                     Button("通过微信或支付宝支付") {
                         withAnimation() {
                             isWechatAlipayShow.toggle()

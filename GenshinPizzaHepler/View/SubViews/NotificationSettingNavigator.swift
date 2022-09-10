@@ -48,6 +48,7 @@ struct NotificationSettingNavigator: View {
                 Button("通知使用提示") {
                     isNotificationHintShow = true
                 }
+                .font(.footnote)
             }
         }
         .alert(isPresented: $isNotificationHintShow) {

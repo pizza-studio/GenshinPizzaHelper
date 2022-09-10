@@ -47,8 +47,10 @@ struct AddAccountView: View {
             if (connectStatus == .fail) || (connectStatus == .unknown) {
                 Section(footer: HStack {
                     Text("你也可以")
+                        .font(.footnote)
                     NavigationLink(destination: AddAccountDetailView(unsavedName: $unsavedName, unsavedUid: $unsavedUid, unsavedCookie: $unsavedCookie, unsavedServer: $unsavedServer, connectStatus: $connectStatus)) {
                         Text("手动设置帐号")
+                            .font(.footnote)
                     }
                 }) {
                     
@@ -74,6 +76,7 @@ struct AddAccountView: View {
             if let loginError = loginError {
                 Section(footer: Text("DEBUG：" + loginError.message).foregroundColor(Color(UIColor.systemGray))) {
                     Text(LocalizedStringKey(loginError.description))
+                        .font(.footnote)
                         .foregroundColor(.secondary)
                 }
             }
@@ -94,6 +97,7 @@ struct AddAccountView: View {
                     Text("UID: " + unsavedUid)
                 } footer: {
                     Text("你可以自定义显示在小组件上的帐号名称")
+                        .font(.footnote)
                 }
             }
             
