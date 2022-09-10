@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF068BD528A335F9002E7334 /* WebViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF068BD428A335F9002E7334 /* WebViews.swift */; };
 		BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */; };
-		BF6C526B289E116700EA224F /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
+		BF6C526B289E116700EA224F /* MainWedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* MainWedgetProvider.swift */; };
 		BF6C5272289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		BF6C5273289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		BF6C5275289E137200EA224F /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
@@ -80,11 +80,9 @@
 		BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
 		BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
-		BFCC06A428C9BD80003E4A54 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		BFCC06A528C9BD9E003E4A54 /* AccountIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823028A650C300616CE1 /* AccountIntents.intentdefinition */; };
 		BFCC06B028CA1984003E4A54 /* WatchGameInfoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */; };
 		BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
-		BFCC06B228CA1D20003E4A54 /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
 		BFCC06B428CA1EBD003E4A54 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
 		BFCC06B728CAF60B003E4A54 /* WatchAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC06B628CAF60B003E4A54 /* WatchAccountDetailView.swift */; };
@@ -157,7 +155,6 @@
 		EA09A02228A2B8F80023B4AF /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
-		EA09A02728A2C45E0023B4AF /* WedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */; };
 		EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */; };
 		EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		EA196B0228B769340091FAE0 /* StringLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringLocalized.swift */; };
@@ -169,7 +166,7 @@
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
-		EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */; };
+		EA30F9A92886B49200AE7BEA /* MainWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* MainWidget.swift */; };
 		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
@@ -258,6 +255,12 @@
 		EAF43C9228A0161C00D89787 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
 		EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
 		EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
+		EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
+		EAF55E2128CC8F1A00902AE7 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
+		EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */; };
+		EAF55E2E28CC91B000902AE7 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2C28CC91AE00902AE7 /* Entry.swift */; };
+		EAF55E3028CC926600902AE7 /* LockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */; };
+		EAF55E3128CC927F00902AE7 /* LockScreenResinWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */; };
 		EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */; };
@@ -425,9 +428,9 @@
 		EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ResinStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA30F9A32886B49200AE7BEA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EA30F9A52886B49200AE7BEA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinStatusWidget.swift; sourceTree = "<group>"; };
+		EA30F9A82886B49200AE7BEA /* MainWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidget.swift; sourceTree = "<group>"; };
 		EA30F9AC2886B49300AE7BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedgetProvider.swift; sourceTree = "<group>"; };
+		EA30F9B42886B4C800AE7BEA /* MainWedgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWedgetProvider.swift; sourceTree = "<group>"; };
 		EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailView.swift; sourceTree = "<group>"; };
 		EA56E07628A26C0D00A64262 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		EA56E07728A26C0D00A64262 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
@@ -472,6 +475,10 @@
 		EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBackgroundView.swift; sourceTree = "<group>"; };
 		EAF43C9428A0163A00D89787 /* WidgetMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMainView.swift; sourceTree = "<group>"; };
 		EAF43C9628A0166100D89787 /* WidgetErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetErrorView.swift; sourceTree = "<group>"; };
+		EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBoundle.swift; sourceTree = "<group>"; };
+		EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidget.swift; sourceTree = "<group>"; };
+		EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetProvider.swift; sourceTree = "<group>"; };
+		EAF55E2C28CC91AE00902AE7 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		EAFB231F28A26C56006A8EDC /* AccountConfiguration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccountConfiguration.xcdatamodel; sourceTree = "<group>"; };
 		EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingNavigator.swift; sourceTree = "<group>"; };
 		EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
@@ -730,11 +737,11 @@
 		EA30F9A72886B49200AE7BEA /* ResinStatusWidget */ = {
 			isa = PBXGroup;
 			children = (
-				EA30F9A82886B49200AE7BEA /* ResinStatusWidget.swift */,
-				EA30F9B42886B4C800AE7BEA /* WedgetProvider.swift */,
-				EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */,
-				BFE42537289E4FF700FEFA49 /* Views */,
+				EAF55E2728CC917C00902AE7 /* LockScreenWidget */,
+				EAF55E2628CC917200902AE7 /* MainWidget */,
 				EA30F9AC2886B49300AE7BEA /* Info.plist */,
+				EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */,
+				EAF55E2C28CC91AE00902AE7 /* Entry.swift */,
 			);
 			path = ResinStatusWidget;
 			sourceTree = "<group>";
@@ -882,6 +889,26 @@
 				EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */,
 			);
 			path = InfoBars;
+			sourceTree = "<group>";
+		};
+		EAF55E2628CC917200902AE7 /* MainWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EA30F9A82886B49200AE7BEA /* MainWidget.swift */,
+				EA30F9B42886B4C800AE7BEA /* MainWedgetProvider.swift */,
+				EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */,
+				BFE42537289E4FF700FEFA49 /* Views */,
+			);
+			path = MainWidget;
+			sourceTree = "<group>";
+		};
+		EAF55E2728CC917C00902AE7 /* LockScreenWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */,
+				EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */,
+			);
+			path = LockScreenWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1133,6 +1160,7 @@
 				BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */,
 				BFCC069028C9BBC8003E4A54 /* HomeCoinInfo.swift in Sources */,
 				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
+				EAF55E2128CC8F1A00902AE7 /* WidgetViewConfiguration.swift in Sources */,
 				BFCC069528C9BBC8003E4A54 /* WeeklyBossesInfo.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
 				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
@@ -1146,11 +1174,10 @@
 				BFCC068B28C9BBC8003E4A54 /* DisplayContentModel.swift in Sources */,
 				BFCC069828C9BBCF003E4A54 /* HttpMethod.swift in Sources */,
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
-				BFCC06B228CA1D20003E4A54 /* WedgetProvider.swift in Sources */,
 				BFCC069728C9BBCF003E4A54 /* FeatureAPI.swift in Sources */,
-				BFCC06A428C9BD80003E4A54 /* WidgetViewConfiguration.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
 				BFCC068F28C9BBC8003E4A54 /* TransformerInfo.swift in Sources */,
+				EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */,
 				BFCC069228C9BBC8003E4A54 /* DailyTaskInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1180,7 +1207,6 @@
 				EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */,
 				EA09A01C28A2B8E50023B4AF /* HttpMethod.swift in Sources */,
 				EA09A00F28A2B8A60023B4AF /* Error.swift in Sources */,
-				EA09A02728A2C45E0023B4AF /* WedgetProvider.swift in Sources */,
 				EA09A01828A2B8B80023B4AF /* RecoveryTime.swift in Sources */,
 				EA09A01928A2B8B90023B4AF /* HomeCoinInfo.swift in Sources */,
 				BFFD821028A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
@@ -1199,13 +1225,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF55E2E28CC91B000902AE7 /* Entry.swift in Sources */,
 				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA56E09D28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
+				EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */,
 				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
+				EAF55E3028CC926600902AE7 /* LockScreenResinWidget.swift in Sources */,
 				EA7F9C7028B0172D00DEAFEB /* NotificationCenter.swift in Sources */,
-				EA30F9A92886B49200AE7BEA /* ResinStatusWidget.swift in Sources */,
+				EA30F9A92886B49200AE7BEA /* MainWidget.swift in Sources */,
 				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
 				BFFD822D28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */,
@@ -1224,7 +1253,7 @@
 				EA56E09528A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */,
 				EAAF331028A27B080018EFAB /* Account.swift in Sources */,
 				EA56E09B28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
-				BF6C526B289E116700EA224F /* WedgetProvider.swift in Sources */,
+				BF6C526B289E116700EA224F /* MainWedgetProvider.swift in Sources */,
 				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
 				BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EA196B0328B769340091FAE0 /* StringLocalized.swift in Sources */,
@@ -1245,6 +1274,7 @@
 				BFFD820F28A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
 				EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EA56E08D28A26C0D00A64262 /* UserData.swift in Sources */,
+				EAF55E3128CC927F00902AE7 /* LockScreenResinWidgetProvider.swift in Sources */,
 				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
@@ -1503,7 +1533,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1535,7 +1565,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
