@@ -35,9 +35,8 @@ struct WidgetMainView: View {
                 #if os(watchOS)
                 .gaugeStyle(.circular)
                 #else
-                .gaugeStyle(.accessoryCircularCapacity)
+                .gaugeStyle(.accessoryCircular)
                 #endif
-                .tint(.indigo)
             default:
                 MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
             }
