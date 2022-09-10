@@ -128,7 +128,7 @@ class AccountConfigurationModel {
                 if let shortcut = INShortcut(intent: intent) {
                     let relevantShortcut = INRelevantShortcut(shortcut: shortcut)
                     relevantShortcut.shortcutRole = .information
-                    relevantShortcut.widgetKind = "WidgetView"
+//                    relevantShortcut.widgetKind = "WidgetView"
                     relevantShortcut.relevanceProviders = [INDateRelevanceProvider(start: Date(), end: Date(timeIntervalSinceNow: 1800))]
                     relevantShortcuts.append(relevantShortcut)
                 }
