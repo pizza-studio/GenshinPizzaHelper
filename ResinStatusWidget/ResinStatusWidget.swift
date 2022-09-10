@@ -15,6 +15,7 @@ let defaultQueryResult = (
 )
 
 struct WidgetViewEntryView : View {
+    @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: Provider.Entry
     var result: FetchResult { entry.result }
     var viewConfig: WidgetViewConfiguration { entry.viewConfig }
@@ -23,7 +24,14 @@ struct WidgetViewEntryView : View {
     @ViewBuilder
     var body: some View {
         ZStack {
-            WidgetBackgroundView(background: viewConfig.background, darkModeOn: viewConfig.isDarkModeOn)
+            if #available(iOSApplicationExtension 16.0, *) {
+                if family != .accessoryCircular {
+                    WidgetBackgroundView(background: viewConfig.background, darkModeOn: viewConfig.isDarkModeOn)
+                }
+            } else {
+                // Fallback on earlier versions
+                WidgetBackgroundView(background: viewConfig.background, darkModeOn: viewConfig.isDarkModeOn)
+            }
             
             switch result {
             case .success(let userData):
@@ -38,6 +46,23 @@ struct WidgetViewEntryView : View {
 @main
 struct WidgetView: Widget {
     let kind: String = "WidgetView"
+
+    private var supportedFamilies: [WidgetFamily] {
+        if #available(iOSApplicationExtension 16.0, *) {
+            return [
+                .systemSmall,
+                .systemMedium,
+                .systemLarge,
+                .accessoryCircular
+            ]
+        } else {
+            return [
+                .systemSmall,
+                .systemMedium,
+                .systemLarge
+            ]
+        }
+    }
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SelectAccountIntent.self, provider: Provider()) { entry in
@@ -45,7 +70,7 @@ struct WidgetView: Widget {
         }
         .configurationDisplayName("原神状态")
         .description("查询树脂恢复状态")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        .supportedFamilies(supportedFamilies)
         
     }
 }
