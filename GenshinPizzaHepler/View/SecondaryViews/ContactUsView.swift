@@ -159,6 +159,63 @@ struct ContactUsView: View {
                     }
                 }
             }
+
+            // special thanks
+            Section(header: Text("翻译与特别鸣谢")) {
+                Label {
+                    HStack {
+                        Text("Lava")
+                        Spacer()
+                        Text("英语翻译")
+                            .foregroundColor(.gray)
+                    }
+                } icon: {
+                    Image("avatar.lava")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                }
+                Label {
+                    HStack {
+                        Text("水里的碳酸钙")
+                        Spacer()
+                        Text("日语 英语翻译")
+                            .foregroundColor(.gray)
+                    }
+                } icon: {
+                    Image("avatar.hakubill")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                }
+                Label {
+                    HStack {
+                        Text("Qi")
+                        Spacer()
+                        Text("法语翻译")
+                            .foregroundColor(.gray)
+                    }
+                } icon: {
+                    Image("avatar.qi")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                }
+                Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&uin=2251435011")!) {
+                    Label {
+                        HStack {
+                            Text("郁离居士")
+                            Spacer()
+                            Text("图片素材制作")
+                                .foregroundColor(.gray)
+                        }
+                    } icon: {
+                        Image("avatar.jushi")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                }
+            }
         }
         .navigationTitle("开发者与联系方式")
         .navigationBarTitleDisplayMode(.inline)
