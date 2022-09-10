@@ -30,7 +30,7 @@ struct WatchResinDetailView: View {
     @ViewBuilder
     func recoveryTimeText() -> some View {
         if resinInfo.recoveryTime.second != 0 {
-            Text("\(resinInfo.recoveryTime.completeTimePointFromNow!) 回满")
+            Text("\(resinInfo.recoveryTime.completeTimePointFromNow()) 回满")
                 .foregroundColor(.gray)
                 .minimumScaleFactor(0.3)
                 .font(.footnote)

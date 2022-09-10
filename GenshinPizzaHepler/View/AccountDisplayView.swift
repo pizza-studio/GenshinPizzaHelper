@@ -128,7 +128,7 @@ struct AccountDisplayView: View {
     @ViewBuilder
     func recoveryTimeText(resinInfo: ResinInfo) -> some View {
         if resinInfo.recoveryTime.second != 0 {
-            Text(LocalizedStringKey("\(resinInfo.recoveryTime.describeIntervalLong!)\n\(resinInfo.recoveryTime.completeTimePointFromNow!) 回满"))
+            Text(LocalizedStringKey("\(resinInfo.recoveryTime.describeIntervalLong())\n\(resinInfo.recoveryTime.completeTimePointFromNow()) 回满"))
                 .font(.caption)
                 .lineLimit(2)
                 .minimumScaleFactor(0.2)
@@ -316,7 +316,7 @@ private struct InAppEachExpeditionView: View {
         HStack {
             webView(url: expedition.avatarSideIconUrl)
             VStack(alignment: .leading) {
-                Text(expedition.recoveryTime.describeIntervalLong ?? "已完成".localized)
+                Text(expedition.recoveryTime.describeIntervalLong(finishedTextPlaceholder: "已完成".localized))
                     .lineLimit(1)
                     .font(.footnote)
                     .minimumScaleFactor(0.4)

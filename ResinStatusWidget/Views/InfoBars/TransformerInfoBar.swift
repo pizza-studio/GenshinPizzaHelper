@@ -32,7 +32,7 @@ struct TransformerInfoBar: View {
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing:1) {
-                Text(LocalizedStringKey(transformerInfo.recoveryTime.describeIntervalShort ?? "可使用"))
+                Text(transformerInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "可使用".localized))
                     .foregroundColor(Color("textColor3"))
                     .lineLimit(1)
                     .font(.system(.body, design: .rounded))

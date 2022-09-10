@@ -6,6 +6,7 @@
 //  回复时间计算工具
 
 import Foundation
+import CryptoKit
 
 struct RecoveryTime {
     let second: Int
@@ -20,32 +21,44 @@ struct RecoveryTime {
     
     var isComplete: Bool { second == 0 }
     
-    var describeIntervalLong: String? {
-        guard second != 0 else { return nil }
-        // 描述为 X天 或 X小时X分钟
-        if second / 3600 >= 24 {
-            let localizedString = NSLocalizedString("%lld天", comment: "day")
-            return String(format: localizedString, second / (3600 * 24) + 1)
+    func describeIntervalLong(finishedTextPlaceholder: String? = nil, unisStyle: DateComponentsFormatter.UnitsStyle = .brief) -> String {
+        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
+        if let finishedTextPlaceholder = finishedTextPlaceholder {
+            guard second != 0 else { return finishedTextPlaceholder }
         }
-        let localizedString = NSLocalizedString("%lld小时%lld分钟", comment: "hour & min")
-        return String(format: localizedString, second / 3600, (second % 3600) / 60)
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = unisStyle
+        formatter.collapsesLargestUnit = false
+        formatter.allowedUnits = [.day, .hour, .minute]
+        // 如果超过一天，只显示天数
+        formatter.maximumUnitCount = (second > 24*60*60) ? 1 : 2
+
+        formatter.calendar = Calendar.current
+        formatter.calendar!.locale = Locale(identifier: Locale.current.identifier)
+
+        return formatter.string(from: TimeInterval(Double(second)))!
     }
-    var describeIntervalShort: String? {
-        guard second != 0 else { return nil }
-        // 描述为 X天 或 X小时 或 X分钟
-        if second / 3600 >= 24 {
-            let localizedString = NSLocalizedString("%lld天", comment: "day")
-            return String(format: localizedString, 1 + second / (3600 * 24))
-        } else if second / 3600 > 0 {
-            let localizedString = NSLocalizedString("%lld小时", comment: "hour")
-            return String(format: localizedString, second / 3600)
-        } else {
-            let localizedString = NSLocalizedString("%lld分钟", comment: "min")
-            return String(format: localizedString, (second % 3600) / 60)
+    func describeIntervalShort(finishedTextPlaceholder: String? = nil, unisStyle: DateComponentsFormatter.UnitsStyle = .brief) -> String {
+        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
+        if let finishedTextPlaceholder = finishedTextPlaceholder {
+            guard second != 0 else { return finishedTextPlaceholder }
         }
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = unisStyle
+        formatter.collapsesLargestUnit = false
+        formatter.allowedUnits = [.day, .hour, .minute]
+        formatter.maximumUnitCount = 1
+
+        formatter.calendar = Calendar.current
+        formatter.calendar!.locale = Locale(identifier: Locale.current.identifier)
+
+        return formatter.string(from: TimeInterval(Double(second)))!
     }
-    var completeTimePointFromNow: String? {
-        guard second != 0 else { return nil }
+    func completeTimePointFromNow(finishedTextPlaceholder: String? = nil) -> String {
+        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
+        if let finishedTextPlaceholder = finishedTextPlaceholder {
+            guard second != 0 else { return finishedTextPlaceholder }
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
