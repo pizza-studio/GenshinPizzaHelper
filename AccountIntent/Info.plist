@@ -13,6 +13,7 @@
 			<key>IntentsSupported</key>
 			<array>
 				<string>SelectAccountIntent</string>
+				<string>SelectOnlyAccountIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
