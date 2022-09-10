@@ -25,6 +25,7 @@
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>SelectAccountIntent</string>
+		<string>SelectOnlyAccountIntent</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

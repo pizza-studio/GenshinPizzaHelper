@@ -43,6 +43,7 @@ struct SettingsView: View {
                 } footer: {
                     Button { isWidgetTipsSheetShow.toggle() } label: {
                         Text("如何添加、配置小组件和更换小组件背景？").multilineTextAlignment(.leading)
+                            .font(.footnote)
                     }
                 }
                 // 通知设置
