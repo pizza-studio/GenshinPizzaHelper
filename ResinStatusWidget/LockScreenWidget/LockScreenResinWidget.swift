@@ -24,15 +24,29 @@ struct LockScreenResinWidget: Widget {
     }
 }
 
+@available (iOS 16.0, *)
 struct LockScreenWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
     var result: FetchResult { entry.result }
     var accountName: String? { entry.accountName }
 
-    // TODO: 锁屏小组件
     @ViewBuilder
     var body: some View {
-        EmptyView()
+        switch result {
+        case .success(let data):
+            Gauge(value: Double(data.resinInfo.currentResin) / Double(160)) {
+                Image("树脂")
+                    .resizable()
+                    .frame(width: 15, height: 15)
+                    .scaledToFit()
+            } currentValueLabel: {
+                Text("\(data.resinInfo.currentResin)")
+                    .font(.system(.title3, design: .rounded))
+            }
+            .gaugeStyle(ProgressGaugeStyle())
+        case .failure(_):
+            Image(systemName: "exclamationmark.circle")
+        }
     }
 }
