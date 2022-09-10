@@ -8,15 +8,23 @@
 import WidgetKit
 import SwiftUI
 
-let defaultQueryResult = (
-    true,
-    0,
-    UserData.defaultData
-)
+struct MainWidget: Widget {
+    let kind: String = "WidgetView"
+
+    var body: some WidgetConfiguration {
+        IntentConfiguration(kind: kind, intent: SelectAccountIntent.self, provider: MainWidgetProvider()) { entry in
+            WidgetViewEntryView(entry: entry)
+        }
+        .configurationDisplayName("原神状态")
+        .description("查询树脂恢复状态")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+
+    }
+}
 
 struct WidgetViewEntryView : View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: Provider.Entry
+    let entry: MainWidgetProvider.Entry
     var result: FetchResult { entry.result }
     var viewConfig: WidgetViewConfiguration { entry.viewConfig }
     var accountName: String? { entry.accountName }
@@ -42,38 +50,3 @@ struct WidgetViewEntryView : View {
         }
     }
 }
-
-@main
-struct WidgetView: Widget {
-    let kind: String = "WidgetView"
-
-    private var supportedFamilies: [WidgetFamily] {
-        if #available(iOSApplicationExtension 16.0, *) {
-            return [
-                .systemSmall,
-                .systemMedium,
-                .systemLarge,
-                .accessoryCircular
-            ]
-        } else {
-            return [
-                .systemSmall,
-                .systemMedium,
-                .systemLarge
-            ]
-        }
-    }
-    
-    var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectAccountIntent.self, provider: Provider()) { entry in
-            WidgetViewEntryView(entry: entry)
-        }
-        .configurationDisplayName("原神状态")
-        .description("查询树脂恢复状态")
-        .supportedFamilies(supportedFamilies)
-        
-    }
-}
-
-
-

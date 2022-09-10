@@ -20,6 +20,11 @@ struct GlobalDonateView: View {
                     .padding()
                     .fixedSize(horizontal: false, vertical: true)
             }
+            Section {
+                NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/thanks.html").navigationTitle("特别鸣谢")) {
+                    Text("特别鸣谢")
+                }
+            }
             if is_zh_CN {
                 Section(footer: isWechatAlipayShow ? Text("您可以长按保存图片到对应App中扫描").font(.footnote) : nil) {
                     Button("通过微信或支付宝支付") {
