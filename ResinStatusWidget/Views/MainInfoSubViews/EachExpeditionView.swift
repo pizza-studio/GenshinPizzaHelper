@@ -16,15 +16,13 @@ struct EachExpeditionView: View {
         HStack {
             webView(url: expedition.avatarSideIconUrl)
             VStack(alignment: .leading) {
-                Text(expedition.recoveryTime.describeIntervalLong ?? "已完成".localized)
+                Text(expedition.recoveryTime.describeIntervalLong(finishedTextPlaceholder: "已完成".localized))
                     .lineLimit(1)
                     .font(.footnote)
                     .minimumScaleFactor(0.4)
                 percentageBar(expedition.percentage)
                     .environment(\.colorScheme, .light)
             }
-
-
         }
         .foregroundColor(Color("textColor3"))
     }

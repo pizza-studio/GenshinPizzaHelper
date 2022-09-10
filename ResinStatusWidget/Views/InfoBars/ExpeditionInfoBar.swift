@@ -48,13 +48,20 @@ struct ExpeditionInfoBar: View {
                 }
             case .byTimePoint:
                 if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
-                    Text(expeditionInfo.allCompleteTime.completeTimePointFromNow ?? "已全部完成".localized)
+                    Text(expeditionInfo.allCompleteTime.completeTimePointFromNow(finishedTextPlaceholder: "已全部完成".localized))
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
                         .lineLimit(1)
                 } else {
-                    Text(expeditionInfo.nextCompleteTime.completeTimePointFromNow ?? String(format: NSLocalizedString("%lld个已完成", comment: "%lld done"), expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask))
+                    Text(expeditionInfo.nextCompleteTime.completeTimePointFromNow(
+                        finishedTextPlaceholder:
+                            String(
+                            format: NSLocalizedString("%lld个已完成", comment: "%lld done"),
+                            expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask
+                            )
+                        )
+                    )
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
@@ -62,13 +69,13 @@ struct ExpeditionInfoBar: View {
                 }
             case .byTimeInterval:
                 if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
-                    Text(expeditionInfo.allCompleteTime.describeIntervalShort ?? "已全部完成".localized)
+                    Text(expeditionInfo.allCompleteTime.describeIntervalShort(finishedTextPlaceholder: "已全部完成".localized))
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
                         .lineLimit(1)
                 } else {
-                    Text(expeditionInfo.nextCompleteTime.describeIntervalShort ?? String(format: NSLocalizedString("%lld个已完成", comment: "%lld done"), expeditionInfo.maxExpedition - expeditionInfo.currentOngoingTask) )
+                    Text(expeditionInfo.nextCompleteTime.describeIntervalShort(finishedTextPlaceholder: "已全部完成".localized))
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)

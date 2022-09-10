@@ -26,7 +26,7 @@ struct WatchAccountDetailView: View {
                             Divider()
                             WatchAccountDetailItemView(title: "每日委托", value: "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)", icon: Image("每日任务"))
                             Divider()
-                            WatchAccountDetailItemView(title: "参量质变仪", value: "\(data.transformerInfo.recoveryTime.describeIntervalShort ?? "可使用".localized)", icon: Image("参量质变仪"))
+                            WatchAccountDetailItemView(title: "参量质变仪", value: "\(data.transformerInfo.recoveryTime.describeIntervalLong(finishedTextPlaceholder: "可使用".localized))", icon: Image("参量质变仪"))
                             Divider()
                             WatchAccountDetailItemView(title: "周本折扣", value: "\(data.weeklyBossesInfo.hasUsedResinDiscountNum) / \(data.weeklyBossesInfo.resinDiscountNumLimit)", icon: Image("征讨领域"))
                             Divider()
@@ -51,7 +51,7 @@ struct WatchAccountDetailView: View {
     func recoveryTimeText(resinInfo: ResinInfo) -> String {
         if resinInfo.recoveryTime.second != 0 {
             let localizedStr = NSLocalizedString("%@ 回满", comment: "resin replenished")
-            return String(format: localizedStr, resinInfo.recoveryTime.completeTimePointFromNow!)
+            return String(format: localizedStr, resinInfo.recoveryTime.completeTimePointFromNow())
         } else {
             return "0小时0分钟\n树脂已全部回满".localized
         }
@@ -70,7 +70,7 @@ private struct WatchEachExpeditionView: View {
             webView(url: expedition.avatarSideIconUrl)
                 .padding(.trailing)
             VStack(alignment: .leading) {
-                Text(expedition.recoveryTime.describeIntervalLong ?? "已完成".localized)
+                Text(expedition.recoveryTime.describeIntervalLong(finishedTextPlaceholder: "已完成".localized))
                     .font(.footnote)
                 percentageBar(expedition.percentage)
             }
