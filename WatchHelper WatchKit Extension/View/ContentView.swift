@@ -41,6 +41,21 @@ struct ContentView: View {
                 .listStyle(.carousel)
             }
         }
+        .onChange(of: scenePhase, perform: { newPhase in
+            switch newPhase {
+            case .active:
+                DispatchQueue.main.async {
+                    viewModel.fetchAccount()
+                }
+                DispatchQueue.main.async {
+                    viewModel.refreshData()
+                }
+//            case .inactive:
+//                WidgetCenter.shared.reloadAllTimelines()
+            default:
+                break
+            }
+        })
 //        .onAppear {
 //            viewModel.deleteAccount(account: viewModel.accounts.first!)
 //            viewModel.addAccount(name: "Hotaru", uid: "114514002", cookie: testCookie, server: .china)
