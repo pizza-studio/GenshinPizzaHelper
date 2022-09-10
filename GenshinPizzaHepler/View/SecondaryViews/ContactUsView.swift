@@ -206,7 +206,7 @@ struct ContactUsView: View {
                         HStack {
                             Text("郁离居士")
                             Spacer()
-                            Text("素材制作")
+                            Text("图片素材制作")
                                 .foregroundColor(.gray)
                         }
                     } icon: {
