@@ -8,15 +8,6 @@
 import Foundation
 import SwiftUI
 
-#if os(watchOS)
-struct ResinEntry {
-    let date: Date
-    let result: FetchResult
-    let viewConfig: WidgetViewConfiguration
-    var accountName: String? = nil
-}
-
-#else
 import WidgetKit
 
 struct ResinEntry: TimelineEntry {
@@ -26,19 +17,7 @@ struct ResinEntry: TimelineEntry {
     var accountName: String? = nil
 }
 
-struct ResinLoader {
-    
-    static func fetch(uid: String, server_id: String, cookie: String, region: Region, completion: @escaping ( (Result<UserData, FetchError>) -> Void)) {
-        API.Features.fetchInfos(region: region,
-                                serverID: server_id,
-                                uid: uid,
-                                cookie: cookie) { result in
-            completion(result)
-        }
-    }
-}
-
-struct Provider: IntentTimelineProvider {
+struct MainWidgetProvider: IntentTimelineProvider {
 
     func placeholder(in context: Context) -> ResinEntry {
         ResinEntry(date: Date(), result: FetchResult.defaultFetchResult, viewConfig: .defaultConfig, accountName: "荧")
@@ -124,4 +103,4 @@ struct Provider: IntentTimelineProvider {
         }
     }
 }
-#endif
+
