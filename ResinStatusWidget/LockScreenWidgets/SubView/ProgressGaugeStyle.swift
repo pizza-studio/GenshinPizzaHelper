@@ -87,7 +87,7 @@ struct Arc: Shape {
 //        let startAngle: Angle = .degrees(45 - (1 - percentage) * 270)
 //        let endAngle: Angle = .degrees(135)
 //        #else
-        let startAngle: Angle = .degrees(50 - (1 - percentage) * (50+130))
+        let startAngle: Angle = .degrees(50 - (1 - percentage) * 280)
         let endAngle: Angle = .degrees(130)
 //        #endif
 

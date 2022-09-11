@@ -19,7 +19,7 @@ struct LockScreenResinWidgetCircular: View {
         case .fullColor:
             switch result {
             case .success(let data):
-                Gauge(value: Double(data.resinInfo.currentResin), in: 0.0...Double(data.resinInfo.maxResin)) {
+                Gauge(value: Double(data.resinInfo.currentResin)/Double(data.resinInfo.maxResin)) {
                     LinearGradient(colors: [.init("iconColor.resin.dark"), .init("iconColor.resin.middle"), .init("iconColor.resin.light")], startPoint: .top, endPoint: .bottom)
                         .mask(Image("icon.resin")
                             .resizable()
@@ -44,7 +44,7 @@ struct LockScreenResinWidgetCircular: View {
         case .accented:
             switch result {
             case .success(let data):
-                Gauge(value: Double(data.resinInfo.currentResin), in: 0.0...Double(data.resinInfo.maxResin)) {
+                Gauge(value: Double(data.resinInfo.currentResin)/Double(data.resinInfo.maxResin)) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
@@ -67,7 +67,7 @@ struct LockScreenResinWidgetCircular: View {
         default:
             switch result {
             case .success(let data):
-                Gauge(value: Double(data.resinInfo.currentResin), in: 0.0...Double(data.resinInfo.maxResin)) {
+                Gauge(value: Double(data.resinInfo.currentResin)/Double(data.resinInfo.maxResin)) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
