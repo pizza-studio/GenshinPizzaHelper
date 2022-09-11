@@ -19,7 +19,7 @@ struct WidgetLauncher {
     }
 }
 
-@available(iOSApplicationExtension 16.0, watchOSApplicationExtension 9.0, *)
+@available(iOSApplicationExtension 16.0, *)
 struct WidgetsBundleiOS16: WidgetBundle {
     var body: some Widget {
         MainWidget()

@@ -73,7 +73,7 @@ extension UserData {
         // 用于测试和提供小组件预览视图的默认数据
         currentResin: 90,
         maxResin: 160,
-        resinRecoveryTime: "123",
+        resinRecoveryTime: "\((160-90)*8)",
 
         finishedTaskNum: 3,
         totalTaskNum: 4,

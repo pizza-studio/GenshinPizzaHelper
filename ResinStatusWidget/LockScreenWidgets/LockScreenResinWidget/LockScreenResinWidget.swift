@@ -29,6 +29,7 @@ struct LockScreenWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
     var result: FetchResult { entry.result }
+//    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }
 
     var body: some View {

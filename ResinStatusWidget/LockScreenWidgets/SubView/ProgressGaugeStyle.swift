@@ -10,17 +10,33 @@ import SwiftUI
 
 @available(iOS 16.0, *)
 struct ProgressGaugeStyle: GaugeStyle {
+    #if os(watchOS)
+    let strokeLineWidth: CGFloat = 5
+    #else
+    let strokeLineWidth: CGFloat = 6
+    #endif
+
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
-            TotalArc().stroke(Color.indigo, style: StrokeStyle(lineWidth: 6, lineCap: .round)).opacity(0.5)
-            Arc(percentage: configuration.value).stroke(Color.white, style: StrokeStyle(lineWidth: 6, lineCap: .round)).shadow(radius: 1)
+            TotalArc().stroke(Color.indigo, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round)).opacity(0.5)
+            Arc(percentage: configuration.value).stroke(Color.white, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round)).shadow(radius: 1)
             configuration.currentValueLabel
-                .frame(maxWidth: 38)
+                #if os(watchOS)
+                .frame(maxWidth: 26, maxHeight: 25)
+                #else
+                .frame(maxWidth: 34)
+                #endif
             VStack {
                 Spacer()
                 configuration.label
-                    .frame(width: 14, height: 14)
-                    .padding(.bottom, -2)
+                    #if os(watchOS)
+                    .frame(width: 10, height: 10)
+                    .padding(.bottom, -1.5)
+                    #else
+                    .frame(width: 12, height: 12)
+                    .padding(.bottom, -1.5)
+                    #endif
+
             }
         }
         #if !os(watchOS)
@@ -32,28 +48,45 @@ struct ProgressGaugeStyle: GaugeStyle {
 }
 
 struct TotalArc: Shape {
+//    #if os(watchOS)
+//    let startAngle: Angle = .degrees(45)
+//    let endAngle: Angle = .degrees(135)
+//    #else
+    let startAngle: Angle = .degrees(50)
+    let endAngle: Angle = .degrees(130)
+//    #endif
+
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let radius = max(rect.size.width, rect.size.height) / 2
         path.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
                     radius: radius,
-                    startAngle: .degrees(45),
-                    endAngle: .degrees(135),
+                    startAngle: startAngle,
+                    endAngle: endAngle,
                     clockwise: true)
         return path
     }
 }
 
 struct Arc: Shape {
-    var percentage: Double
+    let percentage: Double
 
     func path(in rect: CGRect) -> Path {
+
+//        #if os(watchOS)
+//        let startAngle: Angle = .degrees(45 - (1 - percentage) * 270)
+//        let endAngle: Angle = .degrees(135)
+//        #else
+        let startAngle: Angle = .degrees(50 - (1 - percentage) * (50+130))
+        let endAngle: Angle = .degrees(130)
+//        #endif
+
         var path = Path()
         let radius = max(rect.size.width, rect.size.height) / 2
         path.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
                     radius: radius,
-                    startAngle: .degrees(45 - (1 - percentage) * 270),
-                    endAngle: .degrees(135),
+                    startAngle: startAngle,
+                    endAngle: endAngle,
                     clockwise: true)
         return path
     }

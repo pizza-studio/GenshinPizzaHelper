@@ -22,14 +22,11 @@ struct LockScreenResinWidgetCircular: View {
                     .scaledToFit()
             } currentValueLabel: {
                 Text("\(data.resinInfo.currentResin)")
+                    .font(.system(.title3, design: .rounded))
+                    .minimumScaleFactor(0.4)
             }
-            #if os(watchOS)
             .gaugeStyle(ProgressGaugeStyle())
-            #else
-            .gaugeStyle(ProgressGaugeStyle())
-            #endif
         case .failure(_):
-
             Gauge(value: 0.0, in: 0.0...160.0) {
                 Image("icon.resin")
                     .resizable()
@@ -37,11 +34,7 @@ struct LockScreenResinWidgetCircular: View {
             } currentValueLabel: {
                 Image(systemName: "ellipsis")
             }
-            #if os(watchOS)
-            .gaugeStyle(.circular)
-            #else
             .gaugeStyle(ProgressGaugeStyle())
-            #endif
         }
     }
 }
