@@ -38,7 +38,8 @@ struct LockScreenWidgetView: View {
             Gauge(value: Double(data.resinInfo.currentResin) / Double(160)) {
                 Image("树脂")
                     .resizable()
-                    .frame(width: 15, height: 15)
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
                     .scaledToFit()
             } currentValueLabel: {
                 Text("\(data.resinInfo.currentResin)")

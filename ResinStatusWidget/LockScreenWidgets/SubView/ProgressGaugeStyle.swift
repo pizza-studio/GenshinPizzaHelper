@@ -19,7 +19,8 @@ struct ProgressGaugeStyle: GaugeStyle {
             VStack {
                 Spacer()
                 configuration.label
-                    .padding(.bottom, -3)
+                    .frame(width: 17, height: 17)
+                    .padding(.bottom, -4)
             }
         }.frame(width: 50, height: 50)
     }
