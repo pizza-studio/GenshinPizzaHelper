@@ -22,8 +22,14 @@ struct ProgressGaugeStyle: GaugeStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
-            TotalArc().stroke(circleColor, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round)).widgetAccentable().opacity(0.5)
-            Arc(percentage: configuration.value).stroke(circleColor, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round)).widgetAccentable().shadow(radius: 1)
+            TotalArc()
+                .stroke(circleColor, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
+                .widgetAccentable()
+                .opacity(0.5)
+            Arc(percentage: configuration.value)
+                .stroke(circleColor, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round))
+                .widgetAccentable()
+                .shadow(radius: 1)
             configuration.currentValueLabel
                 #if os(watchOS)
                 .frame(maxWidth: 26, maxHeight: 25)
