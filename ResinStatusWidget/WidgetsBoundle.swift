@@ -9,10 +9,26 @@ import WidgetKit
 import SwiftUI
 
 @main
-struct WidgetsBundle: WidgetBundle {
-    var body: some Widget {
-        MainWidget()
-//        LockScreenResinWidget()
+struct WidgetLauncher {
+    static func main() {
+        if #available(iOSApplicationExtension 16.0, *) {
+            WidgetsBundleiOS16.main()
+        } else {
+            WidgetsBundleLowerThaniOS16.main()
+        }
     }
 }
 
+@available(iOSApplicationExtension 16.0, *)
+struct WidgetsBundleiOS16: WidgetBundle {
+    var body: some Widget {
+        MainWidget()
+        LockScreenResinWidget()
+    }
+}
+
+struct WidgetsBundleLowerThaniOS16: WidgetBundle {
+    var body: some Widget {
+        MainWidget()
+    }
+}

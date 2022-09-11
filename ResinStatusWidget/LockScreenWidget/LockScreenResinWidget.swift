@@ -16,7 +16,7 @@ struct LockScreenResinWidget: Widget {
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider()) { entry in
-            WidgetViewEntryView(entry: entry)
+            LockScreenWidgetView(entry: entry)
         }
         .configurationDisplayName("原神状态")
         .description("查询树脂恢复状态")

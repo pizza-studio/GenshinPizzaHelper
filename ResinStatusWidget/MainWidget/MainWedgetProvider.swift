@@ -10,6 +10,13 @@ import SwiftUI
 
 import WidgetKit
 
+struct ResinEntry: TimelineEntry {
+    let date: Date
+    let result: FetchResult
+    let viewConfig: WidgetViewConfiguration
+    var accountName: String? = nil
+}
+
 struct MainWidgetProvider: IntentTimelineProvider {
 
     func placeholder(in context: Context) -> ResinEntry {

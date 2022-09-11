@@ -8,18 +8,26 @@
 import Foundation
 import WidgetKit
 
-struct LockScreenWidgetProvider: IntentTimelineProvider {
 
-    func placeholder(in context: Context) -> ResinEntry {
-        ResinEntry(date: Date(), result: FetchResult.defaultFetchResult, viewConfig: .defaultConfig, accountName: "荧")
+struct AccountOnlyEntry: TimelineEntry {
+    let date: Date
+    let result: FetchResult
+    var accountName: String? = nil
+}
+
+struct LockScreenWidgetProvider: IntentTimelineProvider {
+    typealias Entry = AccountOnlyEntry
+
+    func placeholder(in context: Context) -> AccountOnlyEntry {
+        AccountOnlyEntry(date: Date(), result: FetchResult.defaultFetchResult, accountName: "荧")
     }
 
-    func getSnapshot(for configuration: SelectOnlyAccountIntent, in context: Context, completion: @escaping (ResinEntry) -> ()) {
-        let entry = ResinEntry(date: Date(), result: FetchResult.defaultFetchResult, viewConfig: .defaultConfig, accountName: "荧")
+    func getSnapshot(for configuration: SelectOnlyAccountIntent, in context: Context, completion: @escaping (AccountOnlyEntry) -> ()) {
+        let entry = AccountOnlyEntry(date: Date(), result: FetchResult.defaultFetchResult, accountName: "荧")
         completion(entry)
     }
 
-    func getTimeline(for configuration: SelectOnlyAccountIntent, in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
+    func getTimeline(for configuration: SelectOnlyAccountIntent, in context: Context, completion: @escaping (Timeline<AccountOnlyEntry>) -> ()) {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
@@ -28,49 +36,30 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         let accountConfigurationModel = AccountConfigurationModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
 
-        var viewConfig: WidgetViewConfiguration = .defaultConfig
-
         guard !configs.isEmpty else {
-            // 如果还没设置账号，要求进入App获取账号
-            viewConfig.addMessage("请进入App设置帐号信息")
-            let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
+            let entry = AccountOnlyEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
-            print("Config is empty")
             return
         }
 
         guard configuration.account != nil else {
-            print("no account intent got")
-            if configs.count == 1 {
-                viewConfig = .defaultConfig
-                // 如果还未选择账号且只有一个账号，默认获取第一个
-                configs.first!.fetchResult { result in
-                    let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig, accountName: configs.first!.name)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    completion(timeline)
-                    print("Widget Fetch succeed")
-                }
-            } else {
-                // 如果还没设置账号，要求进入App获取账号
-                viewConfig.addMessage("请长按进入小组件设置帐号信息")
-                let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
+            // 如果还未选择账号，默认获取第一个
+            configs.first!.fetchResult { result in
+                let entry = AccountOnlyEntry(date: currentDate, result: result, accountName: configs.first!.name)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
-                print("Need to choose account")
+                print("Widget Fetch succeed")
             }
             return
         }
 
         let selectedAccountUUID = UUID(uuidString: configuration.account!.identifier!)
-        viewConfig = .defaultConfig
         print(configs.first!.uuid!, configuration)
-
 
         guard let config = configs.first(where: { $0.uuid == selectedAccountUUID }) else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
-            viewConfig.addMessage("请长按进入小组件重新设置帐号信息")
-            let entry = ResinEntry(date: currentDate, result: .failure(.noFetchInfo), viewConfig: viewConfig)
+            let entry = AccountOnlyEntry(date: currentDate, result: .failure(.noFetchInfo))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Need to choose account")
@@ -79,7 +68,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
 
         // 正常情况
         config.fetchResult { result in
-            let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig, accountName: config.name)
+            let entry = AccountOnlyEntry(date: currentDate, result: result, accountName: config.name)
 
             switch result {
             case .success(let userData):

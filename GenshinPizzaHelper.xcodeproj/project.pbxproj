@@ -258,7 +258,6 @@
 		EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EAF55E2128CC8F1A00902AE7 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */; };
-		EAF55E2E28CC91B000902AE7 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2C28CC91AE00902AE7 /* Entry.swift */; };
 		EAF55E3028CC926600902AE7 /* LockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */; };
 		EAF55E3128CC927F00902AE7 /* LockScreenResinWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */; };
 		EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
@@ -478,7 +477,6 @@
 		EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBoundle.swift; sourceTree = "<group>"; };
 		EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidget.swift; sourceTree = "<group>"; };
 		EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetProvider.swift; sourceTree = "<group>"; };
-		EAF55E2C28CC91AE00902AE7 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		EAFB231F28A26C56006A8EDC /* AccountConfiguration.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AccountConfiguration.xcdatamodel; sourceTree = "<group>"; };
 		EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingNavigator.swift; sourceTree = "<group>"; };
 		EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
@@ -741,7 +739,6 @@
 				EAF55E2628CC917200902AE7 /* MainWidget */,
 				EA30F9AC2886B49300AE7BEA /* Info.plist */,
 				EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */,
-				EAF55E2C28CC91AE00902AE7 /* Entry.swift */,
 			);
 			path = ResinStatusWidget;
 			sourceTree = "<group>";
@@ -1225,7 +1222,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF55E2E28CC91B000902AE7 /* Entry.swift in Sources */,
 				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA56E09D28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
