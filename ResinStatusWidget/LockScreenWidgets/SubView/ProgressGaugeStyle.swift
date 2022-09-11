@@ -10,6 +10,10 @@ import SwiftUI
 
 @available(iOS 16.0, *)
 struct ProgressGaugeStyle: GaugeStyle {
+    var circleColor: Color = .white
+//    var valueTextColor: Color = .white
+//    var labelColor: Color = .white
+
     #if os(watchOS)
     let strokeLineWidth: CGFloat = 5
     #else
@@ -18,8 +22,8 @@ struct ProgressGaugeStyle: GaugeStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         ZStack {
-            TotalArc().stroke(Color.indigo, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round)).opacity(0.5)
-            Arc(percentage: configuration.value).stroke(Color.white, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round)).shadow(radius: 1)
+            TotalArc().stroke(circleColor, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round)).widgetAccentable().opacity(0.5)
+            Arc(percentage: configuration.value).stroke(circleColor, style: StrokeStyle(lineWidth: strokeLineWidth, lineCap: .round)).widgetAccentable().shadow(radius: 1)
             configuration.currentValueLabel
                 #if os(watchOS)
                 .frame(maxWidth: 26, maxHeight: 25)
@@ -36,8 +40,8 @@ struct ProgressGaugeStyle: GaugeStyle {
                     .frame(width: 12, height: 12)
                     .padding(.bottom, -1.5)
                     #endif
-
             }
+            .widgetAccentable()
         }
         #if !os(watchOS)
         .frame(width: 50, height: 50)
