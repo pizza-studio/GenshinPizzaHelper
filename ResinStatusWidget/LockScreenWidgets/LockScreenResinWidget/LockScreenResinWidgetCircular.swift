@@ -15,29 +15,21 @@ struct LockScreenResinWidgetCircular: View {
     var body: some View {
         switch result {
         case .success(let data):
-            #if os(watchOS)
+
             Gauge(value: Double(data.resinInfo.currentResin), in: 0.0...Double(data.resinInfo.maxResin)) {
-                Image("icon.resin")
+                Image("moon.fill")
                     .resizable()
                     .scaledToFit()
             } currentValueLabel: {
                 Text("\(data.resinInfo.currentResin)")
             }
-            .gaugeStyle(.circular)
+            #if os(watchOS)
+            .gaugeStyle(.accessoryCircularCapacity)
             #else
-            Gauge(value: Double(data.resinInfo.currentResin) / Double(data.resinInfo.maxResin)) {
-                Image("icon.resin")
-                    .resizable()
-                    .scaledToFit()
-            } currentValueLabel: {
-                Text("\(data.resinInfo.currentResin)")
-                    .font(.system(.title3, design: .rounded))
-                    .minimumScaleFactor(0.4)
-            }
             .gaugeStyle(ProgressGaugeStyle())
             #endif
         case .failure(_):
-            #if os(watchOS)
+
             Gauge(value: 0.0, in: 0.0...160.0) {
                 Image("icon.resin")
                     .resizable()
@@ -45,15 +37,9 @@ struct LockScreenResinWidgetCircular: View {
             } currentValueLabel: {
                 Image(systemName: "ellipsis")
             }
+            #if os(watchOS)
             .gaugeStyle(.circular)
             #else
-            Gauge(value: 0.0, in: 0.0...160.0) {
-                Image("icon.resin")
-                    .resizable()
-                    .scaledToFit()
-            } currentValueLabel: {
-                Image(systemName: "ellipsis")
-            }
             .gaugeStyle(ProgressGaugeStyle())
             #endif
         }
