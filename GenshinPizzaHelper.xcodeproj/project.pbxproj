@@ -231,6 +231,8 @@
 		EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EAE95C6C28CDCA5900D975CB /* ProgressGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */; };
+		EAE95C6F28CDD38100D975CB /* LockScreenResinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */; };
+		EAE95C7128CDD52C00D975CB /* LockScreenResinWidgetInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */; };
 		EAEC41E228B096170056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EAEC41E328B096180056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F328B0994C0056D182 /* 参量质变仪.png */; };
@@ -465,6 +467,8 @@
 		EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGaugeStyle.swift; sourceTree = "<group>"; };
+		EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCircular.swift; sourceTree = "<group>"; };
+		EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetInline.swift; sourceTree = "<group>"; };
 		EAEC41F328B0994C0056D182 /* 参量质变仪.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "参量质变仪.png"; sourceTree = "<group>"; };
 		EAEC41F428B0994C0056D182 /* 树脂.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "树脂.png"; sourceTree = "<group>"; };
 		EAEC41F528B0994C0056D182 /* 周本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周本.png"; sourceTree = "<group>"; };
@@ -886,6 +890,17 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
+		EAE95C6D28CDD34700D975CB /* LockScreenResinWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */,
+				EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */,
+				EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */,
+				EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */,
+			);
+			path = LockScreenResinWidget;
+			sourceTree = "<group>";
+		};
 		EAF43C8328A0120400D89787 /* InfoBars */ = {
 			isa = PBXGroup;
 			children = (
@@ -912,8 +927,7 @@
 		EAF55E2728CC917C00902AE7 /* LockScreenWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */,
-				EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */,
+				EAE95C6D28CDD34700D975CB /* LockScreenResinWidget */,
 				EAE95C6A28CDCA2D00D975CB /* SubView */,
 			);
 			path = LockScreenWidgets;
@@ -1247,6 +1261,7 @@
 				BFFD822D28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */,
+				EAE95C6F28CDD38100D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
 				EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
@@ -1287,6 +1302,7 @@
 				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
 				BFFD823728A680E000616CE1 /* WebImageView.swift in Sources */,
+				EAE95C7128CDD52C00D975CB /* LockScreenResinWidgetInline.swift in Sources */,
 				BFE42539289E500F00FEFA49 /* MainInfoView.swift in Sources */,
 				EA56E09F28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */,
 				BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */,

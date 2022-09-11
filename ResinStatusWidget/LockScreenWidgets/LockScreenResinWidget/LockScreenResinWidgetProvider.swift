@@ -16,7 +16,15 @@ struct AccountOnlyEntry: TimelineEntry {
 }
 
 struct LockScreenWidgetProvider: IntentTimelineProvider {
-    typealias Entry = AccountOnlyEntry
+    @available(iOSApplicationExtension 16.0, *)
+    func recommendations() -> [IntentRecommendation<SelectOnlyAccountIntent>] {
+        let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
+        return configs.map { config in
+            let intent = SelectOnlyAccountIntent()
+            intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
+            return IntentRecommendation(intent: intent, description: config.name!+"(\(config.server.rawValue))")
+        }
+    }
 
     func placeholder(in context: Context) -> AccountOnlyEntry {
         AccountOnlyEntry(date: Date(), result: FetchResult.defaultFetchResult, accountName: "荧")

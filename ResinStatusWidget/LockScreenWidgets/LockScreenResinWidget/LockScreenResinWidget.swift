@@ -18,8 +18,8 @@ struct LockScreenResinWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider()) { entry in
             LockScreenWidgetView(entry: entry)
         }
-        .configurationDisplayName("原神状态")
-        .description("查询树脂恢复状态")
+        .configurationDisplayName("树脂")
+        .description("树脂回复状态")
         .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular])
     }
 }
@@ -31,24 +31,18 @@ struct LockScreenWidgetView: View {
     var result: FetchResult { entry.result }
     var accountName: String? { entry.accountName }
 
-    @ViewBuilder
     var body: some View {
-        switch result {
-        case .success(let data):
-            Gauge(value: Double(data.resinInfo.currentResin) / Double(160)) {
-                Image("树脂")
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(.white)
-                    .scaledToFit()
-            } currentValueLabel: {
-                Text("\(data.resinInfo.currentResin)")
-                    .font(.system(.title3, design: .rounded))
-                    .minimumScaleFactor(0.4)
-            }
-            .gaugeStyle(ProgressGaugeStyle())
-        case .failure(_):
-            Image(systemName: "exclamationmark.circle")
+        switch family {
+//            case .accessoryCorner:
+//                <#code#>
+        case .accessoryCircular:
+            LockScreenResinWidgetCircular(result: result)
+//            case .accessoryRectangular:
+//                <#code#>
+        case .accessoryInline:
+            LockScreenResinWidgetInline(result: result)
+        default:
+            EmptyView()
         }
     }
 }

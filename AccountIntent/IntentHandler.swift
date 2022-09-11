@@ -9,11 +9,12 @@ import Foundation
 import Intents
 
 class IntentHandler: INExtension, SelectAccountIntentHandling, SelectOnlyAccountIntentHandling {
+
     // MARK: - SelectAccountIntentHandling
     func provideBackgoundOptionsCollection(for intent: SelectAccountIntent, with completion: @escaping (INObjectCollection<WidgetBackground>?, Error?) -> Void) {
         let colorOptions: [String] = BackgroundOptions.colors
         let namecardOptions: [String] = BackgroundOptions.namecards
-        
+
         var intents: [WidgetBackground] = []
         colorOptions.forEach { colorName in
             let name = colorName.localized
@@ -43,6 +44,8 @@ class IntentHandler: INExtension, SelectAccountIntentHandling, SelectOnlyAccount
 
         completion(collection, nil)
     }
+
+
 
 
     // MARK: - SelectOnlyAccountIntentHandling
