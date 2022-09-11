@@ -21,5 +21,6 @@ struct WatchWidgetLauncher {
 struct WidgetsBundleiOS16: WidgetBundle {
     var body: some Widget {
         LockScreenResinWidget()
+        LockScreenHomeCoinWidget()
     }
 }

@@ -8,21 +8,14 @@
 import Foundation
 import WidgetKit
 
-
-struct AccountOnlyEntry: TimelineEntry {
-    let date: Date
-    let result: FetchResult
-    var accountName: String? = nil
-}
-
-struct LockScreenResinWidgetProvider: IntentTimelineProvider {
+struct LockScreenHomeCoinWidgetProvider: IntentTimelineProvider {
     @available(iOSApplicationExtension 16.0, *)
     func recommendations() -> [IntentRecommendation<SelectOnlyAccountIntent>] {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
             intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
-            return IntentRecommendation(intent: intent, description: config.name!+"的树脂")
+            return IntentRecommendation(intent: intent, description: config.name!+"洞天宝钱")
         }
     }
 

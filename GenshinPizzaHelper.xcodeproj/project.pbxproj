@@ -224,6 +224,12 @@
 		EA7F9C7028B0172D00DEAFEB /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
 		EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
+		EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
+		EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
+		EA9C2D0B28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0A28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift */; };
+		EA9C2D0C28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0A28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift */; };
+		EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
+		EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
 		EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
 		EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
@@ -576,6 +582,9 @@
 		EA7F67C9289D711200D2CE29 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
+		EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
+		EA9C2D0A28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetProvider.swift; sourceTree = "<group>"; };
+		EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCircular.swift; sourceTree = "<group>"; };
 		EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppMaterialNavigator.swift; sourceTree = "<group>"; };
 		EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountConfigurationModel.swift; sourceTree = "<group>"; };
 		EAAF330E28A27AFE0018EFAB /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -947,6 +956,16 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		EA9C2D0528CE23A80053ED1E /* LockScreenHomeCoinWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */,
+				EA9C2D0A28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift */,
+				EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */,
+			);
+			path = LockScreenHomeCoinWidget;
+			sourceTree = "<group>";
+		};
 		EAAF330828A276360018EFAB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1094,6 +1113,7 @@
 		EAF55E2728CC917C00902AE7 /* LockScreenWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				EA9C2D0528CE23A80053ED1E /* LockScreenHomeCoinWidget */,
 				EAE95C6D28CDD34700D975CB /* LockScreenResinWidget */,
 				EAE95C6A28CDCA2D00D975CB /* SubView */,
 			);
@@ -1398,12 +1418,15 @@
 				EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */,
 				EAE95CC128CE0F7A00D975CB /* LockScreenResinWidgetInline.swift in Sources */,
 				EAE95CCA28CE0FD300D975CB /* Error.swift in Sources */,
+				EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
 				EAE95CC028CE0F7800D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
 				EAE95CDB28CE103D00D975CB /* ViewModel.swift in Sources */,
 				EAE95CBE28CE0F7300D975CB /* LockScreenResinWidgetProvider.swift in Sources */,
 				EAE95CD528CE0FDF00D975CB /* FeatureAPI.swift in Sources */,
+				EA9C2D0C28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift in Sources */,
 				EAE95CC828CE0FD300D975CB /* UserData.swift in Sources */,
 				EAE95CC928CE0FD300D975CB /* Result.swift in Sources */,
+				EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
@@ -1537,6 +1560,7 @@
 				EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */,
 				EAE95C6F28CDD38100D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
+				EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
 				EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
@@ -1546,6 +1570,7 @@
 				EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
+				EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				EA56E09128A26C0D00A64262 /* ResinInfo.swift in Sources */,
 				EA56E09528A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */,
@@ -1560,6 +1585,7 @@
 				BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */,
 				EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */,
 				EA56E08B28A26C0D00A64262 /* Result.swift in Sources */,
+				EA9C2D0B28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift in Sources */,
 				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,

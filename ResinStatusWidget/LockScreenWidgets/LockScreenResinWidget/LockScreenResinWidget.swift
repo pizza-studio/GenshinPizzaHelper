@@ -15,8 +15,8 @@ struct LockScreenResinWidget: Widget {
     let kind: String = "LockScreenResinWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider()) { entry in
-            LockScreenWidgetView(entry: entry)
+        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenResinWidgetProvider()) { entry in
+            LockScreenResinWidgetView(entry: entry)
         }
         .configurationDisplayName("树脂")
         .description("树脂回复状态")
@@ -25,9 +25,9 @@ struct LockScreenResinWidget: Widget {
 }
 
 @available (iOS 16.0, *)
-struct LockScreenWidgetView: View {
+struct LockScreenResinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: LockScreenWidgetProvider.Entry
+    let entry: LockScreenResinWidgetProvider.Entry
     var result: FetchResult { entry.result }
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }
