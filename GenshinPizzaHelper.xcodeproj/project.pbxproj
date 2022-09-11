@@ -230,6 +230,7 @@
 		EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
+		EAE95C6C28CDCA5900D975CB /* ProgressGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */; };
 		EAEC41E228B096170056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EAEC41E328B096180056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F328B0994C0056D182 /* 参量质变仪.png */; };
@@ -463,6 +464,7 @@
 		EACBDA5328C9DEF000CEE176 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGaugeStyle.swift; sourceTree = "<group>"; };
 		EAEC41F328B0994C0056D182 /* 参量质变仪.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "参量质变仪.png"; sourceTree = "<group>"; };
 		EAEC41F428B0994C0056D182 /* 树脂.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "树脂.png"; sourceTree = "<group>"; };
 		EAEC41F528B0994C0056D182 /* 周本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周本.png"; sourceTree = "<group>"; };
@@ -735,7 +737,7 @@
 		EA30F9A72886B49200AE7BEA /* ResinStatusWidget */ = {
 			isa = PBXGroup;
 			children = (
-				EAF55E2728CC917C00902AE7 /* LockScreenWidget */,
+				EAF55E2728CC917C00902AE7 /* LockScreenWidgets */,
 				EAF55E2628CC917200902AE7 /* MainWidget */,
 				EA30F9AC2886B49300AE7BEA /* Info.plist */,
 				EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */,
@@ -876,6 +878,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EAE95C6A28CDCA2D00D975CB /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		EAF43C8328A0120400D89787 /* InfoBars */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,13 +909,14 @@
 			path = MainWidget;
 			sourceTree = "<group>";
 		};
-		EAF55E2728CC917C00902AE7 /* LockScreenWidget */ = {
+		EAF55E2728CC917C00902AE7 /* LockScreenWidgets */ = {
 			isa = PBXGroup;
 			children = (
 				EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */,
 				EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */,
+				EAE95C6A28CDCA2D00D975CB /* SubView */,
 			);
-			path = LockScreenWidget;
+			path = LockScreenWidgets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1230,6 +1241,7 @@
 				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
 				EAF55E3028CC926600902AE7 /* LockScreenResinWidget.swift in Sources */,
 				EA7F9C7028B0172D00DEAFEB /* NotificationCenter.swift in Sources */,
+				EAE95C6C28CDCA5900D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EA30F9A92886B49200AE7BEA /* MainWidget.swift in Sources */,
 				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
 				BFFD822D28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,

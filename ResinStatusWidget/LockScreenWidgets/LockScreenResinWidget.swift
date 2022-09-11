@@ -43,6 +43,7 @@ struct LockScreenWidgetView: View {
             } currentValueLabel: {
                 Text("\(data.resinInfo.currentResin)")
                     .font(.system(.title3, design: .rounded))
+                    .minimumScaleFactor(0.4)
             }
             .gaugeStyle(ProgressGaugeStyle())
         case .failure(_):

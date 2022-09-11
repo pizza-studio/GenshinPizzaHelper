@@ -71,7 +71,7 @@ extension UserData {
         accountName: "荧",
         
         // 用于测试和提供小组件预览视图的默认数据
-        currentResin: 90,
+        currentResin: 160,
         maxResin: 160,
         resinRecoveryTime: "123",
 
