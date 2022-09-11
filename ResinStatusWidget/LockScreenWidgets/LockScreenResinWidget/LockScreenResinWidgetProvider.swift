@@ -77,10 +77,12 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         // 正常情况
         config.fetchResult { result in
             let entry = AccountOnlyEntry(date: currentDate, result: result, accountName: config.name)
-
+            
             switch result {
             case .success(let userData):
+                #if !os(watchOS)
                 UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
+                #endif
             case .failure(_ ):
                 break
             }

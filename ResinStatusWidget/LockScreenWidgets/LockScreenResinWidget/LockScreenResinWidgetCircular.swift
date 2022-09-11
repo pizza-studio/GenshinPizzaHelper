@@ -38,7 +38,7 @@ struct LockScreenResinWidgetCircular: View {
             #endif
         case .failure(_):
             #if os(watchOS)
-            Gauge(value: Double(data.resinInfo.currentResin), in: 0.0...Double(data.resinInfo.maxResin)) {
+            Gauge(value: 0.0, in: 0.0...160.0) {
                 Image("icon.resin")
                     .resizable()
                     .scaledToFit()
