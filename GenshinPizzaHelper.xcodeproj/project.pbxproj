@@ -48,6 +48,8 @@
 		BF85D77B28CE0BA0003F3479 /* WatchWidgetExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */; };
 		BF85D77C28CE0BA0003F3479 /* WatchWidgetExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */; };
 		BF85D78328CE0BB6003F3479 /* WatchWidgetExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF85D78628CE18F2003F3479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
+		BF85D78728CE18F3003F3479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -1296,6 +1298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF85D78628CE18F2003F3479 /* Assets.xcassets in Resources */,
 				BF85D77928CE0BA0003F3479 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1375,6 +1378,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF85D78728CE18F3003F3479 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

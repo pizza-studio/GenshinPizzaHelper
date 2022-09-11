@@ -22,7 +22,12 @@ struct ProgressGaugeStyle: GaugeStyle {
                     .frame(width: 14, height: 14)
                     .padding(.bottom, -2)
             }
-        }.frame(width: 50, height: 50)
+        }
+        #if !os(watchOS)
+        .frame(width: 50, height: 50)
+        #else
+        .frame(width: 40, height: 40)
+        #endif
     }
 }
 

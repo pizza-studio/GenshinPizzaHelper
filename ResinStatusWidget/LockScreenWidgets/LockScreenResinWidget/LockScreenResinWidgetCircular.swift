@@ -17,14 +17,14 @@ struct LockScreenResinWidgetCircular: View {
         case .success(let data):
 
             Gauge(value: Double(data.resinInfo.currentResin), in: 0.0...Double(data.resinInfo.maxResin)) {
-                Image("moon.fill")
+                Image("icon.resin")
                     .resizable()
                     .scaledToFit()
             } currentValueLabel: {
                 Text("\(data.resinInfo.currentResin)")
             }
             #if os(watchOS)
-            .gaugeStyle(.accessoryCircularCapacity)
+            .gaugeStyle(ProgressGaugeStyle())
             #else
             .gaugeStyle(ProgressGaugeStyle())
             #endif
