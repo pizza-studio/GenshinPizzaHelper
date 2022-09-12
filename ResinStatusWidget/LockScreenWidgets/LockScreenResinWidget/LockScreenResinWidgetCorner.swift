@@ -25,7 +25,7 @@ struct LockScreenResinWidgetCorner: View {
         Image("icon.resin")
             .resizable()
             .scaledToFit()
-            .padding(5)
+            .padding(6)
             .widgetLabel(text)
     }
 }

@@ -25,7 +25,7 @@ struct LockScreenHomeCoinWidgetCorner: View {
         Image("icon.homeCoin")
             .resizable()
             .scaledToFit()
-            .padding(5)
+            .padding(3.5)
             .widgetLabel(text)
     }
 }
