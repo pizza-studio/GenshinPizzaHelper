@@ -76,7 +76,21 @@ struct AccountDisplayView: View {
                 .frame(height: geo.size.height)
                 .readingScrollView(from: "scroll", into: $scrollOffset)
                 if isAccountInfoShow {
-                    Text("Account")
+                    VStack(alignment: .leading) {
+                        Text(detail.accountName)
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                    }
+                    .onAppear {
+                        DispatchQueue.global().async {
+                            API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
+
+                            }
+                        }
+                    }
                 }
             }
             .padding(.horizontal, 25)

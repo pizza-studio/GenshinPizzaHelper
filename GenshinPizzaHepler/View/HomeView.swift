@@ -50,6 +50,7 @@ struct HomeView: View {
                                                 detail.accountUUIDString = account.config.uuid!.uuidString
                                                 detail.widgetBackground = account.background
                                                 detail.viewConfig = WidgetViewConfiguration.defaultConfig
+                                                detail.accountData = account.config
                                                 detail.show = true
                                             }
                                         }
@@ -75,6 +76,7 @@ struct HomeView: View {
                                                 detail.accountUUIDString = account.config.uuid!.uuidString
                                                 detail.widgetBackground = account.background
                                                 detail.viewConfig = WidgetViewConfiguration.defaultConfig
+                                                detail.accountData = account.config
                                                 detail.show = true
                                             }
                                         }
