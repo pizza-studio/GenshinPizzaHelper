@@ -242,6 +242,14 @@
 		EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		EAAF330F28A27AFE0018EFAB /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
 		EAAF331028A27B080018EFAB /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
+		EAB110E528CF72E8009FDF07 /* LockScreenDailyTaskWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110E128CF72E8009FDF07 /* LockScreenDailyTaskWidgetProvider.swift */; };
+		EAB110E628CF72E8009FDF07 /* LockScreenDailyTaskWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110E128CF72E8009FDF07 /* LockScreenDailyTaskWidgetProvider.swift */; };
+		EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110E228CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift */; };
+		EAB110E828CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110E228CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift */; };
+		EAB110E928CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110E328CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift */; };
+		EAB110EA28CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110E328CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift */; };
+		EAB110EB28CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110E428CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift */; };
+		EAB110EC28CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110E428CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift */; };
 		EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
 		EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
@@ -593,6 +601,10 @@
 		EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppMaterialNavigator.swift; sourceTree = "<group>"; };
 		EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountConfigurationModel.swift; sourceTree = "<group>"; };
 		EAAF330E28A27AFE0018EFAB /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		EAB110E128CF72E8009FDF07 /* LockScreenDailyTaskWidgetProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidgetProvider.swift; sourceTree = "<group>"; };
+		EAB110E228CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidgetCircular.swift; sourceTree = "<group>"; };
+		EAB110E328CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidgetCorner.swift; sourceTree = "<group>"; };
+		EAB110E428CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidget.swift; sourceTree = "<group>"; };
 		EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "原神披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinPizzaHeplerApp.swift; sourceTree = "<group>"; };
 		EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -1009,6 +1021,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		EAB110E028CF72E8009FDF07 /* LockScreenDailyTaskWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EAB110E428CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift */,
+				EAB110E128CF72E8009FDF07 /* LockScreenDailyTaskWidgetProvider.swift */,
+				EAB110E228CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift */,
+				EAB110E328CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift */,
+			);
+			path = LockScreenDailyTaskWidget;
+			sourceTree = "<group>";
+		};
 		EABD7DAD2886B2D200B7F0FD = {
 			isa = PBXGroup;
 			children = (
@@ -1131,6 +1154,7 @@
 		EAF55E2728CC917C00902AE7 /* LockScreenWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				EAB110E028CF72E8009FDF07 /* LockScreenDailyTaskWidget */,
 				EA7CD44228CF4A5F00857493 /* LockScreenAllInfoWidget */,
 				EA9C2D0528CE23A80053ED1E /* LockScreenHomeCoinWidget */,
 				EAE95C6D28CDD34700D975CB /* LockScreenResinWidget */,
@@ -1436,9 +1460,11 @@
 				EAE95CD228CE0FD600D975CB /* ExpeditionInfo.swift in Sources */,
 				EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */,
 				EAE95CC128CE0F7A00D975CB /* LockScreenResinWidgetInline.swift in Sources */,
+				EAB110E628CF72E8009FDF07 /* LockScreenDailyTaskWidgetProvider.swift in Sources */,
 				EAE95CCA28CE0FD300D975CB /* Error.swift in Sources */,
 				EA06373128CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
+				EAB110EC28CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift in Sources */,
 				EAE95CC028CE0F7800D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
 				EAE95CDB28CE103D00D975CB /* ViewModel.swift in Sources */,
 				EAE95CBE28CE0F7300D975CB /* LockScreenResinWidgetProvider.swift in Sources */,
@@ -1448,6 +1474,7 @@
 				EAE95CC928CE0FD300D975CB /* Result.swift in Sources */,
 				EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
+				EAB110EA28CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
 				EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
@@ -1462,6 +1489,7 @@
 				EAE95CD328CE0FD900D975CB /* TransformerData.swift in Sources */,
 				EAE95CCE28CE0FD600D975CB /* HomeCoinInfo.swift in Sources */,
 				EAE95D0B28CE11C100D975CB /* AccountIntents.intentdefinition in Sources */,
+				EAB110E828CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				BF85D77628CE0B9F003F3479 /* WatchWidgetExtension.swift in Sources */,
 				EAE95CCD28CE0FD600D975CB /* TransformerInfo.swift in Sources */,
 				EAE95D1128CE11DB00D975CB /* StringLocalized.swift in Sources */,
@@ -1586,6 +1614,7 @@
 				EAE95C6F28CDD38100D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
 				EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
 				EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
+				EAB110E928CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
 				EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
@@ -1595,6 +1624,7 @@
 				EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
+				EAB110E528CF72E8009FDF07 /* LockScreenDailyTaskWidgetProvider.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
@@ -1615,6 +1645,7 @@
 				EA9C2D0B28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift in Sources */,
 				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
+				EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
 				BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
 				BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */,
@@ -1626,6 +1657,7 @@
 				EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EA56E08D28A26C0D00A64262 /* UserData.swift in Sources */,
 				EAF55E3128CC927F00902AE7 /* LockScreenResinWidgetProvider.swift in Sources */,
+				EAB110EB28CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift in Sources */,
 				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,

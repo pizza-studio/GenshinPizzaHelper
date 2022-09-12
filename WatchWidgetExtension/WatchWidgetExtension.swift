@@ -24,5 +24,6 @@ struct WidgetsBundleiOS16: WidgetBundle {
         LockScreenHomeCoinWidget()
         AlternativeWatchCornerResinWidget()
         LockScreenAllInfoWidget()
+        LockScreenDailyTaskWidget()
     }
 }
