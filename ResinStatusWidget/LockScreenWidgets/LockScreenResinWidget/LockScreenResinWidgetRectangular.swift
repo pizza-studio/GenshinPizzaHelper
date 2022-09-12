@@ -16,49 +16,43 @@ struct LockScreenResinWidgetRectangular: View {
     var body: some View {
         switch result {
         case .success(let data):
-            Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: 3, verticalSpacing: 2) {
-                GridRow(alignment: .lastTextBaseline) {
-                    Spacer()
-                    Text("\(Image("icon.resin"))")
-                    Text("\(data.resinInfo.currentResin)")
-                    Spacer()
-                    Text("\(Image("icon.expedition"))")
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        Text("\(data.expeditionInfo.currentOngoingTask)")
-                        Text(" / \(data.expeditionInfo.maxExpedition)")
-                            .font(.caption)
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Text("\(data.resinInfo.currentResin)")
+                            .font(.system(size: 30, design: .rounded))
+                        Text("\(Image("icon.resin"))")
+                            .font(.system(size: 20, design: .rounded))
                     }
-
-                    Spacer()
-                }
-                GridRow(alignment: .lastTextBaseline) {
-                    Spacer()
-                    Text("\(Image("icon.homeCoin"))")
-                    Text("\(data.homeCoinInfo.currentHomeCoin)")
-                    Spacer()
-                    Text("\(Image("icon.dailyTask"))")
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        Text("\(data.dailyTaskInfo.finishedTaskNum)")
-                        Text(" / \(data.dailyTaskInfo.totalTaskNum)")
-                            .font(.caption)
+                    .widgetAccentable()
+                    if data.resinInfo.isFull {
+                        Text("已回满")
+                            .font(.footnote)
+                            .fixedSize(horizontal: false, vertical: true)
+                    } else {
+                        Text("\(data.resinInfo.recoveryTime.completeTimePointFromNow()) 回满")
+                            .font(.footnote)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
-                GridRow(alignment: .lastTextBaseline) {
-                    Spacer()
-                    Text("\(Image("icon.transformer"))")
-                    Text(data.transformerInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "可使用"))
-                    Spacer()
-                    Text("\(Image("icon.weeklyBosses"))")
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        Text("\(data.weeklyBossesInfo.hasUsedResinDiscountNum)")
-                        Text(" / \(data.weeklyBossesInfo.resinDiscountNumLimit)")
-                            .font(.caption)
-                    }
-                    Spacer()
-                }
+                Spacer()
             }
         case .failure(_):
-            EmptyView()
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Text("\(Image(systemName: "ellipsis"))")
+                            .font(.system(size: 30, design: .rounded))
+                        Text("\(Image("icon.resin"))")
+                            .font(.system(size: 20, design: .rounded))
+                    }
+                    .widgetAccentable()
+                    Text(Image("icon.resin"))
+                        .font(.footnote)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer()
+            }
         }
     }
 }
