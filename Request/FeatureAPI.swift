@@ -82,6 +82,7 @@ extension API {
                     }
                 }
         }
+
         /// 获取游戏内帐号信息
         /// - Parameters:
         ///     - region: 服务器地区
@@ -96,7 +97,6 @@ extension API {
                 Result<[FetchedAccount], FetchError>
             ) -> ()
         ) {
-            
             let urlStr = "binding/api/getUserGameRolesByCookie"
             
             guard cookie != "" else { completion(.failure(.noFetchInfo)); print("no cookie got"); return}
@@ -187,6 +187,80 @@ extension API {
                     else { completion(.success(accounts)) }
                 }
             }
+        }
+
+        /// 获取基本信息
+        /// - Parameters:
+        ///     - region: 服务器地区
+        ///     - serverID: 服务器ID
+        ///     - uid: 用户UID
+        ///     - cookie: 用户Cookie
+        ///     - completion: 数据
+        static func fetchBasicInfos (
+            region: Region,
+            serverID: String,
+            uid: String,
+            cookie: String,
+            completion: @escaping (
+                BasicInfoFetchResult
+            ) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "game_record/app/genshin/api/index"
+
+            if (uid == "") || (cookie == "") {
+                completion(.failure(.noFetchInfo))
+            }
+
+            // 请求
+            HttpMethod<BasicInfoRequestResult>
+                .basicInfoRequest(
+                    .get,
+                    urlStr,
+                    region,
+                    serverID,
+                    uid,
+                    cookie
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let basicData = requestResult.data
+                        let retcode = requestResult.retcode
+                        let message = requestResult.message
+
+                        switch requestResult.retcode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(basicData!))
+                        case 10001:
+                            print("fail 10001")
+                            completion(.failure(.cookieInvalid(retcode, message)))
+                        case 10103, 10104:
+                            print("fail nomatch")
+                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                        case 1008:
+                            print("fail 1008")
+                            completion(.failure(.accountInvalid(retcode, message)))
+                        case -1, 10102:
+                            print("fail -1")
+                            completion(.failure(.dataNotFound(retcode, message)))
+                        default:
+                            print("unknowerror")
+                            completion(.failure(.unknownError(retcode, message)))
+                        }
+
+                    case .failure(let requestError):
+
+                        switch requestError {
+                        case .decodeError(let message):
+                            completion(.failure(.decodeError(message)))
+                        default:
+                            completion(.failure(.requestError(requestError)))
+                        }
+                    }
+                }
         }
     }
 }

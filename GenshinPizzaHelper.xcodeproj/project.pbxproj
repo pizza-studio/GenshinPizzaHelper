@@ -39,6 +39,10 @@
 		BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
 		BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
 		BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
+		BF85D78928CF31FD003F3479 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
+		BF85D78A28CF31FD003F3479 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
+		BF85D78B28CF31FD003F3479 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
+		BF85D78C28CF31FD003F3479 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -368,6 +372,7 @@
 		BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
+		BF85D78828CF31FD003F3479 /* BasicInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfos.swift; sourceTree = "<group>"; };
 		BFCC064A28C5EA6A003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -748,8 +753,9 @@
 		EA56E07528A26C0D00A64262 /* FetchedModels */ = {
 			isa = PBXGroup;
 			children = (
-				EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */,
+				BF85D78828CF31FD003F3479 /* BasicInfos.swift */,
 				EA56E07628A26C0D00A64262 /* Error.swift */,
+				EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */,
 				EA56E07728A26C0D00A64262 /* RequestResult.swift */,
 				EA56E07828A26C0D00A64262 /* Result.swift */,
 				EA56E07928A26C0D00A64262 /* UserData.swift */,
@@ -1172,6 +1178,7 @@
 				BFCC069528C9BBC8003E4A54 /* WeeklyBossesInfo.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
 				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
+				BF85D78C28CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */,
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
@@ -1222,6 +1229,7 @@
 				EA09A01128A2B8A90023B4AF /* Result.swift in Sources */,
 				EA09A01728A2B8B60023B4AF /* TransformerInfo.swift in Sources */,
 				EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */,
+				BF85D78B28CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EA09A01A28A2B8BD0023B4AF /* TransformerData.swift in Sources */,
@@ -1235,6 +1243,7 @@
 			files = (
 				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA56E09D28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
+				BF85D78A28CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
 				EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */,
@@ -1348,6 +1357,7 @@
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
+				BF85D78928CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */,
 				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
