@@ -8,15 +8,16 @@
 import Foundation
 import WidgetKit
 
-
-struct AccountOnlyEntry: TimelineEntry {
-    let date: Date
-    let result: FetchResult
-    var accountName: String? = nil
-}
-
-struct LockScreenWidgetProvider: IntentTimelineProvider {
-    typealias Entry = AccountOnlyEntry
+struct LockScreenHomeCoinWidgetProvider: IntentTimelineProvider {
+    @available(iOSApplicationExtension 16.0, *)
+    func recommendations() -> [IntentRecommendation<SelectOnlyAccountIntent>] {
+        let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
+        return configs.map { config in
+            let intent = SelectOnlyAccountIntent()
+            intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
+            return IntentRecommendation(intent: intent, description: config.name!+"洞天宝钱")
+        }
+    }
 
     func placeholder(in context: Context) -> AccountOnlyEntry {
         AccountOnlyEntry(date: Date(), result: FetchResult.defaultFetchResult, accountName: "荧")
@@ -69,10 +70,12 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         // 正常情况
         config.fetchResult { result in
             let entry = AccountOnlyEntry(date: currentDate, result: result, accountName: config.name)
-
+            
             switch result {
             case .success(let userData):
+                #if !os(watchOS)
                 UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
+                #endif
             case .failure(_ ):
                 break
             }

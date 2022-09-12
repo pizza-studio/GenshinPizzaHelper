@@ -69,7 +69,21 @@ struct RecoveryTime {
 
         return dateFormatter.string(from: date)
     }
-    
+
+    func completeTimePointFromNowShort(finishedTextPlaceholder: String? = nil) -> String {
+        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
+        if let finishedTextPlaceholder = finishedTextPlaceholder {
+            guard second != 0 else { return finishedTextPlaceholder }
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale(identifier: Locale.current.identifier)
+
+        let date = Calendar.current.date(byAdding: .second, value: second, to: Date())!
+
+        return dateFormatter.string(from: date)
+    }
     
 }
 

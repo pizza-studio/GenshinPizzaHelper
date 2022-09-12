@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 let testCookie = "CNZZDATA1275023096=370752618-1660798325-%7C1660798325; .thumbcache_a5f2da7236017eb7e922ea0d742741d5=tt0wiJai3iiGz19nD3q4Rb7XzX2e9h269dgd1pkL8fGAMSaQ66+xpVcxvUVia0dSkKZf9FJpROf1zWGKBRJMXw%3D%3D; smidV2=20220818133455ec621bd09663d7845f493a845c7a0ef200320ca714796d080; aliyungf_tc=3bbefcd84682e42d67562714b207c18fb2f5e18fb4d763fb33479d54f2ee8b94; aliyungf_tc=7231e2a94883d947a457d8caada821efc4c3426699241ee667a5c1071f3d04d5; UM_distinctid=182af7287461126-05b7d2f6a28666-744c1151-505c8-182af72874711db; _MHYUUID=fbaf2d8a-7c06-415d-ae78-8f022739f72b; _ga=GA1.2.686101694.1660800896; _gid=GA1.2.1232564546.1660800896; _gat=1; ltoken=SANITIZED ltuid=20953693; cookie_token=SANITIZED account_id=20953693; acw_tc=0a362b5e16608008957592320e0b965779d5ce26f921d7d750b4fb5ff280cd; "
 
@@ -50,8 +51,10 @@ struct ContentView: View {
                 DispatchQueue.main.async {
                     viewModel.refreshData()
                 }
-//            case .inactive:
-//                WidgetCenter.shared.reloadAllTimelines()
+            case .inactive:
+                if #available(watchOSApplicationExtension 9.0, *) {
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
             default:
                 break
             }
