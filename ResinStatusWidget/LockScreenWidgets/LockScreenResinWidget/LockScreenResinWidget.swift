@@ -18,7 +18,7 @@ struct LockScreenResinWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenResinWidgetProvider()) { entry in
             LockScreenResinWidgetView(entry: entry)
         }
-        .configurationDisplayName("树脂")
+        .configurationDisplayName("原萃树脂")
         .description("树脂回复状态")
         #if os(watchOS)
         .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular, .accessoryCorner])
