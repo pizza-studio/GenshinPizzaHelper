@@ -18,7 +18,11 @@ struct LockScreenHomeCoinWidget: Widget {
         }
         .configurationDisplayName("洞天宝钱")
         .description("洞天宝钱数量")
+        #if os(watchOS)
+        .supportedFamilies([.accessoryCircular, .accessoryCorner])
+        #else
         .supportedFamilies([.accessoryCircular])
+        #endif
     }
 }
 
@@ -32,8 +36,8 @@ struct LockScreenHomeCoinWidgetView: View {
 
     var body: some View {
         switch family {
-//            case .accessoryCorner:
-//                <#code#>
+        case .accessoryCorner:
+            LockScreenHomeCoinWidgetCorner(result: result)
         case .accessoryCircular:
             LockScreenHomeCoinWidgetCircular(result: result)
         default:
