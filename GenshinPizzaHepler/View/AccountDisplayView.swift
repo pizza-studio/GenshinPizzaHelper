@@ -17,6 +17,7 @@ struct AccountDisplayView: View {
     @State var scrollOffset: CGPoint = .zero
     @State var isAccountInfoShow: Bool = false
     @State var basicAccountInfo: BasicInfos? = nil
+    @State var isStatusBarHide: Bool = false
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
     fileprivate var gameInfoBlock: some View {
@@ -98,6 +99,7 @@ struct AccountDisplayView: View {
                             }
                         }
                     }
+                    .animation(.easeInOut)
                     .padding(.horizontal)
                     .onAppear {
                         DispatchQueue.global().async {
@@ -117,13 +119,15 @@ struct AccountDisplayView: View {
             .coordinateSpace(name: "scroll")
             .onChange(of: scrollOffset) { new in
                 print("Offset: \(scrollOffset.y)")
-                if scrollOffset.y > 50 {
+                if scrollOffset.y > 80 && !isAccountInfoShow {
                     simpleTaptic(type: .medium)
                     isAccountInfoShow = true
+                    isStatusBarHide = true
                 }
-                if scrollOffset.y < -50 {
+                if scrollOffset.y < 40 && isAccountInfoShow {
                     simpleTaptic(type: .medium)
                     isAccountInfoShow = false
+                    isStatusBarHide = false
                 }
             }
         }
@@ -138,6 +142,7 @@ struct AccountDisplayView: View {
         .onTapGesture {
             closeView()
         }
+        .statusBarHidden(isStatusBarHide)
     }
 
     private func closeView() -> Void {
