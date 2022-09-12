@@ -92,8 +92,6 @@ extension UserData {
         
         transformer: TransformerData(recoveryTime: TransformerData.TransRecoveryTime(day: 4, hour: 3, minute: 0, second: 0), obtained: true)
     )
-    
-    
 }
 
 extension Expedition {
