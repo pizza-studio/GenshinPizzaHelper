@@ -21,10 +21,13 @@ struct LockScreenResinWidgetRectangular: View {
                 HStack {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
+                            let size: CGFloat = 40
                             Text("\(data.resinInfo.currentResin)")
-                                .font(.system(size: 30, design: .rounded))
+                                .font(.system(size: size, design: .rounded))
+                                .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
-                                .font(.system(size: 20, design: .rounded))
+                                .font(.system(size: size*1/2))
+                                .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
                         .foregroundColor(Color("iconColor.resin.middle"))
@@ -65,10 +68,13 @@ struct LockScreenResinWidgetRectangular: View {
                 HStack {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
+                            let size: CGFloat = 40
                             Text("\(data.resinInfo.currentResin)")
-                                .font(.system(size: 30, design: .rounded))
+                                .font(.system(size: size, design: .rounded))
+                                .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
-                                .font(.system(size: 20, design: .rounded))
+                                .font(.system(size: size*1/2))
+                                .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
                         if data.resinInfo.isFull {
@@ -110,3 +116,24 @@ struct LockScreenResinWidgetRectangular: View {
 
 
 
+struct FitSystemFont: ViewModifier {
+    var lineLimit: Int
+    var minimumScaleFactor: CGFloat
+    var percentage: CGFloat
+
+    func body(content: Content) -> some View {
+        GeometryReader { geometry in
+            content
+                .font(.system(size: min(geometry.size.width, geometry.size.height) * percentage))
+                .lineLimit(self.lineLimit)
+                .minimumScaleFactor(self.minimumScaleFactor)
+                .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
+        }
+    }
+}
+
+extension View {
+    func fitSystemFont(lineLimit: Int = 1, minimumScaleFactor: CGFloat = 0.01, percentage: CGFloat = 1) -> ModifiedContent<Self, FitSystemFont> {
+        return modifier(FitSystemFont(lineLimit: lineLimit, minimumScaleFactor: minimumScaleFactor, percentage: percentage))
+    }
+}
