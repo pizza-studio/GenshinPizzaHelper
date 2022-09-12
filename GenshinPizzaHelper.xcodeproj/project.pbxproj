@@ -219,6 +219,8 @@
 		EA79FDC528AB83B600B50D6F /* OptionalAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */; };
 		EA79FDC628AB84F500B50D6F /* OptionalAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */; };
 		EA79FDC728AB84F600B50D6F /* OptionalAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */; };
+		EA7CD43D28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */; };
+		EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */; };
 		EA7F67CA289D711200D2CE29 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA7F67C9289D711200D2CE29 /* README.md */; };
 		EA7F9C6F28AFF9B300DEAFEB /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
 		EA7F9C7028B0172D00DEAFEB /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
@@ -575,6 +577,7 @@
 		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
 		EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
 		EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalAccounts.swift; sourceTree = "<group>"; };
+		EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeWatchCornerResinWidget.swift; sourceTree = "<group>"; };
 		EA7F67C9289D711200D2CE29 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
@@ -1073,6 +1076,7 @@
 				EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */,
 				EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */,
 				EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */,
+				EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */,
 			);
 			path = LockScreenResinWidget;
 			sourceTree = "<group>";
@@ -1427,6 +1431,7 @@
 				EAE95CC828CE0FD300D975CB /* UserData.swift in Sources */,
 				EAE95CC928CE0FD300D975CB /* Result.swift in Sources */,
 				EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
+				EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
@@ -1547,6 +1552,7 @@
 			files = (
 				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA56E09D28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
+				EA7CD43D28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
 				EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */,

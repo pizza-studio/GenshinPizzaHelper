@@ -38,7 +38,7 @@ struct LockScreenResinWidgetView: View {
 
     var body: some View {
         switch family {
-            case .accessoryCorner:
+        case .accessoryCorner:
             LockScreenResinWidgetCorner(result: result)
         case .accessoryCircular:
             LockScreenResinWidgetCircular(result: result)
