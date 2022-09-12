@@ -170,7 +170,6 @@ struct GameInfoBlockForSave: View {
                     }
                     .font(.footnote)
                     .foregroundColor(Color("textColor3"))
-                    .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
                 }
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
 
@@ -179,7 +178,6 @@ struct GameInfoBlockForSave: View {
                         .fontWeight(.medium)
                         .foregroundColor(Color("textColor3"))
                         .shadow(radius: 1)
-                        .matchedGeometryEffect(id: "\(accountUUIDString)curResin", in: animation)
                     Image("树脂")
                         .resizable()
                         .scaledToFit()
@@ -187,7 +185,6 @@ struct GameInfoBlockForSave: View {
                         .alignmentGuide(.firstTextBaseline) { context in
                             context[.bottom] - 0.17 * context.height
                         }
-                        .matchedGeometryEffect(id: "\(accountUUIDString)Resinlogo", in: animation)
                 }
                 HStack {
                     Image(systemName: "hourglass.circle")
@@ -195,19 +192,15 @@ struct GameInfoBlockForSave: View {
                         .font(.title3)
                     RecoveryTimeText(resinInfo: userData.resinInfo)
                 }
-                .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
             }
             .padding()
             Spacer()
             DetailInfo(userData: userData, viewConfig: viewConfig)
                 .padding(.vertical)
                 .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
-                .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
             Spacer()
         }
-        .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
-            .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation))
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation))
     }
 }
 
