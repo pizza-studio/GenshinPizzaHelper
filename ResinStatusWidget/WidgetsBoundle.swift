@@ -8,30 +8,27 @@
 import WidgetKit
 import SwiftUI
 
-@main
-struct WidgetLauncher {
-    static func main() {
-        if #available(iOSApplicationExtension 16.0, *) {
-            WidgetsBundleiOS16.main()
-        } else {
-            WidgetsBundleLowerThaniOS16.main()
-        }
-    }
-}
 
-@available(iOSApplicationExtension 16.0, *)
+
+@available(iOSApplicationExtension 16.0, watchOSApplicationExtension 9.0, *)
 struct WidgetsBundleiOS16: WidgetBundle {
     var body: some Widget {
+        #if !os(watchOS)
         MainWidget()
+        #endif
         LockScreenResinWidget()
         LockScreenHomeCoinWidget()
         LockScreenAllInfoWidget()
         LockScreenDailyTaskWidget()
+        LockScreenExpeditionWidget()
     }
 }
 
+
 struct WidgetsBundleLowerThaniOS16: WidgetBundle {
     var body: some Widget {
+        #if !os(watchOS)
         MainWidget()
+        #endif
     }
 }

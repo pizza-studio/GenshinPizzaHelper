@@ -17,13 +17,13 @@ struct WatchWidgetLauncher {
 }
 
 
-@available(watchOSApplicationExtension 9.0, *)
-struct WidgetsBundleiOS16: WidgetBundle {
-    var body: some Widget {
-        LockScreenResinWidget()
-        LockScreenHomeCoinWidget()
-        AlternativeWatchCornerResinWidget()
-        LockScreenAllInfoWidget()
-        LockScreenDailyTaskWidget()
-    }
-}
+//@available(watchOSApplicationExtension 9.0, *)
+//struct WidgetsBundleiOS16: WidgetBundle {
+//    var body: some Widget {
+//        LockScreenResinWidget()
+//        LockScreenHomeCoinWidget()
+//        AlternativeWatchCornerResinWidget()
+//        LockScreenAllInfoWidget()
+//        LockScreenDailyTaskWidget()
+//    }
+//}
