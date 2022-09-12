@@ -48,10 +48,13 @@ struct LockScreenResinWidgetRectangular: View {
                 HStack {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            Text("\(Image(systemName: "ellipsis"))")
-                                .font(.system(size: 30, design: .rounded))
+                            let size: CGFloat = 40
+                            Text(Image(systemName: "ellipsis"))
+                                .font(.system(size: size, design: .rounded))
+                                .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
-                                .font(.system(size: 20, design: .rounded))
+                                .font(.system(size: size*1/2))
+                                .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
                         .foregroundColor(.cyan)
@@ -95,10 +98,13 @@ struct LockScreenResinWidgetRectangular: View {
                 HStack {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            Text("\(Image(systemName: "ellipsis"))")
-                                .font(.system(size: 30, design: .rounded))
+                            let size: CGFloat = 40
+                            Text(Image(systemName: "ellipsis"))
+                                .font(.system(size: size, design: .rounded))
+                                .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
-                                .font(.system(size: 20, design: .rounded))
+                                .font(.system(size: size*1/2))
+                                .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
                         Text(Image("icon.resin"))
