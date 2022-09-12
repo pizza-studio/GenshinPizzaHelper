@@ -40,7 +40,7 @@ struct LockScreenDailyTaskWidgetCircular: View {
                 Image("icon.dailyTask")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(Color("iconColor.homeCoin.lightBlue"))
+                    .foregroundColor(Color("iconColor.dailyTask"))
                 switch result {
                 case .success(let data):
                     Text("\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)")

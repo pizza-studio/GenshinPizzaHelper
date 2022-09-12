@@ -50,7 +50,10 @@ struct AlternativeWatchCornerResinWidgetView: View {
                     }
                 }
         case.failure(_):
-            Text("")
+            Image("icon.resin")
+                .resizable()
+                .scaledToFit()
+                .padding(6)
                 .widgetLabel {
                     Gauge(value: 0, in: 0...160) {
                         Text("0")

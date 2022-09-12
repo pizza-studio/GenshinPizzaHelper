@@ -12,20 +12,37 @@ struct LockScreenDailyTaskWidgetCorner: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
     let result: FetchResult
-    var text: String {
-        switch result {
-        case .success(let data):
-            return "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)"
-        case .failure(_):
-            return ""
-        }
-    }
 
     var body: some View {
-        Image("icon.homeCoin")
-            .resizable()
-            .scaledToFit()
-            .padding(3.5)
-            .widgetLabel(text)
+        switch result {
+        case .success(let data):
+            Image("icon.dailyTask")
+                .resizable()
+                .scaledToFit()
+                .padding(4.5)
+                .widgetLabel {
+                    Gauge(value: Double(data.dailyTaskInfo.finishedTaskNum), in: 0...Double(data.dailyTaskInfo.totalTaskNum)) {
+                        Text("每日任务")
+                    } currentValueLabel: {
+                        Text("\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)")
+                    } minimumValueLabel: {
+                        Text("  \(data.dailyTaskInfo.finishedTaskNum)/\(data.dailyTaskInfo.totalTaskNum)  ")
+                    } maximumValueLabel: {
+                        Text("")
+                    }
+                }
+                .widgetAccentable()
+        case.failure(_):
+            Image("icon.dailyTask")
+                .resizable()
+                .scaledToFit()
+                .padding(4.5)
+                .widgetLabel {
+                    Gauge(value: 0, in: 0...4) {
+                        Text("")
+                    }
+                    .widgetAccentable()
+                }
+        }
     }
 }
