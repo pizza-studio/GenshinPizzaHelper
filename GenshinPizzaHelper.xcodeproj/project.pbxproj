@@ -259,6 +259,7 @@
 		EAB1110428CF8423009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110FB28CF7704009FDF07 /* LockScreenExpeditionWidgetCorner.swift */; };
 		EAB1110528CF8423009FDF07 /* LockScreenExpeditionWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB110FA28CF7704009FDF07 /* LockScreenExpeditionWidgetProvider.swift */; };
 		EAB1110728CF84B5009FDF07 /* WidgetLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB1110628CF84B5009FDF07 /* WidgetLauncher.swift */; };
+		EAB1110A28CF8581009FDF07 /* WidgetsBoundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */; };
 		EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
 		EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
@@ -1479,6 +1480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAE95CBF28CE0F7500D975CB /* LockScreenResinWidget.swift in Sources */,
+				EAB1110A28CF8581009FDF07 /* WidgetsBoundle.swift in Sources */,
 				EAE95CC528CE0FC400D975CB /* AccountConfigurationModel.swift in Sources */,
 				EAB1110328CF8423009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EAE5C5B828CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */,

@@ -31,7 +31,6 @@ struct LockScreenDailyTaskWidgetCorner: View {
                         Text("")
                     }
                 }
-                .widgetAccentable()
         case.failure(_):
             Image("icon.dailyTask")
                 .resizable()
@@ -41,7 +40,6 @@ struct LockScreenDailyTaskWidgetCorner: View {
                     Gauge(value: 0, in: 0...4) {
                         Text("")
                     }
-                    .widgetAccentable()
                 }
         }
     }

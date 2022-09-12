@@ -13,36 +13,20 @@ struct LockScreenExpeditionWidgetCorner: View {
 
     let result: FetchResult
 
-    var body: some View {
+    var text: String {
         switch result {
         case .success(let data):
-            Image("icon.dailyTask")
-                .resizable()
-                .scaledToFit()
-                .padding(4.5)
-                .widgetLabel {
-                    Gauge(value: Double(data.dailyTaskInfo.finishedTaskNum), in: 0...Double(data.dailyTaskInfo.totalTaskNum)) {
-                        Text("每日任务")
-                    } currentValueLabel: {
-                        Text("\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)")
-                    } minimumValueLabel: {
-                        Text("  \(data.dailyTaskInfo.finishedTaskNum)/\(data.dailyTaskInfo.totalTaskNum)  ")
-                    } maximumValueLabel: {
-                        Text("")
-                    }
-                }
-                .widgetAccentable()
-        case.failure(_):
-            Image("icon.dailyTask")
-                .resizable()
-                .scaledToFit()
-                .padding(4.5)
-                .widgetLabel {
-                    Gauge(value: 0, in: 0...4) {
-                        Text("")
-                    }
-                    .widgetAccentable()
-                }
+            return "\(data.expeditionInfo.currentOngoingTask)/\(data.expeditionInfo.maxExpedition) \(data.expeditionInfo.nextCompleteTimeIgnoreFinished.describeIntervalLong(finishedTextPlaceholder: "已完成"))"
+        case .failure(_):
+            return ""
         }
+    }
+
+    var body: some View {
+        Image("icon.expedition")
+            .resizable()
+            .scaledToFit()
+            .padding(4.5)
+            .widgetLabel(text)
     }
 }

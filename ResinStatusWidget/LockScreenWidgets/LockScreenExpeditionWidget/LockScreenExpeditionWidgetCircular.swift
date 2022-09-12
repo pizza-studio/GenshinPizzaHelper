@@ -40,7 +40,6 @@ struct LockScreenExpeditionWidgetCircular: View {
                 Image("icon.expedition")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(Color("iconColor.expedition"))
                 switch result {
                 case .success(let data):
                     Text("\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)")

@@ -24,11 +24,10 @@ struct WidgetsBundleiOS16: WidgetBundle {
     }
 }
 
-
+#if !os(watchOS)
 struct WidgetsBundleLowerThaniOS16: WidgetBundle {
     var body: some Widget {
-        #if !os(watchOS)
         MainWidget()
-        #endif
     }
 }
+#endif
