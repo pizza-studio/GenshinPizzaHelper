@@ -32,7 +32,7 @@ struct LockScreenHomeCoinWidgetCircular: View {
             .padding(.vertical, 2)
             .padding(.top, 1)
             #else
-            .padding(.vertical, 3)
+            .padding(.vertical, 2)
             #endif
             .widgetAccentable()
         case .fullColor:
@@ -53,7 +53,7 @@ struct LockScreenHomeCoinWidgetCircular: View {
             .padding(.vertical, 2)
             .padding(.top, 1)
             #else
-            .padding(.vertical, 3)
+            .padding(.vertical, 2)
             #endif
         default:
             VStack(spacing: 0) {
@@ -73,7 +73,7 @@ struct LockScreenHomeCoinWidgetCircular: View {
             .padding(.vertical, 2)
             .padding(.top, 1)
             #else
-            .padding(.vertical, 3)
+            .padding(.vertical, 2)
             #endif
         }
     }
