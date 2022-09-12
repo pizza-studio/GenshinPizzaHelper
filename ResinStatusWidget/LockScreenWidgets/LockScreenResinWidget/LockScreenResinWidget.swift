@@ -42,8 +42,8 @@ struct LockScreenResinWidgetView: View {
             LockScreenResinWidgetCorner(result: result)
         case .accessoryCircular:
             LockScreenResinWidgetCircular(result: result)
-//            case .accessoryRectangular:
-//                <#code#>
+        case .accessoryRectangular:
+            LockScreenResinWidgetRectangular(result: result)
         case .accessoryInline:
             LockScreenResinWidgetInline(result: result)
         default:

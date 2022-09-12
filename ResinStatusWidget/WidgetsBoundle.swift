@@ -25,6 +25,7 @@ struct WidgetsBundleiOS16: WidgetBundle {
         MainWidget()
         LockScreenResinWidget()
         LockScreenHomeCoinWidget()
+        LockScreenAllInfoWidget()
     }
 }
 

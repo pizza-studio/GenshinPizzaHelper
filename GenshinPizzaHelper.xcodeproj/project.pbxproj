@@ -221,6 +221,10 @@
 		EA79FDC728AB84F600B50D6F /* OptionalAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */; };
 		EA7CD43D28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */; };
 		EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */; };
+		EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43F28CF27AF00857493 /* LockScreenResinWidgetRectangular.swift */; };
+		EA7CD44128CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43F28CF27AF00857493 /* LockScreenResinWidgetRectangular.swift */; };
+		EA7CD44528CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD44428CF4A7D00857493 /* LockScreenAllInfoWidget.swift */; };
+		EA7CD44628CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD44428CF4A7D00857493 /* LockScreenAllInfoWidget.swift */; };
 		EA7F67CA289D711200D2CE29 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA7F67C9289D711200D2CE29 /* README.md */; };
 		EA7F9C6F28AFF9B300DEAFEB /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
 		EA7F9C7028B0172D00DEAFEB /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
@@ -578,6 +582,8 @@
 		EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
 		EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalAccounts.swift; sourceTree = "<group>"; };
 		EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeWatchCornerResinWidget.swift; sourceTree = "<group>"; };
+		EA7CD43F28CF27AF00857493 /* LockScreenResinWidgetRectangular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetRectangular.swift; sourceTree = "<group>"; };
+		EA7CD44428CF4A7D00857493 /* LockScreenAllInfoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenAllInfoWidget.swift; sourceTree = "<group>"; };
 		EA7F67C9289D711200D2CE29 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
@@ -947,6 +953,14 @@
 			path = DecodeTool;
 			sourceTree = "<group>";
 		};
+		EA7CD44228CF4A5F00857493 /* LockScreenAllInfoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EA7CD44428CF4A7D00857493 /* LockScreenAllInfoWidget.swift */,
+			);
+			path = LockScreenAllInfoWidget;
+			sourceTree = "<group>";
+		};
 		EA7F9C6D28AFF99200DEAFEB /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,6 +1090,7 @@
 				EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */,
 				EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */,
 				EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */,
+				EA7CD43F28CF27AF00857493 /* LockScreenResinWidgetRectangular.swift */,
 				EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */,
 			);
 			path = LockScreenResinWidget;
@@ -1116,6 +1131,7 @@
 		EAF55E2728CC917C00902AE7 /* LockScreenWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				EA7CD44228CF4A5F00857493 /* LockScreenAllInfoWidget */,
 				EA9C2D0528CE23A80053ED1E /* LockScreenHomeCoinWidget */,
 				EAE95C6D28CDD34700D975CB /* LockScreenResinWidget */,
 				EAE95C6A28CDCA2D00D975CB /* SubView */,
@@ -1439,6 +1455,7 @@
 				EAE95CCC28CE0FD600D975CB /* RecoveryTime.swift in Sources */,
 				EAE95CD128CE0FD600D975CB /* DailyTaskInfo.swift in Sources */,
 				EAE95CC428CE0FC100D975CB /* Account.swift in Sources */,
+				EA7CD44128CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
 				EAE95CC728CE0FD300D975CB /* OptionalAccounts.swift in Sources */,
 				BF85D77B28CE0BA0003F3479 /* WatchWidgetExtension.intentdefinition in Sources */,
 				EAE95CD428CE0FDF00D975CB /* HttpMethod.swift in Sources */,
@@ -1452,6 +1469,7 @@
 				EAE95CD028CE0FD600D975CB /* WeeklyBossesInfo.swift in Sources */,
 				EAE95D0E28CE11CB00D975CB /* NetworkReachability.swift in Sources */,
 				EAE95D0C28CE11C300D975CB /* IntentHandler.swift in Sources */,
+				EA7CD44628CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */,
 				EAE95CDC28CE104600D975CB /* WidgetViewConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1570,6 +1588,7 @@
 				EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
+				EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
 				EA56E08928A26C0D00A64262 /* RequestResult.swift in Sources */,
 				EA56E09928A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
 				EA79FDC628AB84F500B50D6F /* OptionalAccounts.swift in Sources */,
@@ -1579,6 +1598,7 @@
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
+				EA7CD44528CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */,
 				EA56E09128A26C0D00A64262 /* ResinInfo.swift in Sources */,
 				EA56E09528A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */,
 				EAAF331028A27B080018EFAB /* Account.swift in Sources */,
