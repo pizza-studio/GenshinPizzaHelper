@@ -16,6 +16,7 @@ struct AccountDisplayView: View {
     @Binding var bgFadeOutAnimation: Bool
     @State var scrollOffset: CGPoint = .zero
     @State var isAccountInfoShow: Bool = false
+    @State var basicAccountInfo: BasicInfos? = nil
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
     fileprivate var gameInfoBlock: some View {
@@ -78,16 +79,35 @@ struct AccountDisplayView: View {
                 if isAccountInfoShow {
                     VStack(alignment: .leading) {
                         Text(detail.accountName)
-                        HStack {
-                            Spacer()
-                            ProgressView()
-                            Spacer()
+                            .font(.headline)
+                            .padding(.vertical)
+                        if let basicAccountInfo = basicAccountInfo {
+                            VStack(spacing: 3) {
+                                InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)")
+                                InfoPreviewer(title: "成就达成数", content: "\(basicAccountInfo.stats.achievementNumber)")
+                                InfoPreviewer(title: "获得角色数", content: "\(basicAccountInfo.stats.avatarNumber)")
+                                InfoPreviewer(title: "解锁传送点", content: "\(basicAccountInfo.stats.wayPointNumber)")
+                                InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)")
+                                InfoPreviewer(title: "深境螺旋", content: basicAccountInfo.stats.spiralAbyss)
+                            }
+                        } else {
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
                         }
                     }
+                    .padding(.horizontal)
                     .onAppear {
                         DispatchQueue.global().async {
                             API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
-
+                                switch result {
+                                case .success(let data) :
+                                    basicAccountInfo = data
+                                case .failure(_):
+                                    break
+                                }
                             }
                         }
                     }
