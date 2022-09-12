@@ -137,6 +137,8 @@
 		BFFD823728A680E000616CE1 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823928A73A5400616CE1 /* ReviewHandler.swift */; };
+		EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */; };
+		EA06373128CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */; };
 		EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07C65528B11DB40030E338 /* NotificationSettingView.swift */; };
 		EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099FF428A2B7220023B4AF /* Intents.framework */; };
 		EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -532,6 +534,7 @@
 		BFFD823128A651F500616CE1 /* RingProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressBarView.swift; sourceTree = "<group>"; };
 		BFFD823528A680E000616CE1 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		BFFD823928A73A5400616CE1 /* ReviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHandler.swift; sourceTree = "<group>"; };
+		EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCorner.swift; sourceTree = "<group>"; };
 		EA07C65528B11DB40030E338 /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
 		EA099FF328A2B7220023B4AF /* AccountIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccountIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA099FF428A2B7220023B4AF /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
@@ -1063,6 +1066,7 @@
 			children = (
 				EAF55E2A28CC919400902AE7 /* LockScreenResinWidgetProvider.swift */,
 				EAF55E2828CC918B00902AE7 /* LockScreenResinWidget.swift */,
+				EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */,
 				EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */,
 				EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */,
 			);
@@ -1408,6 +1412,7 @@
 				EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */,
 				EAE95CC128CE0F7A00D975CB /* LockScreenResinWidgetInline.swift in Sources */,
 				EAE95CCA28CE0FD300D975CB /* Error.swift in Sources */,
+				EA06373128CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
 				EAE95CC028CE0F7800D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
 				EAE95CDB28CE103D00D975CB /* ViewModel.swift in Sources */,
@@ -1560,6 +1565,7 @@
 				EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
+				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				EA56E09128A26C0D00A64262 /* ResinInfo.swift in Sources */,

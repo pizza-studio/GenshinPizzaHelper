@@ -20,11 +20,46 @@ struct LockScreenHomeCoinWidgetCircular: View {
                 Image("icon.homeCoin")
                     .resizable()
                     .scaledToFit()
-                #if os(watchOS)
-                    .padding(.top, 3)
-                #else
-                    .padding(.top, 5.5)
-                #endif
+                switch result {
+                case .success(let data):
+                    Text("\(data.homeCoinInfo.currentHomeCoin)")
+                        .font(.system(.body, design: .rounded).weight(.medium))
+                case .failure(_):
+                    Image(systemName: "ellipsis")
+                }
+            }
+            #if os(watchOS)
+            .padding(.vertical, 2)
+            .padding(.top, 1)
+            #else
+            .padding(.vertical, 3)
+            #endif
+            .widgetAccentable()
+        case .fullColor:
+            VStack(spacing: 0) {
+                Image("icon.homeCoin")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(Color("iconColor.homeCoin.lightBlue"))
+                switch result {
+                case .success(let data):
+                    Text("\(data.homeCoinInfo.currentHomeCoin)")
+                        .font(.system(.body, design: .rounded).weight(.medium))
+                case .failure(_):
+                    Image(systemName: "ellipsis")
+                }
+            }
+            #if os(watchOS)
+            .padding(.vertical, 2)
+            .padding(.top, 1)
+            #else
+            .padding(.vertical, 3)
+            #endif
+        default:
+            VStack(spacing: 0) {
+                Image("icon.homeCoin")
+                    .resizable()
+                    .scaledToFit()
 
                 switch result {
                 case .success(let data):
@@ -34,46 +69,12 @@ struct LockScreenHomeCoinWidgetCircular: View {
                     Image(systemName: "ellipsis")
                 }
             }
-            .widgetAccentable()
-        case .fullColor:
-            VStack(spacing: 0) {
-                Image("icon.homeCoin")
-                    .resizable()
-                    .scaledToFit()
-                #if os(watchOS)
-                    .padding(.top, 3)
-                #else
-                    .padding(.top, 5.5)
-                #endif
-                    .foregroundColor(Color("iconColor.homeCoin.lightBlue"))
-                switch result {
-                case .success(let data):
-                    Text("\(data.homeCoinInfo.currentHomeCoin)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-//                        .foregroundColor(Color("iconColor.homeCoin.lightBlue"))
-                case .failure(_):
-                    Image(systemName: "ellipsis")
-//                        .foregroundColor(Color("iconColor.homeCoin.lightBlue"))
-                }
-            }
-        default:
-            VStack(spacing: 0) {
-                Image("icon.homeCoin")
-                    .resizable()
-                    .scaledToFit()
-                #if os(watchOS)
-                    .padding(.top, 3)
-                #else
-                    .padding(.top, 5.5)
-                #endif
-                switch result {
-                case .success(let data):
-                    Text("\(data.homeCoinInfo.currentHomeCoin)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                case .failure(_):
-                    Image(systemName: "ellipsis")
-                }
-            }
+            #if os(watchOS)
+            .padding(.vertical, 2)
+            .padding(.top, 1)
+            #else
+            .padding(.vertical, 3)
+            #endif
         }
     }
 }

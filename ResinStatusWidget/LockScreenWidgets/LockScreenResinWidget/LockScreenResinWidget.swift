@@ -20,7 +20,11 @@ struct LockScreenResinWidget: Widget {
         }
         .configurationDisplayName("树脂")
         .description("树脂回复状态")
+        #if os(watchOS)
+        .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular, .accessoryCorner])
+        #else
         .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular])
+        #endif
     }
 }
 
@@ -34,8 +38,8 @@ struct LockScreenResinWidgetView: View {
 
     var body: some View {
         switch family {
-//            case .accessoryCorner:
-//                <#code#>
+            case .accessoryCorner:
+            LockScreenResinWidgetCorner(result: result)
         case .accessoryCircular:
             LockScreenResinWidgetCircular(result: result)
 //            case .accessoryRectangular:
