@@ -19,7 +19,8 @@ struct AlternativeWatchCornerResinWidget: Widget {
         .configurationDisplayName("树脂")
         .description("树脂回复状态")
         #if os(watchOS)
-        .supportedFamilies([.accessoryCorner])
+//        .supportedFamilies([.accessoryCorner])
+        .supportedFamilies([])
         #endif
     }
 }

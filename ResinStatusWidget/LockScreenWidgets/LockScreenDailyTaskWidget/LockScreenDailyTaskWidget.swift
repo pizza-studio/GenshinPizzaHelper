@@ -19,7 +19,8 @@ struct LockScreenDailyTaskWidget: Widget {
         .configurationDisplayName("每日任务")
         .description("每日任务完成情况")
         #if os(watchOS)
-        .supportedFamilies([.accessoryCircular, .accessoryCorner])
+//        .supportedFamilies([.accessoryCircular, .accessoryCorner])
+        .supportedFamilies([.accessoryCircular])
         #else
         .supportedFamilies([.accessoryCircular])
         #endif
@@ -36,8 +37,8 @@ struct LockScreenDailyTaskWidgetView: View {
 
     var body: some View {
         switch family {
-        case .accessoryCorner:
-            LockScreenDailyTaskWidgetCorner(result: result)
+//        case .accessoryCorner:
+//            LockScreenDailyTaskWidgetCorner(result: result)
         case .accessoryCircular:
             LockScreenDailyTaskWidgetCircular(result: result)
         default:
