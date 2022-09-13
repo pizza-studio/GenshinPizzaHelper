@@ -83,6 +83,7 @@ struct AccountDisplayView: View {
                             Text("上滑查看更多基本信息")
                                 .font(.footnote)
                                 .opacity(fadeOutAnimation ? 0 : 1)
+                                .offset(y: fadeOutAnimation ? 15 : 0)
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                         withAnimation {
@@ -91,7 +92,7 @@ struct AccountDisplayView: View {
                                     }
                                 }
                                 .onChange(of: fadeOutAnimation) { _ in
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                         withAnimation {
                                             fadeOutAnimation.toggle()
                                         }
