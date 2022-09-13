@@ -113,18 +113,6 @@ struct AccountDisplayView: View {
                     }
                     .animation(.easeInOut)
                     .padding(.horizontal)
-                    .onAppear {
-                        DispatchQueue.global().async {
-                            API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
-                                switch result {
-                                case .success(let data) :
-                                    basicAccountInfo = data
-                                case .failure(_):
-                                    break
-                                }
-                            }
-                        }
-                    }
                 }
             }
             .padding(.horizontal, 25)
@@ -155,6 +143,18 @@ struct AccountDisplayView: View {
             closeView()
         }
         .statusBarHidden(isStatusBarHide)
+        .onAppear {
+            DispatchQueue.global().async {
+                API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
+                    switch result {
+                    case .success(let data) :
+                        basicAccountInfo = data
+                    case .failure(_):
+                        break
+                    }
+                }
+            }
+        }
     }
 
     private func closeView() -> Void {
