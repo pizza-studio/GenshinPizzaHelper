@@ -14,7 +14,7 @@ struct AccountBasicInfosView: View {
         if let basicAccountInfo = basicAccountInfo {
             Section {
                 HStack {
-                    VStack(spacing: 3) {
+                    VStack(spacing: 5) {
                         InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)", contentStyle: .capsule)
                         InfoPreviewer(title: "获得角色", content: "\(basicAccountInfo.stats.avatarNumber)", contentStyle: .capsule)
                         InfoPreviewer(title: "深境螺旋", content: basicAccountInfo.stats.spiralAbyss, contentStyle: .capsule)
@@ -23,7 +23,7 @@ struct AccountBasicInfosView: View {
                         InfoPreviewer(title: "风神瞳", content: "\(basicAccountInfo.stats.anemoculusNumber)", contentStyle: .capsule)
                         InfoPreviewer(title: "雷神瞳", content: "\(basicAccountInfo.stats.electroculusNumber)", contentStyle: .capsule)
                     }
-                    VStack(spacing: 3) {
+                    VStack(spacing: 5) {
                         InfoPreviewer(title: "成就达成", content: "\(basicAccountInfo.stats.achievementNumber)", contentStyle: .capsule)
                         InfoPreviewer(title: "解锁锚点", content: "\(basicAccountInfo.stats.wayPointNumber)", contentStyle: .capsule)
                         InfoPreviewer(title: "解锁秘境", content: "\(basicAccountInfo.stats.domainNumber)", contentStyle: .capsule)
@@ -37,9 +37,9 @@ struct AccountBasicInfosView: View {
                 Text("基本信息")
                     .font(.headline)
                     .fontWeight(.semibold)
-                    .padding(.vertical)
+                    .padding(.top)
+                    .padding(.bottom, 6.5)
             }
-            Divider()
             Section {
                 ScrollView(.horizontal) {
                     WorldExplorationsViewAll(basicAccountInfo: basicAccountInfo)
@@ -48,7 +48,8 @@ struct AccountBasicInfosView: View {
                 Text("世界探索")
                     .font(.headline)
                     .fontWeight(.semibold)
-                    .padding(.vertical)
+                    .padding(.top)
+                    .padding(.bottom, 5)
             }
         } else {
             HStack {
