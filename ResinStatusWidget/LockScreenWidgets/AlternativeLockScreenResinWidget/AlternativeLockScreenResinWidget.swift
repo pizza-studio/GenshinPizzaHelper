@@ -9,12 +9,12 @@ import SwiftUI
 import WidgetKit
 
 @available(iOSApplicationExtension 16.0, *)
-struct AlternativeLockScreenResinWidgetWidget: Widget {
+struct AlternativeLockScreenResinWidget: Widget {
     let kind: String = "AlternativeLockScreenResinWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenLoopWidgetProvider()) { entry in
-            LockScreenLoopWidgetView(entry: entry)
+        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: AlternativeLockScreenResinWidgetProvider()) { entry in
+            AlternativeLockScreenResinWidgetView(entry: entry)
         }
         .configurationDisplayName("原萃树脂")
         .description("另一种样式的原萃树脂小组件")

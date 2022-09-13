@@ -37,9 +37,10 @@ struct AlternativeLockScreenResinWidgetCircular: View {
             .widgetAccentable()
         case .fullColor:
             VStack(spacing: 0) {
-                Image("icon.resin")
-                    .resizable()
-                    .scaledToFit()
+                LinearGradient(colors: [.init("iconColor.resin.dark"), .init("iconColor.resin.middle"), .init("iconColor.resin.light")], startPoint: .top, endPoint: .bottom)
+                    .mask(Image("icon.resin")
+                        .resizable()
+                        .scaledToFit())
                 switch result {
                 case .success(let data):
                     Text("\(data.resinInfo.currentResin)")
