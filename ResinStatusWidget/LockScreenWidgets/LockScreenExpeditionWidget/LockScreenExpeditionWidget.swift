@@ -36,8 +36,10 @@ struct LockScreenExpeditionWidgetView: View {
 
     var body: some View {
         switch family {
+        #if os(watchOS)
         case .accessoryCorner:
             LockScreenExpeditionWidgetCorner(result: result)
+        #endif
         case .accessoryCircular:
             LockScreenExpeditionWidgetCircular(result: result)
         default:

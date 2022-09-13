@@ -38,8 +38,10 @@ struct LockScreenResinWidgetView: View {
 
     var body: some View {
         switch family {
+        #if os(watchOS)
         case .accessoryCorner:
             LockScreenResinWidgetCorner(result: result)
+        #endif
         case .accessoryCircular:
             LockScreenResinWidgetCircular(result: result)
         case .accessoryRectangular:

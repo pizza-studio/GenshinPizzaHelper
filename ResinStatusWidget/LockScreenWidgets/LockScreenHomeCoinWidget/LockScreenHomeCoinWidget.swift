@@ -36,8 +36,10 @@ struct LockScreenHomeCoinWidgetView: View {
 
     var body: some View {
         switch family {
+        #if os(watchOS)
         case .accessoryCorner:
             LockScreenHomeCoinWidgetCorner(result: result)
+        #endif
         case .accessoryCircular:
             LockScreenHomeCoinWidgetCircular(result: result)
         default:

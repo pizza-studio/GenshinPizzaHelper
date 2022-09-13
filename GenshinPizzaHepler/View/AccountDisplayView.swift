@@ -83,6 +83,7 @@ struct AccountDisplayView: View {
                             Text("上滑查看更多基本信息")
                                 .font(.footnote)
                                 .opacity(fadeOutAnimation ? 0 : 1)
+                                .offset(y: fadeOutAnimation ? 15 : 0)
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                         withAnimation {
@@ -91,7 +92,7 @@ struct AccountDisplayView: View {
                                     }
                                 }
                                 .onChange(of: fadeOutAnimation) { _ in
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                         withAnimation {
                                             fadeOutAnimation.toggle()
                                         }
@@ -108,37 +109,10 @@ struct AccountDisplayView: View {
                         Text(detail.accountName)
                             .font(.headline)
                             .padding(.vertical)
-                        if let basicAccountInfo = basicAccountInfo {
-                            VStack(spacing: 3) {
-                                InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)")
-                                InfoPreviewer(title: "成就达成数", content: "\(basicAccountInfo.stats.achievementNumber)")
-                                InfoPreviewer(title: "获得角色数", content: "\(basicAccountInfo.stats.avatarNumber)")
-                                InfoPreviewer(title: "解锁传送点", content: "\(basicAccountInfo.stats.wayPointNumber)")
-                                InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)")
-                                InfoPreviewer(title: "深境螺旋", content: basicAccountInfo.stats.spiralAbyss)
-                            }
-                        } else {
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
-                            }
-                        }
+                        AccountBasicInfosView(basicAccountInfo: $basicAccountInfo)
                     }
                     .animation(.easeInOut)
                     .padding(.horizontal)
-                    .onAppear {
-                        DispatchQueue.global().async {
-                            API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
-                                switch result {
-                                case .success(let data) :
-                                    basicAccountInfo = data
-                                case .failure(_):
-                                    break
-                                }
-                            }
-                        }
-                    }
                 }
             }
             .padding(.horizontal, 25)
@@ -169,6 +143,18 @@ struct AccountDisplayView: View {
             closeView()
         }
         .statusBarHidden(isStatusBarHide)
+        .onAppear {
+            DispatchQueue.global().async {
+                API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
+                    switch result {
+                    case .success(let data) :
+                        basicAccountInfo = data
+                    case .failure(_):
+                        break
+                    }
+                }
+            }
+        }
     }
 
     private func closeView() -> Void {

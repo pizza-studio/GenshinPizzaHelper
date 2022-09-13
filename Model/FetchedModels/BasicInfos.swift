@@ -9,6 +9,8 @@ import Foundation
 
 struct BasicInfos: Codable {
     var stats: Stats
+    var worldExplorations: [WorldExploration]
+    var avatars: [Avatar]
 
     struct Stats: Codable {
         /// 解锁角色数
@@ -41,5 +43,40 @@ struct BasicInfos: Codable {
         var spiralAbyss: String
         /// 奇馈宝箱数
         var magicChestNumber: Int
+    }
+
+    struct WorldExploration: Codable {
+        var id: Int
+        var backgroundImage: String
+        var mapUrl: String
+        var parentId: Int
+        var type: String
+        var offerings: [Offering]
+        var level: Int
+        var explorationPercentage: Int
+        var icon: String
+        var innerIcon: String
+        var cover: String
+        var name: String
+        var strategyUrl: String
+
+        struct Offering: Codable {
+            var name: String
+            var level: Int
+            var icon: String
+        }
+    }
+
+    struct Avatar: Codable {
+        var fetter: Int
+        var rarity: Int
+        var cardImage: String
+        var id: Int
+        var isChosen: Bool
+        var element: String
+        var image: String
+        var level: Int
+        var name: String
+        var activedConstellationNum: Int
     }
 }
