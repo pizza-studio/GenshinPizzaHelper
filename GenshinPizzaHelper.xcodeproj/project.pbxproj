@@ -56,6 +56,7 @@
 		BF85D78E28D02CCB003F3479 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
 		BF85D78F28D02CCE003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BF85D79028D02CCF003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -539,6 +540,7 @@
 		BF85D77828CE0BA0003F3479 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF85D77A28CE0BA0003F3479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF85D78828CF31FD003F3479 /* BasicInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfos.swift; sourceTree = "<group>"; };
+		BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBasicInfosView.swift; sourceTree = "<group>"; };
 		BFCC064A28C5EA6A003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -909,6 +911,7 @@
 		BFE4254E289F6BA100FEFA49 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */,
 				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
 				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
 				BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */,
@@ -1824,6 +1827,7 @@
 				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,
 				BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */,
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
+				BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				EA56E09228A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
