@@ -37,6 +37,14 @@ struct AccountBasicInfosView: View {
             Section (header: Text("世界探索")) {
                 ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
                     WorldExplorationsView(data: worldData)
+                    if let offerings = worldData.offerings {
+                        if worldData.id != 6 {  // 取消层岩地上的流明石的显示
+                            ForEach(offerings, id:\.name) { offering in
+                                WorldOfferingsExplorationsView(data: offering)
+                                    .padding(.horizontal)
+                            }
+                        }
+                    }
                 }
             }
         } else {
@@ -68,5 +76,21 @@ private struct WorldExplorationsView: View {
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
         return formatter.string(from: value as NSNumber) ?? "Error"
+    }
+}
+
+private struct WorldOfferingsExplorationsView: View {
+    var data: BasicInfos.WorldExploration.Offering
+
+    var body: some View {
+        HStack {
+            WebImage(urlStr: data.icon)
+                .frame(width: 30, height: 30)
+            HStack {
+                Text(data.name)
+                    .padding(.trailing)
+                Text("Level. \(data.level)")
+            }
+        }
     }
 }
