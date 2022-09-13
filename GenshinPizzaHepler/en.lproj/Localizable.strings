@@ -467,3 +467,27 @@
 "日语 英语翻译" = "Japanese translator";
 "法语翻译" = "French translator";
 "图片素材制作" = "Image production";
+
+// MARK: - 2.3
+// Account Basic Info Detail
+"数据总览" = "General Datas";
+"活跃天数" = "Activated Days";
+"成就达成" = "Achievements";
+"获得角色" = "Characters";
+"深境螺旋" = "Spiral Abyss";
+"解锁锚点" = "Unlocked Waypoints";
+"解锁秘境" = "Unlocked Domains";
+"普通宝箱" = "Common Chests";
+"精致宝箱" = "Exquisite Chests";
+"珍贵宝箱" = "Precious Chests";
+"华丽宝箱" = "Luxurious Chests";
+"风神瞳" = "Anemoculus";
+"岩神瞳" = "Geoculus";
+"雷神瞳" = "Electroculus";
+"草神瞳" = "Dendroculus";
+"世界探索" = "World Explorations";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
