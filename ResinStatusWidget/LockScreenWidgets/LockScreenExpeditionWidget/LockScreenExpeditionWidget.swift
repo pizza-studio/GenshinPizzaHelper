@@ -19,8 +19,7 @@ struct LockScreenExpeditionWidget: Widget {
         .configurationDisplayName("探索派遣")
         .description("探索派遣完成情况")
         #if os(watchOS)
-//        .supportedFamilies([.accessoryCircular, .accessoryCorner])
-        .supportedFamilies([.accessoryCircular])
+        .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else
         .supportedFamilies([.accessoryCircular])
         #endif
@@ -37,8 +36,10 @@ struct LockScreenExpeditionWidgetView: View {
 
     var body: some View {
         switch family {
-//        case .accessoryCorner:
-//            LockScreenExpeditionWidgetCorner(result: result)
+        #if os(watchOS)
+        case .accessoryCorner:
+            LockScreenExpeditionWidgetCorner(result: result)
+        #endif
         case .accessoryCircular:
             LockScreenExpeditionWidgetCircular(result: result)
         default:
