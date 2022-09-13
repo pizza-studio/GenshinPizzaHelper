@@ -106,9 +106,12 @@ struct AccountDisplayView: View {
                 .readingScrollView(from: "scroll", into: $scrollOffset)
                 if isAccountInfoShow {
                     VStack(alignment: .leading) {
-                        Text(detail.accountName)
-                            .font(.headline)
-                            .padding(.vertical)
+                        HStack(alignment: .lastTextBaseline, spacing: 5) {
+                            Image(systemName: "person.fill")
+                            Text(detail.accountName)
+                        }
+                        .font(.headline)
+                        .foregroundColor(Color("textColor3"))
                         AccountBasicInfosView(basicAccountInfo: $basicAccountInfo)
                     }
                     .animation(.easeInOut)
