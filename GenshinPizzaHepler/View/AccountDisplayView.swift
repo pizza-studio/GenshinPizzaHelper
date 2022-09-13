@@ -18,6 +18,7 @@ struct AccountDisplayView: View {
     @State var isAccountInfoShow: Bool = false
     @State var basicAccountInfo: BasicInfos? = nil
     @State var isStatusBarHide: Bool = false
+    @State var fadeOutAnimation: Bool = true
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
     fileprivate var gameInfoBlock: some View {
@@ -30,6 +31,7 @@ struct AccountDisplayView: View {
         GeometryReader { geo in
             ScrollView (showsIndicators: false) {
                 VStack(alignment: .leading) {
+                    Spacer()
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
                             VStack(alignment: .leading, spacing: 10) {
@@ -73,6 +75,30 @@ struct AccountDisplayView: View {
                                 .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
                         }
                         expeditionsView()
+                    }
+                    Spacer()
+                    if !isAccountInfoShow {
+                        HStack {
+                            Spacer()
+                            Text("上滑查看更多基本信息")
+                                .font(.footnote)
+                                .opacity(fadeOutAnimation ? 0 : 1)
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                        withAnimation {
+                                            fadeOutAnimation.toggle()
+                                        }
+                                    }
+                                }
+                                .onChange(of: fadeOutAnimation) { _ in
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        withAnimation {
+                                            fadeOutAnimation.toggle()
+                                        }
+                                    }
+                                }
+                            Spacer()
+                        }
                     }
                 }
                 .frame(height: geo.size.height)
