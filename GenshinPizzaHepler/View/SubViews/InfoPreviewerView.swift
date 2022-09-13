@@ -23,6 +23,7 @@ struct InfoPreviewer: View {
             case .capsule:
                 ZStack {
                     Capsule()
+                        .fill(.white)
                         .frame(height: 20)
                         .frame(maxWidth: 120)
                     Text(content)

@@ -71,7 +71,7 @@ struct BasicInfos: Codable {
         var fetter: Int
         var rarity: Int
         var cardImage: String
-        var id: String
+        var id: Int
         var isChosen: Bool
         var element: String
         var image: String
