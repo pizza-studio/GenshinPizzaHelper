@@ -15,7 +15,7 @@ struct ProgressGaugeStyle: GaugeStyle {
 //    var labelColor: Color = .white
 
     #if os(watchOS)
-    let strokeLineWidth: CGFloat = 5
+    let strokeLineWidth: CGFloat = 4.7
     #else
     let strokeLineWidth: CGFloat = 6
     #endif
@@ -31,11 +31,7 @@ struct ProgressGaugeStyle: GaugeStyle {
                 .widgetAccentable()
                 .shadow(radius: 1)
             configuration.currentValueLabel
-                #if os(watchOS)
-                .frame(maxWidth: 26, maxHeight: 25)
-                #else
-                .frame(maxWidth: 34)
-                #endif
+                .padding(strokeLineWidth * 1.4)
             VStack {
                 Spacer()
                 configuration.label
@@ -49,11 +45,7 @@ struct ProgressGaugeStyle: GaugeStyle {
             }
             .widgetAccentable()
         }
-        #if !os(watchOS)
-        .frame(width: 50, height: 50)
-        #else
-        .frame(width: 40, height: 40)
-        #endif
+        .padding(strokeLineWidth * 1/2)
     }
 }
 
