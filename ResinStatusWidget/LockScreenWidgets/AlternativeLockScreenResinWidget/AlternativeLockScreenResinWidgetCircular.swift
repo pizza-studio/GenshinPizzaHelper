@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct AlterLockScreenResinWidgetCircular: View {
+struct AlternativeLockScreenResinWidgetCircular: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
     let result: FetchResult

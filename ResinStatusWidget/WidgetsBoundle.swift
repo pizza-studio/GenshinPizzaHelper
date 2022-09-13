@@ -19,11 +19,12 @@ struct WidgetsBundleiOS16: WidgetBundle {
         AlternativeWatchCornerResinWidget()
         #endif
         LockScreenResinWidget()
-        LockScreenHomeCoinWidget()
+        LockScreenLoopWidget()
         LockScreenAllInfoWidget()
+        LockScreenHomeCoinWidget()
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()
-        LockScreenLoopWidget()
+        AlternativeLockScreenResinWidgetWidget()
     }
 }
 

@@ -16,7 +16,7 @@ struct LockScreenLoopWidgetCircular: View {
     var body: some View {
         switch type {
         case .resin:
-            LockScreenResinWidgetCircular(result: result)
+            AlternativeLockScreenResinWidgetCircular(result: result)
         case .dailyTask:
             LockScreenDailyTaskWidgetCircular(result: result)
         case .expedition:
