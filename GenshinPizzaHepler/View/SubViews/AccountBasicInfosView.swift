@@ -41,7 +41,7 @@ struct AccountBasicInfosView: View {
                         if worldData.id != 6 {  // 取消层岩地上的流明石的显示
                             ForEach(offerings, id:\.name) { offering in
                                 WorldOfferingsExplorationsView(data: offering)
-                                    .padding(.horizontal)
+                                    .padding(.horizontal, 10)
                             }
                         }
                     }
@@ -66,9 +66,19 @@ private struct WorldExplorationsView: View {
                 .frame(width: 40, height: 40)
             VStack(alignment: .leading) {
                 Text(data.name)
-                Text(calculatePercentage(value: Double(data.explorationPercentage) / Double(1000)))
+                    .padding(.vertical, -5)
+                HStack {
+                    Text(calculatePercentage(value: Double(data.explorationPercentage) / Double(1000)))
+                    Spacer()
+                    ProgressView(value: Double(data.explorationPercentage), total: 1000)
+                        .progressViewStyle(LinearProgressViewStyle(tint: .white))
+                        .frame(width: 125)
+                        .scaleEffect(1.5)
+                        .padding(.trailing, 25)
+                }
+                .padding(.vertical, -5)
             }
-            Spacer()
+
         }
     }
 
@@ -90,6 +100,7 @@ private struct WorldOfferingsExplorationsView: View {
                 Text(data.name)
                     .padding(.trailing)
                 Text("Level. \(data.level)")
+                    .padding(.horizontal)
             }
         }
     }
