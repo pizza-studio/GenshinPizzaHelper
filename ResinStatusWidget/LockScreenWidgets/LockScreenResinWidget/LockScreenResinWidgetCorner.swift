@@ -15,7 +15,7 @@ struct LockScreenResinWidgetCorner: View {
     var text: String {
         switch result {
         case .success(let data):
-            return "\(data.resinInfo.currentResin), \(data.resinInfo.recoveryTime.completeTimePointFromNowShort())"
+            return "\(data.resinInfo.currentResin), \(data.resinInfo.recoveryTime.completeTimePointFromNowShort(finishedTextPlaceholder: "已回满"))"
         case .failure(_):
             return ""
         }
