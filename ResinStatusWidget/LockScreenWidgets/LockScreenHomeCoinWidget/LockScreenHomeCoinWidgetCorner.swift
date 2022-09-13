@@ -15,7 +15,7 @@ struct LockScreenHomeCoinWidgetCorner: View {
     var text: String {
         switch result {
         case .success(let data):
-            return "\(data.homeCoinInfo.currentHomeCoin), \(data.homeCoinInfo.recoveryTime.describeIntervalShort())"
+            return "\(data.homeCoinInfo.currentHomeCoin), \(data.homeCoinInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "已填满"))"
         case .failure(_):
             return ""
         }

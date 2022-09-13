@@ -222,7 +222,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
             intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
-            return IntentRecommendation(intent: intent, description: config.name!+"的所有信息")
+            return IntentRecommendation(intent: intent, description: config.name!+"的综合信息")
         }
     }
 
