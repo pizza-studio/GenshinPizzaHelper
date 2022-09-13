@@ -10,6 +10,7 @@ import Foundation
 struct BasicInfos: Codable {
     var stats: Stats
     var worldExplorations: [WorldExploration]
+    var avatars: [Avatar]
 
     struct Stats: Codable {
         /// 解锁角色数
@@ -64,5 +65,18 @@ struct BasicInfos: Codable {
             var level: Int
             var icon: String
         }
+    }
+
+    struct Avatar: Codable {
+        var fetter: Int
+        var rarity: Int
+        var cardImage: String
+        var id: String
+        var isChosen: Bool
+        var element: String
+        var image: String
+        var level: Int
+        var name: String
+        var activedConstellationNum: Int
     }
 }
