@@ -21,15 +21,16 @@ struct InfoPreviewer: View {
                 Text(content)
                     .foregroundColor(.gray)
             case .capsule:
-                ZStack {
-                    Capsule()
-                        .fill(.white)
-                        .frame(height: 20)
-                        .frame(maxWidth: 120)
-                        .opacity(0.25)
-                    Text(content)
-                        .foregroundColor(.white)
-                }
+                Text(content)
+                    .foregroundColor(.white)
+                    .padding(.horizontal)
+                    .background(
+                        Capsule()
+                            .fill(.white)
+                            .frame(height: 20)
+                            .frame(maxWidth: 120)
+                            .opacity(0.25)
+                    )
             }
         }
     }

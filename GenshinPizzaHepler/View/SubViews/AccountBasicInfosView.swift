@@ -12,7 +12,7 @@ struct AccountBasicInfosView: View {
 
     var body: some View {
         if let basicAccountInfo = basicAccountInfo {
-            Section (header: Text("基本信息")) {
+            Section {
                 HStack {
                     VStack(spacing: 3) {
                         InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)", contentStyle: .capsule)
@@ -33,20 +33,22 @@ struct AccountBasicInfosView: View {
                         InfoPreviewer(title: "草神瞳", content: "\(basicAccountInfo.stats.dendroculusNumber)", contentStyle: .capsule)
                     }
                 }
+            } header: {
+                Text("基本信息")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .padding(.vertical)
             }
             Divider()
-            Section (header: Text("世界探索")) {
-                ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
-                    WorldExplorationsView(data: worldData)
-                    if let offerings = worldData.offerings {
-                        if worldData.id != 6 {  // 取消层岩地上的流明石的显示
-                            ForEach(offerings, id:\.name) { offering in
-                                WorldOfferingsExplorationsView(data: offering)
-                                    .padding(.horizontal, 10)
-                            }
-                        }
-                    }
+            Section {
+                ScrollView(.horizontal) {
+                    WorldExplorationsViewAll(basicAccountInfo: basicAccountInfo)
                 }
+            } header: {
+                Text("世界探索")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .padding(.vertical)
             }
         } else {
             HStack {
@@ -62,24 +64,12 @@ private struct WorldExplorationsView: View {
     var data: BasicInfos.WorldExploration
 
     var body: some View {
-        HStack {
+        VStack {
             WebImage(urlStr: data.icon)
-                .frame(width: 40, height: 40)
-            VStack(alignment: .leading) {
-                Text(data.name)
-                    .padding(.vertical, -5)
-                HStack {
-                    Text(calculatePercentage(value: Double(data.explorationPercentage) / Double(1000)))
-                    Spacer()
-                    ProgressView(value: Double(data.explorationPercentage), total: 1000)
-                        .progressViewStyle(LinearProgressViewStyle(tint: .white))
-                        .frame(width: 125)
-                        .scaleEffect(1.5)
-                        .padding(.trailing, 25)
-                }
-                .padding(.vertical, -5)
-            }
-
+                .frame(width: 70, height: 70)
+            Text(data.name)
+            Text(calculatePercentage(value: Double(data.explorationPercentage) / Double(1000)))
+                .font(.footnote)
         }
     }
 
@@ -94,15 +84,60 @@ private struct WorldOfferingsExplorationsView: View {
     var data: BasicInfos.WorldExploration.Offering
 
     var body: some View {
-        HStack {
+        VStack(alignment: .center) {
             WebImage(urlStr: data.icon)
                 .frame(width: 30, height: 30)
-            HStack {
-                Text(data.name)
-                    .padding(.trailing)
-                Text("Level. \(data.level)")
-                    .padding(.horizontal)
+            Text(data.name)
+            Text("Lv. \(data.level)")
+                .font(.footnote)
+        }
+    }
+}
+
+private struct WorldExplorationsViewAll: View {
+    let basicAccountInfo: BasicInfos
+    var body: some View {
+        if #available(iOS 16, *) {
+            Grid(horizontalSpacing: 20, verticalSpacing: 10) {
+                GridRow {
+                    ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                        WorldExplorationsView(data: worldData)
+                            .frame(minWidth: 80)
+                    }
+                }
+                GridRow {
+                    ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                        VStack(alignment: .center, spacing: 10) {
+                            if let offerings = worldData.offerings {
+                                if worldData.id != 6 {  // 取消层岩地上的流明石的显示
+                                    ForEach(offerings, id:\.name) { offering in
+                                        WorldOfferingsExplorationsView(data: offering)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
+        } else {
+            HStack(alignment: .top) {
+                ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                    VStack(alignment: .center, spacing: 10) {
+                        WorldExplorationsView(data: worldData)
+                        if let offerings = worldData.offerings {
+                            if worldData.id != 6 {  // 取消层岩地上的流明石的显示
+                                ForEach(offerings, id:\.name) { offering in
+                                    WorldOfferingsExplorationsView(data: offering)
+                                }
+                            }
+                        } else {
+                            Spacer()
+                        }
+                    }
+                    .frame(minWidth: 80)
+                }
+            }
+            .padding(.vertical, 5)
         }
     }
 }
