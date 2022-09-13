@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFCC065528C9B6A0003E4A54"
-            BuildableName = "WatchHelper.app"
+            BuildableName = "&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.app"
             BlueprintName = "WatchHelper"
             ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFCC065528C9B6A0003E4A54"
-            BuildableName = "WatchHelper.app"
+            BuildableName = "&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.app"
             BlueprintName = "WatchHelper"
             ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
          </BuildableReference>

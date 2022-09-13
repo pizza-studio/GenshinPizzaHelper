@@ -52,6 +52,10 @@
 		BF85D78A28CF31FD003F3479 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
 		BF85D78B28CF31FD003F3479 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
 		BF85D78C28CF31FD003F3479 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
+		BF85D78D28D02CCA003F3479 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
+		BF85D78E28D02CCB003F3479 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
+		BF85D78F28D02CCE003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		BF85D79028D02CCF003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -61,7 +65,7 @@
 		BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC066928C9B6A1003E4A54 /* NotificationView.swift */; };
 		BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC066B28C9B6A1003E4A54 /* ComplicationController.swift */; };
 		BFCC067128C9B6A2003E4A54 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCC067028C9B6A2003E4A54 /* Preview Assets.xcassets */; };
-		BFCC067628C9B6A2003E4A54 /* WatchHelper.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BFCC065628C9B6A0003E4A54 /* WatchHelper.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BFCC067628C9B6A2003E4A54 /* 原神披萨小助手.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BFCC065628C9B6A0003E4A54 /* 原神披萨小助手.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BFCC068128C9B7C6003E4A54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCC066D28C9B6A2003E4A54 /* Assets.xcassets */; };
 		BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		BFCC068328C9BBC8003E4A54 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07728A26C0D00A64262 /* RequestResult.swift */; };
@@ -470,7 +474,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				BFCC067628C9B6A2003E4A54 /* WatchHelper.app in Embed Watch Content */,
+				BFCC067628C9B6A2003E4A54 /* 原神披萨小助手.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,7 +545,7 @@
 		BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxySettingsView.swift; sourceTree = "<group>"; };
 		BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideVideoLinkView.swift; sourceTree = "<group>"; };
 		BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTipsView.swift; sourceTree = "<group>"; };
-		BFCC065628C9B6A0003E4A54 /* WatchHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFCC065628C9B6A0003E4A54 /* 原神披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "原神披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCC065828C9B6A1003E4A54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchHelper WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCC066528C9B6A1003E4A54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -1116,7 +1120,7 @@
 				EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */,
 				EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */,
 				EA099FF328A2B7220023B4AF /* AccountIntent.appex */,
-				BFCC065628C9B6A0003E4A54 /* WatchHelper.app */,
+				BFCC065628C9B6A0003E4A54 /* 原神披萨小助手.app */,
 				BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */,
 				BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */,
 				EAE95CE128CE10A000D975CB /* WatchIntent.appex */,
@@ -1275,7 +1279,7 @@
 			);
 			name = WatchHelper;
 			productName = WatchHelper;
-			productReference = BFCC065628C9B6A0003E4A54 /* WatchHelper.app */;
+			productReference = BFCC065628C9B6A0003E4A54 /* 原神披萨小助手.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		BFCC065D28C9B6A1003E4A54 /* WatchHelper WatchKit Extension */ = {
@@ -1437,6 +1441,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF85D78628CE18F2003F3479 /* Assets.xcassets in Resources */,
+				BF85D78F28D02CCE003F3479 /* InfoPlist.strings in Resources */,
+				BF85D78D28D02CCA003F3479 /* Localizable.strings in Resources */,
 				BF85D77928CE0BA0003F3479 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1517,6 +1523,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF85D78728CE18F3003F3479 /* Assets.xcassets in Resources */,
+				BF85D79028D02CCF003F3479 /* InfoPlist.strings in Resources */,
+				BF85D78E28D02CCB003F3479 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2053,7 +2061,6 @@
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = WatchHelper_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = WatchHelper;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2063,7 +2070,7 @@
 				);
 				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "原神披萨小助手";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2088,7 +2095,6 @@
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = WatchHelper_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = WatchHelper;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = Canglong.GenshinPizzaHepler;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2098,7 +2104,7 @@
 				);
 				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "原神披萨小助手";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
