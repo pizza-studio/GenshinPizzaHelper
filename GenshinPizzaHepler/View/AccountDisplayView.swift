@@ -110,14 +110,19 @@ struct AccountDisplayView: View {
                             .font(.headline)
                             .padding(.vertical)
                         if let basicAccountInfo = basicAccountInfo {
-                            VStack(spacing: 3) {
-                                InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)")
-                                InfoPreviewer(title: "成就达成数", content: "\(basicAccountInfo.stats.achievementNumber)")
-                                InfoPreviewer(title: "获得角色数", content: "\(basicAccountInfo.stats.avatarNumber)")
-                                InfoPreviewer(title: "解锁传送点", content: "\(basicAccountInfo.stats.wayPointNumber)")
-                                InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)")
-                                InfoPreviewer(title: "深境螺旋", content: basicAccountInfo.stats.spiralAbyss)
+                            HStack {
+                                VStack(spacing: 3) {
+                                    InfoPreviewer(title: "活跃天数", content: "\(basicAccountInfo.stats.activeDayNumber)", contentStyle: .capsule)
+                                    InfoPreviewer(title: "获得角色", content: "\(basicAccountInfo.stats.avatarNumber)", contentStyle: .capsule)
+                                    InfoPreviewer(title: "深境螺旋", content: basicAccountInfo.stats.spiralAbyss, contentStyle: .capsule)
+                                }
+                                VStack(spacing: 3) {
+                                    InfoPreviewer(title: "成就达成", content: "\(basicAccountInfo.stats.achievementNumber)", contentStyle: .capsule)
+                                    InfoPreviewer(title: "解锁锚点", content: "\(basicAccountInfo.stats.wayPointNumber)", contentStyle: .capsule)
+                                    InfoPreviewer(title: "解锁成就", content: "\(basicAccountInfo.stats.achievementNumber)", contentStyle: .capsule)
+                                }
                             }
+
                         } else {
                             HStack {
                                 Spacer()
