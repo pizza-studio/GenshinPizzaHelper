@@ -36,8 +36,10 @@ struct LockScreenDailyTaskWidgetView: View {
 
     var body: some View {
         switch family {
+        #if os(watchOS)
         case .accessoryCorner:
             LockScreenDailyTaskWidgetCorner(result: result)
+        #endif
         case .accessoryCircular:
             LockScreenDailyTaskWidgetCircular(result: result)
         default:
