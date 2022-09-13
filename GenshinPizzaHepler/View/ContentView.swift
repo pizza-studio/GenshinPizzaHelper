@@ -78,6 +78,11 @@ struct ContentView: View {
 
                 // 同步watch数据
                 syncWatch()
+
+                // 强制显示背景颜色
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    bgFadeOutAnimation = false
+                }
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
             default:
