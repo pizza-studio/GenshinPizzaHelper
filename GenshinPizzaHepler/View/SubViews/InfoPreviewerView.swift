@@ -26,8 +26,9 @@ struct InfoPreviewer: View {
                         .fill(.white)
                         .frame(height: 20)
                         .frame(maxWidth: 120)
+                        .opacity(0.25)
                     Text(content)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                 }
             }
         }

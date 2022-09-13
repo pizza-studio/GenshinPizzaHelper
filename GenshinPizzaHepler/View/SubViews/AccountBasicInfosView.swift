@@ -34,6 +34,7 @@ struct AccountBasicInfosView: View {
                     }
                 }
             }
+            Divider()
             Section (header: Text("世界探索")) {
                 ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
                     WorldExplorationsView(data: worldData)
