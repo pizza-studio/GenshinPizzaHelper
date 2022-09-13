@@ -15,12 +15,16 @@ struct WidgetsBundleiOS16: WidgetBundle {
     var body: some Widget {
         #if !os(watchOS)
         MainWidget()
+        #else
+        AlternativeWatchCornerResinWidget()
         #endif
         LockScreenResinWidget()
-        LockScreenHomeCoinWidget()
+        LockScreenLoopWidget()
         LockScreenAllInfoWidget()
+        LockScreenHomeCoinWidget()
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()
+        AlternativeLockScreenResinWidgetWidget()
     }
 }
 
