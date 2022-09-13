@@ -34,7 +34,7 @@ struct AccountBasicInfosView: View {
                     }
                 }
             } header: {
-                Text("基本信息")
+                Text("数据总览")
                     .font(.headline)
                     .fontWeight(.semibold)
                     .padding(.top)

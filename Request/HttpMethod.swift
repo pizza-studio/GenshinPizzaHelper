@@ -305,7 +305,6 @@ struct HttpMethod<T: Codable> {
                     "X-Requested-With": "com.mihoyo.hyperion",
                     "Origin": "https://webstatic.mihoyo.com",
                     "Accept-Encoding": "gzip, deflate",
-                    "Accept-Language": "zh-CN,en-US;q=0.8",
                     "Cookie": cookie
                 ]
                 // http方法
