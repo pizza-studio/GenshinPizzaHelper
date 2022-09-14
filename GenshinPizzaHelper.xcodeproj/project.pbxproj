@@ -434,13 +434,6 @@
 			remoteGlobalIDString = EA30F9A02886B49200AE7BEA;
 			remoteInfo = ResinStatusWidgetExtension;
 		};
-		EAE3FCB628CE3E4600174DA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA30F9A02886B49200AE7BEA;
-			remoteInfo = ResinStatusWidgetExtension;
-		};
 		EAE3FCB928CE3E7B00174DA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
@@ -1277,7 +1270,6 @@
 			);
 			dependencies = (
 				BF85D76928CE0AC8003F3479 /* PBXTargetDependency */,
-				EAE3FCB728CE3E4600174DA8 /* PBXTargetDependency */,
 				EAE3FCBA28CE3E7B00174DA8 /* PBXTargetDependency */,
 			);
 			name = WatchHelper;
@@ -1935,11 +1927,6 @@
 			isa = PBXTargetDependency;
 			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
 			targetProxy = EA30F9AD2886B49300AE7BEA /* PBXContainerItemProxy */;
-		};
-		EAE3FCB728CE3E4600174DA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
-			targetProxy = EAE3FCB628CE3E4600174DA8 /* PBXContainerItemProxy */;
 		};
 		EAE3FCBA28CE3E7B00174DA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
