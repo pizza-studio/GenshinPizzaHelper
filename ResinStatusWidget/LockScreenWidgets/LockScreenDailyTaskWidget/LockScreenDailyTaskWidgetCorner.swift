@@ -22,7 +22,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
                 .padding(4.5)
                 .widgetLabel {
                     Gauge(value: Double(data.dailyTaskInfo.finishedTaskNum), in: 0...Double(data.dailyTaskInfo.totalTaskNum)) {
-                        Text("每日任务")
+                        Text("每日委托")
                     } currentValueLabel: {
                         Text("\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)")
                     } minimumValueLabel: {

@@ -487,7 +487,17 @@
 "雷神瞳" = "Electroculus";
 "草神瞳" = "Dendroculus";
 "世界探索" = "World Explorations";
-"" = "";
+
+// Lock Screen Widgets
+"树脂回复状态" = "Resin Recovery Status";
+"自动轮换" = "Automatic Rotation";
+"自动展示你最需要的信息" = "Automatically display the information you need most";
+"综合信息" = "Comprehensive Infos";
+"所有信息，一网打尽" = "All infos in one view";
+"洞天宝钱数量" = "Realm Currenncy amount";
+"每日委托完成情况" = "Daily Commission Status";
+"探索派遣完成情况" = "Expedition Status";
+"另一种样式的原粹树脂小组件" = "Original Resin Widget in another form";
 "" = "";
 "" = "";
 "" = "";

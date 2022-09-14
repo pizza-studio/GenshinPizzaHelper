@@ -16,8 +16,8 @@ struct LockScreenDailyTaskWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenDailyTaskWidgetProvider()) { entry in
             LockScreenDailyTaskWidgetView(entry: entry)
         }
-        .configurationDisplayName("每日任务")
-        .description("每日任务完成情况")
+        .configurationDisplayName("每日委托")
+        .description("每日委托完成情况")
         #if os(watchOS)
         .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else
