@@ -28,7 +28,7 @@ struct LockScreenLoopWidgetCircular: View {
 
     var type: WidgetType {
         var isTimePast8PM: Bool {
-            Date() < Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
+            Date() > Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
         }
         switch result {
         case .success(let data):
