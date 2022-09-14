@@ -471,17 +471,17 @@
 // MARK: - 2.3
 // Account Basic Info Detail
 "上滑查看更多基本信息" = "Swipe up to show more";
-"数据总览" = "General Datas";
-"活跃天数" = "Activated Days";
+"数据总览" = "Summary";
+"活跃天数" = "Days Active";
 "成就达成" = "Achievements";
 "获得角色" = "Characters";
 "深境螺旋" = "Spiral Abyss";
-"解锁锚点" = "Unlocked Waypoints";
-"解锁秘境" = "Unlocked Domains";
-"普通宝箱" = "Common Chests";
-"精致宝箱" = "Exquisite Chests";
-"珍贵宝箱" = "Precious Chests";
-"华丽宝箱" = "Luxurious Chests";
+"解锁锚点" = "Waypoints Unlocked";
+"解锁秘境" = "Domains Unlocked";
+"普通宝箱" = "Common Chests Opened";
+"精致宝箱" = "Exquisite Chests Opened";
+"珍贵宝箱" = "Precious Chests Opened";
+"华丽宝箱" = "Luxurious Chests Opened";
 "风神瞳" = "Anemoculus";
 "岩神瞳" = "Geoculus";
 "雷神瞳" = "Electroculus";
@@ -507,5 +507,5 @@
 "的每日委托" = "'s Daily Commission";
 "的综合信息" = "'s Comprehensive Infos";
 "的洞天宝钱" = "'s Realm Currency";
-"" = "";
-"" = "";
+"已填满" = "Refilled";
+"%lld, 已回满" = "%lld, Done";

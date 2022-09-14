@@ -130,7 +130,7 @@ struct AccountDisplayView: View {
                         isStatusBarHide = true
                     }
                 }
-                if scrollOffset.y < -50 && isAccountInfoShow {
+                else if scrollOffset.y <= 0 && isAccountInfoShow {
                     simpleTaptic(type: .medium)
                     withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
                         isAccountInfoShow = false

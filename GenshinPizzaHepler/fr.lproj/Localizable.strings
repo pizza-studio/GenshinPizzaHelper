@@ -458,6 +458,7 @@
 "%@ 回满" = "Replenished at %@";
 "树脂已全部回满" = "Resin is fully replenished";
 
+// Donate
 "特别鸣谢" = "Special Thanks";
 
 // Contact us
@@ -466,3 +467,45 @@
 "日语 英语翻译" = "Japanese translator";
 "法语翻译" = "French translator";
 "图片素材制作" = "Image production";
+
+// MARK: - 2.3
+// Account Basic Info Detail
+"上滑查看更多基本信息" = "Swipe up to show more";
+"数据总览" = "Summary";
+"活跃天数" = "Days Active";
+"成就达成" = "Achievements";
+"获得角色" = "Characters";
+"深境螺旋" = "Spiral Abyss";
+"解锁锚点" = "Waypoints Unlocked";
+"解锁秘境" = "Domains Unlocked";
+"普通宝箱" = "Common Chests Opened";
+"精致宝箱" = "Exquisite Chests Opened";
+"珍贵宝箱" = "Precious Chests Opened";
+"华丽宝箱" = "Luxurious Chests Opened";
+"风神瞳" = "Anemoculus";
+"岩神瞳" = "Geoculus";
+"雷神瞳" = "Electroculus";
+"草神瞳" = "Dendroculus";
+"世界探索" = "World Explorations";
+
+// Lock Screen Widgets
+"树脂回复状态" = "Resin Recovery Status";
+"自动轮换" = "Automatic Rotation";
+"自动展示你最需要的信息" = "Automatically display the information you need most";
+"综合信息" = "Comprehensive Infos";
+"所有信息，一网打尽" = "All infos in one view";
+"洞天宝钱数量" = "Realm Currenncy amount";
+"每日委托完成情况" = "Daily Commission Status";
+"探索派遣完成情况" = "Expedition Status";
+"另一种样式的原粹树脂小组件" = "Original Resin Widget in another form";
+
+// Watch
+"请等待帐号从iCloud同步" = "Please wait for the data to sync from iCloud";
+"的原粹树脂" = "'s Original Resin";
+"的智能轮换信息" = "'s Automatic Rotation";
+"的探索派遣" = "'s Expedition";
+"的每日委托" = "'s Daily Commission";
+"的综合信息" = "'s Comprehensive Infos";
+"的洞天宝钱" = "'s Realm Currency";
+"已填满" = "Refilled";
+"%lld, 已回满" = "%lld, Done";
