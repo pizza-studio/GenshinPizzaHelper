@@ -18,7 +18,7 @@ struct LockScreenExpeditionWidgetCorner: View {
         case .success(let data):
             return "\(data.expeditionInfo.currentOngoingTask)/\(data.expeditionInfo.maxExpedition) \(data.expeditionInfo.nextCompleteTimeIgnoreFinished.describeIntervalLong(finishedTextPlaceholder: "已全部完成"))"
         case .failure(_):
-            return ""
+            return "探索派遣".localized
         }
     }
 

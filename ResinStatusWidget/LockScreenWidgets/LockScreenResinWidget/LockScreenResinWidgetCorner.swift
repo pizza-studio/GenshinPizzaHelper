@@ -21,7 +21,7 @@ struct LockScreenResinWidgetCorner: View {
                 return "\(data.resinInfo.currentResin), \(data.resinInfo.recoveryTime.describeIntervalShort()), \(data.resinInfo.recoveryTime.completeTimePointFromNowShort())"
             }
         case .failure(_):
-            return "原粹树脂"
+            return "原粹树脂".localized
         }
     }
 

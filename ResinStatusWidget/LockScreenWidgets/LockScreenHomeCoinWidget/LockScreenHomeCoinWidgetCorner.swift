@@ -17,7 +17,7 @@ struct LockScreenHomeCoinWidgetCorner: View {
         case .success(let data):
             return "\(data.homeCoinInfo.currentHomeCoin), \(data.homeCoinInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "已填满"))"
         case .failure(_):
-            return ""
+            return "洞天宝钱".localized
         }
     }
 

@@ -36,11 +36,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
                 .resizable()
                 .scaledToFit()
                 .padding(4.5)
-                .widgetLabel {
-                    Gauge(value: 0, in: 0...4) {
-                        Text("")
-                    }
-                }
+                .widgetLabel("每日委托".localized)
         }
     }
 }
