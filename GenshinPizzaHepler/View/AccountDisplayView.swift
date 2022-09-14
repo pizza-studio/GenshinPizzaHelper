@@ -108,7 +108,7 @@ struct AccountDisplayView: View {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
                             Image(systemName: "person.fill")
-                            Text(detail.accountName)
+                            Text("\(detail.accountName) (\(detail.accountData.uid ?? ""))")
                         }
                         .font(.headline)
                         .foregroundColor(Color("textColor3"))
