@@ -266,6 +266,14 @@ struct HttpMethod<T: Codable> {
             return t + "," + r + "," + c
         }
 
+        func get_language_code() -> String {
+            var languageCode = Locale.current.languageCode ?? "en-us"
+            if languageCode == "zh" {
+                languageCode = "zh-cn"
+            }
+            return languageCode
+        }
+
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
 
@@ -301,7 +309,7 @@ struct HttpMethod<T: Codable> {
                     "x-rpc-app_version": appVersion,
                     "User-Agent": userAgent,
                     "x-rpc-client_type": clientType,
-                    "x-rpc-language": Locale.current.languageCode ?? "en-us",
+                    "x-rpc-language": get_language_code(),
                     "Referer": "https://webstatic.mihoyo.com/app/community-game-records/index.html?v=6",
                     "X-Requested-With": "com.mihoyo.hyperion",
                     "Origin": "https://webstatic.mihoyo.com",
