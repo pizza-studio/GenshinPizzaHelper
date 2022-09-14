@@ -15,7 +15,7 @@ struct LockScreenExpeditionWidgetProvider: IntentTimelineProvider {
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
             intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
-            return IntentRecommendation(intent: intent, description: config.name!+"的探索派遣")
+            return IntentRecommendation(intent: intent, description: config.name!+"的探索派遣".localized)
         }
     }
 
