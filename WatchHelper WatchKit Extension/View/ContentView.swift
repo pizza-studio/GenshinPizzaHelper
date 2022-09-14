@@ -31,12 +31,17 @@ struct ContentView: View {
             } else {
                 List {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
-                        NavigationLink(destination: WatchAccountDetailView(userData: account.result, accountName: account.config.name, uid: account.config.uid)) {
-                            WatchGameInfoBlock(userData: account.result, accountName: account.config.name, uid: account.config.uid)
+                        if account.fetchComplete {
+                            NavigationLink(destination: WatchAccountDetailView(userData: account.result, accountName: account.config.name, uid: account.config.uid)) {
+                                WatchGameInfoBlock(userData: account.result, accountName: account.config.name, uid: account.config.uid)
+                            }
+                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .listRowBackground(Color.white.opacity(0))
+                        } else {
+                            ProgressView()
+                                .padding()
                         }
-                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                        .listRowBackground(Color.white.opacity(0))
                     }
                 }
                 .listStyle(.carousel)

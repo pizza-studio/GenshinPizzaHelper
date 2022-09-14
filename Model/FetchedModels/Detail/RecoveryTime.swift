@@ -24,7 +24,7 @@ struct RecoveryTime {
     func describeIntervalLong(finishedTextPlaceholder: String? = nil, unisStyle: DateComponentsFormatter.UnitsStyle = .brief) -> String {
         /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
         if let finishedTextPlaceholder = finishedTextPlaceholder {
-            guard second != 0 else { return finishedTextPlaceholder }
+            guard second != 0 else { return finishedTextPlaceholder.localized }
         }
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = unisStyle
@@ -41,7 +41,7 @@ struct RecoveryTime {
     func describeIntervalShort(finishedTextPlaceholder: String? = nil, unisStyle: DateComponentsFormatter.UnitsStyle = .brief, useEnglishStyle: Bool = false) -> String {
         /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
         if let finishedTextPlaceholder = finishedTextPlaceholder {
-            guard second != 0 else { return finishedTextPlaceholder }
+            guard second != 0 else { return finishedTextPlaceholder.localized }
         }
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = unisStyle
@@ -61,7 +61,7 @@ struct RecoveryTime {
     func completeTimePointFromNow(finishedTextPlaceholder: String? = nil) -> String {
         /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
         if let finishedTextPlaceholder = finishedTextPlaceholder {
-            guard second != 0 else { return finishedTextPlaceholder }
+            guard second != 0 else { return finishedTextPlaceholder.localized }
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -77,7 +77,7 @@ struct RecoveryTime {
     func completeTimePointFromNowShort(finishedTextPlaceholder: String? = nil) -> String {
         /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
         if let finishedTextPlaceholder = finishedTextPlaceholder {
-            guard second != 0 else { return finishedTextPlaceholder }
+            guard second != 0 else { return finishedTextPlaceholder.localized }
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
