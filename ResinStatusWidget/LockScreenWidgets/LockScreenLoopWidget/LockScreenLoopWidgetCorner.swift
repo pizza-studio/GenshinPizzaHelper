@@ -1,14 +1,14 @@
 //
-//  LockScreenHomeCoinWidgetCircular.swift
+//  LockScreenLoopWidgetCorner.swift
 //  GenshinPizzaHelper
 //
-//  Created by 戴藏龙 on 2022/9/11.
+//  Created by 戴藏龙 on 2022/9/14.
 //
 
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenLoopWidgetCircular: View {
+struct LockScreenLoopWidgetCorner: View {
     @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
     let result: FetchResult
@@ -16,13 +16,13 @@ struct LockScreenLoopWidgetCircular: View {
     var body: some View {
         switch LockScreenLoopWidgetType.autoChoose(result: result) {
         case .resin:
-            AlternativeLockScreenResinWidgetCircular(result: result)
+            LockScreenResinWidgetCorner(result: result)
         case .dailyTask:
-            LockScreenDailyTaskWidgetCircular(result: result)
+            LockScreenDailyTaskWidgetCorner(result: result)
         case .expedition:
-            LockScreenExpeditionWidgetCircular(result: result)
+            LockScreenExpeditionWidgetCorner(result: result)
         case .homeCoin:
-            LockScreenHomeCoinWidgetCircular(result: result)
+            LockScreenHomeCoinWidgetCorner(result: result)
         }
     }
 }

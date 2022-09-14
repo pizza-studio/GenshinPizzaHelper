@@ -18,7 +18,11 @@ struct LockScreenLoopWidget: Widget {
         }
         .configurationDisplayName("自动轮换")
         .description("自动展示你最需要的信息")
+        #if os(watchOS)
+        .supportedFamilies([.accessoryCircular, .accessoryCorner])
+        #else
         .supportedFamilies([.accessoryCircular])
+        #endif
     }
 }
 
@@ -30,6 +34,45 @@ struct LockScreenLoopWidgetView: View {
     var accountName: String? { entry.accountName }
 
     var body: some View {
-        LockScreenLoopWidgetCircular(result: result)
+        switch family {
+        #if os(watchOS)
+        case .accessoryCorner:
+            LockScreenLoopWidgetCorner(result: result)
+        #endif
+        case .accessoryCircular:
+            LockScreenLoopWidgetCircular(result: result)
+        default:
+            EmptyView()
+        }
+
+    }
+}
+
+enum LockScreenLoopWidgetType {
+    case resin
+    case expedition
+    case dailyTask
+    case homeCoin
+
+    static func autoChoose(result: FetchResult) -> LockScreenLoopWidgetType {
+        var isTimePast8PM: Bool {
+            Date() > Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
+        }
+        switch result {
+        case .success(let data):
+            if data.resinInfo.currentResin > 150 {
+                return .resin
+            } else if data.homeCoinInfo.recoveryTime.second < 60*60 {
+                return .homeCoin
+            } else if data.expeditionInfo.allCompleted {
+                return .expedition
+            } else if (!data.dailyTaskInfo.isTaskRewardReceived) && isTimePast8PM {
+                return .dailyTask
+            } else {
+                return .resin
+            }
+        case .failure(_) :
+            return .resin
+        }
     }
 }
