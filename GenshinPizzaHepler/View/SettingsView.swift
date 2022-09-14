@@ -93,8 +93,10 @@ private struct EditModeButton: View {
         } label: {
             if editMode.isEditing {
                 Text("完成")
+                    .font(.footnote)
             } else {
                 Text("编辑")
+                    .font(.footnote)
             }
         }
     }
