@@ -19,6 +19,7 @@ struct AccountDisplayView: View {
     @State var basicAccountInfo: BasicInfos? = nil
     @State var isStatusBarHide: Bool = false
     @State var fadeOutAnimation: Bool = true
+    @State var isExpeditionsAppeared: Bool = false
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
     fileprivate var gameInfoBlock: some View {
@@ -31,7 +32,7 @@ struct AccountDisplayView: View {
         GeometryReader { geo in
             ScrollView (showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    Spacer(minLength: 30)
+                    Spacer(minLength: 80)
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
                             VStack(alignment: .leading, spacing: 10) {
@@ -75,6 +76,11 @@ struct AccountDisplayView: View {
                                 .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
                         }
                         expeditionsView()
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                    isExpeditionsAppeared = true
+                                }
+                            }
                     }
                     Spacer()
                     if !isAccountInfoShow {
@@ -175,7 +181,7 @@ struct AccountDisplayView: View {
     func expeditionsView() -> some View {
         VStack(alignment: .leading, spacing: 15) {
             ForEach(detail.userData.expeditionInfo.expeditions, id: \.charactersEnglishName) { expedition in
-                InAppEachExpeditionView(expedition: expedition, useAsyncImage: true)
+                InAppEachExpeditionView(expedition: expedition, useAsyncImage: true, animatedMe: !isExpeditionsAppeared)
             }
         }
     }
@@ -370,6 +376,7 @@ private struct InAppEachExpeditionView: View {
     let viewConfig: WidgetViewConfiguration = .defaultConfig
     var useAsyncImage: Bool = false
     var animationDelay: Double = 0
+    let animatedMe: Bool
 
     @State var percentage: Double = 0.0
 
@@ -387,10 +394,13 @@ private struct InAppEachExpeditionView: View {
         }
         .foregroundColor(Color("textColor3"))
         .onAppear {
-            withAnimation(.interactiveSpring(response: pow(expedition.percentage, 1/2)*0.8, dampingFraction: 1, blendDuration: 0).delay(animationDelay)) {
+            if animatedMe {
+                withAnimation(.interactiveSpring(response: pow(expedition.percentage, 1/2)*0.8, dampingFraction: 1, blendDuration: 0).delay(animationDelay)) {
+                    percentage = expedition.percentage
+                }
+            } else {
                 percentage = expedition.percentage
             }
-
         }
 
 //        webView(url: expedition.avatarSideIconUrl)
