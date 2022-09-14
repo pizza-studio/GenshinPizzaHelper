@@ -220,6 +220,8 @@
 		EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EA6829DC28A2523800E57462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
 		EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
+		EA721E3C28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */; };
+		EA721E3D28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */; };
 		EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
 		EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
 		EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
@@ -434,13 +436,6 @@
 			remoteGlobalIDString = EA30F9A02886B49200AE7BEA;
 			remoteInfo = ResinStatusWidgetExtension;
 		};
-		EAE3FCB628CE3E4600174DA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA30F9A02886B49200AE7BEA;
-			remoteInfo = ResinStatusWidgetExtension;
-		};
 		EAE3FCB928CE3E7B00174DA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
@@ -621,6 +616,7 @@
 		EA5F4D1028B6274E00C95A7E /* MaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProviders.swift; sourceTree = "<group>"; };
 		EA6829DB28A2523800E57462 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetCorner.swift; sourceTree = "<group>"; };
 		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
 		EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
 		EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalAccounts.swift; sourceTree = "<group>"; };
@@ -1163,6 +1159,7 @@
 				EAD7F02228D016C40047A8F1 /* LockScreenLoopWidget.swift */,
 				EAD7F02128D016C40047A8F1 /* LockScreenLoopWidgetProvider.swift */,
 				EAD7F02028D016C40047A8F1 /* LockScreenLoopWidgetCircular.swift */,
+				EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */,
 			);
 			path = LockScreenLoopWidget;
 			sourceTree = "<group>";
@@ -1277,7 +1274,6 @@
 			);
 			dependencies = (
 				BF85D76928CE0AC8003F3479 /* PBXTargetDependency */,
-				EAE3FCB728CE3E4600174DA8 /* PBXTargetDependency */,
 				EAE3FCBA28CE3E7B00174DA8 /* PBXTargetDependency */,
 			);
 			name = WatchHelper;
@@ -1566,6 +1562,7 @@
 				EAB1110528CF8423009FDF07 /* LockScreenExpeditionWidgetProvider.swift in Sources */,
 				EAD7F02A28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
 				EAB1110228CF8423009FDF07 /* LockScreenExpeditionWidgetCircular.swift in Sources */,
+				EA721E3D28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */,
 				EAD7F02728D017D50047A8F1 /* LockScreenLoopWidgetProvider.swift in Sources */,
 				EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAB110EA28CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
@@ -1772,6 +1769,7 @@
 				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
+				EA721E3C28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */,
 				EAE5C5B728CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */,
 				BFFD823728A680E000616CE1 /* WebImageView.swift in Sources */,
 				EAE95C7128CDD52C00D975CB /* LockScreenResinWidgetInline.swift in Sources */,
@@ -1935,11 +1933,6 @@
 			isa = PBXTargetDependency;
 			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
 			targetProxy = EA30F9AD2886B49300AE7BEA /* PBXContainerItemProxy */;
-		};
-		EAE3FCB728CE3E4600174DA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
-			targetProxy = EAE3FCB628CE3E4600174DA8 /* PBXContainerItemProxy */;
 		};
 		EAE3FCBA28CE3E7B00174DA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

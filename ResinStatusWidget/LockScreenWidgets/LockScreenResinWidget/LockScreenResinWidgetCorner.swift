@@ -15,9 +15,13 @@ struct LockScreenResinWidgetCorner: View {
     var text: String {
         switch result {
         case .success(let data):
-            return "\(data.resinInfo.currentResin), \(data.resinInfo.recoveryTime.completeTimePointFromNowShort(finishedTextPlaceholder: "已回满"))"
+            if data.resinInfo.isFull {
+                return "\(data.resinInfo.currentResin), 已回满"
+            } else {
+                return "\(data.resinInfo.currentResin), \(data.resinInfo.recoveryTime.describeIntervalShort()), \(data.resinInfo.recoveryTime.completeTimePointFromNowShort())"
+            }
         case .failure(_):
-            return ""
+            return "原粹树脂".localized
         }
     }
 
@@ -25,7 +29,7 @@ struct LockScreenResinWidgetCorner: View {
         Image("icon.resin")
             .resizable()
             .scaledToFit()
-            .padding(6)
+            .padding(4)
             .widgetLabel(text)
     }
 }

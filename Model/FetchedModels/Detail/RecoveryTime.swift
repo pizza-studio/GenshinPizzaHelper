@@ -38,7 +38,7 @@ struct RecoveryTime {
 
         return formatter.string(from: TimeInterval(Double(second)))!
     }
-    func describeIntervalShort(finishedTextPlaceholder: String? = nil, unisStyle: DateComponentsFormatter.UnitsStyle = .brief) -> String {
+    func describeIntervalShort(finishedTextPlaceholder: String? = nil, unisStyle: DateComponentsFormatter.UnitsStyle = .brief, useEnglishStyle: Bool = false) -> String {
         /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
         if let finishedTextPlaceholder = finishedTextPlaceholder {
             guard second != 0 else { return finishedTextPlaceholder }
@@ -50,7 +50,11 @@ struct RecoveryTime {
         formatter.maximumUnitCount = 1
 
         formatter.calendar = Calendar.current
-        formatter.calendar!.locale = Locale(identifier: Locale.current.identifier)
+        if useEnglishStyle {
+            formatter.calendar!.locale = Locale(identifier: "en_US")
+        } else {
+            formatter.calendar!.locale = Locale(identifier: Locale.current.identifier)
+        }
 
         return formatter.string(from: TimeInterval(Double(second)))!
     }
@@ -76,8 +80,7 @@ struct RecoveryTime {
             guard second != 0 else { return finishedTextPlaceholder }
         }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
+        dateFormatter.dateFormat = "HH:mm"
         dateFormatter.locale = Locale(identifier: Locale.current.identifier)
 
         let date = Calendar.current.date(byAdding: .second, value: second, to: Date())!
