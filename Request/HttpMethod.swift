@@ -276,12 +276,12 @@ struct HttpMethod<T: Codable> {
                 let clientType: String
                 switch region {
                 case .cn:
-                    baseStr = "https://api-takumi-record.mihoyo.com/"
+                    baseStr = "https://api-takumi-record.mihoyo.com/game_record/app/"
                     appVersion = "2.11.1"
                     userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
                     clientType = "5"
                 case .global:
-                    baseStr = "https://api-os-takumi.mihoyo.com/"
+                    baseStr = "https://bbs-api-os.hoyoverse.com/game_record/app/"
                     appVersion = "2.9.1"
                     userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
                     clientType = "2"

@@ -189,7 +189,7 @@ extension API {
             }
         }
 
-        /// 获取基本信息
+        /// 获取数据总览信息
         /// - Parameters:
         ///     - region: 服务器地区
         ///     - serverID: 服务器ID
@@ -206,7 +206,7 @@ extension API {
             ) -> ()
         ) {
             // 请求类别
-            let urlStr = "game_record/app/genshin/api/index"
+            let urlStr = "genshin/api/index"
 
             if (uid == "") || (cookie == "") {
                 completion(.failure(.noFetchInfo))
