@@ -455,8 +455,8 @@
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
 "可使用" = "Available";
-"%@ 回满" = "Replenished at %@";
-"树脂已全部回满" = "Resin is fully replenished";
+"%@ 回满" = "Refilled at %@";
+"树脂已全部回满" = "Resin is fully capped";
 
 // Donate
 "特别鸣谢" = "Special Thanks";
@@ -498,6 +498,14 @@
 "每日委托完成情况" = "Daily Commission Status";
 "探索派遣完成情况" = "Expedition Status";
 "另一种样式的原粹树脂小组件" = "Original Resin Widget in another form";
-"" = "";
+
+// Watch
+"请等待帐号从iCloud同步" = "Please wait for the data to sync from iCloud";
+"的原粹树脂" = "'s Original Resin";
+"的智能轮换信息" = "'s Automatic Rotation";
+"的探索派遣" = "'s Expedition";
+"的每日委托" = "'s Daily Commission";
+"的综合信息" = "'s Comprehensive Infos";
+"的洞天宝钱" = "'s Realm Currency";
 "" = "";
 "" = "";
