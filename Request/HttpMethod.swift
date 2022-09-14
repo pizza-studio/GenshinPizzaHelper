@@ -266,6 +266,14 @@ struct HttpMethod<T: Codable> {
             return t + "," + r + "," + c
         }
 
+        func get_language_code() -> String {
+            var languageCode = Locale.current.languageCode ?? "en-us"
+            if languageCode == "zh" {
+                languageCode = "zh-cn"
+            }
+            return languageCode
+        }
+
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
 
@@ -276,12 +284,12 @@ struct HttpMethod<T: Codable> {
                 let clientType: String
                 switch region {
                 case .cn:
-                    baseStr = "https://api-takumi-record.mihoyo.com/"
+                    baseStr = "https://api-takumi-record.mihoyo.com/game_record/app/"
                     appVersion = "2.11.1"
                     userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
                     clientType = "5"
                 case .global:
-                    baseStr = "https://api-os-takumi.mihoyo.com/"
+                    baseStr = "https://bbs-api-os.hoyoverse.com/game_record/app/"
                     appVersion = "2.9.1"
                     userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
                     clientType = "2"
@@ -301,6 +309,7 @@ struct HttpMethod<T: Codable> {
                     "x-rpc-app_version": appVersion,
                     "User-Agent": userAgent,
                     "x-rpc-client_type": clientType,
+                    "x-rpc-language": get_language_code(),
                     "Referer": "https://webstatic.mihoyo.com/app/community-game-records/index.html?v=6",
                     "X-Requested-With": "com.mihoyo.hyperion",
                     "Origin": "https://webstatic.mihoyo.com",

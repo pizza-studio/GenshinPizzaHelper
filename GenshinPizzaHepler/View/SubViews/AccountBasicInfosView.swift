@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccountBasicInfosView: View {
     @Binding var basicAccountInfo: BasicInfos?
-    let is_zh_CN: Bool = Locale.current.identifier == "zh_CN"
+    let is_zh_CN: Bool = Locale.current.languageCode == "zh"
 
     var body: some View {
         if let basicAccountInfo = basicAccountInfo {
@@ -75,6 +75,9 @@ struct AccountBasicInfosView: View {
                     .padding(.top)
                     .padding(.bottom, 5)
             }
+            // 一段空白区域用于填充底部，垫高整体
+            Text("")
+                .frame(height: is_zh_CN ? 200 : 50)
         } else {
             HStack {
                 Spacer()
@@ -125,13 +128,17 @@ private struct WorldExplorationsViewAll: View {
         if #available(iOS 16, *) {
             Grid(horizontalSpacing: 20, verticalSpacing: 10) {
                 GridRow {
-                    ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                    ForEach(basicAccountInfo.worldExplorations.sorted {
+                        $0.id < $1.id
+                    }, id: \.id) { worldData in
                         WorldExplorationsView(data: worldData)
                             .frame(minWidth: 80)
                     }
                 }
                 GridRow {
-                    ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                    ForEach(basicAccountInfo.worldExplorations.sorted {
+                        $0.id < $1.id
+                    }, id: \.id) { worldData in
                         VStack(alignment: .center, spacing: 10) {
                             if let offerings = worldData.offerings {
                                 if worldData.id != 6 {  // 取消层岩地上的流明石的显示
@@ -146,7 +153,9 @@ private struct WorldExplorationsViewAll: View {
             }
         } else {
             HStack(alignment: .top) {
-                ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                ForEach(basicAccountInfo.worldExplorations.sorted {
+                    $0.id < $1.id
+                }, id: \.id) { worldData in
                     VStack(alignment: .center, spacing: 10) {
                         WorldExplorationsView(data: worldData)
                         if let offerings = worldData.offerings {
