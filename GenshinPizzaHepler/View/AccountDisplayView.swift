@@ -127,7 +127,7 @@ struct AccountDisplayView: View {
                     isAccountInfoShow = true
                     isStatusBarHide = true
                 }
-                if scrollOffset.y < 40 && isAccountInfoShow {
+                else if scrollOffset.y < 30 && isAccountInfoShow {
                     simpleTaptic(type: .medium)
                     isAccountInfoShow = false
                     isStatusBarHide = false
