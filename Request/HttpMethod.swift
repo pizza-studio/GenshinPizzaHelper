@@ -301,6 +301,7 @@ struct HttpMethod<T: Codable> {
                     "x-rpc-app_version": appVersion,
                     "User-Agent": userAgent,
                     "x-rpc-client_type": clientType,
+                    "x-rpc-language": Locale.current.languageCode ?? "en-us",
                     "Referer": "https://webstatic.mihoyo.com/app/community-game-records/index.html?v=6",
                     "X-Requested-With": "com.mihoyo.hyperion",
                     "Origin": "https://webstatic.mihoyo.com",

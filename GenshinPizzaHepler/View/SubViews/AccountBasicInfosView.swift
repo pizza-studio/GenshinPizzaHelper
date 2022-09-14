@@ -125,13 +125,17 @@ private struct WorldExplorationsViewAll: View {
         if #available(iOS 16, *) {
             Grid(horizontalSpacing: 20, verticalSpacing: 10) {
                 GridRow {
-                    ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                    ForEach(basicAccountInfo.worldExplorations.sorted {
+                        $0.id < $1.id
+                    }, id: \.id) { worldData in
                         WorldExplorationsView(data: worldData)
                             .frame(minWidth: 80)
                     }
                 }
                 GridRow {
-                    ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                    ForEach(basicAccountInfo.worldExplorations.sorted {
+                        $0.id < $1.id
+                    }, id: \.id) { worldData in
                         VStack(alignment: .center, spacing: 10) {
                             if let offerings = worldData.offerings {
                                 if worldData.id != 6 {  // 取消层岩地上的流明石的显示
@@ -146,7 +150,9 @@ private struct WorldExplorationsViewAll: View {
             }
         } else {
             HStack(alignment: .top) {
-                ForEach(basicAccountInfo.worldExplorations.reversed(), id: \.id) { worldData in
+                ForEach(basicAccountInfo.worldExplorations.sorted {
+                    $0.id < $1.id
+                }, id: \.id) { worldData in
                     VStack(alignment: .center, spacing: 10) {
                         WorldExplorationsView(data: worldData)
                         if let offerings = worldData.offerings {
