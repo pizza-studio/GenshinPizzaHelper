@@ -31,7 +31,7 @@ struct AccountDisplayView: View {
         GeometryReader { geo in
             ScrollView (showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    Spacer(minLength: 20)
+                    Spacer(minLength: 30)
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
                             VStack(alignment: .leading, spacing: 10) {
@@ -116,7 +116,6 @@ struct AccountDisplayView: View {
                         AccountBasicInfosView(basicAccountInfo: $basicAccountInfo)
                     }
                     .animation(.easeInOut)
-                    .padding(.horizontal)
                 }
             }
             .padding(.horizontal, 25)
@@ -130,7 +129,7 @@ struct AccountDisplayView: View {
                         isStatusBarHide = true
                     }
                 }
-                else if scrollOffset.y <= 0 && isAccountInfoShow {
+                else if scrollOffset.y < -10 && isAccountInfoShow {
                     simpleTaptic(type: .medium)
                     withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
                         isAccountInfoShow = false

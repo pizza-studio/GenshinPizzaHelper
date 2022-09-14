@@ -77,7 +77,7 @@ struct AccountBasicInfosView: View {
             }
             // 一段空白区域用于填充底部，垫高整体
             Text("")
-                .frame(height: is_zh_CN ? 200 : 50)
+                .frame(height: 50)
         } else {
             HStack {
                 Spacer()
