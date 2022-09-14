@@ -37,7 +37,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
             Image("icon.resin")
                 .resizable()
                 .scaledToFit()
-                .padding(6)
+                .padding(4)
                 .widgetLabel {
                     Gauge(value: Double(data.resinInfo.currentResin), in: 0...Double(data.resinInfo.maxResin)) {
                         Text("原粹树脂")

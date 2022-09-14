@@ -26,7 +26,7 @@ struct LockScreenExpeditionWidgetCorner: View {
         Image("icon.expedition")
             .resizable()
             .scaledToFit()
-            .padding(4.5)
+            .padding(3.5)
             .widgetLabel(text)
     }
 }

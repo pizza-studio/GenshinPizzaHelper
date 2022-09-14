@@ -19,7 +19,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
             Image("icon.dailyTask")
                 .resizable()
                 .scaledToFit()
-                .padding(4.5)
+                .padding(3.5)
                 .widgetLabel {
                     Gauge(value: Double(data.dailyTaskInfo.finishedTaskNum), in: 0...Double(data.dailyTaskInfo.totalTaskNum)) {
                         Text("每日任务")
