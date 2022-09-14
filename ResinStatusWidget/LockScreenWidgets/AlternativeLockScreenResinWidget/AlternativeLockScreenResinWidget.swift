@@ -16,8 +16,8 @@ struct AlternativeLockScreenResinWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: AlternativeLockScreenResinWidgetProvider()) { entry in
             AlternativeLockScreenResinWidgetView(entry: entry)
         }
-        .configurationDisplayName("原萃树脂")
-        .description("另一种样式的原萃树脂小组件")
+        .configurationDisplayName("原粹树脂")
+        .description("另一种样式的原粹树脂小组件")
         .supportedFamilies([.accessoryCircular])
     }
 }

@@ -470,6 +470,7 @@
 
 // MARK: - 2.3
 // Account Basic Info Detail
+"上滑查看更多基本信息" = "Swipe up to show more";
 "数据总览" = "General Datas";
 "活跃天数" = "Activated Days";
 "成就达成" = "Achievements";
@@ -486,7 +487,6 @@
 "雷神瞳" = "Electroculus";
 "草神瞳" = "Dendroculus";
 "世界探索" = "World Explorations";
-"" = "";
 "" = "";
 "" = "";
 "" = "";
