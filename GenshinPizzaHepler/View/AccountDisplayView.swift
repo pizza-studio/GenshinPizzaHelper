@@ -31,7 +31,7 @@ struct AccountDisplayView: View {
         GeometryReader { geo in
             ScrollView (showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    Spacer()
+                    Spacer(minLength: 20)
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
                             VStack(alignment: .leading, spacing: 10) {
@@ -102,9 +102,10 @@ struct AccountDisplayView: View {
                         }
                     }
                 }
-                .frame(height: geo.size.height)
+                .shouldTakeAllVerticalSpace(!isAccountInfoShow, height: geo.size.height, animation: animation)
                 .readingScrollView(from: "scroll", into: $scrollOffset)
                 if isAccountInfoShow {
+                    Spacer(minLength: 40)
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
                             Image(systemName: "person.fill")
@@ -122,15 +123,19 @@ struct AccountDisplayView: View {
             .coordinateSpace(name: "scroll")
             .onChange(of: scrollOffset) { new in
                 print("Offset: \(scrollOffset.y)")
-                if scrollOffset.y > 80 && !isAccountInfoShow {
+                if scrollOffset.y > 0 && !isAccountInfoShow {
                     simpleTaptic(type: .medium)
-                    isAccountInfoShow = true
-                    isStatusBarHide = true
+                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                        isAccountInfoShow = true
+                        isStatusBarHide = true
+                    }
                 }
-                if scrollOffset.y < 40 && isAccountInfoShow {
+                if scrollOffset.y < -50 && isAccountInfoShow {
                     simpleTaptic(type: .medium)
-                    isAccountInfoShow = false
-                    isStatusBarHide = false
+                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                        isAccountInfoShow = false
+                        isStatusBarHide = false
+                    }
                 }
             }
         }
@@ -344,6 +349,19 @@ extension View {
             return AnyView(self.overlay(.ultraThinMaterial).preferredColorScheme(.dark))
         } else {
             return AnyView(self.blur(radius: 10))
+        }
+    }
+    
+    func shouldTakeAllVerticalSpace(_ shouldTake: Bool, height: CGFloat, animation: Namespace.ID) -> some View {
+        Group {
+            if shouldTake {
+                self
+                    .matchedGeometryEffect(id: "account resin infos", in: animation)
+                    .frame(height: height)
+            } else {
+                self
+                    .matchedGeometryEffect(id: "account resin infos", in: animation)
+            }
         }
     }
 }
