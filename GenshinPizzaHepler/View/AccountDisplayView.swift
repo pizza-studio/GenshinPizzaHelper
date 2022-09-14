@@ -19,6 +19,7 @@ struct AccountDisplayView: View {
     @State var basicAccountInfo: BasicInfos? = nil
     @State var isStatusBarHide: Bool = false
     @State var fadeOutAnimation: Bool = true
+    @State var isExpeditionsAppeared: Bool = false
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
     fileprivate var gameInfoBlock: some View {
@@ -31,7 +32,7 @@ struct AccountDisplayView: View {
         GeometryReader { geo in
             ScrollView (showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    Spacer()
+                    Spacer(minLength: 80)
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
                             VStack(alignment: .leading, spacing: 10) {
@@ -75,6 +76,11 @@ struct AccountDisplayView: View {
                                 .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
                         }
                         expeditionsView()
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                    isExpeditionsAppeared = true
+                                }
+                            }
                     }
                     Spacer()
                     if !isAccountInfoShow {
@@ -102,9 +108,10 @@ struct AccountDisplayView: View {
                         }
                     }
                 }
-                .frame(height: geo.size.height)
+                .shouldTakeAllVerticalSpace(!isAccountInfoShow, height: geo.size.height, animation: animation)
                 .readingScrollView(from: "scroll", into: $scrollOffset)
                 if isAccountInfoShow {
+                    Spacer(minLength: 40)
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
                             Image(systemName: "person.fill")
@@ -115,22 +122,25 @@ struct AccountDisplayView: View {
                         AccountBasicInfosView(basicAccountInfo: $basicAccountInfo)
                     }
                     .animation(.easeInOut)
-                    .padding(.horizontal)
                 }
             }
             .padding(.horizontal, 25)
             .coordinateSpace(name: "scroll")
             .onChange(of: scrollOffset) { new in
                 print("Offset: \(scrollOffset.y)")
-                if scrollOffset.y > 80 && !isAccountInfoShow {
+                if scrollOffset.y > 0 && !isAccountInfoShow {
                     simpleTaptic(type: .medium)
-                    isAccountInfoShow = true
-                    isStatusBarHide = true
+                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                        isAccountInfoShow = true
+                        isStatusBarHide = true
+                    }
                 }
-                if scrollOffset.y < 40 && isAccountInfoShow {
+                else if scrollOffset.y < -10 && isAccountInfoShow {
                     simpleTaptic(type: .medium)
-                    isAccountInfoShow = false
-                    isStatusBarHide = false
+                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                        isAccountInfoShow = false
+                        isStatusBarHide = false
+                    }
                 }
             }
         }
@@ -171,7 +181,7 @@ struct AccountDisplayView: View {
     func expeditionsView() -> some View {
         VStack(alignment: .leading, spacing: 15) {
             ForEach(detail.userData.expeditionInfo.expeditions, id: \.charactersEnglishName) { expedition in
-                InAppEachExpeditionView(expedition: expedition, useAsyncImage: true)
+                InAppEachExpeditionView(expedition: expedition, useAsyncImage: true, animatedMe: !isExpeditionsAppeared)
             }
         }
     }
@@ -346,6 +356,19 @@ extension View {
             return AnyView(self.blur(radius: 10))
         }
     }
+    
+    func shouldTakeAllVerticalSpace(_ shouldTake: Bool, height: CGFloat, animation: Namespace.ID) -> some View {
+        Group {
+            if shouldTake {
+                self
+                    .matchedGeometryEffect(id: "account resin infos", in: animation)
+                    .frame(height: height)
+            } else {
+                self
+                    .matchedGeometryEffect(id: "account resin infos", in: animation)
+            }
+        }
+    }
 }
 
 private struct InAppEachExpeditionView: View {
@@ -353,6 +376,7 @@ private struct InAppEachExpeditionView: View {
     let viewConfig: WidgetViewConfiguration = .defaultConfig
     var useAsyncImage: Bool = false
     var animationDelay: Double = 0
+    let animatedMe: Bool
 
     @State var percentage: Double = 0.0
 
@@ -370,10 +394,13 @@ private struct InAppEachExpeditionView: View {
         }
         .foregroundColor(Color("textColor3"))
         .onAppear {
-            withAnimation(.interactiveSpring(response: pow(expedition.percentage, 1/2)*0.8, dampingFraction: 1, blendDuration: 0).delay(animationDelay)) {
+            if animatedMe {
+                withAnimation(.interactiveSpring(response: pow(expedition.percentage, 1/2)*0.8, dampingFraction: 1, blendDuration: 0).delay(animationDelay)) {
+                    percentage = expedition.percentage
+                }
+            } else {
                 percentage = expedition.percentage
             }
-
         }
 
 //        webView(url: expedition.avatarSideIconUrl)

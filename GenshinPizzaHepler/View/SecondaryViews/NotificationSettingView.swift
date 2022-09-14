@@ -187,7 +187,6 @@ struct IgnoreNotificationAccountView: View {
     @EnvironmentObject var viewModel: ViewModel
     var configs: [AccountConfiguration] { viewModel.accounts.map { $0.config } }
     
-    // TODO: IGNORE NOTIFICATION ACCOUNT VIEW
     @AppStorage("notificationIgnoreUidsData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var data: Data = try! JSONEncoder().encode(Array<String>())
     var ignoreUids: Binding<[String]> {
         .init {
