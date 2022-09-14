@@ -20,6 +20,7 @@ struct AccountDisplayView: View {
     @State var isStatusBarHide: Bool = false
     @State var fadeOutAnimation: Bool = true
     @State var isExpeditionsAppeared: Bool = false
+    @State var isAnimationLocked: Bool = false
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
     fileprivate var gameInfoBlock: some View {
@@ -128,18 +129,26 @@ struct AccountDisplayView: View {
             .coordinateSpace(name: "scroll")
             .onChange(of: scrollOffset) { new in
                 print("Offset: \(scrollOffset.y)")
-                if scrollOffset.y > 0 && !isAccountInfoShow {
+                if scrollOffset.y > 20 && !isAccountInfoShow && !isAnimationLocked {
                     simpleTaptic(type: .medium)
                     withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
                         isAccountInfoShow = true
                         isStatusBarHide = true
+                        isAnimationLocked = true
+                        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                            isAnimationLocked = false
+                        }
                     }
                 }
-                else if scrollOffset.y < -10 && isAccountInfoShow {
+                else if scrollOffset.y < -20 && isAccountInfoShow && !isAnimationLocked {
                     simpleTaptic(type: .medium)
                     withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
                         isAccountInfoShow = false
                         isStatusBarHide = false
+                        isAnimationLocked = true
+                        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                            isAnimationLocked = false
+                        }
                     }
                 }
             }
