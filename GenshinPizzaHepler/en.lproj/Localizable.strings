@@ -70,8 +70,8 @@
 "请先添加帐号" = "Add an Account";
 
 // Game Info block
-"%@\n%@ 回满" = "Refilled in %@\n%@";
-"0小时0分钟\n树脂已全部回满" = "0hr 0min\nResin is fully capped";
+"%@\n%@ 回满" = "Full in %@\n%@";
+"0小时0分钟\n树脂已全部回满" = "0hr 0min\nResin is full";
 "%lld天" = "%lldday";
 "%lld小时" = "%lldhr";
 "%lld分钟" = "%lldmin";
@@ -509,3 +509,17 @@
 "的洞天宝钱" = "'s Realm Currency";
 "已填满" = "Refilled";
 "%lld, 已回满" = "%lld, Done";
+
+// Namecards
+"提纳里・沐露" = "Tighnari: Dew-Kissed";
+"柯莱・豹蔚" = "Collei: Good Virtue";
+"多莉・魔灯" = "Dori: Jinni";
+"纪行・深林" = "Travel Notes: Woodlands";
+"成就・漫行" = "Achievement: Roaming";
+"成就・逢缘" = "Achievement: Fated Encounter";
+"须弥・瑶林" = "Sumeru: Shimmering Woods";
+"须弥・照览" = "Sumeru: Observance";
+"须弥・正明" = "Sumeru: Unsullied";
+"" = "";
+"" = "";
+"" = "";
