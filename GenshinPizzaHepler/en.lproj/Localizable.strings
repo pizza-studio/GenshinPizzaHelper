@@ -59,7 +59,7 @@
 "未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
 "尚未完成帐号设置" = "Account configuration is not finished";
 "添加账号前…" = "Before adding your account...";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure you have opened and can access \"Real-Time Notes\" in HoYoLAB App.";
+"请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure your \"Real-Time Notes\" is accessible";
 "好" = "OK";
 "提示" = "Tips";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nSign in via Google, Facebook or Twitter is not available, please sign in with your username & password.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. "; // TODO: French
@@ -70,7 +70,7 @@
 "请先添加帐号" = "Add an Account";
 
 // Game Info block
-"%@\n%@ 回满" = "Replenished in %@\n%@";
+"%@\n%@ 回满" = "Refilled in %@\n%@";
 "0小时0分钟\n树脂已全部回满" = "0hr 0min\nResin is fully capped";
 "%lld天" = "%lldday";
 "%lld小时" = "%lldhr";
