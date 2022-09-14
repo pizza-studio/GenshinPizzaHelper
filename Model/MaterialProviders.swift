@@ -214,7 +214,9 @@ enum MaterialWeekday {
     case sunday
 
     static func today() -> Self {
-        let weekdayNum = Calendar.current.dateComponents([.weekday], from: Date()).weekday!
+        let isTimePast4am: Bool = Date() > Calendar.current.date(bySettingHour: 4, minute: 0, second: 0, of: Date())!
+        let todayWeekDayNum = Calendar.current.dateComponents([.weekday], from: Date()).weekday!
+        let weekdayNum = isTimePast4am ? todayWeekDayNum : (todayWeekDayNum - 1)
         switch weekdayNum {
         case 1:
             return .sunday
@@ -222,7 +224,7 @@ enum MaterialWeekday {
             return .mondayAndThursday
         case 3, 6:
             return .tuesdayAndFriday
-        case 4, 7:
+        case 4, 7, 0:
             return .wednesdayAndSaturday
         default:
             return .sunday
