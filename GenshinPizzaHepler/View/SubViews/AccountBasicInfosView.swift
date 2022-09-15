@@ -30,7 +30,7 @@ struct AccountBasicInfosView: View {
                             InfoPreviewer(title: "解锁锚点", content: "\(basicAccountInfo.stats.wayPointNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "解锁秘境", content: "\(basicAccountInfo.stats.domainNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "精致宝箱", content: "\(basicAccountInfo.stats.exquisiteChestNumber)", contentStyle: .capsule)
-                            InfoPreviewer(title: "华丽宝箱", content: "\(basicAccountInfo.stats.preciousChestNumber)", contentStyle: .capsule)
+                            InfoPreviewer(title: "华丽宝箱", content: "\(basicAccountInfo.stats.luxuriousChestNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "岩神瞳", content: "\(basicAccountInfo.stats.geoculusNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "草神瞳", content: "\(basicAccountInfo.stats.dendroculusNumber)", contentStyle: .capsule)
                         }
@@ -49,7 +49,7 @@ struct AccountBasicInfosView: View {
                             InfoPreviewer(title: "普通宝箱", content: "\(basicAccountInfo.stats.commonChestNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "珍贵宝箱", content: "\(basicAccountInfo.stats.preciousChestNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "精致宝箱", content: "\(basicAccountInfo.stats.exquisiteChestNumber)", contentStyle: .capsule)
-                            InfoPreviewer(title: "华丽宝箱", content: "\(basicAccountInfo.stats.preciousChestNumber)", contentStyle: .capsule)
+                            InfoPreviewer(title: "华丽宝箱", content: "\(basicAccountInfo.stats.luxuriousChestNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "风神瞳", content: "\(basicAccountInfo.stats.anemoculusNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "雷神瞳", content: "\(basicAccountInfo.stats.electroculusNumber)", contentStyle: .capsule)
                             InfoPreviewer(title: "岩神瞳", content: "\(basicAccountInfo.stats.geoculusNumber)", contentStyle: .capsule)
