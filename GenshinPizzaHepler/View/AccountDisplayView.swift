@@ -121,6 +121,11 @@ struct AccountDisplayView: View {
                         .font(.headline)
                         .foregroundColor(Color("textColor3"))
                         AccountBasicInfosView(basicAccountInfo: $basicAccountInfo)
+                            .onAppear {
+                                if basicAccountInfo == nil {
+                                    fetchSummaryData()
+                                }
+                            }
                     }
                     .animation(.easeInOut)
                 }
@@ -166,16 +171,7 @@ struct AccountDisplayView: View {
         }
         .statusBarHidden(isStatusBarHide)
         .onAppear {
-            DispatchQueue.global(qos: .userInteractive).async {
-                API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
-                    switch result {
-                    case .success(let data) :
-                        basicAccountInfo = data
-                    case .failure(_):
-                        break
-                    }
-                }
-            }
+            fetchSummaryData()
         }
     }
 
@@ -190,6 +186,19 @@ struct AccountDisplayView: View {
         withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
             simpleTaptic(type: .light)
             detail.show.toggle()
+        }
+    }
+
+    private func fetchSummaryData() -> Void {
+        DispatchQueue.global(qos: .userInteractive).async {
+            API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
+                switch result {
+                case .success(let data) :
+                    basicAccountInfo = data
+                case .failure(_):
+                    break
+                }
+            }
         }
     }
 
