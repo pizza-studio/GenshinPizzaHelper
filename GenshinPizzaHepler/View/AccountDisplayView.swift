@@ -166,7 +166,7 @@ struct AccountDisplayView: View {
         }
         .statusBarHidden(isStatusBarHide)
         .onAppear {
-            DispatchQueue.global().async {
+            DispatchQueue.global(qos: .userInteractive).async {
                 API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
                     switch result {
                     case .success(let data) :
@@ -180,6 +180,13 @@ struct AccountDisplayView: View {
     }
 
     private func closeView() -> Void {
+        DispatchQueue.main.async {
+            // 复位更多信息展示页面
+            basicAccountInfo = nil
+            isAccountInfoShow = false
+            isStatusBarHide = false
+            scrollOffset = .zero
+        }
         withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
             simpleTaptic(type: .light)
             detail.show.toggle()
