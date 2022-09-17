@@ -62,7 +62,7 @@
 "请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Verifier que vous avez ouvert et activer \"Les donnés en temps réel\" dans HoYoLAB.";
 "好" = "OK";
 "提示" = "Conseils";
-"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Cliquer sur \"Compris\" après avoir fini de vous connecter à HoYoLAB dans le page web suivant.\nVos informations de compte vont être stocké seulement dans l'appareil local et dans votre iCloud privé, et utilisé seuleument pour obtenir les données de Genshin Impact nécessaire à HoYoLAB. ";
+"请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Cliquer sur \"Compris\" après avoir fini de vous connecter à HoYoLAB dans le page web suivant.\nLa Connection via Google, Facebook et Twitter à HoYoLAB n'est pas supporté, merci d'utiliser compte et mot de passe pour vous connecter\nVos informations de compte vont être stocké seulement dans l'appareil local et dans votre iCloud privé, et utilisé seuleument pour obtenir les données de Genshin Impact nécessaire à HoYoLAB. ";
 "自定义帐号名" = "Nom de Compte Personalisé";
 "请选择帐号" = "Choisir Votre Compte";
 "查看帐号详情" = "Détails du Compte";
@@ -215,27 +215,27 @@
 "诺艾尔・守护" = "Noelle: Protection";
 "凯亚・孔雀" = "Kaeya: Pavo Ocellus";
 "成就・壶歌" = "Succès: Heure du thé";
-"璃月・千帆" = "Liyue: A Thousand Ships";
-"庆典・妙算" = "Celebration: Wondrous Calculation";
-"庆典・灯昼" = "Celebration: Lantern-Light";
-"成就・殊技" = "Achievement: Virtuoso";
-"一斗・鬼颜" = "Itto: Oni Face";
-"庆典・盛宴" = "Celebration: Feast";
-"久岐忍・络" = "Kuki Shinobu: Net";
-"蒙德・英名" = "Mondstadt: Hero's Fame";
-"稻妻・神樱" = "Inazuma: Sacred Sakura";
-"钟离・天星" = "Zhongli: Planet Befall";
-"提纳里·沐露" = "Tighnari: Dew-Kissed";
+"璃月・千帆" = "Liyue: Navires";
+"庆典・妙算" = "Célébration： Ingéniosité";
+"庆典・灯昼" = "Célébration： Lanternes";
+"成就・殊技" = "Succès： Virtuose";
+"一斗・鬼颜" = "Itto: Visage d'Oni";
+"庆典・盛宴" = "Célébration： Festin";
+"久岐忍・络" = "Kuki Shinobu: Tissage";
+"蒙德・英名" = "Mondstadt: Célébrité";
+"稻妻・神樱" = "Inazuma: Cerisier sacré";
+"钟离・天星" = "Zhongli: Chute de météore";
+"提纳里·沐露" = "Tighnari:  Baigné de rosée";
 
 // Background colors
-"★灰" = "★ Gray";
-"★★绿" = "★★ Green";
-"★★★蓝" = "★★★ Blue";
-"★★★★紫" = "★★★★ Purple";
-"★★★★★红" = "★★★★★ Red";
-"★★★★★金" = "★★★★★ Gold";
+"★灰" = "★ Gris";
+"★★绿" = "★★ Vert";
+"★★★蓝" = "★★★ Bleu";
+"★★★★紫" = "★★★★ Violet";
+"★★★★★红" = "★★★★★ Rouge";
+"★★★★★金" = "★★★★★ Or";
 
-"纠缠之缘" = "Intertwined Fate";
+"纠缠之缘" = "Pierre de la fatalité";
 
 // Elements
 "火元素" = "Pyro";
@@ -247,36 +247,36 @@
 "岩元素" = "Geo";
 
 // Widget
-"原神状态" = "Genshin Status";
-"已全部完成" = "All done";
-"%lld个已完成" = "%lld done";
-"（未领取）" = " (Not received)";
-"（可使用）" = "Available";
+"原神状态" = "Status de Genshin";
+"已全部完成" = "Tout Terminées";
+"%lld个已完成" = "%lld fini";
+"（未领取）" = " (Non Récupéré)";
+"（可使用）" = "Disponible";
 
 // Used for copy and paste to edit this file
-"查询树脂恢复状态" = "Check your resin recovery status";
+"查询树脂恢复状态" = "Vérifier le niveau de Récupération des résines";
 
 // Notification
-"打开「原神」" = "Open Genshin Impact";
-"通知设置" = "Notification Settings";
-"「%@」原粹树脂提醒" = "%@'s Original Resin Notification";
-"「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ has %lld original resins now, which will be full at %@.";
-"「%@」洞天宝钱提醒" = "%@'s Realm Currency Notification";
-"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@'s Tubby has %lld realm currency now, which will be full at %@.";
-"「%@」探索派遣提醒" = "%@'s Expedition Notification";
-"「%@」的探索派遣已全部完成。" = "All expeditions of %@ are finished.";
-"「%@」周本折扣提醒" = "%@'s Weekly Bosses";
-"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "There are still 3 weekly bosses resin discounts remaining for %@.";
-"「%@」参量质变仪提醒" = "%@'s Parametric Transformer Notification";
-"「%@」的参量质变仪已经可以使用。" = "%@'s Parametric Transformer is available now.";
-"「%@」每日委托提醒" = "%@'s Daily Commission Notification";
-"「%@」的每日委托还剩余%lld个未完成。" = "%@ still has %lld unfinished daily commissions.";
-"「%@」的每日委托奖励还未领取。" = "%@'s bonus reward is not received.";
-"%@的探索派遣已完成。" = "%@'s expedition is finished.";
+"打开「原神」" = "Ouvrir Genshin Impact";
+"通知设置" = "Réglages Notification";
+"「%@」原粹树脂提醒" = "Notification de %@ pour la Résine Originelle";
+"「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ a maintenant %lld de Résines Originelles, qui va être pleine à %@.";
+"「%@」洞天宝钱提醒" = "Notification de %@ pour les Pièces du Royaume";
+"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@'s a maintenant %lld Pièces du Royaume, qui va être pleine à %@.";
+"「%@」探索派遣提醒" = "Notification de %@ pour les Expedition";
+"「%@」的探索派遣已全部完成。" = "L'expeditions de %@ est complétée.";
+"「%@」周本折扣提醒" = "Boss Hebdomadaire de %@";
+"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "Il reste 3 réduction de résine pour les Boss Hebdomadaires pour %@.";
+"「%@」参量质变仪提醒" = "Notification de %@ pour le transformeur paramétrique";
+"「%@」的参量质变仪已经可以使用。" = "Le transformeur paramétrique de %@ est disponible.";
+"「%@」每日委托提醒" = "Notification de %@n pour les Quêtes Quotidiennes";
+"「%@」的每日委托还剩余%lld个未完成。" = "%@ a encore %lld Quête(s) Quotidienne(s) non Terminée(s).";
+"「%@」的每日委托奖励还未领取。" = "Les récompenses Quotidiennes de %@ n'ont pas été Récupéré.";
+"%@的探索派遣已完成。" = "Les expeditions de %@ sont Terminées.";
 
 // Homeview
-"同意" = "Agree";
-"拒绝" = "Disagree";
+"同意" = "Accepter";
+"拒绝" = "Refuser";
 
 // Daily materials
 "「高塔孤王」" = "Decarabian";
@@ -291,25 +291,25 @@
 "「谧林涓露」" = "Forest Dew";
 "「绿洲花园」" = "Oasis Garden";
 "「烈日威权」" = "Scorching Might";
-"「自由」" = "Freedom";
-"「抗争」" = "Resistance";
-"「诗文」" = "Ballad";
-"「繁荣」" = "Prosperity";
+"「自由」" = "Liberté";
+"「抗争」" = "Résistance";
+"「诗文」" = "Poésie";
+"「繁荣」" = "Prospérité";
 "「勤劳」" = "Diligence";
-"「黄金」" = "Gold";
-"「浮世」" = "Transience";
-"「风雅」" = "Elegance";
-"「天光」" = "Light";
-"「诤言」" = "Admonition";
-"「巧思」" = "Ingenuity";
-"「笃行」" = "Praxis";
+"「黄金」" = "Or";
+"「浮世」" = "Ephémère";
+"「风雅」" = "Elégance";
+"「天光」" = "lumière";
+"「诤言」" = "Admonaistration";
+"「巧思」" = "Ingénuité";
+"「笃行」" = "Usage";
 
-"今日材料" = "Today's Materials";
-"今日材料：星期日所有材料均可获取" = "Today's Materials: All avaliable in Sunday";
+"今日材料" = "Les matériaux du jour";
+"今日材料：星期日所有材料均可获取" = "Les matériaux du jour: Tout disponible le Dimanche";
 
 // large size widget
-"已完成" = "Finished";
-"（星期日所有材料均可获取）" = "(All materials are avaliable in Sunday)";
+"已完成" = "Terminée";
+"（星期日所有材料均可获取）" = "(Tout les matériaux sont disponible le Dimanche)";
 
 // Char's name
 "空" = "Aether";
@@ -377,46 +377,45 @@
 "（未知角色）" = "(unknown)";
 
 // Errors description
-"请先刷新以获取树脂状态" = "Please refresh to get genshin status";
-"请长按小组件选择帐号" = "Please long press the widget to config your account";
-"错误码%lld：Cookie失效，请重新登录" = "Error code %lld: Cookie is invalid, please login HoYoLab again.";
-"错误码%lld：米游社帐号与UID不匹配" = "Error code %lld: HoYoLAB account does not match UID";
-"错误码%lld：UID有误" = "Error code %lld: invalid UID";
-"请前往米游社（或Hoyolab）打开旅行便笺功能" = "Please open Real-Time Notes in HoYoLAB app first";
-"解码错误：请检查网络环境" = "Decode Error: please check your network status";
-"网络错误" = "Network Error";
-"未获取到登录信息，请重试" = "Failed to fetch your login infos, please re-login HoYoLAB";
-"未知错误码：%@" = "Unknown Error %@";
+"请先刷新以获取树脂状态" = "Merci de réactualiser pour obtenir les informations genshin";
+"请长按小组件选择帐号" = "Merci d'apuyer longement le widget pour choisir votre compte";
+"错误码%lld：Cookie失效，请重新登录" = "Code d'erreur %lld: Cookie invalide, merci de vous reconnecter à HoYoLab.";
+"错误码%lld：米游社帐号与UID不匹配" = "Code d'erreur %lld: Co,pte HoYoLAB ne correspond pas à l'UID";
+"错误码%lld：UID有误" = "Code d'erreur %lld: UID invalide";
+"请前往米游社（或Hoyolab）打开旅行便笺功能" = "Merci d'activer d'abord Les données en temps réel dans HoYoLAB ";
+"解码错误：请检查网络环境" = "Decode Error: Merci de Vérifier votre réseau";
+"网络错误" = "Erreur du réseau";
+"未获取到登录信息，请重试" = "Nous n'avons pas pu obtenir les informations de Connection, merci de réessayer";
+"未知错误码：%@" = "Erreur Inconnu %@";
 
-"无返回数据" = "No Response Data";
-"无响应" = "No Response";
-"未知错误" = "Unknown Error";
+"无返回数据" = "Pas de réponses du serveur";
+"无响应" = "Pas de réponses";
+"未知错误" = "Erreur Inconnu";
 
 // Donate page
-"请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。" = "Please note that the following is all no-cost donations and we will not provide you with any additional services. \nWe promise that your donation will only be used to cover the direct costs of the App development process, including but not limited to the annual fee for Apple Developer Program, etc. Any amount donated beyond this cost will be re-donated in full. Thank you for your support.";
-"您可以长按保存图片到对应App中扫描" = "You can long press to save the image for scanning";
-"通过微信或支付宝支付" = "Pay via WeChat or Alipay";
-"保存微信支付图片" = "Save WeChat payment QR code";
-"保存支付宝图片" = "Save Alipay QR code";
-"捐赠项目" = "Optional Donations";
-"支付" = "PAY";
+"请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。" = "Merci de savoir que le donation est le transfert volontaire et immédiat d'un bien d'une personne à une autre sans contrepartie. \nNous promettons que vos donations vont être utilisé seulement pour couvrir le coût direct du developpement, incluant mais non seulement le frais annuel du Apple Developer Program, etc. Les montants en trop seront redistribué à d'autres associations dans le besoin. Merci de votre soutien.";
+"您可以长按保存图片到对应App中扫描" = "Vous pouvez appuyer longement pour sauvegarder l'image puis le scanner";
+"通过微信或支付宝支付" = "Payement par WeChat ou Alipay";
+"保存微信支付图片" = "Sauvegarder WeChat payment QR code";
+"保存支付宝图片" = "Sauvegarder Alipay QR code";
+"捐赠项目" = "Donations Optionelles";
+"支付" = "PAYER";
 
 // Contact & About
-"开发者与联系方式" = "Developers & Contact Infos";
+"开发者与联系方式" = "Developeurs & Infos Contact ";
 "「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。" = "Genshin Pizza Helper is not affiliated with miHoYo Co., Ltd. and its subsidiaries.";
 "原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。" = "Genshin Impact, game content and materials are trademarks and copyrights of HoYoverse.";
 "用户交流群" = "User Communication Groups";
-"QQ群1: 813912474" = "QQ Group 1: 813912474";
-"QQ群2: 829996515" = "QQ Group 2: 829996515";
-"Discord频道: Genshin Pizza Helper" = "Join Discord Server";
-"个人主页" = "Personal Homepage";
-"Bilibili主页" = "Bilibili Homepage";
-"GitHub主页" = "GitHub Homepage";
+"QQ群1: 813912474" = "Groupe QQ 1: 813912474";
+"QQ群2: 829996515" = "Groupe QQ 2: 829996515";
+"Discord频道: Genshin Pizza Helper" = "Serveur Discord";
+"个人主页" = "Page Personelle";
+"Bilibili主页" = "Page Bilibili";
+"GitHub主页" = "Page GitHub";
 "水里的碳酸钙" = "Bill Haku";
 
 // MARK: - 2.1
-// Home View
-"所有材料均可获取" = "All farmable on Sunday";
+"所有材料均可获取" = "Tous les matériaux peuvent être obtenu le Dimanche";
 
 // Proxy
 "代理设置" = "Proxy Settings";
