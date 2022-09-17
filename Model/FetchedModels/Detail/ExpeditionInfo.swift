@@ -49,7 +49,19 @@ struct ExpeditionInfo {
     }
     var allCompletedPercentage: Double { (maxTotalTime - Double(allCompleteTime.second)) / maxTotalTime }
 
-    
+    var nextCompleteExpeditionIgnoreFinished: Expedition? {
+        expeditions.filter({ expedition in
+            !expedition.isComplete
+        }).min {
+            $0.recoveryTime.second < $1.recoveryTime.second
+        }
+    }
+    var nextCompleteTimeIgnoreFinished: RecoveryTime {
+        RecoveryTime(second: nextCompleteExpedition?.recoveryTime.second ?? 0)
+    }
+    var nextCompletePercentageIgnoreFinished: Double {
+        nextCompleteExpedition?.percentage ?? 0
+    }
 }
 
 struct Expedition: Codable {
@@ -57,14 +69,15 @@ struct Expedition: Codable {
     let remainedTimeStr: String
     let statusStr: String
 
-    var totalTime: Double {
-        switch charactersEnglishName {
-        case "Chongyun", "Fischl", "Bennett", "Sara", "Keqing":
-            return Double(15 * 60 * 60)
-        default:
-            return Double(20 * 60 * 60)
-        }
-    }
+//    var totalTime: Double {
+//        switch charactersEnglishName {
+//        case "Chongyun", "Fischl", "Bennett", "Sara", "Keqing":
+//            return Double(15 * 60 * 60)
+//        default:
+//            return Double(20 * 60 * 60)
+//        }
+//    }
+    let totalTime: Double = Double(20 * 60 * 60)
     var percentage: Double {
         (totalTime - Double(recoveryTime.second)) / totalTime
     }

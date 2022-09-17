@@ -10,14 +10,34 @@ import SwiftUI
 struct InfoPreviewer: View {
     var title: String
     var content: String
+    var contentStyle: ContentStyle = .standard
 
     var body: some View {
         HStack {
             Text(LocalizedStringKey(title))
             Spacer()
-            Text(content)
-                .foregroundColor(.gray)
+            switch contentStyle {
+            case .standard:
+                Text(content)
+                    .foregroundColor(.gray)
+            case .capsule:
+                Text(content)
+                    .foregroundColor(.white)
+                    .padding(.horizontal)
+                    .background(
+                        Capsule()
+                            .fill(.white)
+                            .frame(height: 20)
+                            .frame(maxWidth: 120)
+                            .opacity(0.25)
+                    )
+            }
         }
+    }
+
+    enum ContentStyle {
+        case standard
+        case capsule
     }
 }
 

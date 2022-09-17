@@ -17,6 +17,8 @@ struct SettingsView: View {
 
     @StateObject var storeManager: StoreManager
 
+    @State var isWidgetTipsSheetShow: Bool = false
+
     var body: some View {
         NavigationView {
             List {
@@ -37,6 +39,11 @@ struct SettingsView: View {
                         Text("我的帐号")
                         Spacer()
                         EditModeButton(editMode: $editMode)
+                    }
+                } footer: {
+                    Button { isWidgetTipsSheetShow.toggle() } label: {
+                        Text("如何添加、配置小组件和更换小组件背景？").multilineTextAlignment(.leading)
+                            .font(.footnote)
                     }
                 }
                 // 通知设置
@@ -66,6 +73,9 @@ struct SettingsView: View {
             .navigationTitle("设置")
         }
         .navigationViewStyle(.stack)
+        .sheet(isPresented: $isWidgetTipsSheetShow) {
+            WidgetTipsView(isSheetShow: $isWidgetTipsSheetShow)
+        }
     }
 }
 
@@ -83,8 +93,10 @@ private struct EditModeButton: View {
         } label: {
             if editMode.isEditing {
                 Text("完成")
+                    .font(.footnote)
             } else {
                 Text("编辑")
+                    .font(.footnote)
             }
         }
     }

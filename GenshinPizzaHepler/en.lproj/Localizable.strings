@@ -59,10 +59,10 @@
 "未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
 "尚未完成帐号设置" = "Account configuration is not finished";
 "添加账号前…" = "Before adding your account...";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure you have opened and can access \"Real-Time Notes\" in HoYoLAB App.";
+"请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure your \"Real-Time Notes\" is accessible";
 "好" = "OK";
 "提示" = "Tips";
-"请在打开的网页完成登录米游社操作后点击「完成」。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. ";
+"请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nSign in via Google, Facebook or Twitter is not available, please sign in with your username & password.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. "; // TODO: French
 "自定义帐号名" = "Custom Account Name";
 "请选择帐号" = "Choose Your Account";
 "查看帐号详情" = "Login Info Details";
@@ -70,12 +70,12 @@
 "请先添加帐号" = "Add an Account";
 
 // Game Info block
-"%@\n%@ 回满" = "Refill in %@\n%@";
-"0小时0分钟\n树脂已全部回满" = "0 ʜʀ 0 ᴍɪɴ\nResin is fully capped";
-"%lld天" = "%lld ᴅᴀʏ";
-"%lld小时" = "%lld ʜʀ";
-"%lld分钟" = "%lld ᴍɪɴ";
-"%lld小时%lld分钟" = "%lld ʜʀ %lld ᴍɪɴ";
+"%@\n%@ 回满" = "Full in %@\n%@";
+"0小时0分钟\n树脂已全部回满" = "0hr 0min\nResin is full";
+"%lld天" = "%lldday";
+"%lld小时" = "%lldhr";
+"%lld分钟" = "%lldmin";
+"%lld小时%lld分钟" = "%lldhr %lldmin";
 "可使用" = "Available";
 "%lld月%lld日 %@" = "%lld.%lld %@";
 "星期日" = "Sunday";
@@ -415,18 +415,111 @@
 "水里的碳酸钙" = "Bill Haku";
 
 // MARK: - 2.1
+// Home View
 "所有材料均可获取" = "All farmable on Sunday";
 
 // Proxy
-"代理设置" = "";
-"启用代理" = "";
-"代理配置" = "";
-"端口" = "";
-"认证信息（可选）" = "";
-"用户名" = "";
-"密码" = "";
-"" = "";
+"代理设置" = "Proxy Settings";
+"启用代理" = "Enable Proxy";
+"代理配置" = "Proxy Configuration";
+"端口" = "Port";
+"认证信息（可选）" = "Authorization (Optional)";
+"用户名" = "Username";
+"密码" = "Password";
 
 // Setting View
 "完成" = "Done";
 "编辑" = "Edit";
+
+//Widget Tips
+"如何添加、配置小组件和更换小组件背景？" = "How to add, configure Widget and change Widget background?";
+"小组件使用提示" = "Widget Tips";
+"如何配置小组件和修改小组件背景？" = "How to configure Widget and change Widget background?";
+"长按小组件，选择编辑\"原神披萨小助手\"" = "Long press the Widget, tap Edit \"Genshin Pizza\"";
+"根据提示选择设置项或启用/关闭功能或修改背景" = "Turn on/off or modify the functions as you need or modify the background";
+"如何添加小组件？" = "How to add a Widget to your Home Screen";
+"关于如何添加小组件，请参考Apple支持文档" = "About how to add a Widget, please refer to the Apple Support Documents";
+"如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件" = "If you failed to find our Widget in the Widget list, reboot and wait for 10 minutes, then try again";
+
+// App Introduce Video
+"App介绍视频" = "App Introduction Videos";
+"打开Bilibili观看" = "Watch on Bilibili";
+"打开YouTube观看" = "Watch on YouTube";
+
+// MARK: - 2.2
+// Watch App
+"原粹树脂" = "Original Resin";
+"洞天宝钱" = "Realm Currency";
+"每日委托" = "Daily Commission";
+"探索派遣" = "Expedition";
+"参量质变仪" = "Parametric Transformer";
+"周本折扣" = "Weekly Boss";
+"可使用" = "Available";
+"%@ 回满" = "Refilled at %@";
+"树脂已全部回满" = "Resin is fully capped";
+
+// Donate
+"特别鸣谢" = "Special Thanks";
+
+// Contact us
+"翻译与特别鸣谢" = "Translators & Special Thanks";
+"英语翻译" = "English translator";
+"日语 英语翻译" = "Japanese translator";
+"法语翻译" = "French translator";
+"图片素材制作" = "Image production";
+
+// MARK: - 2.3
+// Account Basic Info Detail
+"上滑查看更多基本信息" = "Swipe up to show more";
+"数据总览" = "Summary";
+"活跃天数" = "Days Active";
+"成就达成" = "Achievements";
+"获得角色" = "Characters";
+"深境螺旋" = "Spiral Abyss";
+"解锁锚点" = "Waypoints Unlocked";
+"解锁秘境" = "Domains Unlocked";
+"普通宝箱" = "Common Chests Opened";
+"精致宝箱" = "Exquisite Chests Opened";
+"珍贵宝箱" = "Precious Chests Opened";
+"华丽宝箱" = "Luxurious Chests Opened";
+"风神瞳" = "Anemoculus";
+"岩神瞳" = "Geoculus";
+"雷神瞳" = "Electroculus";
+"草神瞳" = "Dendroculus";
+"世界探索" = "World Explorations";
+
+// Lock Screen Widgets
+"树脂回复状态" = "Resin Recovery Status";
+"自动轮换" = "Automatic Rotation";
+"自动展示你最需要的信息" = "Automatically display the information you need most";
+"综合信息" = "Comprehensive Infos";
+"所有信息，一网打尽" = "All infos in one view";
+"洞天宝钱数量" = "Realm Currenncy amount";
+"每日委托完成情况" = "Daily Commission Status";
+"探索派遣完成情况" = "Expedition Status";
+"另一种样式的原粹树脂小组件" = "Original Resin Widget in another form";
+
+// Watch
+"请等待帐号从iCloud同步" = "Please wait for the data to sync from iCloud";
+"的原粹树脂" = "'s Original Resin";
+"的智能轮换信息" = "'s Automatic Rotation";
+"的探索派遣" = "'s Expedition";
+"的每日委托" = "'s Daily Commission";
+"的综合信息" = "'s Comprehensive Infos";
+"的洞天宝钱" = "'s Realm Currency";
+"已填满" = "Refilled";
+"%lld, 已回满" = "%lld, Done";
+
+// Namecards
+"提纳里・沐露" = "Tighnari: Dew-Kissed";
+"柯莱・豹蔚" = "Collei: Good Virtue";
+"多莉・魔灯" = "Dori: Jinni";
+"纪行・深林" = "Travel Notes: Woodlands";
+"成就・漫行" = "Achievement: Roaming";
+"成就・逢缘" = "Achievement: Fated Encounter";
+"须弥・瑶林" = "Sumeru: Shimmering Woods";
+"须弥・照览" = "Sumeru: Observance";
+"须弥・正明" = "Sumeru: Unsullied";
+"妮露" = "Nilou";
+"赛诺" = "Cyno";
+"坎蒂丝" = "Candace";

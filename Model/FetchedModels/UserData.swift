@@ -73,7 +73,7 @@ extension UserData {
         // 用于测试和提供小组件预览视图的默认数据
         currentResin: 90,
         maxResin: 160,
-        resinRecoveryTime: "123",
+        resinRecoveryTime: "\((160-90)*8)",
 
         finishedTaskNum: 3,
         totalTaskNum: 4,
@@ -92,8 +92,6 @@ extension UserData {
         
         transformer: TransformerData(recoveryTime: TransformerData.TransRecoveryTime(day: 4, hour: 3, minute: 0, second: 0), obtained: true)
     )
-    
-    
 }
 
 extension Expedition {

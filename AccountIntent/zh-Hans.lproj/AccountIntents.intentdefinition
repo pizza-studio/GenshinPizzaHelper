@@ -159,11 +159,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>Yil1CB</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21F79</string>
+	<string>21G83</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13F100</string>
+	<string>14A309</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.4.1</string>
+	<string>14.0</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -178,7 +178,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>41</integer>
+			<integer>42</integer>
 			<key>INIntentName</key>
 			<string>SelectAccount</string>
 			<key>INIntentParameters</key>
@@ -301,8 +301,10 @@
 					</dict>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
+					<key>INIntentParameterSupportsMultipleValues</key>
+					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>37</integer>
+					<integer>42</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
@@ -643,6 +645,86 @@
 			<string>选择帐号</string>
 			<key>INIntentTitleID</key>
 			<string>sWpemX</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>View</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>information</string>
+			<key>INIntentDescription</key>
+			<string>为你的小组件选择显示的帐号</string>
+			<key>INIntentDescriptionID</key>
+			<string>NI3XnI</string>
+			<key>INIntentEligibleForWidgets</key>
+			<true/>
+			<key>INIntentIneligibleForSuggestions</key>
+			<true/>
+			<key>INIntentLastParameterTag</key>
+			<integer>2</integer>
+			<key>INIntentName</key>
+			<string>SelectOnlyAccount</string>
+			<key>INIntentParameters</key>
+			<array>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>帐号</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>enBbLR</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterName</key>
+					<string>account</string>
+					<key>INIntentParameterObjectType</key>
+					<string>AccountIntent</string>
+					<key>INIntentParameterObjectTypeNamespace</key>
+					<string>Yil1CB</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsDynamicEnumeration</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>2</integer>
+					<key>INIntentParameterType</key>
+					<string>Object</string>
+				</dict>
+			</array>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>选择帐号</string>
+			<key>INIntentTitleID</key>
+			<string>vAR6GW</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>

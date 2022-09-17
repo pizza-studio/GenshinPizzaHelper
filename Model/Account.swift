@@ -29,9 +29,6 @@ struct Account: Equatable {
         self.result = result
         self.fetchComplete = true
     }
-    
-    
-    
 }
 
 extension AccountConfiguration {
@@ -45,4 +42,3 @@ extension AccountConfiguration {
         { completion($0) }
     }
 }
-

@@ -77,7 +77,7 @@ struct GuideVideoLinkView: View {
                 }
             }
         }
-        .navigationBarTitle("使用介绍视频")
+        .navigationBarTitle("App介绍视频")
         .navigationBarTitleDisplayMode(.inline)
     }
 

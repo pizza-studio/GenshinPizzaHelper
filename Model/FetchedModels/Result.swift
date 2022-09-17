@@ -8,8 +8,7 @@
 import Foundation
 
 typealias FetchResult = Result<UserData, FetchError>
-
-
+typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
 
 extension FetchResult {
     static let defaultFetchResult: FetchResult = .success(UserData.defaultData)

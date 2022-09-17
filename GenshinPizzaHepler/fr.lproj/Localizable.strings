@@ -416,3 +416,109 @@
 
 // MARK: - 2.1
 "所有材料均可获取" = "Tous les matériaux peuvent être obtenu le Dimanche";
+
+// Proxy
+"代理设置" = "Proxy Settings";
+"启用代理" = "Enable Proxy";
+"代理配置" = "Proxy Configuration";
+"端口" = "Port";
+"认证信息（可选）" = "Authorization (Optional)";
+"用户名" = "Username";
+"密码" = "Password";
+
+// Setting View
+"完成" = "Done";
+"编辑" = "Edit";
+
+//Widget Tips
+"如何添加、配置小组件和更换小组件背景？" = "How to add, configure Widget and change Widget background?";
+"小组件使用提示" = "Widget Tips";
+"如何配置小组件和修改小组件背景？" = "How to configure Widget and change Widget background?";
+"长按小组件，选择编辑\"原神披萨小助手\"" = "Long press the Widget, tap Edit \"Genshin Pizza\"";
+"根据提示选择设置项或启用/关闭功能或修改背景" = "";
+"如何添加小组件？" = "How to add a Widget on your Home Screen";
+"关于如何添加小组件，请参考Apple支持文档" = "About how to add a Widget, please refer to the Apple Support Documents";
+"如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件" = "If you failed to find our Widget in the OS's Widget list, reboot and wait for 10 minutes, then try again";
+
+// App Introduce Video
+"App介绍视频" = "App Introduction Video";
+"打开Bilibili观看" = "Watch on Bilibili";
+"打开YouTube观看" = "Watch on YouTube";
+
+// MARK: - 2.2
+// Watch App
+"原粹树脂" = "Original Resin";
+"洞天宝钱" = "Realm Currency";
+"每日委托" = "Daily Commission";
+"探索派遣" = "Expedition";
+"参量质变仪" = "Parametric Transformer";
+"周本折扣" = "Weekly Boss";
+"可使用" = "Available";
+"%@ 回满" = "Replenished at %@";
+"树脂已全部回满" = "Resin is fully replenished";
+
+// Donate
+"特别鸣谢" = "Special Thanks";
+
+// Contact us
+"翻译与特别鸣谢" = "Translators & Special Thanks";
+"英语翻译" = "English translator";
+"日语 英语翻译" = "Japanese translator";
+"法语翻译" = "French translator";
+"图片素材制作" = "Image production";
+
+// MARK: - 2.3
+// Account Basic Info Detail
+"上滑查看更多基本信息" = "Swipe up to show more";
+"数据总览" = "Summary";
+"活跃天数" = "Days Active";
+"成就达成" = "Achievements";
+"获得角色" = "Characters";
+"深境螺旋" = "Spiral Abyss";
+"解锁锚点" = "Waypoints Unlocked";
+"解锁秘境" = "Domains Unlocked";
+"普通宝箱" = "Common Chests Opened";
+"精致宝箱" = "Exquisite Chests Opened";
+"珍贵宝箱" = "Precious Chests Opened";
+"华丽宝箱" = "Luxurious Chests Opened";
+"风神瞳" = "Anemoculus";
+"岩神瞳" = "Geoculus";
+"雷神瞳" = "Electroculus";
+"草神瞳" = "Dendroculus";
+"世界探索" = "World Explorations";
+
+// Lock Screen Widgets
+"树脂回复状态" = "Resin Recovery Status";
+"自动轮换" = "Automatic Rotation";
+"自动展示你最需要的信息" = "Automatically display the information you need most";
+"综合信息" = "Comprehensive Infos";
+"所有信息，一网打尽" = "All infos in one view";
+"洞天宝钱数量" = "Realm Currenncy amount";
+"每日委托完成情况" = "Daily Commission Status";
+"探索派遣完成情况" = "Expedition Status";
+"另一种样式的原粹树脂小组件" = "Original Resin Widget in another form";
+
+// Watch
+"请等待帐号从iCloud同步" = "Please wait for the data to sync from iCloud";
+"的原粹树脂" = "'s Original Resin";
+"的智能轮换信息" = "'s Automatic Rotation";
+"的探索派遣" = "'s Expedition";
+"的每日委托" = "'s Daily Commission";
+"的综合信息" = "'s Comprehensive Infos";
+"的洞天宝钱" = "'s Realm Currency";
+"已填满" = "Refilled";
+"%lld, 已回满" = "%lld, Done";
+
+// Namecards
+"提纳里・沐露" = "Tighnari: Dew-Kissed";
+"柯莱・豹蔚" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";

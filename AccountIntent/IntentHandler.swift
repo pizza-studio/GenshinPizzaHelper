@@ -8,11 +8,13 @@
 import Foundation
 import Intents
 
-class IntentHandler: INExtension, SelectAccountIntentHandling {
+class IntentHandler: INExtension, SelectAccountIntentHandling, SelectOnlyAccountIntentHandling {
+
+    // MARK: - SelectAccountIntentHandling
     func provideBackgoundOptionsCollection(for intent: SelectAccountIntent, with completion: @escaping (INObjectCollection<WidgetBackground>?, Error?) -> Void) {
         let colorOptions: [String] = BackgroundOptions.colors
         let namecardOptions: [String] = BackgroundOptions.namecards
-        
+
         var intents: [WidgetBackground] = []
         colorOptions.forEach { colorName in
             let name = colorName.localized
@@ -43,6 +45,24 @@ class IntentHandler: INExtension, SelectAccountIntentHandling {
         completion(collection, nil)
     }
 
+
+
+
+    // MARK: - SelectOnlyAccountIntentHandling
+    func provideAccountOptionsCollection(for intent: SelectOnlyAccountIntent, with completion: @escaping (INObjectCollection<AccountIntent>?, Error?) -> Void) {
+        let accountConfigurationModel = AccountConfigurationModel.shared
+        let accountConfigs: [AccountConfiguration] = accountConfigurationModel.fetchAccountConfigs()
+
+        let accountIntents: [AccountIntent] = accountConfigs.map { config in
+            return AccountIntent(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
+        }
+        let collection = INObjectCollection(items: accountIntents)
+        accountIntents.forEach { accountIntent in
+            print(accountIntent.description)
+        }
+
+        completion(collection, nil)
+    }
 }
 
 
@@ -53,7 +73,11 @@ extension WidgetViewConfiguration {
         self.expeditionViewConfig = ExpeditionViewConfiguration(noticeExpeditionWhenAllCompleted: (intent.expeditionNoticeMethod.rawValue != 2), expeditionShowingMethod: ExpeditionShowingMethod.init(rawValue: intent.expeditionShowingMethod.rawValue) ?? .byNum)
         self.weeklyBossesShowingMethod = intent.weeklyBossesShowingMethod
         self.randomBackground = intent.randomBackground?.boolValue ?? false
-        self.selectedBackground = intent.backgound ?? WidgetBackground.defaultBackground
+        if let backgrounds = intent.backgound {
+            self.selectedBackgrounds = backgrounds.isEmpty ? [.defaultBackground] : backgrounds
+        } else {
+            self.selectedBackgrounds = [.defaultBackground]
+        }
         self.isDarkModeOn = intent.isDarkModeOn?.boolValue ?? true
         self.showMaterialsInLargeSizeWidget = intent.showMaterialsInLargeSizeWidget?.boolValue ?? true
     }

@@ -31,7 +31,7 @@ struct TextEditorView: View {
                     }
                 }
             }
-            Section(footer: Text(note ?? "")) {
+            Section(footer: Text(note ?? "").font(.footnote)) {
                 TextEditor(text: $content)
                     .frame(height: 500)
             }
@@ -65,7 +65,7 @@ struct TextFieldEditorView: View {
             .navigationBarTitle(title, displayMode: .inline)
         } else {
             List {
-                Section(footer: Text(LocalizedStringKey(note!))) {
+                Section(footer: Text(LocalizedStringKey(note!)).font(.footnote)) {
                     if #available(iOS 15.0, *) {
                         TextField(note!, text: $content)
                             .keyboardType(keyboardType)
