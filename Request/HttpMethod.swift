@@ -545,7 +545,7 @@ struct HttpMethod<T: Codable> {
                         }
                         DispatchQueue.main.async {
                             let decoder = JSONDecoder()
-                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                            decoder.keyDecodingStrategy = .convertFromSnakeCase
 
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
                             print(dictionary ?? "None")

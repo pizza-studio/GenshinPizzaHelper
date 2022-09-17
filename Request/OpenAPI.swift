@@ -18,7 +18,7 @@ extension API {
         ///     - completion: 数据
         static func fetchCurrentEvents (
             completion: @escaping (
-                FetchResult
+                CurrentEventsFetchResult
             ) -> ()
         ) {
             // 请求类别
@@ -26,7 +26,7 @@ extension API {
             let url = URL(string: urlStr)!
 
             // 请求
-            HttpMethod<RequestResult>
+            HttpMethod<CurrentEvent>
                 .openRequest(
                     .get,
                     url
@@ -35,33 +35,9 @@ extension API {
 
                     case .success(let requestResult):
                         print("request succeed")
-                        let userData = requestResult.data
-                        let retcode = requestResult.retcode
-                        let message = requestResult.message
-
-                        switch requestResult.retcode {
-                        case 0:
-                            print("get data succeed")
-                            completion(.success(userData!))
-                        case 10001:
-                            print("fail 10001")
-                            completion(.failure(.cookieInvalid(retcode, message)))
-                        case 10103, 10104:
-                            print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(retcode, message)))
-                        case 1008:
-                            print("fail 1008")
-                            completion(.failure(.accountInvalid(retcode, message)))
-                        case -1, 10102:
-                            print("fail -1")
-                            completion(.failure(.dataNotFound(retcode, message)))
-                        default:
-                            print("unknowerror")
-                            completion(.failure(.unknownError(retcode, message)))
-                        }
+                        completion(.success(requestResult))
 
                     case .failure(let requestError):
-
                         switch requestError {
                         case .decodeError(let message):
                             completion(.failure(.decodeError(message)))
