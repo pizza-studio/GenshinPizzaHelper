@@ -45,10 +45,15 @@ struct ContentView: View {
                     .environmentObject(viewModel)
                     .environmentObject(detail)
                     .tabItem {
-                        Label("主页", systemImage: "house")
+                        Label("概览", systemImage: "list.bullet")
+                    }
+                ToolsView()
+                    .tag(1)
+                    .tabItem {
+                        Label("工具", systemImage: "shippingbox")
                     }
                 SettingsView(storeManager: storeManager)
-                    .tag(1)
+                    .tag(2)
                     .environmentObject(viewModel)
                     .tabItem {
                         Label("设置", systemImage: "gear")
