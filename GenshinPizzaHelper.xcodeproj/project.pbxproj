@@ -1045,9 +1045,9 @@
 			children = (
 				BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */,
 				BF70210828B3909F00A6BBA9 /* ContentView.swift */,
-				BFB101D228D5C579000DC631 /* ToolsView.swift */,
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
+				BFB101D228D5C579000DC631 /* ToolsView.swift */,
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 			);
