@@ -57,6 +57,7 @@
 		BF85D78F28D02CCE003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BF85D79028D02CCF003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */; };
+		BFB101D328D5C579000DC631 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D228D5C579000DC631 /* ToolsView.swift */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -536,6 +537,7 @@
 		BF85D77A28CE0BA0003F3479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF85D78828CF31FD003F3479 /* BasicInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfos.swift; sourceTree = "<group>"; };
 		BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBasicInfosView.swift; sourceTree = "<group>"; };
+		BFB101D228D5C579000DC631 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		BFCC064A28C5EA6A003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1045,6 +1047,7 @@
 				BF70210828B3909F00A6BBA9 /* ContentView.swift */,
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
+				BFB101D228D5C579000DC631 /* ToolsView.swift */,
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 			);
@@ -1795,6 +1798,7 @@
 				BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */,
 				BFFD820E28A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
 				BFFD822C28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
+				BFB101D328D5C579000DC631 /* ToolsView.swift in Sources */,
 				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
