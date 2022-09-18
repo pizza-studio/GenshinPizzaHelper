@@ -523,3 +523,32 @@
 "妮露" = "Nilou";
 "赛诺" = "Cyno";
 "坎蒂丝" = "Candace";
+
+// MARK: - 2.4
+// Content View
+"概览" = "Overview";
+"工具" = "Tools";
+
+// Home View
+"当前活动" = "Current Events";
+"帐号基本信息" = "Account Basic Infos";
+"剩余 %lld天" = "%lld days left";
+"剩余 %lld小时" = "%lld hours left";
+
+// Settings View
+"使用小组件遇到了问题？" = "Any question about the Widget or Apple Watch complications?";
+"如何添加小组件和锁屏小组件？" = "How to add Widget on your Home Screen and Lock Screen?";
+"关于如何在Apple Watch上添加复杂功能，请参考Apple支持文档" = "About how to add a Apple Watch complication, please refer to the Apple Support Documents";
+"如何添加复杂功能？" = "How to add Apple Watch complications?";
+"还有其他问题？" = "Any other questions?";
+
+// Thanks View
+"开源组件与第三方API致谢" = "Acknowledgement for open source components and third-party APIs";
+"我们的App使用了以下开源组件和第三方API，在此向其作者表示感谢。" = "Our app uses the following open source components and third-party APIs, and we would like to thank their authors.";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
