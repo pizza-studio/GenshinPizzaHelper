@@ -29,8 +29,8 @@ struct AboutView: View {
                 .foregroundColor(.secondary)
             Spacer()
 
-            NavigationLink(destination: ContactUsView()) {
-                Text("开发者与联系方式")
+            NavigationLink(destination: ThanksView()) {
+                Text("开源组件和第三方API致谢")
                     .padding()
                     .font(.callout)
             }
