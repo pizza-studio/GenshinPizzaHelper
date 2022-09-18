@@ -22,26 +22,40 @@ struct CurrentEventNavigator: View {
                 }
                 ProgressView()
             } else {
-                List {
-                    Section(header: Text("当前活动").font(.caption)) {
-                        ForEach(eventContents.sorted {
-                            $0.endAt < $1.endAt
-                        }, id: \.id) { content in
-                            HStack {
-                                Text(getLocalizedContent(content.name))
-                                Spacer()
-                                Text("剩余 \(getRemainDays(content.endAt))天")
+                NavigationView {
+                    List {
+                        Section(header: Text("当前活动").font(.caption)) {
+                            ForEach(eventContents.sorted {
+                                $0.endAt < $1.endAt
+                            }, id: \.id) { content in
+                                eventItem(event: content)
                             }
                         }
                     }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
                 .frame(height: 250)
             }
         }
         .onAppear(perform: getCurrentEvent)
         .blurMaterialBackground()
         .padding(.horizontal)
+    }
+
+    @ViewBuilder
+    func eventItem(event: EventModel) -> some View {
+        NavigationLink(destination: eventDetail(event: event)) {
+            HStack {
+                Text(getLocalizedContent(event.name))
+                Spacer()
+                Text("剩余 \(getRemainDays(event.endAt))天")
+            }
+        }
+    }
+
+    @ViewBuilder
+    func eventDetail(event: EventModel) -> some View {
+        Text(event.endAt)
     }
 
     func getCurrentEvent() -> Void {
