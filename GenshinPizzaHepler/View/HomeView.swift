@@ -32,6 +32,7 @@ struct HomeView: View {
                         InAppMaterialNavigator()
 
                         // MARK: - 当前活动
+                        CurrentEventNavigator()
 
                         // MARK: - 帐号基本信息
                         HStack {
