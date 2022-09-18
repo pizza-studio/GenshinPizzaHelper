@@ -42,7 +42,8 @@ struct SettingsView: View {
                     }
                 } footer: {
                     Button { isWidgetTipsSheetShow.toggle() } label: {
-                        Text("如何添加、配置小组件和更换小组件背景？").multilineTextAlignment(.leading)
+                        Text("使用小组件遇到了问题？")
+                            .multilineTextAlignment(.leading)
                             .font(.footnote)
                     }
                 }
@@ -57,11 +58,14 @@ struct SettingsView: View {
                     }
                 }
                 Section {
+                    NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/faq.html").navigationTitle("FAQ")) {
+                        Text("常见使用问题（FAQ）")
+                    }
                     NavigationLink(destination: GuideVideoLinkView()) {
                         Text("App介绍视频")
                     }
-                    NavigationLink(destination: BackgroundsPreviewView()) {
-                        Text("背景名片预览")
+                    NavigationLink(destination: ContactUsView()) {
+                        Text("开发者与联系方式")
                     }
                 }
                 // 更多
