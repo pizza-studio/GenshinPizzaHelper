@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrentEventNavigator: View {
     @State var eventContents: [EventModel] = []
+    typealias IntervalDate = (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?)
 
     var body: some View {
         VStack {
@@ -32,7 +33,7 @@ struct CurrentEventNavigator: View {
                     }
                 }
                 .listStyle(.plain)
-                .frame(height: 250)
+                .frame(height: 160)
             }
         }
         .onAppear(perform: getCurrentEvent)
@@ -46,7 +47,15 @@ struct CurrentEventNavigator: View {
             HStack {
                 Text(getLocalizedContent(event.name))
                 Spacer()
-                Text("剩余 \(getRemainDays(event.endAt))天")
+                if getRemainDays(event.endAt) == nil {
+                    Text("Error")
+                }
+                else if getRemainDays(event.endAt)!.day! > 0 {
+                    Text("剩余 \(getRemainDays(event.endAt)!.day!)天")
+                }
+                else {
+                    Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
+                }
             }
         }
     }
@@ -90,14 +99,14 @@ struct CurrentEventNavigator: View {
         }
     }
 
-    func getRemainDays(_ endAt: String) -> String {
+    func getRemainDays(_ endAt: String) -> IntervalDate? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let endDate = dateFormatter.date(from: endAt)
         guard let endDate = endDate else {
-            return endAt
+            return nil
         }
         let interval = endDate - Date()
-        return String(describing: interval.day ?? -1)
+        return interval
     }
 }
