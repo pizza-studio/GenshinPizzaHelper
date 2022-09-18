@@ -30,7 +30,7 @@ struct AboutView: View {
             Spacer()
 
             NavigationLink(destination: ThanksView()) {
-                Text("开源组件和第三方API致谢")
+                Text("开源组件与第三方API致谢")
                     .padding()
                     .font(.callout)
             }

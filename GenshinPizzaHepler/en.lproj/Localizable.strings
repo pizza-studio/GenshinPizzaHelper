@@ -545,7 +545,9 @@
 // Thanks View
 "开源组件与第三方API致谢" = "Acknowledgement for open source components and third-party APIs";
 "我们的App使用了以下开源组件和第三方API，在此向其作者表示感谢。" = "Our app uses the following open source components and third-party APIs, and we would like to thank their authors.";
-"" = "";
+
+// Tools View
+"敬请期待" = "Stay tuned";
 "" = "";
 "" = "";
 "" = "";
