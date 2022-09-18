@@ -86,3 +86,14 @@ extension View {
         modifier(ScrollViewOffsetModifier(coordinateSpace: coordinateSpace, offset: binding))
     }
 }
+
+// MARK: - Blur Background
+extension View {
+    func blurMaterialBackground() -> some View {
+        if #available(iOS 15.0, *) {
+            return AnyView(self.background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)))
+        } else {
+            return AnyView(self.background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(Color(UIColor.systemGray6))))
+        }
+    }
+}

@@ -11,18 +11,31 @@ struct CurrentEventNavigator: View {
     @State var eventContents: [EventModel] = []
 
     var body: some View {
-        if eventContents.isEmpty {
-            ProgressView()
-                .onAppear(perform: getCurrentEvent)
-        } else {
-            ForEach(eventContents, id: \.id) { content in
-                HStack {
-                    Text(content.name.CHS)
-                    Spacer()
-                    Text(content.endAt)
+        VStack {
+            HStack {
+                Text("当前活动")
+                    .font(.caption)
+                    .padding(.top)
+                    .padding(.leading, 25)
+                Spacer()
+            }
+            if eventContents.isEmpty {
+                ProgressView()
+            } else {
+                ForEach(eventContents.sorted {
+                    $0.endAt < $1.endAt
+                }, id: \.id) { content in
+                    HStack {
+                        Text(getLocalizedContent(content.name))
+                        Spacer()
+                        Text(content.endAt)
+                    }
                 }
             }
         }
+        .onAppear(perform: getCurrentEvent)
+        .blurMaterialBackground()
+        .padding(.horizontal)
     }
 
     func getCurrentEvent() -> Void {
@@ -36,5 +49,21 @@ struct CurrentEventNavigator: View {
                 }
             }
         }
+    }
+
+    func getLocalizedContent(_ content: EventModel.MultiLanguageContents) -> String {
+        let locale = Locale.current.languageCode
+        print(locale ?? "")
+        switch locale {
+        case "zh":
+            return content.CHS
+        case "en-us":
+            return content.EN
+        case "ja":
+            return content.JP
+        default:
+            return content.EN
+        }
+
     }
 }
