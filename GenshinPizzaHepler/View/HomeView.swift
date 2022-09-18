@@ -29,16 +29,20 @@ struct HomeView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                         .padding(.top, 30)
                     } else {
+                        // MARK: - 今日材料
                         InAppMaterialNavigator()
 
                         // MARK: - 当前活动
+                        CurrentEventNavigator()
 
                         // MARK: - 帐号基本信息
                         HStack {
                             Text("帐号基本信息")
-                                .font(.footnote)
+                                .font(.caption)
                             Spacer()
                         }
+                        .padding(.top)
+                        .padding(.bottom, -10)
                         .padding(.horizontal, 30)
 
                         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
