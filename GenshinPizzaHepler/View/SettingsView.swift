@@ -42,7 +42,8 @@ struct SettingsView: View {
                     }
                 } footer: {
                     Button { isWidgetTipsSheetShow.toggle() } label: {
-                        Text("如何添加、配置小组件和更换小组件背景？").multilineTextAlignment(.leading)
+                        Text("使用小组件遇到了问题？")
+                            .multilineTextAlignment(.leading)
                             .font(.footnote)
                     }
                 }
