@@ -37,9 +37,10 @@ struct HomeView: View {
                         // MARK: - 帐号基本信息
                         HStack {
                             Text("帐号基本信息")
-                                .font(.footnote)
+                                .font(.caption)
                             Spacer()
                         }
+                        .padding(.top)
                         .padding(.horizontal, 30)
 
                         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
