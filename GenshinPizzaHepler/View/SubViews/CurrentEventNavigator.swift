@@ -28,7 +28,7 @@ struct CurrentEventNavigator: View {
                     HStack {
                         Text(getLocalizedContent(content.name))
                         Spacer()
-                        Text(content.endAt)
+                        Text("剩余 \(getRemainDays(content.endAt))天")
                     }
                 }
             }
@@ -64,6 +64,28 @@ struct CurrentEventNavigator: View {
         default:
             return content.EN
         }
+    }
 
+    func getRemainDays(_ endAt: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let endDate = dateFormatter.date(from: endAt)
+        guard let endDate = endDate else {
+            return endAt
+        }
+        let interval = endDate - Date()
+        return String(describing: interval.day ?? -1)
+    }
+}
+
+extension Date {
+    static func -(recent: Date, previous: Date) -> (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?) {
+        let day = Calendar.current.dateComponents([.day], from: previous, to: recent).day
+        let month = Calendar.current.dateComponents([.month], from: previous, to: recent).month
+        let hour = Calendar.current.dateComponents([.hour], from: previous, to: recent).hour
+        let minute = Calendar.current.dateComponents([.minute], from: previous, to: recent).minute
+        let second = Calendar.current.dateComponents([.second], from: previous, to: recent).second
+
+        return (month: month, day: day, hour: hour, minute: minute, second: second)
     }
 }
