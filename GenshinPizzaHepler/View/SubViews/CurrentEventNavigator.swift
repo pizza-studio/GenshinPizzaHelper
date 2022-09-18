@@ -13,16 +13,7 @@ struct CurrentEventNavigator: View {
 
     var body: some View {
         VStack {
-            if eventContents.isEmpty {
-                HStack {
-                    Text("当前活动")
-                        .font(.caption)
-                        .padding(.top)
-                        .padding(.leading, 25)
-                    Spacer()
-                }
-                ProgressView()
-            } else {
+            if !eventContents.isEmpty {
                 List {
                     Section(header: Text("当前活动").font(.caption)) {
                         ForEach(eventContents.sorted {
