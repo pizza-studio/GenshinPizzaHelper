@@ -73,6 +73,7 @@
 		BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */; };
 		BFB101E928D6C755000DC631 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
 		BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101EF28D7262A000DC631 /* ThanksView.swift */; };
+		BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101F128D85B28000DC631 /* AllEventsView.swift */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -557,6 +558,7 @@
 		BFB101DB28D5F971000DC631 /* CurrentEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEvents.swift; sourceTree = "<group>"; };
 		BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEventNavigator.swift; sourceTree = "<group>"; };
 		BFB101EF28D7262A000DC631 /* ThanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksView.swift; sourceTree = "<group>"; };
+		BFB101F128D85B28000DC631 /* AllEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsView.swift; sourceTree = "<group>"; };
 		BFCC064A28C5EA6A003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
+				BFB101F128D85B28000DC631 /* AllEventsView.swift */,
 				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
 				BF70214528BC82D400A6BBA9 /* ContactUsView.swift */,
 				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
@@ -1882,6 +1885,7 @@
 				BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */,
 				BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */,
 				BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */,
+				BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */,
 				EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,

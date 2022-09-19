@@ -27,9 +27,11 @@ struct CurrentEventNavigator: View {
                 }.prefix(3), id: \.id) { content in
                     eventItem(event: content)
                 }
-                Text("查看全部")
-                    .padding(10)
-                    .font(.callout)
+                NavigationLink(destination: AllEventsView(eventContents: $eventContents)) {
+                    Text("查看全部")
+                        .padding(10)
+                        .font(.callout)
+                }
             }
             .blurMaterialBackground()
             .padding(.horizontal)
