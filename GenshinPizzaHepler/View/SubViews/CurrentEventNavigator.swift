@@ -13,19 +13,26 @@ struct CurrentEventNavigator: View {
 
     var body: some View {
         if !eventContents.isEmpty {
-            List {
-                Section(header: Text("当前活动").font(.caption)) {
-                    ForEach(eventContents.sorted {
-                        $0.endAt < $1.endAt
-                    }, id: \.id) { content in
-                        eventItem(event: content)
-                    }
+            VStack(spacing: 0) {
+                HStack {
+                    Text("当前活动")
+                        .font(.caption)
+                        .padding(.top)
+                        .padding(.leading, 25)
+                        .padding(.bottom, 10)
+                    Spacer()
                 }
+                ForEach(eventContents.sorted {
+                    $0.endAt < $1.endAt
+                }.prefix(3), id: \.id) { content in
+                    eventItem(event: content)
+                }
+                Text("查看全部")
+                    .padding(10)
+                    .font(.callout)
             }
-            .listStyle(.plain)
             .blurMaterialBackground()
             .padding(.horizontal)
-            .frame(height: 160)
         }
     }
 
@@ -45,6 +52,9 @@ struct CurrentEventNavigator: View {
                     Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
                 }
             }
+            .font(.callout)
+            .padding(10)
+            .foregroundColor(.primary)
         }
     }
 
