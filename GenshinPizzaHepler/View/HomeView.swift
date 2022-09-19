@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var viewModel: ViewModel
     var accounts: [Account] { viewModel.accounts }
+    @State var eventContents: [EventModel] = []
 
     var animation: Namespace.ID
     @EnvironmentObject var detail: DisplayContentModel
@@ -31,9 +32,10 @@ struct HomeView: View {
                     } else {
                         // MARK: - 今日材料
                         InAppMaterialNavigator()
+                            .onAppear(perform: getCurrentEvent)
 
                         // MARK: - 当前活动
-                        CurrentEventNavigator()
+                        CurrentEventNavigator(eventContents: $eventContents)
 
                         // MARK: - 帐号基本信息
                         HStack {
@@ -130,5 +132,18 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.large)
         }
         .navigationViewStyle(.stack)
+    }
+
+    func getCurrentEvent() -> Void {
+        DispatchQueue.global().async {
+            API.OpenAPIs.fetchCurrentEvents { result in
+                switch result {
+                case .success(let events):
+                    self.eventContents = [EventModel](events.event.values)
+                case .failure(_):
+                    break
+                }
+            }
+        }
     }
 }

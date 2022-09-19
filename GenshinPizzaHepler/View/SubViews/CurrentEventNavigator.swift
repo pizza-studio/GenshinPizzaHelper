@@ -8,28 +8,25 @@
 import SwiftUI
 
 struct CurrentEventNavigator: View {
-    @State var eventContents: [EventModel] = []
+    @Binding var eventContents: [EventModel]
     typealias IntervalDate = (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?)
 
     var body: some View {
-        VStack {
-            if !eventContents.isEmpty {
-                List {
-                    Section(header: Text("当前活动").font(.caption)) {
-                        ForEach(eventContents.sorted {
-                            $0.endAt < $1.endAt
-                        }, id: \.id) { content in
-                            eventItem(event: content)
-                        }
+        if !eventContents.isEmpty {
+            List {
+                Section(header: Text("当前活动").font(.caption)) {
+                    ForEach(eventContents.sorted {
+                        $0.endAt < $1.endAt
+                    }, id: \.id) { content in
+                        eventItem(event: content)
                     }
                 }
-                .listStyle(.plain)
-                .frame(height: 160)
             }
+            .listStyle(.plain)
+            .blurMaterialBackground()
+            .padding(.horizontal)
+            .frame(height: 160)
         }
-        .onAppear(perform: getCurrentEvent)
-        .blurMaterialBackground()
-        .padding(.horizontal)
     }
 
     @ViewBuilder
@@ -61,19 +58,6 @@ struct CurrentEventNavigator: View {
     func generateHTMLString(banner: String, nameFull: String, description: String) -> String {
         let format = "<head><style>body{ font-size: 50px;}</style></head>"
         return format + "<body><img src=\"\(banner)\" alt=\"Event Banner\">" + "<p>\(nameFull)</p>" + description + "</body>"
-    }
-
-    func getCurrentEvent() -> Void {
-        DispatchQueue.global().async {
-            API.OpenAPIs.fetchCurrentEvents { result in
-                switch result {
-                case .success(let events):
-                    self.eventContents = [EventModel](events.event.values)
-                case .failure(_):
-                    break
-                }
-            }
-        }
     }
 
     func getLocalizedContent(_ content: EventModel.MultiLanguageContents) -> String {
