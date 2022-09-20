@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var viewModel: ViewModel
     var accounts: [Account] { viewModel.accounts }
+    @State var eventContents: [EventModel] = []
 
     var animation: Namespace.ID
     @EnvironmentObject var detail: DisplayContentModel
@@ -31,27 +32,21 @@ struct HomeView: View {
                     } else {
                         // MARK: - 今日材料
                         InAppMaterialNavigator()
+                            .onAppear(perform: getCurrentEvent)
+                            .padding(.bottom)
 
                         // MARK: - 当前活动
-                        CurrentEventNavigator()
+                        CurrentEventNavigator(eventContents: $eventContents)
+                            .padding(.bottom)
 
-                        // MARK: - 帐号基本信息
-                        HStack {
-                            Text("帐号基本信息")
-                                .font(.caption)
-                            Spacer()
-                        }
-                        .padding(.top)
-                        .padding(.bottom, -10)
-                        .padding(.horizontal, 30)
-
+                        // MARK: - 账号信息
                         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                             if account.fetchComplete {
                                 switch account.result {
                                 case .success(let userData):
                                     if #available (iOS 16, *) {
                                         GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
-                                            .padding()
+                                            .padding([.bottom, .horizontal])
                                             .listRowBackground(Color.white.opacity(0))
                                             .onTapGesture {
     //                                            UserNotificationCenter.shared.createAllNotification(for: account.config.name!, with: userData, uid: account.config.uid!)
@@ -80,7 +75,7 @@ struct HomeView: View {
                                             }
                                     } else {
                                         GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
-                                            .padding()
+                                            .padding([.bottom, .horizontal])
                                             .listRowBackground(Color.white.opacity(0))
                                             .onTapGesture {
                                                 simpleTaptic(type: .medium)
@@ -113,13 +108,13 @@ struct HomeView: View {
                                                         .padding(.horizontal)
                                                 }
                                             }
-                                            .padding(.horizontal)
+                                            .padding([.bottom, .horizontal])
                                         }
                                     }
                                 }
                             } else {
                                 ProgressView()
-                                    .padding()
+                                    .padding([.bottom, .horizontal])
                             }
 
                         }
@@ -130,5 +125,25 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.large)
         }
         .navigationViewStyle(.stack)
+    }
+
+    func getCurrentEvent() -> Void {
+        if self.eventContents.isEmpty {
+            DispatchQueue.global().async {
+                API.OpenAPIs.fetchCurrentEvents { result in
+                    switch result {
+                    case .success(let events):
+                        withAnimation {
+                            self.eventContents = [EventModel](events.event.values)
+                            self.eventContents = eventContents.sorted {
+                                $0.endAt < $1.endAt
+                            }
+                        }
+                    case .failure(_):
+                        break
+                    }
+                }
+            }
+        }
     }
 }

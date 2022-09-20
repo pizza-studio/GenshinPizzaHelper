@@ -386,7 +386,7 @@
 "解码错误：请检查网络环境" = "Decode Error: please check your network status";
 "网络错误" = "Network Error";
 "未获取到登录信息，请重试" = "Failed to fetch your login infos, please re-login HoYoLAB";
-"未知错误码：%@" = "Unknown Error %@";
+"未知错误码：%lld" = "Unknown Error %lld";
 
 "无返回数据" = "No Response Data";
 "无响应" = "No Response";
@@ -530,7 +530,9 @@
 "工具" = "Tools";
 
 // Home View
-"当前活动" = "Current Events";
+"当前活动" = "Ongoing Events";
+"即将结束的活动" = "Soon to end events";
+"查看全部活动" = "All ongoing events";
 "帐号基本信息" = "Account Basic Infos";
 "剩余 %lld天" = "%lld days left";
 "剩余 %lld小时" = "%lld hours left";

@@ -31,6 +31,7 @@ struct AddAccountView: View {
     
     @State private var accountsForSelected: [FetchedAccount] = []
     @State private var selectedAccount: FetchedAccount?
+    @State private var fetchAccountStatus: FetchAccountStatus = .unknown
     
     @State private var region: Region = .cn
     
@@ -53,23 +54,30 @@ struct AddAccountView: View {
                             .font(.footnote)
                     }
                 }) {
-                    
-                    Menu {
-                        Button("国服") {
-                            region = .cn
-                            openWebView()
+                    if fetchAccountStatus == .progressing {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
                         }
-                        Button("国际服") {
-                            region = .global
-                            openWebView()
+                    } else {
+                        Menu {
+                            Button("国服") {
+                                region = .cn
+                                openWebView()
+                            }
+                            Button("国际服") {
+                                region = .global
+                                openWebView()
+                            }
+                        } label: {
+                            Text("登录米游社帐号")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
                         }
-                    } label: {
-                        Text("登录米游社帐号")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
             }
             
@@ -94,7 +102,11 @@ struct AddAccountView: View {
                         }
                     }
                 } header: {
-                    Text("UID: " + unsavedUid)
+                    HStack {
+                        Text("UID: " + unsavedUid)
+                        Spacer()
+                        Text(unsavedServer.rawValue)
+                    }
                 } footer: {
                     Text("你可以自定义显示在小组件上的帐号名称")
                         .font(.footnote)
@@ -184,6 +196,7 @@ struct AddAccountView: View {
     
     fileprivate func getAccountsForSelect() {
         guard (unsavedCookie != "") else { loginError = .notLoginError(-100, "未获取到登录信息"); return }
+        fetchAccountStatus = .progressing
         API.Features.getUserGameRolesByCookie(unsavedCookie, region) { result in
             switch result {
             case .success(let fetchedAccountArray):
@@ -193,6 +206,7 @@ struct AddAccountView: View {
             case .failure(let fetchError):
                 loginError = fetchError
             }
+            fetchAccountStatus = .finished
         }
     }
 
@@ -204,4 +218,10 @@ struct AddAccountView: View {
 private enum AlertType {
     case accountNotSaved
     case firstAddAccountHint
+}
+
+private enum FetchAccountStatus {
+    case unknown
+    case progressing
+    case finished
 }

@@ -8,47 +8,70 @@
 import SwiftUI
 
 struct CurrentEventNavigator: View {
-    @State var eventContents: [EventModel] = []
+    @Binding var eventContents: [EventModel]
     typealias IntervalDate = (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?)
 
     var body: some View {
-        VStack {
-            if !eventContents.isEmpty {
-                List {
-                    Section(header: Text("当前活动").font(.caption)) {
-                        ForEach(eventContents.sorted {
-                            $0.endAt < $1.endAt
-                        }, id: \.id) { content in
-                            eventItem(event: content)
+        if !eventContents.isEmpty {
+            NavigationLink {
+                AllEventsView(eventContents: $eventContents)
+            } label: {
+                VStack(spacing: 0) {
+                    HStack(spacing: 2) {
+                        Text("即将结束的活动")
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Text("查看全部活动")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Image(systemName: "chevron.forward.circle")
+                            .foregroundColor(.secondary)
+                    }
+                    .font(.caption)
+                    .padding(.top)
+                    .padding(.horizontal, 25)
+                    .padding(.bottom, 13)
+                    HStack(spacing: 3) {
+                        Rectangle()
+                            .foregroundColor(.secondary)
+                            .frame(width: 4)
+                        VStack(spacing: 7) {
+                            ForEach(eventContents.prefix(3), id: \.id) { content in
+                                eventItem(event: content)
+                            }
                         }
                     }
+                    .padding(.bottom)
+                    // padding horizontal = 25 + (rectangle width/2)
+                    .padding(.horizontal, 27)
                 }
-                .listStyle(.plain)
-                .frame(height: 160)
+                .blurMaterialBackground()
+                .padding(.horizontal)
             }
         }
-        .onAppear(perform: getCurrentEvent)
-        .blurMaterialBackground()
-        .padding(.horizontal)
     }
 
     @ViewBuilder
     func eventItem(event: EventModel) -> some View {
-        NavigationLink(destination: eventDetail(event: event)) {
-            HStack {
-                Text(getLocalizedContent(event.name))
-                Spacer()
-                if getRemainDays(event.endAt) == nil {
-                    Text("Error")
-                }
-                else if getRemainDays(event.endAt)!.day! > 0 {
+        HStack {
+            Text(" \(getLocalizedContent(event.name))")
+            Spacer()
+            if getRemainDays(event.endAt) == nil {
+                Text("Error")
+            }
+            else if getRemainDays(event.endAt)!.day! > 0 {
+                HStack(spacing: 0) {
                     Text("剩余 \(getRemainDays(event.endAt)!.day!)天")
                 }
-                else {
+            }
+            else {
+                HStack(spacing: 0) {
                     Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
                 }
             }
         }
+        .font(.caption)
+        .foregroundColor(.primary)
     }
 
     @ViewBuilder
@@ -59,21 +82,8 @@ struct CurrentEventNavigator: View {
     }
 
     func generateHTMLString(banner: String, nameFull: String, description: String) -> String {
-        let format = "<head><style>body{ font-size: 50px;}</style></head>"
+        let format = "<head><style>body{ font-size: 40px; } img{ max-width: 100%; }</style></head>"
         return format + "<body><img src=\"\(banner)\" alt=\"Event Banner\">" + "<p>\(nameFull)</p>" + description + "</body>"
-    }
-
-    func getCurrentEvent() -> Void {
-        DispatchQueue.global().async {
-            API.OpenAPIs.fetchCurrentEvents { result in
-                switch result {
-                case .success(let events):
-                    self.eventContents = [EventModel](events.event.values)
-                case .failure(_):
-                    break
-                }
-            }
-        }
     }
 
     func getLocalizedContent(_ content: EventModel.MultiLanguageContents) -> String {
