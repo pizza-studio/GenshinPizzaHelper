@@ -23,7 +23,9 @@ struct AllEventsView: View {
         ScrollView {
             VStack {
                 ForEach(eventContents, id:\.id) { content in
-                    CardView(content: content)
+                    NavigationLink(destination: eventDetail(event: content)) {
+                        CardView(content: content)
+                    }
                 }
             }
         }
@@ -73,7 +75,13 @@ struct AllEventsView: View {
         }
     }
 
-    // MARK: - GET CARD INDEX NUMBER
+    @ViewBuilder
+    func eventDetail(event: EventModel) -> some View {
+        HTMLStringView(htmlContent: generateHTMLString(banner: getLocalizedContent(event.banner), nameFull: getLocalizedContent(event.nameFull), description: getLocalizedContent(event.description)))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(getLocalizedContent(event.name))
+    }
+
     func getIndex(Card: EventModel)-> Int {
         return eventContents.firstIndex { currentCard in
             return currentCard.id == Card.id
@@ -109,27 +117,4 @@ struct AllEventsView: View {
         let interval = endDate - Date()
         return interval
     }
-}
-
-// MARK: - HIDE FIRST FEW DIGIT
-func hideCardNumber(number: String)->String {
-    var newValue: String = ""
-    let maxCount = number.count - 4
-
-    number.enumerated().forEach {value in
-        if value.offset >= maxCount {
-            let string = String(value.element)
-            newValue.append(contentsOf: string)
-
-        } else {
-            // MARK: - SHOW START
-            let string = String(value.element)
-            if string == " " {
-                newValue.append(contentsOf: " ")
-            } else {
-                newValue.append(contentsOf: "*")
-            }
-        }
-    }
-    return newValue
 }
