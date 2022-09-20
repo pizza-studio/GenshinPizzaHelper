@@ -16,6 +16,8 @@ struct InAppMaterialNavigator: View {
 
     @State var showMaterialDetail = false
 
+    @State var showMaterialRelatedCharacter = false
+
     @Namespace var animationMaterial
 
     var body: some View {
