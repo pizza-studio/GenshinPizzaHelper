@@ -13,51 +13,68 @@ struct CurrentEventNavigator: View {
 
     var body: some View {
         if !eventContents.isEmpty {
-            VStack(spacing: 0) {
-                HStack {
-                    Text("当前活动")
-                        .font(.caption)
-                        .padding(.top)
-                        .padding(.leading, 25)
-                        .padding(.bottom, 10)
-                    Spacer()
+            NavigationLink {
+                AllEventsView(eventContents: $eventContents)
+            } label: {
+                VStack(spacing: 0) {
+                    HStack {
+                        Text("当前活动")
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Text("点击查看更多")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .font(.caption)
+                    .padding(.top)
+                    .padding(.horizontal, 25)
+                    .padding(.bottom, 13)
+                    HStack(spacing: 0) {
+                        Rectangle()
+                            .foregroundColor(.secondary)
+                            .frame(width: 4)
+                        VStack(spacing: 7) {
+                            ForEach(eventContents.prefix(3), id: \.id) { content in
+                                eventItem(event: content)
+                            }
+                        }
+                    }
+                    .padding(.bottom)
+                    // padding horizontal = 25 + (rectangle width/2)
+                    .padding(.horizontal, 27)
                 }
-                ForEach(eventContents.prefix(3), id: \.id) { content in
-                    eventItem(event: content)
-                }
-                NavigationLink(destination: AllEventsView(eventContents: $eventContents)) {
-                    Text("查看全部")
-                        .padding(7)
-                        .font(.caption)
-                }
+                .blurMaterialBackground()
+                .padding(.horizontal)
             }
-            .blurMaterialBackground()
-            .padding(.horizontal)
         }
     }
 
     @ViewBuilder
     func eventItem(event: EventModel) -> some View {
-        NavigationLink(destination: eventDetail(event: event)) {
-            HStack {
-                Text(getLocalizedContent(event.name))
-                Spacer()
-                if getRemainDays(event.endAt) == nil {
-                    Text("Error")
-                }
-                else if getRemainDays(event.endAt)!.day! > 0 {
+        HStack {
+//            HStack(spacing: 0) {
+//                Text("⚬")
+//                    .foregroundColor(.secondary)
+//                Text(" \(getLocalizedContent(event.name))")
+//            }
+            Text(" \(getLocalizedContent(event.name))")
+            Spacer()
+            if getRemainDays(event.endAt) == nil {
+                Text("Error")
+            }
+            else if getRemainDays(event.endAt)!.day! > 0 {
+                HStack(spacing: 0) {
                     Text("剩余 \(getRemainDays(event.endAt)!.day!)天")
                 }
-                else {
+            }
+            else {
+                HStack(spacing: 0) {
                     Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
                 }
-                Image(systemName: "chevron.forward")
             }
-            .font(.callout)
-            .padding(.vertical, 5)
-            .padding(.horizontal, 25)
-            .foregroundColor(.primary)
         }
+        .font(.caption)
+        .foregroundColor(.primary)
     }
 
     @ViewBuilder
