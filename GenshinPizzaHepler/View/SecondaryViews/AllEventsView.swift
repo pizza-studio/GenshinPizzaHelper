@@ -128,7 +128,7 @@ struct AllEventsView: View {
 private extension View {
     func opacityMaterial() -> some View {
         if #available(iOS 15.0, *) {
-            return self.background(.ultraThinMaterial, in: Capsule())
+            return self.background(.thinMaterial, in: Capsule())
         } else {
             return self.background(Color(UIColor.systemBackground).opacity(0.8).clipShape(Capsule()))
         }
