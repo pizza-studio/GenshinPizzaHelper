@@ -22,15 +22,13 @@ struct CurrentEventNavigator: View {
                         .padding(.bottom, 10)
                     Spacer()
                 }
-                ForEach(eventContents.sorted {
-                    $0.endAt < $1.endAt
-                }.prefix(3), id: \.id) { content in
+                ForEach(eventContents.prefix(3), id: \.id) { content in
                     eventItem(event: content)
                 }
                 NavigationLink(destination: AllEventsView(eventContents: $eventContents)) {
                     Text("查看全部")
-                        .padding(10)
-                        .font(.callout)
+                        .padding(7)
+                        .font(.caption)
                 }
             }
             .blurMaterialBackground()
@@ -53,9 +51,10 @@ struct CurrentEventNavigator: View {
                 else {
                     Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
                 }
+                Image(systemName: "chevron.forward")
             }
             .font(.callout)
-            .padding(.vertical, 10)
+            .padding(.vertical, 5)
             .padding(.horizontal, 25)
             .foregroundColor(.primary)
         }

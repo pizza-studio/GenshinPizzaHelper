@@ -38,14 +38,14 @@ struct HomeView: View {
                         CurrentEventNavigator(eventContents: $eventContents)
 
                         // MARK: - 帐号基本信息
-                        HStack {
-                            Text("帐号基本信息")
-                                .font(.caption)
-                            Spacer()
-                        }
-                        .padding(.top)
-                        .padding(.bottom, -10)
-                        .padding(.horizontal, 30)
+//                        HStack {
+//                            Text("帐号基本信息")
+//                                .font(.caption)
+//                            Spacer()
+//                        }
+//                        .padding(.top)
+//                        .padding(.bottom, -10)
+//                        .padding(.horizontal, 30)
 
                         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                             if account.fetchComplete {
