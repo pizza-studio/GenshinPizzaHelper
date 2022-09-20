@@ -10,11 +10,25 @@ import Foundation
 extension WeaponOrTalentMaterial {
     // MARK: - Weapon Material choices
     // 蒙德
-    static let decarabian: WeaponOrTalentMaterial = .init(
-        imageString: "weapon.Decarabian",
-        localizedName: "「高塔孤王」",
-        weekday: .mondayAndThursday)
-    static let borealWolf: WeaponOrTalentMaterial = .init(imageString: "weapon.BorealWolf", localizedName: "「凛风奔狼」", weekday: .tuesdayAndFriday)
+    static let decarabian: WeaponOrTalentMaterial = .init(imageString: "weapon.Decarabian", localizedName: "「高塔孤王」", weekday: .mondayAndThursday)
+    static let borealWolf: WeaponOrTalentMaterial = .init(imageString: "weapon.BorealWolf", localizedName: "「凛风奔狼」", weekday: .tuesdayAndFriday,
+                                                          relatedItem: [
+                                                            .init(imageString: "UI_EquipIcon_Catalyst_Dvalin_Awaken", localizedName: "天空之卷"),
+                                                            .init(imageString: "UI_EquipIcon_Sword_Dvalin_Awaken", localizedName: "天空之刃"),
+                                                            .init(imageString: "UI_EquipIcon_Bow_Dvalin_Awaken", localizedName: "天空之翼"),
+                                                            .init(imageString: "UI_EquipIcon_Bow_Widsith_Awaken", localizedName: "终末嗟叹之诗"),
+                                                            .init(imageString: "UI_EquipIcon_Catalyst_Troupe_Awaken", localizedName: "流浪乐章"),
+                                                            .init(imageString: "UI_EquipIcon_Bow_Fossil_Awaken", localizedName: "祭礼弓"),
+                                                            .init(imageString: "UI_EquipIcon_Sword_Troupe_Awaken", localizedName: "笛剑"),
+                                                            .init(imageString: "UI_EquipIcon_Claymore_Fossil_Awaken", localizedName: "祭礼大剑"),
+                                                            .init(imageString: "UI_EquipIcon_Sword_Bloodstained_Awaken", localizedName: "黑剑"),
+                                                            .init(imageString: "UI_EquipIcon_Pole_Gladiator_Awaken", localizedName: "决斗之枪"),
+                                                            .init(imageString: "UI_EquipIcon_Pole_Everfrost_Awaken", localizedName: "龙脊长枪"),
+                                                            .init(imageString: "UI_EquipIcon_Catalyst_Outlaw_Awaken", localizedName: "暗巷的酒与诗"),
+                                                            .init(imageString: "UI_EquipIcon_Catalyst_Ludiharpastum_Awaken", localizedName: "嘟嘟可故事集"),
+                                                            .init(imageString: "UI_EquipIcon_Sword_Psalmus_Awaken", localizedName: "降临之剑"),
+                                                          ]
+    )
     static let dandelionGladiator: WeaponOrTalentMaterial = .init(imageString: "weapon.DandelionGladiator", localizedName: "「狮牙斗士」", weekday: .wednesdayAndSaturday)
 
     // 璃月

@@ -225,7 +225,7 @@ struct InAppMaterialNavigator: View {
                                 Image(item.imageString)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 75)
+                                    .frame(width: 75, height: 90)
                                 Text(item.displayName)
                                     .font(.footnote)
                                     .foregroundColor(.init(UIColor.darkGray))
