@@ -33,18 +33,20 @@ struct HomeView: View {
                         // MARK: - 今日材料
                         InAppMaterialNavigator()
                             .onAppear(perform: getCurrentEvent)
+                            .padding(.bottom)
 
                         // MARK: - 当前活动
                         CurrentEventNavigator(eventContents: $eventContents)
-                            .padding(.top)
+                            .padding(.bottom)
 
+                        // MARK: - 账号信息
                         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                             if account.fetchComplete {
                                 switch account.result {
                                 case .success(let userData):
                                     if #available (iOS 16, *) {
                                         GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
-                                            .padding()
+                                            .padding([.bottom, .horizontal])
                                             .listRowBackground(Color.white.opacity(0))
                                             .onTapGesture {
     //                                            UserNotificationCenter.shared.createAllNotification(for: account.config.name!, with: userData, uid: account.config.uid!)
@@ -73,7 +75,7 @@ struct HomeView: View {
                                             }
                                     } else {
                                         GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
-                                            .padding()
+                                            .padding([.bottom, .horizontal])
                                             .listRowBackground(Color.white.opacity(0))
                                             .onTapGesture {
                                                 simpleTaptic(type: .medium)
@@ -106,13 +108,13 @@ struct HomeView: View {
                                                         .padding(.horizontal)
                                                 }
                                             }
-                                            .padding(.horizontal)
+                                            .padding([.bottom, .horizontal])
                                         }
                                     }
                                 }
                             } else {
                                 ProgressView()
-                                    .padding()
+                                    .padding([.bottom, .horizontal])
                             }
 
                         }
