@@ -29,12 +29,19 @@ struct CurrentEventNavigator: View {
                     .padding(.top)
                     .padding(.horizontal, 25)
                     .padding(.bottom, 13)
-                    VStack(spacing: 7) {
-                        ForEach(eventContents.prefix(3), id: \.id) { content in
-                            eventItem(event: content)
+                    HStack(spacing: 0) {
+                        Rectangle()
+                            .foregroundColor(.secondary)
+                            .frame(width: 4)
+                        VStack(spacing: 7) {
+                            ForEach(eventContents.prefix(3), id: \.id) { content in
+                                eventItem(event: content)
+                            }
                         }
                     }
                     .padding(.bottom)
+                    // padding horizontal = 25 + (rectangle width/2)
+                    .padding(.horizontal, 27)
                 }
                 .blurMaterialBackground()
                 .padding(.horizontal)
@@ -45,15 +52,15 @@ struct CurrentEventNavigator: View {
     @ViewBuilder
     func eventItem(event: EventModel) -> some View {
         HStack {
-            HStack(spacing: 0) {
-                Text("⚬")
+//            HStack(spacing: 0) {
+//                Text("⚬")
 //                    .foregroundColor(.secondary)
-                Text(" \(getLocalizedContent(event.name))")
-            }
+//                Text(" \(getLocalizedContent(event.name))")
+//            }
+            Text(" \(getLocalizedContent(event.name))")
             Spacer()
             if getRemainDays(event.endAt) == nil {
                 Text("Error")
-//                EmptyView()
             }
             else if getRemainDays(event.endAt)!.day! > 0 {
                 HStack(spacing: 0) {
@@ -67,7 +74,6 @@ struct CurrentEventNavigator: View {
             }
         }
         .font(.caption)
-        .padding(.horizontal, 25)
         .foregroundColor(.primary)
     }
 
