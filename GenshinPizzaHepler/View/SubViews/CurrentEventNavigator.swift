@@ -68,7 +68,7 @@ struct CurrentEventNavigator: View {
     }
 
     func generateHTMLString(banner: String, nameFull: String, description: String) -> String {
-        let format = "<head><style>body{ font-size: 50px;}</style></head>"
+        let format = "<head><style>body{ font-size: 40px; } img{ max-width: 100%; }</style></head>"
         return format + "<body><img src=\"\(banner)\" alt=\"Event Banner\">" + "<p>\(nameFull)</p>" + description + "</body>"
     }
 
