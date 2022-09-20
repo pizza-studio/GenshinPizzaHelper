@@ -7,52 +7,35 @@
 
 import Foundation
 
-struct WeaponMaterial {
+struct WeaponOrTalentMaterial {
     let imageString: String
     let localizedName: String
     let weekday: MaterialWeekday
+    var relatedItem: [RelatedItem] = []
 
-    init(imageString: String, localizedName: String, weekday: MaterialWeekday) {
-        self.imageString = imageString
-        let localizedString = NSLocalizedString(localizedName, comment: "weapon name")
-        self.localizedName = String(format: localizedString)
-        self.weekday = weekday
+    var displayName: String {
+        NSLocalizedString(localizedName, comment: "weapon or talent material name")
+    }
+
+    struct RelatedItem {
+        let imageString: String
+        let localizedName: String
     }
 }
 
 struct WeaponMaterialProvider {
     var weekday: MaterialWeekday = .today()
 
-    var todaysMaterials: [WeaponMaterial] {
-        WeaponMaterial.allMaterialsOf(weekday: weekday)
-    }
-}
-
-struct TalentMaterial {
-    let imageString: String
-    let localizedName: String
-    let weekday: MaterialWeekday
-
-    init(imageString: String, localizedName: String, weekday: MaterialWeekday) {
-        self.imageString = imageString
-        let localizedString = NSLocalizedString(localizedName, comment: "talent material name")
-        self.localizedName = String(format: localizedString)
-        self.weekday = weekday
+    var todaysMaterials: [WeaponOrTalentMaterial] {
+        WeaponOrTalentMaterial.allWeaponMaterialsOf(weekday: weekday)
     }
 }
 
 struct TalentMaterialProvider {
     var weekday: MaterialWeekday = .today()
 
-    var todaysMaterials: [TalentMaterial] {
-        return TalentMaterial.allMaterialsOf(weekday: weekday)
-    }
-
-    var todaysMaterialImageString: [String] {
-        todaysMaterials.map { $0.imageString }
-    }
-    var todaysMaterialName: [String] {
-        todaysMaterials.map { $0.localizedName }
+    var todaysMaterials: [WeaponOrTalentMaterial] {
+        return WeaponOrTalentMaterial.allTalentMaterialsOf(weekday: weekday)
     }
 }
 

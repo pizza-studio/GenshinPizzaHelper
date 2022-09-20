@@ -16,53 +16,94 @@ struct InAppMaterialNavigator: View {
 
     @State var showMaterialDetail = false
 
-    @State var showMaterialRelatedCharacter = false
+    @State var showRelatedDetailOfMaterial: WeaponOrTalentMaterial?
 
     @Namespace var animationMaterial
+
+    let imageWidth = CGFloat(50)
 
     var body: some View {
         VStack {
             HStack {
                 if today != .sunday {
-                    Text("今日材料")
-                        .font(.caption)
-                        .padding(.top)
-                        .padding(.leading, 25)
-                        .padding(.bottom, -10)
-                    Spacer()
-                    Text(getDate())
-                        .font(.caption)
-                        .padding(.top)
-                        .padding(.trailing, 25)
-                        .padding(.bottom, -10)
+                    Group {
+                        Text("今日材料")
+                            .padding(.leading, 25)
+                        if showMaterialDetail {
+                            Spacer()
+                            Text("点击材料查看关联角色")
+                                .multilineTextAlignment(.center)
+                        }
+                        Spacer()
+                        if showMaterialDetail == false {
+                            Text(getDate())
+                                .padding(.trailing, 25)
+                        } else {
+                            Button("隐藏") {
+                                withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                                    showRelatedDetailOfMaterial = nil
+                                    showMaterialDetail = false
+                                }
+                            }
+                            .padding(.trailing, 25)
+                        }
+                    }
+                    .font(.caption)
+                    .padding(.top)
+                    .padding(.bottom, -10)
                 } else {
                     Text("今日材料")
                         .font(.caption)
                         .padding()
                     Spacer()
-                    Text("所有材料均可获取")
+                    Text(showMaterialDetail ? "点击材料查看关联角色" : "所有材料均可获取")
                         .multilineTextAlignment(.center)
                         .font(.caption)
                         .padding()
                     Spacer()
-                    Text(getDate())
+                    if showMaterialDetail == false {
+                        Text(getDate())
+                            .font(.caption)
+                            .padding()
+                    } else {
+                        Button("隐藏") {
+                            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                                showRelatedDetailOfMaterial = nil
+                                showMaterialDetail = false
+                            }
+                        }
                         .font(.caption)
                         .padding()
+                    }
                 }
             }
             if !showMaterialDetail {
                 materials()
             } else {
-                materialsDetail()
-                    .padding(.vertical)
+                if showRelatedDetailOfMaterial == nil {
+                    materialsDetail()
+                        .padding(.vertical)
+                } else {
+                    materialRelatedItemView()
+                        .padding()
+                }
+
             }
         }
         .blurMaterialBackground()
         .padding(.horizontal)
         .onTapGesture {
-            simpleTaptic(type: .light)
-            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
-                showMaterialDetail.toggle()
+            if !showMaterialDetail {
+                simpleTaptic(type: .light)
+                withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                    showMaterialDetail = true
+                }
+            }
+            if showRelatedDetailOfMaterial != nil {
+                simpleTaptic(type: .light)
+                withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                    showRelatedDetailOfMaterial = nil
+                }
             }
         }
     }
@@ -98,37 +139,90 @@ struct InAppMaterialNavigator: View {
 
     @ViewBuilder
     func materialsDetail() -> some View {
-        let imageWidth = CGFloat(50)
-        HStack {
-            Spacer()
-            VStack(alignment: .leading) {
-                ForEach(talentMaterialProvider.todaysMaterials, id: \.imageString) { material in
+        VStack {
+            HStack {
+                Spacer()
+                VStack(alignment: .leading) {
+                    ForEach(talentMaterialProvider.todaysMaterials, id: \.imageString) { material in
+                        HStack {
+                            Image(material.imageString)
+                                .resizable()
+                                .scaledToFit()
+                                .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
+                                .frame(width: imageWidth)
+                            Text(material.localizedName)
+                                .foregroundColor(Color("materialTextColor"))
+                                .matchedGeometryEffect(id: material.localizedName, in: animationMaterial)
+                        }
+                        .onTapGesture {
+                            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
+                                showRelatedDetailOfMaterial = material
+                            }
+                        }
+                    }
+                }
+                Spacer()
+                VStack(alignment: .leading) {
+                    ForEach(weaponMaterialProvider.todaysMaterials, id: \.imageString) { material in
+                        HStack {
+                            Image(material.imageString)
+                                .resizable()
+                                .scaledToFit()
+                                .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
+                                .frame(width: imageWidth)
+                            Text(material.localizedName)
+                                .foregroundColor(Color("materialTextColor"))
+                                .matchedGeometryEffect(id: material.localizedName, in: animationMaterial)
+                        }
+                        .onTapGesture {
+                            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
+                                showRelatedDetailOfMaterial = material
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            }
+        }
+    }
+
+    @ViewBuilder
+    func materialRelatedItemView() -> some View {
+        if let material = showRelatedDetailOfMaterial {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Image(material.imageString)
+                        .resizable()
+                        .scaledToFit()
+                        .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
+                        .frame(width: imageWidth)
+                    Text(material.localizedName)
+                        .foregroundColor(Color("materialTextColor"))
+                        .matchedGeometryEffect(id: material.localizedName, in: animationMaterial)
+                }
+                ScrollView(.horizontal) {
                     HStack {
-                        Image(material.imageString)
-                            .resizable()
-                            .scaledToFit()
-                            .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
-                            .frame(width: imageWidth)
-                        Text(material.localizedName)
-                            .foregroundColor(Color("materialTextColor"))
+                        ForEach(material.relatedItem, id: \.imageString) { item in
+                            VStack {
+                                Image(item.imageString)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 75)
+                                Text(item.localizedName)
+                                    .font(.footnote)
+                                    .foregroundColor(.init(UIColor.darkGray))
+                            }
+                        }
                     }
                 }
             }
-            Spacer()
-            VStack(alignment: .leading) {
-                ForEach(weaponMaterialProvider.todaysMaterials, id: \.imageString) { material in
-                    HStack {
-                        Image(material.imageString)
-                            .resizable()
-                            .scaledToFit()
-                            .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
-                            .frame(width: imageWidth)
-                        Text(material.localizedName)
-                            .foregroundColor(Color("materialTextColor"))
-                    }
+            .onTapGesture {
+                withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
+                    showRelatedDetailOfMaterial = nil
                 }
             }
-            Spacer()
+        } else {
+            EmptyView()
         }
     }
 
