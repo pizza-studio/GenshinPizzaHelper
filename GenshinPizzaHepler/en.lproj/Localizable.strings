@@ -530,7 +530,9 @@
 "工具" = "Tools";
 
 // Home View
-"当前活动" = "Current Events";
+"当前活动" = "Ongoing Events";
+"即将结束的活动" = "Soon to end events";
+"查看全部活动" = "All ongoing events";
 "帐号基本信息" = "Account Basic Infos";
 "剩余 %lld天" = "%lld days left";
 "剩余 %lld小时" = "%lld hours left";

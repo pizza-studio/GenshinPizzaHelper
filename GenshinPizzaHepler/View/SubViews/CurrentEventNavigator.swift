@@ -17,19 +17,21 @@ struct CurrentEventNavigator: View {
                 AllEventsView(eventContents: $eventContents)
             } label: {
                 VStack(spacing: 0) {
-                    HStack {
+                    HStack(spacing: 2) {
                         Text("即将结束的活动")
                             .foregroundColor(.primary)
                         Spacer()
                         Text("查看全部活动")
                             .font(.caption)
                             .foregroundColor(.secondary)
+                        Image(systemName: "chevron.forward.circle")
+                            .foregroundColor(.secondary)
                     }
                     .font(.caption)
                     .padding(.top)
                     .padding(.horizontal, 25)
                     .padding(.bottom, 13)
-                    HStack(spacing: 0) {
+                    HStack(spacing: 3) {
                         Rectangle()
                             .foregroundColor(.secondary)
                             .frame(width: 4)
