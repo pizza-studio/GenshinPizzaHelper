@@ -23,7 +23,7 @@ struct CurrentEventNavigator: View {
                         Spacer()
                         Text("点击查看更多")
                             .font(.caption)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                     }
                     .font(.caption)
                     .padding(.top)
@@ -45,7 +45,11 @@ struct CurrentEventNavigator: View {
     @ViewBuilder
     func eventItem(event: EventModel) -> some View {
         HStack {
-            Text("⚬ \(getLocalizedContent(event.name))")
+            HStack(spacing: 0) {
+                Text("⚬")
+//                    .foregroundColor(.secondary)
+                Text(" \(getLocalizedContent(event.name))")
+            }
             Spacer()
             if getRemainDays(event.endAt) == nil {
                 Text("Error")
@@ -62,7 +66,7 @@ struct CurrentEventNavigator: View {
                 }
             }
         }
-        .font(.footnote)
+        .font(.caption)
         .padding(.horizontal, 25)
         .foregroundColor(.primary)
     }
