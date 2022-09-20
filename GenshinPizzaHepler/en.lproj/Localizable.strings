@@ -386,7 +386,7 @@
 "解码错误：请检查网络环境" = "Decode Error: please check your network status";
 "网络错误" = "Network Error";
 "未获取到登录信息，请重试" = "Failed to fetch your login infos, please re-login HoYoLAB";
-"未知错误码：%@" = "Unknown Error %@";
+"未知错误码：%lld" = "Unknown Error %lld";
 
 "无返回数据" = "No Response Data";
 "无响应" = "No Response";

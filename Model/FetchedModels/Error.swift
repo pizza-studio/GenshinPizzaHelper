@@ -64,7 +64,7 @@ extension FetchError {
         case .notLoginError( _, _):
             return "未获取到登录信息，请重试".localized
         case .unknownError(let retcode, _):
-            return String(format: NSLocalizedString("未知错误码：%@", comment: "未知错误码：%@"), retcode)
+            return String(format: NSLocalizedString("未知错误码：%lld", comment: "未知错误码：%lld"), retcode)
         default:
             return ""
         }
