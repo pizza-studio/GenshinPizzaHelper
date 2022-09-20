@@ -135,16 +135,18 @@ struct HomeView: View {
     }
 
     func getCurrentEvent() -> Void {
-        DispatchQueue.global().async {
-            API.OpenAPIs.fetchCurrentEvents { result in
-                switch result {
-                case .success(let events):
-                    self.eventContents = [EventModel](events.event.values)
-                    self.eventContents = eventContents.sorted {
-                        $0.endAt < $1.endAt
+        if self.eventContents.isEmpty {
+            DispatchQueue.global().async {
+                API.OpenAPIs.fetchCurrentEvents { result in
+                    switch result {
+                    case .success(let events):
+                        self.eventContents = [EventModel](events.event.values)
+                        self.eventContents = eventContents.sorted {
+                            $0.endAt < $1.endAt
+                        }
+                    case .failure(_):
+                        break
                     }
-                case .failure(_):
-                    break
                 }
             }
         }
