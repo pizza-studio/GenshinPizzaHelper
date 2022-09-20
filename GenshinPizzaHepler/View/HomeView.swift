@@ -140,6 +140,9 @@ struct HomeView: View {
                 switch result {
                 case .success(let events):
                     self.eventContents = [EventModel](events.event.values)
+                    self.eventContents = eventContents.sorted {
+                        $0.endAt < $1.endAt
+                    }
                 case .failure(_):
                     break
                 }
