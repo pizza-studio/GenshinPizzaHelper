@@ -17,6 +17,9 @@ struct MoreView: View {
         List {
             Section {
                 Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
+                NavigationLink(destination: BackgroundsPreviewView()) {
+                    Text("背景名片预览")
+                }
             }
             // FIXME: Proxy not implenmented
 //            Section {
@@ -25,14 +28,8 @@ struct MoreView: View {
 //                }
 //            }
             Section {
-                NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/faq.html").navigationTitle("FAQ")) {
-                    Text("常见使用问题（FAQ）")
-                }
                 NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/policy.html").navigationTitle("用户协议")) {
                     Text("用户协议与免责声明")
-                }
-                NavigationLink(destination: ContactUsView()) {
-                    Text("开发者与联系方式")
                 }
                 NavigationLink(destination: AboutView()) {
                     Text("关于小助手")
