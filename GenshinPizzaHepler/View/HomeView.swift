@@ -38,14 +38,14 @@ struct HomeView: View {
                         CurrentEventNavigator(eventContents: $eventContents)
 
                         // MARK: - 帐号基本信息
-                        HStack {
-                            Text("帐号基本信息")
-                                .font(.caption)
-                            Spacer()
-                        }
-                        .padding(.top)
-                        .padding(.bottom, -10)
-                        .padding(.horizontal, 30)
+//                        HStack {
+//                            Text("帐号基本信息")
+//                                .font(.caption)
+//                            Spacer()
+//                        }
+//                        .padding(.top)
+//                        .padding(.bottom, -10)
+//                        .padding(.horizontal, 30)
 
                         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                             if account.fetchComplete {
@@ -135,13 +135,18 @@ struct HomeView: View {
     }
 
     func getCurrentEvent() -> Void {
-        DispatchQueue.global().async {
-            API.OpenAPIs.fetchCurrentEvents { result in
-                switch result {
-                case .success(let events):
-                    self.eventContents = [EventModel](events.event.values)
-                case .failure(_):
-                    break
+        if self.eventContents.isEmpty {
+            DispatchQueue.global().async {
+                API.OpenAPIs.fetchCurrentEvents { result in
+                    switch result {
+                    case .success(let events):
+                        self.eventContents = [EventModel](events.event.values)
+                        self.eventContents = eventContents.sorted {
+                            $0.endAt < $1.endAt
+                        }
+                    case .failure(_):
+                        break
+                    }
                 }
             }
         }

@@ -22,15 +22,13 @@ struct CurrentEventNavigator: View {
                         .padding(.bottom, 10)
                     Spacer()
                 }
-                ForEach(eventContents.sorted {
-                    $0.endAt < $1.endAt
-                }.prefix(3), id: \.id) { content in
+                ForEach(eventContents.prefix(3), id: \.id) { content in
                     eventItem(event: content)
                 }
                 NavigationLink(destination: AllEventsView(eventContents: $eventContents)) {
                     Text("查看全部")
-                        .padding(10)
-                        .font(.callout)
+                        .padding(7)
+                        .font(.caption)
                 }
             }
             .blurMaterialBackground()
@@ -53,9 +51,11 @@ struct CurrentEventNavigator: View {
                 else {
                     Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
                 }
+                Image(systemName: "chevron.forward")
             }
             .font(.callout)
-            .padding(10)
+            .padding(.vertical, 5)
+            .padding(.horizontal, 25)
             .foregroundColor(.primary)
         }
     }
@@ -68,7 +68,7 @@ struct CurrentEventNavigator: View {
     }
 
     func generateHTMLString(banner: String, nameFull: String, description: String) -> String {
-        let format = "<head><style>body{ font-size: 50px;}</style></head>"
+        let format = "<head><style>body{ font-size: 40px; } img{ max-width: 100%; }</style></head>"
         return format + "<body><img src=\"\(banner)\" alt=\"Event Banner\">" + "<p>\(nameFull)</p>" + description + "</body>"
     }
 
