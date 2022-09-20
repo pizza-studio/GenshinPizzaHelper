@@ -26,35 +26,45 @@ struct InAppMaterialNavigator: View {
         VStack {
             HStack {
                 if today != .sunday {
-                    Group {
-                        Text("今日材料")
-                            .padding(.leading, 25)
-                        if showRelatedDetailOfMaterial != nil {
-                            Spacer()
-                            Text("左右滑动查看所有角色")
-                                .multilineTextAlignment(.center)
-                        } else if showMaterialDetail {
-                            Spacer()
-                            Text("点击材料查看关联角色")
-                                .multilineTextAlignment(.center)
-                        }
+                    Text("今日材料")
+                        .padding(.leading, 25)
+                        .font(.caption)
+                        .padding(.top)
+                        .padding(.bottom, -10)
+                    if showRelatedDetailOfMaterial != nil {
                         Spacer()
-                        if showMaterialDetail == false {
-                            Text(getDate())
-                                .padding(.trailing, 25)
-                        } else {
-                            Button("隐藏") {
-                                withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
-                                    showRelatedDetailOfMaterial = nil
-                                    showMaterialDetail = false
-                                }
-                            }
-                            .padding(.trailing, 25)
-                        }
+                        Text("左右滑动查看所有角色")
+                            .multilineTextAlignment(.center)
+                            .font(.caption)
+                            .padding(.top)
+                            .padding(.bottom, -10)
+                    } else if showMaterialDetail {
+                        Spacer()
+                        Text("点击材料查看关联角色")
+                            .multilineTextAlignment(.center)
+                            .font(.caption)
+                            .padding(.top)
+                            .padding(.bottom, -10)
                     }
-                    .font(.caption)
-                    .padding(.top)
-                    .padding(.bottom, -10)
+                    Spacer()
+                    if showMaterialDetail == false {
+                        Text(getDate())
+                            .padding(.trailing, 25)
+                            .font(.caption)
+                            .padding(.top)
+                            .padding(.bottom, -10)
+                    } else {
+                        Button("隐藏") {
+                            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                                showRelatedDetailOfMaterial = nil
+                                showMaterialDetail = false
+                            }
+                        }
+                        .padding(.trailing, 25)
+                        .font(.caption)
+                        .padding(.top)
+                        .padding(.bottom, -10)
+                    }
                 } else {
                     Text("今日材料")
                         .font(.caption)
