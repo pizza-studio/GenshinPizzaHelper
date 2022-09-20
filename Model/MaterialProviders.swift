@@ -20,6 +20,10 @@ struct WeaponOrTalentMaterial {
     struct RelatedItem {
         let imageString: String
         let localizedName: String
+
+        var displayName: String {
+            localizedName.localized
+        }
     }
 }
 

@@ -29,7 +29,11 @@ struct InAppMaterialNavigator: View {
                     Group {
                         Text("今日材料")
                             .padding(.leading, 25)
-                        if showMaterialDetail {
+                        if showRelatedDetailOfMaterial != nil {
+                            Spacer()
+                            Text("左右滑动查看所有角色")
+                                .multilineTextAlignment(.center)
+                        } else if showMaterialDetail {
                             Spacer()
                             Text("点击材料查看关联角色")
                                 .multilineTextAlignment(.center)
@@ -56,10 +60,14 @@ struct InAppMaterialNavigator: View {
                         .font(.caption)
                         .padding()
                     Spacer()
-                    Text(showMaterialDetail ? "点击材料查看关联角色" : "所有材料均可获取")
-                        .multilineTextAlignment(.center)
-                        .font(.caption)
-                        .padding()
+                    Group {
+                        if showMaterialDetail { Text("点击材料查看关联角色") }
+                        else if showRelatedDetailOfMaterial != nil { Text("左右滑动查看所有角色") }
+                        else { Text("所有材料均可获取")}
+                    }
+                    .multilineTextAlignment(.center)
+                    .font(.caption)
+                    .padding()
                     Spacer()
                     if showMaterialDetail == false {
                         Text(getDate())
@@ -150,9 +158,9 @@ struct InAppMaterialNavigator: View {
                                 .scaledToFit()
                                 .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
                                 .frame(width: imageWidth)
-                            Text(material.localizedName)
+                            Text(material.displayName)
                                 .foregroundColor(Color("materialTextColor"))
-                                .matchedGeometryEffect(id: material.localizedName, in: animationMaterial)
+                                .matchedGeometryEffect(id: material.displayName, in: animationMaterial)
                         }
                         .onTapGesture {
                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
@@ -170,9 +178,9 @@ struct InAppMaterialNavigator: View {
                                 .scaledToFit()
                                 .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
                                 .frame(width: imageWidth)
-                            Text(material.localizedName)
+                            Text(material.displayName)
                                 .foregroundColor(Color("materialTextColor"))
-                                .matchedGeometryEffect(id: material.localizedName, in: animationMaterial)
+                                .matchedGeometryEffect(id: material.displayName, in: animationMaterial)
                         }
                         .onTapGesture {
                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
@@ -196,9 +204,9 @@ struct InAppMaterialNavigator: View {
                         .scaledToFit()
                         .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
                         .frame(width: imageWidth)
-                    Text(material.localizedName)
+                    Text(material.displayName)
                         .foregroundColor(Color("materialTextColor"))
-                        .matchedGeometryEffect(id: material.localizedName, in: animationMaterial)
+                        .matchedGeometryEffect(id: material.displayName, in: animationMaterial)
                 }
                 ScrollView(.horizontal) {
                     HStack {
@@ -208,7 +216,7 @@ struct InAppMaterialNavigator: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 75)
-                                Text(item.localizedName)
+                                Text(item.displayName)
                                     .font(.footnote)
                                     .foregroundColor(.init(UIColor.darkGray))
                             }
