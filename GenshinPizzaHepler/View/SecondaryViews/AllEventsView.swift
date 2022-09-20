@@ -11,10 +11,7 @@ import SwiftUI
 struct AllEventsView: View {
     @Binding var eventContents: [EventModel]
     typealias IntervalDate = (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?)
-    // MARK: - CARD ANIAMTION PROPERTIES
     @State var expandCards: Bool = false
-
-    // MARK: TRANSACTION LIST PROPERTIES
     @State var currentCard: EventModel?
     @State var showDetailTransaction: Bool = false
     @Namespace var animation

@@ -18,10 +18,10 @@ struct CurrentEventNavigator: View {
             } label: {
                 VStack(spacing: 0) {
                     HStack {
-                        Text("当前活动")
+                        Text("即将结束的活动")
                             .foregroundColor(.primary)
                         Spacer()
-                        Text("点击查看更多")
+                        Text("查看全部活动")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -52,11 +52,6 @@ struct CurrentEventNavigator: View {
     @ViewBuilder
     func eventItem(event: EventModel) -> some View {
         HStack {
-//            HStack(spacing: 0) {
-//                Text("⚬")
-//                    .foregroundColor(.secondary)
-//                Text(" \(getLocalizedContent(event.name))")
-//            }
             Text(" \(getLocalizedContent(event.name))")
             Spacer()
             if getRemainDays(event.endAt) == nil {
