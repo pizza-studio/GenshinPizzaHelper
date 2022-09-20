@@ -8,6 +8,16 @@
 import Foundation
 
 extension WeaponMaterial {
+    // 所有材料
+    static let allMaterials: [WeaponMaterial] = [
+        .decarabian, .borealWolf, .dandelionGladiator, .guyun, .mistVeiled, .aerosiderite, .distantSea, .narukami, .kijin, .forestDew, .oasisGarden, .scorchingMight
+    ]
+    static func allMaterialsOf(weekday: MaterialWeekday) -> [WeaponMaterial] {
+        allMaterials.filter { material in
+            (material.weekday == weekday) || (weekday == .sunday)
+        }
+    }
+
     // MARK: - Weapon Material choices
     // 蒙德
     static let decarabian: WeaponMaterial = .init(
@@ -31,19 +41,19 @@ extension WeaponMaterial {
     static let forestDew: WeaponMaterial = .init(imageString: "weapon.ForestDew", localizedName: "「谧林涓露」", weekday: .mondayAndThursday)
     static let oasisGarden: WeaponMaterial = .init(imageString: "weapon.OasisGarden", localizedName: "「绿洲花园」", weekday: .tuesdayAndFriday)
     static let scorchingMight: WeaponMaterial = .init(imageString: "weapon.ScorchingMight", localizedName: "「烈日威权」", weekday: .wednesdayAndSaturday)
+}
 
+extension TalentMaterial {
     // 所有材料
-    static let allMaterials: [WeaponMaterial] = [
-        .decarabian, .borealWolf, .dandelionGladiator, .guyun, .mistVeiled, .aerosiderite, .distantSea, .narukami, .kijin, .forestDew, .oasisGarden, .scorchingMight
+    static let allMaterials: [TalentMaterial] = [
+        .freedom, .resistance, .ballad, .prosperity, .diligence, .gold, .transience, .elegance, .light, .admonition, .ingenuity, .praxis
     ]
-    static func allMaterialsOf(weekday: MaterialWeekday) -> [WeaponMaterial] {
+    static func allMaterialsOf(weekday: MaterialWeekday) -> [TalentMaterial] {
         allMaterials.filter { material in
             (material.weekday == weekday) || (weekday == .sunday)
         }
     }
-}
 
-extension TalentMaterial {
     // MARK: - Talent Material choices
     // 蒙德
     static let freedom: TalentMaterial = .init(imageString: "talent.Freedom", localizedName: "「自由」", weekday: .mondayAndThursday)
@@ -64,14 +74,4 @@ extension TalentMaterial {
     static let admonition: TalentMaterial = .init(imageString: "talent.Admonition", localizedName: "「诤言」", weekday: .mondayAndThursday)
     static let ingenuity: TalentMaterial = .init(imageString: "talent.Ingenuity", localizedName: "「巧思」", weekday: .tuesdayAndFriday)
     static let praxis: TalentMaterial = .init(imageString: "talent.Praxis", localizedName: "「笃行」", weekday: .wednesdayAndSaturday)
-
-    // 所有材料
-    static let allMaterials: [TalentMaterial] = [
-        .freedom, .resistance, .ballad, .prosperity, .diligence, .gold, .transience, .elegance, .light, .admonition, .ingenuity, .praxis
-    ]
-    static func allMaterialsOf(weekday: MaterialWeekday) -> [TalentMaterial] {
-        allMaterials.filter { material in
-            (material.weekday == weekday) || (weekday == .sunday)
-        }
-    }
 }
