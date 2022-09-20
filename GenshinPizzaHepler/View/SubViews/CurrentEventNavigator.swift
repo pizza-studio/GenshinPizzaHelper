@@ -55,7 +55,8 @@ struct CurrentEventNavigator: View {
                 }
             }
             .font(.callout)
-            .padding(10)
+            .padding(.vertical, 10)
+            .padding(.horizontal, 25)
             .foregroundColor(.primary)
         }
     }
