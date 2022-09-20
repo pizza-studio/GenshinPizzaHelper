@@ -35,9 +35,16 @@ struct AllEventsView: View {
 
     // MARK: CARD VIEW
     @ViewBuilder
-    func CardView(content: EventModel)->some View {
+    func CardView(content: EventModel) -> some View {
         VStack {
             ZStack {
+                HStack {
+                    Spacer()
+                    Text("\(getLocalizedContent(content.name))")
+                        .foregroundColor(.gray)
+                        .padding(.horizontal)
+                        .font(.caption)
+                }
                 WebImage(urlStr: getLocalizedContent(content.banner))
                     .scaledToFill()
                     .cornerRadius(20)
@@ -47,24 +54,23 @@ struct AllEventsView: View {
                     HStack {
                         HStack(spacing: 2) {
                             Image(systemName: "hourglass.circle")
-                            if getRemainDays(content.endAt) == nil {
-                                Text("Error")
-                                    .font(.caption)
-                                    .padding(.trailing, 2)
+                                .font(.caption)
+                            Group {
+                                if getRemainDays(content.endAt) == nil {
+                                    Text("Error")
+                                }
+                                else if getRemainDays(content.endAt)!.day! > 0 {
+                                    Text("剩余 \(getRemainDays(content.endAt)!.day!)天")
+                                }
+                                else {
+                                    Text("剩余 \(getRemainDays(content.endAt)!.hour!)小时")
+                                }
                             }
-                            else if getRemainDays(content.endAt)!.day! > 0 {
-                                Text("剩余 \(getRemainDays(content.endAt)!.day!)天")
-                                    .font(.caption)
-                                    .padding(.trailing, 2)
-                            }
-                            else {
-                                Text("剩余 \(getRemainDays(content.endAt)!.hour!)小时")
-                                    .font(.caption)
-                                    .padding(.trailing, 2)
-                            }
+                            .padding(.trailing, 2)
+                            .font(.caption)
                         }
                         .padding(2)
-                        .background(Color(UIColor.systemBackground).opacity(0.8).clipShape(Capsule()))
+                        .opacityMaterial()
                         Spacer()
                     }
                     .foregroundColor(.primary)
@@ -116,5 +122,15 @@ struct AllEventsView: View {
         }
         let interval = endDate - Date()
         return interval
+    }
+}
+
+private extension View {
+    func opacityMaterial() -> some View {
+        if #available(iOS 15.0, *) {
+            return self.background(.ultraThinMaterial, in: Capsule())
+        } else {
+            return self.background(Color(UIColor.systemBackground).opacity(0.8).clipShape(Capsule()))
+        }
     }
 }

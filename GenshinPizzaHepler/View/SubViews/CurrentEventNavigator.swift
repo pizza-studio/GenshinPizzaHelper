@@ -53,18 +53,12 @@ struct CurrentEventNavigator: View {
             }
             else if getRemainDays(event.endAt)!.day! > 0 {
                 HStack(spacing: 0) {
-                    Text("剩余")
-                    Text("\(getRemainDays(event.endAt)!.day!)")
-                        .foregroundColor(.accentColor)
-                    Text("天")
+                    Text("剩余 \(getRemainDays(event.endAt)!.day!)天")
                 }
             }
             else {
                 HStack(spacing: 0) {
-                    Text("剩余")
-                    Text("\(getRemainDays(event.endAt)!.hour!)")
-                        .foregroundColor(.accentColor)
-                    Text("小时")
+                    Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
                 }
             }
         }
