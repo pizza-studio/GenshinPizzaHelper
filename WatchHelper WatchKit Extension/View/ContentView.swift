@@ -59,6 +59,7 @@ struct ContentView: View {
             case .inactive:
                 if #available(watchOSApplicationExtension 9.0, *) {
                     WidgetCenter.shared.reloadAllTimelines()
+                    WidgetCenter.shared.invalidateConfigurationRecommendations()
                 }
             default:
                 break
