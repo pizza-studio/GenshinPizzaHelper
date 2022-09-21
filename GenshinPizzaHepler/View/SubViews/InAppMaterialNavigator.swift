@@ -31,21 +31,6 @@ struct InAppMaterialNavigator: View {
                         .font(.caption)
                         .padding(.top)
                         .padding(.bottom, -10)
-                    if showRelatedDetailOfMaterial != nil {
-                        Spacer()
-                        Text("左右滑动查看所有角色")
-                            .multilineTextAlignment(.center)
-                            .font(.caption)
-                            .padding(.top)
-                            .padding(.bottom, -10)
-                    } else if showMaterialDetail {
-                        Spacer()
-                        Text("点击材料查看关联角色")
-                            .multilineTextAlignment(.center)
-                            .font(.caption)
-                            .padding(.top)
-                            .padding(.bottom, -10)
-                    }
                     Spacer()
                     if showMaterialDetail == false {
                         Text(getDate())
@@ -157,7 +142,7 @@ struct InAppMaterialNavigator: View {
 
     @ViewBuilder
     func materialsDetail() -> some View {
-        VStack {
+        VStack(alignment: .trailing) {
             HStack {
                 Spacer()
                 VStack(alignment: .leading) {
@@ -201,39 +186,53 @@ struct InAppMaterialNavigator: View {
                 }
                 Spacer()
             }
+            Spacer()
+            Text("点击材料查看更多")
+                .font(.caption)
+                .padding(.trailing)
+                .foregroundColor(.secondary)
+            Spacer()
         }
     }
 
     @ViewBuilder
     func materialRelatedItemView() -> some View {
         if let material = showRelatedDetailOfMaterial {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack {
-                    Image(material.imageString)
-                        .resizable()
-                        .scaledToFit()
-                        .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
-                        .frame(width: imageWidth)
-                    Text(material.displayName)
-                        .foregroundColor(Color("materialTextColor"))
-                        .matchedGeometryEffect(id: material.displayName, in: animationMaterial)
-                }
-                ScrollView(.horizontal) {
+            VStack(alignment: .center) {
+                VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        ForEach(material.relatedItem, id: \.imageString) { item in
-                            VStack {
-                                Image(item.imageString)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 75, height: 90)
-                                Text(item.displayName)
-                                    .font(.footnote)
-                                    .foregroundColor(.init(UIColor.darkGray))
+                        Image(material.imageString)
+                            .resizable()
+                            .scaledToFit()
+                            .matchedGeometryEffect(id: material.imageString, in: animationMaterial)
+                            .frame(width: imageWidth)
+                        Text(material.displayName)
+                            .foregroundColor(Color("materialTextColor"))
+                            .matchedGeometryEffect(id: material.displayName, in: animationMaterial)
+                    }
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(material.relatedItem, id: \.imageString) { item in
+                                VStack {
+                                    Image(item.imageString)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 75, height: 90)
+                                    Text(item.displayName)
+                                        .font(.footnote)
+                                        .foregroundColor(.init(UIColor.darkGray))
+                                        .padding(.bottom)
+                                }
                             }
                         }
                     }
                 }
+                Text("左右滑动查看更多")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Spacer()
             }
+
             .onTapGesture {
                 withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
                     showRelatedDetailOfMaterial = nil
