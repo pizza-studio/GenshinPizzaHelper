@@ -69,7 +69,11 @@ extension WeaponOrTalentMaterial {
                                                             .init(imageString: "UI_AvatarIcon_Noel_Card", localizedName: "诺艾尔"),
                                                             .init(imageString: "UI_AvatarIcon_Bennett_Card", localizedName: "班尼特"),
                                                           ])
-    static let ballad: WeaponOrTalentMaterial = .init(imageString: "talent.Ballad", localizedName: "「诗文」", weekday: .wednesdayAndSaturday)
+    static let ballad: WeaponOrTalentMaterial = .init(imageString: "talent.Ballad", localizedName: "「诗文」", weekday: .wednesdayAndSaturday,
+                                                      relatedItem: [
+                                                       .init(imageString: "UI_AvatarIcon_Lisa_Card", localizedName: "丽莎"),
+                                                       .init(imageString: "UI_AvatarIcon_Fischl_Card", localizedName: "菲谢尔"),
+                                                      ])
 
     // 璃月
     static let prosperity: WeaponOrTalentMaterial = .init(imageString: "talent.Prosperity", localizedName: "「繁荣」", weekday: .mondayAndThursday)
