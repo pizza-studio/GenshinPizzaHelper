@@ -7,11 +7,21 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct ToolsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("我的角色")) {
+                Section {
+                    VStack {
+                        HStack {
+                            Text("我的角色")
+                                .font(.footnote)
+                            Spacer()
+                        }
+                        Divider()
+                    }
+                    .listRowSeparator(.hidden)
                     ScrollView(.horizontal) {
                         HStack {
                             Image(systemName: "safari")
@@ -24,17 +34,24 @@ struct ToolsView: View {
                                 .resizable()
                                 .frame(width: 50, height: 50)
                         }
-                        .padding(.vertical)
+                        .padding()
                     }
-                    .padding(.horizontal)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    .listRowBackground(Color(UIColor.secondarySystemBackground).opacity(0.6))
                 }
-                Section(header: Text("第三方工具")) {
+                
+                Section {
+                    VStack {
+                        HStack {
+                            Text("第三方工具")
+                                .font(.footnote)
+                            Spacer()
+                        }
+                    }
                     Text("原神中日英词典")
+                    Text("原神计算器")
                 }
+
             }
-            .listStyle(.plain)
             .navigationTitle("原神小工具")
             .navigationBarTitleDisplayMode(.inline)
         }

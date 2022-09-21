@@ -47,11 +47,13 @@ struct ContentView: View {
                     .tabItem {
                         Label("概览", systemImage: "list.bullet")
                     }
-                ToolsView()
-                    .tag(1)
-                    .tabItem {
-                        Label("工具", systemImage: "shippingbox")
-                    }
+                if #available(iOS 15.0, *) {
+                    ToolsView()
+                        .tag(1)
+                        .tabItem {
+                            Label("工具", systemImage: "shippingbox")
+                        }
+                }
                 SettingsView(storeManager: storeManager)
                     .tag(2)
                     .environmentObject(viewModel)
