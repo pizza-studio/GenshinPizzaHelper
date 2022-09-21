@@ -38,6 +38,45 @@ struct ToolsView: View {
                     }
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
+
+                Section {
+                    HStack(spacing: 30) {
+                        VStack {
+                            VStack {
+                                HStack {
+                                    Text("深境螺旋")
+                                        .font(.footnote)
+                                    Spacer()
+                                }
+                                .padding(.top, 5)
+                                Divider()
+                            }
+                            Text("12-3")
+                                .font(.largeTitle)
+                                .frame(height: 120)
+                        }
+                        .padding(.horizontal)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
+                        VStack {
+                            VStack {
+                                HStack {
+                                    Text("深境螺旋")
+                                        .font(.footnote)
+                                    Spacer()
+                                }
+                                .padding(.top, 5)
+                                Divider()
+                            }
+                            Text("12-3")
+                                .font(.largeTitle)
+                                .frame(height: 120)
+                        }
+                        .padding(.horizontal)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
+                    }
+                }
+                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .listRowBackground(Color(UIColor.secondarySystemBackground))
                 
                 Section {
                     VStack {

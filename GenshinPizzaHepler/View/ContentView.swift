@@ -13,7 +13,8 @@ struct ContentView: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    @State var selection: Int = 0
+    // TODO: Return to 0 in release
+    @State var selection: Int = 1
 
     @State private var sheetType: ContentViewSheetType? = nil
 
