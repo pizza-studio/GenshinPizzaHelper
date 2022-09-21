@@ -39,7 +39,7 @@ struct InAppMaterialNavigator: View {
                             .padding(.top)
                             .padding(.bottom, -10)
                     } else {
-                        Button("隐藏") {
+                        Button("收起") {
                             simpleTaptic(type: .light)
                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
                                 showRelatedDetailOfMaterial = nil
@@ -70,7 +70,7 @@ struct InAppMaterialNavigator: View {
                             .font(.caption)
                             .padding()
                     } else {
-                        Button("隐藏") {
+                        Button("收起") {
                             simpleTaptic(type: .light)
                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
                                 showRelatedDetailOfMaterial = nil
