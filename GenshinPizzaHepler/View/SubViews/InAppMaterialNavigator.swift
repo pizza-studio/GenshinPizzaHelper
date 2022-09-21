@@ -40,6 +40,7 @@ struct InAppMaterialNavigator: View {
                             .padding(.bottom, -10)
                     } else {
                         Button("隐藏") {
+                            simpleTaptic(type: .light)
                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
                                 showRelatedDetailOfMaterial = nil
                                 showMaterialDetail = false
@@ -70,6 +71,7 @@ struct InAppMaterialNavigator: View {
                             .padding()
                     } else {
                         Button("隐藏") {
+                            simpleTaptic(type: .light)
                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
                                 showRelatedDetailOfMaterial = nil
                                 showMaterialDetail = false
@@ -158,6 +160,7 @@ struct InAppMaterialNavigator: View {
                                 .matchedGeometryEffect(id: material.displayName, in: animationMaterial)
                         }
                         .onTapGesture {
+                            simpleTaptic(type: .light)
                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
                                 showRelatedDetailOfMaterial = material
                             }
@@ -178,6 +181,7 @@ struct InAppMaterialNavigator: View {
                                 .matchedGeometryEffect(id: material.displayName, in: animationMaterial)
                         }
                         .onTapGesture {
+                            simpleTaptic(type: .light)
                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
                                 showRelatedDetailOfMaterial = material
                             }
@@ -232,8 +236,8 @@ struct InAppMaterialNavigator: View {
                     .foregroundColor(.secondary)
                 Spacer()
             }
-
             .onTapGesture {
+                simpleTaptic(type: .light)
                 withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0))  {
                     showRelatedDetailOfMaterial = nil
                 }
