@@ -40,6 +40,11 @@ struct PlayerDetails: Codable {
         var avatarId: Int
         var propMap: PropMap
         var fightPropMap: FightPropMap
+        var skillDepotId: Int
+        var inherentProudSkillList: [Int]
+        var skillLevelMap: SkillLevelMap
+        var equipList: [EquipList]
+        var fetterInfo: FetterInfo
 
         struct PropMap: Codable {
             var exp: Exp
@@ -150,6 +155,116 @@ struct PlayerDetails: Codable {
                 case ATK = "2001"
                 case DEF = "2002"
             }
+        }
+
+        struct SkillLevelMap: Codable {
+            var skillLevel: [String: Int]
+
+            struct SkillKey: CodingKey {
+                var stringValue: String
+                var intValue: Int?
+                init?(stringValue: String) {
+                    self.stringValue = stringValue
+                }
+                init?(intValue: Int) {
+                    self.stringValue = "\(intValue)"
+                    self.intValue = intValue
+                }
+            }
+
+            init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: SkillKey.self)
+
+                var skill = [String: Int]()
+                for key in container.allKeys {
+                    if let model = try? container.decode(Int.self, forKey: key) {
+                        skill[key.stringValue] = model
+                    }
+                }
+                self.skillLevel = skill
+            }
+        }
+
+        struct EquipList: Codable {
+            var itemId: Int
+            /// 圣遗物
+            var reliquary: Reliquary?
+            /// 武器
+            var weapon: Weapon?
+            var flat: Flat
+
+            struct Reliquary: Codable {
+                var level: Int
+                var mainPropId: Int
+                var appedPropIdList: [Int]
+            }
+
+            struct Weapon: Codable {
+                var level: Int
+                var promoteLevel: Int
+                var affixMap: AffixMap
+
+                struct AffixMap: Codable {
+                    var affix: [String: Int]
+
+                    struct AffixKey: CodingKey {
+                        var stringValue: String
+                        var intValue: Int?
+                        init?(stringValue: String) {
+                            self.stringValue = stringValue
+                        }
+                        init?(intValue: Int) {
+                            self.stringValue = "\(intValue)"
+                            self.intValue = intValue
+                        }
+                    }
+
+                    init(from decoder: Decoder) throws {
+                        let container = try decoder.container(keyedBy: AffixKey.self)
+
+                        var affixDict = [String: Int]()
+                        for key in container.allKeys {
+                            if let model = try? container.decode(Int.self, forKey: key) {
+                                affixDict[key.stringValue] = model
+                            }
+                        }
+                        self.affix = affixDict
+                    }
+                }
+            }
+
+            struct Flat: Codable {
+                var nameTextMapHash: String
+                var setNameTextMapHash: String
+                var rankLevel: Int
+                /// 圣遗物主词条
+                var reliquaryMainstat: ReliquaryMainstat?
+                /// 圣遗物副词条
+                var reliquarySubstats: [ReliquarySubstat]?
+                var weaponStats: [WeaponStat]?
+                var itemType: String
+                var icon: String
+                var equipType: String?
+
+                struct ReliquaryMainstat: Codable {
+                    var mainPropId: String
+                    var statValue: Double
+                }
+
+                struct ReliquarySubstat: Codable {
+                    var appendPropId: String
+                    var statValue: Double
+                }
+
+                struct WeaponStat: Codable {
+                    var appendPropId: String
+                    var statValue: Double
+                }
+            }
+        }
+
+        struct FetterInfo: Codable {
+            var expLevel: Int
         }
     }
 }
