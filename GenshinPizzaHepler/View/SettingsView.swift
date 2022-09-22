@@ -19,6 +19,8 @@ struct SettingsView: View {
 
     @State var isWidgetTipsSheetShow: Bool = false
 
+    @State var isLanguageSettingHintShow: Bool = false
+
     var body: some View {
         NavigationView {
             List {
@@ -49,6 +51,23 @@ struct SettingsView: View {
                 }
                 // 通知设置
                 NotificationSettingNavigator()
+
+                Button {
+                    isLanguageSettingHintShow = true
+                } label: {
+                    Label {
+                        HStack {
+                            Text("偏好语言")
+                                .foregroundColor(.primary)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.secondary)
+                        }
+                    } icon: {
+                        Image(systemName: "globe")
+                    }
+                }
+
                 Section {
                     Button("在App Store评分") {
                         ReviewHandler.requestReview()
@@ -79,6 +98,16 @@ struct SettingsView: View {
         .navigationViewStyle(.stack)
         .sheet(isPresented: $isWidgetTipsSheetShow) {
             WidgetTipsView(isSheetShow: $isWidgetTipsSheetShow)
+        }
+        .alert(isPresented: $isLanguageSettingHintShow) {
+            // 这部分不需要本地化
+            Alert(
+                title: Text("Before set the language..."),
+                message: Text("If you cannot find \"PREFERRED LANGUAGE\" in the destination, add one of suppoted languages in your phone's [Setting] -> [General] -> [Language & Region] first. \nSupported Languages: Simplified Chinese, English, Japanese, French"),
+                primaryButton: .default(Text("OK"), action: {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                }),
+                secondaryButton: .cancel())
         }
     }
 }
