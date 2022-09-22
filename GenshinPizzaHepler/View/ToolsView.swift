@@ -32,9 +32,12 @@ struct ToolsView: View {
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(accountCharactersInfo.avatars) { avatar in
-                                    WebImage(urlStr: avatar.image)
-                                        .frame(width: 50, height: 50)
-                                        .clipShape(Circle())
+                                    VStack {
+                                        WebImage(urlStr: avatar.image)
+                                            .frame(width: 75, height: 75)
+                                            .background(avatar.rarity == 5 ? Color.yellow : Color.blue)
+                                            .clipShape(Circle())
+                                    }
                                 }
                             }
                             .padding()
@@ -119,6 +122,7 @@ struct ToolsView: View {
             .onChange(of: accounts) { _ in
                 fetchSummaryData()
             }
+            .onAppear(perform: fetchSummaryData)
         }
     }
 
