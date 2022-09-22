@@ -13,77 +13,77 @@ struct ToolsView: View {
     var accounts: [Account] { viewModel.accounts }
     @State var selectedAccount = 0
 
+    @State var accountCharactersInfo: BasicInfos? = nil
+
     var body: some View {
         NavigationView {
             List {
-                Section {
-                    VStack {
-                        HStack {
-                            Text("我的角色")
-                                .font(.footnote)
-                            Spacer()
+                if let accountCharactersInfo = accountCharactersInfo {
+                    Section {
+                        VStack {
+                            HStack {
+                                Text("我的角色")
+                                    .font(.footnote)
+                                Spacer()
+                            }
+                            Divider()
                         }
-                        Divider()
-                    }
-                    .listRowSeparator(.hidden)
-                    ScrollView(.horizontal) {
-                        HStack {
-                            Image(systemName: "safari")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                            Image(systemName: "safari")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                            Image(systemName: "safari")
-                                .resizable()
-                                .frame(width: 50, height: 50)
+                        .listRowSeparator(.hidden)
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(accountCharactersInfo.avatars) { avatar in
+                                    WebImage(urlStr: avatar.image)
+                                        .frame(width: 50, height: 50)
+                                        .clipShape(Circle())
+                                }
+                            }
+                            .padding()
                         }
-                        .padding()
+                        .padding(.bottom, 10)
+                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
-                    .padding(.bottom, 10)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                }
 
-                Section {
-                    HStack(spacing: 30) {
-                        VStack {
+                    Section {
+                        HStack(spacing: 30) {
                             VStack {
-                                HStack {
-                                    Text("深境螺旋")
-                                        .font(.footnote)
-                                    Spacer()
+                                VStack {
+                                    HStack {
+                                        Text("深境螺旋")
+                                            .font(.footnote)
+                                        Spacer()
+                                    }
+                                    .padding(.top, 5)
+                                    Divider()
                                 }
-                                .padding(.top, 5)
-                                Divider()
+                                Text("12-3")
+                                    .font(.largeTitle)
+                                    .frame(height: 120)
+                                    .padding(.bottom, 10)
                             }
-                            Text("12-3")
-                                .font(.largeTitle)
-                                .frame(height: 120)
-                                .padding(.bottom, 10)
-                        }
-                        .padding(.horizontal)
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
-                        VStack {
+                            .padding(.horizontal)
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
                             VStack {
-                                HStack {
-                                    Text("深境螺旋")
-                                        .font(.footnote)
-                                    Spacer()
+                                VStack {
+                                    HStack {
+                                        Text("深境螺旋")
+                                            .font(.footnote)
+                                        Spacer()
+                                    }
+                                    .padding(.top, 5)
+                                    Divider()
                                 }
-                                .padding(.top, 5)
-                                Divider()
+                                Text("12-3")
+                                    .font(.largeTitle)
+                                    .frame(height: 120)
+                                    .padding(.bottom, 10)
                             }
-                            Text("12-3")
-                                .font(.largeTitle)
-                                .frame(height: 120)
-                                .padding(.bottom, 10)
+                            .padding(.horizontal)
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
                         }
-                        .padding(.horizontal)
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
                     }
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .listRowBackground(Color(UIColor.secondarySystemBackground))
                 }
-                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .listRowBackground(Color(UIColor.secondarySystemBackground))
                 
                 Section {
                     VStack {
@@ -104,7 +104,7 @@ struct ToolsView: View {
                 Menu {
                     Picker("选择帐号", selection: $selectedAccount) {
                         ForEach(accounts, id:\.config.id) { account in
-                            Text(account.config.name ?? "Account Name Error")
+                            Text(account.config.name ?? "Name Error")
                                 .tag(getAccountItemIndex(item: account))
                         }
                     }
@@ -113,7 +113,11 @@ struct ToolsView: View {
                 }
             }
             .onChange(of: selectedAccount) { _ in
-                print(accounts[selectedAccount].config.name)
+                print(accounts[selectedAccount].config.name ?? "")
+                fetchSummaryData()
+            }
+            .onChange(of: accounts) { _ in
+                fetchSummaryData()
             }
         }
     }
@@ -122,5 +126,22 @@ struct ToolsView: View {
         return accounts.firstIndex { currentItem in
             return currentItem.config.id == item.config.id
         } ?? 0
+    }
+
+    private func fetchSummaryData() -> Void {
+        DispatchQueue.global(qos: .userInteractive).async {
+            if !viewModel.accounts.isEmpty {
+                API.Features.fetchBasicInfos(region: accounts[selectedAccount].config.server.region, serverID: accounts[selectedAccount].config.server.id, uid: accounts[selectedAccount].config.uid ?? "", cookie: accounts[selectedAccount].config.cookie ?? "") { result in
+                    switch result {
+                    case .success(let data) :
+                        accountCharactersInfo = data
+                    case .failure(_):
+                        break
+                    }
+                }
+            } else {
+                print("accounts is empty")
+            }
+        }
     }
 }
