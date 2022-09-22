@@ -508,7 +508,7 @@
 "的综合信息" = "'s Comprehensive Infos";
 "的洞天宝钱" = "'s Realm Currency";
 "已填满" = "Refilled";
-"%lld, 已回满" = "%lld, Done";
+"160, 已回满" = "160, full";
 
 // Namecards
 "提纳里・沐露" = "Tighnari: Dew-Kissed";

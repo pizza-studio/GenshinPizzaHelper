@@ -16,7 +16,7 @@ struct LockScreenResinWidgetCorner: View {
         switch result {
         case .success(let data):
             if data.resinInfo.isFull {
-                return String(format: NSLocalizedString("%lld, 已回满", comment: "resin"), data.resinInfo.currentResin)
+                return String(format: NSLocalizedString("160, 已回满", comment: "resin"))
             } else {
                 return "\(data.resinInfo.currentResin), \(data.resinInfo.recoveryTime.describeIntervalShort()), \(data.resinInfo.recoveryTime.completeTimePointFromNowShort())"
             }
