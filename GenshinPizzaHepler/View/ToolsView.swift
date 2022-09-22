@@ -9,6 +9,10 @@ import SwiftUI
 
 @available(iOS 15.0, *)
 struct ToolsView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    var accounts: [Account] { viewModel.accounts }
+    @State var selectedAccount = 0
+
     var body: some View {
         NavigationView {
             List {
@@ -96,6 +100,27 @@ struct ToolsView: View {
             }
             .navigationTitle("原神小工具")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                Menu {
+                    Picker("选择帐号", selection: $selectedAccount) {
+                        ForEach(accounts, id:\.config.id) { account in
+                            Text(account.config.name ?? "Account Name Error")
+                                .tag(getAccountItemIndex(item: account))
+                        }
+                    }
+                } label: {
+                    Label("选择帐号", systemImage: "arrow.left.arrow.right.circle")
+                }
+            }
+            .onChange(of: selectedAccount) { _ in
+                print(accounts[selectedAccount].config.name)
+            }
         }
+    }
+
+    func getAccountItemIndex(item: Account) -> Int {
+        return accounts.firstIndex { currentItem in
+            return currentItem.config.id == item.config.id
+        } ?? 0
     }
 }

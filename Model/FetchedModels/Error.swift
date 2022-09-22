@@ -19,7 +19,11 @@ struct ErrorCode: Codable {
     var message: String?
 }
 
-enum FetchError: Error {
+enum FetchError: Error, Equatable {
+    static func == (lhs: FetchError, rhs: FetchError) -> Bool {
+        return lhs.description == rhs.description && lhs.message == rhs.message
+    }
+
     case noFetchInfo
     
     case cookieInvalid(Int, String) // 10001

@@ -51,6 +51,7 @@ struct ContentView: View {
                 if #available(iOS 15.0, *) {
                     ToolsView()
                         .tag(1)
+                        .environmentObject(viewModel)
                         .tabItem {
                             Label("工具", systemImage: "shippingbox")
                         }

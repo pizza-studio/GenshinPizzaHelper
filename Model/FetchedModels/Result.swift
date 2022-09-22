@@ -13,5 +13,8 @@ typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
 
 extension FetchResult {
     static let defaultFetchResult: FetchResult = .success(UserData.defaultData)
+}
+
+extension FetchResult: Equatable {
     
 }
