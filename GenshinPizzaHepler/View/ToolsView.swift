@@ -36,6 +36,7 @@ struct ToolsView: View {
                         }
                         .padding()
                     }
+                    .padding(.bottom, 10)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
 
@@ -54,6 +55,7 @@ struct ToolsView: View {
                             Text("12-3")
                                 .font(.largeTitle)
                                 .frame(height: 120)
+                                .padding(.bottom, 10)
                         }
                         .padding(.horizontal)
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
@@ -70,6 +72,7 @@ struct ToolsView: View {
                             Text("12-3")
                                 .font(.largeTitle)
                                 .frame(height: 120)
+                                .padding(.bottom, 10)
                         }
                         .padding(.horizontal)
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
