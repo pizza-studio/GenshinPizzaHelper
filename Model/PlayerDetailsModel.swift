@@ -106,13 +106,13 @@ struct PlayerDetails: Codable {
             var geoResistance: Double
             var cryoResistance: Double
 
-            var pyroEnergyCost: Double
-            var electroEnergyCost: Double
-            var hydroEnergyCost: Double
-            var dendroEnergyCost: Double
-            var anemoEnergyCost: Double
-            var cryoEnergyCost: Double
-            var geoEnergyCost: Double
+            var pyroEnergyCost: Double?
+            var electroEnergyCost: Double?
+            var hydroEnergyCost: Double?
+            var dendroEnergyCost: Double?
+            var anemoEnergyCost: Double?
+            var cryoEnergyCost: Double?
+            var geoEnergyCost: Double?
 
             var HP: Double
             var ATK: Double
@@ -196,7 +196,7 @@ struct PlayerDetails: Codable {
             struct Reliquary: Codable {
                 var level: Int
                 var mainPropId: Int
-                var appedPropIdList: [Int]
+                var appendPropIdList: [Int]
             }
 
             struct Weapon: Codable {
@@ -235,7 +235,7 @@ struct PlayerDetails: Codable {
 
             struct Flat: Codable {
                 var nameTextMapHash: String
-                var setNameTextMapHash: String
+                var setNameTextMapHash: String?
                 var rankLevel: Int
                 /// 圣遗物主词条
                 var reliquaryMainstat: ReliquaryMainstat?
