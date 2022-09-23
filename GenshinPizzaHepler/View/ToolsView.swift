@@ -14,12 +14,13 @@ struct ToolsView: View {
     @State var selectedAccount = 0
 
     @State var accountCharactersInfo: BasicInfos? = nil
+    @State var playerDetailDatas: PlayerDetails? = nil
 
     var body: some View {
         NavigationView {
             List {
-                if let accountCharactersInfo = accountCharactersInfo {
-                    Section {
+                if let accountCharactersInfo = accountCharactersInfo, let playerDetailDatas = playerDetailDatas {
+                    Section(footer: Text("签名：\(playerDetailDatas.playerInfo.signature)").font(.footnote)) {
                         VStack {
                             HStack {
                                 Text("我的角色")
@@ -58,7 +59,7 @@ struct ToolsView: View {
                                     .padding(.top, 5)
                                     Divider()
                                 }
-                                Text("12-3")
+                                Text("\(playerDetailDatas.playerInfo.towerFloorIndex)-\(playerDetailDatas.playerInfo.towerLevelIndex)")
                                     .font(.largeTitle)
                                     .frame(height: 120)
                                     .padding(.bottom, 10)
@@ -68,14 +69,14 @@ struct ToolsView: View {
                             VStack {
                                 VStack {
                                     HStack {
-                                        Text("深境螺旋")
+                                        Text("游戏内公开信息")
                                             .font(.footnote)
                                         Spacer()
                                     }
                                     .padding(.top, 5)
                                     Divider()
                                 }
-                                Text("12-3")
+                                Text("Lv.\(playerDetailDatas.playerInfo.level)")
                                     .font(.largeTitle)
                                     .frame(height: 120)
                                     .padding(.bottom, 10)
@@ -145,6 +146,18 @@ struct ToolsView: View {
                 }
             } else {
                 print("accounts is empty")
+            }
+        }
+        DispatchQueue.global(qos: .userInteractive).async {
+            if !viewModel.accounts.isEmpty {
+                API.OpenAPIs.fetchPlayerDatas(accounts[selectedAccount].config.uid ?? "0") { result in
+                    switch result {
+                    case .success(let data):
+                        playerDetailDatas = data
+                    case .failure(_):
+                        break
+                    }
+                }
             }
         }
     }
