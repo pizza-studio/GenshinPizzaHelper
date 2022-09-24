@@ -80,5 +80,37 @@ extension API {
                     }
                 }
         }
+
+        /// 从EnkaNetwork获取角色ID对应详细信息
+        /// - Parameters:
+        ///     - uid: 用户UID
+        ///     - completion: 数据
+        static func fetchENCharacterDetailDatas (
+            _ uid: String,
+            completion: @escaping (
+                ENCharacterMap
+            ) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "https://zhuaiyuwen.xyz/static/characters.json"
+            let url = URL(string: urlStr)!
+
+            // 请求
+            HttpMethod<ENCharacterMap>
+                .openRequest(
+                    .get,
+                    url
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        completion(requestResult)
+
+                    case .failure(_):
+                        break
+                    }
+                }
+        }
     }
 }
