@@ -10,10 +10,11 @@ import SwiftUI
 struct CharacterDetailDatasView: View {
     var characterDetailData: PlayerDetails.AvatarInfo
     @Binding var charactersDetailMap: ENCharacterMap?
+    @Binding var charactersLocMap: ENCharacterLoc?
 
     var body: some View {
         VStack {
-            InfoPreviewer(title: "角色ID", content: "\(getNameTextMapHash(id: characterDetailData.avatarId))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            InfoPreviewer(title: "角色ID", content: "\(getLocalizedNameFromID(id: characterDetailData.avatarId))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
             InfoPreviewer(title: "攻击力", content: "\(characterDetailData.fightPropMap.ATK.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
             InfoPreviewer(title: "生命值", content: "\(characterDetailData.fightPropMap.HP.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
             InfoPreviewer(title: "防御力", content: "\(characterDetailData.fightPropMap.DEF.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
@@ -29,5 +30,25 @@ struct CharacterDetailDatasView: View {
 
     func getNameTextMapHash(id: Int) -> Int {
         return charactersDetailMap?.characterDetails["\(id)"]?.NameTextMapHash ?? -1
+    }
+
+    func getLocalizedNameFromMapHash(hashId: Int) -> String {
+        switch Locale.current.languageCode {
+        case "zh":
+            return charactersLocMap?.zh_cn.content["\(hashId)"] ?? "Unknown"
+        case "en":
+            return charactersLocMap?.en.content["\(hashId)"] ?? "Unknown"
+        case "ja":
+            return charactersLocMap?.ja.content["\(hashId)"] ?? "Unknown"
+        case "fr":
+            return charactersLocMap?.fr.content["\(hashId)"] ?? "Unknown"
+        default:
+            return charactersLocMap?.en.content["\(hashId)"] ?? "Unknown"
+        }
+    }
+
+    func getLocalizedNameFromID(id: Int) -> String {
+        let hashId = getNameTextMapHash(id: id)
+        return getLocalizedNameFromMapHash(hashId: hashId)
     }
 }

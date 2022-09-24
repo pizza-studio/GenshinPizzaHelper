@@ -17,11 +17,12 @@ struct ToolsView: View {
     @State var accountCharactersInfo: BasicInfos? = nil
     @State var playerDetailDatas: PlayerDetails? = nil
     @State var charactersDetailMap: ENCharacterMap? = nil
+    @State var charactersLocMap: ENCharacterLoc? = nil
 
     var body: some View {
         NavigationView {
             List {
-                if let accountCharactersInfo = accountCharactersInfo, let playerDetailDatas = playerDetailDatas, let charactersDetailMap = charactersDetailMap {
+                if let accountCharactersInfo = accountCharactersInfo, let playerDetailDatas = playerDetailDatas, let charactersDetailMap = charactersDetailMap, let charactersLocMap = charactersLocMap {
                     Section(footer: Text("签名：\(playerDetailDatas.playerInfo.signature)").font(.footnote)) {
                         VStack {
                             HStack {
@@ -156,13 +157,12 @@ struct ToolsView: View {
                 Section {
                     TabView {
                         ForEach(playerDetailDatas!.avatarInfoList, id:\.avatarId) { avatarInfo in
-                            CharacterDetailDatasView(characterDetailData: avatarInfo, charactersDetailMap: $charactersDetailMap)
+                            CharacterDetailDatasView(characterDetailData: avatarInfo, charactersDetailMap: $charactersDetailMap, charactersLocMap: $charactersLocMap)
                         }
                     }
                     .tabViewStyle(.page)
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
                     .frame(height: 500)
-//                    .fixedSize(horizontal: false, vertical: false)
                 }
             }
         }
@@ -210,6 +210,9 @@ struct ToolsView: View {
             if !viewModel.accounts.isEmpty {
                 API.OpenAPIs.fetchENCharacterDetailDatas() { result in
                     charactersDetailMap = result
+                }
+                API.OpenAPIs.fetchENCharacterLocDatas() { result in
+                    charactersLocMap = result
                 }
             }
         }

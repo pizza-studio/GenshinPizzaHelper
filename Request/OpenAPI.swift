@@ -111,5 +111,36 @@ extension API {
                     }
                 }
         }
+
+        /// 从EnkaNetwork获取角色ID对应本地化信息
+        /// - Parameters:
+        ///     - completion: 数据
+        static func fetchENCharacterLocDatas (
+            completion: @escaping (
+                ENCharacterLoc
+            ) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "http://zhuaiyuwen.xyz/static/loc.json"
+            let url = URL(string: urlStr)!
+
+            // 请求
+            HttpMethod<ENCharacterLoc>
+                .openRequest(
+                    .get,
+                    url
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        completion(requestResult)
+
+                    case .failure(_):
+                        print("fetch ENCharacterLocDatas fail")
+                        break
+                    }
+                }
+        }
     }
 }

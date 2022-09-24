@@ -50,7 +50,8 @@ struct ENCharacterLoc: Codable {
         }
     }
 
-    private enum CodeKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
+        case en, ru, vi, th, pt, ko, ja, id, fr, es, de
         case zh_tw = "zh-TW"
         case zh_cn = "zh-CN"
     }
