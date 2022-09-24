@@ -52,6 +52,12 @@
 		BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E328DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
+		BF7500E628DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
+		BF7500E728DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
+		BF7500E828DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
+		BF7500E928DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
+		BF7500EA28DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
+		BF7500EB28DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
 		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -562,6 +568,7 @@
 		BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsModel.swift; sourceTree = "<group>"; };
 		BF7500D728DEA80700CDA64E /* CharacterDetailDatasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailDatasView.swift; sourceTree = "<group>"; };
 		BF7500DE28DEC99400CDA64E /* NumberTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTools.swift; sourceTree = "<group>"; };
+		BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCharacterMapModel.swift; sourceTree = "<group>"; };
 		BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetExtension.swift; sourceTree = "<group>"; };
 		BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WatchWidgetExtension.intentdefinition; sourceTree = "<group>"; };
@@ -1105,6 +1112,7 @@
 				EAAF330E28A27AFE0018EFAB /* Account.swift */,
 				BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */,
 				BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */,
+				BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */,
 				EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */,
 				BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */,
 				BF6C5274289E137200EA224F /* Servers.swift */,
@@ -1603,6 +1611,7 @@
 				EAE95CC028CE0F7800D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
 				EAE95CDB28CE103D00D975CB /* ViewModel.swift in Sources */,
 				EAE95CBE28CE0F7300D975CB /* LockScreenResinWidgetProvider.swift in Sources */,
+				BF7500EA28DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				EAE95CD528CE0FDF00D975CB /* FeatureAPI.swift in Sources */,
 				EAB1110E28CF8C64009FDF07 /* Result.swift in Sources */,
 				BF7500D528DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
@@ -1701,6 +1710,7 @@
 				BFCC069728C9BBCF003E4A54 /* FeatureAPI.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
 				BFCC068F28C9BBC8003E4A54 /* TransformerInfo.swift in Sources */,
+				BF7500E928DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */,
 				BFCC069228C9BBC8003E4A54 /* DailyTaskInfo.swift in Sources */,
 			);
@@ -1722,6 +1732,7 @@
 				EA79FDC728AB84F600B50D6F /* OptionalAccounts.swift in Sources */,
 				EA09A01228A2B8AA0023B4AF /* UserData.swift in Sources */,
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
+				BF7500E828DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
 				EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */,
@@ -1812,6 +1823,7 @@
 				EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */,
 				EA56E08B28A26C0D00A64262 /* Result.swift in Sources */,
 				EA9C2D0B28CE249C0053ED1E /* LockScreenHomeCoinWidgetProvider.swift in Sources */,
+				BF7500E728DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				EAB110FF28CF8422009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
@@ -1856,6 +1868,7 @@
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EA56E09C28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
 				BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */,
+				BF7500E628DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */,
 				BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */,
 				BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */,
@@ -1978,6 +1991,7 @@
 				BFB101DA28D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EAE95D0328CE11A700D975CB /* RecoveryTime.swift in Sources */,
 				EAE95CF228CE115D00D975CB /* WidgetViewConfiguration.swift in Sources */,
+				BF7500EB28DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				EAE95D0728CE11A700D975CB /* HomeCoinInfo.swift in Sources */,
 				BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE95D0D28CE11CA00D975CB /* NetworkReachability.swift in Sources */,
