@@ -16,11 +16,12 @@ struct ToolsView: View {
 
     @State var accountCharactersInfo: BasicInfos? = nil
     @State var playerDetailDatas: PlayerDetails? = nil
+    @State var charactersDetailMap: ENCharacterMap? = nil
 
     var body: some View {
         NavigationView {
             List {
-                if let accountCharactersInfo = accountCharactersInfo, let playerDetailDatas = playerDetailDatas {
+                if let accountCharactersInfo = accountCharactersInfo, let playerDetailDatas = playerDetailDatas, let charactersDetailMap = charactersDetailMap {
                     Section(footer: Text("签名：\(playerDetailDatas.playerInfo.signature)").font(.footnote)) {
                         VStack {
                             HStack {
@@ -155,7 +156,7 @@ struct ToolsView: View {
                 Section {
                     TabView {
                         ForEach(playerDetailDatas!.avatarInfoList, id:\.avatarId) { avatarInfo in
-                            CharacterDetailDatasView(characterDetailData: avatarInfo)
+                            CharacterDetailDatasView(characterDetailData: avatarInfo, charactersDetailMap: $charactersDetailMap)
                         }
                     }
                     .tabViewStyle(.page)
@@ -202,6 +203,13 @@ struct ToolsView: View {
                     case .failure(_):
                         break
                     }
+                }
+            }
+        }
+        DispatchQueue.global(qos: .userInteractive).async {
+            if !viewModel.accounts.isEmpty {
+                API.OpenAPIs.fetchENCharacterDetailDatas() { result in
+                    charactersDetailMap = result
                 }
             }
         }
