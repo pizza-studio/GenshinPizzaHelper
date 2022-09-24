@@ -30,7 +30,7 @@ struct InfoPreviewer: View {
                         Capsule()
                             .fill(backgroundColor)
                             .frame(height: 20)
-                            .frame(maxWidth: 120)
+                            .frame(maxWidth: 200)
                             .opacity(0.25)
                     )
             }
