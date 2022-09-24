@@ -11,6 +11,8 @@ struct InfoPreviewer: View {
     var title: String
     var content: String
     var contentStyle: ContentStyle = .standard
+    var textColor: Color = .white
+    var backgroundColor: Color = .white
 
     var body: some View {
         HStack {
@@ -22,11 +24,11 @@ struct InfoPreviewer: View {
                     .foregroundColor(.gray)
             case .capsule:
                 Text(content)
-                    .foregroundColor(.white)
+                    .foregroundColor(textColor)
                     .padding(.horizontal)
                     .background(
                         Capsule()
-                            .fill(.white)
+                            .fill(backgroundColor)
                             .frame(height: 20)
                             .frame(maxWidth: 120)
                             .opacity(0.25)

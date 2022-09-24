@@ -37,6 +37,7 @@ struct PlayerDetails: Codable {
     }
 
     struct AvatarInfo: Codable {
+
         var avatarId: Int
         var propMap: PropMap
         var fightPropMap: FightPropMap

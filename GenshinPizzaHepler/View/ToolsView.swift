@@ -12,6 +12,7 @@ struct ToolsView: View {
     @EnvironmentObject var viewModel: ViewModel
     var accounts: [Account] { viewModel.accounts }
     @State var selectedAccount = 0
+    @State private var sheetType: SheetTypes? = nil
 
     @State var accountCharactersInfo: BasicInfos? = nil
     @State var playerDetailDatas: PlayerDetails? = nil
@@ -66,6 +67,7 @@ struct ToolsView: View {
                             }
                             .padding(.horizontal)
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
+
                             VStack {
                                 VStack {
                                     HStack {
@@ -83,6 +85,9 @@ struct ToolsView: View {
                             }
                             .padding(.horizontal)
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
+                            .onTapGesture {
+                                sheetType = .characters
+                            }
                         }
                     }
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -124,7 +129,47 @@ struct ToolsView: View {
                 fetchSummaryData()
             }
             .onAppear(perform: fetchSummaryData)
+            .sheet(item: $sheetType) { type in
+                switch type {
+                case .characters:
+                    if playerDetailDatas != nil {
+                        characterSheetView()
+                    } else {
+                        Text("Data error")
+                    }
+                case .spiralAbyss:
+                    spiralAbyssSheetView()
+                }
+            }
         }
+    }
+
+    @ViewBuilder
+    func characterSheetView() -> some View {
+        NavigationView {
+            List {
+                Section(footer: Text(playerDetailDatas!.playerInfo.signature).font(.footnote)) {
+                    Text(playerDetailDatas!.playerInfo.nickname)
+                    Text("Lv. \(playerDetailDatas!.playerInfo.level)")
+                }
+                Section {
+                    TabView {
+                        ForEach(playerDetailDatas!.avatarInfoList, id:\.avatarId) { avatarInfo in
+                            CharacterDetailDatasView(characterDetailData: avatarInfo)
+                        }
+                    }
+                    .tabViewStyle(.page)
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    .frame(height: 500)
+//                    .fixedSize(horizontal: false, vertical: false)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    func spiralAbyssSheetView() -> some View {
+        Text("")
     }
 
     func getAccountItemIndex(item: Account) -> Int {
@@ -161,4 +206,13 @@ struct ToolsView: View {
             }
         }
     }
+}
+
+private enum SheetTypes: Identifiable {
+    var id: Int {
+        hashValue
+    }
+
+    case spiralAbyss
+    case characters
 }
