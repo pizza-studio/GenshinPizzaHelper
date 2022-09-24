@@ -14,9 +14,12 @@ struct CharacterDetailDatasView: View {
 
     var body: some View {
         VStack {
+            Text("\(getLocalizedNameFromID(id: characterDetailData.avatarId))")
+                .font(.title)
+                .padding(.vertical)
             Group {
-                InfoPreviewer(title: "角色ID", content: "\(getLocalizedNameFromID(id: characterDetailData.avatarId))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                InfoPreviewer(title: "等级", content: "\(characterDetailData.propMap.level)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                InfoPreviewer(title: "武器", content: "\(getLocalizedNameFromMapHash(hashId: Int((characterDetailData.equipList.last?.flat.nameTextMapHash)!)!))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                InfoPreviewer(title: "等级", content: "\(characterDetailData.propMap.level.val)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "生命值", content: "\(characterDetailData.fightPropMap.HP.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "攻击力", content: "\(characterDetailData.fightPropMap.ATK.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "防御力", content: "\(characterDetailData.fightPropMap.DEF.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
@@ -25,6 +28,28 @@ struct CharacterDetailDatasView: View {
                 InfoPreviewer(title: "治疗加成", content: "\((characterDetailData.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "暴击率", content: "\((characterDetailData.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "暴击伤害", content: "\((characterDetailData.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            }
+            Spacer()
+            switch getElement(id: characterDetailData.avatarId) {
+            case "Wind":
+                InfoPreviewer(title: "风元素伤害加成", content: "\((characterDetailData.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            case "Ice":
+                InfoPreviewer(title: "冰元素伤害加成", content: "\((characterDetailData.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            case "Electric":
+                InfoPreviewer(title: "雷元素伤害加成", content: "\((characterDetailData.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            case "Water":
+                InfoPreviewer(title: "水元素伤害加成", content: "\((characterDetailData.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            case "Fire":
+                InfoPreviewer(title: "火元素伤害加成", content: "\((characterDetailData.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            case "Rock":
+                InfoPreviewer(title: "岩元素伤害加成", content: "\((characterDetailData.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            case "Grass":
+                InfoPreviewer(title: "草元素伤害加成", content: "\((characterDetailData.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            default:
+                EmptyView()
+            }
+            if characterDetailData.fightPropMap.physicalDamage > 0 {
+                InfoPreviewer(title: "物理伤害加成", content: "\((characterDetailData.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
             }
             Spacer()
         }
@@ -36,6 +61,10 @@ struct CharacterDetailDatasView: View {
 
     func getNameTextMapHash(id: Int) -> Int {
         return charactersDetailMap?.characterDetails["\(id)"]?.NameTextMapHash ?? -1
+    }
+
+    func getElement(id: Int) -> String {
+        return charactersDetailMap?.characterDetails["\(id)"]?.Element ?? "none"
     }
 
     func getLocalizedNameFromMapHash(hashId: Int) -> String {
@@ -57,4 +86,15 @@ struct CharacterDetailDatasView: View {
         let hashId = getNameTextMapHash(id: id)
         return getLocalizedNameFromMapHash(hashId: hashId)
     }
+}
+
+enum CharacterElement: String {
+    case cyro = "Ice"
+    case anemo = "Wind"
+    case electro = "Electric"
+    case hydro = "Water"
+    case pryo = "Fire"
+    case geo = "Rock"
+    case dendro = "Grass"
+    case none = "none"
 }
