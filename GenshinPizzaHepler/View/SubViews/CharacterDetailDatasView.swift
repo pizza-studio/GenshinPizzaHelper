@@ -14,9 +14,18 @@ struct CharacterDetailDatasView: View {
 
     var body: some View {
         VStack {
-            Text("\(getLocalizedNameFromID(id: characterDetailData.avatarId))")
-                .font(.title)
-                .padding(.vertical)
+            HStack(alignment: .center) {
+                Label {
+                    Text("\(getLocalizedNameFromID(id: characterDetailData.avatarId))")
+                        .font(.title)
+                } icon: {
+                    WebImage(urlStr: "http://ophelper.top/resource/\(getSideIconName(id: characterDetailData.avatarId)).png")
+                        .frame(width: 50, height: 50)
+//                        .border(.red)
+                }
+                Spacer()
+            }
+//            .padding(.vertical)
             Group {
                 InfoPreviewer(title: "武器", content: "\(getLocalizedNameFromMapHash(hashId: Int((characterDetailData.equipList.last?.flat.nameTextMapHash)!)!))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "等级", content: "\(characterDetailData.propMap.level.val)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
@@ -65,6 +74,10 @@ struct CharacterDetailDatasView: View {
 
     func getElement(id: Int) -> String {
         return charactersDetailMap?.characterDetails["\(id)"]?.Element ?? "none"
+    }
+
+    func getSideIconName(id: Int) -> String {
+        return charactersDetailMap?.characterDetails["\(id)"]?.SideIconName ?? "error"
     }
 
     func getLocalizedNameFromMapHash(hashId: Int) -> String {
