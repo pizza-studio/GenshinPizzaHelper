@@ -150,9 +150,10 @@ struct ToolsView: View {
     func characterSheetView() -> some View {
         NavigationView {
             List {
-                Section(footer: Text(playerDetailDatas!.playerInfo.signature).font(.footnote)) {
-                    Text(playerDetailDatas!.playerInfo.nickname)
-                    Text("Lv. \(playerDetailDatas!.playerInfo.level)")
+                Section(header: Text("帐号基本信息"), footer: Text(playerDetailDatas!.playerInfo.signature).font(.footnote)) {
+                    InfoPreviewer(title: "冒险等阶", content: "\(playerDetailDatas!.playerInfo.level)")
+                    InfoPreviewer(title: "世界等级", content: "\(playerDetailDatas!.playerInfo.worldLevel)")
+                    InfoPreviewer(title: "游戏内头像", content: getLocalizedNameFromID(id: playerDetailDatas!.playerInfo.profilePicture.avatarId))
                 }
                 Section {
                     TabView {
@@ -165,6 +166,8 @@ struct ToolsView: View {
                     .frame(height: 500)
                 }
             }
+            .navigationTitle(playerDetailDatas!.playerInfo.nickname)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 
@@ -216,6 +219,34 @@ struct ToolsView: View {
                 }
             }
         }
+    }
+
+    func getNameTextMapHash(id: Int) -> Int {
+        return charactersDetailMap?.characterDetails["\(id)"]?.NameTextMapHash ?? -1
+    }
+
+    func getElement(id: Int) -> String {
+        return charactersDetailMap?.characterDetails["\(id)"]?.Element ?? "none"
+    }
+
+    func getLocalizedNameFromMapHash(hashId: Int) -> String {
+        switch Locale.current.languageCode {
+        case "zh":
+            return charactersLocMap?.zh_cn.content["\(hashId)"] ?? "Unknown"
+        case "en":
+            return charactersLocMap?.en.content["\(hashId)"] ?? "Unknown"
+        case "ja":
+            return charactersLocMap?.ja.content["\(hashId)"] ?? "Unknown"
+        case "fr":
+            return charactersLocMap?.fr.content["\(hashId)"] ?? "Unknown"
+        default:
+            return charactersLocMap?.en.content["\(hashId)"] ?? "Unknown"
+        }
+    }
+
+    func getLocalizedNameFromID(id: Int) -> String {
+        let hashId = getNameTextMapHash(id: id)
+        return getLocalizedNameFromMapHash(hashId: hashId)
     }
 }
 
