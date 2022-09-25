@@ -21,11 +21,10 @@ struct CharacterDetailDatasView: View {
                 } icon: {
                     WebImage(urlStr: "http://ophelper.top/resource/\(getSideIconName(id: characterDetailData.avatarId)).png")
                         .frame(width: 50, height: 50)
-//                        .border(.red)
                 }
                 Spacer()
             }
-//            .padding(.vertical)
+            .padding(.bottom, 10)
             Group {
                 InfoPreviewer(title: "武器", content: "\(getLocalizedNameFromMapHash(hashId: Int((characterDetailData.equipList.last?.flat.nameTextMapHash)!)!))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "等级", content: "\(characterDetailData.propMap.level.val)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
@@ -77,7 +76,12 @@ struct CharacterDetailDatasView: View {
     }
 
     func getSideIconName(id: Int) -> String {
-        return charactersDetailMap?.characterDetails["\(id)"]?.SideIconName ?? "error"
+        return charactersDetailMap?.characterDetails["\(id)"]?.SideIconName ?? "None"
+    }
+
+    func getAvatarIconName(id: Int) -> String {
+        let sideIconName = getSideIconName(id: id)
+        return sideIconName.replacingOccurrences(of: "_Side", with: "")
     }
 
     func getLocalizedNameFromMapHash(hashId: Int) -> String {

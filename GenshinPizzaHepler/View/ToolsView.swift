@@ -153,7 +153,7 @@ struct ToolsView: View {
                 Section(header: Text("帐号基本信息"), footer: Text(playerDetailDatas!.playerInfo.signature).font(.footnote)) {
                     InfoPreviewer(title: "冒险等阶", content: "\(playerDetailDatas!.playerInfo.level)")
                     InfoPreviewer(title: "世界等级", content: "\(playerDetailDatas!.playerInfo.worldLevel)")
-                    InfoPreviewer(title: "游戏内头像", content: getLocalizedNameFromID(id: playerDetailDatas!.playerInfo.profilePicture.avatarId))
+                    InfoPreviewer(title: "成就数量", content: "\(playerDetailDatas!.playerInfo.finishAchievementNum)")
                 }
                 Section {
                     TabView {
@@ -166,8 +166,27 @@ struct ToolsView: View {
                     .frame(height: 500)
                 }
             }
-            .navigationTitle(playerDetailDatas!.playerInfo.nickname)
+//            .navigationTitle(playerDetailDatas!.playerInfo.nickname)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                #if os(macOS)
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("返回") {
+                        sheetType = nil
+                    }
+                }
+                #endif
+                ToolbarItem(placement: .principal) {
+                    Label {
+                        Text(playerDetailDatas!.playerInfo.nickname)
+                            .font(.headline)
+                    } icon: {
+                        WebImage(urlStr: "http://ophelper.top/resource/\(getAvatarIconName(id: playerDetailDatas!.playerInfo.profilePicture.avatarId)).png")
+                            .clipShape(Circle())
+                    }
+                    .labelStyle(.titleAndIcon)
+                }
+            }
         }
     }
 
@@ -247,6 +266,15 @@ struct ToolsView: View {
     func getLocalizedNameFromID(id: Int) -> String {
         let hashId = getNameTextMapHash(id: id)
         return getLocalizedNameFromMapHash(hashId: hashId)
+    }
+
+    func getSideIconName(id: Int) -> String {
+        return charactersDetailMap?.characterDetails["\(id)"]?.SideIconName ?? "None"
+    }
+
+    func getAvatarIconName(id: Int) -> String {
+        let sideIconName = getSideIconName(id: id)
+        return sideIconName.replacingOccurrences(of: "_Side", with: "")
     }
 }
 
