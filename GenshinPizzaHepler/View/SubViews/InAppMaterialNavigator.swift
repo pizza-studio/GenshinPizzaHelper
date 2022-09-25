@@ -82,6 +82,20 @@ struct InAppMaterialNavigator: View {
                     }
                 }
             }
+            .onTapGesture {
+                if showMaterialDetail {
+                    simpleTaptic(type: .light)
+                    withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                        showRelatedDetailOfMaterial = nil
+                        showMaterialDetail = false
+                    }
+                } else {
+                    simpleTaptic(type: .light)
+                    withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                        showMaterialDetail = true
+                    }
+                }
+            }
             if !showMaterialDetail {
                 materials()
             } else {
