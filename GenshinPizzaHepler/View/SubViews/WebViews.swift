@@ -81,7 +81,7 @@ struct EventDetailWebView: UIViewRepresentable {
     func getArticleDic() -> [String: String] {
         if colorScheme == .dark {
             let articleDic = [
-                "themeClass": "bg-amberDark-500 text-amberHalfWhite", // 主题颜色
+                "themeClass": "bg-amberDark-800 text-amberHalfWhite", // 主题颜色
                 "banner": banner,
                 "nameFull": nameFull,
                 "description": content
