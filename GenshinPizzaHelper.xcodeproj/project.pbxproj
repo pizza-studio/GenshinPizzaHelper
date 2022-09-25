@@ -64,6 +64,12 @@
 		BF7500F028DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
 		BF7500F128DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
 		BF7500F228DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
+		BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
+		BF7500F528E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
+		BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
+		BF7500F728E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
+		BF7500F828E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
+		BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -576,6 +582,7 @@
 		BF7500DE28DEC99400CDA64E /* NumberTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTools.swift; sourceTree = "<group>"; };
 		BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCharacterMapModel.swift; sourceTree = "<group>"; };
 		BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCharacterLocModel.swift; sourceTree = "<group>"; };
+		BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDictionary.swift; sourceTree = "<group>"; };
 		BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetExtension.swift; sourceTree = "<group>"; };
 		BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WatchWidgetExtension.intentdefinition; sourceTree = "<group>"; };
@@ -850,6 +857,7 @@
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 				BF6C5271289E12DA00EA224F /* md5.swift */,
 				BF6C5277289E153400EA224F /* NetworkReachability.swift */,
+				BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */,
 				BFFD823928A73A5400616CE1 /* ReviewHandler.swift */,
 				BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */,
 				EA196B0128B769340091FAE0 /* StringLocalized.swift */,
@@ -1648,6 +1656,7 @@
 				EAE95CD428CE0FDF00D975CB /* HttpMethod.swift in Sources */,
 				EAB1110F28CF8C69009FDF07 /* BasicInfos.swift in Sources */,
 				EAD7F02828D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
+				BF7500F828E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CD328CE0FD900D975CB /* TransformerData.swift in Sources */,
 				EAE95CCE28CE0FD600D975CB /* HomeCoinInfo.swift in Sources */,
 				EAE95D0B28CE11C100D975CB /* AccountIntents.intentdefinition in Sources */,
@@ -1702,6 +1711,7 @@
 				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
 				EAF55E2128CC8F1A00902AE7 /* WidgetViewConfiguration.swift in Sources */,
 				BFCC069528C9BBC8003E4A54 /* WeeklyBossesInfo.swift in Sources */,
+				BF7500F728E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
 				BF7500F028DF298400CDA64E /* ENCharacterLocModel.swift in Sources */,
 				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
@@ -1765,6 +1775,7 @@
 				EA09A01728A2B8B60023B4AF /* TransformerInfo.swift in Sources */,
 				EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */,
 				BF7500D328DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
+				BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				BF85D78B28CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
@@ -1783,6 +1794,7 @@
 				EA7CD43D28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
+				BF7500F528E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */,
 				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
 				BFB101DD28D5F971000DC631 /* CurrentEvents.swift in Sources */,
@@ -1921,6 +1933,7 @@
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
+				BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA56E09228A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
@@ -1980,6 +1993,7 @@
 				EAE95CF928CE11A100D975CB /* DisplayContentModel.swift in Sources */,
 				EAE95D0828CE11A900D975CB /* TransformerData.swift in Sources */,
 				EAE95D0928CE11AD00D975CB /* HttpMethod.swift in Sources */,
+				BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */,
 				EAE95CFD28CE11A500D975CB /* RequestResult.swift in Sources */,
 				EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */,

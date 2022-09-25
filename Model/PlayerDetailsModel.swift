@@ -252,7 +252,7 @@ struct PlayerDetails: Codable {
                     var statValue: Double
                 }
 
-                struct ReliquarySubstat: Codable {
+                struct ReliquarySubstat: Codable, Hashable {
                     var appendPropId: String
                     var statValue: Double
                 }

@@ -166,7 +166,6 @@ struct ToolsView: View {
                     .frame(height: 500)
                 }
             }
-//            .navigationTitle(playerDetailDatas!.playerInfo.nickname)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 #if os(macOS)
