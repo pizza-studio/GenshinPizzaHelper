@@ -238,7 +238,7 @@ struct InAppMaterialNavigator: View {
                                         .frame(width: 75, height: 90)
                                     Text(item.displayName)
                                         .font(.footnote)
-                                        .foregroundColor(.init(UIColor.darkGray))
+                                        .foregroundColor(.secondary)
                                         .padding(.bottom)
                                 }
                             }
