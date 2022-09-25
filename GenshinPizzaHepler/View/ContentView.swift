@@ -13,7 +13,7 @@ struct ContentView: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    // TODO: Return to 0 in release
+    // TODO: Replace to 0 in release
     @State var selection: Int = 1
 
     @State private var sheetType: ContentViewSheetType? = nil
@@ -48,7 +48,8 @@ struct ContentView: View {
                     .tabItem {
                         Label("概览", systemImage: "list.bullet")
                     }
-                if #available(iOS 15.0, *) {
+                // TODO: Replace to 15.0 in release
+                if #available(iOS 17.0, *) {
                     ToolsView()
                         .tag(1)
                         .environmentObject(viewModel)
