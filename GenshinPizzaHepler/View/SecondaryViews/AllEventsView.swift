@@ -80,7 +80,8 @@ struct AllEventsView: View {
 
     @ViewBuilder
     func eventDetail(event: EventModel) -> some View {
-        HTMLStringView(htmlContent: generateHTMLString(banner: getLocalizedContent(event.banner), nameFull: getLocalizedContent(event.nameFull), description: getLocalizedContent(event.description)))
+        let webview = EventDetailWebView(banner: getLocalizedContent(event.banner), nameFull: getLocalizedContent(event.nameFull), content: getLocalizedContent(event.description))
+        webview
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(getLocalizedContent(event.name))
     }
