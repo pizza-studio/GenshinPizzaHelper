@@ -155,15 +155,17 @@ struct ToolsView: View {
                     InfoPreviewer(title: "世界等级", content: "\(playerDetailDatas!.playerInfo.worldLevel)")
                     InfoPreviewer(title: "成就数量", content: "\(playerDetailDatas!.playerInfo.finishAchievementNum)")
                 }
-                Section {
-                    TabView {
-                        ForEach(playerDetailDatas!.avatarInfoList, id:\.avatarId) { avatarInfo in
-                            CharacterDetailDatasView(characterDetailData: avatarInfo, charactersDetailMap: $charactersDetailMap, charactersLocMap: $charactersLocMap)
+                if playerDetailDatas!.avatarInfoList != nil {
+                    Section {
+                        TabView {
+                            ForEach(playerDetailDatas!.avatarInfoList!, id:\.avatarId) { avatarInfo in
+                                CharacterDetailDatasView(characterDetailData: avatarInfo, charactersDetailMap: $charactersDetailMap, charactersLocMap: $charactersLocMap)
+                            }
                         }
+                        .tabViewStyle(.page)
+                        .indexViewStyle(.page(backgroundDisplayMode: .always))
+                        .frame(height: 500)
                     }
-                    .tabViewStyle(.page)
-                    .indexViewStyle(.page(backgroundDisplayMode: .always))
-                    .frame(height: 500)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

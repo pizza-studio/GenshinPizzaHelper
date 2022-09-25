@@ -9,9 +9,9 @@ import Foundation
 
 struct PlayerDetails: Codable {
     var playerInfo: PlayerInfo
-    var avatarInfoList: [AvatarInfo]
+    var avatarInfoList: [AvatarInfo]?
     var ttl: Int
-    var uid: String
+    var uid: String?
 
     struct PlayerInfo: Codable {
         var nickname: String
@@ -23,7 +23,7 @@ struct PlayerDetails: Codable {
         var towerFloorIndex: Int
         var towerLevelIndex: Int
         var showAvatarInfoList: [ShowAvatarInfo]
-        var showNameCardIdList: [Int]
+        var showNameCardIdList: [Int]?
         var profilePicture: ProfilePicture
 
         struct ShowAvatarInfo: Codable {
