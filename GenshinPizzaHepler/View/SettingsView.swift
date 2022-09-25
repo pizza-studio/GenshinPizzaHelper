@@ -52,22 +52,6 @@ struct SettingsView: View {
                 // 通知设置
                 NotificationSettingNavigator()
 
-                Button {
-                    isLanguageSettingHintShow = true
-                } label: {
-                    Label {
-                        HStack {
-                            Text("偏好语言")
-                                .foregroundColor(.primary)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
-                        }
-                    } icon: {
-                        Image(systemName: "globe")
-                    }
-                }
-
                 Section {
                     Button("在App Store评分") {
                         ReviewHandler.requestReview()
@@ -76,6 +60,25 @@ struct SettingsView: View {
                         Text("支持我们")
                     }
                 }
+
+                Section {
+                    Button {
+                        isLanguageSettingHintShow = true
+                    } label: {
+                        Label {
+                            HStack {
+                                Text("偏好语言")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.secondary)
+                            }
+                        } icon: {
+                            Image(systemName: "globe")
+                        }
+                    }
+                }
+                
                 Section {
                     NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/faq.html").navigationTitle("FAQ")) {
                         Text("常见使用问题（FAQ）")
