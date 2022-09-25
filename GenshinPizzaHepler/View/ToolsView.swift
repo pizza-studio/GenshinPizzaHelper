@@ -23,7 +23,7 @@ struct ToolsView: View {
         NavigationView {
             List {
                 if let accountCharactersInfo = accountCharactersInfo, let playerDetailDatas = playerDetailDatas, let charactersDetailMap = charactersDetailMap, let charactersLocMap = charactersLocMap {
-                    Section(footer: Text("签名：\(playerDetailDatas.playerInfo.signature)").font(.footnote)) {
+                    Section {
                         VStack {
                             HStack {
                                 Text("我的角色")
@@ -88,6 +88,7 @@ struct ToolsView: View {
                             .padding(.horizontal)
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
                             .onTapGesture {
+                                simpleTaptic(type: .medium)
                                 sheetType = .characters
                             }
                         }
@@ -99,13 +100,22 @@ struct ToolsView: View {
                 Section {
                     VStack {
                         HStack {
-                            Text("第三方工具")
+                            Text("小工具")
                                 .font(.footnote)
                             Spacer()
+                            Button(action: {
+
+                            }) {
+                                Text("自定义")
+                                    .foregroundColor(.blue)
+                                    .font(.footnote)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     Text("原神中日英词典")
                     Text("原神计算器")
+                    Text("提瓦特大地图")
                 }
 
             }
