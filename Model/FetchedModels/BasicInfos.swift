@@ -67,7 +67,7 @@ struct BasicInfos: Codable {
         }
     }
 
-    struct Avatar: Codable {
+    struct Avatar: Codable, Identifiable {
         var fetter: Int
         var rarity: Int
         var cardImage: String

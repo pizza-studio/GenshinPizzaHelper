@@ -7,9 +7,13 @@
 
 import Foundation
 
-struct Account: Equatable {
+struct Account: Equatable, Hashable {
     static func == (lhs: Account, rhs: Account) -> Bool {
-        return lhs.config == rhs.config
+        return lhs.config == rhs.config && lhs.result == rhs.result && lhs.background == rhs.background && lhs.fetchComplete == rhs.fetchComplete
+    }
+
+    var hashValue: Int {
+        return config.hashValue
     }
 
     var config: AccountConfiguration
