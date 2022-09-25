@@ -41,15 +41,89 @@ struct WebBroswerView: UIViewRepresentable {
     }
 }
 
-struct HTMLStringView: UIViewRepresentable {
-    let htmlContent: String
+struct EventDetailWebView: UIViewRepresentable {
+    @Environment(\.colorScheme) var colorScheme
+    let webView = WKWebView()
+//    let htmlContent: String
+    let banner: String
+    let nameFull: String
+    let content: String
+    var articleDic = [
+        // 主题颜色：亮色：""，暗色："bg-amberDark-500 text-amberHalfWhite"
+        "themeClass": "",
+        "banner": "",
+        "nameFull": "",
+        "description": ""
+    ]
+
+    init(banner: String, nameFull: String, content: String) {
+        self.banner = banner
+        self.nameFull = nameFull
+        self.content = content
+    }
 
     func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+        webView.configuration.userContentController.add(makeCoordinator(), name: "getArticleInfoBeforeLoaded")
+        return webView
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.loadHTMLString(htmlContent, baseURL: nil)
+        uiView.uiDelegate = context.coordinator
+        if let startPageURL = Bundle.main.url(forResource: "article", withExtension: "html") {
+            uiView.loadFileURL(startPageURL, allowingReadAccessTo: Bundle.main.bundleURL)
+        }
+    }
+
+    static func dismantleUIView(_ uiView: WKWebView, coordinator: Coordinator) {
+        uiView.configuration.userContentController.removeScriptMessageHandler(forName: "getArticleInfoBeforeLoaded")
+    }
+
+    func getArticleDic() -> [String: String] {
+        if colorScheme == .dark {
+            let articleDic = [
+                "themeClass": "bg-amberDark-800 text-amberHalfWhite", // 主题颜色
+                "banner": banner,
+                "nameFull": nameFull,
+                "description": content
+            ]
+            return articleDic
+        } else {
+            let articleDic = [
+                "themeClass": "", // 主题颜色
+                "banner": banner,
+                "nameFull": nameFull,
+                "description": content
+            ]
+            return articleDic
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, WKScriptMessageHandler, WKUIDelegate {
+        var parent: EventDetailWebView
+
+        init(_ parent: EventDetailWebView) {
+            self.parent = parent
+        }
+
+        func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+            print("message: \(message.name)")
+            switch message.name {
+            case "getArticleInfoBeforeLoaded":
+                if let articleData = try?JSONSerialization.data(withJSONObject: parent.getArticleDic(), options: JSONSerialization.WritingOptions.prettyPrinted) {
+                    let articleInfo = String(data: articleData, encoding: String.Encoding.utf8)
+
+                    let inputJS = "updateArticleInfo(\(articleInfo ?? ""))"
+                    print(inputJS)
+                    parent.webView.evaluateJavaScript(inputJS)
+                }
+            default:
+                break;
+            }
+        }
     }
 }
 

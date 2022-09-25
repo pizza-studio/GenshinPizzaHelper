@@ -161,12 +161,12 @@ struct ContactUsView: View {
             }
 
             // special thanks
-            Section(header: Text("翻译与特别鸣谢")) {
+            Section(header: Text("翻译提供")) {
                 Label {
                     HStack {
                         Text("Lava")
                         Spacer()
-                        Text("英语翻译")
+                        Text("英语")
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -179,7 +179,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("水里的碳酸钙")
                         Spacer()
-                        Text("日语 英语翻译")
+                        Text("日语 英语")
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -192,7 +192,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("Qi")
                         Spacer()
-                        Text("法语翻译")
+                        Text("法语")
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -201,6 +201,8 @@ struct ContactUsView: View {
                         .scaledToFit()
                         .clipShape(Circle())
                 }
+            }
+            Section(header: Text("特别鸣谢")) {
                 Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&uin=2251435011")!) {
                     Label {
                         HStack {
@@ -213,6 +215,7 @@ struct ContactUsView: View {
                         Image("avatar.jushi")
                             .resizable()
                             .scaledToFit()
+                            .clipShape(Circle())
                     }
                 }
             }

@@ -74,13 +74,6 @@ struct CurrentEventNavigator: View {
         .foregroundColor(.primary)
     }
 
-    @ViewBuilder
-    func eventDetail(event: EventModel) -> some View {
-        HTMLStringView(htmlContent: generateHTMLString(banner: getLocalizedContent(event.banner), nameFull: getLocalizedContent(event.nameFull), description: getLocalizedContent(event.description)))
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(getLocalizedContent(event.name))
-    }
-
     func generateHTMLString(banner: String, nameFull: String, description: String) -> String {
         let format = "<head><style>body{ font-size: 40px; } img{ max-width: 100%; }</style></head>"
         return format + "<body><img src=\"\(banner)\" alt=\"Event Banner\">" + "<p>\(nameFull)</p>" + description + "</body>"

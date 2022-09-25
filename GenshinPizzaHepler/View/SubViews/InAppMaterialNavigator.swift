@@ -82,6 +82,20 @@ struct InAppMaterialNavigator: View {
                     }
                 }
             }
+            .onTapGesture {
+                if showMaterialDetail {
+                    simpleTaptic(type: .light)
+                    withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                        showRelatedDetailOfMaterial = nil
+                        showMaterialDetail = false
+                    }
+                } else {
+                    simpleTaptic(type: .light)
+                    withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                        showMaterialDetail = true
+                    }
+                }
+            }
             if !showMaterialDetail {
                 materials()
             } else {
@@ -224,7 +238,7 @@ struct InAppMaterialNavigator: View {
                                         .frame(width: 75, height: 90)
                                     Text(item.displayName)
                                         .font(.footnote)
-                                        .foregroundColor(.init(UIColor.darkGray))
+                                        .foregroundColor(.secondary)
                                         .padding(.bottom)
                                 }
                             }
