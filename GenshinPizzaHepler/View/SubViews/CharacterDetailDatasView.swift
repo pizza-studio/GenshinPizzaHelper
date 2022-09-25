@@ -89,6 +89,7 @@ struct CharacterDetailDatasView: View {
                                 Text(PropertyDictionary.getLocalizedName(artifact.flat.reliquaryMainstat!.mainPropId))
                                     .font(.caption)
                                 Text(floor(artifact.flat.reliquaryMainstat!.statValue) == artifact.flat.reliquaryMainstat!.statValue ? "\(Int(artifact.flat.reliquaryMainstat!.statValue))" : String(format: "%.1f", artifact.flat.reliquaryMainstat!.statValue))
+                                    .bold()
                             }
                         }
                     }
@@ -100,7 +101,7 @@ struct CharacterDetailDatasView: View {
                                 ForEach(artifact.flat.reliquarySubstats!, id:\.self) { substat in
                                     Text(PropertyDictionary.getLocalizedName(substat.appendPropId))
                                         .font(.caption)
-                                    Text(floor(substat.statValue) == substat.statValue ? "\(Int(substat.statValue))" : String(format: "%.2f", substat.statValue))
+                                    Text(floor(substat.statValue) == substat.statValue ? "\(Int(substat.statValue))" : String(format: "%.1f", substat.statValue))
                                 }
                             }
                         }
