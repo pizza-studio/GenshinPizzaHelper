@@ -84,6 +84,12 @@
 		BF75010C28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		BF75010D28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		BF75010E28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
+		BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -606,6 +612,7 @@
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
 		BF75010128E1469600CDA64E /* NewestVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestVersionModel.swift; sourceTree = "<group>"; };
 		BF75010828E1486E00CDA64E /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		BF75010F28E14CF500CDA64E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetExtension.swift; sourceTree = "<group>"; };
 		BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WatchWidgetExtension.intentdefinition; sourceTree = "<group>"; };
@@ -890,6 +897,7 @@
 				BFE42543289E523D00FEFA49 /* TimeTools.swift */,
 				BF70211B28B4B52500A6BBA9 /* ViewTools.swift */,
 				BF7500DE28DEC99400CDA64E /* NumberTools.swift */,
+				BF75010F28E14CF500CDA64E /* AppConfig.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
@@ -1654,6 +1662,7 @@
 				EAE95CD828CE103D00D975CB /* BackgroundOptions.swift in Sources */,
 				EAB1110428CF8423009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
 				BFB101E028D5F971000DC631 /* CurrentEvents.swift in Sources */,
+				BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EAE95CCF28CE0FD600D975CB /* ResinInfo.swift in Sources */,
 				EAE95CD228CE0FD600D975CB /* ExpeditionInfo.swift in Sources */,
 				EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */,
@@ -1740,6 +1749,7 @@
 				BFCC068928C9BBC8003E4A54 /* UserData.swift in Sources */,
 				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
 				BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */,
+				BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BF75010C28E1486F00CDA64E /* HomeAPI.swift in Sources */,
 				BFCC068528C9BBC8003E4A54 /* ExpeditionInfo.swift in Sources */,
 				BFCC069628C9BBC8003E4A54 /* RecoveryTime.swift in Sources */,
@@ -1798,6 +1808,7 @@
 				EA09A01D28A2B8E70023B4AF /* FeatureAPI.swift in Sources */,
 				EA79FDC728AB84F600B50D6F /* OptionalAccounts.swift in Sources */,
 				EA09A01228A2B8AA0023B4AF /* UserData.swift in Sources */,
+				BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF7500E828DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
@@ -1868,6 +1879,7 @@
 				EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
 				EA56E08928A26C0D00A64262 /* RequestResult.swift in Sources */,
 				EA56E09928A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
+				BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EA79FDC628AB84F500B50D6F /* OptionalAccounts.swift in Sources */,
 				EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EAD7F02B28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
@@ -1938,6 +1950,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */,
+				BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BF7500D828DEA80700CDA64E /* CharacterDetailDatasView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EA56E09C28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
@@ -2046,6 +2059,7 @@
 				EAE95CF928CE11A100D975CB /* DisplayContentModel.swift in Sources */,
 				EAE95D0828CE11A900D975CB /* TransformerData.swift in Sources */,
 				EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
+				BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EAE95D0928CE11AD00D975CB /* HttpMethod.swift in Sources */,
 				BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */,

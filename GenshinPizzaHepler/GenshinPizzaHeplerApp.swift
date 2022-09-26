@@ -26,12 +26,17 @@ struct GenshinPizzaHeplerApp: App {
         ]
 
     init() {
-        
+//        let buildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! Int
         let defaultStandard = UserDefaults.standard
         let isPolicySaved = defaultStandard.bool(forKey: "isPolicyShown")
         if !isPolicySaved {
             defaultStandard.setValue(false, forKey: "isPolicyShown")
         }
+//        let checkedNewestVersion = defaultStandard.integer(forKey: "checkedNewestVersion")
+//        if checkedNewestVersion != buildVersion {
+//            defaultStandard.setValue(buildVersion, forKey: "checkedNewestVersion")
+//        }
+        defaultStandard.synchronize()
         #if !os(watchOS)
         UserNotificationCenter.shared.askPermission()
         #endif
