@@ -21,6 +21,8 @@ struct AccountDisplayView: View {
     @State var fadeOutAnimation: Bool = true
     @State var isExpeditionsAppeared: Bool = false
     @State var isAnimationLocked: Bool = false
+    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+    let buildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! Int
 
     fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
     fileprivate var gameInfoBlock: some View {
