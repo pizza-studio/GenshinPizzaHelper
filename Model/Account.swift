@@ -8,17 +8,13 @@
 import Foundation
 
 class Account: Equatable, Hashable {
-    static func == (lhs: Account, rhs: Account) -> Bool {
-        return lhs.config == rhs.config
-    }
-
-    var hashValue: Int {
-        return config.hashValue
-    }
-
     var config: AccountConfiguration
+
+    // 树脂等信息
     var result: FetchResult?
     var background: WidgetBackground = WidgetBackground.randomNamecardBackground
+
+    var basicInfo: BasicInfos?
 
     var fetchComplete: Bool {
         result != nil
@@ -32,6 +28,17 @@ class Account: Equatable, Hashable {
         config.fetchResult {
             self.result = $0
         }
+        config.fetchBasicInfo {
+            self.basicInfo = $0
+        }
+    }
+
+    static func == (lhs: Account, rhs: Account) -> Bool {
+        return lhs.config == rhs.config
+    }
+
+    var hashValue: Int {
+        return config.hashValue
     }
 }
 
@@ -44,5 +51,17 @@ extension AccountConfiguration {
                                 uid: self.uid!,
                                 cookie: self.cookie!)
         { completion($0) }
+    }
+
+    func fetchBasicInfo(_ completion: @escaping (BasicInfos) -> ()) {
+        API.Features.fetchBasicInfos(region: self.server.region, serverID: self.server.id, uid: self.uid ?? "", cookie: self.cookie ?? "") { result in
+            switch result {
+            case .success(let data) :
+                completion(data)
+            case .failure(_):
+                print("fetching basic info error")
+                break
+            }
+        }
     }
 }

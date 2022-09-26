@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountBasicInfosView: View {
-    @Binding var basicAccountInfo: BasicInfos?
+    var basicAccountInfo: BasicInfos?
     let is_zh_CN: Bool = Locale.current.languageCode == "zh"
 
     var body: some View {

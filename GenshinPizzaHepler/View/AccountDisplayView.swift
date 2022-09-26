@@ -8,26 +8,28 @@
 import SwiftUI
 
 struct AccountDisplayView: View {
-    @ObservedObject var detail: DisplayContentModel
+    @EnvironmentObject var viewModel: ViewModel
+    var account: Account
     var animation: Namespace.ID
-    var accountName: String { detail.accountName }
-    var accountUUIDString: String { detail.accountUUIDString }
+    var accountName: String { account.config.name! }
+    var accountUUIDString: String { account.config.uuid!.uuidString }
+    var userData: UserData { switch account.result {
+    case .success(let userData):
+        return userData
+    default:
+        return .defaultData
+    }}
+    var basicAccountInfo: BasicInfos? { account.basicInfo }
+
     @State private var animationDone: Bool = false
     @Binding var bgFadeOutAnimation: Bool
     @State var scrollOffset: CGPoint = .zero
     @State var isAccountInfoShow: Bool = false
-    @State var basicAccountInfo: BasicInfos? = nil
+
     @State var isStatusBarHide: Bool = false
     @State var fadeOutAnimation: Bool = true
     @State var isExpeditionsAppeared: Bool = false
     @State var isAnimationLocked: Bool = false
-
-    fileprivate var mainContent: AccountDisplayContentView { AccountDisplayContentView(detail: detail, animation: animation)}
-    fileprivate var gameInfoBlock: some View {
-        GameInfoBlockForSave(userData: detail.userData, accountName: detail.accountName, accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: detail.widgetBackground)
-            .padding()
-            .animation(.linear)
-    }
 
     var body: some View {
         GeometryReader { geo in
@@ -37,18 +39,16 @@ struct AccountDisplayView: View {
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
                             VStack(alignment: .leading, spacing: 10) {
-                                if let accountName = detail.accountName {
-                                    HStack(alignment: .lastTextBaseline, spacing: 2) {
-                                        Image(systemName: "person.fill")
-                                        Text(accountName)
-                                    }
-                                    .font(.footnote)
-                                    .foregroundColor(Color("textColor3"))
-                                    .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
+                                HStack(alignment: .lastTextBaseline, spacing: 2) {
+                                    Image(systemName: "person.fill")
+                                    Text(accountName)
                                 }
+                                .font(.footnote)
+                                .foregroundColor(Color("textColor3"))
+                                .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
                                 HStack(alignment: .firstTextBaseline, spacing: 2) {
 
-                                    Text("\(detail.userData.resinInfo.currentResin)")
+                                    Text("\(userData.resinInfo.currentResin)")
                                         .font(.system(size: 50 , design: .rounded))
                                         .fontWeight(.medium)
                                         .foregroundColor(Color("textColor3"))
@@ -67,12 +67,12 @@ struct AccountDisplayView: View {
                                     Image(systemName: "hourglass.circle")
                                         .foregroundColor(Color("textColor3"))
                                         .font(.title3)
-                                    recoveryTimeText(resinInfo: detail.userData.resinInfo)
+                                    recoveryTimeText(resinInfo: userData.resinInfo)
                                 }
                                 .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
                             }
                             .padding(.horizontal)
-                            DetailInfo(userData: detail.userData, viewConfig: detail.viewConfig)
+                            DetailInfo(userData: userData, viewConfig: .defaultConfig)
                                 .padding(.horizontal)
                                 .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
                         }
@@ -116,16 +116,11 @@ struct AccountDisplayView: View {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
                             Image(systemName: "person.fill")
-                            Text("\(detail.accountName) (\(detail.accountData.uid ?? ""))")
+                            Text("\(accountName) (\(account.config.uid ?? ""))")
                         }
                         .font(.headline)
                         .foregroundColor(Color("textColor3"))
-                        AccountBasicInfosView(basicAccountInfo: $basicAccountInfo)
-                            .onAppear {
-                                if basicAccountInfo == nil {
-                                    fetchSummaryData()
-                                }
-                            }
+                        AccountBasicInfosView(basicAccountInfo: basicAccountInfo)
                     }
                     .animation(.easeInOut)
                 }
@@ -159,7 +154,7 @@ struct AccountDisplayView: View {
             }
         }
         .background(
-            AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
+            AppBlockBackgroundView(background: account.background, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
                 .padding(-10)
                 .ignoresSafeArea(.all)
@@ -170,42 +165,25 @@ struct AccountDisplayView: View {
             closeView()
         }
         .statusBarHidden(isStatusBarHide)
-        .onAppear {
-            fetchSummaryData()
-        }
     }
 
     private func closeView() -> Void {
         DispatchQueue.main.async {
             // 复位更多信息展示页面
-            basicAccountInfo = nil
             isAccountInfoShow = false
             isStatusBarHide = false
             scrollOffset = .zero
         }
         withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
             simpleTaptic(type: .light)
-            detail.show.toggle()
-        }
-    }
-
-    private func fetchSummaryData() -> Void {
-        DispatchQueue.global(qos: .userInteractive).async {
-            API.Features.fetchBasicInfos(region: detail.accountData.server.region, serverID: detail.accountData.server.id, uid: detail.accountData.uid ?? "", cookie: detail.accountData.cookie ?? "") { result in
-                switch result {
-                case .success(let data) :
-                    basicAccountInfo = data
-                case .failure(_):
-                    break
-                }
-            }
+            viewModel.showDetailOfAccount = nil
         }
     }
 
     @ViewBuilder
     func expeditionsView() -> some View {
         VStack(alignment: .leading, spacing: 15) {
-            ForEach(detail.userData.expeditionInfo.expeditions, id: \.charactersEnglishName) { expedition in
+            ForEach(userData.expeditionInfo.expeditions, id: \.charactersEnglishName) { expedition in
                 InAppEachExpeditionView(expedition: expedition, useAsyncImage: true, animatedMe: !isExpeditionsAppeared)
             }
         }
@@ -281,7 +259,7 @@ struct GameInfoBlockForSave: View {
             }
             .padding()
             Spacer()
-            DetailInfo(userData: userData, viewConfig: viewConfig)
+            DetailInfo(userData: userData, viewConfig: .defaultConfig)
                 .padding(.vertical)
                 .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
             Spacer()
@@ -289,89 +267,6 @@ struct GameInfoBlockForSave: View {
         .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation))
     }
 }
-
-
-private struct AccountDisplayContentView: View {
-    @ObservedObject var detail: DisplayContentModel
-    var animation: Namespace.ID
-    var accountName: String { detail.accountName }
-    var accountUUIDString: String { detail.accountUUIDString }
-    @State var bgFadeOutAnimation: Bool = false
-
-    var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            VStack {
-                Text("")
-                    .frame(height: 50)
-                HStack {
-                    VStack(alignment: .leading, spacing: 5) {
-                        if let accountName = detail.accountName {
-                            HStack(alignment: .lastTextBaseline, spacing: 2) {
-                                Image(systemName: "person.fill")
-                                Text(accountName)
-                            }
-                            .font(.footnote)
-                            .foregroundColor(Color("textColor3"))
-                            .matchedGeometryEffect(id: "\(accountUUIDString)name", in: animation)
-                        }
-                        HStack(alignment: .firstTextBaseline, spacing: 2) {
-
-                            Text("\(detail.userData.resinInfo.currentResin)")
-                                .font(.system(size: 50 , design: .rounded))
-                                .fontWeight(.medium)
-                                .foregroundColor(Color("textColor3"))
-                                .shadow(radius: 1)
-                                .matchedGeometryEffect(id: "\(accountUUIDString)curResin", in: animation)
-                            Image("树脂")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxHeight: 30)
-                                .alignmentGuide(.firstTextBaseline) { context in
-                                    context[.bottom] - 0.17 * context.height
-                                }
-                                .matchedGeometryEffect(id: "\(accountUUIDString)Resinlogo", in: animation)
-                        }
-                        HStack {
-                            Image(systemName: "hourglass.circle")
-                                .foregroundColor(Color("textColor3"))
-                                .font(.title3)
-                            RecoveryTimeText(resinInfo: detail.userData.resinInfo)
-                        }
-                        .matchedGeometryEffect(id: "\(accountUUIDString)recovery", in: animation)
-                    }
-                    Spacer()
-                }
-                HStack {
-                    DetailInfo(userData: detail.userData, viewConfig: detail.viewConfig)
-                        .padding(.vertical)
-                        .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
-                    Spacer()
-                }
-                Spacer()
-                Text("")
-                    .frame(height: 75)
-            }
-            .padding(.horizontal, 25)
-            Image("AppIconHD")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 25, height: 25)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                .padding()
-
-        }
-
-        .background(
-            AppBlockBackgroundView(background: detail.widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
-                .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
-                .padding(-10)
-                .ignoresSafeArea(.all)
-                .blurMaterial(),
-            alignment: .trailing
-        )
-    }
-}
-
 
 extension View {
     func blurMaterial() -> some View {

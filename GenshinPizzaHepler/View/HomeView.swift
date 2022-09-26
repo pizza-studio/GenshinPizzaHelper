@@ -13,7 +13,6 @@ struct HomeView: View {
     @State var eventContents: [EventModel] = []
 
     var animation: Namespace.ID
-    @EnvironmentObject var detail: DisplayContentModel
 
     @Binding var bgFadeOutAnimation: Bool
     
@@ -82,27 +81,23 @@ struct HomeView: View {
                         .onTapGesture {
                             simpleTaptic(type: .medium)
                             withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                                detail.userData = userData
-                                detail.accountName = account.config.name!
-                                detail.accountUUIDString = account.config.uuid!.uuidString
-                                detail.widgetBackground = account.background
-                                detail.viewConfig = WidgetViewConfiguration.defaultConfig
-                                detail.accountData = account.config
-                                detail.show = true
+                                viewModel.showDetailOfAccount = account
                             }
                         }
                     if #available (iOS 16, *) {
-                        gameInfoBlock
-                            .contextMenu {
-                                Button("保存图片".localized) {
-                                    let view = GameInfoBlockForSave(userData: detail.userData, accountName: account.config.name ?? "", accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: account.background)
-                                    let renderer = ImageRenderer(content: view)
-                                    renderer.scale = UIScreen.main.scale
-                                    if let image = renderer.uiImage {
-                                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                        if account != viewModel.showDetailOfAccount {
+                            gameInfoBlock
+                                .contextMenu {
+                                    Button("保存图片".localized) {
+                                        let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background)
+                                        let renderer = ImageRenderer(content: view)
+                                        renderer.scale = UIScreen.main.scale
+                                        if let image = renderer.uiImage {
+                                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                                        }
                                     }
                                 }
-                            }
+                        }
                     } else {
                         gameInfoBlock
                     }

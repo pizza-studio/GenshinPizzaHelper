@@ -29,7 +29,6 @@ struct ContentView: View {
     )}
 
     @State var isPopUpViewShow: Bool = false
-    @StateObject var detail = DisplayContentModel()
     @Namespace var animation
 
     @StateObject var storeManager: StoreManager
@@ -44,7 +43,6 @@ struct ContentView: View {
                 HomeView(animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
                     .tag(0)
                     .environmentObject(viewModel)
-                    .environmentObject(detail)
                     .tabItem {
                         Label("概览", systemImage: "list.bullet")
                     }
@@ -65,8 +63,8 @@ struct ContentView: View {
                     }
             }
 
-            if detail.show {
-                AccountDisplayView(detail: detail, animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
+            if let showDetailOfAccount = viewModel.showDetailOfAccount {
+                AccountDisplayView(account: showDetailOfAccount, animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
             }
         }
         .onChange(of: scenePhase, perform: { newPhase in
