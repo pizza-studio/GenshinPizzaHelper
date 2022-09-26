@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
 
     // TODO: Replace to 0 in release, to 1 for debug
-    @State var selection: Int = 0
+    @State var selection: Int = 1
 
     @State private var sheetType: ContentViewSheetType? = nil
 
@@ -49,7 +49,7 @@ struct ContentView: View {
                         Label("概览", systemImage: "list.bullet")
                     }
                 // TODO: Replace to 15.0 for develop, stay 17 when not ready
-                if #available(iOS 17.0, *) {
+                if #available(iOS 15.0, *) {
                     ToolsView()
                         .tag(1)
                         .environmentObject(viewModel)
