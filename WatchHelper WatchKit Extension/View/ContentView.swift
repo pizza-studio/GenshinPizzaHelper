@@ -31,9 +31,9 @@ struct ContentView: View {
             } else {
                 List {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
-                        if account.fetchComplete {
-                            NavigationLink(destination: WatchAccountDetailView(userData: account.result, accountName: account.config.name, uid: account.config.uid)) {
-                                WatchGameInfoBlock(userData: account.result, accountName: account.config.name, uid: account.config.uid)
+                        if account.result != nil {
+                            NavigationLink(destination: WatchAccountDetailView(userData: account.result!, accountName: account.config.name, uid: account.config.uid)) {
+                                WatchGameInfoBlock(userData: account.result!, accountName: account.config.name, uid: account.config.uid)
                             }
                             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))

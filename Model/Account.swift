@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Account: Equatable, Hashable {
+class Account: Equatable, Hashable {
     static func == (lhs: Account, rhs: Account) -> Bool {
-        return lhs.config == rhs.config && lhs.result == rhs.result && lhs.background == rhs.background && lhs.fetchComplete == rhs.fetchComplete
+        return lhs.config == rhs.config
     }
 
     var hashValue: Int {
@@ -17,21 +17,21 @@ struct Account: Equatable, Hashable {
     }
 
     var config: AccountConfiguration
-    var result: FetchResult
+    var result: FetchResult?
     var background: WidgetBackground = WidgetBackground.randomNamecardBackground
 
-    var fetchComplete: Bool
+    var fetchComplete: Bool {
+        result != nil
+    }
 
     init(config: AccountConfiguration) {
         self.config = config
-        self.result = .failure(.defaultStatus)
-        self.fetchComplete = false
     }
-    
-    init(config: AccountConfiguration, result: FetchResult) {
-        self.config = config
-        self.result = result
-        self.fetchComplete = true
+
+    func fetchResult() {
+        config.fetchResult {
+            self.result = $0
+        }
     }
 }
 
