@@ -68,7 +68,7 @@ struct ToolsView: View {
                                     .padding(.bottom, 10)
                             }
                             .padding(.horizontal)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
 
                             VStack {
                                 VStack {
@@ -86,7 +86,7 @@ struct ToolsView: View {
                                     .padding(.bottom, 10)
                             }
                             .padding(.horizontal)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
                             .onTapGesture {
                                 simpleTaptic(type: .medium)
                                 sheetType = .characters
@@ -94,7 +94,7 @@ struct ToolsView: View {
                         }
                     }
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    .listRowBackground(Color(UIColor.secondarySystemBackground))
+                    .listRowBackground(Color.white.opacity(0))
                 }
                 
                 Section {
