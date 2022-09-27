@@ -42,7 +42,6 @@ struct CurrentEventNavigator: View {
                         }
                     }
                     .padding(.bottom)
-                    // padding horizontal = 25 + (rectangle width/2)
                     .padding(.horizontal, 27)
                 }
                 .blurMaterialBackground()
@@ -67,16 +66,16 @@ struct CurrentEventNavigator: View {
             else {
                 HStack(spacing: 0) {
                     Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
+                        .onAppear {
+                            if getRemainDays(event.endAt)!.hour! < 0 {
+                                getCurrentEvent()
+                            }
+                        }
                 }
             }
         }
         .font(.caption)
         .foregroundColor(.primary)
-    }
-
-    func generateHTMLString(banner: String, nameFull: String, description: String) -> String {
-        let format = "<head><style>body{ font-size: 40px; } img{ max-width: 100%; }</style></head>"
-        return format + "<body><img src=\"\(banner)\" alt=\"Event Banner\">" + "<p>\(nameFull)</p>" + description + "</body>"
     }
 
     func getLocalizedContent(_ content: EventModel.MultiLanguageContents) -> String {
@@ -102,5 +101,23 @@ struct CurrentEventNavigator: View {
         }
         let interval = endDate - Date()
         return interval
+    }
+
+    func getCurrentEvent() -> Void {
+        DispatchQueue.global().async {
+            API.OpenAPIs.fetchCurrentEvents { result in
+                switch result {
+                case .success(let events):
+                    withAnimation {
+                        self.eventContents = [EventModel](events.event.values)
+                        self.eventContents = eventContents.sorted {
+                            $0.endAt < $1.endAt
+                        }
+                    }
+                case .failure(_):
+                    break
+                }
+            }
+        }
     }
 }

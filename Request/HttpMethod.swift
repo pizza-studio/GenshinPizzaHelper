@@ -484,10 +484,7 @@ struct HttpMethod<T: Codable> {
     /// 返回Open API结果接口
     /// - Parameters:
     ///   - method:Method, http方法的类型
-    ///   - urlStr:String，url的字符串后缀，即request的类型
-    ///   - region:Region，请求的服务器地区类型
-    ///   - cookie: String， 用户Cookie
-    ///   - serverID: String，服务器ID
+    ///   - url:URL类型的URL
     ///   - completion:异步返回处理好的data以及报错的类型
     ///
     ///  需要自己传URL类型的url过来
@@ -504,6 +501,91 @@ struct HttpMethod<T: Codable> {
             DispatchQueue.global(qos: .userInteractive).async {
                 // 初始化请求
                 var request = URLRequest(url: url)
+                // 设置请求头
+                request.allHTTPHeaderFields = [
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+                    "Accept": "application/json, text/plain, */*",
+                    "Connection": "keep-alive",
+                ]
+                // http方法
+                switch method {
+                case .post:
+                    request.httpMethod = "POST"
+                case .get:
+                    request.httpMethod = "GET"
+                case .put:
+                    request.httpMethod = "PUT"
+                }
+                // 开始请求
+                URLSession.shared.dataTask(
+                    with: request
+                ) { data, response, error in
+                    // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
+                    print(error ?? "ErrorInfo nil")
+                    if let error = error {
+                        completion(.failure(.dataTaskError(error.localizedDescription)))
+                        print(
+                            "DataTask error in General HttpMethod: " +
+                            error.localizedDescription + "\n"
+                        )
+                    } else {
+                        guard let data = data else {
+                            completion(.failure(.noResponseData))
+                            print("found response data nil")
+                            return
+                        }
+                        guard response is HTTPURLResponse else {
+                            completion(.failure(.responseError))
+                            print("response error")
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            let decoder = JSONDecoder()
+//                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+                            print(dictionary ?? "None")
+
+                            do {
+                                let requestResult = try decoder.decode(T.self, from: data)
+                                completion(.success(requestResult))
+                            } catch {
+                                print(error)
+                                completion(.failure(.decodeError(error.localizedDescription)))
+                            }
+
+                        }
+                    }
+                }.resume()
+            }
+        }
+    }
+
+    /// 返回自己的后台的结果接口
+    /// - Parameters:
+    ///   - method:Method, http方法的类型
+    ///   - url:String，请求的路径
+    ///   - completion:异步返回处理好的data以及报错的类型
+    ///
+    ///  需要自己传URL类型的url过来
+    static func homeRequest (
+        _ method: Method,
+        _ urlStr: String,
+        completion: @escaping(
+            (Result<T, RequestError>) -> ()
+        )
+    ) {
+        let networkReachability = NetworkReachability()
+
+        if networkReachability.reachable {
+            DispatchQueue.global(qos: .userInteractive).async {
+                // 请求url前缀，后跟request的类型
+                let baseStr: String = "http://ophelper.top/"
+                // 由前缀和后缀共同组成的url
+                var url = URLComponents(string: baseStr + urlStr)!
+                // 初始化请求
+                var request = URLRequest(url: url.url!)
                 // 设置请求头
                 request.allHTTPHeaderFields = [
                     "Accept-Encoding": "gzip, deflate, br",
