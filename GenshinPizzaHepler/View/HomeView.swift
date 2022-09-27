@@ -50,20 +50,18 @@ struct HomeView: View {
     }
 
     func getCurrentEvent() -> Void {
-        if self.eventContents.isEmpty {
-            DispatchQueue.global().async {
-                API.OpenAPIs.fetchCurrentEvents { result in
-                    switch result {
-                    case .success(let events):
-                        withAnimation {
-                            self.eventContents = [EventModel](events.event.values)
-                            self.eventContents = eventContents.sorted {
-                                $0.endAt < $1.endAt
-                            }
+        DispatchQueue.global().async {
+            API.OpenAPIs.fetchCurrentEvents { result in
+                switch result {
+                case .success(let events):
+                    withAnimation {
+                        self.eventContents = [EventModel](events.event.values)
+                        self.eventContents = eventContents.sorted {
+                            $0.endAt < $1.endAt
                         }
-                    case .failure(_):
-                        break
                     }
+                case .failure(_):
+                    break
                 }
             }
         }
