@@ -55,18 +55,13 @@ enum LockScreenLoopWidgetType {
     case homeCoin
 
     static func autoChoose(result: FetchResult) -> LockScreenLoopWidgetType {
-        var isTimePast8PM: Bool {
-            Date() > Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
-        }
         switch result {
         case .success(let data):
-            if data.resinInfo.currentResin > 150 {
-                return .resin
-            } else if data.homeCoinInfo.recoveryTime.second < 60*60 {
+            if data.homeCoinInfo.score > data.resinInfo.score {
                 return .homeCoin
-            } else if data.expeditionInfo.allCompleted {
+            } else if data.expeditionInfo.score > data.resinInfo.score {
                 return .expedition
-            } else if (!data.dailyTaskInfo.isTaskRewardReceived) && isTimePast8PM {
+            } else if data.resinInfo.score > data.resinInfo.score {
                 return .dailyTask
             } else {
                 return .resin
