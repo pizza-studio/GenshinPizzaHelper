@@ -13,8 +13,11 @@ struct ContentView: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    // TODO: Replace to 0 in release, to 1 for debug
+    #if DEBUG
     @State var selection: Int = 1
+    #else
+    @State var selection: Int = 0
+    #endif
 
     @State private var sheetType: ContentViewSheetType? = nil
     @State var newestVersionInfos: NewestVersion? = nil
@@ -49,7 +52,8 @@ struct ContentView: View {
                     .tabItem {
                         Label("概览", systemImage: "list.bullet")
                     }
-                // TODO: Replace to 15.0 for develop, stay 17 when not ready
+                // TODO: Remove debug check when ready
+                #if DEBUG
                 if #available(iOS 15.0, *) {
                     ToolsView()
                         .tag(1)
@@ -58,6 +62,7 @@ struct ContentView: View {
                             Label("工具", systemImage: "shippingbox")
                         }
                 }
+                #endif
                 SettingsView(storeManager: storeManager)
                     .tag(2)
                     .environmentObject(viewModel)
