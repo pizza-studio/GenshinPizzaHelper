@@ -202,7 +202,7 @@ struct PlayerDetails: Codable {
 
             struct Weapon: Codable {
                 var level: Int
-                var promoteLevel: Int
+                var promoteLevel: Int?
                 var affixMap: AffixMap
 
                 struct AffixMap: Codable {

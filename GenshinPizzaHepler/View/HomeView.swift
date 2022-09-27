@@ -13,7 +13,6 @@ struct HomeView: View {
     @State var eventContents: [EventModel] = []
 
     var animation: Namespace.ID
-    @EnvironmentObject var detail: DisplayContentModel
 
     @Binding var bgFadeOutAnimation: Bool
     
@@ -40,84 +39,7 @@ struct HomeView: View {
                             .padding(.bottom)
 
                         // MARK: - 账号信息
-                        ForEach($viewModel.accounts, id: \.config.uuid) { $account in
-                            if account.fetchComplete {
-                                switch account.result {
-                                case .success(let userData):
-                                    if #available (iOS 16, *) {
-                                        GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
-                                            .padding([.bottom, .horizontal])
-                                            .listRowBackground(Color.white.opacity(0))
-                                            .onTapGesture {
-    //                                            UserNotificationCenter.shared.createAllNotification(for: account.config.name!, with: userData, uid: account.config.uid!)
-    //                                            UserNotificationCenter.shared.printAllNotificationRequest()
-    //                                            UserNotificationCenter.shared.testNotification()
-                                                simpleTaptic(type: .medium)
-                                                withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                                                    detail.userData = userData
-                                                    detail.accountName = account.config.name!
-                                                    detail.accountUUIDString = account.config.uuid!.uuidString
-                                                    detail.widgetBackground = account.background
-                                                    detail.viewConfig = WidgetViewConfiguration.defaultConfig
-                                                    detail.accountData = account.config
-                                                    detail.show = true
-                                                }
-                                            }
-                                            .contextMenu {
-                                                Button("保存图片".localized) {
-                                                    let view = GameInfoBlockForSave(userData: detail.userData, accountName: account.config.name ?? "", accountUUIDString: detail.accountUUIDString, animation: animation, widgetBackground: account.background)
-                                                    let renderer = ImageRenderer(content: view)
-                                                    renderer.scale = UIScreen.main.scale
-                                                    if let image = renderer.uiImage {
-                                                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                                                    }
-                                                }
-                                            }
-                                    } else {
-                                        GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
-                                            .padding([.bottom, .horizontal])
-                                            .listRowBackground(Color.white.opacity(0))
-                                            .onTapGesture {
-                                                simpleTaptic(type: .medium)
-                                                withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
-                                                    detail.userData = userData
-                                                    detail.accountName = account.config.name!
-                                                    detail.accountUUIDString = account.config.uuid!.uuidString
-                                                    detail.widgetBackground = account.background
-                                                    detail.viewConfig = WidgetViewConfiguration.defaultConfig
-                                                    detail.accountData = account.config
-                                                    detail.show = true
-                                                }
-                                            }
-                                    }
-
-                                case .failure( _) :
-                                    HStack {
-                                        NavigationLink {
-                                            AccountDetailView(account: $account)
-                                        } label: {
-                                            ZStack {
-                                                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
-                                                    .padding()
-                                                    .foregroundColor(.red)
-                                                HStack {
-                                                    Spacer()
-                                                    Text(account.config.name!)
-                                                        .foregroundColor(Color(UIColor.systemGray4))
-                                                        .font(.caption2)
-                                                        .padding(.horizontal)
-                                                }
-                                            }
-                                            .padding([.bottom, .horizontal])
-                                        }
-                                    }
-                                }
-                            } else {
-                                ProgressView()
-                                    .padding([.bottom, .horizontal])
-                            }
-
-                        }
+                        accountInfoCards()
                     }
                 }
             }
@@ -144,6 +66,67 @@ struct HomeView: View {
                     }
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    func accountInfoCards() -> some View {
+        ForEach($viewModel.accounts, id: \.config.uuid) { $account in
+            if account.fetchComplete {
+                switch account.result! {
+                case .success(let userData):
+                    let gameInfoBlock: some View = GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
+                        .padding([.bottom, .horizontal])
+                        .listRowBackground(Color.white.opacity(0))
+                        .onTapGesture {
+                            simpleTaptic(type: .medium)
+                            withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                                viewModel.showDetailOfAccount = account
+                            }
+                        }
+                    if #available (iOS 16, *) {
+                        if account != viewModel.showDetailOfAccount {
+                            gameInfoBlock
+                                .contextMenu {
+                                    Button("保存图片".localized) {
+                                        let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background)
+                                        let renderer = ImageRenderer(content: view)
+                                        renderer.scale = UIScreen.main.scale
+                                        if let image = renderer.uiImage {
+                                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                                        }
+                                    }
+                                }
+                        }
+                    } else {
+                        gameInfoBlock
+                    }
+                case .failure( _) :
+                    HStack {
+                        NavigationLink {
+                            AccountDetailView(account: $account)
+                        } label: {
+                            ZStack {
+                                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                                    .padding()
+                                    .foregroundColor(.red)
+                                HStack {
+                                    Spacer()
+                                    Text(account.config.name!)
+                                        .foregroundColor(Color(UIColor.systemGray4))
+                                        .font(.caption2)
+                                        .padding(.horizontal)
+                                }
+                            }
+                            .padding([.bottom, .horizontal])
+                        }
+                    }
+                }
+            } else {
+                ProgressView()
+                    .padding([.bottom, .horizontal])
+            }
+
         }
     }
 }
