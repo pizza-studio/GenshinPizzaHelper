@@ -171,8 +171,6 @@ struct ContentView: View {
     func newestVersionInfoView() -> some View {
         NavigationView {
             VStack(alignment: .leading) {
-//                EmptyView()
-//                    .frame(height: 10)
                 HStack {
                     Text(newestVersionInfos?.shortVersion ?? "Error").font(.largeTitle) +
                     Text(" (\(newestVersionInfos?.buildVersion ?? -1))")
@@ -198,11 +196,15 @@ struct ContentView: View {
                 if !isJustUpdated {
                     switch AppConfig.appConfiguration {
                     case .TestFlight, .Debug :
-                        Text("请前往TestFlight更新")
-                            .padding(.top)
+                        Link (destination: URL(string: "itms-beta://beta.itunes.apple.com/v1/app/1635319193")!) {
+                            Text("前往TestFlight更新")
+                        }
+                        .padding(.top)
                     case .AppStore:
-                        Text("请前往App Store更新")
-                            .padding(.top)
+                        Link (destination: URL(string: "itms-apps://apps.apple.com/us/app/原神披萨小助手/id1635319193")!) {
+                            Text("前往App Store更新")
+                        }
+                        .padding(.top)
                     }
                 }
                 Spacer()
