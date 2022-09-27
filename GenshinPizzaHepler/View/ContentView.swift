@@ -134,7 +134,14 @@ struct ContentView: View {
                         return
                     }
                     if buildVersion < newestVersionInfos.buildVersion {
-                        sheetType = .foundNewestVersion
+                        let checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as! [Int]?
+                        if checkedUpdateVersions != nil {
+                            if !(checkedUpdateVersions!.contains(newestVersionInfos.buildVersion)) {
+                                sheetType = .foundNewestVersion
+                            }
+                        } else {
+                            sheetType = .foundNewestVersion
+                        }
                     } else {
                         let checkedNewestVersion = UserDefaults.standard.integer(forKey: "checkedNewestVersion")
                         if checkedNewestVersion < newestVersionInfos.buildVersion {
@@ -152,7 +159,14 @@ struct ContentView: View {
                         return
                     }
                     if buildVersion < newestVersionInfos.buildVersion {
-                        sheetType = .foundNewestVersion
+                        let checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as! [Int]?
+                        if checkedUpdateVersions != nil {
+                            if !(checkedUpdateVersions!.contains(newestVersionInfos.buildVersion)) {
+                                sheetType = .foundNewestVersion
+                            }
+                        } else {
+                            sheetType = .foundNewestVersion
+                        }
                     } else {
                         let checkedNewestVersion = UserDefaults.standard.integer(forKey: "checkedNewestVersion")
                         if checkedNewestVersion < newestVersionInfos.buildVersion {
@@ -214,6 +228,11 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("完成") {
+                        var checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as? [Int] ?? []
+                        checkedUpdateVersions.append(newestVersionInfos!.buildVersion)
+                        UserDefaults.standard.set(checkedUpdateVersions, forKey: "checkedUpdateVersions")
+                        print(checkedUpdateVersions)
+                        UserDefaults.standard.synchronize()
                         sheetType = nil
                     }
                 }
