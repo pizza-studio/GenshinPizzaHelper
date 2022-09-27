@@ -19,7 +19,7 @@ struct ContentView: View {
     @State var selection: Int = 0
     #endif
 
-    @State private var sheetType: ContentViewSheetType? = nil
+    @State var sheetType: ContentViewSheetType? = nil
     @State var newestVersionInfos: NewestVersion? = nil
     @State var isJustUpdated: Bool = false
 
@@ -111,7 +111,7 @@ struct ContentView: View {
                 UserPolicyView(sheet: $sheetType)
                     .allowAutoDismiss(false)
             case .foundNewestVersion:
-                newestVersionInfoView()
+                LatestVersionInfoView(sheetType: $sheetType, newestVersionInfos: $newestVersionInfos, isJustUpdated: $isJustUpdated)
             }
         }
         .onOpenURL { url in
@@ -181,79 +181,6 @@ struct ContentView: View {
                     }
                 }
             }
-        }
-    }
-
-    @ViewBuilder
-    func newestVersionInfoView() -> some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(newestVersionInfos?.shortVersion ?? "Error").font(.largeTitle) +
-                    Text(" (\(newestVersionInfos?.buildVersion ?? -1))")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Spacer()
-                    Image("AppIconHD")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(10)
-                }
-                Divider()
-                    .padding(.vertical)
-                Text("更新内容：")
-                    .font(.subheadline)
-                if newestVersionInfos != nil {
-                    ForEach(getLocalizedUpdateInfos(meta: newestVersionInfos!), id:\.self) { item in
-                        Text("- \(item)")
-                    }
-                } else {
-                    Text("Error")
-                }
-                if !isJustUpdated {
-                    switch AppConfig.appConfiguration {
-                    case .TestFlight, .Debug :
-                        Link (destination: URL(string: "itms-beta://beta.itunes.apple.com/v1/app/1635319193")!) {
-                            Text("前往TestFlight更新")
-                        }
-                        .padding(.top)
-                    case .AppStore:
-                        Link (destination: URL(string: "itms-apps://apps.apple.com/us/app/原神披萨小助手/id1635319193")!) {
-                            Text("前往App Store更新")
-                        }
-                        .padding(.top)
-                    }
-                }
-                Spacer()
-            }
-            .padding(.horizontal)
-            .navigationTitle(isJustUpdated ? "感谢您更新到最新版本" : "发现新版本")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
-                        var checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as? [Int] ?? []
-                        checkedUpdateVersions.append(newestVersionInfos!.buildVersion)
-                        UserDefaults.standard.set(checkedUpdateVersions, forKey: "checkedUpdateVersions")
-                        UserDefaults.standard.synchronize()
-                        sheetType = nil
-                    }
-                }
-            }
-        }
-    }
-
-    func getLocalizedUpdateInfos(meta: NewestVersion) -> [String] {
-        switch Locale.current.languageCode {
-        case "zh":
-            return meta.updates.zhcn
-        case "en":
-            return meta.updates.en
-        case "ja":
-            return meta.updates.ja
-        case "fr":
-            return meta.updates.fr
-        default:
-            return meta.updates.en
         }
     }
 }
