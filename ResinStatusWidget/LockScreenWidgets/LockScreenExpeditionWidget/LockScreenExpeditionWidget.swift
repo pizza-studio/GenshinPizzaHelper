@@ -13,7 +13,7 @@ struct LockScreenExpeditionWidget: Widget {
     let kind: String = "LockScreenExpeditionWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenExpeditionWidgetProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider(recommendationsTag: "的探索派遣")) { entry in
             LockScreenExpeditionWidgetView(entry: entry)
         }
         .configurationDisplayName("探索派遣")
@@ -29,7 +29,7 @@ struct LockScreenExpeditionWidget: Widget {
 @available (iOS 16.0, *)
 struct LockScreenExpeditionWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: LockScreenHomeCoinWidgetProvider.Entry
+    let entry: LockScreenWidgetProvider.Entry
     var result: FetchResult { entry.result }
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }

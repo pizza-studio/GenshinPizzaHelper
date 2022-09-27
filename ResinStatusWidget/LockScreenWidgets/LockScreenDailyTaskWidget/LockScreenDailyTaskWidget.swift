@@ -13,7 +13,7 @@ struct LockScreenDailyTaskWidget: Widget {
     let kind: String = "LockScreenDailyTaskWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenDailyTaskWidgetProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider(recommendationsTag: "的每日委托")) { entry in
             LockScreenDailyTaskWidgetView(entry: entry)
         }
         .configurationDisplayName("每日委托")
@@ -29,7 +29,7 @@ struct LockScreenDailyTaskWidget: Widget {
 @available (iOS 16.0, *)
 struct LockScreenDailyTaskWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: LockScreenHomeCoinWidgetProvider.Entry
+    let entry: LockScreenWidgetProvider.Entry
     var result: FetchResult { entry.result }
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }

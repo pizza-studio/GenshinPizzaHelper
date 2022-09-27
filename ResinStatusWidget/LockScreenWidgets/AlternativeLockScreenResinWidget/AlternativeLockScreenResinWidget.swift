@@ -13,7 +13,7 @@ struct AlternativeLockScreenResinWidget: Widget {
     let kind: String = "AlternativeLockScreenResinWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: AlternativeLockScreenResinWidgetProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂")) { entry in
             AlternativeLockScreenResinWidgetView(entry: entry)
         }
         .configurationDisplayName("原粹树脂")
@@ -25,7 +25,7 @@ struct AlternativeLockScreenResinWidget: Widget {
 @available (iOS 16.0, *)
 struct AlternativeLockScreenResinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: LockScreenHomeCoinWidgetProvider.Entry
+    let entry: LockScreenWidgetProvider.Entry
     var result: FetchResult { entry.result }
     var accountName: String? { entry.accountName }
 

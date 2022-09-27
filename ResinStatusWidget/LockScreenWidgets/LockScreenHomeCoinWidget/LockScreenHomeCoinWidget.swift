@@ -13,7 +13,7 @@ struct LockScreenHomeCoinWidget: Widget {
     let kind: String = "LockScreenHomeCoinWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenHomeCoinWidgetProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider(recommendationsTag: "的洞天宝钱")) { entry in
             LockScreenHomeCoinWidgetView(entry: entry)
         }
         .configurationDisplayName("洞天宝钱")
@@ -29,7 +29,7 @@ struct LockScreenHomeCoinWidget: Widget {
 @available (iOS 16.0, *)
 struct LockScreenHomeCoinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: LockScreenHomeCoinWidgetProvider.Entry
+    let entry: LockScreenWidgetProvider.Entry
     var result: FetchResult { entry.result }
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }
