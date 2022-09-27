@@ -17,6 +17,8 @@ class ViewModel: NSObject, ObservableObject {
     static let shared = ViewModel()
     
     @Published var accounts: [Account] = []
+
+    @Published var showDetailOfAccount: Account?
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
 
@@ -75,11 +77,7 @@ class ViewModel: NSObject, ObservableObject {
     
     func refreshData() {
         accounts.forEach { account in
-            let idx = accounts.firstIndex { account.config.uuid == $0.config.uuid }!
-            account.config.fetchResult { result in
-                self.accounts[idx] = Account(config: account.config, result: result)
-                print("account refreshed")
-            }
+            account.fetchResult()
         }
     }
 }

@@ -71,8 +71,25 @@
 		BF7500F828E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		BF7500FE28E0452C00CDA64E /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
-		BF7500FF28E0452C00CDA64E /* Whitney-Bold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FC28E0452C00CDA64E /* Whitney-Bold.woff2 */; };
 		BF75010028E0452C00CDA64E /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
+		BF75010228E1469600CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
+		BF75010328E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
+		BF75010428E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
+		BF75010528E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
+		BF75010628E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
+		BF75010728E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
+		BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
+		BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
+		BF75010B28E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
+		BF75010C28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
+		BF75010D28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
+		BF75010E28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
+		BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -582,8 +599,10 @@
 		BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCharacterLocModel.swift; sourceTree = "<group>"; };
 		BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDictionary.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
-		BF7500FC28E0452C00CDA64E /* Whitney-Bold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-Bold.woff2"; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
+		BF75010128E1469600CDA64E /* NewestVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestVersionModel.swift; sourceTree = "<group>"; };
+		BF75010828E1486E00CDA64E /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		BF75010F28E14CF500CDA64E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetExtension.swift; sourceTree = "<group>"; };
 		BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WatchWidgetExtension.intentdefinition; sourceTree = "<group>"; };
@@ -841,6 +860,7 @@
 			isa = PBXGroup;
 			children = (
 				BFE42534289E203A00FEFA49 /* FeatureAPI.swift */,
+				BF75010828E1486E00CDA64E /* HomeAPI.swift */,
 				BF6C527A289E168A00EA224F /* HttpMethod.swift */,
 				BFB101D428D5F5BC000DC631 /* OpenAPI.swift */,
 			);
@@ -850,6 +870,7 @@
 		BF6C5270289E12B500EA224F /* CommonTools */ = {
 			isa = PBXGroup;
 			children = (
+				BF75010F28E14CF500CDA64E /* AppConfig.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 				BF6C5271289E12DA00EA224F /* md5.swift */,
@@ -871,7 +892,6 @@
 			children = (
 				BF7500FB28E0452C00CDA64E /* app.css */,
 				BF7500FD28E0452C00CDA64E /* article.html */,
-				BF7500FC28E0452C00CDA64E /* Whitney-Bold.woff2 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1053,6 +1073,7 @@
 				BF85D78828CF31FD003F3479 /* BasicInfos.swift */,
 				BFB101DB28D5F971000DC631 /* CurrentEvents.swift */,
 				EA56E07628A26C0D00A64262 /* Error.swift */,
+				BF75010128E1469600CDA64E /* NewestVersionModel.swift */,
 				EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */,
 				EA56E07728A26C0D00A64262 /* RequestResult.swift */,
 				EA56E07828A26C0D00A64262 /* Result.swift */,
@@ -1582,7 +1603,6 @@
 				EA6829DC28A2523800E57462 /* .gitignore in Resources */,
 				EA2FF0E928B093AE0050C016 /* 每日任务.png in Resources */,
 				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
-				BF7500FF28E0452C00CDA64E /* Whitney-Bold.woff2 in Resources */,
 				BF7500FE28E0452C00CDA64E /* app.css in Resources */,
 				EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */,
 				EAEC420028B0994C0056D182 /* 洞天宝钱.png in Resources */,
@@ -1622,6 +1642,7 @@
 				EAE95CD828CE103D00D975CB /* BackgroundOptions.swift in Sources */,
 				EAB1110428CF8423009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
 				BFB101E028D5F971000DC631 /* CurrentEvents.swift in Sources */,
+				BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EAE95CCF28CE0FD600D975CB /* ResinInfo.swift in Sources */,
 				EAE95CD228CE0FD600D975CB /* ExpeditionInfo.swift in Sources */,
 				EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */,
@@ -1647,9 +1668,12 @@
 				EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAB110EA28CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
 				EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
+				BF75010D28E1486F00CDA64E /* HomeAPI.swift in Sources */,
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
 				EAE95D1028CE11D200D975CB /* md5.swift in Sources */,
+				EAD7F03328D01F2A0047A8F1 /* AlternativeLockScreenResinWidgetProvider.swift in Sources */,
+				BF75010628E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				EAE95CCC28CE0FD600D975CB /* RecoveryTime.swift in Sources */,
 				EAE95CD128CE0FD600D975CB /* DailyTaskInfo.swift in Sources */,
 				EAE95CC428CE0FC100D975CB /* Account.swift in Sources */,
@@ -1701,6 +1725,8 @@
 				BFCC068928C9BBC8003E4A54 /* UserData.swift in Sources */,
 				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
 				BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */,
+				BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */,
+				BF75010C28E1486F00CDA64E /* HomeAPI.swift in Sources */,
 				BFCC068528C9BBC8003E4A54 /* ExpeditionInfo.swift in Sources */,
 				BFCC069628C9BBC8003E4A54 /* RecoveryTime.swift in Sources */,
 				BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */,
@@ -1720,6 +1746,7 @@
 				EABE606928D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */,
 				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
 				BF85D78C28CF31FD003F3479 /* BasicInfos.swift in Sources */,
+				BF75010528E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */,
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
@@ -1744,6 +1771,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF75010428E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				EA196B0428B769640091FAE0 /* StringLocalized.swift in Sources */,
 				EA09A00E28A2B8700023B4AF /* Account.swift in Sources */,
 				EA09A01528A2B8B30023B4AF /* WeeklyBossesInfo.swift in Sources */,
@@ -1756,6 +1784,7 @@
 				EA09A01D28A2B8E70023B4AF /* FeatureAPI.swift in Sources */,
 				EA79FDC728AB84F600B50D6F /* OptionalAccounts.swift in Sources */,
 				EA09A01228A2B8AA0023B4AF /* UserData.swift in Sources */,
+				BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF7500E828DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
@@ -1780,6 +1809,7 @@
 				EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */,
 				BF7500D328DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
+				BF75010B28E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				BF85D78B28CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
@@ -1819,15 +1849,19 @@
 				EAB110FE28CF8422009FDF07 /* LockScreenExpeditionWidgetCircular.swift in Sources */,
 				EA56E09328A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				EAB110E928CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
+				BF75010328E1469700CDA64E /* NewestVersionModel.swift in Sources */,
+				EAB1110128CF8422009FDF07 /* LockScreenExpeditionWidgetProvider.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
 				EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
 				EA56E08928A26C0D00A64262 /* RequestResult.swift in Sources */,
 				EA56E09928A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
+				BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EA79FDC628AB84F500B50D6F /* OptionalAccounts.swift in Sources */,
 				EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EAD7F02B28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
+				BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */,
@@ -1888,6 +1922,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */,
+				BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BF7500D828DEA80700CDA64E /* CharacterDetailDatasView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EA56E09C28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
@@ -1943,6 +1978,7 @@
 				BF7500D128DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
+				BF75010228E1469600CDA64E /* NewestVersionModel.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
@@ -1980,6 +2016,7 @@
 				BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */,
 				EA56E09E28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */,
 				BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
+				BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */,
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
 				BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */,
@@ -1994,6 +2031,7 @@
 				EAE95CF928CE11A100D975CB /* DisplayContentModel.swift in Sources */,
 				EAE95D0828CE11A900D975CB /* TransformerData.swift in Sources */,
 				EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
+				BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EAE95D0928CE11AD00D975CB /* HttpMethod.swift in Sources */,
 				BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */,
@@ -2018,6 +2056,7 @@
 				EAE95CF728CE11A100D975CB /* Account.swift in Sources */,
 				EAE95D0028CE11A500D975CB /* UserData.swift in Sources */,
 				EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */,
+				BF75010E28E1486F00CDA64E /* HomeAPI.swift in Sources */,
 				BFB101DA28D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EAE95D0328CE11A700D975CB /* RecoveryTime.swift in Sources */,
 				EAE95CF228CE115D00D975CB /* WidgetViewConfiguration.swift in Sources */,
@@ -2027,6 +2066,7 @@
 				EAE95D0D28CE11CA00D975CB /* NetworkReachability.swift in Sources */,
 				EAE95CFA28CE11A100D975CB /* MaterialProviders.swift in Sources */,
 				EAE95D0128CE11A700D975CB /* TransformerInfo.swift in Sources */,
+				BF75010728E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				EAE95D0228CE11A700D975CB /* WeeklyBossesInfo.swift in Sources */,
 				EAE95D0428CE11A700D975CB /* DailyTaskInfo.swift in Sources */,
 			);

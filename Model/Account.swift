@@ -7,31 +7,38 @@
 
 import Foundation
 
-struct Account: Equatable, Hashable {
+class Account: Equatable, Hashable {
+    var config: AccountConfiguration
+
+    // 树脂等信息
+    var result: FetchResult?
+    var background: WidgetBackground = WidgetBackground.randomNamecardBackground
+
+    var basicInfo: BasicInfos?
+
+    var fetchComplete: Bool {
+        result != nil
+    }
+
+    init(config: AccountConfiguration) {
+        self.config = config
+    }
+
+    func fetchResult() {
+        config.fetchResult {
+            self.result = $0
+        }
+        config.fetchBasicInfo {
+            self.basicInfo = $0
+        }
+    }
+
     static func == (lhs: Account, rhs: Account) -> Bool {
-        return lhs.config == rhs.config && lhs.result == rhs.result && lhs.background == rhs.background && lhs.fetchComplete == rhs.fetchComplete
+        return lhs.config == rhs.config
     }
 
     var hashValue: Int {
         return config.hashValue
-    }
-
-    var config: AccountConfiguration
-    var result: FetchResult
-    var background: WidgetBackground = WidgetBackground.randomNamecardBackground
-
-    var fetchComplete: Bool
-
-    init(config: AccountConfiguration) {
-        self.config = config
-        self.result = .failure(.defaultStatus)
-        self.fetchComplete = false
-    }
-    
-    init(config: AccountConfiguration, result: FetchResult) {
-        self.config = config
-        self.result = result
-        self.fetchComplete = true
     }
 }
 
@@ -44,5 +51,17 @@ extension AccountConfiguration {
                                 uid: self.uid!,
                                 cookie: self.cookie!)
         { completion($0) }
+    }
+
+    func fetchBasicInfo(_ completion: @escaping (BasicInfos) -> ()) {
+        API.Features.fetchBasicInfos(region: self.server.region, serverID: self.server.id, uid: self.uid ?? "", cookie: self.cookie ?? "") { result in
+            switch result {
+            case .success(let data) :
+                completion(data)
+            case .failure(_):
+                print("fetching basic info error")
+                break
+            }
+        }
     }
 }

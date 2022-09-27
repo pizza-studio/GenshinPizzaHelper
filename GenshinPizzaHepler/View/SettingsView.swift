@@ -80,7 +80,7 @@ struct SettingsView: View {
                 }
                 
                 Section {
-                    NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/faq.html").navigationTitle("FAQ")) {
+                    NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/faq.html").navigationTitle("FAQ").navigationBarTitleDisplayMode(.inline)) {
                         Text("常见使用问题（FAQ）")
                     }
                     NavigationLink(destination: GuideVideoLinkView()) {

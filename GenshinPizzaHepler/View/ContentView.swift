@@ -14,9 +14,11 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
 
     // TODO: Replace to 0 in release, to 1 for debug
-    @State var selection: Int = 0
+    @State var selection: Int = 1
 
     @State private var sheetType: ContentViewSheetType? = nil
+    @State var newestVersionInfos: NewestVersion? = nil
+    @State var isJustUpdated: Bool = false
 
     var index: Binding<Int> { Binding(
         get: { self.selection },
@@ -29,14 +31,14 @@ struct ContentView: View {
     )}
 
     @State var isPopUpViewShow: Bool = false
-    @StateObject var detail = DisplayContentModel()
     @Namespace var animation
 
     @StateObject var storeManager: StoreManager
-    
     @State var isJumpToSettingsView: Bool = false
-
     @State var bgFadeOutAnimation: Bool = false
+
+    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+    let buildVersion = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
 
     var body: some View {
         ZStack {
@@ -44,12 +46,11 @@ struct ContentView: View {
                 HomeView(animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
                     .tag(0)
                     .environmentObject(viewModel)
-                    .environmentObject(detail)
                     .tabItem {
                         Label("概览", systemImage: "list.bullet")
                     }
                 // TODO: Replace to 15.0 for develop, stay 17 when not ready
-                if #available(iOS 17.0, *) {
+                if #available(iOS 15.0, *) {
                     ToolsView()
                         .tag(1)
                         .environmentObject(viewModel)
@@ -65,8 +66,8 @@ struct ContentView: View {
                     }
             }
 
-            if detail.show {
-                AccountDisplayView(detail: detail, animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
+            if let showDetailOfAccount = viewModel.showDetailOfAccount {
+                AccountDisplayView(account: showDetailOfAccount, animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
             }
         }
         .onChange(of: scenePhase, perform: { newPhase in
@@ -86,8 +87,8 @@ struct ContentView: View {
                 }
                 UIApplication.shared.applicationIconBadgeNumber = -1
 
-                // 同步watch数据
-                syncWatch()
+                // 检查最新版本
+                checkNewestVersion()
 
                 // 强制显示背景颜色
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -104,6 +105,8 @@ struct ContentView: View {
             case .userPolicy:
                 UserPolicyView(sheet: $sheetType)
                     .allowAutoDismiss(false)
+            case .foundNewestVersion:
+                newestVersionInfoView()
             }
         }
         .onOpenURL { url in
@@ -119,11 +122,133 @@ struct ContentView: View {
         .navigate(to: NotificationSettingView().environmentObject(viewModel), when: $isJumpToSettingsView)
     }
 
-    private func syncWatch() {
-        let messages: [String: Any] = ["accounts": viewModel.accounts]
+    func checkNewestVersion() {
+        DispatchQueue.global(qos: .default).async {
+            switch AppConfig.appConfiguration {
+            case .AppStore:
+                API.HomeAPIs.fetchNewestVersion(isBeta: false) { result in
+                    newestVersionInfos = result
+                    guard let newestVersionInfos = newestVersionInfos else {
+                        return
+                    }
+                    if buildVersion < newestVersionInfos.buildVersion {
+                        let checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as! [Int]?
+                        if checkedUpdateVersions != nil {
+                            if !(checkedUpdateVersions!.contains(newestVersionInfos.buildVersion)) {
+                                sheetType = .foundNewestVersion
+                            }
+                        } else {
+                            sheetType = .foundNewestVersion
+                        }
+                    } else {
+                        let checkedNewestVersion = UserDefaults.standard.integer(forKey: "checkedNewestVersion")
+                        if checkedNewestVersion < newestVersionInfos.buildVersion {
+                            isJustUpdated = true
+                            sheetType = .foundNewestVersion
+                            UserDefaults.standard.setValue(newestVersionInfos.buildVersion, forKey: "checkedNewestVersion")
+                            UserDefaults.standard.synchronize()
+                        }
+                    }
+                }
+            case .Debug, .TestFlight:
+                API.HomeAPIs.fetchNewestVersion(isBeta: true) { result in
+                    newestVersionInfos = result
+                    guard let newestVersionInfos = newestVersionInfos else {
+                        return
+                    }
+                    if buildVersion < newestVersionInfos.buildVersion {
+                        let checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as! [Int]?
+                        if checkedUpdateVersions != nil {
+                            if !(checkedUpdateVersions!.contains(newestVersionInfos.buildVersion)) {
+                                sheetType = .foundNewestVersion
+                            }
+                        } else {
+                            sheetType = .foundNewestVersion
+                        }
+                    } else {
+                        let checkedNewestVersion = UserDefaults.standard.integer(forKey: "checkedNewestVersion")
+                        if checkedNewestVersion < newestVersionInfos.buildVersion {
+                            isJustUpdated = true
+                            sheetType = .foundNewestVersion
+                            UserDefaults.standard.setValue(newestVersionInfos.buildVersion, forKey: "checkedNewestVersion")
+                            UserDefaults.standard.synchronize()
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-        self.viewModel.session.sendMessage(messages, replyHandler: nil) { error in
-            print("error: \(error.localizedDescription)")
+    @ViewBuilder
+    func newestVersionInfoView() -> some View {
+        NavigationView {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(newestVersionInfos?.shortVersion ?? "Error").font(.largeTitle) +
+                    Text(" (\(newestVersionInfos?.buildVersion ?? -1))")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Spacer()
+                    Image("AppIconHD")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .cornerRadius(10)
+                }
+                Divider()
+                    .padding(.vertical)
+                Text("更新内容：")
+                    .font(.subheadline)
+                if newestVersionInfos != nil {
+                    ForEach(getLocalizedUpdateInfos(meta: newestVersionInfos!), id:\.self) { item in
+                        Text("- \(item)")
+                    }
+                } else {
+                    Text("Error")
+                }
+                if !isJustUpdated {
+                    switch AppConfig.appConfiguration {
+                    case .TestFlight, .Debug :
+                        Link (destination: URL(string: "itms-beta://beta.itunes.apple.com/v1/app/1635319193")!) {
+                            Text("前往TestFlight更新")
+                        }
+                        .padding(.top)
+                    case .AppStore:
+                        Link (destination: URL(string: "itms-apps://apps.apple.com/us/app/原神披萨小助手/id1635319193")!) {
+                            Text("前往App Store更新")
+                        }
+                        .padding(.top)
+                    }
+                }
+                Spacer()
+            }
+            .padding(.horizontal)
+            .navigationTitle(isJustUpdated ? "感谢您更新到最新版本" : "发现新版本")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("完成") {
+                        var checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as? [Int] ?? []
+                        checkedUpdateVersions.append(newestVersionInfos!.buildVersion)
+                        UserDefaults.standard.set(checkedUpdateVersions, forKey: "checkedUpdateVersions")
+                        UserDefaults.standard.synchronize()
+                        sheetType = nil
+                    }
+                }
+            }
+        }
+    }
+
+    func getLocalizedUpdateInfos(meta: NewestVersion) -> [String] {
+        switch Locale.current.languageCode {
+        case "zh":
+            return meta.updates.zhcn
+        case "en":
+            return meta.updates.en
+        case "ja":
+            return meta.updates.ja
+        case "fr":
+            return meta.updates.fr
+        default:
+            return meta.updates.en
         }
     }
 }
@@ -134,4 +259,5 @@ enum ContentViewSheetType: Identifiable {
     }
 
     case userPolicy
+    case foundNewestVersion
 }
