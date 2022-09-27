@@ -12,7 +12,6 @@ struct UserData: Codable, Equatable {
         return lhs.accountName == rhs.accountName
     }
 
-    
     var accountName: String?
     
     mutating func addName(_ name: String) { accountName = name }

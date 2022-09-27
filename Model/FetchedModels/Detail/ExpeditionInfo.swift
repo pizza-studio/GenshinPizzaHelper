@@ -62,6 +62,12 @@ struct ExpeditionInfo {
     var nextCompletePercentageIgnoreFinished: Double {
         nextCompleteExpedition?.percentage ?? 0
     }
+
+    var score: Float {
+        if allCompleted { return 1.0 }
+        else if anyCompleted { return 0.5 }
+        else { return 0 }
+    }
 }
 
 struct Expedition: Codable {

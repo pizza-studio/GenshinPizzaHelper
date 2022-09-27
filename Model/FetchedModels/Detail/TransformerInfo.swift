@@ -35,5 +35,9 @@ struct TransformerInfo {
                                          transformerData.recoveryTime.minute,
                                          transformerData.recoveryTime.second)
     }
+
+    var score: Float {
+        if isComplete { return 1 } else { return 0 }
+    }
 }
 
