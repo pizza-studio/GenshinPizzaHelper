@@ -15,6 +15,7 @@ struct ResinEntry: TimelineEntry {
     let result: FetchResult
     let viewConfig: WidgetViewConfiguration
     var accountName: String? = nil
+    var relevance: TimelineEntryRelevance? = .init(score: 0)
 }
 
 struct MainWidgetProvider: IntentTimelineProvider {
@@ -55,7 +56,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
                 viewConfig = WidgetViewConfiguration(configuration, nil)
                 // 如果还未选择账号且只有一个账号，默认获取第一个
                 configs.first!.fetchResult { result in
-                    let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig, accountName: configs.first!.name)
+                    let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
+                    let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -88,18 +90,31 @@ struct MainWidgetProvider: IntentTimelineProvider {
         
         // 正常情况
         config.fetchResult { result in
-            let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig, accountName: config.name)
-            
+            let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
+            let entry = ResinEntry(date: currentDate, result: result, viewConfig: viewConfig, accountName: config.name, relevance: relevance)
             switch result {
             case .success(let userData):
                 UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
             case .failure(_ ):
                 break
             }
-            
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Widget Fetch succeed")
+        }
+    }
+
+    static func calculateRelevanceScore(result: FetchResult) -> Float {
+        // 结果为0-1
+        switch result {
+        case .success(let data):
+            if (data.resinInfo.percentage > 0.8) || (data.homeCoinInfo.percentage > 0.8) || (data.expeditionInfo.anyCompleted) {
+                return 1
+            } else {
+                return Float(data.resinInfo.percentage)
+            }
+        case .failure(_):
+            return 0
         }
     }
 }

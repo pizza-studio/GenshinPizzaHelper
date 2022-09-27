@@ -1,21 +1,30 @@
 //
-//  LockScreenWidgetProvider.swift
-//  GenshinPizzaHepler
+//  LockScreenWidgetsProvider.swift
+//  GenshinPizzaHelper
 //
-//  Created by 戴藏龙 on 2022/9/10.
+//  Created by 戴藏龙 on 2022/9/27.
 //
 
 import Foundation
 import WidgetKit
 
-struct LockScreenDailyTaskWidgetProvider: IntentTimelineProvider {
+struct AccountOnlyEntry: TimelineEntry {
+    let date: Date
+    let result: FetchResult
+    var accountName: String? = nil
+}
+
+struct LockScreenWidgetProvider: IntentTimelineProvider {
+    // 填入在手表上显示的Widget配置内容，例如："的原粹树脂"
+    let recommendationsTag: String
+
     @available(iOSApplicationExtension 16.0, *)
     func recommendations() -> [IntentRecommendation<SelectOnlyAccountIntent>] {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
             intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
-            return IntentRecommendation(intent: intent, description: config.name!+"的每日委托".localized)
+            return IntentRecommendation(intent: intent, description: config.name!+recommendationsTag.localized)
         }
     }
 
@@ -32,7 +41,10 @@ struct LockScreenDailyTaskWidgetProvider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        let refreshDate = Calendar.current.date(byAdding: .minute, value: 7, to: currentDate)!
+        var refreshMinute: Int = 7
+        var refreshDate: Date {
+            Calendar.current.date(byAdding: .minute, value: refreshMinute, to: currentDate)!
+        }
 
         let accountConfigurationModel = AccountConfigurationModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
@@ -70,20 +82,18 @@ struct LockScreenDailyTaskWidgetProvider: IntentTimelineProvider {
         // 正常情况
         config.fetchResult { result in
             let entry = AccountOnlyEntry(date: currentDate, result: result, accountName: config.name)
-            
+
             switch result {
             case .success(let userData):
                 #if !os(watchOS)
                 UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
                 #endif
             case .failure(_ ):
-                break
+                refreshMinute = 1
             }
-
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Widget Fetch succeed")
         }
     }
 }
-

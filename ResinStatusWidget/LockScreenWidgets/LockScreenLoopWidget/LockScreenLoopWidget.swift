@@ -13,7 +13,7 @@ struct LockScreenLoopWidget: Widget {
     let kind: String = "LockScreenLoopWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenLoopWidgetProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider(recommendationsTag: "的智能轮换信息")) { entry in
             LockScreenLoopWidgetView(entry: entry)
         }
         .configurationDisplayName("自动轮换")
@@ -29,7 +29,7 @@ struct LockScreenLoopWidget: Widget {
 @available (iOS 16.0, *)
 struct LockScreenLoopWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: LockScreenHomeCoinWidgetProvider.Entry
+    let entry: LockScreenWidgetProvider.Entry
     var result: FetchResult { entry.result }
     var accountName: String? { entry.accountName }
 
