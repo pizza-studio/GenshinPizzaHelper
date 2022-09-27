@@ -231,7 +231,6 @@ struct ContentView: View {
                         var checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as? [Int] ?? []
                         checkedUpdateVersions.append(newestVersionInfos!.buildVersion)
                         UserDefaults.standard.set(checkedUpdateVersions, forKey: "checkedUpdateVersions")
-                        print(checkedUpdateVersions)
                         UserDefaults.standard.synchronize()
                         sheetType = nil
                     }

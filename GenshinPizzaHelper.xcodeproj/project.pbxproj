@@ -885,6 +885,7 @@
 		BF6C5270289E12B500EA224F /* CommonTools */ = {
 			isa = PBXGroup;
 			children = (
+				BF75010F28E14CF500CDA64E /* AppConfig.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 				BF6C5271289E12DA00EA224F /* md5.swift */,
@@ -897,7 +898,6 @@
 				BFE42543289E523D00FEFA49 /* TimeTools.swift */,
 				BF70211B28B4B52500A6BBA9 /* ViewTools.swift */,
 				BF7500DE28DEC99400CDA64E /* NumberTools.swift */,
-				BF75010F28E14CF500CDA64E /* AppConfig.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
