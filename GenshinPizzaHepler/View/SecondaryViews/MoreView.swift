@@ -10,7 +10,6 @@ import SwiftUI
 struct MoreView: View {
     @EnvironmentObject var viewModel: ViewModel
     let localeID = Locale.current.identifier
-    @State private var sheetType: MoreViewSheetType? = nil
     @State private var newestVersionInfos: NewestVersion? = nil
     @State var isJustUpdated: Bool = false
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
@@ -112,11 +111,8 @@ struct MoreView: View {
                     guard let newestVersionInfos = newestVersionInfos else {
                         return
                     }
-                    if buildVersion < newestVersionInfos.buildVersion {
-                        sheetType = .foundNewestVersion
-                    } else {
+                    if buildVersion >= newestVersionInfos.buildVersion {
                         isJustUpdated = true
-                        sheetType = .foundNewestVersion
                     }
                 }
             case .Debug, .TestFlight:
@@ -125,11 +121,8 @@ struct MoreView: View {
                     guard let newestVersionInfos = newestVersionInfos else {
                         return
                     }
-                    if buildVersion < newestVersionInfos.buildVersion {
-                        sheetType = .foundNewestVersion
-                    } else {
+                    if buildVersion >= newestVersionInfos.buildVersion {
                         isJustUpdated = true
-                        sheetType = .foundNewestVersion
                     }
                 }
             }
@@ -150,12 +143,4 @@ struct MoreView: View {
             return meta.updates.en
         }
     }
-}
-
-private enum MoreViewSheetType: Identifiable {
-    var id: Int {
-        hashValue
-    }
-
-    case foundNewestVersion
 }
