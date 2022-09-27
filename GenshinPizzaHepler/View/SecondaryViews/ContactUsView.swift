@@ -106,6 +106,24 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
+                    Link(destination: isInstallation(urlString: "twitter://") ? URL(string: "twitter://user?id=890517369637847040")! : URL(string: "https://twitter.com/Haku_Bill")!) {
+                        Label {
+                            Text("Twitter主页")
+                        } icon: {
+                            Image("twitter")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    Link(destination: URL(string: "https://www.youtube.com/channel/UC0ABPKMmJa2hd5nNKh5HGqw")!) {
+                        Label {
+                            Text("YouTube频道")
+                        } icon: {
+                            Image("youtube")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
                     Link(destination: URL(string: "https://space.bilibili.com/158463764")!) {
                         Label {
                             Text("Bilibili主页")
@@ -223,6 +241,17 @@ struct ContactUsView: View {
         .navigationTitle("开发者与联系方式")
         .navigationBarTitleDisplayMode(.inline)
     }
+
+    func isInstallation(urlString:String?) -> Bool {
+            let url = URL(string: urlString!)
+            if url == nil {
+                return false
+            }
+            if UIApplication.shared.canOpenURL(url!) {
+                return true
+            }
+            return false
+        }
 }
 
 private struct CaptionLabelStyle : LabelStyle {
