@@ -145,6 +145,12 @@ struct ContactUsView: View {
                 }
             }
 
+            Section {
+                Link(destination: URL(string: "http://ophelper.top")!) {
+                    Text("原神披萨小助手官方网站")
+                }
+            }
+
             // app contact
             Section(header: Text("用户交流群")) {
                 Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=813912474")!) {
