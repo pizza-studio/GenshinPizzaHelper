@@ -53,6 +53,8 @@ enum LockScreenLoopWidgetType {
     case expedition
     case dailyTask
     case homeCoin
+    case transformer
+    case weeklyBosses
 
     static func autoChoose(result: FetchResult) -> LockScreenLoopWidgetType {
         switch result {
@@ -63,6 +65,10 @@ enum LockScreenLoopWidgetType {
                 return .expedition
             } else if data.resinInfo.score > data.resinInfo.score {
                 return .dailyTask
+            } else if data.weeklyBossesInfo.score > data.resinInfo.score {
+                return .weeklyBosses
+            } else if data.transformerInfo.score > data.resinInfo.score {
+                return .transformer
             } else {
                 return .resin
             }

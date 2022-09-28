@@ -23,6 +23,10 @@ struct LockScreenLoopWidgetCircular: View {
             LockScreenExpeditionWidgetCircular(result: result)
         case .homeCoin:
             LockScreenHomeCoinWidgetCircular(result: result)
+        case .transformer:
+            LockScreenLoopWidgetTransformerCircular(result: result)
+        case .weeklyBosses:
+            LockScreenLoopWidgetWeeklyBossesCircular(result: result)
         }
     }
 }

@@ -23,6 +23,10 @@ struct LockScreenLoopWidgetCorner: View {
             LockScreenExpeditionWidgetCorner(result: result)
         case .homeCoin:
             LockScreenHomeCoinWidgetCorner(result: result)
+
+        // TODO: delete here
+        default:
+            LockScreenResinWidgetCorner(result: result)
         }
     }
 }
