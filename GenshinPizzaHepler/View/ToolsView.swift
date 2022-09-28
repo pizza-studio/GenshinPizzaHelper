@@ -241,10 +241,10 @@ struct ToolsView: View {
         }
         DispatchQueue.global(qos: .userInteractive).async {
             if !viewModel.accounts.isEmpty {
-                API.OpenAPIs.fetchENCharacterDetailDatas() { result in
+                API.HomeAPIs.fetchENCharacterDetailDatas() { result in
                     charactersDetailMap = result
                 }
-                API.OpenAPIs.fetchENCharacterLocDatas() { result in
+                API.HomeAPIs.fetchENCharacterLocDatas() { result in
                     charactersLocMap = result
                 }
             }

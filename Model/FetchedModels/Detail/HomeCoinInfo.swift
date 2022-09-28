@@ -22,4 +22,10 @@ struct HomeCoinInfo {
         self.maxHomeCoin = maxHomeCoin
         self.recoveryTime = RecoveryTime(second: homeCoinRecoverySecond)
     }
+
+    var score: Float {
+        if percentage > 0.7 {
+            return Float(percentage)
+        } else { return 0 }
+    }
 }

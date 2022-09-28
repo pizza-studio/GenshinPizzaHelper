@@ -25,5 +25,9 @@ struct ResinInfo {
         self.maxResin = maxResin
         self.resinRecoverySecond = resinRecoverySecond
     }
-    
+
+    var score: Float {
+        if isFull { return 1.1 }
+        return Float(percentage)
+    }
 }

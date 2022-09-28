@@ -73,7 +73,7 @@ struct AccountDetailView: View {
         }
         .sheet(isPresented: $isSheetShow) {
             NavigationView {
-                WebBroswerView(url: "http://zhuaiyuwen.xyz/static/donate.html")
+                WebBroswerView(url: "http://ophelper.top/static/donate.html")
                     .navigationTitle("支持我们")
                     .navigationBarTitleDisplayMode(.inline)
             }

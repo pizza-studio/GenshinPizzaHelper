@@ -43,7 +43,7 @@ struct MoreView: View {
 //                }
 //            }
             Section {
-                NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/policy.html").navigationTitle("用户协议")) {
+                NavigationLink(destination: WebBroswerView(url: "http://ophelper.top/static/policy.html").navigationTitle("用户协议")) {
                     Text("用户协议与免责声明")
                 }
                 NavigationLink(destination: AboutView()) {

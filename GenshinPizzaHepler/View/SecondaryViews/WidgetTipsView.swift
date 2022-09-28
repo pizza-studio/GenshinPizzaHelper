@@ -34,7 +34,7 @@ struct WidgetTipsView: View {
                 }
 
                 Section (header: Text("还有其他问题？").textCase(.none)) {
-                    NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/faq.html").navigationTitle("FAQ")) {
+                    NavigationLink(destination: WebBroswerView(url: "http://ophelper.top/static/faq.html").navigationTitle("FAQ")) {
                         Label("常见使用问题（FAQ）", systemImage: "person.fill.questionmark")
                     }
                 }

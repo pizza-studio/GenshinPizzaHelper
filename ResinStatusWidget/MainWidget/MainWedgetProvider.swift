@@ -108,11 +108,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
         // 结果为0-1
         switch result {
         case .success(let data):
-            if (data.resinInfo.percentage > 0.8) || (data.homeCoinInfo.percentage > 0.8) || (data.expeditionInfo.anyCompleted) {
-                return 1
-            } else {
-                return Float(data.resinInfo.percentage)
-            }
+            return [data.resinInfo.score, data.transformerInfo.score, data.homeCoinInfo.score, data.expeditionInfo.score, data.dailyTaskInfo.score].max() ?? 0
         case .failure(_):
             return 0
         }

@@ -415,6 +415,7 @@
 "水里的碳酸钙" = "Bill Haku";
 
 // MARK: - 2.1
+// Home View
 "所有材料均可获取" = "Tous les matériaux peuvent être obtenu le Dimanche";
 
 // Proxy
@@ -522,3 +523,54 @@
 "妮露" = "Nilou";
 "赛诺" = "Cyno";
 "坎蒂丝" = "Candace";
+
+// MARK: - 2.4
+// Content View
+"概览" = "Overview";
+"工具" = "Tools";
+
+// Home View
+"当前活动" = "Ongoing Events";
+"即将结束的活动" = "Soon to end events";
+"查看全部活动" = "All ongoing events";
+"帐号基本信息" = "Account Basic Infos";
+"剩余 %lld天" = "%lld days left";
+"剩余 %lld小时" = "%lld hours left";
+"收起" = "Fold";
+"点击材料查看更多" = "Tap the icon to show more";
+"菲谢尔" = "Fischl";
+"左右滑动查看更多" = "Swipe left and right to see more";
+
+// Settings View
+"使用小组件遇到了问题？" = "Any question about the Widget or Apple Watch complications?";
+"如何添加小组件和锁屏小组件？" = "How to add Widget on your Home Screen and Lock Screen?";
+"关于如何在Apple Watch上添加复杂功能，请参考Apple支持文档" = "About how to add a Apple Watch complication, please refer to the Apple Support Documents";
+"如何添加复杂功能？" = "How to add Apple Watch complications?";
+"还有其他问题？" = "Any other questions?";
+"偏好语言" = "Preferred language";
+"检查更新" = "Check Updates";
+"清空已检查的版本号" = "Clean Checked Version Codes";
+"" = "";
+
+// Thanks View
+"开源组件与第三方API致谢" = "Acknowledgement for open source components and third-party APIs";
+"我们的App使用了以下开源组件和第三方API，在此向其作者表示感谢。" = "Our app uses the following open source components and third-party APIs, and we would like to thank their authors.";
+
+// Tools View
+"敬请期待" = "Stay tuned";
+
+// Updates View
+"感谢您更新到最新版本" = "You are up to Date";
+"更新内容：" = "Update Contents: ";
+"前往TestFlight更新" = "Go to TestFlight to Update it";
+"前往App Store更新" = "Go to App Store to Update it";
+"发现新版本" = "New Version Found";
+
+// Contact Us View
+"原神披萨小助手官方网站" = "Genshin Pizza Helper Official Site";
+"Twitter主页" = "Twitter Homepage";
+"YouTube频道" = "YouTube Channel";
+"翻译提供" = "Translators";
+"英语" = "English";
+"日语 英语" = "Japanese English";
+"法语" = "French";
