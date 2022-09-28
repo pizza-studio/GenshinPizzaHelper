@@ -64,8 +64,8 @@ struct ExpeditionInfo {
     }
 
     var score: Float {
-        if allCompleted { return 1.0 }
-        else if anyCompleted { return 0.5 }
+        if allCompleted { return 120.0/160.0 }
+        else if anyCompleted { return 40.0/160.0 }
         else { return 0 }
     }
 }
