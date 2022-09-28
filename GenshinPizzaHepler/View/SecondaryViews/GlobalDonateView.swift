@@ -21,7 +21,7 @@ struct GlobalDonateView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             Section {
-                NavigationLink(destination: WebBroswerView(url: "http://zhuaiyuwen.xyz/static/thanks.html").navigationTitle("特别鸣谢")) {
+                NavigationLink(destination: WebBroswerView(url: "http://ophelper.top/static/thanks.html").navigationTitle("特别鸣谢")) {
                     Text("特别鸣谢")
                 }
             }

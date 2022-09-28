@@ -45,5 +45,65 @@ extension API {
                     }
                 }
         }
+
+        /// 从EnkaNetwork获取角色ID对应详细信息
+        /// - Parameters:
+        ///     - completion: 数据
+        static func fetchENCharacterDetailDatas (
+            completion: @escaping (
+                ENCharacterMap
+            ) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "api/players/characters.json"
+
+            // 请求
+            HttpMethod<ENCharacterMap>
+                .homeRequest(
+                    .get,
+                    urlStr
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        completion(requestResult)
+
+                    case .failure(_):
+                        print("fetch ENCharacterDetailDatas fail")
+                        break
+                    }
+                }
+        }
+
+        /// 从EnkaNetwork获取角色ID对应本地化信息
+        /// - Parameters:
+        ///     - completion: 数据
+        static func fetchENCharacterLocDatas (
+            completion: @escaping (
+                ENCharacterLoc
+            ) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "api/players/loc.json"
+
+            // 请求
+            HttpMethod<ENCharacterLoc>
+                .homeRequest(
+                    .get,
+                    urlStr
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        completion(requestResult)
+
+                    case .failure(_):
+                        print("fetch ENCharacterLocDatas fail")
+                        break
+                    }
+                }
+        }
     }
 }
