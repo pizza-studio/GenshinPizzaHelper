@@ -91,7 +91,7 @@ extension API {
             HttpMethod<ENCharacterLoc>
                 .homeRequest(
                     .get,
-                    url
+                    urlStr
                 ) { result in
                     switch result {
 
