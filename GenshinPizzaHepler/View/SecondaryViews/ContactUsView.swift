@@ -212,6 +212,40 @@ struct ContactUsView: View {
                         .scaledToFit()
                         .clipShape(Circle())
                 }
+                Menu {
+                    Link(destination: isInstallation(urlString: "twitter://") ? URL(string: "twitter://user?id=1298207652300730373")! : URL(string: "https://twitter.com/hutao_taotao")!) {
+                        Label {
+                            Text("Twitter主页")
+                        } icon: {
+                            Image("twitter")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    Link(destination: URL(string: "https://youtube.com/c/hutao_taotao")!) {
+                        Label {
+                            Text("YouTube频道")
+                        } icon: {
+                            Image("youtube")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                } label: {
+                    Label {
+                        HStack {
+                            Text("たお👻🍑")
+                            Spacer()
+                            Text("日语")
+                                .foregroundColor(.gray)
+                        }
+                    } icon: {
+                        Image("avatar.tao")
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(Circle())
+                    }
+                }
                 Label {
                     HStack {
                         Text("Qi")
