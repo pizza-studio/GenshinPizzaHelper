@@ -17,8 +17,6 @@ struct GameInfoBlock: View {
     var animation: Namespace.ID
 
     var widgetBackground: WidgetBackground
-
-    @Binding var bgFadeOutAnimation: Bool
     
     var body: some View {
         if let userData = userData {
@@ -67,7 +65,7 @@ struct GameInfoBlock: View {
                     .matchedGeometryEffect(id: "\(accountUUIDString)detail", in: animation)
                 Spacer()
             }
-            .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
+            .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true)
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation))
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))

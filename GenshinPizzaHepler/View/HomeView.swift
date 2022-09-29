@@ -13,8 +13,6 @@ struct HomeView: View {
     @State var eventContents: [EventModel] = []
 
     var animation: Namespace.ID
-
-    @Binding var bgFadeOutAnimation: Bool
     
     var body: some View {
         NavigationView {
@@ -76,11 +74,37 @@ struct HomeView: View {
 
     @ViewBuilder
     func accountInfoCards() -> some View {
+        AccountInfoCards(animation: animation)
+    }
+
+
+
+}
+
+
+extension View {
+    @ViewBuilder
+    func myRefreshable(action: @escaping () -> Void) -> some View {
+        if #available(iOS 15, *) {
+            self.refreshable {
+                action()
+            }
+        } else {
+            self
+        }
+    }
+}
+
+private struct AccountInfoCards: View {
+    @EnvironmentObject var viewModel: ViewModel
+    var animation: Namespace.ID
+
+    var body: some View {
         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
             if account.fetchComplete {
                 switch account.result! {
                 case .success(let userData):
-                    let gameInfoBlock: some View = GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, bgFadeOutAnimation: $bgFadeOutAnimation)
+                    let gameInfoBlock: some View = GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background)
                         .padding([.bottom, .horizontal])
                         .listRowBackground(Color.white.opacity(0))
                         .onTapGesture {
@@ -90,19 +114,17 @@ struct HomeView: View {
                             }
                         }
                     if #available (iOS 16, *) {
-                        if account != viewModel.showDetailOfAccount {
-                            gameInfoBlock
-                                .contextMenu {
-                                    Button("保存图片".localized) {
-                                        let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background)
-                                        let renderer = ImageRenderer(content: view)
-                                        renderer.scale = UIScreen.main.scale
-                                        if let image = renderer.uiImage {
-                                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                                        }
+                        gameInfoBlock
+                            .contextMenu {
+                                Button("保存图片".localized) {
+                                    let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background)
+                                    let renderer = ImageRenderer(content: view)
+                                    renderer.scale = UIScreen.main.scale
+                                    if let image = renderer.uiImage {
+                                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                                     }
                                 }
-                        }
+                            }
                     } else {
                         gameInfoBlock
                     }
@@ -132,23 +154,6 @@ struct HomeView: View {
                     .padding([.bottom, .horizontal])
             }
 
-        }
-    }
-
-
-
-}
-
-
-extension View {
-    @ViewBuilder
-    func myRefreshable(action: @escaping () -> Void) -> some View {
-        if #available(iOS 15, *) {
-            self.refreshable {
-                action()
-            }
-        } else {
-            self
         }
     }
 }

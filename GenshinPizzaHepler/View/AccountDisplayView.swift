@@ -22,7 +22,6 @@ struct AccountDisplayView: View {
     var basicAccountInfo: BasicInfos? { account.basicInfo }
 
     @State private var animationDone: Bool = false
-    @Binding var bgFadeOutAnimation: Bool
     @State var scrollOffset: CGPoint = .zero
     @State var isAccountInfoShow: Bool = false
 
@@ -154,7 +153,7 @@ struct AccountDisplayView: View {
             }
         }
         .background(
-            AppBlockBackgroundView(background: account.background, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation)
+            AppBlockBackgroundView(background: account.background, darkModeOn: true)
                 .matchedGeometryEffect(id: "\(accountUUIDString)bg", in: animation)
                 .padding(-10)
                 .ignoresSafeArea(.all)
@@ -264,7 +263,7 @@ struct GameInfoBlockForSave: View {
                 .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
             Spacer()
         }
-        .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true, bgFadeOutAnimation: $bgFadeOutAnimation))
+        .background(AppBlockBackgroundView(background: widgetBackground, darkModeOn: true))
     }
 }
 

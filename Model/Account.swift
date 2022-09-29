@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Account: Equatable, Hashable {
+struct Account: Equatable, Hashable {
     var config: AccountConfiguration
 
     // 树脂等信息
@@ -22,15 +22,6 @@ class Account: Equatable, Hashable {
 
     init(config: AccountConfiguration) {
         self.config = config
-    }
-
-    func fetchResult() {
-        config.fetchResult {
-            self.result = $0
-        }
-        config.fetchBasicInfo {
-            self.basicInfo = $0
-        }
     }
 
     static func == (lhs: Account, rhs: Account) -> Bool {

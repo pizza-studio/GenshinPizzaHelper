@@ -76,8 +76,15 @@ class ViewModel: NSObject, ObservableObject {
     
     
     func refreshData() {
-        accounts.forEach { account in
-            account.fetchResult()
+        accounts.indices.forEach { index in
+            self.accounts[index].result = nil
+            accounts[index].config.fetchResult { result in
+                self.accounts[index].result = result
+                self.accounts[index].background = .randomNamecardBackground
+            }
+            accounts[index].config.fetchBasicInfo { basicInfo in
+                self.accounts[index].basicInfo = basicInfo
+            }
         }
     }
 }

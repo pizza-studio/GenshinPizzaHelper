@@ -124,7 +124,7 @@ struct AddAccountView: View {
             }
             
             if let userData = userData {
-                GameInfoBlock(userData: userData, accountName: unsavedName, animation: animation, widgetBackground: WidgetBackground.randomNamecardBackground, bgFadeOutAnimation: $bgFadeOutAnimation)
+                GameInfoBlock(userData: userData, accountName: unsavedName, animation: animation, widgetBackground: WidgetBackground.randomNamecardBackground)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .aspectRatio(170/364, contentMode: .fill)
