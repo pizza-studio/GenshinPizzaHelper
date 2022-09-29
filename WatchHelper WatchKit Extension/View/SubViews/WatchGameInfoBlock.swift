@@ -12,28 +12,48 @@ struct WatchGameInfoBlock: View {
     let accountName: String?
     var uid: String?
 
+    var fetchComplete: Bool
+    var background: WidgetBackground
+
     @State var bindingBool = false
 
     var body: some View {
         switch userData {
         case .success(let data):
-            VStack(alignment: .leading) {
-                Text(accountName ?? "Name Nil")
-                    .font(.caption)
-                HStack(alignment: .bottom) {
-                    Text("\(data.resinInfo.currentResin)")
-                        .font(.system(size: 50 , design: .rounded))
-                        .fontWeight(.medium)
-                        .foregroundColor(Color("textColor3"))
-                        .shadow(radius: 1)
-                    Spacer()
-                    Image("树脂")
-                        .resizable()
-                        .frame(width: 40, height: 40)
+            ZStack {
+                VStack(alignment: .leading) {
+                    Text(accountName ?? "Name Nil")
+                        .font(.caption)
+                    HStack(alignment: .bottom) {
+                        Text("\(data.resinInfo.currentResin)")
+                            .font(.system(size: 50 , design: .rounded))
+                            .fontWeight(.medium)
+                            .foregroundColor(Color("textColor3"))
+                            .shadow(radius: 1)
+                        Spacer()
+                        Image("树脂")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                    }
+                }
+                .opacity(fetchComplete ? 1 : 0)
+                if !fetchComplete {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                        Spacer()
+                    }
                 }
             }
             .padding()
-            .background(AppBlockBackgroundView(background: .randomNamecardBackground, darkModeOn: false, bgFadeOutAnimation: $bindingBool))
+            .background(
+                Image(background.imageName!)
+                    .resizable()
+                    .scaledToFill()
+                    .id(background.imageName!)
+                    .transition(.opacity)
+                    .opacity(fetchComplete ? 1 : 0)
+            )
         case .failure(_):
             Text("Error")
         }

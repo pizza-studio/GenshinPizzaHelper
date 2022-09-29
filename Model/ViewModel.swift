@@ -28,7 +28,7 @@ class ViewModel: NSObject, ObservableObject {
         self.session = session
         super.init()
         self.session.delegate = self
-        session.activate()
+//        session.activate()
         self.fetchAccount()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(fetchAccount),
@@ -76,8 +76,16 @@ class ViewModel: NSObject, ObservableObject {
     
     
     func refreshData() {
-        accounts.forEach { account in
-            account.fetchResult()
+        accounts.indices.forEach { index in
+            accounts[index].fetchComplete = false
+            accounts[index].config.fetchResult { result in
+                self.accounts[index].result = result
+                self.accounts[index].background = .randomNamecardBackground
+                self.accounts[index].fetchComplete = true
+            }
+            accounts[index].config.fetchBasicInfo { basicInfo in
+                self.accounts[index].basicInfo = basicInfo
+            }
         }
     }
 }

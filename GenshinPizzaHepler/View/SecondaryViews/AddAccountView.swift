@@ -123,14 +123,14 @@ struct AddAccountView: View {
                 TestSectionView(connectStatus: $connectStatus, uid: $unsavedUid, cookie: $unsavedCookie, server: $unsavedServer)
             }
             
-            if let userData = userData {
-                GameInfoBlock(userData: userData, accountName: unsavedName, animation: animation, widgetBackground: WidgetBackground.randomNamecardBackground, bgFadeOutAnimation: $bgFadeOutAnimation)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .aspectRatio(170/364, contentMode: .fill)
-                    .animation(.linear)
-                    .listRowBackground(Color.white.opacity(0))
-            }
+//            if let userData = userData {
+//                GameInfoBlock(userData: userData, accountName: unsavedName, animation: animation, widgetBackground: WidgetBackground.randomNamecardBackground, fetchComplete = true)
+//                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+//                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+//                    .aspectRatio(170/364, contentMode: .fill)
+//                    .animation(.linear)
+//                    .listRowBackground(Color.white.opacity(0))
+//            }
             
         }
         .navigationBarTitle("添加帐号", displayMode: .inline)

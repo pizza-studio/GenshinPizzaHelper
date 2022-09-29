@@ -38,7 +38,6 @@ struct ContentView: View {
 
     @StateObject var storeManager: StoreManager
     @State var isJumpToSettingsView: Bool = false
-    @State var bgFadeOutAnimation: Bool = false
 
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let buildVersion = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
@@ -46,7 +45,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             TabView(selection: index) {
-                HomeView(animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
+                HomeView(animation: animation)
                     .tag(0)
                     .environmentObject(viewModel)
                     .tabItem {
@@ -72,7 +71,7 @@ struct ContentView: View {
             }
 
             if let showDetailOfAccount = viewModel.showDetailOfAccount {
-                AccountDisplayView(account: showDetailOfAccount, animation: animation, bgFadeOutAnimation: $bgFadeOutAnimation)
+                AccountDisplayView(account: showDetailOfAccount, animation: animation)
             }
         }
         .onChange(of: scenePhase, perform: { newPhase in
@@ -81,9 +80,6 @@ struct ContentView: View {
                 // 检查是否同意过用户协议
                 let isPolicyShown = UserDefaults.standard.bool(forKey: "isPolicyShown")
                 if !isPolicyShown { sheetType = .userPolicy }
-                DispatchQueue.main.async {
-                    bgFadeOutAnimation = true
-                }
                 DispatchQueue.main.async {
                     viewModel.fetchAccount()
                 }
@@ -94,11 +90,6 @@ struct ContentView: View {
 
                 // 检查最新版本
                 checkNewestVersion()
-
-                // 强制显示背景颜色
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    bgFadeOutAnimation = false
-                }
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
             default:

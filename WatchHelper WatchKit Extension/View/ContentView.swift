@@ -33,7 +33,7 @@ struct ContentView: View {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         if account.result != nil {
                             NavigationLink(destination: WatchAccountDetailView(userData: account.result!, accountName: account.config.name, uid: account.config.uid)) {
-                                WatchGameInfoBlock(userData: account.result!, accountName: account.config.name, uid: account.config.uid)
+                                WatchGameInfoBlock(userData: account.result!, accountName: account.config.name, uid: account.config.uid, fetchComplete: account.fetchComplete, background: account.background)
                             }
                             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
