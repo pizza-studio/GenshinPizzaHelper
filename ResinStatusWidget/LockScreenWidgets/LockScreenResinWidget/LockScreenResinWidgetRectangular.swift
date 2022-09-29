@@ -79,6 +79,7 @@ struct LockScreenResinWidgetRectangular: View {
                                 .font(.system(size: size*1/2))
                                 .minimumScaleFactor(0.5)
                         }
+                        .foregroundColor(.primary)
                         .widgetAccentable()
                         if data.resinInfo.isFull {
                             Text("已回满")
