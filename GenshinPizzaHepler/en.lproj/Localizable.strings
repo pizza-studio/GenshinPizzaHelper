@@ -606,7 +606,7 @@
 "原木刀" = "Sapwood Blade";
 "风鹰剑" = "Aquila Favonia";
 "天空之刃" = "Skyward Blade";
-"斫锋之刃" = "Summit Shaper";
+"斫峰之刃" = "Summit Shaper";
 "磐岩结绿" = "Primordial Jade Cutter";
 "苍古自由之誓" = "Freedom-Sworn";
 "雾切之回光" = "Mistsplitter Reforged";
@@ -636,7 +636,7 @@
 "天空之傲" = "Skyward Pride";
 "狼的末路" = "Wolf's Gravestone";
 "无工之剑" = "The Unforged";
-"忪籁响起之时" = "Song of Broken Pines";
+"松籁响起之时" = "Song of Broken Pines";
 "赤角石溃杵" = "Redhorn Stonethresher";
 "新手长枪" = "Beginner's Protector";
 "铁尖枪" = "Iron Point";
@@ -681,7 +681,7 @@
 "暗巷猎手" = "Alley Hunter";
 "幽夜华尔兹" = "Mitternachts Waltz";
 "破魔之弓" = "Hamayumi";
-"矇云之月" = "Mouun's Moon";
+"曚云之月" = "Mouun's Moon";
 "落霞" = "Fading Twilight";
 "竭泽" = "End of the Line";
 "王下近侍" = "King's Squire";
@@ -712,7 +712,7 @@
 "暗巷的酒与诗" = "Wine and Song";
 "嘟嘟可故事集" = "Dodoco Tales";
 "白辰之环" = "Hakushin Ring";
-"正誓之明瞳" = "Oathsworn Eye";
+"证誓之明瞳" = "Oathsworn Eye";
 "盈满之实" = "Fruit of Fulfillment";
 "天空之卷" = "Skyward Atlas";
 "四风原典" = "Lost Prayer to the Sacred Winds";
@@ -725,3 +725,4 @@
 "风信之锋" = "Missive Windspear";
 "赤沙之杖" = "Staff of the Scarlet Sands";
 "流浪的晚星" = "Wandering Evenstar";
+"掠食者" = "Predator";
