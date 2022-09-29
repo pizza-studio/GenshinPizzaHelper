@@ -24,7 +24,8 @@ struct CurrentEventNavigator: View {
                         Text("查看全部活动")
                             .font(.caption)
                             .foregroundColor(.secondary)
-                        Image(systemName: "chevron.forward.circle")
+                        Image(systemName: "chevron.forward")
+                            .padding(.leading, 5)
                             .foregroundColor(.secondary)
                     }
                     .font(.caption)
