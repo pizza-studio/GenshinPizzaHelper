@@ -16,9 +16,7 @@ struct Account: Equatable, Hashable {
 
     var basicInfo: BasicInfos?
 
-    var fetchComplete: Bool {
-        result != nil
-    }
+    var fetchComplete: Bool = false
 
     init(config: AccountConfiguration) {
         self.config = config
