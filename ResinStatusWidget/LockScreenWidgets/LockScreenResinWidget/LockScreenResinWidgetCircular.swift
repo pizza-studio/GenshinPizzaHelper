@@ -31,7 +31,7 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(ProgressGaugeStyle(circleColor: Color("iconColor.resin.middle")))
             case .failure(_):
-                Gauge(value: 0.0, in: 0.0...160.0) {
+                Gauge(value: 160, in: 0.0...160.0) {
                     LinearGradient(colors: [.init("iconColor.resin.dark"), .init("iconColor.resin.middle"), .init("iconColor.resin.light")], startPoint: .top, endPoint: .bottom)
                         .mask(Image("icon.resin")
                             .resizable()
@@ -55,7 +55,7 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure(_):
-                Gauge(value: 0.0, in: 0.0...160.0) {
+                Gauge(value: 160, in: 0.0...160.0) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
@@ -78,7 +78,7 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure(_):
-                Gauge(value: 0.0, in: 0.0...160.0) {
+                Gauge(value: 160, in: 0.0...160.0) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
