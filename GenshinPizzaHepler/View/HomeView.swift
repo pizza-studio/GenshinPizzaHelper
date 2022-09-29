@@ -37,7 +37,7 @@ struct HomeView: View {
                             .padding(.bottom)
 
                         // MARK: - 账号信息
-                        accountInfoCards()
+                        AccountInfoCards(animation: animation)
                     }
                 }
             }
@@ -71,13 +71,6 @@ struct HomeView: View {
             }
         }
     }
-
-    @ViewBuilder
-    func accountInfoCards() -> some View {
-        AccountInfoCards(animation: animation)
-    }
-
-
 
 }
 
