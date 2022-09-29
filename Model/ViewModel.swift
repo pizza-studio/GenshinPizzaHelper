@@ -28,7 +28,7 @@ class ViewModel: NSObject, ObservableObject {
         self.session = session
         super.init()
         self.session.delegate = self
-        session.activate()
+//        session.activate()
         self.fetchAccount()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(fetchAccount),
