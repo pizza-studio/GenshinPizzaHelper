@@ -8,7 +8,7 @@
 import Foundation
 import Intents
 
-class IntentHandler: INExtension, SelectAccountIntentHandling, SelectOnlyAccountIntentHandling {
+class IntentHandler: INExtension, SelectAccountIntentHandling, SelectOnlyAccountIntentHandling, SelectAccountAndShowWhichInfoIntentHandling {
 
     // MARK: - SelectAccountIntentHandling
     func provideBackgoundOptionsCollection(for intent: SelectAccountIntent, with completion: @escaping (INObjectCollection<WidgetBackground>?, Error?) -> Void) {
@@ -50,6 +50,22 @@ class IntentHandler: INExtension, SelectAccountIntentHandling, SelectOnlyAccount
 
     // MARK: - SelectOnlyAccountIntentHandling
     func provideAccountOptionsCollection(for intent: SelectOnlyAccountIntent, with completion: @escaping (INObjectCollection<AccountIntent>?, Error?) -> Void) {
+        let accountConfigurationModel = AccountConfigurationModel.shared
+        let accountConfigs: [AccountConfiguration] = accountConfigurationModel.fetchAccountConfigs()
+
+        let accountIntents: [AccountIntent] = accountConfigs.map { config in
+            return AccountIntent(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
+        }
+        let collection = INObjectCollection(items: accountIntents)
+        accountIntents.forEach { accountIntent in
+            print(accountIntent.description)
+        }
+
+        completion(collection, nil)
+    }
+
+    // MARK: - SelectAccountAndShowWhichInfoIntentHandling
+    func provideAccountOptionsCollection(for intent: SelectAccountAndShowWhichInfoIntent, with completion: @escaping (INObjectCollection<AccountIntent>?, Error?) -> Void) {
         let accountConfigurationModel = AccountConfigurationModel.shared
         let accountConfigs: [AccountConfiguration] = accountConfigurationModel.fetchAccountConfigs()
 

@@ -24,6 +24,7 @@
 	</dict>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>SelectAccountAndShowWhichInfoIntent</string>
 		<string>SelectAccountIntent</string>
 		<string>SelectOnlyAccountIntent</string>
 	</array>

@@ -13,4 +13,10 @@ struct WeeklyBossesInfo {
     var hasUsedResinDiscountNum: Int { resinDiscountNumLimit - remainResinDiscountNum }
     
     var isComplete: Bool { remainResinDiscountNum == 0 }
+
+    var score: Float {
+        if Calendar.current.isDateInWeekend(Date()) && !isComplete {
+            return Float(0.5)
+        } else { return 0 }
+    }
 }
