@@ -45,7 +45,6 @@ struct InAppMaterialNavigator: View {
                                 showMaterialDetail = false
                             }
                         }
-//                        .padding(.trailing, 25)
                         .font(.caption)
                         .padding(.top)
                         .padding(.bottom, -10)
@@ -82,6 +81,7 @@ struct InAppMaterialNavigator: View {
                 }
                 Image(systemName: "chevron.forward")
                     .rotationEffect(Angle(degrees: showMaterialDetail ? 90 : 0), anchor: .center)
+                    .foregroundColor(showMaterialDetail ? .accentColor : .secondary)
                     .padding(.trailing, 25)
                     .font(.caption)
                     .padding(.top)
