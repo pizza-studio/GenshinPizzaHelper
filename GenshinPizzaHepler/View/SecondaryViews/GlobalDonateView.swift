@@ -25,37 +25,6 @@ struct GlobalDonateView: View {
                     Text("特别鸣谢")
                 }
             }
-            if is_zh_CN {
-                Section(footer: isWechatAlipayShow ? Text("您可以长按保存图片到对应App中扫描").font(.footnote) : nil) {
-                    Button("通过微信或支付宝支付") {
-                        withAnimation() {
-                            isWechatAlipayShow.toggle()
-                        }
-                    }
-                    if isWechatAlipayShow {
-                        HStack {
-                            Image("WechatDonateQRCode")
-                                .resizable()
-                                .frame(maxHeight: 300)
-                                .aspectRatio(contentMode: .fit)
-                            Image("AlipayDonateQRCode")
-                                .resizable()
-                                .frame(maxHeight: 300)
-                                .aspectRatio(contentMode: .fit)
-                        }
-                        .contextMenu {
-                            Button("保存微信支付图片".localized) {
-                                let uiImage = UIImage(named: "WechatDonateQRCode")
-                                UIImageWriteToSavedPhotosAlbum(uiImage!, nil, nil, nil)
-                            }
-                            Button("保存支付宝图片".localized) {
-                                let uiImage = UIImage(named: "AlipayDonateQRCode")
-                                UIImageWriteToSavedPhotosAlbum(uiImage!, nil, nil, nil)
-                            }
-                        }
-                    }
-                }
-            }
 
             Section(header: Text("捐赠项目")) {
                 if storeManager.myProducts.isEmpty {
@@ -86,10 +55,6 @@ struct GlobalDonateView: View {
                     }
                 }
             }
-
-//            if !is_zh_CN {
-//                  Foreign region do not show wechat pay and alipay
-//            }
         }
         .navigationTitle("支持我们")
         .navigationBarTitleDisplayMode(.inline)

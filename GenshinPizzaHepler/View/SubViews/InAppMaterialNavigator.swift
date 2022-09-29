@@ -34,7 +34,6 @@ struct InAppMaterialNavigator: View {
                     Spacer()
                     if showMaterialDetail == false {
                         Text(getDate())
-                            .padding(.trailing, 25)
                             .font(.caption)
                             .padding(.top)
                             .padding(.bottom, -10)
@@ -46,7 +45,6 @@ struct InAppMaterialNavigator: View {
                                 showMaterialDetail = false
                             }
                         }
-                        .padding(.trailing, 25)
                         .font(.caption)
                         .padding(.top)
                         .padding(.bottom, -10)
@@ -81,6 +79,13 @@ struct InAppMaterialNavigator: View {
                         .padding()
                     }
                 }
+                Image(systemName: "chevron.forward")
+                    .rotationEffect(Angle(degrees: showMaterialDetail ? 90 : 0), anchor: .center)
+                    .foregroundColor(showMaterialDetail ? .accentColor : .secondary)
+                    .padding(.trailing, 25)
+                    .font(.caption)
+                    .padding(.top)
+                    .padding(.bottom, -10)
             }
             .onTapGesture {
                 if showMaterialDetail {
