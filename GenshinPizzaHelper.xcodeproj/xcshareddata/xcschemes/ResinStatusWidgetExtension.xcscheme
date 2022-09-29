@@ -68,19 +68,10 @@
             ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EABD7DB52886B2D200B7F0FD"
-            BuildableName = "&#x539f;&#x795e;&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.app"
-            BlueprintName = "GenshinPizzaHepler"
-            ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCWidgetKind"
-            value = "WidgetView"
+            value = "LockScreenLoopWidget"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
@@ -90,7 +81,7 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "_XCWidgetFamily"
-            value = "large"
+            value = "accessoryCircular"
             isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
@@ -101,6 +92,7 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
+      askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">

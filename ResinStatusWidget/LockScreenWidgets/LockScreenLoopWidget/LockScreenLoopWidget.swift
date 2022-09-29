@@ -13,7 +13,7 @@ struct LockScreenLoopWidget: Widget {
     let kind: String = "LockScreenLoopWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider(recommendationsTag: "的智能轮换信息")) { entry in
+        IntentConfiguration(kind: kind, intent: SelectAccountAndShowWhichInfoIntent.self, provider: LockScreenLoopWidgetProvider(recommendationsTag: "的智能轮换信息")) { entry in
             LockScreenLoopWidgetView(entry: entry)
         }
         .configurationDisplayName("自动轮换")
@@ -29,9 +29,11 @@ struct LockScreenLoopWidget: Widget {
 @available (iOS 16.0, *)
 struct LockScreenLoopWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    let entry: LockScreenWidgetProvider.Entry
+    let entry: LockScreenLoopWidgetProvider.Entry
     var result: FetchResult { entry.result }
     var accountName: String? { entry.accountName }
+    var showWeeklyBosses: Bool { entry.showWeeklyBosses }
+    var showTransformer: Bool { entry.showTransformer }
 
     var body: some View {
         switch family {
@@ -40,7 +42,7 @@ struct LockScreenLoopWidgetView: View {
             LockScreenLoopWidgetCorner(result: result)
         #endif
         case .accessoryCircular:
-            LockScreenLoopWidgetCircular(result: result)
+            LockScreenLoopWidgetCircular(result: result, showWeeklyBosses: showWeeklyBosses, showTransformer: showTransformer)
         default:
             EmptyView()
         }
