@@ -45,8 +45,15 @@ struct HomeView: View {
             }
             .navigationTitle("原神披萨小助手")
             .navigationBarTitleDisplayMode(.large)
+            
         }
         .navigationViewStyle(.stack)
+        .myRefreshable {
+            withAnimation {
+                viewModel.refreshData()
+                getCurrentEvent()
+            }
+        }
     }
 
     func getCurrentEvent() -> Void {
@@ -125,6 +132,23 @@ struct HomeView: View {
                     .padding([.bottom, .horizontal])
             }
 
+        }
+    }
+
+
+
+}
+
+
+extension View {
+    @ViewBuilder
+    func myRefreshable(action: @escaping () -> Void) -> some View {
+        if #available(iOS 15, *) {
+            self.refreshable {
+                action()
+            }
+        } else {
+            self
         }
     }
 }
