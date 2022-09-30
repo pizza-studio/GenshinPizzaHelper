@@ -22,7 +22,7 @@
 
 "DKesAN" = "完了所要時間";
 
-"DQpiCm" = "展示周本折扣";
+"DQpiCm" = "週ボスを表示";
 
 "EnqoJ9" = "アカウント";
 
@@ -34,9 +34,9 @@
 
 "NEV35Z" = "探索派遣中人数";
 
-"NI3XnI" = "为你的小组件选择显示的帐号";
+"NI3XnI" = "ウィジェット対応のアカウントを選択";
 
-"P3fcKK" = "为你的小组件选择显示的帐号";
+"P3fcKK" = "ウィジェット対応のアカウントを選択";
 
 "PLml4M" = "Weekly Bosses Showing Method";
 
@@ -44,9 +44,9 @@
 
 "TDccRa" = "消して表示しない";
 
-"TYuPZZ" = "账号";
+"TYuPZZ" = "アカウント";
 
-"XXexIV" = "展示参量质变仪";
+"XXexIV" = "参量物質変化器を表示";
 
 "a0FhAC-9W1NzG" = "There are ${count} options matching ‘true’.";
 
@@ -84,7 +84,7 @@
 
 "e0kZEQ-a5PB3w" = "Just to confirm, you wanted ‘下一个完成时’?";
 
-"enBbLR" = "帐号";
+"enBbLR" = "アカウント";
 
 "f8OJzI" = "ウィジェット背景";
 
@@ -132,7 +132,7 @@
 
 "sWpemX" = "アカウントを選択";
 
-"vAR6GW" = "选择帐号";
+"vAR6GW" = "アカウントを選択";
 
 "vFlGnC" = "完成時間";
 
@@ -140,7 +140,7 @@
 
 "vl1bDD" = "false";
 
-"yjs09O" = "选择账号及其他配置";
+"yjs09O" = "アカウントを選択とその他";
 
 "zQrKVi" = "ウィジェットの表示されたアカウントを選択";
 
