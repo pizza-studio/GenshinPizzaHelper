@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct MoreView: View {
-    @EnvironmentObject var viewModel: ViewModel
     let localeID = Locale.current.identifier
     @State private var newestVersionInfos: NewestVersion? = nil
     @State var isJustUpdated: Bool = false
-    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let buildVersion = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
 
     @StateObject var storeManager: StoreManager
