@@ -88,8 +88,10 @@ struct ContentView: View {
                 }
                 UIApplication.shared.applicationIconBadgeNumber = -1
 
-                // 检查最新版本
-                checkNewestVersion()
+                if isPolicyShown {
+                    // 检查最新版本
+                    checkNewestVersion()
+                }
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
             default:
