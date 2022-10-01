@@ -123,16 +123,16 @@ struct ContentView: View {
     func checkNewestVersion() {
         DispatchQueue.global(qos: .default).async {
             switch AppConfig.appConfiguration {
-            case .AppStore:
+            case .Debug, .AppStore:
                 API.HomeAPIs.fetchNewestVersion(isBeta: false) { result in
                     newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {
                         return
                     }
                     if buildVersion < newestVersionInfos.buildVersion {
-                        let checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as! [Int]?
-                        if checkedUpdateVersions != nil {
-                            if !(checkedUpdateVersions!.contains(newestVersionInfos.buildVersion)) {
+                        let checkedUpdateVersions = (UserDefaults.standard.array(forKey: "checkedUpdateVersions") ?? []) as? [Int]
+                        if let checkedUpdateVersions = checkedUpdateVersions {
+                            if !(checkedUpdateVersions.contains(newestVersionInfos.buildVersion)) {
                                 sheetType = .foundNewestVersion
                             }
                         } else {
@@ -148,16 +148,16 @@ struct ContentView: View {
                         }
                     }
                 }
-            case .Debug, .TestFlight:
+            case .TestFlight:
                 API.HomeAPIs.fetchNewestVersion(isBeta: true) { result in
                     newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {
                         return
                     }
                     if buildVersion < newestVersionInfos.buildVersion {
-                        let checkedUpdateVersions = UserDefaults.standard.object(forKey: "checkedUpdateVersions") as! [Int]?
-                        if checkedUpdateVersions != nil {
-                            if !(checkedUpdateVersions!.contains(newestVersionInfos.buildVersion)) {
+                        let checkedUpdateVersions = (UserDefaults.standard.array(forKey: "checkedUpdateVersions") ?? []) as? [Int]
+                        if let checkedUpdateVersions = checkedUpdateVersions {
+                            if !(checkedUpdateVersions.contains(newestVersionInfos.buildVersion)) {
                                 sheetType = .foundNewestVersion
                             }
                         } else {
