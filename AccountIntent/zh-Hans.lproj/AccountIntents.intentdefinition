@@ -751,7 +751,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>账号</string>
+					<string>帐号</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>TYuPZZ</string>
 					<key>INIntentParameterDisplayPriority</key>

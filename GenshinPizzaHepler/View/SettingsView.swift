@@ -106,7 +106,7 @@ struct SettingsView: View {
             // 这部分不需要本地化
             Alert(
                 title: Text("Before set the language..."),
-                message: Text("If you cannot find \"PREFERRED LANGUAGE\" in the destination, add one of suppoted languages in your phone's [Setting] -> [General] -> [Language & Region] first. \nSupported Languages: Simplified Chinese, English, Japanese, French"),
+                message: Text("If you cannot find \"PREFERRED LANGUAGE\" in the destination, add one of supported languages in your phone's [Setting] -> [General] -> [Language & Region] first. \nSupported Languages: Simplified Chinese, English, Japanese, French"),
                 primaryButton: .default(Text("OK"), action: {
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                 }),
