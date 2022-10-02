@@ -45,7 +45,7 @@ struct LatestVersionInfoView: View {
                         }
                         .padding(.top)
                     case .AppStore:
-                        Link (destination: URL(string: "itms-apps://apps.apple.com/us/app/原神披萨小助手/id1635319193")!) {
+                        Link (destination: URL(string: "itms-apps://apps.apple.com/us/app/id1635319193")!) {
                             Text("前往App Store更新")
                         }
                         .padding(.top)
