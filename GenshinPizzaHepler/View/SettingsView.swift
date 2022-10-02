@@ -91,7 +91,7 @@ struct SettingsView: View {
                     }
                 }
                 // 更多
-                NavigationLink(destination: MoreView(storeManager: storeManager)) {
+                NavigationLink(destination: MoreView()) {
                     Text("更多")
                 }
             }
