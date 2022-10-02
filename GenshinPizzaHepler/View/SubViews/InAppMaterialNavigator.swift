@@ -49,10 +49,18 @@ struct InAppMaterialNavigator: View {
                         .padding(.top)
                         .padding(.bottom, -10)
                     }
+                    Image(systemName: "chevron.forward")
+                        .rotationEffect(Angle(degrees: showMaterialDetail ? 90 : 0), anchor: .center)
+                        .foregroundColor(showMaterialDetail ? .accentColor : .secondary)
+                        .padding(.trailing, 25)
+                        .font(.caption)
+                        .padding(.top)
+                        .padding(.bottom, -10)
                 } else {
                     Text("今日材料")
                         .font(.caption)
-                        .padding()
+                        .padding(.vertical)
+                        .padding(.leading, 25)
                     Spacer()
                     Group {
                         if showMaterialDetail { Text("点击材料查看关联角色") }
@@ -66,7 +74,7 @@ struct InAppMaterialNavigator: View {
                     if showMaterialDetail == false {
                         Text(getDate())
                             .font(.caption)
-                            .padding()
+                            .padding(.vertical)
                     } else {
                         Button("收起") {
                             simpleTaptic(type: .light)
@@ -76,16 +84,14 @@ struct InAppMaterialNavigator: View {
                             }
                         }
                         .font(.caption)
-                        .padding()
+                        .padding(.vertical)
                     }
+                    Image(systemName: "chevron.forward")
+                        .rotationEffect(Angle(degrees: showMaterialDetail ? 90 : 0), anchor: .center)
+                        .foregroundColor(showMaterialDetail ? .accentColor : .secondary)
+                        .padding(.trailing, 25)
+                        .font(.caption)
                 }
-                Image(systemName: "chevron.forward")
-                    .rotationEffect(Angle(degrees: showMaterialDetail ? 90 : 0), anchor: .center)
-                    .foregroundColor(showMaterialDetail ? .accentColor : .secondary)
-                    .padding(.trailing, 25)
-                    .font(.caption)
-                    .padding(.top)
-                    .padding(.bottom, -10)
             }
             .onTapGesture {
                 if showMaterialDetail {
