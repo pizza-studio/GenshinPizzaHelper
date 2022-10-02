@@ -129,17 +129,22 @@ struct ContentView: View {
                     guard let newestVersionInfos = newestVersionInfos else {
                         return
                     }
+                    // 发现新版本
                     if buildVersion < newestVersionInfos.buildVersion {
                         let checkedUpdateVersions = (UserDefaults.standard.array(forKey: "checkedUpdateVersions") ?? []) as? [Int]
+                        // 若已有存储的检查过的版本号数组
                         if let checkedUpdateVersions = checkedUpdateVersions {
                             if !(checkedUpdateVersions.contains(newestVersionInfos.buildVersion)) {
                                 sheetType = .foundNewestVersion
                             }
                         } else {
+                            // 不存在该数组，仍然显示提示
                             sheetType = .foundNewestVersion
                         }
                     } else {
+                        // App版本号>=服务器版本号
                         let checkedNewestVersion = UserDefaults.standard.integer(forKey: "checkedNewestVersion")
+                        // 已经看过的版本号小于服务器版本号，说明是第一次打开该新版本
                         if checkedNewestVersion < newestVersionInfos.buildVersion {
                             isJustUpdated = true
                             sheetType = .foundNewestVersion
