@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF068BD528A335F9002E7334 /* WebViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF068BD428A335F9002E7334 /* WebViews.swift */; };
 		BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */; };
+		BF3F98BF28E9190700D1B5CF /* UpdateHistoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */; };
 		BF6C526B289E116700EA224F /* MainWedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* MainWedgetProvider.swift */; };
 		BF6C5272289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		BF6C5273289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
@@ -577,6 +578,7 @@
 /* Begin PBXFileReference section */
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
+		BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfoView.swift; sourceTree = "<group>"; };
 		BF6C525A289E02B600EA224F /* ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ios.yml; sourceTree = "<group>"; };
 		BF6C5271289E12DA00EA224F /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
 		BF6C5274289E137200EA224F /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
@@ -1029,6 +1031,7 @@
 				EA75DD0928A0BF450099E70A /* TestSectionView.swift */,
 				BFE42551289F755E00FEFA49 /* TextEditorView.swift */,
 				BFE42546289E987800FEFA49 /* TextPlayerView.swift */,
+				BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */,
 				BFFD823528A680E000616CE1 /* WebImageView.swift */,
 				BF068BD428A335F9002E7334 /* WebViews.swift */,
 			);
@@ -2046,6 +2049,7 @@
 				EA56E09828A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
 				EA56E08C28A26C0D00A64262 /* UserData.swift in Sources */,
+				BF3F98BF28E9190700D1B5CF /* UpdateHistoryInfoView.swift in Sources */,
 				BF70210928B3909F00A6BBA9 /* ContentView.swift in Sources */,
 				EA79FDC528AB83B600B50D6F /* OptionalAccounts.swift in Sources */,
 				EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */,
