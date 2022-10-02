@@ -20,7 +20,7 @@ extension API {
             ) -> ()
         ) {
             // 请求类别
-            let urlStr: String
+            var urlStr: String
             if isBeta {
                 urlStr = "api/app/newest_version_beta.json"
             } else {
