@@ -16,7 +16,12 @@ struct GenshinDictionary: View {
                 return dictionaryData
             } else {
                 return dictionaryData!.filter {
-                    $0.en.contains(searchText) || ($0.zhCN != nil && $0.zhCN!.contains(searchText)) || ($0.ja != nil && $0.ja!.contains(searchText))
+                    $0.en.contains(searchText) ||
+                    ($0.zhCN != nil && $0.zhCN!.contains(searchText)) ||
+                    ($0.ja != nil && $0.ja!.contains(searchText)) ||
+                     ($0.variants != nil && (($0.variants!.en != nil && $0.variants!.en!.contains(searchText)) ||
+                                             ($0.variants!.zhCN != nil && $0.variants!.zhCN!.contains(searchText)) ||
+                                             ($0.variants!.ja != nil && $0.variants!.ja!.contains(searchText))))
                 }
             }
         }
