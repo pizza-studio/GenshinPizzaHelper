@@ -32,7 +32,7 @@ struct UpdateHistoryInfoView: View {
                     if !getLocalizedNoticeInfos(meta: newestVersionInfos!).isEmpty {
                         Text("更新公告")
                             .bold()
-                            .font(.title3)
+                            .font(.title2)
                             .padding(.vertical, 2)
                         ForEach(getLocalizedNoticeInfos(meta: newestVersionInfos!), id:\.self) { item in
                             Text("- \(item)")
@@ -43,7 +43,7 @@ struct UpdateHistoryInfoView: View {
                 }
                 Text("更新内容：")
                     .bold()
-                    .font(.title3)
+                    .font(.title2)
                     .padding(.vertical, 2)
                 if newestVersionInfos != nil {
                     ForEach(getLocalizedUpdateInfos(meta: newestVersionInfos!), id:\.self) { item in
@@ -72,7 +72,7 @@ struct UpdateHistoryInfoView: View {
                             .padding(.vertical)
                         Text("更新历史记录")
                             .bold()
-                            .font(.title3)
+                            .font(.title2)
                             .padding(.vertical, 2)
                         ForEach(newestVersionInfos.updateHistory, id: \.buildVersion) { versionItem in
                             Text("\(versionItem.shortVersion) (\(String(versionItem.buildVersion)))")
