@@ -14,7 +14,7 @@ struct PlayerDetail {
 
     // MARK: - 初始化
     init(playerDetailFetchModel: PlayerDetailFetchModel, localizedDictionary: [String : String], characterMap: ENCharacterMap) {
-        basicInfo = .init(playerInfo: playerDetailFetchModel.playerInfo)
+        basicInfo = .init(playerInfo: playerDetailFetchModel.playerInfo, characterMap: characterMap)
         if let avatarInfoList = playerDetailFetchModel.avatarInfoList {
             avatars = avatarInfoList.map { avatarInfo in
                     .init(avatarInfo: avatarInfo, localizedDictionary: localizedDictionary, characterDictionary: characterMap.characterDetails)!
@@ -39,16 +39,16 @@ struct PlayerDetail {
 
         /// 资料名片ID
         var nameCardId: Int
-        /// 玩家头像的角色的ID
-        var profilePictureAvatarID: Int
+        /// 玩家头像
+        var profilePictureAvatarIconString: String
 
-        init(playerInfo: PlayerDetailFetchModel.PlayerInfo) {
+        init(playerInfo: PlayerDetailFetchModel.PlayerInfo, characterMap: ENCharacterMap) {
             nickname = playerInfo.nickname
             level = playerInfo.level
             signature = playerInfo.signature
             worldLevel = playerInfo.worldLevel
             nameCardId = playerInfo.nameCardId
-            profilePictureAvatarID = playerInfo.profilePicture.avatarId
+            profilePictureAvatarIconString = characterMap.characterDetails["\(playerInfo.profilePicture.avatarId)"]?.SideIconName.replacingOccurrences(of: "_Side", with: "") ?? ""
         }
     }
 
@@ -62,6 +62,9 @@ struct PlayerDetail {
         let talentCount: Int
         /// 天赋
         let skills: [Skill]
+
+        /// 等级
+        let level: Int
 
         /// 武器
         let weapon: Weapon
@@ -108,6 +111,8 @@ struct PlayerDetail {
             })
 
             fightPropMap = avatarInfo.fightPropMap
+
+            level = Int(avatarInfo.propMap.level.val) ?? 0
         }
 
         // Model
@@ -196,7 +201,20 @@ struct PlayerDetail {
         /// 任意属性
         struct Attribute {
             let name: String
-            let value: Double
+            var valueString: String {
+                get {
+                    if floor(value) == value {
+                        return "\(Int(value))"
+                    } else {
+                        return String(format: "%.1f", value)
+                    }
+                }
+            }
+            var value: Double
+            init(name: String, value: Double) {
+                self.name = name
+                self.value = value
+            }
             /// 属性图标的ID
 //            let iconString: String
         }

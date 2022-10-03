@@ -22,12 +22,12 @@ class ViewModel: NSObject, ObservableObject {
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
 
-    var session: WCSession
+//    var session: WCSession
     
     init(session: WCSession = .default) {
-        self.session = session
+//        self.session = session
         super.init()
-        self.session.delegate = self
+//        self.session.delegate = self
 //        session.activate()
         self.fetchAccount()
         NotificationCenter.default.addObserver(self,
@@ -85,6 +85,9 @@ class ViewModel: NSObject, ObservableObject {
             }
             accounts[index].config.fetchBasicInfo { basicInfo in
                 self.accounts[index].basicInfo = basicInfo
+            }
+            accounts[index].config.fetchPlayerDetail { playerDetail in
+                self.accounts[index].playerDetail = playerDetail
             }
         }
     }
