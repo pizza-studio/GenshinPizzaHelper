@@ -23,81 +23,128 @@ struct ToolsView: View {
     var body: some View {
         NavigationView {
             List {
-                if let account = account, let basicInfo = account.basicInfo, let playerDetail = account.playerDetail {
-                    Section {
-                        VStack {
-                            HStack {
-                                Text("我的角色")
+                if account == nil {
+                    Menu {
+                        ForEach(accounts, id:\.config.id) { account in
+                            Button(account.config.name ?? "Name Error") {
+                                showingAccountUUIDString = account.config.uuid!.uuidString
+                            }
+                        }
+                    } label: {
+                        Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
+                    }
+                } else {
+                    if let basicInfo = account?.basicInfo, let playerDetail = account?.playerDetail {
+                        Section {
+                            VStack {
+                                HStack(spacing: 10) {
+                                    WebImage(urlStr: "http://ophelper.top/resource/\(playerDetail.basicInfo.profilePictureAvatarIconString).png")
+                                        .clipShape(Circle())
+                                    VStack(alignment: .leading) {
+                                        Text(playerDetail.basicInfo.nickname)
+                                            .font(.title3)
+                                            .bold()
+                                            .padding(.top, 5)
+                                            .lineLimit(1)
+                                        Text(playerDetail.basicInfo.signature)
+                                            .foregroundColor(.secondary)
+                                            .font(.footnote)
+                                            .lineLimit(2)
+                                    }
+                                    Spacer()
+                                    Menu {
+                                        ForEach(accounts, id:\.config.id) { account in
+                                            Button(account.config.name ?? "Name Error") {
+                                                showingAccountUUIDString = account.config.uuid!.uuidString
+                                            }
+                                        }
+                                    } label: {
+                                        Image(systemName: "arrow.left.arrow.right.circle")
+                                            .font(.title2)
+                                    }
+                                }
+                            }
+                            .frame(height: 60)
+                        } footer: {
+                            Text("UID: \(account!.config.uid!)")
+                        }
+
+                        Section {
+                            VStack {
+                                Text("角色展示柜")
                                     .font(.footnote)
-                                Spacer()
+                                    .foregroundColor(.secondary)
+                                Divider()
+                                ScrollView(.horizontal) {
+                                    HStack {
+                                        ForEach(playerDetail.avatars, id: \.name) { avatar in
+                                            VStack {
+                                                EnkaWebIcon(iconString: avatar.iconString)
+                                                    .frame(width: 75, height: 75)
+                                                    .background(avatar.quality != .orange ? Color.purple : Color.orange)
+                                                    .clipShape(Circle())
+                                            }
+                                        }
+                                    }
+                                    .padding(.vertical)
+                                }
+                                .padding(.bottom, 10)
                             }
-                            Divider()
                         }
-                        .listRowSeparator(.hidden)
-                        ScrollView(.horizontal) {
-                            HStack {
-                                ForEach(basicInfo.avatars) { avatar in
+
+                        Section {
+                            HStack(spacing: 30) {
+                                VStack {
                                     VStack {
-                                        WebImage(urlStr: avatar.image)
-                                            .frame(width: 75, height: 75)
-                                            .background(avatar.rarity == 5 ? Color.yellow : Color.blue)
-                                            .clipShape(Circle())
+                                        HStack {
+                                            Text("深境螺旋")
+                                                .font(.footnote)
+                                            Spacer()
+                                        }
+                                        .padding(.top, 5)
+                                        Divider()
                                     }
+                                    Text("\(basicInfo.stats.spiralAbyss)")
+                                        .font(.largeTitle)
+                                        .frame(height: 120)
+                                        .padding(.bottom, 10)
+                                }
+                                .padding(.horizontal)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+
+                                VStack {
+                                    VStack {
+                                        HStack {
+                                            Text("游戏内公开信息")
+                                                .font(.footnote)
+                                            Spacer()
+                                        }
+                                        .padding(.top, 5)
+                                        Divider()
+                                    }
+                                    Text("Lv.\(playerDetail.basicInfo.level)")
+                                        .font(.largeTitle)
+                                        .frame(height: 120)
+                                        .padding(.bottom, 10)
+                                }
+                                .padding(.horizontal)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+                                .onTapGesture {
+                                    simpleTaptic(type: .medium)
+                                    sheetType = .characters
                                 }
                             }
-                            .padding()
                         }
-                        .padding(.bottom, 10)
                         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    }
-
-                    Section {
-                        HStack(spacing: 30) {
-                            VStack {
-                                VStack {
-                                    HStack {
-                                        Text("深境螺旋")
-                                            .font(.footnote)
-                                        Spacer()
-                                    }
-                                    .padding(.top, 5)
-                                    Divider()
-                                }
-                                Text("\(basicInfo.stats.spiralAbyss)")
-                                    .font(.largeTitle)
-                                    .frame(height: 120)
-                                    .padding(.bottom, 10)
-                            }
-                            .padding(.horizontal)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
-
-                            VStack {
-                                VStack {
-                                    HStack {
-                                        Text("游戏内公开信息")
-                                            .font(.footnote)
-                                        Spacer()
-                                    }
-                                    .padding(.top, 5)
-                                    Divider()
-                                }
-                                Text("Lv.\(playerDetail.basicInfo.level)")
-                                    .font(.largeTitle)
-                                    .frame(height: 120)
-                                    .padding(.bottom, 10)
-                            }
-                            .padding(.horizontal)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
-                            .onTapGesture {
-                                simpleTaptic(type: .medium)
-                                sheetType = .characters
-                            }
+                        .listRowBackground(Color.white.opacity(0))
+                    } else {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
                         }
                     }
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    .listRowBackground(Color.white.opacity(0))
                 }
-
                 
                 Section {
                     VStack {
@@ -121,25 +168,12 @@ struct ToolsView: View {
                 }
 
             }
-            .navigationTitle("原神小工具")
-            .navigationBarTitleDisplayMode(.inline)
-            .onChange(of: showingAccountUUIDString, perform: { newValue in
-                print(newValue)
-            })
+            .refreshable {
+                viewModel.refreshData()
+            }
             .onAppear {
                 if !accounts.isEmpty && showingAccountUUIDString == nil {
                     showingAccountUUIDString = accounts.first!.config.uuid!.uuidString
-                }
-            }
-            .toolbar {
-                Menu {
-                    ForEach(accounts, id:\.config.id) { account in
-                        Button(account.config.name ?? "Name Error") {
-                            showingAccountUUIDString = account.config.uuid!.uuidString
-                        }
-                    }
-                } label: {
-                    Label("选择帐号", systemImage: "arrow.left.arrow.right.circle")
                 }
             }
             .sheet(item: $sheetType) { type in
@@ -156,7 +190,6 @@ struct ToolsView: View {
     @ViewBuilder
     func characterSheetView() -> some View {
         let playerDetail = self.account!.playerDetail!
-        let account = self.account!
         let basicInfo = self.account!.basicInfo!
         NavigationView {
             List {

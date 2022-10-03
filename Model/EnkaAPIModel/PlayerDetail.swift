@@ -79,6 +79,8 @@ struct PlayerDetail {
         /// 侧脸图
         let sideIconString: String
 
+        let quality: Quality
+
         init?(avatarInfo: PlayerDetailFetchModel.AvatarInfo, localizedDictionary: [String : String], characterDictionary: [String : ENCharacterMap.Character]) {
             guard let character = characterDictionary["\(avatarInfo.avatarId)"] else { return nil }
 
@@ -113,6 +115,7 @@ struct PlayerDetail {
             fightPropMap = avatarInfo.fightPropMap
 
             level = Int(avatarInfo.propMap.level.val) ?? 0
+            quality = .init(rawValue: character.QualityType) ?? .purple
         }
 
         // Model
@@ -199,7 +202,6 @@ struct PlayerDetail {
                 })
                 iconString = artifactEquipment.flat.icon
                 artifactType = .init(rawValue: artifactEquipment.flat.equipType ?? "") ?? .flower
-                print("圣遗物\(id)")
             }
         }
         /// 任意属性
@@ -232,6 +234,15 @@ struct PlayerDetail {
             case rock = "Rock"
             case grass = "Grass"
             case unknow
+        }
+        /// 角色星级，橙色为四星，紫色为五星
+        enum Quality: String {
+            /// 紫色，四星角色
+            case purple = "QUALITY_PURPLE"
+            /// 橙色，五星角色
+            case orange = "QUALITY_ORANGE"
+            /// 特殊橙色，埃洛伊
+            case orangeSpecial = "QUALITY_ORANGE_SP"
         }
     }
 

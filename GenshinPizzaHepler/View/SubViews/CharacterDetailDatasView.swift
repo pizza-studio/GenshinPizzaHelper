@@ -74,7 +74,7 @@ struct CharacterDetailDatasView: View {
             Grid {
                 GridRow {
                     ForEach(avatar.artifacts) { artifact in
-                        WebImage(urlStr: "https://enka.network/ui/\(artifact.iconString).png")
+                        EnkaWebIcon(iconString: artifact.iconString)
                     }
                 }
                 GridRow {

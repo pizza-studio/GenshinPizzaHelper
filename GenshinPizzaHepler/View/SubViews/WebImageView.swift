@@ -60,3 +60,11 @@ struct NetworkImage: View {
         }
     }
 }
+
+struct EnkaWebIcon: View {
+    var iconString: String
+
+    var body: some View {
+        WebImage(urlStr: "https://enka.network/ui/\(iconString).png")
+    }
+}
