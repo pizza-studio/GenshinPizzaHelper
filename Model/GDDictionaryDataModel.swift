@@ -15,4 +15,11 @@ struct GDDictionary: Codable {
     var id: String
     var tags: [String]?
     var notes: String?
+    var variants: Variants?
+
+    struct Variants: Codable {
+        var en: [String]?
+        var ja: [String]?
+        var zhCN: [String]?
+    }
 }
