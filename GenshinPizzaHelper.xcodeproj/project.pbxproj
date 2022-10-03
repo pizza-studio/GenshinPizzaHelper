@@ -16,6 +16,7 @@
 		BF3F98C428EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		BF3F98C528EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		BF3F98C628EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
+		BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */; };
 		BF6C526B289E116700EA224F /* MainWedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* MainWedgetProvider.swift */; };
 		BF6C5272289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		BF6C5273289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
@@ -586,6 +587,7 @@
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
 		BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfoView.swift; sourceTree = "<group>"; };
 		BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDDictionaryDataModel.swift; sourceTree = "<group>"; };
+		BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDGenshinDictionaryView.swift; sourceTree = "<group>"; };
 		BF6C525A289E02B600EA224F /* ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ios.yml; sourceTree = "<group>"; };
 		BF6C5271289E12DA00EA224F /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
 		BF6C5274289E137200EA224F /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
@@ -852,6 +854,7 @@
 				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
 				BF70214528BC82D400A6BBA9 /* ContactUsView.swift */,
 				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
+				BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */,
 				EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */,
 				BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */,
 				BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */,
@@ -2011,6 +2014,7 @@
 				EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */,
 				BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */,
 				BFFD823228A651F500616CE1 /* RingProgressBarView.swift in Sources */,
+				BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */,
 				EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */,
 				EA7F9C6F28AFF9B300DEAFEB /* NotificationCenter.swift in Sources */,
 				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,

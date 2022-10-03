@@ -13,6 +13,6 @@ struct GDDictionary: Codable {
     var zhCN: String?
     var pronunciationJa: String?
     var id: String
-    var tags: [String]
+    var tags: [String]?
     var notes: String?
 }
