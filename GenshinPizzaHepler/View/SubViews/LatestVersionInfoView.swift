@@ -28,8 +28,19 @@ struct LatestVersionInfoView: View {
                 }
                 Divider()
                     .padding(.vertical)
+                if !getLocalizedNoticeInfos(meta: newestVersionInfos!).isEmpty {
+                    Text("更新公告")
+                        .font(.title3)
+                        .padding(.vertical, 2)
+                    ForEach(getLocalizedNoticeInfos(meta: newestVersionInfos!), id:\.self) { item in
+                        Text("- \(item)")
+                    }
+                    Divider()
+                        .padding(.vertical)
+                }
                 Text("更新内容：")
-                    .font(.subheadline)
+                    .font(.title3)
+                    .padding(.vertical, 2)
                 if newestVersionInfos != nil {
                     ForEach(getLocalizedUpdateInfos(meta: newestVersionInfos!), id:\.self) { item in
                         Text("- \(item)")
@@ -81,6 +92,20 @@ struct LatestVersionInfoView: View {
             return meta.updates.fr
         default:
             return meta.updates.en
+        }
+    }
+    func getLocalizedNoticeInfos(meta: NewestVersion) -> [String] {
+        switch Locale.current.languageCode {
+        case "zh":
+            return meta.notice.zhcn
+        case "en":
+            return meta.notice.en
+        case "ja":
+            return meta.notice.ja
+        case "fr":
+            return meta.notice.fr
+        default:
+            return meta.notice.en
         }
     }
 }
