@@ -48,8 +48,7 @@ extension API {
         /// - Parameters:
         ///     - uid: 用户UID
         ///     - completion: 数据
-        // TODO: Private here
-        static func fetchPlayerDatas (
+        private static func fetchPlayerDatas (
             _ uid: String,
             completion: @escaping (
                 PlayerDetailsFetchResult
