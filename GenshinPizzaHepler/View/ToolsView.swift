@@ -15,7 +15,7 @@ struct ToolsView: View {
     @State private var sheetType: SheetTypes? = nil
 
     @State var accountCharactersInfo: BasicInfos? = nil
-    @State var playerDetailDatas: PlayerDetails? = nil
+    @State var playerDetailDatas: PlayerDetailFetchModel? = nil
     @State var charactersDetailMap: ENCharacterMap? = nil
     @State var charactersLocMap: ENCharacterLoc? = nil
 

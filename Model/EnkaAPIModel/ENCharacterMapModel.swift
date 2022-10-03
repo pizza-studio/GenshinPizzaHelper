@@ -35,13 +35,21 @@ struct ENCharacterMap: Codable {
     }
 
     struct Character: Codable {
+        /// 元素
         var Element: String
+        /// 技能图标
         var Consts: [String]
+        /// 技能顺序
         var SkillOrder: [Int]
+        /// 技能
         var Skills: Skill
+        /// ？
         var ProudMap: ProudMap
+        /// 名字的hashmap
         var NameTextMapHash: Int
+        /// 侧脸图
         var SideIconName: String
+        /// 星级
         var QualityType: String
 
         struct Skill: Codable {

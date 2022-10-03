@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterDetailDatasView: View {
-    var characterDetailData: PlayerDetails.AvatarInfo
+    var characterDetailData: PlayerDetailFetchModel.AvatarInfo
     @Binding var charactersDetailMap: ENCharacterMap?
     @Binding var charactersLocMap: ENCharacterLoc?
 

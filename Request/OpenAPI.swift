@@ -59,7 +59,7 @@ extension API {
             let url = URL(string: urlStr)!
 
             // 请求
-            HttpMethod<PlayerDetails>
+            HttpMethod<PlayerDetailFetchModel>
                 .openRequest(
                     .get,
                     url

@@ -10,7 +10,7 @@ import Foundation
 typealias FetchResult = Result<UserData, FetchError>
 typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
 typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
-typealias PlayerDetailsFetchResult = Result<PlayerDetails, FetchError>
+typealias PlayerDetailsFetchResult = Result<PlayerDetailFetchModel, FetchError>
 
 extension FetchResult {
     static let defaultFetchResult: FetchResult = .success(UserData.defaultData)

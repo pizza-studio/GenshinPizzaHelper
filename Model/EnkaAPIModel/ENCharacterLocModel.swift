@@ -22,6 +22,21 @@ struct ENCharacterLoc: Codable {
     var zh_tw: LocDict
     var zh_cn: LocDict
 
+    func getLocalizedDictionary() -> [String : String] {
+        switch Locale.current.languageCode {
+        case "zh":
+            return zh_cn.content
+        case "en":
+            return en.content
+        case "ja":
+            return ja.content
+        case "fr":
+            return fr.content
+        default:
+            return en.content
+        }
+    }
+
     struct LocDict: Codable {
         var content: [String: String]
 
