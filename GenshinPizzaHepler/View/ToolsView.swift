@@ -103,14 +103,6 @@ struct ToolsView: View {
                             Text("小工具")
                                 .font(.footnote)
                             Spacer()
-                            Button(action: {
-
-                            }) {
-                                Text("自定义")
-                                    .foregroundColor(.blue)
-                                    .font(.footnote)
-                            }
-                            .buttonStyle(.plain)
                         }
                     }
                     Text("原神中日英词典")
