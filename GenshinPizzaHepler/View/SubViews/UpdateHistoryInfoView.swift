@@ -31,6 +31,7 @@ struct UpdateHistoryInfoView: View {
                 if newestVersionInfos != nil {
                     if !getLocalizedNoticeInfos(meta: newestVersionInfos!).isEmpty {
                         Text("更新公告")
+                            .bold()
                             .font(.title3)
                             .padding(.vertical, 2)
                         ForEach(getLocalizedNoticeInfos(meta: newestVersionInfos!), id:\.self) { item in
@@ -41,6 +42,7 @@ struct UpdateHistoryInfoView: View {
                     }
                 }
                 Text("更新内容：")
+                    .bold()
                     .font(.title3)
                     .padding(.vertical, 2)
                 if newestVersionInfos != nil {
@@ -63,6 +65,23 @@ struct UpdateHistoryInfoView: View {
                             Text("前往App Store更新")
                         }
                         .padding(.top)
+                    }
+                } else {
+                    if let newestVersionInfos = newestVersionInfos {
+                        Divider()
+                            .padding(.vertical)
+                        Text("更新历史记录")
+                            .bold()
+                            .font(.title3)
+                            .padding(.vertical, 2)
+                        ForEach(newestVersionInfos.updateHistory, id: \.buildVersion) { versionItem in
+                            Text("\(versionItem.shortVersion) (\(String(versionItem.buildVersion)))")
+                                .bold()
+                                .padding(.top, 1)
+                            ForEach(getLocalizedHistoryUpdateInfos(meta: versionItem), id:\.self) { item in
+                                Text("- \(item)")
+                            }
+                        }
                     }
                 }
                 Spacer()
@@ -138,6 +157,21 @@ struct UpdateHistoryInfoView: View {
             return meta.notice.fr
         default:
             return meta.notice.en
+        }
+    }
+
+    func getLocalizedHistoryUpdateInfos(meta: NewestVersion.VersionHistory) -> [String] {
+        switch Locale.current.languageCode {
+        case "zh":
+            return meta.updates.zhcn
+        case "en":
+            return meta.updates.en
+        case "ja":
+            return meta.updates.ja
+        case "fr":
+            return meta.updates.fr
+        default:
+            return meta.updates.en
         }
     }
 }
