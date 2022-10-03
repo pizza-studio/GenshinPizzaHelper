@@ -13,7 +13,9 @@ struct GenshinDictionary: View {
     @State private var searchText: String = ""
     var searchResults: [GDDictionary]? {
             if searchText.isEmpty || dictionaryData == nil {
-                return dictionaryData
+                return dictionaryData?.sorted {
+                    $0.id < $1.id
+                }
             } else {
                 return dictionaryData!.filter {
                     $0.en.contains(searchText) ||
@@ -30,13 +32,11 @@ struct GenshinDictionary: View {
         if let dictionaryData = dictionaryData, let searchResults = searchResults {
             List {
                 ForEach(searchResults, id: \.id) { item in
-                    NavigationLink(destination: Text(item.id)) {
-                        Text(item.en)
-                    }
+                    dictionaryItemCell(word: item)
                 }
             }
             .searchable(text: $searchText)
-            .navigationTitle("Contacts")
+            .navigationTitle("原神中英日辞典")
         } else {
             ProgressView()
                 .onAppear {
@@ -46,6 +46,23 @@ struct GenshinDictionary: View {
                         }
                     }
                 }
+        }
+    }
+
+    @ViewBuilder
+    func dictionaryItemCell(word: GDDictionary) -> some View {
+        VStack(alignment: .leading) {
+            Text("**英语** \(word.en)")
+            if let zhcn = word.zhCN {
+                Text("**中文** \(zhcn)")
+            }
+            if let ja = word.ja {
+                if let jaPron = word.pronunciationJa {
+                    Text("**日语** \(ja)") + Text(" (\(jaPron))").font(.footnote)
+                } else {
+                    Text("**日语** \(ja)")
+                }
+            }
         }
     }
 }

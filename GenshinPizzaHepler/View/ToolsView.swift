@@ -106,7 +106,7 @@ struct ToolsView: View {
                         }
                     }
                     NavigationLink(destination: GenshinDictionary()) {
-                        Text("原神中日英词典")
+                        Text("原神中英日词典")
                     }
                     Text("原神计算器")
                     NavigationLink(destination: WebBroswerView(url: getAccountTeyvatMapURL(account: accounts[safeIndex: selectedAccount])).navigationTitle("提瓦特大地图").navigationBarTitleDisplayMode(.inline)) {
