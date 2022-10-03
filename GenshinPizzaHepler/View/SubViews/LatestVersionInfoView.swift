@@ -17,7 +17,7 @@ struct LatestVersionInfoView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(newestVersionInfos?.shortVersion ?? "Error").font(.largeTitle) +
+                        Text(newestVersionInfos?.shortVersion ?? "Error").font(.largeTitle).bold() +
                         Text(" (\(String(newestVersionInfos?.buildVersion ?? -1)))")
                             .font(.caption)
                             .foregroundColor(.secondary)
