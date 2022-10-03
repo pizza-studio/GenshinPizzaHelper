@@ -37,6 +37,21 @@ struct GenshinDictionary: View {
             List {
                 ForEach(searchResults, id: \.id) { item in
                     dictionaryItemCell(word: item)
+                        .contextMenu {
+                            Button("复制英语") {
+                                UIPasteboard.general.string = item.en
+                            }
+                            if let zhcn = item.zhCN {
+                                Button("复制中文") {
+                                    UIPasteboard.general.string = zhcn
+                                }
+                            }
+                            if let ja = item.ja {
+                                Button("复制日语") {
+                                    UIPasteboard.general.string = ja
+                                }
+                            }
+                        }
                 }
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
