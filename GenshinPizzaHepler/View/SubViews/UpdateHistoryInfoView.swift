@@ -27,7 +27,7 @@ struct UpdateHistoryInfoView: View {
                         .cornerRadius(10)
                 }
                 Divider()
-                    .padding(.vertical)
+                    .padding(.bottom)
                 if newestVersionInfos != nil {
                     if !getLocalizedNoticeInfos(meta: newestVersionInfos!).isEmpty {
                         Text("更新公告")
