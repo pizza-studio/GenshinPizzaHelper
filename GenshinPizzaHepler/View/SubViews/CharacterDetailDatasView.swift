@@ -73,12 +73,12 @@ struct CharacterDetailDatasView: View {
         if #available(iOS 16, *) {
             Grid {
                 GridRow {
-                    ForEach(avatar.artifacts, id:\.name) { artifact in
+                    ForEach(avatar.artifacts) { artifact in
                         WebImage(urlStr: "https://enka.network/ui/\(artifact.iconString).png")
                     }
                 }
                 GridRow {
-                    ForEach(avatar.artifacts, id:\.name) { artifact in
+                    ForEach(avatar.artifacts) { artifact in
                         VStack {
                             Text(artifact.mainAttribute.name)
                                 .font(.caption)
@@ -88,7 +88,7 @@ struct CharacterDetailDatasView: View {
                     }
                 }
                 GridRow {
-                    ForEach(avatar.artifacts, id:\.name) { artifact in
+                    ForEach(avatar.artifacts) { artifact in
                         VStack {
                             ForEach(artifact.subAttributes, id:\.name) { subAttribute in
                                 Text(subAttribute.name)

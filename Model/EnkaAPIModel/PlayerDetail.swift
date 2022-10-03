@@ -164,8 +164,10 @@ struct PlayerDetail {
             }
         }
         /// 圣遗物
-        struct Artifact {
-            /// 圣遗物名字
+        struct Artifact: Identifiable {
+            let id: String
+
+            /// 圣遗物名字（词典没有，暂不可用）
             let name: String
             /// 所属圣遗物套装的名字
             let setName: String
@@ -188,6 +190,7 @@ struct PlayerDetail {
 
             init?(artifactEquipment: PlayerDetailFetchModel.AvatarInfo.EquipList, localizedDictionary: [String : String]) {
                 guard artifactEquipment.flat.itemType == "ITEM_RELIQUARY" else { return nil }
+                id = artifactEquipment.flat.nameTextMapHash
                 name = localizedDictionary.nameFromHashMap(artifactEquipment.flat.nameTextMapHash)
                 setName = localizedDictionary.nameFromHashMap(artifactEquipment.flat.setNameTextMapHash!)
                 mainAttribute = Attribute(name: PropertyDictionary.getLocalizedName(artifactEquipment.flat.reliquaryMainstat!.mainPropId), value: artifactEquipment.flat.reliquaryMainstat!.statValue)
@@ -196,6 +199,7 @@ struct PlayerDetail {
                 })
                 iconString = artifactEquipment.flat.icon
                 artifactType = .init(rawValue: artifactEquipment.flat.equipType ?? "") ?? .flower
+                print("圣遗物\(id)")
             }
         }
         /// 任意属性
