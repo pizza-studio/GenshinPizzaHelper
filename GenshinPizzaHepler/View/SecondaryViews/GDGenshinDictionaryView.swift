@@ -23,7 +23,11 @@ struct GenshinDictionary: View {
                     ($0.ja != nil && $0.ja!.contains(searchText)) ||
                      ($0.variants != nil && (($0.variants!.en != nil && $0.variants!.en!.contains(searchText)) ||
                                              ($0.variants!.zhCN != nil && $0.variants!.zhCN!.contains(searchText)) ||
-                                             ($0.variants!.ja != nil && $0.variants!.ja!.contains(searchText))))
+                                             ($0.variants!.ja != nil && $0.variants!.ja!.contains(searchText)))) ||
+                    ($0.tags != nil && $0.tags!.contains(searchText))
+                }
+                .sorted {
+                    $0.id < $1.id
                 }
             }
         }
