@@ -107,9 +107,10 @@ struct ToolsView: View {
                     }
                     Text("原神中日英词典")
                     Text("原神计算器")
-                    Text("提瓦特大地图")
+                    NavigationLink(destination: WebBroswerView(url: getAccountTeyvatMapURL(account: accounts[safeIndex: selectedAccount])).navigationTitle("提瓦特大地图").navigationBarTitleDisplayMode(.inline)) {
+                        Text("提瓦特大地图")
+                    }
                 }
-
             }
             .navigationTitle("原神小工具")
             .navigationBarTitleDisplayMode(.inline)
@@ -196,6 +197,18 @@ struct ToolsView: View {
     @ViewBuilder
     func spiralAbyssSheetView() -> some View {
         Text("")
+    }
+
+    func getAccountTeyvatMapURL(account: Account?) -> String {
+        guard let account = account else {
+            return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
+        }
+        switch account.config.server.region {
+        case .cn:
+            return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
+        case .global:
+            return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
+        }
     }
 
     func getAccountItemIndex(item: Account) -> Int {
@@ -288,4 +301,15 @@ private enum SheetTypes: Identifiable {
 
     case spiralAbyss
     case characters
+}
+
+// 检查Array的index的范围，超出范围返回空值
+extension Array {
+    public subscript(safeIndex index: Int) -> Element? {
+        guard index >= 0, index < endIndex else {
+            return nil
+        }
+
+        return self[index]
+    }
 }
