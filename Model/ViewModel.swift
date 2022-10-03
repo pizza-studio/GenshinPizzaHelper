@@ -19,6 +19,8 @@ class ViewModel: NSObject, ObservableObject {
     @Published var accounts: [Account] = []
 
     @Published var showDetailOfAccount: Account?
+    @Published var showCharacterDetailOfAccount: Account?
+    @Published var showingCharacterName: String?
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
 

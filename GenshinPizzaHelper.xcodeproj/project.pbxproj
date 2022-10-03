@@ -45,7 +45,7 @@
 		BF7500D428DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
 		BF7500D528DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
 		BF7500D628DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
-		BF7500D828DEA80700CDA64E /* CharacterDetailDatasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* CharacterDetailDatasView.swift */; };
+		BF7500D828DEA80700CDA64E /* EachCharacterDetailDatasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachCharacterDetailDatasView.swift */; };
 		BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
@@ -375,7 +375,7 @@
 		EAD7F03128D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7F02D28D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift */; };
 		EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
-		EADE316E28EB24E400CB7354 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316D28EB24E400CB7354 /* Test.swift */; };
+		EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EAE3FCB828CE3E7B00174DA8 /* WatchWidgetExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EAE5C5B728CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
@@ -605,7 +605,7 @@
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
 		BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsModel.swift; sourceTree = "<group>"; };
-		BF7500D728DEA80700CDA64E /* CharacterDetailDatasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailDatasView.swift; sourceTree = "<group>"; };
+		BF7500D728DEA80700CDA64E /* EachCharacterDetailDatasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachCharacterDetailDatasView.swift; sourceTree = "<group>"; };
 		BF7500DE28DEC99400CDA64E /* NumberTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTools.swift; sourceTree = "<group>"; };
 		BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCharacterMapModel.swift; sourceTree = "<group>"; };
 		BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCharacterLocModel.swift; sourceTree = "<group>"; };
@@ -751,7 +751,7 @@
 		EAD7F02928D01B8C0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidgetCircular.swift; sourceTree = "<group>"; };
 		EAD7F02D28D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidget.swift; sourceTree = "<group>"; };
 		EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
-		EADE316D28EB24E400CB7354 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCorner.swift; sourceTree = "<group>"; };
 		EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGaugeStyle.swift; sourceTree = "<group>"; };
@@ -1024,7 +1024,7 @@
 				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
 				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
 				BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */,
-				BF7500D728DEA80700CDA64E /* CharacterDetailDatasView.swift */,
+				BF7500D728DEA80700CDA64E /* EachCharacterDetailDatasView.swift */,
 				BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */,
 				EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */,
 				BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */,
@@ -1184,7 +1184,7 @@
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BFB101D228D5C579000DC631 /* ToolsView.swift */,
-				EADE316D28EB24E400CB7354 /* Test.swift */,
+				EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */,
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 			);
@@ -1976,7 +1976,7 @@
 			files = (
 				BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */,
 				BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */,
-				BF7500D828DEA80700CDA64E /* CharacterDetailDatasView.swift in Sources */,
+				BF7500D828DEA80700CDA64E /* EachCharacterDetailDatasView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EA56E09C28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
 				BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */,
@@ -2049,12 +2049,12 @@
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
-				EADE316E28EB24E400CB7354 /* Test.swift in Sources */,
 				EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EABE606128D9F6970018CAF6 /* MaterialChoices.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EA56E08628A26C0D00A64262 /* Error.swift in Sources */,
+				EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
 				BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */,

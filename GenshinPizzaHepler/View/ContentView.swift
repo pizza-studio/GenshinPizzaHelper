@@ -73,6 +73,9 @@ struct ContentView: View {
             if let showDetailOfAccount = viewModel.showDetailOfAccount {
                 AccountDisplayView(account: showDetailOfAccount, animation: animation)
             }
+            if let account = viewModel.showCharacterDetailOfAccount {
+                CharacterDetailView(account: account, showingCharacterName: viewModel.showingCharacterName!)
+            }
         }
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {

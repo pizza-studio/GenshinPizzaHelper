@@ -52,16 +52,7 @@ struct ToolsView: View {
                                             .lineLimit(2)
                                     }
                                     Spacer()
-                                    Menu {
-                                        ForEach(accounts, id:\.config.id) { account in
-                                            Button(account.config.name ?? "Name Error") {
-                                                showingAccountUUIDString = account.config.uuid!.uuidString
-                                            }
-                                        }
-                                    } label: {
-                                        Image(systemName: "arrow.left.arrow.right.circle")
-                                            .font(.title2)
-                                    }
+                                    selectAccountManuButton()
                                 }
                             }
                             .frame(height: 60)
@@ -75,20 +66,28 @@ struct ToolsView: View {
                                     .font(.footnote)
                                     .foregroundColor(.secondary)
                                 Divider()
-                                ScrollView(.horizontal) {
-                                    HStack {
-                                        ForEach(playerDetail.avatars, id: \.name) { avatar in
-                                            VStack {
-                                                EnkaWebIcon(iconString: avatar.iconString)
-                                                    .frame(width: 75, height: 75)
-                                                    .background(avatar.quality != .orange ? Color.purple : Color.orange)
-                                                    .clipShape(Circle())
+                                if playerDetail.avatars.isEmpty {
+                                    Text("账号未展示角色")
+                                        .foregroundColor(.secondary)
+                                } else {
+                                    ScrollView(.horizontal) {
+                                        HStack {
+                                            ForEach(playerDetail.avatars, id: \.name) { avatar in
+                                                VStack {
+                                                    EnkaWebIcon(iconString: avatar.iconString)
+                                                        .frame(width: 75, height: 75)
+                                                        .background(avatar.quality != .orange ? Color.purple : Color.orange)
+                                                        .clipShape(Circle())
+                                                        .onTapGesture {
+                                                            viewModel.showingCharacterName = avatar.name
+                                                            viewModel.showCharacterDetailOfAccount = account!
+                                                        }
+                                                }
                                             }
                                         }
+                                        .padding(.vertical)
                                     }
-                                    .padding(.vertical)
                                 }
-                                .padding(.bottom, 10)
                             }
                         }
 
@@ -138,10 +137,18 @@ struct ToolsView: View {
                         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowBackground(Color.white.opacity(0))
                     } else {
-                        HStack {
-                            Spacer()
-                            ProgressView()
-                            Spacer()
+                        ZStack {
+                            if accounts.count > 1 {
+                                HStack {
+                                    Spacer()
+                                    selectAccountManuButton()
+                                }
+                            }
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
                         }
                     }
                 }
@@ -201,7 +208,7 @@ struct ToolsView: View {
                     if !playerDetail.avatars.isEmpty {
                         TabView {
                             ForEach(playerDetail.avatars, id:\.name) { avatar in
-                                CharacterDetailDatasView(avatar: avatar)
+                                EachCharacterDetailDatasView(avatar: avatar)
                             }
                         }
                         .tabViewStyle(.page)
@@ -236,6 +243,24 @@ struct ToolsView: View {
     @ViewBuilder
     func spiralAbyssSheetView() -> some View {
         Text("")
+    }
+
+    @ViewBuilder
+    func selectAccountManuButton() -> some View {
+        if accounts.count > 1 {
+            Menu {
+                ForEach(accounts, id:\.config.id) { account in
+                    Button(account.config.name ?? "Name Error") {
+                        showingAccountUUIDString = account.config.uuid!.uuidString
+                    }
+                }
+            } label: {
+                Image(systemName: "arrow.left.arrow.right.circle")
+                    .font(.title2)
+            }
+        } else {
+            EmptyView()
+        }
     }
 }
 

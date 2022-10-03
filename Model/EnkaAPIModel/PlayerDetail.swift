@@ -53,7 +53,7 @@ struct PlayerDetail {
     }
 
     /// 游戏角色
-    struct Avatar {
+    struct Avatar: Hashable {
         /// 名字
         let name: String
         /// 元素
@@ -243,6 +243,13 @@ struct PlayerDetail {
             case orange = "QUALITY_ORANGE"
             /// 特殊橙色，埃洛伊
             case orangeSpecial = "QUALITY_ORANGE_SP"
+        }
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(name)
+        }
+        static func == (lhs: PlayerDetail.Avatar, rhs: PlayerDetail.Avatar) -> Bool {
+            lhs.hashValue == rhs.hashValue
         }
     }
 
