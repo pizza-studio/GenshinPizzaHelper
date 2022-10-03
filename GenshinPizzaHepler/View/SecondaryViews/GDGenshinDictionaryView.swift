@@ -33,13 +33,13 @@ struct GenshinDictionary: View {
         }
 
     var body: some View {
-        if let dictionaryData = dictionaryData, let searchResults = searchResults {
+        if let searchResults = searchResults {
             List {
                 ForEach(searchResults, id: \.id) { item in
                     dictionaryItemCell(word: item)
                 }
             }
-            .searchable(text: $searchText)
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("原神中英日辞典")
         } else {
             ProgressView()
