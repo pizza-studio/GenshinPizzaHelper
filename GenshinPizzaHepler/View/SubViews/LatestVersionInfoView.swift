@@ -96,6 +96,7 @@ struct LatestVersionInfoView: View {
             return meta.updates.en
         }
     }
+    
     func getLocalizedNoticeInfos(meta: NewestVersion) -> [String] {
         switch Locale.current.languageCode {
         case "zh":
