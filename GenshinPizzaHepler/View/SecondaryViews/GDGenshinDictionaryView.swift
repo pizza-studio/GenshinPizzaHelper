@@ -11,6 +11,7 @@ import SwiftUI
 struct GenshinDictionary: View {
     @State var dictionaryData: [GDDictionary]?
     @State private var searchText: String = ""
+    @State private var showSafari: Bool = false
     var searchResults: [GDDictionary]? {
             if searchText.isEmpty || dictionaryData == nil {
                 return dictionaryData?.sorted {
@@ -35,27 +36,41 @@ struct GenshinDictionary: View {
     var body: some View {
         if let searchResults = searchResults {
             List {
-                ForEach(searchResults, id: \.id) { item in
-                    dictionaryItemCell(word: item)
-                        .contextMenu {
-                            Button("复制英语") {
-                                UIPasteboard.general.string = item.en
-                            }
-                            if let zhcn = item.zhCN {
-                                Button("复制中文") {
-                                    UIPasteboard.general.string = zhcn
+                Section(header: Text("以下内容由「原神中英日辞典」提供")) {
+                    ForEach(searchResults, id: \.id) { item in
+                        dictionaryItemCell(word: item)
+                            .contextMenu {
+                                Button("复制英语") {
+                                    UIPasteboard.general.string = item.en
+                                }
+                                if let zhcn = item.zhCN {
+                                    Button("复制中文") {
+                                        UIPasteboard.general.string = zhcn
+                                    }
+                                }
+                                if let ja = item.ja {
+                                    Button("复制日语") {
+                                        UIPasteboard.general.string = ja
+                                    }
                                 }
                             }
-                            if let ja = item.ja {
-                                Button("复制日语") {
-                                    UIPasteboard.general.string = ja
-                                }
-                            }
-                        }
+                    }
                 }
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("原神中英日辞典")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showSafari.toggle()
+                    }) {
+                        Image(systemName: "safari")
+                    }
+                }
+            }
+            .fullScreenCover(isPresented: $showSafari, content: {
+                SFSafariViewWrapper(url: URL(string: "https://genshin-dictionary.com/")!)
+            })
         } else {
             ProgressView()
                 .onAppear {
