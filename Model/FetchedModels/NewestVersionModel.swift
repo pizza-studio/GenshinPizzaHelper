@@ -10,9 +10,10 @@ import Foundation
 struct NewestVersion: Codable {
     var shortVersion: String
     var buildVersion: Int
-    var updates: UpdateDetails
+    var updates: MultiLanguageContents
+    var notice: MultiLanguageContents
 
-    struct UpdateDetails: Codable {
+    struct MultiLanguageContents: Codable {
         var en: [String]
         var zhcn: [String]
         var ja: [String]
