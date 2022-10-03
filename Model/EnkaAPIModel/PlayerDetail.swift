@@ -212,9 +212,15 @@ struct PlayerDetail {
             case unknow
         }
     }
+
+    enum PlayerDetailError: Error {
+        case failToGetLocalizedDictionary
+        case failToGetCharacterDictionary
+        case failToGetCharacterData
+    }
 }
 
-extension Dictionary where Key == String, Value == String {
+private extension Dictionary where Key == String, Value == String {
     func nameFromHashMap(_ hashID: Int) -> String {
         self["\(hashID)"] ?? "unknow"
     }
