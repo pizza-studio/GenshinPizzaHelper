@@ -80,5 +80,36 @@ extension API {
                     }
                 }
         }
+
+        /// 获取原神辞典数据
+        /// - Parameters:
+        ///     - completion: 数据
+        static func fetchGenshinDictionaryData (
+            completion: @escaping (
+                [GDDictionary]
+            ) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "https://dataset.genshin-dictionary.com/words.json"
+            let url = URL(string: urlStr)!
+
+            // 请求
+            HttpMethod<[GDDictionary]>
+                .openRequest(
+                    .get,
+                    url
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        completion(requestResult)
+
+                    case .failure(_):
+                        print("request Genshin Dictionary Data Fail")
+                        break
+                    }
+                }
+        }
     }
 }
