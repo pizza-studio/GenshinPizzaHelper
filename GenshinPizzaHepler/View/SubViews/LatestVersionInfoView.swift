@@ -32,7 +32,7 @@ struct LatestVersionInfoView: View {
                     if !getLocalizedNoticeInfos(meta: newestVersionInfos!).isEmpty {
                         Text("更新公告")
                             .bold()
-                            .font(.title3)
+                            .font(.title2)
                             .padding(.vertical, 2)
                         ForEach(getLocalizedNoticeInfos(meta: newestVersionInfos!), id:\.self) { item in
                             Text("- \(item)")
@@ -42,7 +42,7 @@ struct LatestVersionInfoView: View {
                     }
                     Text("更新内容：")
                         .bold()
-                        .font(.title3)
+                        .font(.title2)
                         .padding(.vertical, 2)
                     if newestVersionInfos != nil {
                         ForEach(getLocalizedUpdateInfos(meta: newestVersionInfos!), id:\.self) { item in
