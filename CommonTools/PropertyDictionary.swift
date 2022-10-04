@@ -9,6 +9,7 @@ import Foundation
 
 class PropertyDictionary {
     static var dict: [String: String] = [
+        "FIGHT_PROP_BASE_ATTACK": "基础攻击力", 
         "FIGHT_PROP_MAX_HP": "生命值上限",
         "FIGHT_PROP_ATTACK": "攻击力",
         "FIGHT_PROP_DEFENSE": "防御力",

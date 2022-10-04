@@ -107,10 +107,13 @@ struct PlayerDetail {
             iconString = character.SideIconName.replacingOccurrences(of: "_Side", with: "")
             sideIconString = character.SideIconName
 
-            skills = avatarInfo.skillLevelMap.skillLevel.map { skillID, level in
-                let icon = character.Skills.skillData[skillID] ?? "unknow"
+            skills = character.SkillOrder.map({ skillID in
+                let level = avatarInfo.skillLevelMap.skillLevel.first { key, value in
+                    key == String(skillID)
+                }?.value ?? 0
+                let icon = character.Skills.skillData[String(skillID)] ?? "unknow"
                 return Skill(name: localizedDictionary.nameFromHashMap(skillID), level: level, iconString: icon)
-            }
+            })
 
             guard let weaponEquipment = avatarInfo.equipList.first(where: { equipment in
                 equipment.flat.itemType == "ITEM_WEAPON"
@@ -132,7 +135,7 @@ struct PlayerDetail {
         // Model
         /// 天赋
         struct Skill {
-            /// 天赋名字
+            /// 天赋名字(字典没有，暂时无法使用)
             let name: String
             /// 天赋等级
             let level: Int
@@ -153,6 +156,11 @@ struct PlayerDetail {
             let subAttribute: Attribute
             /// 武器图标ID
             let iconString: String
+            /// 突破后武器图标ID
+            var awakenedIconString: String { "\(iconString)_Awaken"}
+
+            /// 武器星级
+            let rankLevel: RankLevel
 
             init?(weaponEquipment: PlayerDetailFetchModel.AvatarInfo.EquipList, localizedDictionary: [String : String]) {
                 guard weaponEquipment.flat.itemType == "ITEM_WEAPON" else { return nil }
@@ -162,23 +170,29 @@ struct PlayerDetail {
 
                 let mainAttributeName: String = PropertyDictionary.getLocalizedName("FIGHT_PROP_BASE_ATTACK")
                 let mainAttributeValue: Double = weaponEquipment.flat.weaponStats?.first(where: { stats in
-                    stats.appendPropId == mainAttributeName
+                    stats.appendPropId == "FIGHT_PROP_BASE_ATTACK"
                 })?.statValue ?? 0
                 mainAttribute = .init(name: mainAttributeName, value: mainAttributeValue)
 
                 let subAttributeName: String = PropertyDictionary.getLocalizedName(weaponEquipment.flat.weaponStats?.first(where: { stats in
-                    stats.appendPropId != mainAttributeName
+                    stats.appendPropId != "FIGHT_PROP_BASE_ATTACK"
                 })?.appendPropId ?? "")
                 let subAttributeValue: Double = weaponEquipment.flat.weaponStats?.first(where: { stats in
-                    stats.appendPropId == subAttributeName
+                    stats.appendPropId != "FIGHT_PROP_BASE_ATTACK"
                 })?.statValue ?? 0
                 subAttribute = .init(name: subAttributeName, value: subAttributeValue)
 
                 iconString = weaponEquipment.flat.icon
+
+                rankLevel = .init(rawValue: weaponEquipment.flat.rankLevel) ?? .four
             }
         }
         /// 圣遗物
-        struct Artifact: Identifiable {
+        struct Artifact: Identifiable, Equatable {
+            static func == (lhs: PlayerDetail.Avatar.Artifact, rhs: PlayerDetail.Avatar.Artifact) -> Bool {
+                lhs.id == rhs.id
+            }
+
             let id: String
 
             /// 圣遗物名字（词典没有，暂不可用）
@@ -193,6 +207,9 @@ struct PlayerDetail {
             let iconString: String
             /// 圣遗物所属部位
             let artifactType: ArtifactType
+
+            /// 圣遗物星级
+            let rankLevel: RankLevel
 
             enum ArtifactType: String, CaseIterable {
                 case flower = "EQUIP_BRACER"
@@ -213,6 +230,7 @@ struct PlayerDetail {
                 })
                 iconString = artifactEquipment.flat.icon
                 artifactType = .init(rawValue: artifactEquipment.flat.equipType ?? "") ?? .flower
+                rankLevel = .init(rawValue: artifactEquipment.flat.rankLevel) ?? .five
             }
         }
         /// 任意属性
@@ -261,6 +279,16 @@ struct PlayerDetail {
         }
         static func == (lhs: PlayerDetail.Avatar, rhs: PlayerDetail.Avatar) -> Bool {
             lhs.hashValue == rhs.hashValue
+        }
+    }
+
+    enum RankLevel: Int {
+        case one = 1, two = 2, three = 3, four = 4, five = 5
+        var rectangularBackgroundIconString: String {
+            "UI_QualityBg_\(self.rawValue)"
+        }
+        var squaredBackgroundIconString: String {
+            "UI_QualityBg_\(self.rawValue)s"
         }
     }
 

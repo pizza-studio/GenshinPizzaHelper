@@ -14,28 +14,78 @@ struct EachCharacterDetailDatasView: View {
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                Label {
-                    Text("\(avatar.name)")
-                        .font(.title)
-                } icon: {
+                HStack {
                     EnkaWebIcon(iconString: avatar.iconString)
-                        .frame(width: 75, height: 75)
+                        .frame(width: 80, height: 80)
                         .background(EnkaWebIcon(iconString: avatar.namecardIconString)
                             .scaledToFill())
                         .clipShape(Circle())
+                        .padding(.trailing, 3)
+                    VStack(alignment: .leading) {
+                        Text(avatar.name)
+                            .font(.title2)
+                            .bold()
+                            .padding(.bottom, 2)
+                        Text("等级：\(avatar.level)")
+                    }
                 }
                 Spacer()
+                HStack {
+                    ForEach(avatar.skills, id: \.iconString) { skill in
+                        VStack(spacing: 0) {
+                            EnkaWebIcon(iconString: skill.iconString)
+                                .padding(.bottom, 0)
+                            Text("\(skill.level)")
+                        }
+                    }
+                }
+                .frame(height: 60)
             }
             .padding(.bottom, 10)
+
+            // Weapon
+            HStack {
+                let weapon = avatar.weapon
+                let l: CGFloat = 75
+                let r = l/2
+                let squareSideLength = sqrt(2) * Double(r)
+                ZStack {
+                    EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
+                        .scaledToFit()
+                    EnkaWebIcon(iconString: weapon.awakenedIconString)
+                        .scaledToFit()
+                        .frame(width: squareSideLength, height: squareSideLength)
+                }
+                .clipShape(Circle())
+                .frame(width: l, height: l)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(weapon.name).bold().font(.headline)
+                        Spacer()
+                        Text("精炼\(weapon.refinementRank)阶")
+                            .padding(.horizontal)
+                            .background(
+                                Capsule()
+                                    .fill(.gray)
+                                    .opacity(0.25)
+                            )
+                    }
+                    .padding(.bottom, 0.5)
+                    InfoPreviewer(title: weapon.mainAttribute.name, content: "\(avatar.weapon.mainAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    InfoPreviewer(title: weapon.subAttribute.name, content: "\(avatar.weapon.subAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                }
+            }
+
+            // Other prob
             Group {
-                InfoPreviewer(title: "武器", content: "\(avatar.weapon.name)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                InfoPreviewer(title: "等级", content: "\(avatar.level)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "生命值", content: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "攻击力", content: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "防御力", content: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "元素精通", content: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "元素充能效率", content: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                InfoPreviewer(title: "治疗加成", content: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                if avatar.fightPropMap.healingBonus > 0 {
+                    InfoPreviewer(title: "治疗加成", content: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                }
                 InfoPreviewer(title: "暴击率", content: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "暴击伤害", content: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
             }
@@ -67,8 +117,8 @@ struct EachCharacterDetailDatasView: View {
 
     @ViewBuilder
     func artifactsDetailsView() -> some View {
-        if #available(iOS 16, *) {
-            if !avatar.artifacts.isEmpty {
+        if !avatar.artifacts.isEmpty {
+            if #available(iOS 16, *) {
                 Divider()
                 Grid {
                     GridRow {
@@ -99,19 +149,31 @@ struct EachCharacterDetailDatasView: View {
                     }
                 }
             } else {
-                EmptyView()
+                Divider()
+                HStack {
+                    ForEach(avatar.artifacts) { artifact in
+                        VStack {
+                            EnkaWebIcon(iconString: artifact.iconString)
+                            VStack {
+                                Text(artifact.mainAttribute.name)
+                                    .font(.caption)
+                                Text("\(artifact.mainAttribute.valueString)")
+                                    .bold()
+                            }
+                            VStack {
+                                ForEach(artifact.subAttributes, id:\.name) { subAttribute in
+                                    Text(subAttribute.name)
+                                        .font(.caption)
+                                    Text("\(subAttribute.valueString)")
+                                }
+                            }
+                        }
+                    }
+
+                }
             }
+        } else {
+            EmptyView()
         }
     }
-}
-
-enum CharacterElement: String {
-    case cyro = "Ice"
-    case anemo = "Wind"
-    case electro = "Electric"
-    case hydro = "Water"
-    case pryo = "Fire"
-    case geo = "Rock"
-    case dendro = "Grass"
-    case none = "none"
 }
