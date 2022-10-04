@@ -16,7 +16,9 @@ struct Account: Equatable, Hashable {
     var basicInfo: BasicInfos?
     var fetchComplete: Bool = false
 
+    #if !os(watchOS)
     var playerDetail: PlayerDetail?
+    #endif
 
     init(config: AccountConfiguration) {
         self.config = config
@@ -54,6 +56,7 @@ extension AccountConfiguration {
         }
     }
 
+#if !os(watchOS)
     func fetchPlayerDetail(_ completion: @escaping (PlayerDetail) -> ()) {
         guard let uid = self.uid else { return }
         API.OpenAPIs.fetchPlayerDetail(uid) { result in
@@ -66,4 +69,5 @@ extension AccountConfiguration {
             }
         }
     }
+#endif
 }
