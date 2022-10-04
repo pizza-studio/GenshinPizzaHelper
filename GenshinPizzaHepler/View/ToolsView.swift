@@ -86,6 +86,7 @@ struct ToolsView: View {
                                                         .clipShape(Circle())
                                                         .contentShape(Circle())
                                                         .onTapGesture {
+                                                            simpleTaptic(type: .medium)
                                                             withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
                                                                 viewModel.showingCharacterName = avatar.name
                                                                 viewModel.showCharacterDetailOfAccount = account!

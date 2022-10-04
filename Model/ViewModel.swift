@@ -96,11 +96,28 @@ class ViewModel: NSObject, ObservableObject {
 
     #if !os(watchOS)
     func refreshPlayerDetail() {
-        accounts.indices.forEach { index in
-            accounts[index].config.fetchPlayerDetail { playerDetail in
-                self.accounts[index].playerDetail = playerDetail
+        var charLoc: ENCharacterLoc?
+        var charMap: ENCharacterMap?
+        let group = DispatchGroup()
+        group.enter()
+        API.HomeAPIs.fetchENCharacterLocDatas {
+            charLoc = $0
+            group.leave()
+        }
+        group.enter()
+        API.HomeAPIs.fetchENCharacterDetailDatas {
+            charMap = $0
+            group.leave()
+        }
+        group.notify(queue: .main) {
+            guard let charLoc = charLoc, let charMap = charMap else { return }
+            self.accounts.indices.forEach { index in
+                self.accounts[index].config.fetchPlayerDetail(charLoc: charLoc, charMap: charMap) { playerDetail in
+                    self.accounts[index].playerDetail = playerDetail
+                }
             }
         }
+
     }
     #endif
 }
