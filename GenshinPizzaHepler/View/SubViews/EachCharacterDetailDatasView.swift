@@ -11,98 +11,25 @@ import SwiftUI
 struct EachCharacterDetailDatasView: View {
     var avatar: PlayerDetail.Avatar
 
+    var animation: Namespace.ID
+
     var body: some View {
         VStack {
-            HStack(alignment: .center) {
+            if #available(iOS 16, *) {
+                Grid {
+                    GridRow {
+                        avatarIconAndSkill()
+                    }
+                    GridRow {
+                        weapon()
+                    }
+                }
+            } else {
                 HStack {
-                    EnkaWebIcon(iconString: avatar.iconString)
-                        .frame(width: 85, height: 85)
-                        .background(EnkaWebIcon(iconString: avatar.namecardIconString)
-                            .scaledToFill())
-                        .clipShape(Circle())
-                        .padding(.trailing, 3)
-                    VStack(alignment: .leading) {
-                        let name = avatar.name.count > 10 ? avatar.name.replacingOccurrences(of: " ", with: "\n") : avatar.name
-                        Text(name)
-                            .font(.title2)
-                            .bold()
-                            .padding(.bottom, 2)
-                            .lineLimit(2)
-                            .fixedSize()
-                        VStack(spacing: 2) {
-                            HStack {
-                                Text("等级")
-                                Spacer()
-                                Text("\(avatar.level)")
-                                    .padding(.horizontal)
-                                    .background(
-                                        Capsule()
-                                            .fill(.gray)
-                                            .opacity(0.25)
-                                    )
-                            }.font(.footnote)
-                            HStack {
-                                Text("命之座")
-                                Spacer()
-                                Text("\(avatar.talentCount)命")
-                                    .padding(.horizontal)
-                                    .background(
-                                        Capsule()
-                                            .fill(.gray)
-                                            .opacity(0.25)
-                                    )
-                            }.font(.footnote)
-                        }
-                    }
+                    avatarIconAndSkill()
                 }
-                Spacer()
                 HStack {
-                    ForEach(avatar.skills, id: \.iconString) { skill in
-                        VStack(spacing: 0) {
-                            EnkaWebIcon(iconString: skill.iconString)
-                                .padding(.bottom, 0)
-                            Text("\(skill.level)")
-                        }
-                    }
-                }
-                .frame(height: 60)
-            }
-            .padding(.bottom, 10)
-
-            // Weapon
-            HStack {
-                let weapon = avatar.weapon
-                let l: CGFloat = 85
-                ZStack {
-                    EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
-                        .scaledToFit()
-                        .scaleEffect(1.1)
-                        .offset(y: 10)
-                        .clipShape(Circle())
-                    EnkaWebIcon(iconString: weapon.awakenedIconString)
-                        .scaledToFit()
-                }
-                .frame(height: l)
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(weapon.name).bold()
-                            .font(.headline)
-                        Spacer()
-                        Text("精炼\(weapon.refinementRank)阶")
-                            .font(.body)
-                            .padding(.horizontal)
-                            .background(
-                                Capsule()
-                                    .fill(.gray)
-                                    .opacity(0.25)
-                            )
-                    }
-                    .padding(.bottom, 0.5)
-                    VStack(spacing: 3) {
-                        InfoPreviewer(title: "等级", content: "\(avatar.weapon.level)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                        InfoPreviewer(title: weapon.mainAttribute.name, content: "\(avatar.weapon.mainAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                        InfoPreviewer(title: weapon.subAttribute.name, content: "\(avatar.weapon.subAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                    }
+                    weapon()
                 }
             }
             Divider()
@@ -175,6 +102,7 @@ struct EachCharacterDetailDatasView: View {
                                     Text(subAttribute.name)
                                         .font(.caption)
                                     Text("\(subAttribute.valueString)")
+                                        .font(.callout)
                                 }
                             }
                         }
@@ -195,8 +123,9 @@ struct EachCharacterDetailDatasView: View {
                             VStack {
                                 ForEach(artifact.subAttributes, id:\.name) { subAttribute in
                                     Text(subAttribute.name)
-                                        .font(.caption)
+                                        .font(.footnote)
                                     Text("\(subAttribute.valueString)")
+                                        .font(.footnote)
                                 }
                             }
                         }
@@ -206,6 +135,132 @@ struct EachCharacterDetailDatasView: View {
             }
         } else {
             EmptyView()
+        }
+    }
+
+    @ViewBuilder
+    func avatarIconAndSkill() -> some View {
+        EnkaWebIcon(iconString: avatar.iconString)
+            .frame(width: 85, height: 85)
+            .background(EnkaWebIcon(iconString: avatar.namecardIconString)
+                .scaledToFill()
+                .offset(x: -85/3))
+            .clipShape(Circle())
+            .padding(.trailing, 3)
+            .matchedGeometryEffect(id: "character.\(avatar.name)", in: animation)
+        HStack {
+            VStack(alignment: .leading) {
+                let name = avatar.name.count > 10 ? avatar.name.replacingOccurrences(of: " ", with: "\n") : avatar.name
+                Text(name)
+                    .font(.title2)
+                    .bold()
+                    .padding(.bottom, 2)
+                    .lineLimit(2)
+                    .fixedSize()
+                VStack(spacing: 2) {
+                    HStack {
+                        Text("等级")
+                        Spacer()
+                        Text("\(avatar.level)")
+                            .padding(.horizontal)
+                            .background(
+                                Capsule()
+                                    .fill(.gray)
+                                    .opacity(0.25)
+                            )
+                    }.font(.footnote)
+                    HStack {
+                        Text("命之座")
+                        Spacer()
+                        Text("\(avatar.talentCount)命")
+                            .padding(.horizontal)
+                            .background(
+                                Capsule()
+                                    .fill(.gray)
+                                    .opacity(0.25)
+                            )
+                    }.font(.footnote)
+                }
+            }
+            .padding(.trailing, 3)
+            Spacer()
+            HStack {
+                ForEach(avatar.skills, id: \.iconString) { skill in
+                    VStack(spacing: 0) {
+                        EnkaWebIcon(iconString: skill.iconString)
+                            .padding(.bottom, 0)
+                        Text("\(skill.level)")
+                    }
+                }
+            }
+            .frame(height: 60)
+            .padding(.bottom, 10)
+        }
+    }
+
+    @ViewBuilder
+    func weapon() -> some View {
+        // Weapon
+        let weapon = avatar.weapon
+        let l: CGFloat = 85
+        ZStack {
+            EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
+                .scaledToFit()
+                .scaleEffect(1.1)
+                .offset(y: 10)
+                .clipShape(Circle())
+            EnkaWebIcon(iconString: weapon.awakenedIconString)
+                .scaledToFit()
+        }
+        .frame(height: l)
+        VStack(alignment: .leading, spacing: 3) {
+            HStack(alignment: .lastTextBaseline) {
+                Text(weapon.name).bold()
+                    .font(.headline)
+                Spacer()
+                Text("精炼\(weapon.refinementRank)阶")
+                    .font(.body)
+                    .padding(.horizontal)
+                    .background(
+                        Capsule()
+                            .fill(.gray)
+                            .opacity(0.25)
+                    )
+            }
+            HStack {
+                Text("等级")
+                Spacer()
+                Text("\(avatar.weapon.level)")
+                    .padding(.horizontal)
+                    .background(
+                        Capsule()
+                            .fill(.gray)
+                            .opacity(0.25)
+                    )
+            }.font(.footnote)
+                .padding(.bottom, 1)
+            HStack {
+                Text(weapon.mainAttribute.name)
+                Spacer()
+                Text("\(avatar.weapon.mainAttribute.valueString)")
+                    .padding(.horizontal)
+                    .background(
+                        Capsule()
+                            .fill(.gray)
+                            .opacity(0.25)
+                    )
+            }.font(.callout)
+            HStack {
+                Text(weapon.subAttribute.name)
+                Spacer()
+                Text("\(avatar.weapon.subAttribute.valueString)")
+                    .padding(.horizontal)
+                    .background(
+                        Capsule()
+                            .fill(.gray)
+                            .opacity(0.25)
+                    )
+            }.font(.footnote)
         }
     }
 }

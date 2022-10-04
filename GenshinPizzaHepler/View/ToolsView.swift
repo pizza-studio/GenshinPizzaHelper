@@ -22,6 +22,8 @@ struct ToolsView: View {
 
     @State private var sheetType: SheetTypes? = nil
 
+    var animation: Namespace.ID
+
     var body: some View {
         NavigationView {
             List {
@@ -79,11 +81,12 @@ struct ToolsView: View {
                                                     EnkaWebIcon(iconString: avatar.iconString)
                                                         .frame(width: 75, height: 75)
                                                         .background(EnkaWebIcon(iconString: avatar.namecardIconString)
-                                                            .scaledToFill())
+                                                            .scaledToFill()
+                                                            .offset(x: -75/3))
                                                         .clipShape(Circle())
                                                         .contentShape(Circle())
                                                         .onTapGesture {
-                                                            withAnimation {
+                                                            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
                                                                 viewModel.showingCharacterName = avatar.name
                                                                 viewModel.showCharacterDetailOfAccount = account!
                                                             }
@@ -143,13 +146,19 @@ struct ToolsView: View {
                         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowBackground(Color.white.opacity(0))
                     } else {
-                        HStack {
-                            Text(account?.config.name ?? "").foregroundColor(.secondary)
-                            Spacer()
-                            ProgressView()
-                            Spacer()
-                            selectAccountManuButton()
+                        ZStack {
+                            HStack {
+                                Text(account?.config.name ?? "").foregroundColor(.secondary)
+                                Spacer()
+                                selectAccountManuButton()
+                            }
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
                         }
+
                     }
                 }
                 

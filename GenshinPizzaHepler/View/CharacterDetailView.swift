@@ -19,10 +19,12 @@ struct CharacterDetailView: View {
         })!
     }
 
+    var animation: Namespace.ID
+
     var body: some View {
         TabView(selection: $showingCharacterName) {
             ForEach(playerDetail.avatars, id: \.name) { avatar in
-                EachCharacterDetailDatasView(avatar: avatar)
+                EachCharacterDetailDatasView(avatar: avatar, animation: animation)
             }
         }
         .tabViewStyle(.page)
@@ -38,7 +40,7 @@ struct CharacterDetailView: View {
     }
 
     func closeView() {
-        withAnimation(.easeInOut) {
+        withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
             viewModel.showCharacterDetailOfAccount = nil
             viewModel.showingCharacterName = nil
         }

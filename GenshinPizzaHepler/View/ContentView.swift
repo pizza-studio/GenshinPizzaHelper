@@ -54,7 +54,7 @@ struct ContentView: View {
                 // TODO: Remove debug check when ready
 //                #if DEBUG
                 if #available(iOS 15.0, *) {
-                    ToolsView()
+                    ToolsView(animation: animation)
                         .tag(1)
                         .environmentObject(viewModel)
                         .tabItem {
@@ -69,14 +69,17 @@ struct ContentView: View {
                         Label("设置", systemImage: "gear")
                     }
             }
+            .zIndex(0)
 
             if let showDetailOfAccount = viewModel.showDetailOfAccount {
                 AccountDisplayView(account: showDetailOfAccount, animation: animation)
+                    .zIndex(1)
             }
             if let account = viewModel.showCharacterDetailOfAccount {
                 if #available(iOS 15.0, *) {
-                    CharacterDetailView(account: account, showingCharacterName: viewModel.showingCharacterName!)
+                    CharacterDetailView(account: account, showingCharacterName: viewModel.showingCharacterName!, animation: animation)
                         .environment(\.colorScheme, .dark)
+                        .zIndex(2)
                 }
             }
         }
