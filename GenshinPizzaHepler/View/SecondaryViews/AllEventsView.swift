@@ -54,7 +54,7 @@ struct AllEventsView: View {
                                 .font(.caption)
                             Group {
                                 if getRemainDays(content.endAt) == nil {
-                                    Text("Error")
+                                    Text(content.endAt)
                                 }
                                 else if getRemainDays(content.endAt)!.day! > 0 {
                                     Text("剩余 \(getRemainDays(content.endAt)!.day!)天")

@@ -57,7 +57,7 @@ struct CurrentEventNavigator: View {
             Text(" \(getLocalizedContent(event.name))")
             Spacer()
             if getRemainDays(event.endAt) == nil {
-                Text("Error")
+                Text(event.endAt)
             }
             else if getRemainDays(event.endAt)!.day! > 0 {
                 HStack(spacing: 0) {
