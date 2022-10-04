@@ -174,9 +174,7 @@ struct ToolsView: View {
                         Text("原神中英日词典")
                     }
                     Text("原神计算器")
-                    NavigationLink(destination: WebBroswerView(url: getAccountTeyvatMapURL(account: account)).navigationTitle("提瓦特大地图").navigationBarTitleDisplayMode(.inline)) {
-                        Text("提瓦特大地图")
-                    }
+                    mapNavigationLink()
                 }
             }
             .refreshable {
@@ -238,6 +236,29 @@ struct ToolsView: View {
     }
 
     @ViewBuilder
+    func mapNavigationLink() -> some View {
+        let mapURL: String = {
+            if let account = account {
+                switch account.config.server.region {
+                case .cn:
+                    return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
+                case .global:
+                    return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
+                }
+            } else {
+                if Locale.current.identifier == "zh_CN" {
+                    return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
+                } else {
+                    return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
+                }
+            }
+        }()
+        NavigationLink(destination: WebBroswerView(url: mapURL).navigationTitle("提瓦特大地图").navigationBarTitleDisplayMode(.inline)) {
+            Text("提瓦特大地图")
+        }
+    }
+
+    @ViewBuilder
     func selectAccountManuButton() -> some View {
         if accounts.count > 1 {
             Menu {
@@ -250,18 +271,6 @@ struct ToolsView: View {
                 Image(systemName: "arrow.left.arrow.right.circle")
                     .font(.title2)
             }
-        }
-    }
-
-    func getAccountTeyvatMapURL(account: Account?) -> String {
-        guard let account = account else {
-            return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
-        }
-        switch account.config.server.region {
-        case .cn:
-            return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
-        case .global:
-            return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
         }
     }
 }
