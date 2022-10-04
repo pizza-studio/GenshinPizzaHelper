@@ -76,6 +76,7 @@ struct EachCharacterDetailDatasView: View {
                 ZStack {
                     EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
                         .scaledToFit()
+                        .scaleEffect(1.1)
                         .offset(y: 10)
                         .clipShape(Circle())
                     EnkaWebIcon(iconString: weapon.awakenedIconString)
@@ -161,6 +162,7 @@ struct EachCharacterDetailDatasView: View {
                             VStack {
                                 Text(artifact.mainAttribute.name)
                                     .font(.caption)
+                                    .bold()
                                 Text("\(artifact.mainAttribute.valueString)")
                                     .bold()
                             }

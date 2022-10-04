@@ -143,22 +143,12 @@ struct ToolsView: View {
                         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowBackground(Color.white.opacity(0))
                     } else {
-                        ZStack {
-                            if accounts.count > 1 {
-                                HStack {
-                                    Spacer()
-                                    selectAccountManuButton()
-                                }
-                            }
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
-                            }
-                            HStack {
-                                Text(account?.config.name ?? "").foregroundColor(.secondary)
-                                Spacer()
-                            }
+                        HStack {
+                            Text(account?.config.name ?? "").foregroundColor(.secondary)
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                            selectAccountManuButton()
                         }
                     }
                 }
