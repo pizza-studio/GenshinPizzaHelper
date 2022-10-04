@@ -67,11 +67,6 @@ struct CurrentEventNavigator: View {
             else {
                 HStack(spacing: 0) {
                     Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
-//                        .onAppear {
-//                            if getRemainDays(event.endAt)!.hour! < 0 {
-//                                getCurrentEvent()
-//                            }
-//                        }
                 }
             }
         }
