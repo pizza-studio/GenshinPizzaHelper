@@ -88,45 +88,19 @@ extension API {
         ///     - completion: 数据
         static func fetchPlayerDetail (
             _ uid: String,
+            charLoc: ENCharacterLoc,
+            charMap: ENCharacterMap,
             completion: @escaping (
                 Result<PlayerDetail, PlayerDetail.PlayerDetailError>
             ) -> ()
         ) {
-            var playerDetailModel: PlayerDetailFetchModel?
-            var charLoc: ENCharacterLoc?
-            var charMap: ENCharacterMap?
-            let group = DispatchGroup()
-            group.enter()
-            API.HomeAPIs.fetchENCharacterLocDatas {
-                charLoc = $0
-                group.leave()
-            }
-            group.enter()
-            API.HomeAPIs.fetchENCharacterDetailDatas {
-                charMap = $0
-                group.leave()
-            }
-            group.enter()
             fetchPlayerDatas(uid) { result in
                 switch result {
                 case .success(let model):
-                    playerDetailModel = model
+                    completion(.success(.init(playerDetailFetchModel: model, localizedDictionary: charLoc.getLocalizedDictionary(), characterMap: charMap)))
                 case .failure(_):
-                    break
+                    completion(.failure(.failToGetCharacterData))
                 }
-                group.leave()
-            }
-            group.notify(queue: .main) {
-                guard let playerDetailModel = playerDetailModel else {
-                    completion(.failure(.failToGetCharacterData)); return
-                }
-                guard let charLoc = charLoc else {
-                    completion(.failure(.failToGetLocalizedDictionary)); return
-                }
-                guard let charMap = charMap else {
-                    completion(.failure(.failToGetCharacterDictionary)); return
-                }
-                completion(.success(.init(playerDetailFetchModel: playerDetailModel, localizedDictionary: charLoc.getLocalizedDictionary(), characterMap: charMap)))
             }
         }
 
