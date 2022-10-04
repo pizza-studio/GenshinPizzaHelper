@@ -19,20 +19,23 @@ struct EachCharacterDetailDatasView: View {
                 Grid {
                     GridRow {
                         avatarIconAndSkill()
+                            .padding(.bottom)
                     }
                     GridRow {
                         weapon()
+                            .padding(.bottom)
                     }
                 }
             } else {
                 HStack {
                     avatarIconAndSkill()
+                        .padding(.bottom)
                 }
                 HStack {
                     weapon()
+                        .padding(.bottom)
                 }
             }
-            Divider()
 
             // Other prob
             VStack(spacing: 3) {
@@ -148,15 +151,16 @@ struct EachCharacterDetailDatasView: View {
             .clipShape(Circle())
             .padding(.trailing, 3)
             .matchedGeometryEffect(id: "character.\(avatar.name)", in: animation)
-        HStack {
+        HStack(alignment: .bottom) {
             VStack(alignment: .leading) {
                 let name = avatar.name.count > 10 ? avatar.name.replacingOccurrences(of: " ", with: "\n") : avatar.name
                 Text(name)
                     .font(.title2)
                     .bold()
-                    .padding(.bottom, 2)
                     .lineLimit(2)
                     .fixedSize()
+                    .padding(.top)
+                Spacer()
                 VStack(spacing: 2) {
                     HStack {
                         Text("等级")
@@ -181,7 +185,9 @@ struct EachCharacterDetailDatasView: View {
                             )
                     }.font(.footnote)
                 }
+                .padding(.bottom)
             }
+            .frame(height: 85)
             .padding(.trailing, 3)
             Spacer()
             if #available(iOS 16, *) {
@@ -197,7 +203,7 @@ struct EachCharacterDetailDatasView: View {
                     GridRow {
                         ForEach(avatar.skills, id: \.iconString) { skill in
                             VStack(spacing: 0) {
-                                Text("\(skill.level)")
+                                Text("\(skill.level)").font(.caption)
                             }
                         }
                     }
@@ -210,7 +216,7 @@ struct EachCharacterDetailDatasView: View {
                         VStack(spacing: 0) {
                             EnkaWebIcon(iconString: skill.iconString)
                                 .padding(.bottom, 0)
-                            Text("\(skill.level)")
+                            Text("\(skill.level)").font(.caption)
                         }
                     }
                 }
@@ -242,7 +248,7 @@ struct EachCharacterDetailDatasView: View {
                     .font(.headline)
                 Spacer()
                 Text("精炼\(weapon.refinementRank)阶")
-                    .font(.body)
+                    .font(.caption)
                     .padding(.horizontal)
                     .background(
                         Capsule()
@@ -250,18 +256,7 @@ struct EachCharacterDetailDatasView: View {
                             .opacity(0.25)
                     )
             }
-            HStack {
-                Text("等级")
-                Spacer()
-                Text("\(avatar.weapon.level)")
-                    .padding(.horizontal)
-                    .background(
-                        Capsule()
-                            .fill(.gray)
-                            .opacity(0.25)
-                    )
-            }.font(.footnote)
-                .padding(.bottom, 1)
+            Spacer()
             HStack {
                 Text(weapon.mainAttribute.name)
                 Spacer()
@@ -285,5 +280,7 @@ struct EachCharacterDetailDatasView: View {
                     )
             }.font(.footnote)
         }
+        .padding(.vertical)
+        .frame(height: l)
     }
 }
