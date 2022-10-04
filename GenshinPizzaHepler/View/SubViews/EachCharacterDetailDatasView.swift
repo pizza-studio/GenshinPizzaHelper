@@ -29,8 +29,30 @@ struct EachCharacterDetailDatasView: View {
                             .padding(.bottom, 2)
                             .lineLimit(2)
                             .fixedSize()
-                        Text("等级：\(avatar.level)").font(.footnote)
-                        Text("命之座：\(avatar.talentCount)命").font(.footnote)
+                        VStack(spacing: 2) {
+                            HStack {
+                                Text("等级")
+                                Spacer()
+                                Text("\(avatar.level)")
+                                    .padding(.horizontal)
+                                    .background(
+                                        Capsule()
+                                            .fill(.gray)
+                                            .opacity(0.25)
+                                    )
+                            }.font(.footnote)
+                            HStack {
+                                Text("命之座")
+                                Spacer()
+                                Text("\(avatar.talentCount)命")
+                                    .padding(.horizontal)
+                                    .background(
+                                        Capsule()
+                                            .fill(.gray)
+                                            .opacity(0.25)
+                                    )
+                            }.font(.footnote)
+                        }
                     }
                 }
                 Spacer()
@@ -51,23 +73,22 @@ struct EachCharacterDetailDatasView: View {
             HStack {
                 let weapon = avatar.weapon
                 let l: CGFloat = 85
-                let r = l/2
-                let squareSideLength = sqrt(2) * Double(r) * 0.9
                 ZStack {
                     EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
                         .scaledToFit()
+                        .offset(y: 10)
+                        .clipShape(Circle())
                     EnkaWebIcon(iconString: weapon.awakenedIconString)
                         .scaledToFit()
-                        .frame(width: squareSideLength, height: squareSideLength)
-
                 }
-                .clipShape(Circle())
-                .frame(width: l, height: l)
+                .frame(height: l)
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(weapon.name).bold().font(.headline)
+                        Text(weapon.name).bold()
+                            .font(.headline)
                         Spacer()
                         Text("精炼\(weapon.refinementRank)阶")
+                            .font(.body)
                             .padding(.horizontal)
                             .background(
                                 Capsule()
@@ -76,15 +97,17 @@ struct EachCharacterDetailDatasView: View {
                             )
                     }
                     .padding(.bottom, 0.5)
-                    InfoPreviewer(title: "等级", content: "\(avatar.weapon.level)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                    InfoPreviewer(title: weapon.mainAttribute.name, content: "\(avatar.weapon.mainAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                    InfoPreviewer(title: weapon.subAttribute.name, content: "\(avatar.weapon.subAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    VStack(spacing: 3) {
+                        InfoPreviewer(title: "等级", content: "\(avatar.weapon.level)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                        InfoPreviewer(title: weapon.mainAttribute.name, content: "\(avatar.weapon.mainAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                        InfoPreviewer(title: weapon.subAttribute.name, content: "\(avatar.weapon.subAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    }
                 }
             }
             Divider()
 
             // Other prob
-            Group {
+            VStack(spacing: 3) {
                 InfoPreviewer(title: "生命值", content: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "攻击力", content: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "防御力", content: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
@@ -95,27 +118,27 @@ struct EachCharacterDetailDatasView: View {
                 }
                 InfoPreviewer(title: "暴击率", content: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 InfoPreviewer(title: "暴击伤害", content: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-            }
-            switch avatar.element {
-            case .wind:
-                InfoPreviewer(title: "风元素伤害加成", content: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-            case .ice:
-                InfoPreviewer(title: "冰元素伤害加成", content: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-            case .electric:
-                InfoPreviewer(title: "雷元素伤害加成", content: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-            case .water:
-                InfoPreviewer(title: "水元素伤害加成", content: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-            case .fire:
-                InfoPreviewer(title: "火元素伤害加成", content: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-            case .rock:
-                InfoPreviewer(title: "岩元素伤害加成", content: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-            case .grass:
-                InfoPreviewer(title: "草元素伤害加成", content: "\((avatar.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-            default:
-                EmptyView()
-            }
-            if avatar.fightPropMap.physicalDamage > 0 {
-                InfoPreviewer(title: "物理伤害加成", content: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                switch avatar.element {
+                case .wind:
+                    InfoPreviewer(title: "风元素伤害加成", content: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                case .ice:
+                    InfoPreviewer(title: "冰元素伤害加成", content: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                case .electric:
+                    InfoPreviewer(title: "雷元素伤害加成", content: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                case .water:
+                    InfoPreviewer(title: "水元素伤害加成", content: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                case .fire:
+                    InfoPreviewer(title: "火元素伤害加成", content: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                case .rock:
+                    InfoPreviewer(title: "岩元素伤害加成", content: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                case .grass:
+                    InfoPreviewer(title: "草元素伤害加成", content: "\((avatar.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                default:
+                    EmptyView()
+                }
+                if avatar.fightPropMap.physicalDamage > 0 {
+                    InfoPreviewer(title: "物理伤害加成", content: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                }
             }
             artifactsDetailsView()
         }

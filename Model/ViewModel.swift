@@ -88,10 +88,13 @@ class ViewModel: NSObject, ObservableObject {
             accounts[index].config.fetchBasicInfo { basicInfo in
                 self.accounts[index].basicInfo = basicInfo
             }
+            #if !os(watchOS)
             refreshPlayerDetail()
+            #endif
         }
     }
 
+    #if !os(watchOS)
     func refreshPlayerDetail() {
         accounts.indices.forEach { index in
             accounts[index].config.fetchPlayerDetail { playerDetail in
@@ -99,6 +102,7 @@ class ViewModel: NSObject, ObservableObject {
             }
         }
     }
+    #endif
 }
 
 extension ViewModel: WCSessionDelegate {
