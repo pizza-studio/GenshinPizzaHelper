@@ -35,7 +35,6 @@
 		BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
 		BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
 		BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
-		BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */; };
 		BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
 		BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
 		BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
@@ -50,28 +49,13 @@
 		BF7500D128DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
 		BF7500D228DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
 		BF7500D328DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
-		BF7500D428DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
-		BF7500D528DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
-		BF7500D628DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
-		BF7500D828DEA80700CDA64E /* CharacterDetailDatasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* CharacterDetailDatasView.swift */; };
+		BF7500D828DEA80700CDA64E /* EachCharacterDetailDatasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachCharacterDetailDatasView.swift */; };
 		BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E328DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
-		BF7500E628DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
-		BF7500E728DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
-		BF7500E828DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
-		BF7500E928DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
-		BF7500EA28DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
-		BF7500EB28DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */; };
-		BF7500ED28DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
-		BF7500EE28DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
-		BF7500EF28DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
-		BF7500F028DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
-		BF7500F128DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
-		BF7500F228DF298400CDA64E /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */; };
 		BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		BF7500F528E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
@@ -89,9 +73,6 @@
 		BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		BF75010B28E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
-		BF75010C28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
-		BF75010D28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
-		BF75010E28E1486F00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
@@ -101,7 +82,6 @@
 		BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
 		BF75011928E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */; };
 		BF75011A28E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */; };
-		BF75011B28E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */; };
 		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -124,9 +104,6 @@
 		BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		BFB101D628D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		BFB101D728D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
-		BFB101D828D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
-		BFB101D928D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
-		BFB101DA28D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		BFB101DC28D5F971000DC631 /* CurrentEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101DB28D5F971000DC631 /* CurrentEvents.swift */; };
 		BFB101DD28D5F971000DC631 /* CurrentEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101DB28D5F971000DC631 /* CurrentEvents.swift */; };
 		BFB101DE28D5F971000DC631 /* CurrentEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101DB28D5F971000DC631 /* CurrentEvents.swift */; };
@@ -157,7 +134,6 @@
 		BFCC068828C9BBC8003E4A54 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		BFCC068928C9BBC8003E4A54 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07928A26C0D00A64262 /* UserData.swift */; };
 		BFCC068A28C9BBC8003E4A54 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
-		BFCC068B28C9BBC8003E4A54 /* DisplayContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */; };
 		BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		BFCC068D28C9BBC8003E4A54 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		BFCC068E28C9BBC8003E4A54 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
@@ -277,6 +253,9 @@
 		EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EA42251628E2B963006D4578 /* LockScreenWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */; };
 		EA42251B28E2BBB8006D4578 /* LockScreenWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */; };
+		EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
+		EA46D0C628EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
+		EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
 		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
 		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EA56E08628A26C0D00A64262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07628A26C0D00A64262 /* Error.swift */; };
@@ -306,6 +285,12 @@
 		EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1028B6274E00C95A7E /* MaterialView.swift */; };
 		EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
+		EA63E2BB28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */; };
+		EA63E2BC28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */; };
+		EA63E2BD28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */; };
+		EA63E2BE28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */; };
+		EA63E2BF28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */; };
+		EA63E2C028EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */; };
 		EA6829DC28A2523800E57462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
 		EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA721E3C28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */; };
@@ -378,6 +363,7 @@
 		EAD7F03128D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7F02D28D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift */; };
 		EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
+		EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EAE3FCB828CE3E7B00174DA8 /* WatchWidgetExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EAE5C5B728CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
@@ -408,7 +394,6 @@
 		EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAE95CD828CE103D00D975CB /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
-		EAE95CD928CE103D00D975CB /* DisplayContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */; };
 		EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EAE95CDB28CE103D00D975CB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		EAE95CDC28CE104600D975CB /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
@@ -423,7 +408,6 @@
 		EAE95CF628CE11A100D975CB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAE95CF728CE11A100D975CB /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
 		EAE95CF828CE11A100D975CB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
-		EAE95CF928CE11A100D975CB /* DisplayContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */; };
 		EAE95CFA28CE11A100D975CB /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		EAE95CFC28CE11A500D975CB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07628A26C0D00A64262 /* Error.swift */; };
@@ -600,7 +584,6 @@
 		BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRecognizer.swift; sourceTree = "<group>"; };
 		BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBlockBackgroundView.swift; sourceTree = "<group>"; };
 		BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDisplayView.swift; sourceTree = "<group>"; };
-		BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayContentModel.swift; sourceTree = "<group>"; };
 		BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundsPreviewView.swift; sourceTree = "<group>"; };
 		BF70211B28B4B52500A6BBA9 /* ViewTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTools.swift; sourceTree = "<group>"; };
 		BF70212F28B50D7800A6BBA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -612,10 +595,8 @@
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
 		BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsModel.swift; sourceTree = "<group>"; };
-		BF7500D728DEA80700CDA64E /* CharacterDetailDatasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailDatasView.swift; sourceTree = "<group>"; };
+		BF7500D728DEA80700CDA64E /* EachCharacterDetailDatasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachCharacterDetailDatasView.swift; sourceTree = "<group>"; };
 		BF7500DE28DEC99400CDA64E /* NumberTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTools.swift; sourceTree = "<group>"; };
-		BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCharacterMapModel.swift; sourceTree = "<group>"; };
-		BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENCharacterLocModel.swift; sourceTree = "<group>"; };
 		BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDictionary.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
@@ -704,6 +685,7 @@
 		EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetWeeklyBossesCircular.swift; sourceTree = "<group>"; };
 		EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetProvider.swift; sourceTree = "<group>"; };
 		EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgetProvider.swift; sourceTree = "<group>"; };
+		EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailView.swift; sourceTree = "<group>"; };
 		EA56E07628A26C0D00A64262 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		EA56E07728A26C0D00A64262 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
@@ -719,6 +701,8 @@
 		EA56E08528A26C0D00A64262 /* TransformerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerData.swift; sourceTree = "<group>"; };
 		EA5F4D1028B6274E00C95A7E /* MaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProviders.swift; sourceTree = "<group>"; };
+		EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENCharacterMapModel.swift; sourceTree = "<group>"; };
+		EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENCharacterLocModel.swift; sourceTree = "<group>"; };
 		EA6829DB28A2523800E57462 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EA6960AA28E73BFE004B2CAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA6960AC28E73BFF004B2CAF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
@@ -757,6 +741,7 @@
 		EAD7F02928D01B8C0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidgetCircular.swift; sourceTree = "<group>"; };
 		EAD7F02D28D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidget.swift; sourceTree = "<group>"; };
 		EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
+		EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCorner.swift; sourceTree = "<group>"; };
 		EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGaugeStyle.swift; sourceTree = "<group>"; };
@@ -1030,7 +1015,7 @@
 				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
 				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
 				BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */,
-				BF7500D728DEA80700CDA64E /* CharacterDetailDatasView.swift */,
+				BF7500D728DEA80700CDA64E /* EachCharacterDetailDatasView.swift */,
 				BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */,
 				EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */,
 				BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */,
@@ -1103,6 +1088,17 @@
 				EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		EA46D0C328EA75FE00DFE603 /* EnkaAPIModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */,
+				EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */,
+				BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */,
+				EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */,
+			);
+			path = EnkaAPIModel;
 			sourceTree = "<group>";
 		};
 		EA56E07528A26C0D00A64262 /* FetchedModels */ = {
@@ -1179,6 +1175,7 @@
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BFB101D228D5C579000DC631 /* ToolsView.swift */,
+				EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */,
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 			);
@@ -1191,15 +1188,12 @@
 				EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */,
 				EAAF330E28A27AFE0018EFAB /* Account.swift */,
 				BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */,
-				BF70211628B3AB6300A6BBA9 /* DisplayContentModel.swift */,
-				BF7500E528DECD0B00CDA64E /* ENCharacterMapModel.swift */,
-				BF7500EC28DF298400CDA64E /* ENCharacterLocModel.swift */,
 				BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */,
 				EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */,
-				BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */,
 				EABE606028D9F6970018CAF6 /* MaterialChoices.swift */,
 				BF6C5274289E137200EA224F /* Servers.swift */,
 				EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */,
+				EA46D0C328EA75FE00DFE603 /* EnkaAPIModel */,
 				EA56E07528A26C0D00A64262 /* FetchedModels */,
 			);
 			path = Model;
@@ -1612,7 +1606,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEC41FF28B0994C0056D182 /* 周本.png in Resources */,
-				BF75011B28E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */,
 				BFCC06BC28CAFEA6003E4A54 /* InfoPlist.strings in Resources */,
 				EAEC41FC28B0994C0056D182 /* 树脂.png in Resources */,
 				EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */,
@@ -1699,12 +1692,9 @@
 				EA42251B28E2BBB8006D4578 /* LockScreenWidgetProvider.swift in Sources */,
 				EAE95CC028CE0F7800D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
 				EAE95CDB28CE103D00D975CB /* ViewModel.swift in Sources */,
-				BF7500EA28DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				EA36DFBE28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift in Sources */,
 				EAE95CD528CE0FDF00D975CB /* FeatureAPI.swift in Sources */,
 				EAB1110E28CF8C64009FDF07 /* Result.swift in Sources */,
-				BF7500D528DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
-				BFB101D928D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EAE95CC828CE0FD300D975CB /* UserData.swift in Sources */,
 				EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				EAD7F02A28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
@@ -1714,7 +1704,6 @@
 				EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAB110EA28CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
 				EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
-				BF75010D28E1486F00CDA64E /* HomeAPI.swift in Sources */,
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
 				EAE95D1028CE11D200D975CB /* md5.swift in Sources */,
@@ -1740,14 +1729,12 @@
 				EAE95CCD28CE0FD600D975CB /* TransformerInfo.swift in Sources */,
 				EAE95D1128CE11DB00D975CB /* StringLocalized.swift in Sources */,
 				EAD7F02428D017D20047A8F1 /* LockScreenLoopWidgetCircular.swift in Sources */,
-				EAE95CD928CE103D00D975CB /* DisplayContentModel.swift in Sources */,
 				EAE95CD028CE0FD600D975CB /* WeeklyBossesInfo.swift in Sources */,
 				EAE95D0E28CE11CB00D975CB /* NetworkReachability.swift in Sources */,
 				EAE95D0C28CE11C300D975CB /* IntentHandler.swift in Sources */,
 				EAD7F03128D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift in Sources */,
 				BF7500E328DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA7CD44628CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */,
-				BF7500F128DF298400CDA64E /* ENCharacterLocModel.swift in Sources */,
 				EAE95CDC28CE104600D975CB /* WidgetViewConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1765,7 +1752,6 @@
 				BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */,
 				BFCC069A28C9BBD3003E4A54 /* StoreManager.swift in Sources */,
 				BFCC066828C9B6A1003E4A54 /* NotificationController.swift in Sources */,
-				BF7500D428DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				BFCC06B028CA1984003E4A54 /* WatchGameInfoBlock.swift in Sources */,
 				BFCC068828C9BBC8003E4A54 /* ViewModel.swift in Sources */,
 				BFCC06A528C9BD9E003E4A54 /* AccountIntents.intentdefinition in Sources */,
@@ -1775,7 +1761,6 @@
 				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
 				BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */,
 				BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */,
-				BF75010C28E1486F00CDA64E /* HomeAPI.swift in Sources */,
 				BFCC068528C9BBC8003E4A54 /* ExpeditionInfo.swift in Sources */,
 				BFCC069628C9BBC8003E4A54 /* RecoveryTime.swift in Sources */,
 				BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */,
@@ -1791,7 +1776,6 @@
 				BFCC069528C9BBC8003E4A54 /* WeeklyBossesInfo.swift in Sources */,
 				BF7500F728E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
-				BF7500F028DF298400CDA64E /* ENCharacterLocModel.swift in Sources */,
 				EABE606928D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */,
 				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
 				BF85D78C28CF31FD003F3479 /* BasicInfos.swift in Sources */,
@@ -1800,17 +1784,14 @@
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
 				BFCC068728C9BBC8003E4A54 /* Error.swift in Sources */,
-				BFB101D828D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				BFCC068D28C9BBC8003E4A54 /* TransformerData.swift in Sources */,
 				BFCC069128C9BBC8003E4A54 /* ResinInfo.swift in Sources */,
 				BFCC068E28C9BBC8003E4A54 /* Result.swift in Sources */,
-				BFCC068B28C9BBC8003E4A54 /* DisplayContentModel.swift in Sources */,
 				BFCC069828C9BBCF003E4A54 /* HttpMethod.swift in Sources */,
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
 				BFCC069728C9BBCF003E4A54 /* FeatureAPI.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
 				BFCC068F28C9BBC8003E4A54 /* TransformerInfo.swift in Sources */,
-				BF7500E928DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */,
 				BFCC069228C9BBC8003E4A54 /* DailyTaskInfo.swift in Sources */,
 			);
@@ -1824,7 +1805,6 @@
 				EA196B0428B769640091FAE0 /* StringLocalized.swift in Sources */,
 				EA09A00E28A2B8700023B4AF /* Account.swift in Sources */,
 				EA09A01528A2B8B30023B4AF /* WeeklyBossesInfo.swift in Sources */,
-				BF7500EF28DF298400CDA64E /* ENCharacterLocModel.swift in Sources */,
 				EA09A00D28A2B8660023B4AF /* AccountConfigurationModel.swift in Sources */,
 				BFB101D728D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EA09A02228A2B8F80023B4AF /* TimeTools.swift in Sources */,
@@ -1833,9 +1813,9 @@
 				EA09A01D28A2B8E70023B4AF /* FeatureAPI.swift in Sources */,
 				EA79FDC728AB84F600B50D6F /* OptionalAccounts.swift in Sources */,
 				EA09A01228A2B8AA0023B4AF /* UserData.swift in Sources */,
+				EA63E2BD28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
 				BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
-				BF7500E828DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
 				EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */,
@@ -1859,6 +1839,8 @@
 				EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */,
 				BF7500D328DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
+				EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
+				EA63E2C028EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				BF75010B28E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				BF85D78B28CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
@@ -1875,6 +1857,7 @@
 				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA56E09D28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
 				BF85D78A28CF31FD003F3479 /* BasicInfos.swift in Sources */,
+				EA46D0C628EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
 				BF3F98C228EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EA7CD43D28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
@@ -1913,6 +1896,7 @@
 				EAD7F02B28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
 				BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */,
+				EA63E2BC28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */,
@@ -1924,7 +1908,6 @@
 				EA56E09128A26C0D00A64262 /* ResinInfo.swift in Sources */,
 				EA56E09528A26C0D00A64262 /* WeeklyBossesInfo.swift in Sources */,
 				EAAF331028A27B080018EFAB /* Account.swift in Sources */,
-				BF7500EE28DF298400CDA64E /* ENCharacterLocModel.swift in Sources */,
 				EA56E09B28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BF6C526B289E116700EA224F /* MainWedgetProvider.swift in Sources */,
 				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
@@ -1936,9 +1919,9 @@
 				EAB1110028CF8422009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
 				EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */,
 				EA56E08B28A26C0D00A64262 /* Result.swift in Sources */,
-				BF7500E728DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				EAB110FF28CF8422009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
+				EA63E2BF28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
 				BFB101D628D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
@@ -1976,11 +1959,10 @@
 			files = (
 				BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */,
 				BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */,
-				BF7500D828DEA80700CDA64E /* CharacterDetailDatasView.swift in Sources */,
+				BF7500D828DEA80700CDA64E /* EachCharacterDetailDatasView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EA56E09C28A26C0D00A64262 /* RecoveryTime.swift in Sources */,
 				BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */,
-				BF7500E628DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */,
 				BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */,
 				BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */,
@@ -2008,7 +1990,6 @@
 				EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */,
 				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
 				BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */,
-				BF7500ED28DF298400CDA64E /* ENCharacterLocModel.swift in Sources */,
 				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA196B0228B769340091FAE0 /* StringLocalized.swift in Sources */,
 				EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */,
@@ -2027,6 +2008,7 @@
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
 				BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */,
+				EA63E2BB28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
 				BF7500D128DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
@@ -2034,6 +2016,7 @@
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				BF75010228E1469600CDA64E /* NewestVersionModel.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
+				EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
 				BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
@@ -2041,13 +2024,13 @@
 				EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */,
 				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
-				BF70211728B3AB6300A6BBA9 /* DisplayContentModel.swift in Sources */,
 				BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */,
 				BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */,
 				EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
+				EA63E2BE28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
@@ -2056,6 +2039,7 @@
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EA56E08628A26C0D00A64262 /* Error.swift in Sources */,
+				EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
 				BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */,
@@ -2085,7 +2069,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE95CF928CE11A100D975CB /* DisplayContentModel.swift in Sources */,
 				EAE95D0828CE11A900D975CB /* TransformerData.swift in Sources */,
 				EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
 				BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */,
@@ -2095,7 +2078,6 @@
 				EAE95CFD28CE11A500D975CB /* RequestResult.swift in Sources */,
 				EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */,
 				BFB101E128D5F971000DC631 /* CurrentEvents.swift in Sources */,
-				BF7500F228DF298400CDA64E /* ENCharacterLocModel.swift in Sources */,
 				EAE95CFC28CE11A500D975CB /* Error.swift in Sources */,
 				EAE95CF828CE11A100D975CB /* ViewModel.swift in Sources */,
 				EAE95CFE28CE11A500D975CB /* Result.swift in Sources */,
@@ -2108,16 +2090,12 @@
 				EAE95CF528CE117B00D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
 				EAB1111028CF8C6A009FDF07 /* BasicInfos.swift in Sources */,
 				EAE95D0A28CE11AD00D975CB /* FeatureAPI.swift in Sources */,
-				BF7500D628DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				EAE95CF028CE112B00D975CB /* AccountIntents.intentdefinition in Sources */,
 				EAE95CF728CE11A100D975CB /* Account.swift in Sources */,
 				EAE95D0028CE11A500D975CB /* UserData.swift in Sources */,
 				EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */,
-				BF75010E28E1486F00CDA64E /* HomeAPI.swift in Sources */,
-				BFB101DA28D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EAE95D0328CE11A700D975CB /* RecoveryTime.swift in Sources */,
 				EAE95CF228CE115D00D975CB /* WidgetViewConfiguration.swift in Sources */,
-				BF7500EB28DECD0B00CDA64E /* ENCharacterMapModel.swift in Sources */,
 				EAE95D0728CE11A700D975CB /* HomeCoinInfo.swift in Sources */,
 				BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE95D0D28CE11CA00D975CB /* NetworkReachability.swift in Sources */,
@@ -2209,7 +2187,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WatchWidgetExtensionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchWidgetExtension/Info.plist;
@@ -2221,7 +2199,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.WatchWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -2241,7 +2219,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WatchWidgetExtensionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchWidgetExtension/Info.plist;
@@ -2253,7 +2231,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.WatchWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -2274,7 +2252,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WatchHelper/WatchHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = WatchHelper_WatchKit_Extension;
@@ -2285,7 +2263,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "原神披萨小助手";
 				SDKROOT = watchos;
@@ -2308,7 +2286,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WatchHelper/WatchHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = WatchHelper_WatchKit_Extension;
@@ -2319,7 +2297,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "原神披萨小助手";
 				SDKROOT = watchos;
@@ -2338,7 +2316,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WatchHelper WatchKit Extension/WatchHelper WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchHelper WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_PREVIEWS = YES;
@@ -2352,7 +2330,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -2370,7 +2348,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WatchHelper WatchKit Extension/WatchHelper WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchHelper WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_PREVIEWS = YES;
@@ -2384,7 +2362,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -2401,7 +2379,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = AccountIntent/AccountIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AccountIntent/Info.plist;
@@ -2413,7 +2391,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.AccountIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2429,7 +2407,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = AccountIntent/AccountIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AccountIntent/Info.plist;
@@ -2441,7 +2419,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.AccountIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2459,7 +2437,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ResinStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
@@ -2470,7 +2448,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2489,7 +2467,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ResinStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
@@ -2500,7 +2478,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2638,7 +2616,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_PREVIEWS = YES;
@@ -2657,7 +2635,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "原神披萨小助手";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2677,7 +2655,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_PREVIEWS = YES;
@@ -2696,7 +2674,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "原神披萨小助手";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2714,7 +2692,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WatchIntent/WatchIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchIntent/Info.plist;
@@ -2726,7 +2704,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension.WatchIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -2744,7 +2722,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WatchIntent/WatchIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1008;
+				CURRENT_PROJECT_VERSION = 1034;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchIntent/Info.plist;
@@ -2756,7 +2734,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.4.4;
+				MARKETING_VERSION = 2.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension.WatchIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

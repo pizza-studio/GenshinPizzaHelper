@@ -19,15 +19,17 @@ class ViewModel: NSObject, ObservableObject {
     @Published var accounts: [Account] = []
 
     @Published var showDetailOfAccount: Account?
+    @Published var showCharacterDetailOfAccount: Account?
+    @Published var showingCharacterName: String?
     
     let accountConfigurationModel: AccountConfigurationModel = .shared
 
-    var session: WCSession
+//    var session: WCSession
     
     init(session: WCSession = .default) {
-        self.session = session
+//        self.session = session
         super.init()
-        self.session.delegate = self
+//        self.session.delegate = self
 //        session.activate()
         self.fetchAccount()
         NotificationCenter.default.addObserver(self,
@@ -86,8 +88,21 @@ class ViewModel: NSObject, ObservableObject {
             accounts[index].config.fetchBasicInfo { basicInfo in
                 self.accounts[index].basicInfo = basicInfo
             }
+            #if !os(watchOS)
+            refreshPlayerDetail()
+            #endif
         }
     }
+
+    #if !os(watchOS)
+    func refreshPlayerDetail() {
+        accounts.indices.forEach { index in
+            accounts[index].config.fetchPlayerDetail { playerDetail in
+                self.accounts[index].playerDetail = playerDetail
+            }
+        }
+    }
+    #endif
 }
 
 extension ViewModel: WCSessionDelegate {

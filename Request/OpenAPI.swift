@@ -48,7 +48,7 @@ extension API {
         /// - Parameters:
         ///     - uid: 用户UID
         ///     - completion: 数据
-        static func fetchPlayerDatas (
+        private static func fetchPlayerDatas (
             _ uid: String,
             completion: @escaping (
                 PlayerDetailsFetchResult
@@ -59,7 +59,7 @@ extension API {
             let url = URL(string: urlStr)!
 
             // 请求
-            HttpMethod<PlayerDetails>
+            HttpMethod<PlayerDetailFetchModel>
                 .openRequest(
                     .get,
                     url
@@ -79,6 +79,55 @@ extension API {
                         }
                     }
                 }
+        }
+
+
+        /// 获取游戏内玩家详细信息
+        /// - Parameters:
+        ///     - uid: 用户UID
+        ///     - completion: 数据
+        static func fetchPlayerDetail (
+            _ uid: String,
+            completion: @escaping (
+                Result<PlayerDetail, PlayerDetail.PlayerDetailError>
+            ) -> ()
+        ) {
+            var playerDetailModel: PlayerDetailFetchModel?
+            var charLoc: ENCharacterLoc?
+            var charMap: ENCharacterMap?
+            let group = DispatchGroup()
+            group.enter()
+            API.HomeAPIs.fetchENCharacterLocDatas {
+                charLoc = $0
+                group.leave()
+            }
+            group.enter()
+            API.HomeAPIs.fetchENCharacterDetailDatas {
+                charMap = $0
+                group.leave()
+            }
+            group.enter()
+            fetchPlayerDatas(uid) { result in
+                switch result {
+                case .success(let model):
+                    playerDetailModel = model
+                case .failure(_):
+                    break
+                }
+                group.leave()
+            }
+            group.notify(queue: .main) {
+                guard let playerDetailModel = playerDetailModel else {
+                    completion(.failure(.failToGetCharacterData)); return
+                }
+                guard let charLoc = charLoc else {
+                    completion(.failure(.failToGetLocalizedDictionary)); return
+                }
+                guard let charMap = charMap else {
+                    completion(.failure(.failToGetCharacterDictionary)); return
+                }
+                completion(.success(.init(playerDetailFetchModel: playerDetailModel, localizedDictionary: charLoc.getLocalizedDictionary(), characterMap: charMap)))
+            }
         }
 
         /// 获取原神辞典数据

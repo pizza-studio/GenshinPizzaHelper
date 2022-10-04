@@ -13,10 +13,12 @@ struct Account: Equatable, Hashable {
     // 树脂等信息
     var result: FetchResult?
     var background: WidgetBackground = WidgetBackground.randomNamecardBackground
-
     var basicInfo: BasicInfos?
-
     var fetchComplete: Bool = false
+
+    #if !os(watchOS)
+    var playerDetail: PlayerDetail?
+    #endif
 
     init(config: AccountConfiguration) {
         self.config = config
@@ -53,4 +55,19 @@ extension AccountConfiguration {
             }
         }
     }
+
+#if !os(watchOS)
+    func fetchPlayerDetail(_ completion: @escaping (PlayerDetail) -> ()) {
+        guard let uid = self.uid else { return }
+        API.OpenAPIs.fetchPlayerDetail(uid) { result in
+            switch result {
+            case .success(let data):
+                completion(data)
+            case .failure(_):
+                print("fetching player detail error")
+                break
+            }
+        }
+    }
+#endif
 }
