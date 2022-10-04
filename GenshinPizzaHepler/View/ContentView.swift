@@ -52,7 +52,7 @@ struct ContentView: View {
                         Label("概览", systemImage: "list.bullet")
                     }
                 // TODO: Remove debug check when ready
-                #if DEBUG
+//                #if DEBUG
                 if #available(iOS 15.0, *) {
                     ToolsView()
                         .tag(1)
@@ -61,7 +61,7 @@ struct ContentView: View {
                             Label("工具", systemImage: "shippingbox")
                         }
                 }
-                #endif
+//                #endif
                 SettingsView(storeManager: storeManager)
                     .tag(2)
                     .environmentObject(viewModel)
