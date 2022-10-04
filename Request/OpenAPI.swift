@@ -128,6 +128,7 @@ extension API {
                 }
                 completion(.success(.init(playerDetailFetchModel: playerDetailModel, localizedDictionary: charLoc.getLocalizedDictionary(), characterMap: charMap)))
             }
+        }
 
         /// 获取原神辞典数据
         /// - Parameters:

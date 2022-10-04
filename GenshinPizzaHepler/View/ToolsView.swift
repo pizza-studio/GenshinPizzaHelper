@@ -174,7 +174,7 @@ struct ToolsView: View {
                         Text("原神中英日词典")
                     }
                     Text("原神计算器")
-                    NavigationLink(destination: WebBroswerView(url: getAccountTeyvatMapURL(account: accounts[safeIndex: selectedAccount])).navigationTitle("提瓦特大地图").navigationBarTitleDisplayMode(.inline)) {
+                    NavigationLink(destination: WebBroswerView(url: getAccountTeyvatMapURL(account: account)).navigationTitle("提瓦特大地图").navigationBarTitleDisplayMode(.inline)) {
                         Text("提瓦特大地图")
                     }
                 }
@@ -237,7 +237,6 @@ struct ToolsView: View {
         Text("")
     }
 
-
     @ViewBuilder
     func selectAccountManuButton() -> some View {
         if accounts.count > 1 {
@@ -245,6 +244,14 @@ struct ToolsView: View {
                 ForEach(accounts, id:\.config.id) { account in
                     Button(account.config.name ?? "Name Error") {
                         showingAccountUUIDString = account.config.uuid!.uuidString
+                    }
+                }
+            } label: {
+                Image(systemName: "arrow.left.arrow.right.circle")
+                    .font(.title2)
+            }
+        }
+    }
 
     func getAccountTeyvatMapURL(account: Account?) -> String {
         guard let account = account else {
@@ -257,46 +264,6 @@ struct ToolsView: View {
             return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
         }
     }
-
-    func getAccountItemIndex(item: Account) -> Int {
-        return accounts.firstIndex { currentItem in
-            return currentItem.config.id == item.config.id
-        } ?? 0
-    }
-
-    private func fetchSummaryData() -> Void {
-        DispatchQueue.global(qos: .userInteractive).async {
-            if !viewModel.accounts.isEmpty {
-                API.Features.fetchBasicInfos(region: accounts[selectedAccount].config.server.region, serverID: accounts[selectedAccount].config.server.id, uid: accounts[selectedAccount].config.uid ?? "", cookie: accounts[selectedAccount].config.cookie ?? "") { result in
-                    switch result {
-                    case .success(let data) :
-                        accountCharactersInfo = data
-                    case .failure(_):
-                        break
-                    }
-                }
-            } else {
-                print("accounts is empty")
-            }
-        }
-        DispatchQueue.global(qos: .userInteractive).async {
-            if !viewModel.accounts.isEmpty {
-                API.OpenAPIs.fetchPlayerDatas(accounts[selectedAccount].config.uid ?? "0") { result in
-                    switch result {
-                    case .success(let data):
-                        playerDetailDatas = data
-                    case .failure(_):
-                        break
-                    }
-                }
-            } label: {
-                Image(systemName: "arrow.left.arrow.right.circle")
-                    .font(.title2)
-            }
-        } else {
-            EmptyView()
-        }
-    }
 }
 
 private enum SheetTypes: Identifiable {
@@ -306,15 +273,4 @@ private enum SheetTypes: Identifiable {
 
     case spiralAbyss
     case characters
-}
-
-// 检查Array的index的范围，超出范围返回空值
-extension Array {
-    public subscript(safeIndex index: Int) -> Element? {
-        guard index >= 0, index < endIndex else {
-            return nil
-        }
-
-        return self[index]
-    }
 }
