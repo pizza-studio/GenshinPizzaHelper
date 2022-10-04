@@ -93,7 +93,6 @@
 		BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
 		BF75011928E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */; };
 		BF75011A28E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */; };
-		BF75011B28E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */; };
 		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -1614,7 +1613,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEC41FF28B0994C0056D182 /* 周本.png in Resources */,
-				BF75011B28E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */,
 				BFCC06BC28CAFEA6003E4A54 /* InfoPlist.strings in Resources */,
 				EAEC41FC28B0994C0056D182 /* 树脂.png in Resources */,
 				EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */,

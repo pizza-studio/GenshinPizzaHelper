@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+@available(iOS 15, *)
 struct CharacterDetailView: View {
     @EnvironmentObject var viewModel: ViewModel
     var account: Account
     var playerDetail: PlayerDetail { account.playerDetail! }
     @State var showingCharacterName: String
+    var avatar: PlayerDetail.Avatar {
+        account.playerDetail!.avatars.first(where: { avatar in
+            avatar.name == showingCharacterName
+        })!
+    }
 
     var body: some View {
         TabView(selection: $showingCharacterName) {
@@ -21,9 +27,16 @@ struct CharacterDetailView: View {
         }
         .tabViewStyle(.page)
         .onTapGesture {
-            viewModel.showCharacterDetailOfAccount = nil
+            withAnimation(.easeInOut) {
+                viewModel.showCharacterDetailOfAccount = nil
+            }
         }
-        .background(Color.yellow.ignoresSafeArea())
+        .background(
+            EnkaWebIcon(iconString: avatar.namecardIconString)
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+                .overlay(.thinMaterial)
+        )
     }
 }
 

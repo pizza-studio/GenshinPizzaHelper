@@ -74,10 +74,21 @@ struct PlayerDetail {
         /// 角色属性
         let fightPropMap: FightPropMap
 
+        /// 英文名ID（用于图标）
+        private var nameID: String { iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")}
         /// 正脸图
         let iconString: String
         /// 侧脸图
         let sideIconString: String
+        /// 名片
+        var namecardIconString: String {
+            // 主角没有对应名片
+            if nameID == "PlayerGirl" || nameID == "PlayerBoy" {
+                return "UI_NameCardPic_Bp2_P"
+            } else {
+                return "UI_NameCardPic_\(nameID)_P"
+            }
+        }
 
         let quality: Quality
 

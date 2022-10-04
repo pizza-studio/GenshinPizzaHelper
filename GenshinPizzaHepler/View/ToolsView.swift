@@ -18,6 +18,8 @@ struct ToolsView: View {
         }
     }
 
+    var showingCharacterDetail: Bool { viewModel.showCharacterDetailOfAccount != nil }
+
     @State private var sheetType: SheetTypes? = nil
 
     var body: some View {
@@ -38,7 +40,7 @@ struct ToolsView: View {
                         Section {
                             VStack {
                                 HStack(spacing: 10) {
-                                    WebImage(urlStr: "http://ophelper.top/resource/\(playerDetail.basicInfo.profilePictureAvatarIconString).png")
+                                    HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
                                         .clipShape(Circle())
                                     VStack(alignment: .leading) {
                                         Text(playerDetail.basicInfo.nickname)
@@ -76,11 +78,14 @@ struct ToolsView: View {
                                                 VStack {
                                                     EnkaWebIcon(iconString: avatar.iconString)
                                                         .frame(width: 75, height: 75)
-                                                        .background(avatar.quality != .orange ? Color.purple : Color.orange)
+                                                        .background(EnkaWebIcon(iconString: avatar.namecardIconString)
+                                                            .scaledToFill())
                                                         .clipShape(Circle())
                                                         .onTapGesture {
-                                                            viewModel.showingCharacterName = avatar.name
-                                                            viewModel.showCharacterDetailOfAccount = account!
+                                                            withAnimation {
+                                                                viewModel.showingCharacterName = avatar.name
+                                                                viewModel.showCharacterDetailOfAccount = account!
+                                                            }
                                                         }
                                                 }
                                             }
@@ -203,18 +208,6 @@ struct ToolsView: View {
                 Section(header: Text("帐号基本信息"), footer: Text(playerDetail.basicInfo.signature).font(.footnote)) {
                     InfoPreviewer(title: "世界等级", content: "\(playerDetail.basicInfo.worldLevel)")
                     InfoPreviewer(title: "成就数量", content: "\(basicInfo.stats.achievementNumber)")
-                }
-                Section {
-                    if !playerDetail.avatars.isEmpty {
-                        TabView {
-                            ForEach(playerDetail.avatars, id:\.name) { avatar in
-                                EachCharacterDetailDatasView(avatar: avatar)
-                            }
-                        }
-                        .tabViewStyle(.page)
-                        .indexViewStyle(.page(backgroundDisplayMode: .always))
-                        .frame(height: 500)
-                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

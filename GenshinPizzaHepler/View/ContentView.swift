@@ -74,7 +74,10 @@ struct ContentView: View {
                 AccountDisplayView(account: showDetailOfAccount, animation: animation)
             }
             if let account = viewModel.showCharacterDetailOfAccount {
-                CharacterDetailView(account: account, showingCharacterName: viewModel.showingCharacterName!)
+                if #available(iOS 15.0, *) {
+                    CharacterDetailView(account: account, showingCharacterName: viewModel.showingCharacterName!)
+                        .environment(\.colorScheme, .dark)
+                }
             }
         }
         .onChange(of: scenePhase, perform: { newPhase in

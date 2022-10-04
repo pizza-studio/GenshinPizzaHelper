@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15, *)
 struct EachCharacterDetailDatasView: View {
     var avatar: PlayerDetail.Avatar
 
@@ -19,7 +20,8 @@ struct EachCharacterDetailDatasView: View {
                 } icon: {
                     EnkaWebIcon(iconString: avatar.iconString)
                         .frame(width: 75, height: 75)
-                        .background(avatar.quality != .orange ? Color.purple : Color.orange)
+                        .background(EnkaWebIcon(iconString: avatar.namecardIconString)
+                            .scaledToFill())
                         .clipShape(Circle())
                 }
                 Spacer()
