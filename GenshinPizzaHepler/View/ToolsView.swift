@@ -81,6 +81,7 @@ struct ToolsView: View {
                                                         .background(EnkaWebIcon(iconString: avatar.namecardIconString)
                                                             .scaledToFill())
                                                         .clipShape(Circle())
+                                                        .contentShape(Circle())
                                                         .onTapGesture {
                                                             withAnimation {
                                                                 viewModel.showingCharacterName = avatar.name
@@ -152,6 +153,10 @@ struct ToolsView: View {
                             HStack {
                                 Spacer()
                                 ProgressView()
+                                Spacer()
+                            }
+                            HStack {
+                                Text(account?.config.name ?? "").foregroundColor(.secondary)
                                 Spacer()
                             }
                         }
