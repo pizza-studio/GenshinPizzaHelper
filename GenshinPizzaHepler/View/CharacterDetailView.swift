@@ -27,9 +27,7 @@ struct CharacterDetailView: View {
         }
         .tabViewStyle(.page)
         .onTapGesture {
-            withAnimation(.easeInOut) {
-                viewModel.showCharacterDetailOfAccount = nil
-            }
+            closeView()
         }
         .background(
             EnkaWebIcon(iconString: avatar.namecardIconString)
@@ -37,6 +35,13 @@ struct CharacterDetailView: View {
                 .ignoresSafeArea(.all)
                 .overlay(.thinMaterial)
         )
+    }
+
+    func closeView() {
+        withAnimation(.easeInOut) {
+            viewModel.showCharacterDetailOfAccount = nil
+            viewModel.showingCharacterName = nil
+        }
     }
 }
 
