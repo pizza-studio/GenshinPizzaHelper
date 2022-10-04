@@ -186,7 +186,7 @@ struct ToolsView: View {
 
             }
             .refreshable {
-                viewModel.refreshData()
+                viewModel.refreshPlayerDetail()
             }
             .onAppear {
                 if !accounts.isEmpty && showingAccountUUIDString == nil {

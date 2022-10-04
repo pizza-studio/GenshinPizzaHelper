@@ -16,17 +16,21 @@ struct EachCharacterDetailDatasView: View {
             HStack(alignment: .center) {
                 HStack {
                     EnkaWebIcon(iconString: avatar.iconString)
-                        .frame(width: 80, height: 80)
+                        .frame(width: 85, height: 85)
                         .background(EnkaWebIcon(iconString: avatar.namecardIconString)
                             .scaledToFill())
                         .clipShape(Circle())
                         .padding(.trailing, 3)
                     VStack(alignment: .leading) {
-                        Text(avatar.name)
+                        let name = avatar.name.count > 10 ? avatar.name.replacingOccurrences(of: " ", with: "\n") : avatar.name
+                        Text(name)
                             .font(.title2)
                             .bold()
                             .padding(.bottom, 2)
-                        Text("等级：\(avatar.level)")
+                            .lineLimit(2)
+                            .fixedSize()
+                        Text("等级：\(avatar.level)").font(.footnote)
+                        Text("命之座：\(avatar.talentCount)命").font(.footnote)
                     }
                 }
                 Spacer()
@@ -46,15 +50,16 @@ struct EachCharacterDetailDatasView: View {
             // Weapon
             HStack {
                 let weapon = avatar.weapon
-                let l: CGFloat = 75
+                let l: CGFloat = 85
                 let r = l/2
-                let squareSideLength = sqrt(2) * Double(r)
+                let squareSideLength = sqrt(2) * Double(r) * 0.9
                 ZStack {
                     EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
                         .scaledToFit()
                     EnkaWebIcon(iconString: weapon.awakenedIconString)
                         .scaledToFit()
                         .frame(width: squareSideLength, height: squareSideLength)
+
                 }
                 .clipShape(Circle())
                 .frame(width: l, height: l)
@@ -71,10 +76,12 @@ struct EachCharacterDetailDatasView: View {
                             )
                     }
                     .padding(.bottom, 0.5)
+                    InfoPreviewer(title: "等级", content: "\(avatar.weapon.level)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                     InfoPreviewer(title: weapon.mainAttribute.name, content: "\(avatar.weapon.mainAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                     InfoPreviewer(title: weapon.subAttribute.name, content: "\(avatar.weapon.subAttribute.valueString)", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
                 }
             }
+            Divider()
 
             // Other prob
             Group {

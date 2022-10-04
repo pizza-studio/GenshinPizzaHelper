@@ -88,6 +88,12 @@ class ViewModel: NSObject, ObservableObject {
             accounts[index].config.fetchBasicInfo { basicInfo in
                 self.accounts[index].basicInfo = basicInfo
             }
+            refreshPlayerDetail()
+        }
+    }
+
+    func refreshPlayerDetail() {
+        accounts.indices.forEach { index in
             accounts[index].config.fetchPlayerDetail { playerDetail in
                 self.accounts[index].playerDetail = playerDetail
             }
