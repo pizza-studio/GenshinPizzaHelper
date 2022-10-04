@@ -184,17 +184,40 @@ struct EachCharacterDetailDatasView: View {
             }
             .padding(.trailing, 3)
             Spacer()
-            HStack {
-                ForEach(avatar.skills, id: \.iconString) { skill in
-                    VStack(spacing: 0) {
-                        EnkaWebIcon(iconString: skill.iconString)
-                            .padding(.bottom, 0)
-                        Text("\(skill.level)")
+            if #available(iOS 16, *) {
+                Grid(verticalSpacing: 1) {
+                    GridRow {
+                        ForEach(avatar.skills, id: \.iconString) { skill in
+                            VStack(spacing: 0) {
+                                EnkaWebIcon(iconString: skill.iconString)
+                                    .padding(.bottom, 0)
+                            }
+                        }
+                    }
+                    GridRow {
+                        ForEach(avatar.skills, id: \.iconString) { skill in
+                            VStack(spacing: 0) {
+                                Text("\(skill.level)")
+                            }
+                        }
                     }
                 }
+                .frame(height: 60)
+                .padding(.bottom, 10)
+            } else {
+                HStack {
+                    ForEach(avatar.skills, id: \.iconString) { skill in
+                        VStack(spacing: 0) {
+                            EnkaWebIcon(iconString: skill.iconString)
+                                .padding(.bottom, 0)
+                            Text("\(skill.level)")
+                        }
+                    }
+                }
+                .frame(height: 60)
+                .padding(.bottom, 10)
             }
-            .frame(height: 60)
-            .padding(.bottom, 10)
+
         }
     }
 

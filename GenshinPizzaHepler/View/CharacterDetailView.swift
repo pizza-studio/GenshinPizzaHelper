@@ -37,9 +37,13 @@ struct CharacterDetailView: View {
                 .ignoresSafeArea(.all)
                 .overlay(.thinMaterial)
         )
+        .onChange(of: showingCharacterName) { _ in
+            simpleTaptic(type: .selection)
+        }
     }
 
     func closeView() {
+        simpleTaptic(type: .light)
         withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
             viewModel.showCharacterDetailOfAccount = nil
             viewModel.showingCharacterName = nil
