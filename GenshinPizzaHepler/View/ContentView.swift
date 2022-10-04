@@ -132,7 +132,7 @@ struct ContentView: View {
     func checkNewestVersion() {
         DispatchQueue.global(qos: .default).async {
             switch AppConfig.appConfiguration {
-            case .Debug, .AppStore:
+            case .AppStore:
                 API.HomeAPIs.fetchNewestVersion(isBeta: false) { result in
                     newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {
@@ -162,7 +162,7 @@ struct ContentView: View {
                         }
                     }
                 }
-            case .TestFlight:
+            case .Debug, .TestFlight:
                 API.HomeAPIs.fetchNewestVersion(isBeta: true) { result in
                     newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {

@@ -57,7 +57,7 @@ struct CurrentEventNavigator: View {
             Text(" \(getLocalizedContent(event.name))")
             Spacer()
             if getRemainDays(event.endAt) == nil {
-                Text("Error")
+                Text(event.endAt)
             }
             else if getRemainDays(event.endAt)!.day! > 0 {
                 HStack(spacing: 0) {
@@ -67,11 +67,6 @@ struct CurrentEventNavigator: View {
             else {
                 HStack(spacing: 0) {
                     Text("剩余 \(getRemainDays(event.endAt)!.hour!)小时")
-//                        .onAppear {
-//                            if getRemainDays(event.endAt)!.hour! < 0 {
-//                                getCurrentEvent()
-//                            }
-//                        }
                 }
             }
         }
