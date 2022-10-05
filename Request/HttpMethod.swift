@@ -252,7 +252,7 @@ struct HttpMethod<T: Codable> {
             return sessionConfiguration
         }
 
-        func get_ds_token(uid: String, server_id: String) -> String {
+        func get_ds_token(scheduleType: String, uid: String, server_id: String) -> String {
             let s: String
             switch region {
             case .cn:
@@ -262,7 +262,7 @@ struct HttpMethod<T: Codable> {
             }
             let t = String(Int(Date().timeIntervalSince1970))
             let r = String(Int.random(in: 100000..<200000))
-            let q = "role_id=\(uid)&server=\(server_id)"
+            let q = "role_id=\(uid)&schedule_type=\(scheduleType)&server=\(server_id)"
             let c = "salt=\(s)&t=\(t)&r=\(r)&b=&q=\(q)".md5
             return t + "," + r + "," + c
         }
@@ -298,9 +298,11 @@ struct HttpMethod<T: Codable> {
                 var request = URLRequest(url: url.url!)
                 print(url.url!)
                 print(cookie)
+                let dsToken = get_ds_token(scheduleType: scheduleType, uid: uid, server_id: serverID)
+                print(dsToken)
                 // 设置请求头
                 request.allHTTPHeaderFields = [
-                    "DS": get_ds_token(uid: uid, server_id: serverID),
+                    "DS": dsToken,
                     "x-rpc-app_version": appVersion,
                     "User-Agent": userAgent,
                     "x-rpc-client_type": clientType,
