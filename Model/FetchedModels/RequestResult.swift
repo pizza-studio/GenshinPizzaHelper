@@ -19,3 +19,9 @@ struct BasicInfoRequestResult: Codable {
     let message: String
     let retcode: Int
 }
+
+struct SpiralAbyssDetailRequestResult: Codable {
+    let data: SpiralAbyssDetail?
+    let message: String
+    let retcode: Int
+}
