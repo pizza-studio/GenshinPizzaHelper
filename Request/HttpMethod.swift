@@ -506,6 +506,7 @@ struct HttpMethod<T: Codable> {
                     "Accept-Encoding": "gzip, deflate, br",
                     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
                     "Accept": "application/json, text/plain, */*",
+                    "Connection": "keep-alive",
                 ]
                 // http方法
                 switch method {
