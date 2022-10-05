@@ -66,4 +66,30 @@ enum MaterialWeekday {
             return .sunday
         }
     }
+
+    func tomorrow() -> Self {
+        switch self {
+        case .mondayAndThursday:
+            return .tuesdayAndFriday
+        case .tuesdayAndFriday:
+            return .wednesdayAndSaturday
+        case .wednesdayAndSaturday:
+            return .mondayAndThursday
+        case .sunday:
+            return .mondayAndThursday
+        }
+    }
+
+    func describe() -> String {
+        switch self {
+        case .mondayAndThursday:
+            return "星期一 & 星期四"
+        case .tuesdayAndFriday:
+            return "星期二 & 星期五"
+        case .wednesdayAndSaturday:
+            return "星期三 & 星期六"
+        case .sunday:
+            return "星期日"
+        }
+    }
 }
