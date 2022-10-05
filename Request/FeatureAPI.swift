@@ -275,6 +275,7 @@ extension API {
             serverID: String,
             uid: String,
             cookie: String,
+            scheduleType: String,
             completion: @escaping (
                 SpiralAbyssDetailFetchResult
             ) -> ()
@@ -288,13 +289,14 @@ extension API {
 
             // 请求
             HttpMethod<SpiralAbyssDetailRequestResult>
-                .commonRequest(
+                .spiralAbyssRequest(
                     .get,
                     urlStr,
                     region,
                     serverID,
                     uid,
-                    cookie
+                    cookie,
+                    scheduleType
                 ) { result in
                     switch result {
 

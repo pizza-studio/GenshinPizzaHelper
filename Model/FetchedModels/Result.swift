@@ -10,8 +10,8 @@ import Foundation
 typealias FetchResult = Result<UserData, FetchError>
 typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
 typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
-#if !os(watchOS)
 typealias SpiralAbyssDetailFetchResult = Result<SpiralAbyssDetail, FetchError>
+#if !os(watchOS)
 typealias PlayerDetailsFetchResult = Result<PlayerDetailFetchModel, FetchError>
 typealias PlayerDetailResult = Result<PlayerDetail, PlayerDetail.PlayerDetailError>
 #endif

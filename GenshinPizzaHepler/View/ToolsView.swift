@@ -157,6 +157,10 @@ struct ToolsView: View {
                 }
                 .padding(.horizontal)
                 .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+                .onTapGesture {
+                    simpleTaptic(type: .medium)
+                    sheetType = .spiralAbyss
+                }
 
                 VStack {
                     VStack {
@@ -221,7 +225,17 @@ struct ToolsView: View {
 
     @ViewBuilder
     func spiralAbyssSheetView() -> some View {
-        Text("")
+        Text("Spiral Abyss")
+            .onAppear {
+                API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
+                    switch result {
+                    case .success(let resultData):
+                        print("Success")
+                    case .failure(_):
+                        print("Fauk")
+                    }
+                }
+            }
     }
 
     @ViewBuilder
