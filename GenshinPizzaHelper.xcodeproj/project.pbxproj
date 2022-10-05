@@ -114,6 +114,7 @@
 		BFB101E928D6C755000DC631 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
 		BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101EF28D7262A000DC631 /* ThanksView.swift */; };
 		BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101F128D85B28000DC631 /* AllEventsView.swift */; };
+		BFBDD64D28ED6FF80022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -618,6 +619,7 @@
 		BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEventNavigator.swift; sourceTree = "<group>"; };
 		BFB101EF28D7262A000DC631 /* ThanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksView.swift; sourceTree = "<group>"; };
 		BFB101F128D85B28000DC631 /* AllEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsView.swift; sourceTree = "<group>"; };
+		BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralAbyssDetail.swift; sourceTree = "<group>"; };
 		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxySettingsView.swift; sourceTree = "<group>"; };
@@ -1111,6 +1113,7 @@
 				EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */,
 				EA56E07728A26C0D00A64262 /* RequestResult.swift */,
 				EA56E07828A26C0D00A64262 /* Result.swift */,
+				BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */,
 				EA56E07928A26C0D00A64262 /* UserData.swift */,
 				EA56E07A28A26C0D00A64262 /* Detail */,
 				EA56E08428A26C0D00A64262 /* DecodeTool */,
@@ -1171,11 +1174,11 @@
 			isa = PBXGroup;
 			children = (
 				BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */,
+				EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */,
 				BF70210828B3909F00A6BBA9 /* ContentView.swift */,
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BFB101D228D5C579000DC631 /* ToolsView.swift */,
-				EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */,
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 			);
@@ -2060,6 +2063,7 @@
 				BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */,
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
+				BFBDD64D28ED6FF80022B79D /* SpiralAbyssDetail.swift in Sources */,
 				BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */,
 				BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */,
 			);
