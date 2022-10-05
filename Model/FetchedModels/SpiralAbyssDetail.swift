@@ -27,7 +27,7 @@ struct SpiralAbyssDetail: Codable {
     struct CharacterRankModel: Codable{
         var avatarId: Int
         var value: Int
-        var avatar_icon: String
+        var avatarIcon: String
         var rarity: Int
     }
 

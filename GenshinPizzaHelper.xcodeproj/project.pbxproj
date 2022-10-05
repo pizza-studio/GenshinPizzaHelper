@@ -120,11 +120,11 @@
 		BFBDD65128ED7B970022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
 		BFBDD65228ED7B970022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
 		BFBDD65328ED7B980022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
-		BFBDD65428ED7B9C0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
 		BFBDD65528ED7B9D0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
 		BFBDD65628ED7B9E0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
 		BFBDD65728ED7B9E0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
 		BFBDD65828ED7BA00022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
+		BFBDD65928EDB7FC0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -1950,7 +1950,7 @@
 				EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EA56E08D28A26C0D00A64262 /* UserData.swift in Sources */,
 				EAB110EB28CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift in Sources */,
-				BFBDD65428ED7B9C0022B79D /* SpiralAbyssDetail.swift in Sources */,
+				BFBDD65928EDB7FC0022B79D /* SpiralAbyssDetail.swift in Sources */,
 				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
