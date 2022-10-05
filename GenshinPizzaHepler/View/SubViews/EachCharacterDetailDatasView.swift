@@ -268,17 +268,19 @@ struct EachCharacterDetailDatasView: View {
                             .opacity(0.25)
                     )
             }.font(.callout)
-            HStack {
-                Text(weapon.subAttribute.name)
-                Spacer()
-                Text("\(avatar.weapon.subAttribute.valueString)")
-                    .padding(.horizontal)
-                    .background(
-                        Capsule()
-                            .fill(.gray)
-                            .opacity(0.25)
-                    )
-            }.font(.footnote)
+            if let subAttribute = weapon.subAttribute {
+                HStack {
+                    Text(subAttribute.name)
+                    Spacer()
+                    Text("\(subAttribute.valueString)")
+                        .padding(.horizontal)
+                        .background(
+                            Capsule()
+                                .fill(.gray)
+                                .opacity(0.25)
+                        )
+                }.font(.footnote)
+            }
         }
         .padding(.vertical)
         .frame(height: l)
