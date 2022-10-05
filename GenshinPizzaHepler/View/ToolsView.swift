@@ -22,6 +22,10 @@ struct ToolsView: View {
 
     @State private var sheetType: SheetTypes? = nil
 
+    @State var thisAbyssData: SpiralAbyssDetail? = nil
+    @State var lastAbyssData: SpiralAbyssDetail? = nil
+    @State private var abyssDataViewSelection: AbyssDataType = .thisTerm
+
     var animation: Namespace.ID
 
     var body: some View {
@@ -225,17 +229,42 @@ struct ToolsView: View {
 
     @ViewBuilder
     func spiralAbyssSheetView() -> some View {
-        Text("Spiral Abyss")
-            .onAppear {
-                API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
-                    switch result {
-                    case .success(let resultData):
-                        print("Success")
-                    case .failure(_):
-                        print("Fauk")
+        if let thisAbyssData = thisAbyssData, let lastAbyssData = lastAbyssData {
+            VStack {
+                Picker("", selection: $abyssDataViewSelection) {
+                    ForEach(AbyssDataType.allCases, id:\.self) { option in
+                        Text(option.rawValue)
                     }
+                }.pickerStyle(.segmented)
+                switch abyssDataViewSelection {
+                case .thisTerm:
+                    Text("This term")
+                case .lastTerm:
+                    Text("last term")
                 }
             }
+        } else {
+            ProgressView()
+                .onAppear {
+                    // scheduleType = 1: 本期深渊 / = 2: 上期深渊
+                    API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
+                        switch result {
+                        case .success(let resultData):
+                            thisAbyssData = resultData
+                        case .failure(_):
+                            print("Fail")
+                        }
+                    }
+                    API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
+                        switch result {
+                        case .success(let resultData):
+                            lastAbyssData = resultData
+                        case .failure(_):
+                            print("Fail")
+                        }
+                    }
+                }
+        }
     }
 
     @ViewBuilder
@@ -268,6 +297,8 @@ struct ToolsView: View {
                 ForEach(accounts, id:\.config.id) { account in
                     Button(account.config.name ?? "Name Error") {
                         showingAccountUUIDString = account.config.uuid!.uuidString
+                        thisAbyssData = nil
+                        lastAbyssData = nil
                     }
                 }
             } label: {
@@ -336,4 +367,9 @@ private enum SheetTypes: Identifiable {
 
     case spiralAbyss
     case characters
+}
+
+private enum AbyssDataType: String, CaseIterable {
+    case thisTerm = "本期深渊"
+    case lastTerm = "上期深渊"
 }
