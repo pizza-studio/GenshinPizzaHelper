@@ -11,10 +11,10 @@ import SwiftUI
 struct CharacterDetailView: View {
     @EnvironmentObject var viewModel: ViewModel
     var account: Account
-    var playerDetail: PlayerDetail { account.playerDetail! }
+    var playerDetail: PlayerDetail { try! account.playerDetailResult!.get() }
     @State var showingCharacterName: String
     var avatar: PlayerDetail.Avatar {
-        account.playerDetail!.avatars.first(where: { avatar in
+        playerDetail.avatars.first(where: { avatar in
             avatar.name == showingCharacterName
         })!
     }

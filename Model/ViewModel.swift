@@ -112,8 +112,17 @@ class ViewModel: NSObject, ObservableObject {
         group.notify(queue: .main) {
             guard let charLoc = charLoc, let charMap = charMap else { return }
             self.accounts.indices.forEach { index in
-                self.accounts[index].config.fetchPlayerDetail(charLoc: charLoc, charMap: charMap) { playerDetail in
-                    self.accounts[index].playerDetail = playerDetail
+                self.accounts[index].fetchPlayerDetailComplete = false
+                self.accounts[index].config.fetchPlayerDetail(charLoc: charLoc, charMap: charMap) { playerDetailResult in
+                    switch playerDetailResult {
+                    case .success(_):
+                        self.accounts[index].playerDetailResult = playerDetailResult
+                    case .failure(_):
+                        if self.accounts[index].playerDetailResult == nil {
+                            self.accounts[index].playerDetailResult = playerDetailResult
+                        }
+                    }
+                    self.accounts[index].fetchPlayerDetailComplete = true
                 }
             }
         }

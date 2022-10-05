@@ -27,142 +27,17 @@ struct ToolsView: View {
     var body: some View {
         NavigationView {
             List {
-                if account == nil {
-                    Menu {
-                        ForEach(accounts, id:\.config.id) { account in
-                            Button(account.config.name ?? "Name Error") {
-                                showingAccountUUIDString = account.config.uuid!.uuidString
-                            }
-                        }
-                    } label: {
-                        Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
+                if let account = account {
+                    if ((try? account.playerDetailResult?.get()) != nil) && (account.basicInfo != nil) {
+                        successView()
+                    } else if !account.fetchPlayerDetailComplete {
+                        loadingView()
+                    } else {
+                        failureView()
                     }
                 } else {
-                    if let basicInfo = account?.basicInfo, let playerDetail = account?.playerDetail {
-                        Section {
-                            VStack {
-                                HStack(spacing: 10) {
-                                    HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
-                                        .clipShape(Circle())
-                                    VStack(alignment: .leading) {
-                                        Text(playerDetail.basicInfo.nickname)
-                                            .font(.title3)
-                                            .bold()
-                                            .padding(.top, 5)
-                                            .lineLimit(1)
-                                        Text(playerDetail.basicInfo.signature)
-                                            .foregroundColor(.secondary)
-                                            .font(.footnote)
-                                            .lineLimit(2)
-                                    }
-                                    Spacer()
-                                    selectAccountManuButton()
-                                }
-                            }
-                            .frame(height: 60)
-                        } footer: {
-                            Text("UID: \(account!.config.uid!)")
-                        }
-
-                        Section {
-                            VStack {
-                                Text("角色展示柜")
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
-                                Divider()
-                                if playerDetail.avatars.isEmpty {
-                                    Text("账号未展示角色")
-                                        .foregroundColor(.secondary)
-                                } else {
-                                    ScrollView(.horizontal) {
-                                        HStack {
-                                            ForEach(playerDetail.avatars, id: \.name) { avatar in
-                                                VStack {
-                                                    EnkaWebIcon(iconString: avatar.iconString)
-                                                        .frame(width: 75, height: 75)
-                                                        .background(EnkaWebIcon(iconString: avatar.namecardIconString)
-                                                            .scaledToFill()
-                                                            .offset(x: -75/3))
-                                                        .clipShape(Circle())
-                                                        .contentShape(Circle())
-                                                        .onTapGesture {
-                                                            simpleTaptic(type: .medium)
-                                                            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
-                                                                viewModel.showingCharacterName = avatar.name
-                                                                viewModel.showCharacterDetailOfAccount = account!
-                                                            }
-                                                        }
-                                                }
-                                            }
-                                        }
-                                        .padding(.vertical)
-                                    }
-                                }
-                            }
-                        }
-
-                        Section {
-                            HStack(spacing: 30) {
-                                VStack {
-                                    VStack {
-                                        HStack {
-                                            Text("深境螺旋")
-                                                .font(.footnote)
-                                            Spacer()
-                                        }
-                                        .padding(.top, 5)
-                                        Divider()
-                                    }
-                                    Text("\(basicInfo.stats.spiralAbyss)")
-                                        .font(.largeTitle)
-                                        .frame(height: 120)
-                                        .padding(.bottom, 10)
-                                }
-                                .padding(.horizontal)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
-
-                                VStack {
-                                    VStack {
-                                        HStack {
-                                            Text("游戏内公开信息")
-                                                .font(.footnote)
-                                            Spacer()
-                                        }
-                                        .padding(.top, 5)
-                                        Divider()
-                                    }
-                                    Text("Lv.\(playerDetail.basicInfo.level)")
-                                        .font(.largeTitle)
-                                        .frame(height: 120)
-                                        .padding(.bottom, 10)
-                                }
-                                .padding(.horizontal)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
-                                .onTapGesture {
-                                    simpleTaptic(type: .medium)
-                                    sheetType = .characters
-                                }
-                            }
-                        }
-                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .listRowBackground(Color.white.opacity(0))
-                    } else {
-                        ZStack {
-                            HStack {
-                                Text(account?.config.name ?? "").foregroundColor(.secondary)
-                                Spacer()
-                                selectAccountManuButton()
-                            }
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
-                            }
-                        }
-
-                    }
+                    chooseAccountView()
                 }
-                
                 Section {
                     VStack {
                         HStack {
@@ -196,10 +71,123 @@ struct ToolsView: View {
             }
         }
     }
+
+    @ViewBuilder
+    func successView() -> some View {
+        let playerDetail: PlayerDetail = try! account!.playerDetailResult!.get()
+        let basicInfo: BasicInfos = account!.basicInfo!
+        Section {
+            VStack {
+                HStack(spacing: 10) {
+                    HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
+                        .clipShape(Circle())
+                    VStack(alignment: .leading) {
+                        Text(playerDetail.basicInfo.nickname)
+                            .font(.title3)
+                            .bold()
+                            .padding(.top, 5)
+                            .lineLimit(1)
+                        Text(playerDetail.basicInfo.signature)
+                            .foregroundColor(.secondary)
+                            .font(.footnote)
+                            .lineLimit(2)
+                    }
+                    Spacer()
+                    selectAccountManuButton()
+                }
+            }
+            .frame(height: 60)
+        } footer: {
+            Text("UID: \(account!.config.uid!)")
+        }
+
+        Section {
+            VStack {
+                Text("角色展示柜")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                Divider()
+                if playerDetail.avatars.isEmpty {
+                    Text("账号未展示角色")
+                        .foregroundColor(.secondary)
+                } else {
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(playerDetail.avatars, id: \.name) { avatar in
+                                VStack {
+                                    EnkaWebIcon(iconString: avatar.iconString)
+                                        .frame(width: 75, height: 75)
+                                        .background(EnkaWebIcon(iconString: avatar.namecardIconString)
+                                            .scaledToFill()
+                                            .offset(x: -75/3))
+                                        .clipShape(Circle())
+                                        .contentShape(Circle())
+                                        .onTapGesture {
+                                            simpleTaptic(type: .medium)
+                                            withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+                                                viewModel.showingCharacterName = avatar.name
+                                                viewModel.showCharacterDetailOfAccount = account!
+                                            }
+                                        }
+                                }
+                            }
+                        }
+                        .padding(.vertical)
+                    }
+                }
+            }
+        }
+
+        Section {
+            HStack(spacing: 30) {
+                VStack {
+                    VStack {
+                        HStack {
+                            Text("深境螺旋")
+                                .font(.footnote)
+                            Spacer()
+                        }
+                        .padding(.top, 5)
+                        Divider()
+                    }
+                    Text("\(basicInfo.stats.spiralAbyss)")
+                        .font(.largeTitle)
+                        .frame(height: 120)
+                        .padding(.bottom, 10)
+                }
+                .padding(.horizontal)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+
+                VStack {
+                    VStack {
+                        HStack {
+                            Text("游戏内公开信息")
+                                .font(.footnote)
+                            Spacer()
+                        }
+                        .padding(.top, 5)
+                        Divider()
+                    }
+                    Text("Lv.\(playerDetail.basicInfo.level)")
+                        .font(.largeTitle)
+                        .frame(height: 120)
+                        .padding(.bottom, 10)
+                }
+                .padding(.horizontal)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+                .onTapGesture {
+                    simpleTaptic(type: .medium)
+                    sheetType = .characters
+                }
+            }
+        }
+        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+        .listRowBackground(Color.white.opacity(0))
+    }
     
     @ViewBuilder
     func characterSheetView() -> some View {
-        let playerDetail = self.account!.playerDetail!
+        let playerDetail = try! self.account!.playerDetailResult!.get()
         let basicInfo = self.account!.basicInfo!
         NavigationView {
             List {
@@ -272,6 +260,57 @@ struct ToolsView: View {
                 Image(systemName: "arrow.left.arrow.right.circle")
                     .font(.title2)
             }
+        } else {
+            EmptyView()
+        }
+    }
+
+    @ViewBuilder
+    func failureView() -> some View {
+        ZStack {
+            HStack {
+                Text(account?.config.name ?? "").foregroundColor(.secondary)
+                Spacer()
+                selectAccountManuButton()
+            }
+            HStack {
+                Spacer()
+                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                    .foregroundColor(.red)
+                    .onTapGesture {
+                        viewModel.refreshPlayerDetail()
+                    }
+                Spacer()
+            }
+        }
+    }
+
+    @ViewBuilder
+    func loadingView() -> some View {
+        ZStack {
+            HStack {
+                Text(account?.config.name ?? "").foregroundColor(.secondary)
+                Spacer()
+                selectAccountManuButton()
+            }
+            HStack {
+                Spacer()
+                ProgressView()
+                Spacer()
+            }
+        }
+    }
+
+    @ViewBuilder
+    func chooseAccountView() -> some View {
+        Menu {
+            ForEach(accounts, id:\.config.id) { account in
+                Button(account.config.name ?? "Name Error") {
+                    showingAccountUUIDString = account.config.uuid!.uuidString
+                }
+            }
+        } label: {
+            Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
         }
     }
 }
