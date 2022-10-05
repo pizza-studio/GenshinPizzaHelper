@@ -153,7 +153,7 @@ struct PlayerDetail {
             /// 武器主属性
             let mainAttribute: Attribute
             /// 武器副属性
-            let subAttribute: Attribute
+            let subAttribute: Attribute?
             /// 武器图标ID
             let iconString: String
             /// 突破后武器图标ID
@@ -174,13 +174,19 @@ struct PlayerDetail {
                 })?.statValue ?? 0
                 mainAttribute = .init(name: mainAttributeName, value: mainAttributeValue)
 
-                let subAttributeName: String = PropertyDictionary.getLocalizedName(weaponEquipment.flat.weaponStats?.first(where: { stats in
+                if weaponEquipment.flat.weaponStats?.first(where: { stats in
                     stats.appendPropId != "FIGHT_PROP_BASE_ATTACK"
-                })?.appendPropId ?? "")
-                let subAttributeValue: Double = weaponEquipment.flat.weaponStats?.first(where: { stats in
-                    stats.appendPropId != "FIGHT_PROP_BASE_ATTACK"
-                })?.statValue ?? 0
-                subAttribute = .init(name: subAttributeName, value: subAttributeValue)
+                }) != nil {
+                    let subAttributeName: String = PropertyDictionary.getLocalizedName(weaponEquipment.flat.weaponStats?.first(where: { stats in
+                        stats.appendPropId != "FIGHT_PROP_BASE_ATTACK"
+                    })?.appendPropId ?? "")
+                    let subAttributeValue: Double = weaponEquipment.flat.weaponStats?.first(where: { stats in
+                        stats.appendPropId != "FIGHT_PROP_BASE_ATTACK"
+                    })?.statValue ?? 0
+                    subAttribute = .init(name: subAttributeName, value: subAttributeValue)
+                } else {
+                    subAttribute = nil
+                }
 
                 iconString = weaponEquipment.flat.icon
 
