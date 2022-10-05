@@ -42,6 +42,9 @@ struct PlayerDetail {
         /// 玩家头像
         var profilePictureAvatarIconString: String
 
+        /// 正在展示的名片
+        var showingNameCards: [Int]
+
         init(playerInfo: PlayerDetailFetchModel.PlayerInfo, characterMap: ENCharacterMap) {
             nickname = playerInfo.nickname
             level = playerInfo.level
@@ -49,6 +52,7 @@ struct PlayerDetail {
             worldLevel = playerInfo.worldLevel
             nameCardId = playerInfo.nameCardId
             profilePictureAvatarIconString = characterMap.characterDetails["\(playerInfo.profilePicture.avatarId)"]?.SideIconName.replacingOccurrences(of: "_Side", with: "") ?? ""
+            showingNameCards = playerInfo.showNameCardIdList ?? []
         }
     }
 
