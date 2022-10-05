@@ -506,7 +506,8 @@ struct HttpMethod<T: Codable> {
                     "Accept-Encoding": "gzip, deflate, br",
                     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
                     "Accept": "application/json, text/plain, */*",
-                    "Connection": "keep-alive",
+                    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Edg/106.0.1370.34",
+                    "cookie": "globalToggles=eyJ1aWQiOnRydWUsIm5pY2tuYW1lIjp0cnVlLCJkYXJrIjpmYWxzZX0; locale=en; cf_chl_2=2122951e0b4ef42; cf_chl_prog=x13; cf_clearance=G1iYNEx4Jw2Ed9WQVJvpeS9Qv.4xcaMl5_Bo3TuVLq4-1664987888-0-150; amp_adc4c4=laoRczTJTwiSHyoE86hsS3...1gekbqm19.1gekg94o3.0.0.0; amp_d915a9=zay569Af5MmPItCj66qfoT.TWxiUUdqZDNkbmRwbTAxT1BJQklwUnNQVHM3Mg==..1gekbqm4s.1gekg94qb.0.1u.1u"
                 ]
                 // http方法
                 switch method {
@@ -523,6 +524,7 @@ struct HttpMethod<T: Codable> {
                 ) { data, response, error in
                     // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
                     print(error ?? "ErrorInfo nil")
+                    print(response)
                     if let error = error {
                         completion(.failure(.dataTaskError(error.localizedDescription)))
                         print(
@@ -549,6 +551,7 @@ struct HttpMethod<T: Codable> {
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
+//                                let requestResult = try decoder.decode(T.self, from: Data(contentsOf: <#T##URL#>))
                                 completion(.success(requestResult))
                             } catch {
                                 print(error)
