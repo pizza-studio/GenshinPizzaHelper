@@ -17,7 +17,8 @@ struct Account: Equatable, Hashable {
     var fetchComplete: Bool = false
 
     #if !os(watchOS)
-    var playerDetail: PlayerDetail?
+    var playerDetailResult: Result<PlayerDetail, PlayerDetail.PlayerDetailError>?
+    var fetchPlayerDetailComplete: Bool = false
     #endif
 
     init(config: AccountConfiguration) {
@@ -56,20 +57,14 @@ extension AccountConfiguration {
         }
     }
 
-#if !os(watchOS)
+    #if !os(watchOS)
     func fetchPlayerDetail(charLoc: ENCharacterLoc,
                            charMap: ENCharacterMap,
-                           _ completion: @escaping (PlayerDetail) -> ()) {
+                           _ completion: @escaping (Result<PlayerDetail, PlayerDetail.PlayerDetailError>) -> ()) {
         guard let uid = self.uid else { return }
         API.OpenAPIs.fetchPlayerDetail(uid, charLoc: charLoc, charMap: charMap) { result in
-            switch result {
-            case .success(let data):
-                completion(data)
-            case .failure(_):
-                print("fetching player detail error")
-                break
-            }
+            completion(result)
         }
     }
-#endif
+    #endif
 }

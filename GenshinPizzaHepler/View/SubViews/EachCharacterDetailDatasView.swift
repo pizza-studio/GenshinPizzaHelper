@@ -84,7 +84,7 @@ struct EachCharacterDetailDatasView: View {
                 Grid {
                     GridRow {
                         ForEach(avatar.artifacts) { artifact in
-                            EnkaWebIcon(iconString: artifact.iconString)
+                            HomeSourceWebIcon(iconString: artifact.iconString)
                         }
                     }
                     GridRow {
@@ -116,7 +116,7 @@ struct EachCharacterDetailDatasView: View {
                 HStack {
                     ForEach(avatar.artifacts) { artifact in
                         VStack {
-                            EnkaWebIcon(iconString: artifact.iconString)
+                            HomeSourceWebIcon(iconString: artifact.iconString)
                             VStack {
                                 Text(artifact.mainAttribute.name)
                                     .font(.caption)
