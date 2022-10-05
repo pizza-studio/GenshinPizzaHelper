@@ -26,7 +26,7 @@ struct InAppMaterialNavigator: View {
         VStack {
             HStack {
                 if showingWeekday != .sunday {
-                    Text((showMaterialDetail && showingWeekday != .today()) ? "\(showingWeekday.describe())的材料" : "今日材料")
+                    Text((showMaterialDetail && showingWeekday != .today()) ? "\(showingWeekday.describe())" : "今日材料")
                         .padding(.leading, 25)
                         .font(.caption)
                         .padding(.top)
@@ -66,6 +66,7 @@ struct InAppMaterialNavigator: View {
                     Group {
                         if showMaterialDetail {
                             Button("查看明天的材料") {
+                                simpleTaptic(type: .light)
                                 withAnimation {
                                     showingWeekday = showingWeekday.tomorrow()
                                 }
@@ -120,7 +121,7 @@ struct InAppMaterialNavigator: View {
             } else {
                 if showRelatedDetailOfMaterial == nil {
                     materialsDetail()
-                        .padding(showingWeekday != .sunday ? .vertical : [])
+                        .padding(showingWeekday != .sunday ? .vertical : .bottom)
                 } else {
                     materialRelatedItemView()
                         .padding()
@@ -225,12 +226,13 @@ struct InAppMaterialNavigator: View {
             }
             Spacer()
             Button("查看\(showingWeekday.tomorrow().describe())的材料") {
+                simpleTaptic(type: .light)
                 withAnimation {
                     showingWeekday = showingWeekday.tomorrow()
                 }
             }
             .font(.caption)
-            .padding(.trailing)
+            .padding([.trailing, .top])
             Spacer()
         }
     }
