@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InAppMaterialNavigator: View {
-    @State var showingWeekday: MaterialWeekday = .sunday
+    @State var showingWeekday: MaterialWeekday = .today()
     var talentMaterialProvider: TalentMaterialProvider { .init(weekday: showingWeekday) }
     var weaponMaterialProvider: WeaponMaterialProvider { .init(weekday: showingWeekday) }
 
