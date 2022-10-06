@@ -49,6 +49,8 @@ struct ENCharacterMap: Codable {
         var NameTextMapHash: Int
         /// 侧脸图
         var SideIconName: String
+        /// 正脸图
+        var iconString: String { SideIconName.replacingOccurrences(of: "_Side", with: "") }
         /// 星级
         var QualityType: String
 

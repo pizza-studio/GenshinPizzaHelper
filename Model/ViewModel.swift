@@ -21,7 +21,10 @@ class ViewModel: NSObject, ObservableObject {
     @Published var showDetailOfAccount: Account?
     @Published var showCharacterDetailOfAccount: Account?
     @Published var showingCharacterName: String?
-    
+
+    var charLoc: [String : String]?
+    var charMap: [String: ENCharacterMap.Character]?
+
     let accountConfigurationModel: AccountConfigurationModel = .shared
 
 //    var session: WCSession
@@ -96,27 +99,25 @@ class ViewModel: NSObject, ObservableObject {
 
     #if !os(watchOS)
     func refreshPlayerDetail() {
-        var charLoc: ENCharacterLoc?
-        var charMap: ENCharacterMap?
         let group = DispatchGroup()
         group.enter()
         API.HomeAPIs.fetchENCharacterLocDatas {
-            charLoc = $0
+            self.charLoc = $0.getLocalizedDictionary()
             group.leave()
         }
         group.enter()
         API.HomeAPIs.fetchENCharacterDetailDatas {
-            charMap = $0
+            self.charMap = $0.characterDetails
             group.leave()
         }
         self.accounts.indices.forEach { index in
             self.accounts[index].fetchPlayerDetailComplete = false
             self.accounts[index].config.fetchPlayerDetail { playerDetailResult in
                 group.notify(queue: .main) {
-                    guard let charLoc = charLoc, let charMap = charMap else { return }
+                    guard let charLoc = self.charLoc, let charMap = self.charMap else { return }
                     switch playerDetailResult {
                     case .success(let model):
-                        self.accounts[index].playerDetailResult = .success(.init(playerDetailFetchModel: model, localizedDictionary: charLoc.getLocalizedDictionary(), characterMap: charMap))
+                        self.accounts[index].playerDetailResult = .success(.init(playerDetailFetchModel: model, localizedDictionary: charLoc, characterMap: charMap))
                     case .failure(let error):
                         if self.accounts[index].playerDetailResult == nil {
                             self.accounts[index].playerDetailResult = .failure(error)

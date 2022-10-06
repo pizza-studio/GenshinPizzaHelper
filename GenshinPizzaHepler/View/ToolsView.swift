@@ -204,23 +204,34 @@ struct ToolsView: View {
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         .listRowBackground(Color.white.opacity(0))
         .onAppear {
-            // 获取深渊信息
-            // scheduleType = 1: 本期深渊 / = 2: 上期深渊
-            API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
-                switch result {
-                case .success(let resultData):
-                    thisAbyssData = resultData
-                case .failure(_):
-                    print("Fail")
-                }
+            if thisAbyssData == nil && lastAbyssData == nil {
+                fetchSpiralAbyssInfos()
             }
-            API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
-                switch result {
-                case .success(let resultData):
-                    lastAbyssData = resultData
-                case .failure(_):
-                    print("Fail")
-                }
+        }
+        .onChange(of: account) { _ in
+            thisAbyssData = nil
+            lastAbyssData = nil
+            fetchSpiralAbyssInfos()
+        }
+    }
+
+    func fetchSpiralAbyssInfos() {
+        // 获取深渊信息
+        // scheduleType = 1: 本期深渊 / = 2: 上期深渊
+        API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
+            switch result {
+            case .success(let resultData):
+                thisAbyssData = resultData
+            case .failure(_):
+                print("Fail")
+            }
+        }
+        API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
+            switch result {
+            case .success(let resultData):
+                lastAbyssData = resultData
+            case .failure(_):
+                print("Fail")
             }
         }
     }
@@ -250,7 +261,7 @@ struct ToolsView: View {
                         Text(playerDetail.basicInfo.nickname)
                             .font(.headline)
                     } icon: {
-                        WebImage(urlStr: "http://ophelper.top/resource/\(playerDetail.basicInfo.profilePictureAvatarIconString).png")
+                        HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
                             .clipShape(Circle())
                     }
                     .labelStyle(.titleAndIcon)
