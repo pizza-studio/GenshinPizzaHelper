@@ -306,6 +306,7 @@ struct ToolsView: View {
 
     @ViewBuilder
     func abyssDetailDataDisplayView(data: SpiralAbyssDetail) -> some View {
+        let charMap = viewModel.charMap!
         List {
             // 总体战斗结果概览
             Section {
@@ -324,45 +325,50 @@ struct ToolsView: View {
                     Text("最强一击")
                     Spacer()
                     Text("\(data.damageRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.damageRank.first?.avatarIcon ?? "")
+                    let charID = "\(data.damageRank.first?.avatarId ?? 0)"
+                    let charIconString = charMap.getSideIconString(id: charID)
+                    HomeSourceWebIcon(iconString: charIconString)
                         .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
                         .scaledToFit()
                 }
                 HStack {
                     Text("最多击破数")
                     Spacer()
                     Text("\(data.defeatRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.defeatRank.first?.avatarIcon ?? "")
+                    let charID = "\(data.defeatRank.first?.avatarId ?? 0)"
+                    let charIconString = charMap.getSideIconString(id: charID)
+                    HomeSourceWebIcon(iconString: charIconString)
                         .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
                         .scaledToFit()
                 }
                 HStack {
                     Text("承受最多伤害")
                     Spacer()
                     Text("\(data.takeDamageRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.takeDamageRank.first?.avatarIcon ?? "")
+                    let charID = "\(data.takeDamageRank.first?.avatarId ?? 0)"
+                    let charIconString = charMap.getSideIconString(id: charID)
+                    HomeSourceWebIcon(iconString: charIconString)
                         .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
                         .scaledToFit()
                 }
                 HStack {
                     Text("元素战技释放数")
                     Spacer()
                     Text("\(data.normalSkillRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.normalSkillRank.first?.avatarIcon ?? "")
+                    let charID = "\(data.normalSkillRank.first?.avatarId ?? 0)"
+                    let charIconString = charMap.getSideIconString(id: charID)
+                    HomeSourceWebIcon(iconString: charIconString)
                         .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
                         .scaledToFit()
                 }
                 HStack {
                     Text("元素爆发次数")
                     Spacer()
                     Text("\(data.energySkillRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.energySkillRank.first?.avatarIcon ?? "")
+                    let charID = "\(data.energySkillRank.first?.avatarId ?? 0)"
+                    let charIconString = charMap.getSideIconString(id: charID)
+                    HomeSourceWebIcon(iconString: charIconString)
                         .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
                         .scaledToFit()
                 }
             } header: {
@@ -399,12 +405,29 @@ struct ToolsView: View {
                                             .font(.caption)
                                     }
                                     ForEach(battleData.avatars, id:\.id) { avatarData in
+                                        let charID: String = "\(avatarData.id)"
+                                        let charIcon: String = charMap.getIconString(id: charID)
+//                                        let charNameID: String = charMap.getNameID(id: charID)
+//                                        let charNameCard: String = "UI_AvatarIcon_\(charNameID)_Card"
+                                        let rarityIconString = "UI_QualityBg_\(avatarData.rarity)"
                                         VStack(spacing: 0) {
-                                            WebImage(urlStr: avatarData.icon)
-                                                .frame(height: 100)
-                                                .scaledToFit()
+                                            ZStack {
+                                                EnkaWebIcon(iconString: rarityIconString)
+                                                    .scaledToFit()
+                                                    .scaleEffect(1.1)
+                                                    .offset(y: 10)
+                                                    .clipShape(Circle())
+                                                HomeSourceWebIcon(iconString: charIcon)
+                                                    .scaledToFit()
+//                                                    .frame(height: 100)
+                                            }
+//                                            .clipShape(Circle())
+                                            .frame(height: 100)
                                             Text("Lv.\(avatarData.level)")
                                                 .font(.footnote)
+                                        }
+                                        if avatarData.id != battleData.avatars.last!.id {
+                                            Spacer()
                                         }
                                     }
                                 }

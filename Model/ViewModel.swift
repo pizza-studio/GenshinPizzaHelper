@@ -22,8 +22,10 @@ class ViewModel: NSObject, ObservableObject {
     @Published var showCharacterDetailOfAccount: Account?
     @Published var showingCharacterName: String?
 
+    #if !os(watchOS)
     var charLoc: [String : String]?
     var charMap: [String: ENCharacterMap.Character]?
+    #endif
 
     let accountConfigurationModel: AccountConfigurationModel = .shared
 
