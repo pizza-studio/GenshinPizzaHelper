@@ -154,10 +154,20 @@ struct ToolsView: View {
                         .padding(.top, 5)
                         Divider()
                     }
-                    Text("\(basicInfo.stats.spiralAbyss)")
-                        .font(.largeTitle)
-                        .frame(height: 120)
-                        .padding(.bottom, 10)
+                    VStack(spacing: 0) {
+                        Text("\(basicInfo.stats.spiralAbyss)")
+                            .font(.largeTitle)
+                        if let thisAbyssData = thisAbyssData {
+                            HStack(spacing: 0) {
+                                Text("\(thisAbyssData.totalStar)")
+                                Image("star.abyss")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                            }
+                        }
+                    }
+                    .frame(height: 120)
+                    .padding(.bottom, 10)
                 }
                 .padding(.horizontal)
                 .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
@@ -191,6 +201,26 @@ struct ToolsView: View {
         }
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         .listRowBackground(Color.white.opacity(0))
+        .onAppear {
+            // 获取深渊信息
+            // scheduleType = 1: 本期深渊 / = 2: 上期深渊
+            API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
+                switch result {
+                case .success(let resultData):
+                    thisAbyssData = resultData
+                case .failure(_):
+                    print("Fail")
+                }
+            }
+            API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
+                switch result {
+                case .success(let resultData):
+                    lastAbyssData = resultData
+                case .failure(_):
+                    print("Fail")
+                }
+            }
+        }
     }
     
     @ViewBuilder
@@ -258,25 +288,6 @@ struct ToolsView: View {
             }
         } else {
             ProgressView()
-                .onAppear {
-                    // scheduleType = 1: 本期深渊 / = 2: 上期深渊
-                    API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
-                        switch result {
-                        case .success(let resultData):
-                            thisAbyssData = resultData
-                        case .failure(_):
-                            print("Fail")
-                        }
-                    }
-                    API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
-                        switch result {
-                        case .success(let resultData):
-                            lastAbyssData = resultData
-                        case .failure(_):
-                            print("Fail")
-                        }
-                    }
-                }
         }
     }
 
