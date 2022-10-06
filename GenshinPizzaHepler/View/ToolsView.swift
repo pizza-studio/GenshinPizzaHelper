@@ -276,13 +276,17 @@ struct ToolsView: View {
     @ViewBuilder
     func abyssDetailDataDisplayView(data: SpiralAbyssDetail) -> some View {
         List {
+            // 总体战斗结果概览
             Section {
                 InfoPreviewer(title: "最深抵达", content: data.maxFloor)
                 InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
                 InfoPreviewer(title: "战斗次数", content: "\(data.totalBattleTimes)")
                 InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
+            } header: {
+                Text("战斗概览")
             }
 
+            // 战斗数据榜
             Section {
                 HStack {
                     Text("最强一击")
@@ -329,8 +333,11 @@ struct ToolsView: View {
                         .offset(x: -7, y: -7)
                         .scaledToFit()
                 }
+            } header: {
+                Text("战斗数据榜")
             }
         }
+        .listStyle(.sidebar)
     }
 
     @ViewBuilder
