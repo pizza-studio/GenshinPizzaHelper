@@ -14,77 +14,88 @@ struct EachCharacterDetailDatasView: View {
     var animation: Namespace.ID
 
     var body: some View {
-        VStack {
-            if #available(iOS 16, *) {
-                Grid {
-                    GridRow {
+        ScrollView {
+            VStack {
+                HStack(spacing: 5) {
+                    Image("AppIconHD")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .cornerRadius(10)
+                    Text("原神披萨助手")
+                        .font(.headline)
+                    Spacer()
+                }
+                if #available(iOS 16, *) {
+                    Grid {
+                        GridRow {
+                            avatarIconAndSkill()
+                                .padding(.bottom, 10)
+                        }
+                        GridRow {
+                            weapon()
+                                .padding(.bottom, 6)
+                        }
+                    }
+                } else {
+                    HStack {
                         avatarIconAndSkill()
                             .padding(.bottom, 10)
                     }
-                    GridRow {
+                    HStack {
                         weapon()
                             .padding(.bottom, 6)
                     }
                 }
-            } else {
-                HStack {
-                    avatarIconAndSkill()
-                        .padding(.bottom, 10)
-                }
-                HStack {
-                    weapon()
-                        .padding(.bottom, 6)
-                }
-            }
 
-            // Other prob
-            let probRows = Group {
-                AttributeLabel(iconString: "UI_Icon_MaxHp", name: "生命值", value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))")
-                AttributeLabel(iconString: "UI_Icon_CurAttack", name: "攻击力", value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))")
-                AttributeLabel(iconString: "UI_Icon_CurDefense", name: "防御力", value: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))")
-                AttributeLabel(iconString: "UI_Icon_Element", name: "元素精通", value: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))")
-                AttributeLabel(iconString: "UI_Icon_Intee_WindField_ClockwiseRotation", name: "元素充能效率", value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%")
-                if avatar.fightPropMap.healingBonus > 0 {
-                    AttributeLabel(iconString: "UI_Icon_Heal", name: "治疗加成", value: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%")
+                // Other prob
+                let probRows = Group {
+                    AttributeLabel(iconString: "UI_Icon_MaxHp", name: "生命值", value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))")
+                    AttributeLabel(iconString: "UI_Icon_CurAttack", name: "攻击力", value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))")
+                    AttributeLabel(iconString: "UI_Icon_CurDefense", name: "防御力", value: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))")
+                    AttributeLabel(iconString: "UI_Icon_Element", name: "元素精通", value: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))")
+                    AttributeLabel(iconString: "UI_Icon_Intee_WindField_ClockwiseRotation", name: "元素充能效率", value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%")
+                    if avatar.fightPropMap.healingBonus > 0 {
+                        AttributeLabel(iconString: "UI_Icon_Heal", name: "治疗加成", value: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%")
+                    }
+                    AttributeLabel(iconString: "UI_Icon_Critical", name: "暴击率", value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%")
+                    AttributeLabel(iconString: "UI_Icon_Critical", name: "暴击伤害", value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%")
+                    switch avatar.element {
+                    case .wind:
+                        AttributeLabel(iconString: "UI_Icon_Element_Wind", name: "风元素伤害加成", value: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%")
+                    case .ice:
+                        AttributeLabel(iconString: "UI_Icon_Element_Ice", name: "冰元素伤害加成", value: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%")
+                    case .electric:
+                        AttributeLabel(iconString: "UI_Icon_Element_Electric", name: "雷元素伤害加成", value: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%")
+                    case .water:
+                        AttributeLabel(iconString: "UI_Icon_Element_Water", name: "水元素伤害加成", value: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%")
+                    case .fire:
+                        AttributeLabel(iconString: "UI_Icon_Element_Fire", name: "火元素伤害加成", value: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%")
+                    case .rock:
+                        AttributeLabel(iconString: "UI_Icon_Element_Rock", name: "岩元素伤害加成", value: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%")
+                    case .grass:
+                        AttributeLabel(iconString: "UI_Icon_Element_Grass", name: "草元素伤害加成", value: "\((avatar.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%")
+                    default:
+                        EmptyView()
+                    }
+                    if avatar.fightPropMap.physicalDamage > 0 {
+                        AttributeLabel(iconString: "UI_Icon_PhysicalAttackUp", name: "物理伤害加成", value: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%")
+                    }
                 }
-                AttributeLabel(iconString: "UI_Icon_Critical", name: "暴击率", value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%")
-                AttributeLabel(iconString: "UI_Icon_Critical", name: "暴击伤害", value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%")
-                switch avatar.element {
-                case .wind:
-                    AttributeLabel(iconString: "UI_Icon_Element_Wind", name: "风元素伤害加成", value: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%")
-                case .ice:
-                    AttributeLabel(iconString: "UI_Icon_Element_Ice", name: "冰元素伤害加成", value: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%")
-                case .electric:
-                    AttributeLabel(iconString: "UI_Icon_Element_Electric", name: "雷元素伤害加成", value: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%")
-                case .water:
-                    AttributeLabel(iconString: "UI_Icon_Element_Water", name: "水元素伤害加成", value: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%")
-                case .fire:
-                    AttributeLabel(iconString: "UI_Icon_Element_Fire", name: "火元素伤害加成", value: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%")
-                case .rock:
-                    AttributeLabel(iconString: "UI_Icon_Element_Rock", name: "岩元素伤害加成", value: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%")
-                case .grass:
-                    AttributeLabel(iconString: "UI_Icon_Element_Grass", name: "草元素伤害加成", value: "\((avatar.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%")
-                default:
-                    EmptyView()
+                if #available(iOS 16, *) {
+                    Grid(verticalSpacing: 3) {
+                        probRows
+                    }
+                    .padding(.bottom, 10)
+                } else {
+                    VStack(spacing: 3) {
+                        probRows
+                    }
+                    .padding(.bottom, 10)
                 }
-                if avatar.fightPropMap.physicalDamage > 0 {
-                    AttributeLabel(iconString: "UI_Icon_PhysicalAttackUp", name: "物理伤害加成", value: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%")
-                }
+                artifactsDetailsView()
             }
-            if #available(iOS 16, *) {
-                Grid(verticalSpacing: 3) {
-                    probRows
-                }
-                .padding(.bottom, 10)
-            } else {
-                VStack(spacing: 3) {
-                    probRows
-                }
-                .padding(.bottom, 10)
-            }
-            artifactsDetailsView()
+            .padding()
         }
-        .padding()
     }
 
     @ViewBuilder

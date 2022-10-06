@@ -53,8 +53,10 @@ struct ToolsView: View {
                     NavigationLink(destination: GenshinDictionary()) {
                         Text("原神中英日词典")
                     }
-                    Text("原神计算器")
                     mapNavigationLink()
+                    #if DEBUG
+                    Text("原神计算器")
+                    #endif
                 }
             }
             .refreshable {

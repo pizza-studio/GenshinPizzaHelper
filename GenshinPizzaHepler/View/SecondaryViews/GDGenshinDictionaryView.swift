@@ -19,13 +19,13 @@ struct GenshinDictionary: View {
                 }
             } else {
                 return dictionaryData!.filter {
-                    $0.en.contains(searchText) ||
+                    $0.en.localizedCaseInsensitiveContains(searchText) ||
                     ($0.zhCN != nil && $0.zhCN!.contains(searchText)) ||
                     ($0.ja != nil && $0.ja!.contains(searchText)) ||
-                     ($0.variants != nil && (($0.variants!.en != nil && $0.variants!.en!.contains(searchText)) ||
+                    ($0.variants != nil && (($0.variants!.en != nil && $0.variants!.en!.contains(where: {$0.caseInsensitiveCompare(searchText) == .orderedSame})) ||
                                              ($0.variants!.zhCN != nil && $0.variants!.zhCN!.contains(searchText)) ||
                                              ($0.variants!.ja != nil && $0.variants!.ja!.contains(searchText)))) ||
-                    ($0.tags != nil && $0.tags!.contains(searchText))
+                    ($0.tags != nil && $0.tags!.contains(where: {$0.caseInsensitiveCompare(searchText) == .orderedSame}))
                 }
                 .sorted {
                     $0.id < $1.id
@@ -34,9 +34,9 @@ struct GenshinDictionary: View {
         }
 
     var body: some View {
-        if let searchResults = searchResults {
+        if let searchResults = searchResults, let dictionaryData = dictionaryData {
             List {
-                Section(header: Text("以下内容由「原神中英日辞典」提供")) {
+                Section {
                     ForEach(searchResults, id: \.id) { item in
                         dictionaryItemCell(word: item)
                             .contextMenu {
@@ -55,9 +55,14 @@ struct GenshinDictionary: View {
                                 }
                             }
                     }
+                } header: {
+                    VStack(alignment: .leading) {
+                        Text("以下内容由「原神中英日辞典」提供")
+                        Text("当前共收录\(dictionaryData.count)条原神专有词汇")
+                    }
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持易错字、简写和英文标签")
             .navigationTitle("原神中英日辞典")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -70,6 +75,7 @@ struct GenshinDictionary: View {
             }
             .fullScreenCover(isPresented: $showSafari, content: {
                 SFSafariViewWrapper(url: URL(string: "https://genshin-dictionary.com/")!)
+                    .ignoresSafeArea()
             })
         } else {
             ProgressView()
@@ -95,6 +101,22 @@ struct GenshinDictionary: View {
                     Text("**日语** \(ja)") + Text(" (\(jaPron))").font(.footnote)
                 } else {
                     Text("**日语** \(ja)")
+                }
+            }
+            if let tags = word.tags {
+                HStack(spacing: 3) {
+                    ForEach(tags, id:\.self) { tag in
+                        Text(tag)
+                            .font(.footnote)
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 6)
+                            .background(
+                                Capsule()
+                                    .fill(.blue)
+                                    .frame(height: 15)
+                                    .frame(maxWidth: 100)
+                            )
+                    }
                 }
             }
         }

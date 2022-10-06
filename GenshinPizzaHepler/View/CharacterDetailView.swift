@@ -40,6 +40,8 @@ struct CharacterDetailView: View {
         .onChange(of: showingCharacterName) { _ in
             simpleTaptic(type: .selection)
         }
+        .ignoresSafeArea()
+        .statusBarHidden(true)
     }
 
     func closeView() {
