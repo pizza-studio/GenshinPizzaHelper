@@ -19,13 +19,13 @@ struct GenshinDictionary: View {
                 }
             } else {
                 return dictionaryData!.filter {
-                    $0.en.contains(searchText) ||
+                    $0.en.localizedCaseInsensitiveContains(searchText) ||
                     ($0.zhCN != nil && $0.zhCN!.contains(searchText)) ||
                     ($0.ja != nil && $0.ja!.contains(searchText)) ||
-                     ($0.variants != nil && (($0.variants!.en != nil && $0.variants!.en!.contains(searchText)) ||
+                    ($0.variants != nil && (($0.variants!.en != nil && $0.variants!.en!.contains(where: {$0.caseInsensitiveCompare(searchText) == .orderedSame})) ||
                                              ($0.variants!.zhCN != nil && $0.variants!.zhCN!.contains(searchText)) ||
                                              ($0.variants!.ja != nil && $0.variants!.ja!.contains(searchText)))) ||
-                    ($0.tags != nil && $0.tags!.contains(searchText))
+                    ($0.tags != nil && $0.tags!.contains(where: {$0.caseInsensitiveCompare(searchText) == .orderedSame}))
                 }
                 .sorted {
                     $0.id < $1.id
@@ -62,7 +62,7 @@ struct GenshinDictionary: View {
                     }
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持输入易错字、简写和英文标签")
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持易错字、简写和英文标签")
             .navigationTitle("原神中英日辞典")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
