@@ -12,7 +12,7 @@ struct PlayerDetailFetchModel: Codable {
     var playerInfo: PlayerInfo
     /// 正在展示的角色的详细信息
     var avatarInfoList: [AvatarInfo]?
-    var ttl: Int
+    var ttl: Int?
     var uid: String?
 
     struct PlayerInfo: Codable {

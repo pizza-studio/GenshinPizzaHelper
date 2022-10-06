@@ -154,10 +154,20 @@ struct ToolsView: View {
                         .padding(.top, 5)
                         Divider()
                     }
-                    Text("\(basicInfo.stats.spiralAbyss)")
-                        .font(.largeTitle)
-                        .frame(height: 120)
-                        .padding(.bottom, 10)
+                    VStack(spacing: 0) {
+                        Text("\(basicInfo.stats.spiralAbyss)")
+                            .font(.largeTitle)
+                        if let thisAbyssData = thisAbyssData {
+                            HStack(spacing: 0) {
+                                Text("\(thisAbyssData.totalStar)")
+                                Image("star.abyss")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                            }
+                        }
+                    }
+                    .frame(height: 120)
+                    .padding(.bottom, 10)
                 }
                 .padding(.horizontal)
                 .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
@@ -191,6 +201,26 @@ struct ToolsView: View {
         }
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         .listRowBackground(Color.white.opacity(0))
+        .onAppear {
+            // 获取深渊信息
+            // scheduleType = 1: 本期深渊 / = 2: 上期深渊
+            API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
+                switch result {
+                case .success(let resultData):
+                    thisAbyssData = resultData
+                case .failure(_):
+                    print("Fail")
+                }
+            }
+            API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
+                switch result {
+                case .success(let resultData):
+                    lastAbyssData = resultData
+                case .failure(_):
+                    print("Fail")
+                }
+            }
+        }
     }
     
     @ViewBuilder
@@ -248,41 +278,133 @@ struct ToolsView: View {
                 }
                 .navigationTitle("深境螺旋详情")
                 .navigationBarTitleDisplayMode(.inline)
-            }
-        } else {
-            ProgressView()
-                .onAppear {
-                    // scheduleType = 1: 本期深渊 / = 2: 上期深渊
-                    API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
-                        switch result {
-                        case .success(let resultData):
-                            thisAbyssData = resultData
-                        case .failure(_):
-                            print("Fail")
-                        }
-                    }
-                    API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
-                        switch result {
-                        case .success(let resultData):
-                            lastAbyssData = resultData
-                        case .failure(_):
-                            print("Fail")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("完成") {
+                            sheetType = nil
                         }
                     }
                 }
+            }
+        } else {
+            ProgressView()
         }
     }
 
     @ViewBuilder
     func abyssDetailDataDisplayView(data: SpiralAbyssDetail) -> some View {
         List {
+            // 总体战斗结果概览
             Section {
                 InfoPreviewer(title: "最深抵达", content: data.maxFloor)
                 InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
                 InfoPreviewer(title: "战斗次数", content: "\(data.totalBattleTimes)")
                 InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
+            } header: {
+                Text("战斗概览")
+                    .font(.headline)
+            }
+
+            // 战斗数据榜
+            Section {
+                HStack {
+                    Text("最强一击")
+                    Spacer()
+                    Text("\(data.damageRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.damageRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+                HStack {
+                    Text("最多击破数")
+                    Spacer()
+                    Text("\(data.defeatRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.defeatRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+                HStack {
+                    Text("承受最多伤害")
+                    Spacer()
+                    Text("\(data.takeDamageRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.takeDamageRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+                HStack {
+                    Text("元素战技释放数")
+                    Spacer()
+                    Text("\(data.normalSkillRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.normalSkillRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+                HStack {
+                    Text("元素爆发次数")
+                    Spacer()
+                    Text("\(data.energySkillRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.energySkillRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+            } header: {
+                Text("战斗数据榜")
+                    .font(.headline)
+            }
+
+            ForEach(data.floors, id:\.index) { floorData in
+                Section {
+                    InfoPreviewer(title: "战斗结果", content: "\(floorData.star)/\(floorData.maxStar)")
+                    ForEach(floorData.levels, id: \.index) { levelData in
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack(spacing: 0) {
+                                Text("第\(levelData.index)间")
+                                    .font(.subheadline)
+                                Spacer()
+                                ForEach(0 ..< levelData.star, id:\.self) { _ in
+                                    Image("star.abyss")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                }
+                            }
+                            ForEach(levelData.battles, id:\.index) { battleData in
+                                HStack(alignment: .top, spacing: 0) {
+                                    switch battleData.index {
+                                    case 1:
+                                        Text("上半")
+                                            .font(.caption)
+                                    case 2:
+                                        Text("下半")
+                                            .font(.caption)
+                                    default:
+                                        Text("Unknown")
+                                            .font(.caption)
+                                    }
+                                    ForEach(battleData.avatars, id:\.id) { avatarData in
+                                        VStack(spacing: 0) {
+                                            WebImage(urlStr: avatarData.icon)
+                                                .frame(height: 100)
+                                                .scaledToFit()
+                                            Text("Lv.\(avatarData.level)")
+                                                .font(.footnote)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } header: {
+                    Text("深境螺旋第\(floorData.index)层")
+                        .font(.headline)
+                }
             }
         }
+        .listStyle(.sidebar)
     }
 
     @ViewBuilder
