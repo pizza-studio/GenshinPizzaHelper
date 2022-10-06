@@ -524,6 +524,7 @@ struct HttpMethod<T: Codable> {
                 ) { data, response, error in
                     // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
                     print(error ?? "ErrorInfo nil")
+                    print("STATUSCODE: \((response as? HTTPURLResponse)?.statusCode ?? -999)")
                     if let error = error {
                         completion(.failure(.dataTaskError(error.localizedDescription)))
                         print(
@@ -550,6 +551,7 @@ struct HttpMethod<T: Codable> {
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
+//                                let requestResult = try decoder.decode(T.self, from: Data(contentsOf: <#T##URL#>))
                                 completion(.success(requestResult))
                             } catch {
                                 print(error)

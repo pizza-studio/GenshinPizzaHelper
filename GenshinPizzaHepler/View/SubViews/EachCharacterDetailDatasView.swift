@@ -19,57 +19,68 @@ struct EachCharacterDetailDatasView: View {
                 Grid {
                     GridRow {
                         avatarIconAndSkill()
-                            .padding(.bottom)
+                            .padding(.bottom, 10)
                     }
                     GridRow {
                         weapon()
-                            .padding(.bottom)
+                            .padding(.bottom, 6)
                     }
                 }
             } else {
                 HStack {
                     avatarIconAndSkill()
-                        .padding(.bottom)
+                        .padding(.bottom, 10)
                 }
                 HStack {
                     weapon()
-                        .padding(.bottom)
+                        .padding(.bottom, 6)
                 }
             }
 
             // Other prob
-            VStack(spacing: 3) {
-                InfoPreviewer(title: "生命值", content: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                InfoPreviewer(title: "攻击力", content: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                InfoPreviewer(title: "防御力", content: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                InfoPreviewer(title: "元素精通", content: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                InfoPreviewer(title: "元素充能效率", content: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+            let probRows = Group {
+                AttributeLabel(iconString: "UI_Icon_MaxHp", name: "生命值", value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))")
+                AttributeLabel(iconString: "UI_Icon_CurAttack", name: "攻击力", value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))")
+                AttributeLabel(iconString: "UI_Icon_CurDefense", name: "防御力", value: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))")
+                AttributeLabel(iconString: "UI_Icon_Element", name: "元素精通", value: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))")
+                AttributeLabel(iconString: "UI_Icon_Intee_WindField_ClockwiseRotation", name: "元素充能效率", value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%")
                 if avatar.fightPropMap.healingBonus > 0 {
-                    InfoPreviewer(title: "治疗加成", content: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_Heal", name: "治疗加成", value: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%")
                 }
-                InfoPreviewer(title: "暴击率", content: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
-                InfoPreviewer(title: "暴击伤害", content: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                AttributeLabel(iconString: "UI_Icon_Critical", name: "暴击率", value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%")
+                AttributeLabel(iconString: "UI_Icon_Critical", name: "暴击伤害", value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%")
                 switch avatar.element {
                 case .wind:
-                    InfoPreviewer(title: "风元素伤害加成", content: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_Element_Wind", name: "风元素伤害加成", value: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%")
                 case .ice:
-                    InfoPreviewer(title: "冰元素伤害加成", content: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_Element_Ice", name: "冰元素伤害加成", value: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%")
                 case .electric:
-                    InfoPreviewer(title: "雷元素伤害加成", content: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_Element_Electric", name: "雷元素伤害加成", value: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%")
                 case .water:
-                    InfoPreviewer(title: "水元素伤害加成", content: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_Element_Water", name: "水元素伤害加成", value: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%")
                 case .fire:
-                    InfoPreviewer(title: "火元素伤害加成", content: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_Element_Fire", name: "火元素伤害加成", value: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%")
                 case .rock:
-                    InfoPreviewer(title: "岩元素伤害加成", content: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_Element_Rock", name: "岩元素伤害加成", value: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%")
                 case .grass:
-                    InfoPreviewer(title: "草元素伤害加成", content: "\((avatar.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_Element_Grass", name: "草元素伤害加成", value: "\((avatar.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%")
                 default:
                     EmptyView()
                 }
                 if avatar.fightPropMap.physicalDamage > 0 {
-                    InfoPreviewer(title: "物理伤害加成", content: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%", contentStyle: .capsule, textColor: .primary, backgroundColor: .gray)
+                    AttributeLabel(iconString: "UI_Icon_PhysicalAttackUp", name: "物理伤害加成", value: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%")
                 }
+            }
+            if #available(iOS 16, *) {
+                Grid(verticalSpacing: 3) {
+                    probRows
+                }
+                .padding(.bottom, 10)
+            } else {
+                VStack(spacing: 3) {
+                    probRows
+                }
+                .padding(.bottom, 10)
             }
             artifactsDetailsView()
         }
@@ -85,6 +96,10 @@ struct EachCharacterDetailDatasView: View {
                     GridRow {
                         ForEach(avatar.artifacts) { artifact in
                             HomeSourceWebIcon(iconString: artifact.iconString)
+                                .frame(maxWidth: 60, maxHeight: 60)
+                            if artifact != avatar.artifacts.last {
+                                Spacer()
+                            }
                         }
                     }
                     GridRow {
@@ -95,6 +110,9 @@ struct EachCharacterDetailDatasView: View {
                                     .bold()
                                 Text("\(artifact.mainAttribute.valueString)")
                                     .bold()
+                            }
+                            if artifact != avatar.artifacts.last {
+                                Spacer()
                             }
                         }
                     }
@@ -107,6 +125,9 @@ struct EachCharacterDetailDatasView: View {
                                     Text("\(subAttribute.valueString)")
                                         .font(.callout)
                                 }
+                            }
+                            if artifact != avatar.artifacts.last {
+                                Spacer()
                             }
                         }
                     }
@@ -284,5 +305,61 @@ struct EachCharacterDetailDatasView: View {
         }
         .padding(.vertical)
         .frame(height: l)
+    }
+}
+
+@available(iOS 15.0, *)
+struct AttributeLabel: View {
+    let iconString: String
+    let name: String
+    let value: String
+
+    let textColor: Color = .white
+    let backgroundColor: Color = .white
+
+    var body: some View {
+        let image = Image(iconString)
+            .resizable()
+            .scaledToFit()
+            .padding(.vertical, 1)
+            .padding(.leading, 3)
+        let nameView = Text(LocalizedStringKey(name))
+        let valueView = Text(value)
+            .foregroundColor(.primary)
+            .padding(.horizontal)
+            .background(
+                Capsule()
+                    .foregroundStyle(.gray)
+                    .frame(height: 20)
+                    .frame(maxWidth: 200)
+                    .opacity(0.25)
+            )
+        if #available(iOS 16, *) {
+            GridRow {
+                image
+                HStack {
+                    nameView
+                    Spacer()
+                    valueView
+                }
+            }
+//            GridRow {
+//                Spacer()
+//                nameView
+//                image
+//                valueView
+//                Spacer()
+//            }
+            .frame(height: 20)
+        } else {
+            HStack {
+                HStack {
+                    image
+                    nameView
+                }
+                Spacer()
+                valueView
+            }
+        }
     }
 }
