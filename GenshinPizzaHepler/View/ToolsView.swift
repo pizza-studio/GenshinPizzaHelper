@@ -282,6 +282,54 @@ struct ToolsView: View {
                 InfoPreviewer(title: "战斗次数", content: "\(data.totalBattleTimes)")
                 InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
             }
+
+            Section {
+                HStack {
+                    Text("最强一击")
+                    Spacer()
+                    Text("\(data.damageRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.damageRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+                HStack {
+                    Text("最多击破数")
+                    Spacer()
+                    Text("\(data.defeatRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.defeatRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+                HStack {
+                    Text("承受最多伤害")
+                    Spacer()
+                    Text("\(data.takeDamageRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.takeDamageRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+                HStack {
+                    Text("元素战技释放数")
+                    Spacer()
+                    Text("\(data.normalSkillRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.normalSkillRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+                HStack {
+                    Text("元素爆发次数")
+                    Spacer()
+                    Text("\(data.energySkillRank.first?.value ?? -1)")
+                    WebImage(urlStr: data.energySkillRank.first?.avatarIcon ?? "")
+                        .frame(width: 35, height: 35)
+                        .offset(x: -7, y: -7)
+                        .scaledToFit()
+                }
+            }
         }
     }
 
