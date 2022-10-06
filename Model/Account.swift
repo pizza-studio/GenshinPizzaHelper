@@ -58,11 +58,9 @@ extension AccountConfiguration {
     }
 
     #if !os(watchOS)
-    func fetchPlayerDetail(charLoc: ENCharacterLoc,
-                           charMap: ENCharacterMap,
-                           _ completion: @escaping (Result<PlayerDetail, PlayerDetail.PlayerDetailError>) -> ()) {
+    func fetchPlayerDetail(_ completion: @escaping (Result<PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>) -> ()) {
         guard let uid = self.uid else { return }
-        API.OpenAPIs.fetchPlayerDetail(uid, charLoc: charLoc, charMap: charMap) { result in
+        API.OpenAPIs.fetchPlayerDetail(uid) { result in
             completion(result)
         }
     }

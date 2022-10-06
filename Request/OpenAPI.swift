@@ -88,16 +88,14 @@ extension API {
         ///     - completion: 数据
         static func fetchPlayerDetail (
             _ uid: String,
-            charLoc: ENCharacterLoc,
-            charMap: ENCharacterMap,
             completion: @escaping (
-                Result<PlayerDetail, PlayerDetail.PlayerDetailError>
+                Result<PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>
             ) -> ()
         ) {
             fetchPlayerDatas(uid) { result in
                 switch result {
                 case .success(let model):
-                    completion(.success(.init(playerDetailFetchModel: model, localizedDictionary: charLoc.getLocalizedDictionary(), characterMap: charMap)))
+                    completion(.success(model))
                 case .failure(_):
                     completion(.failure(.failToGetCharacterData))
                 }

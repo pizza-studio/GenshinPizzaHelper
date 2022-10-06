@@ -49,6 +49,9 @@ class ViewModel: NSObject, ObservableObject {
                 self.accounts = accountConfigs.map { Account(config: $0) }
                 self.refreshData()
                 print("account fetched")
+                #if !os(watchOS)
+                self.refreshPlayerDetail()
+                #endif
             }
         }
     }
@@ -88,9 +91,6 @@ class ViewModel: NSObject, ObservableObject {
             accounts[index].config.fetchBasicInfo { basicInfo in
                 self.accounts[index].basicInfo = basicInfo
             }
-            #if !os(watchOS)
-            refreshPlayerDetail()
-            #endif
         }
     }
 
@@ -109,24 +109,23 @@ class ViewModel: NSObject, ObservableObject {
             charMap = $0
             group.leave()
         }
-        group.notify(queue: .main) {
-            guard let charLoc = charLoc, let charMap = charMap else { return }
-            self.accounts.indices.forEach { index in
-                self.accounts[index].fetchPlayerDetailComplete = false
-                self.accounts[index].config.fetchPlayerDetail(charLoc: charLoc, charMap: charMap) { playerDetailResult in
+        self.accounts.indices.forEach { index in
+            self.accounts[index].fetchPlayerDetailComplete = false
+            self.accounts[index].config.fetchPlayerDetail { playerDetailResult in
+                group.notify(queue: .main) {
+                    guard let charLoc = charLoc, let charMap = charMap else { return }
                     switch playerDetailResult {
-                    case .success(_):
-                        self.accounts[index].playerDetailResult = playerDetailResult
-                    case .failure(_):
+                    case .success(let model):
+                        self.accounts[index].playerDetailResult = .success(.init(playerDetailFetchModel: model, localizedDictionary: charLoc.getLocalizedDictionary(), characterMap: charMap))
+                    case .failure(let error):
                         if self.accounts[index].playerDetailResult == nil {
-                            self.accounts[index].playerDetailResult = playerDetailResult
+                            self.accounts[index].playerDetailResult = .failure(error)
                         }
                     }
                     self.accounts[index].fetchPlayerDetailComplete = true
                 }
             }
         }
-
     }
     #endif
 }
