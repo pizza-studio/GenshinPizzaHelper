@@ -22,6 +22,10 @@ struct ToolsView: View {
 
     @State private var sheetType: SheetTypes? = nil
 
+    @State var thisAbyssData: SpiralAbyssDetail? = nil
+    @State var lastAbyssData: SpiralAbyssDetail? = nil
+    @State private var abyssDataViewSelection: AbyssDataType = .thisTerm
+
     var animation: Namespace.ID
 
     var body: some View {
@@ -157,6 +161,10 @@ struct ToolsView: View {
                 }
                 .padding(.horizontal)
                 .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+                .onTapGesture {
+                    simpleTaptic(type: .medium)
+                    sheetType = .spiralAbyss
+                }
 
                 VStack {
                     VStack {
@@ -221,7 +229,60 @@ struct ToolsView: View {
 
     @ViewBuilder
     func spiralAbyssSheetView() -> some View {
-        Text("")
+        if let thisAbyssData = thisAbyssData, let lastAbyssData = lastAbyssData {
+            NavigationView {
+                VStack {
+                    Picker("", selection: $abyssDataViewSelection) {
+                        ForEach(AbyssDataType.allCases, id:\.self) { option in
+                            Text(option.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .padding()
+                    switch abyssDataViewSelection {
+                    case .thisTerm:
+                        abyssDetailDataDisplayView(data: thisAbyssData)
+                    case .lastTerm:
+                        abyssDetailDataDisplayView(data: lastAbyssData)
+                    }
+                }
+                .navigationTitle("深境螺旋详情")
+                .navigationBarTitleDisplayMode(.inline)
+            }
+        } else {
+            ProgressView()
+                .onAppear {
+                    // scheduleType = 1: 本期深渊 / = 2: 上期深渊
+                    API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
+                        switch result {
+                        case .success(let resultData):
+                            thisAbyssData = resultData
+                        case .failure(_):
+                            print("Fail")
+                        }
+                    }
+                    API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
+                        switch result {
+                        case .success(let resultData):
+                            lastAbyssData = resultData
+                        case .failure(_):
+                            print("Fail")
+                        }
+                    }
+                }
+        }
+    }
+
+    @ViewBuilder
+    func abyssDetailDataDisplayView(data: SpiralAbyssDetail) -> some View {
+        List {
+            Section {
+                InfoPreviewer(title: "最深抵达", content: data.maxFloor)
+                InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
+                InfoPreviewer(title: "战斗次数", content: "\(data.totalBattleTimes)")
+                InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
+            }
+        }
     }
 
     @ViewBuilder
@@ -254,6 +315,8 @@ struct ToolsView: View {
                 ForEach(accounts, id:\.config.id) { account in
                     Button(account.config.name ?? "Name Error") {
                         showingAccountUUIDString = account.config.uuid!.uuidString
+                        thisAbyssData = nil
+                        lastAbyssData = nil
                     }
                 }
             } label: {
@@ -322,4 +385,9 @@ private enum SheetTypes: Identifiable {
 
     case spiralAbyss
     case characters
+}
+
+private enum AbyssDataType: String, CaseIterable {
+    case thisTerm = "本期深渊"
+    case lastTerm = "上期深渊"
 }
