@@ -344,7 +344,7 @@ struct ToolsView: View {
                     InfoPreviewer(title: "战斗结果", content: "\(floorData.star)/\(floorData.maxStar)")
                     ForEach(floorData.levels, id: \.index) { levelData in
                         VStack(alignment: .leading, spacing: 0) {
-                            HStack {
+                            HStack(spacing: 0) {
                                 Text("第\(levelData.index)间")
                                     .font(.subheadline)
                                 Spacer()
@@ -355,7 +355,7 @@ struct ToolsView: View {
                                 }
                             }
                             ForEach(levelData.battles, id:\.index) { battleData in
-                                HStack(alignment: .top) {
+                                HStack(alignment: .top, spacing: 0) {
                                     switch battleData.index {
                                     case 1:
                                         Text("上半")
