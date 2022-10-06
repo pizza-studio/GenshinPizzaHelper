@@ -34,9 +34,9 @@ struct GenshinDictionary: View {
         }
 
     var body: some View {
-        if let searchResults = searchResults {
+        if let searchResults = searchResults, let dictionaryData = dictionaryData {
             List {
-                Section(header: Text("以下内容由「原神中英日辞典」提供")) {
+                Section {
                     ForEach(searchResults, id: \.id) { item in
                         dictionaryItemCell(word: item)
                             .contextMenu {
@@ -55,9 +55,14 @@ struct GenshinDictionary: View {
                                 }
                             }
                     }
+                } header: {
+                    VStack(alignment: .leading) {
+                        Text("以下内容由「原神中英日辞典」提供")
+                        Text("当前共收录\(dictionaryData.count)条原神专有词汇")
+                    }
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持输入易错字、简写和英文标签")
             .navigationTitle("原神中英日辞典")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -70,6 +75,7 @@ struct GenshinDictionary: View {
             }
             .fullScreenCover(isPresented: $showSafari, content: {
                 SFSafariViewWrapper(url: URL(string: "https://genshin-dictionary.com/")!)
+                    .ignoresSafeArea()
             })
         } else {
             ProgressView()
