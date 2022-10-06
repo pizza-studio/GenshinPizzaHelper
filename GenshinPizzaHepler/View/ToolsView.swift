@@ -248,6 +248,13 @@ struct ToolsView: View {
                 }
                 .navigationTitle("深境螺旋详情")
                 .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("完成") {
+                            sheetType = nil
+                        }
+                    }
+                }
             }
         } else {
             ProgressView()
