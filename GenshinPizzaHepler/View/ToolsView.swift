@@ -284,6 +284,7 @@ struct ToolsView: View {
                 InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
             } header: {
                 Text("战斗概览")
+                    .font(.headline)
             }
 
             // 战斗数据榜
@@ -335,15 +336,24 @@ struct ToolsView: View {
                 }
             } header: {
                 Text("战斗数据榜")
+                    .font(.headline)
             }
 
             ForEach(data.floors, id:\.index) { floorData in
                 Section {
                     InfoPreviewer(title: "战斗结果", content: "\(floorData.star)/\(floorData.maxStar)")
                     ForEach(floorData.levels, id: \.index) { levelData in
-                        VStack(alignment: .leading) {
-                            Text("第\(levelData.index)间")
-                                .font(.subheadline)
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack {
+                                Text("第\(levelData.index)间")
+                                    .font(.subheadline)
+                                Spacer()
+                                ForEach(0 ..< levelData.star) { _ in
+                                    Image("star.abyss")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                }
+                            }
                             ForEach(levelData.battles, id:\.index) { battleData in
                                 HStack(alignment: .top) {
                                     switch battleData.index {
@@ -358,11 +368,12 @@ struct ToolsView: View {
                                             .font(.caption)
                                     }
                                     ForEach(battleData.avatars, id:\.id) { avatarData in
-                                        VStack {
+                                        VStack(spacing: 0) {
                                             WebImage(urlStr: avatarData.icon)
-                                                .frame(height: 80)
+                                                .frame(height: 100)
                                                 .scaledToFit()
                                             Text("Lv.\(avatarData.level)")
+                                                .font(.footnote)
                                         }
                                     }
                                 }
@@ -371,6 +382,7 @@ struct ToolsView: View {
                     }
                 } header: {
                     Text("深境螺旋第\(floorData.index)层")
+                        .font(.headline)
                 }
             }
         }
