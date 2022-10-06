@@ -358,10 +358,12 @@ struct ToolsView: View {
                                             .font(.caption)
                                     }
                                     ForEach(battleData.avatars, id:\.id) { avatarData in
-                                        WebImage(urlStr: avatarData.icon)
-                                            .overlay(Text("Lv.\(avatarData.level)"), alignment: .bottomLeading)
-                                            .frame(height: 80)
-                                            .scaledToFit()
+                                        VStack {
+                                            WebImage(urlStr: avatarData.icon)
+                                                .frame(height: 80)
+                                                .scaledToFit()
+                                            Text("Lv.\(avatarData.level)")
+                                        }
                                     }
                                 }
                             }
