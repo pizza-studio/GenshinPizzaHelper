@@ -336,6 +336,41 @@ struct ToolsView: View {
             } header: {
                 Text("战斗数据榜")
             }
+
+            ForEach(data.floors, id:\.index) { floorData in
+                Section {
+                    InfoPreviewer(title: "战斗结果", content: "\(floorData.star)/\(floorData.maxStar)")
+                    ForEach(floorData.levels, id: \.index) { levelData in
+                        VStack(alignment: .leading) {
+                            Text("第\(levelData.index)间")
+                                .font(.subheadline)
+                            ForEach(levelData.battles, id:\.index) { battleData in
+                                HStack(alignment: .top) {
+                                    switch battleData.index {
+                                    case 1:
+                                        Text("上半")
+                                            .font(.caption)
+                                    case 2:
+                                        Text("下半")
+                                            .font(.caption)
+                                    default:
+                                        Text("Unknown")
+                                            .font(.caption)
+                                    }
+                                    ForEach(battleData.avatars, id:\.id) { avatarData in
+                                        WebImage(urlStr: avatarData.icon)
+                                            .overlay(Text("Lv.\(avatarData.level)"), alignment: .bottomLeading)
+                                            .frame(height: 80)
+                                            .scaledToFit()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } header: {
+                    Text("深境螺旋第\(floorData.index)层")
+                }
+            }
         }
         .listStyle(.sidebar)
     }
