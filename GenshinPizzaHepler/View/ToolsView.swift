@@ -366,7 +366,7 @@ struct ToolsView: View {
                                 Text("第\(levelData.index)间")
                                     .font(.subheadline)
                                 Spacer()
-                                ForEach(0 ..< levelData.star) { _ in
+                                ForEach(0 ..< levelData.star, id:\.self) { _ in
                                     Image("star.abyss")
                                         .resizable()
                                         .frame(width: 30, height: 30)
