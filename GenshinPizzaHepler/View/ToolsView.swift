@@ -230,18 +230,24 @@ struct ToolsView: View {
     @ViewBuilder
     func spiralAbyssSheetView() -> some View {
         if let thisAbyssData = thisAbyssData, let lastAbyssData = lastAbyssData {
-            VStack {
-                Picker("", selection: $abyssDataViewSelection) {
-                    ForEach(AbyssDataType.allCases, id:\.self) { option in
-                        Text(option.rawValue)
+            NavigationView {
+                VStack {
+                    Picker("", selection: $abyssDataViewSelection) {
+                        ForEach(AbyssDataType.allCases, id:\.self) { option in
+                            Text(option.rawValue)
+                        }
                     }
-                }.pickerStyle(.segmented)
-                switch abyssDataViewSelection {
-                case .thisTerm:
-                    Text("This term")
-                case .lastTerm:
-                    Text("last term")
+                    .pickerStyle(.segmented)
+                    .padding()
+                    switch abyssDataViewSelection {
+                    case .thisTerm:
+                        abyssDetailDataDisplayView(data: thisAbyssData)
+                    case .lastTerm:
+                        abyssDetailDataDisplayView(data: lastAbyssData)
+                    }
                 }
+                .navigationTitle("深境螺旋详情")
+                .navigationBarTitleDisplayMode(.inline)
             }
         } else {
             ProgressView()
@@ -264,6 +270,18 @@ struct ToolsView: View {
                         }
                     }
                 }
+        }
+    }
+
+    @ViewBuilder
+    func abyssDetailDataDisplayView(data: SpiralAbyssDetail) -> some View {
+        List {
+            Section {
+                InfoPreviewer(title: "最深抵达", content: data.maxFloor)
+                InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
+                InfoPreviewer(title: "战斗次数", content: "\(data.totalBattleTimes)")
+                InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
+            }
         }
     }
 
