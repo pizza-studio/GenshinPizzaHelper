@@ -406,23 +406,12 @@ struct ToolsView: View {
                                     }
                                     ForEach(battleData.avatars, id:\.id) { avatarData in
                                         let charID: String = "\(avatarData.id)"
-                                        let charIcon: String = charMap.getIconString(id: charID)
-//                                        let charNameID: String = charMap.getNameID(id: charID)
-//                                        let charNameCard: String = "UI_AvatarIcon_\(charNameID)_Card"
-                                        let rarityIconString = "UI_QualityBg_\(avatarData.rarity)"
+                                        let charNameID: String = charMap.getNameID(id: charID)
+                                        let charNameCard: String = "UI_AvatarIcon_\(charNameID)_Card"
                                         VStack(spacing: 0) {
-                                            ZStack {
-                                                EnkaWebIcon(iconString: rarityIconString)
-                                                    .scaledToFit()
-                                                    .scaleEffect(1.1)
-                                                    .offset(y: 10)
-                                                    .clipShape(Circle())
-                                                HomeSourceWebIcon(iconString: charIcon)
-                                                    .scaledToFit()
-//                                                    .frame(height: 100)
-                                            }
-//                                            .clipShape(Circle())
-                                            .frame(height: 100)
+                                            HomeSourceWebIcon(iconString: charNameCard)
+                                                .scaledToFit()
+                                                .frame(width: 65)
                                             Text("Lv.\(avatarData.level)")
                                                 .font(.footnote)
                                         }
