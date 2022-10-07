@@ -23,7 +23,6 @@ struct ThisDevice {
     static var hasDynamicIsland: Bool {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return false }
         if UIDevice.current.orientation.isPortrait {
-            print(window.safeAreaInsets.top)
             return window.safeAreaInsets.top >= 59
         } else {
             return window.safeAreaInsets.left > 0 || window.safeAreaInsets.right > 0
@@ -33,7 +32,6 @@ struct ThisDevice {
     static var hasNormalNotch: Bool {
         guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return false }
         if UIDevice.current.orientation.isPortrait {
-            print(window.safeAreaInsets.top)
             return window.safeAreaInsets.top >= 44 && window.safeAreaInsets.top < 59
         } else {
             return window.safeAreaInsets.left > 0 || window.safeAreaInsets.right > 0

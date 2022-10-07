@@ -78,6 +78,7 @@ struct ToolsView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
 
     @ViewBuilder

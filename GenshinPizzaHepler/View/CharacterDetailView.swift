@@ -64,7 +64,6 @@ struct CharacterDetailView: View {
         .onAppear {
             showTabViewIndex = true
             showWaterMark = false
-            print("\(UIScreen.main.bounds.size.width)")
         }
         .onChange(of: showTabViewIndex) { newValue in
             if newValue == true {
