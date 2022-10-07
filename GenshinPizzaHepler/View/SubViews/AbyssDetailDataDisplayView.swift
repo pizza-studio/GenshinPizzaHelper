@@ -112,6 +112,7 @@ private struct AbyssBattleView: View {
                         .frame(width: 65)
                     Text("Lv.\(avatarData.level)")
                         .font(.footnote)
+                        .foregroundColor(.secondary)
                 }
                 if avatarData.id != battleData.avatars.last!.id {
                     Spacer()
@@ -131,7 +132,7 @@ private struct BattleDataInfoProvider: View {
         HStack {
             Text(name)
             Spacer()
-            Text("\(value ?? -1)")
+            Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
             if let avatarID = avatarID {
                 let charIconString = charMap.getSideIconString(id: "\(avatarID)")
                 HomeSourceWebIcon(iconString: charIconString)
