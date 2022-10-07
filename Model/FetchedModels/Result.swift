@@ -10,10 +10,11 @@ import Foundation
 typealias FetchResult = Result<UserData, FetchError>
 typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
 typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
-typealias SpiralAbyssDetailFetchResult = Result<SpiralAbyssDetail, FetchError>
+
 #if !os(watchOS)
 typealias PlayerDetailsFetchResult = Result<PlayerDetailFetchModel, FetchError>
 typealias PlayerDetailResult = Result<PlayerDetail, PlayerDetail.PlayerDetailError>
+typealias SpiralAbyssDetailFetchResult = Result<SpiralAbyssDetail, FetchError>
 #endif
 
 extension FetchResult {

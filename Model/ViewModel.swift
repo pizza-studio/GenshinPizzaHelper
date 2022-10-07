@@ -56,6 +56,7 @@ class ViewModel: NSObject, ObservableObject {
                 print("account fetched")
                 #if !os(watchOS)
                 self.refreshPlayerDetail()
+                self.refreshAbyssDetail()
                 #endif
             }
         }
@@ -127,6 +128,14 @@ class ViewModel: NSObject, ObservableObject {
                     }
                     self.accounts[index].fetchPlayerDetailComplete = true
                 }
+            }
+        }
+    }
+
+    func refreshAbyssDetail() {
+        accounts.indices.forEach { index in
+            self.accounts[index].config.fetchAbyssInfo { data in
+                self.accounts[index].spiralAbyssDetail = data
             }
         }
     }
