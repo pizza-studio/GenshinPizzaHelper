@@ -40,7 +40,7 @@ struct CharacterDetailView: View {
                 .ignoresSafeArea(.all)
                 .overlay(.thinMaterial)
         )
-        .hiddenWaterMarked()
+        .hiddenWaterMark()
         .overlay(alignment: .topTrailing) {
             if ThisDevice.notchType == .none && showWaterMark {
                 Image("AppIconHD")
@@ -91,38 +91,5 @@ struct CharacterDetailView: View {
             viewModel.showCharacterDetailOfAccount = nil
             viewModel.showingCharacterName = nil
         }
-    }
-}
-
-@available(iOS 15.0, *)
-private struct HiddenCharacterViewWaterMark: ViewModifier {
-    func body(content: Content) -> some View {
-        let waterMarkWithName = HStack {
-            Image("AppIconHD")
-                .resizable()
-                .scaledToFit()
-                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
-            Text("披萨小助手").font(.footnote).bold()
-        }
-        .frame(maxWidth: 270, maxHeight: 20)
-        switch ThisDevice.notchType {
-        case .dynamicIsland:
-            content.overlay(alignment: .top) {
-                waterMarkWithName.padding(.top, 15)
-            }
-        case .normalNotch:
-            content.overlay(alignment: .top) {
-                waterMarkWithName.padding(.top, 10)
-            }
-        case .none:
-            content
-        }
-    }
-}
-
-@available(iOS 15.0, *)
-private extension View {
-    func hiddenWaterMarked() -> some View {
-        modifier(HiddenCharacterViewWaterMark())
     }
 }
