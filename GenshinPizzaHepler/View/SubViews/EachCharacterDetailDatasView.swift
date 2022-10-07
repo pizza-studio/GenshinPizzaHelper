@@ -129,6 +129,7 @@ struct EachCharacterDetailDatasView: View {
             .padding(.trailing, 3)
             .matchedGeometryEffect(id: "character.\(avatar.name)", in: animation)
         VStack(alignment: .leading, spacing: 0) {
+            Spacer()
             Text(avatar.name)
                 .font(.title2)
                 .bold()
@@ -218,7 +219,7 @@ struct EachCharacterDetailDatasView: View {
         }
         .frame(height: l)
         .overlay(alignment: .bottomTrailing) {
-            Text("\(weapon.level)级")
+            Text("Lv.\(weapon.level)")
                 .font(.caption)
                 .padding(.horizontal, 3)
                 .background(

@@ -22,6 +22,7 @@ struct CharacterDetailView: View {
     var animation: Namespace.ID
 
     @State var showTabViewIndex: Bool = false
+    @State var showWaterMark: Bool = true
 
     var body: some View {
         TabView(selection: $showingCharacterName) {
@@ -39,22 +40,45 @@ struct CharacterDetailView: View {
                 .ignoresSafeArea(.all)
                 .overlay(.thinMaterial)
         )
+        .hiddenWaterMarked()
+        .overlay(alignment: .topTrailing) {
+            if ThisDevice.notchType == .none && showWaterMark {
+                Image("AppIconHD")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Circle())
+                    .frame(maxHeight: 20)
+                    .padding()
+            }
+        }
         .onChange(of: showingCharacterName) { _ in
             simpleTaptic(type: .selection)
             withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true
+                showWaterMark = false
             }
         }
         .ignoresSafeArea()
         .statusBarHidden(true)
         .onAppear {
             showTabViewIndex = true
+            showWaterMark = false
+            print("\(UIDevice.current.model)")
         }
         .onChange(of: showTabViewIndex) { newValue in
             if newValue == true {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
                     withAnimation {
                         showTabViewIndex = false
+                    }
+                }
+            }
+        }
+        .onChange(of: showWaterMark) { newValue in
+            if newValue == false {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+                    withAnimation(.easeIn(duration: 0.1)) {
+                        showWaterMark = true
                     }
                 }
             }
@@ -70,3 +94,35 @@ struct CharacterDetailView: View {
     }
 }
 
+@available(iOS 15.0, *)
+private struct HiddenCharacterViewWaterMark: ViewModifier {
+    func body(content: Content) -> some View {
+        let waterMarkWithName = HStack {
+            Image("AppIconHD")
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+            Text("披萨小助手").font(.footnote).bold()
+        }
+        .frame(maxWidth: 270, maxHeight: 20)
+        switch ThisDevice.notchType {
+        case .dynamicIsland:
+            content.overlay(alignment: .top) {
+                waterMarkWithName.padding(.top, 15)
+            }
+        case .normalNotch:
+            content.overlay(alignment: .top) {
+                waterMarkWithName.padding(.top, 10)
+            }
+        case .none:
+            content
+        }
+    }
+}
+
+@available(iOS 15.0, *)
+private extension View {
+    func hiddenWaterMarked() -> some View {
+        modifier(HiddenCharacterViewWaterMark())
+    }
+}
