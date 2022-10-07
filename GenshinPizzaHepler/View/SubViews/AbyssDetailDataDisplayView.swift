@@ -25,60 +25,14 @@ struct AbyssDetailDataDisplayView: View {
 
             // 战斗数据榜
             Section {
-                HStack {
-                    Text("最强一击")
-                    Spacer()
-                    Text("\(data.damageRank.first?.value ?? -1)")
-                    let charID = "\(data.damageRank.first?.avatarId ?? 0)"
-                    let charIconString = charMap.getSideIconString(id: charID)
-                    HomeSourceWebIcon(iconString: charIconString)
-                        .frame(width: 35, height: 35)
-                        .scaledToFit()
-                }
-                HStack {
-                    Text("最多击破数")
-                    Spacer()
-                    Text("\(data.defeatRank.first?.value ?? -1)")
-                    let charID = "\(data.defeatRank.first?.avatarId ?? 0)"
-                    let charIconString = charMap.getSideIconString(id: charID)
-                    HomeSourceWebIcon(iconString: charIconString)
-                        .frame(width: 35, height: 35)
-                        .scaledToFit()
-                }
-                HStack {
-                    Text("承受最多伤害")
-                    Spacer()
-                    Text("\(data.takeDamageRank.first?.value ?? -1)")
-                    let charID = "\(data.takeDamageRank.first?.avatarId ?? 0)"
-                    let charIconString = charMap.getSideIconString(id: charID)
-                    HomeSourceWebIcon(iconString: charIconString)
-                        .frame(width: 35, height: 35)
-                        .scaledToFit()
-                }
-                HStack {
-                    Text("元素战技释放数")
-                    Spacer()
-                    Text("\(data.normalSkillRank.first?.value ?? -1)")
-                    let charID = "\(data.normalSkillRank.first?.avatarId ?? 0)"
-                    let charIconString = charMap.getSideIconString(id: charID)
-                    HomeSourceWebIcon(iconString: charIconString)
-                        .frame(width: 35, height: 35)
-                        .scaledToFit()
-                }
-                HStack {
-                    Text("元素爆发次数")
-                    Spacer()
-                    Text("\(data.energySkillRank.first?.value ?? -1)")
-                    let charID = "\(data.energySkillRank.first?.avatarId ?? 0)"
-                    let charIconString = charMap.getSideIconString(id: charID)
-                    HomeSourceWebIcon(iconString: charIconString)
-                        .frame(width: 35, height: 35)
-                        .scaledToFit()
-                }
+                BattleDataInfoProvider(name: "最强一击", value: data.damageRank.first?.value, avatarID: data.damageRank.first?.avatarId, charMap: charMap)
+                BattleDataInfoProvider(name: "最多击破数", value: data.defeatRank.first?.value, avatarID: data.defeatRank.first?.avatarId, charMap: charMap)
+                BattleDataInfoProvider(name: "承受最多伤害", value: data.takeDamageRank.first?.value, avatarID: data.takeDamageRank.first?.avatarId, charMap: charMap)
+                BattleDataInfoProvider(name: "元素战技释放数", value: data.normalSkillRank.first?.value, avatarID: data.normalSkillRank.first?.avatarId, charMap: charMap)
+                BattleDataInfoProvider(name: "元素爆发次数", value: data.energySkillRank.first?.value, avatarID: data.energySkillRank.first?.avatarId, charMap: charMap)
             } header: {
                 Text("战斗数据榜")
             }
-
             ForEach(data.floors.reversed(), id:\.index) { floorData in
                 AbyssFloorView(floorData: floorData, charMap: charMap)
             }
@@ -87,7 +41,7 @@ struct AbyssDetailDataDisplayView: View {
     }
 }
 
-struct AbyssFloorView: View {
+private struct AbyssFloorView: View {
     let floorData: SpiralAbyssDetail.Floor
     let charMap: [String: ENCharacterMap.Character]
 
@@ -109,12 +63,12 @@ struct AbyssFloorView: View {
     }
 }
 
-struct AbyssLevelView: View {
+private struct AbyssLevelView: View {
     let levelData: SpiralAbyssDetail.Floor.Level
     let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 0) {
                 Text("第\(levelData.index)间")
                     .font(.subheadline)
@@ -131,7 +85,7 @@ struct AbyssLevelView: View {
     }
 }
 
-struct AbyssBattleView: View {
+private struct AbyssBattleView: View {
     let battleData: SpiralAbyssDetail.Floor.Level.Battle
     let charMap: [String: ENCharacterMap.Character]
 
@@ -167,8 +121,40 @@ struct AbyssBattleView: View {
     }
 }
 
-struct AbyssStarIcon: View {
+private struct BattleDataInfoProvider: View {
+    let name: String
+    let value: Int?
+    let avatarID: Int?
+    let charMap: [String: ENCharacterMap.Character]
+
     var body: some View {
-        Image("star.abyss").resizable().scaledToFit()
+        HStack {
+            Text(name)
+            Spacer()
+            Text("\(value ?? -1)")
+            if let avatarID = avatarID {
+                let charIconString = charMap.getSideIconString(id: "\(avatarID)")
+                HomeSourceWebIcon(iconString: charIconString)
+                    .frame(width: 35, height: 35)
+                    .scaledToFit()
+            }
+        }
     }
 }
+
+struct AbyssStarIcon: View {
+    @Environment(\.colorScheme) var colorSheme
+    var body: some View {
+        switch colorSheme {
+        case .light:
+            // TODO: 换颜色
+            Image("star.abyss").resizable().scaledToFit()
+        case .dark:
+            Image("star.abyss").resizable().scaledToFit()
+        @unknown default:
+            Image("star.abyss").resizable().scaledToFit()
+        }
+    }
+}
+
+

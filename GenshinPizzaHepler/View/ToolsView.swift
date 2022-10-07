@@ -42,6 +42,7 @@ struct ToolsView: View {
                 } else {
                     chooseAccountView()
                 }
+                abyssAndPrimogemNavigator()
                 Section {
                     VStack {
                         HStack {
@@ -82,7 +83,6 @@ struct ToolsView: View {
     @ViewBuilder
     func successView() -> some View {
         let playerDetail: PlayerDetail = try! account!.playerDetailResult!.get()
-        let basicInfo: BasicInfos = account!.basicInfo!
         Section {
             VStack {
                 HStack(spacing: 10) {
@@ -145,65 +145,77 @@ struct ToolsView: View {
             }
         }
 
-        Section {
-            HStack(spacing: 30) {
-                VStack {
+
+    }
+
+    @ViewBuilder
+    func abyssAndPrimogemNavigator() -> some View {
+        if let basicInfo: BasicInfos = account?.basicInfo {
+            Section {
+                HStack(spacing: 30) {
                     VStack {
-                        HStack {
-                            Text("深境螺旋")
-                                .font(.footnote)
-                            Spacer()
+                        VStack {
+                            HStack {
+                                Text("深境螺旋")
+                                    .font(.footnote)
+                                Spacer()
+                            }
+                            .padding(.top, 5)
+                            Divider()
                         }
-                        .padding(.top, 5)
-                        Divider()
-                    }
-                    VStack(spacing: 0) {
-                        Text("\(basicInfo.stats.spiralAbyss)")
-                            .font(.largeTitle)
-                        if let thisAbyssData = thisAbyssData {
-                            HStack(spacing: 0) {
-                                Text("\(thisAbyssData.totalStar)")
-                                Image("star.abyss")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
+                        VStack(spacing: 0) {
+                            Text("\(basicInfo.stats.spiralAbyss)")
+                                .font(.largeTitle)
+                            if let thisAbyssData = thisAbyssData {
+                                HStack(spacing: 0) {
+                                    Text("\(thisAbyssData.totalStar)")
+                                    Image("star.abyss")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                }
+                            } else {
+                                ProgressView()
+                                    .onTapGesture {
+                                        viewModel.refreshAbyssDetail()
+                                    }
                             }
                         }
-                    }
-                    .frame(height: 120)
-                    .padding(.bottom, 10)
-                }
-                .padding(.horizontal)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
-                .onTapGesture {
-                    simpleTaptic(type: .medium)
-                    sheetType = .spiralAbyss
-                }
-
-                VStack {
-                    VStack {
-                        HStack {
-                            Text("游戏内公开信息")
-                                .font(.footnote)
-                            Spacer()
-                        }
-                        .padding(.top, 5)
-                        Divider()
-                    }
-                    Text("Lv.\(playerDetail.basicInfo.level)")
-                        .font(.largeTitle)
                         .frame(height: 120)
                         .padding(.bottom, 10)
-                }
-                .padding(.horizontal)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
-                .onTapGesture {
-                    simpleTaptic(type: .medium)
-                    sheetType = .characters
+                    }
+                    .padding(.horizontal)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+                    .onTapGesture {
+                        simpleTaptic(type: .medium)
+                        sheetType = .spiralAbyss
+                    }
+
+                    VStack {
+                        VStack {
+                            HStack {
+                                Text("原石View占位")
+                                    .font(.footnote)
+                                Spacer()
+                            }
+                            .padding(.top, 5)
+                            Divider()
+                        }
+                        Text("原石")
+                            .font(.largeTitle)
+                            .frame(height: 120)
+                            .padding(.bottom, 10)
+                    }
+                    .padding(.horizontal)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+                    .onTapGesture {
+                        simpleTaptic(type: .medium)
+                        sheetType = .characters
+                    }
                 }
             }
+            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .listRowBackground(Color.white.opacity(0))
         }
-        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-        .listRowBackground(Color.white.opacity(0))
     }
     
     @ViewBuilder
