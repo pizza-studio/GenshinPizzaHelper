@@ -49,6 +49,10 @@ struct ENCharacterMap: Codable {
         var NameTextMapHash: Int
         /// 侧脸图
         var SideIconName: String
+        /// 正脸图
+        var iconString: String { SideIconName.replacingOccurrences(of: "_Side", with: "") }
+        /// icon用的名字
+        var nameID: String { iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")}
         /// 星级
         var QualityType: String
 
@@ -107,5 +111,17 @@ struct ENCharacterMap: Codable {
                 self.proudMapData = proud
             }
         }
+    }
+}
+
+extension [String: ENCharacterMap.Character] {
+    func getIconString(id: String) -> String {
+        return self[id]?.iconString ?? ""
+    }
+    func getSideIconString(id: String) -> String {
+        return self[id]?.SideIconName ?? ""
+    }
+    func getNameID(id: String) -> String {
+        return self[id]?.nameID ?? ""
     }
 }

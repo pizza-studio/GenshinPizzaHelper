@@ -22,8 +22,8 @@ struct ToolsView: View {
 
     @State private var sheetType: SheetTypes? = nil
 
-    @State var thisAbyssData: SpiralAbyssDetail? = nil
-    @State var lastAbyssData: SpiralAbyssDetail? = nil
+    var thisAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.this }
+    var lastAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.last }
     @State private var abyssDataViewSelection: AbyssDataType = .thisTerm
 
     var animation: Namespace.ID
@@ -42,6 +42,7 @@ struct ToolsView: View {
                 } else {
                     chooseAccountView()
                 }
+                abyssAndPrimogemNavigator()
                 Section {
                     VStack {
                         HStack {
@@ -61,6 +62,7 @@ struct ToolsView: View {
             }
             .refreshable {
                 viewModel.refreshPlayerDetail()
+                viewModel.refreshAbyssDetail()
             }
             .onAppear {
                 if !accounts.isEmpty && showingAccountUUIDString == nil {
@@ -81,7 +83,6 @@ struct ToolsView: View {
     @ViewBuilder
     func successView() -> some View {
         let playerDetail: PlayerDetail = try! account!.playerDetailResult!.get()
-        let basicInfo: BasicInfos = account!.basicInfo!
         Section {
             VStack {
                 HStack(spacing: 10) {
@@ -144,84 +145,76 @@ struct ToolsView: View {
             }
         }
 
-        Section {
-            HStack(spacing: 30) {
-                VStack {
+
+    }
+
+    @ViewBuilder
+    func abyssAndPrimogemNavigator() -> some View {
+        if let basicInfo: BasicInfos = account?.basicInfo {
+            Section {
+                HStack(spacing: 30) {
                     VStack {
-                        HStack {
-                            Text("深境螺旋")
-                                .font(.footnote)
-                            Spacer()
+                        VStack {
+                            HStack {
+                                Text("深境螺旋")
+                                    .font(.footnote)
+                                Spacer()
+                            }
+                            .padding(.top, 5)
+                            Divider()
                         }
-                        .padding(.top, 5)
-                        Divider()
-                    }
-                    VStack(spacing: 0) {
-                        Text("\(basicInfo.stats.spiralAbyss)")
-                            .font(.largeTitle)
-                        if let thisAbyssData = thisAbyssData {
-                            HStack(spacing: 0) {
-                                Text("\(thisAbyssData.totalStar)")
-                                Image("star.abyss")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
+                        VStack(spacing: 0) {
+                            Text("\(basicInfo.stats.spiralAbyss)")
+                                .font(.largeTitle)
+                            if let thisAbyssData = thisAbyssData {
+                                HStack(spacing: 0) {
+                                    Text("\(thisAbyssData.totalStar)")
+                                    Image("star.abyss")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                }
+                            } else {
+                                ProgressView()
+                                    .onTapGesture {
+                                        viewModel.refreshAbyssDetail()
+                                    }
                             }
                         }
-                    }
-                    .frame(height: 120)
-                    .padding(.bottom, 10)
-                }
-                .padding(.horizontal)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
-                .onTapGesture {
-                    simpleTaptic(type: .medium)
-                    sheetType = .spiralAbyss
-                }
-
-                VStack {
-                    VStack {
-                        HStack {
-                            Text("游戏内公开信息")
-                                .font(.footnote)
-                            Spacer()
-                        }
-                        .padding(.top, 5)
-                        Divider()
-                    }
-                    Text("Lv.\(playerDetail.basicInfo.level)")
-                        .font(.largeTitle)
                         .frame(height: 120)
                         .padding(.bottom, 10)
-                }
-                .padding(.horizontal)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
-                .onTapGesture {
-                    simpleTaptic(type: .medium)
-                    sheetType = .characters
+                    }
+                    .padding(.horizontal)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+                    .onTapGesture {
+                        simpleTaptic(type: .medium)
+                        sheetType = .spiralAbyss
+                    }
+
+                    VStack {
+                        VStack {
+                            HStack {
+                                Text("原石View占位")
+                                    .font(.footnote)
+                                Spacer()
+                            }
+                            .padding(.top, 5)
+                            Divider()
+                        }
+                        Text("原石")
+                            .font(.largeTitle)
+                            .frame(height: 120)
+                            .padding(.bottom, 10)
+                    }
+                    .padding(.horizontal)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
+                    .onTapGesture {
+                        simpleTaptic(type: .medium)
+                        sheetType = .characters
+                    }
                 }
             }
-        }
-        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-        .listRowBackground(Color.white.opacity(0))
-        .onAppear {
-            // 获取深渊信息
-            // scheduleType = 1: 本期深渊 / = 2: 上期深渊
-            API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "1") { result in
-                switch result {
-                case .success(let resultData):
-                    thisAbyssData = resultData
-                case .failure(_):
-                    print("Fail")
-                }
-            }
-            API.Features.fetchSpiralAbyssInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!, scheduleType: "2") { result in
-                switch result {
-                case .success(let resultData):
-                    lastAbyssData = resultData
-                case .failure(_):
-                    print("Fail")
-                }
-            }
+            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .listRowBackground(Color.white.opacity(0))
         }
     }
     
@@ -250,7 +243,7 @@ struct ToolsView: View {
                         Text(playerDetail.basicInfo.nickname)
                             .font(.headline)
                     } icon: {
-                        WebImage(urlStr: "http://ophelper.top/resource/\(playerDetail.basicInfo.profilePictureAvatarIconString).png")
+                        HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
                             .clipShape(Circle())
                     }
                     .labelStyle(.titleAndIcon)
@@ -273,9 +266,9 @@ struct ToolsView: View {
                     .padding()
                     switch abyssDataViewSelection {
                     case .thisTerm:
-                        abyssDetailDataDisplayView(data: thisAbyssData)
+                        AbyssDetailDataDisplayView(data: thisAbyssData, charMap: viewModel.charMap!)
                     case .lastTerm:
-                        abyssDetailDataDisplayView(data: lastAbyssData)
+                        AbyssDetailDataDisplayView(data: lastAbyssData, charMap: viewModel.charMap!)
                     }
                 }
                 .navigationTitle("深境螺旋详情")
@@ -293,121 +286,7 @@ struct ToolsView: View {
         }
     }
 
-    @ViewBuilder
-    func abyssDetailDataDisplayView(data: SpiralAbyssDetail) -> some View {
-        List {
-            // 总体战斗结果概览
-            Section {
-                InfoPreviewer(title: "最深抵达", content: data.maxFloor)
-                InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
-                InfoPreviewer(title: "战斗次数", content: "\(data.totalBattleTimes)")
-                InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
-            } header: {
-                Text("战斗概览")
-                    .font(.headline)
-            }
 
-            // 战斗数据榜
-            Section {
-                HStack {
-                    Text("最强一击")
-                    Spacer()
-                    Text("\(data.damageRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.damageRank.first?.avatarIcon ?? "")
-                        .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
-                        .scaledToFit()
-                }
-                HStack {
-                    Text("最多击破数")
-                    Spacer()
-                    Text("\(data.defeatRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.defeatRank.first?.avatarIcon ?? "")
-                        .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
-                        .scaledToFit()
-                }
-                HStack {
-                    Text("承受最多伤害")
-                    Spacer()
-                    Text("\(data.takeDamageRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.takeDamageRank.first?.avatarIcon ?? "")
-                        .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
-                        .scaledToFit()
-                }
-                HStack {
-                    Text("元素战技释放数")
-                    Spacer()
-                    Text("\(data.normalSkillRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.normalSkillRank.first?.avatarIcon ?? "")
-                        .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
-                        .scaledToFit()
-                }
-                HStack {
-                    Text("元素爆发次数")
-                    Spacer()
-                    Text("\(data.energySkillRank.first?.value ?? -1)")
-                    WebImage(urlStr: data.energySkillRank.first?.avatarIcon ?? "")
-                        .frame(width: 35, height: 35)
-                        .offset(x: -7, y: -7)
-                        .scaledToFit()
-                }
-            } header: {
-                Text("战斗数据榜")
-                    .font(.headline)
-            }
-
-            ForEach(data.floors, id:\.index) { floorData in
-                Section {
-                    InfoPreviewer(title: "战斗结果", content: "\(floorData.star)/\(floorData.maxStar)")
-                    ForEach(floorData.levels, id: \.index) { levelData in
-                        VStack(alignment: .leading, spacing: 0) {
-                            HStack(spacing: 0) {
-                                Text("第\(levelData.index)间")
-                                    .font(.subheadline)
-                                Spacer()
-                                ForEach(0 ..< levelData.star, id:\.self) { _ in
-                                    Image("star.abyss")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                                }
-                            }
-                            ForEach(levelData.battles, id:\.index) { battleData in
-                                HStack(alignment: .top, spacing: 0) {
-                                    switch battleData.index {
-                                    case 1:
-                                        Text("上半")
-                                            .font(.caption)
-                                    case 2:
-                                        Text("下半")
-                                            .font(.caption)
-                                    default:
-                                        Text("Unknown")
-                                            .font(.caption)
-                                    }
-                                    ForEach(battleData.avatars, id:\.id) { avatarData in
-                                        VStack(spacing: 0) {
-                                            WebImage(urlStr: avatarData.icon)
-                                                .frame(height: 100)
-                                                .scaledToFit()
-                                            Text("Lv.\(avatarData.level)")
-                                                .font(.footnote)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } header: {
-                    Text("深境螺旋第\(floorData.index)层")
-                        .font(.headline)
-                }
-            }
-        }
-        .listStyle(.sidebar)
-    }
 
     @ViewBuilder
     func mapNavigationLink() -> some View {
@@ -439,8 +318,6 @@ struct ToolsView: View {
                 ForEach(accounts, id:\.config.id) { account in
                     Button(account.config.name ?? "Name Error") {
                         showingAccountUUIDString = account.config.uuid!.uuidString
-                        thisAbyssData = nil
-                        lastAbyssData = nil
                     }
                 }
             } label: {
@@ -500,6 +377,12 @@ struct ToolsView: View {
             Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
         }
     }
+
+    func fetchSpiralAbyssInfos() {
+        // 获取深渊信息
+        // scheduleType = 1: 本期深渊 / = 2: 上期深渊
+        viewModel.refreshAbyssDetail()
+    }
 }
 
 private enum SheetTypes: Identifiable {
@@ -515,3 +398,5 @@ private enum AbyssDataType: String, CaseIterable {
     case thisTerm = "本期深渊"
     case lastTerm = "上期深渊"
 }
+
+

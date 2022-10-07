@@ -13,11 +13,11 @@ struct PlayerDetail {
     let avatars: [Avatar]
 
     // MARK: - 初始化
-    init(playerDetailFetchModel: PlayerDetailFetchModel, localizedDictionary: [String : String], characterMap: ENCharacterMap) {
+    init(playerDetailFetchModel: PlayerDetailFetchModel, localizedDictionary: [String : String], characterMap: [String: ENCharacterMap.Character]) {
         basicInfo = .init(playerInfo: playerDetailFetchModel.playerInfo, characterMap: characterMap)
         if let avatarInfoList = playerDetailFetchModel.avatarInfoList {
             avatars = avatarInfoList.map { avatarInfo in
-                    .init(avatarInfo: avatarInfo, localizedDictionary: localizedDictionary, characterDictionary: characterMap.characterDetails)!
+                    .init(avatarInfo: avatarInfo, localizedDictionary: localizedDictionary, characterDictionary: characterMap)!
             }
         } else { avatars = .init() }
     }
@@ -45,13 +45,13 @@ struct PlayerDetail {
         /// 正在展示的名片
         var showingNameCards: [Int]
 
-        init(playerInfo: PlayerDetailFetchModel.PlayerInfo, characterMap: ENCharacterMap) {
+        init(playerInfo: PlayerDetailFetchModel.PlayerInfo, characterMap: [String: ENCharacterMap.Character]) {
             nickname = playerInfo.nickname
             level = playerInfo.level
             signature = playerInfo.signature
             worldLevel = playerInfo.worldLevel
             nameCardId = playerInfo.nameCardId
-            profilePictureAvatarIconString = characterMap.characterDetails["\(playerInfo.profilePicture.avatarId)"]?.SideIconName.replacingOccurrences(of: "_Side", with: "") ?? ""
+            profilePictureAvatarIconString = characterMap["\(playerInfo.profilePicture.avatarId)"]?.SideIconName.replacingOccurrences(of: "_Side", with: "") ?? ""
             showingNameCards = playerInfo.showNameCardIdList ?? []
         }
     }

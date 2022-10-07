@@ -120,11 +120,6 @@
 		BFBDD65128ED7B970022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
 		BFBDD65228ED7B970022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
 		BFBDD65328ED7B980022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
-		BFBDD65528ED7B9D0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
-		BFBDD65628ED7B9E0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
-		BFBDD65728ED7B9E0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
-		BFBDD65828ED7BA00022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
-		BFBDD65928EDB7FC0022B79D /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -373,6 +368,9 @@
 		EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EAE3FCB828CE3E7B00174DA8 /* WatchWidgetExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */; };
+		EAE569FD28EFC5CF000D6856 /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
+		EAE569FE28EFC5CF000D6856 /* SpiralAbyssDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */; };
 		EAE5C5B728CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
 		EAE5C5B828CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
 		EAE95C6C28CDCA5900D975CB /* ProgressGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */; };
@@ -750,6 +748,7 @@
 		EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
 		EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDetailDataDisplayView.swift; sourceTree = "<group>"; };
 		EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCorner.swift; sourceTree = "<group>"; };
 		EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGaugeStyle.swift; sourceTree = "<group>"; };
 		EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCircular.swift; sourceTree = "<group>"; };
@@ -1036,6 +1035,7 @@
 				BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */,
 				BFFD823528A680E000616CE1 /* WebImageView.swift */,
 				BF068BD428A335F9002E7334 /* WebViews.swift */,
+				EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1725,7 +1725,6 @@
 				EAE95CD428CE0FDF00D975CB /* HttpMethod.swift in Sources */,
 				EAB1110F28CF8C69009FDF07 /* BasicInfos.swift in Sources */,
 				EAD7F02828D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
-				BFBDD65628ED7B9E0022B79D /* SpiralAbyssDetail.swift in Sources */,
 				BF7500F828E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CD328CE0FD900D975CB /* TransformerData.swift in Sources */,
 				EA36DFBB28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
@@ -1770,7 +1769,6 @@
 				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
 				BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */,
 				BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */,
-				BFBDD65728ED7B9E0022B79D /* SpiralAbyssDetail.swift in Sources */,
 				BFCC068528C9BBC8003E4A54 /* ExpeditionInfo.swift in Sources */,
 				BFCC069628C9BBC8003E4A54 /* RecoveryTime.swift in Sources */,
 				BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */,
@@ -1856,7 +1854,7 @@
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EA09A01A28A2B8BD0023B4AF /* TransformerData.swift in Sources */,
-				BFBDD65528ED7B9D0022B79D /* SpiralAbyssDetail.swift in Sources */,
+				EAE569FE28EFC5CF000D6856 /* SpiralAbyssDetail.swift in Sources */,
 				EA09A01428A2B8B20023B4AF /* ExpeditionInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1950,7 +1948,7 @@
 				EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EA56E08D28A26C0D00A64262 /* UserData.swift in Sources */,
 				EAB110EB28CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift in Sources */,
-				BFBDD65928EDB7FC0022B79D /* SpiralAbyssDetail.swift in Sources */,
+				EAE569FD28EFC5CF000D6856 /* SpiralAbyssDetail.swift in Sources */,
 				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
@@ -2058,6 +2056,7 @@
 				EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */,
+				EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */,
 				EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */,
 				EA56E09828A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
@@ -2086,7 +2085,6 @@
 				EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
 				BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EAE95D0928CE11AD00D975CB /* HttpMethod.swift in Sources */,
-				BFBDD65828ED7BA00022B79D /* SpiralAbyssDetail.swift in Sources */,
 				BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */,
 				EAE95CFD28CE11A500D975CB /* RequestResult.swift in Sources */,

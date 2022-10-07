@@ -61,3 +61,8 @@ struct SpiralAbyssDetail: Codable {
         }
     }
 }
+
+struct AccountSpiralAbyssDetail {
+    let this: SpiralAbyssDetail
+    let last: SpiralAbyssDetail
+}

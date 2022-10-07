@@ -263,6 +263,7 @@ extension API {
                 }
         }
 
+        #if !os(watchOS)
         /// 获取深渊信息
         /// - Parameters:
         ///     - region: 服务器地区
@@ -338,5 +339,6 @@ extension API {
                     }
                 }
         }
+        #endif
     }
 }

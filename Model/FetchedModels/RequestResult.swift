@@ -20,8 +20,10 @@ struct BasicInfoRequestResult: Codable {
     let retcode: Int
 }
 
+#if !os(watchOS)
 struct SpiralAbyssDetailRequestResult: Codable {
     let data: SpiralAbyssDetail?
     let message: String
     let retcode: Int
 }
+#endif
