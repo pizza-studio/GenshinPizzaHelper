@@ -14,29 +14,31 @@ struct EachCharacterDetailDatasView: View {
     var animation: Namespace.ID
 
     var body: some View {
+        let spacing: CGFloat = 8
         VStack {
             if #available(iOS 16, *) {
                 Grid {
                     GridRow {
                         avatarIconAndSkill()
-                            .padding(.bottom, 10)
+                            .padding(.bottom, spacing)
                     }
                     GridRow {
                         weapon()
-                            .padding(.bottom, 6)
+                            .padding(.bottom, spacing)
                     }
                 }
             } else {
                 HStack {
                     avatarIconAndSkill()
-                        .padding(.bottom, 10)
+                        .padding(.bottom, spacing)
                 }
                 HStack {
                     weapon()
-                        .padding(.bottom, 6)
+                        .padding(.bottom, spacing)
                 }
             }
             probView()
+                .padding(.bottom, spacing)
             artifactsDetailsView()
         }
         .padding()
@@ -120,87 +122,7 @@ struct EachCharacterDetailDatasView: View {
 
     @ViewBuilder
     func avatarIconAndSkill() -> some View {
-        EnkaWebIcon(iconString: avatar.iconString)
-            .frame(width: 85, height: 85)
-            .background(EnkaWebIcon(iconString: avatar.namecardIconString)
-                .scaledToFill()
-                .offset(x: -85/3))
-            .clipShape(Circle())
-            .padding(.trailing, 3)
-            .matchedGeometryEffect(id: "character.\(avatar.name)", in: animation)
-        VStack(alignment: .leading, spacing: 0) {
-            Spacer()
-            Text(avatar.name)
-                .font(.title2)
-                .bold()
-                .fixedSize()
-                .padding(.top)
-            HStack {
-                VStack(spacing: 2) {
-                    Spacer()
-                    HStack {
-                        Text("等级")
-                        Spacer()
-                        Text("\(avatar.level)")
-                            .padding(.horizontal)
-                            .background(
-                                Capsule()
-                                    .fill(.gray)
-                                    .opacity(0.25)
-                            )
-                    }
-                    HStack {
-                        Text("命之座")
-                        Spacer()
-                        Text("\(avatar.talentCount)命")
-                            .padding(.horizontal)
-                            .background(
-                                Capsule()
-                                    .fill(.gray)
-                                    .opacity(0.25)
-                            )
-                    }
-                    Spacer()
-                }
-                .font(.footnote)
-                .padding(.trailing, 5)
-
-                if #available(iOS 16, *) {
-                    Grid(verticalSpacing: 1) {
-                        Spacer()
-                        GridRow {
-                            ForEach(avatar.skills, id: \.iconString) { skill in
-                                VStack(spacing: 0) {
-                                    EnkaWebIcon(iconString: skill.iconString)
-                                }
-                            }
-                        }
-                        GridRow {
-                            ForEach(avatar.skills, id: \.iconString) { skill in
-                                VStack(spacing: 0) {
-                                    Text("\(skill.level)").font(.caption)
-                                }
-                            }
-                        }
-                        Spacer()
-                    }
-                } else {
-                    HStack {
-                        ForEach(avatar.skills, id: \.iconString) { skill in
-                            VStack(spacing: 0) {
-                                Spacer()
-                                EnkaWebIcon(iconString: skill.iconString)
-                                Text("\(skill.level)").font(.caption)
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-            }
-            .frame(height: 60)
-            .padding(.bottom)
-        }
-        .frame(height: 85)
+        AvatarAndSkillView(avatar: avatar)
     }
 
     @ViewBuilder
@@ -377,5 +299,86 @@ struct AttributeLabel: View {
                 valueView
             }
         }
+    }
+}
+
+@available(iOS 15.0, *)
+private struct AvatarAndSkillView: View {
+    let avatar: PlayerDetail.Avatar
+
+    var body: some View {
+        EnkaWebIcon(iconString: avatar.iconString)
+            .frame(width: 85, height: 85)
+            .background(EnkaWebIcon(iconString: avatar.namecardIconString)
+                .scaledToFill()
+                .offset(x: -85/3))
+            .clipShape(Circle())
+            .padding(.trailing, 3)
+//            .matchedGeometryEffect(id: "character.\(avatar.name)", in: animation)
+        HStack(alignment: .lastTextBaseline) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(avatar.name)
+                    .font(.title2)
+                    .bold()
+                    .fixedSize(horizontal: false, vertical: true)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(2)
+                VStack(spacing: 4) {
+                    HStack {
+                        Text("等级")
+                        Spacer()
+                        Text("\(avatar.level)")
+                            .padding(.horizontal)
+                            .background(
+                                Capsule()
+                                    .fill(.gray)
+                                    .opacity(0.25)
+                            )
+                    }
+                    HStack {
+                        Text("命之座")
+                        Spacer()
+                        Text("\(avatar.talentCount)命")
+                            .padding(.horizontal)
+                            .background(
+                                Capsule()
+                                    .fill(.gray)
+                                    .opacity(0.25)
+                            )
+                    }
+                }
+                .font(.footnote)
+            }
+            if #available(iOS 16, *) {
+                Grid(verticalSpacing: 1) {
+                    GridRow {
+                        ForEach(avatar.skills, id: \.iconString) { skill in
+                            VStack(spacing: 0) {
+                                EnkaWebIcon(iconString: skill.iconString)
+                            }
+                        }
+                    }
+                    GridRow {
+                        ForEach(avatar.skills, id: \.iconString) { skill in
+                            VStack(spacing: 0) {
+                                Text("\(skill.level)").font(.caption)
+                            }
+                        }
+                    }
+                }
+            } else {
+                HStack {
+                    ForEach(avatar.skills, id: \.iconString) { skill in
+                        VStack(spacing: 0) {
+                            Spacer()
+                            EnkaWebIcon(iconString: skill.iconString)
+                            Text("\(skill.level)").font(.caption)
+                            Spacer()
+                        }
+                    }
+                }
+            }
+        }
+        .frame(height: 85)
     }
 }
