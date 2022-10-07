@@ -28,6 +28,7 @@ struct CharacterDetailView: View {
         TabView(selection: $showingCharacterName) {
             ForEach(playerDetail.avatars, id: \.name) { avatar in
                 EachCharacterDetailDatasView(avatar: avatar, animation: animation)
+                    .frame(maxWidth: 500) // For iPad
             }
         }
         .tabViewStyle(.page(indexDisplayMode: showTabViewIndex ? .automatic : .never))
@@ -63,7 +64,7 @@ struct CharacterDetailView: View {
         .onAppear {
             showTabViewIndex = true
             showWaterMark = false
-            print("\(UIDevice.current.model)")
+            print("\(UIScreen.main.bounds.size.width)")
         }
         .onChange(of: showTabViewIndex) { newValue in
             if newValue == true {
@@ -83,6 +84,7 @@ struct CharacterDetailView: View {
                 }
             }
         }
+
     }
 
     func closeView() {
