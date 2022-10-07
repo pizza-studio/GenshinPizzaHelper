@@ -21,13 +21,15 @@ struct CharacterDetailView: View {
 
     var animation: Namespace.ID
 
+    @State var showTabViewIndex: Bool = false
+
     var body: some View {
         TabView(selection: $showingCharacterName) {
             ForEach(playerDetail.avatars, id: \.name) { avatar in
                 EachCharacterDetailDatasView(avatar: avatar, animation: animation)
             }
         }
-        .tabViewStyle(.page)
+        .tabViewStyle(.page(indexDisplayMode: showTabViewIndex ? .automatic : .never))
         .onTapGesture {
             closeView()
         }
@@ -39,9 +41,24 @@ struct CharacterDetailView: View {
         )
         .onChange(of: showingCharacterName) { _ in
             simpleTaptic(type: .selection)
+            withAnimation(.easeIn(duration: 0.1)) {
+                showTabViewIndex = true
+            }
         }
         .ignoresSafeArea()
         .statusBarHidden(true)
+        .onAppear {
+            showTabViewIndex = true
+        }
+        .onChange(of: showTabViewIndex) { newValue in
+            if newValue == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+                    withAnimation {
+                        showTabViewIndex = false
+                    }
+                }
+            }
+        }
     }
 
     func closeView() {
@@ -52,5 +69,4 @@ struct CharacterDetailView: View {
         }
     }
 }
-
 
