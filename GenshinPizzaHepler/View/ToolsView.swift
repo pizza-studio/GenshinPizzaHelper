@@ -409,7 +409,7 @@ struct ToolsView: View {
                                         let charNameID: String = charMap.getNameID(id: charID)
                                         let charNameCard: String = "UI_AvatarIcon_\(charNameID)_Card"
                                         VStack(spacing: 0) {
-                                            HomeSourceWebIcon(iconString: charNameCard)
+                                            EnkaWebIcon(iconString: charNameCard)
                                                 .scaledToFit()
                                                 .frame(width: 65)
                                             Text("Lv.\(avatarData.level)")
