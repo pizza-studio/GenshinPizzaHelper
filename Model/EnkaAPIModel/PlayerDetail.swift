@@ -8,6 +8,8 @@
 import Foundation
 
 struct PlayerDetail {
+    let nextRefreshableDate: Date
+
     let basicInfo: PlayerBasicInfo
 
     let avatars: [Avatar]
@@ -20,6 +22,7 @@ struct PlayerDetail {
                     .init(avatarInfo: avatarInfo, localizedDictionary: localizedDictionary, characterDictionary: characterMap)!
             }
         } else { avatars = .init() }
+        nextRefreshableDate = Calendar.current.date(byAdding: .second, value: playerDetailFetchModel.ttl ?? 30, to: Date())!
     }
 
     // MARK: - 本地化工具及其他词典
@@ -305,7 +308,8 @@ struct PlayerDetail {
     enum PlayerDetailError: Error {
         case failToGetLocalizedDictionary
         case failToGetCharacterDictionary
-        case failToGetCharacterData
+        case failToGetCharacterData(message: String)
+        case refreshTooFast(dateWhenRefreshable: Date)
     }
 }
 

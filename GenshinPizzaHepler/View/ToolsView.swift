@@ -32,12 +32,15 @@ struct ToolsView: View {
         NavigationView {
             List {
                 if let account = account {
-                    if ((try? account.playerDetailResult?.get()) != nil) && (account.basicInfo != nil) {
-                        successView()
+                    if let result = account.playerDetailResult {
+                        switch result {
+                        case .success(_):
+                            successView()
+                        case .failure(let error):
+                            failureView(error: error)
+                        }
                     } else if !account.fetchPlayerDetailComplete {
                         loadingView()
-                    } else {
-                        failureView()
                     }
                 } else {
                     chooseAccountView()
@@ -61,7 +64,9 @@ struct ToolsView: View {
                 }
             }
             .refreshable {
-                viewModel.refreshPlayerDetail()
+                if let account = account {
+                    viewModel.refreshPlayerDetail(for: account)
+                }
                 viewModel.refreshAbyssDetail()
             }
             .onAppear {
@@ -76,6 +81,9 @@ struct ToolsView: View {
                 case .spiralAbyss:
                     spiralAbyssSheetView()
                 }
+            }
+            .onChange(of: account) { newAccount in
+                viewModel.refreshPlayerDetail(for: newAccount!)
             }
         }
         .navigationViewStyle(.stack)
@@ -331,21 +339,41 @@ struct ToolsView: View {
     }
 
     @ViewBuilder
-    func failureView() -> some View {
-        ZStack {
-            HStack {
-                Text(account?.config.name ?? "").foregroundColor(.secondary)
-                Spacer()
-                selectAccountManuButton()
+    func failureView(error: PlayerDetail.PlayerDetailError) -> some View {
+        Section {
+            ZStack {
+                HStack {
+                    Text(account?.config.name ?? "").foregroundColor(.secondary)
+                    Spacer()
+                    selectAccountManuButton()
+                }
+                HStack {
+                    Spacer()
+                    Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                        .foregroundColor(.red)
+                        .onTapGesture {
+                            if let account = account {
+                                viewModel.refreshPlayerDetail(for: account)
+                            }
+                        }
+                    Spacer()
+                }
             }
-            HStack {
-                Spacer()
-                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
-                    .foregroundColor(.red)
-                    .onTapGesture {
-                        viewModel.refreshPlayerDetail()
-                    }
-                Spacer()
+        } footer: {
+            switch error {
+            case .failToGetLocalizedDictionary:
+                Text("fail to get localized dictionary")
+            case .failToGetCharacterDictionary:
+                Text("fail to get character dictionary")
+            case .failToGetCharacterData(let message):
+                Text(message)
+            case .refreshTooFast(let dateWhenRefreshable):
+                if dateWhenRefreshable.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate > 0 {
+                    let second = Int(dateWhenRefreshable.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)
+                    Text("请稍等\(second)秒再刷新")
+                } else {
+                    Text("请下滑刷新")
+                }
             }
         }
     }

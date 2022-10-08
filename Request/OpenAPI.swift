@@ -78,6 +78,8 @@ extension API {
                         switch requestError {
                         case .decodeError(let message):
                             completion(.failure(.decodeError(message)))
+                        case .errorWithCode(let code):
+                            completion(.failure(.errorWithCode(code)))
                         default:
                             completion(.failure(.requestError(requestError)))
                         }
@@ -92,16 +94,29 @@ extension API {
         ///     - completion: 数据
         static func fetchPlayerDetail (
             _ uid: String,
+            dateWhenNextRefreshable: Date?,
             completion: @escaping (
                 Result<PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>
             ) -> ()
         ) {
-            fetchPlayerDatas(uid) { result in
-                switch result {
-                case .success(let model):
-                    completion(.success(model))
-                case .failure(_):
-                    completion(.failure(.failToGetCharacterData))
+            if let date = dateWhenNextRefreshable, date > Date() {
+                completion(.failure(.refreshTooFast(dateWhenRefreshable: date)))
+                print("PLAYER DETAIL FETCH 刷新太快了，请在\(date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)秒后刷新")
+            } else {
+                fetchPlayerDatas(uid) { result in
+                    switch result {
+                    case .success(let model):
+                        completion(.success(model))
+                    case .failure(let error):
+                        switch error {
+                        case .errorWithCode(let code):
+                            completion(.failure(.failToGetCharacterData(message: "CODE \(code)")))
+                            print("PLAYER DETAIL FETCH CODE \(code)")
+                        default:
+                            completion(.failure(.failToGetCharacterData(message: error.description)))
+                            print("PLAYER DETAIL FETCH CODE \(error.description)")
+                        }
+                    }
                 }
             }
         }

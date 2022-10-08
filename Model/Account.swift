@@ -61,9 +61,9 @@ extension AccountConfiguration {
     }
 
     #if !os(watchOS)
-    func fetchPlayerDetail(_ completion: @escaping (Result<PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>) -> ()) {
+    func fetchPlayerDetail(dateWhenNextRefreshable: Date?, _ completion: @escaping (Result<PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>) -> ()) {
         guard let uid = self.uid else { return }
-        API.OpenAPIs.fetchPlayerDetail(uid) { result in
+        API.OpenAPIs.fetchPlayerDetail(uid, dateWhenNextRefreshable: dateWhenNextRefreshable) { result in
             completion(result)
         }
     }

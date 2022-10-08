@@ -55,7 +55,12 @@ class ViewModel: NSObject, ObservableObject {
                 self.refreshData()
                 print("account fetched")
                 #if !os(watchOS)
-                self.refreshPlayerDetail()
+                if let showingPlayerDetailOfAccountUUID = UserDefaults.standard.string(forKey: "toolViewShowingAccountUUIDString"),
+                   let showingPlayerDetailOfAccount = self.accounts.first(where: { account in
+                       account.config.uuid!.uuidString == showingPlayerDetailOfAccountUUID
+                   }) {
+                    self.refreshPlayerDetail(for: showingPlayerDetailOfAccount)
+                }
                 self.refreshAbyssDetail()
                 #endif
             }
@@ -101,24 +106,49 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     #if !os(watchOS)
-    func refreshPlayerDetail() {
-        let group = DispatchGroup()
-        group.enter()
-        API.HomeAPIs.fetchENCharacterLocDatas {
-            self.charLoc = $0.getLocalizedDictionary()
-            group.leave()
+    func refreshPlayerDetail(for account: Account) {
+        guard let index = self.accounts.firstIndex(of: account) else { return }
+        if (try? self.accounts[index].playerDetailResult?.get()) != nil {
+            self.accounts[index].playerDetailResult = nil
         }
-        group.enter()
-        API.HomeAPIs.fetchENCharacterDetailDatas {
-            self.charMap = $0.characterDetails
-            group.leave()
-        }
-        self.accounts.indices.forEach { index in
-            self.accounts[index].fetchPlayerDetailComplete = false
-            self.accounts[index].config.fetchPlayerDetail { playerDetailResult in
-                group.notify(queue: .main) {
-                    guard let charLoc = self.charLoc, let charMap = self.charMap else { return }
-                    switch playerDetailResult {
+        self.accounts[index].fetchPlayerDetailComplete = false
+        if let charLoc = self.charLoc, let charMap = self.charMap {
+            self.accounts[index].config.fetchPlayerDetail(dateWhenNextRefreshable: try? self.accounts[index].playerDetailResult?.get().nextRefreshableDate) { result in
+                switch result {
+                case .success(let model):
+                    self.accounts[index].playerDetailResult = .success(.init(playerDetailFetchModel: model, localizedDictionary: charLoc, characterMap: charMap))
+                case .failure(let error):
+                    if self.accounts[index].playerDetailResult == nil {
+                        self.accounts[index].playerDetailResult = .failure(error)
+                    }
+                }
+                self.accounts[index].fetchPlayerDetailComplete = true
+            }
+        } else {
+            let group = DispatchGroup()
+            group.enter()
+            API.HomeAPIs.fetchENCharacterLocDatas {
+                self.charLoc = $0.getLocalizedDictionary()
+                group.leave()
+            }
+            group.enter()
+            API.HomeAPIs.fetchENCharacterDetailDatas {
+                self.charMap = $0.characterDetails
+                group.leave()
+            }
+            group.notify(queue: .main) {
+                guard let charLoc = self.charLoc else {
+                    self.accounts[index].playerDetailResult = .failure(.failToGetLocalizedDictionary)
+                    self.accounts[index].fetchPlayerDetailComplete = true
+                    return
+                }
+                guard let charMap = self.charMap else {
+                    self.accounts[index].playerDetailResult = .failure(.failToGetCharacterDictionary)
+                    self.accounts[index].fetchPlayerDetailComplete = true
+                    return
+                }
+                self.accounts[index].config.fetchPlayerDetail(dateWhenNextRefreshable: try? self.accounts[index].playerDetailResult?.get().nextRefreshableDate) { result in
+                    switch result {
                     case .success(let model):
                         self.accounts[index].playerDetailResult = .success(.init(playerDetailFetchModel: model, localizedDictionary: charLoc, characterMap: charMap))
                     case .failure(let error):

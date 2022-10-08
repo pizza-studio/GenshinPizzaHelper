@@ -347,7 +347,7 @@ struct HttpMethod<T: Codable> {
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -702,6 +702,9 @@ struct HttpMethod<T: Codable> {
                     // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
                     print(error ?? "ErrorInfo nil")
                     print("STATUSCODE: \((response as? HTTPURLResponse)?.statusCode ?? -999)")
+                    if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode == 429 || statusCode == 500 {
+                        completion(.failure(.errorWithCode(statusCode)))
+                    }
                     if let error = error {
                         completion(.failure(.dataTaskError(error.localizedDescription)))
                         print(
@@ -810,7 +813,7 @@ struct HttpMethod<T: Codable> {
 //                            decoder.keyDecodingStrategy = .convertFromSnakeCase
 
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
