@@ -18,8 +18,8 @@ struct PlayerDetail {
     init(playerDetailFetchModel: PlayerDetailFetchModel, localizedDictionary: [String : String], characterMap: [String: ENCharacterMap.Character]) {
         basicInfo = .init(playerInfo: playerDetailFetchModel.playerInfo, characterMap: characterMap)
         if let avatarInfoList = playerDetailFetchModel.avatarInfoList {
-            avatars = avatarInfoList.map { avatarInfo in
-                    .init(avatarInfo: avatarInfo, localizedDictionary: localizedDictionary, characterDictionary: characterMap)!
+            avatars = avatarInfoList.compactMap { avatarInfo in
+                    .init(avatarInfo: avatarInfo, localizedDictionary: localizedDictionary, characterDictionary: characterMap)
             }
         } else { avatars = .init() }
         nextRefreshableDate = Calendar.current.date(byAdding: .second, value: playerDetailFetchModel.ttl ?? 30, to: Date())!
@@ -129,8 +129,8 @@ struct PlayerDetail {
 
             artifacts = avatarInfo.equipList.filter({ equip in
                 equip.flat.itemType == "ITEM_RELIQUARY"
-            }).map({ artifactEquipment in
-                    .init(artifactEquipment: artifactEquipment, localizedDictionary: localizedDictionary)!
+            }).compactMap({ artifactEquipment in
+                    .init(artifactEquipment: artifactEquipment, localizedDictionary: localizedDictionary)
             })
 
             fightPropMap = avatarInfo.fightPropMap
