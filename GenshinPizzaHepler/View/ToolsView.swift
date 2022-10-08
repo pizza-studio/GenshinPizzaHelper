@@ -78,6 +78,7 @@ struct ToolsView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
 
     @ViewBuilder
@@ -376,12 +377,6 @@ struct ToolsView: View {
         } label: {
             Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
         }
-    }
-
-    func fetchSpiralAbyssInfos() {
-        // 获取深渊信息
-        // scheduleType = 1: 本期深渊 / = 2: 上期深渊
-        viewModel.refreshAbyssDetail()
     }
 }
 
