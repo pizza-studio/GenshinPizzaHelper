@@ -12,7 +12,7 @@ struct LedgerData: Codable {
     var monthData: MonthData
     var dataMonth: Int
     var date: String
-    var dateLastMonth: Int
+    var dataLastMonth: Int
     var region: String
     var optionalMonth: [Int]
     var month: Int
