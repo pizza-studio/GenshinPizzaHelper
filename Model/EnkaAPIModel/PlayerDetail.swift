@@ -92,6 +92,8 @@ struct PlayerDetail {
             // 主角没有对应名片
             if nameID == "PlayerGirl" || nameID == "PlayerBoy" {
                 return "UI_NameCardPic_Bp2_P"
+            } else if nameID == "Yae" {
+                return "UI_NameCardPic_Yae1_P"
             } else {
                 return "UI_NameCardPic_\(nameID)_P"
             }
@@ -173,7 +175,7 @@ struct PlayerDetail {
                 guard weaponEquipment.flat.itemType == "ITEM_WEAPON" else { return nil }
                 name = localizedDictionary.nameFromHashMap(weaponEquipment.flat.nameTextMapHash)
                 level = weaponEquipment.weapon!.level
-                refinementRank = (weaponEquipment.weapon!.affixMap.affix.first?.value ?? 0) + 1
+                refinementRank = (weaponEquipment.weapon!.affixMap?.affix.first?.value ?? 0) + 1
 
                 let mainAttributeName: String = PropertyDictionary.getLocalizedName("FIGHT_PROP_BASE_ATTACK")
                 let mainAttributeValue: Double = weaponEquipment.flat.weaponStats?.first(where: { stats in
@@ -238,9 +240,9 @@ struct PlayerDetail {
                 name = localizedDictionary.nameFromHashMap(artifactEquipment.flat.nameTextMapHash)
                 setName = localizedDictionary.nameFromHashMap(artifactEquipment.flat.setNameTextMapHash!)
                 mainAttribute = Attribute(name: PropertyDictionary.getLocalizedName(artifactEquipment.flat.reliquaryMainstat!.mainPropId), value: artifactEquipment.flat.reliquaryMainstat!.statValue)
-                subAttributes = artifactEquipment.flat.reliquarySubstats!.map({ stats in
+                subAttributes = artifactEquipment.flat.reliquarySubstats?.map({ stats in
                     Attribute(name: PropertyDictionary.getLocalizedName(stats.appendPropId), value: stats.statValue)
-                })
+                }) ?? []
                 iconString = artifactEquipment.flat.icon
                 artifactType = .init(rawValue: artifactEquipment.flat.equipType ?? "") ?? .flower
                 rankLevel = .init(rawValue: artifactEquipment.flat.rankLevel) ?? .five
