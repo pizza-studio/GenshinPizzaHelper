@@ -73,16 +73,8 @@ extension API {
                     case .success(let requestResult):
                         print("request succeed")
                         completion(.success(requestResult))
-
                     case .failure(let requestError):
-                        switch requestError {
-                        case .decodeError(let message):
-                            completion(.failure(.decodeError(message)))
-                        case .errorWithCode(let code):
-                            completion(.failure(.errorWithCode(code)))
-                        default:
-                            completion(.failure(.requestError(requestError)))
-                        }
+                        completion(.failure(requestError))
                     }
                 }
         }
@@ -109,12 +101,16 @@ extension API {
                         completion(.success(model))
                     case .failure(let error):
                         switch error {
+                        case .dataTaskError(let message):
+                            completion(.failure(.failToGetCharacterData(message: message)))
+                        case .decodeError(let message):
+                            completion(.failure(.failToGetCharacterData(message: message)))
                         case .errorWithCode(let code):
-                            completion(.failure(.failToGetCharacterData(message: "CODE \(code)")))
-                            print("PLAYER DETAIL FETCH CODE \(code)")
-                        default:
-                            completion(.failure(.failToGetCharacterData(message: error.description)))
-                            print("PLAYER DETAIL FETCH CODE \(error.description)")
+                            completion(.failure(.failToGetCharacterData(message: "ERROR CODE \(code)")))
+                        case .noResponseData:
+                            completion(.failure(.failToGetCharacterData(message: "未找到数据")))
+                        case .responseError:
+                            completion(.failure(.failToGetCharacterData(message: "请求无响应")))
                         }
                     }
                 }
