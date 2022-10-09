@@ -51,7 +51,7 @@ struct PlayerDetail {
         init(playerInfo: PlayerDetailFetchModel.PlayerInfo, characterMap: [String: ENCharacterMap.Character]) {
             nickname = playerInfo.nickname
             level = playerInfo.level
-            signature = playerInfo.signature
+            signature = playerInfo.signature ?? ""
             worldLevel = playerInfo.worldLevel
             nameCardId = playerInfo.nameCardId
             profilePictureAvatarIconString = characterMap["\(playerInfo.profilePicture.avatarId)"]?.SideIconName.replacingOccurrences(of: "_Side", with: "") ?? ""
