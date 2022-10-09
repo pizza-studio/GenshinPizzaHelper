@@ -10,6 +10,7 @@ import Foundation
 typealias FetchResult = Result<UserData, FetchError>
 typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
 typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
+typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
 
 #if !os(watchOS)
 typealias PlayerDetailsFetchResult = Result<PlayerDetailFetchModel, RequestError>
