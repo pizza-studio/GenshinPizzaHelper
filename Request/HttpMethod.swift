@@ -347,7 +347,7 @@ struct HttpMethod<T: Codable> {
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -683,7 +683,7 @@ struct HttpMethod<T: Codable> {
                     "Accept-Encoding": "gzip, deflate, br",
                     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
                     "Accept": "application/json, text/plain, */*",
-                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15",
+                    "User-Agent": "Genshin-Pizza-Helper/2.0",
                     "Connection": "keep-alive",
                 ]
                 // http方法
@@ -702,6 +702,9 @@ struct HttpMethod<T: Codable> {
                     // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
                     print(error ?? "ErrorInfo nil")
                     print("STATUSCODE: \((response as? HTTPURLResponse)?.statusCode ?? -999)")
+                    if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode != 200 {
+                        completion(.failure(.errorWithCode(statusCode)))
+                    }
                     if let error = error {
                         completion(.failure(.dataTaskError(error.localizedDescription)))
                         print(
@@ -810,7 +813,7 @@ struct HttpMethod<T: Codable> {
 //                            decoder.keyDecodingStrategy = .convertFromSnakeCase
 
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)

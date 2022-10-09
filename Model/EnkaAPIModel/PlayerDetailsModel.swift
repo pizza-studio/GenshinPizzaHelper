@@ -33,7 +33,7 @@ struct PlayerDetailFetchModel: Codable {
         /// 本期深渊间数
         var towerLevelIndex: Int
         /// 正在展示角色信息列表（ID与等级）
-        var showAvatarInfoList: [ShowAvatarInfo]
+        var showAvatarInfoList: [ShowAvatarInfo]?
         /// 正在展示名片ID的列表
         var showNameCardIdList: [Int]?
         /// 玩家头像的角色的ID: profilePicture.avatarId

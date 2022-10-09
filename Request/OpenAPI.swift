@@ -73,14 +73,8 @@ extension API {
                     case .success(let requestResult):
                         print("request succeed")
                         completion(.success(requestResult))
-
                     case .failure(let requestError):
-                        switch requestError {
-                        case .decodeError(let message):
-                            completion(.failure(.decodeError(message)))
-                        default:
-                            completion(.failure(.requestError(requestError)))
-                        }
+                        completion(.failure(requestError))
                     }
                 }
         }
@@ -92,16 +86,33 @@ extension API {
         ///     - completion: 数据
         static func fetchPlayerDetail (
             _ uid: String,
+            dateWhenNextRefreshable: Date?,
             completion: @escaping (
                 Result<PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>
             ) -> ()
         ) {
-            fetchPlayerDatas(uid) { result in
-                switch result {
-                case .success(let model):
-                    completion(.success(model))
-                case .failure(_):
-                    completion(.failure(.failToGetCharacterData))
+            if let date = dateWhenNextRefreshable, date > Date() {
+                completion(.failure(.refreshTooFast(dateWhenRefreshable: date)))
+                print("PLAYER DETAIL FETCH 刷新太快了，请在\(date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)秒后刷新")
+            } else {
+                fetchPlayerDatas(uid) { result in
+                    switch result {
+                    case .success(let model):
+                        completion(.success(model))
+                    case .failure(let error):
+                        switch error {
+                        case .dataTaskError(let message):
+                            completion(.failure(.failToGetCharacterData(message: message)))
+                        case .decodeError(let message):
+                            completion(.failure(.failToGetCharacterData(message: message)))
+                        case .errorWithCode(let code):
+                            completion(.failure(.failToGetCharacterData(message: "ERROR CODE \(code)")))
+                        case .noResponseData:
+                            completion(.failure(.failToGetCharacterData(message: "未找到数据")))
+                        case .responseError:
+                            completion(.failure(.failToGetCharacterData(message: "请求无响应")))
+                        }
+                    }
                 }
             }
         }

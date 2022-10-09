@@ -12,7 +12,7 @@ typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
 typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
 
 #if !os(watchOS)
-typealias PlayerDetailsFetchResult = Result<PlayerDetailFetchModel, FetchError>
+typealias PlayerDetailsFetchResult = Result<PlayerDetailFetchModel, RequestError>
 typealias PlayerDetailResult = Result<PlayerDetail, PlayerDetail.PlayerDetailError>
 typealias SpiralAbyssDetailFetchResult = Result<SpiralAbyssDetail, FetchError>
 #endif
