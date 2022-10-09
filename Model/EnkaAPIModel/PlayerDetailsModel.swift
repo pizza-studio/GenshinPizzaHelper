@@ -21,7 +21,7 @@ struct PlayerDetailFetchModel: Codable {
         /// 等级
         var level: Int
         /// 签名
-        var signature: String
+        var signature: String?
         /// 世界等级
         var worldLevel: Int
         /// 资料名片ID
