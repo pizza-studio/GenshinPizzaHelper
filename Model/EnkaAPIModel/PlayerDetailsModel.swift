@@ -149,7 +149,7 @@ struct PlayerDetailFetchModel: Codable {
                 /// 圣遗物主属性ID
                 var mainPropId: Int
                 /// 圣遗物副属性ID的列表
-                var appendPropIdList: [Int]
+                var appendPropIdList: [Int]?
             }
 
             struct Weapon: Codable {
@@ -158,7 +158,7 @@ struct PlayerDetailFetchModel: Codable {
                 /// 武器突破等级
                 var promoteLevel: Int?
                 /// 武器精炼等级（0-4）
-                var affixMap: AffixMap
+                var affixMap: AffixMap?
 
                 struct AffixMap: Codable {
                     var affix: [String: Int]
