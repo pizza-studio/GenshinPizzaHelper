@@ -25,6 +25,7 @@ struct ToolsView: View {
     var thisAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.this }
     var lastAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.last }
     @State private var abyssDataViewSelection: AbyssDataType = .thisTerm
+    @State var ledgerData: LedgerData? = nil
 
     var animation: Namespace.ID
 
@@ -236,6 +237,18 @@ struct ToolsView: View {
                 Section(header: Text("帐号基本信息"), footer: Text(playerDetail.basicInfo.signature).font(.footnote)) {
                     InfoPreviewer(title: "世界等级", content: "\(playerDetail.basicInfo.worldLevel)")
                     InfoPreviewer(title: "成就数量", content: "\(basicInfo.stats.achievementNumber)")
+                }
+            }
+            .onAppear {
+                DispatchQueue.global().async {
+                    API.Features.fetchLedgerInfos(month: 0, uid: account!.config.uid!, serverID: account!.config.server.id, region: account!.config.server.region, cookie: account!.config.cookie!) { result in
+                        switch result {
+                        case .success(let result):
+                            self.ledgerData = result
+                        case .failure(_):
+                            print("fetch ledger data fail")
+                        }
+                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

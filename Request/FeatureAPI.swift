@@ -265,13 +265,13 @@ extension API {
 
         /// 获取旅行者札记信息
         /// - Parameters:
-        ///     - region: 服务器地区
-        ///     - serverID: 服务器ID
+        ///     - month: 月份
         ///     - uid: 用户UID
+        ///     - serverID: 服务器ID     
+        ///     - region: 服务器地区
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
         static func fetchLedgerInfos (
-            urlStr: String,
             month: Int,
             uid: String,
             serverID: String,
