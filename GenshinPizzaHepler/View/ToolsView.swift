@@ -159,12 +159,12 @@ struct ToolsView: View {
                             .padding(.top, 5)
                             Divider()
                         }
-                        VStack(spacing: 0) {
-                            Text("\(basicInfo.stats.spiralAbyss)")
-                                .font(.largeTitle)
+                        VStack(spacing: 10) {
+                            AbyssTextLabel(text: "\(basicInfo.stats.spiralAbyss)")
                             if let thisAbyssData = thisAbyssData {
-                                HStack(spacing: 0) {
+                                HStack {
                                     Text("\(thisAbyssData.totalStar)")
+                                        .font(.system(.body, design: .rounded))
                                     Image("star.abyss")
                                         .resizable()
                                         .frame(width: 30, height: 30)
@@ -199,7 +199,7 @@ struct ToolsView: View {
                         if let result = ledgerDataResult {
                             switch result {
                             case .success(let data):
-                                VStack {
+                                VStack(spacing: 10) {
                                     PrimogemTextLabel(primogem: data.dayData.currentPrimogems)
                                     MoraTextLabel(mora: data.dayData.currentMora)
                                 }
@@ -557,13 +557,13 @@ private struct PrimogemTextLabel: View {
     @State var labelHeight = CGFloat.zero
 
     var body: some View {
-        HStack(alignment: .center, spacing: 10) {
+        HStack {
             Image("UI_ItemIcon_Primogem")
                 .resizable()
                 .scaledToFit()
                 .frame(maxHeight: labelHeight)
             Text("\(primogem)")
-                .font(.largeTitle)
+                .font(.system(.largeTitle, design: .rounded))
                 .overlay(
                     GeometryReader(content: { geometry in
                         Color.clear
@@ -581,12 +581,37 @@ private struct MoraTextLabel: View {
     @State var labelHeight = CGFloat.zero
 
     var body: some View {
-        HStack(alignment: .center, spacing: 10) {
+        HStack {
             Image("UI_ItemIcon_Mora")
                 .resizable()
                 .scaledToFit()
                 .frame(maxHeight: labelHeight)
             Text("\(mora)")
+                .font(.system(.body, design: .rounded))
+                .overlay(
+                    GeometryReader(content: { geometry in
+                        Color.clear
+                            .onAppear(perform: {
+                                self.labelHeight = geometry.frame(in: .local).size.height
+                            })
+                    })
+                )
+        }
+    }
+}
+
+private struct AbyssTextLabel: View {
+    let text: String
+    @State var labelHeight = CGFloat.zero
+
+    var body: some View {
+        HStack {
+            Image("UI_Icon_Tower")
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: labelHeight)
+            Text(text)
+                .font(.system(.largeTitle, design: .rounded))
                 .overlay(
                     GeometryReader(content: { geometry in
                         Color.clear
