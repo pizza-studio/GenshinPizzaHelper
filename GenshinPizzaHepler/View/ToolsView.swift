@@ -60,9 +60,12 @@ struct ToolsView: View {
                         Text("原神中英日词典")
                     }
                     mapNavigationLink()
-                    #if DEBUG
-                    Text("原神计算器")
-                    #endif
+                    VStack(alignment: .leading) {
+                        Text("原神计算器")
+                        Text("由爱丽丝工坊提供")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
             .refreshable {
