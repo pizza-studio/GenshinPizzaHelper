@@ -139,20 +139,23 @@ struct GenshinDictionary: View {
                 }
             }
             if let tags = word.tags {
-                HStack(spacing: 3) {
-                    ForEach(tags, id:\.self) { tag in
-                        Text(tag)
-                            .font(.footnote)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 6)
-                            .background(
-                                Capsule()
-                                    .fill(.blue)
-                                    .frame(height: 15)
-                                    .frame(maxWidth: 100)
-                            )
+                ScrollView(.horizontal) {
+                    HStack(spacing: 3) {
+                        ForEach(tags, id:\.self) { tag in
+                            Text(tag)
+                                .font(.footnote)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 6)
+                                .background(
+                                    Capsule()
+                                        .fill(.blue)
+                                        .frame(height: 15)
+                                        .frame(maxWidth: 100)
+                                )
+                        }
                     }
                 }
+                .padding(.top, -5)
             }
         }
     }
