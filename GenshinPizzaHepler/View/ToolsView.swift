@@ -60,11 +60,14 @@ struct ToolsView: View {
                         Text("原神中英日词典")
                     }
                     mapNavigationLink()
-                    VStack(alignment: .leading) {
-                        Text("原神计算器")
-                        Text("由爱丽丝工坊提供")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
+                    Link(destination: isInstallation(urlString: "aliceworkshop://") ? URL(string: "aliceworkshop://app/import?uid=\(account?.config.uid ?? "")")! : URL(string: "https://apps.apple.com/us/app/id1620751192")!) {
+                        VStack(alignment: .leading) {
+                            Text("原神计算器")
+                                .foregroundColor(.primary)
+                            Text(isInstallation(urlString: "aliceworkshop://") ? "由爱丽丝工坊提供" : "由爱丽丝工坊提供（未安装）")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
             }
@@ -460,6 +463,17 @@ struct ToolsView: View {
             Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
         }
     }
+
+    func isInstallation(urlString:String?) -> Bool {
+            let url = URL(string: urlString!)
+            if url == nil {
+                return false
+            }
+            if UIApplication.shared.canOpenURL(url!) {
+                return true
+            }
+            return false
+        }
 }
 
 private enum SheetTypes: Identifiable {

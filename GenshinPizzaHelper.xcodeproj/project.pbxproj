@@ -634,7 +634,7 @@
 		BFB101F128D85B28000DC631 /* AllEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsView.swift; sourceTree = "<group>"; };
 		BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralAbyssDetail.swift; sourceTree = "<group>"; };
 		BFBDD65B28F2F4670022B79D /* LedgerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerData.swift; sourceTree = "<group>"; };
-		BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "SwiftPieChart-1.0.61"; path = "../Downloads/SwiftPieChart-1.0.61"; sourceTree = "<group>"; };
+		BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "SwiftPieChart-1.0.61"; path = "Dependences/SwiftPieChart-1.0.61"; sourceTree = "<group>"; };
 		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxySettingsView.swift; sourceTree = "<group>"; };
