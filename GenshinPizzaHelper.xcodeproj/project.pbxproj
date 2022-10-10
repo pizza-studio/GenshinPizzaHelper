@@ -126,6 +126,7 @@
 		BFBDD65F28F2F4670022B79D /* LedgerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD65B28F2F4670022B79D /* LedgerData.swift */; };
 		BFBDD66028F2F4670022B79D /* LedgerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD65B28F2F4670022B79D /* LedgerData.swift */; };
 		BFBDD66128F2F4670022B79D /* LedgerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBDD65B28F2F4670022B79D /* LedgerData.swift */; };
+		BFBDD66F28F3F3C90022B79D /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = BFBDD66E28F3F3C90022B79D /* SwiftPieChart */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
@@ -633,6 +634,7 @@
 		BFB101F128D85B28000DC631 /* AllEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsView.swift; sourceTree = "<group>"; };
 		BFBDD64C28ED6FF80022B79D /* SpiralAbyssDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralAbyssDetail.swift; sourceTree = "<group>"; };
 		BFBDD65B28F2F4670022B79D /* LedgerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerData.swift; sourceTree = "<group>"; };
+		BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "SwiftPieChart-1.0.61"; path = "../Downloads/SwiftPieChart-1.0.61"; sourceTree = "<group>"; };
 		BFCC064B28C5EA76003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFCC064C28C5EA79003E4A54 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxySettingsView.swift; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 			files = (
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
 				BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */,
+				BFBDD66F28F3F3C90022B79D /* SwiftPieChart in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +943,14 @@
 			path = WatchWidgetExtension;
 			sourceTree = "<group>";
 		};
+		BFBDD66C28F3F2B80022B79D /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		BFCC065728C9B6A0003E4A54 /* WatchHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1043,7 @@
 		BFE4254E289F6BA100FEFA49 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */,
 				BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */,
 				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
 				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
@@ -1050,7 +1062,6 @@
 				BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */,
 				BFFD823528A680E000616CE1 /* WebImageView.swift */,
 				BF068BD428A335F9002E7334 /* WebViews.swift */,
-				EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1255,6 +1266,7 @@
 		EABD7DAD2886B2D200B7F0FD = {
 			isa = PBXGroup;
 			children = (
+				BFBDD66C28F3F2B80022B79D /* Packages */,
 				EAE95D1228CE133F00D975CB /* WatchWidgetExtensionExtension.entitlements */,
 				EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */,
 				EA6829DB28A2523800E57462 /* .gitignore */,
@@ -1518,6 +1530,9 @@
 				BFCC067528C9B6A2003E4A54 /* PBXTargetDependency */,
 			);
 			name = GenshinPizzaHepler;
+			packageProductDependencies = (
+				BFBDD66E28F3F3C90022B79D /* SwiftPieChart */,
+			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */;
 			productType = "com.apple.product-type.application";
@@ -1585,6 +1600,8 @@
 				fr,
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
+			packageReferences = (
+			);
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2868,6 +2885,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BFBDD66E28F3F3C90022B79D /* SwiftPieChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftPieChart;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */ = {

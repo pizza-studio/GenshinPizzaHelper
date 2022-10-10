@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftPieChart
 
 @available(iOS 15.0, *)
 struct ToolsView: View {
@@ -266,9 +267,23 @@ struct ToolsView: View {
                     }
                 }
 
-                Section(header: Text("本月账单")) {
+                Section {
                     InfoPreviewer(title: "原石收入", content: "\(ledgerData?.monthData.currentPrimogems ?? -1)(\(ledgerData?.monthData.primogemsRate ?? ledgerData?.monthData.primogemRate ?? -1))")
                     InfoPreviewer(title: "摩拉收入", content: "\(ledgerData?.monthData.currentMora ?? -1)(\(ledgerData?.monthData.lastMora ?? -1))")
+                } header: {
+                    Text("本月账单")
+                } footer: {
+                    if let ledgerData = ledgerData {
+                        PieChartView(
+                            values: ledgerData.monthData.groupBy.map { Double($0.num) },
+                            names: ledgerData.monthData.groupBy.map { $0.action },
+                            formatter: { value in String(format: "%.0f", value)},
+                            colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
+                            backgroundColor: Color(UIColor.systemGroupedBackground),
+                            innerRadiusFraction: 0.6
+                        )
+                        .frame(height: 600)
+                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
