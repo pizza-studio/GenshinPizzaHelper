@@ -41,6 +41,50 @@ struct WebBroswerView: UIViewRepresentable {
     }
 }
 
+struct TeyvatMapWebView: UIViewRepresentable {
+    let webView = WKWebView()
+    var url: String = ""
+    
+    func makeUIView(context: Context) -> WKWebView {
+        guard let url = URL(string: self.url)
+        else {
+            return WKWebView()
+        }
+        let request = URLRequest(url: url)
+        webView.navigationDelegate = context.coordinator
+        webView.load(request)
+        return webView
+    }
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        if let url = URL(string: self.url) {
+            let request = URLRequest(url: url)
+            uiView.load(request)
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, WKNavigationDelegate {
+        var parent: TeyvatMapWebView
+
+        init(_ parent: TeyvatMapWebView) {
+            self.parent = parent
+        }
+
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            var js = "const bar = document.getElementsByClassName('mhy-bbs-app-header')[0];"
+            js.append("bar.parentNode.removeChild(bar);")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                print("remove bbs bar")
+                webView.evaluateJavaScript(js)
+            }
+        }
+    }
+}
+
 struct EventDetailWebView: UIViewRepresentable {
     @Environment(\.colorScheme) var colorScheme
     let webView = WKWebView()

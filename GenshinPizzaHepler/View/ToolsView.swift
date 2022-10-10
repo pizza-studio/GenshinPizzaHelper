@@ -372,7 +372,11 @@ struct ToolsView: View {
                 }
             }
         }()
-        NavigationLink(destination: WebBroswerView(url: mapURL).navigationTitle("提瓦特大地图").navigationBarTitleDisplayMode(.inline)) {
+        NavigationLink(destination:
+                        TeyvatMapWebView(url: mapURL)
+            .navigationTitle("提瓦特大地图")
+            .navigationBarTitleDisplayMode(.inline)
+        ) {
             Text("提瓦特大地图")
         }
     }
@@ -489,5 +493,3 @@ private enum AbyssDataType: String, CaseIterable {
     case thisTerm = "本期深渊"
     case lastTerm = "上期深渊"
 }
-
-
