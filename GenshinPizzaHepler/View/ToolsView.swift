@@ -167,6 +167,7 @@ struct ToolsView: View {
                                         .font(.system(.body, design: .rounded))
                                     Image("star.abyss")
                                         .resizable()
+                                    AbyssStarIcon()
                                         .frame(width: 30, height: 30)
                                 }
                             } else {
