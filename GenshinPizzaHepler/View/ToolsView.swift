@@ -196,16 +196,12 @@ struct ToolsView: View {
                             Divider()
                         }
                         if let result = ledgerDataResult {
-                            switch result {
-                            case .success(let data):
-                                VStack(spacing: 10) {
+                            VStack(spacing: 10) {
+                                switch result {
+                                case .success(let data):
                                     PrimogemTextLabel(primogem: data.dayData.currentPrimogems)
                                     MoraTextLabel(mora: data.dayData.currentMora)
-                                }
-                                .frame(height: 120)
-                                .padding(.bottom, 10)
-                            case .failure(let error):
-                                VStack {
+                                case .failure(let error):
                                     Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
                                         .foregroundColor(.red)
                                         .onTapGesture {
@@ -213,9 +209,12 @@ struct ToolsView: View {
                                                 viewModel.refreshPlayerDetail(for: account)
                                             }
                                         }
-                                    Text(error.localizedDescription)
+                                    Text(error.description)
                                 }
                             }
+                            .frame(height: 120)
+                            .padding(.bottom, 10)
+
                         } else {
                             ProgressView()
                                 .frame(height: 120)
