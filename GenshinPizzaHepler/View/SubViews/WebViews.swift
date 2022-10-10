@@ -43,7 +43,14 @@ struct WebBroswerView: UIViewRepresentable {
 
 struct TeyvatMapWebView: UIViewRepresentable {
     let webView = WKWebView()
-    var url: String = ""
+    var isHoYoLAB: Bool
+    var url: String {
+        if isHoYoLAB {
+            return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
+        } else {
+            return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
+        }
+    }
     
     func makeUIView(context: Context) -> WKWebView {
         guard let url = URL(string: self.url)
@@ -75,8 +82,14 @@ struct TeyvatMapWebView: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            var js = "const bar = document.getElementsByClassName('mhy-bbs-app-header')[0];"
-            js.append("bar.parentNode.removeChild(bar);")
+            var js: String
+            if !parent.isHoYoLAB {
+                js = "const bar = document.getElementsByClassName('mhy-bbs-app-header')[0];"
+                js.append("bar?.parentNode.removeChild(bar);")
+            } else {
+                js = "const hoyolabBar = document.getElementsByClassName('mhy-hoyolab-app-header')[0];"
+                js.append("hoyolabBar?.parentNode.removeChild(hoyolabBar);")
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 print("remove bbs bar")
                 webView.evaluateJavaScript(js)
