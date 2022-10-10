@@ -240,7 +240,7 @@ struct ToolsView: View {
     
     @ViewBuilder
     func ledgerSheetView() -> some View {
-        LedgeSheetView(data: try! ledgerDataResult!.get(), sheetType: $sheetType)
+        LedgerSheetView(data: try! ledgerDataResult!.get(), sheetType: $sheetType)
     }
 
     @ViewBuilder
@@ -442,7 +442,7 @@ private enum AbyssDataType: String, CaseIterable {
 }
 
 @available(iOS 15.0, *)
-private struct LedgeSheetView: View {
+private struct LedgerSheetView: View {
     let data: LedgerData
     @Binding var sheetType: SheetTypes?
 
@@ -450,7 +450,7 @@ private struct LedgeSheetView: View {
         NavigationView {
             List {
                 Section(header: Text("今日入账")) {
-                    VStack {
+                    VStack(spacing: 0) {
                         LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.dayData.currentPrimogems)
                         if let lastPrimogem = data.dayData.lastPrimogems {
                             let primogemsDifference = data.dayData.currentPrimogems - lastPrimogem
@@ -463,7 +463,7 @@ private struct LedgeSheetView: View {
                             }.font(.footnote)
                         }
                     }
-                    VStack {
+                    VStack(spacing: 0) {
                         LabelInfoProvider(title: "摩拉收入", icon: "UI_ItemIcon_Mora", value: data.dayData.currentMora)
                         if let lastMora = data.dayData.lastMora {
                             let moraDifference = data.dayData.currentMora - lastMora
@@ -482,7 +482,7 @@ private struct LedgeSheetView: View {
 //                    let primogemsRate = (data.monthData.primogemsRate != nil) ? data.monthData.primogemsRate! : data.monthData.primogemRate ?? -1
                     let dayCountThisMonth = Calendar.current.dateComponents([.day], from: Date()).day!
                     let primogemsDifference = data.monthData.currentPrimogems - data.monthData.lastPrimogems / dayCountThisMonth
-                    VStack {
+                    VStack(spacing: 0) {
                         LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.monthData.currentPrimogems)
                         HStack {
                             Spacer()
@@ -492,7 +492,7 @@ private struct LedgeSheetView: View {
                                 .opacity(0.8)
                         }.font(.footnote)
                     }
-                    VStack {
+                    VStack(spacing: 0) {
                         let moraDifference: Int = data.monthData.currentMora - data.monthData.lastMora / dayCountThisMonth
                         LabelInfoProvider(title: "摩拉收入", icon: "UI_ItemIcon_Mora", value: data.monthData.currentMora)
                         HStack {
@@ -516,6 +516,7 @@ private struct LedgeSheetView: View {
                     )
                     .padding(.vertical)
                     .frame(height: 600)
+                    .padding(.top)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -597,3 +598,5 @@ private struct MoraTextLabel: View {
         }
     }
 }
+
+
