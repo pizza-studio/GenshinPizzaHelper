@@ -12,6 +12,7 @@ struct GenshinDictionary: View {
     @State var dictionaryData: [GDDictionary]?
     @State private var searchText: String = ""
     @State private var showSafari: Bool = false
+    @State private var showInfoSheet: Bool = false
     var searchResults: [GDDictionary]? {
             if searchText.isEmpty || dictionaryData == nil {
                 return dictionaryData?.sorted {
@@ -86,7 +87,12 @@ struct GenshinDictionary: View {
             .navigationTitle("原神中英日辞典")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showInfoSheet.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                    }
                     Button(action: {
                         showSafari.toggle()
                     }) {
@@ -98,6 +104,28 @@ struct GenshinDictionary: View {
                 SFSafariViewWrapper(url: URL(string: "https://genshin-dictionary.com/")!)
                     .ignoresSafeArea()
             })
+            .sheet(isPresented: $showInfoSheet) {
+                NavigationView {
+                    VStack(alignment: .leading) {
+                        Text("本功能由[原神中英日辞典](https://genshin-dictionary.com/)提供。")
+                        Text("当前共收录了\(dictionaryData.count)个原神专有词语，并还在继续更新中。")
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.leading)
+                    .navigationBarTitle("关于原神中英日辞典")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                showInfoSheet.toggle()
+                            }) {
+                                Text("完成")
+                            }
+                        }
+                    }
+                }
+            }
         } else {
             ProgressView().navigationTitle("原神中英日辞典")
                 .navigationBarTitleDisplayMode(.inline)
