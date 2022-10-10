@@ -26,7 +26,8 @@ struct ToolsView: View {
     var thisAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.this }
     var lastAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.last }
     @State private var abyssDataViewSelection: AbyssDataType = .thisTerm
-    @State var ledgerData: LedgerData? = nil
+
+    var ledgerDataResult: LedgerDataFetchResult? { account?.ledgeDataResult }
 
     var animation: Namespace.ID
 
@@ -48,34 +49,14 @@ struct ToolsView: View {
                     chooseAccountView()
                 }
                 abyssAndPrimogemNavigator()
-                Section {
-                    VStack {
-                        HStack {
-                            Text("小工具")
-                                .font(.footnote)
-                            Spacer()
-                        }
-                    }
-                    NavigationLink(destination: GenshinDictionary()) {
-                        Text("原神中英日词典")
-                    }
-                    mapNavigationLink()
-                    Link(destination: isInstallation(urlString: "aliceworkshop://") ? URL(string: "aliceworkshop://app/import?uid=\(account?.config.uid ?? "")")! : URL(string: "https://apps.apple.com/us/app/id1620751192")!) {
-                        VStack(alignment: .leading) {
-                            Text("原神计算器")
-                                .foregroundColor(.primary)
-                            Text(isInstallation(urlString: "aliceworkshop://") ? "由爱丽丝工坊提供" : "由爱丽丝工坊提供（未安装）")
-                                .font(.footnote)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                }
+                toolsSection()
             }
             .refreshable {
                 if let account = account {
                     viewModel.refreshPlayerDetail(for: account)
                 }
                 viewModel.refreshAbyssDetail()
+                viewModel.refreshLedgerData()
             }
             .onAppear {
                 if !accounts.isEmpty && showingAccountUUIDString == nil {
@@ -85,7 +66,7 @@ struct ToolsView: View {
             .sheet(item: $sheetType) { type in
                 switch type {
                 case .characters:
-                    characterSheetView()
+                    ledgerSheetView()
                 case .spiralAbyss:
                     spiralAbyssSheetView()
                 }
@@ -161,20 +142,6 @@ struct ToolsView: View {
                 }
             }
         }
-        .onAppear {
-            if self.ledgerData == nil {
-                DispatchQueue.global().async {
-                    API.Features.fetchLedgerInfos(month: 0, uid: account!.config.uid!, serverID: account!.config.server.id, region: account!.config.server.region, cookie: account!.config.cookie!) { result in
-                        switch result {
-                        case .success(let result):
-                            self.ledgerData = result
-                        case .failure(_):
-                            print("fetch ledger data fail")
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @ViewBuilder
@@ -192,12 +159,14 @@ struct ToolsView: View {
                             .padding(.top, 5)
                             Divider()
                         }
-                        VStack(spacing: 0) {
-                            Text("\(basicInfo.stats.spiralAbyss)")
-                                .font(.largeTitle)
+                        VStack(spacing: 7) {
+                            AbyssTextLabel(text: "\(basicInfo.stats.spiralAbyss)")
                             if let thisAbyssData = thisAbyssData {
-                                HStack(spacing: 0) {
+                                HStack {
                                     Text("\(thisAbyssData.totalStar)")
+                                        .font(.system(.body, design: .rounded))
+                                    Image("star.abyss")
+                                        .resizable()
                                     AbyssStarIcon()
                                         .frame(width: 30, height: 30)
                                 }
@@ -214,10 +183,8 @@ struct ToolsView: View {
                     .padding(.horizontal)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
                     .onTapGesture {
-                        if ledgerData != nil {
-                            simpleTaptic(type: .medium)
-                            sheetType = .spiralAbyss
-                        }
+                        simpleTaptic(type: .medium)
+                        sheetType = .spiralAbyss
                     }
 
                     VStack {
@@ -230,14 +197,27 @@ struct ToolsView: View {
                             .padding(.top, 5)
                             Divider()
                         }
-                        if let ledgerData = ledgerData {
-                            VStack {
-                                Text("\(ledgerData.dayData.currentPrimogems)")
-                                    .font(.largeTitle)
-                                Text("\(ledgerData.dayData.currentMora)")
+                        if let result = ledgerDataResult {
+                            switch result {
+                            case .success(let data):
+                                VStack(spacing: 10) {
+                                    PrimogemTextLabel(primogem: data.dayData.currentPrimogems)
+                                    MoraTextLabel(mora: data.dayData.currentMora)
+                                }
+                                .frame(height: 120)
+                                .padding(.bottom, 10)
+                            case .failure(let error):
+                                VStack {
+                                    Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                                        .foregroundColor(.red)
+                                        .onTapGesture {
+                                            if let account = account {
+                                                viewModel.refreshPlayerDetail(for: account)
+                                            }
+                                        }
+                                    Text(error.localizedDescription)
+                                }
                             }
-                            .frame(height: 120)
-                            .padding(.bottom, 10)
                         } else {
                             ProgressView()
                                 .frame(height: 120)
@@ -247,8 +227,10 @@ struct ToolsView: View {
                     .padding(.horizontal)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
                     .onTapGesture {
-                        simpleTaptic(type: .medium)
-                        sheetType = .characters
+                        if (try? ledgerDataResult?.get()) != nil {
+                            simpleTaptic(type: .medium)
+                            sheetType = .characters
+                        }
                     }
                 }
             }
@@ -258,63 +240,8 @@ struct ToolsView: View {
     }
     
     @ViewBuilder
-    func characterSheetView() -> some View {
-        let playerDetail = try! self.account!.playerDetailResult!.get()
-        let basicInfo = self.account!.basicInfo!
-        NavigationView {
-            List {
-                Section(header: Text("今日入账")) {
-                    InfoPreviewer(title: "原石收入", content: "\(ledgerData?.dayData.currentPrimogems ?? -1)")
-                    InfoPreviewer(title: "摩拉收入", content: "\(ledgerData?.dayData.currentMora ?? -1)")
-                    if let lastPrimogem = ledgerData?.dayData.lastPrimogems {
-                        InfoPreviewer(title: "昨日原石收入", content: "\(lastPrimogem)")
-                    }
-                    if let lastMora = ledgerData?.dayData.lastMora {
-                        InfoPreviewer(title: "昨日摩拉收入", content: "\(lastMora)")
-                    }
-                }
-
-                Section {
-                    InfoPreviewer(title: "原石收入", content: "\(ledgerData?.monthData.currentPrimogems ?? -1)(\(ledgerData?.monthData.primogemsRate ?? ledgerData?.monthData.primogemRate ?? -1))")
-                    InfoPreviewer(title: "摩拉收入", content: "\(ledgerData?.monthData.currentMora ?? -1)(\(ledgerData?.monthData.lastMora ?? -1))")
-                } header: {
-                    Text("本月账单")
-                } footer: {
-                    if let ledgerData = ledgerData {
-                        PieChartView(
-                            values: ledgerData.monthData.groupBy.map { Double($0.num) },
-                            names: ledgerData.monthData.groupBy.map { $0.action },
-                            formatter: { value in String(format: "%.0f", value)},
-                            colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
-                            backgroundColor: Color(UIColor.systemGroupedBackground),
-                            innerRadiusFraction: 0.6
-                        )
-                        .padding(.vertical)
-                        .frame(height: 600)
-                    }
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                #if os(macOS)
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("返回") {
-                        sheetType = nil
-                    }
-                }
-                #endif
-                ToolbarItem(placement: .principal) {
-                    Label {
-                        Text(playerDetail.basicInfo.nickname)
-                            .font(.headline)
-                    } icon: {
-                        HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
-                            .clipShape(Circle())
-                    }
-                    .labelStyle(.titleAndIcon)
-                }
-            }
-        }
+    func ledgerSheetView() -> some View {
+        LedgerSheetView(data: try! ledgerDataResult!.get(), sheetType: $sheetType)
     }
 
     @ViewBuilder
@@ -463,6 +390,32 @@ struct ToolsView: View {
         }
     }
 
+    @ViewBuilder
+    func toolsSection() -> some View {
+        Section {
+            VStack {
+                HStack {
+                    Text("小工具")
+                        .font(.footnote)
+                    Spacer()
+                }
+            }
+            NavigationLink(destination: GenshinDictionary()) {
+                Text("原神中英日词典")
+            }
+            mapNavigationLink()
+            Link(destination: isInstallation(urlString: "aliceworkshop://") ? URL(string: "aliceworkshop://app/import?uid=\(account?.config.uid ?? "")")! : URL(string: "https://apps.apple.com/us/app/id1620751192")!) {
+                VStack(alignment: .leading) {
+                    Text("原神计算器")
+                        .foregroundColor(.primary)
+                    Text(isInstallation(urlString: "aliceworkshop://") ? "由爱丽丝工坊提供" : "由爱丽丝工坊提供（未安装）")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+
     func isInstallation(urlString:String?) -> Bool {
             let url = URL(string: urlString!)
             if url == nil {
@@ -487,6 +440,189 @@ private enum SheetTypes: Identifiable {
 private enum AbyssDataType: String, CaseIterable {
     case thisTerm = "本期深渊"
     case lastTerm = "上期深渊"
+}
+
+@available(iOS 15.0, *)
+private struct LedgerSheetView: View {
+    let data: LedgerData
+    @Binding var sheetType: SheetTypes?
+
+    var body: some View {
+        NavigationView {
+            List {
+                Section(header: Text("今日入账")) {
+                    VStack(spacing: 0) {
+                        LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.dayData.currentPrimogems)
+                        if let lastPrimogem = data.dayData.lastPrimogems {
+                            let primogemsDifference = data.dayData.currentPrimogems - lastPrimogem
+                            HStack {
+                                Spacer()
+                                Text("较昨日").foregroundColor(.secondary)
+                                Text(primogemsDifference > 0 ? "+\(primogemsDifference)" : "\(primogemsDifference)")
+                                    .foregroundColor(primogemsDifference > 0 ? .green : .red)
+                                    .opacity(0.8)
+                            }.font(.footnote)
+                        }
+                    }
+                    VStack(spacing: 0) {
+                        LabelInfoProvider(title: "摩拉收入", icon: "UI_ItemIcon_Mora", value: data.dayData.currentMora)
+                        if let lastMora = data.dayData.lastMora {
+                            let moraDifference = data.dayData.currentMora - lastMora
+                            HStack {
+                                Spacer()
+                                Text("较昨日").foregroundColor(.secondary)
+                                Text(moraDifference > 0 ? "+\(moraDifference)" : "\(moraDifference)")
+                                    .foregroundColor(moraDifference > 0 ? .green : .red)
+                                    .opacity(0.8)
+                            }.font(.footnote)
+                        }
+                    }
+                }
+
+                Section {
+//                    let primogemsRate = (data.monthData.primogemsRate != nil) ? data.monthData.primogemsRate! : data.monthData.primogemRate ?? -1
+                    let dayCountThisMonth = Calendar.current.dateComponents([.day], from: Date()).day!
+                    let primogemsDifference = data.monthData.currentPrimogems - data.monthData.lastPrimogems / dayCountThisMonth
+                    VStack(spacing: 0) {
+                        LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.monthData.currentPrimogems)
+                        HStack {
+                            Spacer()
+                            Text("较上月同期").foregroundColor(.secondary)
+                            Text(primogemsDifference > 0 ? "+\(primogemsDifference)" : "\(primogemsDifference)")
+                                .foregroundColor(primogemsDifference > 0 ? .green : .red)
+                                .opacity(0.8)
+                        }.font(.footnote)
+                    }
+                    VStack(spacing: 0) {
+                        let moraDifference: Int = data.monthData.currentMora - data.monthData.lastMora / dayCountThisMonth
+                        LabelInfoProvider(title: "摩拉收入", icon: "UI_ItemIcon_Mora", value: data.monthData.currentMora)
+                        HStack {
+                            Spacer()
+                            Text("较上月同期").foregroundColor(.secondary)
+                            Text(moraDifference > 0 ? "+\(moraDifference)" : "\(moraDifference)")
+                                .foregroundColor(moraDifference > 0 ? .green : .red)
+                                .opacity(0.8)
+                        }.font(.footnote)
+                    }
+                } header: {
+                    Text("本月账单")
+                } footer: {
+                    PieChartView(
+                        values: data.monthData.groupBy.map { Double($0.num) },
+                        names: data.monthData.groupBy.map { $0.action },
+                        formatter: { value in String(format: "%.0f", value)},
+                        colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
+                        backgroundColor: Color(UIColor.systemGroupedBackground),
+                        innerRadiusFraction: 0.6
+                    )
+                    .padding(.vertical)
+                    .frame(height: 600)
+                    .padding(.top)
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("完成") {
+                        sheetType = nil
+                    }
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("原石摩拉账簿").bold()
+                }
+            }
+        }
+    }
+
+    private struct LabelInfoProvider: View {
+        let title: String
+        let icon: String
+        let value: Int
+
+        var body: some View {
+            HStack {
+                Label(title: {Text(title.localized)}) {
+                    Image(icon)
+                        .resizable()
+                        .scaledToFit()
+                }
+                Spacer()
+                Text("\(value)")
+            }
+        }
+    }
+}
+
+private struct PrimogemTextLabel: View {
+    let primogem: Int
+    @State var labelHeight = CGFloat.zero
+
+    var body: some View {
+        HStack {
+            Image("UI_ItemIcon_Primogem")
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: labelHeight)
+            Text("\(primogem)")
+                .font(.system(.largeTitle, design: .rounded))
+                .overlay(
+                    GeometryReader(content: { geometry in
+                        Color.clear
+                            .onAppear(perform: {
+                                self.labelHeight = geometry.frame(in: .local).size.height
+                            })
+                    })
+                )
+        }
+    }
+}
+
+private struct MoraTextLabel: View {
+    let mora: Int
+    @State var labelHeight = CGFloat.zero
+
+    var body: some View {
+        HStack {
+            Image("UI_ItemIcon_Mora")
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: labelHeight)
+            Text("\(mora)")
+                .font(.system(.body, design: .rounded))
+                .overlay(
+                    GeometryReader(content: { geometry in
+                        Color.clear
+                            .onAppear(perform: {
+                                self.labelHeight = geometry.frame(in: .local).size.height
+                            })
+                    })
+                )
+        }
+    }
+}
+
+private struct AbyssTextLabel: View {
+    let text: String
+    @State var labelHeight = CGFloat.zero
+
+    var body: some View {
+        HStack {
+            Image("UI_Icon_Tower")
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: labelHeight)
+            Text(text)
+                .font(.system(.largeTitle, design: .rounded))
+                .overlay(
+                    GeometryReader(content: { geometry in
+                        Color.clear
+                            .onAppear(perform: {
+                                self.labelHeight = geometry.frame(in: .local).size.height
+                            })
+                    })
+                )
+        }
+    }
 }
 
 

@@ -62,6 +62,7 @@ class ViewModel: NSObject, ObservableObject {
                     self.refreshPlayerDetail(for: showingPlayerDetailOfAccount)
                 }
                 self.refreshAbyssDetail()
+                self.refreshLedgerData()
                 #endif
             }
         }
@@ -166,6 +167,14 @@ class ViewModel: NSObject, ObservableObject {
         accounts.indices.forEach { index in
             self.accounts[index].config.fetchAbyssInfo { data in
                 self.accounts[index].spiralAbyssDetail = data
+            }
+        }
+    }
+
+    func refreshLedgerData() {
+        accounts.indices.forEach { index in
+            self.accounts[index].config.fetchLedgerData { result in
+                self.accounts[index].ledgeDataResult = result
             }
         }
     }
