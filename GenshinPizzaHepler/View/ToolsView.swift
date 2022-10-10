@@ -154,8 +154,18 @@ struct ToolsView: View {
                 }
             }
         }
-
-
+        .onAppear {
+                DispatchQueue.global().async {
+                    API.Features.fetchLedgerInfos(month: 0, uid: account!.config.uid!, serverID: account!.config.server.id, region: account!.config.server.region, cookie: account!.config.cookie!) { result in
+                        switch result {
+                        case .success(let result):
+                            self.ledgerData = result
+                        case .failure(_):
+                            print("fetch ledger data fail")
+                        }
+                    }
+                }
+        }
     }
 
     @ViewBuilder
@@ -203,17 +213,26 @@ struct ToolsView: View {
                     VStack {
                         VStack {
                             HStack {
-                                Text("原石View占位")
+                                Text("今日入账")
                                     .font(.footnote)
                                 Spacer()
                             }
                             .padding(.top, 5)
                             Divider()
                         }
-                        Text("原石")
-                            .font(.largeTitle)
+                        if let ledgerData = ledgerData {
+                            VStack {
+                                Text("\(ledgerData.dayData.currentPrimogems)")
+                                    .font(.largeTitle)
+                                Text("\(ledgerData.dayData.currentMora)")
+                            }
                             .frame(height: 120)
                             .padding(.bottom, 10)
+                        } else {
+                            ProgressView()
+                                .frame(height: 120)
+                                .padding(.bottom, 10)
+                        }
                     }
                     .padding(.horizontal)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
@@ -237,18 +256,6 @@ struct ToolsView: View {
                 Section(header: Text("帐号基本信息"), footer: Text(playerDetail.basicInfo.signature).font(.footnote)) {
                     InfoPreviewer(title: "世界等级", content: "\(playerDetail.basicInfo.worldLevel)")
                     InfoPreviewer(title: "成就数量", content: "\(basicInfo.stats.achievementNumber)")
-                }
-            }
-            .onAppear {
-                DispatchQueue.global().async {
-                    API.Features.fetchLedgerInfos(month: 0, uid: account!.config.uid!, serverID: account!.config.server.id, region: account!.config.server.region, cookie: account!.config.cookie!) { result in
-                        switch result {
-                        case .success(let result):
-                            self.ledgerData = result
-                        case .failure(_):
-                            print("fetch ledger data fail")
-                        }
-                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
