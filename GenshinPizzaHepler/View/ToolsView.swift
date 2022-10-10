@@ -282,23 +282,27 @@ struct ToolsView: View {
 
     @ViewBuilder
     func mapNavigationLink() -> some View {
-        let mapURL: String = {
+        let isHoYoLAB: Bool = {
             if let account = account {
                 switch account.config.server.region {
                 case .cn:
-                    return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
+                    return false
                 case .global:
-                    return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
+                    return true
                 }
             } else {
                 if Locale.current.identifier == "zh_CN" {
-                    return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
+                    return false
                 } else {
-                    return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
+                    return true
                 }
             }
         }()
-        NavigationLink(destination: WebBroswerView(url: mapURL).navigationTitle("提瓦特大地图").navigationBarTitleDisplayMode(.inline)) {
+        NavigationLink(destination:
+                        TeyvatMapWebView(isHoYoLAB: isHoYoLAB)
+            .navigationTitle("提瓦特大地图")
+            .navigationBarTitleDisplayMode(.inline)
+        ) {
             Text("提瓦特大地图")
         }
     }
@@ -624,5 +628,3 @@ private struct AbyssTextLabel: View {
         }
     }
 }
-
-
