@@ -198,8 +198,7 @@ struct ToolsView: View {
                             if let thisAbyssData = thisAbyssData {
                                 HStack(spacing: 0) {
                                     Text("\(thisAbyssData.totalStar)")
-                                    Image("star.abyss")
-                                        .resizable()
+                                    AbyssStarIcon()
                                         .frame(width: 30, height: 30)
                                 }
                             } else {
