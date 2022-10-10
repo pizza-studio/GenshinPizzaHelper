@@ -156,6 +156,7 @@ struct ToolsView: View {
             }
         }
         .onAppear {
+            if self.ledgerData == nil {
                 DispatchQueue.global().async {
                     API.Features.fetchLedgerInfos(month: 0, uid: account!.config.uid!, serverID: account!.config.server.id, region: account!.config.server.region, cookie: account!.config.cookie!) { result in
                         switch result {
@@ -166,6 +167,7 @@ struct ToolsView: View {
                         }
                     }
                 }
+            }
         }
     }
 
@@ -282,6 +284,7 @@ struct ToolsView: View {
                             backgroundColor: Color(UIColor.systemGroupedBackground),
                             innerRadiusFraction: 0.6
                         )
+                        .padding(.vertical)
                         .frame(height: 600)
                     }
                 }
