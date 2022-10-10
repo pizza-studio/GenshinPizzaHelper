@@ -282,7 +282,13 @@ extension API {
             ) -> ()
         ) {
             // 请求类别
-            let urlStr = "event/ys_ledger/monthInfo"
+            let urlStr: String
+            switch region {
+            case .cn:
+                urlStr = "event/ys_ledger/monthInfo"
+            case .global:
+                urlStr = "event/ysledgeros/month_info"
+            }
 
             if (uid == "") || (cookie == "") {
                 completion(.failure(.noFetchInfo))

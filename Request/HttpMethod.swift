@@ -832,6 +832,9 @@ struct HttpMethod<T: Codable> {
             if languageCode == "zh" {
                 languageCode = "zh-cn"
             }
+            else if languageCode == "ja" {
+                languageCode = "ja-jp"
+            }
             return languageCode
         }
 
@@ -843,30 +846,46 @@ struct HttpMethod<T: Codable> {
                 let appVersion: String
                 let userAgent: String
                 let clientType: String
+                let referer: String
+                let origin: String
                 switch region {
                 case .cn:
                     baseStr = "https://hk4e-api.mihoyo.com/"
                     appVersion = "2.11.1"
                     userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1"
                     clientType = "5"
+                    referer = "https://webstatic.mihoyo.com"
+                    origin = "https://webstatic.mihoyo.com"
                 case .global:
-                    baseStr = "https://bbs-api-os.hoyoverse.com/game_record/app/"
+                    baseStr = "https://sg-hk4e-api.hoyolab.com/"
                     appVersion = "2.9.1"
-                    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
+                    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0"
                     clientType = "2"
+                    referer = "https://act.hoyolab.com"
+                    origin = "https://act.hoyolab.com"
                 }
                 // 由前缀和后缀共同组成的url
                 var url = URLComponents(string: baseStr + urlStr)!
-                url.queryItems = [
-                    URLQueryItem(name: "month", value: String(month)),
-                    URLQueryItem(name: "bind_uid", value: String(uid)),
-                    URLQueryItem(name: "bind_region", value: serverID),
-                    URLQueryItem(name: "bbs_presentation_style", value: "fullscreen"),
-                    URLQueryItem(name: "bbs_auth_required", value: "true"),
-                    URLQueryItem(name: "utm_source", value: "bbs"),
-                    URLQueryItem(name: "utm_medium", value: "mys"),
-                    URLQueryItem(name: "utm_compaign", value: "icon")
-                ]
+                switch region {
+                case .cn:
+                    url.queryItems = [
+                        URLQueryItem(name: "month", value: String(month)),
+                        URLQueryItem(name: "bind_uid", value: String(uid)),
+                        URLQueryItem(name: "bind_region", value: serverID),
+                        URLQueryItem(name: "bbs_presentation_style", value: "fullscreen"),
+                        URLQueryItem(name: "bbs_auth_required", value: "true"),
+                        URLQueryItem(name: "utm_source", value: "bbs"),
+                        URLQueryItem(name: "utm_medium", value: "mys"),
+                        URLQueryItem(name: "utm_compaign", value: "icon")
+                    ]
+                case .global:
+                    url.queryItems = [
+                        URLQueryItem(name: "month", value: String(month)),
+                        URLQueryItem(name: "region", value: serverID),
+                        URLQueryItem(name: "uid", value: String(uid)),
+                        URLQueryItem(name: "lang", value: get_language_code())
+                    ]
+                }
                 // 初始化请求
                 var request = URLRequest(url: url.url!)
                 // 设置请求头
@@ -877,10 +896,10 @@ struct HttpMethod<T: Codable> {
                     "User-Agent": userAgent,
                     "x-rpc-client_type": clientType,
                     "x-rpc-language": get_language_code(),
-                    "Referer": "https://webstatic.mihoyo.com/app/community-game-records/index.html?v=6",
                     "X-Requested-With": "com.mihoyo.hyperion",
-                    "Origin": "https://webstatic.mihoyo.com",
+                    "Origin": origin,
                     "Accept-Encoding": "gzip, deflate",
+                    "Referer": referer,
                     "Cookie": cookie
                 ]
                 // http方法

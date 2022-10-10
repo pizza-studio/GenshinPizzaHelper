@@ -11,21 +11,29 @@ struct LedgerData: Codable {
     var uid: Int
     var monthData: MonthData
     var dataMonth: Int
-    var date: String
-    var dataLastMonth: Int
+    /// 国际服没有
+    var date: String?
+    /// 国际服没有
+    var dataLastMonth: Int?
     var region: String
     var optionalMonth: [Int]
     var month: Int
     var nickname: String
-    var accountId: Int
-    var lantern: Bool
+    /// 国际服没有
+    var accountId: Int?
+    /// 国际服没有
+    var lantern: Bool?
     var dayData: DayData
 
     struct MonthData: Codable {
         var currentPrimogems: Int
-        var currentPrimogemsLevel: Int
+        /// 国际服没有
+        var currentPrimogemsLevel: Int?
         var lastMora: Int
-        var primogemsRate: Int
+        /// 国服使用
+        var primogemsRate: Int?
+        /// 国际服使用
+        var primogemRate: Int?
         var moraRate: Int
         var groupBy: [LedgerDataGroup]
         var lastPrimogems: Int
@@ -41,8 +49,10 @@ struct LedgerData: Codable {
 
     struct DayData: Codable {
         var currentMora: Int
-        var lastPrimogems: Int
-        var lastMora: Int
+        /// 国际服没有
+        var lastPrimogems: Int?
+        /// 国际服没有
+        var lastMora: Int?
         var currentPrimogems: Int
     }
 }
