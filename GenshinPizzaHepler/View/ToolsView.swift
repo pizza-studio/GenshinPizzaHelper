@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftPieChart
 
 @available(iOS 15.0, *)
 struct ToolsView: View {
@@ -25,6 +26,7 @@ struct ToolsView: View {
     var thisAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.this }
     var lastAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.last }
     @State private var abyssDataViewSelection: AbyssDataType = .thisTerm
+    @State var ledgerData: LedgerData? = nil
 
     var animation: Namespace.ID
 
@@ -153,8 +155,20 @@ struct ToolsView: View {
                 }
             }
         }
-
-
+        .onAppear {
+            if self.ledgerData == nil {
+                DispatchQueue.global().async {
+                    API.Features.fetchLedgerInfos(month: 0, uid: account!.config.uid!, serverID: account!.config.server.id, region: account!.config.server.region, cookie: account!.config.cookie!) { result in
+                        switch result {
+                        case .success(let result):
+                            self.ledgerData = result
+                        case .failure(_):
+                            print("fetch ledger data fail")
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @ViewBuilder
@@ -195,24 +209,35 @@ struct ToolsView: View {
                     .padding(.horizontal)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
                     .onTapGesture {
-                        simpleTaptic(type: .medium)
-                        sheetType = .spiralAbyss
+                        if ledgerData != nil {
+                            simpleTaptic(type: .medium)
+                            sheetType = .spiralAbyss
+                        }
                     }
 
                     VStack {
                         VStack {
                             HStack {
-                                Text("原石View占位")
+                                Text("今日入账")
                                     .font(.footnote)
                                 Spacer()
                             }
                             .padding(.top, 5)
                             Divider()
                         }
-                        Text("原石")
-                            .font(.largeTitle)
+                        if let ledgerData = ledgerData {
+                            VStack {
+                                Text("\(ledgerData.dayData.currentPrimogems)")
+                                    .font(.largeTitle)
+                                Text("\(ledgerData.dayData.currentMora)")
+                            }
                             .frame(height: 120)
                             .padding(.bottom, 10)
+                        } else {
+                            ProgressView()
+                                .frame(height: 120)
+                                .padding(.bottom, 10)
+                        }
                     }
                     .padding(.horizontal)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
@@ -233,9 +258,35 @@ struct ToolsView: View {
         let basicInfo = self.account!.basicInfo!
         NavigationView {
             List {
-                Section(header: Text("帐号基本信息"), footer: Text(playerDetail.basicInfo.signature).font(.footnote)) {
-                    InfoPreviewer(title: "世界等级", content: "\(playerDetail.basicInfo.worldLevel)")
-                    InfoPreviewer(title: "成就数量", content: "\(basicInfo.stats.achievementNumber)")
+                Section(header: Text("今日入账")) {
+                    InfoPreviewer(title: "原石收入", content: "\(ledgerData?.dayData.currentPrimogems ?? -1)")
+                    InfoPreviewer(title: "摩拉收入", content: "\(ledgerData?.dayData.currentMora ?? -1)")
+                    if let lastPrimogem = ledgerData?.dayData.lastPrimogems {
+                        InfoPreviewer(title: "昨日原石收入", content: "\(lastPrimogem)")
+                    }
+                    if let lastMora = ledgerData?.dayData.lastMora {
+                        InfoPreviewer(title: "昨日摩拉收入", content: "\(lastMora)")
+                    }
+                }
+
+                Section {
+                    InfoPreviewer(title: "原石收入", content: "\(ledgerData?.monthData.currentPrimogems ?? -1)(\(ledgerData?.monthData.primogemsRate ?? ledgerData?.monthData.primogemRate ?? -1))")
+                    InfoPreviewer(title: "摩拉收入", content: "\(ledgerData?.monthData.currentMora ?? -1)(\(ledgerData?.monthData.lastMora ?? -1))")
+                } header: {
+                    Text("本月账单")
+                } footer: {
+                    if let ledgerData = ledgerData {
+                        PieChartView(
+                            values: ledgerData.monthData.groupBy.map { Double($0.num) },
+                            names: ledgerData.monthData.groupBy.map { $0.action },
+                            formatter: { value in String(format: "%.0f", value)},
+                            colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
+                            backgroundColor: Color(UIColor.systemGroupedBackground),
+                            innerRadiusFraction: 0.6
+                        )
+                        .padding(.vertical)
+                        .frame(height: 600)
+                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

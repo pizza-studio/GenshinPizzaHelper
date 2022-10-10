@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/canglong/Programs/GenshinPizzaHelper/GenshinPizzaHelper.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
