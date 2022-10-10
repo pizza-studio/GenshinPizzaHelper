@@ -82,18 +82,15 @@ struct TeyvatMapWebView: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            var js: String
-            if !parent.isHoYoLAB {
-                js = "const bar = document.getElementsByClassName('mhy-bbs-app-header')[0];"
-                js.append("bar?.parentNode.removeChild(bar);")
-            } else {
-                js = "const hoyolabBar = document.getElementsByClassName('mhy-hoyolab-app-header')[0];"
-                js.append("hoyolabBar?.parentNode.removeChild(hoyolabBar);")
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                print("remove bbs bar")
-                webView.evaluateJavaScript(js)
-            }
+            var js = ""
+            js.append("let timer = setInterval(() => {");
+            js.append("const bar = document.getElementsByClassName('mhy-bbs-app-header')[0];");
+            js.append("const hoyolabBar = document.getElementsByClassName('mhy-hoyolab-app-header')[0];");
+            js.append("bar?.parentNode.removeChild(bar);");
+            js.append("hoyolabBar?.parentNode.removeChild(hoyolabBar);");
+            js.append("}, 300);");
+            js.append("setTimeout(() => {clearInterval(timer);timer = null}, 10000);");
+            webView.evaluateJavaScript(js)
         }
     }
 }
