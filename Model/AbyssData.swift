@@ -16,8 +16,6 @@ struct AbyssData: Codable {
     // 玩家信息
     /// 账号服务器ID
     let serverID: String
-    /// 玩家等级
-//    let playerLevel: Int
     /// 玩家已解锁角色ID
     let ownAvatarIDs: [Avatar]
 
