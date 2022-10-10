@@ -91,7 +91,6 @@ class ViewModel: NSObject, ObservableObject {
         fetchAccount()
     }
     
-    
     func refreshData() {
         accounts.indices.forEach { index in
             accounts[index].fetchComplete = false

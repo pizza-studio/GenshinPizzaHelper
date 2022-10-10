@@ -69,6 +69,17 @@ struct ToolsView: View {
                     ledgerSheetView()
                 case .spiralAbyss:
                     spiralAbyssSheetView()
+                case .loginAccountAgainView:
+                    NavigationView {
+                        AccountDetailView(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!])
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button("完成") {
+                                        sheetType = nil
+                                    }
+                                }
+                            }
+                    }
                 }
             }
             .onChange(of: account) { newAccount in
@@ -204,17 +215,16 @@ struct ToolsView: View {
                                 case .failure(let error):
                                     Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
                                         .foregroundColor(.red)
-                                        .onTapGesture {
-                                            if let account = account {
-                                                viewModel.refreshPlayerDetail(for: account)
-                                            }
-                                        }
-                                    Text(error.description)
+                                    switch error {
+                                    case .notLoginError(_, _):
+                                        Text("请点击此处重新登陆本账号")
+                                    default:
+                                        Text(error.description)
+                                    }
                                 }
                             }
                             .frame(height: 120)
                             .padding(.bottom, 10)
-
                         } else {
                             ProgressView()
                                 .frame(height: 120)
@@ -224,9 +234,20 @@ struct ToolsView: View {
                     .padding(.horizontal)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
                     .onTapGesture {
-                        if (try? ledgerDataResult?.get()) != nil {
-                            simpleTaptic(type: .medium)
-                            sheetType = .characters
+                        if let result = ledgerDataResult {
+                            switch result {
+                            case .success(_):
+                                simpleTaptic(type: .medium)
+                                sheetType = .characters
+                            case .failure(let error):
+                                switch error {
+                                case .notLoginError(_, _):
+                                    simpleTaptic(type: .medium)
+                                    sheetType = .loginAccountAgainView
+                                default:
+                                    viewModel.refreshLedgerData()
+                                }
+                            }
                         }
                     }
                 }
@@ -436,6 +457,7 @@ private enum SheetTypes: Identifiable {
 
     case spiralAbyss
     case characters
+    case loginAccountAgainView
 }
 
 private enum AbyssDataType: String, CaseIterable {
