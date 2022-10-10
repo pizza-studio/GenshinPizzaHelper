@@ -217,7 +217,7 @@ struct ToolsView: View {
                                         .foregroundColor(.red)
                                     switch error {
                                     case .notLoginError(_, _):
-                                        Text("请点击此处重新登陆本账号")
+                                        Text("需要重新登陆本账号以查询，点击重新登陆").font(.footnote).multilineTextAlignment(.center)
                                     default:
                                         Text(error.description)
                                     }
