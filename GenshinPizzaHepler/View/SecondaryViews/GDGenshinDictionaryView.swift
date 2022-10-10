@@ -64,6 +64,7 @@ struct GenshinDictionary: View {
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持易错字、简写和英文标签")
             .navigationTitle("原神中英日辞典")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -78,7 +79,17 @@ struct GenshinDictionary: View {
                     .ignoresSafeArea()
             })
         } else {
-            ProgressView()
+            ProgressView().navigationTitle("原神中英日辞典")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            showSafari.toggle()
+                        }) {
+                            Image(systemName: "safari")
+                        }
+                    }
+                }
                 .onAppear {
                     DispatchQueue.global().async {
                         API.OpenAPIs.fetchGenshinDictionaryData() { result in
