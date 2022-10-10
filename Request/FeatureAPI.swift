@@ -329,6 +329,8 @@ extension API {
                         case -1, 10102:
                             print("fail -1")
                             completion(.failure(.dataNotFound(retcode, message)))
+                        case -100:
+                            completion(.failure(.notLoginError(retcode, message)))
                         default:
                             print("unknowerror")
                             completion(.failure(.unknownError(retcode, message)))
