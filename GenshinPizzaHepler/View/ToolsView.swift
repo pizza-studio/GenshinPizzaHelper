@@ -206,8 +206,10 @@ struct ToolsView: View {
                     .padding(.horizontal)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.secondarySystemGroupedBackground)))
                     .onTapGesture {
-                        simpleTaptic(type: .medium)
-                        sheetType = .spiralAbyss
+                        if ledgerData != nil {
+                            simpleTaptic(type: .medium)
+                            sheetType = .spiralAbyss
+                        }
                     }
 
                     VStack {
@@ -253,9 +255,20 @@ struct ToolsView: View {
         let basicInfo = self.account!.basicInfo!
         NavigationView {
             List {
-                Section(header: Text("帐号基本信息"), footer: Text(playerDetail.basicInfo.signature).font(.footnote)) {
-                    InfoPreviewer(title: "世界等级", content: "\(playerDetail.basicInfo.worldLevel)")
-                    InfoPreviewer(title: "成就数量", content: "\(basicInfo.stats.achievementNumber)")
+                Section(header: Text("今日入账")) {
+                    InfoPreviewer(title: "原石收入", content: "\(ledgerData?.dayData.currentPrimogems ?? -1)")
+                    InfoPreviewer(title: "摩拉收入", content: "\(ledgerData?.dayData.currentMora ?? -1)")
+                    if let lastPrimogem = ledgerData?.dayData.lastPrimogems {
+                        InfoPreviewer(title: "昨日原石收入", content: "\(lastPrimogem)")
+                    }
+                    if let lastMora = ledgerData?.dayData.lastMora {
+                        InfoPreviewer(title: "昨日摩拉收入", content: "\(lastMora)")
+                    }
+                }
+
+                Section(header: Text("本月账单")) {
+                    InfoPreviewer(title: "原石收入", content: "\(ledgerData?.monthData.currentPrimogems ?? -1)(\(ledgerData?.monthData.primogemsRate ?? ledgerData?.monthData.primogemRate ?? -1))")
+                    InfoPreviewer(title: "摩拉收入", content: "\(ledgerData?.monthData.currentMora ?? -1)(\(ledgerData?.monthData.lastMora ?? -1))")
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
