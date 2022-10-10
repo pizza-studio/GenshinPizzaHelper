@@ -33,36 +33,56 @@ struct GenshinDictionary: View {
             }
         }
 
+    let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
     var body: some View {
         if let searchResults = searchResults, let dictionaryData = dictionaryData {
-            List {
-                Section {
-                    ForEach(searchResults, id: \.id) { item in
-                        dictionaryItemCell(word: item)
-                            .contextMenu {
-                                Button("复制英语") {
-                                    UIPasteboard.general.string = item.en
+            ScrollViewReader { value in
+                List {
+                    ForEach(alphabet, id: \.self) { letter in
+                        if searchResults.filter { $0.id.hasPrefix(letter.lowercased()) }.count > 0 {
+                            Section(header: Text(letter)) {
+                                ForEach(searchResults.filter { $0.id.hasPrefix(letter.lowercased()) }, id: \.id) { item in
+                                    dictionaryItemCell(word: item)
+                                        .id(item.id)
+                                        .contextMenu {
+                                            Button("复制英语") {
+                                                UIPasteboard.general.string = item.en
+                                            }
+                                            if let zhcn = item.zhCN {
+                                                Button("复制中文") {
+                                                    UIPasteboard.general.string = zhcn
+                                                }
+                                            }
+                                            if let ja = item.ja {
+                                                Button("复制日语") {
+                                                    UIPasteboard.general.string = ja
+                                                }
+                                            }
+                                        }
                                 }
-                                if let zhcn = item.zhCN {
-                                    Button("复制中文") {
-                                        UIPasteboard.general.string = zhcn
-                                    }
-                                }
-                                if let ja = item.ja {
-                                    Button("复制日语") {
-                                        UIPasteboard.general.string = ja
-                                    }
-                                }
-                            }
+                            }.id(letter)
+                        }
                     }
-                } header: {
-                    VStack(alignment: .leading) {
-                        Text("以下内容由「原神中英日辞典」提供")
-                        Text("当前共收录\(dictionaryData.count)条原神专有词汇")
+                }
+                .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持易错字、简写和英文标签")
+                .overlay(alignment: .trailing) {
+                    if searchText.isEmpty {
+                        VStack {
+                            ForEach(0 ..< alphabet.count, id: \.self) { idx in
+                                Button(action: {
+                                    withAnimation {
+                                        value.scrollTo(alphabet[idx], anchor: .top)
+                                    }
+                                }, label: {
+                                    Text(alphabet[idx])
+                                        .font(.footnote)
+                                })
+                            }
+                        }
                     }
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持易错字、简写和英文标签")
             .navigationTitle("原神中英日辞典")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -90,6 +110,10 @@ struct GenshinDictionary: View {
                         }
                     }
                 }
+                .fullScreenCover(isPresented: $showSafari, content: {
+                    SFSafariViewWrapper(url: URL(string: "https://genshin-dictionary.com/")!)
+                        .ignoresSafeArea()
+                })
                 .onAppear {
                     DispatchQueue.global().async {
                         API.OpenAPIs.fetchGenshinDictionaryData() { result in
