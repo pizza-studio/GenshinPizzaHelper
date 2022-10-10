@@ -165,8 +165,6 @@ struct ToolsView: View {
                                 HStack {
                                     Text("\(thisAbyssData.totalStar)")
                                         .font(.system(.body, design: .rounded))
-                                    Image("star.abyss")
-                                        .resizable()
                                     AbyssStarIcon()
                                         .frame(width: 30, height: 30)
                                 }
