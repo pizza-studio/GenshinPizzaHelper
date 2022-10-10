@@ -159,7 +159,7 @@ struct ToolsView: View {
                             .padding(.top, 5)
                             Divider()
                         }
-                        VStack(spacing: 10) {
+                        VStack(spacing: 7) {
                             AbyssTextLabel(text: "\(basicInfo.stats.spiralAbyss)")
                             if let thisAbyssData = thisAbyssData {
                                 HStack {
