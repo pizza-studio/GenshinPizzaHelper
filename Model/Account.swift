@@ -22,6 +22,8 @@ struct Account: Equatable, Hashable {
 
     // 深渊
     var spiralAbyssDetail: AccountSpiralAbyssDetail?
+    // 账簿，旅行札记
+    var ledgeDataResult: LedgerDataFetchResult?
     #endif
 
     init(config: AccountConfiguration) {
@@ -98,6 +100,12 @@ extension AccountConfiguration {
         group.notify(queue: .main) {
             guard let this = this, let last = last else { return }
             completion(AccountSpiralAbyssDetail(this: this, last: last))
+        }
+    }
+
+    func fetchLedgerData(_ completion: @escaping (LedgerDataFetchResult) -> ()) {
+        API.Features.fetchLedgerInfos(month: 0, uid: self.uid!, serverID: self.server.id, region: self.server.region, cookie: self.cookie!) { result in
+            completion(result)
         }
     }
 

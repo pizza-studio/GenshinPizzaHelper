@@ -62,6 +62,7 @@ class ViewModel: NSObject, ObservableObject {
                     self.refreshPlayerDetail(for: showingPlayerDetailOfAccount)
                 }
                 self.refreshAbyssDetail()
+                self.refreshLedgerData()
                 #endif
             }
         }
@@ -90,7 +91,6 @@ class ViewModel: NSObject, ObservableObject {
         fetchAccount()
     }
     
-    
     func refreshData() {
         accounts.indices.forEach { index in
             accounts[index].fetchComplete = false
@@ -108,7 +108,8 @@ class ViewModel: NSObject, ObservableObject {
     #if !os(watchOS)
     func refreshPlayerDetail(for account: Account) {
         guard let index = self.accounts.firstIndex(of: account) else { return }
-        if (try? self.accounts[index].playerDetailResult?.get()) != nil {
+        // 如果之前返回了错误，则删除fail的result
+        if let result = self.accounts[index].playerDetailResult, (try? result.get()) == nil {
             self.accounts[index].playerDetailResult = nil
         }
         self.accounts[index].fetchPlayerDetailComplete = false
@@ -166,6 +167,14 @@ class ViewModel: NSObject, ObservableObject {
         accounts.indices.forEach { index in
             self.accounts[index].config.fetchAbyssInfo { data in
                 self.accounts[index].spiralAbyssDetail = data
+            }
+        }
+    }
+
+    func refreshLedgerData() {
+        accounts.indices.forEach { index in
+            self.accounts[index].config.fetchLedgerData { result in
+                self.accounts[index].ledgeDataResult = result
             }
         }
     }

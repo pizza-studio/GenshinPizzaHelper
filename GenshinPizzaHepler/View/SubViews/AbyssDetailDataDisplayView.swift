@@ -148,8 +148,7 @@ struct AbyssStarIcon: View {
     var body: some View {
         switch colorSheme {
         case .light:
-            // TODO: 换颜色
-            Image("star.abyss").resizable().scaledToFit()
+            Image("star.abyss.dark").resizable().scaledToFit()
         case .dark:
             Image("star.abyss").resizable().scaledToFit()
         @unknown default:
@@ -157,5 +156,4 @@ struct AbyssStarIcon: View {
         }
     }
 }
-
 
