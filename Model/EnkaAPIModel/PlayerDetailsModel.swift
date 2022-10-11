@@ -29,9 +29,9 @@ struct PlayerDetailFetchModel: Codable {
         /// 已解锁成就数
         var finishAchievementNum: Int
         /// 本期深渊乘数
-        var towerFloorIndex: Int
+        var towerFloorIndex: Int?
         /// 本期深渊间数
-        var towerLevelIndex: Int
+        var towerLevelIndex: Int?
         /// 正在展示角色信息列表（ID与等级）
         var showAvatarInfoList: [ShowAvatarInfo]?
         /// 正在展示名片ID的列表
