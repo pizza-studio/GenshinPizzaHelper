@@ -10,7 +10,7 @@ import Foundation
 /// 用于向服务器发送的深渊数据
 struct AbyssData: Codable {
     /// 数据生成的时间
-    let date = Date()
+    var date = Date()
 
     // 玩家ID
     /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深渊
@@ -20,7 +20,7 @@ struct AbyssData: Codable {
     /// 账号服务器ID
     let serverID: String
     /// 玩家已解锁角色ID
-    let ownAvatarIDs: [Avatar]
+    let ownAvatarIds: [Avatar]
 
     /// 描述各期的深渊，一般一轮数据有两期深渊
     var abysses: [Abyss]
@@ -119,7 +119,7 @@ extension AbyssData {
 
         serverID = account.config.server.rawValue
 
-        ownAvatarIDs = basicInfo.avatars.map({ avatar in
+        ownAvatarIds = basicInfo.avatars.map({ avatar in
                 .init(id: avatar.id, level: avatar.level)
         })
 

@@ -422,6 +422,18 @@ struct ToolsView: View {
                     Spacer()
                 }
             }
+            #if DEBUG
+            Button("encode data") {
+                if let account = account, let abyssData = AbyssData(account: account) {
+                    let encoder = JSONEncoder()
+                    encoder.keyEncodingStrategy = .convertToSnakeCase
+                    encoder.outputFormatting = .sortedKeys
+                    encoder.dateEncodingStrategy = .secondsSince1970
+                    let data = try! encoder.encode(abyssData)
+                    print(String(data: data, encoding: .utf8)!)
+                }
+            }
+            #endif
             NavigationLink(destination: GenshinDictionary()) {
                 Text("原神中英日词典")
             }
