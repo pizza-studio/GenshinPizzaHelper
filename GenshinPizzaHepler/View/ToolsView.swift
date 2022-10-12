@@ -475,7 +475,7 @@ private struct LedgerSheetView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("今日入账")) {
+                Section(header: Text("今日入账 \(data.date ?? "")")) {
                     VStack(spacing: 0) {
                         LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.dayData.currentPrimogems)
                         if let lastPrimogem = data.dayData.lastPrimogems {
@@ -530,7 +530,7 @@ private struct LedgerSheetView: View {
                         }.font(.footnote)
                     }
                 } header: {
-                    Text("本月账单")
+                    Text("本月账单 (\(data.dataMonth)月)")
                 } footer: {
                     PieChartView(
                         values: data.monthData.groupBy.map { Double($0.num) },
