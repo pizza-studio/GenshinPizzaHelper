@@ -69,7 +69,7 @@ struct GenshinDictionary: View {
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持易错字、简写和英文标签")
                 .overlay(alignment: .trailing) {
                     if searchText.isEmpty {
-                        VStack {
+                        VStack(spacing: 5) {
                             ForEach(0 ..< alphabet.count, id: \.self) { idx in
                                 Button(action: {
                                     withAnimation {
