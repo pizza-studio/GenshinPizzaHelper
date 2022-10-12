@@ -71,11 +71,12 @@ struct ToolsView: View {
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
                     NavigationView {
-                        AccountDetailView(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!])
+                        AccountDetailView(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], isWebShown: true)
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     Button("完成") {
                                         sheetType = nil
+                                        viewModel.refreshLedgerData()
                                     }
                                 }
                             }
@@ -97,6 +98,7 @@ struct ToolsView: View {
                 HStack(spacing: 10) {
                     HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
                         .clipShape(Circle())
+                        .frame(height: 60)
                     VStack(alignment: .leading) {
                         Text(playerDetail.basicInfo.nickname)
                             .font(.title3)
@@ -107,12 +109,12 @@ struct ToolsView: View {
                             .foregroundColor(.secondary)
                             .font(.footnote)
                             .lineLimit(2)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer()
                     selectAccountManuButton()
                 }
             }
-            .frame(height: 60)
         } footer: {
             Text("UID: \(account!.config.uid!)")
         }
