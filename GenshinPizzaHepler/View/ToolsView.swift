@@ -167,17 +167,18 @@ struct ToolsView: View {
                                     .font(.footnote)
                                 Spacer()
                             }
-                            .padding(.top, 5)
+                            .padding(.top, 10)
+                            .padding(.bottom, -5)
                             Divider()
                         }
                         VStack(spacing: 7) {
                             AbyssTextLabel(text: "\(basicInfo.stats.spiralAbyss)")
                             if let thisAbyssData = thisAbyssData {
                                 HStack {
-                                    Text("\(thisAbyssData.totalStar)")
-                                        .font(.system(.body, design: .rounded))
                                     AbyssStarIcon()
                                         .frame(width: 30, height: 30)
+                                    Text("\(thisAbyssData.totalStar)")
+                                        .font(.system(.body, design: .rounded))
                                 }
                             } else {
                                 ProgressView()
@@ -203,7 +204,8 @@ struct ToolsView: View {
                                     .font(.footnote)
                                 Spacer()
                             }
-                            .padding(.top, 5)
+                            .padding(.top, 10)
+                            .padding(.bottom, -5)
                             Divider()
                         }
                         if let result = ledgerDataResult {
