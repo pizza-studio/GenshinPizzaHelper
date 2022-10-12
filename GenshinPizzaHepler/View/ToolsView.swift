@@ -86,6 +86,7 @@ struct ToolsView: View {
             .onChange(of: account) { newAccount in
                 viewModel.refreshPlayerDetail(for: newAccount!)
             }
+            .toolViewNavigationTitleInIOS15()
         }
         .navigationViewStyle(.stack)
     }
@@ -651,5 +652,23 @@ private struct AbyssTextLabel: View {
                     })
                 )
         }
+    }
+}
+
+private struct ToolViewNavigationTitleInIOS15: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 16, *) {
+            content
+        } else {
+            content
+                .navigationTitle("披萨工具盒")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+private extension View {
+    func toolViewNavigationTitleInIOS15() -> some View {
+        modifier(ToolViewNavigationTitleInIOS15())
     }
 }
