@@ -640,6 +640,8 @@ private struct AbyssTextLabel: View {
                 .frame(maxHeight: labelHeight)
             Text(text)
                 .font(.system(.largeTitle, design: .rounded))
+                .fixedSize(horizontal: false, vertical: true)
+                .minimumScaleFactor(0.9)
                 .overlay(
                     GeometryReader(content: { geometry in
                         Color.clear
