@@ -498,97 +498,95 @@ private struct LedgerSheetView: View {
     @Binding var sheetType: SheetTypes?
 //    var shareContent: LedgerSheetShareView { LedgerSheetShareView(data: data) }
 
-    var body: some View {
-        NavigationView {
-            List {
-                Section(header: Text("今日入账 \(data.date ?? "")")) {
-                    VStack(spacing: 0) {
-                        LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.dayData.currentPrimogems)
-                        if let lastPrimogem = data.dayData.lastPrimogems {
-                            let primogemsDifference = data.dayData.currentPrimogems - lastPrimogem
-                            HStack {
-                                Spacer()
-                                Text("较昨日").foregroundColor(.secondary)
-                                Text(primogemsDifference > 0 ? "+\(primogemsDifference)" : "\(primogemsDifference)")
-                                    .foregroundColor(primogemsDifference > 0 ? .green : .red)
-                                    .opacity(0.8)
-                            }.font(.footnote)
-                        }
-                    }
-                    VStack(spacing: 0) {
-                        LabelInfoProvider(title: "摩拉收入", icon: "UI_ItemIcon_Mora", value: data.dayData.currentMora)
-                        if let lastMora = data.dayData.lastMora {
-                            let moraDifference = data.dayData.currentMora - lastMora
-                            HStack {
-                                Spacer()
-                                Text("较昨日").foregroundColor(.secondary)
-                                Text(moraDifference > 0 ? "+\(moraDifference)" : "\(moraDifference)")
-                                    .foregroundColor(moraDifference > 0 ? .green : .red)
-                                    .opacity(0.8)
-                            }.font(.footnote)
-                        }
-                    }
-                }
-
-                Section {
-                    let dayCountThisMonth = Calendar.current.dateComponents([.day], from: Date()).day!
-                    let primogemsDifference = data.monthData.currentPrimogems - data.monthData.lastPrimogems / dayCountThisMonth
-                    VStack(spacing: 0) {
-                        LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.monthData.currentPrimogems)
+    @ViewBuilder
+    func mainList() -> some View {
+        List {
+            Section(header: Text("今日入账 \(data.date ?? "")")) {
+                VStack(spacing: 0) {
+                    LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.dayData.currentPrimogems)
+                    if let lastPrimogem = data.dayData.lastPrimogems {
+                        let primogemsDifference = data.dayData.currentPrimogems - lastPrimogem
                         HStack {
                             Spacer()
-                            Text("较上月同期").foregroundColor(.secondary)
+                            Text("较昨日").foregroundColor(.secondary)
                             Text(primogemsDifference > 0 ? "+\(primogemsDifference)" : "\(primogemsDifference)")
                                 .foregroundColor(primogemsDifference > 0 ? .green : .red)
                                 .opacity(0.8)
                         }.font(.footnote)
                     }
-                    VStack(spacing: 0) {
-                        let moraDifference: Int = data.monthData.currentMora - data.monthData.lastMora / dayCountThisMonth
-                        LabelInfoProvider(title: "摩拉收入", icon: "UI_ItemIcon_Mora", value: data.monthData.currentMora)
+                }
+                VStack(spacing: 0) {
+                    LabelInfoProvider(title: "摩拉收入", icon: "UI_ItemIcon_Mora", value: data.dayData.currentMora)
+                    if let lastMora = data.dayData.lastMora {
+                        let moraDifference = data.dayData.currentMora - lastMora
                         HStack {
                             Spacer()
-                            Text("较上月同期").foregroundColor(.secondary)
+                            Text("较昨日").foregroundColor(.secondary)
                             Text(moraDifference > 0 ? "+\(moraDifference)" : "\(moraDifference)")
                                 .foregroundColor(moraDifference > 0 ? .green : .red)
                                 .opacity(0.8)
                         }.font(.footnote)
                     }
-                } header: {
-                    Text("本月账单 (\(data.dataMonth)月)")
-                } footer: {
-                    PieChartView(
-                        values: data.monthData.groupBy.map { Double($0.num) },
-                        names: data.monthData.groupBy.map { $0.action },
-                        formatter: { value in String(format: "%.0f", value)},
-                        colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
-                        backgroundColor: Color(UIColor.systemGroupedBackground),
-                        innerRadiusFraction: 0.6
-                    )
-                    .padding(.vertical)
-                    .frame(height: 600)
-                    .padding(.top)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
-                        sheetType = nil
-                    }
+
+            Section {
+                let dayCountThisMonth = Calendar.current.dateComponents([.day], from: Date()).day!
+                let primogemsDifference = data.monthData.currentPrimogems - data.monthData.lastPrimogems / dayCountThisMonth
+                VStack(spacing: 0) {
+                    LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.monthData.currentPrimogems)
+                    HStack {
+                        Spacer()
+                        Text("较上月同期").foregroundColor(.secondary)
+                        Text(primogemsDifference > 0 ? "+\(primogemsDifference)" : "\(primogemsDifference)")
+                            .foregroundColor(primogemsDifference > 0 ? .green : .red)
+                            .opacity(0.8)
+                    }.font(.footnote)
                 }
-                ToolbarItem(placement: .principal) {
-                    Text("原石摩拉账簿").bold()
+                VStack(spacing: 0) {
+                    let moraDifference: Int = data.monthData.currentMora - data.monthData.lastMora / dayCountThisMonth
+                    LabelInfoProvider(title: "摩拉收入", icon: "UI_ItemIcon_Mora", value: data.monthData.currentMora)
+                    HStack {
+                        Spacer()
+                        Text("较上月同期").foregroundColor(.secondary)
+                        Text(moraDifference > 0 ? "+\(moraDifference)" : "\(moraDifference)")
+                            .foregroundColor(moraDifference > 0 ? .green : .red)
+                            .opacity(0.8)
+                    }.font(.footnote)
                 }
-                if #available(iOS 16, *) {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        ShareLink(
-                            item: Image(uiImage: generateSharePhoto()),
-                            preview: SharePreview("分享", image: Image(uiImage: generateSharePhoto()))
-                        )
-                    }
-                }
+            } header: {
+                Text("本月账单 (\(data.dataMonth)月)")
+            } footer: {
+                PieChartView(
+                    values: data.monthData.groupBy.map { Double($0.num) },
+                    names: data.monthData.groupBy.map { $0.action },
+                    formatter: { value in String(format: "%.0f", value)},
+                    colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
+                    backgroundColor: Color(UIColor.systemGroupedBackground),
+                    innerRadiusFraction: 0.6
+                )
+                .padding(.vertical)
+                .frame(height: 600)
+                .padding(.top)
             }
+        }
+    }
+
+    var body: some View {
+        NavigationView {
+            mainList()
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("完成") {
+                            sheetType = nil
+                        }
+                    }
+                    ToolbarItem(placement: .principal) {
+                        Text("原石摩拉账簿").bold()
+                    }
+                }
+                .toolBarSharableInIOS16(mainList, placement: .navigationBarLeading)
         }
     }
 
@@ -608,14 +606,6 @@ private struct LedgerSheetView: View {
                 Text("\(value)")
             }
         }
-    }
-
-    @MainActor @available(iOS 16.0, *)
-    func generateSharePhoto() -> UIImage {
-        let view = shareView()
-        let renderer = ImageRenderer(content: view)
-        renderer.scale = UIScreen.main.scale
-        return renderer.uiImage ?? UIImage()
     }
 
     @ViewBuilder
