@@ -10,7 +10,7 @@ import SwiftUI
 @available(iOS 15, *)
 extension View {
     func toolBarSharableInIOS16<ViewToRender: View>(_ viewToShare: @escaping () -> ViewToRender, placement: ToolbarItemPlacement = .navigationBarTrailing) -> some View {
-        modifier(ToolBarSharableInIOS16(viewToRender: viewToShare, placement: .navigationBarTrailing))
+        modifier(ToolBarSharableInIOS16(viewToRender: viewToShare, placement: placement))
     }
 }
 
@@ -31,7 +31,7 @@ struct ToolBarSharableInIOS16<ViewToRender: View>: ViewModifier {
     func generateSharePhoto() -> UIImage {
         let view = viewToRender
         let renderer = ImageRenderer(content: view)
-        renderer.scale = UIScreen.main.scale
+//        renderer.scale = UIScreen.main.scale
         return renderer.uiImage ?? UIImage()
     }
 
