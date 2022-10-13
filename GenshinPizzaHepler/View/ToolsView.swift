@@ -36,9 +36,6 @@ struct ToolsView: View {
             List {
                 accountSection()
                 playerDetailSection()
-                if (try? account?.playerDetailResult?.get()) == nil {
-                    Section { allAvatarNavigator() }
-                }
                 abyssAndPrimogemNavigator()
                 toolsSection()
             }
@@ -148,6 +145,9 @@ struct ToolsView: View {
             } else if !account.fetchPlayerDetailComplete {
                 loadingView()
             }
+        }
+        if (try? account?.playerDetailResult?.get()) == nil {
+            Section { allAvatarNavigator() }
         }
     }
 
