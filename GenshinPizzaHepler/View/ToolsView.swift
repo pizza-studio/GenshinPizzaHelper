@@ -34,19 +34,10 @@ struct ToolsView: View {
     var body: some View {
         NavigationView {
             List {
-                if let account = account {
-                    if let result = account.playerDetailResult {
-                        switch result {
-                        case .success(_):
-                            successView()
-                        case .failure(let error):
-                            failureView(error: error)
-                        }
-                    } else if !account.fetchPlayerDetailComplete {
-                        loadingView()
-                    }
-                } else {
-                    chooseAccountView()
+                accountSection()
+                playerDetailSection()
+                if (try? account?.playerDetailResult?.get()) == nil {
+                    Section { allAvatarNavigator() }
                 }
                 abyssAndPrimogemNavigator()
                 toolsSection()
@@ -71,11 +62,12 @@ struct ToolsView: View {
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
                     NavigationView {
-                        AccountDetailView(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!])
+                        AccountDetailView(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], isWebShown: true)
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     Button("完成") {
                                         sheetType = nil
+                                        viewModel.refreshLedgerData()
                                     }
                                 }
                             }
@@ -85,38 +77,83 @@ struct ToolsView: View {
             .onChange(of: account) { newAccount in
                 viewModel.refreshPlayerDetail(for: newAccount!)
             }
+            .toolViewNavigationTitleInIOS15()
         }
         .navigationViewStyle(.stack)
     }
 
     @ViewBuilder
-    func successView() -> some View {
-        let playerDetail: PlayerDetail = try! account!.playerDetailResult!.get()
-        Section {
-            VStack {
-                HStack(spacing: 10) {
-                    HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
-                        .clipShape(Circle())
-                    VStack(alignment: .leading) {
-                        Text(playerDetail.basicInfo.nickname)
-                            .font(.title3)
-                            .bold()
-                            .padding(.top, 5)
-                            .lineLimit(1)
-                        Text(playerDetail.basicInfo.signature)
-                            .foregroundColor(.secondary)
-                            .font(.footnote)
-                            .lineLimit(2)
+    func accountSection() -> some View {
+        if let account = account {
+            if let playerDetail = try? account.playerDetailResult?.get() {
+                Section {
+                    VStack {
+                        HStack(spacing: 10) {
+                            HomeSourceWebIcon(iconString: playerDetail.basicInfo.profilePictureAvatarIconString)
+                                .clipShape(Circle())
+                                .frame(height: 60)
+                            VStack(alignment: .leading) {
+                                Text(playerDetail.basicInfo.nickname)
+                                    .font(.title3)
+                                    .bold()
+                                    .padding(.top, 5)
+                                    .lineLimit(1)
+                                Text(playerDetail.basicInfo.signature)
+                                    .foregroundColor(.secondary)
+                                    .font(.footnote)
+                                    .lineLimit(2)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                            Spacer()
+                            selectAccountManuButton()
+                        }
                     }
-                    Spacer()
-                    selectAccountManuButton()
+                } footer: {
+                    Text("UID: \(account.config.uid!)")
+                }
+            } else {
+                Section {
+                    HStack {
+                        Text(account.config.name ?? "")
+                        Spacer()
+                        selectAccountManuButton()
+                    }
+                } footer: {
+                    Text("UID: \(account.config.uid!)")
                 }
             }
-            .frame(height: 60)
-        } footer: {
-            Text("UID: \(account!.config.uid!)")
+        } else {
+            Menu {
+                ForEach(accounts, id:\.config.id) { account in
+                    Button(account.config.name ?? "Name Error") {
+                        showingAccountUUIDString = account.config.uuid!.uuidString
+                    }
+                }
+            } label: {
+                Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
+            }
         }
+    }
 
+    @ViewBuilder
+    func playerDetailSection() -> some View {
+        if let account = account {
+            if let result = account.playerDetailResult {
+                switch result {
+                case .success(_):
+                    successView()
+                case .failure(let error):
+                    failureView(error: error)
+                }
+            } else if !account.fetchPlayerDetailComplete {
+                loadingView()
+            }
+        }
+    }
+
+    @ViewBuilder
+    func successView() -> some View {
+        let playerDetail: PlayerDetail = try! account!.playerDetailResult!.get()
         Section {
             VStack {
                 Text("角色展示柜")
@@ -151,8 +188,19 @@ struct ToolsView: View {
                         .padding(.vertical)
                     }
                 }
+                Divider()
+                allAvatarNavigator()
             }
         }
+//    footer: {
+//            HStack {
+//                Spacer()
+//                Button("所有角色") {
+//                    // TODO: 替换成其他
+//                    sheetType = .loginAccountAgainView
+//                }
+//            }
+//        }
     }
 
     @ViewBuilder
@@ -348,23 +396,16 @@ struct ToolsView: View {
     @ViewBuilder
     func failureView(error: PlayerDetail.PlayerDetailError) -> some View {
         Section {
-            ZStack {
-                HStack {
-                    Text(account?.config.name ?? "").foregroundColor(.secondary)
-                    Spacer()
-                    selectAccountManuButton()
-                }
-                HStack {
-                    Spacer()
-                    Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
-                        .foregroundColor(.red)
-                        .onTapGesture {
-                            if let account = account {
-                                viewModel.refreshPlayerDetail(for: account)
-                            }
+            HStack {
+                Spacer()
+                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                    .foregroundColor(.red)
+                    .onTapGesture {
+                        if let account = account {
+                            viewModel.refreshPlayerDetail(for: account)
                         }
-                    Spacer()
-                }
+                    }
+                Spacer()
             }
         } footer: {
             switch error {
@@ -387,12 +428,7 @@ struct ToolsView: View {
 
     @ViewBuilder
     func loadingView() -> some View {
-        ZStack {
-            HStack {
-                Text(account?.config.name ?? "").foregroundColor(.secondary)
-                Spacer()
-                selectAccountManuButton()
-            }
+        Section {
             HStack {
                 Spacer()
                 ProgressView()
@@ -402,28 +438,15 @@ struct ToolsView: View {
     }
 
     @ViewBuilder
-    func chooseAccountView() -> some View {
-        Menu {
-            ForEach(accounts, id:\.config.id) { account in
-                Button(account.config.name ?? "Name Error") {
-                    showingAccountUUIDString = account.config.uuid!.uuidString
-                }
-            }
-        } label: {
-            Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
+    func allAvatarNavigator() -> some View {
+        if let basicInfo = account?.basicInfo, let charMap = viewModel.charMap {
+            AllAvatarNavigator(basicInfo: basicInfo, charMap: charMap, sheetType: $sheetType)
         }
     }
 
     @ViewBuilder
     func toolsSection() -> some View {
         Section {
-            VStack {
-                HStack {
-                    Text("小工具")
-                        .font(.footnote)
-                    Spacer()
-                }
-            }
             NavigationLink(destination: GenshinDictionary()) {
                 Text("原神中英日词典")
             }
@@ -437,6 +460,8 @@ struct ToolsView: View {
                         .foregroundColor(.secondary)
                 }
             }
+        } header: {
+            Text("小工具")
         }
     }
 
@@ -668,6 +693,39 @@ private struct LedgerSheetView: View {
     }
 }
 
+private struct AllAvatarNavigator: View {
+    let basicInfo: BasicInfos
+    let charMap: [String : ENCharacterMap.Character]
+    @Binding var sheetType: SheetTypes?
+
+    var body: some View {
+        HStack {
+            Text("所有角色")
+                .padding(.trailing)
+                .font(.footnote)
+                .foregroundColor(.secondary)
+            Spacer()
+            HStack(spacing: 3) {
+                ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
+                    let id = avatar.id
+                    EnkaWebIcon(iconString: charMap["\(id)"]?.iconString ?? "")
+                        .frame(width: 20, height: 20)
+                        .background(EnkaWebIcon(iconString: charMap["\(id)"]?.namecardIconString ?? "")
+                            .scaledToFill()
+                            .offset(x: -20/3))
+                        .clipShape(Circle())
+                        .contentShape(Circle())
+                }
+            }
+            .padding(.vertical, 3)
+        }
+        .onTapGesture {
+            // TODO: Open sheet view
+            // sheetType = .??
+        }
+    }
+}
+
 private struct PrimogemTextLabel: View {
     let primogem: Int
     @State var labelHeight = CGFloat.zero
@@ -728,6 +786,8 @@ private struct AbyssTextLabel: View {
                 .frame(maxHeight: labelHeight)
             Text(text)
                 .font(.system(.largeTitle, design: .rounded))
+                .fixedSize(horizontal: false, vertical: true)
+                .minimumScaleFactor(0.9)
                 .overlay(
                     GeometryReader(content: { geometry in
                         Color.clear
@@ -737,5 +797,23 @@ private struct AbyssTextLabel: View {
                     })
                 )
         }
+    }
+}
+
+private struct ToolViewNavigationTitleInIOS15: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 16, *) {
+            content
+        } else {
+            content
+                .navigationTitle("披萨工具盒")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+private extension View {
+    func toolViewNavigationTitleInIOS15() -> some View {
+        modifier(ToolViewNavigationTitleInIOS15())
     }
 }

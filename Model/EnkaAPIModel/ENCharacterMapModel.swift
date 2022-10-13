@@ -55,6 +55,17 @@ struct ENCharacterMap: Codable {
         var nameID: String { iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")}
         /// 星级
         var QualityType: String
+        /// 名片
+        var namecardIconString: String {
+            // 主角没有对应名片
+            if nameID == "PlayerGirl" || nameID == "PlayerBoy" {
+                return "UI_NameCardPic_Bp2_P"
+            } else if nameID == "Yae" {
+                return "UI_NameCardPic_Yae1_P"
+            } else {
+                return "UI_NameCardPic_\(nameID)_P"
+            }
+        }
 
         struct Skill: Codable {
             var skillData: [String: String]
