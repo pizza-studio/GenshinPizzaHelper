@@ -346,9 +346,9 @@ struct ToolsView: View {
                     Group {
                         switch abyssDataViewSelection {
                         case .thisTerm:
-                            AbyssDetailDataDisplayView(data: thisAbyssData, charMap: viewModel.charMap!)
+                            AbyssShareView(data: thisAbyssData, charMap: viewModel.charMap!)
                         case .lastTerm:
-                            AbyssDetailDataDisplayView(data: lastAbyssData, charMap: viewModel.charMap!)
+                            AbyssShareView(data: lastAbyssData, charMap: viewModel.charMap!)
                         }
                     }
                 }, placement: .navigationBarLeading, title: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据")
