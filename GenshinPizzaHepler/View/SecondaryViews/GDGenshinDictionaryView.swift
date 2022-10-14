@@ -69,7 +69,7 @@ struct GenshinDictionary: View {
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "支持易错字、简写和英文标签")
                 .overlay(alignment: .trailing) {
                     if searchText.isEmpty {
-                        VStack {
+                        VStack(spacing: 5) {
                             ForEach(0 ..< alphabet.count, id: \.self) { idx in
                                 Button(action: {
                                     withAnimation {
@@ -109,6 +109,7 @@ struct GenshinDictionary: View {
                     VStack(alignment: .leading) {
                         Text("本功能由[原神中英日辞典](https://genshin-dictionary.com/)提供。")
                         Text("当前共收录了\(dictionaryData.count)个原神专有词语，并还在继续更新中。")
+                        Text("如发现辞典内容有误或其他问题，英语&日语问题请在Twitter私信联系[シクリ](https://twitter.com/xicri_gi?s=21&t=p-r6hSgh_TXt7iddPNZM1w)，英语&中文问题请通过邮件联系[Bill Haku](mailto:i@hakubill.tech)。")
                         Spacer()
                     }
                     .padding(.horizontal)

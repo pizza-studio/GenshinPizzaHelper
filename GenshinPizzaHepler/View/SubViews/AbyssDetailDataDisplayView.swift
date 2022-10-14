@@ -157,3 +157,46 @@ struct AbyssStarIcon: View {
     }
 }
 
+struct AbyssShareView: View {
+    let data: SpiralAbyssDetail
+    let charMap: [String: ENCharacterMap.Character]
+
+    var body: some View {
+        if let floor = data.floors.last {
+            ShareAbyssFloorView(floorData: floor, charMap: charMap)
+        } else {
+            Text("No Data")
+        }
+    }
+}
+
+private struct ShareAbyssFloorView: View {
+    let floorData: SpiralAbyssDetail.Floor
+    let charMap: [String: ENCharacterMap.Character]
+
+    var body: some View {
+        VStack {
+            Text("深境螺旋第\(floorData.index)层").font(.title).bold()
+            HStack {
+                AbyssStarIcon()
+                    .frame(width: 30, height: 30)
+                Text("获取渊星数")
+                Spacer()
+                Text("\(floorData.star)/\(floorData.maxStar)")
+            }
+            .font(.headline)
+            ForEach(floorData.levels, id: \.index) { levelData in
+                AbyssLevelView(levelData: levelData, charMap: charMap)
+            }
+            HStack {
+                Image("AppIconHD")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                Text("原神披萨小助手").bold().font(.footnote)
+            }
+        }
+        .padding()
+    }
+}
