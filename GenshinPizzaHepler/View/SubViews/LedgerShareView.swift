@@ -27,15 +27,13 @@ struct LedgerShareView: View {
                 )
             }
             .frame(width: 300, height: 700)
-            VStack {
-                HStack {
-                    Image("AppIconHD")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .clipShape(RoundedRectangle(cornerRadius: 7))
-                    Text("原神披萨小助手").bold()
-                }
+            HStack {
+                Image("AppIconHD")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                Text("原神披萨小助手").bold().font(.footnote)
             }
         }
         .padding()

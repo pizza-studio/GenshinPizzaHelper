@@ -342,7 +342,7 @@ struct ToolsView: View {
                         }
                     }
                 }
-                .toolBarSharableInIOS16(viewToShare: {
+                .toolbarSavePhotoButtonInIOS16(viewToShare: {
                     Group {
                         switch abyssDataViewSelection {
                         case .thisTerm:
@@ -351,7 +351,7 @@ struct ToolsView: View {
                             AbyssDetailDataDisplayView(data: lastAbyssData, charMap: viewModel.charMap!)
                         }
                     }
-                }, placement: .navigationBarLeading)
+                }, placement: .navigationBarLeading, title: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据")
             }
         } else {
             ProgressView()
@@ -529,9 +529,9 @@ private struct LedgerSheetView: View {
                     Text("原石摩拉账簿").bold()
                 }
             }
-            .toolBarSharableInIOS16(viewToShare: {
+            .toolbarSavePhotoButtonInIOS16(viewToShare: {
                 LedgerShareView(data: data)
-            }, placement: .navigationBarLeading)
+            }, placement: .navigationBarLeading, title: "保存本月原石账簿图片")
         }
     }
 
@@ -546,7 +546,6 @@ private struct LedgerSheetView: View {
                     Image(icon)
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: 100, maxHeight: 100)
                 }
                 Spacer()
                 Text("\(value)")
@@ -558,7 +557,7 @@ private struct LedgerSheetView: View {
         let data: LedgerData
 
         var body: some View {
-            Section(header: Text("今日入账 \(data.date ?? "")")) {
+            Section {
                 VStack(spacing: 0) {
                     LabelInfoProvider(title: "原石收入", icon: "UI_ItemIcon_Primogem", value: data.dayData.currentPrimogems)
                     if let lastPrimogem = data.dayData.lastPrimogems {
@@ -584,6 +583,12 @@ private struct LedgerSheetView: View {
                                 .opacity(0.8)
                         }.font(.footnote)
                     }
+                }
+            } header: {
+                HStack {
+                    Text("今日入账")
+                    Spacer()
+                    Text("\(data.date ?? "")")
                 }
             }
 
