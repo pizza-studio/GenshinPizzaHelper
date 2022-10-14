@@ -194,15 +194,6 @@ struct ToolsView: View {
                 allAvatarNavigator()
             }
         }
-//    footer: {
-//            HStack {
-//                Spacer()
-//                Button("所有角色") {
-//                    // TODO: 替换成其他
-//                    sheetType = .loginAccountAgainView
-//                }
-//            }
-//        }
     }
 
     @ViewBuilder
@@ -642,7 +633,7 @@ private struct AllAvatarNavigator: View {
 
     var body: some View {
         HStack {
-            Text("所有角色")
+            Text("所有角色（开发中）")
                 .padding(.trailing)
                 .font(.footnote)
                 .foregroundColor(.secondary)
