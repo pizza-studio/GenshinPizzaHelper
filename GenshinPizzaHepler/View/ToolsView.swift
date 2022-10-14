@@ -512,50 +512,26 @@ private enum AbyssDataType: String, CaseIterable {
 private struct LedgerSheetView: View {
     let data: LedgerData
     @Binding var sheetType: SheetTypes?
-//    var shareContent: LedgerSheetShareView { LedgerSheetShareView(data: data) }
-
-    @ViewBuilder
-    func mainList() -> some View {
-        List {
-            LedgerSheetViewList(data: data)
-        }
-    }
-
-    @ViewBuilder
-    func shareView() -> some View {
-        VStack(alignment: .leading) {
-            Text("\(data.dataMonth)月原石收入")
-                .font(.title)
-                .padding(.top)
-            PieChartView(
-                values: data.monthData.groupBy.map { Double($0.num) },
-                names: data.monthData.groupBy.map { $0.action },
-                formatter: { value in String(format: "%.0f", value)},
-                colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
-                backgroundColor: Color(UIColor.systemBackground),
-                innerRadiusFraction: 0.6
-            )
-        }
-        .padding()
-        .background(Color(UIColor.systemBackground))
-        .frame(width: 786, height: 1600)
-    }
 
     var body: some View {
         NavigationView {
-            mainList()
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("完成") {
-                            sheetType = nil
-                        }
-                    }
-                    ToolbarItem(placement: .principal) {
-                        Text("原石摩拉账簿").bold()
+            List {
+                LedgerSheetViewList(data: data)
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("完成") {
+                        sheetType = nil
                     }
                 }
-                .toolBarSharableInIOS16(viewToShare: shareView, placement: .navigationBarLeading)
+                ToolbarItem(placement: .principal) {
+                    Text("原石摩拉账簿").bold()
+                }
+            }
+            .toolBarSharableInIOS16(viewToShare: {
+                LedgerShareView(data: data)
+            }, placement: .navigationBarLeading)
         }
     }
 
