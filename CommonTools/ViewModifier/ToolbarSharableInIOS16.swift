@@ -29,16 +29,7 @@ struct ToolBarSharableInIOS16<ViewToRender: View>: ViewModifier {
 
     @MainActor @available(iOS 16.0, *)
     func generateSharePhoto() -> UIImage? {
-//        let renderer = ImageRenderer(content: viewToRender)
-        // TODO: 反正放List进去就是不行
-        let renderer = ImageRenderer(content: VStack {
-            List {
-                Section {
-                    Text("hi")
-                    Text("hi")
-                }
-            }
-        })
+        let renderer = ImageRenderer(content: viewToRender)
         renderer.scale = UIScreen.main.scale
         return renderer.uiImage
     }
