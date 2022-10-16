@@ -30,6 +30,9 @@ struct AbyssData: Codable {
     /// 深渊伤害等数据的排名统计
     let abyssRankModel: AbyssRankModel
 
+    /// 玩家已解锁角色
+    let owningChars: [Int]
+
     struct SubmitDetailModel: Codable {
         /// 深渊层数
         let floor: Int
@@ -37,8 +40,7 @@ struct AbyssData: Codable {
         let room: Int
         /// 上半间/下半间，1表示上半，2表示下半
         let half: Int
-        /// 玩家已解锁角色
-        let owningChars: [Int]
+
         /// 使用了哪些角色
         let usedChars: [Int]
     }
@@ -64,6 +66,7 @@ extension AbyssData {
         uid = account.config.uid!.hashValue
         server = account.config.server.id
         abyssSeason = abyssData.scheduleId
+        owningChars = basicInfo.avatars.map { $0.id }
         abyssRankModel = .init(data: abyssData)
         submitDetails = .generateArrayFrom(data: abyssData, basicInfo: basicInfo)
     }
@@ -86,7 +89,7 @@ extension Array where Element == AbyssData.SubmitDetailModel {
             floor.levels.flatMap { level in
                 level.battles.compactMap { battle in
                     if floor.gainAllStar {
-                        return .init(floor: floor.index, room: level.index, half: battle.index, owningChars: basicInfo.avatars.map { $0.id }, usedChars: battle.avatars.map { $0.id })
+                        return .init(floor: floor.index, room: level.index, half: battle.index, usedChars: battle.avatars.map { $0.id })
                     } else { return nil }
                 }
             }

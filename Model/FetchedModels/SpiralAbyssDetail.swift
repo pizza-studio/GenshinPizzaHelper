@@ -111,8 +111,8 @@ struct AccountSpiralAbyssDetail {
         case last
     }
     func get(_ whichSeason: WhichSeason) -> SpiralAbyssDetail {
-        switch which {
-        case .thisSeason:
+        switch whichSeason {
+        case .this:
             return this
         case .last:
             return last

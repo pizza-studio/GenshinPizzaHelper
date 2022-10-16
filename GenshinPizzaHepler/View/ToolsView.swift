@@ -424,7 +424,7 @@ struct ToolsView: View {
             }
             #if DEBUG
             Button("encode data") {
-                if let account = account, let abyssData = AbyssData(account: account) {
+                if let account = account, let abyssData = AbyssData(account: account, which: .this) {
                     let encoder = JSONEncoder()
                     encoder.keyEncodingStrategy = .convertToSnakeCase
                     encoder.outputFormatting = .sortedKeys
