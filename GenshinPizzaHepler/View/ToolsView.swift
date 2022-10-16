@@ -516,10 +516,7 @@ struct ToolsView: View {
         }
 
     func checkIfAllowAbyssDataCollection() {
-        #if DEBUG
-        UserDefaults.standard.set(false, forKey: "hasAskedAllowAbyssDataCollection")
-        #endif
-        if !UserDefaults.standard.bool(forKey: "hasAskedAllowAbyssDataCollection") {
+        if !UserDefaults.standard.bool(forKey: "hasAskedAllowAbyssDataCollection") && account != nil {
             askAllowAbyssDataCollectionAlert = true
         }
     }
