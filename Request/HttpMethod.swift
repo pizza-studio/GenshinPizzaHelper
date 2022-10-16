@@ -347,7 +347,7 @@ struct HttpMethod<T: Codable> {
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
-//                            print(dictionary ?? "None")
+                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)

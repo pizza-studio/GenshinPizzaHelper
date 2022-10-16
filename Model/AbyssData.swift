@@ -18,8 +18,8 @@ struct AbyssData: Codable {
     /// 提交时间的时间戳since1970
     var submitTime: Int = Int(Date().timeIntervalSince1970)
 
-    /// 深渊期数ID，每期+1
-    let abyssSeason: Int
+    /// 深渊期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
+    var abyssSeason: Int
 
     /// 账号服务器ID
     let server: String
@@ -28,7 +28,7 @@ struct AbyssData: Codable {
     let submitDetails: [SubmitDetailModel]
 
     /// 深渊伤害等数据的排名统计
-    let abyssRankModel: AbyssRankModel
+    let abyssRank: AbyssRankModel?
 
     /// 玩家已解锁角色
     let owningChars: [Int]
@@ -65,15 +65,26 @@ extension AbyssData {
         else { return nil }
         uid = account.config.uid!.hashValue
         server = account.config.server.id
+        
         abyssSeason = abyssData.scheduleId
+        let component = Calendar.current.dateComponents([.year, .month, .day], from: Date(timeIntervalSince1970: Double(abyssData.startTime)!))
+        if component.day! <= 13 {
+            let oddNumber = [1, 3, 5, 7, 9]
+            abyssSeason = Int("\(component.year!)\(component.month!)\(oddNumber.randomElement()!)")!
+        } else {
+            let evenNumber = [0, 2, 4, 6, 8]
+            abyssSeason = Int("\(component.year!)\(component.month!)\(evenNumber.randomElement()!)")!
+        }
+
         owningChars = basicInfo.avatars.map { $0.id }
-        abyssRankModel = .init(data: abyssData)
+        abyssRank = .init(data: abyssData)
         submitDetails = .generateArrayFrom(data: abyssData, basicInfo: basicInfo)
     }
 }
 
 extension AbyssData.AbyssRankModel {
-    init(data: SpiralAbyssDetail) {
+    init?(data: SpiralAbyssDetail) {
+        guard [data.damageRank.first, data.defeatRank.first, data.takeDamageRank.first, data.energySkillRank.first, data.normalSkillRank.first].allSatisfy({ $0 != nil }) else { return nil }
         topDamageValue = data.damageRank.first?.value ?? 0
         topDamage = data.damageRank.first?.avatarId ?? -1
         topDefeat = data.defeatRank.first?.avatarId ?? -1
