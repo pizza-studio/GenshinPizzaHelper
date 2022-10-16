@@ -9,7 +9,6 @@ import Foundation
 
 /// 用于向服务器发送的深渊数据
 struct AbyssData: Codable {
-    // TODO: SUBMITID用其他的
     /// 提交数据的ID
     var submitId: String = UUID().uuidString
 
@@ -64,7 +63,6 @@ extension AbyssData {
               let floor12 = abyssData.floors.first(where: { floor in floor.index == 12 }),
               floor12.gainAllStar // 只有12层满星才收集
         else { return nil }
-        // TODO: UID加一些混淆
         uid = account.config.uid!.hashValue
         server = account.config.server.id
         abyssSeason = abyssData.scheduleId
