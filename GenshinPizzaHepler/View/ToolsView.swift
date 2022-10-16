@@ -31,6 +31,8 @@ struct ToolsView: View {
 
     var animation: Namespace.ID
 
+    @State private var askAllowAbyssDataCollectionAlert: Bool = false
+
     var body: some View {
         NavigationView {
             List {
@@ -77,6 +79,21 @@ struct ToolsView: View {
                 viewModel.refreshPlayerDetail(for: newAccount!)
             }
             .toolViewNavigationTitleInIOS15()
+            .onAppear { checkIfAllowAbyssDataCollection() }
+            .alert("是否允许我们收集您的深渊数据？", isPresented: $askAllowAbyssDataCollectionAlert) {
+                Button("允许", action: {
+                    UserDefaults.standard.set(true, forKey: "allowAbyssDataCollection")
+                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
+                })
+                Button(role: .cancel) {
+                    UserDefaults.standard.set(false, forKey: "allowAbyssDataCollection")
+                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
+                } label: {
+                    Text("不允许")
+                }
+            } message: {
+                Text("我们希望收集您**已拥有的角色**和**在攻克深渊时使用的角色**。如果您同意我们使用您的数据，您将可以在App内查看我们**实时汇总**的深渊角色使用率、队伍使用率等情况。您的隐私非常重要，我们**不会**收集包括UID在内的敏感信息。")
+            }
         }
         .navigationViewStyle(.stack)
     }
@@ -492,6 +509,12 @@ struct ToolsView: View {
             }
             return false
         }
+
+    func checkIfAllowAbyssDataCollection() {
+        if !UserDefaults.standard.bool(forKey: "hasAskedAllowAbyssDataCollection") {
+            askAllowAbyssDataCollectionAlert = true
+        }
+    }
 }
 
 private enum SheetTypes: Identifiable {
