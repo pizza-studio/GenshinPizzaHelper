@@ -32,6 +32,7 @@ struct ToolsView: View {
     var animation: Namespace.ID
 
     @State private var askAllowAbyssDataCollectionAlert: Bool = false
+    @AppStorage("allowAbyssDataCollection") var allowAbyssDataCollection: Bool = false
 
     var body: some View {
         NavigationView {
@@ -468,6 +469,13 @@ struct ToolsView: View {
 
     @ViewBuilder
     func toolsSection() -> some View {
+        if !allowAbyssDataCollection {
+            Section {
+                Toggle(isOn: $allowAbyssDataCollection.animation(.easeInOut)) {
+                    Text("允许收集深渊数据")
+                }
+            }
+        }
         Section {
             #if DEBUG
             Button("encode data") {
