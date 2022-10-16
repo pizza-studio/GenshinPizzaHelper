@@ -32,7 +32,6 @@ struct ToolsView: View {
     var animation: Namespace.ID
 
     @State private var askAllowAbyssDataCollectionAlert: Bool = false
-    @AppStorage("allowAbyssDataCollection") var allowAbyssDataCollection: Bool = false
 
     var body: some View {
         NavigationView {
@@ -467,22 +466,35 @@ struct ToolsView: View {
 
     @ViewBuilder
     func toolsSection() -> some View {
-        if !allowAbyssDataCollection {
-            Section {
-                Toggle(isOn: $allowAbyssDataCollection.animation(.easeInOut)) {
-                    Text("允许收集深渊数据")
+        Section {
+            NavigationLink {
+                AbyssDataCollectionView()
+            } label: {
+                Label {
+                    Text("深渊统计")
+                } icon: {
+                    Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
                 }
             }
         }
         Section {
             #if DEBUG
             Button("encode data") {
-                if let account = account, let abyssData = AbyssData(account: account, which: .this) {
-                    let encoder = JSONEncoder()
-                    encoder.outputFormatting = .sortedKeys
-                    encoder.dateEncodingStrategy = .secondsSince1970
-                    let data = try! encoder.encode(abyssData)
-                    print(String(data: data, encoding: .utf8)!)
+                if let account = account {
+                    if let abyssData = AbyssData(account: account, which: .this) {
+                        let encoder = JSONEncoder()
+                        encoder.outputFormatting = .sortedKeys
+                        encoder.dateEncodingStrategy = .secondsSince1970
+                        let data = try! encoder.encode(abyssData)
+                        print(String(data: data, encoding: .utf8)!)
+                    }
+                    if let avatarHoldingData = AvatarHoldingData(account: account, which: .this) {
+                        let encoder = JSONEncoder()
+                        encoder.outputFormatting = .sortedKeys
+                        encoder.dateEncodingStrategy = .secondsSince1970
+                        let data = try! encoder.encode(avatarHoldingData)
+                        print(String(data: data, encoding: .utf8)!)
+                    }
                 }
             }
             #endif
