@@ -64,6 +64,10 @@ struct SpiralAbyssDetail: Codable {
         var icon: String
         /// 第几层，楼层序数（9,10,11,12）
         var index: Int
+        /// 是否满星
+        var gainAllStar: Bool {
+            star == maxStar
+        }
 
         struct Level: Codable {
             /// 本间星数
@@ -101,4 +105,17 @@ struct SpiralAbyssDetail: Codable {
 struct AccountSpiralAbyssDetail {
     let this: SpiralAbyssDetail
     let last: SpiralAbyssDetail
+
+    enum WhichSeason {
+        case this
+        case last
+    }
+    func get(_ whichSeason: WhichSeason) -> SpiralAbyssDetail {
+        switch which {
+        case .thisSeason:
+            return this
+        case .last:
+            return last
+        }
+    }
 }
