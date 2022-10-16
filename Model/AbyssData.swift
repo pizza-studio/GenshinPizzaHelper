@@ -11,7 +11,7 @@ struct AvatarHoldingData: Codable {
     /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深渊
     let uid: String
     /// 深渊期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
-    var abyssSeason: Int
+    var updateDate: String
     /// 玩家已解锁角色
     let owningChars: [Int]
 }
@@ -120,21 +120,14 @@ extension Array where Element == AbyssData.SubmitDetailModel {
 
 extension AvatarHoldingData {
     init?(account: Account, which season: AccountSpiralAbyssDetail.WhichSeason) {
-        guard let abyssData = account.spiralAbyssDetail?.get(season),
-              let basicInfo = account.basicInfo
-        else { return nil }
+        guard let basicInfo = account.basicInfo else { return nil }
         // OPENSOURCE: 开源的时候把这行换掉
         let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.hashValue)GenshinPizzaHelper"
         uid = String(obfuscatedUid.hashValue)
 
-        let component = Calendar.current.dateComponents([.year, .month, .day], from: Date(timeIntervalSince1970: Double(abyssData.startTime)!))
-        if component.day! <= 13 {
-            let oddNumber = [1, 3, 5, 7, 9]
-            abyssSeason = Int("\(component.year!)\(component.month!)\(oddNumber.randomElement()!)")!
-        } else {
-            let evenNumber = [0, 2, 4, 6, 8]
-            abyssSeason = Int("\(component.year!)\(component.month!)\(evenNumber.randomElement()!)")!
-        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        updateDate = formatter.string(from: Date())
 
         owningChars = basicInfo.avatars.map { $0.id }
     }

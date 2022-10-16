@@ -484,14 +484,12 @@ struct ToolsView: View {
                     if let abyssData = AbyssData(account: account, which: .this) {
                         let encoder = JSONEncoder()
                         encoder.outputFormatting = .sortedKeys
-                        encoder.dateEncodingStrategy = .secondsSince1970
                         let data = try! encoder.encode(abyssData)
                         print(String(data: data, encoding: .utf8)!)
                     }
                     if let avatarHoldingData = AvatarHoldingData(account: account, which: .this) {
                         let encoder = JSONEncoder()
                         encoder.outputFormatting = .sortedKeys
-                        encoder.dateEncodingStrategy = .secondsSince1970
                         let data = try! encoder.encode(avatarHoldingData)
                         print(String(data: data, encoding: .utf8)!)
                     }
