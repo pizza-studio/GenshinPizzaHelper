@@ -59,9 +59,7 @@ struct AbyssData: Codable {
 extension AbyssData {
     init?(account: Account, which season: AccountSpiralAbyssDetail.WhichSeason) {
         guard let abyssData = account.spiralAbyssDetail?.get(season),
-              let basicInfo = account.basicInfo,
-              let floor12 = abyssData.floors.first(where: { floor in floor.index == 12 }),
-              floor12.gainAllStar // 只有12层满星才收集
+              let basicInfo = account.basicInfo
         else { return nil }
         uid = account.config.uid!.hashValue
         server = account.config.server.id
@@ -86,8 +84,10 @@ extension Array where Element == AbyssData.SubmitDetailModel {
     static func generateArrayFrom(data: SpiralAbyssDetail, basicInfo: BasicInfos) -> [AbyssData.SubmitDetailModel] {
         return data.floors.flatMap { floor in
             floor.levels.flatMap { level in
-                level.battles.map { battle in
-                        .init(floor: floor.index, room: level.index, half: battle.index, owningChars: basicInfo.avatars.map { $0.id }, usedChars: battle.avatars.map { $0.id })
+                level.battles.compactMap { battle in
+                    if floor.gainAllStar {
+                        return .init(floor: floor.index, room: level.index, half: battle.index, owningChars: basicInfo.avatars.map { $0.id }, usedChars: battle.avatars.map { $0.id })
+                    } else { return nil }
                 }
             }
         }
