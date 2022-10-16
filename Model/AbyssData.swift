@@ -13,7 +13,7 @@ struct AbyssData: Codable {
     var submitId: String = UUID().uuidString
 
     /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深渊
-    let uid: Int
+    let uid: String
 
     /// 提交时间的时间戳since1970
     var submitTime: Int = Int(Date().timeIntervalSince1970)
@@ -63,7 +63,9 @@ extension AbyssData {
         guard let abyssData = account.spiralAbyssDetail?.get(season),
               let basicInfo = account.basicInfo
         else { return nil }
-        uid = account.config.uid!.hashValue
+        // OPENSOURCE: 开源的时候把这行换掉
+        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.hashValue)GenshinPizzaHelper"
+        uid = String(obfuscatedUid.hashValue)
         server = account.config.server.id
         
         abyssSeason = abyssData.scheduleId
