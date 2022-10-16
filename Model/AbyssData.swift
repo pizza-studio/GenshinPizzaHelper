@@ -61,9 +61,7 @@ struct AbyssData: Codable {
 extension AbyssData {
     init?(account: Account, which season: AccountSpiralAbyssDetail.WhichSeason) {
         guard let abyssData = account.spiralAbyssDetail?.get(season),
-              let basicInfo = account.basicInfo,
-              let floor12 = abyssData.floors.first(where: {$0.index == 12}),
-              floor12.gainAllStar
+              let basicInfo = account.basicInfo
         else { return nil }
         uid = account.config.uid!.hashValue
         server = account.config.server.id
