@@ -14,6 +14,8 @@ struct AvatarHoldingData: Codable {
     var updateDate: String
     /// 玩家已解锁角色
     let owningChars: [Int]
+    /// 账号所属服务器ID
+    let serverId: String
 }
 
 /// 用于向服务器发送的深渊数据
@@ -106,7 +108,7 @@ extension AbyssData.AbyssRankModel {
 
 extension Array where Element == AbyssData.SubmitDetailModel {
     static func generateArrayFrom(data: SpiralAbyssDetail, basicInfo: BasicInfos) -> [AbyssData.SubmitDetailModel] {
-        return data.floors.flatMap { floor in
+        data.floors.flatMap { floor in
             floor.levels.flatMap { level in
                 level.battles.compactMap { battle in
                     if floor.gainAllStar {
@@ -130,5 +132,6 @@ extension AvatarHoldingData {
         updateDate = formatter.string(from: Date())
 
         owningChars = basicInfo.avatars.map { $0.id }
+        serverId = account.config.server.id
     }
 }
