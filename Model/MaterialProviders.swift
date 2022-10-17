@@ -43,7 +43,7 @@ struct TalentMaterialProvider {
     }
 }
 
-enum MaterialWeekday {
+enum MaterialWeekday: CaseIterable {
     case mondayAndThursday
     case tuesdayAndFriday
     case wednesdayAndSaturday
