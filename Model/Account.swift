@@ -34,8 +34,8 @@ struct Account: Equatable, Hashable {
         return lhs.config == rhs.config
     }
 
-    var hashValue: Int {
-        return config.hashValue
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(config)
     }
 }
 

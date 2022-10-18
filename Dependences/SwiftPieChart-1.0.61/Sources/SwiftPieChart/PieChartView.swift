@@ -90,7 +90,7 @@ public struct PieChartView: View {
                         .frame(width: widthFraction * geometry.size.width * innerRadiusFraction, height: widthFraction * geometry.size.width * innerRadiusFraction)
                     
                     VStack {
-                        Text(self.activeIndex == -1 ? "总计" : names[self.activeIndex])
+                        Text(self.activeIndex == -1 ? String(format: NSLocalizedString("总计", comment: "total")) : names[self.activeIndex])
                             .font(.headline)
                             .foregroundColor(Color.gray)
                         Text(self.formatter(self.activeIndex == -1 ? values.reduce(0, +) : values[self.activeIndex]))

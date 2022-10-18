@@ -37,7 +37,9 @@ struct CurrentEventNavigator: View {
                             .foregroundColor(.secondary)
                             .frame(width: 4)
                         VStack(spacing: 7) {
-                            ForEach(eventContents.prefix(3), id: \.id) { content in
+                            ForEach(eventContents.filter({
+                                getRemainDays($0.endAt)!.day! >= 0
+                            }).prefix(3), id: \.id) { content in
                                 eventItem(event: content)
                             }
                         }
