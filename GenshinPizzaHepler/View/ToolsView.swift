@@ -41,11 +41,13 @@ struct ToolsView: View {
             }
             .refreshable {
                 withAnimation {
-                    if let account = account {
-                        viewModel.refreshPlayerDetail(for: account)
+                    DispatchQueue.main.async {
+                        if let account = account {
+                            viewModel.refreshPlayerDetail(for: account)
+                        }
+                        viewModel.refreshAbyssDetail()
+                        viewModel.refreshLedgerData()
                     }
-                    viewModel.refreshAbyssDetail()
-                    viewModel.refreshLedgerData()
                 }
             }
             .onAppear {
@@ -74,7 +76,11 @@ struct ToolsView: View {
                 }
             }
             .onChange(of: account) { newAccount in
-                viewModel.refreshPlayerDetail(for: newAccount!)
+                withAnimation {
+                    DispatchQueue.main.async {
+                        viewModel.refreshPlayerDetail(for: newAccount!)
+                    }
+                }
             }
             .toolViewNavigationTitleInIOS15()
         }
