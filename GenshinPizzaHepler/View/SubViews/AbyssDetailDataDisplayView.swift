@@ -130,7 +130,7 @@ private struct BattleDataInfoProvider: View {
 
     var body: some View {
         HStack {
-            Text(name)
+            Text(name.localized)
             Spacer()
             Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
             if let avatarID = avatarID {
