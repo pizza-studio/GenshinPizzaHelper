@@ -346,7 +346,7 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
 //                            print(dictionary ?? "None")
 
                             do {
@@ -977,7 +977,7 @@ struct HttpMethod<T: Codable> {
                 // 请求url前缀，后跟request的类型
                 let baseStr: String = "http://ophelper.top/"
                 // 由前缀和后缀共同组成的url
-                var url = URLComponents(string: baseStr + urlStr)!
+                let url = URLComponents(string: baseStr + urlStr)!
                 // 初始化请求
                 var request = URLRequest(url: url.url!)
                 // 设置请求头
@@ -1023,7 +1023,7 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
 //                            decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
 //                            print(dictionary ?? "None")
 
                             do {
