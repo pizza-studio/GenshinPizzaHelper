@@ -57,7 +57,9 @@ struct HomeView: View {
         .navigationViewStyle(.stack)
         .myRefreshable {
             withAnimation {
-                viewModel.refreshData()
+                DispatchQueue.main.async {
+                    viewModel.refreshData()
+                }
                 getCurrentEvent()
             }
         }
