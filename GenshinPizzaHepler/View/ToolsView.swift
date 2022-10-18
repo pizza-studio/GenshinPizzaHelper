@@ -490,12 +490,24 @@ struct ToolsView: View {
                         encoder.outputFormatting = .sortedKeys
                         let data = try! encoder.encode(abyssData)
                         print(String(data: data, encoding: .utf8)!)
+
+                        let dseed = String(Int.random(in: 0...999999))
+                        let salt = "2f2d1f9e00719112e88d92d98165f9aa"
+                        let ds = (dseed + salt).sha256
+                        print("dseed=\(dseed)")
+                        print("ds=\(ds)")
                     }
                     if let avatarHoldingData = AvatarHoldingData(account: account, which: .this) {
                         let encoder = JSONEncoder()
                         encoder.outputFormatting = .sortedKeys
                         let data = try! encoder.encode(avatarHoldingData)
                         print(String(data: data, encoding: .utf8)!)
+
+                        let dseed = String(Int.random(in: 0...999999))
+                        let salt = "2f2d1f9e00719112e88d92d98165f9aa"
+                        let ds = (dseed + salt).sha256
+                        print("dseed=\(dseed)")
+                        print("ds=\(ds)")
                     }
                 }
             }
