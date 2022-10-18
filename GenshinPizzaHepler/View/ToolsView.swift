@@ -357,28 +357,33 @@ struct ToolsView: View {
 
     @ViewBuilder
     func mapNavigationLink() -> some View {
-        let isHoYoLAB: Bool = {
-            if let account = account {
-                switch account.config.server.region {
-                case .cn:
-                    return false
-                case .global:
-                    return true
-                }
-            } else {
-                if Locale.current.identifier == "zh_CN" {
-                    return false
-                } else {
-                    return true
-                }
+        let hoYoLabMap = NavigationLink(destination:
+                                            TeyvatMapWebView(isHoYoLAB: true)
+                                .navigationTitle("提瓦特大地图")
+                                .navigationBarTitleDisplayMode(.inline)
+                            ) {
+                                Text("提瓦特大地图")
+                            }
+        let mysbbsMap = NavigationLink(destination:
+                                            TeyvatMapWebView(isHoYoLAB: false)
+                                .navigationTitle("提瓦特大地图")
+                                .navigationBarTitleDisplayMode(.inline)
+                            ) {
+                                Text("提瓦特大地图")
+                            }
+        if let account = account {
+            switch account.config.server.region {
+            case .cn:
+                mysbbsMap
+            case .global:
+                hoYoLabMap
             }
-        }()
-        NavigationLink(destination:
-                        TeyvatMapWebView(isHoYoLAB: isHoYoLAB)
-            .navigationTitle("提瓦特大地图")
-            .navigationBarTitleDisplayMode(.inline)
-        ) {
-            Text("提瓦特大地图")
+        } else {
+            if Locale.current.identifier == "zh_CN" {
+                mysbbsMap
+            } else {
+                hoYoLabMap
+            }
         }
     }
 
