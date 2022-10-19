@@ -43,11 +43,13 @@ struct ToolsView: View {
             }
             .refreshable {
                 withAnimation {
-                    if let account = account {
-                        viewModel.refreshPlayerDetail(for: account)
+                    DispatchQueue.main.async {
+                        if let account = account {
+                            viewModel.refreshPlayerDetail(for: account)
+                        }
+                        viewModel.refreshAbyssDetail()
+                        viewModel.refreshLedgerData()
                     }
-                    viewModel.refreshAbyssDetail()
-                    viewModel.refreshLedgerData()
                 }
             }
             .onAppear {
@@ -76,7 +78,11 @@ struct ToolsView: View {
                 }
             }
             .onChange(of: account) { newAccount in
-                viewModel.refreshPlayerDetail(for: newAccount!)
+                withAnimation {
+                    DispatchQueue.main.async {
+                        viewModel.refreshPlayerDetail(for: newAccount!)
+                    }
+                }
             }
             .toolViewNavigationTitleInIOS15()
             .onAppear { checkIfAllowAbyssDataCollection() }
@@ -331,7 +337,7 @@ struct ToolsView: View {
                 VStack {
                     Picker("", selection: $abyssDataViewSelection) {
                         ForEach(AbyssDataType.allCases, id:\.self) { option in
-                            Text(option.rawValue)
+                            Text(option.rawValue.localized)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -361,7 +367,7 @@ struct ToolsView: View {
                             AbyssShareView(data: lastAbyssData, charMap: viewModel.charMap!)
                         }
                     }
-                }, placement: .navigationBarLeading, title: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据")
+                }, placement: .navigationBarLeading, title: String(localized: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据"))
             }
         } else {
             ProgressView()
@@ -372,28 +378,33 @@ struct ToolsView: View {
 
     @ViewBuilder
     func mapNavigationLink() -> some View {
-        let isHoYoLAB: Bool = {
-            if let account = account {
-                switch account.config.server.region {
-                case .cn:
-                    return false
-                case .global:
-                    return true
-                }
-            } else {
-                if Locale.current.identifier == "zh_CN" {
-                    return false
-                } else {
-                    return true
-                }
+        let hoYoLabMap = NavigationLink(destination:
+                                            TeyvatMapWebView(isHoYoLAB: true)
+                                .navigationTitle("提瓦特大地图")
+                                .navigationBarTitleDisplayMode(.inline)
+                            ) {
+                                Text("提瓦特大地图")
+                            }
+        let mysbbsMap = NavigationLink(destination:
+                                            TeyvatMapWebView(isHoYoLAB: false)
+                                .navigationTitle("提瓦特大地图")
+                                .navigationBarTitleDisplayMode(.inline)
+                            ) {
+                                Text("提瓦特大地图")
+                            }
+        if let account = account {
+            switch account.config.server.region {
+            case .cn:
+                mysbbsMap
+            case .global:
+                hoYoLabMap
             }
-        }()
-        NavigationLink(destination:
-                        TeyvatMapWebView(isHoYoLAB: isHoYoLAB)
-            .navigationTitle("提瓦特大地图")
-            .navigationBarTitleDisplayMode(.inline)
-        ) {
-            Text("提瓦特大地图")
+        } else {
+            if Locale.current.identifier == "zh_CN" {
+                mysbbsMap
+            } else {
+                hoYoLabMap
+            }
         }
     }
 
@@ -442,7 +453,7 @@ struct ToolsView: View {
             case .refreshTooFast(let dateWhenRefreshable):
                 if dateWhenRefreshable.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate > 0 {
                     let second = Int(dateWhenRefreshable.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)
-                    Text("请稍等\(second)秒再刷新")
+                    Text(String(localized: "请稍等\(second)秒再刷新"))
                 } else {
                     Text("请下滑刷新")
                 }
@@ -513,7 +524,7 @@ struct ToolsView: View {
             }
             #endif
             NavigationLink(destination: GenshinDictionary()) {
-                Text("原神中英日词典")
+                Text("原神中英日辞典")
             }
             mapNavigationLink()
             Link(destination: isInstallation(urlString: "aliceworkshop://") ? URL(string: "aliceworkshop://app/import?uid=\(account?.config.uid ?? "")")! : URL(string: "https://apps.apple.com/us/app/id1620751192")!) {
@@ -588,7 +599,7 @@ private struct LedgerSheetView: View {
             }
             .toolbarSavePhotoButtonInIOS16(viewToShare: {
                 LedgerShareView(data: data)
-            }, placement: .navigationBarLeading, title: "保存本月原石账簿图片")
+            }, placement: .navigationBarLeading, title: "保存本月原石账簿图片".localized)
         }
     }
 

@@ -42,7 +42,6 @@ struct WebBroswerView: UIViewRepresentable {
 }
 
 struct TeyvatMapWebView: UIViewRepresentable {
-    let webView = WKWebView()
     var isHoYoLAB: Bool
     var url: String {
         if isHoYoLAB {
@@ -58,6 +57,8 @@ struct TeyvatMapWebView: UIViewRepresentable {
             return WKWebView()
         }
         let request = URLRequest(url: url)
+
+        let webView = WKWebView()
         webView.navigationDelegate = context.coordinator
         webView.load(request)
         return webView
