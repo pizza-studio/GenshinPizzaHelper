@@ -38,7 +38,7 @@ struct CurrentEventNavigator: View {
                             .frame(width: 4)
                         VStack(spacing: 7) {
                             ForEach(eventContents.filter({
-                                getRemainDays($0.endAt)!.day! >= 0
+                                (getRemainDays($0.endAt)?.day ?? 0) >= 0
                             }).prefix(3), id: \.id) { content in
                                 eventItem(event: content)
                             }
