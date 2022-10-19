@@ -773,8 +773,8 @@
 "战斗数据榜" = "Notable Stats";
 "深境螺旋第%lld层" = "Spiral Abyss Floor %lld";
 "第%lld间" = "Chamber %lld";
-"上半" = "First Half";
-"下半" = "Second Half";
+"上半" = "1st";
+"下半" = "2nd";
 "获取渊星数" = "Abyss Star Obtained";
 // Other tool
 "提瓦特大地图" = "Tayvat Interactive Map";
@@ -848,10 +848,13 @@
 "关于原神中英日辞典" = "About Genshin Dictionary";
 "**英语** %@" = "**EN** %@";
 "**日语** %@" = "**JA** %@";
-"**中文** %@" = "**CN** %@";
+"**中文** %@" = "**ZH** %@";
 
 "取消" = "Cancel";
 
 // UpdateHistoryInfoView
 "更新公告" = "Update Announcement";
 "更新历史记录" = "Update History";
+
+// Water mark
+"披萨小助手" = "Pizza Helper";
