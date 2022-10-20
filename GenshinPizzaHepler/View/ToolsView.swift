@@ -73,6 +73,8 @@ struct ToolsView: View {
                                 }
                             }
                     }
+                case .allAvatarList:
+                    allAvatarNavigator()
                 }
             }
             .onChange(of: account) { newAccount in
@@ -159,6 +161,11 @@ struct ToolsView: View {
             Section { allAvatarNavigator() }
         }
         #endif
+    }
+
+    @ViewBuilder
+    func allAvatarListView() -> some View {
+
     }
 
     @ViewBuilder
@@ -505,6 +512,7 @@ private enum SheetTypes: Identifiable {
     case spiralAbyss
     case characters
     case loginAccountAgainView
+    case allAvatarList
 }
 
 private enum AbyssDataType: String, CaseIterable {
@@ -668,8 +676,7 @@ private struct AllAvatarNavigator: View {
             .padding(.vertical, 3)
         }
         .onTapGesture {
-            // TODO: Open sheet view
-            // sheetType = .??
+            sheetType = .allAvatarList
         }
     }
 }
