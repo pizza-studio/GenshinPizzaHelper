@@ -504,7 +504,7 @@ struct ToolsView: View {
                         print(stringData)
                         let dseed = String(Int.random(in: 0...999999))
                         let salt = "2f2d1f9e00719112e88d92d98165f9aa"
-                        let ds = (dseed + salt).sha256
+                        let ds = (stringData.sha256 + salt).sha256
                         print("ds=\(ds)")
                     }
                     if let avatarHoldingData = AvatarHoldingData(account: account, which: .this) {
