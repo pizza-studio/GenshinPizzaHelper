@@ -1041,7 +1041,7 @@ struct HttpMethod<T: Codable> {
         }
     }
 
-    /// 返回自己的后台的结果接口
+    /// 返回需要POST的结果接口
     /// - Parameters:
     ///   - method:Method, http方法的类型
     ///   - url:String，请求的路径
@@ -1118,7 +1118,9 @@ struct HttpMethod<T: Codable> {
                         }
                         DispatchQueue.main.async {
                             let decoder = JSONDecoder()
-//                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            if baseHost != "http://81.70.76.222/" {
+                                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            }
 
 //                            let dictionary = try? JSONSerialization.jsonObject(with: data)
 //                            print(dictionary ?? "None")

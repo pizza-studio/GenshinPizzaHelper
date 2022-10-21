@@ -83,6 +83,90 @@ extension API {
                 }
         }
 
+        // 获取所有角色信息
+        /// - Parameters:
+        ///     - region: 服务器地区
+        ///     - serverID: 服务器ID
+        ///     - uid: 用户UID
+        ///     - cookie: 用户Cookie
+        ///     - completion: 数据
+        static func fetchAllAvatarInfos (
+            region: Region,
+            serverID: String,
+            uid: String,
+            cookie: String,
+            completion: @escaping (
+                AllAvatarDetailFetchResult
+            ) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "game_record/app/genshin/api/character"
+            let urlHost: String
+            let bodyJson: String
+            switch region {
+            case .cn:
+                urlHost = "https://api-takumi-record.mihoyo.com/"
+                bodyJson = "{\"role_id\"=\"\(uid)\",\"server\"=\"\(serverID)\",\"need_external\":true}"
+            case .global:
+                urlHost = "https://bbs-api-os.hoyolab.com/"
+                bodyJson = "{\"role_id\"=\"\(uid)\",\"server\"=\"\(serverID)}"
+            }
+
+            if (uid == "") || (cookie == "") {
+                completion(.failure(.noFetchInfo))
+            }
+
+            let bodyData = bodyJson.data(using: .utf8, allowLossyConversion: false)
+
+            // 请求
+            HttpMethod<AllAvatarDetailRequestDetail>
+                .postRequest(
+                    .post,
+                    baseHost: urlHost,
+                    urlStr: urlStr,
+                    body: bodyData!
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let userData = requestResult.data
+                        let retcode = requestResult.retcode
+                        let message = requestResult.message
+
+                        switch requestResult.retcode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(userData!))
+                        case 10001:
+                            print("fail 10001")
+                            completion(.failure(.cookieInvalid(retcode, message)))
+                        case 10103, 10104:
+                            print("fail nomatch")
+                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                        case 1008:
+                            print("fail 1008")
+                            completion(.failure(.accountInvalid(retcode, message)))
+                        case -1, 10102:
+                            print("fail -1")
+                            completion(.failure(.dataNotFound(retcode, message)))
+                        default:
+                            print("unknowerror")
+                            completion(.failure(.unknownError(retcode, message)))
+                        }
+
+                    case .failure(let requestError):
+
+                        switch requestError {
+                        case .decodeError(let message):
+                            completion(.failure(.decodeError(message)))
+                        default:
+                            completion(.failure(.requestError(requestError)))
+                        }
+                    }
+                }
+        }
+
         /// 获取游戏内帐号信息
         /// - Parameters:
         ///     - region: 服务器地区

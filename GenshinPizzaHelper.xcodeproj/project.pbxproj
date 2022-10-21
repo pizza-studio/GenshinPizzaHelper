@@ -199,6 +199,12 @@
 		BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
 		BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258528A0AC1500FEFA49 /* MoreView.swift */; };
 		BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
+		BFE7AFDB2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFDC2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFDD2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFDE2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFDF2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFE02902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
 		BFFD820E28A5F64800616CE1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
 		BFFD820F28A5F64800616CE1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
 		BFFD821028A5F64800616CE1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
@@ -675,6 +681,7 @@
 		BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoBlockView.swift; sourceTree = "<group>"; };
 		BFE4258528A0AC1500FEFA49 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		BFE4258728A0AE2700FEFA49 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarDetailModel.swift; sourceTree = "<group>"; };
 		BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOptions.swift; sourceTree = "<group>"; };
 		BFFD822F28A650C300616CE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = "zh-Hans"; path = "zh-Hans.lproj/AccountIntents.intentdefinition"; sourceTree = "<group>"; };
 		BFFD823128A651F500616CE1 /* RingProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressBarView.swift; sourceTree = "<group>"; };
@@ -1152,6 +1159,7 @@
 		EA56E07528A26C0D00A64262 /* FetchedModels */ = {
 			isa = PBXGroup;
 			children = (
+				BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */,
 				BF85D78828CF31FD003F3479 /* BasicInfos.swift */,
 				BFB101DB28D5F971000DC631 /* CurrentEvents.swift */,
 				EA56E07628A26C0D00A64262 /* Error.swift */,
@@ -1739,6 +1747,7 @@
 				BFB101E028D5F971000DC631 /* CurrentEvents.swift in Sources */,
 				BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EAE95CCF28CE0FD600D975CB /* ResinInfo.swift in Sources */,
+				BFE7AFDF2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				EAE95CD228CE0FD600D975CB /* ExpeditionInfo.swift in Sources */,
 				EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */,
 				EAE95CC128CE0F7A00D975CB /* LockScreenResinWidgetInline.swift in Sources */,
@@ -1852,6 +1861,7 @@
 				BFBDD65128ED7B970022B79D /* Result.swift in Sources */,
 				EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */,
 				BFCC069228C9BBC8003E4A54 /* DailyTaskInfo.swift in Sources */,
+				BFE7AFDE2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1861,6 +1871,7 @@
 			files = (
 				BF75010428E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				EA196B0428B769640091FAE0 /* StringLocalized.swift in Sources */,
+				BFE7AFDD2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				EA09A00E28A2B8700023B4AF /* Account.swift in Sources */,
 				EA09A01528A2B8B30023B4AF /* WeeklyBossesInfo.swift in Sources */,
 				EA09A00D28A2B8660023B4AF /* AccountConfigurationModel.swift in Sources */,
@@ -2012,6 +2023,7 @@
 				EA56E09F28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */,
 				BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
 				EAF43C9228A0161C00D89787 /* WidgetBackgroundView.swift in Sources */,
+				BFE7AFDC2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2114,6 +2126,7 @@
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */,
+				BFE7AFDB2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */,
 				EA56E09828A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
@@ -2158,6 +2171,7 @@
 				EAE95D0628CE11A700D975CB /* ResinInfo.swift in Sources */,
 				EAE95D0528CE11A700D975CB /* ExpeditionInfo.swift in Sources */,
 				EAE95CF528CE117B00D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
+				BFE7AFE02902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				BFBDD65328ED7B980022B79D /* Result.swift in Sources */,
 				EAB1111028CF8C6A009FDF07 /* BasicInfos.swift in Sources */,
 				EAE95D0A28CE11AD00D975CB /* FeatureAPI.swift in Sources */,
