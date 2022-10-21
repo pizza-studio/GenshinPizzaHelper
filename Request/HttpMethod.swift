@@ -1090,9 +1090,9 @@ struct HttpMethod<T: Codable> {
                         request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Origin")
                         request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Referer")
                     case .global:
-                        request.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
+                        request.setValue("2", forHTTPHeaderField: "x-rpc-client_type")
                         request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0", forHTTPHeaderField: "User-Agent")
-                        request.setValue("2.20.0", forHTTPHeaderField: "x-rpc-app_version")
+                        request.setValue("2.9.1", forHTTPHeaderField: "x-rpc-app_version")
                         request.setValue("https://act.hoyolab.com", forHTTPHeaderField: "Origin")
                         request.setValue("https://act.hoyolab.com", forHTTPHeaderField: "Referer")
                     }
