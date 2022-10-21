@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct FetchHomeModel<T> {
+struct FetchHomeModel<T: Codable>: Codable {
     let retCode: Int
     let message: String
     let data: T
 }
 
-typealias FetchHomeModelResult<T> = Result<FetchHomeModel<T>, Error>
+typealias FetchHomeModelResult<T: Codable> = Result<FetchHomeModel<T>, Error>

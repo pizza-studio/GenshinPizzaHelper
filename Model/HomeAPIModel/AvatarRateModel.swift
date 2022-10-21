@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct AvatarPercentageModel {
+struct AvatarPercentageModel: Codable {
     let totleUsers: String
     let avatars: [Avatar]
 
-    struct Avatar {
+    struct Avatar: Codable {
         let charId: Int
         let percentage: Double?
     }
