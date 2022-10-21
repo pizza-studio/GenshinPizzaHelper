@@ -99,6 +99,21 @@ extension API {
                 AllAvatarDetailFetchResult
             ) -> ()
         ) {
+            func get_ds_token(uid: String, server_id: String) -> String {
+                let s: String
+                switch region {
+                case .cn:
+                    s = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
+                case .global:
+                    s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
+                }
+                let t = String(Int(Date().timeIntervalSince1970))
+                let r = String(Int.random(in: 100000..<200000))
+                let q = ""
+                let c = "salt=\(s)&t=\(t)&r=\(r)&b=&q=\(q)".md5
+                return t + "," + r + "," + c
+            }
+
             // 请求类别
             let urlStr = "game_record/app/genshin/api/character"
             let urlHost: String
@@ -124,7 +139,10 @@ extension API {
                     .post,
                     baseHost: urlHost,
                     urlStr: urlStr,
-                    body: bodyData!
+                    body: bodyData!,
+                    region: region,
+                    cookie: cookie,
+                    ds: get_ds_token(uid: uid, server_id: serverID)
                 ) { result in
                     switch result {
 
@@ -151,7 +169,7 @@ extension API {
                             print("fail -1")
                             completion(.failure(.dataNotFound(retcode, message)))
                         default:
-                            print("unknowerror")
+                            print("unknownerror")
                             completion(.failure(.unknownError(retcode, message)))
                         }
 

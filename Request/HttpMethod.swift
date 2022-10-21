@@ -1053,6 +1053,8 @@ struct HttpMethod<T: Codable> {
         baseHost: String = "http://81.70.76.222/",
         urlStr: String,
         body: Data,
+        region: Region? = nil,
+        cookie: String? = nil,
         dseed: String? = nil,
         ds: String? = nil,
         completion: @escaping(
@@ -1076,11 +1078,29 @@ struct HttpMethod<T: Codable> {
                     "Accept": "application/json, text/plain, */*",
                     "Connection": "keep-alive",
                 ]
+                if let cookie = cookie {
+                    request.setValue(cookie, forHTTPHeaderField: "Cookie")
+                }
+                if let region = region {
+                    request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Origin")
+                    switch region {
+                    case .cn:
+                        request.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
+                        request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.36.1", forHTTPHeaderField: "User-Agent")
+                    case .global:
+                        request.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
+                        request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0", forHTTPHeaderField: "User-Agent")
+                    }
+                }
                 if let dseed = dseed {
                     request.setValue(dseed, forHTTPHeaderField: "dseed")
                 }
                 if let ds = ds {
-                    request.setValue(ds, forHTTPHeaderField: "ds")
+                    if region != nil {
+                        request.setValue(ds, forHTTPHeaderField: "DS")
+                    } else {
+                        request.setValue(ds, forHTTPHeaderField: "ds")
+                    }
                 }
                 // http方法
                 switch method {
@@ -1122,8 +1142,8 @@ struct HttpMethod<T: Codable> {
                                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                             }
 
-//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-//                            print(dictionary ?? "None")
+                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)

@@ -28,6 +28,7 @@ struct ToolsView: View {
     @State private var abyssDataViewSelection: AbyssDataType = .thisTerm
 
     var ledgerDataResult: LedgerDataFetchResult? { account?.ledgeDataResult }
+    @State var allAvatarInfo: AllAvatarDetailModel? = nil
 
     var animation: Namespace.ID
 
@@ -74,7 +75,7 @@ struct ToolsView: View {
                             }
                     }
                 case .allAvatarList:
-                    allAvatarNavigator()
+                    allAvatarListView()
                 }
             }
             .onChange(of: account) { newAccount in
@@ -165,7 +166,27 @@ struct ToolsView: View {
 
     @ViewBuilder
     func allAvatarListView() -> some View {
-
+        NavigationView {
+            if let allAvatarInfo = allAvatarInfo {
+                List {
+                    ForEach(allAvatarInfo.avatars, id: \.id) { avatar in
+                        Text(avatar.name)
+                    }
+                }
+            } else {
+                ProgressView()
+                    .onAppear {
+                        API.Features.fetchAllAvatarInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!) { result in
+                            switch result {
+                            case .success(let data):
+                                self.allAvatarInfo = data
+                            case .failure(_):
+                                break
+                            }
+                        }
+                    }
+            }
+        }
     }
 
     @ViewBuilder
