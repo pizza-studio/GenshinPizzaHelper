@@ -429,6 +429,7 @@ struct ToolsView: View {
                     Button(account.config.name ?? "Name Error") {
                         withAnimation {
                             showingAccountUUIDString = account.config.uuid!.uuidString
+                            allAvatarInfo = nil
                         }
                     }
                 }
