@@ -10,13 +10,5 @@ import Foundation
 typealias UltilizationDataFetchModel = FetchHomeModel<UltilizationData>
 typealias UltilizationDataFetchModelResult = FetchHomeModelResult<UltilizationData>
 
-struct UltilizationData {
-    let totleUsers: String
-    let avatars: [Avatar]
-
-    struct Avatar {
-        let charId: Int
-        let ultilization: Double?
-    }
-}
+typealias UltilizationData = AvatarPercentageModel
 

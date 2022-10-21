@@ -148,5 +148,54 @@ extension API {
                     }
                 }
         }
+
+        /// 深渊角色使用率
+        static func fetchAbyssUtilizationData(
+            season: Int = { () -> Int in
+                let component = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+                if component.day! >= 16 {
+                    return Int(String(component.year!)+String(component.month!)+"0")!
+                } else {
+                    return Int(String(component.year!)+String(component.month!)+"1")!
+                }
+            }(),
+            server: Server? = nil,
+            floor: Int = 12,
+            _ completion: @escaping (UltilizationDataFetchModelResult) -> ()
+        ) {
+
+        }
+
+        /// 满星玩家持有率
+        static func fetchFullStarHoldingRateData(
+            season: Int = { () -> Int in
+                let component = Calendar.current.dateComponents([.day, .month, .year], from: Date())
+                if component.day! >= 16 {
+                    return Int(String(component.year!)+String(component.month!)+"0")!
+                } else {
+                    return Int(String(component.year!)+String(component.month!)+"1")!
+                }
+            }(),
+            server: Server? = nil,
+            _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult) -> ()
+        ) {
+
+        }
+
+        /// 所有玩家持有率
+        static func fetchHoldingRateData(
+            queryStartDate: Date
+            ,
+            server: Server? = nil,
+            _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult) -> ()
+        ) {
+
+        }
+
+        static func fetchHomeServerVersion(
+            _ completion: @escaping (HomeServerVersionFetchModelResult) -> ()
+        ) {
+
+        }
     }
 }
