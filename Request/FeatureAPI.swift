@@ -99,7 +99,7 @@ extension API {
                 AllAvatarDetailFetchResult
             ) -> ()
         ) {
-            func get_ds_token(uid: String, server_id: String) -> String {
+            func get_ds_token(body: String) -> String {
                 let s: String
                 switch region {
                 case .cn:
@@ -110,39 +110,49 @@ extension API {
                 let t = String(Int(Date().timeIntervalSince1970))
                 let r = String(Int.random(in: 100000..<200000))
                 let q = ""
-                let c = "salt=\(s)&t=\(t)&r=\(r)&b=&q=\(q)".md5
+                let c = "salt=\(s)&t=\(t)&r=\(r)&b=\(body)&q=\(q)".md5
+                print(t + "," + r + "," + c)
+                print("salt=\(s)&t=\(t)&r=\(r)&b=\(body)&q=\(q)")
                 return t + "," + r + "," + c
+            }
+
+            struct RequestBody: Codable {
+                let role_id: String
+                let server: String
+                let need_external: Bool?
             }
 
             // 请求类别
             let urlStr = "game_record/app/genshin/api/character"
             let urlHost: String
-            let bodyJson: String
+            let body: RequestBody
             switch region {
             case .cn:
                 urlHost = "https://api-takumi-record.mihoyo.com/"
-                bodyJson = "{\"role_id\"=\"\(uid)\",\"server\"=\"\(serverID)\",\"need_external\":true}"
+                body = .init(role_id: uid, server: serverID, need_external: nil)
             case .global:
                 urlHost = "https://bbs-api-os.hoyolab.com/"
-                bodyJson = "{\"role_id\"=\"\(uid)\",\"server\"=\"\(serverID)}"
+                body = .init(role_id: uid, server: serverID, need_external: nil)
             }
 
             if (uid == "") || (cookie == "") {
                 completion(.failure(.noFetchInfo))
             }
 
-            let bodyData = bodyJson.data(using: .utf8, allowLossyConversion: false)
-
+            let encoder = JSONEncoder()
+            let bodyData = try! encoder.encode(body)
+            let bodyString = String(data: bodyData, encoding: .utf8)!
+            print(bodyString)
             // 请求
             HttpMethod<AllAvatarDetailRequestDetail>
                 .postRequest(
                     .post,
                     baseHost: urlHost,
                     urlStr: urlStr,
-                    body: bodyData!,
+                    body: bodyData,
                     region: region,
                     cookie: cookie,
-                    ds: get_ds_token(uid: uid, server_id: serverID)
+                    ds: get_ds_token(body: bodyString)
                 ) { result in
                     switch result {
 

@@ -1082,14 +1082,19 @@ struct HttpMethod<T: Codable> {
                     request.setValue(cookie, forHTTPHeaderField: "Cookie")
                 }
                 if let region = region {
-                    request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Origin")
                     switch region {
                     case .cn:
                         request.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
                         request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.36.1", forHTTPHeaderField: "User-Agent")
+                        request.setValue("2.36.1", forHTTPHeaderField: "x-rpc-app_version")
+                        request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Origin")
+                        request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Referer")
                     case .global:
                         request.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
                         request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0", forHTTPHeaderField: "User-Agent")
+                        request.setValue("2.20.0", forHTTPHeaderField: "x-rpc-app_version")
+                        request.setValue("https://act.hoyolab.com", forHTTPHeaderField: "Origin")
+                        request.setValue("https://act.hoyolab.com", forHTTPHeaderField: "Referer")
                     }
                 }
                 if let dseed = dseed {
@@ -1113,6 +1118,11 @@ struct HttpMethod<T: Codable> {
                 }
                 // request body
                 request.httpBody = body
+                request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
+                print(body.count)
+                print(request.allHTTPHeaderFields!)
+                print(request)
+                print(String(data: request.httpBody!, encoding: .utf8)!)
                 // 开始请求
                 URLSession.shared.dataTask(
                     with: request
