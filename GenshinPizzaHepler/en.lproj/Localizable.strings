@@ -773,15 +773,15 @@
 "战斗数据榜" = "Notable Stats";
 "深境螺旋第%lld层" = "Spiral Abyss Floor %lld";
 "第%lld间" = "Chamber %lld";
-"上半" = "First Half";
-"下半" = "Second Half";
+"上半" = "1st";
+"下半" = "2nd";
 "获取渊星数" = "Abyss Star Obtained";
 // Other tool
 "提瓦特大地图" = "Tayvat Interactive Map";
 "请稍等%lld秒再刷新" = "Please wait for %lld seconds before refreshing.";
 "请下滑刷新" = "Please slide down to refresh";
 "原神中英日辞典" = "Genshin Dictionary";
-"原神计算器" = "Genshin Calculator";
+"原神计算器" = "Genshin Damage Calculator";
 "由爱丽丝工坊提供" = "Provided by Alice Workshop";
 "由爱丽丝工坊提供（未安装）" = "Provided by Alice Workshop";
 "小工具" = "Gadgets";
@@ -848,10 +848,18 @@
 "关于原神中英日辞典" = "About Genshin Dictionary";
 "**英语** %@" = "**EN** %@";
 "**日语** %@" = "**JA** %@";
-"**中文** %@" = "**CN** %@";
+"**中文** %@" = "**ZH** %@";
 
 "取消" = "Cancel";
 
 // UpdateHistoryInfoView
 "更新公告" = "Update Announcement";
 "更新历史记录" = "Update History";
+
+// Water mark
+"披萨小助手" = "Pizza Helper";
+
+// MARK: - 2.5.1
+"暂无本期深渊数据" = "No data of this term";
+"仅统计充值途径以外获取的资源。数据存在延迟。" = "Only includes the resources obtained ouside of top-ups. There are data delay issues.";
+"已回满" = "Full";

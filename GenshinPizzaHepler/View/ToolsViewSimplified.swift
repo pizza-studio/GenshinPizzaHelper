@@ -1,15 +1,14 @@
 //
-//  ToolsView.swift
+//  ToolsViewSimplified.swift
 //  GenshinPizzaHepler
 //
-//  Created by Bill Haku on 2022/9/17.
+//  Created by Bill Haku on 2022/10/22.
 //
 
 import SwiftUI
 import SwiftPieChart
 
-@available(iOS 15.0, *)
-struct ToolsView: View {
+struct ToolsViewSimplified: View {
     @EnvironmentObject var viewModel: ViewModel
     var accounts: [Account] { viewModel.accounts }
     @AppStorage("toolViewShowingAccountUUIDString") var showingAccountUUIDString: String?
@@ -31,8 +30,6 @@ struct ToolsView: View {
 
     var animation: Namespace.ID
 
-    @State private var askAllowAbyssDataCollectionAlert: Bool = false
-
     var body: some View {
         NavigationView {
             List {
@@ -40,17 +37,6 @@ struct ToolsView: View {
                 playerDetailSection()
                 abyssAndPrimogemNavigator()
                 toolsSection()
-            }
-            .refreshable {
-                withAnimation {
-                    DispatchQueue.main.async {
-                        if let account = account {
-                            viewModel.refreshPlayerDetail(for: account)
-                        }
-                        viewModel.refreshAbyssDetail()
-                        viewModel.refreshLedgerData()
-                    }
-                }
             }
             .onAppear {
                 if !accounts.isEmpty && showingAccountUUIDString == nil {
@@ -85,19 +71,6 @@ struct ToolsView: View {
                 }
             }
             .toolViewNavigationTitleInIOS15()
-            .onAppear { checkIfAllowAbyssDataCollection() }
-            .alert("是否允许我们收集您的深渊数据？", isPresented: $askAllowAbyssDataCollectionAlert) {
-                Button("不允许", role: .destructive) {
-                    UserDefaults.standard.set(false, forKey: "allowAbyssDataCollection")
-                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
-                }
-                Button("允许", role: .cancel, action: {
-                    UserDefaults.standard.set(true, forKey: "allowAbyssDataCollection")
-                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
-                })
-            } message: {
-                Text("我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。您的隐私非常重要，我们不会收集包括UID在内的敏感信息。")
-            }
         }
         .navigationViewStyle(.stack)
     }
@@ -324,7 +297,7 @@ struct ToolsView: View {
             .listRowBackground(Color.white.opacity(0))
         }
     }
-    
+
     @ViewBuilder
     func ledgerSheetView() -> some View {
         LedgerSheetView(data: try! ledgerDataResult!.get(), sheetType: $sheetType)
@@ -358,16 +331,6 @@ struct ToolsView: View {
                         }
                     }
                 }
-                .toolbarSavePhotoButtonInIOS16(viewToShare: {
-                    Group {
-                        switch abyssDataViewSelection {
-                        case .thisTerm:
-                            AbyssShareView(data: thisAbyssData, charMap: viewModel.charMap!)
-                        case .lastTerm:
-                            AbyssShareView(data: lastAbyssData, charMap: viewModel.charMap!)
-                        }
-                    }
-                }, placement: .navigationBarLeading, title: String(localized: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据"))
             }
         } else {
             ProgressView()
@@ -453,7 +416,7 @@ struct ToolsView: View {
             case .refreshTooFast(let dateWhenRefreshable):
                 if dateWhenRefreshable.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate > 0 {
                     let second = Int(dateWhenRefreshable.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)
-                    Text(String(localized: "请稍等\(second)秒再刷新"))
+                    Text(String(format: NSLocalizedString("请稍等%d秒再刷新", comment: "refresh"), second))
                 } else {
                     Text("请下滑刷新")
                 }
@@ -482,48 +445,6 @@ struct ToolsView: View {
     @ViewBuilder
     func toolsSection() -> some View {
         Section {
-            NavigationLink {
-                AbyssDataCollectionView()
-            } label: {
-                Label {
-                    Text("深渊统计")
-                } icon: {
-                    Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
-                }
-            }
-        }
-        Section {
-            #if DEBUG
-            Button("encode data") {
-                if let account = account {
-                    if let abyssData = AbyssData(account: account, which: .this) {
-                        let encoder = JSONEncoder()
-                        encoder.outputFormatting = .sortedKeys
-                        let data = try! encoder.encode(abyssData)
-                        let stringData = String(data: data, encoding: .utf8)!
-                        print(stringData)
-                        let dseed = String(Int.random(in: 0...999999))
-                        let salt = "2f2d1f9e00719112e88d92d98165f9aa"
-                        let ds = (stringData.sha256 + salt).sha256
-                        print("ds=\(ds)")
-                    }
-                    if let avatarHoldingData = AvatarHoldingData(account: account, which: .this) {
-                        let encoder = JSONEncoder()
-                        encoder.outputFormatting = .sortedKeys
-                        let data = try! encoder.encode(avatarHoldingData)
-                        let stringData = String(data: data, encoding: .utf8)!
-                        print(stringData)
-                        let dseed = String(Int.random(in: 0...999999))
-                        let salt = "2f2d1f9e00719112e88d92d98165f9aa"
-                        let ds = (stringData.sha256 + salt).sha256
-                        print("ds=\(ds)")
-                    }
-                }
-            }
-            #endif
-            NavigationLink(destination: GenshinDictionary()) {
-                Text("原神中英日辞典")
-            }
             mapNavigationLink()
             Link(destination: isInstallation(urlString: "aliceworkshop://") ? URL(string: "aliceworkshop://app/import?uid=\(account?.config.uid ?? "")")! : URL(string: "https://apps.apple.com/us/app/id1620751192")!) {
                 VStack(alignment: .leading) {
@@ -549,12 +470,6 @@ struct ToolsView: View {
             }
             return false
         }
-
-    func checkIfAllowAbyssDataCollection() {
-        if !UserDefaults.standard.bool(forKey: "hasAskedAllowAbyssDataCollection") && account != nil {
-            askAllowAbyssDataCollectionAlert = true
-        }
-    }
 }
 
 private enum SheetTypes: Identifiable {
@@ -572,9 +487,6 @@ private enum AbyssDataType: String, CaseIterable {
     case lastTerm = "上期深渊"
 }
 
-
-
-@available(iOS 15.0, *)
 private struct LedgerSheetView: View {
     let data: LedgerData
     @Binding var sheetType: SheetTypes?
@@ -595,9 +507,6 @@ private struct LedgerSheetView: View {
                     Text("原石摩拉账簿").bold()
                 }
             }
-            .toolbarSavePhotoButtonInIOS16(viewToShare: {
-                LedgerShareView(data: data)
-            }, placement: .navigationBarLeading, title: "保存本月原石账簿图片".localized)
         }
     }
 
@@ -657,7 +566,7 @@ private struct LedgerSheetView: View {
                     Text("\(data.date ?? "")")
                 }
             } footer: {
-                Text("仅统计充值途径以外获取的资源。数据存在延迟。")
+                Text("提示：本页面中的数据仅统计充值途径以外获取的资源。数据存在延迟。")
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
             }
@@ -695,7 +604,7 @@ private struct LedgerSheetView: View {
                         values: data.monthData.groupBy.map { Double($0.num) },
                         names: data.monthData.groupBy.map { $0.action },
                         formatter: { value in String(format: "%.0f", value)},
-                        colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
+                        colors: [.blue, .green, .orange, .yellow, .purple, .gray, .white],
                         backgroundColor: Color(UIColor.systemGroupedBackground),
                         innerRadiusFraction: 0.6
                     )
