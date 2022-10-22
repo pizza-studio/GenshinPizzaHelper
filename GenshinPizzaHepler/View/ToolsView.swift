@@ -169,8 +169,12 @@ struct ToolsView: View {
         NavigationView {
             if let allAvatarInfo = allAvatarInfo {
                 List {
-                    ForEach(allAvatarInfo.avatars, id: \.id) { avatar in
-                        avatarListItem(avatar: avatar)
+                    Section {
+                        ForEach(allAvatarInfo.avatars, id: \.id) { avatar in
+                            avatarListItem(avatar: avatar)
+                        }
+                    } header: {
+                        Text("共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名")
                     }
                 }
                 .navigationTitle("我的角色")
