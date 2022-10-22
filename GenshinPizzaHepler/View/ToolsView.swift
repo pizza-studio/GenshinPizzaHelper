@@ -29,6 +29,7 @@ struct ToolsView: View {
 
     var ledgerDataResult: LedgerDataFetchResult? { account?.ledgeDataResult }
     @State var allAvatarInfo: AllAvatarDetailModel? = nil
+    @State private var allAvatarListDisplayType: AllAvatarListDisplayType = .all
 
     var animation: Namespace.ID
 
@@ -164,17 +165,40 @@ struct ToolsView: View {
         #endif
     }
 
+    private enum AllAvatarListDisplayType {
+        case all
+        case _5star
+        case _4star
+    }
+
     @ViewBuilder
     func allAvatarListView() -> some View {
         NavigationView {
             if let allAvatarInfo = allAvatarInfo {
                 List {
-                    Section {
-                        ForEach(allAvatarInfo.avatars, id: \.id) { avatar in
+                    switch allAvatarListDisplayType {
+                    case .all:
+                        Section {
+                            ForEach(allAvatarInfo.avatars, id: \.id) { avatar in
+                                avatarListItem(avatar: avatar)
+                            }
+                        } header: {
+                            Text("共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名")
+                        }
+                    case ._5star:Section {
+                        ForEach(allAvatarInfo.avatars.filter{ $0.rarity == 5 }, id: \.id) { avatar in
                             avatarListItem(avatar: avatar)
                         }
                     } header: {
-                        Text("共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名")
+                        Text("共拥有五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名")
+                    }
+                    case ._4star:Section {
+                        ForEach(allAvatarInfo.avatars.filter{ $0.rarity == 4 }, id: \.id) { avatar in
+                            avatarListItem(avatar: avatar)
+                        }
+                    } header: {
+                        Text("共拥有四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名")
+                    }
                     }
                 }
                 .navigationTitle("我的角色")
@@ -183,6 +207,21 @@ struct ToolsView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("完成") {
                             sheetType = nil
+                        }
+                    }
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        Menu {
+                            Button("全部角色") {
+                                allAvatarListDisplayType = .all
+                            }
+                            Button("5星角色") {
+                                allAvatarListDisplayType = ._5star
+                            }
+                            Button("4星角色") {
+                                allAvatarListDisplayType = ._4star
+                            }
+                        } label: {
+                            Image(systemName: "arrow.left.arrow.right.circle")
                         }
                     }
                 }
