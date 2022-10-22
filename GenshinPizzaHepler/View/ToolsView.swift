@@ -28,8 +28,7 @@ struct ToolsView: View {
     @State private var abyssDataViewSelection: AbyssDataType = .thisTerm
 
     var ledgerDataResult: LedgerDataFetchResult? { account?.ledgeDataResult }
-    @State var allAvatarInfo: AllAvatarDetailModel? = nil
-    @State private var allAvatarListDisplayType: AllAvatarListDisplayType = .all
+
 
     var animation: Namespace.ID
 
@@ -165,124 +164,12 @@ struct ToolsView: View {
         #endif
     }
 
-    private enum AllAvatarListDisplayType {
-        case all
-        case _5star
-        case _4star
-    }
+
 
     @ViewBuilder
     func allAvatarListView() -> some View {
         NavigationView {
-            if let allAvatarInfo = allAvatarInfo {
-                List {
-                    switch allAvatarListDisplayType {
-                    case .all:
-                        Section {
-                            ForEach(allAvatarInfo.avatars, id: \.id) { avatar in
-                                avatarListItem(avatar: avatar)
-                            }
-                        } header: {
-                            Text("共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名")
-                        }
-                    case ._5star:Section {
-                        ForEach(allAvatarInfo.avatars.filter{ $0.rarity == 5 }, id: \.id) { avatar in
-                            avatarListItem(avatar: avatar)
-                        }
-                    } header: {
-                        Text("共拥有五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名")
-                    }
-                    case ._4star:Section {
-                        ForEach(allAvatarInfo.avatars.filter{ $0.rarity == 4 }, id: \.id) { avatar in
-                            avatarListItem(avatar: avatar)
-                        }
-                    } header: {
-                        Text("共拥有四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名")
-                    }
-                    }
-                }
-                .navigationTitle("我的角色")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("完成") {
-                            sheetType = nil
-                        }
-                    }
-                    ToolbarItemGroup(placement: .navigationBarLeading) {
-                        Menu {
-                            Button("全部角色") {
-                                allAvatarListDisplayType = .all
-                            }
-                            Button("5星角色") {
-                                allAvatarListDisplayType = ._5star
-                            }
-                            Button("4星角色") {
-                                allAvatarListDisplayType = ._4star
-                            }
-                        } label: {
-                            Image(systemName: "arrow.left.arrow.right.circle")
-                        }
-                    }
-                }
-            } else {
-                ProgressView()
-                    .onAppear {
-                        API.Features.fetchAllAvatarInfos(region: account!.config.server.region, serverID: account!.config.server.id, uid: account!.config.uid!, cookie: account!.config.cookie!) { result in
-                            switch result {
-                            case .success(let data):
-                                self.allAvatarInfo = data
-                            case .failure(_):
-                                break
-                            }
-                        }
-                    }
-                    .navigationTitle("我的角色")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("完成") {
-                                sheetType = nil
-                            }
-                        }
-                    }
-            }
-        }
-    }
-
-    @ViewBuilder
-    func avatarListItem(avatar: AllAvatarDetailModel.Avatar) -> some View {
-        HStack {
-            WebImage(urlStr: avatar.icon)
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-            VStack (spacing: 0) {
-                HStack (spacing: 0) {
-                    Text(avatar.name)
-                        .bold()
-                    Text("Lv.\(avatar.level)")
-                    Spacer()
-                    Image(systemName: "heart.fill")
-                    Text("\(avatar.fetter)")
-                    ForEach(avatar.constellations.sorted { $0.pos < $1.pos }.prefix(avatar.activedConstellationNum), id: \.id) { con in
-                        WebImage(urlStr: con.icon)
-                            .frame(width: 25, height: 25)
-                            .background(Color.gray.clipShape(Circle()))
-                    }
-                }
-                HStack (spacing: 0) {
-                    WebImage(urlStr: avatar.weapon.icon)
-                        .frame(width: 25, height: 25)
-                    Text("Lv.\(avatar.weapon.level)")
-                    Text("R\(avatar.weapon.affixLevel)")
-                        .padding(.trailing, 10)
-                    Spacer()
-                    ForEach(avatar.reliquaries, id: \.id) { reliquary in
-                        WebImage(urlStr: reliquary.icon)
-                            .frame(width: 25, height: 25)
-                    }
-                }
-            }
+            AllAvatarListSheetView(account: account!, sheetType: $sheetType)
         }
     }
 
@@ -526,7 +413,6 @@ struct ToolsView: View {
                     Button(account.config.name ?? "Name Error") {
                         withAnimation {
                             showingAccountUUIDString = account.config.uuid!.uuidString
-                            allAvatarInfo = nil
                         }
                     }
                 }
@@ -621,18 +507,20 @@ struct ToolsView: View {
             }
             return false
         }
-}
 
-private enum SheetTypes: Identifiable {
-    var id: Int {
-        hashValue
+    enum SheetTypes: Identifiable {
+        var id: Int {
+            hashValue
+        }
+
+        case spiralAbyss
+        case characters
+        case loginAccountAgainView
+        case allAvatarList
     }
-
-    case spiralAbyss
-    case characters
-    case loginAccountAgainView
-    case allAvatarList
 }
+
+
 
 private enum AbyssDataType: String, CaseIterable {
     case thisTerm = "本期深渊"
@@ -644,7 +532,7 @@ private enum AbyssDataType: String, CaseIterable {
 @available(iOS 15.0, *)
 private struct LedgerSheetView: View {
     let data: LedgerData
-    @Binding var sheetType: SheetTypes?
+    @Binding var sheetType: ToolsView.SheetTypes?
 
     var body: some View {
         NavigationView {
@@ -768,10 +656,11 @@ private struct LedgerSheetView: View {
     }
 }
 
+@available(iOS 15.0, *)
 private struct AllAvatarNavigator: View {
     let basicInfo: BasicInfos
     let charMap: [String : ENCharacterMap.Character]
-    @Binding var sheetType: SheetTypes?
+    @Binding var sheetType: ToolsView.SheetTypes?
 
     var body: some View {
         HStack {

@@ -1081,6 +1081,20 @@ struct HttpMethod<T: Codable> {
                 if let cookie = cookie {
                     request.setValue(cookie, forHTTPHeaderField: "Cookie")
                 }
+                func get_language_code() -> String {
+                    let languageCode = Locale.current.languageCode ?? "en-us"
+                    print(languageCode)
+                    if languageCode == "zh" {
+                        return "zh-cn"
+                    } else if languageCode == "en" {
+                        return "en-us"
+                    } else if languageCode == "ja" {
+                        return "ja-jp"
+                    } else {
+                        return languageCode
+                    }
+                }
+
                 if let region = region {
                     switch region {
                     case .cn:
@@ -1089,12 +1103,14 @@ struct HttpMethod<T: Codable> {
                         request.setValue("2.36.1", forHTTPHeaderField: "x-rpc-app_version")
                         request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Origin")
                         request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Referer")
+                        request.setValue(get_language_code(), forHTTPHeaderField: "x-rpc-language")
                     case .global:
                         request.setValue("2", forHTTPHeaderField: "x-rpc-client_type")
                         request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0", forHTTPHeaderField: "User-Agent")
                         request.setValue("2.9.1", forHTTPHeaderField: "x-rpc-app_version")
                         request.setValue("https://act.hoyolab.com", forHTTPHeaderField: "Origin")
                         request.setValue("https://act.hoyolab.com", forHTTPHeaderField: "Referer")
+                        request.setValue(get_language_code(), forHTTPHeaderField: "x-rpc-language")
                     }
                 }
                 if let dseed = dseed {
