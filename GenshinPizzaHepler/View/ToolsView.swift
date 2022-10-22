@@ -170,7 +170,16 @@ struct ToolsView: View {
             if let allAvatarInfo = allAvatarInfo {
                 List {
                     ForEach(allAvatarInfo.avatars, id: \.id) { avatar in
-                        Text(avatar.name)
+                        avatarListItem(avatar: avatar)
+                    }
+                }
+                .navigationTitle("我的角色")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("完成") {
+                            sheetType = nil
+                        }
                     }
                 }
             } else {
@@ -185,6 +194,51 @@ struct ToolsView: View {
                             }
                         }
                     }
+                    .navigationTitle("我的角色")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("完成") {
+                                sheetType = nil
+                            }
+                        }
+                    }
+            }
+        }
+    }
+
+    @ViewBuilder
+    func avatarListItem(avatar: AllAvatarDetailModel.Avatar) -> some View {
+        HStack {
+            WebImage(urlStr: avatar.icon)
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
+            VStack (spacing: 0) {
+                HStack (spacing: 0) {
+                    Text(avatar.name)
+                        .bold()
+                    Text("Lv.\(avatar.level)")
+                    Spacer()
+                    Image(systemName: "heart.fill")
+                    Text("\(avatar.fetter)")
+                    ForEach(avatar.constellations.sorted { $0.pos < $1.pos }.prefix(avatar.activedConstellationNum), id: \.id) { con in
+                        WebImage(urlStr: con.icon)
+                            .frame(width: 25, height: 25)
+                            .background(Color.gray.clipShape(Circle()))
+                    }
+                }
+                HStack (spacing: 0) {
+                    WebImage(urlStr: avatar.weapon.icon)
+                        .frame(width: 25, height: 25)
+                    Text("Lv.\(avatar.weapon.level)")
+                    Text("R\(avatar.weapon.affixLevel)")
+                        .padding(.trailing, 10)
+                    Spacer()
+                    ForEach(avatar.reliquaries, id: \.id) { reliquary in
+                        WebImage(urlStr: reliquary.icon)
+                            .frame(width: 25, height: 25)
+                    }
+                }
             }
         }
     }
@@ -678,10 +732,10 @@ private struct AllAvatarNavigator: View {
 
     var body: some View {
         HStack {
-            Text("所有角色（开发中）")
+            Text("所有角色")
                 .padding(.trailing)
                 .font(.footnote)
-                .foregroundColor(.secondary)
+                .foregroundColor(.primary)
             Spacer()
             HStack(spacing: 3) {
                 ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
