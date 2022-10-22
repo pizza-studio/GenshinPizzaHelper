@@ -629,17 +629,22 @@ private struct LedgerSheetView: View {
             } header: {
                 Text("本月账单 (\(data.dataMonth)月)")
             } footer: {
-                PieChartView(
-                    values: data.monthData.groupBy.map { Double($0.num) },
-                    names: data.monthData.groupBy.map { $0.action },
-                    formatter: { value in String(format: "%.0f", value)},
-                    colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
-                    backgroundColor: Color(UIColor.systemGroupedBackground),
-                    innerRadiusFraction: 0.6
-                )
-                .padding(.vertical)
-                .frame(height: 600)
-                .padding(.top)
+                HStack {
+                    Spacer()
+                    PieChartView(
+                        values: data.monthData.groupBy.map { Double($0.num) },
+                        names: data.monthData.groupBy.map { $0.action },
+                        formatter: { value in String(format: "%.0f", value)},
+                        colors: [.blue, .green, .orange, .yellow, .purple, .gray, .brown, .cyan],
+                        backgroundColor: Color(UIColor.systemGroupedBackground),
+                        innerRadiusFraction: 0.6
+                    )
+                    .padding(.vertical)
+                    .frame(height: UIScreen.main.bounds.width > 1000 ? UIScreen.main.bounds.height * 0.9 : UIScreen.main.bounds.height * 0.7)
+                    .frame(width: UIScreen.main.bounds.width > 1000 ? 500 : nil)
+                    .padding(.top)
+                    Spacer()
+                }
             }
         }
     }
