@@ -596,6 +596,10 @@ private struct LedgerSheetView: View {
                     Spacer()
                     Text("\(data.date ?? "")")
                 }
+            } footer: {
+                Text("提示：本页面中的数据仅统计充值途径以外获取的资源。数据存在延迟。")
+                    .font(.footnote)
+                    .multilineTextAlignment(.leading)
             }
 
             Section {
