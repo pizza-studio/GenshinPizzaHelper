@@ -66,14 +66,9 @@ struct ToolsView: View {
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
                     NavigationView {
-                        AccountDetailView(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], isWebShown: true)
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    Button("完成") {
-                                        sheetType = nil
-                                        viewModel.refreshLedgerData()
-                                    }
-                                }
+                        AccountDetailSheet(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], sheetType: $sheetType)
+                            .onDisappear {
+                                viewModel.refreshLedgerData()
                             }
                     }
                 case .allAvatarList:
@@ -88,19 +83,19 @@ struct ToolsView: View {
                 }
             }
             .toolViewNavigationTitleInIOS15()
-            .onAppear { checkIfAllowAbyssDataCollection() }
-            .alert("是否允许我们收集您的深渊数据？", isPresented: $askAllowAbyssDataCollectionAlert) {
-                Button("不允许", role: .destructive) {
-                    UserDefaults.standard.set(false, forKey: "allowAbyssDataCollection")
-                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
-                }
-                Button("允许", role: .cancel, action: {
-                    UserDefaults.standard.set(true, forKey: "allowAbyssDataCollection")
-                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
-                })
-            } message: {
-                Text("我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。您的隐私非常重要，我们不会收集包括UID在内的敏感信息。")
-            }
+//            .onAppear { checkIfAllowAbyssDataCollection() }
+//            .alert("是否允许我们收集您的深渊数据？", isPresented: $askAllowAbyssDataCollectionAlert) {
+//                Button("不允许", role: .destructive) {
+//                    UserDefaults.standard.set(false, forKey: "allowAbyssDataCollection")
+//                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
+//                }
+//                Button("允许", role: .cancel, action: {
+//                    UserDefaults.standard.set(true, forKey: "allowAbyssDataCollection")
+//                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
+//                })
+//            } message: {
+//                Text("我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。您的隐私非常重要，我们不会收集包括UID在内的敏感信息。")
+//            }
         }
         .navigationViewStyle(.stack)
     }
@@ -172,14 +167,10 @@ struct ToolsView: View {
                 loadingView()
             }
         }
-        #if DEBUG
         if (try? account?.playerDetailResult?.get()) == nil {
             Section { allAvatarNavigator() }
         }
-        #endif
     }
-
-
 
     @ViewBuilder
     func allAvatarListView() -> some View {
@@ -225,10 +216,8 @@ struct ToolsView: View {
                         .padding(.vertical)
                     }
                 }
-                #if DEBUG
                 Divider()
                 allAvatarNavigator()
-                #endif
             }
         }
     }
@@ -493,17 +482,17 @@ struct ToolsView: View {
 
     @ViewBuilder
     func toolsSection() -> some View {
-        Section {
-            NavigationLink {
-                AbyssDataCollectionView()
-            } label: {
-                Label {
-                    Text("深渊统计")
-                } icon: {
-                    Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
-                }
-            }
-        }
+//        Section {
+//            NavigationLink {
+//                AbyssDataCollectionView()
+//            } label: {
+//                Label {
+//                    Text("深渊统计")
+//                } icon: {
+//                    Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
+//                }
+//            }
+//        }
         Section {
             #if DEBUG
             Button("encode data") {

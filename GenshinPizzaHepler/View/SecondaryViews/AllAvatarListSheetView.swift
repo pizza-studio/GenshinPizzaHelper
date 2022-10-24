@@ -41,6 +41,7 @@ struct AllAvatarListSheetView: View {
                         Text("共获得\(goldNum(data: allAvatarInfo).allGold)金，其中角色\(goldNum(data: allAvatarInfo).charGold)金，武器\(goldNum(data: allAvatarInfo).weaponGold)金。（未统计旅行者和无人装备的五星武器）")
                     }
                 }
+                .textCase(.none)
             }
             .navigationTitle("我的角色")
             .navigationBarTitleDisplayMode(.inline)
