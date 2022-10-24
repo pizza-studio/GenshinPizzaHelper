@@ -80,8 +80,6 @@
 		BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
-		BF75011928E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */; };
-		BF75011A28E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */; };
 		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -199,6 +197,12 @@
 		BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
 		BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258528A0AC1500FEFA49 /* MoreView.swift */; };
 		BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
+		BFE7AFDB2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFDC2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFDD2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFDE2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFDF2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
+		BFE7AFE02902684100C75E7F /* AllAvatarDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */; };
 		BFE7AFE22903E0BB00C75E7F /* ToolsViewSimplified.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE12903E0BB00C75E7F /* ToolsViewSimplified.swift */; };
 		BFFD820E28A5F64800616CE1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
 		BFFD820F28A5F64800616CE1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
@@ -217,6 +221,7 @@
 		BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823928A73A5400616CE1 /* ReviewHandler.swift */; };
 		EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */; };
 		EA06373128CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */; };
+		EA0718C329059602009D4730 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
 		EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07C65528B11DB40030E338 /* NotificationSettingView.swift */; };
 		EA081EFC28F85040009433D8 /* ToolbarSharableInIOS16.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */; };
 		EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099FF428A2B7220023B4AF /* Intents.framework */; };
@@ -274,6 +279,8 @@
 		EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
 		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
 		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
+		EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */; };
+		EA5232292903E0D6007A4CF4 /* ReverseMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232282903E0D6007A4CF4 /* ReverseMask.swift */; };
 		EA56E08628A26C0D00A64262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07628A26C0D00A64262 /* Error.swift */; };
 		EA56E08728A26C0D00A64262 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07628A26C0D00A64262 /* Error.swift */; };
 		EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07728A26C0D00A64262 /* RequestResult.swift */; };
@@ -621,7 +628,6 @@
 		BF75010828E1486E00CDA64E /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BF75010F28E14CF500CDA64E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestVersionInfoView.swift; sourceTree = "<group>"; };
-		BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-NoWatch.xcassets"; sourceTree = "<group>"; };
 		BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetExtension.swift; sourceTree = "<group>"; };
 		BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WatchWidgetExtension.intentdefinition; sourceTree = "<group>"; };
@@ -676,6 +682,7 @@
 		BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoBlockView.swift; sourceTree = "<group>"; };
 		BFE4258528A0AC1500FEFA49 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		BFE4258728A0AE2700FEFA49 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarDetailModel.swift; sourceTree = "<group>"; };
 		BFE7AFE12903E0BB00C75E7F /* ToolsViewSimplified.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewSimplified.swift; sourceTree = "<group>"; };
 		BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOptions.swift; sourceTree = "<group>"; };
 		BFFD822F28A650C300616CE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = "zh-Hans"; path = "zh-Hans.lproj/AccountIntents.intentdefinition"; sourceTree = "<group>"; };
@@ -683,6 +690,7 @@
 		BFFD823528A680E000616CE1 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		BFFD823928A73A5400616CE1 /* ReviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHandler.swift; sourceTree = "<group>"; };
 		EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCorner.swift; sourceTree = "<group>"; };
+		EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-NoWatch.xcassets"; sourceTree = "<group>"; };
 		EA07C65528B11DB40030E338 /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
 		EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarSharableInIOS16.swift; sourceTree = "<group>"; };
 		EA099FF328A2B7220023B4AF /* AccountIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccountIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -712,6 +720,8 @@
 		EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgetProvider.swift; sourceTree = "<group>"; };
 		EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailView.swift; sourceTree = "<group>"; };
+		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
+		EA5232282903E0D6007A4CF4 /* ReverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseMask.swift; sourceTree = "<group>"; };
 		EA56E07628A26C0D00A64262 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		EA56E07728A26C0D00A64262 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		EA56E07828A26C0D00A64262 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -876,6 +886,7 @@
 				EA07C65528B11DB40030E338 /* NotificationSettingView.swift */,
 				BFB101EF28D7262A000DC631 /* ThanksView.swift */,
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
+				EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -1090,6 +1101,7 @@
 				EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */,
 				EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */,
 				EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */,
+				EA5232282903E0D6007A4CF4 /* ReverseMask.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -1154,6 +1166,7 @@
 		EA56E07528A26C0D00A64262 /* FetchedModels */ = {
 			isa = PBXGroup;
 			children = (
+				BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */,
 				BF85D78828CF31FD003F3479 /* BasicInfos.swift */,
 				BFB101DB28D5F971000DC631 /* CurrentEvents.swift */,
 				EA56E07628A26C0D00A64262 /* Error.swift */,
@@ -1322,7 +1335,7 @@
 				BF70213728B5259300A6BBA9 /* InfoPlist.strings */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
 				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,
-				BF75011828E5D25600CDA64E /* Assets-NoWatch.xcassets */,
+				EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */,
 				BF7500FA28E0445300CDA64E /* Resources */,
 				EAAF330828A276360018EFAB /* View */,
 				EABD7DBF2886B2D300B7F0FD /* Preview Content */,
@@ -1684,7 +1697,6 @@
 				EAEC420128B0994C0056D182 /* 洞天宝钱.png in Resources */,
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
-				BF75011A28E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */,
 				BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */,
 				EAEC41E228B096170056D182 /* 每日任务.png in Resources */,
 				BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */,
@@ -1709,7 +1721,7 @@
 				BF70213428B5259300A6BBA9 /* InfoPlist.strings in Resources */,
 				EAEC41FA28B0994C0056D182 /* 树脂.png in Resources */,
 				BF75010028E0452C00CDA64E /* article.html in Resources */,
-				BF75011928E5D25600CDA64E /* Assets-NoWatch.xcassets in Resources */,
+				EA0718C329059602009D4730 /* Assets-NoWatch.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1742,6 +1754,7 @@
 				BFB101E028D5F971000DC631 /* CurrentEvents.swift in Sources */,
 				BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EAE95CCF28CE0FD600D975CB /* ResinInfo.swift in Sources */,
+				BFE7AFDF2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				EAE95CD228CE0FD600D975CB /* ExpeditionInfo.swift in Sources */,
 				EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */,
 				EAE95CC128CE0F7A00D975CB /* LockScreenResinWidgetInline.swift in Sources */,
@@ -1855,6 +1868,7 @@
 				BFBDD65128ED7B970022B79D /* Result.swift in Sources */,
 				EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */,
 				BFCC069228C9BBC8003E4A54 /* DailyTaskInfo.swift in Sources */,
+				BFE7AFDE2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1864,6 +1878,7 @@
 			files = (
 				BF75010428E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				EA196B0428B769640091FAE0 /* StringLocalized.swift in Sources */,
+				BFE7AFDD2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				EA09A00E28A2B8700023B4AF /* Account.swift in Sources */,
 				EA09A01528A2B8B30023B4AF /* WeeklyBossesInfo.swift in Sources */,
 				EA09A00D28A2B8660023B4AF /* AccountConfigurationModel.swift in Sources */,
@@ -2015,6 +2030,7 @@
 				EA56E09F28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */,
 				BFE42536289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
 				EAF43C9228A0161C00D89787 /* WidgetBackgroundView.swift in Sources */,
+				BFE7AFDC2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2095,6 +2111,7 @@
 				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
 				BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */,
+				EA5232292903E0D6007A4CF4 /* ReverseMask.swift in Sources */,
 				BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */,
 				EA56E09A28A26C0D00A64262 /* TransformerInfo.swift in Sources */,
@@ -2113,11 +2130,13 @@
 				EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
+				EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */,
 				BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */,
 				EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */,
+				BFE7AFDB2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */,
 				EA56E09828A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
@@ -2162,6 +2181,7 @@
 				EAE95D0628CE11A700D975CB /* ResinInfo.swift in Sources */,
 				EAE95D0528CE11A700D975CB /* ExpeditionInfo.swift in Sources */,
 				EAE95CF528CE117B00D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
+				BFE7AFE02902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				BFBDD65328ED7B980022B79D /* Result.swift in Sources */,
 				EAB1111028CF8C6A009FDF07 /* BasicInfos.swift in Sources */,
 				EAE95D0A28CE11AD00D975CB /* FeatureAPI.swift in Sources */,
