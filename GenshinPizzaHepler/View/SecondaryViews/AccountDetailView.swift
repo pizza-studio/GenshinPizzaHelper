@@ -39,7 +39,6 @@ struct AccountDetailView: View {
     }
 
     @State private var isPresentingConfirm: Bool = false
-    @State private var isSheetShow: Bool = false
     
     @State var isWebShown: Bool = false
 
@@ -70,13 +69,6 @@ struct AccountDetailView: View {
         .navigationBarTitle("帐号信息", displayMode: .inline)
         .onDisappear {
             viewModel.saveAccount()
-        }
-        .sheet(isPresented: $isSheetShow) {
-            NavigationView {
-                WebBroswerView(url: "http://ophelper.top/static/donate.html")
-                    .navigationTitle("支持我们")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
         }
         .sheet(isPresented: $isWebShown) {
             GetCookieWebView(isShown: $isWebShown, cookie: bindingCookie, region: server.region)
