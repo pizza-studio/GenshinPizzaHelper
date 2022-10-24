@@ -10,7 +10,11 @@ import Foundation
 struct AllAvatarDetailModel: Codable {
     var avatars: [Avatar]
 
-    struct Avatar: Codable {
+    struct Avatar: Codable, Equatable {
+        static func == (lhs: AllAvatarDetailModel.Avatar, rhs: AllAvatarDetailModel.Avatar) -> Bool {
+            lhs.id == rhs.id
+        }
+
         var id: Int
         var element: String
         var costumes: [Costume]

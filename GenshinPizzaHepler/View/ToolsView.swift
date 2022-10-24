@@ -355,7 +355,7 @@ struct ToolsView: View {
                         }
                     }
                 }
-                .toolbarSavePhotoButtonInIOS16(viewToShare: {
+                .toolbarSavePhotoButtonInIOS16(title: String(localized: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据"), placement: .navigationBarLeading) {
                     Group {
                         switch abyssDataViewSelection {
                         case .thisTerm:
@@ -364,7 +364,7 @@ struct ToolsView: View {
                             AbyssShareView(data: lastAbyssData, charMap: viewModel.charMap!)
                         }
                     }
-                }, placement: .navigationBarLeading, title: String(localized: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据"))
+                }
             }
         } else {
             ProgressView()
@@ -550,9 +550,9 @@ private struct LedgerSheetView: View {
                     Text("原石摩拉账簿").bold()
                 }
             }
-            .toolbarSavePhotoButtonInIOS16(viewToShare: {
+            .toolbarSavePhotoButtonInIOS16(title: "保存本月原石账簿图片".localized, placement: .navigationBarLeading) {
                 LedgerShareView(data: data)
-            }, placement: .navigationBarLeading, title: "保存本月原石账簿图片".localized)
+            }
         }
     }
 

@@ -33,7 +33,7 @@ struct AllAvatarListSheetView: View {
             List {
                 Section {
                     ForEach(showingAvatars, id: \.id) { avatar in
-                        AvatarListItem(avatar: avatar)
+                        AvatarListItem(avatar: avatar, charMap: viewModel.charMap)
                     }
                 } header: {
                     Text("共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名。")
@@ -56,6 +56,9 @@ struct AllAvatarListSheetView: View {
                         Image(systemName: "arrow.left.arrow.right.circle")
                     }
                 }
+            }
+            .toolbarSavePhotoButtonInIOS16(title: "保存", placement: .navigationBarLeading) {
+                AllAvatarListShareView(accountName: account.config.name!, showingAvatars: showingAvatars, charMap: viewModel.charMap)
             }
         } else {
             ProgressView()
@@ -90,17 +93,17 @@ struct AllAvatarListSheetView: View {
 
 @available(iOS 15.0, *)
 struct AvatarListItem: View {
-    @EnvironmentObject var viewModel: ViewModel
     let avatar: AllAvatarDetailModel.Avatar
+    let charMap: [String : ENCharacterMap.Character]?
 
     var body: some View {
         HStack {
             ZStack(alignment: .bottomLeading) {
                 Group {
-                    if let charMap = viewModel.charMap, let char = charMap["\(avatar.id)"] {
+                    if let charMap = charMap, let char = charMap["\(avatar.id)"] {
                         EnkaWebIcon(iconString: char.iconString)
                             .background(content: {
-                                if let charMap = viewModel.charMap, let char = charMap["\(avatar.id)"] {
+                                if let charMap = charMap, let char = charMap["\(avatar.id)"] {
                                     EnkaWebIcon(iconString: char.namecardIconString)
                                         .scaledToFill()
                                         .offset(x: -55/3)
@@ -151,8 +154,11 @@ struct AvatarListItem: View {
                                 .scaledToFit()
                                 .scaleEffect(1.1)
                                 .clipShape(Circle())
-                            WebImage(urlStr: avatar.weapon.icon)
-                                .scaledToFit()
+                            if let iconString = URL(string: avatar.weapon.icon)?.lastPathComponent.split(separator: ".").first {
+                                EnkaWebIcon(iconString: String(iconString) + "_Awaken").scaledToFit()
+                            } else {
+                                WebImage(urlStr: avatar.weapon.icon).scaledToFit()
+                            }
                         }
                         .frame(width: 25, height: 25)
                         .padding(.trailing, 3)
@@ -171,8 +177,14 @@ struct AvatarListItem: View {
                     }
                     Spacer()
                     ForEach(avatar.reliquaries, id: \.id) { reliquary in
-                        WebImage(urlStr: reliquary.icon)
-                            .frame(width: 25, height: 25)
+                        Group {
+                            if let iconString = URL(string: reliquary.icon)?.lastPathComponent.split(separator: ".").first {
+                                EnkaWebIcon(iconString: String(iconString)).scaledToFit()
+                            } else {
+                                WebImage(urlStr: reliquary.icon)
+                            }
+                        }
+                        .frame(width: 25, height: 25)
                     }
                 }
             }
@@ -180,4 +192,152 @@ struct AvatarListItem: View {
     }
 }
 
+@available(iOS 15.0, *)
+private struct AllAvatarListShareView: View {
+    let accountName: String
+    let showingAvatars: [AllAvatarDetailModel.Avatar]
+    let charMap: [String : ENCharacterMap.Character]?
 
+    var eachColumnAvatars: [[AllAvatarDetailModel.Avatar]] {
+        let chunkSize: Int = 16 // 每列的角色数
+        return stride(from: 0, to: showingAvatars.count, by: chunkSize).map {
+            Array(showingAvatars[$0..<min($0 + chunkSize, showingAvatars.count)])
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: 7) {
+            // Title
+            HStack(alignment: .lastTextBaseline) {
+                Text("\(accountName)").font(.largeTitle).bold()
+                Text("的所有角色")
+            }
+            // 正文
+            HStack(alignment: .top) {
+                ForEach(eachColumnAvatars, id: \.first!.id) { columnAvatars in
+                    let view = VStack {
+                        ForEach(columnAvatars, id: \.id) { avatar in
+                            AvatarListItemShare(avatar: avatar, charMap: charMap)
+                        }
+                    }
+                    if columnAvatars != eachColumnAvatars.last {
+                        view.padding(.trailing)
+                    } else {
+                        view
+                    }
+                }
+            }
+            HStack {
+                Spacer()
+                Image("AppIconHD")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                Text("原神披萨小助手").bold().font(.footnote)
+            }
+        }
+        .padding()
+    }
+}
+
+@available(iOS 15.0, *)
+private struct AvatarListItemShare: View {
+    let avatar: AllAvatarDetailModel.Avatar
+    let charMap: [String : ENCharacterMap.Character]?
+
+    var body: some View {
+        HStack {
+            ZStack(alignment: .bottomLeading) {
+                Group {
+                    if let charMap = charMap, let char = charMap["\(avatar.id)"] {
+                        EnkaWebIcon(iconString: char.iconString)
+                            .background(content: {
+                                if let charMap = charMap, let char = charMap["\(avatar.id)"] {
+                                    EnkaWebIcon(iconString: char.namecardIconString)
+                                        .scaledToFill()
+                                        .offset(x: -55/3)
+                                } else { EmptyView() }
+                            })
+                    } else {
+                        WebImage(urlStr: avatar.icon)
+                    }
+                }
+                .frame(width: 55, height: 55)
+                .clipShape(Circle())
+                Image(systemName: "heart.fill")
+                    .overlay {
+                        Text("\(avatar.fetter)")
+                            .font(.caption2)
+                            .foregroundColor(.white)
+                    }
+                    .foregroundColor(Color(UIColor.darkGray))
+                    .blendMode(.hardLight)
+            }
+            VStack (spacing: 3) {
+                HStack (alignment: .lastTextBaseline, spacing: 5) {
+                    Text(avatar.name)
+                        .font(.system(size: 20, weight: .medium))
+//                        .fixedSize(horizontal: true, vertical: false)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
+                    Spacer()
+                    Text("Lv. \(avatar.level)")
+                        .layoutPriority(1)
+                        .fixedSize()
+                        .font(.callout)
+                    Text("\(avatar.activedConstellationNum)命")
+                        .font(.caption)
+                        .padding(.horizontal, 5)
+                        .background(
+                            Capsule()
+                                .foregroundColor(Color(UIColor.systemGray))
+                                .opacity(0.2)
+                        )
+                        .layoutPriority(1)
+                        .fixedSize()
+                }
+                HStack (spacing: 0) {
+                    HStack(spacing: 0) {
+                        ZStack {
+                            EnkaWebIcon(iconString: RankLevel(rawValue: avatar.weapon.rarity)?.squaredBackgroundIconString ?? "")
+                                .scaledToFit()
+                                .scaleEffect(1.1)
+                                .clipShape(Circle())
+                            if let iconString = URL(string: avatar.weapon.icon)?.lastPathComponent.split(separator: ".").first {
+                                EnkaWebIcon(iconString: String(iconString) + "_Awaken").scaledToFit()
+                            } else {
+                                WebImage(urlStr: avatar.weapon.icon).scaledToFit()
+                            }
+                        }
+                        .frame(width: 25, height: 25)
+                        .padding(.trailing, 3)
+                        HStack(alignment: .lastTextBaseline, spacing: 5) {
+                            Text("Lv. \(avatar.weapon.level)")
+                                .font(.callout)
+                            Text("精\(avatar.weapon.affixLevel)")
+                                .font(.caption)
+                                .padding(.horizontal, 5)
+                                .background(
+                                    Capsule()
+                                        .foregroundColor(Color(UIColor.systemGray))
+                                        .opacity(0.2)
+                                )
+                        }
+                    }
+                    Spacer()
+                    ForEach(avatar.reliquaries, id: \.id) { reliquary in
+                        Group {
+                            if let iconString = URL(string: reliquary.icon)?.lastPathComponent.split(separator: ".").first {
+                                EnkaWebIcon(iconString: String(iconString)).scaledToFit()
+                            } else {
+                                WebImage(urlStr: reliquary.icon)
+                            }
+                        }
+                        .frame(width: 25, height: 25)
+                    }
+                }
+            }
+        }
+    }
+}
