@@ -36,7 +36,10 @@ struct AllAvatarListSheetView: View {
                         AvatarListItem(avatar: avatar, charMap: viewModel.charMap)
                     }
                 } header: {
-                    Text("共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名。")
+                    VStack(alignment: .leading) {
+                        Text("共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter{ $0.rarity == 4 }.count)名。")
+                        Text("共获得\(goldNum(data: allAvatarInfo).allGold)金，其中角色\(goldNum(data: allAvatarInfo).charGold)金，武器\(goldNum(data: allAvatarInfo).weaponGold)金。（未统计旅行者和无人装备的五星武器）")
+                    }
                 }
             }
             .navigationTitle("我的角色")
@@ -92,6 +95,24 @@ struct AllAvatarListSheetView: View {
         case all = "全部角色"
         case _5star = "5星角色"
         case _4star = "4星角色"
+    }
+
+    func goldNum(data: AllAvatarDetailModel) -> (allGold: Int, charGold: Int, weaponGold: Int) {
+        var charGold = 0
+        var weaponGold = 0
+        for avatar in data.avatars {
+            if avatar.id == 10000005 || avatar.id == 10000007 {
+                continue
+            }
+            if avatar.rarity == 5 {
+                charGold += 1
+                charGold += avatar.activedConstellationNum
+            }
+            if avatar.weapon.rarity == 5 {
+                weaponGold += avatar.weapon.affixLevel
+            }
+        }
+        return (charGold + weaponGold, charGold, weaponGold)
     }
 }
 
