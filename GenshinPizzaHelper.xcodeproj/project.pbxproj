@@ -873,6 +873,7 @@
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
+				EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */,
 				BFB101F128D85B28000DC631 /* AllEventsView.swift */,
 				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
 				BF70214528BC82D400A6BBA9 /* ContactUsView.swift */,
@@ -886,7 +887,6 @@
 				EA07C65528B11DB40030E338 /* NotificationSettingView.swift */,
 				BFB101EF28D7262A000DC631 /* ThanksView.swift */,
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
-				EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";

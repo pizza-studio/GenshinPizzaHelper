@@ -50,7 +50,11 @@ struct AllAvatarListSheetView: View {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Menu {
                         ForEach(AllAvatarListDisplayType.allCases, id: \.rawValue) { choice in
-                            Button(choice.rawValue) { allAvatarListDisplayType = choice }
+                            Button(choice.rawValue) {
+                                withAnimation {
+                                    allAvatarListDisplayType = choice
+                                }
+                            }
                         }
                     } label: {
                         Image(systemName: "arrow.left.arrow.right.circle")
