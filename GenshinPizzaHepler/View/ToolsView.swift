@@ -177,8 +177,6 @@ struct ToolsView: View {
         }
     }
 
-
-
     @ViewBuilder
     func allAvatarListView() -> some View {
         NavigationView {
