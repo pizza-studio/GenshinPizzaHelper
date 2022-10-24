@@ -66,14 +66,9 @@ struct ToolsView: View {
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
                     NavigationView {
-                        AccountDetailView(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], isWebShown: true)
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    Button("完成") {
-                                        sheetType = nil
-                                        viewModel.refreshLedgerData()
-                                    }
-                                }
+                        AccountDetailSheet(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], sheetType: $sheetType)
+                            .onDisappear {
+                                viewModel.refreshLedgerData()
                             }
                     }
                 case .allAvatarList:
