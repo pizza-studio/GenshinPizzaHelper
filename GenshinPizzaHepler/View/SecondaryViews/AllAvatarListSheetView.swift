@@ -206,12 +206,13 @@ private struct AllAvatarListShareView: View {
     }
 
     var body: some View {
-        VStack(spacing: 7) {
+        VStack(spacing: 0) {
             // Title
             HStack(alignment: .lastTextBaseline) {
-                Text("\(accountName)").font(.largeTitle).bold()
-                Text("的所有角色")
+                Text("\(accountName)").font(.title).bold()
+                Text("的所有角色").font(.title)
             }
+            .padding(.bottom, 9)
             // 正文
             HStack(alignment: .top) {
                 ForEach(eachColumnAvatars, id: \.first!.id) { columnAvatars in
@@ -236,6 +237,7 @@ private struct AllAvatarListShareView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                 Text("原神披萨小助手").bold().font(.footnote)
             }
+            .padding(.top, 2)
         }
         .padding()
     }
