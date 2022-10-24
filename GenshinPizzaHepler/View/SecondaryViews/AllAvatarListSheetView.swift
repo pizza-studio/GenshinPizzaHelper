@@ -53,7 +53,7 @@ struct AllAvatarListSheetView: View {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Menu {
                         ForEach(AllAvatarListDisplayType.allCases, id: \.rawValue) { choice in
-                            Button(choice.rawValue) {
+                            Button(choice.rawValue.localized) {
                                 withAnimation {
                                     allAvatarListDisplayType = choice
                                 }
@@ -64,7 +64,7 @@ struct AllAvatarListSheetView: View {
                     }
                 }
             }
-            .toolbarSavePhotoButtonInIOS16(title: "保存", placement: .navigationBarLeading) {
+            .toolbarSavePhotoButtonInIOS16(title: "保存".localized, placement: .navigationBarLeading) {
                 AllAvatarListShareView(accountName: account.config.name!, showingAvatars: showingAvatars, charMap: viewModel.charMap)
             }
         } else {
