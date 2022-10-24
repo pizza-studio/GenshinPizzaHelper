@@ -66,13 +66,8 @@ struct SettingsView: View {
                         isLanguageSettingHintShow = true
                     } label: {
                         Label {
-                            HStack {
-                                Text("偏好语言")
-                                    .foregroundColor(.primary)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.secondary)
-                            }
+                            Text("偏好语言")
+                                .foregroundColor(.primary)
                         } icon: {
                             Image(systemName: "globe")
                         }
