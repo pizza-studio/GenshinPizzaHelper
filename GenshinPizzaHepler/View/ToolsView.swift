@@ -29,6 +29,7 @@ struct ToolsView: View {
 
     var ledgerDataResult: LedgerDataFetchResult? { account?.ledgeDataResult }
 
+
     var animation: Namespace.ID
 
     @State private var askAllowAbyssDataCollectionAlert: Bool = false
@@ -75,6 +76,8 @@ struct ToolsView: View {
                                 }
                             }
                     }
+                case .allAvatarList:
+                    allAvatarListView()
                 }
             }
             .onChange(of: account) { newAccount in
@@ -174,6 +177,15 @@ struct ToolsView: View {
             Section { allAvatarNavigator() }
         }
         #endif
+    }
+
+
+
+    @ViewBuilder
+    func allAvatarListView() -> some View {
+        NavigationView {
+            AllAvatarListSheetView(account: account!, sheetType: $sheetType)
+        }
     }
 
     @ViewBuilder
@@ -358,7 +370,7 @@ struct ToolsView: View {
                         }
                     }
                 }
-                .toolbarSavePhotoButtonInIOS16(viewToShare: {
+                .toolbarSavePhotoButtonInIOS16(title: String(localized: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据"), placement: .navigationBarLeading) {
                     Group {
                         switch abyssDataViewSelection {
                         case .thisTerm:
@@ -367,7 +379,7 @@ struct ToolsView: View {
                             AbyssShareView(data: lastAbyssData, charMap: viewModel.charMap!)
                         }
                     }
-                }, placement: .navigationBarLeading, title: String(localized: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据"))
+                }
             }
         } else {
             ProgressView()
@@ -555,17 +567,20 @@ struct ToolsView: View {
             askAllowAbyssDataCollectionAlert = true
         }
     }
-}
 
-private enum SheetTypes: Identifiable {
-    var id: Int {
-        hashValue
+    enum SheetTypes: Identifiable {
+        var id: Int {
+            hashValue
+        }
+
+        case spiralAbyss
+        case characters
+        case loginAccountAgainView
+        case allAvatarList
     }
-
-    case spiralAbyss
-    case characters
-    case loginAccountAgainView
 }
+
+
 
 private enum AbyssDataType: String, CaseIterable {
     case thisTerm = "本期深渊"
@@ -577,7 +592,7 @@ private enum AbyssDataType: String, CaseIterable {
 @available(iOS 15.0, *)
 private struct LedgerSheetView: View {
     let data: LedgerData
-    @Binding var sheetType: SheetTypes?
+    @Binding var sheetType: ToolsView.SheetTypes?
 
     var body: some View {
         NavigationView {
@@ -595,9 +610,9 @@ private struct LedgerSheetView: View {
                     Text("原石摩拉账簿").bold()
                 }
             }
-            .toolbarSavePhotoButtonInIOS16(viewToShare: {
+            .toolbarSavePhotoButtonInIOS16(title: "保存本月原石账簿图片".localized, placement: .navigationBarLeading) {
                 LedgerShareView(data: data)
-            }, placement: .navigationBarLeading, title: "保存本月原石账簿图片".localized)
+            }
         }
     }
 
@@ -710,17 +725,18 @@ private struct LedgerSheetView: View {
     }
 }
 
+@available(iOS 15.0, *)
 private struct AllAvatarNavigator: View {
     let basicInfo: BasicInfos
     let charMap: [String : ENCharacterMap.Character]
-    @Binding var sheetType: SheetTypes?
+    @Binding var sheetType: ToolsView.SheetTypes?
 
     var body: some View {
         HStack {
-            Text("所有角色（开发中）")
+            Text("所有角色")
                 .padding(.trailing)
                 .font(.footnote)
-                .foregroundColor(.secondary)
+                .foregroundColor(.primary)
             Spacer()
             HStack(spacing: 3) {
                 ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
@@ -737,8 +753,7 @@ private struct AllAvatarNavigator: View {
             .padding(.vertical, 3)
         }
         .onTapGesture {
-            // TODO: Open sheet view
-            // sheetType = .??
+            sheetType = .allAvatarList
         }
     }
 }

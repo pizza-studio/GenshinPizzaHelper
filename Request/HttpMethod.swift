@@ -1040,6 +1040,151 @@ struct HttpMethod<T: Codable> {
             }
         }
     }
+
+    /// 返回需要POST的结果接口
+    /// - Parameters:
+    ///   - method:Method, http方法的类型
+    ///   - url:String，请求的路径
+    ///   - completion:异步返回处理好的data以及报错的类型
+    ///
+    ///  需要自己传URL类型的url过来
+    static func postRequest (
+        _ method: Method,
+        baseHost: String = "http://81.70.76.222/",
+        urlStr: String,
+        body: Data,
+        region: Region? = nil,
+        cookie: String? = nil,
+        dseed: String? = nil,
+        ds: String? = nil,
+        completion: @escaping(
+            (Result<T, RequestError>) -> ()
+        )
+    ) {
+        let networkReachability = NetworkReachability()
+
+        if networkReachability.reachable {
+            DispatchQueue.global(qos: .userInteractive).async {
+                // 请求url前缀，后跟request的类型
+                let baseStr: String = baseHost
+                // 由前缀和后缀共同组成的url
+                let url = URLComponents(string: baseStr + urlStr)!
+                // 初始化请求
+                var request = URLRequest(url: url.url!)
+                // 设置请求头
+                request.allHTTPHeaderFields = [
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+                    "Accept": "application/json, text/plain, */*",
+                    "Connection": "keep-alive",
+                ]
+                if let cookie = cookie {
+                    request.setValue(cookie, forHTTPHeaderField: "Cookie")
+                }
+                func get_language_code() -> String {
+                    let languageCode = Locale.current.languageCode ?? "en-us"
+                    print(languageCode)
+                    if languageCode == "zh" {
+                        return "zh-cn"
+                    } else if languageCode == "en" {
+                        return "en-us"
+                    } else if languageCode == "ja" {
+                        return "ja-jp"
+                    } else {
+                        return languageCode
+                    }
+                }
+
+                if let region = region {
+                    switch region {
+                    case .cn:
+                        request.setValue("5", forHTTPHeaderField: "x-rpc-client_type")
+                        request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.36.1", forHTTPHeaderField: "User-Agent")
+                        request.setValue("2.36.1", forHTTPHeaderField: "x-rpc-app_version")
+                        request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Origin")
+                        request.setValue("https://webstatic.mihoyo.com", forHTTPHeaderField: "Referer")
+                        request.setValue(get_language_code(), forHTTPHeaderField: "x-rpc-language")
+                    case .global:
+                        request.setValue("2", forHTTPHeaderField: "x-rpc-client_type")
+                        request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0", forHTTPHeaderField: "User-Agent")
+                        request.setValue("2.9.1", forHTTPHeaderField: "x-rpc-app_version")
+                        request.setValue("https://act.hoyolab.com", forHTTPHeaderField: "Origin")
+                        request.setValue("https://act.hoyolab.com", forHTTPHeaderField: "Referer")
+                        request.setValue(get_language_code(), forHTTPHeaderField: "x-rpc-language")
+                    }
+                }
+                if let dseed = dseed {
+                    request.setValue(dseed, forHTTPHeaderField: "dseed")
+                }
+                if let ds = ds {
+                    if region != nil {
+                        request.setValue(ds, forHTTPHeaderField: "DS")
+                    } else {
+                        request.setValue(ds, forHTTPHeaderField: "ds")
+                    }
+                }
+                // http方法
+                switch method {
+                case .post:
+                    request.httpMethod = "POST"
+                case .get:
+                    request.httpMethod = "GET"
+                case .put:
+                    request.httpMethod = "PUT"
+                }
+                // request body
+                request.httpBody = body
+                request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
+                print(body.count)
+                print(request.allHTTPHeaderFields!)
+                print(request)
+                print(String(data: request.httpBody!, encoding: .utf8)!)
+                // 开始请求
+                URLSession.shared.dataTask(
+                    with: request
+                ) { data, response, error in
+                    // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
+                    print(error ?? "ErrorInfo nil")
+                    if let error = error {
+                        completion(.failure(.dataTaskError(error.localizedDescription)))
+                        print(
+                            "DataTask error in General HttpMethod: " +
+                            error.localizedDescription + "\n"
+                        )
+                    } else {
+                        guard let data = data else {
+                            completion(.failure(.noResponseData))
+                            print("found response data nil")
+                            return
+                        }
+                        guard response is HTTPURLResponse else {
+                            completion(.failure(.responseError))
+                            print("response error")
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            let decoder = JSONDecoder()
+                            if baseHost != "http://81.70.76.222/" {
+                                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            }
+
+                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+                            print(dictionary ?? "None")
+
+                            do {
+                                let requestResult = try decoder.decode(T.self, from: data)
+                                completion(.success(requestResult))
+                            } catch {
+                                print(error)
+                                completion(.failure(.decodeError(error.localizedDescription)))
+                            }
+
+                        }
+                    }
+                }.resume()
+            }
+        }
+    }
 }
 
 public class API {
