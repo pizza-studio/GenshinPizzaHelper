@@ -172,11 +172,9 @@ struct ToolsView: View {
                 loadingView()
             }
         }
-        #if DEBUG
         if (try? account?.playerDetailResult?.get()) == nil {
             Section { allAvatarNavigator() }
         }
-        #endif
     }
 
 
