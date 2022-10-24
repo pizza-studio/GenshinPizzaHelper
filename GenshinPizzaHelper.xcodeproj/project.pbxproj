@@ -100,8 +100,6 @@
 		BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */; };
 		BFB101D328D5C579000DC631 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D228D5C579000DC631 /* ToolsView.swift */; };
 		BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
-		BFB101D628D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
-		BFB101D728D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		BFB101DC28D5F971000DC631 /* CurrentEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101DB28D5F971000DC631 /* CurrentEvents.swift */; };
 		BFB101DD28D5F971000DC631 /* CurrentEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101DB28D5F971000DC631 /* CurrentEvents.swift */; };
 		BFB101DE28D5F971000DC631 /* CurrentEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101DB28D5F971000DC631 /* CurrentEvents.swift */; };
@@ -257,6 +255,7 @@
 		EA1C2CE128F0464D00E4C28A /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */; };
 		EA1C2CE328F07C1E00E4C28A /* ThisDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */; };
 		EA1C2CE528F07DBE00E4C28A /* HiddenWaterMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */; };
+		EA1D09D128F319F5001DCC2A /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
 		EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
 		EA2FF0E928B093AE0050C016 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
@@ -321,6 +320,25 @@
 		EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
 		EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
 		EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
+		EA784CC42902462C00918F64 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
+		EA784CC62902471600918F64 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
+		EA784CC82902485600918F64 /* AvatarHoldingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC72902485600918F64 /* AvatarHoldingData.swift */; };
+		EA784CCA290248CA00918F64 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
+		EA784CCC2902511E00918F64 /* AvatarPercentageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */; };
+		EA784CCD2902517200918F64 /* AvatarPercentageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */; };
+		EA784CCE2902517200918F64 /* AvatarPercentageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */; };
+		EA784CCF2902517500918F64 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
+		EA784CD02902517600918F64 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
+		EA784CD12902517800918F64 /* AvatarHoldingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC72902485600918F64 /* AvatarHoldingData.swift */; };
+		EA784CD22902517800918F64 /* AvatarHoldingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC72902485600918F64 /* AvatarHoldingData.swift */; };
+		EA784CD32902517B00918F64 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
+		EA784CD42902517C00918F64 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
+		EA784CD52902518000918F64 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
+		EA784CD62902518100918F64 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
+		EA784CD72902518500918F64 /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
+		EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
+		EA784CD92902518A00918F64 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
+		EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */; };
 		EA79FDC528AB83B600B50D6F /* OptionalAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */; };
 		EA79FDC628AB84F500B50D6F /* OptionalAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */; };
@@ -362,6 +380,7 @@
 		EAB1110A28CF8581009FDF07 /* WidgetsBoundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */; };
 		EAB1110F28CF8C69009FDF07 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
 		EAB1111028CF8C6A009FDF07 /* BasicInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D78828CF31FD003F3479 /* BasicInfos.swift */; };
+		EAB5798128FC278D00C5D075 /* AbyssDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */; };
 		EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
 		EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
@@ -371,6 +390,7 @@
 		EABE606928D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
 		EABE606A28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
 		EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
+		EAC2BA6328FC195600A9060F /* PrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */; };
 		EACBDA5428C9DEF000CEE176 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACBDA5328C9DEF000CEE176 /* CloudKit.framework */; };
 		EACBDA5528C9E92800CEE176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EACBDA5628C9E92800CEE176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
@@ -706,6 +726,7 @@
 		EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowContentViewModifier.swift; sourceTree = "<group>"; };
 		EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisDevice.swift; sourceTree = "<group>"; };
 		EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenWaterMark.swift; sourceTree = "<group>"; };
+		EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDataSend.swift; sourceTree = "<group>"; };
 		EA2FF0E828B093AE0050C016 /* 每日任务.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "每日任务.png"; sourceTree = "<group>"; };
 		EA30F99B2886B46C00AE7BEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ResinStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -744,6 +765,11 @@
 		EA6960AE28E73BFF004B2CAF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetCorner.swift; sourceTree = "<group>"; };
 		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
+		EA784CC32902462C00918F64 /* FetchHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHomeModel.swift; sourceTree = "<group>"; };
+		EA784CC52902471600918F64 /* UtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilizationData.swift; sourceTree = "<group>"; };
+		EA784CC72902485600918F64 /* AvatarHoldingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarHoldingData.swift; sourceTree = "<group>"; };
+		EA784CC9290248CA00918F64 /* HomeServerVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServerVersion.swift; sourceTree = "<group>"; };
+		EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPercentageModel.swift; sourceTree = "<group>"; };
 		EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
 		EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalAccounts.swift; sourceTree = "<group>"; };
 		EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeWatchCornerResinWidget.swift; sourceTree = "<group>"; };
@@ -764,12 +790,14 @@
 		EAB110FC28CF7704009FDF07 /* LockScreenExpeditionWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenExpeditionWidgetCircular.swift; sourceTree = "<group>"; };
 		EAB110FD28CF7704009FDF07 /* LockScreenExpeditionWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenExpeditionWidget.swift; sourceTree = "<group>"; };
 		EAB1110628CF84B5009FDF07 /* WidgetLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLauncher.swift; sourceTree = "<group>"; };
+		EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDataCollectionView.swift; sourceTree = "<group>"; };
 		EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "原神披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinPizzaHeplerApp.swift; sourceTree = "<group>"; };
 		EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		EABD7DCC2886B3D700B7F0FD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		EABE606028D9F6970018CAF6 /* MaterialChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialChoices.swift; sourceTree = "<group>"; };
+		EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsView.swift; sourceTree = "<group>"; };
 		EACBDA5328C9DEF000CEE176 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		EACCEA7628F95A75004817FB /* LedgerShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerShareView.swift; sourceTree = "<group>"; };
 		EAD7F02028D016C40047A8F1 /* LockScreenLoopWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetCircular.swift; sourceTree = "<group>"; };
@@ -887,6 +915,8 @@
 				EA07C65528B11DB40030E338 /* NotificationSettingView.swift */,
 				BFB101EF28D7262A000DC631 /* ThanksView.swift */,
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
+				EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */,
+				EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -1205,6 +1235,19 @@
 			path = DecodeTool;
 			sourceTree = "<group>";
 		};
+		EA784CC2290245CC00918F64 /* HomeAPIModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */,
+				EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */,
+				EA784CC32902462C00918F64 /* FetchHomeModel.swift */,
+				EA784CC52902471600918F64 /* UtilizationData.swift */,
+				EA784CC72902485600918F64 /* AvatarHoldingData.swift */,
+				EA784CC9290248CA00918F64 /* HomeServerVersion.swift */,
+			);
+			path = HomeAPIModel;
+			sourceTree = "<group>";
+		};
 		EA7CD44228CF4A5F00857493 /* LockScreenAllInfoWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1261,6 +1304,7 @@
 				EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */,
 				EA46D0C328EA75FE00DFE603 /* EnkaAPIModel */,
 				EA56E07528A26C0D00A64262 /* FetchedModels */,
+				EA784CC2290245CC00918F64 /* HomeAPIModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1882,7 +1926,6 @@
 				EA09A00E28A2B8700023B4AF /* Account.swift in Sources */,
 				EA09A01528A2B8B30023B4AF /* WeeklyBossesInfo.swift in Sources */,
 				EA09A00D28A2B8660023B4AF /* AccountConfigurationModel.swift in Sources */,
-				BFB101D728D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EA09A02228A2B8F80023B4AF /* TimeTools.swift in Sources */,
 				EA09A01028A2B8A70023B4AF /* RequestResult.swift in Sources */,
 				EA09A01628A2B8B50023B4AF /* DailyTaskInfo.swift in Sources */,
@@ -1890,14 +1933,20 @@
 				EA79FDC728AB84F600B50D6F /* OptionalAccounts.swift in Sources */,
 				EA09A01228A2B8AA0023B4AF /* UserData.swift in Sources */,
 				EA63E2BD28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
+				EA784CD22902517800918F64 /* AvatarHoldingData.swift in Sources */,
 				BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
+				EA784CD42902517C00918F64 /* UtilizationData.swift in Sources */,
+				EA784CCF2902517500918F64 /* HomeServerVersion.swift in Sources */,
+				EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */,
+				EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */,
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
 				EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */,
 				BFB101E928D6C755000DC631 /* ViewTools.swift in Sources */,
 				EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				BFB101DE28D5F971000DC631 /* CurrentEvents.swift in Sources */,
+				EA784CD62902518100918F64 /* FetchHomeModel.swift in Sources */,
 				BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */,
 				EA09A01328A2B8B00023B4AF /* ResinInfo.swift in Sources */,
 				BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
@@ -1922,6 +1971,7 @@
 				BF85D78B28CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
+				EA784CCE2902517200918F64 /* AvatarPercentageModel.swift in Sources */,
 				EA09A01A28A2B8BD0023B4AF /* TransformerData.swift in Sources */,
 				EAE569FE28EFC5CF000D6856 /* SpiralAbyssDetail.swift in Sources */,
 				EA09A01428A2B8B20023B4AF /* ExpeditionInfo.swift in Sources */,
@@ -1944,6 +1994,7 @@
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
 				BF7500F528E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
+				EA784CD12902517800918F64 /* AvatarHoldingData.swift in Sources */,
 				EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */,
 				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
 				EA42251628E2B963006D4578 /* LockScreenWidgetProvider.swift in Sources */,
@@ -1967,7 +2018,9 @@
 				BF75010328E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
+				EA784CD72902518500918F64 /* AbyssDataSend.swift in Sources */,
 				EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
+				EA784CD02902517600918F64 /* HomeServerVersion.swift in Sources */,
 				EA56E08928A26C0D00A64262 /* RequestResult.swift in Sources */,
 				EA56E09928A26C0D00A64262 /* DailyTaskInfo.swift in Sources */,
 				BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */,
@@ -1979,7 +2032,9 @@
 				EA63E2BC28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
+				EA784CD52902518000918F64 /* FetchHomeModel.swift in Sources */,
 				BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */,
+				EA784CD92902518A00918F64 /* OpenAPI.swift in Sources */,
 				EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				EA36DFBA28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
@@ -1998,11 +2053,11 @@
 				BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */,
 				EAB1110028CF8422009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
 				EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */,
+				EA784CD32902517B00918F64 /* UtilizationData.swift in Sources */,
 				EAB110FF28CF8422009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
 				EA63E2BF28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
-				BFB101D628D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				EAD7F02628D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
@@ -2013,6 +2068,7 @@
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
 				EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */,
 				EA36DFBD28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift in Sources */,
+				EA784CCD2902517200918F64 /* AvatarPercentageModel.swift in Sources */,
 				BFFD823328A651F500616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD820F28A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
 				EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */,
@@ -2067,6 +2123,7 @@
 				EA1C2CE328F07C1E00E4C28A /* ThisDevice.swift in Sources */,
 				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BFFD823628A680E000616CE1 /* WebImageView.swift in Sources */,
+				EA784CC62902471600918F64 /* UtilizationData.swift in Sources */,
 				BF6C527B289E168A00EA224F /* HttpMethod.swift in Sources */,
 				BF70210F28B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EA56E08A28A26C0D00A64262 /* Result.swift in Sources */,
@@ -2082,6 +2139,7 @@
 				BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */,
 				BFFD823228A651F500616CE1 /* RingProgressBarView.swift in Sources */,
 				BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */,
+				EAC2BA6328FC195600A9060F /* PrivacySettingsView.swift in Sources */,
 				EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */,
 				EA7F9C6F28AFF9B300DEAFEB /* NotificationCenter.swift in Sources */,
 				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,
@@ -2109,6 +2167,7 @@
 				BF85D78928CF31FD003F3479 /* BasicInfos.swift in Sources */,
 				EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */,
 				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
+				EA784CCA290248CA00918F64 /* HomeServerVersion.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
 				BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */,
 				EA5232292903E0D6007A4CF4 /* ReverseMask.swift in Sources */,
@@ -2118,13 +2177,17 @@
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
 				BFBDD65C28F2F4670022B79D /* LedgerData.swift in Sources */,
+				EA784CCC2902511E00918F64 /* AvatarPercentageModel.swift in Sources */,
 				EA63E2BE28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
+				EA1D09D128F319F5001DCC2A /* AbyssDataSend.swift in Sources */,
 				EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EABE606128D9F6970018CAF6 /* MaterialChoices.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
+				EAB5798128FC278D00C5D075 /* AbyssDataCollectionView.swift in Sources */,
+				EA784CC42902462C00918F64 /* FetchHomeModel.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EA56E08628A26C0D00A64262 /* Error.swift in Sources */,
 				EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */,
@@ -2133,6 +2196,7 @@
 				EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */,
 				BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */,
 				EA56E08828A26C0D00A64262 /* RequestResult.swift in Sources */,
+				EA784CC82902485600918F64 /* AvatarHoldingData.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */,
