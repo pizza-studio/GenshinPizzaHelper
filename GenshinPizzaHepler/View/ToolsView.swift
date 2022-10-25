@@ -759,6 +759,9 @@ private struct PrimogemTextLabel: View {
                 .frame(maxHeight: labelHeight)
             Text("\(primogem)")
                 .font(.system(.largeTitle, design: .rounded))
+                .lineLimit(1)
+                .fixedSize(horizontal: false, vertical: true)
+                .minimumScaleFactor(0.7)
                 .overlay(
                     GeometryReader(content: { geometry in
                         Color.clear
@@ -807,8 +810,9 @@ private struct AbyssTextLabel: View {
                 .frame(maxHeight: labelHeight)
             Text(text)
                 .font(.system(.largeTitle, design: .rounded))
+                .lineLimit(1)
                 .fixedSize(horizontal: false, vertical: true)
-                .minimumScaleFactor(0.9)
+                .minimumScaleFactor(0.7)
                 .overlay(
                     GeometryReader(content: { geometry in
                         Color.clear
