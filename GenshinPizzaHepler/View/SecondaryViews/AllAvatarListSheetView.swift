@@ -242,7 +242,7 @@ private struct AllAvatarListShareView: View {
             // 正文
             HStack(alignment: .top) {
                 ForEach(eachColumnAvatars, id: \.first!.id) { columnAvatars in
-                    let view = VStack {
+                    let view = VStack(alignment: .leading) {
                         ForEach(columnAvatars, id: \.id) { avatar in
                             AvatarListItemShare(avatar: avatar, charMap: charMap)
                         }
@@ -302,13 +302,15 @@ private struct AvatarListItemShare: View {
                     .foregroundColor(Color(UIColor.darkGray))
                     .blendMode(.hardLight)
             }
-            VStack (spacing: 3) {
+            .layoutPriority(2)
+            VStack(alignment: .leading, spacing: 3) {
                 HStack (alignment: .lastTextBaseline, spacing: 5) {
                     Text(avatar.name)
                         .font(.system(size: 20, weight: .medium))
 //                        .fixedSize(horizontal: true, vertical: false)
-                        .minimumScaleFactor(0.5)
+//                        .minimumScaleFactor(0.7)
                         .lineLimit(1)
+                        .layoutPriority(1)
                     Spacer()
                     Text("Lv. \(avatar.level)")
                         .layoutPriority(1)
@@ -343,6 +345,7 @@ private struct AvatarListItemShare: View {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
                             Text("Lv. \(avatar.weapon.level)")
                                 .font(.callout)
+                                .fixedSize()
                             Text("精\(avatar.weapon.affixLevel)")
                                 .font(.caption)
                                 .padding(.horizontal, 5)
@@ -351,6 +354,7 @@ private struct AvatarListItemShare: View {
                                         .foregroundColor(Color(UIColor.systemGray))
                                         .opacity(0.2)
                                 )
+                                .fixedSize()
                         }
                     }
                     Spacer()
