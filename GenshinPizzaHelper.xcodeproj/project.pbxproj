@@ -339,6 +339,9 @@
 		EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
 		EA784CD92902518A00918F64 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
+		EA78BF09290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
+		EA78BF0A290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
+		EA78BF0B290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
 		EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */; };
 		EA79FDC528AB83B600B50D6F /* OptionalAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */; };
 		EA79FDC628AB84F500B50D6F /* OptionalAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */; };
@@ -770,6 +773,7 @@
 		EA784CC72902485600918F64 /* AvatarHoldingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarHoldingData.swift; sourceTree = "<group>"; };
 		EA784CC9290248CA00918F64 /* HomeServerVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServerVersion.swift; sourceTree = "<group>"; };
 		EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPercentageModel.swift; sourceTree = "<group>"; };
+		EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeaponTalentMaterial.xcassets; sourceTree = "<group>"; };
 		EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
 		EA79FDC428AB83B600B50D6F /* OptionalAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalAccounts.swift; sourceTree = "<group>"; };
 		EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeWatchCornerResinWidget.swift; sourceTree = "<group>"; };
@@ -1380,6 +1384,7 @@
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
 				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,
 				EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */,
+				EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */,
 				BF7500FA28E0445300CDA64E /* Resources */,
 				EAAF330828A276360018EFAB /* View */,
 				EABD7DBF2886B2D300B7F0FD /* Preview Content */,
@@ -1725,6 +1730,7 @@
 				BFCC06BC28CAFEA6003E4A54 /* InfoPlist.strings in Resources */,
 				EAEC41FC28B0994C0056D182 /* 树脂.png in Resources */,
 				EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */,
+				EA78BF0B290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EA196B0528B76B5E0091FAE0 /* Localizable.strings in Resources */,
 				BFFD821228A5F9A100616CE1 /* Assets.xcassets in Resources */,
 				EAEC420228B0994C0056D182 /* 洞天宝钱.png in Resources */,
@@ -1742,6 +1748,7 @@
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
 				BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */,
+				EA78BF0A290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EAEC41E228B096170056D182 /* 每日任务.png in Resources */,
 				BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */,
 				EAEC41F828B0994C0056D182 /* 参量质变仪.png in Resources */,
@@ -1753,6 +1760,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6829DC28A2523800E57462 /* .gitignore in Resources */,
+				EA78BF09290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EA2FF0E928B093AE0050C016 /* 每日任务.png in Resources */,
 				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
 				BF7500FE28E0452C00CDA64E /* app.css in Resources */,
