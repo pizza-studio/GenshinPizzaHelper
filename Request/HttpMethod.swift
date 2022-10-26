@@ -1197,8 +1197,8 @@ struct HttpMethod<T: Codable> {
         _ method: Method,
         baseHost: String = "http://81.70.76.222/",
         urlStr: String,
-        body: Data?,
-        paraDict: [String: String],
+        body: Data? = nil,
+        headersDict: [String: String],
         completion: @escaping(
             (Result<T, RequestError>) -> ()
         )
@@ -1235,8 +1235,8 @@ struct HttpMethod<T: Codable> {
                 }
 
                 request.setValue("Genshin-Pizza-Helper/2.0", forHTTPHeaderField: "User-Agent")
-                for para in paraDict {
-                    request.setValue(para.value, forHTTPHeaderField: para.key)
+                for header in headersDict {
+                    request.setValue(header.value, forHTTPHeaderField: header.key)
                 }
                 // http方法
                 switch method {

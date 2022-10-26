@@ -20,17 +20,17 @@ extension API {
             // 请求类别
             let urlStr = "/abyss/upload"
 
-            var paras = [String: String]()
-            paras.updateValue(ds, forKey: "ds")
-            paras.updateValue(dseed, forKey: "dseed")
+            var headers = [String: String]()
+            headers.updateValue(ds, forKey: "ds")
+            headers.updateValue(dseed, forKey: "dseed")
 
             // 请求
             HttpMethod<PSAServerPostResultModel>
                 .homeServerRequest(
-                    .get,
+                    .post,
                     urlStr: urlStr,
                     body: data,
-                    paraDict: paras
+                    headersDict: headers
                 ) { result in
                     switch result {
 
@@ -67,9 +67,41 @@ extension API {
             }(),
             server: Server? = nil,
             floor: Int = 12,
-            _ completion: @escaping (UltilizationDataFetchModelResult) -> ()
+            _ completion: @escaping (UtilizationDataFetchModelResult) -> ()
         ) {
+            // 请求类别
+            let urlStr = "/abyss/utilization"
 
+            var headers = [String: String]()
+
+            // 请求
+            HttpMethod<UtilizationDataFetchModel>
+                .homeServerRequest(
+                    .get,
+                    urlStr: urlStr,
+                    headersDict: paras
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let userData = requestResult.data
+                        let retcode = requestResult.retCode
+                        let message = requestResult.message
+
+                        switch requestResult.retCode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(requestResult))
+                        default:
+                            print("fail")
+                            completion(.failure(.uploadError(requestResult.message)))
+                        }
+
+                    case .failure(_):
+                        break
+                    }
+                }
         }
 
         /// 满星玩家持有率

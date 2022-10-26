@@ -7,8 +7,8 @@
 
 import Foundation
 
-typealias UltilizationDataFetchModel = FetchHomeModel<UltilizationData>
-typealias UltilizationDataFetchModelResult = FetchHomeModelResult<UltilizationData>
+typealias UtilizationDataFetchModel = FetchHomeModel<UtilizationData>
+typealias UtilizationDataFetchModelResult = FetchHomeModelResult<UtilizationData>
 
-typealias UltilizationData = AvatarPercentageModel
+typealias UtilizationData = AvatarPercentageModel
 
