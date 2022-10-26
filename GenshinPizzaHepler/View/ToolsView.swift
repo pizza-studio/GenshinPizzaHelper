@@ -78,7 +78,9 @@ struct ToolsView: View {
             .onChange(of: account) { newAccount in
                 withAnimation {
                     DispatchQueue.main.async {
-                        viewModel.refreshPlayerDetail(for: newAccount!)
+                        if let newAccount = newAccount {
+                            viewModel.refreshPlayerDetail(for: newAccount)
+                        }
                     }
                 }
             }

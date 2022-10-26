@@ -82,6 +82,9 @@ class ViewModel: NSObject, ObservableObject {
     }
     
     func deleteAccount(account: Account) {
+        accounts.removeAll {
+            account == $0
+        }
         accountConfigurationModel.deleteAccount(account: account)
         fetchAccount()
     }
