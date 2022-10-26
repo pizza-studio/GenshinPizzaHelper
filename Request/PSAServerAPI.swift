@@ -15,9 +15,44 @@ extension API {
             ds: String,
             dseed: String,
             data: Data,
-            _ completion: @escaping (PSAServerPostResultModel) -> ()
+            _ completion: @escaping (PSAServerPostResultModelResult) -> ()
         ) {
+            // 请求类别
+            let urlStr = "/abyss/upload"
 
+            var paras = [String: String]()
+            paras.updateValue(ds, forKey: "ds")
+            paras.updateValue(dseed, forKey: "dseed")
+
+            // 请求
+            HttpMethod<PSAServerPostResultModel>
+                .homeServerRequest(
+                    .get,
+                    urlStr: urlStr,
+                    body: data,
+                    paraDict: paras
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let userData = requestResult.data
+                        let retcode = requestResult.retCode
+                        let message = requestResult.message
+
+                        switch requestResult.retCode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(requestResult))
+                        default:
+                            print("fail")
+                            completion(.failure(.uploadError(requestResult.message)))
+                        }
+
+                    case .failure(_):
+                        break
+                    }
+                }
         }
 
         /// 深渊角色使用率
