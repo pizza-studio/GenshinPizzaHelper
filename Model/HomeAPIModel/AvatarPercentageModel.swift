@@ -8,7 +8,7 @@
 import Foundation
 
 struct AvatarPercentageModel: Codable {
-    let totleUsers: String
+    let totalUsers: Int
     let avatars: [Avatar]
 
     struct Avatar: Codable {
