@@ -163,12 +163,51 @@ extension API {
 
         /// 所有玩家持有率
         static func fetchHoldingRateData(
-            queryStartDate: Date
-            ,
+            queryStartDate: Date?,
             server: Server? = nil,
             _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult) -> ()
         ) {
+            // 请求类别
+            let urlStr = "/user_holding/holding_rate"
 
+            var paraDict = [String: String]()
+            if let queryStartDate = queryStartDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                paraDict.updateValue(String(describing: dateFormatter.string(from: queryStartDate)), forKey: "start")
+            }
+            if let server = server {
+                paraDict.updateValue(server.id, forKey: "server")
+            }
+
+            // 请求
+            HttpMethod<AvatarHoldingReceiveDataFetchModel>
+                .homeServerRequest(
+                    .get,
+                    urlStr: urlStr,
+                    parasDict: paraDict
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let userData = requestResult.data
+                        let retcode = requestResult.retCode
+                        let message = requestResult.message
+
+                        switch requestResult.retCode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(requestResult))
+                        default:
+                            print("fail")
+                            completion(.failure(.getDataError(requestResult.message)))
+                        }
+
+                    case .failure(let error):
+                        completion(.failure(.getDataError(error.localizedDescription)))
+                    }
+                }
         }
 
         /// 后台服务器版本
