@@ -1224,22 +1224,10 @@ struct HttpMethod<T: Codable> {
                 request.allHTTPHeaderFields = [
                     "Accept-Encoding": "gzip, deflate, br",
                     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-                    "Accept": "application/json, text/plain, */*",
+                    "Accept": "*/*",
                     "Connection": "keep-alive",
+                    "Content-Type": "application/json"
                 ]
-                func get_language_code() -> String {
-                    let languageCode = Locale.current.languageCode ?? "en-us"
-                    print(languageCode)
-                    if languageCode == "zh" {
-                        return "zh-cn"
-                    } else if languageCode == "en" {
-                        return "en-us"
-                    } else if languageCode == "ja" {
-                        return "ja-jp"
-                    } else {
-                        return languageCode
-                    }
-                }
 
                 request.setValue("Genshin-Pizza-Helper/2.0", forHTTPHeaderField: "User-Agent")
                 for header in headersDict {
@@ -1293,6 +1281,11 @@ struct HttpMethod<T: Codable> {
 
                             let dictionary = try? JSONSerialization.jsonObject(with: data)
                             print(dictionary ?? "None")
+                            guard let response = response as? HTTPURLResponse else {
+                                completion(.failure(.responseError))
+                                return
+                            }
+                            print(response.statusCode)
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
