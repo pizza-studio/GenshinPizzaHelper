@@ -1195,7 +1195,7 @@ struct HttpMethod<T: Codable> {
     ///  需要自己传URL类型的url过来
     static func homeServerRequest (
         _ method: Method,
-        baseHost: String = "http://81.70.76.222/",
+        baseHost: String = "http://81.70.76.222",
         urlStr: String,
         body: Data? = nil,
         headersDict: [String: String] = [:],
@@ -1284,7 +1284,7 @@ struct HttpMethod<T: Codable> {
                         }
                         DispatchQueue.main.async {
                             let decoder = JSONDecoder()
-                            if baseHost != "http://81.70.76.222/" {
+                            if baseHost != "http://81.70.76.222" {
                                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                             }
 
