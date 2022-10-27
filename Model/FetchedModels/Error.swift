@@ -47,6 +47,11 @@ enum FetchError: Error, Equatable {
     case errorWithCode(Int)
 }
 
+enum PSAServerError: Error {
+    case uploadError(String)
+    case getDataError(String)
+}
+
 extension FetchError {
     var description: String {
         switch self {

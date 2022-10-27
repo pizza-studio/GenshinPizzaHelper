@@ -13,4 +13,4 @@ struct FetchHomeModel<T: Codable>: Codable {
     let data: T
 }
 
-typealias FetchHomeModelResult<T: Codable> = Result<FetchHomeModel<T>, Error>
+typealias FetchHomeModelResult<T: Codable> = Result<FetchHomeModel<T>, PSAServerError>

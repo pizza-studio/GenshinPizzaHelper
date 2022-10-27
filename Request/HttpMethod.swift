@@ -1185,6 +1185,126 @@ struct HttpMethod<T: Codable> {
             }
         }
     }
+
+    /// 返回OPServer的请求的结果接口
+    /// - Parameters:
+    ///   - method:Method, http方法的类型
+    ///   - url:String，请求的路径
+    ///   - completion:异步返回处理好的data以及报错的类型
+    ///
+    ///  需要自己传URL类型的url过来
+    static func homeServerRequest (
+        _ method: Method,
+        baseHost: String = "http://81.70.76.222",
+        urlStr: String,
+        body: Data? = nil,
+        headersDict: [String: String] = [:],
+        parasDict: [String: String] = [:],
+        completion: @escaping(
+            (Result<T, RequestError>) -> ()
+        )
+    ) {
+        let networkReachability = NetworkReachability()
+
+        if networkReachability.reachable {
+            DispatchQueue.global(qos: .userInteractive).async {
+                // 请求url前缀，后跟request的类型
+                let baseStr: String = baseHost
+                // 由前缀和后缀共同组成的url
+                var url = URLComponents(string: baseStr + urlStr)!
+                var urlQueryItems: [URLQueryItem] = url.queryItems ?? []
+                for para in parasDict {
+                    urlQueryItems.append(URLQueryItem(name: para.key, value: para.value))
+                }
+                url.queryItems = urlQueryItems
+
+                // 初始化请求
+                var request = URLRequest(url: url.url!)
+                // 设置请求头
+                request.allHTTPHeaderFields = [
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+                    "Accept": "application/json, text/plain, */*",
+                    "Connection": "keep-alive",
+                ]
+                func get_language_code() -> String {
+                    let languageCode = Locale.current.languageCode ?? "en-us"
+                    print(languageCode)
+                    if languageCode == "zh" {
+                        return "zh-cn"
+                    } else if languageCode == "en" {
+                        return "en-us"
+                    } else if languageCode == "ja" {
+                        return "ja-jp"
+                    } else {
+                        return languageCode
+                    }
+                }
+
+                request.setValue("Genshin-Pizza-Helper/2.0", forHTTPHeaderField: "User-Agent")
+                for header in headersDict {
+                    request.setValue(header.value, forHTTPHeaderField: header.key)
+                }
+                // http方法
+                switch method {
+                case .post:
+                    request.httpMethod = "POST"
+                case .get:
+                    request.httpMethod = "GET"
+                case .put:
+                    request.httpMethod = "PUT"
+                }
+                // request body
+                if let body = body {
+                    request.httpBody = body
+                    request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
+                }
+                // 开始请求
+                URLSession.shared.dataTask(
+                    with: request
+                ) { data, response, error in
+                    // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
+                    print(error ?? "ErrorInfo nil")
+                    if let error = error {
+                        completion(.failure(.dataTaskError(error.localizedDescription)))
+                        print(
+                            "DataTask error in General HttpMethod: " +
+                            error.localizedDescription + "\n"
+                        )
+                    } else {
+                        guard let data = data else {
+                            completion(.failure(.noResponseData))
+                            print("found response data nil")
+                            return
+                        }
+                        guard response is HTTPURLResponse else {
+                            completion(.failure(.responseError))
+                            print("response error")
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            let decoder = JSONDecoder()
+                            if baseHost != "http://81.70.76.222" {
+                                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            }
+
+                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+                            print(dictionary ?? "None")
+
+                            do {
+                                let requestResult = try decoder.decode(T.self, from: data)
+                                completion(.success(requestResult))
+                            } catch {
+                                print(error)
+                                completion(.failure(.decodeError(error.localizedDescription)))
+                            }
+
+                        }
+                    }
+                }.resume()
+            }
+        }
+    }
 }
 
 public class API {

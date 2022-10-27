@@ -9,5 +9,7 @@ import Foundation
 
 typealias AvatarHoldingReceiveDataFetchModel = FetchHomeModel<AvatarHoldingReceiveData>
 typealias AvatarHoldingReceiveDataFetchModelResult = FetchHomeModelResult<AvatarHoldingReceiveData>
+typealias PSAServerPostResultModel = FetchHomeModel<String?>
+typealias PSAServerPostResultModelResult = FetchHomeModelResult<String?>
 
 typealias AvatarHoldingReceiveData = AvatarPercentageModel
