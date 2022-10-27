@@ -49,6 +49,7 @@ enum FetchError: Error, Equatable {
 
 enum PSAServerError: Error {
     case uploadError(String)
+    case getDataError(String)
 }
 
 extension FetchError {

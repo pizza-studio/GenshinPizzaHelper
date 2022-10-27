@@ -1198,7 +1198,8 @@ struct HttpMethod<T: Codable> {
         baseHost: String = "http://81.70.76.222/",
         urlStr: String,
         body: Data? = nil,
-        headersDict: [String: String],
+        headersDict: [String: String] = [:],
+        parasDict: [String: String] = [:],
         completion: @escaping(
             (Result<T, RequestError>) -> ()
         )
@@ -1210,7 +1211,13 @@ struct HttpMethod<T: Codable> {
                 // 请求url前缀，后跟request的类型
                 let baseStr: String = baseHost
                 // 由前缀和后缀共同组成的url
-                let url = URLComponents(string: baseStr + urlStr)!
+                var url = URLComponents(string: baseStr + urlStr)!
+                var urlQueryItems: [URLQueryItem] = url.queryItems ?? []
+                for para in parasDict {
+                    urlQueryItems.append(URLQueryItem(name: para.key, value: para.value))
+                }
+                url.queryItems = urlQueryItems
+
                 // 初始化请求
                 var request = URLRequest(url: url.url!)
                 // 设置请求头
@@ -1252,7 +1259,6 @@ struct HttpMethod<T: Codable> {
                     request.httpBody = body
                     request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
                 }
-                print(String(data: request.httpBody!, encoding: .utf8)!)
                 // 开始请求
                 URLSession.shared.dataTask(
                     with: request

@@ -72,14 +72,19 @@ extension API {
             // 请求类别
             let urlStr = "/abyss/utilization"
 
-            var headers = [String: String]()
+            var paraDict = [String: String]()
+            paraDict.updateValue(String(describing: season), forKey: "season")
+            paraDict.updateValue(String(describing: floor), forKey: "floor")
+            if let server = server {
+                paraDict.updateValue(server.id, forKey: "server")
+            }
 
             // 请求
             HttpMethod<UtilizationDataFetchModel>
                 .homeServerRequest(
                     .get,
                     urlStr: urlStr,
-                    headersDict: paras
+                    parasDict: paraDict
                 ) { result in
                     switch result {
 
@@ -95,11 +100,11 @@ extension API {
                             completion(.success(requestResult))
                         default:
                             print("fail")
-                            completion(.failure(.uploadError(requestResult.message)))
+                            completion(.failure(.getDataError(requestResult.message)))
                         }
 
-                    case .failure(_):
-                        break
+                    case .failure(let error):
+                        completion(.failure(.getDataError(error.localizedDescription)))
                     }
                 }
         }
