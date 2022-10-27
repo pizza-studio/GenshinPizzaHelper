@@ -286,7 +286,9 @@ extension WeaponOrTalentMaterial {
     )
     static let ingenuity: WeaponOrTalentMaterial = .init(imageString: "talent.Ingenuity", localizedName: "「巧思」", weekday: .tuesdayAndFriday,
                                                          relatedItem: [
-                                                           .init(imageString: "UI_AvatarIcon_Dori_Card", localizedName: "多莉")
+                                                           .init(imageString: "UI_AvatarIcon_Dori_Card", localizedName: "多莉"),
+                                                           .init(imageString: "UI_AvatarIcon_Nahida_Card", localizedName: "纳西妲"),
+//                                                           .init(imageString: "UI_AvatarIcon_Layla_Card", localizedName: "莱依拉")
                                                          ]
     )
     static let praxis: WeaponOrTalentMaterial = .init(imageString: "talent.Praxis", localizedName: "「笃行」", weekday: .wednesdayAndSaturday,
