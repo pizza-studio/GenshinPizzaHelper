@@ -214,8 +214,36 @@ extension API {
         static func fetchHomeServerVersion(
             _ completion: @escaping (HomeServerVersionFetchModelResult) -> ()
         ) {
+            // 请求类别
+            let urlStr = "/debug/version"
 
+            // 请求
+            HttpMethod<HomeServerVersionFetchModel>
+                .homeServerRequest(
+                    .get,
+                    urlStr: urlStr
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let userData = requestResult.data
+                        let retcode = requestResult.retCode
+                        let message = requestResult.message
+
+                        switch requestResult.retCode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(requestResult))
+                        default:
+                            print("fail")
+                            completion(.failure(.getDataError(requestResult.message)))
+                        }
+
+                    case .failure(let error):
+                        completion(.failure(.getDataError(error.localizedDescription)))
+                    }
+                }
         }
-
     }
 }
