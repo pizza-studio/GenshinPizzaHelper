@@ -164,6 +164,7 @@ extension WeaponOrTalentMaterial {
                                                              .init(imageString: "UI_EquipIcon_Pole_Deshret_Awaken", localizedName: "赤沙之杖"),
                                                              .init(imageString: "UI_EquipIcon_Catalyst_Pleroma_Awaken", localizedName: "流浪的晚星"),
                                                              .init(imageString: "UI_EquipIcon_Catalyst_Arakalari_Awaken", localizedName: "盈满之实"),
+                                                             .init(imageString: "UI_EquipIcon_Catalyst_Ayus_Awaken", localizedName: "千夜浮梦")
                                                            ]
     )
     static let scorchingMight: WeaponOrTalentMaterial = .init(imageString: "weapon.ScorchingMight", localizedName: "「烈日威权」", weekday: .wednesdayAndSaturday,
