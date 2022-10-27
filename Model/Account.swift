@@ -120,7 +120,7 @@ extension Account {
     func uploadHoldingData() {
         print("uploadHoldingData START")
         let userDefault = UserDefaults.standard
-        var hasUploadedAvatarHoldingDataHash: [Int] = userDefault.array(forKey: "hasUploadedAvatarHoldingDataUUID") as? [Int] ?? []
+        var hasUploadedAvatarHoldingDataHash: [Int] = userDefault.array(forKey: "hasUploadedAvatarHoldingDataHash") as? [Int] ?? []
         if let avatarHoldingData = AvatarHoldingData(account: self, which: .this) {
             let encoder = JSONEncoder()
             encoder.outputFormatting = .sortedKeys
@@ -131,9 +131,22 @@ extension Account {
                 case .success(_):
                     print("upload avatarHoldingData succeed")
                     hasUploadedAvatarHoldingDataHash.append(data.hashValue)
-                    userDefault.set(hasUploadedAvatarHoldingDataHash, forKey: "hasUploadedAvatarHoldingDataUUID")
+                    userDefault.set(hasUploadedAvatarHoldingDataHash, forKey: "hasUploadedAvatarHoldingDataHash")
+                    print(String(data: data, encoding: .utf8)!)
+                    print(hasUploadedAvatarHoldingDataHash)
                 case .failure(let error):
+                    switch error {
+                    case .uploadError(let message):
+                        if message == "uid existed" || message == "Insert Failed" {
+                            hasUploadedAvatarHoldingDataHash.append(data.hashValue)
+                            userDefault.set(hasUploadedAvatarHoldingDataHash, forKey: "hasUploadedAvatarHoldingDataHash")
+                        }
+                    default:
+                        break
+                    }
                     print("avatarHoldingData ERROR: \(error)")
+                    print(String(data: data, encoding: .utf8)!)
+                    print(hasUploadedAvatarHoldingDataHash)
                 }
             }
         }
@@ -142,7 +155,7 @@ extension Account {
     func uploadAbyssData() {
         print("uploadAbyssData START")
         let userDefault = UserDefaults.standard
-        var hasUploadedAbyssDataHash: [Int] = userDefault.array(forKey: "hasUploadedAbyssDataUUID") as? [Int] ?? []
+        var hasUploadedAbyssDataHash: [Int] = userDefault.array(forKey: "hasUploadedAbyssDataHash") as? [Int] ?? []
         if let abyssData = AbyssData(account: self, which: .this) {
             let encoder = JSONEncoder()
             encoder.outputFormatting = .sortedKeys
@@ -154,8 +167,22 @@ extension Account {
                     print("upload uploadAbyssData succeed")
                     hasUploadedAbyssDataHash.append(data.hashValue)
                     userDefault.set(hasUploadedAbyssDataHash, forKey: "hasUploadedAbyssDataHash")
+                    print(String(data: data, encoding: .utf8)!)
+                    print(hasUploadedAbyssDataHash)
                 case .failure(let error):
+                    switch error {
+                    case .uploadError(let message):
+                        if message == "uid existed" || message == "Insert Failed" {
+                            hasUploadedAbyssDataHash.append(data.hashValue)
+                            userDefault.set(hasUploadedAbyssDataHash, forKey: "hasUploadedAbyssDataHash")
+                            print(userDefault.array(forKey: "hasUploadedAbyssDataHash") as? [Int] ?? [])
+                        }
+                    default:
+                        break
+                    }
                     print("uploadAbyssData ERROR: \(error)")
+                    print(String(data: data, encoding: .utf8)!)
+                    print(hasUploadedAbyssDataHash)
                 }
             }
         }

@@ -169,8 +169,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
                             
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
                             
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -530,8 +530,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -640,8 +640,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
                             
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
                             
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -726,8 +726,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
 //                            decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -939,8 +939,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -1168,8 +1168,8 @@ struct HttpMethod<T: Codable> {
                                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                             }
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -1247,9 +1247,9 @@ struct HttpMethod<T: Codable> {
                     request.httpBody = body
                     request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
                 }
-                print(request)
-                print(request.allHTTPHeaderFields!)
-                print(String(data: request.httpBody!, encoding: .utf8)!)
+//                print(request)
+//                print(request.allHTTPHeaderFields!)
+//                print(String(data: request.httpBody!, encoding: .utf8)!)
                 // 开始请求
                 URLSession.shared.dataTask(
                     with: request
@@ -1279,8 +1279,8 @@ struct HttpMethod<T: Codable> {
                                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                             }
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
                             guard let response = response as? HTTPURLResponse else {
                                 completion(.failure(.responseError))
                                 return
