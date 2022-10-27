@@ -48,7 +48,7 @@ struct ToolsView: View {
                         if let account = account {
                             viewModel.refreshPlayerDetail(for: account)
                         }
-                        viewModel.refreshAbyssDetail()
+                        viewModel.refreshAbyssAndBasicInfo()
                         viewModel.refreshLedgerData()
                     }
                 }
@@ -252,7 +252,7 @@ struct ToolsView: View {
                             } else {
                                 ProgressView()
                                     .onTapGesture {
-                                        viewModel.refreshAbyssDetail()
+                                        viewModel.refreshAbyssAndBasicInfo()
                                     }
                             }
                         }
@@ -497,31 +497,8 @@ struct ToolsView: View {
         }
         Section {
             #if DEBUG
-            Button("encode data") {
-                if let account = account {
-                    if let abyssData = AbyssData(account: account, which: .this) {
-                        let encoder = JSONEncoder()
-                        encoder.outputFormatting = .sortedKeys
-                        let data = try! encoder.encode(abyssData)
-                        let stringData = String(data: data, encoding: .utf8)!
-                        print(stringData)
-                        let dseed = String(Int.random(in: 0...999999))
-                        let salt = "2f2d1f9e00719112e88d92d98165f9aa"
-                        let ds = (stringData.sha256 + salt).sha256
-                        print("ds=\(ds)")
-                    }
-                    if let avatarHoldingData = AvatarHoldingData(account: account, which: .this) {
-                        let encoder = JSONEncoder()
-                        encoder.outputFormatting = .sortedKeys
-                        let data = try! encoder.encode(avatarHoldingData)
-                        let stringData = String(data: data, encoding: .utf8)!
-                        print(stringData)
-                        let dseed = String(Int.random(in: 0...999999))
-                        let salt = "2f2d1f9e00719112e88d92d98165f9aa"
-                        let ds = (stringData.sha256 + salt).sha256
-                        print("ds=\(ds)")
-                    }
-                }
+            Button("send data") {
+                viewModel.refreshAbyssAndBasicInfo()
             }
             #endif
             NavigationLink(destination: GenshinDictionary()) {

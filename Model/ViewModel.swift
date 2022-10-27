@@ -61,7 +61,6 @@ class ViewModel: NSObject, ObservableObject {
                    }) {
                     self.refreshPlayerDetail(for: showingPlayerDetailOfAccount)
                 }
-                self.refreshAbyssDetail()
                 self.refreshLedgerData()
                 #endif
             }
@@ -102,9 +101,31 @@ class ViewModel: NSObject, ObservableObject {
                 self.accounts[index].background = .randomNamecardBackground
                 self.accounts[index].fetchComplete = true
             }
+        }
+        refreshAbyssAndBasicInfo()
+    }
+
+    func refreshAbyssAndBasicInfo() {
+        accounts.indices.forEach { index in
+            #if !os(watchOS)
+            let group = DispatchGroup()
+            group.enter()
             accounts[index].config.fetchBasicInfo { basicInfo in
                 self.accounts[index].basicInfo = basicInfo
+                if UserDefaults.standard.bool(forKey: "allowAbyssDataCollection") {
+                    self.accounts[index].uploadHoldingData()
+                }
+                group.leave()
             }
+            group.enter()
+            self.accounts[index].config.fetchAbyssInfo { data in
+                self.accounts[index].spiralAbyssDetail = data
+                group.leave()
+            }
+            group.notify(queue: .main) {
+                self.accounts[index].uploadAbyssData()
+            }
+            #endif
         }
     }
 
@@ -162,14 +183,6 @@ class ViewModel: NSObject, ObservableObject {
                     }
                     self.accounts[index].fetchPlayerDetailComplete = true
                 }
-            }
-        }
-    }
-
-    func refreshAbyssDetail() {
-        accounts.indices.forEach { index in
-            self.accounts[index].config.fetchAbyssInfo { data in
-                self.accounts[index].spiralAbyssDetail = data
             }
         }
     }

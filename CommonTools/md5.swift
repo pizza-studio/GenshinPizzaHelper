@@ -36,3 +36,13 @@ public extension String {
         return digest.reduce("") { $0 + String(format:"%02x", $1) }
     }
 }
+
+public extension Data {
+    var sha256: String {
+        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+        self.withUnsafeBytes {
+            _ = CC_SHA256($0.baseAddress, CC_LONG(self.count), &hash)
+        }
+        return String(data: Data(hash), encoding: .utf8)!
+    }
+}

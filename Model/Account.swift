@@ -115,4 +115,50 @@ extension AccountConfiguration {
     #endif
 }
 
+extension Account {
+    #if !os(watchOS)
+    func uploadHoldingData() {
+        print("uploadHoldingData START")
+        let userDefault = UserDefaults.standard
+        var hasUploadedAvatarHoldingDataHash: [Int] = userDefault.array(forKey: "hasUploadedAvatarHoldingDataUUID") as? [Int] ?? []
+        if let avatarHoldingData = AvatarHoldingData(account: self, which: .this) {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .sortedKeys
+            let data = try! encoder.encode(avatarHoldingData)
+            guard !hasUploadedAvatarHoldingDataHash.contains(data.hashValue) else { return }
+            API.PSAServer.uploadUserData(path: "/user_holding/upload", data: data) { result in
+                switch result {
+                case .success(_):
+                    print("upload avatarHoldingData succeed")
+                    hasUploadedAvatarHoldingDataHash.append(data.hashValue)
+                    userDefault.set(hasUploadedAvatarHoldingDataHash, forKey: "hasUploadedAvatarHoldingDataUUID")
+                case .failure(let error):
+                    print("avatarHoldingData ERROR: \(error)")
+                }
+            }
+        }
+    }
 
+    func uploadAbyssData() {
+        print("uploadAbyssData START")
+        let userDefault = UserDefaults.standard
+        var hasUploadedAbyssDataHash: [Int] = userDefault.array(forKey: "hasUploadedAbyssDataUUID") as? [Int] ?? []
+        if let abyssData = AbyssData(account: self, which: .this) {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .sortedKeys
+            let data = try! encoder.encode(abyssData)
+            guard !hasUploadedAbyssDataHash.contains(data.hashValue) else { return }
+            API.PSAServer.uploadUserData(path: "/abyss/upload", data: data) { result in
+                switch result {
+                case .success(_):
+                    print("upload uploadAbyssData succeed")
+                    hasUploadedAbyssDataHash.append(data.hashValue)
+                    userDefault.set(hasUploadedAbyssDataHash, forKey: "hasUploadedAbyssDataHash")
+                case .failure(let error):
+                    print("uploadAbyssData ERROR: \(error)")
+                }
+            }
+        }
+    }
+    #endif
+}

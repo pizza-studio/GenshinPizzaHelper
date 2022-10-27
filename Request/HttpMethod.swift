@@ -1259,6 +1259,9 @@ struct HttpMethod<T: Codable> {
                     request.httpBody = body
                     request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
                 }
+                print(request)
+                print(request.allHTTPHeaderFields!)
+                print(String(data: request.httpBody!, encoding: .utf8)!)
                 // 开始请求
                 URLSession.shared.dataTask(
                     with: request
