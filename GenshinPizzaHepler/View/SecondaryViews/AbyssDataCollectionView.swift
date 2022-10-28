@@ -12,21 +12,30 @@ struct AbyssDataCollectionView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                Picker("数据类型", selection: $showingDataType) {
-                    ForEach(ShowingData.allCases, id:\.self) { option in
-                        Text(option.rawValue.localized)
+            switch showingDataType {
+            case .abyssAvatarsUtilization:
+                ShowAvatarPercentageView(type: .abyssAvatarsUtilization)
+            case .fullStarHoldingRate:
+                ShowAvatarPercentageView(type: .fullStarHoldingRate)
+            case .holdingRate:
+                ShowAvatarPercentageView(type: .holdingRate)
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .principal) {
+                Menu {
+                    ForEach(ShowingData.allCases, id: \.rawValue) { choice in
+                        Button(choice.rawValue.localized) {
+                            withAnimation {
+                                showingDataType = choice
+                            }
+                        }
                     }
-                }
-                .pickerStyle(.menu)
-                .padding()
-                switch showingDataType {
-                case .abyssAvatarsUtilization:
-                    AbyssAvatarsUtilizationView()
-                case .fullStarHoldingRate:
-                    HoldingRateView(type: .fullStarHoldingRate)
-                case .holdingRate:
-                    HoldingRateView(type: .holdingRate)
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.left.arrow.right.circle")
+                        Text(showingDataType.rawValue.localized)
+                    }
                 }
             }
         }
@@ -39,27 +48,46 @@ struct AbyssDataCollectionView: View {
     }
 }
 
-struct HoldingRateView: View {
+struct ShowAvatarPercentageView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State var result: FetchHomeModelResult<AvatarPercentageModel>?
+
+    let percentageFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
 
     let type: DataType
 
     var body: some View {
         List {
-            if let result = result {
+            if let result = result, let charLoc = viewModel.charLoc, let charMap = viewModel.charMap {
                 switch result {
                 case .success(let data):
                     let data = data.data
                     Section {
-                        ForEach(data.avatars, id: \.charId) { avatar in
+                        ForEach(data.avatars.sorted(by: {
+                            $0.charId < $1.charId
+                        }), id: \.charId) { avatar in
+                            let char = charMap["\(avatar.charId)"]
                             HStack {
-                                if let charLoc = viewModel.charLoc, let charMap = viewModel.charMap {
-                                    let nameHash: Int = charMap["\(avatar.charId)"]?.NameTextMapHash ?? 0
-                                    Text(charLoc["\(nameHash)"] ?? "Unknow")
+                                Label {
+                                    Text(charLoc["\(char?.NameTextMapHash ?? 0)"] ?? "unknow")
+                                } icon: {
+                                    EnkaWebIcon(iconString: char?.iconString ?? "")
+                                        .background(
+                                            EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                                .scaledToFill()
+                                                .offset(x: -30/3)
+                                        )
+                                    .frame(width: 30, height: 30)
+                                    .clipShape(Circle())
                                 }
                                 Spacer()
-                                Text("\(avatar.percentage ?? 0)")
+                                Text(percentageFormatter.string(from: (avatar.percentage ?? 0.0) as NSNumber)!)
                             }
                         }
                     } header: {
@@ -73,32 +101,27 @@ struct HoldingRateView: View {
             }
         }
         .onAppear {
-            switch type {
-            case .holdingRate:
-                API.PSAServer.fetchHoldingRateData(queryStartDate: nil) { result in
-                    self.result = result
-                }
-            case .fullStarHoldingRate:
-                API.PSAServer.fetchFullStarHoldingRateData { result in
-                    self.result = result
+            withAnimation {
+                switch type {
+                case .holdingRate:
+                    API.PSAServer.fetchHoldingRateData(queryStartDate: nil) { result in
+                        self.result = result
+                    }
+                case .fullStarHoldingRate:
+                    API.PSAServer.fetchFullStarHoldingRateData { result in
+                        self.result = result
+                    }
+                case .abyssAvatarsUtilization:
+                    API.PSAServer.fetchAbyssUtilizationData { result in
+                        self.result = result
+                    }
                 }
             }
-
         }
     }
     enum DataType {
         case holdingRate
         case fullStarHoldingRate
+        case abyssAvatarsUtilization
     }
 }
-
-struct AbyssAvatarsUtilizationView: View {
-    @State var data: UtilizationData?
-
-    var body: some View {
-        List {
-            Text("施工中")
-        }
-    }
-}
-
