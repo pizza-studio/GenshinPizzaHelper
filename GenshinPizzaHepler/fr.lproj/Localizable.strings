@@ -864,7 +864,7 @@
 "仅统计充值途径以外获取的资源。数据存在延迟。" = "Only includes the resources obtained ouside of top-ups. There are data delay issues.";
 "已回满" = "Full";
 
-// MARK: - 2.5.2
+// MARK: - 2.5.2 & 2.5.3
 "所有角色" = "All Characters";
 "我的角色" = "My Characters";
 "共拥有%lld名角色，其中五星角色%lld名，四星角色%lld名。" = "There are %lld characters in total, including %lld 5-star characters and %lld 4-star characters.";
@@ -879,3 +879,6 @@
 "纳西妲" = "Nahida";
 "莱依拉" = "Layla"; 
 "千夜浮梦" = "Mille rêves flottants";
+
+// MARK: - 2.5.4
+"%lld月原石收入" = "Primogem Income";
