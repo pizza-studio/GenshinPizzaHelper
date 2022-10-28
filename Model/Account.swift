@@ -127,7 +127,7 @@ extension Account {
             let data = try! encoder.encode(avatarHoldingData)
             let md5 = String(data: data, encoding: .utf8)!.md5
             guard !hasUploadedAvatarHoldingDataMD5.contains(md5) else {
-                print("uploadHoldingData ERROR: This holding data has uploaded. "); return
+                print("uploadHoldingData ERROR: This holding data has uploaded. Maybe because not full star."); return
             }
             API.PSAServer.uploadUserData(path: "/user_holding/upload", data: data) { result in
                 switch result {
@@ -159,12 +159,12 @@ extension Account {
     func uploadAbyssData() {
         print("uploadAbyssData START")
         let userDefault = UserDefaults.standard
-        userDefault.set([String](), forKey: "hasUploadedAbyssDataAccountAndSeasonMD5")
         var hasUploadedAbyssDataAccountAndSeasonMD5: [String] = userDefault.array(forKey: "hasUploadedAbyssDataAccountAndSeasonMD5") as? [String] ?? []
         if let abyssData = AbyssData(account: self, which: .this) {
+            print("MD5 calculated by \(abyssData.uid)\(abyssData.getLocalAbyssSeason())")
             let md5 = "\(abyssData.uid)\(abyssData.getLocalAbyssSeason())".md5
             guard !hasUploadedAbyssDataAccountAndSeasonMD5.contains(md5) else {
-                print("uploadAbyssData ERROR: This abyss data has uploaded. "); return
+                print("uploadAbyssData ERROR: This abyss data has uploaded. Maybe because not full star. "); return
             }
             let encoder = JSONEncoder()
             encoder.outputFormatting = .sortedKeys
@@ -176,6 +176,14 @@ extension Account {
                     print("uploadAbyssData SUCCEED")
                     saveMD5()
                 case .failure(let error):
+                    switch error {
+                    case .uploadError(let message):
+                        if message == "uid existed" {
+                            saveMD5()
+                        }
+                    default:
+                        break
+                    }
                     print("uploadAbyssData ERROR: \(error)")
                     print(md5)
                     print(hasUploadedAbyssDataAccountAndSeasonMD5)
@@ -184,6 +192,7 @@ extension Account {
             func saveMD5() {
                 hasUploadedAbyssDataAccountAndSeasonMD5.append(md5)
                 userDefault.set(hasUploadedAbyssDataAccountAndSeasonMD5, forKey: "hasUploadedAbyssDataAccountAndSeasonMD5")
+                print("uploadAbyssData MD5: \(hasUploadedAbyssDataAccountAndSeasonMD5)")
                 userDefault.synchronize()
             }
         } else {

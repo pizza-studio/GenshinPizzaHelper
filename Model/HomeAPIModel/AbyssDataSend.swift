@@ -86,7 +86,7 @@ extension AbyssData {
         guard abyssData.totalStar == 36 else { return nil }
         // OPENSOURCE: 开源的时候把这行换掉
         let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.md5)GenshinPizzaHelper"
-        uid = String(obfuscatedUid.md5)
+        uid = obfuscatedUid.md5
         server = account.config.server.id
 
         let component = Calendar.current.dateComponents([.year, .month, .day], from: Date(timeIntervalSince1970: Double(abyssData.startTime)!))
