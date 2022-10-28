@@ -83,9 +83,10 @@ extension AbyssData {
         guard let abyssData = account.spiralAbyssDetail?.get(season),
               let basicInfo = account.basicInfo
         else { return nil }
+        guard abyssData.totalStar == 36 else { return nil }
         // OPENSOURCE: 开源的时候把这行换掉
-        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.hashValue)GenshinPizzaHelper"
-        uid = String(obfuscatedUid.hashValue)
+        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.md5)GenshinPizzaHelper"
+        uid = String(obfuscatedUid.md5)
         server = account.config.server.id
 
         let component = Calendar.current.dateComponents([.year, .month, .day], from: Date(timeIntervalSince1970: Double(abyssData.startTime)!))
@@ -140,8 +141,8 @@ extension AvatarHoldingData {
     init?(account: Account, which season: AccountSpiralAbyssDetail.WhichSeason) {
         guard let basicInfo = account.basicInfo else { return nil }
         // OPENSOURCE: 开源的时候把这行换掉
-        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.hashValue)GenshinPizzaHelper"
-        uid = String(obfuscatedUid.hashValue)
+        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.md5)GenshinPizzaHelper"
+        uid = String(obfuscatedUid.md5)
 
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"

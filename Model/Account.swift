@@ -120,75 +120,74 @@ extension Account {
     func uploadHoldingData() {
         print("uploadHoldingData START")
         let userDefault = UserDefaults.standard
-        var hasUploadedAvatarHoldingDataHash: [Int] = userDefault.array(forKey: "hasUploadedAvatarHoldingDataHash") as? [Int] ?? []
+        var hasUploadedAvatarHoldingDataMD5: [String] = userDefault.array(forKey: "hasUploadedAvatarHoldingDataMD5") as? [String] ?? []
         if let avatarHoldingData = AvatarHoldingData(account: self, which: .this) {
             let encoder = JSONEncoder()
             encoder.outputFormatting = .sortedKeys
             let data = try! encoder.encode(avatarHoldingData)
-            guard !hasUploadedAvatarHoldingDataHash.contains(data.hashValue) else { return }
+            let md5 = String(data: data, encoding: .utf8)!.md5
+            guard !hasUploadedAvatarHoldingDataMD5.contains(md5) else {
+                print("uploadHoldingData ERROR: This holding data has uploaded. "); return
+            }
             API.PSAServer.uploadUserData(path: "/user_holding/upload", data: data) { result in
                 switch result {
                 case .success(_):
-                    print("upload avatarHoldingData succeed")
-                    hasUploadedAvatarHoldingDataHash.append(data.hashValue)
-                    userDefault.set(hasUploadedAvatarHoldingDataHash, forKey: "hasUploadedAvatarHoldingDataHash")
-                    print(String(data: data, encoding: .utf8)!)
-                    print(hasUploadedAvatarHoldingDataHash)
+                    print("uploadHoldingData SUCCEED")
+                    saveMD5()
+                    print(md5)
+                    print(hasUploadedAvatarHoldingDataMD5)
                 case .failure(let error):
                     switch error {
                     case .uploadError(let message):
                         if message == "uid existed" || message == "Insert Failed" {
-                            hasUploadedAvatarHoldingDataHash.append(data.hashValue)
-                            userDefault.set(hasUploadedAvatarHoldingDataHash, forKey: "hasUploadedAvatarHoldingDataHash")
+                            saveMD5()
                         }
                     default:
                         break
                     }
-                    print("avatarHoldingData ERROR: \(error)")
-                    print(String(data: data, encoding: .utf8)!)
-                    print(hasUploadedAvatarHoldingDataHash)
                 }
             }
+            func saveMD5() {
+                hasUploadedAvatarHoldingDataMD5.append(md5)
+                userDefault.set(hasUploadedAvatarHoldingDataMD5, forKey: "hasUploadedAvatarHoldingDataMD5")
+            }
+        } else {
+            print("uploadAbyssData ERROR: generate data fail")
         }
     }
 
     func uploadAbyssData() {
         print("uploadAbyssData START")
         let userDefault = UserDefaults.standard
-        var hasUploadedAbyssDataSeason: [Int] = userDefault.array(forKey: "hasUploadedAbyssDataSeason") as? [Int] ?? []
+        userDefault.set([String](), forKey: "hasUploadedAbyssDataAccountAndSeasonMD5")
+        var hasUploadedAbyssDataAccountAndSeasonMD5: [String] = userDefault.array(forKey: "hasUploadedAbyssDataAccountAndSeasonMD5") as? [String] ?? []
         if let abyssData = AbyssData(account: self, which: .this) {
-            if hasUploadedAbyssDataSeason.contains(abyssData.getLocalAbyssSeason()) {
-                return
+            let md5 = "\(abyssData.uid)\(abyssData.getLocalAbyssSeason())".md5
+            guard !hasUploadedAbyssDataAccountAndSeasonMD5.contains(md5) else {
+                print("uploadAbyssData ERROR: This abyss data has uploaded. "); return
             }
             let encoder = JSONEncoder()
             encoder.outputFormatting = .sortedKeys
             let data = try! encoder.encode(abyssData)
-            guard !hasUploadedAbyssDataSeason.contains(data.hashValue) else { return }
+            print(String(data: data, encoding: .utf8)!)
             API.PSAServer.uploadUserData(path: "/abyss/upload", data: data) { result in
                 switch result {
                 case .success(_):
-                    print("upload uploadAbyssData succeed")
-                    hasUploadedAbyssDataSeason.append(abyssData.getLocalAbyssSeason())
-                    userDefault.set(hasUploadedAbyssDataSeason, forKey: "hasUploadedAbyssDataSeason")
-                    print(String(data: data, encoding: .utf8)!)
-                    print(hasUploadedAbyssDataSeason)
+                    print("uploadAbyssData SUCCEED")
+                    saveMD5()
                 case .failure(let error):
-                    switch error {
-                    case .uploadError(let message):
-                        if message == "uid existed" || message == "Insert Failed" {
-                            hasUploadedAbyssDataSeason.append(abyssData.getLocalAbyssSeason())
-                            userDefault.set(hasUploadedAbyssDataSeason, forKey: "hasUploadedAbyssDataSeason")
-                            print(userDefault.array(forKey: "hasUploadedAbyssDataSeason") as? [Int] ?? [])
-                        }
-                    default:
-                        break
-                    }
                     print("uploadAbyssData ERROR: \(error)")
-                    print(String(data: data, encoding: .utf8)!)
-                    print(hasUploadedAbyssDataSeason)
+                    print(md5)
+                    print(hasUploadedAbyssDataAccountAndSeasonMD5)
                 }
+            }
+            func saveMD5() {
+                hasUploadedAbyssDataAccountAndSeasonMD5.append(md5)
+                userDefault.set(hasUploadedAbyssDataAccountAndSeasonMD5, forKey: "hasUploadedAbyssDataAccountAndSeasonMD5")
                 userDefault.synchronize()
             }
+        } else {
+            print("uploadAbyssData ERROR: generate data fail")
         }
     }
     #endif
