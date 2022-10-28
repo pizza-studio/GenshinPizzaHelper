@@ -54,14 +54,7 @@ extension API {
 
         /// 深渊角色使用率
         static func fetchAbyssUtilizationData(
-            season: Int = { () -> Int in
-                let component = Calendar.current.dateComponents([.day, .month, .year], from: Date())
-                if component.day! >= 16 {
-                    return Int(String(component.year!)+String(component.month!)+"0")!
-                } else {
-                    return Int(String(component.year!)+String(component.month!)+"1")!
-                }
-            }(),
+            season: Int? = nil,
             server: Server? = nil,
             floor: Int = 12,
             _ completion: @escaping (UtilizationDataFetchModelResult) -> ()
@@ -70,7 +63,10 @@ extension API {
             let urlStr = "/abyss/utilization"
 
             var paraDict = [String: String]()
-            paraDict.updateValue(String(describing: season), forKey: "season")
+            if let season = season {
+                paraDict.updateValue(String(describing: season), forKey: "season")
+            }
+
             paraDict.updateValue(String(describing: floor), forKey: "floor")
             if let server = server {
                 paraDict.updateValue(server.id, forKey: "server")
@@ -108,14 +104,7 @@ extension API {
 
         /// 满星玩家持有率
         static func fetchFullStarHoldingRateData(
-            season: Int = { () -> Int in
-                let component = Calendar.current.dateComponents([.day, .month, .year], from: Date())
-                if component.day! >= 16 {
-                    return Int(String(component.year!)+String(component.month!)+"0")!
-                } else {
-                    return Int(String(component.year!)+String(component.month!)+"1")!
-                }
-            }(),
+            season: Int? = nil,
             server: Server? = nil,
             _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult) -> ()
         ) {
@@ -123,7 +112,10 @@ extension API {
             let urlStr = "/abyss/holding/full_star"
 
             var paraDict = [String: String]()
-            paraDict.updateValue(String(describing: season), forKey: "season")
+            if let season = season {
+                paraDict.updateValue(String(describing: season), forKey: "season")
+            }
+
             if let server = server {
                 paraDict.updateValue(server.id, forKey: "server")
             }

@@ -1274,13 +1274,13 @@ struct HttpMethod<T: Codable> {
                             return
                         }
                         DispatchQueue.main.async {
+                            let stringData = String(data: data, encoding: .utf8)!
+                            print(stringData)
+                            let data = stringData.replacingOccurrences(of: "\"NaN\"", with: "0").data(using: .utf8)!
                             let decoder = JSONDecoder()
                             if baseHost != "http://81.70.76.222" {
                                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                             }
-
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
                             guard let response = response as? HTTPURLResponse else {
                                 completion(.failure(.responseError))
                                 return
@@ -1288,6 +1288,7 @@ struct HttpMethod<T: Codable> {
                             print(response.statusCode)
 
                             do {
+
                                 let requestResult = try decoder.decode(T.self, from: data)
                                 completion(.success(requestResult))
                             } catch {
