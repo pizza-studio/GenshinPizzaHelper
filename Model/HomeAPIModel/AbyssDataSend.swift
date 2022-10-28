@@ -97,11 +97,11 @@ extension AbyssData {
             return nil
         }
         if component.day! <= 15 {
-            let oddNumber = [1, 3, 5, 7, 9]
-            abyssSeason = abyssSeasonInt * 10 + oddNumber.randomElement()!
-        } else {
             let evenNumber = [0, 2, 4, 6, 8]
             abyssSeason = abyssSeasonInt * 10 + evenNumber.randomElement()!
+        } else {
+            let oddNumber = [1, 3, 5, 7, 9]
+            abyssSeason = abyssSeasonInt * 10 + oddNumber.randomElement()!
         }
 
         owningChars = basicInfo.avatars.map { $0.id }
