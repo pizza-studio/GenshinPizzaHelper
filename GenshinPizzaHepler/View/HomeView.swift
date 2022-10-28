@@ -124,7 +124,7 @@ private struct AccountInfoCards: View {
                                 gameInfoBlock
                                     .contextMenu {
                                         Button("保存图片".localized) {
-                                            let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background)
+                                            let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background).environment(\.locale, .init(identifier: Locale.current.identifier))
                                             let renderer = ImageRenderer(content: view)
                                             renderer.scale = UIScreen.main.scale
                                             if let image = renderer.uiImage {

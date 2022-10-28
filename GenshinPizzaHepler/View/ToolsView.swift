@@ -366,8 +366,10 @@ struct ToolsView: View {
                         switch abyssDataViewSelection {
                         case .thisTerm:
                             AbyssShareView(data: thisAbyssData, charMap: viewModel.charMap!)
+                                .environment(\.locale, .init(identifier: Locale.current.identifier))
                         case .lastTerm:
                             AbyssShareView(data: lastAbyssData, charMap: viewModel.charMap!)
+                                .environment(\.locale, .init(identifier: Locale.current.identifier))
                         }
                     }
                 }
@@ -580,6 +582,7 @@ private struct LedgerSheetView: View {
             }
             .toolbarSavePhotoButtonInIOS16(title: "保存本月原石账簿图片".localized, placement: .navigationBarLeading) {
                 LedgerShareView(data: data)
+                    .environment(\.locale, .init(identifier: Locale.current.identifier))
             }
         }
     }
