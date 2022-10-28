@@ -175,7 +175,7 @@ extension Account {
                 case .failure(let error):
                     switch error {
                     case .uploadError(let message):
-                        if message == "uid existed" || message == ç"Insert Failed" {
+                        if message == "uid existed" || message == "Insert Failed" {
                             hasUploadedAbyssDataSeason.append(abyssData.getLocalAbyssSeason())
                             userDefault.set(hasUploadedAbyssDataSeason, forKey: "hasUploadedAbyssDataSeason")
                             print(userDefault.array(forKey: "hasUploadedAbyssDataSeason") as? [Int] ?? [])
