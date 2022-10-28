@@ -67,6 +67,15 @@ struct AbyssData: Codable {
         let topEUsed: Int
         let topQUsed: Int
     }
+
+    /// 返回结尾只有0或1的abyssSeason信息
+    func getLocalAbyssSeason() -> Int {
+        if self.abyssSeason % 2 == 0 {
+            return (self.abyssSeason / 10) * 10
+        } else {
+            return (self.abyssSeason / 10) * 10 + 1
+        }
+    }
 }
 
 extension AbyssData {
@@ -80,12 +89,19 @@ extension AbyssData {
         server = account.config.server.id
 
         let component = Calendar.current.dateComponents([.year, .month, .day], from: Date(timeIntervalSince1970: Double(abyssData.startTime)!))
-        if component.day! <= 13 {
+        let abyssDataDate = Date(timeIntervalSince1970: Double(abyssData.startTime)!)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMM"
+        let abyssSeasonStr = dateFormatter.string(from: abyssDataDate)
+        guard let abyssSeasonInt = Int(abyssSeasonStr) else {
+            return nil
+        }
+        if component.day! <= 15 {
             let oddNumber = [1, 3, 5, 7, 9]
-            abyssSeason = Int("\(component.year!)\(component.month!)\(oddNumber.randomElement()!)")!
+            abyssSeason = abyssSeasonInt * 10 + oddNumber.randomElement()!
         } else {
             let evenNumber = [0, 2, 4, 6, 8]
-            abyssSeason = Int("\(component.year!)\(component.month!)\(evenNumber.randomElement()!)")!
+            abyssSeason = abyssSeasonInt * 10 + evenNumber.randomElement()!
         }
 
         owningChars = basicInfo.avatars.map { $0.id }

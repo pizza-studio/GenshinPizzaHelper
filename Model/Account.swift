@@ -155,35 +155,39 @@ extension Account {
     func uploadAbyssData() {
         print("uploadAbyssData START")
         let userDefault = UserDefaults.standard
-        var hasUploadedAbyssDataHash: [Int] = userDefault.array(forKey: "hasUploadedAbyssDataHash") as? [Int] ?? []
+        var hasUploadedAbyssDataSeason: [Int] = userDefault.array(forKey: "hasUploadedAbyssDataSeason") as? [Int] ?? []
         if let abyssData = AbyssData(account: self, which: .this) {
+            if hasUploadedAbyssDataSeason.contains(abyssData.getLocalAbyssSeason()) {
+                return
+            }
             let encoder = JSONEncoder()
             encoder.outputFormatting = .sortedKeys
             let data = try! encoder.encode(abyssData)
-            guard !hasUploadedAbyssDataHash.contains(data.hashValue) else { return }
+            guard !hasUploadedAbyssDataSeason.contains(data.hashValue) else { return }
             API.PSAServer.uploadUserData(path: "/abyss/upload", data: data) { result in
                 switch result {
                 case .success(_):
                     print("upload uploadAbyssData succeed")
-                    hasUploadedAbyssDataHash.append(data.hashValue)
-                    userDefault.set(hasUploadedAbyssDataHash, forKey: "hasUploadedAbyssDataHash")
+                    hasUploadedAbyssDataSeason.append(abyssData.getLocalAbyssSeason())
+                    userDefault.set(hasUploadedAbyssDataSeason, forKey: "hasUploadedAbyssDataSeason")
                     print(String(data: data, encoding: .utf8)!)
-                    print(hasUploadedAbyssDataHash)
+                    print(hasUploadedAbyssDataSeason)
                 case .failure(let error):
                     switch error {
                     case .uploadError(let message):
-                        if message == "uid existed" || message == "Insert Failed" {
-                            hasUploadedAbyssDataHash.append(data.hashValue)
-                            userDefault.set(hasUploadedAbyssDataHash, forKey: "hasUploadedAbyssDataHash")
-                            print(userDefault.array(forKey: "hasUploadedAbyssDataHash") as? [Int] ?? [])
+                        if message == "uid existed" || message == ç"Insert Failed" {
+                            hasUploadedAbyssDataSeason.append(abyssData.getLocalAbyssSeason())
+                            userDefault.set(hasUploadedAbyssDataSeason, forKey: "hasUploadedAbyssDataSeason")
+                            print(userDefault.array(forKey: "hasUploadedAbyssDataSeason") as? [Int] ?? [])
                         }
                     default:
                         break
                     }
                     print("uploadAbyssData ERROR: \(error)")
                     print(String(data: data, encoding: .utf8)!)
-                    print(hasUploadedAbyssDataHash)
+                    print(hasUploadedAbyssDataSeason)
                 }
+                userDefault.synchronize()
             }
         }
     }
