@@ -120,7 +120,7 @@ extension API {
             _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult) -> ()
         ) {
             // 请求类别
-            let urlStr = "/holding/full_star"
+            let urlStr = "/abyss/holding/full_star"
 
             var paraDict = [String: String]()
             paraDict.updateValue(String(describing: season), forKey: "season")
