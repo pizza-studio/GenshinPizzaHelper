@@ -909,6 +909,7 @@
 			isa = PBXGroup;
 			children = (
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
+				EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */,
 				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
 				EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */,
@@ -926,7 +927,6 @@
 				BFB101EF28D7262A000DC631 /* ThanksView.swift */,
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
 				EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */,
-				EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";

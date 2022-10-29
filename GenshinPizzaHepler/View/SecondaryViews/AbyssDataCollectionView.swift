@@ -82,61 +82,79 @@ struct AbyssDataCollectionView: View {
     @StateObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel = .init()
 
     var body: some View {
-        NavigationView {
-            switch abyssDataCollectionViewModel.showingType {
-            case .abyssAvatarsUtilization, .holdingRate, .fullStarHoldingRate:
-                ShowAvatarPercentageView().environmentObject(abyssDataCollectionViewModel)
-            }
-        }
-        .sheet(item: $abyssDataCollectionViewModel.showingSheetType, content: { type in
-            NavigationView {
-                switch type {
-                case .holdingRate:
-                    AvatarHoldingParamsSettingSheet(params: $abyssDataCollectionViewModel.holdingParam)
-                        .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                            abyssDataCollectionViewModel.getData()
-                        }
-                case .fullStarHoldingRate:
-                    FullStarAvatarHoldingParamsSettingSheet(params: $abyssDataCollectionViewModel.fullStarHoldingParam)
-                        .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                            abyssDataCollectionViewModel.getData()
-                        }
-                case .abyssAvatarsUtilization:
-                    UtilizationParasSettingSheet(params: $abyssDataCollectionViewModel.utilizationParams)
-                        .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                            abyssDataCollectionViewModel.getData()
-                        }
+        if #available(iOS 16.0, *) {
+            VStack {
+                switch abyssDataCollectionViewModel.showingType {
+                case .abyssAvatarsUtilization, .holdingRate, .fullStarHoldingRate:
+                    ShowAvatarPercentageView().environmentObject(abyssDataCollectionViewModel)
                 }
             }
-        })
-        .toolbar {
-            ToolbarItemGroup(placement: .principal) {
-                Menu {
-                    ForEach(AbyssDataCollectionViewModel.ShowingData.allCases, id: \.rawValue) { choice in
-                        Button(choice.rawValue.localized) {
-                            withAnimation {
-                                abyssDataCollectionViewModel.showingType = choice
+            .sheet(item: $abyssDataCollectionViewModel.showingSheetType, content: { type in
+                NavigationView {
+                    switch type {
+                    case .holdingRate:
+                        AvatarHoldingParamsSettingSheet(params: $abyssDataCollectionViewModel.holdingParam)
+                            .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
+                                abyssDataCollectionViewModel.getData()
+                            }
+                    case .fullStarHoldingRate:
+                        FullStarAvatarHoldingParamsSettingSheet(params: $abyssDataCollectionViewModel.fullStarHoldingParam)
+                            .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
+                                abyssDataCollectionViewModel.getData()
+                            }
+                    case .abyssAvatarsUtilization:
+                        UtilizationParasSettingSheet(params: $abyssDataCollectionViewModel.utilizationParams)
+                            .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
+                                abyssDataCollectionViewModel.getData()
+                            }
+                    }
+                }
+            })
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Menu {
+                        ForEach(AbyssDataCollectionViewModel.ShowingData.allCases, id: \.rawValue) { choice in
+                            Button(choice.rawValue.localized) {
+                                withAnimation {
+                                    abyssDataCollectionViewModel.showingType = choice
+                                }
                             }
                         }
-                    }
-                } label: {
-                    HStack {
-                        Image(systemName: "arrow.left.arrow.right.circle")
-                        Text(abyssDataCollectionViewModel.showingType.rawValue.localized)
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.left.arrow.right.circle")
+                            Text(abyssDataCollectionViewModel.showingType.rawValue.localized)
+                        }
                     }
                 }
-            }
-            ToolbarItem {
-                Button {
-                    abyssDataCollectionViewModel.showingSheetType = abyssDataCollectionViewModel.showingType
-                } label: {
-                    Image(systemName: "slider.vertical.3")
+                ToolbarItem (placement: .navigationBarTrailing) {
+                    Button {
+                        abyssDataCollectionViewModel.showingSheetType = abyssDataCollectionViewModel.showingType
+                    } label: {
+                        Image(systemName: "slider.vertical.3")
+                    }
+                }
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Menu {
+
+                    } label: {
+                        Text("所有服务器")
+                    }
+                    Spacer()
+                    Menu {
+
+                    } label: {
+                        Text("12层")
+                    }
+                    Spacer()
+                    DatePicker("", selection: $abyssDataCollectionViewModel.holdingParam.date, displayedComponents: .date)
                 }
             }
+            .toolbar(.hidden, for: .tabBar)
+        } else {
+            // Fallback on earlier versions
         }
     }
-
-
 }
 
 struct ShowAvatarPercentageView: View {
