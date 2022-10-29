@@ -13,7 +13,6 @@ class AbyssDataCollectionViewModel: ObservableObject {
             getData()
         }
     }
-    @Published var showingSheetType: ShowingData?
 
     enum ShowingData: String, CaseIterable, Identifiable {
         case abyssAvatarsUtilization = "角色深渊使用率"
@@ -25,28 +24,40 @@ class AbyssDataCollectionViewModel: ObservableObject {
 
     // MARK: - 所有用户持有率
     @Published var avatarHoldingResult: AvatarHoldingReceiveDataFetchModelResult?
-    @Published var holdingParam: AvatarHoldingAPIParameters = .init()
+    @Published var holdingParam: AvatarHoldingAPIParameters = .init() {
+        didSet { getAvatarHoldingResult() }
+    }
     private func getAvatarHoldingResult() {
         API.PSAServer.fetchHoldingRateData(queryStartDate: holdingParam.date, server: holdingParam.server) { result in
-            self.avatarHoldingResult = result
+            withAnimation {
+                self.avatarHoldingResult = result
+            }
         }
     }
 
     // MARK: - 满星用户持有率
     @Published var fullStaAvatarHoldingResult: AvatarHoldingReceiveDataFetchModelResult?
-    @Published var fullStarHoldingParam: FullStarAPIParameters = .init()
+    @Published var fullStarHoldingParam: FullStarAPIParameters = .init() {
+        didSet { getFullStarHoldingResult() }
+    }
     private func getFullStarHoldingResult() {
         API.PSAServer.fetchFullStarHoldingRateData(season: fullStarHoldingParam.season, server: fullStarHoldingParam.server) { result in
-            self.fullStaAvatarHoldingResult = result
+            withAnimation {
+                self.fullStaAvatarHoldingResult = result
+            }
         }
     }
 
     // MARK: - 深渊使用率
     @Published var utilizationDataFetchModelResult: UtilizationDataFetchModelResult?
-    @Published var utilizationParams: UtilizationAPIParameters = .init()
+    @Published var utilizationParams: UtilizationAPIParameters = .init() {
+        didSet { getUtilizationResult() }
+    }
     private func getUtilizationResult() {
         API.PSAServer.fetchAbyssUtilizationData(season: utilizationParams.season, server: utilizationParams.server, floor: utilizationParams.floor) { result in
-            self.utilizationDataFetchModelResult = result
+            withAnimation {
+                self.utilizationDataFetchModelResult = result
+            }
         }
     }
 
@@ -82,77 +93,39 @@ struct AbyssDataCollectionView: View {
     @StateObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel = .init()
 
     var body: some View {
-        if #available(iOS 16.0, *) {
-            VStack {
+        VStack {
+            switch abyssDataCollectionViewModel.showingType {
+            case .abyssAvatarsUtilization, .holdingRate, .fullStarHoldingRate:
+                ShowAvatarPercentageView().environmentObject(abyssDataCollectionViewModel)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Menu {
+                    ForEach(AbyssDataCollectionViewModel.ShowingData.allCases, id: \.rawValue) { choice in
+                        Button(choice.rawValue.localized) {
+                            withAnimation {
+                                abyssDataCollectionViewModel.showingType = choice
+                            }
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.left.arrow.right.circle")
+                        Text(abyssDataCollectionViewModel.showingType.rawValue.localized)
+                    }
+                }
+            }
+            ToolbarItemGroup(placement: .bottomBar) {
                 switch abyssDataCollectionViewModel.showingType {
-                case .abyssAvatarsUtilization, .holdingRate, .fullStarHoldingRate:
-                    ShowAvatarPercentageView().environmentObject(abyssDataCollectionViewModel)
+                case .holdingRate:
+                    AvatarHoldingParamsSettingBar(params: $abyssDataCollectionViewModel.holdingParam)
+                case .fullStarHoldingRate:
+                    FullStarAvatarHoldingParamsSettingBar(params: $abyssDataCollectionViewModel.fullStarHoldingParam)
+                case .abyssAvatarsUtilization:
+                    UtilizationParasSettingBar(params: $abyssDataCollectionViewModel.utilizationParams)
                 }
             }
-            .sheet(item: $abyssDataCollectionViewModel.showingSheetType, content: { type in
-                NavigationView {
-                    switch type {
-                    case .holdingRate:
-                        AvatarHoldingParamsSettingSheet(params: $abyssDataCollectionViewModel.holdingParam)
-                            .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                                abyssDataCollectionViewModel.getData()
-                            }
-                    case .fullStarHoldingRate:
-                        FullStarAvatarHoldingParamsSettingSheet(params: $abyssDataCollectionViewModel.fullStarHoldingParam)
-                            .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                                abyssDataCollectionViewModel.getData()
-                            }
-                    case .abyssAvatarsUtilization:
-                        UtilizationParasSettingSheet(params: $abyssDataCollectionViewModel.utilizationParams)
-                            .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                                abyssDataCollectionViewModel.getData()
-                            }
-                    }
-                }
-            })
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Menu {
-                        ForEach(AbyssDataCollectionViewModel.ShowingData.allCases, id: \.rawValue) { choice in
-                            Button(choice.rawValue.localized) {
-                                withAnimation {
-                                    abyssDataCollectionViewModel.showingType = choice
-                                }
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: "arrow.left.arrow.right.circle")
-                            Text(abyssDataCollectionViewModel.showingType.rawValue.localized)
-                        }
-                    }
-                }
-                ToolbarItem (placement: .navigationBarTrailing) {
-                    Button {
-                        abyssDataCollectionViewModel.showingSheetType = abyssDataCollectionViewModel.showingType
-                    } label: {
-                        Image(systemName: "slider.vertical.3")
-                    }
-                }
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Menu {
-
-                    } label: {
-                        Text("所有服务器")
-                    }
-                    Spacer()
-                    Menu {
-
-                    } label: {
-                        Text("12层")
-                    }
-                    Spacer()
-                    DatePicker("", selection: $abyssDataCollectionViewModel.holdingParam.date, displayedComponents: .date)
-                }
-            }
-            .toolbar(.hidden, for: .tabBar)
-        } else {
-            // Fallback on earlier versions
         }
     }
 }
@@ -219,7 +192,7 @@ struct ShowAvatarPercentageView: View {
                             formatter.timeStyle = .medium
                             return formatter.string(from: Date())
                         }()
-                        Text("共统计\(data.totalUsers)用户。\(abyssDataCollectionViewModel.paramsDescription)生成于\(dateString)。")
+                        Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
                     }
                 case .failure(let error):
                     Text(error.localizedDescription)
@@ -231,55 +204,20 @@ struct ShowAvatarPercentageView: View {
     }
 }
 
-struct AvatarHoldingParamsSettingSheet: View {
+struct AvatarHoldingParamsSettingBar: View {
     @Binding var params: AvatarHoldingAPIParameters
-    var queryAllServer: Binding<Bool> {
-        .init {
-            switch params.serverChoice {
-            case .all:
-                return true
-            case .server(_):
-                return false
-            }
-        } set: { newValue in
-            if newValue {
-                params.serverChoice = .all
-            } else {
-                params.serverChoice = .server(.china)
-            }
-        }
-    }
-    var queryServer: Binding<Server> {
-        .init {
-            params.server ?? .china
-        } set: { server in
-            params.serverChoice = .server(server)
-        }
-    }
 
     var body: some View {
-        List {
-            Section {
-                DatePicker("查询开始日", selection: $params.date, displayedComponents: .date)
-            } footer: {
-                let dateString: String = {
-                    let formatter = DateFormatter()
-                    formatter.dateStyle = .medium
-                    formatter.timeStyle = .none
-                    return formatter.string(from: params.date)
-                }()
-                Text("仅包含\(dateString)后提交数据的玩家")
+        Menu {
+            Button("所有服务器") { params.serverChoice = .all }
+            ForEach(Server.allCases, id: \.rawValue) { server in
+                Button("\(server.rawValue)") { params.serverChoice = .server(server) }
             }
-
-            Toggle("查询所有服务器", isOn: queryAllServer)
-            if !queryAllServer.wrappedValue {
-                Picker("服务器", selection: queryServer) {
-                    ForEach(Server.allCases, id: \.rawValue) { server in
-                        Text(server.rawValue).tag(server)
-                    }
-                }
-            }
+        } label: {
+            Text(params.serverChoice.describe())
         }
+        Spacer()
+        DatePicker("", selection: $params.date, displayedComponents: [.date])
     }
 }
 
@@ -302,68 +240,35 @@ struct AvatarHoldingAPIParameters {
             formatter.timeStyle = .none
             return formatter.string(from: date)
         }()
-        return "数据包含\(dateString)后提交数据的玩家；服务器：\(serverChoice.describe())。"
+        return "·仅\(dateString)后提交的数据"
     }
 }
 
-struct FullStarAvatarHoldingParamsSettingSheet: View {
+struct FullStarAvatarHoldingParamsSettingBar: View {
     @Binding var params: FullStarAPIParameters
-    var queryAllServer: Binding<Bool> {
-        .init {
-            switch params.serverChoice {
-            case .all:
-                return true
-            case .server(_):
-                return false
-            }
-        } set: { newValue in
-            if newValue {
-                params.serverChoice = .all
-            } else {
-                params.serverChoice = .server(.china)
-            }
-        }
-    }
-    var queryServer: Binding<Server> {
-        .init {
-            params.server ?? .china
-        } set: { server in
-            params.serverChoice = .server(server)
-        }
-    }
-    var queryDate: Binding<Date> {
-        .init {
-            params.date
-        } set: { newDate in
-            params.date = newDate
-        }
-    }
 
     var body: some View {
-        List {
-            Section {
-                DatePicker("查询日期", selection: queryDate, displayedComponents: .date)
-            } footer: {
-                Text("对应深渊期数：\(params.season.describe())")
+        Menu {
+            Button("所有服务器") { params.serverChoice = .all }
+            ForEach(Server.allCases, id: \.rawValue) { server in
+                Button("\(server.rawValue)") { params.serverChoice = .server(server) }
             }
-
-            Toggle("查询所有服务器", isOn: queryAllServer)
-            if !queryAllServer.wrappedValue {
-                Picker("服务器", selection: queryServer) {
-                    ForEach(Server.allCases, id: \.rawValue) { server in
-                        Text(server.rawValue).tag(server)
-                    }
-                }
+        } label: {
+            Text(params.serverChoice.describe())
+        }
+        Spacer()
+        Menu {
+            ForEach(AbyssSeason.choices(), id: \.hashValue) { season in
+                Button("\(season.describe())") { params.season = season }
             }
+        } label: {
+            Text(params.season.describe())
         }
     }
 }
 
 struct FullStarAPIParameters {
-    var date: Date = Date()
-    var season: AbyssSeason {
-        .from(date)
-    }
+    var season: AbyssSeason = .now()
     var server: Server? {
         switch serverChoice {
         case .all:
@@ -375,73 +280,45 @@ struct FullStarAPIParameters {
     var serverChoice: ServerChoice = .all
 
     func describe() -> String {
-        "深渊期数：\(season.describe())；服务器：\(serverChoice.describe())。"
+        ""
     }
 }
 
-struct UtilizationParasSettingSheet: View {
+struct UtilizationParasSettingBar: View {
     @Binding var params: UtilizationAPIParameters
-    var queryAllServer: Binding<Bool> {
-        .init {
-            switch params.serverChoice {
-            case .all:
-                return true
-            case .server(_):
-                return false
-            }
-        } set: { newValue in
-            if newValue {
-                params.serverChoice = .all
-            } else {
-                params.serverChoice = .server(.china)
-            }
-        }
-    }
-    var queryServer: Binding<Server> {
-        .init {
-            params.server ?? .china
-        } set: { server in
-            params.serverChoice = .server(server)
-        }
-    }
-    var queryDate: Binding<Date> {
-        .init {
-            params.date
-        } set: { newDate in
-            params.date = newDate
-        }
-    }
 
     var body: some View {
-        List {
-            Section {
-                DatePicker("查询日期", selection: queryDate, displayedComponents: .date)
-            } footer: {
-                Text("对应深渊期数：\(params.season.describe())")
+        Menu {
+            Button("所有服务器") { params.serverChoice = .all }
+            ForEach(Server.allCases, id: \.rawValue) { server in
+                Button("\(server.rawValue)") { params.serverChoice = .server(server) }
             }
-
-            Toggle("查询所有服务器", isOn: queryAllServer)
-            if !queryAllServer.wrappedValue {
-                Picker("服务器", selection: queryServer) {
-                    ForEach(Server.allCases, id: \.rawValue) { server in
-                        Text(server.rawValue).tag(server)
-                    }
+        } label: {
+            Text(params.serverChoice.describe())
+        }
+        Spacer()
+        Menu {
+            ForEach(9...12, id: \.self) { number in
+                Button("\(number)层") {
+                    params.floor = number
                 }
             }
-            Section {
-                Picker("深渊层数", selection: $params.floor) {
-                    ForEach(9...12, id: \.self) { number in
-                        Text("\(number)").tag(number)
-                    }
-                }
+        } label: {
+            Text("\(params.floor)层")
+        }
+        Spacer()
+        Menu {
+            ForEach(AbyssSeason.choices(), id: \.hashValue) { season in
+                Button("\(season.describe())") { params.season = season }
             }
+        } label: {
+            Text(params.season.describe())
         }
     }
 }
 
 struct UtilizationAPIParameters {
-    var date: Date = Date()
-    var season: AbyssSeason { .from(date) }
+    var season: AbyssSeason = .from(Date())
     var server: Server? {
         switch serverChoice {
         case .all:
@@ -455,7 +332,7 @@ struct UtilizationAPIParameters {
     var floor: Int = 12
 
     func describe() -> String {
-        "仅包含满星玩家。深渊期数：\(season.describe())；服务器：\(serverChoice.describe())；层数：\(floor)层。"
+        "·仅包含满星玩家"
     }
 }
 
@@ -511,6 +388,24 @@ extension AbyssSeason {
         }()
         return String(seasonString.prefix(6)) + half
     }
+
+    static func choices(from date: Date = Date()) -> [AbyssSeason] {
+        var choices = [Self]()
+        var date = date
+        let startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 10, day: 16))!
+        // 以下仅判断本月
+        if Calendar.current.dateComponents([.day], from: Date()).day! >= 16 {
+            choices.append(date.yyyyMM()*10+1)
+        }
+        choices.append(date.yyyyMM()*10)
+        date = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+        while date >= startDate {
+            choices.append(date.yyyyMM()*10+1)
+            choices.append(date.yyyyMM()*10)
+            date = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+        }
+        return choices
+    }
 }
 
 enum ServerChoice {
@@ -527,3 +422,10 @@ enum ServerChoice {
     }
 }
 
+extension Date {
+    func yyyyMM() -> Int {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMM"
+        return Int(formatter.string(from: self))!
+    }
+}
