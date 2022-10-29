@@ -240,7 +240,7 @@ struct AvatarHoldingAPIParameters {
             formatter.timeStyle = .none
             return formatter.string(from: date)
         }()
-        return "·仅\(dateString)后提交的数据"
+        return "·仅自\(dateString)后提交的数据"
     }
 }
 
@@ -381,12 +381,12 @@ extension AbyssSeason {
 //        let month = Calendar.current.component(.month, from: yearMonth)
         let half = {
             if String(seasonString.suffix(1)) == "0" {
-                return "上半月".localized
+                return "上".localized
             } else {
-                return "下半月".localized
+                return "下".localized
             }
         }()
-        return String(seasonString.prefix(6)) + half
+        return String(seasonString.prefix(6).prefix(4)) + " " + String(seasonString.prefix(6).suffix(2)) + "月" + half
     }
 
     static func choices(from date: Date = Date()) -> [AbyssSeason] {
