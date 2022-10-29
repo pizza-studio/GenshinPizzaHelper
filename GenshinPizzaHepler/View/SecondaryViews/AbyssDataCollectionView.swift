@@ -186,12 +186,12 @@ struct ShowAvatarPercentageView: View {
                             }
                         }
                     } header: {
-                        let dateString: String = {
-                            let formatter = DateFormatter()
-                            formatter.dateStyle = .medium
-                            formatter.timeStyle = .medium
-                            return formatter.string(from: Date())
-                        }()
+//                        let dateString: String = {
+//                            let formatter = DateFormatter()
+//                            formatter.dateStyle = .medium
+//                            formatter.timeStyle = .medium
+//                            return formatter.string(from: Date())
+//                        }()
                         Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
                     }
                 case .failure(let error):
@@ -395,7 +395,7 @@ extension AbyssSeason {
         // TODO: - 正式版修改此处为11月1日
         let startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 10, day: 16))!
         // 以下仅判断本月
-        if Calendar.current.dateComponents([.day], from: Date()).day! >= 16 {
+        if Calendar.current.dateComponents([.day], from: date).day! >= 16 {
             choices.append(date.yyyyMM()*10+1)
         }
         choices.append(date.yyyyMM()*10)
