@@ -109,7 +109,7 @@ struct ShowAvatarPercentageView: View {
             withAnimation {
                 switch type {
                 case .holdingRate:
-                    API.PSAServer.fetchHoldingRateData(queryStartDate: nil) { result in
+                    API.PSAServer.fetchHoldingRateData { result in
                         self.result = result
                     }
                 case .fullStarHoldingRate:

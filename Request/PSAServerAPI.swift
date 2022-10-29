@@ -152,7 +152,7 @@ extension API {
 
         /// 所有玩家持有率
         static func fetchHoldingRateData(
-            queryStartDate: Date?,
+            queryStartDate: Date? = nil,
             server: Server? = nil,
             _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult) -> ()
         ) {
