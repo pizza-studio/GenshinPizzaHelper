@@ -10,21 +10,14 @@ import SwiftUI
 class AbyssDataCollectionViewModel: ObservableObject {
     @Published var showingType: ShowingData {
         didSet {
-            switch showingType {
-            case .abyssAvatarsUtilization:
-                getUtilizationResult()
-            case .fullStarHoldingRate:
-                getFullStarHoldingResult()
-            case .holdingRate:
-                getAvatarHoldingResult()
-            }
+            getData()
         }
     }
     @Published var showingSheetType: ShowingData?
 
     enum ShowingData: String, CaseIterable, Identifiable {
         case abyssAvatarsUtilization = "角色深渊使用率"
-        case fullStarHoldingRate = "满星持有率"
+        case fullStarHoldingRate = "满星玩家持有率"
         case holdingRate = "持有率"
 
         var id: String { self.rawValue }
@@ -33,7 +26,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
     // MARK: - 所有用户持有率
     @Published var avatarHoldingResult: AvatarHoldingReceiveDataFetchModelResult?
     @Published var holdingParam: AvatarHoldingAPIParameters = .init()
-    func getAvatarHoldingResult() {
+    private func getAvatarHoldingResult() {
         API.PSAServer.fetchHoldingRateData(queryStartDate: holdingParam.date, server: holdingParam.server) { result in
             self.avatarHoldingResult = result
         }
@@ -42,7 +35,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
     // MARK: - 满星用户持有率
     @Published var fullStaAvatarHoldingResult: AvatarHoldingReceiveDataFetchModelResult?
     @Published var fullStarHoldingParam: FullStarAPIParameters = .init()
-    func getFullStarHoldingResult() {
+    private func getFullStarHoldingResult() {
         API.PSAServer.fetchFullStarHoldingRateData(season: fullStarHoldingParam.season, server: fullStarHoldingParam.server) { result in
             self.fullStaAvatarHoldingResult = result
         }
@@ -51,7 +44,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
     // MARK: - 深渊使用率
     @Published var utilizationDataFetchModelResult: UtilizationDataFetchModelResult?
     @Published var utilizationParams: UtilizationAPIParameters = .init()
-    func getUtilizationResult() {
+    private func getUtilizationResult() {
         API.PSAServer.fetchAbyssUtilizationData(season: utilizationParams.season, server: utilizationParams.server, floor: utilizationParams.floor) { result in
             self.utilizationDataFetchModelResult = result
         }
@@ -59,14 +52,34 @@ class AbyssDataCollectionViewModel: ObservableObject {
 
     init() {
         showingType = .abyssAvatarsUtilization
-        getUtilizationResult()
+        getData()
     }
 
+    var paramsDescription: String {
+        switch showingType {
+        case .fullStarHoldingRate:
+            return fullStarHoldingParam.describe()
+        case .holdingRate:
+            return holdingParam.describe()
+        case .abyssAvatarsUtilization:
+            return utilizationParams.describe()
+        }
+    }
 
+    func getData() {
+        switch showingType {
+        case .abyssAvatarsUtilization:
+            getUtilizationResult()
+        case .holdingRate:
+            getAvatarHoldingResult()
+        case .fullStarHoldingRate:
+            getFullStarHoldingResult()
+        }
+    }
 }
 
 struct AbyssDataCollectionView: View {
-    @ObservedObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel = .init()
+    @StateObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel = .init()
 
     var body: some View {
         NavigationView {
@@ -81,17 +94,17 @@ struct AbyssDataCollectionView: View {
                 case .holdingRate:
                     AvatarHoldingParamsSettingSheet(params: $abyssDataCollectionViewModel.holdingParam)
                         .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                            abyssDataCollectionViewModel.getAvatarHoldingResult()
+                            abyssDataCollectionViewModel.getData()
                         }
                 case .fullStarHoldingRate:
                     FullStarAvatarHoldingParamsSettingSheet(params: $abyssDataCollectionViewModel.fullStarHoldingParam)
                         .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                            abyssDataCollectionViewModel.getFullStarHoldingResult()
+                            abyssDataCollectionViewModel.getData()
                         }
                 case .abyssAvatarsUtilization:
                     UtilizationParasSettingSheet(params: $abyssDataCollectionViewModel.utilizationParams)
                         .dismissableSheet(sheet: $abyssDataCollectionViewModel.showingSheetType) {
-                            abyssDataCollectionViewModel.getUtilizationResult()
+                            abyssDataCollectionViewModel.getData()
                         }
                 }
             }
@@ -182,7 +195,13 @@ struct ShowAvatarPercentageView: View {
                             }
                         }
                     } header: {
-                        Text("共统计\(data.totalUsers)用户")
+                        let dateString: String = {
+                            let formatter = DateFormatter()
+                            formatter.dateStyle = .medium
+                            formatter.timeStyle = .medium
+                            return formatter.string(from: Date())
+                        }()
+                        Text("共统计\(data.totalUsers)用户。\(abyssDataCollectionViewModel.paramsDescription)生成于\(dateString)。")
                     }
                 case .failure(let error):
                     Text(error.localizedDescription)
@@ -258,9 +277,14 @@ struct AvatarHoldingAPIParameters {
     }
     var serverChoice: ServerChoice = .all
 
-    enum ServerChoice {
-        case all
-        case server(Server)
+    func describe() -> String {
+        let dateString: String = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            return formatter.string(from: date)
+        }()
+        return "数据包含\(dateString)后提交数据的玩家；服务器：\(serverChoice.describe())。"
     }
 }
 
@@ -332,9 +356,8 @@ struct FullStarAPIParameters {
     }
     var serverChoice: ServerChoice = .all
 
-    enum ServerChoice {
-        case all
-        case server(Server)
+    func describe() -> String {
+        "深渊期数：\(season.describe())；服务器：\(serverChoice.describe())。"
     }
 }
 
@@ -387,6 +410,13 @@ struct UtilizationParasSettingSheet: View {
                     }
                 }
             }
+            Section {
+                Picker("深渊层数", selection: $params.floor) {
+                    ForEach(9...12, id: \.self) { number in
+                        Text("\(number)").tag(number)
+                    }
+                }
+            }
         }
     }
 }
@@ -404,12 +434,11 @@ struct UtilizationAPIParameters {
     }
     var serverChoice: ServerChoice = .all
 
-    enum ServerChoice {
-        case all
-        case server(Server)
-    }
-
     var floor: Int = 12
+
+    func describe() -> String {
+        "仅包含满星玩家。深渊期数：\(season.describe())；服务器：\(serverChoice.describe())；层数：\(floor)层。"
+    }
 }
 
 
@@ -450,18 +479,33 @@ extension AbyssSeason {
 
     func describe() -> String {
         let seasonString = String(self)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyyMM"
-        let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
-        let year = Calendar.current.component(.year, from: yearMonth)
-        let month = Calendar.current.component(.month, from: yearMonth)
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyyMM"
+//        let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
+//        let year = Calendar.current.component(.year, from: yearMonth)
+//        let month = Calendar.current.component(.month, from: yearMonth)
         let half = {
             if String(seasonString.suffix(1)) == "0" {
-                return "上半".localized
+                return "上半月".localized
             } else {
-                return "下半".localized
+                return "下半月".localized
             }
         }()
         return String(seasonString.prefix(6)) + half
     }
 }
+
+enum ServerChoice {
+    case all
+    case server(Server)
+
+    func describe() -> String {
+        switch self {
+        case .all:
+            return "所有服务器".localized
+        case .server(let server):
+            return server.rawValue
+        }
+    }
+}
+
