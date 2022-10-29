@@ -70,7 +70,12 @@ struct ShowAvatarPercentageView: View {
                     let data = data.data
                     Section {
                         ForEach(data.avatars.sorted(by: {
-                            $0.charId < $1.charId
+                            switch type {
+                            case .abyssAvatarsUtilization:
+                                return ($0.percentage ?? 0) > ($1.percentage ?? 0)
+                            case .holdingRate, .fullStarHoldingRate:
+                                return $0.charId < $1.charId
+                            }
                         }), id: \.charId) { avatar in
                             let char = charMap["\(avatar.charId)"]
                             HStack {
