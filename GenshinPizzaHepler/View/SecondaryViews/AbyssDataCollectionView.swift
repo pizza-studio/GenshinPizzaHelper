@@ -199,7 +199,7 @@ struct AbyssDataCollectionView: View {
                 case "ja":
                     return "http://ophelper.top/static/faq_abyss_ja.html"
                 default:
-                    return "http://ophelper.top/static/faq_abyss.html"
+                    return "http://ophelper.top/static/faq_abyss_en.html"
                 }
             }()
             NavigationView {
