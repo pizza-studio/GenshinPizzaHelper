@@ -1300,6 +1300,8 @@ struct HttpMethod<T: Codable> {
                     }
                 }.resume()
             }
+        } else {
+            completion(.failure(.responseError))
         }
     }
 }
