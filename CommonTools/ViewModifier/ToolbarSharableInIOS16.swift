@@ -32,16 +32,8 @@ struct ToolbarSavePhotoButton<ViewToRender: View>: ViewModifier {
         self.title = title
     }
 
-//    @MainActor @available(iOS 16.0, *)
-//    func generateSharePhoto() -> UIImage? {
-//        let renderer = ImageRenderer(content: viewToRender)
-//        renderer.scale = UIScreen.main.scale
-//        return renderer.uiImage
-//    }
-
     func body(content: Content) -> some View {
         if #available(iOS 16, *)
-//            , let image = generateSharePhoto()
         {
             content
                 .toolbar {

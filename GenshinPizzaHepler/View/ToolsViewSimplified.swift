@@ -231,7 +231,7 @@ struct ToolsViewSimplified: View {
                             } else {
                                 ProgressView()
                                     .onTapGesture {
-                                        viewModel.refreshAbyssDetail()
+                                        viewModel.refreshAbyssAndBasicInfo()
                                     }
                             }
                         }

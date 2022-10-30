@@ -67,6 +67,15 @@ struct AbyssData: Codable {
         let topEUsed: Int
         let topQUsed: Int
     }
+
+    /// 返回结尾只有0或1的abyssSeason信息
+    func getLocalAbyssSeason() -> Int {
+        if self.abyssSeason % 2 == 0 {
+            return (self.abyssSeason / 10) * 10
+        } else {
+            return (self.abyssSeason / 10) * 10 + 1
+        }
+    }
 }
 
 extension AbyssData {
@@ -74,18 +83,26 @@ extension AbyssData {
         guard let abyssData = account.spiralAbyssDetail?.get(season),
               let basicInfo = account.basicInfo
         else { return nil }
+        guard abyssData.totalStar == 36 else { return nil }
         // OPENSOURCE: 开源的时候把这行换掉
-        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.hashValue)GenshinPizzaHelper"
-        uid = String(obfuscatedUid.hashValue)
+        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.md5)GenshinPizzaHelper"
+        uid = obfuscatedUid.md5
         server = account.config.server.id
 
         let component = Calendar.current.dateComponents([.year, .month, .day], from: Date(timeIntervalSince1970: Double(abyssData.startTime)!))
-        if component.day! <= 13 {
-            let oddNumber = [1, 3, 5, 7, 9]
-            abyssSeason = Int("\(component.year!)\(component.month!)\(oddNumber.randomElement()!)")!
-        } else {
+        let abyssDataDate = Date(timeIntervalSince1970: Double(abyssData.startTime)!)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMM"
+        let abyssSeasonStr = dateFormatter.string(from: abyssDataDate)
+        guard let abyssSeasonInt = Int(abyssSeasonStr) else {
+            return nil
+        }
+        if component.day! <= 15 {
             let evenNumber = [0, 2, 4, 6, 8]
-            abyssSeason = Int("\(component.year!)\(component.month!)\(evenNumber.randomElement()!)")!
+            abyssSeason = abyssSeasonInt * 10 + evenNumber.randomElement()!
+        } else {
+            let oddNumber = [1, 3, 5, 7, 9]
+            abyssSeason = abyssSeasonInt * 10 + oddNumber.randomElement()!
         }
 
         owningChars = basicInfo.avatars.map { $0.id }
@@ -112,7 +129,7 @@ extension Array where Element == AbyssData.SubmitDetailModel {
             floor.levels.flatMap { level in
                 level.battles.compactMap { battle in
                     if floor.gainAllStar {
-                        return .init(floor: floor.index, room: level.index, half: battle.index, usedChars: battle.avatars.map { $0.id })
+                        return .init(floor: floor.index, room: level.index, half: battle.index, usedChars: battle.avatars.sorted(by: { $0.id < $1.id }).map { $0.id })
                     } else { return nil }
                 }
             }
@@ -124,8 +141,8 @@ extension AvatarHoldingData {
     init?(account: Account, which season: AccountSpiralAbyssDetail.WhichSeason) {
         guard let basicInfo = account.basicInfo else { return nil }
         // OPENSOURCE: 开源的时候把这行换掉
-        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.hashValue)GenshinPizzaHelper"
-        uid = String(obfuscatedUid.hashValue)
+        let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.md5)GenshinPizzaHelper"
+        uid = String(obfuscatedUid.md5)
 
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"

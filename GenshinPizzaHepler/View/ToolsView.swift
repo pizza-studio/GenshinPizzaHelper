@@ -11,6 +11,7 @@ import SwiftPieChart
 @available(iOS 15.0, *)
 struct ToolsView: View {
     @EnvironmentObject var viewModel: ViewModel
+    @Environment(\.scenePhase) var scenePhase
     var accounts: [Account] { viewModel.accounts }
     @AppStorage("toolViewShowingAccountUUIDString") var showingAccountUUIDString: String?
     var account: Account? {
@@ -48,7 +49,7 @@ struct ToolsView: View {
                         if let account = account {
                             viewModel.refreshPlayerDetail(for: account)
                         }
-                        viewModel.refreshAbyssDetail()
+                        viewModel.refreshAbyssAndBasicInfo()
                         viewModel.refreshLedgerData()
                     }
                 }
@@ -85,19 +86,33 @@ struct ToolsView: View {
                 }
             }
             .toolViewNavigationTitleInIOS15()
-//            .onAppear { checkIfAllowAbyssDataCollection() }
-//            .alert("是否允许我们收集您的深渊数据？", isPresented: $askAllowAbyssDataCollectionAlert) {
-//                Button("不允许", role: .destructive) {
-//                    UserDefaults.standard.set(false, forKey: "allowAbyssDataCollection")
-//                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
-//                }
-//                Button("允许", role: .cancel, action: {
-//                    UserDefaults.standard.set(true, forKey: "allowAbyssDataCollection")
-//                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
-//                })
-//            } message: {
-//                Text("我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。您的隐私非常重要，我们不会收集包括UID在内的敏感信息。")
-//            }
+            .onAppear { checkIfAllowAbyssDataCollection() }
+            .alert("是否允许我们收集您的深渊数据？", isPresented: $askAllowAbyssDataCollectionAlert) {
+                Button("不允许", role: .destructive) {
+                    UserDefaults.standard.set(false, forKey: "allowAbyssDataCollection")
+                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
+                }
+                Button("允许", role: .cancel, action: {
+                    UserDefaults.standard.set(true, forKey: "allowAbyssDataCollection")
+                    UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
+                })
+            } message: {
+                Text("我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。您的隐私非常重要，我们不会收集包括UID在内的敏感信息。")
+            }
+            .onChange(of: scenePhase, perform: { newPhase in
+                switch newPhase {
+                case .active:
+                    withAnimation {
+                        DispatchQueue.main.async {
+                            if let account = account { viewModel.refreshPlayerDetail(for: account) }
+                            viewModel.refreshAbyssAndBasicInfo()
+                            viewModel.refreshLedgerData()
+                        }
+                    }
+                default:
+                    break
+                }
+            })
         }
         .navigationViewStyle(.stack)
     }
@@ -252,7 +267,7 @@ struct ToolsView: View {
                             } else {
                                 ProgressView()
                                     .onTapGesture {
-                                        viewModel.refreshAbyssDetail()
+                                        viewModel.refreshAbyssAndBasicInfo()
                                     }
                             }
                         }
@@ -366,8 +381,10 @@ struct ToolsView: View {
                         switch abyssDataViewSelection {
                         case .thisTerm:
                             AbyssShareView(data: thisAbyssData, charMap: viewModel.charMap!)
+                                .environment(\.locale, .init(identifier: Locale.current.identifier))
                         case .lastTerm:
                             AbyssShareView(data: lastAbyssData, charMap: viewModel.charMap!)
+                                .environment(\.locale, .init(identifier: Locale.current.identifier))
                         }
                     }
                 }
@@ -484,44 +501,23 @@ struct ToolsView: View {
 
     @ViewBuilder
     func toolsSection() -> some View {
-//        Section {
-//            NavigationLink {
-//                AbyssDataCollectionView()
-//            } label: {
-//                Label {
-//                    Text("深渊统计")
-//                } icon: {
-//                    Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
-//                }
-//            }
-//        }
+        Section {
+            NavigationLink {
+                AbyssDataCollectionView()
+            } label: {
+                Label {
+                    Text("深渊统计")
+                } icon: {
+                    Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
+                }
+            }
+        }
         Section {
             #if DEBUG
-            Button("encode data") {
-                if let account = account {
-                    if let abyssData = AbyssData(account: account, which: .this) {
-                        let encoder = JSONEncoder()
-                        encoder.outputFormatting = .sortedKeys
-                        let data = try! encoder.encode(abyssData)
-                        let stringData = String(data: data, encoding: .utf8)!
-                        print(stringData)
-                        let dseed = String(Int.random(in: 0...999999))
-                        let salt = "2f2d1f9e00719112e88d92d98165f9aa"
-                        let ds = (stringData.sha256 + salt).sha256
-                        print("ds=\(ds)")
-                    }
-                    if let avatarHoldingData = AvatarHoldingData(account: account, which: .this) {
-                        let encoder = JSONEncoder()
-                        encoder.outputFormatting = .sortedKeys
-                        let data = try! encoder.encode(avatarHoldingData)
-                        let stringData = String(data: data, encoding: .utf8)!
-                        print(stringData)
-                        let dseed = String(Int.random(in: 0...999999))
-                        let salt = "2f2d1f9e00719112e88d92d98165f9aa"
-                        let ds = (stringData.sha256 + salt).sha256
-                        print("ds=\(ds)")
-                    }
-                }
+            Button("send data") {
+                UserDefaults.standard.set([String](), forKey: "hasUploadedAbyssDataAccountAndSeasonMD5")
+                UserDefaults.standard.set([String](), forKey: "hasUploadedAvatarHoldingDataMD5")
+                viewModel.refreshAbyssAndBasicInfo()
             }
             #endif
             NavigationLink(destination: GenshinDictionary()) {
@@ -603,6 +599,7 @@ private struct LedgerSheetView: View {
             }
             .toolbarSavePhotoButtonInIOS16(title: "保存本月原石账簿图片".localized, placement: .navigationBarLeading) {
                 LedgerShareView(data: data)
+                    .environment(\.locale, .init(identifier: Locale.current.identifier))
             }
         }
     }

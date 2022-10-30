@@ -169,8 +169,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
                             
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
                             
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -530,8 +530,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -640,8 +640,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
                             
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
                             
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -726,8 +726,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
 //                            decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -939,8 +939,8 @@ struct HttpMethod<T: Codable> {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -1168,8 +1168,8 @@ struct HttpMethod<T: Codable> {
                                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                             }
 
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
+//                            print(dictionary ?? "None")
 
                             do {
                                 let requestResult = try decoder.decode(T.self, from: data)
@@ -1224,22 +1224,10 @@ struct HttpMethod<T: Codable> {
                 request.allHTTPHeaderFields = [
                     "Accept-Encoding": "gzip, deflate, br",
                     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-                    "Accept": "application/json, text/plain, */*",
+                    "Accept": "*/*",
                     "Connection": "keep-alive",
+                    "Content-Type": "application/json"
                 ]
-                func get_language_code() -> String {
-                    let languageCode = Locale.current.languageCode ?? "en-us"
-                    print(languageCode)
-                    if languageCode == "zh" {
-                        return "zh-cn"
-                    } else if languageCode == "en" {
-                        return "en-us"
-                    } else if languageCode == "ja" {
-                        return "ja-jp"
-                    } else {
-                        return languageCode
-                    }
-                }
 
                 request.setValue("Genshin-Pizza-Helper/2.0", forHTTPHeaderField: "User-Agent")
                 for header in headersDict {
@@ -1259,6 +1247,9 @@ struct HttpMethod<T: Codable> {
                     request.httpBody = body
                     request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
                 }
+//                print(request)
+//                print(request.allHTTPHeaderFields!)
+//                print(String(data: request.httpBody!, encoding: .utf8)!)
                 // 开始请求
                 URLSession.shared.dataTask(
                     with: request
@@ -1283,15 +1274,21 @@ struct HttpMethod<T: Codable> {
                             return
                         }
                         DispatchQueue.main.async {
+                            let stringData = String(data: data, encoding: .utf8)!
+                            print(stringData)
+                            let data = stringData.replacingOccurrences(of: "\"NaN\"", with: "0").data(using: .utf8)!
                             let decoder = JSONDecoder()
                             if baseHost != "http://81.70.76.222" {
                                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                             }
-
-                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-                            print(dictionary ?? "None")
+                            guard let response = response as? HTTPURLResponse else {
+                                completion(.failure(.responseError))
+                                return
+                            }
+                            print(response.statusCode)
 
                             do {
+
                                 let requestResult = try decoder.decode(T.self, from: data)
                                 completion(.success(requestResult))
                             } catch {
