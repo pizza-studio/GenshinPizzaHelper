@@ -244,7 +244,7 @@ struct AbyssDataCollectionView: View {
     }
 }
 
-struct ShowAvatarPercentageView: View {
+private struct ShowAvatarPercentageView: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     var result: FetchHomeModelResult<AvatarPercentageModel>? {
@@ -315,7 +315,7 @@ struct ShowAvatarPercentageView: View {
 }
 
 @available(iOS 16.0, *)
-struct ShowAvatarPercentageShare: View {
+private struct ShowAvatarPercentageShare: View {
     let avatars: [AvatarPercentageModel.Avatar]
     let charMap: [String : ENCharacterMap.Character]
     let charLoc: [String : String]
@@ -365,7 +365,7 @@ struct ShowAvatarPercentageShare: View {
     }
 }
 
-struct ShowTeamPercentageView: View {
+private struct ShowTeamPercentageView: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     var result: TeamUtilizationDataFetchModelResult? {
@@ -433,7 +433,7 @@ struct ShowTeamPercentageView: View {
     }
 }
 
-struct ShowTeamPercentageShare: View {
+private struct ShowTeamPercentageShare: View {
     let teams: [TeamUtilizationData.Team]
     let charMap: [String : ENCharacterMap.Character]
     let charLoc: [String : String]
@@ -486,7 +486,7 @@ struct ShowTeamPercentageShare: View {
     }
 }
 
-struct AvatarHoldingParamsSettingBar: View {
+private struct AvatarHoldingParamsSettingBar: View {
     @Binding var params: AvatarHoldingAPIParameters
 
     var body: some View {
@@ -530,7 +530,7 @@ struct AvatarHoldingAPIParameters {
     }
 }
 
-struct FullStarAvatarHoldingParamsSettingBar: View {
+private struct FullStarAvatarHoldingParamsSettingBar: View {
     @Binding var params: FullStarAPIParameters
 
     var body: some View {
@@ -574,7 +574,7 @@ struct FullStarAPIParameters {
     }
 }
 
-struct UtilizationParasSettingBar: View {
+private struct UtilizationParasSettingBar: View {
     @Binding var params: UtilizationAPIParameters
 
     var body: some View {
@@ -630,7 +630,7 @@ struct UtilizationAPIParameters {
     }
 }
 
-struct TeamUtilizationParasSettingBar: View {
+private struct TeamUtilizationParasSettingBar: View {
     @Binding var params: TeamUtilizationAPIParameters
 
     var body: some View {
@@ -706,7 +706,7 @@ struct TeamUtilizationAPIParameters {
 }
 
 typealias AbyssSeason = Int
-extension AbyssSeason {
+private extension AbyssSeason {
     static func from(_ date: Date) -> Self {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMM"
@@ -790,7 +790,7 @@ enum ServerChoice {
     }
 }
 
-extension Date {
+private extension Date {
     func yyyyMM() -> Int {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMM"
