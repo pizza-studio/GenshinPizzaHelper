@@ -112,11 +112,14 @@ struct AbyssDataCollectionView: View {
         VStack {
             switch abyssDataCollectionViewModel.showingType {
             case .abyssAvatarsUtilization, .holdingRate, .fullStarHoldingRate:
-                ShowAvatarPercentageView().environmentObject(abyssDataCollectionViewModel)
+                ShowAvatarPercentageView()
             case .teamUtilization:
-                ShowTeamPercentageView().environmentObject(abyssDataCollectionViewModel)
+                ShowTeamPercentageView()
             }
         }
+        .environmentObject(abyssDataCollectionViewModel)
+        .listStyle(.insetGrouped)
+        .hideTabBar()
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Menu {
@@ -282,7 +285,7 @@ struct ShowTeamPercentageView: View {
             } else {
                 ProgressView()
             }
-        }.listStyle(.insetGrouped)
+        }
     }
 }
 

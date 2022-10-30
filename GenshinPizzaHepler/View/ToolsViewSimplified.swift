@@ -454,6 +454,17 @@ struct ToolsViewSimplified: View {
     @ViewBuilder
     func toolsSection() -> some View {
         Section {
+            NavigationLink {
+                AbyssDataCollectionView()
+            } label: {
+                Label {
+                    Text("深渊统计")
+                } icon: {
+                    Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
+                }
+            }
+        }
+        Section {
             mapNavigationLink()
             Link(destination: isInstallation(urlString: "aliceworkshop://") ? URL(string: "aliceworkshop://app/import?uid=\(account?.config.uid ?? "")")! : URL(string: "https://apps.apple.com/us/app/id1620751192")!) {
                 VStack(alignment: .leading) {
