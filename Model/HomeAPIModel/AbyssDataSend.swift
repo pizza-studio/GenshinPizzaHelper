@@ -129,7 +129,7 @@ extension Array where Element == AbyssData.SubmitDetailModel {
             floor.levels.flatMap { level in
                 level.battles.compactMap { battle in
                     if floor.gainAllStar {
-                        return .init(floor: floor.index, room: level.index, half: battle.index, usedChars: battle.avatars.map { $0.id })
+                        return .init(floor: floor.index, room: level.index, half: battle.index, usedChars: battle.avatars.sorted(by: { $0.id < $1.id }).map { $0.id })
                     } else { return nil }
                 }
             }
