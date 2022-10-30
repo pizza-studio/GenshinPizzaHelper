@@ -500,6 +500,8 @@ struct ToolsView: View {
         Section {
             #if DEBUG
             Button("send data") {
+                UserDefaults.standard.set([String](), forKey: "hasUploadedAbyssDataAccountAndSeasonMD5")
+                UserDefaults.standard.set([String](), forKey: "hasUploadedAvatarHoldingDataMD5")
                 viewModel.refreshAbyssAndBasicInfo()
             }
             #endif
