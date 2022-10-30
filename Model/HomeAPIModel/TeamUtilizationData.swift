@@ -9,9 +9,11 @@ import Foundation
 
 struct TeamUtilizationData: Codable {
     let totalUsers: Int
-    let teams: [Avatar]
+    let teams: [Team]
+    let teamsFH: [Team]
+    let teamsSH: [Team]
 
-    struct Avatar: Codable {
+    struct Team: Codable {
         let team: [Int]
         let percentage: Double
     }

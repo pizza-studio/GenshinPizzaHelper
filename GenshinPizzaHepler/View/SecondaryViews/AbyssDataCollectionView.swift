@@ -241,8 +241,18 @@ struct ShowTeamPercentageView: View {
                 switch result {
                 case .success(let data):
                     let data = data.data
+                    let teams: [TeamUtilizationData.Team] = {
+                        switch abyssDataCollectionViewModel.teamUtilizationParams.half {
+                        case .all:
+                            return data.teams
+                        case .firstHalf:
+                            return data.teamsFH
+                        case .secondHalf:
+                            return data.teamsSH
+                        }
+                    }()
                     Section {
-                        ForEach(data.teams.sorted(by: { $0.percentage > $1.percentage }), id: \.team.hashValue) { team in
+                        ForEach(teams.sorted(by: { $0.percentage > $1.percentage }), id: \.team.hashValue) { team in
                             HStack {
                                 Label {
                                     Text("")
@@ -262,7 +272,6 @@ struct ShowTeamPercentageView: View {
                                 Spacer()
                                 Text(percentageFormatter.string(from: (team.percentage) as NSNumber)!)
                             }
-//                            .padding(.vertical, 1)
                         }
                     } header: {
                         Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
@@ -372,7 +381,7 @@ struct UtilizationParasSettingBar: View {
         }
         Spacer()
         Menu {
-            ForEach(9...12, id: \.self) { number in
+            ForEach((9...12).reversed(), id: \.self) { number in
                 Button("\(number)层") {
                     params.floor = number
                 }
@@ -424,7 +433,7 @@ struct TeamUtilizationParasSettingBar: View {
         }
         Spacer()
         Menu {
-            ForEach(9...12, id: \.self) { number in
+            ForEach((9...12).reversed(), id: \.self) { number in
                 Button("\(number)层") {
                     params.floor = number
                 }
@@ -468,11 +477,12 @@ struct TeamUtilizationAPIParameters {
     func describe() -> String {
         "·仅包含满星玩家"
     }
-    var half: Half = .up
+    var half: Half = .all
 
     enum Half: String, CaseIterable {
-        case up = "上半"
-        case done = "下半"
+        case all = "整层"
+        case secondHalf = "下半"
+        case firstHalf = "上半"
     }
 }
 
