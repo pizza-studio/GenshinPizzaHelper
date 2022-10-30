@@ -117,6 +117,7 @@ struct AbyssDataCollectionView: View {
                 ShowTeamPercentageView().environmentObject(abyssDataCollectionViewModel)
             }
         }
+        .hideTabBar()
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Menu {
