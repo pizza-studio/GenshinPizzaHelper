@@ -15,9 +15,10 @@ class AbyssDataCollectionViewModel: ObservableObject {
     }
 
     enum ShowingData: String, CaseIterable, Identifiable {
-        case abyssAvatarsUtilization = "角色深渊使用率"
+        case abyssAvatarsUtilization = "深渊角色使用率"
         case fullStarHoldingRate = "满星玩家持有率"
         case holdingRate = "持有率"
+        case teamUtilization = "深渊队伍使用率"
 
         var id: String { self.rawValue }
     }
@@ -61,6 +62,17 @@ class AbyssDataCollectionViewModel: ObservableObject {
         }
     }
 
+    // MARK: - 深渊队伍使用率
+    @Published var teamUtilizationDataFetchModelResult: TeamUtilizationDataFetchModelResult?
+    @Published var teamUtilizationParams: UtilizationAPIParameters = .init() {
+        didSet { getTeamUtilizationResult() }
+    }
+    private func getTeamUtilizationResult() {
+        API.PSAServer.fetchTeamUtilizationData(season: teamUtilizationParams.season, server: teamUtilizationParams.server, floor: teamUtilizationParams.floor) { result in
+            self.teamUtilizationDataFetchModelResult = result
+        }
+    }
+
     init() {
         showingType = .abyssAvatarsUtilization
         getData()
@@ -74,6 +86,8 @@ class AbyssDataCollectionViewModel: ObservableObject {
             return holdingParam.describe()
         case .abyssAvatarsUtilization:
             return utilizationParams.describe()
+        case .teamUtilization:
+            return teamUtilizationParams.describe()
         }
     }
 
@@ -85,6 +99,8 @@ class AbyssDataCollectionViewModel: ObservableObject {
             getAvatarHoldingResult()
         case .fullStarHoldingRate:
             getFullStarHoldingResult()
+        case .teamUtilization:
+            getTeamUtilizationResult()
         }
     }
 }
@@ -97,6 +113,8 @@ struct AbyssDataCollectionView: View {
             switch abyssDataCollectionViewModel.showingType {
             case .abyssAvatarsUtilization, .holdingRate, .fullStarHoldingRate:
                 ShowAvatarPercentageView().environmentObject(abyssDataCollectionViewModel)
+            case .teamUtilization:
+                ShowTeamPercentageView().environmentObject(abyssDataCollectionViewModel)
             }
         }
         .toolbar {
@@ -124,6 +142,8 @@ struct AbyssDataCollectionView: View {
                     FullStarAvatarHoldingParamsSettingBar(params: $abyssDataCollectionViewModel.fullStarHoldingParam)
                 case .abyssAvatarsUtilization:
                     UtilizationParasSettingBar(params: $abyssDataCollectionViewModel.utilizationParams)
+                case .teamUtilization:
+                    UtilizationParasSettingBar(params: $abyssDataCollectionViewModel.teamUtilizationParams)
                 }
             }
         }
@@ -141,6 +161,8 @@ struct ShowAvatarPercentageView: View {
             return abyssDataCollectionViewModel.avatarHoldingResult
         case .abyssAvatarsUtilization:
             return abyssDataCollectionViewModel.utilizationDataFetchModelResult
+        default:
+            return nil
         }
     }
 
@@ -161,7 +183,7 @@ struct ShowAvatarPercentageView: View {
                     Section {
                         ForEach(data.avatars.sorted(by: {
                             switch abyssDataCollectionViewModel.showingType {
-                            case .abyssAvatarsUtilization:
+                            case .abyssAvatarsUtilization, .teamUtilization:
                                 return ($0.percentage ?? 0) > ($1.percentage ?? 0)
                             case .holdingRate, .fullStarHoldingRate:
                                 return $0.charId < $1.charId
@@ -178,7 +200,7 @@ struct ShowAvatarPercentageView: View {
                                                 .scaledToFill()
                                                 .offset(x: -30/3)
                                         )
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: 40, height: 40)
                                     .clipShape(Circle())
                                 }
                                 Spacer()
@@ -186,12 +208,6 @@ struct ShowAvatarPercentageView: View {
                             }
                         }
                     } header: {
-//                        let dateString: String = {
-//                            let formatter = DateFormatter()
-//                            formatter.dateStyle = .medium
-//                            formatter.timeStyle = .medium
-//                            return formatter.string(from: Date())
-//                        }()
                         Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
                     }
                 case .failure(let error):
@@ -203,6 +219,59 @@ struct ShowAvatarPercentageView: View {
         }
     }
 }
+
+struct ShowTeamPercentageView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
+    var result: TeamUtilizationDataFetchModelResult? {
+        abyssDataCollectionViewModel.teamUtilizationDataFetchModelResult
+    }
+
+    let percentageFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+
+    var body: some View {
+        List {
+            if let result = result, let _ = viewModel.charLoc, let charMap = viewModel.charMap {
+                switch result {
+                case .success(let data):
+                    let data = data.data
+                    Section {
+                        ForEach(data.teams, id: \.team.hashValue) { team in
+                            HStack {
+                                ForEach(team.team.sorted(by: >), id: \.self) { avatarId in
+                                    let char = charMap["\(avatarId)"]
+                                    EnkaWebIcon(iconString: char?.iconString ?? "")
+                                        .background(
+                                            EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                                .scaledToFill()
+                                                .offset(x: -30/3)
+                                        )
+                                    .frame(width: 30, height: 30)
+                                    .clipShape(Circle())
+                                }
+                                Spacer()
+                                Text(percentageFormatter.string(from: (team.percentage) as NSNumber)!)
+                            }
+                        }
+                    } header: {
+                        Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
+                    }
+                case .failure(let error):
+                    Text(error.localizedDescription)
+                }
+            } else {
+                ProgressView()
+            }
+        }
+    }
+}
+
 
 struct AvatarHoldingParamsSettingBar: View {
     @Binding var params: AvatarHoldingAPIParameters

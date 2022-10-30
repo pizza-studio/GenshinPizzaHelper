@@ -234,5 +234,55 @@ extension API {
                     }
                 }
         }
+
+        /// 深渊角色使用率
+        static func fetchTeamUtilizationData(
+            season: Int? = nil,
+            server: Server? = nil,
+            floor: Int = 12,
+            _ completion: @escaping (TeamUtilizationDataFetchModelResult) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "/abyss/utilization/teams"
+
+            var paraDict = [String: String]()
+            if let season = season {
+                paraDict.updateValue(String(describing: season), forKey: "season")
+            }
+
+            paraDict.updateValue(String(describing: floor), forKey: "floor")
+            if let server = server {
+                paraDict.updateValue(server.id, forKey: "server")
+            }
+
+            // 请求
+            HttpMethod<TeamUtilizationDataFetchModel>
+                .homeServerRequest(
+                    .get,
+                    urlStr: urlStr,
+                    parasDict: paraDict
+                ) { result in
+                    switch result {
+
+                    case .success(let requestResult):
+                        print("request succeed")
+//                        let userData = requestResult.data
+//                        let retcode = requestResult.retCode
+//                        let message = requestResult.message
+
+                        switch requestResult.retCode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(requestResult))
+                        default:
+                            print("fail")
+                            completion(.failure(.getDataError(requestResult.message)))
+                        }
+
+                    case .failure(let error):
+                        completion(.failure(.getDataError(error.localizedDescription)))
+                    }
+                }
+        }
     }
 }
