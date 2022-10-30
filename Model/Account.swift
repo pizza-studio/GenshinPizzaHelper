@@ -127,7 +127,7 @@ extension Account {
             let data = try! encoder.encode(avatarHoldingData)
             let md5 = String(data: data, encoding: .utf8)!.md5
             guard !hasUploadedAvatarHoldingDataMD5.contains(md5) else {
-                print("uploadHoldingData ERROR: This holding data has uploaded. Maybe because not full star."); return
+                print("uploadHoldingData ERROR: This holding data has uploaded. "); return
             }
             API.PSAServer.uploadUserData(path: "/user_holding/upload", data: data) { result in
                 switch result {
@@ -152,7 +152,7 @@ extension Account {
                 userDefault.set(hasUploadedAvatarHoldingDataMD5, forKey: "hasUploadedAvatarHoldingDataMD5")
             }
         } else {
-            print("uploadAbyssData ERROR: generate data fail")
+            print("uploadAbyssData ERROR: generate data fail. Maybe because not full star.")
         }
     }
 
@@ -164,7 +164,7 @@ extension Account {
             print("MD5 calculated by \(abyssData.uid)\(abyssData.getLocalAbyssSeason())")
             let md5 = "\(abyssData.uid)\(abyssData.getLocalAbyssSeason())".md5
             guard !hasUploadedAbyssDataAccountAndSeasonMD5.contains(md5) else {
-                print("uploadAbyssData ERROR: This abyss data has uploaded. Maybe because not full star. "); return
+                print("uploadAbyssData ERROR: This abyss data has uploaded.  "); return
             }
             let encoder = JSONEncoder()
             encoder.outputFormatting = .sortedKeys
@@ -196,7 +196,7 @@ extension Account {
                 userDefault.synchronize()
             }
         } else {
-            print("uploadAbyssData ERROR: generate data fail")
+            print("uploadAbyssData ERROR: generate data fail. Maybe because not full star.")
         }
     }
     #endif
