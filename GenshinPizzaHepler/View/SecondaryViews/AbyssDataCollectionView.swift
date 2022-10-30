@@ -443,10 +443,10 @@ struct TeamUtilizationParasSettingBar: View {
         Spacer()
         Menu {
             ForEach(TeamUtilizationAPIParameters.Half.allCases, id: \.rawValue) { half in
-                Button("\(half.rawValue)") { params.half = half }
+                Button("\(half.rawValue.localized)") { params.half = half }
             }
         } label: {
-            Text(params.half.rawValue)
+            Text(params.half.rawValue.localized)
         }
     }
 }
