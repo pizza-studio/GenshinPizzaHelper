@@ -91,6 +91,32 @@ class AbyssDataCollectionViewModel: ObservableObject {
         }
     }
 
+    var totalDataCount: Int {
+        switch showingType {
+        case .fullStarHoldingRate:
+            return (try? fullStaAvatarHoldingResult?.get().data.totalUsers) ?? 0
+        case .holdingRate:
+            return (try? avatarHoldingResult?.get().data.totalUsers) ?? 0
+        case .abyssAvatarsUtilization:
+            return (try? utilizationDataFetchModelResult?.get().data.totalUsers) ?? 0
+        case .teamUtilization:
+            return (try? teamUtilizationDataFetchModelResult?.get().data.totalUsers) ?? 0
+        }
+    }
+
+    var paramsDetailDescription: String {
+        switch showingType {
+        case .fullStarHoldingRate:
+            return fullStarHoldingParam.detail()
+        case .holdingRate:
+            return holdingParam.detail()
+        case .abyssAvatarsUtilization:
+            return utilizationParams.detail()
+        case .teamUtilization:
+            return teamUtilizationParams.detail()
+        }
+    }
+
     func getData() {
         switch showingType {
         case .abyssAvatarsUtilization:
@@ -106,6 +132,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
 }
 
 struct AbyssDataCollectionView: View {
+    @EnvironmentObject var viewModel: ViewModel
     @StateObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel = .init()
 
     var body: some View {
@@ -149,6 +176,70 @@ struct AbyssDataCollectionView: View {
                     TeamUtilizationParasSettingBar(params: $abyssDataCollectionViewModel.teamUtilizationParams)
                 }
             }
+        }
+        .toolbarSavePhotoButtonInIOS16 {
+            shareView()
+        }
+    }
+
+    @ViewBuilder
+    func shareView() -> some View {
+        if #available(iOS 16, *), let charMap = viewModel.charMap, let charLoc = viewModel.charLoc {
+            VStack {
+                Text(abyssDataCollectionViewModel.showingType.rawValue.localized)
+                    .font(.title)
+                Group {
+                    switch abyssDataCollectionViewModel.showingType {
+                    case .holdingRate:
+                        if let avatars = try? abyssDataCollectionViewModel.avatarHoldingResult?.get().data.avatars {
+                            ShowAvatarPercentageShare(avatars: avatars, charMap: charMap, charLoc: charLoc)
+                        }
+
+                    case .fullStarHoldingRate:
+                        if let avatars = try? abyssDataCollectionViewModel.fullStaAvatarHoldingResult?.get().data.avatars {
+                            ShowAvatarPercentageShare(avatars: avatars, charMap: charMap, charLoc: charLoc)
+                        }
+
+                    case .abyssAvatarsUtilization:
+                        if let avatars = try? abyssDataCollectionViewModel.utilizationDataFetchModelResult?.get().data.avatars {
+                            ShowAvatarPercentageShare(avatars: avatars.sorted(by: {$0.percentage ?? 0 > $1.percentage ?? 0}), charMap: charMap, charLoc: charLoc)
+                        }
+                    case .teamUtilization:
+                        if let data = try? abyssDataCollectionViewModel.teamUtilizationDataFetchModelResult?.get().data {
+                            let teams: [TeamUtilizationData.Team] = {
+                                switch abyssDataCollectionViewModel.teamUtilizationParams.half {
+                                case .all:
+                                    return data.teams
+                                case .firstHalf:
+                                    return data.teamsFH
+                                case .secondHalf:
+                                    return data.teamsSH
+                                }
+                            }()
+                            ShowTeamPercentageShare(teams: teams.prefix(32).sorted(by: { $0.percentage > $1.percentage }),
+                                                    charMap: charMap, charLoc: charLoc)
+                        }
+                    }
+                }
+                HStack {
+                    let date: String = {
+                        let formatter = DateFormatter()
+                        formatter.dateStyle = .medium
+                        formatter.timeStyle = .medium
+                        return formatter.string(from: Date())
+                    }()
+                    Text("共统计\(abyssDataCollectionViewModel.totalDataCount)用户\(abyssDataCollectionViewModel.paramsDescription)\n\(abyssDataCollectionViewModel.paramsDetailDescription)\(date)").font(.footnote)
+                        .minimumScaleFactor(0.5)
+                    Spacer()
+                    Image("AppIconHD")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                    Text("原神披萨小助手").bold().font(.footnote)
+                }
+            }
+            .padding()
         }
     }
 }
@@ -223,6 +314,57 @@ struct ShowAvatarPercentageView: View {
     }
 }
 
+@available(iOS 16.0, *)
+struct ShowAvatarPercentageShare: View {
+    let avatars: [AvatarPercentageModel.Avatar]
+    let charMap: [String : ENCharacterMap.Character]
+    let charLoc: [String : String]
+
+    let percentageFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+
+    var eachColumnAvatars: [[AvatarPercentageModel.Avatar]] {
+        let chunkSize: Int = 16 // 每列的角色数
+        return stride(from: 0, to: avatars.count, by: chunkSize).map {
+            Array(avatars[$0..<min($0 + chunkSize, avatars.count)])
+        }
+    }
+
+    var body: some View {
+        HStack(alignment: .top) {
+            ForEach(eachColumnAvatars, id: \.first!.charId) { avatars in
+                Grid(alignment: .leading) {
+                    ForEach(avatars, id: \.charId) { avatar in
+                        let char = charMap["\(avatar.charId)"]
+                        GridRow {
+                            Label {
+                                Text(charLoc["\(char?.NameTextMapHash ?? 0)"] ?? "unknow").fixedSize()
+                            } icon: {
+                                EnkaWebIcon(iconString: char?.iconString ?? "")
+                                    .background(
+                                        EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                            .scaledToFill()
+                                            .offset(x: -30/3)
+                                    )
+                                .frame(width: 30, height: 30)
+                                .clipShape(Circle())
+                            }
+                            Text(percentageFormatter.string(from: (avatar.percentage ?? 0.0) as NSNumber)!)
+                                .fixedSize()
+                                .gridColumnAlignment(.trailing)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct ShowTeamPercentageView: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
@@ -289,6 +431,54 @@ struct ShowTeamPercentageView: View {
     }
 }
 
+struct ShowTeamPercentageShare: View {
+    let teams: [TeamUtilizationData.Team]
+    let charMap: [String : ENCharacterMap.Character]
+    let charLoc: [String : String]
+
+    var eachColumnTeams: [[TeamUtilizationData.Team]] {
+        let chunkSize: Int = 16 // 每列的角色数
+        return stride(from: 0, to: teams.count, by: chunkSize).map {
+            Array(teams[$0..<min($0 + chunkSize, teams.count)])
+        }
+    }
+
+    let percentageFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+
+    var body: some View {
+        HStack {
+            ForEach(eachColumnTeams, id: \.first!.team.first) { teams in
+                VStack {
+                    ForEach(teams.sorted(by: { $0.percentage > $1.percentage }), id: \.team.first!) { team in
+                        HStack {
+                            HStack {
+                                ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
+                                    let char = charMap["\(avatarId)"]
+                                    EnkaWebIcon(iconString: char?.iconString ?? "")
+                                        .background(
+                                            EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                                .scaledToFill()
+                                                .offset(x: -30/3)
+                                        )
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                                }
+                            }
+                            Spacer()
+                            Text(percentageFormatter.string(from: (team.percentage) as NSNumber)!)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 struct AvatarHoldingParamsSettingBar: View {
     @Binding var params: AvatarHoldingAPIParameters
@@ -327,6 +517,10 @@ struct AvatarHoldingAPIParameters {
             return formatter.string(from: date)
         }()
         return "·仅自\(dateString)后提交的数据"
+    }
+
+    func detail() -> String {
+        "\(serverChoice.describe())"
     }
 }
 
@@ -367,6 +561,10 @@ struct FullStarAPIParameters {
 
     func describe() -> String {
         ""
+    }
+
+    func detail() -> String {
+        "\(serverChoice.describe())·\(season.describe())"
     }
 }
 
@@ -418,7 +616,11 @@ struct UtilizationAPIParameters {
     var floor: Int = 12
 
     func describe() -> String {
-        "·仅包含满星玩家"
+        "·仅包含满星玩家·计算方法：角色使用人数/角色拥有人数"
+    }
+
+    func detail() -> String {
+        "\(serverChoice.describe())·\(season.describe())·\(floor)层"
     }
 }
 
@@ -491,6 +693,10 @@ struct TeamUtilizationAPIParameters {
         case secondHalf = "下半"
         case firstHalf = "上半"
     }
+
+    func detail() -> String {
+        "\(serverChoice.describe())·\(season.describe())·\(floor)层·\(half.rawValue.localized)"
+    }
 }
 
 typealias AbyssSeason = Int
@@ -541,7 +747,7 @@ extension AbyssSeason {
                 return "下".localized
             }
         }()
-        return String(seasonString.prefix(6).prefix(4)) + " " + String(seasonString.prefix(6).suffix(2)) + "月" + half
+        return String(seasonString.prefix(6).prefix(4)) + " " + String(seasonString.prefix(6).suffix(2)) + "月".localized + half
     }
 
     static func choices(from date: Date = Date()) -> [AbyssSeason] {
