@@ -16,9 +16,9 @@ class AbyssDataCollectionViewModel: ObservableObject {
 
     enum ShowingData: String, CaseIterable, Identifiable {
         case abyssAvatarsUtilization = "深渊角色使用率"
-        case fullStarHoldingRate = "满星玩家持有率"
-        case holdingRate = "持有率"
         case teamUtilization = "深渊队伍使用率"
+        case fullStarHoldingRate = "满星玩家持有率"
+        case holdingRate = "角色持有率"
 
         var id: String { self.rawValue }
     }
@@ -64,7 +64,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
 
     // MARK: - 深渊队伍使用率
     @Published var teamUtilizationDataFetchModelResult: TeamUtilizationDataFetchModelResult?
-    @Published var teamUtilizationParams: UtilizationAPIParameters = .init() {
+    @Published var teamUtilizationParams: TeamUtilizationAPIParameters = .init() {
         didSet { getTeamUtilizationResult() }
     }
     private func getTeamUtilizationResult() {
@@ -143,7 +143,7 @@ struct AbyssDataCollectionView: View {
                 case .abyssAvatarsUtilization:
                     UtilizationParasSettingBar(params: $abyssDataCollectionViewModel.utilizationParams)
                 case .teamUtilization:
-                    UtilizationParasSettingBar(params: $abyssDataCollectionViewModel.teamUtilizationParams)
+                    TeamUtilizationParasSettingBar(params: $abyssDataCollectionViewModel.teamUtilizationParams)
                 }
             }
         }
@@ -200,7 +200,7 @@ struct ShowAvatarPercentageView: View {
                                                 .scaledToFill()
                                                 .offset(x: -30/3)
                                         )
-                                    .frame(width: 40, height: 40)
+                                    .frame(width: 30, height: 30)
                                     .clipShape(Circle())
                                 }
                                 Spacer()
@@ -237,27 +237,32 @@ struct ShowTeamPercentageView: View {
 
     var body: some View {
         List {
-            if let result = result, let _ = viewModel.charLoc, let charMap = viewModel.charMap {
+            if let result = result, let charMap = viewModel.charMap {
                 switch result {
                 case .success(let data):
                     let data = data.data
                     Section {
-                        ForEach(data.teams, id: \.team.hashValue) { team in
+                        ForEach(data.teams.sorted(by: { $0.percentage > $1.percentage }), id: \.team.hashValue) { team in
                             HStack {
-                                ForEach(team.team.sorted(by: >), id: \.self) { avatarId in
-                                    let char = charMap["\(avatarId)"]
-                                    EnkaWebIcon(iconString: char?.iconString ?? "")
-                                        .background(
-                                            EnkaWebIcon(iconString: char?.namecardIconString ?? "")
-                                                .scaledToFill()
-                                                .offset(x: -30/3)
-                                        )
-                                    .frame(width: 30, height: 30)
-                                    .clipShape(Circle())
+                                Label {
+                                    Text("")
+                                } icon: {
+                                    ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
+                                        let char = charMap["\(avatarId)"]
+                                        EnkaWebIcon(iconString: char?.iconString ?? "")
+                                            .background(
+                                                EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                                    .scaledToFill()
+                                                    .offset(x: -30/3)
+                                            )
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(Circle())
+                                    }
                                 }
                                 Spacer()
                                 Text(percentageFormatter.string(from: (team.percentage) as NSNumber)!)
                             }
+//                            .padding(.vertical, 1)
                         }
                     } header: {
                         Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
@@ -268,7 +273,7 @@ struct ShowTeamPercentageView: View {
             } else {
                 ProgressView()
             }
-        }
+        }.listStyle(.insetGrouped)
     }
 }
 
@@ -405,7 +410,71 @@ struct UtilizationAPIParameters {
     }
 }
 
+struct TeamUtilizationParasSettingBar: View {
+    @Binding var params: TeamUtilizationAPIParameters
 
+    var body: some View {
+        Menu {
+            Button("所有服务器") { params.serverChoice = .all }
+            ForEach(Server.allCases, id: \.rawValue) { server in
+                Button("\(server.rawValue)") { params.serverChoice = .server(server) }
+            }
+        } label: {
+            Text(params.serverChoice.describe())
+        }
+        Spacer()
+        Menu {
+            ForEach(9...12, id: \.self) { number in
+                Button("\(number)层") {
+                    params.floor = number
+                }
+            }
+        } label: {
+            Text("\(params.floor)层")
+        }
+        Spacer()
+        Menu {
+            ForEach(AbyssSeason.choices(), id: \.hashValue) { season in
+                Button("\(season.describe())") { params.season = season }
+            }
+        } label: {
+            Text(params.season.describe())
+        }
+        Spacer()
+        Menu {
+            ForEach(TeamUtilizationAPIParameters.Half.allCases, id: \.rawValue) { half in
+                Button("\(half.rawValue)") { params.half = half }
+            }
+        } label: {
+            Text(params.half.rawValue)
+        }
+    }
+}
+
+struct TeamUtilizationAPIParameters {
+    var season: AbyssSeason = .from(Date())
+    var server: Server? {
+        switch serverChoice {
+        case .all:
+            return nil
+        case .server(let server):
+            return server
+        }
+    }
+    var serverChoice: ServerChoice = .all
+
+    var floor: Int = 12
+
+    func describe() -> String {
+        "·仅包含满星玩家"
+    }
+    var half: Half = .up
+
+    enum Half: String, CaseIterable {
+        case up = "上半"
+        case done = "下半"
+    }
+}
 
 typealias AbyssSeason = Int
 extension AbyssSeason {
