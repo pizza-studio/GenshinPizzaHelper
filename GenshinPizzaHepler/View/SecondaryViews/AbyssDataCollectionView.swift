@@ -470,7 +470,6 @@ struct ShowTeamPercentageShare: View {
                                     .clipShape(Circle())
                                 }
                             }
-                            Spacer()
                             Text(percentageFormatter.string(from: (team.percentage) as NSNumber)!)
                         }
                     }
