@@ -130,6 +130,8 @@ extension Account {
             guard !hasUploadedAvatarHoldingDataMD5.contains(md5) else {
                 print("uploadHoldingData ERROR: This holding data has uploaded. "); return
             }
+            guard !UPLOAD_HOLDING_DATA_LOCKED else { print("uploadHoldingDataLocked is locked"); return }
+            lock()
             API.PSAServer.uploadUserData(path: "/user_holding/upload", data: data) { result in
                 switch result {
                 case .success(_):
@@ -147,13 +149,21 @@ extension Account {
                         break
                     }
                 }
+                unlock()
             }
             func saveMD5() {
                 hasUploadedAvatarHoldingDataMD5.append(md5)
                 userDefault.set(hasUploadedAvatarHoldingDataMD5, forKey: "hasUploadedAvatarHoldingDataMD5")
             }
+
         } else {
             print("uploadAbyssData ERROR: generate data fail. Maybe because not full star.")
+        }
+        func unlock() {
+            UPLOAD_HOLDING_DATA_LOCKED = false
+        }
+        func lock() {
+            UPLOAD_HOLDING_DATA_LOCKED = true
         }
     }
 
@@ -172,6 +182,8 @@ extension Account {
             encoder.outputFormatting = .sortedKeys
             let data = try! encoder.encode(abyssData)
             print(String(data: data, encoding: .utf8)!)
+            guard !UPLOAD_ABYSS_DATA_LOCKED else { print("uploadAbyssDataLocked is locked"); return }
+            lock()
             API.PSAServer.uploadUserData(path: "/abyss/upload", data: data) { result in
                 switch result {
                 case .success(_):
@@ -190,6 +202,7 @@ extension Account {
                     print(md5)
                     print(hasUploadedAbyssDataAccountAndSeasonMD5)
                 }
+                unlock()
             }
             func saveMD5() {
                 hasUploadedAbyssDataAccountAndSeasonMD5.append(md5)
@@ -199,6 +212,12 @@ extension Account {
             }
         } else {
             print("uploadAbyssData ERROR: generate data fail. Maybe because not full star.")
+        }
+        func unlock() {
+            UPLOAD_ABYSS_DATA_LOCKED = false
+        }
+        func lock() {
+            UPLOAD_ABYSS_DATA_LOCKED = true
         }
     }
     #endif

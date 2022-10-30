@@ -17,7 +17,7 @@ extension API {
         ) {
             var headers = [String: String]()
             let stringData = String(data: data, encoding: .utf8)!
-            let salt = "2f2d1f9e00719112e88d92d98165f9aa"
+            let salt = AppConfig.homeAPISalt
             let ds = (stringData.sha256 + salt).sha256
             headers.updateValue(ds, forKey: "ds")
 
