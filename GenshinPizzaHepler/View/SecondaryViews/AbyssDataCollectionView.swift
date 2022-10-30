@@ -228,7 +228,7 @@ struct AbyssDataCollectionView: View {
                         formatter.timeStyle = .medium
                         return formatter.string(from: Date())
                     }()
-                    Text("共统计\(abyssDataCollectionViewModel.totalDataCount)用户\(abyssDataCollectionViewModel.paramsDescription)\n\(abyssDataCollectionViewModel.paramsDetailDescription)\(date)").font(.footnote)
+                    Text("共统计\(abyssDataCollectionViewModel.totalDataCount)用户\(abyssDataCollectionViewModel.paramsDescription)\n\(abyssDataCollectionViewModel.paramsDetailDescription)·生成于\(date)").font(.footnote)
                         .minimumScaleFactor(0.5)
                     Spacer()
                     Image("AppIconHD")
@@ -244,7 +244,7 @@ struct AbyssDataCollectionView: View {
     }
 }
 
-struct ShowAvatarPercentageView: View {
+private struct ShowAvatarPercentageView: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     var result: FetchHomeModelResult<AvatarPercentageModel>? {
@@ -315,7 +315,7 @@ struct ShowAvatarPercentageView: View {
 }
 
 @available(iOS 16.0, *)
-struct ShowAvatarPercentageShare: View {
+private struct ShowAvatarPercentageShare: View {
     let avatars: [AvatarPercentageModel.Avatar]
     let charMap: [String : ENCharacterMap.Character]
     let charLoc: [String : String]
@@ -365,7 +365,7 @@ struct ShowAvatarPercentageShare: View {
     }
 }
 
-struct ShowTeamPercentageView: View {
+private struct ShowTeamPercentageView: View {
     @EnvironmentObject var viewModel: ViewModel
     @EnvironmentObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     var result: TeamUtilizationDataFetchModelResult? {
@@ -397,25 +397,27 @@ struct ShowTeamPercentageView: View {
                         }
                     }()
                     Section {
-                        ForEach(teams.sorted(by: { $0.percentage > $1.percentage }), id: \.team.hashValue) { team in
+                        let teams = teams.sorted(by: { $0.percentage > $1.percentage })
+                        ForEach(Array(zip(teams.indices, teams)), id: \.0) { index, team in
                             HStack {
-                                Label {
-                                    Text("")
-                                } icon: {
-                                    ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
-                                        let char = charMap["\(avatarId)"]
-                                        EnkaWebIcon(iconString: char?.iconString ?? "")
-                                            .background(
-                                                EnkaWebIcon(iconString: char?.namecardIconString ?? "")
-                                                    .scaledToFill()
-                                                    .offset(x: -30/3)
-                                            )
-                                        .frame(width: 40, height: 40)
-                                        .clipShape(Circle())
-                                    }
+
+                                ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
+                                    let char = charMap["\(avatarId)"]
+                                    EnkaWebIcon(iconString: char?.iconString ?? "")
+                                        .background(
+                                            EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                                .scaledToFill()
+                                                .offset(x: -30/3)
+                                        )
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
                                 }
                                 Spacer()
+
                                 Text(percentageFormatter.string(from: (team.percentage) as NSNumber)!)
+                                Image(systemName: "\(index+1).circle")
+                                    .font(.system(size: 14, weight: .light))
+
                             }
                         }
                     } header: {
@@ -431,15 +433,17 @@ struct ShowTeamPercentageView: View {
     }
 }
 
-struct ShowTeamPercentageShare: View {
+private struct ShowTeamPercentageShare: View {
     let teams: [TeamUtilizationData.Team]
     let charMap: [String : ENCharacterMap.Character]
     let charLoc: [String : String]
 
-    var eachColumnTeams: [[TeamUtilizationData.Team]] {
+    var eachColumnTeams: [[(Int, TeamUtilizationData.Team)]] {
         let chunkSize: Int = 16 // 每列的角色数
-        return stride(from: 0, to: teams.count, by: chunkSize).map {
-            Array(teams[$0..<min($0 + chunkSize, teams.count)])
+        let teams = teams.sorted(by: { $0.percentage > $1.percentage })
+        let tuples = Array(zip(teams.indices, teams))
+        return stride(from: 0, to: tuples.count, by: chunkSize).map {
+            Array(tuples[$0..<min($0 + chunkSize, tuples.count)])
         }
     }
 
@@ -453,10 +457,13 @@ struct ShowTeamPercentageShare: View {
 
     var body: some View {
         HStack {
-            ForEach(eachColumnTeams, id: \.first!.team.first) { teams in
+            ForEach(eachColumnTeams, id: \.first!.0) { teams in
                 VStack {
-                    ForEach(teams.sorted(by: { $0.percentage > $1.percentage }), id: \.team.first!) { team in
+                    ForEach(teams, id: \.0) { index, team in
                         HStack {
+                            Image(systemName: "\(index+1).circle")
+                                .font(.system(size: 14, weight: .light))
+                                .foregroundColor(.gray)
                             HStack {
                                 ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
                                     let char = charMap["\(avatarId)"]
@@ -470,7 +477,6 @@ struct ShowTeamPercentageShare: View {
                                     .clipShape(Circle())
                                 }
                             }
-                            Spacer()
                             Text(percentageFormatter.string(from: (team.percentage) as NSNumber)!)
                         }
                     }
@@ -480,7 +486,7 @@ struct ShowTeamPercentageShare: View {
     }
 }
 
-struct AvatarHoldingParamsSettingBar: View {
+private struct AvatarHoldingParamsSettingBar: View {
     @Binding var params: AvatarHoldingAPIParameters
 
     var body: some View {
@@ -524,7 +530,7 @@ struct AvatarHoldingAPIParameters {
     }
 }
 
-struct FullStarAvatarHoldingParamsSettingBar: View {
+private struct FullStarAvatarHoldingParamsSettingBar: View {
     @Binding var params: FullStarAPIParameters
 
     var body: some View {
@@ -568,7 +574,7 @@ struct FullStarAPIParameters {
     }
 }
 
-struct UtilizationParasSettingBar: View {
+private struct UtilizationParasSettingBar: View {
     @Binding var params: UtilizationAPIParameters
 
     var body: some View {
@@ -624,7 +630,7 @@ struct UtilizationAPIParameters {
     }
 }
 
-struct TeamUtilizationParasSettingBar: View {
+private struct TeamUtilizationParasSettingBar: View {
     @Binding var params: TeamUtilizationAPIParameters
 
     var body: some View {
@@ -700,7 +706,7 @@ struct TeamUtilizationAPIParameters {
 }
 
 typealias AbyssSeason = Int
-extension AbyssSeason {
+private extension AbyssSeason {
     static func from(_ date: Date) -> Self {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMM"
@@ -784,7 +790,7 @@ enum ServerChoice {
     }
 }
 
-extension Date {
+private extension Date {
     func yyyyMM() -> Int {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMM"
