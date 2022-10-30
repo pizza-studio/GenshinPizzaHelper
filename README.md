@@ -107,7 +107,7 @@
 
 2. 打开 WatchHelper WatchKit Extension/View/ContentView.swift 文件，删除cookie
 
-3. 打开 ./GenshinPizzaHelper/ToolsView - 513行附近，修改salt为“Opensource Secret”
+3. 打开 `./CommonTools/AppConfig` - 修改`homeAPISalt`为“Opensource Secret”
 
 4. 将所有文件移动覆盖到开源仓库文件夹
 
