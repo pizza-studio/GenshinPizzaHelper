@@ -397,25 +397,27 @@ struct ShowTeamPercentageView: View {
                         }
                     }()
                     Section {
-                        ForEach(teams.sorted(by: { $0.percentage > $1.percentage }), id: \.team.hashValue) { team in
+                        let teams = teams.sorted(by: { $0.percentage > $1.percentage })
+                        ForEach(Array(zip(teams.indices, teams)), id: \.0) { index, team in
                             HStack {
-                                Label {
-                                    Text("")
-                                } icon: {
-                                    ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
-                                        let char = charMap["\(avatarId)"]
-                                        EnkaWebIcon(iconString: char?.iconString ?? "")
-                                            .background(
-                                                EnkaWebIcon(iconString: char?.namecardIconString ?? "")
-                                                    .scaledToFill()
-                                                    .offset(x: -30/3)
-                                            )
-                                        .frame(width: 40, height: 40)
-                                        .clipShape(Circle())
-                                    }
+
+                                ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
+                                    let char = charMap["\(avatarId)"]
+                                    EnkaWebIcon(iconString: char?.iconString ?? "")
+                                        .background(
+                                            EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                                .scaledToFill()
+                                                .offset(x: -30/3)
+                                        )
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
                                 }
                                 Spacer()
+
                                 Text(percentageFormatter.string(from: (team.percentage) as NSNumber)!)
+                                Image(systemName: "\(index+1).circle")
+                                    .font(.system(size: 14, weight: .light))
+
                             }
                         }
                     } header: {
@@ -436,10 +438,12 @@ struct ShowTeamPercentageShare: View {
     let charMap: [String : ENCharacterMap.Character]
     let charLoc: [String : String]
 
-    var eachColumnTeams: [[TeamUtilizationData.Team]] {
+    var eachColumnTeams: [[(Int, TeamUtilizationData.Team)]] {
         let chunkSize: Int = 16 // 每列的角色数
-        return stride(from: 0, to: teams.count, by: chunkSize).map {
-            Array(teams[$0..<min($0 + chunkSize, teams.count)])
+        let teams = teams.sorted(by: { $0.percentage > $1.percentage })
+        let tuples = Array(zip(teams.indices, teams))
+        return stride(from: 0, to: tuples.count, by: chunkSize).map {
+            Array(tuples[$0..<min($0 + chunkSize, tuples.count)])
         }
     }
 
@@ -453,10 +457,13 @@ struct ShowTeamPercentageShare: View {
 
     var body: some View {
         HStack {
-            ForEach(eachColumnTeams, id: \.first!.team.first) { teams in
+            ForEach(eachColumnTeams, id: \.first!.0) { teams in
                 VStack {
-                    ForEach(teams.sorted(by: { $0.percentage > $1.percentage }), id: \.team.first!) { team in
+                    ForEach(teams, id: \.0) { index, team in
                         HStack {
+                            Image(systemName: "\(index+1).circle")
+                                .font(.system(size: 14, weight: .light))
+                                .foregroundColor(.gray)
                             HStack {
                                 ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
                                     let char = charMap["\(avatarId)"]
