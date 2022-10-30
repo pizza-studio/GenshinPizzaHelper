@@ -108,6 +108,11 @@ extension AbyssData {
         owningChars = basicInfo.avatars.map { $0.id }
         abyssRank = .init(data: abyssData)
         submitDetails = .generateArrayFrom(data: abyssData, basicInfo: basicInfo)
+        print(submitDetails.count)
+        guard submitDetails.count == 4*3*2 else {
+            print("submitDetails only has \(submitDetails.count), fail to create data")
+            return nil
+        }
     }
 }
 
