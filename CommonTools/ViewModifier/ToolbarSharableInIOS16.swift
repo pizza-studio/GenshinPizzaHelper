@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-@available(iOS 15, *)
+
 extension View {
     func toolbarSavePhotoButtonInIOS16<ViewToRender: View>(title: String = "保存", placement: ToolbarItemPlacement = .navigationBarTrailing, viewToShare: @escaping () -> ViewToRender) -> some View {
         modifier(ToolbarSavePhotoButton(viewToRender: viewToShare, placement: placement, title: title))
     }
 }
 
-@available(iOS 15, *)
+
 struct ToolbarSavePhotoButton<ViewToRender: View>: ViewModifier {
 
     var viewToRender: ViewToRender
@@ -51,7 +51,8 @@ struct ToolbarSavePhotoButton<ViewToRender: View>: ViewModifier {
                 }
                 .alert(title, isPresented: $isAlertShow) {
                     Button("OK") {
-                        let renderer = ImageRenderer(content: viewToRender)
+                        let renderer = ImageRenderer(content: viewToRender
+                            .environment(\.locale, .init(identifier: Locale.current.identifier)))
                         renderer.scale = UIScreen.main.scale
                         if let image = renderer.uiImage {
                             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
