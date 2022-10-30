@@ -32,3 +32,28 @@ extension View {
         modifier(DismissableSheet(sheet: sheet, title: title, todoOnDismiss: todoOnDismiss))
     }
 }
+
+struct DismissableBoolSheet: ViewModifier {
+    @Binding var isSheetShow: Bool
+    var title: String = "完成"
+    var todoOnDismiss: () -> ()
+    func body(content: Content) -> some View {
+        content.toolbar {
+            ToolbarItem {
+                Button(title.localized) {
+                    isSheetShow = false
+                    todoOnDismiss()
+                }
+            }
+        }
+    }
+}
+
+extension View {
+    func dismissableSheet(isSheetShow: Binding<Bool>,
+                                title: String = "完成",
+                                todoOnDismiss: @escaping () -> () = {})
+    -> some View {
+        modifier(DismissableBoolSheet(isSheetShow: isSheetShow, title: title, todoOnDismiss: todoOnDismiss))
+    }
+}
