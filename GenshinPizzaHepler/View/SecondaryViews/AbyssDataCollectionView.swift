@@ -228,7 +228,7 @@ struct AbyssDataCollectionView: View {
                         formatter.timeStyle = .medium
                         return formatter.string(from: Date())
                     }()
-                    Text("共统计\(abyssDataCollectionViewModel.totalDataCount)用户\(abyssDataCollectionViewModel.paramsDescription)\n\(abyssDataCollectionViewModel.paramsDetailDescription)\(date)").font(.footnote)
+                    Text("共统计\(abyssDataCollectionViewModel.totalDataCount)用户\(abyssDataCollectionViewModel.paramsDescription)\n\(abyssDataCollectionViewModel.paramsDetailDescription)·生成于\(date)").font(.footnote)
                         .minimumScaleFactor(0.5)
                     Spacer()
                     Image("AppIconHD")
