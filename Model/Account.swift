@@ -119,6 +119,7 @@ extension Account {
     #if !os(watchOS)
     func uploadHoldingData() {
         print("uploadHoldingData START")
+        guard UserDefaults.standard.bool(forKey: "allowAbyssDataCollection") else { print("not allowed"); return }
         let userDefault = UserDefaults.standard
         var hasUploadedAvatarHoldingDataMD5: [String] = userDefault.array(forKey: "hasUploadedAvatarHoldingDataMD5") as? [String] ?? []
         if let avatarHoldingData = AvatarHoldingData(account: self, which: .this) {
@@ -158,6 +159,7 @@ extension Account {
 
     func uploadAbyssData() {
         print("uploadAbyssData START")
+        guard UserDefaults.standard.bool(forKey: "allowAbyssDataCollection") else { print("not allowed"); return }
         let userDefault = UserDefaults.standard
         var hasUploadedAbyssDataAccountAndSeasonMD5: [String] = userDefault.array(forKey: "hasUploadedAbyssDataAccountAndSeasonMD5") as? [String] ?? []
         if let abyssData = AbyssData(account: self, which: .this) {

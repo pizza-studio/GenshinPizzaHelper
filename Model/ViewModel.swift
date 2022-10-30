@@ -112,9 +112,7 @@ class ViewModel: NSObject, ObservableObject {
             group.enter()
             accounts[index].config.fetchBasicInfo { basicInfo in
                 self.accounts[index].basicInfo = basicInfo
-                if UserDefaults.standard.bool(forKey: "allowAbyssDataCollection") {
-                    self.accounts[index].uploadHoldingData()
-                }
+                self.accounts[index].uploadHoldingData()
                 group.leave()
             }
             group.enter()
