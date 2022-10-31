@@ -178,6 +178,8 @@ extension API {
                         case -1, 10102:
                             print("fail -1")
                             completion(.failure(.dataNotFound(retcode, message)))
+                        case 1034:
+                            completion(.failure(.accountAbnormal(retcode)))
                         default:
                             print("unknownerror")
                             completion(.failure(.unknownError(retcode, message)))
