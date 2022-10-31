@@ -97,7 +97,7 @@ struct ToolsView: View {
                     UserDefaults.standard.set(true, forKey: "hasAskedAllowAbyssDataCollection")
                 })
             } message: {
-                Text("我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。您的隐私非常重要，我们不会收集包括UID在内的敏感信息。")
+                Text("我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。您的隐私非常重要，我们不会收集包括UID在内的敏感信息。更多相关问题，请查看深渊统计榜单页面右上角的FAQ.")
             }
             .onChange(of: scenePhase, perform: { newPhase in
                 switch newPhase {
@@ -506,7 +506,7 @@ struct ToolsView: View {
                 AbyssDataCollectionView()
             } label: {
                 Label {
-                    Text("深渊统计")
+                    Text("深渊统计榜单")
                 } icon: {
                     Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
                 }

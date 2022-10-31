@@ -18,7 +18,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
         case abyssAvatarsUtilization = "深渊角色使用率"
         case teamUtilization = "深渊队伍使用率"
         case fullStarHoldingRate = "满星玩家持有率"
-        case holdingRate = "角色持有率"
+        case holdingRate = "全员角色持有率"
 
         var id: String { self.rawValue }
     }
@@ -205,7 +205,7 @@ struct AbyssDataCollectionView: View {
             NavigationView {
                 WebBroswerView(url: url)
                     .dismissableSheet(isSheetShow: $isWebSheetShow)
-                    .navigationTitle("深渊数据FAQ")
+                    .navigationTitle("深渊统计榜单FAQ")
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
