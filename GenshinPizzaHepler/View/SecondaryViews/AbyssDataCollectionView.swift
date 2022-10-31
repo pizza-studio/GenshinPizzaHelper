@@ -553,7 +553,7 @@ struct AvatarHoldingAPIParameters {
             formatter.timeStyle = .none
             return formatter.string(from: date)
         }()
-        return "·仅自\(dateString)后提交的数据".localized
+        return String(format: NSLocalizedString("·仅自%@后提交的数据", comment: ""), dateString)
     }
 
     func detail() -> String {
