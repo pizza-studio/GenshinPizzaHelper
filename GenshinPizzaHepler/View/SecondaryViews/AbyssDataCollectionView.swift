@@ -315,7 +315,7 @@ private struct ShowAvatarPercentageView: View {
                             let char = charMap["\(avatar.charId)"]
                             HStack {
                                 Label {
-                                    Text(charLoc["\(char?.NameTextMapHash ?? 0)"] ?? "unknow")
+                                    Text(charLoc["\(char?.NameTextMapHash ?? 0)"] ?? "unknown")
                                 } icon: {
                                     EnkaWebIcon(iconString: char?.iconString ?? "")
                                         .background(
@@ -332,6 +332,7 @@ private struct ShowAvatarPercentageView: View {
                         }
                     } header: {
                         Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
+                            .textCase(.none)
                     }
                 case .failure(let error):
                     Text(error.localizedDescription)
@@ -451,6 +452,7 @@ private struct ShowTeamPercentageView: View {
                         }
                     } header: {
                         Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
+                            .textCase(.none)
                     }
                 case .failure(let error):
                     Text(error.localizedDescription)
@@ -551,7 +553,7 @@ struct AvatarHoldingAPIParameters {
             formatter.timeStyle = .none
             return formatter.string(from: date)
         }()
-        return "·仅自\(dateString)后提交的数据"
+        return "·仅自\(dateString)后提交的数据".localized
     }
 
     func detail() -> String {
@@ -651,7 +653,7 @@ struct UtilizationAPIParameters {
     var floor: Int = 12
 
     func describe() -> String {
-        "·仅包含满星玩家·计算方法：角色使用人数/角色拥有人数"
+        "·仅包含满星玩家·计算方法：角色使用人数/角色拥有人数".localized
     }
 
     func detail() -> String {
@@ -719,7 +721,7 @@ struct TeamUtilizationAPIParameters {
     var floor: Int = 12
 
     func describe() -> String {
-        "·仅包含满星玩家"
+        "·仅包含满星玩家".localized
     }
     var half: Half = .all
 

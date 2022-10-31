@@ -9,7 +9,7 @@ import SwiftUI
 
 
 extension View {
-    func toolbarSavePhotoButtonInIOS16<ViewToRender: View>(title: String = "保存", placement: ToolbarItemPlacement = .navigationBarTrailing, viewToShare: @escaping () -> ViewToRender) -> some View {
+    func toolbarSavePhotoButtonInIOS16<ViewToRender: View>(title: String = "保存".localized, placement: ToolbarItemPlacement = .navigationBarTrailing, viewToShare: @escaping () -> ViewToRender) -> some View {
         modifier(ToolbarSavePhotoButton(viewToRender: viewToShare, placement: placement, title: title))
     }
 }
