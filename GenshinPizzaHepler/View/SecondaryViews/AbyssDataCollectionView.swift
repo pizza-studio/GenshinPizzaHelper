@@ -135,6 +135,8 @@ struct AbyssDataCollectionView: View {
     @EnvironmentObject var viewModel: ViewModel
     @StateObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel = .init()
 
+    @State var isWebSheetShow: Bool = false
+
     var body: some View {
         VStack {
             switch abyssDataCollectionViewModel.showingType {
@@ -148,6 +150,13 @@ struct AbyssDataCollectionView: View {
         .listStyle(.insetGrouped)
         .hideTabBar()
         .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    isWebSheetShow = true
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                }
+            }
             ToolbarItem(placement: .principal) {
                 Menu {
                     ForEach(AbyssDataCollectionViewModel.ShowingData.allCases, id: \.rawValue) { choice in
@@ -179,6 +188,26 @@ struct AbyssDataCollectionView: View {
         }
         .toolbarSavePhotoButtonInIOS16 {
             shareView()
+        }
+        .sheet(isPresented: $isWebSheetShow) {
+            let url: String = {
+                switch Locale.current.languageCode {
+                case "zh":
+                    return "http://ophelper.top/static/faq_abyss.html"
+                case "en":
+                    return "http://ophelper.top/static/faq_abyss_en.html"
+                case "ja":
+                    return "http://ophelper.top/static/faq_abyss_ja.html"
+                default:
+                    return "http://ophelper.top/static/faq_abyss_en.html"
+                }
+            }()
+            NavigationView {
+                WebBroswerView(url: url)
+                    .dismissableSheet(isSheetShow: $isWebSheetShow)
+                    .navigationTitle("深渊数据FAQ")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 
