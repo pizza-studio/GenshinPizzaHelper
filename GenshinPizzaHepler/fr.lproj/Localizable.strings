@@ -880,6 +880,8 @@
 "莱依拉" = "Layla"; 
 "千夜浮梦" = "Mille rêves flottants";
 
+// MARK: - 2.5.4 HOTFIX
+"账号状态异常，请前往米游社-旅行便笺重新验证" = "Account status is abnormal, please go to HoYoLAB to re-verify";
 // MARK: - 2.5.4
 "%lld月原石收入" = "Primogem Income";
 
