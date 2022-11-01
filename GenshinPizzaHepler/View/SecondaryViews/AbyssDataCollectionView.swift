@@ -790,8 +790,7 @@ private extension AbyssSeason {
     static func choices(from date: Date = Date()) -> [AbyssSeason] {
         var choices = [Self]()
         var date = date
-        // TODO: - 正式版修改此处为11月1日
-        let startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 10, day: 16))!
+        let startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 11, day: 1))!
         // 以下仅判断本月
         if Calendar.current.dateComponents([.day], from: date).day! >= 16 {
             choices.append(date.yyyyMM()*10+1)
