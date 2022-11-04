@@ -906,3 +906,8 @@
 "月" = " ";
 "·仅自%@后提交的数据" = "· Data collected after %@";
 "整层" = "Both";
+
+// MARK: - 2.6.1
+"是否允许我们收集您的深渊数据？" = "Allow us to collect your Spiral Abyss data?";
+"不允许" = "No";
+"允许" = "Yes";
