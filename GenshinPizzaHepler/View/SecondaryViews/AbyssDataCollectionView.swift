@@ -433,14 +433,18 @@ private struct ShowTeamPercentageView: View {
 
                                 ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
                                     let char = charMap["\(avatarId)"]
-                                    EnkaWebIcon(iconString: char?.iconString ?? "")
-                                        .background(
-                                            EnkaWebIcon(iconString: char?.namecardIconString ?? "")
-                                                .scaledToFill()
-                                                .offset(x: -30/3)
-                                        )
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
+                                    Label {
+                                        Text("")
+                                    } icon: {
+                                        EnkaWebIcon(iconString: char?.iconString ?? "")
+                                            .background(
+                                                EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                                    .scaledToFill()
+                                                    .offset(x: -30/3)
+                                            )
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(Circle())
+                                    }
                                 }
                                 Spacer()
 
