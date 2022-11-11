@@ -23,7 +23,7 @@ struct GetCookieWebView: View {
     var url: String {
         switch region {
         case .cn:
-            return "https://m.bbs.mihoyo.com/ys/#/login"
+            return "https://m.bbs.mihoyo.com/ys/"
         case .global:
             return "https://m.hoyolab.com/"
         }
