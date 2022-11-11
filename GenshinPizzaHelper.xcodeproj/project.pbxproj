@@ -370,6 +370,7 @@
 		EA7F9C7028B0172D00DEAFEB /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
 		EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
+		EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */; };
 		EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
 		EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
 		EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
@@ -800,6 +801,7 @@
 		EA7F67C9289D711200D2CE29 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
+		EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingView.swift; sourceTree = "<group>"; };
 		EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
 		EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCircular.swift; sourceTree = "<group>"; };
 		EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppMaterialNavigator.swift; sourceTree = "<group>"; };
@@ -940,6 +942,7 @@
 				BFB101EF28D7262A000DC631 /* ThanksView.swift */,
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
 				EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */,
+				EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -2244,6 +2247,7 @@
 				EA784CC82902485600918F64 /* AvatarHoldingData.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */,
+				EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */,
 				EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */,
 				BFE7AFDB2902684100C75E7F /* AllAvatarDetailModel.swift in Sources */,
 				EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */,

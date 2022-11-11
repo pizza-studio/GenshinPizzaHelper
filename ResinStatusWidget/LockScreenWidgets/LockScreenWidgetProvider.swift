@@ -41,7 +41,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        var refreshMinute: Int = 7
+        let refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetRefreshFrequencyInMinute") ?? 30)
         var refreshDate: Date {
             Calendar.current.date(byAdding: .minute, value: refreshMinute, to: currentDate)!
         }
@@ -89,7 +89,8 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                 UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
                 #endif
             case .failure(_ ):
-                refreshMinute = 1
+//                refreshMinute = 1
+                break
             }
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
