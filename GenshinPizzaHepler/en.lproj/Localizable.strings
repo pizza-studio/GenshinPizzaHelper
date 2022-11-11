@@ -911,3 +911,14 @@
 "是否允许我们收集您的深渊数据？" = "Allow us to collect your Spiral Abyss data?";
 "不允许" = "No";
 "允许" = "Yes";
+
+// MARK: - 2.6.2
+"反复出现账号异常？点击查看解决方案" = "Recurring account exceptions? Click to see the solution";
+"1034问题的解决方案" = "1034 Problem Solution";
+"点击打开米游社App" = "Click to open miHoYoBBS App";
+"（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) The account status is abnormal, please go to the 'HoYoLAB' App - 'My' - 'My Battle Chronicle' to re-verify";
+"小组件设置" = "Widget Setting";
+"主屏幕小组件刷新频率" = "Home screen widget refresh frequency";
+"锁定屏幕小组件刷新频率" = "Lock screen widget refresh frequency";
+"每%lld分钟" = "Every %lldmin";
+"小组件刷新频率" = "Widget refresh frequency";

@@ -51,7 +51,7 @@ struct SettingsView: View {
                 }
 
                 // 小组件相关设置
-                NavigationLink("小组件相关设置", destination: { WidgetSettingView() })
+                NavigationLink("小组件设置", destination: { WidgetSettingView() })
 
                 // 通知设置
                 NotificationSettingNavigator()
