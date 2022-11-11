@@ -539,15 +539,15 @@ struct ToolsView: View {
     }
 
     func isInstallation(urlString:String?) -> Bool {
-            let url = URL(string: urlString!)
-            if url == nil {
-                return false
-            }
-            if UIApplication.shared.canOpenURL(url!) {
-                return true
-            }
+        let url = URL(string: urlString!)
+        if url == nil {
             return false
         }
+        if UIApplication.shared.canOpenURL(url!) {
+            return true
+        }
+        return false
+    }
 
     func checkIfAllowAbyssDataCollection() {
         if !UserDefaults.standard.bool(forKey: "hasAskedAllowAbyssDataCollection") && account != nil {

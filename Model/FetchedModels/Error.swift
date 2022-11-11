@@ -80,7 +80,7 @@ extension FetchError {
         case .unknownError(let retcode, _):
             return String(format: NSLocalizedString("未知错误码：%lld", comment: "未知错误码：%lld"), retcode)
         case .accountAbnormal( _):
-            return "账号状态异常，请前往米游社-旅行便笺重新验证".localized
+            return "（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证".localized
         default:
             return ""
         }
@@ -117,7 +117,7 @@ extension FetchError {
                 return "未知错误".localized
             }
         case .accountAbnormal( _):
-            return "账号状态异常，请前往米游社-旅行便笺重新验证".localized
+            return "（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证".localized
         case .unknownError(_, let message):
             return message
         default:
