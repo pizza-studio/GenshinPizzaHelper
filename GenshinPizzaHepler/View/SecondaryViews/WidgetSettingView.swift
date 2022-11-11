@@ -16,12 +16,10 @@ struct WidgetSettingView: View {
             Section {
                 RefreshFrequencySettingBar(title: "主屏幕小组件刷新频率",
                                            value: $mainWidgetRefreshFrequencyInMinute,
-                                           valueString: String(format: NSLocalizedString("每%lld分钟", comment: ""), Int(lockscreenWidgetRefreshFrequencyInMinute)),
                                            bounds: 7...120,
                                            step: 1)
                 RefreshFrequencySettingBar(title: "锁定屏幕小组件刷新频率",
                                            value: $lockscreenWidgetRefreshFrequencyInMinute,
-                                           valueString: String(format: NSLocalizedString("每%lld分钟", comment: ""), Int(lockscreenWidgetRefreshFrequencyInMinute)),
                                            bounds: 7...120,
                                            step: 1)
             } header: {
@@ -35,7 +33,6 @@ struct WidgetSettingView: View {
 private struct RefreshFrequencySettingBar<V>: View where V : BinaryFloatingPoint, V.Stride : BinaryFloatingPoint {
     let title: String
     @Binding var value: Double
-    let valueString: String
     let bounds: ClosedRange<V>
     let step: V.Stride
 
@@ -48,14 +45,14 @@ private struct RefreshFrequencySettingBar<V>: View where V : BinaryFloatingPoint
             Button(action: {
                 withAnimation{ showSlider.toggle() }
             }) {
-                Text(valueString)
+                Text(String(format: NSLocalizedString("每%lld分钟", comment: ""), Int(value)))
             }
         }
         if showSlider {
             Slider(value: $value,
                    in: 7...120,
                    step: 1,
-                   label: {Text(valueString)})
+                   label: {Text("\(value)")})
         }
 
     }
