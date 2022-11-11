@@ -49,6 +49,10 @@ struct SettingsView: View {
                             .font(.footnote)
                     }
                 }
+
+                // 小组件相关设置
+                NavigationLink("小组件相关设置", destination: { WidgetSettingView() })
+
                 // 通知设置
                 NotificationSettingNavigator()
 
