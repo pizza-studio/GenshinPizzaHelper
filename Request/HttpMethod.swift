@@ -261,7 +261,7 @@ struct HttpMethod<T: Codable> {
             }
             let t = String(Int(Date().timeIntervalSince1970))
             let r = String(Int.random(in: 100000..<200000))
-            let q = "role_id=\(uid)&server=\(server_id)"
+            let q = "game_id=2"
             let c = "salt=\(s)&t=\(t)&r=\(r)&b=&q=\(q)".md5
             return t + "," + r + "," + c
         }
@@ -279,7 +279,7 @@ struct HttpMethod<T: Codable> {
                     baseStr = "https://api-takumi-record.mihoyo.com/"
                     appVersion = "2.40.1"
                     userAgent = "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
-                    clientType = "5"
+                    clientType = "1"
                 case .global:
                     baseStr = "https://bbs-api-os.hoyolab.com/"
                     appVersion = "2.9.1"
@@ -299,8 +299,10 @@ struct HttpMethod<T: Codable> {
                     "x-rpc-app_version": appVersion,
                     "User-Agent": userAgent,
                     "x-rpc-client_type": clientType,
-                    "Referer": "https://webstatic.mihoyo.com/",
-                    "Cookie": cookie
+                    "Referer": "https://app.mihoyo.com/",
+                    "Cookie": cookie,
+                    "x-rpc-device_id": "",
+                    "x-rpc-channel": "appstore"
                 ]
                 // http方法
                 switch method {
