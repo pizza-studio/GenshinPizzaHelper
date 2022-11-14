@@ -30,20 +30,35 @@ struct LockScreenExpeditionWidget: Widget {
 struct LockScreenExpeditionWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
-    var result: FetchResult { entry.result }
+    var dataKind: WidgetDataKind { entry.widgetDataKind }
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }
 
     var body: some View {
-        switch family {
-        #if os(watchOS)
-        case .accessoryCorner:
-            LockScreenExpeditionWidgetCorner(result: result)
-        #endif
-        case .accessoryCircular:
-            LockScreenExpeditionWidgetCircular(result: result)
-        default:
-            EmptyView()
+        switch dataKind {
+        case .normal(let result):
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenExpeditionWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenExpeditionWidgetCircular(result: result)
+            default:
+                EmptyView()
+            }
+        case .simplified(let result):
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenExpeditionWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenExpeditionWidgetCircular(result: result)
+            default:
+                EmptyView()
+            }
         }
+
     }
 }

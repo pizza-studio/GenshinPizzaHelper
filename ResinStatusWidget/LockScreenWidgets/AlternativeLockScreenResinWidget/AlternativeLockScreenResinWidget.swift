@@ -26,10 +26,15 @@ struct AlternativeLockScreenResinWidget: Widget {
 struct AlternativeLockScreenResinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
-    var result: FetchResult { entry.result }
+    var dataKind: WidgetDataKind { entry.widgetDataKind }
     var accountName: String? { entry.accountName }
 
     var body: some View {
-        AlternativeLockScreenResinWidgetCircular(result: result)
+        switch dataKind {
+        case .normal(let result):
+            AlternativeLockScreenResinWidgetCircular(result: result)
+        case .simplified(let result):
+            AlternativeLockScreenResinWidgetCircular(result: result)
+        }
     }
 }

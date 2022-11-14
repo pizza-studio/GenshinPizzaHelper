@@ -30,114 +30,131 @@ extension API {
                 completion(.failure(.noFetchInfo))
             }
 
-            if true {
-                // 请求类别
-                let urlStr = "game_record/app/card/api/getWidgetData"
-                HttpMethod<WidgetRequestResult>
-                    .commonWidgetRequest(
-                        .get,
-                        urlStr,
-                        region,
-                        serverID,
-                        uid,
-                        cookie
-                    ) { result in
-                        switch result {
+            // 请求类别
+            let urlStr = "game_record/app/genshin/api/dailyNote"
+            // 请求
+            HttpMethod<RequestResult>
+                .commonRequest(
+                    .get,
+                    urlStr,
+                    region,
+                    serverID,
+                    uid,
+                    cookie
+                ) { result in
+                    switch result {
 
-                        case .success(let requestResult):
-                            print("request succeed")
-                            let userData = requestResult.data
-                            let retcode = requestResult.retcode
-                            let message = requestResult.message
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let userData = requestResult.data
+                        let retcode = requestResult.retcode
+                        let message = requestResult.message
 
-                            switch requestResult.retcode {
-                            case 0:
-                                print("get data succeed")
-                                completion(.success(userData!.data.transformToUserData()))
-                            case 10001:
-                                print("fail 10001")
-                                completion(.failure(.cookieInvalid(retcode, message)))
-                            case 10103, 10104:
-                                print("fail nomatch")
-                                completion(.failure(.unmachedAccountCookie(retcode, message)))
-                            case 1008:
-                                print("fail 1008")
-                                completion(.failure(.accountInvalid(retcode, message)))
-                            case -1, 10102:
-                                print("fail -1")
-                                completion(.failure(.dataNotFound(retcode, message)))
-                            case 1034:
-                                completion(.failure(.accountAbnormal(retcode)))
-                            default:
-                                print("unknowerror")
-                                completion(.failure(.unknownError(retcode, message)))
-                            }
+                        switch requestResult.retcode {
+                        case 0:
+                            print("get data succeed")
+                            completion(.success(userData!))
+                        case 10001:
+                            print("fail 10001")
+                            completion(.failure(.cookieInvalid(retcode, message)))
+                        case 10103, 10104:
+                            print("fail nomatch")
+                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                        case 1008:
+                            print("fail 1008")
+                            completion(.failure(.accountInvalid(retcode, message)))
+                        case -1, 10102:
+                            print("fail -1")
+                            completion(.failure(.dataNotFound(retcode, message)))
+                        case 1034:
+                            completion(.failure(.accountAbnormal(retcode)))
+                        default:
+                            print("unknowerror")
+                            completion(.failure(.unknownError(retcode, message)))
+                        }
 
-                        case .failure(let requestError):
+                    case .failure(let requestError):
 
-                            switch requestError {
-                            case .decodeError(let message):
-                                completion(.failure(.decodeError(message)))
-                            default:
-                                completion(.failure(.requestError(requestError)))
-                            }
+                        switch requestError {
+                        case .decodeError(let message):
+                            completion(.failure(.decodeError(message)))
+                        default:
+                            completion(.failure(.requestError(requestError)))
                         }
                     }
-            } else {
-                // 请求类别
-                let urlStr = "game_record/app/genshin/api/dailyNote"
-                // 请求
-                HttpMethod<RequestResult>
-                    .commonRequest(
-                        .get,
-                        urlStr,
-                        region,
-                        serverID,
-                        uid,
-                        cookie
-                    ) { result in
-                        switch result {
+                }
+        }
 
-                        case .success(let requestResult):
-                            print("request succeed")
-                            let userData = requestResult.data
-                            let retcode = requestResult.retcode
-                            let message = requestResult.message
+        /// 获取信息
+        /// - Parameters:
+        ///     - region: 服务器地区
+        ///     - serverID: 服务器ID
+        ///     - uid: 用户UID
+        ///     - cookie: 用户Cookie
+        ///     - completion: 数据
+        static func fetchSimplifiedInfos (
+            region: Region,
+            serverID: String,
+            uid: String,
+            cookie: String,
+            completion: @escaping (
+                Result<SimplifiedUserData, FetchError>
+            ) -> ()
+        ) {
+            // 请求类别
+            let urlStr = "game_record/app/card/api/getWidgetData"
+            HttpMethod<WidgetRequestResult>
+                .commonWidgetRequest(
+                    .get,
+                    urlStr,
+                    region,
+                    serverID,
+                    uid,
+                    cookie
+                ) { result in
+                    switch result {
 
-                            switch requestResult.retcode {
-                            case 0:
-                                print("get data succeed")
-                                completion(.success(userData!))
-                            case 10001:
-                                print("fail 10001")
-                                completion(.failure(.cookieInvalid(retcode, message)))
-                            case 10103, 10104:
-                                print("fail nomatch")
-                                completion(.failure(.unmachedAccountCookie(retcode, message)))
-                            case 1008:
-                                print("fail 1008")
-                                completion(.failure(.accountInvalid(retcode, message)))
-                            case -1, 10102:
-                                print("fail -1")
-                                completion(.failure(.dataNotFound(retcode, message)))
-                            case 1034:
-                                completion(.failure(.accountAbnormal(retcode)))
-                            default:
-                                print("unknowerror")
-                                completion(.failure(.unknownError(retcode, message)))
+                    case .success(let requestResult):
+                        print("request succeed")
+                        let userData = requestResult.data
+                        let retcode = requestResult.retcode
+                        let message = requestResult.message
+
+                        switch requestResult.retcode {
+                        case 0:
+                            print("get data succeed")
+                            if let simplifiedUserData = SimplifiedUserData(widgetUserData: userData!) {
+                                completion(.success(simplifiedUserData))
+                            } else {
+                                completion(.failure(.decodeError("解码错误")))
                             }
-
-                        case .failure(let requestError):
-
-                            switch requestError {
-                            case .decodeError(let message):
-                                completion(.failure(.decodeError(message)))
-                            default:
-                                completion(.failure(.requestError(requestError)))
-                            }
+                        case 10001:
+                            print("fail 10001")
+                            completion(.failure(.cookieInvalid(retcode, message)))
+                        case 10103, 10104:
+                            print("fail nomatch")
+                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                        case 1008:
+                            print("fail 1008")
+                            completion(.failure(.accountInvalid(retcode, message)))
+                        case -1, 10102:
+                            print("fail -1")
+                            completion(.failure(.dataNotFound(retcode, message)))
+                        case 1034:
+                            completion(.failure(.accountAbnormal(retcode)))
+                        default:
+                            print("unknowerror")
+                            completion(.failure(.unknownError(retcode, message)))
+                        }
+                    case .failure(let requestError):
+                        switch requestError {
+                        case .decodeError(let message):
+                            completion(.failure(.decodeError(message)))
+                        default:
+                            completion(.failure(.requestError(requestError)))
                         }
                     }
-            }
+                }
         }
 
         // 获取所有角色信息

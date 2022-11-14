@@ -25,13 +25,5 @@ struct WidgetUserData: Codable {
             var type: String
             var value: String
         }
-
-        func transformToUserData() -> UserData {
-            var resin = data.first { $0.name == "原粹树脂" }?.value ?? "-1/0"
-            var expedition = data.first { $0.name == "探索派遣"}?.value ?? "-1/0"
-            var task = data.first { $0.name == "每日委托进度" }?.value ?? "-1/0"
-            var homeCoin = data.first { $0.name == "洞天财瓮" }?.value ?? "-1/0"
-            return UserData(resin: resin, expedition: expedition, task: task, homeCoin: homeCoin)
-        }
     }
 }

@@ -10,7 +10,7 @@ import WidgetKit
 
 struct AccountOnlyEntry: TimelineEntry {
     let date: Date
-    let result: FetchResult
+    let widgetDataKind: WidgetDataKind
     var accountName: String? = nil
 }
 
@@ -29,11 +29,11 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
     }
 
     func placeholder(in context: Context) -> AccountOnlyEntry {
-        AccountOnlyEntry(date: Date(), result: FetchResult.defaultFetchResult, accountName: "荧")
+        AccountOnlyEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧")
     }
 
     func getSnapshot(for configuration: SelectOnlyAccountIntent, in context: Context, completion: @escaping (AccountOnlyEntry) -> ()) {
-        let entry = AccountOnlyEntry(date: Date(), result: FetchResult.defaultFetchResult, accountName: "荧")
+        let entry = AccountOnlyEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧")
         completion(entry)
     }
 
@@ -50,7 +50,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         let configs = accountConfigurationModel.fetchAccountConfigs()
 
         guard !configs.isEmpty else {
-            let entry = AccountOnlyEntry(date: currentDate, result: .failure(.noFetchInfo))
+            let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             return
@@ -59,7 +59,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         guard configuration.account != nil else {
             // 如果还未选择账号，默认获取第一个
             configs.first!.fetchResult { result in
-                let entry = AccountOnlyEntry(date: currentDate, result: result, accountName: configs.first!.name)
+                let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
                 print("Widget Fetch succeed")
@@ -72,7 +72,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
 
         guard let config = configs.first(where: { $0.uuid == selectedAccountUUID }) else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
-            let entry = AccountOnlyEntry(date: currentDate, result: .failure(.noFetchInfo))
+            let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)))
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Need to choose account")
@@ -81,7 +81,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
 
         // 正常情况
         config.fetchResult { result in
-            let entry = AccountOnlyEntry(date: currentDate, result: result, accountName: config.name)
+                let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name)
 
             switch result {
             case .success(let userData):

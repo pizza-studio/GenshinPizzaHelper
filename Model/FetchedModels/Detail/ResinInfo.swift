@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ResinInfo {
+struct ResinInfo: Codable {
     let currentResin: Int
     let maxResin: Int
     private let resinRecoverySecond: Int
