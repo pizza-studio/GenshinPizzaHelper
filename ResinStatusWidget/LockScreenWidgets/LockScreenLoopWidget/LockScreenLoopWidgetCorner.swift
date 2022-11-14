@@ -23,9 +23,6 @@ struct LockScreenLoopWidgetCorner<T>: View where T: SimplifiedUserDataContainer 
             LockScreenExpeditionWidgetCorner(result: result)
         case .homeCoin:
             LockScreenHomeCoinWidgetCorner(result: result)
-
-        default:
-            LockScreenResinWidgetCorner(result: result)
         }
     }
 }
