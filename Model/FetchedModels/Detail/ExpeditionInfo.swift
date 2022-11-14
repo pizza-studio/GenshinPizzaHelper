@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExpeditionInfo {
+struct ExpeditionInfo: Codable {
     let currentExpedition: Int
     let maxExpedition: Int
     

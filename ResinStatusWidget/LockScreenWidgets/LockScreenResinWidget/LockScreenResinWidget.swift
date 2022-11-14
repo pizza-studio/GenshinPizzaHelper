@@ -32,24 +32,42 @@ struct LockScreenResinWidget: Widget {
 struct LockScreenResinWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
-    var result: FetchResult { entry.result }
+    var dataKind: WidgetDataKind { entry.widgetDataKind }
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }
 
     var body: some View {
-        switch family {
-        #if os(watchOS)
-        case .accessoryCorner:
-            LockScreenResinWidgetCorner(result: result)
-        #endif
-        case .accessoryCircular:
-            LockScreenResinWidgetCircular(result: result)
-        case .accessoryRectangular:
-            LockScreenResinWidgetRectangular(result: result)
-        case .accessoryInline:
-            LockScreenResinWidgetInline(result: result)
-        default:
-            EmptyView()
+        switch dataKind {
+        case .normal(let result):
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenResinWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenResinWidgetCircular(result: result)
+            case .accessoryRectangular:
+                LockScreenResinWidgetRectangular(result: result)
+            case .accessoryInline:
+                LockScreenResinWidgetInline(result: result)
+            default:
+                EmptyView()
+            }
+        case .simplified(let result):
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenResinWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenResinWidgetCircular(result: result)
+            case .accessoryRectangular:
+                LockScreenResinWidgetRectangular(result: result)
+            case .accessoryInline:
+                LockScreenResinWidgetInline(result: result)
+            default:
+                EmptyView()
+            }
         }
     }
 }

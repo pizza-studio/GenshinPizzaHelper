@@ -7,35 +7,9 @@
 
 import Foundation
 
-struct UserData: Codable, Equatable {
+struct UserData: Codable, Equatable, SimplifiedUserDataContainer {
     static func == (lhs: UserData, rhs: UserData) -> Bool {
         return lhs.accountName == rhs.accountName
-    }
-
-    init(resin: String, expedition: String, task: String, homeCoin:String) {
-        let resinStr = resin.split(separator: "/")
-        self.currentResin = Int(resinStr.first ?? "-1") ?? -1
-        self.maxResin = Int(resinStr.last ?? "0") ?? 0
-        self.resinRecoveryTime = ""
-
-        let taskStr = task.split(separator: "/")
-        self.finishedTaskNum = Int(taskStr.first ?? "-1") ?? -1
-        self.totalTaskNum = Int(taskStr.last ?? "0") ?? 0
-        self.isExtraTaskRewardReceived = Int(taskStr.first ?? "-1") ?? -1 >= Int(taskStr.last ?? "0") ?? 0
-
-        let expeditionStr = expedition.split(separator: "/")
-        self.currentExpeditionNum = Int(expeditionStr.first ?? "-1") ?? -1
-        self.maxExpeditionNum = Int(expeditionStr.last ?? "0") ?? 0
-        self.expeditions = []
-
-        let homeCoinStr = homeCoin.split(separator: "/")
-        self.currentHomeCoin = Int(homeCoinStr.first ?? "-1") ?? -1
-        self.maxHomeCoin = Int(homeCoinStr.last ?? "0") ?? 0
-        self.homeCoinRecoveryTime = ""
-
-        self.remainResinDiscountNum = -1
-        self.resinDiscountNumLimit = -1
-        self.transformer = TransformerData()
     }
 
     init(
@@ -144,6 +118,56 @@ struct UserData: Codable, Equatable {
     }
 }
 
+typealias SimplifiedUserDataResult = Result<SimplifiedUserData, FetchError>
+typealias SimplifiedUserDataContainerResult<T> = Result<T, FetchError> where T: SimplifiedUserDataContainer
+
+struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
+    let resinInfo: ResinInfo
+    let dailyTaskInfo: DailyTaskInfo
+    let expeditionInfo: ExpeditionInfo
+    let homeCoinInfo: HomeCoinInfo
+
+    init?(widgetUserData: WidgetUserData) {
+        guard let resin: String = widgetUserData.data.data.first(where: { $0.name == "原粹树脂" })?.value,
+              let expedition: String = widgetUserData.data.data.first(where: { $0.name == "探索派遣"})?.value,
+              let task: String = widgetUserData.data.data.first(where: { $0.name == "每日委托进度" })?.value,
+              let homeCoin: String = widgetUserData.data.data.first(where: { $0.name == "洞天财瓮" })?.value
+        else { return nil }
+
+        let resinStr = resin.split(separator: "/")
+        guard let currentResin: Int = Int(resinStr.first ?? ""),
+              let maxResin: Int = Int(resinStr.last ?? "")
+        else { return nil }
+        let resinRecoveryTime: Int = (maxResin - currentResin) * 8 * 60
+        self.resinInfo = .init(currentResin, maxResin, resinRecoveryTime)
+
+        let taskStr = task.split(separator: "/")
+        if taskStr.count == 1 {
+            self.dailyTaskInfo = .init(totalTaskNum: 4, finishedTaskNum: 4, isTaskRewardReceived: true)
+        } else {
+            guard let finishedTaskNum = Int(taskStr.first ?? ""),
+                  let totalTaskNum = Int(taskStr.last ?? "")
+            else { return nil }
+            let isTaskRewardReceived = (finishedTaskNum == totalTaskNum)
+            self.dailyTaskInfo = .init(totalTaskNum: totalTaskNum, finishedTaskNum: finishedTaskNum, isTaskRewardReceived: isTaskRewardReceived)
+        }
+
+
+        let expeditionStr = expedition.split(separator: "/")
+        guard let currentExpeditionNum = Int(expeditionStr.first ?? ""),
+              let maxExpeditionNum = Int(expeditionStr.last ?? "")
+        else { return nil }
+        self.expeditionInfo = .init(currentExpedition: currentExpeditionNum, maxExpedition: maxExpeditionNum, expeditions: [])
+
+        let homeCoinStr = homeCoin.split(separator: "/")
+        guard let currentHomeCoin = Int(homeCoinStr.first ?? ""),
+              let maxHomeCoin = Int(homeCoinStr.last ?? "")
+        else { return nil }
+        let homeCoinRecoverySecond = (maxHomeCoin - currentHomeCoin) * 30 * 60 * 60
+        self.homeCoinInfo = .init(currentHomeCoin, maxHomeCoin, homeCoinRecoverySecond)
+    }
+}
+
 extension UserData {
     static let defaultData = UserData(
         accountName: "荧",
@@ -180,4 +204,11 @@ extension Expedition {
     Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Fischl.png", remainedTimeStr: "22441", statusStr: "Ongoing"),
     Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Keqing.png", remainedTimeStr: "22441", statusStr: "Ongoing"),
     Expedition(avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Bennett.png", remainedTimeStr: "22441", statusStr: "Ongoing")]
+}
+
+protocol SimplifiedUserDataContainer {
+    var resinInfo: ResinInfo { get }
+    var homeCoinInfo: HomeCoinInfo { get }
+    var expeditionInfo: ExpeditionInfo { get }
+    var dailyTaskInfo: DailyTaskInfo { get }
 }
