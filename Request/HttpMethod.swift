@@ -106,8 +106,8 @@ struct HttpMethod<T: Codable> {
                 switch region {
                 case .cn:
                     baseStr = "https://api-takumi-record.mihoyo.com/"
-                    appVersion = "2.11.1"
-                    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1"
+                    appVersion = "2.40.1"
+                    userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.40.1"
                     clientType = "5"
                 case .global:
                     baseStr = "https://bbs-api-os.hoyolab.com/"
