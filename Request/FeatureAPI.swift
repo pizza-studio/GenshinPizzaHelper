@@ -98,7 +98,7 @@ extension API {
             uid: String,
             cookie: String,
             completion: @escaping (
-                Result<SimplifiedUserData, FetchError>
+                SimplifiedUserDataResult
             ) -> ()
         ) {
             // 请求类别
