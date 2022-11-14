@@ -12,6 +12,81 @@ struct UserData: Codable, Equatable {
         return lhs.accountName == rhs.accountName
     }
 
+    init(resin: String, expedition: String, task: String, homeCoin:String) {
+        let resinStr = resin.split(separator: "/")
+        self.currentResin = Int(resinStr.first ?? "-1") ?? -1
+        self.maxResin = Int(resinStr.last ?? "0") ?? 0
+        self.resinRecoveryTime = ""
+
+        let taskStr = task.split(separator: "/")
+        self.finishedTaskNum = Int(taskStr.first ?? "-1") ?? -1
+        self.totalTaskNum = Int(taskStr.last ?? "0") ?? 0
+        self.isExtraTaskRewardReceived = Int(taskStr.first ?? "-1") ?? -1 >= Int(taskStr.last ?? "0") ?? 0
+
+        let expeditionStr = expedition.split(separator: "/")
+        self.currentExpeditionNum = Int(expeditionStr.first ?? "-1") ?? -1
+        self.maxExpeditionNum = Int(expeditionStr.last ?? "0") ?? 0
+        self.expeditions = []
+
+        let homeCoinStr = homeCoin.split(separator: "/")
+        self.currentHomeCoin = Int(homeCoinStr.first ?? "-1") ?? -1
+        self.maxHomeCoin = Int(homeCoinStr.last ?? "0") ?? 0
+        self.homeCoinRecoveryTime = ""
+
+        self.remainResinDiscountNum = -1
+        self.resinDiscountNumLimit = -1
+        self.transformer = TransformerData()
+    }
+
+    init(
+        accountName: String,
+
+        // 用于测试和提供小组件预览视图的默认数据
+        currentResin: Int,
+        maxResin: Int,
+        resinRecoveryTime: String,
+
+        finishedTaskNum: Int,
+        totalTaskNum: Int,
+        isExtraTaskRewardReceived: Bool,
+
+        remainResinDiscountNum: Int,
+        resinDiscountNumLimit: Int,
+
+        currentExpeditionNum: Int,
+        maxExpeditionNum: Int,
+        expeditions: [Expedition],
+
+        currentHomeCoin: Int,
+        maxHomeCoin: Int,
+        homeCoinRecoveryTime: String,
+
+        transformer: TransformerData
+    ) {
+        self.accountName = accountName
+
+        self.currentResin = currentResin
+        self.maxResin = maxResin
+        self.resinRecoveryTime = resinRecoveryTime
+
+        self.finishedTaskNum = finishedTaskNum
+        self.totalTaskNum = totalTaskNum
+        self.isExtraTaskRewardReceived = isExtraTaskRewardReceived
+
+        self.remainResinDiscountNum = remainResinDiscountNum
+        self.resinDiscountNumLimit = resinDiscountNumLimit
+
+        self.currentExpeditionNum = currentExpeditionNum
+        self.maxExpeditionNum = maxExpeditionNum
+        self.expeditions = expeditions
+
+        self.currentHomeCoin = currentHomeCoin
+        self.maxHomeCoin = maxResin
+        self.homeCoinRecoveryTime = homeCoinRecoveryTime
+
+        self.transformer = transformer
+    }
+
     var accountName: String?
     
     mutating func addName(_ name: String) { accountName = name }
