@@ -922,3 +922,6 @@
 "锁定屏幕小组件刷新频率" = "Lock screen widget refresh frequency";
 "每%lld分钟" = "Every %lldmin";
 "小组件刷新频率" = "Widget refresh frequency";
+
+// MARK: - 2.6.4
+"%@·%@·%lld层" = "%@·%@·Floor %lld";

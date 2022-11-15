@@ -661,7 +661,7 @@ struct UtilizationAPIParameters {
     }
 
     func detail() -> String {
-        "\(serverChoice.describe())·\(season.describe())·\(floor)层"
+        return String(format: NSLocalizedString("%@·%@·%lld层", comment: "detail"), serverChoice.describe(), season.describe(), floor)
     }
 }
 
