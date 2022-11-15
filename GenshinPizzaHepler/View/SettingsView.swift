@@ -27,7 +27,7 @@ struct SettingsView: View {
                 Section {
                     ForEach($viewModel.accounts, id: \.config.uuid) { $account in
                         NavigationLink(destination: AccountDetailView(account: $account)) {
-                            AccountInfoView(accountConfig: $account.config)
+                            AccountInfoView(account: account)
                         }
                     }
                     .onDelete { indexSet in
