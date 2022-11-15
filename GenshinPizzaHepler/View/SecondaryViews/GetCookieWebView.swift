@@ -150,6 +150,7 @@ struct CookieGetterWebView: UIViewRepresentable {
 }
 
 struct GetLedgerCookieWebView<V>: View {
+    let title: String
 
     @State var isAlertShow: Bool = false
     @Binding var sheetType: V?
@@ -235,7 +236,7 @@ struct GetLedgerCookieWebView<V>: View {
                         }
                     }
                 }
-                .navigationTitle("请完成登录")
+                .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)
         }
         .alert(isPresented: $isAlertShow) {

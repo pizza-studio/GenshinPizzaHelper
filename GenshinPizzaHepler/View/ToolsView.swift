@@ -66,13 +66,10 @@ struct ToolsView: View {
                 case .spiralAbyss:
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
-                    GetLedgerCookieWebView(sheetType: $sheetType, cookie: Binding($viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.cookie)!, region: viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.server.region)
-//                    NavigationView {
-//                        AccountDetailSheet(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], sheetType: $sheetType)
-//                            .onDisappear {
-//                                viewModel.refreshLedgerData()
-//                            }
-//                    }
+                    GetLedgerCookieWebView(title: "请登录「\(viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.name ?? "")」", sheetType: $sheetType, cookie: Binding($viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.cookie)!, region: viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.server.region)
+                        .onDisappear {
+                            viewModel.refreshLedgerData()
+                        }
                 case .allAvatarList:
                     allAvatarListView()
                 }
