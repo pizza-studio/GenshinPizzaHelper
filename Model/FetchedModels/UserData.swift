@@ -163,7 +163,9 @@ struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
         guard let currentHomeCoin = Int(homeCoinStr.first ?? ""),
               let maxHomeCoin = Int(homeCoinStr.last ?? "")
         else { return nil }
-        let homeCoinRecoverySecond = (maxHomeCoin - currentHomeCoin) * 30 * 60 * 60
+        let homeCoinRefreshFrequencyInHour: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "homeCoinRefreshFrequencyInHour") ?? 30.0)
+        let homeCoinRecoveryHour: Int = (maxHomeCoin - currentHomeCoin) / homeCoinRefreshFrequencyInHour
+        let homeCoinRecoverySecond: Int = homeCoinRecoveryHour * 60 * 60
         self.homeCoinInfo = .init(currentHomeCoin, maxHomeCoin, homeCoinRecoverySecond)
     }
 }
