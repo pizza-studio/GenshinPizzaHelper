@@ -377,7 +377,7 @@ class UserNotificationCenter {
         createExpeditionNotification(for: accountName, with: simplifiedUserData.expeditionInfo, uid: uid)
         createDailyTaskNotification(for: accountName, with: simplifiedUserData.dailyTaskInfo, uid: uid)
     }
-    
+
     enum Object: String, CaseIterable {
         case resin = "resin"
         case homeCoin = "homeCoin"

@@ -46,8 +46,23 @@ extension AccountConfiguration {
         API.Features.fetchInfos(region: self.server.region,
                                 serverID: self.server.id,
                                 uid: self.uid!,
-                                cookie: self.cookie!)
-        { completion($0) }
+                                cookie: self.cookie!) { result in
+            completion(result)
+            #if !os(watchOS)
+            switch result {
+            case .success(let data):
+                UserNotificationCenter.shared.createAllNotification(
+                    for: self.name!,
+                    with: data,
+                    uid: self.uid!
+                )
+            case .failure(_):
+                break
+            }
+            #endif
+        }
+
+
     }
 
     func fetchSimplifiedResult(_ completion: @escaping (SimplifiedUserDataResult) -> ()) {
