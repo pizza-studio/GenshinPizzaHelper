@@ -26,6 +26,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectAccountAndShowWhichInfoIntent()
+            intent.simplifiedMode = true
             intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
             intent.showTransformer = false
             intent.showWeeklyBosses = false

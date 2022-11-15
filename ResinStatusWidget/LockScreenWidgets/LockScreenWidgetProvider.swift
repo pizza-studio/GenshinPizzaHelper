@@ -23,6 +23,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
+            intent.simplifiedMode = true
             intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
             return IntentRecommendation(intent: intent, description: config.name!+recommendationsTag.localized)
         }
