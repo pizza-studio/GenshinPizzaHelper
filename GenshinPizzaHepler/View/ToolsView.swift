@@ -66,12 +66,13 @@ struct ToolsView: View {
                 case .spiralAbyss:
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
-                    NavigationView {
-                        AccountDetailSheet(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], sheetType: $sheetType)
-                            .onDisappear {
-                                viewModel.refreshLedgerData()
-                            }
-                    }
+                    GetLedgerCookieWebView(sheetType: $sheetType, cookie: Binding($viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.cookie)!, region: viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.server.region)
+//                    NavigationView {
+//                        AccountDetailSheet(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], sheetType: $sheetType)
+//                            .onDisappear {
+//                                viewModel.refreshLedgerData()
+//                            }
+//                    }
                 case .allAvatarList:
                     allAvatarListView()
                 }
