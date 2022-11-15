@@ -127,7 +127,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         }
 
         // 正常情况
-        switch configs.first!.server.region {
+        switch config.server.region {
         case .cn:
             if configuration.simplifiedMode?.boolValue ?? true {
                 config.fetchSimplifiedResult { result in
