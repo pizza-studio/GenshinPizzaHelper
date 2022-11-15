@@ -143,7 +143,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             if configuration.simplifiedMode?.boolValue ?? true {
                 config.fetchSimplifiedResult { simplifiedResult in
                     let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: simplifiedResult))
-                    let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                    let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), viewConfig: viewConfig, accountName: config.name, relevance: relevance)
                     switch simplifiedResult {
                     case .success(let userData):
                         UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
@@ -157,7 +157,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             } else {
                 config.fetchResult { result in
                     let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
-                    let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                    let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance)
                     switch result {
                     case .success(let userData):
                         UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
@@ -172,7 +172,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
         case .global:
             config.fetchResult { result in
                 let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
-                let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance)
                 switch result {
                 case .success(let userData):
                     UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
