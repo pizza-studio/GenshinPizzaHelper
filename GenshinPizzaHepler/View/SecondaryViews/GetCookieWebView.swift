@@ -150,6 +150,7 @@ struct CookieGetterWebView: UIViewRepresentable {
 }
 
 struct GetLedgerCookieWebView<V>: View {
+    @EnvironmentObject var viewModel: ViewModel
     let title: String
 
     @State var isAlertShow: Bool = false
@@ -245,6 +246,9 @@ struct GetLedgerCookieWebView<V>: View {
         }
         .onAppear {
             isAlertShow.toggle()
+        }
+        .onDisappear {
+            viewModel.saveAccount()
         }
     }
 }
