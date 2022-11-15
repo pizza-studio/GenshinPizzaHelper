@@ -198,9 +198,6 @@ struct HttpMethod<T: Codable> {
     static func commonWidgetRequest (
         _ method: Method,
         _ urlStr: String,
-        _ region: Region,
-        _ serverID: String,
-        _ uid: String,
         _ cookie: String,
         completion: @escaping(
             (Result<T, RequestError>) -> ()
@@ -251,14 +248,8 @@ struct HttpMethod<T: Codable> {
             return sessionConfiguration
         }
 
-        func get_ds_token(uid: String, server_id: String) -> String {
-            let s: String
-            switch region {
-            case .cn:
-                s = "t0qEgfub6cvueAPgR5m9aQWWVciEer7v"
-            case .global:
-                s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
-            }
+        func get_ds_token() -> String {
+            let s: String = "t0qEgfub6cvueAPgR5m9aQWWVciEer7v"
             let t = String(Int(Date().timeIntervalSince1970))
             let r = String(Int.random(in: 100000..<200000))
             let q = "game_id=2"
@@ -270,22 +261,22 @@ struct HttpMethod<T: Codable> {
             DispatchQueue.global(qos: .userInteractive).async {
 
                 // 请求url前缀，后跟request的类型
-                let baseStr: String
-                let appVersion: String
-                let userAgent: String
-                let clientType: String
-                switch region {
-                case .cn:
-                    baseStr = "https://api-takumi-record.mihoyo.com/"
-                    appVersion = "2.40.1"
-                    userAgent = "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
-                    clientType = "1"
-                case .global:
-                    baseStr = "https://bbs-api-os.hoyolab.com/"
-                    appVersion = "2.9.1"
-                    userAgent = "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
-                    clientType = "2"
-                }
+                let baseStr: String = "https://api-takumi-record.mihoyo.com/"
+                let appVersion: String = "2.34.1"
+                let userAgent: String = "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
+                let clientType: String = "2"
+//                switch region {
+//                case .cn:
+//                    baseStr = "https://api-takumi-record.mihoyo.com/"
+//                    appVersion = "2.34.1"
+//                    userAgent = "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
+//                    clientType = "2"
+//                case .global:
+//                    baseStr = "https://bbs-api-os.hoyolab.com/"
+//                    appVersion = "2.9.1"
+//                    userAgent = "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
+//                    clientType = "2"
+//                }
                 // 由前缀和后缀共同组成的url
                 var url = URLComponents(string: baseStr + urlStr)!
                 url.queryItems = [
@@ -295,7 +286,7 @@ struct HttpMethod<T: Codable> {
                 var request = URLRequest(url: url.url!)
                 // 设置请求头
                 request.allHTTPHeaderFields = [
-                    "DS": get_ds_token(uid: uid, server_id: serverID),
+                    "DS": get_ds_token(),
                     "x-rpc-app_version": appVersion,
                     "User-Agent": userAgent,
                     "x-rpc-client_type": clientType,

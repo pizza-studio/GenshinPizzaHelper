@@ -93,9 +93,6 @@ extension API {
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
         static func fetchSimplifiedInfos (
-            region: Region,
-            serverID: String,
-            uid: String,
             cookie: String,
             completion: @escaping (
                 SimplifiedUserDataResult
@@ -107,9 +104,6 @@ extension API {
                 .commonWidgetRequest(
                     .get,
                     urlStr,
-                    region,
-                    serverID,
-                    uid,
                     cookie
                 ) { result in
                     switch result {
