@@ -163,7 +163,9 @@ struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
         guard let currentHomeCoin = Int(homeCoinStr.first ?? ""),
               let maxHomeCoin = Int(homeCoinStr.last ?? "")
         else { return nil }
-        let homeCoinRefreshFrequencyInHour: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "homeCoinRefreshFrequencyInHour") ?? 30.0)
+        var homeCoinRefreshFrequencyInHour: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "homeCoinRefreshFrequencyInHour") ?? 30.0)
+        // 我也不知道为什么有时候这玩意取到0，反正给个默认值30吧
+        homeCoinRefreshFrequencyInHour = !(4...30).contains(homeCoinRefreshFrequencyInHour) ? 30 : homeCoinRefreshFrequencyInHour
         let homeCoinRecoveryHour: Int = (maxHomeCoin - currentHomeCoin) / homeCoinRefreshFrequencyInHour
         let homeCoinRecoverySecond: Int = homeCoinRecoveryHour * 60 * 60
         self.homeCoinInfo = .init(currentHomeCoin, maxHomeCoin, homeCoinRecoverySecond)

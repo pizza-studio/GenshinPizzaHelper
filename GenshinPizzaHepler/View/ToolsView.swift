@@ -514,10 +514,10 @@ struct ToolsView: View {
         }
         Section {
             #if DEBUG
-            Button("send data") {
-                UserDefaults.standard.set([String](), forKey: "hasUploadedAbyssDataAccountAndSeasonMD5")
-                UserDefaults.standard.set([String](), forKey: "hasUploadedAvatarHoldingDataMD5")
-                viewModel.refreshAbyssAndBasicInfo()
+            Button("fetch simplified data") {
+                viewModel.accounts.first?.config.fetchSimplifiedResult({ result in
+                    return 
+                })
             }
             #endif
             NavigationLink(destination: GenshinDictionary()) {

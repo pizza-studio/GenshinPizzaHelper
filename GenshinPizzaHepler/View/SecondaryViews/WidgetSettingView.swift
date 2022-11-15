@@ -47,7 +47,7 @@ struct WidgetSettingView: View {
 
 private struct SettingSlider<V>: View where V : BinaryFloatingPoint, V.Stride : BinaryFloatingPoint {
     let title: String
-    @Binding var value: Double
+    @Binding var value: V
     var valueFormatterString: String = "%lld"
     let bounds: ClosedRange<V>
     let step: V.Stride
@@ -66,9 +66,11 @@ private struct SettingSlider<V>: View where V : BinaryFloatingPoint, V.Stride : 
         }
         if showSlider {
             Slider(value: $value,
-                   in: 7...120,
-                   step: 1,
-                   label: {Text("\(value)")})
+                   in: bounds,
+                   step: step,
+                   label: {
+                EmptyView()
+            })
         }
 
     }
