@@ -130,7 +130,7 @@ struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
     init?(widgetUserData: WidgetUserData) {
         guard let resin: String = widgetUserData.data.data.first(where: { $0.name == "原粹树脂" })?.value,
               let expedition: String = widgetUserData.data.data.first(where: { $0.name == "探索派遣"})?.value,
-              let task: String = widgetUserData.data.data.first(where: { $0.name == "每日委托进度" })?.value,
+              let task: String = widgetUserData.data.data.first(where: { $0.name == "每日委托进度" })?.value ?? widgetUserData.data.data.first(where: { $0.name == "每日委托奖励" })?.value,
               let homeCoin: String = widgetUserData.data.data.first(where: { $0.name == "洞天财瓮" })?.value
         else { return nil }
 
@@ -143,7 +143,8 @@ struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
 
         let taskStr = task.split(separator: "/")
         if taskStr.count == 1 {
-            self.dailyTaskInfo = .init(totalTaskNum: 4, finishedTaskNum: 4, isTaskRewardReceived: true)
+            let isTaskRewardReceived: Bool = (task != "尚未领取")
+            self.dailyTaskInfo = .init(totalTaskNum: 4, finishedTaskNum: 4, isTaskRewardReceived: isTaskRewardReceived)
         } else {
             guard let finishedTaskNum = Int(taskStr.first ?? ""),
                   let totalTaskNum = Int(taskStr.last ?? "")
