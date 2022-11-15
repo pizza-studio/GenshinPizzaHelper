@@ -69,14 +69,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                 if configuration.simplifiedMode?.boolValue ?? true {
                     configs.first!.fetchSimplifiedResult { simplifiedResult in
                         let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name, showWeeklyBosses: false , showTransformer: false)
-                        switch simplifiedResult {
-                        case .success(let userData):
-                            #if !os(watchOS)
-                            UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                            #endif
-                        case .failure(_ ):
-                            refreshMinute = 1
-                        }
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                         completion(timeline)
                         print("Widget Fetch succeed")
@@ -84,14 +76,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                 } else {
                     configs.first!.fetchResult { result in
                         let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
-                        switch result {
-                        case .success(let userData):
-                            #if !os(watchOS)
-                            UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                            #endif
-                        case .failure(_ ):
-                            refreshMinute = 1
-                        }
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                         completion(timeline)
                         print("Widget Fetch succeed")
@@ -100,14 +84,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             case .global:
                 configs.first!.fetchResult { result in
                     let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
-                    switch result {
-                    case .success(let userData):
-                        #if !os(watchOS)
-                        UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                        #endif
-                    case .failure(_ ):
-                        refreshMinute = 1
-                    }
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -134,14 +110,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             if configuration.simplifiedMode?.boolValue ?? true {
                 config.fetchSimplifiedResult { simplifiedResult in
                     let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name, showWeeklyBosses: false , showTransformer: false)
-                    switch simplifiedResult {
-                    case .success(let userData):
-                        #if !os(watchOS)
-                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                        #endif
-                    case .failure(_ ):
-                        refreshMinute = 1
-                    }
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -149,14 +117,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             } else {
                 config.fetchResult { result in
                     let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
-                    switch result {
-                    case .success(let userData):
-                        #if !os(watchOS)
-                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                        #endif
-                    case .failure(_ ):
-                        refreshMinute = 1
-                    }
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -165,14 +125,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         case .global:
             config.fetchResult { result in
                 let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
-                switch result {
-                case .success(let userData):
-                    #if !os(watchOS)
-                    UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                    #endif
-                case .failure(_ ):
-                    refreshMinute = 1
-                }
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
                 print("Widget Fetch succeed")

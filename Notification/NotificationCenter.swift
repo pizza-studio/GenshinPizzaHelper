@@ -374,10 +374,9 @@ class UserNotificationCenter {
         guard !ignoreUids.contains(uid) else { return }
         createResinNotification(for: accountName, with: simplifiedUserData.resinInfo, uid: uid)
         createHomeCoinNotification(for: accountName, with: simplifiedUserData.homeCoinInfo, uid: uid)
-        createExpeditionNotification(for: accountName, with: simplifiedUserData.expeditionInfo, uid: uid)
         createDailyTaskNotification(for: accountName, with: simplifiedUserData.dailyTaskInfo, uid: uid)
     }
-    
+
     enum Object: String, CaseIterable {
         case resin = "resin"
         case homeCoin = "homeCoin"

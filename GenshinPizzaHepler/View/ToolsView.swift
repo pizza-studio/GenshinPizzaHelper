@@ -512,10 +512,8 @@ struct ToolsView: View {
         }
         Section {
             #if DEBUG
-            Button("fetch simplified data") {
-                viewModel.accounts.first?.config.fetchSimplifiedResult({ result in
-                    return 
-                })
+            Button("print notifications") {
+                UserNotificationCenter.shared.printAllNotificationRequest()
             }
             #endif
             NavigationLink(destination: GenshinDictionary()) {

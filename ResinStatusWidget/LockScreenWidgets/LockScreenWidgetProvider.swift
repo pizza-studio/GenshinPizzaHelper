@@ -64,15 +64,6 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                 if configuration.simplifiedMode?.boolValue ?? true {
                     configs.first!.fetchSimplifiedResult { simplifiedResult in
                         let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name)
-                        switch simplifiedResult {
-                        case .success(let userData):
-                            #if !os(watchOS)
-                            UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                            #endif
-                        case .failure(_ ):
-            //                refreshMinute = 1
-                            break
-                        }
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                         completion(timeline)
                         print("Widget Fetch succeed")
@@ -80,15 +71,6 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                 } else {
                     configs.first!.fetchResult { result in
                         let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name)
-                        switch result {
-                        case .success(let userData):
-                            #if !os(watchOS)
-                            UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                            #endif
-                        case .failure(_ ):
-            //                refreshMinute = 1
-                            break
-                        }
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                         completion(timeline)
                         print("Widget Fetch succeed")
@@ -97,15 +79,6 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             case .global:
                 configs.first!.fetchResult { result in
                     let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name)
-                    switch result {
-                    case .success(let userData):
-                        #if !os(watchOS)
-                        UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                        #endif
-                    case .failure(_ ):
-        //                refreshMinute = 1
-                        break
-                    }
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -132,15 +105,6 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             if configuration.simplifiedMode?.boolValue ?? true {
                 config.fetchSimplifiedResult { result in
                     let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .simplified(result: result), accountName: config.name)
-                    switch result {
-                    case .success(let userData):
-                        #if !os(watchOS)
-                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                        #endif
-                    case .failure(_ ):
-        //                refreshMinute = 1
-                        break
-                    }
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -148,16 +112,6 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             } else {
                 config.fetchResult { result in
                     let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name)
-
-                    switch result {
-                    case .success(let userData):
-                        #if !os(watchOS)
-                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                        #endif
-                    case .failure(_ ):
-        //                refreshMinute = 1
-                        break
-                    }
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -166,16 +120,6 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         case .global:
             config.fetchResult { result in
                 let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name)
-
-                switch result {
-                case .success(let userData):
-                    #if !os(watchOS)
-                    UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                    #endif
-                case .failure(_ ):
-    //                refreshMinute = 1
-                    break
-                }
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
                 print("Widget Fetch succeed")
