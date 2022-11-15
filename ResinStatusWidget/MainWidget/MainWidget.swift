@@ -28,6 +28,35 @@ struct WidgetViewEntryView : View {
     var dataKind: WidgetDataKind { entry.widgetDataKind }
     var viewConfig: WidgetViewConfiguration { entry.viewConfig }
     var accountName: String? { entry.accountName }
+
+    var url: URL? {
+        let errorURL: URL = {
+            var components = URLComponents()
+            components.scheme = "ophelperwidget"
+            components.host = "accountSetting"
+            components.queryItems = [
+                .init(name: "accountUUIDString", value: entry.accountUUIDString)
+            ]
+            return components.url!
+        }()
+
+        switch dataKind {
+        case .normal(let result):
+            switch result {
+            case .success(_):
+                return nil
+            case .failure(_):
+                return errorURL
+            }
+        case .simplified(let result):
+            switch result {
+            case .success(_):
+                return nil
+            case .failure(_):
+                return errorURL
+            }
+        }
+    }
     
     @ViewBuilder
     var body: some View {
@@ -49,7 +78,7 @@ struct WidgetViewEntryView : View {
                     WidgetErrorView(error: error, message: viewConfig.noticeMessage ?? "")
                 }
             }
-
         }
+        .widgetURL(url)
     }
 }

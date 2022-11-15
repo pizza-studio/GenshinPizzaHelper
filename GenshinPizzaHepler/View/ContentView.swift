@@ -42,6 +42,8 @@ struct ContentView: View {
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let buildVersion = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
 
+    @State var settingForAccountIndex: Int?
+
     var body: some View {
         ZStack {
             TabView(selection: index) {
@@ -116,6 +118,11 @@ struct ContentView: View {
                     .allowAutoDismiss(false)
             case .foundNewestVersion:
                 LatestVersionInfoView(sheetType: $sheetType, newestVersionInfos: $newestVersionInfos, isJustUpdated: $isJustUpdated)
+            case .accountSetting:
+                NavigationView {
+                    AccountDetailView(account: $viewModel.accounts[settingForAccountIndex!])
+                        .dismissableSheet(sheet: $sheetType)
+                }
             }
         }
         .onOpenURL { url in
@@ -124,6 +131,13 @@ struct ContentView: View {
                 print("jump to settings")
                 isJumpToSettingsView.toggle()
                 self.selection = 1
+            case "accountSetting":
+                self.selection = 2
+                if let accountUUIDString = URLComponents(url: url, resolvingAgainstBaseURL: true)?.queryItems?.first(where: { $0.name == "accountUUIDString" })?.value,
+                   let accountIndex = viewModel.accounts.firstIndex(where: { ($0.config.uuid?.uuidString ?? "") == accountUUIDString }) {
+                    settingForAccountIndex = accountIndex
+                    sheetType = .accountSetting
+                }
             default:
                 return
             }
@@ -201,4 +215,5 @@ enum ContentViewSheetType: Identifiable {
 
     case userPolicy
     case foundNewestVersion
+    case accountSetting
 }
