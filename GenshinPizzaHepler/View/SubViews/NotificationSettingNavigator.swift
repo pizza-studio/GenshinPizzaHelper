@@ -52,8 +52,7 @@ struct NotificationSettingNavigator: View {
             }
         }
         .alert(isPresented: $isNotificationHintShow) {
-            Alert(title: Text("通知功能需要帐号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。"))
+            Alert(title: Text("您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。"))
         }
     }
 }
-
