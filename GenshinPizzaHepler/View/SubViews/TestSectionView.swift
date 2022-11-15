@@ -58,10 +58,17 @@ struct TestSectionView: View {
                 }
             }
         } footer: {
-            Button("反复出现账号异常？点击查看解决方案") {
-                is1034WebShown.toggle()
+            if let error = error {
+                switch error {
+                case .accountAbnormal(_):
+                    Button("反复出现账号异常？点击查看解决方案") {
+                        is1034WebShown.toggle()
+                    }
+                    .font(.footnote)
+                default:
+                    EmptyView()
+                }
             }
-            .font(.footnote)
         }
         .sheet(isPresented: $is1034WebShown, content: {
             NavigationView {

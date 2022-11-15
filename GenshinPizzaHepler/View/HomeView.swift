@@ -147,7 +147,7 @@ private struct AccountInfoCards: View {
                                         .foregroundColor(.red)
                                     HStack {
                                         Spacer()
-                                        Text(account.config.name!)
+                                        Text(account.config.name ?? "")
                                             .foregroundColor(Color(UIColor.systemGray4))
                                             .font(.caption2)
                                             .padding(.horizontal)
