@@ -12,7 +12,6 @@ import SafariServices
 struct GetCookieWebView: View {
 
     @State var isAlertShow: Bool = false
-
     @Binding var isShown: Bool
     @Binding var cookie: String
     let region: Region
@@ -23,7 +22,7 @@ struct GetCookieWebView: View {
     var url: String {
         switch region {
         case .cn:
-            return "https://m.bbs.mihoyo.com/ys/"
+            return "https://user.mihoyo.com/#/login/captcha"
         case .global:
             return "https://m.hoyolab.com/"
         }
@@ -33,13 +32,14 @@ struct GetCookieWebView: View {
         switch region {
         case .cn:
             return [
-                "Host": "m.bbs.mihoyo.com",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+                "Host": "user.mihoyo.com",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
                 "Connection": "keep-alive",
                 "Accept-Encoding": "gzip, deflate, br",
                 "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
-                "Cookie": ""
+                "max-age": "0",
+
             ]
         case .global:
             return [
@@ -61,14 +61,38 @@ struct GetCookieWebView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("完成") {
                             cookie = ""
-                            DispatchQueue.main.async {
-                                dataStore.httpCookieStore.getAllCookies { cookies in
-                                    cookies.forEach {
-                                        print($0.name, $0.value)
-                                        cookie = cookie + $0.name + "=" + $0.value + "; "
+
+                            switch region {
+                            case .cn:
+                                DispatchQueue.main.async {
+
+                                    dataStore.httpCookieStore.getAllCookies { cookies in
+                                        let loginTicket: String = cookies.first(where: { cookie in
+                                            cookie.name == "login_ticket"
+                                        })?.value ?? ""
+                                        print("loginTicket: \(loginTicket)")
+                                        let loginUid: String = cookies.first(where: { cookie in
+                                            cookie.name == "login_uid"
+                                        })?.value ?? ""
+                                        API.Features.getMultiTokenByLoginTicket(loginTicket: loginTicket, loginUid: loginUid) { result in
+                                            cookie += "stuid=" + loginUid + "; "
+                                            cookie += "stoken=" + ((try? result.get().stoken) ?? "") + "; "
+                                            cookie += "ltuid=" + loginUid + "; "
+                                            cookie += "ltoken=" + ((try? result.get().ltoken) ?? "") + "; "
+                                            isShown.toggle()
+                                        }
                                     }
                                 }
-                                isShown.toggle()
+                            case .global:
+                                DispatchQueue.main.async {
+                                    dataStore.httpCookieStore.getAllCookies { cookies in
+                                        cookies.forEach {
+                                            print($0.name, $0.value)
+                                            cookie = cookie + $0.name + "=" + $0.value + "; "
+                                        }
+                                    }
+                                    isShown.toggle()
+                                }
                             }
                         }
                     }

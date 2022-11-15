@@ -226,6 +226,12 @@
 		BFFD823728A680E000616CE1 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823928A73A5400616CE1 /* ReviewHandler.swift */; };
+		EA059CD7292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
+		EA059CD8292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
+		EA059CD9292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
+		EA059CDA292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
+		EA059CDB292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
+		EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
 		EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */; };
 		EA06373128CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */; };
 		EA0718C329059602009D4730 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
@@ -742,6 +748,7 @@
 		BFFD823128A651F500616CE1 /* RingProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressBarView.swift; sourceTree = "<group>"; };
 		BFFD823528A680E000616CE1 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		BFFD823928A73A5400616CE1 /* ReviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHandler.swift; sourceTree = "<group>"; };
+		EA059CD6292347E800400DE3 /* MultiTokenResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTokenResult.swift; sourceTree = "<group>"; };
 		EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCorner.swift; sourceTree = "<group>"; };
 		EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-NoWatch.xcassets"; sourceTree = "<group>"; };
 		EA07C65528B11DB40030E338 /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
@@ -1355,6 +1362,7 @@
 				EA56E07528A26C0D00A64262 /* FetchedModels */,
 				EA784CC2290245CC00918F64 /* HomeAPIModel */,
 				EA406810292228A200F23479 /* WidgetData.swift */,
+				EA059CD6292347E800400DE3 /* MultiTokenResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1859,6 +1867,7 @@
 				EAE95CC128CE0F7A00D975CB /* LockScreenResinWidgetInline.swift in Sources */,
 				EAE95CCA28CE0FD300D975CB /* Error.swift in Sources */,
 				EA06373128CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
+				EA059CDB292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
 				EAB110EC28CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift in Sources */,
 				EA42251B28E2BBB8006D4578 /* LockScreenWidgetProvider.swift in Sources */,
@@ -1930,6 +1939,7 @@
 				BFCC068828C9BBC8003E4A54 /* ViewModel.swift in Sources */,
 				BFCC06A528C9BD9E003E4A54 /* AccountIntents.intentdefinition in Sources */,
 				BFCC068628C9BBC8003E4A54 /* BackgroundOptions.swift in Sources */,
+				EA059CDA292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				BFCC066628C9B6A1003E4A54 /* ContentView.swift in Sources */,
 				BFCC068928C9BBC8003E4A54 /* UserData.swift in Sources */,
 				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
@@ -2039,6 +2049,7 @@
 				EA09A01A28A2B8BD0023B4AF /* TransformerData.swift in Sources */,
 				BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */,
 				EAE569FE28EFC5CF000D6856 /* SpiralAbyssDetail.swift in Sources */,
+				EA059CD9292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				EA09A01428A2B8B20023B4AF /* ExpeditionInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2075,6 +2086,7 @@
 				BFFD822D28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */,
+				EA059CD8292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				EAE95C6F28CDD38100D975CB /* LockScreenResinWidgetCircular.swift in Sources */,
 				EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
 				EAB110FE28CF8422009FDF07 /* LockScreenExpeditionWidgetCircular.swift in Sources */,
@@ -2217,6 +2229,7 @@
 				EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */,
 				EA7F9C6F28AFF9B300DEAFEB /* NotificationCenter.swift in Sources */,
 				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,
+				EA059CD7292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */,
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */,
@@ -2333,6 +2346,7 @@
 				EAE95CF028CE112B00D975CB /* AccountIntents.intentdefinition in Sources */,
 				EAE95CF728CE11A100D975CB /* Account.swift in Sources */,
 				EA6B914D290EB3BA00B5230B /* GlobalVar.swift in Sources */,
+				EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				EAE95D0028CE11A500D975CB /* UserData.swift in Sources */,
 				EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */,
 				EAE95D0328CE11A700D975CB /* RecoveryTime.swift in Sources */,
