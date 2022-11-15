@@ -56,12 +56,60 @@ struct MainWidgetProvider: IntentTimelineProvider {
             if configs.count == 1 {
                 viewConfig = WidgetViewConfiguration(configuration, nil)
                 // 如果还未选择账号且只有一个账号，默认获取第一个
-                configs.first!.fetchResult { result in
-                    let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
-                    let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    completion(timeline)
-                    print("Widget Fetch succeed")
+                switch configs.first!.server.region {
+                case .cn:
+                    if configuration.simplifiedMode?.boolValue ?? true {
+                        configs.first!.fetchSimplifiedResult { simplifiedResult in
+                            let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: simplifiedResult))
+                            let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                            switch simplifiedResult {
+                            case .success(let userData):
+                                #if !os(watchOS)
+                                UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
+                                #endif
+                            case .failure(_ ):
+                //                refreshMinute = 1
+                                break
+                            }
+                            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                            completion(timeline)
+                            print("Widget Fetch succeed")
+                        }
+                    } else {
+                        configs.first!.fetchResult { result in
+                            let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
+                            let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                            switch result {
+                            case .success(let userData):
+                                #if !os(watchOS)
+                                UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
+                                #endif
+                            case .failure(_ ):
+                //                refreshMinute = 1
+                                break
+                            }
+                            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                            completion(timeline)
+                            print("Widget Fetch succeed")
+                        }
+                    }
+                case .global:
+                    configs.first!.fetchResult { result in
+                        let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
+                        let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                        switch result {
+                        case .success(let userData):
+                            #if !os(watchOS)
+                            UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
+                            #endif
+                        case .failure(_ ):
+            //                refreshMinute = 1
+                            break
+                        }
+                        let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                        completion(timeline)
+                        print("Widget Fetch succeed")
+                    }
                 }
             } else {
                 // 如果还没设置账号，要求进入App获取账号
@@ -90,18 +138,51 @@ struct MainWidgetProvider: IntentTimelineProvider {
         }
         
         // 正常情况
-        config.fetchResult { result in
-            let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
-            let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance)
-            switch result {
-            case .success(let userData):
-                UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-            case .failure(_ ):
-                break
+        switch config.server.region {
+        case .cn:
+            if configuration.simplifiedMode?.boolValue ?? true {
+                config.fetchSimplifiedResult { simplifiedResult in
+                    let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: simplifiedResult))
+                    let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                    switch simplifiedResult {
+                    case .success(let userData):
+                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
+                    case .failure(_ ):
+                        break
+                    }
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                    print("Widget Fetch succeed")
+                }
+            } else {
+                config.fetchResult { result in
+                    let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
+                    let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                    switch result {
+                    case .success(let userData):
+                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
+                    case .failure(_ ):
+                        break
+                    }
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                    print("Widget Fetch succeed")
+                }
             }
-            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-            completion(timeline)
-            print("Widget Fetch succeed")
+        case .global:
+            config.fetchResult { result in
+                let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
+                let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
+                switch result {
+                case .success(let userData):
+                    UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
+                case .failure(_ ):
+                    break
+                }
+                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                completion(timeline)
+                print("Widget Fetch succeed")
+            }
         }
     }
 
@@ -110,6 +191,16 @@ struct MainWidgetProvider: IntentTimelineProvider {
         switch result {
         case .success(let data):
             return [data.resinInfo.score, data.transformerInfo.score, data.homeCoinInfo.score, data.expeditionInfo.score, data.dailyTaskInfo.score].max() ?? 0
+        case .failure(_):
+            return 0
+        }
+    }
+
+    static func calculateRelevanceScore(result: SimplifiedUserDataResult) -> Float {
+        // 结果为0-1
+        switch result {
+        case .success(let data):
+            return [data.resinInfo.score, data.homeCoinInfo.score, data.expeditionInfo.score, data.dailyTaskInfo.score].max() ?? 0
         case .failure(_):
             return 0
         }

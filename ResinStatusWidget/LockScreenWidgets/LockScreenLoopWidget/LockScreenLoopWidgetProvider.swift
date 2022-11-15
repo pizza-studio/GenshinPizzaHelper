@@ -63,11 +63,54 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         guard configuration.account != nil else {
             // 如果还未选择账号，默认获取第一个
-            configs.first!.fetchResult { result in
-                let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
-                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                completion(timeline)
-                print("Widget Fetch succeed")
+            switch configs.first!.server.region {
+            case .cn:
+                if configuration.simplifiedMode?.boolValue ?? true {
+                    configs.first!.fetchSimplifiedResult { simplifiedResult in
+                        let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name, showWeeklyBosses: false , showTransformer: false)
+                        switch simplifiedResult {
+                        case .success(let userData):
+                            #if !os(watchOS)
+                            UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
+                            #endif
+                        case .failure(_ ):
+                            refreshMinute = 1
+                        }
+                        let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                        completion(timeline)
+                        print("Widget Fetch succeed")
+                    }
+                } else {
+                    configs.first!.fetchResult { result in
+                        let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
+                        switch result {
+                        case .success(let userData):
+                            #if !os(watchOS)
+                            UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
+                            #endif
+                        case .failure(_ ):
+                            refreshMinute = 1
+                        }
+                        let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                        completion(timeline)
+                        print("Widget Fetch succeed")
+                    }
+                }
+            case .global:
+                configs.first!.fetchResult { result in
+                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
+                    switch result {
+                    case .success(let userData):
+                        #if !os(watchOS)
+                        UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
+                        #endif
+                    case .failure(_ ):
+                        refreshMinute = 1
+                    }
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                    print("Widget Fetch succeed")
+                }
             }
             return
         }
@@ -85,20 +128,54 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         }
 
         // 正常情况
-        config.fetchResult { result in
-            let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
-
-            switch result {
-            case .success(let userData):
-                #if !os(watchOS)
-                UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                #endif
-            case .failure(_ ):
-                refreshMinute = 1
+        switch config.server.region {
+        case .cn:
+            if configuration.simplifiedMode?.boolValue ?? true {
+                config.fetchSimplifiedResult { simplifiedResult in
+                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name, showWeeklyBosses: false , showTransformer: false)
+                    switch simplifiedResult {
+                    case .success(let userData):
+                        #if !os(watchOS)
+                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
+                        #endif
+                    case .failure(_ ):
+                        refreshMinute = 1
+                    }
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                    print("Widget Fetch succeed")
+                }
+            } else {
+                config.fetchResult { result in
+                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
+                    switch result {
+                    case .success(let userData):
+                        #if !os(watchOS)
+                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
+                        #endif
+                    case .failure(_ ):
+                        refreshMinute = 1
+                    }
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)
+                    print("Widget Fetch succeed")
+                }
             }
-            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-            completion(timeline)
-            print("Widget Fetch succeed")
+        case .global:
+            config.fetchResult { result in
+                let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool)
+                switch result {
+                case .success(let userData):
+                    #if !os(watchOS)
+                    UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
+                    #endif
+                case .failure(_ ):
+                    refreshMinute = 1
+                }
+                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                completion(timeline)
+                print("Widget Fetch succeed")
+            }
         }
     }
 }
