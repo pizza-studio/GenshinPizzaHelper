@@ -99,12 +99,25 @@ extension View {
     }
 }
 
-private struct AccountInfoCards: View {
+private struct PinedAccountInfoCard: View {
     @EnvironmentObject var viewModel: ViewModel
     var animation: Namespace.ID
+    @AppStorage("pinToTopAccountUUIDString") var pinToTopAccountUUIDString: String = ""
+    var accountIndex: Int? {
+        viewModel.accounts.firstIndex(where: { $0.config.uuid?.uuidString ?? "1" == pinToTopAccountUUIDString })
+    }
+
+    var bindingAccount: Binding<Account>? {
+        if let accountIndex = accountIndex {
+            return $viewModel.accounts[accountIndex]
+        } else {
+            return nil
+        }
+    }
 
     var body: some View {
-        ForEach($viewModel.accounts, id: \.config.uuid) { $account in
+        if let accountIndex = accountIndex {
+            let account: Account = viewModel.accounts[accountIndex]
             if account != viewModel.showDetailOfAccount {
                 if account.result != nil {
                     switch account.result! {
@@ -134,6 +147,91 @@ private struct AccountInfoCards: View {
                                     }
                             } else {
                                 gameInfoBlock
+                            }
+                        }
+                    case .failure( _) :
+                        HStack {
+                            NavigationLink {
+                                AccountDetailView(account: bindingAccount!)
+                            } label: {
+                                ZStack {
+                                    Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                                        .padding()
+                                        .foregroundColor(.red)
+                                    HStack {
+                                        Spacer()
+                                        Text(account.config.name ?? "")
+                                            .foregroundColor(Color(UIColor.systemGray4))
+                                            .font(.caption2)
+                                            .padding(.horizontal)
+                                    }
+                                }
+                                .padding([.bottom, .horizontal])
+                            }
+                        }
+                    }
+                } else {
+                    ProgressView()
+                        .padding([.bottom, .horizontal])
+                }
+            }
+        } else {
+            EmptyView()
+        }
+    }
+}
+
+private struct AccountInfoCards: View {
+    @EnvironmentObject var viewModel: ViewModel
+    var animation: Namespace.ID
+
+    @AppStorage("pinToTopAccountUUIDString") var pinToTopAccountUUIDString: String = ""
+
+    var body: some View {
+        PinedAccountInfoCard(animation: animation)
+        ForEach($viewModel.accounts, id: \.config.uuid) { $account in
+            if account != viewModel.showDetailOfAccount && account != viewModel.accounts.first(where: { $0.config.uuid?.uuidString ?? "1" == pinToTopAccountUUIDString }) {
+                if account.result != nil {
+                    switch account.result! {
+                    case .success(let userData):
+                        // 我也不知道为什么如果不检查的话删除账号会崩溃
+                        if account.config.uuid != nil {
+                            let gameInfoBlock: some View = GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, fetchComplete: account.fetchComplete)
+                                .padding([.bottom, .horizontal])
+                                .listRowBackground(Color.white.opacity(0))
+                                .onTapGesture {
+                                    simpleTaptic(type: .medium)
+                                    withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.8)) {
+                                        viewModel.showDetailOfAccount = account
+                                    }
+                                }
+                            if #available (iOS 16, *) {
+                                gameInfoBlock
+                                    .contextMenu {
+                                        Button("顶置".localized) {
+                                            withAnimation {
+                                                pinToTopAccountUUIDString = account.config.uuid!.uuidString
+                                            }
+                                        }
+                                        Button("保存图片".localized) {
+                                            let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background).environment(\.locale, .init(identifier: Locale.current.identifier))
+                                            let renderer = ImageRenderer(content: view)
+                                            renderer.scale = UIScreen.main.scale
+                                            if let image = renderer.uiImage {
+                                                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                                            }
+                                        }
+
+                                    }
+                            } else {
+                                gameInfoBlock
+                                    .contextMenu {
+                                        Button("顶置".localized) {
+                                            withAnimation {
+                                                pinToTopAccountUUIDString = account.config.uuid!.uuidString
+                                            }
+                                        }
+                                    }
                             }
                         }
                     case .failure( _) :
