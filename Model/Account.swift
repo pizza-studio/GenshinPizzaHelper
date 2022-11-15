@@ -70,6 +70,18 @@ extension AccountConfiguration {
         guard cookie.contains("stoken") else { completion(.failure(.noStoken)); return }
         API.Features.fetchSimplifiedInfos(cookie: cookie) { result in
             completion(result)
+            #if !os(watchOS)
+            switch result {
+            case .success(let data):
+                UserNotificationCenter.shared.createAllNotification(
+                    for: self.name!,
+                    with: data,
+                    uid: self.uid!
+                )
+            case .failure(_):
+                break
+            }
+            #endif
         }
     }
 

@@ -62,15 +62,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                         configs.first!.fetchSimplifiedResult { simplifiedResult in
                             let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: simplifiedResult))
                             let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
-                            switch simplifiedResult {
-                            case .success(let userData):
-                                #if !os(watchOS)
-                                UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                                #endif
-                            case .failure(_ ):
-                //                refreshMinute = 1
-                                break
-                            }
                             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                             completion(timeline)
                             print("Widget Fetch succeed")
@@ -79,15 +70,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                         configs.first!.fetchResult { result in
                             let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
                             let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
-                            switch result {
-                            case .success(let userData):
-                                #if !os(watchOS)
-                                UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                                #endif
-                            case .failure(_ ):
-                //                refreshMinute = 1
-                                break
-                            }
                             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                             completion(timeline)
                             print("Widget Fetch succeed")
@@ -97,15 +79,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                     configs.first!.fetchResult { result in
                         let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
                         let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance)
-                        switch result {
-                        case .success(let userData):
-                            #if !os(watchOS)
-                            UserNotificationCenter.shared.createAllNotification(for: configs.first!.name ?? "", with: userData, uid: configs.first!.uid!)
-                            #endif
-                        case .failure(_ ):
-            //                refreshMinute = 1
-                            break
-                        }
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                         completion(timeline)
                         print("Widget Fetch succeed")
@@ -144,12 +117,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                 config.fetchSimplifiedResult { simplifiedResult in
                     let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: simplifiedResult))
                     let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), viewConfig: viewConfig, accountName: config.name, relevance: relevance)
-                    switch simplifiedResult {
-                    case .success(let userData):
-                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                    case .failure(_ ):
-                        break
-                    }
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -158,12 +125,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                 config.fetchResult { result in
                     let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
                     let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance)
-                    switch result {
-                    case .success(let userData):
-                        UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                    case .failure(_ ):
-                        break
-                    }
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -173,12 +134,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
                 let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance)
-                switch result {
-                case .success(let userData):
-                    UserNotificationCenter.shared.createAllNotification(for: config.name ?? "", with: userData, uid: config.uid!)
-                case .failure(_ ):
-                    break
-                }
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
                 print("Widget Fetch succeed")
