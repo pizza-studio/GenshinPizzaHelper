@@ -661,7 +661,7 @@ struct UtilizationAPIParameters {
     }
 
     func detail() -> String {
-        "\(serverChoice.describe())·\(season.describe())·\(floor)层"
+        return String(format: NSLocalizedString("%@·%@·%lld层", comment: "detail"), serverChoice.describe(), season.describe(), floor)
     }
 }
 
@@ -725,7 +725,7 @@ struct TeamUtilizationAPIParameters {
     var floor: Int = 12
 
     func describe() -> String {
-        "·仅包含满星玩家".localized
+        "·仅包含满星玩家·包含旅行者的队伍已合并".localized
     }
     var half: Half = .all
 
