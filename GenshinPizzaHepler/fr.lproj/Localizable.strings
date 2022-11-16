@@ -926,6 +926,15 @@
 // MARK: - 2.6.4
 "%@·%@·%lld层" = "%@·%@·Floor %lld";
 
+// 3.1 namecard
+"赛诺・幽缄" = "Cyno - Sérénité";
+"妮露・莲舞" = "Nilou - Danse du lotus";
+"坎蒂丝・苍鹭" = "Candace - Héronne cendrée";
+"纪行・归风" = "PB - Vent de retour";
+"成就・七芒" = "Succès - Sept lumières";
+"须弥・踏沙" = "Sumeru - Marche-sable";
+"成就・镜梦" = "Succès - Rêves reflétés";
+
 // widgetsetting
 "洞天宝钱回复速度" = "Realm currency recovery speed";
 "（仅简洁模式）洞天宝钱回复速度。未正确设置可能导致洞天宝钱通知无法正确触发。" = "(Simplified mode only) Realm currency recovery speed. Not setting it correctly may cause the realm currency notification to not trigger correctly.";
