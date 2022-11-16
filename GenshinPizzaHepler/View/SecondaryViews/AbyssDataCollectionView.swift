@@ -736,7 +736,7 @@ struct TeamUtilizationAPIParameters {
     }
 
     func detail() -> String {
-        "\(serverChoice.describe())·\(season.describe())·\(floor)层·\(half.rawValue.localized)"
+        return String(format: NSLocalizedString("%@·%@·%lld层·%@", comment: "detail"), serverChoice.describe(), season.describe(), floor, half.rawValue.localized)
     }
 }
 
