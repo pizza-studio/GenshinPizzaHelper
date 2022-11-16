@@ -13,7 +13,7 @@ struct ContentView: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    @State var selection: Int = UserDefaults.standard.integer(forKey: "AppTabIndex")
+    @State var selection: Int = UserDefaults.standard.integer(forKey: "AppTabIndex") == 3 ? 0 : UserDefaults.standard.integer(forKey: "AppTabIndex")
 
     @State var sheetType: ContentViewSheetType? = nil
     @State var newestVersionInfos: NewestVersion? = nil
