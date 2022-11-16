@@ -16,7 +16,7 @@ struct ToolsView: View {
     @AppStorage("toolViewShowingAccountUUIDString") var showingAccountUUIDString: String?
     var account: Account? {
         accounts.first { account in
-            account.config.uuid!.uuidString == showingAccountUUIDString
+            (account.config.uuid?.uuidString ?? "123") == showingAccountUUIDString
         }
     }
 
