@@ -146,6 +146,11 @@ struct AbyssDataCollectionView: View {
                 ShowTeamPercentageView()
             }
         }
+        .onAppear {
+            if viewModel.charLoc == nil || viewModel.charMap == nil {
+                viewModel.refreshCharLocAndCharMap()
+            }
+        }
         .environmentObject(abyssDataCollectionViewModel)
         .listStyle(.insetGrouped)
         .hideTabBar()

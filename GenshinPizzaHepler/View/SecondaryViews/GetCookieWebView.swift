@@ -218,8 +218,8 @@ struct GetLedgerCookieWebView<V>: View {
                                         cookie = cookieDict.map { key, value in
                                             "\(key)=\(value); "
                                         }.joined()
+                                        viewModel.saveAccount()
                                     }
-
                                     sheetType = nil
                                 }
                             case .global:
@@ -231,6 +231,7 @@ struct GetLedgerCookieWebView<V>: View {
                                             cookie = cookie + $0.name + "=" + $0.value + "; "
                                         }
                                     }
+                                    viewModel.saveAccount()
                                     sheetType = nil
                                 }
                             }
@@ -246,9 +247,6 @@ struct GetLedgerCookieWebView<V>: View {
         }
         .onAppear {
             isAlertShow.toggle()
-        }
-        .onDisappear {
-            viewModel.saveAccount()
         }
     }
 }
