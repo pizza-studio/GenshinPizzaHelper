@@ -66,7 +66,7 @@ struct ToolsView: View {
                 case .spiralAbyss:
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
-                    GetLedgerCookieWebView(title: "请登录「\(viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.name ?? "")」", sheetType: $sheetType, cookie: Binding($viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.cookie)!, region: viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.server.region)
+                    GetLedgerCookieWebView(title: String(format: NSLocalizedString("请登录「%@」", comment: ""), viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.name ?? "") , sheetType: $sheetType, cookie: Binding($viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.cookie)!, region: viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.server.region)
                         .onDisappear {
                             viewModel.refreshLedgerData()
                         }

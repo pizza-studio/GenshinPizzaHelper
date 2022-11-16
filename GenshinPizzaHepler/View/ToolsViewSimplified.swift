@@ -50,17 +50,10 @@ struct ToolsViewSimplified: View {
                 case .spiralAbyss:
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
-                    NavigationView {
-                        AccountDetailView(account: $viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!], isWebShown: true)
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    Button("完成") {
-                                        sheetType = nil
-                                        viewModel.refreshLedgerData()
-                                    }
-                                }
-                            }
-                    }
+                    GetLedgerCookieWebView(title: String(format: NSLocalizedString("请登录「%@」", comment: ""), viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.name ?? "") , sheetType: $sheetType, cookie: Binding($viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.cookie)!, region: viewModel.accounts[viewModel.accounts.firstIndex(of: account!)!].config.server.region)
+                        .onDisappear {
+                            viewModel.refreshLedgerData()
+                        }
                 case .allAvatarList:
                     allAvatarListView()
                 }
