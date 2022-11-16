@@ -312,7 +312,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>简洁模式（仅米游社用户）</string>
+					<string>简洁模式（仅国服用户）</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>kvvRzi</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -750,7 +750,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>简洁模式（仅米游社用户）</string>
+					<string>简洁模式（仅国服用户）</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>vVnBDJ</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -874,7 +874,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>简洁模式（仅米游社用户）</string>
+					<string>简洁模式（仅国服用户）</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>QGKioO</string>
 					<key>INIntentParameterDisplayPriority</key>
