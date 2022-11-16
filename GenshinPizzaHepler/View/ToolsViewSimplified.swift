@@ -106,7 +106,7 @@ struct ToolsViewSimplified: View {
                         }
                     }
                 } footer: {
-                    Text("UID: \(account.config.uid!)")
+                    Text("UID: \(account.config.uid ?? "")")
                 }
             } else {
                 Section {
@@ -116,7 +116,7 @@ struct ToolsViewSimplified: View {
                         selectAccountManuButton()
                     }
                 } footer: {
-                    Text("UID: \(account.config.uid!)")
+                    Text("UID: \(account.config.uid ?? "")")
                 }
             }
         } else {
