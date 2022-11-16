@@ -238,11 +238,11 @@ struct AbyssDataCollectionView: View {
                             let teams: [TeamUtilizationData.Team] = {
                                 switch abyssDataCollectionViewModel.teamUtilizationParams.half {
                                 case .all:
-                                    return data.teams
+                                    return data.teams.sorted(by: { $0.percentage > $1.percentage })
                                 case .firstHalf:
-                                    return data.teamsFH
+                                    return data.teamsFH.sorted(by: { $0.percentage > $1.percentage })
                                 case .secondHalf:
-                                    return data.teamsSH
+                                    return data.teamsSH.sorted(by: { $0.percentage > $1.percentage })
                                 }
                             }()
                             ShowTeamPercentageShare(teams: teams.prefix(32).sorted(by: { $0.percentage > $1.percentage }),
