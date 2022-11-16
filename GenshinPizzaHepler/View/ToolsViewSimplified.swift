@@ -460,7 +460,7 @@ struct ToolsViewSimplified: View {
                 AbyssDataCollectionView()
             } label: {
                 Label {
-                    Text("深渊统计")
+                    Text("深渊统计榜单")
                 } icon: {
                     Image("UI_MarkTower_EffigyChallenge_01").resizable().scaledToFit()
                 }
