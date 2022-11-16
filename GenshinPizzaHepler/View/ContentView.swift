@@ -13,11 +13,7 @@ struct ContentView: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    #if DEBUG
-    @State var selection: Int = 1
-    #else
-    @State var selection: Int = 0
-    #endif
+    @State var selection: Int = UserDefaults.standard.integer(forKey: "AppTabIndex")
 
     @State var sheetType: ContentViewSheetType? = nil
     @State var newestVersionInfos: NewestVersion? = nil
@@ -30,6 +26,8 @@ struct ContentView: View {
                 simpleTaptic(type: .medium)
             }
             self.selection = $0
+            UserDefaults.standard.setValue($0, forKey: "AppTabIndex")
+            UserDefaults.standard.synchronize()
         }
     )}
 
