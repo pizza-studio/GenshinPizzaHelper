@@ -12,6 +12,7 @@ struct AccountOnlyEntry: TimelineEntry {
     let date: Date
     let widgetDataKind: WidgetDataKind
     var accountName: String? = nil
+    let accountUUIDString: String?
 }
 
 struct LockScreenWidgetProvider: IntentTimelineProvider {
@@ -30,11 +31,11 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
     }
 
     func placeholder(in context: Context) -> AccountOnlyEntry {
-        AccountOnlyEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧")
+        AccountOnlyEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧", accountUUIDString: nil)
     }
 
     func getSnapshot(for configuration: SelectOnlyAccountIntent, in context: Context, completion: @escaping (AccountOnlyEntry) -> ()) {
-        let entry = AccountOnlyEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧")
+        let entry = AccountOnlyEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧", accountUUIDString: nil)
         completion(entry)
     }
 
@@ -51,7 +52,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         let configs = accountConfigurationModel.fetchAccountConfigs()
 
         guard !configs.isEmpty else {
-            let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)))
+            let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)), accountUUIDString: nil)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             return
@@ -63,14 +64,14 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             case .cn:
                 if configuration.simplifiedMode?.boolValue ?? true {
                     configs.first!.fetchSimplifiedResult { simplifiedResult in
-                        let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name)
+                        let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name, accountUUIDString: configs.first!.uuid?.uuidString)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                         completion(timeline)
                         print("Widget Fetch succeed")
                     }
                 } else {
                     configs.first!.fetchResult { result in
-                        let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name)
+                        let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, accountUUIDString: configs.first?.uuid?.uuidString)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                         completion(timeline)
                         print("Widget Fetch succeed")
@@ -78,7 +79,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                 }
             case .global:
                 configs.first!.fetchResult { result in
-                    let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name)
+                    let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, accountUUIDString: configs.first?.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -92,7 +93,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
 
         guard let config = configs.first(where: { $0.uuid == selectedAccountUUID }) else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
-            let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)))
+            let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)), accountUUIDString: nil)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Need to choose account")
@@ -104,14 +105,14 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         case .cn:
             if configuration.simplifiedMode?.boolValue ?? true {
                 config.fetchSimplifiedResult { result in
-                    let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .simplified(result: result), accountName: config.name)
+                    let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .simplified(result: result), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
                 }
             } else {
                 config.fetchResult { result in
-                    let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name)
+                    let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                     completion(timeline)
                     print("Widget Fetch succeed")
@@ -119,7 +120,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             }
         case .global:
             config.fetchResult { result in
-                let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name)
+                let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
                 print("Widget Fetch succeed")

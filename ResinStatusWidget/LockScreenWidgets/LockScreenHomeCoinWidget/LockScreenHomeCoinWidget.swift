@@ -34,31 +34,64 @@ struct LockScreenHomeCoinWidgetView: View {
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }
 
-    var body: some View {
-        switch dataKind {
+    var url: URL? {
+        let errorURL: URL = {
+            var components = URLComponents()
+            components.scheme = "ophelperwidget"
+            components.host = "accountSetting"
+            components.queryItems = [
+                .init(name: "accountUUIDString", value: entry.accountUUIDString)
+            ]
+            return components.url!
+        }()
+
+        switch entry.widgetDataKind {
         case .normal(let result):
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenHomeCoinWidgetCorner(result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenHomeCoinWidgetCircular(result: result)
-            default:
-                EmptyView()
+            switch result {
+            case .success(_):
+                return nil
+            case .failure(_):
+                return errorURL
             }
         case .simplified(let result):
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenHomeCoinWidgetCorner(result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenHomeCoinWidgetCircular(result: result)
-            default:
-                EmptyView()
+            switch result {
+            case .success(_):
+                return nil
+            case .failure(_):
+                return errorURL
             }
         }
+    }
+
+    var body: some View {
+        Group {
+            switch dataKind {
+            case .normal(let result):
+                switch family {
+                #if os(watchOS)
+                case .accessoryCorner:
+                    LockScreenHomeCoinWidgetCorner(result: result)
+                #endif
+                case .accessoryCircular:
+                    LockScreenHomeCoinWidgetCircular(result: result)
+                default:
+                    EmptyView()
+                }
+            case .simplified(let result):
+                switch family {
+                #if os(watchOS)
+                case .accessoryCorner:
+                    LockScreenHomeCoinWidgetCorner(result: result)
+                #endif
+                case .accessoryCircular:
+                    LockScreenHomeCoinWidgetCircular(result: result)
+                default:
+                    EmptyView()
+                }
+            }
+        }
+        .widgetURL(url)
+
 
     }
 }

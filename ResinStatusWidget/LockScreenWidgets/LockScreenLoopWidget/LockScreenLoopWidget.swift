@@ -35,31 +35,64 @@ struct LockScreenLoopWidgetView: View {
     var showWeeklyBosses: Bool { entry.showWeeklyBosses }
     var showTransformer: Bool { entry.showTransformer }
 
-    var body: some View {
-        switch dataKind {
+    var url: URL? {
+        let errorURL: URL = {
+            var components = URLComponents()
+            components.scheme = "ophelperwidget"
+            components.host = "accountSetting"
+            components.queryItems = [
+                .init(name: "accountUUIDString", value: entry.accountUUIDString)
+            ]
+            return components.url!
+        }()
+
+        switch entry.widgetDataKind {
         case .normal(let result):
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenLoopWidgetCorner(result: result)
-            #endif
-            case .accessoryCircular:
-                LockScreenLoopWidgetCircular(result: result, showWeeklyBosses: showWeeklyBosses, showTransformer: showTransformer)
-            default:
-                EmptyView()
+            switch result {
+            case .success(_):
+                return nil
+            case .failure(_):
+                return errorURL
             }
         case .simplified(let result):
-            switch family {
-            #if os(watchOS)
-            case .accessoryCorner:
-                LockScreenLoopWidgetCorner(result: result)
-            #endif
-            case .accessoryCircular:
-                SimplifiedLockScreenLoopWidgetCircular(result: result, showWeeklyBosses: showWeeklyBosses, showTransformer: showTransformer)
-            default:
-                EmptyView()
+            switch result {
+            case .success(_):
+                return nil
+            case .failure(_):
+                return errorURL
             }
         }
+    }
+
+    var body: some View {
+        Group {
+            switch dataKind {
+            case .normal(let result):
+                switch family {
+                #if os(watchOS)
+                case .accessoryCorner:
+                    LockScreenLoopWidgetCorner(result: result)
+                #endif
+                case .accessoryCircular:
+                    LockScreenLoopWidgetCircular(result: result, showWeeklyBosses: showWeeklyBosses, showTransformer: showTransformer)
+                default:
+                    EmptyView()
+                }
+            case .simplified(let result):
+                switch family {
+                #if os(watchOS)
+                case .accessoryCorner:
+                    LockScreenLoopWidgetCorner(result: result)
+                #endif
+                case .accessoryCircular:
+                    SimplifiedLockScreenLoopWidgetCircular(result: result, showWeeklyBosses: showWeeklyBosses, showTransformer: showTransformer)
+                default:
+                    EmptyView()
+                }
+            }
+        }
+        .widgetURL(url)
+
     }
 }
 

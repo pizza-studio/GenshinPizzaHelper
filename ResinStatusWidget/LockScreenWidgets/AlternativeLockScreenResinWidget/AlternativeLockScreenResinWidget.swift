@@ -29,12 +29,45 @@ struct AlternativeLockScreenResinWidgetView: View {
     var dataKind: WidgetDataKind { entry.widgetDataKind }
     var accountName: String? { entry.accountName }
 
-    var body: some View {
-        switch dataKind {
+    var url: URL? {
+        let errorURL: URL = {
+            var components = URLComponents()
+            components.scheme = "ophelperwidget"
+            components.host = "accountSetting"
+            components.queryItems = [
+                .init(name: "accountUUIDString", value: entry.accountUUIDString)
+            ]
+            return components.url!
+        }()
+
+        switch entry.widgetDataKind {
         case .normal(let result):
-            AlternativeLockScreenResinWidgetCircular(result: result)
+            switch result {
+            case .success(_):
+                return nil
+            case .failure(_):
+                return errorURL
+            }
         case .simplified(let result):
-            AlternativeLockScreenResinWidgetCircular(result: result)
+            switch result {
+            case .success(_):
+                return nil
+            case .failure(_):
+                return errorURL
+            }
         }
+    }
+
+    var body: some View {
+        Group {
+            switch dataKind {
+            case .normal(let result):
+                AlternativeLockScreenResinWidgetCircular(result: result)
+            case .simplified(let result):
+                AlternativeLockScreenResinWidgetCircular(result: result)
+            }
+        }
+        .widgetURL(url)
+
     }
 }

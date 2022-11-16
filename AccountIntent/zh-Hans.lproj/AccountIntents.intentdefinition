@@ -319,8 +319,6 @@
 					<integer>4</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
 						<key>INIntentParameterMetadataFalseDisplayName</key>
 						<string>false</string>
 						<key>INIntentParameterMetadataFalseDisplayNameID</key>
