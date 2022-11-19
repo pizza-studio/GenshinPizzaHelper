@@ -19,6 +19,8 @@ struct ContentView: View {
     @State var newestVersionInfos: NewestVersion? = nil
     @State var isJustUpdated: Bool = false
 
+    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = true
+
     var index: Binding<Int> { Binding(
         get: { self.selection },
         set: {
@@ -108,7 +110,7 @@ struct ContentView: View {
                 }
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
-                if UserDefaults.standard.bool(forKey: "autoDeliveryResinTimerLiveActivity") {
+                if autoDeliveryResinTimerLiveActivity {
                     let pinToTopAccountUUIDString = UserDefaults.standard.string(forKey: "pinToTopAccountUUIDString")
                     if #available(iOS 16.1, *) {
                         if let account = viewModel.accounts.first(where: {
@@ -125,6 +127,8 @@ struct ContentView: View {
                             }
                         }
                     }
+                } else {
+                    print("not allow autoDeliveryResinTimerLiveActivity")
                 }
             default:
                 break

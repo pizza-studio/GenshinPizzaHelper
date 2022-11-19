@@ -72,11 +72,7 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
 
     /// 下一20倍数树脂
     var next20ResinCount: Int {
-        var resin: Int = currentResin
-        while resin % 20 != 0 {
-            resin += 1
-        }
-        return resin
+        Int(ceil((Double(currentResin)+0.01) / 20.0)) * 20
     }
 
     /// 下一20倍数树脂回复所需时间

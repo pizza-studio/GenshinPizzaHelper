@@ -29,7 +29,9 @@ class ResinRecoveryActivityController {
         let accountName = account.config.name ?? ""
         let accountUUID: UUID = account.config.uuid ?? UUID()
         // TODO: debug mode
-        guard let resinInfo = (try? account.result?.get().resinInfo) else { return }
+        guard let resinInfo = (try? account.result?.get().resinInfo) else {
+            throw CreateLiveActivityError.noInfo
+        }
         guard !currentActivities.map({$0.attributes.accountUUID}).contains(account.config.uuid!) else {
             updateResinRecoveryTimerActivity(for: account)
             return
@@ -89,4 +91,5 @@ class ResinRecoveryActivityController {
 enum CreateLiveActivityError: Error {
     case notAllowed
     case otherError(String)
+    case noInfo
 }
