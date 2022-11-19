@@ -19,25 +19,31 @@ struct ResinRecoveryActivityWidget: Widget {
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
                     HStack(alignment: .lastTextBaseline, spacing: 2) {
-                        Spacer()
                         Image(systemName: "person.fill")
                         Text(context.attributes.accountName)
                     }
                     .foregroundColor(Color("textColor.appIconLike"))
-                    .font(.caption)
+                    .font(.caption2)
+                    .padding(.leading)
                 }
+                .contentMargins(.trailing, 15)
                 DynamicIslandExpandedRegion(.trailing) {
-                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                    HStack(alignment: .center, spacing: 4) {
+                        Image("AppIconSmall")
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .frame(width: 15)
                         Text("披萨小助手")
-                            .minimumScaleFactor(0.5)
-                        Spacer()
+                            .foregroundColor(Color("textColor.appIconLike"))
+                            .font(.caption2)
                     }
-                    .font(.caption)
-                    .foregroundColor(Color("textColor.appIconLike"))
+                    .padding(.trailing)
                 }
+                .contentMargins(.leading, 15)
                 DynamicIslandExpandedRegion(.bottom) {
                     HStack {
-                        Spacer()
+//                        Spacer()
                         HStack {
                             Image("树脂")
                                 .resizable()
@@ -72,7 +78,7 @@ struct ResinRecoveryActivityWidget: Widget {
                             .gridColumnAlignment(.leading)
                             .frame(width: 100)
                         }
-                        Spacer()
+//                        Spacer()
                     }
                     .foregroundColor(Color("textColor3"))
                 }
