@@ -150,7 +150,7 @@ private struct PinedAccountInfoCard: View {
                                         }
                                     }
                                     if #available (iOS 16.1, *) {
-                                        Button("为该账号开启树脂计时器") {
+                                        Button("为该帐号开启树脂计时器") {
                                             try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(for: account)
                                         }
                                     }
@@ -231,7 +231,7 @@ private struct AccountInfoCards: View {
                                         }
                                     }
                                     if #available (iOS 16.1, *) {
-                                        Button("为该账号开启树脂计时器") {
+                                        Button("为该帐号开启树脂计时器") {
                                             try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(for: account)
                                         }
                                     }

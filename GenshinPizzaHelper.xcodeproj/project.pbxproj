@@ -969,14 +969,14 @@
 				EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */,
 				BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */,
 				BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */,
-				BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */,
+				EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */,
 				BFE4258528A0AC1500FEFA49 /* MoreView.swift */,
 				EA07C65528B11DB40030E338 /* NotificationSettingView.swift */,
+				EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */,
+				BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */,
 				BFB101EF28D7262A000DC631 /* ThanksView.swift */,
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
-				EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */,
 				EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */,
-				EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
