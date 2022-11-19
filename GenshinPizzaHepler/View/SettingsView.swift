@@ -56,6 +56,8 @@ struct SettingsView: View {
                 // 通知设置
                 NotificationSettingNavigator()
 
+                LiveActivitySettingView()
+
                 Section {
                     Button("在App Store评分") {
                         ReviewHandler.requestReview()

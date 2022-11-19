@@ -305,6 +305,7 @@
 		EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
 		EA498C922927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
 		EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
+		EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
 		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
 		EA50D669290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
@@ -792,6 +793,7 @@
 		EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryAttributes.swift; sourceTree = "<group>"; };
 		EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityWidget.swift; sourceTree = "<group>"; };
 		EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityController.swift; sourceTree = "<group>"; };
+		EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySettingView.swift; sourceTree = "<group>"; };
 		EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUtilizationData.swift; sourceTree = "<group>"; };
 		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
 		EA5232282903E0D6007A4CF4 /* ReverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseMask.swift; sourceTree = "<group>"; };
@@ -974,6 +976,7 @@
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
 				EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */,
 				EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */,
+				EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -2330,6 +2333,7 @@
 				EA56E09E28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */,
 				BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
 				BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */,
+				EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */,
 				BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */,
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
 				BFBDD64D28ED6FF80022B79D /* SpiralAbyssDetail.swift in Sources */,

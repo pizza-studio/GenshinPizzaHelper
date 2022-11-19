@@ -124,7 +124,7 @@ private struct PinedAccountInfoCard: View {
                     case .success(let userData):
                         // 我也不知道为什么如果不检查的话删除账号会崩溃
                         if account.config.uuid != nil {
-                            let gameInfoBlock: some View = GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, fetchComplete: account.fetchComplete)
+                            GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, fetchComplete: account.fetchComplete)
                                 .padding([.bottom, .horizontal])
                                 .listRowBackground(Color.white.opacity(0))
                                 .onTapGesture {
@@ -133,9 +133,13 @@ private struct PinedAccountInfoCard: View {
                                         viewModel.showDetailOfAccount = account
                                     }
                                 }
-                            if #available (iOS 16, *) {
-                                gameInfoBlock
-                                    .contextMenu {
+                                .contextMenu {
+                                    Button("顶置".localized) {
+                                        withAnimation {
+                                            pinToTopAccountUUIDString = account.config.uuid!.uuidString
+                                        }
+                                    }
+                                    if #available (iOS 16, *) {
                                         Button("保存图片".localized) {
                                             let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background).environment(\.locale, .init(identifier: Locale.current.identifier))
                                             let renderer = ImageRenderer(content: view)
@@ -145,9 +149,12 @@ private struct PinedAccountInfoCard: View {
                                             }
                                         }
                                     }
-                            } else {
-                                gameInfoBlock
-                            }
+                                    if #available (iOS 16.1, *) {
+                                        Button("为该账号开启树脂计时器") {
+                                            try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(for: account)
+                                        }
+                                    }
+                                }
                         }
                     case .failure( _) :
                         HStack {
@@ -187,6 +194,8 @@ private struct AccountInfoCards: View {
 
     @AppStorage("pinToTopAccountUUIDString") var pinToTopAccountUUIDString: String = ""
 
+//    @State var showFailLiveActivityAlert: Bool = false
+
     var body: some View {
         PinedAccountInfoCard(animation: animation)
         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
@@ -196,7 +205,7 @@ private struct AccountInfoCards: View {
                     case .success(let userData):
                         // 我也不知道为什么如果不检查的话删除账号会崩溃
                         if account.config.uuid != nil {
-                            let gameInfoBlock: some View = GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, fetchComplete: account.fetchComplete)
+                            GameInfoBlock(userData: userData, accountName: account.config.name, accountUUIDString: account.config.uuid!.uuidString, animation: animation, widgetBackground: account.background, fetchComplete: account.fetchComplete)
                                 .padding([.bottom, .horizontal])
                                 .listRowBackground(Color.white.opacity(0))
                                 .onTapGesture {
@@ -205,14 +214,13 @@ private struct AccountInfoCards: View {
                                         viewModel.showDetailOfAccount = account
                                     }
                                 }
-                            if #available (iOS 16, *) {
-                                gameInfoBlock
-                                    .contextMenu {
-                                        Button("顶置".localized) {
-                                            withAnimation {
-                                                pinToTopAccountUUIDString = account.config.uuid!.uuidString
-                                            }
+                                .contextMenu {
+                                    Button("顶置".localized) {
+                                        withAnimation {
+                                            pinToTopAccountUUIDString = account.config.uuid!.uuidString
                                         }
+                                    }
+                                    if #available (iOS 16, *) {
                                         Button("保存图片".localized) {
                                             let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background).environment(\.locale, .init(identifier: Locale.current.identifier))
                                             let renderer = ImageRenderer(content: view)
@@ -221,18 +229,13 @@ private struct AccountInfoCards: View {
                                                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                                             }
                                         }
-
                                     }
-                            } else {
-                                gameInfoBlock
-                                    .contextMenu {
-                                        Button("顶置".localized) {
-                                            withAnimation {
-                                                pinToTopAccountUUIDString = account.config.uuid!.uuidString
-                                            }
+                                    if #available (iOS 16.1, *) {
+                                        Button("为该账号开启树脂计时器") {
+                                            try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(for: account)
                                         }
                                     }
-                            }
+                                }
                         }
                     case .failure( _) :
                         HStack {
@@ -260,6 +263,7 @@ private struct AccountInfoCards: View {
                         .padding([.bottom, .horizontal])
                 }
             }
+
 
 
         }

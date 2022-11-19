@@ -25,7 +25,7 @@ struct ResinRecoveryActivityWidget: Widget {
                         Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
                             .multilineTextAlignment(.center)
                             .monospacedDigit()
-                            .font(.title2)
+                            .font(.title)
                             .foregroundColor(Color("textColor2"))
                         Spacer()
                     }

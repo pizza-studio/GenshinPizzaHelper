@@ -512,13 +512,6 @@ struct ToolsView: View {
             }
         }
         Section {
-#if DEBUG
-            if #available(iOS 16.1, *) {
-                Button("create live activity") {
-                    ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(for: account!)
-                }
-            }
-#endif
             NavigationLink(destination: GenshinDictionary()) {
                 Text("原神中英日辞典")
             }

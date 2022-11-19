@@ -25,7 +25,7 @@ struct ResinRecoveryAttributes: ActivityAttributes {
     }
 
     let accountName: String
-
+//    let showAccountName: Bool
 }
 
 @available(iOS 16.1, *)

@@ -16,11 +16,21 @@ class ResinRecoveryActivityController {
 
     static let shared: ResinRecoveryActivityController = .init()
 
-    func createResinRecoveryTimerActivity(for account: Account) {
+    var allowLiveActivity: Bool {
+        ActivityAuthorizationInfo.init().areActivitiesEnabled
+    }
+
+    func createResinRecoveryTimerActivity(for account: Account) throws {
+        guard allowLiveActivity else {
+            throw CreateLiveActivityError.notAllowed
+        }
         let accountName = account.config.name ?? ""
         // TODO: debug mode
         guard let resinInfo = (try? account.result?.get().resinInfo) else { return }
-//        let resinInfo: ResinInfo = .init(61, 160, 47520)
+        guard !deliveredActivities.map({$0.account.config.uuid!}).contains(account.config.uuid!) else {
+            updateResinRecoveryTimerActivity(for: account)
+            return
+        }
         let attributes: ResinRecoveryAttributes = .init(accountName: accountName)
         let status: ResinRecoveryAttributes.ResinRecoveryState = .init(resinInfo: resinInfo)
         do {
@@ -29,6 +39,7 @@ class ResinRecoveryActivityController {
             print("request activity succeed ID=\(deliveryActivity.id)")
         } catch let error {
             print("Error requesting pizza delivery Live Activity \(error.localizedDescription).")
+            throw CreateLiveActivityError.otherError(error.localizedDescription)
         }
     }
 
@@ -92,4 +103,9 @@ class ResinRecoveryActivityController {
         var account: Account
         let activity: Activity<ResinRecoveryAttributes>
     }
+}
+
+enum CreateLiveActivityError: Error {
+    case notAllowed
+    case otherError(String)
 }
