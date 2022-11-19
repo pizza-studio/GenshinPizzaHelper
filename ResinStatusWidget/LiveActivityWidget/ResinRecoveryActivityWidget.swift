@@ -43,7 +43,6 @@ struct ResinRecoveryActivityWidget: Widget {
                 .contentMargins(.leading, 15)
                 DynamicIslandExpandedRegion(.bottom) {
                     HStack {
-//                        Spacer()
                         HStack {
                             Image("树脂")
                                 .resizable()
@@ -78,7 +77,6 @@ struct ResinRecoveryActivityWidget: Widget {
                             .gridColumnAlignment(.leading)
                             .frame(width: 100)
                         }
-//                        Spacer()
                     }
                     .foregroundColor(Color("textColor3"))
                 }
