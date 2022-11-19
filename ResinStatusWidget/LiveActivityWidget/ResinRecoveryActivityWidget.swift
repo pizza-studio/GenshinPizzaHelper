@@ -8,6 +8,7 @@
 import Foundation
 import WidgetKit
 import SwiftUI
+import ActivityKit
 
 @available(iOS 16.1, *)
 struct ResinRecoveryActivityWidget: Widget {
@@ -17,23 +18,63 @@ struct ResinRecoveryActivityWidget: Widget {
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    Image("树脂").resizable().scaledToFit()
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Spacer()
+                        Image(systemName: "person.fill")
+                        Text(context.attributes.accountName)
+                    }
+                    .foregroundColor(Color("textColor.appIconLike"))
+                    .font(.caption)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    VStack {
-                        Spacer()
-                        Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
-                            .multilineTextAlignment(.center)
-                            .monospacedDigit()
-                            .font(.title)
-                            .foregroundColor(Color("textColor2"))
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Text("披萨小助手")
+                            .minimumScaleFactor(0.5)
                         Spacer()
                     }
+                    .font(.caption)
+                    .foregroundColor(Color("textColor.appIconLike"))
                 }
-                DynamicIslandExpandedRegion(.center) {
-                    Text("距离\(context.state.next20ResinCount)树脂")
-                        .lineLimit(1)
-                        .font(.caption)
+                DynamicIslandExpandedRegion(.bottom) {
+                    HStack {
+                        Spacer()
+                        HStack {
+                            Image("树脂")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 40)
+                            VStack(alignment: .leading) {
+                                Text("距离\(context.state.next20ResinCount)树脂")
+                                    .font(.caption2)
+                                Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.system(.title2, design: .rounded))
+                                    .foregroundColor(Color("textColor.originResin"))
+                            }
+                            .gridColumnAlignment(.leading)
+                            .frame(width: 100)
+
+                        }
+                        Spacer()
+                        HStack {
+                            Image("浓缩树脂")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 40)
+                            VStack(alignment: .leading) {
+                                Text("距离160树脂")
+                                    .font(.caption2)
+                                Text(timerInterval: Date()...context.state.resinFullTime, countsDown: true)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.system(.title2, design: .rounded))
+                                    .foregroundColor(Color("textColor.originResin"))
+                            }
+                            .gridColumnAlignment(.leading)
+                            .frame(width: 100)
+                        }
+                        Spacer()
+                    }
+                    .foregroundColor(Color("textColor3"))
                 }
             } compactLeading: {
                 Image("树脂").resizable().scaledToFit()
