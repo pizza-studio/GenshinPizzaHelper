@@ -208,12 +208,18 @@ private struct AccountInfoCards: View {
 
     var body: some View {
         PinedAccountInfoCard(animation: animation, isErrorAlertShow: $isErrorAlertShow, errorMessage: $errorMessage, isSucceedAlertShow: $isSucceedAlertShow)
-            .alert(isPresented: $isErrorAlertShow) {
-                Alert(title: Text("ERROR\(errorMessage)"))
-            }
-            .alert(isPresented: $isSucceedAlertShow) {
-                Alert(title: Text("创建树脂计时器成功"))
-            }
+            .overlay(
+                EmptyView()
+                    .alert(isPresented: $isSucceedAlertShow) {
+                        Alert(title: Text("创建树脂计时器成功ERROR\(errorMessage)"))
+                    }
+            )
+            .overlay(
+                EmptyView()
+                    .alert(isPresented: $isErrorAlertShow) {
+                        Alert(title: Text("ERROR\(errorMessage)"))
+                    }
+            )
         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
             if account != viewModel.showDetailOfAccount && account != viewModel.accounts.first(where: { $0.config.uuid?.uuidString ?? "1" == pinToTopAccountUUIDString }) {
                 if account.result != nil {

@@ -93,3 +93,16 @@ enum CreateLiveActivityError: Error {
     case otherError(String)
     case noInfo
 }
+
+extension CreateLiveActivityError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .notAllowed:
+            return "系统设置不允许开启实时活动"
+        case .noInfo:
+            return "账号未获取信息"
+        case .otherError(let message):
+            return "未知错误\(message)"
+        }
+    }
+}
