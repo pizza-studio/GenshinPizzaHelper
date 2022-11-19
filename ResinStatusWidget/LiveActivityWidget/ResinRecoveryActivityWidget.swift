@@ -26,6 +26,7 @@ struct ResinRecoveryActivityWidget: Widget {
                             .multilineTextAlignment(.center)
                             .monospacedDigit()
                             .font(.title2)
+                            .foregroundColor(Color("textColor2"))
                         Spacer()
                     }
                 }
@@ -41,6 +42,7 @@ struct ResinRecoveryActivityWidget: Widget {
                     .monospacedDigit()
                     .multilineTextAlignment(.center)
                     .frame(width: 60)
+                    .foregroundColor(Color("textColor2"))
             } minimal: {
                 VStack {
                     Image("树脂").resizable().scaledToFit()
