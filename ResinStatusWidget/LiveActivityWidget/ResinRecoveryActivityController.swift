@@ -27,7 +27,7 @@ class ResinRecoveryActivityController {
         let accountName = account.config.name ?? ""
         // TODO: debug mode
         guard let resinInfo = (try? account.result?.get().resinInfo) else { return }
-        guard !deliveredActivities.map({$0.account.config.uuid!}).contains(account.config.uuid!) else {
+        guard !deliveredActivities.map({$0.account.config.uuid ?? UUID()}).contains(account.config.uuid!) else {
             updateResinRecoveryTimerActivity(for: account)
             return
         }
