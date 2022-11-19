@@ -18,11 +18,13 @@ class ResinRecoveryActivityController {
 
     func createResinRecoveryTimerActivity(for account: Account) {
         let accountName = account.config.name ?? ""
+        // TODO: debug mode
         guard let resinInfo = (try? account.result?.get().resinInfo) else { return }
+//        let resinInfo: ResinInfo = .init(61, 160, 47520)
         let attributes: ResinRecoveryAttributes = .init(accountName: accountName)
         let status: ResinRecoveryAttributes.ResinRecoveryState = .init(resinInfo: resinInfo)
         do {
-            var deliveryActivity = try Activity.request(attributes: attributes, contentState: status)
+            let deliveryActivity = try Activity.request(attributes: attributes, contentState: status)
             deliveredActivities.append(.init(account: account, activity: deliveryActivity))
             print("request activity succeed ID=\(deliveryActivity.id)")
         } catch let error {
@@ -33,13 +35,14 @@ class ResinRecoveryActivityController {
     func updateResinRecoveryTimerActivity(for account: Account) {
         deliveredActivities.filter { map in
             map.account == account
-        }.forEach { map in
+        }.enumerated().forEach { index, map in
             Task {
                 guard let resinInfo = (try? account.result?.get().resinInfo) else { return }
                 guard Date.now < Date(timeIntervalSinceNow: TimeInterval(resinInfo.recoveryTime.second)) else {
                     endActivity(for: map.account)
                     return
                 }
+                deliveredActivities[index].account = account
                 let status: ResinRecoveryAttributes.ResinRecoveryState = .init(resinInfo: resinInfo)
                 await map.activity.update(using: status)
             }
@@ -56,17 +59,9 @@ class ResinRecoveryActivityController {
         }
     }
 
-    func updateAllResinRecoveryTimerActivity() {
-        deliveredActivities.forEach { map in
-            Task {
-                guard let resinInfo = (try? map.account.result?.get().resinInfo) else { return }
-                guard Date.now < Date(timeIntervalSinceNow: TimeInterval(resinInfo.recoveryTime.second)) else {
-                    endActivity(for: map.account)
-                    return
-                }
-                let status: ResinRecoveryAttributes.ResinRecoveryState = .init(resinInfo: resinInfo)
-                await map.activity.update(using: status)
-            }
+    func updateAllResinRecoveryTimerActivity(for accounts: [Account]) {
+        accounts.forEach { account in
+            updateResinRecoveryTimerActivity(for: account)
         }
     }
 
@@ -94,7 +89,7 @@ class ResinRecoveryActivityController {
     }
 
     struct MapActivityAndAccount {
-        let account: Account
+        var account: Account
         let activity: Activity<ResinRecoveryAttributes>
     }
 }

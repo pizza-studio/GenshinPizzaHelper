@@ -17,25 +17,39 @@ struct ResinRecoveryActivityWidget: Widget {
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    Text(timerInterval: Date()...context.state.nextResinRecoveryTime, countsDown: true)
+                    Image("树脂").resizable().scaledToFit()
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text(timerInterval: Date()...context.state.nextResinRecoveryTime, countsDown: true)
+                    VStack {
+                        Spacer()
+                        Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
+                            .multilineTextAlignment(.center)
+                            .monospacedDigit()
+                            .font(.title2)
+                        Spacer()
+                    }
                 }
                 DynamicIslandExpandedRegion(.center) {
-                    Text(timerInterval: Date()...context.state.nextResinRecoveryTime, countsDown: true)
-                }
-                DynamicIslandExpandedRegion(.bottom) {
-                    Text(timerInterval: Date()...context.state.nextResinRecoveryTime, countsDown: true)
+                    Text("距离\(context.state.next20ResinCount)树脂")
+                        .lineLimit(1)
+                        .font(.caption)
                 }
             } compactLeading: {
-                Text(timerInterval: Date()...context.state.nextResinRecoveryTime, countsDown: true)
+                Image("树脂").resizable().scaledToFit()
             } compactTrailing: {
-                Text(timerInterval: Date()...context.state.nextResinRecoveryTime, countsDown: true)
+                Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true, showsHours: false)
+                    .monospacedDigit()
+                    .multilineTextAlignment(.center)
+                    .frame(width: 60)
             } minimal: {
-                Text(timerInterval: Date()...context.state.nextResinRecoveryTime, countsDown: true)
+                VStack {
+                    Image("树脂").resizable().scaledToFit()
+                    Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
+                        .monospacedDigit()
+                        .multilineTextAlignment(.center)
+                        .font(.caption2)
+                }
             }
-
         }
 
     }
@@ -46,9 +60,55 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     let context: ActivityViewContext<ResinRecoveryAttributes>
 
     var body: some View {
-        VStack {
-            Text(context.attributes.accountName)
-            Text("\(context.state.nextResinRecoveryTimeInterval)")
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                Image(systemName: "person.fill")
+                Text(context.attributes.accountName)
+            }
+            .font(.footnote)
+            .padding(.top, 3)
+            .padding(.leading, 3)
+            HStack {
+                Spacer()
+                Grid(verticalSpacing: 5) {
+                    GridRow {
+                        VStack(alignment: .trailing) {
+                            Text("距离\(context.state.next20ResinCount)树脂")
+                                .font(.caption2)
+                            Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
+                                .multilineTextAlignment(.trailing)
+                                .font(.system(.title2, design: .rounded))
+                        }
+                        .gridColumnAlignment(.trailing)
+                        .frame(width: 100)
+                        Image("树脂")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 40)
+                    }
+                    GridRow {
+                        VStack(alignment: .trailing) {
+                            Text("距离160树脂")
+                                .font(.caption2)
+                            Text(timerInterval: Date()...context.state.resinFullTime, countsDown: true)
+                                .multilineTextAlignment(.trailing)
+                                .font(.system(.title2, design: .rounded))
+                        }
+                        .gridColumnAlignment(.trailing)
+                        .frame(width: 100)
+                        Image("浓缩树脂")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 40)
+                    }
+                }
+                .shadow(radius: 0.8)
+            }
+        }
+        .foregroundColor(Color("textColor3"))
+        .padding()
+        .background(alignment: .center) {
+            WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true)
         }
     }
 }
