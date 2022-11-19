@@ -952,7 +952,7 @@
 "距离160树脂" = "Time to 160 resins";
 "为该帐号开启树脂计时器" = "Set the resin timer for this account";
 "自动启用树脂计时器" = "Enable resin timer automatically";
-"树脂计时器是什么？" = "What is the resin timer";
+"树脂计时器是什么？" = "What is the resin timer?";
 "若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在“概览”页长按某个账号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account infomation card on the \"Overview\" tab or enable more timers.";
 "前往设置开启实时活动功能" = "Move to settings to enable \"real-time activity\" feature";
 "实时活动功能未开启，请前往设置开启。" = "\"Real-time activity\" disabled. Please enable it in the settings.";
