@@ -103,8 +103,29 @@ struct ContentView: View {
                     // 检查最新版本
                     checkNewestVersion()
                 }
+                if #available(iOS 16.1, *) {
+                    ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivity(for: viewModel.accounts)
+                }
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
+                if UserDefaults.standard.bool(forKey: "autoDeliveryResinTimerLiveActivity") {
+                    let pinToTopAccountUUIDString = UserDefaults.standard.string(forKey: "pinToTopAccountUUIDString")
+                    if #available(iOS 16.1, *) {
+                        if let account = viewModel.accounts.first(where: {
+                            $0.config.uuid!.uuidString == pinToTopAccountUUIDString
+                        }) {
+                            try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(for: account)
+                        } else {
+                            if let account = viewModel.accounts.filter({ account in
+                                (try? account.result?.get()) != nil
+                            }).min(by: { lhs, rhs in
+                                (try! lhs.result!.get().resinInfo.recoveryTime.second) < (try! rhs.result!.get().resinInfo.recoveryTime.second)
+                            }) {
+                                try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(for: account)
+                            }
+                        }
+                    }
+                }
             default:
                 break
             }

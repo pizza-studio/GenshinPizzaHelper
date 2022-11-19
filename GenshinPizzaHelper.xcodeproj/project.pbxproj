@@ -300,6 +300,12 @@
 		EA46D0C628EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
 		EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
 		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
+		EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
+		EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
+		EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
+		EA498C922927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
+		EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
+		EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
 		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
 		EA50D669290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
@@ -784,6 +790,10 @@
 		EA459DA4290CF47700E74F76 /* DismissableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableSheet.swift; sourceTree = "<group>"; };
 		EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailView.swift; sourceTree = "<group>"; };
+		EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryAttributes.swift; sourceTree = "<group>"; };
+		EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityWidget.swift; sourceTree = "<group>"; };
+		EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityController.swift; sourceTree = "<group>"; };
+		EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySettingView.swift; sourceTree = "<group>"; };
 		EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUtilizationData.swift; sourceTree = "<group>"; };
 		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
 		EA5232282903E0D6007A4CF4 /* ReverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseMask.swift; sourceTree = "<group>"; };
@@ -966,6 +976,7 @@
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
 				EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */,
 				EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */,
+				EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -1219,8 +1230,9 @@
 			isa = PBXGroup;
 			children = (
 				EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */,
-				EAF55E2728CC917C00902AE7 /* LockScreenWidgets */,
 				EAF55E2628CC917200902AE7 /* MainWidget */,
+				EAF55E2728CC917C00902AE7 /* LockScreenWidgets */,
+				EA498C8B2927CFFA00E7D2D7 /* LiveActivityWidget */,
 				EA30F9AC2886B49300AE7BEA /* Info.plist */,
 				EAB1110628CF84B5009FDF07 /* WidgetLauncher.swift */,
 			);
@@ -1245,6 +1257,16 @@
 				EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */,
 			);
 			path = EnkaAPIModel;
+			sourceTree = "<group>";
+		};
+		EA498C8B2927CFFA00E7D2D7 /* LiveActivityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */,
+				EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */,
+				EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */,
+			);
+			path = LiveActivityWidget;
 			sourceTree = "<group>";
 		};
 		EA56E07528A26C0D00A64262 /* FetchedModels */ = {
@@ -2127,6 +2149,7 @@
 				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
 				BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EA196B0328B769340091FAE0 /* StringLocalized.swift in Sources */,
+				EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
 				EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */,
 				EAFC5CD028B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */,
@@ -2140,6 +2163,7 @@
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
 				EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				EAD7F02628D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
+				EA498C922927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
 				BF7500D228DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
@@ -2194,12 +2218,14 @@
 				BFFD822C28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				BFB101D328D5C579000DC631 /* ToolsView.swift in Sources */,
 				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
+				EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */,
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
 				EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */,
 				BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
 				EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */,
+				EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				EA56E09028A26C0D00A64262 /* ResinInfo.swift in Sources */,
 				BFCC065328C732D5003E4A54 /* WidgetTipsView.swift in Sources */,
 				BFE7AFE22903E0BB00C75E7F /* ToolsViewSimplified.swift in Sources */,
@@ -2237,6 +2263,7 @@
 				BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA56E09228A26C0D00A64262 /* ExpeditionInfo.swift in Sources */,
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
+				EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
 				BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */,
 				EA63E2BB28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
@@ -2306,6 +2333,7 @@
 				EA56E09E28A26C0D00A64262 /* HomeCoinInfo.swift in Sources */,
 				BFE42535289E203B00FEFA49 /* FeatureAPI.swift in Sources */,
 				BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */,
+				EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */,
 				BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */,
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
 				BFBDD64D28ED6FF80022B79D /* SpiralAbyssDetail.swift in Sources */,
@@ -2454,7 +2482,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.WatchWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -2486,7 +2514,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.WatchWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -2518,7 +2546,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "原神披萨小助手";
 				SDKROOT = watchos;
@@ -2552,7 +2580,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp;
 				PRODUCT_NAME = "原神披萨小助手";
 				SDKROOT = watchos;
@@ -2585,7 +2613,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -2617,7 +2645,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -2646,7 +2674,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.AccountIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2674,7 +2702,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.AccountIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2703,7 +2731,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2733,7 +2761,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.ResinStatusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2881,6 +2909,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "如果你想在米游社网页中使用相机拍摄照片并上传图片，请允许使用相机。";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2890,7 +2919,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "原神披萨小助手";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2920,6 +2949,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "如果你想在米游社网页中使用相机拍摄照片并上传图片，请允许使用相机。";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2929,7 +2959,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
 				PRODUCT_NAME = "原神披萨小助手";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2959,7 +2989,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension.WatchIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -2989,7 +3019,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.4;
+				MARKETING_VERSION = 2.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.WatchApp.watchkitextension.WatchIntent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
