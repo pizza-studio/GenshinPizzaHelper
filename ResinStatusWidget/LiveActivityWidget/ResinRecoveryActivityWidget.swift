@@ -105,21 +105,22 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     var body: some View {
         HStack {
             Grid(verticalSpacing: 7) {
-                GridRow {
-                    Image("树脂")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 38)
-                    VStack(alignment: .leading) {
-                        Text("距离\(context.state.next20ResinCount)树脂")
-                            .font(.caption2)
-                        Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
-                            .multilineTextAlignment(.leading)
-                            .font(.system(.title2, design: .rounded))
+                if context.state.next20ResinCount != 160 {
+                    GridRow {
+                        Image("树脂")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 38)
+                        VStack(alignment: .leading) {
+                            Text("距离\(context.state.next20ResinCount)树脂")
+                                .font(.caption2)
+                            Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
+                                .multilineTextAlignment(.leading)
+                                .font(.system(.title2, design: .rounded))
+                        }
+                        .gridColumnAlignment(.leading)
+                        .frame(width: 100)
                     }
-                    .gridColumnAlignment(.leading)
-                    .frame(width: 100)
-
                 }
                 GridRow {
                     Image("浓缩树脂")
