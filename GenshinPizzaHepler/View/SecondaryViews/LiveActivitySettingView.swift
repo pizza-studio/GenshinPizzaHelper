@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LiveActivitySettingView: View {
-    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = false
+    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = true
 
     @State var isAlertShow: Bool = false
     var body: some View {
