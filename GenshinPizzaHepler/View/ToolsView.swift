@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftPieChart
+import ActivityKit
 
 @available(iOS 15.0, *)
 struct ToolsView: View {
@@ -511,11 +512,13 @@ struct ToolsView: View {
             }
         }
         Section {
-            #if DEBUG
-            Button("print notifications") {
-                UserNotificationCenter.shared.printAllNotificationRequest()
+#if DEBUG
+            if #available(iOS 16.1, *) {
+                Button("create live activity") {
+                    ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(for: account!)
+                }
             }
-            #endif
+#endif
             NavigationLink(destination: GenshinDictionary()) {
                 Text("原神中英日辞典")
             }
