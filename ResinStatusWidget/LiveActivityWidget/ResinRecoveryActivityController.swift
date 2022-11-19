@@ -10,7 +10,9 @@ import ActivityKit
 
 @available(iOS 16.1, *)
 class ResinRecoveryActivityController {
-    var deliveredActivities: [MapActivityAndAccount] = .init()
+    var currentActivities: [Activity<ResinRecoveryAttributes>] {
+        Activity<ResinRecoveryAttributes>.activities
+    }
 
     private init() {}
 
@@ -25,17 +27,17 @@ class ResinRecoveryActivityController {
             throw CreateLiveActivityError.notAllowed
         }
         let accountName = account.config.name ?? ""
+        let accountUUID: UUID = account.config.uuid ?? UUID()
         // TODO: debug mode
         guard let resinInfo = (try? account.result?.get().resinInfo) else { return }
-        guard !deliveredActivities.map({$0.account.config.uuid ?? UUID()}).contains(account.config.uuid!) else {
+        guard !currentActivities.map({$0.attributes.accountUUID}).contains(account.config.uuid!) else {
             updateResinRecoveryTimerActivity(for: account)
             return
         }
-        let attributes: ResinRecoveryAttributes = .init(accountName: accountName)
+        let attributes: ResinRecoveryAttributes = .init(accountName: accountName, accountUUID: accountUUID)
         let status: ResinRecoveryAttributes.ResinRecoveryState = .init(resinInfo: resinInfo)
         do {
             let deliveryActivity = try Activity.request(attributes: attributes, contentState: status)
-            deliveredActivities.append(.init(account: account, activity: deliveryActivity))
             print("request activity succeed ID=\(deliveryActivity.id)")
         } catch let error {
             print("Error requesting pizza delivery Live Activity \(error.localizedDescription).")
@@ -44,28 +46,27 @@ class ResinRecoveryActivityController {
     }
 
     func updateResinRecoveryTimerActivity(for account: Account) {
-        deliveredActivities.filter { map in
-            map.account == account
-        }.enumerated().forEach { index, map in
+        currentActivities.filter { activity in
+            activity.attributes.accountUUID == account.config.uuid ?? UUID()
+        }.forEach { activity in
             Task {
                 guard let resinInfo = (try? account.result?.get().resinInfo) else { return }
                 guard Date.now < Date(timeIntervalSinceNow: TimeInterval(resinInfo.recoveryTime.second)) else {
-                    endActivity(for: map.account)
+                    endActivity(for: account)
                     return
                 }
-                deliveredActivities[index].account = account
                 let status: ResinRecoveryAttributes.ResinRecoveryState = .init(resinInfo: resinInfo)
-                await map.activity.update(using: status)
+                await activity.update(using: status)
             }
         }
     }
 
     func endActivity(for account: Account) {
-        deliveredActivities.filter { map in
-            map.account == account
-        }.forEach { map in
+        currentActivities.filter { activity in
+            activity.attributes.accountUUID == account.config.uuid ?? UUID()
+        }.forEach { activity in
             Task {
-                await map.activity.end()
+                await activity.end()
             }
         }
     }
@@ -77,31 +78,11 @@ class ResinRecoveryActivityController {
     }
 
     func endAllActivity() {
-        deliveredActivities.enumerated().map { index, map in
-            deliveredActivities.remove(at: index)
-            return map.activity
-        }.forEach { activity in
+        currentActivities.forEach { activity in
             Task {
                 await activity.end()
             }
         }
-    }
-
-    func checkActivityAvaliable() {
-        deliveredActivities.enumerated().forEach { index, map in
-            guard let resinInfo = try? map.account.result?.get().resinInfo else {
-                deliveredActivities.remove(at: index)
-                return
-            }
-            if Date() > resinInfo.updateDate.addingTimeInterval(TimeInterval(resinInfo.recoveryTime.second)) {
-                deliveredActivities.remove(at: index)
-            }
-        }
-    }
-
-    struct MapActivityAndAccount {
-        var account: Account
-        let activity: Activity<ResinRecoveryAttributes>
     }
 }
 
