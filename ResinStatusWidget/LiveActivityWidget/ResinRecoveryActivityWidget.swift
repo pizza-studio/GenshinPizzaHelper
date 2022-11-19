@@ -44,13 +44,7 @@ struct ResinRecoveryActivityWidget: Widget {
                     .frame(width: 60)
                     .foregroundColor(Color("textColor2"))
             } minimal: {
-                VStack {
-                    Image("树脂").resizable().scaledToFit()
-                    Text(timerInterval: Date()...context.state.next20ResinRecoveryTime!, countsDown: true)
-                        .monospacedDigit()
-                        .multilineTextAlignment(.center)
-                        .font(.caption2)
-                }
+                Image("树脂").resizable().scaledToFit()
             }
         }
 
