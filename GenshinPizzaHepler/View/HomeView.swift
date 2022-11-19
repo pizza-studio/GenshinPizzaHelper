@@ -107,10 +107,10 @@ private struct PinedAccountInfoCard: View {
         viewModel.accounts.firstIndex(where: { $0.config.uuid?.uuidString ?? "1" == pinToTopAccountUUIDString })
     }
 
-    @State var isErrorAlertShow: Bool = false
-    @State var errorMessage: String = ""
+    @Binding var isErrorAlertShow: Bool
+    @Binding var errorMessage: String
 
-    @State var isSucceedAlertShow: Bool = false
+    @Binding var isSucceedAlertShow: Bool
 
     var bindingAccount: Binding<Account>? {
         if let accountIndex = accountIndex {
@@ -140,11 +140,6 @@ private struct PinedAccountInfoCard: View {
                                         }
                                     }
                                     .contextMenu {
-                                        Button("顶置".localized) {
-                                            withAnimation {
-                                                pinToTopAccountUUIDString = account.config.uuid!.uuidString
-                                            }
-                                        }
                                         if #available (iOS 16, *) {
                                             Button("保存图片".localized) {
                                                 let view = GameInfoBlockForSave(userData: userData, accountName: account.config.name ?? "", accountUUIDString: account.config.uuid?.uuidString ?? "", animation: animation, widgetBackground: account.background).environment(\.locale, .init(identifier: Locale.current.identifier))
@@ -198,12 +193,6 @@ private struct PinedAccountInfoCard: View {
                 EmptyView()
             }
         }
-        .alert(isPresented: $isErrorAlertShow) {
-            Alert(title: Text("ERROR\(errorMessage)"))
-        }
-        .alert(isPresented: $isSucceedAlertShow) {
-            Alert(title: Text("创建树脂计时器成功"))
-        }
     }
 }
 
@@ -218,7 +207,7 @@ private struct AccountInfoCards: View {
     @State var isSucceedAlertShow: Bool = false
 
     var body: some View {
-        PinedAccountInfoCard(animation: animation)
+        PinedAccountInfoCard(animation: animation, isErrorAlertShow: $isErrorAlertShow, errorMessage: $errorMessage, isSucceedAlertShow: $isSucceedAlertShow)
             .alert(isPresented: $isErrorAlertShow) {
                 Alert(title: Text("ERROR\(errorMessage)"))
             }
