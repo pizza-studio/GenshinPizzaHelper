@@ -39,6 +39,11 @@ struct HomeView: View {
                                     break
                                 }
                             })
+                            .onAppear {
+                                if eventContents.isEmpty {
+                                    getCurrentEvent()
+                                }
+                            }
                             .padding(.bottom)
 
                         // MARK: - 当前活动
