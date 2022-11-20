@@ -100,6 +100,8 @@ struct ResinRecoveryActivityWidget: Widget {
 struct ResinRecoveryActivityWidgetLockScreenView: View {
     let context: ActivityViewContext<ResinRecoveryAttributes>
 
+    var useNoBackground: Bool { context.state.background == .noBackground }
+
     var body: some View {
         HStack {
             Grid(verticalSpacing: 7) {
@@ -141,7 +143,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                         Image("派遣探索")
                             .resizable()
                             .scaledToFit()
-                            .frame(maxHeight: 31)
+                            .frame(maxHeight: 29)
                         VStack(alignment: .leading) {
                             Text("距离派遣探索全部完成")
                                 .font(.caption2)
@@ -166,8 +168,8 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 .padding(.leading, 3)
             }
         }
-        .shadow(radius: 0.8)
-        .foregroundColor(Color("textColor3"))
+        .shadow(radius: useNoBackground ? 0 : 0.8)
+        .foregroundColor(useNoBackground ? .primary : Color("textColor3"))
         .padding()
         .background(alignment: .center) {
             switch context.state.background {

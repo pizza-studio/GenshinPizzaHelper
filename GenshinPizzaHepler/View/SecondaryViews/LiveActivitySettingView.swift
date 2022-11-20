@@ -49,6 +49,13 @@ struct LiveActivitySettingDetailView: View {
     @AppStorage("resinRecoveryLiveActivityUseEmptyBackground") var resinRecoveryLiveActivityUseEmptyBackground: Bool = false
 
     @AppStorage("resinRecoveryLiveActivityUseCustomizeBackground") var resinRecoveryLiveActivityUseCustomizeBackground: Bool = false
+    var useRandomBackground: Binding<Bool> {
+        .init {
+            !resinRecoveryLiveActivityUseCustomizeBackground
+        } set: { newValue in
+            resinRecoveryLiveActivityUseCustomizeBackground = !newValue
+        }
+    }
 
 
     @AppStorage("resinRecoveryLiveActivityShowExpedition") var resinRecoveryLiveActivityShowExpedition: Bool = false
@@ -61,7 +68,7 @@ struct LiveActivitySettingDetailView: View {
             Section {
                 Toggle("使用透明背景", isOn: $resinRecoveryLiveActivityUseEmptyBackground.animation())
                 if !resinRecoveryLiveActivityUseEmptyBackground {
-                    Toggle("手动选择背景", isOn: $resinRecoveryLiveActivityUseCustomizeBackground.animation())
+                    Toggle("随机背景", isOn: useRandomBackground.animation())
                     if resinRecoveryLiveActivityUseCustomizeBackground {
                         NavigationLink("选择背景") {
                             LiveActivityBackgroundPicker()
