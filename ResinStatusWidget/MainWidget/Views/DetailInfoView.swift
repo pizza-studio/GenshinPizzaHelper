@@ -71,7 +71,7 @@ struct DetailInfoSimplified: View {
             }
 
             if userData.expeditionInfo.maxExpedition != 0 {
-                ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
+                ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: .init(noticeExpeditionWhenAllCompleted: true, expeditionShowingMethod: .byNum))
             }
         }
         .padding(.trailing)
