@@ -971,3 +971,8 @@
 "选择计时器背景" = "Choose Backgrounds for Timer";
 "距离派遣探索全部完成" = "All Expeditions Completion";
 "树脂计时器背景" = "Resin Timer Background";
+
+// Real-time activity error
+"未知错误：%@" = "Unknown Error: %@";
+"账号未获取信息" = "No info with account";
+"系统设置不允许本软件开启实时活动，请前往开启" = "The system settings are not allowed to start the real-time activity, please go to open";

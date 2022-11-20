@@ -125,11 +125,11 @@ extension CreateLiveActivityError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .notAllowed:
-            return "系统设置不允许开启实时活动"
+            return "系统设置不允许本软件开启实时活动，请前往开启".localized
         case .noInfo:
-            return "账号未获取信息"
+            return "账号未获取信息".localized
         case .otherError(let message):
-            return "未知错误\(message)"
+            return String(format: NSLocalizedString("未知错误：%@", comment: ""), message)
         }
     }
 }
