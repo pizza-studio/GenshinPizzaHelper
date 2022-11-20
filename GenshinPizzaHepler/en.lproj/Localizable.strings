@@ -34,7 +34,7 @@
 "交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
 
 // Account detail
-"重新登录米游社帐号" = "Relogin to HoYoLAB";
+"重新登录米哈游通行证帐号" = "Relogin to HoYoLAB";
 "帐号配置" = "Account Configuration";
 "帐号名" = "Account Name";
 "服务器" = "Server";
@@ -46,7 +46,7 @@
 "粘贴自剪贴板" = "Paste from Clipboard";
 
 // Add account
-"登录米游社帐号" = "Login via HoYoLAB";
+"登录米哈游通行证帐号" = "Login via HoYoLAB";
 "你也可以" = "You can also";
 "手动设置帐号" = "configure your account manually";
 "保存" = "Save";
@@ -65,7 +65,7 @@
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nSign in via Google, Facebook or Twitter is not available, please sign in with your username & password.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. "; // TODO: French
 "自定义帐号名" = "Custom Account Name";
 "请选择帐号" = "Choose Your Account";
-"查看帐号详情" = "Login Info Details";
+"手动设置帐号详情" = "Login Info Details";
 "我的帐号" = "My Account";
 "请先添加帐号" = "Add an Account";
 
@@ -380,7 +380,7 @@
 "请先刷新以获取树脂状态" = "Please refresh to get genshin status";
 "请长按小组件选择帐号" = "Please long press the widget to config your account";
 "错误码%lld：Cookie失效，请重新登录" = "Error code %lld: Cookie is invalid, please login HoYoLab again.";
-"错误码%lld：米游社帐号与UID不匹配" = "Error code %lld: HoYoLAB account does not match UID";
+"错误码%lld：米游社帐号与UID不匹配，请手动输入UID" = "Error code %lld: HoYoLAB account does not match UID";
 "错误码%lld：UID有误" = "Error code %lld: invalid UID";
 "请前往米游社（或Hoyolab）打开旅行便笺功能" = "Please open Real-Time Notes in HoYoLAB app first";
 "解码错误：请检查网络环境" = "Decode Error: please check your network status";
