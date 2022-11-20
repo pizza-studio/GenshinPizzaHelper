@@ -16,11 +16,18 @@ struct ResinRecoveryAttributes: ActivityAttributes {
         let resinCountWhenUpdated: Int
         let resinRecoveryTimeUntilFullInSecondWhenUpdated: TimeInterval
         let updatedTime: Date
+        let expeditionAllCompleteTimeInterval: TimeInterval
+        let showExpedition: Bool
 
-        init(resinInfo: ResinInfo) {
+        let background: ResinRecoveryActivityBackground
+
+        init(resinInfo: ResinInfo, expeditionInfo: ExpeditionInfo, showExpedition: Bool, background: ResinRecoveryActivityBackground) {
             resinCountWhenUpdated = resinInfo.currentResin
             resinRecoveryTimeUntilFullInSecondWhenUpdated = TimeInterval(resinInfo.recoveryTime.second)
             updatedTime = resinInfo.updateDate
+            expeditionAllCompleteTimeInterval = TimeInterval(expeditionInfo.allCompleteTime.second)
+            self.showExpedition = showExpedition
+            self.background = background
         }
     }
 
@@ -75,6 +82,10 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
         Int(ceil((Double(currentResin)+0.01) / 20.0)) * 20
     }
 
+    var showNext20Resin: Bool {
+        next20ResinCount != 160
+    }
+
     /// 下一20倍数树脂回复所需时间
     var next20ResinRecoveryTimeInterval: TimeInterval {
         resinRecoveryTimeIntervalUntilFull.truncatingRemainder(dividingBy: 8*60*20)
@@ -84,4 +95,18 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
     var next20ResinRecoveryTime: Date? {
         Date().addingTimeInterval(next20ResinRecoveryTimeInterval)
     }
+
+    var allExpeditionCompleteTime: Date {
+        Date().addingTimeInterval(expeditionAllCompleteTimeInterval)
+    }
+
+    var showExpeditionInfo: Bool {
+        expeditionAllCompleteTimeInterval != 0 && showExpedition
+    }
+}
+
+enum ResinRecoveryActivityBackground: Codable, Equatable, Hashable {
+    case ramdom
+    case customize([String])
+    case noBackground
 }

@@ -100,10 +100,12 @@ struct ResinRecoveryActivityWidget: Widget {
 struct ResinRecoveryActivityWidgetLockScreenView: View {
     let context: ActivityViewContext<ResinRecoveryAttributes>
 
+    var useNoBackground: Bool { context.state.background == .noBackground }
+
     var body: some View {
         HStack {
             Grid(verticalSpacing: 7) {
-                if context.state.next20ResinCount != 160 {
+                if context.state.showNext20Resin {
                     GridRow {
                         Image("树脂")
                             .resizable()
@@ -117,14 +119,14 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                                 .font(.system(.title2, design: .rounded))
                         }
                         .gridColumnAlignment(.leading)
-                        .frame(width: 100)
+                        .frame(width: 120)
                     }
                 }
                 GridRow {
                     Image("浓缩树脂")
                         .resizable()
                         .scaledToFit()
-                        .frame(maxHeight: 38)
+                        .frame(maxHeight: 35)
                     VStack(alignment: .leading) {
                         Text("距离160树脂")
                             .font(.caption2)
@@ -133,8 +135,25 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             .font(.system(.title2, design: .rounded))
                     }
                     .gridColumnAlignment(.leading)
-                    .frame(width: 100)
+                    .frame(width: 120)
 
+                }
+                if context.state.showExpeditionInfo {
+                    GridRow {
+                        Image("派遣探索")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 29)
+                        VStack(alignment: .leading) {
+                            Text("距离派遣探索全部完成")
+                                .font(.caption2)
+                            Text(timerInterval: Date()...context.state.allExpeditionCompleteTime, countsDown: true)
+                                .multilineTextAlignment(.leading)
+                                .font(.system(.title2, design: .rounded))
+                        }
+                        .gridColumnAlignment(.leading)
+                        .frame(width: 120)
+                    }
                 }
             }
             Spacer()
@@ -149,11 +168,18 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 .padding(.leading, 3)
             }
         }
-        .shadow(radius: 0.8)
-        .foregroundColor(Color("textColor3"))
+        .shadow(radius: useNoBackground ? 0 : 0.8)
+        .foregroundColor(useNoBackground ? .primary : Color("textColor3"))
         .padding()
         .background(alignment: .center) {
-            WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true)
+            switch context.state.background {
+            case .ramdom:
+                WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true)
+            case .customize(let backgroundOptions) :
+                WidgetBackgroundView(background: backgroundOptions.map( { WidgetBackground(identifier: $0, display: $0) } ).randomElement()!, darkModeOn: true)
+            case .noBackground:
+                EmptyView()
+            }
         }
     }
 }
