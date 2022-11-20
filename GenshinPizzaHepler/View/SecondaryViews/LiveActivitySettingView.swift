@@ -58,7 +58,7 @@ struct LiveActivitySettingDetailView: View {
     }
 
 
-    @AppStorage("resinRecoveryLiveActivityShowExpedition") var resinRecoveryLiveActivityShowExpedition: Bool = false
+    @AppStorage("resinRecoveryLiveActivityShowExpedition") var resinRecoveryLiveActivityShowExpedition: Bool = true
 
     var body: some View {
         List {
@@ -75,7 +75,8 @@ struct LiveActivitySettingDetailView: View {
                         }
                     }
                 }
-
+            } header: {
+                Text("树脂计时器背景")
             }
         }
         .navigationTitle("树脂计时器设置")

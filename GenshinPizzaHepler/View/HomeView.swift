@@ -211,13 +211,13 @@ private struct AccountInfoCards: View {
             .overlay(
                 EmptyView()
                     .alert(isPresented: $isSucceedAlertShow) {
-                        Alert(title: Text("创建树脂计时器成功ERROR\(errorMessage)"))
+                        Alert(title: Text("创建树脂计时器成功".localized))
                     }
             )
             .overlay(
                 EmptyView()
                     .alert(isPresented: $isErrorAlertShow) {
-                        Alert(title: Text("ERROR\(errorMessage)"))
+                        Alert(title: Text("ERROR \(errorMessage)"))
                     }
             )
         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
