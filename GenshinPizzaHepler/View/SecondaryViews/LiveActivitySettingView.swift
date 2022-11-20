@@ -58,7 +58,7 @@ struct LiveActivitySettingDetailView: View {
     }
 
 
-    @AppStorage("resinRecoveryLiveActivityShowExpedition") var resinRecoveryLiveActivityShowExpedition: Bool = false
+    @AppStorage("resinRecoveryLiveActivityShowExpedition") var resinRecoveryLiveActivityShowExpedition: Bool = true
 
     var body: some View {
         List {

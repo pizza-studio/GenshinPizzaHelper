@@ -14,7 +14,14 @@ class ResinRecoveryActivityController {
         Activity<ResinRecoveryAttributes>.activities
     }
 
-    private init() {}
+    private init() {
+        UserDefaults.standard.register(
+            defaults: [
+                "resinRecoveryLiveActivityShowExpedition" : true,
+                "resinRecoveryLiveActivityBackgroundOptions" : "[]"
+            ]
+        )
+    }
 
     static let shared: ResinRecoveryActivityController = .init()
 
