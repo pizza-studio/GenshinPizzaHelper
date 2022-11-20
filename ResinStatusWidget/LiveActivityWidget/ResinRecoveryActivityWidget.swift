@@ -119,7 +119,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                                 .font(.system(.title2, design: .rounded))
                         }
                         .gridColumnAlignment(.leading)
-                        .frame(width: 120)
+//                        .frame(width: 140)
                     }
                 }
                 GridRow {
@@ -135,7 +135,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             .font(.system(.title2, design: .rounded))
                     }
                     .gridColumnAlignment(.leading)
-                    .frame(width: 120)
+//                    .frame(width: 140)
 
                 }
                 if context.state.showExpeditionInfo {
@@ -152,7 +152,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                                 .font(.system(.title2, design: .rounded))
                         }
                         .gridColumnAlignment(.leading)
-                        .frame(width: 120)
+//                        .frame(width: 140)
                     }
                 }
             }

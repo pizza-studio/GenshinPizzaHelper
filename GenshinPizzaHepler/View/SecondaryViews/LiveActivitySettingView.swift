@@ -75,7 +75,8 @@ struct LiveActivitySettingDetailView: View {
                         }
                     }
                 }
-
+            } header: {
+                Text("树脂计时器背景")
             }
         }
         .navigationTitle("树脂计时器设置")
