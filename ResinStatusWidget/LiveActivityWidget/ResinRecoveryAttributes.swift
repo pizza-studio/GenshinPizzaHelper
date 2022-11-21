@@ -6,6 +6,7 @@
 //
 
 import Foundation
+#if canImport(ActivityKit)
 import ActivityKit
 
 @available(iOS 16.1, *)
@@ -110,3 +111,4 @@ enum ResinRecoveryActivityBackground: Codable, Equatable, Hashable {
     case customize([String])
     case noBackground
 }
+#endif

@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/11/19.
 //
 
+#if canImport(ActivityKit)
 import Foundation
 import WidgetKit
 import SwiftUI
@@ -183,3 +184,4 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         }
     }
 }
+#endif

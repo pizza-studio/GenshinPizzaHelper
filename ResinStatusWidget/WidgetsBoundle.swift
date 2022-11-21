@@ -15,9 +15,11 @@ struct WidgetsBundleiOS16: WidgetBundle {
     var body: some Widget {
         #if !os(watchOS)
         MainWidget()
-        if #available(iOS 16.1, *) {
-            ResinRecoveryActivityWidget()
-        }
+            #if canImport(ActivityKit)
+            if #available(iOS 16.1, *) {
+                ResinRecoveryActivityWidget()
+            }
+            #endif
         #else
         AlternativeWatchCornerResinWidget()
         #endif

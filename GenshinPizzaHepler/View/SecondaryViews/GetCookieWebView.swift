@@ -24,7 +24,7 @@ struct GetCookieWebView: View {
         case .cn:
             return "https://user.mihoyo.com/#/login/captcha"
         case .global:
-            return "https://m.hoyolab.com/"
+            return "https://creator.hoyolab.com/#/"
         }
     }
     
@@ -38,16 +38,17 @@ struct GetCookieWebView: View {
                 "Connection": "keep-alive",
                 "Accept-Encoding": "gzip, deflate, br",
                 "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
-                "max-age": "0",
+                "cache-control": "max-age=0",
 
             ]
         case .global:
             return [
-                "Host": "m.hoyolab.com",
-                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+//                "Host": "m.hoyolab.com",
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
                 "accept-language": "zh-CN,zh-Hans;q=0.9",
                 "accept-encoding": "gzip, deflate, br",
-                "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52",
+                "cache-control": "max-age=0",
             ]
         }
     }

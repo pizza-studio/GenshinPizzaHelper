@@ -155,6 +155,7 @@ private struct PinedAccountInfoCard: View {
                                                 }
                                             }
                                         }
+                                        #if canImport(ActivityKit)
                                         if #available (iOS 16.1, *) {
                                             Button("为该帐号开启树脂计时器") {
                                                 do {
@@ -166,6 +167,7 @@ private struct PinedAccountInfoCard: View {
                                                 }
                                             }
                                         }
+                                        #endif
                                     }
                             }
                         case .failure( _) :
@@ -257,6 +259,7 @@ private struct AccountInfoCards: View {
                                             }
                                         }
                                     }
+                                    #if canImport(ActivityKit)
                                     if #available (iOS 16.1, *) {
                                         Button("为该帐号开启树脂计时器") {
                                             do {
@@ -268,6 +271,7 @@ private struct AccountInfoCards: View {
                                             }
                                         }
                                     }
+                                    #endif
                                 }
                         }
                     case .failure( _) :

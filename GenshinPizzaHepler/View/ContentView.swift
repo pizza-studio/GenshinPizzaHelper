@@ -105,11 +105,14 @@ struct ContentView: View {
                     // 检查最新版本
                     checkNewestVersion()
                 }
+                #if canImport(ActivityKit)
                 if #available(iOS 16.1, *) {
                     ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivity(for: viewModel.accounts)
                 }
+                #endif
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
+                #if canImport(ActivityKit)
                 if autoDeliveryResinTimerLiveActivity {
                     let pinToTopAccountUUIDString = UserDefaults.standard.string(forKey: "pinToTopAccountUUIDString")
                     if #available(iOS 16.1, *) {
@@ -130,6 +133,7 @@ struct ContentView: View {
                 } else {
                     print("not allow autoDeliveryResinTimerLiveActivity")
                 }
+                #endif
             default:
                 break
             }

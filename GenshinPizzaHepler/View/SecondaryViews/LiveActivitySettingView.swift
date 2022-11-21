@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+#if canImport(ActivityKit)
 struct LiveActivitySettingView: View {
     @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = true
 
@@ -165,3 +165,4 @@ extension [String]: RawRepresentable {
         }
     }
 }
+#endif

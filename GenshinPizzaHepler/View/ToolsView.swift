@@ -5,9 +5,12 @@
 //  Created by Bill Haku on 2022/9/17.
 //
 
+
 import SwiftUI
 import SwiftPieChart
+#if canImport(ActivityKit)
 import ActivityKit
+#endif
 
 @available(iOS 15.0, *)
 struct ToolsView: View {

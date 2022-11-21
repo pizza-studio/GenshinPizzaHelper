@@ -56,7 +56,9 @@ struct SettingsView: View {
                 // 通知设置
                 NotificationSettingNavigator()
 
+                #if canImport(ActivityKit)
                 LiveActivitySettingView()
+                #endif
 
                 Section {
                     Button("在App Store评分") {
