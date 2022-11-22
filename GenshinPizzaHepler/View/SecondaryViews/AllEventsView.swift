@@ -93,10 +93,12 @@ struct AllEventsView: View {
     }
 
     func getLocalizedContent(_ content: EventModel.MultiLanguageContents) -> String {
-        let locale = Locale.current.languageCode
+        let locale = Bundle.main.preferredLocalizations.first
         switch locale {
-        case "zh":
+        case "zh-Hans":
             return content.CHS
+        case "zh-Hant", "zh-HK":
+            return content.CHT
         case "en":
             return content.EN
         case "ja":

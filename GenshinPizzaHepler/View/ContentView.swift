@@ -169,6 +169,9 @@ struct ContentView: View {
                 return
             }
         }
+        .onAppear {
+            print("Locale: \(Bundle.main.preferredLocalizations.first ?? "Unknown")")
+        }
         .navigate(to: NotificationSettingView().environmentObject(viewModel), when: $isJumpToSettingsView)
     }
 
