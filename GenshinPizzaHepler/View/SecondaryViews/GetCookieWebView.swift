@@ -24,7 +24,7 @@ struct GetCookieWebView: View {
         case .cn:
             return "https://user.mihoyo.com/#/login/captcha"
         case .global:
-            return "https://creator.hoyolab.com/#/"
+            return "https://account.hoyoverse.com/#/login"
         }
     }
     
@@ -135,6 +135,7 @@ struct CookieGetterWebView: UIViewRepresentable {
         request.allHTTPHeaderFields = httpHeaderFields
         let webview = WKWebView()
         webview.configuration.websiteDataStore = dataStore
+        webview.customUserAgent = "Mozilla/5.0 (iPod; U; CPU iPhone OS 4_3_3 like Mac OS X; ja-jp) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5"
         webview.load(request)
         return webview
     }
