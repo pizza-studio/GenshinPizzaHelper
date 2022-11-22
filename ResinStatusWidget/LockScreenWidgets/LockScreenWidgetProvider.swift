@@ -66,6 +66,11 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                     configs.first!.fetchSimplifiedResult { simplifiedResult in
                         let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name, accountUUIDString: configs.first!.uuid?.uuidString)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                        #if !os(watchOS)
+                        if #available(iOSApplicationExtension 16.1, *) {
+                            ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivityUsingReFetchData()
+                        }
+                        #endif
                         completion(timeline)
                         print("Widget Fetch succeed")
                     }
@@ -73,6 +78,11 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                     configs.first!.fetchResult { result in
                         let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, accountUUIDString: configs.first?.uuid?.uuidString)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                        #if !os(watchOS)
+                        if #available(iOSApplicationExtension 16.1, *) {
+                            ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: configs.first!, using: result)
+                        }
+                        #endif
                         completion(timeline)
                         print("Widget Fetch succeed")
                     }
@@ -81,6 +91,11 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                 configs.first!.fetchResult { result in
                     let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, accountUUIDString: configs.first?.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    #if !os(watchOS)
+                    if #available(iOSApplicationExtension 16.1, *) {
+                        ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: configs.first!, using: result)
+                    }
+                    #endif
                     completion(timeline)
                     print("Widget Fetch succeed")
                 }
@@ -107,6 +122,11 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                 config.fetchSimplifiedResult { result in
                     let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .simplified(result: result), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    #if !os(watchOS)
+                    if #available(iOSApplicationExtension 16.1, *) {
+                        ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivityUsingReFetchData()
+                    }
+                    #endif
                     completion(timeline)
                     print("Widget Fetch succeed")
                 }
@@ -114,6 +134,11 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                 config.fetchResult { result in
                     let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    #if !os(watchOS)
+                    if #available(iOSApplicationExtension 16.1, *) {
+                        ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: config, using: result)
+                    }
+                    #endif
                     completion(timeline)
                     print("Widget Fetch succeed")
                 }
@@ -122,6 +147,11 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 let entry = AccountOnlyEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                #if !os(watchOS)
+                if #available(iOSApplicationExtension 16.1, *) {
+                    ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: config, using: result)
+                }
+                #endif
                 completion(timeline)
                 print("Widget Fetch succeed")
             }

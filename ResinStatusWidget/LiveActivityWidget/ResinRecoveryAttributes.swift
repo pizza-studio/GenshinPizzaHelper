@@ -93,7 +93,7 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
     }
 
     /// 下一20倍数树脂回复时间点
-    var next20ResinRecoveryTime: Date? {
+    var next20ResinRecoveryTime: Date {
         Date().addingTimeInterval(next20ResinRecoveryTimeInterval)
     }
 
