@@ -46,9 +46,9 @@ struct LiveActivitySettingView: View {
 
 @available(iOS 16.1, *)
 struct LiveActivitySettingDetailView: View {
-    @AppStorage("resinRecoveryLiveActivityUseEmptyBackground") var resinRecoveryLiveActivityUseEmptyBackground: Bool = false
+    @AppStorage("resinRecoveryLiveActivityUseEmptyBackground", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var resinRecoveryLiveActivityUseEmptyBackground: Bool = false
 
-    @AppStorage("resinRecoveryLiveActivityUseCustomizeBackground") var resinRecoveryLiveActivityUseCustomizeBackground: Bool = false
+    @AppStorage("resinRecoveryLiveActivityUseCustomizeBackground", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var resinRecoveryLiveActivityUseCustomizeBackground: Bool = false
     var useRandomBackground: Binding<Bool> {
         .init {
             !resinRecoveryLiveActivityUseCustomizeBackground
@@ -58,7 +58,11 @@ struct LiveActivitySettingDetailView: View {
     }
 
 
-    @AppStorage("resinRecoveryLiveActivityShowExpedition") var resinRecoveryLiveActivityShowExpedition: Bool = true
+    @AppStorage("resinRecoveryLiveActivityShowExpedition", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var resinRecoveryLiveActivityShowExpedition: Bool = true
+
+    @AppStorage("autoUpdateResinRecoveryTimerUsingReFetchData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var autoUpdateResinRecoveryTimerUsingReFetchData: Bool = true
+
+    @State private var isHelpSheetShow: Bool = false
 
     var body: some View {
         List {
@@ -78,9 +82,30 @@ struct LiveActivitySettingDetailView: View {
             } header: {
                 Text("树脂计时器背景")
             }
+            Section {
+                Toggle("简洁模式下自动刷新树脂计时器", isOn: $autoUpdateResinRecoveryTimerUsingReFetchData)
+            } footer: {
+                Text("如出现1034问题，请关闭本选项。")
+            }
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    isHelpSheetShow.toggle()
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                }
+
+            }
         }
         .navigationTitle("树脂计时器设置")
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $isHelpSheetShow) {
+            NavigationView {
+                WebBroswerView(url: "http://ophelper.top/static/resin_timer_help.html")
+                    .dismissableSheet(isSheetShow: $isHelpSheetShow)
+            }
+        }
     }
 }
 
@@ -138,30 +163,6 @@ struct LiveActivityBackgroundPicker: View {
             return backgroundOptions
         } else {
             return backgroundOptions.filter { "\(NSLocalizedString($0, comment: ""))".lowercased().contains(searchText.lowercased()) }
-        }
-    }
-}
-
-
-
-extension [String]: RawRepresentable {
-    public typealias RawValue = String
-    public var rawValue: RawValue {
-        let encoder = JSONEncoder()
-        if let data = try? encoder.encode(self) {
-            return String(data: data, encoding: .utf8)!
-        } else {
-            return String(data: try! encoder.encode([String].init()), encoding: .utf8)!
-        }
-    }
-
-    public init?(rawValue: RawValue) {
-        let decoder = JSONDecoder()
-        if let data = rawValue.data(using: .utf8),
-            let result = try? decoder.decode([String].self, from: data) {
-            self = result
-        } else {
-            self = []
         }
     }
 }
