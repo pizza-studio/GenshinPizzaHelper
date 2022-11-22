@@ -2907,7 +2907,6 @@
 				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "披萨小助手";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSCameraUsageDescription = "如果你想在米游社网页中使用相机拍摄照片并上传图片，请允许使用相机。";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -2947,7 +2946,6 @@
 				INFOPLIST_FILE = GenshinPizzaHepler/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "披萨小助手";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSCameraUsageDescription = "如果你想在米游社网页中使用相机拍摄照片并上传图片，请允许使用相机。";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
