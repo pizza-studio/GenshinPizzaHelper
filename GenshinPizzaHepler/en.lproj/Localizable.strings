@@ -976,3 +976,11 @@
 "未知错误：%@" = "Unknown Error: %@";
 "账号未获取信息" = "No info with account";
 "系统设置不允许本软件开启实时活动，请前往开启" = "The system settings are not allowed to start the real-time activity, please go to turn it on";
+
+// MARK: - 2.7.1
+"加入QQ群" = "Join QQ Group";
+"加入Discord服务器" = "Join Discord Server";
+"1群: 813912474" = "Group 1: 813912474";
+"2群: 829996515" = "Group 2: 829996515";
+"原神披萨深渊榜网页版" = "Genshin Pizza Abyss Rank Webpage";
+"英语 繁体中文" = "English Traditional Chinese";

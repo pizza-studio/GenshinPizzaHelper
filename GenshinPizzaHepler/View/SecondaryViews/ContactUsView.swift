@@ -159,7 +159,7 @@ struct ContactUsView: View {
                 Menu {
                     Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=813912474")!) {
                         Label {
-                            Text("群1: 813912474")
+                            Text("1群: 813912474")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -169,7 +169,7 @@ struct ContactUsView: View {
 
                     Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=829996515")!) {
                         Label {
-                            Text("群2: 829996515")
+                            Text("2群: 829996515")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -188,7 +188,7 @@ struct ContactUsView: View {
 
                 Link(destination: URL(string: "https://discord.gg/g8nCgKsaMe")!) {
                     Label {
-                        Text("加入Discord频道")
+                        Text("加入Discord服务器")
                     } icon: {
                         Image("discord")
                             .resizable()
