@@ -203,7 +203,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("Lava")
                         Spacer()
-                        Text("英语")
+                        Text("英语 繁体中文")
                             .foregroundColor(.gray)
                     }
                 } icon: {
