@@ -34,6 +34,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let refreshFrequencyInMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "mainWidgetRefreshFrequencyInMinute") ?? 30)
+        let needUpdateCount: Int = Int(floor(Double(refreshFrequencyInMinute) * 60 / 7))
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: refreshFrequencyInMinute, to: currentDate)!
         
@@ -57,38 +58,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
             if configs.count == 1 {
                 viewConfig = WidgetViewConfiguration(configuration, nil)
                 // 如果还未选择账号且只有一个账号，默认获取第一个
-                switch configs.first!.server.region {
-                case .cn:
-                    if configuration.simplifiedMode?.boolValue ?? true {
-                        configs.first!.fetchSimplifiedResult { simplifiedResult in
-                            let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: simplifiedResult))
-                            let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance, accountUUIDString: configs.first!.uuid?.uuidString)
-                            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                            #if canImport(ActivityKit)
-                            if #available(iOSApplicationExtension 16.1, *) {
-                                ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivityUsingReFetchData()
-                            }
-                            #endif
-                            completion(timeline)
-                            print("Widget Fetch succeed")
-                        }
-                    } else {
-                        configs.first!.fetchResult { result in
-                            let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
-                            let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance, accountUUIDString: configs.first?.uuid?.uuidString)
-                            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                            completion(timeline)
-                            print("Widget Fetch succeed")
-                        }
-                    }
-                case .global:
-                    configs.first!.fetchResult { result in
-                        let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
-                        let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance, accountUUIDString: configs.first?.uuid?.uuidString)
-                        let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                        completion(timeline)
-                        print("Widget Fetch succeed")
-                    }
+                getTimelineEntries(config: configs.first!) { entries in
+                    completion(.init(entries: entries, policy: .after(refreshDate)))
                 }
             } else {
                 // 如果还没设置账号，要求进入App获取账号
@@ -116,37 +87,75 @@ struct MainWidgetProvider: IntentTimelineProvider {
             return
         }
         
-        // 正常情况
-        switch config.server.region {
-        case .cn:
-            if configuration.simplifiedMode?.boolValue ?? true {
-                config.fetchSimplifiedResult { simplifiedResult in
-                    let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: simplifiedResult))
-                    let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), viewConfig: viewConfig, accountName: config.name, relevance: relevance, accountUUIDString: config.uuid?.uuidString)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    #if canImport(ActivityKit)
-                    if #available(iOSApplicationExtension 16.1, *) {
-                        ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivityUsingReFetchData()
+        getTimelineEntries(config: config) { entries in
+            completion(.init(entries: entries, policy: .after(refreshDate)))
+        }
+
+        func getTimelineEntries(config: AccountConfiguration, completion: @escaping ([ResinEntry]) -> ()) {
+            switch config.server.region {
+            case .cn:
+                if configuration.simplifiedMode?.boolValue ?? true {
+                    getSimplifiedTimelineEntries(config: config) { entries in
+                        completion(entries)
                     }
-                    #endif
-                    completion(timeline)
-                    print("Widget Fetch succeed")
+                } else {
+                    getNormalTimelineEntries(config: config) { entries in
+                        completion(entries)
+                    }
                 }
-            } else {
-                config.fetchResult { result in
-                    let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
-                    let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance, accountUUIDString: config.uuid?.uuidString)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    completion(timeline)
-                    print("Widget Fetch succeed")
+            case .global:
+                getNormalTimelineEntries(config: config) { entries in
+                    completion(entries)
                 }
             }
-        case .global:
+        }
+
+        func getSimplifiedTimelineEntries(config: AccountConfiguration, completion: @escaping ([ResinEntry]) -> ()) {
+            config.fetchSimplifiedResult { result in
+                switch result {
+                case .success(let data):
+                    let dateAndDatas = (0...needUpdateCount).map { index in
+                        (
+                            Date(timeIntervalSinceNow: TimeInterval(index*7*60)),
+                            MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*7*60)))),
+                            data.dataAfter(TimeInterval(index*7*60))
+                        )
+                    }
+                    completion(
+                        dateAndDatas.map({ date, relevanceScore, data in
+                                .init(date: date, widgetDataKind: .simplified(result: .success(data)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: relevanceScore), accountUUIDString: config.uuid?.uuidString)
+                        })
+                    )
+                case .failure(_):
+                    let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
+                    let entry = ResinEntry(date: currentDate, widgetDataKind: .simplified(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance, accountUUIDString: config.uuid?.uuidString)
+                    completion([entry])
+                }
+                print("Widget Fetch succeed")
+            }
+        }
+
+        func getNormalTimelineEntries(config: AccountConfiguration, completion: @escaping ([ResinEntry]) -> ()) {
             config.fetchResult { result in
-                let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
-                let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance, accountUUIDString: config.uuid?.uuidString)
-                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                completion(timeline)
+                switch result {
+                case .success(let data):
+                    let dateAndDatas = (0...needUpdateCount).map { index in
+                        (
+                            Date(timeIntervalSinceNow: TimeInterval(index*7*60)),
+                            MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*7*60)))),
+                            data.dataAfter(TimeInterval(index*7*60))
+                        )
+                    }
+                    completion(
+                        dateAndDatas.map({ date, relevanceScore, data in
+                                .init(date: date, widgetDataKind: .normal(result: .success(data)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: relevanceScore), accountUUIDString: config.uuid?.uuidString)
+                        })
+                    )
+                case .failure(_):
+                    let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
+                    let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance, accountUUIDString: config.uuid?.uuidString)
+                    completion([entry])
+                }
                 print("Widget Fetch succeed")
             }
         }

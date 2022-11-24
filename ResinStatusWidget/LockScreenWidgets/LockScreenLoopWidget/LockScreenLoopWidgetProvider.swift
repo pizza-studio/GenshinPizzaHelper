@@ -49,7 +49,8 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        var refreshMinute: Int = 7
+        let refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetRefreshFrequencyInMinute") ?? 30)
+        let needUpdateCount: Int = Int(floor(Double(refreshMinute) * 60 / 7))
         var refreshDate: Date {
             Calendar.current.date(byAdding: .minute, value: refreshMinute, to: currentDate)!
         }
@@ -139,6 +140,69 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                 let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
                 completion(timeline)
+                print("Widget Fetch succeed")
+            }
+        }
+
+        func getTimelineEntries(config: AccountConfiguration, completion: @escaping ([AccountAndShowWhichInfoIntentEntry]) -> ()) {
+            switch config.server.region {
+            case .cn:
+                if configuration.simplifiedMode?.boolValue ?? true {
+                    getSimplifiedTimelineEntries(config: config) { entries in
+                        completion(entries)
+                    }
+                } else {
+                    getNormalTimelineEntries(config: config) { entries in
+                        completion(entries)
+                    }
+                }
+            case .global:
+                getNormalTimelineEntries(config: config) { entries in
+                    completion(entries)
+                }
+            }
+        }
+
+        func getSimplifiedTimelineEntries(config: AccountConfiguration, completion: @escaping ([AccountAndShowWhichInfoIntentEntry]) -> ()) {
+            config.fetchSimplifiedResult { result in
+                switch result {
+                case .success(let data):
+                    let dateAndDatas = (0...needUpdateCount).map { index in
+                        (
+                            Date(timeIntervalSinceNow: TimeInterval(index*7*60)), data.dataAfter(TimeInterval(index*7*60))
+                        )
+                    }
+                    completion(
+                        dateAndDatas.map({ date, data in
+                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .simplified(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
+                        })
+                    )
+                case .failure(_):
+                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
+                    completion([entry])
+                }
+                print("Widget Fetch succeed")
+            }
+        }
+
+        func getNormalTimelineEntries(config: AccountConfiguration, completion: @escaping ([AccountAndShowWhichInfoIntentEntry]) -> ()) {
+            config.fetchResult { result in
+                switch result {
+                case .success(let data):
+                    let dateAndDatas = (0...needUpdateCount).map { index in
+                        (
+                            Date(timeIntervalSinceNow: TimeInterval(index*7*60)), data.dataAfter(TimeInterval(index*7*60))
+                        )
+                    }
+                    completion(
+                        dateAndDatas.map({ date, data in
+                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
+                        })
+                    )
+                case .failure(_):
+                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
+                    completion([entry])
+                }
                 print("Widget Fetch succeed")
             }
         }
