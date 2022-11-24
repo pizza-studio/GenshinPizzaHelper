@@ -163,12 +163,13 @@ struct CookieGetterWebView: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            var js = ""
-            js.append("let timer = setInterval(() => {");
-            js.append("const bar = document.getElementsByClassName('mhy-popover-group-b mhy-guider-popover')[0];");
-            js.append("bar?.parentNode.removeChild(bar);");
-            js.append("}, 300);");
-            js.append("setTimeout(() => {clearInterval(timer);timer = null}, 10000);");
+            let js = """
+let timer = setInterval(() => {
+var m = document.getElementById("driver-page-overlay");
+m.parentNode.removeChild(m);
+}, 300);
+setTimeout(() => {clearInterval(timer);timer = null}, 10000);
+"""
             webView.evaluateJavaScript(js)
         }
     }
