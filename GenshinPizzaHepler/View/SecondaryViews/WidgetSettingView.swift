@@ -19,12 +19,12 @@ struct WidgetSettingView: View {
                 SettingSlider(title: "主屏幕小组件刷新频率",
                                            value: $mainWidgetRefreshFrequencyInMinute,
                                            valueFormatterString: "每%lld分钟",
-                                           bounds: 7...120,
+                                           bounds: 7...270,
                                            step: 1)
                 SettingSlider(title: "锁定屏幕小组件刷新频率",
                                            value: $lockscreenWidgetRefreshFrequencyInMinute,
                                            valueFormatterString: "每%lld分钟",
-                                           bounds: 7...120,
+                                           bounds: 7...270,
                                            step: 1)
             } header: {
                 Text("小组件刷新频率")

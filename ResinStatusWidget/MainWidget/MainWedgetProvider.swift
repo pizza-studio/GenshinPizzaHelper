@@ -33,8 +33,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
     func getTimeline(for configuration: SelectAccountIntent, in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let refreshFrequencyInMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "mainWidgetRefreshFrequencyInMinute") ?? 30)
-        let needUpdateCount: Int = Int(floor(Double(refreshFrequencyInMinute) * 60 / 7))
+        var refreshFrequencyInMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "mainWidgetRefreshFrequencyInMinute") ?? 30)
+        if refreshFrequencyInMinute == 0 { refreshFrequencyInMinute = 30 }
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: refreshFrequencyInMinute, to: currentDate)!
         
@@ -114,7 +114,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             config.fetchSimplifiedResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...needUpdateCount).map { index in
+                    let dateAndDatas = (0...40).map { index in
                         (
                             Date(timeIntervalSinceNow: TimeInterval(index*7*60)),
                             MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*7*60)))),
@@ -123,7 +123,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
                     }
                     completion(
                         dateAndDatas.map({ date, relevanceScore, data in
-                                .init(date: date, widgetDataKind: .simplified(result: .success(data)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: relevanceScore), accountUUIDString: config.uuid?.uuidString)
+                            viewConfig = WidgetViewConfiguration(configuration, nil)
+                            return .init(date: date, widgetDataKind: .simplified(result: .success(data)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: relevanceScore), accountUUIDString: config.uuid?.uuidString)
                         })
                     )
                 case .failure(_):
@@ -139,7 +140,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...needUpdateCount).map { index in
+                    let dateAndDatas = (0...40).map { index in
                         (
                             Date(timeIntervalSinceNow: TimeInterval(index*7*60)),
                             MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*7*60)))),

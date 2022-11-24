@@ -49,8 +49,8 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        let refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetRefreshFrequencyInMinute") ?? 30)
-        let needUpdateCount: Int = Int(floor(Double(refreshMinute) * 60 / 7))
+        var refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetRefreshFrequencyInMinute") ?? 30)
+        if refreshMinute == 0 { refreshMinute = 30 }
         var refreshDate: Date {
             Calendar.current.date(byAdding: .minute, value: refreshMinute, to: currentDate)!
         }
@@ -66,36 +66,9 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         }
 
         guard configuration.account != nil else {
-            // 如果还未选择账号，默认获取第一个
-            switch configs.first!.server.region {
-            case .cn:
-                if configuration.simplifiedMode?.boolValue ?? true {
-                    configs.first!.fetchSimplifiedResult { simplifiedResult in
-                        let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name, showWeeklyBosses: false , showTransformer: false, accountUUIDString: configs.first!.uuid?.uuidString)
-                        let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                        #if !os(watchOS) && canImport(ActivityKit)
-                        if #available(iOSApplicationExtension 16.1, *) {
-                            ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivityUsingReFetchData()
-                        }
-                        #endif
-                        completion(timeline)
-                        print("Widget Fetch succeed")
-                    }
-                } else {
-                    configs.first!.fetchResult { result in
-                        let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: configs.first!.uuid?.uuidString)
-                        let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                        completion(timeline)
-                        print("Widget Fetch succeed")
-                    }
-                }
-            case .global:
-                configs.first!.fetchResult { result in
-                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: configs.first!.uuid?.uuidString)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    completion(timeline)
-                    print("Widget Fetch succeed")
-                }
+            let config = configs.first!
+            getTimelineEntries(config: config) { entries in
+                completion(.init(entries: entries, policy: .after(refreshDate)))
             }
             return
         }
@@ -113,35 +86,8 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         }
 
         // 正常情况
-        switch config.server.region {
-        case .cn:
-            if configuration.simplifiedMode?.boolValue ?? true {
-                config.fetchSimplifiedResult { simplifiedResult in
-                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: config.name, showWeeklyBosses: false , showTransformer: false, accountUUIDString: config.uuid?.uuidString)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    #if !os(watchOS) && canImport(ActivityKit)
-                    if #available(iOSApplicationExtension 16.1, *) {
-                        ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivityUsingReFetchData()
-                    }
-                    #endif
-                    completion(timeline)
-                    print("Widget Fetch succeed")
-                }
-            } else {
-                config.fetchResult { result in
-                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
-                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    completion(timeline)
-                    print("Widget Fetch succeed")
-                }
-            }
-        case .global:
-            config.fetchResult { result in
-                let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
-                let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                completion(timeline)
-                print("Widget Fetch succeed")
-            }
+        getTimelineEntries(config: config) { entries in
+            completion(.init(entries: entries, policy: .after(refreshDate)))
         }
 
         func getTimelineEntries(config: AccountConfiguration, completion: @escaping ([AccountAndShowWhichInfoIntentEntry]) -> ()) {
@@ -167,7 +113,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             config.fetchSimplifiedResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...needUpdateCount).map { index in
+                    let dateAndDatas = (0...20).map { index in
                         (
                             Date(timeIntervalSinceNow: TimeInterval(index*7*60)), data.dataAfter(TimeInterval(index*7*60))
                         )
@@ -189,7 +135,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...needUpdateCount).map { index in
+                    let dateAndDatas = (0...20).map { index in
                         (
                             Date(timeIntervalSinceNow: TimeInterval(index*7*60)), data.dataAfter(TimeInterval(index*7*60))
                         )
