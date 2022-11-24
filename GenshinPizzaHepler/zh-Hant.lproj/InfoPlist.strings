@@ -6,6 +6,6 @@
   
 */
 
-"CFBundleDisplayName" = "Pizza Helper";
+"CFBundleDisplayName" = "披薩小助手";
 "NSPhotoLibraryAddUsageDescription" = "請允許保存圖片";
 "NSCameraUsageDescription" = "If you want use camera in HoYoLAB's web and upload photos, please allow the use of camera";
