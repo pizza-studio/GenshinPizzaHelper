@@ -59,6 +59,7 @@ struct CurrentEventNavigator: View {
     func eventItem(event: EventModel) -> some View {
         HStack {
             Text(" \(getLocalizedContent(event.name))")
+                .lineLimit(1)
             Spacer()
             if getRemainDays(event.endAt) == nil {
                 Text(event.endAt)
