@@ -84,11 +84,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                     configs.first!.fetchResult { result in
                         let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: configs.first!.uuid?.uuidString)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                        #if !os(watchOS)
-                        if #available(iOSApplicationExtension 16.1, *) {
-                            ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: configs.first!, using: result)
-                        }
-                        #endif
                         completion(timeline)
                         print("Widget Fetch succeed")
                     }
@@ -97,11 +92,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                 configs.first!.fetchResult { result in
                     let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: configs.first!.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: configs.first!.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    #if !os(watchOS)
-                    if #available(iOSApplicationExtension 16.1, *) {
-                        ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: configs.first!, using: result)
-                    }
-                    #endif
                     completion(timeline)
                     print("Widget Fetch succeed")
                 }
@@ -140,11 +130,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                 config.fetchResult { result in
                     let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    #if !os(watchOS)
-                    if #available(iOSApplicationExtension 16.1, *) {
-                        ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: config, using: result)
-                    }
-                    #endif
                     completion(timeline)
                     print("Widget Fetch succeed")
                 }
@@ -153,11 +138,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                #if !os(watchOS)
-                if #available(iOSApplicationExtension 16.1, *) {
-                    ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: config, using: result)
-                }
-                #endif
                 completion(timeline)
                 print("Widget Fetch succeed")
             }

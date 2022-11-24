@@ -102,7 +102,7 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
     }
 
     var showExpeditionInfo: Bool {
-        expeditionAllCompleteTimeInterval != 0 && showExpedition
+        showExpedition
     }
 }
 

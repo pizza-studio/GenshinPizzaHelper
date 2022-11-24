@@ -105,11 +105,6 @@ struct ContentView: View {
                     // 检查最新版本
                     checkNewestVersion()
                 }
-                #if canImport(ActivityKit)
-                if #available(iOS 16.1, *) {
-                    ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivity(for: viewModel.accounts)
-                }
-                #endif
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
                 #if canImport(ActivityKit)
