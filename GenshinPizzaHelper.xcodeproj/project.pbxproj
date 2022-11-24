@@ -782,6 +782,8 @@
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
 		EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchResinDetailView.swift; sourceTree = "<group>"; };
+		EA185F33292F2726003E7E32 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		EA185F34292F272B003E7E32 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EA196B0128B769340091FAE0 /* StringLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLocalized.swift; sourceTree = "<group>"; };
 		EA1B76762886B89F007A5216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowContentViewModifier.swift; sourceTree = "<group>"; };
@@ -828,6 +830,7 @@
 		EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProviders.swift; sourceTree = "<group>"; };
 		EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENCharacterMapModel.swift; sourceTree = "<group>"; };
 		EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENCharacterLocModel.swift; sourceTree = "<group>"; };
+		EA68247E292F425C009E506F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EA6829DB28A2523800E57462 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EA6960AA28E73BFE004B2CAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA6960AC28E73BFF004B2CAF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
@@ -868,7 +871,7 @@
 		EAB110FD28CF7704009FDF07 /* LockScreenExpeditionWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenExpeditionWidget.swift; sourceTree = "<group>"; };
 		EAB1110628CF84B5009FDF07 /* WidgetLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLauncher.swift; sourceTree = "<group>"; };
 		EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDataCollectionView.swift; sourceTree = "<group>"; };
-		EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "原神披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinPizzaHeplerApp.swift; sourceTree = "<group>"; };
 		EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -1459,7 +1462,7 @@
 		EABD7DB72886B2D200B7F0FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */,
+				EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */,
 				EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */,
 				EA099FF328A2B7220023B4AF /* AccountIntent.appex */,
 				BFCC065628C9B6A0003E4A54 /* 原神披萨小助手.app */,
@@ -1702,7 +1705,7 @@
 				BFBDD66E28F3F3C90022B79D /* SwiftPieChart */,
 			);
 			productName = GenshinPizzaHepler;
-			productReference = EABD7DB62886B2D200B7F0FD /* 原神披萨小助手.app */;
+			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EAE95CE028CE10A000D975CB /* WatchIntent */ = {
@@ -2484,6 +2487,9 @@
 				BF70213628B5259300A6BBA9 /* en */,
 				BF70213E28B7203B00A6BBA9 /* ja */,
 				BFCC064C28C5EA79003E4A54 /* fr */,
+				EA185F33292F2726003E7E32 /* zh-HK */,
+				EA185F34292F272B003E7E32 /* zh-Hant */,
+				EA68247E292F425C009E506F /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2962,7 +2968,7 @@
 				);
 				MARKETING_VERSION = 2.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
-				PRODUCT_NAME = "原神披萨小助手";
+				PRODUCT_NAME = "披萨小助手";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -3001,7 +3007,7 @@
 				);
 				MARKETING_VERSION = 2.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
-				PRODUCT_NAME = "原神披萨小助手";
+				PRODUCT_NAME = "披萨小助手";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

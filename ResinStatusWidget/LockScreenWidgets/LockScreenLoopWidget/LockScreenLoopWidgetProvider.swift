@@ -72,7 +72,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                     configs.first!.fetchSimplifiedResult { simplifiedResult in
                         let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: configs.first!.name, showWeeklyBosses: false , showTransformer: false, accountUUIDString: configs.first!.uuid?.uuidString)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                        #if !os(watchOS)
+                        #if !os(watchOS) && canImport(ActivityKit)
                         if #available(iOSApplicationExtension 16.1, *) {
                             ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivityUsingReFetchData()
                         }
@@ -118,7 +118,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                 config.fetchSimplifiedResult { simplifiedResult in
                     let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: simplifiedResult), accountName: config.name, showWeeklyBosses: false , showTransformer: false, accountUUIDString: config.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    #if !os(watchOS)
+                    #if !os(watchOS) && canImport(ActivityKit)
                     if #available(iOSApplicationExtension 16.1, *) {
                         ResinRecoveryActivityController.shared.updateAllResinRecoveryTimerActivityUsingReFetchData()
                     }
