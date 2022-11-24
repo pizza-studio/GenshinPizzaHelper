@@ -75,9 +75,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                             let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
                             let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance, accountUUIDString: configs.first?.uuid?.uuidString)
                             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                            if #available(iOSApplicationExtension 16.1, *) {
-                                ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: configs.first!, using: result)
-                            }
                             completion(timeline)
                             print("Widget Fetch succeed")
                         }
@@ -87,9 +84,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                         let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
                         let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: configs.first!.name, relevance: relevance, accountUUIDString: configs.first?.uuid?.uuidString)
                         let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                        if #available(iOSApplicationExtension 16.1, *) {
-                            ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: configs.first!, using: result)
-                        }
                         completion(timeline)
                         print("Widget Fetch succeed")
                     }
@@ -139,9 +133,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                     let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
                     let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance, accountUUIDString: config.uuid?.uuidString)
                     let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                    if #available(iOSApplicationExtension 16.1, *) {
-                        ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: config, using: result)
-                    }
                     completion(timeline)
                     print("Widget Fetch succeed")
                 }
@@ -151,9 +142,6 @@ struct MainWidgetProvider: IntentTimelineProvider {
                 let relevance: TimelineEntryRelevance = .init(score: MainWidgetProvider.calculateRelevanceScore(result: result))
                 let entry = ResinEntry(date: currentDate, widgetDataKind: .normal(result: result), viewConfig: viewConfig, accountName: config.name, relevance: relevance, accountUUIDString: config.uuid?.uuidString)
                 let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
-                if #available(iOSApplicationExtension 16.1, *) {
-                    ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: config, using: result)
-                }
                 completion(timeline)
                 print("Widget Fetch succeed")
             }
