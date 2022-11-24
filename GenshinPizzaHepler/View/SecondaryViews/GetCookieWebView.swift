@@ -135,7 +135,7 @@ struct CookieGetterWebView: UIViewRepresentable {
         request.allHTTPHeaderFields = httpHeaderFields
         let webview = WKWebView()
         webview.configuration.websiteDataStore = dataStore
-        webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15"
+//        webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15"
         webview.navigationDelegate = context.coordinator
         webview.load(request)
         return webview
