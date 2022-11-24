@@ -985,3 +985,9 @@
 "2群: 829996515" = "Group 2: 829996515";
 "原神披萨深渊榜网页版" = "Genshin Pizza Abyss Rank Webpage";
 "英语 繁体中文" = "English Traditional Chinese";
+
+"隐藏灵动岛 / 关闭树脂计时器" = "Hide the Dynamic Island / Turn off Resin Timer";
+"如何隐藏灵动岛？如何关闭树脂计时器？" = "How to hide the Dynamic Island? How to turn off the resin timer?";
+"您可以从左右向中间滑动灵动岛，即可隐藏灵动岛。\n在锁定屏幕上左滑树脂计时器，即可关闭树脂计时器和灵动岛。" = "You can slide the Dynamic Island from left / right to the middle to hide it. \nSwipe left on the resin timer on the lock screen to turn off the resin timer and the Dynamic Island.";
+"简洁模式下自动刷新树脂计时器" = "Auto-refresh resin timer (only for Simplified Mode)";
+"如出现1034问题，请关闭本选项。" = "If a 1034 problem occurs, please turn off this option.";

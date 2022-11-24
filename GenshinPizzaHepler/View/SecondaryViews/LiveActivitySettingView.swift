@@ -113,7 +113,7 @@ struct LiveActivitySettingDetailView: View {
                     .dismissableSheet(isSheetShow: $isHelpSheetShow)
             }
         }
-        .alert("如何隐藏灵动岛？如何关闭树脂计时器？", isPresented: $isHowToCloseDynamicIslandAlertShow) {
+        .alert("隐藏灵动岛 / 关闭树脂计时器", isPresented: $isHowToCloseDynamicIslandAlertShow) {
             Button("OK") {
                 isHowToCloseDynamicIslandAlertShow.toggle()
             }
