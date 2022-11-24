@@ -64,8 +64,15 @@ struct LiveActivitySettingDetailView: View {
 
     @State private var isHelpSheetShow: Bool = false
 
+    @State private var isHowToCloseDynamicIslandAlertShow: Bool = false
+
     var body: some View {
         List {
+            Section {
+                Button("如何隐藏灵动岛？如何关闭树脂计时器？") {
+                    isHowToCloseDynamicIslandAlertShow.toggle()
+                }
+            }
             Section {
                 Toggle("展示派遣探索", isOn: $resinRecoveryLiveActivityShowExpedition)
             }
@@ -105,6 +112,13 @@ struct LiveActivitySettingDetailView: View {
                 WebBroswerView(url: "http://ophelper.top/static/resin_timer_help.html")
                     .dismissableSheet(isSheetShow: $isHelpSheetShow)
             }
+        }
+        .alert("如何隐藏灵动岛？如何关闭树脂计时器？", isPresented: $isHowToCloseDynamicIslandAlertShow) {
+            Button("OK") {
+                isHowToCloseDynamicIslandAlertShow.toggle()
+            }
+        } message: {
+            Text("您可以从左右向中间滑动灵动岛，即可隐藏灵动岛。\n在锁定屏幕上左滑树脂计时器，即可关闭树脂计时器和灵动岛。")
         }
     }
 }
