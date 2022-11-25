@@ -50,6 +50,20 @@ struct SettingsView: View {
                     }
                 }
 
+                Section {
+                    let url: String = {
+                        switch Bundle.main.preferredLocalizations.first {
+                        case "zh-Hans", "zh-Hant", "zh-HK":
+                            return "http://ophelper.top/static/faq.html"
+                        default:
+                            return "http://ophelper.top/static/faq_en.html"
+                        }
+                    }()
+                    NavigationLink(destination: WebBroswerView(url: url).navigationTitle("FAQ").navigationBarTitleDisplayMode(.inline)) {
+                        Label("常见使用问题（FAQ）", systemImage: "person.fill.questionmark")
+                    }
+                }
+
                 // 小组件相关设置
                 NavigationLink("小组件设置", destination: { WidgetSettingView() })
 
@@ -89,9 +103,6 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    NavigationLink(destination: WebBroswerView(url: "http://ophelper.top/static/faq.html").navigationTitle("FAQ").navigationBarTitleDisplayMode(.inline)) {
-                        Text("常见使用问题（FAQ）")
-                    }
                     NavigationLink(destination: GuideVideoLinkView()) {
                         Text("App介绍视频")
                     }
