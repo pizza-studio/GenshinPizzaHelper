@@ -254,11 +254,19 @@ extension UserData {
             return .init(avatarSideIcon: expedition.avatarSideIcon, remainedTimeStr: String(remainTime), statusStr: expedition.statusStr)
         }
 
-        let totalTime: Double = Double(self.homeCoinInfo.recoveryTime.second) / (1.0 - self.homeCoinInfo.percentage)
+        let totalTime: Double
+        if self.homeCoinInfo.recoveryTime.second == 0 {
+            totalTime = 0
+        } else {
+            totalTime = Double(self.homeCoinInfo.recoveryTime.second) / (1.0 - self.homeCoinInfo.percentage)
+        }
         var remainHomeCoinTimeToFull = Double(self.homeCoinInfo.recoveryTime.second) - second
         if remainHomeCoinTimeToFull < 0 { remainHomeCoinTimeToFull = 0 }
-        var currentHomeCoinPercentage: Double {
-            1 - ( remainHomeCoinTimeToFull / totalTime )
+        var currentHomeCoinPercentage: Double
+        if totalTime != 0 {
+            currentHomeCoinPercentage = 1 - ( remainHomeCoinTimeToFull / totalTime )
+        } else {
+            currentHomeCoinPercentage = 1
         }
         let currentHomeCoin: Int = Int(Double(self.homeCoinInfo.maxHomeCoin) * currentHomeCoinPercentage)
         let homeCoinRecoveryTime: Int = Int(totalTime * ( 1 - currentHomeCoinPercentage ))
@@ -294,11 +302,19 @@ extension SimplifiedUserData {
         var currentResin = 160 - Int(ceil(Double(resinRecoveryTime) / (8.0 * 60.0)))
         if currentResin < 0 { currentResin = 0 }
 
-        let totalTime: Double = Double(self.homeCoinInfo.recoveryTime.second) / (1.0 - self.homeCoinInfo.percentage)
+        let totalTime: Double
+        if self.homeCoinInfo.recoveryTime.second == 0 {
+            totalTime = 0
+        } else {
+            totalTime = Double(self.homeCoinInfo.recoveryTime.second) / (1.0 - self.homeCoinInfo.percentage)
+        }
         var remainHomeCoinTimeToFull = Double(self.homeCoinInfo.recoveryTime.second) - second
         if remainHomeCoinTimeToFull < 0 { remainHomeCoinTimeToFull = 0 }
-        var currentHomeCoinPercentage: Double {
-            1 - ( remainHomeCoinTimeToFull / totalTime )
+        var currentHomeCoinPercentage: Double
+        if totalTime != 0 {
+            currentHomeCoinPercentage = 1 - ( remainHomeCoinTimeToFull / totalTime )
+        } else {
+            currentHomeCoinPercentage = 1
         }
         let currentHomeCoin: Int = Int(Double(self.homeCoinInfo.maxHomeCoin) * currentHomeCoinPercentage)
         let homeCoinRecoveryTime: Int = Int(totalTime * ( 1 - currentHomeCoinPercentage ))
