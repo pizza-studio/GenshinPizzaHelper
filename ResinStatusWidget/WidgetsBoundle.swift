@@ -34,10 +34,10 @@ struct WidgetsBundleiOS16: WidgetBundle {
 @available(iOSApplicationExtension 16.0, watchOSApplicationExtension 9.0, *)
 struct SubWidgetsBundleiOS16: WidgetBundle {
     var body: some Widget {
-        #if !os(watchOS)
+//        #if !os(watchOS)
         LockScreenResinTimerWidget()
         LockScreenResinFullTimeWidget()
-        #endif
+//        #endif
         LockScreenHomeCoinWidget()
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()

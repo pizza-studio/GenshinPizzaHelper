@@ -17,7 +17,8 @@ struct RecoveryTimeText: View {
                 let future = Date(timeIntervalSinceNow: TimeInterval(resinInfo.recoveryTime.second))
                 VStack(alignment: .leading, spacing: 0) {
                     Text(future, style: .relative)
-                    Text(LocalizedStringKey("\(resinInfo.recoveryTime.completeTimePointFromNow()) 回满"))
+                    // 下面字符串尾随一个零长空字符，区分之前的翻译
+                    Text(String(localized: "\(resinInfo.recoveryTime.completeTimePointFromNow()) 回满​"))
                 }
                 .lineLimit(1)
             } else {

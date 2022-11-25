@@ -25,16 +25,23 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View where T: SimplifiedUserDat
                 switch result {
                 case .success(let data):
                     VStack(spacing: -2) {
-                        Text("\(data.resinInfo.currentResin)")
-                            .font(.system(size: 23, weight: .medium, design: .rounded))
-                            .widgetAccentable()
-                        let dateString: String = {
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "HH:mm"
-                            return formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)))
-                        }()
-                        Text(dateString)
-                            .font(.caption2)
+                        if !data.resinInfo.isFull {
+                            Text("\(data.resinInfo.currentResin)")
+                                .font(.system(size: 20, weight: .medium, design: .rounded))
+                                .widgetAccentable()
+                            let dateString: String = {
+                                let formatter = DateFormatter()
+                                formatter.dateFormat = "HH:mm"
+                                return formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)))
+                            }()
+                            Text(dateString)
+                                .font(.system(.caption, design: .monospaced))
+                                .minimumScaleFactor(0.5)
+                        } else {
+                            Text("\(data.resinInfo.currentResin)")
+                                .font(.system(size: 20, weight: .medium, design: .rounded))
+                                .widgetAccentable()
+                        }
                     }
                 case .failure(_):
                     Image("icon.resin")
@@ -45,6 +52,10 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View where T: SimplifiedUserDat
                 }
             }
             .padding(.vertical, 2)
+            #if os(watchOS)
+            .padding(.vertical, 2)
+            .padding(.bottom, 1)
+            #endif
         }
     }
 }

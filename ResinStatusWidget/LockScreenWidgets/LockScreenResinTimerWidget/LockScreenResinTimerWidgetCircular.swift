@@ -18,34 +18,6 @@ struct LockScreenResinTimerWidgetCircular<T>: View where T: SimplifiedUserDataCo
     var body: some View {
         ZStack {
             AccessoryWidgetBackground()
-//            VStack(spacing: -0.5) {
-//                Image("icon.resin")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(height: 9)
-//                switch result {
-//                case .success(let data):
-//                    VStack(spacing: -2) {
-//                        Text("\(data.resinInfo.currentResin)")
-//                            .font(.system(size: 23, weight: .medium, design: .rounded))
-//                            .widgetAccentable()
-//                        let dateString: String = {
-//                            let formatter = DateFormatter()
-//                            formatter.dateFormat = "HH:mm"
-//                            return formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)))
-//                        }()
-//                        Text(dateString)
-//                            .font(.caption2)
-//                    }
-//                case .failure(_):
-//                    Image("icon.resin")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(height: 10)
-//                    Image(systemName: "ellipsis")
-//                }
-//            }
-//            .padding(.vertical, 2)
             VStack(spacing: 3) {
                 Image("icon.resin")
                     .resizable()
@@ -54,14 +26,20 @@ struct LockScreenResinTimerWidgetCircular<T>: View where T: SimplifiedUserDataCo
                 switch result {
                 case .success(let data):
                     VStack(spacing: 1) {
-                        Text(Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)), style: .timer)
-                            .multilineTextAlignment(.center)
-                            .font(.system(.body, design: .monospaced))
-                            .minimumScaleFactor(0.5)
-                            .widgetAccentable()
-                            .frame(width: 50)
-                        Text("\(data.resinInfo.currentResin)")
-                            .font(.system(.body, design: .rounded))
+                        if !data.resinInfo.isFull {
+                            Text(Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)), style: .timer)
+                                .multilineTextAlignment(.center)
+                                .font(.system(.body, design: .monospaced))
+                                .minimumScaleFactor(0.5)
+                                .widgetAccentable()
+                                .frame(width: 50)
+                            Text("\(data.resinInfo.currentResin)")
+                                .font(.system(.body, design: .rounded, weight: .medium))
+                        } else {
+                            Text("\(data.resinInfo.currentResin)")
+                                .font(.system(size: 20, weight: .medium, design: .rounded))
+                                .widgetAccentable()
+                        }
                     }
                 case .failure(_):
                     Image("icon.resin")
@@ -72,6 +50,9 @@ struct LockScreenResinTimerWidgetCircular<T>: View where T: SimplifiedUserDataCo
                 }
             }
             .padding(.vertical, 2)
+            #if os(watchOS)
+            .padding(.vertical, 2)
+            #endif
         }
 
     }

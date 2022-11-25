@@ -1000,3 +1000,11 @@
 "仅国服用户。更改该项需要重新添加小组件。" = "China mainland users only. Re-adding the widget after edit this configuration.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，数量不正确。" = "(Simplified mode only) Not properly set may result in the Realm Currency notification not being triggered correctly and the quantity being incorrect.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "(Simplified mode only) Not set correctly may result in an inaccurate amount of Realm Currency.";
+// 下方左侧尾部有零宽字符
+"%@ 回满​" = "%@";
+"的原粹树脂回满时间" = "'s resin fully refilled time";
+"原粹树脂回满时间" = "Resin Fully Refilled Time";
+"展示原粹树脂与恢复到160树脂的时间" = "Show the original resin and the time to full.";
+"的原粹树脂回满倒计时" = "'s countdown to 160 resin";
+"原粹树脂回满倒计时" = "Timer of the Oringinal Resin";
+"展示原粹树脂与恢复到160树脂的倒计时" = "Showing the original resin and the countdown to 160 resin.";
