@@ -28,7 +28,8 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectAccountAndShowWhichInfoIntent()
-            intent.simplifiedMode = true
+            let useSimplifiedMode = UserDefaults(suiteName: "group.GenshinPizzaHelper")?.bool(forKey: "watchWidgetUseSimplifiedMode") ?? true
+            intent.simplifiedMode = useSimplifiedMode as NSNumber
             intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
             intent.showTransformer = false
             intent.showWeeklyBosses = false

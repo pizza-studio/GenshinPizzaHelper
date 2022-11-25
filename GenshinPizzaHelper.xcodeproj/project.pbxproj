@@ -408,6 +408,7 @@
 		EA7FDF8F292CCB7800BDE83E /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		EA7FDF91292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */; };
 		EA7FDF92292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */; };
+		EA7FF4692930666300128A5C /* WatchWidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF4682930666300128A5C /* WatchWidgetSettingView.swift */; };
 		EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */; };
@@ -852,6 +853,7 @@
 		EA7F67C9289D711200D2CE29 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayOfStringRawPresentable.swift; sourceTree = "<group>"; };
+		EA7FF4682930666300128A5C /* WatchWidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetSettingView.swift; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
 		EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingView.swift; sourceTree = "<group>"; };
 		EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
@@ -1142,6 +1144,7 @@
 			isa = PBXGroup;
 			children = (
 				BFCC06B628CAF60B003E4A54 /* WatchAccountDetailView.swift */,
+				EA7FF4682930666300128A5C /* WatchWidgetSettingView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -1993,6 +1996,7 @@
 				EA059CDA292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				BFCC066628C9B6A1003E4A54 /* ContentView.swift in Sources */,
 				BFCC068928C9BBC8003E4A54 /* UserData.swift in Sources */,
+				EA7FF4692930666300128A5C /* WatchWidgetSettingView.swift in Sources */,
 				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
 				BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */,
 				EA406814292228A200F23479 /* WidgetData.swift in Sources */,

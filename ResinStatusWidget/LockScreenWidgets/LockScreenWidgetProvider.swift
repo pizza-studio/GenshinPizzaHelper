@@ -24,7 +24,8 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
-            intent.simplifiedMode = true
+            let useSimplifiedMode = UserDefaults(suiteName: "group.GenshinPizzaHelper")?.bool(forKey: "watchWidgetUseSimplifiedMode") ?? false
+            intent.simplifiedMode = useSimplifiedMode as NSNumber
             intent.account = .init(identifier: config.uuid!.uuidString, display: config.name!+"(\(config.server.rawValue))")
             return IntentRecommendation(intent: intent, description: config.name!+recommendationsTag.localized)
         }
