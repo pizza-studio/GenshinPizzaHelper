@@ -29,7 +29,7 @@ struct WidgetSettingView: View {
             } header: {
                 Text("小组件请求频率")
             } footer: {
-                Text("每次请求会同步一次游戏内信息。请求频率不会影响小组件刷新。建议您每次游玩「原神」后进入App进行一次同步。")
+                Text("每次请求会同步一次游戏内信息。请求频率不会影响小组件刷新。建议您每次游玩后进入App进行一次同步。")
             }
 
             Section {
@@ -40,7 +40,7 @@ struct WidgetSettingView: View {
                     bounds: 4...30,
                     step: 2)
             } footer: {
-                Text("（仅简洁模式）洞天宝钱回复速度。未正确设置可能导致洞天宝钱通知无法正确触发。")
+                Text("（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。")
             }
         }
         .navigationBarTitle("小组件设置", displayMode: .inline)

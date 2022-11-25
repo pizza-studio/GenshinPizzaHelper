@@ -47,7 +47,7 @@ struct WatchWidgetSettingView: View {
                         }
                     }
                 } footer: {
-                    Text("（仅简洁模式）洞天宝钱回复速度。未正确设置可能导致洞天宝钱通知无法正确触发。")
+                    Text("（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。")
                 }
             }
         }
