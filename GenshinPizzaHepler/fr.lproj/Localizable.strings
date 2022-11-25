@@ -998,7 +998,7 @@
 "每次请求会同步一次游戏内信息。请求频率不会影响小组件刷新。建议您每次游玩后进入App进行一次同步。" = "In-game information will be synchronized once per request. The frequency of requests will not affect widget refresh. It is recommended that you enter the app once after each play of the game to synchronize.";
 "使用简洁模式" = "Use Simplified Mode";
 "仅国服用户。更改该项需要重新添加小组件。" = "China mainland users only. Re-adding the widget after edit this configuration.";
-"（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，数量不正确。" = "(Simplified mode only) Not properly set may result in the Realm Currency notification not being triggered correctly and the quantity being incorrect.";
+"（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "(Simplified mode only) Not properly set may result in the Realm Currency notification not being triggered correctly and the quantity being incorrect.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "(Simplified mode only) Not set correctly may result in an inaccurate amount of Realm Currency.";
 // 下方左侧尾部有零宽字符
 "%@ 回满​" = "%@";
