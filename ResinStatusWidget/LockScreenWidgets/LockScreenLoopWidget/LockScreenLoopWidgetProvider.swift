@@ -49,8 +49,8 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        var refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetRefreshFrequencyInMinute") ?? 30)
-        if refreshMinute == 0 { refreshMinute = 30 }
+        var refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetRefreshFrequencyInMinute") ?? 60)
+        if refreshMinute == 0 { refreshMinute = 60 }
         var refreshDate: Date {
             Calendar.current.date(byAdding: .minute, value: refreshMinute, to: currentDate)!
         }
@@ -113,9 +113,9 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             config.fetchSimplifiedResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...20).map { index in
+                    let dateAndDatas = (0...40).map { index in
                         (
-                            Date(timeIntervalSinceNow: TimeInterval(index*7*60)), data.dataAfter(TimeInterval(index*7*60))
+                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)), data.dataAfter(TimeInterval(index*8*60))
                         )
                     }
                     completion(
@@ -135,9 +135,9 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...20).map { index in
+                    let dateAndDatas = (0...40).map { index in
                         (
-                            Date(timeIntervalSinceNow: TimeInterval(index*7*60)), data.dataAfter(TimeInterval(index*7*60))
+                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)), data.dataAfter(TimeInterval(index*8*60))
                         )
                     }
                     completion(

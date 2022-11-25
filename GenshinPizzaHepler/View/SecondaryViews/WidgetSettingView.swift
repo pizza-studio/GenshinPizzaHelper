@@ -8,26 +8,28 @@
 import SwiftUI
 
 struct WidgetSettingView: View {
-    @AppStorage("mainWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var mainWidgetRefreshFrequencyInMinute: Double = 30
-    @AppStorage("lockscreenWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetRefreshFrequencyInMinute: Double = 30
+    @AppStorage("mainWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var mainWidgetRefreshFrequencyInMinute: Double = 60
+    @AppStorage("lockscreenWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetRefreshFrequencyInMinute: Double = 60
 
     @AppStorage("homeCoinRefreshFrequencyInHour", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var homeCoinRefreshFrequency: Double = 30
 
     var body: some View {
         List {
             Section {
-                SettingSlider(title: "主屏幕小组件刷新频率",
+                SettingSlider(title: "主屏幕小组件请求频率",
                                            value: $mainWidgetRefreshFrequencyInMinute,
                                            valueFormatterString: "每%lld分钟",
-                                           bounds: 7...270,
+                                           bounds: 30...270,
                                            step: 1)
-                SettingSlider(title: "锁定屏幕小组件刷新频率",
+                SettingSlider(title: "锁定屏幕小组件请求频率",
                                            value: $lockscreenWidgetRefreshFrequencyInMinute,
                                            valueFormatterString: "每%lld分钟",
-                                           bounds: 7...270,
+                                           bounds: 30...270,
                                            step: 1)
             } header: {
-                Text("小组件刷新频率")
+                Text("小组件请求频率")
+            } footer: {
+                Text("每次请求会同步一次游戏内信息。请求频率不会影响小组件刷新。建议您每次游玩「原神」后进入App进行一次同步。")
             }
 
             Section {

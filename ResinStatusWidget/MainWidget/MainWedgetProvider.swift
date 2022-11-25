@@ -33,8 +33,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
     func getTimeline(for configuration: SelectAccountIntent, in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        var refreshFrequencyInMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "mainWidgetRefreshFrequencyInMinute") ?? 30)
-        if refreshFrequencyInMinute == 0 { refreshFrequencyInMinute = 30 }
+        var refreshFrequencyInMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "mainWidgetRefreshFrequencyInMinute") ?? 60)
+        if refreshFrequencyInMinute == 0 { refreshFrequencyInMinute = 60 }
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: refreshFrequencyInMinute, to: currentDate)!
         
@@ -116,9 +116,9 @@ struct MainWidgetProvider: IntentTimelineProvider {
                 case .success(let data):
                     let dateAndDatas = (0...40).map { index in
                         (
-                            Date(timeIntervalSinceNow: TimeInterval(index*7*60)),
-                            MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*7*60)))),
-                            data.dataAfter(TimeInterval(index*7*60))
+                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)),
+                            MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*8*60)))),
+                            data.dataAfter(TimeInterval(index*8*60))
                         )
                     }
                     completion(
@@ -142,9 +142,9 @@ struct MainWidgetProvider: IntentTimelineProvider {
                 case .success(let data):
                     let dateAndDatas = (0...40).map { index in
                         (
-                            Date(timeIntervalSinceNow: TimeInterval(index*7*60)),
-                            MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*7*60)))),
-                            data.dataAfter(TimeInterval(index*7*60))
+                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)),
+                            MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*8*60)))),
+                            data.dataAfter(TimeInterval(index*8*60))
                         )
                     }
                     completion(

@@ -990,3 +990,9 @@
 "您可以从左右向中间滑动灵动岛，即可隐藏灵动岛。\n在锁定屏幕上左滑树脂计时器，即可关闭树脂计时器和灵动岛。" = "You can slide the Dynamic Island from left / right to the middle to hide it. \nSwipe left on the resin timer on the lock screen to turn off the resin timer and the Dynamic Island.";
 "简洁模式下自动刷新树脂计时器" = "Auto-refresh resin timer (only for Simplified Mode)";
 "如出现1034问题，请关闭本选项。" = "If a 1034 problem occurs, please turn off this option.";
+
+// MARK: - 2.7.2
+"小组件请求频率" = "Widget Request Frequency";
+"主屏幕小组件请求频率" = "Home screen widget request frequency";
+"锁定屏幕小组件请求频率" = "Lock screen widget request frequency";
+"每次请求会同步一次游戏内信息。请求频率不会影响小组件刷新。建议您每次游玩「原神」后进入App进行一次同步。" = "In-game information will be synchronized once per request. The frequency of requests will not affect widget refresh. It is recommended that you enter the app once after each play of the game to synchronize.";
