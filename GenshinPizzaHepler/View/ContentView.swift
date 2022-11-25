@@ -167,6 +167,13 @@ struct ContentView: View {
         .onAppear {
             print("Locale: \(Bundle.main.preferredLocalizations.first ?? "Unknown")")
         }
+        .onAppear {
+            UserDefaults(suiteName: "group.GenshinPizzaHelper")?.register(defaults: [
+                "lockscreenWidgetRefreshFrequencyInMinute" : 60,
+                "homeCoinRefreshFrequencyInHour": 30,
+                "watchWidgetUseSimplifiedMode": true
+            ])
+        }
         .navigate(to: NotificationSettingView().environmentObject(viewModel), when: $isJumpToSettingsView)
     }
 

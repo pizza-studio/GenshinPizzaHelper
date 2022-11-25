@@ -57,6 +57,16 @@ struct TestSectionView: View {
                     }
                 }
             }
+            if connectStatus == .success {
+                if !cookie.contains("stoken") && server.region == .cn {
+                    Label {
+                        Text("本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。")
+                    } icon: {
+                        Image(systemName: "checkmark.circle.trianglebadge.exclamationmark")
+                            .foregroundColor(.red)
+                    }
+                }
+            }
         } footer: {
             if let error = error {
                 switch error {

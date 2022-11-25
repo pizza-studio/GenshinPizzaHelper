@@ -32,24 +32,20 @@ class UserNotificationCenter {
     let center = UNUserNotificationCenter.current()
     
     private init() {
-        if !(userDefaults?.bool(forKey: "notificationCenterInited") ?? false) {
-            if let userDefaults = userDefaults {
-                userDefaults.set(true, forKey: "notificationCenterInited")
-                userDefaults.set(true, forKey: "allowResinNotification")
-                userDefaults.set(150.0, forKey: "resinNotificationNum")
-                userDefaults.set(true, forKey: "allowHomeCoinNotification")
-                userDefaults.set(8.0, forKey: "homeCoinNotificationHourBeforeFull")
-                userDefaults.set(true, forKey: "allowExpeditionNotification")
-                userDefaults.set(1, forKey: "noticeExpeditionMethodRawValue")
-                userDefaults.set(true, forKey: "allowWeeklyBossesNotification")
-                userDefaults.set(try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0, weekday: 7)), forKey: "weeklyBossesNotificationTimePointData")
-                userDefaults.set(true, forKey: "allowTransformerNotification")
-                userDefaults.set(true, forKey: "allowDailyTaskNotification")
-                userDefaults.set((try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0))), forKey: "dailyTaskNotificationTimePointData")
-                userDefaults.set(try! JSONEncoder().encode(Array<String>()), forKey: "notificationIgnoreUidsData")
-            }
-        }
-        
+        userDefaults?.register(defaults: [
+            "allowResinNotification": true,
+            "resinNotificationNum": 140,
+            "allowFullResinNotification": true,
+            "allowHomeCoinNotification": true,
+            "homeCoinNotificationHourBeforeFull": 8.0,
+            "noticeExpeditionMethodRawValue": 1,
+            "allowWeeklyBossesNotification": true,
+            "weeklyBossesNotificationTimePointData": try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0, weekday: 7)),
+            "allowTransformerNotification": true,
+            "allowDailyTaskNotification": true,
+            "dailyTaskNotificationTimePointData": try! JSONEncoder().encode(DateComponents(calendar: .current, hour: 19, minute: 0)),
+            "notificationIgnoreUidsData": try! JSONEncoder().encode(Array<String>())
+        ])
         center.setNotificationCategories([normalNotificationCategory])
         
     }
@@ -154,8 +150,6 @@ class UserNotificationCenter {
     private var resinNotificationNum: Double {
         userDefaults?.double(forKey: "resinNotificationNum") ?? 150
     }
-    
-    
     private func createResinNotification(for accountName: String, with resinInfo: ResinInfo, uid: String) {
         let resinNotificationTimeFromFull = (resinInfo.maxResin - Int(resinNotificationNum)) * 8 * 60
         var resinNotificationTimeDescription: String { relativeTimePointFromNow(second: resinInfo.recoveryTime.second) }
@@ -173,6 +167,25 @@ class UserNotificationCenter {
             object: .resin,
             title: title,
             body: body,
+            uid: uid
+        )
+    }
+    private var allowFullResinNotification: Bool {
+        userDefaults?.bool(forKey: "allowFullResinNotification") ?? true
+    }
+    private func createFullResinNotification(for accountName: String, with resinInfo: ResinInfo, uid: String) {
+        guard (resinInfo.currentResin < 160) && allowFullResinNotification && allowResinNotification else {
+            deleteNotification(for: uid, object: .resin); return
+        }
+        let titleCN = "「%@」原粹树脂提醒"
+        let title = String(format: NSLocalizedString(titleCN, comment: "noti title"), accountName)
+        let bodyCN = "「%@」的原粹树脂已回满。"
+        createNotification(
+            in: resinInfo.recoveryTime.second,
+            for: accountName,
+            object: .resin,
+            title: title,
+            body: bodyCN.localized,
             uid: uid
         )
     }
@@ -362,6 +375,7 @@ class UserNotificationCenter {
         print("Creating all notification")
         guard !ignoreUids.contains(uid) else { return }
         createResinNotification(for: accountName, with: userData.resinInfo, uid: uid)
+        createFullResinNotification(for: accountName, with: userData.resinInfo, uid: uid)
         createHomeCoinNotification(for: accountName, with: userData.homeCoinInfo, uid: uid)
         createExpeditionNotification(for: accountName, with: userData.expeditionInfo, uid: uid)
         createWeeklyBossesNotification(for: accountName, with: userData.weeklyBossesInfo, uid: uid)
@@ -373,6 +387,7 @@ class UserNotificationCenter {
         print("Creating all notification")
         guard !ignoreUids.contains(uid) else { return }
         createResinNotification(for: accountName, with: simplifiedUserData.resinInfo, uid: uid)
+        createFullResinNotification(for: accountName, with: simplifiedUserData.resinInfo, uid: uid)
         createHomeCoinNotification(for: accountName, with: simplifiedUserData.homeCoinInfo, uid: uid)
         createDailyTaskNotification(for: accountName, with: simplifiedUserData.dailyTaskInfo, uid: uid)
     }

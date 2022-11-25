@@ -55,7 +55,7 @@ struct UserData: Codable, Equatable, SimplifiedUserDataContainer {
         self.expeditions = expeditions
 
         self.currentHomeCoin = currentHomeCoin
-        self.maxHomeCoin = maxResin
+        self.maxHomeCoin = maxHomeCoin
         self.homeCoinRecoveryTime = homeCoinRecoveryTime
 
         self.transformer = transformer
@@ -126,6 +126,13 @@ struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
     let dailyTaskInfo: DailyTaskInfo
     let expeditionInfo: ExpeditionInfo
     let homeCoinInfo: HomeCoinInfo
+
+    init(resinInfo: ResinInfo, dailyTaskInfo: DailyTaskInfo, expeditionInfo: ExpeditionInfo, homeCoinInfo: HomeCoinInfo) {
+        self.resinInfo = resinInfo
+        self.dailyTaskInfo = dailyTaskInfo
+        self.expeditionInfo = expeditionInfo
+        self.homeCoinInfo = homeCoinInfo
+    }
 
     init?(widgetUserData: WidgetUserData) {
         guard let resin: String = widgetUserData.data.data.first(where: { $0.name == "原粹树脂" })?.value,
@@ -223,4 +230,100 @@ protocol SimplifiedUserDataContainer {
     var homeCoinInfo: HomeCoinInfo { get }
     var expeditionInfo: ExpeditionInfo { get }
     var dailyTaskInfo: DailyTaskInfo { get }
+
+    func dataAfter(_ second: TimeInterval) -> Self
+}
+
+extension UserData {
+    func dataAfter(_ second: TimeInterval) -> UserData {
+        guard second != 0 else {
+            return self
+        }
+        var resinRecoveryTime = Int(self.resinRecoveryTime)! - Int(second)
+        if resinRecoveryTime < 0 { resinRecoveryTime = 0 }
+        var currentResin = 160 - Int(ceil(Double(resinRecoveryTime) / (8.0 * 60.0)))
+        if currentResin < 0 { currentResin = 0 }
+
+
+        let currentExpeditionNum: Int = self.expeditions.filter { expedition in
+            Double(expedition.remainedTimeStr)! - second > 0
+        }.count
+        let expeditions: [Expedition] = self.expeditions.map { expedition in
+            var remainTime: Int = expedition.recoveryTime.second - Int(second)
+            if remainTime < 0 { remainTime = 0 }
+            return .init(avatarSideIcon: expedition.avatarSideIcon, remainedTimeStr: String(remainTime), statusStr: expedition.statusStr)
+        }
+
+        let totalTime: Double
+        if self.homeCoinInfo.recoveryTime.second == 0 {
+            totalTime = 0
+        } else {
+            totalTime = Double(self.homeCoinInfo.recoveryTime.second) / (1.0 - self.homeCoinInfo.percentage)
+        }
+        var remainHomeCoinTimeToFull = Double(self.homeCoinInfo.recoveryTime.second) - second
+        if remainHomeCoinTimeToFull < 0 { remainHomeCoinTimeToFull = 0 }
+        var currentHomeCoinPercentage: Double
+        if totalTime != 0 {
+            currentHomeCoinPercentage = 1 - ( remainHomeCoinTimeToFull / totalTime )
+        } else {
+            currentHomeCoinPercentage = 1
+        }
+        let currentHomeCoin: Int = Int(Double(self.homeCoinInfo.maxHomeCoin) * currentHomeCoinPercentage)
+        let homeCoinRecoveryTime: Int = Int(totalTime * ( 1 - currentHomeCoinPercentage ))
+
+        return .init(
+            accountName: self.accountName ?? "",
+            currentResin: currentResin,
+            maxResin: self.maxResin,
+            resinRecoveryTime: String(resinRecoveryTime),
+            finishedTaskNum: self.finishedTaskNum,
+            totalTaskNum: self.totalTaskNum,
+            isExtraTaskRewardReceived: self.isExtraTaskRewardReceived,
+            remainResinDiscountNum: self.remainResinDiscountNum,
+            resinDiscountNumLimit: self.resinDiscountNumLimit,
+            currentExpeditionNum: currentExpeditionNum,
+            maxExpeditionNum: self.maxExpeditionNum,
+            expeditions: expeditions,
+            currentHomeCoin: currentHomeCoin,
+            maxHomeCoin: self.maxHomeCoin,
+            homeCoinRecoveryTime: String(homeCoinRecoveryTime),
+            transformer: self.transformer
+        )
+    }
+}
+
+extension SimplifiedUserData {
+    func dataAfter(_ second: TimeInterval) -> SimplifiedUserData {
+        guard second != 0 else {
+            return self
+        }
+        var resinRecoveryTime = self.resinInfo.recoveryTime.second - Int(second)
+        if resinRecoveryTime < 0 { resinRecoveryTime = 0 }
+        var currentResin = 160 - Int(ceil(Double(resinRecoveryTime) / (8.0 * 60.0)))
+        if currentResin < 0 { currentResin = 0 }
+
+        let totalTime: Double
+        if self.homeCoinInfo.recoveryTime.second == 0 {
+            totalTime = 0
+        } else {
+            totalTime = Double(self.homeCoinInfo.recoveryTime.second) / (1.0 - self.homeCoinInfo.percentage)
+        }
+        var remainHomeCoinTimeToFull = Double(self.homeCoinInfo.recoveryTime.second) - second
+        if remainHomeCoinTimeToFull < 0 { remainHomeCoinTimeToFull = 0 }
+        var currentHomeCoinPercentage: Double
+        if totalTime != 0 {
+            currentHomeCoinPercentage = 1 - ( remainHomeCoinTimeToFull / totalTime )
+        } else {
+            currentHomeCoinPercentage = 1
+        }
+        let currentHomeCoin: Int = Int(Double(self.homeCoinInfo.maxHomeCoin) * currentHomeCoinPercentage)
+        let homeCoinRecoveryTime: Int = Int(totalTime * ( 1 - currentHomeCoinPercentage ))
+
+        return .init(
+            resinInfo: .init(currentResin, self.resinInfo.maxResin, resinRecoveryTime),
+            dailyTaskInfo: self.dailyTaskInfo,
+            expeditionInfo: self.expeditionInfo,
+            homeCoinInfo: .init(currentHomeCoin, self.homeCoinInfo.maxHomeCoin, homeCoinRecoveryTime)
+        )
+    }
 }

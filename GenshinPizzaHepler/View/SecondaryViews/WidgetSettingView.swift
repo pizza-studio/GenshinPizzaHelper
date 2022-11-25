@@ -8,26 +8,28 @@
 import SwiftUI
 
 struct WidgetSettingView: View {
-    @AppStorage("mainWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var mainWidgetRefreshFrequencyInMinute: Double = 30
-    @AppStorage("lockscreenWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetRefreshFrequencyInMinute: Double = 30
+    @AppStorage("mainWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var mainWidgetRefreshFrequencyInMinute: Double = 60
+    @AppStorage("lockscreenWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetRefreshFrequencyInMinute: Double = 60
 
     @AppStorage("homeCoinRefreshFrequencyInHour", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var homeCoinRefreshFrequency: Double = 30
 
     var body: some View {
         List {
             Section {
-                SettingSlider(title: "主屏幕小组件刷新频率",
+                SettingSlider(title: "主屏幕小组件请求频率",
                                            value: $mainWidgetRefreshFrequencyInMinute,
                                            valueFormatterString: "每%lld分钟",
-                                           bounds: 7...120,
-                                           step: 1)
-                SettingSlider(title: "锁定屏幕小组件刷新频率",
+                                           bounds: 30...270,
+                                           step: 10)
+                SettingSlider(title: "锁定屏幕小组件请求频率",
                                            value: $lockscreenWidgetRefreshFrequencyInMinute,
                                            valueFormatterString: "每%lld分钟",
-                                           bounds: 7...120,
-                                           step: 1)
+                                           bounds: 30...270,
+                                           step: 10)
             } header: {
-                Text("小组件刷新频率")
+                Text("小组件请求频率")
+            } footer: {
+                Text("每次请求会同步一次游戏内信息。请求频率不会影响小组件刷新。建议您每次游玩后进入App进行一次同步。")
             }
 
             Section {
@@ -38,7 +40,7 @@ struct WidgetSettingView: View {
                     bounds: 4...30,
                     step: 2)
             } footer: {
-                Text("（仅简洁模式）洞天宝钱回复速度。未正确设置可能导致洞天宝钱通知无法正确触发。")
+                Text("（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。")
             }
         }
         .navigationBarTitle("小组件设置", displayMode: .inline)

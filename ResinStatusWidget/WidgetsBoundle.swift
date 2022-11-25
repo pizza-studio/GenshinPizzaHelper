@@ -26,6 +26,18 @@ struct WidgetsBundleiOS16: WidgetBundle {
         LockScreenResinWidget()
         LockScreenLoopWidget()
         LockScreenAllInfoWidget()
+        SubWidgetsBundleiOS16().body
+    }
+}
+
+// 因为一个body只能放10个
+@available(iOSApplicationExtension 16.0, watchOSApplicationExtension 9.0, *)
+struct SubWidgetsBundleiOS16: WidgetBundle {
+    var body: some Widget {
+//        #if !os(watchOS)
+        LockScreenResinTimerWidget()
+        LockScreenResinFullTimeWidget()
+//        #endif
         LockScreenHomeCoinWidget()
         LockScreenDailyTaskWidget()
         LockScreenExpeditionWidget()
