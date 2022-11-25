@@ -89,11 +89,11 @@ struct LiveActivitySettingDetailView: View {
             } header: {
                 Text("树脂计时器背景")
             }
-            Section {
-                Toggle("简洁模式下自动刷新树脂计时器", isOn: $autoUpdateResinRecoveryTimerUsingReFetchData)
-            } footer: {
-                Text("如出现1034问题，请关闭本选项。")
-            }
+//            Section {
+//                Toggle("简洁模式下自动刷新树脂计时器", isOn: $autoUpdateResinRecoveryTimerUsingReFetchData)
+//            } footer: {
+//                Text("如出现1034问题，请关闭本选项。")
+//            }
         }
         .toolbar {
             ToolbarItem {
