@@ -17,6 +17,8 @@ struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
     var showTransformer: Bool = false
 
     let accountUUIDString: String?
+
+    var usingResinStyle: AutoRotationUsingResinWidgetStyle
 }
 
 struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
@@ -38,11 +40,11 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
     }
 
     func placeholder(in context: Context) -> AccountAndShowWhichInfoIntentEntry {
-        AccountAndShowWhichInfoIntentEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧", accountUUIDString: nil)
+        AccountAndShowWhichInfoIntentEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧", accountUUIDString: nil, usingResinStyle: .default_)
     }
 
     func getSnapshot(for configuration: SelectAccountAndShowWhichInfoIntent, in context: Context, completion: @escaping (AccountAndShowWhichInfoIntentEntry) -> ()) {
-        let entry = AccountAndShowWhichInfoIntentEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧", accountUUIDString: nil)
+        let entry = AccountAndShowWhichInfoIntentEntry(date: Date(), widgetDataKind: .normal(result: .defaultFetchResult), accountName: "荧", accountUUIDString: nil, usingResinStyle: .default_)
         completion(entry)
     }
 
@@ -59,8 +61,10 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         let accountConfigurationModel = AccountConfigurationModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
 
+        let style = configuration.usingResinStyle
+
         guard !configs.isEmpty else {
-            let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)), accountUUIDString: nil)
+            let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)), accountUUIDString: nil, usingResinStyle: style)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             return
@@ -79,7 +83,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         guard let config = configs.first(where: { $0.uuid == selectedAccountUUID }) else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
-            let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)), accountUUIDString: nil)
+            let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: .failure(.noFetchInfo)), accountUUIDString: nil, usingResinStyle: style)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
             print("Need to choose account")
@@ -121,11 +125,11 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                     }
                     completion(
                         dateAndDatas.map({ date, data in
-                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .simplified(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
+                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .simplified(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
                         })
                     )
                 case .failure(_):
-                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
+                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .simplified(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
                     completion([entry])
                 }
                 print("Widget Fetch succeed")
@@ -143,11 +147,11 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                     }
                     completion(
                         dateAndDatas.map({ date, data in
-                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
+                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
                         })
                     )
                 case .failure(_):
-                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString)
+                    let entry = AccountAndShowWhichInfoIntentEntry(date: currentDate, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
                     completion([entry])
                 }
                 print("Widget Fetch succeed")
