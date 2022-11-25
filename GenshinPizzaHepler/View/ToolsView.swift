@@ -501,26 +501,6 @@ struct ToolsView: View {
     @ViewBuilder
     func toolsSection() -> some View {
         Section {
-            Button("debug") {
-                if let data = try? account?.result?.get() {
-                    (0...40).forEach { index in
-                        let index: Int = index
-                        print(data.dataAfter(TimeInterval(index*7*60)))
-                    }
-                }
-            }
-            Button("debug") {
-                account!.config.fetchSimplifiedResult { result in
-                    if let data = try? account?.result?.get() {
-                        (0...40).forEach { index in
-                            let index: Int = index
-                            print(data.dataAfter(TimeInterval(index*7*60)))
-                        }
-                    }
-                }
-            }
-        }
-        Section {
             NavigationLink {
                 AbyssDataCollectionView()
             } label: {
@@ -544,6 +524,9 @@ struct ToolsView: View {
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
+            }
+            NavigationLink(destination: BackgroundsPreviewView()) {
+                Text("背景名片预览")
             }
         } header: {
             Text("小工具")
