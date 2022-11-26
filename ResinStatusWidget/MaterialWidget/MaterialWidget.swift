@@ -28,50 +28,42 @@ struct MaterialWidgetView: View {
     var weaponMaterials: [WeaponOrTalentMaterial] { entry.weaponMaterials }
     var talentMaterials: [WeaponOrTalentMaterial] { entry.talentMateirals }
 
-    let imageWidth = CGFloat(50)
-
     var body: some View {
-        
+
         ZStack {
             WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true)
             HStack {
                 Spacer()
-                VStack(alignment: .leading) {
-                    Spacer()
-                    ForEach(talentMaterials, id: \.imageString) { material in
-                        HStack {
-                            Image(material.imageString)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: imageWidth)
-                            Text(material.displayName)
-                                .foregroundColor(Color("textColor3"))
-                                .bold()
-                        }
-                        Spacer()
-                    }
-                }
-                .shadow(radius: 3)
+                MaterialColumn(materials: talentMaterials)
                 Spacer()
-                VStack(alignment: .leading) {
-                    Spacer()
-                    ForEach(weaponMaterials, id: \.imageString) { material in
-                        HStack {
-                            Image(material.imageString)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: imageWidth)
-                            Text(material.displayName)
-                                .foregroundColor(Color("textColor3"))
-                                .bold()
-                        }
-                        Spacer()
-                    }
-                }
-                .shadow(radius: 3)
+                MaterialColumn(materials: weaponMaterials)
                 Spacer()
             }
+            .shadow(radius: 3)
             .padding(3)
+        }
+    }
+}
+
+private struct MaterialColumn: View {
+    let materials: [WeaponOrTalentMaterial]
+    let imageWidth = CGFloat(50)
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Spacer()
+            ForEach(materials, id: \.imageString) { material in
+                HStack {
+                    Image(material.imageString)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: imageWidth)
+                    Text(material.displayName)
+                        .foregroundColor(Color("textColor3"))
+                        .bold()
+                }
+                Spacer()
+            }
         }
     }
 }
