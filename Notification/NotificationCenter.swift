@@ -180,12 +180,13 @@ class UserNotificationCenter {
         let titleCN = "「%@」原粹树脂提醒"
         let title = String(format: NSLocalizedString(titleCN, comment: "noti title"), accountName)
         let bodyCN = "「%@」的原粹树脂已回满。"
+        let body = String(format: NSLocalizedString(bodyCN, comment: "noti body"), accountName)
         createNotification(
             in: resinInfo.recoveryTime.second,
             for: accountName,
             object: .resin,
             title: title,
-            body: bodyCN.localized,
+            body: body,
             uid: uid
         )
     }
