@@ -455,6 +455,7 @@
 		EAB11EA329325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */; };
 		EAB11EA529326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB11EA429326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift */; };
 		EAB11EA629326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB11EA429326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift */; };
+		EAB11EA82932728700CD4ECA /* MaterialWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB11EA72932728700CD4ECA /* MaterialWidget.swift */; };
 		EAB5798128FC278D00C5D075 /* AbyssDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */; };
 		EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
@@ -896,6 +897,7 @@
 		EAB1110628CF84B5009FDF07 /* WidgetLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLauncher.swift; sourceTree = "<group>"; };
 		EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRelationIdentifier.swift; sourceTree = "<group>"; };
 		EAB11EA429326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetRectangular.swift; sourceTree = "<group>"; };
+		EAB11EA72932728700CD4ECA /* MaterialWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialWidget.swift; sourceTree = "<group>"; };
 		EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDataCollectionView.swift; sourceTree = "<group>"; };
 		EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinPizzaHeplerApp.swift; sourceTree = "<group>"; };
@@ -1282,6 +1284,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF55E2228CC907300902AE7 /* WidgetsBoundle.swift */,
+				EAB11EA92932728E00CD4ECA /* MaterialWidget */,
 				EAF55E2628CC917200902AE7 /* MainWidget */,
 				EAF55E2728CC917C00902AE7 /* LockScreenWidgets */,
 				EA498C8B2927CFFA00E7D2D7 /* LiveActivityWidget */,
@@ -1478,6 +1481,14 @@
 				EAB110FB28CF7704009FDF07 /* LockScreenExpeditionWidgetCorner.swift */,
 			);
 			path = LockScreenExpeditionWidget;
+			sourceTree = "<group>";
+		};
+		EAB11EA92932728E00CD4ECA /* MaterialWidget */ = {
+			isa = PBXGroup;
+			children = (
+				EAB11EA72932728700CD4ECA /* MaterialWidget.swift */,
+			);
+			path = MaterialWidget;
 			sourceTree = "<group>";
 		};
 		EABD7DAD2886B2D200B7F0FD = {
@@ -2263,6 +2274,7 @@
 				EA63E2BF28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
 				EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
+				EAB11EA82932728700CD4ECA /* MaterialWidget.swift in Sources */,
 				EAD7F02628D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
 				EA498C922927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */,
