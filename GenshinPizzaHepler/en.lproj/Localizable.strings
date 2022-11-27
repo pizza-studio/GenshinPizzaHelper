@@ -1016,3 +1016,5 @@
 "实时活动功能未开启" = "\"Real-time activity\" disabled. ";
 "活动和材料" = "";
 "展示近日活动和今天可以获取的武器和天赋材料。" = "";
+"LockScreenHomeCoinWidgetRectangular.resin" = "Resin";
+"LockScreenHomeCoinWidgetRectangular.homeCoin" = "Realm";

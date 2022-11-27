@@ -96,24 +96,34 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View where T: SimplifiedUserDataC
             switch result {
             case .success(let data):
                 Grid(alignment: .leading) {
-                    GridRow(alignment: .lastTextBaseline) {
+                    GridRow {
+                        let size: CGFloat = 10
                         HStack(alignment: .lastTextBaseline, spacing: 0) {
-                            let size: CGFloat = 20
                             let iconSize: CGFloat = size * 4/5
                             Text("\(Image("icon.resin"))")
                                 .font(.system(size: iconSize))
                                 .offset(x: -2)
-                            Text("\(data.resinInfo.currentResin)")
+                            Text("LockScreenHomeCoinWidgetRectangular.resin".localized)
                                 .font(.system(size: size, weight: .medium, design: .rounded))
                         }
+                        Spacer()
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
-                            let size: CGFloat = 20
                             let iconSize: CGFloat = size * 8/9
                             Text("\(Image("icon.homeCoin"))")
                                 .font(.system(size: iconSize))
-                            Text("\(data.homeCoinInfo.currentHomeCoin)")
+                            Text("LockScreenHomeCoinWidgetRectangular.homeCoin".localized)
                                 .font(.system(size: size, weight: .medium, design: .rounded))
                         }
+                        Spacer()
+                    }
+                    GridRow(alignment: .lastTextBaseline) {
+                        let size: CGFloat = 23
+                        Text("\(data.resinInfo.currentResin)")
+                            .font(.system(size: size, weight: .medium, design: .rounded))
+                        Spacer()
+                        Text("\(data.homeCoinInfo.currentHomeCoin)")
+                            .font(.system(size: size, weight: .medium, design: .rounded))
+                        Spacer()
                     }
                     .fixedSize()
                     .foregroundColor(.primary)
@@ -124,11 +134,13 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View where T: SimplifiedUserDataC
                         } else {
                             Text("\(Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)).getRelativeDateString())")
                         }
+                        Spacer()
                         if data.homeCoinInfo.isFull {
                             Text("已回满")
                         } else {
                             Text("\(Date(timeIntervalSinceNow: TimeInterval(data.homeCoinInfo.recoveryTime.second)).getRelativeDateString())")
                         }
+                        Spacer()
                     }
                     .font(.footnote)
                     .foregroundColor(.secondary)
