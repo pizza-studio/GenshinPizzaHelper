@@ -17,9 +17,9 @@ struct MaterialWidget: Widget {
         { entry in
             MaterialWidgetView(entry: entry)
         }
-        .configurationDisplayName("今日材料")
-        .description("展示今天可以获取的武器和天赋材料。")
-        .supportedFamilies([.systemLarge])
+        .configurationDisplayName("活动和材料")
+        .description("展示近日活动和今天可以获取的武器和天赋材料。")
+        .supportedFamilies([.systemMedium])
     }
 }
 
@@ -28,43 +28,128 @@ struct MaterialWidgetView: View {
     var weaponMaterials: [WeaponOrTalentMaterial] { entry.weaponMaterials }
     var talentMaterials: [WeaponOrTalentMaterial] { entry.talentMateirals }
 
-    var body: some View {
+    var weekday: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE"
+        return formatter.string(from: Date())
+    }
 
-        ZStack {
+    var dayOfMonth: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d"
+        return formatter.string(from: Date())
+    }
+
+    var body: some View {
+        ZStack(alignment: .leading) {
             WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true)
-            HStack {
-                Spacer()
-                MaterialColumn(materials: talentMaterials)
-                Spacer()
-                MaterialColumn(materials: weaponMaterials)
+            VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(weekday)
+                        .font(.caption)
+                        .foregroundColor(Color("textColor.calendarWeekday"))
+                        .bold()
+                        .shadow(radius: 2)
+                    HStack(spacing: 6) {
+                        Text(dayOfMonth)
+                            .font(.system(size: 35, weight: .regular, design: .rounded))
+                            .shadow(radius: 5)
+                        Spacer()
+                        if entry.materialWeekday != .sunday {
+                            MaterialRow(materials: weaponMaterials+talentMaterials)
+                        } else {
+                            Image("派蒙挺胸").resizable().scaledToFit()
+                                .clipShape(Circle())
+                        }
+                    }
+                    .frame(height: 35)
+                }
+                .frame(height: 40)
+                .padding(.vertical)
+                if let events = entry.events, !events.isEmpty {
+                    EventView(events: events)
+                }
                 Spacer()
             }
-            .shadow(radius: 3)
-            .padding(3)
+            .padding(.horizontal)
+            .foregroundColor(Color("textColor3"))
         }
     }
 }
 
-private struct MaterialColumn: View {
-    let materials: [WeaponOrTalentMaterial]
-    let imageWidth = CGFloat(50)
+private struct EventView: View {
+    let events: [EventModel]
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-            ForEach(materials, id: \.imageString) { material in
-                HStack {
-                    Image(material.imageString)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: imageWidth)
-                    Text(material.displayName)
-                        .foregroundColor(Color("textColor3"))
-                        .bold()
+        HStack(spacing: 4) {
+            Rectangle()
+                .frame(width: 2, height: 80)
+            VStack(spacing: 7) {
+                ForEach(events.filter({
+                    getRemainTimeInterval($0.endAt) > 0
+                }).prefix(4), id: \.id) { content in
+                    eventItem(event: content)
                 }
-                Spacer()
             }
         }
+        .shadow(radius: 3)
+    }
+
+    @ViewBuilder
+    func eventItem(event: EventModel) -> some View {
+        HStack {
+            Text(" \(getLocalizedContent(event.name))")
+                .lineLimit(1)
+            Spacer()
+            Text(timeIntervalFormattedString(getRemainTimeInterval(event.endAt)))
+        }
+        .font(.caption)
+    }
+
+    func getRemainTimeInterval(_ endAt: String) -> TimeInterval {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let endDate = dateFormatter.date(from: endAt)!
+        return endDate.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+    }
+
+    func timeIntervalFormattedString(_ timeInterval: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .short
+        formatter.maximumUnitCount = 1
+        return formatter.string(from: Date(), to: Date(timeIntervalSinceNow: timeInterval))!
+    }
+
+    func getLocalizedContent(_ content: EventModel.MultiLanguageContents) -> String {
+        let locale = Bundle.main.preferredLocalizations.first
+        switch locale {
+        case "zh-Hans":
+            return content.CHS
+        case "zh-Hant", "zh-HK":
+            return content.CHT
+        case "en":
+            return content.EN
+        case "ja":
+            return content.JP
+        default:
+            return content.EN
+        }
+    }
+}
+
+private struct MaterialRow: View {
+    let materials: [WeaponOrTalentMaterial]
+
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(materials, id: \.imageString) { material in
+                Image(material.imageString)
+                    .resizable()
+                    .scaledToFit()
+            }
+        }
+        .shadow(radius: 1)
     }
 }
 
@@ -73,27 +158,53 @@ struct MaterialWidgetEntry: TimelineEntry {
     let materialWeekday: MaterialWeekday
     let talentMateirals: [WeaponOrTalentMaterial]
     let weaponMaterials: [WeaponOrTalentMaterial]
+    let events: [EventModel]?
 
-    init() {
+    init(events: [EventModel]?) {
         self.date = Date()
+        #if DEBUG
+        self.materialWeekday = .sunday
+        #else
         self.materialWeekday = .today()
-        self.talentMateirals = TalentMaterialProvider(weekday: .today()).todaysMaterials
-        self.weaponMaterials = WeaponMaterialProvider(weekday: .today()).todaysMaterials
+        #endif
+        self.talentMateirals = TalentMaterialProvider(weekday: self.materialWeekday).todaysMaterials
+        self.weaponMaterials = WeaponMaterialProvider(weekday: self.materialWeekday).todaysMaterials
+        self.events = events
     }
 }
 
 struct MaterialWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> MaterialWidgetEntry {
-        .init()
+        .init(events: nil)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (MaterialWidgetEntry) -> Void) {
-        completion(.init())
+        API.OpenAPIs.fetchCurrentEvents { result in
+            switch result {
+            case .success(let data):
+                completion(.init(events: .init(data.event.values)))
+            case .failure(_):
+                completion(.init(events: nil))
+            }
+        }
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<MaterialWidgetEntry>) -> Void) {
         let startOfToday: Date = Calendar.current.startOfDay(for: Date())
         let startOfTomorrow: Date = Calendar.current.date(byAdding: .day, value: 1, to: startOfToday)!
-        completion(.init(entries: [.init()], policy: .after(Calendar.current.date(bySettingHour: 4, minute: 1, second: 0, of: startOfTomorrow)!)))
+
+        API.OpenAPIs.fetchCurrentEvents { result in
+            switch result {
+            case .success(let data):
+                completion(.init(entries: [.init(events: .init(data.event.values))], policy: .after(Calendar.current.date(bySettingHour: 4, minute: 1, second: 0, of: startOfTomorrow)!)))
+            case .failure(_):
+                completion(
+                    .init(
+                        entries: [.init(events: nil)],
+                        policy: .after(Date(timeIntervalSinceNow: 10.0*60.0))
+                    )
+                )
+            }
+        }
     }
 }
