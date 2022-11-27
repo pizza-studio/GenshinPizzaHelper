@@ -1010,6 +1010,7 @@
 "展示原粹树脂与恢复到160树脂的倒计时" = "Showing the original resin and the countdown to 160 resin.";
 "树脂溢出提醒" = "Notify when Full";
 "本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。" = "No stoken found in cookies, which may affect the use of the widget in simplified mode. It is recommended to re-login to get stoken.";
+
 "今天 " = "Tdy ";
 "明天 " = "Tmw ";
 "实时活动功能未开启" = "\"Real-time activity\" disabled. ";
