@@ -71,13 +71,17 @@ struct NotificationSettingNavigator: View {
         }
         .onAppear {
             UNUserNotificationCenter.current().getNotificationSettings { settings in
-                allowNotification = settings.authorizationStatus == .provisional || settings.authorizationStatus == .authorized
+                withAnimation {
+                    allowNotification = settings.authorizationStatus == .provisional || settings.authorizationStatus == .authorized
+                }
             }
         }
         .onChange(of: scenePhase) { newValue in
             if newValue == .active {
                 UNUserNotificationCenter.current().getNotificationSettings { settings in
-                    allowNotification = settings.authorizationStatus == .provisional || settings.authorizationStatus == .authorized
+                    withAnimation {
+                        allowNotification = settings.authorizationStatus == .provisional || settings.authorizationStatus == .authorized
+                    }
                 }
             }
         }
