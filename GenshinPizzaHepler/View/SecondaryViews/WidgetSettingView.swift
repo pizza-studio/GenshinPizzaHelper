@@ -17,15 +17,27 @@ struct WidgetSettingView: View {
         List {
             Section {
                 SettingSlider(title: "主屏幕小组件请求频率",
-                                           value: $mainWidgetRefreshFrequencyInMinute,
-                                           valueFormatterString: "每%lld分钟",
-                                           bounds: 30...270,
-                                           step: 10)
+                              value: $mainWidgetRefreshFrequencyInMinute,
+                              valueFormatterString: "每%@",
+                              bounds: 30...300,
+                              step: 10) { value in
+                    let formatter = DateComponentsFormatter()
+                    formatter.maximumUnitCount = 2
+                    formatter.unitsStyle = .short
+                    formatter.zeroFormattingBehavior = .dropAll
+                    return formatter.string(from: value*60.0)!
+                }
                 SettingSlider(title: "锁定屏幕小组件请求频率",
-                                           value: $lockscreenWidgetRefreshFrequencyInMinute,
-                                           valueFormatterString: "每%lld分钟",
-                                           bounds: 30...270,
-                                           step: 10)
+                              value: $lockscreenWidgetRefreshFrequencyInMinute,
+                              valueFormatterString: "每%@",
+                              bounds: 30...300,
+                              step: 10) { value in
+                    let formatter = DateComponentsFormatter()
+                    formatter.maximumUnitCount = 2
+                    formatter.unitsStyle = .short
+                    formatter.zeroFormattingBehavior = .dropAll
+                    return formatter.string(from: value*60.0)!
+                }
             } header: {
                 Text("小组件请求频率")
             } footer: {
@@ -36,9 +48,11 @@ struct WidgetSettingView: View {
                 SettingSlider(
                     title: "洞天宝钱回复速度",
                     value: $homeCoinRefreshFrequency,
-                    valueFormatterString: "每小时%lld个",
+                    valueFormatterString: "每小时%@个",
                     bounds: 4...30,
-                    step: 2)
+                    step: 2) { value in
+                        "\(Int(value))"
+                    }
             } footer: {
                 Text("（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。")
             }
@@ -50,9 +64,10 @@ struct WidgetSettingView: View {
 private struct SettingSlider<V>: View where V : BinaryFloatingPoint, V.Stride : BinaryFloatingPoint {
     let title: String
     @Binding var value: V
-    var valueFormatterString: String = "%lld"
+    var valueFormatterString: String = "%@"
     let bounds: ClosedRange<V>
     let step: V.Stride
+    var formatMethod: (V) -> String = { "\($0)" }
 
     @State var showSlider: Bool = false
 
@@ -63,7 +78,7 @@ private struct SettingSlider<V>: View where V : BinaryFloatingPoint, V.Stride : 
             Button(action: {
                 withAnimation{ showSlider.toggle() }
             }) {
-                Text(String(format: NSLocalizedString(valueFormatterString, comment: ""), Int(value)))
+                Text(String(format: NSLocalizedString(valueFormatterString, comment: ""), formatMethod(value)))
             }
         }
         if showSlider {

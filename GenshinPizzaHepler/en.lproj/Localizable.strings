@@ -1018,3 +1018,5 @@
 "展示近日活动和今天可以获取的武器和天赋材料。" = "";
 "LockScreenHomeCoinWidgetRectangular.resin" = "Resin";
 "LockScreenHomeCoinWidgetRectangular.homeCoin" = "Realm";
+"每小时%@个" = "%@ per hour";
+"每%@" = "Every %@";
