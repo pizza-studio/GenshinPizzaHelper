@@ -125,7 +125,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                     }
                     completion(
                         dateAndDatas.map({ date, data in
-                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .simplified(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
+                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .simplified(result: .success(data)), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
                         })
                     )
                 case .failure(_):
@@ -147,7 +147,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                     }
                     completion(
                         dateAndDatas.map({ date, data in
-                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .normal(result: result), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
+                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .normal(result: .success(data)), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
                         })
                     )
                 case .failure(_):
