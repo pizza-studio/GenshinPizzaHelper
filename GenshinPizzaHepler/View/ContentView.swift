@@ -19,7 +19,7 @@ struct ContentView: View {
     @State var newestVersionInfos: NewestVersion? = nil
     @State var isJustUpdated: Bool = false
 
-    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = true
+    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = false
 
     var index: Binding<Int> { Binding(
         get: { self.selection },
@@ -170,6 +170,7 @@ struct ContentView: View {
         .onAppear {
             UserDefaults(suiteName: "group.GenshinPizzaHelper")?.register(defaults: [
                 "lockscreenWidgetRefreshFrequencyInMinute" : 60,
+                "mainWidgetRefreshFrequencyInMinute": 60,
                 "homeCoinRefreshFrequencyInHour": 30,
                 "watchWidgetUseSimplifiedMode": true
             ])

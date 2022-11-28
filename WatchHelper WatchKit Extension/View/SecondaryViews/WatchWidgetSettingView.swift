@@ -15,6 +15,14 @@ struct WatchWidgetSettingView: View {
 
     @AppStorage("watchWidgetUseSimplifiedMode", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var watchWidgetUseSimplifiedMode: Bool = true
 
+    var lockscreenWidgetRefreshFrequencyFormated: String {
+        let formatter = DateComponentsFormatter()
+        formatter.maximumUnitCount = 2
+        formatter.unitsStyle = .short
+        formatter.zeroFormattingBehavior = .dropAll
+        return formatter.string(from: lockscreenWidgetRefreshFrequencyInMinute*60.0)!
+    }
+
     var body: some View {
         List {
             Section {
@@ -24,7 +32,7 @@ struct WatchWidgetSettingView: View {
                     HStack {
                         Text("小组件请求频率")
                         Spacer()
-                        Text(String(format: NSLocalizedString("每%lld分钟", comment: ""), Int(lockscreenWidgetRefreshFrequencyInMinute)))
+                        Text(String(format: NSLocalizedString("每%@", comment: ""), lockscreenWidgetRefreshFrequencyFormated))
                             .foregroundColor(.accentColor)
                     }
                 }
@@ -62,13 +70,22 @@ struct WatchWidgetSettingView: View {
 
 private struct QueryFrequencySettingView: View {
     @AppStorage("lockscreenWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetRefreshFrequencyInMinute: Double = 60
+
+    var lockscreenWidgetRefreshFrequencyFormated: String {
+        let formatter = DateComponentsFormatter()
+        formatter.maximumUnitCount = 2
+        formatter.unitsStyle = .short
+        formatter.zeroFormattingBehavior = .dropAll
+        return formatter.string(from: lockscreenWidgetRefreshFrequencyInMinute*60.0)!
+    }
+
     var body: some View {
         VStack {
             Text("小组件请求频率").foregroundColor(.accentColor)
-            Text(String(format: NSLocalizedString("每%lld分钟", comment: ""), Int(lockscreenWidgetRefreshFrequencyInMinute)))
+            Text(String(format: NSLocalizedString("每%@", comment: ""), lockscreenWidgetRefreshFrequencyFormated))
                 .font(.title3)
             Slider(value: $lockscreenWidgetRefreshFrequencyInMinute,
-                   in: 30...270,
+                   in: 30...300,
                    step: 10,
                    label: {
                 Text("\(lockscreenWidgetRefreshFrequencyInMinute)")

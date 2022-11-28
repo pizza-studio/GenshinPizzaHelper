@@ -45,7 +45,7 @@ struct LiveActivitySettingDetailView: View {
         }
     }
 
-    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = true
+    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = false
 
     @AppStorage("resinRecoveryLiveActivityShowExpedition", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var resinRecoveryLiveActivityShowExpedition: Bool = true
 

@@ -1010,3 +1010,13 @@
 "展示原粹树脂与恢复到160树脂的倒计时" = "Showing the original resin and the countdown to 160 resin.";
 "树脂溢出提醒" = "Resin back to full notification";
 "本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。" = "No stoken found in cookies, which may affect the use of the widget in simplified mode. It is recommended to re-login to get stoken.";
+
+"今天 " = "Tdy ";
+"明天 " = "Tmw ";
+"实时活动功能未开启" = "\"Real-time activity\" disabled. ";
+"Events and Materials" = "";
+"展示近日活动和今天可以获取的武器和天赋材料。" = "Show the recent events and the weapons' or talents' materials that can be obtained today.";
+"LockScreenHomeCoinWidgetRectangular.resin" = "Resin";
+"LockScreenHomeCoinWidgetRectangular.homeCoin" = "Realm";
+"每小时%@个" = "%@ per hour";
+"每%@" = "Every %@";
