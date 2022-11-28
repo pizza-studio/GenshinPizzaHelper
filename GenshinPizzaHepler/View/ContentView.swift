@@ -19,7 +19,7 @@ struct ContentView: View {
     @State var newestVersionInfos: NewestVersion? = nil
     @State var isJustUpdated: Bool = false
 
-    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = true
+    @AppStorage("autoDeliveryResinTimerLiveActivity") var autoDeliveryResinTimerLiveActivity: Bool = false
 
     var index: Binding<Int> { Binding(
         get: { self.selection },
