@@ -23,10 +23,13 @@ enum DateRelationIdentifier {
 }
 
 extension Date {
+    @available(iOS 16, *)
     func getRelativeDateString(benchmarkDate: Date = Date()) -> String {
         let relationIdentifier: DateRelationIdentifier = .getRelationIdentifier(of: self)
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
+        var component = Locale.Components(locale: Locale.current)
+        component.hourCycle = .zeroToTwentyThree
+        formatter.locale = Locale(components: component)
         formatter.dateFormat = "H:mm"
         let datePrefix: String
         switch relationIdentifier {
