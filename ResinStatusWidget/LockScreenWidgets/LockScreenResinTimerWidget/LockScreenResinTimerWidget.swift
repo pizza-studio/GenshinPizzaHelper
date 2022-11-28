@@ -18,7 +18,11 @@ struct LockScreenResinTimerWidget: Widget {
         }
         .configurationDisplayName("原粹树脂回满倒计时")
         .description("展示原粹树脂与恢复到160树脂的倒计时")
+        #if os(watchOS)
+        .supportedFamilies([.accessoryCircular, .accessoryCircular])
+        #else
         .supportedFamilies([.accessoryCircular])
+        #endif
     }
 }
 
@@ -59,15 +63,31 @@ struct LockScreenResinTimerWidgetView: View {
     }
 
     var body: some View {
-        Group {
-            switch dataKind {
-            case .normal(let result):
-                LockScreenResinTimerWidgetCircular(result: result)
-            case .simplified(let result):
-                LockScreenResinTimerWidgetCircular(result: result)
+        switch family {
+        case .accessoryCircular:
+            Group {
+                switch dataKind {
+                case .normal(let result):
+                    LockScreenResinTimerWidgetCircular(result: result)
+                case .simplified(let result):
+                    LockScreenResinTimerWidgetCircular(result: result)
+                }
             }
+            .widgetURL(url)
+        #if os(watchOS)
+        case .accessoryCorner:
+            Group {
+                switch dataKind {
+                case .normal(let result):
+                    LockScreenResinTimerWidgetCircular(result: result)
+                case .simplified(let result):
+                    LockScreenResinTimerWidgetCircular(result: result)
+                }
+            }
+            .widgetURL(url)
+        #endif
+        default:
+            EmptyView()
         }
-        .widgetURL(url)
-
     }
 }
