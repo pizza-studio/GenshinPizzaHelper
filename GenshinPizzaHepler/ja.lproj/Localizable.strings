@@ -1010,3 +1010,14 @@
 "展示原粹树脂与恢复到160树脂的倒计时" = "天然樹脂と160個に回復までのカウントダウンを表示";
 "树脂溢出提醒" = "樹脂オーバーフローのリマインダー";
 "本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。" = "このアカウントにはstokenがないため、簡潔モードでのウィジェットの使用に影響する可能性があります。 stoeknを取得するには、再度ログインすることをお勧めします。";
+
+// TODO: i18n
+"今天 " = "Tdy ";
+"明天 " = "Tmw ";
+"实时活动功能未开启" = "\"Real-time activity\" disabled. ";
+"活动和材料" = "";
+"展示近日活动和今天可以获取的武器和天赋材料。" = "";
+"LockScreenHomeCoinWidgetRectangular.resin" = "Resin"; // 简写的原粹树脂和洞天宝钱，用于锁屏的洞天宝钱长方形小组件
+"LockScreenHomeCoinWidgetRectangular.homeCoin" = "Realm";
+"每小时%@个" = "%@ per hour";
+"每%@" = "Every %@";
