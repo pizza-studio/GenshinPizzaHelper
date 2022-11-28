@@ -16,44 +16,88 @@ struct LockScreenResinTimerWidgetCircular<T>: View where T: SimplifiedUserDataCo
     let result: SimplifiedUserDataContainerResult<T>
 
     var body: some View {
-        ZStack {
-            AccessoryWidgetBackground()
-            VStack(spacing: 3) {
-                Image("icon.resin")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 10)
-                switch result {
-                case .success(let data):
-                    VStack(spacing: 1) {
-                        if !data.resinInfo.isFull {
-                            Text(Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)), style: .timer)
-                                .multilineTextAlignment(.center)
-                                .font(.system(.body, design: .monospaced))
-                                .minimumScaleFactor(0.5)
-                                .widgetAccentable()
-                                .frame(width: 50)
-                            Text("\(data.resinInfo.currentResin)")
-                                .font(.system(.body, design: .rounded, weight: .medium))
-                        } else {
-                            Text("\(data.resinInfo.currentResin)")
-                                .font(.system(size: 20, weight: .medium, design: .rounded))
-                                .widgetAccentable()
+        switch widgetRenderingMode {
+        case .fullColor:
+            ZStack {
+                AccessoryWidgetBackground()
+                VStack(spacing: 3) {
+                    LinearGradient(colors: [.init("iconColor.resin.dark"), .init("iconColor.resin.middle"), .init("iconColor.resin.light")], startPoint: .top, endPoint: .bottom)
+                        .mask(
+                            Image("icon.resin")
+                                .resizable()
+                                .scaledToFit()
+                        )
+                        .frame(height: 10)
+                    switch result {
+                    case .success(let data):
+                        VStack(spacing: 1) {
+                            if !data.resinInfo.isFull {
+                                Text(Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)), style: .timer)
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(.body, design: .monospaced))
+                                    .minimumScaleFactor(0.5)
+                                    .widgetAccentable()
+                                    .frame(width: 50)
+                                Text("\(data.resinInfo.currentResin)")
+                                    .font(.system(.body, design: .rounded, weight: .medium))
+                                    .foregroundColor(Color("textColor.originResin"))
+                            } else {
+                                Text("\(data.resinInfo.currentResin)")
+                                    .font(.system(size: 20, weight: .medium, design: .rounded))
+                                    .foregroundColor(Color("textColor.originResin"))
+                            }
                         }
+                    case .failure(_):
+                        Image("icon.resin")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 10)
+                        Image(systemName: "ellipsis")
                     }
-                case .failure(_):
+                }
+                .padding(.vertical, 2)
+                #if os(watchOS)
+                .padding(.vertical, 2)
+                #endif
+            }
+        default:
+            ZStack {
+                AccessoryWidgetBackground()
+                VStack(spacing: 3) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
                         .frame(height: 10)
-                    Image(systemName: "ellipsis")
+                    switch result {
+                    case .success(let data):
+                        VStack(spacing: 1) {
+                            if !data.resinInfo.isFull {
+                                Text(Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)), style: .timer)
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(.body, design: .monospaced))
+                                    .minimumScaleFactor(0.5)
+                                    .widgetAccentable()
+                                    .frame(width: 50)
+                                Text("\(data.resinInfo.currentResin)")
+                                    .font(.system(.body, design: .rounded, weight: .medium))
+                            } else {
+                                Text("\(data.resinInfo.currentResin)")
+                                    .font(.system(size: 20, weight: .medium, design: .rounded))
+                            }
+                        }
+                    case .failure(_):
+                        Image("icon.resin")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 10)
+                        Image(systemName: "ellipsis")
+                    }
                 }
+                .padding(.vertical, 2)
+                #if os(watchOS)
+                .padding(.vertical, 2)
+                #endif
             }
-            .padding(.vertical, 2)
-            #if os(watchOS)
-            .padding(.vertical, 2)
-            #endif
         }
-
     }
 }
