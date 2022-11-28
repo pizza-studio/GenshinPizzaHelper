@@ -26,11 +26,12 @@ extension Date {
     func getRelativeDateString(benchmarkDate: Date = Date()) -> String {
         let relationIdentifier: DateRelationIdentifier = .getRelationIdentifier(of: self)
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "H:mm"
         let datePrefix: String
         switch relationIdentifier {
         case .today:
-            datePrefix = "今天 "
+            datePrefix = ""
         case .tomorrow:
             datePrefix = "明天 "
         case .other:
