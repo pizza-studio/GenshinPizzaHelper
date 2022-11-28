@@ -31,7 +31,7 @@ extension Date {
         let datePrefix: String
         switch relationIdentifier {
         case .today:
-            datePrefix = ""
+            datePrefix = "今天 "
         case .tomorrow:
             datePrefix = "明天 "
         case .other:
