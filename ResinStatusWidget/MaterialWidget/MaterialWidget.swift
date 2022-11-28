@@ -162,11 +162,7 @@ struct MaterialWidgetEntry: TimelineEntry {
 
     init(events: [EventModel]?) {
         self.date = Date()
-        #if DEBUG
-        self.materialWeekday = .sunday
-        #else
         self.materialWeekday = .today()
-        #endif
         self.talentMateirals = TalentMaterialProvider(weekday: self.materialWeekday).todaysMaterials
         self.weaponMaterials = WeaponMaterialProvider(weekday: self.materialWeekday).todaysMaterials
         self.events = events
@@ -190,18 +186,15 @@ struct MaterialWidgetProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<MaterialWidgetEntry>) -> Void) {
-        let startOfToday: Date = Calendar.current.startOfDay(for: Date())
-        let startOfTomorrow: Date = Calendar.current.date(byAdding: .day, value: 1, to: startOfToday)!
-
         API.OpenAPIs.fetchCurrentEvents { result in
             switch result {
             case .success(let data):
-                completion(.init(entries: [.init(events: .init(data.event.values))], policy: .after(Calendar.current.date(bySettingHour: 4, minute: 1, second: 0, of: startOfTomorrow)!)))
+                completion(.init(entries: [.init(events: .init(data.event.values))], policy: .after(Calendar.current.date(byAdding: .hour, value: 4, to: Date())!)))
             case .failure(_):
                 completion(
                     .init(
                         entries: [.init(events: nil)],
-                        policy: .after(Date(timeIntervalSinceNow: 10.0*60.0))
+                        policy: .after(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!)
                     )
                 )
             }
