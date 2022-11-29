@@ -37,6 +37,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View where T: SimplifiedUserDat
                                 let dateString: String = {
                                     let formatter = DateFormatter()
                                     formatter.dateFormat = "HH:mm"
+                                    formatter.locale = Locale(identifier: "en_US_POSIX")
                                     return formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)))
                                 }()
                                 Text(dateString)

@@ -114,17 +114,13 @@ struct MainWidgetProvider: IntentTimelineProvider {
             config.fetchSimplifiedResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...40).map { index in
-                        (
-                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)),
-                            MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*8*60)))),
-                            data.dataAfter(TimeInterval(index*8*60))
-                        )
-                    }
                     completion(
-                        dateAndDatas.map({ date, relevanceScore, data in
-                            viewConfig = WidgetViewConfiguration(configuration, nil)
-                            return .init(date: date, widgetDataKind: .simplified(result: .success(data)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: relevanceScore), accountUUIDString: config.uuid?.uuidString)
+                        (0...40).map({ index in
+                            let timeInterval = TimeInterval(index * 8 * 60)
+                            let entryDate = Date(timeIntervalSinceNow: timeInterval)
+                            let entryData = data.dataAfter(timeInterval)
+                            let score = MainWidgetProvider.calculateRelevanceScore(result: .success(entryData))
+                            return .init(date: entryDate, widgetDataKind: .simplified(result: .success(entryData)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: score), accountUUIDString: config.uuid?.uuidString)
                         })
                     )
                 case .failure(_):
@@ -140,16 +136,13 @@ struct MainWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...40).map { index in
-                        (
-                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)),
-                            MainWidgetProvider.calculateRelevanceScore(result: .success(data.dataAfter(TimeInterval(index*8*60)))),
-                            data.dataAfter(TimeInterval(index*8*60))
-                        )
-                    }
                     completion(
-                        dateAndDatas.map({ date, relevanceScore, data in
-                                .init(date: date, widgetDataKind: .normal(result: .success(data)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: relevanceScore), accountUUIDString: config.uuid?.uuidString)
+                        (0...40).map({ index in
+                            let timeInterval = TimeInterval(index * 8 * 60)
+                            let entryDate = Date(timeIntervalSinceNow: timeInterval)
+                            let entryData = data.dataAfter(timeInterval)
+                            let score = MainWidgetProvider.calculateRelevanceScore(result: .success(entryData))
+                            return .init(date: entryDate, widgetDataKind: .normal(result: .success(entryData)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: score), accountUUIDString: config.uuid?.uuidString)
                         })
                     )
                 case .failure(_):
