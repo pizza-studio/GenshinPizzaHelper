@@ -89,7 +89,9 @@ struct MainWidgetProvider: IntentTimelineProvider {
         
         getTimelineEntries(config: config) { entries in
             completion(.init(entries: entries, policy: .after(refreshDate)))
+            return
         }
+        return
 
         func getTimelineEntries(config: AccountConfiguration, completion: @escaping ([ResinEntry]) -> ()) {
             switch config.server.region {
@@ -120,7 +122,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
                             let entryDate = Date(timeIntervalSinceNow: timeInterval)
                             let entryData = data.dataAfter(timeInterval)
                             let score = MainWidgetProvider.calculateRelevanceScore(result: .success(entryData))
-                            return .init(date: entryDate, widgetDataKind: .simplified(result: .success(entryData)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: score), accountUUIDString: config.uuid?.uuidString)
+                            let entry = ResinEntry(date: entryDate, widgetDataKind: .simplified(result: .success(entryData)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: score), accountUUIDString: config.uuid?.uuidString)
+                            return entry
                         })
                     )
                 case .failure(_):
@@ -142,7 +145,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
                             let entryDate = Date(timeIntervalSinceNow: timeInterval)
                             let entryData = data.dataAfter(timeInterval)
                             let score = MainWidgetProvider.calculateRelevanceScore(result: .success(entryData))
-                            return .init(date: entryDate, widgetDataKind: .normal(result: .success(entryData)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: score), accountUUIDString: config.uuid?.uuidString)
+                            let entry = ResinEntry(date: entryDate, widgetDataKind: .normal(result: .success(entryData)), viewConfig: viewConfig, accountName: config.name, relevance: .init(score: score), accountUUIDString: config.uuid?.uuidString)
+                            return entry
                         })
                     )
                 case .failure(_):
