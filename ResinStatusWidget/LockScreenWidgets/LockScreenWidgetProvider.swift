@@ -107,14 +107,12 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             config.fetchSimplifiedResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...40).map { index in
-                        (
-                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)), data.dataAfter(TimeInterval(index*8*60))
-                        )
-                    }
                     completion(
-                        dateAndDatas.map({ date, data in
-                            AccountOnlyEntry(date: date, widgetDataKind: .simplified(result: .success(data)), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
+                        (0...40).map({ index in
+                            let timeInterval = TimeInterval(index * 8 * 60)
+                            let entryDate = Date(timeIntervalSinceNow: timeInterval)
+                            let entryData = data.dataAfter(timeInterval)
+                            return .init(date: entryDate, widgetDataKind: .simplified(result: .success(entryData)), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
                         })
                     )
                 case .failure(_):
@@ -129,14 +127,12 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...40).map { index in
-                        (
-                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)), data.dataAfter(TimeInterval(index*8*60))
-                        )
-                    }
                     completion(
-                        dateAndDatas.map({ date, data in
-                            AccountOnlyEntry(date: date, widgetDataKind: .normal(result: .success(data)), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
+                        (0...40).map({ index in
+                            let timeInterval = TimeInterval(index * 8 * 60)
+                            let entryDate = Date(timeIntervalSinceNow: timeInterval)
+                            let entryData = data.dataAfter(timeInterval)
+                            return .init(date: entryDate, widgetDataKind: .normal(result: .success(entryData)), accountName: config.name, accountUUIDString: config.uuid?.uuidString)
                         })
                     )
                 case .failure(_):

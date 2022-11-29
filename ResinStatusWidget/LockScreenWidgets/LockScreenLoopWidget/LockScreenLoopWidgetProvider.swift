@@ -118,14 +118,12 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             config.fetchSimplifiedResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...40).map { index in
-                        (
-                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)), data.dataAfter(TimeInterval(index*8*60))
-                        )
-                    }
                     completion(
-                        dateAndDatas.map({ date, data in
-                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .simplified(result: .success(data)), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
+                        (0...40).map({ index in
+                            let timeInterval = TimeInterval(index * 8 * 60)
+                            let entryDate = Date(timeIntervalSinceNow: timeInterval)
+                            let entryData = data.dataAfter(timeInterval)
+                            return .init(date: entryDate, widgetDataKind: .simplified(result: .success(entryData)), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
                         })
                     )
                 case .failure(_):
@@ -140,14 +138,12 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             config.fetchResult { result in
                 switch result {
                 case .success(let data):
-                    let dateAndDatas = (0...40).map { index in
-                        (
-                            Date(timeIntervalSinceNow: TimeInterval(index*8*60)), data.dataAfter(TimeInterval(index*8*60))
-                        )
-                    }
                     completion(
-                        dateAndDatas.map({ date, data in
-                            AccountAndShowWhichInfoIntentEntry(date: date, widgetDataKind: .normal(result: .success(data)), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
+                        (0...40).map({ index in
+                            let timeInterval = TimeInterval(index * 8 * 60)
+                            let entryDate = Date(timeIntervalSinceNow: timeInterval)
+                            let entryData = data.dataAfter(timeInterval)
+                            return .init(date: entryDate, widgetDataKind: .normal(result: .success(entryData)), accountName: config.name, showWeeklyBosses: configuration.showWeeklyBosses as! Bool , showTransformer: configuration.showTransformer as! Bool, accountUUIDString: config.uuid?.uuidString, usingResinStyle: style)
                         })
                     )
                 case .failure(_):
