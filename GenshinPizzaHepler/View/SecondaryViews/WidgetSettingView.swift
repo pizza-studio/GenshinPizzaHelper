@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct WidgetSettingView: View {
-    @AppStorage("mainWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var mainWidgetRefreshFrequencyInMinute: Double = 60
-    @AppStorage("lockscreenWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetRefreshFrequencyInMinute: Double = 60
+
+    @AppStorage("mainWidgetSyncFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var mainWidgetSyncFrequencyInMinute: Double = 60
+    @AppStorage("lockscreenWidgetSyncFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetSyncFrequencyInMinute: Double = 60
 
     @AppStorage("homeCoinRefreshFrequencyInHour", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var homeCoinRefreshFrequency: Double = 30
 
@@ -17,7 +18,7 @@ struct WidgetSettingView: View {
         List {
             Section {
                 SettingSlider(title: "主屏幕小组件请求频率",
-                              value: $mainWidgetRefreshFrequencyInMinute,
+                              value: $mainWidgetSyncFrequencyInMinute,
                               valueFormatterString: "每%@",
                               bounds: 30...300,
                               step: 10) { value in
@@ -28,7 +29,7 @@ struct WidgetSettingView: View {
                     return formatter.string(from: value*60.0)!
                 }
                 SettingSlider(title: "锁定屏幕小组件请求频率",
-                              value: $lockscreenWidgetRefreshFrequencyInMinute,
+                              value: $lockscreenWidgetSyncFrequencyInMinute,
                               valueFormatterString: "每%@",
                               bounds: 30...300,
                               step: 10) { value in

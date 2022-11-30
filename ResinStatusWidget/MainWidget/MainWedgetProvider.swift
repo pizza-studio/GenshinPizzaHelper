@@ -33,10 +33,10 @@ struct MainWidgetProvider: IntentTimelineProvider {
     func getTimeline(for configuration: SelectAccountIntent, in context: Context, completion: @escaping (Timeline<ResinEntry>) -> ()) {
         
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        var refreshFrequencyInMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "mainWidgetRefreshFrequencyInMinute") ?? 60)
-        if refreshFrequencyInMinute == 0 { refreshFrequencyInMinute = 60 }
+        var syncFrequencyInMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "mainWidgetSyncFrequencyInMinute") ?? 60)
+        if syncFrequencyInMinute == 0 { syncFrequencyInMinute = 60 }
         let currentDate = Date()
-        let refreshDate = Calendar.current.date(byAdding: .minute, value: refreshFrequencyInMinute, to: currentDate)!
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: syncFrequencyInMinute, to: currentDate)!
         
         let accountConfigurationModel = AccountConfigurationModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()

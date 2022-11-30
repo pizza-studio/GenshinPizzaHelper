@@ -169,8 +169,8 @@ struct ContentView: View {
         }
         .onAppear {
             UserDefaults(suiteName: "group.GenshinPizzaHelper")?.register(defaults: [
-                "lockscreenWidgetRefreshFrequencyInMinute" : 60,
-                "mainWidgetRefreshFrequencyInMinute": 60,
+                "lockscreenWidgetSyncFrequencyInMinute" : 60,
+                "mainWidgetSyncFrequencyInMinute": 60,
                 "homeCoinRefreshFrequencyInHour": 30,
                 "watchWidgetUseSimplifiedMode": true
             ])
