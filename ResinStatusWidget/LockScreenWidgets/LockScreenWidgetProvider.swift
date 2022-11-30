@@ -44,7 +44,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        var refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetRefreshFrequencyInMinute") ?? 60)
+        var refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetSyncFrequencyInMinute") ?? 60)
         if refreshMinute == 0 { refreshMinute = 60 }
         var refreshDate: Date {
             Calendar.current.date(byAdding: .minute, value: refreshMinute, to: currentDate)!

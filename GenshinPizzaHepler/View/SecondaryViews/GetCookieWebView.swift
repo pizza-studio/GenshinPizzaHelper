@@ -190,7 +190,7 @@ struct GetLedgerCookieWebView<V>: View {
     var url: String {
         switch region {
         case .cn:
-            return "https://m.bbs.mihoyo.com/ys/"
+            return "https://m.miyoushe.com/ys/#/home/0"
         case .global:
             return "https://m.hoyolab.com/"
         }
@@ -200,7 +200,6 @@ struct GetLedgerCookieWebView<V>: View {
         switch region {
         case .cn:
             return [
-                "Host": "m.bbs.mihoyo.com",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
                 "Accept-Language": "zh-CN,zh-Hans;q=0.9",
                 "Connection": "keep-alive",

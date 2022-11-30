@@ -52,10 +52,10 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        var refreshMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetRefreshFrequencyInMinute") ?? 60)
-        if refreshMinute == 0 { refreshMinute = 60 }
+        var syncFrequencyInMinute: Int = Int(UserDefaults(suiteName: "group.GenshinPizzaHelper")?.double(forKey: "lockscreenWidgetSyncFrequencyInMinute") ?? 60)
+        if syncFrequencyInMinute == 0 { syncFrequencyInMinute = 60 }
         var refreshDate: Date {
-            Calendar.current.date(byAdding: .minute, value: refreshMinute, to: currentDate)!
+            Calendar.current.date(byAdding: .minute, value: syncFrequencyInMinute, to: currentDate)!
         }
 
         let accountConfigurationModel = AccountConfigurationModel.shared

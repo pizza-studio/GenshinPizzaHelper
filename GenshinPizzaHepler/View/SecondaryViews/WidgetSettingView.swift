@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct WidgetSettingView: View {
-    @AppStorage("mainWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var mainWidgetRefreshFrequencyInMinute: Double = 60
-    @AppStorage("lockscreenWidgetRefreshFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetRefreshFrequencyInMinute: Double = 60
+
+    @AppStorage("mainWidgetSyncFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var mainWidgetSyncFrequencyInMinute: Double = 60
+    @AppStorage("lockscreenWidgetSyncFrequencyInMinute", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var lockscreenWidgetSyncFrequencyInMinute: Double = 60
 
     @AppStorage("homeCoinRefreshFrequencyInHour", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")) var homeCoinRefreshFrequency: Double = 30
 
     var body: some View {
         List {
             Section {
-                SettingSlider(title: "主屏幕小组件请求频率",
-                              value: $mainWidgetRefreshFrequencyInMinute,
+                SettingSlider(title: "主屏幕小组件同步频率",
+                              value: $mainWidgetSyncFrequencyInMinute,
                               valueFormatterString: "每%@",
                               bounds: 30...300,
                               step: 10) { value in
@@ -27,8 +28,8 @@ struct WidgetSettingView: View {
                     formatter.zeroFormattingBehavior = .dropAll
                     return formatter.string(from: value*60.0)!
                 }
-                SettingSlider(title: "锁定屏幕小组件请求频率",
-                              value: $lockscreenWidgetRefreshFrequencyInMinute,
+                SettingSlider(title: "锁定屏幕小组件同步频率",
+                              value: $lockscreenWidgetSyncFrequencyInMinute,
                               valueFormatterString: "每%@",
                               bounds: 30...300,
                               step: 10) { value in
@@ -39,9 +40,9 @@ struct WidgetSettingView: View {
                     return formatter.string(from: value*60.0)!
                 }
             } header: {
-                Text("小组件请求频率")
+                Text("小组件同步频率")
             } footer: {
-                Text("每次请求会同步一次游戏内信息。请求频率不会影响小组件刷新。建议您每次游玩后进入App进行一次同步。")
+                Text("小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。")
             }
 
             Section {
