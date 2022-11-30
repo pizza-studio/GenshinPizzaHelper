@@ -30,7 +30,7 @@ struct WatchWidgetSettingView: View {
                     QueryFrequencySettingView()
                 } label: {
                     HStack {
-                        Text("小组件请求频率")
+                        Text("小组件同步频率")
                         Spacer()
                         Text(String(format: NSLocalizedString("每%@", comment: ""), lockscreenWidgetRefreshFrequencyFormated))
                             .foregroundColor(.accentColor)
@@ -81,7 +81,7 @@ private struct QueryFrequencySettingView: View {
 
     var body: some View {
         VStack {
-            Text("小组件请求频率").foregroundColor(.accentColor)
+            Text("小组件同步频率").foregroundColor(.accentColor)
             Text(String(format: NSLocalizedString("每%@", comment: ""), lockscreenWidgetRefreshFrequencyFormated))
                 .font(.title3)
             Slider(value: $lockscreenWidgetSyncFrequencyInMinute,
