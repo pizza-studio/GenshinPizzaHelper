@@ -140,6 +140,7 @@ struct ContentView: View {
                     .allowAutoDismiss(false)
             case .foundNewestVersion:
                 LatestVersionInfoView(sheetType: $sheetType, newestVersionInfos: $newestVersionInfos, isJustUpdated: $isJustUpdated)
+                    .allowAutoDismiss(false)
             case .accountSetting:
                 NavigationView {
                     AccountDetailView(account: $viewModel.accounts[settingForAccountIndex!])
