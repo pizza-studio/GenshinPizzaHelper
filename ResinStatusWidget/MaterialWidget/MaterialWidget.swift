@@ -54,7 +54,7 @@ struct MaterialWidgetView: View {
                         Text(dayOfMonth)
                             .font(.system(size: 35, weight: .regular, design: .rounded))
                             .shadow(radius: 5)
-//                        Spacer()
+                        Spacer()
                         if entry.materialWeekday != .sunday {
                             MaterialRow(materials: weaponMaterials+talentMaterials)
                         } else {
@@ -65,7 +65,8 @@ struct MaterialWidgetView: View {
                     .frame(height: 35)
                 }
                 .frame(height: 40)
-                .padding(.vertical)
+                .padding(.top)
+                .padding(.bottom, 12)
                 if let events = entry.events, !events.isEmpty {
                     EventView(events: events)
                 }
@@ -83,11 +84,16 @@ private struct EventView: View {
     var body: some View {
         HStack(spacing: 4) {
             Rectangle()
-                .frame(width: 2, height: 75)
-            VStack(spacing: 6) {
-                ForEach(events.filter({
-                    getRemainTimeInterval($0.endAt) > 0
-                }).prefix(4), id: \.id) { content in
+                .frame(width: 2, height: 77.5)
+                .offset(x: 1)
+            VStack(spacing: 7) {
+                ForEach(
+                    events
+                        .filter({ getRemainTimeInterval($0.endAt) > 0 })
+                        .shuffled()
+                        .prefix(4)
+                        .sorted(by: { getRemainTimeInterval($0.endAt) < getRemainTimeInterval($1.endAt) }),
+                    id: \.id) { content in
                     eventItem(event: content)
                 }
             }
