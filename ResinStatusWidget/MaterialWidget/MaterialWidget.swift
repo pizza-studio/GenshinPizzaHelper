@@ -54,7 +54,7 @@ struct MaterialWidgetView: View {
                         Text(dayOfMonth)
                             .font(.system(size: 35, weight: .regular, design: .rounded))
                             .shadow(radius: 5)
-                        Spacer()
+//                        Spacer()
                         if entry.materialWeekday != .sunday {
                             MaterialRow(materials: weaponMaterials+talentMaterials)
                         } else {
@@ -83,8 +83,8 @@ private struct EventView: View {
     var body: some View {
         HStack(spacing: 4) {
             Rectangle()
-                .frame(width: 2, height: 80)
-            VStack(spacing: 7) {
+                .frame(width: 2, height: 75)
+            VStack(spacing: 6) {
                 ForEach(events.filter({
                     getRemainTimeInterval($0.endAt) > 0
                 }).prefix(4), id: \.id) { content in
