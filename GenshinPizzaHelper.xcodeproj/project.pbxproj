@@ -1754,6 +1754,7 @@
 				EABD7DB42886B2D200B7F0FD /* Resources */,
 				EA30F9B32886B49300AE7BEA /* Embed App Extensions */,
 				BFCC067728C9B6A2003E4A54 /* Embed Watch Content */,
+				BFF5CCA8293B9FF90049F66A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1953,6 +1954,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BFF5CCA8293B9FF90049F66A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "#!/bin/zsh\n \ngit=`sh /etc/profile; which git`\ngit_release_version=`\"$git\" describe --tags --always --abbrev=0`\n#array=(${git_release_version//,/ })\nshort_version=${git_release_version#*v}\nshort_version=${short_version%%-*}\nnumber_of_commits=`\"$git\" rev-list $git_release_version..HEAD --count`\n \ntarget_plist=\"${TARGET_BUILD_DIR}/{$INFOPLIST_PATH}\"\ndsym_plist=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\nsrc_plist=\"${TARGET_NAME}/Info.plist\"\nfor plist in \"$src_plist\"; do\nif [ -f \"$plist\" ]; then\necho \"Start to update build number\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $number_of_commits\" $plist\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString ${short_version}\" \"$plist\"\nfi\ndone\nif [ $? = 0 ]\nthen\n    echo 版本号修改成功\nelse\n    echo 版本号修改失败\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF85D76D28CE0B9E003F3479 /* Sources */ = {
