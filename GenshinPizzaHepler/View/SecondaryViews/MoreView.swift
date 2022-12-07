@@ -17,6 +17,7 @@ struct MoreView: View {
                 #if DEBUG
                 Button("清空已检查的版本号") {
                     UserDefaults.standard.set([], forKey: "checkedUpdateVersions")
+                    UserDefaults.standard.set(0, forKey: "checkedNewestVersion")
                     UserDefaults.standard.synchronize()
                 }
                 #endif

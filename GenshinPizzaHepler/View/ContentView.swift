@@ -78,10 +78,14 @@ struct ContentView: View {
             .zIndex(0)
 
             if let showDetailOfAccount = viewModel.showDetailOfAccount {
+                Color.black
+                    .ignoresSafeArea()
                 AccountDisplayView(account: showDetailOfAccount, animation: animation)
                     .zIndex(1)
             }
             if let account = viewModel.showCharacterDetailOfAccount {
+                Color.black
+                    .ignoresSafeArea()
                 CharacterDetailView(account: account, showingCharacterName: viewModel.showingCharacterName!, animation: animation)
                     .environment(\.colorScheme, .dark)
                     .zIndex(2)
