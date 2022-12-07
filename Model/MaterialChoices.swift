@@ -135,6 +135,7 @@ extension WeaponOrTalentMaterial {
                                                           .init(imageString: "UI_EquipIcon_Bow_Predator_Awaken", localizedName: "掠食者"),
                                                           .init(imageString: "UI_EquipIcon_Bow_Maria_Awaken", localizedName: "曚云之月"),
                                                           .init(imageString: "UI_EquipIcon_Bow_Narukami_Awaken", localizedName: "飞雷之弦振"),
+                                                          .init(imageString: "UI_EquipIcon_Sword_Kasabouzu_Awaken", localizedName: "东花坊时雨")
                                                         ]
     )
     static let kijin: WeaponOrTalentMaterial = .init(imageString: "weapon.Kijin", localizedName: "「今昔剧画」", weekday: .wednesdayAndSaturday,
@@ -173,6 +174,7 @@ extension WeaponOrTalentMaterial {
                                                                 .init(imageString: "UI_EquipIcon_Bow_Arakalari_Awaken", localizedName: "王下近侍"),
                                                                 .init(imageString: "UI_EquipIcon_Bow_Fin_Awaken", localizedName: "竭泽"),
                                                                 .init(imageString: "UI_EquipIcon_Bow_Ayus_Awaken", localizedName: "猎人之径"),
+                                                                .init(imageString: "UI_EquipIcon_Catalyst_Alaya_Awaken", localizedName: "图莱杜拉的回忆")
                                                               ]
     )
 
@@ -282,20 +284,22 @@ extension WeaponOrTalentMaterial {
                                                           relatedItem: [
                                                             .init(imageString: "UI_AvatarIcon_Tighnari_Card", localizedName: "提纳里"),
                                                             .init(imageString: "UI_AvatarIcon_Candace_Card", localizedName: "坎蒂丝"),
-                                                            .init(imageString: "UI_AvatarIcon_Cyno_Card", localizedName: "赛诺")
+                                                            .init(imageString: "UI_AvatarIcon_Cyno_Card", localizedName: "赛诺"),
+                                                            .init(imageString: "UI_AvatarIcon_Faruzan_Card", localizedName: "珐露珊")
                                                           ]
     )
     static let ingenuity: WeaponOrTalentMaterial = .init(imageString: "talent.Ingenuity", localizedName: "「巧思」", weekday: .tuesdayAndFriday,
                                                          relatedItem: [
                                                            .init(imageString: "UI_AvatarIcon_Dori_Card", localizedName: "多莉"),
                                                            .init(imageString: "UI_AvatarIcon_Nahida_Card", localizedName: "纳西妲"),
-//                                                           .init(imageString: "UI_AvatarIcon_Layla_Card", localizedName: "莱依拉")
+                                                           .init(imageString: "UI_AvatarIcon_Layla_Card", localizedName: "莱依拉")
                                                          ]
     )
     static let praxis: WeaponOrTalentMaterial = .init(imageString: "talent.Praxis", localizedName: "「笃行」", weekday: .wednesdayAndSaturday,
                                                       relatedItem: [
                                                         .init(imageString: "UI_AvatarIcon_Collei_Card", localizedName: "柯莱"),
-                                                        .init(imageString: "UI_AvatarIcon_Nilou_Card", localizedName: "妮露")
+                                                        .init(imageString: "UI_AvatarIcon_Nilou_Card", localizedName: "妮露"),
+                                                        .init(imageString: "UI_AvatarIcon_Wanderer_Card", localizedName: "流浪者")
                                                       ]
     )
 
