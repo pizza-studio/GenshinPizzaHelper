@@ -1023,3 +1023,10 @@
 "主屏幕小组件同步频率" = "主屏幕小工具同步頻率";
 "锁定屏幕小组件同步频率" = "鎖定屏幕小工具同步頻率";
 "我知道了" = "我知道了";
+
+// MARK: -2.7.3
+// Genshin v 3.2 new assets
+"珐露珊" = "Faruzan";
+"流浪者" = "Wanderer";
+"图莱杜拉的回忆" = "Tulaytullah's Remembrance";
+"东花坊时雨" = "Toukabou Shigure";
