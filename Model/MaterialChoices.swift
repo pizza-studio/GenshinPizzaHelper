@@ -43,6 +43,8 @@ extension WeaponOrTalentMaterial {
                                                             .init(imageString: "UI_EquipIcon_Catalyst_Outlaw_Awaken", localizedName: "暗巷的酒与诗"),
                                                             .init(imageString: "UI_EquipIcon_Catalyst_Ludiharpastum_Awaken", localizedName: "嘟嘟可故事集"),
                                                             .init(imageString: "UI_EquipIcon_Sword_Psalmus_Awaken", localizedName: "降临之剑"),
+                                                            .init(imageString: "UI_EquipIcon_Claymore_Dvalin_Awaken", localizedName: "天空之傲"),
+                                                            .init(imageString: "UI_EquipIcon_Pole_Windvane", localizedName: "风信之锋")
                                                           ]
     )
     static let dandelionGladiator: WeaponOrTalentMaterial = .init(imageString: "weapon.DandelionGladiator", localizedName: "「狮牙斗士」", weekday: .wednesdayAndSaturday,
