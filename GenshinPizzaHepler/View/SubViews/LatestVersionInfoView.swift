@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct LatestVersionInfoView: View {
     @Binding var sheetType: ContentViewSheetType?
@@ -77,6 +78,14 @@ struct LatestVersionInfoView: View {
                         checkedUpdateVersions.append(newestVersionInfos!.buildVersion)
                         UserDefaults.standard.set(checkedUpdateVersions, forKey: "checkedUpdateVersions")
                         UserDefaults.standard.synchronize()
+                        if isJustUpdated {
+                            let showRate = Bool.random()
+                            if showRate {
+                                DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+                                    ReviewHandler.requestReview()
+                                }
+                            }
+                        }
                         sheetType = nil
                     }
                 }
