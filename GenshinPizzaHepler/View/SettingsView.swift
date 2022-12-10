@@ -60,9 +60,11 @@ struct SettingsView: View {
                     NavigationLink(destination: WebBroswerView(url: url).navigationTitle("FAQ").navigationBarTitleDisplayMode(.inline)) {
                         Label("常见使用问题（FAQ）", systemImage: "person.fill.questionmark")
                     }
+                    #if DEBUG
                     Button("debug") {
                         UserNotificationCenter.shared.printAllNotificationRequest()
                     }
+                    #endif
                 }
 
                 // 小组件相关设置
