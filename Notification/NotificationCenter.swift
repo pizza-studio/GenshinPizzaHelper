@@ -124,22 +124,22 @@ class UserNotificationCenter {
         print("Adding user notification: \(request)")
     }
     
-    private func imageURL(of object: Object) -> URL? {
-        switch object {
-        case .resin:
-            return Bundle.main.url(forResource: "树脂", withExtension: "png")
-        case .homeCoin:
-            return Bundle.main.url(forResource: "洞天宝钱", withExtension: "png")
-        case .expedition:
-            return Bundle.main.url(forResource: "派遣探索", withExtension: "png")
-        case .weeklyBosses:
-            return Bundle.main.url(forResource: "周本", withExtension: "png")
-        case .transformer:
-            return Bundle.main.url(forResource: "参量质变仪", withExtension: "png")
-        case .dailyTask:
-            return Bundle.main.url(forResource: "每日任务", withExtension: "png")
-        }
-    }
+//    private func imageURL(of object: Object) -> URL? {
+//        switch object {
+//        case .resin:
+//            return Bundle.main.url(forResource: "树脂", withExtension: "png")
+//        case .homeCoin:
+//            return Bundle.main.url(forResource: "洞天宝钱", withExtension: "png")
+//        case .expedition:
+//            return Bundle.main.url(forResource: "派遣探索", withExtension: "png")
+//        case .weeklyBosses:
+//            return Bundle.main.url(forResource: "周本", withExtension: "png")
+//        case .transformer:
+//            return Bundle.main.url(forResource: "参量质变仪", withExtension: "png")
+//        case .dailyTask:
+//            return Bundle.main.url(forResource: "每日任务", withExtension: "png")
+//        }
+//    }
     
     
     
@@ -184,7 +184,7 @@ class UserNotificationCenter {
         createNotification(
             in: resinInfo.recoveryTime.second,
             for: accountName,
-            object: .resin,
+            object: .resinFull,
             title: title,
             body: body,
             uid: uid
@@ -395,6 +395,7 @@ class UserNotificationCenter {
 
     enum Object: String, CaseIterable {
         case resin = "resin"
+        case resinFull = "resinFull"
         case homeCoin = "homeCoin"
         case expedition = "expedition"
         case weeklyBosses = "weeklyBosses"
