@@ -231,7 +231,12 @@ struct Expedition: Codable {
             return "伊安珊"
         case "Tartaglia", "Childe", "Ajax":
             return "达达利亚"
-
+        case "Faruzan":
+            return "珐露珊"
+        case "Wanderer":
+            return "流浪者"
+        case "Layla":
+            return "莱依拉"
         default:
             return "（未知角色）"
         }
