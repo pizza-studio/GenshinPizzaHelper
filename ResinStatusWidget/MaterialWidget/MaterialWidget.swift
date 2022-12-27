@@ -108,6 +108,7 @@ private struct EventView: View {
                 .lineLimit(1)
             Spacer()
             Text(timeIntervalFormattedString(getRemainTimeInterval(event.endAt)))
+                .fixedSize()
         }
         .font(.caption)
     }
