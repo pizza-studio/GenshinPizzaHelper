@@ -44,7 +44,7 @@ extension WeaponOrTalentMaterial {
                                                             .init(imageString: "UI_EquipIcon_Catalyst_Ludiharpastum_Awaken", localizedName: "嘟嘟可故事集"),
                                                             .init(imageString: "UI_EquipIcon_Sword_Psalmus_Awaken", localizedName: "降临之剑"),
                                                             .init(imageString: "UI_EquipIcon_Claymore_Dvalin_Awaken", localizedName: "天空之傲"),
-                                                            .init(imageString: "UI_EquipIcon_Pole_Windvane", localizedName: "风信之锋")
+                                                            .init(imageString: "UI_EquipIcon_Pole_Windvane_Awaken", localizedName: "风信之锋")
                                                           ]
     )
     static let dandelionGladiator: WeaponOrTalentMaterial = .init(imageString: "weapon.DandelionGladiator", localizedName: "「狮牙斗士」", weekday: .wednesdayAndSaturday,
@@ -74,7 +74,7 @@ extension WeaponOrTalentMaterial {
                                                        .init(imageString: "UI_EquipIcon_Sword_Rockkiller_Awaken", localizedName: "匣里龙吟"),
                                                        .init(imageString: "UI_EquipIcon_Sword_Blackrock_Awaken", localizedName: "黑岩长剑"),
                                                        .init(imageString: "UI_EquipIcon_Sword_Kunwu_Awaken", localizedName: "斫峰之刃"),
-                                                       .init(imageString: "UI_EquipIcon_Sword_Whiteblind", localizedName: "白影剑"),
+                                                       .init(imageString: "UI_EquipIcon_Claymore_Exotic_Awaken", localizedName: "白影剑"),
                                                        .init(imageString: "UI_EquipIcon_Claymore_Lapis_Awaken", localizedName: "千岩古剑"),
                                                        .init(imageString: "UI_EquipIcon_Pole_Exotic_Awaken", localizedName: "流月针"),
                                                        .init(imageString: "UI_EquipIcon_Pole_Morax_Awaken", localizedName: "和璞鸢"),
