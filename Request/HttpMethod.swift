@@ -745,8 +745,15 @@ struct HttpMethod<T: Codable> {
 
         func get_language_code() -> String {
             var languageCode = Locale.current.languageCode ?? "en-us"
-            if languageCode == "zh" {
+            switch languageCode {
+            case "zh":
                 languageCode = "zh-cn"
+            case "en":
+                languageCode = "en-us"
+            case "ja":
+                languageCode = "ja-jp"
+            default:
+                languageCode = "en-us"
             }
             return languageCode
         }

@@ -497,8 +497,11 @@ extension API {
                         case 1008:
                             print("fail 1008")
                             completion(.failure(.accountInvalid(retcode, message)))
-                        case -1, 10102:
+                        case -1:
                             print("fail -1")
+                            completion(.failure(.dataNotFound(retcode, message)))
+                        case 10102:
+                            print("fail 10102")
                             completion(.failure(.dataNotFound(retcode, message)))
                         case 1034:
                             completion(.failure(.accountAbnormal(retcode)))
