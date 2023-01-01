@@ -793,7 +793,12 @@ private extension AbyssSeason {
                 return "下".localized
             }
         }()
-        return String(seasonString.prefix(6).prefix(4)) + " " + String(seasonString.prefix(6).suffix(2)) + "月".localized + half
+        let yearStr = String(seasonString.prefix(6).prefix(4))
+        guard let monthNum = Int(seasonString.prefix(6).suffix(2)) else {
+            return ""
+        }
+        let monthStr = String(describing: monthNum)
+        return yearStr + " " + monthStr + "月".localized + half
     }
 
     static func choices(from date: Date = Date()) -> [AbyssSeason] {
