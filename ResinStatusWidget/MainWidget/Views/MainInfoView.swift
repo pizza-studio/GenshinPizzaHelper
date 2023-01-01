@@ -36,7 +36,9 @@ struct MainInfo: View {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                     Image(systemName: "person.fill")
                     Text(accountName)
-                    
+                        .allowsTightening(true)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3"))
@@ -114,7 +116,9 @@ struct MainInfoSimplified: View {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                     Image(systemName: "person.fill")
                     Text(accountName)
-
+                        .allowsTightening(true)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3"))
