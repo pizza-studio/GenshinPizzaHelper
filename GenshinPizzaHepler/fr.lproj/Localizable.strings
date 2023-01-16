@@ -266,7 +266,7 @@
 "「%@」探索派遣提醒" = "Notification de %@ pour les expedition";
 "「%@」的探索派遣已全部完成。" = "L'expeditions de %@ est complétée.";
 "「%@」周本折扣提醒" = "Boss Hebdomadaire de %@";
-"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "Il reste %lld réduction(s) de résine pour les Boss Hebdomadaires pour %@.";
+"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "La remise hebdomadaire sur la résine de boss de %@ a laissé %lld fois.";
 "「%@」参量质变仪提醒" = "Notification de %@ pour le transformeur paramétrique";
 "「%@」的参量质变仪已经可以使用。" = "Le transformeur paramétrique de %@ est disponible.";
 "「%@」每日委托提醒" = "Notification de %@n pour les Quêtes Quotidiennes";
