@@ -84,6 +84,9 @@ struct NotificationSettingView: View {
     var body: some View {
         List {
             Section {
+                Text("注意：通知设置更改对目前已安排的通知不生效。")
+            }
+            Section {
                 NavigationLink(destination: IgnoreNotificationAccountView().environmentObject(viewModel)) {
                     Text("启用帐号")
                 }

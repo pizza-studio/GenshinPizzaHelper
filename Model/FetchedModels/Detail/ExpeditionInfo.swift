@@ -237,6 +237,10 @@ struct Expedition: Codable {
             return "流浪者"
         case "Layla":
             return "莱依拉"
+        case "Alhatham":
+            return "艾尔海森"
+        case "Yaoyao":
+            return "瑶瑶"
         default:
             return "（未知角色）"
         }
