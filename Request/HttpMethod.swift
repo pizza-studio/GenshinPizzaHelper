@@ -752,6 +752,8 @@ struct HttpMethod<T: Codable> {
                 languageCode = "en-us"
             case "ja":
                 languageCode = "ja-jp"
+            case "ru":
+                languageCode = "ru-ru"
             default:
                 languageCode = "en-us"
             }
@@ -1397,7 +1399,10 @@ struct HttpMethod<T: Codable> {
                         return "en-us"
                     } else if languageCode == "ja" {
                         return "ja-jp"
-                    } else {
+                    } else if languageCode == "ru" {
+                        return "ru-ru"
+                    }
+                    else {
                         return languageCode
                     }
                 }

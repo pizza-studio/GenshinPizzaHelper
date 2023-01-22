@@ -19,6 +19,8 @@ struct NewestVersion: Codable {
         var zhcn: [String]
         var ja: [String]
         var fr: [String]
+        var zhtw: [String]?
+        var ru: [String]?
     }
 
     struct VersionHistory: Codable {
@@ -31,6 +33,8 @@ struct NewestVersion: Codable {
             var zhcn: [String]
             var ja: [String]
             var fr: [String]
+            var zhtw: [String]?
+            var ru: [String]?
         }
     }
 }

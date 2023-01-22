@@ -831,6 +831,9 @@
 		EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityWidget.swift; sourceTree = "<group>"; };
 		EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityController.swift; sourceTree = "<group>"; };
 		EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySettingView.swift; sourceTree = "<group>"; };
+		EA49D8FD297A5F7D00746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EA49D8FE297A5F7D00746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA49D901297A603700746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUtilizationData.swift; sourceTree = "<group>"; };
 		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
 		EA5232282903E0D6007A4CF4 /* ReverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseMask.swift; sourceTree = "<group>"; };
@@ -1834,6 +1837,7 @@
 				fr,
 				"zh-HK",
 				"zh-Hant",
+				ru,
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			packageReferences = (
@@ -2581,6 +2585,7 @@
 				EAA2CE3F292C909D00BF8DDE /* zh-Hant */,
 				EAA2CE40292C909E00BF8DDE /* zh-HK */,
 				EA12902429333D2F0078317C /* zh-Hans */,
+				EA49D8FD297A5F7D00746A2B /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2594,6 +2599,7 @@
 				EA185F33292F2726003E7E32 /* zh-HK */,
 				EA185F34292F272B003E7E32 /* zh-Hant */,
 				EA68247E292F425C009E506F /* zh-Hans */,
+				EA49D8FE297A5F7D00746A2B /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2607,6 +2613,7 @@
 				EA7FF47F2930A39F00128A5C /* zh-HK */,
 				EA7FF4812930A3F300128A5C /* ja */,
 				EA7FF4832930A41700128A5C /* zh-Hant */,
+				EA49D901297A603700746A2B /* ru */,
 			);
 			name = AccountIntents.intentdefinition;
 			sourceTree = "<group>";
