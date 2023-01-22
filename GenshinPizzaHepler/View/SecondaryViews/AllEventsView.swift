@@ -103,6 +103,8 @@ struct AllEventsView: View {
             return content.EN
         case "ja":
             return content.JP
+        case "ru":
+            return content.RU
         default:
             return content.EN
         }
