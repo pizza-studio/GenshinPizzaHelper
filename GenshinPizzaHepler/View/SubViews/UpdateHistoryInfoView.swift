@@ -131,45 +131,60 @@ struct UpdateHistoryInfoView: View {
     }
 
     func getLocalizedUpdateInfos(meta: NewestVersion) -> [String] {
-        switch Locale.current.languageCode {
-        case "zh":
+        let locale = Bundle.main.preferredLocalizations.first
+        switch locale {
+        case "zh-Hans":
             return meta.updates.zhcn
+        case "zh-Hant", "zh-HK":
+            return meta.updates.zhtw ?? meta.updates.zhcn
         case "en":
             return meta.updates.en
         case "ja":
             return meta.updates.ja
         case "fr":
             return meta.updates.fr
+        case "ru":
+            return meta.updates.ru ?? meta.updates.en
         default:
             return meta.updates.en
         }
     }
 
     func getLocalizedNoticeInfos(meta: NewestVersion) -> [String] {
-        switch Locale.current.languageCode {
-        case "zh":
+        let locale = Bundle.main.preferredLocalizations.first
+        switch locale {
+        case "zh-Hans":
             return meta.notice.zhcn
+        case "zh-Hant", "zh-HK":
+            return meta.notice.zhtw ?? meta.notice.zhcn
         case "en":
             return meta.notice.en
         case "ja":
             return meta.notice.ja
         case "fr":
             return meta.notice.fr
+        case "ru":
+            return meta.notice.ru ?? meta.notice.en
         default:
             return meta.notice.en
         }
     }
 
     func getLocalizedHistoryUpdateInfos(meta: NewestVersion.VersionHistory) -> [String] {
-        switch Locale.current.languageCode {
-        case "zh":
+        let locale = Bundle.main.preferredLocalizations.first
+        switch locale {
+        case "zh-Hans":
             return meta.updates.zhcn
+        case "zh-Hant", "zh-HK":
+            return meta.updates.zhtw ?? meta.updates.zhcn
         case "en":
             return meta.updates.en
         case "ja":
             return meta.updates.ja
         case "fr":
             return meta.updates.fr
+        case "ru":
+            return meta.updates.ru ?? meta.updates.en
         default:
             return meta.updates.en
         }
