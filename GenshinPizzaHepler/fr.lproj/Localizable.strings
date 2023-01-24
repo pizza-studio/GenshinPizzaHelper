@@ -1010,7 +1010,7 @@
 "今天 " = "Tdy ";
 "明天 " = "Tmw ";
 "实时活动功能未开启" = "\"Real-time activity\" disabled. ";
-"Events and Materials" = "";
+"活动和材料" = "Events and Materials";
 "展示近日活动和今天可以获取的武器和天赋材料。" = "Show the recent events and the weapons' or talents' materials that can be obtained today.";
 "LockScreenHomeCoinWidgetRectangular.resin" = "Resin";
 "LockScreenHomeCoinWidgetRectangular.homeCoin" = "Realm";
