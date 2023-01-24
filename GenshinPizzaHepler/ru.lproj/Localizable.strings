@@ -1010,7 +1010,7 @@
 "今天 " = "Tdy ";
 "明天 " = "Tmw ";
 "实时活动功能未开启" = "\"Активность в реальном времени\" выключена. ";
-"Events and Materials" = "";
+"活动和材料" = "";
 "展示近日活动和今天可以获取的武器和天赋材料。" = "Показать последние события и материалы оружия или талантов, которые можно получить сегодня.";
 "LockScreenHomeCoinWidgetRectangular.resin" = "Смола";
 "LockScreenHomeCoinWidgetRectangular.homeCoin" = "Сокровища";
