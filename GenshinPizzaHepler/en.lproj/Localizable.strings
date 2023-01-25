@@ -62,7 +62,7 @@
 "请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure your \"Real-Time Notes\" is accessible";
 "好" = "OK";
 "提示" = "Tips";
-"请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nSign in via Google, Facebook or Twitter is not available, please sign in with your username & password.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. "; // TODO: French
+"请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nSign in via Google, Facebook or Twitter is not available, please sign in with your username & password.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. ";
 "自定义帐号名" = "Custom Account Name";
 "请选择帐号" = "Choose Your Account";
 "手动设置帐号详情" = "Login Info Details";
@@ -377,7 +377,7 @@
 "（未知角色）" = "(unknown)";
 
 // Errors description
-"请先刷新以获取树脂状态" = "Please refresh to get genshin status";
+"请先刷新以获取树脂状态" = "Please refresh to get Genshin status";
 "请长按小组件选择帐号" = "Please long press the widget to config your account";
 "错误码%lld：Cookie失效，请重新登录" = "Error code %lld: Cookie is invalid, please login HoYoLab again.";
 "错误码%lld：米游社帐号与UID不匹配，请手动输入UID" = "Error code %lld: HoYoLAB account does not match UID";
@@ -492,7 +492,7 @@
 "自动展示你最需要的信息" = "Automatically display the information you need most";
 "综合信息" = "Comprehensive Infos";
 "所有信息，一网打尽" = "All infos in one view";
-"洞天宝钱数量" = "Realm Currenncy amount";
+"洞天宝钱数量" = "Realm Currency amount";
 "每日委托完成情况" = "Daily Commission Status";
 "探索派遣完成情况" = "Expedition Status";
 "另一种样式的原粹树脂小组件" = "Original Resin Widget in another form";
@@ -918,7 +918,7 @@
 "小组件设置" = "Widget Setting";
 "主屏幕小组件刷新频率" = "Home screen widget refresh frequency";
 "锁定屏幕小组件刷新频率" = "Lock screen widget refresh frequency";
-"每%lld分钟" = "Every %lldmin";
+"每%lld分钟" = "Every %lld min";
 "小组件刷新频率" = "Widget refresh frequency";
 
 // MARK: - 2.6.4
@@ -954,7 +954,7 @@
 "自动启用树脂计时器" = "Enable Resin Timer Automatically";
 "树脂计时器是什么？" = "What is the resin timer?";
 "创建树脂计时器成功" = "Create Resin Timer Successfully";
-"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在“概览”页长按某个账号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account infomation card on the \"Overview\" tab or enable more timers.";
+"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在“概览”页长按某个账号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account information card on the \"Overview\" tab or enable more timers.";
 "前往设置开启实时活动功能" = "Move to Settings to Enable \"Real-Time Activity\" Feature";
 "实时活动功能未开启，请前往设置开启。" = "\"Real-time activity\" disabled. Please enable it in the settings.";
 
@@ -964,7 +964,7 @@
 
 // Real-time activity settings
 "树脂计时器设置" = "Resin Timer Settings";
-"展示派遣探索" = "Show Expedition Infomation";
+"展示派遣探索" = "Show Expedition Information";
 "使用透明背景" = "Transparent Background";
 "随机背景" = "Random Background";
 "选择背景" = "Select Backgrounds";
@@ -1002,7 +1002,7 @@
 "原粹树脂回满时间" = "Resin Fully Refilled Time";
 "展示原粹树脂与恢复到160树脂的时间" = "Show the original resin and the time to full.";
 "的原粹树脂回满倒计时" = "'s countdown to 160 resin";
-"原粹树脂回满倒计时" = "Timer of the Oringinal Resin";
+"原粹树脂回满倒计时" = "Timer of the Original Resin";
 "展示原粹树脂与恢复到160树脂的倒计时" = "Showing the original resin and the countdown to 160 resin.";
 "树脂溢出提醒" = "Notify when Full";
 "本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。" = "No stoken found in cookies, which may affect the use of the widget in simplified mode. It is recommended to re-login to get stoken.";
@@ -1044,4 +1044,6 @@
 "艾尔海森" = "Alhaitham";
 "裁叶萃光" = "Light of Foliar Incision";
 "注意：通知设置更改对目前已安排的通知不生效。" = "Note: Notification settings changes will not take effect for currently scheduled notifications.";
+
+// MARK: - 2.7.9
 "俄语" = "Russian";
