@@ -17,6 +17,7 @@ struct TextEditorView: View {
     var showShortCutsLink: Bool = false
     
     @State private var isWebShown: Bool = false
+    @State private var getCookieRegion: Region? = nil
 
     var body: some View {
         List {
@@ -24,7 +25,18 @@ struct TextEditorView: View {
                 Section {
                     if showShortCutsLink {
                         Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
-                        Button("登录帐号获取Cookie") { isWebShown.toggle() }
+                        Menu {
+                            Button("国服") {
+                                getCookieRegion = .cn
+                                isWebShown.toggle()
+                            }
+                            Button("国际服") {
+                                getCookieRegion = .global
+                                isWebShown.toggle()
+                            }
+                        } label: {
+                            Text("登录帐号获取Cookie")
+                        }
                     }
                     Button("粘贴自剪贴板") {
                         content = UIPasteboard.general.string ?? ""
@@ -37,8 +49,19 @@ struct TextEditorView: View {
             }
         }
         .navigationBarTitle(title, displayMode: .inline)
-        .sheet(isPresented: $isWebShown) {
-            GetCookieWebView(isShown: $isWebShown, cookie: $content, region: .cn)
+        .sheet(item: $getCookieRegion) { region in
+            switch region {
+            case .cn:
+                GetCookieWebView(isShown: $isWebShown, cookie: $content, region: .cn)
+                    .onChange(of: isWebShown) { _ in
+                        getCookieRegion = nil
+                    }
+            case .global:
+                GetCookieWebView(isShown: $isWebShown, cookie: $content, region: .global)
+                    .onChange(of: isWebShown) { _ in
+                        getCookieRegion = nil
+                    }
+            }
         }
     }
 }
