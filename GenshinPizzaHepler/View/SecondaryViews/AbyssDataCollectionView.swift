@@ -403,7 +403,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 $0.value > $1.value
             })
             for item in gapsSorted {
-                if item.value >= 0.05 {
+                if item.value >= 0.07 * (avatars[item.key].percentage ?? 1.0) {
                     sectionIndexes.append(item.key)
                     if sectionIndexes.count > 3 {
                         break
