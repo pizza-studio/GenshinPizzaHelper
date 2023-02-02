@@ -485,43 +485,6 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 case .failure(let error):
                     Text(error.localizedDescription)
                 }
-//                switch result {
-//                case .success(let data):
-//                    let data = data.data
-//                    Section {
-//                        ForEach(data.avatars.sorted(by: {
-//                            switch abyssDataCollectionViewModel.showingType {
-//                            case .abyssAvatarsUtilization, .teamUtilization:
-//                                return ($0.percentage ?? 0) > ($1.percentage ?? 0)
-//                            case .holdingRate, .fullStarHoldingRate:
-//                                return $0.charId < $1.charId
-//                            }
-//                        }), id: \.charId) { avatar in
-//                            let char = charMap["\(avatar.charId)"]
-//                            HStack {
-//                                Label {
-//                                    Text(charLoc["\(char?.NameTextMapHash ?? 0)"] ?? "unknown")
-//                                } icon: {
-//                                    EnkaWebIcon(iconString: char?.iconString ?? "")
-//                                        .background(
-//                                            EnkaWebIcon(iconString: char?.namecardIconString ?? "")
-//                                                .scaledToFill()
-//                                                .offset(x: -30/3)
-//                                        )
-//                                    .frame(width: 30, height: 30)
-//                                    .clipShape(Circle())
-//                                }
-//                                Spacer()
-//                                Text(percentageFormatter.string(from: (avatar.percentage ?? 0.0) as NSNumber)!)
-//                            }
-//                        }
-//                    } header: {
-//                        Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
-//                            .textCase(.none)
-//                    }
-//                case .failure(let error):
-//                    Text(error.localizedDescription)
-//                }
             } else {
                 ProgressView()
             }

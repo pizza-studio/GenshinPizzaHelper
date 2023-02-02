@@ -1044,4 +1044,14 @@
 "艾尔海森" = "Alhaitham";
 "裁叶萃光" = "Light of Foliar Incision";
 "注意：通知设置更改对目前已安排的通知不生效。" = "Note: Notification settings changes will not take effect for currently scheduled notifications.";
+
+// MARK: - 2.7.9
 "俄语" = "Russian";
+
+// MARK: - 2.7.10
+"使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "Utilization ratings are only for reference in Abyss team formation, and do not represent any evaluation of characters.";
+"强烈推荐选用的角色" = "Highly Recommended Characters";
+"推荐选用的角色" = "Recommended Characters";
+"优先选用的角色" = "Preferred Characters";
+"可以选用的角色" = "Optional Characters";
+"酌情选用的角色" = "Discretionary Characters";
