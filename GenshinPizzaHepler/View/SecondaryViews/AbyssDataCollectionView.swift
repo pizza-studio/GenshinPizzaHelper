@@ -466,15 +466,15 @@ private struct ShowAvatarPercentageViewWithSection: View {
                                 }
                                 switch i {
                                 case 0:
-                                    Text("强烈推荐使用的角色")
+                                    Text("T\(i) ") + Text("强烈推荐选用的角色")
                                 case 1:
-                                    Text("推荐参与配队的角色")
+                                    Text("T\(i) ") + Text("推荐选用的角色")
                                 case 2:
-                                    Text("建议优先选择的角色")
+                                    Text("T\(i) ") + Text("优先选用的角色")
                                 case 3:
-                                    Text("对通关有一定帮助的角色")
+                                    Text("T\(i) ") + Text("可以选用的角色")
                                 case 4:
-                                    Text("酌情考虑使用的角色")
+                                    Text("T\(i) ") + Text("酌情选用的角色")
                                 default:
                                     EmptyView()
                                 }
