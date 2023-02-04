@@ -10,13 +10,13 @@ import SwiftUI
 struct WebImage: View {
     var urlStr: String
 
-    @State private var imageData: UIImage? = nil
-    
+//    @State private var imageData: UIImage? = nil
+    @ObservedObject var viewModel: WebImageLoaderViewModel
     let imageFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Images")
 
     var body: some View {
-        if #available(iOS 15.0, watchOS 8.0, *) {
-            if imageData == nil {
+        if #available(iOS 150.0, watchOS 80.0, *) {
+            if viewModel.imageData == nil {
                 AsyncImage(
                             url: URL(string: urlStr),
                             transaction: Transaction(animation: .default)
@@ -27,54 +27,62 @@ struct WebImage: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                 let _ = DispatchQueue.main.async {
-                                    saveImageCache(url: urlStr)
+                                    viewModel.saveImageCache(url: urlStr)
                                 }
                             default:
                                 ProgressView()
                                     .onAppear {
-                                        DispatchQueue.global(qos: .background).async {
-                                            self.imageData = loadImageCache(url: urlStr)
-                                        }
-                                        // self.imageData = loadImageCache(url: urlStr)
+//                                        DispatchQueue.global(qos: .background).async {
+//                                            self.imageData = loadImageCache(url: urlStr)
+//                                        }
+//                                         self.imageData = loadImageCache(url: urlStr)
+                                        print("imageData is nil")
                                     }
                             }
                         }
             } else {
-                Image(uiImage: imageData!)
+                Image(uiImage: viewModel.imageData!)
                     .resizable().aspectRatio(contentMode: .fit)
             }
             
         } else {
             // Fallback on earlier versions
-            if imageData == nil {
+            if viewModel.imageData == nil {
                 ProgressView()
                     .onAppear {
-                        imageData = loadImageCache(url: urlStr)
-                        let url = URL(string: urlStr)
-                        if url != nil {
-                            DispatchQueue.global(qos: .background).async {
-                                let data = try? Data(contentsOf: url!)
-                                guard data != nil else {
-                                    return
-                                }
-                                let imageFileURL = imageFolderURL.appendingPathComponent(url!.lastPathComponent)
-                                try! data!.write(to: imageFileURL)
-                                imageData = UIImage(data: data!)
-                            }
-                        }
+                        print("imageData is nil")
+//                        viewModel.imageData = viewModel.loadImageCache(url: urlStr)
                     }
             } else {
-                Image(uiImage: imageData!)
+                Image(uiImage: viewModel.imageData!)
                     .resizable().aspectRatio(contentMode: .fit)
             }
         }
     }
 
-//    init(urlStr: String) {
-//        self.urlStr = urlStr
+    init(urlStr: String) {
+        self.urlStr = urlStr
+        print("load img cache of \(urlStr): ")
+        self.viewModel = WebImageLoaderViewModel(imgUrl: urlStr)
 //        self.imageData = loadImageCache(url: urlStr)
-//    }
+    }
     
+
+}
+
+class WebImageLoaderViewModel: ObservableObject {
+    let imageFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Images")
+
+    @Published var imageData: UIImage? = nil
+    private var imgUrl: String
+
+    init(imgUrl: String) {
+        self.imgUrl = imgUrl
+        DispatchQueue.main.async {
+            self.imageData = self.loadImageCache(url: imgUrl)
+        }
+    }
+
     // 判断是否存在缓存，否则保存图片
     func saveImageCache(url: String) {
         let imageURL = URL(string: url)!
@@ -88,11 +96,11 @@ struct WebImage: View {
             }.resume()
         }
     }
-    
+
     // 读取图片
     func loadImageCache(url: String) -> UIImage? {
         let imageURL = URL(string: url)!
-        
+
         if !FileManager.default.fileExists(atPath: imageFolderURL.path) {
             try! FileManager.default.createDirectory(at: imageFolderURL, withIntermediateDirectories: true, attributes: nil)
         }
@@ -101,8 +109,30 @@ struct WebImage: View {
         if let image = UIImage(contentsOfFile: imageFileURL.path) {
             return image
         } else {
-            return nil
+            print("not found on disk, get from web")
+            return getImageFromWeb()
         }
+    }
+
+    func getImageFromWeb() -> UIImage? {
+        let url = URL(string: imgUrl)
+        var img: UIImage? = nil
+        if url != nil {
+            DispatchQueue.global(qos: .userInteractive).async {
+                let data = try? Data(contentsOf: url!)
+                guard data != nil else {
+                    return
+                }
+                let imageFileURL = self.imageFolderURL.appendingPathComponent(url!.lastPathComponent)
+                print("save: fileURL:\(imageFileURL)")
+                try! data!.write(to: imageFileURL)
+                img = UIImage(data: data!)
+                DispatchQueue.main.async {
+                    self.imageData = img
+                }
+            }
+        }
+        return img
     }
 }
 
