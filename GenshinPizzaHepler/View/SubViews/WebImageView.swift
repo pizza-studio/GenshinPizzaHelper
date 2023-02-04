@@ -11,7 +11,6 @@ struct WebImage: View {
     var urlStr: String
 
     @ObservedObject var viewModel: WebImageLoaderViewModel
-    let imageFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Images")
 
     var body: some View {
         // 暂时弃用AsyncImage，在以下代码的启用版本号后面加个0

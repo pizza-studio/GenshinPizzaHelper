@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MoreView: View {
+    @ObservedObject var viewModel: MoreViewCacheViewModel = MoreViewCacheViewModel()
+    
     var body: some View {
         List {
             Section {
@@ -39,7 +41,46 @@ struct MoreView: View {
                     Text("关于小助手")
                 }
             }
+            
+            Section {
+                Button("清空缓存   \(String(format: "%.2f", self.viewModel.fileSize))MB") {
+                    self.viewModel.clearImageCache()
+                }
+            }
         }
         .navigationBarTitle("更多", displayMode: .inline)
+    }
+}
+
+class MoreViewCacheViewModel: ObservableObject {
+    let imageFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Images")
+    @Published var fileSize: Double
+    
+    init() {
+        do {
+            let fileUrls = try FileManager.default.contentsOfDirectory(atPath: self.imageFolderURL.path)
+            self.fileSize = 0.0
+            for fileUrl in fileUrls {
+                let attributes = try FileManager.default.attributesOfItem(atPath: imageFolderURL.appendingPathComponent(fileUrl).path)
+                self.fileSize += attributes[FileAttributeKey.size] as! Double
+            }
+            self.fileSize = self.fileSize / 1024.0 / 1024.0
+        } catch {
+            print("error get images size: \(error)")
+            self.fileSize = 0.0
+        }
+    }
+    
+    func clearImageCache() {
+        do {
+            let fileUrls = try FileManager.default.contentsOfDirectory(atPath: self.imageFolderURL.path)
+            for fileUrl in fileUrls {
+                try FileManager.default.removeItem(at: imageFolderURL.appendingPathComponent(fileUrl))
+            }
+            self.fileSize = 0.0
+            print("Image Cache Cleared!")
+        } catch {
+            print("error: Image Cache Clear:\(error)")
+        }
     }
 }
