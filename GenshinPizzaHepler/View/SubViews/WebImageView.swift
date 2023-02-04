@@ -11,27 +11,45 @@ struct WebImage: View {
     var urlStr: String
 
     @State private var imageData: UIImage? = nil
+    
+    let imageFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Images")
 
     var body: some View {
         if #available(iOS 15.0, watchOS 8.0, *) {
-            AsyncImage(
-                        url: URL(string: urlStr),
-                        transaction: Transaction(animation: .default)
-                    ) { phase in
-                        switch phase {
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        default:
-                            ProgressView()
+            if imageData == nil {
+                AsyncImage(
+                            url: URL(string: urlStr),
+                            transaction: Transaction(animation: .default)
+                        ) { phase in
+                            switch phase {
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                let _ = DispatchQueue.main.async {
+                                    saveImageCache(url: urlStr)
+                                }
+                            default:
+                                ProgressView()
+                                    .onAppear {
+                                        DispatchQueue.global(qos: .background).async {
+                                            self.imageData = loadImageCache(url: urlStr)
+                                        }
+                                        // self.imageData = loadImageCache(url: urlStr)
+                                    }
+                            }
                         }
-                    }
+            } else {
+                Image(uiImage: imageData!)
+                    .resizable().aspectRatio(contentMode: .fit)
+            }
+            
         } else {
             // Fallback on earlier versions
             if imageData == nil {
                 ProgressView()
                     .onAppear {
+                        imageData = loadImageCache(url: urlStr)
                         let url = URL(string: urlStr)
                         if url != nil {
                             DispatchQueue.global(qos: .background).async {
@@ -39,6 +57,8 @@ struct WebImage: View {
                                 guard data != nil else {
                                     return
                                 }
+                                let imageFileURL = imageFolderURL.appendingPathComponent(url!.lastPathComponent)
+                                try! data!.write(to: imageFileURL)
                                 imageData = UIImage(data: data!)
                             }
                         }
@@ -47,6 +67,41 @@ struct WebImage: View {
                 Image(uiImage: imageData!)
                     .resizable().aspectRatio(contentMode: .fit)
             }
+        }
+    }
+
+//    init(urlStr: String) {
+//        self.urlStr = urlStr
+//        self.imageData = loadImageCache(url: urlStr)
+//    }
+    
+    // 判断是否存在缓存，否则保存图片
+    func saveImageCache(url: String) {
+        let imageURL = URL(string: url)!
+        let imageFileURL = imageFolderURL.appendingPathComponent(imageURL.lastPathComponent)
+        if !FileManager.default.fileExists(atPath: imageFileURL.path) {
+            URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+                if let data = data {
+                    print("save: fileURL:\(imageFileURL)")
+                    try! data.write(to: imageFileURL)
+                }
+            }.resume()
+        }
+    }
+    
+    // 读取图片
+    func loadImageCache(url: String) -> UIImage? {
+        let imageURL = URL(string: url)!
+        
+        if !FileManager.default.fileExists(atPath: imageFolderURL.path) {
+            try! FileManager.default.createDirectory(at: imageFolderURL, withIntermediateDirectories: true, attributes: nil)
+        }
+        let imageFileURL = imageFolderURL.appendingPathComponent(imageURL.lastPathComponent)
+        print("load: fileURL:\(imageFileURL)")
+        if let image = UIImage(contentsOfFile: imageFileURL.path) {
+            return image
+        } else {
+            return nil
         }
     }
 }
