@@ -10,11 +10,11 @@ import SwiftUI
 struct WebImage: View {
     var urlStr: String
 
-//    @State private var imageData: UIImage? = nil
     @ObservedObject var viewModel: WebImageLoaderViewModel
     let imageFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Images")
 
     var body: some View {
+        // 暂时弃用AsyncImage，在以下代码的启用版本号后面加个0
         if #available(iOS 150.0, watchOS 80.0, *) {
             if viewModel.imageData == nil {
                 AsyncImage(
@@ -32,10 +32,6 @@ struct WebImage: View {
                             default:
                                 ProgressView()
                                     .onAppear {
-//                                        DispatchQueue.global(qos: .background).async {
-//                                            self.imageData = loadImageCache(url: urlStr)
-//                                        }
-//                                         self.imageData = loadImageCache(url: urlStr)
                                         print("imageData is nil")
                                     }
                             }
@@ -51,7 +47,6 @@ struct WebImage: View {
                 ProgressView()
                     .onAppear {
                         print("imageData is nil")
-//                        viewModel.imageData = viewModel.loadImageCache(url: urlStr)
                     }
             } else {
                 Image(uiImage: viewModel.imageData!)
@@ -64,7 +59,6 @@ struct WebImage: View {
         self.urlStr = urlStr
         print("load img cache of \(urlStr): ")
         self.viewModel = WebImageLoaderViewModel(imgUrl: urlStr)
-//        self.imageData = loadImageCache(url: urlStr)
     }
     
 
