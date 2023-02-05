@@ -352,7 +352,15 @@ class UserNotificationCenter {
         let id = uid + object.rawValue + idSuffix
         center.removePendingNotificationRequests(withIdentifiers: [id])
     }
-    
+
+    func deleteAllNotification() {
+        center.getDeliveredNotifications { notifications in
+            let ids = notifications.map { notification in
+                notification.request.identifier
+            }
+            self.center.removePendingNotificationRequests(withIdentifiers: ids)
+        }
+    }
     
     func deleteAllNotification(for uid: String) {
         Object.allCases.forEach { object in
@@ -363,6 +371,17 @@ class UserNotificationCenter {
                     }
                 }
             }
+        }
+    }
+
+    func deleteAllNotification(object: Object) {
+        center.getDeliveredNotifications { notifications in
+            let ids = notifications.filter { notification in
+                notification.request.identifier.contains(object.rawValue)
+            }.map { notification in
+                notification.request.identifier
+            }
+            self.center.removePendingNotificationRequests(withIdentifiers: ids)
         }
     }
 

@@ -272,6 +272,31 @@ struct ContactUsView: View {
                         .scaledToFit()
                         .clipShape(Circle())
                 }
+                Menu {
+                    Link(destination: isInstallation(urlString: "vk://") ? URL(string: "vk://vk.com/arrteem40")! : URL(string: "https://vk.com/arrteem40")!) {
+                        Label {
+                            Text("VK")
+                        } icon: {
+                            Image("vk")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                } label: {
+                    Label {
+                        HStack {
+                            Text("Art34222")
+                            Spacer()
+                            Text("俄语")
+                                .foregroundColor(.gray)
+                        }
+                    } icon: {
+                        Image("Art34222")
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(Circle())
+                    }
+                }
             }
             Section(header: Text("特别鸣谢")) {
                 Menu {

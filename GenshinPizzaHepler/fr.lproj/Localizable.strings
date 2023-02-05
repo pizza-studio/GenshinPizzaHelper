@@ -243,7 +243,7 @@
 "草元素" = "Dendro";
 "雷元素" = "Electro";
 "风元素" = "Anemo";
-"冰元素" = "Cyro";
+"冰元素" = "Cryo";
 "岩元素" = "Geo";
 
 // Widget
@@ -266,7 +266,7 @@
 "「%@」探索派遣提醒" = "Notification de %@ pour les expedition";
 "「%@」的探索派遣已全部完成。" = "L'expeditions de %@ est complétée.";
 "「%@」周本折扣提醒" = "Boss Hebdomadaire de %@";
-"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "Il reste %lld réduction(s) de résine pour les Boss Hebdomadaires pour %@.";
+"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "Réduction de résine pour le boss hebdomadaire %@: %lld fois.";
 "「%@」参量质变仪提醒" = "Notification de %@ pour le transformeur paramétrique";
 "「%@」的参量质变仪已经可以使用。" = "Le transformeur paramétrique de %@ est disponible.";
 "「%@」每日委托提醒" = "Notification de %@n pour les Quêtes Quotidiennes";
@@ -1010,7 +1010,7 @@
 "今天 " = "Tdy ";
 "明天 " = "Tmw ";
 "实时活动功能未开启" = "\"Real-time activity\" disabled. ";
-"Events and Materials" = "";
+"活动和材料" = "Events and Materials";
 "展示近日活动和今天可以获取的武器和天赋材料。" = "Show the recent events and the weapons' or talents' materials that can be obtained today.";
 "LockScreenHomeCoinWidgetRectangular.resin" = "Resin";
 "LockScreenHomeCoinWidgetRectangular.homeCoin" = "Realm";
@@ -1038,3 +1038,10 @@
 "腐殖之剑" = "Festering Desire";
 "风花之颂" = "Windblume Ode";
 "「渔获」" = "The Catch";
+
+// MARK: - 2.7.8
+"瑶瑶" = "Yaoyao";
+"艾尔海森" = "Alhaitham";
+"裁叶萃光" = "Light of Foliar Incision";
+"注意：通知设置更改对目前已安排的通知不生效。" = "Note: Notification settings changes will not take effect for currently scheduled notifications.";
+"俄语" = "Russian";
