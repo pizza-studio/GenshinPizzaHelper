@@ -140,7 +140,9 @@ struct AbyssDataCollectionView: View {
     var body: some View {
         VStack {
             switch abyssDataCollectionViewModel.showingType {
-            case .abyssAvatarsUtilization, .holdingRate, .fullStarHoldingRate:
+            case .abyssAvatarsUtilization:
+                ShowAvatarPercentageViewWithSection()
+            case .holdingRate, .fullStarHoldingRate:
                 ShowAvatarPercentageView()
             case .teamUtilization:
                 ShowTeamPercentageView()
@@ -338,6 +340,147 @@ private struct ShowAvatarPercentageView: View {
                     } header: {
                         Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
                             .textCase(.none)
+                    }
+                case .failure(let error):
+                    Text(error.localizedDescription)
+                }
+            } else {
+                ProgressView()
+            }
+        }
+    }
+}
+
+private struct ShowAvatarPercentageViewWithSection: View {
+    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
+    var result: FetchHomeModelResult<AvatarPercentageModel>? {
+        switch abyssDataCollectionViewModel.showingType {
+        case .fullStarHoldingRate:
+            return abyssDataCollectionViewModel.fullStaAvatarHoldingResult
+        case .holdingRate:
+            return abyssDataCollectionViewModel.avatarHoldingResult
+        case .abyssAvatarsUtilization:
+            return abyssDataCollectionViewModel.utilizationDataFetchModelResult
+        default:
+            return nil
+        }
+    }
+    var avatarSectionDatas: [[AvatarPercentageModel.Avatar]]? {
+        return getDataSection(data: abyssDataCollectionViewModel.utilizationDataFetchModelResult)
+    }
+
+    let percentageFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+
+    func getDataSection(data: FetchHomeModelResult<AvatarPercentageModel>?) -> [[AvatarPercentageModel.Avatar]]? {
+        guard let data = data else {
+            return nil
+        }
+        switch data {
+        case .success(let dataSuccess):
+            let avatarsSrc = dataSuccess.data.avatars
+            let avatars = avatarsSrc.sorted(by: {
+                return ($0.percentage ?? 0) > ($1.percentage ?? 0)
+            })
+
+            var sectionIndexes = [Int]()
+            var gaps = [Int: Double]()
+            for i in 0..<avatars.count - 1 {
+                guard let percentage = avatars[i].percentage, let percentage2 = avatars[i + 1].percentage else {
+                    continue
+                }
+                if percentage > 0.3 {
+                    gaps.updateValue(percentage - percentage2, forKey: i)
+                }
+            }
+            let gapsSorted = gaps.sorted(by: {
+                $0.value > $1.value
+            })
+            for item in gapsSorted {
+                if item.value >= 0.07 * (avatars[item.key].percentage ?? 1.0) {
+                    sectionIndexes.append(item.key)
+                    if sectionIndexes.count > 3 {
+                        break
+                    }
+                }
+            }
+
+            var resLists = [[AvatarPercentageModel.Avatar]]()
+            var curList = [AvatarPercentageModel.Avatar]()
+            for i in 0..<avatars.count {
+                curList.append(avatars[i])
+                if sectionIndexes.contains(i) {
+                    resLists.append(curList)
+                    curList.removeAll()
+                }
+            }
+            resLists.append(curList)
+            return resLists
+
+        case .failure(_):
+            return nil
+        }
+        
+    }
+
+    var body: some View {
+        List {
+            if let result = result, let charLoc = viewModel.charLoc, let charMap = viewModel.charMap, let avatarSectionDatas = avatarSectionDatas {
+                switch result {
+                case .success(let data):
+                    let data = data.data
+                    ForEach(0 ..< avatarSectionDatas.count, id:\.self) { i in
+                        Section {
+                            ForEach(avatarSectionDatas[i], id:\.charId) { avatar in
+                                let char = charMap["\(avatar.charId)"]
+                                HStack {
+                                    Label {
+                                        Text(charLoc["\(char?.NameTextMapHash ?? 0)"] ?? "unknown")
+                                    } icon: {
+                                        EnkaWebIcon(iconString: char?.iconString ?? "")
+                                            .background(
+                                                EnkaWebIcon(iconString: char?.namecardIconString ?? "")
+                                                    .scaledToFill()
+                                                    .offset(x: -30/3)
+                                            )
+                                            .frame(width: 30, height: 30)
+                                            .clipShape(Circle())
+                                    }
+                                    Spacer()
+                                    Text(percentageFormatter.string(from: (avatar.percentage ?? 0.0) as NSNumber)!)
+                                }
+                            }
+                        } header: {
+                            VStack(alignment: .leading) {
+                                if i == 0 {
+                                    Text("共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)")
+                                    Text("使用率分级仅作深渊配队参考，不代表对角色的任何评价。")
+                                        .multilineTextAlignment(.leading)
+                                        .padding(.bottom, 5)
+                                }
+                                switch i {
+                                case 0:
+                                    Text("T\(i) ") + Text("强烈推荐选用的角色")
+                                case 1:
+                                    Text("T\(i) ") + Text("推荐选用的角色")
+                                case 2:
+                                    Text("T\(i) ") + Text("优先选用的角色")
+                                case 3:
+                                    Text("T\(i) ") + Text("可以选用的角色")
+                                case 4:
+                                    Text("T\(i) ") + Text("酌情选用的角色")
+                                default:
+                                    EmptyView()
+                                }
+                            }
+                            .textCase(.none)
+                        }
                     }
                 case .failure(let error):
                     Text(error.localizedDescription)
