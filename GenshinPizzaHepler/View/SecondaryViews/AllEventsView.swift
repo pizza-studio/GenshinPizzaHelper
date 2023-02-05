@@ -20,8 +20,10 @@ struct AllEventsView: View {
         ScrollView {
             VStack {
                 ForEach(eventContents, id:\.id) { content in
-                    NavigationLink(destination: eventDetail(event: content)) {
-                        CardView(content: content)
+                    if getRemainDays(content.endAt)?.second! ?? 0 >= 0 {
+                        NavigationLink(destination: eventDetail(event: content)) {
+                            CardView(content: content)
+                        }
                     }
                 }
             }
