@@ -1055,3 +1055,4 @@
 "优先选用的角色" = "Preferred Characters";
 "可以选用的角色" = "Optional Characters";
 "酌情选用的角色" = "Discretionary Characters";
+"清空缓存 (%@MB)" = "Clean the Cache (%@MB)";
