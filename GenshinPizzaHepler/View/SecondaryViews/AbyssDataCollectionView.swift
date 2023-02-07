@@ -395,8 +395,8 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 guard let percentage = avatars[i].percentage, let percentage2 = avatars[i + 1].percentage else {
                     continue
                 }
-                if percentage > 0.3 {
-                    gaps.updateValue(percentage - percentage2, forKey: i)
+                if percentage > 0.05 {
+                    gaps.updateValue((percentage - percentage2) * (Double(i / avatars.count) * 8 + 1), forKey: i)
                 }
             }
             let gapsSorted = gaps.sorted(by: {
@@ -405,7 +405,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
             for item in gapsSorted {
                 if item.value >= 0.07 * (avatars[item.key].percentage ?? 1.0) {
                     sectionIndexes.append(item.key)
-                    if sectionIndexes.count > 3 {
+                    if sectionIndexes.count > 4 {
                         break
                     }
                 }
@@ -472,8 +472,10 @@ private struct ShowAvatarPercentageViewWithSection: View {
                                 case 2:
                                     Text("T\(i) ") + Text("优先选用的角色")
                                 case 3:
-                                    Text("T\(i) ") + Text("可以选用的角色")
+                                    Text("T\(i) ") + Text("普遍可用的角色")
                                 case 4:
+                                    Text("T\(i) ") + Text("可以选用的角色")
+                                case 5:
                                     Text("T\(i) ") + Text("酌情选用的角色")
                                 default:
                                     EmptyView()

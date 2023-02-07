@@ -46,3 +46,15 @@ public extension Data {
         return String(data: Data(hash), encoding: .utf8)!
     }
 }
+
+public extension Double {
+    func selfTimes(p: Int) -> Double {
+        var res = self
+        var x = p - 1
+        while x > 0 {
+            res *= res
+            x -= 1
+        }
+        return res
+    }
+}
