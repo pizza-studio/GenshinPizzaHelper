@@ -36,7 +36,12 @@ struct LatestVersionInfoView: View {
                             .font(.title2)
                             .padding(.vertical, 2)
                         ForEach(getLocalizedNoticeInfos(meta: newestVersionInfos!), id:\.self) { item in
-                            Text("- \(item)")
+                            if #available(iOS 15.0, *) {
+                                Text("- \(item)".toAttributedString())
+                            } else {
+                                // Fallback on earlier versions
+                                Text("- \(item)")
+                            }
                         }
                         Divider()
                             .padding(.vertical)
@@ -47,7 +52,12 @@ struct LatestVersionInfoView: View {
                         .padding(.vertical, 2)
                     if newestVersionInfos != nil {
                         ForEach(getLocalizedUpdateInfos(meta: newestVersionInfos!), id:\.self) { item in
-                            Text("- \(item)")
+                            if #available(iOS 15.0, *) {
+                                Text("- \(item)".toAttributedString())
+                            } else {
+                                // Fallback on earlier versions
+                                Text("- \(item)")
+                            }
                         }
                     } else {
                         Text("Error")
