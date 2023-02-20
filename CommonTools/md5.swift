@@ -58,3 +58,11 @@ public extension Double {
         return res
     }
 }
+
+public extension String {
+    @available(iOS 15, *)
+    func toAttributedString() -> AttributedString {
+        let attributedString = try? AttributedString(markdown: self)
+        return attributedString ?? ""
+    }
+}
