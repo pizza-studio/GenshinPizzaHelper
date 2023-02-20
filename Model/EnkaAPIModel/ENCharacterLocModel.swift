@@ -36,6 +36,8 @@ struct ENCharacterLoc: Codable {
             return fr.content
         case "ru":
             return ru.content
+        case "vi":
+            return vi.content
         default:
             return en.content
         }
