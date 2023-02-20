@@ -145,7 +145,6 @@ extension Array where Element == AbyssData.SubmitDetailModel {
 extension AvatarHoldingData {
     init?(account: Account, which season: AccountSpiralAbyssDetail.WhichSeason) {
         guard let basicInfo = account.basicInfo else { return nil }
-        // OPENSOURCE: 开源的时候把这行换掉
         let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.md5)\(AppConfig.uidSalt)"
         uid = String(obfuscatedUid.md5)
 

@@ -35,7 +35,12 @@ struct UpdateHistoryInfoView: View {
                             .font(.title2)
                             .padding(.vertical, 2)
                         ForEach(getLocalizedNoticeInfos(meta: newestVersionInfos!), id:\.self) { item in
-                            Text("- \(item)")
+                            if #available(iOS 15.0, *) {
+                                Text("- \(item)".toAttributedString())
+                            } else {
+                                // Fallback on earlier versions
+                                Text("- \(item)")
+                            }
                         }
                         Divider()
                             .padding(.vertical)
@@ -47,7 +52,12 @@ struct UpdateHistoryInfoView: View {
                     .padding(.vertical, 2)
                 if newestVersionInfos != nil {
                     ForEach(getLocalizedUpdateInfos(meta: newestVersionInfos!), id:\.self) { item in
-                        Text("- \(item)")
+                        if #available(iOS 15.0, *) {
+                            Text("- \(item)".toAttributedString())
+                        } else {
+                            // Fallback on earlier versions
+                            Text("- \(item)")
+                        }
                     }
                 } else {
                     Text("Error")
@@ -79,7 +89,12 @@ struct UpdateHistoryInfoView: View {
                                 .bold()
                                 .padding(.top, 1)
                             ForEach(getLocalizedHistoryUpdateInfos(meta: versionItem), id:\.self) { item in
-                                Text("- \(item)")
+                                if #available(iOS 15.0, *) {
+                                    Text("- \(item)".toAttributedString())
+                                } else {
+                                    // Fallback on earlier versions
+                                    Text("- \(item)")
+                                }
                             }
                         }
                     }
