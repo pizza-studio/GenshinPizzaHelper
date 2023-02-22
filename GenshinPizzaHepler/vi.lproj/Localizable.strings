@@ -541,14 +541,14 @@
 "左右滑动查看更多" = "Vuốt sang trái và phải để xem thêm";
 
 // Settings View
-"使用小组件遇到了问题？" = "Any question about the tiện ích or Apple Watch complications?";
-"如何添加小组件和锁屏小组件？" = "How to add tiện ích on your Home Screen and Lock Screen?";
-"关于如何在Apple Watch上添加复杂功能，请参考Apple支持文档" = "About how to add a Apple Watch complication, please refer to the Apple Support Documents";
-"如何添加复杂功能？" = "How to add Apple Watch complications?";
-"还有其他问题？" = "Any other questions?";
-"偏好语言" = "Preferred language";
-"检查更新" = "Check Updates";
-"清空已检查的版本号" = "Clean Checked Version Codes";
+"使用小组件遇到了问题？" = "Mọi thắc mắc về tiện ích hoặc sự phức tạp của Apple Watch?";
+"如何添加小组件和锁屏小组件？" = "Cách thêm tiện ích trên Màn hình chính và Màn hình khóa?";
+"关于如何在Apple Watch上添加复杂功能，请参考Apple支持文档" = "Về cách thêm tiện ích trên Apple Watch, vui lòng tham khảo Tài liệu hỗ trợ của Apple";
+"如何添加复杂功能？" = "Cách thêm tiện ích của Apple Watch?";
+"还有其他问题？" = "Bất kỳ câu hỏi nào khác?";
+"偏好语言" = "Ngôn ngữ ưa thích";
+"检查更新" = "Kiểm tra cập nhật";
+"清空已检查的版本号" = "Làm sạch mã phiên bản đã kiểm tra";
 "" = "";
 
 // Thanks View
