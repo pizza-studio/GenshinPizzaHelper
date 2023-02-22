@@ -291,18 +291,18 @@
 "「谧林涓露」" = "Bùa Rừng Xanh Sương Đọng - Sắt";
 "「绿洲花园」" = "Ân Huệ Vườn Hoa Ốc Đảo";
 "「烈日威权」" = "Tia Sáng Của Ánh Nắng Quyền Uy ";
-"「自由」" = "Triết Học Của "Tự Do"";
-"「抗争」" = "Triết Học Của "Kháng Chiến"";
-"「诗文」" = "Triết Học Của "Thơ Văn"";
-"「繁荣」" = "Hướng Dẫn Của "Phồn Vinh"";
-"「勤劳」" = "Triết Học Của "Chăm Chỉ"";
-"「黄金」" = "Triết Học Của "Hoàng Kim"";
-"「浮世」" = "Triết Học Của "Phù Thế"";
-"「风雅」" = "Triết Học Của "Nhã Nhặn"";
-"「天光」" = "Triết Học Của "Ánh Sáng"";
-"「诤言」" = "Triết Học Của "Khuyên Nhủ"";
-"「巧思」" = "Triết Học Của "Tinh Tế"";
-"「笃行」" = "Triết Học Của "Thực Hành"";
+"「自由」" = "Triết Học Của \"Tự Do\"";
+"「抗争」" = "Triết Học Của \"Kháng Chiến\"";
+"「诗文」" = "Triết Học Của \"Thơ Văn\"";
+"「繁荣」" = "Hướng Dẫn Của \"Phồn Vinh\"";
+"「勤劳」" = "Triết Học Của \"Chăm Chỉ\"";
+"「黄金」" = "Triết Học Của \"Hoàng Kim\"";
+"「浮世」" = "Triết Học Của \"Phù Thế\"";
+"「风雅」" = "Triết Học Của \"Nhã Nhặn\"";
+"「天光」" = "Triết Học Của \"Ánh Sáng\"";
+"「诤言」" = "Triết Học Của \"Khuyên Nhủ\"";
+"「巧思」" = "Triết Học Của \"Tinh Tế\"";
+"「笃行」" = "Triết Học Của \"Thực Hành\"";
 
 "今日材料" = "Nguyên liệu hôm nay";
 "今日材料：星期日所有材料均可获取" = "Nguyên liệu hôm nay: Tất cả được mở trong ngày Chủ Nhật";
@@ -955,8 +955,8 @@
 "树脂计时器是什么？" = "Bộ đếm thời gian nhựa là gì?";
 "创建树脂计时器成功" = "Tạo bộ đếm thời gian nhựa đầy thành công";
 "若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在“概览”页长按某个账号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng.  Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất.  Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
-"前往设置开启实时活动功能" = "Chuyển đến Cài đặt để bật tính năng \"Hoạt động trong thời gian thực"";
-"实时活动功能未开启，请前往设置开启。" = "\Đã tắt "Hoạt động thời gian thực\".  Vui lòng kích hoạt nó trong cài đặt.";
+"前往设置开启实时活动功能" = "Chuyển đến Cài đặt để bật tính năng \"Hoạt động trong thời gian thực\"";
+"实时活动功能未开启，请前往设置开启。" = "Đã tắt \"Hoạt động thời gian thực\".  Vui lòng kích hoạt nó trong cài đặt.";
 
 // Other settings
 "前往设置开启通知" = "Di chuyển đến Cài đặt để bật thông báo";
