@@ -783,6 +783,9 @@
 		BFE7AFDA2902684100C75E7F /* AllAvatarDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarDetailModel.swift; sourceTree = "<group>"; };
 		BFE7AFE12903E0BB00C75E7F /* ToolsViewSimplified.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewSimplified.swift; sourceTree = "<group>"; };
 		BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSAServerAPI.swift; sourceTree = "<group>"; };
+		BFE9DADB29A33C1300C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BFE9DADC29A33C1300C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BFE9DADF29A33C3C00C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOptions.swift; sourceTree = "<group>"; };
 		BFFD822F28A650C300616CE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = "zh-Hans"; path = "zh-Hans.lproj/AccountIntents.intentdefinition"; sourceTree = "<group>"; };
 		BFFD823128A651F500616CE1 /* RingProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressBarView.swift; sourceTree = "<group>"; };
@@ -1838,6 +1841,7 @@
 				"zh-HK",
 				"zh-Hant",
 				ru,
+				vi,
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			packageReferences = (
@@ -2586,6 +2590,7 @@
 				EAA2CE40292C909E00BF8DDE /* zh-HK */,
 				EA12902429333D2F0078317C /* zh-Hans */,
 				EA49D8FD297A5F7D00746A2B /* ru */,
+				BFE9DADB29A33C1300C0A1DD /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2600,6 +2605,7 @@
 				EA185F34292F272B003E7E32 /* zh-Hant */,
 				EA68247E292F425C009E506F /* zh-Hans */,
 				EA49D8FE297A5F7D00746A2B /* ru */,
+				BFE9DADC29A33C1300C0A1DD /* vi */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2614,6 +2620,7 @@
 				EA7FF4812930A3F300128A5C /* ja */,
 				EA7FF4832930A41700128A5C /* zh-Hant */,
 				EA49D901297A603700746A2B /* ru */,
+				BFE9DADF29A33C3C00C0A1DD /* vi */,
 			);
 			name = AccountIntents.intentdefinition;
 			sourceTree = "<group>";
