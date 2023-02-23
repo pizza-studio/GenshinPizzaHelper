@@ -70,12 +70,12 @@
 "请先添加帐号" = "Thêm tài khoản";
 
 // Game Info block
-"%@\n%@ 回满" = "Đầy trong %@\n%@";
+"%@\n%@ 回满" = "Đầy Trong %@\n%@";
 "0小时0分钟\n树脂已全部回满" = "0hr 0min\nNhựa đầy.";
-"%lld天" = "%lldNgày";
-"%lld小时" = "%lldGiờ";
-"%lld分钟" = "%lldPhút";
-"%lld小时%lld分钟" = "%lldGiờ %lldPhút";
+"%lld天" = "%lld Ngày";
+"%lld小时" = "%lld Giờ";
+"%lld分钟" = "%lld Phút";
+"%lld小时%lld分钟" = "%lld Giờ %lld Phút";
 "可使用" = "Có sẵn";
 "%lld月%lld日 %@" = "%lld.%lld %@";
 "星期日" = "Chủ Nhật";
@@ -90,22 +90,22 @@
 
 // Notification settings
 "推送设置" = "Cài đặt thông báo";
-"启用帐号" = "Mở tài khoản";
-"原粹树脂提醒" = "Nhựa gốc";
-"提醒阈值" = "Ngưỡng nhựa";
+"启用帐号" = "Chọn tài khoản";
+"原粹树脂提醒" = "Nhựa Nguyên Chất";
+"提醒阈值" = "Ngưỡng Nhựa";
 "%lld树脂" = "%lld Nhựa";
-"洞天宝钱提醒" = "Tiền động tiên";
-"提醒时间" = "Gửi tại";
+"洞天宝钱提醒" = "Tiền Động Tiên";
+"提醒时间" = "Thông Báo Trước Khi Đầy";
 "充满前%lld小时" = "%lld giờ trước khi đầy";
-"探索派遣提醒" = "Thám hiểm";
-"提醒于" = "Gửi khi";
-"全部完成时" = "Tất cả đã xong";
+"探索派遣提醒" = "Phái Đi Thám Hiểm";
+"提醒于" = "Thông Báo Khi";
+"全部完成时" = "Tất Cả Đã Xong";
 "任一完成时" = "Hoàn Thành";
-"每日委托提醒" = "ủy thác hằng ngày";
-"提醒时间" = "Gửi tại";
+"每日委托提醒" = "Ủy Thác Hằng Ngày";
+"提醒时间" = "Hẹn Giờ";
 "周本折扣提醒" = "Vùng đất thảo phạt";
-"提醒日期" = "Gửi đi";
-"参量质变仪提醒" = "Máy biến đổi tham số";
+"提醒日期" = "Hẹn Giờ";
+"参量质变仪提醒" = "Máy Biến Đổi Tham Số";
 
 // danh thiếps
 "柯莱·豹蔚" = "Collei: Quân Tử";
@@ -259,16 +259,16 @@
 // Notification
 "打开「原神」" = "Mở Genshin Impact";
 "通知设置" = "Cài đặt thông báo";
-"「%@」原粹树脂提醒" = "%@'s Thông báo nhựa gốc";
+"「%@」原粹树脂提醒" = "%@'s Thông báo Nhựa Nguyên Chất";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ có %lld nhựa ban đầu , sẽ đầy vào lúc %@.";
 "「%@」洞天宝钱提醒" = "%@'s Thông báo tiền động tiên";
 "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@'s Tubby có %lld tiền động tiên bây giờ, sẽ có đầy tại %@.";
 "「%@」探索派遣提醒" = "%@'s Thông báo phái đi thám hiểm";
 "「%@」的探索派遣已全部完成。" = "Tất cả các cuộc thám hiểm của %@ đã hoàn thành.";
 "「%@」周本折扣提醒" = "%@'s Vùng đất thảo phạt";
-"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "%@'s lượt giảm nửa tiêu hao của tuần này còn %lld lần.";
+"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "%@'s Lượt giảm nửa tiêu hao của tuần này còn %lld lần.";
 "「%@」参量质变仪提醒" = "%@'s Thông báo máy biến đổi tham số";
-"「%@」的参量质变仪已经可以使用。" = "%@'s máy biến đổi tham số hiện có sẵn.";
+"「%@」的参量质变仪已经可以使用。" = "%@'s Máy biến đổi tham số hiện có sẵn.";
 "「%@」每日委托提醒" = "%@'s Thông báo ủy thác hàng ngày";
 "「%@」的每日委托还剩余%lld个未完成。" = "%@ vẫn còn %lld ủy thác hàng ngày chưa hoàn thành.";
 "「%@」的每日委托奖励还未领取。" = "%@'s nhận thưởng ủy thác mỗi ngày chưa được nhận.";
@@ -446,15 +446,15 @@
 
 // MARK: - 2.2
 // Watch App
-"原粹树脂" = "Nhựa gốc";
-"洞天宝钱" = "Tiền động tiên";
-"每日委托" = "nhiệm vụ hàng ngày";
-"探索派遣" = "Phái đi thám hiểm";
-"参量质变仪" = "Máy biến đổi tham số";
-"周本折扣" = "Vùng đất thảo phạt";
+"原粹树脂" = "Nhựa Nguyên Chất";
+"洞天宝钱" = "Tiền Động Tiên";
+"每日委托" = "Nhiệm Vụ Hàng Ngày";
+"探索派遣" = "Phái Đi Thám Hiểm";
+"参量质变仪" = "Máy Biến Đổi Tham Số";
+"周本折扣" = "Vùng Đất Thảo Phạt";
 "可使用" = "Có sẵn";
-"%@ 回满" = "Đầy lại tại %@";
-"树脂已全部回满" = "Nhựa được phục hồi đầy đủ";
+"%@ 回满" = "Đầy lại trong %@";
+"树脂已全部回满" = "Nhựa đã được phục hồi đầy đủ";
 
 // Donate
 "特别鸣谢" = "Cảm ơn";
@@ -495,11 +495,11 @@
 "洞天宝钱数量" = "Số lượng tiền động tiên";
 "每日委托完成情况" = "Trạng thái nhiệm vụ hàng ngày";
 "探索派遣完成情况" = "Tình trạng phái đi thám hiểm";
-"另一种样式的原粹树脂小组件" = "tiện ích hiển thị nhựa gốc ở dạng khác";
+"另一种样式的原粹树脂小组件" = "tiện ích hiển thị Nhựa Nguyên Chất ở dạng khác";
 
 // Watch
 "请等待帐号从iCloud同步" = "Vui lòng đợi dữ liệu được đồng bộ hóa từ iCloud";
-"的原粹树脂" = "'s nhựa gốc";
+"的原粹树脂" = "'s Nhựa Nguyên Chất";
 "的智能轮换信息" = "'s Vòng xoay tự động";
 "的探索派遣" = "'s Phái đi thám hiểm";
 "的每日委托" = "'s Nhiệm vụ hàng ngày";
@@ -570,10 +570,10 @@
 "Twitter主页" = "Trang chủ Twitter";
 "YouTube频道" = "Kênh YouTube";
 "翻译提供" = "Phiên dịch viên";
-"英语" = "English";
-"日语 英语" = "Japanese English";
-"法语" = "French";
-"日语" = "Japanese";
+"英语" = "Tiếng Anh";
+"日语 英语" = "Tiếng Nhật , Anh";
+"法语" = "Tiếng Pháp";
+"日语" = "Tiếng Nhật";
 "たお👻🍑" = "Hatti";
 
 // weapon names
@@ -780,8 +780,8 @@
 "请下滑刷新" = "Vui lòng trượt xuống để làm mới";
 "原神中英日辞典" = "Từ Điển Genshin Impact";
 "原神计算器" = "Ứng Dụng Tính Sát Thương Nhân Vật";
-"由爱丽丝工坊提供" = "Cung cấp từ Alice Workshop";
-"由爱丽丝工坊提供（未安装）" = "Cung cấp từ Alice Workshop";
+"由爱丽丝工坊提供" = "Cung cấp bởi Alice Workshop";
+"由爱丽丝工坊提供（未安装）" = "Cung cấp bởi Alice Workshop";
 "小工具" = "Dụng cụ";
 // Ledger sheet
 "原石摩拉账簿" = "Nhật Ký Nhà Lữ Hành";
@@ -816,9 +816,9 @@
 "命之座" = "Cung Mệnh";
 "%lld命" = "C%lld";
 "基础攻击力" = "Tấn Công";
-"生命值上限" = "Máu";
-"暴击率%%" = "CR %%";
-"暴击伤害%%" = "CD %%";
+"生命值上限" = "HP";
+"暴击率%%" = "Tỉ Lệ Bạo %%";
+"暴击伤害%%" = "ST Bạo %%";
 "治疗加成%%" = "Trị Liệu %%";
 "受治疗加成" = "Tăng Trị Liệu";
 "元素充能%%" = "Nạp %%";
@@ -832,7 +832,7 @@
 "岩伤加成%%" = "Nham %%";
 "物伤加成%%" = "Vật Lý %%";
 "攻击力%%" = "Tấn Công %%";
-"生命值%%" = "Máu %%";
+"生命值%%" = "HP %%";
 "防御力%%" = "Phòng Thủ %%";
 
 // Từ Điển Genshin
@@ -872,7 +872,7 @@
 "5星角色" = "Nhân vật 5 sao";
 "4星角色" = "Nhân vật 4 sao";
 "的所有角色" = "Nhân vật sở hữu";
-"生命值上限" = "Máu";
+"生命值上限" = "HP";
 "元素精通​" = "TTNT"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
 "纳西妲" = "Nahida";
 "莱依拉" = "Layla";
@@ -884,7 +884,7 @@
 "%lld月原石收入" = "Thu thập nguyên thạch";
 
 // MARK: - 2.6.0
-"深渊统计榜单" = "Xếp hạng nhân vật dùng trong La Hoàn";
+"深渊统计榜单" = "Xếp hạng nhân vật dùng nhiều trong La Hoàn";
 "深渊角色使用率" = "Tỷ lệ sử dụng nhân vật";
 "深渊队伍使用率" = "Đội hình dùng nhiều";
 "满星玩家持有率" = "Tỉ lệ người chơi đạt 36 sao";
@@ -937,7 +937,7 @@
 // widgetsetting
 "洞天宝钱回复速度" = "Tốc độ phục hồi tiền động tiên";
 "（仅简洁模式）洞天宝钱回复速度。未正确设置可能导致洞天宝钱通知无法正确触发。" = "(Chỉ ở chế độ đơn giản hóa) Tốc độ phục hồi tiền động tiên .  Việc không đặt chính xác có thể khiến thông báo tiền động tiên không kích hoạt chính xác.";
-"每小时%lld个" = "%lld/giờ";
+"每小时%lld个" = "%lld/ Giờ";
 // Notification setting
 "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Thông báo được tạo cục bộ và được cập nhật tự động khi tiện ích làm mới hoặc khi bạn mở Ứng dụng.  \nViệc không mở Ứng dụng trong thời gian dài hoặc không sử dụng tiện ích có thể dẫn đến thông báo không chính xác.  \nMột số thông báo chỉ có thể được làm mới bằng cách mở ứng dụng nếu tiện ích ở chế độ làm mới.";
 
@@ -963,7 +963,7 @@
 "未启用通知，请前往设置开启。" = "Thông báo bị vô hiệu hóa.  Vui lòng kích hoạt nó trong cài đặt.";
 
 // Real-time activity settings
-"树脂计时器设置" = "Cài đặt hẹn giờ nhựa";
+"树脂计时器设置" = "Cài đặt hẹn giờ nhựa đầy";
 "展示派遣探索" = "Hiển thị thông tin phái đi thám hiểm";
 "使用透明背景" = "Nền Trong Suốt";
 "随机背景" = "Nền Ngẫu Nhiên";
@@ -982,7 +982,7 @@
 "加入Discord服务器" = "Tham Gia Server Discord";
 "1群: 813912474" = "Group 1: 813912474";
 "2群: 829996515" = "Group 2: 829996515";
-"原神披萨深渊榜网页版" = "Genshin Pizza Trang web xếp hạng La Hoàn";
+"原神披萨深渊榜网页版" = "Trang Web xếp hạng nhân vật La Hoàn";
 "英语 繁体中文" = "Tiếng Anh , Tiếng Trung (Phồn thể)";
 
 "隐藏灵动岛 / 关闭树脂计时器" = "Ẩn Dynamic Island / Tắt bộ hẹn giờ nhựa";
@@ -1002,7 +1002,7 @@
 "原粹树脂回满时间" = "Thời gian để đầy nhựa hoàn toàn";
 "展示原粹树脂与恢复到160树脂的时间" = "Hiển thị lượng nhựa ban đầu và thời gian đầy.";
 "的原粹树脂回满倒计时" = "'s đếm ngược đến khi đầy 160 nhựa";
-"原粹树脂回满倒计时" = "Hẹn giờ của nhựa gốc";
+"原粹树脂回满倒计时" = "Hẹn giờ của Nhựa Nguyên Chất";
 "展示原粹树脂与恢复到160树脂的倒计时" = "Hiển thị nhựa ban đầu và đếm ngược đến khi đầy 160 nhựa.";
 "树脂溢出提醒" = "Thông báo khi đầy";
 "本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。" = "Không tìm thấy dữ liệu nào trong Cookie, điều này có thể ảnh hưởng đến việc sử dụng tiện ích ở chế độ đơn giản hóa.  Nên đăng nhập lại để nhận được Token.";
@@ -1013,7 +1013,7 @@
 "活动和材料" = "Sự kiện và nguyên liệu";
 "展示近日活动和今天可以获取的武器和天赋材料。" = "Hiển thị các sự kiện gần đây và nguyên liệu của vũ khí hoặc thiên phú có thể nhận được ngày hôm nay.";
 "LockScreenHomeCoinWidgetRectangular.resin" = "Nhựa";
-"LockScreenHomeCoinWidgetRectangular.homeCoin" = "Động Tiên";
+"LockScreenHomeCoinWidgetRectangular.homeCoin" = "Tiền Động Tiên";
 "每小时%@个" = "%@/giờ";
 "每%@" = "Mọi %@";
 
@@ -1046,7 +1046,7 @@
 "注意：通知设置更改对目前已安排的通知不生效。" = "Lưu ý: Các thay đổi cài đặt thông báo sẽ không có hiệu lực đối với các thông báo hiện được lên lịch.";
 
 // MARK: - 2.7.9
-"俄语" = "Thêm Tiếng Nga";
+"俄语" = "Tiếng Nga";
 
 // MARK: - 2.7.10
 "使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "Xếp hạng sử dụng chỉ để tham khảo trong đội hình La Hoàn và không đại diện cho bất kỳ đánh giá nào về nhân vật.";
