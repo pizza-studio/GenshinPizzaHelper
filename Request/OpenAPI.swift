@@ -57,7 +57,7 @@ extension API {
             // 请求类别
             #if DEBUG
 //            let urlStr = "https://enka.network/api/uid/\(uid)/"
-            let urlStr = "http://ophelper.top/static/player_detail_data_example.json"
+            let urlStr = "https://ophelper.top/static/player_detail_data_example.json"
             #else
             let urlStr = "https://enka.network/api/uid/\(uid)/"
             #endif

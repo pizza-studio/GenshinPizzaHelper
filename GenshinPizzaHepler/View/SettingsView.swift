@@ -52,9 +52,9 @@ struct SettingsView: View {
                     let url: String = {
                         switch Bundle.main.preferredLocalizations.first {
                         case "zh-Hans", "zh-Hant", "zh-HK":
-                            return "http://ophelper.top/static/faq.html"
+                            return "https://ophelper.top/static/faq.html"
                         default:
-                            return "http://ophelper.top/static/faq_en.html"
+                            return "https://ophelper.top/static/faq_en.html"
                         }
                     }()
                     NavigationLink(destination: WebBroswerView(url: url).navigationTitle("FAQ").navigationBarTitleDisplayMode(.inline)) {

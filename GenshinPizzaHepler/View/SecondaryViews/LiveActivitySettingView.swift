@@ -115,7 +115,7 @@ struct LiveActivitySettingDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isHelpSheetShow) {
             NavigationView {
-                WebBroswerView(url: "http://ophelper.top/static/resin_timer_help.html")
+                WebBroswerView(url: "https://ophelper.top/static/resin_timer_help.html")
                     .dismissableSheet(isSheetShow: $isHelpSheetShow)
             }
         }

@@ -187,7 +187,7 @@ struct UserPolicyView: View {
 
     var body: some View {
         NavigationView {
-            WebBroswerView(url: "http://ophelper.top/static/policy.html")
+            WebBroswerView(url: "https://ophelper.top/static/policy.html")
                 .ignoresSafeArea()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

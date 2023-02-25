@@ -1284,7 +1284,7 @@ struct HttpMethod<T: Codable> {
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
                 // 请求url前缀，后跟request的类型
-                let baseStr: String = "http://ophelper.top/"
+                let baseStr: String = "https://ophelper.top/"
                 // 由前缀和后缀共同组成的url
                 let url = URLComponents(string: baseStr + urlStr)!
                 // 初始化请求

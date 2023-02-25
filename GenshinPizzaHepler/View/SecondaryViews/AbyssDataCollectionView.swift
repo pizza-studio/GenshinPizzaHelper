@@ -200,13 +200,13 @@ struct AbyssDataCollectionView: View {
             let url: String = {
                 switch Locale.current.languageCode {
                 case "zh":
-                    return "http://ophelper.top/static/faq_abyss.html"
+                    return "https://ophelper.top/static/faq_abyss.html"
                 case "en":
-                    return "http://ophelper.top/static/faq_abyss_en.html"
+                    return "https://ophelper.top/static/faq_abyss_en.html"
                 case "ja":
-                    return "http://ophelper.top/static/faq_abyss_ja.html"
+                    return "https://ophelper.top/static/faq_abyss_ja.html"
                 default:
-                    return "http://ophelper.top/static/faq_abyss_en.html"
+                    return "https://ophelper.top/static/faq_abyss_en.html"
                 }
             }()
             NavigationView {

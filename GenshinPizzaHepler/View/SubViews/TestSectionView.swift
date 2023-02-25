@@ -93,7 +93,7 @@ struct TestSectionView: View {
         }
         .sheet(isPresented: $is1034WebShown, content: {
             NavigationView {
-                WebBroswerView(url: "http://ophelper.top/static/1034_error_soution")
+                WebBroswerView(url: "https://ophelper.top/static/1034_error_soution")
                     .dismissableSheet(isSheetShow: $is1034WebShown)
                     .navigationTitle("1034问题的解决方案")
                     .navigationBarTitleDisplayMode(.inline)
