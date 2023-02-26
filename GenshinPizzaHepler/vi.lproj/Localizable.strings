@@ -9,13 +9,13 @@
 // MARK: - 2.0 & above
 // Settings view
 "原神披萨小助手" = "Genshin Pizza Helper";
-"主页" = "Trang chủ";
-"设置" = "Cài đặt";
-"我的帐号" = "Tài khoản của tôi";
-"添加帐号" = "Thêm tài khoản";
-"通知推送" = "Thông báo";
-"通知推送设置" = "Cài đặt thông báo";
-"背景名片预览" = "Xem trước nền danh thiếp";
+"主页" = "Trang Chủ";
+"设置" = "Cài Đặt";
+"我的帐号" = "Tài Khoản Của Tôi";
+"添加帐号" = "Thêm Tài Khoản";
+"通知推送" = "Thông Báo";
+"通知推送设置" = "Cài Đặt Thông Báo";
+"背景名片预览" = "Xem Trước Nền Danh Thiếp";
 "更多" = "Thêm";
 
 "通知使用提示" = "Mẹo: Hãy bật thông báo của ứng dụng";
@@ -70,7 +70,7 @@
 "请先添加帐号" = "Thêm tài khoản";
 
 // Game Info block
-"%@\n%@ 回满" = "Đầy Trong %@\n%@";
+"%@\n%@ 回满" = "Sẽ đầy trong %@\n%@";
 "0小时0分钟\n树脂已全部回满" = "0hr 0min\nNhựa đầy.";
 "%lld天" = "%lld Ngày";
 "%lld小时" = "%lld Giờ";
@@ -89,7 +89,7 @@
 "保存图片" = "Lưu hình ảnh";
 
 // Notification settings
-"推送设置" = "Cài đặt thông báo";
+"推送设置" = "Cài Đặt thông báo";
 "启用帐号" = "Chọn tài khoản";
 "原粹树脂提醒" = "Nhựa Nguyên Chất";
 "提醒阈值" = "Ngưỡng Nhựa";
@@ -258,7 +258,7 @@
 
 // Notification
 "打开「原神」" = "Mở Genshin Impact";
-"通知设置" = "Cài đặt thông báo";
+"通知设置" = "Cài Đặt thông báo";
 "「%@」原粹树脂提醒" = "%@'s Thông báo Nhựa Nguyên Chất";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ có %lld nhựa ban đầu , sẽ đầy vào lúc %@.";
 "「%@」洞天宝钱提醒" = "%@'s Thông báo tiền động tiên";
@@ -414,10 +414,10 @@
 
 // MARK: - 2.1
 // Home View
-"所有材料均可获取" = "Tất cả nguyên liệu trong game đều có thể farm vào Chủ nhật";
+"所有材料均可获取" = "Tất cả nguyên liệu của game";
 
 // Proxy
-"代理设置" = "Cài đặt Proxy";
+"代理设置" = "Cài Đặt Proxy";
 "启用代理" = "Mở Proxy";
 "代理配置" = "Cấu Hình Proxy";
 "端口" = "Cổng";
@@ -546,7 +546,7 @@
 "关于如何在Apple Watch上添加复杂功能，请参考Apple支持文档" = "Về cách thêm tiện ích trên Apple Watch, vui lòng tham khảo Tài liệu hỗ trợ của Apple";
 "如何添加复杂功能？" = "Cách thêm tiện ích của Apple Watch?";
 "还有其他问题？" = "Bất kỳ câu hỏi nào khác?";
-"偏好语言" = "Ngôn ngữ ưa thích";
+"偏好语言" = "Cài Đặt Ngôn Ngữ";
 "检查更新" = "Kiểm tra cập nhật";
 "清空已检查的版本号" = "Làm sạch mã phiên bản đã kiểm tra";
 "" = "";
@@ -732,7 +732,7 @@
 "关于我们的工作原理" = "Chúng làm việc như thế nào??";
 "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。我们承诺，您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。" = "Để lấy nhựa và dữ liệu khác từ HoYoLAB, cần có UID và cookie đăng nhập của tài khoản của bạn.  Sau khi đăng nhập vào HoYoLAB, chúng tôi sẽ lưu trữ chúng cục bộ cũng như trên iCloud riêng tư của bạn.  Sau đó, ứng dụng của chúng tôi sẽ sử dụng UID và cookie được lưu trữ để lấy nhựa và các thông tin khác theo cách tương tự như ứng dụng HoYoLAB, sau đó hiển thị chúng trên tiện ích của bạn.  Thông tin cá nhân của bạn sẽ không được gửi đến những nơi khác ngoài HoYoLAB và iCloud, kể cả chúng tôi, vì vậy thông tin cá nhân của bạn sẽ rất an toàn.";
 "关于您的帐号安全" = "Giới thiệu về bảo mật tài khoản";
-"本程序不属于外挂等违法程序。本程序遵守米哈游二次创作规则的相关内容。根据中国原神客服的答复，使用本程序不会造成封号等问题。具体内容参见设置 - FAQ." = "Thủ tục này không phải là một thủ tục bất hợp pháp như plug-in.  Chương trình này tuân theo nội dung có liên quan của các quy tắc tạo phụ của miHoYo.  Theo phản hồi của dịch vụ khách hàng Genshin Impact của Trung Quốc, việc sử dụng chương trình của chúng tôi sẽ không gây ra các vấn đề như chặn.  Để biết chi tiết, hãy xem Cài đặt - Câu hỏi thường gặp.";
+"本程序不属于外挂等违法程序。本程序遵守米哈游二次创作规则的相关内容。根据中国原神客服的答复，使用本程序不会造成封号等问题。具体内容参见设置 - FAQ." = "Thủ tục này không phải là một thủ tục bất hợp pháp như plug-in.  Chương trình này tuân theo nội dung có liên quan của các quy tắc tạo phụ của miHoYo.  Theo phản hồi của dịch vụ khách hàng Genshin Impact của Trung Quốc, việc sử dụng chương trình của chúng tôi sẽ không gây ra các vấn đề như chặn.  Để biết chi tiết, hãy xem Cài Đặt - Câu hỏi thường gặp.";
 
 // MARK: - 2.4.1
 // Widget
@@ -751,7 +751,7 @@
 "请先选择账号" = "Vui lòng chọn tài khoản trước";
 "角色展示柜" = "Đội Hình Nhân Vật";
 "账号未展示角色" = "Không thể tìm thấy đội hình nhân vật nào";
-"今日入账" = "Hôm nay nhận được";
+"今日入账" = "Hôm Nay Nhận Được";
 "需要重新登陆本账号以查询，点击重新登陆" = "Vui lòng nhấn để đăng nhập lại để truy vấn phần này.";
 // apiral abyss sheet
 "深境螺旋详情" = "Chiến Tích La Hoàn Thâm Cảnh";
@@ -775,7 +775,7 @@
 "下半" = "Phần Cuối";
 "获取渊星数" = "Số Sao Thu Được Ở Phòng";
 // Other tool
-"提瓦特大地图" = "Bản đồ tương tác Teyvat";
+"提瓦特大地图" = "Bản Đồ Tương Tác Teyvat";
 "请稍等%lld秒再刷新" = "Vui lòng đợi %lld giây trước khi làm mới.";
 "请下滑刷新" = "Vui lòng trượt xuống để làm mới";
 "原神中英日辞典" = "Từ Điển Genshin Impact";
@@ -796,7 +796,7 @@
 
 // CharacterDetailView
 "精炼%lld阶" = "R%lld";
-"生命值" = "Máu";
+"生命值" = "HP";
 "攻击力" = "Tấn Công";
 "防御力" = "Phòng Thủ";
 "元素精通" = "Tinh Thông Nguyên Tố";
@@ -817,23 +817,23 @@
 "%lld命" = "C%lld";
 "基础攻击力" = "Tấn Công";
 "生命值上限" = "HP";
-"暴击率%%" = "Tỉ Lệ Bạo %%";
+"暴击率%%" = "%% Tỉ Lệ Bạo %%";
 "暴击伤害%%" = "%% ST Bạo";
-"治疗加成%%" = "Trị Liệu %%";
+"治疗加成%%" = "%% Tăng Trị Liệu";
 "受治疗加成" = "Tăng Trị Liệu";
-"元素充能%%" = "Nạp %%";
+"元素充能%%" = "%% Nạp";
 "护盾强效" = "Hiệu Quả Khiên";
-"火伤加成%%" = "%% Hoả";
-"水伤加成%%" = "Thuỷ %%";
-"草伤加成%%" = "Thảo %%";
-"雷伤加成%%" = "Lôi %%";
-"风伤加成%%" = "Phong %%";
-"冰伤加成%%" = "Băng %%";
-"岩伤加成%%" = "Nham %%";
-"物伤加成%%" = "Vật Lý %%";
-"攻击力%%" = "Tấn Công %%";
+"火伤加成%%" = "%% STNT Hoả";
+"水伤加成%%" = "%% STNT Thuỷ";
+"草伤加成%%" = "%% STNT Thảo";
+"雷伤加成%%" = "%% STNT Lôi";
+"风伤加成%%" = "%% STNT Phong";
+"冰伤加成%%" = "%% STNT Băng";
+"岩伤加成%%" = "%% STNT Nham";
+"物伤加成%%" = "%% ST Vật Lý";
+"攻击力%%" = "%% Tấn Công";
 "生命值%%" = "%% HP";
-"防御力%%" = "Phòng Thủ %%";
+"防御力%%" = "%% Phòng Thủ";
 
 // Từ Điển Genshin
 "复制英语" = "Sao chép Tiếng Anh";
@@ -848,7 +848,7 @@
 "**日语** %@" = "**JA** %@";
 "**中文** %@" = "**ZH** %@";
 
-"取消" = "Huỷ bỏ";
+"取消" = "Huỷ Bỏ";
 
 // UpdateHistoryInfoView
 "更新公告" = "Thông báo cập nhật";
@@ -863,15 +863,15 @@
 "已回满" = "Đầy";
 
 // MARK: - 2.5.2 & 2.5.3
-"所有角色" = "Tất cả nhân vật";
+"所有角色" = "Tất Cả Nhân Vật";
 "我的角色" = "Nhân vật của tôi";
 "共拥有%lld名角色，其中五星角色%lld名，四星角色%lld名。" = "Có tổng cộng %lld nhân vật , bao gồm %lld nhân vật 5 sao và %lld nhân vật 4 sao.";
 "共获得%lld金，其中角色%lld金，武器%lld金。（未统计旅行者和无人装备的五星武器）" = "Nhận vật phẩm 5 sao %lld lần từ gacha, bao gồm nhân vật 5 sao %lld lần và vũ khí 5 sao %lld lần.  (Vũ khí 5 sao chưa được trang bị không được tính)";
 "精%lld" = "R%lld";
-"全部角色" = "Tất cả nhân vật";
-"5星角色" = "Nhân vật 5 sao";
-"4星角色" = "Nhân vật 4 sao";
-"的所有角色" = "Nhân vật sở hữu";
+"全部角色" = "Tất Cả Nhân Vật";
+"5星角色" = "Nhân Vật 5 Sao";
+"4星角色" = "Nhân Vật 4 Sao";
+"的所有角色" = "Nhân Vật Sở Hữu";
 "生命值上限" = "HP";
 "元素精通​" = "TTNT"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
 "纳西妲" = "Nahida";
@@ -884,7 +884,7 @@
 "%lld月原石收入" = "Thu thập nguyên thạch";
 
 // MARK: - 2.6.0
-"深渊统计榜单" = "Xếp hạng nhân vật dùng nhiều trong La Hoàn";
+"深渊统计榜单" = "Xếp Hạng Nhân Vật Dùng Nhiều Trong La Hoàn Thâm Cảnh";
 "深渊角色使用率" = "Tỷ lệ sử dụng nhân vật";
 "深渊队伍使用率" = "Đội hình dùng nhiều";
 "满星玩家持有率" = "Tỉ lệ người chơi đạt 36 sao";
@@ -915,7 +915,7 @@
 "1034问题的解决方案" = "Giải quyết vấn đề 1034";
 "点击打开米游社App" = "Bấm để mở ứng dụng HoYoLAB";
 "（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) Trạng thái tài khoản không bình thường, vui lòng truy cập Ứng dụng HoYoLAB để xác minh lại";
-"小组件设置" = "Cài đặt tiện ích";
+"小组件设置" = "Cài Đặt tiện ích";
 "主屏幕小组件刷新频率" = "Thường xuyên làm mới tiện ích màn hình chính";
 "锁定屏幕小组件刷新频率" = "Thường xuyên làm mới tiện ích màn hình khóa";
 "每%lld分钟" = "Mỗi %lld phút";
@@ -955,15 +955,15 @@
 "树脂计时器是什么？" = "Bộ đếm thời gian nhựa là gì?";
 "创建树脂计时器成功" = "Tạo bộ đếm thời gian nhựa đầy thành công";
 "若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在“概览”页长按某个账号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng.  Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất.  Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
-"前往设置开启实时活动功能" = "Chuyển đến Cài đặt để bật tính năng \"Hoạt động trong thời gian thực\"";
-"实时活动功能未开启，请前往设置开启。" = "Đã tắt \"Hoạt động thời gian thực\".  Vui lòng kích hoạt nó trong cài đặt.";
+"前往设置开启实时活动功能" = "Chuyển đến Cài Đặt để bật tính năng \"Hoạt động trong thời gian thực\"";
+"实时活动功能未开启，请前往设置开启。" = "Đã tắt \"Hoạt động thời gian thực\".  Vui lòng kích hoạt nó trong Cài Đặt.";
 
 // Other settings
-"前往设置开启通知" = "Di chuyển đến Cài đặt để bật thông báo";
-"未启用通知，请前往设置开启。" = "Thông báo bị vô hiệu hóa.  Vui lòng kích hoạt nó trong cài đặt.";
+"前往设置开启通知" = "Di chuyển đến Cài Đặt để bật thông báo";
+"未启用通知，请前往设置开启。" = "Thông báo bị vô hiệu hóa.  Vui lòng kích hoạt nó trong Cài Đặt.";
 
 // Real-time activity settings
-"树脂计时器设置" = "Cài đặt hẹn giờ nhựa đầy";
+"树脂计时器设置" = "Cài Đặt hẹn giờ nhựa đầy";
 "展示派遣探索" = "Hiển thị thông tin phái đi thám hiểm";
 "使用透明背景" = "Nền Trong Suốt";
 "随机背景" = "Nền Ngẫu Nhiên";
@@ -975,7 +975,7 @@
 // Real-time activity error
 "未知错误：%@" = "Lỗi không xác định: %@";
 "账号未获取信息" = "Không có thông tin tài khoản";
-"系统设置不允许本软件开启实时活动，请前往开启" = "Cài đặt hệ thống không được phép bắt đầu hoạt động thời gian thực, vui lòng bật nó lên";
+"系统设置不允许本软件开启实时活动，请前往开启" = "Cài Đặt hệ thống không được phép bắt đầu hoạt động thời gian thực, vui lòng bật nó lên";
 
 // MARK: - 2.7.1
 "加入QQ群" = "Tham Gia Nhóm QQ";
@@ -1043,7 +1043,7 @@
 "瑶瑶" = "Yaoyao";
 "艾尔海森" = "Alhaitham";
 "裁叶萃光" = "Ánh Lá Phán Quyết";
-"注意：通知设置更改对目前已安排的通知不生效。" = "Lưu ý: Các thay đổi cài đặt thông báo sẽ không có hiệu lực đối với các thông báo hiện được lên lịch.";
+"注意：通知设置更改对目前已安排的通知不生效。" = "Lưu ý: Các thay đổi Cài Đặt thông báo sẽ không có hiệu lực đối với các thông báo hiện được lên lịch.";
 
 // MARK: - 2.7.9
 "俄语" = "Tiếng Nga";
