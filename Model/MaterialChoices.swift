@@ -65,6 +65,7 @@ extension WeaponOrTalentMaterial {
                                                                     .init(imageString: "UI_EquipIcon_Bow_Outlaw_Awaken", localizedName: "暗巷猎手"),
                                                                     .init(imageString: "UI_EquipIcon_Bow_Exotic_Awaken", localizedName: "风花之颂"),
                                                                     .init(imageString: "UI_EquipIcon_Bow_Amos_Awaken", localizedName: "阿莫斯之弓"),
+                                                                    .init(imageString: "UI_EquipIcon_Claymore_Fleurfair_Awaken", localizedName: "饰铁之花"),
                                                                   ]
     )
 
@@ -177,7 +178,8 @@ extension WeaponOrTalentMaterial {
                                                                 .init(imageString: "UI_EquipIcon_Bow_Arakalari_Awaken", localizedName: "王下近侍"),
                                                                 .init(imageString: "UI_EquipIcon_Bow_Fin_Awaken", localizedName: "竭泽"),
                                                                 .init(imageString: "UI_EquipIcon_Bow_Ayus_Awaken", localizedName: "猎人之径"),
-                                                                .init(imageString: "UI_EquipIcon_Catalyst_Alaya_Awaken", localizedName: "图莱杜拉的回忆")
+                                                                .init(imageString: "UI_EquipIcon_Catalyst_Alaya_Awaken", localizedName: "图莱杜拉的回忆"),
+                                                                .init(imageString: "UI_EquipIcon_Claymore_Deshret_Awaken", localizedName: "苇海信标")
                                                               ]
     )
 
@@ -222,6 +224,7 @@ extension WeaponOrTalentMaterial {
                                                        .init(imageString: "UI_AvatarIcon_Venti_Card", localizedName: "温迪"),
                                                        .init(imageString: "UI_AvatarIcon_Albedo_Card", localizedName: "阿贝多"),
                                                        .init(imageString: "UI_AvatarIcon_Rosaria_Card", localizedName: "罗莎莉亚"),
+                                                       .init(imageString: "UI_AvatarIcon_Mika_Card", localizedName: "米卡")
                                                       ])
 
     // 璃月
@@ -304,7 +307,8 @@ extension WeaponOrTalentMaterial {
                                                       relatedItem: [
                                                         .init(imageString: "UI_AvatarIcon_Collei_Card", localizedName: "柯莱"),
                                                         .init(imageString: "UI_AvatarIcon_Nilou_Card", localizedName: "妮露"),
-                                                        .init(imageString: "UI_AvatarIcon_Wanderer_Card", localizedName: "流浪者")
+                                                        .init(imageString: "UI_AvatarIcon_Wanderer_Card", localizedName: "流浪者"),
+                                                        .init(imageString: "UI_AvatarIcon_Dehya_Card", localizedName: "迪希雅"),
                                                       ]
     )
 

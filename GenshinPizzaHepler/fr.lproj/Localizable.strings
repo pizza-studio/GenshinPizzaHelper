@@ -1057,3 +1057,8 @@
 "酌情选用的角色" = "Discretionary Characters";
 "普遍可用的角色" = "Universally Available Characters";
 "清空缓存 (%@MB)" = "Clean the Cache (%@MB)";
+
+// MARK: - 2.7.11
+"米卡" = "Mika";
+"苇海信标" = "Balise de la mer de roseaux";
+"饰铁之花" = "Fleur de mailles";

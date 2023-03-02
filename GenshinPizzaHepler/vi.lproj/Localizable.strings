@@ -1057,3 +1057,8 @@
 "酌情选用的角色" = "Nhân vật vai trò tuỳ ý";
 "普遍可用的角色" = "Nhân vật phổ biến";
 "清空缓存 (%@MB)" = "Xoá bộ nhớ cache (%@MB)";
+
+// MARK: - 2.7.11
+"米卡" = "Mika";
+"苇海信标" = "Hải Đăng Bờ Biển Lau";
+"饰铁之花" = "Đóa Hoa Tôn Màu Thép";
