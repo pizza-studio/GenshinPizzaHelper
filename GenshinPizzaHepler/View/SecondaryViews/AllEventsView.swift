@@ -19,6 +19,15 @@ struct AllEventsView: View {
     var body: some View {
         ScrollView {
             VStack {
+                if eventContents.filter ({
+                    getRemainDays($0.endAt)?.second! ?? 0 >= 0
+                }).count <= 0 {
+                    Spacer(minLength: 50)
+                    Text("暂无当前活动信息")
+                        .padding()
+                    Text("原神活动信息由[Project Amber](https://ambr.top/)提供")
+                        .font(.caption)
+                }
                 ForEach(eventContents, id:\.id) { content in
                     if getRemainDays(content.endAt)?.second! ?? 0 >= 0 {
                         NavigationLink(destination: eventDetail(event: content)) {

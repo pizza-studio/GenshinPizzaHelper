@@ -37,12 +37,26 @@ struct CurrentEventNavigator: View {
                             .foregroundColor(.secondary)
                             .frame(width: 4, height: 60)
                         VStack(spacing: 7) {
-                            ForEach(eventContents.filter({
+                            if eventContents.filter({
                                 (getRemainDays($0.endAt)?.day ?? 0) >= 0
                                 && (getRemainDays($0.endAt)?.hour ?? 0) >= 0
                                 && (getRemainDays($0.endAt)?.minute ?? 0) >= 0
-                            }).prefix(3), id: \.id) { content in
-                                eventItem(event: content)
+                            }).count <= 0 {
+                                HStack{
+                                    Spacer()
+                                    Text("暂无当前活动信息")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    Spacer()
+                                }
+                            } else {
+                                ForEach(eventContents.filter({
+                                    (getRemainDays($0.endAt)?.day ?? 0) >= 0
+                                    && (getRemainDays($0.endAt)?.hour ?? 0) >= 0
+                                    && (getRemainDays($0.endAt)?.minute ?? 0) >= 0
+                                }).prefix(3), id: \.id) { content in
+                                    eventItem(event: content)
+                                }
                             }
                         }
                     }
