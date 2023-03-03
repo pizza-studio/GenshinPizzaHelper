@@ -792,7 +792,7 @@
 "较上月同期" = "So với tháng trước";
 "本月账单 (%lld月)" = "Tổng kết của tháng này %lld";
 "披萨工具盒" = "Pizza Toolbox";
-"总计" = "Tổng cộng";
+"总计" = "Tổng Cộng";
 
 // CharacterDetailView
 "精炼%lld阶" = "R%lld";
@@ -817,7 +817,7 @@
 "%lld命" = "C%lld";
 "基础攻击力" = "Tấn Công";
 "生命值上限" = "HP";
-"暴击率%%" = "%% Tỉ Lệ Bạo %%";
+"暴击率%%" = "%% Tỉ Lệ Bạo";
 "暴击伤害%%" = "%% ST Bạo";
 "治疗加成%%" = "%% Tăng Trị Liệu";
 "受治疗加成" = "Tăng Trị Liệu";
