@@ -977,6 +977,7 @@ struct HttpMethod<T: Codable> {
     static func openRequest (
         _ method: Method,
         _ url: URL,
+        cachedPolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
         completion: @escaping(
             (Result<T, RequestError>) -> ()
         )
@@ -987,6 +988,7 @@ struct HttpMethod<T: Codable> {
             DispatchQueue.global(qos: .userInteractive).async {
                 // 初始化请求
                 var request = URLRequest(url: url)
+                request.cachePolicy = cachedPolicy
                 // 设置请求头
                 request.allHTTPHeaderFields = [
                     "Accept-Encoding": "gzip, deflate, br",
