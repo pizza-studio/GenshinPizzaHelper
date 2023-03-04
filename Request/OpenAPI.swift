@@ -25,7 +25,8 @@ extension API {
             HttpMethod<CurrentEvent>
                 .openRequest(
                     .get,
-                    url
+                    url,
+                    cachedPolicy: .reloadIgnoringLocalCacheData
                 ) { result in
                     switch result {
 

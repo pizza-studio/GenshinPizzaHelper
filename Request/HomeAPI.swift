@@ -31,7 +31,8 @@ extension API {
             HttpMethod<NewestVersion>
                 .homeRequest(
                     .get,
-                    urlStr
+                    urlStr,
+                    cachedPolicy: .reloadIgnoringLocalCacheData
                 ) { result in
                     switch result {
 
@@ -61,7 +62,8 @@ extension API {
             HttpMethod<ENCharacterMap>
                 .homeRequest(
                     .get,
-                    urlStr
+                    urlStr,
+                    cachedPolicy: .reloadIgnoringLocalCacheData
                 ) { result in
                     switch result {
 
@@ -91,7 +93,8 @@ extension API {
             HttpMethod<ENCharacterLoc>
                 .homeRequest(
                     .get,
-                    urlStr
+                    urlStr,
+                    cachedPolicy: .reloadIgnoringLocalCacheData
                 ) { result in
                     switch result {
 
