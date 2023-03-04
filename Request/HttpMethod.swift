@@ -1277,6 +1277,7 @@ struct HttpMethod<T: Codable> {
     static func homeRequest (
         _ method: Method,
         _ urlStr: String,
+        cachedPolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
         completion: @escaping(
             (Result<T, RequestError>) -> ()
         )
@@ -1291,6 +1292,7 @@ struct HttpMethod<T: Codable> {
                 let url = URLComponents(string: baseStr + urlStr)!
                 // 初始化请求
                 var request = URLRequest(url: url.url!)
+                request.cachePolicy = cachedPolicy
                 // 设置请求头
                 request.allHTTPHeaderFields = [
                     "Accept-Encoding": "gzip, deflate, br",
