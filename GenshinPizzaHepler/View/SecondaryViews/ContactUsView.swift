@@ -285,13 +285,38 @@ struct ContactUsView: View {
                 } label: {
                     Label {
                         HStack {
-                            Text("Art34222")
+                            Text("avatar.Art34222")
                             Spacer()
                             Text("俄语")
                                 .foregroundColor(.gray)
                         }
                     } icon: {
                         Image("Art34222")
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(Circle())
+                    }
+                }
+                Menu {
+                    Link(destination: URL(string: "https://www.facebook.com/ngo.phi.phuongg")!) {
+                        Label {
+                            Text("Facebook主页")
+                        } icon: {
+                            Image("facebook")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                } label: {
+                    Label {
+                        HStack {
+                            Text("Ngô Phi Phương")
+                            Spacer()
+                            Text("越南语")
+                                .foregroundColor(.gray)
+                        }
+                    } icon: {
+                        Image("avatar.ngo")
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
