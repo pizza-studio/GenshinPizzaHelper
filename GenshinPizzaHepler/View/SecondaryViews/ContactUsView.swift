@@ -164,7 +164,7 @@ struct ContactUsView: View {
                         Label {
                             Text("加入QQ频道")
                         } icon: {
-                            Image("qq")
+                            Image("qq.circle")
                                 .resizable()
                                 .scaledToFit()
                         }
@@ -242,7 +242,7 @@ struct ContactUsView: View {
                         }
                     } label: {
                         Label {
-                            Text("加入Telegram Channel")
+                            Text("加入Telegram频道")
                         } icon: {
                             Image("telegram")
                                 .resizable()
@@ -258,7 +258,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("Lava")
                         Spacer()
-                        Text("英语 繁体中文")
+                        Text("英语")
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -373,6 +373,22 @@ struct ContactUsView: View {
                     } icon: {
                         Image("avatar.ngo")
                             .resizable()
+                            .scaledToFit()
+                            .clipShape(Circle())
+                    }
+                }
+                Link(destination: URL(string: "https://chat.openai.com/chat")!) {
+                    Label {
+                        HStack {
+                            Text("ChatGPT")
+                            Spacer()
+                            Text("繁体中文")
+                                .foregroundColor(.gray)
+                        }
+                    } icon: {
+                        Image("chatgpt")
+                            .resizable()
+                            .foregroundColor(Color(UIColor(red: 117/255, green: 168/255, blue: 156/255, alpha: 1)))
                             .scaledToFit()
                             .clipShape(Circle())
                     }
