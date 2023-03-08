@@ -155,8 +155,21 @@ struct ContactUsView: View {
 //            }
 
             // app contact
-            Section(header: Text("用户交流群")) {
+            Section(header: Text("用户交流群"), footer:
+                Text("我们推荐您加入QQ频道。QQ群都即将满员，而在频道你可以与更多朋友们交流，第一时间获取来自开发者的消息，同时还有官方消息的转发和其他更多功能！")
+                .textCase(.none)
+            ) {
                 Menu {
+                    Link(destination: URL(string: "https://pd.qq.com/s/9z504ipbc")!) {
+                        Label {
+                            Text("加入QQ频道")
+                        } icon: {
+                            Image("qq")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+
                     Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=813912474")!) {
                         Label {
                             Text("1群: 813912474")
@@ -193,6 +206,48 @@ struct ContactUsView: View {
                         Image("discord")
                             .resizable()
                             .scaledToFit()
+                    }
+                }
+
+                if Bundle.main.preferredLocalizations.first != "ja" {
+                    Menu {
+                        Link(destination: URL(string: "https://t.me/ophelper_zh")!) {
+                            Label {
+                                Text("中文频道")
+                            } icon: {
+                                Image("telegram")
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+
+                        Link(destination: URL(string: "https://t.me/ophelper_en")!) {
+                            Label {
+                                Text("English Channel")
+                            } icon: {
+                                Image("telegram")
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+
+                        Link(destination: URL(string: "https://t.me/ophelper_ru")!) {
+                            Label {
+                                Text("русскоязычный канал")
+                            } icon: {
+                                Image("telegram")
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+                    } label: {
+                        Label {
+                            Text("加入Telegram Channel")
+                        } icon: {
+                            Image("telegram")
+                                .resizable()
+                                .scaledToFit()
+                        }
                     }
                 }
             }
@@ -285,13 +340,13 @@ struct ContactUsView: View {
                 } label: {
                     Label {
                         HStack {
-                            Text("avatar.Art34222")
+                            Text("Art34222")
                             Spacer()
                             Text("俄语")
                                 .foregroundColor(.gray)
                         }
                     } icon: {
-                        Image("Art34222")
+                        Image("avatar.Art34222")
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
