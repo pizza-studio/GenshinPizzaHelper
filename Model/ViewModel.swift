@@ -50,6 +50,16 @@ class ViewModel: NSObject, ObservableObject {
         DispatchQueue.main.async {
             let accountConfigs = self.accountConfigurationModel.fetchAccountConfigs()
 
+            if UserDefaults.standard.string(forKey: "defaultServer") == nil {
+                if !accountConfigs.isEmpty {
+                    UserDefaults.standard.set(accountConfigs.first!.server.rawValue, forKey: "defaultServer")
+                } else {
+                    UserDefaults.standard.register(
+                        defaults: [ "defaultServer" : Server.asia.rawValue ]
+                    )
+                }
+            }
+
             if !self.accounts.isEqualTo(accountConfigs) {
                 self.accounts = accountConfigs.map { Account(config: $0) }
                 self.refreshData()

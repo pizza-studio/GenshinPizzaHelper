@@ -19,6 +19,8 @@ struct SettingsView: View {
 
     @State var isWidgetTipsSheetShow: Bool = false
 
+    @AppStorage("defaultServer", store: .standard) var defaultServer: Server = .asia
+
     var body: some View {
         NavigationView {
             List {
@@ -99,9 +101,19 @@ struct SettingsView: View {
                     }
                 }
 
-                Section {
-                    NavigationLink("隐私设置") {
-                        PrivacySettingsView()
+                Group {
+                    Section {
+                        NavigationLink("隐私设置") {
+                            PrivacySettingsView()
+                        }
+                    }
+
+                    Section {
+                        Picker("时区", selection: $defaultServer) {
+                            ForEach(Server.allCases) { server in
+                                Text(server.rawValue.localized).tag(server.rawValue)
+                            }
+                        }
                     }
                 }
 

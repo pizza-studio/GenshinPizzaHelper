@@ -178,7 +178,6 @@ struct ContentView: View {
                 "mainWidgetSyncFrequencyInMinute": 60,
                 "homeCoinRefreshFrequencyInHour": 30,
                 "watchWidgetUseSimplifiedMode": true,
-                "defaultServer": Server.asia.rawValue,
             ])
         }
         .navigate(to: NotificationSettingView().environmentObject(viewModel), when: $isJumpToSettingsView)
