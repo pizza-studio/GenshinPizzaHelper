@@ -19,7 +19,7 @@ struct SettingsView: View {
 
     @State var isWidgetTipsSheetShow: Bool = false
 
-    @AppStorage("defaultServer", store: .standard) var defaultServer: Server = .asia
+    @AppStorage("defaultServer", store: .standard) var defaultServer: String = Server.asia.rawValue
 
     var body: some View {
         NavigationView {
@@ -114,6 +114,8 @@ struct SettingsView: View {
                                 Text(server.rawValue.localized).tag(server.rawValue)
                             }
                         }
+                    } footer: {
+                        Text("请选择计算每日材料刷新时间对应的服务器")
                     }
                 }
 
