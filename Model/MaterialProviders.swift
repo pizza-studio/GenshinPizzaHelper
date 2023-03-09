@@ -54,8 +54,12 @@ enum MaterialWeekday: CaseIterable {
     case sunday
 
     static func today() -> Self {
-        let isTimePast4am: Bool = Date() > Calendar.current.date(bySettingHour: 4, minute: 0, second: 0, of: Date())!
-        let todayWeekDayNum = Calendar.current.dateComponents([.weekday], from: Date()).weekday!
+        var calendar = Calendar.current
+        calendar.timeZone = Server(
+            rawValue: UserDefaults.standard.string(forKey: "defaultServer") ?? Server.asia.rawValue
+        )?.timeZone() ?? Server.asia.timeZone()
+        let isTimePast4am: Bool = Date() > calendar.date(bySettingHour: 4, minute: 0, second: 0, of: Date())!
+        let todayWeekDayNum = calendar.dateComponents([.weekday], from: Date()).weekday!
         let weekdayNum = isTimePast4am ? todayWeekDayNum : (todayWeekDayNum - 1)
         switch weekdayNum {
         case 1:
