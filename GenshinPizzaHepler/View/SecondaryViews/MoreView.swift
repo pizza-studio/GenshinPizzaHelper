@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MoreView: View {
     @ObservedObject var viewModel: MoreViewCacheViewModel = MoreViewCacheViewModel()
+
+    @AppStorage("defaultServer", store: .standard) var defaultServer: String = Server.asia.rawValue
     
     var body: some View {
         List {
@@ -23,6 +25,15 @@ struct MoreView: View {
                     UserDefaults.standard.synchronize()
                 }
                 #endif
+            }
+            Section {
+                Picker("时区", selection: $defaultServer) {
+                    ForEach(Server.allCases) { server in
+                        Text(server.rawValue.localized).tag(server.rawValue)
+                    }
+                }
+            } footer: {
+                Text("请选择计算每日材料刷新时间对应的服务器")
             }
             Section {
                 Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)

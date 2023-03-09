@@ -19,8 +19,6 @@ struct SettingsView: View {
 
     @State var isWidgetTipsSheetShow: Bool = false
 
-    @AppStorage("defaultServer", store: .standard) var defaultServer: String = Server.asia.rawValue
-
     var body: some View {
         NavigationView {
             List {
@@ -106,16 +104,6 @@ struct SettingsView: View {
                         NavigationLink("隐私设置") {
                             PrivacySettingsView()
                         }
-                    }
-
-                    Section {
-                        Picker("时区", selection: $defaultServer) {
-                            ForEach(Server.allCases) { server in
-                                Text(server.rawValue.localized).tag(server.rawValue)
-                            }
-                        }
-                    } footer: {
-                        Text("请选择计算每日材料刷新时间对应的服务器")
                     }
                 }
 
