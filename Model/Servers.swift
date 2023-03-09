@@ -60,7 +60,17 @@ enum Server: String, CaseIterable, Identifiable {
             return .china
         }
     }
-    
+
+    func timeZone() -> TimeZone {
+        switch self {
+        case .china, .bilibili, .asia, .cht:
+            return .init(secondsFromGMT: 8*60*60) ?? .current
+        case .us:
+            return .init(secondsFromGMT: -5*60*60) ?? .current
+        case .eu:
+            return .init(secondsFromGMT: 1*60*60) ?? .current
+        }
+    }
 }
 
 // 地区类型，用于区分请求的Host URL
