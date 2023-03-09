@@ -73,6 +73,10 @@ enum Server: String, CaseIterable, Identifiable {
     }
 }
 
+extension Server: RawRepresentable {
+
+}
+
 // 地区类型，用于区分请求的Host URL
 enum Region: Identifiable {
     var id: Int {

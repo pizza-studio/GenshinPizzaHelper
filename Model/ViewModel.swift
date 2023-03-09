@@ -75,6 +75,8 @@ class ViewModel: NSObject, ObservableObject {
     }
     
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
+        // 添加的第一个账号作为材料刷新的时区
+        if accounts.isEmpty { UserDefaults.standard.set(server.rawValue, forKey: "defaultServer")}
         // 新增账号至Core Data
         accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: server)
         fetchAccount()
