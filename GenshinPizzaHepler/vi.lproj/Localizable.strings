@@ -70,13 +70,13 @@
 "请先添加帐号" = "Thêm tài khoản";
 
 // Game Info block
-"%@\n%@ 回满" = "Sẽ đầy trong %@\n%@";
+"%@\n%@ 回满" = "Nhựa sẽ đầy trong %@\n%@";
 "0小时0分钟\n树脂已全部回满" = "0hr 0min\nNhựa đầy.";
 "%lld天" = "%lld Ngày";
 "%lld小时" = "%lld Giờ";
 "%lld分钟" = "%lld Phút";
 "%lld小时%lld分钟" = "%lld Giờ %lld Phút";
-"可使用" = "Có sẵn";
+"可使用" = "CD Xong";
 "%lld月%lld日 %@" = "%lld.%lld %@";
 "星期日" = "Chủ Nhật";
 "星期一" = "Thứ Hai";
@@ -247,11 +247,11 @@
 "岩元素" = "Nham";
 
 // tiện ích
-"原神状态" = "Trạng thái";
-"已全部完成" = "Tất cả đã xong";
-"%lld个已完成" = "%lld xong";
-"（未领取）" = " (Không nhận)";
-"（可使用）" = "Có sẵn";
+"原神状态" = "Trạng Thái";
+"已全部完成" = "Tất Cả Đã Xong";
+"%lld个已完成" = "%lld Xong";
+"（未领取）" = " (Chưa Nhận)";
+"（可使用）" = "CD Xong";
 
 // Used for copy and paste to edit this file
 "查询树脂恢复状态" = "Kiểm tra trạng thái phục hồi nhựa của bạn";
