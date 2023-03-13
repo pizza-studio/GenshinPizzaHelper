@@ -125,6 +125,9 @@ struct AllEventsView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = Server(
+            rawValue: UserDefaults.standard.string(forKey: "defaultServer") ?? Server.asia.rawValue
+        )?.timeZone() ?? Server.asia.timeZone()
         let endDate = dateFormatter.date(from: endAt)
         guard let endDate = endDate else {
             return nil

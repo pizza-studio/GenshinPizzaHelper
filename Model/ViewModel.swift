@@ -50,6 +50,16 @@ class ViewModel: NSObject, ObservableObject {
         DispatchQueue.main.async {
             let accountConfigs = self.accountConfigurationModel.fetchAccountConfigs()
 
+            if UserDefaults.standard.string(forKey: "defaultServer") == nil {
+                if !accountConfigs.isEmpty {
+                    UserDefaults.standard.set(accountConfigs.first!.server.rawValue, forKey: "defaultServer")
+                } else {
+                    UserDefaults.standard.register(
+                        defaults: [ "defaultServer" : Server.asia.rawValue ]
+                    )
+                }
+            }
+
             if !self.accounts.isEqualTo(accountConfigs) {
                 self.accounts = accountConfigs.map { Account(config: $0) }
                 self.refreshData()
@@ -75,6 +85,8 @@ class ViewModel: NSObject, ObservableObject {
     }
     
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
+        // 添加的第一个账号作为材料刷新的时区
+        if accounts.isEmpty { UserDefaults.standard.set(server.rawValue, forKey: "defaultServer")}
         // 新增账号至Core Data
         accountConfigurationModel.addAccount(name: name, uid: uid, cookie: cookie, server: server)
         fetchAccount()

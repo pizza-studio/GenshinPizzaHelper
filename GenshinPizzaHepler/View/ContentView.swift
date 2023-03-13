@@ -177,7 +177,7 @@ struct ContentView: View {
                 "lockscreenWidgetSyncFrequencyInMinute" : 60,
                 "mainWidgetSyncFrequencyInMinute": 60,
                 "homeCoinRefreshFrequencyInHour": 30,
-                "watchWidgetUseSimplifiedMode": true
+                "watchWidgetUseSimplifiedMode": true,
             ])
         }
         .navigate(to: NotificationSettingView().environmentObject(viewModel), when: $isJumpToSettingsView)

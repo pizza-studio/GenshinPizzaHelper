@@ -99,9 +99,11 @@ struct SettingsView: View {
                     }
                 }
 
-                Section {
-                    NavigationLink("隐私设置") {
-                        PrivacySettingsView()
+                Group {
+                    Section {
+                        NavigationLink("隐私设置") {
+                            PrivacySettingsView()
+                        }
                     }
                 }
 
