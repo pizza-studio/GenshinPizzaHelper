@@ -44,6 +44,12 @@ struct AbyssData: Codable {
     /// 玩家已解锁角色
     let owningChars: [Int]
 
+    /// 战斗次数
+    let battleCount: Int
+
+    /// 获胜次数
+    let winCount: Int
+
     struct SubmitDetailModel: Codable {
         /// 深渊层数
         let floor: Int
@@ -84,7 +90,6 @@ extension AbyssData {
               let basicInfo = account.basicInfo
         else { return nil }
         guard abyssData.totalStar == 36 else { return nil }
-        // OPENSOURCE: 开源的时候把这行换掉
         let obfuscatedUid = "\(account.config.uid!)\(account.config.uid!.md5)\(AppConfig.uidSalt)"
         uid = obfuscatedUid.md5
         server = account.config.server.id
@@ -113,6 +118,8 @@ extension AbyssData {
             print("submitDetails only has \(submitDetails.count), fail to create data")
             return nil
         }
+        battleCount = abyssData.totalBattleTimes
+        winCount = abyssData.totalWinTimes
     }
 }
 
