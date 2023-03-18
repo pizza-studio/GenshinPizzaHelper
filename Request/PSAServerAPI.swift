@@ -57,6 +57,7 @@ extension API {
             season: Int? = nil,
             server: Server? = nil,
             floor: Int = 12,
+            pvp: Bool,
             _ completion: @escaping (UtilizationDataFetchModelResult) -> ()
         ) {
             // 请求类别
@@ -71,6 +72,8 @@ extension API {
             if let server = server {
                 paraDict.updateValue(server.id, forKey: "server")
             }
+
+            paraDict.updateValue(String(pvp), forKey: "pvp")
 
             // 请求
             HttpMethod<UtilizationDataFetchModel>
