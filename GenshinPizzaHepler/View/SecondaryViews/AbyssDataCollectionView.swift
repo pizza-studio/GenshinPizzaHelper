@@ -19,6 +19,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
         case teamUtilization = "深渊队伍使用率"
         case fullStarHoldingRate = "满星玩家持有率"
         case holdingRate = "全员角色持有率"
+        case pvpUtilization = "未重开玩家使用率"
 
         var id: String { self.rawValue }
     }
@@ -55,7 +56,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
         didSet { getUtilizationResult() }
     }
     private func getUtilizationResult() {
-        API.PSAServer.fetchAbyssUtilizationData(season: utilizationParams.season, server: utilizationParams.server, floor: utilizationParams.floor) { result in
+        API.PSAServer.fetchAbyssUtilizationData(season: utilizationParams.season, server: utilizationParams.server, floor: utilizationParams.floor, pvp: false) { result in
             withAnimation {
                 self.utilizationDataFetchModelResult = result
             }
@@ -73,6 +74,19 @@ class AbyssDataCollectionViewModel: ObservableObject {
         }
     }
 
+    // MARK: - 未重开使用率
+    @Published var pvpUtilizationDataFetchModelResult: UtilizationDataFetchModelResult?
+    @Published var pvpUtilizationParams: UtilizationAPIParameters = .init() {
+        didSet { getPVPUtilizationResult() }
+    }
+    private func getPVPUtilizationResult() {
+        API.PSAServer.fetchAbyssUtilizationData(season: utilizationParams.season, server: utilizationParams.server, floor: utilizationParams.floor, pvp: true) { result in
+            withAnimation {
+                self.pvpUtilizationDataFetchModelResult = result
+            }
+        }
+    }
+
     init() {
         showingType = .abyssAvatarsUtilization
         getData()
@@ -84,7 +98,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
             return fullStarHoldingParam.describe()
         case .holdingRate:
             return holdingParam.describe()
-        case .abyssAvatarsUtilization:
+        case .abyssAvatarsUtilization, .pvpUtilization:
             return utilizationParams.describe()
         case .teamUtilization:
             return teamUtilizationParams.describe()
@@ -101,6 +115,8 @@ class AbyssDataCollectionViewModel: ObservableObject {
             return (try? utilizationDataFetchModelResult?.get().data.totalUsers) ?? 0
         case .teamUtilization:
             return (try? teamUtilizationDataFetchModelResult?.get().data.totalUsers) ?? 0
+        case .pvpUtilization:
+            return (try? pvpUtilizationDataFetchModelResult?.get().data.totalUsers) ?? 0
         }
     }
 
@@ -114,6 +130,8 @@ class AbyssDataCollectionViewModel: ObservableObject {
             return utilizationParams.detail()
         case .teamUtilization:
             return teamUtilizationParams.detail()
+        case .pvpUtilization:
+            return pvpUtilizationParams.detail()
         }
     }
 
@@ -127,6 +145,8 @@ class AbyssDataCollectionViewModel: ObservableObject {
             getFullStarHoldingResult()
         case .teamUtilization:
             getTeamUtilizationResult()
+        case .pvpUtilization:
+            getPVPUtilizationResult()
         }
     }
 }
@@ -140,7 +160,7 @@ struct AbyssDataCollectionView: View {
     var body: some View {
         VStack {
             switch abyssDataCollectionViewModel.showingType {
-            case .abyssAvatarsUtilization:
+            case .abyssAvatarsUtilization, .pvpUtilization:
                 ShowAvatarPercentageViewWithSection()
             case .holdingRate, .fullStarHoldingRate:
                 ShowAvatarPercentageView()
@@ -190,6 +210,8 @@ struct AbyssDataCollectionView: View {
                     UtilizationParasSettingBar(params: $abyssDataCollectionViewModel.utilizationParams)
                 case .teamUtilization:
                     TeamUtilizationParasSettingBar(params: $abyssDataCollectionViewModel.teamUtilizationParams)
+                case .pvpUtilization:
+                    UtilizationParasSettingBar(params: $abyssDataCollectionViewModel.pvpUtilizationParams)
                 }
             }
         }
@@ -238,6 +260,10 @@ struct AbyssDataCollectionView: View {
 
                     case .abyssAvatarsUtilization:
                         if let avatars = try? abyssDataCollectionViewModel.utilizationDataFetchModelResult?.get().data.avatars {
+                            ShowAvatarPercentageShare(avatars: avatars.sorted(by: {$0.percentage ?? 0 > $1.percentage ?? 0}), charMap: charMap, charLoc: charLoc)
+                        }
+                    case .pvpUtilization:
+                        if let avatars = try? abyssDataCollectionViewModel.pvpUtilizationDataFetchModelResult?.get().data.avatars {
                             ShowAvatarPercentageShare(avatars: avatars.sorted(by: {$0.percentage ?? 0 > $1.percentage ?? 0}), charMap: charMap, charLoc: charLoc)
                         }
                     case .teamUtilization:
@@ -291,6 +317,8 @@ private struct ShowAvatarPercentageView: View {
             return abyssDataCollectionViewModel.avatarHoldingResult
         case .abyssAvatarsUtilization:
             return abyssDataCollectionViewModel.utilizationDataFetchModelResult
+        case .pvpUtilization:
+            return abyssDataCollectionViewModel.pvpUtilizationDataFetchModelResult
         default:
             return nil
         }
@@ -313,7 +341,7 @@ private struct ShowAvatarPercentageView: View {
                     Section {
                         ForEach(data.avatars.sorted(by: {
                             switch abyssDataCollectionViewModel.showingType {
-                            case .abyssAvatarsUtilization, .teamUtilization:
+                            case .abyssAvatarsUtilization, .teamUtilization, .pvpUtilization:
                                 return ($0.percentage ?? 0) > ($1.percentage ?? 0)
                             case .holdingRate, .fullStarHoldingRate:
                                 return $0.charId < $1.charId
@@ -362,12 +390,21 @@ private struct ShowAvatarPercentageViewWithSection: View {
             return abyssDataCollectionViewModel.avatarHoldingResult
         case .abyssAvatarsUtilization:
             return abyssDataCollectionViewModel.utilizationDataFetchModelResult
+        case .pvpUtilization:
+            return abyssDataCollectionViewModel.pvpUtilizationDataFetchModelResult
         default:
             return nil
         }
     }
     var avatarSectionDatas: [[AvatarPercentageModel.Avatar]]? {
-        return getDataSection(data: abyssDataCollectionViewModel.utilizationDataFetchModelResult)
+        switch abyssDataCollectionViewModel.showingType {
+        case .abyssAvatarsUtilization:
+            return getDataSection(data: abyssDataCollectionViewModel.utilizationDataFetchModelResult)
+        case .pvpUtilization:
+            return getDataSection(data: abyssDataCollectionViewModel.pvpUtilizationDataFetchModelResult)
+        default:
+            return getDataSection(data: abyssDataCollectionViewModel.utilizationDataFetchModelResult)
+        }
     }
 
     let percentageFormatter: NumberFormatter = {
@@ -391,6 +428,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
 
             var sectionIndexes = [Int]()
             var gaps = [Int: Double]()
+            guard !avatars.isEmpty else { return nil }
             for i in 0..<avatars.count - 1 {
                 guard let percentage = avatars[i].percentage, let percentage2 = avatars[i + 1].percentage else {
                     continue
