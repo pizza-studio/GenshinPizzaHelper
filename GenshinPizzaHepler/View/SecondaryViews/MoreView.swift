@@ -33,7 +33,7 @@ struct MoreView: View {
                     }
                 }
             } footer: {
-                Text("请选择计算每日材料刷新时间对应的服务器")
+                Text("我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：\((Server(rawValue: defaultServer) ?? .asia).timeZone().identifier)。")
             }
             Section {
                 Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
