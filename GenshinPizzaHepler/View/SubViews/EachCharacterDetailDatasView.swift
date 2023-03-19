@@ -52,12 +52,14 @@ struct EachCharacterDetailDatasView: View {
                     ForEach(avatar.artifacts) { artifact in
                         VStack {
                             ZStack {
-                                EnkaWebIcon(
-                                    iconString: artifact.rankLevel.rectangularBackgroundIconString
-                                )
-                                    .scaledToFit()
-                                    .cornerRadius(6.0)
                                 HomeSourceWebIcon(iconString: artifact.iconString)
+                                    .circleClippedBackground(scaler: 0.95) {
+                                        EnkaWebIcon(iconString: artifact.rankLevel.rectangularBackgroundIconString)
+                                            .scaledToFit()
+                                            .scaleEffect(1.2)
+                                            .offset(y: 9)
+                                            .clipShape(Circle())
+                                    }
                                 Text("Lv.\(artifact.rankLevel.rawValue)")
                                     .font(.caption)
                                     .padding(.horizontal, 3)

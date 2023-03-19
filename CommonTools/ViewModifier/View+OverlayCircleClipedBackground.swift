@@ -20,9 +20,10 @@ struct CircleClippedBackground<Background: View>: ViewModifier {
             let frameWidth = ( sqrt(2)/2 * r ) * scaler
 
             ZStack {
+                background()
                 content
                     .frame(width: frameWidth, height: frameWidth)
-                background()
+
             }
         }
     }
