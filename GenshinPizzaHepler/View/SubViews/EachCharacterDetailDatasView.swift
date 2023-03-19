@@ -47,53 +47,15 @@ struct EachCharacterDetailDatasView: View {
     @ViewBuilder
     func artifactsDetailsView() -> some View {
         if !avatar.artifacts.isEmpty {
-            if #available(iOS 16, *) {
-                Grid {
-                    GridRow {
-                        ForEach(avatar.artifacts) { artifact in
-                            HomeSourceWebIcon(iconString: artifact.iconString)
-                                .frame(maxWidth: 60, maxHeight: 60)
-                            if artifact != avatar.artifacts.last {
-                                Spacer()
-                            }
-                        }
-                    }
-                    GridRow {
-                        ForEach(avatar.artifacts) { artifact in
-                            VStack {
-                                Text(artifact.mainAttribute.name)
-                                    .font(.caption)
-                                    .bold()
-                                Text("\(artifact.mainAttribute.valueString)")
-                                    .bold()
-                            }
-                            if artifact != avatar.artifacts.last {
-                                Spacer()
-                            }
-                        }
-                    }
-                    GridRow {
-                        ForEach(avatar.artifacts) { artifact in
-                            VStack {
-                                ForEach(artifact.subAttributes, id:\.name) { subAttribute in
-                                    Text(subAttribute.name)
-                                        .font(.caption2)
-                                    Text("\(subAttribute.valueString)")
-                                        .font(.callout)
-                                }
-                            }
-                            if artifact != avatar.artifacts.last {
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-            } else {
+            if true {  // 这行先不用清除掉，可以减少接下来的 macOS 适配时的 commit 熵。
                 HStack {
                     ForEach(avatar.artifacts) { artifact in
                         VStack {
-                            HomeSourceWebIcon(iconString: artifact.iconString)
-                                .frame(maxWidth: 60, maxHeight: 60)
+                            ZStack {
+                                artifact.rankedBackgroundColor.opacity(0.3)
+                                HomeSourceWebIcon(iconString: artifact.iconString)
+                            }
+                            .frame(maxWidth: 60, maxHeight: 60)
                             VStack {
                                 Text(artifact.mainAttribute.name)
                                     .font(.caption)
@@ -412,5 +374,18 @@ private struct AvatarAndSkillView: View {
             }
         }
         .frame(height: 85)
+    }
+}
+
+// MARK: - Artifact Extension (SwiftUI)
+
+extension PlayerDetail.Avatar.Artifact {
+    var rankedBackgroundColor: Color {
+        switch rankLevel {
+        case .five : return .purple
+        case .four: return .yellow
+        case .three: return .blue
+        default: return .clear
+        }
     }
 }
