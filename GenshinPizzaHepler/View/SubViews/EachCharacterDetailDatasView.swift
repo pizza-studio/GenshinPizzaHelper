@@ -52,10 +52,17 @@ struct EachCharacterDetailDatasView: View {
                     ForEach(avatar.artifacts) { artifact in
                         VStack {
                             ZStack {
-                                artifact.rankedBackgroundColor.opacity(0.3)
+                                EnkaWebIcon(
+                                    iconString: artifact.rankLevel.rectangularBackgroundIconString
+                                )
+                                    .scaledToFit()
+                                    .cornerRadius(6.0)
                                 HomeSourceWebIcon(iconString: artifact.iconString)
+                                Text("Lv.\(artifact.rankLevel.rawValue)")
+                                    .font(.caption)
+                                    .padding(.horizontal, 3)
                             }
-                            .frame(maxWidth: 60, maxHeight: 60)
+                            .frame(maxWidth: 60, maxHeight: 60, alignment: .bottomTrailing)
                             VStack {
                                 Text(artifact.mainAttribute.name)
                                     .font(.caption)
@@ -382,8 +389,8 @@ private struct AvatarAndSkillView: View {
 extension PlayerDetail.Avatar.Artifact {
     var rankedBackgroundColor: Color {
         switch rankLevel {
-        case .five : return .purple
-        case .four: return .yellow
+        case .five : return .yellow
+        case .four: return .purple
         case .three: return .blue
         default: return .clear
         }
