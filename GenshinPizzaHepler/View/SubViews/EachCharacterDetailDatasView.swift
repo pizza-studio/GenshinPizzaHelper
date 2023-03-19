@@ -60,11 +60,9 @@ struct EachCharacterDetailDatasView: View {
                                             .offset(y: 9)
                                             .clipShape(Circle())
                                     }
-                                Text("Lv.\(artifact.rankLevel.rawValue)")
-                                    .font(.caption)
-                                    .padding(.horizontal, 3)
                             }
-                            .frame(maxWidth: 60, maxHeight: 60, alignment: .bottomTrailing)
+                            .frame(maxWidth: 60, maxHeight: 60)
+                            .bottomTrailingTag("★ \(artifact.rankLevel.rawValue)")
                             VStack {
                                 Text(artifact.mainAttribute.name)
                                     .font(.caption)
@@ -101,40 +99,17 @@ struct EachCharacterDetailDatasView: View {
         // Weapon
         let weapon = avatar.weapon
         let l: CGFloat = 80
-        if #available(iOS 15.0, *) {
-            ZStack {
-                EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
-                    .scaledToFit()
-                    .scaleEffect(1.1)
-                    .offset(y: 10)
-                    .clipShape(Circle())
-                EnkaWebIcon(iconString: weapon.awakenedIconString)
-                    .scaledToFit()
-            }
-            .frame(height: l)
-            .overlay(alignment: .bottomTrailing) {
-                Text("Lv.\(weapon.level)")
-                    .font(.caption)
-                    .padding(.horizontal, 3)
-                    .background(
-                        Capsule()
-                            .foregroundStyle(.ultraThinMaterial)
-                            .opacity(0.7)
-                    )
-            }
-        } else {
-            // Fallback on earlier versions
-            ZStack {
-                EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
-                    .scaledToFit()
-                    .scaleEffect(1.1)
-                    .offset(y: 10)
-                    .clipShape(Circle())
-                EnkaWebIcon(iconString: weapon.awakenedIconString)
-                    .scaledToFit()
-            }
-            .frame(height: l)
+        ZStack {
+            EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
+                .scaledToFit()
+                .scaleEffect(1.1)
+                .offset(y: 10)
+                .clipShape(Circle())
+            EnkaWebIcon(iconString: weapon.awakenedIconString)
+                .scaledToFit()
         }
+        .frame(height: l)
+        .bottomTrailingTag("Lv.\(weapon.level)")
         VStack(alignment: .leading, spacing: 3) {
             HStack(alignment: .firstTextBaseline) {
                 Text(weapon.name)
@@ -386,15 +361,23 @@ private struct AvatarAndSkillView: View {
     }
 }
 
-// MARK: - Artifact Extension (SwiftUI)
+// MARK: - Trailing Text Label
 
-extension PlayerDetail.Avatar.Artifact {
-    var rankedBackgroundColor: Color {
-        switch rankLevel {
-        case .five : return .yellow
-        case .four: return .purple
-        case .three: return .blue
-        default: return .clear
+private extension View {
+    func bottomTrailingTag(_ string: String) -> some View {
+        if #available(macCatalyst 15.0, *) {
+            return overlay(alignment: .bottomTrailing) {
+                Text(string)
+                    .font(.caption)
+                    .padding(.horizontal, 3)
+                    .background(
+                        Capsule()
+                            .foregroundStyle(.ultraThinMaterial)
+                            .opacity(0.7)
+                    )
+            }
+        } else {
+            return EmptyView()
         }
     }
 }
