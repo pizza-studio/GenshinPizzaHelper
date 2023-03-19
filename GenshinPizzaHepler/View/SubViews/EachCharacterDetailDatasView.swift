@@ -47,53 +47,21 @@ struct EachCharacterDetailDatasView: View {
     @ViewBuilder
     func artifactsDetailsView() -> some View {
         if !avatar.artifacts.isEmpty {
-            if #available(iOS 16, *) {
-                Grid {
-                    GridRow {
-                        ForEach(avatar.artifacts) { artifact in
-                            HomeSourceWebIcon(iconString: artifact.iconString)
-                                .frame(maxWidth: 60, maxHeight: 60)
-                            if artifact != avatar.artifacts.last {
-                                Spacer()
-                            }
-                        }
-                    }
-                    GridRow {
-                        ForEach(avatar.artifacts) { artifact in
-                            VStack {
-                                Text(artifact.mainAttribute.name)
-                                    .font(.caption)
-                                    .bold()
-                                Text("\(artifact.mainAttribute.valueString)")
-                                    .bold()
-                            }
-                            if artifact != avatar.artifacts.last {
-                                Spacer()
-                            }
-                        }
-                    }
-                    GridRow {
-                        ForEach(avatar.artifacts) { artifact in
-                            VStack {
-                                ForEach(artifact.subAttributes, id:\.name) { subAttribute in
-                                    Text(subAttribute.name)
-                                        .font(.caption2)
-                                    Text("\(subAttribute.valueString)")
-                                        .font(.callout)
-                                }
-                            }
-                            if artifact != avatar.artifacts.last {
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-            } else {
+            if true {  // 这行先不用清除掉，可以减少接下来的 macOS 适配时的 commit 熵。
                 HStack {
                     ForEach(avatar.artifacts) { artifact in
                         VStack {
-                            HomeSourceWebIcon(iconString: artifact.iconString)
-                                .frame(maxWidth: 60, maxHeight: 60)
+                            ZStack {
+                                HomeSourceWebIcon(iconString: artifact.iconString)
+                                    .circleClippedBackground(scaler: 0.95) {
+                                        EnkaWebIcon(iconString: artifact.rankLevel.rectangularBackgroundIconString)
+                                            .scaledToFit()
+                                            .scaleEffect(1.2)
+                                            .offset(y: 9)
+                                            .clipShape(Circle())
+                                    }
+                            }
+                            .frame(maxWidth: 60, maxHeight: 60)
                             VStack {
                                 Text(artifact.mainAttribute.name)
                                     .font(.caption)
@@ -130,40 +98,17 @@ struct EachCharacterDetailDatasView: View {
         // Weapon
         let weapon = avatar.weapon
         let l: CGFloat = 80
-        if #available(iOS 15.0, *) {
-            ZStack {
-                EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
-                    .scaledToFit()
-                    .scaleEffect(1.1)
-                    .offset(y: 10)
-                    .clipShape(Circle())
-                EnkaWebIcon(iconString: weapon.awakenedIconString)
-                    .scaledToFit()
-            }
-            .frame(height: l)
-            .overlay(alignment: .bottomTrailing) {
-                Text("Lv.\(weapon.level)")
-                    .font(.caption)
-                    .padding(.horizontal, 3)
-                    .background(
-                        Capsule()
-                            .foregroundStyle(.ultraThinMaterial)
-                            .opacity(0.7)
-                    )
-            }
-        } else {
-            // Fallback on earlier versions
-            ZStack {
-                EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
-                    .scaledToFit()
-                    .scaleEffect(1.1)
-                    .offset(y: 10)
-                    .clipShape(Circle())
-                EnkaWebIcon(iconString: weapon.awakenedIconString)
-                    .scaledToFit()
-            }
-            .frame(height: l)
+        ZStack {
+            EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
+                .scaledToFit()
+                .scaleEffect(1.1)
+                .offset(y: 10)
+                .clipShape(Circle())
+            EnkaWebIcon(iconString: weapon.awakenedIconString)
+                .scaledToFit()
         }
+        .frame(height: l)
+        .bottomTrailingTag("Lv.\(weapon.level)")
         VStack(alignment: .leading, spacing: 3) {
             HStack(alignment: .firstTextBaseline) {
                 Text(weapon.name)
@@ -412,5 +357,26 @@ private struct AvatarAndSkillView: View {
             }
         }
         .frame(height: 85)
+    }
+}
+
+// MARK: - Trailing Text Label
+
+private extension View {
+    func bottomTrailingTag(_ string: String) -> some View {
+        if #available(macCatalyst 15.0, iOS 15.0, *) {
+            return overlay(alignment: .bottomTrailing) {
+                Text(string)
+                    .font(.caption)
+                    .padding(.horizontal, 3)
+                    .background(
+                        Capsule()
+                            .foregroundStyle(.ultraThinMaterial)
+                            .opacity(0.7)
+                    )
+            }
+        } else {
+            return EmptyView()
+        }
     }
 }
