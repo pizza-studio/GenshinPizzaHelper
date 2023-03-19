@@ -21,6 +21,7 @@ struct CircleClippedBackground<Background: View>: ViewModifier {
 
             ZStack {
                 background()
+                    .clipShape(Circle())
                 content
                     .frame(width: frameWidth, height: frameWidth)
 
@@ -30,6 +31,9 @@ struct CircleClippedBackground<Background: View>: ViewModifier {
 }
 
 extension View {
+    /// 在View背后加上一个圆形的背景
+    /// 自动缩小View占据圆内接正方形大小
+    /// scaler为缩放比，可以根据需求继续缩放
     func circleClippedBackground<Background: View>(
         scaler: Double, background: @escaping () -> Background)
     -> some View {

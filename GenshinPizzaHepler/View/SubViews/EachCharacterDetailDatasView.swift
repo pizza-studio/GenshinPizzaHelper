@@ -58,7 +58,6 @@ struct EachCharacterDetailDatasView: View {
                                             .scaledToFit()
                                             .scaleEffect(1.2)
                                             .offset(y: 9)
-                                            .clipShape(Circle())
                                     }
                             }
                             .frame(maxWidth: 60, maxHeight: 60)
