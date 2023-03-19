@@ -16,10 +16,10 @@ class AbyssDataCollectionViewModel: ObservableObject {
 
     enum ShowingData: String, CaseIterable, Identifiable {
         case abyssAvatarsUtilization = "深渊角色使用率"
+        case pvpUtilization = "未重开玩家使用率"
         case teamUtilization = "深渊队伍使用率"
         case fullStarHoldingRate = "满星玩家持有率"
         case holdingRate = "全员角色持有率"
-        case pvpUtilization = "未重开玩家使用率"
 
         var id: String { self.rawValue }
     }
@@ -211,7 +211,7 @@ struct AbyssDataCollectionView: View {
                 case .teamUtilization:
                     TeamUtilizationParasSettingBar(params: $abyssDataCollectionViewModel.teamUtilizationParams)
                 case .pvpUtilization:
-                    UtilizationParasSettingBar(params: $abyssDataCollectionViewModel.pvpUtilizationParams)
+                    UtilizationParasSettingBar(pvp: true, params: $abyssDataCollectionViewModel.pvpUtilizationParams)
                 }
             }
         }
@@ -798,6 +798,7 @@ struct FullStarAPIParameters {
 }
 
 private struct UtilizationParasSettingBar: View {
+    var pvp: Bool = false
     @Binding var params: UtilizationAPIParameters
 
     var body: some View {
@@ -821,7 +822,7 @@ private struct UtilizationParasSettingBar: View {
         }
         Spacer()
         Menu {
-            ForEach(AbyssSeason.choices(), id: \.hashValue) { season in
+            ForEach(AbyssSeason.choices(pvp: pvp), id: \.hashValue) { season in
                 Button("\(season.describe())") { params.season = season }
             }
         } label: {
@@ -984,10 +985,13 @@ private extension AbyssSeason {
         return yearStr + " " + monthStr + "月".localized + half
     }
 
-    static func choices(from date: Date = Date()) -> [AbyssSeason] {
+    static func choices(pvp: Bool = false, from date: Date = Date()) -> [AbyssSeason] {
         var choices = [Self]()
         var date = date
-        let startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 11, day: 1))!
+        var startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 11, day: 1))!
+        if pvp {
+            startDate = Calendar.current.date(from: DateComponents(year: 2023, month: 3, day: 16))!
+        }
         // 以下仅判断本月
         if Calendar.current.dateComponents([.day], from: date).day! >= 16 {
             choices.append(date.yyyyMM()*10+1)
