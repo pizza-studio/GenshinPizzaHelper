@@ -7,11 +7,18 @@
 
 import SwiftUI
 
-struct MoreView: View {
-    @ObservedObject var viewModel: MoreViewCacheViewModel = MoreViewCacheViewModel()
+// MARK: - MoreView
 
-    @AppStorage("defaultServer", store: .standard) var defaultServer: String = Server.asia.rawValue
-    
+struct MoreView: View {
+    @ObservedObject
+    var viewModel: MoreViewCacheViewModel = .init()
+
+    @AppStorage(
+        "defaultServer",
+        store: .standard
+    )
+    var defaultServer: String = Server.asia.rawValue
+
     var body: some View {
         List {
             Section {
@@ -19,11 +26,17 @@ struct MoreView: View {
                     Text("检查更新")
                 }
                 #if DEBUG
-                Button("清空已检查的版本号") {
-                    UserDefaults.standard.set([], forKey: "checkedUpdateVersions")
-                    UserDefaults.standard.set(0, forKey: "checkedNewestVersion")
-                    UserDefaults.standard.synchronize()
-                }
+                    Button("清空已检查的版本号") {
+                        UserDefaults.standard.set(
+                            [],
+                            forKey: "checkedUpdateVersions"
+                        )
+                        UserDefaults.standard.set(
+                            0,
+                            forKey: "checkedNewestVersion"
+                        )
+                        UserDefaults.standard.synchronize()
+                    }
                 #endif
             }
             Section {
@@ -33,10 +46,17 @@ struct MoreView: View {
                     }
                 }
             } footer: {
-                Text("我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：\((Server(rawValue: defaultServer) ?? .asia).timeZone().identifier)。")
+                Text(
+                    "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：\((Server(rawValue: defaultServer) ?? .asia).timeZone().identifier)。"
+                )
             }
             Section {
-                Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
+                Link(
+                    "获取Cookie的脚本",
+                    destination: URL(
+                        string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c"
+                    )!
+                )
             }
             // FIXME: Proxy not implenmented
 //            Section {
@@ -45,16 +65,23 @@ struct MoreView: View {
 //                }
 //            }
             Section {
-                NavigationLink(destination: WebBroswerView(url: "https://ophelper.top/static/policy.html").navigationTitle("用户协议")) {
+                NavigationLink(
+                    destination: WebBroswerView(
+                        url: "https://ophelper.top/static/policy.html"
+                    )
+                    .navigationTitle("用户协议")
+                ) {
                     Text("用户协议与免责声明")
                 }
                 NavigationLink(destination: AboutView()) {
                     Text("关于小助手")
                 }
             }
-            
+
             Section {
-                Button("清空缓存 (\(String(format: "%.2f", self.viewModel.fileSize))MB)") {
+                Button(
+                    "清空缓存 (\(String(format: "%.2f", self.viewModel.fileSize))MB)"
+                ) {
                     self.viewModel.clearImageCache()
                 }
             }
@@ -63,32 +90,52 @@ struct MoreView: View {
     }
 }
 
+// MARK: - MoreViewCacheViewModel
+
 class MoreViewCacheViewModel: ObservableObject {
-    let imageFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Images")
-    @Published var fileSize: Double
-    
+    // MARK: Lifecycle
+
     init() {
         do {
-            let fileUrls = try FileManager.default.contentsOfDirectory(atPath: self.imageFolderURL.path)
+            let fileUrls = try FileManager.default
+                .contentsOfDirectory(atPath: imageFolderURL.path)
             self.fileSize = 0.0
             for fileUrl in fileUrls {
-                let attributes = try FileManager.default.attributesOfItem(atPath: imageFolderURL.appendingPathComponent(fileUrl).path)
-                self.fileSize += attributes[FileAttributeKey.size] as! Double
+                let attributes = try FileManager.default
+                    .attributesOfItem(
+                        atPath: imageFolderURL
+                            .appendingPathComponent(fileUrl).path
+                    )
+                fileSize += attributes[FileAttributeKey.size] as! Double
             }
-            self.fileSize = self.fileSize / 1024.0 / 1024.0
+            self.fileSize = fileSize / 1024.0 / 1024.0
         } catch {
             print("error get images size: \(error)")
             self.fileSize = 0.0
         }
     }
-    
+
+    // MARK: Internal
+
+    let imageFolderURL = FileManager.default.urls(
+        for: .documentDirectory,
+        in: .userDomainMask
+    ).first!.appendingPathComponent("Images")
+    @Published
+    var fileSize: Double
+
     func clearImageCache() {
         do {
-            let fileUrls = try FileManager.default.contentsOfDirectory(atPath: self.imageFolderURL.path)
+            let fileUrls = try FileManager.default
+                .contentsOfDirectory(atPath: imageFolderURL.path)
             for fileUrl in fileUrls {
-                try FileManager.default.removeItem(at: imageFolderURL.appendingPathComponent(fileUrl))
+                try FileManager.default
+                    .removeItem(
+                        at: imageFolderURL
+                            .appendingPathComponent(fileUrl)
+                    )
             }
-            self.fileSize = 0.0
+            fileSize = 0.0
             print("Image Cache Cleared!")
         } catch {
             print("error: Image Cache Clear:\(error)")

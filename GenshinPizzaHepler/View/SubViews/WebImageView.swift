@@ -7,39 +7,52 @@
 
 import SwiftUI
 
+// MARK: - WebImage
+
 struct WebImage: View {
+    // MARK: Lifecycle
+
+    init(urlStr: String) {
+        self.urlStr = urlStr
+        print("load img cache of \(urlStr): ")
+        self.viewModel = WebImageLoaderViewModel(imgUrl: urlStr)
+    }
+
+    // MARK: Internal
+
     var urlStr: String
 
-    @ObservedObject var viewModel: WebImageLoaderViewModel
+    @ObservedObject
+    var viewModel: WebImageLoaderViewModel
 
     var body: some View {
         // 暂时弃用AsyncImage，在以下代码的启用版本号后面加个0
         if #available(iOS 150.0, watchOS 80.0, *) {
             if viewModel.imageData == nil {
                 AsyncImage(
-                            url: URL(string: urlStr),
-                            transaction: Transaction(animation: .default)
-                        ) { phase in
-                            switch phase {
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                let _ = DispatchQueue.main.async {
-                                    viewModel.saveImageCache(url: urlStr)
-                                }
-                            default:
-                                ProgressView()
-                                    .onAppear {
-                                        print("imageData is nil")
-                                    }
+                    url: URL(string: urlStr),
+                    transaction: Transaction(animation: .default)
+                ) { phase in
+                    switch phase {
+                    case let .success(image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .dispatchedTask {
+                                viewModel.saveImageCache(url: urlStr)
                             }
-                        }
+                    default:
+                        ProgressView()
+                            .onAppear {
+                                print("imageData is nil")
+                            }
+                    }
+                }
             } else {
                 Image(uiImage: viewModel.imageData!)
                     .resizable().aspectRatio(contentMode: .fit)
             }
-            
+
         } else {
             // Fallback on earlier versions
             if viewModel.imageData == nil {
@@ -53,21 +66,12 @@ struct WebImage: View {
             }
         }
     }
-
-    init(urlStr: String) {
-        self.urlStr = urlStr
-        print("load img cache of \(urlStr): ")
-        self.viewModel = WebImageLoaderViewModel(imgUrl: urlStr)
-    }
-    
-
 }
 
-class WebImageLoaderViewModel: ObservableObject {
-    let imageFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Images")
+// MARK: - WebImageLoaderViewModel
 
-    @Published var imageData: UIImage? = nil
-    private var imgUrl: String
+class WebImageLoaderViewModel: ObservableObject {
+    // MARK: Lifecycle
 
     init(imgUrl: String) {
         self.imgUrl = imgUrl
@@ -76,12 +80,23 @@ class WebImageLoaderViewModel: ObservableObject {
         }
     }
 
+    // MARK: Internal
+
+    let imageFolderURL = FileManager.default.urls(
+        for: .documentDirectory,
+        in: .userDomainMask
+    ).first!.appendingPathComponent("Images")
+
+    @Published
+    var imageData: UIImage?
+
     // 判断是否存在缓存，否则保存图片
     func saveImageCache(url: String) {
         let imageURL = URL(string: url)!
-        let imageFileURL = imageFolderURL.appendingPathComponent(imageURL.lastPathComponent)
+        let imageFileURL = imageFolderURL
+            .appendingPathComponent(imageURL.lastPathComponent)
         if !FileManager.default.fileExists(atPath: imageFileURL.path) {
-            URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+            URLSession.shared.dataTask(with: imageURL) { data, _, _ in
                 if let data = data {
                     print("save: fileURL:\(imageFileURL)")
                     try! data.write(to: imageFileURL)
@@ -95,9 +110,14 @@ class WebImageLoaderViewModel: ObservableObject {
         let imageURL = URL(string: url)!
 
         if !FileManager.default.fileExists(atPath: imageFolderURL.path) {
-            try! FileManager.default.createDirectory(at: imageFolderURL, withIntermediateDirectories: true, attributes: nil)
+            try! FileManager.default.createDirectory(
+                at: imageFolderURL,
+                withIntermediateDirectories: true,
+                attributes: nil
+            )
         }
-        let imageFileURL = imageFolderURL.appendingPathComponent(imageURL.lastPathComponent)
+        let imageFileURL = imageFolderURL
+            .appendingPathComponent(imageURL.lastPathComponent)
         print("load: fileURL:\(imageFileURL)")
         if let image = UIImage(contentsOfFile: imageFileURL.path) {
             return image
@@ -109,14 +129,15 @@ class WebImageLoaderViewModel: ObservableObject {
 
     func getImageFromWeb() -> UIImage? {
         let url = URL(string: imgUrl)
-        var img: UIImage? = nil
+        var img: UIImage?
         if url != nil {
             DispatchQueue.global(qos: .userInteractive).async {
                 let data = try? Data(contentsOf: url!)
                 guard data != nil else {
                     return
                 }
-                let imageFileURL = self.imageFolderURL.appendingPathComponent(url!.lastPathComponent)
+                let imageFileURL = self.imageFolderURL
+                    .appendingPathComponent(url!.lastPathComponent)
                 print("save: fileURL:\(imageFileURL)")
                 try! data!.write(to: imageFileURL)
                 img = UIImage(data: data!)
@@ -127,12 +148,18 @@ class WebImageLoaderViewModel: ObservableObject {
         }
         return img
     }
+
+    // MARK: Private
+
+    private var imgUrl: String
 }
+
+// MARK: - NetworkImage
 
 /// 加载完图片后才会显示，不要放在UI中，可以放在静态的内容中如widget和保存的图片
 struct NetworkImage: View {
     let url: URL?
-    
+
     var body: some View {
         Group {
             if let url = url, let imageData = try? Data(contentsOf: url),
@@ -140,13 +167,14 @@ struct NetworkImage: View {
                 Image(uiImage: uiImage)
                     .resizable()
                 //         .aspectRatio(contentMode: .fill)
-            }
-            else {
+            } else {
                 Image("placeholder-image")
             }
         }
     }
 }
+
+// MARK: - EnkaWebIcon
 
 struct EnkaWebIcon: View {
     var iconString: String
@@ -162,6 +190,8 @@ struct EnkaWebIcon: View {
     }
 }
 
+// MARK: - HomeSourceWebIcon
+
 struct HomeSourceWebIcon: View {
     var iconString: String
 
@@ -176,3 +206,13 @@ struct HomeSourceWebIcon: View {
     }
 }
 
+// MARK: - Dispatched Task for a View
+
+extension View {
+    fileprivate func dispatchedTask(_ task: @escaping () -> ()) -> some View {
+        DispatchQueue.main.async {
+            task()
+        }
+        return EmptyView()
+    }
+}

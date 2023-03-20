@@ -8,12 +8,6 @@
 import Foundation
 
 struct NewestVersion: Codable {
-    var shortVersion: String
-    var buildVersion: Int
-    var updates: MultiLanguageContents
-    var notice: MultiLanguageContents
-    var updateHistory: [VersionHistory]
-
     struct MultiLanguageContents: Codable {
         var en: [String]
         var zhcn: [String]
@@ -24,10 +18,6 @@ struct NewestVersion: Codable {
     }
 
     struct VersionHistory: Codable {
-        var shortVersion: String
-        var buildVersion: Int
-        var updates: MultiLanguageContents
-
         struct MultiLanguageContents: Codable {
             var en: [String]
             var zhcn: [String]
@@ -36,5 +26,15 @@ struct NewestVersion: Codable {
             var zhtw: [String]?
             var ru: [String]?
         }
+
+        var shortVersion: String
+        var buildVersion: Int
+        var updates: MultiLanguageContents
     }
+
+    var shortVersion: String
+    var buildVersion: Int
+    var updates: MultiLanguageContents
+    var notice: MultiLanguageContents
+    var updateHistory: [VersionHistory]
 }

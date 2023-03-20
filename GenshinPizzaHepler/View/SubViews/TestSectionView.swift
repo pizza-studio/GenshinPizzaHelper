@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct TestSectionView: View {
-    @Binding var connectStatus: ConnectStatus
-    
-    @Binding var uid: String
-    @Binding var cookie: String
-    @Binding var server: Server
+    // MARK: Internal
 
-    @State private var error: FetchError? = nil
+    @Binding
+    var connectStatus: ConnectStatus
 
-    @State private var is1034WebShown: Bool = false
-    
+    @Binding
+    var uid: String
+    @Binding
+    var cookie: String
+    @Binding
+    var server: Server
+
     var body: some View {
         Section {
             Button(action: {
@@ -46,7 +48,7 @@ struct TestSectionView: View {
                     .foregroundColor(.gray)
                 if let error = error {
                     switch error {
-                    case .accountAbnormal(_):
+                    case .accountAbnormal:
                         Section {
                             let mihoyobbsURLString: String = "mihoyobbs://"
                             if isInstallation(urlString: mihoyobbsURLString) {
@@ -56,7 +58,10 @@ struct TestSectionView: View {
                                     }
                                 }
                             } else {
-                                if let url = URL(string: "https://apps.apple.com/cn/app/id1470182559") {
+                                if let url =
+                                    URL(
+                                        string: "https://apps.apple.com/cn/app/id1470182559"
+                                    ) {
                                     Link(destination: url) {
                                         Text("点击打开米游社App")
                                     }
@@ -69,19 +74,21 @@ struct TestSectionView: View {
                 }
             }
             if connectStatus == .success {
-                if !cookie.contains("stoken") && server.region == .cn {
+                if !cookie.contains("stoken"), server.region == .cn {
                     Label {
                         Text("本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。")
                     } icon: {
-                        Image(systemName: "checkmark.circle.trianglebadge.exclamationmark")
-                            .foregroundColor(.red)
+                        Image(
+                            systemName: "checkmark.circle.trianglebadge.exclamationmark"
+                        )
+                        .foregroundColor(.red)
                     }
                 }
             }
         } footer: {
             if let error = error {
                 switch error {
-                case .accountAbnormal(_):
+                case .accountAbnormal:
                     Button("反复出现账号异常？点击查看解决方案") {
                         is1034WebShown.toggle()
                     }
@@ -93,23 +100,26 @@ struct TestSectionView: View {
         }
         .sheet(isPresented: $is1034WebShown, content: {
             NavigationView {
-                WebBroswerView(url: "https://ophelper.top/static/1034_error_soution")
-                    .dismissableSheet(isSheetShow: $is1034WebShown)
-                    .navigationTitle("1034问题的解决方案")
-                    .navigationBarTitleDisplayMode(.inline)
+                WebBroswerView(
+                    url: "https://ophelper.top/static/1034_error_soution"
+                )
+                .dismissableSheet(isSheetShow: $is1034WebShown)
+                .navigationTitle("1034问题的解决方案")
+                .navigationBarTitleDisplayMode(.inline)
             }
         })
         .onAppear {
             if connectStatus == .testing {
-                API.Features.fetchInfos(region: server.region,
-                                        serverID: server.id,
-                                        uid: uid,
-                                        cookie: cookie)
-                { result in
+                API.Features.fetchInfos(
+                    region: server.region,
+                    serverID: server.id,
+                    uid: uid,
+                    cookie: cookie
+                ) { result in
                     switch result {
-                    case .success( _):
+                    case .success:
                         connectStatus = .success
-                    case .failure(let error):
+                    case let .failure(error):
                         connectStatus = .fail
                         self.error = error
                     }
@@ -118,15 +128,16 @@ struct TestSectionView: View {
         }
         .onChange(of: connectStatus) { newValue in
             if newValue == .testing {
-                API.Features.fetchInfos(region: server.region,
-                                        serverID: server.id,
-                                        uid: uid,
-                                        cookie: cookie)
-                { result in
+                API.Features.fetchInfos(
+                    region: server.region,
+                    serverID: server.id,
+                    uid: uid,
+                    cookie: cookie
+                ) { result in
                     switch result {
-                    case .success( _):
+                    case .success:
                         connectStatus = .success
-                    case .failure(let error):
+                    case let .failure(error):
                         connectStatus = .fail
                         self.error = error
                     }
@@ -142,6 +153,12 @@ struct TestSectionView: View {
             return false
         }
     }
+
+    // MARK: Private
+
+    @State
+    private var error: FetchError?
+
+    @State
+    private var is1034WebShown: Bool = false
 }
-
-

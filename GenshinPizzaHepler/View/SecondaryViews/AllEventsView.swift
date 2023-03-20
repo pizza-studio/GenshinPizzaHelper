@@ -7,19 +7,33 @@
 
 import SwiftUI
 
-//@available (iOS 15, *)
+// MARK: - AllEventsView
+
+// @available (iOS 15, *)
 struct AllEventsView: View {
-    @Binding var eventContents: [EventModel]
-    typealias IntervalDate = (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?)
-    @State var expandCards: Bool = false
-    @State var currentCard: EventModel?
-    @State var showDetailTransaction: Bool = false
-    @Namespace var animation
+    typealias IntervalDate = (
+        month: Int?,
+        day: Int?,
+        hour: Int?,
+        minute: Int?,
+        second: Int?
+    )
+
+    @Binding
+    var eventContents: [EventModel]
+    @State
+    var expandCards: Bool = false
+    @State
+    var currentCard: EventModel?
+    @State
+    var showDetailTransaction: Bool = false
+    @Namespace
+    var animation
 
     var body: some View {
         ScrollView {
             VStack {
-                if eventContents.filter ({
+                if eventContents.filter({
                     getRemainDays($0.endAt)?.second! ?? 0 >= 0
                 }).count <= 0 {
                     Spacer(minLength: 50)
@@ -28,9 +42,11 @@ struct AllEventsView: View {
                     Text("原神活动信息由[Project Amber](https://ambr.top/)提供")
                         .font(.caption)
                 }
-                ForEach(eventContents, id:\.id) { content in
+                ForEach(eventContents, id: \.id) { content in
                     if getRemainDays(content.endAt)?.second! ?? 0 >= 0 {
-                        NavigationLink(destination: eventDetail(event: content)) {
+                        NavigationLink(
+                            destination: eventDetail(event: content)
+                        ) {
                             CardView(content: content)
                         }
                     }
@@ -42,6 +58,7 @@ struct AllEventsView: View {
     }
 
     // MARK: CARD VIEW
+
     @ViewBuilder
     func CardView(content: EventModel) -> some View {
         VStack {
@@ -66,12 +83,15 @@ struct AllEventsView: View {
                             Group {
                                 if getRemainDays(content.endAt) == nil {
                                     Text(content.endAt)
-                                }
-                                else if getRemainDays(content.endAt)!.day! > 0 {
-                                    Text("剩余 \(getRemainDays(content.endAt)!.day!)天")
-                                }
-                                else {
-                                    Text("剩余 \(getRemainDays(content.endAt)!.hour!)小时")
+                                } else if getRemainDays(content.endAt)!
+                                    .day! > 0 {
+                                    Text(
+                                        "剩余 \(getRemainDays(content.endAt)!.day!)天"
+                                    )
+                                } else {
+                                    Text(
+                                        "剩余 \(getRemainDays(content.endAt)!.hour!)小时"
+                                    )
                                 }
                             }
                             .padding(.trailing, 2)
@@ -91,19 +111,27 @@ struct AllEventsView: View {
 
     @ViewBuilder
     func eventDetail(event: EventModel) -> some View {
-        let webview = EventDetailWebView(banner: getLocalizedContent(event.banner), nameFull: getLocalizedContent(event.nameFull), content: getLocalizedContent(event.description))
+        let webview = EventDetailWebView(
+            banner: getLocalizedContent(event.banner),
+            nameFull: getLocalizedContent(event.nameFull),
+            content: getLocalizedContent(event.description)
+        )
         webview
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(getLocalizedContent(event.name))
     }
 
-    func getIndex(Card: EventModel)-> Int {
-        return eventContents.firstIndex { currentCard in
-            return currentCard.id == Card.id
+    func getIndex(Card: EventModel) -> Int {
+        eventContents.firstIndex { currentCard in
+            currentCard.id == Card.id
         } ?? 0
     }
 
-    func getLocalizedContent(_ content: EventModel.MultiLanguageContents) -> String {
+    func getLocalizedContent(
+        _ content: EventModel
+            .MultiLanguageContents
+    )
+        -> String {
         let locale = Bundle.main.preferredLocalizations.first
         switch locale {
         case "zh-Hans":
@@ -126,7 +154,8 @@ struct AllEventsView: View {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = Server(
-            rawValue: UserDefaults.standard.string(forKey: "defaultServer") ?? Server.asia.rawValue
+            rawValue: UserDefaults.standard
+                .string(forKey: "defaultServer") ?? Server.asia.rawValue
         )?.timeZone() ?? Server.asia.timeZone()
         let endDate = dateFormatter.date(from: endAt)
         guard let endDate = endDate else {
@@ -137,12 +166,15 @@ struct AllEventsView: View {
     }
 }
 
-private extension View {
-    func opacityMaterial() -> some View {
+extension View {
+    fileprivate func opacityMaterial() -> some View {
         if #available(iOS 15.0, *) {
             return self.background(.thinMaterial, in: Capsule())
         } else {
-            return self.background(Color(UIColor.systemBackground).opacity(0.8).clipShape(Capsule()))
+            return background(
+                Color(UIColor.systemBackground).opacity(0.8)
+                    .clipShape(Capsule())
+            )
         }
     }
 }

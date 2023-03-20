@@ -8,6 +8,46 @@
 import Foundation
 
 struct ENCharacterLoc: Codable {
+    // MARK: Internal
+
+    struct LocDict: Codable {
+        // MARK: Lifecycle
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: LocKey.self)
+
+            var contentDict = [String: String]()
+            for key in container.allKeys {
+                if let model = try? container.decode(String.self, forKey: key) {
+                    contentDict[key.stringValue] = model
+                }
+            }
+            self.content = contentDict
+        }
+
+        // MARK: Internal
+
+        struct LocKey: CodingKey {
+            // MARK: Lifecycle
+
+            init?(stringValue: String) {
+                self.stringValue = stringValue
+            }
+
+            init?(intValue: Int) {
+                self.stringValue = "\(intValue)"
+                self.intValue = intValue
+            }
+
+            // MARK: Internal
+
+            var stringValue: String
+            var intValue: Int?
+        }
+
+        var content: [String: String]
+    }
+
     var en: LocDict
     var ru: LocDict
     var vi: LocDict
@@ -22,7 +62,7 @@ struct ENCharacterLoc: Codable {
     var zh_tw: LocDict
     var zh_cn: LocDict
 
-    func getLocalizedDictionary() -> [String : String] {
+    func getLocalizedDictionary() -> [String: String] {
         switch Bundle.main.preferredLocalizations.first {
         case "zh-Hans":
             return zh_cn.content
@@ -43,33 +83,7 @@ struct ENCharacterLoc: Codable {
         }
     }
 
-    struct LocDict: Codable {
-        var content: [String: String]
-
-        struct LocKey: CodingKey {
-            var stringValue: String
-            var intValue: Int?
-            init?(stringValue: String) {
-                self.stringValue = stringValue
-            }
-            init?(intValue: Int) {
-                self.stringValue = "\(intValue)"
-                self.intValue = intValue
-            }
-        }
-
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: LocKey.self)
-
-            var contentDict = [String: String]()
-            for key in container.allKeys {
-                if let model = try? container.decode(String.self, forKey: key) {
-                    contentDict[key.stringValue] = model
-                }
-            }
-            self.content = contentDict
-        }
-    }
+    // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
         case en, ru, vi, th, pt, ko, ja, id, fr, es, de

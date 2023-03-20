@@ -7,76 +7,99 @@
 
 import Foundation
 
+// MARK: - ExpeditionInfo
+
 struct ExpeditionInfo: Codable {
     let currentExpedition: Int
     let maxExpedition: Int
-    
+
     let expeditions: [Expedition]
-    
+
     var currentOngoingTask: Int {
         expeditions.isEmpty
-        ? currentExpedition
-        : expeditions.filter { expedition in
-            expedition.isComplete == false
-        }
-        .count
+            ? currentExpedition
+            : expeditions.filter { expedition in
+                expedition.isComplete == false
+            }
+            .count
     }
-    
-    
-    var anyCompleted: Bool { expeditions.isEmpty ? false : currentOngoingTask < maxExpedition }
+
+    var anyCompleted: Bool {
+        expeditions.isEmpty ? false : currentOngoingTask < maxExpedition
+    }
+
     var nextCompleteExpedition: Expedition? {
         expeditions.min {
             $0.recoveryTime.second < $1.recoveryTime.second
         }
     }
+
     var nextCompleteTime: RecoveryTime {
         RecoveryTime(second: nextCompleteExpedition?.recoveryTime.second ?? 0)
     }
+
     var nextCompletePercentage: Double {
         nextCompleteExpedition?.percentage ?? 0
     }
-    
-    var allCompleted: Bool { expeditions.isEmpty ? false : currentOngoingTask == 0 }
+
+    var allCompleted: Bool {
+        expeditions.isEmpty ? false : currentOngoingTask == 0
+    }
+
     var allCompleteTime: RecoveryTime {
         RecoveryTime(second: expeditions.max {
             $0.recoveryTime.second < $1.recoveryTime.second
         }?.recoveryTime.second ?? 0)
     }
+
     var maxTotalTime: Double {
         expeditions.map { $0.totalTime }
             .max {
                 $0 < $1
             } ?? 72000.0
     }
-    var allCompletedPercentage: Double { (maxTotalTime - Double(allCompleteTime.second)) / maxTotalTime }
+
+    var allCompletedPercentage: Double {
+        (maxTotalTime - Double(allCompleteTime.second)) / maxTotalTime
+    }
 
     var nextCompleteExpeditionIgnoreFinished: Expedition? {
-        expeditions.filter({ expedition in
+        expeditions.filter { expedition in
             !expedition.isComplete
-        }).min {
+        }.min {
             $0.recoveryTime.second < $1.recoveryTime.second
         }
     }
+
     var nextCompleteTimeIgnoreFinished: RecoveryTime {
         RecoveryTime(second: nextCompleteExpedition?.recoveryTime.second ?? 0)
     }
+
     var nextCompletePercentageIgnoreFinished: Double {
         nextCompleteExpedition?.percentage ?? 0
     }
 
     var score: Float {
-        if allCompleted { return 120.0/160.0 }
-        else if anyCompleted { return 40.0/160.0 }
-        else { return 0 }
+        if allCompleted { return 120.0 / 160.0 }
+        else if anyCompleted { return 40.0 / 160.0 } else { return 0 }
     }
 }
 
+// MARK: - Expedition
+
 struct Expedition: Codable {
+    enum CodingKeys: String, CodingKey {
+        case avatarSideIcon
+        case remainedTimeStr = "remainedTime"
+        case statusStr = "status"
+    }
+
     let avatarSideIcon: String
     let remainedTimeStr: String
     let statusStr: String
 
-    let totalTime: Double = Double(20 * 60 * 60)
+    let totalTime: Double = .init(20 * 60 * 60)
+
     var percentage: Double {
         (totalTime - Double(recoveryTime.second)) / totalTime
     }
@@ -91,18 +114,13 @@ struct Expedition: Codable {
     var recoveryTime: RecoveryTime {
         RecoveryTime(second: Int(remainedTimeStr)!)
     }
+
     var isComplete: Bool {
         recoveryTime.isComplete
     }
-    
-    enum CodingKeys: String, CodingKey {
-        case avatarSideIcon = "avatarSideIcon"
-        case remainedTimeStr = "remainedTime"
-        case statusStr = "status"
-    }
 
     var characterName: String {
-        return self.characterCNName.localized
+        characterCNName.localized
     }
 
     var characterCNName: String {
@@ -115,7 +133,7 @@ struct Expedition: Codable {
             return "琴"
         case "Amber", "Ambor":
             return "安柏"
-        case "Kaeya", "Alberich":
+        case "Alberich", "Kaeya":
             return "凯亚"
         case "Lisa", "Minci":
             return "丽莎"
@@ -125,7 +143,7 @@ struct Expedition: Codable {
             return "雷泽"
         case "Bennett":
             return "班尼特"
-        case "Noelle", "Noel":
+        case "Noel", "Noelle":
             return "诺艾尔"
         case "Fischl":
             return "菲谢尔·冯·露弗施洛斯·那菲多特"
@@ -141,7 +159,7 @@ struct Expedition: Codable {
             return "砂糖"
         case "Albedo":
             return "阿贝多"
-        case "Astrologist", "Mona", "Megistus":
+        case "Astrologist", "Megistus", "Mona":
             return "莫娜"
         case "Rosaria":
             return "罗莎莉亚"
@@ -169,11 +187,11 @@ struct Expedition: Codable {
             return "魈"
         case "Ganyu":
             return "甘雨"
-        case "Hu", "Tao", "HuTao", "Hutao":
+        case "Hu", "Hutao", "HuTao", "Tao":
             return "胡桃"
         case "Yanfei":
             return "烟绯"
-        case "Yun", "Jin", "Yunjin", "YunJin":
+        case "Jin", "Yun", "Yunjin", "YunJin":
             return "云堇"
         case "Shenhe":
             return "申鹤"
@@ -191,7 +209,7 @@ struct Expedition: Codable {
             return "托马"
         case "Sayu":
             return "早柚"
-        case "Yae", "Miko":
+        case "Miko", "Yae":
             return "八重神子"
         case "Arataki", "Itto":
             return "荒泷一斗"
@@ -199,11 +217,11 @@ struct Expedition: Codable {
             return "久岐忍"
         case "Gorou":
             return "五郎"
-        case "Sangonomiya", "Kokomi":
+        case "Kokomi", "Sangonomiya":
             return "珊瑚宫心海"
         case "Sara":
             return "九条裟罗"
-        case "Shikanoin", "Heizou":
+        case "Heizou", "Shikanoin":
             return "鹿野院平藏"
         case "Raiden", "Shogun":
             return "雷电将军"
@@ -229,7 +247,7 @@ struct Expedition: Codable {
             return "琳妮特"
         case "Iansan":
             return "伊安珊"
-        case "Tartaglia", "Childe", "Ajax":
+        case "Ajax", "Childe", "Tartaglia":
             return "达达利亚"
         case "Faruzan":
             return "珐露珊"
@@ -245,5 +263,4 @@ struct Expedition: Codable {
             return "（未知角色）"
         }
     }
-
 }

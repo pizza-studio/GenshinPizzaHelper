@@ -9,8 +9,10 @@ import Foundation
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenResinWidgetCircular<T>: View where T: SimplifiedUserDataContainer {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+struct LockScreenResinWidgetCircular<T>: View
+    where T: SimplifiedUserDataContainer {
+    @Environment(\.widgetRenderingMode)
+    var widgetRenderingMode
 
     let result: SimplifiedUserDataContainerResult<T>
 
@@ -18,33 +20,67 @@ struct LockScreenResinWidgetCircular<T>: View where T: SimplifiedUserDataContain
         switch widgetRenderingMode {
         case .fullColor:
             switch result {
-            case .success(let data):
-                Gauge(value: Double(data.resinInfo.currentResin)/Double(data.resinInfo.maxResin)) {
-                    LinearGradient(colors: [.init("iconColor.resin.dark"), .init("iconColor.resin.middle"), .init("iconColor.resin.light")], startPoint: .top, endPoint: .bottom)
-                        .mask(Image("icon.resin")
+            case let .success(data):
+                Gauge(
+                    value: Double(data.resinInfo.currentResin) /
+                        Double(data.resinInfo.maxResin)
+                ) {
+                    LinearGradient(
+                        colors: [
+                            .init("iconColor.resin.dark"),
+                            .init("iconColor.resin.middle"),
+                            .init("iconColor.resin.light"),
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .mask(
+                        Image("icon.resin")
                             .resizable()
-                            .scaledToFit())
+                            .scaledToFit()
+                    )
                 } currentValueLabel: {
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.title3, design: .rounded))
                         .minimumScaleFactor(0.4)
                 }
-                .gaugeStyle(ProgressGaugeStyle(circleColor: Color("iconColor.resin.middle")))
-            case .failure(_):
-                Gauge(value: 160, in: 0.0...160.0) {
-                    LinearGradient(colors: [.init("iconColor.resin.dark"), .init("iconColor.resin.middle"), .init("iconColor.resin.light")], startPoint: .top, endPoint: .bottom)
-                        .mask(Image("icon.resin")
+                .gaugeStyle(
+                    ProgressGaugeStyle(
+                        circleColor: Color("iconColor.resin.middle")
+                    )
+                )
+            case .failure:
+                Gauge(value: 160, in: 0.0 ... 160.0) {
+                    LinearGradient(
+                        colors: [
+                            .init("iconColor.resin.dark"),
+                            .init("iconColor.resin.middle"),
+                            .init("iconColor.resin.light"),
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .mask(
+                        Image("icon.resin")
                             .resizable()
-                            .scaledToFit())
+                            .scaledToFit()
+                    )
                 } currentValueLabel: {
                     Image(systemName: "ellipsis")
                 }
-                .gaugeStyle(ProgressGaugeStyle(circleColor: Color("iconColor.resin.middle")))
+                .gaugeStyle(
+                    ProgressGaugeStyle(
+                        circleColor: Color("iconColor.resin.middle")
+                    )
+                )
             }
         case .accented:
             switch result {
-            case .success(let data):
-                Gauge(value: Double(data.resinInfo.currentResin)/Double(data.resinInfo.maxResin)) {
+            case let .success(data):
+                Gauge(
+                    value: Double(data.resinInfo.currentResin) /
+                        Double(data.resinInfo.maxResin)
+                ) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
@@ -54,8 +90,8 @@ struct LockScreenResinWidgetCircular<T>: View where T: SimplifiedUserDataContain
                         .minimumScaleFactor(0.4)
                 }
                 .gaugeStyle(ProgressGaugeStyle())
-            case .failure(_):
-                Gauge(value: 160, in: 0.0...160.0) {
+            case .failure:
+                Gauge(value: 160, in: 0.0 ... 160.0) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
@@ -66,8 +102,11 @@ struct LockScreenResinWidgetCircular<T>: View where T: SimplifiedUserDataContain
             }
         default:
             switch result {
-            case .success(let data):
-                Gauge(value: Double(data.resinInfo.currentResin)/Double(data.resinInfo.maxResin)) {
+            case let .success(data):
+                Gauge(
+                    value: Double(data.resinInfo.currentResin) /
+                        Double(data.resinInfo.maxResin)
+                ) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
@@ -77,8 +116,8 @@ struct LockScreenResinWidgetCircular<T>: View where T: SimplifiedUserDataContain
                         .minimumScaleFactor(0.4)
                 }
                 .gaugeStyle(ProgressGaugeStyle())
-            case .failure(_):
-                Gauge(value: 160, in: 0.0...160.0) {
+            case .failure:
+                Gauge(value: 160, in: 0.0 ... 160.0) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
@@ -88,6 +127,5 @@ struct LockScreenResinWidgetCircular<T>: View where T: SimplifiedUserDataContain
                 .gaugeStyle(ProgressGaugeStyle())
             }
         }
-
     }
 }

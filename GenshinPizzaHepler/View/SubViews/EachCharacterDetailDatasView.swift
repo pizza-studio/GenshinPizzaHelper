@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-//@available(iOS 15, *)
+// MARK: - EachCharacterDetailDatasView
+
+// @available(iOS 15, *)
 struct EachCharacterDetailDatasView: View {
     var avatar: PlayerDetail.Avatar
 
@@ -47,19 +49,26 @@ struct EachCharacterDetailDatasView: View {
     @ViewBuilder
     func artifactsDetailsView() -> some View {
         if !avatar.artifacts.isEmpty {
-            if true {  // 这行先不用清除掉，可以减少接下来的 macOS 适配时的 commit 熵。
+            if true { // 这行先不用清除掉，可以减少接下来的 macOS 适配时的 commit 熵。
                 HStack {
                     ForEach(avatar.artifacts) { artifact in
                         VStack {
                             ZStack {
-                                HomeSourceWebIcon(iconString: artifact.iconString)
-                                    .circleClippedBackground(scaler: 0.95) {
-                                        EnkaWebIcon(iconString: artifact.rankLevel.rectangularBackgroundIconString)
-                                            .scaledToFit()
-                                            .scaleEffect(1.2)
-                                            .offset(y: 9)
-                                            .clipShape(Circle())
-                                    }
+                                HomeSourceWebIcon(
+                                    iconString: artifact
+                                        .iconString
+                                )
+                                .circleClippedBackground(scaler: 0.95) {
+                                    EnkaWebIcon(
+                                        iconString: artifact
+                                            .rankLevel
+                                            .rectangularBackgroundIconString
+                                    )
+                                    .scaledToFit()
+                                    .scaleEffect(1.2)
+                                    .offset(y: 9)
+                                    .clipShape(Circle())
+                                }
                             }
                             .frame(maxWidth: 60, maxHeight: 60)
                             VStack {
@@ -70,7 +79,10 @@ struct EachCharacterDetailDatasView: View {
                                     .bold()
                             }
                             VStack {
-                                ForEach(artifact.subAttributes, id:\.name) { subAttribute in
+                                ForEach(
+                                    artifact.subAttributes,
+                                    id: \.name
+                                ) { subAttribute in
                                     Text(subAttribute.name)
                                         .font(.caption2)
                                     Text("\(subAttribute.valueString)")
@@ -99,11 +111,14 @@ struct EachCharacterDetailDatasView: View {
         let weapon = avatar.weapon
         let l: CGFloat = 80
         ZStack {
-            EnkaWebIcon(iconString: weapon.rankLevel.rectangularBackgroundIconString)
-                .scaledToFit()
-                .scaleEffect(1.1)
-                .offset(y: 10)
-                .clipShape(Circle())
+            EnkaWebIcon(
+                iconString: weapon.rankLevel
+                    .rectangularBackgroundIconString
+            )
+            .scaledToFit()
+            .scaleEffect(1.1)
+            .offset(y: 10)
+            .clipShape(Circle())
             EnkaWebIcon(iconString: weapon.awakenedIconString)
                 .scaledToFit()
         }
@@ -159,36 +174,100 @@ struct EachCharacterDetailDatasView: View {
     func probView() -> some View {
         // Other prob
         let probRows = Group {
-            AttributeLabel(iconString: "UI_Icon_MaxHp", name: "生命值上限", value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))")
-            AttributeLabel(iconString: "UI_Icon_CurAttack", name: "攻击力", value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))")
-            AttributeLabel(iconString: "UI_Icon_CurDefense", name: "防御力", value: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))")
-            AttributeLabel(iconString: "UI_Icon_Element", name: "元素精通", value: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))")
-            AttributeLabel(iconString: "UI_Icon_Intee_WindField_ClockwiseRotation", name: "元素充能效率", value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%")
+            AttributeLabel(
+                iconString: "UI_Icon_MaxHp",
+                name: "生命值上限",
+                value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))"
+            )
+            AttributeLabel(
+                iconString: "UI_Icon_CurAttack",
+                name: "攻击力",
+                value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))"
+            )
+            AttributeLabel(
+                iconString: "UI_Icon_CurDefense",
+                name: "防御力",
+                value: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))"
+            )
+            AttributeLabel(
+                iconString: "UI_Icon_Element",
+                name: "元素精通",
+                value: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))"
+            )
+            AttributeLabel(
+                iconString: "UI_Icon_Intee_WindField_ClockwiseRotation",
+                name: "元素充能效率",
+                value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%"
+            )
             if avatar.fightPropMap.healingBonus > 0 {
-                AttributeLabel(iconString: "UI_Icon_Heal", name: "治疗加成", value: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_Heal",
+                    name: "治疗加成",
+                    value: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%"
+                )
             }
-            AttributeLabel(iconString: "UI_Icon_Critical", name: "暴击率", value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%")
-            AttributeLabel(iconString: "UI_Icon_Critical", name: "暴击伤害", value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%")
+            AttributeLabel(
+                iconString: "UI_Icon_Critical",
+                name: "暴击率",
+                value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%"
+            )
+            AttributeLabel(
+                iconString: "UI_Icon_Critical",
+                name: "暴击伤害",
+                value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%"
+            )
             switch avatar.element {
             case .wind:
-                AttributeLabel(iconString: "UI_Icon_Element_Wind", name: "风元素伤害加成", value: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_Element_Wind",
+                    name: "风元素伤害加成",
+                    value: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%"
+                )
             case .ice:
-                AttributeLabel(iconString: "UI_Icon_Element_Ice", name: "冰元素伤害加成", value: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_Element_Ice",
+                    name: "冰元素伤害加成",
+                    value: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%"
+                )
             case .electric:
-                AttributeLabel(iconString: "UI_Icon_Element_Electric", name: "雷元素伤害加成", value: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_Element_Electric",
+                    name: "雷元素伤害加成",
+                    value: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%"
+                )
             case .water:
-                AttributeLabel(iconString: "UI_Icon_Element_Water", name: "水元素伤害加成", value: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_Element_Water",
+                    name: "水元素伤害加成",
+                    value: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%"
+                )
             case .fire:
-                AttributeLabel(iconString: "UI_Icon_Element_Fire", name: "火元素伤害加成", value: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_Element_Fire",
+                    name: "火元素伤害加成",
+                    value: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%"
+                )
             case .rock:
-                AttributeLabel(iconString: "UI_Icon_Element_Rock", name: "岩元素伤害加成", value: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_Element_Rock",
+                    name: "岩元素伤害加成",
+                    value: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%"
+                )
             case .grass:
-                AttributeLabel(iconString: "UI_Icon_Element_Grass", name: "草元素伤害加成", value: "\((avatar.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_Element_Grass",
+                    name: "草元素伤害加成",
+                    value: "\((avatar.fightPropMap.dendroDamage * 100.0).rounded(toPlaces: 2))%"
+                )
             default:
                 EmptyView()
             }
             if avatar.fightPropMap.physicalDamage > 0 {
-                AttributeLabel(iconString: "UI_Icon_PhysicalAttackUp", name: "物理伤害加成", value: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%")
+                AttributeLabel(
+                    iconString: "UI_Icon_PhysicalAttackUp",
+                    name: "物理伤害加成",
+                    value: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%"
+                )
             }
         }
         if #available(iOS 16, *) {
@@ -205,7 +284,9 @@ struct EachCharacterDetailDatasView: View {
     }
 }
 
-//@available(iOS 15.0, *)
+// MARK: - AttributeLabel
+
+// @available(iOS 15.0, *)
 struct AttributeLabel: View {
     let iconString: String
     let name: String
@@ -274,21 +355,24 @@ struct AttributeLabel: View {
             }
         }
         if #available(iOS 16, *) {
-        } else {
-        }
+        } else {}
     }
 }
 
-//@available(iOS 15.0, *)
+// MARK: - AvatarAndSkillView
+
+// @available(iOS 15.0, *)
 private struct AvatarAndSkillView: View {
     let avatar: PlayerDetail.Avatar
 
     var body: some View {
         EnkaWebIcon(iconString: avatar.iconString)
             .frame(width: 85, height: 85)
-            .background(EnkaWebIcon(iconString: avatar.namecardIconString)
-                .scaledToFill()
-                .offset(x: -85/3))
+            .background(
+                EnkaWebIcon(iconString: avatar.namecardIconString)
+                    .scaledToFill()
+                    .offset(x: -85 / 3)
+            )
             .clipShape(Circle())
             .padding(.trailing, 3)
 //            .matchedGeometryEffect(id: "character.\(avatar.name)", in: animation)
@@ -362,8 +446,8 @@ private struct AvatarAndSkillView: View {
 
 // MARK: - Trailing Text Label
 
-private extension View {
-    func bottomTrailingTag(_ string: String) -> some View {
+extension View {
+    fileprivate func bottomTrailingTag(_ string: String) -> some View {
         if #available(macCatalyst 15.0, iOS 15.0, *) {
             return overlay(alignment: .bottomTrailing) {
                 Text(string)

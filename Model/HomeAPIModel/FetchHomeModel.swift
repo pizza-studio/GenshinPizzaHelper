@@ -7,10 +7,15 @@
 
 import Foundation
 
+// MARK: - FetchHomeModel
+
 struct FetchHomeModel<T: Codable>: Codable {
     let retCode: Int
     let message: String
     let data: T
 }
 
-typealias FetchHomeModelResult<T: Codable> = Result<FetchHomeModel<T>, PSAServerError>
+typealias FetchHomeModelResult<T: Codable> = Result<
+    FetchHomeModel<T>,
+    PSAServerError
+>

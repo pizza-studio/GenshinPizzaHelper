@@ -7,24 +7,23 @@
 
 import Foundation
 
-
-
 struct TransformerData: Codable {
-    let recoveryTime: TransRecoveryTime
-    let obtained: Bool
-    
-    struct TransRecoveryTime: Codable {
-        let day: Int
-        let hour: Int
-        let minute: Int
-        let second: Int
+    // MARK: Lifecycle
 
-        enum CodingKeys: String, CodingKey {
-            case day = "Day"
-            case hour = "Hour"
-            case minute = "Minute"
-            case second = "Second"
-        }
+    init() {
+        self.obtained = false
+        self.recoveryTime = TransRecoveryTime()
+    }
+
+    init(recoveryTime: TransRecoveryTime, obtained: Bool) {
+        self.recoveryTime = recoveryTime
+        self.obtained = obtained
+    }
+
+    // MARK: Internal
+
+    struct TransRecoveryTime: Codable {
+        // MARK: Lifecycle
 
         init() {
             self.day = -1
@@ -39,15 +38,22 @@ struct TransformerData: Codable {
             self.minute = minute
             self.second = second
         }
+
+        // MARK: Internal
+
+        enum CodingKeys: String, CodingKey {
+            case day = "Day"
+            case hour = "Hour"
+            case minute = "Minute"
+            case second = "Second"
+        }
+
+        let day: Int
+        let hour: Int
+        let minute: Int
+        let second: Int
     }
 
-    init() {
-        self.obtained = false
-        self.recoveryTime = TransRecoveryTime()
-    }
-
-    init(recoveryTime: TransRecoveryTime, obtained: Bool) {
-        self.recoveryTime = recoveryTime
-        self.obtained = obtained
-    }
+    let recoveryTime: TransRecoveryTime
+    let obtained: Bool
 }

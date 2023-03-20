@@ -10,7 +10,7 @@ import SwiftUI
 struct WidgetErrorView: View {
     let error: FetchError
     let message: String
-    
+
     var body: some View {
         Text(error.description)
             .font(.title3)
@@ -18,4 +18,3 @@ struct WidgetErrorView: View {
             .padding()
     }
 }
-

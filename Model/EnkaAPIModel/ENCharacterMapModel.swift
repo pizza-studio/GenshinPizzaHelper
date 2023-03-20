@@ -7,20 +7,10 @@
 
 import Foundation
 
-struct ENCharacterMap: Codable {
-    var characterDetails: [String: Character]
+// MARK: - ENCharacterMap
 
-    struct CharacterKey: CodingKey {
-        var stringValue: String
-        var intValue: Int?
-        init?(stringValue: String) {
-            self.stringValue = stringValue
-        }
-        init?(intValue: Int) {
-            self.stringValue = "\(intValue)"
-            self.intValue = intValue
-        }
-    }
+struct ENCharacterMap: Codable {
+    // MARK: Lifecycle
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CharacterKey.self)
@@ -34,7 +24,107 @@ struct ENCharacterMap: Codable {
         self.characterDetails = character
     }
 
+    // MARK: Internal
+
+    struct CharacterKey: CodingKey {
+        // MARK: Lifecycle
+
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+        }
+
+        init?(intValue: Int) {
+            self.stringValue = "\(intValue)"
+            self.intValue = intValue
+        }
+
+        // MARK: Internal
+
+        var stringValue: String
+        var intValue: Int?
+    }
+
     struct Character: Codable {
+        struct Skill: Codable {
+            // MARK: Lifecycle
+
+            init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: SkillKey.self)
+
+                var skill = [String: String]()
+                for key in container.allKeys {
+                    if let model = try? container.decode(
+                        String.self,
+                        forKey: key
+                    ) {
+                        skill[key.stringValue] = model
+                    }
+                }
+                self.skillData = skill
+            }
+
+            // MARK: Internal
+
+            struct SkillKey: CodingKey {
+                // MARK: Lifecycle
+
+                init?(stringValue: String) {
+                    self.stringValue = stringValue
+                }
+
+                init?(intValue: Int) {
+                    self.stringValue = "\(intValue)"
+                    self.intValue = intValue
+                }
+
+                // MARK: Internal
+
+                var stringValue: String
+                var intValue: Int?
+            }
+
+            var skillData: [String: String]
+        }
+
+        struct ProudMap: Codable {
+            // MARK: Lifecycle
+
+            init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: ProudKey.self)
+
+                var proud = [String: Int]()
+                for key in container.allKeys {
+                    if let model = try? container
+                        .decode(Int.self, forKey: key) {
+                        proud[key.stringValue] = model
+                    }
+                }
+                self.proudMapData = proud
+            }
+
+            // MARK: Internal
+
+            struct ProudKey: CodingKey {
+                // MARK: Lifecycle
+
+                init?(stringValue: String) {
+                    self.stringValue = stringValue
+                }
+
+                init?(intValue: Int) {
+                    self.stringValue = "\(intValue)"
+                    self.intValue = intValue
+                }
+
+                // MARK: Internal
+
+                var stringValue: String
+                var intValue: Int?
+            }
+
+            var proudMapData: [String: Int]
+        }
+
         /// 元素
         var Element: String
         /// 技能图标
@@ -49,12 +139,19 @@ struct ENCharacterMap: Codable {
         var NameTextMapHash: Int
         /// 侧脸图
         var SideIconName: String
-        /// 正脸图
-        var iconString: String { SideIconName.replacingOccurrences(of: "_Side", with: "") }
-        /// icon用的名字
-        var nameID: String { iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")}
         /// 星级
         var QualityType: String
+
+        /// 正脸图
+        var iconString: String {
+            SideIconName.replacingOccurrences(of: "_Side", with: "")
+        }
+
+        /// icon用的名字
+        var nameID: String {
+            iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")
+        }
+
         /// 名片
         var namecardIconString: String {
             // 主角没有对应名片
@@ -66,73 +163,22 @@ struct ENCharacterMap: Codable {
                 return "UI_NameCardPic_\(nameID)_P"
             }
         }
-
-        struct Skill: Codable {
-            var skillData: [String: String]
-
-            struct SkillKey: CodingKey {
-                var stringValue: String
-                var intValue: Int?
-                init?(stringValue: String) {
-                    self.stringValue = stringValue
-                }
-                init?(intValue: Int) {
-                    self.stringValue = "\(intValue)"
-                    self.intValue = intValue
-                }
-            }
-
-            init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: SkillKey.self)
-
-                var skill = [String: String]()
-                for key in container.allKeys {
-                    if let model = try? container.decode(String.self, forKey: key) {
-                        skill[key.stringValue] = model
-                    }
-                }
-                self.skillData = skill
-            }
-        }
-
-        struct ProudMap: Codable {
-            var proudMapData: [String: Int]
-
-            struct ProudKey: CodingKey {
-                var stringValue: String
-                var intValue: Int?
-                init?(stringValue: String) {
-                    self.stringValue = stringValue
-                }
-                init?(intValue: Int) {
-                    self.stringValue = "\(intValue)"
-                    self.intValue = intValue
-                }
-            }
-
-            init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: ProudKey.self)
-
-                var proud = [String: Int]()
-                for key in container.allKeys {
-                    if let model = try? container.decode(Int.self, forKey: key) {
-                        proud[key.stringValue] = model
-                    }
-                }
-                self.proudMapData = proud
-            }
-        }
     }
+
+    var characterDetails: [String: Character]
 }
 
-extension [String: ENCharacterMap.Character] {
+extension Dictionary
+    where Key == String, Value == ENCharacterMap.Character {
     func getIconString(id: String) -> String {
-        return self[id]?.iconString ?? ""
+        self[id]?.iconString ?? ""
     }
+
     func getSideIconString(id: String) -> String {
-        return self[id]?.SideIconName ?? ""
+        self[id]?.SideIconName ?? ""
     }
+
     func getNameID(id: String) -> String {
-        return self[id]?.nameID ?? ""
+        self[id]?.nameID ?? ""
     }
 }

@@ -14,9 +14,18 @@ typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
 typealias AllAvatarDetailFetchResult = Result<AllAvatarDetailModel, FetchError>
 
 #if !os(watchOS)
-typealias PlayerDetailsFetchResult = Result<PlayerDetailFetchModel, RequestError>
-typealias PlayerDetailResult = Result<PlayerDetail, PlayerDetail.PlayerDetailError>
-typealias SpiralAbyssDetailFetchResult = Result<SpiralAbyssDetail, FetchError>
+    typealias PlayerDetailsFetchResult = Result<
+        PlayerDetailFetchModel,
+        RequestError
+    >
+    typealias PlayerDetailResult = Result<
+        PlayerDetail,
+        PlayerDetail.PlayerDetailError
+    >
+    typealias SpiralAbyssDetailFetchResult = Result<
+        SpiralAbyssDetail,
+        FetchError
+    >
 #endif
 
 extension FetchResult {

@@ -7,32 +7,44 @@
 
 import SwiftUI
 
-//@available(iOS 15, *)
+// @available(iOS 15, *)
 struct CharacterDetailView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject
+    var viewModel: ViewModel
     var account: Account
+    @State
+    var showingCharacterName: String
+    var animation: Namespace.ID
+
+    @State
+    var showTabViewIndex: Bool = false
+    @State
+    var showWaterMark: Bool = true
+
     var playerDetail: PlayerDetail { try! account.playerDetailResult!.get() }
-    @State var showingCharacterName: String
     var avatar: PlayerDetail.Avatar {
         playerDetail.avatars.first(where: { avatar in
             avatar.name == showingCharacterName
         })!
     }
 
-    var animation: Namespace.ID
-
-    @State var showTabViewIndex: Bool = false
-    @State var showWaterMark: Bool = true
-
     var body: some View {
         if #available(iOS 15.0, *) {
             TabView(selection: $showingCharacterName) {
                 ForEach(playerDetail.avatars, id: \.name) { avatar in
-                    EachCharacterDetailDatasView(avatar: avatar, animation: animation)
-                        .frame(maxWidth: 500) // For iPad
+                    EachCharacterDetailDatasView(
+                        avatar: avatar,
+                        animation: animation
+                    )
+                    .frame(maxWidth: 500) // For iPad
                 }
             }
-            .tabViewStyle(.page(indexDisplayMode: showTabViewIndex ? .automatic : .never))
+            .tabViewStyle(
+                .page(
+                    indexDisplayMode: showTabViewIndex ? .automatic :
+                        .never
+                )
+            )
             .onTapGesture {
                 closeView()
             }
@@ -44,7 +56,7 @@ struct CharacterDetailView: View {
             )
             .hiddenWaterMark()
             .overlay(alignment: .topTrailing) {
-                if ThisDevice.notchType == .none && showWaterMark {
+                if ThisDevice.notchType == .none, showWaterMark {
                     Image("AppIconHD")
                         .resizable()
                         .scaledToFit()
@@ -88,11 +100,19 @@ struct CharacterDetailView: View {
             // Fallback on earlier versions
             TabView(selection: $showingCharacterName) {
                 ForEach(playerDetail.avatars, id: \.name) { avatar in
-                    EachCharacterDetailDatasView(avatar: avatar, animation: animation)
-                        .frame(maxWidth: 500) // For iPad
+                    EachCharacterDetailDatasView(
+                        avatar: avatar,
+                        animation: animation
+                    )
+                    .frame(maxWidth: 500) // For iPad
                 }
             }
-            .tabViewStyle(.page(indexDisplayMode: showTabViewIndex ? .automatic : .never))
+            .tabViewStyle(
+                .page(
+                    indexDisplayMode: showTabViewIndex ? .automatic :
+                        .never
+                )
+            )
             .onTapGesture {
                 closeView()
             }
@@ -138,7 +158,11 @@ struct CharacterDetailView: View {
 
     func closeView() {
         simpleTaptic(type: .light)
-        withAnimation(.interactiveSpring(response: 0.25, dampingFraction: 1.0, blendDuration: 0)) {
+        withAnimation(.interactiveSpring(
+            response: 0.25,
+            dampingFraction: 1.0,
+            blendDuration: 0
+        )) {
             viewModel.showCharacterDetailOfAccount = nil
             viewModel.showingCharacterName = nil
         }

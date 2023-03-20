@@ -7,20 +7,10 @@
 
 import Foundation
 
-struct CurrentEvent: Codable {
-    var event: [String: EventModel]
+// MARK: - CurrentEvent
 
-    struct EventKey: CodingKey {
-        var stringValue: String
-        var intValue: Int?
-        init?(stringValue: String) {
-            self.stringValue = stringValue
-        }
-        init?(intValue: Int) {
-            self.stringValue = "\(intValue)"
-            self.intValue = intValue
-        }
-    }
+struct CurrentEvent: Codable {
+    // MARK: Lifecycle
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: EventKey.self)
@@ -33,16 +23,33 @@ struct CurrentEvent: Codable {
         }
         self.event = events
     }
+
+    // MARK: Internal
+
+    struct EventKey: CodingKey {
+        // MARK: Lifecycle
+
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+        }
+
+        init?(intValue: Int) {
+            self.stringValue = "\(intValue)"
+            self.intValue = intValue
+        }
+
+        // MARK: Internal
+
+        var stringValue: String
+        var intValue: Int?
+    }
+
+    var event: [String: EventModel]
 }
 
-struct EventModel: Codable {
-    var id: Int
-    var name: MultiLanguageContents
-    var nameFull: MultiLanguageContents
-    var description: MultiLanguageContents
-    var banner: MultiLanguageContents
-    var endAt: String
+// MARK: - EventModel
 
+struct EventModel: Codable {
     struct MultiLanguageContents: Codable {
         var EN: String
         var RU: String
@@ -51,4 +58,11 @@ struct EventModel: Codable {
         var KR: String
         var JP: String
     }
+
+    var id: Int
+    var name: MultiLanguageContents
+    var nameFull: MultiLanguageContents
+    var description: MultiLanguageContents
+    var banner: MultiLanguageContents
+    var endAt: String
 }

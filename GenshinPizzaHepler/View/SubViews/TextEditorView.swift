@@ -7,24 +7,32 @@
 
 import SwiftUI
 
+// MARK: - TextEditorView
+
 struct TextEditorView: View {
-    @EnvironmentObject var viewModel: ViewModel
-    
+    // MARK: Internal
+
+    @EnvironmentObject
+    var viewModel: ViewModel
+
     var title: String
-    var note: String? = nil
-    @Binding var content: String
+    var note: String?
+    @Binding
+    var content: String
     var showPasteButton: Bool = false
     var showShortCutsLink: Bool = false
-    
-    @State private var isWebShown: Bool = false
-    @State private var getCookieRegion: Region? = nil
 
     var body: some View {
         List {
             if showPasteButton {
                 Section {
                     if showShortCutsLink {
-                        Link("获取Cookie的脚本", destination: URL(string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c")!)
+                        Link(
+                            "获取Cookie的脚本",
+                            destination: URL(
+                                string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c"
+                            )!
+                        )
                         Menu {
                             Button("国服") {
                                 getCookieRegion = .cn
@@ -52,24 +60,42 @@ struct TextEditorView: View {
         .sheet(item: $getCookieRegion) { region in
             switch region {
             case .cn:
-                GetCookieWebView(isShown: $isWebShown, cookie: $content, region: .cn)
-                    .onChange(of: isWebShown) { _ in
-                        getCookieRegion = nil
-                    }
+                GetCookieWebView(
+                    isShown: $isWebShown,
+                    cookie: $content,
+                    region: .cn
+                )
+                .onChange(of: isWebShown) { _ in
+                    getCookieRegion = nil
+                }
             case .global:
-                GetCookieWebView(isShown: $isWebShown, cookie: $content, region: .global)
-                    .onChange(of: isWebShown) { _ in
-                        getCookieRegion = nil
-                    }
+                GetCookieWebView(
+                    isShown: $isWebShown,
+                    cookie: $content,
+                    region: .global
+                )
+                .onChange(of: isWebShown) { _ in
+                    getCookieRegion = nil
+                }
             }
         }
     }
+
+    // MARK: Private
+
+    @State
+    private var isWebShown: Bool = false
+    @State
+    private var getCookieRegion: Region?
 }
+
+// MARK: - TextFieldEditorView
 
 struct TextFieldEditorView: View {
     var title: String
-    var note: String? = nil
-    @Binding var content: String
+    var note: String?
+    @Binding
+    var content: String
     var keyboardType: UIKeyboardType = .default
 
     var body: some View {
@@ -88,7 +114,10 @@ struct TextFieldEditorView: View {
             .navigationBarTitle(title, displayMode: .inline)
         } else {
             List {
-                Section(footer: Text(LocalizedStringKey(note!)).font(.footnote)) {
+                Section(
+                    footer: Text(LocalizedStringKey(note!))
+                        .font(.footnote)
+                ) {
                     if #available(iOS 15.0, *) {
                         TextField(note!, text: $content)
                             .keyboardType(keyboardType)

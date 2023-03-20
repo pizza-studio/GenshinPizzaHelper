@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - AbyssDetailDataDisplayView
+
 struct AbyssDetailDataDisplayView: View {
     let data: SpiralAbyssDetail
     let charMap: [String: ENCharacterMap.Character]
@@ -17,20 +19,50 @@ struct AbyssDetailDataDisplayView: View {
             Section {
                 InfoPreviewer(title: "最深抵达", content: data.maxFloor)
                 InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
-                InfoPreviewer(title: "战斗次数", content: "\(data.totalBattleTimes)")
+                InfoPreviewer(
+                    title: "战斗次数",
+                    content: "\(data.totalBattleTimes)"
+                )
                 InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
             } header: {
                 Text("战斗概览")
             }
 
             // 战斗数据榜
-            if !data.damageRank.isEmpty && !data.defeatRank.isEmpty && !data.takeDamageRank.isEmpty && !data.normalSkillRank.isEmpty && !data.energySkillRank.isEmpty {
+            if !data.damageRank.isEmpty, !data.defeatRank.isEmpty,
+               !data.takeDamageRank.isEmpty, !data.normalSkillRank.isEmpty,
+               !data.energySkillRank.isEmpty {
                 Section {
-                    BattleDataInfoProvider(name: "最强一击", value: data.damageRank.first?.value, avatarID: data.damageRank.first?.avatarId, charMap: charMap)
-                    BattleDataInfoProvider(name: "最多击破数", value: data.defeatRank.first?.value, avatarID: data.defeatRank.first?.avatarId, charMap: charMap)
-                    BattleDataInfoProvider(name: "承受最多伤害", value: data.takeDamageRank.first?.value, avatarID: data.takeDamageRank.first?.avatarId, charMap: charMap)
-                    BattleDataInfoProvider(name: "元素战技释放数", value: data.normalSkillRank.first?.value, avatarID: data.normalSkillRank.first?.avatarId, charMap: charMap)
-                    BattleDataInfoProvider(name: "元素爆发次数", value: data.energySkillRank.first?.value, avatarID: data.energySkillRank.first?.avatarId, charMap: charMap)
+                    BattleDataInfoProvider(
+                        name: "最强一击",
+                        value: data.damageRank.first?.value,
+                        avatarID: data.damageRank.first?.avatarId,
+                        charMap: charMap
+                    )
+                    BattleDataInfoProvider(
+                        name: "最多击破数",
+                        value: data.defeatRank.first?.value,
+                        avatarID: data.defeatRank.first?.avatarId,
+                        charMap: charMap
+                    )
+                    BattleDataInfoProvider(
+                        name: "承受最多伤害",
+                        value: data.takeDamageRank.first?.value,
+                        avatarID: data.takeDamageRank.first?.avatarId,
+                        charMap: charMap
+                    )
+                    BattleDataInfoProvider(
+                        name: "元素战技释放数",
+                        value: data.normalSkillRank.first?.value,
+                        avatarID: data.normalSkillRank.first?.avatarId,
+                        charMap: charMap
+                    )
+                    BattleDataInfoProvider(
+                        name: "元素爆发次数",
+                        value: data.energySkillRank.first?.value,
+                        avatarID: data.energySkillRank.first?.avatarId,
+                        charMap: charMap
+                    )
                 } header: {
                     Text("战斗数据榜")
                 }
@@ -38,13 +70,15 @@ struct AbyssDetailDataDisplayView: View {
                 Text("暂无本期深渊数据")
             }
 
-            ForEach(data.floors.reversed(), id:\.index) { floorData in
+            ForEach(data.floors.reversed(), id: \.index) { floorData in
                 AbyssFloorView(floorData: floorData, charMap: charMap)
             }
         }
         .listStyle(.sidebar)
     }
 }
+
+// MARK: - AbyssFloorView
 
 private struct AbyssFloorView: View {
     let floorData: SpiralAbyssDetail.Floor
@@ -53,7 +87,7 @@ private struct AbyssFloorView: View {
     var body: some View {
         Section {
             HStack {
-                Label(title: {Text("获取渊星数")}) {
+                Label(title: { Text("获取渊星数") }) {
                     AbyssStarIcon()
                 }
                 Spacer()
@@ -68,6 +102,8 @@ private struct AbyssFloorView: View {
     }
 }
 
+// MARK: - AbyssLevelView
+
 private struct AbyssLevelView: View {
     let levelData: SpiralAbyssDetail.Floor.Level
     let charMap: [String: ENCharacterMap.Character]
@@ -78,17 +114,19 @@ private struct AbyssLevelView: View {
                 Text("第\(levelData.index)间")
                     .font(.subheadline)
                 Spacer()
-                ForEach(0 ..< levelData.star, id:\.self) { _ in
+                ForEach(0 ..< levelData.star, id: \.self) { _ in
                     AbyssStarIcon()
                         .frame(width: 30, height: 30)
                 }
             }
-            ForEach(levelData.battles, id:\.index) { battleData in
+            ForEach(levelData.battles, id: \.index) { battleData in
                 AbyssBattleView(battleData: battleData, charMap: charMap)
             }
         }
     }
 }
+
+// MARK: - AbyssBattleView
 
 private struct AbyssBattleView: View {
     let battleData: SpiralAbyssDetail.Floor.Level.Battle
@@ -107,7 +145,7 @@ private struct AbyssBattleView: View {
                 Text("Unknown")
                     .font(.caption)
             }
-            ForEach(battleData.avatars, id:\.id) { avatarData in
+            ForEach(battleData.avatars, id: \.id) { avatarData in
                 let charID: String = "\(avatarData.id)"
                 let charNameID: String = charMap.getNameID(id: charID)
                 let charNameCard: String = "UI_AvatarIcon_\(charNameID)_Card"
@@ -127,6 +165,8 @@ private struct AbyssBattleView: View {
     }
 }
 
+// MARK: - BattleDataInfoProvider
+
 private struct BattleDataInfoProvider: View {
     let name: String
     let value: Int?
@@ -139,7 +179,8 @@ private struct BattleDataInfoProvider: View {
             Spacer()
             Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
             if let avatarID = avatarID {
-                let charIconString = charMap.getSideIconString(id: "\(avatarID)")
+                let charIconString = charMap
+                    .getSideIconString(id: "\(avatarID)")
                 HomeSourceWebIcon(iconString: charIconString)
                     .frame(width: 35, height: 35)
                     .scaledToFit()
@@ -148,8 +189,12 @@ private struct BattleDataInfoProvider: View {
     }
 }
 
+// MARK: - AbyssStarIcon
+
 struct AbyssStarIcon: View {
-    @Environment(\.colorScheme) var colorSheme
+    @Environment(\.colorScheme)
+    var colorSheme
+
     var body: some View {
         switch colorSheme {
         case .light:
@@ -161,6 +206,8 @@ struct AbyssStarIcon: View {
         }
     }
 }
+
+// MARK: - AbyssShareView
 
 struct AbyssShareView: View {
     let data: SpiralAbyssDetail
@@ -174,6 +221,8 @@ struct AbyssShareView: View {
         }
     }
 }
+
+// MARK: - ShareAbyssFloorView
 
 private struct ShareAbyssFloorView: View {
     let floorData: SpiralAbyssDetail.Floor

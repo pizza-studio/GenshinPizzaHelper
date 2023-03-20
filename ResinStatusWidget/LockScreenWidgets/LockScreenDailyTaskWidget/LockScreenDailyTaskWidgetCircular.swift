@@ -8,8 +8,10 @@
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenDailyTaskWidgetCircular<T>: View where T: SimplifiedUserDataContainer {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+struct LockScreenDailyTaskWidgetCircular<T>: View
+    where T: SimplifiedUserDataContainer {
+    @Environment(\.widgetRenderingMode)
+    var widgetRenderingMode
 
     let result: SimplifiedUserDataContainerResult<T>
 
@@ -21,10 +23,12 @@ struct LockScreenDailyTaskWidgetCircular<T>: View where T: SimplifiedUserDataCon
                     .resizable()
                     .scaledToFit()
                 switch result {
-                case .success(let data):
-                    Text("\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                case .failure(_):
+                case let .success(data):
+                    Text(
+                        "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)"
+                    )
+                    .font(.system(.body, design: .rounded).weight(.medium))
+                case .failure:
                     Image(systemName: "ellipsis")
                 }
             }
@@ -42,10 +46,12 @@ struct LockScreenDailyTaskWidgetCircular<T>: View where T: SimplifiedUserDataCon
                     .scaledToFit()
                     .foregroundColor(Color("iconColor.dailyTask"))
                 switch result {
-                case .success(let data):
-                    Text("\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                case .failure(_):
+                case let .success(data):
+                    Text(
+                        "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)"
+                    )
+                    .font(.system(.body, design: .rounded).weight(.medium))
+                case .failure:
                     Image(systemName: "ellipsis")
                 }
             }
@@ -62,10 +68,12 @@ struct LockScreenDailyTaskWidgetCircular<T>: View where T: SimplifiedUserDataCon
                     .scaledToFit()
 
                 switch result {
-                case .success(let data):
-                    Text("\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                case .failure(_):
+                case let .success(data):
+                    Text(
+                        "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)"
+                    )
+                    .font(.system(.body, design: .rounded).weight(.medium))
+                case .failure:
                     Image(systemName: "ellipsis")
                 }
             }
@@ -78,4 +86,3 @@ struct LockScreenDailyTaskWidgetCircular<T>: View where T: SimplifiedUserDataCon
         }
     }
 }
-

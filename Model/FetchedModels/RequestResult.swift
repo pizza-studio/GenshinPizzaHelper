@@ -8,11 +8,15 @@
 import Foundation
 import SwiftUI
 
+// MARK: - RequestResult
+
 struct RequestResult: Codable {
     let data: FetchData?
     let message: String
     let retcode: Int
 }
+
+// MARK: - WidgetRequestResult
 
 struct WidgetRequestResult: Codable {
     let data: WidgetUserData?
@@ -20,17 +24,23 @@ struct WidgetRequestResult: Codable {
     let retcode: Int
 }
 
+// MARK: - BasicInfoRequestResult
+
 struct BasicInfoRequestResult: Codable {
     let data: BasicInfos?
     let message: String
     let retcode: Int
 }
 
+// MARK: - LedgerDataRequestResult
+
 struct LedgerDataRequestResult: Codable {
     let data: LedgerData?
     let message: String
     let retcode: Int
 }
+
+// MARK: - AllAvatarDetailRequestDetail
 
 struct AllAvatarDetailRequestDetail: Codable {
     let data: AllAvatarDetailModel?
@@ -39,9 +49,9 @@ struct AllAvatarDetailRequestDetail: Codable {
 }
 
 #if !os(watchOS)
-struct SpiralAbyssDetailRequestResult: Codable {
-    let data: SpiralAbyssDetail?
-    let message: String
-    let retcode: Int
-}
+    struct SpiralAbyssDetailRequestResult: Codable {
+        let data: SpiralAbyssDetail?
+        let message: String
+        let retcode: Int
+    }
 #endif

@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct ThisDevice {
-    private init () {}
+    // MARK: Lifecycle
+
+    private init() {}
+
+    // MARK: Internal
+
+    enum NotchType {
+        case normalNotch
+        case dynamicIsland
+        case none
+    }
 
     static var notchType: NotchType {
         if hasDynamicIsland {
@@ -21,26 +31,25 @@ struct ThisDevice {
     }
 
     static var hasDynamicIsland: Bool {
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return false }
+        guard let window = UIApplication.shared.windows
+            .filter({ $0.isKeyWindow }).first else { return false }
         if UIDevice.current.orientation.isPortrait {
             return window.safeAreaInsets.top >= 59
         } else {
-            return window.safeAreaInsets.left > 0 || window.safeAreaInsets.right > 0
+            return window.safeAreaInsets.left > 0 || window.safeAreaInsets
+                .right > 0
         }
     }
 
     static var hasNormalNotch: Bool {
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return false }
+        guard let window = UIApplication.shared.windows
+            .filter({ $0.isKeyWindow }).first else { return false }
         if UIDevice.current.orientation.isPortrait {
-            return window.safeAreaInsets.top >= 44 && window.safeAreaInsets.top < 59
+            return window.safeAreaInsets.top >= 44 && window.safeAreaInsets
+                .top < 59
         } else {
-            return window.safeAreaInsets.left > 0 || window.safeAreaInsets.right > 0
+            return window.safeAreaInsets.left > 0 || window.safeAreaInsets
+                .right > 0
         }
-    }
-
-    enum NotchType {
-        case normalNotch
-        case dynamicIsland
-        case none
     }
 }

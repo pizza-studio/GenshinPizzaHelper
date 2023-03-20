@@ -8,8 +8,10 @@
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenLoopWidgetCorner<T>: View where T: SimplifiedUserDataContainer {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+struct LockScreenLoopWidgetCorner<T>: View
+    where T: SimplifiedUserDataContainer {
+    @Environment(\.widgetRenderingMode)
+    var widgetRenderingMode
 
     let result: SimplifiedUserDataContainerResult<T>
 
@@ -26,4 +28,3 @@ struct LockScreenLoopWidgetCorner<T>: View where T: SimplifiedUserDataContainer 
         }
     }
 }
-

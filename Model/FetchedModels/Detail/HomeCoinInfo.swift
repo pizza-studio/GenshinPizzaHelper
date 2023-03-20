@@ -8,23 +8,30 @@
 import Foundation
 
 struct HomeCoinInfo: Codable {
-    
-    let currentHomeCoin: Int
-    let maxHomeCoin: Int
-    let recoveryTime: RecoveryTime
-    
-    var isFull: Bool { recoveryTime.isComplete }
-    
-    var percentage: Double { Double(currentHomeCoin) / Double(maxHomeCoin) }
-    
-    init(_ currentHomeCoin: Int, _ maxHomeCoin: Int, _ homeCoinRecoverySecond: Int) {
+    // MARK: Lifecycle
+
+    init(
+        _ currentHomeCoin: Int,
+        _ maxHomeCoin: Int,
+        _ homeCoinRecoverySecond: Int
+    ) {
         self.currentHomeCoin = currentHomeCoin
         self.maxHomeCoin = maxHomeCoin
         self.recoveryTime = RecoveryTime(second: homeCoinRecoverySecond)
     }
 
+    // MARK: Internal
+
+    let currentHomeCoin: Int
+    let maxHomeCoin: Int
+    let recoveryTime: RecoveryTime
+
+    var isFull: Bool { recoveryTime.isComplete }
+
+    var percentage: Double { Double(currentHomeCoin) / Double(maxHomeCoin) }
+
     var score: Float {
-        if percentage > 0.7 && maxHomeCoin != 300 {
+        if percentage > 0.7, maxHomeCoin != 300 {
             return Float(percentage)
         } else { return 0 }
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 extension API {
-    struct Features {
+    enum Features {
         /// 获取信息
         /// - Parameters:
         ///     - region: 服务器地区
@@ -16,7 +16,7 @@ extension API {
         ///     - uid: 用户UID
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
-        static func fetchInfos (
+        static func fetchInfos(
             region: Region,
             serverID: String,
             uid: String,
@@ -25,7 +25,6 @@ extension API {
                 FetchResult
             ) -> ()
         ) {
-            
             if (uid == "") || (cookie == "") {
                 completion(.failure(.noFetchInfo))
             }
@@ -43,8 +42,7 @@ extension API {
                     cookie
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         let fetchData = requestResult.data
                         let retcode = requestResult.retcode
@@ -53,30 +51,47 @@ extension API {
                         switch requestResult.retcode {
                         case 0:
                             print("get data succeed")
-                            completion(.success(UserData(fetchData: fetchData!)))
+                            completion(
+                                .success(UserData(fetchData: fetchData!))
+                            )
                         case 10001:
                             print("fail 10001")
-                            completion(.failure(.cookieInvalid(retcode, message)))
+                            completion(.failure(.cookieInvalid(
+                                retcode,
+                                message
+                            )))
                         case 10103, 10104:
                             print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                            completion(.failure(.unmachedAccountCookie(
+                                retcode,
+                                message
+                            )))
                         case 1008:
                             print("fail 1008")
-                            completion(.failure(.accountInvalid(retcode, message)))
+                            completion(.failure(.accountInvalid(
+                                retcode,
+                                message
+                            )))
                         case -1, 10102:
                             print("fail -1")
-                            completion(.failure(.dataNotFound(retcode, message)))
+                            completion(.failure(.dataNotFound(
+                                retcode,
+                                message
+                            )))
                         case 1034:
                             completion(.failure(.accountAbnormal(retcode)))
                         default:
                             print("unknowerror")
-                            completion(.failure(.unknownError(retcode, message)))
+                            completion(.failure(.unknownError(
+                                retcode,
+                                message
+                            )))
                         }
 
-                    case .failure(let requestError):
+                    case let .failure(requestError):
 
                         switch requestError {
-                        case .decodeError(let message):
+                        case let .decodeError(message):
                             completion(.failure(.decodeError(message)))
                         default:
                             completion(.failure(.requestError(requestError)))
@@ -92,14 +107,13 @@ extension API {
         ///     - uid: 用户UID
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
-        static func getMultiTokenByLoginTicket (
+        static func getMultiTokenByLoginTicket(
             loginTicket: String,
             loginUid: String,
             completion: @escaping (
                 Result<MultiToken, FetchError>
             ) -> ()
         ) {
-
             // 请求类别
             let urlStr = "auth/api/getMultiTokenByLoginTicket"
             // 请求
@@ -111,8 +125,7 @@ extension API {
                     loginUid: loginUid
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         let userData = requestResult.data
                         let retcode = requestResult.retcode
@@ -124,27 +137,42 @@ extension API {
                             completion(.success(userData!))
                         case 10001:
                             print("fail 10001")
-                            completion(.failure(.cookieInvalid(retcode, message)))
+                            completion(.failure(.cookieInvalid(
+                                retcode,
+                                message
+                            )))
                         case 10103, 10104:
                             print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                            completion(.failure(.unmachedAccountCookie(
+                                retcode,
+                                message
+                            )))
                         case 1008:
                             print("fail 1008")
-                            completion(.failure(.accountInvalid(retcode, message)))
+                            completion(.failure(.accountInvalid(
+                                retcode,
+                                message
+                            )))
                         case -1, 10102:
                             print("fail -1")
-                            completion(.failure(.dataNotFound(retcode, message)))
+                            completion(.failure(.dataNotFound(
+                                retcode,
+                                message
+                            )))
                         case 1034:
                             completion(.failure(.accountAbnormal(retcode)))
                         default:
                             print("unknowerror")
-                            completion(.failure(.unknownError(retcode, message)))
+                            completion(.failure(.unknownError(
+                                retcode,
+                                message
+                            )))
                         }
 
-                    case .failure(let requestError):
+                    case let .failure(requestError):
 
                         switch requestError {
-                        case .decodeError(let message):
+                        case let .decodeError(message):
                             completion(.failure(.decodeError(message)))
                         default:
                             completion(.failure(.requestError(requestError)))
@@ -160,7 +188,7 @@ extension API {
         ///     - uid: 用户UID
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
-        static func fetchSimplifiedInfos (
+        static func fetchSimplifiedInfos(
             cookie: String,
             completion: @escaping (
                 SimplifiedUserDataResult
@@ -175,8 +203,7 @@ extension API {
                     cookie
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         let userData = requestResult.data
                         let retcode = requestResult.retcode
@@ -185,32 +212,48 @@ extension API {
                         switch requestResult.retcode {
                         case 0:
                             print("get data succeed")
-                            if let simplifiedUserData = SimplifiedUserData(widgetUserData: userData!) {
+                            if let simplifiedUserData =
+                                SimplifiedUserData(widgetUserData: userData!) {
                                 completion(.success(simplifiedUserData))
                             } else {
                                 completion(.failure(.decodeError("解码错误")))
                             }
                         case 10001:
                             print("fail 10001")
-                            completion(.failure(.cookieInvalid(retcode, message)))
+                            completion(.failure(.cookieInvalid(
+                                retcode,
+                                message
+                            )))
                         case 10103, 10104:
                             print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                            completion(.failure(.unmachedAccountCookie(
+                                retcode,
+                                message
+                            )))
                         case 1008:
                             print("fail 1008")
-                            completion(.failure(.accountInvalid(retcode, message)))
+                            completion(.failure(.accountInvalid(
+                                retcode,
+                                message
+                            )))
                         case -1, 10102:
                             print("fail -1")
-                            completion(.failure(.dataNotFound(retcode, message)))
+                            completion(.failure(.dataNotFound(
+                                retcode,
+                                message
+                            )))
                         case 1034:
                             completion(.failure(.accountAbnormal(retcode)))
                         default:
                             print("unknowerror")
-                            completion(.failure(.unknownError(retcode, message)))
+                            completion(.failure(.unknownError(
+                                retcode,
+                                message
+                            )))
                         }
-                    case .failure(let requestError):
+                    case let .failure(requestError):
                         switch requestError {
-                        case .decodeError(let message):
+                        case let .decodeError(message):
                             completion(.failure(.decodeError(message)))
                         default:
                             completion(.failure(.requestError(requestError)))
@@ -226,7 +269,7 @@ extension API {
         ///     - uid: 用户UID
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
-        static func fetchAllAvatarInfos (
+        static func fetchAllAvatarInfos(
             region: Region,
             serverID: String,
             uid: String,
@@ -244,7 +287,7 @@ extension API {
                     s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
                 }
                 let t = String(Int(Date().timeIntervalSince1970))
-                let r = String(Int.random(in: 100000..<200000))
+                let r = String(Int.random(in: 100000 ..< 200000))
                 let q = ""
                 let c = "salt=\(s)&t=\(t)&r=\(r)&b=\(body)&q=\(q)".md5
                 print(t + "," + r + "," + c)
@@ -291,8 +334,7 @@ extension API {
                     ds: get_ds_token(body: bodyString)
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         let userData = requestResult.data
                         let retcode = requestResult.retcode
@@ -304,27 +346,42 @@ extension API {
                             completion(.success(userData!))
                         case 10001:
                             print("fail 10001")
-                            completion(.failure(.cookieInvalid(retcode, message)))
+                            completion(.failure(.cookieInvalid(
+                                retcode,
+                                message
+                            )))
                         case 10103, 10104:
                             print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                            completion(.failure(.unmachedAccountCookie(
+                                retcode,
+                                message
+                            )))
                         case 1008:
                             print("fail 1008")
-                            completion(.failure(.accountInvalid(retcode, message)))
+                            completion(.failure(.accountInvalid(
+                                retcode,
+                                message
+                            )))
                         case -1, 10102:
                             print("fail -1")
-                            completion(.failure(.dataNotFound(retcode, message)))
+                            completion(.failure(.dataNotFound(
+                                retcode,
+                                message
+                            )))
                         case 1034:
                             completion(.failure(.accountAbnormal(retcode)))
                         default:
                             print("unknownerror")
-                            completion(.failure(.unknownError(retcode, message)))
+                            completion(.failure(.unknownError(
+                                retcode,
+                                message
+                            )))
                         }
 
-                    case .failure(let requestError):
+                    case let .failure(requestError):
 
                         switch requestError {
-                        case .decodeError(let message):
+                        case let .decodeError(message):
                             completion(.failure(.decodeError(message)))
                         default:
                             completion(.failure(.requestError(requestError)))
@@ -340,7 +397,7 @@ extension API {
         ///     - completion: 数据
         ///
         /// 只需要Cookie和服务器地区即可返回游戏内的帐号信息等。使用时不知为何需要先随便发送一个请求。
-        static func getUserGameRolesByCookie (
+        static func getUserGameRolesByCookie(
             _ cookie: String,
             _ region: Region,
             completion: @escaping (
@@ -348,88 +405,153 @@ extension API {
             ) -> ()
         ) {
             let urlStr = "binding/api/getUserGameRolesByCookie"
-            
-            guard cookie != "" else { completion(.failure(.noFetchInfo)); print("no cookie got"); return}
-            
+
+            guard cookie != ""
+            else {
+                completion(.failure(.noFetchInfo)); print("no cookie got"); return
+            }
+
             switch region {
             case .cn:
                 // 先随便发送一个请求
-                API.Features.fetchInfos(region: region, serverID: "cn_gf01", uid: "12345678", cookie: cookie) { _ in
+                API.Features.fetchInfos(
+                    region: region,
+                    serverID: "cn_gf01",
+                    uid: "12345678",
+                    cookie: cookie
+                ) { _ in
                     HttpMethod<RequestAccountListResult>
-                        .gameAccountRequest(.get, urlStr, region, cookie, nil) { result in
+                        .gameAccountRequest(
+                            .get,
+                            urlStr,
+                            region,
+                            cookie,
+                            nil
+                        ) { result in
                             switch result {
-                            case .failure(let requestError):
+                            case let .failure(requestError):
                                 switch requestError {
-                                case .decodeError(let message):
+                                case let .decodeError(message):
                                     completion(.failure(.decodeError(message)))
                                 default:
-                                    completion(.failure(.requestError(requestError)))
+                                    completion(
+                                        .failure(.requestError(requestError))
+                                    )
                                 }
-                            case .success(let requestAccountResult):
+                            case let .success(requestAccountResult):
                                 print("request succeed")
                                 let accountListData = requestAccountResult.data
                                 let retcode = requestAccountResult.retcode
                                 let message = requestAccountResult.message
-                                
+
                                 switch retcode {
                                 case 0:
                                     print("get accountListData succeed")
                                     if accountListData!.list.isEmpty {
                                         completion(.failure(.accountUnbound))
                                     } else {
-                                        completion(.success(accountListData!.list))
+                                        completion(.success(
+                                            accountListData!
+                                                .list
+                                        ))
                                     }
                                 case 10001:
                                     print("fail 10001")
-                                    completion(.failure(.cookieInvalid(retcode, message)))
+                                    completion(.failure(.cookieInvalid(
+                                        retcode,
+                                        message
+                                    )))
                                 case -100:
                                     print("fail -100")
-                                    completion(.failure(.notLoginError(retcode, message)))
+                                    completion(.failure(.notLoginError(
+                                        retcode,
+                                        message
+                                    )))
                                 case 1034:
-                                    completion(.failure(.accountAbnormal(retcode)))
+                                    completion(
+                                        .failure(.accountAbnormal(retcode))
+                                    )
                                 default:
                                     print("unknowerror")
-                                    completion(.failure(.unknownError(retcode, message)))
+                                    completion(.failure(.unknownError(
+                                        retcode,
+                                        message
+                                    )))
                                 }
                             }
                         }
                 }
             case .global:
-                
+
                 var accounts: [FetchedAccount] = []
                 let group = DispatchGroup()
                 let globalServers: [Server] = [.cht, .asia, .eu, .us]
                 globalServers.forEach { server in
                     group.enter()
                     // 先随便发送一个请求
-                    API.Features.fetchInfos(region: region, serverID: server.id, uid: "12345678", cookie: cookie) { _ in
+                    API.Features.fetchInfos(
+                        region: region,
+                        serverID: server.id,
+                        uid: "12345678",
+                        cookie: cookie
+                    ) { _ in
                         HttpMethod<RequestAccountListResult>
-                            .gameAccountRequest(.get, urlStr, region, cookie, server.id) { result in
+                            .gameAccountRequest(
+                                .get,
+                                urlStr,
+                                region,
+                                cookie,
+                                server.id
+                            ) { result in
                                 group.enter()
                                 switch result {
-                                case .failure(let requestError):
-                                    completion(.failure(.requestError(requestError)))
-                                case .success(let requestAccountResult):
+                                case let .failure(requestError):
+                                    completion(
+                                        .failure(.requestError(requestError))
+                                    )
+                                case let .success(requestAccountResult):
                                     print("request succeed")
-                                    let accountListData = requestAccountResult.data
+                                    let accountListData = requestAccountResult
+                                        .data
                                     let retcode = requestAccountResult.retcode
                                     let message = requestAccountResult.message
-                                    
+
                                     switch retcode {
                                     case 0:
-                                        accounts.append(contentsOf: accountListData!.list)
+                                        accounts
+                                            .append(
+                                                contentsOf: accountListData!
+                                                    .list
+                                            )
                                         group.leave()
                                     case 10001:
                                         print("fail 10001")
-                                        completion(.failure(.cookieInvalid(retcode, message)))
+                                        completion(
+                                            .failure(.cookieInvalid(
+                                                retcode,
+                                                message
+                                            ))
+                                        )
                                     case -100:
                                         print("fail -100")
-                                        completion(.failure(.notLoginError(retcode, message)))
+                                        completion(
+                                            .failure(.notLoginError(
+                                                retcode,
+                                                message
+                                            ))
+                                        )
                                     case 1034:
-                                        completion(.failure(.accountAbnormal(retcode)))
+                                        completion(
+                                            .failure(.accountAbnormal(retcode))
+                                        )
                                     default:
                                         print("unknowerror")
-                                        completion(.failure(.unknownError(retcode, message)))
+                                        completion(
+                                            .failure(.unknownError(
+                                                retcode,
+                                                message
+                                            ))
+                                        )
                                     }
                                 }
                                 group.leave()
@@ -437,7 +559,8 @@ extension API {
                     }
                 }
                 group.notify(queue: DispatchQueue.main) {
-                    if accounts.isEmpty { completion(.failure(.accountUnbound)) }
+                    if accounts
+                        .isEmpty { completion(.failure(.accountUnbound)) }
                     else { completion(.success(accounts)) }
                 }
             }
@@ -450,7 +573,7 @@ extension API {
         ///     - uid: 用户UID
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
-        static func fetchBasicInfos (
+        static func fetchBasicInfos(
             region: Region,
             serverID: String,
             uid: String,
@@ -477,8 +600,7 @@ extension API {
                     cookie
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         let basicData = requestResult.data
                         let retcode = requestResult.retcode
@@ -490,30 +612,48 @@ extension API {
                             completion(.success(basicData!))
                         case 10001:
                             print("fail 10001")
-                            completion(.failure(.cookieInvalid(retcode, message)))
+                            completion(.failure(.cookieInvalid(
+                                retcode,
+                                message
+                            )))
                         case 10103, 10104:
                             print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                            completion(.failure(.unmachedAccountCookie(
+                                retcode,
+                                message
+                            )))
                         case 1008:
                             print("fail 1008")
-                            completion(.failure(.accountInvalid(retcode, message)))
+                            completion(.failure(.accountInvalid(
+                                retcode,
+                                message
+                            )))
                         case -1:
                             print("fail -1")
-                            completion(.failure(.dataNotFound(retcode, message)))
+                            completion(.failure(.dataNotFound(
+                                retcode,
+                                message
+                            )))
                         case 10102:
                             print("fail 10102")
-                            completion(.failure(.dataNotFound(retcode, message)))
+                            completion(.failure(.dataNotFound(
+                                retcode,
+                                message
+                            )))
                         case 1034:
                             completion(.failure(.accountAbnormal(retcode)))
                         default:
                             print("unknowerror")
-                            completion(.failure(.unknownError(retcode, message)))
+                            completion(.failure(.unknownError(
+                                retcode,
+                                message
+                            )))
                         }
 
-                    case .failure(let requestError):
+                    case let .failure(requestError):
 
                         switch requestError {
-                        case .decodeError(let message):
+                        case let .decodeError(message):
                             completion(.failure(.decodeError(message)))
                         default:
                             completion(.failure(.requestError(requestError)))
@@ -526,11 +666,11 @@ extension API {
         /// - Parameters:
         ///     - month: 月份
         ///     - uid: 用户UID
-        ///     - serverID: 服务器ID     
+        ///     - serverID: 服务器ID
         ///     - region: 服务器地区
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
-        static func fetchLedgerInfos (
+        static func fetchLedgerInfos(
             month: Int,
             uid: String,
             serverID: String,
@@ -565,8 +705,7 @@ extension API {
                     cookie
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         let basicData = requestResult.data
                         let retcode = requestResult.retcode
@@ -578,29 +717,47 @@ extension API {
                             completion(.success(basicData!))
                         case 10001:
                             print("fail 10001")
-                            completion(.failure(.cookieInvalid(retcode, message)))
+                            completion(.failure(.cookieInvalid(
+                                retcode,
+                                message
+                            )))
                         case 10103, 10104:
                             print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(retcode, message)))
+                            completion(.failure(.unmachedAccountCookie(
+                                retcode,
+                                message
+                            )))
                         case 1008:
                             print("fail 1008")
-                            completion(.failure(.accountInvalid(retcode, message)))
+                            completion(.failure(.accountInvalid(
+                                retcode,
+                                message
+                            )))
                         case -1, 10102:
                             print("fail -1")
-                            completion(.failure(.dataNotFound(retcode, message)))
+                            completion(.failure(.dataNotFound(
+                                retcode,
+                                message
+                            )))
                         case -100:
-                            completion(.failure(.notLoginError(retcode, message)))
+                            completion(.failure(.notLoginError(
+                                retcode,
+                                message
+                            )))
                         case 1034:
                             completion(.failure(.accountAbnormal(retcode)))
                         default:
                             print("unknowerror")
-                            completion(.failure(.unknownError(retcode, message)))
+                            completion(.failure(.unknownError(
+                                retcode,
+                                message
+                            )))
                         }
 
-                    case .failure(let requestError):
+                    case let .failure(requestError):
 
                         switch requestError {
-                        case .decodeError(let message):
+                        case let .decodeError(message):
                             completion(.failure(.decodeError(message)))
                         default:
                             completion(.failure(.requestError(requestError)))
@@ -610,83 +767,99 @@ extension API {
         }
 
         #if !os(watchOS)
-        /// 获取深渊信息
-        /// - Parameters:
-        ///     - region: 服务器地区
-        ///     - serverID: 服务器ID
-        ///     - uid: 用户UID
-        ///     - cookie: 用户Cookie
-        ///     - completion: 数据
-        static func fetchSpiralAbyssInfos (
-            region: Region,
-            serverID: String,
-            uid: String,
-            cookie: String,
-            scheduleType: String,
-            completion: @escaping (
-                SpiralAbyssDetailFetchResult
-            ) -> ()
-        ) {
-            // 请求类别
-            let urlStr = "game_record/app/genshin/api/spiralAbyss"
+            /// 获取深渊信息
+            /// - Parameters:
+            ///     - region: 服务器地区
+            ///     - serverID: 服务器ID
+            ///     - uid: 用户UID
+            ///     - cookie: 用户Cookie
+            ///     - completion: 数据
+            static func fetchSpiralAbyssInfos(
+                region: Region,
+                serverID: String,
+                uid: String,
+                cookie: String,
+                scheduleType: String,
+                completion: @escaping (
+                    SpiralAbyssDetailFetchResult
+                ) -> ()
+            ) {
+                // 请求类别
+                let urlStr = "game_record/app/genshin/api/spiralAbyss"
 
-            if (uid == "") || (cookie == "") {
-                completion(.failure(.noFetchInfo))
-            }
+                if (uid == "") || (cookie == "") {
+                    completion(.failure(.noFetchInfo))
+                }
 
-            // 请求
-            HttpMethod<SpiralAbyssDetailRequestResult>
-                .spiralAbyssRequest(
-                    .get,
-                    urlStr,
-                    region,
-                    serverID,
-                    uid,
-                    cookie,
-                    scheduleType
-                ) { result in
-                    switch result {
+                // 请求
+                HttpMethod<SpiralAbyssDetailRequestResult>
+                    .spiralAbyssRequest(
+                        .get,
+                        urlStr,
+                        region,
+                        serverID,
+                        uid,
+                        cookie,
+                        scheduleType
+                    ) { result in
+                        switch result {
+                        case let .success(requestResult):
+                            print("request succeed")
+                            let basicData = requestResult.data
+                            let retcode = requestResult.retcode
+                            let message = requestResult.message
 
-                    case .success(let requestResult):
-                        print("request succeed")
-                        let basicData = requestResult.data
-                        let retcode = requestResult.retcode
-                        let message = requestResult.message
+                            switch requestResult.retcode {
+                            case 0:
+                                print("get data succeed")
+                                completion(.success(basicData!))
+                            case 10001:
+                                print("fail 10001")
+                                completion(.failure(.cookieInvalid(
+                                    retcode,
+                                    message
+                                )))
+                            case 10103, 10104:
+                                print("fail nomatch")
+                                completion(.failure(.unmachedAccountCookie(
+                                    retcode,
+                                    message
+                                )))
+                            case 1008:
+                                print("fail 1008")
+                                completion(.failure(.accountInvalid(
+                                    retcode,
+                                    message
+                                )))
+                            case -1, 10102:
+                                print("fail -1")
+                                completion(.failure(.dataNotFound(
+                                    retcode,
+                                    message
+                                )))
+                            case 1034:
+                                completion(.failure(.accountAbnormal(retcode)))
+                            default:
+                                print("unknowerror")
+                                completion(.failure(.unknownError(
+                                    retcode,
+                                    message
+                                )))
+                            }
 
-                        switch requestResult.retcode {
-                        case 0:
-                            print("get data succeed")
-                            completion(.success(basicData!))
-                        case 10001:
-                            print("fail 10001")
-                            completion(.failure(.cookieInvalid(retcode, message)))
-                        case 10103, 10104:
-                            print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(retcode, message)))
-                        case 1008:
-                            print("fail 1008")
-                            completion(.failure(.accountInvalid(retcode, message)))
-                        case -1, 10102:
-                            print("fail -1")
-                            completion(.failure(.dataNotFound(retcode, message)))
-                        case 1034:
-                            completion(.failure(.accountAbnormal(retcode)))
-                        default:
-                            print("unknowerror")
-                            completion(.failure(.unknownError(retcode, message)))
-                        }
+                        case let .failure(requestError):
 
-                    case .failure(let requestError):
-
-                        switch requestError {
-                        case .decodeError(let message):
-                            completion(.failure(.decodeError(message)))
-                        default:
-                            completion(.failure(.requestError(requestError)))
+                            switch requestError {
+                            case let .decodeError(message):
+                                completion(.failure(.decodeError(message)))
+                            default:
+                                completion(
+                                    .failure(.requestError(requestError))
+                                )
+                            }
                         }
                     }
-                }
-        }
+            }
         #endif
     }
 }

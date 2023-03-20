@@ -7,15 +7,21 @@
 
 import Foundation
 
+// MARK: - RequestAccountListResult
+
 struct RequestAccountListResult: Codable {
     let retcode: Int
     let message: String
     let data: AccountListData?
 }
 
+// MARK: - AccountListData
+
 struct AccountListData: Codable {
     let list: [FetchedAccount]
 }
+
+// MARK: - FetchedAccount
 
 struct FetchedAccount: Codable, Hashable, Identifiable {
     let region: String
@@ -26,6 +32,6 @@ struct FetchedAccount: Codable, Hashable, Identifiable {
     let regionName: String
     let gameUid: String
     let isChosen: Bool
-    
+
     var id: String { gameUid }
 }

@@ -8,28 +8,67 @@
 import SwiftUI
 import WidgetKit
 
+// MARK: - LockScreenExpeditionWidget
+
 @available(iOSApplicationExtension 16.0, *)
 struct LockScreenExpeditionWidget: Widget {
     let kind: String = "LockScreenExpeditionWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectOnlyAccountIntent.self, provider: LockScreenWidgetProvider(recommendationsTag: "的探索派遣")) { entry in
+        IntentConfiguration(
+            kind: kind,
+            intent: SelectOnlyAccountIntent.self,
+            provider: LockScreenWidgetProvider(recommendationsTag: "的探索派遣")
+        ) { entry in
             LockScreenExpeditionWidgetView(entry: entry)
         }
         .configurationDisplayName("探索派遣")
         .description("探索派遣完成情况")
         #if os(watchOS)
-        .supportedFamilies([.accessoryCircular, .accessoryCorner])
+            .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else
-        .supportedFamilies([.accessoryCircular])
+            .supportedFamilies([.accessoryCircular])
         #endif
     }
 }
 
-@available (iOS 16.0, *)
+// MARK: - LockScreenExpeditionWidgetView
+
+@available(iOS 16.0, *)
 struct LockScreenExpeditionWidgetView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
+    @Environment(\.widgetFamily)
+    var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
+    var body: some View {
+        Group {
+            switch dataKind {
+            case let .normal(result):
+                switch family {
+                #if os(watchOS)
+                    case .accessoryCorner:
+                        LockScreenExpeditionWidgetCorner(result: result)
+                #endif
+                case .accessoryCircular:
+                    LockScreenExpeditionWidgetCircular(result: result)
+                default:
+                    EmptyView()
+                }
+            case let .simplified(result):
+                switch family {
+                #if os(watchOS)
+                    case .accessoryCorner:
+                        LockScreenExpeditionWidgetCorner(result: result)
+                #endif
+                case .accessoryCircular:
+                    LockScreenExpeditionWidgetCircular(result: result)
+                default:
+                    EmptyView()
+                }
+            }
+        }
+        .widgetURL(url)
+    }
+
     var dataKind: WidgetDataKind { entry.widgetDataKind }
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }
@@ -40,57 +79,29 @@ struct LockScreenExpeditionWidgetView: View {
             components.scheme = "ophelperwidget"
             components.host = "accountSetting"
             components.queryItems = [
-                .init(name: "accountUUIDString", value: entry.accountUUIDString)
+                .init(
+                    name: "accountUUIDString",
+                    value: entry.accountUUIDString
+                ),
             ]
             return components.url!
         }()
 
         switch entry.widgetDataKind {
-        case .normal(let result):
+        case let .normal(result):
             switch result {
-            case .success(_):
+            case .success:
                 return nil
-            case .failure(_):
+            case .failure:
                 return errorURL
             }
-        case .simplified(let result):
+        case let .simplified(result):
             switch result {
-            case .success(_):
+            case .success:
                 return nil
-            case .failure(_):
+            case .failure:
                 return errorURL
             }
         }
-    }
-
-
-    var body: some View {
-        Group {
-            switch dataKind {
-            case .normal(let result):
-                switch family {
-                #if os(watchOS)
-                case .accessoryCorner:
-                    LockScreenExpeditionWidgetCorner(result: result)
-                #endif
-                case .accessoryCircular:
-                    LockScreenExpeditionWidgetCircular(result: result)
-                default:
-                    EmptyView()
-                }
-            case .simplified(let result):
-                switch family {
-                #if os(watchOS)
-                case .accessoryCorner:
-                    LockScreenExpeditionWidgetCorner(result: result)
-                #endif
-                case .accessoryCircular:
-                    LockScreenExpeditionWidgetCircular(result: result)
-                default:
-                    EmptyView()
-                }
-            }
-        }
-        .widgetURL(url)
     }
 }

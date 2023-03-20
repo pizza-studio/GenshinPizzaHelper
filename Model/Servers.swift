@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Server
+
 // 服务器类型
 enum Server: String, CaseIterable, Identifiable {
     case china = "天空岛"
@@ -15,6 +17,8 @@ enum Server: String, CaseIterable, Identifiable {
     case eu = "Europe"
     case asia = "Asia"
     case cht = "TW/HK/MO"
+
+    // MARK: Internal
 
     var id: String {
         switch self {
@@ -35,13 +39,13 @@ enum Server: String, CaseIterable, Identifiable {
 
     var region: Region {
         switch self {
-        case .china, .bilibili:
+        case .bilibili, .china:
             return .cn
-        case .us, .asia, .eu, .cht:
+        case .asia, .cht, .eu, .us:
             return .global
         }
     }
-    
+
     static func id(_ id: String) -> Self {
         switch id {
         case "cn_gf01":
@@ -63,30 +67,34 @@ enum Server: String, CaseIterable, Identifiable {
 
     func timeZone() -> TimeZone {
         switch self {
-        case .china, .bilibili, .asia, .cht:
-            return .init(secondsFromGMT: 8*60*60) ?? .current
+        case .asia, .bilibili, .china, .cht:
+            return .init(secondsFromGMT: 8 * 60 * 60) ?? .current
         case .us:
-            return .init(secondsFromGMT: -5*60*60) ?? .current
+            return .init(secondsFromGMT: -5 * 60 * 60) ?? .current
         case .eu:
-            return .init(secondsFromGMT: 1*60*60) ?? .current
+            return .init(secondsFromGMT: 1 * 60 * 60) ?? .current
         }
     }
 }
 
-extension Server: RawRepresentable {
+// MARK: RawRepresentable
 
-}
+extension Server: RawRepresentable {}
+
+// MARK: - Region
 
 // 地区类型，用于区分请求的Host URL
 enum Region: Identifiable {
-    var id: Int {
-        hashValue
-    }
-
     // 国服，含官服和B服
     case cn
     // 国际服
     case global
+
+    // MARK: Internal
+
+    var id: Int {
+        hashValue
+    }
 
     var value: String {
         switch self {
@@ -102,10 +110,10 @@ enum Region: Identifiable {
 extension AccountConfiguration {
     var server: Server {
         get {
-            return Server(rawValue: self.serverRawValue!)!
+            Server(rawValue: serverRawValue!)!
         }
         set {
-            self.serverRawValue = newValue.rawValue
+            serverRawValue = newValue.rawValue
         }
     }
 }

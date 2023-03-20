@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+// MARK: - LockScreenResinWidgetRectangular
+
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataContainer {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+struct LockScreenResinWidgetRectangular<T>: View
+    where T: SimplifiedUserDataContainer {
+    @Environment(\.widgetRenderingMode)
+    var widgetRenderingMode
 
     let result: SimplifiedUserDataContainerResult<T>
 
@@ -17,7 +21,7 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
         switch widgetRenderingMode {
         case .fullColor:
             switch result {
-            case .success(let data):
+            case let .success(data):
                 HStack {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
@@ -26,7 +30,7 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
-                                .font(.system(size: size*1/2))
+                                .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
@@ -36,15 +40,17 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                         } else {
-                            Text("\(data.resinInfo.recoveryTime.completeTimePointFromNow()) 回满")
-                                .font(.footnote)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .foregroundColor(.gray)
+                            Text(
+                                "\(data.resinInfo.recoveryTime.completeTimePointFromNow()) 回满"
+                            )
+                            .font(.footnote)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .foregroundColor(.gray)
                         }
                     }
                     Spacer()
                 }
-            case .failure(_):
+            case .failure:
                 HStack {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
@@ -53,7 +59,7 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
-                                .font(.system(size: size*1/2))
+                                .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
@@ -67,7 +73,7 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
             }
         default:
             switch result {
-            case .success(let data):
+            case let .success(data):
                 HStack {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
@@ -76,7 +82,7 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
-                                .font(.system(size: size*1/2))
+                                .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .foregroundColor(.primary)
@@ -87,15 +93,17 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
                                 .fixedSize(horizontal: false, vertical: true)
                                 .foregroundColor(.gray)
                         } else {
-                            Text("\(data.resinInfo.recoveryTime.completeTimePointFromNow()) 回满")
-                                .font(.footnote)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .foregroundColor(.gray)
+                            Text(
+                                "\(data.resinInfo.recoveryTime.completeTimePointFromNow()) 回满"
+                            )
+                            .font(.footnote)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .foregroundColor(.gray)
                         }
                     }
                     Spacer()
                 }
-            case .failure(_):
+            case .failure:
                 HStack {
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
@@ -104,7 +112,7 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
-                                .font(.system(size: size*1/2))
+                                .font(.system(size: size * 1 / 2))
                                 .minimumScaleFactor(0.5)
                         }
                         .widgetAccentable()
@@ -117,11 +125,10 @@ struct LockScreenResinWidgetRectangular<T>: View where T: SimplifiedUserDataCont
                 }
             }
         }
-
     }
 }
 
-
+// MARK: - FitSystemFont
 
 struct FitSystemFont: ViewModifier {
     var lineLimit: Int
@@ -131,16 +138,30 @@ struct FitSystemFont: ViewModifier {
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             content
-                .font(.system(size: min(geometry.size.width, geometry.size.height) * percentage))
+                .font(.system(size: min(
+                    geometry.size.width,
+                    geometry.size.height
+                ) * percentage))
                 .lineLimit(self.lineLimit)
                 .minimumScaleFactor(self.minimumScaleFactor)
-                .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
+                .position(
+                    x: geometry.frame(in: .local).midX,
+                    y: geometry.frame(in: .local).midY
+                )
         }
     }
 }
 
 extension View {
-    func fitSystemFont(lineLimit: Int = 1, minimumScaleFactor: CGFloat = 0.01, percentage: CGFloat = 1) -> ModifiedContent<Self, FitSystemFont> {
-        return modifier(FitSystemFont(lineLimit: lineLimit, minimumScaleFactor: minimumScaleFactor, percentage: percentage))
+    func fitSystemFont(
+        lineLimit: Int = 1,
+        minimumScaleFactor: CGFloat = 0.01,
+        percentage: CGFloat = 1
+    ) -> ModifiedContent<Self, FitSystemFont> {
+        modifier(FitSystemFont(
+            lineLimit: lineLimit,
+            minimumScaleFactor: minimumScaleFactor,
+            percentage: percentage
+        ))
     }
 }

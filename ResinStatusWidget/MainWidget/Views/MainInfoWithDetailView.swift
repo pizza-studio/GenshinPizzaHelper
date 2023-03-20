@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// MARK: - MainInfoWithDetail
+
 struct MainInfoWithDetail: View {
     let userData: UserData
     let viewConfig: WidgetViewConfiguration
@@ -16,8 +18,12 @@ struct MainInfoWithDetail: View {
     var body: some View {
         HStack {
             Spacer()
-            MainInfo(userData: userData, viewConfig: viewConfig, accountName: accountName)
-                .padding()
+            MainInfo(
+                userData: userData,
+                viewConfig: viewConfig,
+                accountName: accountName
+            )
+            .padding()
             Spacer()
             DetailInfo(userData: userData, viewConfig: viewConfig)
                 .padding([.vertical])
@@ -27,6 +33,8 @@ struct MainInfoWithDetail: View {
     }
 }
 
+// MARK: - MainInfoWithDetailSimplified
+
 struct MainInfoWithDetailSimplified: View {
     let userData: SimplifiedUserData
     let viewConfig: WidgetViewConfiguration
@@ -35,8 +43,12 @@ struct MainInfoWithDetailSimplified: View {
     var body: some View {
         HStack {
             Spacer()
-            MainInfoSimplified(userData: userData, viewConfig: viewConfig, accountName: accountName)
-                .padding()
+            MainInfoSimplified(
+                userData: userData,
+                viewConfig: viewConfig,
+                accountName: accountName
+            )
+            .padding()
             Spacer()
             DetailInfoSimplified(userData: userData, viewConfig: viewConfig)
                 .padding([.vertical])

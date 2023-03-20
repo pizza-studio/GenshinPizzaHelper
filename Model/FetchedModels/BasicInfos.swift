@@ -8,10 +8,6 @@
 import Foundation
 
 struct BasicInfos: Codable {
-    var stats: Stats
-    var worldExplorations: [WorldExploration]
-    var avatars: [Avatar]
-
     struct Stats: Codable {
         /// 解锁角色数
         var avatarNumber: Int
@@ -46,6 +42,12 @@ struct BasicInfos: Codable {
     }
 
     struct WorldExploration: Codable {
+        struct Offering: Codable {
+            var name: String
+            var level: Int
+            var icon: String
+        }
+
         var id: Int
         var backgroundImage: String
         var mapUrl: String
@@ -59,12 +61,6 @@ struct BasicInfos: Codable {
         var cover: String
         var name: String
         var strategyUrl: String
-
-        struct Offering: Codable {
-            var name: String
-            var level: Int
-            var icon: String
-        }
     }
 
     struct Avatar: Codable, Identifiable {
@@ -79,4 +75,8 @@ struct BasicInfos: Codable {
         var name: String
         var activedConstellationNum: Int
     }
+
+    var stats: Stats
+    var worldExplorations: [WorldExploration]
+    var avatars: [Avatar]
 }

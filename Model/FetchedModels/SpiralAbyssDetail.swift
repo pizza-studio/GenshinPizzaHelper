@@ -7,7 +7,73 @@
 
 import Foundation
 
+// MARK: - SpiralAbyssDetail
+
 struct SpiralAbyssDetail: Codable {
+    struct CharacterRankModel: Codable {
+        /// 角色ID
+        var avatarId: Int
+        /// 排名对应的值
+        var value: Int
+        /// 角色头像
+        var avatarIcon: String
+        /// 角色星级（4/5）
+        var rarity: Int
+    }
+
+    struct Floor: Codable {
+        struct Level: Codable {
+            struct Battle: Codable {
+                struct Avatar: Codable {
+                    /// 角色ID
+                    var id: Int
+                    /// 角色头像
+                    var icon: String
+                    /// 角色等级
+                    var level: Int
+                    /// 角色星级
+                    var rarity: Int
+                }
+
+                /// 半间序数，1为上半，2为下半
+                var index: Int
+                /// 出战角色
+                var avatars: [Avatar]
+                /// 完成时间戳since1970
+                var timestamp: String
+            }
+
+            /// 本间星数
+            var star: Int
+            /// 本间满星数（3）
+            var maxStar: Int
+            /// 上半间与下半间
+            var battles: [Battle]
+            /// 本间序数，第几件
+            var index: Int
+        }
+
+        /// 是否解锁
+        var isUnlock: Bool
+        /// ？
+        var settleTime: String
+        /// 本层星数
+        var star: Int
+        /// 各间数据
+        var levels: [Level]
+        /// 满星数（=9）
+        var maxStar: Int
+        /// 废弃
+        var icon: String
+        /// 第几层，楼层序数（9,10,11,12）
+        var index: Int
+
+        /// 是否满星
+        var gainAllStar: Bool {
+            star == maxStar
+        }
+    }
+
     /// 元素爆发排名（只有第一个）
     var energySkillRank: [CharacterRankModel]
     /// 本期深渊开始时间
@@ -37,79 +103,19 @@ struct SpiralAbyssDetail: Codable {
     /// 出站次数
     var revealRank: [CharacterRankModel]
     var totalStar: Int
-
-    struct CharacterRankModel: Codable{
-        /// 角色ID
-        var avatarId: Int
-        /// 排名对应的值
-        var value: Int
-        /// 角色头像
-        var avatarIcon: String
-        /// 角色星级（4/5）
-        var rarity: Int
-    }
-
-    struct Floor: Codable {
-        /// 是否解锁
-        var isUnlock: Bool
-        /// ？
-        var settleTime: String
-        /// 本层星数
-        var star: Int
-        /// 各间数据
-        var levels: [Level]
-        /// 满星数（=9）
-        var maxStar: Int
-        /// 废弃
-        var icon: String
-        /// 第几层，楼层序数（9,10,11,12）
-        var index: Int
-        /// 是否满星
-        var gainAllStar: Bool {
-            star == maxStar
-        }
-
-        struct Level: Codable {
-            /// 本间星数
-            var star: Int
-            /// 本间满星数（3）
-            var maxStar: Int
-            /// 上半间与下半间
-            var battles: [Battle]
-            /// 本间序数，第几件
-            var index: Int
-
-            struct Battle: Codable {
-                /// 半间序数，1为上半，2为下半
-                var index: Int
-                /// 出战角色
-                var avatars: [Avatar]
-                /// 完成时间戳since1970
-                var timestamp: String
-
-                struct Avatar: Codable {
-                    /// 角色ID
-                    var id: Int
-                    /// 角色头像
-                    var icon: String
-                    /// 角色等级
-                    var level: Int
-                    /// 角色星级
-                    var rarity: Int
-                }
-            }
-        }
-    }
 }
 
-struct AccountSpiralAbyssDetail {
-    let this: SpiralAbyssDetail
-    let last: SpiralAbyssDetail
+// MARK: - AccountSpiralAbyssDetail
 
+struct AccountSpiralAbyssDetail {
     enum WhichSeason {
         case this
         case last
     }
+
+    let this: SpiralAbyssDetail
+    let last: SpiralAbyssDetail
+
     func get(_ whichSeason: WhichSeason) -> SpiralAbyssDetail {
         switch whichSeason {
         case .this:

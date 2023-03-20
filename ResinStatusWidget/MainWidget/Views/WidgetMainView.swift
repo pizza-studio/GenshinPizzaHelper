@@ -9,23 +9,39 @@ import SwiftUI
 import WidgetKit
 
 struct WidgetMainView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
+    @Environment(\.widgetFamily)
+    var family: WidgetFamily
     var userData: UserData
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
-    
+
     var body: some View {
         switch family {
         case .systemSmall:
-            MainInfo(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
-                .padding()
+            MainInfo(
+                userData: userData,
+                viewConfig: viewConfig,
+                accountName: viewConfig.showAccountName ? accountName : nil
+            )
+            .padding()
         case .systemMedium:
-            MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
+            MainInfoWithDetail(
+                userData: userData,
+                viewConfig: viewConfig,
+                accountName: viewConfig.showAccountName ? accountName : nil
+            )
         case .systemLarge:
-            LargeWidgetView(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
+            LargeWidgetView(
+                userData: userData,
+                viewConfig: viewConfig,
+                accountName: viewConfig.showAccountName ? accountName : nil
+            )
         default:
-            MainInfoWithDetail(userData: userData, viewConfig: viewConfig, accountName: viewConfig.showAccountName ? accountName : nil)
+            MainInfoWithDetail(
+                userData: userData,
+                viewConfig: viewConfig,
+                accountName: viewConfig.showAccountName ? accountName : nil
+            )
         }
     }
 }
-

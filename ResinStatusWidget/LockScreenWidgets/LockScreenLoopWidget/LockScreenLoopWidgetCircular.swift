@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+// MARK: - LockScreenLoopWidgetCircular
+
 @available(iOSApplicationExtension 16.0, *)
 struct LockScreenLoopWidgetCircular: View {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    @Environment(\.widgetRenderingMode)
+    var widgetRenderingMode
     let result: FetchResult
 
     let showWeeklyBosses: Bool
@@ -52,9 +55,12 @@ struct LockScreenLoopWidgetCircular: View {
     }
 }
 
+// MARK: - SimplifiedLockScreenLoopWidgetCircular
+
 @available(iOSApplicationExtension 16.0, *)
 struct SimplifiedLockScreenLoopWidgetCircular: View {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+    @Environment(\.widgetRenderingMode)
+    var widgetRenderingMode
     let result: SimplifiedUserDataResult
 
     let showWeeklyBosses: Bool

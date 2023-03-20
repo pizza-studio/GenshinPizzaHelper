@@ -7,14 +7,15 @@
 
 import SwiftUI
 
+// MARK: - ContactUsView
+
 struct ContactUsView: View {
-    @State private var isHakubillDetailShow = false
-    @State private var isLavaDetailShow = false
+    // MARK: Internal
 
     var body: some View {
         List {
             // developer - lava
-            Section (header: Text("开发者")) {
+            Section(header: Text("开发者")) {
                 HStack {
                     Image("avatar.lava")
                         .resizable()
@@ -31,12 +32,16 @@ struct ContactUsView: View {
                 }
                 .onTapGesture {
                     simpleTaptic(type: .light)
-                    withAnimation() {
+                    withAnimation {
                         isLavaDetailShow.toggle()
                     }
                 }
                 if isLavaDetailShow {
-                    Link(destination: URL(string: "mailto:daicanglong@gmail.com")!) {
+                    Link(
+                        destination: URL(
+                            string: "mailto:daicanglong@gmail.com"
+                        )!
+                    ) {
                         Label {
                             Text("daicanglong@gmail.com")
                         } icon: {
@@ -45,7 +50,11 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: URL(string: "https://space.bilibili.com/13079935")!) {
+                    Link(
+                        destination: URL(
+                            string: "https://space.bilibili.com/13079935"
+                        )!
+                    ) {
                         Label {
                             Text("Bilibili主页")
                         } icon: {
@@ -54,7 +63,11 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: URL(string: "https://github.com/CanglongCl")!) {
+                    Link(
+                        destination: URL(
+                            string: "https://github.com/CanglongCl"
+                        )!
+                    ) {
                         Label {
                             Text("GitHub主页")
                         } icon: {
@@ -83,7 +96,7 @@ struct ContactUsView: View {
                 }
                 .onTapGesture {
                     simpleTaptic(type: .light)
-                    withAnimation() {
+                    withAnimation {
                         isHakubillDetailShow.toggle()
                     }
                 }
@@ -106,7 +119,13 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: isInstallation(urlString: "twitter://") ? URL(string: "twitter://user?id=890517369637847040")! : URL(string: "https://twitter.com/Haku_Bill")!) {
+                    Link(
+                        destination: isInstallation(urlString: "twitter://") ?
+                            URL(
+                                string: "twitter://user?id=890517369637847040"
+                            )! :
+                            URL(string: "https://twitter.com/Haku_Bill")!
+                    ) {
                         Label {
                             Text("Twitter主页")
                         } icon: {
@@ -115,7 +134,11 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: URL(string: "https://www.youtube.com/channel/UC0ABPKMmJa2hd5nNKh5HGqw")!) {
+                    Link(
+                        destination: URL(
+                            string: "https://www.youtube.com/channel/UC0ABPKMmJa2hd5nNKh5HGqw"
+                        )!
+                    ) {
                         Label {
                             Text("YouTube频道")
                         } icon: {
@@ -124,7 +147,11 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: URL(string: "https://space.bilibili.com/158463764")!) {
+                    Link(
+                        destination: URL(
+                            string: "https://space.bilibili.com/158463764"
+                        )!
+                    ) {
                         Label {
                             Text("Bilibili主页")
                         } icon: {
@@ -133,7 +160,11 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: URL(string: "https://github.com/Bill-Haku")!) {
+                    Link(
+                        destination: URL(
+                            string: "https://github.com/Bill-Haku"
+                        )!
+                    ) {
                         Label {
                             Text("GitHub主页")
                         } icon: {
@@ -148,19 +179,27 @@ struct ContactUsView: View {
 //            Section {
 //                Link(destination: URL(string: "https://ophelper.top")!) {
 //                    Text("原神披萨小助手官方网站")
-////                }
+            ////                }
 //                Link(destination: URL(string: "https://abyss.ophelper.top")!) {
 //                    Text("原神披萨深渊榜网页版")
 //                }
 //            }
 
             // app contact
-            Section(header: Text("用户交流群"), footer:
-                Text("我们推荐您加入QQ频道。QQ群都即将满员，而在频道你可以与更多朋友们交流，第一时间获取来自开发者的消息，同时还有官方消息的转发和其他更多功能！")
+            Section(
+                header: Text("用户交流群"),
+                footer:
+                Text(
+                    "我们推荐您加入QQ频道。QQ群都即将满员，而在频道你可以与更多朋友们交流，第一时间获取来自开发者的消息，同时还有官方消息的转发和其他更多功能！"
+                )
                 .textCase(.none)
             ) {
                 Menu {
-                    Link(destination: URL(string: "https://pd.qq.com/s/9z504ipbc")!) {
+                    Link(
+                        destination: URL(
+                            string: "https://pd.qq.com/s/9z504ipbc"
+                        )!
+                    ) {
                         Label {
                             Text("加入QQ频道")
                         } icon: {
@@ -170,7 +209,11 @@ struct ContactUsView: View {
                         }
                     }
 
-                    Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=813912474")!) {
+                    Link(
+                        destination: URL(
+                            string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=813912474"
+                        )!
+                    ) {
                         Label {
                             Text("1群: 813912474")
                         } icon: {
@@ -180,7 +223,11 @@ struct ContactUsView: View {
                         }
                     }
 
-                    Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=829996515")!) {
+                    Link(
+                        destination: URL(
+                            string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=829996515"
+                        )!
+                    ) {
                         Label {
                             Text("2群: 829996515")
                         } icon: {
@@ -199,7 +246,9 @@ struct ContactUsView: View {
                     }
                 }
 
-                Link(destination: URL(string: "https://discord.gg/g8nCgKsaMe")!) {
+                Link(
+                    destination: URL(string: "https://discord.gg/g8nCgKsaMe")!
+                ) {
                     Label {
                         Text("加入Discord服务器")
                     } icon: {
@@ -211,7 +260,11 @@ struct ContactUsView: View {
 
                 if Bundle.main.preferredLocalizations.first != "ja" {
                     Menu {
-                        Link(destination: URL(string: "https://t.me/ophelper_zh")!) {
+                        Link(
+                            destination: URL(
+                                string: "https://t.me/ophelper_zh"
+                            )!
+                        ) {
                             Label {
                                 Text("中文频道")
                             } icon: {
@@ -221,7 +274,11 @@ struct ContactUsView: View {
                             }
                         }
 
-                        Link(destination: URL(string: "https://t.me/ophelper_en")!) {
+                        Link(
+                            destination: URL(
+                                string: "https://t.me/ophelper_en"
+                            )!
+                        ) {
                             Label {
                                 Text("English Channel")
                             } icon: {
@@ -231,7 +288,11 @@ struct ContactUsView: View {
                             }
                         }
 
-                        Link(destination: URL(string: "https://t.me/ophelper_ru")!) {
+                        Link(
+                            destination: URL(
+                                string: "https://t.me/ophelper_ru"
+                            )!
+                        ) {
                             Label {
                                 Text("русскоязычный канал")
                             } icon: {
@@ -281,7 +342,13 @@ struct ContactUsView: View {
                         .clipShape(Circle())
                 }
                 Menu {
-                    Link(destination: isInstallation(urlString: "twitter://") ? URL(string: "twitter://user?id=1593423596545724416")! : URL(string: "https://twitter.com/hutao_hati")!) {
+                    Link(
+                        destination: isInstallation(urlString: "twitter://") ?
+                            URL(
+                                string: "twitter://user?id=1593423596545724416"
+                            )! :
+                            URL(string: "https://twitter.com/hutao_hati")!
+                    ) {
                         Label {
                             Text("Twitter主页")
                         } icon: {
@@ -290,7 +357,11 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: URL(string: "https://youtube.com/c/hutao_taotao")!) {
+                    Link(
+                        destination: URL(
+                            string: "https://youtube.com/c/hutao_taotao"
+                        )!
+                    ) {
                         Label {
                             Text("YouTube频道")
                         } icon: {
@@ -328,7 +399,11 @@ struct ContactUsView: View {
                         .clipShape(Circle())
                 }
                 Menu {
-                    Link(destination: isInstallation(urlString: "vk://") ? URL(string: "vk://vk.com/arrteem40")! : URL(string: "https://vk.com/arrteem40")!) {
+                    Link(
+                        destination: isInstallation(urlString: "vk://") ?
+                            URL(string: "vk://vk.com/arrteem40")! :
+                            URL(string: "https://vk.com/arrteem40")!
+                    ) {
                         Label {
                             Text("VK")
                         } icon: {
@@ -353,7 +428,11 @@ struct ContactUsView: View {
                     }
                 }
                 Menu {
-                    Link(destination: URL(string: "https://www.facebook.com/ngo.phi.phuongg")!) {
+                    Link(
+                        destination: URL(
+                            string: "https://www.facebook.com/ngo.phi.phuongg"
+                        )!
+                    ) {
                         Label {
                             Text("Facebook主页")
                         } icon: {
@@ -388,7 +467,12 @@ struct ContactUsView: View {
                     } icon: {
                         Image("chatgpt")
                             .resizable()
-                            .foregroundColor(Color(UIColor(red: 117/255, green: 168/255, blue: 156/255, alpha: 1)))
+                            .foregroundColor(Color(UIColor(
+                                red: 117 / 255,
+                                green: 168 / 255,
+                                blue: 156 / 255,
+                                alpha: 1
+                            )))
                             .scaledToFit()
                             .clipShape(Circle())
                     }
@@ -396,7 +480,11 @@ struct ContactUsView: View {
             }
             Section(header: Text("特别鸣谢")) {
                 Menu {
-                    Link(destination: URL(string: "mqqapi://card/show_pslcard?src_type=internal&version=1&uin=2251435011")!) {
+                    Link(
+                        destination: URL(
+                            string: "mqqapi://card/show_pslcard?src_type=internal&version=1&uin=2251435011"
+                        )!
+                    ) {
                         Label {
                             Text("QQ")
                         } icon: {
@@ -426,19 +514,28 @@ struct ContactUsView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    func isInstallation(urlString:String?) -> Bool {
-            let url = URL(string: urlString!)
-            if url == nil {
-                return false
-            }
-            if UIApplication.shared.canOpenURL(url!) {
-                return true
-            }
+    func isInstallation(urlString: String?) -> Bool {
+        let url = URL(string: urlString!)
+        if url == nil {
             return false
         }
+        if UIApplication.shared.canOpenURL(url!) {
+            return true
+        }
+        return false
+    }
+
+    // MARK: Private
+
+    @State
+    private var isHakubillDetailShow = false
+    @State
+    private var isLavaDetailShow = false
 }
 
-private struct CaptionLabelStyle : LabelStyle {
+// MARK: - CaptionLabelStyle
+
+private struct CaptionLabelStyle: LabelStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.icon

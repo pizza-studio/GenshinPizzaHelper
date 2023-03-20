@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - RequestError
+
 enum RequestError: Error {
     case dataTaskError(String)
     case noResponseData
@@ -15,33 +17,33 @@ enum RequestError: Error {
     case errorWithCode(Int)
 }
 
+// MARK: - ErrorCode
+
 struct ErrorCode: Codable {
     var code: Int
     var message: String?
 }
 
-enum FetchError: Error, Equatable {
-    static func == (lhs: FetchError, rhs: FetchError) -> Bool {
-        return lhs.description == rhs.description && lhs.message == rhs.message
-    }
+// MARK: - FetchError
 
+enum FetchError: Error, Equatable {
     case noFetchInfo
-    
+
     case cookieInvalid(Int, String) // 10001
     case unmachedAccountCookie(Int, String) // 10103, 10104
     case accountInvalid(Int, String) // 1008
     case dataNotFound(Int, String) // -1, 10102
-    
+
     case notLoginError(Int, String) // -100
-    
+
     case decodeError(String)
-    
+
     case requestError(RequestError)
-    
+
     case unknownError(Int, String)
-    
+
     case defaultStatus
-    
+
     case accountUnbound
 
     case errorWithCode(Int)
@@ -49,7 +51,15 @@ enum FetchError: Error, Equatable {
     case accountAbnormal(Int) // 1034
 
     case noStoken
+
+    // MARK: Internal
+
+    static func == (lhs: FetchError, rhs: FetchError) -> Bool {
+        lhs.description == rhs.description && lhs.message == rhs.message
+    }
 }
+
+// MARK: - PSAServerError
 
 enum PSAServerError: Error {
     case uploadError(String)
@@ -61,27 +71,48 @@ extension FetchError {
         switch self {
         case .defaultStatus:
             return "请先刷新以获取树脂状态".localized
-            
+
         case .noFetchInfo:
             return "请长按小组件选择帐号".localized
-            
-        case .cookieInvalid(let retcode, _):
-            return String(format: NSLocalizedString("错误码%lld：Cookie失效，请重新登录", comment: "错误码%@：Cookie失效，请重新登录"), retcode)
-        case .unmachedAccountCookie(let retcode, _):
-            return String(format: NSLocalizedString("错误码%lld：米游社帐号与UID不匹配，请手动输入UID", comment: "错误码%@：米游社帐号与UID不匹配"), retcode)
-        case .accountInvalid(let retcode, _):
-            return String(format: NSLocalizedString("错误码%lld：UID有误", comment: "错误码%@：UID有误"), retcode)
-        case .dataNotFound( _, _):
+
+        case let .cookieInvalid(retcode, _):
+            return String(
+                format: NSLocalizedString(
+                    "错误码%lld：Cookie失效，请重新登录",
+                    comment: "错误码%@：Cookie失效，请重新登录"
+                ),
+                retcode
+            )
+        case let .unmachedAccountCookie(retcode, _):
+            return String(
+                format: NSLocalizedString(
+                    "错误码%lld：米游社帐号与UID不匹配，请手动输入UID",
+                    comment: "错误码%@：米游社帐号与UID不匹配"
+                ),
+                retcode
+            )
+        case let .accountInvalid(retcode, _):
+            return String(
+                format: NSLocalizedString(
+                    "错误码%lld：UID有误",
+                    comment: "错误码%@：UID有误"
+                ),
+                retcode
+            )
+        case .dataNotFound:
             return "请前往米游社（或Hoyolab）打开旅行便笺功能".localized
-        case .decodeError( _):
+        case .decodeError:
             return "解码错误：请检查网络环境".localized
-        case .requestError( _):
+        case .requestError:
             return "网络错误".localized
-        case .notLoginError( _, _):
+        case .notLoginError:
             return "未获取到登录信息，请重试".localized
-        case .unknownError(let retcode, _):
-            return String(format: NSLocalizedString("未知错误码：%lld", comment: "未知错误码：%lld"), retcode)
-        case .accountAbnormal( _):
+        case let .unknownError(retcode, _):
+            return String(
+                format: NSLocalizedString("未知错误码：%lld", comment: "未知错误码：%lld"),
+                retcode
+            )
+        case .accountAbnormal:
             return "（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式".localized
         case .noStoken:
             return "请重新登录本账号以获取stoken".localized
@@ -89,29 +120,29 @@ extension FetchError {
             return ""
         }
     }
-    
+
     var message: String {
         switch self {
         case .defaultStatus:
             return ""
-            
+
         case .noFetchInfo:
             return ""
-        case .notLoginError(let retcode, let message):
+        case let .notLoginError(retcode, message):
             return "(\(retcode))" + message
-        case .cookieInvalid(_, _):
+        case .cookieInvalid:
             return ""
-        case .unmachedAccountCookie(_, let message):
+        case let .unmachedAccountCookie(_, message):
             return message
-        case .accountInvalid(_, let message):
+        case let .accountInvalid(_, message):
             return message
-        case .dataNotFound(let retcode, let message):
+        case let .dataNotFound(retcode, message):
             return "(\(retcode))" + message
-        case .decodeError(let message):
+        case let .decodeError(message):
             return message
-        case .requestError(let requestError):
+        case let .requestError(requestError):
             switch requestError {
-            case .dataTaskError(let message):
+            case let .dataTaskError(message):
                 return "\(message)"
             case .noResponseData:
                 return "无返回数据".localized
@@ -120,17 +151,14 @@ extension FetchError {
             default:
                 return "未知错误".localized
             }
-        case .accountAbnormal( _):
+        case .accountAbnormal:
             return "（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证".localized
-        case .unknownError(_, let message):
+        case let .unknownError(_, message):
             return message
         case .noStoken:
             return "请重新登录本账号以获取stoken".localized
         default:
             return ""
         }
-    
     }
 }
-
-

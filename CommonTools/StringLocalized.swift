@@ -9,6 +9,6 @@ import Foundation
 
 extension String {
     var localized: String {
-        return String(format: NSLocalizedString(self, comment: "namecards"))
+        String(format: NSLocalizedString(self, comment: "namecards"))
     }
 }

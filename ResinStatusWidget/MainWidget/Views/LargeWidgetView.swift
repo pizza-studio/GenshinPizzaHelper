@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - LargeWidgetView
+
 struct LargeWidgetView: View {
     let userData: UserData
     let viewConfig: WidgetViewConfiguration
@@ -15,17 +17,20 @@ struct LargeWidgetView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack() {
+            HStack {
                 Spacer()
                 VStack(alignment: .leading) {
                     mainInfo()
                     Spacer(minLength: 18)
                     detailInfo()
                 }
-                
+
                 Spacer(minLength: 30)
                 VStack(alignment: .leading) {
-                    ExpeditionsView(expeditions: userData.expeditionInfo.expeditions)
+                    ExpeditionsView(
+                        expeditions: userData.expeditionInfo
+                            .expeditions
+                    )
                     if viewConfig.showMaterialsInLargeSizeWidget {
                         Spacer(minLength: 15)
                         MaterialView()
@@ -39,38 +44,51 @@ struct LargeWidgetView: View {
         .padding()
     }
 
-
-
     @ViewBuilder
     func mainInfo() -> some View {
-        let transformerCompleted: Bool = userData.transformerInfo.isComplete && userData.transformerInfo.obtained && viewConfig.showTransformer
-        let expeditionCompleted: Bool = viewConfig.expeditionViewConfig.noticeExpeditionWhenAllCompleted ? userData.expeditionInfo.allCompleted : userData.expeditionInfo.anyCompleted
-        let weeklyBossesNotice: Bool = (viewConfig.weeklyBossesShowingMethod != .neverShow) && !userData.weeklyBossesInfo.isComplete && Calendar.current.isDateInWeekend(Date())
-        let dailyTaskNotice: Bool = !userData.dailyTaskInfo.isTaskRewardReceived && (userData.dailyTaskInfo.finishedTaskNum == userData.dailyTaskInfo.totalTaskNum)
+        let transformerCompleted: Bool = userData.transformerInfo
+            .isComplete && userData.transformerInfo.obtained && viewConfig
+            .showTransformer
+        let expeditionCompleted: Bool = viewConfig.expeditionViewConfig
+            .noticeExpeditionWhenAllCompleted ? userData.expeditionInfo
+            .allCompleted : userData.expeditionInfo.anyCompleted
+        let weeklyBossesNotice: Bool = (
+            viewConfig
+                .weeklyBossesShowingMethod != .neverShow
+        ) && !userData
+            .weeklyBossesInfo.isComplete && Calendar.current
+            .isDateInWeekend(Date())
+        let dailyTaskNotice: Bool = !userData.dailyTaskInfo
+            .isTaskRewardReceived &&
+            (
+                userData.dailyTaskInfo.finishedTaskNum == userData.dailyTaskInfo
+                    .totalTaskNum
+            )
 
         // 需要马上上号
-        let needToLoginImediately: Bool = (userData.resinInfo.isFull || userData.homeCoinInfo.isFull || expeditionCompleted || transformerCompleted || dailyTaskNotice)
+        let needToLoginImediately: Bool = (
+            userData.resinInfo.isFull || userData
+                .homeCoinInfo
+                .isFull || expeditionCompleted || transformerCompleted ||
+                dailyTaskNotice
+        )
         // 可以晚些再上号，包括每日任务和周本
-        let needToLoginSoon: Bool = !userData.dailyTaskInfo.isTaskRewardReceived || weeklyBossesNotice
-
-
+        let needToLoginSoon: Bool = !userData.dailyTaskInfo
+            .isTaskRewardReceived || weeklyBossesNotice
 
         VStack(alignment: .leading, spacing: 5) {
 //            Spacer()
             if let accountName = accountName {
-
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                     Image(systemName: "person.fill")
                     Text(accountName)
-
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3"))
             }
             HStack(alignment: .firstTextBaseline, spacing: 2) {
-
                 Text("\(userData.resinInfo.currentResin)")
-                    .font(.system(size: 50 , design: .rounded))
+                    .font(.system(size: 50, design: .rounded))
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.8)
                     .foregroundColor(Color("textColor3"))
@@ -112,7 +130,6 @@ struct LargeWidgetView: View {
     @ViewBuilder
     func detailInfo() -> some View {
         VStack(alignment: .leading, spacing: 17) {
-
             if userData.homeCoinInfo.maxHomeCoin != 0 {
                 HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
             }
@@ -122,10 +139,13 @@ struct LargeWidgetView: View {
             }
 
             if userData.expeditionInfo.maxExpedition != 0 {
-                ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
+                ExpeditionInfoBar(
+                    expeditionInfo: userData.expeditionInfo,
+                    expeditionViewConfig: viewConfig.expeditionViewConfig
+                )
             }
 
-            if userData.transformerInfo.obtained && viewConfig.showTransformer {
+            if userData.transformerInfo.obtained, viewConfig.showTransformer {
                 TransformerInfoBar(transformerInfo: userData.transformerInfo)
             }
 
@@ -134,7 +154,10 @@ struct LargeWidgetView: View {
                 EmptyView()
             case .disappearAfterCompleted:
                 if !userData.weeklyBossesInfo.isComplete {
-                    WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
+                    WeeklyBossesInfoBar(
+                        weeklyBossesInfo: userData
+                            .weeklyBossesInfo
+                    )
                 }
             case .alwaysShow, .unknown:
                 WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
@@ -144,6 +167,7 @@ struct LargeWidgetView: View {
     }
 }
 
+// MARK: - LargeWidgetViewSimplified
 
 struct LargeWidgetViewSimplified: View {
     let userData: SimplifiedUserData
@@ -153,7 +177,7 @@ struct LargeWidgetViewSimplified: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack() {
+            HStack {
                 Spacer()
                 VStack(alignment: .leading) {
                     mainInfo()
@@ -163,7 +187,10 @@ struct LargeWidgetViewSimplified: View {
 
                 Spacer(minLength: 30)
                 VStack(alignment: .leading) {
-                    ExpeditionsView(expeditions: userData.expeditionInfo.expeditions)
+                    ExpeditionsView(
+                        expeditions: userData.expeditionInfo
+                            .expeditions
+                    )
                     if viewConfig.showMaterialsInLargeSizeWidget {
                         Spacer(minLength: 15)
                         MaterialView()
@@ -177,36 +204,39 @@ struct LargeWidgetViewSimplified: View {
         .padding()
     }
 
-
-
     @ViewBuilder
     func mainInfo() -> some View {
-        let expeditionCompleted: Bool = viewConfig.expeditionViewConfig.noticeExpeditionWhenAllCompleted ? userData.expeditionInfo.allCompleted : userData.expeditionInfo.anyCompleted
-        let dailyTaskNotice: Bool = !userData.dailyTaskInfo.isTaskRewardReceived && (userData.dailyTaskInfo.finishedTaskNum == userData.dailyTaskInfo.totalTaskNum)
+        let expeditionCompleted: Bool = viewConfig.expeditionViewConfig
+            .noticeExpeditionWhenAllCompleted ? userData.expeditionInfo
+            .allCompleted : userData.expeditionInfo.anyCompleted
+        let dailyTaskNotice: Bool = !userData.dailyTaskInfo
+            .isTaskRewardReceived &&
+            (
+                userData.dailyTaskInfo.finishedTaskNum == userData.dailyTaskInfo
+                    .totalTaskNum
+            )
 
         // 需要马上上号
-        let needToLoginImediately: Bool = (userData.resinInfo.isFull || userData.homeCoinInfo.isFull || expeditionCompleted || dailyTaskNotice)
+        let needToLoginImediately: Bool = (
+            userData.resinInfo.isFull || userData
+                .homeCoinInfo.isFull || expeditionCompleted || dailyTaskNotice
+        )
         // 可以晚些再上号，包括每日任务和周本
         let needToLoginSoon: Bool = !userData.dailyTaskInfo.isTaskRewardReceived
-
-
 
         VStack(alignment: .leading, spacing: 5) {
 //            Spacer()
             if let accountName = accountName {
-
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                     Image(systemName: "person.fill")
                     Text(accountName)
-
                 }
                 .font(.footnote)
                 .foregroundColor(Color("textColor3"))
             }
             HStack(alignment: .firstTextBaseline, spacing: 2) {
-
                 Text("\(userData.resinInfo.currentResin)")
-                    .font(.system(size: 50 , design: .rounded))
+                    .font(.system(size: 50, design: .rounded))
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.8)
                     .foregroundColor(Color("textColor3"))
@@ -248,7 +278,6 @@ struct LargeWidgetViewSimplified: View {
     @ViewBuilder
     func detailInfo() -> some View {
         VStack(alignment: .leading, spacing: 17) {
-
             if userData.homeCoinInfo.maxHomeCoin != 0 {
                 HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
             }
@@ -258,7 +287,10 @@ struct LargeWidgetViewSimplified: View {
             }
 
             if userData.expeditionInfo.maxExpedition != 0 {
-                ExpeditionInfoBar(expeditionInfo: userData.expeditionInfo, expeditionViewConfig: viewConfig.expeditionViewConfig)
+                ExpeditionInfoBar(
+                    expeditionInfo: userData.expeditionInfo,
+                    expeditionViewConfig: viewConfig.expeditionViewConfig
+                )
             }
         }
         .padding(.trailing)

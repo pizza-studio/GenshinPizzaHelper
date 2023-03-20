@@ -14,8 +14,13 @@ struct ExpeditionsView: View {
     var body: some View {
         VStack {
             ForEach(expeditions, id: \.charactersEnglishName) { expedition in
-                EachExpeditionView(expedition: expedition, useAsyncImage: useAsyncImage)
-                if expedition.charactersEnglishName != (expeditions.last?.charactersEnglishName ?? "") {
+                EachExpeditionView(
+                    expedition: expedition,
+                    useAsyncImage: useAsyncImage
+                )
+                if expedition
+                    .charactersEnglishName !=
+                    (expeditions.last?.charactersEnglishName ?? "") {
                     Spacer()
                 }
             }
@@ -23,5 +28,3 @@ struct ExpeditionsView: View {
 //        .background(WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true))
     }
 }
-
-

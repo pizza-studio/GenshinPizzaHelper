@@ -8,16 +8,24 @@
 import SwiftUI
 
 struct UpdateHistoryInfoView: View {
-    @State private var newestVersionInfos: NewestVersion? = nil
-    @State var isJustUpdated: Bool = false
-    let buildVersion = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
+    @State
+    private var newestVersionInfos: NewestVersion?
+    @State
+    var isJustUpdated: Bool = false
+    let buildVersion = Int(
+        Bundle.main
+            .infoDictionary!["CFBundleVersion"] as! String
+    )!
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(newestVersionInfos?.shortVersion ?? "Error").font(.largeTitle).bold() +
-                    Text(" (\(String(newestVersionInfos?.buildVersion ?? -1)))")
+                    Text(newestVersionInfos?.shortVersion ?? "Error")
+                        .font(.largeTitle).bold() +
+                        Text(
+                            " (\(String(newestVersionInfos?.buildVersion ?? -1)))"
+                        )
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Spacer()
@@ -29,12 +37,16 @@ struct UpdateHistoryInfoView: View {
                 Divider()
                     .padding(.bottom)
                 if newestVersionInfos != nil {
-                    if !getLocalizedNoticeInfos(meta: newestVersionInfos!).isEmpty {
+                    if !getLocalizedNoticeInfos(meta: newestVersionInfos!)
+                        .isEmpty {
                         Text("更新公告")
                             .bold()
                             .font(.title2)
                             .padding(.vertical, 2)
-                        ForEach(getLocalizedNoticeInfos(meta: newestVersionInfos!), id:\.self) { item in
+                        ForEach(
+                            getLocalizedNoticeInfos(meta: newestVersionInfos!),
+                            id: \.self
+                        ) { item in
                             if #available(iOS 15.0, *) {
                                 Text("- \(item)".toAttributedString())
                             } else {
@@ -51,7 +63,10 @@ struct UpdateHistoryInfoView: View {
                     .font(.title2)
                     .padding(.vertical, 2)
                 if newestVersionInfos != nil {
-                    ForEach(getLocalizedUpdateInfos(meta: newestVersionInfos!), id:\.self) { item in
+                    ForEach(
+                        getLocalizedUpdateInfos(meta: newestVersionInfos!),
+                        id: \.self
+                    ) { item in
                         if #available(iOS 15.0, *) {
                             Text("- \(item)".toAttributedString())
                         } else {
@@ -65,13 +80,21 @@ struct UpdateHistoryInfoView: View {
                 }
                 if !isJustUpdated {
                     switch AppConfig.appConfiguration {
-                    case .TestFlight, .Debug :
-                        Link (destination: URL(string: "itms-beta://beta.itunes.apple.com/v1/app/1635319193")!) {
+                    case .Debug, .TestFlight:
+                        Link(
+                            destination: URL(
+                                string: "itms-beta://beta.itunes.apple.com/v1/app/1635319193"
+                            )!
+                        ) {
                             Text("前往TestFlight更新")
                         }
                         .padding(.top)
                     case .AppStore:
-                        Link (destination: URL(string: "itms-apps://apps.apple.com/us/app/id1635319193")!) {
+                        Link(
+                            destination: URL(
+                                string: "itms-apps://apps.apple.com/us/app/id1635319193"
+                            )!
+                        ) {
                             Text("前往App Store更新")
                         }
                         .padding(.top)
@@ -84,11 +107,21 @@ struct UpdateHistoryInfoView: View {
                             .bold()
                             .font(.title2)
                             .padding(.vertical, 2)
-                        ForEach(newestVersionInfos.updateHistory, id: \.buildVersion) { versionItem in
-                            Text("\(versionItem.shortVersion) (\(String(versionItem.buildVersion)))")
-                                .bold()
-                                .padding(.top, 1)
-                            ForEach(getLocalizedHistoryUpdateInfos(meta: versionItem), id:\.self) { item in
+                        ForEach(
+                            newestVersionInfos.updateHistory,
+                            id: \.buildVersion
+                        ) { versionItem in
+                            Text(
+                                "\(versionItem.shortVersion) (\(String(versionItem.buildVersion)))"
+                            )
+                            .bold()
+                            .padding(.top, 1)
+                            ForEach(
+                                getLocalizedHistoryUpdateInfos(
+                                    meta: versionItem
+                                ),
+                                id: \.self
+                            ) { item in
                                 if #available(iOS 15.0, *) {
                                     Text("- \(item)".toAttributedString())
                                 } else {
@@ -185,7 +218,10 @@ struct UpdateHistoryInfoView: View {
         }
     }
 
-    func getLocalizedHistoryUpdateInfos(meta: NewestVersion.VersionHistory) -> [String] {
+    func getLocalizedHistoryUpdateInfos(
+        meta: NewestVersion
+            .VersionHistory
+    ) -> [String] {
         let locale = Bundle.main.preferredLocalizations.first
         switch locale {
         case "zh-Hans":

@@ -8,8 +8,10 @@
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenExpeditionWidgetCircular<T>: View where T: SimplifiedUserDataContainer {
-    @Environment(\.widgetRenderingMode) var widgetRenderingMode
+struct LockScreenExpeditionWidgetCircular<T>: View
+    where T: SimplifiedUserDataContainer {
+    @Environment(\.widgetRenderingMode)
+    var widgetRenderingMode
 
     let result: SimplifiedUserDataContainerResult<T>
 
@@ -21,10 +23,12 @@ struct LockScreenExpeditionWidgetCircular<T>: View where T: SimplifiedUserDataCo
                     .resizable()
                     .scaledToFit()
                 switch result {
-                case .success(let data):
-                    Text("\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                case .failure(_):
+                case let .success(data):
+                    Text(
+                        "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)"
+                    )
+                    .font(.system(.body, design: .rounded).weight(.medium))
+                case .failure:
                     Image(systemName: "ellipsis")
                 }
             }
@@ -41,10 +45,12 @@ struct LockScreenExpeditionWidgetCircular<T>: View where T: SimplifiedUserDataCo
                     .resizable()
                     .scaledToFit()
                 switch result {
-                case .success(let data):
-                    Text("\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                case .failure(_):
+                case let .success(data):
+                    Text(
+                        "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)"
+                    )
+                    .font(.system(.body, design: .rounded).weight(.medium))
+                case .failure:
                     Image(systemName: "ellipsis")
                 }
             }
@@ -61,10 +67,12 @@ struct LockScreenExpeditionWidgetCircular<T>: View where T: SimplifiedUserDataCo
                     .scaledToFit()
 
                 switch result {
-                case .success(let data):
-                    Text("\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)")
-                        .font(.system(.body, design: .rounded).weight(.medium))
-                case .failure(_):
+                case let .success(data):
+                    Text(
+                        "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)"
+                    )
+                    .font(.system(.body, design: .rounded).weight(.medium))
+                case .failure:
                     Image(systemName: "ellipsis")
                 }
             }

@@ -8,12 +8,12 @@
 import Foundation
 
 extension API {
-    struct HomeAPIs {
+    enum HomeAPIs {
         /// 获取最新系统版本
         /// - Parameters:
         ///     - isBeta: 是否是Beta
         ///     - completion: 数据
-        static func fetchNewestVersion (
+        static func fetchNewestVersion(
             isBeta: Bool,
             completion: @escaping (
                 NewestVersion
@@ -35,14 +35,12 @@ extension API {
                     cachedPolicy: .reloadIgnoringLocalCacheData
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         completion(requestResult)
 
-                    case .failure(_):
+                    case .failure:
                         print("request newest version fail")
-                        break
                     }
                 }
         }
@@ -50,7 +48,7 @@ extension API {
         /// 从EnkaNetwork获取角色ID对应详细信息
         /// - Parameters:
         ///     - completion: 数据
-        static func fetchENCharacterDetailDatas (
+        static func fetchENCharacterDetailDatas(
             completion: @escaping (
                 ENCharacterMap
             ) -> ()
@@ -66,14 +64,12 @@ extension API {
                     cachedPolicy: .reloadIgnoringLocalCacheData
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         completion(requestResult)
 
-                    case .failure(_):
+                    case .failure:
                         print("fetch ENCharacterDetailDatas fail")
-                        break
                     }
                 }
         }
@@ -81,7 +77,7 @@ extension API {
         /// 从EnkaNetwork获取角色ID对应本地化信息
         /// - Parameters:
         ///     - completion: 数据
-        static func fetchENCharacterLocDatas (
+        static func fetchENCharacterLocDatas(
             completion: @escaping (
                 ENCharacterLoc
             ) -> ()
@@ -97,14 +93,12 @@ extension API {
                     cachedPolicy: .reloadIgnoringLocalCacheData
                 ) { result in
                     switch result {
-
-                    case .success(let requestResult):
+                    case let .success(requestResult):
                         print("request succeed")
                         completion(requestResult)
 
-                    case .failure(_):
+                    case .failure:
                         print("fetch ENCharacterLocDatas fail")
-                        break
                     }
                 }
         }

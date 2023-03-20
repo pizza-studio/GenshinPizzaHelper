@@ -7,29 +7,44 @@
 
 import SwiftUI
 
+// MARK: - SettingsView
+
 struct SettingsView: View {
-    @State var editMode: EditMode = .inactive
+    @State
+    var editMode: EditMode = .inactive
 
-    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject
+    var viewModel: ViewModel
+    @State
+    var isGameBlockAvailable: Bool = true
+
+    @StateObject
+    var storeManager: StoreManager
+
+    @State
+    var isWidgetTipsSheetShow: Bool = false
+
     var accounts: [Account] { viewModel.accounts }
-    
-    @State var isGameBlockAvailable: Bool = true
-
-    @StateObject var storeManager: StoreManager
-
-    @State var isWidgetTipsSheetShow: Bool = false
 
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    ForEach($viewModel.accounts, id: \.config.uuid) { $account in
-                        NavigationLink(destination: AccountDetailView(account: $account)) {
+                    ForEach(
+                        $viewModel.accounts,
+                        id: \.config.uuid
+                    ) { $account in
+                        NavigationLink(
+                            destination: AccountDetailView(account: $account)
+                        ) {
                             AccountInfoView(account: account)
                         }
                     }
                     .onDelete { indexSet in
-                        indexSet.forEach { viewModel.deleteAccount(account: accounts[$0]) }
+                        indexSet
+                            .forEach {
+                                viewModel.deleteAccount(account: accounts[$0])
+                            }
                     }
                     NavigationLink(destination: AddAccountView()) {
                         Label("添加帐号", systemImage: "plus.circle")
@@ -57,13 +72,21 @@ struct SettingsView: View {
                             return "https://ophelper.top/static/faq_en.html"
                         }
                     }()
-                    NavigationLink(destination: WebBroswerView(url: url).navigationTitle("FAQ").navigationBarTitleDisplayMode(.inline)) {
-                        Label("常见使用问题（FAQ）", systemImage: "person.fill.questionmark")
+                    NavigationLink(
+                        destination: WebBroswerView(url: url)
+                            .navigationTitle("FAQ")
+                            .navigationBarTitleDisplayMode(.inline)
+                    ) {
+                        Label(
+                            "常见使用问题（FAQ）",
+                            systemImage: "person.fill.questionmark"
+                        )
                     }
                     #if DEBUG
-                    Button("debug") {
-                        UserNotificationCenter.shared.printAllNotificationRequest()
-                    }
+                        Button("debug") {
+                            UserNotificationCenter.shared
+                                .printAllNotificationRequest()
+                        }
                     #endif
                 }
 
@@ -74,21 +97,29 @@ struct SettingsView: View {
                 NotificationSettingNavigator()
 
                 #if canImport(ActivityKit)
-                LiveActivitySettingView()
+                    LiveActivitySettingView()
                 #endif
 
                 Section {
                     Button("在App Store评分") {
                         ReviewHandler.requestReview()
                     }
-                    NavigationLink(destination: GlobalDonateView(storeManager: storeManager)) {
+                    NavigationLink(
+                        destination: GlobalDonateView(
+                            storeManager: storeManager
+                        )
+                    ) {
                         Text("支持我们")
                     }
                 }
 
                 Section {
                     Button {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        UIApplication.shared
+                            .open(URL(
+                                string: UIApplication
+                                    .openSettingsURLString
+                            )!)
                     } label: {
                         Label {
                             Text("偏好语言")
@@ -130,8 +161,12 @@ struct SettingsView: View {
     }
 }
 
+// MARK: - EditModeButton
+
 private struct EditModeButton: View {
-    @Binding var editMode: EditMode
+    @Binding
+    var editMode: EditMode
+
     var body: some View {
         Button {
             withAnimation(.easeInOut(duration: 0.1)) {
