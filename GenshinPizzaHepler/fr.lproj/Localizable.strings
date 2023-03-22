@@ -1080,3 +1080,7 @@
 
 // MARK: - 2.7.12
 "越南语" = "Vietnamese";
+"未重开玩家使用率" = "Non-restarted Player Usage Rate";
+"时区" = "Timezone";
+"我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "We calculate time based on the timezone of the server you chose. Current timezone: %@.";
+"自2023年4月1日起提供" = "Available From 2023-04-01";

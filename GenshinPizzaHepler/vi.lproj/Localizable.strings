@@ -899,8 +899,8 @@
 "共统计%lld用户%@" = "%lld dữ liệu được tính %@";
 "·仅包含满星玩家·计算方法：角色使用人数/角色拥有人数" = "· Chỉ người chơi 36 sao · Tỷ lệ phần trăm = Người chơi đã sử dụng / Người chơi sở hữu";
 "·仅包含满星玩家·包含旅行者的队伍已合并" = "· Chỉ dành cho người chơi 36 sao · Các đội bao gồm các nhà lữ hành được hợp nhất";
-"上" = "Đầu Tháng";
-"下" = "Giữa Tháng";
+"上" = "Nửa Đầu Tháng";
+"下" = "Nửa Cuối Tháng";
 "月" = " ";
 "·仅自%@后提交的数据" = "· Dữ liệu thu thập sau %@";
 "整层" = "Cả hai";
@@ -1054,7 +1054,7 @@
 "推荐选用的角色" = "Nhân vật đề xuất";
 "优先选用的角色" = "Nhân vật ưa thích";
 "可以选用的角色" = "Nhân vật vai trò tuỳ chọn";
-"酌情选用的角色" = "Nhân vật vai trò tuỳ ý";
+"酌情选用的角色" = "Nhân vật vai trò có sẵn";
 "普遍可用的角色" = "Nhân vật phổ biến";
 "清空缓存 (%@MB)" = "Xoá bộ nhớ cache (%@MB)";
 
@@ -1079,4 +1079,8 @@
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Amber](https://ambr.top/)";
 
 // MARK: - 2.7.12
-"越南语" = "Vietnamese";
+"越南语" = "Tiếng Việt";
+"未重开玩家使用率" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
+"时区" = "Múi Giờ";
+"我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
+"自2023年4月1日起提供" = "Available From 2023-04-01";

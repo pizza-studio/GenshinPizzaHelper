@@ -220,6 +220,13 @@ class AbyssDataCollectionViewModel: ObservableObject {
 // MARK: - AbyssDataCollectionView
 
 struct AbyssDataCollectionView: View {
+    typealias IntervalDate = (
+        month: Int?,
+        day: Int?,
+        hour: Int?,
+        minute: Int?,
+        second: Int?
+    )
     @EnvironmentObject
     var viewModel: ViewModel
     @StateObject
@@ -232,8 +239,20 @@ struct AbyssDataCollectionView: View {
     var body: some View {
         VStack {
             switch abyssDataCollectionViewModel.showingType {
-            case .abyssAvatarsUtilization, .pvpUtilization:
+            case .abyssAvatarsUtilization:
                 ShowAvatarPercentageViewWithSection()
+            case .pvpUtilization:
+                if getRemainDays("2023-04-01 00:04:00")!.second! < 0 {
+                    ShowAvatarPercentageViewWithSection()
+                } else {
+                    VStack {
+                        Image(systemName: "clock.badge.exclamationmark")
+                            .font(.largeTitle)
+                        Text("自2023年4月1日起提供")
+                            .padding()
+                            .font(.headline)
+                    }
+                }
             case .fullStarHoldingRate, .holdingRate:
                 ShowAvatarPercentageView()
             case .teamUtilization:
@@ -449,6 +468,22 @@ struct AbyssDataCollectionView: View {
             }
             .padding()
         }
+    }
+
+    func getRemainDays(_ endAt: String) -> IntervalDate? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = Server(
+            rawValue: UserDefaults.standard
+                .string(forKey: "defaultServer") ?? Server.asia.rawValue
+        )?.timeZone() ?? Server.asia.timeZone()
+        let endDate = dateFormatter.date(from: endAt)
+        guard let endDate = endDate else {
+            return nil
+        }
+        let interval = endDate - Date()
+        return interval
     }
 }
 
@@ -1322,7 +1357,7 @@ extension AbyssSeason {
             .date(from: DateComponents(year: 2022, month: 11, day: 1))!
         if pvp {
             startDate = Calendar.current
-                .date(from: DateComponents(year: 2023, month: 3, day: 16))!
+                .date(from: DateComponents(year: 2023, month: 4, day: 1))!
         }
         // 以下仅判断本月
         if Calendar.current.dateComponents([.day], from: date).day! >= 16 {
