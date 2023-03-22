@@ -1080,6 +1080,6 @@
 
 // MARK: - 2.7.12
 "越南语" = "Tiếng Việt";
-"未重开玩家使用率" = "Tỷ Lệ Sử Dụng Của Người Dùng Không Khởi Động Lại";
+"未重开玩家使用率" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
 "时区" = "Múi Giờ";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
