@@ -15,7 +15,7 @@ struct MoreView: View {
 
     @AppStorage(
         "defaultServer",
-        store: .standard
+        store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     var defaultServer: String = Server.asia.rawValue
 

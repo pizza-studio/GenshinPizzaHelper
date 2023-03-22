@@ -73,7 +73,7 @@ enum MaterialWeekday: CaseIterable {
     static func today() -> Self {
         var calendar = Calendar.current
         calendar.timeZone = Server(
-            rawValue: UserDefaults.standard
+            rawValue: UserDefaults(suiteName: "group.GenshinPizzaHelper")?
                 .string(forKey: "defaultServer") ?? Server.asia.rawValue
         )?.timeZone() ?? Server.asia.timeZone()
         let isTimePast4am: Bool = Date() > calendar

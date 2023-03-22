@@ -154,7 +154,7 @@ struct AllEventsView: View {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = Server(
-            rawValue: UserDefaults.standard
+            rawValue: UserDefaults(suiteName: "group.GenshinPizzaHelper")?
                 .string(forKey: "defaultServer") ?? Server.asia.rawValue
         )?.timeZone() ?? Server.asia.timeZone()
         let endDate = dateFormatter.date(from: endAt)
