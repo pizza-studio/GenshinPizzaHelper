@@ -301,7 +301,10 @@ struct PlayerDetail {
                         rawValue: artifactEquipment.flat
                             .rankLevel
                     ) ?? .five
-                self.level = artifactEquipment.reliquary?.level ?? 0
+                self.level = max(
+                    (artifactEquipment.reliquary?.level ?? 1) - 1,
+                    0
+                )
             }
 
             // MARK: Internal
