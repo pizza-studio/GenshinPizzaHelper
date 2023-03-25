@@ -122,7 +122,7 @@ struct PlayerDetail {
                         key == String(skillID)
                     }?.value ?? 0
                 let icon = character.Skills
-                    .skillData[String(skillID)] ?? "unknow"
+                    .skillData[String(skillID)] ?? "unknown"
                 return Skill(
                     name: localizedDictionary.nameFromHashMap(skillID),
                     level: level,
@@ -467,11 +467,11 @@ struct PlayerDetail {
 
 extension Dictionary where Key == String, Value == String {
     fileprivate func nameFromHashMap(_ hashID: Int) -> String {
-        self["\(hashID)"] ?? "unknow"
+        self["\(hashID)"] ?? "unknown"
     }
 
     fileprivate func nameFromHashMap(_ hashID: String) -> String {
-        self[hashID] ?? "unknow"
+        self[hashID] ?? "unknown"
     }
 }
 

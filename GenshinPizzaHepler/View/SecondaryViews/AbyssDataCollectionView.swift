@@ -818,7 +818,7 @@ private struct ShowAvatarPercentageShare: View {
                             Label {
                                 Text(
                                     charLoc["\(char?.NameTextMapHash ?? 0)"] ??
-                                        "unknow"
+                                        "unknown"
                                 ).fixedSize()
                             } icon: {
                                 EnkaWebIcon(iconString: char?.iconString ?? "")
