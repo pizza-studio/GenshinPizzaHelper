@@ -252,6 +252,8 @@ struct PlayerDetailFetchModel: Codable {
         var equipList: [EquipList]
         /// 角色好感等级，fetterInfo.expLevel
         var fetterInfo: FetterInfo
+        /// 命之座带来的额外技能等级加成
+        var proudSkillExtraLevelMap: [String: Int]?
     }
 
     /// 账号基本信息

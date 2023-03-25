@@ -133,7 +133,7 @@ struct ENCharacterMap: Codable {
         var SkillOrder: [Int]
         /// 技能
         var Skills: Skill
-        /// ？
+        /// 与命之座有关的技能加成资料?
         var ProudMap: ProudMap
         /// 名字的hashmap
         var NameTextMapHash: Int

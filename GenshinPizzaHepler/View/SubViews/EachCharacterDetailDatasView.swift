@@ -66,11 +66,9 @@ struct EachCharacterDetailDatasView: View {
                             )
                             VStack {
                                 Text(artifact.mainAttribute.name)
-                                    .font(.system(size: 11))
-                                    .bold()
+                                    .font(.system(size: 11, weight: .bold))
                                 Text("\(artifact.mainAttribute.valueString)")
-                                    .font(.system(size: 16))
-                                    .bold()
+                                    .font(.system(size: 16, weight: .heavy))
                                 Spacer().frame(height: 6)
                             }
                             VStack {
@@ -81,7 +79,7 @@ struct EachCharacterDetailDatasView: View {
                                     Text(subAttribute.name)
                                         .font(.system(size: 11))
                                     Text("\(subAttribute.valueString)")
-                                        .font(.system(size: 16))
+                                        .font(.system(size: 16, weight: .bold))
                                     Spacer().frame(height: 4)
                                 }
                             }
@@ -412,15 +410,13 @@ private struct AvatarAndSkillView: View {
                 Grid(verticalSpacing: 1) {
                     GridRow {
                         ForEach(avatar.skills, id: \.self) { skill in
-                            VStack(spacing: 0) {
-                                EnkaWebIcon(iconString: skill.iconString)
-                            }
+                            EnkaWebIcon(iconString: skill.iconString)
                         }
                     }
                     GridRow {
                         ForEach(avatar.skills, id: \.self) { skill in
                             VStack(spacing: 0) {
-                                Text("\(skill.level)").font(.caption)
+                                skill.levelDisplay
                             }
                         }
                     }
@@ -431,7 +427,7 @@ private struct AvatarAndSkillView: View {
                         VStack(spacing: 0) {
                             Spacer()
                             EnkaWebIcon(iconString: skill.iconString)
-                            Text("\(skill.level)").font(.caption)
+                            skill.levelDisplay
                             Spacer()
                         }
                     }
@@ -449,18 +445,19 @@ extension View {
         _ string: String,
         alignment: Alignment,
         textSize: CGFloat = 11,
-        opacity: CGFloat = 1
+        opacity: CGFloat = 1,
+        enabled: Bool = true
     )
         -> some View {
         if #available(macCatalyst 15.0, iOS 15.0, *) {
             return overlay(alignment: alignment) {
-                Text(string)
+                Text(enabled ? string : "")
                     .font(.system(size: textSize))
                     .padding(.horizontal, 3)
                     .background(
                         Capsule()
                             .foregroundStyle(.ultraThinMaterial)
-                            .opacity(0.7)
+                            .opacity(enabled ? 0.7 : 0)
                     )
                     .opacity(opacity)
             }
@@ -479,6 +476,24 @@ extension PlayerDetail.Avatar.Artifact {
         case .four: return .purple
         case .three: return .blue
         default: return .clear
+        }
+    }
+}
+
+// MARK: - Skill Extension (SwiftUI)
+
+extension PlayerDetail.Avatar.Skill {
+    var isLevelAdjusted: Bool {
+        levelAdjusted != level
+    }
+
+    var levelDisplay: some View {
+        HStack(alignment: .center, spacing: 1) {
+            Text("\(level)").font(.system(size: 14, weight: .black))
+            if isLevelAdjusted {
+                Text("+\(levelAdjusted - level)")
+                    .font(.system(size: 12, weight: .heavy))
+            }
         }
     }
 }

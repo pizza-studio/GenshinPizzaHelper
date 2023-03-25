@@ -117,15 +117,20 @@ struct PlayerDetail {
             self.sideIconString = character.SideIconName
 
             self.skills = character.SkillOrder.map { skillID in
-                let level = avatarInfo.skillLevelMap.skillLevel
-                    .first { key, _ in
-                        key == String(skillID)
-                    }?.value ?? 0
+                let level = avatarInfo.skillLevelMap
+                    .skillLevel[skillID.description] ?? 0
                 let icon = character.Skills
                     .skillData[String(skillID)] ?? "unknown"
+                let adjustedDelta = avatarInfo
+                    .proudSkillExtraLevelMap?[(
+                        character.ProudMap
+                            .proudMapData[skillID.description] ?? 0
+                    ).description] ?? 0
+
                 return Skill(
                     name: localizedDictionary.nameFromHashMap(skillID),
                     level: level,
+                    levelAdjusted: level + adjustedDelta,
                     iconString: icon
                 )
             }
@@ -161,8 +166,10 @@ struct PlayerDetail {
         struct Skill: Hashable {
             /// 天赋名字(字典没有，暂时无法使用)
             let name: String
-            /// 天赋等级
+            /// 固有天赋等级
             let level: Int
+            /// 加权天赋等级（被命之座影响过的天赋等级
+            let levelAdjusted: Int
             /// 天赋图标ID
             let iconString: String
 
@@ -170,6 +177,7 @@ struct PlayerDetail {
             func hash(into hasher: inout Hasher) {
                 hasher.combine(name)
                 hasher.combine(level)
+                hasher.combine(levelAdjusted)
                 hasher.combine(iconString)
             }
         }
