@@ -158,13 +158,20 @@ struct PlayerDetail {
 
         // Model
         /// 天赋
-        struct Skill {
+        struct Skill: Hashable {
             /// 天赋名字(字典没有，暂时无法使用)
             let name: String
             /// 天赋等级
             let level: Int
             /// 天赋图标ID
             let iconString: String
+
+            /// 设定杂凑方法
+            func hash(into hasher: inout Hasher) {
+                hasher.combine(name)
+                hasher.combine(level)
+                hasher.combine(iconString)
+            }
         }
 
         /// 武器
@@ -294,6 +301,7 @@ struct PlayerDetail {
                         rawValue: artifactEquipment.flat
                             .rankLevel
                     ) ?? .five
+                self.level = artifactEquipment.reliquary?.level ?? 0
             }
 
             // MARK: Internal
@@ -320,7 +328,8 @@ struct PlayerDetail {
             let iconString: String
             /// 圣遗物所属部位
             let artifactType: ArtifactType
-
+            /// 圣遗物等级
+            let level: Int
             /// 圣遗物星级
             let rankLevel: RankLevel
 

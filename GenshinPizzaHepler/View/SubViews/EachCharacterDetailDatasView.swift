@@ -16,7 +16,7 @@ struct EachCharacterDetailDatasView: View {
     var animation: Namespace.ID
 
     var body: some View {
-        let spacing: CGFloat = 8
+        let spacing: CGFloat = 4
         VStack {
             if #available(iOS 16, *) {
                 Grid {
@@ -58,25 +58,20 @@ struct EachCharacterDetailDatasView: View {
                                     iconString: artifact
                                         .iconString
                                 )
-                                .circleClippedBackground(scaler: 0.95) {
-                                    EnkaWebIcon(
-                                        iconString: artifact
-                                            .rankLevel
-                                            .rectangularBackgroundIconString
-                                    )
-                                    .scaledToFit()
-                                    .scaleEffect(1.2)
-                                    .offset(y: 9)
-                                    .clipShape(Circle())
-                                }
                             }
-                            .frame(maxWidth: 60, maxHeight: 60)
+                            .frame(width: 60, height: 60)
+                            .corneredTag(
+                                "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
+                                alignment: .bottom
+                            )
                             VStack {
                                 Text(artifact.mainAttribute.name)
-                                    .font(.caption)
+                                    .font(.system(size: 11))
                                     .bold()
                                 Text("\(artifact.mainAttribute.valueString)")
+                                    .font(.system(size: 16))
                                     .bold()
+                                Spacer().frame(height: 6)
                             }
                             VStack {
                                 ForEach(
@@ -84,12 +79,12 @@ struct EachCharacterDetailDatasView: View {
                                     id: \.name
                                 ) { subAttribute in
                                     Text(subAttribute.name)
-                                        .font(.caption2)
+                                        .font(.system(size: 11))
                                     Text("\(subAttribute.valueString)")
-                                        .font(.callout)
+                                        .font(.system(size: 16))
+                                    Spacer().frame(height: 4)
                                 }
                             }
-                            Spacer()
                         }
                         .frame(maxWidth: UIScreen.main.bounds.size.width / 5)
                     }
@@ -123,16 +118,20 @@ struct EachCharacterDetailDatasView: View {
                 .scaledToFit()
         }
         .frame(height: l)
-        .bottomTrailingTag("Lv.\(weapon.level)")
+        .corneredTag(
+            "Lv.\(weapon.level)",
+            alignment: .bottomTrailing,
+            textSize: 13
+        )
         VStack(alignment: .leading, spacing: 3) {
             HStack(alignment: .firstTextBaseline) {
                 Text(weapon.name)
                     .bold()
-                    .font(.headline)
+                    .font(.system(size: 22))
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
                 Text("精炼\(weapon.refinementRank)阶")
-                    .font(.caption)
+                    .font(.system(size: 16))
                     .padding(.horizontal)
                     .background(
                         Capsule()
@@ -140,7 +139,7 @@ struct EachCharacterDetailDatasView: View {
                             .opacity(0.25)
                     )
             }
-            .padding(.bottom, 5)
+            .padding(.bottom, 2)
             HStack {
                 Text(weapon.mainAttribute.name)
                 Spacer()
@@ -151,7 +150,7 @@ struct EachCharacterDetailDatasView: View {
                             .fill(.gray)
                             .opacity(0.25)
                     )
-            }.font(.callout)
+            }.font(.system(size: 18))
             if let subAttribute = weapon.subAttribute {
                 HStack {
                     Text(subAttribute.name)
@@ -163,10 +162,9 @@ struct EachCharacterDetailDatasView: View {
                                 .fill(.gray)
                                 .opacity(0.25)
                         )
-                }.font(.footnote)
+                }.font(.system(size: 16))
             }
         }
-        .padding(.vertical)
         .frame(height: l)
     }
 
@@ -207,12 +205,12 @@ struct EachCharacterDetailDatasView: View {
                 )
             }
             AttributeLabel(
-                iconString: "UI_Icon_Critical",
+                iconString: "UI_Icon_CriticalRate",
                 name: "暴击率",
                 value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%"
             )
             AttributeLabel(
-                iconString: "UI_Icon_Critical",
+                iconString: "UI_Icon_CriticalDamage",
                 name: "暴击伤害",
                 value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%"
             )
@@ -269,17 +267,15 @@ struct EachCharacterDetailDatasView: View {
                     value: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%"
                 )
             }
-        }
+        }.font(.system(size: 16))
         if #available(iOS 16, *) {
             Grid(verticalSpacing: 3) {
                 probRows
             }
-            .padding(.bottom, 10)
         } else {
             VStack(spacing: 3) {
                 probRows
             }
-            .padding(.bottom, 10)
         }
     }
 }
@@ -379,7 +375,7 @@ private struct AvatarAndSkillView: View {
         HStack(alignment: .lastTextBaseline) {
             VStack(alignment: .leading, spacing: 6) {
                 Text(avatar.name)
-                    .font(.title2)
+                    .font(.system(size: 25))
                     .bold()
                     .fixedSize(horizontal: false, vertical: true)
                     .minimumScaleFactor(0.5)
@@ -389,7 +385,8 @@ private struct AvatarAndSkillView: View {
                         Text("等级")
                         Spacer()
                         Text("\(avatar.level)")
-                            .padding(.horizontal)
+                            .frame(minWidth: 42)
+                            .padding(.horizontal, 4)
                             .background(
                                 Capsule()
                                     .fill(.gray)
@@ -400,7 +397,8 @@ private struct AvatarAndSkillView: View {
                         Text("命之座")
                         Spacer()
                         Text("\(avatar.talentCount)命")
-                            .padding(.horizontal)
+                            .frame(minWidth: 42)
+                            .padding(.horizontal, 4)
                             .background(
                                 Capsule()
                                     .fill(.gray)
@@ -408,19 +406,19 @@ private struct AvatarAndSkillView: View {
                             )
                     }
                 }
-                .font(.footnote)
+                .font(.system(size: 16))
             }
             if #available(iOS 16, *) {
                 Grid(verticalSpacing: 1) {
                     GridRow {
-                        ForEach(avatar.skills, id: \.iconString) { skill in
+                        ForEach(avatar.skills, id: \.self) { skill in
                             VStack(spacing: 0) {
                                 EnkaWebIcon(iconString: skill.iconString)
                             }
                         }
                     }
                     GridRow {
-                        ForEach(avatar.skills, id: \.iconString) { skill in
+                        ForEach(avatar.skills, id: \.self) { skill in
                             VStack(spacing: 0) {
                                 Text("\(skill.level)").font(.caption)
                             }
@@ -429,7 +427,7 @@ private struct AvatarAndSkillView: View {
                 }
             } else {
                 HStack {
-                    ForEach(avatar.skills, id: \.iconString) { skill in
+                    ForEach(avatar.skills, id: \.self) { skill in
                         VStack(spacing: 0) {
                             Spacer()
                             EnkaWebIcon(iconString: skill.iconString)
@@ -447,20 +445,40 @@ private struct AvatarAndSkillView: View {
 // MARK: - Trailing Text Label
 
 extension View {
-    fileprivate func bottomTrailingTag(_ string: String) -> some View {
+    fileprivate func corneredTag(
+        _ string: String,
+        alignment: Alignment,
+        textSize: CGFloat = 11,
+        opacity: CGFloat = 1
+    )
+        -> some View {
         if #available(macCatalyst 15.0, iOS 15.0, *) {
-            return overlay(alignment: .bottomTrailing) {
+            return overlay(alignment: alignment) {
                 Text(string)
-                    .font(.caption)
+                    .font(.system(size: textSize))
                     .padding(.horizontal, 3)
                     .background(
                         Capsule()
                             .foregroundStyle(.ultraThinMaterial)
                             .opacity(0.7)
                     )
+                    .opacity(opacity)
             }
         } else {
             return EmptyView()
+        }
+    }
+}
+
+// MARK: - Artifact Extension (SwiftUI)
+
+extension PlayerDetail.Avatar.Artifact {
+    var rankedBackgroundColor: Color {
+        switch rankLevel {
+        case .five: return .orange
+        case .four: return .purple
+        case .three: return .blue
+        default: return .clear
         }
     }
 }

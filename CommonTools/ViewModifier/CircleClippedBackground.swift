@@ -16,15 +16,13 @@ struct CircleClippedBackground<Background: View>: ViewModifier {
     let background: () -> Background
 
     func body(content: Content) -> some View {
-        GeometryReader { g in
+        GeometryReader { _ in
             // 圆内接正方形变长
-            let r = g.size.width - 0.8
-            let frameWidth = (sqrt(2) / 2 * r) * scaler
-
+            // let r = g.size.width - 0.8
+            // let frameWidth = (sqrt(2) / 2 * r) * scaler
             ZStack {
-                background()
+                background().opacity(0.1)
                 content
-                    .frame(width: frameWidth, height: frameWidth)
             }
         }
     }
