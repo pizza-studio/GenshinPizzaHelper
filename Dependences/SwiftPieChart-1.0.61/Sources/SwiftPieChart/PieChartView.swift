@@ -191,7 +191,7 @@ struct PieChartRows: View {
 
     var body: some View {
         VStack {
-            ForEach(0 ..< self.values.count) { i in
+            ForEach(values.indices, id: \.self) { i in
                 HStack {
                     RoundedRectangle(cornerRadius: 5.0)
                         .fill(self.colors[i])

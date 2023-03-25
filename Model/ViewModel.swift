@@ -64,16 +64,18 @@ class ViewModel: NSObject, ObservableObject {
             let accountConfigs = self.accountConfigurationModel
                 .fetchAccountConfigs()
 
-            if UserDefaults(suiteName: "group.GenshinPizzaHelper")?.string(forKey: "defaultServer") == nil {
+            if UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                .string(forKey: "defaultServer") == nil {
                 if !accountConfigs.isEmpty {
                     UserDefaults(suiteName: "group.GenshinPizzaHelper")?.set(
                         accountConfigs.first!.server.rawValue,
                         forKey: "defaultServer"
                     )
                 } else {
-                    UserDefaults(suiteName: "group.GenshinPizzaHelper")?.register(
-                        defaults: ["defaultServer": Server.asia.rawValue]
-                    )
+                    UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                        .register(
+                            defaults: ["defaultServer": Server.asia.rawValue]
+                        )
                 }
             }
 
@@ -113,7 +115,8 @@ class ViewModel: NSObject, ObservableObject {
         // 添加的第一个账号作为材料刷新的时区
         if accounts
             .isEmpty {
-            UserDefaults(suiteName: "group.GenshinPizzaHelper")?.set(server.rawValue, forKey: "defaultServer")
+            UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                .set(server.rawValue, forKey: "defaultServer")
         }
         // 新增账号至Core Data
         accountConfigurationModel.addAccount(
