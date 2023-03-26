@@ -175,6 +175,92 @@ struct ContactUsView: View {
                     }
                 }
             }
+            // developer - ShikiSuen
+            Section {
+                HStack {
+                    Image("avatar.shikisuen")
+                        .resizable()
+                        .clipShape(Circle())
+                        .frame(width: 50, height: 50)
+                    VStack(alignment: .leading) {
+                        Text("Shiki Suen (孙志贵)")
+                            .bold()
+                            .padding(.vertical, 5)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .rotationEffect(.degrees(isShikiDetailShow ? 90 : 0))
+                }
+                .onTapGesture {
+                    simpleTaptic(type: .light)
+                    withAnimation {
+                        isShikiDetailShow.toggle()
+                    }
+                }
+                if isShikiDetailShow {
+                    Link(
+                        destination: URL(string: "https://shikisuen.gitee.io/")!
+                    ) {
+                        Label {
+                            Text("个人主页")
+                        } icon: {
+                            Image("homepage")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    Link(destination: URL(string: "mailto:shikisuen@pm.me")!) {
+                        Label {
+                            Text("shikisuen@pm.me")
+                        } icon: {
+                            Image("email")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    Link(
+                        destination: isInstallation(urlString: "twitter://") ?
+                            URL(
+                                string: "twitter://user?id=176288731"
+                            )! :
+                            URL(string: "https://twitter.com/ShikiSuen")!
+                    ) {
+                        Label {
+                            Text("Twitter主页")
+                        } icon: {
+                            Image("twitter")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    Link(
+                        destination: URL(
+                            string: "https://space.bilibili.com/911304"
+                        )!
+                    ) {
+                        Label {
+                            Text("Bilibili主页")
+                        } icon: {
+                            Image("bilibili")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    Link(
+                        destination: URL(
+                            string: "https://github.com/ShikiSuen"
+                        )!
+                    ) {
+                        Label {
+                            Text("GitHub主页")
+                        } icon: {
+                            Image("github")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                }
+            }
 
 //            Section {
 //                Link(destination: URL(string: "https://ophelper.top")!) {
@@ -337,6 +423,19 @@ struct ContactUsView: View {
                     }
                 } icon: {
                     Image("avatar.hakubill")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                }
+                Label {
+                    HStack {
+                        Text("ShikiSuen")
+                        Spacer()
+                        Text("繁体中文")
+                            .foregroundColor(.gray)
+                    }
+                } icon: {
+                    Image("avatar.shikisuen")
                         .resizable()
                         .scaledToFit()
                         .clipShape(Circle())
@@ -531,6 +630,8 @@ struct ContactUsView: View {
     private var isHakubillDetailShow = false
     @State
     private var isLavaDetailShow = false
+    @State
+    private var isShikiDetailShow = false
 }
 
 // MARK: - CaptionLabelStyle
