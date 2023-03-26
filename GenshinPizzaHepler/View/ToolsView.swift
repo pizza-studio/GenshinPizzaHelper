@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/9/17.
 //
 
+import HBMihoyoAPI
 import SwiftPieChart
 import SwiftUI
 

@@ -6,6 +6,7 @@
 //  中号Widget布局
 
 import Foundation
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - MainInfoWithDetail

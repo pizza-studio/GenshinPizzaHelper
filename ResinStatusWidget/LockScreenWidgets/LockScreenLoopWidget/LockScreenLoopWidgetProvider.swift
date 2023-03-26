@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HBMihoyoAPI
 import WidgetKit
 
 // MARK: - AccountAndShowWhichInfoIntentEntry

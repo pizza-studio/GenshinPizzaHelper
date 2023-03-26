@@ -6,6 +6,7 @@
 //  提供今日材料信息的工具类
 
 import Foundation
+import HBMihoyoAPI
 
 // MARK: - WeaponOrTalentMaterial
 

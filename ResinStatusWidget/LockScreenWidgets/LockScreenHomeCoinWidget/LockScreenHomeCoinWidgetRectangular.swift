@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/11/27.
 //
 
+import HBMihoyoAPI
 import SwiftUI
 import WidgetKit
 

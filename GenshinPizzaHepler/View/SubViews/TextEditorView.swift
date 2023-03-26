@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/7.
 //  封装了TextEditor和TextField的修改文本的页面
 
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - TextEditorView

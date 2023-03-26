@@ -8,6 +8,7 @@
 #if canImport(ActivityKit)
     import ActivityKit
     import Foundation
+    import HBMihoyoAPI
 
     @available(iOS 16.1, *)
     class ResinRecoveryActivityController {

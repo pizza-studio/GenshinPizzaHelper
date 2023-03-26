@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct TransformerInfo {
+public struct TransformerInfo {
     // MARK: Lifecycle
 
-    init(_ transformerData: TransformerData) {
+    public init(_ transformerData: TransformerData) {
         self.obtained = transformerData.obtained
         self.recoveryTime = RecoveryTime(
             transformerData.recoveryTime.day,
@@ -20,14 +20,14 @@ struct TransformerInfo {
         )
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let obtained: Bool
-    let recoveryTime: RecoveryTime
+    public let obtained: Bool
+    public let recoveryTime: RecoveryTime
 
-    var isComplete: Bool { recoveryTime.isComplete }
+    public var isComplete: Bool { recoveryTime.isComplete }
 
-    var percentage: Double {
+    public var percentage: Double {
         // 因为返回的只会精准到天，所以多加十二个小时以符合直觉
         if recoveryTime.second > (24 * 60 * 60) {
             let pct = (604800.0 - Double(recoveryTime.second + 12 * 60 * 60)) /
@@ -42,7 +42,7 @@ struct TransformerInfo {
         }
     }
 
-    var score: Float {
+    public var score: Float {
         if isComplete { return 1 } else { return 0 }
     }
 }

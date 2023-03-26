@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/10/22.
 //
 
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - AllAvatarListSheetView
@@ -98,7 +99,7 @@ struct AllAvatarListSheetView: View {
         } else {
             ProgressView()
                 .onAppear {
-                    API.Features.fetchAllAvatarInfos(
+                    MihoyoAPI.fetchAllAvatarInfos(
                         region: account.config.server.region,
                         serverID: account.config.server.id,
                         uid: account.config.uid!,

@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/9/9.
 //
 
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - WatchAccountDetailView

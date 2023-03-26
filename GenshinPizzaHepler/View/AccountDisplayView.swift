@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/22.
 //  弹出的展示帐号详细信息的View
 
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - AccountDisplayView

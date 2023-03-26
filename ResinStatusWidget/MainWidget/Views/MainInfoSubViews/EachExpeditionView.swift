@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/23.
 //  每条探索派遣信息View
 
+import HBMihoyoAPI
 import SwiftUI
 
 struct EachExpeditionView: View {

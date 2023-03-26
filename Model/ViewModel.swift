@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import HBMihoyoAPI
 import StoreKit
 import SwiftUI
 import WatchConnectivity

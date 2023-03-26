@@ -6,6 +6,7 @@
 //  其他游戏内信息
 
 import Foundation
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - DetailInfo

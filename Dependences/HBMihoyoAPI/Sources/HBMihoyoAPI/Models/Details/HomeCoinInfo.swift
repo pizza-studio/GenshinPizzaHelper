@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct HomeCoinInfo: Codable {
+public struct HomeCoinInfo: Codable {
     // MARK: Lifecycle
 
-    init(
+    public init(
         _ currentHomeCoin: Int,
         _ maxHomeCoin: Int,
         _ homeCoinRecoverySecond: Int
@@ -20,17 +20,19 @@ struct HomeCoinInfo: Codable {
         self.recoveryTime = RecoveryTime(second: homeCoinRecoverySecond)
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let currentHomeCoin: Int
-    let maxHomeCoin: Int
-    let recoveryTime: RecoveryTime
+    public let currentHomeCoin: Int
+    public let maxHomeCoin: Int
+    public let recoveryTime: RecoveryTime
 
-    var isFull: Bool { recoveryTime.isComplete }
+    public var isFull: Bool { recoveryTime.isComplete }
 
-    var percentage: Double { Double(currentHomeCoin) / Double(maxHomeCoin) }
+    public var percentage: Double {
+        Double(currentHomeCoin) / Double(maxHomeCoin)
+    }
 
-    var score: Float {
+    public var score: Float {
         if percentage > 0.7, maxHomeCoin != 300 {
             return Float(percentage)
         } else { return 0 }

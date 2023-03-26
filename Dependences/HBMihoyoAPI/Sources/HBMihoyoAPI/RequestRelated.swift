@@ -1,15 +1,94 @@
 //
-//  Error.swift
-//  原神披萨小助手
+//  RequestRelated.swift
 //
-//  Created by Bill Haku on 2022/8/6.
-//  错误信息
+//
+//  Created by Bill Haku on 2023/3/25.
+//
 
 import Foundation
 
+public typealias FetchResult = Result<UserData, FetchError>
+public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
+public typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
+public typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
+public typealias AllAvatarDetailFetchResult = Result<
+    AllAvatarDetailModel,
+    FetchError
+>
+
+#if !os(watchOS)
+//    typealias PlayerDetailsFetchResult = Result<
+//        PlayerDetailFetchModel,
+//        RequestError
+//    >
+//    typealias PlayerDetailResult = Result<
+//        PlayerDetail,
+//        PlayerDetail.PlayerDetailError
+//    >
+    public typealias SpiralAbyssDetailFetchResult = Result<
+        SpiralAbyssDetail,
+        FetchError
+    >
+#endif
+
+extension FetchResult {
+    public static let defaultFetchResult: FetchResult = .success(
+        UserData
+            .defaultData
+    )
+}
+
+// MARK: - RequestResult
+
+public struct RequestResult: Codable {
+    let data: FetchData?
+    let message: String
+    let retcode: Int
+}
+
+// MARK: - WidgetRequestResult
+
+public struct WidgetRequestResult: Codable {
+    let data: WidgetUserData?
+    let message: String
+    let retcode: Int
+}
+
+// MARK: - BasicInfoRequestResult
+
+public struct BasicInfoRequestResult: Codable {
+    let data: BasicInfos?
+    let message: String
+    let retcode: Int
+}
+
+// MARK: - LedgerDataRequestResult
+
+public struct LedgerDataRequestResult: Codable {
+    let data: LedgerData?
+    let message: String
+    let retcode: Int
+}
+
+// MARK: - AllAvatarDetailRequestDetail
+
+public struct AllAvatarDetailRequestDetail: Codable {
+    let data: AllAvatarDetailModel?
+    let message: String
+    let retcode: Int
+}
+
+#if !os(watchOS)
+    public struct SpiralAbyssDetailRequestResult: Codable {
+        let data: SpiralAbyssDetail?
+        let message: String
+        let retcode: Int
+    }
+#endif
+
 // MARK: - RequestError
 
-enum RequestError: Error {
+public enum RequestError: Error {
     case dataTaskError(String)
     case noResponseData
     case responseError
@@ -19,14 +98,14 @@ enum RequestError: Error {
 
 // MARK: - ErrorCode
 
-struct ErrorCode: Codable {
+public struct ErrorCode: Codable {
     var code: Int
     var message: String?
 }
 
 // MARK: - FetchError
 
-enum FetchError: Error, Equatable {
+public enum FetchError: Error, Equatable {
     case noFetchInfo
 
     case cookieInvalid(Int, String) // 10001
@@ -52,22 +131,22 @@ enum FetchError: Error, Equatable {
 
     case noStoken
 
-    // MARK: Internal
+    // MARK: Public
 
-    static func == (lhs: FetchError, rhs: FetchError) -> Bool {
+    public static func == (lhs: FetchError, rhs: FetchError) -> Bool {
         lhs.description == rhs.description && lhs.message == rhs.message
     }
 }
 
 // MARK: - PSAServerError
 
-enum PSAServerError: Error {
+public enum PSAServerError: Error {
     case uploadError(String)
     case getDataError(String)
 }
 
 extension FetchError {
-    var description: String {
+    public var description: String {
         switch self {
         case .defaultStatus:
             return "请先刷新以获取树脂状态".localized
@@ -121,7 +200,7 @@ extension FetchError {
         }
     }
 
-    var message: String {
+    public var message: String {
         switch self {
         case .defaultStatus:
             return ""
@@ -161,4 +240,64 @@ extension FetchError {
             return ""
         }
     }
+}
+
+// MARK: - MultiTokenResult
+
+public struct MultiTokenResult: Codable {
+    public let retcode: Int
+    public let message: String
+    public let data: MultiToken?
+}
+
+// MARK: - MultiToken
+
+public struct MultiToken: Codable {
+    public struct Item: Codable {
+        public let name: String
+        public let token: String
+    }
+
+    public var list: [Item]
+
+    public var stoken: String {
+        list.first { item in
+            item.name == "stoken"
+        }?.token ?? ""
+    }
+
+    public var ltoken: String {
+        list.first { item in
+            item.name == "ltoken"
+        }?.token ?? ""
+    }
+}
+
+// MARK: - RequestAccountListResult
+
+public struct RequestAccountListResult: Codable {
+    public let retcode: Int
+    public let message: String
+    public let data: AccountListData?
+}
+
+// MARK: - AccountListData
+
+public struct AccountListData: Codable {
+    public let list: [FetchedAccount]
+}
+
+// MARK: - FetchedAccount
+
+public struct FetchedAccount: Codable, Hashable, Identifiable {
+    public let region: String
+    public let gameBiz: String
+    public let nickname: String
+    public let level: Int
+    public let isOfficial: Bool
+    public let regionName: String
+    public let gameUid: String
+    public let isChosen: Bool
+
+    public var id: String { gameUid }
 }

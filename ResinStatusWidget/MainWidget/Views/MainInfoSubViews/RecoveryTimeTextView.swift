@@ -6,6 +6,7 @@
 //  恢复时间部分布局
 
 import Foundation
+import HBMihoyoAPI
 import SwiftUI
 
 struct RecoveryTimeText: View {

@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/16.
 //  获取Cookie的网页View
 
+import HBMihoyoAPI
 import SafariServices
 import SwiftUI
 import WebKit
@@ -82,7 +83,7 @@ struct GetCookieWebView: View {
                                             .first(where: { cookie in
                                                 cookie.name == "login_uid"
                                             })?.value ?? ""
-                                        API.Features.getMultiTokenByLoginTicket(
+                                        MihoyoAPI.getMultiTokenByLoginTicket(
                                             loginTicket: loginTicket,
                                             loginUid: loginUid
                                         ) { result in

@@ -1,15 +1,15 @@
 //
 //  UserData.swift
-//  原神披萨小助手
 //
-//  Created by Bill Haku on 2022/8/6.
+//
+//  Created by Bill Haku on 2023/3/25.
 //  小组件和主页用到的各类数据和处理工具
 
 import Foundation
 
 // MARK: - UserData
 
-struct UserData: SimplifiedUserDataContainer {
+public struct UserData: SimplifiedUserDataContainer {
     // MARK: Lifecycle
 
     init(fetchData: FetchData) {
@@ -56,28 +56,31 @@ struct UserData: SimplifiedUserDataContainer {
         self.transformerInfo = transformerInfo
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let resinInfo: ResinInfo
+    public let resinInfo: ResinInfo
 
-    let dailyTaskInfo: DailyTaskInfo
+    public let dailyTaskInfo: DailyTaskInfo
 
-    let weeklyBossesInfo: WeeklyBossesInfo
+    public let weeklyBossesInfo: WeeklyBossesInfo
 
-    let expeditionInfo: ExpeditionInfo
+    public let expeditionInfo: ExpeditionInfo
 
-    let homeCoinInfo: HomeCoinInfo
+    public let homeCoinInfo: HomeCoinInfo
 
-    let transformerInfo: TransformerInfo
+    public let transformerInfo: TransformerInfo
 }
 
-typealias SimplifiedUserDataResult = Result<SimplifiedUserData, FetchError>
-typealias SimplifiedUserDataContainerResult<T> = Result<T, FetchError>
+public typealias SimplifiedUserDataResult = Result<
+    SimplifiedUserData,
+    FetchError
+>
+public typealias SimplifiedUserDataContainerResult<T> = Result<T, FetchError>
     where T: SimplifiedUserDataContainer
 
 // MARK: - SimplifiedUserData
 
-struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
+public struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
     // MARK: Lifecycle
 
     init(
@@ -174,16 +177,16 @@ struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let resinInfo: ResinInfo
-    let dailyTaskInfo: DailyTaskInfo
-    let expeditionInfo: ExpeditionInfo
-    let homeCoinInfo: HomeCoinInfo
+    public let resinInfo: ResinInfo
+    public let dailyTaskInfo: DailyTaskInfo
+    public let expeditionInfo: ExpeditionInfo
+    public let homeCoinInfo: HomeCoinInfo
 }
 
 extension UserData {
-    static let defaultData = UserData(
+    public static let defaultData = UserData(
         fetchData: FetchData(
             currentResin: 90,
             maxResin: 160,
@@ -214,13 +217,13 @@ extension UserData {
 }
 
 extension Expedition {
-    static let defaultExpedition: Expedition = .init(
+    public static let defaultExpedition: Expedition = .init(
         avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Sara.png",
         remainedTimeStr: "0",
         statusStr: "Finished"
     )
 
-    static let defaultExpeditions: [Expedition] = [
+    public static let defaultExpeditions: [Expedition] = [
         Expedition(
             avatarSideIcon: "https://upload-bbs.mihoyo.com/game_record/genshin/character_side_icon/UI_AvatarIcon_Side_Yelan.png",
             remainedTimeStr: "0",
@@ -251,7 +254,7 @@ extension Expedition {
 
 // MARK: - SimplifiedUserDataContainer
 
-protocol SimplifiedUserDataContainer {
+public protocol SimplifiedUserDataContainer {
     var resinInfo: ResinInfo { get }
     var homeCoinInfo: HomeCoinInfo { get }
     var expeditionInfo: ExpeditionInfo { get }
@@ -261,7 +264,7 @@ protocol SimplifiedUserDataContainer {
 }
 
 extension UserData {
-    func dataAfter(_ second: TimeInterval) -> UserData {
+    public func dataAfter(_ second: TimeInterval) -> UserData {
         guard second != 0 else {
             return self
         }
@@ -335,7 +338,7 @@ extension UserData {
 }
 
 extension SimplifiedUserData {
-    func dataAfter(_ second: TimeInterval) -> SimplifiedUserData {
+    public func dataAfter(_ second: TimeInterval) -> SimplifiedUserData {
         guard second != 0 else {
             return self
         }
@@ -388,7 +391,7 @@ extension SimplifiedUserData {
 
 // MARK: - FetchData
 
-struct FetchData: Codable {
+public struct FetchData: Codable {
     // MARK: Lifecycle
 
     init(

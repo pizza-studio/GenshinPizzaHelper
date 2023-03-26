@@ -7,31 +7,35 @@
 
 import Foundation
 
-struct ResinInfo: Codable {
+public struct ResinInfo: Codable {
     // MARK: Lifecycle
 
-    init(_ currentResin: Int, _ maxResin: Int, _ resinRecoverySecond: Int) {
+    public init(
+        _ currentResin: Int,
+        _ maxResin: Int,
+        _ resinRecoverySecond: Int
+    ) {
         self.currentResin = currentResin
         self.maxResin = maxResin
         self.resinRecoverySecond = resinRecoverySecond
         self.updateDate = Date()
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let currentResin: Int
-    let maxResin: Int
-    let updateDate: Date
+    public let currentResin: Int
+    public let maxResin: Int
+    public let updateDate: Date
 
-    var isFull: Bool { currentResin == maxResin }
+    public var isFull: Bool { currentResin == maxResin }
 
-    var recoveryTime: RecoveryTime {
+    public var recoveryTime: RecoveryTime {
         RecoveryTime(second: resinRecoverySecond)
     }
 
-    var percentage: Double { Double(currentResin) / Double(maxResin) }
+    public var percentage: Double { Double(currentResin) / Double(maxResin) }
 
-    var score: Float {
+    public var score: Float {
         if isFull { return 1.1 }
         return Float(percentage)
     }

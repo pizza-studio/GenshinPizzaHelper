@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/8.
 //  测试连接部分的View
 
+import HBMihoyoAPI
 import SwiftUI
 
 struct TestSectionView: View {
@@ -110,7 +111,7 @@ struct TestSectionView: View {
         })
         .onAppear {
             if connectStatus == .testing {
-                API.Features.fetchInfos(
+                MihoyoAPI.fetchInfos(
                     region: server.region,
                     serverID: server.id,
                     uid: uid,
@@ -128,7 +129,7 @@ struct TestSectionView: View {
         }
         .onChange(of: connectStatus) { newValue in
             if newValue == .testing {
-                API.Features.fetchInfos(
+                MihoyoAPI.fetchInfos(
                     region: server.region,
                     serverID: server.id,
                     uid: uid,

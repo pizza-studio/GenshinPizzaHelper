@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/22.
 //  展示所有帐号的主页
 
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - HomeView

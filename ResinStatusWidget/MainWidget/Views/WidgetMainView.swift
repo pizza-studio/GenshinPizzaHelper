@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/7.
 //  Widget总体布局分类
 
+import HBMihoyoAPI
 import SwiftUI
 import WidgetKit
 

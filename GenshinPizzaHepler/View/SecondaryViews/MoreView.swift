@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/8.
 //  更多页面
 
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - MoreView

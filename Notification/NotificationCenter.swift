@@ -6,6 +6,7 @@
 //  通知功能提供
 
 import Foundation
+import HBMihoyoAPI
 import UserNotifications
 
 class UserNotificationCenter {

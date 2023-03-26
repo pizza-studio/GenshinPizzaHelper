@@ -6,6 +6,7 @@
 //  Widget功能提供
 
 import Foundation
+import HBMihoyoAPI
 import SwiftUI
 
 import WidgetKit

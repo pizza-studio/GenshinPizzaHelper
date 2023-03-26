@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/7.
 //  添加帐号的View
 
+import HBMihoyoAPI
 import SwiftUI
 import WebKit
 
@@ -291,7 +292,7 @@ struct AddAccountView: View {
         guard unsavedCookie != ""
         else { loginError = .notLoginError(-100, "未获取到登录信息"); return }
         fetchAccountStatus = .progressing
-        API.Features.getUserGameRolesByCookie(unsavedCookie, region) { result in
+        MihoyoAPI.getUserGameRolesByCookie(unsavedCookie, region) { result in
             switch result {
             case let .success(fetchedAccountArray):
                 accountsForSelected = fetchedAccountArray

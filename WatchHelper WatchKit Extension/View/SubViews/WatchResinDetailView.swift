@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/9.
 //
 
+import HBMihoyoAPI
 import SwiftUI
 
 struct WatchResinDetailView: View {

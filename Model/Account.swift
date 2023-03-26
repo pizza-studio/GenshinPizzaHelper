@@ -6,6 +6,7 @@
 //  Account所需的所有信息
 
 import Foundation
+import HBMihoyoAPI
 
 // MARK: - Account
 
@@ -53,7 +54,7 @@ extension AccountConfiguration {
         guard (uid != nil) || (cookie != nil)
         else { completion(.failure(.noFetchInfo)); return }
 
-        API.Features.fetchInfos(
+        MihoyoAPI.fetchInfos(
             region: server.region,
             serverID: server.id,
             uid: uid!,
@@ -92,7 +93,7 @@ extension AccountConfiguration {
         else { completion(.failure(.noFetchInfo)); return }
         guard cookie.contains("stoken")
         else { completion(.failure(.noStoken)); return }
-        API.Features.fetchSimplifiedInfos(cookie: cookie) { result in
+        MihoyoAPI.fetchSimplifiedInfos(cookie: cookie) { result in
             completion(result)
             #if !os(watchOS)
                 switch result {
@@ -110,7 +111,7 @@ extension AccountConfiguration {
     }
 
     func fetchBasicInfo(_ completion: @escaping (BasicInfos) -> ()) {
-        API.Features.fetchBasicInfos(
+        MihoyoAPI.fetchBasicInfos(
             region: server.region,
             serverID: server.id,
             uid: uid ?? "",
@@ -147,7 +148,7 @@ extension AccountConfiguration {
             _ completion: @escaping (SpiralAbyssDetail) -> ()
         ) {
             // thisAbyssData
-            API.Features.fetchSpiralAbyssInfos(
+            MihoyoAPI.fetchSpiralAbyssInfos(
                 region: server.region,
                 serverID: server.id,
                 uid: uid!,
@@ -190,7 +191,7 @@ extension AccountConfiguration {
             _ completion: @escaping (LedgerDataFetchResult)
                 -> ()
         ) {
-            API.Features.fetchLedgerInfos(
+            MihoyoAPI.fetchLedgerInfos(
                 month: 0,
                 uid: uid!,
                 serverID: server.id,

@@ -8,7 +8,7 @@
 import CryptoKit
 import Foundation
 
-struct RecoveryTime: Codable {
+public struct RecoveryTime: Codable {
     // MARK: Lifecycle
 
     init(second: Int) {
@@ -19,13 +19,13 @@ struct RecoveryTime: Codable {
         self.second = day * 24 * 60 * 60 + hour * 60 * 60 + minute * 60 + second
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let second: Int
+    public let second: Int
 
-    var isComplete: Bool { second == 0 }
+    public var isComplete: Bool { second == 0 }
 
-    func describeIntervalLong(
+    public func describeIntervalLong(
         finishedTextPlaceholder: String? = nil,
         unisStyle: DateComponentsFormatter.UnitsStyle = .brief
     )
@@ -48,7 +48,7 @@ struct RecoveryTime: Codable {
         return formatter.string(from: TimeInterval(Double(second)))!
     }
 
-    func describeIntervalShort(
+    public func describeIntervalShort(
         finishedTextPlaceholder: String? = nil,
         unisStyle: DateComponentsFormatter.UnitsStyle = .brief,
         useEnglishStyle: Bool = false
@@ -75,7 +75,7 @@ struct RecoveryTime: Codable {
         return formatter.string(from: TimeInterval(Double(second)))!
     }
 
-    func completeTimePointFromNow(finishedTextPlaceholder: String? = nil)
+    public func completeTimePointFromNow(finishedTextPlaceholder: String? = nil)
         -> String {
         /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
         if let finishedTextPlaceholder = finishedTextPlaceholder {
@@ -96,7 +96,10 @@ struct RecoveryTime: Codable {
         return dateFormatter.string(from: date)
     }
 
-    func completeTimePointFromNowShort(finishedTextPlaceholder: String? = nil)
+    public func completeTimePointFromNowShort(
+        finishedTextPlaceholder: String? =
+            nil
+    )
         -> String {
         /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
         if let finishedTextPlaceholder = finishedTextPlaceholder {

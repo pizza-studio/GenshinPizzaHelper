@@ -6,6 +6,7 @@
 //  HTTP请求方法
 
 import Foundation
+import HBMihoyoAPI
 
 // MARK: - Method
 

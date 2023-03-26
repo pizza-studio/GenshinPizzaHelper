@@ -9,13 +9,13 @@ import Foundation
 
 // MARK: - ExpeditionInfo
 
-struct ExpeditionInfo: Codable {
-    let currentExpedition: Int
-    let maxExpedition: Int
+public struct ExpeditionInfo: Codable {
+    public let currentExpedition: Int
+    public let maxExpedition: Int
 
-    let expeditions: [Expedition]
+    public let expeditions: [Expedition]
 
-    var currentOngoingTask: Int {
+    public var currentOngoingTask: Int {
         expeditions.isEmpty
             ? currentExpedition
             : expeditions.filter { expedition in
@@ -24,46 +24,46 @@ struct ExpeditionInfo: Codable {
             .count
     }
 
-    var anyCompleted: Bool {
+    public var anyCompleted: Bool {
         expeditions.isEmpty ? false : currentOngoingTask < maxExpedition
     }
 
-    var nextCompleteExpedition: Expedition? {
+    public var nextCompleteExpedition: Expedition? {
         expeditions.min {
             $0.recoveryTime.second < $1.recoveryTime.second
         }
     }
 
-    var nextCompleteTime: RecoveryTime {
+    public var nextCompleteTime: RecoveryTime {
         RecoveryTime(second: nextCompleteExpedition?.recoveryTime.second ?? 0)
     }
 
-    var nextCompletePercentage: Double {
+    public var nextCompletePercentage: Double {
         nextCompleteExpedition?.percentage ?? 0
     }
 
-    var allCompleted: Bool {
+    public var allCompleted: Bool {
         expeditions.isEmpty ? false : currentOngoingTask == 0
     }
 
-    var allCompleteTime: RecoveryTime {
+    public var allCompleteTime: RecoveryTime {
         RecoveryTime(second: expeditions.max {
             $0.recoveryTime.second < $1.recoveryTime.second
         }?.recoveryTime.second ?? 0)
     }
 
-    var maxTotalTime: Double {
+    public var maxTotalTime: Double {
         expeditions.map { $0.totalTime }
             .max {
                 $0 < $1
             } ?? 72000.0
     }
 
-    var allCompletedPercentage: Double {
+    public var allCompletedPercentage: Double {
         (maxTotalTime - Double(allCompleteTime.second)) / maxTotalTime
     }
 
-    var nextCompleteExpeditionIgnoreFinished: Expedition? {
+    public var nextCompleteExpeditionIgnoreFinished: Expedition? {
         expeditions.filter { expedition in
             !expedition.isComplete
         }.min {
@@ -71,15 +71,15 @@ struct ExpeditionInfo: Codable {
         }
     }
 
-    var nextCompleteTimeIgnoreFinished: RecoveryTime {
+    public var nextCompleteTimeIgnoreFinished: RecoveryTime {
         RecoveryTime(second: nextCompleteExpedition?.recoveryTime.second ?? 0)
     }
 
-    var nextCompletePercentageIgnoreFinished: Double {
+    public var nextCompletePercentageIgnoreFinished: Double {
         nextCompleteExpedition?.percentage ?? 0
     }
 
-    var score: Float {
+    public var score: Float {
         if allCompleted { return 120.0 / 160.0 }
         else if anyCompleted { return 40.0 / 160.0 } else { return 0 }
     }
@@ -87,43 +87,43 @@ struct ExpeditionInfo: Codable {
 
 // MARK: - Expedition
 
-struct Expedition: Codable {
-    enum CodingKeys: String, CodingKey {
+public struct Expedition: Codable {
+    public enum CodingKeys: String, CodingKey {
         case avatarSideIcon
         case remainedTimeStr = "remainedTime"
         case statusStr = "status"
     }
 
-    let avatarSideIcon: String
-    let remainedTimeStr: String
-    let statusStr: String
+    public let avatarSideIcon: String
+    public let remainedTimeStr: String
+    public let statusStr: String
 
-    let totalTime: Double = .init(20 * 60 * 60)
+    public let totalTime: Double = .init(20 * 60 * 60)
 
-    var percentage: Double {
+    public var percentage: Double {
         (totalTime - Double(recoveryTime.second)) / totalTime
     }
 
-    var charactersEnglishName: String {
+    public var charactersEnglishName: String {
         let components = avatarSideIcon.components(separatedBy: "_")
         let fileName = components.last ?? ""
         return (fileName as NSString).deletingPathExtension
     }
 
-    var avatarSideIconUrl: URL { URL(string: avatarSideIcon)! }
-    var recoveryTime: RecoveryTime {
+    public var avatarSideIconUrl: URL { URL(string: avatarSideIcon)! }
+    public var recoveryTime: RecoveryTime {
         RecoveryTime(second: Int(remainedTimeStr)!)
     }
 
-    var isComplete: Bool {
+    public var isComplete: Bool {
         recoveryTime.isComplete
     }
 
-    var characterName: String {
+    public var characterName: String {
         characterCNName.localized
     }
 
-    var characterCNName: String {
+    public var characterCNName: String {
         switch charactersEnglishName {
         case "Aether":
             return "空"

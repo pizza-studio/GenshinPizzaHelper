@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct DailyTaskInfo: Codable {
-    let totalTaskNum: Int
-    let finishedTaskNum: Int
-    let isTaskRewardReceived: Bool
+public struct DailyTaskInfo: Codable {
+    public let totalTaskNum: Int
+    public let finishedTaskNum: Int
+    public let isTaskRewardReceived: Bool
 
-    var score: Float {
+    public var score: Float {
         let isTimePast8PM: Bool = Date() > Calendar.current
             .date(bySettingHour: 20, minute: 0, second: 0, of: Date())!
         if finishedTaskNum == totalTaskNum, !isTaskRewardReceived {
