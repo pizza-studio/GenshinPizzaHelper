@@ -37,7 +37,7 @@ struct BackgroundsPreviewView: View {
                         Text(
                             backgroundImageName
                                 .localized
-                                .fixWrongChineseCharsUsedByMihoyo()
+                                .fixWrongChineseCharsUsedByMihoyo
                         )
                     }
                     .textCase(.none)
@@ -69,7 +69,7 @@ struct BackgroundsPreviewView: View {
                         Text(
                             backgroundImageName
                                 .localized
-                                .fixWrongChineseCharsUsedByMihoyo()
+                                .fixWrongChineseCharsUsedByMihoyo
                         )
                     }
                     .textCase(.none)

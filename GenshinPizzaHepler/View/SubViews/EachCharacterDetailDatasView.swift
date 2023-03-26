@@ -119,12 +119,8 @@ struct EachCharacterDetailDatasView: View {
             )
             VStack(alignment: .leading, spacing: 3) {
                 HStack(alignment: .firstTextBaseline) {
-                    Text(weapon.name.fixWrongChineseCharsUsedByMihoyo())
-                        // .font(.custom("Helvetica Neue Condensed Bold", size: 15))
-                        // .font(.system(size: 15, weight: .bold))
-                        // .font(.custom("Helvetica Neue Condensed Bold", size: 13))
-                        .font(.caption)
-                        .bold()
+                    Text(weapon.nameCorrected)
+                        .font(.system(size: 15, weight: .heavy))
                         .fixedSize(horizontal: false, vertical: true)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
@@ -384,7 +380,7 @@ private struct AvatarAndSkillView: View {
                 .padding(.trailing, 3)
             VStack(alignment: .leading, spacing: 2) {
                 HStack(alignment: .bottom) {
-                    Text(avatar.name.fixWrongChineseCharsUsedByMihoyo())
+                    Text(avatar.nameCorrected)
                         .font(.system(size: 23, weight: .black))
                         .fixedSize(horizontal: false, vertical: true)
                         .minimumScaleFactor(0.5)

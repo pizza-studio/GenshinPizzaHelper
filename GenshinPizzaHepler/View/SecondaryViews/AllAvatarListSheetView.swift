@@ -193,7 +193,7 @@ struct AvatarListItem: View {
             }
             VStack(spacing: 3) {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
-                    Text(avatar.name.fixWrongChineseCharsUsedByMihoyo())
+                    Text(avatar.nameCorrected)
                         .font(.system(size: 20, weight: .medium))
 //                        .fixedSize(horizontal: true, vertical: false)
                         .minimumScaleFactor(0.5)
@@ -377,7 +377,7 @@ private struct AvatarListItemShare: View {
             .layoutPriority(2)
             VStack(alignment: .leading, spacing: 3) {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
-                    Text(avatar.name.fixWrongChineseCharsUsedByMihoyo())
+                    Text(avatar.nameCorrected)
                         .font(.system(size: 20, weight: .medium))
 //                        .fixedSize(horizontal: true, vertical: false)
 //                        .minimumScaleFactor(0.7)
@@ -459,5 +459,14 @@ private struct AvatarListItemShare: View {
                 }
             }
         }
+    }
+}
+
+// MARK: - AllAvatarDetailModel.Avatar.nameCorrected Extension.
+
+extension AllAvatarDetailModel.Avatar {
+    /// 经过错字订正处理的角色姓名
+    fileprivate var nameCorrected: String {
+        name.fixWrongChineseCharsUsedByMihoyo
     }
 }

@@ -36,7 +36,7 @@ extension Locale {
 
 extension String {
     /// 該函式也會修正從 Mihoyo 抓到的原始資料當中的文字。
-    public func fixWrongChineseCharsUsedByMihoyo() -> String {
+    public var fixWrongChineseCharsUsedByMihoyo: String {
         guard Locale.forceFixWrongChineseCharsUsedByMihoyo else { return self }
         if Locale.isUILanguageSimplifiedChinese {
             if self == "钟离" {

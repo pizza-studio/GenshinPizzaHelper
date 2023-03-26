@@ -264,6 +264,10 @@ struct PlayerDetail {
 
             /// 突破后武器图标ID
             var awakenedIconString: String { "\(iconString)_Awaken" }
+            /// 经过错字订正处理的武器名称
+            var nameCorrected: String {
+                name.fixWrongChineseCharsUsedByMihoyo
+            }
         }
 
         /// 圣遗物
@@ -426,6 +430,11 @@ struct PlayerDetail {
         /// 侧脸图
         let sideIconString: String
         let quality: Quality
+
+        /// 经过错字订正处理的角色姓名
+        var nameCorrected: String {
+            name.fixWrongChineseCharsUsedByMihoyo
+        }
 
         /// 名片
         var namecardIconString: String {

@@ -548,7 +548,7 @@ private struct ShowAvatarPercentageView: View {
                                             ] ??
                                                 "unknown"
                                         )
-                                        .fixWrongChineseCharsUsedByMihoyo()
+                                        .fixWrongChineseCharsUsedByMihoyo
                                     )
                                 } icon: {
                                     EnkaWebIcon(
@@ -667,8 +667,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
                                                 ] ??
                                                     "unknown"
                                             )
-                                            .fixWrongChineseCharsUsedByMihoyo(
-                                            )
+                                            .fixWrongChineseCharsUsedByMihoyo
                                         )
                                     } icon: {
                                         EnkaWebIcon(
@@ -831,7 +830,7 @@ private struct ShowAvatarPercentageShare: View {
                                         ] ??
                                             "unknown"
                                     )
-                                    .fixWrongChineseCharsUsedByMihoyo()
+                                    .fixWrongChineseCharsUsedByMihoyo
                                 ).fixedSize()
                             } icon: {
                                 EnkaWebIcon(iconString: char?.iconString ?? "")
