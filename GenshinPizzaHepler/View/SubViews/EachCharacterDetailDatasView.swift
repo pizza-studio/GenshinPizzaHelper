@@ -119,7 +119,7 @@ struct EachCharacterDetailDatasView: View {
             )
             VStack(alignment: .leading, spacing: 3) {
                 HStack(alignment: .firstTextBaseline) {
-                    Text(weapon.name)
+                    Text(weapon.name.fixWrongChineseCharsUsedByMihoyo())
                         // .font(.custom("Helvetica Neue Condensed Bold", size: 15))
                         // .font(.system(size: 15, weight: .bold))
                         // .font(.custom("Helvetica Neue Condensed Bold", size: 13))
