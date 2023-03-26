@@ -46,14 +46,14 @@ struct EachCharacterDetailDatasView: View {
         ForEach(avatar.artifacts) { artifact in
             // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
             VStack(spacing: 4) {
-                perArtifactsDetailView(artifact)
+                perArtifactDetailView(artifact)
             }
             .frame(maxWidth: UIScreen.main.bounds.size.width / 5)
         }
     }
 
     @ViewBuilder
-    func perArtifactsDetailView(
+    func perArtifactDetailView(
         _ artifact: PlayerDetail.Avatar
             .Artifact
     )
@@ -384,7 +384,7 @@ private struct AvatarAndSkillView: View {
                 .padding(.trailing, 3)
             VStack(alignment: .leading, spacing: 2) {
                 HStack(alignment: .bottom) {
-                    Text(avatar.name)
+                    Text(avatar.name.fixWrongChineseCharsUsedByMihoyo())
                         .font(.system(size: 23, weight: .black))
                         .fixedSize(horizontal: false, vertical: true)
                         .minimumScaleFactor(0.5)

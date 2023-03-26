@@ -1084,3 +1084,7 @@
 "时区" = "Múi Giờ";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
 "自2023年4月1日起提供" = "Available From 2023-04-01";
+
+// MARK: - 2.7.13
+"中文汉字纠正" = "Chinese UI Text Correction";
+"这将会在简体中文当中强制自动恢复目前已被官方恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";

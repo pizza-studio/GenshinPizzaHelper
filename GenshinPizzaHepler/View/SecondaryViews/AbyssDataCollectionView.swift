@@ -542,10 +542,13 @@ private struct ShowAvatarPercentageView: View {
                             HStack {
                                 Label {
                                     Text(
-                                        charLoc[
-                                            "\(char?.NameTextMapHash ?? 0)"
-                                        ] ??
-                                            "unknown"
+                                        (
+                                            charLoc[
+                                                "\(char?.NameTextMapHash ?? 0)"
+                                            ] ??
+                                                "unknown"
+                                        )
+                                        .fixWrongChineseCharsUsedByMihoyo()
                                     )
                                 } icon: {
                                     EnkaWebIcon(
@@ -658,10 +661,14 @@ private struct ShowAvatarPercentageViewWithSection: View {
                                 HStack {
                                     Label {
                                         Text(
-                                            charLoc[
-                                                "\(char?.NameTextMapHash ?? 0)"
-                                            ] ??
-                                                "unknown"
+                                            (
+                                                charLoc[
+                                                    "\(char?.NameTextMapHash ?? 0)"
+                                                ] ??
+                                                    "unknown"
+                                            )
+                                            .fixWrongChineseCharsUsedByMihoyo(
+                                            )
                                         )
                                     } icon: {
                                         EnkaWebIcon(
@@ -818,8 +825,13 @@ private struct ShowAvatarPercentageShare: View {
                         GridRow {
                             Label {
                                 Text(
-                                    charLoc["\(char?.NameTextMapHash ?? 0)"] ??
-                                        "unknown"
+                                    (
+                                        charLoc[
+                                            "\(char?.NameTextMapHash ?? 0)"
+                                        ] ??
+                                            "unknown"
+                                    )
+                                    .fixWrongChineseCharsUsedByMihoyo()
                                 ).fixedSize()
                             } icon: {
                                 EnkaWebIcon(iconString: char?.iconString ?? "")

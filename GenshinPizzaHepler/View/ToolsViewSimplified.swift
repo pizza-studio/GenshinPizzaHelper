@@ -244,6 +244,8 @@ struct ToolsViewSimplified: View {
                                                 viewModel
                                                     .showingCharacterName =
                                                     avatar.name
+                                                        .fixWrongChineseCharsUsedByMihoyo(
+                                                        )
                                                 viewModel
                                                     .showCharacterDetailOfAccount =
                                                     account!

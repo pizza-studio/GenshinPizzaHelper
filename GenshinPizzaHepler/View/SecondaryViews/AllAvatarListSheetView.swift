@@ -193,7 +193,7 @@ struct AvatarListItem: View {
             }
             VStack(spacing: 3) {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
-                    Text(avatar.name)
+                    Text(avatar.name.fixWrongChineseCharsUsedByMihoyo())
                         .font(.system(size: 20, weight: .medium))
 //                        .fixedSize(horizontal: true, vertical: false)
                         .minimumScaleFactor(0.5)
@@ -377,7 +377,7 @@ private struct AvatarListItemShare: View {
             .layoutPriority(2)
             VStack(alignment: .leading, spacing: 3) {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
-                    Text(avatar.name)
+                    Text(avatar.name.fixWrongChineseCharsUsedByMihoyo())
                         .font(.system(size: 20, weight: .medium))
 //                        .fixedSize(horizontal: true, vertical: false)
 //                        .minimumScaleFactor(0.7)

@@ -20,6 +20,12 @@ struct MoreView: View {
     )
     var defaultServer: String = Server.asia.rawValue
 
+    @AppStorage(
+        "forceFixWrongChineseCharsUsedByMihoyo",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    var forceFixWrongChineseCharsUsedByMihoyo: Bool = false
+
     var body: some View {
         List {
             Section {
@@ -51,6 +57,19 @@ struct MoreView: View {
                     "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：\((Server(rawValue: defaultServer) ?? .asia).timeZone().identifier)。"
                 )
             }
+
+            if Locale.isUILanguagePanChinese {
+                Section {
+                    Toggle(isOn: $forceFixWrongChineseCharsUsedByMihoyo) {
+                        Text("中文汉字纠正")
+                    }
+                } footer: {
+                    Text(
+                        "这将会在简体中文当中强制自动恢复目前已被官方恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。"
+                    )
+                }
+            }
+
             Section {
                 Link(
                     "获取Cookie的脚本",

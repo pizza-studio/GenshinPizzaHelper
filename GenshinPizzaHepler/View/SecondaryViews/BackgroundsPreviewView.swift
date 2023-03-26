@@ -34,7 +34,11 @@ struct BackgroundsPreviewView: View {
                             style: .continuous
                         ))
                     } header: {
-                        Text(LocalizedStringKey(backgroundImageName))
+                        Text(
+                            backgroundImageName
+                                .localized
+                                .fixWrongChineseCharsUsedByMihoyo()
+                        )
                     }
                     .textCase(.none)
                     .listRowBackground(Color.white.opacity(0))
@@ -62,7 +66,11 @@ struct BackgroundsPreviewView: View {
                             style: .continuous
                         ))
                     } header: {
-                        Text(LocalizedStringKey(backgroundImageName))
+                        Text(
+                            backgroundImageName
+                                .localized
+                                .fixWrongChineseCharsUsedByMihoyo()
+                        )
                     }
                     .textCase(.none)
                     .listRowBackground(Color.white.opacity(0))
