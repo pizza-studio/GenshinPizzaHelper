@@ -25,7 +25,6 @@ struct CharacterDetailView: View {
     var avatar: PlayerDetail.Avatar {
         playerDetail.avatars.first(where: { avatar in
             avatar.name == showingCharacterName
-                .fixWrongChineseCharsUsedByMihoyo()
         })!
     }
 
