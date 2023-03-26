@@ -16,80 +16,75 @@ struct EachCharacterDetailDatasView: View {
     var animation: Namespace.ID
 
     var body: some View {
-        let spacing: CGFloat = 4
-        VStack {
-            if #available(iOS 16, *) {
-                Grid {
-                    GridRow {
-                        avatarIconAndSkill()
-                            .padding(.bottom, spacing)
-                    }
-                    GridRow {
-                        weapon()
-                            .padding(.bottom, spacing)
-                    }
-                }
-            } else {
-                HStack {
-                    avatarIconAndSkill()
-                        .padding(.bottom, spacing)
-                }
-                HStack {
-                    weapon()
-                        .padding(.bottom, spacing)
+        HStack(alignment: .top, spacing: 8) {
+//            if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) {
+//                VStack(spacing: 4) {
+//                    avatarIconAndSkill()
+//                    VStack(alignment: .leading) {
+//                        artifactsDetailsView()
+//                    }
+//                }
+//                VStack(spacing: 4) {
+//                    probView()
+//                    weapon()
+//                }
+//            } 上述内容回头再弄
+            VStack(spacing: 4) {
+                avatarIconAndSkill()
+                weapon()
+                Divider()
+                probView()
+                HStack(alignment: .top, spacing: 0) {
+                    artifactsDetailsView()
                 }
             }
-            probView()
-                .padding(.bottom, spacing)
-            artifactsDetailsView()
-        }
-        .padding()
+        }.padding()
     }
 
     @ViewBuilder
     func artifactsDetailsView() -> some View {
-        if !avatar.artifacts.isEmpty {
-            if true { // 这行先不用清除掉，可以减少接下来的 macOS 适配时的 commit 熵。
-                HStack {
-                    ForEach(avatar.artifacts) { artifact in
-                        VStack {
-                            ZStack {
-                                HomeSourceWebIcon(
-                                    iconString: artifact
-                                        .iconString
-                                )
-                            }
-                            .frame(width: 60, height: 60)
-                            .corneredTag(
-                                "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
-                                alignment: .bottom
-                            )
-                            VStack {
-                                Text(artifact.mainAttribute.name)
-                                    .font(.system(size: 11, weight: .bold))
-                                Text("\(artifact.mainAttribute.valueString)")
-                                    .font(.system(size: 16, weight: .heavy))
-                                Spacer().frame(height: 6)
-                            }
-                            VStack {
-                                ForEach(
-                                    artifact.subAttributes,
-                                    id: \.name
-                                ) { subAttribute in
-                                    Text(subAttribute.name)
-                                        .font(.system(size: 11))
-                                    Text("\(subAttribute.valueString)")
-                                        .font(.system(size: 16, weight: .bold))
-                                    Spacer().frame(height: 4)
-                                }
-                            }
-                        }
-                        .frame(maxWidth: UIScreen.main.bounds.size.width / 5)
-                    }
-                }
+        ForEach(avatar.artifacts) { artifact in
+            // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
+            VStack(spacing: 4) {
+                perArtifactsDetailView(artifact)
             }
-        } else {
-            EmptyView()
+            .frame(maxWidth: UIScreen.main.bounds.size.width / 5)
+        }
+    }
+
+    @ViewBuilder
+    func perArtifactsDetailView(
+        _ artifact: PlayerDetail.Avatar
+            .Artifact
+    )
+        -> some View {
+        ZStack {
+            HomeSourceWebIcon(
+                iconString: artifact
+                    .iconString
+            )
+        }
+        .frame(width: 60, height: 60)
+        .corneredTag(
+            "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
+            alignment: .bottom
+        )
+        VStack(spacing: 2) {
+            Text(artifact.mainAttribute.name)
+                .font(.system(size: 11, weight: .bold))
+            Text("\(artifact.mainAttribute.valueString)")
+                .font(.system(size: 16, weight: .heavy))
+        }
+        ForEach(
+            artifact.subAttributes,
+            id: \.name
+        ) { subAttribute in
+            VStack(spacing: 2) {
+                Text(subAttribute.name)
+                    .font(.system(size: 11))
+                Text("\(subAttribute.valueString)")
+                    .font(.system(size: 16, weight: .bold))
+            }
         }
     }
 
@@ -100,70 +95,76 @@ struct EachCharacterDetailDatasView: View {
 
     @ViewBuilder
     func weapon() -> some View {
-        // Weapon
-        let weapon = avatar.weapon
-        let l: CGFloat = 80
-        ZStack {
-            EnkaWebIcon(
-                iconString: weapon.rankLevel
-                    .rectangularBackgroundIconString
-            )
-            .scaledToFit()
-            .scaleEffect(1.1)
-            .offset(y: 10)
-            .clipShape(Circle())
-            EnkaWebIcon(iconString: weapon.awakenedIconString)
+        HStack(alignment: .center, spacing: 12) {
+            // Weapon
+            let weapon = avatar.weapon
+            let l: CGFloat = 70
+            ZStack {
+                EnkaWebIcon(
+                    iconString: weapon.rankLevel
+                        .rectangularBackgroundIconString
+                )
                 .scaledToFit()
-        }
-        .frame(height: l)
-        .corneredTag(
-            "Lv.\(weapon.level)",
-            alignment: .bottomTrailing,
-            textSize: 13
-        )
-        VStack(alignment: .leading, spacing: 3) {
-            HStack(alignment: .firstTextBaseline) {
-                Text(weapon.name)
-                    .bold()
-                    .font(.system(size: 22))
-                    .fixedSize(horizontal: false, vertical: true)
-                Spacer()
-                Text("精炼\(weapon.refinementRank)阶")
-                    .font(.system(size: 16))
-                    .padding(.horizontal)
-                    .background(
-                        Capsule()
-                            .fill(.gray)
-                            .opacity(0.25)
-                    )
+                .scaleEffect(1.1)
+                .offset(y: 10)
+                .clipShape(Circle())
+                EnkaWebIcon(iconString: weapon.awakenedIconString)
+                    .scaledToFit()
             }
-            .padding(.bottom, 2)
-            HStack {
-                Text(weapon.mainAttribute.name)
-                Spacer()
-                Text("\(avatar.weapon.mainAttribute.valueString)")
-                    .padding(.horizontal)
-                    .background(
-                        Capsule()
-                            .fill(.gray)
-                            .opacity(0.25)
-                    )
-            }.font(.system(size: 18))
-            if let subAttribute = weapon.subAttribute {
-                HStack {
-                    Text(subAttribute.name)
+            .frame(height: l)
+            .corneredTag(
+                "Lv.\(weapon.level)",
+                alignment: .bottom,
+                textSize: 13
+            )
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(weapon.name)
+                        // .font(.custom("Helvetica Neue Condensed Bold", size: 15))
+                        // .font(.system(size: 15, weight: .bold))
+                        // .font(.custom("Helvetica Neue Condensed Bold", size: 13))
+                        .font(.caption)
+                        .bold()
+                        .fixedSize(horizontal: false, vertical: true)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
                     Spacer()
-                    Text("\(subAttribute.valueString)")
+                    Text("精炼\(weapon.refinementRank)阶")
+                        .font(.system(size: 15))
                         .padding(.horizontal)
                         .background(
                             Capsule()
                                 .fill(.gray)
                                 .opacity(0.25)
                         )
-                }.font(.system(size: 16))
+                }
+                .padding(.bottom, 2)
+                HStack {
+                    Text(weapon.mainAttribute.name)
+                    Spacer()
+                    Text("\(avatar.weapon.mainAttribute.valueString)")
+                        .padding(.horizontal)
+                        .background(
+                            Capsule()
+                                .fill(.gray)
+                                .opacity(0.25)
+                        )
+                }.font(.system(size: 15))
+                if let subAttribute = weapon.subAttribute {
+                    HStack {
+                        Text(subAttribute.name)
+                        Spacer()
+                        Text("\(subAttribute.valueString)")
+                            .padding(.horizontal)
+                            .background(
+                                Capsule()
+                                    .fill(.gray)
+                                    .opacity(0.25)
+                            )
+                    }.font(.system(size: 15))
+                }
             }
         }
-        .frame(height: l)
     }
 
     @ViewBuilder
@@ -265,7 +266,7 @@ struct EachCharacterDetailDatasView: View {
                     value: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%"
                 )
             }
-        }.font(.system(size: 16))
+        }.font(.system(size: 15))
         if #available(iOS 16, *) {
             Grid(verticalSpacing: 3) {
                 probRows
@@ -359,78 +360,75 @@ struct AttributeLabel: View {
 private struct AvatarAndSkillView: View {
     let avatar: PlayerDetail.Avatar
 
+    var hasNotch: Bool {
+        guard let scene = UIApplication.shared.connectedScenes.first,
+              let windowSceneDelegate = scene
+              .delegate as? UIWindowSceneDelegate,
+              let window = windowSceneDelegate.window else {
+            return false
+        }
+
+        return window?.safeAreaInsets.top ?? 0 > 20
+    }
+
     var body: some View {
-        EnkaWebIcon(iconString: avatar.iconString)
-            .frame(width: 85, height: 85)
-            .background(
-                EnkaWebIcon(iconString: avatar.namecardIconString)
-                    .scaledToFill()
-                    .offset(x: -85 / 3)
-            )
-            .clipShape(Circle())
-            .padding(.trailing, 3)
-//            .matchedGeometryEffect(id: "character.\(avatar.name)", in: animation)
-        HStack(alignment: .lastTextBaseline) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(avatar.name)
-                    .font(.system(size: 25))
-                    .bold()
-                    .fixedSize(horizontal: false, vertical: true)
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(2)
-                VStack(spacing: 4) {
-                    HStack {
-                        Text("等级")
-                        Spacer()
-                        Text("\(avatar.level)")
-                            .frame(minWidth: 42)
-                            .padding(.horizontal, 4)
-                            .background(
-                                Capsule()
-                                    .fill(.gray)
-                                    .opacity(0.25)
-                            )
-                    }
-                    HStack {
-                        Text("命之座")
-                        Spacer()
-                        Text("\(avatar.talentCount)命")
-                            .frame(minWidth: 42)
-                            .padding(.horizontal, 4)
-                            .background(
-                                Capsule()
-                                    .fill(.gray)
-                                    .opacity(0.25)
-                            )
+        HStack(alignment: .bottom) {
+            EnkaWebIcon(iconString: avatar.iconString)
+                .frame(width: 85, height: 85)
+                .background(
+                    EnkaWebIcon(iconString: avatar.namecardIconString)
+                        .scaledToFill()
+                        .offset(x: -85 / 3)
+                )
+                .clipShape(Circle())
+                .padding(.trailing, 3)
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(alignment: .bottom) {
+                    Text(avatar.name)
+                        .font(.system(size: 23, weight: .black))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
+                    if !hasNotch {
+                        Spacer().frame(width: 24)
                     }
                 }
-                .font(.system(size: 16))
-            }
-            if #available(iOS 16, *) {
-                Grid(verticalSpacing: 1) {
-                    GridRow {
-                        ForEach(avatar.skills, id: \.self) { skill in
-                            EnkaWebIcon(iconString: skill.iconString)
+                HStack(alignment: .center) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack {
+                            Text("等级")
+                            Spacer()
+                            Text("\(avatar.level)")
+                                .frame(minWidth: 42)
+                                .padding(.horizontal, 4)
+                                .background(
+                                    Capsule()
+                                        .fill(.gray)
+                                        .opacity(0.25)
+                                )
+                        }
+                        HStack {
+                            Text("命之座")
+                            Spacer()
+                            Text("\(avatar.talentCount)命")
+                                .frame(minWidth: 42)
+                                .padding(.horizontal, 4)
+                                .background(
+                                    Capsule()
+                                        .fill(.gray)
+                                        .opacity(0.25)
+                                )
                         }
                     }
-                    GridRow {
+                    .font(.system(size: 15))
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
                         ForEach(avatar.skills, id: \.self) { skill in
                             VStack(spacing: 0) {
+                                EnkaWebIcon(iconString: skill.iconString)
                                 skill.levelDisplay
                             }
                         }
-                    }
-                }
-            } else {
-                HStack {
-                    ForEach(avatar.skills, id: \.self) { skill in
-                        VStack(spacing: 0) {
-                            Spacer()
-                            EnkaWebIcon(iconString: skill.iconString)
-                            skill.levelDisplay
-                            Spacer()
-                        }
-                    }
+                    }.frame(width: 120)
                 }
             }
         }
@@ -452,7 +450,7 @@ extension View {
         if #available(macCatalyst 15.0, iOS 15.0, *) {
             return overlay(alignment: alignment) {
                 Text(enabled ? string : "")
-                    .font(.system(size: textSize))
+                    .font(.system(size: textSize, weight: .medium))
                     .padding(.horizontal, 3)
                     .background(
                         Capsule()
