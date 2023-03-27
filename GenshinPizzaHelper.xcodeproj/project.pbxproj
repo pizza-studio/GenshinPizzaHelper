@@ -606,6 +606,7 @@
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
+		BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HBPizzaHelperAPI; path = Dependences/HBPizzaHelperAPI; sourceTree = "<group>"; };
 		BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfoView.swift; sourceTree = "<group>"; };
 		BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDDictionaryDataModel.swift; sourceTree = "<group>"; };
 		BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDGenshinDictionaryView.swift; sourceTree = "<group>"; };
@@ -1021,6 +1022,7 @@
 		BFBDD66C28F3F2B80022B79D /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */,
 				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
 				BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */,
 			);
