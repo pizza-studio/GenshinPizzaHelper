@@ -376,11 +376,16 @@ struct PlayerDetail {
             var value: Double
 
             var valueString: String {
+                let result: NSMutableString
                 if floor(value) == value {
-                    return "\(Int(value))"
+                    result = .init(string: "\(Int(value))")
                 } else {
-                    return String(format: "%.1f", value)
+                    result = .init(string: String(format: "%.1f", value))
                 }
+                if let last = name.last, ["％", "%"].contains(last) {
+                    result.append("%")
+                }
+                return result.description
             }
         }
 

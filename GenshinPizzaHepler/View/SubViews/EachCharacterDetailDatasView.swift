@@ -69,8 +69,8 @@ struct EachCharacterDetailDatasView: View {
             "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
             alignment: .bottom
         )
-        VStack(spacing: 2) {
-            Text(artifact.mainAttribute.name)
+        VStack(spacing: 0) {
+            Text(artifact.mainAttribute.name.convertPercentageMarkToUpMark)
                 .font(.system(size: 11, weight: .bold))
             Text("\(artifact.mainAttribute.valueString)")
                 .font(.system(size: 16, weight: .heavy))
@@ -79,8 +79,8 @@ struct EachCharacterDetailDatasView: View {
             artifact.subAttributes,
             id: \.name
         ) { subAttribute in
-            VStack(spacing: 2) {
-                Text(subAttribute.name)
+            VStack(spacing: 0) {
+                Text(subAttribute.name.convertPercentageMarkToUpMark)
                     .font(.system(size: 11))
                 Text("\(subAttribute.valueString)")
                     .font(.system(size: 16, weight: .bold))
@@ -105,7 +105,7 @@ struct EachCharacterDetailDatasView: View {
                         .rectangularBackgroundIconString
                 )
                 .scaledToFit()
-                .scaleEffect(1.1)
+                .scaleEffect(1.4)
                 .offset(y: 10)
                 .clipShape(Circle())
                 EnkaWebIcon(iconString: weapon.awakenedIconString)
@@ -117,7 +117,7 @@ struct EachCharacterDetailDatasView: View {
                 alignment: .bottom,
                 textSize: 13
             )
-            VStack(alignment: .leading, spacing: 3) {
+            VStack(alignment: .leading, spacing: 1) {
                 HStack(alignment: .firstTextBaseline) {
                     Text(weapon.nameCorrected)
                         .font(.system(size: 15, weight: .heavy))
@@ -136,7 +136,10 @@ struct EachCharacterDetailDatasView: View {
                 }
                 .padding(.bottom, 2)
                 HStack {
-                    Text(weapon.mainAttribute.name)
+                    Text(
+                        weapon.mainAttribute.name
+                            .convertPercentageMarkToUpMark
+                    )
                     Spacer()
                     Text("\(avatar.weapon.mainAttribute.valueString)")
                         .padding(.horizontal)
@@ -148,7 +151,7 @@ struct EachCharacterDetailDatasView: View {
                 }.font(.system(size: 15))
                 if let subAttribute = weapon.subAttribute {
                     HStack {
-                        Text(subAttribute.name)
+                        Text(subAttribute.name.convertPercentageMarkToUpMark)
                         Spacer()
                         Text("\(subAttribute.valueString)")
                             .padding(.horizontal)
@@ -264,11 +267,11 @@ struct EachCharacterDetailDatasView: View {
             }
         }.font(.system(size: 15))
         if #available(iOS 16, *) {
-            Grid(verticalSpacing: 3) {
+            Grid(verticalSpacing: 1) {
                 probRows
             }
         } else {
-            VStack(spacing: 3) {
+            VStack(spacing: 1) {
                 probRows
             }
         }
@@ -390,7 +393,7 @@ private struct AvatarAndSkillView: View {
                     }
                 }
                 HStack(alignment: .center) {
-                    VStack(alignment: .leading, spacing: 4) {
+                    VStack(alignment: .leading, spacing: 1) {
                         HStack {
                             Text("等级")
                             Spacer()
@@ -489,5 +492,16 @@ extension PlayerDetail.Avatar.Skill {
                     .font(.system(size: 12, weight: .heavy))
             }
         }
+    }
+}
+
+// MARK: - Convert trailing percentage mark into a rised arrow mark.
+
+extension String {
+    fileprivate var convertPercentageMarkToUpMark: String {
+        guard let last = last, ["％", "%"].contains(last) else {
+            return self
+        }
+        return dropLast(1).description
     }
 }
