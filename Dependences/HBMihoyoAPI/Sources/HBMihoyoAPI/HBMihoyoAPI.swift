@@ -74,7 +74,7 @@ public enum MihoyoAPI {
                     case 1034:
                         completion(.failure(.accountAbnormal(retcode)))
                     default:
-                        print("unknowerror")
+                        print("unknownerror")
                         completion(.failure(.unknownError(
                             retcode,
                             message
@@ -155,7 +155,7 @@ public enum MihoyoAPI {
                     case 1034:
                         completion(.failure(.accountAbnormal(retcode)))
                     default:
-                        print("unknowerror")
+                        print("unknownerror")
                         completion(.failure(.unknownError(
                             retcode,
                             message
@@ -238,7 +238,7 @@ public enum MihoyoAPI {
                     case 1034:
                         completion(.failure(.accountAbnormal(retcode)))
                     default:
-                        print("unknowerror")
+                        print("unknownerror")
                         completion(.failure(.unknownError(
                             retcode,
                             message
@@ -465,7 +465,7 @@ public enum MihoyoAPI {
                                     .failure(.accountAbnormal(retcode))
                                 )
                             default:
-                                print("unknowerror")
+                                print("unknownerror")
                                 completion(.failure(.unknownError(
                                     retcode,
                                     message
@@ -538,7 +538,7 @@ public enum MihoyoAPI {
                                         .failure(.accountAbnormal(retcode))
                                     )
                                 default:
-                                    print("unknowerror")
+                                    print("unknownerror")
                                     completion(
                                         .failure(.unknownError(
                                             retcode,
@@ -636,7 +636,7 @@ public enum MihoyoAPI {
                     case 1034:
                         completion(.failure(.accountAbnormal(retcode)))
                     default:
-                        print("unknowerror")
+                        print("unknownerror")
                         completion(.failure(.unknownError(
                             retcode,
                             message
@@ -740,7 +740,7 @@ public enum MihoyoAPI {
                     case 1034:
                         completion(.failure(.accountAbnormal(retcode)))
                     default:
-                        print("unknowerror")
+                        print("unknownerror")
                         completion(.failure(.unknownError(
                             retcode,
                             message
@@ -833,7 +833,7 @@ public enum MihoyoAPI {
                         case 1034:
                             completion(.failure(.accountAbnormal(retcode)))
                         default:
-                            print("unknowerror")
+                            print("unknownerror")
                             completion(.failure(.unknownError(
                                 retcode,
                                 message

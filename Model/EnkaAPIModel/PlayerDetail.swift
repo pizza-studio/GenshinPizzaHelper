@@ -98,12 +98,12 @@ struct PlayerDetail {
             localizedDictionary: [String: String],
             characterDictionary: [String: ENCharacterMap.Character]
         ) {
-            guard let character = characterDictionary["\(avatarInfo.avatarId)"]
+            guard let character = characterDictionary["\(avatarInfo.avatarId)-\(avatarInfo.skillDepotId)"] ?? characterDictionary["\(avatarInfo.avatarId)"]
             else { return nil }
 
             self.name = localizedDictionary
                 .nameFromHashMap(character.NameTextMapHash)
-            self.element = AvatarElement(rawValue: character.Element) ?? .unknow
+            self.element = AvatarElement(rawValue: character.Element) ?? .unknown
 
             if let talentIdList = avatarInfo.talentIdList {
                 self.talentCount = talentIdList.count
@@ -117,11 +117,12 @@ struct PlayerDetail {
             )
             self.sideIconString = character.SideIconName
 
-            self.skills = character.SkillOrder.map { skillID in
+            self.skills = character.SkillOrder.compactMap { skillID in
                 let level = avatarInfo.skillLevelMap
                     .skillLevel[skillID.description] ?? 0
+                guard level > 0 else { return nil }
                 let icon = character.Skills
-                    .skillData[String(skillID)] ?? "unknown"
+                    .skillData[String(skillID)] ?? "UI_Talent_Combine_Skill_ExtraItem"
                 let adjustedDelta = avatarInfo
                     .proudSkillExtraLevelMap?[(
                         character.ProudMap
@@ -391,14 +392,22 @@ struct PlayerDetail {
 
         /// 元素类型
         enum AvatarElement: String {
-            case ice = "Ice"
-            case wind = "Wind"
-            case electric = "Electric"
-            case water = "Water"
-            case fire = "Fire"
-            case rock = "Rock"
-            case grass = "Grass"
-            case unknow
+            /// 冰
+            case cryo = "Ice"
+            /// 风
+            case anemo = "Wind"
+            /// 雷
+            case electro = "Electric"
+            /// 水
+            case hydro = "Water"
+            /// 火
+            case pyro = "Fire"
+            /// 岩
+            case geo = "Rock"
+            /// 草
+            case dendro = "Grass"
+            /// 原人
+            case unknown = "Unknown"
         }
 
         /// 角色星级，橙色为四星，紫色为五星

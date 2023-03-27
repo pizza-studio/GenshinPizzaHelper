@@ -242,7 +242,7 @@ struct PlayerDetailFetchModel: Codable {
         var propMap: PropMap
         /// 角色战斗属性
         var fightPropMap: FightPropMap
-        /// 角色天赋ID
+        /// 角色天赋技能组ID
         var skillDepotId: Int
         /// 所有固定天赋ID的列表
         var inherentProudSkillList: [Int]

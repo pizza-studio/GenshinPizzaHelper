@@ -213,43 +213,43 @@ struct EachCharacterDetailDatasView: View {
                 value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%"
             )
             switch avatar.element {
-            case .wind:
+            case .anemo:
                 AttributeLabel(
                     iconString: "UI_Icon_Element_Wind",
                     name: "风元素伤害加成",
                     value: "\((avatar.fightPropMap.anemoDamage * 100.0).rounded(toPlaces: 2))%"
                 )
-            case .ice:
+            case .cryo:
                 AttributeLabel(
                     iconString: "UI_Icon_Element_Ice",
                     name: "冰元素伤害加成",
                     value: "\((avatar.fightPropMap.cryoDamage * 100.0).rounded(toPlaces: 2))%"
                 )
-            case .electric:
+            case .electro:
                 AttributeLabel(
                     iconString: "UI_Icon_Element_Electric",
                     name: "雷元素伤害加成",
                     value: "\((avatar.fightPropMap.electroDamage * 100.0).rounded(toPlaces: 2))%"
                 )
-            case .water:
+            case .hydro:
                 AttributeLabel(
                     iconString: "UI_Icon_Element_Water",
                     name: "水元素伤害加成",
                     value: "\((avatar.fightPropMap.hydroDamage * 100.0).rounded(toPlaces: 2))%"
                 )
-            case .fire:
+            case .pyro:
                 AttributeLabel(
                     iconString: "UI_Icon_Element_Fire",
                     name: "火元素伤害加成",
                     value: "\((avatar.fightPropMap.pyroDamage * 100.0).rounded(toPlaces: 2))%"
                 )
-            case .rock:
+            case .geo:
                 AttributeLabel(
                     iconString: "UI_Icon_Element_Rock",
                     name: "岩元素伤害加成",
                     value: "\((avatar.fightPropMap.geoDamage * 100.0).rounded(toPlaces: 2))%"
                 )
-            case .grass:
+            case .dendro:
                 AttributeLabel(
                     iconString: "UI_Icon_Element_Grass",
                     name: "草元素伤害加成",
