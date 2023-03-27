@@ -1,7 +1,7 @@
 import Foundation
 
 @available(iOS 13, watchOS 7, *)
-public class PizzaHelperAPI {
+public enum PizzaHelperAPI {
     /// 获取最新系统版本
     /// - Parameters:
     ///     - isBeta: 是否是Beta

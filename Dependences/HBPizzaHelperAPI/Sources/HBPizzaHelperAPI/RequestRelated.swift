@@ -7,14 +7,14 @@
 
 import Foundation
 
-//public typealias FetchResult = Result<UserData, FetchError>
-//public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
-//public typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
-//public typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
-//public typealias AllAvatarDetailFetchResult = Result<
+// public typealias FetchResult = Result<UserData, FetchError>
+// public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
+// public typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
+// public typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
+// public typealias AllAvatarDetailFetchResult = Result<
 //    AllAvatarDetailModel,
 //    FetchError
-//>
+// >
 
 #if !os(watchOS)
 //    typealias PlayerDetailsFetchResult = Result<
@@ -30,7 +30,6 @@ import Foundation
 //        FetchError
 //    >
 #endif
-
 
 // MARK: - RequestError
 

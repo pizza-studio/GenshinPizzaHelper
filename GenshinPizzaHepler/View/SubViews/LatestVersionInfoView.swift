@@ -5,9 +5,9 @@
 //  Created by Bill Haku on 2022/9/27.
 //
 
+import HBPizzaHelperAPI
 import StoreKit
 import SwiftUI
-import HBPizzaHelperAPI
 
 struct LatestVersionInfoView: View {
     @Binding

@@ -1,7 +1,7 @@
 import Foundation
 
 @available(iOS 13, watchOS 8, *)
-public class MihoyoAPI {
+public enum MihoyoAPI {
     /// 获取信息
     /// - Parameters:
     ///     - region: 服务器地区

@@ -20,7 +20,6 @@ enum Method {
 
 @available(iOS 13, watchOS 6, *)
 struct HttpMethod<T: Codable> {
-
     /// 返回Open API结果接口
     /// - Parameters:
     ///   - method:Method, http方法的类型

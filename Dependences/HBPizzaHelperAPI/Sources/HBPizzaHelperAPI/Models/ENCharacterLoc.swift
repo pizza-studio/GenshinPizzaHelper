@@ -1,6 +1,6 @@
 //
 //  ENCharacterLoc.swift
-//  
+//
 //
 //  Created by Bill Haku on 2023/3/27.
 //
@@ -8,7 +8,7 @@
 import Foundation
 
 public struct ENCharacterLoc: Codable {
-    // MARK: Internal
+    // MARK: Public
 
     public struct LocDict: Codable {
         // MARK: Lifecycle
@@ -25,7 +25,7 @@ public struct ENCharacterLoc: Codable {
             self.content = contentDict
         }
 
-        // MARK: Internal
+        // MARK: Public
 
         public struct LocKey: CodingKey {
             // MARK: Lifecycle
@@ -39,7 +39,7 @@ public struct ENCharacterLoc: Codable {
                 self.intValue = intValue
             }
 
-            // MARK: Internal
+            // MARK: Public
 
             public var stringValue: String
             public var intValue: Int?

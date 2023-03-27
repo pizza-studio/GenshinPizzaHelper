@@ -1,6 +1,6 @@
 //
 //  ENCharacterMap.swift
-//  
+//
 //
 //  Created by Bill Haku on 2023/3/27.
 //
@@ -24,7 +24,7 @@ public struct ENCharacterMap: Codable {
         self.characterDetails = character
     }
 
-    // MARK: Internal
+    // MARK: Public
 
     public struct CharacterKey: CodingKey {
         // MARK: Lifecycle
@@ -38,7 +38,7 @@ public struct ENCharacterMap: Codable {
             self.intValue = intValue
         }
 
-        // MARK: Internal
+        // MARK: Public
 
         public var stringValue: String
         public var intValue: Int?
@@ -63,7 +63,7 @@ public struct ENCharacterMap: Codable {
                 self.skillData = skill
             }
 
-            // MARK: Internal
+            // MARK: Public
 
             public struct SkillKey: CodingKey {
                 // MARK: Lifecycle
@@ -77,7 +77,7 @@ public struct ENCharacterMap: Codable {
                     self.intValue = intValue
                 }
 
-                // MARK: Internal
+                // MARK: Public
 
                 public var stringValue: String
                 public var intValue: Int?
@@ -102,7 +102,7 @@ public struct ENCharacterMap: Codable {
                 self.proudMapData = proud
             }
 
-            // MARK: Internal
+            // MARK: Public
 
             public struct ProudKey: CodingKey {
                 // MARK: Lifecycle
@@ -116,7 +116,7 @@ public struct ENCharacterMap: Codable {
                     self.intValue = intValue
                 }
 
-                // MARK: Internal
+                // MARK: Public
 
                 public var stringValue: String
                 public var intValue: Int?
