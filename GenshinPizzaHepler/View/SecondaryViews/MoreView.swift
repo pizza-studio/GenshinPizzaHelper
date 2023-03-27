@@ -11,6 +11,8 @@ import SwiftUI
 // MARK: - MoreView
 
 struct MoreView: View {
+    // MARK: Internal
+
     @ObservedObject
     var viewModel: MoreViewCacheViewModel = .init()
 
@@ -71,6 +73,12 @@ struct MoreView: View {
             }
 
             Section {
+                Toggle(isOn: $showRarityAndLevelForArtifacts) {
+                    Text("显示圣遗物等级与稀有度")
+                }
+            }
+
+            Section {
                 Link(
                     "获取Cookie的脚本",
                     destination: URL(
@@ -108,6 +116,14 @@ struct MoreView: View {
         }
         .navigationBarTitle("更多", displayMode: .inline)
     }
+
+    // MARK: Private
+
+    @AppStorage(
+        "showRarityAndLevelForArtifacts",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    private var showRarityAndLevelForArtifacts: Bool = true
 }
 
 // MARK: - MoreViewCacheViewModel

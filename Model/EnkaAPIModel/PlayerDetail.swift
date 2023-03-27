@@ -98,12 +98,18 @@ struct PlayerDetail {
             localizedDictionary: [String: String],
             characterDictionary: [String: ENCharacterMap.Character]
         ) {
-            guard let character = characterDictionary["\(avatarInfo.avatarId)-\(avatarInfo.skillDepotId)"] ?? characterDictionary["\(avatarInfo.avatarId)"]
+            guard let character =
+                characterDictionary[
+                    "\(avatarInfo.avatarId)-\(avatarInfo.skillDepotId)"
+                ] ??
+                characterDictionary["\(avatarInfo.avatarId)"]
             else { return nil }
 
             self.name = localizedDictionary
                 .nameFromHashMap(character.NameTextMapHash)
-            self.element = AvatarElement(rawValue: character.Element) ?? .unknown
+            self
+                .element = AvatarElement(rawValue: character.Element) ??
+                .unknown
 
             if let talentIdList = avatarInfo.talentIdList {
                 self.talentCount = talentIdList.count
@@ -122,7 +128,8 @@ struct PlayerDetail {
                     .skillLevel[skillID.description] ?? 0
                 guard level > 0 else { return nil }
                 let icon = character.Skills
-                    .skillData[String(skillID)] ?? "UI_Talent_Combine_Skill_ExtraItem"
+                    .skillData[String(skillID)] ??
+                    "UI_Talent_Combine_Skill_ExtraItem"
                 let adjustedDelta = avatarInfo
                     .proudSkillExtraLevelMap?[(
                         character.ProudMap

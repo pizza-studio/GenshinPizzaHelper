@@ -43,49 +43,7 @@ struct EachCharacterDetailDatasView: View {
 
     @ViewBuilder
     func artifactsDetailsView() -> some View {
-        ForEach(avatar.artifacts) { artifact in
-            // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
-            VStack(spacing: 4) {
-                perArtifactDetailView(artifact)
-            }
-            .frame(maxWidth: UIScreen.main.bounds.size.width / 5)
-        }
-    }
-
-    @ViewBuilder
-    func perArtifactDetailView(
-        _ artifact: PlayerDetail.Avatar
-            .Artifact
-    )
-        -> some View {
-        ZStack {
-            HomeSourceWebIcon(
-                iconString: artifact
-                    .iconString
-            )
-        }
-        .frame(width: 60, height: 60)
-        .corneredTag(
-            "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
-            alignment: .bottom
-        )
-        VStack(spacing: 0) {
-            Text(artifact.mainAttribute.name.convertPercentageMarkToUpMark)
-                .font(.system(size: 11, weight: .bold))
-            Text("\(artifact.mainAttribute.valueString)")
-                .font(.system(size: 16, weight: .heavy))
-        }
-        ForEach(
-            artifact.subAttributes,
-            id: \.name
-        ) { subAttribute in
-            VStack(spacing: 0) {
-                Text(subAttribute.name.convertPercentageMarkToUpMark)
-                    .font(.system(size: 11))
-                Text("\(subAttribute.valueString)")
-                    .font(.system(size: 16, weight: .bold))
-            }
-        }
+        ArtifactDetailView(avatar.artifacts)
     }
 
     @ViewBuilder
@@ -353,6 +311,75 @@ struct AttributeLabel: View {
     }
 }
 
+// MARK: - ArtifactDetailView
+
+// @available(iOS 15.0, *)
+internal struct ArtifactDetailView: View {
+    // MARK: Lifecycle
+
+    public init(_ artifacts: [PlayerDetail.Avatar.Artifact]) {
+        self.artifacts = artifacts
+    }
+
+    // MARK: Internal
+
+    var body: some View {
+        ForEach(artifacts) { artifact in
+            // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
+            VStack(spacing: 4) {
+                perArtifactDetailView(artifact)
+            }
+            .frame(maxWidth: UIScreen.main.bounds.size.width / 5)
+        }
+    }
+
+    @ViewBuilder
+    func perArtifactDetailView(
+        _ artifact: PlayerDetail.Avatar
+            .Artifact
+    )
+        -> some View {
+        ZStack {
+            HomeSourceWebIcon(
+                iconString: artifact
+                    .iconString
+            )
+        }
+        .frame(width: 60, height: 60)
+        .corneredTag(
+            "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
+            alignment: .bottom,
+            enabled: showRarityAndLevelForArtifacts
+        )
+        VStack(spacing: 0) {
+            Text(artifact.mainAttribute.name.convertPercentageMarkToUpMark)
+                .font(.system(size: 11, weight: .bold))
+            Text("\(artifact.mainAttribute.valueString)")
+                .font(.system(size: 16, weight: .heavy))
+        }
+        ForEach(
+            artifact.subAttributes,
+            id: \.name
+        ) { subAttribute in
+            VStack(spacing: 0) {
+                Text(subAttribute.name.convertPercentageMarkToUpMark)
+                    .font(.system(size: 11))
+                Text("\(subAttribute.valueString)")
+                    .font(.system(size: 16, weight: .bold))
+            }
+        }
+    }
+
+    // MARK: Private
+
+    @AppStorage(
+        "showRarityAndLevelForArtifacts",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    private var showRarityAndLevelForArtifacts: Bool = true
+    private let artifacts: [PlayerDetail.Avatar.Artifact]
+}
+
 // MARK: - AvatarAndSkillView
 
 // @available(iOS 15.0, *)
@@ -446,6 +473,7 @@ extension View {
         enabled: Bool = true
     )
         -> some View {
+        guard !string.isEmpty else { return EmptyView() }
         if #available(macCatalyst 15.0, iOS 15.0, *) {
             return overlay(alignment: alignment) {
                 Text(enabled ? string : "")
