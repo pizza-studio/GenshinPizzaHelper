@@ -7,6 +7,7 @@
 
 import HBMihoyoAPI
 import SwiftUI
+import HBPizzaHelperAPI
 
 // MARK: - AllAvatarListSheetView
 

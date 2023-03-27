@@ -8,6 +8,7 @@
 import HBMihoyoAPI
 import SwiftPieChart
 import SwiftUI
+import HBPizzaHelperAPI
 
 // MARK: - ToolsViewSimplified
 

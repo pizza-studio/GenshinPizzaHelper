@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct ENCharacterLoc: Codable {
+public struct ENCharacterLoc: Codable {
     // MARK: Internal
 
-    struct LocDict: Codable {
+    public struct LocDict: Codable {
         // MARK: Lifecycle
 
-        init(from decoder: Decoder) throws {
+        public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: LocKey.self)
 
             var contentDict = [String: String]()
@@ -27,42 +27,42 @@ struct ENCharacterLoc: Codable {
 
         // MARK: Internal
 
-        struct LocKey: CodingKey {
+        public struct LocKey: CodingKey {
             // MARK: Lifecycle
 
-            init?(stringValue: String) {
+            public init?(stringValue: String) {
                 self.stringValue = stringValue
             }
 
-            init?(intValue: Int) {
+            public init?(intValue: Int) {
                 self.stringValue = "\(intValue)"
                 self.intValue = intValue
             }
 
             // MARK: Internal
 
-            var stringValue: String
-            var intValue: Int?
+            public var stringValue: String
+            public var intValue: Int?
         }
 
-        var content: [String: String]
+        public var content: [String: String]
     }
 
-    var en: LocDict
-    var ru: LocDict
-    var vi: LocDict
-    var th: LocDict
-    var pt: LocDict
-    var ko: LocDict
-    var ja: LocDict
-    var id: LocDict
-    var fr: LocDict
-    var es: LocDict
-    var de: LocDict
-    var zh_tw: LocDict
-    var zh_cn: LocDict
+    public var en: LocDict
+    public var ru: LocDict
+    public var vi: LocDict
+    public var th: LocDict
+    public var pt: LocDict
+    public var ko: LocDict
+    public var ja: LocDict
+    public var id: LocDict
+    public var fr: LocDict
+    public var es: LocDict
+    public var de: LocDict
+    public var zh_tw: LocDict
+    public var zh_cn: LocDict
 
-    func getLocalizedDictionary() -> [String: String] {
+    public func getLocalizedDictionary() -> [String: String] {
         switch Bundle.main.preferredLocalizations.first {
         case "zh-Hans":
             return zh_cn.content

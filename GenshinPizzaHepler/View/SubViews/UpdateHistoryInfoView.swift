@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HBPizzaHelperAPI
 
 struct UpdateHistoryInfoView: View {
     @State
@@ -145,7 +146,7 @@ struct UpdateHistoryInfoView: View {
         DispatchQueue.global(qos: .default).async {
             switch AppConfig.appConfiguration {
             case .AppStore:
-                API.HomeAPIs.fetchNewestVersion(isBeta: false) { result in
+                PizzaHelperAPI.fetchNewestVersion(isBeta: false) { result in
                     self.newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {
                         return
@@ -155,7 +156,7 @@ struct UpdateHistoryInfoView: View {
                     }
                 }
             case .TestFlight:
-                API.HomeAPIs.fetchNewestVersion(isBeta: true) { result in
+                PizzaHelperAPI.fetchNewestVersion(isBeta: true) { result in
                     self.newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {
                         return
@@ -165,7 +166,7 @@ struct UpdateHistoryInfoView: View {
                     }
                 }
             case .Debug:
-                API.HomeAPIs.fetchNewestVersion(isBeta: true) { result in
+                PizzaHelperAPI.fetchNewestVersion(isBeta: true) { result in
                     self.newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {
                         return

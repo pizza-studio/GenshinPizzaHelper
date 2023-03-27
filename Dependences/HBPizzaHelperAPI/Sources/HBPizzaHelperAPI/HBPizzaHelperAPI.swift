@@ -6,7 +6,7 @@ public class PizzaHelperAPI {
     /// - Parameters:
     ///     - isBeta: 是否是Beta
     ///     - completion: 数据
-    static func fetchNewestVersion(
+    public static func fetchNewestVersion(
         isBeta: Bool,
         completion: @escaping (
             NewestVersion
@@ -41,7 +41,7 @@ public class PizzaHelperAPI {
     /// 从EnkaNetwork获取角色ID对应详细信息
     /// - Parameters:
     ///     - completion: 数据
-    static func fetchENCharacterDetailDatas(
+    public static func fetchENCharacterDetailDatas(
         completion: @escaping (
             ENCharacterMap
         ) -> ()
@@ -70,7 +70,7 @@ public class PizzaHelperAPI {
     /// 从EnkaNetwork获取角色ID对应本地化信息
     /// - Parameters:
     ///     - completion: 数据
-    static func fetchENCharacterLocDatas(
+    public static func fetchENCharacterLocDatas(
         completion: @escaping (
             ENCharacterLoc
         ) -> ()
