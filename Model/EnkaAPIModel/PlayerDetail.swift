@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HBPizzaHelperAPI
 
 // MARK: - PlayerDetail
 

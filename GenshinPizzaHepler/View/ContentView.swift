@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import HBPizzaHelperAPI
 
 // MARK: - ContentView
 
@@ -255,7 +256,7 @@ struct ContentView: View {
         DispatchQueue.global(qos: .default).async {
             switch AppConfig.appConfiguration {
             case .AppStore:
-                API.HomeAPIs.fetchNewestVersion(isBeta: false) { result in
+                PizzaHelperAPI.fetchNewestVersion(isBeta: false) { result in
                     newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {
                         return
@@ -297,7 +298,7 @@ struct ContentView: View {
                     }
                 }
             case .Debug, .TestFlight:
-                API.HomeAPIs.fetchNewestVersion(isBeta: true) { result in
+                PizzaHelperAPI.fetchNewestVersion(isBeta: true) { result in
                     newestVersionInfos = result
                     guard let newestVersionInfos = newestVersionInfos else {
                         return

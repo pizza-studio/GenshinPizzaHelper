@@ -11,6 +11,7 @@ import HBMihoyoAPI
 import StoreKit
 import SwiftUI
 import WatchConnectivity
+import HBPizzaHelperAPI
 
 // MARK: - ViewModel
 
@@ -210,12 +211,12 @@ class ViewModel: NSObject, ObservableObject {
             } else {
                 let group = DispatchGroup()
                 group.enter()
-                API.HomeAPIs.fetchENCharacterLocDatas {
+                PizzaHelperAPI.fetchENCharacterLocDatas {
                     self.charLoc = $0.getLocalizedDictionary()
                     group.leave()
                 }
                 group.enter()
-                API.HomeAPIs.fetchENCharacterDetailDatas {
+                PizzaHelperAPI.fetchENCharacterDetailDatas {
                     self.charMap = $0.characterDetails
                     group.leave()
                 }
@@ -271,10 +272,10 @@ class ViewModel: NSObject, ObservableObject {
         }
 
         func refreshCharLocAndCharMap() {
-            API.HomeAPIs.fetchENCharacterLocDatas {
+            PizzaHelperAPI.fetchENCharacterLocDatas {
                 self.charLoc = $0.getLocalizedDictionary()
             }
-            API.HomeAPIs.fetchENCharacterDetailDatas {
+            PizzaHelperAPI.fetchENCharacterDetailDatas {
                 self.charMap = $0.characterDetails
             }
         }

@@ -27,6 +27,12 @@
 		BF15571129CFE5E60056CFE6 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF15571029CFE5E60056CFE6 /* HBMihoyoAPI */; };
 		BF15571329CFE5ED0056CFE6 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF15571229CFE5ED0056CFE6 /* HBMihoyoAPI */; };
 		BF15571529CFE5F20056CFE6 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF15571429CFE5F20056CFE6 /* HBMihoyoAPI */; };
+		BF20733229D1411500AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733129D1411500AD391F /* HBPizzaHelperAPI */; };
+		BF20733429D1411A00AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733329D1411A00AD391F /* HBPizzaHelperAPI */; };
+		BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733529D1412100AD391F /* HBPizzaHelperAPI */; };
+		BF20733829D1412700AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733729D1412700AD391F /* HBPizzaHelperAPI */; };
+		BF20733A29D1412B00AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733929D1412B00AD391F /* HBPizzaHelperAPI */; };
+		BF20733C29D1413100AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733B29D1413100AD391F /* HBPizzaHelperAPI */; };
 		BF3F98BF28E9190700D1B5CF /* UpdateHistoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */; };
 		BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		BF3F98C228EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
@@ -82,12 +88,6 @@
 		BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		BF7500FE28E0452C00CDA64E /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
 		BF75010028E0452C00CDA64E /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
-		BF75010228E1469600CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
-		BF75010328E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
-		BF75010428E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
-		BF75010528E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
-		BF75010628E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
-		BF75010728E1469700CDA64E /* NewestVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010128E1469600CDA64E /* NewestVersionModel.swift */; };
 		BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		BF75010B28E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
@@ -140,7 +140,6 @@
 		BFCC068828C9BBC8003E4A54 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		BFCC068A28C9BBC8003E4A54 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
 		BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
-		BFCC068D28C9BBC8003E4A54 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		BFCC069828C9BBCF003E4A54 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
@@ -217,7 +216,6 @@
 		EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EA09A00D28A2B8660023B4AF /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EA09A00E28A2B8700023B4AF /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
-		EA09A01A28A2B8BD0023B4AF /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		EA09A01B28A2B8D30023B4AF /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		EA09A01C28A2B8E50023B4AF /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
 		EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
@@ -289,17 +287,9 @@
 		EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */; };
 		EA5232292903E0D6007A4CF4 /* ReverseMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232282903E0D6007A4CF4 /* ReverseMask.swift */; };
 		EA56E08A28A26C0D00A64262 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
-		EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
-		EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1028B6274E00C95A7E /* MaterialView.swift */; };
 		EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
-		EA63E2BB28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */; };
-		EA63E2BC28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */; };
-		EA63E2BD28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */; };
-		EA63E2BE28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */; };
-		EA63E2BF28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */; };
-		EA63E2C028EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */; };
 		EA6829DC28A2523800E57462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
 		EA6B9148290EB2EF00B5230B /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
 		EA6B9149290EB3B800B5230B /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
@@ -436,7 +426,6 @@
 		EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */; };
 		EAE95CC428CE0FC100D975CB /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
 		EAE95CC528CE0FC400D975CB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
-		EAE95CD328CE0FD900D975CB /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		EAE95CD428CE0FDF00D975CB /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
 		EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
@@ -457,7 +446,6 @@
 		EAE95CF828CE11A100D975CB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		EAE95CFA28CE11A100D975CB /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
-		EAE95D0828CE11A900D975CB /* TransformerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E08528A26C0D00A64262 /* TransformerData.swift */; };
 		EAE95D0928CE11AD00D975CB /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
 		EAE95D0B28CE11C100D975CB /* AccountIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823028A650C300616CE1 /* AccountIntents.intentdefinition */; };
 		EAE95D0C28CE11C300D975CB /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
@@ -606,6 +594,7 @@
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
+		BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HBPizzaHelperAPI; path = Dependences/HBPizzaHelperAPI; sourceTree = "<group>"; };
 		BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfoView.swift; sourceTree = "<group>"; };
 		BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDDictionaryDataModel.swift; sourceTree = "<group>"; };
 		BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDGenshinDictionaryView.swift; sourceTree = "<group>"; };
@@ -637,7 +626,6 @@
 		BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDictionary.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
-		BF75010128E1469600CDA64E /* NewestVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestVersionModel.swift; sourceTree = "<group>"; };
 		BF75010828E1486E00CDA64E /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BF75010F28E14CF500CDA64E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestVersionInfoView.swift; sourceTree = "<group>"; };
@@ -751,11 +739,8 @@
 		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
 		EA5232282903E0D6007A4CF4 /* ReverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseMask.swift; sourceTree = "<group>"; };
 		EA56E07828A26C0D00A64262 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		EA56E08528A26C0D00A64262 /* TransformerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerData.swift; sourceTree = "<group>"; };
 		EA5F4D1028B6274E00C95A7E /* MaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProviders.swift; sourceTree = "<group>"; };
-		EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENCharacterMapModel.swift; sourceTree = "<group>"; };
-		EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENCharacterLocModel.swift; sourceTree = "<group>"; };
 		EA68247E292F425C009E506F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EA6829DB28A2523800E57462 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EA6B9147290EB2EF00B5230B /* GlobalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
@@ -860,6 +845,7 @@
 			files = (
 				BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */,
 				BF15571329CFE5ED0056CFE6 /* HBMihoyoAPI in Frameworks */,
+				BF20733A29D1412B00AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -868,6 +854,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF20733829D1412700AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF15571129CFE5E60056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EACBDA5428C9DEF000CEE176 /* CloudKit.framework in Frameworks */,
 			);
@@ -879,6 +866,7 @@
 			files = (
 				EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */,
 				BF15570F29CFE5E10056CFE6 /* HBMihoyoAPI in Frameworks */,
+				BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */,
 				EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -890,6 +878,7 @@
 				BF15570D29CFE5DD0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */,
 				EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */,
+				BF20733429D1411A00AD391F /* HBPizzaHelperAPI in Frameworks */,
 				EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -901,6 +890,7 @@
 				BF15570B29CFE5CF0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
 				BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */,
+				BF20733229D1411500AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BFBDD66F28F3F3C90022B79D /* SwiftPieChart in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -909,6 +899,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF20733C29D1413100AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF15571529CFE5F20056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE95CE228CE10A100D975CB /* Intents.framework in Frameworks */,
 			);
@@ -1021,6 +1012,7 @@
 		BFBDD66C28F3F2B80022B79D /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */,
 				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
 				BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */,
 			);
@@ -1221,8 +1213,6 @@
 		EA46D0C328EA75FE00DFE603 /* EnkaAPIModel */ = {
 			isa = PBXGroup;
 			children = (
-				EA63E2BA28EC8C5900C6A136 /* ENCharacterLocModel.swift */,
-				EA63E2B928EC8C5900C6A136 /* ENCharacterMapModel.swift */,
 				BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */,
 				EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */,
 			);
@@ -1242,20 +1232,10 @@
 		EA56E07528A26C0D00A64262 /* FetchedModels */ = {
 			isa = PBXGroup;
 			children = (
-				BF75010128E1469600CDA64E /* NewestVersionModel.swift */,
 				EA56E07828A26C0D00A64262 /* Result.swift */,
 				BF01309F29220E7800074450 /* WidgetUserData.swift */,
-				EA56E08428A26C0D00A64262 /* DecodeTool */,
 			);
 			path = FetchedModels;
-			sourceTree = "<group>";
-		};
-		EA56E08428A26C0D00A64262 /* DecodeTool */ = {
-			isa = PBXGroup;
-			children = (
-				EA56E08528A26C0D00A64262 /* TransformerData.swift */,
-			);
-			path = DecodeTool;
 			sourceTree = "<group>";
 		};
 		EA784CC2290245CC00918F64 /* HomeAPIModel */ = {
@@ -1562,6 +1542,7 @@
 			name = WatchWidgetExtensionExtension;
 			packageProductDependencies = (
 				BF15571229CFE5ED0056CFE6 /* HBMihoyoAPI */,
+				BF20733929D1412B00AD391F /* HBPizzaHelperAPI */,
 			);
 			productName = WatchWidgetExtensionExtension;
 			productReference = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */;
@@ -1602,6 +1583,7 @@
 			name = "WatchHelper WatchKit Extension";
 			packageProductDependencies = (
 				BF15571029CFE5E60056CFE6 /* HBMihoyoAPI */,
+				BF20733729D1412700AD391F /* HBPizzaHelperAPI */,
 			);
 			productName = "WatchHelper WatchKit Extension";
 			productReference = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */;
@@ -1622,6 +1604,7 @@
 			name = AccountIntent;
 			packageProductDependencies = (
 				BF15570E29CFE5E10056CFE6 /* HBMihoyoAPI */,
+				BF20733529D1412100AD391F /* HBPizzaHelperAPI */,
 			);
 			productName = AccountIntent;
 			productReference = EA099FF328A2B7220023B4AF /* AccountIntent.appex */;
@@ -1642,6 +1625,7 @@
 			name = ResinStatusWidgetExtension;
 			packageProductDependencies = (
 				BF15570C29CFE5DD0056CFE6 /* HBMihoyoAPI */,
+				BF20733329D1411A00AD391F /* HBPizzaHelperAPI */,
 			);
 			productName = ResinStatusWidgetExtension;
 			productReference = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */;
@@ -1669,6 +1653,7 @@
 			packageProductDependencies = (
 				BFBDD66E28F3F3C90022B79D /* SwiftPieChart */,
 				BF15570A29CFE5CF0056CFE6 /* HBMihoyoAPI */,
+				BF20733129D1411500AD391F /* HBPizzaHelperAPI */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -1689,6 +1674,7 @@
 			name = WatchIntent;
 			packageProductDependencies = (
 				BF15571429CFE5F20056CFE6 /* HBMihoyoAPI */,
+				BF20733B29D1413100AD391F /* HBPizzaHelperAPI */,
 			);
 			productName = WatchIntent;
 			productReference = EAE95CE128CE10A000D975CB /* WatchIntent.appex */;
@@ -1927,7 +1913,6 @@
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
 				EAE95D1028CE11D200D975CB /* md5.swift in Sources */,
-				BF75010628E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				EA7FF46F293090C200128A5C /* LockScreenResinTimerWidget.swift in Sources */,
 				EA7FF47629309B6A00128A5C /* LockScreenResinFullTimeWidgetCircular.swift in Sources */,
 				EAE95CC428CE0FC100D975CB /* Account.swift in Sources */,
@@ -1938,7 +1923,6 @@
 				EA6B914C290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				EAB11EA229325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				BF7500F828E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
-				EAE95CD328CE0FD900D975CB /* TransformerData.swift in Sources */,
 				EA36DFBB28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
 				BF0130A429220E7800074450 /* WidgetUserData.swift in Sources */,
 				BF3F98C528EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
@@ -1998,11 +1982,9 @@
 				EA6B914B290EB3B900B5230B /* GlobalVar.swift in Sources */,
 				EABE606928D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */,
 				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
-				BF75010528E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */,
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
-				BFCC068D28C9BBC8003E4A54 /* TransformerData.swift in Sources */,
 				BFCC069828C9BBCF003E4A54 /* HttpMethod.swift in Sources */,
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
@@ -2015,7 +1997,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF75010428E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				5B43A15829D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EA196B0428B769640091FAE0 /* StringLocalized.swift in Sources */,
 				BFE7AFE62909533700C75E7F /* PSAServerAPI.swift in Sources */,
@@ -2024,7 +2005,6 @@
 				EA09A02228A2B8F80023B4AF /* TimeTools.swift in Sources */,
 				EA185F26292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
 				EA406813292228A200F23479 /* WidgetData.swift in Sources */,
-				EA63E2BD28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
 				EA784CD22902517800918F64 /* AvatarHoldingData.swift in Sources */,
 				BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EA185F2E292F1AFC003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
@@ -2054,14 +2034,12 @@
 				BFBDD65028ED7B960022B79D /* Result.swift in Sources */,
 				BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
-				EA63E2C028EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				EA185F2A292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				BF75010B28E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				EA50D66A290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EA784CCE2902517200918F64 /* AvatarPercentageModel.swift in Sources */,
-				EA09A01A28A2B8BD0023B4AF /* TransformerData.swift in Sources */,
 				BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */,
 				EA059CD9292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 			);
@@ -2101,9 +2079,7 @@
 				EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */,
 				EAB110FE28CF8422009FDF07 /* LockScreenExpeditionWidgetCircular.swift in Sources */,
 				EAB110E928CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
-				BF75010328E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
-				EA56E0A128A26C0D00A64262 /* TransformerData.swift in Sources */,
 				EA784CD72902518500918F64 /* AbyssDataSend.swift in Sources */,
 				EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
 				EA784CD02902517600918F64 /* HomeServerVersion.swift in Sources */,
@@ -2117,7 +2093,6 @@
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
 				BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				EA7FDF92292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,
-				EA63E2BC28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				EA784CD52902518000918F64 /* FetchHomeModel.swift in Sources */,
@@ -2145,7 +2120,6 @@
 				EA784CD32902517B00918F64 /* UtilizationData.swift in Sources */,
 				EAB110FF28CF8422009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
-				EA63E2BF28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
 				EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				EAB11EA82932728700CD4ECA /* MaterialWidget.swift in Sources */,
@@ -2230,7 +2204,6 @@
 				EA1C2CE528F07DBE00E4C28A /* HiddenWaterMark.swift in Sources */,
 				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA196B0228B769340091FAE0 /* StringLocalized.swift in Sources */,
-				EA56E0A028A26C0D00A64262 /* TransformerData.swift in Sources */,
 				BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */,
 				BFFD823228A651F500616CE1 /* RingProgressBarView.swift in Sources */,
 				BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */,
@@ -2248,13 +2221,11 @@
 				EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
 				BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */,
-				EA63E2BB28EC8C5900C6A136 /* ENCharacterMapModel.swift in Sources */,
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
 				BF7500D128DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
-				BF75010228E1469600CDA64E /* NewestVersionModel.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
 				BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
@@ -2272,7 +2243,6 @@
 				EAF8AC1C29C758750047D36C /* CircleClippedBackground.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
 				EA784CCC2902511E00918F64 /* AvatarPercentageModel.swift in Sources */,
-				EA63E2BE28EC8C5900C6A136 /* ENCharacterLocModel.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
@@ -2317,7 +2287,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE95D0828CE11A900D975CB /* TransformerData.swift in Sources */,
 				EA185F29292F1ACD003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
 				EA406816292228A200F23479 /* WidgetData.swift in Sources */,
 				EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
@@ -2347,7 +2316,6 @@
 				BF3F98C628EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EAB11EA329325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				EAE95CFA28CE11A100D975CB /* MaterialProviders.swift in Sources */,
-				BF75010728E1469700CDA64E /* NewestVersionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3104,6 +3072,30 @@
 		BF15571429CFE5F20056CFE6 /* HBMihoyoAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HBMihoyoAPI;
+		};
+		BF20733129D1411500AD391F /* HBPizzaHelperAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HBPizzaHelperAPI;
+		};
+		BF20733329D1411A00AD391F /* HBPizzaHelperAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HBPizzaHelperAPI;
+		};
+		BF20733529D1412100AD391F /* HBPizzaHelperAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HBPizzaHelperAPI;
+		};
+		BF20733729D1412700AD391F /* HBPizzaHelperAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HBPizzaHelperAPI;
+		};
+		BF20733929D1412B00AD391F /* HBPizzaHelperAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HBPizzaHelperAPI;
+		};
+		BF20733B29D1413100AD391F /* HBPizzaHelperAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HBPizzaHelperAPI;
 		};
 		BFBDD66E28F3F3C90022B79D /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;

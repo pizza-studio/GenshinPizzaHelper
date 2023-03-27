@@ -7,6 +7,7 @@
 
 import StoreKit
 import SwiftUI
+import HBPizzaHelperAPI
 
 struct LatestVersionInfoView: View {
     @Binding

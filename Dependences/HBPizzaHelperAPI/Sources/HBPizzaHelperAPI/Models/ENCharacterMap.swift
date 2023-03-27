@@ -1,18 +1,18 @@
 //
-//  ENCharacterMapModel.swift
-//  GenshinPizzaHelper
+//  ENCharacterMap.swift
+//  
 //
-//  Created by Bill Haku on 2022/9/24.
+//  Created by Bill Haku on 2023/3/27.
 //
 
 import Foundation
 
 // MARK: - ENCharacterMap
 
-struct ENCharacterMap: Codable {
+public struct ENCharacterMap: Codable {
     // MARK: Lifecycle
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CharacterKey.self)
 
         var character = [String: Character]()
@@ -26,29 +26,29 @@ struct ENCharacterMap: Codable {
 
     // MARK: Internal
 
-    struct CharacterKey: CodingKey {
+    public struct CharacterKey: CodingKey {
         // MARK: Lifecycle
 
-        init?(stringValue: String) {
+        public init?(stringValue: String) {
             self.stringValue = stringValue
         }
 
-        init?(intValue: Int) {
+        public init?(intValue: Int) {
             self.stringValue = "\(intValue)"
             self.intValue = intValue
         }
 
         // MARK: Internal
 
-        var stringValue: String
-        var intValue: Int?
+        public var stringValue: String
+        public var intValue: Int?
     }
 
-    struct Character: Codable {
-        struct Skill: Codable {
+    public struct Character: Codable {
+        public struct Skill: Codable {
             // MARK: Lifecycle
 
-            init(from decoder: Decoder) throws {
+            public init(from decoder: Decoder) throws {
                 let container = try decoder.container(keyedBy: SkillKey.self)
 
                 var skill = [String: String]()
@@ -65,31 +65,31 @@ struct ENCharacterMap: Codable {
 
             // MARK: Internal
 
-            struct SkillKey: CodingKey {
+            public struct SkillKey: CodingKey {
                 // MARK: Lifecycle
 
-                init?(stringValue: String) {
+                public init?(stringValue: String) {
                     self.stringValue = stringValue
                 }
 
-                init?(intValue: Int) {
+                public init?(intValue: Int) {
                     self.stringValue = "\(intValue)"
                     self.intValue = intValue
                 }
 
                 // MARK: Internal
 
-                var stringValue: String
-                var intValue: Int?
+                public var stringValue: String
+                public var intValue: Int?
             }
 
-            var skillData: [String: String]
+            public var skillData: [String: String]
         }
 
-        struct ProudMap: Codable {
+        public struct ProudMap: Codable {
             // MARK: Lifecycle
 
-            init(from decoder: Decoder) throws {
+            public init(from decoder: Decoder) throws {
                 let container = try decoder.container(keyedBy: ProudKey.self)
 
                 var proud = [String: Int]()
@@ -104,56 +104,56 @@ struct ENCharacterMap: Codable {
 
             // MARK: Internal
 
-            struct ProudKey: CodingKey {
+            public struct ProudKey: CodingKey {
                 // MARK: Lifecycle
 
-                init?(stringValue: String) {
+                public init?(stringValue: String) {
                     self.stringValue = stringValue
                 }
 
-                init?(intValue: Int) {
+                public init?(intValue: Int) {
                     self.stringValue = "\(intValue)"
                     self.intValue = intValue
                 }
 
                 // MARK: Internal
 
-                var stringValue: String
-                var intValue: Int?
+                public var stringValue: String
+                public var intValue: Int?
             }
 
-            var proudMapData: [String: Int]
+            public var proudMapData: [String: Int]
         }
 
         /// 元素
-        var Element: String
+        public var Element: String
         /// 技能图标
-        var Consts: [String]
+        public var Consts: [String]
         /// 技能顺序
-        var SkillOrder: [Int]
+        public var SkillOrder: [Int]
         /// 技能
-        var Skills: Skill
+        public var Skills: Skill
         /// 与命之座有关的技能加成资料?
-        var ProudMap: ProudMap
+        public var ProudMap: ProudMap
         /// 名字的hashmap
-        var NameTextMapHash: Int
+        public var NameTextMapHash: Int
         /// 侧脸图
-        var SideIconName: String
+        public var SideIconName: String
         /// 星级
-        var QualityType: String
+        public var QualityType: String
 
         /// 正脸图
-        var iconString: String {
+        public var iconString: String {
             SideIconName.replacingOccurrences(of: "_Side", with: "")
         }
 
         /// icon用的名字
-        var nameID: String {
+        public var nameID: String {
             iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")
         }
 
         /// 名片
-        var namecardIconString: String {
+        public var namecardIconString: String {
             // 主角没有对应名片
             if nameID == "PlayerGirl" || nameID == "PlayerBoy" {
                 return "UI_NameCardPic_Bp2_P"
@@ -165,20 +165,20 @@ struct ENCharacterMap: Codable {
         }
     }
 
-    var characterDetails: [String: Character]
+    public var characterDetails: [String: Character]
 }
 
 extension Dictionary
     where Key == String, Value == ENCharacterMap.Character {
-    func getIconString(id: String) -> String {
+    public func getIconString(id: String) -> String {
         self[id]?.iconString ?? ""
     }
 
-    func getSideIconString(id: String) -> String {
+    public func getSideIconString(id: String) -> String {
         self[id]?.SideIconName ?? ""
     }
 
-    func getNameID(id: String) -> String {
+    public func getNameID(id: String) -> String {
         self[id]?.nameID ?? ""
     }
 }
