@@ -12,6 +12,17 @@ import SwiftUI
 enum ThisDevice {
     // MARK: Public
 
+    public static var isMac: Bool {
+        if #available(macCatalyst 14, *) {
+            return true
+        }
+        return false
+    }
+
+    public static var isPad: Bool {
+        idiom == .pad && !isMac
+    }
+
     public static var isScreenLandScape: Bool {
         guard let window = UIApplication.shared.windows
             .filter({ $0.isKeyWindow }).first else { return false }

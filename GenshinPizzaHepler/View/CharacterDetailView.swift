@@ -166,8 +166,8 @@ struct CharacterDetailView: View {
                 animation: animation
             ).frame(maxWidth: 500) // For iPad
                 .fixedSize(
-                    horizontal: ThisDevice.idiom == .mac,
-                    vertical: ThisDevice.idiom == .mac
+                    horizontal: ThisDevice.isMac,
+                    vertical: ThisDevice.isMac
                 )
             // TODO: 這裡回頭可以實裝一下「隨父容器尺寸自動放大」的功能。
             // .fixedSize()

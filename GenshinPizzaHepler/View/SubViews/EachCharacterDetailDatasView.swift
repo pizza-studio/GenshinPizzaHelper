@@ -12,7 +12,7 @@ import SwiftUI
 // @available(iOS 15, *)
 struct EachCharacterDetailDatasView: View {
     static var spacingDelta: CGFloat {
-        ThisDevice.notchType != .none || ThisDevice.idiom == .pad ? 4 : 0
+        ThisDevice.notchType != .none || ThisDevice.isPad ? 4 : 0
     }
 
     var avatar: PlayerDetail.Avatar
