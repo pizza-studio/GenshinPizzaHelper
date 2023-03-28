@@ -37,7 +37,7 @@ struct BackgroundsPreviewView: View {
                         Text(
                             backgroundImageName
                                 .localized
-                                .fixWrongChineseCharsUsedByMihoyo
+                                .hasCharacterWeaponNameFixed
                         )
                     }
                     .textCase(.none)
@@ -69,7 +69,7 @@ struct BackgroundsPreviewView: View {
                         Text(
                             backgroundImageName
                                 .localized
-                                .fixWrongChineseCharsUsedByMihoyo
+                                .hasCharacterWeaponNameFixed
                         )
                     }
                     .textCase(.none)
@@ -88,6 +88,10 @@ struct BackgroundsPreviewView: View {
             return backgroundOptions
                 .filter {
                     "\(NSLocalizedString($0, comment: ""))".lowercased()
+                        .contains(searchText.lowercased())
+                        ||
+                        "\(NSLocalizedString($0, comment: ""))".lowercased()
+                        .hasCharacterWeaponNameFixed
                         .contains(searchText.lowercased())
                 }
         }

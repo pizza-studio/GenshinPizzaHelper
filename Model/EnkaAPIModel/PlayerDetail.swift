@@ -105,8 +105,20 @@ struct PlayerDetail {
                 characterDictionary["\(avatarInfo.avatarId)"]
             else { return nil }
 
-            self.name = localizedDictionary
-                .nameFromHashMap(character.NameTextMapHash)
+            if AppConfig.useActualCharacterNames {
+                switch avatarInfo.avatarId {
+                case 10000005: self.name = "空".localized
+                case 10000007: self.name = "荧".localized
+                case 10000075: self.name = "雷电国崩".localized
+                default:
+                    self.name = localizedDictionary
+                        .nameFromHashMap(character.NameTextMapHash)
+                }
+            } else {
+                self.name = localizedDictionary
+                    .nameFromHashMap(character.NameTextMapHash)
+            }
+
             self
                 .element = AvatarElement(rawValue: character.Element) ??
                 .unknown
@@ -275,7 +287,7 @@ struct PlayerDetail {
             var awakenedIconString: String { "\(iconString)_Awaken" }
             /// 经过错字订正处理的武器名称
             var nameCorrected: String {
-                name.fixWrongChineseCharsUsedByMihoyo
+                name.hasCharacterWeaponNameFixed
             }
         }
 
@@ -455,7 +467,7 @@ struct PlayerDetail {
 
         /// 经过错字订正处理的角色姓名
         var nameCorrected: String {
-            name.fixWrongChineseCharsUsedByMihoyo
+            name.hasCharacterWeaponNameFixed
         }
 
         /// 名片

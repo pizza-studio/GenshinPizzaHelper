@@ -468,6 +468,15 @@ private struct AvatarListItemShare: View {
 extension AllAvatarDetailModel.Avatar {
     /// 经过错字订正处理的角色姓名
     fileprivate var nameCorrected: String {
-        name.fixWrongChineseCharsUsedByMihoyo
+        var theName = name
+        if AppConfig.useActualCharacterNames {
+            switch id {
+            case 10000005: theName = "空".localized
+            case 10000007: theName = "荧".localized
+            case 10000075: theName = "雷电国崩".localized
+            default: break
+            }
+        }
+        return theName.hasCharacterWeaponNameFixed
     }
 }

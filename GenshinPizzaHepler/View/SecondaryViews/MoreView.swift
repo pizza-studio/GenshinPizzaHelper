@@ -23,10 +23,16 @@ struct MoreView: View {
     var defaultServer: String = Server.asia.rawValue
 
     @AppStorage(
-        "forceFixWrongChineseCharsUsedByMihoyo",
+        "forcehasCharacterWeaponNameFixed",
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
-    var forceFixWrongChineseCharsUsedByMihoyo: Bool = false
+    var forcehasCharacterWeaponNameFixed: Bool = false
+
+    @AppStorage(
+        "useActualCharacterNames",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    var useActualCharacterNames: Bool = true
 
     var body: some View {
         List {
@@ -62,7 +68,7 @@ struct MoreView: View {
 
             if Locale.isUILanguagePanChinese {
                 Section {
-                    Toggle(isOn: $forceFixWrongChineseCharsUsedByMihoyo) {
+                    Toggle(isOn: $forcehasCharacterWeaponNameFixed) {
                         Text("中文汉字纠正")
                     }
                 } footer: {
@@ -75,6 +81,9 @@ struct MoreView: View {
             Section {
                 Toggle(isOn: $showRarityAndLevelForArtifacts) {
                     Text("显示圣遗物等级与稀有度")
+                }
+                Toggle(isOn: $useActualCharacterNames) {
+                    Text("显示部分角色的真实姓名")
                 }
             }
 
