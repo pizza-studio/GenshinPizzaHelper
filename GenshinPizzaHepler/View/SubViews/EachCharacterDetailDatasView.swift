@@ -56,7 +56,7 @@ struct EachCharacterDetailDatasView: View {
         HStack(alignment: .center, spacing: 12) {
             // Weapon
             let weapon = avatar.weapon
-            let l: CGFloat = 70
+            let maxHeight: CGFloat = 70
             ZStack {
                 EnkaWebIcon(
                     iconString: weapon.rankLevel
@@ -69,7 +69,7 @@ struct EachCharacterDetailDatasView: View {
                 EnkaWebIcon(iconString: weapon.awakenedIconString)
                     .scaledToFit()
             }
-            .frame(height: l)
+            .frame(width: maxHeight, height: maxHeight)
             .corneredTag(
                 "Lv.\(weapon.level)",
                 alignment: .bottom,
