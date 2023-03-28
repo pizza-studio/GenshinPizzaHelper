@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import HBMihoyoAPI
+import SwiftUI
 
 class GachaViewModel: ObservableObject {
     let manager = GachaModelManager.shared
@@ -55,14 +56,18 @@ public class GachaFetchProgressObserver: ObservableObject {
 
     func fetching(page: Int, gachaType: GachaType) {
         DispatchQueue.main.async {
-            self.page = page
-            self.gachaType = gachaType
+            withAnimation {
+                self.page = page
+                self.gachaType = gachaType
+            }
         }
     }
 
     func got(_ items: [GachaItem_FM]) {
         DispatchQueue.main.async {
-            self.currentItems = items
+            withAnimation {
+                self.currentItems = items
+            }
         }
     }
 
