@@ -13,6 +13,12 @@
 		5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15A29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
+		5B918A2F29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
+		5B918A3029D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
+		5B918A3129D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
+		5B918A3229D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
+		5B918A3329D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
+		5B918A3429D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
 		BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A129220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
@@ -602,6 +608,7 @@
 
 /* Begin PBXFileReference section */
 		5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseUIAccommodations.swift; sourceTree = "<group>"; };
+		5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISanFranciscoFontExtension.swift; sourceTree = "<group>"; };
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
@@ -991,23 +998,24 @@
 			children = (
 				EA1C2CDF28F0463E00E4C28A /* ViewModifier */,
 				BF75010F28E14CF500CDA64E /* AppConfig.swift */,
+				EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
 				5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */,
+				EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */,
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
+				EA6B9147290EB2EF00B5230B /* GlobalVar.swift */,
 				BF6C5271289E12DA00EA224F /* md5.swift */,
 				BF6C5277289E153400EA224F /* NetworkReachability.swift */,
+				BF7500DE28DEC99400CDA64E /* NumberTools.swift */,
 				BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */,
 				BFFD823928A73A5400616CE1 /* ReviewHandler.swift */,
 				BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */,
 				EA196B0128B769340091FAE0 /* StringLocalized.swift */,
+				5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */,
 				BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */,
+				EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */,
 				BFE42543289E523D00FEFA49 /* TimeTools.swift */,
 				BF70211B28B4B52500A6BBA9 /* ViewTools.swift */,
-				BF7500DE28DEC99400CDA64E /* NumberTools.swift */,
-				EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */,
-				EA6B9147290EB2EF00B5230B /* GlobalVar.swift */,
-				EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */,
-				EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
@@ -1968,6 +1976,7 @@
 				BF0130A429220E7800074450 /* WidgetUserData.swift in Sources */,
 				BF3F98C528EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EAE95D0B28CE11C100D975CB /* AccountIntents.intentdefinition in Sources */,
+				5B918A3329D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */,
 				EA36DFC728E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
 				EAB110E828CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				BF85D77628CE0B9F003F3479 /* WatchWidgetExtension.swift in Sources */,
@@ -2000,6 +2009,7 @@
 				EA059CDA292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				BFCC066628C9B6A1003E4A54 /* ContentView.swift in Sources */,
 				EA7FF4692930666300128A5C /* WatchWidgetSettingView.swift in Sources */,
+				5B918A3229D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */,
 				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
 				BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */,
 				EA406814292228A200F23479 /* WidgetData.swift in Sources */,
@@ -2052,6 +2062,7 @@
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA784CD42902517C00918F64 /* UtilizationData.swift in Sources */,
+				5B918A3129D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */,
 				EA784CCF2902517500918F64 /* HomeServerVersion.swift in Sources */,
 				EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */,
 				EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */,
@@ -2150,6 +2161,7 @@
 				BF6C526B289E116700EA224F /* MainWedgetProvider.swift in Sources */,
 				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
 				BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
+				5B918A3029D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */,
 				EA196B0328B769340091FAE0 /* StringLocalized.swift in Sources */,
 				EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
 				EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */,
@@ -2290,6 +2302,7 @@
 				BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EAF8AC1C29C758750047D36C /* CircleClippedBackground.swift in Sources */,
+				5B918A2F29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
 				EA784CCC2902511E00918F64 /* AvatarPercentageModel.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
@@ -2359,6 +2372,7 @@
 				EA185F2D292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EAE95CF728CE11A100D975CB /* Account.swift in Sources */,
 				EA6B914D290EB3BA00B5230B /* GlobalVar.swift in Sources */,
+				5B918A3429D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */,
 				5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */,
