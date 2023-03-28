@@ -148,10 +148,8 @@ extension GachaType {
     }
 }
 
-// extension GachaItemMO {
-//    static func from(_ data: GachaItem_FM) -> Self {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        return .init(uid: data.uid, gachaType: Int(data.gachaType)!, itemId: data.itemId, count: Int(data.count)!, time: dateFormatter.date(from: data.time)!, name: data.name, lang: data.lang, itemType: data.itemType, rankType: Int(data.rankType)!, id: data.id)
-//    }
-// }
+extension GachaItem.RankType: Comparable {
+    public static func < (lhs: GachaItem.RankType, rhs: GachaItem.RankType) -> Bool {
+        lhs.rawValue < rhs.rawValue
+    }
+}
