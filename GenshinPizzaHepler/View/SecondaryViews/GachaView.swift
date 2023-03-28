@@ -7,6 +7,7 @@
 
 import HBMihoyoAPI
 import SwiftUI
+import CoreData
 
 struct GachaView: View {
     @EnvironmentObject
@@ -15,6 +16,24 @@ struct GachaView: View {
     var gachaViewModel: GachaViewModel = .shared
     var body: some View {
         List {
+            #if DEBUG
+            Section {
+                Button("delete all records") {
+                    let context = gachaViewModel.manager.container.viewContext
+                    let fetchRequest = GachaItemMO.fetchRequest()
+                    do {
+                        let models = try context.fetch(fetchRequest)
+                        models.forEach { item in
+                            context.delete(item)
+                        }
+                        try context.save()
+                    } catch {
+                        print(error)
+                    }
+                    gachaViewModel.refetchGachaItems()
+                }
+            }
+            #endif
             Section {
                 ForEach(gachaViewModel.filteredGachaItemsWithCount, id: \.0.id) { item, count in
                     VStack {
@@ -43,6 +62,39 @@ struct GachaView: View {
             ToolbarItemGroup(placement: .bottomBar) {
 
                 FilterEditer(filter: $gachaViewModel.filter)
+            }
+            ToolbarItem(placement: .principal) {
+                Menu {
+                    ForEach(gachaViewModel.allAvaliableAccountUID(), id: \.self) { uid in
+                        Group {
+                            if let name: String = viewModel.accounts
+                                .first(where: { $0.config.uid == uid })?.config.name {
+                                Button(name) {
+                                    self.gachaViewModel.filter.uid = uid
+                                }
+                            } else {
+                                Button(uid) {
+                                    self.gachaViewModel.filter.uid = uid
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.left.arrow.right.circle")
+                        if let uid: String = self.gachaViewModel.filter.uid {
+                            if let name: String = viewModel.accounts
+                                .first(where: { $0.config.uid == uid })?.config.name {
+                                Text(name)
+                            } else {
+                                Text(uid)
+                            }
+                        } else {
+                            Text("请点击右上角获取抽卡记录")
+                        }
+                    }
+                }
+                .disabled(gachaViewModel.allAvaliableAccountUID().isEmpty)
             }
         }
         .environmentObject(gachaViewModel)

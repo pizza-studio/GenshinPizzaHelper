@@ -54,7 +54,7 @@ func genGachaURL(
         .init(name: "plat_type", value: "ios"),
         .init(name: "region", value: account.server.id),
         .init(name: "game_biz", value: gameBiz),
-        .init(name: "gacha_type", value: String(_GachaType.character.rawValue)),
+        .init(name: "gacha_type", value: String(gachaType.rawValue)),
         .init(name: "page", value: String(page)),
         .init(name: "size", value: "20"),
         .init(name: "end_id", value: endId),

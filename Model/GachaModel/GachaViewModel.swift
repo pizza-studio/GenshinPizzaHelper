@@ -77,7 +77,13 @@ class GachaViewModel: ObservableObject {
     }
 
     func allAvaliableAccountUID() -> [String] {
-        gachaItems.map( { $0.uid } )
+        [String].init(
+            Set<String>(
+                gachaItems.map { item in
+                    item.uid
+                }
+            )
+        )
     }
 
     func getGachaAndSaveFor(_ account: AccountConfiguration,

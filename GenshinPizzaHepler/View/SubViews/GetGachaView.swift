@@ -16,7 +16,7 @@ struct GetGachaView: View {
     var observer: GachaFetchProgressObserver = .shared
 
     @State var status: Status = .waitToStart
-    @State var account: AccountConfiguration?
+    @State var account: String?
 
     var body: some View {
         List {
@@ -24,13 +24,13 @@ struct GetGachaView: View {
                 Picker("选择账号", selection: $account) {
                     ForEach(viewModel.accounts.map( { $0.config } ), id: \.uid) { account in
                         Text("\(account.name!) (\(account.uid!))" )
-                            .tag(account)
+                            .tag(account.uid!)
                     }
                 }
                 Button("获取祈愿记录") {
                     status = .running
                     let account = account!
-                    gachaViewModel.getGachaAndSaveFor(account, observer: observer) { result in
+                    gachaViewModel.getGachaAndSaveFor(viewModel.accounts.first(where: {$0.config.uid == account})!.config, observer: observer) { result in
                         switch result {
                         case .success(_):
                             withAnimation {
@@ -121,7 +121,7 @@ struct GetGachaView: View {
             }
         }
         .onAppear {
-            account = viewModel.accounts.first?.config
+            account = viewModel.accounts.first?.config.uid
         }
         .navigationBarBackButtonHidden(status == .running)
     }

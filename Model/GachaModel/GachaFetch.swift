@@ -43,7 +43,7 @@ extension MihoyoAPI {
     private static func innerGetGachaLogAndSave(
         account: AccountConfiguration,
         authkey: GenAuthKeyResult.GenAuthKeyData,
-        gachaType: _GachaType = .character,
+        gachaType: _GachaType = .standard,
         page: Int = 1,
         endId: String = "0",
         manager: GachaModelManager,
@@ -53,14 +53,14 @@ extension MihoyoAPI {
         )
     ) {
         observer.fetching(page: page, gachaType: gachaType)
-        let url = genGachaURL(account: account, authkey: authkey, gachaType: .character, page: page, endId: endId)
+        let url = genGachaURL(account: account, authkey: authkey, gachaType: gachaType, page: page, endId: endId)
 
         let request = URLRequest(url: url)
 
         URLSession.shared.dataTask(with: request) { data, respond, error in
             print(error ?? "ErrorInfo nil")
             guard error == nil else { completion(.failure(.networkError(message: error?.localizedDescription ?? "Unknow Network Error"))); return }
-            print(respond!)
+//            print(respond!)
             print(String(data: data!, encoding: .utf8)!)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
