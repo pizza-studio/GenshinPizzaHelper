@@ -26,7 +26,7 @@ public struct GachaItem: Identifiable {
 
     public init(
         uid: String,
-        gachaType: GachaType,
+        gachaType: _GachaType,
         itemId: String,
         count: Int,
         time: Date,
@@ -37,7 +37,7 @@ public struct GachaItem: Identifiable {
         id: String
     ) {
         self.uid = uid
-        self.gachaType = gachaType
+        self._gachaType = gachaType
         self.itemId = itemId
         self.count = count
         self.time = time
@@ -57,7 +57,8 @@ public struct GachaItem: Identifiable {
     }
 
     public let uid: String
-    public let gachaType: GachaType
+    /// 祈愿类型。显示时因为两个角色祈愿混合现实，因此应当使用gachaType
+    public let _gachaType: _GachaType
     public let itemId: String
     public let count: Int
     public let time: Date
@@ -66,6 +67,10 @@ public struct GachaItem: Identifiable {
     public let itemType: String
     public let rankType: RankType
     public let id: String
+
+    public var gachaType: GachaType {
+        .from(_gachaType)
+    }
 }
 
 // MARK: - GetGachaError
@@ -107,8 +112,8 @@ extension GetGachaError: LocalizedError {
 }
 
 // MARK: - GachaType
-
-public enum GachaType: Int, CaseIterable {
+/// 祈愿池记录。区分两个不同角色池，仅用于储存
+public enum _GachaType: Int, CaseIterable {
     case newPlayer = 100
     case standard = 200
     case character = 301
@@ -116,7 +121,7 @@ public enum GachaType: Int, CaseIterable {
     case character2 = 400
 }
 
-extension GachaType {
+extension _GachaType {
     func localizedDescription() -> String {
         switch self {
         case .newPlayer:
@@ -133,7 +138,39 @@ extension GachaType {
     }
 }
 
+/// 祈愿池记录，不区分两个角色池，用于UI
+public enum GachaType {
+    case newPlayer
+    case standard
+    case character
+    case weapon
+}
+
 extension GachaType {
+    static func from(_ innerGachaType: _GachaType) -> Self {
+        switch innerGachaType {
+        case .character, .character2: return .character
+        case .standard: return .standard
+        case .newPlayer: return .newPlayer
+        case .weapon: return .weapon
+        }
+    }
+
+    func localizedDescription() -> String {
+        switch self {
+        case .newPlayer:
+            return "初行者推荐祈愿"
+        case .standard:
+            return "常驻祈愿"
+        case .character:
+            return "角色活动祈愿"
+        case .weapon:
+            return "武器活动祈愿"
+        }
+    }
+}
+
+extension _GachaType {
     public func first() -> Self {
         .standard
     }

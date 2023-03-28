@@ -47,10 +47,21 @@ struct GetGachaView: View {
                 EmptyView()
             case .running:
                 Section {
+
                     HStack {
-                        Text("正在获取\(observer.page)页")
+                        Text("正在获取...")
                         Spacer()
                         ProgressView()
+                    }
+                    HStack {
+                        Text("卡池：")
+                        Spacer()
+                        Text("\(observer.gachaType.localizedDescription())")
+                    }
+                    HStack {
+                        Text("页码：")
+                        Spacer()
+                        Text("\(observer.page)")
                     }
                 }
                 if let items = observer.currentItems {
@@ -70,7 +81,7 @@ struct GetGachaView: View {
             case .succeed:
                 Section {
                     Label {
-                        Text("获取祈愿记录成功")
+                        Text("获取祈愿记录成功，请返回上一级查看")
                     } icon: {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
@@ -80,9 +91,9 @@ struct GetGachaView: View {
                     ForEach(gachaViewModel.gachaItems) { item in
                         VStack(alignment: .leading) {
                             Text(item.name)
-                                .foregroundColor(.init(UIColor.darkGray))
+//                                .foregroundColor(.init(UIColor.darkGray))
                             Text(item.id)
-                                .foregroundColor(.init(UIColor.lightGray))
+                                .foregroundColor(.gray)
                         }
                     }
                 }

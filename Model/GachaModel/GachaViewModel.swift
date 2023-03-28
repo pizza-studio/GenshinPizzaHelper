@@ -51,10 +51,10 @@ class GachaViewModel: ObservableObject {
 
 public class GachaFetchProgressObserver: ObservableObject {
     @Published var page: Int = 0
-    @Published var gachaType: GachaType = .character
+    @Published var gachaType: _GachaType = .character
     @Published var currentItems: [GachaItem_FM]?
 
-    func fetching(page: Int, gachaType: GachaType) {
+    func fetching(page: Int, gachaType: _GachaType) {
         DispatchQueue.main.async {
             withAnimation {
                 self.page = page

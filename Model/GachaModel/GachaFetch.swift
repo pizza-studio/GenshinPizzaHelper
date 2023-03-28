@@ -43,7 +43,7 @@ extension MihoyoAPI {
     private static func innerGetGachaLogAndSave(
         account: AccountConfiguration,
         authkey: GenAuthKeyResult.GenAuthKeyData,
-        gachaType: GachaType = .character,
+        gachaType: _GachaType = .character,
         page: Int = 1,
         endId: String = "0",
         manager: GachaModelManager,
