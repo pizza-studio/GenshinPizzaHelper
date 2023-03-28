@@ -58,7 +58,9 @@ struct GetGachaView: View {
                         ForEach(items) { item in
                             VStack(alignment: .leading) {
                                 Text(item.name)
+                                    .foregroundColor(.init(UIColor.darkGray))
                                 Text(item.time)
+                                    .foregroundColor(.init(UIColor.lightGray))
                             }
                         }
                     } header: {
@@ -68,9 +70,11 @@ struct GetGachaView: View {
             case .succeed:
                 Section {
                     ForEach(gachaViewModel.gachaItems) { item in
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text(item.name)
+                                .foregroundColor(.init(UIColor.darkGray))
                             Text(item.id)
+                                .foregroundColor(.init(UIColor.lightGray))
                         }
                     }
                 } header: {
