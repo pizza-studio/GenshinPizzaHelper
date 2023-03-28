@@ -24,7 +24,7 @@ class GachaViewModel: ObservableObject {
             filterGachaItem()
         }
     }
-    /// 分类后的祈愿记录和多少抽才出
+    /// 祈愿记录和要多少抽才出
     @Published var filteredGachaItemsWithCount: [(GachaItem, count: Int)] = []
 
     static let shared: GachaViewModel = .init()
