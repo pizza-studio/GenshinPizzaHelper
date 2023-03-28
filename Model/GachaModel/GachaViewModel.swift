@@ -53,7 +53,7 @@ class GachaViewModel: ObservableObject {
             item.rankType
         }.enumerated().map { index, rank in
             let theRestOfArray = filteredItems[(index+1)...]
-            if let nextIndexInRest = theRestOfArray.firstIndex(where: {$0.rankType == rank}) {
+            if let nextIndexInRest = theRestOfArray.firstIndex(where: { $0.rankType >= rank }) {
                 return nextIndexInRest - index
             } else {
                 return filteredItems.count - index - 1
