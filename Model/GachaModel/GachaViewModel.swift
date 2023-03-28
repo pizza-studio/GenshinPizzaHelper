@@ -12,13 +12,64 @@ import SwiftUI
 
 class GachaViewModel: ObservableObject {
     let manager = GachaModelManager.shared
+    /// 不要直接使用：所有祈愿记录
+    @Published var gachaItems: [GachaItem] {
+        didSet {
+            filterGachaItem()
+        }
+    }
 
-    @Published var gachaItems: [GachaItem]
+    @Published var filter: GachaFilter = .init() {
+        didSet {
+            filterGachaItem()
+        }
+    }
+    /// 分类后的祈愿记录和多少抽才出
+    @Published var filteredGachaItemsWithCount: [(GachaItem, count: Int)] = []
 
     static let shared: GachaViewModel = .init()
 
     private init() {
         gachaItems = manager.fetchAll()
+        filter.uid = gachaItems.first?.uid
+    }
+
+    func filterGachaItem() {
+        let filteredItems = gachaItems.sorted { lhs, rhs in
+            lhs.time > rhs.time
+        }
+        .filter { item in
+            if let uid = filter.uid {
+                return item.uid == uid
+            } else {
+                return true
+            }
+        }
+        .filter { item in
+            item.gachaType == filter.gachaType
+        }
+
+        let counts = filteredItems.map { item in
+            item.rankType
+        }.enumerated().map { index, rank in
+            let theRestOfArray = filteredItems[(index+1)...]
+            if let nextIndexInRest = theRestOfArray.firstIndex(where: {$0.rankType == rank}) {
+                return nextIndexInRest - index
+            } else {
+                return filteredItems.count - index - 1
+            }
+        }
+
+        filteredGachaItemsWithCount = zip(filteredItems, counts).filter { item, _ in
+            switch filter.rank {
+            case .five:
+                return item.rankType == .five
+            case .fourAndFive:
+                return [.five, .four].contains(item.rankType)
+            case .threeAndFourAndFire:
+                return true
+            }
+        }
     }
 
     func refetchGachaItems() {
@@ -49,10 +100,37 @@ class GachaViewModel: ObservableObject {
     }
 }
 
+struct GachaFilter {
+    var uid: String?
+    var gachaType: GachaType = .character
+    var rank: Rank = .five
+
+    enum Rank: Int, CaseIterable, Identifiable {
+        case five
+        case fourAndFive
+        case threeAndFourAndFire
+        var id: Int { self.rawValue }
+    }
+}
+
+extension GachaFilter.Rank: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .five:
+            return "五星"
+        case .fourAndFive:
+            return "四星及五星"
+        case .threeAndFourAndFire:
+            return "所有记录"
+        }
+    }
+}
+
 public class GachaFetchProgressObserver: ObservableObject {
     @Published var page: Int = 0
     @Published var gachaType: _GachaType = .character
     @Published var currentItems: [GachaItem_FM]?
+    @Published var newItemCount: Int = 0
 
     func fetching(page: Int, gachaType: _GachaType) {
         DispatchQueue.main.async {
@@ -67,6 +145,14 @@ public class GachaFetchProgressObserver: ObservableObject {
         DispatchQueue.main.async {
             withAnimation {
                 self.currentItems = items
+            }
+        }
+    }
+
+    func saveNewItemSucceed() {
+        DispatchQueue.main.async {
+            withAnimation {
+                self.newItemCount += 1
             }
         }
     }

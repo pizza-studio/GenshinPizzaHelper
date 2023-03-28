@@ -33,14 +33,19 @@ struct GetGachaView: View {
                     gachaViewModel.getGachaAndSaveFor(account, observer: observer) { result in
                         switch result {
                         case .success(_):
-                            self.status = .succeed
+                            withAnimation {
+                                self.status = .succeed
+                            }
                         case .failure(let error):
-                            self.status = .failure(error)
+                            withAnimation {
+                                self.status = .failure(error)
+                            }
                         }
                     }
                 }
+                .disabled(account == nil)
             }
-            .disabled((account == nil) || (status == .running))
+            .disabled(status == .running)
 
             switch status {
             case .waitToStart:
@@ -49,7 +54,7 @@ struct GetGachaView: View {
                 Section {
 
                     HStack {
-                        Text("正在获取...")
+                        Text("正在获取...请等待")
                         Spacer()
                         ProgressView()
                     }
@@ -62,6 +67,11 @@ struct GetGachaView: View {
                         Text("页码：")
                         Spacer()
                         Text("\(observer.page)")
+                    }
+                    HStack {
+                        Text("获取到新纪录：")
+                        Spacer()
+                        Text("\(observer.newItemCount)条")
                     }
                 }
                 if let items = observer.currentItems {
@@ -81,17 +91,18 @@ struct GetGachaView: View {
             case .succeed:
                 Section {
                     Label {
-                        Text("获取祈愿记录成功，请返回上一级查看")
+                        Text("获取祈愿记录成功")
                     } icon: {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                     }
+                    Text("成功保存：\(observer.newItemCount)条新记录")
+                    Text("请返回上一级查看")
                 }
                 Section {
                     ForEach(gachaViewModel.gachaItems) { item in
                         VStack(alignment: .leading) {
                             Text(item.name)
-//                                .foregroundColor(.init(UIColor.darkGray))
                             Text(item.id)
                                 .foregroundColor(.gray)
                         }
@@ -112,6 +123,7 @@ struct GetGachaView: View {
         .onAppear {
             account = viewModel.accounts.first?.config
         }
+        .navigationBarBackButtonHidden(status == .running)
     }
 
     enum Status: Equatable {

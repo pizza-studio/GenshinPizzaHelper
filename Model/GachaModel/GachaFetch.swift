@@ -68,7 +68,11 @@ extension MihoyoAPI {
                 let result = try decoder.decode(GachaResult_FM.self, from: data!)
                 let items = try result.toGachaItemArray()
                 observer.got(items)
-                manager.addRecordItems(items)
+                manager.addRecordItems(items) { itemIsNewAndSavedSucceed in
+                    if itemIsNewAndSavedSucceed {
+                        observer.saveNewItemSucceed()
+                    }
+                }
                 if !items.isEmpty {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         innerGetGachaLogAndSave(account: account, authkey: authkey, gachaType: gachaType, page: page+1, endId: items.last!.id, manager: manager, observer: observer) { result in

@@ -139,7 +139,7 @@ extension _GachaType {
 }
 
 /// 祈愿池记录，不区分两个角色池，用于UI
-public enum GachaType {
+public enum GachaType: Int {
     case newPlayer
     case standard
     case character
@@ -168,6 +168,14 @@ extension GachaType {
             return "武器活动祈愿"
         }
     }
+
+    static func allAvaliableGachaType() -> [Self] {
+        [.character, .weapon, .standard]
+    }
+}
+
+extension GachaType: Identifiable {
+    public var id: Int { self.rawValue }
 }
 
 extension _GachaType {

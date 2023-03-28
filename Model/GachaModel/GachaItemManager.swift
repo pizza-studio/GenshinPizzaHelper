@@ -80,16 +80,19 @@ public class GachaModelManager {
         }
     }
 
-    func addRecordItems(_ items: [GachaItem_FM]) {
+    func addRecordItems(_ items: [GachaItem_FM], isNew: @escaping ( (Bool) -> () )) {
         items.forEach { item in
-            addRecordItem(item)
+            addRecordItem(item, isNew: isNew)
         }
         save()
     }
 
-    func addRecordItem(_ item: GachaItem_FM) {
+    func addRecordItem(_ item: GachaItem_FM, isNew: @escaping ( (Bool) -> () )) {
         if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
             _ = item.toGachaItemMO(context: container.viewContext)
+            isNew(true)
+        } else {
+            isNew(false)
         }
     }
 
