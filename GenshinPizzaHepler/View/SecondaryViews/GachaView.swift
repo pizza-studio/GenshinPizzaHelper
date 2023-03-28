@@ -22,7 +22,11 @@ struct GachaView: View {
             Section {
                 ForEach(gachaViewModel.gachaItems) { item in
                     VStack {
-                        Text(item.name)
+                        HStack {
+                            Text(item.name)
+                            Spacer()
+                            Text(item.gachaType.localizedDescription())
+                        }
                         Text(item.id)
                     }
                 }
@@ -32,27 +36,3 @@ struct GachaView: View {
         .environmentObject(gachaViewModel)
     }
 }
-
-// struct TestGenGachaKey: View {
-//    @EnvironmentObject
-//    var viewModel: ViewModel
-//    @State var url: String?
-//    var body: some View {
-//        Group {
-//            Button("Get URL") {
-//                MihoyoAPI.genAuthKey(account: viewModel.accounts.first!.config) { result in
-//                    let key = try? result.get()
-//                    print(key)
-//                    print(key!.data!.authkey)
-//                    print(key!.data!.authkey.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)
-//                    if let key = key {
-//                        print(genGachaURL(account: viewModel.accounts.first!.config, authkey: key.data!))
-//                    }
-//                }
-//            }
-//            if let url = url {
-//                Text("\(url)")
-//            }
-//        }
-//    }
-// }

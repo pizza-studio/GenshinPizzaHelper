@@ -117,6 +117,23 @@ public enum GachaType: Int, CaseIterable {
 }
 
 extension GachaType {
+    func localizedDescription() -> String {
+        switch self {
+        case .newPlayer:
+            return "初行者推荐祈愿"
+        case .standard:
+            return "常驻祈愿"
+        case .character:
+            return "角色活动祈愿"
+        case .weapon:
+            return "武器活动祈愿"
+        case .character2:
+            return "角色活动祈愿-2"
+        }
+    }
+}
+
+extension GachaType {
     public func first() -> Self {
         .standard
     }

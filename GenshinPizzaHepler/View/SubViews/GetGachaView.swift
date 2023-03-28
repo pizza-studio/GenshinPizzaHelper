@@ -69,6 +69,14 @@ struct GetGachaView: View {
                 }
             case .succeed:
                 Section {
+                    Label {
+                        Text("获取祈愿记录成功")
+                    } icon: {
+                        Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                    }
+                }
+                Section {
                     ForEach(gachaViewModel.gachaItems) { item in
                         VStack(alignment: .leading) {
                             Text(item.name)
@@ -77,13 +85,18 @@ struct GetGachaView: View {
                                 .foregroundColor(.init(UIColor.lightGray))
                         }
                     }
-                } header: {
-                    Text("获取祈愿记录成功")
                 }
             case .failure(let error):
-                Text("ERROR: \(error.localizedDescription)")
+                Section {
+                    Label {
+                        Text("获取祈愿记录失败")
+                    } icon: {
+                        Image(systemName: "xmark.circle")
+                            .foregroundColor(.red)
+                    }
+                    Text("ERROR: \(error.localizedDescription)")
+                }
             }
-
         }
         .onAppear {
             account = viewModel.accounts.first?.config
