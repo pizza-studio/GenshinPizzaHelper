@@ -659,6 +659,11 @@ struct ToolsView: View {
             }
         }
         Section {
+            NavigationLink("Gacha") {
+                GachaView()
+            }
+        }
+        Section {
             NavigationLink(destination: GenshinDictionary()) {
                 Text("原神中英日辞典")
             }
