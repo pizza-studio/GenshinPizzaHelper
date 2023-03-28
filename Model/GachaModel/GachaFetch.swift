@@ -14,6 +14,7 @@ public extension MihoyoAPI {
     static func getGachaLogAndSave(
         account: AccountConfiguration,
         manager: GachaModelManager,
+        observer: GachaFetchProgressObserver,
         completion: @escaping (
             (Result<(), GetGachaError>) -> ()
         )
@@ -26,7 +27,8 @@ public extension MihoyoAPI {
                     innerGetGachaLogAndSave(
                         account: account,
                         authkey: authKey,
-                        manager: manager) { result in
+                        manager: manager,
+                        observer: observer) { result in
                             completion(result)
                         }
                 } else {
@@ -45,10 +47,12 @@ public extension MihoyoAPI {
         page: Int = 1,
         endId: String = "0",
         manager: GachaModelManager,
+        observer: GachaFetchProgressObserver,
         completion: @escaping (
             (Result<Void, GetGachaError>) -> ()
         )
     ) {
+        observer.fetching(page: page, gachaType: gachaType)
         let url = genGachaURL(account: account, authkey: authkey, gachaType: .character, page: page, endId: endId)
 
         let request = URLRequest(url: url)
@@ -63,16 +67,17 @@ public extension MihoyoAPI {
             do {
                 let result = try decoder.decode(GachaResult_FM.self, from: data!)
                 let items = try result.toGachaItemArray()
+                observer.got(items)
                 manager.addRecordItems(items)
                 if !items.isEmpty {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        innerGetGachaLogAndSave(account: account, authkey: authkey, gachaType: gachaType, page: page+1, endId: items.last!.id, manager: manager) { result in
+                        innerGetGachaLogAndSave(account: account, authkey: authkey, gachaType: gachaType, page: page+1, endId: items.last!.id, manager: manager, observer: observer) { result in
                             completion(result)
                         }
                     }
                 } else if let gachaType = gachaType.next() {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        innerGetGachaLogAndSave(account: account, authkey: authkey, gachaType: gachaType, manager: manager) { result in
+                        innerGetGachaLogAndSave(account: account, authkey: authkey, gachaType: gachaType, manager: manager, observer: observer) { result in
                             completion(result)
                         }
                     }

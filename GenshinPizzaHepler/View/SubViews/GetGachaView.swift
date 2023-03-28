@@ -10,25 +10,27 @@ import SwiftUI
 struct GetGachaView: View {
     @EnvironmentObject
     var viewModel: ViewModel
-    let gachaViewModel: GachaViewModel = .shared
+    @StateObject
+    var gachaViewModel: GachaViewModel = .shared
+    @StateObject
+    var observer: GachaFetchProgressObserver = .shared
 
     @State var status: Status = .waitToStart
     @State var account: AccountConfiguration?
 
     var body: some View {
         List {
-            switch status {
-            case .waitToStart:
-                Picker("Fetch whick Account", selection: $account) {
+            Section {
+                Picker("选择账号", selection: $account) {
                     ForEach(viewModel.accounts.map( { $0.config } ), id: \.uid) { account in
-                        Text(account.uid!)
+                        Text("\(account.name!) (\(account.uid!))" )
                             .tag(account)
                     }
                 }
-                Button("Start") {
+                Button("获取祈愿记录") {
                     status = .running
                     let account = account!
-                    gachaViewModel.getGachaAndSaveFor(account) { result in
+                    gachaViewModel.getGachaAndSaveFor(account, observer: observer) { result in
                         switch result {
                         case .success(_):
                             self.status = .succeed
@@ -37,15 +39,42 @@ struct GetGachaView: View {
                         }
                     }
                 }
-                .disabled(account == nil)
+            }
+            .disabled((account == nil) || (status == .running))
+
+            switch status {
+            case .waitToStart:
+                EmptyView()
             case .running:
-                ProgressView()
-            case .succeed:
-                ForEach(gachaViewModel.gachaItems) { item in
-                    VStack {
-                        Text(item.name)
-                        Text(item.id)
+                Section {
+                    HStack {
+                        Text("正在获取\(observer.page)页")
+                        Spacer()
+                        ProgressView()
                     }
+                }
+                if let items = observer.currentItems {
+                    Section {
+                        ForEach(items) { item in
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                Text(item.time)
+                            }
+                        }
+                    } header: {
+                        Text("成功获取到一批...")
+                    }
+                }
+            case .succeed:
+                Section {
+                    ForEach(gachaViewModel.gachaItems) { item in
+                        VStack {
+                            Text(item.name)
+                            Text(item.id)
+                        }
+                    }
+                } header: {
+                    Text("获取祈愿记录成功")
                 }
             case .failure(let error):
                 Text("ERROR: \(error.localizedDescription)")
@@ -57,7 +86,7 @@ struct GetGachaView: View {
         }
     }
 
-    enum Status {
+    enum Status: Equatable {
         case waitToStart
         case running
         case succeed

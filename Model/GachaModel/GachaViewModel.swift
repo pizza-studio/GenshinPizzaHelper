@@ -29,10 +29,11 @@ class GachaViewModel: ObservableObject {
     }
 
     func getGachaAndSaveFor(_ account: AccountConfiguration,
+                            observer: GachaFetchProgressObserver,
                             completion: @escaping ( (Result<(), GetGachaError>) -> () )) {
         let group = DispatchGroup()
         group.enter()
-        MihoyoAPI.getGachaLogAndSave(account: account, manager: manager) { result in
+        MihoyoAPI.getGachaLogAndSave(account: account, manager: manager, observer: observer) { result in
             switch result {
             case .success(_):
                 group.leave()
@@ -45,4 +46,27 @@ class GachaViewModel: ObservableObject {
             completion(.success(()))
         }
     }
+}
+
+public class GachaFetchProgressObserver: ObservableObject {
+    @Published var page: Int = 0
+    @Published var gachaType: GachaType = .character
+    @Published var currentItems: [GachaItem_FM]?
+
+    func fetching(page: Int, gachaType: GachaType) {
+        DispatchQueue.main.async {
+            self.page = page
+            self.gachaType = gachaType
+        }
+    }
+
+    func got(_ items: [GachaItem_FM]) {
+        DispatchQueue.main.async {
+            self.currentItems = items
+        }
+    }
+
+    private init() {}
+
+    static var shared: GachaFetchProgressObserver = .init()
 }

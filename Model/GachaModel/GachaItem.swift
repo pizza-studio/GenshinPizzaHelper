@@ -51,7 +51,7 @@ public struct GachaItem: Identifiable {
     }
 }
 
-public enum GetGachaError: Error {
+public enum GetGachaError: Error, Equatable {
     case incorrectAuthkey
     case authkeyTimeout
     case visitTooFrequently

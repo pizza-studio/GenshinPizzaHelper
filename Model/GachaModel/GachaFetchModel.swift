@@ -22,7 +22,7 @@ struct GachaPage_FM: Codable {
     let list: [GachaItem_FM]
 }
 
-struct GachaItem_FM: Codable {
+struct GachaItem_FM: Codable, Identifiable {
     let uid: String
     let gachaType: String
     let itemId: String
