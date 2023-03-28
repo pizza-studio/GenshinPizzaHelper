@@ -78,6 +78,12 @@ struct GetCookieWebView: View {
                                             .first(where: { cookie in
                                                 cookie.name == "login_ticket"
                                             })?.value ?? ""
+//                                        let MHYUUID: String = cookies
+//                                            .first(where: { cookie in
+//                                                cookie.name == "_MHYUUID"
+//                                            })?.value ?? ""
+//                                        cookie += "_MHYUUID=\(MHYUUID); "
+//                                        print("MHYUUID: \(MHYUUID)")
                                         print("loginTicket: \(loginTicket)")
                                         let loginUid: String = cookies
                                             .first(where: { cookie in
