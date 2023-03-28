@@ -70,7 +70,7 @@ public struct GachaItem: Identifiable {
 
 // MARK: - GetGachaError
 
-public enum GetGachaError: Error {
+public enum GetGachaError: Error, Equatable {
     case incorrectAuthkey
     case authkeyTimeout
     case visitTooFrequently
