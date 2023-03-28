@@ -11,6 +11,10 @@ import SwiftUI
 
 // @available(iOS 15, *)
 struct EachCharacterDetailDatasView: View {
+    static var spacingDelta: CGFloat {
+        ThisDevice.notchType != .none || ThisDevice.idiom == .pad ? 4 : 0
+    }
+
     var avatar: PlayerDetail.Avatar
 
     var animation: Namespace.ID
@@ -29,12 +33,12 @@ struct EachCharacterDetailDatasView: View {
 //                    weapon()
 //                }
 //            } 上述内容回头再弄
-            VStack(spacing: 4) {
+            VStack(spacing: 4 + Self.spacingDelta) {
                 avatarIconAndSkill()
                 weapon(fontSize: 15)
                 Divider()
                 probView(fontSize: 15)
-                HStack(alignment: .top, spacing: 0) {
+                HStack(alignment: .top, spacing: Self.spacingDelta) {
                     artifactsDetailsView()
                 }
             }
@@ -43,7 +47,7 @@ struct EachCharacterDetailDatasView: View {
 
     @ViewBuilder
     func artifactsDetailsView() -> some View {
-        ArtifactDetailView(avatar.artifacts)
+        ArtifactDetailView(avatar.artifacts).frame(maxWidth: .infinity)
     }
 
     @ViewBuilder
@@ -75,7 +79,7 @@ struct EachCharacterDetailDatasView: View {
                 alignment: .bottom,
                 textSize: ceil(fontSize * 0.86)
             )
-            VStack(alignment: .leading, spacing: 1) {
+            VStack(alignment: .leading, spacing: 2 + Self.spacingDelta) {
                 AttributeLabel(
                     name: weapon.nameCorrected,
                     valueView: Text("精炼\(weapon.refinementRank)阶"),
@@ -217,11 +221,11 @@ struct EachCharacterDetailDatasView: View {
             }
         }
         if #available(iOS 16, *) {
-            Grid(verticalSpacing: 2) {
+            Grid(verticalSpacing: 2 + Self.spacingDelta) {
                 probRows
             }
         } else {
-            VStack(spacing: 2) {
+            VStack(spacing: 2 + Self.spacingDelta) {
                 probRows
             }
         }
@@ -375,10 +379,9 @@ internal struct ArtifactDetailView: View {
     var body: some View {
         ForEach(artifacts) { artifact in
             // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
-            VStack(spacing: 4) {
+            VStack(spacing: 4 + spacingDelta) {
                 perArtifactDetailView(artifact)
             }
-            .frame(maxWidth: UIScreen.main.bounds.size.width / 5)
         }
     }
 
@@ -400,7 +403,7 @@ internal struct ArtifactDetailView: View {
             alignment: .bottom,
             enabled: showRarityAndLevelForArtifacts
         )
-        VStack(spacing: 0) {
+        VStack(spacing: 0 + spacingDelta) {
             Text(artifact.mainAttribute.name.convertPercentageMarkToUpMark)
                 .font(.system(size: 11, weight: .bold))
             Text("\(artifact.mainAttribute.valueString)")
@@ -410,11 +413,11 @@ internal struct ArtifactDetailView: View {
             artifact.subAttributes,
             id: \.name
         ) { subAttribute in
-            VStack(spacing: 0) {
+            VStack(spacing: 0 + spacingDelta) {
                 Text(subAttribute.name.convertPercentageMarkToUpMark)
                     .font(.system(size: 11))
                 Text("\(subAttribute.valueString)")
-                .font(.systemCondensed(size: 16, weight: .bold))
+                    .font(.systemCondensed(size: 16, weight: .bold))
             }
         }
     }
@@ -427,24 +430,19 @@ internal struct ArtifactDetailView: View {
     )
     private var showRarityAndLevelForArtifacts: Bool = true
     private let artifacts: [PlayerDetail.Avatar.Artifact]
+
+    private var spacingDelta: CGFloat {
+        EachCharacterDetailDatasView.spacingDelta
+    }
 }
 
 // MARK: - AvatarAndSkillView
 
 // @available(iOS 15.0, *)
 private struct AvatarAndSkillView: View {
+    // MARK: Internal
+
     let avatar: PlayerDetail.Avatar
-
-    var hasNotch: Bool {
-        guard let scene = UIApplication.shared.connectedScenes.first,
-              let windowSceneDelegate = scene
-              .delegate as? UIWindowSceneDelegate,
-              let window = windowSceneDelegate.window else {
-            return false
-        }
-
-        return window?.safeAreaInsets.top ?? 0 > 20
-    }
 
     var body: some View {
         HStack(alignment: .bottom) {
@@ -457,19 +455,19 @@ private struct AvatarAndSkillView: View {
                 )
                 .clipShape(Circle())
                 .padding(.trailing, 3)
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 2 + spacingDelta) {
                 HStack(alignment: .bottom) {
                     Text(avatar.nameCorrected)
                         .font(.system(size: 23, weight: .black))
                         .fixedSize(horizontal: false, vertical: true)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
-                    if !hasNotch {
+                    if ThisDevice.notchType == .none {
                         Spacer().frame(width: 24)
                     }
                 }
                 HStack(alignment: .center) {
-                    VStack(alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: 2 + spacingDelta) {
                         AttributeLabel(
                             name: "等级",
                             value: avatar.level.description
@@ -492,6 +490,12 @@ private struct AvatarAndSkillView: View {
             }
         }
         .frame(height: 85)
+    }
+
+    // MARK: Private
+
+    private var spacingDelta: CGFloat {
+        EachCharacterDetailDatasView.spacingDelta
     }
 }
 

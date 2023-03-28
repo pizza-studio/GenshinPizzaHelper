@@ -1,13 +1,13 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 戴藏龙 on 2023/3/28.
 //
 
 import Foundation
 
-//public func getGacha(url: String) throws -> GetGachaResult {
+// public func getGacha(url: String) throws -> GetGachaResult {
 //    let decoder = JSONDecoder()
 //    decoder.keyDecodingStrategy = .convertFromSnakeCase
 //    if let data = try? decoder.decode(ConvertToGetGacha.self, from: get_gacha(url).toString().data(using: .utf8)!) {
@@ -15,29 +15,27 @@ import Foundation
 //    } else {
 //        return .failure(.decodeError)
 //    }
-//}
+// }
 
 public typealias GetGachaResult = Result<[GachaItem], GetGachaError>
 
+// MARK: - GachaItem
+
 public struct GachaItem: Identifiable {
-    public let uid: String
-    public let gachaType: GachaType
-    public let itemId: String
-    public let count: Int
-    public let time: Date
-    public let name: String
-    public let lang: String
-    public let itemType: String
-    public let rankType: RankType
-    public let id: String
+    // MARK: Lifecycle
 
-    public enum RankType: Int {
-        case three = 3
-        case four = 4
-        case five = 5
-    }
-
-    public init(uid: String, gachaType: GachaType, itemId: String, count: Int, time: Date, name: String, lang: String, itemType: String, rankType: RankType, id: String) {
+    public init(
+        uid: String,
+        gachaType: GachaType,
+        itemId: String,
+        count: Int,
+        time: Date,
+        name: String,
+        lang: String,
+        itemType: String,
+        rankType: RankType,
+        id: String
+    ) {
         self.uid = uid
         self.gachaType = gachaType
         self.itemId = itemId
@@ -49,9 +47,30 @@ public struct GachaItem: Identifiable {
         self.rankType = rankType
         self.id = id
     }
+
+    // MARK: Public
+
+    public enum RankType: Int {
+        case three = 3
+        case four = 4
+        case five = 5
+    }
+
+    public let uid: String
+    public let gachaType: GachaType
+    public let itemId: String
+    public let count: Int
+    public let time: Date
+    public let name: String
+    public let lang: String
+    public let itemType: String
+    public let rankType: RankType
+    public let id: String
 }
 
-public enum GetGachaError: Error, Equatable {
+// MARK: - GetGachaError
+
+public enum GetGachaError: Error {
     case incorrectAuthkey
     case authkeyTimeout
     case visitTooFrequently
@@ -62,6 +81,8 @@ public enum GetGachaError: Error, Equatable {
     case genAuthKeyError(message: String)
 }
 
+// MARK: LocalizedError
+
 extension GetGachaError: LocalizedError {
     public var errorDescription: String? {
         switch self {
@@ -71,19 +92,21 @@ extension GetGachaError: LocalizedError {
             return "GetGachaError: authkeyTimeout"
         case .visitTooFrequently:
             return "GetGachaError: visitTooFrequently"
-        case .networkError(let message):
+        case let .networkError(message):
             return "GetGachaError: networkError (\(message))"
         case .incorrectUrl:
             return "GetGachaError: incorrectUrl"
         case .decodeError:
             return "GetGachaError: decodeError"
-        case .unknowError(let retcode, let message):
+        case let .unknowError(retcode, message):
             return "GetGachaError: unknowError (\(retcode), \(message))"
-        case .genAuthKeyError(let message):
+        case let .genAuthKeyError(message):
             return "GetGachaError: genAuthKeyError (\(message))"
         }
     }
 }
+
+// MARK: - GachaType
 
 public enum GachaType: Int, CaseIterable {
     case newPlayer = 100
@@ -93,11 +116,12 @@ public enum GachaType: Int, CaseIterable {
     case character2 = 400
 }
 
-public extension GachaType {
-    func first() -> Self {
+extension GachaType {
+    public func first() -> Self {
         .standard
     }
-    func next() -> Self? {
+
+    public func next() -> Self? {
         switch self {
         case .standard: return .character
         case .character: return .weapon
@@ -107,10 +131,10 @@ public extension GachaType {
     }
 }
 
-//extension GachaItemMO {
+// extension GachaItemMO {
 //    static func from(_ data: GachaItem_FM) -> Self {
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 //        return .init(uid: data.uid, gachaType: Int(data.gachaType)!, itemId: data.itemId, count: Int(data.count)!, time: dateFormatter.date(from: data.time)!, name: data.name, lang: data.lang, itemType: data.itemType, rankType: Int(data.rankType)!, id: data.id)
 //    }
-//}
+// }

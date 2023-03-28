@@ -5,16 +5,15 @@
 //  Created by 戴藏龙 on 2023/3/27.
 //
 
+import CoreData
 import Foundation
 import HBMihoyoAPI
-import CoreData
 
 @available(iOS 13, *)
-public extension MihoyoAPI {
-    static func getGachaLogAndSave(
+extension MihoyoAPI {
+    public static func getGachaLogAndSave(
         account: AccountConfiguration,
         manager: GachaModelManager,
-        observer: GachaFetchProgressObserver,
         completion: @escaping (
             (Result<(), GetGachaError>) -> ()
         )

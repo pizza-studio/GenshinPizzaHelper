@@ -29,14 +29,15 @@ struct CharacterDetailView: View {
     }
 
     var body: some View {
+        coreBody
+    }
+
+    @ViewBuilder
+    var coreBody: some View {
         if #available(iOS 15.0, *) {
             TabView(selection: $showingCharacterName) {
                 ForEach(playerDetail.avatars, id: \.name) { avatar in
-                    EachCharacterDetailDatasView(
-                        avatar: avatar,
-                        animation: animation
-                    )
-                    .frame(maxWidth: 500) // For iPad
+                    framedCoreView(avatar)
                 }
             }
             .tabViewStyle(
@@ -100,11 +101,7 @@ struct CharacterDetailView: View {
             // Fallback on earlier versions
             TabView(selection: $showingCharacterName) {
                 ForEach(playerDetail.avatars, id: \.name) { avatar in
-                    EachCharacterDetailDatasView(
-                        avatar: avatar,
-                        animation: animation
-                    )
-                    .frame(maxWidth: 500) // For iPad
+                    framedCoreView(avatar)
                 }
             }
             .tabViewStyle(
@@ -153,6 +150,29 @@ struct CharacterDetailView: View {
                     }
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    func framedCoreView(
+        _ avatar: PlayerDetail
+            .Avatar
+    )
+        -> some View {
+        VStack {
+            Spacer().frame(width: 25, height: 10)
+            EachCharacterDetailDatasView(
+                avatar: avatar,
+                animation: animation
+            ).frame(maxWidth: 500) // For iPad
+                .fixedSize(
+                    horizontal: ThisDevice.idiom == .mac,
+                    vertical: ThisDevice.idiom == .mac
+                )
+            // TODO: 這裡回頭可以實裝一下「隨父容器尺寸自動放大」的功能。
+            // .fixedSize()
+            // .scaleEffect(1.8)
+            Spacer().frame(width: 25, height: 20)
         }
     }
 

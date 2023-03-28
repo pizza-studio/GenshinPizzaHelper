@@ -93,4 +93,3 @@ struct GetGachaView: View {
         case failure(GetGachaError)
     }
 }
-

@@ -5,10 +5,12 @@
 //  Created by 戴藏龙 on 2023/3/28.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 public class GachaModelManager {
+    // MARK: Lifecycle
+
     private init() {
         let containerURL = FileManager.default
             .containerURL(
@@ -43,6 +45,8 @@ public class GachaModelManager {
 
         container.viewContext.refreshAllObjects()
     }
+
+    // MARK: Internal
 
     static let shared: GachaModelManager = .init()
 
@@ -85,7 +89,7 @@ public class GachaModelManager {
 
     func addRecordItem(_ item: GachaItem_FM) {
         if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
-            let _ = item.toGachaItemMO(context: container.viewContext)
+            _ = item.toGachaItemMO(context: container.viewContext)
         }
     }
 

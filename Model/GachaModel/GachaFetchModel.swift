@@ -5,14 +5,18 @@
 //  Created by 戴藏龙 on 2023/3/27.
 //
 
-import Foundation
 import CoreData
+import Foundation
+
+// MARK: - GachaResult_FM
 
 public struct GachaResult_FM: Codable {
     let retcode: Int
     let message: String
     let data: GachaPage_FM?
 }
+
+// MARK: - GachaPage_FM
 
 struct GachaPage_FM: Codable {
     let page: String
@@ -37,12 +41,13 @@ struct GachaItem_FM: Codable, Identifiable {
 
 extension GachaResult_FM {
     func toGachaItemArray() throws -> [GachaItem_FM] {
-        switch self.retcode {
-        case 0: return self.data!.list
+        switch retcode {
+        case 0: return data!.list
         case -100: throw GetGachaError.incorrectAuthkey
         case -101: throw GetGachaError.authkeyTimeout
         case -110: throw GetGachaError.visitTooFrequently
-        default: throw GetGachaError.unknowError(retcode: self.retcode, message: self.message)
+        default: throw GetGachaError
+            .unknowError(retcode: retcode, message: message)
         }
     }
 }
@@ -50,15 +55,15 @@ extension GachaResult_FM {
 extension GachaItem_FM {
     func saveTo(_ context: NSManagedObjectContext) {
         let item = GachaItemMO(context: context)
-        item.count = Int16(self.count)!
-        item.gachaType = Int16(self.gachaType)!
-        item.rankType = Int16(self.rankType)!
-        item.id = self.id
-        item.itemType = self.itemType
-        item.lang = self.lang
-        item.name = self.name
+        item.count = Int16(count)!
+        item.gachaType = Int16(gachaType)!
+        item.rankType = Int16(rankType)!
+        item.id = id
+        item.itemType = itemType
+        item.lang = lang
+        item.name = name
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        item.time = dateFormatter.date(from: self.time)!
+        item.time = dateFormatter.date(from: time)!
     }
 }

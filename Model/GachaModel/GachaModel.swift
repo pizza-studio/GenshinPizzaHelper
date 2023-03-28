@@ -5,12 +5,23 @@
 //  Created by 戴藏龙 on 2023/3/28.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 extension GachaItemMO {
     public func toGachaItem() -> GachaItem {
-        return .init(uid: self.uid!, gachaType: .init(rawValue: Int(self.gachaType))!, itemId: self.itemId!, count: Int(self.count), time: self.time!, name: self.name!, lang: self.lang!, itemType: self.itemType!, rankType: .init(rawValue: Int(self.rankType))!, id: self.id!)
+        .init(
+            uid: uid!,
+            gachaType: .init(rawValue: Int(gachaType))!,
+            itemId: itemId!,
+            count: Int(count),
+            time: time!,
+            name: name!,
+            lang: lang!,
+            itemType: itemType!,
+            rankType: .init(rawValue: Int(rankType))!,
+            id: id!
+        )
     }
 }
 
@@ -19,16 +30,16 @@ extension GachaItem_FM {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let model = GachaItemMO(context: context)
-        model.uid = self.uid
-        model.gachaType = Int16(self.gachaType)!
-        model.itemId = self.itemId
-        model.count = Int16(self.count)!
-        model.time = dateFormatter.date(from: self.time)!
-        model.name = self.name
-        model.lang = self.lang
-        model.itemType = self.itemType
-        model.rankType = Int16(self.rankType)!
-        model.id = self.id
+        model.uid = uid
+        model.gachaType = Int16(gachaType)!
+        model.itemId = itemId
+        model.count = Int16(count)!
+        model.time = dateFormatter.date(from: time)!
+        model.name = name
+        model.lang = lang
+        model.itemType = itemType
+        model.rankType = Int16(rankType)!
+        model.id = id
         return model
     }
 }

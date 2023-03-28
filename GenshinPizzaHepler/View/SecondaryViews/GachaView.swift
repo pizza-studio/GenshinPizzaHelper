@@ -5,14 +5,13 @@
 //  Created by 戴藏龙 on 2023/3/28.
 //
 
-import SwiftUI
 import HBMihoyoAPI
+import SwiftUI
 
 struct GachaView: View {
     @EnvironmentObject
     var viewModel: ViewModel
     let gachaViewModel: GachaViewModel = .shared
-    
     var body: some View {
         List {
             Section {
@@ -29,13 +28,12 @@ struct GachaView: View {
                 }
             }
 //            TestGenGachaKey()
-
         }
         .environmentObject(gachaViewModel)
     }
 }
 
-//struct TestGenGachaKey: View {
+// struct TestGenGachaKey: View {
 //    @EnvironmentObject
 //    var viewModel: ViewModel
 //    @State var url: String?
@@ -57,4 +55,4 @@ struct GachaView: View {
 //            }
 //        }
 //    }
-//}
+// }

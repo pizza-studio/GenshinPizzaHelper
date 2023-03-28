@@ -7,10 +7,21 @@
 
 import SwiftUI
 
-struct ThisDevice {
-    // MARK: Lifecycle
+// MARK: - ThisDevice
 
-    private init() {}
+enum ThisDevice {
+    // MARK: Public
+
+    public static var isScreenLandScape: Bool {
+        guard let window = UIApplication.shared.windows
+            .filter({ $0.isKeyWindow }).first else { return false }
+        let filtered = window.safeAreaInsets.allParamters.filter { $0 > 0 }
+        return filtered.count == 3
+    }
+
+    public static var idiom: UIUserInterfaceIdiom {
+        UIDevice.current.userInterfaceIdiom
+    }
 
     // MARK: Internal
 
@@ -21,35 +32,30 @@ struct ThisDevice {
     }
 
     static var notchType: NotchType {
-        if hasDynamicIsland {
-            return .dynamicIsland
-        } else if hasNormalNotch {
-            return .normalNotch
-        } else {
-            return .none
-        }
+        guard hasNotchOrDynamicIsland else { return .none }
+        guard hasDynamicIsland else { return .normalNotch }
+        return .dynamicIsland
     }
 
-    static var hasDynamicIsland: Bool {
+    // MARK: Private
+
+    private static var hasDynamicIsland: Bool {
         guard let window = UIApplication.shared.windows
             .filter({ $0.isKeyWindow }).first else { return false }
-        if UIDevice.current.orientation.isPortrait {
-            return window.safeAreaInsets.top >= 59
-        } else {
-            return window.safeAreaInsets.left > 0 || window.safeAreaInsets
-                .right > 0
-        }
+        let filtered = window.safeAreaInsets.allParamters.filter { $0 >= 59 }
+        return filtered.count == 1
     }
 
-    static var hasNormalNotch: Bool {
+    private static var hasNotchOrDynamicIsland: Bool {
         guard let window = UIApplication.shared.windows
             .filter({ $0.isKeyWindow }).first else { return false }
-        if UIDevice.current.orientation.isPortrait {
-            return window.safeAreaInsets.top >= 44 && window.safeAreaInsets
-                .top < 59
-        } else {
-            return window.safeAreaInsets.left > 0 || window.safeAreaInsets
-                .right > 0
-        }
+        let filtered = window.safeAreaInsets.allParamters.filter { $0 >= 44 }
+        return filtered.count == 1
+    }
+}
+
+extension UIEdgeInsets {
+    fileprivate var allParamters: [CGFloat] {
+        [bottom, top, left, right]
     }
 }
