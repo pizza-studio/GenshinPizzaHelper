@@ -1089,3 +1089,34 @@
 "中文汉字纠正" = "Chinese UI Text Correction";
 "这将会在简体中文当中强制自动恢复目前已被官方恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
 "显示圣遗物等级与稀有度" = "Show artifact levels and rarity stars";
+
+// MARK: 3 star weapons
+"冷刃" = "Lãnh Nhẫn";
+"黎明神剑" = "Thần Kiếm Lê Minh";
+"旅行剑" = "Kiếm Lữ Hành";
+"暗铁剑" = "Kiếm Sắt Đen";
+"吃虎鱼刀" = "Đao Săn Cá";
+"飞天御剑" = "Kiếm Phi Thiên";
+"铁影阔剑" = "Kiếm Thiết Ảnh";
+"沐浴龙血的剑" = "Kiếm Huyết Rồng";
+"白铁大剑" = "Kiếm Bạch Thiết";
+"石英大剑" = "Kiếm Thạch Anh";
+"以理服人" = "Gậy Thu Phục";
+"飞天大御剑" = "Đại Kiếm Phi Thiên";
+"白缨枪" = "Thương Bạch Anh";
+"钺矛" = "Thuẫn Kích";
+"黑缨枪" = "Hắc Anh Thương";
+"「旗杆」" = "Cột Cờ";
+"魔导绪论" = "Tóm Tắt Ma Pháp";
+"讨龙英杰谭" = "Câu Chuyện Diệt Rồng";
+"异世界行记" = "Tiểu Thuyết Dị Giới";
+"翡玉法球" = "Quả Cầu Ngọc";
+"甲级宝珏" = "Ngọc Sinh Đôi";
+"琥珀玥" = "Hổ Phách Nguyệt";
+"鸦羽弓" = "Cung Lông Quạ";
+"神射手之誓" = "Lời Thề Xạ Thủ Thần";
+"反曲弓" = "Cung Phản Khúc";
+"弹弓" = "Nỏ Kéo";
+"信使" = "Tín Sứ";
+"黑檀弓" = "Cung Hắc Đàn";
+

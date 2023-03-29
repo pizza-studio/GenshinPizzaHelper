@@ -1089,3 +1089,33 @@
 "中文汉字纠正" = "Chinese UI Text Correction";
 "这将会在简体中文当中强制自动恢复目前已被官方恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
 "显示圣遗物等级与稀有度" = "Show artifact levels and rarity stars";
+
+// MARK: 3 star weapons
+"冷刃" = "Lame froide";
+"黎明神剑" = "Messager de l'Aube";
+"旅行剑" = "Épée du voyageur";
+"暗铁剑" = "Épée en fer noir";
+"吃虎鱼刀" = "Couteau à filets";
+"飞天御剑" = "Épée céleste";
+"铁影阔剑" = "Ombre ferreuse";
+"沐浴龙血的剑" = "Épée sanglante";
+"白铁大剑" = "Grande épée en fer blanc";
+"石英大剑" = "Grande épée en quartz";
+"以理服人" = "Épée de la raison";
+"飞天大御剑" = "Grande épée céleste";
+"白缨枪" = "Pampille blanche";
+"钺矛" = "Hallebarde";
+"黑缨枪" = "Pampille noire";
+"「旗杆」" = "La hampe";
+"魔导绪论" = "Guide de magie";
+"讨龙英杰谭" = "Histoire des chasseurs de dragon";
+"异世界行记" = "Conte d'un autre monde";
+"翡玉法球" = "Orbe jadien";
+"甲级宝珏" = "Néphrite jumelle";
+"琥珀玥" = "Catalyseur en ambre";
+"鸦羽弓" = "Arc du corbeau";
+"神射手之誓" = "Serment de l'archer";
+"反曲弓" = "Arc courbé";
+"弹弓" = "Lance-pierres";
+"信使" = "Messager";
+"黑檀弓" = "Arc en ébène";

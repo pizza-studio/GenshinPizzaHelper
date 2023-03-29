@@ -1089,3 +1089,33 @@
 "中文汉字纠正" = "Chinese UI Text Correction";
 "这将会在简体中文当中强制自动恢复目前已被官方恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
 "显示圣遗物等级与稀有度" = "Show artifact levels and rarity stars";
+
+// MARK: 3 star weapons
+"冷刃" = "Cool Steel";
+"黎明神剑" = "Harbinger of Dawn";
+"旅行剑" = "Traveler's Handy Sword";
+"暗铁剑" = "Dark Iron Sword";
+"吃虎鱼刀" = "Fillet Blade";
+"飞天御剑" = "Skyrider Sword";
+"铁影阔剑" = "Ferrous Shadow";
+"沐浴龙血的剑" = "Bloodtainted Greatsword";
+"白铁大剑" = "White Iron Greatsword";
+"石英大剑" = "Quartz";
+"以理服人" = "Debate Club";
+"飞天大御剑" = "Skyrider Greatsword";
+"白缨枪" = "White Tassel";
+"钺矛" = "Halberd";
+"黑缨枪" = "Black Tassel";
+"「旗杆」" = "The Flagstaff";
+"魔导绪论" = "Magic Guide";
+"讨龙英杰谭" = "Thrilling Tales of Dragon Slayers";
+"异世界行记" = "Otherworldly Story";
+"翡玉法球" = "Emerald Orb";
+"甲级宝珏" = "Twin Nephrite";
+"琥珀玥" = "Amber Bead";
+"鸦羽弓" = "Raven Bow";
+"神射手之誓" = "Sharpshooter's Oath";
+"反曲弓" = "Recurve Bow";
+"弹弓" = "Slingshot";
+"信使" = "Messenger";
+"黑檀弓" = "Ebony Bow";
