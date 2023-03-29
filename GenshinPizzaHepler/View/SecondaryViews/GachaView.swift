@@ -24,7 +24,8 @@ struct GachaView: View {
     var body: some View {
         List {
             Section {
-                if #available(iOS 16.0, *) {
+                if #available(iOS 16.0, *),
+                   !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
                     GachaChart(
                         items: gachaViewModel
                             .filteredGachaItemsWithCount
@@ -237,7 +238,7 @@ private struct GachaChart: View {
             Chart {
                 ForEach(fiveStarItems, id: \.0.id) { item in
                     BarMark(
-                        x: .value("角色", item.0.localizedName),
+                        x: .value("角色", item.0.name),
                         y: .value("抽数", item.count)
                     )
                     .annotation(position: .top) {
@@ -249,7 +250,7 @@ private struct GachaChart: View {
                 RuleMark(y: .value(
                     "平均",
                     fiveStarItems.map { $0.count }
-                        .reduce(0) { $0 + $1 } / fiveStarItems.count
+                        .reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
                 ))
                 .foregroundStyle(.gray)
                 .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))

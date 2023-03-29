@@ -74,7 +74,7 @@ private struct GachaItemChart: View {
                     //                    x: .value("角色", item.0.localizedName),
 //                    y: .value("抽数", item.count)
                     x: .value("抽数", item.count),
-                    y: .value("角色", item.0.localizedName)
+                    y: .value("角色", item.0.name)
                 )
                 .annotation(position: .trailing) {
                     Text("\(item.count)").foregroundColor(.gray).font(.caption)
@@ -84,13 +84,13 @@ private struct GachaItemChart: View {
             RuleMark(x: .value(
                 "平均",
                 fiveStarItems.map { $0.count }
-                    .reduce(0) { $0 + $1 } / fiveStarItems.count
+                    .reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
             ))
             .foregroundStyle(.gray)
             .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
             .annotation(alignment: .topLeading) {
                 Text(
-                    "平均抽数：\(fiveStarItems.map { $0.count }.reduce(0) { $0 + $1 } / fiveStarItems.count)"
+                    "平均抽数：\(fiveStarItems.map { $0.count }.reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1))"
                 )
                 .font(.caption).foregroundColor(.gray)
             }
@@ -109,7 +109,7 @@ private struct GachaItemChart: View {
                             .background(item.backgroundImageName())
                             .frame(width: 30, height: 30)
                             .clipShape(Circle())
-                            Text(name)
+                            Text(item.localizedName)
                         }
 
                     } else {

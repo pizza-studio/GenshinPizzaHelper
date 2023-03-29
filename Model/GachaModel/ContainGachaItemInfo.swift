@@ -62,9 +62,9 @@ extension ContainGachaItemInfo {
     }
 
     var localizedName: String {
-        guard lang != "zh-cn" else { return name }
+//        guard lang != "zh-cn" else { return name }
         // TODO: 翻译为其他语言
-        return name.localized
+        name.localizedWithFix
     }
 }
 

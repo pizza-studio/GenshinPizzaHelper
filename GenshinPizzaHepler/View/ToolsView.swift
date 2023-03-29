@@ -647,6 +647,9 @@ struct ToolsView: View {
     @ViewBuilder
     func toolsSection() -> some View {
         Section {
+            NavigationLink("祈愿分析工具") {
+                GachaView()
+            }
             NavigationLink {
                 AbyssDataCollectionView()
             } label: {
@@ -656,11 +659,6 @@ struct ToolsView: View {
                     Image("UI_MarkTower_EffigyChallenge_01").resizable()
                         .scaledToFit()
                 }
-            }
-        }
-        Section {
-            NavigationLink("Gacha") {
-                GachaView()
             }
         }
         Section {
