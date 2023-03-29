@@ -20,6 +20,15 @@ struct GachaView: View {
 
     var body: some View {
         List {
+            Section {
+                ForEach(gachaViewModel.filteredGachaItemsWithCount, id: \.0.id) { item, count in
+                    VStack(spacing: 1) {
+                        GachaItemBar(item: item, count: count, showTime: showTime, showingType: gachaViewModel.filter.rank)
+                    }
+                }
+            } header: {
+                Text("已垫\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽")
+            }
             #if DEBUG
             Section {
                 Button("delete all records (DEBUG ONLY)") {
@@ -38,21 +47,6 @@ struct GachaView: View {
                 }
             }
             #endif
-            Section {
-                ForEach(gachaViewModel.filteredGachaItemsWithCount, id: \.0.id) { item, count in
-                    VStack(spacing: 1) {
-                        GachaItemBar(item: item, count: count)
-                        if showTime {
-                            HStack {
-                                Spacer()
-                                Text("\(item.formattedTime)")
-                            }
-                        }
-                    }
-                }
-            } header: {
-                Text("已垫\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽")
-            }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -121,6 +115,14 @@ private struct FilterEditer: View {
 
         }
         Spacer()
+        Button {
+            withAnimation {
+                showTime.toggle()
+            }
+        } label: {
+            Image(systemName: showTime ? "calendar.circle.fill" : "calendar.circle")
+        }
+        Spacer()
         Menu {
             ForEach(GachaFilter.Rank.allCases) { rank in
                 Button(rank.description) {
@@ -132,18 +134,15 @@ private struct FilterEditer: View {
         } label: {
             Text(filter.rank.description)
         }
-        Spacer()
-        Button(showTime ? "显示时间" : "隐藏时间") {
-            withAnimation {
-                showTime.toggle()
-            }
-        }
     }
 }
 
 private struct GachaItemBar: View {
     let item: GachaItem
     let count: Int
+    let showTime: Bool
+    let showingType: GachaFilter.Rank
+    var width: CGFloat { showingType == .five ? 40 : 30 }
     var body: some View {
         HStack {
             Label {
@@ -156,13 +155,22 @@ private struct GachaItemBar: View {
                 .background(
                     AnyView(item.backgroundImageName())
                 )
-                .frame(width: 30, height: 30)
+                .frame(width: width, height: width)
                 .clipShape(Circle())
             }
             Spacer()
-            if (count != 1) || (item.rankType != .three) {
-                Text("\(count)")
+            VStack(alignment: .trailing, spacing: 1) {
+                if (count != 1) || (item.rankType != .three) {
+                    Text("\(count)")
+                        .font(!showTime ? .body : .caption)
+                }
+                if showTime {
+                    Text(item.formattedTime)
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                }
             }
+
         }
     }
 }

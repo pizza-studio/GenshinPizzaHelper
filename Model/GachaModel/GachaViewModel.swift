@@ -172,11 +172,6 @@ public class GachaFetchProgressObserver: ObservableObject {
                 self.currentItems.append(newItem)
             }
         })
-//        DispatchQueue.main.async {
-//            withAnimation {
-//                self.currentItems.append(contentsOf: items)
-//            }
-//        }
     }
 
     func saveNewItemSucceed() {
