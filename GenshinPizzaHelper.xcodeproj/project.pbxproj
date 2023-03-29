@@ -272,6 +272,7 @@
 		EA36DFBE28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */; };
 		EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */; };
 		EA36DFC728E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */; };
+		EA3A9DB329D4812300CF4230 /* GachaChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A9DB229D4812300CF4230 /* GachaChartView.swift */; };
 		EA406811292228A200F23479 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
 		EA406812292228A200F23479 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
 		EA406813292228A200F23479 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
@@ -749,6 +750,7 @@
 		EA36DFB928E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetTransformerCircular.swift; sourceTree = "<group>"; };
 		EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetWeeklyBossesCircular.swift; sourceTree = "<group>"; };
 		EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetProvider.swift; sourceTree = "<group>"; };
+		EA3A9DB229D4812300CF4230 /* GachaChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaChartView.swift; sourceTree = "<group>"; };
 		EA406810292228A200F23479 /* WidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetData.swift; sourceTree = "<group>"; };
 		EA40681729222A1300F23479 /* MainWidgetSimplifiedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetSimplifiedView.swift; sourceTree = "<group>"; };
 		EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgetProvider.swift; sourceTree = "<group>"; };
@@ -1167,6 +1169,7 @@
 				BF068BD428A335F9002E7334 /* WebViews.swift */,
 				EACCEA7628F95A75004817FB /* LedgerShareView.swift */,
 				EA025C8D29D28D150075F780 /* GetGachaView.swift */,
+				EA3A9DB229D4812300CF4230 /* GachaChartView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -2219,6 +2222,7 @@
 				BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BFE7AFE42909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				BF7500D828DEA80700CDA64E /* EachCharacterDetailDatasView.swift in Sources */,
+				EA3A9DB329D4812300CF4230 /* GachaChartView.swift in Sources */,
 				EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EACCEA7728F95A75004817FB /* LedgerShareView.swift in Sources */,

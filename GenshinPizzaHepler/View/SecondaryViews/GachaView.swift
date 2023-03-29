@@ -22,13 +22,16 @@ struct GachaView: View {
     var body: some View {
         List {
             Section {
-                Text("当前已垫：\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽")
                 if #available(iOS 16.0, *) {
                     GachaChart(items: gachaViewModel.filteredGachaItemsWithCount)
                     NavigationLink("更多图表") {
-                        EmptyView()
+                        GachaChartView()
                     }
                 }
+            }
+            
+            Section {
+                Text("当前已垫：\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽")
             }
 
             Section {
@@ -196,12 +199,15 @@ private struct GachaChart: View {
                     BarMark(
                         x: .value("角色", item.0.localizedName),
                         y: .value("抽数", item.count)
-    //                    x: .value("抽数", item.count),
-    //                    y: .value("角色", item.0.localizedName)
                     )
+                    .annotation(position: .top) {
+                        Text("\(item.count)").foregroundColor(.gray).font(.caption)
+                    }
+                    .foregroundStyle(by: .value("抽数", item.0.id))
                 }
                 RuleMark(y: .value("平均", fiveStarItems.map({$0.count}).reduce(0, {$0 + $1}) / fiveStarItems.count))
                     .foregroundStyle(.gray)
+                    .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
             }
             .chartXAxis(content: {
                 AxisMarks { value in
@@ -216,8 +222,6 @@ private struct GachaChart: View {
                                 .background(item.backgroundImageName())
                                 .frame(width: 30, height: 30)
                                 .clipShape(Circle())
-//                                Text(name)
-//                                    .rotationEffect(Angle(degrees: 90))
                             }
 
                         } else {
@@ -230,9 +234,24 @@ private struct GachaChart: View {
             .chartYAxis(content: {
                 AxisMarks(position: .leading)
             })
+            .chartForegroundStyleScale(range: colors)
+            .chartLegend(.hidden)
             .frame(width: CGFloat(fiveStarItems.count * 50))
             .padding(.top)
             .padding(.bottom, 5)
+        }
+    }
+
+    var colors: [Color] {
+        fiveStarItems.map { _, count in
+            switch count {
+            case 0..<60:
+                return .green
+            case 60..<80:
+                return .yellow
+            default:
+                return .red
+            }
         }
     }
 }

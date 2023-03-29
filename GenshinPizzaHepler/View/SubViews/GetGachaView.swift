@@ -171,7 +171,7 @@ private struct GachaItemBar: View {
 private struct GetGachaChart: View {
     let items: [GachaItem_FM]
 
-    let data: [GachaFetchProgressObserver.GachaTypeDateCount]
+    let data: [GachaTypeDateCount]
 
     let formatter: DateFormatter = {
         let fmt = DateFormatter()
@@ -189,6 +189,9 @@ private struct GetGachaChart: View {
             )
             .foregroundStyle(by: .value("祈愿类型", $0.type.localizedDescription()))
         }
+        .chartForegroundStyleScale([
+            GachaType.standard.localizedDescription(): .green, GachaType.character.localizedDescription(): .blue, GachaType.weapon.localizedDescription(): .yellow
+        ])
 //        .chartXAxis {
 //            AxisMarks { value in
 //                AxisValueLabel(content: {

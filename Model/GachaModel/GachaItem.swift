@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Charts
 
 // public func getGacha(url: String) throws -> GetGachaResult {
 //    let decoder = JSONDecoder()
@@ -125,6 +126,21 @@ extension _GachaType {
     func localizedDescription() -> String {
         switch self {
         case .newPlayer:
+            return "初行者推荐祈愿".localized
+        case .standard:
+            return "常驻祈愿".localized
+        case .character:
+            return "角色活动祈愿".localized
+        case .weapon:
+            return "武器活动祈愿".localized
+        case .character2:
+            return "角色活动祈愿-2".localized
+        }
+    }
+
+    func description() -> String {
+        switch self {
+        case .newPlayer:
             return "初行者推荐祈愿"
         case .standard:
             return "常驻祈愿"
@@ -145,6 +161,19 @@ public enum GachaType: Int {
     case character
     case weapon
 }
+
+//@available(iOS 16.0, *)
+//extension GachaType: Plottable {
+//    public var primitivePlottable: String {
+//        String(self.rawValue)
+//    }
+//
+//    public init?(primitivePlottable: String) {
+//        self = .init(rawValue: Int(primitivePlottable)!)!
+//    }
+//
+//    public typealias PrimitivePlottable = String
+//}
 
 extension GachaType {
     static func from(_ innerGachaType: _GachaType) -> Self {

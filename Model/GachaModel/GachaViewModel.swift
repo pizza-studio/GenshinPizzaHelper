@@ -210,21 +210,7 @@ public class GachaFetchProgressObserver: ObservableObject {
 
     static var shared: GachaFetchProgressObserver = .init()
 
-    struct GachaTypeDateCount: Hashable, Identifiable {
 
-        let date: Date
-        var count: Int
-        let type: GachaType
-
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(date)
-            hasher.combine(type)
-        }
-
-        var id: Int {
-            self.hashValue
-        }
-    }
 
 }
 
@@ -235,5 +221,21 @@ extension Array where Element: Equatable {
         }.map { index, _ in
             index
         }
+    }
+}
+
+struct GachaTypeDateCount: Hashable, Identifiable {
+
+    let date: Date
+    var count: Int
+    let type: GachaType
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(date)
+        hasher.combine(type)
+    }
+
+    var id: Int {
+        self.hashValue
     }
 }
