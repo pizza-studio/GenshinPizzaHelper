@@ -141,6 +141,8 @@ public class GachaFetchProgressObserver: ObservableObject {
     @Published var currentItems: [GachaItem_FM] = []
     @Published var newItemCount: Int = 0
 
+    private var cancellable : AnyCancellable?
+
     func initialize() {
         withAnimation {
             page = 0
@@ -148,7 +150,6 @@ public class GachaFetchProgressObserver: ObservableObject {
             currentItems = []
             newItemCount = 0
         }
-
     }
 
     func fetching(page: Int, gachaType: _GachaType) {
@@ -161,11 +162,21 @@ public class GachaFetchProgressObserver: ObservableObject {
     }
 
     func got(_ items: [GachaItem_FM]) {
-        DispatchQueue.main.async {
+        self.cancellable = Publishers.Zip(
+            items.publisher,
+            Timer.publish(every: 0.015, on: .main, in: .default).autoconnect()
+        )
+        .map(\.0)
+        .sink(receiveValue: { newItem in
             withAnimation {
-                self.currentItems.append(contentsOf: items)
+                self.currentItems.append(newItem)
             }
-        }
+        })
+//        DispatchQueue.main.async {
+//            withAnimation {
+//                self.currentItems.append(contentsOf: items)
+//            }
+//        }
     }
 
     func saveNewItemSucceed() {

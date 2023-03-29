@@ -96,7 +96,7 @@ struct GetGachaView: View {
                     Text("成功保存\(observer.newItemCount)条新记录，请返回上一级查看，或继续获取其他账号的记录")
                 }
                 Section {
-                    ForEach(gachaViewModel.gachaItems) { item in
+                    ForEach(observer.currentItems) { item in
                         GachaItemBar(item: item)
                     }
                 }
@@ -127,7 +127,7 @@ struct GetGachaView: View {
 }
 
 private struct GachaItemBar: View {
-    let item: ContainGachaItemInfo
+    let item: GachaItem_FM
     var body: some View {
         VStack(spacing: 1) {
             HStack {
@@ -145,10 +145,13 @@ private struct GachaItemBar: View {
                     .clipShape(Circle())
                 }
                 Spacer()
-            }
-            HStack {
-                Spacer()
-                Text("\(item.formattedTime)")
+                VStack(alignment: .trailing) {
+                    Text(_GachaType(rawValue: Int(item.gachaType)!)!.localizedDescription())
+                        .font(.caption)
+                    Text("\(item.formattedTime)")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
             }
         }
     }
