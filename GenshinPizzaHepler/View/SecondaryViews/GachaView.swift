@@ -8,6 +8,7 @@
 import HBMihoyoAPI
 import SwiftUI
 import CoreData
+import Charts
 
 struct GachaView: View {
     @EnvironmentObject
@@ -20,6 +21,9 @@ struct GachaView: View {
 
     var body: some View {
         List {
+            if #available(iOS 16.0, *) {
+                GachaChart(items: gachaViewModel.filteredGachaItemsWithCount)
+            }
             Section {
                 ForEach(gachaViewModel.filteredGachaItemsWithCount, id: \.0.id) { item, count in
                     VStack(spacing: 1) {
@@ -171,6 +175,21 @@ private struct GachaItemBar: View {
                 }
             }
 
+        }
+    }
+}
+
+@available(iOS 16.0, *)
+private struct GachaChart: View {
+    let items: [(GachaItem, count: Int)]
+    var body: some View {
+        Chart {
+            ForEach(items.filter({ $0.0.rankType == .five }), id: \.0.id) { item in
+                BarMark(
+                    x: .value("角色", item.0.name),
+                    y: .value("抽数", item.count)
+                )
+            }
         }
     }
 }
