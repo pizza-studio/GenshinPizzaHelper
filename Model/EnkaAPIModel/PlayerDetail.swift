@@ -105,19 +105,10 @@ struct PlayerDetail {
                 characterDictionary["\(avatarInfo.avatarId)"]
             else { return nil }
 
-            if AppConfig.useActualCharacterNames {
-                switch avatarInfo.avatarId {
-                case 10000005: self.name = "空".localized
-                case 10000007: self.name = "荧".localized
-                case 10000075: self.name = "雷电国崩".localized
-                default:
-                    self.name = localizedDictionary
-                        .nameFromHashMap(character.NameTextMapHash)
-                }
-            } else {
-                self.name = localizedDictionary
-                    .nameFromHashMap(character.NameTextMapHash)
-            }
+            self.enkaID = avatarInfo.avatarId
+
+            self.name = localizedDictionary
+                .nameFromHashMap(character.NameTextMapHash)
 
             self
                 .element = AvatarElement(rawValue: character.Element) ??
@@ -287,7 +278,7 @@ struct PlayerDetail {
             var awakenedIconString: String { "\(iconString)_Awaken" }
             /// 经过错字订正处理的武器名称
             var nameCorrected: String {
-                name.hasCharacterWeaponNameFixed
+                name.localizedWithFix
             }
         }
 
@@ -465,9 +456,17 @@ struct PlayerDetail {
         let sideIconString: String
         let quality: Quality
 
+        /// Enka Character ID
+        let enkaID: Int
+
         /// 经过错字订正处理的角色姓名
         var nameCorrected: String {
-            name.hasCharacterWeaponNameFixed
+            switch enkaID {
+            case 10000005: return "空".localizedWithFix
+            case 10000007: return "荧".localizedWithFix
+            case 10000075: return "流浪者".localizedWithFix
+            default: return name.localizedWithFix
+            }
         }
 
         /// 名片

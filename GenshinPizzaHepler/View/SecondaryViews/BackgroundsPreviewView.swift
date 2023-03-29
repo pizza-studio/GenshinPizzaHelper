@@ -36,8 +36,7 @@ struct BackgroundsPreviewView: View {
                     } header: {
                         Text(
                             backgroundImageName
-                                .localized
-                                .hasCharacterWeaponNameFixed
+                                .localizedWithFix
                         )
                     }
                     .textCase(.none)
@@ -68,8 +67,7 @@ struct BackgroundsPreviewView: View {
                     } header: {
                         Text(
                             backgroundImageName
-                                .localized
-                                .hasCharacterWeaponNameFixed
+                                .localizedWithFix
                         )
                     }
                     .textCase(.none)
@@ -87,11 +85,7 @@ struct BackgroundsPreviewView: View {
         } else {
             return backgroundOptions
                 .filter {
-                    "\(NSLocalizedString($0, comment: ""))".lowercased()
-                        .contains(searchText.lowercased())
-                        ||
-                        "\(NSLocalizedString($0, comment: ""))".lowercased()
-                        .hasCharacterWeaponNameFixed
+                    $0.localizedWithFix.lowercased()
                         .contains(searchText.lowercased())
                 }
         }

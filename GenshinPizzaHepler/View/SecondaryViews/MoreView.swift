@@ -23,10 +23,10 @@ struct MoreView: View {
     var defaultServer: String = Server.asia.rawValue
 
     @AppStorage(
-        "forcehasCharacterWeaponNameFixed",
+        "forceCharacterWeaponNameFixed",
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
-    var forcehasCharacterWeaponNameFixed: Bool = false
+    var forceCharacterWeaponNameFixed: Bool = false
 
     @AppStorage(
         "useActualCharacterNames",
@@ -68,7 +68,7 @@ struct MoreView: View {
 
             if Locale.isUILanguagePanChinese {
                 Section {
-                    Toggle(isOn: $forcehasCharacterWeaponNameFixed) {
+                    Toggle(isOn: $forceCharacterWeaponNameFixed) {
                         Text("中文汉字纠正")
                     }
                 } footer: {
@@ -85,6 +85,16 @@ struct MoreView: View {
                 Toggle(isOn: $useActualCharacterNames) {
                     Text("显示部分角色的真实姓名")
                 }
+            }
+
+            Section {
+                Toggle(isOn: $adaptiveSpacingInCharacterView) {
+                    Text("角色详情排版间距适配")
+                }
+            } footer: {
+                Text(
+                    "这仅对 iPad 以及没有浏海的 iPhone 生效。"
+                )
             }
 
             Section {
@@ -127,6 +137,12 @@ struct MoreView: View {
     }
 
     // MARK: Private
+
+    @AppStorage(
+        "adaptiveSpacingInCharacterView",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    private var adaptiveSpacingInCharacterView: Bool = true
 
     @AppStorage(
         "showRarityAndLevelForArtifacts",

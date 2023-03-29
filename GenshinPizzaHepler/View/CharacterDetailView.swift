@@ -9,6 +9,8 @@ import SwiftUI
 
 // @available(iOS 15, *)
 struct CharacterDetailView: View {
+    // MARK: Internal
+
     @EnvironmentObject
     var viewModel: ViewModel
     var account: Account
@@ -166,8 +168,8 @@ struct CharacterDetailView: View {
                 animation: animation
             ).frame(maxWidth: 500) // For iPad
                 .fixedSize(
-                    horizontal: ThisDevice.isMac,
-                    vertical: ThisDevice.isMac
+                    horizontal: !adaptiveSpacingInCharacterView,
+                    vertical: !adaptiveSpacingInCharacterView
                 )
             // TODO: 這裡回頭可以實裝一下「隨父容器尺寸自動放大」的功能。
             // .fixedSize()
@@ -186,5 +188,11 @@ struct CharacterDetailView: View {
             viewModel.showCharacterDetailOfAccount = nil
             viewModel.showingCharacterName = nil
         }
+    }
+
+    // MARK: Private
+
+    private var adaptiveSpacingInCharacterView: Bool {
+        AppConfig.adaptiveSpacingInCharacterView
     }
 }

@@ -13,10 +13,14 @@ enum ThisDevice {
     // MARK: Public
 
     public static var isMac: Bool {
-        if #available(macCatalyst 14, *) {
-            return true
-        }
-        return false
+        #if targetEnvironment(simulator)
+            return false
+        #else
+            if #available(macOS 10.15, *) {
+                return true
+            }
+            return false
+        #endif
     }
 
     public static var isPad: Bool {

@@ -49,3 +49,23 @@ enum AppConfig {
     private static let isTestFlight = Bundle.main.appStoreReceiptURL?
         .lastPathComponent == "sandboxReceipt"
 }
+
+extension AppConfig {
+    public static var forceCharacterWeaponNameFixed: Bool {
+        let user = UserDefaults(suiteName: "group.GenshinPizzaHelper")
+        return user?
+            .bool(forKey: "forceCharacterWeaponNameFixed") ?? false
+    }
+
+    public static var useActualCharacterNames: Bool {
+        let user = UserDefaults(suiteName: "group.GenshinPizzaHelper")
+        return user?
+            .bool(forKey: "useActualCharacterNames") ?? false
+    }
+
+    public static var adaptiveSpacingInCharacterView: Bool {
+        let user = UserDefaults(suiteName: "group.GenshinPizzaHelper")
+        return user?
+            .bool(forKey: "adaptiveSpacingInCharacterView") ?? true
+    }
+}

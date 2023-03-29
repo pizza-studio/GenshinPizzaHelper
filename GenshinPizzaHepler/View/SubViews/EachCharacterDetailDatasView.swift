@@ -11,8 +11,11 @@ import SwiftUI
 
 // @available(iOS 15, *)
 struct EachCharacterDetailDatasView: View {
+    // MARK: Internal
+
     static var spacingDelta: CGFloat {
-        ThisDevice.notchType != .none || ThisDevice.isPad ? 4 : 0
+        guard AppConfig.adaptiveSpacingInCharacterView else { return 0 }
+        return ThisDevice.notchType != .none || ThisDevice.isPad ? 4 : 0
     }
 
     var avatar: PlayerDetail.Avatar
@@ -229,6 +232,12 @@ struct EachCharacterDetailDatasView: View {
                 probRows
             }
         }
+    }
+
+    // MARK: Private
+
+    private var adaptiveSpacingInCharacterView: Bool {
+        AppConfig.adaptiveSpacingInCharacterView
     }
 }
 
