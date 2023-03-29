@@ -13,6 +13,7 @@
 		5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15A29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
+		5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */; };
 		5B918A2F29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
 		5B918A3029D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
 		5B918A3129D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */; };
@@ -597,6 +598,7 @@
 
 /* Begin PBXFileReference section */
 		5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseUIAccommodations.swift; sourceTree = "<group>"; };
+		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
 		5B918A2E29D2B3AC00F5B93D /* SwiftUISanFranciscoFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISanFranciscoFontExtension.swift; sourceTree = "<group>"; };
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
@@ -926,6 +928,7 @@
 				BFB101F128D85B28000DC631 /* AllEventsView.swift */,
 				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
 				BF70214528BC82D400A6BBA9 /* ContactUsView.swift */,
+				5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */,
 				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
 				BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */,
 				EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */,
@@ -2293,6 +2296,7 @@
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
 				BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */,
 				BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */,
+				5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

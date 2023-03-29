@@ -90,6 +90,14 @@ struct SettingsView: View {
                     #endif
                 }
 
+                NavigationLink(destination: DisplayOptionsView()) {
+                    Label {
+                        Text("界面偏好设置")
+                    } icon: {
+                        Image(systemName: "uiwindow.split.2x1")
+                    }
+                }
+
                 // 小组件相关设置
                 NavigationLink("小组件设置", destination: { WidgetSettingView() })
 
@@ -110,23 +118,6 @@ struct SettingsView: View {
                         )
                     ) {
                         Text("支持我们")
-                    }
-                }
-
-                Section {
-                    Button {
-                        UIApplication.shared
-                            .open(URL(
-                                string: UIApplication
-                                    .openSettingsURLString
-                            )!)
-                    } label: {
-                        Label {
-                            Text("偏好语言")
-                                .foregroundColor(.primary)
-                        } icon: {
-                            Image(systemName: "globe")
-                        }
                     }
                 }
 

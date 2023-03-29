@@ -1,10 +1,10 @@
 /*
-  Localizable.strings
-  GenshinPizzaHelper
-
-  Created by Bill Haku on 2022/8/23.
-
-*/
+ Localizable.strings
+ GenshinPizzaHelper
+ 
+ Created by Bill Haku on 2022/8/23.
+ 
+ */
 
 // MARK: - 2.0 & above
 // Settings view
@@ -1072,7 +1072,7 @@
 "珐露珊・封秘" = "琺露珊・封秘";
 "成就・七圣" = "成就・七聖";
 "艾尔海森・诲明" = "艾爾海森・誨明";
-"须弥·砂岚" = "须弥·砂岚";
+"须弥·砂岚" = "須彌·砂嵐";
 "瑶瑶・月桂" = "瑤瑤・月桂";
 
 "暂无当前活动信息" = "目前沒有活動資訊";
@@ -1093,4 +1093,5 @@
 "雷电国崩・浮歌" = "雷電國崩・浮歌";
 "显示部分角色的真实姓名" = "顯示部分角色的真實姓名";
 "角色详情排版间距适配" = "角色詳情排版間距適配";
-"这仅对 iPad 以及没有浏海的 iPhone 生效。" = "這僅對 iPad 以及沒有瀏海的 iPhone 生效。";
+"这仅对 iPad 以及有浏海的 iPhone 生效。" = "這僅對 iPad 以及沒有瀏海的 iPhone 生效。";
+"界面偏好设置" = "介面偏好設定";
