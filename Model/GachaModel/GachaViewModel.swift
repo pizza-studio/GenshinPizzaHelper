@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 import HBMihoyoAPI
 import SwiftUI
+import Combine
 
 class GachaViewModel: ObservableObject {
     let manager = GachaModelManager.shared
@@ -36,7 +37,7 @@ class GachaViewModel: ObservableObject {
 
     func filterGachaItem() {
         let filteredItems = gachaItems.sorted { lhs, rhs in
-            lhs.time > rhs.time
+            lhs.id > rhs.id
         }
         .filter { item in
             if let uid = filter.uid {
@@ -134,9 +135,19 @@ extension GachaFilter.Rank: CustomStringConvertible {
 
 public class GachaFetchProgressObserver: ObservableObject {
     @Published var page: Int = 0
-    @Published var gachaType: _GachaType = .character
-    @Published var currentItems: [GachaItem_FM]?
+    @Published var gachaType: _GachaType = .standard
+    @Published var currentItems: [GachaItem_FM] = []
     @Published var newItemCount: Int = 0
+
+    func initialize() {
+        withAnimation {
+            page = 0
+            gachaType = .standard
+            currentItems = []
+            newItemCount = 0
+        }
+
+    }
 
     func fetching(page: Int, gachaType: _GachaType) {
         DispatchQueue.main.async {
@@ -150,7 +161,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     func got(_ items: [GachaItem_FM]) {
         DispatchQueue.main.async {
             withAnimation {
-                self.currentItems = items
+                self.currentItems.append(contentsOf: items)
             }
         }
     }

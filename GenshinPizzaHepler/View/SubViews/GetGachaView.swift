@@ -28,6 +28,7 @@ struct GetGachaView: View {
                     }
                 }
                 Button("获取祈愿记录") {
+                    observer.initialize()
                     status = .running
                     let account = account!
                     gachaViewModel.getGachaAndSaveFor(viewModel.accounts.first(where: {$0.config.uid == account})!.config, observer: observer) { result in
@@ -74,9 +75,9 @@ struct GetGachaView: View {
                         Text("\(observer.newItemCount)条")
                     }
                 }
-                if let items = observer.currentItems {
+                if let items = observer.currentItems, !items.isEmpty {
                     Section {
-                        ForEach(items) { item in
+                        ForEach(items.reversed()) { item in
                             VStack(alignment: .leading) {
                                 Text(item.name)
                                     .foregroundColor(.init(UIColor.darkGray))
@@ -96,8 +97,8 @@ struct GetGachaView: View {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                     }
-                    Text("成功保存：\(observer.newItemCount)条新记录")
-                    Text("请返回上一级查看")
+                } footer: {
+                    Text("成功保存\(observer.newItemCount)条新记录，请返回上一级查看，或继续获取其他账号的记录")
                 }
                 Section {
                     ForEach(gachaViewModel.gachaItems) { item in

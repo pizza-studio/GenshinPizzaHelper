@@ -14,6 +14,10 @@ struct GachaView: View {
     var viewModel: ViewModel
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
+
+    @State
+    var showTime: Bool = false
+
     var body: some View {
         List {
             #if DEBUG
@@ -47,6 +51,7 @@ struct GachaView: View {
                             Spacer()
                             Text("\(item.gachaType.localizedDescription())")
                         }
+                        Text(item.id)
                     }
                 }
             }
@@ -60,8 +65,7 @@ struct GachaView: View {
                 }
             }
             ToolbarItemGroup(placement: .bottomBar) {
-
-                FilterEditer(filter: $gachaViewModel.filter)
+                FilterEditer(filter: $gachaViewModel.filter, showTime: $showTime)
             }
             ToolbarItem(placement: .principal) {
                 Menu {
@@ -104,11 +108,14 @@ struct GachaView: View {
 
 private struct FilterEditer: View {
     @Binding var filter: GachaFilter
+    @Binding var showTime: Bool
     var body: some View {
         Menu {
             ForEach(GachaType.allAvaliableGachaType()) { gachaType in
                 Button(gachaType.localizedDescription()) {
-                    filter.gachaType = gachaType
+                    withAnimation {
+                        filter.gachaType = gachaType
+                    }
                 }
             }
         } label: {
@@ -119,11 +126,19 @@ private struct FilterEditer: View {
         Menu {
             ForEach(GachaFilter.Rank.allCases) { rank in
                 Button(rank.description) {
-                    filter.rank = rank
+                    withAnimation {
+                        filter.rank = rank
+                    }
                 }
             }
         } label: {
             Text(filter.rank.description)
+        }
+        Spacer()
+        Button(showTime ? "显示时间" : "隐藏时间") {
+            withAnimation {
+                showTime.toggle()
+            }
         }
     }
 }
