@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct GetGachaView: View {
     @EnvironmentObject
@@ -20,61 +21,70 @@ struct GetGachaView: View {
 
     var body: some View {
         List {
-            Section {
-                Picker("选择账号", selection: $account) {
-                    ForEach(viewModel.accounts.map( { $0.config } ), id: \.uid) { account in
-                        Text("\(account.name!) (\(account.uid!))" )
-                            .tag(account.uid!)
+            if status != .running {
+                Section {
+                    Picker("选择账号", selection: $account) {
+                        ForEach(viewModel.accounts.map( { $0.config } ), id: \.uid) { account in
+                            Text("\(account.name!) (\(account.uid!))" )
+                                .tag(account.uid!)
+                        }
                     }
-                }
-                Button("获取祈愿记录") {
-                    observer.initialize()
-                    status = .running
-                    let account = account!
-                    gachaViewModel.getGachaAndSaveFor(viewModel.accounts.first(where: {$0.config.uid == account})!.config, observer: observer) { result in
-                        switch result {
-                        case .success(_):
-                            withAnimation {
-                                self.status = .succeed
-                            }
-                        case .failure(let error):
-                            withAnimation {
-                                self.status = .failure(error)
+                    Button("获取祈愿记录") {
+                        observer.initialize()
+                        status = .running
+                        let account = account!
+                        gachaViewModel.getGachaAndSaveFor(viewModel.accounts.first(where: {$0.config.uid == account})!.config, observer: observer) { result in
+                            switch result {
+                            case .success(_):
+                                withAnimation {
+                                    self.status = .succeed
+                                }
+                            case .failure(let error):
+                                withAnimation {
+                                    self.status = .failure(error)
+                                }
                             }
                         }
                     }
+                    .disabled(account == nil)
                 }
-                .disabled(account == nil)
+            } else {
+                Section {
+                    HStack {
+                        Text("正在获取祈愿记录...请等待")
+                        Spacer()
+                        ProgressView()
+                    }
+                } footer: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("卡池：\(observer.gachaType.localizedDescription())")
+                            Text("页码：\(observer.page)")
+                        }
+                        Spacer()
+                        VStack(alignment: .leading) {
+                            Text("已获取记录：\(observer.currentItems.count)条")
+                            Text("获取到新纪录：\(observer.newItemCount)条")
+                        }
+                    }
+
+                }
             }
-            .disabled(status == .running)
+
+            if #available(iOS 16.0, *) {
+                if (status == .succeed) || (status == .running) {
+                    Section {
+                        GetGachaChart(items: observer.currentItems, data: observer.gachaTypeDateCounts.sorted(by: {$0.date > $1.date}))
+                            .padding(.vertical)
+                    }
+                }
+            }
 
             switch status {
             case .waitToStart:
                 EmptyView()
             case .running:
-                Section {
 
-                    HStack {
-                        Text("正在获取...请等待")
-                        Spacer()
-                        ProgressView()
-                    }
-                    HStack {
-                        Text("卡池：")
-                        Spacer()
-                        Text("\(observer.gachaType.localizedDescription())")
-                    }
-                    HStack {
-                        Text("页码：")
-                        Spacer()
-                        Text("\(observer.page)")
-                    }
-                    HStack {
-                        Text("获取到新纪录：")
-                        Spacer()
-                        Text("\(observer.newItemCount)条")
-                    }
-                }
                 if let items = observer.currentItems, !items.isEmpty {
                     Section {
                         ForEach(items.reversed()) { item in
@@ -93,7 +103,7 @@ struct GetGachaView: View {
                             .foregroundColor(.green)
                     }
                 } footer: {
-                    Text("成功保存\(observer.newItemCount)条新记录，请返回上一级查看，或继续获取其他账号的记录")
+                    Text("获取到\(observer.currentItems.count)条记录，成功保存\(observer.newItemCount)条新记录\n请返回上一级查看，或继续获取其他账号的记录")
                 }
                 Section {
                     ForEach(observer.currentItems) { item in
@@ -156,3 +166,21 @@ private struct GachaItemBar: View {
         }
     }
 }
+
+@available(iOS 16.0, *)
+private struct GetGachaChart: View {
+    let items: [GachaItem_FM]
+
+    let data: [GachaFetchProgressObserver.GachaTypeDateCount]
+
+    var body: some View {
+        Chart(data) {
+            LineMark(
+                x: .value("日期", $0.date),
+                y: .value("抽数", $0.count)
+            )
+            .foregroundStyle(by: .value("祈愿类型", $0.type.localizedDescription()))
+        }
+    }
+}
+

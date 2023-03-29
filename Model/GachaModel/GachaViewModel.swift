@@ -140,8 +140,9 @@ public class GachaFetchProgressObserver: ObservableObject {
     @Published var gachaType: _GachaType = .standard
     @Published var currentItems: [GachaItem_FM] = []
     @Published var newItemCount: Int = 0
+    @Published var gachaTypeDateCounts: [GachaTypeDateCount] = []
 
-    private var cancellable : AnyCancellable?
+    private var cancellables: [AnyCancellable] = []
 
     func initialize() {
         withAnimation {
@@ -149,6 +150,7 @@ public class GachaFetchProgressObserver: ObservableObject {
             gachaType = .standard
             currentItems = []
             newItemCount = 0
+            gachaTypeDateCounts = []
         }
     }
 
@@ -162,7 +164,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     }
 
     func got(_ items: [GachaItem_FM]) {
-        self.cancellable = Publishers.Zip(
+        self.cancellables.append(Publishers.Zip(
             items.publisher,
             Timer.publish(every: 0.015, on: .main, in: .default).autoconnect()
         )
@@ -170,8 +172,30 @@ public class GachaFetchProgressObserver: ObservableObject {
         .sink(receiveValue: { newItem in
             withAnimation {
                 self.currentItems.append(newItem)
+                self.updateGachaItemCount(item: newItem)
             }
-        })
+        }))
+//        self.currentItems.append(contentsOf: items)
+    }
+
+    func updateGachaItemCount(item: GachaItem_FM) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from: item.time)!
+        let type = GachaType.from(item.gachaType)
+        if self.gachaTypeDateCounts.filter({($0.date == date) && ($0.type == type)}).isEmpty {
+            let count = GachaTypeDateCount.init(
+                date: date,
+                count: currentItems.filter( { (dateFormatter.date(from: $0.time)! <= date) && (GachaType.from($0.gachaType) == type) }).count,
+                type: .from(item.gachaType)
+            )
+            self.gachaTypeDateCounts.append(count)
+        }
+        self.gachaTypeDateCounts.allIndices { element in
+            (element.date >= date) && (element.type == type)
+        }.forEach { index in
+            self.gachaTypeDateCounts[index].count += 1
+        }
     }
 
     func saveNewItemSucceed() {
@@ -185,4 +209,31 @@ public class GachaFetchProgressObserver: ObservableObject {
     private init() {}
 
     static var shared: GachaFetchProgressObserver = .init()
+
+    struct GachaTypeDateCount: Hashable, Identifiable {
+
+        let date: Date
+        var count: Int
+        let type: GachaType
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(date)
+            hasher.combine(type)
+        }
+
+        var id: Int {
+            self.hashValue
+        }
+    }
+
+}
+
+extension Array where Element: Equatable {
+    func allIndices(where predicate: (Self.Element) -> Bool) -> [Self.Index]  {
+        self.enumerated().filter { _, element in
+            predicate(element)
+        }.map { index, _ in
+            index
+        }
+    }
 }

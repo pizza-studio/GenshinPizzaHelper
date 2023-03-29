@@ -172,6 +172,10 @@ extension GachaType {
     static func allAvaliableGachaType() -> [Self] {
         [.character, .weapon, .standard]
     }
+
+    static func from(_ id: String) -> Self {
+        .from(_GachaType(rawValue: Int(id)!)!)
+    }
 }
 
 extension GachaType: Identifiable {
