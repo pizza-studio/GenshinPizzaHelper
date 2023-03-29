@@ -207,6 +207,13 @@
 		BFFD823728A680E000616CE1 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823928A73A5400616CE1 /* ReviewHandler.swift */; };
+		EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8129D280FD0075F780 /* GachaModel.swift */; };
+		EA025C8429D2834E0075F780 /* GachaItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8329D2834E0075F780 /* GachaItemManager.swift */; };
+		EA025C8629D286540075F780 /* GachaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8529D286540075F780 /* GachaViewModel.swift */; };
+		EA025C8829D287970075F780 /* GachaKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8729D287970075F780 /* GachaKey.swift */; };
+		EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8929D2883A0075F780 /* GachaURL.swift */; };
+		EA025C8E29D28D150075F780 /* GetGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8D29D28D150075F780 /* GetGachaView.swift */; };
+		EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8F29D28D3D0075F780 /* GachaView.swift */; };
 		EA059CD7292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
 		EA059CD8292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
 		EA059CD9292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
@@ -232,6 +239,7 @@
 		EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */; };
 		EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
+		EA10A66429D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA10A66229D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld */; };
 		EA185F26292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		EA185F27292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		EA185F28292F1ACD003E7E32 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
@@ -265,6 +273,7 @@
 		EA36DFBE28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */; };
 		EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */; };
 		EA36DFC728E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */; };
+		EA3A9DB329D4812300CF4230 /* GachaChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A9DB229D4812300CF4230 /* GachaChartView.swift */; };
 		EA406811292228A200F23479 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
 		EA406812292228A200F23479 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
 		EA406813292228A200F23479 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
@@ -287,6 +296,7 @@
 		EA498C922927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
 		EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
+		EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C005829D2FFD100637B19 /* GachaFetch.swift */; };
 		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
 		EA50D669290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
@@ -364,6 +374,8 @@
 		EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
 		EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
 		EAA2D4122931C36F00BC94A8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAA2D4112931C36F00BC94A8 /* Settings.bundle */; };
+		EAAD03E429D2FD22007D5C80 /* GachaFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */; };
+		EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E529D2FD88007D5C80 /* GachaItem.swift */; };
 		EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330C28A27ACF0018EFAB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
@@ -419,6 +431,7 @@
 		EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */; };
+		EAE2AD4829D3D06900FF9612 /* ContainGachaItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		EAE3FCB828CE3E7B00174DA8 /* WatchWidgetExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */; };
@@ -698,6 +711,13 @@
 		BFFD823128A651F500616CE1 /* RingProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressBarView.swift; sourceTree = "<group>"; };
 		BFFD823528A680E000616CE1 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		BFFD823928A73A5400616CE1 /* ReviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHandler.swift; sourceTree = "<group>"; };
+		EA025C8129D280FD0075F780 /* GachaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaModel.swift; sourceTree = "<group>"; };
+		EA025C8329D2834E0075F780 /* GachaItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaItemManager.swift; sourceTree = "<group>"; };
+		EA025C8529D286540075F780 /* GachaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaViewModel.swift; sourceTree = "<group>"; };
+		EA025C8729D287970075F780 /* GachaKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaKey.swift; sourceTree = "<group>"; };
+		EA025C8929D2883A0075F780 /* GachaURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaURL.swift; sourceTree = "<group>"; };
+		EA025C8D29D28D150075F780 /* GetGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGachaView.swift; sourceTree = "<group>"; };
+		EA025C8F29D28D3D0075F780 /* GachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaView.swift; sourceTree = "<group>"; };
 		EA059CD6292347E800400DE3 /* MultiTokenResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTokenResult.swift; sourceTree = "<group>"; };
 		EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCorner.swift; sourceTree = "<group>"; };
 		EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-NoWatch.xcassets"; sourceTree = "<group>"; };
@@ -711,6 +731,7 @@
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
 		EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchResinDetailView.swift; sourceTree = "<group>"; };
+		EA10A66329D1EF5300A341F3 /* GachaLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GachaLog.xcdatamodel; sourceTree = "<group>"; };
 		EA12902429333D2F0078317C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EA185F33292F2726003E7E32 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EA185F34292F272B003E7E32 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -731,6 +752,7 @@
 		EA36DFB928E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetTransformerCircular.swift; sourceTree = "<group>"; };
 		EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetWeeklyBossesCircular.swift; sourceTree = "<group>"; };
 		EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetProvider.swift; sourceTree = "<group>"; };
+		EA3A9DB229D4812300CF4230 /* GachaChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaChartView.swift; sourceTree = "<group>"; };
 		EA406810292228A200F23479 /* WidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetData.swift; sourceTree = "<group>"; };
 		EA40681729222A1300F23479 /* MainWidgetSimplifiedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetSimplifiedView.swift; sourceTree = "<group>"; };
 		EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgetProvider.swift; sourceTree = "<group>"; };
@@ -744,6 +766,7 @@
 		EA49D8FD297A5F7D00746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA49D8FE297A5F7D00746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA49D901297A603700746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AccountIntents.strings; sourceTree = "<group>"; };
+		EA4C005829D2FFD100637B19 /* GachaFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaFetch.swift; sourceTree = "<group>"; };
 		EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUtilizationData.swift; sourceTree = "<group>"; };
 		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
 		EA5232282903E0D6007A4CF4 /* ReverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseMask.swift; sourceTree = "<group>"; };
@@ -786,6 +809,8 @@
 		EAA2CE3F292C909D00BF8DDE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAA2CE40292C909E00BF8DDE /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAA2D4112931C36F00BC94A8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaFetchModel.swift; sourceTree = "<group>"; };
+		EAAD03E529D2FD88007D5C80 /* GachaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaItem.swift; sourceTree = "<group>"; };
 		EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountConfigurationModel.swift; sourceTree = "<group>"; };
 		EAAF330E28A27AFE0018EFAB /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EAB110E228CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidgetCircular.swift; sourceTree = "<group>"; };
@@ -815,6 +840,7 @@
 		EAD7F02D28D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidget.swift; sourceTree = "<group>"; };
 		EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
 		EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainGachaItemInfo.swift; sourceTree = "<group>"; };
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDetailDataDisplayView.swift; sourceTree = "<group>"; };
 		EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCorner.swift; sourceTree = "<group>"; };
@@ -942,6 +968,7 @@
 				BFB101EF28D7262A000DC631 /* ThanksView.swift */,
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
 				EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */,
+				EA025C8F29D28D3D0075F780 /* GachaView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -1144,8 +1171,26 @@
 				BFFD823528A680E000616CE1 /* WebImageView.swift */,
 				BF068BD428A335F9002E7334 /* WebViews.swift */,
 				EACCEA7628F95A75004817FB /* LedgerShareView.swift */,
+				EA025C8D29D28D150075F780 /* GetGachaView.swift */,
+				EA3A9DB229D4812300CF4230 /* GachaChartView.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		EA025C8029D280BB0075F780 /* GachaModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */,
+				EA025C8129D280FD0075F780 /* GachaModel.swift */,
+				EA025C8329D2834E0075F780 /* GachaItemManager.swift */,
+				EA025C8529D286540075F780 /* GachaViewModel.swift */,
+				EA025C8729D287970075F780 /* GachaKey.swift */,
+				EA025C8929D2883A0075F780 /* GachaURL.swift */,
+				EAAD03E529D2FD88007D5C80 /* GachaItem.swift */,
+				EA4C005829D2FFD100637B19 /* GachaFetch.swift */,
+				EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */,
+			);
+			path = GachaModel;
 			sourceTree = "<group>";
 		};
 		EA099FF628A2B7220023B4AF /* AccountIntent */ = {
@@ -1328,6 +1373,7 @@
 		EAAF330D28A27AEA0018EFAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA025C8029D280BB0075F780 /* GachaModel */,
 				EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */,
 				EAAF330E28A27AFE0018EFAB /* Account.swift */,
 				BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */,
@@ -1376,6 +1422,7 @@
 		EABD7DAD2886B2D200B7F0FD = {
 			isa = PBXGroup;
 			children = (
+				EA10A66229D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld */,
 				EAA2D4112931C36F00BC94A8 /* Settings.bundle */,
 				BFBDD66C28F3F2B80022B79D /* Packages */,
 				EAE95D1228CE133F00D975CB /* WatchWidgetExtensionExtension.entitlements */,
@@ -2178,6 +2225,8 @@
 				BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BFE7AFE42909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				BF7500D828DEA80700CDA64E /* EachCharacterDetailDatasView.swift in Sources */,
+				EA3A9DB329D4812300CF4230 /* GachaChartView.swift in Sources */,
+				EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EACCEA7728F95A75004817FB /* LedgerShareView.swift in Sources */,
 				5B43A15629D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
@@ -2194,13 +2243,18 @@
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
+				EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */,
 				EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EAB11E9E29325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
+				EA025C8E29D28D150075F780 /* GetGachaView.swift in Sources */,
 				EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */,
+				EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */,
 				EA7FDF91292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,
+				EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */,
 				EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				BFCC065328C732D5003E4A54 /* WidgetTipsView.swift in Sources */,
+				EA025C8429D2834E0075F780 /* GachaItemManager.swift in Sources */,
 				BFE7AFE22903E0BB00C75E7F /* ToolsViewSimplified.swift in Sources */,
 				EA081EFC28F85040009433D8 /* ToolbarSharableInIOS16.swift in Sources */,
 				BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */,
@@ -2225,10 +2279,12 @@
 				EAC2BA6328FC195600A9060F /* PrivacySettingsView.swift in Sources */,
 				EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */,
 				EA7F9C6F28AFF9B300DEAFEB /* NotificationCenter.swift in Sources */,
+				EA10A66429D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld in Sources */,
 				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA059CD7292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */,
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
+				EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */,
 				BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
@@ -2264,6 +2320,7 @@
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
 				EA6B9148290EB2EF00B5230B /* GlobalVar.swift in Sources */,
 				EA1D09D128F319F5001DCC2A /* AbyssDataSend.swift in Sources */,
+				EA025C8829D287970075F780 /* GachaKey.swift in Sources */,
 				EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EABE606128D9F6970018CAF6 /* MaterialChoices.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
@@ -2281,6 +2338,7 @@
 				EA784CC82902485600918F64 /* AvatarHoldingData.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */,
+				EAE2AD4829D3D06900FF9612 /* ContainGachaItemInfo.swift in Sources */,
 				EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */,
 				EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */,
 				EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */,
@@ -2295,6 +2353,8 @@
 				BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */,
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
 				BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */,
+				EAAD03E429D2FD22007D5C80 /* GachaFetchModel.swift in Sources */,
+				EA025C8629D286540075F780 /* GachaViewModel.swift in Sources */,
 				BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */,
 				5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */,
 			);
@@ -3122,6 +3182,16 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
+		EA10A66229D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EA10A66329D1EF5300A341F3 /* GachaLog.xcdatamodel */,
+			);
+			currentVersion = EA10A66329D1EF5300A341F3 /* GachaLog.xcdatamodel */;
+			path = PizzaGachaLog.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
