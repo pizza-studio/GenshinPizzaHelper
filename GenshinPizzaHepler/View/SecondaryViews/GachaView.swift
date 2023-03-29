@@ -44,7 +44,9 @@ struct GachaView: View {
                         HStack {
                             Text(item.name)
                             Spacer()
-                            Text("\(count)")
+                            if (count != 1) || (item.rankType == .five) {
+                                Text("\(count)")
+                            }
                         }
                         HStack {
                             Text("\(item.time)")
