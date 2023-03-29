@@ -16,8 +16,13 @@ protocol ContainGachaItemInfo {
     var formattedTime: String { get }
 }
 
+enum GachaItemType {
+    case character
+    case weapon
+}
+
 extension ContainGachaItemInfo {
-    private var _itemType: ItemType {
+    var _itemType: GachaItemType {
         switch self.itemType {
         case "武器": return .weapon
         case "角色": return .character
@@ -83,11 +88,6 @@ extension ContainGachaItemInfo {
         // TODO: 翻译为其他语言
         return self.name.localized
     }
-}
-
-private enum ItemType {
-    case character
-    case weapon
 }
 
 extension ContainGachaItemInfo {

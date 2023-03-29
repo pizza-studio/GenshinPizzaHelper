@@ -35,8 +35,8 @@ class GachaViewModel: ObservableObject {
         filter.uid = gachaItems.first?.uid
     }
 
-    func filterGachaItem() {
-        let filteredItems = gachaItems.sorted { lhs, rhs in
+    var sortedAndFilteredGachaItem: [GachaItem] {
+        gachaItems.sorted { lhs, rhs in
             lhs.id > rhs.id
         }
         .filter { item in
@@ -49,7 +49,10 @@ class GachaViewModel: ObservableObject {
         .filter { item in
             item.gachaType == filter.gachaType
         }
+    }
 
+    func filterGachaItem() {
+        let filteredItems = sortedAndFilteredGachaItem
         let counts = filteredItems.map { item in
             item.rankType
         }.enumerated().map { index, rank in
@@ -60,7 +63,6 @@ class GachaViewModel: ObservableObject {
                 return filteredItems.count - index - 1
             }
         }
-
         filteredGachaItemsWithCount = zip(filteredItems, counts).filter { item, _ in
             switch filter.rank {
             case .five:

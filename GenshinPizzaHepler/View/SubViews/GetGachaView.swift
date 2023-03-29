@@ -137,6 +137,7 @@ private struct GachaItemBar: View {
                     EnkaWebIcon(
                         iconString: item.iconImageName
                     )
+                    .scaleEffect(item._itemType == .weapon ? 0.9 : 1)
                     .background(
                         AnyView(item.backgroundImageName())
                     )

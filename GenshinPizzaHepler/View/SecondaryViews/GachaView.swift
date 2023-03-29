@@ -22,7 +22,7 @@ struct GachaView: View {
         List {
             #if DEBUG
             Section {
-                Button("delete all records") {
+                Button("delete all records (DEBUG ONLY)") {
                     let context = gachaViewModel.manager.container.viewContext
                     let fetchRequest = GachaItemMO.fetchRequest()
                     do {
@@ -50,6 +50,8 @@ struct GachaView: View {
                         }
                     }
                 }
+            } header: {
+                Text("已垫\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽")
             }
         }
         .toolbar {
@@ -150,6 +152,7 @@ private struct GachaItemBar: View {
                 EnkaWebIcon(
                     iconString: item.iconImageName
                 )
+                .scaleEffect(item._itemType == .weapon ? 0.9 : 1)
                 .background(
                     AnyView(item.backgroundImageName())
                 )
