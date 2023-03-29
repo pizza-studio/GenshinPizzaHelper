@@ -78,12 +78,7 @@ struct GetGachaView: View {
                 if let items = observer.currentItems, !items.isEmpty {
                     Section {
                         ForEach(items.reversed()) { item in
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .foregroundColor(.init(UIColor.darkGray))
-                                Text(item.time)
-                                    .foregroundColor(.init(UIColor.lightGray))
-                            }
+                            GachaItemBar(item: item)
                         }
                     } header: {
                         Text("成功获取到一批...")
@@ -102,11 +97,7 @@ struct GetGachaView: View {
                 }
                 Section {
                     ForEach(gachaViewModel.gachaItems) { item in
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                            Text(item.id)
-                                .foregroundColor(.gray)
-                        }
+                        GachaItemBar(item: item)
                     }
                 }
             case .failure(let error):
@@ -132,5 +123,32 @@ struct GetGachaView: View {
         case running
         case succeed
         case failure(GetGachaError)
+    }
+}
+
+private struct GachaItemBar: View {
+    let item: ContainGachaItemInfo
+    var body: some View {
+        VStack(spacing: 1) {
+            HStack {
+                Label {
+                    Text(item.localizedName)
+                } icon: {
+                    EnkaWebIcon(
+                        iconString: item.iconImageName
+                    )
+                    .background(
+                        AnyView(item.backgroundImageName())
+                    )
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
+                }
+                Spacer()
+            }
+            HStack {
+                Spacer()
+                Text("\(item.formattedTime)")
+            }
+        }
     }
 }

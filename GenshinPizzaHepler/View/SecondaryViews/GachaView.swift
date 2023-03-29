@@ -40,20 +40,14 @@ struct GachaView: View {
             #endif
             Section {
                 ForEach(gachaViewModel.filteredGachaItemsWithCount, id: \.0.id) { item, count in
-                    VStack {
-                        HStack {
-                            Text(item.name)
-                            Spacer()
-                            if (count != 1) || (item.rankType == .five) {
-                                Text("\(count)")
+                    VStack(spacing: 1) {
+                        GachaItemBar(item: item, count: count)
+                        if showTime {
+                            HStack {
+                                Spacer()
+                                Text("\(item.formattedTime)")
                             }
                         }
-                        HStack {
-                            Text("\(item.time)")
-                            Spacer()
-                            Text("\(item.gachaType.localizedDescription())")
-                        }
-                        Text(item.id)
                     }
                 }
             }
@@ -140,6 +134,31 @@ private struct FilterEditer: View {
         Button(showTime ? "显示时间" : "隐藏时间") {
             withAnimation {
                 showTime.toggle()
+            }
+        }
+    }
+}
+
+private struct GachaItemBar: View {
+    let item: GachaItem
+    let count: Int
+    var body: some View {
+        HStack {
+            Label {
+                Text(item.localizedName)
+            } icon: {
+                EnkaWebIcon(
+                    iconString: item.iconImageName
+                )
+                .background(
+                    AnyView(item.backgroundImageName())
+                )
+                .frame(width: 30, height: 30)
+                .clipShape(Circle())
+            }
+            Spacer()
+            if (count != 1) || (item.rankType != .three) {
+                Text("\(count)")
             }
         }
     }

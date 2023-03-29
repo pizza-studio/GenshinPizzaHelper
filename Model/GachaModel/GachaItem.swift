@@ -198,3 +198,28 @@ extension GachaItem.RankType: Comparable {
         lhs.rawValue < rhs.rawValue
     }
 }
+
+extension GachaItem: ContainGachaItemInfo {
+    var _rankLevel: RankType {
+        self.rankType
+    }
+
+    var formattedTime: String {
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        dateFormatter.doesRelativeDateFormatting = true
+        dateFormatter.locale = Locale(identifier: Locale.current.identifier)
+        return dateFormatter.string(from: self.time)
+    }
+}
+
+extension GachaItem_FM: ContainGachaItemInfo {
+    var _rankLevel: GachaItem.RankType {
+        .init(rawValue: Int(self.rankType)!)!
+    }
+
+    var formattedTime: String {
+        self.time
+    }
+}
