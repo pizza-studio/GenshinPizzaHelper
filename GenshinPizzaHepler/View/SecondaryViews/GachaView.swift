@@ -21,12 +21,16 @@ struct GachaView: View {
 
     var body: some View {
         List {
-            if #available(iOS 16.0, *) {
-                GachaChart(items: gachaViewModel.filteredGachaItemsWithCount)
-                NavigationLink("更多图表") {
-                    EmptyView()
+            Section {
+                Text("当前已垫：\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽")
+                if #available(iOS 16.0, *) {
+                    GachaChart(items: gachaViewModel.filteredGachaItemsWithCount)
+                    NavigationLink("更多图表") {
+                        EmptyView()
+                    }
                 }
             }
+
             Section {
                 ForEach(gachaViewModel.filteredGachaItemsWithCount, id: \.0.id) { item, count in
                     VStack(spacing: 1) {
@@ -34,7 +38,7 @@ struct GachaView: View {
                     }
                 }
             } header: {
-                Text("已垫\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽")
+                Text("抽取记录")
             }
             #if DEBUG
             Section {
