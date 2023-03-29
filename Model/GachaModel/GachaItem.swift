@@ -62,7 +62,7 @@ public struct GachaItem: Identifiable {
     public let itemId: String
     public let count: Int
     public let time: Date
-    public let name: String
+    public var name: String
     public let lang: String
     public let itemType: String
     public let rankType: RankType

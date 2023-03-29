@@ -173,6 +173,14 @@ private struct GetGachaChart: View {
 
     let data: [GachaFetchProgressObserver.GachaTypeDateCount]
 
+    let formatter: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateStyle = .short
+        fmt.timeStyle = .none
+        return fmt
+    }()
+
+
     var body: some View {
         Chart(data) {
             LineMark(
@@ -181,6 +189,17 @@ private struct GetGachaChart: View {
             )
             .foregroundStyle(by: .value("祈愿类型", $0.type.localizedDescription()))
         }
+//        .chartXAxis {
+//            AxisMarks { value in
+//                AxisValueLabel(content: {
+//                    if let date = value.as(Date.self) {
+//                        Text(formatter.string(from: date))
+//                    } else {
+//                        EmptyView()
+//                    }
+//                })
+//            }
+//        }
     }
 }
 

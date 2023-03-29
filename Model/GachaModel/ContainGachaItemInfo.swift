@@ -32,14 +32,14 @@ extension ContainGachaItemInfo {
     var iconImageName: String {
         switch self._itemType {
         case .character:
-            if let id = Self.characterIdMap[self.name] {
+            if let id = GachaItemNameIconMap.characterIdMap[self.name] {
                 return "UI_AvatarIcon_\(id)"
             } else {
                 // TODO: 找不到时的默认图片
                 return ""
             }
         case .weapon:
-            if let iconString = Self.weaponIconNameMap[self.name] {
+            if let iconString = GachaItemNameIconMap.weaponIconNameMap[self.name] {
                 return iconString
             } else {
                 // TODO: 找不到时的默认图片
@@ -48,39 +48,9 @@ extension ContainGachaItemInfo {
         }
     }
 
-    func backgroundImageName() -> any View {
-        let imageString: String
-        switch self._itemType {
-        case .character:
-            if let id = Self.characterIdMap[self.name] {
-                if id == "Yae" {
-                    imageString = "UI_NameCardPic_Yae1_P"
-                } else {
-                    imageString = "UI_NameCardPic_\(id)_P"
-                }
-            } else {
-                // TODO: 找不到时的默认图片
-                imageString = ""
-            }
-            return EnkaWebIcon(iconString: imageString).scaledToFill().offset(x: -30 / 3)
-        case .weapon:
-            imageString = "UI_QualityBg_\(self._rankLevel.rawValue)"
-            if self._rankLevel.rawValue == 3 {
-                return EnkaWebIcon(
-                    iconString: imageString
-                )
-                .scaledToFit()
-                .scaleEffect(2)
-                .offset(y: 3)
-            } else {
-                return EnkaWebIcon(
-                    iconString: imageString
-                )
-                .scaledToFit()
-                .scaleEffect(1.5)
-                .offset(y: 3)
-            }
-        }
+    func backgroundImageName() -> some View {
+        GachaItemBackgroundImage(name: self.name, _itemType: self._itemType, _rankLevel: self._rankLevel)
+
     }
 
     var localizedName: String {
@@ -90,7 +60,52 @@ extension ContainGachaItemInfo {
     }
 }
 
-extension ContainGachaItemInfo {
+struct GachaItemBackgroundImage: View {
+    let name: String
+    let _itemType: GachaItemType
+    let _rankLevel: GachaItem.RankType
+    var imageString: String {
+        switch self._itemType {
+        case .character:
+            if let id = GachaItemNameIconMap.characterIdMap[name] {
+                if id == "Yae" {
+                    return "UI_NameCardPic_Yae1_P"
+                } else {
+                    return "UI_NameCardPic_\(id)_P"
+                }
+            } else {
+                // TODO: 找不到时的默认图片
+                return ""
+            }
+        case .weapon:
+            return "UI_QualityBg_\(_rankLevel.rawValue)"
+        }
+    }
+    var body: some View {
+        switch _itemType {
+        case .character:
+            EnkaWebIcon(iconString: imageString).scaledToFill().offset(x: -30 / 3)
+        case .weapon:
+            if self._rankLevel.rawValue == 3 {
+                EnkaWebIcon(
+                    iconString: imageString
+                )
+                .scaledToFit()
+                .scaleEffect(2)
+                .offset(y: 3)
+            } else {
+                EnkaWebIcon(
+                    iconString: imageString
+                )
+                .scaledToFit()
+                .scaleEffect(1.5)
+                .offset(y: 3)
+            }
+        }
+    }
+}
+
+enum GachaItemNameIconMap {
     static var weaponIconNameMap: [String : String] {
         [
         "「高塔孤王」": "weapon.Decarabian",

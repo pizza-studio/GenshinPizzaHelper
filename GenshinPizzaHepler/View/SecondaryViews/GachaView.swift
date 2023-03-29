@@ -23,6 +23,9 @@ struct GachaView: View {
         List {
             if #available(iOS 16.0, *) {
                 GachaChart(items: gachaViewModel.filteredGachaItemsWithCount)
+                NavigationLink("更多图表") {
+                    EmptyView()
+                }
             }
             Section {
                 ForEach(gachaViewModel.filteredGachaItemsWithCount, id: \.0.id) { item, count in
@@ -174,7 +177,6 @@ private struct GachaItemBar: View {
                         .foregroundColor(.gray)
                 }
             }
-
         }
     }
 }
@@ -182,14 +184,51 @@ private struct GachaItemBar: View {
 @available(iOS 16.0, *)
 private struct GachaChart: View {
     let items: [(GachaItem, count: Int)]
+    var fiveStarItems: [(GachaItem, count: Int)] { items.filter({ $0.0.rankType == .five }) }
     var body: some View {
-        Chart {
-            ForEach(items.filter({ $0.0.rankType == .five }), id: \.0.id) { item in
-                BarMark(
-                    x: .value("角色", item.0.name),
-                    y: .value("抽数", item.count)
-                )
+        ScrollView(.horizontal) {
+            Chart {
+                ForEach(fiveStarItems, id: \.0.id) { item in
+                    BarMark(
+                        x: .value("角色", item.0.localizedName),
+                        y: .value("抽数", item.count)
+    //                    x: .value("抽数", item.count),
+    //                    y: .value("角色", item.0.localizedName)
+                    )
+                }
+                RuleMark(y: .value("平均", fiveStarItems.map({$0.count}).reduce(0, {$0 + $1}) / fiveStarItems.count))
+                    .foregroundStyle(.gray)
             }
+            .chartXAxis(content: {
+                AxisMarks { value in
+                    AxisValueLabel(content: {
+                        if let name = value.as(String.self),
+                           let item = fiveStarItems.first(where: {$0.0.name == name})?.0 {
+                            VStack {
+                                EnkaWebIcon(
+                                    iconString: item.iconImageName
+                                )
+                                .scaleEffect(item._itemType == .weapon ? 0.9 : 1)
+                                .background(item.backgroundImageName())
+                                .frame(width: 30, height: 30)
+                                .clipShape(Circle())
+//                                Text(name)
+//                                    .rotationEffect(Angle(degrees: 90))
+                            }
+
+                        } else {
+                            EmptyView()
+                        }
+                    })
+                }
+            })
+            .chartLegend(position: .top)
+            .chartYAxis(content: {
+                AxisMarks(position: .leading)
+            })
+            .frame(width: CGFloat(fiveStarItems.count * 50))
+            .padding(.top)
+            .padding(.bottom, 5)
         }
     }
 }
