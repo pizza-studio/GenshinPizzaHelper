@@ -90,16 +90,35 @@ struct SettingsView: View {
                     #endif
                 }
 
-                NavigationLink(destination: DisplayOptionsView()) {
-                    Label {
-                        Text("界面偏好设置")
-                    } icon: {
-                        Image(systemName: "uiwindow.split.2x1")
+                // 该功能对 macCatalyst 无效。
+                Section {
+                    Button {
+                        UIApplication.shared
+                            .open(URL(
+                                string: UIApplication
+                                    .openSettingsURLString
+                            )!)
+                    } label: {
+                        Label {
+                            Text("偏好语言")
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image(systemName: "globe")
+                        }
+                    }
+                    NavigationLink(destination: DisplayOptionsView()) {
+                        Label(
+                            "界面偏好设置",
+                            systemImage: "uiwindow.split.2x1"
+                        )
+                    }
+                    NavigationLink(destination: WidgetSettingView()) {
+                        Label(
+                            "小组件设置",
+                            systemImage: "speedometer"
+                        )
                     }
                 }
-
-                // 小组件相关设置
-                NavigationLink("小组件设置", destination: { WidgetSettingView() })
 
                 // 通知设置
                 NotificationSettingNavigator()

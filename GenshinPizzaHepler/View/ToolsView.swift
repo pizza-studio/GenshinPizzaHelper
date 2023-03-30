@@ -647,8 +647,11 @@ struct ToolsView: View {
     @ViewBuilder
     func toolsSection() -> some View {
         Section {
-            NavigationLink("祈愿分析工具") {
-                GachaView()
+            NavigationLink(destination: GachaView()) {
+                Label(
+                    "祈愿分析工具",
+                    systemImage: "sparkles"
+                ).foregroundColor(.primary)
             }
             NavigationLink {
                 AbyssDataCollectionView()

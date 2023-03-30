@@ -15,26 +15,6 @@ struct DisplayOptionsView: View {
 
     var body: some View {
         List {
-            if !ThisDevice.isMac {
-                // 该功能对 macCatalyst 无效。有需求者请在系统偏好设定内自行配置。
-                Section {
-                    Button {
-                        UIApplication.shared
-                            .open(URL(
-                                string: UIApplication
-                                    .openSettingsURLString
-                            )!)
-                    } label: {
-                        Label {
-                            Text("偏好语言")
-                                .foregroundColor(.primary)
-                        } icon: {
-                            Image(systemName: "globe")
-                        }
-                    }
-                }
-            }
-
             if Locale.isUILanguagePanChinese {
                 Section {
                     Toggle(isOn: $forceCharacterWeaponNameFixed) {
@@ -62,7 +42,7 @@ struct DisplayOptionsView: View {
                 }
             } footer: {
                 Text(
-                    "这仅对 iPad 以及有浏海的 iPhone 生效。"
+                    "这仅对 iPad 以及有「刘海」的 iPhone 生效。"
                 )
             }
         }
