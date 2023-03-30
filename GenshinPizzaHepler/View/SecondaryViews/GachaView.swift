@@ -30,8 +30,11 @@ struct GachaView: View {
                         items: gachaViewModel
                             .filteredGachaItemsWithCount
                     )
-                    NavigationLink("更多图表") {
+                    NavigationLink {
                         GachaChartView()
+                            .environmentObject(gachaViewModel)
+                    } label: {
+                        Label("更多图表", systemImage: "chart.bar.doc.horizontal")
                     }
                 }
             }
@@ -191,7 +194,7 @@ private struct GachaItemBar: View {
     let showTime: Bool
     let showingType: GachaFilter.Rank
 
-    var width: CGFloat { showingType == .five ? 40 : 30 }
+    var width: CGFloat { showingType == .five ? 35 : 30 }
     var body: some View {
         HStack {
             Label {
@@ -238,7 +241,7 @@ private struct GachaChart: View {
             Chart {
                 ForEach(fiveStarItems, id: \.0.id) { item in
                     BarMark(
-                        x: .value("角色", item.0.name),
+                        x: .value("角色", item.0.id),
                         y: .value("抽数", item.count)
                     )
                     .annotation(position: .top) {
@@ -247,20 +250,22 @@ private struct GachaChart: View {
                     }
                     .foregroundStyle(by: .value("抽数", item.0.id))
                 }
-                RuleMark(y: .value(
-                    "平均",
-                    fiveStarItems.map { $0.count }
-                        .reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
-                ))
-                .foregroundStyle(.gray)
-                .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
+                if !fiveStarItems.isEmpty {
+                    RuleMark(y: .value(
+                        "平均",
+                        fiveStarItems.map { $0.count }
+                            .reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
+                    ))
+                    .foregroundStyle(.gray)
+                    .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
+                }
             }
             .chartXAxis(content: {
                 AxisMarks { value in
                     AxisValueLabel(content: {
-                        if let name = value.as(String.self),
+                        if let id = value.as(String.self),
                            let item = fiveStarItems
-                           .first(where: { $0.0.name == name })?.0 {
+                           .first(where: { $0.0.id == id })?.0 {
                             VStack {
                                 EnkaWebIcon(
                                     iconString: item.iconImageName

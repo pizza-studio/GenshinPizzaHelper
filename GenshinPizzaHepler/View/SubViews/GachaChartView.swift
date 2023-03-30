@@ -12,8 +12,10 @@ import SwiftUI
 
 @available(iOS 16.0, *)
 struct GachaChartView: View {
-    @StateObject
-    var gachaViewModel: GachaViewModel = .shared
+    @EnvironmentObject
+    var viewModel: ViewModel
+    @EnvironmentObject
+    var gachaViewModel: GachaViewModel
 
     var body: some View {
         List {
@@ -25,7 +27,7 @@ struct GachaChartView: View {
             } header: {
                 HStack {
                     Text(
-                        "\(gachaViewModel.filter.gachaType.localizedDescription())五星祈愿抽数"
+                        "\(gachaViewModel.filter.gachaType.localizedDescription())"
                     )
                     Spacer()
                     Button("切换卡池") {
@@ -46,12 +48,62 @@ struct GachaChartView: View {
                 }
             }
             Section {
-                GachaTimeChart(
-                    type: gachaViewModel.filter.gachaType,
-                    items: gachaViewModel.gachaItems
-                )
+                ForEach(
+                    [GachaType.character, GachaType.weapon, GachaType.standard],
+                    id: \.rawValue
+                ) { type in
+                    VStack(alignment: .trailing, spacing: 0) {
+//                        HStack {
+//                            Spacer()
+//
+//                        }
+                        Text(type.localizedDescription()).font(.caption)
+                            .foregroundColor(.gray)
+                        GachaTimeChart(type: type)
+                    }
+                }
             } header: {
                 Text("总抽数分布")
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Menu {
+                    ForEach(
+                        gachaViewModel.allAvaliableAccountUID(),
+                        id: \.self
+                    ) { uid in
+                        Group {
+                            if let name: String = viewModel.accounts
+                                .first(where: { $0.config.uid == uid })?.config
+                                .name {
+                                Button(name) {
+                                    self.gachaViewModel.filter.uid = uid
+                                }
+                            } else {
+                                Button(uid) {
+                                    self.gachaViewModel.filter.uid = uid
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.left.arrow.right.circle")
+                        if let uid: String = self.gachaViewModel.filter.uid {
+                            if let name: String = viewModel.accounts
+                                .first(where: { $0.config.uid == uid })?.config
+                                .name {
+                                Text(name)
+                            } else {
+                                Text(uid)
+                            }
+                        } else {
+                            Text("请点击右上角获取抽卡记录")
+                        }
+                    }
+                }
+                .disabled(gachaViewModel.allAvaliableAccountUID().isEmpty)
             }
         }
     }
@@ -74,33 +126,35 @@ private struct GachaItemChart: View {
                     //                    x: .value("角色", item.0.localizedName),
 //                    y: .value("抽数", item.count)
                     x: .value("抽数", item.count),
-                    y: .value("角色", item.0.name)
+                    y: .value("角色", item.0.id)
                 )
                 .annotation(position: .trailing) {
                     Text("\(item.count)").foregroundColor(.gray).font(.caption)
                 }
                 .foregroundStyle(by: .value("抽数", item.0.id))
             }
-            RuleMark(x: .value(
-                "平均",
-                fiveStarItems.map { $0.count }
-                    .reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
-            ))
-            .foregroundStyle(.gray)
-            .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
-            .annotation(alignment: .topLeading) {
-                Text(
-                    "平均抽数：\(fiveStarItems.map { $0.count }.reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1))"
-                )
-                .font(.caption).foregroundColor(.gray)
+            if !fiveStarItems.isEmpty {
+                RuleMark(x: .value(
+                    "平均",
+                    fiveStarItems.map { $0.count }
+                        .reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
+                ))
+                .foregroundStyle(.gray)
+                .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
+                .annotation(alignment: .topLeading) {
+                    Text(
+                        "平均抽数：\(fiveStarItems.map { $0.count }.reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1))"
+                    )
+                    .font(.caption).foregroundColor(.gray)
+                }
             }
         }
         .chartYAxis(content: {
             AxisMarks { value in
                 AxisValueLabel(content: {
-                    if let name = value.as(String.self),
+                    if let id = value.as(String.self),
                        let item = fiveStarItems
-                       .first(where: { $0.0.name == name })?.0 {
+                       .first(where: { $0.0.id == id })?.0 {
                         HStack {
                             EnkaWebIcon(
                                 iconString: item.iconImageName
@@ -121,7 +175,7 @@ private struct GachaItemChart: View {
         .frame(height: CGFloat(fiveStarItems.count * 65))
         .chartForegroundStyleScale(range: colors)
         .chartLegend(.hidden)
-        .padding(.vertical)
+        .padding(.top)
     }
 
     var colors: [Color] {
@@ -142,9 +196,9 @@ private struct GachaItemChart: View {
 
 @available(iOS 16.0, *)
 private struct GachaTimeChart: View {
+    @EnvironmentObject
+    var gachaViewModel: GachaViewModel
     let type: GachaType
-    let items: [GachaItem]
-
     let formatter: DateFormatter = {
         let fmt = DateFormatter()
         fmt.dateStyle = .short
@@ -152,17 +206,29 @@ private struct GachaTimeChart: View {
         return fmt
     }()
 
-    var data: [GachaTypeDateCount] {
-        let dates = Set<Date>.init(items.map { $0.time })
-        let types = Set<GachaType>.init(items.map { $0.gachaType })
+    var items: [GachaItem] { gachaViewModel.gachaItems }
+
+    var itemsFiltered: [GachaItem] {
+        items.filter { item in
+            (item.gachaType == type) && item.uid == gachaViewModel.filter.uid
+        }
+    }
+
+    var gachaTypeDateCount: [GachaTypeDateCountAndIfContain5Star] {
+        let dates = Set<Date>.init(itemsFiltered.map { $0.time })
+        let types = Set<GachaType>.init(itemsFiltered.map { $0.gachaType })
         return types.flatMap { type in
             dates.map { date in
-                GachaTypeDateCount(
+                GachaTypeDateCountAndIfContain5Star(
                     date: date,
-                    count: items
-                        .filter { ($0.time <= date) && ($0.gachaType == type) }
+                    count: itemsFiltered
+                        .filter { $0.time <= date }
                         .count,
-                    type: type
+                    type: type,
+                    contain5Star: itemsFiltered
+                        .filter { $0.time == date }
+                        .contains(where: { $0.rankType == .five }) ? "true" :
+                        "false"
                 )
             }.sorted(by: { $0.date > $1.date })
         }
@@ -179,27 +245,62 @@ private struct GachaTimeChart: View {
         return components.day!
     }
 
+    var color: Color {
+        switch type {
+        case .character: return .green
+        case .standard: return .cyan
+        case .weapon: return .mint
+        default: return .cyan
+        }
+    }
+
     var body: some View {
-        Chart(data) {
+        Chart(gachaTypeDateCount) {
             LineMark(
                 x: .value("日期", $0.date),
                 y: .value("抽数", $0.count)
             )
-            .foregroundStyle(by: .value("祈愿类型", $0.type.localizedDescription()))
+            .foregroundStyle(color)
+//            .foregroundStyle(by: .value("祈愿类型", $0.type.localizedDescription()))
+            PointMark(x: .value("日期", $0.date), y: .value("抽数", $0.count))
+                .foregroundStyle(by: .value("是否有五星", $0.contain5Star))
         }
-        .chartYAxis(content: {
-            AxisMarks(position: .leading)
-        })
-        .padding(.vertical)
-        .frame(height: 600)
+        .chartLegend(.hidden)
+//        .chartYAxis(content: {
+//            AxisMarks(position: .leading)
+//        })
+        .padding(.top)
+        .frame(height: 200)
         .chartForegroundStyleScale([
-            GachaType.standard.localizedDescription(): .green,
-            GachaType.character.localizedDescription(): .blue,
-            GachaType.weapon.localizedDescription(): .yellow,
+            "true": .orange,
+            "false": .blue.opacity(0),
         ])
+//        .chartForegroundStyleScale([
+//            GachaType.standard.localizedDescription(): .green,
+//            GachaType.character.localizedDescription(): .blue,
+//            GachaType.weapon.localizedDescription(): .yellow,
+//        ])
 //        ScrollView(.horizontal) {
 
 //            .frame(width: CGFloat(dayDiffOfminMax) * 5, height: CGFloat(items.filter( {$0.gachaType == .character}).count))
 //        }
+    }
+}
+
+// MARK: - GachaTypeDateCountAndIfContain5Star
+
+struct GachaTypeDateCountAndIfContain5Star: Hashable, Identifiable {
+    let date: Date
+    var count: Int
+    let type: GachaType
+    let contain5Star: String
+
+    var id: Int {
+        hashValue
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(date)
+        hasher.combine(type)
     }
 }
