@@ -152,6 +152,16 @@ public struct ENCharacterMap: Codable {
             iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")
         }
 
+        /// 检测是否是主角兄妹当中的某位。都不是的话则返回 nil。
+        /// 是 Hotaru 則返回 true，是 Sora 則返回 false。
+        public var isLumine: Bool? {
+            switch nameID {
+            case "PlayerGirl": return true
+            case "PlayerBoy": return false
+            default: return nil
+            }
+        }
+
         /// 名片
         public var namecardIconString: String {
             // 主角没有对应名片

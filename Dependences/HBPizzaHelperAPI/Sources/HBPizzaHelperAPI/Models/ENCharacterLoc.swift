@@ -64,9 +64,9 @@ public struct ENCharacterLoc: Codable {
 
     public func getLocalizedDictionary() -> [String: String] {
         switch Bundle.main.preferredLocalizations.first {
-        case "zh-Hans":
+        case "zh-CN", "zh-Hans":
             return zh_cn.content
-        case "zh-Hant", "zh-HK":
+        case "zh-Hant", "zh-Hant-HK", "zh-Hant-TW", "zh-HK", "zh-TW":
             return zh_tw.content
         case "en":
             return en.content

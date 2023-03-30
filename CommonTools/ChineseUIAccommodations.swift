@@ -6,6 +6,7 @@
 //  检测当前介面语言是否是简体中文或繁体中文，以及在这种情况下的一些特殊操作。
 
 import Foundation
+import HBPizzaHelperAPI
 
 extension Locale {
     public static var isUILanguagePanChinese: Bool {
@@ -58,5 +59,26 @@ extension String {
             }
         }
         return localized
+    }
+}
+
+// MARK: - ENCharacterMap.Character Extension
+
+extension ENCharacterMap.Character {
+    /// 给定名称翻译表，返回角色姓名。
+    public func i18nNameFixed(
+        by table: [String: String]? = nil,
+        enkaID: Int
+    )
+        -> String {
+        var result = "unknown"
+        switch enkaID {
+        case 10000007: return "荧".localizedWithFix
+        case 10000005: return "空".localizedWithFix
+        default: break
+        }
+        guard let x = table?[NameTextMapHash.description] else { return result }
+        result = x.localizedWithFix
+        return result
     }
 }

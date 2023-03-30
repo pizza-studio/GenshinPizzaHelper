@@ -523,8 +523,7 @@ private struct ShowAvatarPercentageView: View {
 
     var body: some View {
         List {
-            if let result = result, let charLoc = viewModel.charLoc,
-               let charMap = viewModel.charMap {
+            if let result = result {
                 switch result {
                 case let .success(data):
                     let data = data.data
@@ -539,43 +538,7 @@ private struct ShowAvatarPercentageView: View {
                                 return $0.charId < $1.charId
                             }
                         }), id: \.charId) { avatar in
-                            let char = charMap["\(avatar.charId)"]
-                            HStack {
-                                Label {
-                                    Text(
-                                        (
-                                            charLoc[
-                                                "\(char?.NameTextMapHash ?? 0)"
-                                            ] ??
-                                                "unknown"
-                                        )
-                                        .localizedWithFix
-                                    )
-                                } icon: {
-                                    EnkaWebIcon(
-                                        iconString: char?
-                                            .iconString ?? ""
-                                    )
-                                    .background(
-                                        EnkaWebIcon(
-                                            iconString: char?
-                                                .namecardIconString ?? ""
-                                        )
-                                        .scaledToFill()
-                                        .offset(x: -30 / 3)
-                                    )
-                                    .frame(width: 30, height: 30)
-                                    .clipShape(Circle())
-                                }
-                                Spacer()
-                                Text(
-                                    percentageFormatter
-                                        .string(from: (
-                                            avatar
-                                                .percentage ?? 0.0
-                                        ) as NSNumber)!
-                                )
-                            }
+                            renderLine(avatar)
                         }
                     } header: {
                         Text(
@@ -590,6 +553,45 @@ private struct ShowAvatarPercentageView: View {
                 ProgressView()
             }
         }
+    }
+
+    func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
+        guard let char = viewModel.charMap?["\(avatar.charId)"] else {
+            return AnyView(EmptyView())
+        }
+        let charName = char.i18nNameFixed(
+            by: viewModel.charLoc,
+            enkaID: avatar.charId
+        )
+        let result = HStack {
+            Label {
+                Text(charName.localizedWithFix)
+            } icon: {
+                EnkaWebIcon(
+                    iconString: char
+                        .iconString
+                )
+                .background(
+                    EnkaWebIcon(
+                        iconString: char
+                            .namecardIconString
+                    )
+                    .scaledToFill()
+                    .offset(x: -30 / 3)
+                )
+                .frame(width: 30, height: 30)
+                .clipShape(Circle())
+            }
+            Spacer()
+            Text(
+                percentageFormatter
+                    .string(from: (
+                        avatar
+                            .percentage ?? 0.0
+                    ) as NSNumber)!
+            )
+        }
+        return AnyView(result)
     }
 }
 
@@ -646,8 +648,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
 
     var body: some View {
         List {
-            if let result = result, let charLoc = viewModel.charLoc,
-               let charMap = viewModel.charMap,
+            if let result = result,
                let avatarSectionDatas = avatarSectionDatas {
                 switch result {
                 case let .success(data):
@@ -658,43 +659,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
                                 avatarSectionDatas[i],
                                 id: \.charId
                             ) { avatar in
-                                let char = charMap["\(avatar.charId)"]
-                                HStack {
-                                    Label {
-                                        Text(
-                                            (
-                                                charLoc[
-                                                    "\(char?.NameTextMapHash ?? 0)"
-                                                ] ??
-                                                    "unknown"
-                                            )
-                                            .localizedWithFix
-                                        )
-                                    } icon: {
-                                        EnkaWebIcon(
-                                            iconString: char?
-                                                .iconString ?? ""
-                                        )
-                                        .background(
-                                            EnkaWebIcon(
-                                                iconString: char?
-                                                    .namecardIconString ?? ""
-                                            )
-                                            .scaledToFill()
-                                            .offset(x: -30 / 3)
-                                        )
-                                        .frame(width: 30, height: 30)
-                                        .clipShape(Circle())
-                                    }
-                                    Spacer()
-                                    Text(
-                                        percentageFormatter
-                                            .string(from: (
-                                                avatar
-                                                    .percentage ?? 0.0
-                                            ) as NSNumber)!
-                                    )
-                                }
+                                renderLine(avatar)
                             }
                         } header: {
                             VStack(alignment: .leading) {
@@ -733,6 +698,44 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 ProgressView()
             }
         }
+    }
+
+    func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
+        guard let char = viewModel.charMap?["\(avatar.charId)"] else {
+            return AnyView(EmptyView())
+        }
+        let charName = char.i18nNameFixed(
+            by: viewModel.charLoc,
+            enkaID: avatar.charId
+        )
+        let result = HStack {
+            Label {
+                Text(charName.localizedWithFix)
+            } icon: {
+                EnkaWebIcon(
+                    iconString: char.iconString
+                )
+                .background(
+                    EnkaWebIcon(
+                        iconString: char.namecardIconString
+                    )
+                    .scaledToFill()
+                    .offset(x: -30 / 3)
+                )
+                .frame(width: 30, height: 30)
+                .clipShape(Circle())
+            }
+            Spacer()
+            Text(
+                percentageFormatter
+                    .string(from: (
+                        avatar
+                            .percentage ?? 0.0
+                    ) as NSNumber)!
+            )
+        }
+
+        return AnyView(result)
     }
 
     func getDataSection(data: FetchHomeModelResult<AvatarPercentageModel>?)
@@ -821,45 +824,45 @@ private struct ShowAvatarPercentageShare: View {
             ForEach(eachColumnAvatars, id: \.first!.charId) { avatars in
                 Grid(alignment: .leading) {
                     ForEach(avatars, id: \.charId) { avatar in
-                        let char = charMap["\(avatar.charId)"]
-                        GridRow {
-                            Label {
-                                Text(
-                                    (
-                                        charLoc[
-                                            "\(char?.NameTextMapHash ?? 0)"
-                                        ] ??
-                                            "unknown"
-                                    )
-                                    .localizedWithFix
-                                ).fixedSize()
-                            } icon: {
-                                EnkaWebIcon(iconString: char?.iconString ?? "")
-                                    .background(
-                                        EnkaWebIcon(
-                                            iconString: char?
-                                                .namecardIconString ?? ""
-                                        )
-                                        .scaledToFill()
-                                        .offset(x: -30 / 3)
-                                    )
-                                    .frame(width: 30, height: 30)
-                                    .clipShape(Circle())
-                            }
-                            Text(
-                                percentageFormatter
-                                    .string(from: (
-                                        avatar
-                                            .percentage ?? 0.0
-                                    ) as NSNumber)!
-                            )
-                            .fixedSize()
-                            .gridColumnAlignment(.trailing)
-                        }
+                        renderLine(avatar)
                     }
                 }
             }
         }
+    }
+
+    func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
+        guard let char = charMap["\(avatar.charId)"] else {
+            return AnyView(EmptyView())
+        }
+        let charName = char.i18nNameFixed(by: charLoc, enkaID: avatar.charId)
+        let result = GridRow {
+            Label {
+                Text(charName.localizedWithFix).fixedSize()
+            } icon: {
+                EnkaWebIcon(iconString: char.iconString)
+                    .background(
+                        EnkaWebIcon(
+                            iconString: char
+                                .namecardIconString
+                        )
+                        .scaledToFill()
+                        .offset(x: -30 / 3)
+                    )
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
+            }
+            Text(
+                percentageFormatter
+                    .string(from: (
+                        avatar
+                            .percentage ?? 0.0
+                    ) as NSNumber)!
+            )
+            .fixedSize()
+            .gridColumnAlignment(.trailing)
+        }
+        return AnyView(result)
     }
 }
 
