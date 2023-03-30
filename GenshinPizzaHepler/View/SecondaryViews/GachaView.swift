@@ -23,26 +23,30 @@ struct GachaView: View {
 
     var body: some View {
         List {
-            Section {
-                if #available(iOS 16.0, *),
-                   !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
-                    GachaChart(
-                        items: gachaViewModel
-                            .filteredGachaItemsWithCount
-                    )
-                    NavigationLink {
-                        GachaChartView()
-                            .environmentObject(gachaViewModel)
-                    } label: {
-                        Label("更多图表", systemImage: "chart.bar.doc.horizontal")
+            if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
+                if #available(iOS 16.0, *) {
+                    Section {
+                        GachaChart(
+                            items: gachaViewModel
+                                .filteredGachaItemsWithCount
+                        )
+                        NavigationLink {
+                            GachaChartView()
+                                .environmentObject(gachaViewModel)
+                        } label: {
+                            Label(
+                                "更多数据",
+                                systemImage: "chart.bar.doc.horizontal"
+                            )
+                        }
                     }
                 }
-            }
 
-            Section {
-                Text(
-                    "当前已垫：\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽"
-                )
+                Section {
+                    Text(
+                        "当前已垫：\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽"
+                    )
+                }
             }
 
             Section {
@@ -65,18 +69,7 @@ struct GachaView: View {
             #if DEBUG
                 Section {
                     Button("delete all records (DEBUG ONLY)") {
-                        let context = gachaViewModel.manager.container
-                            .viewContext
-                        let fetchRequest = GachaItemMO.fetchRequest()
-                        do {
-                            let models = try context.fetch(fetchRequest)
-                            models.forEach { item in
-                                context.delete(item)
-                            }
-                            try context.save()
-                        } catch {
-                            print(error)
-                        }
+                        gachaViewModel.manager.deleteAllRecord()
                         gachaViewModel.refetchGachaItems()
                     }
                 }

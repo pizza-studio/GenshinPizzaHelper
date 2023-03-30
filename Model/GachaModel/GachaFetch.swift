@@ -88,38 +88,44 @@ extension MihoyoAPI {
                     from: data!
                 )
                 let items = try result.toGachaItemArray()
-                observer.got(items)
+                DispatchQueue.main.async {
+                    observer.got(items)
+                }
                 manager.addRecordItems(items) { itemIsNewAndSavedSucceed in
                     if itemIsNewAndSavedSucceed {
-                        observer.saveNewItemSucceed()
+                        DispatchQueue.main.async {
+                            observer.saveNewItemSucceed()
+                        }
                     }
                 }
                 if !items.isEmpty {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        innerGetGachaLogAndSave(
-                            account: account,
-                            authkey: authkey,
-                            gachaType: gachaType,
-                            page: page + 1,
-                            endId: items.last!.id,
-                            manager: manager,
-                            observer: observer
-                        ) { result in
-                            completion(result)
+                    DispatchQueue.global(qos: .userInteractive)
+                        .asyncAfter(deadline: .now() + 0.3) {
+                            innerGetGachaLogAndSave(
+                                account: account,
+                                authkey: authkey,
+                                gachaType: gachaType,
+                                page: page + 1,
+                                endId: items.last!.id,
+                                manager: manager,
+                                observer: observer
+                            ) { result in
+                                completion(result)
+                            }
                         }
-                    }
                 } else if let gachaType = gachaType.next() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        innerGetGachaLogAndSave(
-                            account: account,
-                            authkey: authkey,
-                            gachaType: gachaType,
-                            manager: manager,
-                            observer: observer
-                        ) { result in
-                            completion(result)
+                    DispatchQueue.global(qos: .userInteractive)
+                        .asyncAfter(deadline: .now() + 0.3) {
+                            innerGetGachaLogAndSave(
+                                account: account,
+                                authkey: authkey,
+                                gachaType: gachaType,
+                                manager: manager,
+                                observer: observer
+                            ) { result in
+                                completion(result)
+                            }
                         }
-                    }
                 } else {
                     completion(.success(()))
                 }

@@ -648,10 +648,12 @@ struct ToolsView: View {
     func toolsSection() -> some View {
         Section {
             NavigationLink(destination: GachaView()) {
-                Label(
-                    "祈愿分析工具",
-                    systemImage: "sparkles"
-                ).foregroundColor(.primary)
+                Label {
+                    Text("祈愿分析（Beta)")
+                } icon: {
+                    Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
+                        .scaledToFit()
+                }
             }
             NavigationLink {
                 AbyssDataCollectionView()

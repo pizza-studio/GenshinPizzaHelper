@@ -89,6 +89,7 @@ class GachaViewModel: ObservableObject {
 
     func refetchGachaItems() {
         gachaItems = manager.fetchAll()
+        filter.uid = gachaItems.first?.uid
     }
 
     func allAvaliableAccountUID() -> [String] {

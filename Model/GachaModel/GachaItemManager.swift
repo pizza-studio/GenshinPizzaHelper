@@ -50,8 +50,6 @@ public class GachaModelManager {
 
     static let shared: GachaModelManager = .init()
 
-    let container: NSPersistentCloudKitContainer
-
     func fetchAll() -> [GachaItem] {
         container.viewContext.refreshAllObjects()
         let request = GachaItemMO.fetchRequest()
@@ -84,10 +82,12 @@ public class GachaModelManager {
         _ items: [GachaItem_FM],
         isNew: @escaping ((Bool) -> ())
     ) {
-        items.forEach { item in
-            addRecordItem(item, isNew: isNew)
+        container.viewContext.perform { [self] in
+            items.forEach { item in
+                self.addRecordItem(item, isNew: isNew)
+            }
+            self.save()
         }
-        save()
     }
 
     func addRecordItem(_ item: GachaItem_FM, isNew: @escaping ((Bool) -> ())) {
@@ -106,4 +106,25 @@ public class GachaModelManager {
             print("ERROR SAVING. \(error.localizedDescription)")
         }
     }
+
+    func deleteAllRecord() {
+        let fetchRequest = GachaItemMO.fetchRequest()
+        do {
+            let models = try container.viewContext.fetch(fetchRequest)
+            models.forEach { item in
+                container.viewContext.delete(item)
+            }
+            try container.viewContext.save()
+        } catch {
+            print(error)
+        }
+    }
+
+    // MARK: Private
+
+    private let container: NSPersistentCloudKitContainer
+    private let queue = DispatchQueue(
+        label: "com.GenshinPizzaHepler.SaveGacha",
+        qos: .background
+    )
 }

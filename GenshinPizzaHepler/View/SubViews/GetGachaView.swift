@@ -30,13 +30,20 @@ struct GetGachaView: View {
     @State
     var account: String?
 
+    var acountConfigsFiltered: [AccountConfiguration] {
+        viewModel.accounts.compactMap {
+            guard $0.config.server.region == .cn else { return nil }
+            return $0.config
+        }
+    }
+
     var body: some View {
         List {
             if status != .running {
                 Section {
                     Picker("选择账号", selection: $account) {
                         ForEach(
-                            viewModel.accounts.map { $0.config },
+                            acountConfigsFiltered,
                             id: \.uid
                         ) { account in
                             Text("\(account.name!) (\(account.uid!))")
@@ -66,6 +73,11 @@ struct GetGachaView: View {
                         }
                     }
                     .disabled(account == nil)
+                } footer: {
+                    if !viewModel.accounts.map(\.config)
+                        .allSatisfy({ $0.server.region == .cn }) {
+                        Text("暂不支持国际服")
+                    }
                 }
             } else {
                 Section {
