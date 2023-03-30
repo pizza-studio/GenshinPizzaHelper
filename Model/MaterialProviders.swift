@@ -13,23 +13,20 @@ import HBMihoyoAPI
 struct WeaponOrTalentMaterial: Equatable {
     struct RelatedItem {
         let imageString: String
-        let localizedName: String
+        let nameToLocalize: String
 
         var displayName: String {
-            localizedName.localized
+            nameToLocalize.localizedWithFix
         }
     }
 
     let imageString: String
-    let localizedName: String
+    let nameToLocalize: String
     let weekday: MaterialWeekday
     var relatedItem: [RelatedItem] = []
 
     var displayName: String {
-        NSLocalizedString(
-            localizedName,
-            comment: "weapon or talent material name"
-        )
+        nameToLocalize.localizedWithFix
     }
 
     static func == (
