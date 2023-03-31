@@ -68,7 +68,10 @@ struct HttpMethod<T: Codable> {
                 URLSession.shared.dataTask(
                     with: request
                 ) { data, response, error in
-                    // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
+                    if let statusCode = (response as? HTTPURLResponse)?
+                        .statusCode, statusCode != 200 {
+                        completion(.failure(.errorWithCode(statusCode)))
+                    }
                     print(error ?? "ErrorInfo nil")
                     if let error = error {
                         completion(.failure(.dataTaskError(
@@ -390,7 +393,6 @@ struct HttpMethod<T: Codable> {
                 URLSession.shared.dataTask(
                     with: request
                 ) { data, response, error in
-                    // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
                     print(error ?? "ErrorInfo nil")
                     if let error = error {
                         completion(.failure(.dataTaskError(
@@ -469,7 +471,7 @@ struct HttpMethod<T: Codable> {
 extension String {
     func addPara(_ key: String, _ value: String) -> String {
         var str = self
-        if str != "" {
+        if str != "" && str.last != "?" {
             str += "&"
         }
         str += "\(key)=\(value)"
