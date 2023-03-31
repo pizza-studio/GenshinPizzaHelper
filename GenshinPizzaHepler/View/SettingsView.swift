@@ -145,6 +145,9 @@ struct SettingsView: View {
                         NavigationLink("隐私设置") {
                             PrivacySettingsView()
                         }
+                        NavigationLink("祈愿数据管理") {
+                            GachaSetting()
+                        }
                     }
                 }
 

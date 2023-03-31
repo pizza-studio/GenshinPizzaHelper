@@ -11,6 +11,8 @@ import HBMihoyoAPI
 
 @available(iOS 13, *)
 extension MihoyoAPI {
+    static let GET_GACHA_DELAY_RANDOM_RANGE: Range<Double> = 0.8 ..< 1.5
+
     public static func getGachaLogAndSave(
         account: AccountConfiguration,
         manager: GachaModelManager,
@@ -98,9 +100,14 @@ extension MihoyoAPI {
                         }
                     }
                 }
-                if !items.isEmpty {
+                if observer.shouldCancel {
+                    completion(.success(()))
+                } else if !items.isEmpty {
                     DispatchQueue.global(qos: .userInteractive)
-                        .asyncAfter(deadline: .now() + 0.3) {
+                        .asyncAfter(
+                            deadline: .now() + TimeInterval
+                                .random(in: GET_GACHA_DELAY_RANDOM_RANGE)
+                        ) {
                             innerGetGachaLogAndSave(
                                 account: account,
                                 authkey: authkey,
@@ -115,7 +122,10 @@ extension MihoyoAPI {
                         }
                 } else if let gachaType = gachaType.next() {
                     DispatchQueue.global(qos: .userInteractive)
-                        .asyncAfter(deadline: .now() + 0.3) {
+                        .asyncAfter(
+                            deadline: .now() + TimeInterval
+                                .random(in: GET_GACHA_DELAY_RANDOM_RANGE)
+                        ) {
                             innerGetGachaLogAndSave(
                                 account: account,
                                 authkey: authkey,

@@ -108,7 +108,7 @@ struct AllAvatarListSheetView: View {
                     ) { result in
                         switch result {
                         case let .success(data):
-                            self.allAvatarInfo = data
+                            allAvatarInfo = data
                         case .failure:
                             break
                         }

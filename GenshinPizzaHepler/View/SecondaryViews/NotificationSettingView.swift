@@ -89,9 +89,9 @@ struct NotificationSettingView: View {
 
     var noticeExpeditionBy: Binding<ExpeditionNoticeMethod> {
         .init(get: {
-            .init(rawValue: self.noticeExpeditionMethodRawValue)!
+            .init(rawValue: noticeExpeditionMethodRawValue)!
         }, set: {
-            self.noticeExpeditionMethodRawValue = $0.rawValue
+            noticeExpeditionMethodRawValue = $0.rawValue
         })
     }
 

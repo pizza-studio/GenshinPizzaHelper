@@ -887,7 +887,7 @@ private struct PrimogemTextLabel: View {
                     GeometryReader(content: { geometry in
                         Color.clear
                             .onAppear(perform: {
-                                self.labelHeight = geometry.frame(in: .local)
+                                labelHeight = geometry.frame(in: .local)
                                     .size.height
                             })
                     })
@@ -915,7 +915,7 @@ private struct MoraTextLabel: View {
                     GeometryReader(content: { geometry in
                         Color.clear
                             .onAppear(perform: {
-                                self.labelHeight = geometry.frame(in: .local)
+                                labelHeight = geometry.frame(in: .local)
                                     .size.height
                             })
                     })
@@ -945,7 +945,7 @@ private struct AbyssTextLabel: View {
                     GeometryReader(content: { geometry in
                         Color.clear
                             .onAppear(perform: {
-                                self.labelHeight = geometry.frame(in: .local)
+                                labelHeight = geometry.frame(in: .local)
                                     .size.height
                             })
                     })

@@ -99,7 +99,7 @@ struct GachaItemBackgroundImage: View {
             EnkaWebIcon(iconString: imageString).scaledToFill()
                 .offset(x: -30 / 3)
         case .weapon:
-            if self._rankLevel.rawValue == 3 {
+            if _rankLevel.rawValue == 3 {
                 EnkaWebIcon(
                     iconString: imageString
                 )

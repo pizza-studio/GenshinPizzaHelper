@@ -210,9 +210,6 @@ public struct GenAuthKeyResult: Codable {
     let data: GenAuthKeyData?
 }
 
-import CommonCrypto
-import Foundation
-
 extension UUID {
     enum UUIDVersion: Int {
         case v3 = 3

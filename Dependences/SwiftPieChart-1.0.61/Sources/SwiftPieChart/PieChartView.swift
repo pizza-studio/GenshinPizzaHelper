@@ -53,9 +53,9 @@ public struct PieChartView: View {
         GeometryReader { geometry in
             VStack {
                 ZStack {
-                    ForEach(0 ..< self.values.count, id: \.self) { i in
-                        PieSlice(pieSliceData: self.slices[i])
-                            .scaleEffect(self.activeIndex == i ? 1.03 : 1)
+                    ForEach(0 ..< values.count, id: \.self) { i in
+                        PieSlice(pieSliceData: slices[i])
+                            .scaleEffect(activeIndex == i ? 1.03 : 1)
                             .animation(Animation.spring())
                     }
                     .frame(
@@ -77,7 +77,7 @@ public struct PieChartView: View {
                                 )
                                 if dist > radius || dist < radius *
                                     innerRadiusFraction {
-                                    self.activeIndex = -1
+                                    activeIndex = -1
                                     return
                                 }
                                 var radians = Double(atan2(diff.x, diff.y))
@@ -87,17 +87,17 @@ public struct PieChartView: View {
 
                                 for (i, slice) in slices.enumerated() {
                                     if radians < slice.endAngle.radians {
-                                        self.activeIndex = i
+                                        activeIndex = i
                                         break
                                     }
                                 }
                             }
                             .onEnded { _ in
-                                self.activeIndex = -1
+                                activeIndex = -1
                             }
                     )
                     Circle()
-                        .fill(self.backgroundColor)
+                        .fill(backgroundColor)
                         .frame(
                             width: widthFraction * geometry.size
                                 .width * innerRadiusFraction,
@@ -107,39 +107,37 @@ public struct PieChartView: View {
 
                     VStack {
                         Text(
-                            self
-                                .activeIndex == -1 ?
+                            activeIndex == -1 ?
                                 String(format: NSLocalizedString(
                                     "总计",
                                     comment: "total"
-                                )) : names[self.activeIndex]
+                                )) : names[activeIndex]
                         )
                         .font(.headline)
                         .foregroundColor(Color.gray)
                         Text(
-                            self
-                                .formatter(
-                                    self.activeIndex == -1 ? values
-                                        .reduce(0, +) : values[self.activeIndex]
-                                )
+                            formatter(
+                                activeIndex == -1 ? values
+                                    .reduce(0, +) : values[activeIndex]
+                            )
                         )
                         .font(.title)
                     }
                 }
                 PieChartRows(
-                    colors: self.colors,
-                    names: self.names,
-                    values: self.values.map { self.formatter($0) },
-                    percents: self.values
+                    colors: colors,
+                    names: names,
+                    values: values.map { formatter($0) },
+                    percents: values
                         .map {
                             String(
                                 format: "%.0f%%",
-                                $0 * 100 / self.values.reduce(0, +)
+                                $0 * 100 / values.reduce(0, +)
                             )
                         }
                 )
             }
-            .background(self.backgroundColor)
+            .background(backgroundColor)
             .foregroundColor(Color.primary)
         }
     }
@@ -194,13 +192,13 @@ struct PieChartRows: View {
             ForEach(values.indices, id: \.self) { i in
                 HStack {
                     RoundedRectangle(cornerRadius: 5.0)
-                        .fill(self.colors[i])
+                        .fill(colors[i])
                         .frame(width: 20, height: 20)
-                    Text(self.names[i])
+                    Text(names[i])
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text(self.values[i])
-                        Text(self.percents[i])
+                        Text(values[i])
+                        Text(percents[i])
                             .foregroundColor(Color.gray)
                     }
                 }

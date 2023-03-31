@@ -92,7 +92,7 @@ struct GachaView: View {
             ToolbarItem(placement: .principal) {
                 Menu {
                     ForEach(
-                        gachaViewModel.allAvaliableAccountUID(),
+                        gachaViewModel.allAvaliableAccountUID,
                         id: \.self
                     ) { uid in
                         Group {
@@ -100,11 +100,11 @@ struct GachaView: View {
                                 .first(where: { $0.config.uid == uid })?.config
                                 .name {
                                 Button(name) {
-                                    self.gachaViewModel.filter.uid = uid
+                                    gachaViewModel.filter.uid = uid
                                 }
                             } else {
                                 Button(uid) {
-                                    self.gachaViewModel.filter.uid = uid
+                                    gachaViewModel.filter.uid = uid
                                 }
                             }
                         }
@@ -112,7 +112,7 @@ struct GachaView: View {
                 } label: {
                     HStack {
                         Image(systemName: "arrow.left.arrow.right.circle")
-                        if let uid: String = self.gachaViewModel.filter.uid {
+                        if let uid: String = gachaViewModel.filter.uid {
                             if let name: String = viewModel.accounts
                                 .first(where: { $0.config.uid == uid })?.config
                                 .name {
@@ -125,7 +125,7 @@ struct GachaView: View {
                         }
                     }
                 }
-                .disabled(gachaViewModel.allAvaliableAccountUID().isEmpty)
+                .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
             }
         }
         .environmentObject(gachaViewModel)

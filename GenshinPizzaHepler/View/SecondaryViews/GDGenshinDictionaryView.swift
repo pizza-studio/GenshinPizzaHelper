@@ -242,7 +242,7 @@ struct GenshinDictionary: View {
                 .onAppear {
                     DispatchQueue.global().async {
                         API.OpenAPIs.fetchGenshinDictionaryData { result in
-                            self.dictionaryData = result
+                            dictionaryData = result
                         }
                     }
                 }

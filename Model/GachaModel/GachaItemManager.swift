@@ -50,6 +50,10 @@ public class GachaModelManager {
 
     static let shared: GachaModelManager = .init()
 
+    var persistentStoreCoordinator: NSPersistentStoreCoordinator {
+        container.persistentStoreCoordinator
+    }
+
     func fetchAll() -> [GachaItem] {
         container.viewContext.refreshAllObjects()
         let request = GachaItemMO.fetchRequest()
@@ -86,7 +90,7 @@ public class GachaModelManager {
             items.forEach { item in
                 self.addRecordItem(item, isNew: isNew)
             }
-            self.save()
+            save()
         }
     }
 
@@ -117,6 +121,54 @@ public class GachaModelManager {
             try container.viewContext.save()
         } catch {
             print(error)
+        }
+    }
+
+    func cleanDuplicatedItems() -> Int {
+        var deletedItemCount = 0
+        container.viewContext.refreshAllObjects()
+        let request = GachaItemMO.fetchRequest()
+        do {
+            let items = try container.viewContext.fetch(request)
+            Dictionary(grouping: items) { item in
+                item.id! + item.uid!
+            }.forEach { _, items in
+                if items.count > 1 {
+                    items[1...].forEach { item in
+                        container.viewContext.delete(item)
+                        deletedItemCount += 1
+                    }
+                }
+            }
+            try container.viewContext.save()
+            return deletedItemCount
+        } catch {
+            print(error.localizedDescription)
+            return deletedItemCount
+        }
+    }
+
+    /// 删除数据，并返回删除的数据条数
+    func deleteData(for uid: String, startDate: Date, endData: Date) -> Int {
+        container.viewContext.refreshAllObjects()
+        let request = GachaItemMO.fetchRequest()
+        let predicate = NSPredicate(
+            format: "(uid = %@) AND (time >= %@) AND (time <= %@)",
+            uid,
+            startDate as NSDate,
+            endData as NSDate
+        )
+        request.predicate = predicate
+        do {
+            let items = try container.viewContext.fetch(request)
+            items.forEach { item in
+                container.viewContext.delete(item)
+            }
+            try container.viewContext.save()
+            return items.count
+        } catch {
+            print(error.localizedDescription)
+            return 0
         }
     }
 

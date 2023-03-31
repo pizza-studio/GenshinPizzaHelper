@@ -42,12 +42,24 @@ struct GetGachaView: View {
             if status != .running {
                 Section {
                     Picker("选择账号", selection: $account) {
-                        ForEach(
-                            acountConfigsFiltered,
-                            id: \.uid
-                        ) { account in
-                            Text("\(account.name!) (\(account.uid!))")
-                                .tag(account.uid!)
+                        Group {
+                            if account == nil {
+                                Text("未选择").tag(String?(nil))
+                            }
+                            ForEach(
+                                acountConfigsFiltered,
+                                id: \.uid
+                            ) { account in
+                                Text("\(account.name!) (\(account.uid!))")
+                                    .tag(Optional(account.uid!))
+                            }
+                        }
+                    }
+                    .onAppear {
+                        if account == nil {
+                            account = viewModel.accounts
+                                .filter { $0.config.server.region != .global }
+                                .first?.config.uid
                         }
                     }
                     Button("获取祈愿记录") {
@@ -63,11 +75,11 @@ struct GetGachaView: View {
                             switch result {
                             case .success:
                                 withAnimation {
-                                    self.status = .succeed
+                                    status = .succeed
                                 }
                             case let .failure(error):
                                 withAnimation {
-                                    self.status = .failure(error)
+                                    status = .failure(error)
                                 }
                             }
                         }
@@ -82,9 +94,15 @@ struct GetGachaView: View {
             } else {
                 Section {
                     HStack {
+                        ProgressView()
+                        Spacer()
                         Text("正在获取祈愿记录...请等待")
                         Spacer()
-                        ProgressView()
+                        Button {
+                            observer.shouldCancel = true
+                        } label: {
+                            Image(systemName: "square.circle")
+                        }
                     }
                 } footer: {
                     HStack {
@@ -116,21 +134,7 @@ struct GetGachaView: View {
                 }
             }
 
-            switch status {
-            case .waitToStart:
-                EmptyView()
-            case .running:
-
-                if let items = observer.currentItems, !items.isEmpty {
-                    Section {
-                        ForEach(items.reversed()) { item in
-                            GachaItemBar(item: item)
-                        }
-                    } header: {
-                        Text("成功获取到一批...")
-                    }
-                }
-            case .succeed:
+            if status == .succeed {
                 Section {
                     Label {
                         Text("获取祈愿记录成功")
@@ -143,9 +147,17 @@ struct GetGachaView: View {
                         "获取到\(observer.currentItems.count)条记录，成功保存\(observer.newItemCount)条新记录\n请返回上一级查看，或继续获取其他账号的记录"
                     )
                 }
-                Section {
-                    ForEach(observer.currentItems) { item in
-                        GachaItemBar(item: item)
+            }
+
+            switch status {
+            case .running, .succeed:
+                if let items = observer.currentItems, !items.isEmpty {
+                    Section {
+                        ForEach(items.reversed()) { item in
+                            GachaItemBar(item: item)
+                        }
+                    } header: {
+                        Text(status == .running ? "成功获取到一批..." : "")
                     }
                 }
             case let .failure(error):
@@ -158,10 +170,9 @@ struct GetGachaView: View {
                     }
                     Text("ERROR: \(error.localizedDescription)")
                 }
+            default:
+                EmptyView()
             }
-        }
-        .onAppear {
-            account = viewModel.accounts.first?.config.uid
         }
         .navigationBarBackButtonHidden(status == .running)
     }

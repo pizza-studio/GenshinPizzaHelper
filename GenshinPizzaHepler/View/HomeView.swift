@@ -86,8 +86,8 @@ struct HomeView: View {
                 switch result {
                 case let .success(events):
                     withAnimation {
-                        self.eventContents = [EventModel](events.event.values)
-                        self.eventContents = eventContents.sorted {
+                        eventContents = [EventModel](events.event.values)
+                        eventContents = eventContents.sorted {
                             $0.endAt < $1.endAt
                         }
                     }

@@ -34,6 +34,8 @@ struct MbModalHackView: UIViewControllerRepresentable {
     ) {}
 }
 
+// MARK: MbModalHackView.MbModalViewController
+
 extension MbModalHackView {
     private final class MbModalViewController: UIViewController,
         UIAdaptivePresentationControllerDelegate {

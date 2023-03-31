@@ -18,7 +18,15 @@ class GachaViewModel: ObservableObject {
 
     private init() {
         self.gachaItems = manager.fetchAll()
-        filter.uid = gachaItems.first?.uid
+        refreshAllAvaliableAccountUID()
+        filter.uid = allAvaliableAccountUID.first
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refetchGachaItems),
+            name: .NSPersistentStoreRemoteChange,
+            object: manager
+                .persistentStoreCoordinator
+        )
     }
 
     // MARK: Internal
@@ -29,6 +37,9 @@ class GachaViewModel: ObservableObject {
     /// 祈愿记录和要多少抽才出
     @Published
     var filteredGachaItemsWithCount: [(GachaItem, count: Int)] = []
+
+    @Published
+    var allAvaliableAccountUID: [String] = []
 
     /// 不要直接使用：所有祈愿记录
     @Published
@@ -74,26 +85,35 @@ class GachaViewModel: ObservableObject {
                 return filteredItems.count - index - 1
             }
         }
-        filteredGachaItemsWithCount = zip(filteredItems, counts)
-            .filter { item, _ in
-                switch filter.rank {
-                case .five:
-                    return item.rankType == .five
-                case .fourAndFive:
-                    return [.five, .four].contains(item.rankType)
-                case .threeAndFourAndFire:
-                    return true
+        DispatchQueue.main.async {
+            self.filteredGachaItemsWithCount = zip(filteredItems, counts)
+                .filter { item, _ in
+                    switch self.filter.rank {
+                    case .five:
+                        return item.rankType == .five
+                    case .fourAndFive:
+                        return [.five, .four].contains(item.rankType)
+                    case .threeAndFourAndFire:
+                        return true
+                    }
                 }
-            }
+        }
     }
 
+    @objc
     func refetchGachaItems() {
-        gachaItems = manager.fetchAll()
-        filter.uid = gachaItems.first?.uid
+        DispatchQueue.main.async {
+            withAnimation {
+                self.gachaItems = self.manager.fetchAll()
+                if self.filter
+                    .uid == nil { self.filter.uid = self.gachaItems.first?.uid }
+                self.refreshAllAvaliableAccountUID()
+            }
+        }
     }
 
-    func allAvaliableAccountUID() -> [String] {
-        [String].init(
+    func refreshAllAvaliableAccountUID() {
+        allAvaliableAccountUID = [String].init(
             Set<String>(
                 gachaItems.map { item in
                     item.uid
@@ -185,6 +205,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     var newItemCount: Int = 0
     @Published
     var gachaTypeDateCounts: [GachaTypeDateCount] = []
+    var shouldCancel: Bool = false
 
     func initialize() {
         withAnimation {
@@ -193,6 +214,7 @@ public class GachaFetchProgressObserver: ObservableObject {
             currentItems = []
             newItemCount = 0
             gachaTypeDateCounts = []
+            shouldCancel = false
         }
     }
 
@@ -209,8 +231,13 @@ public class GachaFetchProgressObserver: ObservableObject {
         cancellables.append(
             Publishers.Zip(
                 items.publisher,
-                Timer.publish(every: 0.015, on: .main, in: .default)
-                    .autoconnect()
+                Timer.publish(
+                    every: MihoyoAPI.GET_GACHA_DELAY_RANDOM_RANGE
+                        .lowerBound / 20.0,
+                    on: .main,
+                    in: .default
+                )
+                .autoconnect()
             )
             .map(\.0)
             .sink(receiveValue: { newItem in

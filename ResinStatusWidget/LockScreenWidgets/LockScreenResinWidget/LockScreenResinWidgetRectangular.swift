@@ -143,8 +143,8 @@ struct FitSystemFont: ViewModifier {
                     geometry.size.width,
                     geometry.size.height
                 ) * percentage))
-                .lineLimit(self.lineLimit)
-                .minimumScaleFactor(self.minimumScaleFactor)
+                .lineLimit(lineLimit)
+                .minimumScaleFactor(minimumScaleFactor)
                 .position(
                     x: geometry.frame(in: .local).midX,
                     y: geometry.frame(in: .local).midY

@@ -57,12 +57,12 @@ struct ContentView: View {
     var settingForAccountIndex: Int?
 
     var index: Binding<Int> { Binding(
-        get: { self.selection },
+        get: { selection },
         set: {
-            if $0 != self.selection {
+            if $0 != selection {
                 simpleTaptic(type: .medium)
             }
-            self.selection = $0
+            selection = $0
             UserDefaults.standard.setValue($0, forKey: "AppTabIndex")
             UserDefaults.standard.synchronize()
         }
@@ -213,9 +213,9 @@ struct ContentView: View {
             case "settings":
                 print("jump to settings")
                 isJumpToSettingsView.toggle()
-                self.selection = 1
+                selection = 1
             case "accountSetting":
-                self.selection = 2
+                selection = 2
                 if let accountUUIDString = URLComponents(
                     url: url,
                     resolvingAgainstBaseURL: true
