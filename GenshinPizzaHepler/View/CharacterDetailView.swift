@@ -37,7 +37,7 @@ struct CharacterDetailView: View {
     @ViewBuilder
     var coreBody: some View {
         if #available(iOS 15.0, *) {
-            TabView(selection: $showingCharacterName) {
+            TabView(selection: $showingCharacterName.animation()) {
                 ForEach(playerDetail.avatars, id: \.name) { avatar in
                     framedCoreView(avatar)
                 }
