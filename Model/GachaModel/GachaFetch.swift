@@ -14,6 +14,24 @@ extension MihoyoAPI {
     static let GET_GACHA_DELAY_RANDOM_RANGE: Range<Double> = 0.8 ..< 1.5
 
     public static func getGachaLogAndSave(
+        server: Server,
+        authKey: GenAuthKeyResult.GenAuthKeyData,
+        manager: GachaModelManager,
+        observer: GachaFetchProgressObserver,
+        completion: @escaping (
+            (Result<(), GetGachaError>) -> ()
+        )
+    ) {
+        innerGetGachaLogAndSave(
+            server: server,
+            authkey: authKey,
+            manager: manager,
+            observer: observer) { result in
+                completion(result)
+            }
+    }
+
+    public static func getGachaLogAndSave(
         account: AccountConfiguration,
         manager: GachaModelManager,
         observer: GachaFetchProgressObserver,
@@ -26,7 +44,7 @@ extension MihoyoAPI {
             case let .success(data):
                 if let authKey = data.data {
                     innerGetGachaLogAndSave(
-                        account: account,
+                        server: account.server,
                         authkey: authKey,
                         manager: manager,
                         observer: observer
@@ -49,7 +67,7 @@ extension MihoyoAPI {
     }
 
     private static func innerGetGachaLogAndSave(
-        account: AccountConfiguration,
+        server: Server,
         authkey: GenAuthKeyResult.GenAuthKeyData,
         gachaType: _GachaType = .standard,
         page: Int = 1,
@@ -62,7 +80,7 @@ extension MihoyoAPI {
     ) {
         observer.fetching(page: page, gachaType: gachaType)
         let url = genGachaURL(
-            account: account,
+            server: server,
             authkey: authkey,
             gachaType: gachaType,
             page: page,
@@ -109,7 +127,7 @@ extension MihoyoAPI {
                                 .random(in: GET_GACHA_DELAY_RANDOM_RANGE)
                         ) {
                             innerGetGachaLogAndSave(
-                                account: account,
+                                server: server,
                                 authkey: authkey,
                                 gachaType: gachaType,
                                 page: page + 1,
@@ -127,7 +145,7 @@ extension MihoyoAPI {
                                 .random(in: GET_GACHA_DELAY_RANDOM_RANGE)
                         ) {
                             innerGetGachaLogAndSave(
-                                account: account,
+                                server: server,
                                 authkey: authkey,
                                 gachaType: gachaType,
                                 manager: manager,
@@ -139,7 +157,7 @@ extension MihoyoAPI {
                 } else {
                     completion(.success(()))
                 }
-            } catch is GetGachaError {
+            } catch let error as GetGachaError {
                 completion(.failure(error as! GetGachaError))
             } catch {
                 print(error.localizedDescription)

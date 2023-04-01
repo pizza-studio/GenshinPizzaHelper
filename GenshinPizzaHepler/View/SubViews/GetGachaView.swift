@@ -11,13 +11,6 @@ import SwiftUI
 // MARK: - GetGachaView
 
 struct GetGachaView: View {
-    enum Status: Equatable {
-        case waitToStart
-        case running
-        case succeed
-        case failure(GetGachaError)
-    }
-
     @EnvironmentObject
     var viewModel: ViewModel
     @StateObject
@@ -26,7 +19,7 @@ struct GetGachaView: View {
     var observer: GachaFetchProgressObserver = .shared
 
     @State
-    var status: Status = .waitToStart
+    var status: GetGachaStatus = .waitToStart
     @State
     var account: String?
 
@@ -92,89 +85,12 @@ struct GetGachaView: View {
                     }
                 }
             } else {
-                Section {
-                    HStack {
-                        ProgressView()
-                        Spacer()
-                        Text("正在获取祈愿记录...请等待")
-                        Spacer()
-                        Button {
-                            observer.shouldCancel = true
-                        } label: {
-                            Image(systemName: "square.circle")
-                        }
-                    }
-                } footer: {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(
-                                "卡池：\(observer.gachaType.localizedDescription())"
-                            )
-                            Text("页码：\(observer.page)")
-                        }
-                        Spacer()
-                        VStack(alignment: .leading) {
-                            Text("已获取记录：\(observer.currentItems.count)条")
-                            Text("获取到新纪录：\(observer.newItemCount)条")
-                        }
-                    }
-                }
+                GettingGachaBar()
             }
-
-            if #available(iOS 16.0, *) {
-                if (status == .succeed) || (status == .running) {
-                    Section {
-                        GetGachaChart(
-                            items: observer.currentItems,
-                            data: observer.gachaTypeDateCounts
-                                .sorted(by: { $0.date > $1.date })
-                        )
-                        .padding(.vertical)
-                    }
-                }
-            }
-
-            if status == .succeed {
-                Section {
-                    Label {
-                        Text("获取祈愿记录成功")
-                    } icon: {
-                        Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
-                    }
-                } footer: {
-                    Text(
-                        "获取到\(observer.currentItems.count)条记录，成功保存\(observer.newItemCount)条新记录\n请返回上一级查看，或继续获取其他账号的记录"
-                    )
-                }
-            }
-
-            switch status {
-            case .running, .succeed:
-                if let items = observer.currentItems, !items.isEmpty {
-                    Section {
-                        ForEach(items.reversed()) { item in
-                            GachaItemBar(item: item)
-                        }
-                    } header: {
-                        Text(status == .running ? "成功获取到一批..." : "")
-                    }
-                }
-            case let .failure(error):
-                Section {
-                    Label {
-                        Text("获取祈愿记录失败")
-                    } icon: {
-                        Image(systemName: "xmark.circle")
-                            .foregroundColor(.red)
-                    }
-                    Text("ERROR: \(error.localizedDescription)")
-                }
-            default:
-                EmptyView()
-            }
+            GetGachaResultView(status: $status)
         }
         .navigationBarBackButtonHidden(status == .running)
+        .environmentObject(observer)
     }
 }
 
@@ -254,5 +170,110 @@ private struct GetGachaChart: View {
 //                })
 //            }
 //        }
+    }
+}
+
+struct GettingGachaBar: View {
+    @EnvironmentObject
+    var observer: GachaFetchProgressObserver
+
+    var body: some View {
+        Section {
+            HStack {
+                ProgressView()
+                Spacer()
+                Text("正在获取祈愿记录...请等待")
+                Spacer()
+                Button {
+                    observer.shouldCancel = true
+                } label: {
+                    Image(systemName: "square.circle")
+                }
+            }
+        } footer: {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(
+                        "卡池：\(observer.gachaType.localizedDescription())"
+                    )
+                    Text("页码：\(observer.page)")
+                }
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text("已获取记录：\(observer.currentItems.count)条")
+                    Text("获取到新纪录：\(observer.newItemCount)条")
+                }
+            }
+        }
+    }
+}
+
+enum GetGachaStatus: Equatable {
+    case waitToStart
+    case running
+    case succeed
+    case failure(GetGachaError)
+}
+
+struct GetGachaResultView: View {
+    @EnvironmentObject
+    var observer: GachaFetchProgressObserver
+
+    @Binding var status: GetGachaStatus
+
+    var body: some View {
+        if #available(iOS 16.0, *) {
+            if (status == .succeed) || (status == .running) {
+                Section {
+                    GetGachaChart(
+                        items: observer.currentItems,
+                        data: observer.gachaTypeDateCounts
+                            .sorted(by: { $0.date > $1.date })
+                    )
+                    .padding(.vertical)
+                }
+            }
+        }
+
+        if status == .succeed {
+            Section {
+                Label {
+                    Text("获取祈愿记录成功")
+                } icon: {
+                    Image(systemName: "checkmark.circle")
+                        .foregroundColor(.green)
+                }
+            } footer: {
+                Text(
+                    "获取到\(observer.currentItems.count)条记录，成功保存\(observer.newItemCount)条新记录\n请返回上一级查看，或继续获取其他账号的记录"
+                )
+            }
+        }
+
+        switch status {
+        case .running, .succeed:
+            let items = observer.currentItems
+            if !items.isEmpty {
+                Section {
+                    ForEach(items.reversed()) { item in
+                        GachaItemBar(item: item)
+                    }
+                } header: {
+                    Text(status == .running ? "成功获取到一批..." : "")
+                }
+            }
+        case let .failure(error):
+            Section {
+                Label {
+                    Text("获取祈愿记录失败")
+                } icon: {
+                    Image(systemName: "xmark.circle")
+                        .foregroundColor(.red)
+                }
+                Text("ERROR: \(error.localizedDescription)")
+            }
+        default:
+            EmptyView()
+        }
     }
 }

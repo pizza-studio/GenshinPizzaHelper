@@ -149,6 +149,31 @@ class GachaViewModel: ObservableObject {
             completion(.success(()))
         }
     }
+
+    func getGachaAndSaveFor(
+        server: Server,
+        authkey: GenAuthKeyResult.GenAuthKeyData,
+        observer: GachaFetchProgressObserver,
+        completion: @escaping (
+            (Result<(), GetGachaError>) -> ()
+            )
+    ) {
+        let group = DispatchGroup()
+        group.enter()
+        MihoyoAPI.getGachaLogAndSave(server: server, authKey: authkey, manager: manager, observer: observer) { result in
+            switch result {
+            case .success:
+                group.leave()
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+        group.notify(queue: .main) {
+            self.refetchGachaItems()
+            completion(.success(()))
+        }
+    }
+
 }
 
 // MARK: - GachaFilter

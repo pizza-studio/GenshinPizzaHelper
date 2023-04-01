@@ -77,11 +77,7 @@ struct GachaView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    GetGachaView()
-                } label: {
-                    Image(systemName: "goforward.plus")
-                }
+                GetGachaNavigationMenu()
             }
             ToolbarItemGroup(placement: .bottomBar) {
                 FilterEditer(
@@ -301,5 +297,33 @@ private struct GachaChart: View {
                 return .red
             }
         }
+    }
+}
+
+private struct GetGachaNavigationMenu: View {
+    @State private var showView1 = false
+    @State private var showView2 = false
+
+    var body: some View {
+        Menu {
+            Button("通过API获取\n（仅国服，优先选用）") {
+              self.showView1.toggle()
+            }
+            Button("通过抓包或URL获取\n（所有服务器）") {
+              self.showView2.toggle()
+            }
+        } label: {
+            Image(systemName: "goforward.plus")
+        }
+        .background(
+            Group {
+                NavigationLink(destination: GetGachaView(), isActive: $showView1) {
+                    EmptyView()
+                }
+                NavigationLink(destination: MIMTGetGachaView(), isActive: $showView2) {
+                    EmptyView()
+                }
+            }
+        )
     }
 }

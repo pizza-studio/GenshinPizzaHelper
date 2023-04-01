@@ -6,30 +6,36 @@
 //
 
 import Foundation
+import HBMihoyoAPI
 
 func genGachaURL(
-    account: AccountConfiguration,
+    server: Server,
     authkey: GenAuthKeyResult.GenAuthKeyData,
     gachaType: _GachaType,
     page: Int,
     endId: String
-)
-    -> URL {
+) -> URL {
     let gameBiz: String
-    switch account.server.region {
+    switch server.region {
     case .cn: gameBiz = "hk4e_cn"
     case .global: gameBiz = "hk4e_global"
     }
 
-    let lang = "zh-cn"
+    let LANG = "zh-cn"
 
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
-    switch account.server.region {
+    switch server.region {
     case .cn: urlComponents.host = "hk4e-api.mihoyo.com"
-    case .global: urlComponents.host = "sg-hk4e-api.hoyolab.com/"
+    case .global: urlComponents.host = "hk4e-api-os.hoyoverse.com"
     }
     urlComponents.path = "/event/gacha_info/api/getGachaLog"
+
+    let gameVersion: String
+    switch server.region {
+    case .cn: gameVersion = "CNRELiOS3.5.0_R13695448_S13586568_D13718257"
+    case .global: gameVersion = "OSRELWin3.5.0_R13695448_S13586568_D13948595"
+    }
 
     urlComponents.queryItems = [
         .init(name: "win_mode", value: "fullscreen"),
@@ -45,14 +51,14 @@ func genGachaURL(
             name: "timestamp",
             value: String(Int(Date().timeIntervalSince1970))
         ),
-        .init(name: "lang", value: lang),
+        .init(name: "lang", value: LANG),
         .init(name: "device_type", value: "mobile"),
         .init(
             name: "game_version",
-            value: "CNRELiOS3.5.0_R13695448_S13586568_D13718257"
+            value: gameVersion
         ),
         .init(name: "plat_type", value: "ios"),
-        .init(name: "region", value: account.server.id),
+        .init(name: "region", value: server.id),
         .init(name: "game_biz", value: gameBiz),
         .init(name: "gacha_type", value: String(gachaType.rawValue)),
         .init(name: "page", value: String(page)),
