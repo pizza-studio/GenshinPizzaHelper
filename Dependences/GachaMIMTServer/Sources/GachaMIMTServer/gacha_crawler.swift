@@ -1,6 +1,6 @@
 import RustXcframework
 @_cdecl("__swift_bridge__$gotURL")
-func __swift_bridge__gotURL (_ url: RustStr) {
+public func __swift_bridge__gotURL (_ url: RustStr) {
     gotURL(url: url)
 }
 
