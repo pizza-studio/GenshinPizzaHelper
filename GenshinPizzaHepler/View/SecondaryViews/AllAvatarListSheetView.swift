@@ -163,19 +163,15 @@ struct AvatarListItem: View {
         HStack {
             ZStack(alignment: .bottomLeading) {
                 Group {
-                    if let charMap = charMap,
-                       let char = charMap["\(avatar.id)"] {
+                    if let char = charMap?["\(avatar.id)"] {
                         EnkaWebIcon(iconString: char.iconString)
                             .background(content: {
-                                if let charMap = charMap,
-                                   let char = charMap["\(avatar.id)"] {
-                                    EnkaWebIcon(
-                                        iconString: char
-                                            .namecardIconString
-                                    )
-                                    .scaledToFill()
-                                    .offset(x: -55 / 3)
-                                } else { EmptyView() }
+                                EnkaWebIcon(
+                                    iconString: char
+                                        .namecardIconString
+                                )
+                                .scaledToFill()
+                                .offset(x: -55 / 3)
                             })
                     } else {
                         WebImage(urlStr: avatar.icon)
@@ -196,7 +192,7 @@ struct AvatarListItem: View {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
                     Text(avatar.nameCorrected)
                         .font(.system(size: 20, weight: .medium))
-//                        .fixedSize(horizontal: true, vertical: false)
+                        // .fixedSize(horizontal: true, vertical: false)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                     Spacer()
@@ -346,19 +342,15 @@ private struct AvatarListItemShare: View {
         HStack {
             ZStack(alignment: .bottomLeading) {
                 Group {
-                    if let charMap = charMap,
-                       let char = charMap["\(avatar.id)"] {
+                    if let char = charMap?["\(avatar.id)"] {
                         EnkaWebIcon(iconString: char.iconString)
                             .background(content: {
-                                if let charMap = charMap,
-                                   let char = charMap["\(avatar.id)"] {
-                                    EnkaWebIcon(
-                                        iconString: char
-                                            .namecardIconString
-                                    )
-                                    .scaledToFill()
-                                    .offset(x: -55 / 3)
-                                } else { EmptyView() }
+                                EnkaWebIcon(
+                                    iconString: char
+                                        .namecardIconString
+                                )
+                                .scaledToFill()
+                                .offset(x: -55 / 3)
                             })
                     } else {
                         WebImage(urlStr: avatar.icon)
@@ -380,8 +372,8 @@ private struct AvatarListItemShare: View {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
                     Text(avatar.nameCorrected)
                         .font(.system(size: 20, weight: .medium))
-//                        .fixedSize(horizontal: true, vertical: false)
-//                        .minimumScaleFactor(0.7)
+                        // .fixedSize(horizontal: true, vertical: false)
+                        // .minimumScaleFactor(0.7)
                         .lineLimit(1)
                         .layoutPriority(1)
                     Spacer()

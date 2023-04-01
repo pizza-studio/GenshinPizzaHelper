@@ -151,7 +151,8 @@ struct GetGachaView: View {
 
             switch status {
             case .running, .succeed:
-                if let items = observer.currentItems, !items.isEmpty {
+                let items = observer.currentItems
+                if !items.isEmpty {
                     Section {
                         ForEach(items.reversed()) { item in
                             GachaItemBar(item: item)

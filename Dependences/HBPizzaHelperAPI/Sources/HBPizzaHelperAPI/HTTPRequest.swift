@@ -471,7 +471,7 @@ struct HttpMethod<T: Codable> {
 extension String {
     func addPara(_ key: String, _ value: String) -> String {
         var str = self
-        if str != "" && str.last != "?" {
+        if str != "", str.last != "?" {
             str += "&"
         }
         str += "\(key)=\(value)"

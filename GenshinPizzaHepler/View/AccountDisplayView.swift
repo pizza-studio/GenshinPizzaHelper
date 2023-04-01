@@ -309,14 +309,13 @@ struct GameInfoBlockForSave: View {
         HStack {
             Spacer()
             VStack(alignment: .leading, spacing: 5) {
-                if let accountName = accountName {
-                    HStack(alignment: .lastTextBaseline, spacing: 2) {
-                        Image(systemName: "person.fill")
-                        Text(accountName)
-                    }
-                    .font(.footnote)
-                    .foregroundColor(Color("textColor3"))
+                HStack(alignment: .lastTextBaseline, spacing: 2) {
+                    Image(systemName: "person.fill")
+                    Text(accountName)
                 }
+                .font(.footnote)
+                .foregroundColor(Color("textColor3"))
+
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
                     Text("\(userData.resinInfo.currentResin)")
                         .font(.system(size: 50, design: .rounded))

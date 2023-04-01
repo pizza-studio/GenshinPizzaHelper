@@ -264,13 +264,12 @@ private struct WorldExplorationsViewAll: View {
                         $0.id < $1.id
                     }, id: \.id) { worldData in
                         VStack(alignment: .center, spacing: 10) {
-                            if let offerings = worldData.offerings {
-                                if worldData.id != 6 { // 取消层岩地上的流明石的显示
-                                    ForEach(offerings, id: \.name) { offering in
-                                        WorldOfferingsExplorationsView(
-                                            data: offering
-                                        )
-                                    }
+                            let offerings = worldData.offerings
+                            if worldData.id != 6 { // 取消层岩地上的流明石的显示
+                                ForEach(offerings, id: \.name) { offering in
+                                    WorldOfferingsExplorationsView(
+                                        data: offering
+                                    )
                                 }
                             }
                         }
@@ -284,16 +283,13 @@ private struct WorldExplorationsViewAll: View {
                 }, id: \.id) { worldData in
                     VStack(alignment: .center, spacing: 10) {
                         WorldExplorationsView(data: worldData)
-                        if let offerings = worldData.offerings {
-                            if worldData.id != 6 { // 取消层岩地上的流明石的显示
-                                ForEach(offerings, id: \.name) { offering in
-                                    WorldOfferingsExplorationsView(
-                                        data: offering
-                                    )
-                                }
+                        let offerings = worldData.offerings
+                        if worldData.id != 6 { // 取消层岩地上的流明石的显示
+                            ForEach(offerings, id: \.name) { offering in
+                                WorldOfferingsExplorationsView(
+                                    data: offering
+                                )
                             }
-                        } else {
-                            Spacer()
                         }
                     }
                     .frame(minWidth: 80)
