@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - AppConfiguration
 
@@ -51,21 +52,33 @@ enum AppConfig {
 }
 
 extension AppConfig {
-    public static var forceCharacterWeaponNameFixed: Bool {
-        let user = UserDefaults(suiteName: "group.GenshinPizzaHelper")
-        return user?
-            .bool(forKey: "forceCharacterWeaponNameFixed") ?? false
-    }
+    @AppStorage(
+        "adaptiveSpacingInCharacterView",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var adaptiveSpacingInCharacterView: Bool = true
 
-    public static var useActualCharacterNames: Bool {
-        let user = UserDefaults(suiteName: "group.GenshinPizzaHelper")
-        return user?
-            .bool(forKey: "useActualCharacterNames") ?? false
-    }
+    @AppStorage(
+        "showRarityAndLevelForArtifacts",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var showRarityAndLevelForArtifacts: Bool = true
 
-    public static var adaptiveSpacingInCharacterView: Bool {
-        let user = UserDefaults(suiteName: "group.GenshinPizzaHelper")
-        return user?
-            .bool(forKey: "adaptiveSpacingInCharacterView") ?? true
-    }
+    @AppStorage(
+        "forceCharacterWeaponNameFixed",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var forceCharacterWeaponNameFixed: Bool = false
+
+    @AppStorage(
+        "useActualCharacterNames",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var useActualCharacterNames: Bool = true
+
+    @AppStorage(
+        "useCondensedSystemFontForAlphanumericals",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var useCondensedSystemFontForAlphanumericals: Bool = true
 }

@@ -45,11 +45,24 @@ struct DisplayOptionsView: View {
                     "这仅对 iPad 以及有「刘海」的 iPhone 生效。"
                 )
             }
+
+            Section {
+                Toggle(isOn: $useCondensedSystemFontForAlphanumericals) {
+                    Text("使用紧凑型英数字体")
+                }
+            } footer: {
+                Text(
+                    "这仅对角色详情等少部分界面生效。"
+                )
+            }
         }
         .navigationBarTitle("界面偏好设置", displayMode: .inline)
     }
 
     // MARK: Private
+
+    @ObservedObject
+    private var viewModel: MoreViewCacheViewModel = .init()
 
     @AppStorage(
         "adaptiveSpacingInCharacterView",
@@ -63,17 +76,21 @@ struct DisplayOptionsView: View {
     )
     private var showRarityAndLevelForArtifacts: Bool = true
 
-    @ObservedObject
-    private var viewModel: MoreViewCacheViewModel = .init()
-
     @AppStorage(
         "forceCharacterWeaponNameFixed",
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     private var forceCharacterWeaponNameFixed: Bool = false
+
     @AppStorage(
         "useActualCharacterNames",
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     private var useActualCharacterNames: Bool = true
+
+    @AppStorage(
+        "useCondensedSystemFontForAlphanumericals",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    private var useCondensedSystemFontForAlphanumericals: Bool = true
 }

@@ -315,6 +315,7 @@ struct AttributeLabel: View {
                 .font(.systemCondensed(size: fontSize, weight: .semibold))
                 .foregroundColor(textColor)
                 .fixedSize(horizontal: true, vertical: true)
+                .minimumScaleFactor(0.5)
                 .padding(.horizontal)
                 .background(
                     Capsule()
@@ -334,7 +335,7 @@ struct AttributeLabel: View {
                         valueViewModified
                     }
                 }
-                .frame(height: 20)
+                .frame(height: fontSize + 6)
             } else {
                 // Fallback on earlier versions
                 HStack {
@@ -347,6 +348,7 @@ struct AttributeLabel: View {
                     Spacer()
                     valueViewModified
                 }
+                .frame(height: fontSize + 6)
             }
         } else {
             // Fallback on earlier versions
@@ -369,6 +371,7 @@ struct AttributeLabel: View {
                 Spacer()
                 valueViewModified
             }
+            .frame(height: fontSize + 6)
         }
     }
 }
@@ -410,13 +413,15 @@ internal struct ArtifactDetailView: View {
         .corneredTag(
             "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
             alignment: .bottom,
-            enabled: showRarityAndLevelForArtifacts
+            enabled: AppConfig.showRarityAndLevelForArtifacts
         )
         VStack(spacing: 0 + spacingDelta) {
             Text(artifact.mainAttribute.name.convertPercentageMarkToUpMark)
                 .font(.system(size: 11, weight: .bold))
             Text("\(artifact.mainAttribute.valueString)")
                 .font(.systemCompressed(size: 18, weight: .heavy))
+                .fixedSize(horizontal: false, vertical: true)
+                .minimumScaleFactor(0.5)
         }
         ForEach(
             artifact.subAttributes,
@@ -427,17 +432,14 @@ internal struct ArtifactDetailView: View {
                     .font(.system(size: 11))
                 Text("\(subAttribute.valueString)")
                     .font(.systemCondensed(size: 16, weight: .bold))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .minimumScaleFactor(0.5)
             }
         }
     }
 
     // MARK: Private
 
-    @AppStorage(
-        "showRarityAndLevelForArtifacts",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var showRarityAndLevelForArtifacts: Bool = true
     private let artifacts: [PlayerDetail.Avatar.Artifact]
 
     private var spacingDelta: CGFloat {

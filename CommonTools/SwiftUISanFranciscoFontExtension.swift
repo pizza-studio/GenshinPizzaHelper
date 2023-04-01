@@ -31,7 +31,9 @@ extension Font {
             default: break
             }
         }
-        if #available(iOS 16, *) {
+        osCheck: if #available(iOS 16, *) {
+            guard AppConfig.useCondensedSystemFontForAlphanumericals
+            else { break osCheck }
             return .init(
                 UIFont
                     .systemFont(
@@ -64,7 +66,9 @@ extension Font {
             default: break
             }
         }
-        if #available(iOS 16, *) {
+        osCheck: if #available(iOS 16, *) {
+            guard AppConfig.useCondensedSystemFontForAlphanumericals
+            else { break osCheck }
             return .init(
                 UIFont
                     .systemFont(
