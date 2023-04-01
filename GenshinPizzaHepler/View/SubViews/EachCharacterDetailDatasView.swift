@@ -5,12 +5,20 @@
 //  Created by Bill Haku on 2022/9/24.
 //
 
+import HBPizzaHelperAPI
 import SwiftUI
 
 // MARK: - EachCharacterDetailDatasView
 
 // @available(iOS 15, *)
 struct EachCharacterDetailDatasView: View {
+    // MARK: Lifecycle
+
+    init(avatar: PlayerDetail.Avatar, animation: Namespace.ID) {
+        self.avatar = avatar
+        self.animation = animation
+    }
+
     // MARK: Internal
 
     static var spacingDelta: CGFloat {
@@ -24,18 +32,18 @@ struct EachCharacterDetailDatasView: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
-//            if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) {
-//                VStack(spacing: 4) {
-//                    avatarIconAndSkill()
-//                    VStack(alignment: .leading) {
-//                        artifactsDetailsView()
-//                    }
-//                }
-//                VStack(spacing: 4) {
-//                    probView()
-//                    weapon()
-//                }
-//            } 上述内容回头再弄
+            //            if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) {
+            //                VStack(spacing: 4) {
+            //                    avatarIconAndSkill()
+            //                    VStack(alignment: .leading) {
+            //                        artifactsDetailsView()
+            //                    }
+            //                }
+            //                VStack(spacing: 4) {
+            //                    probView()
+            //                    weapon()
+            //                }
+            //            } 上述内容回头再弄
             VStack(spacing: 4 + Self.spacingDelta) {
                 avatarIconAndSkill()
                 weapon(fontSize: 15)
@@ -50,7 +58,7 @@ struct EachCharacterDetailDatasView: View {
 
     @ViewBuilder
     func artifactsDetailsView() -> some View {
-        ArtifactDetailView(avatar.artifacts).frame(maxWidth: .infinity)
+        enumerateArtifacts().frame(maxWidth: .infinity)
     }
 
     @ViewBuilder
@@ -234,6 +242,60 @@ struct EachCharacterDetailDatasView: View {
         }
     }
 
+    @ViewBuilder
+    func enumerateArtifacts() -> some View {
+        ForEach(
+            Array(avatar.artifacts.enumerated()),
+            id: \.offset
+        ) { seqIndex, artifact in
+            // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
+            VStack(spacing: 4 + Self.spacingDelta) {
+                perArtifactDetailView(artifact, seqIndex: seqIndex)
+            }
+        }
+    }
+
+    @ViewBuilder
+    func perArtifactDetailView(
+        _ artifact: PlayerDetail.Avatar.Artifact,
+        seqIndex: Int
+    )
+        -> some View {
+        ZStack {
+            HomeSourceWebIcon(
+                iconString: artifact
+                    .iconString
+            )
+        }
+        .frame(width: 60, height: 60)
+        .corneredTag(
+            "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
+            alignment: .bottom,
+            enabled: AppConfig.showRarityAndLevelForArtifacts
+        )
+        VStack(spacing: 0 + Self.spacingDelta) {
+            Text(artifact.mainAttribute.name.convertPercentageMarkToUpMark)
+                .font(.system(size: 11, weight: .bold))
+            Text("\(artifact.mainAttribute.valueString)")
+                .font(.systemCompressed(size: 18, weight: .heavy))
+                .fixedSize(horizontal: false, vertical: true)
+                .minimumScaleFactor(0.5)
+        }
+        ForEach(
+            artifact.subAttributes,
+            id: \.name
+        ) { subAttribute in
+            VStack(spacing: 0 + Self.spacingDelta) {
+                Text(subAttribute.name.convertPercentageMarkToUpMark)
+                    .font(.system(size: 11))
+                Text("\(subAttribute.valueString)")
+                    .font(.systemCondensed(size: 16, weight: .bold))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .minimumScaleFactor(0.5)
+            }
+        }
+    }
+
     // MARK: Private
 
     private var adaptiveSpacingInCharacterView: Bool {
@@ -373,77 +435,6 @@ struct AttributeLabel: View {
             }
             .frame(height: fontSize + 6)
         }
-    }
-}
-
-// MARK: - ArtifactDetailView
-
-// @available(iOS 15.0, *)
-internal struct ArtifactDetailView: View {
-    // MARK: Lifecycle
-
-    public init(_ artifacts: [PlayerDetail.Avatar.Artifact]) {
-        self.artifacts = artifacts
-    }
-
-    // MARK: Internal
-
-    var body: some View {
-        ForEach(artifacts) { artifact in
-            // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
-            VStack(spacing: 4 + spacingDelta) {
-                perArtifactDetailView(artifact)
-            }
-        }
-    }
-
-    @ViewBuilder
-    func perArtifactDetailView(
-        _ artifact: PlayerDetail.Avatar
-            .Artifact
-    )
-        -> some View {
-        ZStack {
-            HomeSourceWebIcon(
-                iconString: artifact
-                    .iconString
-            )
-        }
-        .frame(width: 60, height: 60)
-        .corneredTag(
-            "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
-            alignment: .bottom,
-            enabled: AppConfig.showRarityAndLevelForArtifacts
-        )
-        VStack(spacing: 0 + spacingDelta) {
-            Text(artifact.mainAttribute.name.convertPercentageMarkToUpMark)
-                .font(.system(size: 11, weight: .bold))
-            Text("\(artifact.mainAttribute.valueString)")
-                .font(.systemCompressed(size: 18, weight: .heavy))
-                .fixedSize(horizontal: false, vertical: true)
-                .minimumScaleFactor(0.5)
-        }
-        ForEach(
-            artifact.subAttributes,
-            id: \.name
-        ) { subAttribute in
-            VStack(spacing: 0 + spacingDelta) {
-                Text(subAttribute.name.convertPercentageMarkToUpMark)
-                    .font(.system(size: 11))
-                Text("\(subAttribute.valueString)")
-                    .font(.systemCondensed(size: 16, weight: .bold))
-                    .fixedSize(horizontal: false, vertical: true)
-                    .minimumScaleFactor(0.5)
-            }
-        }
-    }
-
-    // MARK: Private
-
-    private let artifacts: [PlayerDetail.Avatar.Artifact]
-
-    private var spacingDelta: CGFloat {
-        EachCharacterDetailDatasView.spacingDelta
     }
 }
 

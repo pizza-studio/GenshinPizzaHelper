@@ -169,117 +169,114 @@ public enum PizzaHelperAPI {
 
         urlStr = urlStr.addPara("sstar", String(artifacts.sands.star))
         urlStr = urlStr.addPara("slv", String(artifacts.sands.lv))
-        guard let mainProp = artifacts.sands.mainProp3 else {
-            return
-        }
-        urlStr = urlStr.addPara(
-            "artifact3mainstatcat",
-            String(mainProp.rawValue)
-        )
-        urlStr = urlStr.addPara(
-            "stat3atkpercent",
-            String(artifacts.sands.atkPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat3hppercent",
-            String(artifacts.sands.hpPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat3defpercent",
-            String(artifacts.sands.defPercent)
-        )
-        urlStr = urlStr.addPara("stat3EM", String(artifacts.sands.em))
-        urlStr = urlStr.addPara(
-            "stat3ERpercent",
-            String(artifacts.sands.erPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat3CRpercent",
-            String(artifacts.sands.crPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat3CDpercent",
-            String(artifacts.sands.cdPercent)
-        )
-        urlStr = urlStr.addPara("stat3atk", String(artifacts.sands.atk))
-        urlStr = urlStr.addPara("stat3hp", String(artifacts.sands.hp))
-        urlStr = urlStr.addPara("stat3def", String(artifacts.sands.def))
+        if let mainProp = artifacts.sands.mainProp3 {
+            urlStr = urlStr.addPara(
+                "artifact3mainstatcat",
+                String(mainProp.rawValue)
+            )
+            urlStr = urlStr.addPara(
+                "stat3atkpercent",
+                String(artifacts.sands.atkPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat3hppercent",
+                String(artifacts.sands.hpPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat3defpercent",
+                String(artifacts.sands.defPercent)
+            )
+            urlStr = urlStr.addPara("stat3EM", String(artifacts.sands.em))
+            urlStr = urlStr.addPara(
+                "stat3ERpercent",
+                String(artifacts.sands.erPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat3CRpercent",
+                String(artifacts.sands.crPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat3CDpercent",
+                String(artifacts.sands.cdPercent)
+            )
+            urlStr = urlStr.addPara("stat3atk", String(artifacts.sands.atk))
+            urlStr = urlStr.addPara("stat3hp", String(artifacts.sands.hp))
+            urlStr = urlStr.addPara("stat3def", String(artifacts.sands.def))
 
-        urlStr = urlStr.addPara("gstar", String(artifacts.goblet.star))
-        urlStr = urlStr.addPara("glv", String(artifacts.goblet.lv))
-        guard let mainProp = artifacts.goblet.mainProp4 else {
-            return
+            urlStr = urlStr.addPara("gstar", String(artifacts.goblet.star))
+            urlStr = urlStr.addPara("glv", String(artifacts.goblet.lv))
         }
-        urlStr = urlStr.addPara(
-            "artifact4mainstatcat",
-            String(mainProp.rawValue)
-        )
-        urlStr = urlStr.addPara(
-            "stat4atkpercent",
-            String(artifacts.goblet.atkPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat4hppercent",
-            String(artifacts.goblet.hpPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat4defpercent",
-            String(artifacts.goblet.defPercent)
-        )
-        urlStr = urlStr.addPara("stat4EM", String(artifacts.goblet.em))
-        urlStr = urlStr.addPara(
-            "stat4ERpercent",
-            String(artifacts.goblet.erPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat4CRpercent",
-            String(artifacts.goblet.crPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat4CDpercent",
-            String(artifacts.goblet.cdPercent)
-        )
-        urlStr = urlStr.addPara("stat4atk", String(artifacts.goblet.atk))
-        urlStr = urlStr.addPara("stat4hp", String(artifacts.goblet.hp))
-        urlStr = urlStr.addPara("stat4def", String(artifacts.goblet.def))
+        if let mainProp = artifacts.goblet.mainProp4 {
+            urlStr = urlStr.addPara(
+                "artifact4mainstatcat",
+                String(mainProp.rawValue)
+            )
+            urlStr = urlStr.addPara(
+                "stat4atkpercent",
+                String(artifacts.goblet.atkPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat4hppercent",
+                String(artifacts.goblet.hpPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat4defpercent",
+                String(artifacts.goblet.defPercent)
+            )
+            urlStr = urlStr.addPara("stat4EM", String(artifacts.goblet.em))
+            urlStr = urlStr.addPara(
+                "stat4ERpercent",
+                String(artifacts.goblet.erPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat4CRpercent",
+                String(artifacts.goblet.crPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat4CDpercent",
+                String(artifacts.goblet.cdPercent)
+            )
+            urlStr = urlStr.addPara("stat4atk", String(artifacts.goblet.atk))
+            urlStr = urlStr.addPara("stat4hp", String(artifacts.goblet.hp))
+            urlStr = urlStr.addPara("stat4def", String(artifacts.goblet.def))
 
-        urlStr = urlStr.addPara("cstar", String(artifacts.circlet.star))
-        urlStr = urlStr.addPara("clv", String(artifacts.circlet.lv))
-        guard let mainProp = artifacts.circlet.mainProp5 else {
-            return
+            urlStr = urlStr.addPara("cstar", String(artifacts.circlet.star))
+            urlStr = urlStr.addPara("clv", String(artifacts.circlet.lv))
         }
-        urlStr = urlStr.addPara(
-            "artifact5mainstatcat",
-            String(mainProp.rawValue)
-        )
-        urlStr = urlStr.addPara(
-            "stat5atkpercent",
-            String(artifacts.circlet.atkPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat5hppercent",
-            String(artifacts.circlet.hpPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat5defpercent",
-            String(artifacts.circlet.defPercent)
-        )
-        urlStr = urlStr.addPara("stat5EM", String(artifacts.circlet.em))
-        urlStr = urlStr.addPara(
-            "stat5ERpercent",
-            String(artifacts.circlet.erPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat5CRpercent",
-            String(artifacts.circlet.crPercent)
-        )
-        urlStr = urlStr.addPara(
-            "stat5CDpercent",
-            String(artifacts.circlet.cdPercent)
-        )
-        urlStr = urlStr.addPara("stat5atk", String(artifacts.circlet.atk))
-        urlStr = urlStr.addPara("stat5hp", String(artifacts.circlet.hp))
-        urlStr = urlStr.addPara("stat5def", String(artifacts.circlet.def))
+        if let mainProp = artifacts.circlet.mainProp5 {
+            urlStr = urlStr.addPara(
+                "artifact5mainstatcat",
+                String(mainProp.rawValue)
+            )
+            urlStr = urlStr.addPara(
+                "stat5atkpercent",
+                String(artifacts.circlet.atkPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat5hppercent",
+                String(artifacts.circlet.hpPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat5defpercent",
+                String(artifacts.circlet.defPercent)
+            )
+            urlStr = urlStr.addPara("stat5EM", String(artifacts.circlet.em))
+            urlStr = urlStr.addPara(
+                "stat5ERpercent",
+                String(artifacts.circlet.erPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat5CRpercent",
+                String(artifacts.circlet.crPercent)
+            )
+            urlStr = urlStr.addPara(
+                "stat5CDpercent",
+                String(artifacts.circlet.cdPercent)
+            )
+            urlStr = urlStr.addPara("stat5atk", String(artifacts.circlet.atk))
+            urlStr = urlStr.addPara("stat5hp", String(artifacts.circlet.hp))
+            urlStr = urlStr.addPara("stat5def", String(artifacts.circlet.def))
+        }
 
         // 请求
         HttpMethod<ArtifactRatingScoreResult>
@@ -291,7 +288,7 @@ public enum PizzaHelperAPI {
             ) { result in
                 switch result {
                 case let .success(requestResult):
-                    print("request succeed")
+                    print("request artifact rating succeed")
                     completion(requestResult)
 
                 case .failure:

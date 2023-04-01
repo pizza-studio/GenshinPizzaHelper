@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - ArtifactRatingScoreResult
 
-public struct ArtifactRatingScoreResult: Codable {
+public struct ArtifactRatingScoreResult: Codable, Equatable {
     var charactername: String
     public var stat1pt: Double
     public var stat2pt: Double
@@ -18,6 +18,17 @@ public struct ArtifactRatingScoreResult: Codable {
     public var stat5pt: Double
     public var allpt: Double
     public var result: String
+
+    public var isValid: Bool {
+        guard allpt == stat1pt + stat2pt + stat3pt + stat4pt + stat5pt
+        else { return false }
+        guard stat1pt >= 0 else { return false }
+        guard stat2pt >= 0 else { return false }
+        guard stat3pt >= 0 else { return false }
+        guard stat4pt >= 0 else { return false }
+        guard stat5pt >= 0 else { return false }
+        return true
+    }
 }
 
 // MARK: - ArtifactRatingRequest
