@@ -75,10 +75,4 @@ extension AppConfig {
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     public static var useActualCharacterNames: Bool = true
-
-    @AppStorage(
-        "useCondensedSystemFontForAlphanumericals",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    public static var useCondensedSystemFontForAlphanumericals: Bool = true
 }

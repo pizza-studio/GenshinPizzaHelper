@@ -45,10 +45,16 @@ struct EachCharacterDetailDatasView: View {
             //                }
             //            } 上述内容回头再弄
             VStack(spacing: 4 + Self.spacingDelta) {
-                avatarIconAndSkill()
-                weapon(fontSize: 15)
-                Divider()
-                probView(fontSize: 15)
+                AvatarAndSkillView(avatar: avatar, fontSize: 15)
+                    .padding(.bottom, 2)
+                ZStack {
+                    Color.black.opacity(0.1).cornerRadius(8)
+                    VStack(spacing: 4 + Self.spacingDelta) {
+                        weapon(fontSize: 15)
+                        probView(fontSize: 15)
+                    }
+                    .padding(.horizontal, 8)
+                }
                 HStack(alignment: .top, spacing: Self.spacingDelta) {
                     artifactsDetailsView()
                 }
@@ -62,16 +68,11 @@ struct EachCharacterDetailDatasView: View {
     }
 
     @ViewBuilder
-    func avatarIconAndSkill() -> some View {
-        AvatarAndSkillView(avatar: avatar)
-    }
-
-    @ViewBuilder
     func weapon(fontSize: CGFloat = 15) -> some View {
         HStack(alignment: .center, spacing: 12) {
             // Weapon
             let weapon = avatar.weapon
-            let maxHeight: CGFloat = 70
+            let maxHeight: CGFloat = fontSize * 4.3
             ZStack {
                 EnkaWebIcon(
                     iconString: weapon.rankLevel
@@ -95,20 +96,22 @@ struct EachCharacterDetailDatasView: View {
                     name: weapon.nameCorrected,
                     valueView: Text("精炼\(weapon.refinementRank)阶"),
                     fontSize: fontSize,
-                    titleEmphasized: true
+                    titleEmphasized: true,
+                    hasDash: false
                 )
-                .padding(.bottom, 2)
                 AttributeLabel(
                     name: weapon.mainAttribute.name
                         .convertPercentageMarkToUpMark,
                     value: avatar.weapon.mainAttribute.valueString,
-                    fontSize: fontSize
+                    fontSize: fontSize,
+                    hasDash: false
                 )
                 if let subAttribute = weapon.subAttribute {
                     AttributeLabel(
                         name: subAttribute.name.convertPercentageMarkToUpMark,
                         value: subAttribute.valueString,
-                        fontSize: fontSize
+                        fontSize: fontSize,
+                        hasDash: false
                     )
                 }
             }
@@ -119,18 +122,42 @@ struct EachCharacterDetailDatasView: View {
     func probView(fontSize: CGFloat = 15) -> some View {
         // Other prob
         let probRows = Group {
-            AttributeLabel(
-                iconString: "UI_Icon_MaxHp",
-                name: "生命值上限",
-                value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))",
-                fontSize: fontSize
-            )
-            AttributeLabel(
-                iconString: "UI_Icon_CurAttack",
-                name: "攻击力",
-                value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))",
-                fontSize: fontSize
-            )
+            if avatar.fightPropMap.healingBonus > 0 {
+                AttributeLabel(
+                    iconString: "UI_Icon_MaxHp",
+                    name: "生命值上限".localized + " & " + "治疗加成%%".localized
+                        .dropLast(1)
+                        .description,
+                    value: "\(Int(ceil(avatar.fightPropMap.HP)))" + " & " +
+                        "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%",
+                    fontSize: fontSize
+                )
+            } else {
+                AttributeLabel(
+                    iconString: "UI_Icon_MaxHp",
+                    name: "生命值上限",
+                    value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))",
+                    fontSize: fontSize
+                )
+            }
+            if avatar.fightPropMap.physicalDamage > 0 {
+                AttributeLabel(
+                    iconString: "UI_Icon_CurAttack",
+                    name: "攻击力".localized + " & " + "物伤加成%%".localized
+                        .dropLast(1)
+                        .description,
+                    value: "\(Int(ceil(avatar.fightPropMap.ATK)))" + " & " +
+                        "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%",
+                    fontSize: fontSize
+                )
+            } else {
+                AttributeLabel(
+                    iconString: "UI_Icon_CurAttack",
+                    name: "攻击力",
+                    value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))",
+                    fontSize: fontSize
+                )
+            }
             AttributeLabel(
                 iconString: "UI_Icon_CurDefense",
                 name: "防御力",
@@ -149,14 +176,6 @@ struct EachCharacterDetailDatasView: View {
                 value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%",
                 fontSize: fontSize
             )
-            if avatar.fightPropMap.healingBonus > 0 {
-                AttributeLabel(
-                    iconString: "UI_Icon_Heal",
-                    name: "治疗加成",
-                    value: "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%",
-                    fontSize: fontSize
-                )
-            }
             AttributeLabel(
                 iconString: "UI_Icon_CriticalRate",
                 name: "暴击率",
@@ -221,14 +240,6 @@ struct EachCharacterDetailDatasView: View {
                 )
             default:
                 EmptyView()
-            }
-            if avatar.fightPropMap.physicalDamage > 0 {
-                AttributeLabel(
-                    iconString: "UI_Icon_PhysicalAttackUp",
-                    name: "物理伤害加成",
-                    value: "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%",
-                    fontSize: fontSize
-                )
             }
         }
         if #available(iOS 16, *) {
@@ -311,13 +322,16 @@ struct AttributeLabel: View {
 
     public init(
         iconString: String = "",
+        iconStringSecondary: String? = nil,
         name: String,
         value: String,
         fontSize: CGFloat = 15,
         titleEmphasized: Bool = false,
         textColor: Color = .primary,
-        backgroundColor: Color = .gray
+        backgroundColor: Color = .gray,
+        hasDash: Bool = true
     ) {
+        self.secondaryIconString = iconStringSecondary
         self.iconString = iconString
         self.name = name
         self.value = value
@@ -326,17 +340,21 @@ struct AttributeLabel: View {
         self.titleEmphasized = titleEmphasized
         self.textColor = textColor
         self.backgroundColor = backgroundColor
+        self.hasDash = hasDash
     }
 
     public init(
         iconString: String = "",
+        iconStringSecondary: String? = nil,
         name: String,
         valueView: Text,
         fontSize: CGFloat = 15,
         titleEmphasized: Bool = false,
         textColor: Color = .primary,
-        backgroundColor: Color = .gray
+        backgroundColor: Color = .gray,
+        hasDash: Bool = true
     ) {
+        self.secondaryIconString = iconStringSecondary
         self.iconString = iconString
         self.name = name
         self.value = ""
@@ -345,11 +363,13 @@ struct AttributeLabel: View {
         self.titleEmphasized = titleEmphasized
         self.textColor = textColor
         self.backgroundColor = backgroundColor
+        self.hasDash = hasDash
     }
 
     // MARK: Internal
 
     let iconString: String
+    let secondaryIconString: String?
     let name: String
     let value: String
     let fontSize: CGFloat
@@ -357,14 +377,34 @@ struct AttributeLabel: View {
     let textColor: Color
     let backgroundColor: Color
     let valueView: Text?
+    let hasDash: Bool
 
-    var body: some View {
-        let image = Image(iconString)
+    var image: some View {
+        guard !iconString.isEmpty else {
+            return AnyView(EmptyView())
+        }
+        let result = Image(iconString)
             .resizable()
             .scaledToFit()
-            .padding(.vertical, 1)
+            .frame(width: fontSize + 6, height: fontSize + 6)
             .padding(.leading, 3)
-        let nameView = Text(LocalizedStringKey(name))
+        return AnyView(result)
+    }
+
+    var secondaryImage: some View {
+        guard let secondaryIconString = secondaryIconString,
+              !secondaryIconString.isEmpty else {
+            return AnyView(EmptyView())
+        }
+        let result = Image(secondaryIconString)
+            .resizable()
+            .scaledToFit()
+            .frame(width: fontSize + 6, height: fontSize + 6)
+        return AnyView(result)
+    }
+
+    var nameView: some View {
+        Text(LocalizedStringKey(name))
             .font(.systemCondensed(
                 size: fontSize,
                 weight: titleEmphasized ? .heavy : .regular
@@ -372,13 +412,24 @@ struct AttributeLabel: View {
             .fixedSize(horizontal: true, vertical: true)
             .minimumScaleFactor(0.5)
             .lineLimit(1)
+    }
+
+    var dashSpacer: some View {
+        guard hasDash else { return AnyView(Spacer()) }
+        return AnyView(
+            Color.white.opacity(0.1)
+                .frame(maxWidth: .infinity, maxHeight: 0.5)
+        )
+    }
+
+    var body: some View {
         if #available(iOS 15.0, *) {
             let valueViewModified = valueView
                 .font(.systemCondensed(size: fontSize, weight: .semibold))
                 .foregroundColor(textColor)
                 .fixedSize(horizontal: true, vertical: true)
                 .minimumScaleFactor(0.5)
-                .padding(.horizontal)
+                .padding(.horizontal, fontSize / 2)
                 .background(
                     Capsule()
                         .foregroundStyle(.gray)
@@ -386,32 +437,18 @@ struct AttributeLabel: View {
                         .frame(maxWidth: 200)
                         .opacity(0.25)
                 )
-            if #available(iOS 16.0, *) {
-                GridRow {
-                    if !iconString.isEmpty {
-                        image
-                    }
-                    HStack {
-                        nameView
-                        Spacer()
-                        valueViewModified
-                    }
-                }
-                .frame(height: fontSize + 6)
-            } else {
-                // Fallback on earlier versions
+            HStack {
                 HStack {
-                    HStack {
-                        if !iconString.isEmpty {
-                            image
-                        }
-                        nameView
+                    HStack(spacing: 0) {
+                        image
+                        secondaryImage
                     }
-                    Spacer()
-                    valueViewModified
+                    nameView
                 }
-                .frame(height: fontSize + 6)
+                dashSpacer
+                valueViewModified
             }
+            .frame(height: fontSize + 6)
         } else {
             // Fallback on earlier versions
             let valueViewModified = valueView
@@ -425,12 +462,13 @@ struct AttributeLabel: View {
                 )
             HStack {
                 HStack {
-                    if !iconString.isEmpty {
+                    HStack(spacing: 0) {
                         image
+                        secondaryImage
                     }
                     nameView
                 }
-                Spacer()
+                dashSpacer
                 valueViewModified
             }
             .frame(height: fontSize + 6)
@@ -445,9 +483,10 @@ private struct AvatarAndSkillView: View {
     // MARK: Internal
 
     let avatar: PlayerDetail.Avatar
+    let fontSize: CGFloat
 
     var body: some View {
-        HStack(alignment: .bottom) {
+        HStack(alignment: .bottom, spacing: fontSize) {
             EnkaWebIcon(iconString: avatar.iconString)
                 .frame(width: 85, height: 85)
                 .background(
@@ -472,20 +511,40 @@ private struct AvatarAndSkillView: View {
                     VStack(alignment: .leading, spacing: 2 + spacingDelta) {
                         AttributeLabel(
                             name: "等级",
-                            value: avatar.level.description
+                            value: avatar.level.description,
+                            hasDash: false
                         )
                         AttributeLabel(
                             name: "命之座",
-                            valueView: Text("\(avatar.talentCount)命")
+                            valueView: Text("\(avatar.talentCount)命"),
+                            hasDash: false
                         )
                     }
-                    .font(.system(size: 15))
+                    .font(.system(size: fontSize))
                     HStack(alignment: .lastTextBaseline, spacing: 2) {
                         ForEach(avatar.skills, id: \.self) { skill in
-                            VStack(spacing: 0) {
-                                EnkaWebIcon(iconString: skill.iconString)
-                                skill.levelDisplay
-                            }
+                            ZStack(alignment: .bottom) {
+                                VStack {
+                                    ZStack(alignment: .center) {
+                                        Color.black.opacity(0.1)
+                                            .clipShape(Circle())
+                                        EnkaWebIcon(
+                                            iconString: skill
+                                                .iconString
+                                        )
+                                        .scaledToFit().scaleEffect(0.8)
+                                    }.frame(width: 40, height: 40)
+                                    Spacer()
+                                }
+                                // 这里不用 corneredTag，因为要保证所有版本的 iOS 都能显示。
+                                ZStack(alignment: .center) {
+                                    Color.black.opacity(0.1)
+                                        .clipShape(Capsule())
+                                    skill.levelDisplay(size: fontSize * 0.9)
+                                        .padding(.horizontal, 4)
+                                }.frame(height: fontSize)
+                                    .fixedSize()
+                            }.frame(width: 40, height: 40 + fontSize / 2)
                         }
                     }.frame(width: 120)
                 }
@@ -551,12 +610,12 @@ extension PlayerDetail.Avatar.Skill {
         levelAdjusted != level
     }
 
-    var levelDisplay: some View {
+    func levelDisplay(size: CGFloat) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
-            Text("\(level)").font(.system(size: 14, weight: .heavy))
+            Text("\(level)").font(.system(size: size * 0.93, weight: .heavy))
             if isLevelAdjusted {
                 Text("+\(levelAdjusted - level)")
-                    .font(.system(size: 12, weight: .heavy))
+                    .font(.system(size: size * 0.8, weight: .heavy))
             }
         }
     }
