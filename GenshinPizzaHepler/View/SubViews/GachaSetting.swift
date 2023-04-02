@@ -94,6 +94,14 @@ struct GachaSetting: View {
                 }
                 .disabled(account == nil)
             }
+            #if DEBUG
+                Section {
+                    Button("delete all records (DEBUG ONLY)") {
+                        gachaViewModel.manager.deleteAllRecord()
+                        gachaViewModel.refetchGachaItems()
+                    }
+                }
+            #endif
         }
         .alert(item: $alert, content: { alert in
             let formatter = DateFormatter()

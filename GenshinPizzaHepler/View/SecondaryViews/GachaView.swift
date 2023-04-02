@@ -66,22 +66,10 @@ struct GachaView: View {
             } header: {
                 Text("抽取记录")
             }
-            #if DEBUG
-                Section {
-                    Button("delete all records (DEBUG ONLY)") {
-                        gachaViewModel.manager.deleteAllRecord()
-                        gachaViewModel.refetchGachaItems()
-                    }
-                }
-            #endif
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    GetGachaView()
-                } label: {
-                    Image(systemName: "goforward.plus")
-                }
+                GetGachaNavigationMenu()
             }
             ToolbarItemGroup(placement: .bottomBar) {
                 FilterEditer(
@@ -302,4 +290,46 @@ private struct GachaChart: View {
             }
         }
     }
+}
+
+// MARK: - GetGachaNavigationMenu
+
+private struct GetGachaNavigationMenu: View {
+    // MARK: Internal
+
+    var body: some View {
+        Menu {
+            Button("通过API获取\n（仅国服，优先选用）") {
+                showView1.toggle()
+            }
+            Button("通过抓包或URL获取\n（所有服务器）") {
+                showView2.toggle()
+            }
+        } label: {
+            Image(systemName: "goforward.plus")
+        }
+        .background(
+            Group {
+                NavigationLink(
+                    destination: GetGachaView(),
+                    isActive: $showView1
+                ) {
+                    EmptyView()
+                }
+                NavigationLink(
+                    destination: MIMTGetGachaView(),
+                    isActive: $showView2
+                ) {
+                    EmptyView()
+                }
+            }
+        )
+    }
+
+    // MARK: Private
+
+    @State
+    private var showView1 = false
+    @State
+    private var showView2 = false
 }

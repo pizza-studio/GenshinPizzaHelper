@@ -27,6 +27,7 @@ class GachaViewModel: ObservableObject {
             object: manager
                 .persistentStoreCoordinator
         )
+        _ = manager.cleanDuplicatedItems()
     }
 
     // MARK: Internal
@@ -86,17 +87,19 @@ class GachaViewModel: ObservableObject {
             }
         }
         DispatchQueue.main.async {
-            self.filteredGachaItemsWithCount = zip(filteredItems, counts)
-                .filter { item, _ in
-                    switch self.filter.rank {
-                    case .five:
-                        return item.rankType == .five
-                    case .fourAndFive:
-                        return [.five, .four].contains(item.rankType)
-                    case .threeAndFourAndFire:
-                        return true
+            withAnimation {
+                self.filteredGachaItemsWithCount = zip(filteredItems, counts)
+                    .filter { item, _ in
+                        switch self.filter.rank {
+                        case .five:
+                            return item.rankType == .five
+                        case .fourAndFive:
+                            return [.five, .four].contains(item.rankType)
+                        case .threeAndFourAndFire:
+                            return true
+                        }
                     }
-                }
+            }
         }
     }
 
@@ -134,6 +137,35 @@ class GachaViewModel: ObservableObject {
         group.enter()
         MihoyoAPI.getGachaLogAndSave(
             account: account,
+            manager: manager,
+            observer: observer
+        ) { result in
+            switch result {
+            case .success:
+                group.leave()
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+        group.notify(queue: .main) {
+            self.refetchGachaItems()
+            completion(.success(()))
+        }
+    }
+
+    func getGachaAndSaveFor(
+        server: Server,
+        authkey: GenAuthKeyResult.GenAuthKeyData,
+        observer: GachaFetchProgressObserver,
+        completion: @escaping (
+            (Result<(), GetGachaError>) -> ()
+        )
+    ) {
+        let group = DispatchGroup()
+        group.enter()
+        MihoyoAPI.getGachaLogAndSave(
+            server: server,
+            authKey: authkey,
             manager: manager,
             observer: observer
         ) { result in

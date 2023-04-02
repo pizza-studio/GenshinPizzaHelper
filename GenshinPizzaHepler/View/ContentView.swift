@@ -245,6 +245,10 @@ struct ContentView: View {
                     "homeCoinRefreshFrequencyInHour": 30,
                     "watchWidgetUseSimplifiedMode": true,
                 ])
+            UserDefaults.standard.register(defaults: [
+                "alreadyInstallCA": false,
+                "isGachaHelpsheetShown": false,
+            ])
         }
         .navigate(
             to: NotificationSettingView().environmentObject(viewModel),
