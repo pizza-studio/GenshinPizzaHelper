@@ -22,7 +22,7 @@ struct EachCharacterDetailDataView: View {
     // MARK: Internal
 
     static var spacingDelta: CGFloat {
-        ThisDevice.useAdaptiveSpacing ? 4 : 0
+        ThisDevice.useAdaptiveSpacing ? 3 : 0
     }
 
     var avatar: PlayerDetail.Avatar
@@ -54,12 +54,13 @@ struct EachCharacterDetailDataView: View {
                     }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 6)
-                }
+                }.fixedSize(horizontal: false, vertical: true)
                 HStack(alignment: .top, spacing: Self.spacingDelta) {
                     artifactsDetailsView()
                 }
             }
-        }.padding()
+        }.padding().padding(.horizontal, Self.spacingDelta * 2)
+            .padding(.vertical, Self.spacingDelta * 4)
     }
 
     @ViewBuilder
@@ -176,8 +177,7 @@ struct EachCharacterDetailDataView: View {
                 value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%",
                 fontSize: fontSize
             )
-            if ThisDevice.notchType != .none || ThisDevice.isPad || ThisDevice
-                .isMac {
+            if ThisDevice.useAdaptiveSpacing {
                 AttributeLabel(
                     iconString: "UI_Icon_CriticalRate",
                     name: "暴击率",
@@ -301,7 +301,8 @@ struct EachCharacterDetailDataView: View {
         .corneredTag(
             // TODO: i18n malfunction.
             key: "\(String(format: "%.0f", artifact.score ?? -114514))分",
-            alignment: .topLeading
+            alignment: .topLeading,
+            enabled: artifact.score != nil
         )
         VStack(spacing: 0 + Self.spacingDelta) {
             Text(artifact.mainAttribute.name.percentageMarksTrimmed)

@@ -36,14 +36,16 @@ struct DisplayOptionsView: View {
                 }
             }
 
-            Section {
-                Toggle(isOn: $adaptiveSpacingInCharacterView) {
-                    Text("角色详情排版间距适配")
+            if !ThisDevice.isHDScreenRatio {
+                Section {
+                    Toggle(isOn: $adaptiveSpacingInCharacterView) {
+                        Text("角色详情排版间距适配")
+                    }
+                } footer: {
+                    Text(
+                        "这仅对 iPad 以及有「刘海」的 iPhone 生效。"
+                    )
                 }
-            } footer: {
-                Text(
-                    "这仅对 iPad 以及有「刘海」的 iPhone 生效。"
-                )
             }
         }
         .navigationBarTitle("界面偏好设置", displayMode: .inline)

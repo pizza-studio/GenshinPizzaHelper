@@ -168,9 +168,11 @@ struct CharacterDetailView: View {
                 animation: animation
             ).frame(minWidth: 380, maxWidth: 500) // For iPad
                 .fixedSize(
-                    horizontal: !useAdaptiveSpacing,
+                    horizontal: !useAdaptiveSpacing || ThisDevice
+                        .idiom == .phone,
                     vertical: !useAdaptiveSpacing
                 )
+                .scaleEffect(ThisDevice.scaleRatioCompatible)
             // TODO: 這裡回頭可以實裝一下「隨父容器尺寸自動放大」的功能。
             // .fixedSize()
             // .scaleEffect(1.8)

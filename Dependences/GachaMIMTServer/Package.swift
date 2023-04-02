@@ -18,4 +18,3 @@ let package = Package(
 			dependencies: ["RustXcframework"])
 	]
 )
-

@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "CritDMG.png",
+      "filename" : "CritDMG.heic",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CritDMG@2x.png",
+      "filename" : "CritDMG@2x.heic",
       "idiom" : "universal",
       "scale" : "2x"
     },

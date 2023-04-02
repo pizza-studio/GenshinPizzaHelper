@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "UI_Icon_ArtifactRating.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "UI_Icon_ArtifactRating.heic",
       "idiom" : "universal",
       "scale" : "2x"
     },
