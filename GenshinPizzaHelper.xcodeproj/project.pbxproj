@@ -378,7 +378,7 @@
 		EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
 		EAA08C6D29D7BEC000DAB5FA /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA08C6C29D7BEC000DAB5FA /* NetworkExtension.framework */; };
 		EAA08C7029D7BEC000DAB5FA /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA08C6F29D7BEC000DAB5FA /* PacketTunnelProvider.swift */; };
-		EAA08C7529D7BEC000DAB5FA /* GachaMIMT.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EAA08C6B29D7BEC000DAB5FA /* GachaMIMT.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EAA08C7529D7BEC000DAB5FA /* GachaMIMT.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EAA08C6B29D7BEC000DAB5FA /* GachaMIMT.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EAA2D4122931C36F00BC94A8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAA2D4112931C36F00BC94A8 /* Settings.bundle */; };
 		EAAD03E429D2FD22007D5C80 /* GachaFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */; };
 		EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E529D2FD88007D5C80 /* GachaItem.swift */; };
@@ -2514,6 +2514,7 @@
 		};
 		EAA08C7429D7BEC000DAB5FA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = EAA08C6A29D7BEC000DAB5FA /* GachaMIMT */;
 			targetProxy = EAA08C7329D7BEC000DAB5FA /* PBXContainerItemProxy */;
 		};

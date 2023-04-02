@@ -5,6 +5,8 @@
 //  Created by 戴藏龙 on 2023/4/1.
 //
 
+#if canImport(GachaMIMTServer)
+
 import GachaMIMTServer
 import HBMihoyoAPI
 import NetworkExtension
@@ -713,3 +715,5 @@ private func parseURLToAuthkeyAndOtherParams(urlString: String)
         )
     )
 }
+
+#endif
