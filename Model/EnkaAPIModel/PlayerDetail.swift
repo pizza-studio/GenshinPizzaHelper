@@ -162,7 +162,7 @@ struct PlayerDetail {
                 .init(
                     artifactEquipment: artifactEquipment,
                     localizedDictionary: localizedDictionary,
-                    score: -1
+                    score: nil
                 )
             }
 

@@ -300,7 +300,7 @@ struct EachCharacterDetailDataView: View {
         )
         .corneredTag(
             // TODO: i18n malfunction.
-            key: "\(String(format: "%.0f", artifact.score ?? -114514))分",
+            key: "\(String(format: "%.0f", artifact.score ?? -1))分",
             alignment: .topLeading,
             enabled: artifact.score != nil
         )
