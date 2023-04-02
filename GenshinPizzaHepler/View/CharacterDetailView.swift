@@ -163,13 +163,13 @@ struct CharacterDetailView: View {
         -> some View {
         VStack {
             Spacer().frame(width: 25, height: 10)
-            EachCharacterDetailDatasView(
+            EachCharacterDetailDataView(
                 avatar: avatar,
                 animation: animation
-            ).frame(maxWidth: 500) // For iPad
+            ).frame(minWidth: 380, maxWidth: 500) // For iPad
                 .fixedSize(
-                    horizontal: !adaptiveSpacingInCharacterView,
-                    vertical: !adaptiveSpacingInCharacterView
+                    horizontal: !useAdaptiveSpacing,
+                    vertical: !useAdaptiveSpacing
                 )
             // TODO: 這裡回頭可以實裝一下「隨父容器尺寸自動放大」的功能。
             // .fixedSize()
@@ -192,7 +192,7 @@ struct CharacterDetailView: View {
 
     // MARK: Private
 
-    private var adaptiveSpacingInCharacterView: Bool {
-        AppConfig.adaptiveSpacingInCharacterView
+    private var useAdaptiveSpacing: Bool {
+        ThisDevice.useAdaptiveSpacing
     }
 }

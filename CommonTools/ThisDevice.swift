@@ -38,6 +38,18 @@ enum ThisDevice {
         UIDevice.current.userInterfaceIdiom
     }
 
+    public static var isNotchedPhone: Bool {
+        let screenSize = UIScreen.main.bounds.size
+        let big = max(screenSize.width, screenSize.height)
+        let small = min(screenSize.width, screenSize.height)
+        return (big / small) >= 1.8
+    }
+
+    public static var useAdaptiveSpacing: Bool {
+        (ThisDevice.notchType != .none || ThisDevice.isPad) &&
+            AppConfig.adaptiveSpacingInCharacterView
+    }
+
     // MARK: Internal
 
     enum NotchType {

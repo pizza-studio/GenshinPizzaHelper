@@ -8,10 +8,10 @@
 import HBPizzaHelperAPI
 import SwiftUI
 
-// MARK: - EachCharacterDetailDatasView
+// MARK: - EachCharacterDetailDataView
 
 // @available(iOS 15, *)
-struct EachCharacterDetailDatasView: View {
+struct EachCharacterDetailDataView: View {
     // MARK: Lifecycle
 
     init(avatar: PlayerDetail.Avatar, animation: Namespace.ID) {
@@ -22,8 +22,7 @@ struct EachCharacterDetailDatasView: View {
     // MARK: Internal
 
     static var spacingDelta: CGFloat {
-        guard AppConfig.adaptiveSpacingInCharacterView else { return 0 }
-        return ThisDevice.notchType != .none || ThisDevice.isPad ? 4 : 0
+        ThisDevice.useAdaptiveSpacing ? 4 : 0
     }
 
     var avatar: PlayerDetail.Avatar
@@ -54,6 +53,7 @@ struct EachCharacterDetailDatasView: View {
                         probView(fontSize: 15)
                     }
                     .padding(.horizontal, 8)
+                    .padding(.vertical, 6)
                 }
                 HStack(alignment: .top, spacing: Self.spacingDelta) {
                     artifactsDetailsView()
@@ -72,7 +72,7 @@ struct EachCharacterDetailDatasView: View {
         HStack(alignment: .center, spacing: 12) {
             // Weapon
             let weapon = avatar.weapon
-            let maxHeight: CGFloat = fontSize * 4.3
+            let maxHeight: CGFloat = fontSize * 4.3 + Self.spacingDelta * 2
             ZStack {
                 EnkaWebIcon(
                     iconString: weapon.rankLevel
@@ -101,14 +101,14 @@ struct EachCharacterDetailDatasView: View {
                 )
                 AttributeLabel(
                     name: weapon.mainAttribute.name
-                        .convertPercentageMarkToUpMark,
+                        .percentageMarksTrimmed,
                     value: avatar.weapon.mainAttribute.valueString,
                     fontSize: fontSize,
                     hasDash: false
                 )
                 if let subAttribute = weapon.subAttribute {
                     AttributeLabel(
-                        name: subAttribute.name.convertPercentageMarkToUpMark,
+                        name: subAttribute.name.percentageMarksTrimmed,
                         value: subAttribute.valueString,
                         fontSize: fontSize,
                         hasDash: false
@@ -126,9 +126,9 @@ struct EachCharacterDetailDatasView: View {
                 AttributeLabel(
                     iconString: "UI_Icon_MaxHp",
                     name: "生命值上限".localized + " & " + "治疗加成%%".localized
-                        .dropLast(1)
-                        .description,
-                    value: "\(Int(ceil(avatar.fightPropMap.HP)))" + " & " +
+                        .percentageMarksTrimmed,
+                    value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))" +
+                        ", " +
                         "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%",
                     fontSize: fontSize
                 )
@@ -144,9 +144,9 @@ struct EachCharacterDetailDatasView: View {
                 AttributeLabel(
                     iconString: "UI_Icon_CurAttack",
                     name: "攻击力".localized + " & " + "物伤加成%%".localized
-                        .dropLast(1)
-                        .description,
-                    value: "\(Int(ceil(avatar.fightPropMap.ATK)))" + " & " +
+                        .percentageMarksTrimmed,
+                    value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))" +
+                        ", " +
                         "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%",
                     fontSize: fontSize
                 )
@@ -176,18 +176,30 @@ struct EachCharacterDetailDatasView: View {
                 value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%",
                 fontSize: fontSize
             )
-            AttributeLabel(
-                iconString: "UI_Icon_CriticalRate",
-                name: "暴击率",
-                value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%",
-                fontSize: fontSize
-            )
-            AttributeLabel(
-                iconString: "UI_Icon_CriticalDamage",
-                name: "暴击伤害",
-                value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%",
-                fontSize: fontSize
-            )
+            if ThisDevice.notchType != .none || ThisDevice.isPad || ThisDevice
+                .isMac {
+                AttributeLabel(
+                    iconString: "UI_Icon_CriticalRate",
+                    name: "暴击率",
+                    value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%",
+                    fontSize: fontSize
+                )
+                AttributeLabel(
+                    iconString: "UI_Icon_CriticalDamage",
+                    name: "暴击伤害",
+                    value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%",
+                    fontSize: fontSize
+                )
+            } else {
+                AttributeLabel(
+                    iconString: "UI_Icon_CriticalDamage",
+                    name: "暴击率".localized + " & " + "暴击伤害".localized,
+                    value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%" +
+                        ", " +
+                        "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%",
+                    fontSize: fontSize
+                )
+            }
             switch avatar.element {
             case .anemo:
                 AttributeLabel(
@@ -242,13 +254,16 @@ struct EachCharacterDetailDatasView: View {
                 EmptyView()
             }
         }
-        if #available(iOS 16, *) {
-            Grid(verticalSpacing: 2 + Self.spacingDelta) {
-                probRows
-            }
-        } else {
-            VStack(spacing: 2 + Self.spacingDelta) {
-                probRows
+        VStack(spacing: 2 + Self.spacingDelta) {
+            probRows
+            if let totalScore = avatar.artifactTotalScore,
+               let rank = avatar.artifactScoreRank {
+                AttributeLabel(
+                    iconString: "UI_Icon_ArtifactRating",
+                    name: "圣遗物评价",
+                    value: "\(String(format: "%.0f", totalScore)) (\(rank))",
+                    fontSize: fontSize
+                )
             }
         }
     }
@@ -272,20 +287,24 @@ struct EachCharacterDetailDatasView: View {
         seqIndex: Int
     )
         -> some View {
-        ZStack {
-            HomeSourceWebIcon(
-                iconString: artifact
-                    .iconString
-            )
-        }
-        .frame(width: 60, height: 60)
+        HomeSourceWebIcon(
+            iconString: artifact
+                .iconString
+        )
+        .scaledToFit()
+        .frame(width: 60, height: 60 + Self.spacingDelta)
         .corneredTag(
             "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
             alignment: .bottom,
             enabled: AppConfig.showRarityAndLevelForArtifacts
         )
+        .corneredTag(
+            // TODO: i18n malfunction.
+            key: "\(String(format: "%.0f", artifact.score ?? -114514))分",
+            alignment: .topLeading
+        )
         VStack(spacing: 0 + Self.spacingDelta) {
-            Text(artifact.mainAttribute.name.convertPercentageMarkToUpMark)
+            Text(artifact.mainAttribute.name.percentageMarksTrimmed)
                 .font(.system(size: 11, weight: .bold))
             Text("\(artifact.mainAttribute.valueString)")
                 .font(.systemCompressed(size: 18, weight: .heavy))
@@ -297,7 +316,7 @@ struct EachCharacterDetailDatasView: View {
             id: \.name
         ) { subAttribute in
             VStack(spacing: 0 + Self.spacingDelta) {
-                Text(subAttribute.name.convertPercentageMarkToUpMark)
+                Text(subAttribute.name.percentageMarksTrimmed)
                     .font(.system(size: 11))
                 Text("\(subAttribute.valueString)")
                     .font(.systemCondensed(size: 16, weight: .bold))
@@ -386,7 +405,7 @@ struct AttributeLabel: View {
         let result = Image(iconString)
             .resizable()
             .scaledToFit()
-            .frame(width: fontSize + 6, height: fontSize + 6)
+            .frame(width: fontSize + 3, height: fontSize + 3)
             .padding(.leading, 3)
         return AnyView(result)
     }
@@ -399,7 +418,7 @@ struct AttributeLabel: View {
         let result = Image(secondaryIconString)
             .resizable()
             .scaledToFit()
-            .frame(width: fontSize + 6, height: fontSize + 6)
+            .frame(width: fontSize + 3, height: fontSize + 3)
         return AnyView(result)
     }
 
@@ -486,7 +505,7 @@ private struct AvatarAndSkillView: View {
     let fontSize: CGFloat
 
     var body: some View {
-        HStack(alignment: .bottom, spacing: fontSize) {
+        HStack(alignment: .bottom, spacing: fontSize / 2) {
             EnkaWebIcon(iconString: avatar.iconString)
                 .frame(width: 85, height: 85)
                 .background(
@@ -507,8 +526,8 @@ private struct AvatarAndSkillView: View {
                         Spacer().frame(width: 24)
                     }
                 }
-                HStack(alignment: .center) {
-                    VStack(alignment: .leading, spacing: 2 + spacingDelta) {
+                HStack(alignment: .center, spacing: fontSize / 2) {
+                    VStack(alignment: .leading, spacing: 2 + spacingDelta / 2) {
                         AttributeLabel(
                             name: "等级",
                             value: avatar.level.description,
@@ -544,11 +563,14 @@ private struct AvatarAndSkillView: View {
                                         .padding(.horizontal, 4)
                                 }.frame(height: fontSize)
                                     .fixedSize()
-                            }.frame(width: 40, height: 40 + fontSize / 2)
+                            }.frame(
+                                width: 40,
+                                height: 40 + fontSize / 2 + spacingDelta / 2
+                            )
                         }
                     }.frame(width: 120)
                 }
-            }
+            }.fixedSize(horizontal: false, vertical: true)
         }
         .frame(height: 85)
     }
@@ -556,13 +578,39 @@ private struct AvatarAndSkillView: View {
     // MARK: Private
 
     private var spacingDelta: CGFloat {
-        EachCharacterDetailDatasView.spacingDelta
+        EachCharacterDetailDataView.spacingDelta
     }
 }
 
 // MARK: - Trailing Text Label
 
 extension View {
+    fileprivate func corneredTag(
+        key stringKey: LocalizedStringKey,
+        alignment: Alignment,
+        textSize: CGFloat = 11,
+        opacity: CGFloat = 1,
+        enabled: Bool = true
+    )
+        -> some View {
+        guard stringKey != "" else { return EmptyView() }
+        if #available(macCatalyst 15.0, iOS 15.0, *) {
+            return overlay(alignment: alignment) {
+                Text(enabled ? stringKey : "")
+                    .font(.systemCondensed(size: textSize, weight: .medium))
+                    .padding(.horizontal, 4)
+                    .background(
+                        Capsule()
+                            .foregroundStyle(.ultraThinMaterial)
+                            .opacity(enabled ? 0.7 : 0)
+                    )
+                    .opacity(opacity)
+            }
+        } else {
+            return EmptyView()
+        }
+    }
+
     fileprivate func corneredTag(
         _ string: String,
         alignment: Alignment,
@@ -576,7 +624,7 @@ extension View {
             return overlay(alignment: alignment) {
                 Text(enabled ? string : "")
                     .font(.systemCondensed(size: textSize, weight: .medium))
-                    .padding(.horizontal, 3)
+                    .padding(.horizontal, 4)
                     .background(
                         Capsule()
                             .foregroundStyle(.ultraThinMaterial)
@@ -624,10 +672,9 @@ extension PlayerDetail.Avatar.Skill {
 // MARK: - Convert trailing percentage mark into a rised arrow mark.
 
 extension String {
-    fileprivate var convertPercentageMarkToUpMark: String {
-        guard let last = last, ["％", "%"].contains(last) else {
-            return self
-        }
-        return dropLast(1).description
+    fileprivate var percentageMarksTrimmed: String {
+        if !contains("％"), !contains("%") { return self }
+        return replacingOccurrences(of: "％", with: "")
+            .replacingOccurrences(of: "%", with: "")
     }
 }

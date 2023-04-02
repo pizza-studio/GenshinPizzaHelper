@@ -90,7 +90,7 @@ struct PlayerDetail {
     }
 
     /// 游戏角色
-    struct Avatar: Hashable {
+    class Avatar: Hashable {
         // MARK: Lifecycle
 
         init?(
@@ -161,7 +161,8 @@ struct PlayerDetail {
             }.compactMap { artifactEquipment in
                 .init(
                     artifactEquipment: artifactEquipment,
-                    localizedDictionary: localizedDictionary
+                    localizedDictionary: localizedDictionary,
+                    score: -1
                 )
             }
 
@@ -169,6 +170,37 @@ struct PlayerDetail {
 
             self.level = Int(avatarInfo.propMap.level.val) ?? 0
             self.quality = .init(rawValue: character.QualityType) ?? .purple
+
+//            var artifactScores: ArtifactRatingScoreResult?
+            print("Get artifact rating of \(name)")
+            PizzaHelperAPI
+                .getArtifactRatingScore(
+                    artifacts: convert2ArtifactRatingModel()
+                ) { artifactScores in
+                    DispatchQueue.main.async {
+                        self.artifactTotalScore = artifactScores.allpt
+                        self.artifactScoreRank = artifactScores.result
+                        for index in 0 ..< self.artifacts.count {
+                            switch self.artifacts[index].artifactType {
+                            case .flower:
+                                self.artifacts[index].score = artifactScores
+                                    .stat1pt
+                            case .plume:
+                                self.artifacts[index].score = artifactScores
+                                    .stat2pt
+                            case .sand:
+                                self.artifacts[index].score = artifactScores
+                                    .stat3pt
+                            case .goblet:
+                                self.artifacts[index].score = artifactScores
+                                    .stat4pt
+                            case .circlet:
+                                self.artifacts[index].score = artifactScores
+                                    .stat5pt
+                            }
+                        }
+                    }
+                }
         }
 
         // MARK: Internal
@@ -296,7 +328,8 @@ struct PlayerDetail {
 
             init?(
                 artifactEquipment: PlayerDetailFetchModel.AvatarInfo.EquipList,
-                localizedDictionary: [String: String]
+                localizedDictionary: [String: String],
+                score: Double?
             ) {
                 guard artifactEquipment.flat.itemType == "ITEM_RELIQUARY"
                 else { return nil }
@@ -340,6 +373,7 @@ struct PlayerDetail {
                     (artifactEquipment.reliquary?.level ?? 1) - 1,
                     0
                 )
+                self.score = score
             }
 
             // MARK: Public
@@ -376,6 +410,8 @@ struct PlayerDetail {
             let level: Int
             /// 圣遗物星级
             let rankLevel: RankLevel
+            /// 圣遗物评分
+            var score: Double?
 
             var identifier: String {
                 UUID().uuidString
@@ -468,7 +504,11 @@ struct PlayerDetail {
         /// 武器
         let weapon: Weapon
         /// 圣遗物
-        let artifacts: [Artifact]
+        var artifacts: [Artifact]
+        /// 圣遗物总分
+        var artifactTotalScore: Double?
+        /// 圣遗物评价
+        var artifactScoreRank: String?
 
         /// 角色属性
         let fightPropMap: FightPropMap
