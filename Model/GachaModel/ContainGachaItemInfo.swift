@@ -25,6 +25,30 @@ enum GachaItemType {
     case weapon
 }
 
+extension GachaItemType {
+    var cnRaw: String {
+        switch self {
+        case .character:
+            return "角色"
+        case .weapon:
+            return "武器"
+        }
+    }
+
+    static func fromCNRaw(_ string: String) -> Self? {
+        switch string {
+        case "武器": return .weapon
+        case "角色": return .character
+        default: return nil
+        }
+    }
+
+    // TODO: find by name
+    static func findByName(_ name: String) -> Self {
+        .weapon
+    }
+}
+
 extension ContainGachaItemInfo {
     var _itemType: GachaItemType {
         switch itemType {

@@ -48,8 +48,8 @@ struct LockScreenLoopWidgetView: View {
             case let .normal(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenLoopWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenLoopWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenLoopWidgetCircular(
@@ -64,8 +64,8 @@ struct LockScreenLoopWidgetView: View {
             case let .simplified(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenLoopWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenLoopWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     SimplifiedLockScreenLoopWidgetCircular(

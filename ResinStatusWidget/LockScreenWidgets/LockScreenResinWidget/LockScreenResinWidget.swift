@@ -34,11 +34,11 @@ struct LockScreenResinWidget: Widget {
                 .accessoryCorner,
             ])
         #else
-                .supportedFamilies([
-                    .accessoryCircular,
-                    .accessoryInline,
-                    .accessoryRectangular,
-                ])
+            .supportedFamilies([
+                .accessoryCircular,
+                .accessoryInline,
+                .accessoryRectangular,
+            ])
         #endif
     }
 }
@@ -56,8 +56,8 @@ struct LockScreenResinWidgetView: View {
             case let .normal(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenResinWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenResinWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenResinWidgetCircular(result: result)
@@ -71,8 +71,8 @@ struct LockScreenResinWidgetView: View {
             case let .simplified(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenResinWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenResinWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenResinWidgetCircular(result: result)

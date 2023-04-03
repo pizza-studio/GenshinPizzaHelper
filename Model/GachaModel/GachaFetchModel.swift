@@ -33,7 +33,7 @@ struct GachaItem_FM: Codable, Identifiable {
     let gachaType: String
     let itemId: String
     let count: String
-    let time: String
+    let time: Date
     let name: String
     let lang: String
     let itemType: String
@@ -51,21 +51,5 @@ extension GachaResult_FM {
         default: throw GetGachaError
             .unknowError(retcode: retcode, message: message)
         }
-    }
-}
-
-extension GachaItem_FM {
-    func saveTo(_ context: NSManagedObjectContext) {
-        let item = GachaItemMO(context: context)
-        item.count = Int16(count)!
-        item.gachaType = Int16(gachaType)!
-        item.rankType = Int16(rankType)!
-        item.id = id
-        item.itemType = itemType
-        item.lang = lang
-        item.name = name
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        item.time = dateFormatter.date(from: time)!
     }
 }

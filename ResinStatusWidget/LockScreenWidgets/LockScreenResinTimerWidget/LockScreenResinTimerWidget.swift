@@ -52,16 +52,16 @@ struct LockScreenResinTimerWidgetView: View {
             }
             .widgetURL(url)
         #if os(watchOS)
-            case .accessoryCorner:
-                Group {
-                    switch dataKind {
-                    case let .normal(result):
-                        LockScreenResinTimerWidgetCircular(result: result)
-                    case let .simplified(result):
-                        LockScreenResinTimerWidgetCircular(result: result)
-                    }
+        case .accessoryCorner:
+            Group {
+                switch dataKind {
+                case let .normal(result):
+                    LockScreenResinTimerWidgetCircular(result: result)
+                case let .simplified(result):
+                    LockScreenResinTimerWidgetCircular(result: result)
                 }
-                .widgetURL(url)
+            }
+            .widgetURL(url)
         #endif
         default:
             EmptyView()

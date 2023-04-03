@@ -9,12 +9,12 @@ import SwiftUI
 import WidgetKit
 
 #if !os(watchOS)
-    struct WidgetsBundleLowerThaniOS16: WidgetBundle {
-        var body: some Widget {
-            MainWidget()
-            MaterialWidget()
-        }
+struct WidgetsBundleLowerThaniOS16: WidgetBundle {
+    var body: some Widget {
+        MainWidget()
+        MaterialWidget()
     }
+}
 #endif
 
 // MARK: - WidgetsBundleiOS16
@@ -23,14 +23,14 @@ import WidgetKit
 struct WidgetsBundleiOS16: WidgetBundle {
     var body: some Widget {
         #if !os(watchOS)
-            WidgetsBundleLowerThaniOS16().body
-            #if canImport(ActivityKit)
-                if #available(iOS 16.1, *) {
-                    ResinRecoveryActivityWidget()
-                }
-            #endif
+        WidgetsBundleLowerThaniOS16().body
+        #if canImport(ActivityKit)
+        if #available(iOS 16.1, *) {
+            ResinRecoveryActivityWidget()
+        }
+        #endif
         #else
-            AlternativeWatchCornerResinWidget()
+        AlternativeWatchCornerResinWidget()
         #endif
         LockScreenResinWidget()
         LockScreenLoopWidget()

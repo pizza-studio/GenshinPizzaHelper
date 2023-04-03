@@ -31,7 +31,7 @@ struct LockScreenHomeCoinWidget: Widget {
                 .accessoryRectangular,
             ])
         #else
-                .supportedFamilies([.accessoryCircular, .accessoryRectangular])
+            .supportedFamilies([.accessoryCircular, .accessoryRectangular])
         #endif
     }
 }
@@ -49,8 +49,8 @@ struct LockScreenHomeCoinWidgetView: View {
             case let .normal(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenHomeCoinWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenHomeCoinWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenHomeCoinWidgetCircular(result: result)
@@ -62,8 +62,8 @@ struct LockScreenHomeCoinWidgetView: View {
             case let .simplified(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenHomeCoinWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenHomeCoinWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenHomeCoinWidgetCircular(result: result)

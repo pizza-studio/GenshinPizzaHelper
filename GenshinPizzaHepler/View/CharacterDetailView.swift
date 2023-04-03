@@ -33,7 +33,7 @@ struct CharacterDetailView: View {
     var body: some View {
         coreBody.onReceive(orientationChanged) { _ in
             guard !ThisDevice.isMac, ThisDevice.idiom == .pad else { return }
-            self.orientation = UIDevice.current.orientation
+            orientation = UIDevice.current.orientation
         }
     }
 

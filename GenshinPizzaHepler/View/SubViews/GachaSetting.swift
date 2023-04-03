@@ -42,9 +42,14 @@ struct GachaSetting: View {
     )!
     @State
     var endDate: Date = .init()
+    @State
+    var deleteAll: Bool = false
 
     @State
     var alert: AlertType?
+
+    @State
+    var isExportSheetShow: Bool = false
 
     var body: some View {
         List {
@@ -79,34 +84,68 @@ struct GachaSetting: View {
                         }
                     }
                 }
-                DatePicker(
-                    "开始日期",
-                    selection: $startDate,
-                    displayedComponents: .date
-                )
-                DatePicker(
-                    "结束日期",
-                    selection: $endDate,
-                    displayedComponents: .date
-                )
+                Toggle("删除所有时间的记录", isOn: $deleteAll)
+                if !deleteAll {
+                    DatePicker(
+                        "开始日期",
+                        selection: $startDate,
+                        displayedComponents: .date
+                    )
+                    DatePicker(
+                        "结束日期",
+                        selection: $endDate,
+                        displayedComponents: .date
+                    )
+                }
                 Button("删除祈愿记录") {
                     alert = .deleteCheck
                 }
                 .disabled(account == nil)
             }
-            #if DEBUG
-                Section {
-                    Button("delete all records (DEBUG ONLY)") {
-                        gachaViewModel.manager.deleteAllRecord()
-                        gachaViewModel.refetchGachaItems()
+
+            Section {
+                Button {
+                    withAnimation {
+                        isExportSheetShow.toggle()
                     }
+                } label: {
+                    Label(
+                        "导出祈愿记录",
+                        systemImage: "square.and.arrow.up.on.square"
+                    )
                 }
+            } footer: {
+                Text("导出UIGF祈愿记录")
+            }
+            #if DEBUG
+            Section {
+                Button("delete all records (DEBUG ONLY)") {
+                    gachaViewModel.manager.deleteAllRecord()
+                    gachaViewModel.refetchGachaItems()
+                }
+            }
             #endif
         }
+        .navigationTitle("祈愿数据管理")
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $isExportSheetShow, content: {
+            ExportGachaView(isSheetShow: $isExportSheetShow)
+        })
         .alert(item: $alert, content: { alert in
             let formatter = DateFormatter()
             formatter.dateStyle = .long
             formatter.timeStyle = .none
+            let startDate: Date
+            let endDate: Date
+            if deleteAll {
+                startDate = .distantPast
+                endDate = .distantFuture
+            } else {
+                startDate = self.startDate
+                endDate = self.endDate
+            }
+            let rangeDesc: String = deleteAll ? "所有" :
+                "自\(formatter.string(from: startDate))到\(formatter.string(from: endDate))"
             switch alert {
             case .deleteCheck:
                 return Alert(
@@ -114,7 +153,7 @@ struct GachaSetting: View {
                         "确定要删除「\(viewModel.accounts.first(where: { $0.config.uid! == account! })?.config.name ?? account!)」的祈愿数据吗？"
                     ),
                     message: Text(
-                        "即将删除「\(viewModel.accounts.first(where: { $0.config.uid! == account! })?.config.name ?? account!)」自\(formatter.string(from: startDate))到\(formatter.string(from: endDate))的祈愿数据。"
+                        "即将删除「\(viewModel.accounts.first(where: { $0.config.uid! == account! })?.config.name ?? account!)」\(rangeDesc)的祈愿数据。"
                     ),
                     primaryButton: .destructive(Text("删除"), action: {
                         withAnimation {

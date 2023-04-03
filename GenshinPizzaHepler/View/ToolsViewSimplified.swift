@@ -188,9 +188,9 @@ struct ToolsViewSimplified: View {
             }
         }
         #if DEBUG
-            if (try? account?.playerDetailResult?.get()) == nil {
-                Section { allAvatarNavigator() }
-            }
+        if (try? account?.playerDetailResult?.get()) == nil {
+            Section { allAvatarNavigator() }
+        }
         #endif
     }
 
@@ -257,8 +257,8 @@ struct ToolsViewSimplified: View {
                     }
                 }
                 #if DEBUG
-                    Divider()
-                    allAvatarNavigator()
+                Divider()
+                allAvatarNavigator()
                 #endif
             }
         }

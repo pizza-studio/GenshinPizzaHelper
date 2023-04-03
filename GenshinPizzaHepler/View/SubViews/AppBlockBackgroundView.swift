@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 #if !os(watchOS)
-    import WidgetKit
+import WidgetKit
 #endif
 
 // MARK: - AppBlockBackgroundView

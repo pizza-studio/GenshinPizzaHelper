@@ -102,3 +102,7 @@ strongifiedSelf
 --exclude Pods,**/UNTESTED_TODO,vendor,fastlane,./Dependences/GachaMIMTServer
 
 # https://github.com/NoemiRozpara/Google-SwiftFormat-Config
+
+# Following is by Lava
+
+--ifdef no-indent

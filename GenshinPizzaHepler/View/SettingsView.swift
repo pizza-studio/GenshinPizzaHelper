@@ -83,10 +83,10 @@ struct SettingsView: View {
                         )
                     }
                     #if DEBUG
-                        Button("debug") {
-                            UserNotificationCenter.shared
-                                .printAllNotificationRequest()
-                        }
+                    Button("debug") {
+                        UserNotificationCenter.shared
+                            .printAllNotificationRequest()
+                    }
                     #endif
                 }
 
@@ -124,7 +124,7 @@ struct SettingsView: View {
                 NotificationSettingNavigator()
 
                 #if canImport(ActivityKit)
-                    LiveActivitySettingView()
+                LiveActivitySettingView()
                 #endif
 
                 Section {

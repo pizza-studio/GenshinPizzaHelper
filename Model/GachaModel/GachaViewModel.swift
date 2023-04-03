@@ -17,9 +17,12 @@ class GachaViewModel: ObservableObject {
     // MARK: Lifecycle
 
     private init() {
-        self.gachaItems = manager.fetchAll()
-        refreshAllAvaliableAccountUID()
-        filter.uid = allAvaliableAccountUID.first
+        self.gachaItems = []
+        self.filter = .init()
+        let uids = manager.allAvaliableUID()
+        if !uids.isEmpty {
+            filter.uid = uids.first!
+        }
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(refetchGachaItems),
@@ -42,7 +45,7 @@ class GachaViewModel: ObservableObject {
     @Published
     var allAvaliableAccountUID: [String] = []
 
-    /// 不要直接使用：所有祈愿记录
+    /// 当前filter对应uid的祈愿记录
     @Published
     var gachaItems: [GachaItem] {
         didSet {
@@ -51,24 +54,15 @@ class GachaViewModel: ObservableObject {
     }
 
     @Published
-    var filter: GachaFilter = .init() {
+    var filter: GachaFilter {
         didSet {
+            refetchGachaItems()
             filterGachaItem()
         }
     }
 
     var sortedAndFilteredGachaItem: [GachaItem] {
-        gachaItems.sorted { lhs, rhs in
-            lhs.id > rhs.id
-        }
-        .filter { item in
-            if let uid = filter.uid {
-                return item.uid == uid
-            } else {
-                return true
-            }
-        }
-        .filter { item in
+        gachaItems.filter { item in
             item.gachaType == filter.gachaType
         }
     }
@@ -107,22 +101,22 @@ class GachaViewModel: ObservableObject {
     func refetchGachaItems() {
         DispatchQueue.main.async {
             withAnimation {
-                self.gachaItems = self.manager.fetchAll()
+                self.refreshAllAvaliableAccountUID()
                 if self.filter
-                    .uid == nil { self.filter.uid = self.gachaItems.first?.uid }
+                    .uid ==
+                    nil {
+                    self.filter.uid = self.manager.allAvaliableUID().first
+                }
+                if let uid = self.filter.uid {
+                    self.gachaItems = self.manager.fetchAll(uid: uid)
+                }
                 self.refreshAllAvaliableAccountUID()
             }
         }
     }
 
     func refreshAllAvaliableAccountUID() {
-        allAvaliableAccountUID = [String].init(
-            Set<String>(
-                gachaItems.map { item in
-                    item.uid
-                }
-            )
-        )
+        allAvaliableAccountUID = manager.allAvaliableUID()
     }
 
     func getGachaAndSaveFor(
@@ -180,6 +174,20 @@ class GachaViewModel: ObservableObject {
             self.refetchGachaItems()
             completion(.success(()))
         }
+    }
+
+    func importGachaFromUIGFJson(
+        uigfJson: UIGFJson
+    ) -> (uid: String, totalCount: Int, newCount: Int) {
+        let info = uigfJson.info
+        let items = uigfJson.list
+        let newCount = manager.addRecordItems(
+            items,
+            uid: info.uid,
+            lang: info.lang
+        )
+        refetchGachaItems()
+        return (info.uid, items.count, newCount)
     }
 }
 
@@ -285,7 +293,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     func updateGachaItemCount(item: GachaItem_FM) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = dateFormatter.date(from: item.time)!
+        let date = item.time
         let type = GachaType.from(item.gachaType)
         if gachaTypeDateCounts
             .filter({ ($0.date == date) && ($0.type == type) }).isEmpty {
@@ -293,7 +301,7 @@ public class GachaFetchProgressObserver: ObservableObject {
                 date: date,
                 count: currentItems
                     .filter {
-                        (dateFormatter.date(from: $0.time)! <= date) &&
+                        ($0.time <= date) &&
                             (GachaType.from($0.gachaType) == type)
                     }.count,
                 type: .from(item.gachaType)

@@ -25,7 +25,7 @@ struct GenshinPizzaHeplerApp: App {
 //        }
         defaultStandard.synchronize()
         #if !os(watchOS)
-            UserNotificationCenter.shared.askPermission()
+        UserNotificationCenter.shared.askPermission()
         #endif
     }
 
@@ -33,8 +33,8 @@ struct GenshinPizzaHeplerApp: App {
 
     let viewModel: ViewModel = .shared
     #if !os(watchOS)
-        @UIApplicationDelegateAdaptor(AppDelegate.self)
-        var appDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    var appDelegate
     #endif
     @StateObject
     var storeManager = StoreManager()
@@ -51,15 +51,15 @@ struct GenshinPizzaHeplerApp: App {
     var body: some Scene {
         WindowGroup {
             #if os(watchOS)
-                ContentView()
-                    .environmentObject(viewModel)
+            ContentView()
+                .environmentObject(viewModel)
             #else
-                ContentView(storeManager: storeManager)
-                    .environmentObject(viewModel)
-                    .onAppear {
-                        SKPaymentQueue.default().add(storeManager)
-                        storeManager.getProducts(productIDs: productIDs)
-                    }
+            ContentView(storeManager: storeManager)
+                .environmentObject(viewModel)
+                .onAppear {
+                    SKPaymentQueue.default().add(storeManager)
+                    storeManager.getProducts(productIDs: productIDs)
+                }
             #endif
         }
     }

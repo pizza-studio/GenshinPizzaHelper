@@ -46,8 +46,8 @@ struct LockScreenExpeditionWidgetView: View {
             case let .normal(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenExpeditionWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenExpeditionWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenExpeditionWidgetCircular(result: result)
@@ -57,8 +57,8 @@ struct LockScreenExpeditionWidgetView: View {
             case let .simplified(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenExpeditionWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenExpeditionWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenExpeditionWidgetCircular(result: result)

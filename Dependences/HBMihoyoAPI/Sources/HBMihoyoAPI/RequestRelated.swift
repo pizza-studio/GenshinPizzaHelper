@@ -25,10 +25,10 @@ public typealias AllAvatarDetailFetchResult = Result<
 //        PlayerDetail,
 //        PlayerDetail.PlayerDetailError
 //    >
-    public typealias SpiralAbyssDetailFetchResult = Result<
-        SpiralAbyssDetail,
-        FetchError
-    >
+public typealias SpiralAbyssDetailFetchResult = Result<
+    SpiralAbyssDetail,
+    FetchError
+>
 #endif
 
 extension FetchResult {
@@ -79,11 +79,11 @@ public struct AllAvatarDetailRequestDetail: Codable {
 }
 
 #if !os(watchOS)
-    public struct SpiralAbyssDetailRequestResult: Codable {
-        let data: SpiralAbyssDetail?
-        let message: String
-        let retcode: Int
-    }
+public struct SpiralAbyssDetailRequestResult: Codable {
+    let data: SpiralAbyssDetail?
+    let message: String
+    let retcode: Int
+}
 #endif
 
 // MARK: - RequestError

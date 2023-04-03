@@ -241,6 +241,9 @@
 		EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */; };
 		EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		EA10A66429D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA10A66229D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld */; };
+		EA11488D29D99B590059DEBF /* GetGachaClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */; };
+		EA11488F29D9A8730059DEBF /* UIGFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488E29D9A8730059DEBF /* UIGFModel.swift */; };
+		EA11489129D9D1430059DEBF /* ImportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11489029D9D1430059DEBF /* ImportGachaView.swift */; };
 		EA185F26292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		EA185F27292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		EA185F28292F1ACD003E7E32 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
@@ -368,6 +371,7 @@
 		EA7FF475293095BB00128A5C /* LockScreenResinFullTimeWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF474293095BB00128A5C /* LockScreenResinFullTimeWidgetCircular.swift */; };
 		EA7FF47629309B6A00128A5C /* LockScreenResinFullTimeWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF474293095BB00128A5C /* LockScreenResinFullTimeWidgetCircular.swift */; };
 		EA7FF47729309B6A00128A5C /* LockScreenResinFullTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF4722930959700128A5C /* LockScreenResinFullTimeWidget.swift */; };
+		EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8978D729DA716400E0903E /* ExportGachaView.swift */; };
 		EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */; };
@@ -747,6 +751,9 @@
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
 		EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchResinDetailView.swift; sourceTree = "<group>"; };
 		EA10A66329D1EF5300A341F3 /* GachaLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GachaLog.xcdatamodel; sourceTree = "<group>"; };
+		EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGachaClipboardView.swift; sourceTree = "<group>"; };
+		EA11488E29D9A8730059DEBF /* UIGFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGFModel.swift; sourceTree = "<group>"; };
+		EA11489029D9D1430059DEBF /* ImportGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportGachaView.swift; sourceTree = "<group>"; };
 		EA12902429333D2F0078317C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EA185F33292F2726003E7E32 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		EA185F34292F272B003E7E32 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -818,6 +825,7 @@
 		EA7FF47F2930A39F00128A5C /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/AccountIntents.strings"; sourceTree = "<group>"; };
 		EA7FF4812930A3F300128A5C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA7FF4832930A41700128A5C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AccountIntents.strings"; sourceTree = "<group>"; };
+		EA8978D729DA716400E0903E /* ExportGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportGachaView.swift; sourceTree = "<group>"; };
 		EA9495E429D7C2C700F38EFF /* GachaMIMTServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GachaMIMTServer; path = Dependences/GachaMIMTServer; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
 		EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingView.swift; sourceTree = "<group>"; };
@@ -1208,6 +1216,9 @@
 				EA3A9DB229D4812300CF4230 /* GachaChartView.swift */,
 				EA01F84D29D68EFE002A374C /* GachaSetting.swift */,
 				EA32D57329D749E60003978A /* MIMTGetGachaURL.swift */,
+				EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */,
+				EA11489029D9D1430059DEBF /* ImportGachaView.swift */,
+				EA8978D729DA716400E0903E /* ExportGachaView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1224,6 +1235,7 @@
 				EAAD03E529D2FD88007D5C80 /* GachaItem.swift */,
 				EA4C005829D2FFD100637B19 /* GachaFetch.swift */,
 				EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */,
+				EA11488E29D9A8730059DEBF /* UIGFModel.swift */,
 			);
 			path = GachaModel;
 			sourceTree = "<group>";
@@ -1762,12 +1774,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHepler" */;
 			buildPhases = (
+				BFF5CCA8293B9FF90049F66A /* ShellScript */,
 				EABD7DB22886B2D200B7F0FD /* Sources */,
 				EABD7DB32886B2D200B7F0FD /* Frameworks */,
 				EABD7DB42886B2D200B7F0FD /* Resources */,
 				EA30F9B32886B49300AE7BEA /* Embed App Extensions */,
 				BFCC067728C9B6A2003E4A54 /* Embed Watch Content */,
-				BFF5CCA8293B9FF90049F66A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2005,7 +2017,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "#!/bin/zsh\n \ngit=`sh /etc/profile; which git`\ngit_release_version=`\"$git\" describe --tags --always --abbrev=0`\n#array=(${git_release_version//,/ })\nshort_version=${git_release_version#*v}\nshort_version=${short_version%%-*}\nnumber_of_commits=`\"$git\" rev-list $git_release_version..HEAD --count`\n \ntarget_plist=\"${TARGET_BUILD_DIR}/{$INFOPLIST_PATH}\"\ndsym_plist=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\nsrc_plist=\"${TARGET_NAME}/Info.plist\"\nfor plist in \"$src_plist\"; do\nif [ -f \"$plist\" ]; then\necho \"Start to update build number\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $number_of_commits\" $plist\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString ${short_version}\" \"$plist\"\nfi\ndone\nif [ $? = 0 ]\nthen\n    echo 版本号修改成功\nelse\n    echo 版本号修改失败\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nmake lint\nmake format\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2328,6 +2340,7 @@
 				BFFD822C28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				BFB101D328D5C579000DC631 /* ToolsView.swift in Sources */,
 				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
+				EA11489129D9D1430059DEBF /* ImportGachaView.swift in Sources */,
 				EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */,
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
@@ -2380,6 +2393,7 @@
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
 				EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
+				EA11488F29D9A8730059DEBF /* UIGFModel.swift in Sources */,
 				BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */,
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
@@ -2398,6 +2412,7 @@
 				BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */,
 				EA5232292903E0D6007A4CF4 /* ReverseMask.swift in Sources */,
 				BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */,
+				EA11488D29D99B590059DEBF /* GetGachaClipboardView.swift in Sources */,
 				BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */,
 				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EAF8AC1C29C758750047D36C /* CircleClippedBackground.swift in Sources */,
@@ -2416,6 +2431,7 @@
 				EAB5798128FC278D00C5D075 /* AbyssDataCollectionView.swift in Sources */,
 				EA784CC42902462C00918F64 /* FetchHomeModel.swift in Sources */,
 				BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */,
+				EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,

@@ -760,98 +760,98 @@ public enum MihoyoAPI {
     }
 
     #if !os(watchOS)
-        /// 获取深渊信息
-        /// - Parameters:
-        ///     - region: 服务器地区
-        ///     - serverID: 服务器ID
-        ///     - uid: 用户UID
-        ///     - cookie: 用户Cookie
-        ///     - completion: 数据
-        public static func fetchSpiralAbyssInfos(
-            region: Region,
-            serverID: String,
-            uid: String,
-            cookie: String,
-            scheduleType: String,
-            completion: @escaping (
-                SpiralAbyssDetailFetchResult
-            ) -> ()
-        ) {
-            // 请求类别
-            let urlStr = "game_record/app/genshin/api/spiralAbyss"
+    /// 获取深渊信息
+    /// - Parameters:
+    ///     - region: 服务器地区
+    ///     - serverID: 服务器ID
+    ///     - uid: 用户UID
+    ///     - cookie: 用户Cookie
+    ///     - completion: 数据
+    public static func fetchSpiralAbyssInfos(
+        region: Region,
+        serverID: String,
+        uid: String,
+        cookie: String,
+        scheduleType: String,
+        completion: @escaping (
+            SpiralAbyssDetailFetchResult
+        ) -> ()
+    ) {
+        // 请求类别
+        let urlStr = "game_record/app/genshin/api/spiralAbyss"
 
-            if (uid == "") || (cookie == "") {
-                completion(.failure(.noFetchInfo))
-            }
+        if (uid == "") || (cookie == "") {
+            completion(.failure(.noFetchInfo))
+        }
 
-            // 请求
-            HttpMethod<SpiralAbyssDetailRequestResult>
-                .spiralAbyssRequest(
-                    .get,
-                    urlStr,
-                    region,
-                    serverID,
-                    uid,
-                    cookie,
-                    scheduleType
-                ) { result in
-                    switch result {
-                    case let .success(requestResult):
-                        print("request succeed")
-                        let basicData = requestResult.data
-                        let retcode = requestResult.retcode
-                        let message = requestResult.message
+        // 请求
+        HttpMethod<SpiralAbyssDetailRequestResult>
+            .spiralAbyssRequest(
+                .get,
+                urlStr,
+                region,
+                serverID,
+                uid,
+                cookie,
+                scheduleType
+            ) { result in
+                switch result {
+                case let .success(requestResult):
+                    print("request succeed")
+                    let basicData = requestResult.data
+                    let retcode = requestResult.retcode
+                    let message = requestResult.message
 
-                        switch requestResult.retcode {
-                        case 0:
-                            print("get data succeed")
-                            completion(.success(basicData!))
-                        case 10001:
-                            print("fail 10001")
-                            completion(.failure(.cookieInvalid(
-                                retcode,
-                                message
-                            )))
-                        case 10103, 10104:
-                            print("fail nomatch")
-                            completion(.failure(.unmachedAccountCookie(
-                                retcode,
-                                message
-                            )))
-                        case 1008:
-                            print("fail 1008")
-                            completion(.failure(.accountInvalid(
-                                retcode,
-                                message
-                            )))
-                        case -1, 10102:
-                            print("fail -1")
-                            completion(.failure(.dataNotFound(
-                                retcode,
-                                message
-                            )))
-                        case 1034:
-                            completion(.failure(.accountAbnormal(retcode)))
-                        default:
-                            print("unknownerror")
-                            completion(.failure(.unknownError(
-                                retcode,
-                                message
-                            )))
-                        }
+                    switch requestResult.retcode {
+                    case 0:
+                        print("get data succeed")
+                        completion(.success(basicData!))
+                    case 10001:
+                        print("fail 10001")
+                        completion(.failure(.cookieInvalid(
+                            retcode,
+                            message
+                        )))
+                    case 10103, 10104:
+                        print("fail nomatch")
+                        completion(.failure(.unmachedAccountCookie(
+                            retcode,
+                            message
+                        )))
+                    case 1008:
+                        print("fail 1008")
+                        completion(.failure(.accountInvalid(
+                            retcode,
+                            message
+                        )))
+                    case -1, 10102:
+                        print("fail -1")
+                        completion(.failure(.dataNotFound(
+                            retcode,
+                            message
+                        )))
+                    case 1034:
+                        completion(.failure(.accountAbnormal(retcode)))
+                    default:
+                        print("unknownerror")
+                        completion(.failure(.unknownError(
+                            retcode,
+                            message
+                        )))
+                    }
 
-                    case let .failure(requestError):
+                case let .failure(requestError):
 
-                        switch requestError {
-                        case let .decodeError(message):
-                            completion(.failure(.decodeError(message)))
-                        default:
-                            completion(
-                                .failure(.requestError(requestError))
-                            )
-                        }
+                    switch requestError {
+                    case let .decodeError(message):
+                        completion(.failure(.decodeError(message)))
+                    default:
+                        completion(
+                            .failure(.requestError(requestError))
+                        )
                     }
                 }
-        }
+            }
+    }
     #endif
 }

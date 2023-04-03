@@ -18,9 +18,9 @@ struct ProgressGaugeStyle: GaugeStyle {
 //    var labelColor: Color = .white
 
     #if os(watchOS)
-        let strokeLineWidth: CGFloat = 4.7
+    let strokeLineWidth: CGFloat = 4.7
     #else
-        let strokeLineWidth: CGFloat = 6
+    let strokeLineWidth: CGFloat = 6
     #endif
 
     func makeBody(configuration: Configuration) -> some View {

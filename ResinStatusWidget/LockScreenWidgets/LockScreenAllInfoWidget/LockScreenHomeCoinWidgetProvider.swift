@@ -126,11 +126,11 @@ struct LockScreenHomeCoinWidgetProvider: IntentTimelineProvider {
             switch result {
             case let .success(userData):
                 #if !os(watchOS)
-                    UserNotificationCenter.shared.createAllNotification(
-                        for: config.name ?? "",
-                        with: userData,
-                        uid: config.uid!
-                    )
+                UserNotificationCenter.shared.createAllNotification(
+                    for: config.name ?? "",
+                    with: userData,
+                    uid: config.uid!
+                )
                 #endif
             case .failure:
                 break

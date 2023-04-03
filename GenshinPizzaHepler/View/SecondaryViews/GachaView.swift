@@ -69,7 +69,10 @@ struct GachaView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                GetGachaNavigationMenu()
+                GetGachaNavigationMenu(
+                    showByAPI: viewModel.accounts
+                        .first(where: { $0.config.server.region == .cn }) != nil
+                )
             }
             ToolbarItemGroup(placement: .bottomBar) {
                 FilterEditer(
@@ -297,16 +300,40 @@ private struct GachaChart: View {
 private struct GetGachaNavigationMenu: View {
     // MARK: Internal
 
+    let showByAPI: Bool
+
     var body: some View {
         Menu {
-            Button("通过API获取\n（仅国服，优先选用）") {
-                showView1.toggle()
+            if showByAPI {
+                Button {
+                    showView1.toggle()
+                } label: {
+                    Label("通过API获取\n（仅国服，优先选用）", systemImage: "network")
+                }
             }
             #if canImport(GachaMIMTServer)
-                Button("通过抓包或URL获取\n（所有服务器）") {
-                    showView2.toggle()
-                }
+            Button {
+                showView2.toggle()
+            } label: {
+                Label(
+                    "通过抓包获取",
+                    systemImage: "rectangle.and.text.magnifyingglass"
+                )
+            }
             #endif
+            Button {
+                showView3.toggle()
+            } label: {
+                Label("通过粘贴祈愿页面URL获取", systemImage: "list.bullet.clipboard")
+            }
+            Button {
+                showView4.toggle()
+            } label: {
+                Label(
+                    "导入UIGF祈愿记录",
+                    systemImage: "square.and.arrow.down.on.square"
+                )
+            }
         } label: {
             Image(systemName: "goforward.plus")
         }
@@ -319,13 +346,25 @@ private struct GetGachaNavigationMenu: View {
                     EmptyView()
                 }
                 #if canImport(GachaMIMTServer)
-                    NavigationLink(
-                        destination: MIMTGetGachaView(),
-                        isActive: $showView2
-                    ) {
-                        EmptyView()
-                    }
+                NavigationLink(
+                    destination: MIMTGetGachaView(),
+                    isActive: $showView2
+                ) {
+                    EmptyView()
+                }
                 #endif
+                NavigationLink(
+                    destination: GetGachaClipboardView(),
+                    isActive: $showView3
+                ) {
+                    EmptyView()
+                }
+                NavigationLink(
+                    destination: ImportGachaView(),
+                    isActive: $showView4
+                ) {
+                    EmptyView()
+                }
             }
         )
     }
@@ -336,4 +375,8 @@ private struct GetGachaNavigationMenu: View {
     private var showView1 = false
     @State
     private var showView2 = false
+    @State
+    private var showView3 = false
+    @State
+    private var showView4 = false
 }

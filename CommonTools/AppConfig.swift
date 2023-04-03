@@ -28,9 +28,9 @@ enum AppConfig {
     // This can be used to add debug statements.
     static var isDebug: Bool {
         #if DEBUG
-            return true
+        return true
         #else
-            return false
+        return false
         #endif
     }
 

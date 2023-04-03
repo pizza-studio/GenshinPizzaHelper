@@ -20,17 +20,17 @@ struct MoreView: View {
                     Text("检查更新")
                 }
                 #if DEBUG
-                    Button("清空已检查的版本号") {
-                        UserDefaults.standard.set(
-                            [],
-                            forKey: "checkedUpdateVersions"
-                        )
-                        UserDefaults.standard.set(
-                            0,
-                            forKey: "checkedNewestVersion"
-                        )
-                        UserDefaults.standard.synchronize()
-                    }
+                Button("清空已检查的版本号") {
+                    UserDefaults.standard.set(
+                        [],
+                        forKey: "checkedUpdateVersions"
+                    )
+                    UserDefaults.standard.set(
+                        0,
+                        forKey: "checkedNewestVersion"
+                    )
+                    UserDefaults.standard.synchronize()
+                }
                 #endif
             }
             Section {

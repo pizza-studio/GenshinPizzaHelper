@@ -14,12 +14,12 @@ enum ThisDevice {
 
     public static var isMac: Bool {
         #if targetEnvironment(simulator)
-            return false
+        return false
         #else
-            if #available(macOS 10.15, *) {
-                return true
-            }
-            return false
+        if #available(macOS 10.15, *) {
+            return true
+        }
+        return false
         #endif
     }
 
@@ -76,10 +76,8 @@ enum ThisDevice {
             width: minSize.width * result,
             height: minSize.height * result
         )
-        let compatible = CGRectContainsRect(
-            CGRect(origin: .zero, size: windowSize),
-            CGRect(origin: .zero, size: zoomedSize)
-        )
+        let compatible = CGRect(origin: .zero, size: windowSize)
+            .contains(CGRect(origin: .zero, size: zoomedSize))
         if !compatible {
             result = windowSize.height / minSize.height
         }

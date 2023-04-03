@@ -198,7 +198,7 @@ struct CookieGetterWebView: UIViewRepresentable {
                             completionHandler: {}
                         )
                     #if DEBUG
-                        print("WKWebsiteDataStore record deleted:", record)
+                    print("WKWebsiteDataStore record deleted:", record)
                     #endif
                 }
             }

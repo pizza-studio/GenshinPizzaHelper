@@ -113,11 +113,11 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
                             policy: .after(refreshDate)
                         )
                         #if !os(watchOS) && canImport(ActivityKit)
-                            if #available(iOSApplicationExtension 16.1, *) {
-                                ResinRecoveryActivityController.shared
-                                    .updateAllResinRecoveryTimerActivityUsingReFetchData(
-                                    )
-                            }
+                        if #available(iOSApplicationExtension 16.1, *) {
+                            ResinRecoveryActivityController.shared
+                                .updateAllResinRecoveryTimerActivityUsingReFetchData(
+                                )
+                        }
                         #endif
                         completion(timeline)
                         print("Widget Fetch succeed")
@@ -196,11 +196,11 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
                         policy: .after(refreshDate)
                     )
                     #if !os(watchOS) && canImport(ActivityKit)
-                        if #available(iOSApplicationExtension 16.1, *) {
-                            ResinRecoveryActivityController.shared
-                                .updateAllResinRecoveryTimerActivityUsingReFetchData(
-                                )
-                        }
+                    if #available(iOSApplicationExtension 16.1, *) {
+                        ResinRecoveryActivityController.shared
+                            .updateAllResinRecoveryTimerActivityUsingReFetchData(
+                            )
+                    }
                     #endif
                     completion(timeline)
                     print("Widget Fetch succeed")

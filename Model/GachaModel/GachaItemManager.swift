@@ -54,14 +54,25 @@ public class GachaModelManager {
         container.persistentStoreCoordinator
     }
 
-    func fetchAll() -> [GachaItem] {
-        container.viewContext.refreshAllObjects()
+    func fetchAll(uid: String) -> [GachaItem] {
+        fetchAllMO(uid: uid).map { $0.toGachaItem() }
+    }
+
+    func fetchAllMO(uid: String) -> [GachaItemMO] {
+        container.viewContext.performAndWait {
+            container.viewContext.refreshAllObjects()
+        }
         let request = GachaItemMO.fetchRequest()
+        let predicate = NSPredicate(format: "(uid = %@)", uid)
+        request.predicate = predicate
+        let dateSort = NSSortDescriptor(
+            keyPath: \GachaItemMO.id,
+            ascending: false
+        )
+        request.sortDescriptors = [dateSort]
         do {
             let gachaItemMOs = try container.viewContext.fetch(request)
-            return gachaItemMOs.map { item in
-                item.toGachaItem()
-            }
+            return gachaItemMOs
         } catch {
             print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
             return []
@@ -101,6 +112,30 @@ public class GachaModelManager {
         } else {
             isNew(false)
         }
+    }
+
+    /// 返回已保存的新数据数量
+    func addRecordItems(
+        _ items: [UIGFGahcaItem],
+        uid: String,
+        lang: String
+    )
+        -> Int {
+        var count = 0
+        container.viewContext.performAndWait {
+            items.forEach { item in
+                if !checkIDAndUIDExists(uid: uid, id: item.id) {
+                    _ = item.toGachaItemMO(
+                        context: container.viewContext,
+                        uid: uid,
+                        lang: lang
+                    )
+                    count += 1
+                }
+            }
+        }
+        save()
+        return count
     }
 
     func save() {
@@ -169,6 +204,20 @@ public class GachaModelManager {
         } catch {
             print(error.localizedDescription)
             return 0
+        }
+    }
+
+    func allAvaliableUID() -> [String] {
+        let request =
+            NSFetchRequest<NSFetchRequestResult>(entityName: "GachaItemMO")
+        request.resultType = .dictionaryResultType
+        request.returnsDistinctResults = true
+        request.propertiesToFetch = ["uid"]
+        if let res = try? container.viewContext
+            .fetch(request) as? [[String: String]] {
+            return res.compactMap { $0["uid"] }
+        } else {
+            return []
         }
     }
 

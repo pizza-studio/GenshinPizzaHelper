@@ -45,8 +45,8 @@ struct LockScreenDailyTaskWidgetView: View {
             case let .normal(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenDailyTaskWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenDailyTaskWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenDailyTaskWidgetCircular(result: result)
@@ -56,8 +56,8 @@ struct LockScreenDailyTaskWidgetView: View {
             case let .simplified(result):
                 switch family {
                 #if os(watchOS)
-                    case .accessoryCorner:
-                        LockScreenDailyTaskWidgetCorner(result: result)
+                case .accessoryCorner:
+                    LockScreenDailyTaskWidgetCorner(result: result)
                 #endif
                 case .accessoryCircular:
                     LockScreenDailyTaskWidgetCircular(result: result)

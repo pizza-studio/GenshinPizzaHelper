@@ -27,14 +27,12 @@ extension GachaItemMO {
 
 extension GachaItem_FM {
     public func toGachaItemMO(context: NSManagedObjectContext) -> GachaItemMO {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let model = GachaItemMO(context: context)
         model.uid = uid
         model.gachaType = Int16(gachaType)!
         model.itemId = itemId
         model.count = Int16(count)!
-        model.time = dateFormatter.date(from: time)!
+        model.time = time
         model.name = name
         model.lang = lang
         model.itemType = itemType

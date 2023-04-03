@@ -74,6 +74,13 @@ public struct GachaItem: Identifiable {
     }
 }
 
+extension GachaItem.RankType {
+    // TODO: find by name
+    static func findByName(_ name: String) -> Self {
+        .three
+    }
+}
+
 // MARK: - GetGachaError
 
 public enum GetGachaError: Error, Equatable {
@@ -82,7 +89,7 @@ public enum GetGachaError: Error, Equatable {
     case visitTooFrequently
     case networkError(message: String)
     case incorrectUrl
-    case decodeError
+    case decodeError(message: String)
     case unknowError(retcode: Int, message: String)
     case genAuthKeyError(message: String)
 }
@@ -102,8 +109,8 @@ extension GetGachaError: LocalizedError {
             return "GetGachaError: networkError (\(message))"
         case .incorrectUrl:
             return "GetGachaError: incorrectUrl"
-        case .decodeError:
-            return "GetGachaError: decodeError"
+        case let .decodeError(message):
+            return "GetGachaError: decodeError \(message)"
         case let .unknowError(retcode, message):
             return "GetGachaError: unknowError (\(retcode), \(message))"
         case let .genAuthKeyError(message):
@@ -159,10 +166,10 @@ extension _GachaType {
 
 /// 祈愿池记录，不区分两个角色池，用于UI
 public enum GachaType: Int {
-    case newPlayer
-    case standard
-    case character
-    case weapon
+    case newPlayer = 100
+    case standard = 200
+    case character = 301
+    case weapon = 302
 }
 
 // @available(iOS 16.0, *)
@@ -268,6 +275,11 @@ extension GachaItem_FM: ContainGachaItemInfo {
     }
 
     var formattedTime: String {
-        time
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        dateFormatter.doesRelativeDateFormatting = true
+        dateFormatter.locale = Locale(identifier: Locale.current.identifier)
+        return dateFormatter.string(from: time)
     }
 }

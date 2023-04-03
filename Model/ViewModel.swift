@@ -52,8 +52,8 @@ class ViewModel: NSObject, ObservableObject {
     var showingCharacterName: String?
 
     #if !os(watchOS)
-        var charLoc: [String: String]?
-        var charMap: [String: ENCharacterMap.Character]?
+    var charLoc: [String: String]?
+    var charMap: [String: ENCharacterMap.Character]?
     #endif
 
     let accountConfigurationModel: AccountConfigurationModel = .shared
@@ -86,20 +86,20 @@ class ViewModel: NSObject, ObservableObject {
                 self.refreshData()
                 print("account fetched")
                 #if !os(watchOS)
-                    if let showingPlayerDetailOfAccountUUID = UserDefaults
-                        .standard
-                        .string(forKey: "toolViewShowingAccountUUIDString"),
-                        let showingPlayerDetailOfAccount = self.accounts
-                        .first(where: { account in
-                            account.config.uuid!
-                                .uuidString == showingPlayerDetailOfAccountUUID
-                        }) {
-                        self
-                            .refreshPlayerDetail(
-                                for: showingPlayerDetailOfAccount
-                            )
-                    }
-                    self.refreshLedgerData()
+                if let showingPlayerDetailOfAccountUUID = UserDefaults
+                    .standard
+                    .string(forKey: "toolViewShowingAccountUUIDString"),
+                    let showingPlayerDetailOfAccount = self.accounts
+                    .first(where: { account in
+                        account.config.uuid!
+                            .uuidString == showingPlayerDetailOfAccountUUID
+                    }) {
+                    self
+                        .refreshPlayerDetail(
+                            for: showingPlayerDetailOfAccount
+                        )
+                }
+                self.refreshLedgerData()
                 #endif
             }
         }
@@ -158,39 +158,88 @@ class ViewModel: NSObject, ObservableObject {
     func refreshAbyssAndBasicInfo() {
         accounts.indices.forEach { index in
             #if !os(watchOS)
-                let group = DispatchGroup()
-                group.enter()
-                accounts[index].config.fetchBasicInfo { basicInfo in
-                    self.accounts[index].basicInfo = basicInfo
-                    self.accounts[index].uploadHoldingData()
-                    group.leave()
-                }
-                group.enter()
-                self.accounts[index].config.fetchAbyssInfo { data in
-                    self.accounts[index].spiralAbyssDetail = data
-                    group.leave()
-                }
-                group.notify(queue: .main) {
-                    self.accounts[index].uploadAbyssData()
-                }
+            let group = DispatchGroup()
+            group.enter()
+            accounts[index].config.fetchBasicInfo { basicInfo in
+                self.accounts[index].basicInfo = basicInfo
+                self.accounts[index].uploadHoldingData()
+                group.leave()
+            }
+            group.enter()
+            self.accounts[index].config.fetchAbyssInfo { data in
+                self.accounts[index].spiralAbyssDetail = data
+                group.leave()
+            }
+            group.notify(queue: .main) {
+                self.accounts[index].uploadAbyssData()
+            }
             #endif
         }
     }
 
     #if !os(watchOS)
-        func refreshPlayerDetail(for account: Account) {
-            guard let index = accounts.firstIndex(of: account) else { return }
-            // 如果之前返回了错误，则删除fail的result
-            if let result = accounts[index].playerDetailResult,
-               (try? result.get()) == nil {
-                accounts[index].playerDetailResult = nil
+    func refreshPlayerDetail(for account: Account) {
+        guard let index = accounts.firstIndex(of: account) else { return }
+        // 如果之前返回了错误，则删除fail的result
+        if let result = accounts[index].playerDetailResult,
+           (try? result.get()) == nil {
+            accounts[index].playerDetailResult = nil
+        }
+        accounts[index].fetchPlayerDetailComplete = false
+        if let charLoc = charLoc, let charMap = charMap {
+            accounts[index].config
+                .fetchPlayerDetail(
+                    dateWhenNextRefreshable: try? accounts[index]
+                        .playerDetailResult?.get().nextRefreshableDate
+                ) { result in
+                    switch result {
+                    case let .success(model):
+                        self.accounts[index]
+                            .playerDetailResult = .success(.init(
+                                playerDetailFetchModel: model,
+                                localizedDictionary: charLoc,
+                                characterMap: charMap
+                            ))
+                    case let .failure(error):
+                        if self.accounts[index].playerDetailResult == nil {
+                            self.accounts[index]
+                                .playerDetailResult = .failure(error)
+                        }
+                    }
+                    self.accounts[index].fetchPlayerDetailComplete = true
+                }
+        } else {
+            let group = DispatchGroup()
+            group.enter()
+            PizzaHelperAPI.fetchENCharacterLocDatas {
+                self.charLoc = $0.getLocalizedDictionary()
+                group.leave()
             }
-            accounts[index].fetchPlayerDetailComplete = false
-            if let charLoc = charLoc, let charMap = charMap {
-                accounts[index].config
+            group.enter()
+            PizzaHelperAPI.fetchENCharacterDetailDatas {
+                self.charMap = $0.characterDetails
+                group.leave()
+            }
+            group.notify(queue: .main) {
+                guard let charLoc = self.charLoc else {
+                    self.accounts[index]
+                        .playerDetailResult =
+                        .failure(.failToGetLocalizedDictionary)
+                    self.accounts[index].fetchPlayerDetailComplete = true
+                    return
+                }
+                guard let charMap = self.charMap else {
+                    self.accounts[index]
+                        .playerDetailResult =
+                        .failure(.failToGetCharacterDictionary)
+                    self.accounts[index].fetchPlayerDetailComplete = true
+                    return
+                }
+                self.accounts[index].config
                     .fetchPlayerDetail(
-                        dateWhenNextRefreshable: try? accounts[index]
-                            .playerDetailResult?.get().nextRefreshableDate
+                        dateWhenNextRefreshable: try? self
+                            .accounts[index].playerDetailResult?.get()
+                            .nextRefreshableDate
                     ) { result in
                         switch result {
                         case let .success(model):
@@ -201,84 +250,35 @@ class ViewModel: NSObject, ObservableObject {
                                     characterMap: charMap
                                 ))
                         case let .failure(error):
-                            if self.accounts[index].playerDetailResult == nil {
+                            if self.accounts[index]
+                                .playerDetailResult == nil {
                                 self.accounts[index]
                                     .playerDetailResult = .failure(error)
                             }
                         }
-                        self.accounts[index].fetchPlayerDetailComplete = true
-                    }
-            } else {
-                let group = DispatchGroup()
-                group.enter()
-                PizzaHelperAPI.fetchENCharacterLocDatas {
-                    self.charLoc = $0.getLocalizedDictionary()
-                    group.leave()
-                }
-                group.enter()
-                PizzaHelperAPI.fetchENCharacterDetailDatas {
-                    self.charMap = $0.characterDetails
-                    group.leave()
-                }
-                group.notify(queue: .main) {
-                    guard let charLoc = self.charLoc else {
                         self.accounts[index]
-                            .playerDetailResult =
-                            .failure(.failToGetLocalizedDictionary)
-                        self.accounts[index].fetchPlayerDetailComplete = true
-                        return
+                            .fetchPlayerDetailComplete = true
                     }
-                    guard let charMap = self.charMap else {
-                        self.accounts[index]
-                            .playerDetailResult =
-                            .failure(.failToGetCharacterDictionary)
-                        self.accounts[index].fetchPlayerDetailComplete = true
-                        return
-                    }
-                    self.accounts[index].config
-                        .fetchPlayerDetail(
-                            dateWhenNextRefreshable: try? self
-                                .accounts[index].playerDetailResult?.get()
-                                .nextRefreshableDate
-                        ) { result in
-                            switch result {
-                            case let .success(model):
-                                self.accounts[index]
-                                    .playerDetailResult = .success(.init(
-                                        playerDetailFetchModel: model,
-                                        localizedDictionary: charLoc,
-                                        characterMap: charMap
-                                    ))
-                            case let .failure(error):
-                                if self.accounts[index]
-                                    .playerDetailResult == nil {
-                                    self.accounts[index]
-                                        .playerDetailResult = .failure(error)
-                                }
-                            }
-                            self.accounts[index]
-                                .fetchPlayerDetailComplete = true
-                        }
-                }
             }
         }
+    }
 
-        func refreshLedgerData() {
-            accounts.indices.forEach { index in
-                self.accounts[index].config.fetchLedgerData { result in
-                    self.accounts[index].ledgeDataResult = result
-                }
+    func refreshLedgerData() {
+        accounts.indices.forEach { index in
+            self.accounts[index].config.fetchLedgerData { result in
+                self.accounts[index].ledgeDataResult = result
             }
         }
+    }
 
-        func refreshCharLocAndCharMap() {
-            PizzaHelperAPI.fetchENCharacterLocDatas {
-                self.charLoc = $0.getLocalizedDictionary()
-            }
-            PizzaHelperAPI.fetchENCharacterDetailDatas {
-                self.charMap = $0.characterDetails
-            }
+    func refreshCharLocAndCharMap() {
+        PizzaHelperAPI.fetchENCharacterLocDatas {
+            self.charLoc = $0.getLocalizedDictionary()
         }
+        PizzaHelperAPI.fetchENCharacterDetailDatas {
+            self.charMap = $0.characterDetails
+        }
+    }
     #endif
 }
 
@@ -286,9 +286,9 @@ class ViewModel: NSObject, ObservableObject {
 
 extension ViewModel: WCSessionDelegate {
     #if !os(watchOS)
-        func sessionDidBecomeInactive(_ session: WCSession) {}
+    func sessionDidBecomeInactive(_ session: WCSession) {}
 
-        func sessionDidDeactivate(_ session: WCSession) {}
+    func sessionDidDeactivate(_ session: WCSession) {}
     #endif
 
     func session(

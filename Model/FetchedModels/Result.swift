@@ -9,12 +9,12 @@ import Foundation
 import HBMihoyoAPI
 
 #if !os(watchOS)
-    typealias PlayerDetailsFetchResult = Result<
-        PlayerDetailFetchModel,
-        RequestError
-    >
-    typealias PlayerDetailResult = Result<
-        PlayerDetail,
-        PlayerDetail.PlayerDetailError
-    >
+typealias PlayerDetailsFetchResult = Result<
+    PlayerDetailFetchModel,
+    RequestError
+>
+typealias PlayerDetailResult = Result<
+    PlayerDetail,
+    PlayerDetail.PlayerDetailError
+>
 #endif

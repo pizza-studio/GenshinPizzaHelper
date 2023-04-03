@@ -234,22 +234,22 @@ private struct PinnedAccountInfoCard: View {
                     }
                 }
                 #if canImport(ActivityKit)
-                    if #available(iOS 16.1, *) {
-                        Button("为该帐号开启树脂计时器") {
-                            do {
-                                try ResinRecoveryActivityController
-                                    .shared
-                                    .createResinRecoveryTimerActivity(
-                                        for: account
-                                    )
-                                isSucceedAlertShow.toggle()
-                            } catch {
-                                errorMessage = error
-                                    .localizedDescription
-                                isErrorAlertShow.toggle()
-                            }
+                if #available(iOS 16.1, *) {
+                    Button("为该帐号开启树脂计时器") {
+                        do {
+                            try ResinRecoveryActivityController
+                                .shared
+                                .createResinRecoveryTimerActivity(
+                                    for: account
+                                )
+                            isSucceedAlertShow.toggle()
+                        } catch {
+                            errorMessage = error
+                                .localizedDescription
+                            isErrorAlertShow.toggle()
                         }
                     }
+                }
                 #endif
             }
         case .failure:
@@ -395,22 +395,22 @@ private struct AccountInfoCards: View {
                                     }
                                 }
                                 #if canImport(ActivityKit)
-                                    if #available(iOS 16.1, *) {
-                                        Button("为该帐号开启树脂计时器") {
-                                            do {
-                                                try ResinRecoveryActivityController
-                                                    .shared
-                                                    .createResinRecoveryTimerActivity(
-                                                        for: account
-                                                    )
-                                                isSucceedAlertShow.toggle()
-                                            } catch {
-                                                errorMessage = error
-                                                    .localizedDescription
-                                                isErrorAlertShow.toggle()
-                                            }
+                                if #available(iOS 16.1, *) {
+                                    Button("为该帐号开启树脂计时器") {
+                                        do {
+                                            try ResinRecoveryActivityController
+                                                .shared
+                                                .createResinRecoveryTimerActivity(
+                                                    for: account
+                                                )
+                                            isSucceedAlertShow.toggle()
+                                        } catch {
+                                            errorMessage = error
+                                                .localizedDescription
+                                            isErrorAlertShow.toggle()
                                         }
                                     }
+                                }
                                 #endif
                             }
                         }

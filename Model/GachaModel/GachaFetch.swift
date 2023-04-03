@@ -103,6 +103,9 @@ extension MihoyoAPI {
             print(String(data: data!, encoding: .utf8)!)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
             do {
                 let result = try decoder.decode(
                     GachaResult_FM.self,
@@ -162,7 +165,13 @@ extension MihoyoAPI {
                 completion(.failure(error))
             } catch {
                 print(error.localizedDescription)
-                completion(.failure(.decodeError))
+                completion(
+                    .failure(
+                        .decodeError(
+                            message: "DECODE ITEM: \(String(data: data!, encoding: .utf8)!)"
+                        )
+                    )
+                )
             }
         }.resume()
     }
