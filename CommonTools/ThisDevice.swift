@@ -64,54 +64,32 @@ enum ThisDevice {
     }
 
     public static var scaleRatioCompatible: CGFloat {
-        if ThisDevice.isPad, useAdaptiveSpacing {
-            return 1
-        }
         guard let window = getKeyWindow() else { return 1 }
-        let minSize: CGSize = .init(width: 375, height: 667)
+        let minSize: CGSize = .init(
+            width: 375,
+            height: useAdaptiveSpacing ? 812 : 667
+        )
         let windowSize = window.bounds.size
         // 对哀凤优先使用宽度适配，没准哪天哀凤长得跟法棍面包似的也说不定。
-        if idiom == .phone {
-            var result = windowSize.width / minSize.width
-            let compatible = CGRectContainsRect(
-                CGRect(
-                    x: 0.0,
-                    y: 0.0,
-                    width: windowSize.width,
-                    height: windowSize.height
-                ),
-                CGRect(
-                    x: 0.0,
-                    y: 0.0,
-                    width: minSize.width * result,
-                    height: minSize.height * result
-                )
+        var result = windowSize.width / minSize.width
+        let compatible = CGRectContainsRect(
+            CGRect(
+                x: 0.0,
+                y: 0.0,
+                width: windowSize.width,
+                height: windowSize.height
+            ),
+            CGRect(
+                x: 0.0,
+                y: 0.0,
+                width: minSize.width * result,
+                height: minSize.height * result
             )
-            if !compatible {
-                result = windowSize.height / minSize.height
-            }
-            return result
-        } else {
-            var result = windowSize.height / minSize.height
-            let compatible = CGRectContainsRect(
-                CGRect(
-                    x: 0.0,
-                    y: 0.0,
-                    width: windowSize.width,
-                    height: windowSize.height
-                ),
-                CGRect(
-                    x: 0.0,
-                    y: 0.0,
-                    width: minSize.width * result,
-                    height: minSize.height * result
-                )
-            )
-            if !compatible {
-                result = windowSize.width / minSize.width
-            }
-            return result
+        )
+        if !compatible {
+            result = windowSize.height / minSize.height
         }
+        return result
     }
 
     public static var isSplitOrSlideOver: Bool {
