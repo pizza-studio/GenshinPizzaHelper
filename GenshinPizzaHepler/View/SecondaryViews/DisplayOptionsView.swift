@@ -31,6 +31,9 @@ struct DisplayOptionsView: View {
                 Toggle(isOn: $showRarityAndLevelForArtifacts) {
                     Text("显示圣遗物等级与稀有度")
                 }
+                Toggle(isOn: $showRatingsForArtifacts) {
+                    Text("显示圣遗物评分与评价")
+                }
                 Toggle(isOn: $useActualCharacterNames) {
                     Text("显示部分角色的真实姓名")
                 }
@@ -64,6 +67,12 @@ struct DisplayOptionsView: View {
         store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
     private var showRarityAndLevelForArtifacts: Bool = true
+
+    @AppStorage(
+        "showRatingsForArtifacts",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    private var showRatingsForArtifacts: Bool = true
 
     @ObservedObject
     private var viewModel: MoreViewCacheViewModel = .init()

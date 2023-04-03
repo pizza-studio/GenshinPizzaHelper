@@ -65,6 +65,12 @@ extension AppConfig {
     public static var showRarityAndLevelForArtifacts: Bool = true
 
     @AppStorage(
+        "showRatingsForArtifacts",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var showRatingsForArtifacts: Bool = true
+
+    @AppStorage(
         "forceCharacterWeaponNameFixed",
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )

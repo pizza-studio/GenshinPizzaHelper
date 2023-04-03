@@ -255,10 +255,8 @@ struct EachCharacterDetailDataView: View {
             default:
                 EmptyView()
             }
-        }
-        VStack(spacing: 3.3 + Self.spacingDelta) {
-            probRows
-            if let totalScore = avatar.artifactTotalScore,
+            if AppConfig.showRatingsForArtifacts,
+               let totalScore = avatar.artifactTotalScore,
                let rank = avatar.artifactScoreRank {
                 AttributeLabel(
                     iconString: "UI_Icon_ArtifactRating",
@@ -267,6 +265,9 @@ struct EachCharacterDetailDataView: View {
                     fontSize: fontSize
                 )
             }
+        }
+        VStack(spacing: 3.3 + Self.spacingDelta) {
+            probRows
         }
     }
 
@@ -309,7 +310,7 @@ struct EachCharacterDetailDataView: View {
             // TODO: i18n malfunction.
             "\(String(format: "%.0f", artifact.score ?? -1))分",
             alignment: .topLeading,
-            enabled: artifact.score != nil
+            enabled: artifact.score != nil && AppConfig.showRatingsForArtifacts
         )
         VStack(spacing: 0 + Self.spacingDelta) {
             Text(artifact.mainAttribute.name.percentageMarksTrimmed)
