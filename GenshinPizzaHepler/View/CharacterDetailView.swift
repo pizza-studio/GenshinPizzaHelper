@@ -31,7 +31,10 @@ struct CharacterDetailView: View {
     }
 
     var body: some View {
-        coreBody
+        coreBody.onReceive(orientationChanged) { _ in
+            guard !ThisDevice.isMac, ThisDevice.idiom == .pad else { return }
+            self.orientation = UIDevice.current.orientation
+        }
     }
 
     @ViewBuilder
@@ -168,14 +171,10 @@ struct CharacterDetailView: View {
                 animation: animation
             ).frame(minWidth: 380, maxWidth: 500) // For iPad
                 .fixedSize(
-                    horizontal: !useAdaptiveSpacing || ThisDevice
-                        .idiom == .phone,
-                    vertical: !useAdaptiveSpacing
+                    horizontal: condenseHorizontally,
+                    vertical: true
                 )
                 .scaleEffect(scaleRatioCompatible)
-            // TODO: 這裡回頭可以實裝一下「隨父容器尺寸自動放大」的功能。
-            // .fixedSize()
-            // .scaleEffect(1.8)
             Spacer().frame(width: 25, height: 20)
         }
     }
@@ -194,11 +193,28 @@ struct CharacterDetailView: View {
 
     // MARK: Private
 
+    @State
+    private var orientation = UIDevice.current.orientation
+
+    private let orientationChanged = NotificationCenter.default
+        .publisher(for: UIDevice.orientationDidChangeNotification)
+        .makeConnectable()
+        .autoconnect()
+
     private var scaleRatioCompatible: CGFloat {
         ThisDevice.scaleRatioCompatible
     }
 
-    private var useAdaptiveSpacing: Bool {
-        ThisDevice.useAdaptiveSpacing
+    private var condenseHorizontally: Bool {
+        !ThisDevice.useAdaptiveSpacing
+            || ThisDevice.idiom == .phone
+            ||
+            (
+                ThisDevice.isSplitOrSlideOver && [
+                    .portraitUpsideDown,
+                    .portrait,
+                ]
+                .contains(orientation)
+            )
     }
 }

@@ -72,19 +72,13 @@ enum ThisDevice {
         let windowSize = window.bounds.size
         // 对哀凤优先使用宽度适配，没准哪天哀凤长得跟法棍面包似的也说不定。
         var result = windowSize.width / minSize.width
+        let zoomedSize = CGSize(
+            width: minSize.width * result,
+            height: minSize.height * result
+        )
         let compatible = CGRectContainsRect(
-            CGRect(
-                x: 0.0,
-                y: 0.0,
-                width: windowSize.width,
-                height: windowSize.height
-            ),
-            CGRect(
-                x: 0.0,
-                y: 0.0,
-                width: minSize.width * result,
-                height: minSize.height * result
-            )
+            CGRect(origin: .zero, size: windowSize),
+            CGRect(origin: .zero, size: zoomedSize)
         )
         if !compatible {
             result = windowSize.height / minSize.height
@@ -95,6 +89,25 @@ enum ThisDevice {
     public static var isSplitOrSlideOver: Bool {
         guard let window = getKeyWindow() else { return false }
         return window.frame.width != window.screen.bounds.width
+    }
+
+    public static var isRunningInFullScreen: Bool {
+        guard let window = getKeyWindow() else { return true }
+        let screenSize = UIScreen.main.bounds.size
+        let appSize = window.bounds.size
+        let compatibleA = CGRectEqualToRect(
+            CGRect(origin: .zero, size: screenSize),
+            CGRect(origin: .zero, size: appSize)
+        )
+        let appSizeFlipped = CGSize(
+            width: appSize.height,
+            height: appSize.width
+        )
+        let compatibleB = CGRectEqualToRect(
+            CGRect(origin: .zero, size: screenSize),
+            CGRect(origin: .zero, size: appSizeFlipped)
+        )
+        return compatibleA || compatibleB
     }
 
     // MARK: Internal
