@@ -115,6 +115,10 @@ extension View {
     func blurMaterialBackground() -> some View {
         modifier(BlurMaterialBackground())
     }
+
+    func alternativeBlurMaterialBackground() -> some View {
+        modifier(AlternativeBlurMaterialBackground())
+    }
 }
 
 // MARK: - BlurMaterialBackground
@@ -138,6 +142,36 @@ struct BlurMaterialBackground: ViewModifier {
                         style: .continuous
                     )
                     .foregroundColor(Color(UIColor.systemGray6))
+                )
+                .contentShape(RoundedRectangle(
+                    cornerRadius: 20,
+                    style: .continuous
+                ))
+        }
+    }
+}
+
+// MARK: - AlternativeBlurMaterialBackground
+
+struct AlternativeBlurMaterialBackground: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 15.0, *) {
+            content.background(
+                .thinMaterial,
+                in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            )
+            .contentShape(RoundedRectangle(
+                cornerRadius: 20,
+                style: .continuous
+            ))
+        } else {
+            content
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 20,
+                        style: .continuous
+                    )
+                    .foregroundColor(Color(UIColor.systemGray5).opacity(0.5))
                 )
                 .contentShape(RoundedRectangle(
                     cornerRadius: 20,

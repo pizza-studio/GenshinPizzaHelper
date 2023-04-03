@@ -10,7 +10,6 @@ import SwiftUI
 
 // MARK: - EachCharacterDetailDataView
 
-// @available(iOS 15, *)
 struct EachCharacterDetailDataView: View {
     // MARK: Lifecycle
 
@@ -300,7 +299,7 @@ struct EachCharacterDetailDataView: View {
         )
         .corneredTag(
             // TODO: i18n malfunction.
-            key: "\(String(format: "%.0f", artifact.score ?? -1))分",
+            "\(String(format: "%.0f", artifact.score ?? -1))分",
             alignment: .topLeading,
             enabled: artifact.score != nil
         )
@@ -336,7 +335,6 @@ struct EachCharacterDetailDataView: View {
 
 // MARK: - AttributeLabel
 
-// @available(iOS 15.0, *)
 struct AttributeLabel: View {
     // MARK: Lifecycle
 
@@ -443,62 +441,35 @@ struct AttributeLabel: View {
     }
 
     var body: some View {
-        if #available(iOS 15.0, *) {
-            let valueViewModified = valueView
-                .font(.systemCondensed(size: fontSize, weight: .semibold))
-                .foregroundColor(textColor)
-                .fixedSize(horizontal: true, vertical: true)
-                .minimumScaleFactor(0.5)
-                .padding(.horizontal, fontSize / 2)
-                .background(
-                    Capsule()
-                        .foregroundStyle(.gray)
-                        .frame(height: 20)
-                        .frame(maxWidth: 200)
-                        .opacity(0.25)
-                )
+        let valueViewModified = valueView
+            .font(.systemCondensed(size: fontSize, weight: .semibold))
+            .foregroundColor(textColor)
+            .fixedSize(horizontal: true, vertical: true)
+            .minimumScaleFactor(0.5)
+            .padding(.horizontal, fontSize / 2)
+            .background(
+                Capsule()
+                    .fill(Color.gray.opacity(0.325))
+                    .frame(height: 20)
+                    .frame(maxWidth: 200)
+            )
+        HStack {
             HStack {
-                HStack {
-                    HStack(spacing: 0) {
-                        image
-                        secondaryImage
-                    }
-                    nameView
+                HStack(spacing: 0) {
+                    image
+                    secondaryImage
                 }
-                dashSpacer
-                valueViewModified
+                nameView
             }
-            .frame(height: fontSize + 6)
-        } else {
-            // Fallback on earlier versions
-            let valueViewModified = valueView
-                .foregroundColor(textColor)
-                .padding(.horizontal)
-                .background(
-                    Capsule()
-                        .frame(height: 20)
-                        .frame(maxWidth: 200)
-                        .opacity(0.25)
-                )
-            HStack {
-                HStack {
-                    HStack(spacing: 0) {
-                        image
-                        secondaryImage
-                    }
-                    nameView
-                }
-                dashSpacer
-                valueViewModified
-            }
-            .frame(height: fontSize + 6)
+            dashSpacer
+            valueViewModified
         }
+        .frame(height: fontSize + 6)
     }
 }
 
 // MARK: - AvatarAndSkillView
 
-// @available(iOS 15.0, *)
 private struct AvatarAndSkillView: View {
     // MARK: Internal
 
@@ -556,7 +527,8 @@ private struct AvatarAndSkillView: View {
                                     }.frame(width: 40, height: 40)
                                     Spacer()
                                 }
-                                // 这里不用 corneredTag，因为要保证所有版本的 iOS 都能显示。
+                                // 这里不用 corneredTag，因为要动态调整图示与等级数字之间的显示距离。
+                                // 而且 skill.levelDisplay 也不是纯文本，而是 some View。
                                 ZStack(alignment: .center) {
                                     Color.black.opacity(0.1)
                                         .clipShape(Capsule())
@@ -587,55 +559,45 @@ private struct AvatarAndSkillView: View {
 
 extension View {
     fileprivate func corneredTag(
-        key stringKey: LocalizedStringKey,
+        _ stringKey: LocalizedStringKey,
         alignment: Alignment,
         textSize: CGFloat = 11,
         opacity: CGFloat = 1,
         enabled: Bool = true
     )
         -> some View {
-        guard stringKey != "" else { return EmptyView() }
-        if #available(macCatalyst 15.0, iOS 15.0, *) {
-            return overlay(alignment: alignment) {
-                Text(enabled ? stringKey : "")
+        guard stringKey != "", enabled else { return AnyView(self) }
+        return AnyView(
+            ZStack(alignment: alignment) {
+                self
+                Text(stringKey)
                     .font(.systemCondensed(size: textSize, weight: .medium))
                     .padding(.horizontal, 4)
-                    .background(
-                        Capsule()
-                            .foregroundStyle(.ultraThinMaterial)
-                            .opacity(enabled ? 0.7 : 0)
-                    )
+                    .alternativeBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
             }
-        } else {
-            return EmptyView()
-        }
+        )
     }
 
     fileprivate func corneredTag(
-        _ string: String,
+        varbatim stringVerbatim: String,
         alignment: Alignment,
         textSize: CGFloat = 11,
         opacity: CGFloat = 1,
         enabled: Bool = true
     )
         -> some View {
-        guard !string.isEmpty else { return EmptyView() }
-        if #available(macCatalyst 15.0, iOS 15.0, *) {
-            return overlay(alignment: alignment) {
-                Text(enabled ? string : "")
+        guard stringVerbatim != "", enabled else { return AnyView(self) }
+        return AnyView(
+            ZStack(alignment: alignment) {
+                self
+                Text(stringVerbatim)
                     .font(.systemCondensed(size: textSize, weight: .medium))
                     .padding(.horizontal, 4)
-                    .background(
-                        Capsule()
-                            .foregroundStyle(.ultraThinMaterial)
-                            .opacity(enabled ? 0.7 : 0)
-                    )
+                    .alternativeBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
             }
-        } else {
-            return EmptyView()
-        }
+        )
     }
 }
 

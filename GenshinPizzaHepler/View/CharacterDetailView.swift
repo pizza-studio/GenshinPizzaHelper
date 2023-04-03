@@ -31,10 +31,7 @@ struct CharacterDetailView: View {
     }
 
     var body: some View {
-        coreBody.onReceive(orientationChanged) { _ in
-            guard !ThisDevice.isMac, ThisDevice.idiom == .pad else { return }
-            orientation = UIDevice.current.orientation
-        }
+        coreBody.environmentObject(orientation)
     }
 
     @ViewBuilder
@@ -193,13 +190,8 @@ struct CharacterDetailView: View {
 
     // MARK: Private
 
-    @State
-    private var orientation = UIDevice.current.orientation
-
-    private let orientationChanged = NotificationCenter.default
-        .publisher(for: UIDevice.orientationDidChangeNotification)
-        .makeConnectable()
-        .autoconnect()
+    @StateObject
+    private var orientation = ThisDevice.DeviceOrientation()
 
     private var scaleRatioCompatible: CGFloat {
         ThisDevice.scaleRatioCompatible
@@ -210,11 +202,8 @@ struct CharacterDetailView: View {
             || ThisDevice.idiom == .phone
             ||
             (
-                ThisDevice.isSplitOrSlideOver && [
-                    .portraitUpsideDown,
-                    .portrait,
-                ]
-                .contains(orientation)
+                ThisDevice.isSplitOrSlideOver && orientation
+                    .orientation == .portrait
             )
     }
 }

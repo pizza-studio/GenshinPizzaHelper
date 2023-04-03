@@ -157,3 +157,51 @@ extension UIEdgeInsets {
         [bottom, top, left, right]
     }
 }
+
+// MARK: - Globally-Observable Device Orientation for SwiftUI
+
+// Ref: https://developer.apple.com/forums/thread/126878?answerId=654602022#654602022
+
+import Combine
+
+extension ThisDevice {
+    final class DeviceOrientation: ObservableObject {
+        // MARK: Lifecycle
+
+        init() {
+            self.orientation = UIDevice.current.orientation
+                .isLandscape ? .landscape : .portrait
+            self.listener = NotificationCenter.default
+                .publisher(for: UIDevice.orientationDidChangeNotification)
+                .compactMap { ($0.object as? UIDevice)?.orientation }
+                .compactMap { deviceOrientation -> Orientation? in
+                    if deviceOrientation.isPortrait {
+                        return .portrait
+                    } else if deviceOrientation.isLandscape {
+                        return .landscape
+                    } else {
+                        return nil
+                    }
+                }
+                .assign(to: \.orientation, on: self)
+        }
+
+        deinit {
+            listener?.cancel()
+        }
+
+        // MARK: Internal
+
+        enum Orientation {
+            case portrait
+            case landscape
+        }
+
+        @Published
+        var orientation: Orientation
+
+        // MARK: Private
+
+        private var listener: AnyCancellable?
+    }
+}

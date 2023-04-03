@@ -1774,7 +1774,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHepler" */;
 			buildPhases = (
-				BFF5CCA8293B9FF90049F66A /* ShellScript */,
+				BFF5CCA8293B9FF90049F66A /* Clang-Format */,
 				EABD7DB22886B2D200B7F0FD /* Sources */,
 				EABD7DB32886B2D200B7F0FD /* Frameworks */,
 				EABD7DB42886B2D200B7F0FD /* Resources */,
@@ -2001,7 +2001,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BFF5CCA8293B9FF90049F66A /* ShellScript */ = {
+		BFF5CCA8293B9FF90049F66A /* Clang-Format */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 12;
@@ -2011,13 +2011,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Clang-Format";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nmake lint\nmake format\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\n# make lint\nmake format\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
