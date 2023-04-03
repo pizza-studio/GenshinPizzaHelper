@@ -29,7 +29,8 @@ struct PlayerDetail {
                 .init(
                     avatarInfo: avatarInfo,
                     localizedDictionary: localizedDictionary,
-                    characterDictionary: characterMap
+                    characterDictionary: characterMap,
+                    uid: playerDetailFetchModel.uid
                 )
             }
         } else { self.avatars = .init() }
@@ -96,7 +97,8 @@ struct PlayerDetail {
         init?(
             avatarInfo: PlayerDetailFetchModel.AvatarInfo,
             localizedDictionary: [String: String],
-            characterDictionary: [String: ENCharacterMap.Character]
+            characterDictionary: [String: ENCharacterMap.Character],
+            uid: String?
         ) {
             guard let character =
                 characterDictionary[
@@ -170,6 +172,10 @@ struct PlayerDetail {
 
             self.level = Int(avatarInfo.propMap.level.val) ?? 0
             self.quality = .init(rawValue: character.QualityType) ?? .purple
+            let uid = uid ?? ""
+            let obfuscatedUid =
+                "\(uid)\(uid.md5)\(AppConfig.uidSalt)"
+            self.uid = String(obfuscatedUid.md5)
 
 //            var artifactScores: ArtifactRatingScoreResult?
             print("Get artifact rating of \(name)")
@@ -197,6 +203,43 @@ struct PlayerDetail {
                             case .circlet:
                                 self.artifacts[index].score = artifactScores
                                     .stat5pt
+                            }
+                        }
+                    }
+                    DispatchQueue.global(qos: .background).async {
+                        // upload data to opserver
+                        let encoder = JSONEncoder()
+                        encoder.outputFormatting = .sortedKeys
+                        let artifactScoreCollectData = artifactScores
+                            .convert2ArtifactScoreCollectModel(
+                                uid: self.uid,
+                                charId: String(self.enkaID)
+                            )
+                        let data = try! encoder.encode(artifactScoreCollectData)
+                        let md5 = String(data: data, encoding: .utf8)!.md5
+                        guard !UPLOAD_HOLDING_DATA_LOCKED
+                        else {
+                            print(
+                                "uploadArtifactScoreDataLocked is locked"
+                            ); return
+                        }
+                        API.PSAServer.uploadUserData(
+                            path: "/artifact_rank/upload",
+                            data: data
+                        ) { result in
+                            switch result {
+                            case .success:
+                                print("uploadArtifactData SUCCEED")
+                                print(md5)
+                            case let .failure(error):
+                                switch error {
+                                case let .uploadError(message):
+                                    if message == "Insert Failed" {
+                                        print(message)
+                                    }
+                                default:
+                                    break
+                                }
                             }
                         }
                     }
@@ -521,6 +564,8 @@ struct PlayerDetail {
 
         /// Enka Character ID
         let enkaID: Int
+        /// UID
+        let uid: String
 
         /// 经过错字订正处理的角色姓名
         var nameCorrected: String {

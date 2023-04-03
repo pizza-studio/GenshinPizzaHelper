@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/7.
 //  设置View
 
+import AlertToast
 import SwiftUI
 
 // MARK: - SettingsView
@@ -23,6 +24,9 @@ struct SettingsView: View {
 
     @State
     var isWidgetTipsSheetShow: Bool = false
+
+    @State
+    var isAlertToastShow = false
 
     var accounts: [Account] { viewModel.accounts }
 
@@ -84,8 +88,9 @@ struct SettingsView: View {
                     }
                     #if DEBUG
                     Button("debug") {
-                        UserNotificationCenter.shared
-                            .printAllNotificationRequest()
+//                        UserNotificationCenter.shared
+//                            .printAllNotificationRequest()
+                        isAlertToastShow.toggle()
                     }
                     #endif
                 }
@@ -170,6 +175,13 @@ struct SettingsView: View {
         .navigationViewStyle(.stack)
         .sheet(isPresented: $isWidgetTipsSheetShow) {
             WidgetTipsView(isSheetShow: $isWidgetTipsSheetShow)
+        }
+        .toast(isPresenting: $isAlertToastShow) {
+            AlertToast(
+                displayMode: .hud,
+                type: .complete(.green),
+                title: "Complete"
+            )
         }
     }
 }

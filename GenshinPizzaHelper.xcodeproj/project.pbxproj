@@ -119,6 +119,7 @@
 		BF85D78F28D02CCE003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BF85D79028D02CCF003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */; };
+		BF9D74EC29DB1604009A9918 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BF9D74EB29DB1604009A9918 /* AlertToast */; };
 		BFB101D328D5C579000DC631 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D228D5C579000DC631 /* ToolsView.swift */; };
 		BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */; };
@@ -965,6 +966,7 @@
 				BF15570B29CFE5CF0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
 				BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */,
+				BF9D74EC29DB1604009A9918 /* AlertToast in Frameworks */,
 				BF20733229D1411500AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BFBDD66F28F3F3C90022B79D /* SwiftPieChart in Frameworks */,
 			);
@@ -1794,6 +1796,7 @@
 				BFBDD66E28F3F3C90022B79D /* SwiftPieChart */,
 				BF15570A29CFE5CF0056CFE6 /* HBMihoyoAPI */,
 				BF20733129D1411500AD391F /* HBPizzaHelperAPI */,
+				BF9D74EB29DB1604009A9918 /* AlertToast */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -1874,6 +1877,7 @@
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			packageReferences = (
+				BF9D74EA29DB1604009A9918 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
 			projectDirPath = "";
@@ -3307,6 +3311,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		BF9D74EA29DB1604009A9918 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		BF15570A29CFE5CF0056CFE6 /* HBMihoyoAPI */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -3355,6 +3370,11 @@
 		BF20733B29D1413100AD391F /* HBPizzaHelperAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HBPizzaHelperAPI;
+		};
+		BF9D74EB29DB1604009A9918 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF9D74EA29DB1604009A9918 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		BFBDD66E28F3F3C90022B79D /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;

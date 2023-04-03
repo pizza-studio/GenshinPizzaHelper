@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/22.
 //  展示所有帐号的主页
 
+import AlertToast
 import HBMihoyoAPI
 import SwiftUI
 
@@ -311,14 +312,28 @@ private struct AccountInfoCards: View {
         )
         .overlay(
             EmptyView()
-                .alert(isPresented: $isSucceedAlertShow) {
-                    Alert(title: Text("创建树脂计时器成功".localized))
+//                .alert(isPresented: $isSucceedAlertShow) {
+//                    Alert(title: Text("创建树脂计时器成功".localized))
+//                }
+                .toast(isPresenting: $isSucceedAlertShow) {
+                    AlertToast(
+                        displayMode: .hud,
+                        type: .complete(.green),
+                        title: "创建树脂计时器成功"
+                    )
                 }
         )
         .overlay(
             EmptyView()
-                .alert(isPresented: $isErrorAlertShow) {
-                    Alert(title: Text("ERROR \(errorMessage)"))
+//                .alert(isPresented: $isErrorAlertShow) {
+//                    Alert(title: Text("ERROR \(errorMessage)"))
+//                }
+                .toast(isPresenting: $isErrorAlertShow) {
+                    AlertToast(
+                        displayMode: .hud,
+                        type: .error(.red),
+                        title: "ERROR \(errorMessage)"
+                    )
                 }
         )
         ForEach($viewModel.accounts, id: \.config.uuid) { $account in
@@ -410,6 +425,12 @@ private struct AccountInfoCards: View {
                                             isErrorAlertShow.toggle()
                                         }
                                     }
+                                }
+                                #endif
+                                #if DEBUG
+                                Button("Toast Debug") {
+                                    isSucceedAlertShow.toggle()
+                                    print("isSucceedAlertShow toggle")
                                 }
                                 #endif
                             }

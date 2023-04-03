@@ -29,6 +29,23 @@ public struct ArtifactRatingScoreResult: Codable, Equatable {
         guard stat5pt >= 0 else { return false }
         return true
     }
+
+    public func convert2ArtifactScoreCollectModel(
+        uid: String,
+        charId: String
+    )
+        -> ArtifactScoreCollectModel {
+        ArtifactScoreCollectModel(
+            uid: uid,
+            charId: charId,
+            totalScore: allpt,
+            stat1Score: stat1pt,
+            stat2Score: stat2pt,
+            stat3Score: stat3pt,
+            stat4Score: stat4pt,
+            stat5Score: stat5pt
+        )
+    }
 }
 
 // MARK: - ArtifactRatingRequest
@@ -123,4 +140,17 @@ public struct ArtifactRatingRequest {
     public var goblet: Artifact
     /// 头
     public var circlet: Artifact
+}
+
+// MARK: - ArtifactScoreCollectModel
+
+public struct ArtifactScoreCollectModel: Codable {
+    public var uid: String
+    public var charId: String
+    public var totalScore: Double
+    public var stat1Score: Double
+    public var stat2Score: Double
+    public var stat3Score: Double
+    public var stat4Score: Double
+    public var stat5Score: Double
 }
