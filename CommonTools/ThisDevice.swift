@@ -66,8 +66,11 @@ enum ThisDevice {
     public static var scaleRatioCompatible: CGFloat {
         guard let window = getKeyWindow() else { return 1 }
         let minSize: CGSize = .init(
-            width: 375,
-            height: useAdaptiveSpacing ? 812 : 667
+            // width: 375,
+            // height: useAdaptiveSpacing ? 812 : 667
+            // 新的基准尺寸是原有的 1.66 倍：620x1344 与 620x1104。
+            width: 620 + 2,
+            height: useAdaptiveSpacing ? 1344 + 2 : 1104 + 2
         )
         let windowSize = window.bounds.size
         // 对哀凤优先使用宽度适配，没准哪天哀凤长得跟法棍面包似的也说不定。

@@ -166,7 +166,7 @@ struct CharacterDetailView: View {
             EachCharacterDetailDataView(
                 avatar: avatar,
                 animation: animation
-            ).frame(minWidth: 380, maxWidth: 500) // For iPad
+            ).frame(minWidth: 620, maxWidth: 830) // For iPad
                 .fixedSize(
                     horizontal: condenseHorizontally,
                     vertical: true
@@ -198,12 +198,10 @@ struct CharacterDetailView: View {
     }
 
     private var condenseHorizontally: Bool {
-        !ThisDevice.useAdaptiveSpacing
-            || ThisDevice.idiom == .phone
-            ||
-            (
-                ThisDevice.isSplitOrSlideOver && orientation
-                    .orientation == .portrait
-            )
+        guard ThisDevice.idiom != .phone else { return true }
+        guard ThisDevice.useAdaptiveSpacing else { return true }
+        // iPad and macOS.
+        return ThisDevice.isSplitOrSlideOver && orientation
+            .orientation == .portrait && ThisDevice.idiom != .phone
     }
 }

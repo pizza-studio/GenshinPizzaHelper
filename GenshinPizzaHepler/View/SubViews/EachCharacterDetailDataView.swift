@@ -21,7 +21,7 @@ struct EachCharacterDetailDataView: View {
     // MARK: Internal
 
     static var spacingDelta: CGFloat {
-        ThisDevice.useAdaptiveSpacing ? 3 : 0
+        ThisDevice.useAdaptiveSpacing ? spacingDeltaAmount : 0
     }
 
     var avatar: PlayerDetail.Avatar
@@ -31,35 +31,35 @@ struct EachCharacterDetailDataView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             //            if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) {
-            //                VStack(spacing: 4) {
+            //                VStack(spacing: 6.5) {
             //                    avatarIconAndSkill()
             //                    VStack(alignment: .leading) {
             //                        artifactsDetailsView()
             //                    }
             //                }
-            //                VStack(spacing: 4) {
+            //                VStack(spacing: 6.5) {
             //                    probView()
             //                    weapon()
             //                }
             //            } 上述内容回头再弄
-            VStack(spacing: 4 + Self.spacingDelta) {
-                AvatarAndSkillView(avatar: avatar, fontSize: 15)
+            VStack(spacing: 6.5 + Self.spacingDelta) {
+                AvatarAndSkillView(avatar: avatar, fontSize: 25)
                     .padding(.bottom, 2)
                 ZStack {
-                    Color.black.opacity(0.1).cornerRadius(8)
-                    VStack(spacing: 4 + Self.spacingDelta) {
-                        weapon(fontSize: 15)
-                        probView(fontSize: 15)
+                    Color.black.opacity(0.1).cornerRadius(14)
+                    VStack(spacing: 6.5 + Self.spacingDelta) {
+                        weapon(fontSize: 25)
+                        probView(fontSize: 25)
                     }
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 6)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
                 }.fixedSize(horizontal: false, vertical: true)
                 HStack(alignment: .top, spacing: Self.spacingDelta) {
                     artifactsDetailsView()
                 }
             }
-        }.padding().padding(.horizontal, Self.spacingDelta * 2)
-            .padding(.vertical, Self.spacingDelta * 4)
+        }.padding(Self.spacingDeltaAmount * 8)
+            .padding(.vertical, Self.spacingDeltaAmount * 4)
     }
 
     @ViewBuilder
@@ -68,8 +68,8 @@ struct EachCharacterDetailDataView: View {
     }
 
     @ViewBuilder
-    func weapon(fontSize: CGFloat = 15) -> some View {
-        HStack(alignment: .center, spacing: 12) {
+    func weapon(fontSize: CGFloat = 25) -> some View {
+        HStack(alignment: .center, spacing: 19) {
             // Weapon
             let weapon = avatar.weapon
             let maxHeight: CGFloat = fontSize * 4.3 + Self.spacingDelta * 2
@@ -80,7 +80,10 @@ struct EachCharacterDetailDataView: View {
                 )
                 .scaledToFit()
                 .scaleEffect(1.4)
-                .offset(y: 10)
+                .offset(
+                    y: (maxHeight * 1.4 - maxHeight) /
+                        2
+                )
                 .clipShape(Circle())
                 EnkaWebIcon(iconString: weapon.awakenedIconString)
                     .scaledToFit()
@@ -91,7 +94,7 @@ struct EachCharacterDetailDataView: View {
                 alignment: .bottom,
                 textSize: ceil(fontSize * 0.86)
             )
-            VStack(alignment: .leading, spacing: 2 + Self.spacingDelta) {
+            VStack(alignment: .leading, spacing: 3.3 + Self.spacingDelta) {
                 AttributeLabel(
                     name: weapon.nameCorrected,
                     valueView: Text("精炼\(weapon.refinementRank)阶"),
@@ -119,7 +122,7 @@ struct EachCharacterDetailDataView: View {
     }
 
     @ViewBuilder
-    func probView(fontSize: CGFloat = 15) -> some View {
+    func probView(fontSize: CGFloat = 25) -> some View {
         // Other prob
         let probRows = Group {
             if avatar.fightPropMap.healingBonus > 0 {
@@ -253,7 +256,7 @@ struct EachCharacterDetailDataView: View {
                 EmptyView()
             }
         }
-        VStack(spacing: 2 + Self.spacingDelta) {
+        VStack(spacing: 3.3 + Self.spacingDelta) {
             probRows
             if let totalScore = avatar.artifactTotalScore,
                let rank = avatar.artifactScoreRank {
@@ -268,14 +271,18 @@ struct EachCharacterDetailDataView: View {
     }
 
     @ViewBuilder
-    func enumerateArtifacts() -> some View {
+    func enumerateArtifacts(fontSize: CGFloat = 25) -> some View {
         ForEach(
             Array(avatar.artifacts.enumerated()),
             id: \.offset
         ) { seqIndex, artifact in
             // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
-            VStack(spacing: 4 + Self.spacingDelta) {
-                perArtifactDetailView(artifact, seqIndex: seqIndex)
+            VStack(spacing: 6.5 + Self.spacingDelta) {
+                perArtifactDetailView(
+                    artifact,
+                    seqIndex: seqIndex,
+                    fontSize: fontSize
+                )
             }
         }
     }
@@ -283,7 +290,8 @@ struct EachCharacterDetailDataView: View {
     @ViewBuilder
     func perArtifactDetailView(
         _ artifact: PlayerDetail.Avatar.Artifact,
-        seqIndex: Int
+        seqIndex: Int,
+        fontSize: CGFloat = 25
     )
         -> some View {
         HomeSourceWebIcon(
@@ -291,7 +299,7 @@ struct EachCharacterDetailDataView: View {
                 .iconString
         )
         .scaledToFit()
-        .frame(width: 60, height: 60 + Self.spacingDelta)
+        .frame(width: fontSize * 4, height: fontSize * 4 + Self.spacingDelta)
         .corneredTag(
             "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
             alignment: .bottom,
@@ -305,9 +313,9 @@ struct EachCharacterDetailDataView: View {
         )
         VStack(spacing: 0 + Self.spacingDelta) {
             Text(artifact.mainAttribute.name.percentageMarksTrimmed)
-                .font(.system(size: 11, weight: .bold))
+                .font(.system(size: fontSize * 0.73, weight: .bold))
             Text("\(artifact.mainAttribute.valueString)")
-                .font(.systemCompressed(size: 18, weight: .heavy))
+                .font(.systemCompressed(size: fontSize * 1.2, weight: .heavy))
                 .fixedSize(horizontal: false, vertical: true)
                 .minimumScaleFactor(0.5)
         }
@@ -317,9 +325,12 @@ struct EachCharacterDetailDataView: View {
         ) { subAttribute in
             VStack(spacing: 0 + Self.spacingDelta) {
                 Text(subAttribute.name.percentageMarksTrimmed)
-                    .font(.system(size: 11))
+                    .font(.system(size: fontSize * 0.73))
                 Text("\(subAttribute.valueString)")
-                    .font(.systemCondensed(size: 16, weight: .bold))
+                    .font(.systemCondensed(
+                        size: fontSize * 1.05,
+                        weight: .bold
+                    ))
                     .fixedSize(horizontal: false, vertical: true)
                     .minimumScaleFactor(0.5)
             }
@@ -327,6 +338,8 @@ struct EachCharacterDetailDataView: View {
     }
 
     // MARK: Private
+
+    private static let spacingDeltaAmount: CGFloat = 5
 
     private var adaptiveSpacingInCharacterView: Bool {
         AppConfig.adaptiveSpacingInCharacterView
@@ -343,7 +356,7 @@ struct AttributeLabel: View {
         iconStringSecondary: String? = nil,
         name: String,
         value: String,
-        fontSize: CGFloat = 15,
+        fontSize: CGFloat = 25,
         titleEmphasized: Bool = false,
         textColor: Color = .primary,
         backgroundColor: Color = .gray,
@@ -366,7 +379,7 @@ struct AttributeLabel: View {
         iconStringSecondary: String? = nil,
         name: String,
         valueView: Text,
-        fontSize: CGFloat = 15,
+        fontSize: CGFloat = 25,
         titleEmphasized: Bool = false,
         textColor: Color = .primary,
         backgroundColor: Color = .gray,
@@ -447,11 +460,11 @@ struct AttributeLabel: View {
             .fixedSize(horizontal: true, vertical: true)
             .minimumScaleFactor(0.5)
             .padding(.horizontal, fontSize / 2)
+            .padding(.vertical, fontSize / 4)
             .background(
                 Capsule()
                     .fill(Color.gray.opacity(0.325))
-                    .frame(height: 20)
-                    .frame(maxWidth: 200)
+                    .frame(height: fontSize / 3 * 4)
             )
         HStack {
             HStack {
@@ -464,7 +477,7 @@ struct AttributeLabel: View {
             dashSpacer
             valueViewModified
         }
-        .frame(height: fontSize + 6)
+        .frame(height: fontSize / 3 * 4)
     }
 }
 
@@ -479,27 +492,30 @@ private struct AvatarAndSkillView: View {
     var body: some View {
         HStack(alignment: .bottom, spacing: fontSize / 2) {
             EnkaWebIcon(iconString: avatar.iconString)
-                .frame(width: 85, height: 85)
+                .frame(width: fontSize * 5.6, height: fontSize * 5.6)
                 .background(
                     EnkaWebIcon(iconString: avatar.namecardIconString)
                         .scaledToFill()
                         .offset(x: -85 / 3)
                 )
                 .clipShape(Circle())
-                .padding(.trailing, 3)
-            VStack(alignment: .leading, spacing: 2 + spacingDelta) {
+                .padding(.trailing, fontSize / 5)
+            VStack(alignment: .leading, spacing: 3.3 + spacingDelta) {
                 HStack(alignment: .bottom) {
                     Text(avatar.nameCorrected)
-                        .font(.system(size: 23, weight: .black))
+                        .font(.system(size: fontSize * 1.53, weight: .black))
                         .fixedSize(horizontal: false, vertical: true)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                     if ThisDevice.notchType == .none {
-                        Spacer().frame(width: 24)
+                        Spacer().frame(width: fontSize * 1.56)
                     }
                 }
                 HStack(alignment: .center, spacing: fontSize / 2) {
-                    VStack(alignment: .leading, spacing: 2 + spacingDelta / 2) {
+                    VStack(
+                        alignment: .leading,
+                        spacing: 3.3 + spacingDelta / 2
+                    ) {
                         AttributeLabel(
                             name: "等级",
                             value: avatar.level.description,
@@ -512,7 +528,7 @@ private struct AvatarAndSkillView: View {
                         )
                     }
                     .font(.system(size: fontSize))
-                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                    HStack(alignment: .lastTextBaseline, spacing: 3.3) {
                         ForEach(avatar.skills, id: \.self) { skill in
                             ZStack(alignment: .bottom) {
                                 VStack {
@@ -524,7 +540,10 @@ private struct AvatarAndSkillView: View {
                                                 .iconString
                                         )
                                         .scaledToFit().scaleEffect(0.8)
-                                    }.frame(width: 40, height: 40)
+                                    }.frame(
+                                        width: fontSize * 2.6,
+                                        height: fontSize * 2.6
+                                    )
                                     Spacer()
                                 }
                                 // 这里不用 corneredTag，因为要动态调整图示与等级数字之间的显示距离。
@@ -537,15 +556,15 @@ private struct AvatarAndSkillView: View {
                                 }.frame(height: fontSize)
                                     .fixedSize()
                             }.frame(
-                                width: 40,
-                                height: 40 + fontSize / 2 + spacingDelta / 2
+                                width: fontSize * 2.6,
+                                height: fontSize * 3.1 + spacingDelta / 2
                             )
                         }
-                    }.frame(width: 120)
+                    }.frame(width: 192)
                 }
             }.fixedSize(horizontal: false, vertical: true)
         }
-        .frame(height: 85)
+        .frame(height: fontSize * 5.6)
     }
 
     // MARK: Private
@@ -561,7 +580,7 @@ extension View {
     fileprivate func corneredTag(
         _ stringKey: LocalizedStringKey,
         alignment: Alignment,
-        textSize: CGFloat = 11,
+        textSize: CGFloat = 18,
         opacity: CGFloat = 1,
         enabled: Bool = true
     )
@@ -572,7 +591,7 @@ extension View {
                 self
                 Text(stringKey)
                     .font(.systemCondensed(size: textSize, weight: .medium))
-                    .padding(.horizontal, 4)
+                    .padding(.horizontal, 6.4)
                     .alternativeBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
             }
@@ -593,7 +612,7 @@ extension View {
                 self
                 Text(stringVerbatim)
                     .font(.systemCondensed(size: textSize, weight: .medium))
-                    .padding(.horizontal, 4)
+                    .padding(.horizontal, 6.4)
                     .alternativeBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
             }
