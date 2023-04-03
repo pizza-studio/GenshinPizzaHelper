@@ -303,9 +303,9 @@ private struct GetGachaNavigationMenu: View {
                 showView1.toggle()
             }
             #if canImport(GachaMIMTServer)
-            Button("通过抓包或URL获取\n（所有服务器）") {
-                showView2.toggle()
-            }
+                Button("通过抓包或URL获取\n（所有服务器）") {
+                    showView2.toggle()
+                }
             #endif
         } label: {
             Image(systemName: "goforward.plus")
@@ -319,12 +319,12 @@ private struct GetGachaNavigationMenu: View {
                     EmptyView()
                 }
                 #if canImport(GachaMIMTServer)
-                NavigationLink(
-                    destination: MIMTGetGachaView(),
-                    isActive: $showView2
-                ) {
-                    EmptyView()
-                }
+                    NavigationLink(
+                        destination: MIMTGetGachaView(),
+                        isActive: $showView2
+                    ) {
+                        EmptyView()
+                    }
                 #endif
             }
         )

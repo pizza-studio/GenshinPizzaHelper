@@ -67,9 +67,56 @@ enum ThisDevice {
         if ThisDevice.isPad, useAdaptiveSpacing {
             return 1
         }
-        let bounds = UIScreen.main.bounds
-        let smallestDimension = min(bounds.width, bounds.height)
-        return smallestDimension / (idiom == .pad ? 667 : 375)
+        guard let window = getKeyWindow() else { return 1 }
+        let minSize: CGSize = .init(width: 375, height: 667)
+        let windowSize = window.bounds.size
+        // 对哀凤优先使用宽度适配，没准哪天哀凤长得跟法棍面包似的也说不定。
+        if idiom == .phone {
+            var result = windowSize.width / minSize.width
+            let compatible = CGRectContainsRect(
+                CGRect(
+                    x: 0.0,
+                    y: 0.0,
+                    width: windowSize.width,
+                    height: windowSize.height
+                ),
+                CGRect(
+                    x: 0.0,
+                    y: 0.0,
+                    width: minSize.width * result,
+                    height: minSize.height * result
+                )
+            )
+            if !compatible {
+                result = windowSize.height / minSize.height
+            }
+            return result
+        } else {
+            var result = windowSize.height / minSize.height
+            let compatible = CGRectContainsRect(
+                CGRect(
+                    x: 0.0,
+                    y: 0.0,
+                    width: windowSize.width,
+                    height: windowSize.height
+                ),
+                CGRect(
+                    x: 0.0,
+                    y: 0.0,
+                    width: minSize.width * result,
+                    height: minSize.height * result
+                )
+            )
+            if !compatible {
+                result = windowSize.width / minSize.width
+            }
+            return result
+        }
+    }
+
+    public static var isSplitOrSlideOver: Bool {
+        guard let window = getKeyWindow() else { return false }
+        return window.frame.width != window.screen.bounds.width
     }
 
     // MARK: Internal
@@ -89,17 +136,30 @@ enum ThisDevice {
     // MARK: Private
 
     private static var hasDynamicIsland: Bool {
-        guard let window = UIApplication.shared.windows
-            .filter({ $0.isKeyWindow }).first else { return false }
+        guard let window = getKeyWindow() else { return false }
         let filtered = window.safeAreaInsets.allParamters.filter { $0 >= 59 }
         return filtered.count == 1
     }
 
     private static var hasNotchOrDynamicIsland: Bool {
-        guard let window = UIApplication.shared.windows
-            .filter({ $0.isKeyWindow }).first else { return false }
+        guard let window = getKeyWindow() else { return false }
         let filtered = window.safeAreaInsets.allParamters.filter { $0 >= 44 }
         return filtered.count == 1
+    }
+
+    private static func getKeyWindow() -> UIWindow? {
+        let window: UIWindow?
+        if #available(iOS 15, *) {
+            window = UIApplication.shared.connectedScenes
+                .compactMap { scene -> UIWindow? in
+                    (scene as? UIWindowScene)?.keyWindow
+                }
+                .first
+        } else {
+            window = UIApplication.shared.windows
+                .filter { $0.isKeyWindow }.first
+        }
+        return window
     }
 }
 

@@ -172,7 +172,7 @@ struct CharacterDetailView: View {
                         .idiom == .phone,
                     vertical: !useAdaptiveSpacing
                 )
-                .scaleEffect(ThisDevice.scaleRatioCompatible)
+                .scaleEffect(scaleRatioCompatible)
             // TODO: 這裡回頭可以實裝一下「隨父容器尺寸自動放大」的功能。
             // .fixedSize()
             // .scaleEffect(1.8)
@@ -193,6 +193,10 @@ struct CharacterDetailView: View {
     }
 
     // MARK: Private
+
+    private var scaleRatioCompatible: CGFloat {
+        ThisDevice.scaleRatioCompatible
+    }
 
     private var useAdaptiveSpacing: Bool {
         ThisDevice.useAdaptiveSpacing
