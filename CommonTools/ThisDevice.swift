@@ -167,6 +167,8 @@ extension UIEdgeInsets {
 
 import Combine
 
+// MARK: - ThisDevice.DeviceOrientation
+
 extension ThisDevice {
     final class DeviceOrientation: ObservableObject {
         // MARK: Lifecycle

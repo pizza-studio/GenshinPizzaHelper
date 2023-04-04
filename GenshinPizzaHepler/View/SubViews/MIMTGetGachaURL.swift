@@ -279,32 +279,7 @@ private struct CASheetItems: View {
         }
         Section {
             Text("您也可以选择根据跟随以下视频进行安装CA证书。")
-            Link(destination: URL(
-                string: "https://www.bilibili.com/video/BV1Lg411S7wa"
-            )!) {
-                Label {
-                    Text("打开Bilibili观看")
-                } icon: {
-                    Image("bilibili")
-                        .resizable()
-                        .foregroundColor(.blue)
-                        .scaledToFit()
-                }
-            }
-            Link(
-                destination: URL(
-                    string: "https://www.youtube.com/watch?v=k9G2N8XYFm4"
-                )!
-            ) {
-                Label {
-                    Text("打开YouTube观看")
-                } icon: {
-                    Image("youtube")
-                        .resizable()
-                        .foregroundColor(.blue)
-                        .scaledToFit()
-                }
-            }
+            GachaHelpVideoLink()
         }
         Section {
             Label("下载CA证书", systemImage: "1.circle")
@@ -318,11 +293,11 @@ private struct CASheetItems: View {
             }
             Label("安装CA证书", systemImage: "2.circle")
             Text(
-                "前往「设置」App -> 「通用」 -> 「VPN与设备管理」 -> （已下载的描述文件）「Pizza Helper CA」 -> 「安装」"
+                "前往「设置」App → 「通用」 → 「VPN与设备管理」 → （已下载的描述文件）「Pizza Helper CA」 → 「安装」"
             )
             Label("信任CA证书", systemImage: "3.circle")
             Text(
-                "前往「设置」App -> 「通用」 -> 「关于本机」 -> （最下方）「信任证书设置」 -> 打开「Pizza Helper CA」开关"
+                "前往「设置」App → 「通用」 → 「关于本机」 → （最下方）「信任证书设置」 → 打开「Pizza Helper CA」开关"
             )
         } header: {
             Text("如何安装CA证书？")
@@ -403,21 +378,11 @@ private struct HelpSheet<V>: View {
                 } footer: {
                     Text("您也可以选择根据跟随我们的视频教程获取祈愿记录。")
                 }
-                Section {
-                    NavigationLink("PC端或安卓手机通过本软件获取祈愿记录的方法") {
-                        Text("待补充")
-                    }
-                    Link(
-                        "由paimon.moe提供的方法",
-                        destination: URL(
-                            string: "https://paimon.moe/wish/import"
-                        )!
-                    )
-                } header: {
-                    Text("其他获取祈愿链接的方法")
-                } footer: {
-                    Text("您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。")
-                }
+//                Section {
+//                    NavigationLink("PC端或安卓手机通过本软件获取祈愿记录的方法") {
+//                        Text("待补充")
+//                    }
+//                }
             }
             .navigationTitle("帮助")
             .navigationBarTitleDisplayMode(.inline)
@@ -642,7 +607,10 @@ func parseURLToAuthkeyAndOtherParams(urlString: String)
         (authKey: GenAuthKeyResult.GenAuthKeyData, server: Server),
         GetGachaError
     > {
-    guard let url = URL(string: urlString)
+    guard let decodedUrlString = urlString.removingPercentEncoding else {
+        return .failure(.genAuthKeyError(message: "URL Error: \(urlString)"))
+    }
+    guard let url = URL(string: decodedUrlString)
     else {
         return .failure(.genAuthKeyError(message: "URL Error: \(urlString)"))
     }

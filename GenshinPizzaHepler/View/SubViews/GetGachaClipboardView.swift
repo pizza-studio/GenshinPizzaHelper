@@ -143,6 +143,7 @@ struct GetGachaClipboardView: View {
         }
         .navigationTitle("获取祈愿记录")
         .navigationBarTitleDisplayMode(.inline)
+        .environmentObject(observer)
 //        .onAppear {
 //            DispatchQueue.global(qos: .background).async {
 //                checkURLStorageAndGet()

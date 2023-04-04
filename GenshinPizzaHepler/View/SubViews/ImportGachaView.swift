@@ -19,6 +19,9 @@ struct ImportGachaView: View {
     @State
     var isFileImporterShow: Bool = false
 
+    @State
+    var isHelpSheetShow: Bool = false
+
     var body: some View {
         List {
             switch status {
@@ -70,6 +73,18 @@ struct ImportGachaView: View {
                 }
             }
         }
+        .toolbar(content: {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    isHelpSheetShow.toggle()
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                }
+            }
+        })
+        .sheet(isPresented: $isHelpSheetShow, content: {
+            HelpSheet(isShow: $isHelpSheetShow)
+        })
         .navigationTitle("导入UIGF祈愿记录")
         .fileImporter(
             isPresented: $isFileImporterShow,
@@ -192,4 +207,50 @@ private struct ImportSucceedInfo {
     let newCount: Int
     let app: String?
     let exportDate: Date?
+}
+
+// MARK: - HelpSheet
+
+private struct HelpSheet: View {
+    @Binding
+    var isShow: Bool
+
+    var body: some View {
+        NavigationView {
+            List {
+                if Locale.current.languageCode == "zh" {
+                    Link(
+                        destination: URL(
+                            string: "https://uigf.org/zh/partnership.html"
+                        )!
+                    ) {
+                        Label(
+                            "支持UIGF的软件",
+                            systemImage: "app.badge.checkmark"
+                        )
+                    }
+                } else {
+                    Link(
+                        destination: URL(
+                            string: "https://uigf.org/en/partnership.html"
+                        )!
+                    ) {
+                        Label(
+                            "支持UIGF的软件",
+                            systemImage: "app.badge.checkmark"
+                        )
+                    }
+                }
+            }
+            .navigationTitle("导入帮助")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("完成") {
+                        isShow.toggle()
+                    }
+                }
+            }
+        }
+    }
 }

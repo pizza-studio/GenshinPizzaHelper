@@ -19,47 +19,59 @@ struct GachaChartView: View {
 
     var body: some View {
         List {
+            NavigationLink {
+                List {
+                    Section {
+                        ForEach(
+                            [
+                                GachaType.character,
+                                GachaType.weapon,
+                                GachaType.standard,
+                            ],
+                            id: \.rawValue
+                        ) { type in
+                            VStack(alignment: .trailing, spacing: 0) {
+                                Text(type.localizedDescription()).font(.caption)
+                                    .foregroundColor(.gray)
+                                GachaTimeChart(
+                                    gachaViewModel: gachaViewModel,
+                                    type: type
+                                )
+                            }
+                        }
+                    } header: {
+                        Text("总抽数分布")
+                    }
+                    .navigationTitle("其他数据")
+                }
+            } label: {
+                Label(
+                    "其他数据",
+                    systemImage: "chart.bar.doc.horizontal"
+                )
+            }
             Section {
                 GachaItemChart(
                     items: gachaViewModel
                         .filteredGachaItemsWithCount
                 )
+                .environmentObject(gachaViewModel)
             } header: {
                 HStack {
                     Text(
                         "\(gachaViewModel.filter.gachaType.localizedDescription())"
                     )
                     Spacer()
-                    Button("切换卡池") {
+                    Button(
+                        "切换为\(gachaViewModel.filter.gachaType.nextOne().localizedDescription())"
+                    ) {
                         withAnimation {
-                            switch gachaViewModel.filter.gachaType {
-                            case .character: gachaViewModel.filter
-                                .gachaType = .weapon
-                            case .weapon: gachaViewModel.filter
-                                .gachaType = .standard
-                            case .standard: gachaViewModel.filter
-                                .gachaType = .character
-                            default: gachaViewModel.filter
-                                .gachaType = .character
-                            }
+                            gachaViewModel.filter.gachaType = gachaViewModel
+                                .filter.gachaType.nextOne()
                         }
                     }
                     .font(.caption)
                 }
-            }
-            Section {
-                ForEach(
-                    [GachaType.character, GachaType.weapon, GachaType.standard],
-                    id: \.rawValue
-                ) { type in
-                    VStack(alignment: .trailing, spacing: 0) {
-                        Text(type.localizedDescription()).font(.caption)
-                            .foregroundColor(.gray)
-                        GachaTimeChart(type: type)
-                    }
-                }
-            } header: {
-                Text("总抽数分布")
             }
         }
         .toolbar {
@@ -105,6 +117,21 @@ struct GachaChartView: View {
     }
 }
 
+extension GachaType {
+    fileprivate func nextOne() -> Self {
+        switch self {
+        case .character:
+            return .weapon
+        case .weapon:
+            return .standard
+        case .standard:
+            return .character
+        default:
+            return .character
+        }
+    }
+}
+
 // MARK: - GachaItemChart
 
 @available(iOS 16.0, *)
@@ -125,7 +152,19 @@ private struct GachaItemChart: View {
                     y: .value("角色", item.0.id)
                 )
                 .annotation(position: .trailing) {
-                    Text("\(item.count)").foregroundColor(.gray).font(.caption)
+                    HStack(spacing: 3) {
+                        let frame: CGFloat = 25
+                        Text("\(item.count)").foregroundColor(.gray)
+                            .font(.caption)
+                        if item.0.isLose5050() {
+                            Image("UI_EmotionIcon5").resizable().scaledToFit()
+                                .frame(width: frame, height: frame)
+                        } else {
+//                            Image("UI_EmotionIcon2").resizable().scaledToFit()
+//                                .frame(width: frame, height: frame)
+                            EmptyView()
+                        }
+                    }
                 }
                 .foregroundStyle(by: .value("抽数", item.0.id))
             }
@@ -176,6 +215,7 @@ private struct GachaItemChart: View {
 
     var colors: [Color] {
         fiveStarItems.map { _, count in
+//            guard !item.isLose5050() else { return .gray.opacity(0.5) }
             switch count {
             case 0 ..< 62:
                 return .green
@@ -192,7 +232,6 @@ private struct GachaItemChart: View {
 
 @available(iOS 16.0, *)
 private struct GachaTimeChart: View {
-    @EnvironmentObject
     var gachaViewModel: GachaViewModel
     let type: GachaType
     let formatter: DateFormatter = {
