@@ -80,5 +80,5 @@ extension AppConfig {
         "useActualCharacterNames",
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
-    public static var useActualCharacterNames: Bool = true
+    public static var useActualCharacterNames: Bool = false
 }

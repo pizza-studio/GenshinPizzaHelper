@@ -86,5 +86,5 @@ struct DisplayOptionsView: View {
         "useActualCharacterNames",
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
-    private var useActualCharacterNames: Bool = true
+    private var useActualCharacterNames: Bool = false
 }

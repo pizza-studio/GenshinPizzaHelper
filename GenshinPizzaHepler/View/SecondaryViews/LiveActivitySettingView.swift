@@ -218,7 +218,9 @@ struct LiveActivityBackgroundPicker: View {
             ForEach(searchResults, id: \.self) { backgroundImageName in
                 HStack {
                     Label {
-                        Text(LocalizedStringKey(backgroundImageName))
+                        Text(
+                            backgroundImageName.localizedWithFix
+                        )
                     } icon: {
                         GeometryReader { g in
                             Image(backgroundImageName)
