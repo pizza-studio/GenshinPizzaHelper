@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2023/4/2.
 //
 
+import AlertToast
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -21,6 +22,9 @@ struct ImportGachaView: View {
 
     @State
     var isHelpSheetShow: Bool = false
+
+    @State
+    var isCompleteAlertShow: Bool = false
 
     var body: some View {
         List {
@@ -55,7 +59,6 @@ struct ImportGachaView: View {
                         Text("导出时间：\(dateFormatter.string(from: date))")
                     }
                 }
-
                 Section {
                     Text("导入了\(info.totalCount)条记录")
                     Text("储存了\(info.newCount)条新纪录")
@@ -97,13 +100,20 @@ struct ImportGachaView: View {
                 status = .failure(error.localizedDescription)
             }
         }
+        .toast(isPresenting: $isCompleteAlertShow, alert: {
+            .init(
+                displayMode: .alert,
+                type: .complete(.green),
+                title: "成功导入祈愿数据"
+            )
+        })
         .alert(item: $alert) { alert in
             switch alert {
             case let .readyToStart(url: url):
                 return Alert(
                     title: Text("导入时界面会卡住一段时间"),
                     message: Text("请耐心等待..."),
-                    primaryButton: .default(Text("开始"), action: {
+                    primaryButton: .destructive(Text("开始"), action: {
                         do {
                             if url.startAccessingSecurityScopedResource() {
                                 status = .reading
@@ -126,6 +136,7 @@ struct ImportGachaView: View {
                                     app: uigfModel.info.exportApp,
                                     exportDate: uigfModel.info.exportTime
                                 ))
+                                isCompleteAlertShow.toggle()
                                 url.stopAccessingSecurityScopedResource()
                             } else {
                                 status = .failure("无法访问文件")
@@ -167,7 +178,7 @@ private enum AlertType: Identifiable {
 
     var id: String {
         switch self {
-        case let .readyToStart(url):
+        case .readyToStart:
             return "readyToStart"
         }
     }

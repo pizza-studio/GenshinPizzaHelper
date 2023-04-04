@@ -10,6 +10,7 @@ import SwiftUI
 
 #if canImport(GachaMIMTServer)
 
+import AlertToast
 import GachaMIMTServer
 import NetworkExtension
 
@@ -55,7 +56,12 @@ struct MIMTGetGachaView: View {
     var urls: [String] = []
 
     @State
-    fileprivate var alert: AlertType?
+    var isGetGachaURLSucceedAlertShow: Bool = false
+
+    @State
+    var isCompleteGetGachaRecordAlertShow: Bool = false
+    @State
+    var isErrorGetGachaRecordAlertShow: Bool = false
 
     var body: some View {
         List {
@@ -93,7 +99,7 @@ struct MIMTGetGachaView: View {
                 } footer: {
                     HStack {
                         Spacer()
-                        Button("重新祈愿链接") {
+                        Button("重新抓包") {
                             urls = []
                         }.font(.caption)
                     }
@@ -156,6 +162,33 @@ struct MIMTGetGachaView: View {
                 HelpSheet(sheetType: $sheetType)
             }
         })
+        .onChange(of: status, perform: { newValue in
+            switch newValue {
+            case .succeed:
+                isCompleteGetGachaRecordAlertShow.toggle()
+            case .failure:
+                isErrorGetGachaRecordAlertShow.toggle()
+            default:
+                break
+            }
+        })
+        .toast(isPresenting: $isCompleteGetGachaRecordAlertShow, alert: {
+            .init(
+                displayMode: .alert,
+                type: .complete(.green),
+                title: "成功获取祈愿数据",
+                subTitle: "共保存了\(observer.newItemCount)条新的祈愿数据"
+            )
+        })
+        .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
+            guard case let .failure(error) = status
+            else { return .init(displayMode: .alert, type: .loading) }
+            return .init(
+                displayMode: .alert,
+                type: .error(.red),
+                title: "获取失败，因为错误：\n\(error.localizedDescription)"
+            )
+        })
         .onChange(of: scenePhase) { newValue in
             if newValue == .active {
                 if urls.isEmpty {
@@ -163,6 +196,7 @@ struct MIMTGetGachaView: View {
                         withAnimation {
                             self.urls = urls
                             manager.stop()
+                            isGetGachaURLSucceedAlertShow.toggle()
                         }
                     } else {
                         print("no url in storage")
@@ -173,22 +207,14 @@ struct MIMTGetGachaView: View {
         }
         .navigationBarBackButtonHidden(status == .running)
         .environmentObject(observer)
-        .alert(item: $alert) { alert in
-            switch alert {
-            case .getGachaURLSucceed:
-                return Alert(
-                    title: Text("成功获取到祈愿记录链接"),
-                    message: Text("请点击”开始获取祈愿记录“以继续")
-                )
-            case let .urlInPasteboardIsInvalid(url: url):
-                return Alert(
-                    title: Text("从粘贴板上获取到的链接有误"),
-                    message: Text("预期应获取到祈愿链接，但获取到了错误的内容：\n\(url)")
-                )
-            case .pasteboardNoData:
-                return Alert(title: Text("未能从粘贴板获取到内容"))
-            }
-        }
+        .toast(isPresenting: $isGetGachaURLSucceedAlertShow, alert: {
+            .init(
+                displayMode: .alert,
+                type: .complete(.green),
+                title: "成功获取到祈愿记录链接",
+                subTitle: "请点击”开始获取祈愿记录“以继续"
+            )
+        })
         .onAppear {
             if !ALREADY_INSTALL_CA_STORAGE_KEY {
                 sheetType = .caInstall
@@ -238,29 +264,6 @@ private enum SheetType: Int, Identifiable {
     // MARK: Internal
 
     var id: Int { rawValue }
-}
-
-// MARK: - AlertType
-
-private enum AlertType {
-    case urlInPasteboardIsInvalid(url: String)
-    case getGachaURLSucceed
-    case pasteboardNoData
-}
-
-// MARK: Identifiable
-
-extension AlertType: Identifiable {
-    var id: String {
-        switch self {
-        case let .urlInPasteboardIsInvalid(url: url):
-            return "urlInPasteboardIsInvalid\(url)"
-        case .getGachaURLSucceed:
-            return "getGachaURLSucceed"
-        case .pasteboardNoData:
-            return "pasteboardNoData"
-        }
-    }
 }
 
 // MARK: - CASheetItems

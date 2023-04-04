@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2023/3/28.
 //
 
+import AlertToast
 import Charts
 import SwiftUI
 
@@ -22,6 +23,11 @@ struct GetGachaView: View {
     var status: GetGachaStatus = .waitToStart
     @State
     var account: String?
+
+    @State
+    var isCompleteGetGachaRecordAlertShow: Bool = false
+    @State
+    var isErrorGetGachaRecordAlertShow: Bool = false
 
     var acountConfigsFiltered: [AccountConfiguration] {
         viewModel.accounts.compactMap {
@@ -93,6 +99,33 @@ struct GetGachaView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(status == .running)
         .environmentObject(observer)
+        .onChange(of: status, perform: { newValue in
+            switch newValue {
+            case .succeed:
+                isCompleteGetGachaRecordAlertShow.toggle()
+            case .failure:
+                isErrorGetGachaRecordAlertShow.toggle()
+            default:
+                break
+            }
+        })
+        .toast(isPresenting: $isCompleteGetGachaRecordAlertShow, alert: {
+            .init(
+                displayMode: .alert,
+                type: .complete(.green),
+                title: "成功获取祈愿数据",
+                subTitle: "共保存了\(observer.newItemCount)条新的祈愿数据"
+            )
+        })
+        .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
+            guard case let .failure(error) = status
+            else { return .init(displayMode: .alert, type: .loading) }
+            return .init(
+                displayMode: .alert,
+                type: .error(.red),
+                title: "获取失败，因为错误：\n\(error.localizedDescription)"
+            )
+        })
     }
 }
 

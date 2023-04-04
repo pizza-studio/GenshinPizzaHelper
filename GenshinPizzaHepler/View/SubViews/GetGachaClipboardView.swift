@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2023/4/2.
 //
 
+import AlertToast
 import SwiftUI
 
 // MARK: - GetGachaClipboardView
@@ -31,6 +32,11 @@ struct GetGachaClipboardView: View {
 
     @State
     fileprivate var alert: AlertType?
+
+    @State
+    var isCompleteGetGachaRecordAlertShow: Bool = false
+    @State
+    var isErrorGetGachaRecordAlertShow: Bool = false
 
     var body: some View {
         List {
@@ -112,6 +118,33 @@ struct GetGachaClipboardView: View {
             }
             GetGachaResultView(status: $status)
         }
+        .onChange(of: status, perform: { newValue in
+            switch newValue {
+            case .succeed:
+                isCompleteGetGachaRecordAlertShow.toggle()
+            case .failure:
+                isErrorGetGachaRecordAlertShow.toggle()
+            default:
+                break
+            }
+        })
+        .toast(isPresenting: $isCompleteGetGachaRecordAlertShow, alert: {
+            .init(
+                displayMode: .alert,
+                type: .complete(.green),
+                title: "成功获取祈愿数据",
+                subTitle: "共保存了\(observer.newItemCount)条新的祈愿数据"
+            )
+        })
+        .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
+            guard case let .failure(error) = status
+            else { return .init(displayMode: .alert, type: .loading) }
+            return .init(
+                displayMode: .alert,
+                type: .error(.red),
+                title: "获取失败，因为错误：\n\(error.localizedDescription)"
+            )
+        })
         .sheet(isPresented: $isHelpSheetShow, content: {
             HelpSheet(isPresented: $isHelpSheetShow)
         })
