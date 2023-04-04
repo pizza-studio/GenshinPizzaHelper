@@ -5,12 +5,13 @@
 //  Created by 戴藏龙 on 2023/4/1.
 //
 
+import HBMihoyoAPI
+import SwiftUI
+
 #if canImport(GachaMIMTServer)
 
 import GachaMIMTServer
-import HBMihoyoAPI
 import NetworkExtension
-import SwiftUI
 
 private var ALREADY_INSTALL_CA_STORAGE_KEY: Bool {
     get {
@@ -634,6 +635,8 @@ func popURLsFromStorage() -> [String]? {
     }
 }
 
+#endif
+
 func parseURLToAuthkeyAndOtherParams(urlString: String)
     -> Result<
         (authKey: GenAuthKeyResult.GenAuthKeyData, server: Server),
@@ -700,5 +703,3 @@ func parseURLToAuthkeyAndOtherParams(urlString: String)
         )
     )
 }
-
-#endif

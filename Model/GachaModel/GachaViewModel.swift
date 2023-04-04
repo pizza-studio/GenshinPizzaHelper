@@ -25,7 +25,7 @@ class GachaViewModel: ObservableObject {
         }
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(refetchGachaItems),
+            selector: #selector(getRemoteChange),
             name: .NSPersistentStoreRemoteChange,
             object: manager
                 .persistentStoreCoordinator
@@ -98,6 +98,11 @@ class GachaViewModel: ObservableObject {
     }
 
     @objc
+    func getRemoteChange() {
+        print("GOT REMOTE CHANGE")
+        refetchGachaItems()
+    }
+
     func refetchGachaItems() {
         DispatchQueue.main.async {
             withAnimation {
@@ -105,7 +110,7 @@ class GachaViewModel: ObservableObject {
                 if self.filter
                     .uid ==
                     nil {
-                    self.filter.uid = self.manager.allAvaliableUID().first
+                    self.filter.uid = self.allAvaliableAccountUID.first
                 }
                 if let uid = self.filter.uid {
                     self.gachaItems = self.manager.fetchAll(uid: uid)

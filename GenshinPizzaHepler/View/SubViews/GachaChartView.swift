@@ -53,10 +53,6 @@ struct GachaChartView: View {
                     id: \.rawValue
                 ) { type in
                     VStack(alignment: .trailing, spacing: 0) {
-//                        HStack {
-//                            Spacer()
-//
-//                        }
                         Text(type.localizedDescription()).font(.caption)
                             .foregroundColor(.gray)
                         GachaTimeChart(type: type)
@@ -210,28 +206,25 @@ private struct GachaTimeChart: View {
 
     var itemsFiltered: [GachaItem] {
         items.filter { item in
-            (item.gachaType == type) && item.uid == gachaViewModel.filter.uid
+            item.gachaType == type
         }
     }
 
     var gachaTypeDateCount: [GachaTypeDateCountAndIfContain5Star] {
         let dates = Set<Date>.init(itemsFiltered.map { $0.time })
-        let types = Set<GachaType>.init(itemsFiltered.map { $0.gachaType })
-        return types.flatMap { type in
-            dates.map { date in
-                GachaTypeDateCountAndIfContain5Star(
-                    date: date,
-                    count: itemsFiltered
-                        .filter { $0.time <= date }
-                        .count,
-                    type: type,
-                    contain5Star: itemsFiltered
-                        .filter { $0.time == date }
-                        .contains(where: { $0.rankType == .five }) ? "true" :
-                        "false"
-                )
-            }.sorted(by: { $0.date > $1.date })
-        }
+        return dates.map { date in
+            GachaTypeDateCountAndIfContain5Star(
+                date: date,
+                count: itemsFiltered
+                    .filter { $0.time <= date }
+                    .count,
+                type: type,
+                contain5Star: itemsFiltered
+                    .filter { $0.time == date }
+                    .contains(where: { $0.rankType == .five }) ? "true" :
+                    "false"
+            )
+        }.sorted(by: { $0.date > $1.date })
     }
 
     var dayDiffOfminMax: Int {
