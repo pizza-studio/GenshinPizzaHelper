@@ -12,14 +12,22 @@ import SwiftUI
 enum ThisDevice {
     // MARK: Public
 
+    public static let basicWindowSize: CGSize = .init(
+        // width: 375,
+        // height: useAdaptiveSpacing ? 812 : 667
+        // 新的基准尺寸是原有的 1.66 倍：620x1344 与 620x1104。
+        width: 620 + 2,
+        height: useAdaptiveSpacing ? 1344 + 2 : 1104 + 2
+    )
+
     public static var isMac: Bool {
         #if targetEnvironment(simulator)
         return false
         #else
-        if #available(macOS 10.15, *) {
-            return true
+        if #unavailable(macOS 10.15) {
+            return false
         }
-        return false
+        return true
         #endif
     }
 
@@ -46,7 +54,7 @@ enum ThisDevice {
     }
 
     public static var useAdaptiveSpacing: Bool {
-        (ThisDevice.notchType != .none || ThisDevice.isPad) &&
+        (ThisDevice.notchType != .none || ThisDevice.idiom != .phone) &&
             AppConfig.adaptiveSpacingInCharacterView
     }
 
@@ -65,24 +73,17 @@ enum ThisDevice {
 
     public static var scaleRatioCompatible: CGFloat {
         guard let window = getKeyWindow() else { return 1 }
-        let minSize: CGSize = .init(
-            // width: 375,
-            // height: useAdaptiveSpacing ? 812 : 667
-            // 新的基准尺寸是原有的 1.66 倍：620x1344 与 620x1104。
-            width: 620 + 2,
-            height: useAdaptiveSpacing ? 1344 + 2 : 1104 + 2
-        )
         let windowSize = window.bounds.size
         // 对哀凤优先使用宽度适配，没准哪天哀凤长得跟法棍面包似的也说不定。
-        var result = windowSize.width / minSize.width
+        var result = windowSize.width / basicWindowSize.width
         let zoomedSize = CGSize(
-            width: minSize.width * result,
-            height: minSize.height * result
+            width: basicWindowSize.width * result,
+            height: basicWindowSize.height * result
         )
         let compatible = CGRect(origin: .zero, size: windowSize)
             .contains(CGRect(origin: .zero, size: zoomedSize))
         if !compatible {
-            result = windowSize.height / minSize.height
+            result = windowSize.height / basicWindowSize.height
         }
         return result
     }

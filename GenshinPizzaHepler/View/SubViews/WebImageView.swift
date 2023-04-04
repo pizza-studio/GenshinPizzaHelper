@@ -213,6 +213,6 @@ extension View {
         DispatchQueue.main.async {
             task()
         }
-        return EmptyView()
+        return self
     }
 }

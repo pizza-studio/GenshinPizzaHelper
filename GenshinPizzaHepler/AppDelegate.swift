@@ -20,7 +20,6 @@ class AppDelegate: NSObject, UIApplicationDelegate,
         -> Bool {
         let nc = UNUserNotificationCenter.current()
         nc.delegate = self
-
         return true
     }
 

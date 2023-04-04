@@ -45,7 +45,7 @@ struct DisplayOptionsView: View {
                 }
             }
 
-            if !ThisDevice.isHDScreenRatio {
+            if !ThisDevice.isHDScreenRatio || ThisDevice.isMac {
                 Section {
                     Toggle(isOn: $adaptiveSpacingInCharacterView) {
                         Text("角色详情排版间距适配")
