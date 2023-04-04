@@ -553,8 +553,7 @@ public enum MihoyoAPI {
             }
             group.notify(queue: DispatchQueue.main) {
                 if accounts
-                    .isEmpty { completion(.failure(.accountUnbound)) }
-                else { completion(.success(accounts)) }
+                    .isEmpty { completion(.failure(.accountUnbound)) } else { completion(.success(accounts)) }
             }
         }
     }

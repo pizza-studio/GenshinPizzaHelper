@@ -138,6 +138,26 @@ public class GachaModelManager {
         return count
     }
 
+    func addRecordItems(
+        _ items: [GachaItem_FM]
+    )
+        -> Int {
+        let newCount = items.map { item in
+            self.addRecordItem(item)
+        }.map { $0 ? 1 : 0 }.reduce(0) { $0 + $1 }
+        save()
+        return newCount
+    }
+
+    func addRecordItem(_ item: GachaItem_FM) -> Bool {
+        if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
+            _ = item.toGachaItemMO(context: container.viewContext)
+            return true
+        } else {
+            return false
+        }
+    }
+
     func save() {
         do {
             try container.viewContext.save()

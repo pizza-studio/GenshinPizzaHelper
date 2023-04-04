@@ -80,8 +80,7 @@ public struct ExpeditionInfo: Codable {
     }
 
     public var score: Float {
-        if allCompleted { return 120.0 / 160.0 }
-        else if anyCompleted { return 40.0 / 160.0 } else { return 0 }
+        if allCompleted { return 120.0 / 160.0 } else if anyCompleted { return 40.0 / 160.0 } else { return 0 }
     }
 }
 

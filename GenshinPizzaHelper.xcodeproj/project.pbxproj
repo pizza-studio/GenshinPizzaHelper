@@ -120,6 +120,7 @@
 		BF85D79028D02CCF003F3479 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
 		BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */; };
 		BF9D74EC29DB1604009A9918 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BF9D74EB29DB1604009A9918 /* AlertToast */; };
+		BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = BF9D74EE29DBBA98009A9918 /* CoreXLSX */; };
 		BFB101D328D5C579000DC631 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D228D5C579000DC631 /* ToolsView.swift */; };
 		BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */; };
@@ -965,6 +966,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */,
 				BF15570B29CFE5CF0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
 				BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */,
@@ -1800,6 +1802,7 @@
 				BF15570A29CFE5CF0056CFE6 /* HBMihoyoAPI */,
 				BF20733129D1411500AD391F /* HBPizzaHelperAPI */,
 				BF9D74EB29DB1604009A9918 /* AlertToast */,
+				BF9D74EE29DBBA98009A9918 /* CoreXLSX */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -1881,6 +1884,7 @@
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			packageReferences = (
 				BF9D74EA29DB1604009A9918 /* XCRemoteSwiftPackageReference "AlertToast" */,
+				BF9D74ED29DBBA98009A9918 /* XCRemoteSwiftPackageReference "CoreXLSX" */,
 			);
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
 			projectDirPath = "";
@@ -3324,6 +3328,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		BF9D74ED29DBBA98009A9918 /* XCRemoteSwiftPackageReference "CoreXLSX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/CoreXLSX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3379,6 +3391,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF9D74EA29DB1604009A9918 /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		BF9D74EE29DBBA98009A9918 /* CoreXLSX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF9D74ED29DBBA98009A9918 /* XCRemoteSwiftPackageReference "CoreXLSX" */;
+			productName = CoreXLSX;
 		};
 		BFBDD66E28F3F3C90022B79D /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;
