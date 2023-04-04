@@ -34,12 +34,15 @@ extension String {
         if contains("旅行者") || localized.contains("旅行者") {
             return "空".localized + " / " + "荧".localized
         }
-        if AppConfig.useActualCharacterNames {
-            if self == "流浪者" {
-                return "雷电国崩".localized
-            } else if contains("流浪者") {
-                return replacingOccurrences(of: "流浪者", with: "雷电国崩").localized
-            }
+        characterNameCheck: switch AppConfig.useActualCharacterNames {
+        case true where self == "流浪者":
+            return "雷电国崩".localized
+        case true where contains("流浪者"):
+            return replacingOccurrences(of: "流浪者", with: "雷电国崩").localized
+        case false
+            where self == "流浪者" && !AppConfig.customizedNameForWanderer.isEmpty:
+            return AppConfig.customizedNameForWanderer
+        default: break characterNameCheck
         }
         guard AppConfig.forceCharacterWeaponNameFixed else { return localized }
         if Locale.isUILanguageSimplifiedChinese {

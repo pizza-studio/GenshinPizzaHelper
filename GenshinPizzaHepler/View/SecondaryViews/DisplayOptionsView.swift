@@ -34,8 +34,14 @@ struct DisplayOptionsView: View {
                 Toggle(isOn: $showRatingsForArtifacts) {
                     Text("显示圣遗物评分与评价")
                 }
+            }
+
+            Section {
                 Toggle(isOn: $useActualCharacterNames) {
                     Text("显示部分角色的真实姓名")
+                }
+                if !useActualCharacterNames {
+                    TextField("自订流浪者姓名", text: $customizedNameForWanderer)
                 }
             }
 
@@ -87,4 +93,10 @@ struct DisplayOptionsView: View {
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     private var useActualCharacterNames: Bool = false
+
+    @AppStorage(
+        "customizedNameForWanderer",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    private var customizedNameForWanderer: String = ""
 }

@@ -81,4 +81,10 @@ extension AppConfig {
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     public static var useActualCharacterNames: Bool = false
+
+    @AppStorage(
+        "customizedNameForWanderer",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var customizedNameForWanderer: String = ""
 }
