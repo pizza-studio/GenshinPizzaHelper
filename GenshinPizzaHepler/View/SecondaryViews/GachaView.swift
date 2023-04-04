@@ -134,26 +134,26 @@ struct GachaView: View {
                     }
                 }
                 GachaStatisticSectionView()
-            }
-            if #available(iOS 16.0, *) {
-                Section {
-                    NavigationLink("详细记录") {
-                        GachaDetailView()
+                if #available(iOS 16.0, *) {
+                    Section {
+                        NavigationLink("详细记录") {
+                            GachaDetailView()
+                        }
                     }
-                }
-            } else {
-                Section {
-                    ForEach(
-                        gachaViewModel.filteredGachaItemsWithCount,
-                        id: \.0.id
-                    ) { item, count in
-                        VStack(spacing: 1) {
-                            GachaItemBar(
-                                item: item,
-                                count: count,
-                                showTime: showTime,
-                                showingType: gachaViewModel.filter.rank
-                            )
+                } else {
+                    Section {
+                        ForEach(
+                            gachaViewModel.filteredGachaItemsWithCount,
+                            id: \.0.id
+                        ) { item, count in
+                            VStack(spacing: 1) {
+                                GachaItemBar(
+                                    item: item,
+                                    count: count,
+                                    showTime: showTime,
+                                    showingType: gachaViewModel.filter.rank
+                                )
+                            }
                         }
                     }
                 }
@@ -258,16 +258,45 @@ private struct GachaStatisticSectionView: View {
                         fmt.numberStyle = .percent
                         return fmt
                     }()
-                    let pct = 1.0 - Double(
-                        fiveStars.count - fiveStarsNotLose
-                            .count
-                    ) /
+                    let pct = 1.0 -
+                        Double(fiveStars.count - fiveStarsNotLose.count) /
                         Double(fiveStarsNotLose.count)
                     Label("不歪率", systemImage: "chart.pie.fill")
                     Spacer()
                     Text(
                         "\(fmt.string(from: pct as NSNumber)!)"
                     )
+                }
+            }
+            if gachaViewModel.filter.gachaType != .standard {
+                VStack {
+                    HStack {
+                        Text("派蒙的评价")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        let judgedRank = Rank.judge(
+                            limitedDrawNumber: limitedNumber,
+                            gachaType: gachaViewModel.filter.gachaType
+                        )
+                        ForEach(Rank.allCases, id: \.rawValue) { rank in
+                            Group {
+                                if judgedRank == rank {
+                                    rank.image().resizable()
+                                        .scaledToFit()
+                                } else {
+                                    rank.image().resizable()
+                                        .scaledToFit()
+                                        .opacity(0.25)
+                                }
+                            }
+                            .frame(width: 50, height: 50)
+                            Spacer()
+                        }
+                    }
                 }
             }
         } header: {
@@ -283,31 +312,6 @@ private struct GachaStatisticSectionView: View {
         .onReceive(gachaViewModel.objectWillChange) {
             if gachaViewModel.filter.gachaType == .standard {
                 showDrawingNumber = true
-            }
-        }
-        if gachaViewModel.filter.gachaType != .standard {
-            Section {
-                HStack {
-                    Spacer()
-                    let judgedRank = Rank.judge(
-                        limitedDrawNumber: limitedNumber,
-                        gachaType: gachaViewModel.filter.gachaType
-                    )
-                    ForEach(Rank.allCases, id: \.rawValue) { rank in
-                        Group {
-                            if judgedRank == rank {
-                                rank.image().resizable().scaledToFit()
-                            } else {
-                                rank.image().resizable().scaledToFit()
-                                    .opacity(0.3)
-                            }
-                        }
-                        .frame(width: 50, height: 50)
-                        Spacer()
-                    }
-                }
-            } header: {
-                Text("评级")
             }
         }
     }
