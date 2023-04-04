@@ -49,7 +49,7 @@ struct UpdateHistoryInfoView: View {
                             id: \.self
                         ) { item in
                             if #available(iOS 15.0, *) {
-                                Text("- \(item)".toAttributedString())
+                                Text("∙ ") + Text(item.toAttributedString())
                             } else {
                                 // Fallback on earlier versions
                                 Text("- \(item)")
@@ -69,7 +69,7 @@ struct UpdateHistoryInfoView: View {
                         id: \.self
                     ) { item in
                         if #available(iOS 15.0, *) {
-                            Text("- \(item)".toAttributedString())
+                            Text("∙ ") + Text(item.toAttributedString())
                         } else {
                             // Fallback on earlier versions
                             Text("- \(item)")
@@ -124,7 +124,7 @@ struct UpdateHistoryInfoView: View {
                                 id: \.self
                             ) { item in
                                 if #available(iOS 15.0, *) {
-                                    Text("- \(item)".toAttributedString())
+                                    Text("∙ ") + Text(item.toAttributedString())
                                 } else {
                                     // Fallback on earlier versions
                                     Text("- \(item)")
