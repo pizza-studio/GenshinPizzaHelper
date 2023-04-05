@@ -65,11 +65,14 @@ public class GachaModelManager {
         let request = GachaItemMO.fetchRequest()
         let predicate = NSPredicate(format: "(uid = %@)", uid)
         request.predicate = predicate
-        let dateSort = NSSortDescriptor(
+        let dateSortId = NSSortDescriptor(
             keyPath: \GachaItemMO.id,
             ascending: false
         )
-        request.sortDescriptors = [dateSort]
+        let dateSortTime = NSSortDescriptor(
+            keyPath: \GachaItemMO.time, ascending: false
+        )
+        request.sortDescriptors = [dateSortTime, dateSortId]
         do {
             let gachaItemMOs = try container.viewContext.fetch(request)
             return gachaItemMOs
