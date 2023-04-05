@@ -1128,4 +1128,6 @@
 "%@分" = "%@pt";
 "圣遗物评价" = "Artifact Rank";
 "显示圣遗物评分与评价" = "Show artifact scores and ratings";
-"自订流浪者姓名" = "Edit Wanderer's Name";
+"自定义流浪者姓名" = "Edit Wanderer's Name";
+"自定义姓名" = "Edit Name";
+"请输入自定义流浪者姓名" = "Please enter Wanderer's customized name";

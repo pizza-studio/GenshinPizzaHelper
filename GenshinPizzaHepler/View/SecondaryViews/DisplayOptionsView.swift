@@ -14,6 +14,24 @@ struct DisplayOptionsView: View {
     // MARK: Internal
 
     var body: some View {
+        Group {
+            if #available(iOS 15.0, *) {
+                mainView()
+                    .alert("请输入自定义流浪者姓名", isPresented: $isCustomizedNameForWandererAlertShow, actions: {
+                        TextField("自定义姓名", text: $customizedNameForWanderer)
+                        Button("完成") {
+                            isCustomizedNameForWandererAlertShow.toggle()
+                        }
+                    })
+            } else {
+                mainView()
+            }
+        }
+        .navigationBarTitle("界面偏好设置", displayMode: .inline)
+    }
+
+    @ViewBuilder
+    func mainView() -> some View {
         List {
             if Locale.isUILanguagePanChinese {
                 Section {
@@ -40,8 +58,15 @@ struct DisplayOptionsView: View {
                 Toggle(isOn: $useActualCharacterNames) {
                     Text("显示部分角色的真实姓名")
                 }
+
                 if !useActualCharacterNames {
-                    TextField("自订流浪者姓名", text: $customizedNameForWanderer)
+                    HStack {
+                        Text("自定义流浪者姓名")
+                        Spacer()
+                        Button(customizedNameForWanderer == "" ? "流浪者".localized : customizedNameForWanderer) {
+                            isCustomizedNameForWandererAlertShow.toggle()
+                        }
+                    }
                 }
             }
 
@@ -57,10 +82,12 @@ struct DisplayOptionsView: View {
                 }
             }
         }
-        .navigationBarTitle("界面偏好设置", displayMode: .inline)
     }
 
     // MARK: Private
+
+    @State
+    private var isCustomizedNameForWandererAlertShow: Bool = false
 
     @AppStorage(
         "adaptiveSpacingInCharacterView",
