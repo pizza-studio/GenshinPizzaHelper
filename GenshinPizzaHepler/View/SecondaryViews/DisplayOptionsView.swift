@@ -79,7 +79,7 @@ struct DisplayOptionsView: View {
                 }
             }
 
-            if !ThisDevice.isHDScreenRatio || ThisDevice.isMac {
+            if ThisDevice.notchType != .none || ThisDevice.idiom != .phone {
                 Section {
                     Toggle(isOn: $adaptiveSpacingInCharacterView) {
                         Text("角色详情排版间距适配")

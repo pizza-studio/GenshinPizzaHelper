@@ -57,53 +57,12 @@ struct GenshinPizzaHeplerApp: App {
                 .environmentObject(viewModel)
             #else
             ContentView(storeManager: storeManager)
-                .frameForDifferentDeviceTypes()
                 .environmentObject(viewModel)
                 .onAppear {
                     SKPaymentQueue.default().add(storeManager)
                     storeManager.getProducts(productIDs: productIDs)
                 }
             #endif
-        }.windowResizabilityContentSize()
-    }
-}
-
-extension View {
-    fileprivate func frameForDifferentDeviceTypes() -> some View {
-        #if targetEnvironment(simulator)
-        return AnyView(self)
-        #elseif targetEnvironment(macCatalyst)
-        return AnyView(
-            frame(minWidth: 414, maxWidth: 414, minHeight: 736, maxHeight: 736)
-                .frame(width: 414, height: 736)
-        )
-        #elseif os(macOS)
-        return AnyView(
-            frame(minWidth: 414, maxWidth: 414, minHeight: 736, maxHeight: 736)
-                .frame(width: 414, height: 736)
-        )
-        #else
-        return AnyView(self)
-        #endif
-    }
-}
-
-extension Scene {
-    @available(macOS 10.15, *)
-    func windowResizabilityContentSize() -> some Scene {
-        #if targetEnvironment(macCatalyst)
-        if #available(macOS 13.0, *) {
-            return windowResizability(.contentMinSize)
-        } else {
-            return self
         }
-        #elseif os(macOS)
-        if #available(macOS 13.0, *) {
-            return windowResizability(.contentMinSize)
-        } else {
-            return self
-        }
-        #endif
-        return self
     }
 }
