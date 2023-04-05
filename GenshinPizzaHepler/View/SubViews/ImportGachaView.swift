@@ -119,6 +119,11 @@ struct ImportGachaView: View {
                 status = .failure(error.localizedDescription)
             }
         }
+        .onChange(of: status, perform: { newValue in
+            if case .succeed = newValue {
+                isCompleteAlertShow.toggle()
+            }
+        })
         .toast(isPresenting: $isCompleteAlertShow, alert: {
             .init(
                 displayMode: .alert,
@@ -333,6 +338,10 @@ private enum ImportStatus {
     case failure(String)
 }
 
+// MARK: Equatable
+
+extension ImportStatus: Equatable {}
+
 // MARK: Identifiable
 
 extension ImportStatus: Identifiable {
@@ -352,7 +361,7 @@ extension ImportStatus: Identifiable {
 
 // MARK: - ImportSucceedInfo
 
-private struct ImportSucceedInfo {
+private struct ImportSucceedInfo: Equatable {
     // MARK: Lifecycle
 
     init(uid: String, totalCount: Int, newCount: Int, app: String? = nil, exportDate: Date? = nil) {
