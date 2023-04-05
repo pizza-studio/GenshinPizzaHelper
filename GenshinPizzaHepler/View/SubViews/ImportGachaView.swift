@@ -71,7 +71,7 @@ struct ImportGachaView: View {
                 }
                 Section {
                     Text("导入了\(info.totalCount)条记录")
-                    Text("储存了\(info.newCount)条新纪录")
+                    Text("储存了\(info.newCount)条新记录")
                 }
                 Button("继续导入") {
                     status = .pending

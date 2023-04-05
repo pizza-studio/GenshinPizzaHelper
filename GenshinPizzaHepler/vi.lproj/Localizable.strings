@@ -58,8 +58,8 @@
 "完成" = "Xong";
 "未获取到登录信息，请重试" = "Không thể lấy Cookie. Vui lòng thử lại.";
 "尚未完成帐号设置" = "Cấu hình tài khoản chưa hoàn tất";
-"添加账号前…" = "Trước khi thêm tài khoản của bạn...";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Vui lòng đảm bảo \"Ghi chú theo thời gian thực\" của bạn có thể truy cập được";
+"添加帐号前…" = "Trước khi thêm tài khoản của bạn...";
+"请先确保绑定的米游社帐号已开启并能在米游社App中查看“实时便笺”功能" = "Vui lòng đảm bảo \"Ghi chú theo thời gian thực\" của bạn có thể truy cập được";
 "好" = "OK";
 "提示" = "Lời khuyên";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Nhấp vào \"Xong\" sau khi bạn hoàn tất đăng nhập vào HoYoLAB trong trang web sau.\nĐăng nhập qua Google, Facebook hoặc Twitter không khả dụng, vui lòng đăng nhập bằng tên người dùng và mật khẩu của bạn.\nThông tin đăng nhập tài khoản của bạn sẽ chỉ được lưu trữ cục bộ thiết bị và iCloud riêng của bạn và được sử dụng để yêu cầu HoYoLAB cung cấp thông tin tài khoản Genshin của bạn. ";
@@ -748,11 +748,11 @@
 "星期日" = "Chủ Nhật";
 
 // Tool View
-"请先选择账号" = "Vui lòng chọn tài khoản trước";
+"请先选择帐号" = "Vui lòng chọn tài khoản trước";
 "角色展示柜" = "Đội Hình Nhân Vật";
-"账号未展示角色" = "Không thể tìm thấy đội hình nhân vật nào";
+"帐号未展示角色" = "Không thể tìm thấy đội hình nhân vật nào";
 "今日入账" = "Hôm Nay Nhận Được";
-"需要重新登陆本账号以查询，点击重新登陆" = "Vui lòng nhấn để đăng nhập lại để truy vấn phần này.";
+"需要重新登录本帐号以查询，点击重新登录" = "Vui lòng nhấn để đăng nhập lại để truy vấn phần này.";
 // apiral abyss sheet
 "深境螺旋详情" = "Chiến Tích La Hoàn Thâm Cảnh";
 "保存%lld层的深渊数据" = "Lưu hình ảnh la hoàn thâm cảnh %lld";
@@ -879,7 +879,7 @@
 "千夜浮梦" = "Cõi Mộng Ngàn Đêm";
 
 // MARK: - 2.5.4 HOTFIX
-"账号状态异常，请前往米游社-旅行便笺重新验证" = "Trạng thái tài khoản bất thường, vui lòng vào HoYoLAB để xác minh lại";
+"帐号状态异常，请前往米游社-旅行便笺重新验证" = "Trạng thái tài khoản bất thường, vui lòng vào HoYoLAB để xác minh lại";
 // MARK: - 2.5.4
 "%lld月原石收入" = "Thu thập nguyên thạch";
 
@@ -911,10 +911,10 @@
 "允许" = "Có";
 
 // MARK: - 2.6.2
-"反复出现账号异常？点击查看解决方案" = "Trường hợp ngoại lệ tài khoản xảy ra nhiều lần?  Click để xem giải pháp";
+"反复出现帐号异常？点击查看解决方案" = "Trường hợp ngoại lệ tài khoản xảy ra nhiều lần?  Click để xem giải pháp";
 "1034问题的解决方案" = "Giải quyết vấn đề 1034";
 "点击打开米游社App" = "Bấm để mở ứng dụng HoYoLAB";
-"（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) Trạng thái tài khoản không bình thường, vui lòng truy cập Ứng dụng HoYoLAB để xác minh lại";
+"（1034）帐号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) Trạng thái tài khoản không bình thường, vui lòng truy cập Ứng dụng HoYoLAB để xác minh lại";
 "小组件设置" = "Cài Đặt tiện ích";
 "主屏幕小组件刷新频率" = "Thường xuyên làm mới tiện ích màn hình chính";
 "锁定屏幕小组件刷新频率" = "Thường xuyên làm mới tiện ích màn hình khóa";
@@ -942,8 +942,8 @@
 "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Thông báo được tạo cục bộ và được cập nhật tự động khi tiện ích làm mới hoặc khi bạn mở Ứng dụng.  \nViệc không mở Ứng dụng trong thời gian dài hoặc không sử dụng tiện ích có thể dẫn đến thông báo không chính xác.  \nMột số thông báo chỉ có thể được làm mới bằng cách mở ứng dụng nếu tiện ích ở chế độ làm mới.";
 
 "顶置" = "Ghim đầu trang";
-"（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường.  Bạn nên giảm tần suất yêu cầu tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản";
-"请重新登录本账号以获取stoken" = "Vui lòng đăng nhập lại tài khoản này để nhận được Token";
+"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường.  Bạn nên giảm tần suất yêu cầu tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản";
+"请重新登录本帐号以获取stoken" = "Vui lòng đăng nhập lại tài khoản này để nhận được Token";
 "请登录「%@」" = "Đăng nhập vào \"%@\"";
 
 // MARK: - v2.6.5
@@ -954,7 +954,7 @@
 "自动启用树脂计时器" = "Tự động bật bộ hẹn giờ nhựa";
 "树脂计时器是什么？" = "Bộ đếm thời gian nhựa là gì?";
 "创建树脂计时器成功" = "Tạo bộ đếm thời gian nhựa đầy thành công";
-"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在“概览”页长按某个账号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng.  Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất.  Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
+"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在“概览”页长按某个帐号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng.  Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất.  Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
 "前往设置开启实时活动功能" = "Chuyển đến Cài Đặt để bật tính năng \"Hoạt động trong thời gian thực\"";
 "实时活动功能未开启，请前往设置开启。" = "Đã tắt \"Hoạt động thời gian thực\".  Vui lòng kích hoạt nó trong Cài Đặt.";
 
@@ -974,7 +974,7 @@
 
 // Real-time activity error
 "未知错误：%@" = "Lỗi không xác định: %@";
-"账号未获取信息" = "Không có thông tin tài khoản";
+"帐号未获取信息" = "Không có thông tin tài khoản";
 "系统设置不允许本软件开启实时活动，请前往开启" = "Cài Đặt hệ thống không được phép bắt đầu hoạt động thời gian thực, vui lòng bật nó lên";
 
 // MARK: - 2.7.1
@@ -1005,7 +1005,7 @@
 "原粹树脂回满倒计时" = "Hẹn giờ của Nhựa Nguyên Chất";
 "展示原粹树脂与恢复到160树脂的倒计时" = "Hiển thị nhựa ban đầu và đếm ngược đến khi đầy 160 nhựa.";
 "树脂溢出提醒" = "Thông báo khi đầy";
-"本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。" = "Không tìm thấy dữ liệu nào trong Cookie, điều này có thể ảnh hưởng đến việc sử dụng tiện ích ở chế độ đơn giản hóa.  Nên đăng nhập lại để nhận được Token.";
+"本帐号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" = "Không tìm thấy dữ liệu nào trong Cookie, điều này có thể ảnh hưởng đến việc sử dụng tiện ích ở chế độ đơn giản hóa.  Nên đăng nhập lại để nhận được Token.";
 
 "今天 " = "Tdy ";
 "明天 " = "Tmw ";
@@ -1017,7 +1017,7 @@
 "每小时%@个" = "%@/giờ";
 "每%@" = "Mọi %@";
 
-"（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường, đề xuất giảm tần suất đồng bộ hóa tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản hóa";
+"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường, đề xuất giảm tần suất đồng bộ hóa tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản hóa";
 "小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "Tiện ích được cố định để làm mới cứ sau 8 phút, tần suất đồng bộ hóa sẽ không ảnh hưởng đến việc làm mới tiện ích.  Bạn nên đặt tần suất đồng bộ dài hơn nếu có thể và mở ứng dụng để đồng bộ một lần sau mỗi chuyến tham quan.";
 "小组件同步频率" = "Tần suất đồng bộ hóa tiện ích";
 "主屏幕小组件同步频率" = "Tần suất đồng bộ hóa tiện ích màn hình chính";
@@ -1087,7 +1087,7 @@
 
 // MARK: - 2.7.14
 "中文汉字纠正" = "Chinese UI Text Correction";
-"这将会在简体中文当中强制自动恢复目前已被官方恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
+"这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
 "显示圣遗物等级与稀有度" = "Show artifact levels and rarity stars";
 "雷电国崩" = "Raiden Kunikuzushi";
 "雷电国崩・浮歌" = "Raiden Kunikuzushi - Phù Ca";

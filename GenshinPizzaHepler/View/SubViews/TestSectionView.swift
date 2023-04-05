@@ -77,7 +77,7 @@ struct TestSectionView: View {
             if connectStatus == .success {
                 if !cookie.contains("stoken"), server.region == .cn {
                     Label {
-                        Text("本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。")
+                        Text("本帐号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。")
                     } icon: {
                         Image(
                             systemName: "checkmark.circle.trianglebadge.exclamationmark"
@@ -90,7 +90,7 @@ struct TestSectionView: View {
             if let error = error {
                 switch error {
                 case .accountAbnormal:
-                    Button("反复出现账号异常？点击查看解决方案") {
+                    Button("反复出现帐号异常？点击查看解决方案") {
                         is1034WebShown.toggle()
                     }
                     .font(.footnote)

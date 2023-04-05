@@ -95,7 +95,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         }
 
         guard configuration.account != nil else {
-            // 如果还未选择账号，默认获取第一个
+            // 如果还未选择帐号，默认获取第一个
             switch configs.first!.server.region {
             case .cn:
                 if configuration.simplifiedMode?.boolValue ?? true {
@@ -165,7 +165,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
 
         guard let config = configs
             .first(where: { $0.uuid == selectedAccountUUID }) else {
-            // 有时候删除账号，Intent没更新就会出现这样的情况
+            // 有时候删除帐号，Intent没更新就会出现这样的情况
             let entry = AccountOnlyEntry(
                 date: currentDate,
                 widgetDataKind: .normal(result: .failure(.noFetchInfo)),

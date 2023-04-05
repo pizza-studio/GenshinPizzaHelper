@@ -168,7 +168,7 @@ struct ToolsViewSimplified: View {
                     }
                 }
             } label: {
-                Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
+                Label("请先选择帐号", systemImage: "arrow.left.arrow.right.circle")
             }
         }
     }
@@ -211,7 +211,7 @@ struct ToolsViewSimplified: View {
                     .foregroundColor(.secondary)
                 Divider()
                 if playerDetail.avatars.isEmpty {
-                    Text("账号未展示角色")
+                    Text("帐号未展示角色")
                         .foregroundColor(.secondary)
                 } else {
                     ScrollView(.horizontal) {
@@ -344,7 +344,7 @@ struct ToolsViewSimplified: View {
                                     .foregroundColor(.red)
                                     switch error {
                                     case .notLoginError:
-                                        Text("需要重新登陆本账号以查询，点击重新登陆")
+                                        Text("需要重新登录本帐号以查询，点击重新登录")
                                             .font(.footnote)
                                             .multilineTextAlignment(.center)
                                     default:

@@ -15,6 +15,12 @@ extension Locale {
         return firstLocale.contains("zh-")
     }
 
+    public static var isUILanguageJapanese: Bool {
+        guard let firstLocale = Locale.preferredLanguages.first
+        else { return false }
+        return firstLocale.contains("ja-") || firstLocale == "ja"
+    }
+
     public static var isUILanguageSimplifiedChinese: Bool {
         guard let firstLocale = Locale.preferredLanguages.first
         else { return false }

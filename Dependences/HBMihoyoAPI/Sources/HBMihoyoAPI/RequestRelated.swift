@@ -192,9 +192,9 @@ extension FetchError {
                 retcode
             )
         case .accountAbnormal:
-            return "（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式".localized
+            return "（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式".localized
         case .noStoken:
-            return "请重新登录本账号以获取stoken".localized
+            return "请重新登录本帐号以获取stoken".localized
         default:
             return ""
         }
@@ -231,11 +231,11 @@ extension FetchError {
                 return "未知错误".localized
             }
         case .accountAbnormal:
-            return "（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证".localized
+            return "（1034）帐号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证".localized
         case let .unknownError(_, message):
             return message
         case .noStoken:
-            return "请重新登录本账号以获取stoken".localized
+            return "请重新登录本帐号以获取stoken".localized
         default:
             return ""
         }

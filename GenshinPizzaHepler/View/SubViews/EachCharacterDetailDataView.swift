@@ -58,8 +58,8 @@ struct EachCharacterDetailDataView: View {
                     artifactsDetailsView()
                 }
             }
-        }.padding(Self.spacingDeltaAmount * 8)
-            .padding(.vertical, Self.spacingDeltaAmount * 4)
+        }.padding(Self.spacingDeltaAmount * 7)
+            .padding(.vertical, Self.spacingDeltaAmount * 5)
     }
 
     @ViewBuilder
@@ -503,14 +503,12 @@ private struct AvatarAndSkillView: View {
                 .padding(.trailing, fontSize / 5)
             VStack(alignment: .leading, spacing: 3.3 + spacingDelta) {
                 HStack(alignment: .bottom) {
-                    Text(avatar.nameCorrected)
-                        .font(.system(size: fontSize * 1.53, weight: .black))
+                    Text(avatar.nameCorrectedAndTruncated)
+                        .font(.system(size: fontSize * 1.45, weight: .black))
                         .fixedSize(horizontal: false, vertical: true)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
-                    if ThisDevice.notchType == .none {
-                        Spacer().frame(width: fontSize * 1.56)
-                    }
+                    // if ThisDevice.notchType == .none { Spacer().frame(width: fontSize * 1.56) }
                 }
                 HStack(alignment: .center, spacing: fontSize / 2) {
                     VStack(

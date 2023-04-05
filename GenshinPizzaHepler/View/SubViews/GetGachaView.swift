@@ -40,7 +40,7 @@ struct GetGachaView: View {
         List {
             if status != .running {
                 Section {
-                    Picker("选择账号", selection: $account) {
+                    Picker("选择帐号", selection: $account) {
                         Group {
                             if account == nil {
                                 Text("未选择").tag(String?(nil))
@@ -238,7 +238,7 @@ struct GettingGachaBar: View {
                 Spacer()
                 VStack(alignment: .leading) {
                     Text("已获取记录：\(observer.currentItems.count)条")
-                    Text("获取到新纪录：\(observer.newItemCount)条")
+                    Text("获取到新记录：\(observer.newItemCount)条")
                 }
             }
         }
@@ -287,7 +287,7 @@ struct GetGachaResultView: View {
                 }
             } footer: {
                 Text(
-                    "获取到\(observer.currentItems.count)条记录，成功保存\(observer.newItemCount)条新记录\n请返回上一级查看，或继续获取其他账号的记录"
+                    "获取到\(observer.currentItems.count)条记录，成功保存\(observer.newItemCount)条新记录\n请返回上一级查看，或继续获取其他帐号的记录"
                 )
             }
         }

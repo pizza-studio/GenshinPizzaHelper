@@ -17,7 +17,7 @@ struct AvatarHoldingData: Codable {
     var updateDate: String
     /// 玩家已解锁角色
     let owningChars: [Int]
-    /// 账号所属服务器ID
+    /// 帐号所属服务器ID
     let serverId: String
 }
 
@@ -61,7 +61,7 @@ struct AbyssData: Codable {
     /// 深渊期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
     var abyssSeason: Int
 
-    /// 账号服务器ID
+    /// 帐号服务器ID
     let server: String
 
     /// 每半间深渊的数据

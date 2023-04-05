@@ -167,6 +167,7 @@ struct CharacterDetailView: View {
                 avatar: avatar,
                 animation: animation
             ).frame(minWidth: 620, maxWidth: 830) // For iPad
+                .frame(width: condenseHorizontally ? 620 : nil)
                 .fixedSize(
                     horizontal: condenseHorizontally,
                     vertical: true

@@ -138,7 +138,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         guard let config = configs
             .first(where: { $0.uuid == selectedAccountUUID }) else {
-            // 有时候删除账号，Intent没更新就会出现这样的情况
+            // 有时候删除帐号，Intent没更新就会出现这样的情况
             let entry = AccountAndShowWhichInfoIntentEntry(
                 date: currentDate,
                 widgetDataKind: .normal(result: .failure(.noFetchInfo)),

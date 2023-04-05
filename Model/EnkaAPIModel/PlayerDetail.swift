@@ -47,7 +47,7 @@ struct PlayerDetail {
 
     // MARK: - Model
 
-    /// 账号基本信息
+    /// 帐号基本信息
     struct PlayerBasicInfo {
         // MARK: Lifecycle
 
@@ -575,6 +575,30 @@ struct PlayerDetail {
             case 10000075: return "流浪者".localizedWithFix
             default: return name.localizedWithFix
             }
+        }
+
+        var nameCorrectedAndTruncated: String {
+            let rawName = nameCorrected
+            let finalName = NSMutableString()
+            let maxCharsKept = 18
+            var charsAdded = 0
+            var isTruncated = false
+            var charsLeft = rawName.count
+            loopCheck: for char in rawName {
+                finalName.append(char.description)
+                charsAdded += char.description.containsKanjiOrKana ? 2 : 1
+                charsLeft -= 1
+                if charsAdded >= maxCharsKept {
+                    if charsLeft != 0 {
+                        isTruncated = true
+                    }
+                    break loopCheck
+                }
+            }
+            if isTruncated {
+                finalName.append("…")
+            }
+            return finalName.description
         }
 
         /// 名片

@@ -256,7 +256,7 @@ struct PlayerDetailFetchModel: Codable {
         var proudSkillExtraLevelMap: [String: Int]?
     }
 
-    /// 账号基本信息
+    /// 帐号基本信息
     var playerInfo: PlayerInfo
     /// 正在展示的角色的详细信息
     var avatarInfoList: [AvatarInfo]?

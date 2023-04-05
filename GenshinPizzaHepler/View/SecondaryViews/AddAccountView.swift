@@ -163,7 +163,7 @@ struct AddAccountView: View {
                         content: $unsavedName,
                         placeholderText: unsavedName
                     )
-                    // 如果该账号绑定的UID不止一个，则显示Picker选择账号
+                    // 如果该帐号绑定的UID不止一个，则显示Picker选择帐号
                     if accountsForSelected.count > 1 {
                         Picker("请选择帐号", selection: $selectedAccount) {
                             ForEach(
@@ -259,8 +259,8 @@ struct AddAccountView: View {
                 return Alert(title: Text("尚未完成帐号设置"))
             case .firstAddAccountHint:
                 return Alert(
-                    title: Text("添加账号前…"),
-                    message: Text("请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能")
+                    title: Text("添加帐号前…"),
+                    message: Text("请先确保绑定的米游社帐号已开启并能在米游社App中查看“实时便笺”功能")
                 )
             }
         }

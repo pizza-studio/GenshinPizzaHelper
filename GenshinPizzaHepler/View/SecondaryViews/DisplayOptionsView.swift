@@ -5,6 +5,7 @@
 //  Created by ShikiSuen on 2023/3/29.
 //  界面偏好设置页面。
 
+import Combine
 import HBMihoyoAPI
 import SwiftUI
 
@@ -19,6 +20,7 @@ struct DisplayOptionsView: View {
                 mainView()
                     .alert("请输入自定义流浪者姓名", isPresented: $isCustomizedNameForWandererAlertShow, actions: {
                         TextField("自定义姓名", text: $customizedNameForWanderer)
+                            .onReceive(Just(customizedNameForWanderer)) { _ in limitText(20) }
                         Button("完成") {
                             isCustomizedNameForWandererAlertShow.toggle()
                         }
@@ -28,6 +30,13 @@ struct DisplayOptionsView: View {
             }
         }
         .navigationBarTitle("界面偏好设置", displayMode: .inline)
+    }
+
+    // Function to keep text length in limits
+    func limitText(_ upper: Int) {
+        if customizedNameForWanderer.count > upper {
+            customizedNameForWanderer = String(customizedNameForWanderer.prefix(upper))
+        }
     }
 
     @ViewBuilder
@@ -40,7 +49,7 @@ struct DisplayOptionsView: View {
                     }
                 } footer: {
                     Text(
-                        "这将会在简体中文当中强制自动恢复目前已被官方恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。"
+                        "这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。"
                     )
                 }
             }

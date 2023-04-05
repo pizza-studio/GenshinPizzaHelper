@@ -58,8 +58,8 @@
 "完成" = "Done";
 "未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
 "尚未完成帐号设置" = "Account configuration is not finished";
-"添加账号前…" = "Before adding your account...";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure your \"Real-Time Notes\" is accessible";
+"添加帐号前…" = "Before adding your account...";
+"请先确保绑定的米游社帐号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure your \"Real-Time Notes\" is accessible";
 "好" = "OK";
 "提示" = "Tips";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nSign in via Google, Facebook or Twitter is not available, please sign in with your username & password.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. ";
@@ -748,11 +748,11 @@
 "星期日" = "Sunday";
 
 // Tool View
-"请先选择账号" = "Please choose account first";
+"请先选择帐号" = "Please choose account first";
 "角色展示柜" = "Character Showcase";
-"账号未展示角色" = "No characters found in the Character Showcase";
+"帐号未展示角色" = "No characters found in the Character Showcase";
 "今日入账" = "Acquired Today";
-"需要重新登陆本账号以查询，点击重新登陆" = "Please tap to relogin to query this part.";
+"需要重新登录本帐号以查询，点击重新登录" = "Please tap to relogin to query this part.";
 // apiral abyss sheet
 "深境螺旋详情" = "Spiral Abyss Details";
 "保存%lld层的深渊数据" = "Save image for level %lld";
@@ -879,7 +879,7 @@
 "千夜浮梦" = "A Thousand Floating Dreams";
 
 // MARK: - 2.5.4 HOTFIX
-"账号状态异常，请前往米游社-旅行便笺重新验证" = "Account status is abnormal, please go to HoYoLAB to re-verify";
+"帐号状态异常，请前往米游社-旅行便笺重新验证" = "Account status is abnormal, please go to HoYoLAB to re-verify";
 // MARK: - 2.5.4
 "%lld月原石收入" = "Primogem Income";
 
@@ -911,10 +911,10 @@
 "允许" = "Yes";
 
 // MARK: - 2.6.2
-"反复出现账号异常？点击查看解决方案" = "Recurring account exceptions? Click to see the solution";
+"反复出现帐号异常？点击查看解决方案" = "Recurring account exceptions? Click to see the solution";
 "1034问题的解决方案" = "1034 Problem Solution";
 "点击打开米游社App" = "Click to open miHoYoBBS App";
-"（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) The account status is abnormal, please go to the 'HoYoLAB' App - 'My' - 'My Battle Chronicle' to re-verify";
+"（1034）帐号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) The account status is abnormal, please go to the 'HoYoLAB' App - 'My' - 'My Battle Chronicle' to re-verify";
 "小组件设置" = "Widget Setting";
 "主屏幕小组件刷新频率" = "Home screen widget refresh frequency";
 "锁定屏幕小组件刷新频率" = "Lock screen widget refresh frequency";
@@ -942,8 +942,8 @@
 "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Notifications are created locally and are automatically updated when the widget refreshes, or when you open the App. \nLong periods of time without opening the App or without using the widget may result in inaccurate notifications. \nSome notifications may only be refreshed by opening the App if the widget is in clean mode.";
 
 "顶置" = "Pin to Top";
-"（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) The account status is abnormal. It is recommended to reduce the widget request frequency, or long press the widget to open the simple mode";
-"请重新登录本账号以获取stoken" = "Please re-login this account to get stoken";
+"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) The account status is abnormal. It is recommended to reduce the widget request frequency, or long press the widget to open the simple mode";
+"请重新登录本帐号以获取stoken" = "Please re-login this account to get stoken";
 "请登录「%@」" = "Log in to \"%@\"";
 
 // MARK: - v2.6.5
@@ -954,7 +954,7 @@
 "自动启用树脂计时器" = "Enable Resin Timer Automatically";
 "树脂计时器是什么？" = "What is the resin timer?";
 "创建树脂计时器成功" = "Create Resin Timer Successfully";
-"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在“概览”页长按某个账号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account information card on the \"Overview\" tab or enable more timers.";
+"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在“概览”页长按某个帐号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account information card on the \"Overview\" tab or enable more timers.";
 "前往设置开启实时活动功能" = "Move to Settings to Enable \"Real-Time Activity\" Feature";
 "实时活动功能未开启，请前往设置开启。" = "\"Real-time activity\" disabled. Please enable it in the settings.";
 
@@ -974,7 +974,7 @@
 
 // Real-time activity error
 "未知错误：%@" = "Unknown Error: %@";
-"账号未获取信息" = "No info with account";
+"帐号未获取信息" = "No info with account";
 "系统设置不允许本软件开启实时活动，请前往开启" = "The system settings are not allowed to start the real-time activity, please go to turn it on";
 
 // MARK: - 2.7.1
@@ -1005,7 +1005,7 @@
 "原粹树脂回满倒计时" = "Timer of the Original Resin";
 "展示原粹树脂与恢复到160树脂的倒计时" = "Showing the original resin and the countdown to 160 resin.";
 "树脂溢出提醒" = "Notify when Full";
-"本账号无stoken，可能影响简洁模式下小组件使用。建议重新登陆以获取stoken。" = "No stoken found in cookies, which may affect the use of the widget in simplified mode. It is recommended to re-login to get stoken.";
+"本帐号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" = "No stoken found in cookies, which may affect the use of the widget in simplified mode. It is recommended to re-login to get stoken.";
 
 "今天 " = "Tdy ";
 "明天 " = "Tmw ";
@@ -1017,7 +1017,7 @@
 "每小时%@个" = "%@ per hour";
 "每%@" = "Every %@";
 
-"（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Account status is abnormal, suggest to reduce the widget sync frequency, or long press the widget to open simplified mode";
+"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Account status is abnormal, suggest to reduce the widget sync frequency, or long press the widget to open simplified mode";
 "小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "The widget is fixed to refresh every 8 minutes, the sync frequency will not affect the widget refresh. It is recommended that you set a longer sync frequency if possible and open the app to sync once after each tour.";
 "小组件同步频率" = "Widget Sync Frequency";
 "主屏幕小组件同步频率" = "Home screen widget sync frequency";
@@ -1087,7 +1087,7 @@
 
 // MARK: - 2.7.14
 "中文汉字纠正" = "Chinese UI Text Correction";
-"这将会在简体中文当中强制自动恢复目前已被官方恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
+"这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
 "显示圣遗物等级与稀有度" = "Show artifact levels and rarity stars";
 "雷电国崩" = "Raiden Kunikuzushi";
 "雷电国崩・浮歌" = "Raiden Kunikuzushi: Drifter's Ballad";

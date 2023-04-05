@@ -60,7 +60,7 @@ class ViewModel: NSObject, ObservableObject {
 
     @objc
     func fetchAccount() {
-        // 从Core Data更新账号信息
+        // 从Core Data更新帐号信息
         // 检查是否有更改，如果有更改则更新
         DispatchQueue.main.async {
             let accountConfigs = self.accountConfigurationModel
@@ -106,7 +106,7 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     func forceFetchAccount() {
-        // 强制从云端Core Data更新账号信息
+        // 强制从云端Core Data更新帐号信息
         accounts = accountConfigurationModel.fetchAccountConfigs()
             .map { Account(config: $0) }
         refreshData()
@@ -114,13 +114,13 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
-        // 添加的第一个账号作为材料刷新的时区
+        // 添加的第一个帐号作为材料刷新的时区
         if accounts
             .isEmpty {
             UserDefaults(suiteName: "group.GenshinPizzaHelper")?
                 .set(server.rawValue, forKey: "defaultServer")
         }
-        // 新增账号至Core Data
+        // 新增帐号至Core Data
         accountConfigurationModel.addAccount(
             name: name,
             uid: uid,

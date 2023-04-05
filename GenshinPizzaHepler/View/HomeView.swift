@@ -61,7 +61,7 @@ struct HomeView: View {
                         ))
                         .padding(.top, 30)
                     } else {
-                        // MARK: - 账号信息
+                        // MARK: - 帐号信息
 
                         AccountInfoCards(animation: animation)
                     }
@@ -346,7 +346,7 @@ private struct AccountInfoCards: View {
                 if account.result != nil {
                     switch account.result! {
                     case let .success(userData):
-                        // 我也不知道为什么如果不检查的话删除账号会崩溃
+                        // 我也不知道为什么如果不检查的话删除帐号会崩溃
                         if account.config.uuid != nil {
                             GameInfoBlock(
                                 userData: userData,
