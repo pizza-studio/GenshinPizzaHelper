@@ -19,13 +19,6 @@ struct ImportGachaView: View {
     var gachaViewModel: GachaViewModel = .shared
 
     @State
-    var isJsonFileImporterShow: Bool = false
-    @State
-    var isXlsxFileImporterShow: Bool = false
-
-    @State
-    private var importFileSourceType: ImportFileSourceType = .UIGFJSON
-    @State
     var isHelpSheetShow: Bool = false
 
     @State
@@ -36,14 +29,28 @@ struct ImportGachaView: View {
             switch status {
             case .pending:
                 Section {
-                    Button("导入UIGF Json格式祈愿记录") {
-                        isJsonFileImporterShow.toggle()
-                        importFileSourceType = .UIGFJSON
+                    PopFileButton(title: "导入UIGF Json格式祈愿记录", allowedContentTypes: [.json]) { result in
+                        switch result {
+                        case let .success(url):
+                            alert = .readyToStartJson(url: url)
+                        case let .failure(error):
+                            status = .failure(error.localizedDescription)
+                        }
                     }
-                    Button("导入UIGF Xlsx格式祈愿记录") {
-                        isXlsxFileImporterShow.toggle()
-                        importFileSourceType = .paimonXlsx
+                    PopFileButton(title: "导入UIGF Xlsx格式祈愿记录", allowedContentTypes: [.xlsx]) { result in
+                        switch result {
+                        case let .success(url):
+                            alert = .readyToStartXlsx(url: url)
+                        case let .failure(error):
+                            status = .failure(error.localizedDescription)
+                        }
                     }
+//                    Button("导入UIGF Json格式祈愿记录") {
+//                        isJsonFileImporterShow.toggle()
+//                    }
+//                    Button("导入UIGF Xlsx格式祈愿记录") {
+//                        isXlsxFileImporterShow.toggle()
+//                    }
                 } footer: {
                     Text("目前仅支持导入简体中文祈愿记录")
                 }
@@ -97,28 +104,6 @@ struct ImportGachaView: View {
             HelpSheet(isShow: $isHelpSheetShow)
         })
         .navigationTitle("导入UIGF祈愿记录")
-        .fileImporter(
-            isPresented: $isJsonFileImporterShow,
-            allowedContentTypes: [.json, .xlsx]
-        ) { result in
-            switch result {
-            case let .success(url):
-                alert = .readyToStartJson(url: url)
-            case let .failure(error):
-                status = .failure(error.localizedDescription)
-            }
-        }
-        .fileImporter(
-            isPresented: $isXlsxFileImporterShow,
-            allowedContentTypes: [.xlsx]
-        ) { result in
-            switch result {
-            case let .success(url):
-                alert = .readyToStartXlsx(url: url)
-            case let .failure(error):
-                status = .failure(error.localizedDescription)
-            }
-        }
         .onChange(of: status, perform: { newValue in
             if case .succeed = newValue {
                 isCompleteAlertShow.toggle()
@@ -132,65 +117,60 @@ struct ImportGachaView: View {
             )
         })
         .alert(item: $alert) { alert in
-            switch alert {
-            case let .readyToStartJson(url: url):
-                return Alert(
-                    title: Text("导入时界面会卡住一段时间"),
-                    message: Text("请耐心等待..."),
-                    primaryButton: .destructive(Text("开始"), action: {
-                        do {
+            Alert(
+                title: Text("导入时界面会卡住一段时间"),
+                message: Text("请耐心等待..."),
+                primaryButton: .destructive(Text("开始"), action: {
+                    do {
+                        switch alert {
+                        case let .readyToStartJson(url: url):
                             if url.startAccessingSecurityScopedResource() {
-                                status = .reading
-                                let decoder = JSONDecoder()
-                                decoder
-                                    .keyDecodingStrategy =
-                                    .convertFromSnakeCase
-                                let data: Data = try Data(contentsOf: url)
-                                let uigfModel: UIGFJson = try decoder
-                                    .decode(
-                                        UIGFJson.self,
-                                        from: data
-                                    )
-                                let result = gachaViewModel
-                                    .importGachaFromUIGFJson(
-                                        uigfJson: uigfModel
-                                    )
-                                status = .succeed(ImportSucceedInfo(
-                                    uid: result.uid,
-                                    totalCount: result.totalCount,
-                                    newCount: result.newCount,
-                                    app: uigfModel.info.exportApp,
-                                    exportDate: uigfModel.info.exportTime
-                                ))
-                                isCompleteAlertShow.toggle()
+                                try processJson(url: url)
                                 url.stopAccessingSecurityScopedResource()
                             } else {
                                 status = .failure("无法访问文件")
                             }
-                        } catch {
-                            status = .failure(error.localizedDescription)
-                        }
-                    }),
-                    secondaryButton: .cancel()
-                )
-            case let .readyToStartXlsx(url: url):
-                return Alert(
-                    title: Text("导入时界面会卡住一段时间"),
-                    message: Text("请耐心等待..."),
-                    primaryButton: .destructive(Text("开始"), action: {
-                        do {
+                        case let .readyToStartXlsx(url: url):
                             if url.startAccessingSecurityScopedResource() {
                                 try processXlsx(url: url)
                                 url.stopAccessingSecurityScopedResource()
+                            } else {
+                                status = .failure("无法访问文件")
                             }
-                        } catch {
-                            status = .failure(error.localizedDescription)
                         }
-                    }),
-                    secondaryButton: .cancel()
-                )
-            }
+                    } catch {
+                        status = .failure(error.localizedDescription)
+                    }
+                }),
+                secondaryButton: .cancel()
+            )
         }
+    }
+
+    func processJson(url: URL) throws {
+        status = .reading
+        let decoder = JSONDecoder()
+        decoder
+            .keyDecodingStrategy =
+            .convertFromSnakeCase
+        let data: Data = try Data(contentsOf: url)
+        let uigfModel: UIGFJson = try decoder
+            .decode(
+                UIGFJson.self,
+                from: data
+            )
+        let result = gachaViewModel
+            .importGachaFromUIGFJson(
+                uigfJson: uigfModel
+            )
+        status = .succeed(ImportSucceedInfo(
+            uid: result.uid,
+            totalCount: result.totalCount,
+            newCount: result.newCount,
+            app: uigfModel.info.exportApp,
+            exportDate: uigfModel.info.exportTime
+        ))
+        isCompleteAlertShow.toggle()
     }
 
     func processXlsx(url: URL) throws {
@@ -211,11 +191,11 @@ struct ImportGachaView: View {
             .map({ $0.cells.map { $0.stringValue(sharedStrings) }}),
             let gachaTypeIndex = head.firstIndex(where: { $0 == "gacha_type" }),
             let itemTypeIndex = head.firstIndex(where: { $0 == "item_type" }),
-            let idIndex = head.firstIndex(where: { $0 == "id" }),
             let nameIndex = head.firstIndex(where: { $0 == "name" }),
             let uidIndex = head.firstIndex(where: { $0 == "uid" }) else {
             status = .failure("数据表缺失数据"); return
         }
+        let idIndex = head.firstIndex(where: { $0 == "id" })
         let itemIdIndex = head.firstIndex(where: { $0 == "item_id" })
         let timeIndex = head.firstIndex(where: { $0 == "time" })
         let langIndex = head.firstIndex(where: { $0 == "lang" })
@@ -225,11 +205,16 @@ struct ImportGachaView: View {
             guard let uid = cells[uidIndex],
                   let gachaType = cells[gachaTypeIndex],
                   let itemType = cells[itemTypeIndex],
-                  let id = cells[idIndex],
                   let name = cells[nameIndex] else {
                 return nil
             }
-
+            let id: String
+            if let idIndex = idIndex,
+               let idString = cells[idIndex] {
+                id = idString
+            } else {
+                id = ""
+            }
             let itemId: String
             if let itemIdIndex = itemIdIndex,
                let itemIdString = cells[itemIdIndex] {
@@ -434,6 +419,29 @@ private struct HelpSheet: View {
                     }
                 }
             }
+        }
+    }
+}
+
+// MARK: - PopFileButton
+
+private struct PopFileButton: View {
+    /// localized key
+    let title: String
+
+    let allowedContentTypes: [UTType]
+
+    let completion: (Result<URL, Error>) -> ()
+
+    @State
+    var isFileImporterShow: Bool = false
+
+    var body: some View {
+        Button(title.localized) {
+            isFileImporterShow.toggle()
+        }
+        .fileImporter(isPresented: $isFileImporterShow, allowedContentTypes: allowedContentTypes) { result in
+            completion(result)
         }
     }
 }

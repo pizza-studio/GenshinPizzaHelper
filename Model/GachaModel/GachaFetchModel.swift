@@ -38,7 +38,7 @@ struct GachaItem_FM: Codable, Identifiable {
     let lang: String
     let itemType: String
     let rankType: String
-    let id: String
+    var id: String
 }
 
 extension GachaResult_FM {
@@ -51,5 +51,11 @@ extension GachaResult_FM {
         default: throw GetGachaError
             .unknowError(retcode: retcode, message: message)
         }
+    }
+}
+
+extension GachaItem_FM {
+    mutating func editId(_ newId: String) {
+        id = newId
     }
 }

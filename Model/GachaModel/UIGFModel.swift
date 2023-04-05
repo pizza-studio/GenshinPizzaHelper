@@ -160,7 +160,7 @@ struct UIGFGahcaItem: Codable {
             self.rankType = .findByName(name)
         }
 
-        self.id = try container.decode(String.self, forKey: .id)
+        self.id = (try? container.decodeIfPresent(String.self, forKey: .id)) ?? ""
         if let uigfGachaInt = Int(
             try container
                 .decode(String.self, forKey: .uigfGachaType)
@@ -214,6 +214,10 @@ struct UIGFGahcaItem: Codable {
 }
 
 extension UIGFGahcaItem {
+    public mutating func editId(_ newId: String) {
+        id = newId
+    }
+
     public func toGachaItemMO(
         context: NSManagedObjectContext,
         uid: String,

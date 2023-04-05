@@ -126,7 +126,11 @@ public class GachaModelManager {
         -> Int {
         var count = 0
         container.viewContext.performAndWait {
-            items.forEach { item in
+            items.enumerated().forEach { index, item in
+                var item = item
+                if item.id == "" {
+                    item.editId(String(index))
+                }
                 if !checkIDAndUIDExists(uid: uid, id: item.id) {
                     _ = item.toGachaItemMO(
                         context: container.viewContext,
@@ -145,8 +149,12 @@ public class GachaModelManager {
         _ items: [GachaItem_FM]
     )
         -> Int {
-        let newCount = items.map { item in
-            self.addRecordItem(item)
+        let newCount = items.enumerated().map { index, item in
+            var item = item
+            if item.id == "" {
+                item.editId(String(index))
+            }
+            return self.addRecordItem(item)
         }.map { $0 ? 1 : 0 }.reduce(0) { $0 + $1 }
         save()
         return newCount
