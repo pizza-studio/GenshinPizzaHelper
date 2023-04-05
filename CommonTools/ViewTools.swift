@@ -157,7 +157,7 @@ struct AlternativeBlurMaterialBackground: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 15.0, *) {
             content.background(
-                .thinMaterial,
+                .ultraThinMaterial,
                 in: RoundedRectangle(cornerRadius: 20, style: .continuous)
             )
             .contentShape(RoundedRectangle(
@@ -171,7 +171,7 @@ struct AlternativeBlurMaterialBackground: ViewModifier {
                         cornerRadius: 20,
                         style: .continuous
                     )
-                    .foregroundColor(Color(UIColor.systemGray5).opacity(0.5))
+                    .foregroundColor(Color(UIColor.systemGray4).opacity(0.5))
                 )
                 .contentShape(RoundedRectangle(
                     cornerRadius: 20,

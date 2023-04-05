@@ -464,7 +464,7 @@ struct AttributeLabel: View {
             .padding(.vertical, fontSize / 4)
             .background(
                 Capsule()
-                    .fill(Color.white.opacity(0.15))
+                    .fill(Color.white.opacity(0.1))
                     .frame(height: fontSize / 3 * 4)
             )
         HStack {
