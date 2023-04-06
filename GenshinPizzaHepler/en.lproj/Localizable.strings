@@ -859,7 +859,7 @@
 
 // MARK: - 2.5.1
 "暂无本期深渊数据" = "No data of this term";
-"仅统计充值途径以外获取的资源。数据存在延迟。" = "Only includes the resources retrieved ouside of top-ups. There are data delay issues.";
+"仅统计充值途径以外获取的资源。数据存在延迟。" = "Only includes the resources obtained ouside of top-ups. There are data delay issues.";
 "已回满" = "Full";
 
 // MARK: - 2.5.2 & 2.5.3
@@ -1109,7 +1109,7 @@
 "请输入自定义流浪者姓名" = "Please enter Wanderer's customized name";
 
 // wish analysis
-"请点击右上角获取抽卡记录" = "Click top right to retrieve";
+"请点击右上角获取抽卡记录" = "Click top right to obtain";
 "祈愿分析" = "Gacha Analysis";
 "角色活动祈愿" = "Character Event";
 "武器活动祈愿" = "Weapon Event";
@@ -1173,11 +1173,11 @@
 "请务必确保CA证书下载、安装、信任。" = "Please make sure to download, install, and trust the CA certificate.";
 "这台设备需要安装《原神》并处于能够正常游玩游戏的网络环境下。" = "Your phone needs to have 'Genshin Impact' installed and be in a network environment that can play the game normally.";
 "点击「开始抓包」按钮。" = "Click the 'Start Capturing' button.";
-"返回主屏幕，打开《原神》并打开祈愿界面，点击「历史记录」按钮。如成功获取到链接，本软件会向您推送一条通知。" = "Return to the main screen, open 'Genshin Impact', and open the Wishing interface. Click the 'History' button. If the wish history URL is successfully retrieved, this software will send you a notification.";
-"返回本软件，点击「开始获取祈愿记录」按钮，等待获取完成。" = "Return to this software, click the 'Start Getting Wishing Records' button, and wait for the retrieval to complete.";
+"返回主屏幕，打开《原神》并打开祈愿界面，点击「历史记录」按钮。如成功获取到链接，本软件会向您推送一条通知。" = "Return to the main screen, open 'Genshin Impact', and open the Wishing interface. Click the 'History' button. If the wish history URL is successfully obtained, this software will send you a notification.";
+"返回本软件，点击「开始获取祈愿记录」按钮，等待获取完成。" = "Return to this software, click the 'Start Getting Wishing Records' button, and wait for the obtainment to complete.";
 "如何获取祈愿链接？" = "How to get the Wish History URL?";
 "视频教程" = "Video tutorial";
-"您也可以选择根据跟随我们的视频教程获取祈愿记录。" = "You can also choose to follow our video tutorial to retrieve the wish records.";
+"您也可以选择根据跟随我们的视频教程获取祈愿记录。" = "You can also choose to follow our video tutorial to obtain the wish records.";
 "帮助" = "Help";
 "确认已经下载、安装并信任CA证书？" = "Have you confirmed that you have downloaded, installed, and trusted the CA certificate?";
 "未正确下载、安装或信任CA证书可能会导致URL抓取功能失效等问题" = "Failure to download, install, or trust the CA certificate correctly may cause issues such as the URL capture function not working properly.";
@@ -1186,31 +1186,31 @@
 
 "停止抓包" = "Stop capturing packets";
 "开始抓包" = "Start capturing packets";
-"通过抓包获取获取祈愿链接" = "Retrieve wish history URL through packet capture";
+"通过抓包获取获取祈愿链接" = "Obtain wish history URL through packet capture";
 "重新抓包" = "Capture packets again";
 "等待祈愿链接..." = "Waiting for the wish history URL...";
-"开始获取祈愿记录" = "Start retrieving wish records";
-"成功获取祈愿数据" = "Successfully retrieved wish data";
+"开始获取祈愿记录" = "Start obtaining wish records";
+"成功获取祈愿数据" = "Successfully obtained wish data";
 "共保存了%lld条新的祈愿数据" = "A total of %lld new wish data has been saved";
-"获取失败，因为错误：\n%@" = "Failed to retrieve due to error:\n%@";
-"成功获取到祈愿记录链接" = "Successfully retrieved the wish history URL";
-"请点击「开始获取祈愿记录」以继续" = "Please click 'Start retrieving wish records' to continue";
-"获取祈愿记录" = "Retrieve wish records";
+"获取失败，因为错误：\n%@" = "Failed to obtain due to error:\n%@";
+"成功获取到祈愿记录链接" = "Successfully obtained the wish history URL";
+"请点击「开始获取祈愿记录」以继续" = "Please click 'Start obtaining wish records' to continue";
+"获取祈愿记录" = "Obtain wish records";
 "正在抓包...请前往打开《原神》前往祈愿记录页面" = "Capturing packets... Please open 'Genshin Impact' and go to the wish record page";
 "正在开启VPN" = "Turning on VPN";
 "等待开始..." = "Waiting to start...";
 
 "从剪贴板中获取祈愿URL" = "Get Wish History URL from clipboard";
-"成功获取到祈愿链接" = "Successfully retrieved the wish history URL";
-"请返回继续获取祈愿记录。" = "Please go back and continue retrieving the wish history records.";
+"成功获取到祈愿链接" = "Successfully obtained the wish history URL";
+"请返回继续获取祈愿记录。" = "Please go back and continue obtaining the wish history records.";
 "重新获取祈愿链接" = "Get wish history URL again";
-"开始获取祈愿记录" = "Start retrieving wish record";
-"从剪贴板上获取到的链接有误" = "The URL retrieved from the clipboard is incorrect";
-"预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Expected to retrieve the wish history URL, but retrieved incorrect content:\n%@";
+"开始获取祈愿记录" = "Start obtaining wish record";
+"从剪贴板上获取到的链接有误" = "The URL obtained from the clipboard is incorrect";
+"预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Expected to obtain the wish history URL, but obtained incorrect content:\n%@";
 "未能从剪贴板获取到内容" = "Fail to get content from the clipboard";
-"由paimon.moe提供的获取祈愿链接的方法" = "The method of retrieving wish history provided by paimon.moe";
-"其他获取祈愿链接的方法" = "Other methods of retrieving wish history URL";
-"您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。" = "You can paste the wish history URL retrieved from other software to this app to retrieve the wish record. However, this app is not responsible for the reliability of external programs.";
+"由paimon.moe提供的获取祈愿链接的方法" = "The method of obtaining wish history provided by paimon.moe";
+"其他获取祈愿链接的方法" = "Other methods of obtaining wish history URL";
+"您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。" = "You can paste the wish history URL obtained from other software to this app to obtain the wish record. However, this app is not responsible for the reliability of external programs.";
 
 "导入UIGF JSON格式祈愿记录" = "Import UIGF JSON wish records";
 "导入UIGF XLSX格式祈愿记录" = "Import UIGF XLSX wish records";
