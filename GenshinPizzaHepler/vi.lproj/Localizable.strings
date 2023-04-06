@@ -59,7 +59,7 @@
 "未获取到登录信息，请重试" = "Không thể lấy Cookie. Vui lòng thử lại.";
 "尚未完成帐号设置" = "Cấu hình tài khoản chưa hoàn tất";
 "添加帐号前…" = "Trước khi thêm tài khoản của bạn...";
-"请先确保绑定的米游社帐号已开启并能在米游社App中查看“实时便笺”功能" = "Vui lòng đảm bảo \"Ghi chú theo thời gian thực\" của bạn có thể truy cập được";
+"请先确保绑定的米游社帐号已开启并能在米游社App中查看「实时便笺」功能" = "Vui lòng đảm bảo \"Ghi chú theo thời gian thực\" của bạn có thể truy cập được";
 "好" = "OK";
 "提示" = "Lời khuyên";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Nhấp vào \"Xong\" sau khi bạn hoàn tất đăng nhập vào HoYoLAB trong trang web sau.\nĐăng nhập qua Google, Facebook hoặc Twitter không khả dụng, vui lòng đăng nhập bằng tên người dùng và mật khẩu của bạn.\nThông tin đăng nhập tài khoản của bạn sẽ chỉ được lưu trữ cục bộ thiết bị và iCloud riêng của bạn và được sử dụng để yêu cầu HoYoLAB cung cấp thông tin tài khoản Genshin của bạn. ";
@@ -257,7 +257,7 @@
 "查询树脂恢复状态" = "Kiểm tra trạng thái phục hồi nhựa của bạn";
 
 // Notification
-"打开「原神」" = "Mở Genshin Impact";
+"打开《原神》" = "Mở Genshin Impact";
 "通知设置" = "Cài Đặt thông báo";
 "「%@」原粹树脂提醒" = "%@'s Thông báo Nhựa Nguyên Chất";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ có %lld nhựa ban đầu , sẽ đầy vào lúc %@.";
@@ -572,8 +572,8 @@
 "翻译提供" = "Phiên dịch viên";
 "英语" = "Tiếng Anh";
 "日语 英语" = "Tiếng Nhật , Anh";
-"法语" = "Tiếng Pháp";
-"日语" = "Tiếng Nhật";
+"法文" = "Tiếng Pháp";
+"日文" = "Tiếng Nhật";
 "たお👻🍑" = "Hatti";
 
 // weapon names
@@ -869,8 +869,8 @@
 "共获得%lld金，其中角色%lld金，武器%lld金。（未统计旅行者和无人装备的五星武器）" = "Nhận vật phẩm 5 sao %lld lần từ gacha, bao gồm nhân vật 5 sao %lld lần và vũ khí 5 sao %lld lần.  (Vũ khí 5 sao chưa được trang bị không được tính)";
 "精%lld" = "R%lld";
 "全部角色" = "Tất Cả Nhân Vật";
-"5星角色" = "Nhân Vật 5 Sao";
-"4星角色" = "Nhân Vật 4 Sao";
+"五星角色" = "Nhân Vật 5 Sao";
+"四星角色" = "Nhân Vật 4 Sao";
 "的所有角色" = "Nhân Vật Sở Hữu";
 "生命值上限" = "HP";
 "元素精通​" = "TTNT"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
@@ -954,7 +954,7 @@
 "自动启用树脂计时器" = "Tự động bật bộ hẹn giờ nhựa";
 "树脂计时器是什么？" = "Bộ đếm thời gian nhựa là gì?";
 "创建树脂计时器成功" = "Tạo bộ đếm thời gian nhựa đầy thành công";
-"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在“概览”页长按某个帐号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng.  Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất.  Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
+"若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在「概览」页长按某个帐号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng.  Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất.  Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
 "前往设置开启实时活动功能" = "Chuyển đến Cài Đặt để bật tính năng \"Hoạt động trong thời gian thực\"";
 "实时活动功能未开启，请前往设置开启。" = "Đã tắt \"Hoạt động thời gian thực\".  Vui lòng kích hoạt nó trong Cài Đặt.";
 
@@ -1046,7 +1046,7 @@
 "注意：通知设置更改对目前已安排的通知不生效。" = "Lưu ý: Các thay đổi Cài Đặt thông báo sẽ không có hiệu lực đối với các thông báo hiện được lên lịch.";
 
 // MARK: - 2.7.9
-"俄语" = "Tiếng Nga";
+"俄文" = "Tiếng Nga";
 
 // MARK: - 2.7.10
 "使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "Xếp hạng sử dụng chỉ để tham khảo trong đội hình La Hoàn và không đại diện cho bất kỳ đánh giá nào về nhân vật.";
@@ -1079,7 +1079,7 @@
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Amber](https://ambr.top/)";
 
 // MARK: - 2.7.12
-"越南语" = "Tiếng Việt";
+"越南文" = "Tiếng Việt";
 "未重开玩家使用率" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
 "时区" = "Múi Giờ";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";

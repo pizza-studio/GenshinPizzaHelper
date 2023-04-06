@@ -143,6 +143,10 @@ private struct GachaItemChart: View {
         items.filter { $0.0.rankType == .five }
     }
 
+    var averagePullsCount: Int {
+        fiveStarItems.map { $0.count }.reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
+    }
+
     var body: some View {
         Chart {
             ForEach(fiveStarItems, id: \.0.id) { item in
@@ -179,7 +183,8 @@ private struct GachaItemChart: View {
                 .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
                 .annotation(alignment: .topLeading) {
                     Text(
-                        "平均抽数：\(fiveStarItems.map { $0.count }.reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1))"
+                        "平均抽数："
+                            .localized + averagePullsCount.description
                     )
                     .font(.caption).foregroundColor(.gray)
                 }

@@ -474,7 +474,7 @@ struct ContactUsView: View {
                         HStack {
                             Text("たお👻🍑")
                             Spacer()
-                            Text("日语")
+                            Text("日文")
                                 .foregroundColor(.gray)
                         }
                     } icon: {
@@ -488,7 +488,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("Qi")
                         Spacer()
-                        Text("法语")
+                        Text("法文")
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -516,7 +516,7 @@ struct ContactUsView: View {
                         HStack {
                             Text("Art34222")
                             Spacer()
-                            Text("俄语")
+                            Text("俄文")
                                 .foregroundColor(.gray)
                         }
                     } icon: {
@@ -545,7 +545,7 @@ struct ContactUsView: View {
                         HStack {
                             Text("Ngô Phi Phương")
                             Spacer()
-                            Text("越南语")
+                            Text("越南文")
                                 .foregroundColor(.gray)
                         }
                     } icon: {

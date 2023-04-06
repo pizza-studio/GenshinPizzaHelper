@@ -59,7 +59,7 @@
 "未获取到登录信息，请重试" = "Erreur d'obtention d'information. Merci de réessayer.";
 "尚未完成帐号设置" = "La configuration du compte n'a pas été terminée";
 "添加帐号前…" = "Avant d'ajouter votre compte...";
-"请先确保绑定的米游社帐号已开启并能在米游社App中查看“实时便笺”功能" = "Verifier que vous avez ouvert et activer \"Les données en temps réel\" dans HoYoLAB.";
+"请先确保绑定的米游社帐号已开启并能在米游社App中查看「实时便笺」功能" = "Verifier que vous avez ouvert et activer \"Les données en temps réel\" dans HoYoLAB.";
 "好" = "OK";
 "提示" = "Conseils";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Cliquer sur \"Compris\" après avoir fini de vous connecter à HoYoLAB dans le page web suivant.\nLa Connection via Google, Facebook et Twitter à HoYoLAB n'est pas supporté, merci d'utiliser compte et mot de passe pour vous connecter\nVos informations de compte vont être stocké seulement dans l'appareil local et dans votre iCloud privé, et utilisé seuleument pour obtenir les données de Genshin Impact nécessaire à HoYoLAB. ";
@@ -257,7 +257,7 @@
 "查询树脂恢复状态" = "Vérifier le niveau de récupération des résines";
 
 // Notification
-"打开「原神」" = "Ouvrir Genshin Impact";
+"打开《原神》" = "Ouvrir Genshin Impact";
 "通知设置" = "Réglages Notification";
 "「%@」原粹树脂提醒" = "Notification de %@ pour la Résine Originelle";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ a maintenant %lld de Résines Originelles, qui va être pleine à %@.";
@@ -572,8 +572,8 @@
 "翻译提供" = "Translators";
 "英语" = "English";
 "日语 英语" = "Japanese English";
-"法语" = "French";
-"日语" = "Japanese";
+"法文" = "French";
+"日文" = "Japanese";
 "たお👻🍑" = "Hatti";
 
 // weapon names
@@ -869,8 +869,8 @@
 "共获得%lld金，其中角色%lld金，武器%lld金。（未统计旅行者和无人装备的五星武器）" = "Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (Unequipped star 5 weapons are not counted)";
 "精%lld" = "R%lld";
 "全部角色" = "All Characters";
-"5星角色" = "5-star characters";
-"4星角色" = "4-star characters";
+"五星角色" = "5-star characters";
+"四星角色" = "4-star characters";
 "的所有角色" = "Owned Characters";
 "生命值上限" = "Max HP";
 "元素精通​" = "EM"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
@@ -954,7 +954,7 @@
 "自动启用树脂计时器" = "Enable resin timer automatically";
 "树脂计时器是什么？" = "What is the resin timer";
 "创建树脂计时器成功" = "Create Resin Timer Successfully";
-"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在“概览”页长按某个帐号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account infomation card on the \"Overview\" tab or enable more timers.";
+"若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在「概览」页长按某个帐号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account infomation card on the \"Overview\" tab or enable more timers.";
 "前往设置开启实时活动功能" = "Move to settings to enable \"real-time activity\" feature";
 "实时活动功能未开启，请前往设置开启。" = "\"Real-time activity\" disabled. Please enable it in the settings.";
 
@@ -1046,7 +1046,7 @@
 "注意：通知设置更改对目前已安排的通知不生效。" = "Note: Notification settings changes will not take effect for currently scheduled notifications.";
 
 // MARK: - 2.7.9
-"俄语" = "Russian";
+"俄文" = "Russian";
 
 // MARK: - 2.7.10
 "使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "Utilization ratings are only for reference in Abyss team formation, and do not represent any evaluation of characters.";
@@ -1079,7 +1079,7 @@
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "Les informations sur les événements de Genshin Impact sont fournies par [Project Amber](https://ambr.top/)";
 
 // MARK: - 2.7.12
-"越南语" = "Vietnamese";
+"越南文" = "Vietnamese";
 "未重开玩家使用率" = "Non-restarted Player Usage Rate";
 "时区" = "Timezone";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "We calculate time based on the timezone of the server you chose. Current timezone: %@.";

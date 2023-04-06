@@ -212,7 +212,7 @@ struct MIMTGetGachaView: View {
                 displayMode: .alert,
                 type: .complete(.green),
                 title: "成功获取到祈愿记录链接",
-                subTitle: "请点击”开始获取祈愿记录“以继续"
+                subTitle: "请点击「开始获取祈愿记录」以继续"
             )
         })
         .onAppear {
@@ -334,7 +334,7 @@ private struct HelpSheet<V>: View {
                 }
                 Section {
                     Label(
-                        "您的手机需要安装《原神》并处于能够正常游玩游戏的网络环境下。",
+                        "这台设备需要安装《原神》并处于能够正常游玩游戏的网络环境下。",
                         systemImage: "gamecontroller"
                     )
                     Label("点击「开始抓包」按钮。", systemImage: "1.circle")
@@ -569,7 +569,7 @@ extension VPNManager.VPNStatus: CustomStringConvertible {
     var description: String {
         switch self {
         case .connected:
-            return "正在抓包...请前往打开「原神」前往祈愿记录页面".localized
+            return "正在抓包...请前往打开《原神》前往祈愿记录页面".localized
         case .connecting:
             return "正在开启VPN".localized
         case .notConnected:

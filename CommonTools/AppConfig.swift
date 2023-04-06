@@ -21,7 +21,7 @@ enum AppConfiguration {
 enum AppConfig {
     // MARK: Internal
 
-    // OPENSOURCE: 替换以下内容为”Opensource Secret“
+    // OPENSOURCE: 替换以下内容为「Opensource Secret」
     static let homeAPISalt: String = "2f2d1f9e00719112e88d92d98165f9aa"
     static let uidSalt: String = "GenshinPizzaHelper"
 

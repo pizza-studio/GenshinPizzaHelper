@@ -220,11 +220,11 @@ extension GachaFilter.Rank: CustomStringConvertible {
     var description: String {
         switch self {
         case .five:
-            return "五星"
+            return "五星".localized
         case .fourAndFive:
-            return "四星及五星"
+            return "四星及五星".localized
         case .threeAndFourAndFire:
-            return "所有记录"
+            return "所有记录".localized
         }
     }
 }

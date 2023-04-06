@@ -34,8 +34,8 @@ func gotURL(url: RustStr) {
     }
 
     let content = UNMutableNotificationContent()
-    content.title = String(format: NSLocalizedString("成功获取到祈愿链接", comment: ""))
-    content.body = String(format: NSLocalizedString("请返回继续获取祈愿记录。", comment: ""))
+    content.title = NSLocalizedString("成功获取到祈愿链接", comment: "")
+    content.body = NSLocalizedString("请返回继续获取祈愿记录。", comment: "")
 
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
 

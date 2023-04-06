@@ -260,7 +260,7 @@ struct AddAccountView: View {
             case .firstAddAccountHint:
                 return Alert(
                     title: Text("添加帐号前…"),
-                    message: Text("请先确保绑定的米游社帐号已开启并能在米游社App中查看“实时便笺”功能")
+                    message: Text("请先确保绑定的米游社帐号已开启并能在米游社App中查看「实时便笺」功能")
                 )
             }
         }

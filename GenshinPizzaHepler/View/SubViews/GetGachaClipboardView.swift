@@ -154,7 +154,7 @@ struct GetGachaClipboardView: View {
             case .getGachaURLSucceed:
                 return Alert(
                     title: Text("成功获取到祈愿记录链接"),
-                    message: Text("请点击”开始获取祈愿记录“以继续")
+                    message: Text("请点击「开始获取祈愿记录」以继续")
                 )
             case let .urlInPasteboardIsInvalid(url: url):
                 return Alert(

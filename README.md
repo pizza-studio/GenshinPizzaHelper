@@ -107,7 +107,7 @@
 
 2. 打开 WatchHelper WatchKit Extension/View/ContentView.swift 文件，删除cookie
 
-3. 打开 `./CommonTools/AppConfig` - 修改`homeAPISalt`为“Opensource Secret”
+3. 打开 `./CommonTools/AppConfig` - 修改`homeAPISalt`为「Opensource Secret」
 
 4. 将所有文件移动覆盖到开源仓库文件夹
 
@@ -115,7 +115,7 @@
 
 > 请务必注意不能上传官方未发布的素材
 > 
-> 全部使用heic格式，压缩为“小”
+> 全部使用heic格式，压缩为「小」
 
 ### 角色更新
 

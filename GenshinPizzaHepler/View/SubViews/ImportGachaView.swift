@@ -59,7 +59,7 @@ struct ImportGachaView: View {
             case let .succeed(info):
                 Section {
                     Label {
-                        Text("导入祈愿数据成功")
+                        Text("成功导入祈愿数据")
                     } icon: {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
@@ -410,7 +410,7 @@ private struct HelpSheet: View {
                 } footer: {
                     Text("我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。")
                 }
-                Section(header: Text("以下程序或平台的JSON导出格式经验证可用").textCase(.none)) {
+                Section(header: Text("以下程序或平台的JSON导出格式已通过可用性验证").textCase(.none)) {
                     Link("提瓦特小助手", destination: URL(string: "https://api.lelaer.com/ys/uploadGacha.php")!)
 //                    Link(
 //                        "genshin-wish-export",
@@ -419,7 +419,7 @@ private struct HelpSheet: View {
                     Link("寻空", destination: URL(string: "https://xunkong.cc")!)
                     Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
                 }
-                Section(header: Text("以下程序或平台的XLSX导出格式经验证可用").textCase(.none)) {
+                Section(header: Text("以下程序或平台的XLSX导出格式已通过可用性验证").textCase(.none)) {
                     Link("寻空", destination: URL(string: "https://xunkong.cc")!)
                     Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
                 }

@@ -59,7 +59,7 @@
 "未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
 "尚未完成帐号设置" = "Account configuration is not finished";
 "添加帐号前…" = "Before adding your account...";
-"请先确保绑定的米游社帐号已开启并能在米游社App中查看“实时便笺”功能" = "Please make sure your \"Real-Time Notes\" is accessible";
+"请先确保绑定的米游社帐号已开启并能在米游社App中查看「实时便笺」功能" = "Please make sure your \"Real-Time Notes\" is accessible";
 "好" = "OK";
 "提示" = "Tips";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Click \"Done\" after you finish login to HoYoLAB in the following webpage.\nSign in via Google, Facebook or Twitter is not available, please sign in with your username & password.\nYour account's login info will only be stored in local device and your private iCloud, and used to request HoYoLAB for your Genshin account infos. ";
@@ -257,7 +257,7 @@
 "查询树脂恢复状态" = "Check your resin recovery status";
 
 // Notification
-"打开「原神」" = "Open Genshin Impact";
+"打开《原神》" = "Open Genshin Impact";
 "通知设置" = "Notification Settings";
 "「%@」原粹树脂提醒" = "%@'s Original Resin Notification";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ has %lld original resins now, which will be full at %@.";
@@ -572,8 +572,8 @@
 "翻译提供" = "Translators";
 "英语" = "English";
 "日语 英语" = "Japanese English";
-"法语" = "French";
-"日语" = "Japanese";
+"法文" = "French";
+"日文" = "Japanese";
 "たお👻🍑" = "Hatti";
 
 // weapon names
@@ -859,7 +859,7 @@
 
 // MARK: - 2.5.1
 "暂无本期深渊数据" = "No data of this term";
-"仅统计充值途径以外获取的资源。数据存在延迟。" = "Only includes the resources obtained ouside of top-ups. There are data delay issues.";
+"仅统计充值途径以外获取的资源。数据存在延迟。" = "Only includes the resources retrieved ouside of top-ups. There are data delay issues.";
 "已回满" = "Full";
 
 // MARK: - 2.5.2 & 2.5.3
@@ -869,8 +869,8 @@
 "共获得%lld金，其中角色%lld金，武器%lld金。（未统计旅行者和无人装备的五星武器）" = "Acquired 5-star items %lld times from gacha, including 5-star characters %lld times and 5-star weapons %lld times. (Unequipped star 5 weapons are not counted)";
 "精%lld" = "R%lld";
 "全部角色" = "All Characters";
-"5星角色" = "5-star characters";
-"4星角色" = "4-star characters";
+"五星角色" = "5-star characters";
+"四星角色" = "4-star characters";
 "的所有角色" = "Owned Characters";
 "生命值上限" = "Max HP";
 "元素精通​" = "EM"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
@@ -954,7 +954,7 @@
 "自动启用树脂计时器" = "Enable Resin Timer Automatically";
 "树脂计时器是什么？" = "What is the resin timer?";
 "创建树脂计时器成功" = "Create Resin Timer Successfully";
-"若开启，在退出本App时会自动启用一个“实时活动”树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在“概览”页长按某个帐号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account information card on the \"Overview\" tab or enable more timers.";
+"若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在「概览」页长按某个帐号的卡片手动开启，或启用多个计时器。" = "If enabled, a \"real-time activity\" resin timer will be set after you exit the app. The timer will be set for account the pinned to the top or the account with the least resins by default. You can also enable the timer for an account manually by long press the account information card on the \"Overview\" tab or enable more timers.";
 "前往设置开启实时活动功能" = "Move to Settings to Enable \"Real-Time Activity\" Feature";
 "实时活动功能未开启，请前往设置开启。" = "\"Real-time activity\" disabled. Please enable it in the settings.";
 
@@ -1046,7 +1046,7 @@
 "注意：通知设置更改对目前已安排的通知不生效。" = "Note: Notification settings changes will not take effect for currently scheduled notifications.";
 
 // MARK: - 2.7.9
-"俄语" = "Russian";
+"俄文" = "Russian";
 
 // MARK: - 2.7.10
 "使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "Utilization ratings are only for reference in Abyss team formation, and do not represent any evaluation of characters.";
@@ -1079,7 +1079,7 @@
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "Genshin Impact event informations are provided by [Project Amber](https://ambr.top/)";
 
 // MARK: - 2.7.12
-"越南语" = "Vietnamese";
+"越南文" = "Vietnamese";
 "未重开玩家使用率" = "Non-restarted Player Usage Rate";
 "时区" = "Timezone";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "We calculate time based on the timezone of the server you chose. Current timezone: %@.";
@@ -1109,7 +1109,7 @@
 "请输入自定义流浪者姓名" = "Please enter Wanderer's customized name";
 
 // wish analysis
-"请点击右上角获取抽卡记录" = "Click top right to obtain";
+"请点击右上角获取抽卡记录" = "Click top right to retrieve";
 "祈愿分析" = "Gacha Analysis";
 "角色活动祈愿" = "Character Event";
 "武器活动祈愿" = "Weapon Event";
@@ -1119,10 +1119,14 @@
 "当前已垫" = "After Last 5-star";
 "%lld抽" = "%lld Pulls";
 "总抽数" = "Total Pulls";
-"5星平均抽数" = "5-star Average Pulls";
-"限定5星平均抽数" = "Limited 5-star Average Pulls";
+"五星平均抽数" = "5-star Average Pulls";
+"限定五星平均抽数" = "Limited 5-star Average Pulls";
 "不歪率" = "Won 50/50";
 "派蒙的评价" = "Paimon's Review";
+"总消耗原石数" = "Total Primogems Cost";
+"五星平均抽数" = "5-star Average Pulls";
+"五星平均消耗原石数" = "5-star Average Primogems Cost";
+"平均抽数：" = "Average Pulls:";
 
 "详细记录" = "Record Details";
 "其他图表" = "Other Charts";
@@ -1142,14 +1146,14 @@
 "抽卡记录获取帮助" = "Wish Log Help";
 "无论选择哪种方式，我们都为您提供了详细的操作教程" = "No matter which way you choose, we provide you with detailed operation tutorials";
 "您也可以选择参考我们的视频完成相关操作" = "You can also refer to our video to complete those operations";
-"如果您在中国大陆服务器" = "If your account is in China Mainland Servers";
-"请优先选择”通过API“一键获取" = "Choose \"Through API\" first";
+"如果您的帐号所在服务器位于中国大陆" = "If your account is in China Mainland Servers";
+"请优先选择「通过API」一键获取" = "Choose \"Through API\" first";
 "仅适用于中国大陆服务器" = "Available for China Mainland Servers Only";
-"如果您的手机上安装了《原神》" = "If you have installed Genshin Impact on this device";
-"建议优先选择“通过抓包获取”" = "Choose \"Through Package Capture\" first";
+"如果当前这台设备有安装《原神》" = "If you have installed Genshin Impact on this device";
+"建议优先选择「通过抓包获取」" = "Choose \"Through Package Capture\" first";
 "适用于所有服务器" = "Available for All Servers";
-"如果您的手机上未安装《原神》" = "If you have NOT installed Genshin Impact on this device";
-"建议通过“通过粘贴祈愿页面URL“获取，我们亦内附了教程" = "It is recommended to get from \"Pasting Wish History URL\", we also have provided tutorials for it";
+"如果当前这台设备尚未安装《原神》" = "If you have NOT installed Genshin Impact on this device";
+"建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程" = "It is recommended to get from \"Pasting Wish History URL\", we also have provided tutorials for it";
 "如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入" = "If you use other softwares to get gacha log, and the software supports UIGF (Uniformed Interchangeable GachaLog Format standard) format files, you can import them.";
 "支持UIGF的软件" = "Softwares Supporting UIGF";
 
@@ -1167,13 +1171,13 @@
 "CA证书安装教程" = "CA certificate installation tutorial";
 "关于CA证书" = "About the CA certificate";
 "请务必确保CA证书下载、安装、信任。" = "Please make sure to download, install, and trust the CA certificate.";
-"您的手机需要安装《原神》并处于能够正常游玩游戏的网络环境下。" = "Your phone needs to have 'Genshin Impact' installed and be in a network environment that can play the game normally.";
+"这台设备需要安装《原神》并处于能够正常游玩游戏的网络环境下。" = "Your phone needs to have 'Genshin Impact' installed and be in a network environment that can play the game normally.";
 "点击「开始抓包」按钮。" = "Click the 'Start Capturing' button.";
-"返回主屏幕，打开《原神》并打开祈愿界面，点击「历史记录」按钮。如成功获取到链接，本软件会向您推送一条通知。" = "Return to the main screen, open 'Genshin Impact', and open the Wishing interface. Click the 'History' button. If the wish history URL is successfully obtained, this software will send you a notification.";
+"返回主屏幕，打开《原神》并打开祈愿界面，点击「历史记录」按钮。如成功获取到链接，本软件会向您推送一条通知。" = "Return to the main screen, open 'Genshin Impact', and open the Wishing interface. Click the 'History' button. If the wish history URL is successfully retrieved, this software will send you a notification.";
 "返回本软件，点击「开始获取祈愿记录」按钮，等待获取完成。" = "Return to this software, click the 'Start Getting Wishing Records' button, and wait for the retrieval to complete.";
 "如何获取祈愿链接？" = "How to get the Wish History URL?";
 "视频教程" = "Video tutorial";
-"您也可以选择根据跟随我们的视频教程获取祈愿记录。" = "You can also choose to follow our video tutorial to obtain the wish records.";
+"您也可以选择根据跟随我们的视频教程获取祈愿记录。" = "You can also choose to follow our video tutorial to retrieve the wish records.";
 "帮助" = "Help";
 "确认已经下载、安装并信任CA证书？" = "Have you confirmed that you have downloaded, installed, and trusted the CA certificate?";
 "未正确下载、安装或信任CA证书可能会导致URL抓取功能失效等问题" = "Failure to download, install, or trust the CA certificate correctly may cause issues such as the URL capture function not working properly.";
@@ -1182,37 +1186,38 @@
 
 "停止抓包" = "Stop capturing packets";
 "开始抓包" = "Start capturing packets";
-"通过抓包获取获取祈愿链接" = "Obtain wish history URL through packet capture";
-"成功获取到祈愿链接" = "Successfully obtained the wish history URL";
+"通过抓包获取获取祈愿链接" = "Retrieve wish history URL through packet capture";
+"成功获取到祈愿链接" = "Successfully retrieved the wish history URL";
 "重新抓包" = "Capture packets again";
 "等待祈愿链接..." = "Waiting for the wish history URL...";
-"开始获取祈愿记录" = "Start obtaining wish records";
-"成功获取祈愿数据" = "Successfully obtained wish data";
+"开始获取祈愿记录" = "Start retrieving wish records";
+"成功获取祈愿数据" = "Successfully retrieved wish data";
 "共保存了%lld条新的祈愿数据" = "A total of %lld new wish data has been saved";
-"获取失败，因为错误：\n%@" = "Failed to obtain due to error:\n%@";
-"成功获取到祈愿记录链接" = "Successfully obtained the wish history URL";
-"请点击”开始获取祈愿记录“以继续" = "Please click 'Start obtaining wish records' to continue";
-"获取祈愿记录" = "Obtain wish records";
-"正在抓包...请前往打开「原神」前往祈愿记录页面" = "Capturing packets... Please open 'Genshin Impact' and go to the wish record page";
+"获取失败，因为错误：\n%@" = "Failed to retrieve due to error:\n%@";
+"成功获取到祈愿记录链接" = "Successfully retrieved the wish history URL";
+"请点击「开始获取祈愿记录」以继续" = "Please click 'Start retrieving wish records' to continue";
+"获取祈愿记录" = "Retrieve wish records";
+"正在抓包...请前往打开《原神》前往祈愿记录页面" = "Capturing packets... Please open 'Genshin Impact' and go to the wish record page";
 "正在开启VPN" = "Turning on VPN";
 "等待开始..." = "Waiting to start...";
 
 "从剪贴板中获取祈愿URL" = "Get Wish History URL from clipboard";
-"成功获取到祈愿链接" = "Successfully obtained the wish history URL";
+"成功获取到祈愿链接" = "Successfully retrieved the wish history URL";
+"请返回继续获取祈愿记录。" = "Please go back and continue retrieving the wish history records.";
 "重新获取祈愿链接" = "Get wish history URL again";
-"开始获取祈愿记录" = "Start obtaining wish record";
-"从剪贴板上获取到的链接有误" = "The URL obtained from the clipboard is incorrect";
-"预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Expected to obtain the wish history URL, but obtained incorrect content:\n%@";
+"开始获取祈愿记录" = "Start retrieving wish record";
+"从剪贴板上获取到的链接有误" = "The URL retrieved from the clipboard is incorrect";
+"预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Expected to retrieve the wish history URL, but retrieved incorrect content:\n%@";
 "未能从剪贴板获取到内容" = "Fail to get content from the clipboard";
-"由paimon.moe提供的获取祈愿链接的方法" = "The method of obtaining wish history provided by paimon.moe";
-"其他获取祈愿链接的方法" = "Other methods of obtaining wish history URL";
-"您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。" = "You can paste the wish history URL obtained from other software to this app to obtain the wish record. However, this app is not responsible for the reliability of external programs.";
+"由paimon.moe提供的获取祈愿链接的方法" = "The method of retrieving wish history provided by paimon.moe";
+"其他获取祈愿链接的方法" = "Other methods of retrieving wish history URL";
+"您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。" = "You can paste the wish history URL retrieved from other software to this app to retrieve the wish record. However, this app is not responsible for the reliability of external programs.";
 
 "导入UIGF JSON格式祈愿记录" = "Import UIGF JSON wish records";
 "导入UIGF XLSX格式祈愿记录" = "Import UIGF XLSX wish records";
 "目前仅支持导入简体中文祈愿记录" = "Currently only supports importing simplified Chinese wish records";
 "导入中，请稍后..." = "Importing, please wait...";
-"导入祈愿数据成功" = "Wish data imported successfully";
+"成功导入祈愿数据" = "Wish data imported successfully";
 "数据来自：%@" = "Data source: %@";
 "导出时间：%@" = "Export time: %@";
 "导入了%lld条记录" = "Imported %lld records";
@@ -1230,8 +1235,8 @@
 "数据表缺失数据" = "Data table missing data";
 "未成功从文件中解码数据" = "Failed to decode data from file";
 "导入帮助" = "Import Help";
-"以下程序或平台的JSON导出格式经验证可用" = "Verified programs or platforms available for JSON";
-"以下程序或平台的XLSX导出格式经验证可用" = "Verified programs or platforms available for XLSX";
+"以下程序或平台的JSON导出格式已通过可用性验证" = "Verified programs or platforms available for JSON";
+"以下程序或平台的XLSX导出格式已通过可用性验证" = "Verified programs or platforms available for XLSX";
 "我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。" = "We support all export files that strictly comply with the UIGF standard. For a list of supported apps and corresponding export formats, please click on the top right corner to open help page.";
 "我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。" = "We support importing all files that comply with the UIGF format, but we have found that some software that claims to support UIGF that do not meet the standard. The following software has been verified to be able to import smoothly into this App.";
 
@@ -1255,17 +1260,17 @@
 "自%@到%@" = "From %@ to %@";
 
 // gacha avaliable language
-"泰语" = "Thai";
-"朝鲜语" = "Korean";
-"西班牙语" = "Spanish";
-"日语" = "Japanese";
-"中文（中国大陆）" = "Simplified Chinese";
-"印度尼西亚语" = "Indonesian";
-"葡萄牙语" = "Portuguese";
-"德语" = "German";
-"法语" = "French";
-"中文（台湾）" = "Traditional Chinese";
-"俄语" = "Russian";
+"泰文" = "Thai";
+"朝鲜文" = "Korean";
+"西班牙文" = "Spanish";
+"日文" = "Japanese";
+"简体中文" = "Simplified Chinese";
+"印尼文" = "Indonesian";
+"葡萄牙文" = "Portuguese";
+"德文" = "German";
+"法文" = "French";
+"繁体中文" = "Traditional Chinese";
+"俄文" = "Russian";
 "英语（美国）" = "English (US)";
-"越南语" = "Vietnamese";
+"越南文" = "Vietnamese";
 "选择语言" = "Select Language";

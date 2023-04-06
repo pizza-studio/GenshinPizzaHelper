@@ -60,7 +60,7 @@ class UserNotificationCenter {
     // Define the custom actions.
     let openGenshin = UNNotificationAction(
         identifier: "OPEN_GENSHIN_ACTION",
-        title: "打开「原神」".localized,
+        title: "打开《原神》".localized,
         options: [.foreground]
     )
     let openNotificationSetting = UNNotificationAction(

@@ -30,7 +30,7 @@ public struct RecoveryTime: Codable {
         unisStyle: DateComponentsFormatter.UnitsStyle = .brief
     )
         -> String {
-        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
+        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如「已完成」
         if let finishedTextPlaceholder = finishedTextPlaceholder {
             guard second != 0 else { return finishedTextPlaceholder.localized }
         }
@@ -54,7 +54,7 @@ public struct RecoveryTime: Codable {
         useEnglishStyle: Bool = false
     )
         -> String {
-        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
+        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如「已完成」
         if let finishedTextPlaceholder = finishedTextPlaceholder {
             guard second != 0 else { return finishedTextPlaceholder.localized }
         }
@@ -77,7 +77,7 @@ public struct RecoveryTime: Codable {
 
     public func completeTimePointFromNow(finishedTextPlaceholder: String? = nil)
         -> String {
-        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
+        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如「已完成」
         if let finishedTextPlaceholder = finishedTextPlaceholder {
             guard second != 0 else { return finishedTextPlaceholder.localized }
         }
@@ -101,7 +101,7 @@ public struct RecoveryTime: Codable {
             nil
     )
         -> String {
-        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如“已完成”
+        /// finishedTextPlaceholder: 剩余时间为0时的占位符，如「已完成」
         if let finishedTextPlaceholder = finishedTextPlaceholder {
             guard second != 0 else { return finishedTextPlaceholder.localized }
         }

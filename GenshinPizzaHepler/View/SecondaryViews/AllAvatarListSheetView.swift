@@ -128,8 +128,8 @@ struct AllAvatarListSheetView: View {
 
     private enum AllAvatarListDisplayType: String, CaseIterable {
         case all = "全部角色"
-        case _5star = "5星角色"
-        case _4star = "4星角色"
+        case _5star = "五星角色"
+        case _4star = "四星角色"
     }
 
     func goldNum(data: AllAvatarDetailModel)

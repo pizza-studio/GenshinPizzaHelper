@@ -129,7 +129,7 @@ class GachaTranslateManager {
         let url = URL(string: "https://ophelper.top/api/app/gacha_lang_dictionary.json")!
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let filename = documentDirectory.appendingPathComponent("gacha_lang_dictionary.json")
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, _, error in
             do {
                 guard let data = data else {
                     return
@@ -208,31 +208,31 @@ extension GachaLanguageCode: CustomStringConvertible {
     public var description: String {
         switch self {
         case .th:
-            return "泰语".localized
+            return "泰文".localized
         case .ko:
-            return "朝鲜语".localized
+            return "朝鲜文".localized
         case .es:
-            return "西班牙语".localized
+            return "西班牙文".localized
         case .ja:
-            return "日语".localized
+            return "日文".localized
         case .zhCN:
-            return "中文（中国大陆）".localized
+            return "简体中文".localized
         case .id:
-            return "印度尼西亚语".localized
+            return "印尼文".localized
         case .pt:
-            return "葡萄牙语".localized
+            return "葡萄牙文".localized
         case .de:
-            return "德语".localized
+            return "德文".localized
         case .fr:
-            return "法语".localized
+            return "法文".localized
         case .zhTW:
-            return "中文（台湾）".localized
+            return "繁体中文".localized
         case .ru:
-            return "俄语".localized
+            return "俄文".localized
         case .enUS:
             return "英语（美国）".localized
         case .vi:
-            return "越南语".localized
+            return "越南文".localized
         }
     }
 }

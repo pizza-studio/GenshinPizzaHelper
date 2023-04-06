@@ -231,7 +231,7 @@ private struct GachaStatisticSectionView: View {
             }
             HStack {
                 Label(
-                    showDrawingNumber ? "5星平均抽数" : "5星平均消耗原石数",
+                    showDrawingNumber ? "五星平均抽数" : "五星平均消耗原石数",
                     systemImage: "star"
                 )
                 Spacer()
@@ -243,7 +243,7 @@ private struct GachaStatisticSectionView: View {
             if gachaViewModel.filter.gachaType != .standard {
                 HStack {
                     Label(
-                        showDrawingNumber ? "限定5星平均抽数" : "限定5星平均消耗原石数",
+                        showDrawingNumber ? "限定五星平均抽数" : "限定五星平均消耗原石数",
                         systemImage: "star.fill"
                     )
                     Spacer()
@@ -670,25 +670,25 @@ private struct HelpSheet: View {
                     GachaHelpVideoLink()
                 }
                 Section {
-                    Label("如果您在中国大陆服务器", systemImage: "text.bubble")
-                    Label("请优先选择”通过API“一键获取", systemImage: "network")
+                    Label("如果您的帐号所在服务器位于中国大陆", systemImage: "text.bubble")
+                    Label("请优先选择「通过API」一键获取", systemImage: "network")
                 } footer: {
                     Text("仅适用于中国大陆服务器")
                         .bold()
                 }
                 Section {
-                    Label("如果您的手机上安装了《原神》", systemImage: "text.bubble")
+                    Label("如果当前这台设备有安装《原神》", systemImage: "text.bubble")
                     Label(
-                        "建议优先选择“通过抓包获取”",
+                        "建议优先选择「通过抓包获取」",
                         systemImage: "rectangle.and.text.magnifyingglass"
                     )
                 } footer: {
                     Text("适用于所有服务器")
                 }
                 Section {
-                    Label("如果您的手机上未安装《原神》", systemImage: "text.bubble")
+                    Label("如果当前这台设备尚未安装《原神》", systemImage: "text.bubble")
                     Label(
-                        "建议通过“通过粘贴祈愿页面URL“获取，我们亦内附了教程",
+                        "建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程",
                         systemImage: "list.bullet.clipboard"
                     )
                 } footer: {
