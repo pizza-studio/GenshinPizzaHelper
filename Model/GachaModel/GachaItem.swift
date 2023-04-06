@@ -32,7 +32,7 @@ public struct GachaItem: Identifiable {
         count: Int,
         time: Date,
         name: String,
-        lang: String,
+        lang: GachaLanguageCode,
         itemType: String,
         rankType: RankType,
         id: String
@@ -64,7 +64,7 @@ public struct GachaItem: Identifiable {
     public let count: Int
     public let time: Date
     public var name: String
-    public let lang: String
+    public let lang: GachaLanguageCode
     public let itemType: String
     public let rankType: RankType
     public let id: String

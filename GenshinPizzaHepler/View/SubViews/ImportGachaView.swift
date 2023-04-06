@@ -29,7 +29,7 @@ struct ImportGachaView: View {
             switch status {
             case .pending:
                 Section {
-                    PopFileButton(title: "导入UIGF Json格式祈愿记录", allowedContentTypes: [.json]) { result in
+                    PopFileButton(title: "导入UIGF JSON格式祈愿记录", allowedContentTypes: [.json]) { result in
                         switch result {
                         case let .success(url):
                             alert = .readyToStartJson(url: url)
@@ -37,7 +37,7 @@ struct ImportGachaView: View {
                             status = .failure(error.localizedDescription)
                         }
                     }
-                    PopFileButton(title: "导入UIGF Xlsx格式祈愿记录", allowedContentTypes: [.xlsx]) { result in
+                    PopFileButton(title: "导入UIGF XLSX格式祈愿记录", allowedContentTypes: [.xlsx]) { result in
                         switch result {
                         case let .success(url):
                             alert = .readyToStartXlsx(url: url)
@@ -237,12 +237,13 @@ struct ImportGachaView: View {
                 time = .distantPast
             }
 
-            let lang: String
+            let lang: GachaLanguageCode
             if let langIndex = langIndex,
-               let langString = cells[langIndex] {
-                lang = langString
+               let langString = cells[langIndex],
+               let langCode = GachaLanguageCode(rawValue: langString) {
+                lang = langCode
             } else {
-                lang = "zh-cn"
+                lang = GachaTranslateManager.shared.getLanguageCode(for: name) ?? .zhCN
             }
 
             let rankType: String

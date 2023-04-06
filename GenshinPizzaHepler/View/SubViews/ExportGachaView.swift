@@ -70,11 +70,11 @@ struct ExportGachaView: View {
                             }
                         }
                     }
-                    Picker("选择语言", selection: $params.lang) {
-                        Text("简体中文").tag("zh-cn")
+                }
+                Picker("选择语言", selection: $params.lang) {
+                    ForEach(GachaLanguageCode.allCases, id: \.rawValue) { code in
+                        Text(code.description).tag(code)
                     }
-                } footer: {
-                    Text("UIGF目前仅适用于简体中文环境")
                 }
             }
             .navigationTitle("导出祈愿记录")
@@ -91,7 +91,7 @@ struct ExportGachaView: View {
                             alert = .uidEmpty; return
                         }
                         let items = gachaViewModel.manager.fetchAllMO(uid: uid)
-                            .map { $0.toUIGFGahcaItem() }
+                            .map { $0.toUIGFGahcaItem(params.lang) }
                         uigfJson = .init(
                             info: .init(uid: uid, lang: params.lang),
                             list: items
@@ -143,7 +143,7 @@ private class ExportGachaParams: ObservableObject {
     @Published
     var uid: String?
     @Published
-    var lang: String = "zh-cn"
+    var lang: GachaLanguageCode = .zhCN
 }
 
 // MARK: - JsonFile

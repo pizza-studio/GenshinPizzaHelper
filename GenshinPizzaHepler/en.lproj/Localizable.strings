@@ -1236,6 +1236,7 @@
 "我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。" = "We support importing all files that comply with the UIGF format, but we have found that some software that claims to support UIGF that do not meet the standard. The following software has been verified to be able to import smoothly into this App.";
 
 // gacha data management
+"导出UIGF祈愿记录" = "Export UIGF Wish Records";
 "祈愿数据管理" = "Gacha Data Management";
 "清理重复数据" = "Clean up Duplicate Data";
 "清理因iCloud同步导致出现的重复祈愿记录" = "Clean up duplicate wish records caused by iCloud synchronization";
@@ -1246,14 +1247,25 @@
 "结束日期" = "End Date";
 "删除祈愿记录" = "Delete Wish Records";
 "导出祈愿记录" = "Export Wish Records";
-"导出UIGF格式祈愿记录" = "Export Wish Records in UIGF Format";
 "确定要删除「%@」的祈愿数据吗？" = "Are you sure you want to delete the wish data of \"%@\"?";
 "即将删除「%@」%@的祈愿数据。" = "The wish data of \"%@\"%@ is about to be deleted.";
 "删除了%lld条数据" = "Deleted %lld Records";
 "删除了%lld条重复数据" = "Deleted %lld Duplicate Records";
 "所有" = "All";
 "自%@到%@" = "From %@ to %@";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+
+// gacha avaliable language
+"泰语" = "Thai";
+"朝鲜语" = "Korean";
+"西班牙语" = "Spanish";
+"日语" = "Japanese";
+"中文（中国大陆）" = "Simplified Chinese";
+"印度尼西亚语" = "Indonesian";
+"葡萄牙语" = "Portuguese";
+"德语" = "German";
+"法语" = "French";
+"中文（台湾）" = "Traditional Chinese";
+"俄语" = "Russian";
+"英语（美国）" = "English (US)";
+"越南语" = "Vietnamese";
+"选择语言" = "Select Language";

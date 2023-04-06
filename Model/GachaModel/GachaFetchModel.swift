@@ -34,9 +34,9 @@ struct GachaItem_FM: Codable, Identifiable {
     let itemId: String
     let count: String
     let time: Date
-    let name: String
-    let lang: String
-    let itemType: String
+    var name: String
+    var lang: GachaLanguageCode
+    var itemType: String
     let rankType: String
     var id: String
 }
@@ -57,5 +57,19 @@ extension GachaResult_FM {
 extension GachaItem_FM {
     mutating func editId(_ newId: String) {
         id = newId
+    }
+
+    mutating func translateToZHCN() {
+        let manager = GachaTranslateManager.shared
+        name = manager.translateToZHCN(name, from: lang) ?? name
+        itemType = manager.translateItemTypeToZHCN(itemType) ?? "武器"
+        lang = .zhCN
+    }
+
+    mutating func translate(to languageCode: GachaLanguageCode) {
+        let manager = GachaTranslateManager.shared
+        name = manager.translateFromZHCN(name, to: languageCode) ?? name
+        itemType = manager.translateItemType(itemType, to: languageCode) ?? "武器"
+        lang = languageCode
     }
 }

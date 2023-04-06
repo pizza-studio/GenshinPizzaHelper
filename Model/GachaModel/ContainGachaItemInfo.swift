@@ -12,7 +12,7 @@ import SwiftUI
 
 protocol ContainGachaItemInfo {
     var name: String { get }
-    var lang: String { get }
+    var lang: GachaLanguageCode { get }
     var itemType: String { get }
     var _rankLevel: GachaItem.RankType { get }
     var formattedTime: String { get }
@@ -35,7 +35,9 @@ extension GachaItemType {
         }
     }
 
-    static func fromCNRaw(_ string: String) -> Self? {
+    static func fromRaw(_ string: String) -> Self? {
+        let manager = GachaTranslateManager.shared
+        let string = manager.translateItemTypeToZHCN(string)
         switch string {
         case "武器": return .weapon
         case "角色": return .character
@@ -46,6 +48,11 @@ extension GachaItemType {
     // TODO: find by name
     static func findByName(_ name: String) -> Self {
         .weapon
+    }
+
+    func toLanguageRaw(_ languageCode: GachaLanguageCode) -> String {
+        let manager = GachaTranslateManager.shared
+        return manager.translateItemType(cnRaw, to: languageCode) ?? "武器"
     }
 }
 

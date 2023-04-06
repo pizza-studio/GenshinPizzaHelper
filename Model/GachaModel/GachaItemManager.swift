@@ -121,10 +121,11 @@ public class GachaModelManager {
     func addRecordItems(
         _ items: [UIGFGahcaItem],
         uid: String,
-        lang: String
+        lang: GachaLanguageCode
     )
         -> Int {
         var count = 0
+        let manager = GachaTranslateManager.shared
         container.viewContext.performAndWait {
             items.enumerated().forEach { index, item in
                 var item = item

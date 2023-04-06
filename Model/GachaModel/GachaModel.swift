@@ -17,7 +17,7 @@ extension GachaItemMO {
             count: Int(count),
             time: time!,
             name: name!,
-            lang: lang!,
+            lang: .init(rawValue: lang!)!,
             itemType: itemType!,
             rankType: .init(rawValue: Int(rankType))!,
             id: id!
@@ -27,17 +27,21 @@ extension GachaItemMO {
 
 extension GachaItem_FM {
     public func toGachaItemMO(context: NSManagedObjectContext) -> GachaItemMO {
+        var item = self
+        if item.lang != .zhCN {
+            item.translateToZHCN()
+        }
         let model = GachaItemMO(context: context)
-        model.uid = uid
-        model.gachaType = Int16(gachaType)!
-        model.itemId = itemId
-        model.count = Int16(count)!
-        model.time = time
-        model.name = name
-        model.lang = lang
-        model.itemType = itemType
-        model.rankType = Int16(rankType)!
-        model.id = id
+        model.uid = item.uid
+        model.gachaType = Int16(item.gachaType)!
+        model.itemId = item.itemId
+        model.count = Int16(item.count)!
+        model.time = item.time
+        model.name = item.name
+        model.lang = item.lang.rawValue
+        model.itemType = item.itemType
+        model.rankType = Int16(item.rankType)!
+        model.id = item.id
         return model
     }
 }

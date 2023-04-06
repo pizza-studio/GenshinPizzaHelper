@@ -14,7 +14,7 @@ struct UIGFJson: Codable {
     struct Info: Codable {
         // MARK: Lifecycle
 
-        init(uid: String, lang: String) {
+        init(uid: String, lang: GachaLanguageCode) {
             self.uid = uid
             self.lang = lang
             let now = Date()
@@ -25,13 +25,13 @@ struct UIGFJson: Codable {
                 Bundle.main
                     .infoDictionary!["CFBundleShortVersionString"] as! String
             )
-            self.uigfVersion = "v2.2"
+            self.uigfVersion = (lang == .zhCN) ? "v2.2" : "v2.3"
         }
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.uid = try container.decode(String.self, forKey: .uid)
-            self.lang = try container.decode(String.self, forKey: .lang)
+            self.lang = try container.decode(GachaLanguageCode.self, forKey: .lang)
 
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -67,7 +67,7 @@ struct UIGFJson: Codable {
         }
 
         let uid: String
-        let lang: String
+        let lang: GachaLanguageCode
         let exportTime: Date?
         let exportTimestamp: Int?
         let exportApp: String?
@@ -99,7 +99,7 @@ struct UIGFGahcaItem: Codable {
         self.count = count
         self.time = time
         self.name = name
-        self.itemType = itemType
+        self.itemType = itemType.cnRaw
         self.rankType = rankType
         self.id = id
         self.uigfGachaType = GachaType.from(gachaType)
@@ -144,10 +144,10 @@ struct UIGFGahcaItem: Codable {
             String.self,
             forKey: .itemType
         ),
-            let type = GachaItemType.fromCNRaw(raw) {
-            self.itemType = type
+            let type = GachaItemType.fromRaw(raw) {
+            self.itemType = type.cnRaw
         } else {
-            self.itemType = .findByName(name)
+            self.itemType = GachaItemType.weapon.cnRaw
         }
         if let raw = try container.decodeIfPresent(
             String.self,
@@ -187,7 +187,7 @@ struct UIGFGahcaItem: Codable {
     var count: String
     var time: Date
     var name: String
-    var itemType: GachaItemType
+    var itemType: String
     var rankType: GachaItem.RankType
     var id: String
     var uigfGachaType: GachaType
@@ -203,7 +203,7 @@ struct UIGFGahcaItem: Codable {
         try container.encode(dateFormatter.string(from: time), forKey: .time)
 
         try container.encode(name, forKey: .name)
-        try container.encode(itemType.cnRaw, forKey: .itemType)
+        try container.encode(itemType, forKey: .itemType)
         try container.encode(String(rankType.rawValue), forKey: .rankType)
         try container.encode(id, forKey: .id)
         try container.encode(
@@ -218,38 +218,56 @@ extension UIGFGahcaItem {
         id = newId
     }
 
+    mutating func translateToZHCN(from languageCode: GachaLanguageCode) {
+        let manager = GachaTranslateManager.shared
+        name = manager.translateToZHCN(name, from: languageCode) ?? name
+        itemType = manager.translateItemTypeToZHCN(itemType) ?? "武器"
+    }
+
+    mutating func translate(to languageCode: GachaLanguageCode) {
+        let manager = GachaTranslateManager.shared
+        name = manager.translateFromZHCN(name, to: languageCode) ?? name
+        itemType = manager.translateItemType(itemType, to: languageCode) ?? "武器"
+    }
+
     public func toGachaItemMO(
         context: NSManagedObjectContext,
         uid: String,
-        lang: String
+        lang: GachaLanguageCode
     )
         -> GachaItemMO {
         let model = GachaItemMO(context: context)
+        var item = self
+        if lang != .zhCN {
+            item.translateToZHCN(from: lang)
+        }
         model.uid = uid
-        model.gachaType = Int16(exactly: gachaType.rawValue)!
-        model.itemId = itemId
-        model.count = Int16(count)!
-        model.time = time
-        model.name = name
-        model.lang = lang
-        model.itemType = itemType.cnRaw
-        model.rankType = Int16(exactly: rankType.rawValue)!
-        model.id = id
+        model.gachaType = Int16(exactly: item.gachaType.rawValue)!
+        model.itemId = item.itemId
+        model.count = Int16(item.count)!
+        model.time = item.time
+        model.name = item.name
+        model.lang = GachaLanguageCode.zhCN.rawValue
+        model.itemType = GachaItemType.fromRaw(itemType)!.cnRaw
+        model.rankType = Int16(exactly: item.rankType.rawValue)!
+        model.id = item.id
         return model
     }
 }
 
 extension GachaItemMO {
-    func toUIGFGahcaItem() -> UIGFGahcaItem {
-        .init(
+    func toUIGFGahcaItem(_ languageCode: GachaLanguageCode) -> UIGFGahcaItem {
+        var item = UIGFGahcaItem(
             gachaType: .init(rawValue: Int(gachaType))!,
             itemId: itemId!,
             count: String(count),
             time: time!,
             name: name!,
-            itemType: .fromCNRaw(itemType!)!,
+            itemType: .fromRaw(itemType!)!,
             rankType: .init(rawValue: Int(rankType))!,
             id: id!
         )
+        item.translate(to: languageCode)
+        return item
     }
 }
