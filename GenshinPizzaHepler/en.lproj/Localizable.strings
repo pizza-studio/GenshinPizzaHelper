@@ -1187,7 +1187,6 @@
 "停止抓包" = "Stop capturing packets";
 "开始抓包" = "Start capturing packets";
 "通过抓包获取获取祈愿链接" = "Retrieve wish history URL through packet capture";
-"成功获取到祈愿链接" = "Successfully retrieved the wish history URL";
 "重新抓包" = "Capture packets again";
 "等待祈愿链接..." = "Waiting for the wish history URL...";
 "开始获取祈愿记录" = "Start retrieving wish records";
