@@ -52,7 +52,7 @@ struct ImportGachaView: View {
                 }
             case .reading:
                 Label {
-                    Text("导入中，请稍后...")
+                    Text("导入中，请稍候...")
                 } icon: {
                     ProgressView()
                 }

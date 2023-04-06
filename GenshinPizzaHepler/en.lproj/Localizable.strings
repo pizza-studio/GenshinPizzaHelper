@@ -1216,7 +1216,7 @@
 "导入UIGF JSON格式祈愿记录" = "Import UIGF JSON wish records";
 "导入UIGF XLSX格式祈愿记录" = "Import UIGF XLSX wish records";
 "目前仅支持导入简体中文祈愿记录" = "Currently only supports importing simplified Chinese wish records";
-"导入中，请稍后..." = "Importing, please wait...";
+"导入中，请稍候..." = "Importing, please wait...";
 "成功导入祈愿数据" = "Wish data imported successfully";
 "数据来自：%@" = "Data source: %@";
 "导出时间：%@" = "Export time: %@";

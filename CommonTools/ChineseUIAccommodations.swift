@@ -12,13 +12,13 @@ extension Locale {
     public static var isUILanguagePanChinese: Bool {
         guard let firstLocale = Locale.preferredLanguages.first
         else { return false }
-        return firstLocale.contains("zh-")
+        return firstLocale.prefix(3).description == "zh-"
     }
 
     public static var isUILanguageJapanese: Bool {
         guard let firstLocale = Locale.preferredLanguages.first
         else { return false }
-        return firstLocale.contains("ja-") || firstLocale == "ja"
+        return firstLocale.prefix(2).description == "ja"
     }
 
     public static var isUILanguageSimplifiedChinese: Bool {
