@@ -42,11 +42,11 @@ struct GachaChartView: View {
                     } header: {
                         Text("总抽数分布")
                     }
-                    .navigationTitle("其他数据")
+                    .navigationTitle("其他图表")
                 }
             } label: {
                 Label(
-                    "其他数据",
+                    "其他图表",
                     systemImage: "chart.bar.doc.horizontal"
                 )
             }
@@ -59,7 +59,7 @@ struct GachaChartView: View {
             } header: {
                 HStack {
                     Text(
-                        "\(gachaViewModel.filter.gachaType.localizedDescription())"
+                        gachaViewModel.filter.gachaType.localizedDescription()
                     )
                     Spacer()
                     Button(
@@ -72,6 +72,7 @@ struct GachaChartView: View {
                     }
                     .font(.caption)
                 }
+                .textCase(.none)
             }
         }
         .toolbar {

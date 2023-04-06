@@ -46,7 +46,9 @@ struct ImportGachaView: View {
                         }
                     }
                 } footer: {
-                    Text("UIGF目前仅适用于简体中文环境")
+                    Text(
+                        "我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。"
+                    )
                 }
             case .reading:
                 Label {
@@ -122,7 +124,7 @@ struct ImportGachaView: View {
                                 try processJson(url: url)
                                 url.stopAccessingSecurityScopedResource()
                             } else {
-                                status = .failure("无法访问文件")
+                                status = .failure("无法访问文件".localized)
                             }
                         case let .readyToStartXlsx(url: url):
                             if url.startAccessingSecurityScopedResource() {
@@ -177,7 +179,7 @@ struct ImportGachaView: View {
               let worksheet = try? file.parseWorksheet(at: path),
               let sharedStrings = try file.parseSharedStrings()
         else {
-            status = .failure("原始数据不存在"); return
+            status = .failure("原始数据不存在".localized); return
         }
         guard let head = worksheet.data?.rows.first?.cells
             .map({ $0.stringValue(sharedStrings) }),
@@ -187,7 +189,7 @@ struct ImportGachaView: View {
             let itemTypeIndex = head.firstIndex(where: { $0 == "item_type" }),
             let nameIndex = head.firstIndex(where: { $0 == "name" }),
             let uidIndex = head.firstIndex(where: { $0 == "uid" }) else {
-            status = .failure("数据表缺失数据"); return
+            status = .failure("数据表缺失数据".localized); return
         }
         let idIndex = head.firstIndex(where: { $0 == "id" })
         let itemIdIndex = head.firstIndex(where: { $0 == "item_id" })
@@ -268,7 +270,7 @@ struct ImportGachaView: View {
         if !items.isEmpty {
             status = .succeed(.init(uid: items.first!.uid, totalCount: items.count, newCount: newCount))
         } else {
-            status = .failure("未成功从文件中解码数据")
+            status = .failure("未成功从文件中解码数据".localized)
         }
     }
 
@@ -380,28 +382,45 @@ private struct HelpSheet: View {
     var body: some View {
         NavigationView {
             List {
-                if Locale.current.languageCode == "zh" {
-                    Link(
-                        destination: URL(
-                            string: "https://uigf.org/zh/partnership.html"
-                        )!
-                    ) {
-                        Label(
-                            "支持UIGF的软件",
-                            systemImage: "app.badge.checkmark"
-                        )
+                Section {
+                    if Locale.current.languageCode == "zh" {
+                        Link(
+                            destination: URL(
+                                string: "https://uigf.org/zh/partnership.html"
+                            )!
+                        ) {
+                            Label(
+                                "支持UIGF的软件",
+                                systemImage: "app.badge.checkmark"
+                            )
+                        }
+                    } else {
+                        Link(
+                            destination: URL(
+                                string: "https://uigf.org/en/partnership.html"
+                            )!
+                        ) {
+                            Label(
+                                "支持UIGF的软件",
+                                systemImage: "app.badge.checkmark"
+                            )
+                        }
                     }
-                } else {
-                    Link(
-                        destination: URL(
-                            string: "https://uigf.org/en/partnership.html"
-                        )!
-                    ) {
-                        Label(
-                            "支持UIGF的软件",
-                            systemImage: "app.badge.checkmark"
-                        )
-                    }
+                } footer: {
+                    Text("我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。")
+                }
+                Section(header: Text("以下程序或平台的JSON导出格式经验证可用").textCase(.none)) {
+                    Link("提瓦特小助手", destination: URL(string: "https://api.lelaer.com/ys/uploadGacha.php")!)
+//                    Link(
+//                        "genshin-wish-export",
+//                        destination: URL(string: "https://github.com/biuuu/genshin-wish-export")!
+//                    )
+                    Link("寻空", destination: URL(string: "https://xunkong.cc")!)
+                    Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
+                }
+                Section(header: Text("以下程序或平台的XLSX导出格式经验证可用").textCase(.none)) {
+                    Link("寻空", destination: URL(string: "https://xunkong.cc")!)
+                    Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
                 }
             }
             .navigationTitle("导入帮助")

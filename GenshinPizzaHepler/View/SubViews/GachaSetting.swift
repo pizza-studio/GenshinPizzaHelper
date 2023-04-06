@@ -114,6 +114,15 @@ struct GachaSetting: View {
                         systemImage: "square.and.arrow.up.on.square"
                     )
                 }
+            } footer: {
+                Text("导出UIGF格式祈愿记录")
+            }
+            #if DEBUG
+            Section {
+                Button("delete all records (DEBUG ONLY)") {
+                    gachaViewModel.manager.deleteAllRecord()
+                    gachaViewModel.refetchGachaItems()
+                }
             }
 //            #if DEBUG
 //            Section {
@@ -142,8 +151,8 @@ struct GachaSetting: View {
                 startDate = self.startDate
                 endDate = self.endDate
             }
-            let rangeDesc: String = deleteAll ? "所有" :
-                "自\(formatter.string(from: startDate))到\(formatter.string(from: endDate))"
+            let rangeDesc: String = deleteAll ? "所有".localized :
+                "自\(formatter.string(from: startDate))到\(formatter.string(from: endDate))".localized
             switch alert {
             case .deleteCheck:
                 return Alert(

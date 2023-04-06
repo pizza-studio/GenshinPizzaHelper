@@ -301,6 +301,7 @@ private struct GachaStatisticSectionView: View {
             }
         } header: {
             Text("统计数据")
+                .textCase(.none)
         }
         .onTapGesture {
             if gachaViewModel.filter.gachaType != .standard {
@@ -575,7 +576,7 @@ private struct GetGachaNavigationMenu: View {
                 Button {
                     showView1.toggle()
                 } label: {
-                    Label("通过API获取\n（仅国服，优先选用）", systemImage: "network")
+                    Label("通过API获取", systemImage: "network")
                 }
             }
             #if canImport(GachaMIMTServer)
@@ -659,7 +660,7 @@ private struct HelpSheet: View {
             List {
                 Section {
                     Label(
-                        "无论选择哪种方式，您都为您提供了详细的操作教程",
+                        "无论选择哪种方式，我们都为您提供了详细的操作教程",
                         systemImage: "person.fill.questionmark"
                     )
                     Label(
@@ -669,10 +670,11 @@ private struct HelpSheet: View {
                     GachaHelpVideoLink()
                 }
                 Section {
-                    Label("如果您在中国大陆的服务器", systemImage: "text.bubble")
+                    Label("如果您在中国大陆服务器", systemImage: "text.bubble")
                     Label("请优先选择”通过API“一键获取", systemImage: "network")
                 } footer: {
                     Text("仅适用于中国大陆服务器")
+                        .bold()
                 }
                 Section {
                     Label("如果您的手机上安装了《原神》", systemImage: "text.bubble")
@@ -686,7 +688,7 @@ private struct HelpSheet: View {
                 Section {
                     Label("如果您的手机上未安装《原神》", systemImage: "text.bubble")
                     Label(
-                        "建议通过“通过粘贴祈愿页面URL获取”，我们亦内附了教程",
+                        "建议通过“通过粘贴祈愿页面URL“获取，我们亦内附了教程",
                         systemImage: "list.bullet.clipboard"
                     )
                 } footer: {
@@ -694,7 +696,7 @@ private struct HelpSheet: View {
                 }
                 Section {
                     Label(
-                        "如果您之前使用其他软件获取过祈愿记录，如果该软件支持UIGF祈愿格式，您可以将其导入",
+                        "如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入",
                         systemImage: "square.and.arrow.down.on.square"
                     )
                     if Locale.current.languageCode == "zh" {

@@ -149,15 +149,15 @@ extension _GachaType {
     func description() -> String {
         switch self {
         case .newPlayer:
-            return "初行者推荐祈愿"
+            return "初行者推荐祈愿".localized
         case .standard:
-            return "常驻祈愿"
+            return "常驻祈愿".localized
         case .character:
-            return "角色活动祈愿"
+            return "角色活动祈愿".localized
         case .weapon:
-            return "武器活动祈愿"
+            return "武器活动祈愿".localized
         case .character2:
-            return "角色活动祈愿-2"
+            return "角色活动祈愿-2".localized
         }
     }
 }
@@ -198,13 +198,13 @@ extension GachaType {
     func localizedDescription() -> String {
         switch self {
         case .newPlayer:
-            return "初行者推荐祈愿"
+            return "初行者推荐祈愿".localized
         case .standard:
-            return "常驻祈愿"
+            return "常驻祈愿".localized
         case .character:
-            return "角色活动祈愿"
+            return "角色活动祈愿".localized
         case .weapon:
-            return "武器活动祈愿"
+            return "武器活动祈愿".localized
         }
     }
 

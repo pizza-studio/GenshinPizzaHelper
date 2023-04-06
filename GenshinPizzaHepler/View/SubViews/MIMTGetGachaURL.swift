@@ -300,7 +300,7 @@ private struct CASheetItems: View {
             )
             Label("信任CA证书", systemImage: "3.circle")
             Text(
-                "前往「设置」App → 「通用」 → 「关于本机」 → （最下方）「信任证书设置」 → 打开「Pizza Helper CA」开关"
+                "前往系统「设置」 → 「通用」 → 「关于本机」 → （最下方）「信任证书设置」 → 打开「Pizza Helper CA」开关"
             )
         } header: {
             Text("如何安装CA证书？")
@@ -569,11 +569,11 @@ extension VPNManager.VPNStatus: CustomStringConvertible {
     var description: String {
         switch self {
         case .connected:
-            return "正在抓包...请前往打开「原神」前往祈愿记录页面"
+            return "正在抓包...请前往打开「原神」前往祈愿记录页面".localized
         case .connecting:
-            return "正在开启VPN"
+            return "正在开启VPN".localized
         case .notConnected:
-            return "等待开始..."
+            return "等待开始...".localized
         }
     }
 }

@@ -42,7 +42,7 @@ struct GetGachaClipboardView: View {
         List {
             if urls.isEmpty {
                 Section {
-                    Button("从粘贴板中获取祈愿URL") {
+                    Button("从剪贴板中获取祈愿URL") {
                         if let str = UIPasteboard.general.string {
                             if case .success =
                                 parseURLToAuthkeyAndOtherParams(urlString: str) {
@@ -70,7 +70,7 @@ struct GetGachaClipboardView: View {
                 } footer: {
                     HStack {
                         Spacer()
-                        Button("重新祈愿链接") {
+                        Button("重新获取祈愿链接") {
                             urls = []
                         }.font(.caption)
                     }
@@ -158,11 +158,11 @@ struct GetGachaClipboardView: View {
                 )
             case let .urlInPasteboardIsInvalid(url: url):
                 return Alert(
-                    title: Text("从粘贴板上获取到的链接有误"),
+                    title: Text("从剪贴板上获取到的链接有误"),
                     message: Text("预期应获取到祈愿链接，但获取到了错误的内容：\n\(url)")
                 )
             case .pasteboardNoData:
-                return Alert(title: Text("未能从粘贴板获取到内容"))
+                return Alert(title: Text("未能从剪贴板获取到内容"))
             }
         }
         .toolbar {
