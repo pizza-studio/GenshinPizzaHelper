@@ -33,8 +33,8 @@ struct ExportGachaView: View {
 
     var defaultFileName: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        return "Wishlog_\(uigfJson?.info.uid ?? "")_\(dateFormatter.string(from: uigfJson?.info.exportTime ?? Date()))_UIGF"
+        dateFormatter.dateFormat = "yyyyMMddHHmm"
+        return "UIGF_\(uigfJson?.info.uid ?? "")_\(dateFormatter.string(from: uigfJson?.info.exportTime ?? Date()))"
     }
 
     fileprivate var file: JsonFile? {
@@ -48,29 +48,33 @@ struct ExportGachaView: View {
     var body: some View {
         NavigationView {
             List {
-                Picker("选择帐号", selection: $params.uid) {
-                    Group {
-                        if params.uid == nil {
-                            Text("未选择").tag(String?(nil))
-                        }
-                        ForEach(
-                            gachaViewModel.allAvaliableAccountUID,
-                            id: \.self
-                        ) { uid in
-                            if let name = viewModel.accounts
-                                .first(where: { $0.config.uid! == uid })?.config
-                                .name {
-                                Text("\(name) (\(uid))")
-                                    .tag(Optional(uid))
-                            } else {
-                                Text("\(uid)")
-                                    .tag(Optional(uid))
+                Section {
+                    Picker("选择帐号", selection: $params.uid) {
+                        Group {
+                            if params.uid == nil {
+                                Text("未选择").tag(String?(nil))
+                            }
+                            ForEach(
+                                gachaViewModel.allAvaliableAccountUID,
+                                id: \.self
+                            ) { uid in
+                                if let name = viewModel.accounts
+                                    .first(where: { $0.config.uid! == uid })?.config
+                                    .name {
+                                    Text("\(name) (\(uid))")
+                                        .tag(Optional(uid))
+                                } else {
+                                    Text("\(uid)")
+                                        .tag(Optional(uid))
+                                }
                             }
                         }
                     }
-                }
-                Picker("选择语言", selection: $params.lang) {
-                    Text("简体中文").tag("zh-cn")
+                    Picker("选择语言", selection: $params.lang) {
+                        Text("简体中文").tag("zh-cn")
+                    }
+                } footer: {
+                    Text("UIGF目前仅适用于简体中文环境")
                 }
             }
             .navigationTitle("导出祈愿记录")
@@ -94,6 +98,7 @@ struct ExportGachaView: View {
                         )
                         isExporterPresented.toggle()
                     }
+                    .disabled(params.uid == nil)
                 }
             }
             .fileExporter(

@@ -110,21 +110,19 @@ struct GachaSetting: View {
                     }
                 } label: {
                     Label(
-                        "导出祈愿记录",
+                        "导出UIGF祈愿记录",
                         systemImage: "square.and.arrow.up.on.square"
                     )
                 }
-            } footer: {
-                Text("导出UIGF祈愿记录")
             }
-            #if DEBUG
-            Section {
-                Button("delete all records (DEBUG ONLY)") {
-                    gachaViewModel.manager.deleteAllRecord()
-                    gachaViewModel.refetchGachaItems()
-                }
-            }
-            #endif
+//            #if DEBUG
+//            Section {
+//                Button("delete all records (DEBUG ONLY)") {
+//                    gachaViewModel.manager.deleteAllRecord()
+//                    gachaViewModel.refetchGachaItems()
+//                }
+//            }
+//            #endif
         }
         .navigationTitle("祈愿数据管理")
         .navigationBarTitleDisplayMode(.inline)

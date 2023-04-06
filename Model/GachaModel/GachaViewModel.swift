@@ -77,7 +77,7 @@ class GachaViewModel: ObservableObject {
                 .firstIndex(where: { $0.rankType >= rank }) {
                 return nextIndexInRest - index
             } else {
-                return filteredItems.count - index - 1
+                return filteredItems.count - index
             }
         }
         DispatchQueue.main.async {

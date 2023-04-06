@@ -45,14 +45,8 @@ struct ImportGachaView: View {
                             status = .failure(error.localizedDescription)
                         }
                     }
-//                    Button("导入UIGF Json格式祈愿记录") {
-//                        isJsonFileImporterShow.toggle()
-//                    }
-//                    Button("导入UIGF Xlsx格式祈愿记录") {
-//                        isXlsxFileImporterShow.toggle()
-//                    }
                 } footer: {
-                    Text("目前仅支持导入简体中文祈愿记录")
+                    Text("UIGF目前仅适用于简体中文环境")
                 }
             case .reading:
                 Label {

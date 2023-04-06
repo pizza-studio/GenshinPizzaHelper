@@ -25,7 +25,7 @@ struct UIGFJson: Codable {
                 Bundle.main
                     .infoDictionary!["CFBundleShortVersionString"] as! String
             )
-            self.uigfVersion = "2.3"
+            self.uigfVersion = "v2.2"
         }
 
         init(from decoder: Decoder) throws {
