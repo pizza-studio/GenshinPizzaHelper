@@ -27,7 +27,7 @@ struct LockScreenResinWidgetInline<T>: View
 //                Image("icon.resin")
         case .failure:
             Image(systemName: "moon.fill")
-            Text("...")
+            Text("…")
         }
     }
 }

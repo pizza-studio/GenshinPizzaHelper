@@ -78,7 +78,7 @@ struct GetGachaClipboardView: View {
             }
 
             if status != .running {
-                Button(urls.isEmpty ? "等待祈愿链接..." : "开始获取祈愿记录") {
+                Button(urls.isEmpty ? "等待祈愿链接…" : "开始获取祈愿记录") {
                     observer.initialize()
                     status = .running
                     let parseResults = urls.compactMap { urlString in

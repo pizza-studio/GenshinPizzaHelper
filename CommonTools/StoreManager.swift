@@ -48,7 +48,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate,
     }
 
     func getProducts(productIDs: [String]) {
-        print("Start requesting products ...")
+        print("Start requesting products …")
         let request = SKProductsRequest(productIdentifiers: Set(productIDs))
         request.delegate = self
         request.start()

@@ -109,7 +109,7 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                             Text("\(Image("icon.resin"))")
                                 .font(.system(size: iconSize))
                                 .offset(x: -2)
-                            Text("...")
+                            Text("…")
                                 .font(.system(
                                     size: size,
                                     weight: .medium,
@@ -121,7 +121,7 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                             let iconSize: CGFloat = size * 8 / 9
                             Text("\(Image("icon.homeCoin"))")
                                 .font(.system(size: iconSize))
-                            Text("...")
+                            Text("…")
                                 .font(.system(
                                     size: size,
                                     weight: .medium,
@@ -133,8 +133,8 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                     .foregroundColor(.primary)
                     .widgetAccentable()
                     GridRow(alignment: .lastTextBaseline) {
-                        Text("...")
-                        Text("...")
+                        Text("…")
+                        Text("…")
                     }
                     .font(.footnote)
                     .foregroundColor(.secondary)
@@ -257,14 +257,14 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                     }
                     GridRow(alignment: .lastTextBaseline) {
                         let size: CGFloat = 23
-                        Text("...")
+                        Text("…")
                             .font(.system(
                                 size: size,
                                 weight: .medium,
                                 design: .rounded
                             ))
                         Spacer()
-                        Text("...")
+                        Text("…")
                             .font(.system(
                                 size: size,
                                 weight: .medium,
@@ -276,9 +276,9 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                     .foregroundColor(.primary)
                     .widgetAccentable()
                     GridRow(alignment: .lastTextBaseline) {
-                        Text("...")
+                        Text("…")
                         Spacer()
-                        Text("...")
+                        Text("…")
                         Spacer()
                     }
                     .font(.footnote)

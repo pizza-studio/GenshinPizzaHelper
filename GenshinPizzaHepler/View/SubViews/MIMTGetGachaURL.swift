@@ -107,7 +107,7 @@ struct MIMTGetGachaView: View {
             }
 
             if status != .running {
-                Button(urls.isEmpty ? "等待祈愿链接..." : "开始获取祈愿记录") {
+                Button(urls.isEmpty ? "等待祈愿链接…" : "开始获取祈愿记录") {
                     observer.initialize()
                     status = .running
                     let parseResults = urls.compactMap { urlString in
@@ -569,11 +569,11 @@ extension VPNManager.VPNStatus: CustomStringConvertible {
     var description: String {
         switch self {
         case .connected:
-            return "正在抓包...请前往打开《原神》前往祈愿记录页面".localized
+            return "正在抓包…请前往打开《原神》前往祈愿记录页面".localized
         case .connecting:
             return "正在开启VPN".localized
         case .notConnected:
-            return "等待开始...".localized
+            return "等待开始…".localized
         }
     }
 }
