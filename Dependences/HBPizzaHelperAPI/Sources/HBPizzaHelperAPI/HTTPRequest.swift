@@ -160,21 +160,6 @@ struct HttpMethod<T: Codable> {
                 if let cookie = cookie {
                     request.setValue(cookie, forHTTPHeaderField: "Cookie")
                 }
-                func get_language_code() -> String {
-                    let languageCode = Locale.current.languageCode ?? "en-us"
-                    print(languageCode)
-                    if languageCode == "zh" {
-                        return "zh-cn"
-                    } else if languageCode == "en" {
-                        return "en-us"
-                    } else if languageCode == "ja" {
-                        return "ja-jp"
-                    } else if languageCode == "ru" {
-                        return "ru-ru"
-                    } else {
-                        return languageCode
-                    }
-                }
 
                 if let region = region {
                     switch region {
@@ -200,7 +185,7 @@ struct HttpMethod<T: Codable> {
                             forHTTPHeaderField: "Referer"
                         )
                         request.setValue(
-                            get_language_code(),
+                            Locale.langCodeForAPI,
                             forHTTPHeaderField: "x-rpc-language"
                         )
                     case .global:
@@ -225,7 +210,7 @@ struct HttpMethod<T: Codable> {
                             forHTTPHeaderField: "Referer"
                         )
                         request.setValue(
-                            get_language_code(),
+                            Locale.langCodeForAPI,
                             forHTTPHeaderField: "x-rpc-language"
                         )
                     }

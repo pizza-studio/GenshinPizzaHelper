@@ -384,7 +384,7 @@ private struct HelpSheet: View {
         NavigationView {
             List {
                 Section {
-                    if Locale.current.languageCode == "zh" {
+                    if Locale.isUILanguagePanChinese {
                         Link(
                             destination: URL(
                                 string: "https://uigf.org/zh/partnership.html"

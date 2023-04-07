@@ -337,7 +337,7 @@ struct AbyssDataCollectionView: View {
         }
         .sheet(isPresented: $isWebSheetShow) {
             let url: String = {
-                switch Locale.current.languageCode {
+                switch Bundle.main.preferredLocalizations.first?.prefix(2) {
                 case "zh":
                     return "https://ophelper.top/static/faq_abyss.html"
                 case "en":

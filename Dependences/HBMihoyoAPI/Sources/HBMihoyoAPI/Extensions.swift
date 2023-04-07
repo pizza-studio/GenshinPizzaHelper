@@ -53,3 +53,17 @@ extension String {
         return digest.reduce("") { $0 + String(format: "%02x", $1) }
     }
 }
+
+extension Locale {
+    public static var langCodeForAPI: String {
+        let languageCode = Bundle.main.preferredLocalizations.first ?? "en-us"
+        print(languageCode)
+        switch languageCode.prefix(2) {
+        case "zh": return "zh-cn"
+        case "ja": return "ja-jp"
+        case "ru": return "ru-ru"
+        case "en": return "en-us"
+        default: return languageCode
+        }
+    }
+}

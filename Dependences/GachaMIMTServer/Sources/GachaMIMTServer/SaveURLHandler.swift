@@ -48,7 +48,7 @@ func gotURL(url: RustStr) {
 }
 
 fileprivate let contentTitle: String = {
-    guard let firstLocale = Locale.preferredLanguages.first else { return "" }
+    guard let firstLocale = Bundle.main.preferredLocalizations.first else { return "" }
     switch firstLocale {
     case _ where (firstLocale.contains("zh-Hans") || firstLocale.contains("zh-CN")):
         return "成功获取到祈愿链接"
@@ -69,7 +69,7 @@ fileprivate let contentTitle: String = {
 }()
 
 fileprivate let contentBody: String = {
-    guard let firstLocale = Locale.preferredLanguages.first else { return "" }
+    guard let firstLocale = Bundle.main.preferredLocalizations.first else { return "" }
     switch firstLocale {
     case _ where (firstLocale.contains("zh-Hans") || firstLocale.contains("zh-CN")):
         return "请返回继续获取祈愿记录。"

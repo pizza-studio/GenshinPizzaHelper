@@ -12,12 +12,11 @@ import SwiftUI
 
 struct AccountBasicInfosView: View {
     var basicAccountInfo: BasicInfos?
-    let is_zh_CN: Bool = Locale.current.languageCode == "zh"
 
     var body: some View {
         if let basicAccountInfo = basicAccountInfo {
             Section {
-                if is_zh_CN {
+                if Locale.isUILanguagePanChinese {
                     HStack {
                         VStack(spacing: 5) {
                             InfoPreviewer(

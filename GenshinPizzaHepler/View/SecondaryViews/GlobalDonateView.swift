@@ -14,7 +14,6 @@ struct GlobalDonateView: View {
     @StateObject
     var storeManager: StoreManager
     let locale = Locale.current
-    let is_zh_CN: Bool = Locale.current.identifier == "zh_CN"
 
     var body: some View {
         List {

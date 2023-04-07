@@ -699,7 +699,7 @@ private struct HelpSheet: View {
                         "如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入",
                         systemImage: "square.and.arrow.down.on.square"
                     )
-                    if Locale.current.languageCode == "zh" {
+                    if Bundle.main.preferredLocalizations.first?.prefix(2) == "zh" {
                         Link(
                             destination: URL(
                                 string: "https://uigf.org/zh/partnership.html"
