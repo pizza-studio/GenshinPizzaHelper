@@ -144,15 +144,42 @@ private struct GachaItemChart: View {
     }
 
     var averagePullsCount: Int {
-        fiveStarItems.map { $0.count }.reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
+        fiveStarItems.map(\.count).reduce(0, +) / max(fiveStarItems.count, 1)
     }
 
     var body: some View {
+//        subChart(items: fiveStarItems.chunked(into: 60)[1])
+        VStack(spacing: -12) {
+            ForEach(fiveStarItems.chunked(into: 60), id: \.first!.0.id) { items in
+                let isFirst = fiveStarItems.first!.0.id == items.first!.0.id
+                let isLast = fiveStarItems.last!.0.id == items.last!.0.id
+                if isFirst {
+                    subChart(items: items, isFirst: isFirst, isLast: isLast).padding(.top)
+                } else {
+                    subChart(items: items, isFirst: isFirst, isLast: isLast)
+                }
+            }
+        }
+    }
+
+    func colors(items: [(GachaItem, count: Int)]) -> [Color] {
+        fiveStarItems.map { _, count in
+            switch count {
+            case 0 ..< 62:
+                return .green
+            case 62 ..< 80:
+                return .yellow
+            default:
+                return .red
+            }
+        }
+    }
+
+    @ViewBuilder
+    func subChart(items: [(GachaItem, count: Int)], isFirst: Bool, isLast: Bool) -> some View {
         Chart {
-            ForEach(fiveStarItems, id: \.0.id) { item in
+            ForEach(items, id: \.0.id) { item in
                 BarMark(
-                    //                    x: .value("角色", item.0.localizedName),
-//                    y: .value("抽数", item.count)
                     x: .value("抽数", item.count),
                     y: .value("角色", item.0.id)
                 )
@@ -165,8 +192,6 @@ private struct GachaItemChart: View {
                             Image("UI_EmotionIcon5").resizable().scaledToFit()
                                 .frame(width: frame, height: frame)
                         } else {
-//                            Image("UI_EmotionIcon2").resizable().scaledToFit()
-//                                .frame(width: frame, height: frame)
                             EmptyView()
                         }
                     }
@@ -177,16 +202,18 @@ private struct GachaItemChart: View {
                 RuleMark(x: .value(
                     "平均",
                     fiveStarItems.map { $0.count }
-                        .reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
+                        .reduce(0, +) / max(fiveStarItems.count, 1)
                 ))
                 .foregroundStyle(.gray)
                 .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
                 .annotation(alignment: .topLeading) {
-                    Text(
-                        "平均抽数："
-                            .localized + averagePullsCount.description
-                    )
-                    .font(.caption).foregroundColor(.gray)
+                    if isFirst {
+                        Text(
+                            "平均抽数："
+                                .localized + averagePullsCount.description
+                        )
+                        .font(.caption).foregroundColor(.gray)
+                    }
                 }
             }
         }
@@ -194,7 +221,7 @@ private struct GachaItemChart: View {
             AxisMarks { value in
                 AxisValueLabel(content: {
                     if let id = value.as(String.self),
-                       let item = fiveStarItems
+                       let item = items
                        .first(where: { $0.0.id == id })?.0 {
                         HStack {
                             EnkaWebIcon(
@@ -213,24 +240,21 @@ private struct GachaItemChart: View {
                 })
             }
         })
-        .frame(height: CGFloat(fiveStarItems.count * 65))
-        .chartForegroundStyleScale(range: colors)
-        .chartLegend(.hidden)
-        .padding(.top)
-    }
-
-    var colors: [Color] {
-        fiveStarItems.map { _, count in
-//            guard !item.isLose5050() else { return .gray.opacity(0.5) }
-            switch count {
-            case 0 ..< 62:
-                return .green
-            case 62 ..< 80:
-                return .yellow
-            default:
-                return .red
+        .chartXAxis(content: {
+            AxisMarks(values: [0, 25, 50, 75, 100]) { value in
+                AxisGridLine()
+                if isLast {
+                    AxisValueLabel()
+                } else {
+                    AxisValueLabel {
+                        EmptyView()
+                    }
+                }
             }
-        }
+        })
+        .frame(height: CGFloat(items.count * 65))
+        .chartForegroundStyleScale(range: colors(items: items))
+        .chartLegend(.hidden)
     }
 }
 

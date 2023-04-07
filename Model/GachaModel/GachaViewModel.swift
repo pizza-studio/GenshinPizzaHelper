@@ -17,7 +17,7 @@ class GachaViewModel: ObservableObject {
     // MARK: Lifecycle
 
     private init() {
-        self.gachaItems = []
+//        self.gachaItems = []
         self.filter = .init()
         let uids = manager.allAvaliableUID()
         if !uids.isEmpty {
@@ -45,13 +45,11 @@ class GachaViewModel: ObservableObject {
     @Published
     var allAvaliableAccountUID: [String] = []
 
-    /// 当前filter对应uid的祈愿记录
-    @Published
-    var gachaItems: [GachaItem] {
-        didSet {
-            filterGachaItem()
-        }
-    }
+//    {
+//        didSet {
+//            filterGachaItem()
+//        }
+//    }
 
     @Published
     var filter: GachaFilter {
@@ -62,8 +60,20 @@ class GachaViewModel: ObservableObject {
     }
 
     var sortedAndFilteredGachaItem: [GachaItem] {
-        gachaItems.filter { item in
-            item.gachaType == filter.gachaType
+        if let uid = filter.uid {
+            return manager.fetchAll(uid: uid, gachaType: filter.gachaType)
+        } else {
+            return []
+        }
+    }
+
+    /// 当前filter对应uid的祈愿记录
+//    @Published
+    var gachaItems: [GachaItem] {
+        if let uid = filter.uid {
+            return manager.fetchAll(uid: uid)
+        } else {
+            return []
         }
     }
 
@@ -112,9 +122,9 @@ class GachaViewModel: ObservableObject {
                     nil {
                     self.filter.uid = self.allAvaliableAccountUID.first
                 }
-                if let uid = self.filter.uid {
-                    self.gachaItems = self.manager.fetchAll(uid: uid)
-                }
+//                if let uid = self.filter.uid {
+//                    self.gachaItems = self.manager.fetchAll(uid: uid)
+//                }
                 self.refreshAllAvaliableAccountUID()
             }
         }

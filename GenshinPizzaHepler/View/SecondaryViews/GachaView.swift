@@ -183,10 +183,6 @@ private struct GachaStatisticSectionView: View {
 
     var body: some View {
         let items = gachaViewModel.sortedAndFilteredGachaItem
-            .filter { item in
-                item.gachaType == gachaViewModel.filter
-                    .gachaType
-            }
         let fiveStarItemsWithCount = gachaViewModel
             .filteredGachaItemsWithCount
             .filter { item, _ in

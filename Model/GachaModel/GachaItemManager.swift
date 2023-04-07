@@ -54,16 +54,30 @@ public class GachaModelManager {
         container.persistentStoreCoordinator
     }
 
-    func fetchAll(uid: String) -> [GachaItem] {
-        fetchAllMO(uid: uid).map { $0.toGachaItem() }
+    func fetchAll(uid: String, gachaType: GachaType? = nil) -> [GachaItem] {
+        fetchAllMO(uid: uid, gachaType: gachaType).map { $0.toGachaItem() }
     }
 
-    func fetchAllMO(uid: String) -> [GachaItemMO] {
+    func fetchAllMO(uid: String, gachaType: GachaType? = nil) -> [GachaItemMO] {
         container.viewContext.performAndWait {
             container.viewContext.refreshAllObjects()
         }
         let request = GachaItemMO.fetchRequest()
-        let predicate = NSPredicate(format: "(uid = %@)", uid)
+        let predicate: NSPredicate
+        if let gachaType = gachaType {
+            if gachaType == .character {
+                predicate = NSPredicate(
+                    format: "(uid = %@) AND ((gachaType = %i) OR (gachaType = 400))",
+                    uid,
+                    gachaType.rawValue
+                )
+            } else {
+                predicate = NSPredicate(format: "(uid = %@) AND (gachaType = %i)", uid, gachaType.rawValue)
+            }
+        } else {
+            predicate = NSPredicate(format: "(uid = %@)", uid)
+        }
+
         request.predicate = predicate
         let dateSortId = NSSortDescriptor(
             keyPath: \GachaItemMO.id,

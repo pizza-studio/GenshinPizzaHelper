@@ -133,7 +133,7 @@ struct ImportGachaView: View {
         DispatchQueue.global(qos: .userInteractive).async {
             status = .reading
         }
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if url.startAccessingSecurityScopedResource() {
                 do {
                     let decoder = JSONDecoder()
@@ -173,7 +173,7 @@ struct ImportGachaView: View {
             status = .reading
         }
 
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if url.startAccessingSecurityScopedResource() {
                 do {
                     guard let file = XLSXFile(filepath: url.relativePath),
