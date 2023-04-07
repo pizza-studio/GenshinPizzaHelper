@@ -1293,3 +1293,6 @@
 "英语（美国）" = "English (US)";
 "越南文" = "Vietnamese";
 "选择语言" = "Select Language";
+
+"开始导入？" = "Start importing?";
+"导入数据需要一段时间，请耐心等待。" = "It takes a while to import the data, please wait...";

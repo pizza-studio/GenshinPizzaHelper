@@ -114,28 +114,14 @@ struct ImportGachaView: View {
         })
         .alert(item: $alert) { alert in
             Alert(
-                title: Text("导入时界面会卡住一段时间"),
-                message: Text("请耐心等待..."),
+                title: Text("开始导入？"),
+                message: Text("导入数据需要一段时间，请耐心等待。"),
                 primaryButton: .destructive(Text("开始"), action: {
-                    do {
-                        switch alert {
-                        case let .readyToStartJson(url: url):
-                            if url.startAccessingSecurityScopedResource() {
-                                try processJson(url: url)
-                                url.stopAccessingSecurityScopedResource()
-                            } else {
-                                status = .failure("无法访问文件".localized)
-                            }
-                        case let .readyToStartXlsx(url: url):
-                            if url.startAccessingSecurityScopedResource() {
-                                try processXlsx(url: url)
-                                url.stopAccessingSecurityScopedResource()
-                            } else {
-                                status = .failure("无法访问文件")
-                            }
-                        }
-                    } catch {
-                        status = .failure(error.localizedDescription)
+                    switch alert {
+                    case let .readyToStartJson(url: url):
+                        processJson(url: url)
+                    case let .readyToStartXlsx(url: url):
+                        processXlsx(url: url)
                     }
                 }),
                 secondaryButton: .cancel()
@@ -143,135 +129,163 @@ struct ImportGachaView: View {
         }
     }
 
-    func processJson(url: URL) throws {
-        status = .reading
-        let decoder = JSONDecoder()
-        decoder
-            .keyDecodingStrategy =
-            .convertFromSnakeCase
-        let data: Data = try Data(contentsOf: url)
-        let uigfModel: UIGFJson = try decoder
-            .decode(
-                UIGFJson.self,
-                from: data
-            )
-        let result = gachaViewModel
-            .importGachaFromUIGFJson(
-                uigfJson: uigfModel
-            )
-        status = .succeed(ImportSucceedInfo(
-            uid: result.uid,
-            totalCount: result.totalCount,
-            newCount: result.newCount,
-            app: uigfModel.info.exportApp,
-            exportDate: uigfModel.info.exportTime
-        ))
-        isCompleteAlertShow.toggle()
+    func processJson(url: URL) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            status = .reading
+        }
+        DispatchQueue.main.async {
+            if url.startAccessingSecurityScopedResource() {
+                do {
+                    let decoder = JSONDecoder()
+                    decoder
+                        .keyDecodingStrategy =
+                        .convertFromSnakeCase
+                    let data: Data = try Data(contentsOf: url)
+                    let uigfModel: UIGFJson = try decoder
+                        .decode(
+                            UIGFJson.self,
+                            from: data
+                        )
+                    let result = gachaViewModel
+                        .importGachaFromUIGFJson(
+                            uigfJson: uigfModel
+                        )
+                    status = .succeed(ImportSucceedInfo(
+                        uid: result.uid,
+                        totalCount: result.totalCount,
+                        newCount: result.newCount,
+                        app: uigfModel.info.exportApp,
+                        exportDate: uigfModel.info.exportTime
+                    ))
+                    isCompleteAlertShow.toggle()
+                } catch {
+                    status = .failure(error.localizedDescription)
+                }
+                url.stopAccessingSecurityScopedResource()
+            } else {
+                status = .failure("无法访问文件".localized)
+            }
+        }
     }
 
-    func processXlsx(url: URL) throws {
-        guard let file = XLSXFile(filepath: url.relativePath),
-              let workbook = try file.parseWorkbooks().first,
-              let (_, path) = try file.parseWorksheetPathsAndNames(workbook: workbook)
-              .first(where: { name, _ in
-                  name == "原始数据"
-              }),
-              let worksheet = try? file.parseWorksheet(at: path),
-              let sharedStrings = try file.parseSharedStrings()
-        else {
-            status = .failure("原始数据不存在".localized); return
+    func processXlsx(url: URL) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            status = .reading
         }
-        guard let head = worksheet.data?.rows.first?.cells
-            .map({ $0.stringValue(sharedStrings) }),
-            let rows = worksheet.data?.rows[1...]
-            .map({ $0.cells.map { $0.stringValue(sharedStrings) }}),
-            let gachaTypeIndex = head.firstIndex(where: { $0 == "gacha_type" }),
-            let itemTypeIndex = head.firstIndex(where: { $0 == "item_type" }),
-            let nameIndex = head.firstIndex(where: { $0 == "name" }),
-            let uidIndex = head.firstIndex(where: { $0 == "uid" }) else {
-            status = .failure("数据表缺失数据".localized); return
-        }
-        let idIndex = head.firstIndex(where: { $0 == "id" })
-        let itemIdIndex = head.firstIndex(where: { $0 == "item_id" })
-        let timeIndex = head.firstIndex(where: { $0 == "time" })
-        let langIndex = head.firstIndex(where: { $0 == "lang" })
-        let rankTypeIndex = head.firstIndex(where: { $0 == "rank_type" })
-        let countIndex = head.firstIndex(where: { $0 == "count" })
-        let items: [GachaItem_FM] = rows.compactMap { cells in
-            guard let uid = cells[uidIndex],
-                  let gachaType = cells[gachaTypeIndex],
-                  let itemType = cells[itemTypeIndex],
-                  let name = cells[nameIndex] else {
-                return nil
-            }
-            let id: String
-            if let idIndex = idIndex,
-               let idString = cells[idIndex] {
-                id = idString
-            } else {
-                id = ""
-            }
-            let itemId: String
-            if let itemIdIndex = itemIdIndex,
-               let itemIdString = cells[itemIdIndex] {
-                itemId = itemIdString
-            } else {
-                itemId = ""
-            }
-            let count: String
-            if let countIndex = countIndex,
-               let countString = cells[countIndex] {
-                count = countString
-            } else {
-                count = "1"
-            }
 
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let time: Date
-            if let timeIndex = timeIndex,
-               let timeString = cells[timeIndex],
-               let timeDate = dateFormatter.date(from: timeString) {
-                time = timeDate
-            } else {
-                time = .distantPast
-            }
+        DispatchQueue.main.async {
+            if url.startAccessingSecurityScopedResource() {
+                do {
+                    guard let file = XLSXFile(filepath: url.relativePath),
+                          let workbook = try file.parseWorkbooks().first,
+                          let (_, path) = try file.parseWorksheetPathsAndNames(workbook: workbook)
+                          .first(where: { name, _ in
+                              name == "原始数据"
+                          }),
+                          let worksheet = try? file.parseWorksheet(at: path),
+                          let sharedStrings = try file.parseSharedStrings()
+                    else {
+                        status = .failure("原始数据不存在".localized); return
+                    }
+                    guard let head = worksheet.data?.rows.first?.cells
+                        .map({ $0.stringValue(sharedStrings) }),
+                        let rows = worksheet.data?.rows[1...]
+                        .map({ $0.cells.map { $0.stringValue(sharedStrings) }}),
+                        let gachaTypeIndex = head.firstIndex(where: { $0 == "gacha_type" }),
+                        let itemTypeIndex = head.firstIndex(where: { $0 == "item_type" }),
+                        let nameIndex = head.firstIndex(where: { $0 == "name" }),
+                        let uidIndex = head.firstIndex(where: { $0 == "uid" }) else {
+                        status = .failure("数据表缺失数据".localized); return
+                    }
+                    let idIndex = head.firstIndex(where: { $0 == "id" })
+                    let itemIdIndex = head.firstIndex(where: { $0 == "item_id" })
+                    let timeIndex = head.firstIndex(where: { $0 == "time" })
+                    let langIndex = head.firstIndex(where: { $0 == "lang" })
+                    let rankTypeIndex = head.firstIndex(where: { $0 == "rank_type" })
+                    let countIndex = head.firstIndex(where: { $0 == "count" })
+                    let items: [GachaItem_FM] = rows.compactMap { cells in
+                        guard let uid = cells[uidIndex],
+                              let gachaType = cells[gachaTypeIndex],
+                              let itemType = cells[itemTypeIndex],
+                              let name = cells[nameIndex] else {
+                            return nil
+                        }
+                        let id: String
+                        if let idIndex = idIndex,
+                           let idString = cells[idIndex] {
+                            id = idString
+                        } else {
+                            id = ""
+                        }
+                        let itemId: String
+                        if let itemIdIndex = itemIdIndex,
+                           let itemIdString = cells[itemIdIndex] {
+                            itemId = itemIdString
+                        } else {
+                            itemId = ""
+                        }
+                        let count: String
+                        if let countIndex = countIndex,
+                           let countString = cells[countIndex] {
+                            count = countString
+                        } else {
+                            count = "1"
+                        }
 
-            let lang: GachaLanguageCode
-            if let langIndex = langIndex,
-               let langString = cells[langIndex],
-               let langCode = GachaLanguageCode(rawValue: langString) {
-                lang = langCode
-            } else {
-                lang = GachaTranslateManager.shared.getLanguageCode(for: name) ?? .zhCN
-            }
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        let time: Date
+                        if let timeIndex = timeIndex,
+                           let timeString = cells[timeIndex],
+                           let timeDate = dateFormatter.date(from: timeString) {
+                            time = timeDate
+                        } else {
+                            time = .distantPast
+                        }
 
-            let rankType: String
-            if let rankTypeIndex = rankTypeIndex,
-               let rankTypeString = cells[rankTypeIndex] {
-                rankType = rankTypeString
-            } else {
-                rankType = "3"
-            }
+                        let lang: GachaLanguageCode
+                        if let langIndex = langIndex,
+                           let langString = cells[langIndex],
+                           let langCode = GachaLanguageCode(rawValue: langString) {
+                            lang = langCode
+                        } else {
+                            lang = GachaTranslateManager.shared.getLanguageCode(for: name) ?? .zhCN
+                        }
 
-            return .init(
-                uid: uid,
-                gachaType: gachaType,
-                itemId: itemId,
-                count: count,
-                time: time,
-                name: name,
-                lang: lang,
-                itemType: itemType,
-                rankType: rankType,
-                id: id
-            )
-        }
-        let newCount = gachaViewModel.manager.addRecordItems(items)
-        if !items.isEmpty {
-            status = .succeed(.init(uid: items.first!.uid, totalCount: items.count, newCount: newCount))
-        } else {
-            status = .failure("未成功从文件中解码数据".localized)
+                        let rankType: String
+                        if let rankTypeIndex = rankTypeIndex,
+                           let rankTypeString = cells[rankTypeIndex] {
+                            rankType = rankTypeString
+                        } else {
+                            rankType = "3"
+                        }
+
+                        return .init(
+                            uid: uid,
+                            gachaType: gachaType,
+                            itemId: itemId,
+                            count: count,
+                            time: time,
+                            name: name,
+                            lang: lang,
+                            itemType: itemType,
+                            rankType: rankType,
+                            id: id
+                        )
+                    }
+                    let newCount = gachaViewModel.manager.addRecordItems(items)
+                    if !items.isEmpty {
+                        status = .succeed(.init(uid: items.first!.uid, totalCount: items.count, newCount: newCount))
+                    } else {
+                        status = .failure("未成功从文件中解码数据".localized)
+                    }
+                } catch {
+                    status = .failure(error.localizedDescription)
+                }
+                url.stopAccessingSecurityScopedResource()
+            } else {
+                status = .failure("无法访问文件")
+            }
         }
     }
 
