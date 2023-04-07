@@ -12,13 +12,15 @@ import SwiftUI
 enum ThisDevice {
     // MARK: Public
 
-    public static let basicWindowSize: CGSize = .init(
-        // width: 375,
-        // height: useAdaptiveSpacing ? 812 : 667
-        // 新的基准尺寸是原有的 1.66 倍：620x1344 与 620x1104。
-        width: 620 + 2,
-        height: useAdaptiveSpacing ? 1344 + 2 : 1104 + 2
-    )
+    public static var basicWindowSize: CGSize {
+        .init(
+            // width: 375,
+            // height: useAdaptiveSpacing ? 812 : 667
+            // 新的基准尺寸是原有的 1.66 倍：620x1344 与 620x1104。
+            width: 620 + 2,
+            height: useAdaptiveSpacing ? 1344 + 2 : 1104 + 2
+        )
+    }
 
     public static var isMac: Bool {
         #if targetEnvironment(simulator)

@@ -241,7 +241,7 @@ private struct GachaItemChart: View {
             }
         })
         .chartXAxis(content: {
-            AxisMarks(values: [0, 25, 50, 75, 100]) { value in
+            AxisMarks(values: [0, 25, 50, 75, 100]) { _ in
                 AxisGridLine()
                 if isLast {
                     AxisValueLabel()
