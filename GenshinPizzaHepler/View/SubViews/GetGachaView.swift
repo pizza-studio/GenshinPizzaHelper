@@ -219,7 +219,7 @@ struct GettingGachaBar: View {
             HStack {
                 ProgressView()
                 Spacer()
-                Text("正在获取祈愿记录...请等待")
+                Text("正在获取祈愿记录…请等待")
                 Spacer()
                 Button {
                     observer.shouldCancel = true
@@ -233,12 +233,12 @@ struct GettingGachaBar: View {
                     Text(
                         "卡池：\(observer.gachaType.localizedDescription())"
                     )
-                    Text("页码：\(observer.page)")
+                    Text("页码：\(observer.page.description)")
                 }
                 Spacer()
                 VStack(alignment: .leading) {
-                    Text("已获取记录：\(observer.currentItems.count)条")
-                    Text("获取到新记录：\(observer.newItemCount)条")
+                    Text("已获取记录：\(observer.currentItems.count.description)条")
+                    Text("获取到新记录：\(observer.newItemCount.description)条")
                 }
             }
         }
@@ -280,14 +280,14 @@ struct GetGachaResultView: View {
         if status == .succeed {
             Section {
                 Label {
-                    Text("获取祈愿记录成功")
+                    Text("成功获取祈愿数据")
                 } icon: {
                     Image(systemName: "checkmark.circle")
                         .foregroundColor(.green)
                 }
             } footer: {
                 Text(
-                    "获取到\(observer.currentItems.count)条记录，成功保存\(observer.newItemCount)条新记录\n请返回上一级查看，或继续获取其他帐号的记录"
+                    "获取到\(observer.currentItems.count.description)条记录，成功保存\(observer.newItemCount.description)条新记录\n请返回上一级查看，或继续获取其他帐号的记录"
                 )
             }
         }
@@ -301,7 +301,7 @@ struct GetGachaResultView: View {
                         GachaItemBar(item: item)
                     }
                 } header: {
-                    Text(status == .running ? "成功获取到一批..." : "")
+                    Text(status == .running ? "成功获取到一批…" : "")
                 }
             }
         case let .failure(error):
