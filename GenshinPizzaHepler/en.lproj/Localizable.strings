@@ -1296,3 +1296,8 @@
 
 "开始导入？" = "Start importing?";
 "导入数据需要一段时间，请耐心等待。" = "It takes a while to import the data, please wait...";
+
+// Genshin 3.6 new heros and weapons
+"白术" = "Baizhu";
+"卡维" = "Kaveh";
+"碧落之珑" = "Jadefall’s Splendor";
