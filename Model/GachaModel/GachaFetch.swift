@@ -105,6 +105,7 @@ extension MihoyoAPI {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             do {
                 let result = try decoder.decode(

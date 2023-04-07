@@ -308,6 +308,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     func updateGachaItemCount(item: GachaItem_FM) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let date = item.time
         let type = GachaType.from(item.gachaType)
         if gachaTypeDateCounts

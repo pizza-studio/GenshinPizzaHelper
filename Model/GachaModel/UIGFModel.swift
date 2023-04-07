@@ -35,6 +35,7 @@ struct UIGFJson: Codable {
 
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             if let dateString = try container.decodeIfPresent(
                 String.self,
                 forKey: .exportTime
