@@ -117,15 +117,14 @@ class GachaViewModel: ObservableObject {
         DispatchQueue.main.async {
             withAnimation {
                 self.refreshAllAvaliableAccountUID()
-                if self.filter
-                    .uid ==
-                    nil {
+                if (
+                    self.filter
+                        .uid ==
+                        nil
+                ) || !self.allAvaliableAccountUID.contains(self.filter.uid ?? "114514") {
                     self.filter.uid = self.allAvaliableAccountUID.first
                 }
-//                if let uid = self.filter.uid {
-//                    self.gachaItems = self.manager.fetchAll(uid: uid)
-//                }
-                self.refreshAllAvaliableAccountUID()
+                self.objectWillChange.send()
             }
         }
     }

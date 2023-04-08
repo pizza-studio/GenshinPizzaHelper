@@ -134,26 +134,28 @@ struct GachaView: View {
                     }
                 }
                 GachaStatisticSectionView()
-                if #available(iOS 16.0, *) {
-                    Section {
-                        NavigationLink("详细记录") {
-                            GachaDetailView()
-                        }
+            } else {
+                Text("暂无五星祈愿记录").foregroundColor(.gray)
+            }
+            if #available(iOS 16.0, *) {
+                Section {
+                    NavigationLink("详细记录") {
+                        GachaDetailView()
                     }
-                } else {
-                    Section {
-                        ForEach(
-                            gachaViewModel.filteredGachaItemsWithCount,
-                            id: \.0.id
-                        ) { item, count in
-                            VStack(spacing: 1) {
-                                GachaItemBar(
-                                    item: item,
-                                    count: count,
-                                    showTime: showTime,
-                                    showingType: gachaViewModel.filter.rank
-                                )
-                            }
+                }
+            } else {
+                Section {
+                    ForEach(
+                        gachaViewModel.filteredGachaItemsWithCount,
+                        id: \.0.id
+                    ) { item, count in
+                        VStack(spacing: 1) {
+                            GachaItemBar(
+                                item: item,
+                                count: count,
+                                showTime: showTime,
+                                showingType: gachaViewModel.filter.rank
+                            )
                         }
                     }
                 }

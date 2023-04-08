@@ -181,16 +181,18 @@ private struct GachaItemChart: View {
             ForEach(items, id: \.0.id) { item in
                 BarMark(
                     x: .value("抽数", item.count),
-                    y: .value("角色", item.0.id)
+                    y: .value("角色", item.0.id),
+                    width: 20
                 )
                 .annotation(position: .trailing) {
                     HStack(spacing: 3) {
-                        let frame: CGFloat = 25
+                        let frame: CGFloat = 35
                         Text("\(item.count)").foregroundColor(.gray)
                             .font(.caption)
                         if item.0.isLose5050() {
                             Image("UI_EmotionIcon5").resizable().scaledToFit()
                                 .frame(width: frame, height: frame)
+                                .offset(y: -5)
                         } else {
                             EmptyView()
                         }
@@ -218,22 +220,30 @@ private struct GachaItemChart: View {
             }
         }
         .chartYAxis(content: {
+            AxisMarks(preset: .aligned, position: .leading) { value in
+                AxisValueLabel(content: {
+                    if let id = value.as(String.self),
+                       let item = items
+                       .first(where: { $0.0.id == id })?.0 {
+                        EnkaWebIcon(
+                            iconString: item.iconImageName
+                        )
+                        .scaleEffect(item._itemType == .weapon ? 0.9 : 1)
+                        .background(item.backgroundImageName())
+                        .frame(width: 45, height: 45)
+                        .clipShape(Circle())
+                    } else {
+                        EmptyView()
+                    }
+                })
+            }
             AxisMarks { value in
                 AxisValueLabel(content: {
                     if let id = value.as(String.self),
                        let item = items
                        .first(where: { $0.0.id == id })?.0 {
-                        HStack {
-                            EnkaWebIcon(
-                                iconString: item.iconImageName
-                            )
-                            .scaleEffect(item._itemType == .weapon ? 0.9 : 1)
-                            .background(item.backgroundImageName())
-                            .frame(width: 30, height: 30)
-                            .clipShape(Circle())
-                            Text(item.localizedName)
-                        }
-
+                        Text(item.localizedName)
+                            .offset(y: 8)
                     } else {
                         EmptyView()
                     }
@@ -252,6 +262,7 @@ private struct GachaItemChart: View {
                 }
             }
         })
+        .chartXScale(domain: 0 ... 110)
         .frame(height: CGFloat(items.count * 65))
         .chartForegroundStyleScale(range: colors(items: items))
         .chartLegend(.hidden)
