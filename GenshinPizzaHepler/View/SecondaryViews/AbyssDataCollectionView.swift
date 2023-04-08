@@ -567,20 +567,7 @@ private struct ShowAvatarPercentageView: View {
             Label {
                 Text(charName.localizedWithFix)
             } icon: {
-                EnkaWebIcon(
-                    iconString: char
-                        .iconString
-                )
-                .background(
-                    EnkaWebIcon(
-                        iconString: char
-                            .namecardIconString
-                    )
-                    .scaledToFill()
-                    .offset(x: -30 / 3)
-                )
-                .frame(width: 30, height: 30)
-                .clipShape(Circle())
+                char.decoratedIcon(30, cutTo: .face)
             }
             Spacer()
             Text(
@@ -712,18 +699,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
             Label {
                 Text(charName.localizedWithFix)
             } icon: {
-                EnkaWebIcon(
-                    iconString: char.iconString
-                )
-                .background(
-                    EnkaWebIcon(
-                        iconString: char.namecardIconString
-                    )
-                    .scaledToFill()
-                    .offset(x: -30 / 3)
-                )
-                .frame(width: 30, height: 30)
-                .clipShape(Circle())
+                char.decoratedIcon(30, cutTo: .face)
             }
             Spacer()
             Text(
@@ -840,17 +816,7 @@ private struct ShowAvatarPercentageShare: View {
             Label {
                 Text(charName.localizedWithFix).fixedSize()
             } icon: {
-                EnkaWebIcon(iconString: char.iconString)
-                    .background(
-                        EnkaWebIcon(
-                            iconString: char
-                                .namecardIconString
-                        )
-                        .scaledToFill()
-                        .offset(x: -30 / 3)
-                    )
-                    .frame(width: 30, height: 30)
-                    .clipShape(Circle())
+                char.decoratedIcon(30, cutTo: .face)
             }
             Text(
                 percentageFormatter
@@ -914,24 +880,8 @@ private struct ShowTeamPercentageView: View {
                                     team.team.sorted(by: <),
                                     id: \.self
                                 ) { avatarId in
-                                    let char = charMap["\(avatarId)"]
-                                    Label {
-                                        Text("")
-                                    } icon: {
-                                        EnkaWebIcon(
-                                            iconString: char?
-                                                .iconString ?? ""
-                                        )
-                                        .background(
-                                            EnkaWebIcon(
-                                                iconString: char?
-                                                    .namecardIconString ?? ""
-                                            )
-                                            .scaledToFill()
-                                            .offset(x: -30 / 3)
-                                        )
-                                        .frame(width: 40, height: 40)
-                                        .clipShape(Circle())
+                                    if let char = charMap["\(avatarId)"] {
+                                        char.decoratedIcon(40, cutTo: .face)
                                     }
                                 }
                                 Spacer()
@@ -1001,21 +951,9 @@ private struct ShowTeamPercentageShare: View {
                                     team.team.sorted(by: <),
                                     id: \.self
                                 ) { avatarId in
-                                    let char = charMap["\(avatarId)"]
-                                    EnkaWebIcon(
-                                        iconString: char?
-                                            .iconString ?? ""
-                                    )
-                                    .background(
-                                        EnkaWebIcon(
-                                            iconString: char?
-                                                .namecardIconString ?? ""
-                                        )
-                                        .scaledToFill()
-                                        .offset(x: -30 / 3)
-                                    )
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
+                                    if let char = charMap["\(avatarId)"] {
+                                        char.decoratedIcon(40, cutTo: .face)
+                                    }
                                 }
                             }
                             Text(

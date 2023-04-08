@@ -220,37 +220,24 @@ struct ToolsViewSimplified: View {
                                 playerDetail.avatars,
                                 id: \.name
                             ) { avatar in
-                                VStack {
-                                    EnkaWebIcon(iconString: avatar.iconString)
-                                        .frame(width: 75, height: 75)
-                                        .background(
-                                            EnkaWebIcon(
-                                                iconString: avatar
-                                                    .namecardIconString
+                                avatar.decoratedIcon(75, cutTo: .shoulder)
+                                    .onTapGesture {
+                                        simpleTaptic(type: .medium)
+                                        withAnimation(
+                                            .interactiveSpring(
+                                                response: 0.25,
+                                                dampingFraction: 1.0,
+                                                blendDuration: 0
                                             )
-                                            .scaledToFill()
-                                            .offset(x: -75 / 3)
-                                        )
-                                        .clipShape(Circle())
-                                        .contentShape(Circle())
-                                        .onTapGesture {
-                                            simpleTaptic(type: .medium)
-                                            withAnimation(
-                                                .interactiveSpring(
-                                                    response: 0.25,
-                                                    dampingFraction: 1.0,
-                                                    blendDuration: 0
-                                                )
-                                            ) {
-                                                viewModel
-                                                    .showingCharacterName =
-                                                    avatar.name
-                                                viewModel
-                                                    .showCharacterDetailOfAccount =
-                                                    account!
-                                            }
+                                        ) {
+                                            viewModel
+                                                .showingCharacterName =
+                                                avatar.name
+                                            viewModel
+                                                .showCharacterDetailOfAccount =
+                                                account!
                                         }
-                                }
+                                    }
                             }
                         }
                         .padding(.vertical)
@@ -845,19 +832,11 @@ private struct AllAvatarNavigator: View {
             Spacer()
             HStack(spacing: 3) {
                 ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
-                    let id = avatar.id
-                    EnkaWebIcon(iconString: charMap["\(id)"]?.iconString ?? "")
-                        .frame(width: 20, height: 20)
-                        .background(
-                            EnkaWebIcon(
-                                iconString: charMap["\(id)"]?
-                                    .namecardIconString ?? ""
-                            )
-                            .scaledToFill()
-                            .offset(x: -20 / 3)
-                        )
-                        .clipShape(Circle())
-                        .contentShape(Circle())
+                    if let char = charMap[avatar.id.description] {
+                        char.decoratedIcon(30, cutTo: .face)
+                    } else {
+                        EmptyView()
+                    }
                 }
             }
             .padding(.vertical, 3)

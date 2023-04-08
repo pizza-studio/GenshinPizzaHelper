@@ -106,7 +106,7 @@ struct PlayerDetail {
                 ] ??
                 characterDictionary["\(avatarInfo.avatarId)"]
             else { return nil }
-
+            self.character = character
             self.enkaID = avatarInfo.avatarId
 
             self.name = localizedDictionary
@@ -566,6 +566,9 @@ struct PlayerDetail {
         let enkaID: Int
         /// UID
         let uid: String
+
+        /// 原始 character 資料備份。
+        let character: ENCharacterMap.Character
 
         /// 经过错字订正处理的角色姓名
         var nameCorrected: String {

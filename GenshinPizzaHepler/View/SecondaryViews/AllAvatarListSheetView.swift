@@ -164,15 +164,7 @@ struct AvatarListItem: View {
             ZStack(alignment: .bottomLeading) {
                 Group {
                     if let char = charMap?["\(avatar.id)"] {
-                        EnkaWebIcon(iconString: char.iconString)
-                            .background(content: {
-                                EnkaWebIcon(
-                                    iconString: char
-                                        .namecardIconString
-                                )
-                                .scaledToFill()
-                                .offset(x: -55 / 3)
-                            })
+                        char.decoratedIcon(55, cutTo: .head)
                     } else {
                         WebImage(urlStr: avatar.icon)
                     }
@@ -343,15 +335,7 @@ private struct AvatarListItemShare: View {
             ZStack(alignment: .bottomLeading) {
                 Group {
                     if let char = charMap?["\(avatar.id)"] {
-                        EnkaWebIcon(iconString: char.iconString)
-                            .background(content: {
-                                EnkaWebIcon(
-                                    iconString: char
-                                        .namecardIconString
-                                )
-                                .scaledToFill()
-                                .offset(x: -55 / 3)
-                            })
+                        char.decoratedIcon(55, cutTo: .head)
                     } else {
                         WebImage(urlStr: avatar.icon)
                     }

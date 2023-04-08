@@ -492,14 +492,7 @@ private struct AvatarAndSkillView: View {
 
     var body: some View {
         HStack(alignment: .bottom, spacing: fontSize / 2) {
-            EnkaWebIcon(iconString: avatar.iconString)
-                .frame(width: fontSize * 5.6, height: fontSize * 5.6)
-                .background(
-                    EnkaWebIcon(iconString: avatar.namecardIconString)
-                        .scaledToFill()
-                        .offset(x: -85 / 3)
-                )
-                .clipShape(Circle())
+            avatar.decoratedIcon(fontSize * 5.6, cutTo: .shoulder)
                 .padding(.trailing, fontSize / 5)
             VStack(alignment: .leading, spacing: 3.3 + spacingDelta) {
                 HStack(alignment: .bottom) {
