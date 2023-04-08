@@ -95,7 +95,11 @@ struct MIMTGetGachaView: View {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                     }
-
+                    Button {
+                        UIPasteboard.general.string = urls.last!
+                    } label: {
+                        Label("复制祈愿链接到剪切板", systemImage: "list.clipboard")
+                    }
                 } footer: {
                     HStack {
                         Spacer()

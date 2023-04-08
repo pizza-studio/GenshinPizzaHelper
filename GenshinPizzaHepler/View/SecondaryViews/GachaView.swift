@@ -195,8 +195,8 @@ private struct GachaStatisticSectionView: View {
             !item.isLose5050()
         }
         let limitedNumber = fiveStarItemsWithCount
-            .map { $0.count }
-            .reduce(0) { $0 + $1 } /
+            .map(\.count)
+            .reduce(0, +) /
             max(
                 fiveStarItemsWithCount
                     .filter { item, _ in
@@ -254,9 +254,17 @@ private struct GachaStatisticSectionView: View {
                         fmt.numberStyle = .percent
                         return fmt
                     }()
+                    // 如果获得的第一个五星是限定，默认其不歪
                     let pct = 1.0 -
-                        Double(fiveStars.count - fiveStarsNotLose.count) /
-                        Double(fiveStarsNotLose.count)
+                        Double(
+                            fiveStars.count - fiveStarsNotLose
+                                .count // 歪次数 = 非限定五星数量
+                        ) /
+                        Double(
+                            fiveStarsNotLose
+                                .count +
+                                ((fiveStars.last?.isLose5050() ?? false) ? 1 : 0)
+                        ) // 小保底次数 = 限定五星数量（如果抽的第一个是非限定，则多一次小保底）
                     Label("不歪率", systemImage: "chart.pie.fill")
                     Spacer()
                     Text(
@@ -300,6 +308,7 @@ private struct GachaStatisticSectionView: View {
                 .textCase(.none)
         }
         .onTapGesture {
+            simpleTaptic(type: .light)
             if gachaViewModel.filter.gachaType != .standard {
                 withAnimation(.easeInOut(duration: 0.1)) {
                     showDrawingNumber.toggle()
