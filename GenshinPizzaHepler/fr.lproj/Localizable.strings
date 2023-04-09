@@ -1094,7 +1094,7 @@
 "显示部分角色的真实姓名" = "Show certain characters' real names";
 "角色详情排版间距适配" = "Adaptive layout in character view";
 "这仅对 iPad 以及有「刘海」的 iPhone 生效。" = "This only works with iPad and notched iPhone models.";
-"界面偏好设置" = "UI Preferences";
+"界面偏好设置" = "UI Settings";
 
 // MARK: - 2.8.0
 "冷刃" = "Lame froide";
