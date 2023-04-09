@@ -426,10 +426,10 @@ private struct HelpSheet: View {
                 }
                 Section(header: Text("以下程序或平台的JSON导出格式已通过可用性验证").textCase(.none)) {
                     Link("提瓦特小助手", destination: URL(string: "https://api.lelaer.com/ys/uploadGacha.php")!)
-//                    Link(
-//                        "genshin-wish-export",
-//                        destination: URL(string: "https://github.com/biuuu/genshin-wish-export")!
-//                    )
+                    Link(
+                        "genshin-wish-export",
+                        destination: URL(string: "https://github.com/biuuu/genshin-wish-export")!
+                    )
                     Link("寻空", destination: URL(string: "https://xunkong.cc")!)
                     Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
                 }
