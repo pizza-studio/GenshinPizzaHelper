@@ -181,7 +181,7 @@
 "庆典・棋谭" = "Lễ Hội: Mechanicus";
 "八重神子・梦狐" = "Yae Miko: Hồ Ly Mộng Mơ";
 "琴・风向" = "Jean: Hướng Gió";
-"庆典・魔球" = "Lễ Hội: Kaboomball";
+"庆典・魔球" = "Lễ Hội: Kaboomll";
 "芭芭拉・流淌" = "Barbara: Dòng Chảy";
 "成就・相逢" = "Thành Tựu: Reunion";
 "成就・雷音" = "Thành Tựu: Thunderclap";
@@ -452,7 +452,7 @@
 "探索派遣" = "Phái Đi Thám Hiểm";
 "参量质变仪" = "Máy Biến Đổi Tham Số";
 "周本折扣" = "Vùng Đất Thảo Phạt";
-"可使用" = "Có sẵn";
+"可使用" = "CD Xong";
 "%@ 回满" = "Đầy lại trong %@";
 "树脂已全部回满" = "Nhựa đã được phục hồi đầy đủ";
 
@@ -1083,51 +1083,222 @@
 "未重开玩家使用率" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
 "时区" = "Múi Giờ";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
-"自2023年4月1日起提供" = "Available From 2023-04-01";
+"自2023年4月1日起提供" = "Có sẵn từ 2023-04-01";
 
 // MARK: - 2.7.14
-"中文汉字纠正" = "Chinese UI Text Correction";
-"这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
-"显示圣遗物等级与稀有度" = "Show artifact levels and rarity stars";
+"中文汉字纠正" = "Chỉnh sửa văn bản giao diện người dùng tiếng Trung";
+"这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "Điều này sẽ chuyển đổi 钟 & 钟离 đến 锺 & 锺离 khi ngôn ngữ giao diện người dùng là tiếng Trung giản thể . Nếu là tiếng Trung phồn thể , nó sẽ chuyển đổi 堇 to 菫.";
+"显示圣遗物等级与稀有度" = "Hiển thị cấp độ nhân vật và phẩm chất";
 "雷电国崩" = "Raiden Kunikuzushi";
 "雷电国崩・浮歌" = "Raiden Kunikuzushi - Phù Ca";
-"显示部分角色的真实姓名" = "Show certain characters' real names";
-"角色详情排版间距适配" = "Adaptive layout in character view";
-"这仅对 iPad 以及有「刘海」的 iPhone 生效。" = "This only works with iPad and notched iPhone models.";
-"界面偏好设置" = "UI Settings";
+"显示部分角色的真实姓名" = "Hiển thị tên thật của một số nhân vật";
+"角色详情排版间距适配" = "Bố cục trong chế độ xem nhân vật";
+"这仅对 iPad 以及有「刘海」的 iPhone 生效。" = "Tính năng này chỉ hoạt động với iPad và các dòng iPhone có tai thỏ.";
+"界面偏好设置" = "Tùy Chọn Giao Diện";
 
 // MARK: - 2.8.0
-"冷刃" = "Lãnh Nhẫn";
-"黎明神剑" = "Thần Kiếm Lê Minh";
-"旅行剑" = "Kiếm Lữ Hành";
-"暗铁剑" = "Kiếm Sắt Đen";
-"吃虎鱼刀" = "Đao Săn Cá";
-"飞天御剑" = "Kiếm Phi Thiên";
-"铁影阔剑" = "Kiếm Thiết Ảnh";
-"沐浴龙血的剑" = "Kiếm Huyết Rồng";
-"白铁大剑" = "Kiếm Bạch Thiết";
-"石英大剑" = "Kiếm Thạch Anh";
-"以理服人" = "Gậy Thu Phục";
-"飞天大御剑" = "Đại Kiếm Phi Thiên";
-"白缨枪" = "Thương Bạch Anh";
-"钺矛" = "Thuẫn Kích";
-"黑缨枪" = "Hắc Anh Thương";
-"「旗杆」" = "Cột Cờ";
-"魔导绪论" = "Tóm Tắt Ma Pháp";
-"讨龙英杰谭" = "Câu Chuyện Diệt Rồng";
-"异世界行记" = "Tiểu Thuyết Dị Giới";
-"翡玉法球" = "Quả Cầu Ngọc";
-"甲级宝珏" = "Ngọc Sinh Đôi";
 "琥珀玥" = "Hổ Phách Nguyệt";
-"鸦羽弓" = "Cung Lông Quạ";
-"神射手之誓" = "Lời Thề Xạ Thủ Thần";
-"反曲弓" = "Cung Phản Khúc";
-"弹弓" = "Nỏ Kéo";
-"信使" = "Tín Sứ";
 "黑檀弓" = "Cung Hắc Đàn";
+"暗铁剑" = "Kiếm Sắt Đen";
+"沐浴龙血的剑" = "Kiếm Huyết Rồng";
+"石英大剑" = "Quartz";
+"「旗杆」" = "The Flagstaff";
+"翡玉法球" = "Quả Cầu Ngọc";
+
+// artifact rating
 "%@分" = "%@pt";
-"圣遗物评价" = "Artifact Rank";
-"显示圣遗物评分与评价" = "Show artifact scores and ratings";
-"自定义流浪者姓名" = "Edit Wanderer's Name";
-"自定义姓名" = "Edit Name";
-"请输入自定义流浪者姓名" = "Please enter Wanderer's customized name";
+"圣遗物评价" = "Xếp Hạng Thánh Di Vật";
+"显示圣遗物评分与评价" = "Hiển Thị Xếp Hạng Và Điểm Số TDV";
+"自定义流浪者姓名" = Sửa Tên Kẻ Lang Thang";
+"自定义姓名" = "Sửa Tên";
+"请输入自定义流浪者姓名" = "Vui lòng nhập tên tùy chỉnh của Kẻ Lang Thang";
+
+// cầu nguyện analysis
+"请点击右上角获取抽卡记录" = "Click top right to obtain";
+"祈愿分析" = "Phân Tích Lịch Sử Cầu Nguyện";
+"角色活动祈愿" = "Sự Kiện Nhân Vật";
+"角色活动祈愿-2" = "Sự Kiện Nhân Vật - 2";
+"初行者推荐祈愿" = "Beginner's cầu nguyện";
+"武器活动祈愿" = "Sự Kiện Vũ khí";
+"常驻祈愿" = "Tiêu Chuẩn";
+"更多图表" = "Biểu Đồ Khác";
+"统计数据" = "Số liệu Thống Kê";
+"当前已垫" = "After Last 5-star";
+"%lld抽" = "%lld Lượt";
+"总抽数" = "Tổng Số Lượt";
+"五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao";
+"五星平均消耗原石数" = "Số Nguyên Thạch Cho Mỗi Cung Mệnh Nhân Vật 5 Sao";
+"限定五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao Giới Hạn";
+"不歪率" = "Tỉ Lệ 50/50";
+"派蒙的评价" = "Paimon's Review";
+"总消耗原石数" = "Tổng Số Lượng Nguyên Thạch";
+"五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao";
+"限定五星平均消耗原石数" = "Số Nguyên Thạch Cho Mỗi Cung Mệnh Nhân Vật 5 Sao Giới Hạn";
+"平均抽数：" = "Số Lượt Trung Bình:";
+"暂不支持国际服" = "Không hỗ trợ máy chủ quốc tế";
+
+"详细记录" = "Ghi Chi Tiết";
+"其他图表" = "Biểu Đồ Khác";
+"切换为%@" = "Chuyển đến %@";
+"总抽数分布" = "Phân bổ của tổng số lượt";
+
+"所有记录" = "Tất Cả";
+"四星及五星" = "4 Sao & 5 Sao";
+"五星" = "5 Sao";
+
+"我该选哪个？" = "Tôi nên chọn cái nào ?";
+"通过API获取" = "Thông qua API";
+"通过抓包获取" = "Thông qua chụp gói";
+"通过粘贴祈愿页面URL获取" = "Dán URL lịch sử cầu nguyện";
+"导入UIGF祈愿记录" = "Nhập Vào Lịch Sử Cầu Nguyện Định Dạng UIGF;
+
+"抽卡记录获取帮助" = "Hỗ Trợ Nhật Ký Cầu Nguyện";
+"无论选择哪种方式，我们都为您提供了详细的操作教程" = "Cho dù bạn chọn cách nào, chúng tôi sẽ cung cấp cho bạn các hướng dẫn vận hành chi tiết";
+"您也可以选择参考我们的视频完成相关操作" = "Bạn cũng có thể tham khảo video của chúng tôi để hoàn thành các thao tác đó";
+"如果您的帐号所在服务器位于中国大陆" = "Nếu tài khoản của bạn ở Máy chủ Trung Quốc Đại lục";
+"请优先选择「通过API」一键获取" = "Chọn \"Thông qua API\" đầu tiên";
+"仅适用于中国大陆服务器" = "Chỉ áp dụng cho các máy chủ ở Trung Quốc đại lục";
+"如果当前这台设备有安装《原神》" = "Nếu bạn đã cài đặt Genshin Impact trên thiết bị này";
+"建议优先选择「通过抓包获取」" = "Chọn \"Thông qua chụp gói\" đầu tiên";
+"适用于所有服务器" = "Có hiệu lực cho tất cả máy chủ";
+"如果当前这台设备尚未安装《原神》" = "Nếu bạn CHƯA cài đặt Genshin Impact trên thiết bị này";
+"建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程" = "Nên lấy từ \"Dán URL lịch sử cầu nguyện\", chúng tôi cũng đã cung cấp hướng dẫn cho nó";
+"如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入" = "Nếu bạn sử dụng các phần mềm khác để lấy nhật ký gacha và phần mềm hỗ trợ các tệp định dạng UIGF (Định dạng tiêu chuẩn GachaLog có thể hoán đổi đồng nhất), bạn có thể nhập chúng.";
+"支持UIGF的软件" = "Phần Mềm Hỗ Trợ UIGF";
+
+"在进行抓包获取祈愿链接前，您需要根据以下3个步骤安装CA证书。" = "Trước khi lấy URL Lịch sử cầu nguyện , bạn cần cài đặt chứng chỉ CA theo 3 bước sau.";
+"如您在抓包过程中无法连接互联网，请检查本页面所有3个步骤是否完成。" = "Nếu bạn không thể kết nối internet trong quá trình chụp, vui lòng kiểm tra xem tất cả 3 bước trên trang này đã được hoàn thành hay chưa.";
+"您也可以选择根据跟随以下视频进行安装CA证书。" = "Bạn cũng có thể chọn cài đặt chứng chỉ CA theo video sau.";
+"下载CA证书" = "Tải xuống chứng chỉ CA";
+"点击以下链接下载CA证书。" = "Nhấp vào liên kết bên dưới để tải xuống chứng chỉ CA.";
+"安装CA证书" = "Cài đặt chứng chỉ CA";
+"前往「设置」App → 「通用」 → 「VPN与设备管理」 → （已下载的描述文件）「Pizza Helper CA」 → 「安装」" = "Vào 'Cài Đặt' → 'Cài Đặt Chung' → 'Quản lý thiết bị và VPN' → (bản ghi Đã Tải Xuống) 'Pizza Helper CA' → 'Cài đặt'";
+"信任CA证书" = "Tin tưởng chứng chỉ CA";
+"前往系统「设置」 → 「通用」 → 「关于本机」 → （最下方）「信任证书设置」 → 打开「Pizza Helper CA」开关" = "Vào 'Cài đặt' → 'Cài Đặt Chung' → 'Giới Thiệu' → (kéo xuống dưới cùng) 'Cài đặt tin cậy chứng chỉ' → Bật'Pizza Helper CA' switch";
+"如何安装CA证书？" = "Cách cài đặt chứng chỉ CA ?";
+"CA证书相关" = "liên quan đến chứng chỉ CA";
+"CA证书安装教程" = "Hướng dẫn cài đặt chứng chỉ CA";
+"关于CA证书" = "Giới thiệu về chứng chỉ CA";
+"请务必确保CA证书下载、安装、信任。" = "Vui lòng đảm bảo tải xuống, cài đặt và tin tưởng vào chứng chỉ CA.";
+"这台设备需要安装《原神》并处于能够正常游玩游戏的网络环境下。" = "Điện thoại của bạn cần cài đặt 'Genshin Impact' và ở trong môi trường mạng là có thể chơi game bình thường.";
+"点击「开始抓包」按钮。" = "Nhấp vào nút 'Bắt Đầu Chụp'.";
+"返回主屏幕，打开《原神》并打开祈愿界面，点击「历史记录」按钮。如成功获取到链接，本软件会向您推送一条通知。" = "Quay lại màn hình chính, mở 'Genshin Impact' và mở giao diện Điều ước. Nhấp vào nút 'Lịch sử'. Nếu lấy thành công URL lịch sử cầu nguyện , phần mềm này sẽ gửi thông báo cho bạn.";
+"返回本软件，点击「开始获取祈愿记录」按钮，等待获取完成。" = "Quay lại phần mềm này, nhấp vào nút 'Bắt đầu thu thập lịch sử cầu nguyện', và đợi quá trình thu thập hoàn tất.";
+"如何获取祈愿链接？" = "Cách lấy URL lịch sử cầu nguyện?";
+"视频教程" = "Video hướng dẫn";
+"您也可以选择根据跟随我们的视频教程获取祈愿记录。" = "Bạn cũng có thể chọn lấy lịch sử cầu nguyện bằng cách làm theo video hướng dẫn của chúng tôi.";
+"帮助" = "Trợ Giúp";
+"确认已经下载、安装并信任CA证书？" = "Bạn đã xác nhận rằng bạn đã tải xuống, cài đặt và tin cậy chứng chỉ CA chưa ?";
+"未正确下载、安装或信任CA证书可能会导致URL抓取功能失效等问题" = "Việc không tải xuống, cài đặt hoặc tin cậy chứng chỉ CA một cách chính xác có thể gây ra các sự cố như chức năng chụp URL không hoạt động bình thường .";
+"我已经下载、安装并信任了CA证书" = "tôi đã làm chúng";
+"返回" = "Quay lại";
+
+"停止抓包" = "Dừng chụp các gói tin";
+"开始抓包" = "Bắt đầu chụp các gói tin";
+"通过抓包获取获取祈愿链接" = "Lấy URL lịch sử cầu nguyện thông qua chụp gói";
+"重新抓包" = "Chụp lại các gói tin";
+"等待祈愿链接…" = "Đang đợi URL lịch sử cầu nguyện…";
+"开始获取祈愿记录" = "Bắt đầu lấy lịch sử cầu nguyện";
+"成功获取祈愿数据" = "Đã thu thập thành công dữ liệu cầu nguyện";
+"共保存了%lld条新的祈愿数据" = "Tổng cộng %lld dữ liệu cầu nguyện mới đã được lưu";
+"获取失败，因为错误：\n%@" = "Không lấy được do lỗi:\n%@";
+"成功获取到祈愿记录链接" = "Đã lấy thành công URL lịch sử cầu nguyện";
+"请点击「开始获取祈愿记录」以继续" = "Vui lòng nhấp vào 'Bắt đầu lấy bản ghi cầu nguyện' để tiếp tục";
+"获取祈愿记录" = "Có được bản ghi cầu nguyện";
+"正在抓包…请前往打开《原神》前往祈愿记录页面" = "Đang bắt các gói... Vui lòng mở 'Genshin Impact' và truy cập trang bản ghi mong muốn";
+"正在开启VPN" = Bật VPN";
+"等待开始…" = "Đang đợi để bắt đầu…";
+"获取到%@条记录，成功保存%@条新记录\n请返回上一级查看，或继续获取其他帐号的记录" = "Đã lấy %@ bản ghi, lưu thành công %@ trong số chúng.\nQuay lại trang trước để xem chúng hoặc tiếp tục lấy bản ghi từ các tài khoản khác.";
+"成功获取到一批…" = "Thu được thành công…";
+"卡池：%@" = "Pool: %@";
+"页码：%@" = "Page: %@";
+"获取到新记录：%@条" = "Bản ghi thu được: %@";
+"已获取记录：%@条" = "Bản ghi đã có được: %@";
+"正在获取祈愿记录…请等待" = "Lấy bản ghi lịch sử cầu nguyện… Vui lòng đợi.";
+"获取祈愿记录失败" = "Không lấy được bản ghi cầu nguyện";
+"日期" = "Ngày";
+"抽数" = "Số Lượt";
+"祈愿类型" = "Thể Loại Cầu Nguyện";
+
+"从剪贴板中获取祈愿URL" = "Lấy URL lịch sử cầu nguyện từ khay nhớ tạm";
+"成功获取到祈愿链接" = "Đã lấy thành công URL lịch sử cầu nguyện";
+"请返回继续获取祈愿记录。" = "Vui lòng truy cập bản ghi và tiếp tục lấy hồ sơ lịch sử cầu nguyện.";
+"重新获取祈愿链接" = "Lấy lại URL lịch sử cầu nguyện";
+"开始获取祈愿记录" = "Bắt đầu thu thập hồ sơ cầu nguyện";
+"从剪贴板上获取到的链接有误" = "URL lấy được từ khay nhớ tạm không chính xác";
+"预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Dự kiến lấy được URL lịch sử cầu nguyện, nhưng nhận được nội dung không chính xác:\n%@";
+"未能从剪贴板获取到内容" = "Không lấy được nội dung từ khay nhớ tạm";
+"由paimon.moe提供的获取祈愿链接的方法" = "Phương pháp lấy lịch sử cầu nguyện do paimon.moe cung cấp";
+"其他获取祈愿链接的方法" = "Các phương pháp khác để lấy URL lịch sử cầu nguyện";
+"您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。" = "Bạn có thể dán URL lịch sử cầu nguyện thu được từ phần mềm khác vào ứng dụng này để lấy bản ghi cầu nguyện. Tuy nhiên, ứng dụng này không chịu trách nhiệm về độ tin cậy của các chương trình bên ngoài.";
+
+"导入UIGF JSON格式祈愿记录" = "Nhập bản ghi UIGF JSON";
+"导入UIGF XLSX格式祈愿记录" = "Nhập bản ghi UIGF XLSX";
+"目前仅支持导入简体中文祈愿记录" = "Hiện tại chỉ hỗ trợ nhập hồ sơ cầu nguyện tiếng Trung giản thể";
+"导入中，请稍候…" = "Đang nhập, vui lòng đợi…";
+"成功导入祈愿数据" = "Dữ liệu cầu nguyện được nhập thành công";
+"数据来自：%@" = "Nguồn dữ liệu: %@";
+"导出时间：%@" = "thời gian xuất: %@";
+"导入了%lld条记录" = "Bản ghi %lld đã nhập";
+"储存了%lld条新记录" = "Đã lưu trữ %lld bản ghi mới";
+"继续导入" = "Tiếp tục nhập";
+"导入失败" = "Nhập thất bại";
+"错误信息：%@" = "Thông báo lỗi: %@";
+"重试" = "Thử Lại";
+"成功导入祈愿数据" = "Dữ liệu cầu nguyện được nhập thành công";
+"导入时界面会卡住一段时间" = "Giao diện sẽ bị kẹt một lúc trong quá trình nhập";
+"请耐心等待…" = "xin vui lòng chờ đợi…";
+"开始" = "Bắt Đầu";
+"无法访问文件" = "Không thể truy cập tệp";
+"原始数据不存在" = "Dữ liệu thô không tồn tại";
+"数据表缺失数据" = "Bảng dữ liệu thiếu dữ liệu";
+"未成功从文件中解码数据" = "Không thể giải mã dữ liệu từ tệp";
+"导入帮助" = "Trợ giúp nhập vào";
+"以下程序或平台的JSON导出格式已通过可用性验证" = "Định dạng xuất JSON của các chương trình hoặc nền tảng sau đã được xác minh về khả năng sử dụng";
+"以下程序或平台的XLSX导出格式已通过可用性验证" = "Định dạng xuất XLSX của các chương trình hoặc nền tảng sau đã được xác minh về khả năng sử dụng";
+"我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。" = "Chúng tôi hỗ trợ tất cả các tệp xuất tuân thủ nghiêm ngặt tiêu chuẩn UIGF. Để biết danh sách các ứng dụng được hỗ trợ và các định dạng xuất tương ứng, vui lòng nhấp vào góc trên cùng bên phải để mở trang trợ giúp.";
+"我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。" = "Chúng tôi hỗ trợ nhập tất cả các tệp tuân thủ định dạng UIGF, nhưng chúng tôi đã phát hiện ra rằng một số phần mềm tuyên bố hỗ trợ UIGF không đáp ứng tiêu chuẩn. Phần mềm sau đã được xác minh để có thể nhập trơn tru vào ứng dụng này.";
+
+// gacha data management
+"导出UIGF祈愿记录" = "Xuất bản ghi cầu nguyện dạng UIGF";
+"祈愿数据管理" = "Quản lý dữ liệu Gacha";
+"清理重复数据" = "Dọn dẹp dữ liệu trùng lặp";
+"清理因iCloud同步导致出现的重复祈愿记录" = "Dọn dẹp các bản ghi cầu nguyện trùng lặp do đồng bộ hóa iCloud";
+"选择帐号" = "Chọn Tài Khoản";
+"未选择" = "Không Được Chọn";
+"删除所有时间的记录" = "Xóa hồ sơ tất cả thời gian.";
+"开始日期" = "Ngày bắt đầu";
+"结束日期" = "Ngày kết thúc";
+"删除祈愿记录" = "Xóa bản ghi cầu nguyện";
+"导出祈愿记录" = "Xuất bản ghi cầu nguyện";
+"确定要删除「%@」的祈愿数据吗？" = "Bạn có chắc chắn muốn xóa dữ liệu cầu nguyện của \"%@\"?";
+"即将删除「%@」%@的祈愿数据。" = "Dữ liệu cầu nguyện của \"%@\"%@ sắp bị xóa.";
+"删除了%lld条数据" = "Bản ghi %lld đã bị xóa";
+"删除了%lld条重复数据" = "Đã xóa %lld bản ghi trùng lặp";
+"所有" = "Tất Cả";
+"自%@到%@" = "Từ %@ đến %@";
+
+// gacha avaliable language
+"泰文" = "Thai";
+"朝鲜文" = "Korean";
+"西班牙文" = "Spanish";
+"日文" = "Japanese";
+"简体中文" = "Simplified Chinese";
+"印尼文" = "Indonesian";
+"葡萄牙文" = "Portuguese";
+"德文" = "German";
+"法文" = "French";
+"繁体中文" = "Traditional Chinese";
+"俄文" = "Russian";
+"英语（美国）" = "English (US)";
+"越南文" = "Vietnamese";
+"选择语言" = "Select Language";
+
+// Additional terms
+"开始导入？" = "Bắt đầu nhập ?";
+"导入数据需要一段时间，请耐心等待。" = "Quá trình nhập dữ liệu hơi lâu, vui lòng đợi…";
+
+// Genshin 3.6 new heros and weapons
+"白术" = "Baizhu";
+"卡维" = "Kaveh";
+"碧落之珑" = "Ngọc Bích Huy Hoàng";
