@@ -63,6 +63,9 @@ struct MIMTGetGachaView: View {
     @State
     var isErrorGetGachaRecordAlertShow: Bool = false
 
+    @State
+    var isCopyToClipboardAlertShow: Bool = false
+
     var body: some View {
         List {
             if urls.isEmpty {
@@ -96,7 +99,10 @@ struct MIMTGetGachaView: View {
                             .foregroundColor(.green)
                     }
                     Button {
-                        UIPasteboard.general.string = urls.last!
+                        if let url = urls.last {
+                            UIPasteboard.general.string = url
+                            isCopyToClipboardAlertShow.toggle()
+                        }
                     } label: {
                         Label("复制祈愿链接到剪切板", systemImage: "list.clipboard")
                     }
@@ -196,7 +202,8 @@ struct MIMTGetGachaView: View {
         .onChange(of: scenePhase) { newValue in
             if newValue == .active {
                 if urls.isEmpty {
-                    if let urls = popURLsFromStorage() {
+                    if let urls = popURLsFromStorage(),
+                       !urls.isEmpty {
                         withAnimation {
                             self.urls = urls
                             manager.stop()
@@ -238,25 +245,10 @@ struct MIMTGetGachaView: View {
         .onAppear {
             manager.makeManagerIfNoOther()
         }
-//        .onAppear {
-//            DispatchQueue.global(qos: .background).async {
-//                checkURLStorageAndGet()
-//            }
-//        }
+        .alert(isPresented: $isCopyToClipboardAlertShow) {
+            Alert(title: Text("成功将祈愿链接复制到剪切板"), message: Text(urls.last!))
+        }
     }
-
-//    func checkURLStorageAndGet() {
-//        if urls.isEmpty, let urls = popURLsFromStorage() {
-//            withAnimation {
-//                self.urls = urls
-//                manager.stop()
-//            }
-//        } else {
-//            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 3.0) {
-//                checkURLStorageAndGet()
-//            }
-//        }
-//    }
 }
 
 // MARK: - SheetType
