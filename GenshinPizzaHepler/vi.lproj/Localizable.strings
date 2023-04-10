@@ -1132,7 +1132,6 @@
 "不歪率" = "Tỉ Lệ 50/50";
 "派蒙的评价" = "Paimon's Review";
 "总消耗原石数" = "Tổng Số Lượng Nguyên Thạch";
-"五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao";
 "限定五星平均消耗原石数" = "Số Nguyên Thạch Cho Mỗi Cung Mệnh Nhân Vật 5 Sao Giới Hạn";
 "平均抽数：" = "Số Lượt Trung Bình:";
 "暂不支持国际服" = "Không hỗ trợ máy chủ quốc tế";
@@ -1234,9 +1233,7 @@
 
 "导入UIGF JSON格式祈愿记录" = "Nhập bản ghi UIGF JSON";
 "导入UIGF XLSX格式祈愿记录" = "Nhập bản ghi UIGF XLSX";
-"目前仅支持导入简体中文祈愿记录" = "Hiện tại chỉ hỗ trợ nhập hồ sơ cầu nguyện tiếng Trung giản thể";
 "导入中，请稍候…" = "Đang nhập, vui lòng đợi…";
-"成功导入祈愿数据" = "Dữ liệu cầu nguyện được nhập thành công";
 "数据来自：%@" = "Nguồn dữ liệu: %@";
 "导出时间：%@" = "thời gian xuất: %@";
 "导入了%lld条记录" = "Bản ghi %lld đã nhập";
@@ -1246,8 +1243,6 @@
 "错误信息：%@" = "Thông báo lỗi: %@";
 "重试" = "Thử Lại";
 "成功导入祈愿数据" = "Dữ liệu cầu nguyện được nhập thành công";
-"导入时界面会卡住一段时间" = "Giao diện sẽ bị kẹt một lúc trong quá trình nhập";
-"请耐心等待…" = "xin vui lòng chờ đợi…";
 "开始" = "Bắt Đầu";
 "无法访问文件" = "Không thể truy cập tệp";
 "原始数据不存在" = "Dữ liệu thô không tồn tại";

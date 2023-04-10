@@ -1132,7 +1132,6 @@
 "不歪率" = "Won 50/50";
 "派蒙的评价" = "Paimon's Review";
 "总消耗原石数" = "Total Primogems Cost";
-"五星平均抽数" = "5-star Average Pulls";
 "限定五星平均消耗原石数" = "Limited 5-star Average Primogems Cost";
 "平均抽数：" = "Average Pulls:";
 "暂不支持国际服" = "暂不支持国际服";
@@ -1234,9 +1233,7 @@
 
 "导入UIGF JSON格式祈愿记录" = "Import UIGF JSON wish records";
 "导入UIGF XLSX格式祈愿记录" = "Import UIGF XLSX wish records";
-"目前仅支持导入简体中文祈愿记录" = "Currently only supports importing simplified Chinese wish records";
 "导入中，请稍候…" = "Importing, please wait…";
-"成功导入祈愿数据" = "Wish data imported successfully";
 "数据来自：%@" = "Data source: %@";
 "导出时间：%@" = "Export time: %@";
 "导入了%lld条记录" = "Imported %lld records";
@@ -1246,7 +1243,6 @@
 "错误信息：%@" = "Error message: %@";
 "重试" = "Retry";
 "成功导入祈愿数据" = "Wish data imported successfully";
-"导入时界面会卡住一段时间" = "The interface will be stuck for a while during the import";
 "请耐心等待…" = "Please be wait…";
 "开始" = "Start";
 "无法访问文件" = "Unable to access file";
