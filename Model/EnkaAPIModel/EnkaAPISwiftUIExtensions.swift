@@ -12,27 +12,42 @@ import SwiftUI
 
 import HBPizzaHelperAPI
 
-extension ENCharacterMap.Character {
-    enum DecoratedIconCutType: CGFloat {
-        case shoulder = 1
-        case head = 1.5
-        case face = 2
-    }
+// MARK: - DecoratedIconCutType
 
-    /// 顯示帶有背景的角色肖像。
+public enum DecoratedIconCutType: CGFloat {
+    case shoulder = 1
+    case head = 1.5
+    case face = 2
+
+    // MARK: Internal
+
+    func shiftedAmount(containerSize size: CGFloat) -> CGFloat {
+        switch self {
+        case .shoulder: return 0
+        default: return size / (4 * rawValue)
+        }
+    }
+}
+
+extension ENCharacterMap.Character {
+    /// 显示带有背景的角色肖像。
     /// - Parameters:
     ///   - size: 尺寸。
-    ///   - cutType: 決定裁切到哪個身體部位。
+    ///   - cutType: 决定裁切到哪个身体部位。
     /// - Returns: SwiftUI "some View"
     func decoratedIcon(_ size: CGFloat, cutTo cutType: DecoratedIconCutType = .shoulder) -> some View {
-        // let delta: CGFloat = cutType.rawValue
-        // 由于 Lava 强烈反对针对证件照的脸裁切与头裁切，所以上一行禁用，以下一行取而代之。
-        let delta: CGFloat = DecoratedIconCutType.shoulder.rawValue
+        // 由于 Lava 强烈反对针对证件照的脸裁切与头裁切，
+        // 所以不预设启用该功能。
+        var cutType = cutType
+        if !AppConfig.cutShouldersForSmallAvatarPhotos {
+            cutType = .shoulder
+        }
         return EnkaWebIcon(iconString: iconString)
             .scaledToFill()
-            .frame(width: size * delta, height: size * delta)
+            .frame(width: size * cutType.rawValue, height: size * cutType.rawValue)
             .clipped()
             .scaledToFit()
+            .offset(y: cutType.shiftedAmount(containerSize: size))
             .background(
                 EnkaWebIcon(
                     iconString: namecardIconString
@@ -47,14 +62,14 @@ extension ENCharacterMap.Character {
 }
 
 extension PlayerDetail.Avatar {
-    /// 顯示帶有背景的角色肖像。
+    /// 显示带有背景的角色肖像。
     /// - Parameters:
     ///   - size: 尺寸。
-    ///   - cutType: 決定裁切到哪個身體部位。
+    ///   - cutType: 决定裁切到哪个身体部位。
     /// - Returns: SwiftUI "some View"
     func decoratedIcon(
         _ size: CGFloat,
-        cutTo cutType: ENCharacterMap.Character.DecoratedIconCutType = .shoulder
+        cutTo cutType: DecoratedIconCutType = .shoulder
     )
         -> some View {
         character.decoratedIcon(size, cutTo: cutType)

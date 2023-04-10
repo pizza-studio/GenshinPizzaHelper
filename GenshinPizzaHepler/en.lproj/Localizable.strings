@@ -1105,6 +1105,9 @@
 "「旗杆」" = "The Flagstaff";
 "翡玉法球" = "Emerald Orb";
 
+// Display Options
+"裁掉小尺寸角色照片当中的肩膀" = "Cut shoulders for small avatar photos";
+
 // artifact rating
 "%@分" = "%@pt";
 "圣遗物评价" = "Artifact Rank";

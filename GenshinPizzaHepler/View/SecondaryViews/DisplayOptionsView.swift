@@ -90,6 +90,12 @@ struct DisplayOptionsView: View {
                     )
                 }
             }
+
+            Section {
+                Toggle(isOn: $cutShouldersForSmallAvatarPhotos) {
+                    Text("裁掉小尺寸角色照片当中的肩膀")
+                }
+            }
         }
     }
 
@@ -135,4 +141,10 @@ struct DisplayOptionsView: View {
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     private var customizedNameForWanderer: String = ""
+
+    @AppStorage(
+        "cutShouldersForSmallAvatarPhotos",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    private var cutShouldersForSmallAvatarPhotos: Bool = false
 }

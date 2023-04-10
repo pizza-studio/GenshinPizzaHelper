@@ -87,4 +87,10 @@ extension AppConfig {
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     public static var customizedNameForWanderer: String = ""
+
+    @AppStorage(
+        "cutShouldersForSmallAvatarPhotos",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var cutShouldersForSmallAvatarPhotos: Bool = false
 }

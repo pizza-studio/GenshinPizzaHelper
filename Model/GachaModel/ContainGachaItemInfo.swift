@@ -57,7 +57,7 @@ extension GachaItemType {
 }
 
 extension ContainGachaItemInfo {
-    var _itemType: GachaItemType {
+    var type: GachaItemType {
         switch itemType {
         case "武器": return .weapon
         case "角色": return .character
@@ -66,7 +66,7 @@ extension ContainGachaItemInfo {
     }
 
     var iconImageName: String {
-        switch _itemType {
+        switch type {
         case .character:
             if let id = GachaItemNameIconMap.characterIdMap[name] {
                 return "UI_AvatarIcon_\(id)"
@@ -84,10 +84,10 @@ extension ContainGachaItemInfo {
         }
     }
 
-    func backgroundImageName() -> some View {
+    var backgroundImageView: some View {
         GachaItemBackgroundImage(
             name: name,
-            _itemType: _itemType,
+            _itemType: type,
             _rankLevel: _rankLevel
         )
     }
@@ -96,6 +96,40 @@ extension ContainGachaItemInfo {
 //        guard lang != "zh-cn" else { return name }
         // TODO: 翻译为其他语言
         name.localizedWithFix
+    }
+
+    /// 显示带有背景的角色肖像图示或武器图示。
+    /// - Parameters:
+    ///   - size: 尺寸。
+    ///   - cutType: 决定裁切到哪个身体部位。该选项对武器无效。
+    /// - Returns: SwiftUI "some View"
+    func decoratedIconView(_ size: CGFloat, cutTo cutType: DecoratedIconCutType = .shoulder) -> some View {
+        guard type != .weapon else {
+            let result = EnkaWebIcon(iconString: iconImageName)
+                .scaleEffect(0.9)
+                .background(backgroundImageView)
+                .frame(width: size, height: size)
+                .clipShape(Circle())
+                .contentShape(Circle())
+            return AnyView(result)
+        }
+        // 由于 Lava 强烈反对针对证件照的脸裁切与头裁切，
+        // 所以不预设启用该功能。
+        var cutType = cutType
+        if !AppConfig.cutShouldersForSmallAvatarPhotos {
+            cutType = .shoulder
+        }
+        let result = EnkaWebIcon(iconString: iconImageName)
+            .scaledToFill()
+            .frame(width: size * cutType.rawValue, height: size * cutType.rawValue)
+            .clipped()
+            .scaledToFit()
+            .offset(y: cutType.shiftedAmount(containerSize: size))
+            .background(backgroundImageView)
+            .frame(width: size, height: size)
+            .clipShape(Circle())
+            .contentShape(Circle())
+        return AnyView(result)
     }
 }
 

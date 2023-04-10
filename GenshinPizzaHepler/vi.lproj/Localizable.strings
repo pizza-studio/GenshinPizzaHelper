@@ -1105,6 +1105,9 @@
 "「旗杆」" = "The Flagstaff";
 "翡玉法球" = "Quả Cầu Ngọc";
 
+// Display Options
+"裁掉小尺寸角色照片当中的肩膀" = "Cắt vai trong ảnh nhân vật kích thước nhỏ";
+
 // artifact rating
 "%@分" = "%@pt";
 "圣遗物评价" = "Xếp Hạng Thánh Di Vật";

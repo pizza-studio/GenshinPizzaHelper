@@ -140,15 +140,7 @@ private struct GachaItemBar: View {
                 Label {
                     Text(item.localizedName)
                 } icon: {
-                    EnkaWebIcon(
-                        iconString: item.iconImageName
-                    )
-                    .scaleEffect(item._itemType == .weapon ? 0.9 : 1)
-                    .background(
-                        AnyView(item.backgroundImageName())
-                    )
-                    .frame(width: 30, height: 30)
-                    .clipShape(Circle())
+                    item.decoratedIconView(30, cutTo: .face)
                 }
                 Spacer()
                 VStack(alignment: .trailing) {

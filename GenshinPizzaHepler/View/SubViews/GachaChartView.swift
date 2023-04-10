@@ -225,13 +225,7 @@ private struct GachaItemChart: View {
                     if let id = value.as(String.self),
                        let item = items
                        .first(where: { $0.0.id == id })?.0 {
-                        EnkaWebIcon(
-                            iconString: item.iconImageName
-                        )
-                        .scaleEffect(item._itemType == .weapon ? 0.9 : 1)
-                        .background(item.backgroundImageName())
-                        .frame(width: 45, height: 45)
-                        .clipShape(Circle())
+                        item.decoratedIconView(45, cutTo: .head)
                     } else {
                         EmptyView()
                     }

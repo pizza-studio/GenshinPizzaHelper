@@ -449,15 +449,7 @@ private struct GachaItemBar: View {
             Label {
                 Text(item.localizedName)
             } icon: {
-                EnkaWebIcon(
-                    iconString: item.iconImageName
-                )
-                .scaleEffect(item._itemType == .weapon ? 0.9 : 1)
-                .background(
-                    AnyView(item.backgroundImageName())
-                )
-                .frame(width: width, height: width)
-                .clipShape(Circle())
+                item.decoratedIconView(width, cutTo: .face)
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 1) {
@@ -516,16 +508,7 @@ private struct GachaChart: View {
                            let item = fiveStarItems
                            .first(where: { $0.0.id == id })?.0 {
                             VStack {
-                                EnkaWebIcon(
-                                    iconString: item.iconImageName
-                                )
-                                .scaleEffect(
-                                    item
-                                        ._itemType == .weapon ? 0.9 : 1
-                                )
-                                .background(item.backgroundImageName())
-                                .frame(width: 30, height: 30)
-                                .clipShape(Circle())
+                                item.decoratedIconView(30, cutTo: .face)
                             }
 
                         } else {

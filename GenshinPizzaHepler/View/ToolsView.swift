@@ -935,6 +935,8 @@ private struct LedgerSheetView: View {
 
 @available(iOS 15.0, *)
 private struct AllAvatarNavigator: View {
+    // MARK: Internal
+
     let basicInfo: BasicInfos
     let charMap: [String: ENCharacterMap.Character]
     @Binding
@@ -950,7 +952,8 @@ private struct AllAvatarNavigator: View {
             HStack(spacing: 3) {
                 ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
                     if let char = charMap[avatar.id.description] {
-                        char.decoratedIcon(30, cutTo: .face)
+                        // 必须在这里绑一下 AppStorage，不然这个画面的内容不会自动更新。
+                        char.decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
                     }
                 }
             }
@@ -960,6 +963,14 @@ private struct AllAvatarNavigator: View {
             sheetType = .allAvatarList
         }
     }
+
+    // MARK: Private
+
+    @AppStorage(
+        "cutShouldersForSmallAvatarPhotos",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    private var cutShouldersForSmallAvatarPhotos: Bool = false
 }
 
 // MARK: - PrimogemTextLabel

@@ -215,15 +215,15 @@ struct LiveActivityBackgroundPicker: View {
 
     var body: some View {
         List {
-            ForEach(searchResults, id: \.self) { backgroundImageName in
+            ForEach(searchResults, id: \.self) { backgroundImageView in
                 HStack {
                     Label {
                         Text(
-                            backgroundImageName.localizedWithFix
+                            backgroundImageView.localizedWithFix
                         )
                     } icon: {
                         GeometryReader { g in
-                            Image(backgroundImageName)
+                            Image(backgroundImageView)
                                 .resizable()
                                 .scaledToFill()
                                 .offset(x: -g.size.width)
@@ -233,11 +233,11 @@ struct LiveActivityBackgroundPicker: View {
                     }
                     Spacer()
                     if resinRecoveryLiveActivityBackgroundOptions
-                        .contains(backgroundImageName) {
+                        .contains(backgroundImageView) {
                         Button {
                             resinRecoveryLiveActivityBackgroundOptions
                                 .removeAll { name in
-                                    name == backgroundImageName
+                                    name == backgroundImageView
                                 }
                         } label: {
                             Image(systemName: "checkmark.circle.fill")
@@ -246,7 +246,7 @@ struct LiveActivityBackgroundPicker: View {
                     } else {
                         Button {
                             resinRecoveryLiveActivityBackgroundOptions
-                                .append(backgroundImageName)
+                                .append(backgroundImageView)
                         } label: {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.accentColor)
