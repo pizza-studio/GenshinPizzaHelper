@@ -437,7 +437,7 @@
 "根据提示选择设置项或启用/关闭功能或修改背景" = "Suivez les instructions pour sélectionner les paramètres, activer/désactiver des fonctionnalités ou modifier l'arrière-plan";
 "如何添加小组件？" = "Comment ajouter un widget sur votre écran d'accueil";
 "关于如何添加小组件，请参考Apple支持文档" = "Pour savoir comment ajouter un widget, veuillez vous référer aux documents d'assistance Apple";
-"如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件" = "Si vous ne trouvez pas notre widget dans la liste des widgets de votre système d'exploitation, redémarrez et attendez 10 minutes avant de réessayer".
+"如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件" = "Si vous ne trouvez pas notre widget dans la liste des widgets de votre système d'exploitation, redémarrez et attendez 10 minutes avant de réessayer";
 
 // App Introduce Video
 "App介绍视频" = "App Introduction Video";
@@ -1269,8 +1269,8 @@
 "结束日期" = "Date de fin";
 "删除祈愿记录" = "Supprimer les enregistrements de souhaits";
 "导出祈愿记录" = "Exporter les enregistrements de souhaits";
-"确定要删除「%@」的祈愿数据吗？" = "Êtes-vous sûr de vouloir supprimer les données de souhaits de "%@" ?";
-"即将删除「%@」%@的祈愿数据。" = "Les données de souhaits de "%@"%@ sont sur le point d'être supprimées.";
+"确定要删除「%@」的祈愿数据吗？" = "Êtes-vous sûr de vouloir supprimer les données de souhaits de \"%@\" ?";
+"即将删除「%@」%@的祈愿数据。" = "Les données de souhaits de \"%@\"%@ sont sur le point d'être supprimées.";
 "删除了%lld条数据" = "Supprimé %lld enregistrements";
 "删除了%lld条重复数据" = "Supprimé %lld enregistrements en double";
 "所有" = "Tous";
