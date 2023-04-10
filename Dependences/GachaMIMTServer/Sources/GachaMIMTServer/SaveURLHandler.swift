@@ -34,8 +34,8 @@ func gotURL(url: RustStr) {
     }
 
     let content = UNMutableNotificationContent()
-    content.title = contentTitle
-    content.body = contentBody
+    content.title = NSLocalizedString("title", bundle: .module, value: "fail find title", comment: "")
+    content.body = NSLocalizedString("body", bundle: .module, value: "fail find body", comment: "")
 
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
 
@@ -46,45 +46,3 @@ func gotURL(url: RustStr) {
     UNUserNotificationCenter.current().add(request)
 
 }
-
-fileprivate let contentTitle: String = {
-    guard let firstLocale = Locale.current.languageCode else { return "" }
-    switch firstLocale {
-    case _ where (firstLocale.contains("zh-Hans") || firstLocale.contains("zh-CN")):
-        return "成功获取到祈愿链接"
-    case _ where (firstLocale.contains("zh-Hant") || firstLocale
-        .contains("zh-TW") || firstLocale.contains("zh-HK")):
-        return "成功獲取到祈願鏈接"
-    case _ where firstLocale.prefix(2).description == "ja": // Japanese
-        return "Successfully obtained the wish history URL"
-    case _ where firstLocale.prefix(2).description == "fr": // French
-        return "Successfully obtained the wish history URL"
-    case _ where firstLocale.prefix(2).description == "ru": // Russian
-        return "Successfully obtained the wish history URL"
-    case _ where firstLocale.prefix(2).description == "vi": // Vietnamese
-        return "Successfully obtained the wish history URL"
-    default: // English
-        return "Successfully obtained the wish history URL"
-    }
-}()
-
-fileprivate let contentBody: String = {
-    guard let firstLocale = Locale.current.languageCode else { return "" }
-    switch firstLocale {
-    case _ where (firstLocale.contains("zh-Hans") || firstLocale.contains("zh-CN")):
-        return "请返回继续获取祈愿记录。"
-    case _ where (firstLocale.contains("zh-Hant") || firstLocale
-        .contains("zh-TW") || firstLocale.contains("zh-HK")):
-        return "請返回繼續獲取祈願記錄。"
-    case _ where firstLocale.prefix(2).description == "ja": // Japanese
-        return "Please go back and continue obtaining the wish history records."
-    case _ where firstLocale.prefix(2).description == "fr": // French
-        return "Please go back and continue obtaining the wish history records."
-    case _ where firstLocale.prefix(2).description == "ru": // Russian
-        return "Please go back and continue obtaining the wish history records."
-    case _ where firstLocale.prefix(2).description == "vi": // Vietnamese
-        return "Please go back and continue obtaining the wish history records."
-    default: // English
-        return "Please go back and continue obtaining the wish history records."
-    }
-}()
