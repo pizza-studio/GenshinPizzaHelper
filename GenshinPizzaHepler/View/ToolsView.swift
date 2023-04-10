@@ -301,7 +301,7 @@ struct ToolsView: View {
                                     }
                             }
                         }
-                        .padding(.vertical)
+                        .padding(.vertical, 4)
                     }
                 }
                 Divider()
@@ -943,7 +943,7 @@ private struct AllAvatarNavigator: View {
     var sheetType: ToolsView.SheetTypes?
 
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             Text("所有角色")
                 .padding(.trailing)
                 .font(.footnote)

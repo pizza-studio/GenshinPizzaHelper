@@ -240,7 +240,7 @@ struct ToolsViewSimplified: View {
                                     }
                             }
                         }
-                        .padding(.vertical)
+                        .padding(.vertical, 4)
                     }
                 }
                 #if DEBUG
@@ -827,7 +827,7 @@ private struct AllAvatarNavigator: View {
     var sheetType: SheetTypes?
 
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             Text("所有角色")
                 .padding(.trailing)
                 .font(.footnote)

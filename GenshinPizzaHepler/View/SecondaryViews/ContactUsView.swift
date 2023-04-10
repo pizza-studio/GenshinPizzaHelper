@@ -12,6 +12,14 @@ import SwiftUI
 struct ContactUsView: View {
     // MARK: Internal
 
+    var groupFooterText: String {
+        var text = ""
+        if Locale.isUILanguagePanChinese {
+            text = "我们推荐您加入QQ频道。QQ群都即将满员，而在频道你可以与更多朋友们交流，第一时间获取来自开发者的消息，同时还有官方消息的转发和其他更多功能！"
+        }
+        return text
+    }
+
     var body: some View {
         List {
             // developer - lava
@@ -274,11 +282,7 @@ struct ContactUsView: View {
             // app contact
             Section(
                 header: Text("用户交流群"),
-                footer:
-                Text(
-                    "我们推荐您加入QQ频道。QQ群都即将满员，而在频道你可以与更多朋友们交流，第一时间获取来自开发者的消息，同时还有官方消息的转发和其他更多功能！"
-                )
-                .textCase(.none)
+                footer: Text(groupFooterText).textCase(.none)
             ) {
                 Menu {
                     Link(
@@ -405,7 +409,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("Lava")
                         Spacer()
-                        Text("英语")
+                        Text("英文")
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -418,7 +422,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("水里的碳酸钙")
                         Spacer()
-                        Text("日语 英语")
+                        Text("日文".localized + " & " + "英文".localized)
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -431,7 +435,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("ShikiSuen")
                         Spacer()
-                        Text("繁体中文")
+                        Text("繁体中文".localized + " & " + "日文".localized)
                             .foregroundColor(.gray)
                     }
                 } icon: {
