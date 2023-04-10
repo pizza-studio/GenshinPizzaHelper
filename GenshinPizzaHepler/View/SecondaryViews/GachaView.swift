@@ -653,11 +653,12 @@ private struct HelpSheet: View {
                         "无论选择哪种方式，我们都为您提供了详细的操作教程",
                         systemImage: "person.fill.questionmark"
                     )
-                    Label(
-                        "您也可以选择参考我们的视频完成相关操作",
-                        systemImage: "hand.thumbsup.fill"
-                    )
-                    GachaHelpVideoLink()
+                    // TODO: not completed gacha tutorial video
+//                    Label(
+//                        "您也可以选择参考我们的视频完成相关操作",
+//                        systemImage: "hand.thumbsup.fill"
+//                    )
+//                    GachaHelpVideoLink()
                 }
                 Section {
                     Label("如果您的帐号所在服务器位于中国大陆", systemImage: "text.bubble")
@@ -731,7 +732,7 @@ private struct HelpSheet: View {
 
 // MARK: - GachaHelpVideoLink
 
-struct GachaHelpVideoLink: View {
+private struct GachaHelpVideoLink: View {
     var body: some View {
         Link(destination: URL(
             string: "https://www.bilibili.com/video/BV1Lg411S7wa"

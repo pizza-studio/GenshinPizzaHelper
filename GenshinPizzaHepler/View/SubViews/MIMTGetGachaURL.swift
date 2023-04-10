@@ -278,7 +278,7 @@ private struct CASheetItems: View {
         }
         Section {
             Text("您也可以选择根据跟随以下视频进行安装CA证书。")
-            GachaHelpVideoLink()
+            CAInstallHelpVideoLink()
         }
         Section {
             Label("下载CA证书", systemImage: "1.circle")
@@ -300,6 +300,47 @@ private struct CASheetItems: View {
             )
         } header: {
             Text("如何安装CA证书？")
+        }
+    }
+}
+
+private struct CAInstallHelpVideoLink: View {
+    var body: some View {
+        Link(destination: URL(
+            string: "https://www.bilibili.com/video/BV1vj411c7Ro/"
+        )!) {
+            Label {
+                Text("打开Bilibili观看")
+            } icon: {
+                Image("bilibili")
+                    .resizable()
+                    .foregroundColor(.blue)
+                    .scaledToFit()
+            }
+        }
+        Menu {
+            Link(destination: URL(string: "https://youtu.be/gJmE_y3uvuI")!) {
+                Text(verbatim: "English")
+            }
+            Link(destination: URL(string: "https://youtu.be/WbUYL2D-P5w")!) {
+                Text(verbatim: "日本語")
+            }
+            Link(destination: URL(string: "https://youtu.be/l_qaNmTohNQ")!) {
+                Text(verbatim: "繁體中文")
+            }
+            Link(destination: URL(string: "https://youtu.be/-pyDvaipZuw")!) {
+                Text(verbatim: "简体中文")
+            }
+
+        } label: {
+            Label {
+                Text("打开YouTube观看")
+            } icon: {
+                Image("youtube")
+                    .resizable()
+                    .foregroundColor(.blue)
+                    .scaledToFit()
+            }
         }
     }
 }
@@ -347,7 +388,7 @@ private struct HelpSheet<V>: View {
                 }
                 Section {
                     Link(destination: URL(
-                        string: "https://www.bilibili.com/video/BV1Lg411S7wa"
+                        string: "https://www.bilibili.com/video/BV1vj411c7Ro/"
                     )!) {
                         Label {
                             Text("打开Bilibili观看")
@@ -358,11 +399,21 @@ private struct HelpSheet<V>: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(
-                        destination: URL(
-                            string: "https://www.youtube.com/watch?v=k9G2N8XYFm4"
-                        )!
-                    ) {
+                    Menu {
+                        Link(destination: URL(string: "https://youtu.be/gJmE_y3uvuI")!) {
+                            Text(verbatim: "English")
+                        }
+                        Link(destination: URL(string: "https://youtu.be/WbUYL2D-P5w")!) {
+                            Text(verbatim: "日本語")
+                        }
+                        Link(destination: URL(string: "https://youtu.be/l_qaNmTohNQ")!) {
+                            Text(verbatim: "繁體中文")
+                        }
+                        Link(destination: URL(string: "https://youtu.be/-pyDvaipZuw")!) {
+                            Text(verbatim: "简体中文")
+                        }
+
+                    } label: {
                         Label {
                             Text("打开YouTube观看")
                         } icon: {

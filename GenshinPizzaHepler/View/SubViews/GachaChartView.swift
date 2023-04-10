@@ -19,37 +19,37 @@ struct GachaChartView: View {
 
     var body: some View {
         List {
-            NavigationLink {
-                List {
-                    Section {
-                        ForEach(
-                            [
-                                GachaType.character,
-                                GachaType.weapon,
-                                GachaType.standard,
-                            ],
-                            id: \.rawValue
-                        ) { type in
-                            VStack(alignment: .trailing, spacing: 0) {
-                                Text(type.localizedDescription()).font(.caption)
-                                    .foregroundColor(.gray)
-                                GachaTimeChart(
-                                    gachaViewModel: gachaViewModel,
-                                    type: type
-                                )
-                            }
-                        }
-                    } header: {
-                        Text("总抽数分布")
-                    }
-                    .navigationTitle("其他图表")
-                }
-            } label: {
-                Label(
-                    "其他图表",
-                    systemImage: "chart.bar.doc.horizontal"
-                )
-            }
+//            NavigationLink {
+//                List {
+//                    Section {
+//                        ForEach(
+//                            [
+//                                GachaType.character,
+//                                GachaType.weapon,
+//                                GachaType.standard,
+//                            ],
+//                            id: \.rawValue
+//                        ) { type in
+//                            VStack(alignment: .trailing, spacing: 0) {
+//                                Text(type.localizedDescription()).font(.caption)
+//                                    .foregroundColor(.gray)
+//                                GachaTimeChart(
+//                                    gachaViewModel: gachaViewModel,
+//                                    type: type
+//                                )
+//                            }
+//                        }
+//                    } header: {
+//                        Text("总抽数分布")
+//                    }
+//                    .navigationTitle("其他图表")
+//                }
+//            } label: {
+//                Label(
+//                    "其他图表",
+//                    systemImage: "chart.bar.doc.horizontal"
+//                )
+//            }
             Section {
                 GachaItemChart(
                     items: gachaViewModel

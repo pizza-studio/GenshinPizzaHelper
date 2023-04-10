@@ -180,6 +180,9 @@ struct BackgroundOptions {
         "艾尔海森・诲明",
         "须弥·砂岚",
         "瑶瑶・月桂",
+        "迪希雅・净焰",
+        "米卡・索引",
+        "纪行・意巧",
     ]
     static let allOptions: [String] = BackgroundOptions
         .colors + BackgroundOptions.namecards

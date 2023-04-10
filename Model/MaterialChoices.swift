@@ -271,6 +271,7 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_EquipIcon_Bow_Kirin_Awaken",
                 nameToLocalize: "若水"
             ),
+            .init(imageString: "UI_EquipIcon_Catalyst_Morax_Awaken", nameToLocalize: "碧落之珑"),
         ]
     )
     static let mistVeiled: WeaponOrTalentMaterial = .init(
@@ -788,6 +789,7 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_AvatarIcon_Feiyan_Card",
                 nameToLocalize: "烟绯"
             ),
+            .init(imageString: "UI_AvatarIcon_Baizhuer_Card", nameToLocalize: "白术"),
         ]
     )
 
@@ -911,6 +913,7 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_AvatarIcon_Alhatham_Card",
                 nameToLocalize: "艾尔海森"
             ),
+            .init(imageString: "UI_AvatarIcon_Kaveh_Card", nameToLocalize: "卡维"),
         ]
     )
     static let praxis: WeaponOrTalentMaterial = .init(

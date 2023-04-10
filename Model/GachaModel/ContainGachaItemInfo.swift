@@ -346,6 +346,7 @@ enum GachaItemNameIconMap {
             "弹弓": "UI_EquipIcon_Bow_Sling_Awaken",
             "信使": "UI_EquipIcon_Bow_Msg_Awaken",
             "黑檀弓": "UI_EquipIcon_Bow_Hardwood_Awaken",
+            "碧落之珑": "UI_EquipIcon_Catalyst_Morax_Awaken",
         ]
     }
 
@@ -415,6 +416,8 @@ enum GachaItemNameIconMap {
             "妮露": "Nilou",
             "流浪者": "Wanderer",
             "迪希雅": "Dehya",
+            "卡维": "Kaveh",
+            "白术": "Baizhuer",
         ]
     }
 }
