@@ -56,9 +56,8 @@ extension String {
 
 extension Locale {
     public static var langCodeForAPI: String {
-        let lcl = Locale.current.languageCode
-        // let bmpf = Bundle.main.preferredLocalizations.first
-        let languageCode = lcl ?? "en-us"
+        let bmpf = Bundle.main.preferredLocalizations.first
+        let languageCode = bmpf ?? "en-us"
         print(languageCode)
         switch languageCode.prefix(2) {
         case "zh": return "zh-cn"
