@@ -72,6 +72,13 @@ public struct AllAvatarDetailModel: Codable {
         public var name: String
         public var rarity: Int
 
+        public var isProtagonist: Bool {
+            switch id {
+            case 10000005, 10000007: return true
+            default: return false
+            }
+        }
+
         public static func == (
             lhs: AllAvatarDetailModel.Avatar,
             rhs: AllAvatarDetailModel.Avatar

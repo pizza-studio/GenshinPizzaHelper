@@ -566,52 +566,6 @@ private struct AvatarAndSkillView: View {
     }
 }
 
-// MARK: - Trailing Text Label
-
-extension View {
-    fileprivate func corneredTag(
-        _ stringKey: LocalizedStringKey,
-        alignment: Alignment,
-        textSize: CGFloat = 18,
-        opacity: CGFloat = 1,
-        enabled: Bool = true
-    )
-        -> some View {
-        guard stringKey != "", enabled else { return AnyView(self) }
-        return AnyView(
-            ZStack(alignment: alignment) {
-                self
-                Text(stringKey)
-                    .font(.systemCondensed(size: textSize, weight: .medium))
-                    .padding(.horizontal, 6.4)
-                    .alternativeBlurMaterialBackground().clipShape(Capsule())
-                    .opacity(opacity)
-            }
-        )
-    }
-
-    fileprivate func corneredTag(
-        varbatim stringVerbatim: String,
-        alignment: Alignment,
-        textSize: CGFloat = 11,
-        opacity: CGFloat = 1,
-        enabled: Bool = true
-    )
-        -> some View {
-        guard stringVerbatim != "", enabled else { return AnyView(self) }
-        return AnyView(
-            ZStack(alignment: alignment) {
-                self
-                Text(stringVerbatim)
-                    .font(.systemCondensed(size: textSize, weight: .medium))
-                    .padding(.horizontal, 6.4)
-                    .alternativeBlurMaterialBackground().clipShape(Capsule())
-                    .opacity(opacity)
-            }
-        )
-    }
-}
-
 // MARK: - Artifact Extension (SwiftUI)
 
 extension PlayerDetail.Avatar.Artifact {

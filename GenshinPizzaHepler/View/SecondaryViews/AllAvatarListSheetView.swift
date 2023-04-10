@@ -160,7 +160,7 @@ struct AvatarListItem: View {
     let charMap: [String: ENCharacterMap.Character]?
 
     var body: some View {
-        HStack {
+        HStack(spacing: 3) {
             ZStack(alignment: .bottomLeading) {
                 Group {
                     if let char = charMap?["\(avatar.id)"] {
@@ -171,15 +171,13 @@ struct AvatarListItem: View {
                 }
                 .frame(width: 55, height: 55)
                 .clipShape(Circle())
-                Image(systemName: "heart.fill")
-                    .overlay {
-                        Text("\(avatar.fetter)")
-                            .font(.caption2)
-                            .foregroundColor(.white)
-                    }
-                    .foregroundColor(Color(UIColor.darkGray))
-                    .blendMode(.hardLight)
             }
+            .frame(width: 65, alignment: .leading)
+            .corneredTag(
+                varbatim: "♡\(avatar.fetter)",
+                alignment: .bottomTrailing,
+                enabled: !avatar.isProtagonist
+            )
             VStack(spacing: 3) {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
                     Text(avatar.nameCorrected)

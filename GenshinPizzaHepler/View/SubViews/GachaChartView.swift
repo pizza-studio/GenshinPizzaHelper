@@ -162,6 +162,10 @@ private struct GachaItemChart: View {
         }
     }
 
+    func matchedItems(with value: String) -> [GachaItem] {
+        items.map(\.0).filter { $0.id == value }
+    }
+
     func colors(items: [(GachaItem, count: Int)]) -> [Color] {
         fiveStarItems.map { _, count in
             switch count {
@@ -233,11 +237,10 @@ private struct GachaItemChart: View {
             }
             AxisMarks { value in
                 AxisValueLabel(content: {
-                    if let id = value.as(String.self),
-                       let item = items
-                       .first(where: { $0.0.id == id })?.0 {
+                    if let theValue = value.as(String.self),
+                       let item = matchedItems(with: theValue).first {
                         Text(item.localizedName)
-                            .offset(y: 8)
+                            .offset(y: items.count == 1 ? 0 : 8)
                     } else {
                         EmptyView()
                     }
