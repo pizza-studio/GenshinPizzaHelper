@@ -104,7 +104,7 @@ struct MIMTGetGachaView: View {
                             isCopyToClipboardAlertShow.toggle()
                         }
                     } label: {
-                        Label("复制祈愿链接到剪切板", systemImage: "list.clipboard")
+                        Label("复制祈愿链接到剪贴板", systemImage: "list.clipboard")
                     }
                 } footer: {
                     HStack {
@@ -246,7 +246,7 @@ struct MIMTGetGachaView: View {
             manager.makeManagerIfNoOther()
         }
         .alert(isPresented: $isCopyToClipboardAlertShow) {
-            Alert(title: Text("成功将祈愿链接复制到剪切板"), message: Text(urls.last!))
+            Alert(title: Text("成功将祈愿链接复制到剪贴板"), message: Text(urls.last!))
         }
     }
 }

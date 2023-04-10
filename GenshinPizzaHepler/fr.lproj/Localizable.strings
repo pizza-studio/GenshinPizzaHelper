@@ -1301,9 +1301,9 @@
 "卡维" = "Kaveh";
 "碧落之珑" = "Jadefall’s Splendor";
 
-"复制祈愿链接到剪切板" = "Copier le lien de vœu dans le presse-papiers";
+"复制祈愿链接到剪贴板" = "Copier le lien de vœu dans le presse-papiers";
 "暂无五星祈愿记录" = "Aucun enregistrement de vœu à 5 étoiles pour le moment";
-"成功将祈愿链接复制到剪切板" = "Le lien de vœu a été copié avec succès dans le presse-papiers";
+"成功将祈愿链接复制到剪贴板" = "Le lien de vœu a été copié avec succès dans le presse-papiers";
 
 // Genshin 3.6 Namecards
 "迪希雅・净焰" = "Dehya - Feu purifiant";
