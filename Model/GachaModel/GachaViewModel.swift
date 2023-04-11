@@ -31,6 +31,7 @@ class GachaViewModel: ObservableObject {
                 .persistentStoreCoordinator
         )
         _ = manager.cleanDuplicatedItems()
+        manager.viewModel = self
     }
 
     // MARK: Internal

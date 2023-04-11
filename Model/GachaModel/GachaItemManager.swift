@@ -50,6 +50,8 @@ public class GachaModelManager {
 
     static let shared: GachaModelManager = .init()
 
+    weak var viewModel: GachaViewModel?
+
     var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         container.persistentStoreCoordinator
     }
@@ -187,6 +189,10 @@ public class GachaModelManager {
     func save() {
         do {
             try container.viewContext.save()
+            if let viewModel = viewModel {
+                viewModel.objectWillChange.send()
+                viewModel.filterGachaItem()
+            }
         } catch {
             print("ERROR SAVING. \(error.localizedDescription)")
         }
@@ -199,7 +205,7 @@ public class GachaModelManager {
             models.forEach { item in
                 container.viewContext.delete(item)
             }
-            try container.viewContext.save()
+            save()
         } catch {
             print(error)
         }
@@ -221,7 +227,7 @@ public class GachaModelManager {
                     }
                 }
             }
-            try container.viewContext.save()
+            save()
             return deletedItemCount
         } catch {
             print(error.localizedDescription)
@@ -245,7 +251,7 @@ public class GachaModelManager {
             items.forEach { item in
                 container.viewContext.delete(item)
             }
-            try container.viewContext.save()
+            save()
             return items.count
         } catch {
             print(error.localizedDescription)
