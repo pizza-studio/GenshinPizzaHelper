@@ -71,10 +71,15 @@ struct ExportGachaView: View {
                         }
                     }
                 }
-                Picker("选择语言", selection: $params.lang) {
-                    ForEach(GachaLanguageCode.allCases, id: \.rawValue) { code in
-                        Text(code.description).tag(code)
+                Section {
+                    Picker("选择语言", selection: $params.lang) {
+                        ForEach(GachaLanguageCode.allCases, id: \.rawValue) { code in
+                            Text(code.description).tag(code)
+                        }
                     }
+                    .disabled(true)
+                } footer: {
+                    Text("UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。")
                 }
             }
             .navigationTitle("导出祈愿记录")

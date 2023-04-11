@@ -1309,3 +1309,5 @@
 "迪希雅・净焰" = "Dehya: Purifying Flame";
 "米卡・索引" = "Mika: Index";
 "纪行・意巧" = "Travel Notes: Artful Intent";
+
+"UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。" = "The multi-language support for UIGF is still under discussion, and the export function currently only supports Simplified Chinese. We will add support for multiple languages as soon as it is completed.";
