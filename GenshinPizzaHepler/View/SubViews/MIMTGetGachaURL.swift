@@ -616,7 +616,7 @@ extension VPNManager.VPNStatus: CustomStringConvertible {
     var description: String {
         switch self {
         case .connected:
-            return "正在抓包…请前往打开《原神》前往祈愿记录页面".localized
+            return "正在抓包…请打开《原神》前往祈愿记录页面".localized
         case .connecting:
             return "正在开启VPN".localized
         case .notConnected:

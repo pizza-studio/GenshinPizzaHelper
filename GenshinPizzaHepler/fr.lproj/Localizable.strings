@@ -1206,7 +1206,7 @@
 "成功获取到祈愿记录链接" = "URL de l'historique de souhaits obtenue avec succès";
 "请点击「开始获取祈愿记录」以继续" = "Veuillez cliquer sur 'Commencer à obtenir les enregistrements de souhaits' pour continuer";
 "获取祈愿记录" = "Obtenir les enregistrements de souhaits";
-"正在抓包…请前往打开《原神》前往祈愿记录页面" = "Capture de paquets en cours… Veuillez ouvrir 'Genshin Impact' et accéder à la page d'historique de souhaits";
+"正在抓包…请打开《原神》前往祈愿记录页面" = "Capture de paquets en cours… Veuillez ouvrir 'Genshin Impact' et accéder à la page d'historique de souhaits";
 "正在开启VPN" = "Activation du VPN en cours";
 "等待开始…" = "En attente du début…";
 "获取到%@条记录，成功保存%@条新记录\n请返回上一级查看，或继续获取其他帐号的记录" = "Obtenu %@ enregistrements, %@ d'entre eux ont été enregistrés avec succès.\nRetournez à la page précédente pour les visualiser ou continuez d'obtenir des enregistrements d'autres comptes.";
