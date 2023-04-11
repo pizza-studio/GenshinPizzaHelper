@@ -326,6 +326,20 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
+
+                    Link(
+                        destination: URL(
+                            string: "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=736320270"
+                        )!
+                    ) {
+                        Label {
+                            Text("3群: 736320270")
+                        } icon: {
+                            Image("qq")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
                 } label: {
                     Label {
                         Text("加入QQ群")
