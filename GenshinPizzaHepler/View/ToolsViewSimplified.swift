@@ -549,6 +549,14 @@ struct ToolsViewSimplified: View {
     @ViewBuilder
     func toolsSection() -> some View {
         Section {
+            NavigationLink(destination: GachaView()) {
+                Label {
+                    Text("祈愿分析")
+                } icon: {
+                    Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
+                        .scaledToFit()
+                }
+            }
             NavigationLink {
                 AbyssDataCollectionView()
             } label: {
