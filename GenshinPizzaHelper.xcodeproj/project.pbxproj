@@ -2949,7 +2949,7 @@
 				INFOPLIST_FILE = GachaMIMT/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GachaMIMT;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2959,7 +2959,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.GachaMIMT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2978,7 +2978,7 @@
 				INFOPLIST_FILE = GachaMIMT/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GachaMIMT;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2988,7 +2988,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.GachaMIMT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
