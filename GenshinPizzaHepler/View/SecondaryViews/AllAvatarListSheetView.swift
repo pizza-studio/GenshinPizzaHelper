@@ -172,78 +172,30 @@ struct AvatarListItem: View {
                 .frame(width: 55, height: 55)
                 .clipShape(Circle())
             }
-            .frame(width: 65, alignment: .leading)
+            .frame(width: 75, alignment: .leading)
             .corneredTag(
-                varbatim: "♡\(avatar.fetter)",
+                verbatim: "Lv.\(avatar.level)",
+                alignment: .topTrailing
+            )
+            .corneredTag(
+                "\(avatar.activedConstellationNum)命",
+                alignment: .trailing
+            )
+            .corneredTag(
+                verbatim: "♡\(avatar.fetter)",
                 alignment: .bottomTrailing,
                 enabled: !avatar.isProtagonist
             )
             VStack(spacing: 3) {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
                     Text(avatar.nameCorrected)
-                        .font(.system(size: 20, weight: .medium))
-                        // .fixedSize(horizontal: true, vertical: false)
+                        .font(.systemCompressed(size: 20, weight: .heavy))
+                        .fixedSize(horizontal: true, vertical: false)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                     Spacer()
-                    Text("Lv. \(avatar.level)")
-                        .layoutPriority(1)
-                        .fixedSize()
-                        .font(.callout)
-                    Text("\(avatar.activedConstellationNum)命")
-                        .font(.caption)
-                        .padding(.horizontal, 5)
-                        .background(
-                            Capsule()
-                                .foregroundColor(Color(UIColor.systemGray))
-                                .opacity(0.2)
-                        )
-                        .layoutPriority(1)
-                        .fixedSize()
                 }
                 HStack(spacing: 0) {
-                    HStack(spacing: 0) {
-                        ZStack {
-                            EnkaWebIcon(
-                                iconString: RankLevel(
-                                    rawValue: avatar
-                                        .weapon.rarity
-                                )?
-                                    .squaredBackgroundIconString ?? ""
-                            )
-                            .scaledToFit()
-                            .scaleEffect(1.1)
-                            .clipShape(Circle())
-                            if let iconString = URL(string: avatar.weapon.icon)?
-                                .lastPathComponent.split(separator: ".").first {
-                                EnkaWebIcon(
-                                    iconString: String(iconString) +
-                                        "_Awaken"
-                                ).scaledToFit()
-                            } else {
-                                WebImage(urlStr: avatar.weapon.icon)
-                                    .scaledToFit()
-                            }
-                        }
-                        .frame(width: 25, height: 25)
-                        .padding(.trailing, 3)
-                        HStack(alignment: .lastTextBaseline, spacing: 5) {
-                            Text("Lv. \(avatar.weapon.level)")
-                                .font(.callout)
-                            Text("精\(avatar.weapon.affixLevel)")
-                                .font(.caption)
-                                .padding(.horizontal, 5)
-                                .background(
-                                    Capsule()
-                                        .foregroundColor(Color(
-                                            UIColor
-                                                .systemGray
-                                        ))
-                                        .opacity(0.2)
-                                )
-                        }
-                    }
-                    Spacer()
                     ForEach(avatar.reliquaries, id: \.id) { reliquary in
                         Group {
                             if let iconString = URL(string: reliquary.icon)?
@@ -254,10 +206,45 @@ struct AvatarListItem: View {
                                 WebImage(urlStr: reliquary.icon)
                             }
                         }
-                        .frame(width: 25, height: 25)
+                        .frame(width: 20, height: 20)
                     }
+                    Spacer().frame(height: 20)
                 }
             }
+            ZStack(alignment: .bottomLeading) {
+                Group {
+                    EnkaWebIcon(
+                        iconString: RankLevel(
+                            rawValue: avatar
+                                .weapon.rarity
+                        )?
+                            .squaredBackgroundIconString ?? ""
+                    )
+                    .opacity(0.5)
+                    .scaledToFit()
+                    .scaleEffect(1.1)
+                    .clipShape(Circle())
+                    if let iconString = URL(string: avatar.weapon.icon)?
+                        .lastPathComponent.split(separator: ".").first {
+                        EnkaWebIcon(
+                            iconString: String(iconString) +
+                                "_Awaken"
+                        ).scaledToFit()
+                    } else {
+                        WebImage(urlStr: avatar.weapon.icon)
+                            .scaledToFit()
+                    }
+                }
+                .frame(width: 50, height: 50)
+            }
+            .corneredTag(
+                "精\(avatar.weapon.affixLevel)",
+                alignment: .topLeading
+            )
+            .corneredTag(
+                verbatim: "Lv.\(avatar.weapon.level)",
+                alignment: .bottomTrailing
+            )
         }
     }
 }

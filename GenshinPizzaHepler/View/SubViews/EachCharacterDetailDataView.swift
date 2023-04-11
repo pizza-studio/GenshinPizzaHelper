@@ -304,12 +304,14 @@ struct EachCharacterDetailDataView: View {
         .corneredTag(
             "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
             alignment: .bottom,
+            textSize: fontSize * 0.72,
             enabled: AppConfig.showRarityAndLevelForArtifacts
         )
         .corneredTag(
             // TODO: i18n malfunction.
             "\(String(format: "%.0f", artifact.score ?? -1))分",
             alignment: .topLeading,
+            textSize: fontSize * 0.72,
             enabled: artifact.score != nil && AppConfig.showRatingsForArtifacts
         )
         VStack(spacing: 0 + Self.spacingDelta) {

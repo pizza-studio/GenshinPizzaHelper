@@ -99,7 +99,7 @@ extension View {
     public func corneredTag(
         _ stringKey: LocalizedStringKey,
         alignment: Alignment,
-        textSize: CGFloat = 18,
+        textSize: CGFloat = 12,
         opacity: CGFloat = 1,
         enabled: Bool = true
     )
@@ -110,7 +110,7 @@ extension View {
                 self
                 Text(stringKey)
                     .font(.systemCondensed(size: textSize, weight: .medium))
-                    .padding(.horizontal, 6.4)
+                    .padding(.horizontal, 0.3 * textSize)
                     .alternativeBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
             }
@@ -118,9 +118,9 @@ extension View {
     }
 
     public func corneredTag(
-        varbatim stringVerbatim: String,
+        verbatim stringVerbatim: String,
         alignment: Alignment,
-        textSize: CGFloat = 11,
+        textSize: CGFloat = 12,
         opacity: CGFloat = 1,
         enabled: Bool = true
     )
