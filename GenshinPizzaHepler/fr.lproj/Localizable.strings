@@ -11,7 +11,6 @@
 "原神披萨小助手" = "Genshin Pizza Helper";
 "主页" = "Accueil";
 "设置" = "Réglage";
-"我的帐号" = "Mon Compte";
 "添加帐号" = "Ajouter Compte";
 "通知推送" = "Notifications";
 "通知推送设置" = "Réglage Notification";
@@ -55,7 +54,6 @@
 "登录帐号获取Cookie" = "obtenir Cookie via HoYoLAB";
 
 "请完成登录" = "Merci de finir la Connection";
-"完成" = "Fini";
 "未获取到登录信息，请重试" = "Erreur d'obtention d'information. Merci de réessayer.";
 "尚未完成帐号设置" = "La configuration du compte n'a pas été terminée";
 "添加帐号前…" = "Avant d'ajouter votre compte…";
@@ -102,7 +100,6 @@
 "全部完成时" = "Lorsque toutes sont terminées";
 "任一完成时" = "Lorsqu'une d'entre elles est terminée";
 "每日委托提醒" = "Quête quotidienne";
-"提醒时间" = "L'heure d'alerte";
 "周本折扣提醒" = "Boss hebdomadaire";
 "提醒日期" = "Jour d'alerte";
 "参量质变仪提醒" = "Transformateur paramétrique";
@@ -362,14 +359,10 @@
 "九条裟罗" = "Sara";
 "鹿野院平藏" = "Heizou";
 "雷电将军" = "Shogun";
-"赛诺" = "Cyno";
 "提纳里" = "Tighnari";
 "柯莱" = "Collei";
 "多莉" = "Dori";
-"艾尔海森" = "Alhaitham";
 "迪希雅" = "Dehya";
-"妮露" = "Nilou";
-"纳西妲" = "Nahida";
 "林尼" = "Lyney";
 "琳妮特" = "Lynette";
 "伊安珊" = "Iansan";
@@ -385,7 +378,6 @@
 "请前往米游社（或Hoyolab）打开旅行便笺功能" = "Merci d'activer d'abord Les données en temps réel dans HoYoLAB ";
 "解码错误：请检查网络环境" = "Decode Error: Merci de vérifier votre réseau";
 "网络错误" = "Erreur du réseau";
-"未获取到登录信息，请重试" = "Nous n'avons pas pu obtenir les informations de Connection, merci de réessayer";
 "未知错误码：%@" = "Erreur Inconnue %@";
 
 "无返回数据" = "Pas de réponses du serveur";
@@ -452,7 +444,6 @@
 "探索派遣" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
-"可使用" = "Available";
 "%@ 回满" = "Replenished at %@";
 "树脂已全部回满" = "Resin is fully replenished";
 
@@ -744,7 +735,6 @@
 "星期一 & 星期四" = "Lundi et Jeudi";
 "星期二 & 星期五" = "Mardi et Vendredi";
 "星期三 & 星期六" = "Mercredi et Samedi";
-"星期日" = "Dimanche";
 
 // Tool View
 "请先选择帐号" = "Veuillez d'abord choisir un compte";
@@ -871,7 +861,6 @@
 "五星角色" = "5-star characters";
 "四星角色" = "4-star characters";
 "的所有角色" = "Owned Characters";
-"生命值上限" = "Max HP";
 "元素精通​" = "EM"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
 "纳西妲" = "Nahida";
 "莱依拉" = "Layla";
@@ -941,7 +930,7 @@
 "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Notifications are created locally and are automatically updated when the widget refreshes, or when you open the App. \nLong periods of time without opening the App or without using the widget may result in inaccurate notifications. \nSome notifications may only be refreshed by opening the App if the widget is in clean mode.";
 
 "顶置" = "Pin to top";
-"（1034）帐号状态异常，建议降低小组件请求频率，或长按小组件开启简洁模式" = "(1034) The account status is abnormal. It is recommended to reduce the widget request frequency, or long press the widget to open the simple mode";
+"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) The account status is abnormal. It is recommended to reduce the widget request frequency, or long press the widget to open the simple mode";
 "请重新登录本帐号以获取stoken" = "Please re-login this account to get stoken";
 "请登录「%@」" = "Log in to \"%@\"";
 
@@ -1016,7 +1005,6 @@
 "每小时%@个" = "%@ per hour";
 "每%@" = "Every %@";
 
-"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Account status is abnormal, suggest to reduce the widget sync frequency, or long press the widget to open simplified mode";
 "小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "The widget is fixed to refresh every 8 minutes, the sync frequency will not affect the widget refresh. It is recommended that you set a longer sync frequency if possible and open the app to sync once after each tour.";
 "小组件同步频率" = "Widget Sync Frequency";
 "主屏幕小组件同步频率" = "Home screen widget sync frequency";
@@ -1136,7 +1124,7 @@
 "总消耗原石数" = "Total Primogems Cost";
 "限定五星平均消耗原石数" = "Limited 5-star Average Primogems Cost";
 "平均抽数：" = "Average Pulls:";
-"暂不支持国际服" = "暂不支持国际服";
+"暂不支持国际服" = "Les serveurs internationaux ne sont pas encore pris en charge";
 
 "详细记录" = "Record Details";
 "其他图表" = "Other Charts";
@@ -1225,7 +1213,6 @@
 "成功获取到祈愿链接" = "URL d'historique de souhaits obtenue avec succès";
 "请返回继续获取祈愿记录。" = "Veuillez revenir en arrière et continuer à obtenir l'historique des souhaits.";
 "重新获取祈愿链接" = "Obtenir à nouveau l'URL d'historique de souhaits";
-"开始获取祈愿记录" = "Commencer à obtenir l'historique des souhaits";
 "从剪贴板上获取到的链接有误" = "L'URL obtenue à partir du presse-papiers est incorrecte";
 "预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Il était prévu d'obtenir l'URL d'historique des souhaits, mais le contenu obtenu est incorrect :\n%@";
 "未能从剪贴板获取到内容" = "Impossible d'obtenir le contenu du presse-papiers";
@@ -1280,16 +1267,12 @@
 "泰文" = "Thaïlandais";
 "朝鲜文" = "Coréen";
 "西班牙文" = "Espagnol";
-"日文" = "Japonais";
 "简体中文" = "Chinois simplifié";
 "印尼文" = "Indonésien";
 "葡萄牙文" = "Portugais";
 "德文" = "Allemand";
-"法文" = "Français";
 "繁体中文" = "Chinois traditionnel";
-"俄文" = "Russe";
 "英语（美国）" = "Anglais (US)";
-"越南文" = "Vietnamien";
 "选择语言" = "Sélectionner la langue";
 
 // Additional terms
@@ -1309,3 +1292,11 @@
 "迪希雅・净焰" = "Dehya - Feu purifiant";
 "米卡・索引" = "Mika - Index";
 "纪行・意巧" = "PB - Débrouillardise";
+
+// MARK: - 2.8.1
+"生成并复制祈愿链接至剪贴板" = "Generate and copy wish link to clipboard";
+"正在获取祈愿链接，请稍等" = "Fetching wish link, please wait";
+"生成祈愿链接失败" = "Failed to generate wish link";
+"失败信息：%@" = "Error message: %@";
+"UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。" = "The multi-language support for UIGF is still under discussion, and the export function currently only supports Simplified Chinese. We will add support for multiple languages as soon as it is completed.";
+"3群: 736320270" = "Group 3: 736320270";

@@ -11,7 +11,6 @@
 "原神披萨小助手" = "Genshin Pizza Helper";
 "主页" = "Home";
 "设置" = "Settings";
-"我的帐号" = "My accounts";
 "添加帐号" = "Add Account";
 "通知推送" = "Notifications";
 "通知推送设置" = "Notification Settings";
@@ -55,7 +54,6 @@
 "登录帐号获取Cookie" = "Get Cookie via HoYoLAB";
 
 "请完成登录" = "Please finish login";
-"完成" = "Done";
 "未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
 "尚未完成帐号设置" = "Account configuration is not finished";
 "添加帐号前…" = "Before adding your account…";
@@ -102,7 +100,6 @@
 "全部完成时" = "All done";
 "任一完成时" = "Each done";
 "每日委托提醒" = "Daily Commission";
-"提醒时间" = "Send at";
 "周本折扣提醒" = "Weekly Boss";
 "提醒日期" = "Send on";
 "参量质变仪提醒" = "Parametric Transformer";
@@ -362,14 +359,10 @@
 "九条裟罗" = "Sara";
 "鹿野院平藏" = "Heizou";
 "雷电将军" = "Shogun";
-"赛诺" = "Cyno";
 "提纳里" = "Tighnari";
 "柯莱" = "Collei";
 "多莉" = "Dori";
-"艾尔海森" = "Alhaitham";
 "迪希雅" = "Dehya";
-"妮露" = "Nilou";
-"纳西妲" = "Nahida";
 "林尼" = "Lyney";
 "琳妮特" = "Lynette";
 "伊安珊" = "Iansan";
@@ -385,7 +378,6 @@
 "请前往米游社（或Hoyolab）打开旅行便笺功能" = "Please open Real-Time Notes in HoYoLAB app first";
 "解码错误：请检查网络环境" = "Decode Error: please check your network status";
 "网络错误" = "Network Error";
-"未获取到登录信息，请重试" = "Failed to fetch your login infos, please re-login HoYoLAB";
 "未知错误码：%lld" = "Unknown Error %lld";
 
 "无返回数据" = "No Response Data";
@@ -452,7 +444,6 @@
 "探索派遣" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
-"可使用" = "Available";
 "%@ 回满" = "Refilled at %@";
 "树脂已全部回满" = "Resin is fully capped";
 
@@ -744,7 +735,6 @@
 "星期一 & 星期四" = "Mon & Thu";
 "星期二 & 星期五" = "Tue & Fri";
 "星期三 & 星期六" = "Wed & Sat";
-"星期日" = "Sunday";
 
 // Tool View
 "请先选择帐号" = "Please choose account first";
@@ -871,7 +861,6 @@
 "五星角色" = "5-star characters";
 "四星角色" = "4-star characters";
 "的所有角色" = "Owned Characters";
-"生命值上限" = "Max HP";
 "元素精通​" = "EM"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
 "纳西妲" = "Nahida";
 "莱依拉" = "Layla"; 
@@ -1016,7 +1005,6 @@
 "每小时%@个" = "%@ per hour";
 "每%@" = "Every %@";
 
-"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Account status is abnormal, suggest to reduce the widget sync frequency, or long press the widget to open simplified mode";
 "小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "The widget is fixed to refresh every 8 minutes, the sync frequency will not affect the widget refresh. It is recommended that you set a longer sync frequency if possible and open the app to sync once after each tour.";
 "小组件同步频率" = "Widget Sync Frequency";
 "主屏幕小组件同步频率" = "Home screen widget sync frequency";
@@ -1136,7 +1124,7 @@
 "总消耗原石数" = "Total Primogems Cost";
 "限定五星平均消耗原石数" = "Limited 5-star Average Primogems Cost";
 "平均抽数：" = "Average Pulls:";
-"暂不支持国际服" = "暂不支持国际服";
+"暂不支持国际服" = "Global Servers are not supported yet";
 
 "详细记录" = "Record Details";
 "其他图表" = "Other Charts";
@@ -1225,7 +1213,6 @@
 "成功获取到祈愿链接" = "Successfully obtained the wish history URL";
 "请返回继续获取祈愿记录。" = "Please go back and continue obtaining the wish history records.";
 "重新获取祈愿链接" = "Get wish history URL again";
-"开始获取祈愿记录" = "Start obtaining wish record";
 "从剪贴板上获取到的链接有误" = "The URL obtained from the clipboard is incorrect";
 "预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Expected to obtain the wish history URL, but obtained incorrect content:\n%@";
 "未能从剪贴板获取到内容" = "Fail to get content from the clipboard";
@@ -1280,16 +1267,12 @@
 "泰文" = "Thai";
 "朝鲜文" = "Korean";
 "西班牙文" = "Spanish";
-"日文" = "Japanese";
 "简体中文" = "Simplified Chinese";
 "印尼文" = "Indonesian";
 "葡萄牙文" = "Portuguese";
 "德文" = "German";
-"法文" = "French";
 "繁体中文" = "Traditional Chinese";
-"俄文" = "Russian";
 "英语（美国）" = "English (US)";
-"越南文" = "Vietnamese";
 "选择语言" = "Select Language";
 
 // Additional terms
@@ -1323,5 +1306,5 @@
 "错误信息：%@" = "Error message: %@";
 "确定要删除吗？" = "Are you sure you want to delete?";
 "删除" = "Delete";
-"删除成功" = "Delete successful";
-"清理重复数据成功" = "Clean up duplicate data successfully";
+"删除成功" = "Successfully Deleted";
+"清理重复数据成功" = "Successfully cleaned up duplicate data ";
