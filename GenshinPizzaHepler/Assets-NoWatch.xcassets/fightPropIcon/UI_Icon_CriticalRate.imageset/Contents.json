@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "CritRate.heic",
+      "filename" : "CritRate.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CritRate@2x.heic",
+      "filename" : "CritRate@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

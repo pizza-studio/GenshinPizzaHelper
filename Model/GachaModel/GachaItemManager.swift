@@ -141,7 +141,6 @@ public class GachaModelManager {
     )
         -> Int {
         var count = 0
-        let manager = GachaTranslateManager.shared
         container.viewContext.performAndWait {
             items.enumerated().forEach { index, item in
                 var item = item

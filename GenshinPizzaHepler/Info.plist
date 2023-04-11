@@ -41,6 +41,12 @@
 		<string>SelectAccountIntent</string>
 		<string>SelectOnlyAccountIntent</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>RobotoCondensed-Regular.ttf</string>
+		<string>RobotoCondensed-Bold.ttf</string>
+		<string>RobotoCondensed-Light.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

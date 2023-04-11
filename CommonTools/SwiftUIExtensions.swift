@@ -42,7 +42,17 @@ extension Font {
                     )
             )
         }
-        return .system(size: size, weight: weight ?? .regular)
+        if let weight = weight {
+            switch weight {
+            case .black, .bold, .heavy, .medium, .semibold:
+                return .custom("RobotoCondensed-Bold", size: size)
+            case .thin, .ultraLight:
+                return .custom("RobotoCondensed-Light", size: size)
+            default:
+                return .custom("RobotoCondensed-Regular", size: size)
+            }
+        }
+        return .custom("RobotoCondensed-Regular", size: size)
     }
 
     public static func systemCompressed(
@@ -75,7 +85,15 @@ extension Font {
                     )
             )
         }
-        return .system(size: size, weight: weight ?? .regular)
+        if let weight = weight {
+            switch weight {
+            case .black, .heavy:
+                return .custom("HelveticaNeue-CondensedBlack", size: size)
+            default:
+                return .custom("HelveticaNeue-CondensedBold", size: size)
+            }
+        }
+        return .custom("HelveticaNeue-CondensedBold", size: size)
     }
 }
 

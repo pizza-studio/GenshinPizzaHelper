@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - CharacterDetailView
+
 // @available(iOS 15, *)
 struct CharacterDetailView: View {
     // MARK: Internal
@@ -103,7 +105,9 @@ struct CharacterDetailView: View {
             // Fallback on earlier versions
             TabView(selection: $showingCharacterName) {
                 ForEach(playerDetail.avatars, id: \.name) { avatar in
-                    framedCoreView(avatar)
+                    VStack {
+                        framedCoreView(avatar)
+                    }
                 }
             }
             .tabViewStyle(
@@ -116,10 +120,13 @@ struct CharacterDetailView: View {
                 closeView()
             }
             .background(
-                EnkaWebIcon(iconString: avatar.namecardIconString)
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
-                    .blur(radius: 30)
+                ZStack {
+                    EnkaWebIcon(iconString: avatar.namecardIconString)
+                        .scaledToFill()
+                        .ignoresSafeArea(.all)
+                        .blur(radius: 30)
+                    Color(UIColor.systemGray6).opacity(0.5)
+                }
             )
             .onChange(of: showingCharacterName) { _ in
                 simpleTaptic(type: .selection)
@@ -155,6 +162,10 @@ struct CharacterDetailView: View {
         }
     }
 
+    var bottomSpacerHeight: CGFloat {
+        ThisDevice.isSmallestHDScreenPhone ? 50 : 20
+    }
+
     @ViewBuilder
     func framedCoreView(
         _ avatar: PlayerDetail
@@ -173,7 +184,7 @@ struct CharacterDetailView: View {
                     vertical: true
                 )
                 .scaleEffect(scaleRatioCompatible)
-            Spacer().frame(width: 25, height: 20)
+            Spacer().frame(width: 25, height: bottomSpacerHeight)
         }
     }
 

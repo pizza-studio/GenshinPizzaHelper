@@ -17,6 +17,18 @@
 		5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3029D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3129D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
+		5BAF709229E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
+		5BAF709329E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
+		5BAF709429E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
+		5BAF709529E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */; };
+		5BAF709629E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */; };
+		5BAF709729E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */; };
+		5BAF70A129E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */; };
+		5BAF70A229E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */; };
+		5BAF70A329E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */; };
+		5BAF70A429E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
+		5BAF70A529E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
+		5BAF70A629E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
 		5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AB29E19A8F00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
@@ -639,6 +651,10 @@
 		5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseUIAccommodations.swift; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
 		5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
+		5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
+		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		5BAF709129E5764E0096228B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
@@ -998,6 +1014,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BAF708929E5764E0096228B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5BAF708A29E5764E0096228B /* Roboto_Condensed */,
+			);
+			path = Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
+		5BAF708A29E5764E0096228B /* Roboto_Condensed */ = {
+			isa = PBXGroup;
+			children = (
+				5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */,
+				5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */,
+				5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */,
+				5BAF709129E5764E0096228B /* LICENSE.txt */,
+			);
+			path = Roboto_Condensed;
+			sourceTree = "<group>";
+		};
 		BF0D437F28C3897600FA600F /* SecondaryViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1510,6 +1545,7 @@
 				EA7F67C9289D711200D2CE29 /* README.md */,
 				EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */,
 				BF6C5258289E02B600EA224F /* .github */,
+				5BAF708929E5764E0096228B /* Fonts */,
 				EAAF330D28A27AEA0018EFAB /* Model */,
 				BF6C525E289E0F2A00EA224F /* Request */,
 				BF6C5270289E12B500EA224F /* CommonTools */,
@@ -1959,7 +1995,11 @@
 				EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */,
 				EA78BF0B290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EA196B0528B76B5E0091FAE0 /* Localizable.strings in Resources */,
+				5BAF709729E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */,
+				5BAF70A329E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */,
 				BFFD821228A5F9A100616CE1 /* Assets.xcassets in Resources */,
+				5BAF70A629E5764E0096228B /* LICENSE.txt in Resources */,
+				5BAF709429E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */,
 				EAEC420228B0994C0056D182 /* 洞天宝钱.png in Resources */,
 				EAEC41E328B096180056D182 /* 每日任务.png in Resources */,
 			);
@@ -1974,10 +2014,14 @@
 				EAEC420128B0994C0056D182 /* 洞天宝钱.png in Resources */,
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
+				5BAF709629E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */,
+				5BAF70A229E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */,
+				5BAF70A529E5764E0096228B /* LICENSE.txt in Resources */,
 				BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */,
 				EA78BF0A290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EAEC41E228B096170056D182 /* 每日任务.png in Resources */,
 				BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */,
+				5BAF709329E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */,
 				EAEC41F828B0994C0056D182 /* 参量质变仪.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1994,6 +2038,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6829DC28A2523800E57462 /* .gitignore in Resources */,
+				5BAF709229E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */,
 				EA78BF09290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EA2FF0E928B093AE0050C016 /* 每日任务.png in Resources */,
 				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
@@ -2001,10 +2046,13 @@
 				EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */,
 				EAEC420028B0994C0056D182 /* 洞天宝钱.png in Resources */,
 				BF70212D28B50D7800A6BBA9 /* Localizable.strings in Resources */,
+				5BAF70A429E5764E0096228B /* LICENSE.txt in Resources */,
 				EAA2D4122931C36F00BC94A8 /* Settings.bundle in Resources */,
 				EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */,
+				5BAF70A129E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */,
 				EAEC41FD28B0994C0056D182 /* 周本.png in Resources */,
 				EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */,
+				5BAF709529E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */,
 				BF70213428B5259300A6BBA9 /* InfoPlist.strings in Resources */,
 				EA8C85EB29DE928500FBAADF /* gacha_lang_dictionary.json in Resources */,
 				EAEC41FA28B0994C0056D182 /* 树脂.png in Resources */,
