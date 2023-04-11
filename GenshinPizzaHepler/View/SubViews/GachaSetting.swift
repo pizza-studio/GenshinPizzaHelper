@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct GachaSetting: View {
+    // MARK: Internal
+
     enum AlertType: Identifiable {
         case deleteCheck
         case deleteCompleted(Int)
@@ -46,7 +49,24 @@ struct GachaSetting: View {
     var deleteAll: Bool = false
 
     @State
-    var alert: AlertType?
+    var alert: AlertType? {
+        didSet {
+            if let alert = alert {
+                switch alert {
+                case .deleteCheck:
+                    isDeleteConfirmAlertShow = true
+                case .deleteCompleted:
+                    isDeleteCompletedAlertShow = true
+                case .duplicatedCleanCompleted:
+                    isDuplicatedCleanCompletedAlertShow = true
+                }
+            } else {
+                isDeleteConfirmAlertShow = false
+                isDeleteCompletedAlertShow = false
+                isDuplicatedCleanCompletedAlertShow = false
+            }
+        }
+    }
 
     @State
     var isExportSheetShow: Bool = false
@@ -129,56 +149,68 @@ struct GachaSetting: View {
         .sheet(isPresented: $isExportSheetShow, content: {
             ExportGachaView(isSheetShow: $isExportSheetShow)
         })
-        .alert(item: $alert, content: { alert in
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            formatter.timeStyle = .none
-            let startDate: Date
-            let endDate: Date
-            if deleteAll {
-                startDate = .distantPast
-                endDate = .distantFuture
-            } else {
-                startDate = self.startDate
-                endDate = self.endDate
+        .alert("确定要删除吗？", isPresented: $isDeleteConfirmAlertShow, presenting: alert, actions: { thisAlert in
+            Button("删除", role: .destructive) {
+                alert = nil
+                alert = .deleteCompleted(
+                    gachaViewModel.manager
+                        .deleteData(
+                            for: account!,
+                            startDate: startDate,
+                            endData: endDate
+                        )
+                )
+                withAnimation {
+                    account = nil
+                }
+            }
+        }, message: { thisAlert in
+            let startDate: Date = deleteAll ? .distantPast : startDate
+            let endDate: Date = deleteAll ? .distantFuture : endDate
+            var rangeFormatter: DateIntervalFormatter {
+                let formatter = DateIntervalFormatter()
+                formatter.dateStyle = .long
+                formatter.timeStyle = .none
+                return formatter
             }
             let rangeDesc: String = deleteAll ? "所有".localized :
-                "自\(formatter.string(from: startDate))到\(formatter.string(from: endDate))".localized
-            switch alert {
-            case .deleteCheck:
-                return Alert(
-                    title: Text(
-                        "确定要删除「\(viewModel.accounts.first(where: { $0.config.uid! == account! })?.config.name ?? account!)」的祈愿数据吗？"
-                    ),
-                    message: Text(
-                        "即将删除「\(viewModel.accounts.first(where: { $0.config.uid! == account! })?.config.name ?? account!)」\(rangeDesc)的祈愿数据。"
-                    ),
-                    primaryButton: .destructive(Text("删除"), action: {
-                        withAnimation {
-                            self
-                                .alert = .deleteCompleted(
-                                    gachaViewModel.manager
-                                        .deleteData(
-                                            for: account!,
-                                            startDate: startDate,
-                                            endData: endDate
-                                        )
-                                )
-                            account = nil
-                        }
-                    }),
-                    secondaryButton: .default(Text("取消"))
-                )
-            case let .deleteCompleted(count):
-                return Alert(
-                    title: Text("删除了\(count)条数据")
-                )
-            case let .duplicatedCleanCompleted(count):
-                return Alert(
-                    title: Text("删除了\(count)条重复数据")
-                )
+                rangeFormatter.string(from: startDate, to: endDate)
+            Text(
+                "即将删除「\(viewModel.accounts.first(where: { $0.config.uid! == account! })?.config.name ?? account!)」\(rangeDesc)的祈愿数据。"
+            )
+        })
+        .alert("删除成功", isPresented: $isDeleteCompletedAlertShow, presenting: alert, actions: { thisAlert in
+            Button("好") {
+                alert = nil
             }
-
+        }, message: { thisAlert in
+            switch thisAlert {
+            case let .deleteCompleted(count):
+                Text("删除了\(count)条数据")
+            default:
+                EmptyView()
+            }
+        })
+        .alert("清理重复数据成功", isPresented: $isDuplicatedCleanCompletedAlertShow, presenting: alert, actions: { thisAlert in
+            Button("好") {
+                alert = nil
+            }
+        }, message: { thisAlert in
+            switch thisAlert {
+            case let .duplicatedCleanCompleted(count):
+                Text("删除了\(count)条重复数据")
+            default:
+                EmptyView()
+            }
         })
     }
+
+    // MARK: Fileprivate
+
+    @State
+    fileprivate var isDeleteConfirmAlertShow: Bool = false
+    @State
+    fileprivate var isDeleteCompletedAlertShow: Bool = false
+    @State
+    fileprivate var isDuplicatedCleanCompletedAlertShow: Bool = false
 }

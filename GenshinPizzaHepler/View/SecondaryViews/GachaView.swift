@@ -12,6 +12,7 @@ import SwiftUI
 
 // MARK: - GachaView
 
+@available(iOS 15.0, *)
 struct GachaView: View {
     @EnvironmentObject
     var viewModel: ViewModel
@@ -546,6 +547,7 @@ private struct GachaChart: View {
 
 // MARK: - GetGachaNavigationMenu
 
+@available(iOS 15.0, *)
 private struct GetGachaNavigationMenu: View {
     // MARK: Internal
 

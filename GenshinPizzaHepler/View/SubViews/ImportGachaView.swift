@@ -12,6 +12,7 @@ import UniformTypeIdentifiers
 
 // MARK: - ImportGachaView
 
+@available(iOS 15.0, *)
 struct ImportGachaView: View {
     // MARK: Internal
 
@@ -112,21 +113,20 @@ struct ImportGachaView: View {
                 title: "成功导入祈愿数据"
             )
         })
-        .alert(item: $alert) { alert in
-            Alert(
-                title: Text("开始导入？"),
-                message: Text("导入数据需要一段时间，请耐心等待。"),
-                primaryButton: .destructive(Text("开始"), action: {
-                    switch alert {
-                    case let .readyToStartJson(url: url):
-                        processJson(url: url)
-                    case let .readyToStartXlsx(url: url):
-                        processXlsx(url: url)
-                    }
-                }),
-                secondaryButton: .cancel()
-            )
-        }
+        .alert("开始导入？", isPresented: isReadyToStartAlertShow, presenting: alert, actions: { thisAlert in
+            Button("开始", role: .destructive, action: {
+                switch thisAlert {
+                case let .readyToStartJson(url: url):
+                    processJson(url: url)
+                case let .readyToStartXlsx(url: url):
+                    processXlsx(url: url)
+                }
+            })
+            Button("取消", role: .cancel, action: { alert = nil })
+
+        }, message: { _ in
+            Text("导入数据需要一段时间，请耐心等待。")
+        })
     }
 
     func processJson(url: URL) {
@@ -293,6 +293,16 @@ struct ImportGachaView: View {
 
     @State
     fileprivate var status: ImportStatus = .pending
+
+    fileprivate var isReadyToStartAlertShow: Binding<Bool> {
+        .init {
+            alert != nil
+        } set: { newValue in
+            if newValue == false {
+                alert = nil
+            }
+        }
+    }
 
     // MARK: Private
 

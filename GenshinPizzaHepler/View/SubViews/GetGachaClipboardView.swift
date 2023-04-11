@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - GetGachaClipboardView
 
+@available(iOS 15.0, *)
 struct GetGachaClipboardView: View {
     @Environment(\.presentationMode)
     var presentationMode: Binding<PresentationMode>
@@ -32,6 +33,47 @@ struct GetGachaClipboardView: View {
 
     @State
     fileprivate var alert: AlertType?
+    fileprivate var isGetURLSucceedAlertShow: Binding<Bool> {
+        .init {
+            if case .getGachaURLSucceed = alert {
+                return true
+            } else {
+                return false
+            }
+        } set: { newValue in
+            if newValue == false {
+                alert = nil
+            }
+        }
+    }
+
+    fileprivate var isUrlInPasteboardIsInvalidAlertShow: Binding<Bool> {
+        .init {
+            if case .urlInPasteboardIsInvalid(url: _) = alert {
+                return true
+            } else {
+                return false
+            }
+        } set: { newValue in
+            if newValue == false {
+                alert = nil
+            }
+        }
+    }
+
+    fileprivate var isPasteboardNoDataAlertShow: Binding<Bool> {
+        .init {
+            if case .pasteboardNoData = alert {
+                return true
+            } else {
+                return false
+            }
+        } set: { newValue in
+            if newValue == false {
+                alert = nil
+            }
+        }
+    }
 
     @State
     var isCompleteGetGachaRecordAlertShow: Bool = false
@@ -149,22 +191,30 @@ struct GetGachaClipboardView: View {
             HelpSheet(isPresented: $isHelpSheetShow)
         })
         .navigationBarBackButtonHidden(status == .running)
-        .alert(item: $alert) { alert in
-            switch alert {
-            case .getGachaURLSucceed:
-                return Alert(
-                    title: Text("成功获取到祈愿记录链接"),
-                    message: Text("请点击「开始获取祈愿记录」以继续")
-                )
-            case let .urlInPasteboardIsInvalid(url: url):
-                return Alert(
-                    title: Text("从剪贴板上获取到的链接有误"),
-                    message: Text("预期应获取到祈愿链接，但获取到了错误的内容：\n\(url)")
-                )
-            case .pasteboardNoData:
-                return Alert(title: Text("未能从剪贴板获取到内容"))
+        .alert(
+            "成功获取到祈愿记录链接",
+            isPresented: isGetURLSucceedAlertShow,
+            presenting: alert,
+            actions: { _ in },
+            message: { _ in
+                Text("请点击「开始获取祈愿记录」以继续")
             }
-        }
+        )
+        .alert(
+            "从剪贴板上获取到的链接有误",
+            isPresented: isUrlInPasteboardIsInvalidAlertShow,
+            presenting: alert,
+            actions: { _ in },
+            message: { alert in
+                switch alert {
+                case let .urlInPasteboardIsInvalid(url: url):
+                    Text("预期应获取到祈愿链接，但获取到了错误的内容：\n\(url)")
+                default:
+                    EmptyView()
+                }
+            }
+        )
+        .alert("未能从剪贴板获取到内容", isPresented: isPasteboardNoDataAlertShow, actions: {})
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -177,25 +227,7 @@ struct GetGachaClipboardView: View {
         .navigationTitle("获取祈愿记录")
         .navigationBarTitleDisplayMode(.inline)
         .environmentObject(observer)
-//        .onAppear {
-//            DispatchQueue.global(qos: .background).async {
-//                checkURLStorageAndGet()
-//            }
-//        }
     }
-
-//    func checkURLStorageAndGet() {
-//        if urls.isEmpty, let urls = popURLsFromStorage() {
-//            withAnimation {
-//                self.urls = urls
-//                manager.stop()
-//            }
-//        } else {
-//            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 3.0) {
-//                checkURLStorageAndGet()
-//            }
-//        }
-//    }
 }
 
 // MARK: - AlertType
