@@ -217,7 +217,7 @@
 		EA025C8629D286540075F780 /* GachaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8529D286540075F780 /* GachaViewModel.swift */; };
 		EA025C8829D287970075F780 /* GachaKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8729D287970075F780 /* GachaKey.swift */; };
 		EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8929D2883A0075F780 /* GachaURL.swift */; };
-		EA025C8E29D28D150075F780 /* GetGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8D29D28D150075F780 /* GetGachaView.swift */; };
+		EA025C8E29D28D150075F780 /* APIGetGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8D29D28D150075F780 /* APIGetGachaView.swift */; };
 		EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8F29D28D3D0075F780 /* GachaView.swift */; };
 		EA059CD7292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
 		EA059CD8292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
@@ -744,7 +744,7 @@
 		EA025C8529D286540075F780 /* GachaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaViewModel.swift; sourceTree = "<group>"; };
 		EA025C8729D287970075F780 /* GachaKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaKey.swift; sourceTree = "<group>"; };
 		EA025C8929D2883A0075F780 /* GachaURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaURL.swift; sourceTree = "<group>"; };
-		EA025C8D29D28D150075F780 /* GetGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGachaView.swift; sourceTree = "<group>"; };
+		EA025C8D29D28D150075F780 /* APIGetGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetGachaView.swift; sourceTree = "<group>"; };
 		EA025C8F29D28D3D0075F780 /* GachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaView.swift; sourceTree = "<group>"; };
 		EA059CD6292347E800400DE3 /* MultiTokenResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTokenResult.swift; sourceTree = "<group>"; };
 		EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCorner.swift; sourceTree = "<group>"; };
@@ -1229,7 +1229,7 @@
 				BFFD823528A680E000616CE1 /* WebImageView.swift */,
 				BF068BD428A335F9002E7334 /* WebViews.swift */,
 				EACCEA7628F95A75004817FB /* LedgerShareView.swift */,
-				EA025C8D29D28D150075F780 /* GetGachaView.swift */,
+				EA025C8D29D28D150075F780 /* APIGetGachaView.swift */,
 				EA3A9DB229D4812300CF4230 /* GachaChartView.swift */,
 				EA01F84D29D68EFE002A374C /* GachaSetting.swift */,
 				EA32D57329D749E60003978A /* MIMTGetGachaURL.swift */,
@@ -2378,7 +2378,7 @@
 				EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EAB11E9E29325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
-				EA025C8E29D28D150075F780 /* GetGachaView.swift in Sources */,
+				EA025C8E29D28D150075F780 /* APIGetGachaView.swift in Sources */,
 				EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */,
 				EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */,
 				EA7FDF91292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,

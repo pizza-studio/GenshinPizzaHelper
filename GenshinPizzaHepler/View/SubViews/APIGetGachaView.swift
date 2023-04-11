@@ -7,11 +7,12 @@
 
 import AlertToast
 import Charts
+import HBMihoyoAPI
 import SwiftUI
 
-// MARK: - GetGachaView
+// MARK: - APIGetGachaView
 
-struct GetGachaView: View {
+struct APIGetGachaView: View {
     @EnvironmentObject
     var viewModel: ViewModel
     @StateObject
@@ -84,6 +85,7 @@ struct GetGachaView: View {
                         }
                     }
                     .disabled(account == nil)
+                    GetGachaURLByAPIButton(accountUID: account)
                 } footer: {
                     if !viewModel.accounts.map(\.config)
                         .allSatisfy({ $0.server.region == .cn }) {
@@ -126,6 +128,107 @@ struct GetGachaView: View {
                 title: "获取失败，因为错误：\n\(error.localizedDescription)"
             )
         })
+    }
+}
+
+// MARK: - GetGachaURLByAPIButton
+
+private struct GetGachaURLByAPIButton: View {
+    enum Status {
+        case ready
+        case fetching
+    }
+
+    enum AlertType: Identifiable {
+        case succeed(url: String)
+        case failure(message: String)
+
+        // MARK: Internal
+
+        var id: String {
+            switch self {
+            case let .succeed(url: url):
+                return "SUCCEED: \(url)"
+            case let .failure(message: message):
+                return "FAILURE: \(message)"
+            }
+        }
+    }
+
+    @EnvironmentObject
+    var viewModel: ViewModel
+    let accountUID: String?
+
+    @State
+    var alert: AlertType?
+
+    @State
+    var status: Status = .ready
+
+    var body: some View {
+        Button {
+            genGachaURLByAPI(
+                account: viewModel.accounts.first(where: { $0.config.uid! == accountUID })!
+                    .config
+            ) { result in
+                status = .ready
+                switch result {
+                case let .success(urlString):
+                    UIPasteboard.general.string = urlString
+                    alert = .succeed(url: urlString)
+                case let .failure(error):
+                    alert = .failure(message: error.localizedDescription)
+                }
+            }
+        } label: {
+            switch status {
+            case .ready:
+                Text("生成并复制祈愿链接至剪贴板")
+            case .fetching:
+                Label {
+                    Text("正在获取祈愿链接，请稍等")
+                } icon: {
+                    ProgressView()
+                }
+            }
+        }
+        .disabled((accountUID == nil) || (status == .fetching))
+        .alert(item: $alert) { alert in
+            switch alert {
+            case let .succeed(url: url):
+                return Alert(title: Text("成功将祈愿链接复制到剪贴板"), message: Text(url))
+            case let .failure(message: message):
+                return Alert(title: Text("生成祈愿链接失败"), message: Text("失败信息：\(message)"))
+            }
+        }
+    }
+
+    func genGachaURLByAPI(
+        account: AccountConfiguration,
+        completion: @escaping (
+            (Result<String, GenGachaURLError>) -> ()
+        )
+    ) {
+        MihoyoAPI.genAuthKey(account: account) { result in
+            if let result = try? result.get() {
+                if result.retcode == 0 {
+                    let urlString = genGachaURLString(
+                        server: account.server,
+                        authkey: result.data!,
+                        gachaType: .character,
+                        page: 1,
+                        endId: "0"
+                    )
+                    completion(.success(
+                        urlString
+                    ))
+                } else {
+                    completion(.failure(.genURLError(message: "fail to get auth key: \(result.message)")))
+                }
+            } else {
+                completion(.failure(.genURLError(message: "fail to get auth key")))
+            }
+        }
     }
 }
 

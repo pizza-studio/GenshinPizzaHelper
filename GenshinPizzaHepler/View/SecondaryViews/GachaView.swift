@@ -598,7 +598,7 @@ private struct GetGachaNavigationMenu: View {
         .background(
             Group {
                 NavigationLink(
-                    destination: GetGachaView(),
+                    destination: APIGetGachaView(),
                     isActive: $showView1
                 ) {
                     EmptyView()

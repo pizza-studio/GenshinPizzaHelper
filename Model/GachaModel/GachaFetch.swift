@@ -9,6 +9,12 @@ import CoreData
 import Foundation
 import HBMihoyoAPI
 
+// MARK: - GenGachaURLError
+
+public enum GenGachaURLError: Error {
+    case genURLError(message: String)
+}
+
 @available(iOS 13, *)
 extension MihoyoAPI {
     static let GET_GACHA_DELAY_RANDOM_RANGE: Range<Double> = 0.8 ..< 1.5
