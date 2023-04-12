@@ -561,7 +561,7 @@ private struct GetGachaNavigationMenu: View {
             Button {
                 isHelpSheetShow.toggle()
             } label: {
-                Label("我该选哪个？", systemImage: "questionmark.bubble")
+                Label("我该选哪个？", systemImage: "questionmark.diamond.fill")
             }
 
             if showByAPI {
@@ -682,7 +682,7 @@ private struct HelpSheet: View {
                     Label("如果当前这台设备尚未安装《原神》", systemImage: "text.bubble")
                     Label(
                         "建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程",
-                        systemImage: "list.bullet.clipboard"
+                        systemImage: "doc.on.clipboard"
                     )
                 } footer: {
                     Text("适用于所有服务器")

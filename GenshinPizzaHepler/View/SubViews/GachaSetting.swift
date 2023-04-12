@@ -149,7 +149,7 @@ struct GachaSetting: View {
         .sheet(isPresented: $isExportSheetShow, content: {
             ExportGachaView(isSheetShow: $isExportSheetShow)
         })
-        .alert("确定要删除吗？", isPresented: $isDeleteConfirmAlertShow, presenting: alert, actions: { thisAlert in
+        .alert("确定要删除吗？", isPresented: $isDeleteConfirmAlertShow, presenting: alert, actions: { _ in
             Button("删除", role: .destructive) {
                 alert = nil
                 alert = .deleteCompleted(
@@ -164,7 +164,7 @@ struct GachaSetting: View {
                     account = nil
                 }
             }
-        }, message: { thisAlert in
+        }, message: { _ in
             let startDate: Date = deleteAll ? .distantPast : startDate
             let endDate: Date = deleteAll ? .distantFuture : endDate
             var rangeFormatter: DateIntervalFormatter {
@@ -179,7 +179,7 @@ struct GachaSetting: View {
                 "即将删除「\(viewModel.accounts.first(where: { $0.config.uid! == account! })?.config.name ?? account!)」\(rangeDesc)的祈愿数据。"
             )
         })
-        .alert("删除成功", isPresented: $isDeleteCompletedAlertShow, presenting: alert, actions: { thisAlert in
+        .alert("删除成功", isPresented: $isDeleteCompletedAlertShow, presenting: alert, actions: { _ in
             Button("好") {
                 alert = nil
             }
@@ -191,7 +191,7 @@ struct GachaSetting: View {
                 EmptyView()
             }
         })
-        .alert("清理重复数据成功", isPresented: $isDuplicatedCleanCompletedAlertShow, presenting: alert, actions: { thisAlert in
+        .alert("清理重复数据成功", isPresented: $isDuplicatedCleanCompletedAlertShow, presenting: alert, actions: { _ in
             Button("好") {
                 alert = nil
             }
