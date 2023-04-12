@@ -1299,10 +1299,10 @@
 "生成祈愿链接失败" = "Failed to generate wish link";
 "UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。" = "The multi-language support for UIGF is still under discussion, and the export function currently only supports Simplified Chinese. We will add support for multiple languages as soon as it is completed.";
 "3群: 736320270" = "Group 3: 736320270";
-"保存成功" = "Save successful";
+"保存成功" = "Successfully saved";
 "文件已保存至%@" = "File saved to %@";
 "保存失败" = "Save failed";
 "确定要删除吗？" = "Are you sure you want to delete?";
 "删除" = "Delete";
-"删除成功" = "Successfully Deleted";
+"删除成功" = "Successfully deleted";
 "清理重复数据成功" = "Successfully cleaned up duplicate data";
