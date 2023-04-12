@@ -257,13 +257,17 @@ extension GachaItem: ContainGachaItemInfo {
         rankType
     }
 
+    static let dateFormatter: DateFormatter = {
+        let result = DateFormatter()
+        result.dateStyle = .short
+        result.timeStyle = .short
+        result.doesRelativeDateFormatting = true
+        result.locale = Locale(identifier: Locale.current.identifier)
+        return result
+    }()
+
     var formattedTime: String {
-        var dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        dateFormatter.doesRelativeDateFormatting = true
-        dateFormatter.locale = Locale(identifier: Locale.current.identifier)
-        return dateFormatter.string(from: time)
+        Self.dateFormatter.string(from: time)
     }
 }
 
@@ -275,11 +279,6 @@ extension GachaItem_FM: ContainGachaItemInfo {
     }
 
     var formattedTime: String {
-        var dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        dateFormatter.doesRelativeDateFormatting = true
-        dateFormatter.locale = Locale(identifier: Locale.current.identifier)
-        return dateFormatter.string(from: time)
+        GachaItem.dateFormatter.string(from: time)
     }
 }
