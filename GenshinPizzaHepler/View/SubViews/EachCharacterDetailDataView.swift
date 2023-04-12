@@ -260,7 +260,7 @@ struct EachCharacterDetailDataView: View {
                let rank = avatar.artifactScoreRank {
                 AttributeLabel(
                     iconString: "UI_Icon_ArtifactRating",
-                    name: "圣遗物评价",
+                    name: "圣遗物评价".localized + " (Beta)",
                     value: "\(String(format: "%.0f", totalScore)) (\(rank))",
                     fontSize: fontSize
                 )
