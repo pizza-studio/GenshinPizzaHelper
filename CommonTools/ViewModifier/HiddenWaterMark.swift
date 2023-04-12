@@ -9,7 +9,6 @@ import SwiftUI
 
 // MARK: - HiddenWaterMark
 
-@available(iOS 15.0, *)
 struct HiddenWaterMark: ViewModifier {
     func body(content: Content) -> some View {
         let waterMarkWithName = HStack {
@@ -25,11 +24,13 @@ struct HiddenWaterMark: ViewModifier {
         .frame(maxWidth: 270, maxHeight: 20)
         switch ThisDevice.notchType {
         case .dynamicIsland:
-            content.overlay(alignment: .top) {
+            ZStack(alignment: .top) {
+                content
                 waterMarkWithName.padding(.top, 15)
             }
         case .normalNotch:
-            content.overlay(alignment: .top) {
+            ZStack(alignment: .top) {
+                content
                 waterMarkWithName.padding(.top, 10)
             }
         case .none:
@@ -38,9 +39,18 @@ struct HiddenWaterMark: ViewModifier {
     }
 }
 
-@available(iOS 15.0, *)
 extension View {
-    func hiddenWaterMark() -> some View {
-        modifier(HiddenWaterMark())
+    func addWaterMark(_ showVisible: Bool) -> some View {
+        ZStack(alignment: .topTrailing) {
+            modifier(HiddenWaterMark())
+            if ThisDevice.notchType == .none, showVisible {
+                Image("AppIconHD")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Circle())
+                    .frame(maxHeight: 20)
+                    .padding()
+            }
+        }
     }
 }

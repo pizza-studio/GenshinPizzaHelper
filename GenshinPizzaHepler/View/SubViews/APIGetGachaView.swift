@@ -414,7 +414,7 @@ struct GetGachaResultView: View {
         }
 
         EmptyView()
-            .onChange(of: status) { newValue in
+            .onChange(of: status) { _ in
                 if case .running = status {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         ReviewHandler.requestReview()

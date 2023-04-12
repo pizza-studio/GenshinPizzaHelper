@@ -9,7 +9,6 @@ import SwiftUI
 
 // MARK: - CharacterDetailView
 
-// @available(iOS 15, *)
 struct CharacterDetailView: View {
     // MARK: Internal
 
@@ -38,124 +37,57 @@ struct CharacterDetailView: View {
 
     @ViewBuilder
     var coreBody: some View {
-        if #available(iOS 15.0, *) {
-            TabView(selection: $showingCharacterName.animation()) {
-                ForEach(playerDetail.avatars, id: \.name) { avatar in
-                    framedCoreView(avatar)
-                }
+        TabView(selection: $showingCharacterName.animation()) {
+            ForEach(playerDetail.avatars, id: \.name) { avatar in
+                framedCoreView(avatar)
             }
-            .tabViewStyle(
-                .page(
-                    indexDisplayMode: showTabViewIndex ? .automatic :
-                        .never
-                )
+        }
+        .tabViewStyle(
+            .page(
+                indexDisplayMode: showTabViewIndex ? .automatic :
+                    .never
             )
-            .onTapGesture {
-                closeView()
-            }
-            .background(
+        )
+        .onTapGesture {
+            closeView()
+        }
+        .background(
+            ZStack {
                 EnkaWebIcon(iconString: avatar.namecardIconString)
                     .scaledToFill()
                     .ignoresSafeArea(.all)
-                    .overlay(.thinMaterial)
-            )
-            .hiddenWaterMark()
-            .overlay(alignment: .topTrailing) {
-                if ThisDevice.notchType == .none, showWaterMark {
-                    Image("AppIconHD")
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(Circle())
-                        .frame(maxHeight: 20)
-                        .padding()
-                }
+                    .blur(radius: 30)
+                Color(UIColor.systemGray6).opacity(0.5)
             }
-            .onChange(of: showingCharacterName) { _ in
-                simpleTaptic(type: .selection)
-                withAnimation(.easeIn(duration: 0.1)) {
-                    showTabViewIndex = true
-                    showWaterMark = false
-                }
-            }
-            .ignoresSafeArea()
-            .statusBarHidden(true)
-            .onAppear {
+        )
+        .addWaterMark(showWaterMark)
+        .onChange(of: showingCharacterName) { _ in
+            simpleTaptic(type: .selection)
+            withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true
                 showWaterMark = false
             }
-            .onChange(of: showTabViewIndex) { newValue in
-                if newValue == true {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
-                        withAnimation {
-                            showTabViewIndex = false
-                        }
+        }
+        .ignoresSafeArea()
+        .statusBarHidden(true)
+        .onAppear {
+            showTabViewIndex = true
+            showWaterMark = false
+        }
+        .onChange(of: showTabViewIndex) { newValue in
+            if newValue == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+                    withAnimation {
+                        showTabViewIndex = false
                     }
                 }
             }
-            .onChange(of: showWaterMark) { newValue in
-                if newValue == false {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
-                        withAnimation(.easeIn(duration: 0.1)) {
-                            showWaterMark = true
-                        }
-                    }
-                }
-            }
-        } else {
-            // Fallback on earlier versions
-            TabView(selection: $showingCharacterName) {
-                ForEach(playerDetail.avatars, id: \.name) { avatar in
-                    VStack {
-                        framedCoreView(avatar)
-                    }
-                }
-            }
-            .tabViewStyle(
-                .page(
-                    indexDisplayMode: showTabViewIndex ? .automatic :
-                        .never
-                )
-            )
-            .onTapGesture {
-                closeView()
-            }
-            .background(
-                ZStack {
-                    EnkaWebIcon(iconString: avatar.namecardIconString)
-                        .scaledToFill()
-                        .ignoresSafeArea(.all)
-                        .blur(radius: 30)
-                    Color(UIColor.systemGray6).opacity(0.5)
-                }
-            )
-            .onChange(of: showingCharacterName) { _ in
-                simpleTaptic(type: .selection)
-                withAnimation(.easeIn(duration: 0.1)) {
-                    showTabViewIndex = true
-                    showWaterMark = false
-                }
-            }
-            .ignoresSafeArea()
-            .statusBarHidden(true)
-            .onAppear {
-                showTabViewIndex = true
-                showWaterMark = false
-            }
-            .onChange(of: showTabViewIndex) { newValue in
-                if newValue == true {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
-                        withAnimation {
-                            showTabViewIndex = false
-                        }
-                    }
-                }
-            }
-            .onChange(of: showWaterMark) { newValue in
-                if newValue == false {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
-                        withAnimation(.easeIn(duration: 0.1)) {
-                            showWaterMark = true
-                        }
+        }
+        .onChange(of: showWaterMark) { newValue in
+            if newValue == false {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+                    withAnimation(.easeIn(duration: 0.1)) {
+                        showWaterMark = true
                     }
                 }
             }
