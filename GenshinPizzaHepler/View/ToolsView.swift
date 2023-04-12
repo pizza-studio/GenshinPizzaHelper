@@ -35,7 +35,7 @@ struct ToolsView: View {
     }
 
     @State
-    private var sheetType: SheetTypes?
+    private var sheetType: SheetTypesForToolsView?
 
     var thisAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.this }
     var lastAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.last }
@@ -701,18 +701,20 @@ struct ToolsView: View {
             askAllowAbyssDataCollectionAlert = true
         }
     }
+}
 
-    enum SheetTypes: Identifiable {
-        case spiralAbyss
-        case characters
-        case loginAccountAgainView
-        case allAvatarList
+// MARK: - SheetTypesForToolsView
 
-        // MARK: Internal
+enum SheetTypesForToolsView: Identifiable {
+    case spiralAbyss
+    case characters
+    case loginAccountAgainView
+    case allAvatarList
 
-        var id: Int {
-            hashValue
-        }
+    // MARK: Internal
+
+    var id: Int {
+        hashValue
     }
 }
 
@@ -731,7 +733,7 @@ private struct LedgerSheetView: View {
 
     let data: LedgerData
     @Binding
-    var sheetType: ToolsView.SheetTypes?
+    var sheetType: SheetTypesForToolsView?
 
     var body: some View {
         NavigationView {
@@ -940,7 +942,7 @@ private struct AllAvatarNavigator: View {
     let basicInfo: BasicInfos
     let charMap: [String: ENCharacterMap.Character]
     @Binding
-    var sheetType: ToolsView.SheetTypes?
+    var sheetType: SheetTypesForToolsView?
 
     var body: some View {
         HStack(alignment: .center) {

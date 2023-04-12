@@ -32,7 +32,7 @@ struct ToolsViewSimplified: View {
     }
 
     @State
-    private var sheetType: SheetTypes?
+    private var sheetType: SheetTypesForToolsView?
 
     var thisAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.this }
     var lastAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.last }
@@ -187,17 +187,15 @@ struct ToolsViewSimplified: View {
                 loadingView()
             }
         }
-        #if DEBUG
         if (try? account?.playerDetailResult?.get()) == nil {
             Section { allAvatarNavigator() }
         }
-        #endif
     }
 
     @ViewBuilder
     func allAvatarListView() -> some View {
         NavigationView {
-//            AllAvatarListSheetView(account: account!, sheetType: $sheetType)
+            AllAvatarListSheetView(account: account!, sheetType: $sheetType)
         }
     }
 
@@ -243,10 +241,8 @@ struct ToolsViewSimplified: View {
                         .padding(.vertical, 4)
                     }
                 }
-                #if DEBUG
                 Divider()
                 allAvatarNavigator()
-                #endif
             }
         }
     }
@@ -600,21 +596,6 @@ struct ToolsViewSimplified: View {
     }
 }
 
-// MARK: - SheetTypes
-
-private enum SheetTypes: Identifiable {
-    case spiralAbyss
-    case characters
-    case loginAccountAgainView
-    case allAvatarList
-
-    // MARK: Internal
-
-    var id: Int {
-        hashValue
-    }
-}
-
 // MARK: - AbyssDataType
 
 private enum AbyssDataType: String, CaseIterable {
@@ -629,7 +610,7 @@ private struct LedgerSheetView: View {
 
     let data: LedgerData
     @Binding
-    var sheetType: SheetTypes?
+    var sheetType: SheetTypesForToolsView?
 
     var body: some View {
         NavigationView {
@@ -827,7 +808,7 @@ private struct AllAvatarNavigator: View {
     let basicInfo: BasicInfos
     let charMap: [String: ENCharacterMap.Character]
     @Binding
-    var sheetType: SheetTypes?
+    var sheetType: SheetTypesForToolsView?
 
     var body: some View {
         HStack(alignment: .center) {

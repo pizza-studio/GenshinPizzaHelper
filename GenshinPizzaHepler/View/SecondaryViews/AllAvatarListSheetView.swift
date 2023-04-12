@@ -11,7 +11,6 @@ import SwiftUI
 
 // MARK: - AllAvatarListSheetView
 
-@available(iOS 15.0, *)
 struct AllAvatarListSheetView: View {
     @EnvironmentObject
     var viewModel: ViewModel
@@ -23,7 +22,7 @@ struct AllAvatarListSheetView: View {
     let account: Account
 
     @Binding
-    var sheetType: ToolsView.SheetTypes?
+    var sheetType: SheetTypesForToolsView?
 
     var showingAvatars: [AllAvatarDetailModel.Avatar] {
         switch allAvatarListDisplayType {
@@ -154,7 +153,6 @@ struct AllAvatarListSheetView: View {
 
 // MARK: - AvatarListItem
 
-@available(iOS 15.0, *)
 struct AvatarListItem: View {
     let avatar: AllAvatarDetailModel.Avatar
     let charMap: [String: ENCharacterMap.Character]?
@@ -189,7 +187,7 @@ struct AvatarListItem: View {
             VStack(spacing: 3) {
                 HStack(alignment: .lastTextBaseline, spacing: 5) {
                     Text(avatar.nameCorrected)
-                        .font(.systemCompressed(size: 20, weight: .heavy))
+                        .font(.systemCompressed(size: 20, weight: .bold))
                         .fixedSize(horizontal: true, vertical: false)
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
@@ -251,7 +249,6 @@ struct AvatarListItem: View {
 
 // MARK: - AllAvatarListShareView
 
-@available(iOS 15.0, *)
 private struct AllAvatarListShareView: View {
     let accountName: String
     let showingAvatars: [AllAvatarDetailModel.Avatar]
@@ -310,7 +307,6 @@ private struct AllAvatarListShareView: View {
 
 // MARK: - AvatarListItemShare
 
-@available(iOS 15.0, *)
 private struct AvatarListItemShare: View {
     let avatar: AllAvatarDetailModel.Avatar
     let charMap: [String: ENCharacterMap.Character]?
@@ -327,14 +323,14 @@ private struct AvatarListItemShare: View {
                 }
                 .frame(width: 55, height: 55)
                 .clipShape(Circle())
-                Image(systemName: "heart.fill")
-                    .overlay {
-                        Text("\(avatar.fetter)")
-                            .font(.caption2)
-                            .foregroundColor(.white)
-                    }
-                    .foregroundColor(Color(UIColor.darkGray))
-                    .blendMode(.hardLight)
+                ZStack {
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(Color(UIColor.darkGray))
+                        .blendMode(.hardLight)
+                    Text("\(avatar.fetter)")
+                        .font(.caption2)
+                        .foregroundColor(.white)
+                }
             }
             .layoutPriority(2)
             VStack(alignment: .leading, spacing: 3) {
