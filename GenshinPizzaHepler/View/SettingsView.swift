@@ -134,7 +134,7 @@ struct SettingsView: View {
 
                 Section {
                     Button("在App Store评分") {
-                        ReviewHandler.requestReview()
+                        ReviewHandler.requestReviewIfNotRequestedElseNavigateToAppStore()
                     }
                     NavigationLink(
                         destination: GlobalDonateView(

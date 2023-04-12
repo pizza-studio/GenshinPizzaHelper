@@ -561,7 +561,7 @@ private struct GetGachaNavigationMenu: View {
             Button {
                 isHelpSheetShow.toggle()
             } label: {
-                Label("我该选哪个？", systemImage: "questionmark.diamond.fill")
+                Label("我该选哪个？", systemImage: "questionmark.diamond")
             }
 
             if showByAPI {
@@ -584,7 +584,7 @@ private struct GetGachaNavigationMenu: View {
             Button {
                 showView3.toggle()
             } label: {
-                Label("通过粘贴祈愿页面URL获取", systemImage: "doc.on.clipboard")
+                Label("通过粘贴祈愿页面URL获取", image: "list.bullet.clipboard")
             }
             Button {
                 showView4.toggle()

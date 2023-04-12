@@ -26,66 +26,11 @@ struct ImportGachaView: View {
     var isCompleteAlertShow: Bool = false
 
     var body: some View {
-        List {
-            switch status {
-            case .pending:
-                Section {
-                    PopFileButton(title: "导入UIGF JSON格式祈愿记录", allowedContentTypes: [.json]) { result in
-                        switch result {
-                        case let .success(url):
-                            alert = .readyToStartJson(url: url)
-                        case let .failure(error):
-                            status = .failure(error.localizedDescription)
-                        }
-                    }
-                    PopFileButton(title: "导入UIGF XLSX格式祈愿记录", allowedContentTypes: [.xlsx]) { result in
-                        switch result {
-                        case let .success(url):
-                            alert = .readyToStartXlsx(url: url)
-                        case let .failure(error):
-                            status = .failure(error.localizedDescription)
-                        }
-                    }
-                } footer: {
-                    Text(
-                        "我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。"
-                    )
-                }
-            case .reading:
-                Label {
-                    Text("导入中，请稍候…")
-                } icon: {
-                    ProgressView()
-                }
-            case let .succeed(info):
-                Section {
-                    Label {
-                        Text("成功导入祈愿数据")
-                    } icon: {
-                        Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
-                    }
-                    Text("UID: \(info.uid)")
-                    if let app = info.app {
-                        Text("数据来自：\(app)")
-                    }
-                    if let date = info.exportDate {
-                        Text("导出时间：\(dateFormatter.string(from: date))")
-                    }
-                }
-                Section {
-                    Text("导入了\(info.totalCount)条记录")
-                    Text("储存了\(info.newCount)条新记录")
-                }
-                Button("继续导入") {
-                    status = .pending
-                }
-            case let .failure(string):
-                Text("导入失败")
-                Text("错误信息：\(string)")
-                Button("重试") {
-                    status = .pending
-                }
+        Group {
+            if #available(iOS 16, *) {
+                ImportView(status: $status, alert: $alert)
+            } else {
+                ImportViewIOS15(status: $status, alert: $alert)
             }
         }
         .toolbar(content: {
@@ -408,6 +353,16 @@ private struct HelpSheet: View {
         NavigationView {
             List {
                 Section {
+                    Link(destination: URL(string: "https://ophelper.top/static/import_tiwatexiaozhushou")!) {
+                        Text("如何从《提瓦特小助手》导入？")
+                    }
+                    Link(destination: URL(string: "https://ophelper.top/static/paimonmoe-export.pdf")!) {
+                        Text("如何从paimon.moe导入？")
+                    }
+                } header: {
+                    Text("教程")
+                }
+                Section {
                     if Locale.isUILanguagePanChinese {
                         Link(
                             destination: URL(
@@ -433,6 +388,7 @@ private struct HelpSheet: View {
                     }
                 } footer: {
                     Text("我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。")
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 Section(header: Text("以下程序或平台的JSON导出格式已通过可用性验证").textCase(.none)) {
                     Link("提瓦特小助手", destination: URL(string: "https://api.lelaer.com/ys/uploadGacha.php")!)
@@ -480,6 +436,184 @@ private struct PopFileButton: View {
         }
         .fileImporter(isPresented: $isFileImporterShow, allowedContentTypes: allowedContentTypes) { result in
             completion(result)
+        }
+    }
+}
+
+// MARK: - StatusView
+
+private struct StatusView<V: View>: View {
+    @Binding
+    var status: ImportStatus
+    @ViewBuilder
+    var pendingForImportView: () -> V
+
+    var body: some View {
+        List {
+            switch status {
+            case .pending:
+                pendingForImportView()
+            case .reading:
+                ReadingView()
+            case let .succeed(info):
+                SucceedView(status: $status, info: info)
+            case let .failure(string):
+                FailureView(status: $status, errorMessage: string)
+            }
+        }
+    }
+}
+
+// MARK: - FailureView
+
+private struct FailureView: View {
+    @Binding
+    var status: ImportStatus
+    let errorMessage: String
+
+    var body: some View {
+        Text("导入失败")
+        Text("错误信息：\(errorMessage)")
+        Button("重试") {
+            status = .pending
+        }
+    }
+}
+
+// MARK: - SucceedView
+
+private struct SucceedView: View {
+    // MARK: Internal
+
+    @Binding
+    var status: ImportStatus
+    let info: ImportSucceedInfo
+
+    var body: some View {
+        Section {
+            Label {
+                Text("成功导入祈愿数据")
+            } icon: {
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(.green)
+            }
+            Text("UID: \(info.uid)")
+            if let app = info.app {
+                Text("数据来自：\(app)")
+            }
+            if let date = info.exportDate {
+                Text("导出时间：\(dateFormatter.string(from: date))")
+            }
+        }
+        Section {
+            Text("导入了\(info.totalCount)条记录")
+            Text("储存了\(info.newCount)条新记录")
+        }
+        Button("继续导入") {
+            status = .pending
+        }
+    }
+
+    // MARK: Private
+
+    private var dateFormatter: DateFormatter {
+        let fmt = DateFormatter()
+        fmt.dateStyle = .medium
+        fmt.timeStyle = .medium
+        return fmt
+    }
+}
+
+// MARK: - ReadingView
+
+private struct ReadingView: View {
+    var body: some View {
+        Label {
+            Text("导入中，请稍候…")
+        } icon: {
+            ProgressView()
+        }
+    }
+}
+
+// MARK: - ImportView
+
+@available(iOS 16.0, *)
+private struct ImportView: View {
+    @Binding
+    var status: ImportStatus
+    @Binding
+    var alert: AlertType?
+
+    var body: some View {
+        StatusView(status: $status) {
+            Section {
+                PopFileButton(title: "导入UIGF JSON格式祈愿记录", allowedContentTypes: [.json]) { result in
+                    switch result {
+                    case let .success(url):
+                        alert = .readyToStartJson(url: url)
+                    case let .failure(error):
+                        status = .failure(error.localizedDescription)
+                    }
+                }
+                PopFileButton(title: "导入UIGF XLSX格式祈愿记录", allowedContentTypes: [.xlsx]) { result in
+                    switch result {
+                    case let .success(url):
+                        alert = .readyToStartXlsx(url: url)
+                    case let .failure(error):
+                        status = .failure(error.localizedDescription)
+                    }
+                }
+            } footer: {
+                Text(
+                    "我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。"
+                )
+            }
+        }
+    }
+}
+
+// MARK: - ImportViewIOS15
+
+private struct ImportViewIOS15: View {
+    @Binding
+    var status: ImportStatus
+    @Binding
+    var alert: AlertType?
+    @State
+    var isImportSheetShow: Bool = false
+
+    var body: some View {
+        StatusView(status: $status) {
+            Section {
+                Button("导入UIGF祈愿记录") {
+                    isImportSheetShow.toggle()
+                }
+            } footer: {
+                Text(
+                    "我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。"
+                )
+                .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .fileImporter(isPresented: $isImportSheetShow, allowedContentTypes: [.xlsx, .json]) { result in
+            do {
+                let url = try result.get()
+                if let type = UTType(filenameExtension: url.pathExtension) {
+                    switch type {
+                    case .xlsx:
+                        alert = .readyToStartXlsx(url: url)
+                    case .json:
+                        alert = .readyToStartJson(url: url)
+                    default:
+                        status = .failure("\(url.pathExtension) is not supported")
+                    }
+                } else {
+                    status = .failure("\(url.pathExtension) is not supported")
+                }
+            } catch {
+                status = .failure(error.localizedDescription)
+            }
         }
     }
 }
