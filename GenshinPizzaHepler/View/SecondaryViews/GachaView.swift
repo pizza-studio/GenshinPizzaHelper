@@ -584,7 +584,7 @@ private struct GetGachaNavigationMenu: View {
             Button {
                 showView3.toggle()
             } label: {
-                Label("通过粘贴祈愿页面URL获取", systemImage: "list.bullet.clipboard")
+                Label("通过粘贴祈愿页面URL获取", systemImage: "doc.on.clipboard")
             }
             Button {
                 showView4.toggle()
