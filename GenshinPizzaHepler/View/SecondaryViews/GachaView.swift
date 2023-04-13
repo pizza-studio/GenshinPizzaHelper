@@ -55,7 +55,7 @@ struct GachaView: View {
                 mainView()
                     .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
-                            FilterEditer(
+                            FilterEditor(
                                 filter: $gachaViewModel.filter,
                                 showTime: $showTime
                             )
@@ -390,9 +390,9 @@ extension GachaStatisticSectionView.Rank {
     }
 }
 
-// MARK: - FilterEditer
+// MARK: - FilterEditor
 
-private struct FilterEditer: View {
+private struct FilterEditor: View {
     @Binding
     var filter: GachaFilter
     @Binding
@@ -863,7 +863,7 @@ private struct GachaDetailView: View {
         .navigationTitle("抽取记录")
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
-                FilterEditer(
+                FilterEditor(
                     filter: $gachaViewModel.filter,
                     showTime: $showTime
                 )

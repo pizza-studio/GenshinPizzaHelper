@@ -100,7 +100,7 @@ class GachaViewModel: ObservableObject {
                             return item.rankType == .five
                         case .fourAndFive:
                             return [.five, .four].contains(item.rankType)
-                        case .threeAndFourAndFire:
+                        case .threeAndFourAndFive:
                             return true
                         }
                     }
@@ -210,9 +210,9 @@ class GachaViewModel: ObservableObject {
 
 struct GachaFilter {
     enum Rank: Int, CaseIterable, Identifiable {
-        case five
-        case fourAndFive
-        case threeAndFourAndFire
+        case five = 5
+        case fourAndFive = 4
+        case threeAndFourAndFive = 3
 
         // MARK: Internal
 
@@ -233,7 +233,7 @@ extension GachaFilter.Rank: CustomStringConvertible {
             return "五星".localized
         case .fourAndFive:
             return "四星及五星".localized
-        case .threeAndFourAndFire:
+        case .threeAndFourAndFive:
             return "所有记录".localized
         }
     }
