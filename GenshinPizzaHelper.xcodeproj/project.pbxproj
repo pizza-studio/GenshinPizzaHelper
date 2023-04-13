@@ -754,6 +754,12 @@
 		BFFD823128A651F500616CE1 /* RingProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressBarView.swift; sourceTree = "<group>"; };
 		BFFD823528A680E000616CE1 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		BFFD823928A73A5400616CE1 /* ReviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHandler.swift; sourceTree = "<group>"; };
+		BFFEF6F029E82F950002E111 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BFFEF6F129E82F960002E111 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BFFEF6F329E82FB00002E111 /* fil */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fil; path = fil.lproj/AccountIntents.strings; sourceTree = "<group>"; };
+		BFFEF6F529E830210002E111 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BFFEF6F629E830210002E111 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BFFEF6F829E830300002E111 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA01F84D29D68EFE002A374C /* GachaSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaSetting.swift; sourceTree = "<group>"; };
 		EA025C8129D280FD0075F780 /* GachaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaModel.swift; sourceTree = "<group>"; };
 		EA025C8329D2834E0075F780 /* GachaItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaItemManager.swift; sourceTree = "<group>"; };
@@ -1929,6 +1935,8 @@
 				"zh-Hant",
 				ru,
 				vi,
+				fil,
+				it,
 			);
 			mainGroup = EABD7DAD2886B2D200B7F0FD;
 			packageReferences = (
@@ -2637,6 +2645,8 @@
 				EA12902429333D2F0078317C /* zh-Hans */,
 				EA49D8FD297A5F7D00746A2B /* ru */,
 				BFE9DADB29A33C1300C0A1DD /* vi */,
+				BFFEF6F029E82F950002E111 /* fil */,
+				BFFEF6F529E830210002E111 /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2652,6 +2662,8 @@
 				EA68247E292F425C009E506F /* zh-Hans */,
 				EA49D8FE297A5F7D00746A2B /* ru */,
 				BFE9DADC29A33C1300C0A1DD /* vi */,
+				BFFEF6F129E82F960002E111 /* fil */,
+				BFFEF6F629E830210002E111 /* it */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2667,6 +2679,8 @@
 				EA7FF4832930A41700128A5C /* zh-Hant */,
 				EA49D901297A603700746A2B /* ru */,
 				BFE9DADF29A33C3C00C0A1DD /* vi */,
+				BFFEF6F329E82FB00002E111 /* fil */,
+				BFFEF6F829E830300002E111 /* it */,
 			);
 			name = AccountIntents.intentdefinition;
 			sourceTree = "<group>";
