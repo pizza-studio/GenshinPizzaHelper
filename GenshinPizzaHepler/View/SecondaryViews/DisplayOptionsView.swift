@@ -69,11 +69,20 @@ struct DisplayOptionsView: View {
                 }
 
                 if !useActualCharacterNames {
-                    HStack {
-                        Text("自定义流浪者姓名")
-                        Spacer()
-                        Button(customizedNameForWanderer == "" ? "流浪者".localized : customizedNameForWanderer) {
-                            isCustomizedNameForWandererAlertShow.toggle()
+                    if #unavailable(iOS 16) {
+                        HStack {
+                            Text("自定义流浪者姓名")
+                            Spacer()
+                            TextField("流浪者".localized, text: $customizedNameForWanderer)
+                                .multilineTextAlignment(.trailing)
+                        }
+                    } else {
+                        HStack {
+                            Text("自定义流浪者姓名")
+                            Spacer()
+                            Button(customizedNameForWanderer == "" ? "流浪者".localized : customizedNameForWanderer) {
+                                isCustomizedNameForWandererAlertShow.toggle()
+                            }
                         }
                     }
                 }
