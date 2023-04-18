@@ -2,7 +2,11 @@
 
 ## 开发规范
 
-- **鉴于各位开发SwiftUI程序的经验可能不多，为了提高代码质量，保证程序水平，各位可以参考这一份[Swift / SwiftUI开发代码规范](https://github.com/Bill-Haku/wiki/wiki/SwiftUI-Coding-Standards )**
+- 报联商：报告、联络、商谈。
+
+- **鉴于各位对 SwiftUI 以及 Combine Concurrency 的开发经验可能不多，为了提高程序代码品质，保证程序水准，各位可以参考这一份[Swift / SwiftUI开发代码规范](https://github.com/Bill-Haku/wiki/wiki/SwiftUI-Coding-Standards )**。但这份规范当中对格式的规范的效力权重低于 `make lint; make format` 这两道命令处理之后的效果。
+
+- 请注意尽量重复利用代码，这也是为编译器减负。该 extract 的 method，就 extract 出来，这尤其可以防止 SwiftUI 代码编译时的便秘故障。
 
 - 其他例如Android开发等也有许多相似的经验和习惯，可以参考。
 
@@ -23,6 +27,8 @@
 - PR原则上需要完成Code Review后才能合并。一般不由自己合并。合并的PR原则上应当在远端删除源分支。PR的comment中最好一并关闭相关的已解决的issue.
 
 - 关于Commit和其他的命名和使用规范可以参考[这篇博客](https://jaeger.itscoder.com/dev/2018/09/12/using-git-in-project.html)。
+
+- 每个 PR 在最终合并之前必须 `make lint; make format`，除非已经有这样处理过、或者该 PR 没有修改过任何 Swift 档案、或者该 PR 的所有 commit 均已经这样处理过了。为了正确执行这两道命令，你需要事先安装「Makefile」「[NickLockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)」以及「[Realm/SwiftLint](https://github.com/realm/SwiftLint)」这三款终端工具。
 
 ## 关于项目的若干说明
 
@@ -99,6 +105,16 @@
 
 6. 全部完成后，切换到对应的语言运行，检查翻译是否生效。（此时理论上不会有问题。）检查翻译内容是否有需要优化改进的地方。
 
+### 新增语言时需要新增的档案
+
+假设该语言的略写为「sb」。在发包给第三方翻译者之前，需要准备的档案至少如下：
+
+- AccountIntent/sb.lproj/AccountIntents.strings
+- Dependencies/GachaMIMTServer/Sources/GachaMIMTServer/Resources/sb.lproj/Localizable.strings
+- GenshinPizzaHepler/sb.lproj/InfoPlist.strings
+- GenshinPizzaHepler/sb.lproj/Localizable.strings
+- Settings.bundle/sb.lproj/Settings.strings
+
 ## 开源工作备忘录
 
 ### 开源工作流程
@@ -127,7 +143,7 @@
 
 > 不需要等正式版本更新就可以加入，但是不暴露出来
 
-1. 角色两张证件照、技能图标、名片背景、角色名字的翻译
+1. 角色两张证件照（请洽下文「证件照处理方法」）、技能图标、名片背景、角色名字的翻译
 
 2. 武器（使用突破后图标）、武器素材
 
@@ -136,3 +152,18 @@
 4. 圣遗物图标
 
 5. 翻译
+
+### 证件照处理方法
+
+原始照片所在矩形是 256x256。拿到原始照片之后：
+
+- 如果原始照片宽度不足 256 的话，则得手动将照片的鼻子与照片正中纵线对齐。
+
+- 如果原始照片高度不足 256 的话，则贴「底」对齐、让躯干部分紧贴矩形底部。
+
+做完这个处理之后，再用 AI 换算成 512x512。
+
+> 目前的方法是用 Pixelmator Pro 的 AI Super Resolution 换算。**当然，要是有更好的技术的话，也可以用。**
+
+
+$ EOF.
