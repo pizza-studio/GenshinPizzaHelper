@@ -1,10 +1,10 @@
-"1Ev2Th-7Mpxy7" = "Just to confirm, you wanted ‘（未知）’?";
+"1Ev2Th-7Mpxy7" = "Para lamang kumpirmahin, gusto mo ‘（未知）’?";
 
-"1Ev2Th-Az9Qxm" = "Just to confirm, you wanted ‘完成后不显示’?";
+"1Ev2Th-Az9Qxm" = "Para lamang kumpirmahin, gusto mo ‘完成后不显示’?";
 
-"1Ev2Th-TDccRa" = "Just to confirm, you wanted ‘始终不显示’?";
+"1Ev2Th-TDccRa" = "Para lamang kumpirmahin, gusto mo ‘始终不显示’?";
 
-"1Ev2Th-lMTFKb" = "Just to confirm, you wanted ‘始终显示’?";
+"1Ev2Th-lMTFKb" = "Para lamang kumpirmahin, gusto mo ‘始终显示’?";
 
 "2yWIH0" = "(Unknown)";
 
@@ -14,39 +14,39 @@
 
 "7Mpxy7" = "(Unknown)";
 
-"81ss5Y" = "All done";
+"81ss5Y" = "Tapos na lahat";
 
 "9W1NzG" = "true";
 
-"Az9Qxm" = "Disappear after finished";
+"Az9Qxm" = "Mwwala pagkatapos";
 
-"DKesAN" = "Time to finish";
+"DKesAN" = "Oras hanggang matapos";
 
-"DQpiCm" = "Show weekly bosses discount";
+"DQpiCm" = "Ipakita ang weekly bosses discount";
 
 "EnqoJ9" = "Account";
 
 "Jbahdk" = "false";
 
-"K2iJCd" = "Show today's materials (Big size only)";
+"K2iJCd" = "Ipakita ang mga materials ngayon (malaking sukat lamang)";
 
-"MVmO5f" = "Show parametric transformer";
+"MVmO5f" = "Ipakita ang parametric transformer";
 
-"NEV35Z" = "Number of Ongoing Expedition";
+"NEV35Z" = "Bilang ng Ongoing Expedition";
 
-"NI3XnI" = "Select the account displayed on widget";
+"NI3XnI" = "Piliin ang account ipapakita sa widget";
 
-"P3fcKK" = "Select the account displayed on widget";
+"P3fcKK" = "Piliin ang account ipapakita sa widget";
 
 "PLml4M" = "Weekly Bosses Showing Method";
 
-"PS8etl" = "Yes";
+"PS8etl" = "Oo";
 
-"TDccRa" = "Never show";
+"TDccRa" = "Huwag ipapakita";
 
 "TYuPZZ" = "Account";
 
-"XXexIV" = "Show parametric transformer";
+"XXexIV" = "Ipakita ang parametric transformer";
 
 "a0FhAC-9W1NzG" = "There are ${count} options matching ‘true’.";
 
@@ -58,13 +58,13 @@
 
 "a5PB3w" = "Next done";
 
-"cjQ7ix-3m73ML" = "Just to confirm, you wanted ‘(Unknown)’?";
+"cjQ7ix-3m73ML" = "Para lamang kumpirmahin, gusto mo ‘(Unknown)’?";
 
-"cjQ7ix-DKesAN" = "Just to confirm, you wanted ‘Time to finish’?";
+"cjQ7ix-DKesAN" = "Para lamang kumpirmahin, gusto mo ‘Time to finish’?";
 
-"cjQ7ix-NEV35Z" = "Just to confirm, you wanted ‘正在探索人数’?";
+"cjQ7ix-NEV35Z" = "Para lamang kumpirmahin, gusto mo ‘正在探索人数’?";
 
-"cjQ7ix-vFlGnC" = "Just to confirm, you wanted ‘完成时间点’?";
+"cjQ7ix-vFlGnC" = "Para lamang kumpirmahin, gusto mo ‘完成时间点’?";
 
 "d0PsaK" = "true";
 
@@ -78,11 +78,11 @@
 
 "dUyzRX" = "Expedition Display Method";
 
-"e0kZEQ-2yWIH0" = "Just to confirm, you wanted ‘（未知）’?";
+"e0kZEQ-2yWIH0" = "Para lamang kumpirmahin, gusto mo ‘（未知）’?";
 
-"e0kZEQ-81ss5Y" = "Just to confirm, you wanted ‘全部完成时’?";
+"e0kZEQ-81ss5Y" = "Para lamang kumpirmahin, gusto mo ‘全部完成时’?";
 
-"e0kZEQ-a5PB3w" = "Just to confirm, you wanted ‘下一个完成时’?";
+"e0kZEQ-a5PB3w" = "Para lamang kumpirmahin, gusto mo ‘下一个完成时’?";
 
 "enBbLR" = "Account";
 
@@ -108,19 +108,19 @@
 
 "l4a3No-a5PB3w" = "There are ${count} options matching ‘下一个完成时’.";
 
-"lMTFKb" = "Always show";
+"lMTFKb" = "Ipakita lagi";
 
 "lbRsap" = "Expedition remind for";
 
 "ll3vKn" = "false";
 
-"mKzz1P" = "Dark mode (following system)";
+"mKzz1P" = "Dark mode (sumusonod sa system)";
 
 "mRXrdK" = "No";
 
 "ppnCJD" = "No";
 
-"qijLJm" = "Account name";
+"qijLJm" = "Pangalan ng account";
 
 "rfBAEx-3m73ML" = "There are ${count} options matching ‘（未知）’.";
 
@@ -130,9 +130,9 @@
 
 "rfBAEx-vFlGnC" = "There are ${count} options matching ‘完成时间点’.";
 
-"sWpemX" = "Choose account";
+"sWpemX" = "Pumili ng account";
 
-"vAR6GW" = "Select account";
+"vAR6GW" = "Piliin ang account";
 
 "vFlGnC" = "Finished time";
 
@@ -140,15 +140,15 @@
 
 "vl1bDD" = "false";
 
-"yjs09O" = "Select account and others";
+"yjs09O" = "Piliin ang account at iba pa";
 
-"zQrKVi" = "Choose the displayed account for the widget";
+"zQrKVi" = "Piliin ang ipinapakita na account para sa widget";
 
 "2sA6YK" = "false";
 
-"3xS9bp" = "Widget Background Color";
+"3xS9bp" = "Kulay ng Widget Background";
 
-"52SZIK" = "★★Green";
+"52SZIK" = "★★Berde";
 
 "87WYHP" = "Widget configuration";
 
@@ -166,27 +166,27 @@
 
 "TAftI9" = "Dendro";
 
-"UqmTP9" = "Configure for Genshin Pizza";
+"UqmTP9" = "I-Configure para sa Genshin Pizza";
 
 "Vs9Whf" = "Widget Background Type";
 
 "XnDLoc" = "true";
 
-"YrOyp9" = "★★★Blue";
+"YrOyp9" = "★★★Asul";
 
 "bMiiOE" = "(Unknown)";
 
 "fFVHow" = "namecard";
 
-"ft3ye3" = "★★★★★Red";
+"ft3ye3" = "★★★★★Pula";
 
 "lnnUEA" = "Hydro";
 
 "nqqAbg" = "Show custom account name";
 
-"oi0S30" = "color";
+"oi0S30" = "kulay";
 
-"pmxRYI" = "★★★★Purple";
+"pmxRYI" = "★★★★Lila";
 
 "sCNVNi" = "Electro";
 
@@ -196,19 +196,19 @@
 
 "P9Zjkv" = "true";
 
-"QGKioO" = "Simplified mode (only for China mainland server users)";
+"QGKioO" = "Simplified mode (para lamang sa mga China mainland server users)";
 
 "TlVSDK" = "false";
 
 "dA3Ajr" = "true";
 
-"kvvRzi" = "Simplified mode (only for China mainland server users)";
+"kvvRzi" = "Simplified mode (para lamang sa mga China mainland server users)";
 
 "l8vjWP" = "false";
 
 "tBnBc9" = "false";
 
-"vVnBDJ" = "Simplified mode (only for China mainland service users)";
+"vVnBDJ" = "Simplified mode (para lamang sa mga China mainland server users)";
 
 "9ahsDT-B46RDD" = "There are ${count} options matching ‘回满时间’.";
 
@@ -218,23 +218,23 @@
 
 "9ahsDT-tQcha2" = "There are ${count} options matching ‘默认’.";
 
-"B46RDD" = "Time when full";
+"B46RDD" = "Oras kapag puno";
 
 "J4NStK" = "Resin display style";
 
-"KNNnPc" = "Circle";
+"KNNnPc" = "Bilog";
 
 "dM0PI2" = "Timer";
 
-"fvGuTG" = "Auto Rotation Using Resin Widget Style";
+"fvGuTG" = "Auto Rotation gamit ng Resin Widget Style";
 
-"q86NGe-B46RDD" = "Just to confirm, you wanted ‘回满时间’?";
+"q86NGe-B46RDD" = "Para lamang kumpirmahin, gusto mo ‘回满时间’?";
 
-"q86NGe-KNNnPc" = "Just to confirm, you wanted ‘环状’?";
+"q86NGe-KNNnPc" = "Para lamang kumpirmahin, gusto mo ‘环状’?";
 
-"q86NGe-dM0PI2" = "Just to confirm, you wanted ‘倒计时’?";
+"q86NGe-dM0PI2" = "Para lamang kumpirmahin, gusto mo ‘倒计时’?";
 
-"q86NGe-tQcha2" = "Just to confirm, you wanted ‘默认’?";
+"q86NGe-tQcha2" = "Para lamang kumpirmahin, gusto mo ‘默认’?";
 
 "tQcha2" = "Default style";
 
