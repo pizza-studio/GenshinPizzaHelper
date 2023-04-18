@@ -1,10 +1,10 @@
 /* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
 
-"⚠️If you don't see the \"Preferred language\" option here" = "⚠️Kapag hindi mo nakikita ang \"Preferred language\" na option dito";
+"⚠️If you don't see the \"Preferred language\" option here" = "⚠️If you don't see the \"Preferred language\" option here";
 
-"Please go to 📱 [Settings] -> [General] -> [Language & Region] and add the language you wish to set as the second language. " = "Pumunta sa 📱 [Settings] -> [General] -> [Language & Region] at idagdag ang wika na gusto mong gawing panagalawang wika. EN";
+"Please go to 📱 [Settings] -> [General] -> [Language & Region] and add the language you wish to set as the second language. " = "Please go to 📱 [Settings] -> [General] -> [Language & Region] and add the language you wish to set as the second language. EN";
 
-"🌐 Supported Languages" = "🌐 Mga suportadong wika";
+"🌐 Supported Languages" = "🌐 Supported Languages";
 
 /* THE FOLLOWING CONTENTS ARE PLACEHOLDER STRINGS. DO NOT TOUCH */
 /* 以下Key开头均包含一个零宽字符 */
