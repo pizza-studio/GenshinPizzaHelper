@@ -312,7 +312,6 @@
 		EA46D0C628EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
 		EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
 		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
-		EA4960D529D7C2F600BA5ECF /* GachaMIMTServer in Frameworks */ = {isa = PBXBuildFile; productRef = EA4960D429D7C2F600BA5ECF /* GachaMIMTServer */; };
 		EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
@@ -399,9 +398,6 @@
 		EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
 		EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
 		EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
-		EAA08C6D29D7BEC000DAB5FA /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA08C6C29D7BEC000DAB5FA /* NetworkExtension.framework */; };
-		EAA08C7029D7BEC000DAB5FA /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA08C6F29D7BEC000DAB5FA /* PacketTunnelProvider.swift */; };
-		EAA08C7529D7BEC000DAB5FA /* GachaMIMT.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EAA08C6B29D7BEC000DAB5FA /* GachaMIMT.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EAA2D4122931C36F00BC94A8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAA2D4112931C36F00BC94A8 /* Settings.bundle */; };
 		EAAD03E429D2FD22007D5C80 /* GachaFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */; };
 		EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E529D2FD88007D5C80 /* GachaItem.swift */; };
@@ -574,13 +570,6 @@
 			remoteGlobalIDString = EA30F9A02886B49200AE7BEA;
 			remoteInfo = ResinStatusWidgetExtension;
 		};
-		EAA08C7329D7BEC000DAB5FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EAA08C6A29D7BEC000DAB5FA;
-			remoteInfo = GachaMIMT;
-		};
 		EAE3FCB928CE3E7B00174DA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
@@ -640,7 +629,6 @@
 			files = (
 				EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed App Extensions */,
 				EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */,
-				EAA08C7529D7BEC000DAB5FA /* GachaMIMT.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,11 +854,7 @@
 		EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
 		EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCircular.swift; sourceTree = "<group>"; };
 		EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppMaterialNavigator.swift; sourceTree = "<group>"; };
-		EAA08C6B29D7BEC000DAB5FA /* GachaMIMT.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GachaMIMT.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA08C6C29D7BEC000DAB5FA /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		EAA08C6F29D7BEC000DAB5FA /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
-		EAA08C7129D7BEC000DAB5FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EAA08C7229D7BEC000DAB5FA /* GachaMIMT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GachaMIMT.entitlements; sourceTree = "<group>"; };
 		EAA2CE3F292C909D00BF8DDE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAA2CE40292C909E00BF8DDE /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAA2D4112931C36F00BC94A8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -981,15 +965,6 @@
 				EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */,
 				BF20733429D1411A00AD391F /* HBPizzaHelperAPI in Frameworks */,
 				EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EAA08C6829D7BEC000DAB5FA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EAA08C6D29D7BEC000DAB5FA /* NetworkExtension.framework in Frameworks */,
-				EA4960D529D7C2F600BA5ECF /* GachaMIMTServer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1464,16 +1439,6 @@
 			path = LockScreenHomeCoinWidget;
 			sourceTree = "<group>";
 		};
-		EAA08C6E29D7BEC000DAB5FA /* GachaMIMT */ = {
-			isa = PBXGroup;
-			children = (
-				EAA08C6F29D7BEC000DAB5FA /* PacketTunnelProvider.swift */,
-				EAA08C7129D7BEC000DAB5FA /* Info.plist */,
-				EAA08C7229D7BEC000DAB5FA /* GachaMIMT.entitlements */,
-			);
-			path = GachaMIMT;
-			sourceTree = "<group>";
-		};
 		EAAF330828A276360018EFAB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1563,7 +1528,6 @@
 				BFCC066228C9B6A1003E4A54 /* WatchHelper WatchKit Extension */,
 				BF85D77428CE0B9F003F3479 /* WatchWidgetExtension */,
 				EAE95CE328CE10A100D975CB /* WatchIntent */,
-				EAA08C6E29D7BEC000DAB5FA /* GachaMIMT */,
 				EA30F9A22886B49200AE7BEA /* Frameworks */,
 				EABD7DB72886B2D200B7F0FD /* Products */,
 			);
@@ -1579,7 +1543,6 @@
 				BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */,
 				BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */,
 				EAE95CE128CE10A000D975CB /* WatchIntent.appex */,
-				EAA08C6B29D7BEC000DAB5FA /* GachaMIMT.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1812,26 +1775,6 @@
 			productReference = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		EAA08C6A29D7BEC000DAB5FA /* GachaMIMT */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EAA08C7629D7BEC000DAB5FA /* Build configuration list for PBXNativeTarget "GachaMIMT" */;
-			buildPhases = (
-				EAA08C6729D7BEC000DAB5FA /* Sources */,
-				EAA08C6829D7BEC000DAB5FA /* Frameworks */,
-				EAA08C6929D7BEC000DAB5FA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = GachaMIMT;
-			packageProductDependencies = (
-				EA4960D429D7C2F600BA5ECF /* GachaMIMTServer */,
-			);
-			productName = GachaMIMT;
-			productReference = EAA08C6B29D7BEC000DAB5FA /* GachaMIMT.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		EABD7DB52886B2D200B7F0FD /* GenshinPizzaHepler */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHepler" */;
@@ -1849,7 +1792,6 @@
 				EA30F9AE2886B49300AE7BEA /* PBXTargetDependency */,
 				EA099FFB28A2B7220023B4AF /* PBXTargetDependency */,
 				BFCC067528C9B6A2003E4A54 /* PBXTargetDependency */,
-				EAA08C7429D7BEC000DAB5FA /* PBXTargetDependency */,
 			);
 			name = GenshinPizzaHepler;
 			packageProductDependencies = (
@@ -1910,9 +1852,6 @@
 					EA30F9A02886B49200AE7BEA = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
-					EAA08C6A29D7BEC000DAB5FA = {
-						CreatedOnToolsVersion = 14.2;
-					};
 					EABD7DB52886B2D200B7F0FD = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -1954,7 +1893,6 @@
 				BFCC065D28C9B6A1003E4A54 /* WatchHelper WatchKit Extension */,
 				BF85D77028CE0B9E003F3479 /* WatchWidgetExtensionExtension */,
 				EAE95CE028CE10A000D975CB /* WatchIntent */,
-				EAA08C6A29D7BEC000DAB5FA /* GachaMIMT */,
 			);
 		};
 /* End PBXProject section */
@@ -2031,13 +1969,6 @@
 				BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */,
 				5BAF709329E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */,
 				EAEC41F828B0994C0056D182 /* 参量质变仪.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EAA08C6929D7BEC000DAB5FA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2393,14 +2324,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EAA08C6729D7BEC000DAB5FA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EAA08C7029D7BEC000DAB5FA /* PacketTunnelProvider.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EABD7DB22886B2D200B7F0FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2614,12 +2537,6 @@
 			isa = PBXTargetDependency;
 			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
 			targetProxy = EA30F9AD2886B49300AE7BEA /* PBXContainerItemProxy */;
-		};
-		EAA08C7429D7BEC000DAB5FA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = EAA08C6A29D7BEC000DAB5FA /* GachaMIMT */;
-			targetProxy = EAA08C7329D7BEC000DAB5FA /* PBXContainerItemProxy */;
 		};
 		EAE3FCBA28CE3E7B00174DA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2999,64 +2916,6 @@
 			};
 			name = Release;
 		};
-		EAA08C7729D7BEC000DAB5FA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = GachaMIMT/GachaMIMT.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2031;
-				DEVELOPMENT_TEAM = 45Z6V4YD5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GachaMIMT/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = GachaMIMT;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2.8.1;
-				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.GachaMIMT;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		EAA08C7829D7BEC000DAB5FA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = GachaMIMT/GachaMIMT.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2031;
-				DEVELOPMENT_TEAM = 45Z6V4YD5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GachaMIMT/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = GachaMIMT;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2.8.1;
-				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler.GachaMIMT;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		EABD7DC22886B2D300B7F0FD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3361,15 +3220,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EAA08C7629D7BEC000DAB5FA /* Build configuration list for PBXNativeTarget "GachaMIMT" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EAA08C7729D7BEC000DAB5FA /* Debug */,
-				EAA08C7829D7BEC000DAB5FA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		EABD7DB12886B2D200B7F0FD /* Build configuration list for PBXProject "GenshinPizzaHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3480,10 +3330,6 @@
 		BFBDD66E28F3F3C90022B79D /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftPieChart;
-		};
-		EA4960D429D7C2F600BA5ECF /* GachaMIMTServer */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GachaMIMTServer;
 		};
 /* End XCSwiftPackageProductDependency section */
 

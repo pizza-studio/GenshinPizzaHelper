@@ -1137,7 +1137,6 @@
 
 "我该选哪个？" = "Quel devrais-je choisir ?";
 "通过API获取" = "Via API";
-"通过抓包获取" = "Via Capture de Paquets";
 "通过粘贴祈愿页面URL获取" = "Via Copie d'URL de l'historique de souhaits";
 "导入UIGF祈愿记录" = "Importer le journal de souhaits UIGF";
 
@@ -1147,45 +1146,16 @@
 "如果您的帐号所在服务器位于中国大陆" = "Si votre compte est sur les serveurs de la Chine continentale";
 "请优先选择「通过API」一键获取" = "Choisissez « Via API » en premier";
 "仅适用于中国大陆服务器" = "Disponible uniquement pour les serveurs de Chine continentale";
-"如果当前这台设备有安装《原神》" = "Si vous avez installé Genshin Impact sur cet appareil";
-"建议优先选择「通过抓包获取」" = "Choisissez « Via Capture de Paquets » en premier";
 "适用于所有服务器" = "Disponible pour tous les serveurs";
-"如果当前这台设备尚未安装《原神》" = "Si vous n'avez PAS installé Genshin Impact sur cet appareil";
+"国际服务器玩家该怎么办" = "Pour les serveurs internationaux";
 "建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程" = "Il est recommandé d'utiliser « Copie d'URL de l'historique de souhaits », nous avons également fourni des tutoriels pour cela";
 "如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入" = "Si vous utilisez d'autres logiciels pour obtenir le journal de gacha et que le logiciel prend en charge les fichiers au format UIGF (norme de journal de gacha interchangeables uniformes), vous pouvez les importer.";
 "支持UIGF的软件" = "Logiciels prenant en charge UIGF";
 
-"在进行抓包获取祈愿链接前，您需要根据以下3个步骤安装CA证书。" = "Avant de capturer l'URL de l'historique des souhaits, vous devez installer le certificat CA selon les 3 étapes suivantes.";
-"如您在抓包过程中无法连接互联网，请检查本页面所有3个步骤是否完成。" = "Si vous ne pouvez pas vous connecter à Internet pendant le processus de capture, veuillez vérifier si les 3 étapes de cette page ont été terminées.";
-"您也可以选择根据跟随以下视频进行安装CA证书。" = "Vous pouvez également choisir d'installer le certificat CA en suivant la vidéo suivante.";
-"下载CA证书" = "Télécharger le certificat CA";
-"点击以下链接下载CA证书。" = "Cliquez sur le lien ci-dessous pour télécharger le certificat CA.";
-"安装CA证书" = "Installer le certificat CA";
-"前往「设置」App → 「通用」 → 「VPN与设备管理」 → （已下载的描述文件）「Pizza Helper CA」 → 「安装」" = "Accédez à l'application 'Paramètres' → 'Général' → 'VPN et gestion des appareils' → (profil téléchargé) 'Pizza Helper CA' → 'Installer'";
-"信任CA证书" = "Faire confiance au certificat CA";
-"前往系统「设置」 → 「通用」 → 「关于本机」 → （最下方）「信任证书设置」 → activer l'interrupteur 'Pizza Helper CA'" = "Accédez aux 'Paramètres' du système → 'Général' → 'À propos' → (en bas) 'Réglages de confiance des certificats' → activez l'interrupteur 'Pizza Helper CA'";
-"如何安装CA证书？" = "Comment installer le certificat CA?";
-"CA证书相关" = "En rapport avec le certificat CA";
-"CA证书安装教程" = "Tutoriel d'installation du certificat CA";
-"关于CA证书" = "À propos du certificat CA";
-"请务必确保CA证书下载、安装、信任。" = "Veuillez vous assurer de télécharger, installer et faire confiance au certificat CA.";
-"这台设备需要安装《原神》并处于能够正常游玩游戏的网络环境下。" = "Votre téléphone doit avoir 'Genshin Impact' installé et se trouver dans un environnement réseau qui permet de jouer normalement au jeu.";
-"点击「开始抓包」按钮。" = "Cliquez sur le bouton 'Commencer la capture'.";
-"返回主屏幕，打开《原神》并打开祈愿界面，点击「历史记录」按钮。如成功获取到链接，本软件会向您推送一条通知。" = "Retournez à l'écran principal, ouvrez 'Genshin Impact' et accédez à l'interface de vœux. Cliquez sur le bouton 'Historique'. Si l'URL de l'historique des souhaits est obtenue avec succès, ce logiciel vous enverra une notification.";
-"返回本软件，点击「开始获取祈愿记录」按钮，等待获取完成。" = "Revenez à ce logiciel, cliquez sur le bouton 'Commencer à obtenir les enregistrements de vœux' et attendez la fin de l'obtention.";
-"如何获取祈愿链接？" = "Comment obtenir l'URL de l'historique des souhaits?";
 "视频教程" = "Tutoriel vidéo";
-"您也可以选择根据跟随我们的视频教程获取祈愿记录。" = "Vous pouvez également choisir de suivre notre tutoriel vidéo pour obtenir les enregistrements de vœux.";
 "帮助" = "Aide";
-"确认已经下载、安装并信任CA证书？" = "Avez-vous confirmé avoir téléchargé, installé et fait confiance au certificat CA ?";
-"未正确下载、安装或信任CA证书可能会导致URL抓取功能失效等问题" = "Le téléchargement, l'installation ou la confiance incorrecte dans le certificat CA peut entraîner des problèmes tels que le dysfonctionnement de la fonction de capture d'URL.";
-"我已经下载、安装并信任了CA证书" = "Je l'ai fait";
 "返回" = "Retourner";
 
-"停止抓包" = "Arrêter la capture de paquets";
-"开始抓包" = "Commencer la capture de paquets";
-"通过抓包获取获取祈愿链接" = "Obtenir l'URL d'historique de souhaits en capturant des paquets";
-"重新抓包" = "Capturer les paquets à nouveau";
 "等待祈愿链接…" = "En attente de l'URL de l'historique de souhaits…";
 "开始获取祈愿记录" = "Commencer à obtenir les enregistrements de souhaits";
 "成功获取祈愿数据" = "Données de souhaits obtenues avec succès";
@@ -1194,8 +1164,6 @@
 "成功获取到祈愿记录链接" = "URL de l'historique de souhaits obtenue avec succès";
 "请点击「开始获取祈愿记录」以继续" = "Veuillez cliquer sur 'Commencer à obtenir les enregistrements de souhaits' pour continuer";
 "获取祈愿记录" = "Obtenir les enregistrements de souhaits";
-"正在抓包…请打开《原神》前往祈愿记录页面" = "Capture de paquets en cours… Veuillez ouvrir 'Genshin Impact' et accéder à la page d'historique de souhaits";
-"正在开启VPN" = "Activation du VPN en cours";
 "等待开始…" = "En attente du début…";
 "获取到%@条记录，成功保存%@条新记录\n请返回上一级查看，或继续获取其他帐号的记录" = "Obtenu %@ enregistrements, %@ d'entre eux ont été enregistrés avec succès.\nRetournez à la page précédente pour les visualiser ou continuez d'obtenir des enregistrements d'autres comptes.";
 "成功获取到一批…" = "Obtenu avec succès…";
@@ -1284,7 +1252,7 @@
 "卡维" = "Kaveh";
 "碧落之珑" = "Jadefall’s Splendor";
 
-"复制祈愿链接到剪贴板" = "Copier le lien de vœu dans le presse-papiers";
+
 "暂无五星祈愿记录" = "Aucun enregistrement de vœu à 5 étoiles pour le moment";
 "成功将祈愿链接复制到剪贴板" = "Le lien de vœu a été copié avec succès dans le presse-papiers";
 

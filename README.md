@@ -110,7 +110,6 @@
 假设该语言的略写为「sb」。在发包给第三方翻译者之前，需要准备的档案至少如下：
 
 - AccountIntent/sb.lproj/AccountIntents.strings
-- Dependencies/GachaMIMTServer/Sources/GachaMIMTServer/Resources/sb.lproj/Localizable.strings
 - GenshinPizzaHepler/sb.lproj/InfoPlist.strings
 - GenshinPizzaHepler/sb.lproj/Localizable.strings
 - Settings.bundle/sb.lproj/Settings.strings

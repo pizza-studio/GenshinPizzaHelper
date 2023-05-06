@@ -1148,7 +1148,6 @@
 
 "我该选哪个？" = "Tôi nên chọn cái nào ?";
 "通过API获取" = "Thông qua API";
-"通过抓包获取" = "Thông qua chụp gói";
 "通过粘贴祈愿页面URL获取" = "Dán URL lịch sử cầu nguyện";
 "导入UIGF祈愿记录" = "Nhập Vào Lịch Sử Cầu Nguyện Định Dạng UIGF";
 
@@ -1158,45 +1157,16 @@
 "如果您的帐号所在服务器位于中国大陆" = "Nếu tài khoản của bạn ở Máy chủ Trung Quốc Đại lục";
 "请优先选择「通过API」一键获取" = "Chọn \"Thông qua API\" đầu tiên";
 "仅适用于中国大陆服务器" = "Chỉ áp dụng cho các máy chủ ở Trung Quốc đại lục";
-"如果当前这台设备有安装《原神》" = "Nếu bạn đã cài đặt Genshin Impact trên thiết bị này";
-"建议优先选择「通过抓包获取」" = "Chọn \"Thông qua chụp gói\" đầu tiên";
 "适用于所有服务器" = "Có hiệu lực cho tất cả máy chủ";
-"如果当前这台设备尚未安装《原神》" = "Nếu bạn CHƯA cài đặt Genshin Impact trên thiết bị này";
+"国际服务器玩家该怎么办" = "Đối với máy chủ quốc tế";
 "建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程" = "Nên lấy từ \"Dán URL lịch sử cầu nguyện\", chúng tôi cũng đã cung cấp hướng dẫn cho nó";
 "如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入" = "Nếu bạn sử dụng các phần mềm khác để lấy nhật ký gacha và phần mềm hỗ trợ các tệp định dạng UIGF (Định dạng tiêu chuẩn GachaLog có thể hoán đổi đồng nhất), bạn có thể nhập chúng.";
 "支持UIGF的软件" = "Phần Mềm Hỗ Trợ UIGF";
 
-"在进行抓包获取祈愿链接前，您需要根据以下3个步骤安装CA证书。" = "Trước khi lấy URL Lịch sử cầu nguyện , bạn cần cài đặt chứng chỉ CA theo 3 bước sau.";
-"如您在抓包过程中无法连接互联网，请检查本页面所有3个步骤是否完成。" = "Nếu bạn không thể kết nối internet trong quá trình chụp, vui lòng kiểm tra xem tất cả 3 bước trên trang này đã được hoàn thành hay chưa.";
-"您也可以选择根据跟随以下视频进行安装CA证书。" = "Bạn cũng có thể chọn cài đặt chứng chỉ CA theo video sau.";
-"下载CA证书" = "Tải xuống chứng chỉ CA";
-"点击以下链接下载CA证书。" = "Nhấp vào liên kết bên dưới để tải xuống chứng chỉ CA.";
-"安装CA证书" = "Cài đặt chứng chỉ CA";
-"前往「设置」App → 「通用」 → 「VPN与设备管理」 → （已下载的描述文件）「Pizza Helper CA」 → 「安装」" = "Vào 'Cài Đặt' → 'Cài Đặt Chung' → 'Quản lý thiết bị và VPN' → (bản ghi Đã Tải Xuống) 'Pizza Helper CA' → 'Cài đặt'";
-"信任CA证书" = "Tin tưởng chứng chỉ CA";
-"前往系统「设置」 → 「通用」 → 「关于本机」 → （最下方）「信任证书设置」 → 打开「Pizza Helper CA」开关" = "Vào 'Cài đặt' → 'Cài Đặt Chung' → 'Giới Thiệu' → (kéo xuống dưới cùng) 'Cài đặt tin cậy chứng chỉ' → Bật'Pizza Helper CA' switch";
-"如何安装CA证书？" = "Cách cài đặt chứng chỉ CA ?";
-"CA证书相关" = "liên quan đến chứng chỉ CA";
-"CA证书安装教程" = "Hướng dẫn cài đặt chứng chỉ CA";
-"关于CA证书" = "Giới thiệu về chứng chỉ CA";
-"请务必确保CA证书下载、安装、信任。" = "Vui lòng đảm bảo tải xuống, cài đặt và tin tưởng vào chứng chỉ CA.";
-"这台设备需要安装《原神》并处于能够正常游玩游戏的网络环境下。" = "Điện thoại của bạn cần cài đặt 'Genshin Impact' và ở trong môi trường mạng là có thể chơi game bình thường.";
-"点击「开始抓包」按钮。" = "Nhấp vào nút 'Bắt Đầu Chụp'.";
-"返回主屏幕，打开《原神》并打开祈愿界面，点击「历史记录」按钮。如成功获取到链接，本软件会向您推送一条通知。" = "Quay lại màn hình chính, mở 'Genshin Impact' và mở giao diện Điều ước. Nhấp vào nút 'Lịch sử'. Nếu lấy thành công URL lịch sử cầu nguyện , phần mềm này sẽ gửi thông báo cho bạn.";
-"返回本软件，点击「开始获取祈愿记录」按钮，等待获取完成。" = "Quay lại phần mềm này, nhấp vào nút 'Bắt đầu thu thập lịch sử cầu nguyện', và đợi quá trình thu thập hoàn tất.";
-"如何获取祈愿链接？" = "Cách lấy URL lịch sử cầu nguyện?";
 "视频教程" = "Video hướng dẫn";
-"您也可以选择根据跟随我们的视频教程获取祈愿记录。" = "Bạn cũng có thể chọn lấy lịch sử cầu nguyện bằng cách làm theo video hướng dẫn của chúng tôi.";
 "帮助" = "Trợ Giúp";
-"确认已经下载、安装并信任CA证书？" = "Bạn đã xác nhận rằng bạn đã tải xuống, cài đặt và tin cậy chứng chỉ CA chưa ?";
-"未正确下载、安装或信任CA证书可能会导致URL抓取功能失效等问题" = "Việc không tải xuống, cài đặt hoặc tin cậy chứng chỉ CA một cách chính xác có thể gây ra các sự cố như chức năng chụp URL không hoạt động bình thường .";
-"我已经下载、安装并信任了CA证书" = "tôi đã làm chúng";
 "返回" = "Quay Lại";
 
-"停止抓包" = "Dừng chụp các gói tin";
-"开始抓包" = "Bắt đầu chụp các gói tin";
-"通过抓包获取获取祈愿链接" = "Lấy URL lịch sử cầu nguyện thông qua chụp gói";
-"重新抓包" = "Chụp lại các gói tin";
 "等待祈愿链接…" = "Đang đợi URL lịch sử cầu nguyện…";
 "开始获取祈愿记录" = "Bắt đầu lấy lịch sử cầu nguyện";
 "成功获取祈愿数据" = "Đã thu thập thành công dữ liệu cầu nguyện";
@@ -1205,8 +1175,6 @@
 "成功获取到祈愿记录链接" = "Đã lấy thành công URL lịch sử cầu nguyện";
 "请点击「开始获取祈愿记录」以继续" = "Vui lòng nhấp vào 'Bắt đầu lấy bản ghi cầu nguyện' để tiếp tục";
 "获取祈愿记录" = "Có được bản ghi cầu nguyện";
-"正在抓包…请前往打开《原神》前往祈愿记录页面" = "Đang bắt các gói... Vui lòng mở 'Genshin Impact' và truy cập trang bản ghi mong muốn";
-"正在开启VPN" = "Bật VPN";
 "等待开始…" = "Đang đợi để bắt đầu…";
 "获取到%@条记录，成功保存%@条新记录\n请返回上一级查看，或继续获取其他帐号的记录" = "Đã lấy %@ bản ghi, lưu thành công %@ trong số chúng.\nQuay lại trang trước để xem chúng hoặc tiếp tục lấy bản ghi từ các tài khoản khác.";
 "成功获取到一批…" = "Thu được thành công…";
@@ -1299,7 +1267,7 @@
 "卡维" = "Kaveh";
 "碧落之珑" = "Ngọc Bích Huy Hoàng";
 
-"复制祈愿链接到剪贴板" = "Sao chép liên kết nguyện vọng vào bảng tạm";
+
 "暂无五星祈愿记录" = "Hiện không có bản ghi nguyện vọng 5 sao";
 "成功将祈愿链接复制到剪贴板" = "Sao chép liên kết nguyện vọng vào bảng tạm thành công";
 

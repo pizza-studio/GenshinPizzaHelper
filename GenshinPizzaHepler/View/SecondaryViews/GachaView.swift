@@ -571,16 +571,6 @@ private struct GetGachaNavigationMenu: View {
                     Label("通过API获取", systemImage: "network")
                 }
             }
-            #if canImport(GachaMIMTServer)
-            Button {
-                showView2.toggle()
-            } label: {
-                Label(
-                    "通过抓包获取",
-                    systemImage: "rectangle.and.text.magnifyingglass"
-                )
-            }
-            #endif
             Button {
                 showView3.toggle()
             } label: {
@@ -605,14 +595,6 @@ private struct GetGachaNavigationMenu: View {
                 ) {
                     EmptyView()
                 }
-                #if canImport(GachaMIMTServer)
-                NavigationLink(
-                    destination: MIMTGetGachaView(),
-                    isActive: $showView2
-                ) {
-                    EmptyView()
-                }
-                #endif
                 NavigationLink(
                     destination: GetGachaClipboardView(),
                     isActive: $showView3
@@ -670,16 +652,7 @@ private struct HelpSheet: View {
                         .bold()
                 }
                 Section {
-                    Label("如果当前这台设备有安装《原神》", systemImage: "text.bubble")
-                    Label(
-                        "建议优先选择「通过抓包获取」",
-                        systemImage: "rectangle.and.text.magnifyingglass"
-                    )
-                } footer: {
-                    Text("适用于所有服务器")
-                }
-                Section {
-                    Label("如果当前这台设备尚未安装《原神》", systemImage: "text.bubble")
+                    Label("国际服务器玩家该怎么办", systemImage: "text.bubble")
                     Label(
                         "建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程",
                         systemImage: "doc.on.clipboard"
