@@ -11,6 +11,7 @@
 "原神披萨小助手" = "Genshin Pizza Helper";
 "主页" = "Trang Chủ";
 "设置" = "Cài Đặt";
+"我的帐号" = "Tài Khoản Của Tôi";
 "添加帐号" = "Thêm Tài Khoản";
 "通知推送" = "Thông Báo";
 "通知推送设置" = "Cài Đặt Thông Báo";
@@ -54,6 +55,7 @@
 "登录帐号获取Cookie" = "Lấy Cookie thông qua HoYoLAB";
 
 "请完成登录" = "Vui lòng hoàn tất đăng nhập";
+"完成" = "Xong";
 "未获取到登录信息，请重试" = "Không thể lấy Cookie. Vui lòng thử lại.";
 "尚未完成帐号设置" = "Cấu hình tài khoản chưa hoàn tất";
 "添加帐号前…" = "Trước khi thêm tài khoản của bạn…";
@@ -93,6 +95,7 @@
 "提醒阈值" = "Ngưỡng Nhựa";
 "%lld树脂" = "%lld Nhựa";
 "洞天宝钱提醒" = "Tiền Động Tiên";
+"提醒时间" = "Thông Báo Trước Khi Đầy";
 "充满前%lld小时" = "%lld giờ trước khi đầy";
 "探索派遣提醒" = "Phái Đi Thám Hiểm";
 "提醒于" = "Thông Báo Khi";
@@ -301,12 +304,12 @@
 "「巧思」" = "Triết Học Của \"Tinh Tế\"";
 "「笃行」" = "Triết Học Của \"Thực Hành\"";
 
-"今日材料" = "Nguyên liệu hôm nay";
-"今日材料：星期日所有材料均可获取" = "Nguyên liệu hôm nay: Tất cả được mở trong ngày Chủ Nhật";
+"今日材料" = "Nguyên Liệu Hôm Nay";
+"今日材料：星期日所有材料均可获取" = "Nguyên Liệu Hôm Nay: Tất Cả NL Đều Mở Vào Ngày Chủ Nhật";
 
 // large size tiện ích
-"已完成" = "Hoàn thành";
-"（星期日所有材料均可获取）" = "(Tất cả nguyên liệu được mở trong ngày Chủ Nhật)";
+"已完成" = "Hoàn Thành";
+"（星期日所有材料均可获取）" = "(Tất cả Tất Cả NL Đều Mở Vào Ngày Chủ Nhật)";
 
 // Char's name
 "空" = "Aether";
@@ -359,10 +362,14 @@
 "九条裟罗" = "Sara";
 "鹿野院平藏" = "Heizou";
 "雷电将军" = "Shogun";
+"赛诺" = "Cyno";
 "提纳里" = "Tighnari";
 "柯莱" = "Collei";
 "多莉" = "Dori";
+"艾尔海森" = "Alhaitham";
 "迪希雅" = "Dehya";
+"妮露" = "Nilou";
+"纳西妲" = "Nahida";
 "林尼" = "Lyney";
 "琳妮特" = "Lynette";
 "伊安珊" = "Iansan";
@@ -378,6 +385,7 @@
 "请前往米游社（或Hoyolab）打开旅行便笺功能" = "Vui lòng mở Ghi chú theo thời gian thực trong ứng dụng HoYoLAB trước";
 "解码错误：请检查网络环境" = "Lỗi giải mã: vui lòng kiểm tra trạng thái mạng của bạn";
 "网络错误" = "Lỗi mạng";
+"未获取到登录信息，请重试" = "Không thể tìm thông tin đăng nhập của bạn, vui lòng đăng nhập lại HoYoLAB";
 "未知错误码：%lld" = "Lỗi không xác định %lld";
 
 "无返回数据" = "Không có dữ liệu phản hồi";
@@ -444,6 +452,7 @@
 "探索派遣" = "Phái Đi Thám Hiểm";
 "参量质变仪" = "Máy Biến Đổi Tham Số";
 "周本折扣" = "Vùng Đất Thảo Phạt";
+"可使用" = "CD Xong";
 "%@ 回满" = "Đầy lại trong %@";
 "树脂已全部回满" = "Nhựa đã được phục hồi đầy đủ";
 
@@ -515,16 +524,16 @@
 
 // MARK: - 2.4
 // Content View
-"概览" = "Tổng quan";
-"工具" = "Công cụ";
+"概览" = "Tổng Quan";
+"工具" = "Công Cụ";
 
 // Home View
-"当前活动" = "Sự kiện đang diễn ra";
-"即将结束的活动" = "Sự kiện sắp kết thúc";
-"查看全部活动" = "Tất cả Sự kiện đang diễn ra";
+"当前活动" = "Sự Kiện Đang Diễn Ra";
+"即将结束的活动" = "Sự Kiện Sắp Kết Thúc";
+"查看全部活动" = "Tất Cả Sự Kiện Đang Diễn Ra";
 "帐号基本信息" = "Thông tin cơ bản về tài khoản";
-"剩余 %lld天" = "%lld ngày còn lại";
-"剩余 %lld小时" = "%lld giờ còn lại";
+"剩余 %lld天" = " Còn Lại %lld Ngày";
+"剩余 %lld小时" = "Còn Lại %lld Giờ";
 "收起" = "Fold";
 "点击材料查看更多" = "Nhấn vào biểu tượng để hiển thị thêm";
 "点击材料查看关联角色" = "Nhấn vào biểu tượng để hiển thị các nhân vật liên quan";
@@ -561,7 +570,8 @@
 "Twitter主页" = "Trang chủ Twitter";
 "YouTube频道" = "Kênh YouTube";
 "翻译提供" = "Phiên dịch viên";
-"英文" = "Tiếng Anh";
+"英语" = "Tiếng Anh";
+"日语 英语" = "Tiếng Nhật , Anh";
 "法文" = "Tiếng Pháp";
 "日文" = "Tiếng Nhật";
 "たお👻🍑" = "Hatti";
@@ -735,6 +745,7 @@
 "星期一 & 星期四" = "Thứ Hai & Thứ Năm";
 "星期二 & 星期五" = "Thứ Ba & Thứ Sáu";
 "星期三 & 星期六" = "Thứ Tư & Thứ Bảy";
+"星期日" = "Chủ Nhật";
 
 // Tool View
 "请先选择帐号" = "Vui lòng chọn tài khoản trước";
@@ -861,6 +872,7 @@
 "五星角色" = "Nhân Vật 5 Sao";
 "四星角色" = "Nhân Vật 4 Sao";
 "的所有角色" = "Nhân Vật Sở Hữu";
+"生命值上限" = "HP";
 "元素精通​" = "TTNT"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
 "纳西妲" = "Nahida";
 "莱依拉" = "Layla";
@@ -903,7 +915,7 @@
 "1034问题的解决方案" = "Giải quyết vấn đề 1034";
 "点击打开米游社App" = "Bấm để mở ứng dụng HoYoLAB";
 "（1034）帐号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) Trạng thái tài khoản không bình thường, vui lòng truy cập Ứng dụng HoYoLAB để xác minh lại";
-"小组件设置" = "Cài Đặt tiện ích";
+"小组件设置" = "Cài Đặt Tiện Ích";
 "主屏幕小组件刷新频率" = "Thường xuyên làm mới tiện ích màn hình chính";
 "锁定屏幕小组件刷新频率" = "Thường xuyên làm mới tiện ích màn hình khóa";
 "每%lld分钟" = "Mỗi %lld phút";
@@ -1002,9 +1014,10 @@
 "展示近日活动和今天可以获取的武器和天赋材料。" = "Hiển thị các sự kiện gần đây và nguyên liệu của vũ khí hoặc thiên phú có thể nhận được ngày hôm nay.";
 "LockScreenHomeCoinWidgetRectangular.resin" = "Nhựa";
 "LockScreenHomeCoinWidgetRectangular.homeCoin" = "Tiền Động Tiên";
-"每小时%@个" = "%@/giờ";
-"每%@" = "Mọi %@";
+"每小时%@个" = "%@/Giờ";
+"每%@" = "Mỗi %@";
 
+"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường, đề xuất giảm tần suất đồng bộ hóa tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản hóa";
 "小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "Tiện ích được cố định để làm mới cứ sau 8 phút, tần suất đồng bộ hóa sẽ không ảnh hưởng đến việc làm mới tiện ích.  Bạn nên đặt tần suất đồng bộ dài hơn nếu có thể và mở ứng dụng để đồng bộ một lần sau mỗi chuyến tham quan.";
 "小组件同步频率" = "Tần suất đồng bộ hóa tiện ích";
 "主屏幕小组件同步频率" = "Tần suất đồng bộ hóa tiện ích màn hình chính";
@@ -1092,9 +1105,6 @@
 "「旗杆」" = "The Flagstaff";
 "翡玉法球" = "Quả Cầu Ngọc";
 
-// Display Options
-"裁掉小尺寸角色照片当中的肩膀" = "Cắt vai trong ảnh nhân vật kích thước nhỏ";
-
 // artifact rating
 "%@分" = "%@pt";
 "圣遗物评价" = "Xếp Hạng Thánh Di Vật";
@@ -1122,6 +1132,7 @@
 "不歪率" = "Tỉ Lệ 50/50";
 "派蒙的评价" = "Paimon's Review";
 "总消耗原石数" = "Tổng Số Lượng Nguyên Thạch";
+"五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao";
 "限定五星平均消耗原石数" = "Số Nguyên Thạch Cho Mỗi Cung Mệnh Nhân Vật 5 Sao Giới Hạn";
 "平均抽数：" = "Số Lượt Trung Bình:";
 "暂不支持国际服" = "Không hỗ trợ máy chủ quốc tế";
@@ -1180,7 +1191,7 @@
 "确认已经下载、安装并信任CA证书？" = "Bạn đã xác nhận rằng bạn đã tải xuống, cài đặt và tin cậy chứng chỉ CA chưa ?";
 "未正确下载、安装或信任CA证书可能会导致URL抓取功能失效等问题" = "Việc không tải xuống, cài đặt hoặc tin cậy chứng chỉ CA một cách chính xác có thể gây ra các sự cố như chức năng chụp URL không hoạt động bình thường .";
 "我已经下载、安装并信任了CA证书" = "tôi đã làm chúng";
-"返回" = "Quay lại";
+"返回" = "Quay Lại";
 
 "停止抓包" = "Dừng chụp các gói tin";
 "开始抓包" = "Bắt đầu chụp các gói tin";
@@ -1194,7 +1205,7 @@
 "成功获取到祈愿记录链接" = "Đã lấy thành công URL lịch sử cầu nguyện";
 "请点击「开始获取祈愿记录」以继续" = "Vui lòng nhấp vào 'Bắt đầu lấy bản ghi cầu nguyện' để tiếp tục";
 "获取祈愿记录" = "Có được bản ghi cầu nguyện";
-"正在抓包…请打开《原神》前往祈愿记录页面" = "Đang bắt các gói... Vui lòng mở 'Genshin Impact' và truy cập trang bản ghi mong muốn";
+"正在抓包…请前往打开《原神》前往祈愿记录页面" = "Đang bắt các gói... Vui lòng mở 'Genshin Impact' và truy cập trang bản ghi mong muốn";
 "正在开启VPN" = "Bật VPN";
 "等待开始…" = "Đang đợi để bắt đầu…";
 "获取到%@条记录，成功保存%@条新记录\n请返回上一级查看，或继续获取其他帐号的记录" = "Đã lấy %@ bản ghi, lưu thành công %@ trong số chúng.\nQuay lại trang trước để xem chúng hoặc tiếp tục lấy bản ghi từ các tài khoản khác.";
@@ -1213,6 +1224,7 @@
 "成功获取到祈愿链接" = "Đã lấy thành công URL lịch sử cầu nguyện";
 "请返回继续获取祈愿记录。" = "Vui lòng truy cập bản ghi và tiếp tục lấy hồ sơ lịch sử cầu nguyện.";
 "重新获取祈愿链接" = "Lấy lại URL lịch sử cầu nguyện";
+"开始获取祈愿记录" = "Bắt đầu thu thập hồ sơ cầu nguyện";
 "从剪贴板上获取到的链接有误" = "URL lấy được từ khay nhớ tạm không chính xác";
 "预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Dự kiến lấy được URL lịch sử cầu nguyện, nhưng nhận được nội dung không chính xác:\n%@";
 "未能从剪贴板获取到内容" = "Không lấy được nội dung từ khay nhớ tạm";
@@ -1222,7 +1234,9 @@
 
 "导入UIGF JSON格式祈愿记录" = "Nhập bản ghi UIGF JSON";
 "导入UIGF XLSX格式祈愿记录" = "Nhập bản ghi UIGF XLSX";
+"目前仅支持导入简体中文祈愿记录" = "Hiện tại chỉ hỗ trợ nhập hồ sơ cầu nguyện tiếng Trung giản thể";
 "导入中，请稍候…" = "Đang nhập, vui lòng đợi…";
+"成功导入祈愿数据" = "Dữ liệu cầu nguyện được nhập thành công";
 "数据来自：%@" = "Nguồn dữ liệu: %@";
 "导出时间：%@" = "thời gian xuất: %@";
 "导入了%lld条记录" = "Bản ghi %lld đã nhập";
@@ -1232,7 +1246,8 @@
 "错误信息：%@" = "Thông báo lỗi: %@";
 "重试" = "Thử Lại";
 "成功导入祈愿数据" = "Dữ liệu cầu nguyện được nhập thành công";
-"请耐心等待…" = "Hãy kiên nhẫn chờ đợi…";
+"导入时界面会卡住一段时间" = "Giao diện sẽ bị kẹt một lúc trong quá trình nhập";
+"请耐心等待…" = "xin vui lòng chờ đợi…";
 "开始" = "Bắt Đầu";
 "无法访问文件" = "Không thể truy cập tệp";
 "原始数据不存在" = "Dữ liệu thô không tồn tại";
@@ -1264,16 +1279,16 @@
 "自%@到%@" = "Từ %@ đến %@";
 
 // gacha avaliable language
-"泰文" = "Thai";
-"朝鲜文" = "Korean";
-"西班牙文" = "Spanish";
-"简体中文" = "Simplified Chinese";
-"印尼文" = "Indonesian";
-"葡萄牙文" = "Portuguese";
-"德文" = "German";
-"繁体中文" = "Traditional Chinese";
-"英语（美国）" = "English (US)";
-"选择语言" = "Select Language";
+"泰文" = "Tiếng Thái";
+"朝鲜文" = "Tiếng Hàn Quốc";
+"西班牙文" = "Tiếng Tây Ban Nha";
+"简体中文" = "Tiếng Trung Giản thể";
+"印尼文" = "Tiếng Inđônêxia";
+"葡萄牙文" = "Tiếng Bồ Đào Nha";
+"德文" = "Tiếng Đức";
+"繁体中文" = "Tiếng Trung Phồn thể";
+"英语（美国）" = "Tiếng Anh (Hoa Kỳ)";
+"选择语言" = "Chọn ngôn ngữ";
 
 // Additional terms
 "开始导入？" = "Bắt đầu nhập ?";
@@ -1307,5 +1322,5 @@
 "删除成功" = "Xóa thành công";
 "清理重复数据成功" = "Đã xóa dữ liệu trùng lặp thành công";
 "如何从《提瓦特小助手》导入？" = "Làm thế nào để nhập từ \"提瓦特小助手\"?";
-"如何从paimon.moe导入？" = "Làm thế nào để nhập từ paimon.moe?";
-"教程" = "Hướng dẫn";
+"如何从paimon.moe导入？" = "Làm thế nào để nhập từ Paimon.moe?";
+"教程" = "Hướng Dẫn";
