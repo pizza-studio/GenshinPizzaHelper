@@ -183,6 +183,13 @@ struct BackgroundOptions {
         "迪希雅・净焰",
         "米卡・索引",
         "纪行・意巧",
+        "白术・祛风", /* 3.5 */
+        "卡维・穹庭",
+        "成就・万种",
+        "成就・槿暮",
+        "须弥・大梦",
+        "须弥・甘露",
+        "纪行・荣冕",
     ]
     static let allOptions: [String] = BackgroundOptions
         .colors + BackgroundOptions.namecards

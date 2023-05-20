@@ -514,6 +514,10 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_EquipIcon_Sword_Ayus_Awaken",
                 nameToLocalize: "裁叶萃光"
             ),
+            .init(
+                imageString: "UI_EquipIcon_Bow_Ibis_Awaken",
+                nameToLocalize: "鹮穿之喙"
+            ),
         ]
     )
     static let oasisGarden: WeaponOrTalentMaterial = .init(
@@ -864,6 +868,10 @@ extension WeaponOrTalentMaterial {
             .init(
                 imageString: "UI_AvatarIcon_Yae_Card",
                 nameToLocalize: "八重神子"
+            ),
+            .init(
+                imageString: "UI_AvatarIcon_Kirara_Card",
+                nameToLocalize: "绮良良"
             ),
         ]
     )
