@@ -870,7 +870,7 @@ extension WeaponOrTalentMaterial {
                 nameToLocalize: "八重神子"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Kirara_Card",
+                imageString: "UI_AvatarIcon_Momoka_Card",
                 nameToLocalize: "绮良良"
             ),
         ]
