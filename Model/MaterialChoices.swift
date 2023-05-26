@@ -819,6 +819,10 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_AvatarIcon_Heizo_Card",
                 nameToLocalize: "鹿野院平藏"
             ),
+            .init(
+                imageString: "UI_AvatarIcon_Momoka_Card",
+                nameToLocalize: "绮良良"
+            ),
         ]
     )
     static let elegance: WeaponOrTalentMaterial = .init(
@@ -868,10 +872,6 @@ extension WeaponOrTalentMaterial {
             .init(
                 imageString: "UI_AvatarIcon_Yae_Card",
                 nameToLocalize: "八重神子"
-            ),
-            .init(
-                imageString: "UI_AvatarIcon_Momoka_Card",
-                nameToLocalize: "绮良良"
             ),
         ]
     )
