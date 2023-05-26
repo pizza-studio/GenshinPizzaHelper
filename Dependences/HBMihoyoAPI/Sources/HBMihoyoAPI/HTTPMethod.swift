@@ -176,6 +176,7 @@ struct HttpMethod<T: Codable> {
                     "x-rpc-client_type": clientType,
                     "Referer": "https://webstatic.mihoyo.com/",
                     "Cookie": cookie,
+                    "x-rpc-device_fp": String(uid.md5.prefix(13)),
                 ]
                 // http方法
                 switch method {
