@@ -107,7 +107,9 @@ class WebImageLoaderViewModel: ObservableObject {
 
     // 读取图片
     func loadImageCache(url: String) -> UIImage? {
-        let imageURL = URL(string: url)!
+        guard let imageURL = URL(string: url) else {
+            return nil
+        }
 
         if !FileManager.default.fileExists(atPath: imageFolderURL.path) {
             try! FileManager.default.createDirectory(

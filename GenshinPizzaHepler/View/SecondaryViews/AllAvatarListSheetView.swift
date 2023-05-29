@@ -196,13 +196,8 @@ struct AvatarListItem: View {
                 HStack(spacing: 0) {
                     ForEach(avatar.reliquaries, id: \.id) { reliquary in
                         Group {
-                            if let iconString = URL(string: reliquary.icon)?
-                                .lastPathComponent.split(separator: ".").first {
-                                EnkaWebIcon(iconString: String(iconString))
-                                    .scaledToFit()
-                            } else {
-                                WebImage(urlStr: reliquary.icon)
-                            }
+                            WebImage(urlStr: reliquary.icon)
+                                .scaledToFit()
                         }
                         .frame(width: 20, height: 20)
                     }
@@ -222,16 +217,8 @@ struct AvatarListItem: View {
                     .scaledToFit()
                     .scaleEffect(1.1)
                     .clipShape(Circle())
-                    if let iconString = URL(string: avatar.weapon.icon)?
-                        .lastPathComponent.split(separator: ".").first {
-                        EnkaWebIcon(
-                            iconString: String(iconString) +
-                                "_Awaken"
-                        ).scaledToFit()
-                    } else {
-                        WebImage(urlStr: avatar.weapon.icon)
-                            .scaledToFit()
-                    }
+                    WebImage(urlStr: avatar.weapon.icon)
+                        .scaledToFit()
                 }
                 .frame(width: 50, height: 50)
             }
