@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2023/3/25.
 //  HTTP请求方法
 
+import CryptoKit
 import Foundation
 
 // MARK: - Method
@@ -35,6 +36,8 @@ struct HttpMethod<T: Codable> {
         _ serverID: String,
         _ uid: String,
         _ cookie: String,
+        _ uuid: UUID = UUID(),
+        useChallenge: String? = nil,
         completion: @escaping (
             (Result<T, RequestError>) -> ()
         )
@@ -139,6 +142,12 @@ struct HttpMethod<T: Codable> {
             return t + "," + r + "," + c
         }
 
+        func getSystemVersion() -> String {
+            let version = ProcessInfo.processInfo.operatingSystemVersion
+            let formattedVersion = String(format: "%d.%d", version.majorVersion, version.minorVersion)
+            return formattedVersion
+        }
+
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
                 // 请求url前缀，后跟request的类型
@@ -149,9 +158,9 @@ struct HttpMethod<T: Codable> {
                 switch region {
                 case .cn:
                     baseStr = "https://api-takumi-record.mihoyo.com/"
-                    appVersion = "2.40.1"
+                    appVersion = "2.51.1"
                     userAgent =
-                        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.40.1"
+                        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1"
                     clientType = "5"
                 case .global:
                     baseStr = "https://bbs-api-os.hoyolab.com/"
@@ -177,7 +186,19 @@ struct HttpMethod<T: Codable> {
                     "Referer": "https://webstatic.mihoyo.com/",
                     "Cookie": cookie,
                     "x-rpc-device_fp": String(uid.md5.prefix(13)),
+                    "x-rpc-tool_version": "v3.7.1-ys",
+                    "x-rpc-page": "v3.7.1-ys_#/ys",
+                    "x-rpc-device_name": "iPhone",
+                    "Origin": "https://webstatic.mihoyo.com/",
+                    "Sec-Fetch-Dest": "empty",
+                    "Sec-Fetch-Site": "same-site",
+                    "x-rpc-device_id": uuid.uuidString,
+                    "x-rpc-sys_version": getSystemVersion(),
+                    "Sec-Fetch-Mode": "cors",
                 ]
+                if let useChallenge = useChallenge {
+                    request.addValue(useChallenge, forHTTPHeaderField: "x-rpc-challenge")
+                }
                 // http方法
                 switch method {
                 case .post:

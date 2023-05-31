@@ -58,7 +58,8 @@ extension AccountConfiguration {
             region: server.region,
             serverID: server.id,
             uid: uid!,
-            cookie: cookie!
+            cookie: cookie!,
+            uuid: uuid ?? UUID()
         ) { result in
             completion(result)
             #if !os(watchOS)

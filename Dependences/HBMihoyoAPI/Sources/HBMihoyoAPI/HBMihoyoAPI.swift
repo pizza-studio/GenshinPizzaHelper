@@ -14,12 +14,158 @@ public enum MihoyoAPI {
         serverID: String,
         uid: String,
         cookie: String,
+        uuid: UUID = UUID(),
         completion: @escaping (
             FetchResult
         ) -> ()
     ) {
         if (uid == "") || (cookie == "") {
             completion(.failure(.noFetchInfo))
+        }
+
+        func get_ds_token(uid: String, server_id: String) -> String {
+            let s: String
+            switch region {
+            case .cn:
+                s = "egBrFMO1BPBG0UX5XOuuwMRLZKwTVKRV"
+            case .global:
+                s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
+            }
+            let t = String(Int(Date().timeIntervalSince1970))
+            let r = String(Int.random(in: 100000 ..< 200000))
+            let q = "role_id=\(uid)&server=\(server_id)"
+            let c = "salt=\(s)&t=\(t)&r=\(r)&b=&q=\(q)".md5
+            return t + "," + r + "," + c
+        }
+
+        func getSystemVersion() -> String {
+            let version = ProcessInfo.processInfo.operatingSystemVersion
+            let formattedVersion = String(format: "%d.%d", version.majorVersion, version.minorVersion)
+            return formattedVersion
+        }
+
+        func getPassChallenge() -> String? {
+            guard let url = URL(string: "https://bbs-api.mihoyo.com/misc/api/createVerification?is_high=true") else {
+                return nil
+            }
+
+            var request = URLRequest(url: url)
+            request.allHTTPHeaderFields = [
+                "DS": get_ds_token(uid: uid, server_id: serverID),
+                "x-rpc-app_version": "2.51.1",
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1",
+                "x-rpc-client_type": "5",
+                "Referer": "https://app.mihoyo.com/",
+                "Cookie": cookie,
+                "x-rpc-device_fp": String(uid.md5.prefix(13)),
+                "x-rpc-device_name": "iPhone",
+                "x-rpc-device_id": uuid.uuidString,
+                "x-rpc-sys_version": getSystemVersion(),
+                "x-rpc-channel": "miyousheluodi",
+                "Host": "bbs-api.mihoyo.com",
+            ]
+
+            let session = URLSession.shared
+            let semaphore = DispatchSemaphore(value: 0)
+
+            var responseData: Data?
+            var challenge: String?
+
+            func bbsCaptcha(gt: String, challenge: String) -> String? {
+                nil
+            }
+
+            let task = session.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error: \(error)")
+                } else if let data = data {
+                    do {
+                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                           let retcode = json["retcode"] as? Int,
+                           retcode == 0,
+                           let jsonData = json["data"] as? [String: Any],
+                           let gt = jsonData["gt"] as? String,
+                           let challengeData = jsonData["challenge"] as? String {
+                            challenge = bbsCaptcha(gt: gt, challenge: challengeData)
+                        }
+                    } catch {
+                        print("Error decoding JSON: \(error)")
+                    }
+                }
+
+                semaphore.signal()
+            }
+
+            task.resume()
+            semaphore.wait()
+
+            if let validate = challenge {
+                guard let url = URL(string: "https://bbs-api.mihoyo.com/misc/api/verifyVerification") else {
+                    return nil
+                }
+
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.allHTTPHeaderFields = [
+                    "DS": get_ds_token(uid: uid, server_id: serverID),
+                    "x-rpc-app_version": "2.51.1",
+                    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1",
+                    "x-rpc-client_type": "5",
+                    "Referer": "https://app.mihoyo.com/",
+                    "Cookie": cookie,
+                    "x-rpc-device_fp": String(uid.md5.prefix(13)),
+                    "x-rpc-device_name": "iPhone",
+                    "x-rpc-device_id": uuid.uuidString,
+                    "x-rpc-sys_version": getSystemVersion(),
+                    "x-rpc-channel": "miyousheluodi",
+                    "Host": "bbs-api.mihoyo.com",
+                ]
+
+                let params: [String: Any] = [
+                    "geetest_challenge": challenge!,
+                    "geetest_seccode": validate + "|jordan",
+                    "geetest_validate": validate,
+                ]
+
+                do {
+                    request.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
+                } catch {
+                    print("Error encoding JSON: \(error)")
+                    return nil
+                }
+
+                let checkSemaphore = DispatchSemaphore(value: 0)
+
+                var checkResponseData: Data?
+                var passChallenge: String?
+
+                let checkTask = session.dataTask(with: request) { data, response, error in
+                    if let error = error {
+                        print("Error: \(error)")
+                    } else if let data = data {
+                        do {
+                            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                               let retcode = json["retcode"] as? Int,
+                               retcode == 0,
+                               let jsonData = json["data"] as? [String: Any],
+                               let challengeData = jsonData["challenge"] as? String {
+                                passChallenge = challengeData
+                            }
+                        } catch {
+                            print("Error decoding JSON: \(error)")
+                        }
+                    }
+
+                    checkSemaphore.signal()
+                }
+
+                checkTask.resume()
+                checkSemaphore.wait()
+
+                return passChallenge
+            }
+
+            return nil
         }
 
         // 请求类别
@@ -72,7 +218,73 @@ public enum MihoyoAPI {
                             message
                         )))
                     case 1034:
-                        completion(.failure(.accountAbnormal(retcode)))
+                        HttpMethod<RequestResult>
+                            .commonRequest(
+                                .get,
+                                urlStr,
+                                region,
+                                serverID,
+                                uid,
+                                cookie,
+                                useChallenge: getPassChallenge()
+                            ) { result in
+                                switch result {
+                                case let .success(requestResult):
+                                    print("request succeed")
+                                    let fetchData = requestResult.data
+                                    let retcode = requestResult.retcode
+                                    let message = requestResult.message
+
+                                    switch requestResult.retcode {
+                                    case 0:
+                                        print("get data succeed")
+                                        completion(
+                                            .success(UserData(fetchData: fetchData!))
+                                        )
+                                    case 10001:
+                                        print("fail 10001")
+                                        completion(.failure(.cookieInvalid(
+                                            retcode,
+                                            message
+                                        )))
+                                    case 10103, 10104:
+                                        print("fail nomatch")
+                                        completion(.failure(.unmachedAccountCookie(
+                                            retcode,
+                                            message
+                                        )))
+                                    case 1008:
+                                        print("fail 1008")
+                                        completion(.failure(.accountInvalid(
+                                            retcode,
+                                            message
+                                        )))
+                                    case -1, 10102:
+                                        print("fail -1")
+                                        completion(.failure(.dataNotFound(
+                                            retcode,
+                                            message
+                                        )))
+                                    case 1034:
+                                        completion(.failure(.accountAbnormal(retcode)))
+                                    default:
+                                        print("unknownerror")
+                                        completion(.failure(.unknownError(
+                                            retcode,
+                                            message
+                                        )))
+                                    }
+
+                                case let .failure(requestError):
+
+                                    switch requestError {
+                                    case let .decodeError(message):
+                                        completion(.failure(.decodeError(message)))
+                                    default:
+                                        completion(.failure(.requestError(requestError)))
+                                    }
+                                }
+                            }
                     default:
                         print("unknownerror")
                         completion(.failure(.unknownError(
