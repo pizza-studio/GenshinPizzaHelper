@@ -86,20 +86,39 @@ private struct AbyssFloorView: View {
     let floorData: SpiralAbyssDetail.Floor
     let charMap: [String: ENCharacterMap.Character]
 
+    var foldableTitleText: String {
+        if ThisDevice.isHDScreenRatio {
+            let buffer = NSMutableString()
+            buffer.append("深境螺旋第\(floorData.index)层".localized)
+            buffer.append(" - ")
+            buffer.append("获取渊星数".localized)
+            buffer.append(": ")
+            buffer.append("\(floorData.star)/\(floorData.maxStar)")
+            return buffer.description
+        }
+        return "深境螺旋第\(floorData.index)层".localized
+    }
+
     var body: some View {
         Section {
-            HStack {
-                Label(title: { Text("获取渊星数") }) {
-                    AbyssStarIcon()
+            let intSpacing: CGFloat = ThisDevice.isHDScreenRatio ? 0 : 2
+            VStack(spacing: intSpacing) {
+                if !ThisDevice.isHDScreenRatio {
+                    HStack {
+                        Label(title: { Text("获取渊星数") }) {
+                            AbyssStarIcon()
+                        }
+                        Spacer()
+                        Text("\(floorData.star)/\(floorData.maxStar)")
+                    }
+                    Divider().frame(height: 3)
                 }
-                Spacer()
-                Text("\(floorData.star)/\(floorData.maxStar)")
-            }
-            ForEach(floorData.levels, id: \.index) { levelData in
-                AbyssLevelView(levelData: levelData, charMap: charMap)
+                ForEach(floorData.levels, id: \.index) { levelData in
+                    AbyssLevelView(levelData: levelData, charMap: charMap)
+                }
             }
         } header: {
-            Text("深境螺旋第\(floorData.index)层")
+            Text(foldableTitleText)
         }
     }
 }
@@ -111,14 +130,15 @@ private struct AbyssLevelView: View {
     let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 0) {
                 Text("第\(levelData.index)间")
                     .font(.subheadline)
+                    .bold()
                 Spacer()
                 ForEach(0 ..< levelData.star, id: \.self) { _ in
                     AbyssStarIcon()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 25, height: 25)
                 }
             }
             ForEach(levelData.battles, id: \.index) { battleData in
@@ -135,29 +155,33 @@ private struct AbyssBattleView: View {
     let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
-        HStack(alignment: .top, spacing: 0) {
+        let intSpacing: CGFloat = ThisDevice.isHDScreenRatio ? 0 : 2
+        HStack(alignment: .center, spacing: intSpacing) {
             switch battleData.index {
             case 1:
                 Text("上半")
-                    .font(.caption)
+                    .font(.caption).fixedSize()
             case 2:
                 Text("下半")
-                    .font(.caption)
+                    .font(.caption).fixedSize()
             default:
                 Text("Unknown")
-                    .font(.caption)
+                    .font(.caption).fixedSize()
             }
+            Spacer()
             ForEach(battleData.avatars, id: \.id) { avatarData in
                 let charID: String = "\(avatarData.id)"
-                let charNameID: String = charMap.getNameID(id: charID)
-                let charNameCard: String = "UI_AvatarIcon_\(charNameID)_Card"
-                VStack(spacing: 0) {
+                if ThisDevice.isHDScreenRatio, let theChar = charMap[charID] {
+                    theChar.decoratedIcon(55, cutTo: .shoulder)
+                        .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
+                        .frame(height: 60)
+                } else {
+                    let charNameID: String = charMap.getNameID(id: charID)
+                    let charNameCard = "UI_AvatarIcon_\(charNameID)_Card"
                     EnkaWebIcon(iconString: charNameCard)
                         .scaledToFit()
                         .frame(width: 65)
-                    Text("Lv.\(avatarData.level)")
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
+                        .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                 }
                 if avatarData.id != battleData.avatars.last!.id {
                     Spacer()

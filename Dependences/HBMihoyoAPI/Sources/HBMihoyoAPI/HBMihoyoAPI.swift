@@ -68,7 +68,7 @@ public enum MihoyoAPI {
             let session = URLSession.shared
             let semaphore = DispatchSemaphore(value: 0)
 
-            var responseData: Data?
+            // var responseData: Data?
             var challenge: String?
 
             func bbsCaptcha(gt: String, challenge: String) -> String? {
@@ -136,7 +136,7 @@ public enum MihoyoAPI {
 
                 let checkSemaphore = DispatchSemaphore(value: 0)
 
-                var checkResponseData: Data?
+                // var checkResponseData: Data?
                 var passChallenge: String?
 
                 let checkTask = session.dataTask(with: request) { data, response, error in

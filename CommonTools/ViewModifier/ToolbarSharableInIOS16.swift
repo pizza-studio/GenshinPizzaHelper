@@ -48,7 +48,9 @@ struct ToolbarSavePhotoButton<ViewToRender: View>: ViewModifier {
     var isAlertShow: Bool = false
 
     func body(content: Content) -> some View {
-        if #available(iOS 16, *) {
+        if ThisDevice.isMac {
+            content
+        } else if #available(iOS 16, *) {
             content
                 .toolbar {
                     ToolbarItem(placement: placement) {
