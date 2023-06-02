@@ -34,6 +34,182 @@
 		5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
 		5BBCB6AE29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
 		5BBCB6AF29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
+		5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210628B33D8300A6BBA9 /* AppDelegate.swift */; };
+		5BD1C5C92A2A1FC90043C2B1 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
+		5BD1C5CA2A2A1FC90043C2B1 /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
+		5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */; };
+		5BD1C5CC2A2A1FC90043C2B1 /* EachCharacterDetailDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */; };
+		5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A9DB229D4812300CF4230 /* GachaChartView.swift */; };
+		5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8F29D28D3D0075F780 /* GachaView.swift */; };
+		5BD1C5CF2A2A1FC90043C2B1 /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
+		5BD1C5D02A2A1FC90043C2B1 /* LedgerShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCEA7628F95A75004817FB /* LedgerShareView.swift */; };
+		5BD1C5D12A2A1FC90043C2B1 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
+		5BD1C5D22A2A1FC90043C2B1 /* TextPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42546289E987800FEFA49 /* TextPlayerView.swift */; };
+		5BD1C5D32A2A1FC90043C2B1 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258528A0AC1500FEFA49 /* MoreView.swift */; };
+		5BD1C5D42A2A1FC90043C2B1 /* AccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */; };
+		5BD1C5D52A2A1FC90043C2B1 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
+		5BD1C5D62A2A1FC90043C2B1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254A289F67F600FEFA49 /* SettingsView.swift */; };
+		5BD1C5D72A2A1FC90043C2B1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
+		5BD1C5D82A2A1FC90043C2B1 /* AccountIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823028A650C300616CE1 /* AccountIntents.intentdefinition */; };
+		5BD1C5D92A2A1FC90043C2B1 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D228D5C579000DC631 /* ToolsView.swift */; };
+		5BD1C5DA2A2A1FC90043C2B1 /* MainInfoWithDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */; };
+		5BD1C5DB2A2A1FC90043C2B1 /* ImportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11489029D9D1430059DEBF /* ImportGachaView.swift */; };
+		5BD1C5DC2A2A1FC90043C2B1 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
+		5BD1C5DD2A2A1FC90043C2B1 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
+		5BD1C5DE2A2A1FC90043C2B1 /* WebViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF068BD428A335F9002E7334 /* WebViews.swift */; };
+		5BD1C5DF2A2A1FC90043C2B1 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
+		5BD1C5E02A2A1FC90043C2B1 /* GameInfoBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */; };
+		5BD1C5E12A2A1FC90043C2B1 /* GachaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C005829D2FFD100637B19 /* GachaFetch.swift */; };
+		5BD1C5E22A2A1FC90043C2B1 /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
+		5BD1C5E32A2A1FC90043C2B1 /* DateRelationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */; };
+		5BD1C5E42A2A1FC90043C2B1 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
+		5BD1C5E52A2A1FC90043C2B1 /* APIGetGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8D29D28D150075F780 /* APIGetGachaView.swift */; };
+		5BD1C5E62A2A1FC90043C2B1 /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
+		5BD1C5E72A2A1FC90043C2B1 /* GachaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E529D2FD88007D5C80 /* GachaItem.swift */; };
+		5BD1C5E82A2A1FC90043C2B1 /* ArrayOfStringRawPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */; };
+		5BD1C5E92A2A1FC90043C2B1 /* GachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8929D2883A0075F780 /* GachaURL.swift */; };
+		5BD1C5EA2A2A1FC90043C2B1 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
+		5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */; };
+		5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8329D2834E0075F780 /* GachaItemManager.swift */; };
+		5BD1C5ED2A2A1FC90043C2B1 /* ToolsViewSimplified.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE12903E0BB00C75E7F /* ToolsViewSimplified.swift */; };
+		5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharableInIOS16.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */; };
+		5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
+		5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
+		5BD1C5F12A2A1FC90043C2B1 /* ThisDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */; };
+		5BD1C5F22A2A1FC90043C2B1 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
+		5BD1C5F32A2A1FC90043C2B1 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
+		5BD1C5F42A2A1FC90043C2B1 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
+		5BD1C5F52A2A1FC90043C2B1 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C527A289E168A00EA224F /* HttpMethod.swift */; };
+		5BD1C5F62A2A1FC90043C2B1 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
+		5BD1C5F72A2A1FC90043C2B1 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
+		5BD1C5F82A2A1FC90043C2B1 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
+		5BD1C5F92A2A1FC90043C2B1 /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
+		5BD1C5FA2A2A1FC90043C2B1 /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
+		5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
+		5BD1C5FC2A2A1FC90043C2B1 /* HiddenWaterMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */; };
+		5BD1C5FD2A2A1FC90043C2B1 /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
+		5BD1C5FE2A2A1FC90043C2B1 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringExtensions.swift */; };
+		5BD1C5FF2A2A1FC90043C2B1 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
+		5BD1C6002A2A1FC90043C2B1 /* RingProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823128A651F500616CE1 /* RingProgressBarView.swift */; };
+		5BD1C6012A2A1FC90043C2B1 /* GDGenshinDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */; };
+		5BD1C6022A2A1FC90043C2B1 /* PrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */; };
+		5BD1C6032A2A1FC90043C2B1 /* TransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */; };
+		5BD1C6042A2A1FC90043C2B1 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
+		5BD1C6052A2A1FC90043C2B1 /* PizzaGachaLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA10A66229D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld */; };
+		5BD1C6062A2A1FC90043C2B1 /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */; };
+		5BD1C6072A2A1FC90043C2B1 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
+		5BD1C6082A2A1FC90043C2B1 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823928A73A5400616CE1 /* ReviewHandler.swift */; };
+		5BD1C6092A2A1FC90043C2B1 /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
+		5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8129D280FD0075F780 /* GachaModel.swift */; };
+		5BD1C60B2A2A1FC90043C2B1 /* AccountBasicInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */; };
+		5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3247029DFE878002779F3 /* CollectionChunked.swift */; };
+		5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
+		5BD1C60E2A2A1FC90043C2B1 /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
+		5BD1C60F2A2A1FC90043C2B1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210A28B3910800A6BBA9 /* HomeView.swift */; };
+		5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
+		5BD1C6112A2A1FC90043C2B1 /* NotificationSettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */; };
+		5BD1C6122A2A1FC90043C2B1 /* UIGFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488E29D9A8730059DEBF /* UIGFModel.swift */; };
+		5BD1C6132A2A1FC90043C2B1 /* CurrentEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */; };
+		5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */; };
+		5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
+		5BD1C6162A2A1FC90043C2B1 /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
+		5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
+		5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
+		5BD1C6192A2A1FC90043C2B1 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
+		5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
+		5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
+		5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
+		5BD1C61D2A2A1FC90043C2B1 /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
+		5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
+		5BD1C61F2A2A1FC90043C2B1 /* GetCookieWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */; };
+		5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
+		5BD1C6212A2A1FC90043C2B1 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
+		5BD1C6222A2A1FC90043C2B1 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
+		5BD1C6232A2A1FC90043C2B1 /* ReverseMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232282903E0D6007A4CF4 /* ReverseMask.swift */; };
+		5BD1C6242A2A1FC90043C2B1 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
+		5BD1C6252A2A1FC90043C2B1 /* GetGachaClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */; };
+		5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101F128D85B28000DC631 /* AllEventsView.swift */; };
+		5BD1C6272A2A1FC90043C2B1 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */; };
+		5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8AC1B29C758750047D36C /* CircleClippedBackground.swift */; };
+		5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
+		5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
+		5BD1C62B2A2A1FC90043C2B1 /* AvatarPercentageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */; };
+		5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
+		5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
+		5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
+		5BD1C62F2A2A1FC90043C2B1 /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
+		5BD1C6302A2A1FC90043C2B1 /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
+		5BD1C6312A2A1FC90043C2B1 /* GachaKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8729D287970075F780 /* GachaKey.swift */; };
+		5BD1C6322A2A1FC90043C2B1 /* EachExpeditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */; };
+		5BD1C6332A2A1FC90043C2B1 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
+		5BD1C6342A2A1FC90043C2B1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
+		5BD1C6352A2A1FC90043C2B1 /* AbyssDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */; };
+		5BD1C6362A2A1FC90043C2B1 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
+		5BD1C6372A2A1FC90043C2B1 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
+		5BD1C6382A2A1FC90043C2B1 /* ExportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8978D729DA716400E0903E /* ExportGachaView.swift */; };
+		5BD1C6392A2A1FC90043C2B1 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07C65528B11DB40030E338 /* NotificationSettingView.swift */; };
+		5BD1C63A2A2A1FC90043C2B1 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */; };
+		5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
+		5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
+		5BD1C63D2A2A1FC90043C2B1 /* HideTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD29446290E717A00716EF7 /* HideTabBar.swift */; };
+		5BD1C63E2A2A1FC90043C2B1 /* AllAvatarListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */; };
+		5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
+		5BD1C6402A2A1FC90043C2B1 /* DismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA459DA4290CF47700E74F76 /* DismissableSheet.swift */; };
+		5BD1C6412A2A1FC90043C2B1 /* AvatarHoldingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC72902485600918F64 /* AvatarHoldingData.swift */; };
+		5BD1C6422A2A1FC90043C2B1 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
+		5BD1C6432A2A1FC90043C2B1 /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
+		5BD1C6442A2A1FC90043C2B1 /* ContainGachaItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */; };
+		5BD1C6452A2A1FC90043C2B1 /* GachaSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01F84D29D68EFE002A374C /* GachaSetting.swift */; };
+		5BD1C6462A2A1FC90043C2B1 /* WidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */; };
+		5BD1C6472A2A1FC90043C2B1 /* AbyssDetailDataDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */; };
+		5BD1C6482A2A1FC90043C2B1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */; };
+		5BD1C6492A2A1FC90043C2B1 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
+		5BD1C64A2A2A1FC90043C2B1 /* UpdateHistoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */; };
+		5BD1C64B2A2A1FC90043C2B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210828B3909F00A6BBA9 /* ContentView.swift */; };
+		5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
+		5BD1C64D2A2A1FC90043C2B1 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42551289F755E00FEFA49 /* TextEditorView.swift */; };
+		5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */; };
+		5BD1C64F2A2A1FC90043C2B1 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
+		5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
+		5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8445EB29DBFFD700CB8C9F /* Color.swift */; };
+		5BD1C6522A2A1FC90043C2B1 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
+		5BD1C6532A2A1FC90043C2B1 /* AutoSheetDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */; };
+		5BD1C6542A2A1FC90043C2B1 /* ThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101EF28D7262A000DC631 /* ThanksView.swift */; };
+		5BD1C6552A2A1FC90043C2B1 /* GachaFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */; };
+		5BD1C6562A2A1FC90043C2B1 /* GachaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8529D286540075F780 /* GachaViewModel.swift */; };
+		5BD1C6572A2A1FC90043C2B1 /* MIMTGetGachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32D57329D749E60003978A /* MIMTGetGachaURL.swift */; };
+		5BD1C6582A2A1FC90043C2B1 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42553289F87C800FEFA49 /* AddAccountView.swift */; };
+		5BD1C6592A2A1FC90043C2B1 /* DisplayOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */; };
+		5BD1C65B2A2A1FC90043C2B1 /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */; };
+		5BD1C65C2A2A1FC90043C2B1 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C02A2A1FC90043C2B1 /* HBMihoyoAPI */; };
+		5BD1C65D2A2A1FC90043C2B1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
+		5BD1C65E2A2A1FC90043C2B1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */; };
+		5BD1C65F2A2A1FC90043C2B1 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C22A2A1FC90043C2B1 /* AlertToast */; };
+		5BD1C6602A2A1FC90043C2B1 /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C12A2A1FC90043C2B1 /* HBPizzaHelperAPI */; };
+		5BD1C6612A2A1FC90043C2B1 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */; };
+		5BD1C6632A2A1FC90043C2B1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
+		5BD1C6642A2A1FC90043C2B1 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
+		5BD1C6652A2A1FC90043C2B1 /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
+		5BD1C6662A2A1FC90043C2B1 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
+		5BD1C6672A2A1FC90043C2B1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DCC2886B3D700B7F0FD /* icon.png */; };
+		5BD1C6682A2A1FC90043C2B1 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
+		5BD1C6692A2A1FC90043C2B1 /* 参量质变仪.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F328B0994C0056D182 /* 参量质变仪.png */; };
+		5BD1C66A2A2A1FC90043C2B1 /* 洞天宝钱.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F628B0994C0056D182 /* 洞天宝钱.png */; };
+		5BD1C66B2A2A1FC90043C2B1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
+		5BD1C66C2A2A1FC90043C2B1 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
+		5BD1C66D2A2A1FC90043C2B1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAA2D4112931C36F00BC94A8 /* Settings.bundle */; };
+		5BD1C66E2A2A1FC90043C2B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
+		5BD1C66F2A2A1FC90043C2B1 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */; };
+		5BD1C6702A2A1FC90043C2B1 /* 周本.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F528B0994C0056D182 /* 周本.png */; };
+		5BD1C6712A2A1FC90043C2B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
+		5BD1C6722A2A1FC90043C2B1 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */; };
+		5BD1C6732A2A1FC90043C2B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213728B5259300A6BBA9 /* InfoPlist.strings */; };
+		5BD1C6742A2A1FC90043C2B1 /* gacha_lang_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */; };
+		5BD1C6752A2A1FC90043C2B1 /* 树脂.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F428B0994C0056D182 /* 树脂.png */; };
+		5BD1C6762A2A1FC90043C2B1 /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
+		5BD1C6772A2A1FC90043C2B1 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
+		5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A129220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
@@ -542,6 +718,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5BD1C5BA2A2A1FC90043C2B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA30F9A02886B49200AE7BEA;
+			remoteInfo = ResinStatusWidgetExtension;
+		};
+		5BD1C5BC2A2A1FC90043C2B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA099FF228A2B7220023B4AF;
+			remoteInfo = AccountIntent;
+		};
 		BF85D76828CE0AC8003F3479 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
@@ -587,6 +777,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5BD1C6782A2A1FC90043C2B1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed App Extensions */,
+				5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF85D76128CE0A1C003F3479 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -644,6 +846,8 @@
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		5BAF709129E5764E0096228B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
+		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHeplerSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
@@ -924,6 +1128,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5BD1C65A2A2A1FC90043C2B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BD1C65B2A2A1FC90043C2B1 /* CoreXLSX in Frameworks */,
+				5BD1C65C2A2A1FC90043C2B1 /* HBMihoyoAPI in Frameworks */,
+				5BD1C65D2A2A1FC90043C2B1 /* CloudKit.framework in Frameworks */,
+				5BD1C65E2A2A1FC90043C2B1 /* StoreKit.framework in Frameworks */,
+				5BD1C65F2A2A1FC90043C2B1 /* AlertToast in Frameworks */,
+				5BD1C6602A2A1FC90043C2B1 /* HBPizzaHelperAPI in Frameworks */,
+				5BD1C6612A2A1FC90043C2B1 /* SwiftPieChart in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF85D76E28CE0B9E003F3479 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1543,6 +1761,7 @@
 				BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */,
 				BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */,
 				EAE95CE128CE10A000D975CB /* WatchIntent.appex */,
+				5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1550,6 +1769,7 @@
 		EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */ = {
 			isa = PBXGroup;
 			children = (
+				5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */,
 				BF70210628B33D8300A6BBA9 /* AppDelegate.swift */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
 				EA1B76762886B89F007A5216 /* Info.plist */,
@@ -1671,6 +1891,34 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5BD1C5B82A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BD1C67D2A2A1FC90043C2B1 /* Build configuration list for PBXNativeTarget "GenshinPizzaHeplerSansWatch" */;
+			buildPhases = (
+				5BD1C5C62A2A1FC90043C2B1 /* Clang-Format */,
+				5BD1C5C72A2A1FC90043C2B1 /* Sources */,
+				5BD1C65A2A2A1FC90043C2B1 /* Frameworks */,
+				5BD1C6622A2A1FC90043C2B1 /* Resources */,
+				5BD1C6782A2A1FC90043C2B1 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BD1C5B92A2A1FC90043C2B1 /* PBXTargetDependency */,
+				5BD1C5BB2A2A1FC90043C2B1 /* PBXTargetDependency */,
+			);
+			name = GenshinPizzaHeplerSansWatch;
+			packageProductDependencies = (
+				5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */,
+				5BD1C5C02A2A1FC90043C2B1 /* HBMihoyoAPI */,
+				5BD1C5C12A2A1FC90043C2B1 /* HBPizzaHelperAPI */,
+				5BD1C5C22A2A1FC90043C2B1 /* AlertToast */,
+				5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */,
+			);
+			productName = GenshinPizzaHepler;
+			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
 		BF85D77028CE0B9E003F3479 /* WatchWidgetExtensionExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF85D78028CE0BA1003F3479 /* Build configuration list for PBXNativeTarget "WatchWidgetExtensionExtension" */;
@@ -1887,6 +2135,7 @@
 			projectRoot = "";
 			targets = (
 				EABD7DB52886B2D200B7F0FD /* GenshinPizzaHepler */,
+				5BD1C5B82A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch */,
 				EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */,
 				EA099FF228A2B7220023B4AF /* AccountIntent */,
 				BFCC065528C9B6A0003E4A54 /* WatchHelper */,
@@ -1898,6 +2147,34 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5BD1C6622A2A1FC90043C2B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BD1C6632A2A1FC90043C2B1 /* .gitignore in Resources */,
+				5BD1C6642A2A1FC90043C2B1 /* RobotoCondensed-Bold.ttf in Resources */,
+				5BD1C6652A2A1FC90043C2B1 /* WeaponTalentMaterial.xcassets in Resources */,
+				5BD1C6662A2A1FC90043C2B1 /* 每日任务.png in Resources */,
+				5BD1C6672A2A1FC90043C2B1 /* icon.png in Resources */,
+				5BD1C6682A2A1FC90043C2B1 /* app.css in Resources */,
+				5BD1C6692A2A1FC90043C2B1 /* 参量质变仪.png in Resources */,
+				5BD1C66A2A2A1FC90043C2B1 /* 洞天宝钱.png in Resources */,
+				5BD1C66B2A2A1FC90043C2B1 /* Localizable.strings in Resources */,
+				5BD1C66C2A2A1FC90043C2B1 /* LICENSE.txt in Resources */,
+				5BD1C66D2A2A1FC90043C2B1 /* Settings.bundle in Resources */,
+				5BD1C66E2A2A1FC90043C2B1 /* Assets.xcassets in Resources */,
+				5BD1C66F2A2A1FC90043C2B1 /* RobotoCondensed-Regular.ttf in Resources */,
+				5BD1C6702A2A1FC90043C2B1 /* 周本.png in Resources */,
+				5BD1C6712A2A1FC90043C2B1 /* Preview Assets.xcassets in Resources */,
+				5BD1C6722A2A1FC90043C2B1 /* RobotoCondensed-Light.ttf in Resources */,
+				5BD1C6732A2A1FC90043C2B1 /* InfoPlist.strings in Resources */,
+				5BD1C6742A2A1FC90043C2B1 /* gacha_lang_dictionary.json in Resources */,
+				5BD1C6752A2A1FC90043C2B1 /* 树脂.png in Resources */,
+				5BD1C6762A2A1FC90043C2B1 /* article.html in Resources */,
+				5BD1C6772A2A1FC90043C2B1 /* Assets-NoWatch.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF85D76F28CE0B9E003F3479 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2013,6 +2290,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5BD1C5C62A2A1FC90043C2B1 /* Clang-Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Clang-Format";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\n# make lint\nmake format\n";
+		};
 		BFF5CCA8293B9FF90049F66A /* Clang-Format */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -2035,6 +2331,159 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5BD1C5C72A2A1FC90043C2B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */,
+				5BD1C5C92A2A1FC90043C2B1 /* AppConfig.swift in Sources */,
+				5BD1C5CA2A2A1FC90043C2B1 /* PSAServerAPI.swift in Sources */,
+				5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */,
+				5BD1C5CC2A2A1FC90043C2B1 /* EachCharacterDetailDataView.swift in Sources */,
+				5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */,
+				5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */,
+				5BD1C5CF2A2A1FC90043C2B1 /* md5.swift in Sources */,
+				5BD1C5D02A2A1FC90043C2B1 /* LedgerShareView.swift in Sources */,
+				5BD1C5D12A2A1FC90043C2B1 /* ChineseUIAccommodations.swift in Sources */,
+				5BD1C5D22A2A1FC90043C2B1 /* TextPlayerView.swift in Sources */,
+				5BD1C5D32A2A1FC90043C2B1 /* MoreView.swift in Sources */,
+				5BD1C5D42A2A1FC90043C2B1 /* AccountInfoView.swift in Sources */,
+				5BD1C5D52A2A1FC90043C2B1 /* WidgetData.swift in Sources */,
+				5BD1C5D62A2A1FC90043C2B1 /* SettingsView.swift in Sources */,
+				5BD1C5D72A2A1FC90043C2B1 /* BackgroundOptions.swift in Sources */,
+				5BD1C5D82A2A1FC90043C2B1 /* AccountIntents.intentdefinition in Sources */,
+				5BD1C5D92A2A1FC90043C2B1 /* ToolsView.swift in Sources */,
+				5BD1C5DA2A2A1FC90043C2B1 /* MainInfoWithDetailView.swift in Sources */,
+				5BD1C5DB2A2A1FC90043C2B1 /* ImportGachaView.swift in Sources */,
+				5BD1C5DC2A2A1FC90043C2B1 /* ResinRecoveryActivityController.swift in Sources */,
+				5BD1C5DD2A2A1FC90043C2B1 /* EnkaAPISwiftUIExtensions.swift in Sources */,
+				5BD1C5DE2A2A1FC90043C2B1 /* WebViews.swift in Sources */,
+				5BD1C5DF2A2A1FC90043C2B1 /* TeamUtilizationData.swift in Sources */,
+				5BD1C5E02A2A1FC90043C2B1 /* GameInfoBlockView.swift in Sources */,
+				5BD1C5E12A2A1FC90043C2B1 /* GachaFetch.swift in Sources */,
+				5BD1C5E22A2A1FC90043C2B1 /* AccountConfigurationModel.swift in Sources */,
+				5BD1C5E32A2A1FC90043C2B1 /* DateRelationIdentifier.swift in Sources */,
+				5BD1C5E42A2A1FC90043C2B1 /* ViewTools.swift in Sources */,
+				5BD1C5E52A2A1FC90043C2B1 /* APIGetGachaView.swift in Sources */,
+				5BD1C5E62A2A1FC90043C2B1 /* MaterialProviders.swift in Sources */,
+				5BD1C5E72A2A1FC90043C2B1 /* GachaItem.swift in Sources */,
+				5BD1C5E82A2A1FC90043C2B1 /* ArrayOfStringRawPresentable.swift in Sources */,
+				5BD1C5E92A2A1FC90043C2B1 /* GachaURL.swift in Sources */,
+				5BD1C5EA2A2A1FC90043C2B1 /* ResinRecoveryActivityWidget.swift in Sources */,
+				5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */,
+				5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */,
+				5BD1C5ED2A2A1FC90043C2B1 /* ToolsViewSimplified.swift in Sources */,
+				5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharableInIOS16.swift in Sources */,
+				5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */,
+				5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */,
+				5BD1C5F12A2A1FC90043C2B1 /* ThisDevice.swift in Sources */,
+				5BD1C5F22A2A1FC90043C2B1 /* WidgetBackgroundView.swift in Sources */,
+				5BD1C5F32A2A1FC90043C2B1 /* WebImageView.swift in Sources */,
+				5BD1C5F42A2A1FC90043C2B1 /* UtilizationData.swift in Sources */,
+				5BD1C5F52A2A1FC90043C2B1 /* HttpMethod.swift in Sources */,
+				5BD1C5F62A2A1FC90043C2B1 /* DeviceRecognizer.swift in Sources */,
+				5BD1C5F72A2A1FC90043C2B1 /* Result.swift in Sources */,
+				5BD1C5F82A2A1FC90043C2B1 /* Account.swift in Sources */,
+				5BD1C5F92A2A1FC90043C2B1 /* WidgetErrorView.swift in Sources */,
+				5BD1C5FA2A2A1FC90043C2B1 /* InfoPreviewerView.swift in Sources */,
+				5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */,
+				5BD1C5FC2A2A1FC90043C2B1 /* HiddenWaterMark.swift in Sources */,
+				5BD1C5FD2A2A1FC90043C2B1 /* WeeklyBossesInfoBar.swift in Sources */,
+				5BD1C5FE2A2A1FC90043C2B1 /* StringExtensions.swift in Sources */,
+				5BD1C5FF2A2A1FC90043C2B1 /* ContactUsView.swift in Sources */,
+				5BD1C6002A2A1FC90043C2B1 /* RingProgressBarView.swift in Sources */,
+				5BD1C6012A2A1FC90043C2B1 /* GDGenshinDictionaryView.swift in Sources */,
+				5BD1C6022A2A1FC90043C2B1 /* PrivacySettingsView.swift in Sources */,
+				5BD1C6032A2A1FC90043C2B1 /* TransformerInfoBar.swift in Sources */,
+				5BD1C6042A2A1FC90043C2B1 /* NotificationCenter.swift in Sources */,
+				5BD1C6052A2A1FC90043C2B1 /* PizzaGachaLog.xcdatamodeld in Sources */,
+				5BD1C6062A2A1FC90043C2B1 /* ExpeditionInfoBar.swift in Sources */,
+				5BD1C6072A2A1FC90043C2B1 /* MultiTokenResult.swift in Sources */,
+				5BD1C6082A2A1FC90043C2B1 /* ReviewHandler.swift in Sources */,
+				5BD1C6092A2A1FC90043C2B1 /* AccountConfiguration.xcdatamodeld in Sources */,
+				5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */,
+				5BD1C60B2A2A1FC90043C2B1 /* AccountBasicInfosView.swift in Sources */,
+				5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */,
+				5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */,
+				5BD1C60E2A2A1FC90043C2B1 /* PropertyDictionary.swift in Sources */,
+				5BD1C60F2A2A1FC90043C2B1 /* HomeView.swift in Sources */,
+				5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */,
+				5BD1C6112A2A1FC90043C2B1 /* NotificationSettingNavigator.swift in Sources */,
+				5BD1C6122A2A1FC90043C2B1 /* UIGFModel.swift in Sources */,
+				5BD1C6132A2A1FC90043C2B1 /* CurrentEventNavigator.swift in Sources */,
+				5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */,
+				5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */,
+				5BD1C6162A2A1FC90043C2B1 /* PlayerDetailsModel.swift in Sources */,
+				5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */,
+				5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */,
+				5BD1C6192A2A1FC90043C2B1 /* HomeCoinInfoBar.swift in Sources */,
+				5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */,
+				5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */,
+				5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */,
+				5BD1C61D2A2A1FC90043C2B1 /* TestSectionView.swift in Sources */,
+				5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */,
+				5BD1C61F2A2A1FC90043C2B1 /* GetCookieWebView.swift in Sources */,
+				5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */,
+				5BD1C6212A2A1FC90043C2B1 /* AppBlockBackgroundView.swift in Sources */,
+				5BD1C6222A2A1FC90043C2B1 /* StoreManager.swift in Sources */,
+				5BD1C6232A2A1FC90043C2B1 /* ReverseMask.swift in Sources */,
+				5BD1C6242A2A1FC90043C2B1 /* OpenAPI.swift in Sources */,
+				5BD1C6252A2A1FC90043C2B1 /* GetGachaClipboardView.swift in Sources */,
+				5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */,
+				5BD1C6272A2A1FC90043C2B1 /* AccountDetailView.swift in Sources */,
+				5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */,
+				5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */,
+				5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */,
+				5BD1C62B2A2A1FC90043C2B1 /* AvatarPercentageModel.swift in Sources */,
+				5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */,
+				5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */,
+				5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */,
+				5BD1C62F2A2A1FC90043C2B1 /* GlobalVar.swift in Sources */,
+				5BD1C6302A2A1FC90043C2B1 /* AbyssDataSend.swift in Sources */,
+				5BD1C6312A2A1FC90043C2B1 /* GachaKey.swift in Sources */,
+				5BD1C6322A2A1FC90043C2B1 /* EachExpeditionView.swift in Sources */,
+				5BD1C6332A2A1FC90043C2B1 /* MaterialChoices.swift in Sources */,
+				5BD1C6342A2A1FC90043C2B1 /* AboutView.swift in Sources */,
+				5BD1C6352A2A1FC90043C2B1 /* AbyssDataCollectionView.swift in Sources */,
+				5BD1C6362A2A1FC90043C2B1 /* FetchHomeModel.swift in Sources */,
+				5BD1C6372A2A1FC90043C2B1 /* WidgetUserData.swift in Sources */,
+				5BD1C6382A2A1FC90043C2B1 /* ExportGachaView.swift in Sources */,
+				5BD1C6392A2A1FC90043C2B1 /* NotificationSettingView.swift in Sources */,
+				5BD1C63A2A2A1FC90043C2B1 /* CharacterDetailView.swift in Sources */,
+				5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */,
+				5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */,
+				5BD1C63D2A2A1FC90043C2B1 /* HideTabBar.swift in Sources */,
+				5BD1C63E2A2A1FC90043C2B1 /* AllAvatarListSheetView.swift in Sources */,
+				5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */,
+				5BD1C6402A2A1FC90043C2B1 /* DismissableSheet.swift in Sources */,
+				5BD1C6412A2A1FC90043C2B1 /* AvatarHoldingData.swift in Sources */,
+				5BD1C6422A2A1FC90043C2B1 /* NetworkReachability.swift in Sources */,
+				5BD1C6432A2A1FC90043C2B1 /* NumberTools.swift in Sources */,
+				5BD1C6442A2A1FC90043C2B1 /* ContainGachaItemInfo.swift in Sources */,
+				5BD1C6452A2A1FC90043C2B1 /* GachaSetting.swift in Sources */,
+				5BD1C6462A2A1FC90043C2B1 /* WidgetSettingView.swift in Sources */,
+				5BD1C6472A2A1FC90043C2B1 /* AbyssDetailDataDisplayView.swift in Sources */,
+				5BD1C6482A2A1FC90043C2B1 /* ShareSheet.swift in Sources */,
+				5BD1C6492A2A1FC90043C2B1 /* DetailInfoView.swift in Sources */,
+				5BD1C64A2A2A1FC90043C2B1 /* UpdateHistoryInfoView.swift in Sources */,
+				5BD1C64B2A2A1FC90043C2B1 /* ContentView.swift in Sources */,
+				5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */,
+				5BD1C64D2A2A1FC90043C2B1 /* TextEditorView.swift in Sources */,
+				5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */,
+				5BD1C64F2A2A1FC90043C2B1 /* HomeAPI.swift in Sources */,
+				5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingView.swift in Sources */,
+				5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */,
+				5BD1C6522A2A1FC90043C2B1 /* GlobalDonateView.swift in Sources */,
+				5BD1C6532A2A1FC90043C2B1 /* AutoSheetDismiss.swift in Sources */,
+				5BD1C6542A2A1FC90043C2B1 /* ThanksView.swift in Sources */,
+				5BD1C6552A2A1FC90043C2B1 /* GachaFetchModel.swift in Sources */,
+				5BD1C6562A2A1FC90043C2B1 /* GachaViewModel.swift in Sources */,
+				5BD1C6572A2A1FC90043C2B1 /* MIMTGetGachaURL.swift in Sources */,
+				5BD1C6582A2A1FC90043C2B1 /* AddAccountView.swift in Sources */,
+				5BD1C6592A2A1FC90043C2B1 /* DisplayOptionsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF85D76D28CE0B9E003F3479 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2517,6 +2966,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5BD1C5B92A2A1FC90043C2B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
+			targetProxy = 5BD1C5BA2A2A1FC90043C2B1 /* PBXContainerItemProxy */;
+		};
+		5BD1C5BB2A2A1FC90043C2B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA099FF228A2B7220023B4AF /* AccountIntent */;
+			targetProxy = 5BD1C5BC2A2A1FC90043C2B1 /* PBXContainerItemProxy */;
+		};
 		BF85D76928CE0AC8003F3479 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BFCC065D28C9B6A1003E4A54 /* WatchHelper WatchKit Extension */;
@@ -2605,6 +3064,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5BD1C67E2A2A1FC90043C2B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2057;
+				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GenshinPizzaHeplerSansWatch-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "披萨小助手";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.8.5;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5BD1C67F2A2A1FC90043C2B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2057;
+				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
+				DEVELOPMENT_TEAM = 45Z6V4YD5U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GenshinPizzaHeplerSansWatch-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "披萨小助手";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许保存图片";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.8.5;
+				PRODUCT_BUNDLE_IDENTIFIER = Canglong.GenshinPizzaHepler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		BF85D78128CE0BA1003F3479 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3175,6 +3712,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5BD1C67D2A2A1FC90043C2B1 /* Build configuration list for PBXNativeTarget "GenshinPizzaHeplerSansWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BD1C67E2A2A1FC90043C2B1 /* Debug */,
+				5BD1C67F2A2A1FC90043C2B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BF85D78028CE0BA1003F3479 /* Build configuration list for PBXNativeTarget "WatchWidgetExtensionExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3250,6 +3796,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5BD1C5C32A2A1FC90043C2B1 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		5BD1C5C52A2A1FC90043C2B1 /* XCRemoteSwiftPackageReference "CoreXLSX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/CoreXLSX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.2;
+			};
+		};
 		BF9D74EA29DB1604009A9918 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
@@ -3269,6 +3831,28 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftPieChart;
+		};
+		5BD1C5C02A2A1FC90043C2B1 /* HBMihoyoAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HBMihoyoAPI;
+		};
+		5BD1C5C12A2A1FC90043C2B1 /* HBPizzaHelperAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HBPizzaHelperAPI;
+		};
+		5BD1C5C22A2A1FC90043C2B1 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BD1C5C32A2A1FC90043C2B1 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BD1C5C52A2A1FC90043C2B1 /* XCRemoteSwiftPackageReference "CoreXLSX" */;
+			productName = CoreXLSX;
+		};
 		BF15570A29CFE5CF0056CFE6 /* HBMihoyoAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HBMihoyoAPI;

@@ -769,7 +769,7 @@
 "元素战技释放数" = "Số Lần Thi Triển Kỹ Năng Nguyên Tố";
 "元素爆发次数" = "Số Lần Thi Triển Kỹ Năng Nộ";
 "战斗数据榜" = "Số Liệu Thống Kê Đáng Chú Ý";
-"深境螺旋第%lld层" = "Tầng %lld La Hoàn Thâm Cảnh";
+"第%lld层" = "Tầng %lld";
 "第%lld间" = "Phòng %lld";
 "上半" = "Phần\nĐầu";
 "下半" = "Phần\nCuối";

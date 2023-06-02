@@ -14,6 +14,8 @@ import WebKit
 // MARK: - GetCookieWebView
 
 struct GetCookieWebView: View {
+    // MARK: Internal
+
     @State
     var isAlertShow: Bool = false
     @Binding
@@ -65,6 +67,7 @@ struct GetCookieWebView: View {
                 dataStore: dataStore,
                 httpHeaderFields: httpHeaderFields
             )
+            .environmentObject(orientation)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("完成") {
@@ -146,6 +149,11 @@ struct GetCookieWebView: View {
             isAlertShow.toggle()
         }
     }
+
+    // MARK: Private
+
+    @StateObject
+    private var orientation = ThisDevice.DeviceOrientation()
 }
 
 // MARK: - CookieGetterWebView
@@ -230,6 +238,7 @@ struct CookieGetterWebView: UIViewRepresentable {
             print(request.description)
             uiView.load(request)
         }
+        uiView.reloadInputViews()
     }
 
     func makeCoordinator() -> Coordinator {

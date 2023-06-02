@@ -758,7 +758,7 @@
 "元素战技释放数" = "Elemental Skills Cast";
 "元素爆发次数" = "Elemental Bursts Unleashed";
 "战斗数据榜" = "Notable Stats";
-"深境螺旋第%lld层" = "Spiral Abyss Floor %lld";
+"第%lld层" = "Floor %lld";
 "第%lld间" = "Chamber %lld";
 "上半" = "1st";
 "下半" = "2nd";

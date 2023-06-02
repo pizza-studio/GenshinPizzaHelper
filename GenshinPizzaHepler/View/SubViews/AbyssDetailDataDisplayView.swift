@@ -87,16 +87,25 @@ private struct AbyssFloorView: View {
     let charMap: [String: ENCharacterMap.Character]
 
     var foldableTitleText: String {
+        let initials = String(
+            format: NSLocalizedString("第%lld层", comment: ""),
+            floorData.index
+        )
         if ThisDevice.isHDPhoneOrPodTouch || ThisDevice.isMac {
             let buffer = NSMutableString()
-            buffer.append("深境螺旋第\(floorData.index)层".localized)
+            buffer.append(initials)
             buffer.append(" - ")
-            buffer.append("获取渊星数".localized)
-            buffer.append(": ")
+            if #available(iOS 15, *) {
+                buffer.append("获取渊星数".localized)
+                buffer.append(": ")
+            }
             buffer.append("\(floorData.star)/\(floorData.maxStar)")
+            if #unavailable(iOS 15) {
+                buffer.append("✶")
+            }
             return buffer.description
         }
-        return "深境螺旋第\(floorData.index)层".localized
+        return initials
     }
 
     var body: some View {
@@ -138,9 +147,15 @@ private struct AbyssLevelView: View {
                     .font(.subheadline)
                     .bold()
                 Spacer()
-                ForEach(0 ..< levelData.star, id: \.self) { _ in
-                    AbyssStarIcon()
-                        .frame(width: 25, height: 25)
+                if ThisDevice.isSmallestHDScreenPhone {
+                    ForEach(0 ..< levelData.star, id: \.self) { _ in
+                        Text(verbatim: "✶")
+                    }
+                } else {
+                    ForEach(0 ..< levelData.star, id: \.self) { _ in
+                        AbyssStarIcon()
+                            .frame(width: 25, height: 25)
+                    }
                 }
             }
             Group {
@@ -174,6 +189,10 @@ private struct AbyssBattleView: View {
     let battleData: SpiralAbyssDetail.Floor.Level.Battle
     let charMap: [String: ENCharacterMap.Character]
 
+    var decoratedIconSize: CGFloat {
+        ThisDevice.isSmallestHDScreenPhone ? 45 : 55
+    }
+
     var body: some View {
         let intSpacing: CGFloat = ThisDevice.isHDPhoneOrPodTouch ? 0 : 2
         HStack(alignment: .center, spacing: intSpacing) {
@@ -197,9 +216,10 @@ private struct AbyssBattleView: View {
             ForEach(battleData.avatars, id: \.id) { avatarData in
                 let charID: String = "\(avatarData.id)"
                 if ThisDevice.isHDPhoneOrPodTouch, let theChar = charMap[charID] {
-                    theChar.decoratedIcon(55, cutTo: .shoulder)
+                    let size = decoratedIconSize
+                    theChar.decoratedIcon(size, cutTo: .shoulder)
                         .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
-                        .frame(height: 60)
+                        .frame(height: size + 5)
                 } else {
                     let charNameID: String = charMap.getNameID(id: charID)
                     let charNameCard = "UI_AvatarIcon_\(charNameID)_Card"
