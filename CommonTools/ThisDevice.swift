@@ -55,6 +55,10 @@ enum ThisDevice {
         return (1.76 ... 1.78).contains(big / small)
     }
 
+    public static var isHDPhoneOrPodTouch: Bool {
+        isHDScreenRatio && idiom == .phone
+    }
+
     public static var useAdaptiveSpacing: Bool {
         (ThisDevice.notchType != .none || ThisDevice.idiom != .phone) &&
             AppConfig.adaptiveSpacingInCharacterView
@@ -88,6 +92,24 @@ enum ThisDevice {
             result = windowSize.height / basicWindowSize.height
         }
         return result
+    }
+
+    public static var isThinnestSplitOnPad: Bool {
+        guard idiom == .pad, isSplitOrSlideOver else { return false }
+        guard let window = getKeyWindow() else { return false }
+        let windowSize = window.frame.size
+        let big = max(windowSize.width, windowSize.height)
+        let small = min(windowSize.width, windowSize.height)
+        return (3 ... 4).contains(big / small)
+    }
+
+    public static var isWidestSplitOnPad: Bool {
+        guard idiom == .pad, isSplitOrSlideOver else { return false }
+        guard let window = getKeyWindow() else { return false }
+        let windowSize = window.frame.size
+        let big = max(windowSize.width, windowSize.height)
+        let small = min(windowSize.width, windowSize.height)
+        return (1 ... 1.05).contains(big / small)
     }
 
     public static var isSplitOrSlideOver: Bool {

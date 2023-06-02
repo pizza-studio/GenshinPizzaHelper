@@ -87,7 +87,7 @@ private struct AbyssFloorView: View {
     let charMap: [String: ENCharacterMap.Character]
 
     var foldableTitleText: String {
-        if ThisDevice.isHDScreenRatio {
+        if ThisDevice.isHDPhoneOrPodTouch || ThisDevice.isMac {
             let buffer = NSMutableString()
             buffer.append("深境螺旋第\(floorData.index)层".localized)
             buffer.append(" - ")
@@ -101,9 +101,9 @@ private struct AbyssFloorView: View {
 
     var body: some View {
         Section {
-            let intSpacing: CGFloat = ThisDevice.isHDScreenRatio ? 0 : 2
+            let intSpacing: CGFloat = ThisDevice.isHDPhoneOrPodTouch ? 0 : 2
             VStack(spacing: intSpacing) {
-                if !ThisDevice.isHDScreenRatio {
+                if !(ThisDevice.isHDPhoneOrPodTouch || ThisDevice.isMac) {
                     HStack {
                         Label(title: { Text("获取渊星数") }) {
                             AbyssStarIcon()
@@ -126,6 +126,8 @@ private struct AbyssFloorView: View {
 // MARK: - AbyssLevelView
 
 private struct AbyssLevelView: View {
+    // MARK: Internal
+
     let levelData: SpiralAbyssDetail.Floor.Level
     let charMap: [String: ENCharacterMap.Character]
 
@@ -141,37 +143,60 @@ private struct AbyssLevelView: View {
                         .frame(width: 25, height: 25)
                 }
             }
-            ForEach(levelData.battles, id: \.index) { battleData in
-                AbyssBattleView(battleData: battleData, charMap: charMap)
-            }
+            Group {
+                if ThisDevice.idiom == .pad,
+                   !ThisDevice.isSplitOrSlideOver || ThisDevice.isWidestSplitOnPad || ThisDevice.isMac {
+                    HStack {
+                        ForEach(levelData.battles, id: \.index) { battleData in
+                            AbyssBattleView(battleData: battleData, charMap: charMap)
+                        }
+                    }
+                } else {
+                    ForEach(levelData.battles, id: \.index) { battleData in
+                        AbyssBattleView(battleData: battleData, charMap: charMap)
+                    }
+                }
+            }.environmentObject(orientation)
         }
     }
+
+    // MARK: Private
+
+    @StateObject
+    private var orientation = ThisDevice.DeviceOrientation()
 }
 
 // MARK: - AbyssBattleView
 
 private struct AbyssBattleView: View {
+    // MARK: Internal
+
     let battleData: SpiralAbyssDetail.Floor.Level.Battle
     let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
-        let intSpacing: CGFloat = ThisDevice.isHDScreenRatio ? 0 : 2
+        let intSpacing: CGFloat = ThisDevice.isHDPhoneOrPodTouch ? 0 : 2
         HStack(alignment: .center, spacing: intSpacing) {
-            switch battleData.index {
-            case 1:
-                Text("上半")
-                    .font(.caption).fixedSize()
-            case 2:
-                Text("下半")
-                    .font(.caption).fixedSize()
-            default:
-                Text("Unknown")
-                    .font(.caption).fixedSize()
-            }
-            Spacer()
+            Spacer().frame(minWidth: 0)
+            Group {
+                if !(ThisDevice.isThinnestSplitOnPad || ThisDevice.isSmallestHDScreenPhone || ThisDevice.isMac) {
+                    switch battleData.index {
+                    case 1:
+                        Text("上半")
+                            .font(.caption).fixedSize()
+                    case 2:
+                        Text("下半")
+                            .font(.caption).fixedSize()
+                    default:
+                        Text("Unknown")
+                            .font(.caption).fixedSize()
+                    }
+                    Spacer().frame(minWidth: 0)
+                }
+            }.environmentObject(orientation)
             ForEach(battleData.avatars, id: \.id) { avatarData in
                 let charID: String = "\(avatarData.id)"
-                if ThisDevice.isHDScreenRatio, let theChar = charMap[charID] {
+                if ThisDevice.isHDPhoneOrPodTouch, let theChar = charMap[charID] {
                     theChar.decoratedIcon(55, cutTo: .shoulder)
                         .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                         .frame(height: 60)
@@ -184,11 +209,17 @@ private struct AbyssBattleView: View {
                         .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                 }
                 if avatarData.id != battleData.avatars.last!.id {
-                    Spacer()
+                    Spacer().frame(minWidth: 0)
                 }
             }
+            Spacer().frame(minWidth: 0)
         }
     }
+
+    // MARK: Private
+
+    @StateObject
+    private var orientation = ThisDevice.DeviceOrientation()
 }
 
 // MARK: - BattleDataInfoProvider
