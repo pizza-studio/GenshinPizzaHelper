@@ -24,17 +24,18 @@ enum ThisDevice {
 
     public static var isMac: Bool {
         #if targetEnvironment(simulator)
-        return false
+        return idiom == .mac
         #else
-        if #unavailable(macOS 10.15) {
+        if #unavailable(macOS 10.15), idiom != .mac {
             return false
         }
-        return true
+        return idiom == .mac
         #endif
     }
 
     public static var isPad: Bool {
-        idiom == .pad && !isMac
+        guard #unavailable(macOS 10.15) else { return false }
+        return idiom == .pad
     }
 
     public static var isScreenLandScape: Bool {
@@ -53,6 +54,10 @@ enum ThisDevice {
         let big = max(screenSize.width, screenSize.height)
         let small = min(screenSize.width, screenSize.height)
         return (1.76 ... 1.78).contains(big / small)
+    }
+
+    public static var isHDPhoneOrPodTouch: Bool {
+        isHDScreenRatio && idiom == .phone
     }
 
     public static var useAdaptiveSpacing: Bool {
@@ -88,6 +93,24 @@ enum ThisDevice {
             result = windowSize.height / basicWindowSize.height
         }
         return result
+    }
+
+    public static var isThinnestSplitOnPad: Bool {
+        guard idiom == .pad, isSplitOrSlideOver else { return false }
+        guard let window = getKeyWindow() else { return false }
+        let windowSize = window.frame.size
+        let big = max(windowSize.width, windowSize.height)
+        let small = min(windowSize.width, windowSize.height)
+        return (3 ... 4).contains(big / small)
+    }
+
+    public static var isWidestSplitOnPad: Bool {
+        guard idiom == .pad, isSplitOrSlideOver else { return false }
+        guard let window = getKeyWindow() else { return false }
+        let windowSize = window.frame.size
+        let big = max(windowSize.width, windowSize.height)
+        let small = min(windowSize.width, windowSize.height)
+        return (1 ... 1.05).contains(big / small)
     }
 
     public static var isSplitOrSlideOver: Bool {

@@ -771,8 +771,8 @@
 "战斗数据榜" = "Số Liệu Thống Kê Đáng Chú Ý";
 "深境螺旋第%lld层" = "Tầng %lld La Hoàn Thâm Cảnh";
 "第%lld间" = "Phòng %lld";
-"上半" = "Phần Đầu";
-"下半" = "Phần Cuối";
+"上半" = "Phần\nĐầu";
+"下半" = "Phần\nCuối";
 "获取渊星数" = "Số Sao Thu Được Ở Phòng";
 // Other tool
 "提瓦特大地图" = "Bản Đồ Tương Tác Teyvat";
