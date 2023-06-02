@@ -88,7 +88,7 @@ struct DisplayOptionsView: View {
                 }
             }
 
-            if ThisDevice.notchType != .none || ThisDevice.idiom != .phone {
+            if ThisDevice.notchType != .none || OS.type != .iPhoneOS {
                 Section {
                     Toggle(isOn: $adaptiveSpacingInCharacterView) {
                         Text("角色详情排版间距适配")

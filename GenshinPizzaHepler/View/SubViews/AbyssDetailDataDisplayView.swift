@@ -91,7 +91,7 @@ private struct AbyssFloorView: View {
             format: NSLocalizedString("第%lld层", comment: ""),
             floorData.index
         )
-        if ThisDevice.isHDPhoneOrPodTouch || ThisDevice.isMac {
+        if ThisDevice.isHDPhoneOrPodTouch || OS.type == .macOS {
             let buffer = NSMutableString()
             buffer.append(initials)
             buffer.append(" - ")
@@ -112,7 +112,7 @@ private struct AbyssFloorView: View {
         Section {
             let intSpacing: CGFloat = ThisDevice.isHDPhoneOrPodTouch ? 0 : 2
             VStack(spacing: intSpacing) {
-                if !(ThisDevice.isHDPhoneOrPodTouch || ThisDevice.isMac) {
+                if !(ThisDevice.isHDPhoneOrPodTouch || OS.type == .macOS) {
                     HStack {
                         Label(title: { Text("获取渊星数") }) {
                             AbyssStarIcon()
@@ -159,8 +159,8 @@ private struct AbyssLevelView: View {
                 }
             }
             Group {
-                if ThisDevice.idiom == .pad,
-                   !ThisDevice.isSplitOrSlideOver || ThisDevice.isWidestSplitOnPad || ThisDevice.isMac {
+                if (OS.type == .iPadOS && (!ThisDevice.isSplitOrSlideOver || ThisDevice.isWidestSplitOnPad)) || OS
+                    .type == .macOS {
                     HStack {
                         ForEach(levelData.battles, id: \.index) { battleData in
                             AbyssBattleView(battleData: battleData, charMap: charMap)
@@ -198,7 +198,7 @@ private struct AbyssBattleView: View {
         HStack(alignment: .center, spacing: intSpacing) {
             Spacer().frame(minWidth: 0)
             Group {
-                if !(ThisDevice.isThinnestSplitOnPad || ThisDevice.isSmallestHDScreenPhone || ThisDevice.isMac) {
+                if !(ThisDevice.isThinnestSplitOnPad || ThisDevice.isSmallestHDScreenPhone || OS.type == .macOS) {
                     switch battleData.index {
                     case 1:
                         Text("上半")

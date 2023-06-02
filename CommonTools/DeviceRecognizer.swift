@@ -9,22 +9,42 @@ import Foundation
 import SwiftUI
 import UIKit
 
-// MARK: - Device
+// MARK: - OS
 
-enum Device {
-    // MARK: 当前设备类型 iPhone iPad Mac
+enum OS: Int {
+    case macOS = 0
+    case iPhoneOS = 1
+    case iPadOS = 2
+    case watchOS = 3
+    case tvOS = 4
 
-    enum Devicetype {
-        case iphone, ipad, mac
-    }
+    // MARK: Internal
 
-    static var deviceType: Devicetype {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return .ipad
-        } else {
-            return .iphone
-        }
-    }
+    static let type: OS = {
+        let maybePad = UIDevice.modelIdentifier.contains("iPad") || UIDevice.current.userInterfaceIdiom == .pad
+        #if os(OSX)
+        return .macOS
+        #elseif os(watchOS)
+        return .watchOS
+        #elseif os(tvOS)
+        return .tvOS
+        #elseif os(iOS)
+        #if targetEnvironment(simulator)
+        return maybePad ? .iPadOS : .iPhoneOS
+        #elseif targetEnvironment(macCatalyst)
+        return .macOS
+        #else
+        return isPad ? .iPadOS : .iPhoneOS
+        #endif
+        #endif
+    }()
+
+    static let isCatalyst: Bool = {
+        #if targetEnvironment(macCatalyst)
+        return true
+        #endif
+        return false
+    }()
 }
 
 // MARK: - DeviceRotationViewModifier

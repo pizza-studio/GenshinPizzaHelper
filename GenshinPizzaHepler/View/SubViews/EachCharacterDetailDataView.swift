@@ -30,18 +30,6 @@ struct EachCharacterDetailDataView: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
-            //            if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) {
-            //                VStack(spacing: 6.5) {
-            //                    avatarIconAndSkill()
-            //                    VStack(alignment: .leading) {
-            //                        artifactsDetailsView()
-            //                    }
-            //                }
-            //                VStack(spacing: 6.5) {
-            //                    probView()
-            //                    weapon()
-            //                }
-            //            } 上述内容回头再弄
             VStack(spacing: 6.5 + Self.spacingDelta) {
                 AvatarAndSkillView(avatar: avatar, fontSize: 25)
                     .padding(.bottom, 2)
@@ -277,7 +265,6 @@ struct EachCharacterDetailDataView: View {
             Array(avatar.artifacts.enumerated()),
             id: \.offset
         ) { seqIndex, artifact in
-            // if [.pad, .mac].contains(UIDevice.current.userInterfaceIdiom) 回头再弄
             VStack(spacing: 6.5 + Self.spacingDelta) {
                 perArtifactDetailView(
                     artifact,

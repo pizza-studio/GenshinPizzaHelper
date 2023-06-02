@@ -142,10 +142,9 @@ struct CharacterDetailView: View {
     }
 
     private var condenseHorizontally: Bool {
-        guard ThisDevice.idiom != .phone else { return true }
+        guard OS.type != .iPhoneOS else { return true }
         guard ThisDevice.useAdaptiveSpacing else { return true }
         // iPad and macOS.
-        return ThisDevice.isSplitOrSlideOver && orientation
-            .orientation == .portrait && ThisDevice.idiom != .phone
+        return ThisDevice.isSplitOrSlideOver && orientation.orientation == .portrait
     }
 }

@@ -22,31 +22,11 @@ enum ThisDevice {
         )
     }
 
-    public static var isMac: Bool {
-        #if targetEnvironment(simulator)
-        return idiom == .mac
-        #else
-        if #unavailable(macOS 10.15), idiom != .mac {
-            return false
-        }
-        return idiom == .mac
-        #endif
-    }
-
-    public static var isPad: Bool {
-        guard #unavailable(macOS 10.15) else { return false }
-        return idiom == .pad
-    }
-
     public static var isScreenLandScape: Bool {
         guard let window = UIApplication.shared.windows
             .filter({ $0.isKeyWindow }).first else { return false }
         let filtered = window.safeAreaInsets.allParamters.filter { $0 > 0 }
         return filtered.count == 3
-    }
-
-    public static var idiom: UIUserInterfaceIdiom {
-        UIDevice.current.userInterfaceIdiom
     }
 
     public static var isHDScreenRatio: Bool {
@@ -57,11 +37,11 @@ enum ThisDevice {
     }
 
     public static var isHDPhoneOrPodTouch: Bool {
-        isHDScreenRatio && idiom == .phone
+        isHDScreenRatio && OS.type == .iPhoneOS
     }
 
     public static var useAdaptiveSpacing: Bool {
-        (ThisDevice.notchType != .none || ThisDevice.idiom != .phone) &&
+        (ThisDevice.notchType != .none || OS.type != .iPhoneOS) &&
             AppConfig.adaptiveSpacingInCharacterView
     }
 
@@ -96,7 +76,7 @@ enum ThisDevice {
     }
 
     public static var isThinnestSplitOnPad: Bool {
-        guard idiom == .pad, isSplitOrSlideOver else { return false }
+        guard OS.type == .iPadOS, isSplitOrSlideOver else { return false }
         guard let window = getKeyWindow() else { return false }
         let windowSize = window.frame.size
         let big = max(windowSize.width, windowSize.height)
@@ -105,7 +85,7 @@ enum ThisDevice {
     }
 
     public static var isWidestSplitOnPad: Bool {
-        guard idiom == .pad, isSplitOrSlideOver else { return false }
+        guard OS.type == .iPadOS, isSplitOrSlideOver else { return false }
         guard let window = getKeyWindow() else { return false }
         let windowSize = window.frame.size
         let big = max(windowSize.width, windowSize.height)
