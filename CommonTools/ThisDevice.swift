@@ -24,17 +24,18 @@ enum ThisDevice {
 
     public static var isMac: Bool {
         #if targetEnvironment(simulator)
-        return false
+        return idiom == .mac
         #else
-        if #unavailable(macOS 10.15) {
+        if #unavailable(macOS 10.15), idiom != .mac {
             return false
         }
-        return true
+        return idiom == .mac
         #endif
     }
 
     public static var isPad: Bool {
-        idiom == .pad && !isMac
+        guard #unavailable(macOS 10.15) else { return false }
+        return idiom == .pad
     }
 
     public static var isScreenLandScape: Bool {
