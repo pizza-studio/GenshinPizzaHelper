@@ -22,7 +22,7 @@ struct MoreView: View {
                 #if DEBUG
                 Button("清空已检查的版本号") {
                     UserDefaults.standard.set(
-                        [],
+                        [Int](),
                         forKey: "checkedUpdateVersions"
                     )
                     UserDefaults.standard.set(

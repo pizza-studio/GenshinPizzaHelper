@@ -5,7 +5,7 @@
 //  Created by Bill Haku on 2022/8/6.
 //  计算md5的扩展
 
-import CommonCrypto
+import CryptoKit
 import Foundation
 
 extension String {
@@ -13,38 +13,26 @@ extension String {
      - returns: the String, as an MD5 hash.
      */
     public var md5: String {
-        let str = cString(using: String.Encoding.utf8)
-        let strLen = CUnsignedInt(lengthOfBytes(using: String.Encoding.utf8))
-        let digestLen = Int(CC_MD5_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>
-            .allocate(capacity: digestLen)
-        CC_MD5(str!, strLen, result)
-
-        let hash = NSMutableString()
-
-        for i in 0 ..< digestLen {
-            hash.appendFormat("%02x", result[i])
-        }
-
-        result.deallocate()
-        return hash as String
+        let digest = Insecure.MD5.hash(data: Data(utf8))
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
     }
 
     public var sha256: String {
-        let utf8 = cString(using: .utf8)
-        var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
-        CC_SHA256(utf8, CC_LONG(utf8!.count - 1), &digest)
-        return digest.reduce("") { $0 + String(format: "%02x", $1) }
+        let digest = SHA256.hash(data: Data(utf8))
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
     }
 }
 
 extension Data {
     public var sha256: String {
-        var hash = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
-        withUnsafeBytes {
-            _ = CC_SHA256($0.baseAddress, CC_LONG(self.count), &hash)
-        }
-        return String(data: Data(hash), encoding: .utf8)!
+        let digest = SHA256.hash(data: self)
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
     }
 }
 

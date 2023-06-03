@@ -28,7 +28,7 @@ class ReviewHandler {
     static func requestReview() {
         #if DEBUG
         UserDefaults.standard.set(nil, forKey: "lastVersionPromptedForReviewKey")
-        #endif
+        #else
         DispatchQueue.main.async {
             // Keep track of the most recent app version that prompts the user for a review.
             let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: "lastVersionPromptedForReviewKey")
@@ -47,6 +47,7 @@ class ReviewHandler {
                 }
             }
         }
+        #endif
     }
 
     static func requestReviewIfNotRequestedElseNavigateToAppStore() {

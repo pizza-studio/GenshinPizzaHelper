@@ -6,6 +6,7 @@
 //
 
 import CommonCrypto
+import CryptoKit
 import Foundation
 import HBMihoyoAPI
 
@@ -223,6 +224,8 @@ extension UUID {
         case x500 = "6ba7b814-9dad-11d1-80b4-00c04fd430c8"
     }
 
+    /// Unused constructor for UUID. Might be unusable. See "remarks" section.
+    /// - Remark: This constructor has recently upgraded using CryptoKit WITHOUT Usability Tests!!!!!!!!
     init(version: UUIDVersion, name: String, nameSpace: UUIDv5NameSpace) {
         // Get UUID bytes from name space:
         var spaceUID = UUID(uuidString: nameSpace.rawValue)!.uuid
@@ -239,9 +242,15 @@ extension UUID {
         data.withUnsafeBytes { (ptr: UnsafeRawBufferPointer) in
             switch version {
             case .v3:
-                _ = CC_MD5(ptr.baseAddress, CC_LONG(data.count), &digest)
+                digest = Insecure.MD5.hash(data: Data(name.utf8)).map { UInt8($0) }
             case .v5:
-                _ = CC_SHA1(ptr.baseAddress, CC_LONG(data.count), &digest)
+                digest = Insecure.SHA1.hash(data: Data(name.utf8)).map { UInt8($0) }
+            }
+        }
+        if digest.count < Int(CC_SHA1_DIGEST_LENGTH) {
+            let delta = Int(CC_SHA1_DIGEST_LENGTH) - digest.count
+            for _ in 0 ..< delta {
+                digest.insert(0, at: 0)
             }
         }
 
