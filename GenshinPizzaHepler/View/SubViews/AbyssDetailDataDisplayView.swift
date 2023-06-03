@@ -225,7 +225,7 @@ private struct AbyssBattleView: View {
                     let charNameCard = "UI_AvatarIcon_\(charNameID)_Card"
                     EnkaWebIcon(iconString: charNameCard)
                         .scaledToFit()
-                        .frame(width: 65)
+                        .frame(width: OS.type == .macOS ? 55 : 65)
                         .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                 }
                 if avatarData.id != battleData.avatars.last!.id {
