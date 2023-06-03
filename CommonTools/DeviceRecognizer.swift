@@ -34,7 +34,7 @@ enum OS: Int {
         #elseif targetEnvironment(macCatalyst)
         return .macOS
         #else
-        return isPad ? .iPadOS : .iPhoneOS
+        return maybePad ? .iPadOS : .iPhoneOS
         #endif
         #endif
     }()
