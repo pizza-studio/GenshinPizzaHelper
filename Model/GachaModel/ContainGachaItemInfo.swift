@@ -418,6 +418,7 @@ enum GachaItemNameIconMap {
             "迪希雅": "Dehya",
             "卡维": "Kaveh",
             "白术": "Baizhuer",
+            "绮良良": "Momoka",
         ]
     }
 }
