@@ -99,7 +99,7 @@ struct GenshinDictionary: View {
 
     func checkLetterInSearchResults(_ letter: String) -> Bool {
         let searchResults = searchResults ?? []
-        return searchResults.compactMap { $0.id.hasPrefix(letter.lowercased()) }
+        return searchResults.filter { $0.id.hasPrefix(letter.lowercased()) }
             .isEmpty
     }
 

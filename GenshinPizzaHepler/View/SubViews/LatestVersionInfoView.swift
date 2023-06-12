@@ -22,7 +22,7 @@ struct LatestVersionInfoView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text(newestVersionInfos?.shortVersion ?? "Error")
+                        Text(newestVersionInfos?.shortVersion ?? "Loading")
                             .font(.largeTitle).bold() +
                             Text(
                                 " (\(String(newestVersionInfos?.buildVersion ?? -1)))"
@@ -74,7 +74,7 @@ struct LatestVersionInfoView: View {
                             }
                         }
                     } else {
-                        Text("Error")
+                        Text("Loading")
                     }
                     if !isJustUpdated {
                         switch AppConfig.appConfiguration {
