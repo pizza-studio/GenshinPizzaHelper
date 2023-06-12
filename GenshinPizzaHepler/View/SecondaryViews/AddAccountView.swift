@@ -27,6 +27,8 @@ struct AddAccountView: View {
     private var unsavedCookie: String = ""
     @State
     private var unsavedServer: Server = .china
+    @State
+    private var unsavedDeviceFingerPrint: String = ""
 
     @State
     private var connectStatus: ConnectStatus = .unknown
@@ -115,7 +117,8 @@ struct AddAccountView: View {
                                 unsavedUid: $unsavedUid,
                                 unsavedCookie: $unsavedCookie,
                                 unsavedServer: $unsavedServer,
-                                connectStatus: $connectStatus
+                                connectStatus: $connectStatus,
+                                unsavedDeviceFingerPrint: $unsavedDeviceFingerPrint
                             )) {
                                 Text("手动设置帐号")
                                     .font(.footnote)
@@ -193,7 +196,8 @@ struct AddAccountView: View {
                     unsavedUid: $unsavedUid,
                     unsavedCookie: $unsavedCookie,
                     unsavedServer: $unsavedServer,
-                    connectStatus: $connectStatus
+                    connectStatus: $connectStatus,
+                    unsavedDeviceFingerPrint: $unsavedDeviceFingerPrint
                 )) {
                     Text("手动设置帐号详情")
                 }
@@ -204,7 +208,8 @@ struct AddAccountView: View {
                     connectStatus: $connectStatus,
                     uid: $unsavedUid,
                     cookie: $unsavedCookie,
-                    server: $unsavedServer
+                    server: $unsavedServer,
+                    deviceFingerPrint: $unsavedDeviceFingerPrint
                 )
             }
 
@@ -308,6 +313,17 @@ struct AddAccountView: View {
 
     private func openWebView() {
         isWebShown.toggle()
+        Task {
+            if region == .cn {
+                do {
+                    unsavedDeviceFingerPrint = try await MihoyoAPI.getDeviceFingerPrint(region: .cn)
+                } catch {
+                    print(error)
+                }
+            } else {
+                unsavedDeviceFingerPrint = ""
+            }
+        }
     }
 }
 

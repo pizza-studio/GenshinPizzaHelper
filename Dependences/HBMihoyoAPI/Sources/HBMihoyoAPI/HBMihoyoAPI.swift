@@ -15,6 +15,7 @@ public enum MihoyoAPI {
         uid: String,
         cookie: String,
         uuid: UUID = UUID(),
+        deviceFingerPrint: String?,
         completion: @escaping (
             FetchResult
         ) -> ()
@@ -57,7 +58,7 @@ public enum MihoyoAPI {
                 "x-rpc-client_type": "5",
                 "Referer": "https://app.mihoyo.com/",
                 "Cookie": cookie,
-                "x-rpc-device_fp": String(uid.md5.prefix(13)),
+                "x-rpc-device_fp": deviceFingerPrint ?? "",
                 "x-rpc-device_name": "iPhone",
                 "x-rpc-device_id": uuid.uuidString,
                 "x-rpc-sys_version": getSystemVersion(),
@@ -113,7 +114,7 @@ public enum MihoyoAPI {
                     "x-rpc-client_type": "5",
                     "Referer": "https://app.mihoyo.com/",
                     "Cookie": cookie,
-                    "x-rpc-device_fp": String(uid.md5.prefix(13)),
+                    "x-rpc-device_fp": deviceFingerPrint ?? "",
                     "x-rpc-device_name": "iPhone",
                     "x-rpc-device_id": uuid.uuidString,
                     "x-rpc-sys_version": getSystemVersion(),
@@ -178,7 +179,9 @@ public enum MihoyoAPI {
                 region,
                 serverID,
                 uid,
-                cookie
+                cookie,
+                UUID(),
+                deviceFingerPrint
             ) { result in
                 switch result {
                 case let .success(requestResult):
@@ -226,6 +229,8 @@ public enum MihoyoAPI {
                                 serverID,
                                 uid,
                                 cookie,
+                                UUID(),
+                                deviceFingerPrint,
                                 useChallenge: getPassChallenge()
                             ) { result in
                                 switch result {
@@ -623,7 +628,8 @@ public enum MihoyoAPI {
                 region: region,
                 serverID: "cn_gf01",
                 uid: "12345678",
-                cookie: cookie
+                cookie: cookie,
+                deviceFingerPrint: nil
             ) { _ in
                 HttpMethod<RequestAccountListResult>
                     .gameAccountRequest(
@@ -698,7 +704,8 @@ public enum MihoyoAPI {
                     region: region,
                     serverID: server.id,
                     uid: "12345678",
-                    cookie: cookie
+                    cookie: cookie,
+                    deviceFingerPrint: nil
                 ) { _ in
                     HttpMethod<RequestAccountListResult>
                         .gameAccountRequest(

@@ -7,6 +7,9 @@
 
 import HBMihoyoAPI
 import SwiftUI
+import WebKit
+
+// MARK: - TestSectionView
 
 struct TestSectionView: View {
     // MARK: Internal
@@ -20,6 +23,8 @@ struct TestSectionView: View {
     var cookie: String
     @Binding
     var server: Server
+    @Binding
+    var deviceFingerPrint: String
 
     var body: some View {
         Section {
@@ -36,44 +41,56 @@ struct TestSectionView: View {
                         Image(systemName: "checkmark")
                             .foregroundColor(.green)
                     case .fail:
-                        Image(systemName: "xmark")
-                            .foregroundColor(.red)
+                        if let error = error, case .accountAbnormal = error {
+                            Image(systemName: "questionmark.circle")
+                                .foregroundColor(.yellow)
+                        } else {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.red)
+                        }
                     case .testing:
                         ProgressView()
                     }
                 }
             }
-            if connectStatus == .fail {
-                InfoPreviewer(title: "错误内容", content: error?.description ?? "")
-                InfoPreviewer(title: "DEBUG", content: error?.message ?? "")
-                    .foregroundColor(.gray)
-                if let error = error {
-                    switch error {
-                    case .accountAbnormal:
-                        Section {
-                            let mihoyobbsURLString: String = "mihoyobbs://"
-                            if isInstallation(urlString: mihoyobbsURLString) {
-                                if let url = URL(string: mihoyobbsURLString) {
-                                    Link(destination: url) {
-                                        Text("点击打开米游社App")
-                                    }
-                                }
-                            } else {
-                                if let url =
-                                    URL(
-                                        string: "https://apps.apple.com/cn/app/id1470182559"
-                                    ) {
-                                    Link(destination: url) {
-                                        Text("点击打开米游社App")
-                                    }
+            .sheet(item: $sheetItem, content: { item in
+                switch item {
+                case let .gotVerification(verification):
+                    NavigationView {
+                        GeetestValidateView(
+                            challenge: verification.challenge,
+                            gt: verification.gt,
+                            completion: { validate in
+                                verifyValidate(challenge: verification.challenge, validate: validate)
+                                sheetItem = nil
+                            }
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button("取消") {
+                                    sheetItem = nil
                                 }
                             }
                         }
-                    default:
-                        EmptyView()
+                        .navigationTitle("account.test.verify.web_sheet.title")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationViewStyle(.stack)
                     }
                 }
+            })
+            if connectStatus == .fail, let error = error, case .accountAbnormal = error {
+                Text("账号状态异常，需要输入验证码")
+                Button("请点击此处输入验证码") {
+                    popVerificationWebSheet()
+                }
+            } else {
+                if connectStatus == .fail {
+                    InfoPreviewer(title: "错误内容", content: error?.description ?? "")
+                    InfoPreviewer(title: "DEBUG", content: error?.message ?? "")
+                        .foregroundColor(.gray)
+                }
             }
+
             if connectStatus == .success {
                 if !cookie.contains("stoken"), server.region == .cn {
                     Label {
@@ -84,18 +101,6 @@ struct TestSectionView: View {
                         )
                         .foregroundColor(.red)
                     }
-                }
-            }
-        } footer: {
-            if let error = error {
-                switch error {
-                case .accountAbnormal:
-                    Button("反复出现帐号异常？点击查看解决方案") {
-                        is1034WebShown.toggle()
-                    }
-                    .font(.footnote)
-                default:
-                    EmptyView()
                 }
             }
         }
@@ -115,7 +120,8 @@ struct TestSectionView: View {
                     region: server.region,
                     serverID: server.id,
                     uid: uid,
-                    cookie: cookie
+                    cookie: cookie,
+                    deviceFingerPrint: deviceFingerPrint
                 ) { result in
                     switch result {
                     case .success:
@@ -133,7 +139,8 @@ struct TestSectionView: View {
                     region: server.region,
                     serverID: server.id,
                     uid: uid,
-                    cookie: cookie
+                    cookie: cookie,
+                    deviceFingerPrint: deviceFingerPrint
                 ) { result in
                     switch result {
                     case .success:
@@ -143,6 +150,41 @@ struct TestSectionView: View {
                         self.error = error
                     }
                 }
+            }
+        }
+        .onChange(of: error) { newValue in
+            if case .accountAbnormal = error {
+                popVerificationWebSheet()
+            }
+        }
+    }
+
+    func popVerificationWebSheet() {
+        Task(priority: .userInitiated) {
+            do {
+                let verification = try await MihoyoAPI.createVerification(
+                    cookie: cookie,
+                    deviceFingerPrint: deviceFingerPrint
+                )
+                sheetItem = .gotVerification(verification)
+            } catch {
+                verificationError = error
+            }
+        }
+    }
+
+    func verifyValidate(challenge: String, validate: String) {
+        Task {
+            do {
+                _ = try await MihoyoAPI.verifyVerification(
+                    challenge: challenge,
+                    validate: validate,
+                    cookie: cookie,
+                    deviceFingerPrint: deviceFingerPrint
+                )
+                connectStatus = .testing
+            } catch {
+                verificationError = error
             }
         }
     }
@@ -157,9 +199,105 @@ struct TestSectionView: View {
 
     // MARK: Private
 
+    private enum SheetItem: Identifiable {
+        case gotVerification(Verification)
+
+        // MARK: Internal
+
+        var id: Int {
+            switch self {
+            case let .gotVerification(verification):
+                return verification.challenge.hashValue
+            }
+        }
+    }
+
+    @State
+    private var verificationError: Error?
+
     @State
     private var error: FetchError?
 
     @State
     private var is1034WebShown: Bool = false
+
+    @State
+    private var sheetItem: SheetItem?
+}
+
+// MARK: - GeetestValidateView
+
+struct GeetestValidateView: UIViewRepresentable {
+    class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
+        // MARK: Lifecycle
+
+        init(_ parent: GeetestValidateView) {
+            self.parent = parent
+        }
+
+        // MARK: Internal
+
+        var parent: GeetestValidateView
+
+        // Receive message from website
+        func userContentController(
+            _ userContentController: WKUserContentController,
+            didReceive message: WKScriptMessage
+        ) {
+            if message.name == "callbackHandler" {
+                if let messageBody = message.body as? String {
+                    print("validate: \(messageBody)")
+                    parent.finishWithValidate(messageBody)
+                }
+            }
+        }
+    }
+
+    let challenge: String
+    // swiftlint:disable:next identifier_name
+    let gt: String
+
+    let webView = WKWebView()
+    @State
+    private var isValidationObtained = false // 标识是否已获取到 validate.value 的内容
+
+    @State
+    var completion: (String) -> ()
+
+    func makeUIView(context: Context) -> WKWebView {
+        webView.navigationDelegate = context.coordinator
+        webView.configuration.userContentController.removeAllScriptMessageHandlers()
+        webView.configuration.userContentController.add(context.coordinator, name: "callbackHandler")
+        webView.customUserAgent = """
+        Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
+        """
+        return webView
+    }
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        let url = URL(string: "https://ophelper.top/geetest/")!
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        components?.queryItems = [
+            URLQueryItem(name: "challenge", value: challenge),
+            URLQueryItem(name: "gt", value: gt),
+        ]
+        guard let finalURL = components?.url else {
+            return
+        }
+
+        var request = URLRequest(url: finalURL)
+        request.allHTTPHeaderFields = [
+            "Referer": "https://webstatic.mihoyo.com",
+        ]
+
+        uiView.load(request)
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func finishWithValidate(_ validate: String) {
+        completion(validate)
+    }
 }

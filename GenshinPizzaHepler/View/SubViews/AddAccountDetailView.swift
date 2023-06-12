@@ -19,6 +19,8 @@ struct AddAccountDetailView: View {
     var unsavedServer: Server
     @Binding
     var connectStatus: ConnectStatus
+    @Binding
+    var unsavedDeviceFingerPrint: String
 
     var body: some View {
         List {
@@ -43,12 +45,16 @@ struct AddAccountDetailView: View {
                     }
                 }
             }
+            Section {
+                InfoEditor(title: "设备指纹", content: $unsavedDeviceFingerPrint)
+            }
             if unsavedUid != "", unsavedCookie != "" {
                 TestSectionView(
                     connectStatus: $connectStatus,
                     uid: $unsavedUid,
                     cookie: $unsavedCookie,
-                    server: $unsavedServer
+                    server: $unsavedServer,
+                    deviceFingerPrint: $unsavedDeviceFingerPrint
                 )
             }
         }

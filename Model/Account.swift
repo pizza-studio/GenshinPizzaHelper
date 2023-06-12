@@ -59,7 +59,8 @@ extension AccountConfiguration {
             serverID: server.id,
             uid: uid!,
             cookie: cookie!,
-            uuid: uuid ?? UUID()
+            uuid: uuid ?? UUID(),
+            deviceFingerPrint: deviceFingerPrint
         ) { result in
             completion(result)
             #if !os(watchOS)

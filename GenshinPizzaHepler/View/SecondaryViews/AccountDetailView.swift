@@ -49,6 +49,10 @@ struct AccountDetailView: View {
         account.config.server
     }
 
+    var bindingDeviceFingerPrint: Binding<String> {
+        Binding($account.config.deviceFingerPrint)!
+    }
+
     @State
     private var isPresentingConfirm: Bool = false
 
@@ -89,12 +93,19 @@ struct AccountDetailView: View {
                             .tag(server)
                     }
                 }
+                NavigationLink(destination: TextFieldEditorView(
+                    title: "设备指纹",
+                    content: bindingDeviceFingerPrint
+                )) {
+                    InfoPreviewer(title: "设备指纹", content: bindingDeviceFingerPrint.wrappedValue)
+                }
             }
             TestSectionView(
                 connectStatus: $connectStatus,
                 uid: bindingUid,
                 cookie: bindingCookie,
-                server: bindingServer
+                server: bindingServer,
+                deviceFingerPrint: bindingDeviceFingerPrint
             )
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)
@@ -170,6 +181,14 @@ struct AccountDetailSheet<SheetType>: View {
     @State
     private var connectStatus: ConnectStatus = .unknown
 
+    var bindingDeviceFingerPrint: Binding<String> {
+        .init {
+            account.config.deviceFingerPrint ?? ""
+        } set: { newValue in
+            account.config.deviceFingerPrint = newValue
+        }
+    }
+
     var body: some View {
         List {
             Button("重新登录米游社帐号") { isWebShown.toggle() }
@@ -206,7 +225,8 @@ struct AccountDetailSheet<SheetType>: View {
                 connectStatus: $connectStatus,
                 uid: bindingUid,
                 cookie: bindingCookie,
-                server: bindingServer
+                server: bindingServer,
+                deviceFingerPrint: bindingDeviceFingerPrint
             )
         }
         .navigationBarTitle("帐号信息", displayMode: .inline)

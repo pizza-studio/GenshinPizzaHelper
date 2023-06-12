@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/22.
 //  根View
 
+import HBMihoyoAPI
 import HBPizzaHelperAPI
 import SwiftUI
 import WidgetKit

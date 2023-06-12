@@ -65,7 +65,6 @@ class ViewModel: NSObject, ObservableObject {
         DispatchQueue.main.async {
             let accountConfigs = self.accountConfigurationModel
                 .fetchAccountConfigs()
-
             if UserDefaults(suiteName: "group.GenshinPizzaHelper")?
                 .string(forKey: "defaultServer") == nil {
                 if !accountConfigs.isEmpty {
@@ -86,6 +85,19 @@ class ViewModel: NSObject, ObservableObject {
                 self.refreshData()
                 print("account fetched")
                 #if !os(watchOS)
+                #if canImport(UIKit)
+                accountConfigs.forEach { config in
+                    if config.server.region == .cn,
+                       (config.deviceFingerPrint == nil) || (config.deviceFingerPrint == "") {
+                        Task {
+                            config.deviceFingerPrint = (try? await MihoyoAPI.getDeviceFingerPrint(region: .cn)) ?? ""
+                            try? self.accountConfigurationModel.container.viewContext.save()
+                        }
+                    } else {
+                        config.deviceFingerPrint = ""
+                    }
+                }
+                #endif
                 if let showingPlayerDetailOfAccountUUID = UserDefaults
                     .standard
                     .string(forKey: "toolViewShowingAccountUUIDString"),

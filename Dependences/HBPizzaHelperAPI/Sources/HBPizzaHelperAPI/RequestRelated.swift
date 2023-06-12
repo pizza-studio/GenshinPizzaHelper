@@ -176,7 +176,7 @@ extension FetchError {
                 return "未知错误".localized
             }
         case .accountAbnormal:
-            return "（1034）帐号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证".localized
+            return "账号状态异常，请打开App填写验证码".localized
         case let .unknownError(_, message):
             return message
         case .noStoken:

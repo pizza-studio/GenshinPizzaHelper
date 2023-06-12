@@ -37,6 +37,7 @@ struct HttpMethod<T: Codable> {
         _ uid: String,
         _ cookie: String,
         _ uuid: UUID = UUID(),
+        _ deviceFingerPrint: String? = nil,
         useChallenge: String? = nil,
         completion: @escaping (
             (Result<T, RequestError>) -> ()
@@ -185,7 +186,7 @@ struct HttpMethod<T: Codable> {
                     "x-rpc-client_type": clientType,
                     "Referer": "https://webstatic.mihoyo.com/",
                     "Cookie": cookie,
-                    "x-rpc-device_fp": String(uid.md5.prefix(13)),
+                    "x-rpc-device_fp": deviceFingerPrint ?? "",
                     "x-rpc-tool_version": "v3.7.1-ys",
                     "x-rpc-page": "v3.7.1-ys_#/ys",
                     "x-rpc-device_name": "iPhone",
