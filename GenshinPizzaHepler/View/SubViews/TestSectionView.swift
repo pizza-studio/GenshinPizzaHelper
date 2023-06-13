@@ -14,6 +14,9 @@ import WebKit
 struct TestSectionView: View {
     // MARK: Internal
 
+    @EnvironmentObject
+    var viewModel: ViewModel
+
     @Binding
     var connectStatus: ConnectStatus
 
@@ -183,6 +186,7 @@ struct TestSectionView: View {
                     deviceFingerPrint: deviceFingerPrint
                 )
                 connectStatus = .testing
+                viewModel.refreshData()
             } catch {
                 verificationError = error
             }

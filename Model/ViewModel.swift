@@ -87,14 +87,19 @@ class ViewModel: NSObject, ObservableObject {
                 #if !os(watchOS)
                 #if canImport(UIKit)
                 accountConfigs.forEach { config in
-                    if config.server.region == .cn,
-                       (config.deviceFingerPrint == nil) || (config.deviceFingerPrint == "") {
-                        Task {
-                            config.deviceFingerPrint = (try? await MihoyoAPI.getDeviceFingerPrint(region: .cn)) ?? ""
-                            try? self.accountConfigurationModel.container.viewContext.save()
+                    if config.server.region == .cn {
+                        if (config.deviceFingerPrint == nil) || (config.deviceFingerPrint == "") {
+                            Task {
+                                config
+                                    .deviceFingerPrint = (try? await MihoyoAPI.getDeviceFingerPrint(region: .cn)) ?? ""
+                                try? self.accountConfigurationModel.container.viewContext.save()
+                            }
                         }
                     } else {
-                        config.deviceFingerPrint = ""
+                        if config.deviceFingerPrint == nil {
+                            config.deviceFingerPrint = ""
+                            try? self.accountConfigurationModel.container.viewContext.save()
+                        }
                     }
                 }
                 #endif
