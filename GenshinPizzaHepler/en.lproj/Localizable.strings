@@ -1289,3 +1289,10 @@
 "纪行・荣冕" = "Travel Notes: Crown of Glory";
 "绮良良" = "Kirara";
 "鹮穿之喙" = "Ibis Piercer";
+
+// MARK: - 2.8.5
+
+"账号状态异常，需要输入验证码" = "Account status exception, prompting for interactive verification";
+"请点击此处输入验证码" = "Tap here to proceed to interactive verification";
+"account.test.verify.web_sheet.title" = "Interactive Verification";
+"账号状态异常，请打开App填写验证码" = "Account status exception, prompting for in-app interactive verification";

@@ -1304,3 +1304,10 @@
 "纪行・荣冕" = "Nhật Ký Hành Trình - Vương Miện";
 "绮良良" = "Kirara";
 "鹮穿之喙" = "Mỏ Cò Xuyên Thấu";
+
+// MARK: - 2.8.5
+
+"账号状态异常,需要输入验证码" = "Ngoại lệ trạng thái tài khoản, nhắc xác minh tương tác";
+"请点击此处输入验证码" = "Nhấn vào đây để tiến hành xác minh tương tác";
+"account.test.verify.web_sheet.title" = "Xác Minh Tương Tác";
+"账号状态异常,请打开App填写验证码" = "Ngoại lệ trạng thái tài khoản, nhắc xác minh tương tác trong ứng dụng";

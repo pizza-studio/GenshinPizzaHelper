@@ -1289,3 +1289,10 @@
 "纪行・荣冕" = "Travel Notes: Crown of Glory";
 "绮良良" = "Kirara";
 "鹮穿之喙" = "Ibis Piercer";
+
+// MARK: - 2.8.5
+
+"账号状态异常,需要输入验证码" = "Pagbubukod sa katayuan ng account, na nagpapahiwatig para sa interactive na pag verify";
+"请点击此处输入验证码" = "Tapikin dito upang magpatuloy sa interactive na pag verify";
+"account.test.verify.web_sheet.title" = "Interactive Na Pag Verify";
+"账号状态异常,请打开App填写验证码" = "Account status exception, pahiwatig para sa in app interactive verification";
