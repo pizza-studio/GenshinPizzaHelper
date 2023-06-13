@@ -845,7 +845,7 @@
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		5BAF709129E5764E0096228B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
-		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHeplerSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
@@ -1762,7 +1762,7 @@
 				BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */,
 				BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */,
 				EAE95CE128CE10A000D975CB /* WatchIntent.appex */,
-				5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch.app */,
+				5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1900,9 +1900,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5BD1C5B82A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch */ = {
+		5BD1C5B82A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BD1C67D2A2A1FC90043C2B1 /* Build configuration list for PBXNativeTarget "GenshinPizzaHeplerSansWatch" */;
+			buildConfigurationList = 5BD1C67D2A2A1FC90043C2B1 /* Build configuration list for PBXNativeTarget "GenshinPizzaHelperSansWatch" */;
 			buildPhases = (
 				5BD1C5C62A2A1FC90043C2B1 /* Clang-Format */,
 				5BD1C5C72A2A1FC90043C2B1 /* Sources */,
@@ -1916,7 +1916,7 @@
 				5BD1C5B92A2A1FC90043C2B1 /* PBXTargetDependency */,
 				5BD1C5BB2A2A1FC90043C2B1 /* PBXTargetDependency */,
 			);
-			name = GenshinPizzaHeplerSansWatch;
+			name = GenshinPizzaHelperSansWatch;
 			packageProductDependencies = (
 				5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */,
 				5BD1C5C02A2A1FC90043C2B1 /* HBMihoyoAPI */,
@@ -1925,7 +1925,7 @@
 				5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */,
 			);
 			productName = GenshinPizzaHepler;
-			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch.app */;
+			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BF85D77028CE0B9E003F3479 /* WatchWidgetExtensionExtension */ = {
@@ -2144,7 +2144,7 @@
 			projectRoot = "";
 			targets = (
 				EABD7DB52886B2D200B7F0FD /* GenshinPizzaHepler */,
-				5BD1C5B82A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch */,
+				5BD1C5B82A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch */,
 				EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */,
 				EA099FF228A2B7220023B4AF /* AccountIntent */,
 				BFCC065528C9B6A0003E4A54 /* WatchHelper */,
@@ -3724,7 +3724,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5BD1C67D2A2A1FC90043C2B1 /* Build configuration list for PBXNativeTarget "GenshinPizzaHeplerSansWatch" */ = {
+		5BD1C67D2A2A1FC90043C2B1 /* Build configuration list for PBXNativeTarget "GenshinPizzaHelperSansWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BD1C67E2A2A1FC90043C2B1 /* Debug */,

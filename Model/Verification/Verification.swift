@@ -8,7 +8,7 @@
 import Foundation
 import HBMihoyoAPI
 #if canImport(UIKit)
-#if os(iOS)
+#if os(iOS) || targetEnvironment(macCatalyst)
 import UIKit
 
 extension MihoyoAPI {

@@ -1,9 +1,9 @@
 /*
  Localizable.strings
  GenshinPizzaHelper
- 
+
  Created by Bill Haku on 2022/8/23.
- 
+
  */
 
 // MARK: - 2.0 & above
@@ -1289,3 +1289,10 @@
 "纪行・荣冕" = "紀行·榮冕";
 "绮良良" = "綺良良";
 "鹮穿之喙" = "䴉穿之喙";
+
+// MARK: - 2.8.5
+
+"账号状态异常，需要输入验证码" = "账号状态异常，需要真人認證";
+"请点击此处输入验证码" = "點擊此處以開始真人認證";
+"account.test.verify.web_sheet.title" = "真人認證";
+"账号状态异常，请打开App填写验证码" = "账号状态异常，需要開啟 App 進行真人認證";
