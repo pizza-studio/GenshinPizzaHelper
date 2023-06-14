@@ -1296,3 +1296,4 @@
 "请点击此处输入验证码" = "Tapez ici pour procéder à la vérification interactive" ;
 "account.test.verify.web_sheet.title" = "Vérification Interactive" ;
 "账号状态异常，请打开App填写验证码" = "Exception d'état de compte, demande de vérification interactive in-app" ;
+"（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "(1034) Le compte nécessite une vérification. Veuillez ouvrir l'application pour une vérification homme-machine. Maintenez enfoncé le widget pour activer le mode compact.";

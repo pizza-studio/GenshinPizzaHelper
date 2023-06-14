@@ -1296,3 +1296,4 @@
 "请点击此处输入验证码" = "Tapikin dito upang magpatuloy sa interactive na pag verify";
 "account.test.verify.web_sheet.title" = "Interactive Na Pag Verify";
 "账号状态异常,请打开App填写验证码" = "Account status exception, pahiwatig para sa in app interactive verification";
+"（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = " (1034) Kailangan ng pagpapatunay sa account. Mangyaring buksan ang app para sa pagpapatunay ng tao-kalansay. I-hold ang widget upang paganahin ang compact mode.";

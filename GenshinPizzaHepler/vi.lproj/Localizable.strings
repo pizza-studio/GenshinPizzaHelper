@@ -1311,3 +1311,4 @@
 "请点击此处输入验证码" = "Nhấn vào đây để tiến hành xác minh tương tác";
 "account.test.verify.web_sheet.title" = "Xác Minh Tương Tác";
 "账号状态异常,请打开App填写验证码" = "Ngoại lệ trạng thái tài khoản, nhắc xác minh tương tác trong ứng dụng";
+"（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "(1034) Tài khoản cần xác minh. Vui lòng mở ứng dụng để xác minh người-máy. Nhấn và giữ widget để kích hoạt chế độ gọn gàng.";

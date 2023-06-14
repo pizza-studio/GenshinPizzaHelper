@@ -192,7 +192,7 @@ extension FetchError {
                 retcode
             )
         case .accountAbnormal:
-            return "（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式".localized
+            return "（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式".localized
         case .noStoken:
             return "请重新登录本帐号以获取stoken".localized
         default:
