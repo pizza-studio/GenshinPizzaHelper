@@ -67,7 +67,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle("披萨小助手")
+            .navigationTitle("原神披萨小助手")
             .navigationBarTitleDisplayMode(.large)
         }
         .navigationViewStyle(.stack)

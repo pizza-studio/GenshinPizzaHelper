@@ -53,12 +53,25 @@ struct MoreView: View {
                     )!
                 )
             }
-            // FIXME: Proxy not implenmented
+            // FIXME: Proxy not implemented
 //            Section {
 //                NavigationLink(destination: ProxySettingsView()) {
 //                    Text("代理设置")
 //                }
 //            }
+
+//            Section {
+//                IconSettingsView()
+//            } header: {
+//                Text("更换App图标")
+//            }
+
+            Section {
+                NavigationLink(destination: IconSettingsView()) {
+                    Text("更换App图标")
+                }
+            }
+
             Section {
                 NavigationLink(
                     destination: WebBroswerView(

@@ -1297,3 +1297,8 @@
 "account.test.verify.web_sheet.title" = "Interactive Na Pag Verify";
 "账号状态异常,请打开App填写验证码" = "Account status exception, pahiwatig para sa in app interactive verification";
 "（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = " (1034) Kailangan ng pagpapatunay sa account. Mangyaring buksan ang app para sa pagpapatunay ng tao-kalansay. I-hold ang widget upang paganahin ang compact mode.";
+
+// MARK: - 3.0.0
+
+"感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。" = "Salamat kay [@心臓弱眞君](https://twitter.com/xinzoruo) sa paglikha ng bagong app icon para sa amin. Maaari ka rin magpatuloy na gumamit ng dating icon.";
+"更换App图标" = "Palitan ang App Icon";

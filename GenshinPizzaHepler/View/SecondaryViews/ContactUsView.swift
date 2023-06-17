@@ -625,6 +625,19 @@ struct ContactUsView: View {
                             .clipShape(Circle())
                     }
                 }
+                Label {
+                    HStack {
+                        Text("Xinzoruo (心臓弱眞君)")
+                        Spacer()
+                        Text("Logo")
+                            .foregroundColor(.gray)
+                    }
+                } icon: {
+                    Image("avatar.xinzoruo")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                }
             }
         }
         .navigationTitle("开发者与联系方式")

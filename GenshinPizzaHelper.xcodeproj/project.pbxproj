@@ -382,6 +382,27 @@
 		BFE7AFE42909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
 		BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
 		BFE7AFE62909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
+		BFF683ED2A374CA1005470EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF85D77828CE0BA0003F3479 /* Assets.xcassets */; };
+		BFF683F02A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
+		BFF683F12A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
+		BFF683F22A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
+		BFF683F32A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
+		BFF683F42A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
+		BFF683F52A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
+		BFF683F62A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
+		BFF683F72A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
+		BFF683F82A374E17005470EA /* icon.ophelper.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EF2A374E16005470EA /* icon.ophelper.png */; };
+		BFF683F92A374E17005470EA /* icon.ophelper.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EF2A374E16005470EA /* icon.ophelper.png */; };
+		BFF683FA2A374E17005470EA /* icon.ophelper.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EF2A374E16005470EA /* icon.ophelper.png */; };
+		BFF683FB2A374E17005470EA /* icon.ophelper.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EF2A374E16005470EA /* icon.ophelper.png */; };
+		BFF683FC2A374E17005470EA /* icon.ophelper.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EF2A374E16005470EA /* icon.ophelper.png */; };
+		BFF683FD2A374E17005470EA /* icon.ophelper.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EF2A374E16005470EA /* icon.ophelper.png */; };
+		BFF683FE2A374E17005470EA /* icon.ophelper.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EF2A374E16005470EA /* icon.ophelper.png */; };
+		BFF683FF2A374E17005470EA /* icon.ophelper.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EF2A374E16005470EA /* icon.ophelper.png */; };
+		BFF684092A3753C8005470EA /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF684082A3753C8005470EA /* Icon.swift */; };
+		BFF6840A2A3753C8005470EA /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF684082A3753C8005470EA /* Icon.swift */; };
+		BFF684112A375487005470EA /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF684102A375487005470EA /* IconView.swift */; };
+		BFF684122A375487005470EA /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF684102A375487005470EA /* IconView.swift */; };
 		BFFD820E28A5F64800616CE1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
 		BFFD820F28A5F64800616CE1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
 		BFFD821028A5F64800616CE1 /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
@@ -940,6 +961,10 @@
 		BFE9DADB29A33C1300C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFE9DADC29A33C1300C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFE9DADF29A33C3C00C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/AccountIntents.strings; sourceTree = "<group>"; };
+		BFF683EE2A374E16005470EA /* icon.ophelper.old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.ophelper.old.png; sourceTree = "<group>"; };
+		BFF683EF2A374E16005470EA /* icon.ophelper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.ophelper.png; sourceTree = "<group>"; };
+		BFF684082A3753C8005470EA /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		BFF684102A375487005470EA /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOptions.swift; sourceTree = "<group>"; };
 		BFFD822F28A650C300616CE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = "zh-Hans"; path = "zh-Hans.lproj/AccountIntents.intentdefinition"; sourceTree = "<group>"; };
 		BFFD823128A651F500616CE1 /* RingProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressBarView.swift; sourceTree = "<group>"; };
@@ -1258,6 +1283,7 @@
 				BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */,
 				EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */,
 				EA025C8F29D28D3D0075F780 /* GachaView.swift */,
+				BFF684102A375487005470EA /* IconView.swift */,
 			);
 			path = SecondaryViews;
 			sourceTree = "<group>";
@@ -1472,6 +1498,15 @@
 				EA8978D729DA716400E0903E /* ExportGachaView.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		BFF683EC2A374AC0005470EA /* App Icons */ = {
+			isa = PBXGroup;
+			children = (
+				BFF683EE2A374E16005470EA /* icon.ophelper.old.png */,
+				BFF683EF2A374E16005470EA /* icon.ophelper.png */,
+			);
+			path = "App Icons";
 			sourceTree = "<group>";
 		};
 		EA025C8029D280BB0075F780 /* GachaModel */ = {
@@ -1691,6 +1726,7 @@
 				EA784CC2290245CC00918F64 /* HomeAPIModel */,
 				EA406810292228A200F23479 /* WidgetData.swift */,
 				EA059CD6292347E800400DE3 /* MultiTokenResult.swift */,
+				BFF684082A3753C8005470EA /* Icon.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1770,6 +1806,7 @@
 		EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */ = {
 			isa = PBXGroup;
 			children = (
+				BFF683EC2A374AC0005470EA /* App Icons */,
 				5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */,
 				BF70210628B33D8300A6BBA9 /* AppDelegate.swift */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
@@ -2164,6 +2201,7 @@
 				5BD1C6642A2A1FC90043C2B1 /* RobotoCondensed-Bold.ttf in Resources */,
 				5BD1C6652A2A1FC90043C2B1 /* WeaponTalentMaterial.xcassets in Resources */,
 				5BD1C6662A2A1FC90043C2B1 /* 每日任务.png in Resources */,
+				BFF683F92A374E17005470EA /* icon.ophelper.png in Resources */,
 				5BD1C6672A2A1FC90043C2B1 /* icon.png in Resources */,
 				5BD1C6682A2A1FC90043C2B1 /* app.css in Resources */,
 				5BD1C6692A2A1FC90043C2B1 /* 参量质变仪.png in Resources */,
@@ -2173,6 +2211,7 @@
 				5BD1C66D2A2A1FC90043C2B1 /* Settings.bundle in Resources */,
 				5BD1C66E2A2A1FC90043C2B1 /* Assets.xcassets in Resources */,
 				5BD1C66F2A2A1FC90043C2B1 /* RobotoCondensed-Regular.ttf in Resources */,
+				BFF683F12A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				5BD1C6702A2A1FC90043C2B1 /* 周本.png in Resources */,
 				5BD1C6712A2A1FC90043C2B1 /* Preview Assets.xcassets in Resources */,
 				5BD1C6722A2A1FC90043C2B1 /* RobotoCondensed-Light.ttf in Resources */,
@@ -2190,7 +2229,9 @@
 			files = (
 				BF85D78628CE18F2003F3479 /* Assets.xcassets in Resources */,
 				BF85D78F28D02CCE003F3479 /* InfoPlist.strings in Resources */,
+				BFF683FE2A374E17005470EA /* icon.ophelper.png in Resources */,
 				BF85D78D28D02CCA003F3479 /* Localizable.strings in Resources */,
+				BFF683F62A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				BF85D77928CE0BA0003F3479 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2201,6 +2242,9 @@
 			files = (
 				EACBDA5628C9E92800CEE176 /* Assets.xcassets in Resources */,
 				BFCC06BE28CAFEAB003E4A54 /* Localizable.strings in Resources */,
+				BFF683FC2A374E17005470EA /* icon.ophelper.png in Resources */,
+				BFF683ED2A374CA1005470EA /* Assets.xcassets in Resources */,
+				BFF683F42A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				BFCC06BD28CAFEA7003E4A54 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2212,6 +2256,8 @@
 				BFCC067128C9B6A2003E4A54 /* Preview Assets.xcassets in Resources */,
 				BFCC06BA28CAFEA2003E4A54 /* Localizable.strings in Resources */,
 				EACBDA5528C9E92800CEE176 /* Assets.xcassets in Resources */,
+				BFF683FD2A374E17005470EA /* icon.ophelper.png in Resources */,
+				BFF683F52A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				BFCC068128C9B7C6003E4A54 /* Assets.xcassets in Resources */,
 				BFCC06BB28CAFEA5003E4A54 /* InfoPlist.strings in Resources */,
 			);
@@ -2222,6 +2268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAEC41FF28B0994C0056D182 /* 周本.png in Resources */,
+				BFF683F32A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				BFCC06BC28CAFEA6003E4A54 /* InfoPlist.strings in Resources */,
 				EAEC41FC28B0994C0056D182 /* 树脂.png in Resources */,
 				EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */,
@@ -2231,6 +2278,7 @@
 				5BAF70A329E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */,
 				BFFD821228A5F9A100616CE1 /* Assets.xcassets in Resources */,
 				5BAF70A629E5764E0096228B /* LICENSE.txt in Resources */,
+				BFF683FB2A374E17005470EA /* icon.ophelper.png in Resources */,
 				5BAF709429E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */,
 				EAEC420228B0994C0056D182 /* 洞天宝钱.png in Resources */,
 				EAEC41E328B096180056D182 /* 每日任务.png in Resources */,
@@ -2244,12 +2292,14 @@
 				EAEC41FB28B0994C0056D182 /* 树脂.png in Resources */,
 				EAEC41FE28B0994C0056D182 /* 周本.png in Resources */,
 				EAEC420128B0994C0056D182 /* 洞天宝钱.png in Resources */,
+				BFF683F22A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
 				5BAF709629E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */,
 				5BAF70A229E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */,
 				5BAF70A529E5764E0096228B /* LICENSE.txt in Resources */,
 				BF70212E28B50D7800A6BBA9 /* Localizable.strings in Resources */,
+				BFF683FA2A374E17005470EA /* icon.ophelper.png in Resources */,
 				EA78BF0A290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EAEC41E228B096170056D182 /* 每日任务.png in Resources */,
 				BF70213528B5259300A6BBA9 /* InfoPlist.strings in Resources */,
@@ -2266,6 +2316,7 @@
 				5BAF709229E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */,
 				EA78BF09290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EA2FF0E928B093AE0050C016 /* 每日任务.png in Resources */,
+				BFF683F82A374E17005470EA /* icon.ophelper.png in Resources */,
 				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
 				BF7500FE28E0452C00CDA64E /* app.css in Resources */,
 				EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */,
@@ -2275,6 +2326,7 @@
 				EAA2D4122931C36F00BC94A8 /* Settings.bundle in Resources */,
 				EA30F99C2886B46C00AE7BEA /* Assets.xcassets in Resources */,
 				5BAF70A129E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */,
+				BFF683F02A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				EAEC41FD28B0994C0056D182 /* 周本.png in Resources */,
 				EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */,
 				5BAF709529E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */,
@@ -2291,8 +2343,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF85D78728CE18F3003F3479 /* Assets.xcassets in Resources */,
+				BFF683FF2A374E17005470EA /* icon.ophelper.png in Resources */,
 				BF85D79028D02CCF003F3479 /* InfoPlist.strings in Resources */,
 				BF85D78E28D02CCB003F3479 /* Localizable.strings in Resources */,
+				BFF683F72A374E17005470EA /* icon.ophelper.old.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2417,10 +2471,12 @@
 				5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */,
 				5BD1C60E2A2A1FC90043C2B1 /* PropertyDictionary.swift in Sources */,
 				5BD1C60F2A2A1FC90043C2B1 /* HomeView.swift in Sources */,
+				BFF6840A2A3753C8005470EA /* Icon.swift in Sources */,
 				5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */,
 				5BD1C6112A2A1FC90043C2B1 /* NotificationSettingNavigator.swift in Sources */,
 				5BD1C6122A2A1FC90043C2B1 /* UIGFModel.swift in Sources */,
 				5BD1C6132A2A1FC90043C2B1 /* CurrentEventNavigator.swift in Sources */,
+				BFF684122A375487005470EA /* IconView.swift in Sources */,
 				5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */,
 				5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */,
 				5BD1C6162A2A1FC90043C2B1 /* PlayerDetailsModel.swift in Sources */,
@@ -2858,10 +2914,12 @@
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
+				BFF684092A3753C8005470EA /* Icon.swift in Sources */,
 				EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
 				EA11488F29D9A8730059DEBF /* UIGFModel.swift in Sources */,
 				BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */,
+				BFF684112A375487005470EA /* IconView.swift in Sources */,
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
 				BF7500D128DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
@@ -3587,6 +3645,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2088;
@@ -3627,6 +3686,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2088;

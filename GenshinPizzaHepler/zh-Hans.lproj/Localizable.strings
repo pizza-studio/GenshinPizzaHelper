@@ -1297,3 +1297,8 @@ Created by Bill Haku on 2022/8/23.
 "account.test.verify.web_sheet.title" = "验证";
 "账号状态异常，请打开App填写验证码" = "账号状态异常，请打开App填写验证码";
 "（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "";
+
+// MARK: - 3.0.0
+
+"感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。" = "感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。";
+"更换App图标" = "更换App图标";

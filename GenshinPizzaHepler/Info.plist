@@ -2,6 +2,34 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>old-1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>icon.ophelper.old</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+				<key>ordinal</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>icon.ophelper</string>
+			</array>
+			<key>CFBundleIconName</key>
+			<string>icon</string>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

@@ -180,3 +180,14 @@ struct AlternativeBlurMaterialBackground: ViewModifier {
         }
     }
 }
+
+extension View {
+    @ViewBuilder
+    func `if`<T: View>(_ conditional: Bool, transform: (Self) -> T) -> some View {
+        if conditional {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}

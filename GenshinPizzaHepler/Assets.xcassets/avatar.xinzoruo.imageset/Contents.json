@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "1024.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "avatar.xinzoruo.heic",
       "idiom" : "universal",
       "scale" : "2x"
     },
