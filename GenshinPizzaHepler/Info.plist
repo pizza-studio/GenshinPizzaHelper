@@ -6,23 +6,23 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>old-1</key>
+			<key>icon.ophelper.old.png</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>icon.ophelper.old</string>
+					<string>icon.ophelper.old.png</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 				<key>ordinal</key>
-				<integer>2</integer>
+				<integer>1</integer>
 			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>icon.ophelper</string>
+				<string>icon.ophelper.png</string>
 			</array>
 			<key>CFBundleIconName</key>
 			<string>icon</string>

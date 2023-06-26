@@ -46,9 +46,24 @@ final class IconManager: ObservableObject {
             if let primaryIcon = plistIcons["CFBundlePrimaryIcon"] as? [String: Any],
                let files = primaryIcon["CFBundleIconFiles"] as? [String],
                let fileName = files.first {
+                print("Set Icon: \(fileName) (nil, 0) Added")
                 icons.append(Icon(ordinal: 0, name: nil, imageName: fileName))
             }
             // 添加备用图标
+            if !UIApplication.shared.supportsAlternateIcons {
+                print("not support alternate icons")
+            }
+            print("AlternateIcons: ")
+            if let alternateIcons = plistIcons["CFBundleAlternateIcons"] as? [String: Any] {
+                if icons.isEmpty {
+                    print("Alternate Icons is empty")
+                }
+                for icons in alternateIcons {
+                    print(icons.key)
+                }
+            } else {
+                print("Alternate Icons is nil")
+            }
             if let alternateIcons = plistIcons["CFBundleAlternateIcons"] as? [String: Any] {
                 icons += alternateIcons.compactMap { key, value in
                     guard let alternateIcon = value as? [String: Any],
@@ -57,6 +72,7 @@ final class IconManager: ObservableObject {
                           let ordinal = alternateIcon["ordinal"] as? Int else {
                         return nil
                     }
+                    print("Set Icon: \(fileName) (\(key), \(ordinal)) Added")
                     return Icon(ordinal: ordinal, name: key, imageName: fileName)
                 }
                 .sorted()
@@ -80,9 +96,11 @@ extension IconManager {
     @MainActor
     func set(icon: Icon) async throws {
         do {
+            print("Set Icon: \(icon.imageName) (\(icon.id), \(icon.ordinal)) Set")
             try await UIApplication.shared.setAlternateIconName(icon.name)
             currentIcon = icon
         } catch {
+            print("Set Icon Error: \(error)")
             throw error
         }
     }
