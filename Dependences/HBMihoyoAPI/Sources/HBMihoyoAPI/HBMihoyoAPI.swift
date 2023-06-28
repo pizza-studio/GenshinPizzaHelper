@@ -76,7 +76,7 @@ public enum MihoyoAPI {
                 nil
             }
 
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = session.dataTask(with: request) { data, _, error in
                 if let error = error {
                     print("Error: \(error)")
                 } else if let data = data {
@@ -140,7 +140,7 @@ public enum MihoyoAPI {
                 // var checkResponseData: Data?
                 var passChallenge: String?
 
-                let checkTask = session.dataTask(with: request) { data, response, error in
+                let checkTask = session.dataTask(with: request) { data, _, error in
                     if let error = error {
                         print("Error: \(error)")
                     } else if let data = data {

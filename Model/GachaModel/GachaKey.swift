@@ -239,7 +239,7 @@ extension UUID {
 
         // Compute digest (MD5 or SHA1, depending on the version):
         var digest = [UInt8](repeating: 0, count: Int(CC_SHA1_DIGEST_LENGTH))
-        data.withUnsafeBytes { (ptr: UnsafeRawBufferPointer) in
+        data.withUnsafeBytes { (_: UnsafeRawBufferPointer) in
             switch version {
             case .v3:
                 digest = Insecure.MD5.hash(data: Data(name.utf8)).map { UInt8($0) }

@@ -56,8 +56,7 @@ struct CharacterDetailView: View {
                 EnkaWebIcon(iconString: avatar.namecardIconString)
                     .scaledToFill()
                     .ignoresSafeArea(.all)
-                    .blur(radius: 30)
-                Color(UIColor.systemGray6).opacity(0.5)
+                    .overlay(.thinMaterial)
             }
         )
         .addWaterMark(showWaterMark)

@@ -371,6 +371,7 @@
 
 // Errors description
 "请先刷新以获取树脂状态" = "Merci de réactualiser pour obtenir les informations genshin";
+"请右键编辑小组件选择帐号" = "Veuillez faire un clic droit et modifier le widget pour configurer votre compte";
 "请长按小组件选择帐号" = "Merci d'apuyer longement le widget pour choisir votre compte";
 "错误码%lld：Cookie失效，请重新登录" = "Code d'erreur %lld: Cookie invalide, merci de vous reconnecter à HoYoLab.";
 "错误码%lld：米游社帐号与UID不匹配，请手动输入UID" = "Code d'erreur %lld: Co,pte HoYoLAB ne correspond pas à l'UID";
@@ -1292,10 +1293,10 @@
 
 // MARK: - 2.8.5
 
-"账号状态异常，需要输入验证码" = "Exception d'état de compte, demande de vérification interactive" ;
-"请点击此处输入验证码" = "Tapez ici pour procéder à la vérification interactive" ;
-"account.test.verify.web_sheet.title" = "Vérification Interactive" ;
-"账号状态异常，请打开App填写验证码" = "Exception d'état de compte, demande de vérification interactive in-app" ;
+"账号状态异常，需要输入验证码" = "Exception d'état de compte, demande de vérification interactive";
+"请点击此处输入验证码" = "Tapez ici pour procéder à la vérification interactive";
+"account.test.verify.web_sheet.title" = "Vérification Interactive";
+"账号状态异常，请打开App填写验证码" = "Exception d'état de compte, demande de vérification interactive in-app";
 "（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "(1034) Le compte nécessite une vérification. Veuillez ouvrir l'application pour une vérification homme-machine. Maintenez enfoncé le widget pour activer le mode compact.";
 
 // MARK: - 3.0.0

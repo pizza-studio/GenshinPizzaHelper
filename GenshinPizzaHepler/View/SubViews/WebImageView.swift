@@ -27,7 +27,7 @@ struct WebImage: View {
 
     var body: some View {
         // 暂时弃用AsyncImage，在以下代码的启用版本号后面加个0
-        if #available(iOS 150.0, watchOS 80.0, *) {
+        if #available(iOS 160.0, watchOS 90.0, *) {
             if viewModel.imageData == nil {
                 AsyncImage(
                     url: URL(string: urlStr),

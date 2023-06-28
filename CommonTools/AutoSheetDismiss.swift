@@ -89,33 +89,6 @@ extension UIViewController {
     }
 }
 
-/// make the call the SwiftUI style:
-/// view.allowAutoDismiss(...)
-extension View {
-    /// Control if allow to dismiss the sheet by the user actions
-    public func allowAutoDismiss(_ dismissable: @escaping () -> Bool)
-        -> some View {
-        if #available(iOS 15.0, *) {
-            return self
-                .interactiveDismissDisabled()
-        } else {
-            // Fallback on earlier versions
-            return background(MbModalHackView(dismissable: dismissable))
-        }
-    }
-
-    /// Control if allow to dismiss the sheet by the user actions
-    public func allowAutoDismiss(_ dismissable: Bool) -> some View {
-        if #available(iOS 15.0, *) {
-            return self
-                .interactiveDismissDisabled()
-        } else {
-            // Fallback on earlier versions
-            return background(MbModalHackView(dismissable: { dismissable }))
-        }
-    }
-}
-
 // MARK: - ModalContent
 
 struct ModalContent: View {

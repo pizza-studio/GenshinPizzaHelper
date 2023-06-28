@@ -371,6 +371,7 @@
 
 // Errors description
 "请先刷新以获取树脂状态" = "I-refresh para makuha ang Genshin status";
+"请右键编辑小组件选择帐号" = "Mangyaring i-right-click at i-edit ang widget upang i-configure ang iyong account";
 "请长按小组件选择帐号" = "I-pindutin ng matagal ang widget upang i-configure ang iyong account";
 "错误码%lld：Cookie失效，请重新登录" = "Error code %lld: Hindi gumagana ang cookie, maaring mag-login muli sa HoYoLab";
 "错误码%lld：米游社帐号与UID不匹配，请手动输入UID" = "Error code %lld: Ang account ng HoYoLAB ay hindi tumutugma sa UID";

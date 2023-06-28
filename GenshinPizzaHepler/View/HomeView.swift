@@ -103,12 +103,8 @@ struct HomeView: View {
 extension View {
     @ViewBuilder
     func myRefreshable(action: @escaping () -> ()) -> some View {
-        if #available(iOS 15, *) {
-            self.refreshable {
-                action()
-            }
-        } else {
-            self
+        refreshable {
+            action()
         }
     }
 }

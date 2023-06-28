@@ -78,21 +78,12 @@ struct ContentView: View {
                     .tabItem {
                         Label("概览", systemImage: "list.bullet")
                     }
-                if #available(iOS 15.0, *) {
-                    ToolsView(animation: animation)
-                        .tag(1)
-                        .environmentObject(viewModel)
-                        .tabItem {
-                            Label("工具", systemImage: "shippingbox")
-                        }
-                } else {
-                    ToolsViewSimplified(animation: animation)
-                        .tag(1)
-                        .environmentObject(viewModel)
-                        .tabItem {
-                            Label("工具", systemImage: "shippingbox")
-                        }
-                }
+                ToolsView(animation: animation)
+                    .tag(1)
+                    .environmentObject(viewModel)
+                    .tabItem {
+                        Label("工具", systemImage: "shippingbox")
+                    }
                 SettingsView(storeManager: storeManager)
                     .tag(2)
                     .environmentObject(viewModel)
@@ -191,14 +182,14 @@ struct ContentView: View {
             switch item {
             case .userPolicy:
                 UserPolicyView(sheet: $sheetType)
-                    .allowAutoDismiss(false)
+                    .interactiveDismissDisabled()
             case .foundNewestVersion:
                 LatestVersionInfoView(
                     sheetType: $sheetType,
                     newestVersionInfos: $newestVersionInfos,
                     isJustUpdated: $isJustUpdated
                 )
-                .allowAutoDismiss(false)
+                .interactiveDismissDisabled()
             case .accountSetting:
                 NavigationView {
                     AccountDetailView(

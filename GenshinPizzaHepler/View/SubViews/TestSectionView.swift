@@ -155,7 +155,7 @@ struct TestSectionView: View {
                 }
             }
         }
-        .onChange(of: error) { newValue in
+        .onChange(of: error) { _ in
             if case .accountAbnormal = error {
                 popVerificationWebSheet()
             }

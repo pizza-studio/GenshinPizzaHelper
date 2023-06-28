@@ -55,51 +55,28 @@ struct EachExpeditionView: View {
     @ViewBuilder
     func percentageBar(_ percentage: Double) -> some View {
         let cornerRadius: CGFloat = 3
-        if #available(iOS 15.0, iOSApplicationExtension 15.0, *) {
-            GeometryReader { g in
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(
-                        cornerRadius: cornerRadius,
-                        style: .continuous
-                    )
-                    .frame(width: g.size.width, height: g.size.height)
-                    .foregroundStyle(.ultraThinMaterial)
-                    .opacity(0.6)
-                    RoundedRectangle(
-                        cornerRadius: cornerRadius,
-                        style: .continuous
-                    )
-                    .frame(
-                        width: g.size.width * percentage,
-                        height: g.size.height
-                    )
-                    .foregroundStyle(.thickMaterial)
-                }
-                .aspectRatio(30 / 1, contentMode: .fit)
+        GeometryReader { g in
+            ZStack(alignment: .leading) {
+                RoundedRectangle(
+                    cornerRadius: cornerRadius,
+                    style: .continuous
+                )
+                .frame(width: g.size.width, height: g.size.height)
+                .foregroundStyle(.ultraThinMaterial)
+                .opacity(0.6)
+                RoundedRectangle(
+                    cornerRadius: cornerRadius,
+                    style: .continuous
+                )
+                .frame(
+                    width: g.size.width * percentage,
+                    height: g.size.height
+                )
+                .foregroundStyle(.thickMaterial)
+            }
+            .aspectRatio(30 / 1, contentMode: .fit)
 //                .preferredColorScheme(.light)
-            }
-            .frame(height: 7)
-        } else {
-            GeometryReader { g in
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(
-                        cornerRadius: cornerRadius,
-                        style: .continuous
-                    )
-                    .opacity(0.3)
-                    .frame(width: g.size.width, height: g.size.height)
-                    RoundedRectangle(
-                        cornerRadius: cornerRadius,
-                        style: .continuous
-                    )
-                    .frame(
-                        width: g.size.width * percentage,
-                        height: g.size.height
-                    )
-                }
-                .aspectRatio(30 / 1, contentMode: .fit)
-            }
-            .frame(height: 7)
         }
+        .frame(height: 7)
     }
 }

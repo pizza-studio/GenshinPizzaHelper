@@ -23,8 +23,7 @@ enum ThisDevice {
     }
 
     public static var isScreenLandScape: Bool {
-        guard let window = UIApplication.shared.windows
-            .filter({ $0.isKeyWindow }).first else { return false }
+        guard let window = getKeyWindow() else { return false }
         let filtered = window.safeAreaInsets.allParamters.filter { $0 > 0 }
         return filtered.count == 3
     }
@@ -146,18 +145,11 @@ enum ThisDevice {
     }
 
     private static func getKeyWindow() -> UIWindow? {
-        let window: UIWindow?
-        if #available(iOS 15, *) {
-            window = UIApplication.shared.connectedScenes
-                .compactMap { scene -> UIWindow? in
-                    (scene as? UIWindowScene)?.keyWindow
-                }
-                .first
-        } else {
-            window = UIApplication.shared.windows
-                .filter { $0.isKeyWindow }.first
-        }
-        return window
+        UIApplication.shared.connectedScenes
+            .compactMap { scene -> UIWindow? in
+                (scene as? UIWindowScene)?.keyWindow
+            }
+            .first
     }
 }
 

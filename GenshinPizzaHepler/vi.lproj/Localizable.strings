@@ -378,6 +378,7 @@
 
 // Errors description
 "请先刷新以获取树脂状态" = "Vui lòng làm mới để nhận trạng thái của game";
+"请右键编辑小组件选择帐号" = "Vui lòng nhấp chuột phải và chỉnh sửa tiện ích để định cấu hình tài khoản của bạn";
 "请长按小组件选择帐号" = "Vui lòng nhấn và giữ tiện ích để cấu hình tài khoản của bạn";
 "错误码%lld：Cookie失效，请重新登录" = "mã lỗi %lld: Cookie không hợp lệ, vui lòng đăng nhập lại HoYoLab.";
 "错误码%lld：米游社帐号与UID不匹配，请手动输入UID" = "mã lỗi %lld: Tài khoản HoYoLAB không trùng UID";

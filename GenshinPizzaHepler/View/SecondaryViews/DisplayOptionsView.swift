@@ -16,18 +16,14 @@ struct DisplayOptionsView: View {
 
     var body: some View {
         Group {
-            if #available(iOS 15.0, *) {
-                mainView()
-                    .alert("请输入自定义流浪者姓名", isPresented: $isCustomizedNameForWandererAlertShow, actions: {
-                        TextField("自定义姓名", text: $customizedNameForWanderer)
-                            .onReceive(Just(customizedNameForWanderer)) { _ in limitText(20) }
-                        Button("完成") {
-                            isCustomizedNameForWandererAlertShow.toggle()
-                        }
-                    })
-            } else {
-                mainView()
-            }
+            mainView()
+                .alert("请输入自定义流浪者姓名", isPresented: $isCustomizedNameForWandererAlertShow, actions: {
+                    TextField("自定义姓名", text: $customizedNameForWanderer)
+                        .onReceive(Just(customizedNameForWanderer)) { _ in limitText(20) }
+                    Button("完成") {
+                        isCustomizedNameForWandererAlertShow.toggle()
+                    }
+                })
         }
         .navigationBarTitle("界面偏好设置", displayMode: .inline)
     }

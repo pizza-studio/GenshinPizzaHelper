@@ -52,7 +52,7 @@ extension View {
                     ) {
                         EmptyView()
                     }
-                }.animation(.default)
+                }.animation(.default, value: 200)
             }
         }
     }
@@ -125,29 +125,14 @@ extension View {
 
 struct BlurMaterialBackground: ViewModifier {
     func body(content: Content) -> some View {
-        if #available(iOS 15.0, *) {
-            content.background(
-                .regularMaterial,
-                in: RoundedRectangle(cornerRadius: 20, style: .continuous)
-            )
-            .contentShape(RoundedRectangle(
-                cornerRadius: 20,
-                style: .continuous
-            ))
-        } else {
-            content
-                .background(
-                    RoundedRectangle(
-                        cornerRadius: 20,
-                        style: .continuous
-                    )
-                    .foregroundColor(Color(UIColor.systemGray6))
-                )
-                .contentShape(RoundedRectangle(
-                    cornerRadius: 20,
-                    style: .continuous
-                ))
-        }
+        content.background(
+            .regularMaterial,
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
+        .contentShape(RoundedRectangle(
+            cornerRadius: 20,
+            style: .continuous
+        ))
     }
 }
 
@@ -155,29 +140,14 @@ struct BlurMaterialBackground: ViewModifier {
 
 struct AlternativeBlurMaterialBackground: ViewModifier {
     func body(content: Content) -> some View {
-        if #available(iOS 15.0, *) {
-            content.background(
-                .ultraThinMaterial,
-                in: RoundedRectangle(cornerRadius: 20, style: .continuous)
-            )
-            .contentShape(RoundedRectangle(
-                cornerRadius: 20,
-                style: .continuous
-            ))
-        } else {
-            content
-                .background(
-                    RoundedRectangle(
-                        cornerRadius: 20,
-                        style: .continuous
-                    )
-                    .foregroundColor(Color(UIColor.systemGray4).opacity(0.5))
-                )
-                .contentShape(RoundedRectangle(
-                    cornerRadius: 20,
-                    style: .continuous
-                ))
-        }
+        content.background(
+            .ultraThinMaterial,
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
+        .contentShape(RoundedRectangle(
+            cornerRadius: 20,
+            style: .continuous
+        ))
     }
 }
 

@@ -183,7 +183,7 @@ extension MihoyoAPI {
     }
 }
 
-fileprivate func getDS(query: String, body: Data? = nil) -> String {
+private func getDS(query: String, body: Data? = nil) -> String {
     let salt = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
 
     let time = String(Int(Date().timeIntervalSince1970))

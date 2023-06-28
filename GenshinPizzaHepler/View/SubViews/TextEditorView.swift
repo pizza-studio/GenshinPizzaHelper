@@ -102,15 +102,9 @@ struct TextFieldEditorView: View {
     var body: some View {
         if note == nil {
             List {
-                if #available(iOS 15.0, *) {
-                    TextField("", text: $content)
-                        .keyboardType(keyboardType)
-                        .submitLabel(.done)
-                } else {
-                    // Fallback on earlier versions
-                    TextField("", text: $content)
-                        .keyboardType(keyboardType)
-                }
+                TextField("", text: $content)
+                    .keyboardType(keyboardType)
+                    .submitLabel(.done)
             }
             .navigationBarTitle(title, displayMode: .inline)
         } else {
@@ -119,15 +113,9 @@ struct TextFieldEditorView: View {
                     footer: Text(LocalizedStringKey(note!))
                         .font(.footnote)
                 ) {
-                    if #available(iOS 15.0, *) {
-                        TextField(note!, text: $content)
-                            .keyboardType(keyboardType)
-                            .submitLabel(.done)
-                    } else {
-                        // Fallback on earlier versions
-                        TextField(note!, text: $content)
-                            .keyboardType(keyboardType)
-                    }
+                    TextField(note!, text: $content)
+                        .keyboardType(keyboardType)
+                        .submitLabel(.done)
                 }
             }
             .navigationBarTitle(title, displayMode: .inline)

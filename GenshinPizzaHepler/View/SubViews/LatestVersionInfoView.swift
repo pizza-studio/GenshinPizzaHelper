@@ -47,12 +47,7 @@ struct LatestVersionInfoView: View {
                             getLocalizedNoticeInfos(meta: newestVersionInfos!),
                             id: \.self
                         ) { item in
-                            if #available(iOS 15.0, *) {
-                                Text("∙ ") + Text(item.toAttributedString())
-                            } else {
-                                // Fallback on earlier versions
-                                Text("- \(item)")
-                            }
+                            Text("∙ ") + Text(item.toAttributedString())
                         }
                         Divider()
                             .padding(.vertical)
@@ -66,12 +61,7 @@ struct LatestVersionInfoView: View {
                             getLocalizedUpdateInfos(meta: newestVersionInfos!),
                             id: \.self
                         ) { item in
-                            if #available(iOS 15.0, *) {
-                                Text("∙ ") + Text(item.toAttributedString())
-                            } else {
-                                // Fallback on earlier versions
-                                Text("- \(item)")
-                            }
+                            Text("∙ ") + Text(item.toAttributedString())
                         }
                     } else {
                         Text("Loading")

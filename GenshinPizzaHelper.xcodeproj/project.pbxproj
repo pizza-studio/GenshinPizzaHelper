@@ -71,7 +71,6 @@
 		5BD1C5EA2A2A1FC90043C2B1 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
 		5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */; };
 		5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8329D2834E0075F780 /* GachaItemManager.swift */; };
-		5BD1C5ED2A2A1FC90043C2B1 /* ToolsViewSimplified.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE12903E0BB00C75E7F /* ToolsViewSimplified.swift */; };
 		5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharableInIOS16.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */; };
 		5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
 		5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
@@ -208,8 +207,8 @@
 		5BD1C6752A2A1FC90043C2B1 /* 树脂.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F428B0994C0056D182 /* 树脂.png */; };
 		5BD1C6762A2A1FC90043C2B1 /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
 		5BD1C6772A2A1FC90043C2B1 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
-		5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A129220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
@@ -295,7 +294,7 @@
 		BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
-		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
 		BF85D77628CE0B9F003F3479 /* WatchWidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */; };
@@ -378,7 +377,6 @@
 		BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
 		BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258528A0AC1500FEFA49 /* MoreView.swift */; };
 		BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
-		BFE7AFE22903E0BB00C75E7F /* ToolsViewSimplified.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE12903E0BB00C75E7F /* ToolsViewSimplified.swift */; };
 		BFE7AFE42909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
 		BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
 		BFE7AFE62909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
@@ -438,7 +436,7 @@
 		EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07C65528B11DB40030E338 /* NotificationSettingView.swift */; };
 		EA081EFC28F85040009433D8 /* ToolbarSharableInIOS16.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */; };
 		EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099FF428A2B7220023B4AF /* Intents.framework */; };
-		EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EA09A00D28A2B8660023B4AF /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EA09A00E28A2B8700023B4AF /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
@@ -482,7 +480,7 @@
 		EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
 		EA30F9A92886B49200AE7BEA /* MainWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* MainWidget.swift */; };
-		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA32D57429D749E60003978A /* MIMTGetGachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32D57329D749E60003978A /* MIMTGetGachaURL.swift */; };
 		EA36DFBA28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFB928E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift */; };
 		EA36DFBB28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFB928E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift */; };
@@ -653,7 +651,7 @@
 		EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */; };
 		EAE2AD4829D3D06900FF9612 /* ContainGachaItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */; };
 		EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
-		EAE3FCB828CE3E7B00174DA8 /* WatchWidgetExtensionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EAE3FCB828CE3E7B00174DA8 /* WatchWidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */; };
 		EAE5C5B728CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
 		EAE5C5B828CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
@@ -797,16 +795,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5BD1C6782A2A1FC90043C2B1 /* Embed App Extensions */ = {
+		5BD1C6782A2A1FC90043C2B1 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed App Extensions */,
-				5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed App Extensions */,
+				5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed Foundation Extensions */,
+				5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BF85D76128CE0A1C003F3479 /* Embed Foundation Extensions */ = {
@@ -831,28 +829,28 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFCC067A28C9B6A2003E4A54 /* Embed App Extensions */ = {
+		BFCC067A28C9B6A2003E4A54 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				EAE3FCB828CE3E7B00174DA8 /* WatchWidgetExtensionExtension.appex in Embed App Extensions */,
-				BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed App Extensions */,
+				EAE3FCB828CE3E7B00174DA8 /* WatchWidgetExtensionExtension.appex in Embed Foundation Extensions */,
+				BF85D76728CE0AC8003F3479 /* WatchHelper WatchKit Extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA30F9B32886B49300AE7BEA /* Embed App Extensions */ = {
+		EA30F9B32886B49300AE7BEA /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed App Extensions */,
-				EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed App Extensions */,
+				EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed Foundation Extensions */,
+				EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -956,7 +954,6 @@
 		BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoBlockView.swift; sourceTree = "<group>"; };
 		BFE4258528A0AC1500FEFA49 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		BFE4258728A0AE2700FEFA49 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		BFE7AFE12903E0BB00C75E7F /* ToolsViewSimplified.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewSimplified.swift; sourceTree = "<group>"; };
 		BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSAServerAPI.swift; sourceTree = "<group>"; };
 		BFE9DADB29A33C1300C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BFE9DADC29A33C1300C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1701,7 +1698,6 @@
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				BFB101D228D5C579000DC631 /* ToolsView.swift */,
-				BFE7AFE12903E0BB00C75E7F /* ToolsViewSimplified.swift */,
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 			);
@@ -1945,7 +1941,7 @@
 				5BD1C5C72A2A1FC90043C2B1 /* Sources */,
 				5BD1C65A2A2A1FC90043C2B1 /* Frameworks */,
 				5BD1C6622A2A1FC90043C2B1 /* Resources */,
-				5BD1C6782A2A1FC90043C2B1 /* Embed App Extensions */,
+				5BD1C6782A2A1FC90043C2B1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -1991,7 +1987,7 @@
 			buildConfigurationList = BFCC067E28C9B6A2003E4A54 /* Build configuration list for PBXNativeTarget "WatchHelper" */;
 			buildPhases = (
 				BFCC065428C9B6A0003E4A54 /* Resources */,
-				BFCC067A28C9B6A2003E4A54 /* Embed App Extensions */,
+				BFCC067A28C9B6A2003E4A54 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -2077,7 +2073,7 @@
 				EABD7DB22886B2D200B7F0FD /* Sources */,
 				EABD7DB32886B2D200B7F0FD /* Frameworks */,
 				EABD7DB42886B2D200B7F0FD /* Resources */,
-				EA30F9B32886B49300AE7BEA /* Embed App Extensions */,
+				EA30F9B32886B49300AE7BEA /* Embed Foundation Extensions */,
 				BFCC067728C9B6A2003E4A54 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -2128,7 +2124,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					BF85D77028CE0B9E003F3479 = {
 						CreatedOnToolsVersion = 14.0;
@@ -2436,7 +2432,6 @@
 				5BD1C5EA2A2A1FC90043C2B1 /* ResinRecoveryActivityWidget.swift in Sources */,
 				5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */,
 				5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */,
-				5BD1C5ED2A2A1FC90043C2B1 /* ToolsViewSimplified.swift in Sources */,
 				5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharableInIOS16.swift in Sources */,
 				5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */,
 				5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */,
@@ -2879,7 +2874,6 @@
 				EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				BFCC065328C732D5003E4A54 /* WidgetTipsView.swift in Sources */,
 				EA025C8429D2834E0075F780 /* GachaItemManager.swift in Sources */,
-				BFE7AFE22903E0BB00C75E7F /* ToolsViewSimplified.swift in Sources */,
 				EA081EFC28F85040009433D8 /* ToolbarSharableInIOS16.swift in Sources */,
 				BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
@@ -3153,7 +3147,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3193,7 +3187,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3416,7 +3410,7 @@
 				INFOPLIST_FILE = AccountIntent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AccountIntent;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3444,7 +3438,7 @@
 				INFOPLIST_FILE = AccountIntent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AccountIntent;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3572,14 +3566,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -3628,14 +3622,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -3663,7 +3657,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3704,7 +3698,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

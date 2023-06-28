@@ -95,14 +95,9 @@ private struct AbyssFloorView: View {
             let buffer = NSMutableString()
             buffer.append(initials)
             buffer.append(" - ")
-            if #available(iOS 15, *) {
-                buffer.append("获取渊星数".localized)
-                buffer.append(": ")
-            }
+            buffer.append("获取渊星数".localized)
+            buffer.append(": ")
             buffer.append("\(floorData.star)/\(floorData.maxStar)")
-            if #unavailable(iOS 15) {
-                buffer.append("✶")
-            }
             return buffer.description
         }
         return initials
