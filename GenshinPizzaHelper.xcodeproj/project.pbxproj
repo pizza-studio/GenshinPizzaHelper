@@ -1073,7 +1073,6 @@
 		EA8445EB29DBFFD700CB8C9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA8978D729DA716400E0903E /* ExportGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportGachaView.swift; sourceTree = "<group>"; };
 		EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_lang_dictionary.json; sourceTree = "<group>"; };
-		EA9495E429D7C2C700F38EFF /* GachaMIMTServer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GachaMIMTServer; path = Dependences/GachaMIMTServer; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
 		EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingView.swift; sourceTree = "<group>"; };
 		EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
@@ -1367,7 +1366,6 @@
 				BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */,
 				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
 				BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */,
-				EA9495E429D7C2C700F38EFF /* GachaMIMTServer */,
 			);
 			name = Packages;
 			sourceTree = "<group>";

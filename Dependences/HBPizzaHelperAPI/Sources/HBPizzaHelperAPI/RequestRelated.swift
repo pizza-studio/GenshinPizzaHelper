@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 // public typealias FetchResult = Result<UserData, FetchError>
 // public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
@@ -31,6 +30,22 @@ import UIKit
 //        FetchError
 //    >
 #endif
+
+private let isMac: Bool = {
+    #if os(OSX)
+    return true
+    #elseif os(watchOS)
+    return false
+    #elseif os(tvOS)
+    return false
+    #elseif os(iOS)
+    #if targetEnvironment(macCatalyst)
+    return true
+    #else
+    return false
+    #endif
+    #endif
+}()
 
 // MARK: - RequestError
 
@@ -96,10 +111,8 @@ extension FetchError {
         switch self {
         case .defaultStatus:
             return "请先刷新以获取树脂状态".localized
-
         case .noFetchInfo:
-            return (OS.type == .macOS ? "请右键编辑小组件选择帐号" : "请长按小组件选择帐号").localized
-
+            return (isMac ? "请右键编辑小组件选择帐号" : "请长按小组件选择帐号").localized
         case let .cookieInvalid(retcode, _):
             return String(
                 format: NSLocalizedString(
@@ -246,58 +259,4 @@ public struct FetchedAccount: Codable, Hashable, Identifiable {
     public let isChosen: Bool
 
     public var id: String { gameUid }
-}
-
-// MARK: - OS
-
-enum OS: Int {
-    case macOS = 0
-    case iPhoneOS = 1
-    case iPadOS = 2
-    case watchOS = 3
-    case tvOS = 4
-
-    // MARK: Internal
-
-    static let type: OS = {
-        let maybePad = UIDevice.modelIdentifier.contains("iPad") || UIDevice.current.userInterfaceIdiom == .pad
-        #if os(OSX)
-        return .macOS
-        #elseif os(watchOS)
-        return .watchOS
-        #elseif os(tvOS)
-        return .tvOS
-        #elseif os(iOS)
-        #if targetEnvironment(simulator)
-        return maybePad ? .iPadOS : .iPhoneOS
-        #elseif targetEnvironment(macCatalyst)
-        return .macOS
-        #else
-        return maybePad ? .iPadOS : .iPhoneOS
-        #endif
-        #endif
-    }()
-
-    static let isCatalyst: Bool = {
-        #if targetEnvironment(macCatalyst)
-        return true
-        #else
-        return false
-        #endif
-    }()
-}
-
-extension UIDevice {
-    static let modelIdentifier: String = {
-        var systemInfo = utsname()
-        uname(&systemInfo)
-        let machineMirror = Mirror(reflecting: systemInfo.machine)
-        let identifier = machineMirror.children
-            .reduce("") { identifier, element in
-                guard let value = element.value as? Int8,
-                      value != 0 else { return identifier }
-                return identifier + String(UnicodeScalar(UInt8(value)))
-            }
-        return identifier
-    }()
 }
