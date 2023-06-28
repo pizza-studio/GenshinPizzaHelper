@@ -42,8 +42,9 @@ enum OS: Int {
     static let isCatalyst: Bool = {
         #if targetEnvironment(macCatalyst)
         return true
-        #endif
+        #else
         return false
+        #endif
     }()
 }
 
