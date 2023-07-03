@@ -82,20 +82,6 @@ struct AllAvatarListSheetView: View {
                     }
                 }
             }
-            .toolbarSavePhotoButtonInIOS16(
-                title: "保存".localized,
-                placement: .navigationBarLeading
-            ) {
-                AllAvatarListShareView(
-                    accountName: account.config.name!,
-                    showingAvatars: showingAvatars,
-                    charMap: viewModel.charMap
-                )
-                .environment(
-                    \.locale,
-                    .init(identifier: Locale.current.identifier)
-                )
-            }
         } else {
             ProgressView()
                 .onAppear {
