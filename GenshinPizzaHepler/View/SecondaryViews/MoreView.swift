@@ -73,6 +73,47 @@ struct MoreView: View {
             }
 
             Section {
+                Link(destination: URL(string: "https://apps.apple.com/app/id6448894222")!) {
+                    HStack {
+                        Image("icon.hsrhelper")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .cornerRadius(10)
+                        VStack(alignment: .leading) {
+                            Text("星铁披萨小助手")
+                                .foregroundColor(.primary)
+                            Text("星穹铁道游戏助手工具全家桶")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                        }
+
+                        Spacer()
+                        Image(systemName: "chevron.forward")
+                    }
+                }
+                Link(destination: URL(string: "https://apps.apple.com/cn/app/id6450712191")!) {
+                    HStack {
+                        Image("icon.herta_terminal")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .cornerRadius(10)
+                        VStack(alignment: .leading) {
+                            Text("黑塔终端")
+                                .foregroundColor(.primary)
+                            Text("与“老婆”们聊天！")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                        }
+
+                        Spacer()
+                        Image(systemName: "chevron.forward")
+                    }
+                }
+            } header: {
+                Text("我们的其他作品")
+            }
+
+            Section {
                 NavigationLink(
                     destination: WebBroswerView(
                         url: "https://ophelper.top/static/policy.html"
