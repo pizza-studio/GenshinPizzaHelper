@@ -6,7 +6,7 @@
   
 */
 
-"CFBundleDisplayName" = "GI Pizza";
+"CFBundleDisplayName" = "Pizza Helper for Genshin";
 "NSPhotoLibraryAddUsageDescription" = "Paki-payagan ang mga imahe na mai-save";
 "NSCameraUsageDescription" = "Kung gusto mong gamitin ang camera sa HoYoLAB web at mag-upload ng mga larawan, mangyaring payagan ang paggamit ng camera";
-"CFBundleName" = "GI Pizza";
+"CFBundleName" = "Pizza Helper for Genshin";
