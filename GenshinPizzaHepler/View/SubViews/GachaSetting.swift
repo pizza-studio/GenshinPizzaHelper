@@ -135,14 +135,14 @@ struct GachaSetting: View {
                     )
                 }
             }
-//            #if DEBUG
-//            Section {
-//                Button("delete all records (DEBUG ONLY)") {
-//                    gachaViewModel.manager.deleteAllRecord()
-//                    gachaViewModel.refetchGachaItems()
-//                }
-//            }
-//            #endif
+            if isDebugButtonsShow {
+                Section {
+                    Button("Delete all records (DEBUG ONLY)") {
+                        gachaViewModel.manager.deleteAllRecord()
+                        gachaViewModel.refetchGachaItems()
+                    }
+                }
+            }
         }
         .navigationTitle("祈愿数据管理")
         .navigationBarTitleDisplayMode(.inline)
@@ -170,6 +170,11 @@ struct GachaSetting: View {
             actions: defaultDismissButton,
             message: duplicatedCleanCompletedAlertMessage
         )
+        .onTapGesture(count: 5) {
+            withAnimation {
+                isDebugButtonsShow.toggle()
+            }
+        }
     }
 
     @ViewBuilder
@@ -238,6 +243,8 @@ struct GachaSetting: View {
     private var isDeleteCompletedAlertShow: Bool = false
     @State
     private var isDuplicatedCleanCompletedAlertShow: Bool = false
+    @State
+    private var isDebugButtonsShow = false
 
     private static let rangeFormatter: DateIntervalFormatter = {
         let formatter = DateIntervalFormatter()
