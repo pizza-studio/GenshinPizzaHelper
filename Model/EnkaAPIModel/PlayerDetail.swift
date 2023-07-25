@@ -129,22 +129,24 @@ struct PlayerDetail {
             self.sideIconString = character.SideIconName
 
             self.skills = character.SkillOrder.compactMap { skillID in
-                let level = avatarInfo.skillLevelMap
+                let rawLevel = avatarInfo.skillLevelMap
                     .skillLevel[skillID.description] ?? 0
-                guard level > 0 else { return nil }
+                guard rawLevel > 0 else { return nil } // 原生等级从 1 开始算。
                 let icon = character.Skills
                     .skillData[String(skillID)] ??
                     "UI_Talent_Combine_Skill_ExtraItem"
-                let adjustedDelta = avatarInfo
+                // 从 proudSkillExtraLevelMap 获取所有可能的天赋等级加成数据。
+                var adjustedDelta = avatarInfo
                     .proudSkillExtraLevelMap?[(
                         character.ProudMap
                             .proudMapData[skillID.description] ?? 0
                     ).description] ?? 0
-
+                // 对该笔天赋等级加成数据做去余处理，以图仅保留命之座天赋加成。
+                adjustedDelta = adjustedDelta - adjustedDelta % 3
                 return Skill(
                     name: localizedDictionary.nameFromHashMap(skillID),
-                    level: level,
-                    levelAdjusted: level + adjustedDelta,
+                    level: rawLevel,
+                    levelAdjusted: rawLevel + adjustedDelta,
                     iconString: icon
                 )
             }
