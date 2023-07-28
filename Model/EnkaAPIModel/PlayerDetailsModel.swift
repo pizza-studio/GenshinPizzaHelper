@@ -288,8 +288,6 @@ struct FightPropMap: Codable {
     /// 元素精通
     var elementalMastery: Double
 
-    /// 物理抗性
-    var physicalResistance: Double
     /// 物理伤害加成
     var physicalDamage: Double
     /// 火元素伤害加成
@@ -307,6 +305,8 @@ struct FightPropMap: Codable {
     /// 冰元素伤害加成
     var cryoDamage: Double
 
+    /// 物理抗性
+    var physicalResistance: Double
     /// 火元素抗性
     var pyroResistance: Double
     /// 雷元素抗性

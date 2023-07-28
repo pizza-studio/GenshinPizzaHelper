@@ -522,6 +522,21 @@ struct PlayerDetail {
             case dendro = "Grass"
             /// 原人
             case unknown = "Unknown"
+
+            // MARK: Internal
+
+            var dmgBonusLabel: (text: String, icon: String) {
+                switch self {
+                case .cryo: return ("冰元素伤害加成", "UI_Icon_Element_Ice")
+                case .anemo: return ("风元素伤害加成", "UI_Icon_Element_Wind")
+                case .electro: return ("雷元素伤害加成", "UI_Icon_Element_Electric")
+                case .hydro: return ("水元素伤害加成", "UI_Icon_Element_Water")
+                case .pyro: return ("火元素伤害加成", "UI_Icon_Element_Fire")
+                case .geo: return ("岩元素伤害加成", "UI_Icon_Element_Rock")
+                case .dendro: return ("草元素伤害加成", "UI_Icon_Element_Grass")
+                case .unknown: return ("物理伤害加成", "UI_Icon_PhysicalAttackUp")
+                }
+            }
         }
 
         /// 角色星级，橙色为四星，紫色为五星
