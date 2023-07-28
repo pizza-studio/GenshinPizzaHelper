@@ -615,3 +615,18 @@ extension FightPropMap {
     /// 冰元素伤害加成（配对）
     var cryoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (cryoDamage, .cryo) }
 }
+
+extension PlayerDetail.Avatar.AvatarElement {
+    var dmgBonusLabel: (text: String, icon: String) {
+        switch self {
+        case .cryo: return ("冰元素伤害加成", "UI_Icon_Element_Ice")
+        case .anemo: return ("风元素伤害加成", "UI_Icon_Element_Wind")
+        case .electro: return ("雷元素伤害加成", "UI_Icon_Element_Electric")
+        case .hydro: return ("水元素伤害加成", "UI_Icon_Element_Water")
+        case .pyro: return ("火元素伤害加成", "UI_Icon_Element_Fire")
+        case .geo: return ("岩元素伤害加成", "UI_Icon_Element_Rock")
+        case .dendro: return ("草元素伤害加成", "UI_Icon_Element_Grass")
+        case .unknown: return ("物理伤害加成", "UI_Icon_PhysicalAttackUp")
+        }
+    }
+}
