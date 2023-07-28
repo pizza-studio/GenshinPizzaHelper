@@ -201,3 +201,125 @@ extension AvatarHoldingData {
         self.serverId = account.config.server.id
     }
 }
+
+// MARK: - HuTaoDBAbyssData
+
+struct HuTaoDBAbyssData: Codable {
+    struct SpiralAbyss: Codable {
+        struct Damage: Codable {
+            var AvatarId: Int
+            var Value: Int
+        }
+
+        struct Floor: Codable {
+            struct Level: Codable {
+                struct Battle: Codable {
+                    var Index: Int
+                    var Avatars: [Int]
+                }
+
+                var Index: Int
+                var Star: Int
+                var Battles: [Battle]
+            }
+
+            var Index: Int
+            var Star: Int
+            var Levels: [Level]
+        }
+
+        var ScheduleId: Int
+        var TotalBattleTimes: Int
+        var TotalWinTimes: Int
+        var Damage: Damage
+        var TakeDamage: Damage
+        var Floors: [Floor]
+    }
+
+    struct Avatar: Codable {
+        var AvatarId: Int
+        var WeaponId: Int
+        var ReliquarySetIds: [Int]
+        var ActivedConstellationNumber: Int
+    }
+
+    var Uid: String
+    var Identity: String
+    var SpiralAbyss: SpiralAbyss?
+    var Avatars: [Avatar]
+    var ReservedUserName: String
+}
+
+extension HuTaoDBAbyssData {
+    init?(
+        account: Account,
+        which season: AccountSpiralAbyssDetail.WhichSeason
+    ) {
+        guard let abyssData = account.spiralAbyssDetail?.get(season),
+              let basicInfo = account.basicInfo
+        else { return nil }
+        guard abyssData.totalStar == 36 else { return nil }
+        self.Uid = account.config.uid!
+        self.Identity = "GenshinPizzaHelper"
+        self.ReservedUserName = ""
+
+        self.Avatars = []
+        for myAvatar in basicInfo.avatars {
+            Avatars.append(Avatar(
+                AvatarId: myAvatar.id,
+                WeaponId: 0,
+                ReliquarySetIds: [],
+                ActivedConstellationNumber: myAvatar.activedConstellationNum
+            ))
+        }
+
+        self.SpiralAbyss = .init(data: abyssData)
+    }
+}
+
+extension HuTaoDBAbyssData.SpiralAbyss {
+    init?(data: SpiralAbyssDetail) {
+        guard [
+            data.damageRank.first,
+            data.defeatRank.first,
+            data.takeDamageRank.first,
+            data.energySkillRank.first,
+            data.normalSkillRank.first,
+        ].allSatisfy({ $0 != nil }) else { return nil }
+        ScheduleId = data.scheduleId
+        TotalBattleTimes = data.totalBattleTimes
+        TotalWinTimes = data.totalWinTimes
+        self.Damage = HuTaoDBAbyssData.SpiralAbyss.Damage(
+            AvatarId: data.damageRank.first?.avatarId ?? -1,
+            Value: data.damageRank.first?.value ?? -1
+        )
+        TakeDamage = HuTaoDBAbyssData.SpiralAbyss.Damage(
+            AvatarId: data.takeDamageRank.first?.avatarId ?? -1,
+            Value: data.takeDamageRank.first?.value ?? -1
+        )
+
+        Floors = []
+        for myFloorData in data.floors {
+            var levelData = [Floor.Level]()
+            for myLevelData in myFloorData.levels {
+                var battleData = [Floor.Level.Battle]()
+                for myBattleData in myLevelData.battles {
+                    battleData.append(Floor.Level.Battle(
+                        Index: myBattleData.index,
+                        Avatars: myBattleData.avatars.map { $0.id }
+                    ))
+                }
+                levelData.append(Floor.Level(
+                    Index: myLevelData.index,
+                    Star: myLevelData.star,
+                    Battles: battleData
+                ))
+            }
+            Floors.append(Floor(
+                Index: myFloorData.index,
+                Star: myFloorData.star,
+                Levels: levelData
+            ))
+        }
+    }
+}

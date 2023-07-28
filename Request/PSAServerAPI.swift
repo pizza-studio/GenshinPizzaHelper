@@ -62,6 +62,47 @@ extension API {
                 }
         }
 
+        /// 上传数据
+        static func uploadHuTaoDBUserData(
+            path: String,
+            data: Data,
+            _ completion: @escaping (HuTaoServerPostResultModelResult) -> ()
+        ) {
+            // 请求
+            HttpMethod<HuTaoServerPostResultModel>
+                .homeServerRequest(
+                    .post,
+                    baseHost: "https://homa.snapgenshin.com",
+                    urlStr: path,
+                    body: data
+                ) { result in
+                    switch result {
+                    case let .success(requestResult):
+                        print("request succeed")
+//                        let userData = requestResult.data
+//                        let retcode = requestResult.retCode
+//                        let message = requestResult.message
+
+                        switch requestResult.retcode {
+                        case 0:
+                            print("push data succeed")
+                            completion(.success(requestResult))
+                        default:
+                            print("fail")
+                            completion(.failure(.uploadError(
+                                requestResult
+                                    .message
+                            )))
+                        }
+                    case let .failure(error):
+                        completion(.failure(.uploadError(
+                            error
+                                .localizedDescription
+                        )))
+                    }
+                }
+        }
+
         /// 深渊角色使用率
         static func fetchAbyssUtilizationData(
             season: Int? = nil,

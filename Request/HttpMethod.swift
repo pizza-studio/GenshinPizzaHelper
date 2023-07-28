@@ -1262,7 +1262,7 @@ struct HttpMethod<T: Codable> {
                     "Accept-Encoding": "gzip, deflate, br",
                     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
                     "Accept": "application/json, text/plain, */*",
-                    "User-Agent": "Genshin-Pizza-Helper/2.0",
+                    "User-Agent": "Genshin-Pizza-Helper/3.0",
                     "Connection": "keep-alive",
                 ]
                 // http方法
@@ -1910,7 +1910,7 @@ struct HttpMethod<T: Codable> {
                 ]
 
                 request.setValue(
-                    "Genshin-Pizza-Helper/2.0",
+                    "Genshin-Pizza-Helper/3.0",
                     forHTTPHeaderField: "User-Agent"
                 )
                 for header in headersDict {
@@ -1984,7 +1984,7 @@ struct HttpMethod<T: Codable> {
                                 with: "0"
                             ).data(using: .utf8)!
                             let decoder = JSONDecoder()
-                            if baseHost != "http://81.70.76.222" {
+                            if baseHost != "http://81.70.76.222" || baseHost != "https://homa.snapgenshin.com" {
                                 decoder
                                     .keyDecodingStrategy = .convertFromSnakeCase
                             }
@@ -1994,6 +1994,7 @@ struct HttpMethod<T: Codable> {
                                 return
                             }
                             print(response.statusCode)
+                            print(stringData)
 
                             do {
                                 let requestResult = try decoder.decode(

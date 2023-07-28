@@ -16,7 +16,19 @@ struct FetchHomeModel<T: Codable>: Codable {
     let data: T
 }
 
+// MARK: - FetchHuTaoModel
+
+struct FetchHuTaoModel: Codable {
+    let retcode: Int
+    let message: String
+}
+
 typealias FetchHomeModelResult<T: Codable> = Result<
     FetchHomeModel<T>,
+    PSAServerError
+>
+
+typealias FetchHuTaoModelResult = Result<
+    FetchHuTaoModel,
     PSAServerError
 >

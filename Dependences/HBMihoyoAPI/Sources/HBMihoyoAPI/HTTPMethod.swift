@@ -1285,7 +1285,7 @@ struct HttpMethod<T: Codable> {
                     "Accept-Encoding": "gzip, deflate, br",
                     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
                     "Accept": "application/json, text/plain, */*",
-                    "User-Agent": "Genshin-Pizza-Helper/2.0",
+                    "User-Agent": "Genshin-Pizza-Helper/3.0",
                     "Connection": "keep-alive",
                 ]
                 // http方法
@@ -1933,7 +1933,7 @@ struct HttpMethod<T: Codable> {
                 ]
 
                 request.setValue(
-                    "Genshin-Pizza-Helper/2.0",
+                    "Genshin-Pizza-Helper/3.0",
                     forHTTPHeaderField: "User-Agent"
                 )
                 for header in headersDict {

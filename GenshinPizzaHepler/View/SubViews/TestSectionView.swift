@@ -77,8 +77,8 @@ struct TestSectionView: View {
                         }
                         .navigationTitle("account.test.verify.web_sheet.title")
                         .navigationBarTitleDisplayMode(.inline)
-                        .navigationViewStyle(.stack)
                     }
+                    .navigationViewStyle(.stack)
                 }
             })
             if connectStatus == .fail, let error = error, case .accountAbnormal = error {

@@ -12,6 +12,8 @@ typealias AvatarHoldingReceiveDataFetchModel =
 typealias AvatarHoldingReceiveDataFetchModelResult =
     FetchHomeModelResult<AvatarHoldingReceiveData>
 typealias PSAServerPostResultModel = FetchHomeModel<String?>
+typealias HuTaoServerPostResultModel = FetchHuTaoModel
 typealias PSAServerPostResultModelResult = FetchHomeModelResult<String?>
+typealias HuTaoServerPostResultModelResult = FetchHuTaoModelResult
 
 typealias AvatarHoldingReceiveData = AvatarPercentageModel

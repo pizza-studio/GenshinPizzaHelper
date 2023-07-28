@@ -345,7 +345,7 @@ struct HttpMethod<T: Codable> {
                 ]
 
                 request.setValue(
-                    "Genshin-Pizza-Helper/2.0",
+                    "Genshin-Pizza-Helper/3.0",
                     forHTTPHeaderField: "User-Agent"
                 )
                 for header in headersDict {

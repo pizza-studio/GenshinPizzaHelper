@@ -354,5 +354,33 @@ extension Account {
             UPLOAD_ABYSS_DATA_LOCKED = true
         }
     }
+
+    func uploadHuTaoDBAbyssData() {
+        print("uploadHuTaoDBAbyssData START")
+        guard UserDefaults.standard.bool(forKey: "allowAbyssDataCollection")
+        else { print("not allowed"); return }
+        if let abyssData = HuTaoDBAbyssData(account: self, which: .this) {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .sortedKeys
+            let data = try! encoder.encode(abyssData)
+            print(String(data: data, encoding: .utf8)!)
+            API.PSAServer
+                .uploadHuTaoDBUserData(
+                    path: "/Record/Upload",
+                    data: data
+                ) { result in
+                    switch result {
+                    case .success:
+                        print("uploadHuTaoDBAbyssData SUCCEED")
+                    case let .failure(error):
+                        print("uploadHuTaoDBAbyssData ERROR: \(error)")
+                    }
+                }
+        } else {
+            print(
+                "uploadHuTaoDBAbyssData ERROR: generate data fail. Maybe because not full star."
+            )
+        }
+    }
     #endif
 }
