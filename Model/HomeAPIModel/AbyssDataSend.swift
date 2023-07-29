@@ -254,21 +254,41 @@ extension HuTaoDBAbyssData {
     init?(
         account: Account,
         which season: AccountSpiralAbyssDetail.WhichSeason
-    ) {
+    ) async {
         guard let abyssData = account.spiralAbyssDetail?.get(season),
               let basicInfo = account.basicInfo
         else { return nil }
         guard abyssData.totalStar == 36 else { return nil }
+
+        let allAvatarInfo = await withCheckedContinuation { continuation in
+            MihoyoAPI.fetchAllAvatarInfos(
+                region: account.config.server.region,
+                serverID: account.config.server.id,
+                uid: account.config.uid!,
+                cookie: account.config.cookie!
+            ) { result in
+                switch result {
+                case let .success(data):
+                    continuation.resume(with: .success(data))
+                case .failure:
+                    break
+                }
+            }
+        }
+
         self.Uid = account.config.uid!
         self.Identity = "GenshinPizzaHelper"
         self.ReservedUserName = ""
 
         self.Avatars = []
         for myAvatar in basicInfo.avatars {
+            guard let avatar = allAvatarInfo.avatars.first(where: { avatar in
+                myAvatar.id == avatar.id
+            }) else { return nil }
             Avatars.append(Avatar(
                 AvatarId: myAvatar.id,
-                WeaponId: 0,
-                ReliquarySetIds: [],
+                WeaponId: avatar.weapon.id,
+                ReliquarySetIds: avatar.reliquaries.map(\.set.id),
                 ActivedConstellationNumber: myAvatar.activedConstellationNum
             ))
         }

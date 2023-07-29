@@ -189,7 +189,9 @@ class ViewModel: NSObject, ObservableObject {
             }
             group.notify(queue: .main) {
                 self.accounts[index].uploadAbyssData()
-                self.accounts[index].uploadHuTaoDBAbyssData()
+                Task {
+                    await self.accounts[index].uploadHuTaoDBAbyssData()
+                }
             }
             #endif
         }

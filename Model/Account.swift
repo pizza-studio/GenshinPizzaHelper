@@ -355,11 +355,11 @@ extension Account {
         }
     }
 
-    func uploadHuTaoDBAbyssData() {
+    func uploadHuTaoDBAbyssData() async {
         print("uploadHuTaoDBAbyssData START")
         guard UserDefaults.standard.bool(forKey: "allowAbyssDataCollection")
         else { print("not allowed"); return }
-        if let abyssData = HuTaoDBAbyssData(account: self, which: .this) {
+        if let abyssData = await HuTaoDBAbyssData(account: self, which: .this) {
             let encoder = JSONEncoder()
             encoder.outputFormatting = .sortedKeys
             let data = try! encoder.encode(abyssData)
