@@ -250,12 +250,8 @@ private struct BattleDataInfoProvider: View {
             Text(name.localized)
             Spacer()
             Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
-            if let avatarID = avatarID {
-                let charIconString = charMap
-                    .getSideIconString(id: "\(avatarID)")
-                HomeSourceWebIcon(iconString: charIconString)
-                    .frame(width: 35, height: 35)
-                    .scaledToFit()
+            if let avatarID = avatarID, let character = charMap[avatarID.description] {
+                character.decoratedIcon(35, cutTo: .face)
             }
         }
     }
