@@ -47,6 +47,9 @@ struct AddAccountDetailView: View {
             }
             Section {
                 InfoEditor(title: "设备指纹", content: $unsavedDeviceFingerPrint)
+            } footer: {
+                Text("设备指纹仅限国服帐号需要设置")
+                    .textCase(.none)
             }
             if unsavedUid != "", unsavedCookie != "" {
                 TestSectionView(

@@ -520,7 +520,13 @@ public enum MihoyoAPI {
             urlHost = "https://api-takumi-record.mihoyo.com/"
             body = .init(role_id: uid, server: serverID, need_external: nil)
         case .global:
-            urlHost = "https://bbs-api-os.hoyolab.com/"
+            if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                .string(forKey: "reverseProxyHost1"),
+                reverseProxyUrl != "" {
+                urlHost = reverseProxyUrl
+            } else {
+                urlHost = "https://bbs-api-os.hoyolab.com/"
+            }
             body = .init(role_id: uid, server: serverID, need_external: nil)
         }
 

@@ -7,51 +7,81 @@
 
 import SwiftUI
 
-struct ProxySettingsView: View {
+struct ReverseProxySettingsView: View {
     @AppStorage(
         "useProxy",
         store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
     var useProxy: Bool = false
     @AppStorage(
-        "proxyHost",
+        "reverseProxyHost1",
         store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
-    var proxyHost: String = ""
+    var reverseProxy1: String = ""
     @AppStorage(
-        "proxyPort",
+        "reverseProxyHost2",
         store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
-    var proxyPort: String = ""
+    var reverseProxy2: String = ""
     @AppStorage(
-        "proxyUserName",
+        "reverseProxyHost3",
         store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
-    var proxyUserName: String = ""
+    var reverseProxy3: String = ""
     @AppStorage(
-        "proxyUserPassword",
+        "reverseProxyHost4",
         store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
-    var proxyPassword: String = ""
+    var reverseProxy4: String = ""
+    @AppStorage(
+        "reverseProxyHost5",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    var reverseProxy5: String = ""
 
     var body: some View {
         List {
-            Section {
-                Toggle("启用代理", isOn: $useProxy)
-            }
-            Section(header: Text("代理配置")) {
-                InfoEditor(title: "服务器", content: $proxyHost)
+            Section(header: Text("https://bbs-api-os.hoyolab.com/").textCase(.none)) {
                 InfoEditor(
-                    title: "端口",
-                    content: $proxyPort,
-                    keyboardType: .numberPad
+                    title: "服务器",
+                    content: $reverseProxy1,
+                    placeholderText: "https://bbs-api-os.hoyolab.com/",
+                    style: .vertical
                 )
             }
-            Section(header: Text("认证信息（可选）")) {
-                InfoEditor(title: "用户名", content: $proxyUserName)
-                InfoEditor(title: "密码", content: $proxyPassword)
+            Section(header: Text("https://api-account-os.hoyolab.com/").textCase(.none)) {
+                InfoEditor(
+                    title: "服务器",
+                    content: $reverseProxy2,
+                    placeholderText: "https://api-account-os.hoyolab.com/",
+                    style: .vertical
+                )
+            }
+            Section(header: Text("https://sg-hk4e-api.hoyolab.com/").textCase(.none)) {
+                InfoEditor(
+                    title: "服务器",
+                    content: $reverseProxy3,
+                    placeholderText: "https://sg-hk4e-api.hoyolab.com/",
+                    style: .vertical
+                )
+            }
+            Section(header: Text("https://bbs-api-os.hoyoverse.com/").textCase(.none)) {
+                InfoEditor(
+                    title: "服务器",
+                    content: $reverseProxy4,
+                    placeholderText: "https://bbs-api-os.hoyoverse.com/",
+                    style: .vertical
+                )
+            }
+            Section(header: Text("https://hk4e-api-os.hoyoverse.com/").textCase(.none)) {
+                InfoEditor(
+                    title: "服务器",
+                    content: $reverseProxy5,
+                    placeholderText: "https://hk4e-api-os.hoyoverse.com/",
+                    style: .vertical
+                )
             }
         }
-        .navigationTitle("代理设置")
+        .navigationTitle("反向代理设置")
     }
 }

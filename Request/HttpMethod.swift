@@ -154,7 +154,13 @@ struct HttpMethod<T: Codable> {
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.40.1"
                     clientType = "5"
                 case .global:
-                    baseStr = "https://bbs-api-os.hoyolab.com/"
+                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                        .string(forKey: "reverseProxyHost1"),
+                        reverseProxyUrl != "" {
+                        baseStr = reverseProxyUrl
+                    } else {
+                        baseStr = "https://bbs-api-os.hoyolab.com/"
+                    }
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
@@ -784,7 +790,13 @@ struct HttpMethod<T: Codable> {
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.36.1"
                     clientType = "5"
                 case .global:
-                    baseStr = "https://bbs-api-os.hoyolab.com/"
+                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                        .string(forKey: "reverseProxyHost1"),
+                        reverseProxyUrl != "" {
+                        baseStr = reverseProxyUrl
+                    } else {
+                        baseStr = "https://bbs-api-os.hoyolab.com/"
+                    }
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
@@ -1016,8 +1028,20 @@ struct HttpMethod<T: Codable> {
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
                     clientType = "5"
                 case .global:
-                    baseStr =
-                        "https://bbs-api-os.hoyoverse.com/game_record/app/"
+                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                        .string(forKey: "reverseProxyHost4") {
+                        print("Use Reverse Proxy: \(reverseProxyUrl)")
+                    } else {
+                        print("Use Reverse Proxy: Null")
+                    }
+                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                        .string(forKey: "reverseProxyHost4"),
+                        reverseProxyUrl != "" {
+                        baseStr = "\(reverseProxyUrl)game_record/app/"
+                        print("Use Reverse Proxy: \(baseStr)")
+                    } else {
+                        baseStr = "https://bbs-api-os.hoyoverse.com/game_record/app/"
+                    }
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
@@ -1142,7 +1166,13 @@ struct HttpMethod<T: Codable> {
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1"
                 case .global:
-                    baseStr = "https://api-account-os.hoyolab.com/"
+                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                        .string(forKey: "reverseProxyHost2"),
+                        reverseProxyUrl != "" {
+                        baseStr = reverseProxyUrl
+                    } else {
+                        baseStr = "https://api-account-os.hoyolab.com/"
+                    }
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
@@ -1476,7 +1506,13 @@ struct HttpMethod<T: Codable> {
                     referer = "https://webstatic.mihoyo.com"
                     origin = "https://webstatic.mihoyo.com"
                 case .global:
-                    baseStr = "https://sg-hk4e-api.hoyolab.com/"
+                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+                        .string(forKey: "reverseProxyHost3"),
+                        reverseProxyUrl != "" {
+                        baseStr = reverseProxyUrl
+                    } else {
+                        baseStr = "https://sg-hk4e-api.hoyolab.com/"
+                    }
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0"

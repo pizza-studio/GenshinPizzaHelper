@@ -48,20 +48,35 @@ struct InfoPreviewer: View {
 // MARK: - InfoEditor
 
 struct InfoEditor: View {
+    enum Style {
+        case vertical
+        case horizontal
+    }
+
     var title: String
     @Binding
     var content: String
     var keyboardType: UIKeyboardType = .default
     var placeholderText: String = ""
+    var style: Style = .horizontal
     @State
     var contentColor: Color = .init(UIColor.systemGray)
 
     var body: some View {
-        HStack {
+        switch style {
+        case .horizontal:
+            HStack {
+                Text(LocalizedStringKey(title))
+                Spacer()
+                TextEditor(text: $content)
+                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(contentColor)
+                    .keyboardType(keyboardType)
+                    .onTapGesture { contentColor = Color.primary }
+            }
+        case .vertical:
             Text(LocalizedStringKey(title))
-            Spacer()
             TextEditor(text: $content)
-                .multilineTextAlignment(.trailing)
                 .foregroundColor(contentColor)
                 .keyboardType(keyboardType)
                 .onTapGesture { contentColor = Color.primary }

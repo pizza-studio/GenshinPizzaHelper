@@ -1310,3 +1310,7 @@
 "黑塔终端" = "Herta Terminal";
 "与“老婆”们聊天！" = "Chatta con le waifu in HSR";
 "我们的其他作品" = "Altri nostri lavori";
+
+// MARK: -3.0.4
+"反向代理设置" = "Reverse Proxy Settings";
+"设备指纹仅限国服帐号需要设置" = "Only accounts of China Mainland servers are needed";

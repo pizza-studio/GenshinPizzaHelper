@@ -28,7 +28,15 @@ func genGachaURL(
     urlComponents.scheme = "https"
     switch server.region {
     case .cn: urlComponents.host = "hk4e-api.mihoyo.com"
-    case .global: urlComponents.host = "hk4e-api-os.hoyoverse.com"
+    case .global:
+        if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+            .string(forKey: "reverseProxyHost5"),
+            reverseProxyUrl != "" {
+            urlComponents.host = reverseProxyUrl.replacingOccurrences(of: "https://", with: "")
+                .replacingOccurrences(of: "/", with: "")
+        } else {
+            urlComponents.host = "hk4e-api-os.hoyoverse.com"
+        }
     }
     urlComponents.path = "/event/gacha_info/api/getGachaLog"
 
@@ -96,7 +104,15 @@ func genGachaURLString(
     urlComponents.scheme = "https"
     switch server.region {
     case .cn: urlComponents.host = "hk4e-api.mihoyo.com"
-    case .global: urlComponents.host = "hk4e-api-os.hoyoverse.com"
+    case .global:
+        if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
+            .string(forKey: "reverseProxyHost5"),
+            reverseProxyUrl != "" {
+            urlComponents.host = reverseProxyUrl.replacingOccurrences(of: "https://", with: "")
+                .replacingOccurrences(of: "/", with: "")
+        } else {
+            urlComponents.host = "hk4e-api-os.hoyoverse.com"
+        }
     }
     urlComponents.path = "/event/gacha_info/api/getGachaLog"
 

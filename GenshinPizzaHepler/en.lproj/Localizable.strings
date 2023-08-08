@@ -54,7 +54,7 @@
 "登录帐号获取Cookie" = "Get Cookie via HoYoLAB";
 
 "请完成登录" = "Please finish login";
-"未获取到登录信息，请重试" = "Failed to fetch Cookie. Please try again.";
+"未获取到登录信息，请重试" = "Failed to get UID and account server. Please configure your account manually or try again.";
 "尚未完成帐号设置" = "Account configuration is not finished";
 "添加帐号前…" = "Before adding your account…";
 "请先确保绑定的米游社帐号已开启并能在米游社App中查看「实时便笺」功能" = "Please make sure your \"Real-Time Notes\" is accessible";
@@ -1310,3 +1310,7 @@
 "黑塔终端" = "Herta Terminal";
 "与“老婆”们聊天！" = "Chat with waifus in HSR.";
 "我们的其他作品" = "Other our works";
+
+// MARK: -3.0.4
+"反向代理设置" = "Reverse Proxy Settings";
+"设备指纹仅限国服帐号需要设置" = "Only accounts of China Mainland servers are needed";
