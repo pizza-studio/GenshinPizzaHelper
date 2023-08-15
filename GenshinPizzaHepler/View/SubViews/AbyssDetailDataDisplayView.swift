@@ -190,45 +190,59 @@ private struct AbyssBattleView: View {
 
     var body: some View {
         let intSpacing: CGFloat = ThisDevice.isHDPhoneOrPodTouch ? 0 : 2
+        let size = decoratedIconSize
+        let hasTermLabel = !(ThisDevice.isThinnestSplitOnPad || ThisDevice.isSmallestHDScreenPhone || OS.type == .macOS)
         HStack(alignment: .center, spacing: intSpacing) {
             Spacer().frame(minWidth: 0)
             Group {
-                if !(ThisDevice.isThinnestSplitOnPad || ThisDevice.isSmallestHDScreenPhone || OS.type == .macOS) {
-                    switch battleData.index {
-                    case 1:
-                        Text("上半")
-                            .font(.caption).fixedSize()
-                    case 2:
-                        Text("下半")
-                            .font(.caption).fixedSize()
-                    default:
-                        Text("Unknown")
-                            .font(.caption).fixedSize()
+                if hasTermLabel {
+                    HStack {
+                        switch battleData.index {
+                        case 1:
+                            Text("上半")
+                                .font(.system(size: UIFont.smallSystemFontSize, design: .monospaced)).fixedSize()
+                        case 2:
+                            Text("下半")
+                                .font(.system(size: UIFont.smallSystemFontSize, design: .monospaced)).fixedSize()
+                        default:
+                            Text("Unknown")
+                                .font(.system(size: UIFont.smallSystemFontSize, design: .monospaced)).fixedSize()
+                        }
+                        Spacer()
                     }
-                    Spacer().frame(minWidth: 0)
                 }
-            }.environmentObject(orientation)
+            }
             ForEach(battleData.avatars, id: \.id) { avatarData in
                 let charID: String = "\(avatarData.id)"
-                if ThisDevice.isHDPhoneOrPodTouch, let theChar = charMap[charID] {
-                    let size = decoratedIconSize
-                    theChar.decoratedIcon(size, cutTo: .shoulder)
-                        .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
-                        .frame(height: size + 5)
+                if let theChar = charMap[charID] {
+                    if ThisDevice.isHDPhoneOrPodTouch {
+                        theChar.decoratedIcon(size, cutTo: .shoulder)
+                            .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
+                            .frame(height: size + 5)
+                    } else {
+                        theChar.cardIcon(size)
+                            .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
+                            .padding(.vertical, size * 0.1)
+                    }
                 } else {
                     let charNameID: String = charMap.getNameID(id: charID)
-                    let charNameCard = "UI_AvatarIcon_\(charNameID)_Card"
+                    let charNameCard = "UI_AvatarIcon_\(charNameID)"
                     EnkaWebIcon(iconString: charNameCard)
+                        .scaledToFill()
+                        .frame(width: size, height: size / 0.74)
+                        .clipped()
                         .scaledToFit()
-                        .frame(width: OS.type == .macOS ? 55 : 65)
+                        .background(Color.gray)
+                        .clipShape(RoundedRectangle(cornerRadius: size / 10))
+                        .padding(.vertical, size * 0.1)
                         .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                 }
                 if avatarData.id != battleData.avatars.last!.id {
                     Spacer().frame(minWidth: 0)
                 }
             }
-            Spacer().frame(minWidth: 0)
-        }
+            Spacer().frame(minWidth: 0, maxWidth: hasTermLabel ? .infinity : nil)
+        }.environmentObject(orientation)
     }
 
     // MARK: Private

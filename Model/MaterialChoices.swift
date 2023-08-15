@@ -601,31 +601,31 @@ extension WeaponOrTalentMaterial {
         weekday: .mondayAndThursday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Barbara_Card",
+                imageString: "UI_AvatarIcon_Barbara",
                 nameToLocalize: "芭芭拉"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Ambor_Card",
+                imageString: "UI_AvatarIcon_Ambor",
                 nameToLocalize: "安柏"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Klee_Card",
+                imageString: "UI_AvatarIcon_Klee",
                 nameToLocalize: "可莉"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Tartaglia_Card",
+                imageString: "UI_AvatarIcon_Tartaglia",
                 nameToLocalize: "达达利亚"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Diona_Card",
+                imageString: "UI_AvatarIcon_Diona",
                 nameToLocalize: "迪奥娜"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Sucrose_Card",
+                imageString: "UI_AvatarIcon_Sucrose",
                 nameToLocalize: "砂糖"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Aloy_Card",
+                imageString: "UI_AvatarIcon_Aloy",
                 nameToLocalize: "埃洛伊"
             ),
         ]
@@ -636,31 +636,31 @@ extension WeaponOrTalentMaterial {
         weekday: .tuesdayAndFriday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Mona_Card",
+                imageString: "UI_AvatarIcon_Mona",
                 nameToLocalize: "莫娜"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Qin_Card",
+                imageString: "UI_AvatarIcon_Qin",
                 nameToLocalize: "琴"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Eula_Card",
+                imageString: "UI_AvatarIcon_Eula",
                 nameToLocalize: "优菈"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Diluc_Card",
+                imageString: "UI_AvatarIcon_Diluc",
                 nameToLocalize: "迪卢克"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Razor_Card",
+                imageString: "UI_AvatarIcon_Razor",
                 nameToLocalize: "雷泽"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Noel_Card",
+                imageString: "UI_AvatarIcon_Noel",
                 nameToLocalize: "诺艾尔"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Bennett_Card",
+                imageString: "UI_AvatarIcon_Bennett",
                 nameToLocalize: "班尼特"
             ),
         ]
@@ -671,31 +671,31 @@ extension WeaponOrTalentMaterial {
         weekday: .wednesdayAndSaturday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Lisa_Card",
+                imageString: "UI_AvatarIcon_Lisa",
                 nameToLocalize: "丽莎"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Fischl_Card",
+                imageString: "UI_AvatarIcon_Fischl",
                 nameToLocalize: "菲谢尔"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Kaeya_Card",
+                imageString: "UI_AvatarIcon_Kaeya",
                 nameToLocalize: "凯亚"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Venti_Card",
+                imageString: "UI_AvatarIcon_Venti",
                 nameToLocalize: "温迪"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Albedo_Card",
+                imageString: "UI_AvatarIcon_Albedo",
                 nameToLocalize: "阿贝多"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Rosaria_Card",
+                imageString: "UI_AvatarIcon_Rosaria",
                 nameToLocalize: "罗莎莉亚"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Mika_Card",
+                imageString: "UI_AvatarIcon_Mika",
                 nameToLocalize: "米卡"
             ),
         ]
@@ -708,27 +708,27 @@ extension WeaponOrTalentMaterial {
         weekday: .mondayAndThursday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Xiao_Card",
+                imageString: "UI_AvatarIcon_Xiao",
                 nameToLocalize: "魈"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Ningguang_Card",
+                imageString: "UI_AvatarIcon_Ningguang",
                 nameToLocalize: "凝光"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Qiqi_Card",
+                imageString: "UI_AvatarIcon_Qiqi",
                 nameToLocalize: "七七"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Keqing_Card",
+                imageString: "UI_AvatarIcon_Keqing",
                 nameToLocalize: "刻晴"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Yelan_Card",
+                imageString: "UI_AvatarIcon_Yelan",
                 nameToLocalize: "夜兰"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Shenhe_Card",
+                imageString: "UI_AvatarIcon_Shenhe",
                 nameToLocalize: "申鹤"
             ),
         ]
@@ -739,31 +739,31 @@ extension WeaponOrTalentMaterial {
         weekday: .tuesdayAndFriday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Xiangling_Card",
+                imageString: "UI_AvatarIcon_Xiangling",
                 nameToLocalize: "香菱"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Chongyun_Card",
+                imageString: "UI_AvatarIcon_Chongyun",
                 nameToLocalize: "重云"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Ganyu_Card",
+                imageString: "UI_AvatarIcon_Ganyu",
                 nameToLocalize: "甘雨"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Hutao_Card",
+                imageString: "UI_AvatarIcon_Hutao",
                 nameToLocalize: "胡桃"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Kazuha_Card",
+                imageString: "UI_AvatarIcon_Kazuha",
                 nameToLocalize: "枫原万叶"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Yunjin_Card",
+                imageString: "UI_AvatarIcon_Yunjin",
                 nameToLocalize: "云堇"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Yaoyao_Card",
+                imageString: "UI_AvatarIcon_Yaoyao",
                 nameToLocalize: "瑶瑶"
             ),
         ]
@@ -774,26 +774,26 @@ extension WeaponOrTalentMaterial {
         weekday: .wednesdayAndSaturday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Beidou_Card",
+                imageString: "UI_AvatarIcon_Beidou",
                 nameToLocalize: "北斗"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Xingqiu_Card",
+                imageString: "UI_AvatarIcon_Xingqiu",
                 nameToLocalize: "行秋"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Zhongli_Card",
+                imageString: "UI_AvatarIcon_Zhongli",
                 nameToLocalize: "钟离"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Xinyan_Card",
+                imageString: "UI_AvatarIcon_Xinyan",
                 nameToLocalize: "辛焱"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Feiyan_Card",
+                imageString: "UI_AvatarIcon_Feiyan",
                 nameToLocalize: "烟绯"
             ),
-            .init(imageString: "UI_AvatarIcon_Baizhuer_Card", nameToLocalize: "白术"),
+            .init(imageString: "UI_AvatarIcon_Baizhuer", nameToLocalize: "白术"),
         ]
     )
 
@@ -804,23 +804,23 @@ extension WeaponOrTalentMaterial {
         weekday: .mondayAndThursday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Yoimiya_Card",
+                imageString: "UI_AvatarIcon_Yoimiya",
                 nameToLocalize: "宵宫"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Tohma_Card",
+                imageString: "UI_AvatarIcon_Tohma",
                 nameToLocalize: "托马"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Kokomi_Card",
+                imageString: "UI_AvatarIcon_Kokomi",
                 nameToLocalize: "珊瑚宫心海"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Heizo_Card",
+                imageString: "UI_AvatarIcon_Heizo",
                 nameToLocalize: "鹿野院平藏"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Momoka_Card",
+                imageString: "UI_AvatarIcon_Momoka",
                 nameToLocalize: "绮良良"
             ),
         ]
@@ -831,23 +831,23 @@ extension WeaponOrTalentMaterial {
         weekday: .tuesdayAndFriday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Sara_Card",
+                imageString: "UI_AvatarIcon_Sara",
                 nameToLocalize: "九条裟罗"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Ayaka_Card",
+                imageString: "UI_AvatarIcon_Ayaka",
                 nameToLocalize: "神里绫华"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Itto_Card",
+                imageString: "UI_AvatarIcon_Itto",
                 nameToLocalize: "荒泷一斗"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Shinobu_Card",
+                imageString: "UI_AvatarIcon_Shinobu",
                 nameToLocalize: "久岐忍"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Ayato_Card",
+                imageString: "UI_AvatarIcon_Ayato",
                 nameToLocalize: "神里绫人"
             ),
         ]
@@ -858,19 +858,19 @@ extension WeaponOrTalentMaterial {
         weekday: .wednesdayAndSaturday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Shougun_Card",
+                imageString: "UI_AvatarIcon_Shougun",
                 nameToLocalize: "雷电将军"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Sayu_Card",
+                imageString: "UI_AvatarIcon_Sayu",
                 nameToLocalize: "早柚"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Gorou_Card",
+                imageString: "UI_AvatarIcon_Gorou",
                 nameToLocalize: "五郎"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Yae_Card",
+                imageString: "UI_AvatarIcon_Yae",
                 nameToLocalize: "八重神子"
             ),
         ]
@@ -883,19 +883,19 @@ extension WeaponOrTalentMaterial {
         weekday: .mondayAndThursday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Tighnari_Card",
+                imageString: "UI_AvatarIcon_Tighnari",
                 nameToLocalize: "提纳里"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Candace_Card",
+                imageString: "UI_AvatarIcon_Candace",
                 nameToLocalize: "坎蒂丝"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Cyno_Card",
+                imageString: "UI_AvatarIcon_Cyno",
                 nameToLocalize: "赛诺"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Faruzan_Card",
+                imageString: "UI_AvatarIcon_Faruzan",
                 nameToLocalize: "珐露珊"
             ),
         ]
@@ -906,22 +906,22 @@ extension WeaponOrTalentMaterial {
         weekday: .tuesdayAndFriday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Dori_Card",
+                imageString: "UI_AvatarIcon_Dori",
                 nameToLocalize: "多莉"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Nahida_Card",
+                imageString: "UI_AvatarIcon_Nahida",
                 nameToLocalize: "纳西妲"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Layla_Card",
+                imageString: "UI_AvatarIcon_Layla",
                 nameToLocalize: "莱依拉"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Alhatham_Card",
+                imageString: "UI_AvatarIcon_Alhatham",
                 nameToLocalize: "艾尔海森"
             ),
-            .init(imageString: "UI_AvatarIcon_Kaveh_Card", nameToLocalize: "卡维"),
+            .init(imageString: "UI_AvatarIcon_Kaveh", nameToLocalize: "卡维"),
         ]
     )
     static let praxis: WeaponOrTalentMaterial = .init(
@@ -930,19 +930,19 @@ extension WeaponOrTalentMaterial {
         weekday: .wednesdayAndSaturday,
         relatedItem: [
             .init(
-                imageString: "UI_AvatarIcon_Collei_Card",
+                imageString: "UI_AvatarIcon_Collei",
                 nameToLocalize: "柯莱"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Nilou_Card",
+                imageString: "UI_AvatarIcon_Nilou",
                 nameToLocalize: "妮露"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Wanderer_Card",
+                imageString: "UI_AvatarIcon_Wanderer",
                 nameToLocalize: "流浪者"
             ),
             .init(
-                imageString: "UI_AvatarIcon_Dehya_Card",
+                imageString: "UI_AvatarIcon_Dehya",
                 nameToLocalize: "迪希雅"
             ),
         ]

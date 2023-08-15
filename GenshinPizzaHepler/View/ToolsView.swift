@@ -459,17 +459,19 @@ struct ToolsView: View {
                     }
                     .pickerStyle(.segmented)
                     .padding()
-                    switch abyssDataViewSelection {
-                    case .thisTerm:
-                        AbyssDetailDataDisplayView(
-                            data: thisAbyssData,
-                            charMap: viewModel.charMap!
-                        )
-                    case .lastTerm:
-                        AbyssDetailDataDisplayView(
-                            data: lastAbyssData,
-                            charMap: viewModel.charMap!
-                        )
+                    if let charMap = viewModel.charMap {
+                        switch abyssDataViewSelection {
+                        case .thisTerm:
+                            AbyssDetailDataDisplayView(
+                                data: thisAbyssData,
+                                charMap: charMap
+                            )
+                        case .lastTerm:
+                            AbyssDetailDataDisplayView(
+                                data: lastAbyssData,
+                                charMap: charMap
+                            )
+                        }
                     }
                 }
                 .navigationTitle("深境螺旋详情")

@@ -59,6 +59,23 @@ extension ENCharacterMap.Character {
             .clipShape(Circle())
             .contentShape(Circle())
     }
+
+    /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
+    func cardIcon(_ size: CGFloat) -> some View {
+        EnkaWebIcon(iconString: iconString)
+            .scaledToFill()
+            .frame(width: size, height: size / 0.74)
+            .clipped()
+            .scaledToFit()
+            .background(
+                EnkaWebIcon(
+                    iconString: namecardIconString
+                )
+                .scaledToFill()
+                .offset(x: size / -3)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: size / 10))
+    }
 }
 
 extension PlayerDetail.Avatar {

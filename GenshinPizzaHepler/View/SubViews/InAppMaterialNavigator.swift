@@ -357,8 +357,9 @@ struct InAppMaterialNavigator: View {
                                 VStack {
                                     Image(item.imageString)
                                         .resizable()
-                                        .scaledToFit()
+                                        .scaledToFill()
                                         .frame(width: 75, height: 90)
+                                        .clipped()
                                     Text(item.displayName)
                                         .font(.footnote)
                                         .foregroundColor(.secondary)

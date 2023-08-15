@@ -772,7 +772,7 @@
 "战斗数据榜" = "Số Liệu Thống Kê Đáng Chú Ý";
 "第%lld层" = "Tầng %lld";
 "第%lld间" = "Phòng %lld";
-"上半" = "Phần\nĐầu";
+"上半" = "Phần\nĐầu "; // The trailing space is to make sure the 1st and the 2nd share the same string length.
 "下半" = "Phần\nCuối";
 "获取渊星数" = "Số Sao Thu Được Ở Phòng";
 // Other tool
