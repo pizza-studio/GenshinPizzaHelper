@@ -212,38 +212,39 @@ struct InAppMaterialNavigator: View {
     func materials() -> some View {
         if showingWeekday != .sunday {
             let imageWidth = CGFloat(40)
-            HStack(spacing: 0) {
-                Spacer()
-                ForEach(
-                    talentMaterialProvider.todaysMaterials,
-                    id: \.imageString
-                ) { material in
-                    Image(material.imageString)
-                        .resizable()
-                        .scaledToFit()
-                        .matchedGeometryEffect(
-                            id: material.imageString,
-                            in: animationMaterial
-                        )
-                        .frame(width: imageWidth)
-                        .padding(.vertical)
+            VStack(spacing: 0) {
+                HStack(spacing: 0) {
+                    ForEach(
+                        talentMaterialProvider.todaysMaterials,
+                        id: \.imageString
+                    ) { material in
+                        Image(material.imageString)
+                            .resizable()
+                            .scaledToFit()
+                            .matchedGeometryEffect(
+                                id: material.imageString,
+                                in: animationMaterial
+                            )
+                            .frame(width: imageWidth)
+                    }
                 }
-                Spacer()
-                ForEach(
-                    weaponMaterialProvider.todaysMaterials,
-                    id: \.imageString
-                ) { material in
-                    Image(material.imageString)
-                        .resizable()
-                        .scaledToFit()
-                        .matchedGeometryEffect(
-                            id: material.imageString,
-                            in: animationMaterial
-                        )
-                        .frame(width: imageWidth)
+                HStack(spacing: 0) {
+                    ForEach(
+                        weaponMaterialProvider.todaysMaterials,
+                        id: \.imageString
+                    ) { material in
+                        Image(material.imageString)
+                            .resizable()
+                            .scaledToFit()
+                            .matchedGeometryEffect(
+                                id: material.imageString,
+                                in: animationMaterial
+                            )
+                            .frame(width: imageWidth)
+                    }
                 }
-                Spacer()
             }
+            .padding(.vertical)
         } else {
             EmptyView()
         }

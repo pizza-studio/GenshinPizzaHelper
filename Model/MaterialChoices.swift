@@ -68,6 +68,10 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_EquipIcon_Bow_Nachtblind_Awaken",
                 nameToLocalize: "幽夜华尔兹"
             ),
+            .init(
+                imageString: "UI_EquipIcon_Sword_Boreas_Awaken",
+                nameToLocalize: "狼牙"
+            ),
         ]
     )
     static let borealWolf: WeaponOrTalentMaterial = .init(
@@ -271,7 +275,14 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_EquipIcon_Bow_Kirin_Awaken",
                 nameToLocalize: "若水"
             ),
-            .init(imageString: "UI_EquipIcon_Catalyst_Morax_Awaken", nameToLocalize: "碧落之珑"),
+            .init(
+                imageString: "UI_EquipIcon_Catalyst_Morax_Awaken",
+                nameToLocalize: "碧落之珑"
+            ),
+            .init(
+                imageString: "UI_EquipIcon_Catalyst_Yue_Awaken",
+                nameToLocalize: "遗祀玉珑"
+            ),
         ]
     )
     static let mistVeiled: WeaponOrTalentMaterial = .init(
@@ -545,6 +556,10 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_EquipIcon_Catalyst_Ayus_Awaken",
                 nameToLocalize: "千夜浮梦"
             ),
+            .init(
+                imageString: "UI_EquipIcon_Claymore_BeastTamer_Awaken",
+                nameToLocalize: "聊聊棒"
+            ),
         ]
     )
     static let scorchingMight: WeaponOrTalentMaterial = .init(
@@ -576,6 +591,65 @@ extension WeaponOrTalentMaterial {
                 imageString: "UI_EquipIcon_Claymore_Deshret_Awaken",
                 nameToLocalize: "苇海信标"
             ),
+            .init(
+                imageString: "UI_EquipIcon_Bow_Gurabad_Awaken",
+                nameToLocalize: "烈阳之嗣"
+            ),
+        ]
+    )
+
+    // 枫丹
+    static let chord: WeaponOrTalentMaterial = .init(
+        imageString: "weapon.Chord",
+        nameToLocalize: "「悠古弦音」",
+        weekday: .mondayAndThursday,
+        relatedItem: [
+            .init(
+                imageString: "UI_EquipIcon_Sword_Machination_Awaken",
+                nameToLocalize: "灰河渡手"
+            ),
+            .init(
+                imageString: "UI_EquipIcon_Bow_Vorpal_Awaken",
+                nameToLocalize: "静谧之曲"
+            ),
+            .init(
+                imageString: "UI_EquipIcon_Bow_Pledge_Awaken",
+                nameToLocalize: "最初的大魔术"
+            ),
+        ]
+    )
+    static let dewdrop: WeaponOrTalentMaterial = .init(
+        imageString: "weapon.Dewdrop",
+        nameToLocalize: "「纯圣露滴」",
+        weekday: .tuesdayAndFriday,
+        relatedItem: [
+            .init(
+                imageString: "UI_EquipIcon_Sword_Vorpal_Awaken",
+                nameToLocalize: "海渊终曲"
+            ),
+            .init(
+                imageString: "UI_EquipIcon_Catalyst_Vorpal_Awaken",
+                nameToLocalize: "纯水流华"
+            ),
+        ]
+    )
+    static let goblet: WeaponOrTalentMaterial = .init(
+        imageString: "weapon.Goblet",
+        nameToLocalize: "「无垢之海」",
+        weekday: .wednesdayAndSaturday,
+        relatedItem: [
+            .init(
+                imageString: "UI_EquipIcon_Claymore_Vorpal_Awaken",
+                nameToLocalize: "浪影阔剑"
+            ),
+            .init(
+                imageString: "UI_EquipIcon_Pole_Shanty_Awaken",
+                nameToLocalize: "峡湾长歌"
+            ),
+            .init(
+                imageString: "UI_EquipIcon_Pole_Vorpal_Awaken",
+                nameToLocalize: "公义的酬报"
+            ),
         ]
     )
 
@@ -583,7 +657,7 @@ extension WeaponOrTalentMaterial {
     static let allWeaponMaterials: [WeaponOrTalentMaterial] = [
         .decarabian, .borealWolf, .dandelionGladiator, .guyun, .mistVeiled,
         .aerosiderite, .distantSea, .narukami, .kijin, .forestDew,
-        .oasisGarden, .scorchingMight,
+        .oasisGarden, .scorchingMight, .chord, .dewdrop, .goblet,
     ]
     static func allWeaponMaterialsOf(weekday: MaterialWeekday)
         -> [WeaponOrTalentMaterial] {
@@ -948,10 +1022,46 @@ extension WeaponOrTalentMaterial {
         ]
     )
 
+    // 枫丹
+    static let kouhei: WeaponOrTalentMaterial = .init(
+        imageString: "talent.Kouhei",
+        nameToLocalize: "「公平」",
+        weekday: .mondayAndThursday,
+        relatedItem: [
+            .init(
+                imageString: "UI_AvatarIcon_Liney",
+                nameToLocalize: "林尼"
+            ),
+        ]
+    )
+    static let seigi: WeaponOrTalentMaterial = .init(
+        imageString: "talent.Seigi",
+        nameToLocalize: "「正义」",
+        weekday: .tuesdayAndFriday,
+        relatedItem: [
+            .init(
+                imageString: "UI_AvatarIcon_Freminet",
+                nameToLocalize: "菲米尼"
+            ),
+        ]
+    )
+    static let chitsujo: WeaponOrTalentMaterial = .init(
+        imageString: "talent.Chitsujo",
+        nameToLocalize: "「秩序」",
+        weekday: .wednesdayAndSaturday,
+        relatedItem: [
+            .init(
+                imageString: "UI_AvatarIcon_Linette",
+                nameToLocalize: "琳妮特"
+            ),
+        ]
+    )
+
     // 所有天赋材料
     static let allTalentMaterials: [WeaponOrTalentMaterial] = [
         .freedom, .resistance, .ballad, .prosperity, .diligence, .gold,
         .transience, .elegance, .light, .admonition, .ingenuity, .praxis,
+        .kouhei, .seigi, .chitsujo,
     ]
     static func allTalentMaterialsOf(weekday: MaterialWeekday)
         -> [WeaponOrTalentMaterial] {
