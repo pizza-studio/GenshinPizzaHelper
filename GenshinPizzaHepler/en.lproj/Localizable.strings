@@ -1304,13 +1304,35 @@
 "感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。" = "Thank you [@心臓弱眞君](https://twitter.com/xinzoruo) for creating a brand new app icon for us. You can also continue using the previous icon.";
 "更换App图标" = "Change App Icon";
 
-// MARK: -3.0.1
+// MARK: - 3.0.1
 "星铁披萨小助手" = "HSR Pizza Helper";
 "星穹铁道游戏助手工具全家桶" = "A tool for players of Honkai: Star Rail";
 "黑塔终端" = "Herta Terminal";
 "与“老婆”们聊天！" = "Chat with waifus in HSR.";
 "我们的其他作品" = "Other our works";
 
-// MARK: -3.0.4
+// MARK: - 3.0.4
 "反向代理设置" = "Reverse Proxy Settings";
 "设备指纹仅限国服帐号需要设置" = "Only accounts of China Mainland servers are needed";
+
+// MARK: - 3.0.5
+
+"菲米尼" = "Freminet";
+"狼牙" = "Wolf-Fang";
+"海渊终曲" = "Finale of the Deep";
+"灰河渡手" = "Fleuve Cendre Ferryman";
+"聊聊棒" = "Talking Stick";
+"浪影阔剑" = "Tidal Shadow";
+"峡湾长歌" = "Ballad of the Fjords";
+"公义的酬报" = "Rightful Reward";
+"遗祀玉珑" = "Sacrificial Jade";
+"纯水流华" = "Flowing Purity";
+"烈阳之嗣" = "Scion of the Blazing Sun";
+"静谧之曲" = "Song of Stillness";
+"最初的大魔术" = "The First Great Magic";
+"「公平」" = "Equity";
+"「正义」" = "Justice";
+"「秩序」" = "Order";
+"「悠古弦音」" = "Ancient Chord";
+"「纯圣露滴」" = "Pure Sacred Dewdrop";
+"「无垢之海」" = "Goblet of the Pristine Sea";
