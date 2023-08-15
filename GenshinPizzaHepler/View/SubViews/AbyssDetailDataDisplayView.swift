@@ -220,9 +220,9 @@ private struct AbyssBattleView: View {
                             .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                             .frame(height: size + 5)
                     } else {
-                        theChar.cardIcon(size)
+                        theChar.cardIcon(size / 0.74)
                             .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
-                            .padding(.vertical, size * 0.1)
+                            .padding(.vertical, 2)
                     }
                 } else {
                     let charNameID: String = charMap.getNameID(id: charID)
@@ -234,8 +234,8 @@ private struct AbyssBattleView: View {
                         .scaledToFit()
                         .background(Color.gray)
                         .clipShape(RoundedRectangle(cornerRadius: size / 10))
-                        .padding(.vertical, size * 0.1)
                         .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
+                        .padding(.vertical, 2)
                 }
                 if avatarData.id != battleData.avatars.last!.id {
                     Spacer().frame(minWidth: 0)

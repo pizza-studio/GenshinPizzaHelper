@@ -64,7 +64,7 @@ extension ENCharacterMap.Character {
     func cardIcon(_ size: CGFloat) -> some View {
         EnkaWebIcon(iconString: iconString)
             .scaledToFill()
-            .frame(width: size, height: size / 0.74)
+            .frame(width: size * 0.74, height: size)
             .clipped()
             .scaledToFit()
             .background(
@@ -90,5 +90,10 @@ extension PlayerDetail.Avatar {
     )
         -> some View {
         character.decoratedIcon(size, cutTo: cutType)
+    }
+
+    /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
+    func cardIcon(_ size: CGFloat) -> some View {
+        character.cardIcon(size)
     }
 }

@@ -281,7 +281,7 @@ struct ToolsView: View {
                                 playerDetail.avatars,
                                 id: \.name
                             ) { avatar in
-                                avatar.decoratedIcon(75, cutTo: .shoulder)
+                                avatar.cardIcon(75)
                                     .onTapGesture {
                                         simpleTaptic(type: .medium)
                                         withAnimation(
