@@ -75,6 +75,7 @@ extension ENCharacterMap.Character {
                 .offset(x: size / -3)
             )
             .clipShape(RoundedRectangle(cornerRadius: size / 10))
+            .contentShape(RoundedRectangle(cornerRadius: size / 10))
     }
 }
 
