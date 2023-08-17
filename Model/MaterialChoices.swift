@@ -666,6 +666,16 @@ extension WeaponOrTalentMaterial {
         }
     }
 
+    static let dumpedWeaponIconMap: [String: String] = {
+        var mapOutput = [String: String]()
+        allWeaponMaterials.forEach { theMaterial in
+            theMaterial.relatedItem.forEach { theItem in
+                mapOutput[theItem.nameToLocalize] = theItem.imageString
+            }
+        }
+        return mapOutput
+    }()
+
     // MARK: - Talent Material choices
 
     // 蒙德
