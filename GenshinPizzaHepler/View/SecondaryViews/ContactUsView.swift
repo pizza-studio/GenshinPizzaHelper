@@ -487,6 +487,19 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
+                    Link(
+                        destination: URL(
+                            string: "https://www.tiktok.com/@taotao_hoyo"
+                        )!
+                    ) {
+                        Label {
+                            Text("TikTok")
+                        } icon: {
+                            Image("tiktok")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
                 } label: {
                     Label {
                         HStack {
@@ -496,7 +509,7 @@ struct ContactUsView: View {
                                 .foregroundColor(.gray)
                         }
                     } icon: {
-                        Image("avatar.tao.2")
+                        Image("avatar.tao.3")
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
