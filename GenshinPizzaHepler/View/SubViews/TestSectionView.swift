@@ -110,7 +110,7 @@ struct TestSectionView: View {
         .sheet(isPresented: $is1034WebShown, content: {
             NavigationView {
                 WebBroswerView(
-                    url: "https://ophelper.top/static/1034_error_soution"
+                    url: "https://gi.pizzastudio.org/static/1034_error_soution"
                 )
                 .dismissableSheet(isSheetShow: $is1034WebShown)
                 .navigationTitle("1034问题的解决方案")
@@ -279,7 +279,7 @@ struct GeetestValidateView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        let url = URL(string: "https://ophelper.top/geetest/")!
+        let url = URL(string: "https://gi.pizzastudio.org/geetest/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [
             URLQueryItem(name: "challenge", value: challenge),

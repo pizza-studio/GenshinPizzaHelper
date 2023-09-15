@@ -110,7 +110,7 @@ struct MoreView: View {
             Section {
                 NavigationLink(
                     destination: WebBroswerView(
-                        url: "https://ophelper.top/static/policy.html"
+                        url: "https://gi.pizzastudio.org/static/policy.html"
                     )
                     .navigationTitle("用户协议")
                 ) {

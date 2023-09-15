@@ -339,13 +339,13 @@ struct AbyssDataCollectionView: View {
             let url: String = {
                 switch Bundle.main.preferredLocalizations.first?.prefix(2) {
                 case "zh":
-                    return "https://ophelper.top/static/faq_abyss.html"
+                    return "https://gi.pizzastudio.org/static/faq_abyss.html"
                 case "en":
-                    return "https://ophelper.top/static/faq_abyss_en.html"
+                    return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
                 case "ja":
-                    return "https://ophelper.top/static/faq_abyss_ja.html"
+                    return "https://gi.pizzastudio.org/static/faq_abyss_ja.html"
                 default:
-                    return "https://ophelper.top/static/faq_abyss_en.html"
+                    return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
                 }
             }()
             NavigationView {

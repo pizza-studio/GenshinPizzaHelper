@@ -55,7 +55,7 @@ struct WidgetTipsView: View {
                 Section(header: Text("还有其他问题？").textCase(.none)) {
                     NavigationLink(
                         destination: WebBroswerView(
-                            url: "https://ophelper.top/static/faq.html"
+                            url: "https://gi.pizzastudio.org/static/faq.html"
                         )
                         .navigationTitle("FAQ")
                     ) {

@@ -203,7 +203,7 @@ struct HomeSourceWebIcon: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         } else {
-            WebImage(urlStr: "https://ophelper.top/resource/\(iconString).png")
+            WebImage(urlStr: "https://gi.pizzastudio.org/resource/\(iconString).png")
         }
     }
 }

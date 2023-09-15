@@ -353,10 +353,10 @@ private struct HelpSheet: View {
         NavigationView {
             List {
                 Section {
-                    Link(destination: URL(string: "https://ophelper.top/static/import_tiwatexiaozhushou")!) {
+                    Link(destination: URL(string: "https://gi.pizzastudio.org/static/import_tiwatexiaozhushou")!) {
                         Text("如何从《提瓦特小助手》导入？")
                     }
-                    Link(destination: URL(string: "https://ophelper.top/static/paimonmoe-export.pdf")!) {
+                    Link(destination: URL(string: "https://gi.pizzastudio.org/static/paimonmoe-export.pdf")!) {
                         Text("如何从paimon.moe导入？")
                     }
                 } header: {

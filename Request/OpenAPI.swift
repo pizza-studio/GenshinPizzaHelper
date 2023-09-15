@@ -153,7 +153,7 @@ extension API {
             #if DEBUG
 //            let urlStr = "https://enka.network/api/uid/\(uid)/"
             let urlStr =
-                "https://ophelper.top/static/player_detail_data_example_2.json"
+                "https://gi.pizzastudio.org/static/player_detail_data_example_2.json"
             #else
             let urlStr = "https://enka.network/api/uid/\(uid)/"
             #endif

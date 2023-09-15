@@ -154,7 +154,7 @@ struct LiveActivitySettingDetailView: View {
         .sheet(isPresented: $isHelpSheetShow) {
             NavigationView {
                 WebBroswerView(
-                    url: "https://ophelper.top/static/resin_timer_help.html"
+                    url: "https://gi.pizzastudio.org/static/resin_timer_help.html"
                 )
                 .dismissableSheet(isSheetShow: $isHelpSheetShow)
             }

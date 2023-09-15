@@ -125,8 +125,8 @@ class GachaTranslateManager {
     private var translate: GachaTranslateDictionary
 
     private func updateDictionary() {
-        // 从 https://ophelper.top/api/app/gacha_lang_dictionary.json 加载数据，如果成功，保存到document目录
-        let url = URL(string: "https://ophelper.top/api/app/gacha_lang_dictionary.json")!
+        // 从 https://gi.pizzastudio.org/api/app/gacha_lang_dictionary.json 加载数据，如果成功，保存到document目录
+        let url = URL(string: "https://gi.pizzastudio.org/api/app/gacha_lang_dictionary.json")!
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let filename = documentDirectory.appendingPathComponent("gacha_lang_dictionary.json")
         URLSession.shared.dataTask(with: url) { data, _, error in

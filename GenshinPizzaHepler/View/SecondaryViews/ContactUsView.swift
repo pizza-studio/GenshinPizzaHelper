@@ -270,15 +270,6 @@ struct ContactUsView: View {
                 }
             }
 
-//            Section {
-//                Link(destination: URL(string: "https://ophelper.top")!) {
-//                    Text("原神披萨小助手官方网站")
-            ////                }
-//                Link(destination: URL(string: "https://abyss.ophelper.top")!) {
-//                    Text("原神披萨深渊榜网页版")
-//                }
-//            }
-
             // app contact
             Section(
                 header: Text("用户交流群"),

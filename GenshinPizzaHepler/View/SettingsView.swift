@@ -71,9 +71,9 @@ struct SettingsView: View {
                     let url: String = {
                         switch Bundle.main.preferredLocalizations.first {
                         case "zh-Hans", "zh-Hant", "zh-HK":
-                            return "https://ophelper.top/static/faq.html"
+                            return "https://gi.pizzastudio.org/static/faq.html"
                         default:
-                            return "https://ophelper.top/static/faq_en.html"
+                            return "https://gi.pizzastudio.org/static/faq_en.html"
                         }
                     }()
                     NavigationLink(
