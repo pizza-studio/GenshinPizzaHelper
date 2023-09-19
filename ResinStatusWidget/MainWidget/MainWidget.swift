@@ -73,10 +73,13 @@ struct WidgetViewEntryView: View {
     @ViewBuilder
     var body: some View {
         ZStack {
-            WidgetBackgroundView(
-                background: viewConfig.background,
-                darkModeOn: viewConfig.isDarkModeOn
-            )
+            if #available(iOS 17, *) {
+            } else {
+                WidgetBackgroundView(
+                    background: viewConfig.background,
+                    darkModeOn: viewConfig.isDarkModeOn
+                )
+            }
             switch dataKind {
             case let .normal(result):
                 switch result {
@@ -109,5 +112,29 @@ struct WidgetViewEntryView: View {
             }
         }
         .widgetURL(url)
+        .myContainerBackground(viewConfig: viewConfig)
+    }
+}
+
+extension View {
+    fileprivate func myContainerBackground(viewConfig: WidgetViewConfiguration) -> some View {
+        modifier(ContainerBackgroundModifier(viewConfig: viewConfig))
+    }
+}
+
+// MARK: - ContainerBackgroundModifier
+
+private struct ContainerBackgroundModifier: ViewModifier {
+    var viewConfig: WidgetViewConfiguration
+
+    func body(content: Content) -> some View {
+        if #available(iOS 17, *) {
+            content.containerBackground(for: .widget) {
+                WidgetBackgroundView(
+                    background: viewConfig.background,
+                    darkModeOn: viewConfig.isDarkModeOn
+                )
+            }
+        }
     }
 }

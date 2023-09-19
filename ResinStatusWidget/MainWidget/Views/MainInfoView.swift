@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/6.
 //  Widget树脂部分布局
 
+import AppIntents
 import Foundation
 import HBMihoyoAPI
 import SwiftUI
@@ -85,24 +86,34 @@ struct MainInfo: View {
             }
             Spacer()
             HStack {
-                if needToLoginImediately {
-                    if needToLoginSoon {
-                        Image("exclamationmark.circle.questionmark")
+                if #available(iOS 17, *) {
+                    Button(intent: WidgetRefreshIntent()) {
+                        Image(systemName: "arrow.clockwise.circle")
+                            .font(.title3)
+                            .foregroundColor(Color("textColor3"))
+                            .clipShape(.circle)
+                    }
+                    .buttonStyle(.plain)
+                } else {
+                    if needToLoginImediately {
+                        if needToLoginSoon {
+                            Image("exclamationmark.circle.questionmark")
+                                .foregroundColor(Color("textColor3"))
+                                .font(.title3)
+                        } else {
+                            Image(systemName: "exclamationmark.circle")
+                                .foregroundColor(Color("textColor3"))
+                                .font(.title3)
+                        }
+                    } else if needToLoginSoon {
+                        Image("hourglass.circle.questionmark")
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
                     } else {
-                        Image(systemName: "exclamationmark.circle")
+                        Image("hourglass.circle")
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
                     }
-                } else if needToLoginSoon {
-                    Image("hourglass.circle.questionmark")
-                        .foregroundColor(Color("textColor3"))
-                        .font(.title3)
-                } else {
-                    Image("hourglass.circle")
-                        .foregroundColor(Color("textColor3"))
-                        .font(.title3)
                 }
                 RecoveryTimeText(resinInfo: userData.resinInfo)
             }
@@ -171,27 +182,48 @@ struct MainInfoSimplified: View {
             }
             Spacer()
             HStack {
-                if needToLoginImediately {
-                    if needToLoginSoon {
-                        Image("exclamationmark.circle.questionmark")
+                if #available(iOS 17, *) {
+                    Button(intent: WidgetRefreshIntent()) {
+                        Image(systemName: "arrow.clockwise.circle")
+                            .font(.title3)
+                            .foregroundColor(Color("textColor3"))
+                            .clipShape(.circle)
+                    }
+                    .buttonStyle(.plain)
+                } else {
+                    if needToLoginImediately {
+                        if needToLoginSoon {
+                            Image("exclamationmark.circle.questionmark")
+                                .foregroundColor(Color("textColor3"))
+                                .font(.title3)
+                        } else {
+                            Image(systemName: "exclamationmark.circle")
+                                .foregroundColor(Color("textColor3"))
+                                .font(.title3)
+                        }
+                    } else if needToLoginSoon {
+                        Image("hourglass.circle.questionmark")
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
                     } else {
-                        Image(systemName: "exclamationmark.circle")
+                        Image("hourglass.circle")
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
                     }
-                } else if needToLoginSoon {
-                    Image("hourglass.circle.questionmark")
-                        .foregroundColor(Color("textColor3"))
-                        .font(.title3)
-                } else {
-                    Image("hourglass.circle")
-                        .foregroundColor(Color("textColor3"))
-                        .font(.title3)
                 }
                 RecoveryTimeText(resinInfo: userData.resinInfo)
             }
         }
+    }
+}
+
+// MARK: - WidgetRefreshIntent
+
+@available(iOSApplicationExtension 16, iOS 16, *)
+struct WidgetRefreshIntent: AppIntent {
+    static var title: LocalizedStringResource = "Refresh"
+
+    func perform() async throws -> some IntentResult {
+        .result()
     }
 }
