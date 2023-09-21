@@ -14,6 +14,15 @@ import WidgetKit
 
 struct MaterialWidget: Widget {
     var body: some WidgetConfiguration {
+        if #available(iOS 17.0, *) {
+            return configuration
+                .containerBackgroundRemovable(false)
+        } else {
+            return configuration
+        }
+    }
+
+    var configuration: some WidgetConfiguration {
         StaticConfiguration(
             kind: "MaterialWidget",
             provider: MaterialWidgetProvider()
