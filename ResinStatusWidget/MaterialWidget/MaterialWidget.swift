@@ -47,49 +47,48 @@ struct MaterialWidgetView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 1) {
+                Text(weekday)
+                    .font(.caption)
+                    .foregroundColor(Color("textColor.calendarWeekday"))
+                    .bold()
+                    .shadow(radius: 2)
+                HStack(spacing: 6) {
+                    Text(dayOfMonth)
+                        .font(.system(
+                            size: 35,
+                            weight: .regular,
+                            design: .rounded
+                        ))
+                        .shadow(radius: 5)
+                    Spacer()
+                    if entry.materialWeekday != .sunday {
+                        MaterialRow(
+                            materials: weaponMaterials +
+                                talentMaterials
+                        )
+                    } else {
+                        Image("派蒙挺胸").resizable().scaledToFit()
+                            .clipShape(Circle())
+                    }
+                }
+                .frame(height: 35)
+            }
+            .frame(height: 40)
+            .padding(.top)
+            .padding(.bottom, 12)
+            if let events = entry.events, !events.isEmpty {
+                EventView(events: events)
+            }
+            Spacer()
+        }
+        .foregroundColor(Color("textColor3"))
+        .myWidgetContainerBackground(withPadding: 0) {
             WidgetBackgroundView(
                 background: .randomNamecardBackground,
                 darkModeOn: true
             )
-            VStack(alignment: .leading, spacing: 0) {
-                VStack(alignment: .leading, spacing: 1) {
-                    Text(weekday)
-                        .font(.caption)
-                        .foregroundColor(Color("textColor.calendarWeekday"))
-                        .bold()
-                        .shadow(radius: 2)
-                    HStack(spacing: 6) {
-                        Text(dayOfMonth)
-                            .font(.system(
-                                size: 35,
-                                weight: .regular,
-                                design: .rounded
-                            ))
-                            .shadow(radius: 5)
-                        Spacer()
-                        if entry.materialWeekday != .sunday {
-                            MaterialRow(
-                                materials: weaponMaterials +
-                                    talentMaterials
-                            )
-                        } else {
-                            Image("派蒙挺胸").resizable().scaledToFit()
-                                .clipShape(Circle())
-                        }
-                    }
-                    .frame(height: 35)
-                }
-                .frame(height: 40)
-                .padding(.top)
-                .padding(.bottom, 12)
-                if let events = entry.events, !events.isEmpty {
-                    EventView(events: events)
-                }
-                Spacer()
-            }
-            .padding(.horizontal)
-            .foregroundColor(Color("textColor3"))
         }
     }
 }
@@ -276,6 +275,37 @@ struct MaterialWidgetProvider: TimelineProvider {
                     )
                 )
             }
+        }
+    }
+}
+
+extension View {
+    fileprivate func myWidgetContainerBackground<V: View>(
+        withPadding padding: CGFloat,
+        @ViewBuilder _ content: @escaping () -> V
+    )
+        -> some View {
+        modifier(ContainerBackgroundModifier(padding: padding, background: content))
+    }
+}
+
+// MARK: - ContainerBackgroundModifier
+
+private struct ContainerBackgroundModifier<V: View>: ViewModifier {
+    let padding: CGFloat
+    let background: () -> V
+
+    func body(content: Content) -> some View {
+        if #available(iOS 17, *) {
+            content.containerBackground(for: .widget) {
+                background()
+            }
+        } else {
+            content
+                .padding(.horizontal)
+                .background {
+                    background()
+                }
         }
     }
 }

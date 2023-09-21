@@ -129,12 +129,14 @@ private struct ContainerBackgroundModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         if #available(iOS 17, *) {
-            content.containerBackground(for: .widget) {
+            content.padding(-15).containerBackground(for: .widget) {
                 WidgetBackgroundView(
                     background: viewConfig.background,
                     darkModeOn: viewConfig.isDarkModeOn
                 )
             }
+        } else {
+            content
         }
     }
 }
