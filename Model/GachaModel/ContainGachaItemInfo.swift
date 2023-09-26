@@ -187,6 +187,7 @@ struct GachaItemBackgroundImage: View {
 // MARK: - GachaItemNameIconMap
 
 enum GachaItemNameIconMap {
+    /// 将抽卡资料当中的简体中文翻译成对应的英文时，需要用到的辞典。
     static var weaponIconNameMap: [String: String] {
         [
             "「高塔孤王」": "weapon.Decarabian",
@@ -348,9 +349,19 @@ enum GachaItemNameIconMap {
             "信使": "UI_EquipIcon_Bow_Msg_Awaken",
             "黑檀弓": "UI_EquipIcon_Bow_Hardwood_Awaken",
             "碧落之珑": "UI_EquipIcon_Catalyst_Morax_Awaken",
+            "船坞长剑": "UI_EquipIcon_Sword_Mechanic_Awaken",
+            "勘探钻机": "UI_EquipIcon_Pole_Mechanic_Awaken",
+            "便携动力锯": "UI_EquipIcon_Claymore_Mechanic_Awaken",
+            "金流监督": "UI_EquipIcon_Catalyst_Wheatley_Awaken",
+            "万世流涌大典": "UI_EquipIcon_Catalyst_Iudex_Awaken",
+            "无垠蔚蓝之歌": "UI_EquipIcon_Catalyst_DandelionPoem_Awaken",
+            "测距规": "UI_EquipIcon_Bow_Mechanic_Awaken",
+            "静水流涌之辉": "UI_EquipIcon_Sword_Regalis_Awaken",
+            "水仙十字之剑": "UI_EquipIcon_Sword_Purewill_Awaken",
         ]
     }
 
+    /// 将抽卡资料当中的简体中文翻译成对应的英文时，需要用到的辞典。
     static var characterIdMap: [String: String] {
         [
             "芭芭拉": "Barbara",
@@ -423,6 +434,10 @@ enum GachaItemNameIconMap {
             "林尼": "Liney",
             "琳妮特": "Linette",
             "菲米尼": "Freminet",
+            "那维莱特": "Neuvillette",
+            "莱欧斯利": "Wriothesley",
+            "芙宁娜": "Furina",
+            "夏洛蒂": "Charlotte",
         ]
     }
 }
