@@ -22,7 +22,7 @@ struct AllAvatarListSheetView: View {
     let account: Account
 
     @Binding
-    var sheetType: SheetTypesForToolsView?
+    var sheetType: SheetTypesForDetailPortalView?
 
     var showingAvatars: [AllAvatarDetailModel.Avatar] {
         switch allAvatarListDisplayType {

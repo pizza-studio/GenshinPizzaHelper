@@ -84,7 +84,7 @@ extension Server: RawRepresentable {}
 // MARK: - Region
 
 // 地区类型，用于区分请求的Host URL
-public enum Region: Identifiable {
+public enum Region: Identifiable, CaseIterable {
     // 国服，含官服和B服
     case cn
     // 国际服

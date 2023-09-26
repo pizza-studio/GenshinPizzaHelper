@@ -86,6 +86,17 @@ struct SettingsView: View {
                             systemImage: "person.fill.questionmark"
                         )
                     }
+                    NavigationLink(
+                        destination: ThirdPartyToolsView()
+                            .environmentObject(viewModel)
+                            .navigationTitle("小工具")
+                            .navigationBarTitleDisplayMode(.inline)
+                    ) {
+                        Label(
+                            "小工具",
+                            systemImage: "shippingbox.fill"
+                        )
+                    }
                     #if DEBUG
                     Button("debug") {
 //                        UserNotificationCenter.shared
@@ -95,8 +106,8 @@ struct SettingsView: View {
                     #endif
                 }
 
-                // 该功能对 macCatalyst 无效。
                 Section {
+                    // 该功能对 macCatalyst 无效。
                     Button {
                         UIApplication.shared
                             .open(URL(

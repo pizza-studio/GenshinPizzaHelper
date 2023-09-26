@@ -1,5 +1,5 @@
 //
-//  ToolsView.swift
+//  DetailPortalView.swift
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/9/17.
@@ -10,10 +10,10 @@ import HBPizzaHelperAPI
 import SwiftPieChart
 import SwiftUI
 
-// MARK: - ToolsView
+// MARK: - DetailPortalView
 
 @available(iOS 15.0, *)
-struct ToolsView: View {
+struct DetailPortalView: View {
     @EnvironmentObject
     var viewModel: ViewModel
     @Environment(\.scenePhase)
@@ -35,7 +35,7 @@ struct ToolsView: View {
     }
 
     @State
-    private var sheetType: SheetTypesForToolsView?
+    private var sheetType: SheetTypesForDetailPortalView?
 
     var thisAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.this }
     var lastAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.last }
@@ -57,6 +57,7 @@ struct ToolsView: View {
                 abyssAndPrimogemNavigator()
                 toolsSection()
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .refreshable {
                 withAnimation {
                     DispatchQueue.main.async {
@@ -76,9 +77,9 @@ struct ToolsView: View {
             }
             .sheet(item: $sheetType) { type in
                 switch type {
-                case .characters:
+                case .myLedgerSheet:
                     ledgerSheetView()
-                case .spiralAbyss:
+                case .mySpiralAbyss:
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
                     GetLedgerCookieWebView(
@@ -114,6 +115,14 @@ struct ToolsView: View {
                     }
                 case .allAvatarList:
                     allAvatarListView()
+                case .gachaAnalysis:
+                    NavigationView {
+                        GachaView()
+                    }
+                case .rankedSpiralAbyss:
+                    NavigationView {
+                        AbyssDataCollectionView()
+                    }
                 }
             }
             .onChange(of: account) { newAccount in
@@ -181,45 +190,61 @@ struct ToolsView: View {
         if let account = account {
             if let playerDetail = try? account.playerDetailResult?.get() {
                 Section {
-                    VStack {
-                        HStack(spacing: 10) {
-                            HomeSourceWebIcon(
-                                iconString: playerDetail.basicInfo
-                                    .profilePictureAvatarIconString
-                            )
-                            .clipShape(Circle())
-                            .frame(height: 60)
-                            VStack(alignment: .leading) {
-                                Text(playerDetail.basicInfo.nickname)
-                                    .font(.title3)
-                                    .bold()
-                                    .padding(.top, 5)
-                                    .lineLimit(1)
-                                Text(playerDetail.basicInfo.signature)
-                                    .foregroundColor(.secondary)
-                                    .font(.footnote)
-                                    .lineLimit(2)
-                                    .fixedSize(
-                                        horizontal: false,
-                                        vertical: true
-                                    )
+                    HStack {
+                        HomeSourceWebIcon(
+                            iconString: playerDetail.basicInfo
+                                .profilePictureAvatarIconString
+                        )
+                        .clipShape(Circle())
+                        .frame(height: 60)
+                        VStack(alignment: .leading) {
+                            HStack(spacing: 10) {
+                                VStack(alignment: .leading) {
+                                    Text(playerDetail.basicInfo.nickname)
+                                        .font(.title3)
+                                        .bold()
+                                        .padding(.top, 5)
+                                        .lineLimit(1)
+                                    Text(playerDetail.basicInfo.signature)
+                                        .foregroundColor(.secondary)
+                                        .font(.footnote)
+                                        .lineLimit(2)
+                                        .fixedSize(
+                                            horizontal: false,
+                                            vertical: true
+                                        )
+                                }
+                                Spacer()
+                                selectAccountManuButton()
                             }
-                            Spacer()
-                            selectAccountManuButton()
+                            Text("UID: \(account.config.uid ?? "")")
+                                .foregroundColor(.secondary)
+                                .font(.footnote)
+                                .lineLimit(1)
+                                .fixedSize(
+                                    horizontal: false,
+                                    vertical: true
+                                )
                         }
                     }
-                } footer: {
-                    Text("UID: \(account.config.uid ?? "")")
                 }
             } else {
                 Section {
-                    HStack {
-                        Text(account.config.name ?? "")
-                        Spacer()
-                        selectAccountManuButton()
+                    VStack {
+                        HStack {
+                            Text(account.config.name ?? "")
+                            Spacer()
+                            selectAccountManuButton()
+                        }
+                        Text("UID: \(account.config.uid ?? "")")
+                            .foregroundColor(.secondary)
+                            .font(.footnote)
+                            .lineLimit(1)
+                            .fixedSize(
+                                horizontal: false,
+                                vertical: true
+                            )
                     }
-                } footer: {
-                    Text("UID: \(account.config.uid ?? "")")
                 }
             }
         } else {
@@ -267,10 +292,6 @@ struct ToolsView: View {
         let playerDetail: PlayerDetail = try! account!.playerDetailResult!.get()
         Section {
             VStack {
-                Text("角色展示柜")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                Divider()
                 if playerDetail.avatars.isEmpty {
                     Text("帐号未展示角色")
                         .foregroundColor(.secondary)
@@ -304,7 +325,6 @@ struct ToolsView: View {
                         .padding(.vertical, 4)
                     }
                 }
-                Divider()
                 allAvatarNavigator()
             }
         }
@@ -315,17 +335,8 @@ struct ToolsView: View {
         if let basicInfo: BasicInfos = account?.basicInfo {
             Section {
                 HStack(spacing: 30) {
+                    Spacer()
                     VStack {
-                        VStack {
-                            HStack {
-                                Text("深境螺旋")
-                                    .font(.footnote)
-                                Spacer()
-                            }
-                            .padding(.top, 10)
-                            .padding(.bottom, -5)
-                            Divider()
-                        }
                         VStack(spacing: 7) {
                             AbyssTextLabel(
                                 text: "\(basicInfo.stats.spiralAbyss)"
@@ -344,33 +355,15 @@ struct ToolsView: View {
                                     }
                             }
                         }
-                        .frame(height: 120)
-                        .padding(.bottom, 10)
+                        .frame(height: 100)
                     }
-                    .padding(.horizontal)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(
-                                UIColor
-                                    .secondarySystemGroupedBackground
-                            ))
-                    )
+                    .frame(maxWidth: .infinity)
                     .onTapGesture {
                         simpleTaptic(type: .medium)
-                        sheetType = .spiralAbyss
+                        sheetType = .mySpiralAbyss
                     }
-
+                    Divider()
                     VStack {
-                        VStack {
-                            HStack {
-                                Text("今日入账")
-                                    .font(.footnote)
-                                Spacer()
-                            }
-                            .padding(.top, 10)
-                            .padding(.bottom, -5)
-                            Divider()
-                        }
                         if let result = ledgerDataResult {
                             VStack(spacing: 10) {
                                 switch result {
@@ -390,7 +383,7 @@ struct ToolsView: View {
                                     .foregroundColor(.red)
                                     switch error {
                                     case .notLoginError:
-                                        Text("需要重新登录本帐号以查询，点击重新登录")
+                                        (Text("[\("今日入账".localized)] ") + Text("需要重新登录本帐号以查询，点击重新登录"))
                                             .font(.footnote)
                                             .multilineTextAlignment(.center)
                                     default:
@@ -398,28 +391,19 @@ struct ToolsView: View {
                                     }
                                 }
                             }
-                            .frame(height: 120)
-                            .padding(.bottom, 10)
+                            .frame(height: 105)
                         } else {
                             ProgressView()
-                                .frame(height: 120)
-                                .padding(.bottom, 10)
+                                .frame(height: 100)
                         }
                     }
-                    .padding(.horizontal)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(
-                                UIColor
-                                    .secondarySystemGroupedBackground
-                            ))
-                    )
+                    .frame(maxWidth: .infinity)
                     .onTapGesture {
                         if let result = ledgerDataResult {
                             switch result {
                             case .success:
                                 simpleTaptic(type: .medium)
-                                sheetType = .characters
+                                sheetType = .myLedgerSheet
                             case let .failure(error):
                                 switch error {
                                 case .notLoginError:
@@ -431,7 +415,16 @@ struct ToolsView: View {
                             }
                         }
                     }
+                    Spacer()
                 }
+                .padding(.vertical, 10)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color(
+                            UIColor
+                                .secondarySystemGroupedBackground
+                        ))
+                )
             }
             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             .listRowBackground(Color.white.opacity(0))
@@ -519,40 +512,6 @@ struct ToolsView: View {
     }
 
     @ViewBuilder
-    func mapNavigationLink() -> some View {
-        let hoYoLabMap = NavigationLink(
-            destination:
-            TeyvatMapWebView(isHoYoLAB: true)
-                .navigationTitle("提瓦特大地图")
-                .navigationBarTitleDisplayMode(.inline)
-        ) {
-            Text("提瓦特大地图")
-        }
-        let mysbbsMap = NavigationLink(
-            destination:
-            TeyvatMapWebView(isHoYoLAB: false)
-                .navigationTitle("提瓦特大地图")
-                .navigationBarTitleDisplayMode(.inline)
-        ) {
-            Text("提瓦特大地图")
-        }
-        if let account = account {
-            switch account.config.server.region {
-            case .cn:
-                mysbbsMap
-            case .global:
-                hoYoLabMap
-            }
-        } else {
-            if Locale.current.identifier == "zh_CN" {
-                mysbbsMap
-            } else {
-                hoYoLabMap
-            }
-        }
-    }
-
-    @ViewBuilder
     func selectAccountManuButton() -> some View {
         if accounts.count > 1 {
             Menu {
@@ -636,65 +595,47 @@ struct ToolsView: View {
     @ViewBuilder
     func toolsSection() -> some View {
         Section {
-            NavigationLink(destination: GachaView()) {
+            // 这里有一个 SwiftUI 故障导致的陈年 Bug。
+            // 如果在这个画面存在任何 Navigation Link 的话，
+            // 方向键会触发这个画面在 macOS 系统下的异常画面切换行为。
+            // 所以这里限制 macOS 在此处以 sheet 的形式呈现这两个画面。
+            switch OS.type {
+            case .macOS:
                 Label {
                     Text("祈愿分析")
                 } icon: {
                     Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
                         .scaledToFit()
+                }.onTapGesture {
+                    sheetType = .gachaAnalysis
                 }
-            }
-            NavigationLink {
-                AbyssDataCollectionView()
-            } label: {
                 Label {
                     Text("深渊统计榜单")
                 } icon: {
                     Image("UI_MarkTower_EffigyChallenge_01").resizable()
                         .scaledToFit()
+                }.onTapGesture {
+                    sheetType = .rankedSpiralAbyss
+                }
+            default:
+                NavigationLink(destination: GachaView()) {
+                    Label {
+                        Text("祈愿分析")
+                    } icon: {
+                        Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
+                            .scaledToFit()
+                    }
+                }
+                NavigationLink(destination: AbyssDataCollectionView()) {
+                    Label {
+                        Text("深渊统计榜单")
+                    } icon: {
+                        Image("UI_MarkTower_EffigyChallenge_01").resizable()
+                            .scaledToFit()
+                    }
                 }
             }
         }
-        Section {
-            NavigationLink(destination: GenshinDictionary()) {
-                Text("原神中英日辞典")
-            }
-            mapNavigationLink()
-            Link(
-                destination: isInstallation(urlString: "aliceworkshop://") ?
-                    URL(
-                        string: "aliceworkshop://app/import?uid=\(account?.config.uid ?? "")"
-                    )! :
-                    URL(string: "https://apps.apple.com/us/app/id1620751192")!
-            ) {
-                VStack(alignment: .leading) {
-                    Text("原神计算器")
-                        .foregroundColor(.primary)
-                    Text(
-                        isInstallation(urlString: "aliceworkshop://") ?
-                            "由爱丽丝工坊提供" : "由爱丽丝工坊提供（未安装）"
-                    )
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                }
-            }
-            NavigationLink(destination: BackgroundsPreviewView()) {
-                Text("背景名片预览")
-            }
-        } header: {
-            Text("小工具")
-        }
-    }
-
-    func isInstallation(urlString: String?) -> Bool {
-        let url = URL(string: urlString!)
-        if url == nil {
-            return false
-        }
-        if UIApplication.shared.canOpenURL(url!) {
-            return true
-        }
-        return false
     }
 
     func checkIfAllowAbyssDataCollection() {
@@ -707,11 +648,13 @@ struct ToolsView: View {
 
 // MARK: - SheetTypesForToolsView
 
-enum SheetTypesForToolsView: Identifiable {
-    case spiralAbyss
-    case characters
+enum SheetTypesForDetailPortalView: Identifiable {
+    case mySpiralAbyss
+    case myLedgerSheet
     case loginAccountAgainView
     case allAvatarList
+    case gachaAnalysis
+    case rankedSpiralAbyss
 
     // MARK: Internal
 
@@ -735,7 +678,7 @@ private struct LedgerSheetView: View {
 
     let data: LedgerData
     @Binding
-    var sheetType: SheetTypesForToolsView?
+    var sheetType: SheetTypesForDetailPortalView?
 
     var body: some View {
         NavigationView {
@@ -944,7 +887,7 @@ private struct AllAvatarNavigator: View {
     let basicInfo: BasicInfos
     let charMap: [String: ENCharacterMap.Character]
     @Binding
-    var sheetType: SheetTypesForToolsView?
+    var sheetType: SheetTypesForDetailPortalView?
 
     var body: some View {
         HStack(alignment: .center) {
@@ -1084,5 +1027,14 @@ private struct ToolViewNavigationTitleInIOS15: ViewModifier {
 extension View {
     fileprivate func toolViewNavigationTitleInIOS15() -> some View {
         modifier(ToolViewNavigationTitleInIOS15())
+    }
+}
+
+extension View {
+    public func sectionSpacing(_ spacing: CGFloat) -> some View {
+        if #available(iOS 17.0, *) {
+            return listSectionSpacing(spacing)
+        }
+        return self
     }
 }

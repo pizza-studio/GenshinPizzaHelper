@@ -78,11 +78,11 @@ struct ContentView: View {
                     .tabItem {
                         Label("概览", systemImage: "list.bullet")
                     }
-                ToolsView(animation: animation)
+                DetailPortalView(animation: animation)
                     .tag(1)
                     .environmentObject(viewModel)
                     .tabItem {
-                        Label("工具", systemImage: "shippingbox")
+                        Label("详情", systemImage: "person.text.rectangle")
                     }
                 SettingsView(storeManager: storeManager)
                     .tag(2)

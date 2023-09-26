@@ -516,8 +516,9 @@
 
 // MARK: - 2.4
 // Content View
-"概览" = "Overview";
-"工具" = "Tools";
+"概览" = "Aperçu";
+"详情" = "Détails";
+"工具" = "Outils";
 
 // Home View
 "当前活动" = "Ongoing Events";
