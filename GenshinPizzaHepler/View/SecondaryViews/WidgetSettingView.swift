@@ -27,8 +27,18 @@ struct WidgetSettingView: View {
     )
     var homeCoinRefreshFrequency: Double = 30
 
+    @State
+    var isWidgetTipsSheetShow: Bool = false
+
     var body: some View {
         List {
+            Section {
+                Button { isWidgetTipsSheetShow.toggle() } label: {
+                    Text("使用小组件遇到了问题？")
+                        .multilineTextAlignment(.leading)
+                }
+            }
+
             Section {
                 SettingSlider(
                     title: "主屏幕小组件同步频率",
@@ -79,6 +89,9 @@ struct WidgetSettingView: View {
             }
         }
         .navigationBarTitle("小组件设置", displayMode: .inline)
+        .sheet(isPresented: $isWidgetTipsSheetShow) {
+            WidgetTipsView(isSheetShow: $isWidgetTipsSheetShow)
+        }
     }
 }
 

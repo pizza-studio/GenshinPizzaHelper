@@ -11,62 +11,28 @@ import SwiftUI
 // MARK: - SettingsView
 
 struct SettingsView: View {
-    @State
-    var editMode: EditMode = .inactive
-
     @EnvironmentObject
     var viewModel: ViewModel
-    @State
-    var isGameBlockAvailable: Bool = true
 
     @StateObject
     var storeManager: StoreManager
 
     @State
-    var isWidgetTipsSheetShow: Bool = false
-
-    @State
     var isAlertToastShow = false
-
-    var accounts: [Account] { viewModel.accounts }
 
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    ForEach(
-                        $viewModel.accounts,
-                        id: \.config.uuid
-                    ) { $account in
-                        NavigationLink(
-                            destination: AccountDetailView(account: $account)
-                        ) {
-                            AccountInfoView(account: account)
-                        }
-                    }
-                    .onDelete { indexSet in
-                        indexSet
-                            .forEach {
-                                viewModel.deleteAccount(account: accounts[$0])
-                            }
-                    }
-                    NavigationLink(destination: AddAccountView()) {
-                        Label("添加帐号", systemImage: "plus.circle")
-                    }
-                } header: {
-                    HStack {
-                        Text("我的帐号")
-                        Spacer()
-                        EditModeButton(editMode: $editMode)
-                    }
-                } footer: {
-                    Button { isWidgetTipsSheetShow.toggle() } label: {
-                        Text("使用小组件遇到了问题？")
-                            .multilineTextAlignment(.leading)
-                            .font(.footnote)
+                    NavigationLink(
+                        destination: AccountManagementView().environmentObject(viewModel)
+                    ) {
+                        Label(
+                            "我的帐号",
+                            systemImage: "person.fill"
+                        )
                     }
                 }
-
                 Section {
                     let url: String = {
                         switch Bundle.main.preferredLocalizations.first {
@@ -89,11 +55,11 @@ struct SettingsView: View {
                     NavigationLink(
                         destination: ThirdPartyToolsView()
                             .environmentObject(viewModel)
-                            .navigationTitle("小工具")
+                            .navigationTitle("旅行工具")
                             .navigationBarTitleDisplayMode(.inline)
                     ) {
                         Label(
-                            "小工具",
+                            "旅行工具",
                             systemImage: "shippingbox.fill"
                         )
                     }
@@ -180,46 +146,15 @@ struct SettingsView: View {
                     Text("更多")
                 }
             }
-            .environment(\.editMode, $editMode)
             .navigationTitle("设置")
         }
         .navigationViewStyle(.stack)
-        .sheet(isPresented: $isWidgetTipsSheetShow) {
-            WidgetTipsView(isSheetShow: $isWidgetTipsSheetShow)
-        }
         .toast(isPresenting: $isAlertToastShow) {
             AlertToast(
                 displayMode: .hud,
                 type: .complete(.green),
                 title: "Complete"
             )
-        }
-    }
-}
-
-// MARK: - EditModeButton
-
-private struct EditModeButton: View {
-    @Binding
-    var editMode: EditMode
-
-    var body: some View {
-        Button {
-            withAnimation(.easeInOut(duration: 0.1)) {
-                if editMode.isEditing {
-                    editMode = .inactive
-                } else {
-                    editMode = .active
-                }
-            }
-        } label: {
-            if editMode.isEditing {
-                Text("完成")
-                    .font(.footnote)
-            } else {
-                Text("编辑")
-                    .font(.footnote)
-            }
         }
     }
 }
