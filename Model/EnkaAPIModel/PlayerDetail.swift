@@ -60,9 +60,23 @@ struct PlayerDetail {
             self.signature = playerInfo.signature ?? ""
             self.worldLevel = playerInfo.worldLevel
             self.nameCardId = playerInfo.nameCardId
-            if let path = playerInfo.profilePicture?.iconPath {
-                self.profilePictureAvatarIconString = path.replacingOccurrences(of: "_Circle", with: "")
+            if let profilePictureId = playerInfo.profilePicture.id {
+                _ = profilePictureId
+                // 这一段负责处理自 4.1 版发行开始起「有」改过肖像的玩家的情况。
+                // TODO: 需要拿这个 id 在 ProfilePictureExcelConfigData.json 内查询到 avatarId，
+                // 然后按照下述步骤处理即可：
+                // if let obj = ProfilePictureExcelConfigData[profilePictureId] {
+                //     self.profilePictureAvatarIconString = obj.iconPath.replacingOccurrences(of: "_Circle", with: "")
+                // }
+            } else if let avatarID = playerInfo.profilePicture.avatarId,
+                      let matchedCharacter = characterMap[avatarID.description] {
+                // 这一段负责处理自 4.1 版发行开始起「没」改过肖像的玩家的情况。
+                self.profilePictureAvatarIconString = matchedCharacter.SideIconName.replacingOccurrences(
+                    of: "_Side",
+                    with: ""
+                )
             }
+
             self.showingNameCards = playerInfo.showNameCardIdList ?? []
         }
 
