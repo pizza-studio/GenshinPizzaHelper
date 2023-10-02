@@ -247,7 +247,7 @@
 "原神状态" = "Genshin Status";
 "已全部完成" = "Tapos na lahat";
 "%lld个已完成" = "%lld ang tapos na";
-"（未领取）" = " (Not received)";
+"（未领取）" = "(Not received)";
 "（可使用）" = "Magagamit";
 
 // Used for copy and paste to edit this file
@@ -562,7 +562,7 @@
 "原神披萨小助手官方网站" = "Genshin Pizza Helper Official Site";
 "Twitter主页" = "Twitter Homepage";
 "YouTube频道" = "YouTube Channel";
-"翻译提供" = " Mga Translators";
+"翻译提供" = "Mga Translators";
 "英文" = "Ingles";
 "法文" = "Pranses";
 "日文" = "Wikang Hapon";
@@ -891,7 +891,7 @@
 "·仅包含满星玩家·包含旅行者的队伍已合并" = "· Mga 36-star players lang · Ang mga teams na kasama ang Travelers are pinagsama na";
 "上" = "FH";
 "下" = "SH";
-"月" = " ";
+"月" = "";
 "·仅自%@后提交的数据" = "· Mga Data nakoleta pagkatapos ng %@";
 "整层" = "Both";
 
@@ -933,7 +933,7 @@
 
 "顶置" = "I-Pin sa taas";";
 （1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Ang katayuan ng account ay hindi normal. Inirerekomenda na bawasan ang dalas ng kahilingan ng widget, o mahabang pindutin ang widget upang gamitin ang simple mode";
-"请重新登录本帐号以获取stoken" = " Mag-login ulit sa account na ito upang makuha ang stoken";
+"请重新登录本帐号以获取stoken" = "Mag-login ulit sa account na ito upang makuha ang stoken";
 "请登录「%@」" = "Log in to \"%@\"";
 
 // MARK: - v2.6.5
@@ -1007,7 +1007,7 @@
 "每小时%@个" = "%@ kada oras";
 "每%@" = "Bawat %@";
 
-"小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "Ang widget ay naayos upang i-refresh tuwing 8  na minuto, ang dalas ng pag -sync ay hindi makakaapekto sa pag-refresh ng widget. Inirerekomenda na magtakda ka ng isang mas mahabang dalas ng pag-sync kung maaari at buksan ang app upang mag-sync isang beses pagkatapos ng bawat oras.";
+"小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "Ang widget ay naayos upang i-refresh tuwing 8 na minuto, ang dalas ng pag -sync ay hindi makakaapekto sa pag-refresh ng widget. Inirerekomenda na magtakda ka ng isang mas mahabang dalas ng pag-sync kung maaari at buksan ang app upang mag-sync isang beses pagkatapos ng bawat oras.";
 "小组件同步频率" = "Dalas ng pag-sync ng widget";
 "主屏幕小组件同步频率" = "Dalas ng pag-sync ng widget ng Home Screen";
 "锁定屏幕小组件同步频率" = "Dalas ng pag-sync ng widget ng Lock Screen";
@@ -1299,7 +1299,7 @@
 "请点击此处输入验证码" = "Tapikin dito upang magpatuloy sa interactive na pag verify";
 "account.test.verify.web_sheet.title" = "Interactive Na Pag Verify";
 "账号状态异常,请打开App填写验证码" = "Account status exception, pahiwatig para sa in app interactive verification";
-"（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = " (1034) Kailangan ng pagpapatunay sa account. Mangyaring buksan ang app para sa pagpapatunay ng tao-kalansay. I-hold ang widget upang paganahin ang compact mode.";
+"（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "(1034) Kailangan ng pagpapatunay sa account. Mangyaring buksan ang app para sa pagpapatunay ng tao-kalansay. I-hold ang widget upang paganahin ang compact mode.";
 
 // MARK: - 3.0.0
 

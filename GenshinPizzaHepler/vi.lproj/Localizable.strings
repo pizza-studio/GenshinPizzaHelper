@@ -250,7 +250,7 @@
 "原神状态" = "Trạng Thái";
 "已全部完成" = "Tất Cả Đã Xong";
 "%lld个已完成" = "%lld Xong";
-"（未领取）" = " (Chưa Nhận)";
+"（未领取）" = "(Chưa Nhận)";
 "（可使用）" = "CD Xong";
 
 // Used for copy and paste to edit this file
@@ -492,7 +492,7 @@
 "自动轮换" = "Vòng xoay tự động";
 "自动展示你最需要的信息" = "Tự động hiển thị thông tin bạn cần nhất";
 "综合信息" = "thông tin toàn diện";
-"所有信息，一网打尽" = " Xem tất cả thông tin trong một lần";
+"所有信息，一网打尽" = "Xem tất cả thông tin trong một lần";
 "洞天宝钱数量" = "Số lượng tiền động tiên";
 "每日委托完成情况" = "Trạng thái nhiệm vụ hàng ngày";
 "探索派遣完成情况" = "Tình trạng phái đi thám hiểm";
@@ -534,7 +534,7 @@
 "即将结束的活动" = "Sự Kiện Sắp Kết Thúc";
 "查看全部活动" = "Tất Cả Sự Kiện Đang Diễn Ra";
 "帐号基本信息" = "Thông tin cơ bản về tài khoản";
-"剩余 %lld天" = " Còn Lại %lld Ngày";
+"剩余 %lld天" = "Còn Lại %lld Ngày";
 "剩余 %lld小时" = "Còn Lại %lld Giờ";
 "收起" = "Fold";
 "点击材料查看更多" = "Nhấn vào biểu tượng để hiển thị thêm";
@@ -732,9 +732,9 @@
 
 // Add account
 "关于我们的工作原理" = "Chúng làm việc như thế nào??";
-"为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。我们承诺，您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。" = "Để lấy nhựa và dữ liệu khác từ HoYoLAB, cần có UID và cookie đăng nhập của tài khoản của bạn.  Sau khi đăng nhập vào HoYoLAB, chúng tôi sẽ lưu trữ chúng cục bộ cũng như trên iCloud riêng tư của bạn.  Sau đó, ứng dụng của chúng tôi sẽ sử dụng UID và cookie được lưu trữ để lấy nhựa và các thông tin khác theo cách tương tự như ứng dụng HoYoLAB, sau đó hiển thị chúng trên tiện ích của bạn.  Thông tin cá nhân của bạn sẽ không được gửi đến những nơi khác ngoài HoYoLAB và iCloud, kể cả chúng tôi, vì vậy thông tin cá nhân của bạn sẽ rất an toàn.";
+"为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。我们承诺，您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。" = "Để lấy nhựa và dữ liệu khác từ HoYoLAB, cần có UID và cookie đăng nhập của tài khoản của bạn. Sau khi đăng nhập vào HoYoLAB, chúng tôi sẽ lưu trữ chúng cục bộ cũng như trên iCloud riêng tư của bạn. Sau đó, ứng dụng của chúng tôi sẽ sử dụng UID và cookie được lưu trữ để lấy nhựa và các thông tin khác theo cách tương tự như ứng dụng HoYoLAB, sau đó hiển thị chúng trên tiện ích của bạn. Thông tin cá nhân của bạn sẽ không được gửi đến những nơi khác ngoài HoYoLAB và iCloud, kể cả chúng tôi, vì vậy thông tin cá nhân của bạn sẽ rất an toàn.";
 "关于您的帐号安全" = "Giới thiệu về bảo mật tài khoản";
-"本程序不属于外挂等违法程序。本程序遵守米哈游二次创作规则的相关内容。根据中国原神客服的答复，使用本程序不会造成封号等问题。具体内容参见设置 - FAQ." = "Thủ tục này không phải là một thủ tục bất hợp pháp như plug-in.  Chương trình này tuân theo nội dung có liên quan của các quy tắc tạo phụ của miHoYo.  Theo phản hồi của dịch vụ khách hàng Genshin Impact của Trung Quốc, việc sử dụng chương trình của chúng tôi sẽ không gây ra các vấn đề như chặn.  Để biết chi tiết, hãy xem Cài Đặt - Câu hỏi thường gặp.";
+"本程序不属于外挂等违法程序。本程序遵守米哈游二次创作规则的相关内容。根据中国原神客服的答复，使用本程序不会造成封号等问题。具体内容参见设置 - FAQ." = "Thủ tục này không phải là một thủ tục bất hợp pháp như plug-in. Chương trình này tuân theo nội dung có liên quan của các quy tắc tạo phụ của miHoYo. Theo phản hồi của dịch vụ khách hàng Genshin Impact của Trung Quốc, việc sử dụng chương trình của chúng tôi sẽ không gây ra các vấn đề như chặn. Để biết chi tiết, hãy xem Cài Đặt - Câu hỏi thường gặp.";
 
 // MARK: - 2.4.1
 // Widget
@@ -861,14 +861,14 @@
 
 // MARK: - 2.5.1
 "暂无本期深渊数据" = "Không có dữ liệu của thuật ngữ này";
-"仅统计充值途径以外获取的资源。数据存在延迟。" = "Chỉ bao gồm các tài nguyên thu được bên ngoài nạp tiền.  Có vấn đề về độ trễ dữ liệu.";
+"仅统计充值途径以外获取的资源。数据存在延迟。" = "Chỉ bao gồm các tài nguyên thu được bên ngoài nạp tiền. Có vấn đề về độ trễ dữ liệu.";
 "已回满" = "Đầy";
 
 // MARK: - 2.5.2 & 2.5.3
 "所有角色" = "Tất Cả Nhân Vật";
 "我的角色" = "Nhân vật của tôi";
 "共拥有%lld名角色，其中五星角色%lld名，四星角色%lld名。" = "Có tổng cộng %lld nhân vật , bao gồm %lld nhân vật 5 sao và %lld nhân vật 4 sao.";
-"共获得%lld金，其中角色%lld金，武器%lld金。（未统计旅行者和无人装备的五星武器）" = "Nhận vật phẩm 5 sao %lld lần từ gacha, bao gồm nhân vật 5 sao %lld lần và vũ khí 5 sao %lld lần.  (Vũ khí 5 sao chưa được trang bị không được tính)";
+"共获得%lld金，其中角色%lld金，武器%lld金。（未统计旅行者和无人装备的五星武器）" = "Nhận vật phẩm 5 sao %lld lần từ gacha, bao gồm nhân vật 5 sao %lld lần và vũ khí 5 sao %lld lần. (Vũ khí 5 sao chưa được trang bị không được tính)";
 "精%lld" = "R%lld";
 "全部角色" = "Tất Cả Nhân Vật";
 "五星角色" = "Nhân Vật 5 Sao";
@@ -896,14 +896,14 @@
 "深渊统计榜单FAQ" = "Câu hỏi thường gặp hàng đầu về La Hoàn Thâm Cảnh";
 "隐私设置" = "Riêng Tư";
 "允许收集深渊数据" = "Cho phép thu thập dữ liệu La Hoàn Thâm Cảnh";
-"我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。更多相关问题，请查看深渊统计榜单页面右上角的FAQ。" = "Chúng tôi rất mong được thu thập các nhân vật bạn sở hữu và các nhân vật bạn đã sử dụng trong La Hoàn Thâm Cảnh .  Nếu bạn cho phép chúng tôi thu thập dữ liệu, bạn có thể kiểm tra Tỷ lệ sử dụng nhân vật theo thời gian thực, Tỷ lệ sử dụng đội hình , v.v. trong ứng dụng.   Để biết thêm chi tiết, bạn có thể đọc Câu hỏi thường gặp ở góc trên bên phải của Chế độ xem danh sách hàng đầu trong La Hoàn.";
+"我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。更多相关问题，请查看深渊统计榜单页面右上角的FAQ。" = "Chúng tôi rất mong được thu thập các nhân vật bạn sở hữu và các nhân vật bạn đã sử dụng trong La Hoàn Thâm Cảnh . Nếu bạn cho phép chúng tôi thu thập dữ liệu, bạn có thể kiểm tra Tỷ lệ sử dụng nhân vật theo thời gian thực, Tỷ lệ sử dụng đội hình , v.v. trong ứng dụng. Để biết thêm chi tiết, bạn có thể đọc Câu hỏi thường gặp ở góc trên bên phải của Chế độ xem danh sách hàng đầu trong La Hoàn.";
 "共统计%lld用户%@\n%@·生成于%@" = "%lld dữ liệu được tính %@\n%@ · Được tạo lại %@";
 "共统计%lld用户%@" = "%lld dữ liệu được tính %@";
 "·仅包含满星玩家·计算方法：角色使用人数/角色拥有人数" = "· Chỉ người chơi 36 sao · Tỷ lệ phần trăm = Người chơi đã sử dụng / Người chơi sở hữu";
 "·仅包含满星玩家·包含旅行者的队伍已合并" = "· Chỉ dành cho người chơi 36 sao · Các đội bao gồm các nhà lữ hành được hợp nhất";
 "上" = "Nửa Đầu Tháng";
 "下" = "Nửa Cuối Tháng";
-"月" = " ";
+"月" = "";
 "·仅自%@后提交的数据" = "· Dữ liệu thu thập sau %@";
 "整层" = "Cả hai";
 
@@ -913,7 +913,7 @@
 "允许" = "Có";
 
 // MARK: - 2.6.2
-"反复出现帐号异常？点击查看解决方案" = "Trường hợp ngoại lệ tài khoản xảy ra nhiều lần?  Click để xem giải pháp";
+"反复出现帐号异常？点击查看解决方案" = "Trường hợp ngoại lệ tài khoản xảy ra nhiều lần? Click để xem giải pháp";
 "1034问题的解决方案" = "Giải quyết vấn đề 1034";
 "点击打开米游社App" = "Bấm để mở ứng dụng HoYoLAB";
 "（1034）帐号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) Trạng thái tài khoản không bình thường, vui lòng truy cập Ứng dụng HoYoLAB để xác minh lại";
@@ -938,13 +938,13 @@
 
 // widgetsetting
 "洞天宝钱回复速度" = "Tốc độ phục hồi tiền động tiên";
-"（仅简洁模式）洞天宝钱回复速度。未正确设置可能导致洞天宝钱通知无法正确触发。" = "(Chỉ ở chế độ đơn giản hóa) Tốc độ phục hồi tiền động tiên .  Việc không đặt chính xác có thể khiến thông báo tiền động tiên không kích hoạt chính xác.";
+"（仅简洁模式）洞天宝钱回复速度。未正确设置可能导致洞天宝钱通知无法正确触发。" = "(Chỉ ở chế độ đơn giản hóa) Tốc độ phục hồi tiền động tiên . Việc không đặt chính xác có thể khiến thông báo tiền động tiên không kích hoạt chính xác.";
 "每小时%lld个" = "%lld/ Giờ";
 // Notification setting
-"您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Thông báo được tạo cục bộ và được cập nhật tự động khi tiện ích làm mới hoặc khi bạn mở Ứng dụng.  \nViệc không mở Ứng dụng trong thời gian dài hoặc không sử dụng tiện ích có thể dẫn đến thông báo không chính xác.  \nMột số thông báo chỉ có thể được làm mới bằng cách mở ứng dụng nếu tiện ích ở chế độ làm mới.";
+"您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Thông báo được tạo cục bộ và được cập nhật tự động khi tiện ích làm mới hoặc khi bạn mở Ứng dụng. \nViệc không mở Ứng dụng trong thời gian dài hoặc không sử dụng tiện ích có thể dẫn đến thông báo không chính xác. \nMột số thông báo chỉ có thể được làm mới bằng cách mở ứng dụng nếu tiện ích ở chế độ làm mới.";
 
 "顶置" = "Ghim đầu trang";
-"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường.  Bạn nên giảm tần suất yêu cầu tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản";
+"（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường. Bạn nên giảm tần suất yêu cầu tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản";
 "请重新登录本帐号以获取stoken" = "Vui lòng đăng nhập lại tài khoản này để nhận được Token";
 "请登录「%@」" = "Đăng nhập vào \"%@\"";
 
@@ -956,13 +956,13 @@
 "自动启用树脂计时器" = "Tự động bật bộ hẹn giờ nhựa";
 "树脂计时器是什么？" = "Bộ đếm thời gian nhựa là gì?";
 "创建树脂计时器成功" = "Tạo bộ đếm thời gian nhựa đầy thành công";
-"若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在「概览」页长按某个帐号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng.  Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất.  Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
+"若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在「概览」页长按某个帐号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng. Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất. Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
 "前往设置开启实时活动功能" = "Chuyển đến Cài Đặt để bật tính năng \"Hoạt động trong thời gian thực\"";
-"实时活动功能未开启，请前往设置开启。" = "Đã tắt \"Hoạt động thời gian thực\".  Vui lòng kích hoạt nó trong Cài Đặt.";
+"实时活动功能未开启，请前往设置开启。" = "Đã tắt \"Hoạt động thời gian thực\". Vui lòng kích hoạt nó trong Cài Đặt.";
 
 // Other settings
 "前往设置开启通知" = "Di chuyển đến Cài Đặt để bật thông báo";
-"未启用通知，请前往设置开启。" = "Thông báo bị vô hiệu hóa.  Vui lòng kích hoạt nó trong Cài Đặt.";
+"未启用通知，请前往设置开启。" = "Thông báo bị vô hiệu hóa. Vui lòng kích hoạt nó trong Cài Đặt.";
 
 // Real-time activity settings
 "树脂计时器设置" = "Cài Đặt hẹn giờ nhựa đầy";
@@ -988,14 +988,14 @@
 "英语 繁体中文" = "Tiếng Anh , Tiếng Trung (Phồn thể)";
 
 "隐藏灵动岛 / 关闭树脂计时器" = "Ẩn Dynamic Island / Tắt bộ hẹn giờ nhựa";
-"如何隐藏灵动岛？如何关闭树脂计时器？" = "Làm thế nào để ẩn Dynamic Island ?  Làm thế nào để tắt bộ đếm thời gian nhựa?";
-"您可以从左右向中间滑动灵动岛，即可隐藏灵动岛。\n在锁定屏幕上左滑树脂计时器，即可关闭树脂计时器和灵动岛。" = "Bạn có thể trượt Dynamic Island từ trái/phải vào giữa để ẩn đi.  \nVuốt sang trái trên bộ hẹn giờ nhựa trên màn hình khóa để tắt bộ hẹn giờ nhựa và Dynamic Island.";
+"如何隐藏灵动岛？如何关闭树脂计时器？" = "Làm thế nào để ẩn Dynamic Island ? Làm thế nào để tắt bộ đếm thời gian nhựa?";
+"您可以从左右向中间滑动灵动岛，即可隐藏灵动岛。\n在锁定屏幕上左滑树脂计时器，即可关闭树脂计时器和灵动岛。" = "Bạn có thể trượt Dynamic Island từ trái/phải vào giữa để ẩn đi. \nVuốt sang trái trên bộ hẹn giờ nhựa trên màn hình khóa để tắt bộ hẹn giờ nhựa và Dynamic Island.";
 "简洁模式下自动刷新树脂计时器" = "Hẹn giờ nhựa tự động làm mới (chỉ dành cho Chế độ đơn giản hóa)";
 "如出现1034问题，请关闭本选项。" = "Nếu xảy ra sự cố (1034), vui lòng tắt tùy chọn này.";
 
 // MARK: - 2.7.2
 "使用简洁模式" = "Sử dụng chế độ đơn giản hóa";
-"仅国服用户。更改该项需要重新添加小组件。" = "Chỉ người dùng Trung Quốc .  Thêm lại tiện ích sau khi chỉnh sửa cấu hình này.";
+"仅国服用户。更改该项需要重新添加小组件。" = "Chỉ người dùng Trung Quốc . Thêm lại tiện ích sau khi chỉnh sửa cấu hình này.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "(Chỉ chế độ đơn giản hóa) Việc đặt không đúng cách có thể dẫn đến thông báo tiền động tiên không được kích hoạt chính xác và số lượng không chính xác.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "(Chỉ ở chế độ đơn giản hóa) Không được đặt chính xác có thể dẫn đến lượng tiền động tiên không chính xác.";
 // 下方左侧尾部有零宽字符
@@ -1007,7 +1007,7 @@
 "原粹树脂回满倒计时" = "Hẹn giờ của Nhựa Nguyên Chất";
 "展示原粹树脂与恢复到160树脂的倒计时" = "Hiển thị nhựa ban đầu và đếm ngược đến khi đầy 160 nhựa.";
 "树脂溢出提醒" = "Thông báo khi đầy";
-"本帐号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" = "Không tìm thấy dữ liệu nào trong Cookie, điều này có thể ảnh hưởng đến việc sử dụng tiện ích ở chế độ đơn giản hóa.  Nên đăng nhập lại để nhận được Token.";
+"本帐号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" = "Không tìm thấy dữ liệu nào trong Cookie, điều này có thể ảnh hưởng đến việc sử dụng tiện ích ở chế độ đơn giản hóa. Nên đăng nhập lại để nhận được Token.";
 
 "今天 " = "Tdy ";
 "明天 " = "Tmw ";
@@ -1020,7 +1020,7 @@
 "每%@" = "Mỗi %@";
 
 "（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường, đề xuất giảm tần suất đồng bộ hóa tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản hóa";
-"小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "Tiện ích được cố định để làm mới cứ sau 8 phút, tần suất đồng bộ hóa sẽ không ảnh hưởng đến việc làm mới tiện ích.  Bạn nên đặt tần suất đồng bộ dài hơn nếu có thể và mở ứng dụng để đồng bộ một lần sau mỗi chuyến tham quan.";
+"小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "Tiện ích được cố định để làm mới cứ sau 8 phút, tần suất đồng bộ hóa sẽ không ảnh hưởng đến việc làm mới tiện ích. Bạn nên đặt tần suất đồng bộ dài hơn nếu có thể và mở ứng dụng để đồng bộ một lần sau mỗi chuyến tham quan.";
 "小组件同步频率" = "Tần suất đồng bộ hóa tiện ích";
 "主屏幕小组件同步频率" = "Tần suất đồng bộ hóa tiện ích màn hình chính";
 "锁定屏幕小组件同步频率" = "Tần suất đồng bộ tiện ích màn hình khóa";

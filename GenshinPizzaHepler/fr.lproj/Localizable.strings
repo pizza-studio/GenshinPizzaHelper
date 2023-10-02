@@ -222,7 +222,7 @@
 "蒙德・英名" = "Mondstadt: Célébrité";
 "稻妻・神樱" = "Inazuma: Cerisier sacré";
 "钟离・天星" = "Zhongli: Chute de météore";
-"提纳里·沐露" = "Tighnari:  Baigné de rosée";
+"提纳里·沐露" = "Tighnari: Baigné de rosée";
 
 // Background colors
 "★灰" = "★ Gris";
@@ -247,7 +247,7 @@
 "原神状态" = "Status de Genshin";
 "已全部完成" = "Tout terminées";
 "%lld个已完成" = "%lld fini";
-"（未领取）" = " (Non récupéré)";
+"（未领取）" = "(Non récupéré)";
 "（可使用）" = "Disponible";
 
 // Used for copy and paste to edit this file
@@ -891,7 +891,7 @@
 "·仅包含满星玩家·包含旅行者的队伍已合并" = "· 36-star players only· Teams including Travelers are merged";
 "上" = "FH";
 "下" = "SH";
-"月" = " ";
+"月" = "";
 "·仅自%@后提交的数据" = "· Data collected after %@";
 "整层" = "Both";
 

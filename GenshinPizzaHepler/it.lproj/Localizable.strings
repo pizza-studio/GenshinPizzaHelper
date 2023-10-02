@@ -247,7 +247,7 @@
 "原神状态" = "Genshin Status";
 "已全部完成" = "All done";
 "%lld个已完成" = "%lld done";
-"（未领取）" = " (Not received)";
+"（未领取）" = "(Not received)";
 "（可使用）" = "Available";
 
 // Used for copy and paste to edit this file
@@ -891,7 +891,7 @@
 "·仅包含满星玩家·包含旅行者的队伍已合并" = "· 36-star players only· Teams including Travelers are merged";
 "上" = "FH";
 "下" = "SH";
-"月" = " ";
+"月" = "";
 "·仅自%@后提交的数据" = "· Data collected after %@";
 "整层" = "Both";
 
