@@ -19,8 +19,62 @@ struct PlayerDetailFetchModel: Codable {
         }
 
         struct ProfilePicture: Codable {
-            /// 头像对应的角色ID
-            var avatarId: Int
+            // MARK: Lifecycle
+
+            /// ProfilePicture 的新版建构子。
+            /// - Remark: 除了 id 以外的所有参数都得是 nullable，因为米游社会在请求这类资料时要求额外的帐号登入手续。
+            /// 凡手续不满者，除了 id 以外的资料全都会被填 null。
+            /// - Parameters:
+            ///   - id: 在 ProfilePictureExcelConfigData.json 当中的检索用 ID。
+            ///   - iconPath: 圆形对话肖像图的档案名称。
+            ///   - priority: 在辞典内的排序优先权，等价于检索用 id。
+            ///   - nameTextMapHash: 用来查询该肖像图对应的名称的辞典检索键。
+            ///   - FDDOKGDIKCM: 头像对应的角色ID（米哈游内部变数名称）。
+            ///   - CBKKABADBBK: 头像对应的角色ID（理应与 CBKKABADBBK 雷同）。
+            public init(
+                id: Int,
+                iconPath: String,
+                priority: Int,
+                nameTextMapHash: Int,
+                FDDOKGDIKCM: String,
+                CBKKABADBBK: Int
+            ) {
+                self.id = id
+                self.iconPath = iconPath
+                self.priority = priority
+                self.nameTextMapHash = nameTextMapHash
+                self.FDDOKGDIKCM = FDDOKGDIKCM
+                self.CBKKABADBBK = CBKKABADBBK
+                self.avatarId = CBKKABADBBK
+            }
+
+            /// 旧版建构子，即将被米哈游淘汰。
+            public init(avatarId: Int) {
+                self.id = 2
+                self.iconPath = "UI_AvatarIcon_PlayerGirl_Circle"
+                self.priority = 2
+                self.nameTextMapHash = 271219620
+                self.FDDOKGDIKCM = "PROFILE_PICTURE_UNLOCK_BY_AVATAR"
+                self.CBKKABADBBK = avatarId
+                self.avatarId = avatarId
+            }
+
+            // MARK: Internal
+
+            /// 在 ProfilePictureExcelConfigData.json 当中的检索用 ID。
+            let id: Int
+            /// 圆形对话肖像图的档案名称。
+            let iconPath: String?
+            /// 在辞典内的排序优先权，等价于检索用 id。
+            let priority: Int?
+            /// 用来查询该肖像图对应的名称的辞典检索键。
+            let nameTextMapHash: Int?
+            /// 该肖像对玩家而言的解锁条件（是拿到角色时解锁、还是需要买付费皮肤解锁）。
+            let FDDOKGDIKCM: String?
+            /// 头像对应的角色ID（米哈游内部变数名称）。
+            let CBKKABADBBK: Int?
+            /// 头像对应的角色ID（理应与 CBKKABADBBK 雷同）。
+            let avatarId: Int?
         }
 
         /// 名称
@@ -44,7 +98,7 @@ struct PlayerDetailFetchModel: Codable {
         /// 正在展示名片ID的列表
         var showNameCardIdList: [Int]?
         /// 玩家头像的角色的ID: profilePicture.avatarId
-        var profilePicture: ProfilePicture
+        var profilePicture: ProfilePicture?
     }
 
     struct AvatarInfo: Codable {

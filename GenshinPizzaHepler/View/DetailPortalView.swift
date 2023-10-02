@@ -191,12 +191,14 @@ struct DetailPortalView: View {
             if let playerDetail = try? account.playerDetailResult?.get() {
                 Section {
                     HStack {
-                        HomeSourceWebIcon(
-                            iconString: playerDetail.basicInfo
-                                .profilePictureAvatarIconString
-                        )
-                        .clipShape(Circle())
-                        .frame(height: 60)
+                        if let iconStr = playerDetail.basicInfo.profilePictureAvatarIconString {
+                            HomeSourceWebIcon(iconString: iconStr)
+                                .clipShape(Circle())
+                                .frame(height: 60)
+                        } else {
+                            Color(.tintColor)
+                                .frame(width: 4, height: 60)
+                        }
                         VStack(alignment: .leading) {
                             HStack(spacing: 10) {
                                 VStack(alignment: .leading) {
@@ -646,7 +648,7 @@ struct DetailPortalView: View {
     }
 }
 
-// MARK: - SheetTypesForToolsView
+// MARK: - SheetTypesForDetailPortalView
 
 enum SheetTypesForDetailPortalView: Identifiable {
     case mySpiralAbyss

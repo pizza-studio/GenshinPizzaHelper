@@ -149,13 +149,13 @@ extension API {
                 PlayerDetailsFetchResult
             ) -> ()
         ) {
-            // 请求类别
+            var urlStr = "https://gi.pizzastudio.org/static/player_detail_data_example_2.json"
             #if DEBUG
-//            let urlStr = "https://enka.network/api/uid/\(uid)/"
-            let urlStr =
-                "https://gi.pizzastudio.org/static/player_detail_data_example_2.json"
+            if uid == "114514003" {
+                urlStr = "https://enka.network/api/uid/\(uid)/"
+            }
             #else
-            let urlStr = "https://enka.network/api/uid/\(uid)/"
+            urlStr = "https://enka.network/api/uid/\(uid)/"
             #endif
             let url = URL(string: urlStr)!
 

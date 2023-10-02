@@ -60,13 +60,9 @@ struct PlayerDetail {
             self.signature = playerInfo.signature ?? ""
             self.worldLevel = playerInfo.worldLevel
             self.nameCardId = playerInfo.nameCardId
-            self
-                .profilePictureAvatarIconString =
-                characterMap["\(playerInfo.profilePicture.avatarId)"]?
-                    .SideIconName.replacingOccurrences(
-                        of: "_Side",
-                        with: ""
-                    ) ?? ""
+            if let path = playerInfo.profilePicture?.iconPath {
+                self.profilePictureAvatarIconString = path.replacingOccurrences(of: "_Circle", with: "")
+            }
             self.showingNameCards = playerInfo.showNameCardIdList ?? []
         }
 
@@ -84,7 +80,7 @@ struct PlayerDetail {
         /// 资料名片ID
         var nameCardId: Int
         /// 玩家头像
-        var profilePictureAvatarIconString: String
+        var profilePictureAvatarIconString: String?
 
         /// 正在展示的名片
         var showingNameCards: [Int]
