@@ -278,7 +278,7 @@ private struct GachaStatisticSectionView: View {
             if gachaViewModel.filter.gachaType != .standard {
                 VStack {
                     HStack {
-                        Text("派蒙的评价")
+                        Text(AppConfig.useGuestGachaEvaluator ? "帕姆的评价" : "派蒙的评价")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         Spacer()
@@ -292,10 +292,10 @@ private struct GachaStatisticSectionView: View {
                         ForEach(Rank.allCases, id: \.rawValue) { rank in
                             Group {
                                 if judgedRank == rank {
-                                    rank.image().resizable()
+                                    rank.image(neighborGame: AppConfig.useGuestGachaEvaluator).resizable()
                                         .scaledToFit()
                                 } else {
-                                    rank.image().resizable()
+                                    rank.image(neighborGame: AppConfig.useGuestGachaEvaluator).resizable()
                                         .scaledToFit()
                                         .opacity(0.25)
                                 }
@@ -333,18 +333,18 @@ private struct GachaStatisticSectionView: View {
 }
 
 extension GachaStatisticSectionView.Rank {
-    func image() -> Image {
+    func image(neighborGame: Bool = false) -> Image {
         switch self {
         case .one:
-            return Image("UI_EmotionIcon5")
+            return !neighborGame ? Image("UI_EmotionIcon5") : Image("Pom-Pom_Sticker_21")
         case .two:
-            return Image("UI_EmotionIcon4")
+            return !neighborGame ? Image("UI_EmotionIcon4") : Image("Pom-Pom_Sticker_32")
         case .three:
-            return Image("UI_EmotionIcon6")
+            return !neighborGame ? Image("UI_EmotionIcon3") : Image("Pom-Pom_Sticker_18")
         case .four:
-            return Image("UI_EmotionIcon2")
+            return !neighborGame ? Image("UI_EmotionIcon2") : Image("Pom-Pom_Sticker_24")
         case .five:
-            return Image("UI_EmotionIcon1")
+            return !neighborGame ? Image("UI_EmotionIcon1") : Image("Pom-Pom_Sticker_30")
         }
     }
 

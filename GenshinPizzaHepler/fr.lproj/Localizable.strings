@@ -1123,6 +1123,7 @@
 "限定五星平均抽数" = "Limited 5-star Average Pulls";
 "不歪率" = "Won 50/50";
 "派蒙的评价" = "Paimon's Review";
+"帕姆的评价" = "Pom-Pom's Review";
 "总消耗原石数" = "Total Primogems Cost";
 "限定五星平均消耗原石数" = "Limited 5-star Average Primogems Cost";
 "平均抽数：" = "Average Pulls:";
@@ -1355,3 +1356,7 @@
 "测距规" = "Jauge de portée";
 "静水流涌之辉" = "Splendeur des eaux calmes";
 "水仙十字之剑" = "Lame du Narzissenkreuz";
+
+// MARK: - 3.1.1
+
+"setting.uirelated.useguestgachaevaluator" = "Let Pom-Pom evaluate the wishes instead";

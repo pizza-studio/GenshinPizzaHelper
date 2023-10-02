@@ -12,6 +12,14 @@ import SwiftUI
 // MARK: - DisplayOptionsView
 
 struct DisplayOptionsView: View {
+    // MARK: Public
+
+    @AppStorage(
+        "useGuestGachaEvaluator",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    public var useGuestGachaEvaluator: Bool = false
+
     // MARK: Internal
 
     var body: some View {
@@ -99,6 +107,12 @@ struct DisplayOptionsView: View {
             Section {
                 Toggle(isOn: $cutShouldersForSmallAvatarPhotos) {
                     Text("裁掉小尺寸角色照片当中的肩膀")
+                }
+            }
+
+            Section {
+                Toggle(isOn: $useGuestGachaEvaluator) {
+                    Text("setting.uirelated.useguestgachaevaluator")
                 }
             }
         }

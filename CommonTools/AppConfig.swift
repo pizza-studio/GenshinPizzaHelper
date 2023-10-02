@@ -93,4 +93,10 @@ extension AppConfig {
         store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     public static var cutShouldersForSmallAvatarPhotos: Bool = false
+
+    @AppStorage(
+        "useGuestGachaEvaluator",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
+    public static var useGuestGachaEvaluator: Bool = false
 }

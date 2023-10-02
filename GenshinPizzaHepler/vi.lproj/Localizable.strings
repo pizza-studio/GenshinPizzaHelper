@@ -1133,6 +1133,7 @@
 "限定五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao Giới Hạn";
 "不歪率" = "Tỉ Lệ 50/50";
 "派蒙的评价" = "Paimon's Review";
+"帕姆的评价" = "Pom-Pom's Review";
 "总消耗原石数" = "Tổng Số Lượng Nguyên Thạch";
 "五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao";
 "限定五星平均消耗原石数" = "Số Nguyên Thạch Cho Mỗi Cung Mệnh Nhân Vật 5 Sao Giới Hạn";
@@ -1370,3 +1371,7 @@
 "测距规" = "Máy Đo Cự Ly";
 "静水流涌之辉" = "Sắc Nước Lộng Lẫy";
 "水仙十字之剑" = "Lưỡi Kiếm Narzissenkreuz";
+
+// MARK: - 3.1.1
+
+"setting.uirelated.useguestgachaevaluator" = "Let Pom-Pom evaluate the wishes instead";
