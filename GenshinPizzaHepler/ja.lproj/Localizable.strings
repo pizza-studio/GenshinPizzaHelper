@@ -1361,4 +1361,4 @@
 
 "settings.uiRelated.useGuestGachaEvaluator" = "パムに跳躍の評価を";
 "detailPortal.errorMessage.noAccountAvailableForAbyssDisplay" = "ログインしてから深境螺旋記録が利用可能。";
-"detailPortal.errorMessage.accountHasNulledBasicInfo" = "アカウント資料には基本情報欠陥故障が発生しました。ご報告お願いいたします。";
+"detailPortal.errorMessage.accountHasNulledBasicInfo" = "アカウント資料には基本情報欠陥故障が発生しました。アカウント認証完了したかどうかをご確認ください。もし認証したとしてもこの故障が未解決だとしたら、ご報告お願いいたします。";

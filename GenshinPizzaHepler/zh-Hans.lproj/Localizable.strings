@@ -1359,4 +1359,4 @@ Created by Bill Haku on 2022/8/23.
 
 "settings.uiRelated.useGuestGachaEvaluator" = "改由帕姆评价祈愿";
 "detailPortal.errorMessage.noAccountAvailableForAbyssDisplay" = "当前没有账号登录，无法显示深境螺旋记录。";
-"detailPortal.errorMessage.accountHasNulledBasicInfo" = "当前本地帐号资料不包含基础资讯，请提报该故障。";
+"detailPortal.errorMessage.accountHasNulledBasicInfo" = "当前本地帐号数据不包含基础信息，请完成人机验证。如在完成之后仍出现该故障的话，请提报。";

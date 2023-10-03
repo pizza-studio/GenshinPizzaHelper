@@ -1361,4 +1361,4 @@
 
 "settings.uiRelated.useGuestGachaEvaluator" = "改由帕姆評價祈願 ";
 "detailPortal.errorMessage.noAccountAvailableForAbyssDisplay" = "當前沒有帳號登入，無法顯示深境螺旋記錄。";
-"detailPortal.errorMessage.accountHasNulledBasicInfo" = "當前本地帳號資料不包含基礎資訊，請提報該故障。";
+"detailPortal.errorMessage.accountHasNulledBasicInfo" = "當前本地帳號資料不包含基礎資訊，請完成真人認證。如在完成之後仍出現該故障的話，請提報。";
