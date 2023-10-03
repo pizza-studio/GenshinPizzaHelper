@@ -15,7 +15,7 @@
 "$asset.character:Mona" = "Mona";
 "$asset.character:Chongyun" = "Chongyun";
 "$asset.character:Qiqi" = "Qiqi";
-"$asset.character:Noel" = "Noelle";
+"$asset.character:Noelle" = "Noelle";
 "$asset.character:Bennett" = "Bennett";
 "$asset.character:Fischl" = "Fischl";
 "$asset.character:Klee" = "Klee";
@@ -624,65 +624,7 @@
 "（星期日所有材料均可获取）" = "(Lahat ng materyales ay makukuha itong Linggo)";
 
 // Char's name
-"空" = "Aether";
-"荧" = "Lumine";
-"琴" = "Jean";
-"安柏" = "Amber";
-"凯亚" = "Kaeya";
-"丽莎" = "Lisa";
-"温迪" = "Venti";
-"雷泽" = "Razor";
-"班尼特" = "Bennett";
-"诺艾尔" = "Noelle";
-"菲谢尔·冯·露弗施洛斯·那菲多特" = "Fischl von Luftschloss Narfidort";
-"迪卢克" = "Diluc";
-"可莉" = "Klee";
-"迪奥娜" = "Diona";
-"芭芭拉" = "Barbara";
-"砂糖" = "Sucrose";
-"阿贝多" = "Albedo";
-"莫娜" = "Mona";
-"罗莎莉亚" = "Rosaria";
-"优菈" = "Eula";
-"香菱" = "Xiangling";
-"刻晴" = "Keqing";
-"凝光" = "Ningguang";
-"七七" = "Qiqi";
-"行秋" = "Xingqiu";
-"重云" = "Chongyun";
-"北斗" = "Beidou";
-"辛焱" = "Xinyan";
-"钟离" = "Zhongli";
-"魈" = "Xiao";
-"甘雨" = "Ganyu";
-"胡桃" = "Hu Tao";
-"烟绯" = "Yanfei";
-"云堇" = "Yun Jin";
-"申鹤" = "Shenhe";
-"夜兰" = "Yelan";
-"枫原万叶" = "Kazuha";
-"宵宫" = "Yoimiya";
-"神里绫华" = "Ayaka";
-"神里绫人" = "Ayato";
-"托马" = "Thoma";
-"早柚" = "Sayu";
-"八重神子" = "Yae Miko";
-"荒泷一斗" = "Itto";
-"久岐忍" = "Shinobu";
-"五郎" = "Gorou";
-"珊瑚宫心海" = "Kokomi";
-"九条裟罗" = "Sara";
-"鹿野院平藏" = "Heizou";
-"雷电将军" = "Shogun";
-"提纳里" = "Tighnari";
-"柯莱" = "Collei";
-"多莉" = "Dori";
-"迪希雅" = "Dehya";
-"林尼" = "Lyney";
-"琳妮特" = "Lynette";
-"伊安珊" = "Iansan";
-"达达利亚" = "Tartaglia";
-"（未知角色）" = "(unknown)";
+"expedition.info.unknownCharacter.braced" = "(unknown)";
 
 // Errors description
 "请先刷新以获取树脂状态" = "I-refresh para makuha ang Genshin status";
@@ -873,158 +815,6 @@
 "日文" = "Wikang Hapon";
 "たお👻🍑" = "Hatti";
 
-// weapon names
-"单手剑" = "Sword";
-"双手剑" = "Claymore";
-"长柄武器" = "Polearm";
-"弓" = "Bow";
-"法器" = "Catalyst";
-"无锋剑" = "Dull Blade";
-"银剑" = "Silver Sword";
-"冷刃" = "Cool Steel";
-"黎明神剑" = "Harbinger of Dawn";
-"旅行剑" = "Traveler's Handy Sword";
-"吃虎鱼刀" = "Fillet Blade";
-"飞天御剑" = "Skyrider Sword";
-"西风剑" = "Favonius Sword";
-"笛剑" = "The Flute";
-"祭礼剑" = "Sacrificial Sword";
-"宗室长剑" = "Royal Longsword";
-"匣里龙吟" = "Lion's Roar";
-"试作斩岩" = "Prototype Rancour";
-"铁蜂刺" = "Iron Sting";
-"黑岩长剑" = "Blackcliff Longsword";
-"黑剑" = "The Black Sword";
-"降临之剑" = "Sword of Descension";
-"腐植之剑" = "Festering Desire";
-"暗巷闪光" = "The Alley Flash";
-"天目影打刀" = "Amenoma Kageuchi";
-"辰砂之纺锤" = "Cinnabar Spindle";
-"笼钓瓶一心" = "Kagotsurube Isshin";
-"原木刀" = "Sapwood Blade";
-"风鹰剑" = "Aquila Favonia";
-"天空之刃" = "Skyward Blade";
-"斫峰之刃" = "Summit Shaper";
-"磐岩结绿" = "Primordial Jade Cutter";
-"苍古自由之誓" = "Freedom-Sworn";
-"雾切之回光" = "Mistsplitter Reforged";
-"波乱月白经津" = "Haran Geppaku Futsu";
-"训练大剑" = "Waster Greatsword";
-"佣兵重剑" = "Old Merc's Pal";
-"铁影阔剑" = "Ferrous Shadow";
-"沐浴龙血之剑" = "Bloodtainted Greatsword";
-"白铁大剑" = "White Iron Greatsword";
-"以理服人" = "Debate Club";
-"飞天大御剑" = "Skyrider Greatsword";
-"西风大剑" = "Favonius Greatsword";
-"钟剑" = "The Bell";
-"祭礼大剑" = "Sacrificial Greatsword";
-"宗室大剑" = "Royal Greatsword";
-"雨裁" = "Rainslasher";
-"试作古华" = "Prototype Archaic";
-"白影剑" = "Whiteblind";
-"黑岩斩刀" = "Blackcliff Slasher";
-"螭骨剑" = "Serpent Spine";
-"雪葬的星银" = "Snow-Tombed Starsilver";
-"千岩古剑" = "Lithic Blade";
-"桂木斩长正" = "Katsuragikiri Nagamasa";
-"衔珠海皇" = "Luxurious Sea-Load";
-"恶王丸" = "Akuoumaru";
-"森林王器" = "Forest Regalia";
-"天空之傲" = "Skyward Pride";
-"狼的末路" = "Wolf's Gravestone";
-"无工之剑" = "The Unforged";
-"松籁响起之时" = "Song of Broken Pines";
-"赤角石溃杵" = "Redhorn Stonethresher";
-"新手长枪" = "Beginner's Protector";
-"铁尖枪" = "Iron Point";
-"白缨枪" = "White Tassel";
-"钺矛" = "Halberd";
-"黑缨枪" = "Black Tassel";
-"匣里灭辰" = "Dragon's Bane";
-"试作星镰" = "Prototype Starglitter";
-"流月针" = "Crescent Pike";
-"黑岩刺枪" = "Blackcliff Pole";
-"决斗之枪" = "Deathmatch";
-"西风长枪" = "Favonius Lance";
-"宗室猎枪" = "Royal Spear";
-"龙脊长枪" = "Dragonspine Spear";
-"千岩长枪" = "Lithic Lance";
-"喜多院十文字" = "Kitain Cross Spear";
-"渔获" = "The Catch";
-"断浪长鳍" = "Wavebreaker's Fin";
-"贯月矢" = "Moonpiercer";
-"和璞鸢" = "Primordial Jade Winged-Spear";
-"天空之脊" = "Skyward Spine";
-"贯虹之槊" = "Vortex Vanguisher";
-"护摩之杖" = "Staff of Homa";
-"薙草之稻光" = "Engulfing Lightning";
-"息灾" = "Calamity Queller";
-"猎弓" = "Hunter's Bow";
-"历练的猎弓" = "Seasoned Hunter's Bow";
-"鸦羽弓" = "Raven Bow";
-"神射手之誓" = "Sharpshooter's Oath";
-"反曲弓" = "Recurve Bow";
-"弹弓" = "Slingshot";
-"信使" = "Messenger";
-"西风猎弓" = "Favonius Warbow";
-"绝弦" = "The Stringless";
-"祭礼弓" = "Sacrificial Bow";
-"宗室长弓" = "Royal Bow";
-"弓藏" = "Rust";
-"试作澹月" = "Prototype Crescent";
-"钢轮弓" = "Compound Bow";
-"黑岩战弓" = "Blackcliff Warbow";
-"苍翠猎弓" = "The Viridescent Hunt";
-"暗巷猎手" = "Alley Hunter";
-"幽夜华尔兹" = "Mitternachts Waltz";
-"破魔之弓" = "Hamayumi";
-"曚云之月" = "Mouun's Moon";
-"落霞" = "Fading Twilight";
-"竭泽" = "End of the Line";
-"王下近侍" = "King's Squire";
-"天空之翼" = "Skyward Harp";
-"阿莫斯之弓" = "Amos' Bow";
-"终末嗟叹之诗" = "Elegy for the End";
-"飞雷之弦振" = "Thundering Pulse";
-"冬极白星" = "Polar Star";
-"若水" = "Aqua Simulacra";
-"猎人之径" = "Hunter's Path";
-"学徒笔记" = "Apprentice's Notes";
-"口袋魔导书" = "Pocket Grimoire";
-"魔导绪论" = "Magic Guide";
-"讨龙英杰谭" = "Thrilling Tales of Dragon Slayers";
-"异世界行记" = "Otherworldly Story";
-"翡玉法珠" = "Emerald Orb";
-"甲级宝珏" = "Twin Nephrite";
-"西风秘典" = "Favonius Codex";
-"流浪乐章" = "The Widsith";
-"祭礼残章" = "Sacrificial Fragments";
-"宗室秘法录" = "Royal Grimoire";
-"匣里日月" = "Solar Pearl";
-"试作金珀" = "Prototype Amber";
-"万国诸海图谱" = "Mappa Mare";
-"黑岩绯玉" = "Blackcliff Agate";
-"昭心" = "Eye of Perception";
-"忍冬之果" = "Frostbearer";
-"暗巷的酒与诗" = "Wine and Song";
-"嘟嘟可故事集" = "Dodoco Tales";
-"白辰之环" = "Hakushin Ring";
-"证誓之明瞳" = "Oathsworn Eye";
-"盈满之实" = "Fruit of Fulfillment";
-"天空之卷" = "Skyward Atlas";
-"四风原典" = "Lost Prayer to the Sacred Winds";
-"尘世之锁" = "Memory of Dust";
-"不灭月华" = "Everlasting Moonglow";
-"神乐之真意" = "Kagura's Verity";
-"西福斯的月光" = "Xiphos' Moonlight";
-"圣显之钥" = "Key of Khaj-Nisut";
-"玛海菈的水色" = "Makhaira Aquamarine";
-"风信之锋" = "Missive Windspear";
-"赤沙之杖" = "Staff of the Scarlet Sands";
-"流浪的晚星" = "Wandering Evenstar";
-"掠食者" = "Predator";
-
 // Add account
 "关于我们的工作原理" = "Paano kami gumagana?";
 "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。我们承诺，您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。" = "Para makuha ang resin at ibang data mula sa HoYoLAB, UID at login cookie ng account mo ay kailangan. Pagkatapos mag-login sa HoYoLAB, I-imbak namin ito locally at ang iyong private iCloud. Tapos, ang app namin ay gagamitin ang stored UID at cookie para makuha ang resin at ibang impormasyon katulad sa HoYoLAB app, tapos ipapakita sa widget. Ang pribadong impormasyon mo ay hindi ipapakita sa ibang lugar maliban sa HoYoLAB at iCloud, kasama kami, Ang iyong pribadong impormasyon ay mananatiling ligtas.";
@@ -1169,9 +959,6 @@
 "四星角色" = "4-star characters";
 "的所有角色" = "Owned Characters";
 "元素精通​" = "EM"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
-"纳西妲" = "Nahida";
-"莱依拉" = "Layla"; 
-"千夜浮梦" = "A Thousand Floating Dreams";
 
 // MARK: - 2.5.4 HOTFIX
 "账号状态异常，请前往米游社-旅行便笺重新验证" = "Ang katayuan ng account ay hindi normal, pumunta sa HoYoLAB upang muli ma-verify";
@@ -1309,25 +1096,10 @@
 "锁定屏幕小组件同步频率" = "Dalas ng pag-sync ng widget ng Lock Screen";
 "我知道了" = "Nakuha ko";
 
-// MARK: -2.7.3
-// Genshin v 3.2 new assets
-"珐露珊" = "Faruzan";
-"流浪者" = "Wanderer";
-"图莱杜拉的回忆" = "Tulaytullah's Remembrance";
-"东花坊时雨" = "Toukabou Shigure";
-
 // MARK: -2.7.4
 "「%@」的原粹树脂已回满。" = "%@'s origin resin ay puno na. ";
 
-// MARK: - 2.7.6
-"腐殖之剑" = "Festering Desire";
-"风花之颂" = "Windblume Ode";
-"「渔获」" = "The Catch";
-
 // MARK: - 2.7.8
-"瑶瑶" = "Yaoyao";
-"艾尔海森" = "Alhaitham";
-"裁叶萃光" = "Light of Foliar Incision";
 "settings.notification.disclaimer.onlyWorksWithNewNotifications" = "Tandaan: Ang mga pagbabago sa setting ng notification ay hindi magkakabisa para sa kasalukuyang naka-iskedyul na mga notification.";
 
 // MARK: - 2.7.9
@@ -1342,11 +1114,6 @@
 "酌情选用的角色" = "Discretionary na Characters";
 "普遍可用的角色" = "Mga magagamit na character na unibersal";
 "清空缓存 (%@MB)" = "Linisin ang Cache (%@MB)";
-
-// MARK: - 2.7.11
-"米卡" = "Mika";
-"苇海信标" = "Beacon of the Reed Sea";
-"饰铁之花" = "Mailed Flower";
 
 "暂无当前活动信息" = "No Current Event Infos";
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "Ang impormasyon tungkol sa events sa Genshin Impact ay ibinigay ng [Project Amber](https://ambr.top/)";
@@ -1370,13 +1137,6 @@
 "界面偏好设置" = "Mga setting ng UI";
 
 // MARK: - 2.8.0
-"琥珀玥" = "Amber Bead";
-"黑檀弓" = "Ebony Bow";
-"暗铁剑" = "Dark Iron Sword";
-"沐浴龙血的剑" = "Bloodtainted Greatsword";
-"石英大剑" = "Quartz";
-"「旗杆」" = "The Flagstaff";
-"翡玉法球" = "Emerald Orb";
 
 // Display Options
 "裁掉小尺寸角色照片当中的肩膀" = "Cut shoulders for small avatar photos";
@@ -1534,12 +1294,6 @@
 "开始导入？" = "Simulang mag-import?";
 "导入数据需要一段时间，请耐心等待。" = "Tumatagal ng ilang sandali upang mai-import ang data, maghintay…";
 
-// Genshin 3.6 new heros and weapons
-"白术" = "Baizhu";
-"卡维" = "Kaveh";
-"碧落之珑" = "Jadefall’s Splendor";
-
-
 "暂无五星祈愿记录" = "Walang 5-star wish record ngayon";
 "成功将祈愿链接复制到剪贴板" = "Na kopya ang link na nais sa clipboard";
 
@@ -1560,11 +1314,6 @@
 "如何从《提瓦特小助手》导入？" = "Paano mag import mula sa \"提瓦特小助手\"?";
 "如何从paimon.moe导入？" = "Paano mag import mula sa paimon.moe?";
 "教程" = "Pagtuturo";
-
-// MARK: - 2.8.3
-
-"绮良良" = "Kirara";
-"鹮穿之喙" = "Ibis Piercer";
 
 // MARK: - 2.8.5
 
@@ -1594,41 +1343,12 @@
 
 // MARK: - 3.0.5
 
-"菲米尼" = "Freminet";
-"狼牙" = "Wolf-Fang";
-"海渊终曲" = "Finale of the Deep";
-"灰河渡手" = "Fleuve Cendre Ferryman";
-"聊聊棒" = "Talking Stick";
-"浪影阔剑" = "Tidal Shadow";
-"峡湾长歌" = "Ballad of the Fjords";
-"公义的酬报" = "Rightful Reward";
-"遗祀玉珑" = "Sacrificial Jade";
-"纯水流华" = "Flowing Purity";
-"烈阳之嗣" = "Scion of the Blazing Sun";
-"静谧之曲" = "Song of Stillness";
-"最初的大魔术" = "The First Great Magic";
 "「公平」" = "Equity";
 "「正义」" = "Justice";
 "「秩序」" = "Order";
 "「悠古弦音」" = "Ancient Chord";
 "「纯圣露滴」" = "Pure Sacred Dewdrop";
 "「无垢之海」" = "Goblet of the Pristine Sea";
-
-// MARK: - 3.1.0
-
-"那维莱特" = "Neuvillette";
-"夏洛蒂" = "Charlotte";
-"芙宁娜" = "Furina";
-"莱欧斯利" = "Wriothesley";
-"船坞长剑" = "The Dockhand's Assistant";
-"勘探钻机" = "Prospector's Drill";
-"便携动力锯" = "Portable Power Saw";
-"金流监督" = "Cashflow Supervision";
-"万世流涌大典" = "Tome of the Eternal Flow";
-"无垠蔚蓝之歌" = "Ballad of the Boundless Blue";
-"测距规" = "Range Gauge";
-"静水流涌之辉" = "Splendor of Still Waters";
-"水仙十字之剑" = "Sword of Narzissenkreuz";
 
 // MARK: - 3.1.1
 

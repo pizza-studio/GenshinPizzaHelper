@@ -12,82 +12,82 @@ import SwiftUI
 
 /// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
 public enum CharacterAsset: Int, CaseIterable {
-    case Hotaru = 10000089
-    case Sora = 10000088
-    case Sucrose = 10000086
-    case Keqing = 10000087
-    case Mona = 10000085
-    case Chongyun = 10000083
-    case Qiqi = 10000084
-    case Noel = 10000061
-    case Bennett = 10000081
-    case Fischl = 10000082
-    case Klee = 10000080
-    case Ningguang = 10000079
-    case Xingqiu = 10000077
-    case Beidou = 10000078
-    case Xiangling = 10000075
-    case Venti = 10000076
-    case Ambor = 10000074
-    case Razor = 10000073
-    case Diluc = 10000070
-    case Kaeya = 10000071
-    case Barbara = 10000072
-    case Lisa = 10000068
-    case Jean = 10000067
-    case Diona = 10000069
-    case Tartaglia = 10000059
-    case Xinyan = 10000065
-    case Zhongli = 10000060
-    case Albedo = 10000066
-    case Ganyu = 10000058
-    case Xiao = 10000063
-    case Hutao = 10000064
-    case Rosaria = 10000055
-    case Yanfei = 10000057
-    case Eula = 10000050
-    case Kazuha = 10000054
-    case Ayaka = 10000052
-    case Sayu = 10000056
-    case Yoimiya = 10000062
-    case Aloy = 10000049
-    case Sara = 10000053
-    case Ei = 10000002
-    case Kokomi = 10000047
-    case Thoma = 10000051
-    case Itto = 10000048
-    case Gorou = 10000045
-    case Yunjin = 10000046
-    case Shenhe = 10000026
-    case Miko = 10000037
-    case Ayato = 10000038
-    case Yelan = 10000030
-    case Shinobu = 10000044
-    case Heizo = 10000033
-    case Tighnari = 10000039
-    case Collei = 10000003
-    case Dori = 10000006
-    case Candace = 10000014
-    case Cyno = 10000015
-    case Nilou = 10000016
-    case Nahida = 10000020
-    case Layla = 10000021
-    case Faruzan = 10000022
-    case Kunikuzushi = 10000023
-    case Alhaitham = 10000024
-    case Yaoyao = 10000025
-    case Dehya = 10000027
-    case Mika = 10000029
-    case Baizhu = 10000031
-    case Kaveh = 10000032
-    case Kirara = 10000034
-    case Lyney = 10000035
-    case Lynette = 10000036
-    case Freminet = 10000041
-    case Neuvillette = 10000042
-    case Wriothesley = 10000043
-    case Charlotte = 10000005
-    case Furina = 10000007
+    case Hotaru = 10000007
+    case Sora = 10000005
+    case Sucrose = 10000043
+    case Keqing = 10000042
+    case Mona = 10000041
+    case Chongyun = 10000036
+    case Qiqi = 10000035
+    case Noelle = 10000034
+    case Bennett = 10000032
+    case Fischl = 10000031
+    case Klee = 10000029
+    case Ningguang = 10000027
+    case Xingqiu = 10000025
+    case Beidou = 10000024
+    case Xiangling = 10000023
+    case Venti = 10000022
+    case Ambor = 10000021
+    case Razor = 10000020
+    case Diluc = 10000016
+    case Kaeya = 10000015
+    case Barbara = 10000014
+    case Lisa = 10000006
+    case Jean = 10000003
+    case Diona = 10000039
+    case Tartaglia = 10000033
+    case Xinyan = 10000044
+    case Zhongli = 10000030
+    case Albedo = 10000038
+    case Ganyu = 10000037
+    case Xiao = 10000026
+    case Hutao = 10000046
+    case Rosaria = 10000045
+    case Yanfei = 10000048
+    case Eula = 10000051
+    case Kazuha = 10000047
+    case Ayaka = 10000002
+    case Sayu = 10000053
+    case Yoimiya = 10000049
+    case Aloy = 10000062
+    case Sara = 10000056
+    case Ei = 10000052
+    case Kokomi = 10000054
+    case Thoma = 10000050
+    case Itto = 10000057
+    case Gorou = 10000055
+    case Yunjin = 10000064
+    case Shenhe = 10000063
+    case Miko = 10000058
+    case Ayato = 10000066
+    case Yelan = 10000060
+    case Shinobu = 10000065
+    case Heizo = 10000059
+    case Tighnari = 10000069
+    case Collei = 10000067
+    case Dori = 10000068
+    case Candace = 10000072
+    case Cyno = 10000071
+    case Nilou = 10000070
+    case Nahida = 10000073
+    case Layla = 10000074
+    case Faruzan = 10000076
+    case Kunikuzushi = 10000075
+    case Alhaitham = 10000078
+    case Yaoyao = 10000077
+    case Dehya = 10000079
+    case Mika = 10000080
+    case Baizhu = 10000082
+    case Kaveh = 10000081
+    case Kirara = 10000061
+    case Lyney = 10000084
+    case Lynette = 10000083
+    case Freminet = 10000085
+    case Neuvillette = 10000087
+    case Wriothesley = 10000086
+    case Charlotte = 10000088
+    case Furina = 10000089
 }
 
 extension CharacterAsset {
@@ -111,6 +111,23 @@ extension CharacterAsset {
 }
 
 extension CharacterAsset {
+    public var officialRawNameInEnglish: String {
+        guard let path = Bundle.main.path(forResource: "en", ofType: "lproj"), let bundle = Bundle(path: path) else {
+            return String(describing: self)
+        }
+        return NSLocalizedString("$asset.character:" + String(describing: self), bundle: bundle, comment: "")
+    }
+
+    public var officialSimplifiedChineseName: String {
+        guard let path = Bundle.main.path(forResource: "zh-Hans", ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            return String(describing: self)
+        }
+        return NSLocalizedString("$asset.character:" + String(describing: self), bundle: bundle, comment: "")
+    }
+}
+
+extension CharacterAsset {
     public var photoFileName: String {
         switch self {
         case .Hotaru: return "UI_AvatarIcon_PlayerGirl"
@@ -120,7 +137,7 @@ extension CharacterAsset {
         case .Mona: return "UI_AvatarIcon_Mona"
         case .Chongyun: return "UI_AvatarIcon_Chongyun"
         case .Qiqi: return "UI_AvatarIcon_Qiqi"
-        case .Noel: return "UI_AvatarIcon_Noel"
+        case .Noelle: return "UI_AvatarIcon_Noel"
         case .Bennett: return "UI_AvatarIcon_Bennett"
         case .Fischl: return "UI_AvatarIcon_Fischl"
         case .Klee: return "UI_AvatarIcon_Klee"
@@ -201,7 +218,7 @@ extension CharacterAsset {
         case .Mona: return .UI_NameCardPic_Mona_P
         case .Chongyun: return .UI_NameCardPic_Chongyun_P
         case .Qiqi: return .UI_NameCardPic_Qiqi_P
-        case .Noel: return .UI_NameCardPic_Noel_P
+        case .Noelle: return .UI_NameCardPic_Noel_P
         case .Bennett: return .UI_NameCardPic_Bennett_P
         case .Fischl: return .UI_NameCardPic_Fischl_P
         case .Klee: return .UI_NameCardPic_Klee_P

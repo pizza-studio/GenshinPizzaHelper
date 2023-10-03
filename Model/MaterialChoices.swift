@@ -319,7 +319,7 @@ extension WeaponOrTalentMaterial {
             .init(character: .Diluc),
             .init(character: .Eula),
             .init(character: .Mona),
-            .init(character: .Noel),
+            .init(character: .Noelle),
             .init(character: .Jean),
             .init(character: .Razor),
         ]

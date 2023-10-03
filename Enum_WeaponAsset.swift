@@ -198,6 +198,23 @@ extension WeaponAsset {
 }
 
 extension WeaponAsset {
+    public var officialRawNameInEnglish: String {
+        guard let path = Bundle.main.path(forResource: "en", ofType: "lproj"), let bundle = Bundle(path: path) else {
+            return String(describing: self)
+        }
+        return NSLocalizedString("$asset.weapon:" + String(describing: self), bundle: bundle, comment: "")
+    }
+
+    public var officialSimplifiedChineseName: String {
+        guard let path = Bundle.main.path(forResource: "zh-Hans", ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            return String(describing: self)
+        }
+        return NSLocalizedString("$asset.weapon:" + String(describing: self), bundle: bundle, comment: "")
+    }
+}
+
+extension WeaponAsset {
     public var filename: String { filenameNotAwaken + "_Awaken" }
 
     public var filenameNotAwaken: String {

@@ -15,7 +15,7 @@
 "$asset.character:Mona" = "Mona";
 "$asset.character:Chongyun" = "Chongyun";
 "$asset.character:Qiqi" = "Qiqi";
-"$asset.character:Noel" = "Noelle";
+"$asset.character:Noelle" = "Noelle";
 "$asset.character:Bennett" = "Bennett";
 "$asset.character:Fischl" = "Fischl";
 "$asset.character:Klee" = "Klee";
@@ -747,69 +747,7 @@
 "（星期日所有材料均可获取）" = "(Tất cả Tất Cả NL Đều Mở Vào Ngày Chủ Nhật)";
 
 // Char's name
-"空" = "Aether";
-"荧" = "Lumine";
-"琴" = "Jean";
-"安柏" = "Amber";
-"凯亚" = "Kaeya";
-"丽莎" = "Lisa";
-"温迪" = "Venti";
-"雷泽" = "Razor";
-"班尼特" = "Bennett";
-"诺艾尔" = "Noelle";
-"菲谢尔·冯·露弗施洛斯·那菲多特" = "Fischl von Luftschloss Narfidort";
-"迪卢克" = "Diluc";
-"可莉" = "Klee";
-"迪奥娜" = "Diona";
-"芭芭拉" = "Barbara";
-"砂糖" = "Sucrose";
-"阿贝多" = "Albedo";
-"莫娜" = "Mona";
-"罗莎莉亚" = "Rosaria";
-"优菈" = "Eula";
-"香菱" = "Xiangling";
-"刻晴" = "Keqing";
-"凝光" = "Ningguang";
-"七七" = "Qiqi";
-"行秋" = "Xingqiu";
-"重云" = "Chongyun";
-"北斗" = "Beidou";
-"辛焱" = "Xinyan";
-"钟离" = "Zhongli";
-"魈" = "Xiao";
-"甘雨" = "Ganyu";
-"胡桃" = "Hu Tao";
-"烟绯" = "Yanfei";
-"云堇" = "Yun Jin";
-"申鹤" = "Shenhe";
-"夜兰" = "Yelan";
-"枫原万叶" = "Kazuha";
-"宵宫" = "Yoimiya";
-"神里绫华" = "Ayaka";
-"神里绫人" = "Ayato";
-"托马" = "Thoma";
-"早柚" = "Sayu";
-"八重神子" = "Yae Miko";
-"荒泷一斗" = "Itto";
-"久岐忍" = "Shinobu";
-"五郎" = "Gorou";
-"珊瑚宫心海" = "Kokomi";
-"九条裟罗" = "Sara";
-"鹿野院平藏" = "Heizou";
-"雷电将军" = "Shogun";
-"赛诺" = "Cyno";
-"提纳里" = "Tighnari";
-"柯莱" = "Collei";
-"多莉" = "Dori";
-"艾尔海森" = "Alhaitham";
-"迪希雅" = "Dehya";
-"妮露" = "Nilou";
-"纳西妲" = "Nahida";
-"林尼" = "Lyney";
-"琳妮特" = "Lynette";
-"伊安珊" = "Iansan";
-"达达利亚" = "Tartaglia";
-"（未知角色）" = "(unknown)";
+"expedition.info.unknownCharacter.braced" = "(unknown)";
 
 // Errors description
 "请先刷新以获取树脂状态" = "Vui lòng làm mới để nhận trạng thái của game";
@@ -1013,158 +951,6 @@
 "日文" = "Tiếng Nhật";
 "たお👻🍑" = "Hatti";
 
-// weapon names
-"单手剑" = "Kiếm Đơn";
-"双手剑" = "Trọng Kiếm";
-"长柄武器" = "Vũ Khí Cán Dài";
-"弓" = "Cung";
-"法器" = "Pháp Khí";
-"无锋剑" = "Vô Phong Kiếm";
-"银剑" = "Kiếm Bạc";
-"冷刃" = "Lãnh Nhẫn";
-"黎明神剑" = "Thần Kiếm Lê Minh";
-"旅行剑" = "Kiếm Lữ Hành";
-"吃虎鱼刀" = "Đao Săn Cá";
-"飞天御剑" = "Kiếm Phi Thiên";
-"西风剑" = "Tây Phong Kiếm";
-"笛剑" = "Kiếm Sáo";
-"祭礼剑" = "Kiếm Tế Lễ";
-"宗室长剑" = "Trường Kiếm Tông Thất";
-"匣里龙吟" = "Tiếng Hét Của Rồng";
-"试作斩岩" = "Mẫu Trảm Nham";
-"铁蜂刺" = "Thiết Phong Kích";
-"黑岩长剑" = "Hắc Nham Trường Kiếm";
-"黑剑" = "Kiếm Đen";
-"降临之剑" = "Kiếm Giáng Lâm";
-"腐植之剑" = "Răng Nanh Rỉ Sét";
-"暗巷闪光" = "Tia Sáng Nơi Hẻm Tối";
-"天目影打刀" = "Đoản Đao Amenoma";
-"辰砂之纺锤" = "Con Thoi Chu Sa";
-"笼钓瓶一心" = "Kagotsurube Isshin";
-"原木刀" = "Kiếm Gỗ";
-"风鹰剑" = "Phong Ưng Kiếm";
-"天空之刃" = "Kiếm Thiên Không";
-"斫峰之刃" = "Kiếm Chước Phong";
-"磐岩结绿" = "Bàn Nham Kết Lục";
-"苍古自由之誓" = "Lời Thề Tự Do Cổ Xưa";
-"雾切之回光" = "Ánh Sáng Đêm Xương Mù";
-"波乱月白经津" = "Haran Geppaku Futsu";
-"训练大剑" = "Kiếm Huấn Luyện";
-"佣兵重剑" = "Kiếm Dụng Binh";
-"铁影阔剑" = "Kiếm Thiết Ảnh";
-"沐浴龙血之剑" = "Kiếm Huyết Rồng";
-"白铁大剑" = "Kiếm Bạch Thiết";
-"以理服人" = "Gậy Thu Phục";
-"飞天大御剑" = "Đại Kiếm Phi Thiên";
-"西风大剑" = "Đại Kiếm Tây Phong";
-"钟剑" = "Kiếm Chuông";
-"祭礼大剑" = "Đại Kiếm Tế Lễ";
-"宗室大剑" = "Đại Kiếm Tông Thất";
-"雨裁" = "Vũ Tài";
-"试作古华" = "Mẫu Cổ Hoa";
-"白影剑" = "Kiếm Bạch Ảnh";
-"黑岩斩刀" = "Hắc Nham Trảm Đao";
-"螭骨剑" = "Kiếm Li Cốt";
-"雪葬的星银" = "Tuyết Vùi Tinh Ngân";
-"千岩古剑" = "Thiên Nham Cổ Kiếm";
-"桂木斩长正" = "Trường Đao Katsuragikiri";
-"衔珠海皇" = "Vua Biển Hàng Hiệu";
-"恶王丸" = "Akuoumaru";
-"森林王器" = "Vương Khí Rừng Sâu";
-"天空之傲" = "Thiên Không Kiêu Ngạo";
-"狼的末路" = "Đường Cùng Của Sói ( Kiếm Chó :v )";
-"无工之剑" = "Kiếm Vô Công";
-"松籁响起之时" = "Tiếng Gió Trong Rừng Thông";
-"赤角石溃杵" = "Xích Giác Phá Thạch Đao";
-"新手长枪" = "Thương Tân Thủ";
-"铁尖枪" = "Thương Sắt";
-"白缨枪" = "Thương Bạch Anh";
-"钺矛" = "Thuẫn Kích";
-"黑缨枪" = "Hắc Anh Thương";
-"匣里灭辰" = "Tai Ương Của Rồng";
-"试作星镰" = "Mẫu Tinh Liêm";
-"流月针" = "Lưu Nguyệt Châm";
-"黑岩刺枪" = "Thương Hắc Nham";
-"决斗之枪" = "Thương Quyết Chiến";
-"西风长枪" = "Thương Tây Phong";
-"宗室猎枪" = "Thương Săn Tông Thất";
-"龙脊长枪" = "Thương Long Tích";
-"千岩长枪" = "Thương Thiên Nham";
-"喜多院十文字" = "Giáo Thập Tự Kitain";
-"渔获" = "Lao Xiên Cá";
-"断浪长鳍" = "Vây Cá Chẻ Sóng ( Phóng Lợn :v )";
-"贯月矢" = "Quán Nguyệt Thương";
-"和璞鸢" = "Hoà Phác Diên";
-"天空之脊" = "Xương Sống Thiên Không";
-"贯虹之槊" = "Giáo Nịnh Thần";
-"护摩之杖" = "Trượng Hộ Ma";
-"薙草之稻光" = "Đoạn Thảo Trường Đao";
-"息灾" = "Huỷ Diệt";
-"猎弓" = "Cung Săn Bắn";
-"历练的猎弓" = "Cung Săn Bắn Tôi Luyện";
-"鸦羽弓" = "Cung Lông Quạ";
-"神射手之誓" = "Lời Thề Xạ Thủ Thần";
-"反曲弓" = "Cung Phản Khúc";
-"弹弓" = "Nỏ Kéo";
-"信使" = "Tín Sứ";
-"西风猎弓" = "Cung Tây Phong";
-"绝弦" = "Tuyệt Huyền";
-"祭礼弓" = "Cung Tế Lễ";
-"宗室长弓" = "Trường Cung Tông Thất";
-"弓藏" = "Cung Rỉ Sét";
-"试作澹月" = "Mẫu Đạm Nguyệt";
-"钢轮弓" = "Cung Thép";
-"黑岩战弓" = "Cung Hắc Nham";
-"苍翠猎弓" = "Cung Sắc Xanh";
-"暗巷猎手" = "Thợ Săn Hẻm Tối";
-"幽夜华尔兹" = "Điệu Van Ban Đêm";
-"破魔之弓" = "Cung Trừ Ma";
-"曚云之月" = "Ánh Trăng Mouun";
-"落霞" = "Lạc Hà";
-"竭泽" = "Sông Cạn";
-"王下近侍" = "Cận Vệ Nhà Vua";
-"天空之翼" = "Cánh Thiên Không";
-"阿莫斯之弓" = "Cung Amos";
-"终末嗟叹之诗" = "Tiếng Thở Dài Vô Tận";
-"飞雷之弦振" = "Sấm Sét Rung Động";
-"冬极白星" = "Ngôi Sao Cực Đông";
-"若水" = "Nhược Thuỷ";
-"猎人之径" = "Con Đường Thợ Săn";
-"学徒笔记" = "Nhật Ký Học Sinh";
-"口袋魔导书" = "Sổ Tay Ma Pháp";
-"魔导绪论" = "Tóm Tắt Ma Pháp";
-"讨龙英杰谭" = "Câu Chuyện Diệt Rồng";
-"异世界行记" = "Tiểu Thuyết Dị Giới";
-"翡玉法珠" = "Quả Cầu Ngọc";
-"甲级宝珏" = "Ngọc Sinh Đôi";
-"西风秘典" = "Tây Phong Mật Điển";
-"流浪乐章" = "Chương Nhạc Lang Thang";
-"祭礼残章" = "Mảnh Chương Tế Lễ";
-"宗室秘法录" = "Mật Pháp Tông Thất";
-"匣里日月" = "Nhật Nguyệt Hạp";
-"试作金珀" = "Mẫu Kim Phách";
-"万国诸海图谱" = "Hải Đồ Vạn Quốc";
-"黑岩绯玉" = "Hắc Nham Phỉ Ngọc";
-"昭心" = "Chiêu Tâm";
-"忍冬之果" = "Trái Chịu Lạnh";
-"暗巷的酒与诗" = "Rượu Và Thơ Nơi Hẻm Tối";
-"嘟嘟可故事集" = "Tuyển Tập Các Câu Chuyện Về Dodoco";
-"白辰之环" = "Vòng Bạch Thần";
-"证誓之明瞳" = "Con Ngươi Tuyên Thệ";
-"盈满之实" = "Quả Mọng";
-"天空之卷" = "Quyển Thiên Không";
-"四风原典" = "Điển Tích Tây Phong";
-"尘世之锁" = "Khoá Trần Thế";
-"不灭月华" = "Vầng Trăng Bất Diệt";
-"神乐之真意" = "Chân Ý Của Kagura";
-"西福斯的月光" = "Ánh Trăng Xiphos";
-"圣显之钥" = "Chìa Khóa Khaj-Nisut";
-"玛海菈的水色" = "Sắc Nước Makhaira";
-"风信之锋" = "Mũi Nhọn Của Gió";
-"赤沙之杖" = "Quyền Trượng Cát Đỏ";
-"流浪的晚星" = "Sao Đêm Rong Ruổi";
-"掠食者" = "Kẻ Săn Mồi";
-
 // Add account
 "关于我们的工作原理" = "Chúng làm việc như thế nào??";
 "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。我们承诺，您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。" = "Để lấy nhựa và dữ liệu khác từ HoYoLAB, cần có UID và cookie đăng nhập của tài khoản của bạn. Sau khi đăng nhập vào HoYoLAB, chúng tôi sẽ lưu trữ chúng cục bộ cũng như trên iCloud riêng tư của bạn. Sau đó, ứng dụng của chúng tôi sẽ sử dụng UID và cookie được lưu trữ để lấy nhựa và các thông tin khác theo cách tương tự như ứng dụng HoYoLAB, sau đó hiển thị chúng trên tiện ích của bạn. Thông tin cá nhân của bạn sẽ không được gửi đến những nơi khác ngoài HoYoLAB và iCloud, kể cả chúng tôi, vì vậy thông tin cá nhân của bạn sẽ rất an toàn.";
@@ -1311,9 +1097,6 @@
 "的所有角色" = "Nhân Vật Sở Hữu";
 "生命值上限" = "HP";
 "元素精通​" = "TTNT"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
-"纳西妲" = "Nahida";
-"莱依拉" = "Layla";
-"千夜浮梦" = "Cõi Mộng Ngàn Đêm";
 
 // MARK: - 2.5.4 HOTFIX
 "账号状态异常，请前往米游社-旅行便笺重新验证" = "Trạng thái tài khoản bất thường, vui lòng vào HoYoLAB để xác minh lại";
@@ -1461,25 +1244,10 @@
 "锁定屏幕小组件同步频率" = "Tần suất đồng bộ tiện ích màn hình khóa";
 "我知道了" = "Tôi hiểu rồi";
 
-// MARK: -2.7.3
-// Genshin v 3.2 new assets
-"珐露珊" = "Faruzan";
-"流浪者" = "Kẻ Lang Thang";
-"图莱杜拉的回忆" = "Hồi Ức Tulaytullah";
-"东花坊时雨" = "Toukabou Shigure";
-
 // MARK: -2.7.4
 "「%@」的原粹树脂已回满。" = "%@'s nhựa đã đầy. ";
 
-// MARK: - 2.7.6
-"腐殖之剑" = "Răng Nanh Rỉ Sét";
-"风花之颂" = "Bài Ca Hoa Gió";
-"「渔获」" = "Lao Xiên Cá";
-
 // MARK: - 2.7.8
-"瑶瑶" = "Yaoyao";
-"艾尔海森" = "Alhaitham";
-"裁叶萃光" = "Ánh Lá Phán Quyết";
 "settings.notification.disclaimer.onlyWorksWithNewNotifications" = "Lưu ý: Các thay đổi Cài Đặt thông báo sẽ không có hiệu lực đối với các thông báo hiện được lên lịch.";
 
 // MARK: - 2.7.9
@@ -1494,11 +1262,6 @@
 "酌情选用的角色" = "Nhân vật vai trò có sẵn";
 "普遍可用的角色" = "Nhân vật phổ biến";
 "清空缓存 (%@MB)" = "Xoá bộ nhớ cache (%@MB)";
-
-// MARK: - 2.7.11
-"米卡" = "Mika";
-"苇海信标" = "Hải Đăng Bờ Biển Lau";
-"饰铁之花" = "Đóa Hoa Tôn Màu Thép";
 
 "暂无当前活动信息" = "Hiện tại không có thông tin sự kiện nào";
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Amber](https://ambr.top/)";
@@ -1522,13 +1285,6 @@
 "界面偏好设置" = "Tùy Chọn Giao Diện";
 
 // MARK: - 2.8.0
-"琥珀玥" = "Hổ Phách Nguyệt";
-"黑檀弓" = "Cung Hắc Đàn";
-"暗铁剑" = "Kiếm Sắt Đen";
-"沐浴龙血的剑" = "Kiếm Huyết Rồng";
-"石英大剑" = "Quartz";
-"「旗杆」" = "The Flagstaff";
-"翡玉法球" = "Quả Cầu Ngọc";
 
 // artifact rating
 "%@分" = "%@pt";
@@ -1688,11 +1444,6 @@
 "开始导入？" = "Bắt đầu nhập ?";
 "导入数据需要一段时间，请耐心等待。" = "Quá trình nhập dữ liệu hơi lâu, vui lòng đợi…";
 
-// Genshin 3.6 new heros and weapons
-"白术" = "Baizhu";
-"卡维" = "Kaveh";
-"碧落之珑" = "Ngọc Bích Huy Hoàng";
-
 
 "暂无五星祈愿记录" = "Hiện không có bản ghi nguyện vọng 5 sao";
 "成功将祈愿链接复制到剪贴板" = "Sao chép liên kết nguyện vọng vào bảng tạm thành công";
@@ -1714,11 +1465,6 @@
 "如何从《提瓦特小助手》导入？" = "Làm thế nào để nhập từ \"提瓦特小助手\"?";
 "如何从paimon.moe导入？" = "Làm thế nào để nhập từ Paimon.moe?";
 "教程" = "Hướng Dẫn";
-
-// MARK: - 2.8.3
-
-"绮良良" = "Kirara";
-"鹮穿之喙" = "Mỏ Cò Xuyên Thấu";
 
 // MARK: - 2.8.5
 
@@ -1748,41 +1494,12 @@
 
 // MARK: - 3.0.5
 
-"菲米尼" = "Freminet";
-"狼牙" = "Nanh Sói";
-"海渊终曲" = "Nhạc Khúc Biển Sâu";
-"灰河渡手" = "Ống Đồng Fleuve Cendre";
-"聊聊棒" = "Gậy Đàm Phán";
-"浪影阔剑" = "Bóng Tối Thủy Triều";
-"峡湾长歌" = "Khúc Ca Vịnh Hẹp";
-"公义的酬报" = "Thù Lao Của Chính Nghĩa";
-"遗祀玉珑" = "Ngọc Bích Hiến Tế";
-"纯水流华" = "Dòng Chảy Tinh Khiết";
-"烈阳之嗣" = "Hậu Duệ Mặt Trời";
-"静谧之曲" = "Khúc Ca Tĩnh Lặng";
-"最初的大魔术" = "Màn Ảo Thuật Đầu Tiên";
 "「公平」" = "Công Bằng";
 "「正义」" = "Chính Nghĩa";
 "「秩序」" = "Trật Tự";
 "「悠古弦音」" = "Cung Đàn Cổ Xưa";
 "「纯圣露滴」" = "Giọt Sương Thánh Thuần";
 "「无垢之海」" = "Của Biển Nguyên Sơ";
-
-// MARK: - 3.1.0
-
-"那维莱特" = "Neuvillette";
-"夏洛蒂" = "Charlotte";
-"芙宁娜" = "Furina";
-"莱欧斯利" = "Wriothesley";
-"船坞长剑" = "Kiếm Bến Tàu";
-"勘探钻机" = "Mũi Khoan Thăm Dò";
-"便携动力锯" = "Máy Cưa Cầm Tay";
-"金流监督" = "Quản Đốc Vàng Ròng";
-"万世流涌大典" = "Nghi Thức Dòng Chảy Vĩnh Hằng";
-"无垠蔚蓝之歌" = "Khúc Ca Xanh Bao La";
-"测距规" = "Máy Đo Cự Ly";
-"静水流涌之辉" = "Sắc Nước Lộng Lẫy";
-"水仙十字之剑" = "Lưỡi Kiếm Narzissenkreuz";
 
 // MARK: - 3.1.1
 
