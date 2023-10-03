@@ -234,7 +234,7 @@ extension CreateLiveActivityError: LocalizedError {
         case .notAllowed:
             return "系统设置不允许本软件开启实时活动，请前往开启".localized
         case .noInfo:
-            return "帐号未获取信息".localized
+            return "账号未获取信息".localized
         case let .otherError(message):
             return String(
                 format: NSLocalizedString("未知错误：%@", comment: ""),

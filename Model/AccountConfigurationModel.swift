@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/8/9.
-//  基于CoreData配置帐号所需核心信息
+//  基于CoreData配置账号所需核心信息
 
 import CoreData
 import Foundation
@@ -57,7 +57,7 @@ class AccountConfigurationModel {
     let container: NSPersistentCloudKitContainer
 
     func fetchAccountConfigs() -> [AccountConfiguration] {
-        // 从Core Data更新帐号信息
+        // 从Core Data更新账号信息
         container.viewContext.refreshAllObjects()
         let request =
             NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
@@ -73,7 +73,7 @@ class AccountConfigurationModel {
     }
 
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
-        // 新增帐号至Core Data
+        // 新增账号至Core Data
         let newAccount = AccountConfiguration(context: container.viewContext)
         newAccount.name = name
         newAccount.uid = uid

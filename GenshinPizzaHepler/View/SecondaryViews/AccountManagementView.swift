@@ -24,7 +24,7 @@ struct AccountManagementView: View {
             mainView()
                 .navigationViewStyle(.stack)
         }
-        .navigationBarTitle("我的帐号", displayMode: .inline)
+        .navigationBarTitle("我的账号", displayMode: .inline)
     }
 
     @ViewBuilder
@@ -48,11 +48,11 @@ struct AccountManagementView: View {
                         }
                 }
                 NavigationLink(destination: AddAccountView()) {
-                    Label("添加帐号", systemImage: "plus.circle")
+                    Label("添加账号", systemImage: "plus.circle")
                 }
             } header: {
                 HStack {
-                    Text("我的帐号")
+                    Text("我的账号")
                     Spacer()
                     EditModeButton(editMode: $editMode)
                 }

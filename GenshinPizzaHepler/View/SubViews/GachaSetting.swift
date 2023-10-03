@@ -85,7 +85,7 @@ struct GachaSetting: View {
             }
 
             Section {
-                Picker("选择帐号", selection: $account) {
+                Picker("选择账号", selection: $account) {
                     Group {
                         Text("未选择").tag(String?(nil))
                         ForEach(

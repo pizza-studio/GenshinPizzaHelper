@@ -12,7 +12,7 @@ import SwiftUI
 // MARK: - ThirdPartyToolsView
 
 // 因应群内多数用户的要求，将「小工具」由 ToolsView 挪到这里。
-// 因为无法知道当前玩家固定了哪个帐号，所以会根据当前登入帐号数量来显示多个原神计算器入口。
+// 因为无法知道当前玩家固定了哪个账号，所以会根据当前登入账号数量来显示多个原神计算器入口。
 
 public struct ThirdPartyToolsView: View {
     // MARK: Public
@@ -45,7 +45,7 @@ public struct ThirdPartyToolsView: View {
 }
 
 extension ThirdPartyToolsView {
-    /// 如果同时登入了多个帐号的话，就给每个帐号显示对应的计算器入口、
+    /// 如果同时登入了多个账号的话，就给每个账号显示对应的计算器入口、
     /// 且会同时给每个入口显示 UID 脚注。
     /// - Returns: View()
     @ViewBuilder
@@ -89,7 +89,7 @@ extension ThirdPartyToolsView {
         }
     }
 
-    /// 检测当前登入的帐号数量，做综合统计。
+    /// 检测当前登入的账号数量，做综合统计。
     /// 如果发现同时有登入国服与国际服的话，则同时显示两个不同区服的提瓦特互动地图的入口。
     /// 如果只有一个的话，会按需显示对应的那一个、且不会显示用以区分两者的 Emoji。
     /// - Returns: View()

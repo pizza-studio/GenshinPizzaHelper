@@ -11,14 +11,14 @@
 "原神披萨小助手" = "Genshin Pizza Helper";
 "主页" = "Home";
 "设置" = "Mga setting";
-"添加帐号" = "Magdagdag ng account";
+"添加账号" = "Magdagdag ng account";
 "通知推送" = "Notifications";
 "通知推送设置" = "Mga Setting ng Notifications";
 "背景名片预览" = "Preview ng Background Namecard";
 "更多" = "More";
 
 "通知使用提示" = "Mga Payo: Paano Gumamit ng Notification?";
-"通知功能需要帐号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "Ang tampok ng notification ay nangangailangan na idagdag ang account sa Widget bago ito magkabisa. \nAng iskedyul ng notification ay nauugnay sa pag-refresh ng widget, ang notification ay maaaring malihis kung ang iyong widget ay hindi na-refresh sa loob ng mahabang panahon.";
+"通知功能需要账号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "Ang tampok ng notification ay nangangailangan na idagdag ang account sa Widget bago ito magkabisa. \nAng iskedyul ng notification ay nauugnay sa pag-refresh ng widget, ang notification ay maaaring malihis kung ang iyong widget ay hindi na-refresh sa loob ng mahabang panahon.";
 "地区: %@" = "Rehiyon: %@";
 "服务器: %@" = "Server: %@";
 
@@ -33,39 +33,39 @@
 "交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
 
 // Account detail
-"重新登录米哈游通行证帐号" = "Mag-login ulit sa HoYoLAB";
-"帐号配置" = "Kompigurasyon ng Account";
-"帐号名" = "Pangalan ng Account";
+"重新登录米哈游通行证账号" = "Mag-login ulit sa HoYoLAB";
+"账号配置" = "Kompigurasyon ng Account";
+"账号名" = "Pangalan ng Account";
 "服务器" = "Server";
 "测试连接" = "Subukan ang koneksyon";
 "错误内容" = "Detayle ng Error";
-"帐号信息" = "Mga Impormasyon ng Account";
+"账号信息" = "Mga Impormasyon ng Account";
 
-"你可以自定义显示在小组件上的帐号名称" = "Ang iyong custom na pangalan ng account na ipinapakita sa Widget.";
+"你可以自定义显示在小组件上的账号名称" = "Ang iyong custom na pangalan ng account na ipinapakita sa Widget.";
 "粘贴自剪贴板" = "I-paste mula sa Clipboard.";
 
 // Add account
-"登录米哈游通行证帐号" = "Mag-login gamit ng HoYoLAB";
+"登录米哈游通行证账号" = "Mag-login gamit ng HoYoLAB";
 "你也可以" = "Pwede mo rin";
-"手动设置帐号" = "i-configure ang iyong account nang manu-mano";
+"手动设置账号" = "i-configure ang iyong account nang manu-mano";
 "保存" = "I-save";
 "国服" = "China Mainland Players";
 "国际服" = "Global Players";
-"登录帐号获取Cookie" = "Kunin ang Cookie gamit ng HoYoLAB";
+"登录账号获取Cookie" = "Kunin ang Cookie gamit ng HoYoLAB";
 
 "请完成登录" = "Paki-tapusin ang pag-login";
 "未获取到登录信息，请重试" = "Hindi makuha ang Cookie. Maaring subukan muli.";
-"尚未完成帐号设置" = "Hindi pa tapos ang pag-configure ng account";
-"添加帐号前…" = "Bago idagdag ang iyong account…";
-"请先确保绑定的米游社帐号已开启并能在米游社App中查看「实时便笺」功能" = "Maaring tiyaking naa-access ang iyong \"Real-Time Notes\" . ";
+"尚未完成账号设置" = "Hindi pa tapos ang pag-configure ng account";
+"添加账号前…" = "Bago idagdag ang iyong account…";
+"请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能" = "Maaring tiyaking naa-access ang iyong \"Real-Time Notes\" . ";
 "好" = "OK";
 "提示" = "Mga Payo";
-"请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用帐号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Pindutin ang \"Tapos\" kapag tapos ka na mag login sa HoYoLAB sa susunod na pahina.\n Hindi magagamit ang Sign in via Google, Facebook o Twitter, maari mag-sign in gamit ng iyong username at password.\n Ang impormasyon sa pag-login ng iyong account ay nakaimbak sa local device at sa iyong private iCloud, at ito ay ginagamit lamang para i-request ang HoYoLAB para sa impormasyon ng Genshin account.";
-"自定义帐号名" = "Custom Account Name";
-"请选择帐号" = "Piliin ang iyong account";
-"手动设置帐号详情" = "Detalye ng login";
-"我的帐号" = "Aking Account";
-"请先添加帐号" = "Magdagdag ng Account";
+"请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Pindutin ang \"Tapos\" kapag tapos ka na mag login sa HoYoLAB sa susunod na pahina.\n Hindi magagamit ang Sign in via Google, Facebook o Twitter, maari mag-sign in gamit ng iyong username at password.\n Ang impormasyon sa pag-login ng iyong account ay nakaimbak sa local device at sa iyong private iCloud, at ito ay ginagamit lamang para i-request ang HoYoLAB para sa impormasyon ng Genshin account.";
+"自定义账号名" = "Custom Account Name";
+"请选择账号" = "Piliin ang iyong account";
+"手动设置账号详情" = "Detalye ng login";
+"我的账号" = "Aking Account";
+"请先添加账号" = "Magdagdag ng Account";
 
 // Game Info block
 "%@\n%@ 回满" = "Puno sa %@\n%@";
@@ -88,7 +88,7 @@
 
 // Notification settings
 "推送设置" = "Mga Setting ng Notification";
-"启用帐号" = "Mga naka-enable na account";
+"启用账号" = "Mga naka-enable na account";
 "原粹树脂提醒" = "Original Resin";
 "提醒阈值" = "Threshold ng Resin";
 "%lld树脂" = "%lld Resins";
@@ -371,10 +371,10 @@
 
 // Errors description
 "请先刷新以获取树脂状态" = "I-refresh para makuha ang Genshin status";
-"请右键编辑小组件选择帐号" = "Mangyaring i-right-click at i-edit ang widget upang i-configure ang iyong account";
-"请长按小组件选择帐号" = "I-pindutin ng matagal ang widget upang i-configure ang iyong account";
+"请右键编辑小组件选择账号" = "Mangyaring i-right-click at i-edit ang widget upang i-configure ang iyong account";
+"请长按小组件选择账号" = "I-pindutin ng matagal ang widget upang i-configure ang iyong account";
 "错误码%lld：Cookie失效，请重新登录" = "Error code %lld: Hindi gumagana ang cookie, maaring mag-login muli sa HoYoLab";
-"错误码%lld：米游社帐号与UID不匹配，请手动输入UID" = "Error code %lld: Ang account ng HoYoLAB ay hindi tumutugma sa UID";
+"错误码%lld：米游社账号与UID不匹配，请手动输入UID" = "Error code %lld: Ang account ng HoYoLAB ay hindi tumutugma sa UID";
 "错误码%lld：UID有误" = "Error code %lld: Hindi gumagana ang UID";
 "请前往米游社（或Hoyolab）打开旅行便笺功能" = "Paki-bukas muna ang Real-Time Notes sa HoYoLAB app.";
 "解码错误：请检查网络环境" = "Error sa pag-decode: maaring suriin ang kalagayan ng iyong network";
@@ -490,7 +490,7 @@
 "另一种样式的原粹树脂小组件" = "Original Resin Widget in another form";
 
 // Watch
-"请等待帐号从iCloud同步" = "Maghintay para sa data mag-sync mula sa iCloud";
+"请等待账号从iCloud同步" = "Maghintay para sa data mag-sync mula sa iCloud";
 "的原粹树脂" = "'s Original Resin";
 "的智能轮换信息" = "'s Automatic Rotation";
 "的探索派遣" = "'s Expedition";
@@ -524,7 +524,7 @@
 "当前活动" = "Mga events ngayon";
 "即将结束的活动" = "Mga event na malapit na matapos";
 "查看全部活动" = "Lahat ng events ngayon";
-"帐号基本信息" = "Account Basic Infos";
+"账号基本信息" = "Account Basic Infos";
 "剩余 %lld天" = "%lld araw na natitira";
 "剩余 %lld小时" = "%lld oras na natitira";
 "收起" = "Fold";
@@ -723,12 +723,12 @@
 // Add account
 "关于我们的工作原理" = "Paano kami gumagana?";
 "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。我们承诺，您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。" = "Para makuha ang resin at ibang data mula sa HoYoLAB, UID at login cookie ng account mo ay kailangan. Pagkatapos mag-login sa HoYoLAB, I-imbak namin ito locally at ang iyong private iCloud. Tapos, ang app namin ay gagamitin ang stored UID at cookie para makuha ang resin at ibang impormasyon katulad sa HoYoLAB app, tapos ipapakita sa widget. Ang pribadong impormasyon mo ay hindi ipapakita sa ibang lugar maliban sa HoYoLAB at iCloud, kasama kami, Ang iyong pribadong impormasyon ay mananatiling ligtas.";
-"关于您的帐号安全" = "Tungkol sa seguridad ng iyong account";
+"关于您的账号安全" = "Tungkol sa seguridad ng iyong account";
 "本程序不属于外挂等违法程序。本程序遵守米哈游二次创作规则的相关内容。根据中国原神客服的答复，使用本程序不会造成封号等问题。具体内容参见设置 - FAQ." = "Ang pamamaraang ito ay hindi isang iligal na pamamaraan tulad ng mga plug-in. Ang program na ito ay sumunod sa may-katuturang nilalaman ng mga patakaran sa pangalawang paglikha ng MiHoYo. Ayon sa tugon ng Custome Service ng Genshin Impact ng China, ang paggamit ng aming programa ay hindi magiging sanhi ng mga problema tulad ng pagharang. Para sa mga detalye, tingnan ang Mga Setting - FAQ.";
 
 // MARK: - 2.4.1
 // Widget
-"帐号" = "Account";
+"账号" = "Account";
 "展示周本折扣" = "Ipakita ang Weekly Boss Discount";
 "展示参量质变仪" = "Ipakita ang Parametric Transformer";
 
@@ -739,11 +739,11 @@
 "星期三 & 星期六" = "Miyerkules at Sabado";
 
 // Tool View
-"请先选择帐号" = "Pumili muna ng account";
+"请先选择账号" = "Pumili muna ng account";
 "角色展示柜" = "Character Showcase";
-"帐号未展示角色" = "Walang character mahanap sa Character Showcase";
+"账号未展示角色" = "Walang character mahanap sa Character Showcase";
 "今日入账" = "Nakuha Ngayon";
-"需要重新登录本帐号以查询，点击重新登录" = "Please tap to relogin to query this part.";
+"需要重新登录本账号以查询，点击重新登录" = "Please tap to relogin to query this part.";
 // apiral abyss sheet
 "深境螺旋详情" = "Detalye ng Spiral Abyss";
 "保存%lld层的深渊数据" = "I-Save ang image para sa level %lld";
@@ -869,7 +869,7 @@
 "千夜浮梦" = "A Thousand Floating Dreams";
 
 // MARK: - 2.5.4 HOTFIX
-"帐号状态异常，请前往米游社-旅行便笺重新验证" = "Ang katayuan ng account ay hindi normal, pumunta sa HoYoLAB upang muli ma-verify";
+"账号状态异常，请前往米游社-旅行便笺重新验证" = "Ang katayuan ng account ay hindi normal, pumunta sa HoYoLAB upang muli ma-verify";
 // MARK: - 2.5.4
 "%lld月原石收入" = "Primogem Income";
 
@@ -901,10 +901,10 @@
 "允许" = "Oo";
 
 // MARK: - 2.6.2
-"反复出现帐号异常？点击查看解决方案" = "Recurring account exceptions? Click to see the solution";
+"反复出现账号异常？点击查看解决方案" = "Recurring account exceptions? Click to see the solution";
 "1034问题的解决方案" = "1034 Problem Solution";
 "点击打开米游社App" = "Click to open miHoYoBBS App";
-"（1034）帐号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) The account status is abnormal, please go to the 'HoYoLAB' App - 'My' - 'My Battle Chronicle' to re-verify";
+"（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) The account status is abnormal, please go to the 'HoYoLAB' App - 'My' - 'My Battle Chronicle' to re-verify";
 "小组件设置" = "Widget Setting";
 "主屏幕小组件刷新频率" = "Home screen widget refresh frequency";
 "锁定屏幕小组件刷新频率" = "Lock screen widget refresh frequency";
@@ -932,19 +932,19 @@
 "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Ang mga notification ay nilikha nang lokal at awtomatikong na-update kapag nag-refresh ang widget, o kapag binuksan mo ang app. \nKapag matagal ng oras nang hindi binubuksan ang app o nang hindi gumagamit ng widget ay maaaring magresulta sa hindi tumpak na mga abiso. \nAng notification ay maaari lamang mai-refresh sa pamamagitan ng pagbubukas ng app kung ang widget ay nasa \"simplified mode\";";
 
 "顶置" = "I-Pin sa taas";";
-（1034）帐号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Ang katayuan ng account ay hindi normal. Inirerekomenda na bawasan ang dalas ng kahilingan ng widget, o mahabang pindutin ang widget upang gamitin ang simple mode";
-"请重新登录本帐号以获取stoken" = "Mag-login ulit sa account na ito upang makuha ang stoken";
+（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Ang katayuan ng account ay hindi normal. Inirerekomenda na bawasan ang dalas ng kahilingan ng widget, o mahabang pindutin ang widget upang gamitin ang simple mode";
+"请重新登录本账号以获取stoken" = "Mag-login ulit sa account na ito upang makuha ang stoken";
 "请登录「%@」" = "Log in to \"%@\"";
 
 // MARK: - v2.6.5
 // Real-time activity
 "距离%lld树脂" = "Oras hanggang %lld Resins";
 "距离160树脂" = "Oras hanggang 160 Resins";
-"为该帐号开启树脂计时器" = "I-set ang resin timer para sa account na ito";
+"为该账号开启树脂计时器" = "I-set ang resin timer para sa account na ito";
 "自动启用树脂计时器" = "I-enable ang Resin Timer Automatically";
 "树脂计时器是什么？" = "Ano ang Resin Timer?";
 "创建树脂计时器成功" = "Nagawa ang Resin Timer Successfully";
-"若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的帐号，或树脂最少的帐号开启计时器。您也可以在「概览」页长按某个帐号的卡片手动开启，或启用多个计时器。" = "Kung ginamit, ang \"real-time activity\" resin timer ay gagana kapag lumabas ka ng app. Ang timer ay para sa account na naka-pin sa taas o ang account na mayroong pinaka-unti na resin bilang default. Pwede mo rin i-enable ang timer para sa account ng manu-mano sa paraan ng pindutin ng matagal ang account information card sa \"Overview\" tab o i-enable ng mas maraming timer.";
+"若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在「概览」页长按某个账号的卡片手动开启，或启用多个计时器。" = "Kung ginamit, ang \"real-time activity\" resin timer ay gagana kapag lumabas ka ng app. Ang timer ay para sa account na naka-pin sa taas o ang account na mayroong pinaka-unti na resin bilang default. Pwede mo rin i-enable ang timer para sa account ng manu-mano sa paraan ng pindutin ng matagal ang account information card sa \"Overview\" tab o i-enable ng mas maraming timer.";
 "前往设置开启实时活动功能" = "Pumunta sa Settings para i-enable ang \"Real-Time Activity\" Feature";
 "实时活动功能未开启，请前往设置开启。" = "\"Real-time activity\" ay disabled. I-enable sa settings.";
 
@@ -964,7 +964,7 @@
 
 // Real-time activity error
 "未知错误：%@" = "Unknown Error: %@";
-"帐号未获取信息" = "Walang info kasama ng account";
+"账号未获取信息" = "Walang info kasama ng account";
 "系统设置不允许本软件开启实时活动，请前往开启" = "Ang system settings ay hindi pwede gamitin ang Real-Time Activity, pumunta sa settings at i-enable ito.";
 
 // MARK: - 2.7.1
@@ -995,7 +995,7 @@
 "原粹树脂回满倒计时" = "Timer ng Original Resin";
 "展示原粹树脂与恢复到160树脂的倒计时" = "Pinapakita ang original resin at ang countdown hanggang 160 resin.";
 "树脂溢出提醒" = "I-Notify kapag Puno";
-"本帐号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" = "Walang stoken na nahanap sa cookies,at ito ay maaaring makaapekto sa paggamit ng widget sa simplified mode. Inirerekomenda na muling mag-login upang makuha ang stoken";
+"本账号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" = "Walang stoken na nahanap sa cookies,at ito ay maaaring makaapekto sa paggamit ng widget sa simplified mode. Inirerekomenda na muling mag-login upang makuha ang stoken";
 
 "今天 " = "Tdy ";
 "明天 " = "Tmw ";
@@ -1146,7 +1146,7 @@
 "抽卡记录获取帮助" = "Wish Log Help";
 "无论选择哪种方式，我们都为您提供了详细的操作教程" = "Hindi mahalaga kung aling paraan ang iyong pipiliin, binibigyan ka namin ng detalyadong mga tutorial sa operasyon";
 "您也可以选择参考我们的视频完成相关操作" = "Maaari ka ring sumangguni sa aming video upang makumpleto ang mga operasyon na iyon";
-"如果您的帐号所在服务器位于中国大陆" = "Kung ang iyong account ay nasa China Mainland Server";
+"如果您的账号所在服务器位于中国大陆" = "Kung ang iyong account ay nasa China Mainland Server";
 "请优先选择「通过API」一键获取" = "Piliin ang \"Through API\" muna";
 "仅适用于中国大陆服务器" = "Magagamit para sa mga server ng China Mainland lamang";
 "适用于所有服务器" = "Available para sa lahat ng Servers";
@@ -1168,7 +1168,7 @@
 "请点击「开始获取祈愿记录」以继续" = "I-click ang 'Start obtaining wish records' para matuloy";
 "获取祈愿记录" = "Kunin ang wish records";
 "等待开始…" = "Naghihintay upang magsimula…";
-"获取到%@条记录，成功保存%@条新记录\n请返回上一级查看，或继续获取其他帐号的记录" = "Nakuha ang %@ records, nai-save ang %@ sa kanila. \nBumalik sa nakaraang pahina upang tingnan ang mga ito, o magpatuloy sa pagkuha ng records mula sa iba pang mga account.";
+"获取到%@条记录，成功保存%@条新记录\n请返回上一级查看，或继续获取其他账号的记录" = "Nakuha ang %@ records, nai-save ang %@ sa kanila. \nBumalik sa nakaraang pahina upang tingnan ang mga ito, o magpatuloy sa pagkuha ng records mula sa iba pang mga account.";
 "成功获取到一批…" = "Nakuha…";
 "卡池：%@" = "Pool: %@";
 "页码：%@" = "Pahina: %@";
@@ -1220,7 +1220,7 @@
 "祈愿数据管理" = "Gacha Data Management";
 "清理重复数据" = "Linisin ang na-dobleng Data";
 "清理因iCloud同步导致出现的重复祈愿记录" = "Linisin ang na-dobleng wish records dahil sa iCloud synchronization";
-"选择帐号" = "Piliin ang Account";
+"选择账号" = "Piliin ang Account";
 "未选择" = "Hindi Napili";
 "删除所有时间的记录" = "Burahin ang mga records anuman ang oras.";
 "开始日期" = "Petsa ng Pagsisimula";
@@ -1299,7 +1299,7 @@
 "请点击此处输入验证码" = "Tapikin dito upang magpatuloy sa interactive na pag verify";
 "account.test.verify.web_sheet.title" = "Interactive Na Pag Verify";
 "账号状态异常,请打开App填写验证码" = "Account status exception, pahiwatig para sa in app interactive verification";
-"（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "(1034) Kailangan ng pagpapatunay sa account. Mangyaring buksan ang app para sa pagpapatunay ng tao-kalansay. I-hold ang widget upang paganahin ang compact mode.";
+"（1034）账号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "(1034) Kailangan ng pagpapatunay sa account. Mangyaring buksan ang app para sa pagpapatunay ng tao-kalansay. I-hold ang widget upang paganahin ang compact mode.";
 
 // MARK: - 3.0.0
 
@@ -1317,7 +1317,7 @@
 // MARK: - 3.0.4
 
 "反向代理设置" = "Reverse Proxy Settings";
-"设备指纹仅限国服帐号需要设置" = "Only accounts of China Mainland servers are needed";
+"设备指纹仅限国服账号需要设置" = "Only accounts of China Mainland servers are needed";
 
 // MARK: - 3.0.5
 
@@ -1359,4 +1359,6 @@
 
 // MARK: - 3.1.1
 
-"setting.uirelated.useguestgachaevaluator" = "Let Pom-Pom evaluate the wishes instead";
+"settings.uiRelated.useGuestGachaEvaluator" = "Let Pom-Pom evaluate the wishes instead";
+"detailPortal.errorMessage.noAccountAvailableForAbyssDisplay" = "Please log in to see Spiral Abyss records.";
+"detailPortal.errorMessage.accountHasNulledBasicInfo" = "Error: account.basicInfo == nil. Please report.";

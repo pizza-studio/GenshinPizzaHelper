@@ -44,7 +44,7 @@ struct TextEditorView: View {
                                 isWebShown.toggle()
                             }
                         } label: {
-                            Text("登录帐号获取Cookie")
+                            Text("登录账号获取Cookie")
                         }
                     }
                     Button("粘贴自剪贴板") {

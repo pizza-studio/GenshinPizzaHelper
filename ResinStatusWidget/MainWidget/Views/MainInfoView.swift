@@ -16,7 +16,7 @@ struct MainInfo: View {
     let userData: UserData
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
-    let accountNameTest = "我的帐号"
+    let accountNameTest = "我的账号"
 
     var condensedResin: Int { userData.resinInfo.currentResin / 40 }
 
@@ -127,7 +127,7 @@ struct MainInfoSimplified: View {
     let userData: SimplifiedUserData
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
-    let accountNameTest = "我的帐号"
+    let accountNameTest = "我的账号"
 
     var condensedResin: Int { userData.resinInfo.currentResin / 40 }
 

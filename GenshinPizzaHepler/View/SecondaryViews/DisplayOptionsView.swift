@@ -112,7 +112,7 @@ struct DisplayOptionsView: View {
 
             Section {
                 Toggle(isOn: $useGuestGachaEvaluator) {
-                    Text("setting.uirelated.useguestgachaevaluator")
+                    Text("settings.uiRelated.useGuestGachaEvaluator")
                 }
             }
         }

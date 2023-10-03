@@ -107,8 +107,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
         var viewConfig: WidgetViewConfiguration = .defaultConfig
 
         guard !configs.isEmpty else {
-            // 如果还没设置帐号，要求进入App获取帐号
-            viewConfig.addMessage("请进入App设置帐号信息")
+            // 如果还没设置账号，要求进入App获取账号
+            viewConfig.addMessage("请进入App设置账号信息")
             let entry = ResinEntry(
                 date: currentDate,
                 widgetDataKind: .normal(result: .failure(.noFetchInfo)),
@@ -128,7 +128,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             print("no account intent got")
             if configs.count == 1 {
                 viewConfig = WidgetViewConfiguration(configuration, nil)
-                // 如果还未选择帐号且只有一个帐号，默认获取第一个
+                // 如果还未选择账号且只有一个账号，默认获取第一个
                 getTimelineEntries(config: configs.first!) { entries in
                     completion(.init(
                         entries: entries,
@@ -136,8 +136,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
                     ))
                 }
             } else {
-                // 如果还没设置帐号，要求进入App获取帐号
-                viewConfig.addMessage("请长按进入小组件设置帐号信息")
+                // 如果还没设置账号，要求进入App获取账号
+                viewConfig.addMessage("请长按进入小组件设置账号信息")
                 let entry = ResinEntry(
                     date: currentDate,
                     widgetDataKind: .normal(result: .failure(.noFetchInfo)),
@@ -163,8 +163,8 @@ struct MainWidgetProvider: IntentTimelineProvider {
 
         guard let config = configs
             .first(where: { $0.uuid == selectedAccountUUID }) else {
-            // 有时候删除帐号，Intent没更新就会出现这样的情况
-            viewConfig.addMessage("请长按进入小组件重新设置帐号信息")
+            // 有时候删除账号，Intent没更新就会出现这样的情况
+            viewConfig.addMessage("请长按进入小组件重新设置账号信息")
             let entry = ResinEntry(
                 date: currentDate,
                 widgetDataKind: .normal(result: .failure(.noFetchInfo)),

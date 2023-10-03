@@ -64,7 +64,7 @@ struct ExportGachaView: View {
     func main() -> some View {
         List {
             Section {
-                Picker("选择帐号", selection: $params.uid) {
+                Picker("选择账号", selection: $params.uid) {
                     Group {
                         if params.uid == nil {
                             Text("未选择").tag(String?(nil))

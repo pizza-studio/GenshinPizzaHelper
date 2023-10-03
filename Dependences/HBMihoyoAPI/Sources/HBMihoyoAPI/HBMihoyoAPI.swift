@@ -606,13 +606,13 @@ public enum MihoyoAPI {
             }
     }
 
-    /// 获取游戏内帐号信息
+    /// 获取游戏内账号信息
     /// - Parameters:
     ///     - region: 服务器地区
     ///     - cookie: 用户Cookie
     ///     - completion: 数据
     ///
-    /// 只需要Cookie和服务器地区即可返回游戏内的帐号信息等。使用时不知为何需要先随便发送一个请求。
+    /// 只需要Cookie和服务器地区即可返回游戏内的账号信息等。使用时不知为何需要先随便发送一个请求。
     public static func getUserGameRolesByCookie(
         _ cookie: String,
         _ region: Region,

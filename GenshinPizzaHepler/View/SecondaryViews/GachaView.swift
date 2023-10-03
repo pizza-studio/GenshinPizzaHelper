@@ -645,7 +645,7 @@ private struct HelpSheet: View {
 //                    GachaHelpVideoLink()
                 }
                 Section {
-                    Label("如果您的帐号所在服务器位于中国大陆", systemImage: "text.bubble")
+                    Label("如果您的账号所在服务器位于中国大陆", systemImage: "text.bubble")
                     Label("请优先选择「通过API」一键获取", systemImage: "network")
                 } footer: {
                     Text("仅适用于中国大陆服务器")

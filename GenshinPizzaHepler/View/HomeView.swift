@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/22.
-//  展示所有帐号的主页
+//  展示所有账号的主页
 
 import AlertToast
 import HBMihoyoAPI
@@ -51,7 +51,7 @@ struct HomeView: View {
                         .padding(.bottom)
                     if viewModel.accounts.isEmpty {
                         NavigationLink(destination: AddAccountView()) {
-                            Label("请先添加帐号", systemImage: "plus.circle")
+                            Label("请先添加账号", systemImage: "plus.circle")
                         }
                         .padding()
                         .blurMaterialBackground()
@@ -61,7 +61,7 @@ struct HomeView: View {
                         ))
                         .padding(.top, 30)
                     } else {
-                        // MARK: - 帐号信息
+                        // MARK: - 账号信息
 
                         AccountInfoCards(animation: animation)
                     }
@@ -232,7 +232,7 @@ private struct PinnedAccountInfoCard: View {
                 }
                 #if canImport(ActivityKit)
                 if #available(iOS 16.1, *) {
-                    Button("为该帐号开启树脂计时器") {
+                    Button("为该账号开启树脂计时器") {
                         do {
                             try ResinRecoveryActivityController
                                 .shared
@@ -342,7 +342,7 @@ private struct AccountInfoCards: View {
                 if account.result != nil {
                     switch account.result! {
                     case let .success(userData):
-                        // 我也不知道为什么如果不检查的话删除帐号会崩溃
+                        // 我也不知道为什么如果不检查的话删除账号会崩溃
                         if account.config.uuid != nil {
                             GameInfoBlock(
                                 userData: userData,
@@ -407,7 +407,7 @@ private struct AccountInfoCards: View {
                                 }
                                 #if canImport(ActivityKit)
                                 if #available(iOS 16.1, *) {
-                                    Button("为该帐号开启树脂计时器") {
+                                    Button("为该账号开启树脂计时器") {
                                         do {
                                             try ResinRecoveryActivityController
                                                 .shared

@@ -184,7 +184,7 @@ struct NotificationSettingView: View {
                     destination: IgnoreNotificationAccountView()
                         .environmentObject(viewModel)
                 ) {
-                    Text("启用帐号")
+                    Text("启用账号")
                 }
             }
             Section {

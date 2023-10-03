@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/7.
-//  设置页帐号详细信息View
+//  设置页账号详细信息View
 
 import HBMihoyoAPI
 import SwiftUI
@@ -64,14 +64,14 @@ struct AccountDetailView: View {
 
     var body: some View {
         List {
-            Button("重新登录米哈游通行证帐号") { isWebShown.toggle() }
-            Section(header: Text("帐号配置")) {
+            Button("重新登录米哈游通行证账号") { isWebShown.toggle() }
+            Section(header: Text("账号配置")) {
                 NavigationLink(destination: TextFieldEditorView(
-                    title: "帐号名".localized,
-                    note: "你可以自定义显示在小组件上的帐号名称".localized,
+                    title: "账号名".localized,
+                    note: "你可以自定义显示在小组件上的账号名称".localized,
                     content: bindingName
                 )) {
-                    InfoPreviewer(title: "帐号名", content: name)
+                    InfoPreviewer(title: "账号名", content: name)
                 }
                 NavigationLink(destination: TextFieldEditorView(
                     title: "UID",
@@ -108,7 +108,7 @@ struct AccountDetailView: View {
                 deviceFingerPrint: bindingDeviceFingerPrint
             )
         }
-        .navigationBarTitle("帐号信息", displayMode: .inline)
+        .navigationBarTitle("账号信息", displayMode: .inline)
         .onDisappear {
             viewModel.saveAccount()
         }
@@ -191,14 +191,14 @@ struct AccountDetailSheet<SheetType>: View {
 
     var body: some View {
         List {
-            Button("重新登录米游社帐号") { isWebShown.toggle() }
-            Section(header: Text("帐号配置")) {
+            Button("重新登录米游社账号") { isWebShown.toggle() }
+            Section(header: Text("账号配置")) {
                 NavigationLink(destination: TextFieldEditorView(
-                    title: "帐号名".localized,
-                    note: "你可以自定义显示在小组件上的帐号名称".localized,
+                    title: "账号名".localized,
+                    note: "你可以自定义显示在小组件上的账号名称".localized,
                     content: bindingName
                 )) {
-                    InfoPreviewer(title: "帐号名", content: name)
+                    InfoPreviewer(title: "账号名", content: name)
                 }
                 NavigationLink(destination: TextFieldEditorView(
                     title: "UID",
@@ -229,7 +229,7 @@ struct AccountDetailSheet<SheetType>: View {
                 deviceFingerPrint: bindingDeviceFingerPrint
             )
         }
-        .navigationBarTitle("帐号信息", displayMode: .inline)
+        .navigationBarTitle("账号信息", displayMode: .inline)
         .sheet(isPresented: $isWebShown) {
             GetCookieWebView(
                 isShown: $isWebShown,

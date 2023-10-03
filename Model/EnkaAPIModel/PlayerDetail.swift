@@ -47,7 +47,7 @@ struct PlayerDetail {
 
     // MARK: - Model
 
-    /// 帐号基本信息
+    /// 账号基本信息
     struct PlayerBasicInfo {
         // MARK: Lifecycle
 

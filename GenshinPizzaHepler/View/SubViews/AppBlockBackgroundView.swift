@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/22.
-//  提供主页帐号信息Block的背景
+//  提供主页账号信息Block的背景
 
 import Foundation
 import SwiftUI

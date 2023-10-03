@@ -112,7 +112,7 @@ extension FetchError {
         case .defaultStatus:
             return "请先刷新以获取树脂状态".localized
         case .noFetchInfo:
-            return (isMac ? "请右键编辑小组件选择帐号" : "请长按小组件选择帐号").localized
+            return (isMac ? "请右键编辑小组件选择账号" : "请长按小组件选择账号").localized
         case let .cookieInvalid(retcode, _):
             return String(
                 format: NSLocalizedString(
@@ -124,8 +124,8 @@ extension FetchError {
         case let .unmachedAccountCookie(retcode, _):
             return String(
                 format: NSLocalizedString(
-                    "错误码%lld：米游社帐号与UID不匹配，请手动输入UID",
-                    comment: "错误码%@：米游社帐号与UID不匹配"
+                    "错误码%lld：米游社账号与UID不匹配，请手动输入UID",
+                    comment: "错误码%@：米游社账号与UID不匹配"
                 ),
                 retcode
             )
@@ -151,9 +151,9 @@ extension FetchError {
                 retcode
             )
         case .accountAbnormal:
-            return "（1034）帐号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式".localized
+            return "（1034）账号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式".localized
         case .noStoken:
-            return "请重新登录本帐号以获取stoken".localized
+            return "请重新登录本账号以获取stoken".localized
         default:
             return ""
         }
@@ -194,7 +194,7 @@ extension FetchError {
         case let .unknownError(_, message):
             return message
         case .noStoken:
-            return "请重新登录本帐号以获取stoken".localized
+            return "请重新登录本账号以获取stoken".localized
         default:
             return ""
         }

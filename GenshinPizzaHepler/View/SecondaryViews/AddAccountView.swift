@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/7.
-//  添加帐号的View
+//  添加账号的View
 
 import HBMihoyoAPI
 import SwiftUI
@@ -20,7 +20,7 @@ struct AddAccountView: View {
 
     @State
     private var unsavedName: String =
-        .init(format: NSLocalizedString("我的帐号", comment: "my account"))
+        .init(format: NSLocalizedString("我的账号", comment: "my account"))
     @State
     private var unsavedUid: String = ""
     @State
@@ -91,8 +91,8 @@ struct AddAccountView: View {
                             }
                         } label: {
                             Text(
-                                unsavedCookie == "" ? "登录米哈游通行证帐号" :
-                                    "重新登录米哈游通行证帐号"
+                                unsavedCookie == "" ? "登录米哈游通行证账号" :
+                                    "重新登录米哈游通行证账号"
                             )
                             .frame(
                                 maxWidth: .infinity,
@@ -120,7 +120,7 @@ struct AddAccountView: View {
                                 connectStatus: $connectStatus,
                                 unsavedDeviceFingerPrint: $unsavedDeviceFingerPrint
                             )) {
-                                Text("手动设置帐号")
+                                Text("手动设置账号")
                                     .font(.footnote)
                             }
                         }
@@ -136,7 +136,7 @@ struct AddAccountView: View {
                             .font(.footnote)
                             Text("\n")
                                 .font(.footnote)
-                            Text("关于您的帐号安全")
+                            Text("关于您的账号安全")
                                 .font(.footnote)
                                 .bold()
                             Text(
@@ -162,13 +162,13 @@ struct AddAccountView: View {
             if unsavedUid != "" {
                 Section {
                     InfoEditor(
-                        title: "自定义帐号名",
+                        title: "自定义账号名",
                         content: $unsavedName,
                         placeholderText: unsavedName
                     )
-                    // 如果该帐号绑定的UID不止一个，则显示Picker选择帐号
+                    // 如果该账号绑定的UID不止一个，则显示Picker选择账号
                     if accountsForSelected.count > 1 {
-                        Picker("请选择帐号", selection: $selectedAccount) {
+                        Picker("请选择账号", selection: $selectedAccount) {
                             ForEach(
                                 accountsForSelected,
                                 id: \.gameUid
@@ -185,7 +185,7 @@ struct AddAccountView: View {
                         Text(unsavedServer.rawValue)
                     }
                 } footer: {
-                    Text("你可以自定义显示在小组件上的帐号名称")
+                    Text("你可以自定义显示在小组件上的账号名称")
                         .font(.footnote)
                 }
             }
@@ -199,7 +199,7 @@ struct AddAccountView: View {
                     connectStatus: $connectStatus,
                     unsavedDeviceFingerPrint: $unsavedDeviceFingerPrint
                 )) {
-                    Text("手动设置帐号详情")
+                    Text("手动设置账号详情")
                 }
             }
 
@@ -222,7 +222,7 @@ struct AddAccountView: View {
 //                    .listRowBackground(Color.white.opacity(0))
 //            }
         }
-        .navigationBarTitle("添加帐号", displayMode: .inline)
+        .navigationBarTitle("添加账号", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("保存") {
@@ -261,11 +261,11 @@ struct AddAccountView: View {
         .alert(isPresented: $isAlertShow) {
             switch alertType {
             case .accountNotSaved:
-                return Alert(title: Text("尚未完成帐号设置"))
+                return Alert(title: Text("尚未完成账号设置"))
             case .firstAddAccountHint:
                 return Alert(
-                    title: Text("添加帐号前…"),
-                    message: Text("请先确保绑定的米游社帐号已开启并能在米游社App中查看「实时便笺」功能")
+                    title: Text("添加账号前…"),
+                    message: Text("请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能")
                 )
             }
         }

@@ -892,7 +892,7 @@ struct HttpMethod<T: Codable> {
         }
     }
 
-    /// 返回游戏帐号基本信息
+    /// 返回游戏账号基本信息
     /// - Parameters:
     ///   - method:Method, http方法的类型
     ///   - urlStr:String，url的字符串后缀，即request的类型
@@ -1133,7 +1133,7 @@ struct HttpMethod<T: Codable> {
         }
     }
 
-    /// 返回游戏内帐号信息的请求方法接口
+    /// 返回游戏内账号信息的请求方法接口
     /// - Parameters:
     ///   - method:Method, http方法的类型
     ///   - urlStr:String，url的字符串后缀，即request的类型

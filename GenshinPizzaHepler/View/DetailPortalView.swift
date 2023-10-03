@@ -55,6 +55,7 @@ struct DetailPortalView: View {
                 accountSection()
                 playerDetailSection()
                 abyssAndPrimogemNavigator()
+                // if let accountInfo = account?.basicInfo { abyssAndPrimogemNavigatorView(accountBasicInfo: accountInfo) }
                 toolsSection()
             }
             .sectionSpacing(UIFont.systemFontSize)
@@ -258,7 +259,7 @@ struct DetailPortalView: View {
                     }
                 }
             } label: {
-                Label("请先选择帐号", systemImage: "arrow.left.arrow.right.circle")
+                Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
             }
         }
     }
@@ -295,7 +296,7 @@ struct DetailPortalView: View {
         Section {
             VStack {
                 if playerDetail.avatars.isEmpty {
-                    Text("帐号未展示角色")
+                    Text("账号未展示角色")
                         .foregroundColor(.secondary)
                 } else {
                     ScrollView(.horizontal) {
@@ -334,103 +335,105 @@ struct DetailPortalView: View {
 
     @ViewBuilder
     func abyssAndPrimogemNavigator() -> some View {
-        if let basicInfo: BasicInfos = account?.basicInfo {
-            Section {
-                HStack(spacing: 30) {
-                    Spacer()
-                    VStack {
-                        VStack(spacing: 7) {
-                            AbyssTextLabel(
-                                text: "\(basicInfo.stats.spiralAbyss)"
-                            )
-                            if let thisAbyssData = thisAbyssData {
-                                HStack {
-                                    AbyssStarIcon()
-                                        .frame(width: 30, height: 30)
-                                    Text("\(thisAbyssData.totalStar)")
-                                        .font(.system(.body, design: .rounded))
-                                }
-                            } else {
-                                ProgressView()
-                                    .onTapGesture {
-                                        viewModel.refreshAbyssAndBasicInfo()
-                                    }
+        if let account = account {
+            if let basicInfo: BasicInfos = account.basicInfo {
+                abyssAndPrimogemNavigatorView(accountBasicInfo: basicInfo)
+            } else {
+                Text("detailPortal.errorMessage.accountHasNulledBasicInfo").font(.footnote)
+            }
+        } else {
+            Text("detailPortal.errorMessage.noAccountAvailableForAbyssDisplay").font(.footnote)
+        }
+    }
+
+    @ViewBuilder
+    func abyssAndPrimogemNavigatorView(accountBasicInfo basicInfo: BasicInfos) -> some View {
+        Section {
+            HStack(spacing: 30) {
+                Spacer()
+                VStack {
+                    VStack(spacing: 7) {
+                        AbyssTextLabel(
+                            text: "\(basicInfo.stats.spiralAbyss)"
+                        )
+                        if let thisAbyssData = thisAbyssData {
+                            HStack {
+                                AbyssStarIcon()
+                                    .frame(width: 30, height: 30)
+                                Text("\(thisAbyssData.totalStar)")
+                                    .font(.system(.body, design: .rounded))
                             }
-                        }
-                        .frame(height: 100)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .onTapGesture {
-                        simpleTaptic(type: .medium)
-                        sheetType = .mySpiralAbyss
-                    }
-                    Divider()
-                    VStack {
-                        if let result = ledgerDataResult {
-                            VStack(spacing: 10) {
-                                switch result {
-                                case let .success(data):
-                                    PrimogemTextLabel(
-                                        primogem: data.dayData
-                                            .currentPrimogems
-                                    )
-                                    MoraTextLabel(
-                                        mora: data.dayData
-                                            .currentMora
-                                    )
-                                case let .failure(error):
-                                    Image(
-                                        systemName: "exclamationmark.arrow.triangle.2.circlepath"
-                                    )
-                                    .foregroundColor(.red)
-                                    switch error {
-                                    case .notLoginError:
-                                        (Text("[\("今日入账".localized)] ") + Text("需要重新登录本帐号以查询，点击重新登录"))
-                                            .font(.footnote)
-                                            .multilineTextAlignment(.center)
-                                    default:
-                                        Text(error.description)
-                                    }
-                                }
-                            }
-                            .frame(height: 105)
                         } else {
                             ProgressView()
-                                .frame(height: 100)
+                                .onTapGesture {
+                                    viewModel.refreshAbyssAndBasicInfo()
+                                }
                         }
                     }
-                    .frame(maxWidth: .infinity)
-                    .onTapGesture {
-                        if let result = ledgerDataResult {
+                    .frame(height: 100)
+                }
+                .frame(maxWidth: .infinity)
+                .onTapGesture {
+                    simpleTaptic(type: .medium)
+                    sheetType = .mySpiralAbyss
+                }
+                Divider()
+                VStack {
+                    if let result = ledgerDataResult {
+                        VStack(spacing: 10) {
                             switch result {
-                            case .success:
-                                simpleTaptic(type: .medium)
-                                sheetType = .myLedgerSheet
+                            case let .success(data):
+                                PrimogemTextLabel(
+                                    primogem: data.dayData
+                                        .currentPrimogems
+                                )
+                                MoraTextLabel(
+                                    mora: data.dayData
+                                        .currentMora
+                                )
                             case let .failure(error):
+                                Image(
+                                    systemName: "exclamationmark.arrow.triangle.2.circlepath"
+                                )
+                                .foregroundColor(.red)
                                 switch error {
                                 case .notLoginError:
-                                    simpleTaptic(type: .medium)
-                                    sheetType = .loginAccountAgainView
+                                    (Text("[\("今日入账".localized)] ") + Text("需要重新登录本账号以查询，点击重新登录"))
+                                        .font(.footnote)
+                                        .multilineTextAlignment(.center)
                                 default:
-                                    viewModel.refreshLedgerData()
+                                    Text(error.description)
                                 }
                             }
                         }
+                        .frame(height: 105)
+                    } else {
+                        ProgressView()
+                            .frame(height: 100)
                     }
-                    Spacer()
                 }
-                .padding(.vertical, 10)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(
-                            UIColor
-                                .secondarySystemGroupedBackground
-                        ))
-                )
+                .frame(maxWidth: .infinity)
+                .onTapGesture {
+                    if let result = ledgerDataResult {
+                        switch result {
+                        case .success:
+                            simpleTaptic(type: .medium)
+                            sheetType = .myLedgerSheet
+                        case let .failure(error):
+                            switch error {
+                            case .notLoginError:
+                                simpleTaptic(type: .medium)
+                                sheetType = .loginAccountAgainView
+                            default:
+                                viewModel.refreshLedgerData()
+                            }
+                        }
+                    }
+                }
+                Spacer()
             }
-            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-            .listRowBackground(Color.white.opacity(0))
         }
+        .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
     }
 
     @ViewBuilder
