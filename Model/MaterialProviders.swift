@@ -12,8 +12,35 @@ import HBMihoyoAPI
 
 struct WeaponOrTalentMaterial: Equatable {
     struct RelatedItem {
+        // MARK: Lifecycle
+
+        init(imageString: String, nameToLocalize: String) {
+            self.imageString = imageString
+            self.nameToLocalize = nameToLocalize
+            self.weapon = nil
+            self.character = nil
+        }
+
+        init(character asset: CharacterAsset) {
+            self.imageString = asset.photoFileName
+            self.nameToLocalize = asset.localized
+            self.weapon = nil
+            self.character = asset
+        }
+
+        init(weapon asset: WeaponAsset) {
+            self.imageString = asset.filename
+            self.nameToLocalize = asset.localized
+            self.weapon = asset
+            self.character = nil
+        }
+
+        // MARK: Internal
+
         let imageString: String
         let nameToLocalize: String
+        let weapon: WeaponAsset?
+        let character: CharacterAsset?
 
         var displayName: String {
             nameToLocalize.localizedWithFix
@@ -117,5 +144,17 @@ enum MaterialWeekday: CaseIterable {
         case .sunday:
             return "week.sunday".localized
         }
+    }
+}
+
+extension CharacterAsset {
+    var asMaterialRelatedItem: WeaponOrTalentMaterial.RelatedItem {
+        .init(character: self)
+    }
+}
+
+extension WeaponAsset {
+    var asMaterialRelatedItem: WeaponOrTalentMaterial.RelatedItem {
+        .init(weapon: self)
     }
 }

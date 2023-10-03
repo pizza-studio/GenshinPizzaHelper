@@ -182,22 +182,29 @@ public enum NameCard: String, CaseIterable {
     case UI_NameCardPic_Bp27_P
     case UI_NameCardPic_Neuvillette_P
     case UI_NameCardPic_Wriothesley_P
-    case UI_NameCardPic_Bp28_P
+    case UI_NameCardPic_Bp2_P
     case UI_NameCardPic_Guqin_P
     case UI_NameCardPic_Tzz8_P
     case UI_NameCardPic_FD2_P
     // case UI_NameCardPic_Furina_P // 原神 4.2
     // case UI_NameCardPic_Charlotte_P // 原神 4.2
     // case UI_NameCardPic_FD3_P // 原神 4.2
-    // case UI_NameCardPic_Bp2_P // 原神 4.2
+    // case UI_NameCardPic_Bp28_P // 原神 4.2
 }
 
 extension NameCard {
     public var localizedKey: String {
         var raw = rawValue
-        if raw.contains("_Wanderer_") { raw = raw.replacingOccurrences(of: "Wanderer", with: "Kunikuzushi") }
-        return "namecards:" + raw
+        if AppConfig.useActualCharacterNames, raw.contains("_Wanderer_") {
+            raw = raw.replacingOccurrences(of: "Wanderer", with: "Kunikuzushi")
+        }
+        return "$asset.nameCard:" + raw
     }
 
-    public var localized: String { localizedKey.localized.localizedWithFix }
+    public var localized: String {
+        if AppConfig.useActualCharacterNames, rawValue.contains("Kunikuzushi") {
+            return localizedKey.localized
+        }
+        return localizedKey.localized.localizedWithFix
+    }
 }

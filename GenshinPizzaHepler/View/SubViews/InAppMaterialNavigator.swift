@@ -356,11 +356,15 @@ struct InAppMaterialNavigator: View {
                                 id: \.imageString
                             ) { item in
                                 VStack {
-                                    Image(item.imageString)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 75, height: 90)
-                                        .clipped()
+                                    if let char = item.character {
+                                        char.cardIcon(90)
+                                    } else {
+                                        Image(item.imageString)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 75, height: 90)
+                                            .clipped()
+                                    }
                                     Text(item.displayName)
                                         .font(.footnote)
                                         .foregroundColor(.secondary)

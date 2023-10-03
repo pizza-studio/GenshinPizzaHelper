@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B43A15629D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15729D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
-		5B43A15829D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15A29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
@@ -18,11 +17,25 @@
 		5B4CCB242AC336AD00E4A0B5 /* ThirdPartyToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CCB222AC3324100E4A0B5 /* ThirdPartyToolsView.swift */; };
 		5B5F82B32ACC6714005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
 		5B5F82B62ACC67B0005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
-		5B5F82B72ACC67B3005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
 		5B5F82B82ACC67B4005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
 		5B5F82B92ACC67B4005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
 		5B5F82BA2ACC67B5005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
 		5B5F82BB2ACC67B5005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
+		5B5F82BD2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
+		5B5F82BE2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
+		5B5F82CD2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
+		5B5F82CE2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
+		5B5F82CF2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
+		5B5F82D12ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
+		5B5F82D22ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
+		5B5F82D32ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
+		5B5F82D42ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
+		5B5F82D52ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
+		5B5F82D82ACC95A7005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
+		5B5F82D92ACC95DB005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
+		5B5F82DA2ACC9638005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
+		5B5F82DB2ACC9660005983AC /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
+		5B5F82DC2ACC966F005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
 		5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3029D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3129D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
@@ -874,6 +887,8 @@
 		5B5F82AF2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B5F82B02ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_NameCard.swift; sourceTree = "<group>"; };
+		5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_WeaponAsset.swift; sourceTree = "<group>"; };
+		5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_CharacterAsset.swift; sourceTree = "<group>"; };
 		5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
@@ -1251,7 +1266,9 @@
 		5B5F82B12ACC6702005983AC /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */,
 				5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */,
+				5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -2486,6 +2503,7 @@
 				5BD1C6092A2A1FC90043C2B1 /* AccountConfiguration.xcdatamodeld in Sources */,
 				5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */,
 				5BD1C60B2A2A1FC90043C2B1 /* AccountBasicInfosView.swift in Sources */,
+				5B5F82CE2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */,
 				5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */,
 				5BD1C60E2A2A1FC90043C2B1 /* PropertyDictionary.swift in Sources */,
@@ -2504,6 +2522,7 @@
 				5BD1C6192A2A1FC90043C2B1 /* HomeCoinInfoBar.swift in Sources */,
 				5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */,
 				5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */,
+				5B5F82BE2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */,
 				5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */,
 				5BD1C61D2A2A1FC90043C2B1 /* TestSectionView.swift in Sources */,
 				5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */,
@@ -2586,6 +2605,7 @@
 				EAB1110328CF8423009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EAE5C5B828CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */,
 				EAE95CD828CE103D00D975CB /* BackgroundOptions.swift in Sources */,
+				5B5F82D22ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EAB11EA629326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift in Sources */,
 				EAB1110428CF8423009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
 				5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */,
@@ -2611,6 +2631,7 @@
 				EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAB110EA28CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
 				EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
+				5B5F82D52ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */,
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
 				EAE95D1028CE11D200D975CB /* md5.swift in Sources */,
@@ -2667,6 +2688,7 @@
 				BF0130A329220E7800074450 /* WidgetUserData.swift in Sources */,
 				BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */,
 				BFCC069C28C9BBD3003E4A54 /* StringExtensions.swift in Sources */,
+				5B5F82D12ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EA185F2B292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EA185F2F292F1AFC003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */,
@@ -2688,6 +2710,7 @@
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
 				EAE8461A2A3773690065CF09 /* Verification.swift in Sources */,
+				5B5F82D82ACC95A7005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BFCC069828C9BBCF003E4A54 /* HttpMethod.swift in Sources */,
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
@@ -2700,7 +2723,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B43A15829D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EA196B0428B769640091FAE0 /* StringExtensions.swift in Sources */,
 				BFE7AFE62909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				EA09A00E28A2B8700023B4AF /* Account.swift in Sources */,
@@ -2714,17 +2736,19 @@
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA784CD42902517C00918F64 /* UtilizationData.swift in Sources */,
-				5B5F82B72ACC67B3005983AC /* Enum_NameCard.swift in Sources */,
 				5B918A3129D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,
 				EA784CCF2902517500918F64 /* HomeServerVersion.swift in Sources */,
 				EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */,
+				5B5F82DB2ACC9660005983AC /* ChineseUIAccommodations.swift in Sources */,
 				EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */,
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
 				EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */,
 				BFB101E928D6C755000DC631 /* ViewTools.swift in Sources */,
+				5B5F82DC2ACC966F005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EA784CD62902518100918F64 /* FetchHomeModel.swift in Sources */,
 				BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */,
+				5B5F82DA2ACC9638005983AC /* Enum_NameCard.swift in Sources */,
 				BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EA09A01B28A2B8D30023B4AF /* Servers.swift in Sources */,
 				EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */,
@@ -2761,6 +2785,7 @@
 				BFBDD64E28ED7B940022B79D /* Result.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
+				5B5F82CF2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				BF7500F528E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
 				5BBCB6AE29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */,
@@ -2775,6 +2800,7 @@
 				EABE606828D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */,
 				EA30F9A92886B49200AE7BEA /* MainWidget.swift in Sources */,
 				BF6C527C289E168A00EA224F /* HttpMethod.swift in Sources */,
+				5B5F82D92ACC95DB005983AC /* Enum_WeaponAsset.swift in Sources */,
 				EAD7F03028D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift in Sources */,
 				BFFD822D28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */,
@@ -2935,6 +2961,7 @@
 				BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */,
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */,
+				5B5F82CD2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */,
 				EAD3247129DFE878002779F3 /* CollectionChunked.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
@@ -2953,6 +2980,7 @@
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
+				5B5F82BD2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
@@ -3039,6 +3067,7 @@
 				EAE95CF428CE116F00D975CB /* StringExtensions.swift in Sources */,
 				EAE95CF628CE11A100D975CB /* AccountConfigurationModel.swift in Sources */,
 				EAE95CF528CE117B00D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
+				5B5F82D42ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BFBDD65328ED7B980022B79D /* Result.swift in Sources */,
 				EAE95CF028CE112B00D975CB /* AccountIntents.intentdefinition in Sources */,
 				EA185F2D292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
@@ -3046,6 +3075,7 @@
 				EA6B914D290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */,
+				5B5F82D32ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */,
 				5B5F82BB2ACC67B5005983AC /* Enum_NameCard.swift in Sources */,
 				EAE95CF228CE115D00D975CB /* WidgetViewConfiguration.swift in Sources */,

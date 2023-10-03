@@ -105,8 +105,13 @@ extension PlayerDetail.Avatar {
     }
 
     /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
+    @ViewBuilder
     func cardIcon(_ size: CGFloat) -> some View {
-        character.cardIcon(size)
+        if let charAsset = CharacterAsset(rawValue: enkaID) {
+            charAsset.cardIcon(size)
+        } else {
+            character.cardIcon(size)
+        }
     }
 }
 

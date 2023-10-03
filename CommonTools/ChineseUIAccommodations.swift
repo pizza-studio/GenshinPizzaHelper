@@ -42,11 +42,9 @@ extension String {
         }
         characterNameCheck: switch AppConfig.useActualCharacterNames {
         case true where self == "流浪者":
-            return "雷电国崩".localized
-        case true where contains("流浪者"):
-            return replacingOccurrences(of: "流浪者", with: "雷电国崩").localized
+            return CharacterAsset.Kunikuzushi.localized
         case false
-            where self == "流浪者" && !AppConfig.customizedNameForWanderer.isEmpty:
+            where self == CharacterAsset.Kunikuzushi.localized && !AppConfig.customizedNameForWanderer.isEmpty:
             return AppConfig.customizedNameForWanderer
         default: break characterNameCheck
         }
