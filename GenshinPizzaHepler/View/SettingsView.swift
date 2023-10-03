@@ -48,7 +48,7 @@ struct SettingsView: View {
                             .navigationBarTitleDisplayMode(.inline)
                     ) {
                         Label(
-                            "常见使用问题（FAQ）",
+                            "settings.misc.FAQ",
                             systemImage: "person.fill.questionmark"
                         )
                     }
@@ -110,7 +110,7 @@ struct SettingsView: View {
                 #endif
 
                 Section {
-                    Button("在App Store评分") {
+                    Button("settings.misc.rateMeOnAppStore") {
                         ReviewHandler.requestReviewIfNotRequestedElseNavigateToAppStore()
                     }
                     NavigationLink(
@@ -118,7 +118,7 @@ struct SettingsView: View {
                             storeManager: storeManager
                         )
                     ) {
-                        Text("支持我们")
+                        Text("settings.misc.supportUs")
                     }
                 }
 
@@ -143,10 +143,10 @@ struct SettingsView: View {
                 }
                 // 更多
                 NavigationLink(destination: MoreView()) {
-                    Text("更多")
+                    Text("settings.more")
                 }
             }
-            .navigationTitle("设置")
+            .navigationTitle("nav.category.settings.name")
         }
         .navigationViewStyle(.stack)
         .toast(isPresenting: $isAlertToastShow) {

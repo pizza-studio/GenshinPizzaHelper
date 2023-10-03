@@ -8,58 +8,54 @@
 
 // MARK: - 2.0 & above
 // Settings view
-"原神披萨小助手" = "原神ピザ助手";
-"主页" = "ホーム";
-"设置" = "設定";
-"添加账号" = "アカウントを追加";
-"通知推送" = "通知";
-"通知推送设置" = "通知設定";
-"背景名片预览" = "背景名刺のプレビュー";
-"更多" = "その他";
+"app.title.full" = "原神ピザ助手";
+"nav.category.settings.name" = "設定";
+"settings.account.addAccount" = "アカウントを追加";
+"settings.notification.delivery" = "通知";
+"settings.notification.deliverySettings" = "通知設定";
+"settings.travelTools.backgroundNamecardPreview" = "背景名刺のプレビュー";
+"settings.more" = "その他";
 
-"通知使用提示" = "通知の使用ヒント";
-"通知功能需要账号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "通知はデバイスにウィジェットが追加された後にのみ利用可能です。\n通知の手配はウィジェットのリフレッシュと関係がある。ウィジェットが長い間更新されなかった場合、通知が間違っている可能性があります。";
-"地区: %@" = "地域: %@";
-"服务器: %@" = "サーバー: %@";
+"settings.howToUseNotifications" = "通知の使用ヒント";
+"account.server:%@" = "サーバー: %@";
 
-"获取Cookie的脚本" = "Cookieを取得するためのショートカット";
-"在App Store评分" = "App Storeで評価する";
-"支持我们" = "寄付する";
-"常见使用问题（FAQ）" = "FAQ";
-"用户协议与免责声明" = "ユーザー協議";
-"用户协议" = "ユーザー協議";
-"关于小助手" = "Appについて";
-"开发者" = "開発者";
-"交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
+"gatcha.term.scriptForFetchingCookies" = "Cookieを取得するためのショートカット";
+"settings.misc.rateMeOnAppStore" = "App Storeで評価する";
+"settings.misc.supportUs" = "寄付する";
+"settings.misc.FAQ" = "FAQ";
+"settings.misc.disclaimer" = "ユーザー協議";
+"settings.misc.EULA" = "ユーザー協議";
+"settings.misc.aboutThisApp" = "Appについて";
+"settings.misc.devCrew" = "開発者";
 
 // Account detail
-"重新登录米哈游通行证账号" = "HoYoLABに再度ログインします";
-"账号配置" = "アカウント設定";
-"账号名" = "アカウント名";
-"服务器" = "サーバー";
-"测试连接" = "接続状況をテストする";
-"错误内容" = "エラーの詳細";
-"账号信息" = "アカウント情報";
+"settings.account.reloginHoyoLabAccount" = "HoYoLABに再度ログインします";
+"settings.account.config" = "アカウント設定";
+"settings.account.username" = "アカウント名";
+"settings.account.server" = "サーバー";
+"settings.account.testConnection" = "接続状況をテストする";
+"settings.account.errorMessage" = "エラーの詳細";
+"settings.account.accountInformation" = "アカウント情報";
 
-"你可以自定义显示在小组件上的账号名称" = "ウィジェットに表示されているアカウント名をカスタマイズできます";
-"粘贴自剪贴板" = "クリップボードから貼り付ける";
+"settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "ウィジェットに表示されているアカウント名をカスタマイズできます";
+"settings.account.pasteFromClipboard" = "クリップボードから貼り付ける";
 
 // Add account
-"登录米哈游通行证账号" = "HoYoLABからログイン";
-"你也可以" = "または";
-"手动设置账号" = "アカウントを手動で設定する";
-"保存" = "セーブ";
-"国服" = "中国本土のプレーヤー";
-"国际服" = "グローバルプレーヤー";
-"登录账号获取Cookie" = "HoYoLABからCookieを取得する";
+"settings.account.loginViaMiyousheOrHoyoLab" = "HoYoLABからログイン";
+"settings.account.youMayAlso" = "または";
+"settings.account.manualConfiguration" = "アカウントを手動で設定する";
+"settings.account.configuration.save" = "セーブ";
+"settings.account.region.miyoushe" = "中国本土のプレーヤー";
+"settings.account.region.hoyolabInternational" = "グローバルプレーヤー";
+"settings.account.prompt.loginToFetchCookie" = "HoYoLABからCookieを取得する";
 
-"请完成登录" = "ログインを完了してください";
-"未获取到登录信息，请重试" = "UIDとアカウントサーバーを取得できませんでした。アカウントを手動で設定するか、再度お試しください。";
-"尚未完成账号设置" = "アカウントの設定が完了していません";
-"添加账号前…" = "アカウントを追加する前に";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能" = "ログイン状態のHoYoLABで、設定より、「リアルタイムノート」をオンにしていることを確認してください。";
-"好" = "はい";
-"提示" = "ヒント";
+"settings.account.prompt.pleaseFinishLogin" = "ログインを完了してください";
+"settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "UIDとアカウントサーバーを取得できませんでした。アカウントを手動で設定するか、再度お試しください。";
+"settings.account.configuration.notFinishedYet" = "アカウントの設定が完了していません";
+"settings.account.configuration.beforeAddingYourAccount" = "アカウントを追加する前に";
+"settings.account.configuration.askingForEnablingRealtimeNotePaper" = "ログイン状態のHoYoLABで、設定より、「リアルタイムノート」をオンにしていることを確認してください。";
+"button.okay" = "はい";
+"text.hint" = "ヒント";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "次のウェブページでHoYoLABへのログインが完了したら、「完了」をクリックしてください。\nSNSアカウントでログインできません。アカウントとパスワードでログインしてください。\nアカウント情報は、原神アカウント情報のHoYoLABにリクエストするためにのみ使用される、ローカルデバイスとプライベートiCloudにのみ保存されることを約束します。";
 "自定义账号名" = "カスタムアカウント名";
 "请选择账号" = "アカウントを選択してください";
@@ -1312,7 +1308,7 @@
 "星穹铁道游戏助手工具全家桶" = "崩壊：スターレイルのゲームツール";
 "黑塔终端" = "ヘルタ端末";
 "与“老婆”们聊天！" = "好きなキャラとお喋り！";
-"我们的其他作品" = "開発者の他のApp";
+"settings.siblingApps" = "開発者の他のApp";
 
 // MARK: - 3.0.4
 

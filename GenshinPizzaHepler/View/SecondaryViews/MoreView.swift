@@ -47,7 +47,7 @@ struct MoreView: View {
 
             Section {
                 Link(
-                    "获取Cookie的脚本",
+                    "gatcha.term.scriptForFetchingCookies",
                     destination: URL(
                         string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c"
                     )!
@@ -104,7 +104,7 @@ struct MoreView: View {
                     }
                 }
             } header: {
-                Text("我们的其他作品")
+                Text("settings.siblingApps")
             }
 
             Section {
@@ -112,12 +112,12 @@ struct MoreView: View {
                     destination: WebBroswerView(
                         url: "https://gi.pizzastudio.org/static/policy.html"
                     )
-                    .navigationTitle("用户协议")
+                    .navigationTitle("settings.misc.EULA")
                 ) {
-                    Text("用户协议与免责声明")
+                    Text("settings.misc.disclaimer")
                 }
                 NavigationLink(destination: AboutView()) {
-                    Text("关于小助手")
+                    Text("settings.misc.aboutThisApp")
                 }
             }
 
@@ -129,7 +129,7 @@ struct MoreView: View {
                 }
             }
         }
-        .navigationBarTitle("更多", displayMode: .inline)
+        .navigationBarTitle("settings.more", displayMode: .inline)
     }
 
     // MARK: Private

@@ -45,7 +45,7 @@ struct LedgerShareView: View {
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
-                Text("原神披萨小助手").bold().font(.footnote)
+                Text("app.title.full").bold().font(.footnote)
             }
         }
         .padding()

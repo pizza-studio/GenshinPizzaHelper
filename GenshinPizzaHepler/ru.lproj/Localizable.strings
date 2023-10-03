@@ -8,58 +8,54 @@
 
 // MARK: - 2.0 & above
 // Settings view
-"原神披萨小助手" = "Genshin Pizza Helper";
-"主页" = "Домой";
-"设置" = "Настройки";
-"添加账号" = "Добавить аккаунт";
-"通知推送" = "Уведомления";
-"通知推送设置" = "Настройки уведомлений";
-"背景名片预览" = "Предпросмотр именных карт";
-"更多" = "Больше";
+"app.title.full" = "Genshin Pizza Helper";
+"nav.category.settings.name" = "Настройки";
+"settings.account.addAccount" = "Добавить аккаунт";
+"settings.notification.delivery" = "Уведомления";
+"settings.notification.deliverySettings" = "Настройки уведомлений";
+"settings.travelTools.backgroundNamecardPreview" = "Предпросмотр именных карт";
+"settings.more" = "Больше";
 
-"通知使用提示" = "Подсказка: как использовать уведомления?";
-"通知功能需要账号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "Функция уведомлений требует аккаунт и включенные виджеты чтобы от них был эффект \nРасписание уведомлений связано с обновлением виджетов. Уведомления могут не приходить, если виджеты давно не обновлялись. ";
-"地区: %@" = "Регион: %@";
-"服务器: %@" = "Сервер: %@";
+"settings.howToUseNotifications" = "Подсказка: как использовать уведомления?";
+"account.server:%@" = "Сервер: %@";
 
-"获取Cookie的脚本" = "Команда для получения Cookie";
-"在App Store评分" = "Оцени нас в App Store";
-"支持我们" = "Поддержи нас";
-"常见使用问题（FAQ）" = "ЧАВО (На английском)";
-"用户协议与免责声明" = "Пользовательское соглашение";
-"用户协议" = "Пользовательское соглашение";
-"关于小助手" = "О Pizza Helper for Genshin";
-"开发者" = "Разработчики";
-"交流群：813912474 829996515" = "QQ Группа: 813912474 829996515";
+"gatcha.term.scriptForFetchingCookies" = "Команда для получения Cookie";
+"settings.misc.rateMeOnAppStore" = "Оцени нас в App Store";
+"settings.misc.supportUs" = "Поддержи нас";
+"settings.misc.FAQ" = "ЧАВО (На английском)";
+"settings.misc.disclaimer" = "Пользовательское соглашение";
+"settings.misc.EULA" = "Пользовательское соглашение";
+"settings.misc.aboutThisApp" = "О Pizza Helper for Genshin";
+"settings.misc.devCrew" = "Разработчики";
 
 // Account detail
-"重新登录米哈游通行证账号" = "Перезайти в HoYoLAB";
-"账号配置" = "Конфигурация аккаунта";
-"账号名" = "Никнейм аккаунта";
-"服务器" = "Сервер";
-"测试连接" = "Проверка соединения";
-"错误内容" = "Подробности ошибки";
-"账号信息" = "Информация аккаунта";
+"settings.account.reloginHoyoLabAccount" = "Перезайти в HoYoLAB";
+"settings.account.config" = "Конфигурация аккаунта";
+"settings.account.username" = "Никнейм аккаунта";
+"settings.account.server" = "Сервер";
+"settings.account.testConnection" = "Проверка соединения";
+"settings.account.errorMessage" = "Подробности ошибки";
+"settings.account.accountInformation" = "Информация аккаунта";
 
-"你可以自定义显示在小组件上的账号名称" = "Ваш ник учетной записи будет изображен на виджете";
-"粘贴自剪贴板" = "Вставить с буфера обмена";
+"settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "Ваш ник учетной записи будет изображен на виджете";
+"settings.account.pasteFromClipboard" = "Вставить с буфера обмена";
 
 // Add account
-"登录米哈游通行证账号" = "Войти с помощью HoYoLAB";
-"你也可以" = "Вы также можете";
-"手动设置账号" = "настроить свой аккаунт вручную";
-"保存" = "Сохранить";
-"国服" = "Игроки Континентального Китая";
-"国际服" = "Игроки глобальной версии";
-"登录账号获取Cookie" = "Получить Cookie-файлы с HoYoLAB";
+"settings.account.loginViaMiyousheOrHoyoLab" = "Войти с помощью HoYoLAB";
+"settings.account.youMayAlso" = "Вы также можете";
+"settings.account.manualConfiguration" = "настроить свой аккаунт вручную";
+"settings.account.configuration.save" = "Сохранить";
+"settings.account.region.miyoushe" = "Игроки Континентального Китая";
+"settings.account.region.hoyolabInternational" = "Игроки глобальной версии";
+"settings.account.prompt.loginToFetchCookie" = "Получить Cookie-файлы с HoYoLAB";
 
-"请完成登录" = "Пожалуйста, завершите авторизацию";
-"未获取到登录信息，请重试" = "Не удалось получить Cookie-файл. Пожалуйста, попробуйте еще раз.";
-"尚未完成账号设置" = "Настройка аккаунта не завершена";
-"添加账号前…" = "Перед добавлением аккаунта…";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能" = "Пожалуйста убедитесь что настройка \"Заметки в реальном времени \" включена";
-"好" = "ОК";
-"提示" = "Подсказки";
+"settings.account.prompt.pleaseFinishLogin" = "Пожалуйста, завершите авторизацию";
+"settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "Не удалось получить Cookie-файл. Пожалуйста, попробуйте еще раз.";
+"settings.account.configuration.notFinishedYet" = "Настройка аккаунта не завершена";
+"settings.account.configuration.beforeAddingYourAccount" = "Перед добавлением аккаунта…";
+"settings.account.configuration.askingForEnablingRealtimeNotePaper" = "Пожалуйста убедитесь что настройка \"Заметки в реальном времени \" включена";
+"button.okay" = "ОК";
+"text.hint" = "Подсказки";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Нажмите \"Готово\" после авторизации в HoYoLAB в вебокне.\nВход через Google, Facebook или Twitter недоступен, используйте логин и пароль.\nДанные для входа в вашу учетную запись будут храниться только на локальном устройстве и в вашем личном iCloud и использоваться только для запроса информации о вашей учетной записи Genshin Impact в HoYoLAB. ";
 "自定义账号名" = "Свой никнейм аккаунта";
 "请选择账号" = "Выберите свой аккаунт";
@@ -1312,7 +1308,7 @@
 "星穹铁道游戏助手工具全家桶" = "Инструмент для игроков Honkai: Star Rail";
 "黑塔终端" = "Herta Terminal";
 "与“老婆”们聊天！" = "Общайтесь с вайфу в HSR";
-"我们的其他作品" = "Наши другие работы";
+"settings.siblingApps" = "Наши другие работы";
 
 // MARK: - 3.0.4
 

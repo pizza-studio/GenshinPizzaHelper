@@ -268,7 +268,7 @@ struct UserPolicyView: View {
                         }
                     }
                 }
-                .navigationTitle("用户协议")
+                .navigationTitle("settings.misc.EULA")
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

@@ -65,7 +65,7 @@ struct ContentView: View {
                                 .padding()
                         }
                     }
-                    NavigationLink("设置") {
+                    NavigationLink("nav.category.settings.name") {
                         WatchWidgetSettingView()
                     }
                 }

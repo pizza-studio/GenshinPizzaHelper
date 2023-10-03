@@ -125,7 +125,7 @@ struct ExportGachaView: View {
                     }
                 }
                 .alert("保存成功", isPresented: $isSucceedAlertShow, presenting: alert, actions: { _ in
-                    Button("好") {
+                    Button("button.okay") {
                         isSucceedAlertShow = false
                     }
                 }, message: { thisAlert in
@@ -137,7 +137,7 @@ struct ExportGachaView: View {
                     }
                 })
                 .alert("保存失败", isPresented: $isFailureAlertShow, presenting: alert, actions: { _ in
-                    Button("好") {
+                    Button("button.okay") {
                         isFailureAlertShow = false
                     }
                 }, message: { thisAlert in

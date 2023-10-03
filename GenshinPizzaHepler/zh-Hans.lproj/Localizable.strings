@@ -8,58 +8,54 @@ Created by Bill Haku on 2022/8/23.
 
 // MARK: - 2.0 & above
 // Settings view
-"原神披萨小助手" = "原神披萨小助手";
-"主页" = "主页";
-"设置" = "设置";
-"添加账号" = "添加账号";
-"通知推送" = "通知推送";
-"通知推送设置" = "通知推送设置";
-"背景名片预览" = "背景名片预览";
-"更多" = "更多";
+"app.title.full" = "原神披萨小助手";
+"nav.category.settings.name" = "设置";
+"settings.account.addAccount" = "添加账号";
+"settings.notification.delivery" = "通知推送";
+"settings.notification.deliverySettings" = "通知推送设置";
+"settings.travelTools.backgroundNamecardPreview" = "背景名片预览";
+"settings.more" = "更多";
 
-"通知使用提示" = "通知使用提示";
-"通知功能需要账号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "通知功能需要账号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。";
-"地区: %@" = "地区: %@";
-"服务器: %@" = "服务器: %@";
+"settings.howToUseNotifications" = "通知使用提示";
+"account.server:%@" = "account.server:%@";
 
-"获取Cookie的脚本" = "获取Cookie的脚本";
-"在App Store评分" = "在App Store评分";
-"支持我们" = "支持我们";
-"常见使用问题（FAQ）" = "常见使用问题（FAQ）";
-"用户协议与免责声明" = "用户协议与免责声明";
-"用户协议" = "用户协议";
-"关于小助手" = "关于小助手";
-"开发者" = "开发者";
-"交流群：813912474 829996515" = "交流群：813912474 829996515";
+"gatcha.term.scriptForFetchingCookies" = "获取Cookie的脚本";
+"settings.misc.rateMeOnAppStore" = "在App Store评分";
+"settings.misc.supportUs" = "支持我们";
+"settings.misc.FAQ" = "常见使用问题（FAQ）";
+"settings.misc.disclaimer" = "用户协议与免责声明";
+"settings.misc.EULA" = "用户协议";
+"settings.misc.aboutThisApp" = "关于小助手";
+"settings.misc.devCrew" = "开发者";
 
 // Account detail
-"重新登录米哈游通行证账号" = "重新登录米哈游通行证账号";
-"账号配置" = "账号配置";
-"账号名" = "账号名";
-"服务器" = "服务器";
-"测试连接" = "测试连接";
-"错误内容" = "错误内容";
-"账号信息" = "账号信息";
+"settings.account.reloginHoyoLabAccount" = "重新登录米哈游通行证账号";
+"settings.account.config" = "账号配置";
+"settings.account.username" = "账号名";
+"settings.account.server" = "服务器";
+"settings.account.testConnection" = "测试连接";
+"settings.account.errorMessage" = "错误内容";
+"settings.account.accountInformation" = "账号信息";
 
-"你可以自定义显示在小组件上的账号名称" = "你可以自定义显示在小组件上的账号名称";
-"粘贴自剪贴板" = "粘贴自剪贴板";
+"settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "你可以自定义显示在小组件上的账号名称";
+"settings.account.pasteFromClipboard" = "粘贴自剪贴板";
 
 // Add account
-"登录米哈游通行证账号" = "登录米哈游通行证账号";
-"你也可以" = "你也可以";
-"手动设置账号" = "手动设置账号";
-"保存" = "保存";
-"国服" = "国服";
-"国际服" = "国际服";
-"登录账号获取Cookie" = "登录账号获取Cookie";
+"settings.account.loginViaMiyousheOrHoyoLab" = "登录米哈游通行证账号";
+"settings.account.youMayAlso" = "你也可以";
+"settings.account.manualConfiguration" = "手动设置账号";
+"settings.account.configuration.save" = "保存";
+"settings.account.region.miyoushe" = "国服";
+"settings.account.region.hoyolabInternational" = "国际服";
+"settings.account.prompt.loginToFetchCookie" = "登录账号获取Cookie";
 
-"请完成登录" = "请完成登录";
-"未获取到登录信息，请重试" = "获取UID和账号区服失败。请前往手动配置该信息或重试。";
-"尚未完成账号设置" = "尚未完成账号设置";
-"添加账号前…" = "添加账号前…";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能" = "请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能";
-"好" = "好";
-"提示" = "提示";
+"settings.account.prompt.pleaseFinishLogin" = "请完成登录";
+"settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "获取UID和账号区服失败。请前往手动配置该信息或重试。";
+"settings.account.configuration.notFinishedYet" = "尚未完成账号设置";
+"settings.account.configuration.beforeAddingYourAccount" = "添加账号前…";
+"settings.account.configuration.askingForEnablingRealtimeNotePaper" = "请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能";
+"button.okay" = "好";
+"text.hint" = "提示";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。";
 "自定义账号名" = "自定义账号名";
 "请选择账号" = "请选择账号";
@@ -100,7 +96,7 @@ Created by Bill Haku on 2022/8/23.
 "全部完成时" = "全部完成时";
 "任一完成时" = "任一完成时";
 "每日委托提醒" = "每日委托提醒";
-"周本折扣提醒" = "周本折扣提醒";
+"周本折扣提醒" = "星期本折扣提醒";
 "提醒日期" = "提醒日期";
 "参量质变仪提醒" = "参量质变仪提醒";
 
@@ -444,7 +440,7 @@ Created by Bill Haku on 2022/8/23.
 "每日委托" = "每日委托";
 "探索派遣" = "探索派遣";
 "参量质变仪" = "参量质变仪";
-"周本折扣" = "周本折扣";
+"周本折扣" = "星期本折扣";
 "%@ 回满" = "%@ 回满";
 "树脂已全部回满" = "树脂已全部回满";
 
@@ -1311,7 +1307,7 @@ Created by Bill Haku on 2022/8/23.
 "星穹铁道游戏助手工具全家桶" = "星穹铁道游戏助手工具全家桶";
 "黑塔终端" = "黑塔终端";
 "与“老婆”们聊天！" = "与“老婆”们聊天！";
-"我们的其他作品" = "我们的其他作品";
+"settings.siblingApps" = "我们的其他作品";
 
 // MARK: - 3.0.4
 "反向代理设置" = "反向代理设置";

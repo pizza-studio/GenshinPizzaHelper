@@ -179,7 +179,7 @@ struct GachaSetting: View {
 
     @ViewBuilder
     func defaultDismissButton(_ thisAlert: AlertType) -> some View {
-        Button("好") {
+        Button("button.okay") {
             alert = nil
         }
     }

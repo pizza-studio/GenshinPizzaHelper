@@ -44,7 +44,7 @@ struct BackgroundsPreviewView: View {
         }
         .listStyle(.insetGrouped)
         .searchable(text: $searchText)
-        .navigationTitle("背景名片预览")
+        .navigationTitle("settings.travelTools.backgroundNamecardPreview")
     }
 
     var searchResults: [String] {

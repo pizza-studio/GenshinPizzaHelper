@@ -64,14 +64,14 @@ struct AccountDetailView: View {
 
     var body: some View {
         List {
-            Button("重新登录米哈游通行证账号") { isWebShown.toggle() }
-            Section(header: Text("账号配置")) {
+            Button("settings.account.reloginHoyoLabAccount") { isWebShown.toggle() }
+            Section(header: Text("settings.account.config")) {
                 NavigationLink(destination: TextFieldEditorView(
-                    title: "账号名".localized,
-                    note: "你可以自定义显示在小组件上的账号名称".localized,
+                    title: "settings.account.username".localized,
+                    note: "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget".localized,
                     content: bindingName
                 )) {
-                    InfoPreviewer(title: "账号名", content: name)
+                    InfoPreviewer(title: "settings.account.username", content: name)
                 }
                 NavigationLink(destination: TextFieldEditorView(
                     title: "UID",
@@ -87,7 +87,7 @@ struct AccountDetailView: View {
                 )) {
                     Text("Cookie")
                 }
-                Picker("服务器", selection: $account.config.server) {
+                Picker("settings.account.server", selection: $account.config.server) {
                     ForEach(Server.allCases, id: \.self) { server in
                         Text(server.rawValue)
                             .tag(server)
@@ -108,7 +108,7 @@ struct AccountDetailView: View {
                 deviceFingerPrint: bindingDeviceFingerPrint
             )
         }
-        .navigationBarTitle("账号信息", displayMode: .inline)
+        .navigationBarTitle("settings.account.accountInformation", displayMode: .inline)
         .onDisappear {
             viewModel.saveAccount()
         }
@@ -192,13 +192,13 @@ struct AccountDetailSheet<SheetType>: View {
     var body: some View {
         List {
             Button("重新登录米游社账号") { isWebShown.toggle() }
-            Section(header: Text("账号配置")) {
+            Section(header: Text("settings.account.config")) {
                 NavigationLink(destination: TextFieldEditorView(
-                    title: "账号名".localized,
-                    note: "你可以自定义显示在小组件上的账号名称".localized,
+                    title: "settings.account.username".localized,
+                    note: "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget".localized,
                     content: bindingName
                 )) {
-                    InfoPreviewer(title: "账号名", content: name)
+                    InfoPreviewer(title: "settings.account.username", content: name)
                 }
                 NavigationLink(destination: TextFieldEditorView(
                     title: "UID",
@@ -214,7 +214,7 @@ struct AccountDetailSheet<SheetType>: View {
                 )) {
                     Text("Cookie")
                 }
-                Picker("服务器", selection: $account.config.server) {
+                Picker("settings.account.server", selection: $account.config.server) {
                     ForEach(Server.allCases, id: \.self) { server in
                         Text(server.rawValue)
                             .tag(server)
@@ -229,7 +229,7 @@ struct AccountDetailSheet<SheetType>: View {
                 deviceFingerPrint: bindingDeviceFingerPrint
             )
         }
-        .navigationBarTitle("账号信息", displayMode: .inline)
+        .navigationBarTitle("settings.account.accountInformation", displayMode: .inline)
         .sheet(isPresented: $isWebShown) {
             GetCookieWebView(
                 isShown: $isWebShown,

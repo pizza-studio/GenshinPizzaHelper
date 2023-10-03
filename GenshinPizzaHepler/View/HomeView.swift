@@ -69,7 +69,7 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle("原神披萨小助手")
+            .navigationTitle("app.title.full")
             .navigationBarTitleDisplayMode(.large)
         }
         .navigationViewStyle(.stack)

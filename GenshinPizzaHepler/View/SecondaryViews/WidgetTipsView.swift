@@ -60,7 +60,7 @@ struct WidgetTipsView: View {
                         .navigationTitle("FAQ")
                     ) {
                         Label(
-                            "常见使用问题（FAQ）",
+                            "settings.misc.FAQ",
                             systemImage: "person.fill.questionmark"
                         )
                     }

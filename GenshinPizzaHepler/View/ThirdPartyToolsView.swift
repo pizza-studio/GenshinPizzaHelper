@@ -26,7 +26,7 @@ public struct ThirdPartyToolsView: View {
                 mapNavigationLink()
                 genshinCalculatorLink()
                 NavigationLink(destination: BackgroundsPreviewView()) {
-                    Text("背景名片预览")
+                    Text("settings.travelTools.backgroundNamecardPreview")
                 }
             }
         }

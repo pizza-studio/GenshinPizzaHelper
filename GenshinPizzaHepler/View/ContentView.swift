@@ -88,7 +88,7 @@ struct ContentView: View {
                     .tag(2)
                     .environmentObject(viewModel)
                     .tabItem {
-                        Label("设置", systemImage: "gear")
+                        Label("nav.category.settings.name", systemImage: "gear")
                     }
             }
             .zIndex(0)

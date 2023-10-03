@@ -81,18 +81,18 @@ struct AddAccountView: View {
                         }
                     } else {
                         Menu {
-                            Button("国服") {
+                            Button("settings.account.region.miyoushe") {
                                 region = .cn
                                 openWebView()
                             }
-                            Button("国际服") {
+                            Button("settings.account.region.hoyolabInternational") {
                                 region = .global
                                 openWebView()
                             }
                         } label: {
                             Text(
-                                unsavedCookie == "" ? "登录米哈游通行证账号" :
-                                    "重新登录米哈游通行证账号"
+                                unsavedCookie == "" ? "settings.account.loginViaMiyousheOrHoyoLab" :
+                                    "settings.account.reloginHoyoLabAccount"
                             )
                             .frame(
                                 maxWidth: .infinity,
@@ -110,7 +110,7 @@ struct AddAccountView: View {
                 } footer: {
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("你也可以")
+                            Text("settings.account.youMayAlso")
                                 .font(.footnote)
                             NavigationLink(destination: AddAccountDetailView(
                                 unsavedName: $unsavedName,
@@ -120,7 +120,7 @@ struct AddAccountView: View {
                                 connectStatus: $connectStatus,
                                 unsavedDeviceFingerPrint: $unsavedDeviceFingerPrint
                             )) {
-                                Text("手动设置账号")
+                                Text("settings.account.manualConfiguration")
                                     .font(.footnote)
                             }
                         }
@@ -185,7 +185,7 @@ struct AddAccountView: View {
                         Text(unsavedServer.rawValue)
                     }
                 } footer: {
-                    Text("你可以自定义显示在小组件上的账号名称")
+                    Text("settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget")
                         .font(.footnote)
                 }
             }
@@ -222,10 +222,10 @@ struct AddAccountView: View {
 //                    .listRowBackground(Color.white.opacity(0))
 //            }
         }
-        .navigationBarTitle("添加账号", displayMode: .inline)
+        .navigationBarTitle("settings.account.addAccount", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("保存") {
+                Button("settings.account.configuration.save") {
                     if (unsavedUid == "") || (unsavedCookie == "") {
                         alertType = .accountNotSaved
                         isAlertShow.toggle()
@@ -261,11 +261,11 @@ struct AddAccountView: View {
         .alert(isPresented: $isAlertShow) {
             switch alertType {
             case .accountNotSaved:
-                return Alert(title: Text("尚未完成账号设置"))
+                return Alert(title: Text("settings.account.configuration.notFinishedYet"))
             case .firstAddAccountHint:
                 return Alert(
-                    title: Text("添加账号前…"),
-                    message: Text("请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能")
+                    title: Text("settings.account.configuration.beforeAddingYourAccount"),
+                    message: Text("settings.account.configuration.askingForEnablingRealtimeNotePaper")
                 )
             }
         }

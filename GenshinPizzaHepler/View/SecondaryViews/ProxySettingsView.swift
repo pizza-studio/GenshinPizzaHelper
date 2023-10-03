@@ -43,7 +43,7 @@ struct ReverseProxySettingsView: View {
         List {
             Section(header: Text("https://bbs-api-os.hoyolab.com/").textCase(.none)) {
                 InfoEditor(
-                    title: "服务器",
+                    title: "settings.account.server",
                     content: $reverseProxy1,
                     placeholderText: "https://bbs-api-os.hoyolab.com/",
                     style: .vertical
@@ -51,7 +51,7 @@ struct ReverseProxySettingsView: View {
             }
             Section(header: Text("https://api-account-os.hoyolab.com/").textCase(.none)) {
                 InfoEditor(
-                    title: "服务器",
+                    title: "settings.account.server",
                     content: $reverseProxy2,
                     placeholderText: "https://api-account-os.hoyolab.com/",
                     style: .vertical
@@ -59,7 +59,7 @@ struct ReverseProxySettingsView: View {
             }
             Section(header: Text("https://sg-hk4e-api.hoyolab.com/").textCase(.none)) {
                 InfoEditor(
-                    title: "服务器",
+                    title: "settings.account.server",
                     content: $reverseProxy3,
                     placeholderText: "https://sg-hk4e-api.hoyolab.com/",
                     style: .vertical
@@ -67,7 +67,7 @@ struct ReverseProxySettingsView: View {
             }
             Section(header: Text("https://bbs-api-os.hoyoverse.com/").textCase(.none)) {
                 InfoEditor(
-                    title: "服务器",
+                    title: "settings.account.server",
                     content: $reverseProxy4,
                     placeholderText: "https://bbs-api-os.hoyoverse.com/",
                     style: .vertical
@@ -75,7 +75,7 @@ struct ReverseProxySettingsView: View {
             }
             Section(header: Text("https://hk4e-api-os.hoyoverse.com/").textCase(.none)) {
                 InfoEditor(
-                    title: "服务器",
+                    title: "settings.account.server",
                     content: $reverseProxy5,
                     placeholderText: "https://hk4e-api-os.hoyoverse.com/",
                     style: .vertical

@@ -24,7 +24,7 @@ struct AddAccountDetailView: View {
 
     var body: some View {
         List {
-            Section(header: Text("账号配置")) {
+            Section(header: Text("settings.account.config")) {
                 InfoEditor(
                     title: "UID",
                     content: $unsavedUid,
@@ -38,7 +38,7 @@ struct AddAccountDetailView: View {
                 )) {
                     Text("Cookie")
                 }
-                Picker("服务器", selection: $unsavedServer) {
+                Picker("settings.account.server", selection: $unsavedServer) {
                     ForEach(Server.allCases, id: \.self) { server in
                         Text(server.rawValue)
                             .tag(server)
@@ -61,6 +61,6 @@ struct AddAccountDetailView: View {
                 )
             }
         }
-        .navigationBarTitle("账号信息", displayMode: .inline)
+        .navigationBarTitle("settings.account.accountInformation", displayMode: .inline)
     }
 }

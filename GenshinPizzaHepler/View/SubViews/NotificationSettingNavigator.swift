@@ -77,12 +77,12 @@ struct NotificationSettingNavigator: View {
     var body: some View {
         Section {
             Toggle(isOn: masterSwitch.animation()) {
-                Text("通知推送")
+                Text("settings.notification.delivery")
             }
             .disabled(!allowNotification)
             if masterSwitch.wrappedValue, allowNotification {
                 NavigationLink(destination: NotificationSettingView()) {
-                    Text("通知推送设置")
+                    Text("settings.notification.deliverySettings")
                 }
                 .animation(.easeInOut, value: masterSwitch.wrappedValue)
             }
@@ -97,7 +97,7 @@ struct NotificationSettingNavigator: View {
                 Text("未启用通知，请前往设置开启。")
             } else {
                 if masterSwitch.wrappedValue {
-                    Button("通知使用提示") {
+                    Button("settings.howToUseNotifications") {
                         isNotificationHintShow = true
                     }
                     .font(.footnote)

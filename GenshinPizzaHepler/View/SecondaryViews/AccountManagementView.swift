@@ -48,7 +48,7 @@ struct AccountManagementView: View {
                         }
                 }
                 NavigationLink(destination: AddAccountView()) {
-                    Label("添加账号", systemImage: "plus.circle")
+                    Label("settings.account.addAccount", systemImage: "plus.circle")
                 }
             } header: {
                 HStack {

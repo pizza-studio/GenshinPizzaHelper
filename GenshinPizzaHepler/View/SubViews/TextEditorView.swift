@@ -29,25 +29,25 @@ struct TextEditorView: View {
                 Section {
                     if showShortCutsLink {
                         Link(
-                            "获取Cookie的脚本",
+                            "gatcha.term.scriptForFetchingCookies",
                             destination: URL(
                                 string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c"
                             )!
                         )
                         Menu {
-                            Button("国服") {
+                            Button("settings.account.region.miyoushe") {
                                 getCookieRegion = .cn
                                 isWebShown.toggle()
                             }
-                            Button("国际服") {
+                            Button("settings.account.region.hoyolabInternational") {
                                 getCookieRegion = .global
                                 isWebShown.toggle()
                             }
                         } label: {
-                            Text("登录账号获取Cookie")
+                            Text("settings.account.prompt.loginToFetchCookie")
                         }
                     }
-                    Button("粘贴自剪贴板") {
+                    Button("settings.account.pasteFromClipboard") {
                         content = UIPasteboard.general.string ?? ""
                     }
                 }

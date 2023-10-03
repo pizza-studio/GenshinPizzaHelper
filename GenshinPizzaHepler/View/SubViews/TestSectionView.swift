@@ -35,7 +35,7 @@ struct TestSectionView: View {
                 connectStatus = .testing
             }) {
                 HStack {
-                    Text("测试连接")
+                    Text("settings.account.testConnection")
                     Spacer()
                     switch connectStatus {
                     case .unknown:
@@ -88,7 +88,7 @@ struct TestSectionView: View {
                 }
             } else {
                 if connectStatus == .fail {
-                    InfoPreviewer(title: "错误内容", content: error?.description ?? "")
+                    InfoPreviewer(title: "settings.account.errorMessage", content: error?.description ?? "")
                     InfoPreviewer(title: "DEBUG", content: error?.message ?? "")
                         .foregroundColor(.gray)
                 }

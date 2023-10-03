@@ -23,7 +23,7 @@ struct ContactUsView: View {
     var body: some View {
         List {
             // developer - lava
-            Section(header: Text("开发者")) {
+            Section(header: Text("settings.misc.devCrew")) {
                 HStack {
                     Image("avatar.lava")
                         .resizable()

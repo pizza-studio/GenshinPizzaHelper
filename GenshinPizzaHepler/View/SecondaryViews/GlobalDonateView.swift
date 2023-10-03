@@ -65,7 +65,7 @@ struct GlobalDonateView: View {
                 }
             }
         }
-        .navigationTitle("支持我们")
+        .navigationTitle("settings.misc.supportUs")
         .navigationBarTitleDisplayMode(.inline)
     }
 

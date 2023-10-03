@@ -8,60 +8,56 @@
 
 // MARK: - 2.0 & above
 // Settings view
-"原神披萨小助手" = "Genshin Pizza Helper";
-"主页" = "Trang Chủ";
-"设置" = "Cài Đặt";
+"app.title.full" = "Genshin Pizza Helper";
+"nav.category.settings.name" = "Cài Đặt";
 "我的账号" = "Tài Khoản Của Tôi";
-"添加账号" = "Thêm Tài Khoản";
-"通知推送" = "Thông Báo";
-"通知推送设置" = "Cài Đặt Thông Báo";
-"背景名片预览" = "Xem Trước Nền Danh Thiếp";
-"更多" = "Thêm";
+"settings.account.addAccount" = "Thêm Tài Khoản";
+"settings.notification.delivery" = "Thông Báo";
+"settings.notification.deliverySettings" = "Cài Đặt Thông Báo";
+"settings.travelTools.backgroundNamecardPreview" = "Xem Trước Nền Danh Thiếp";
+"settings.more" = "Thêm";
 
-"通知使用提示" = "Mẹo: Hãy bật thông báo của ứng dụng";
-"通知功能需要账号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "Tính năng thông báo yêu cầu tài khoản phải được thêm vào tiện ích trước khi có hiệu lực \nLịch trình thông báo có liên quan đến việc làm mới tiện ích, thông báo có thể bị sai lệch nếu tiện ích của bạn không được làm mới trong một thời gian dài.";
-"地区: %@" = "Khu vực: %@";
-"服务器: %@" = "Máy chủ: %@";
+"settings.howToUseNotifications" = "Mẹo: Hãy bật thông báo của ứng dụng";
+"account.server:%@" = "Máy chủ: %@";
 
-"获取Cookie的脚本" = "Phím tắt để lấy Cookie";
-"在App Store评分" = "Đánh giá ứng dụng trên App Store";
-"支持我们" = "Ủng hộ chúng tôi";
-"常见使用问题（FAQ）" = "Câu hỏi thường gặp (FAQ)";
-"用户协议与免责声明" = "Thỏa thuận người dùng và Tuyên bố miễn trừ trách nhiệm";
-"用户协议" = "Chính sách người dùng";
-"关于小助手" = "Thông tin ứng dụng";
-"开发者" = "Nhà phát triển";
-"交流群：813912474 829996515" = "QQ Group: 813912474 829996515";
+"gatcha.term.scriptForFetchingCookies" = "Phím tắt để lấy Cookie";
+"settings.misc.rateMeOnAppStore" = "Đánh giá ứng dụng trên App Store";
+"settings.misc.supportUs" = "Ủng hộ chúng tôi";
+"settings.misc.FAQ" = "Câu hỏi thường gặp (FAQ)";
+"settings.misc.disclaimer" = "Thỏa thuận người dùng và Tuyên bố miễn trừ trách nhiệm";
+"settings.misc.EULA" = "Chính sách người dùng";
+"settings.misc.aboutThisApp" = "Thông tin ứng dụng";
+"settings.misc.devCrew" = "Nhà phát triển";
 
 // Account detail
-"重新登录米哈游通行证账号" = "Đăng nhập lại bằng HoYoLAB";
-"账号配置" = "Cấu hình tài khoản";
-"账号名" = "Tên tài khoản";
-"服务器" = "Máy chủ";
-"测试连接" = "Kiểm tra kết nối";
-"错误内容" = "Chi tiết lỗi";
-"账号信息" = "Thông tin tài khoản";
+"settings.account.reloginHoyoLabAccount" = "Đăng nhập lại bằng HoYoLAB";
+"settings.account.config" = "Cấu hình tài khoản";
+"settings.account.username" = "Tên tài khoản";
+"settings.account.server" = "Máy chủ";
+"settings.account.testConnection" = "Kiểm tra kết nối";
+"settings.account.errorMessage" = "Chi tiết lỗi";
+"settings.account.accountInformation" = "Thông tin tài khoản";
 
-"你可以自定义显示在小组件上的账号名称" = "Tên tài khoản tùy chỉnh của bạn được hiển thị trên tiện ích";
-"粘贴自剪贴板" = "Dán từ Clipboard";
+"settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "Tên tài khoản tùy chỉnh của bạn được hiển thị trên tiện ích";
+"settings.account.pasteFromClipboard" = "Dán từ Clipboard";
 
 // Add account
-"登录米哈游通行证账号" = "Đăng nhập bằng HoYoLAB";
-"你也可以" = "Bạn cũng có thể";
-"手动设置账号" = "Cấu hình tài khoản của bạn theo cách thủ công";
-"保存" = "Lưu";
-"国服" = "Người chơi Trung Quốc đại lục";
-"国际服" = "Người chơi phiên bản toàn cầu";
-"登录账号获取Cookie" = "Lấy Cookie thông qua HoYoLAB";
+"settings.account.loginViaMiyousheOrHoyoLab" = "Đăng nhập bằng HoYoLAB";
+"settings.account.youMayAlso" = "Bạn cũng có thể";
+"settings.account.manualConfiguration" = "Cấu hình tài khoản của bạn theo cách thủ công";
+"settings.account.configuration.save" = "Lưu";
+"settings.account.region.miyoushe" = "Người chơi Trung Quốc đại lục";
+"settings.account.region.hoyolabInternational" = "Người chơi phiên bản toàn cầu";
+"settings.account.prompt.loginToFetchCookie" = "Lấy Cookie thông qua HoYoLAB";
 
-"请完成登录" = "Vui lòng hoàn tất đăng nhập";
+"settings.account.prompt.pleaseFinishLogin" = "Vui lòng hoàn tất đăng nhập";
 "完成" = "Xong";
-"未获取到登录信息，请重试" = "Không thể lấy Cookie. Vui lòng thử lại.";
-"尚未完成账号设置" = "Cấu hình tài khoản chưa hoàn tất";
-"添加账号前…" = "Trước khi thêm tài khoản của bạn…";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能" = "Vui lòng đảm bảo \"Ghi chú theo thời gian thực\" của bạn có thể truy cập được";
-"好" = "OK";
-"提示" = "Lời khuyên";
+"settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "Không thể lấy Cookie. Vui lòng thử lại.";
+"settings.account.configuration.notFinishedYet" = "Cấu hình tài khoản chưa hoàn tất";
+"settings.account.configuration.beforeAddingYourAccount" = "Trước khi thêm tài khoản của bạn…";
+"settings.account.configuration.askingForEnablingRealtimeNotePaper" = "Vui lòng đảm bảo \"Ghi chú theo thời gian thực\" của bạn có thể truy cập được";
+"button.okay" = "OK";
+"text.hint" = "Lời khuyên";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "Nhấp vào \"Xong\" sau khi bạn hoàn tất đăng nhập vào HoYoLAB trong trang web sau.\nĐăng nhập qua Google, Facebook hoặc Twitter không khả dụng, vui lòng đăng nhập bằng tên người dùng và mật khẩu của bạn.\nThông tin đăng nhập tài khoản của bạn sẽ chỉ được lưu trữ cục bộ thiết bị và iCloud riêng của bạn và được sử dụng để yêu cầu HoYoLAB cung cấp thông tin tài khoản Genshin của bạn. ";
 "自定义账号名" = "Tên tài khoản tùy chỉnh";
 "请选择账号" = "Chọn tài khoản của bạn";
@@ -386,7 +382,7 @@
 "请前往米游社（或Hoyolab）打开旅行便笺功能" = "Vui lòng mở Ghi chú theo thời gian thực trong ứng dụng HoYoLAB trước";
 "解码错误：请检查网络环境" = "Lỗi giải mã: vui lòng kiểm tra trạng thái mạng của bạn";
 "网络错误" = "Lỗi mạng";
-"未获取到登录信息，请重试" = "Không thể tìm thông tin đăng nhập của bạn, vui lòng đăng nhập lại HoYoLAB";
+"settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "Không thể tìm thông tin đăng nhập của bạn, vui lòng đăng nhập lại HoYoLAB";
 "未知错误码：%lld" = "Lỗi không xác định %lld";
 
 "无返回数据" = "Không có dữ liệu phản hồi";
@@ -1327,7 +1323,7 @@
 "星穹铁道游戏助手工具全家桶" = "Công cụ dành cho người chơi Honkai: Star Rail";
 "黑塔终端" = "Herta Terminal";
 "与“老婆”们聊天！" = "Trò chuyện với waifu trong HSR";
-"我们的其他作品" = "Các công trình khác của chúng tôi";
+"settings.siblingApps" = "Các công trình khác của chúng tôi";
 
 // MARK: - 3.0.4
 

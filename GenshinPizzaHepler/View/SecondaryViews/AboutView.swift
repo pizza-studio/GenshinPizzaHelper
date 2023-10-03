@@ -20,7 +20,7 @@ struct AboutView: View {
                 .cornerRadius(10)
                 .padding()
                 .padding(.top, 50)
-            Text("原神披萨小助手")
+            Text("app.title.full")
                 .font(.title3)
                 .fontWeight(.regular)
                 .foregroundColor(.primary)

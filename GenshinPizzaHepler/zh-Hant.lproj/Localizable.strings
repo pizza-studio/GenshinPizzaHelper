@@ -8,58 +8,54 @@
 
 // MARK: - 2.0 & above
 // Settings view
-"原神披萨小助手" = "原神披薩小助手";
-"主页" = "主頁";
-"设置" = "設定";
-"添加账号" = "添加帳號";
-"通知推送" = "通知推送";
-"通知推送设置" = "通知推送設定";
-"背景名片预览" = "背景名片預覽";
-"更多" = "更多";
+"app.title.full" = "原神披薩小助手";
+"nav.category.settings.name" = "設定";
+"settings.account.addAccount" = "添加帳號";
+"settings.notification.delivery" = "通知推送";
+"settings.notification.deliverySettings" = "通知推送設定";
+"settings.travelTools.backgroundNamecardPreview" = "背景名片預覽";
+"settings.more" = "更多";
 
-"通知使用提示" = "通知使用提示";
-"通知功能需要账号添加至小组件后才能生效。\n通知安排与小组件刷新有关，若您的小组件长时间未刷新，推送的通知可能有误。" = "通知功能需要帳號添加至小工具後才能生效。\n通知安排與小工具刷新有關，若您的小工具長時間未刷新，推送的通知可能有誤。";
-"地区: %@" = "地區: %@";
-"服务器: %@" = "伺服器: %@";
+"settings.howToUseNotifications" = "通知使用提示";
+"account.server:%@" = "伺服器: %@";
 
-"获取Cookie的脚本" = "獲取Cookie的腳本";
-"在App Store评分" = "在App Store評分";
-"支持我们" = "支援我們";
-"常见使用问题（FAQ）" = "常見使用問題（FAQ）";
-"用户协议与免责声明" = "用戶協議與免責聲明";
-"用户协议" = "用戶協議";
-"关于小助手" = "關於小助手";
-"开发者" = "開發者";
-"交流群：813912474 829996515" = "交流群：813912474 829996515";
+"gatcha.term.scriptForFetchingCookies" = "獲取Cookie的腳本";
+"settings.misc.rateMeOnAppStore" = "在App Store評分";
+"settings.misc.supportUs" = "支援我們";
+"settings.misc.FAQ" = "常見使用問題（FAQ）";
+"settings.misc.disclaimer" = "用戶協議與免責聲明";
+"settings.misc.EULA" = "用戶協議";
+"settings.misc.aboutThisApp" = "關於小助手";
+"settings.misc.devCrew" = "開發者";
 
 // Account detail
-"重新登录米哈游通行证账号" = "重新登入米哈遊通行證帳號";
-"账号配置" = "帳號配置";
-"账号名" = "帳號名";
-"服务器" = "伺服器";
-"测试连接" = "測試連線";
-"错误内容" = "錯誤內容";
-"账号信息" = "帳號資訊";
+"settings.account.reloginHoyoLabAccount" = "重新登入米哈遊通行證帳號";
+"settings.account.config" = "帳號配置";
+"settings.account.username" = "帳號名";
+"settings.account.server" = "伺服器";
+"settings.account.testConnection" = "測試連線";
+"settings.account.errorMessage" = "錯誤內容";
+"settings.account.accountInformation" = "帳號資訊";
 
-"你可以自定义显示在小组件上的账号名称" = "你可以自訂顯示在小工具上的帳號名稱";
-"粘贴自剪贴板" = "粘貼自剪貼板";
+"settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "你可以自訂顯示在小工具上的帳號名稱";
+"settings.account.pasteFromClipboard" = "粘貼自剪貼板";
 
 // Add account
-"登录米哈游通行证账号" = "登入米哈遊通行證帳號";
-"你也可以" = "你也可以";
-"手动设置账号" = "手動設定帳號";
-"保存" = "保存";
-"国服" = "陸服";
-"国际服" = "國際服";
-"登录账号获取Cookie" = "登入帳號獲取Cookie";
+"settings.account.loginViaMiyousheOrHoyoLab" = "登入米哈遊通行證帳號";
+"settings.account.youMayAlso" = "settings.account.youMayAlso";
+"settings.account.manualConfiguration" = "手動設定帳號";
+"settings.account.configuration.save" = "settings.account.configuration.save";
+"settings.account.region.miyoushe" = "陸服";
+"settings.account.region.hoyolabInternational" = "國際服";
+"settings.account.prompt.loginToFetchCookie" = "登入帳號獲取Cookie";
 
-"请完成登录" = "請完成登入";
-"未获取到登录信息，请重试" = "獲取UID和帳號區服失敗。請前往手動配置該資訊或重試。";
-"尚未完成账号设置" = "尚未完成帳號設定";
-"添加账号前…" = "添加帳號前…";
-"请先确保绑定的米游社账号已开启并能在米游社App中查看「实时便笺」功能" = "請先確保綁定的米遊社帳號已開啟並能在米遊社App中檢視「實時便箋」功能";
-"好" = "好";
-"提示" = "提示";
+"settings.account.prompt.pleaseFinishLogin" = "請完成登入";
+"settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "獲取UID和帳號區服失敗。請前往手動配置該資訊或重試。";
+"settings.account.configuration.notFinishedYet" = "尚未完成帳號設定";
+"settings.account.configuration.beforeAddingYourAccount" = "添加帳號前…";
+"settings.account.configuration.askingForEnablingRealtimeNotePaper" = "請先確保綁定的米遊社帳號已開啟並能在米遊社App中檢視「實時便箋」功能";
+"button.okay" = "button.okay";
+"text.hint" = "text.hint";
 "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。" = "請在打開的網頁完成登入米遊社操作後點擊「完成」。\n通過Google，Facebook或Twitter登入HoYoLAB不可使用，請使用帳號密碼登入。\n我們承諾：您的登入資訊只會保存在您的本地設備和私人iCloud中，僅用於向米遊社請求您的原神狀態。";
 "自定义账号名" = "自訂帳號名";
 "请选择账号" = "請選擇帳號";
@@ -734,9 +730,9 @@
 
 // MARK: - 2.5.0
 // Material Provider
-"星期一 & 星期四" = "星期一 & 星期四";
-"星期二 & 星期五" = "星期二 & 星期五";
-"星期三 & 星期六" = "星期三 & 星期六";
+"星期一 & 星期四" = "星期一 & 周四";
+"星期二 & 星期五" = "星期二 & 周五";
+"星期三 & 星期六" = "星期三 & 周六";
 
 // Tool View
 "请先选择账号" = "請先選擇帳號";
@@ -1312,7 +1308,7 @@
 "星穹铁道游戏助手工具全家桶" = "星穹鐵道遊戲助手工具全家桶";
 "黑塔终端" = "黑塔終端";
 "与“老婆”们聊天！" = "與“老婆”們聊天！";
-"我们的其他作品" = "我們的其他作品";
+"settings.siblingApps" = "我們的其他作品";
 
 // MARK: - 3.0.4
 

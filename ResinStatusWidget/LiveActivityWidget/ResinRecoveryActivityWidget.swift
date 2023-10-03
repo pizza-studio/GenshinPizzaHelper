@@ -38,7 +38,7 @@ struct ResinRecoveryActivityWidget: Widget {
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                             .frame(width: 15)
-                        Text("原神披萨小助手")
+                        Text("app.title.full")
                             .foregroundColor(Color("textColor.appIconLike"))
                             .font(.caption2)
                     }
