@@ -1,0 +1,1534 @@
+/* 
+  Localizable.strings
+  GenshinPizzaHelper
+
+  Created by Bill Haku on 2023/2/20.
+  
+*/
+
+// MARK: - Namecard Icons
+
+"namecards:UI_NameCardPic_0_P" = "Nguyên Thần - Ấn Tượng";
+"namecards:UI_NameCardPic_Bp10_P" = "Nhật Ký Hành Trình Của Gió";
+"namecards:UI_NameCardPic_Ambor_P" = "Amber - Con Thỏ";
+"namecards:UI_NameCardPic_Klee_P" = "Klee - Thuốc Nổ";
+"namecards:UI_NameCardPic_Diluc_P" = "Diluc - Thiêu Đốt";
+"namecards:UI_NameCardPic_Razor_P" = "Razor - Sói Chạy";
+"namecards:UI_NameCardPic_Venti_P" = "Venti - Bầu Trời Xanh";
+"namecards:UI_NameCardPic_Qin_P" = "Jean - Hướng Gió";
+"namecards:UI_NameCardPic_Barbara_P" = "Barbara - Dòng Chảy";
+"namecards:UI_NameCardPic_Kaeya_P" = "Kaeya - Khổng Tước";
+"namecards:UI_NameCardPic_Lisa_P" = "Lisa - Đồng Hồ Cát";
+"namecards:UI_NameCardPic_Sucrose_P" = "Sucrose - Sáng Tạo";
+"namecards:UI_NameCardPic_Fischl_P" = "Fischl - Quạ Bóng Đêm";
+"namecards:UI_NameCardPic_Noel_P" = "Noelle - Bảo Vệ";
+"namecards:UI_NameCardPic_Mona_P" = "Mona - Thiên Tinh";
+"namecards:UI_NameCardPic_Bennett_P" = "Bennett - Chấp Nhận";
+"namecards:UI_NameCardPic_Xiangling_P" = "Xiangling - Nấu Xong";
+"namecards:UI_NameCardPic_Xingqiu_P" = "Xingqiu - Cầu Vồng";
+"namecards:UI_NameCardPic_Qiqi_P" = "Qiqi - Đông Lạnh";
+"namecards:UI_NameCardPic_Keqing_P" = "Keqing - Đá Lôi";
+"namecards:UI_NameCardPic_Csxy1_P" = "Thành tựu - Đi khắp nơi";
+"namecards:UI_NameCardPic_Mxsy_P" = "Thành Tựu - Đặc Kỹ";
+"namecards:UI_NameCardPic_Yxzl_P" = "Thành tựu - Hành hiệp";
+"namecards:UI_NameCardPic_Md1_P" = "Mondstadt - Tiếng gió";
+"namecards:UI_NameCardPic_Ly1_P" = "Liyue - Sự cô đơn của đá";
+"namecards:UI_NameCardPic_Yszj2_P" = "Thành tựu - Màu sắc cầu vồng";
+"namecards:UI_NameCardPic_Sss_P" = "Thành tựu - Cung tên";
+"namecards:UI_NameCardPic_Tzz1_P" = "Thành tựu - Khiêu chiến";
+"namecards:UI_NameCardPic_Sj1_P" = "Thành tựu - Thần Bí";
+"namecards:UI_NameCardPic_Olah1_P" = "Thành tựu - Sơn dân";
+"namecards:UI_NameCardPic_Zdg1_P" = "Thành tựu - Quê hương của tuyết";
+"namecards:UI_NameCardPic_Ly_P" = "Thành tựu - Cánh quạt";
+"namecards:UI_NameCardPic_Ysxf1_P" = "Thành tựu - Gặp gỡ";
+"namecards:UI_NameCardPic_Ningguang_P" = "Ningguang - Cốt cách phượng hoàng";
+"namecards:UI_NameCardPic_Beidou_P" = "Beidou - Nhổ neo";
+"namecards:UI_NameCardPic_Chongyun_P" = "Chongyun - Linh nhẫn";
+"namecards:UI_NameCardPic_Tzz2_P" = "Thành tựu - Khiêu chiến (II)";
+"namecards:UI_NameCardPic_Bp20_P" = "Khởi Hành-Tức Tinh";
+"namecards:UI_NameCardPic_Diona_P" = "Diona - Meo";
+"namecards:UI_NameCardPic_Zhongli_P" = "Zhongli - Thiên Tinh";
+"namecards:UI_NameCardPic_Xinyan_P" = "Xinyan - Sau khi hát";
+"namecards:UI_NameCardPic_Tartaglia_P" = "Childe - Quỷ Trang";
+"namecards:UI_NameCardPic_Md_P" = "Mondstadt - Lẫy Lừng";
+"namecards:UI_NameCardPic_Md2_P" = "Mondstadt - Chúc Phúc";
+"namecards:UI_NameCardPic_Ly2_P" = "Liyue - Thiên Phàm";
+"namecards:UI_NameCardPic_Lyws1_P" = "Liyue - Vân Gián";
+"namecards:UI_NameCardPic_Tzz3_P" = "Thành tựu - Khiêu chiến (III)";
+"namecards:UI_NameCardPic_Xssdlk_P" = "Thành tựu - Đỉnh tuyết";
+"namecards:UI_NameCardPic_Ganyu_P" = "Ganyu - Lân Tích";
+"namecards:UI_NameCardPic_Albedo_P" = "Albedo - Hướng Dương";
+"namecards:UI_NameCardPic_Bp3_P" = "Nhật Ký Hành Trình - Vôi Trắng";
+"namecards:UI_NameCardPic_ElderTree_P" = "Chịu Lạnh - Cổ Thụ";
+"namecards:UI_NameCardPic_EffigyChallenge02_P" = "Lễ Hội - Nguyên Bản";
+"namecards:UI_NameCardPic_Xiao_P" = "Xiao - Mặt Nạ";
+"namecards:UI_NameCardPic_Hutao_P" = "Hu Tao - An Thần";
+"namecards:UI_NameCardPic_Bp4_P" = "Nhật Ký Hành Trình - Minh Tiêu";
+"namecards:UI_NameCardPic_LanternRite_P" = "Lễ Hội - Ánh Đèn";
+"namecards:UI_NameCardPic_TheatreMechanicus2_P" = "Lễ Hội - Cờ";
+"namecards:UI_NameCardPic_Rosaria_P" = "Rosaria - Khổ Sai";
+"namecards:UI_NameCardPic_Bp5_P" = "Nhật Ký Hành Trình Hoa Gió";
+"namecards:UI_NameCardPic_RedandWhite_P" = "Lễ Hội - Tiệc Lớn";
+"namecards:UI_NameCardPic_Razer_P" = "Lễ Hội - Quang Lân";
+"namecards:UI_NameCardPic_ChannellerSlab_P" = "Lễ Hội - Tuệ Quả";
+"namecards:UI_NameCardPic_HideandSeek_P" = "Lễ Hội - Trốn Tìm";
+"namecards:UI_NameCardPic_Feiyan_P" = "Yanfei - Công Chính";
+"namecards:UI_NameCardPic_Eula_P" = "Eula - Ấn Băng";
+"namecards:UI_NameCardPic_Bp6_P" = "Nhật Ký Hành Trình - Dạo Bước Cõi Trần";
+"namecards:UI_NameCardPic_Homeworld1_P" = "Thành Tựu - Ấm Trần Ca";
+"namecards:UI_NameCardPic_Kazuha_P" = "Kaedehara Kazuha - Lặng Ngắm Núi Thu";
+"namecards:UI_NameCardPic_Bp7_P" = "Nhật Ký Hành Trình – Mùa Hè Rực Rỡ";
+"namecards:UI_NameCardPic_Homeworld2_P" = "Thành tựu – Cư trú";
+"namecards:UI_NameCardPic_Google_P" = "Lễ Hội - Bao La";
+"namecards:UI_NameCardPic_BounceConjuringChallenge_P" = "Lễ Hội – Bóng Ma Thuật";
+"namecards:UI_NameCardPic_EffigyChallenge_P" = "Lễ Hội – Đấu Kịch";
+"namecards:UI_NameCardPic_Oraionokami_P" = "Inazuma - Anh Đào Thần";
+"namecards:UI_NameCardPic_Bp8_P" = "Nhật Ký Hành Trình - Đền Narukami";
+"namecards:UI_NameCardPic_Ayaka_P" = "Kamisato Ayaka - Cây Quạt";
+"namecards:UI_NameCardPic_Yoimiya_P" = "Yoimiya - Hoa Lửa Kim Lưu";
+"namecards:UI_NameCardPic_Sayu_P" = "Sayu - Muji-Muji Daruma";
+"namecards:UI_NameCardPic_Dq1_P" = "Inazuma - Hoa Văn Lôi Điện";
+"namecards:UI_NameCardPic_Dq2_P" = "Inazuma - Hoa Văn Kamisato";
+"namecards:UI_NameCardPic_Ysxf2_P" = "Thành Tựu - Cánh Cửa";
+"namecards:UI_NameCardPic_Csxy2_P" = "Thành Tựu - Trải qua";
+"namecards:UI_NameCardPic_Tzz4_P" = "Thành Tựu - Rồng Đá";
+"namecards:UI_NameCardPic_Homeworld_P" = "Thành Tựu - Trăm Hoa Đua Nở";
+"namecards:UI_NameCardPic_Daoqi1_P" = "Inazuma- Hoa Văn Kujou";
+"namecards:UI_NameCardPic_TheatreMechanicus_P" = "Lễ Hội - Thần Cơ Diệu Toán";
+"namecards:UI_NameCardPic_Shougun_P" = "Raiden Shogun - Thức Tỉnh";
+"namecards:UI_NameCardPic_Kokomi_P" = "Sangonomiya Kokomi - Biển Sâu";
+"namecards:UI_NameCardPic_Sara_P" = "Kujou Sara - Tengu";
+"namecards:UI_NameCardPic_Aloy_P" = "Aloy - Nhật Ký Bình Minh";
+"namecards:UI_NameCardPic_Bp9_P" = "Nhật Ký Hành Trình - Trục Nguyệt";
+"namecards:UI_NameCardPic_Daoqi2_P" = "Inazuma - Hoa Văn Sangonomiya";
+"namecards:UI_NameCardPic_Fishing_P" = "Thành Tựu - Đập Kim";
+"namecards:UI_NameCardPic_Concert_P" = "Lễ Hội - Lắng Nghe Giai Điệu";
+"namecards:UI_NameCardPic_Sumo_P" = "Lễ Hội - Ikki";
+"namecards:UI_NameCardPic_Tohma_P" = "Thoma - Băng Đỏ";
+"namecards:UI_NameCardPic_Bp11_P" = "Nhật Ký Hành Trình - Thần Tướng";
+"namecards:UI_NameCardPic_Daoqi3_P" = "Inazuma - Lông Đại Bàng";
+"namecards:UI_NameCardPic_Gorou_P" = "Gorou - Chó Nhàn Nhã";
+"namecards:UI_NameCardPic_Itto_P" = "Itto - Mặt Quỷ";
+"namecards:UI_NameCardPic_Bp12_P" = "Nhật Ký Hành Trình - Lyratum";
+"namecards:UI_NameCardPic_Shenhe_P" = "Shenhe - Tiết Lược";
+"namecards:UI_NameCardPic_Yunjin_P" = "Yun Jin - Đối Âm";
+"namecards:UI_NameCardPic_Daoqi4_P" = "Inazuma - Tokoyo";
+"namecards:UI_NameCardPic_Bp13_P" = "Nhật Ký Hành Trình - Sắc Màu";
+"namecards:UI_NameCardPic_Bartender_P" = "Tiệc Mừng - Linh Đình";
+"namecards:UI_NameCardPic_Yae1_P" = "Yae Miko - Hồ Ly Mơ Mộng";
+"namecards:UI_NameCardPic_Bp14_P" = "Nhật Ký Hành Trình - Thức Tỉnh";
+"namecards:UI_NameCardPic_Ayato_P" = "Kamisato Ayato - Gợn Sóng";
+"namecards:UI_NameCardPic_LuminanceStone_P" = "Lưu Minh - Huy Thạch";
+"namecards:UI_NameCardPic_Tzz5_P" = "Thành Tựu - Sấm Sét";
+"namecards:UI_NameCardPic_Cenyan1_P" = "Thành Tựu - Núi Đá";
+"namecards:UI_NameCardPic_Bp15_P" = "Nhật Ký Hành Trình - Irodori";
+"namecards:UI_NameCardPic_Yelan_P" = "Yelan - Đổ Xúc Xắc";
+"namecards:UI_NameCardPic_Shinobu_P" = "Kuki Shinobu - Lưới";
+"namecards:UI_NameCardPic_Bp16_P" = "Nhật Ký Hành Trình - Thiên Mệnh";
+"namecards:UI_NameCardPic_Heizo_P" = "Shikanoin Heizou - Temari";
+"namecards:UI_NameCardPic_Bp17_P" = "Nhật Ký Hành Trình - Biển Xanh";
+"namecards:UI_NameCardPic_Tighnari_P" = "Tighnari - Mộc Lộ";
+"namecards:UI_NameCardPic_Collei_P" = "Collei - Quân Tử";
+"namecards:UI_NameCardPic_Dori_P" = "Dori - Đèn Thần";
+"namecards:UI_NameCardPic_Bp18_P" = "Nhật Ký Hành Trình - Rừng Sâu";
+"namecards:UI_NameCardPic_Csxy3_P" = "Thành tựu - Dạo Bước";
+"namecards:UI_NameCardPic_Ysxf3_P" = "Thành tựu - Hữu Duyên";
+"namecards:UI_NameCardPic_Xm1_P" = "Sumeru - Tiên Cảnh";
+"namecards:UI_NameCardPic_Xumi1_P" = "Sumeru - Chiếu Rọi";
+"namecards:UI_NameCardPic_Xumi2_P" = "Sumeru - Quang Minh";
+"namecards:UI_NameCardPic_Bp19_P" = "Nhật Ký Hành Trình Gió Về";
+"namecards:UI_NameCardPic_Cyno_P" = "Cyno - Yên Lặng";
+"namecards:UI_NameCardPic_Candace_P" = "Candace - Vạc Trời";
+"namecards:UI_NameCardPic_Nilou_P" = "Nilou - Vũ Điệu Hoa Sen";
+"namecards:UI_NameCardPic_Yszj_P" = "Thành Tựu - Bảy Tia Sáng";
+"namecards:UI_NameCardPic_Xm2_P" = "Sumeru - Giẫm Chân Lên Cát";
+"namecards:UI_NameCardPic_Tzz6_P" = "Thành Tựu - Giấc Mơ Phản Chiếu";
+"namecards:UI_NameCardPic_Nahida_P" = "Nahida - Ngắm Trăng";
+"namecards:UI_NameCardPic_Layla_P" = "Layla - Giấc Mơ Ban Ngày";
+"namecards:UI_NameCardPic_Bp1_P" = "Nhật Ký Hành Trình Rừng Nấm";
+"namecards:UI_NameCardPic_Wanderer_P" = "Kẻ Lang Thang - Phù Ca";
+"namecards:UI_NameCardPic_Faruzan_P" = "Faruzan - Bí Mật Của Phong Ấn";
+"namecards:UI_NameCardPic_Gcg1_P" = "Thành Tựu - Thất Thánh";
+"namecards:UI_NameCardPic_Bp21_P" = "Nhật Ký Hành Trình - Dòng Đời";
+"namecards:UI_NameCardPic_Alhatham_P" = "Alhaitham - Giác Ngộ";
+"namecards:UI_NameCardPic_Yaoyao_P" = "Yaoyao - Nguyệt Quế";
+"namecards:UI_NameCardPic_Cadillac_P" = "Lễ Hội - Mây Trôi";
+"namecards:UI_NameCardPic_Bp22_P" = "Nhật Ký Hành Trình - Hòa Tấu";
+"namecards:UI_NameCardPic_Xm3_P" = "Sumeru - Bão Cát";
+"namecards:UI_NameCardPic_Dehya_P" = "Dehya - Lửa Thiêng";
+"namecards:UI_NameCardPic_Mika_P" = "Mika - Dẫn Lối";
+"namecards:UI_NameCardPic_Bp23_P" = "Nhật Ký Hành Trình - Nghệ Thuật";
+"namecards:UI_NameCardPic_Baizhuer_P" = "Baizhu - Khư Phong";
+"namecards:UI_NameCardPic_Kaveh_P" = "Kaveh - Vòm Trời";
+"namecards:UI_NameCardPic_Xm4_P" = "Thành Tựu - Vạn Chủng";
+"namecards:UI_NameCardPic_Tzz7_P" = "Thành Tựu - Chạng Vạng";
+"namecards:UI_NameCardPic_Vasara_P" = "Sumeru - Giấc Mộng";
+"namecards:UI_NameCardPic_OfferingPari_P" = "Sumeru - Amrita";
+"namecards:UI_NameCardPic_Bp24_P" = "Nhật Ký Hành Trình - Vương Miện";
+"namecards:UI_NameCardPic_Kirara_P" = "Kirara - Bưu Kiện Mèo";
+"namecards:UI_NameCardPic_Bp25_P" = "Nhật Ký Hành Trình - Triệu Hồi";
+"namecards:UI_NameCardPic_Bp26_P" = "Nhật Ký Hành Trình - Chói Lọi";
+"namecards:UI_NameCardPic_Liney_P" = "Lyney - Giả Vờ";
+"namecards:UI_NameCardPic_Linette_P" = "Lynette - Thành Thật";
+"namecards:UI_NameCardPic_Freminet_P" = "Freminet - Tiếp Bước";
+"namecards:UI_NameCardPic_FD1_P" = "Fontaine - Thẩm Phán";
+"namecards:UI_NameCardPic_Ysxf4_P" = "Thành Tựu - Quỹ Đạo";
+"namecards:UI_NameCardPic_Csxy4_P" = "Thành Tựu - Du Ngoạn";
+"namecards:UI_NameCardPic_Fontaine1_P" = "Fontaine - Cỗ Máy Kỳ Diệu";
+"namecards:UI_NameCardPic_Fontaine2_P" = "Fontaine - Tin Tức";
+"namecards:UI_NameCardPic_Bp27_P" = "Nhật Ký Hành Trình - Khởi Nguyên";
+"namecards:UI_NameCardPic_Neuvillette_P" = "Neuvillette - Sóng Trào";
+"namecards:UI_NameCardPic_Wriothesley_P" = "Wriothesley - Khóa Chặt";
+"namecards:UI_NameCardPic_Bp28_P" = "Nhật Ký Hành Trình - Sao Rơi";
+"namecards:UI_NameCardPic_Guqin_P" = "Lễ Hội - Nhã Tấu";
+"namecards:UI_NameCardPic_Tzz8_P" = "Thành Tựu - Mãi Tiếp Bước";
+"namecards:UI_NameCardPic_FD2_P" = "Fontaine - Chuộc Tội";
+"namecards:UI_NameCardPic_Furina_P" = "？？？";
+"namecards:UI_NameCardPic_Charlotte_P" = "？？？";
+"namecards:UI_NameCardPic_FD3_P" = "？？？";
+"namecards:UI_NameCardPic_Bp2_P" = "？？？";
+
+// MARK: - 2.0 & above
+// Settings view
+"app.title.full" = "Genshin Pizza Helper";
+"nav.category.settings.name" = "Cài Đặt";
+"settings.account.myAccount" = "Tài Khoản Của Tôi";
+"settings.account.addAccount" = "Thêm Tài Khoản";
+"settings.notification.delivery" = "Thông Báo";
+"settings.notification.deliverySettings" = "Cài Đặt Thông Báo";
+"settings.travelTools.backgroundNamecardPreview" = "Xem Trước Nền Danh Thiếp";
+"settings.more" = "Thêm";
+
+"settings.howToUseNotifications" = "Mẹo: Hãy bật thông báo của ứng dụng";
+"account.server:%@" = "Máy chủ: %@";
+
+"gatcha.term.scriptForFetchingCookies" = "Phím tắt để lấy Cookie";
+"settings.misc.rateMeOnAppStore" = "Đánh giá ứng dụng trên App Store";
+"settings.misc.supportUs" = "Ủng hộ chúng tôi";
+"settings.misc.FAQ" = "Câu hỏi thường gặp (FAQ)";
+"settings.misc.disclaimer" = "Thỏa thuận người dùng và Tuyên bố miễn trừ trách nhiệm";
+"settings.misc.EULA" = "Chính sách người dùng";
+"settings.misc.aboutThisApp" = "Thông tin ứng dụng";
+"settings.misc.devCrew" = "Nhà phát triển";
+
+// Account detail
+"settings.account.reloginHoyoLabAccount" = "Đăng nhập lại bằng HoYoLAB";
+"settings.account.config" = "Cấu hình tài khoản";
+"settings.account.username" = "Tên tài khoản";
+"settings.account.server" = "Máy chủ";
+"settings.account.testConnection" = "Kiểm tra kết nối";
+"settings.account.errorMessage" = "Chi tiết lỗi";
+"settings.account.accountInformation" = "Thông tin tài khoản";
+
+"settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "Tên tài khoản tùy chỉnh của bạn được hiển thị trên tiện ích";
+"settings.account.pasteFromClipboard" = "Dán từ Clipboard";
+
+// Add account
+"settings.account.loginViaMiyousheOrHoyoLab" = "Đăng nhập bằng HoYoLAB";
+"settings.account.youMayAlso" = "Bạn cũng có thể";
+"settings.account.manualConfiguration" = "Cấu hình tài khoản của bạn theo cách thủ công";
+"settings.account.configuration.save" = "Lưu";
+"settings.account.region.miyoushe" = "Người chơi Trung Quốc đại lục";
+"settings.account.region.hoyolabInternational" = "Người chơi phiên bản toàn cầu";
+"settings.account.prompt.loginToFetchCookie" = "Lấy Cookie thông qua HoYoLAB";
+
+"settings.account.prompt.pleaseFinishLogin" = "Vui lòng hoàn tất đăng nhập";
+"完成" = "Xong";
+"settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "Không thể lấy Cookie. Vui lòng thử lại.";
+"settings.account.configuration.notFinishedYet" = "Cấu hình tài khoản chưa hoàn tất";
+"settings.account.configuration.beforeAddingYourAccount" = "Trước khi thêm tài khoản của bạn…";
+"settings.account.configuration.askingForEnablingRealtimeNotePaper" = "Vui lòng đảm bảo \"Ghi chú theo thời gian thực\" của bạn có thể truy cập được";
+"button.okay" = "OK";
+"text.hint" = "Lời khuyên";
+"settings.account.login.instruction" = "Nhấp vào \"Xong\" sau khi bạn hoàn tất đăng nhập vào HoYoLAB trong trang web sau.\nĐăng nhập qua Google, Facebook hoặc Twitter không khả dụng, vui lòng đăng nhập bằng tên người dùng và mật khẩu của bạn.\nThông tin đăng nhập tài khoản của bạn sẽ chỉ được lưu trữ cục bộ thiết bị và iCloud riêng của bạn và được sử dụng để yêu cầu HoYoLAB cung cấp thông tin tài khoản Genshin của bạn. ";
+"settings.account.alias" = "Tên tài khoản tùy chỉnh";
+"settings.account.pleaseSelectAccount" = "Chọn tài khoản của bạn";
+"settings.account.details.manualConfiguration" = "Chi tiết thông tin đăng nhập";
+"settings.account.myAccount" = "Tài khoản của tôi";
+"settings.account.pleaseAddAccountFirst" = "Thêm tài khoản";
+
+// Game Info block
+"unit.hrs:%lld" = "%lld Giờ";
+"unit.mins:%lld" = "%lld Phút";
+"unit.HHMM:%lldHH%lldMM" = "%lld Giờ %lld Phút";
+"infoBlock.fullIn:%@\n%@" = "Nhựa sẽ đầy trong %@\n%@";
+"infoBlock.resionFullyFilledDescription" = "0hr 0min\nNhựa đầy.";
+"unit.daysOf:%lld" = "%lld Ngày";
+"unit.%lldHH%lldMM" = "%lld Giờ %lld Phút";
+"infoBlock.transformerAvailable" = "CD Xong";
+"week.sunday" = "Chủ Nhật";
+"week.monday" = "Thứ Hai";
+"week.tuesday" = "Thứ Ba";
+"week.wednesday" = "Thứ Tư";
+"week.thursday" = "Thứ Năm";
+"week.friday" = "Thứ Sáu";
+"week.saturday" = "Thứ Bảy";
+
+"button.savePic" = "Lưu hình ảnh";
+
+// Notification settings
+"settings.notification.accountsReceivingNotifications" = "Chọn tài khoản";
+"settings.notification.whenToNotify.timing" = "Thông Báo Khi";
+"settings.notification.type.resin" = "Nhựa Nguyên Chất";
+"settings.notification.threshold" = "Ngưỡng Nhựa";
+"unit.resin:%lld" = "%lld Nhựa";
+"settings.notification.type.realmCurrency" = "Tiền Động Tiên";
+"settings.notification.whenToNotify.time" = "Thông Báo Trước Khi Đầy";
+"settings.notification.hrsBeforeFullyFilled:%lld" = "%lld giờ trước khi đầy";
+"settings.notification.type.expedition" = "Phái Đi Thám Hiểm";
+"settings.notification.expedition.condition.allFinished" = "Tất Cả Đã Xong";
+"settings.notification.expedition.condition.anyFinished" = "Hoàn Thành";
+"settings.notification.type.dailyCommission" = "Ủy Thác Hằng Ngày";
+"settings.notification.whenToNotify.time" = "Hẹn Giờ";
+"settings.notification.type.weeklyBosses" = "Vùng đất thảo phạt";
+"settings.notification.whenToNotify.date" = "Hẹn Giờ";
+"settings.notification.type.parametricTransformer" = "Máy Biến Đổi Tham Số";
+
+// danh thiếps
+"柯莱·豹蔚" = "Collei: Quân Tử";
+"丽莎・沙漏" = "Lisa: Đồng Hồ Cát";
+"菲谢尔・夜鸦" = "Fischl: Quạ Bóng Đêm";
+"纪行・绕尘" = "Nhật Kí Hành Trình: Dạo Bước Cõi Trần";
+"莫娜・天星" = "Mona: Thiên Tinh";
+"纪行・海蓝" = "Nhật Kí Hành Trình: Đại Dương Xanh";
+"优菈・冰印" = "Eula: Ấn Băng";
+"成就・雪峰" = "Thành Tựu: Đỉnh Tuyết";
+"庆典・一揆" = "Lễ Hội: Ikki";
+"鹿野院平藏・鞠毬" = "Shikanoin Heizou: Temari";
+"阿贝多・阳花" = "Albedo: Hoa Hướng Dương";
+"纪行・容彩" = "Nhật Kí Hành Trình: Irodori";
+"稻妻・珊瑚宫之纹" = "Inazuma: Hoa Văn Sangonomiya";
+"成就・深秘" = "Thành Tựu: Thần Bí";
+"庆典・慧果" = "Lễ Hội: Fruit of Wisdom";
+"珊瑚宫心海・渊" = "Sangonomiya Kokomi: The Deep";
+"公子・魔装" = "Childe: Quỷ Trang";
+"庆典・斗剧" = "Lễ Hội: Đấu Kịch";
+"重云・灵刃" = "Chongyun: Linh Nhẫn";
+"可莉・爆弹" = "Klee: Thuốc Nổ";
+"雷泽・奔狼" = "Razor: Sói Chạy";
+"宵宫・琉金火花" = "Yoimiya: Hoa Lửa Kim Lưu";
+"蒙德・风吟" = "Mondstadt: Tiếng Gió";
+"成就・强弓" = "Thành Tựu: Cung Tên";
+"埃洛伊・曙光记" = "Aloy: Nhật Kí Bình Minh";
+"庆典・觥筹" = "Tiệc Mừng: Linh Đình";
+"纪行・风花" = "Nhật Kí Hành Trình: Hoa Gió";
+"成就・旅居" = "Thành Tựu: Cư Trú";
+"忍冬・古树" = "Chịu Lanh: Cổ Thụ";
+"成就・层岩" = "Thành Tựu: Chasm";
+"胡桃·安神" = "Hu Tao: An Thần";
+"七七・冷藏" = "Qiqi: Đông Lạnh";
+"璃月・云间" = "Liyue: Vân Gián";
+"庆典・光鳞" = "Lễ Hội: Quang Lân";
+"流明・辉石" = "Lưu Minh: Huy Thạch";
+"枫原万叶・秋山椛狩" = "Kaedehara Kazuha: Lặng Ngắm Núi Thu";
+"庆典・无相" = "Lễ Hội: Nguyên Bản";
+"罗莎莉亚・苦役" = "Rosaria: Khổ Sai";
+"成就・雪乡" = "Thành Tựu: Quê Hương Của Tuyết";
+"云堇・对韵" = "Yun Jin: Đối Âm";
+"稻妻・神里之纹" = "Inazuma: Hoa Văn Kamisato";
+"温迪・天青" = "Venti: Bầu Trời Xanh";
+"甘雨・麟迹" = "Ganyu: Lân Tích";
+"稻妻・雷电之纹" = "Inazuma: Hoa Văn Lôi Điện";
+"庆典・浩瀚" = "Lễ Hội: Bao La";
+"纪行・盛夏" = "Nhật Kí Hành Trình: Midsummer";
+"纪行・白英" = "Nhật Kí Hành Trình: Lyratum";
+"纪行・天命" = "Nhật Kí Hành Trình: Divine Will";
+"九条裟罗・天狗" = "Kujou Sara: Tengu";
+"成就・敲针" = "Thành Tựu: Nails";
+"纪行・熄星" = "Nhật Kí Hành Trình: Fading Star";
+"成就・游遍" = "Thành Tựu: Explorer";
+"稻妻・常世" = "Inazuma: Tokoyo";
+"魈・傩面" = "Xiao: Mặt Nạ";
+"纪行・流彩" = "Nhật Kí Hành Trình: Flowing Hues";
+"刻晴・雷楔" = "Keqing: Đá Lôi";
+"蒙德・祝愿" = "Mondstadt: Blessing";
+"纪行・鸣神大社" = "Nhật Kí Hành Trình: Grand Narukami Shrine";
+"北斗・拔锚" = "Beidou: Nhổ Neo";
+"申鹤・栉掠" = "Shenhe: Tiết Lược";
+"香菱・出锅" = "Xiangling: Nấu Xong";
+"凝光・凤仪" = "Ningguang: Cốt Cách Phượng Hoàng";
+"夜兰・一掷" = "Yelan: Đổ Xúc Xắc";
+"成就・石龙" = "Thành Tựu: Stone Dragon";
+"成就・遍历" = "Thành Tựu: Traversal";
+"纪行・捕风" = "Nhật Kí Hành Trình: Catch the Wind";
+"稻妻・九条之纹" = "Inazuma: Kujou Insignia";
+"行秋・雨虹" = "Xingqiu: Cầu Vòng";
+"神里绫人・涟漪" = "Kamisato Ayato: Gợn Sóng";
+"雷电将军・开眼" = "Raiden Shogun: Thức Tỉnh";
+"庆典・棋谭" = "Lễ Hội: Mechanicus";
+"八重神子・梦狐" = "Yae Miko: Hồ Ly Mộng Mơ";
+"琴・风向" = "Jean: Hướng Gió";
+"庆典・魔球" = "Lễ Hội: Kaboomll";
+"芭芭拉・流淌" = "Barbara: Dòng Chảy";
+"成就・相逢" = "Thành Tựu: Reunion";
+"成就・雷音" = "Thành Tựu: Thunderclap";
+"托马・炎袖" = "Thoma: Băng Đỏ";
+"璃月・岩寂" = "Liyue: Stillness of Stone";
+"成就・挑战・其二" = "Thành Tựu: Challenger II";
+"迪奥娜・呜喵" = "Diona: Meo!";
+"成就・合扇" = "Thành Tựu: Cliffhanger";
+"纪行・蛰醒" = "Nhật Kí Hành Trình: Awakening";
+"成就・挑战・其三" = "Thành Tựu: Challenger III";
+"纪行・白垩" = "Nhật Kí Hành Trình: Chalk";
+"神里绫华・扇子" = "Kamisato Ayaka: Cây Quạt";
+"成就・山民" = "Thành Tựu: Hill Dwellers";
+"庆典・躲猫" = "Lễ Hội: Peekaboo!";
+"成就・挑战" = "Thành Tựu: Challenger";
+"班尼特・认可" = "Bennett: Chấp Nhận";
+"成就・侠行" = "Thành Tựu: Người Hùng";
+"迪卢克・燃烧" = "Diluc: Thiêu Đốt";
+"稻妻・鹫羽" = "Inazuma: Eagleplume";
+"成就・门扉" = "Thành Tựu: Gate";
+"纪行・神将" = "Nhật Kí Hành Trình: Heavenly General";
+"安柏・兔兔" = "Amber: Con Thỏ";
+"辛焱・唱罢" = "Xinyan: Sau Khi Hát";
+"纪行・逐月" = "Nhật Kí Hành Trình: Moonchaser";
+"五郎・悠犬" = "Gorou: Chó Nhàn Nhã";
+"成就・繁花" = "Thành Tựu: Full Bloom";
+"纪行・明霄" = "Nhật Kí Hành Trình: Mingxiao";
+"早柚・不倒貉貉" = "Sayu: Muji-Muji Daruma";
+"烟绯・公正" = "Yanfei: Công Chính";
+"砂糖・创生" = "Sucrose: Sáng Tạo";
+"诺艾尔・守护" = "Noelle: Bảo Vệ";
+"凯亚・孔雀" = "Kaeya: Khổng Tước";
+"成就・壶歌" = "Thành Tựu: Tea Time";
+"璃月・千帆" = "Liyue: A Thousand Ships";
+"庆典・妙算" = "Lễ Hội: Wondrous Calculation";
+"庆典・灯昼" = "Lễ Hội: Lantern-Light";
+"成就・殊技" = "Thành Tựu: Virtuoso";
+"一斗・鬼颜" = "Itto: Mặt Quỷ";
+"庆典・盛宴" = "Lễ Hội: Feast";
+"久岐忍・络" = "Kuki Shinobu: Lưới";
+"蒙德・英名" = "Mondstadt: Lẫy Lừng";
+"稻妻・神樱" = "Inazuma: Anh Đào Thần ";
+"钟离・天星" = "Zhongli: Thiên Tinh";
+"提纳里·沐露" = "Tighnari: Mộc Lộ";
+
+// Background colors
+"★灰" = "★ Xám";
+"★★绿" = "★★ Xanh Lá";
+"★★★蓝" = "★★★ Xanh Da Trời";
+"★★★★紫" = "★★★★ Tím";
+"★★★★★红" = "★★★★★ Đỏ";
+"★★★★★金" = "★★★★★ Vàng";
+
+"纠缠之缘" = "Mối Duyên Vương Vấn";
+
+// Elements
+"火元素" = "Hỏa";
+"水元素" = "Thủy";
+"草元素" = "Thảo";
+"雷元素" = "Lôi";
+"风元素" = "Phong";
+"冰元素" = "Băng";
+"岩元素" = "Nham";
+
+// tiện ích
+"原神状态" = "Trạng Thái";
+"已全部完成" = "Tất Cả Đã Xong";
+"%lld个已完成" = "%lld Xong";
+"（未领取）" = "(Chưa Nhận)";
+"（可使用）" = "CD Xong";
+
+// Used for copy and paste to edit this file
+"查询树脂恢复状态" = "Kiểm tra trạng thái phục hồi nhựa của bạn";
+
+// Notification
+"打开《原神》" = "Mở Genshin Impact";
+"通知设置" = "Cài Đặt thông báo";
+"「%@」原粹树脂提醒" = "%@'s Thông báo Nhựa Nguyên Chất";
+"「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ có %lld nhựa ban đầu , sẽ đầy vào lúc %@.";
+"「%@」洞天宝钱提醒" = "%@'s Thông báo tiền động tiên";
+"「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@'s Tubby có %lld tiền động tiên bây giờ, sẽ có đầy tại %@.";
+"「%@」探索派遣提醒" = "%@'s Thông báo phái đi thám hiểm";
+"「%@」的探索派遣已全部完成。" = "Tất cả các cuộc thám hiểm của %@ đã hoàn thành.";
+"「%@」周本折扣提醒" = "%@'s Vùng đất thảo phạt";
+"「%@」的周本树脂折扣树脂折扣还剩%lld次。" = "%@'s Lượt giảm nửa tiêu hao của tuần này còn %lld lần.";
+"「%@」参量质变仪提醒" = "%@'s Thông báo máy biến đổi tham số";
+"「%@」的参量质变仪已经可以使用。" = "%@'s Máy biến đổi tham số hiện có sẵn.";
+"「%@」每日委托提醒" = "%@'s Thông báo ủy thác hàng ngày";
+"「%@」的每日委托还剩余%lld个未完成。" = "%@ vẫn còn %lld ủy thác hàng ngày chưa hoàn thành.";
+"「%@」的每日委托奖励还未领取。" = "%@'s nhận thưởng ủy thác mỗi ngày chưa được nhận.";
+"%@的探索派遣已完成。" = "%@'s Phái đi thám hiểm hoàn thành.";
+
+// Homeview
+"同意" = "Đồng ý";
+"拒绝" = "Không đồng ý";
+
+// Daily materials
+"「高塔孤王」" = "Xác Tàu Tháp Cô Vương";
+"「凛风奔狼」" = "Nỗi Nhớ Của Sói Bão";
+"「狮牙斗士」" = "Lí Tưởng Của Đấu Sĩ Nanh Sư Tử";
+"「孤云寒林」" = "Thần Thể Rừng Băng Giá";
+"「雾海云间」" = "Kim Đơn Biển Sương Mù";
+"「漆黑陨铁」" = "Một Góc Thiên Thạch Đen";
+"「远海夷地」" = "Nhánh Quỳnh Ngọc Của Biển Xa";
+"「鸣神御灵」" = "Tình Yêu Của Narukami";
+"「今昔剧画」" = "Nanh Cọp Của Gekiga";
+"「谧林涓露」" = "Bùa Rừng Xanh Sương Đọng - Sắt";
+"「绿洲花园」" = "Ân Huệ Vườn Hoa Ốc Đảo";
+"「烈日威权」" = "Tia Sáng Của Ánh Nắng Quyền Uy ";
+"「自由」" = "Triết Học Của \"Tự Do\"";
+"「抗争」" = "Triết Học Của \"Kháng Chiến\"";
+"「诗文」" = "Triết Học Của \"Thơ Văn\"";
+"「繁荣」" = "Hướng Dẫn Của \"Phồn Vinh\"";
+"「勤劳」" = "Triết Học Của \"Chăm Chỉ\"";
+"「黄金」" = "Triết Học Của \"Hoàng Kim\"";
+"「浮世」" = "Triết Học Của \"Phù Thế\"";
+"「风雅」" = "Triết Học Của \"Nhã Nhặn\"";
+"「天光」" = "Triết Học Của \"Ánh Sáng\"";
+"「诤言」" = "Triết Học Của \"Khuyên Nhủ\"";
+"「巧思」" = "Triết Học Của \"Tinh Tế\"";
+"「笃行」" = "Triết Học Của \"Thực Hành\"";
+
+"今日材料" = "Nguyên Liệu Hôm Nay";
+"今日材料：星期日所有材料均可获取" = "Nguyên Liệu Hôm Nay: Tất Cả NL Đều Mở Vào Ngày Chủ Nhật";
+
+// large size tiện ích
+"已完成" = "Hoàn Thành";
+"（星期日所有材料均可获取）" = "(Tất cả Tất Cả NL Đều Mở Vào Ngày Chủ Nhật)";
+
+// Char's name
+"空" = "Aether";
+"荧" = "Lumine";
+"琴" = "Jean";
+"安柏" = "Amber";
+"凯亚" = "Kaeya";
+"丽莎" = "Lisa";
+"温迪" = "Venti";
+"雷泽" = "Razor";
+"班尼特" = "Bennett";
+"诺艾尔" = "Noelle";
+"菲谢尔·冯·露弗施洛斯·那菲多特" = "Fischl von Luftschloss Narfidort";
+"迪卢克" = "Diluc";
+"可莉" = "Klee";
+"迪奥娜" = "Diona";
+"芭芭拉" = "Barbara";
+"砂糖" = "Sucrose";
+"阿贝多" = "Albedo";
+"莫娜" = "Mona";
+"罗莎莉亚" = "Rosaria";
+"优菈" = "Eula";
+"香菱" = "Xiangling";
+"刻晴" = "Keqing";
+"凝光" = "Ningguang";
+"七七" = "Qiqi";
+"行秋" = "Xingqiu";
+"重云" = "Chongyun";
+"北斗" = "Beidou";
+"辛焱" = "Xinyan";
+"钟离" = "Zhongli";
+"魈" = "Xiao";
+"甘雨" = "Ganyu";
+"胡桃" = "Hu Tao";
+"烟绯" = "Yanfei";
+"云堇" = "Yun Jin";
+"申鹤" = "Shenhe";
+"夜兰" = "Yelan";
+"枫原万叶" = "Kazuha";
+"宵宫" = "Yoimiya";
+"神里绫华" = "Ayaka";
+"神里绫人" = "Ayato";
+"托马" = "Thoma";
+"早柚" = "Sayu";
+"八重神子" = "Yae Miko";
+"荒泷一斗" = "Itto";
+"久岐忍" = "Shinobu";
+"五郎" = "Gorou";
+"珊瑚宫心海" = "Kokomi";
+"九条裟罗" = "Sara";
+"鹿野院平藏" = "Heizou";
+"雷电将军" = "Shogun";
+"赛诺" = "Cyno";
+"提纳里" = "Tighnari";
+"柯莱" = "Collei";
+"多莉" = "Dori";
+"艾尔海森" = "Alhaitham";
+"迪希雅" = "Dehya";
+"妮露" = "Nilou";
+"纳西妲" = "Nahida";
+"林尼" = "Lyney";
+"琳妮特" = "Lynette";
+"伊安珊" = "Iansan";
+"达达利亚" = "Tartaglia";
+"（未知角色）" = "(unknown)";
+
+// Errors description
+"请先刷新以获取树脂状态" = "Vui lòng làm mới để nhận trạng thái của game";
+"请右键编辑小组件选择账号" = "Vui lòng nhấp chuột phải và chỉnh sửa tiện ích để định cấu hình tài khoản của bạn";
+"请长按小组件选择账号" = "Vui lòng nhấn và giữ tiện ích để cấu hình tài khoản của bạn";
+"错误码%lld：Cookie失效，请重新登录" = "mã lỗi %lld: Cookie không hợp lệ, vui lòng đăng nhập lại HoYoLab.";
+"错误码%lld：米游社账号与UID不匹配，请手动输入UID" = "mã lỗi %lld: Tài khoản HoYoLAB không trùng UID";
+"错误码%lld：UID有误" = "mã lỗi %lld: UID không hợp lệ";
+"请前往米游社（或Hoyolab）打开旅行便笺功能" = "Vui lòng mở Ghi chú theo thời gian thực trong ứng dụng HoYoLAB trước";
+"解码错误：请检查网络环境" = "Lỗi giải mã: vui lòng kiểm tra trạng thái mạng của bạn";
+"网络错误" = "Lỗi mạng";
+"settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "Không thể tìm thông tin đăng nhập của bạn, vui lòng đăng nhập lại HoYoLAB";
+"未知错误码：%lld" = "Lỗi không xác định %lld";
+
+"无返回数据" = "Không có dữ liệu phản hồi";
+"无响应" = "Không phản hồi";
+"未知错误" = "Lỗi không xác định";
+
+// Donate page
+"请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。" = "Xin lưu ý rằng sau đây là tất cả các đóng góp miễn phí và chúng tôi sẽ không cung cấp cho bạn bất kỳ dịch vụ bổ sung nào. \nChúng tôi cam kết rằng khoản quyên góp của bạn sẽ chỉ được sử dụng để trang trải các chi phí trực tiếp của quá trình phát triển Ứng dụng, bao gồm nhưng không giới hạn ở phí hàng năm cho Chương trình dành cho nhà phát triển của Apple, v.v. Mọi số tiền quyên góp vượt quá chi phí này sẽ được quyên góp lại đầy đủ. cảm ơn sự hỗ trợ của bạn.";
+"您可以长按保存图片到对应App中扫描" = "Bạn có thể nhấn và giữ để lưu hình ảnh đã quét";
+"保存微信支付图片" = "Lưu mã QR thanh toán WeChat";
+"捐赠项目" = "Đóng góp tùy chọn";
+"支付" = "PAY";
+
+// Contact & About
+"开发者与联系方式" = "Nhà phát triển & Thông tin liên hệ";
+"「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。" = "Genshin Pizza Helper không liên kết với miHoYo Co., Ltd. và các công ty con.";
+"原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。" = "Genshin Impact, nội dung và tài liệu trò chơi là nhãn hiệu và bản quyền của HoYoverse.";
+"用户交流群" = "Nhóm giao tiếp người dùng";
+"QQ群1: 813912474" = "QQ Group 1: 813912474";
+"QQ群2: 829996515" = "QQ Group 2: 829996515";
+"Discord频道: Genshin Pizza Helper" = "Tham gia server Discord của chúng tôi";
+"个人主页" = "Personal Homepage";
+"Bilibili主页" = "Bilibili Homepage";
+"GitHub主页" = "GitHub Homepage";
+"水里的碳酸钙" = "Bill Haku";
+
+// MARK: - 2.1
+// Home View
+"所有材料均可获取" = "Tất cả nguyên liệu của game";
+
+// Proxy
+"代理设置" = "Cài Đặt Proxy";
+"启用代理" = "Mở Proxy";
+"代理配置" = "Cấu Hình Proxy";
+"端口" = "Cổng";
+"认证信息（可选）" = "Ủy quyền (Tùy Chọn)";
+"用户名" = "Tên đăng nhập";
+"密码" = "Mật khẩu";
+
+// Setting View
+"完成" = "Xong";
+"编辑" = "Sửa";
+
+//tiện ích Tips
+"如何添加、配置小组件和更换小组件背景？" = "Cách thêm , cấu hình tiện ích và thay đổi hình nền tiện ích ?";
+"小组件使用提示" = "Mẹo tiện ích";
+"如何配置小组件和修改小组件背景？" = "Cách cấu hình tiện ích và thay đổi hình nền tiện ích ?";
+"长按小组件，选择编辑\"原神披萨小助手\"" = "Nhấn và giữ tiện ích , chạm vào Chỉnh sửa \"Genshin Pizza\"";
+"根据提示选择设置项或启用/关闭功能或修改背景" = "Bật/tắt hoặc sửa đổi các chức năng khi bạn cần hoặc sửa đổi nền";
+"如何添加小组件？" = "Cách thêm tiện ích vào Màn hình chính của bạn";
+"关于如何添加小组件，请参考Apple支持文档" = "Về cách thêm tiện ích, vui lòng tham khảo Tài liệu hỗ trợ của Apple";
+"如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件" = "Nếu bạn không tìm thấy tiện ích của chúng tôi trong danh sách tiện ích, hãy khởi động lại và đợi trong 10 phút rồi thử lại";
+
+// App Introduce Video
+"App介绍视频" = "Video giới thiệu ứng dụng";
+"打开Bilibili观看" = "Xem trên Bilibili";
+"打开YouTube观看" = "Xem trên YouTube";
+
+// MARK: - 2.2
+// Watch App
+"原粹树脂" = "Nhựa Nguyên Chất";
+"洞天宝钱" = "Tiền Động Tiên";
+"每日委托" = "Nhiệm Vụ Hàng Ngày";
+"探索派遣" = "Phái Đi Thám Hiểm";
+"参量质变仪" = "Máy Biến Đổi Tham Số";
+"周本折扣" = "Vùng Đất Thảo Phạt";
+"infoBlock.transformerAvailable" = "CD Xong";
+"%@ 回满" = "Đầy lại trong %@";
+"树脂已全部回满" = "Nhựa đã được phục hồi đầy đủ";
+
+// Donate
+"特别鸣谢" = "Cảm ơn";
+
+// Contact us
+"翻译与特别鸣谢" = "Người phiên dịch & Cảm ơn";
+"英语翻译" = "Người phiên dịch tiếng Anh";
+"日语 英语翻译" = "Người phiên dịch tiếng Nhật";
+"法语翻译" = "Người phiên dịch tiếng Pháp ";
+"图片素材制作" = "Sản xuất hình ảnh";
+
+// MARK: - 2.3
+// Account Basic Info Detail
+"上滑查看更多基本信息" = "Vuốt lên để hiển thị thêm";
+"数据总览" = "Bản tóm tắt";
+"活跃天数" = "Số ngày hoạt động";
+"成就达成" = "Thành Tựu";
+"获得角色" = "Nhân vật";
+"深境螺旋" = "La Hoàn Thâm Cảnh";
+"解锁锚点" = "Điểm dịch chuyển đã được mở khóa";
+"解锁秘境" = "Bí cảnh đã mở khóa";
+"普通宝箱" = "Rương thường đã mở";
+"精致宝箱" = "Rương cao cấp đã mở";
+"珍贵宝箱" = "Rương kì dị đã mở";
+"华丽宝箱" = "Rương siêu cấp đã mở";
+"风神瞳" = "Ấn Phong";
+"岩神瞳" = "Ấn Nham";
+"雷神瞳" = "Ấn Lôi";
+"草神瞳" = "Ấn Thảo";
+"世界探索" = "Thám hiểm Teyvat";
+
+// Lock Screen tiện íchs
+"树脂回复状态" = "Tình trạng phục hồi nhựa";
+"自动轮换" = "Vòng xoay tự động";
+"自动展示你最需要的信息" = "Tự động hiển thị thông tin bạn cần nhất";
+"综合信息" = "thông tin toàn diện";
+"所有信息，一网打尽" = "Xem tất cả thông tin trong một lần";
+"洞天宝钱数量" = "Số lượng tiền động tiên";
+"每日委托完成情况" = "Trạng thái nhiệm vụ hàng ngày";
+"探索派遣完成情况" = "Tình trạng phái đi thám hiểm";
+"另一种样式的原粹树脂小组件" = "tiện ích hiển thị Nhựa Nguyên Chất ở dạng khác";
+
+// Watch
+"请等待账号从iCloud同步" = "Vui lòng đợi dữ liệu được đồng bộ hóa từ iCloud";
+"的原粹树脂" = "'s Nhựa Nguyên Chất";
+"的智能轮换信息" = "'s Vòng xoay tự động";
+"的探索派遣" = "'s Phái đi thám hiểm";
+"的每日委托" = "'s Nhiệm vụ hàng ngày";
+"的综合信息" = "'s Thông tin toàn diện";
+"的洞天宝钱" = "'s Tiền động tiên";
+"已填满" = "Nạp lại";
+"160, 已回满" = "160, đầy";
+
+// danh thiếps
+"提纳里・沐露" = "Tighnari: Dew-Kissed";
+"柯莱・豹蔚" = "Collei: Good Virtue";
+"多莉・魔灯" = "Dori: Jinni";
+"纪行・深林" = "Nhật Kí Hành Trình: Woodlands";
+"成就・漫行" = "Thành Tựu: Roaming";
+"成就・逢缘" = "Thành Tựu: Fated Encounter";
+"须弥・瑶林" = "Sumeru: Shimmering Woods";
+"须弥・照览" = "Sumeru: Observance";
+"须弥・正明" = "Sumeru: Unsullied";
+"妮露" = "Nilou";
+"赛诺" = "Cyno";
+"坎蒂丝" = "Candace";
+
+// MARK: - 2.4
+// Content View
+"概览" = "Tổng Quan";
+"详情" = "Chi tiết";
+"工具" = "Công Cụ";
+
+// Home View
+"当前活动" = "Sự Kiện Đang Diễn Ra";
+"即将结束的活动" = "Sự Kiện Sắp Kết Thúc";
+"查看全部活动" = "Tất Cả Sự Kiện Đang Diễn Ra";
+"账号基本信息" = "Thông tin cơ bản về tài khoản";
+"剩余 %lld天" = "Còn Lại %lld Ngày";
+"剩余 %lld小时" = "Còn Lại %lld Giờ";
+"收起" = "Fold";
+"点击材料查看更多" = "Nhấn vào biểu tượng để hiển thị thêm";
+"点击材料查看关联角色" = "Nhấn vào biểu tượng để hiển thị các nhân vật liên quan";
+"菲谢尔" = "Fischl";
+"左右滑动查看更多" = "Vuốt sang trái và phải để xem thêm";
+
+// Settings View
+"使用小组件遇到了问题？" = "Mọi thắc mắc về tiện ích hoặc sự phức tạp của Apple Watch?";
+"如何添加小组件和锁屏小组件？" = "Cách thêm tiện ích trên Màn hình chính và Màn hình khóa?";
+"关于如何在Apple Watch上添加复杂功能，请参考Apple支持文档" = "Về cách thêm tiện ích trên Apple Watch, vui lòng tham khảo Tài liệu hỗ trợ của Apple";
+"如何添加复杂功能？" = "Cách thêm tiện ích của Apple Watch?";
+"还有其他问题？" = "Bất kỳ câu hỏi nào khác?";
+"偏好语言" = "Cài Đặt Ngôn Ngữ";
+"检查更新" = "Kiểm tra cập nhật";
+"清空已检查的版本号" = "Làm sạch mã phiên bản đã kiểm tra";
+"" = "";
+
+// Thanks View
+"开源组件与第三方API致谢" = "Acknowledgement for open source components and third-party APIs";
+"我们的App使用了以下开源组件和第三方API，在此向其作者表示感谢。" = "Our app uses the following open source components and third-party APIs, and we would like to thank their authors.";
+
+// Tools View
+"敬请期待" = "Giữ nguyên";
+
+// Updates View
+"感谢您更新到最新版本" = "Bạn đã cập nhật";
+"更新内容：" = "Cập nhật nội dung: ";
+"前往TestFlight更新" = "Truy cập TestFlight để cập nhật";
+"前往App Store更新" = "Vào App Store để cập nhật";
+"发现新版本" = "Đã tìm thấy phiên bản mới";
+
+// Contact Us View
+"原神披萨小助手官方网站" = "Trang web chính thức của Genshin Pizza Helper";
+"Twitter主页" = "Trang chủ Twitter";
+"YouTube频道" = "Kênh YouTube";
+"翻译提供" = "Phiên dịch viên";
+"英语" = "Tiếng Anh";
+"日语 英语" = "Tiếng Nhật , Anh";
+"法文" = "Tiếng Pháp";
+"日文" = "Tiếng Nhật";
+"たお👻🍑" = "Hatti";
+
+// weapon names
+"单手剑" = "Kiếm Đơn";
+"双手剑" = "Trọng Kiếm";
+"长柄武器" = "Vũ Khí Cán Dài";
+"弓" = "Cung";
+"法器" = "Pháp Khí";
+"无锋剑" = "Vô Phong Kiếm";
+"银剑" = "Kiếm Bạc";
+"冷刃" = "Lãnh Nhẫn";
+"黎明神剑" = "Thần Kiếm Lê Minh";
+"旅行剑" = "Kiếm Lữ Hành";
+"吃虎鱼刀" = "Đao Săn Cá";
+"飞天御剑" = "Kiếm Phi Thiên";
+"西风剑" = "Tây Phong Kiếm";
+"笛剑" = "Kiếm Sáo";
+"祭礼剑" = "Kiếm Tế Lễ";
+"宗室长剑" = "Trường Kiếm Tông Thất";
+"匣里龙吟" = "Tiếng Hét Của Rồng";
+"试作斩岩" = "Mẫu Trảm Nham";
+"铁蜂刺" = "Thiết Phong Kích";
+"黑岩长剑" = "Hắc Nham Trường Kiếm";
+"黑剑" = "Kiếm Đen";
+"降临之剑" = "Kiếm Giáng Lâm";
+"腐植之剑" = "Răng Nanh Rỉ Sét";
+"暗巷闪光" = "Tia Sáng Nơi Hẻm Tối";
+"天目影打刀" = "Đoản Đao Amenoma";
+"辰砂之纺锤" = "Con Thoi Chu Sa";
+"笼钓瓶一心" = "Kagotsurube Isshin";
+"原木刀" = "Kiếm Gỗ";
+"风鹰剑" = "Phong Ưng Kiếm";
+"天空之刃" = "Kiếm Thiên Không";
+"斫峰之刃" = "Kiếm Chước Phong";
+"磐岩结绿" = "Bàn Nham Kết Lục";
+"苍古自由之誓" = "Lời Thề Tự Do Cổ Xưa";
+"雾切之回光" = "Ánh Sáng Đêm Xương Mù";
+"波乱月白经津" = "Haran Geppaku Futsu";
+"训练大剑" = "Kiếm Huấn Luyện";
+"佣兵重剑" = "Kiếm Dụng Binh";
+"铁影阔剑" = "Kiếm Thiết Ảnh";
+"沐浴龙血之剑" = "Kiếm Huyết Rồng";
+"白铁大剑" = "Kiếm Bạch Thiết";
+"以理服人" = "Gậy Thu Phục";
+"飞天大御剑" = "Đại Kiếm Phi Thiên";
+"西风大剑" = "Đại Kiếm Tây Phong";
+"钟剑" = "Kiếm Chuông";
+"祭礼大剑" = "Đại Kiếm Tế Lễ";
+"宗室大剑" = "Đại Kiếm Tông Thất";
+"雨裁" = "Vũ Tài";
+"试作古华" = "Mẫu Cổ Hoa";
+"白影剑" = "Kiếm Bạch Ảnh";
+"黑岩斩刀" = "Hắc Nham Trảm Đao";
+"螭骨剑" = "Kiếm Li Cốt";
+"雪葬的星银" = "Tuyết Vùi Tinh Ngân";
+"千岩古剑" = "Thiên Nham Cổ Kiếm";
+"桂木斩长正" = "Trường Đao Katsuragikiri";
+"衔珠海皇" = "Vua Biển Hàng Hiệu";
+"恶王丸" = "Akuoumaru";
+"森林王器" = "Vương Khí Rừng Sâu";
+"天空之傲" = "Thiên Không Kiêu Ngạo";
+"狼的末路" = "Đường Cùng Của Sói ( Kiếm Chó :v )";
+"无工之剑" = "Kiếm Vô Công";
+"松籁响起之时" = "Tiếng Gió Trong Rừng Thông";
+"赤角石溃杵" = "Xích Giác Phá Thạch Đao";
+"新手长枪" = "Thương Tân Thủ";
+"铁尖枪" = "Thương Sắt";
+"白缨枪" = "Thương Bạch Anh";
+"钺矛" = "Thuẫn Kích";
+"黑缨枪" = "Hắc Anh Thương";
+"匣里灭辰" = "Tai Ương Của Rồng";
+"试作星镰" = "Mẫu Tinh Liêm";
+"流月针" = "Lưu Nguyệt Châm";
+"黑岩刺枪" = "Thương Hắc Nham";
+"决斗之枪" = "Thương Quyết Chiến";
+"西风长枪" = "Thương Tây Phong";
+"宗室猎枪" = "Thương Săn Tông Thất";
+"龙脊长枪" = "Thương Long Tích";
+"千岩长枪" = "Thương Thiên Nham";
+"喜多院十文字" = "Giáo Thập Tự Kitain";
+"渔获" = "Lao Xiên Cá";
+"断浪长鳍" = "Vây Cá Chẻ Sóng ( Phóng Lợn :v )";
+"贯月矢" = "Quán Nguyệt Thương";
+"和璞鸢" = "Hoà Phác Diên";
+"天空之脊" = "Xương Sống Thiên Không";
+"贯虹之槊" = "Giáo Nịnh Thần";
+"护摩之杖" = "Trượng Hộ Ma";
+"薙草之稻光" = "Đoạn Thảo Trường Đao";
+"息灾" = "Huỷ Diệt";
+"猎弓" = "Cung Săn Bắn";
+"历练的猎弓" = "Cung Săn Bắn Tôi Luyện";
+"鸦羽弓" = "Cung Lông Quạ";
+"神射手之誓" = "Lời Thề Xạ Thủ Thần";
+"反曲弓" = "Cung Phản Khúc";
+"弹弓" = "Nỏ Kéo";
+"信使" = "Tín Sứ";
+"西风猎弓" = "Cung Tây Phong";
+"绝弦" = "Tuyệt Huyền";
+"祭礼弓" = "Cung Tế Lễ";
+"宗室长弓" = "Trường Cung Tông Thất";
+"弓藏" = "Cung Rỉ Sét";
+"试作澹月" = "Mẫu Đạm Nguyệt";
+"钢轮弓" = "Cung Thép";
+"黑岩战弓" = "Cung Hắc Nham";
+"苍翠猎弓" = "Cung Sắc Xanh";
+"暗巷猎手" = "Thợ Săn Hẻm Tối";
+"幽夜华尔兹" = "Điệu Van Ban Đêm";
+"破魔之弓" = "Cung Trừ Ma";
+"曚云之月" = "Ánh Trăng Mouun";
+"落霞" = "Lạc Hà";
+"竭泽" = "Sông Cạn";
+"王下近侍" = "Cận Vệ Nhà Vua";
+"天空之翼" = "Cánh Thiên Không";
+"阿莫斯之弓" = "Cung Amos";
+"终末嗟叹之诗" = "Tiếng Thở Dài Vô Tận";
+"飞雷之弦振" = "Sấm Sét Rung Động";
+"冬极白星" = "Ngôi Sao Cực Đông";
+"若水" = "Nhược Thuỷ";
+"猎人之径" = "Con Đường Thợ Săn";
+"学徒笔记" = "Nhật Ký Học Sinh";
+"口袋魔导书" = "Sổ Tay Ma Pháp";
+"魔导绪论" = "Tóm Tắt Ma Pháp";
+"讨龙英杰谭" = "Câu Chuyện Diệt Rồng";
+"异世界行记" = "Tiểu Thuyết Dị Giới";
+"翡玉法珠" = "Quả Cầu Ngọc";
+"甲级宝珏" = "Ngọc Sinh Đôi";
+"西风秘典" = "Tây Phong Mật Điển";
+"流浪乐章" = "Chương Nhạc Lang Thang";
+"祭礼残章" = "Mảnh Chương Tế Lễ";
+"宗室秘法录" = "Mật Pháp Tông Thất";
+"匣里日月" = "Nhật Nguyệt Hạp";
+"试作金珀" = "Mẫu Kim Phách";
+"万国诸海图谱" = "Hải Đồ Vạn Quốc";
+"黑岩绯玉" = "Hắc Nham Phỉ Ngọc";
+"昭心" = "Chiêu Tâm";
+"忍冬之果" = "Trái Chịu Lạnh";
+"暗巷的酒与诗" = "Rượu Và Thơ Nơi Hẻm Tối";
+"嘟嘟可故事集" = "Tuyển Tập Các Câu Chuyện Về Dodoco";
+"白辰之环" = "Vòng Bạch Thần";
+"证誓之明瞳" = "Con Ngươi Tuyên Thệ";
+"盈满之实" = "Quả Mọng";
+"天空之卷" = "Quyển Thiên Không";
+"四风原典" = "Điển Tích Tây Phong";
+"尘世之锁" = "Khoá Trần Thế";
+"不灭月华" = "Vầng Trăng Bất Diệt";
+"神乐之真意" = "Chân Ý Của Kagura";
+"西福斯的月光" = "Ánh Trăng Xiphos";
+"圣显之钥" = "Chìa Khóa Khaj-Nisut";
+"玛海菈的水色" = "Sắc Nước Makhaira";
+"风信之锋" = "Mũi Nhọn Của Gió";
+"赤沙之杖" = "Quyền Trượng Cát Đỏ";
+"流浪的晚星" = "Sao Đêm Rong Ruổi";
+"掠食者" = "Kẻ Săn Mồi";
+
+// Add account
+"关于我们的工作原理" = "Chúng làm việc như thế nào??";
+"为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。我们承诺，您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。" = "Để lấy nhựa và dữ liệu khác từ HoYoLAB, cần có UID và cookie đăng nhập của tài khoản của bạn. Sau khi đăng nhập vào HoYoLAB, chúng tôi sẽ lưu trữ chúng cục bộ cũng như trên iCloud riêng tư của bạn. Sau đó, ứng dụng của chúng tôi sẽ sử dụng UID và cookie được lưu trữ để lấy nhựa và các thông tin khác theo cách tương tự như ứng dụng HoYoLAB, sau đó hiển thị chúng trên tiện ích của bạn. Thông tin cá nhân của bạn sẽ không được gửi đến những nơi khác ngoài HoYoLAB và iCloud, kể cả chúng tôi, vì vậy thông tin cá nhân của bạn sẽ rất an toàn.";
+"关于您的账号安全" = "Giới thiệu về bảo mật tài khoản";
+"本程序不属于外挂等违法程序。本程序遵守米哈游二次创作规则的相关内容。根据中国原神客服的答复，使用本程序不会造成封号等问题。具体内容参见设置 - FAQ." = "Thủ tục này không phải là một thủ tục bất hợp pháp như plug-in. Chương trình này tuân theo nội dung có liên quan của các quy tắc tạo phụ của miHoYo. Theo phản hồi của dịch vụ khách hàng Genshin Impact của Trung Quốc, việc sử dụng chương trình của chúng tôi sẽ không gây ra các vấn đề như chặn. Để biết chi tiết, hãy xem Cài Đặt - Câu hỏi thường gặp.";
+
+// MARK: - 2.4.1
+// Widget
+"账号" = "Tài Khoản";
+"展示周本折扣" = "Hiển thị lượt giảm nửa tiêu hao của vùng đất thảo phạt";
+"展示参量质变仪" = "Hiển thị máy biến đổi tham số";
+
+// MARK: - 2.5.0
+// Material Provider
+"week.MR" = "Thứ Hai & Thứ Năm";
+"week.TF" = "Thứ Ba & Thứ Sáu";
+"week.WS" = "Thứ Tư & Thứ Bảy";
+"week.sunday" = "Chủ Nhật";
+
+// Tool View
+"请先选择账号" = "Vui lòng chọn tài khoản trước";
+"角色展示柜" = "Đội Hình Nhân Vật";
+"账号未展示角色" = "Không thể tìm thấy đội hình nhân vật nào";
+"今日入账" = "Hôm Nay Nhận Được";
+"需要重新登录本账号以查询，点击重新登录" = "Vui lòng nhấn để đăng nhập lại để truy vấn phần này.";
+// apiral abyss sheet
+"深境螺旋详情" = "Chiến Tích La Hoàn Thâm Cảnh";
+"保存%lld层的深渊数据" = "Lưu hình ảnh la hoàn thâm cảnh %lld";
+"上期深渊" = "Kỳ Trước";
+"本期深渊" = "Kỳ Này";
+"最深抵达" = "Đến Nơi Sâu Nhất";
+"获得渊星" = "Số Sao Nhận Được";
+"战斗次数" = "Số Lần Khiêu Chiến";
+"获胜次数" = "Số Lần Xuất Chiến";
+"战斗概览" = "Thống Kê Hiện Tại";
+"最强一击" = "Một Kích Mạnh Nhất";
+"最多击破数" = "Số Lần Đánh Bại Nhiều Nhất";
+"承受最多伤害" = "Chịu Sát Thương Tối Đa";
+"元素战技释放数" = "Số Lần Thi Triển Kỹ Năng Nguyên Tố";
+"元素爆发次数" = "Số Lần Thi Triển Kỹ Năng Nộ";
+"战斗数据榜" = "Số Liệu Thống Kê Đáng Chú Ý";
+"第%lld层" = "Tầng %lld";
+"第%lld间" = "Phòng %lld";
+"上半" = "Phần\nĐầu "; // The trailing space is to make sure the 1st and the 2nd share the same string length.
+"下半" = "Phần\nCuối";
+"获取渊星数" = "Số Sao Thu Được Ở Phòng";
+// Other tool
+"提瓦特大地图" = "Bản Đồ Tương Tác Teyvat";
+"请稍等%lld秒再刷新" = "Vui lòng đợi %lld giây trước khi làm mới.";
+"请下滑刷新" = "Vui lòng trượt xuống để làm mới";
+"原神中英日辞典" = "Từ Điển Genshin Impact";
+"原神计算器" = "Ứng Dụng Tính Sát Thương Nhân Vật";
+"由爱丽丝工坊提供" = "Cung cấp bởi Alice Workshop";
+"由爱丽丝工坊提供（未安装）" = "Cung cấp bởi Alice Workshop";
+"旅行工具" = "Dông cụ du lịch";
+// Ledger sheet
+"原石摩拉账簿" = "Nhật Ký Nhà Lữ Hành";
+"保存本月原石账簿图片" = "Lưu hình ảnh nguyên thạch và mora có được của tháng này";
+"原石收入" = "Nguyên Thạch";
+"摩拉收入" = "Mora";
+"较昨日" = "So với ngày hôm qua";
+"较上月同期" = "So với tháng trước";
+"本月账单 (%lld月)" = "Tổng kết của tháng này %lld";
+"披萨工具盒" = "Pizza Toolbox";
+"总计" = "Tổng Cộng";
+
+// CharacterDetailView
+"精炼%lld阶" = "R%lld";
+"生命值" = "HP";
+"攻击力" = "Tấn Công";
+"防御力" = "Phòng Thủ";
+"元素精通" = "Tinh Thông Nguyên Tố";
+"元素充能效率" = "Hiệu Quả Nạp Nguyên Tố";
+"治疗加成" = "Tăng Trị Liệu";
+"暴击率" = "Tỉ Lệ Bạo Kích";
+"暴击伤害" = "ST Bạo Kích";
+"风元素伤害加成" = "Tăng ST Nguyên Tố Phong";
+"冰元素伤害加成" = "Tăng ST Nguyên Tố Băng";
+"雷元素伤害加成" = "Tăng ST Nguyên Tố Lôi";
+"水元素伤害加成" = "Tăng ST Nguyên Tố Thuỷ";
+"火元素伤害加成" = "Tăng ST Nguyên Tố Hoả";
+"岩元素伤害加成" = "Tăng ST Nguyên Tố Nham";
+"草元素伤害加成" = "Tăng ST Nguyên Tố Thảo";
+"物理伤害加成" = "Tăng ST Vật Lý";
+"等级" = "Cấp";
+"命之座" = "Cung Mệnh";
+"%lld命" = "C%lld";
+"基础攻击力" = "Tấn Công";
+"生命值上限" = "HP";
+"暴击率%%" = "%% Tỉ Lệ Bạo";
+"暴击伤害%%" = "%% ST Bạo";
+"治疗加成%%" = "%% Tăng Trị Liệu";
+"受治疗加成" = "Tăng Trị Liệu";
+"元素充能%%" = "%% Nạp";
+"护盾强效" = "Hiệu Quả Khiên";
+"火伤加成%%" = "%% STNT Hoả";
+"水伤加成%%" = "%% STNT Thuỷ";
+"草伤加成%%" = "%% STNT Thảo";
+"雷伤加成%%" = "%% STNT Lôi";
+"风伤加成%%" = "%% STNT Phong";
+"冰伤加成%%" = "%% STNT Băng";
+"岩伤加成%%" = "%% STNT Nham";
+"物伤加成%%" = "%% ST Vật Lý";
+"攻击力%%" = "%% Tấn Công";
+"生命值%%" = "%% HP";
+"防御力%%" = "%% Phòng Thủ";
+
+// Từ Điển Genshin
+"复制英语" = "Sao chép Tiếng Anh";
+"复制中文" = "Sao chép Tiếng Trung";
+"复制日语" = "Sao chép Tiếng Nhật";
+"支持易错字、简写和英文标签" = "Hỗ trợ tìm kiếm & gắn thẻ";
+"本功能由[原神中英日辞典](https://genshin-dictionary.com/)提供。" = "Cung cấp bởi [Genshin Dictionary](https://genshin-dictionary.com/)";
+"当前共收录了%lld个原神专有词语，并还在继续更新中。" = "Hiện có tổng số %lld từ độc quyền của Genshin Impact và vẫn đang được cập nhật.";
+"如发现辞典内容有误或其他问题，英语&日语问题请在Twitter私信联系[シクリ](https://twitter.com/xicri_gi?s=21&t=p-r6hSgh_TXt7iddPNZM1w)，英语&中文问题请通过邮件联系[Bill Haku](mailto:i@hakubill.tech)。" = "Nếu bạn tìm thấy lỗi trong nội dung từ điển hoặc có vấn đề khác, vui lòng liên hệ [シクリ](https://twitter.com/xicri_gi?s=21&t=p-r6hSgh_TXt7iddPNZM1w) trên Twitter về các vấn đề tiếng Anh và tiếng Nhật, và gửi email cho các vấn đề tiếng Anh và tiếng Trung tới [Bill Haku](mailto:i@hakubill.tech). ";
+"关于原神中英日辞典" = "Giới thiệu về từ điển Genshin";
+"**英语** %@" = "**EN** %@";
+"**日语** %@" = "**JA** %@";
+"**中文** %@" = "**ZH** %@";
+
+"取消" = "Huỷ Bỏ";
+
+// UpdateHistoryInfoView
+"更新公告" = "Thông báo cập nhật";
+"更新历史记录" = "Lịch sử cập nhật";
+
+// Water mark
+"披萨小助手" = "Pizza Helper";
+
+// MARK: - 2.5.1
+"暂无本期深渊数据" = "Không có dữ liệu của thuật ngữ này";
+"仅统计充值途径以外获取的资源。数据存在延迟。" = "Chỉ bao gồm các tài nguyên thu được bên ngoài nạp tiền. Có vấn đề về độ trễ dữ liệu.";
+"已回满" = "Đầy";
+
+// MARK: - 2.5.2 & 2.5.3
+"所有角色" = "Tất Cả Nhân Vật";
+"我的角色" = "Nhân vật của tôi";
+"共拥有%lld名角色，其中五星角色%lld名，四星角色%lld名。" = "Có tổng cộng %lld nhân vật , bao gồm %lld nhân vật 5 sao và %lld nhân vật 4 sao.";
+"共获得%lld金，其中角色%lld金，武器%lld金。（未统计旅行者和无人装备的五星武器）" = "Nhận vật phẩm 5 sao %lld lần từ gacha, bao gồm nhân vật 5 sao %lld lần và vũ khí 5 sao %lld lần. (Vũ khí 5 sao chưa được trang bị không được tính)";
+"精%lld" = "R%lld";
+"全部角色" = "Tất Cả Nhân Vật";
+"五星角色" = "Nhân Vật 5 Sao";
+"四星角色" = "Nhân Vật 4 Sao";
+"的所有角色" = "Nhân Vật Sở Hữu";
+"生命值上限" = "HP";
+"元素精通​" = "TTNT"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
+"纳西妲" = "Nahida";
+"莱依拉" = "Layla";
+"千夜浮梦" = "Cõi Mộng Ngàn Đêm";
+
+// MARK: - 2.5.4 HOTFIX
+"账号状态异常，请前往米游社-旅行便笺重新验证" = "Trạng thái tài khoản bất thường, vui lòng vào HoYoLAB để xác minh lại";
+// MARK: - 2.5.4
+"%lld月原石收入" = "Thu thập nguyên thạch";
+
+// MARK: - 2.6.0
+"深渊统计榜单" = "Xếp Hạng Nhân Vật Dùng Nhiều Trong La Hoàn Thâm Cảnh";
+"深渊角色使用率" = "Tỷ lệ sử dụng nhân vật";
+"深渊队伍使用率" = "Đội hình dùng nhiều";
+"满星玩家持有率" = "Tỉ lệ người chơi đạt 36 sao";
+"全员角色持有率" = "Tỉ lệ tất cả người chơi sỡ hữu";
+"所有服务器" = "Tất cả máy chủ";
+"%lld层" = "F.%lld";
+"深渊统计榜单FAQ" = "Câu hỏi thường gặp hàng đầu về La Hoàn Thâm Cảnh";
+"隐私设置" = "Riêng Tư";
+"允许收集深渊数据" = "Cho phép thu thập dữ liệu La Hoàn Thâm Cảnh";
+"我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。更多相关问题，请查看深渊统计榜单页面右上角的FAQ。" = "Chúng tôi rất mong được thu thập các nhân vật bạn sở hữu và các nhân vật bạn đã sử dụng trong La Hoàn Thâm Cảnh . Nếu bạn cho phép chúng tôi thu thập dữ liệu, bạn có thể kiểm tra Tỷ lệ sử dụng nhân vật theo thời gian thực, Tỷ lệ sử dụng đội hình , v.v. trong ứng dụng. Để biết thêm chi tiết, bạn có thể đọc Câu hỏi thường gặp ở góc trên bên phải của Chế độ xem danh sách hàng đầu trong La Hoàn.";
+"共统计%lld用户%@\n%@·生成于%@" = "%lld dữ liệu được tính %@\n%@ · Được tạo lại %@";
+"共统计%lld用户%@" = "%lld dữ liệu được tính %@";
+"·仅包含满星玩家·计算方法：角色使用人数/角色拥有人数" = "· Chỉ người chơi 36 sao · Tỷ lệ phần trăm = Người chơi đã sử dụng / Người chơi sở hữu";
+"·仅包含满星玩家·包含旅行者的队伍已合并" = "· Chỉ dành cho người chơi 36 sao · Các đội bao gồm các nhà lữ hành được hợp nhất";
+"上" = "Nửa Đầu Tháng";
+"下" = "Nửa Cuối Tháng";
+"月" = "";
+"·仅自%@后提交的数据" = "· Dữ liệu thu thập sau %@";
+"整层" = "Cả hai";
+
+// MARK: - 2.6.1
+"是否允许我们收集您的深渊数据？" = "Cho phép chúng tôi thu thập dữ liệu La Hoàn Thâm Cảnh của bạn ?";
+"不允许" = "Không";
+"允许" = "Có";
+
+// MARK: - 2.6.2
+"反复出现账号异常？点击查看解决方案" = "Trường hợp ngoại lệ tài khoản xảy ra nhiều lần? Click để xem giải pháp";
+"1034问题的解决方案" = "Giải quyết vấn đề 1034";
+"点击打开米游社App" = "Bấm để mở ứng dụng HoYoLAB";
+"（1034）账号状态异常，请前往「米游社」App-「我的」-「我的角色」进行验证" = "(1034) Trạng thái tài khoản không bình thường, vui lòng truy cập Ứng dụng HoYoLAB để xác minh lại";
+"小组件设置" = "Cài Đặt Tiện Ích";
+"主屏幕小组件刷新频率" = "Thường xuyên làm mới tiện ích màn hình chính";
+"锁定屏幕小组件刷新频率" = "Thường xuyên làm mới tiện ích màn hình khóa";
+"每%lld分钟" = "Mỗi %lld phút";
+"小组件刷新频率" = "Thường xuyên làm mới tiện ích";
+
+// MARK: - 2.6.4
+"%@·%@·%lld层" = "%@·%@·Phòng %lld";
+"%@·%@·%lld层·%@" = "%@·%@·Phòng %lld·%@";
+
+// 3.1 danh thiếp
+"赛诺・幽缄" = "Cyno: Silence";
+"妮露・莲舞" = "Nilou: Lotus Dance";
+"坎蒂丝・苍鹭" = "Candace: Grey Heron";
+"纪行・归风" = "Travel Notes: Returning Winds";
+"成就・七芒" = "Achievement: Seven Lights";
+"须弥・踏沙" = "Sumeru: Sandtreader";
+"成就・镜梦" = "Achievement: Mirrored Dreams";
+
+// widgetsetting
+"洞天宝钱回复速度" = "Tốc độ phục hồi tiền động tiên";
+"（仅简洁模式）洞天宝钱回复速度。未正确设置可能导致洞天宝钱通知无法正确触发。" = "(Chỉ ở chế độ đơn giản hóa) Tốc độ phục hồi tiền động tiên . Việc không đặt chính xác có thể khiến thông báo tiền động tiên không kích hoạt chính xác.";
+"每小时%lld个" = "%lld/ Giờ";
+// Notification setting
+"您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Thông báo được tạo cục bộ và được cập nhật tự động khi tiện ích làm mới hoặc khi bạn mở Ứng dụng. \nViệc không mở Ứng dụng trong thời gian dài hoặc không sử dụng tiện ích có thể dẫn đến thông báo không chính xác. \nMột số thông báo chỉ có thể được làm mới bằng cách mở ứng dụng nếu tiện ích ở chế độ làm mới.";
+
+"顶置" = "Ghim đầu trang";
+"（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường. Bạn nên giảm tần suất yêu cầu tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản";
+"请重新登录本账号以获取stoken" = "Vui lòng đăng nhập lại tài khoản này để nhận được Token";
+"请登录「%@」" = "Đăng nhập vào \"%@\"";
+
+// MARK: - v2.6.5
+// Real-time activity
+"距离%lld树脂" = "Thời gian để %lld Nhựa";
+"距离160树脂" = "Thời gian đầy 160 Nhựa";
+"为该账号开启树脂计时器" = "Đặt bộ hẹn giờ nhựa đầy cho tài khoản này";
+"自动启用树脂计时器" = "Tự động bật bộ hẹn giờ nhựa";
+"树脂计时器是什么？" = "Bộ đếm thời gian nhựa là gì?";
+"创建树脂计时器成功" = "Tạo bộ đếm thời gian nhựa đầy thành công";
+"若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在「概览」页长按某个账号的卡片手动开启，或启用多个计时器。" = "Nếu được bật, bộ đếm thời gian nhựa \"hoạt động trong thời gian thực\" sẽ được đặt sau khi bạn thoát khỏi ứng dụng. Theo mặc định, bộ đếm thời gian sẽ được đặt cho tài khoản được ghim ở trên cùng hoặc tài khoản có ít nhựa nhất. Bạn cũng có thể bật bộ hẹn giờ cho tài khoản theo cách thủ công bằng cách nhấn và giữ thẻ thông tin tài khoản trên tab \"Tổng quan\" hoặc bật thêm bộ hẹn giờ.";
+"前往设置开启实时活动功能" = "Chuyển đến Cài Đặt để bật tính năng \"Hoạt động trong thời gian thực\"";
+"实时活动功能未开启，请前往设置开启。" = "Đã tắt \"Hoạt động thời gian thực\". Vui lòng kích hoạt nó trong Cài Đặt.";
+
+// Other settings
+"前往设置开启通知" = "Di chuyển đến Cài Đặt để bật thông báo";
+"未启用通知，请前往设置开启。" = "Thông báo bị vô hiệu hóa. Vui lòng kích hoạt nó trong Cài Đặt.";
+
+// Real-time activity settings
+"树脂计时器设置" = "Cài Đặt hẹn giờ nhựa đầy";
+"展示派遣探索" = "Hiển thị thông tin phái đi thám hiểm";
+"使用透明背景" = "Nền Trong Suốt";
+"随机背景" = "Nền Ngẫu Nhiên";
+"选择背景" = "Chọn Nền";
+"选择计时器背景" = "Chọn hình nền cho hẹn giờ";
+"距离派遣探索全部完成" = "Các cuộc phái đi thám hiểm đã được hoàn thành";
+"树脂计时器背景" = "Chọn nền cho bộ hẹn giờ nhựa";
+
+// Real-time activity error
+"未知错误：%@" = "Lỗi không xác định: %@";
+"账号未获取信息" = "Không có thông tin tài khoản";
+"系统设置不允许本软件开启实时活动，请前往开启" = "Cài Đặt hệ thống không được phép bắt đầu hoạt động thời gian thực, vui lòng bật nó lên";
+
+// MARK: - 2.7.1
+"加入QQ群" = "Tham Gia Nhóm QQ";
+"加入Discord服务器" = "Tham Gia Server Discord";
+"1群: 813912474" = "Group 1: 813912474";
+"2群: 829996515" = "Group 2: 829996515";
+"原神披萨深渊榜网页版" = "Trang Web xếp hạng nhân vật La Hoàn";
+"英语 繁体中文" = "Tiếng Anh , Tiếng Trung (Phồn thể)";
+
+"隐藏灵动岛 / 关闭树脂计时器" = "Ẩn Dynamic Island / Tắt bộ hẹn giờ nhựa";
+"如何隐藏灵动岛？如何关闭树脂计时器？" = "Làm thế nào để ẩn Dynamic Island ? Làm thế nào để tắt bộ đếm thời gian nhựa?";
+"您可以从左右向中间滑动灵动岛，即可隐藏灵动岛。\n在锁定屏幕上左滑树脂计时器，即可关闭树脂计时器和灵动岛。" = "Bạn có thể trượt Dynamic Island từ trái/phải vào giữa để ẩn đi. \nVuốt sang trái trên bộ hẹn giờ nhựa trên màn hình khóa để tắt bộ hẹn giờ nhựa và Dynamic Island.";
+"简洁模式下自动刷新树脂计时器" = "Hẹn giờ nhựa tự động làm mới (chỉ dành cho Chế độ đơn giản hóa)";
+"如出现1034问题，请关闭本选项。" = "Nếu xảy ra sự cố (1034), vui lòng tắt tùy chọn này.";
+
+// MARK: - 2.7.2
+"使用简洁模式" = "Sử dụng chế độ đơn giản hóa";
+"仅国服用户。更改该项需要重新添加小组件。" = "Chỉ người dùng Trung Quốc . Thêm lại tiện ích sau khi chỉnh sửa cấu hình này.";
+"（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "(Chỉ chế độ đơn giản hóa) Việc đặt không đúng cách có thể dẫn đến thông báo tiền động tiên không được kích hoạt chính xác và số lượng không chính xác.";
+"（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "(Chỉ ở chế độ đơn giản hóa) Không được đặt chính xác có thể dẫn đến lượng tiền động tiên không chính xác.";
+// 下方左侧尾部有零宽字符
+"%@ 回满​" = "%@";
+"的原粹树脂回满时间" = "'s thời gian hồi đầy nhựa";
+"原粹树脂回满时间" = "Thời gian để đầy nhựa hoàn toàn";
+"展示原粹树脂与恢复到160树脂的时间" = "Hiển thị lượng nhựa ban đầu và thời gian đầy.";
+"的原粹树脂回满倒计时" = "'s đếm ngược đến khi đầy 160 nhựa";
+"原粹树脂回满倒计时" = "Hẹn giờ của Nhựa Nguyên Chất";
+"展示原粹树脂与恢复到160树脂的倒计时" = "Hiển thị nhựa ban đầu và đếm ngược đến khi đầy 160 nhựa.";
+"settings.notification.resinOverflown" = "Thông báo khi đầy";
+"本账号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" = "Không tìm thấy dữ liệu nào trong Cookie, điều này có thể ảnh hưởng đến việc sử dụng tiện ích ở chế độ đơn giản hóa. Nên đăng nhập lại để nhận được Token.";
+
+"今天 " = "Tdy ";
+"明天 " = "Tmw ";
+"实时活动功能未开启" = "\"Hoạt động thời gian thực\" Tắt. ";
+"活动和材料" = "Sự kiện và nguyên liệu";
+"展示近日活动和今天可以获取的武器和天赋材料。" = "Hiển thị các sự kiện gần đây và nguyên liệu của vũ khí hoặc thiên phú có thể nhận được ngày hôm nay.";
+"LockScreenHomeCoinWidgetRectangular.resin" = "Nhựa";
+"LockScreenHomeCoinWidgetRectangular.homeCoin" = "Tiền Động Tiên";
+"每小时%@个" = "%@/Giờ";
+"每%@" = "Mỗi %@";
+
+"（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường, đề xuất giảm tần suất đồng bộ hóa tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản hóa";
+"小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。" = "Tiện ích được cố định để làm mới cứ sau 8 phút, tần suất đồng bộ hóa sẽ không ảnh hưởng đến việc làm mới tiện ích. Bạn nên đặt tần suất đồng bộ dài hơn nếu có thể và mở ứng dụng để đồng bộ một lần sau mỗi chuyến tham quan.";
+"小组件同步频率" = "Tần suất đồng bộ hóa tiện ích";
+"主屏幕小组件同步频率" = "Tần suất đồng bộ hóa tiện ích màn hình chính";
+"锁定屏幕小组件同步频率" = "Tần suất đồng bộ tiện ích màn hình khóa";
+"我知道了" = "Tôi hiểu rồi";
+
+// MARK: -2.7.3
+// Genshin v 3.2 new assets
+"珐露珊" = "Faruzan";
+"流浪者" = "Kẻ Lang Thang";
+"图莱杜拉的回忆" = "Hồi Ức Tulaytullah";
+"东花坊时雨" = "Toukabou Shigure";
+
+// MARK: -2.7.4
+"「%@」的原粹树脂已回满。" = "%@'s nhựa đã đầy. ";
+
+// MARK: - 2.7.6
+"腐殖之剑" = "Răng Nanh Rỉ Sét";
+"风花之颂" = "Bài Ca Hoa Gió";
+"「渔获」" = "Lao Xiên Cá";
+
+// MARK: - 2.7.8
+"瑶瑶" = "Yaoyao";
+"艾尔海森" = "Alhaitham";
+"裁叶萃光" = "Ánh Lá Phán Quyết";
+"settings.notification.disclaimer.onlyWorksWithNewNotifications" = "Lưu ý: Các thay đổi Cài Đặt thông báo sẽ không có hiệu lực đối với các thông báo hiện được lên lịch.";
+
+// MARK: - 2.7.9
+"俄文" = "Tiếng Nga";
+
+// MARK: - 2.7.10
+"使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "Xếp hạng sử dụng chỉ để tham khảo trong đội hình La Hoàn và không đại diện cho bất kỳ đánh giá nào về nhân vật.";
+"强烈推荐选用的角色" = "Nhân vật được đề xuất cao";
+"推荐选用的角色" = "Nhân vật đề xuất";
+"优先选用的角色" = "Nhân vật ưa thích";
+"可以选用的角色" = "Nhân vật vai trò tuỳ chọn";
+"酌情选用的角色" = "Nhân vật vai trò có sẵn";
+"普遍可用的角色" = "Nhân vật phổ biến";
+"清空缓存 (%@MB)" = "Xoá bộ nhớ cache (%@MB)";
+
+// MARK: - 2.7.11
+"米卡" = "Mika";
+"苇海信标" = "Hải Đăng Bờ Biển Lau";
+"饰铁之花" = "Đóa Hoa Tôn Màu Thép";
+
+"暂无当前活动信息" = "Hiện tại không có thông tin sự kiện nào";
+"原神活动信息由[Project Amber](https://ambr.top/)提供" = "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Amber](https://ambr.top/)";
+
+// MARK: - 2.7.12
+"越南文" = "Tiếng Việt";
+"未重开玩家使用率" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
+"时区" = "Múi Giờ";
+"我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
+"自2023年4月1日起提供" = "Có sẵn từ 2023-04-01";
+
+// MARK: - 2.7.14
+"中文汉字纠正" = "Chỉnh sửa văn bản giao diện người dùng tiếng Trung";
+"这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "Điều này sẽ chuyển đổi 钟 & 钟离 đến 锺 & 锺离 khi ngôn ngữ giao diện người dùng là tiếng Trung giản thể . Nếu là tiếng Trung phồn thể , nó sẽ chuyển đổi 堇 to 菫.";
+"显示圣遗物等级与稀有度" = "Hiển thị cấp độ nhân vật và phẩm chất";
+"雷电国崩" = "Raiden Kunikuzushi";
+"namecards:UI_NameCardPic_Kunikuzushi_P" = "Raiden Kunikuzushi - Phù Ca";
+"显示部分角色的真实姓名" = "Hiển thị tên thật của một số nhân vật";
+"角色详情排版间距适配" = "Bố cục trong chế độ xem nhân vật";
+"这仅对 iPad 以及有「刘海」的 iPhone 生效。" = "Tính năng này chỉ hoạt động với iPad và các dòng iPhone có tai thỏ.";
+"界面偏好设置" = "Tùy Chọn Giao Diện";
+
+// MARK: - 2.8.0
+"琥珀玥" = "Hổ Phách Nguyệt";
+"黑檀弓" = "Cung Hắc Đàn";
+"暗铁剑" = "Kiếm Sắt Đen";
+"沐浴龙血的剑" = "Kiếm Huyết Rồng";
+"石英大剑" = "Quartz";
+"「旗杆」" = "The Flagstaff";
+"翡玉法球" = "Quả Cầu Ngọc";
+
+// artifact rating
+"%@分" = "%@pt";
+"圣遗物评价" = "Xếp Hạng Thánh Di Vật";
+"显示圣遗物评分与评价" = "Hiển Thị Xếp Hạng Và Điểm Số TDV";
+"自定义流浪者姓名" = "Sửa Tên Kẻ Lang Thang";
+"自定义姓名" = "Sửa Tên";
+"请输入自定义流浪者姓名" = "Vui lòng nhập tên tùy chỉnh của Kẻ Lang Thang";
+
+// cầu nguyện analysis
+"请点击右上角获取抽卡记录" = "Click top right to obtain";
+"祈愿分析" = "Phân Tích Lịch Sử Cầu Nguyện";
+"角色活动祈愿" = "Sự Kiện Nhân Vật";
+"角色活动祈愿-2" = "Sự Kiện Nhân Vật - 2";
+"初行者推荐祈愿" = "Beginner's cầu nguyện";
+"武器活动祈愿" = "Sự Kiện Vũ khí";
+"常驻祈愿" = "Tiêu Chuẩn";
+"更多图表" = "Biểu Đồ Khác";
+"统计数据" = "Số liệu Thống Kê";
+"当前已垫" = "After Last 5-star";
+"%lld抽" = "%lld Lượt";
+"总抽数" = "Tổng Số Lượt";
+"五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao";
+"五星平均消耗原石数" = "Số Nguyên Thạch Cho Mỗi Cung Mệnh Nhân Vật 5 Sao";
+"限定五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao Giới Hạn";
+"不歪率" = "Tỉ Lệ 50/50";
+"派蒙的评价" = "Paimon's Review";
+"帕姆的评价" = "Pom-Pom's Review";
+"总消耗原石数" = "Tổng Số Lượng Nguyên Thạch";
+"五星平均抽数" = "Lượt Roll Trung Bình Nhận Được Nhân Vật 5 Sao";
+"限定五星平均消耗原石数" = "Số Nguyên Thạch Cho Mỗi Cung Mệnh Nhân Vật 5 Sao Giới Hạn";
+"平均抽数：" = "Số Lượt Trung Bình:";
+"暂不支持国际服" = "Không hỗ trợ máy chủ quốc tế";
+
+"详细记录" = "Ghi Chi Tiết";
+"其他图表" = "Biểu Đồ Khác";
+"切换为%@" = "Chuyển đến %@";
+"总抽数分布" = "Phân bổ của tổng số lượt";
+
+"所有记录" = "Tất Cả";
+"四星及五星" = "4 Sao & 5 Sao";
+"五星" = "5 Sao";
+
+"我该选哪个？" = "Tôi nên chọn cái nào ?";
+"通过API获取" = "Thông qua API";
+"通过粘贴祈愿页面URL获取" = "Dán URL lịch sử cầu nguyện";
+"导入UIGF祈愿记录" = "Nhập Vào Lịch Sử Cầu Nguyện Định Dạng UIGF";
+
+"抽卡记录获取帮助" = "Hỗ Trợ Nhật Ký Cầu Nguyện";
+"无论选择哪种方式，我们都为您提供了详细的操作教程" = "Cho dù bạn chọn cách nào, chúng tôi sẽ cung cấp cho bạn các hướng dẫn vận hành chi tiết";
+"您也可以选择参考我们的视频完成相关操作" = "Bạn cũng có thể tham khảo video của chúng tôi để hoàn thành các thao tác đó";
+"如果您的账号所在服务器位于中国大陆" = "Nếu tài khoản của bạn ở Máy chủ Trung Quốc Đại lục";
+"请优先选择「通过API」一键获取" = "Chọn \"Thông qua API\" đầu tiên";
+"仅适用于中国大陆服务器" = "Chỉ áp dụng cho các máy chủ ở Trung Quốc đại lục";
+"适用于所有服务器" = "Có hiệu lực cho tất cả máy chủ";
+"国际服务器玩家该怎么办" = "Đối với máy chủ quốc tế";
+"建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程" = "Nên lấy từ \"Dán URL lịch sử cầu nguyện\", chúng tôi cũng đã cung cấp hướng dẫn cho nó";
+"如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入" = "Nếu bạn sử dụng các phần mềm khác để lấy nhật ký gacha và phần mềm hỗ trợ các tệp định dạng UIGF (Định dạng tiêu chuẩn GachaLog có thể hoán đổi đồng nhất), bạn có thể nhập chúng.";
+"支持UIGF的软件" = "Phần Mềm Hỗ Trợ UIGF";
+
+"视频教程" = "Video hướng dẫn";
+"帮助" = "Trợ Giúp";
+"返回" = "Quay Lại";
+
+"等待祈愿链接…" = "Đang đợi URL lịch sử cầu nguyện…";
+"开始获取祈愿记录" = "Bắt đầu lấy lịch sử cầu nguyện";
+"成功获取祈愿数据" = "Đã thu thập thành công dữ liệu cầu nguyện";
+"共保存了%lld条新的祈愿数据" = "Tổng cộng %lld dữ liệu cầu nguyện mới đã được lưu";
+"获取失败，因为错误：\n%@" = "Không lấy được do lỗi:\n%@";
+"成功获取到祈愿记录链接" = "Đã lấy thành công URL lịch sử cầu nguyện";
+"请点击「开始获取祈愿记录」以继续" = "Vui lòng nhấp vào 'Bắt đầu lấy bản ghi cầu nguyện' để tiếp tục";
+"获取祈愿记录" = "Có được bản ghi cầu nguyện";
+"等待开始…" = "Đang đợi để bắt đầu…";
+"获取到%@条记录，成功保存%@条新记录\n请返回上一级查看，或继续获取其他账号的记录" = "Đã lấy %@ bản ghi, lưu thành công %@ trong số chúng.\nQuay lại trang trước để xem chúng hoặc tiếp tục lấy bản ghi từ các tài khoản khác.";
+"成功获取到一批…" = "Thu được thành công…";
+"卡池：%@" = "Pool: %@";
+"页码：%@" = "Page: %@";
+"获取到新记录：%@条" = "Bản ghi thu được: %@";
+"已获取记录：%@条" = "Bản ghi đã có được: %@";
+"正在获取祈愿记录…请等待" = "Lấy bản ghi lịch sử cầu nguyện… Vui lòng đợi.";
+"获取祈愿记录失败" = "Không lấy được bản ghi cầu nguyện";
+"日期" = "Ngày";
+"抽数" = "Số Lượt";
+"祈愿类型" = "Thể Loại Cầu Nguyện";
+
+"从剪贴板中获取祈愿URL" = "Lấy URL lịch sử cầu nguyện từ khay nhớ tạm";
+"成功获取到祈愿链接" = "Đã lấy thành công URL lịch sử cầu nguyện";
+"请返回继续获取祈愿记录。" = "Vui lòng truy cập bản ghi và tiếp tục lấy hồ sơ lịch sử cầu nguyện.";
+"重新获取祈愿链接" = "Lấy lại URL lịch sử cầu nguyện";
+"开始获取祈愿记录" = "Bắt đầu thu thập hồ sơ cầu nguyện";
+"从剪贴板上获取到的链接有误" = "URL lấy được từ khay nhớ tạm không chính xác";
+"预期应获取到祈愿链接，但获取到了错误的内容：\n%@" = "Dự kiến lấy được URL lịch sử cầu nguyện, nhưng nhận được nội dung không chính xác:\n%@";
+"未能从剪贴板获取到内容" = "Không lấy được nội dung từ khay nhớ tạm";
+"由paimon.moe提供的获取祈愿链接的方法" = "Phương pháp lấy lịch sử cầu nguyện do paimon.moe cung cấp";
+"其他获取祈愿链接的方法" = "Các phương pháp khác để lấy URL lịch sử cầu nguyện";
+"您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。" = "Bạn có thể dán URL lịch sử cầu nguyện thu được từ phần mềm khác vào ứng dụng này để lấy bản ghi cầu nguyện. Tuy nhiên, ứng dụng này không chịu trách nhiệm về độ tin cậy của các chương trình bên ngoài.";
+
+"导入UIGF JSON格式祈愿记录" = "Nhập bản ghi UIGF JSON";
+"导入UIGF XLSX格式祈愿记录" = "Nhập bản ghi UIGF XLSX";
+"目前仅支持导入简体中文祈愿记录" = "Hiện tại chỉ hỗ trợ nhập hồ sơ cầu nguyện tiếng Trung giản thể";
+"导入中，请稍候…" = "Đang nhập, vui lòng đợi…";
+"成功导入祈愿数据" = "Dữ liệu cầu nguyện được nhập thành công";
+"数据来自：%@" = "Nguồn dữ liệu: %@";
+"导出时间：%@" = "thời gian xuất: %@";
+"导入了%lld条记录" = "Bản ghi %lld đã nhập";
+"储存了%lld条新记录" = "Đã lưu trữ %lld bản ghi mới";
+"继续导入" = "Tiếp tục nhập";
+"导入失败" = "Nhập thất bại";
+"错误信息：%@" = "Thông báo lỗi: %@";
+"重试" = "Thử Lại";
+"成功导入祈愿数据" = "Dữ liệu cầu nguyện được nhập thành công";
+"导入时界面会卡住一段时间" = "Giao diện sẽ bị kẹt một lúc trong quá trình nhập";
+"请耐心等待…" = "xin vui lòng chờ đợi…";
+"开始" = "Bắt Đầu";
+"无法访问文件" = "Không thể truy cập tệp";
+"原始数据不存在" = "Dữ liệu thô không tồn tại";
+"数据表缺失数据" = "Bảng dữ liệu thiếu dữ liệu";
+"未成功从文件中解码数据" = "Không thể giải mã dữ liệu từ tệp";
+"导入帮助" = "Trợ giúp nhập vào";
+"以下程序或平台的JSON导出格式已通过可用性验证" = "Định dạng xuất JSON của các chương trình hoặc nền tảng sau đã được xác minh về khả năng sử dụng";
+"以下程序或平台的XLSX导出格式已通过可用性验证" = "Định dạng xuất XLSX của các chương trình hoặc nền tảng sau đã được xác minh về khả năng sử dụng";
+"我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。" = "Chúng tôi hỗ trợ tất cả các tệp xuất tuân thủ nghiêm ngặt tiêu chuẩn UIGF. Để biết danh sách các ứng dụng được hỗ trợ và các định dạng xuất tương ứng, vui lòng nhấp vào góc trên cùng bên phải để mở trang trợ giúp.";
+"我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。" = "Chúng tôi hỗ trợ nhập tất cả các tệp tuân thủ định dạng UIGF, nhưng chúng tôi đã phát hiện ra rằng một số phần mềm tuyên bố hỗ trợ UIGF không đáp ứng tiêu chuẩn. Phần mềm sau đã được xác minh để có thể nhập trơn tru vào ứng dụng này.";
+
+// gacha data management
+"导出UIGF祈愿记录" = "Xuất bản ghi cầu nguyện dạng UIGF";
+"祈愿数据管理" = "Quản lý dữ liệu Gacha";
+"清理重复数据" = "Dọn dẹp dữ liệu trùng lặp";
+"清理因iCloud同步导致出现的重复祈愿记录" = "Dọn dẹp các bản ghi cầu nguyện trùng lặp do đồng bộ hóa iCloud";
+"选择账号" = "Chọn Tài Khoản";
+"未选择" = "Không Được Chọn";
+"删除所有时间的记录" = "Xóa hồ sơ tất cả thời gian.";
+"开始日期" = "Ngày bắt đầu";
+"结束日期" = "Ngày kết thúc";
+"删除祈愿记录" = "Xóa bản ghi cầu nguyện";
+"导出祈愿记录" = "Xuất bản ghi cầu nguyện";
+"确定要删除「%@」的祈愿数据吗？" = "Bạn có chắc chắn muốn xóa dữ liệu cầu nguyện của \"%@\"?";
+"即将删除「%@」%@的祈愿数据。" = "Dữ liệu cầu nguyện của \"%@\"%@ sắp bị xóa.";
+"删除了%lld条数据" = "Bản ghi %lld đã bị xóa";
+"删除了%lld条重复数据" = "Đã xóa %lld bản ghi trùng lặp";
+"所有" = "Tất Cả";
+"自%@到%@" = "Từ %@ đến %@";
+
+// gacha avaliable language
+"泰文" = "Tiếng Thái";
+"朝鲜文" = "Tiếng Hàn Quốc";
+"西班牙文" = "Tiếng Tây Ban Nha";
+"简体中文" = "Tiếng Trung Giản thể";
+"印尼文" = "Tiếng Inđônêxia";
+"葡萄牙文" = "Tiếng Bồ Đào Nha";
+"德文" = "Tiếng Đức";
+"繁体中文" = "Tiếng Trung Phồn thể";
+"英语（美国）" = "Tiếng Anh (Hoa Kỳ)";
+"选择语言" = "Chọn ngôn ngữ";
+
+// Additional terms
+"开始导入？" = "Bắt đầu nhập ?";
+"导入数据需要一段时间，请耐心等待。" = "Quá trình nhập dữ liệu hơi lâu, vui lòng đợi…";
+
+// Genshin 3.6 new heros and weapons
+"白术" = "Baizhu";
+"卡维" = "Kaveh";
+"碧落之珑" = "Ngọc Bích Huy Hoàng";
+
+
+"暂无五星祈愿记录" = "Hiện không có bản ghi nguyện vọng 5 sao";
+"成功将祈愿链接复制到剪贴板" = "Sao chép liên kết nguyện vọng vào bảng tạm thành công";
+
+
+// MARK: - 2.8.1
+"生成并复制祈愿链接至剪贴板" = "Tạo và sao chép liên kết nguyện vọng vào bảng tạm";
+"正在获取祈愿链接，请稍等" = "Đang tìm liên kết nguyện vọng, vui lòng đợi";
+"生成祈愿链接失败" = "Tạo liên kết nguyện vọng thất bại";
+"UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。" = "Hỗ trợ nhiều ngôn ngữ cho UIGF vẫn đang được thảo luận và chức năng xuất chỉ hỗ trợ tiếng Trung giản thể hiện tại. Chúng tôi sẽ thêm hỗ trợ cho nhiều ngôn ngữ ngay khi nó được hoàn thành.";
+"3群: 736320270" = "Nhóm 3: 736320270";
+"保存成功" = "Lưu thành công";
+"文件已保存至%@" = "Đã lưu tệp vào %@";
+"保存失败" = "Lưu thất bại";
+"确定要删除吗？" = "Bạn có chắc muốn xóa không?";
+"删除" = "Xóa";
+"删除成功" = "Xóa thành công";
+"清理重复数据成功" = "Đã xóa dữ liệu trùng lặp thành công";
+"如何从《提瓦特小助手》导入？" = "Làm thế nào để nhập từ \"提瓦特小助手\"?";
+"如何从paimon.moe导入？" = "Làm thế nào để nhập từ Paimon.moe?";
+"教程" = "Hướng Dẫn";
+
+// MARK: - 2.8.3
+
+"绮良良" = "Kirara";
+"鹮穿之喙" = "Mỏ Cò Xuyên Thấu";
+
+// MARK: - 2.8.5
+
+"账号状态异常,需要输入验证码" = "Ngoại lệ trạng thái tài khoản, nhắc xác minh tương tác";
+"请点击此处输入验证码" = "Nhấn vào đây để tiến hành xác minh tương tác";
+"account.test.verify.web_sheet.title" = "Xác Minh Tương Tác";
+"账号状态异常,请打开App填写验证码" = "Ngoại lệ trạng thái tài khoản, nhắc xác minh tương tác trong ứng dụng";
+"（1034）账号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "(1034) Tài khoản cần xác minh. Vui lòng mở ứng dụng để xác minh người-máy. Nhấn và giữ widget để kích hoạt chế độ gọn gàng.";
+
+// MARK: - 3.0.0
+
+"感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。" = "Cảm ơn [@心臓弱眞君](https://twitter.com/xinzoruo) đã tạo biểu tượng ứng dụng mới cho chúng tôi. Bạn cũng có thể tiếp tục sử dụng biểu tượng cũ.";
+"更换App图标" = "Thay đổi biểu tượng ứng dụng";
+
+// MARK: - 3.0.1
+
+"星铁披萨小助手" = "HSR Pizza Helper";
+"星穹铁道游戏助手工具全家桶" = "Công cụ dành cho người chơi Honkai: Star Rail";
+"黑塔终端" = "Herta Terminal";
+"与“老婆”们聊天！" = "Trò chuyện với waifu trong HSR";
+"settings.siblingApps" = "Các công trình khác của chúng tôi";
+
+// MARK: - 3.0.4
+
+"反向代理设置" = "Reverse Proxy Settings";
+"设备指纹仅限国服账号需要设置" = "Only accounts of China Mainland servers are needed";
+
+// MARK: - 3.0.5
+
+"菲米尼" = "Freminet";
+"狼牙" = "Nanh Sói";
+"海渊终曲" = "Nhạc Khúc Biển Sâu";
+"灰河渡手" = "Ống Đồng Fleuve Cendre";
+"聊聊棒" = "Gậy Đàm Phán";
+"浪影阔剑" = "Bóng Tối Thủy Triều";
+"峡湾长歌" = "Khúc Ca Vịnh Hẹp";
+"公义的酬报" = "Thù Lao Của Chính Nghĩa";
+"遗祀玉珑" = "Ngọc Bích Hiến Tế";
+"纯水流华" = "Dòng Chảy Tinh Khiết";
+"烈阳之嗣" = "Hậu Duệ Mặt Trời";
+"静谧之曲" = "Khúc Ca Tĩnh Lặng";
+"最初的大魔术" = "Màn Ảo Thuật Đầu Tiên";
+"「公平」" = "Công Bằng";
+"「正义」" = "Chính Nghĩa";
+"「秩序」" = "Trật Tự";
+"「悠古弦音」" = "Cung Đàn Cổ Xưa";
+"「纯圣露滴」" = "Giọt Sương Thánh Thuần";
+"「无垢之海」" = "Của Biển Nguyên Sơ";
+
+// MARK: - 3.1.0
+
+"那维莱特" = "Neuvillette";
+"夏洛蒂" = "Charlotte";
+"芙宁娜" = "Furina";
+"莱欧斯利" = "Wriothesley";
+"船坞长剑" = "Kiếm Bến Tàu";
+"勘探钻机" = "Mũi Khoan Thăm Dò";
+"便携动力锯" = "Máy Cưa Cầm Tay";
+"金流监督" = "Quản Đốc Vàng Ròng";
+"万世流涌大典" = "Nghi Thức Dòng Chảy Vĩnh Hằng";
+"无垠蔚蓝之歌" = "Khúc Ca Xanh Bao La";
+"测距规" = "Máy Đo Cự Ly";
+"静水流涌之辉" = "Sắc Nước Lộng Lẫy";
+"水仙十字之剑" = "Lưỡi Kiếm Narzissenkreuz";
+
+// MARK: - 3.1.1
+
+"settings.uiRelated.useGuestGachaEvaluator" = "Let Pom-Pom evaluate the wishes instead";
+"detailPortal.errorMessage.noAccountAvailableForAbyssDisplay" = "Please log in to see Spiral Abyss records.";
+"detailPortal.errorMessage.accountHasNulledBasicInfo" = "Error: account.basicInfo == nil. Please report if this issue still exists even if you have successfully passed the human verification.";
+"settings.account.error.failedFromFetchingAccountInformation" = "Unable to retrieve log-in information";

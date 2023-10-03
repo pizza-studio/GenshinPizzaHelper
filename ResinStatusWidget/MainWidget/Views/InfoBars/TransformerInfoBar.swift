@@ -37,7 +37,7 @@ struct TransformerInfoBar: View {
                 Text(
                     transformerInfo.recoveryTime
                         .describeIntervalShort(
-                            finishedTextPlaceholder: "可使用"
+                            finishedTextPlaceholder: "infoBlock.transformerAvailable"
                                 .localized
                         )
                 )

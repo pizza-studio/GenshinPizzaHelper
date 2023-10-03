@@ -25,7 +25,7 @@ struct LockScreenLoopWidgetTransformerCircular: View {
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.transformerInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "可使用"))"
+                        "\(data.transformerInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "infoBlock.transformerAvailable"))"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
@@ -48,7 +48,7 @@ struct LockScreenLoopWidgetTransformerCircular: View {
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.transformerInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "可使用"))"
+                        "\(data.transformerInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "infoBlock.transformerAvailable"))"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
@@ -69,7 +69,7 @@ struct LockScreenLoopWidgetTransformerCircular: View {
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.transformerInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "可使用"))"
+                        "\(data.transformerInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "infoBlock.transformerAvailable"))"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:

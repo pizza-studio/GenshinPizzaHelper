@@ -24,7 +24,7 @@ struct AccountManagementView: View {
             mainView()
                 .navigationViewStyle(.stack)
         }
-        .navigationBarTitle("我的账号", displayMode: .inline)
+        .navigationBarTitle("settings.account.myAccount", displayMode: .inline)
     }
 
     @ViewBuilder
@@ -52,7 +52,7 @@ struct AccountManagementView: View {
                 }
             } header: {
                 HStack {
-                    Text("我的账号")
+                    Text("settings.account.myAccount")
                     Spacer()
                     EditModeButton(editMode: $editMode)
                 }

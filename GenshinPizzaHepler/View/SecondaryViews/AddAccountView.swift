@@ -20,7 +20,7 @@ struct AddAccountView: View {
 
     @State
     private var unsavedName: String =
-        .init(format: NSLocalizedString("我的账号", comment: "my account"))
+        .init(format: NSLocalizedString("settings.account.myAccount", comment: "my account"))
     @State
     private var unsavedUid: String = ""
     @State
@@ -162,13 +162,13 @@ struct AddAccountView: View {
             if unsavedUid != "" {
                 Section {
                     InfoEditor(
-                        title: "自定义账号名",
+                        title: "settings.account.alias",
                         content: $unsavedName,
                         placeholderText: unsavedName
                     )
                     // 如果该账号绑定的UID不止一个，则显示Picker选择账号
                     if accountsForSelected.count > 1 {
-                        Picker("请选择账号", selection: $selectedAccount) {
+                        Picker("settings.account.pleaseSelectAccount", selection: $selectedAccount) {
                             ForEach(
                                 accountsForSelected,
                                 id: \.gameUid
@@ -199,7 +199,7 @@ struct AddAccountView: View {
                     connectStatus: $connectStatus,
                     unsavedDeviceFingerPrint: $unsavedDeviceFingerPrint
                 )) {
-                    Text("手动设置账号详情")
+                    Text("settings.account.details.manualConfiguration")
                 }
             }
 
@@ -295,7 +295,8 @@ struct AddAccountView: View {
 
     fileprivate func getAccountsForSelect() {
         guard unsavedCookie != ""
-        else { loginError = .notLoginError(-100, "未获取到登录信息"); return }
+        else { loginError = .notLoginError(-100, "settings.account.error.failedFromFetchingAccountInformation"); return
+        }
         fetchAccountStatus = .progressing
         MihoyoAPI.getUserGameRolesByCookie(unsavedCookie, region) { result in
             switch result {

@@ -53,7 +53,7 @@ struct HomeView: View {
                         .padding(.bottom, sharedPadding)
                     if viewModel.accounts.isEmpty {
                         NavigationLink(destination: AddAccountView()) {
-                            Label("请先添加账号", systemImage: "plus.circle")
+                            Label("settings.account.pleaseAddAccountFirst", systemImage: "plus.circle")
                         }
                         .padding(sharedPadding)
                         .blurMaterialBackground()
@@ -199,7 +199,7 @@ private struct PinnedAccountInfoCard: View {
             }
             .contextMenu {
                 if #available(iOS 16, *) {
-                    Button("保存图片".localized) {
+                    Button("button.savePic".localized) {
                         let view = GameInfoBlockForSave(
                             userData: userData,
                             accountName: account.config

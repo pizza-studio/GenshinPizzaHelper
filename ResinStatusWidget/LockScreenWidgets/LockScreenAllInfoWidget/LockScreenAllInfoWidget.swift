@@ -380,7 +380,7 @@ struct LockScreenAllInfoWidgetView: View {
                                 Text(
                                     data.transformerInfo.recoveryTime
                                         .describeIntervalShort(
-                                            finishedTextPlaceholder: "可使用"
+                                            finishedTextPlaceholder: "infoBlock.transformerAvailable"
                                         )
                                 )
                                 Spacer()
@@ -629,7 +629,7 @@ struct LockScreenAllInfoWidgetView: View {
                                 Text(
                                     data.transformerInfo.recoveryTime
                                         .describeIntervalShort(
-                                            finishedTextPlaceholder: "可使用"
+                                            finishedTextPlaceholder: "infoBlock.transformerAvailable"
                                         )
                                 )
                                 Spacer()

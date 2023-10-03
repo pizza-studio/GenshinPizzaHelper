@@ -12,14 +12,14 @@ import SwiftUI
 struct BackgroundsPreviewView: View {
     // MARK: Internal
 
-    let backgroundOptions: [String] = BackgroundOptions.namecards
+    let backgroundOptions: [NameCard] = NameCard.allCases
 
     var body: some View {
         List {
-            ForEach(searchResults, id: \.self) { backgroundImageName in
+            ForEach(searchResults, id: \.rawValue) { currentCard in
                 Section {
                     WidgetBackgroundView(
-                        background: generateBackground(backgroundImageName),
+                        background: generateBackground(currentCard.rawValue),
                         darkModeOn: false
                     )
                     .listRowInsets(.init(
@@ -34,8 +34,7 @@ struct BackgroundsPreviewView: View {
                     ))
                 } header: {
                     Text(
-                        backgroundImageName
-                            .localizedWithFix
+                        currentCard.localized
                     )
                 }
                 .textCase(.none)
@@ -47,15 +46,13 @@ struct BackgroundsPreviewView: View {
         .navigationTitle("settings.travelTools.backgroundNamecardPreview")
     }
 
-    var searchResults: [String] {
+    var searchResults: [NameCard] {
         if searchText.isEmpty {
-            return backgroundOptions
+            return NameCard.allCases
         } else {
-            return backgroundOptions
-                .filter {
-                    $0.localizedWithFix.lowercased()
-                        .contains(searchText.lowercased())
-                }
+            return NameCard.allCases.filter { cardString in
+                cardString.localized.lowercased().contains(searchText.lowercased())
+            }
         }
     }
 

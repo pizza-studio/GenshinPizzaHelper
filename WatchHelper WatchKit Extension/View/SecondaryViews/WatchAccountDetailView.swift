@@ -39,7 +39,7 @@ struct WatchAccountDetailView: View {
                             Divider()
                             WatchAccountDetailItemView(
                                 title: "参量质变仪",
-                                value: "\(data.transformerInfo.recoveryTime.describeIntervalLong(finishedTextPlaceholder: "可使用".localized))",
+                                value: "\(data.transformerInfo.recoveryTime.describeIntervalLong(finishedTextPlaceholder: "infoBlock.transformerAvailable".localized))",
                                 icon: Image("参量质变仪")
                             )
                             Divider()

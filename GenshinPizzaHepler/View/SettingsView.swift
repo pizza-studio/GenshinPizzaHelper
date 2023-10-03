@@ -28,7 +28,7 @@ struct SettingsView: View {
                         destination: AccountManagementView().environmentObject(viewModel)
                     ) {
                         Label(
-                            "我的账号",
+                            "settings.account.myAccount",
                             systemImage: "person.fill"
                         )
                     }

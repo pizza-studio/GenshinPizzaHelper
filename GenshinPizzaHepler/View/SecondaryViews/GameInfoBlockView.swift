@@ -122,7 +122,7 @@ struct GameInfoBlock: View {
         if resinInfo.recoveryTime.second != 0 {
             Text(
                 LocalizedStringKey(
-                    "\(resinInfo.recoveryTime.describeIntervalLong())\n\(resinInfo.recoveryTime.completeTimePointFromNow()) 回满"
+                    "infoBlock.fullIn:\(resinInfo.recoveryTime.describeIntervalLong())\n\(resinInfo.recoveryTime.completeTimePointFromNow())"
                 )
             )
             .font(.caption)
@@ -131,7 +131,7 @@ struct GameInfoBlock: View {
             .foregroundColor(Color("textColor3"))
             .lineSpacing(1)
         } else {
-            Text("0小时0分钟\n树脂已全部回满")
+            Text("infoBlock.resionFullyFilledDescription")
                 .font(.caption)
                 .lineLimit(2)
                 .minimumScaleFactor(0.2)

@@ -115,7 +115,7 @@ enum MaterialWeekday: CaseIterable {
         case .wednesdayAndSaturday:
             return "星期三 & 星期六".localized
         case .sunday:
-            return "星期日".localized
+            return "week.sunday".localized
         }
     }
 }

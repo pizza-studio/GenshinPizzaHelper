@@ -164,13 +164,12 @@ public struct ENCharacterMap: Codable {
 
         /// 名片
         public var namecardIconString: String {
-            // 主角没有对应名片
-            if nameID == "PlayerGirl" || nameID == "PlayerBoy" {
-                return "UI_NameCardPic_Bp2_P"
-            } else if nameID == "Yae" {
-                return "UI_NameCardPic_Yae1_P"
-            } else {
-                return "UI_NameCardPic_\(nameID)_P"
+            // 主角没有对应名片；八重神子与绮良良的名片名称无法推算、只能单独定义。
+            switch nameID {
+            case "PlayerBoy", "PlayerGirl": return "UI_NameCardPic_Bp2_P"
+            case "Yae": return "UI_NameCardPic_Yae1_P"
+            case "Momoka": return "UI_NameCardPic_Kirara_P"
+            default: return "UI_NameCardPic_\(nameID)_P"
             }
         }
     }

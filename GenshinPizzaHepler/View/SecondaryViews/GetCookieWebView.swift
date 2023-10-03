@@ -139,9 +139,7 @@ struct GetCookieWebView: View {
         .alert(isPresented: $isAlertShow) {
             Alert(
                 title: Text("text.hint"),
-                message: Text(
-                    "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"
-                ),
+                message: Text("settings.account.login.instruction"),
                 dismissButton: .default(Text("button.okay"))
             )
         }
@@ -355,9 +353,7 @@ struct GetLedgerCookieWebView<V>: View {
         .alert(isPresented: $isAlertShow) {
             Alert(
                 title: Text("text.hint"),
-                message: Text(
-                    "请在打开的网页完成登录米游社操作后点击「完成」。\n通过Google，Facebook或Twitter登录HoYoLAB不可使用，请使用账号密码登录。\n我们承诺：您的登录信息只会保存在您的本地设备和私人iCloud中，仅用于向米游社请求您的原神状态。"
-                ),
+                message: Text("settings.account.login.instruction"),
                 dismissButton: .default(Text("button.okay"))
             )
         }

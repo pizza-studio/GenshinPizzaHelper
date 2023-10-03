@@ -177,28 +177,28 @@ struct NotificationSettingView: View {
     var body: some View {
         List {
             Section {
-                Text("注意：通知设置更改对目前已安排的通知不生效。")
+                Text("settings.notification.disclaimer.onlyWorksWithNewNotifications")
             }
             Section {
                 NavigationLink(
                     destination: IgnoreNotificationAccountView()
                         .environmentObject(viewModel)
                 ) {
-                    Text("启用账号")
+                    Text("settings.notification.accountsReceivingNotifications")
                 }
             }
             Section {
                 Toggle(isOn: $allowResinNotification.animation()) {
-                    Text("原粹树脂提醒")
+                    Text("settings.notification.type.resin")
                 }
                 if allowResinNotification {
                     HStack {
-                        Text("提醒阈值")
+                        Text("settings.notification.threshold")
                         Spacer()
                         Button(action: {
                             withAnimation { showResinSlider.toggle() }
                         }) {
-                            Text("\(Int(resinNotificationNum))树脂")
+                            Text("unit.resin:\(Int(resinNotificationNum))")
                         }
                     }
                     if showResinSlider {
@@ -206,29 +206,31 @@ struct NotificationSettingView: View {
                             value: $resinNotificationNum,
                             in: 10 ... 150,
                             step: 5.0,
-                            label: { Text("提醒阈值：\(resinNotificationNum)") }
+                            label: {
+                                Text("settings.notification.threshold".localized + ": \(resinNotificationNum)")
+                            }
                         )
                     }
                     Toggle(isOn: $allowFullResinNotification) {
-                        Text("树脂溢出提醒")
+                        Text("settings.notification.resinOverflown")
                     }
                 }
             }
 
             Section {
                 Toggle(isOn: $allowHomeCoinNotification.animation()) {
-                    Text("洞天宝钱提醒")
+                    Text("settings.notification.type.realmCurrency")
                 }
                 if allowHomeCoinNotification {
                     HStack {
-                        Text("提醒时间")
+                        Text("settings.notification.whenToNotify.time")
                         Spacer()
                         Button(action: {
                             withAnimation { showHomeCoinSlider.toggle() }
 
                         }) {
                             Text(
-                                "充满前\(Int(homeCoinNotificationHourBeforeFull))小时"
+                                "settings.notification.hrsBeforeFullyFilled:\(Int(homeCoinNotificationHourBeforeFull))"
                             )
                         }
                     }
@@ -239,7 +241,8 @@ struct NotificationSettingView: View {
                             step: 1,
                             label: {
                                 Text(
-                                    "提醒阈值：\(homeCoinNotificationHourBeforeFull)"
+                                    "settings.notification.threshold"
+                                        .localized + ": \(homeCoinNotificationHourBeforeFull)"
                                 )
                             }
                         )
@@ -249,13 +252,13 @@ struct NotificationSettingView: View {
 
             Section {
                 Toggle(isOn: $allowExpeditionNotification.animation()) {
-                    Text("探索派遣提醒")
+                    Text("settings.notification.type.expedition")
                 }
                 if allowExpeditionNotification {
-                    Picker("提醒于", selection: noticeExpeditionBy) {
-                        Text("全部完成时")
+                    Picker("settings.notification.whenToNotify.timing", selection: noticeExpeditionBy) {
+                        Text("settings.notification.expedition.condition.allFinished")
                             .tag(ExpeditionNoticeMethod.allCompleted)
-                        Text("任一完成时")
+                        Text("settings.notification.expedition.condition.anyFinished")
                             .tag(ExpeditionNoticeMethod.nextCompleted)
                     }
                 }
@@ -263,11 +266,11 @@ struct NotificationSettingView: View {
 
             Section {
                 Toggle(isOn: $allowDailyTaskNotification.animation()) {
-                    Text("每日委托提醒")
+                    Text("settings.notification.type.dailyCommission")
                 }
                 if allowDailyTaskNotification {
                     DatePicker(
-                        "提醒时间",
+                        "settings.notification.whenToNotify.time",
                         selection: dailyTaskNotificationTime,
                         displayedComponents: .hourAndMinute
                     )
@@ -276,31 +279,31 @@ struct NotificationSettingView: View {
 
             Section {
                 Toggle(isOn: $allowWeeklyBossesNotification.animation()) {
-                    Text("周本折扣提醒")
+                    Text("settings.notification.type.weeklyBosses")
                 }
                 if allowWeeklyBossesNotification {
                     DatePicker(
-                        "提醒时间",
+                        "settings.notification.whenToNotify.time",
                         selection: weeklyBossesNotificationTime,
                         displayedComponents: .hourAndMinute
                     )
-                    Picker("提醒日期", selection: weeklyBossesWeekday) {
-                        Text("星期一").tag(2)
-                        Text("星期二").tag(3)
-                        Text("星期三").tag(4)
-                        Text("星期四").tag(5)
-                        Text("星期五").tag(6)
-                        Text("星期六").tag(7)
-                        Text("星期日").tag(1)
+                    Picker("settings.notification.whenToNotify.date", selection: weeklyBossesWeekday) {
+                        Text("week.monday").tag(2)
+                        Text("week.tuesday").tag(3)
+                        Text("week.wednesday").tag(4)
+                        Text("week.thursday").tag(5)
+                        Text("week.friday").tag(6)
+                        Text("week.saturday").tag(7)
+                        Text("week.sunday").tag(1)
                     }
                 }
             }
 
             Toggle(isOn: $allowTransformerNotification.animation()) {
-                Text("参量质变仪提醒")
+                Text("settings.notification.type.parametricTransformer")
             }
         }
-        .navigationBarTitle("推送设置", displayMode: .inline)
+        .navigationBarTitle("settings.notification.deliverySettings", displayMode: .inline)
     }
 }
 
