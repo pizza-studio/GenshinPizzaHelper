@@ -49,12 +49,15 @@ extension ENCharacterMap.Character {
             .scaledToFit()
             .offset(y: cutType.shiftedAmount(containerSize: size))
             .background(
-                EnkaWebIcon(
-                    iconString: namecardIconString
-                )
-                .scaledToFill()
-                .offset(x: size / -3)
+                ZStack {
+                    EnkaWebIcon(
+                        iconString: namecardIconString
+                    )
+                    .scaledToFill()
+                    .offset(x: size / -3)
+                }
             )
+            .background(elementColor)
             .frame(width: size, height: size)
             .clipShape(Circle())
             .contentShape(Circle())
@@ -74,8 +77,16 @@ extension ENCharacterMap.Character {
                 .scaledToFill()
                 .offset(x: size / -3)
             )
+            .background(elementColor)
             .clipShape(RoundedRectangle(cornerRadius: size / 10))
             .contentShape(RoundedRectangle(cornerRadius: size / 10))
+    }
+
+    var elementColor: Color {
+        guard let element = PlayerDetail.Avatar.AvatarElement(rawValue: Element) else {
+            return .pink
+        }
+        return element.color
     }
 }
 
@@ -96,5 +107,28 @@ extension PlayerDetail.Avatar {
     /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
     func cardIcon(_ size: CGFloat) -> some View {
         character.cardIcon(size)
+    }
+}
+
+extension PlayerDetail.Avatar.AvatarElement {
+    var color: Color {
+        switch self {
+        case .cryo:
+            return .cyan
+        case .anemo:
+            return .mint
+        case .electro:
+            return .indigo
+        case .hydro:
+            return .blue
+        case .pyro:
+            return .red
+        case .geo:
+            return .orange
+        case .dendro:
+            return .green
+        case .unknown:
+            return .gray
+        }
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import HBPizzaHelperAPI
+import SwiftUI
 
 // MARK: - PlayerDetail
 

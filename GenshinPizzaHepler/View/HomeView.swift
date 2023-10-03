@@ -22,6 +22,8 @@ struct HomeView: View {
 
     var animation: Namespace.ID
 
+    var sharedPadding: CGFloat = UIFont.systemFontSize / 2
+
     var accounts: [Account] { viewModel.accounts }
     var body: some View {
         NavigationView {
@@ -43,23 +45,23 @@ struct HomeView: View {
                                 getCurrentEvent()
                             }
                         }
-                        .padding(.bottom)
+                        .padding(.bottom, sharedPadding)
 
                     // MARK: - 当前活动
 
                     CurrentEventNavigator(eventContents: $eventContents)
-                        .padding(.bottom)
+                        .padding(.bottom, sharedPadding)
                     if viewModel.accounts.isEmpty {
                         NavigationLink(destination: AddAccountView()) {
                             Label("请先添加账号", systemImage: "plus.circle")
                         }
-                        .padding()
+                        .padding(sharedPadding)
                         .blurMaterialBackground()
                         .clipShape(RoundedRectangle(
                             cornerRadius: 10,
                             style: .continuous
                         ))
-                        .padding(.top, 30)
+                        .padding(.top, sharedPadding * 2)
                     } else {
                         // MARK: - 账号信息
 

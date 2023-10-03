@@ -52,12 +52,14 @@ struct CharacterDetailView: View {
             closeView()
         }
         .background(
-            ZStack {
-                EnkaWebIcon(iconString: avatar.namecardIconString)
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
-                    .overlay(.thinMaterial)
-            }
+            EnkaWebIcon(iconString: avatar.namecardIconString)
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+                .overlay(.thinMaterial)
+        )
+        .background(
+            avatar.element.color
+                .overlay(.thinMaterial)
         )
         .addWaterMark(showWaterMark)
         .onChange(of: showingCharacterName) { _ in
