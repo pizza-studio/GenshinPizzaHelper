@@ -25,7 +25,7 @@ struct PlayerDetailFetchModel: Codable {
             /// Ref: https://twitter.com/EnkaNetwork/status/1708819830693077325
             let id: Int?
             /// 旧 API，不要删，否则自 4.1 版发行开始起没改过肖像的玩家会受到影响。
-            let avatarId: Int?
+            var avatarId: Int?
         }
 
         /// 名称
@@ -257,6 +257,8 @@ struct PlayerDetailFetchModel: Codable {
         var equipList: [EquipList]
         /// 角色好感等级，fetterInfo.expLevel
         var fetterInfo: FetterInfo
+        /// 角色时装编号（nullable）
+        var costumeId: Int?
         /// 命之座带来的额外技能等级加成
         var proudSkillExtraLevelMap: [String: Int]?
     }

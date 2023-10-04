@@ -22,7 +22,7 @@ struct WeaponOrTalentMaterial: Equatable {
         }
 
         init(character asset: CharacterAsset) {
-            self.imageString = asset.photoFileName
+            self.imageString = asset.frontPhotoFileName
             self.nameToLocalize = asset.localized
             self.weapon = nil
             self.character = asset

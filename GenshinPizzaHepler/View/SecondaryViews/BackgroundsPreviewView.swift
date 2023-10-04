@@ -17,7 +17,7 @@ struct BackgroundsPreviewView: View {
             ForEach(searchResults, id: \.rawValue) { currentCard in
                 Section {
                     WidgetBackgroundView(
-                        background: generateBackground(currentCard.rawValue),
+                        background: generateBackground(currentCard.fileName),
                         darkModeOn: false
                     )
                     .listRowInsets(.init(
@@ -46,9 +46,9 @@ struct BackgroundsPreviewView: View {
 
     var searchResults: [NameCard] {
         if searchText.isEmpty {
-            return NameCard.allCases
+            return NameCard.allLegalCases
         } else {
-            return NameCard.allCases.filter { cardString in
+            return NameCard.allLegalCases.filter { cardString in
                 cardString.localized.lowercased().contains(searchText.lowercased())
             }
         }

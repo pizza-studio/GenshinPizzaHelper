@@ -36,18 +36,19 @@ struct BackgroundOptions {
         "雷元素",
         "草元素",
     ]
-    static let namecards: [String] = NameCard.allCases.map(\.rawValue)
+    static let namecards: [String] = NameCard.allLegalCases.map(\.fileName)
 
-    static let allOptions: [(String, String)] = BackgroundOptions.colors.map { ($0, $0) } + NameCard.allCases
-        .map { ($0.rawValue, $0.localized) }
+    static let allOptions: [(String, String)] = BackgroundOptions.colors.map { ($0, $0) } + NameCard.allLegalCases
+        .map { ($0.fileName, $0.localized) }
 
-    static let elementsAndNamecard: [(String, String)] = BackgroundOptions.elements.map { ($0, $0) } + NameCard.allCases
-        .map { ($0.rawValue, $0.localized) }
+    static let elementsAndNamecard: [(String, String)] = BackgroundOptions.elements.map { ($0, $0) } + NameCard
+        .allLegalCases
+        .map { ($0.fileName, $0.localized) }
 }
 
 extension WidgetBackground {
     static let defaultBackground: WidgetBackground = .init(
-        identifier: NameCard.UI_NameCardPic_Bp20_P.rawValue,
+        identifier: NameCard.UI_NameCardPic_Bp20_P.fileName,
         display: NameCard.UI_NameCardPic_Bp20_P.localized
     )
     static var randomBackground: WidgetBackground {
@@ -67,9 +68,9 @@ extension WidgetBackground {
     }
 
     static var randomNamecardBackground: WidgetBackground {
-        let pickedBackgroundId = NameCard.allCases.randomElement()!
+        let pickedBackgroundId = NameCard.allLegalCases.randomElement()!
         return WidgetBackground(
-            identifier: pickedBackgroundId.rawValue,
+            identifier: pickedBackgroundId.fileName,
             display: pickedBackgroundId.localized
         )
     }

@@ -567,7 +567,7 @@ private struct ShowAvatarPercentageView: View {
             Label {
                 Text(charName.localizedWithFix)
             } icon: {
-                char.decoratedIcon(30, cutTo: .face)
+                char.asset.decoratedIcon(30, cutTo: .face)
             }
             Spacer()
             Text(
@@ -699,7 +699,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
             Label {
                 Text(charName.localizedWithFix)
             } icon: {
-                char.decoratedIcon(30, cutTo: .face)
+                char.asset.decoratedIcon(30, cutTo: .face)
             }
             Spacer()
             Text(
@@ -816,7 +816,7 @@ private struct ShowAvatarPercentageShare: View {
             Label {
                 Text(charName.localizedWithFix).fixedSize()
             } icon: {
-                char.decoratedIcon(30, cutTo: .face)
+                char.asset.decoratedIcon(30, cutTo: .face)
             }
             Text(
                 percentageFormatter
@@ -881,7 +881,7 @@ private struct ShowTeamPercentageView: View {
                                     id: \.self
                                 ) { avatarId in
                                     if let char = charMap["\(avatarId)"] {
-                                        char.decoratedIcon(40, cutTo: .face)
+                                        char.asset.decoratedIcon(40, cutTo: .face)
                                     }
                                 }
                                 Spacer()
@@ -952,7 +952,7 @@ private struct ShowTeamPercentageShare: View {
                                     id: \.self
                                 ) { avatarId in
                                     if let char = charMap["\(avatarId)"] {
-                                        char.decoratedIcon(40, cutTo: .face)
+                                        char.asset.decoratedIcon(40, cutTo: .face)
                                     }
                                 }
                             }

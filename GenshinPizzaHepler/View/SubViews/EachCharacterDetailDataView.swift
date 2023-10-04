@@ -435,7 +435,7 @@ private struct AvatarAndSkillView: View {
 
     var body: some View {
         HStack(alignment: .bottom, spacing: fontSize / 2) {
-            avatar.decoratedIcon(fontSize * 5.6, cutTo: .shoulder)
+            avatar.characterAsset.decoratedIcon(fontSize * 5.6, cutTo: .shoulder)
                 .padding(.trailing, fontSize / 5)
             VStack(alignment: .leading, spacing: 3.3 + spacingDelta) {
                 HStack(alignment: .bottom) {

@@ -69,7 +69,7 @@ extension ContainGachaItemInfo {
         switch type {
         case .character:
             if let asset = CharacterAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
-                return asset.photoFileName
+                return asset.frontPhotoFileName
             } else {
                 // TODO: 找不到时的默认图片
                 return ""
@@ -154,7 +154,7 @@ struct GachaItemBackgroundImage: View {
         switch _itemType {
         case .character:
             if let asset = CharacterAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
-                return asset.namecard.rawValue
+                return asset.namecard.fileName
             } else {
                 // TODO: 找不到时的默认图片
                 return ""

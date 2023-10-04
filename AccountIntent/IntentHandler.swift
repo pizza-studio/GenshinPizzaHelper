@@ -23,7 +23,7 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
         ) -> ()
     ) {
         let colorOptions: [String] = BackgroundOptions.colors
-        let namecardOptions: [NameCard] = NameCard.allCases
+        let namecardOptions: [NameCard] = NameCard.allLegalCases
 
         var intents: [WidgetBackground] = []
         colorOptions.forEach { colorName in
@@ -33,7 +33,7 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
         }
         namecardOptions.forEach { namecardName in
             let intent = WidgetBackground(
-                identifier: namecardName.rawValue,
+                identifier: namecardName.fileName,
                 display: namecardName.localized
             )
             intents.append(intent)

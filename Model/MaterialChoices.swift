@@ -302,7 +302,7 @@ extension WeaponOrTalentMaterial {
         weekday: .mondayAndThursday,
         relatedItem: [
             .init(character: .Aloy),
-            .init(character: .Ambor),
+            .init(character: .Amber),
             .init(character: .Barbara),
             .init(character: .Diona),
             .init(character: .Klee),

@@ -50,6 +50,12 @@ class ViewModel: NSObject, ObservableObject {
     var showCharacterDetailOfAccount: Account?
     @Published
     var showingCharacterName: String?
+    @Published
+    var costumeMap: [CharacterAsset: CostumeAsset] = [:] {
+        willSet {
+            CharacterAsset.costumeMap = newValue
+        }
+    }
 
     #if !os(watchOS)
     var charLoc: [String: String]?

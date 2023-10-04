@@ -61,7 +61,7 @@ class ResinRecoveryActivityController {
                     "[]"
             ) ?? []
             if backgrounds.isEmpty {
-                return .customize([NameCard.UI_NameCardPic_Bp20_P.rawValue])
+                return .customize([NameCard.UI_NameCardPic_Bp20_P.fileName])
             } else {
                 return .customize(backgrounds)
             }

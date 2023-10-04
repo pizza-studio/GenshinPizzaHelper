@@ -30,88 +30,11 @@ public enum DecoratedIconCutType: CGFloat {
 }
 
 extension ENCharacterMap.Character {
-    /// 显示带有背景的角色肖像。
-    /// - Parameters:
-    ///   - size: 尺寸。
-    ///   - cutType: 决定裁切到哪个身体部位。
-    /// - Returns: SwiftUI "some View"
-    func decoratedIcon(_ size: CGFloat, cutTo cutType: DecoratedIconCutType = .shoulder) -> some View {
-        // 由于 Lava 强烈反对针对证件照的脸裁切与头裁切，
-        // 所以不预设启用该功能。
-        var cutType = cutType
-        if !AppConfig.cutShouldersForSmallAvatarPhotos {
-            cutType = .shoulder
-        }
-        return EnkaWebIcon(iconString: iconString)
-            .scaledToFill()
-            .frame(width: size * cutType.rawValue, height: size * cutType.rawValue)
-            .clipped()
-            .scaledToFit()
-            .offset(y: cutType.shiftedAmount(containerSize: size))
-            .background(
-                ZStack {
-                    EnkaWebIcon(
-                        iconString: namecardIconString
-                    )
-                    .scaledToFill()
-                    .offset(x: size / -3)
-                }
-            )
-            .background(elementColor)
-            .frame(width: size, height: size)
-            .clipShape(Circle())
-            .contentShape(Circle())
-    }
-
-    /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
-    func cardIcon(_ size: CGFloat) -> some View {
-        EnkaWebIcon(iconString: iconString)
-            .scaledToFill()
-            .frame(width: size * 0.74, height: size)
-            .clipped()
-            .scaledToFit()
-            .background(
-                EnkaWebIcon(
-                    iconString: namecardIconString
-                )
-                .scaledToFill()
-                .offset(x: size / -3)
-            )
-            .background(elementColor)
-            .clipShape(RoundedRectangle(cornerRadius: size / 10))
-            .contentShape(RoundedRectangle(cornerRadius: size / 10))
-    }
-
     var elementColor: Color {
         guard let element = PlayerDetail.Avatar.AvatarElement(rawValue: Element) else {
             return .pink
         }
         return element.color
-    }
-}
-
-extension PlayerDetail.Avatar {
-    /// 显示带有背景的角色肖像。
-    /// - Parameters:
-    ///   - size: 尺寸。
-    ///   - cutType: 决定裁切到哪个身体部位。
-    /// - Returns: SwiftUI "some View"
-    func decoratedIcon(
-        _ size: CGFloat,
-        cutTo cutType: DecoratedIconCutType = .shoulder
-    )
-        -> some View {
-        character.decoratedIcon(size, cutTo: cutType)
-    }
-
-    /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
-    @ViewBuilder
-    func cardIcon(_ size: CGFloat) -> some View {
-        if let charAsset = CharacterAsset(rawValue: enkaID) {
-            charAsset.cardIcon(size)
-        } else {
-            character.cardIcon(size)
-        }
     }
 }
 
@@ -134,6 +57,68 @@ extension PlayerDetail.Avatar.AvatarElement {
             return .green
         case .unknown:
             return .gray
+        }
+    }
+}
+
+// MARK: - Profile Picture JSON Data Interpreter
+
+extension PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
+    public var assetFileName: String? {
+        if let avatarId = avatarId, let charAsset = CharacterAsset(rawValue: avatarId) {
+            return charAsset.frontPhotoFileName
+        }
+        guard let id = id else { return nil }
+        let matchedCostume = CostumeAsset.allCases.filter {
+            $0.profilePictureIdentifier == id
+        }.first
+        if let matchedCostume = matchedCostume {
+            return matchedCostume.frontPhotoFileName
+        }
+        let matchedAvatar = CharacterAsset.allCases.filter {
+            $0.possibleProfilePictureIdentifiers.contains(id)
+        }.first
+        guard let matchedAvatar = matchedAvatar else { return nil }
+        return matchedAvatar.frontPhotoFileName
+    }
+
+    public var avatarIdDeducted: Int? {
+        guard let id = id else { return avatarId }
+        let matchedAvatar = CharacterAsset.allCases.filter {
+            $0.possibleProfilePictureIdentifiers.contains(id)
+        }.first
+        guard let matchedAvatar = matchedAvatar else { return avatarId }
+        return matchedAvatar.enkaId
+    }
+
+    public var costumeIdDeducted: Int? {
+        guard let id = id else { return avatarId }
+        let matchedCostume = CostumeAsset.allCases.filter {
+            $0.profilePictureIdentifier == id
+        }.first
+        guard let matchedCostume = matchedCostume else { return avatarId }
+        return matchedCostume.rawValue
+    }
+}
+
+// MARK: - Profile Picture Icons
+
+extension PlayerDetail.PlayerBasicInfo {
+    @ViewBuilder
+    public func cardIcon(_ size: CGFloat) -> some View {
+        if let enkaID = profilePictureAvatarEnkaID, let charAsset = CharacterAsset(rawValue: enkaID) {
+            let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
+            let givenNameCard = NameCard(rawValue: nameCardId)
+            charAsset.cardIcon(size, costume: costume, namecard: givenNameCard)
+        }
+    }
+
+    @ViewBuilder
+    public func decoratedIcon(_ size: CGFloat) -> some View {
+        if let enkaID = profilePictureAvatarEnkaID, let charAsset = CharacterAsset(rawValue: enkaID) {
+            let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
+            let givenNameCard = NameCard(rawValue: nameCardId)
+            charAsset.decoratedIcon(size, cutTo: .head, costume: costume, namecard: givenNameCard)
         }
     }
 }

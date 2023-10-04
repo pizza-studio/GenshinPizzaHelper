@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HBPizzaHelperAPI
 import SwiftUI
 
 // MARK: - CharacterAsset
@@ -28,7 +29,7 @@ public enum CharacterAsset: Int, CaseIterable {
     case Beidou = 10000024
     case Xiangling = 10000023
     case Venti = 10000022
-    case Ambor = 10000021
+    case Amber = 10000021
     case Razor = 10000020
     case Diluc = 10000016
     case Kaeya = 10000015
@@ -120,7 +121,7 @@ extension CharacterAsset {
 }
 
 extension CharacterAsset {
-    public var photoFileName: String {
+    public var frontPhotoFileName: String {
         switch self {
         case .Hotaru: return "UI_AvatarIcon_PlayerGirl"
         case .Sora: return "UI_AvatarIcon_PlayerBoy"
@@ -138,7 +139,7 @@ extension CharacterAsset {
         case .Beidou: return "UI_AvatarIcon_Beidou"
         case .Xiangling: return "UI_AvatarIcon_Xiangling"
         case .Venti: return "UI_AvatarIcon_Venti"
-        case .Ambor: return "UI_AvatarIcon_Ambor"
+        case .Amber: return "UI_AvatarIcon_Ambor"
         case .Razor: return "UI_AvatarIcon_Razor"
         case .Diluc: return "UI_AvatarIcon_Diluc"
         case .Kaeya: return "UI_AvatarIcon_Kaeya"
@@ -219,7 +220,7 @@ extension CharacterAsset {
         case .Beidou: return .UI_NameCardPic_Beidou_P
         case .Xiangling: return .UI_NameCardPic_Xiangling_P
         case .Venti: return .UI_NameCardPic_Venti_P
-        case .Ambor: return .UI_NameCardPic_Ambor_P
+        case .Amber: return .UI_NameCardPic_Ambor_P
         case .Razor: return .UI_NameCardPic_Razor_P
         case .Diluc: return .UI_NameCardPic_Diluc_P
         case .Kaeya: return .UI_NameCardPic_Kaeya_P
@@ -277,26 +278,115 @@ extension CharacterAsset {
         case .Freminet: return .UI_NameCardPic_Freminet_P
         case .Neuvillette: return .UI_NameCardPic_Neuvillette_P
         case .Wriothesley: return .UI_NameCardPic_Wriothesley_P
-        case .Charlotte: return .UI_NameCardPic_Bp2_P // .UI_NameCardPic_Charlotte_P // 原神 4.2
-        case .Furina: return .UI_NameCardPic_Bp2_P // .UI_NameCardPic_Furina_P // 原神 4.2
+        case .Charlotte: return .UI_NameCardPic_Charlotte_P
+        case .Furina: return .UI_NameCardPic_Furina_P
         }
     }
+}
 
-    /// 显示角色的扑克牌尺寸肖像，以身份证素材裁切而成。
-    func cardIcon(_ size: CGFloat) -> some View {
-        EnkaWebIcon(iconString: photoFileName)
-            .scaledToFill()
-            .frame(width: size * 0.74, height: size)
-            .clipped()
-            .scaledToFit()
-            .background(
-                EnkaWebIcon(
-                    iconString: namecard.rawValue
-                )
-                .scaledToFill()
-                .offset(x: size / -3)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: size / 10))
-            .contentShape(RoundedRectangle(cornerRadius: size / 10))
+// MARK: - Profile Picture Data
+
+extension CharacterAsset {
+    public var possibleProfilePictureIdentifiers: [Int] {
+        switch self {
+        case .Hotaru: return [2]
+        case .Sora: return [1]
+        case .Sucrose: return [1400]
+        case .Keqing: return [1900, 1901]
+        case .Mona: return [1801, 1800]
+        case .Chongyun: return [1300]
+        case .Qiqi: return [1700]
+        case .Noelle: return [1200]
+        case .Bennett: return [1100]
+        case .Fischl: return [1000, 1001]
+        case .Klee: return [2100, 2101]
+        case .Ningguang: return [900, 901]
+        case .Xingqiu: return [800]
+        case .Beidou: return [700]
+        case .Xiangling: return [600]
+        case .Venti: return [2000]
+        case .Amber: return [100, 101]
+        case .Razor: return [500]
+        case .Diluc: return [1600, 1601]
+        case .Kaeya: return [201, 200]
+        case .Barbara: return [400, 401]
+        case .Lisa: return [300, 301]
+        case .Jean: return [1500, 1502, 1501]
+        case .Diona: return [2200]
+        case .Tartaglia: return [2300]
+        case .Xinyan: return [2400]
+        case .Zhongli: return [2500]
+        case .Albedo: return [2600]
+        case .Ganyu: return [2700]
+        case .Xiao: return [2800]
+        case .Hutao: return [2900]
+        case .Rosaria: return [3001, 3000]
+        case .Yanfei: return [3100]
+        case .Eula: return [3200]
+        case .Kazuha: return [3300]
+        case .Ayaka: return [3400, 3401]
+        case .Sayu: return [3500]
+        case .Yoimiya: return [3600]
+        case .Aloy: return [3700]
+        case .Sara: return [3800]
+        case .Ei: return [3900]
+        case .Kokomi: return [4000]
+        case .Thoma: return [4100]
+        case .Itto: return [4300]
+        case .Gorou: return [4200]
+        case .Yunjin: return [4400]
+        case .Shenhe: return [4500]
+        case .Miko: return [4600]
+        case .Ayato: return [4700]
+        case .Yelan: return [4800]
+        case .Shinobu: return [4900]
+        case .Heizo: return [5000]
+        case .Tighnari: return [5200]
+        case .Collei: return [5100]
+        case .Dori: return [5300]
+        case .Candace: return [5400]
+        case .Cyno: return [5500]
+        case .Nilou: return [5600]
+        case .Nahida: return [5700]
+        case .Layla: return [5800]
+        case .Faruzan: return [5900]
+        case .Kunikuzushi: return [6000]
+        case .Alhaitham: return [6200]
+        case .Yaoyao: return [6100]
+        case .Dehya: return [6300]
+        case .Mika: return [6400]
+        case .Baizhu: return [6600]
+        case .Kaveh: return [6500]
+        case .Kirara: return [6700]
+        case .Lyney: return [6900]
+        case .Lynette: return [6800]
+        case .Freminet: return [7000]
+        case .Neuvillette: return [7100]
+        case .Wriothesley: return [7200]
+        case .Charlotte: return [] // 原神 4.2
+        case .Furina: return [] // 原神 4.2
+        }
+    }
+}
+
+// MARK: - A Dictionary dedicated for recording players' costume preference.
+
+extension CharacterAsset {
+    public static var costumeMap: [CharacterAsset: CostumeAsset] = [:]
+}
+
+// MARK: - Extending ENCharacterMap.Character
+
+extension ENCharacterMap.Character {
+    public var enkaID: Int {
+        CharacterAsset.allCases.filter { currentChar in
+            currentChar.frontPhotoFileName == iconString
+        }.first?.enkaId ?? -114_514
+    }
+
+    public var asset: CharacterAsset {
+        CharacterAsset.allCases.filter { currentChar in
+            currentChar.frontPhotoFileName == iconString
+        }.first ?? .Hotaru
     }
 }

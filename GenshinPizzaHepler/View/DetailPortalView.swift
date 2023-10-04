@@ -192,14 +192,7 @@ struct DetailPortalView: View {
             if let playerDetail = try? account.playerDetailResult?.get() {
                 Section {
                     HStack {
-                        if let iconStr = playerDetail.basicInfo.profilePictureAvatarIconString {
-                            HomeSourceWebIcon(iconString: iconStr)
-                                .clipShape(Circle())
-                                .frame(height: 60)
-                        } else {
-                            Color(.tintColor)
-                                .frame(width: 4, height: 60)
-                        }
+                        playerDetail.basicInfo.decoratedIcon(64)
                         VStack(alignment: .leading) {
                             HStack(spacing: 10) {
                                 VStack(alignment: .leading) {
@@ -305,7 +298,7 @@ struct DetailPortalView: View {
                                 playerDetail.avatars,
                                 id: \.name
                             ) { avatar in
-                                avatar.cardIcon(75)
+                                avatar.characterAsset.cardIcon(75)
                                     .onTapGesture {
                                         simpleTaptic(type: .medium)
                                         withAnimation(
@@ -321,6 +314,15 @@ struct DetailPortalView: View {
                                             viewModel
                                                 .showCharacterDetailOfAccount =
                                                 account!
+                                        }
+                                    }
+                                    .onAppear {
+                                        // 同步时装设定至全局预设值。
+                                        let charAsset = avatar.characterAsset
+                                        if let costumeAsset = avatar.costumeAsset {
+                                            viewModel.costumeMap[charAsset] = costumeAsset
+                                        } else {
+                                            viewModel.costumeMap.removeValue(forKey: charAsset)
                                         }
                                     }
                             }
@@ -908,7 +910,7 @@ private struct AllAvatarNavigator: View {
                 ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
                     if let char = charMap[avatar.id.description] {
                         // 必须在这里绑一下 AppStorage，不然这个画面的内容不会自动更新。
-                        char.decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
+                        char.asset.decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
                     }
                 }
             }

@@ -222,7 +222,7 @@ struct LiveActivityBackgroundPicker: View {
                         )
                     } icon: {
                         GeometryReader { g in
-                            Image(backgroundImageView.rawValue)
+                            Image(backgroundImageView.fileName)
                                 .resizable()
                                 .scaledToFill()
                                 .offset(x: -g.size.width)
@@ -232,11 +232,11 @@ struct LiveActivityBackgroundPicker: View {
                     }
                     Spacer()
                     if resinRecoveryLiveActivityBackgroundOptions
-                        .contains(backgroundImageView.rawValue) {
+                        .contains(backgroundImageView.fileName) {
                         Button {
                             resinRecoveryLiveActivityBackgroundOptions
                                 .removeAll { name in
-                                    name == backgroundImageView.rawValue
+                                    name == backgroundImageView.fileName
                                 }
                         } label: {
                             Image(systemName: "checkmark.circle.fill")
@@ -245,7 +245,7 @@ struct LiveActivityBackgroundPicker: View {
                     } else {
                         Button {
                             resinRecoveryLiveActivityBackgroundOptions
-                                .append(backgroundImageView.rawValue)
+                                .append(backgroundImageView.fileName)
                         } label: {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.accentColor)
@@ -261,9 +261,9 @@ struct LiveActivityBackgroundPicker: View {
 
     var searchResults: [NameCard] {
         if searchText.isEmpty {
-            return NameCard.allCases
+            return NameCard.allLegalCases
         } else {
-            return NameCard.allCases.filter { cardString in
+            return NameCard.allLegalCases.filter { cardString in
                 cardString.localized.lowercased().contains(searchText.lowercased())
             }
         }

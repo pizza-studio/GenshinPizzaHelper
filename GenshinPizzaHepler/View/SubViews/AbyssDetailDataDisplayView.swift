@@ -216,7 +216,7 @@ private struct AbyssBattleView: View {
                 let charID: String = "\(avatarData.id)"
                 if let theChar = charMap[charID] {
                     if ThisDevice.isHDPhoneOrPodTouch {
-                        theChar.decoratedIcon(size, cutTo: .shoulder)
+                        theChar.asset.decoratedIcon(size, cutTo: .shoulder)
                             .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                             .frame(height: size + 5)
                     } else {
@@ -225,7 +225,7 @@ private struct AbyssBattleView: View {
                                 .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                                 .padding(.vertical, 2)
                         } else {
-                            theChar.cardIcon(size / 0.74)
+                            theChar.asset.cardIcon(size / 0.74)
                                 .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                                 .padding(.vertical, 2)
                         }
@@ -271,7 +271,7 @@ private struct BattleDataInfoProvider: View {
             Spacer()
             Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
             if let avatarID = avatarID, let character = charMap[avatarID.description] {
-                character.decoratedIcon(35, cutTo: .face)
+                character.asset.decoratedIcon(35, cutTo: .face)
             }
         }
     }

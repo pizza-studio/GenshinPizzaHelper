@@ -61,24 +61,30 @@ struct PlayerDetail {
             self.signature = playerInfo.signature ?? ""
             self.worldLevel = playerInfo.worldLevel
             self.nameCardId = playerInfo.nameCardId
-            if let profilePictureId = playerInfo.profilePicture.id {
-                _ = profilePictureId
-                // 这一段负责处理自 4.1 版发行开始起「有」改过肖像的玩家的情况。
-                // TODO: 需要拿这个 id 在 ProfilePictureExcelConfigData.json 内查询到 avatarId，
-                // 然后按照下述步骤处理即可：
-                // if let obj = ProfilePictureExcelConfigData[profilePictureId] {
-                //     self.profilePictureAvatarIconString = obj.iconPath.replacingOccurrences(of: "_Circle", with: "")
-                // }
-            } else if let avatarID = playerInfo.profilePicture.avatarId,
-                      let matchedCharacter = characterMap[avatarID.description] {
-                // 这一段负责处理自 4.1 版发行开始起「没」改过肖像的玩家的情况。
-                self.profilePictureAvatarIconString = matchedCharacter.SideIconName.replacingOccurrences(
-                    of: "_Side",
-                    with: ""
-                )
-            }
-
             self.showingNameCards = playerInfo.showNameCardIdList ?? []
+            self.profilePictureAvatarEnkaID = playerInfo.profilePicture.avatarIdDeducted
+            self.profilePictureCostumeID = playerInfo.profilePicture.costumeIdDeducted
+            self.profilePictureAvatarIconString = playerInfo.profilePicture.assetFileName
+            // 线下资料批配失败的场合（因为线下资料的更新可能会滞后）：
+            if profilePictureAvatarIconString == nil {
+                if let profilePictureId = playerInfo.profilePicture.id {
+                    _ = profilePictureId
+
+                    // 这一段负责处理自 4.1 版发行开始起「有」改过肖像的玩家的情况。
+                    // TODO: 需要拿这个 id 在 ProfilePictureExcelConfigData.json 内查询到 avatarId，
+                    // 然后按照下述步骤处理即可：
+                    // if let obj = ProfilePictureExcelConfigData[profilePictureId] {
+                    //     self.profilePictureAvatarIconString = obj.iconPath.replacingOccurrences(of: "_Circle", with: "")
+                    // }
+                } else if let avatarID = playerInfo.profilePicture.avatarId,
+                          let matchedCharacter = characterMap[avatarID.description] {
+                    // 这一段负责处理自 4.1 版发行开始起「没」改过肖像的玩家的情况。
+                    self.profilePictureAvatarIconString = matchedCharacter.SideIconName.replacingOccurrences(
+                        of: "_Side",
+                        with: ""
+                    )
+                }
+            }
         }
 
         // MARK: Internal
@@ -96,6 +102,10 @@ struct PlayerDetail {
         var nameCardId: Int
         /// 玩家头像
         var profilePictureAvatarIconString: String?
+        /// 玩家头像对应的角色 enkaID
+        var profilePictureAvatarEnkaID: Int?
+        /// 玩家头像对应的角色的时装编号 enkaID
+        var profilePictureCostumeID: Int?
 
         /// 正在展示的名片
         var showingNameCards: [Int]
@@ -119,6 +129,8 @@ struct PlayerDetail {
             else { return nil }
             self.character = character
             self.enkaID = avatarInfo.avatarId
+            self.characterAsset = CharacterAsset(rawValue: avatarInfo.avatarId) ?? character.asset
+            self.costumeAsset = .init(rawValue: avatarInfo.costumeId ?? -114_514)
 
             self.name = localizedDictionary
                 .nameFromHashMap(character.NameTextMapHash)
@@ -553,6 +565,11 @@ struct PlayerDetail {
         let talentCount: Int
         /// 天赋
         let skills: [Skill]
+
+        /// 时装
+        let costumeAsset: CostumeAsset?
+        /// 角色 Asset
+        let characterAsset: CharacterAsset
 
         /// 等级
         let level: Int

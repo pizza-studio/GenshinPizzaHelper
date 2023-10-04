@@ -148,7 +148,7 @@ struct AvatarListItem: View {
             ZStack(alignment: .bottomLeading) {
                 Group {
                     if let char = charMap?["\(avatar.id)"] {
-                        char.decoratedIcon(55, cutTo: .head)
+                        char.asset.decoratedIcon(55, cutTo: .head)
                     } else {
                         WebImage(urlStr: avatar.icon)
                     }
@@ -289,7 +289,7 @@ private struct AvatarListItemShare: View {
             ZStack(alignment: .bottomLeading) {
                 Group {
                     if let char = charMap?["\(avatar.id)"] {
-                        char.decoratedIcon(55, cutTo: .head)
+                        char.asset.decoratedIcon(55, cutTo: .head)
                     } else {
                         WebImage(urlStr: avatar.icon)
                     }
