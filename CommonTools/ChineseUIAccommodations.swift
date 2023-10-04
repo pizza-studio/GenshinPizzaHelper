@@ -80,7 +80,8 @@ extension ENCharacterMap.Character {
     )
         -> String {
         var result = "unknown"
-        if let asset = CharacterAsset(rawValue: 10000005) {
+        // 优先用 CharacterAsset 处理所有情形。
+        if let asset = CharacterAsset(rawValue: enkaID) {
             return asset.localized.localizedWithFix
         }
         guard let x = table?[NameTextMapHash.description] else { return result }
