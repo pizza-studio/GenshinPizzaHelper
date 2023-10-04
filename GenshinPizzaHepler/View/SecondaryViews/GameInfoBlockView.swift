@@ -121,9 +121,9 @@ struct GameInfoBlock: View {
     func recoveryTimeText(resinInfo: ResinInfo) -> some View {
         if resinInfo.recoveryTime.second != 0 {
             Text(
-                LocalizedStringKey(
-                    "infoBlock.fullIn:\(resinInfo.recoveryTime.describeIntervalLong())\n\(resinInfo.recoveryTime.completeTimePointFromNow())"
-                )
+                String(localized: "infoBlock.refilledAt:\(resinInfo.recoveryTime.completeTimePointFromNow())")
+                    +
+                    "\n\(resinInfo.recoveryTime.describeIntervalLong())"
             )
             .font(.caption)
             .lineLimit(2)

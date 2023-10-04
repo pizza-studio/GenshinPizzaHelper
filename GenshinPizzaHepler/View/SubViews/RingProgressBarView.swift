@@ -65,8 +65,8 @@ struct OverlayRingProgressBar: ViewModifier {
     let progress: Double
     let thickness: CGFloat
     let startAngle: Double
-    let showBackgound: Bool
-    let backgoundOpacity: Double
+    let showBackground: Bool
+    let backgroundOpacity: Double
     let scaler: Double
     let offset: (x: Double, y: Double)
 
@@ -75,13 +75,13 @@ struct OverlayRingProgressBar: ViewModifier {
 
             // 圆内接正方形变长
             let r = g.size.width - 0.8
-            let frameWidth = (sqrt(2) / 2 * r) * scaler
+            let frameWidth = max(1, (sqrt(2) / 2 * r) * scaler)
 
             ZStack {
-                if showBackgound {
+                if showBackground {
                     Circle()
                         .stroke(lineWidth: thickness)
-                        .opacity(backgoundOpacity)
+                        .opacity(backgroundOpacity)
                 }
 
                 RingShape(
@@ -103,7 +103,7 @@ extension View {
         _ progress: Double,
         thickness: CGFloat = 1.0,
         startAngle: Double = -90,
-        showBackgound: Bool = true,
+        showBackground: Bool = true,
         backgroundOpacity: Double = 0.5,
         scaler: Double = 0.83,
         offset: (x: Double, y: Double) = (0, 0)
@@ -113,8 +113,8 @@ extension View {
             progress: progress,
             thickness: thickness,
             startAngle: startAngle,
-            showBackgound: showBackgound,
-            backgoundOpacity: backgroundOpacity,
+            showBackground: showBackground,
+            backgroundOpacity: backgroundOpacity,
             scaler: scaler,
             offset: offset
         ))
@@ -126,7 +126,7 @@ extension Image {
         _ progress: Double,
         thickness: CGFloat = 1.0,
         startAngle: Double = -90,
-        showBackgound: Bool = true,
+        showBackground: Bool = true,
         backgroundOpacity: Double = 0.5,
         scaler: Double = 0.83,
         offset: (x: Double, y: Double) = (0, 0)
@@ -139,7 +139,7 @@ extension Image {
                 progress,
                 thickness: thickness,
                 startAngle: startAngle,
-                showBackgound: showBackgound,
+                showBackground: showBackground,
                 backgroundOpacity: backgroundOpacity,
                 scaler: scaler,
                 offset: offset

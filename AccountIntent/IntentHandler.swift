@@ -15,7 +15,7 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
     SelectAccountAndShowWhichInfoIntentHandling {
     // MARK: - SelectAccountIntentHandling
 
-    func provideBackgoundOptionsCollection(
+    func provideBackgroundOptionsCollection(
         for intent: SelectAccountIntent,
         with completion: @escaping (
             INObjectCollection<WidgetBackground>?,
@@ -23,7 +23,7 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
         ) -> ()
     ) {
         let colorOptions: [String] = BackgroundOptions.colors
-        let namecardOptions: [String] = BackgroundOptions.namecards
+        let namecardOptions: [NameCard] = NameCard.allCases
 
         var intents: [WidgetBackground] = []
         colorOptions.forEach { colorName in
@@ -32,10 +32,9 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
             intents.append(intent)
         }
         namecardOptions.forEach { namecardName in
-            let name = namecardName.localized
             let intent = WidgetBackground(
-                identifier: namecardName,
-                display: name
+                identifier: namecardName.rawValue,
+                display: namecardName.localized
             )
             intents.append(intent)
         }
@@ -131,7 +130,7 @@ extension WidgetViewConfiguration {
         )
         self.weeklyBossesShowingMethod = intent.weeklyBossesShowingMethod
         self.randomBackground = intent.randomBackground?.boolValue ?? false
-        if let backgrounds = intent.backgound {
+        if let backgrounds = intent.background {
             self.selectedBackgrounds = backgrounds
                 .isEmpty ? [.defaultBackground] : backgrounds
         } else {

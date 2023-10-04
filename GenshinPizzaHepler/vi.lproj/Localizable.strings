@@ -509,7 +509,6 @@
 "unit.hrs:%lld" = "%lld Giờ";
 "unit.mins:%lld" = "%lld Phút";
 "unit.HHMM:%lldHH%lldMM" = "%lld Giờ %lld Phút";
-"infoBlock.fullIn:%@\n%@" = "Nhựa sẽ đầy trong %@\n%@";
 "infoBlock.resionFullyFilledDescription" = "0hr 0min\nNhựa đầy.";
 "unit.daysOf:%lld" = "%lld Ngày";
 "unit.%lldHH%lldMM" = "%lld Giờ %lld Phút";
@@ -827,7 +826,7 @@
 "参量质变仪" = "Máy Biến Đổi Tham Số";
 "周本折扣" = "Vùng Đất Thảo Phạt";
 "infoBlock.transformerAvailable" = "CD Xong";
-"%@ 回满" = "Đầy lại trong %@";
+"infoBlock.refilledAt:%@" = "Đầy lại trong %@";
 "树脂已全部回满" = "Nhựa đã được phục hồi đầy đủ";
 
 // Donate
@@ -974,8 +973,8 @@
 "请先选择账号" = "Vui lòng chọn tài khoản trước";
 "角色展示柜" = "Đội Hình Nhân Vật";
 "账号未展示角色" = "Không thể tìm thấy đội hình nhân vật nào";
-"今日入账" = "Hôm Nay Nhận Được";
-"需要重新登录本账号以查询，点击重新登录" = "Vui lòng nhấn để đăng nhập lại để truy vấn phần này.";
+"detailPortal.todayAcquisition.title" = "Hôm Nay Nhận Được";
+"detailPortal.todayAcquisition.reloginRequiredNotice" = "Vui lòng nhấn để đăng nhập lại để truy vấn phần này.";
 // apiral abyss sheet
 "深境螺旋详情" = "Chiến Tích La Hoàn Thâm Cảnh";
 "保存%lld层的深渊数据" = "Lưu hình ảnh la hoàn thâm cảnh %lld";
@@ -1216,8 +1215,6 @@
 "仅国服用户。更改该项需要重新添加小组件。" = "Chỉ người dùng Trung Quốc . Thêm lại tiện ích sau khi chỉnh sửa cấu hình này.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "(Chỉ chế độ đơn giản hóa) Việc đặt không đúng cách có thể dẫn đến thông báo tiền động tiên không được kích hoạt chính xác và số lượng không chính xác.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "(Chỉ ở chế độ đơn giản hóa) Không được đặt chính xác có thể dẫn đến lượng tiền động tiên không chính xác.";
-// 下方左侧尾部有零宽字符
-"%@ 回满​" = "%@";
 "的原粹树脂回满时间" = "'s thời gian hồi đầy nhựa";
 "原粹树脂回满时间" = "Thời gian để đầy nhựa hoàn toàn";
 "展示原粹树脂与恢复到160树脂的时间" = "Hiển thị lượng nhựa ban đầu và thời gian đầy.";

@@ -61,7 +61,7 @@ class ResinRecoveryActivityController {
                     "[]"
             ) ?? []
             if backgrounds.isEmpty {
-                return .customize(["纪行・熄星"])
+                return .customize([NameCard.UI_NameCardPic_Bp20_P.rawValue])
             } else {
                 return .customize(backgrounds)
             }

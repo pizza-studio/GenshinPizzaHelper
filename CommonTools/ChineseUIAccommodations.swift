@@ -53,8 +53,6 @@ extension String {
         if Locale.isUILanguageSimplifiedChinese {
             if localized == "钟离" {
                 return "锺离"
-            } else if localized == "钟离・天星" {
-                return "锺离・天星"
             } else if localized.contains("钟离") {
                 return replacingOccurrences(of: "钟离", with: "锺离")
             }

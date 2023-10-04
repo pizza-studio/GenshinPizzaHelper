@@ -457,7 +457,7 @@ Created by Bill Haku on 2022/8/23.
 "settings.more" = "更多";
 
 "settings.howToUseNotifications" = "通知使用提示";
-"account.server" = "account.server";
+"account.server" = "服务器";
 
 "gatcha.term.scriptForFetchingCookies" = "获取Cookie的脚本";
 "settings.misc.rateMeOnAppStore" = "在App Store评分";
@@ -507,7 +507,6 @@ Created by Bill Haku on 2022/8/23.
 "unit.hrs:%lld" = "%lld小时";
 "unit.mins:%lld" = "%lld分钟";
 "unit.HHMM:%lldHH%lldMM" = "%lld小时%lld分钟";
-"infoBlock.fullIn:%@\n%@" = "%@\n%@ 回满";
 "infoBlock.resionFullyFilledDescription" = "0小时0分钟\n树脂已全部回满";
 "unit.daysOf:%lld" = "%lld天";
 "unit.%lldHH%lldMM" = "%lld小时%lld分钟";
@@ -702,7 +701,7 @@ Created by Bill Haku on 2022/8/23.
 "探索派遣" = "探索派遣";
 "参量质变仪" = "参量质变仪";
 "周本折扣" = "周本折扣";
-"%@ 回满" = "%@ 回满";
+"infoBlock.refilledAt:%@" = "%@ 回满";
 "树脂已全部回满" = "树脂已全部回满";
 
 // Donate
@@ -837,8 +836,8 @@ Created by Bill Haku on 2022/8/23.
 "请先选择账号" = "请先选择账号";
 "角色展示柜" = "角色展示柜";
 "账号未展示角色" = "账号未展示角色";
-"今日入账" = "今日入账";
-"需要重新登录本账号以查询，点击重新登录" = "需要重新登录本账号以查询，点击重新登录";
+"detailPortal.todayAcquisition.title" = "今日入账";
+"detailPortal.todayAcquisition.reloginRequiredNotice" = "需点此重新登录该帐号以查询";
 // apiral abyss sheet
 "深境螺旋详情" = "深境螺旋详情";
 "保存%lld层的深渊数据" = "保存%lld层的深渊数据";
@@ -1069,8 +1068,6 @@ Created by Bill Haku on 2022/8/23.
 "仅国服用户。更改该项需要重新添加小组件。" = "仅国服用户。更改该项需要重新添加小组件。";
 "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。";
-// 下方左侧尾部有零宽字符
-"%@ 回满​" = "%@ 回满​";
 "的原粹树脂回满时间" = "的原粹树脂回满时间";
 "原粹树脂回满时间" = "原粹树脂回满时间";
 "展示原粹树脂与恢复到160树脂的时间" = "展示原粹树脂与恢复到160树脂的时间";
@@ -1352,5 +1349,5 @@ Created by Bill Haku on 2022/8/23.
 
 "settings.uiRelated.useGuestGachaEvaluator" = "改由帕姆评价祈愿";
 "detailPortal.errorMessage.noAccountAvailableForAbyssDisplay" = "当前没有账号登录，无法显示深境螺旋记录。";
-"detailPortal.errorMessage.accountHasNulledBasicInfo" = "当前本地帐号数据不包含基础信息，请完成人机验证。如在完成之后仍出现该故障的话，请提报。";
+"detailPortal.errorMessage.accountHasNulledBasicInfo" = "当前本地帐号数据不包含基础信息，请完成人机验证。若在完成之后仍出现该故障的话，请报告之。";
 "settings.account.error.failedFromFetchingAccountInformation" = "没能获取到登录信息";

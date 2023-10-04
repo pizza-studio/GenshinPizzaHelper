@@ -80,7 +80,7 @@ struct WatchAccountDetailView: View {
     func recoveryTimeText(resinInfo: ResinInfo) -> String {
         if resinInfo.recoveryTime.second != 0 {
             let localizedStr = NSLocalizedString(
-                "%@ 回满",
+                "infoBlock.refilledAt:%@",
                 comment: "resin replenished"
             )
             return String(
@@ -88,7 +88,7 @@ struct WatchAccountDetailView: View {
                 resinInfo.recoveryTime.completeTimePointFromNow()
             )
         } else {
-            return "0小时0分钟\n树脂已全部回满".localized
+            return "infoBlock.resionFullyFilledDescription".localized
         }
     }
 }

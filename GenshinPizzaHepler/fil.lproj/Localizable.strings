@@ -507,7 +507,6 @@
 "unit.hrs:%lld" = "%lldhr";
 "unit.mins:%lld" = "%lldmin";
 "unit.HHMM:%lldHH%lldMM" = "%lldhr %lldmin";
-"infoBlock.fullIn:%@\n%@" = "Puno sa %@\n%@";
 "infoBlock.resionFullyFilledDescription" = "0hr 0min\nPuno na ang Resin";
 "unit.daysOf:%lld" = "%lldday";
 "unit.%lldHH%lldMM" = "%lldhr %lldmin";
@@ -702,7 +701,7 @@
 "探索派遣" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
-"%@ 回满" = "Refilled at %@";
+"infoBlock.refilledAt:%@" = "Refilled at %@";
 "树脂已全部回满" = "Resin is fully capped";
 
 // Donate
@@ -837,8 +836,8 @@
 "请先选择账号" = "Pumili muna ng account";
 "角色展示柜" = "Character Showcase";
 "账号未展示角色" = "Walang character mahanap sa Character Showcase";
-"今日入账" = "Nakuha Ngayon";
-"需要重新登录本账号以查询，点击重新登录" = "Please tap to relogin to query this part.";
+"detailPortal.todayAcquisition.title" = "Nakuha Ngayon";
+"detailPortal.todayAcquisition.reloginRequiredNotice" = "Please tap to relogin to query this part.";
 // apiral abyss sheet
 "深境螺旋详情" = "Detalye ng Spiral Abyss";
 "保存%lld层的深渊数据" = "I-Save ang image para sa level %lld";
@@ -1069,8 +1068,6 @@
 "仅国服用户。更改该项需要重新添加小组件。" = "Para sa gumagamit na nasa China mainland lamang. I-add ulit ang widget pagkatapos i-edit ang pag-configure nito.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "(Para sa Simplified mode lamang) Ang hindi maayos na itinakda ay maaaring magresulta sa notification ng Realm Currency na hindi na-trigger nang tama at ang dami nito ay hindi tama.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "(Para sa Simplified mode lamang) Ang hindi itinakda nang tama ay maaaring magresulta sa isang hindi tamang bilang ng Realm Currency.";
-// 下方左侧尾部有零宽字符
-"%@ 回满​" = "%@";
 "的原粹树脂回满时间" = "'s resin fully refilled time";
 "原粹树脂回满时间" = "Resin Fully Refilled Time";
 "展示原粹树脂与恢复到160树脂的时间" = "Ipakita ang original resin at ang oras hanggang mapuno.";

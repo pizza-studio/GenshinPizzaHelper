@@ -507,7 +507,6 @@
 "unit.hrs:%lld" = "%lld ʜʀ";
 "unit.mins:%lld" = "%lld ᴍɪɴ";
 "unit.HHMM:%lldHH%lldMM" = "%lld ʜʀ %lld ᴍɪɴ";
-"infoBlock.fullIn:%@\n%@" = "Rempli dans %@\n%@";
 "infoBlock.resionFullyFilledDescription" = "0 ʜʀ 0 ᴍɪɴ\nLa résere de résine sera rempli dans";
 "unit.daysOf:%lld" = "%lld jour";
 "unit.%lldHH%lldMM" = "%lld ʜʀ %lld ᴍɪɴ";
@@ -702,7 +701,7 @@
 "探索派遣" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
-"%@ 回满" = "Replenished at %@";
+"infoBlock.refilledAt:%@" = "Replenished at %@";
 "树脂已全部回满" = "Resin is fully replenished";
 
 // Donate
@@ -837,8 +836,8 @@
 "请先选择账号" = "Veuillez d'abord choisir un compte";
 "角色展示柜" = "Vitrine de personnages";
 "账号未展示角色" = "Aucun personnage trouvé dans la vitrine de personnages";
-"今日入账" = "Acquisitions d'aujourd'hui";
-"需要重新登录本账号以查询，点击重新登录" = "Veuillez appuyer pour vous reconnecter et effectuer la recherche.";
+"detailPortal.todayAcquisition.title" = "Acquisitions d'aujourd'hui";
+"detailPortal.todayAcquisition.reloginRequiredNotice" = "Veuillez appuyer pour vous reconnecter et effectuer la recherche.";
 // apiral abyss sheet
 "深境螺旋详情" = "Spiral Abyss Details";
 "保存%lld层的深渊数据" = "Save image for level %lld";
@@ -1069,8 +1068,6 @@
 "仅国服用户。更改该项需要重新添加小组件。" = "China mainland users only. Re-adding the widget after edit this configuration.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "(Simplified mode only) Not properly set may result in the Realm Currency notification not being triggered correctly and the quantity being incorrect.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "(Simplified mode only) Not set correctly may result in an inaccurate amount of Realm Currency.";
-// 下方左侧尾部有零宽字符
-"%@ 回满​" = "%@";
 "的原粹树脂回满时间" = "'s resin fully refilled time";
 "原粹树脂回满时间" = "Resin Fully Refilled Time";
 "展示原粹树脂与恢复到160树脂的时间" = "Show the original resin and the time to full.";

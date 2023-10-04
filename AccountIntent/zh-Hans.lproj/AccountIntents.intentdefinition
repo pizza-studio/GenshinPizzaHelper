@@ -222,11 +222,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>Yil1CB</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22A400</string>
+	<string>23A344</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>14B47b</string>
+	<string>15A240d</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>14.1</string>
+	<string>15.0</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -335,7 +335,7 @@
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>3</integer>
 					<key>INIntentParameterName</key>
-					<string>backgound</string>
+					<string>background</string>
 					<key>INIntentParameterObjectType</key>
 					<string>WidgetBackground</string>
 					<key>INIntentParameterObjectTypeNamespace</key>

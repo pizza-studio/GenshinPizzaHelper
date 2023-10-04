@@ -398,9 +398,12 @@ struct DetailPortalView: View {
                                 .foregroundColor(.red)
                                 switch error {
                                 case .notLoginError:
-                                    (Text("[\("今日入账".localized)] ") + Text("需要重新登录本账号以查询，点击重新登录"))
-                                        .font(.footnote)
-                                        .multilineTextAlignment(.center)
+                                    (
+                                        Text("[\("detailPortal.todayAcquisition.title".localized)]\n") +
+                                            Text("detailPortal.todayAcquisition.reloginRequiredNotice")
+                                    )
+                                    .font(.footnote)
+                                    .multilineTextAlignment(.center)
                                 default:
                                     Text(error.description)
                                 }
@@ -789,7 +792,7 @@ private struct LedgerSheetView: View {
                 }
             } header: {
                 HStack {
-                    Text("今日入账")
+                    Text("detailPortal.todayAcquisition.title")
                     Spacer()
                     Text("\(data.date ?? "")")
                 }

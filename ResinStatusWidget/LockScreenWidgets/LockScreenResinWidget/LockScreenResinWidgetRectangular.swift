@@ -42,7 +42,7 @@ struct LockScreenResinWidgetRectangular<T>: View
                                 .fixedSize(horizontal: false, vertical: true)
                         } else {
                             Text(
-                                "\(data.resinInfo.recoveryTime.completeTimePointFromNow()) 回满"
+                                "infoBlock.refilledAt:\(data.resinInfo.recoveryTime.completeTimePointFromNow())"
                             )
                             .font(.footnote)
                             .fixedSize(horizontal: false, vertical: true)
@@ -95,7 +95,7 @@ struct LockScreenResinWidgetRectangular<T>: View
                                 .foregroundColor(.gray)
                         } else {
                             Text(
-                                "\(data.resinInfo.recoveryTime.completeTimePointFromNow()) 回满"
+                                "infoBlock.refilledAt:\(data.resinInfo.recoveryTime.completeTimePointFromNow())"
                             )
                             .font(.footnote)
                             .fixedSize(horizontal: false, vertical: true)

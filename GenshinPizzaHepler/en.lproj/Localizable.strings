@@ -457,7 +457,7 @@
 "settings.more" = "More";
 
 "settings.howToUseNotifications" = "Tips: How to use Notification?";
-"account.server" = "Server:";
+"account.server" = "Server";
 
 "gatcha.term.scriptForFetchingCookies" = "Shortcuts for Grabbing Cookie";
 "settings.misc.rateMeOnAppStore" = "Rate in App Store";
@@ -507,7 +507,6 @@
 "unit.hrs:%lld" = "%lldhr";
 "unit.mins:%lld" = "%lldmin";
 "unit.HHMM:%lldHH%lldMM" = "%lldhr %lldmin";
-"infoBlock.fullIn:%@\n%@" = "Full in %@\n%@";
 "infoBlock.resionFullyFilledDescription" = "0hr 0min\nResin is full";
 "unit.daysOf:%lld" = "%lldday";
 "unit.%lldHH%lldMM" = "%lldhr %lldmin";
@@ -701,7 +700,7 @@
 "探索派遣" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
-"%@ 回满" = "Refilled at %@";
+"infoBlock.refilledAt:%@" = "Refilled at %@";
 "树脂已全部回满" = "Resin is fully capped";
 
 // Donate
@@ -836,8 +835,8 @@
 "请先选择账号" = "Please choose account first";
 "角色展示柜" = "Character Showcase";
 "账号未展示角色" = "No characters found in the Character Showcase";
-"今日入账" = "Acquired Today";
-"需要重新登录本账号以查询，点击重新登录" = "Please tap to relogin to query this part.";
+"detailPortal.todayAcquisition.title" = "Acquired Today";
+"detailPortal.todayAcquisition.reloginRequiredNotice" = "Please tap to relogin to query this part.";
 // apiral abyss sheet
 "深境螺旋详情" = "Spiral Abyss Details";
 "保存%lld层的深渊数据" = "Save image for level %lld";
@@ -1068,8 +1067,6 @@
 "仅国服用户。更改该项需要重新添加小组件。" = "China mainland users only. Re-adding the widget after edit this configuration.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "(Simplified mode only) Not properly set may result in the Realm Currency notification not being triggered correctly and the quantity being incorrect.";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "(Simplified mode only) Not set correctly may result in an inaccurate amount of Realm Currency.";
-// 下方左侧尾部有零宽字符
-"%@ 回满​" = "%@";
 "的原粹树脂回满时间" = "'s resin fully refilled time";
 "原粹树脂回满时间" = "Resin Fully Refilled Time";
 "展示原粹树脂与恢复到160树脂的时间" = "Show the original resin and the time to full.";

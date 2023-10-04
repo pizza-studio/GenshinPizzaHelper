@@ -199,18 +199,11 @@ extension WeaponAsset {
 
 extension WeaponAsset {
     public var officialRawNameInEnglish: String {
-        guard let path = Bundle.main.path(forResource: "en", ofType: "lproj"), let bundle = Bundle(path: path) else {
-            return String(describing: self)
-        }
-        return NSLocalizedString("$asset.weapon:" + String(describing: self), bundle: bundle, comment: "")
+        ("$asset.weapon:" + String(describing: self)).i18n("en")
     }
 
     public var officialSimplifiedChineseName: String {
-        guard let path = Bundle.main.path(forResource: "zh-Hans", ofType: "lproj"),
-              let bundle = Bundle(path: path) else {
-            return String(describing: self)
-        }
-        return NSLocalizedString("$asset.weapon:" + String(describing: self), bundle: bundle, comment: "")
+        ("$asset.weapon:" + String(describing: self)).i18n("zh-Hans")
     }
 }
 

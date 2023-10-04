@@ -494,8 +494,8 @@
 "settings.account.configuration.notFinishedYet" = "尚未完成帳號設定";
 "settings.account.configuration.beforeAddingYourAccount" = "添加帳號前…";
 "settings.account.configuration.askingForEnablingRealtimeNotePaper" = "請先確保綁定的米遊社帳號已開啟並能在米遊社App中檢視「實時便箋」功能";
-"button.okay" = "button.okay";
-"text.hint" = "text.hint";
+"button.okay" = "確定";
+"text.hint" = "提示";
 "settings.account.login.instruction" = "請在打開的網頁完成登入米遊社操作後點擊「完成」。\n通過Google，Facebook或Twitter登入HoYoLAB不可使用，請使用帳號密碼登入。\n我們承諾：您的登入資訊只會保存在您的本地設備和私人iCloud中，僅用於向米遊社請求您的原神狀態。";
 "settings.account.alias" = "自訂帳號名";
 "settings.account.pleaseSelectAccount" = "請選擇帳號";
@@ -507,7 +507,6 @@
 "unit.hrs:%lld" = "%lld小時";
 "unit.mins:%lld" = "%lld分鐘";
 "unit.HHMM:%lldHH%lldMM" = "%lld小時%lld分鐘";
-"infoBlock.fullIn:%@\n%@" = "%@\n%@ 回滿";
 "infoBlock.resionFullyFilledDescription" = "0小時0分鐘\n樹脂已全部回滿";
 "unit.daysOf:%lld" = "%lld天";
 "unit.%lldHH%lldMM" = "%lld小時%lld分鐘";
@@ -702,7 +701,7 @@
 "探索派遣" = "探索派遣";
 "参量质变仪" = "參量質變儀";
 "周本折扣" = "週本折扣";
-"%@ 回满" = "%@ 回滿";
+"infoBlock.refilledAt:%@" = "%@ 回滿";
 "树脂已全部回满" = "樹脂已全部回滿";
 
 // Donate
@@ -837,8 +836,8 @@
 "请先选择账号" = "請先選擇帳號";
 "角色展示柜" = "角色展示櫃";
 "账号未展示角色" = "帳號未展示角色";
-"今日入账" = "今日入帳";
-"需要重新登录本账号以查询，点击重新登录" = "需要重新登入該帳號以查詢，點擊以重新登入";
+"detailPortal.todayAcquisition.title" = "今日入帳";
+"detailPortal.todayAcquisition.reloginRequiredNotice" = "需点此重新登入該帳號以查詢";
 // apiral abyss sheet
 "深境螺旋详情" = "深境螺旋詳情";
 "保存%lld层的深渊数据" = "保存%lld層的深淵資料";
@@ -1069,8 +1068,6 @@
 "仅国服用户。更改该项需要重新添加小组件。" = "僅陸服用戶。更改該項需要重新添加小工具。";
 "（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。" = "（僅簡潔模式）未正確設定可能導致洞天寶錢通知無法正確觸發，數量不正確。";
 "（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。" = "（僅簡潔模式）未正確設定可能導致洞天寶錢數量不準確。";
-// 下方左侧尾部有零宽字符
-"%@ 回满​" = "%@ 回滿​";
 "的原粹树脂回满时间" = "的原粹樹脂回滿時間";
 "原粹树脂回满时间" = "原粹樹脂回滿時間";
 "展示原粹树脂与恢复到160树脂的时间" = "展示原粹樹脂與充填到160樹脂的時間";
@@ -1354,5 +1351,5 @@
 
 "settings.uiRelated.useGuestGachaEvaluator" = "改由帕姆評價祈願 ";
 "detailPortal.errorMessage.noAccountAvailableForAbyssDisplay" = "當前沒有帳號登入，無法顯示深境螺旋記錄。";
-"detailPortal.errorMessage.accountHasNulledBasicInfo" = "當前本地帳號資料不包含基礎資訊，請完成真人認證。如在完成之後仍出現該故障的話，請提報。";
+"detailPortal.errorMessage.accountHasNulledBasicInfo" = "當前本地帳號資料不包含基礎資訊，請完成真人認證。若在完成之後仍出現該故障的話，請提報之。";
 "settings.account.error.failedFromFetchingAccountInformation" = "沒能獲取到登入資訊";

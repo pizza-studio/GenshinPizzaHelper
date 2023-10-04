@@ -111,18 +111,11 @@ extension CharacterAsset {
 
 extension CharacterAsset {
     public var officialRawNameInEnglish: String {
-        guard let path = Bundle.main.path(forResource: "en", ofType: "lproj"), let bundle = Bundle(path: path) else {
-            return String(describing: self)
-        }
-        return NSLocalizedString("$asset.character:" + String(describing: self), bundle: bundle, comment: "")
+        ("$asset.character:" + String(describing: self)).i18n("en")
     }
 
     public var officialSimplifiedChineseName: String {
-        guard let path = Bundle.main.path(forResource: "zh-Hans", ofType: "lproj"),
-              let bundle = Bundle(path: path) else {
-            return String(describing: self)
-        }
-        return NSLocalizedString("$asset.character:" + String(describing: self), bundle: bundle, comment: "")
+        ("$asset.character:" + String(describing: self)).i18n("zh-Hans")
     }
 }
 
