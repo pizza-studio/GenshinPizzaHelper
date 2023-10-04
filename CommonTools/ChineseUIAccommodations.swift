@@ -80,10 +80,8 @@ extension ENCharacterMap.Character {
     )
         -> String {
         var result = "unknown"
-        switch enkaID {
-        case 10000007: return "荧".localizedWithFix
-        case 10000005: return "空".localizedWithFix
-        default: break
+        if let asset = CharacterAsset(rawValue: 10000005) {
+            return asset.localized.localizedWithFix
         }
         guard let x = table?[NameTextMapHash.description] else { return result }
         result = x.localizedWithFix

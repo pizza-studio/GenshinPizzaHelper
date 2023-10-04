@@ -34,7 +34,7 @@ struct AccountInfoView: View {
             HStack {
                 Text("UID: \(account.config.uid!)")
                 Spacer()
-                Text("account.server:\(account.config.server.rawValue)")
+                Text("account.server".localized + ": " + account.config.server.rawValue)
             }
             .font(.caption)
         }

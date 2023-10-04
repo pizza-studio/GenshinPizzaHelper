@@ -457,7 +457,7 @@
 "settings.more" = "Plus";
 
 "settings.howToUseNotifications" = "Conseil: Comment utiliser Notification ?";
-"account.server:%@" = "Serveur: %@";
+"account.server" = "Serveur";
 
 "gatcha.term.scriptForFetchingCookies" = "Shortcuts pour obtenir les Cookies";
 "settings.misc.rateMeOnAppStore" = "Donner un commentaire sur App Store";

@@ -457,7 +457,7 @@
 "settings.more" = "More";
 
 "settings.howToUseNotifications" = "Mga Payo: Paano Gumamit ng Notification?";
-"account.server:%@" = "Server: %@";
+"account.server" = "Server";
 
 "gatcha.term.scriptForFetchingCookies" = "Mga Shortcut para sa pagkukuha ng Cookie";
 "settings.misc.rateMeOnAppStore" = "I-rate sa App Store";

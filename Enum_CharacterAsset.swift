@@ -95,15 +95,14 @@ extension CharacterAsset {
 
     public var localizedKey: String {
         var raw = String(describing: self)
-        if AppConfig.useActualCharacterNames, raw.contains("Kunikuzushi") {
+        if AppConfig.useActualCharacterNames, self == .Kunikuzushi {
             raw = "Raiden" + raw
         }
         return "$asset.character:" + raw
     }
 
     public var localized: String {
-        let raw = String(describing: self)
-        if AppConfig.useActualCharacterNames, raw.contains("Kunikuzushi") {
+        if AppConfig.useActualCharacterNames, self == .Kunikuzushi {
             return localizedKey.localized
         }
         return localizedKey.localized.localizedWithFix

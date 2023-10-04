@@ -457,7 +457,7 @@
 "settings.more" = "その他";
 
 "settings.howToUseNotifications" = "通知の使用ヒント";
-"account.server:%@" = "サーバー: %@";
+"account.server" = "サーバー";
 
 "gatcha.term.scriptForFetchingCookies" = "Cookieを取得するためのショートカット";
 "settings.misc.rateMeOnAppStore" = "App Storeで評価する";

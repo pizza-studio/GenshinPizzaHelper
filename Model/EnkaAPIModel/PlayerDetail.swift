@@ -586,10 +586,12 @@ struct PlayerDetail {
         /// 经过错字订正处理的角色姓名
         var nameCorrected: String {
             switch enkaID {
-            case 10000005: return "空".localizedWithFix
-            case 10000007: return "荧".localizedWithFix
-            case 10000075: return "流浪者".localizedWithFix
-            default: return name.localizedWithFix
+            // 此处使用 CharacterAsset 接管翻译，可准确处理国崩与空荧的姓名。
+            default:
+                guard let asset = CharacterAsset(rawValue: enkaID) else {
+                    return name.localizedWithFix // 应该没问题。
+                }
+                return asset.localized.localizedWithFix
             }
         }
 

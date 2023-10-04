@@ -458,7 +458,7 @@
 "settings.more" = "Thêm";
 
 "settings.howToUseNotifications" = "Mẹo: Hãy bật thông báo của ứng dụng";
-"account.server:%@" = "Máy chủ: %@";
+"account.server" = "Máy chủ";
 
 "gatcha.term.scriptForFetchingCookies" = "Phím tắt để lấy Cookie";
 "settings.misc.rateMeOnAppStore" = "Đánh giá ứng dụng trên App Store";

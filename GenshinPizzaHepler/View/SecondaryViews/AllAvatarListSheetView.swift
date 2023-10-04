@@ -399,10 +399,14 @@ extension AllAvatarDetailModel.Avatar {
     /// 经过错字订正处理的角色姓名
     fileprivate var nameCorrected: String {
         switch id {
-        case 10000005: return "空".localizedWithFix
-        case 10000007: return "荧".localizedWithFix
-        case 10000075: return "流浪者".localizedWithFix
-        default: return name.localizedWithFix
+        case 10000005: return CharacterAsset.Sora.localized
+        case 10000007: return CharacterAsset.Hotaru.localized
+        case 10000075: return CharacterAsset.Kunikuzushi.localized
+        default:
+            guard let asset = CharacterAsset(rawValue: id) else {
+                return "EnkaID-\(id)" // 这里的 name 可能是写死的简体中文。
+            }
+            return asset.localized.localizedWithFix
         }
     }
 }

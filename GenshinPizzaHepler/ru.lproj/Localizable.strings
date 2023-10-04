@@ -457,7 +457,7 @@
 "settings.more" = "Больше";
 
 "settings.howToUseNotifications" = "Подсказка: как использовать уведомления?";
-"account.server:%@" = "Сервер: %@";
+"account.server" = "Сервер";
 
 "gatcha.term.scriptForFetchingCookies" = "Команда для получения Cookie";
 "settings.misc.rateMeOnAppStore" = "Оцени нас в App Store";

@@ -98,11 +98,11 @@ extension ContainGachaItemInfo {
         switch type {
         case .character:
             if let asset = CharacterAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
-                return asset.localized
+                return asset.localized.localizedWithFix
             }
         case .weapon:
             if let asset = WeaponAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
-                return asset.localized
+                return asset.localized.localizedWithFix
             }
         }
         return name.localizedWithFix

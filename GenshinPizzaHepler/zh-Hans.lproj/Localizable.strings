@@ -457,7 +457,7 @@ Created by Bill Haku on 2022/8/23.
 "settings.more" = "更多";
 
 "settings.howToUseNotifications" = "通知使用提示";
-"account.server:%@" = "account.server:%@";
+"account.server" = "account.server";
 
 "gatcha.term.scriptForFetchingCookies" = "获取Cookie的脚本";
 "settings.misc.rateMeOnAppStore" = "在App Store评分";

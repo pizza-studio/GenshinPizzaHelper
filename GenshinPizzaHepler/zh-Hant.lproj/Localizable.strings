@@ -457,7 +457,7 @@
 "settings.more" = "更多";
 
 "settings.howToUseNotifications" = "通知使用提示";
-"account.server:%@" = "伺服器: %@";
+"account.server" = "伺服器";
 
 "gatcha.term.scriptForFetchingCookies" = "獲取Cookie的腳本";
 "settings.misc.rateMeOnAppStore" = "在App Store評分";
