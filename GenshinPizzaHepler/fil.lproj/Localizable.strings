@@ -1041,7 +1041,7 @@
 "使用透明背景" = "Transparent Background";
 "随机背景" = "Random Background";
 "选择背景" = "Magpili ng Backgrounds";
-"选择计时器背景" = "Pumili ng Backgrounds para sa Timer";
+"settings.timer.chooseBackground" = "Pumili ng Backgrounds para sa Timer";
 "距离派遣探索全部完成" = "Lahat ng pagtatapos ng expedition ";
 "树脂计时器背景" = "Resin Timer Background";
 

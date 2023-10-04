@@ -1040,7 +1040,7 @@
 "使用透明背景" = "Transparent Background";
 "随机背景" = "Random Background";
 "选择背景" = "Select Backgrounds";
-"选择计时器背景" = "Choose Backgrounds for Timer";
+"settings.timer.chooseBackground" = "Choose Backgrounds for Timer";
 "距离派遣探索全部完成" = "All Expeditions Completion";
 "树脂计时器背景" = "Resin Timer Background";
 

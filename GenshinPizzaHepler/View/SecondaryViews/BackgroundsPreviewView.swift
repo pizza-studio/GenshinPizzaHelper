@@ -12,8 +12,6 @@ import SwiftUI
 struct BackgroundsPreviewView: View {
     // MARK: Internal
 
-    let backgroundOptions: [NameCard] = NameCard.allCases
-
     var body: some View {
         List {
             ForEach(searchResults, id: \.rawValue) { currentCard in

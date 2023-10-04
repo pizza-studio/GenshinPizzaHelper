@@ -204,7 +204,6 @@ struct LiveActivitySettingDetailView: View {
 
 @available(iOS 16.1, *)
 struct LiveActivityBackgroundPicker: View {
-    let backgroundOptions: [String] = BackgroundOptions.namecards
     @State
     private var searchText = ""
     @AppStorage(
@@ -215,15 +214,15 @@ struct LiveActivityBackgroundPicker: View {
 
     var body: some View {
         List {
-            ForEach(searchResults, id: \.self) { backgroundImageView in
+            ForEach(searchResults, id: \.rawValue) { backgroundImageView in
                 HStack {
                     Label {
                         Text(
-                            backgroundImageView.localizedWithFix
+                            backgroundImageView.localized
                         )
                     } icon: {
                         GeometryReader { g in
-                            Image(backgroundImageView)
+                            Image(backgroundImageView.rawValue)
                                 .resizable()
                                 .scaledToFill()
                                 .offset(x: -g.size.width)
@@ -233,11 +232,11 @@ struct LiveActivityBackgroundPicker: View {
                     }
                     Spacer()
                     if resinRecoveryLiveActivityBackgroundOptions
-                        .contains(backgroundImageView) {
+                        .contains(backgroundImageView.rawValue) {
                         Button {
                             resinRecoveryLiveActivityBackgroundOptions
                                 .removeAll { name in
-                                    name == backgroundImageView
+                                    name == backgroundImageView.rawValue
                                 }
                         } label: {
                             Image(systemName: "checkmark.circle.fill")
@@ -246,7 +245,7 @@ struct LiveActivityBackgroundPicker: View {
                     } else {
                         Button {
                             resinRecoveryLiveActivityBackgroundOptions
-                                .append(backgroundImageView)
+                                .append(backgroundImageView.rawValue)
                         } label: {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.accentColor)
@@ -256,19 +255,17 @@ struct LiveActivityBackgroundPicker: View {
             }
         }
         .searchable(text: $searchText)
-        .navigationTitle("选择计时器背景")
+        .navigationTitle("settings.timer.chooseBackground")
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    var searchResults: [String] {
+    var searchResults: [NameCard] {
         if searchText.isEmpty {
-            return backgroundOptions
+            return NameCard.allCases
         } else {
-            return backgroundOptions
-                .filter {
-                    "\(NSLocalizedString($0, comment: ""))".lowercased()
-                        .contains(searchText.lowercased())
-                }
+            return NameCard.allCases.filter { cardString in
+                cardString.localized.lowercased().contains(searchText.lowercased())
+            }
         }
     }
 }

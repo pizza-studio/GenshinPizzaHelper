@@ -1188,7 +1188,7 @@
 "使用透明背景" = "Nền Trong Suốt";
 "随机背景" = "Nền Ngẫu Nhiên";
 "选择背景" = "Chọn Nền";
-"选择计时器背景" = "Chọn hình nền cho hẹn giờ";
+"settings.timer.chooseBackground" = "Chọn hình nền cho hẹn giờ";
 "距离派遣探索全部完成" = "Các cuộc phái đi thám hiểm đã được hoàn thành";
 "树脂计时器背景" = "Chọn nền cho bộ hẹn giờ nhựa";
 
