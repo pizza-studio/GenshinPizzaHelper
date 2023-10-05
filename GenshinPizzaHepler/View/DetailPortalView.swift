@@ -371,7 +371,10 @@ struct DetailPortalView: View {
                                 )
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.red)
-                                Text("detailPortal.errorMessage.accountHasNulledBasicInfo").font(.footnote)
+                                Text(
+                                    "detailPortal.errorMessage.anotherVerificationAttemptRequiredToSeeSpiralAbyssHistory"
+                                )
+                                .font(.footnote)
                             }
                         }
                     }
