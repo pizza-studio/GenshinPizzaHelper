@@ -119,10 +119,24 @@ struct DetailPortalView: View {
                 case .gachaAnalysis:
                     NavigationView {
                         GachaView()
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarLeading) {
+                                    Button("完成") {
+                                        sheetType = nil
+                                    }
+                                }
+                            }
                     }
                 case .rankedSpiralAbyss:
                     NavigationView {
                         AbyssDataCollectionView()
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarLeading) {
+                                    Button("完成") {
+                                        sheetType = nil
+                                    }
+                                }
+                            }
                     }
                 }
             }

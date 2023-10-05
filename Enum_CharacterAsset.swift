@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HBMihoyoAPI
 import HBPizzaHelperAPI
 import SwiftUI
 
@@ -473,5 +474,13 @@ extension ENCharacterMap.Character {
         CharacterAsset.allCases.filter { currentChar in
             currentChar.frontPhotoFileName == iconString
         }.first ?? .Hotaru
+    }
+}
+
+// MARK: - AllAvatarDetailModel.Avatar Assets
+
+extension AllAvatarDetailModel.Avatar {
+    public var asset: CharacterAsset? {
+        .init(rawValue: id) ?? .Hotaru
     }
 }

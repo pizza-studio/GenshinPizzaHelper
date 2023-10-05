@@ -39,23 +39,33 @@ struct AllAvatarListSheetView: View {
         if let allAvatarInfo = allAvatarInfo {
             List {
                 Section {
-                    ForEach(showingAvatars, id: \.id) { avatar in
-                        AvatarListItem(
-                            avatar: avatar,
-                            charMap: viewModel.charMap
-                        )
-                    }
-                } header: {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 3) {
                         Text(
                             "共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter { $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter { $0.rarity == 4 }.count)名。"
                         )
                         Text(
                             "共获得\(goldNum(data: allAvatarInfo).allGold)金，其中角色\(goldNum(data: allAvatarInfo).charGold)金，武器\(goldNum(data: allAvatarInfo).weaponGold)金。（未统计旅行者和无人装备的五星武器）"
                         )
+                    }.font(.footnote)
+                }
+
+                Section {
+                    ForEach(showingAvatars, id: \.id) { avatar in
+                        AvatarListItem(
+                            avatar: avatar,
+                            charMap: viewModel.charMap
+                        )
+                        .padding(.horizontal)
+                        .padding(.vertical, 4)
+                        .background {
+                            if let asset = avatar.asset {
+                                EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill().opacity(0.6)
+                            }
+                        }
                     }
                 }
                 .textCase(.none)
+                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
             .navigationTitle("我的角色")
             .navigationBarTitleDisplayMode(.inline)
@@ -82,6 +92,7 @@ struct AllAvatarListSheetView: View {
                     }
                 }
             }
+            .sectionSpacing(UIFont.systemFontSize)
         } else {
             ProgressView()
                 .onAppear {
@@ -147,8 +158,8 @@ struct AvatarListItem: View {
         HStack(spacing: 3) {
             ZStack(alignment: .bottomLeading) {
                 Group {
-                    if let char = charMap?["\(avatar.id)"] {
-                        char.asset.decoratedIcon(55, cutTo: .head)
+                    if let asset = avatar.asset {
+                        asset.decoratedIcon(55, cutTo: .head)
                     } else {
                         WebImage(urlStr: avatar.icon)
                     }
@@ -398,15 +409,9 @@ private struct AvatarListItemShare: View {
 extension AllAvatarDetailModel.Avatar {
     /// 经过错字订正处理的角色姓名
     fileprivate var nameCorrected: String {
-        switch id {
-        case 10000005: return CharacterAsset.Sora.localized
-        case 10000007: return CharacterAsset.Hotaru.localized
-        case 10000075: return CharacterAsset.Kunikuzushi.localized
-        default:
-            guard let asset = CharacterAsset(rawValue: id) else {
-                return "EnkaID-\(id)" // 这里的 name 可能是写死的简体中文。
-            }
-            return asset.localized.localizedWithFix
+        guard let asset = CharacterAsset(rawValue: id) else {
+            return "EnkaID-\(id)" // 这里的 name 可能是写死的简体中文。
         }
+        return asset.localized.localizedWithFix
     }
 }
