@@ -53,7 +53,8 @@ struct LiveActivitySettingDetailView: View {
     )
     var resinRecoveryLiveActivityUseCustomizeBackground: Bool = false
     @AppStorage(
-        "autoDeliveryResinTimerLiveActivity"
+        "autoDeliveryResinTimerLiveActivity",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     var autoDeliveryResinTimerLiveActivity: Bool =
         false
@@ -207,7 +208,8 @@ struct LiveActivityBackgroundPicker: View {
     @State
     private var searchText = ""
     @AppStorage(
-        "resinRecoveryLiveActivityBackgroundOptions"
+        "resinRecoveryLiveActivityBackgroundOptions",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     var resinRecoveryLiveActivityBackgroundOptions: [String] =
         .init()

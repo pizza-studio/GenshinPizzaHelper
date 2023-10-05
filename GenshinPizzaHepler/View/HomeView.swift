@@ -120,7 +120,8 @@ private struct PinnedAccountInfoCard: View {
     var viewModel: ViewModel
     var animation: Namespace.ID
     @AppStorage(
-        "pinToTopAccountUUIDString"
+        "pinToTopAccountUUIDString",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     var pinToTopAccountUUIDString: String =
         ""
@@ -289,7 +290,8 @@ private struct AccountInfoCards: View {
     var animation: Namespace.ID
 
     @AppStorage(
-        "pinToTopAccountUUIDString"
+        "pinToTopAccountUUIDString",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     var pinToTopAccountUUIDString: String =
         ""
@@ -344,12 +346,11 @@ private struct AccountInfoCards: View {
                 if account.result != nil {
                     switch account.result! {
                     case let .success(userData):
-                        // 我也不知道为什么如果不检查的话删除账号会崩溃
-                        if account.config.uuid != nil {
+                        if let accountConfigUUID = account.config.uuid {
                             GameInfoBlock(
                                 userData: userData,
                                 accountName: account.config.name,
-                                accountUUIDString: account.config.uuid!
+                                accountUUIDString: accountConfigUUID
                                     .uuidString,
                                 animation: animation,
                                 widgetBackground: account.background,

@@ -32,7 +32,8 @@ struct ContentView: View {
     var isJustUpdated: Bool = false
 
     @AppStorage(
-        "autoDeliveryResinTimerLiveActivity"
+        "autoDeliveryResinTimerLiveActivity",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     var autoDeliveryResinTimerLiveActivity: Bool =
         false

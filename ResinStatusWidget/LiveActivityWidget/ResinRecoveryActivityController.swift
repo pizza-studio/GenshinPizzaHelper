@@ -53,28 +53,33 @@ class ResinRecoveryActivityController {
     static let shared: ResinRecoveryActivityController = .init()
 
     @AppStorage(
-        "resinRecoveryLiveActivityBackgroundOptions", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+        "resinRecoveryLiveActivityBackgroundOptions",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
     static var resinRecoveryLiveActivityBackgroundOptions: [String] =
         .init()
 
     @AppStorage(
-        "resinRecoveryLiveActivityShowExpedition", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+        "resinRecoveryLiveActivityShowExpedition",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
     static var showExpedition: Bool = true
 
     @AppStorage(
-        "autoUpdateResinRecoveryTimerUsingReFetchData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+        "autoUpdateResinRecoveryTimerUsingReFetchData",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
     static var autoUpdateResinRecoveryTimerUsingReFetchData: Bool = false
 
     @AppStorage(
-        "resinRecoveryLiveActivityUseEmptyBackground", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+        "resinRecoveryLiveActivityUseEmptyBackground",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
     static var resinRecoveryLiveActivityUseEmptyBackground: Bool = false
 
     @AppStorage(
-        "resinRecoveryLiveActivityUseCustomizeBackground", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+        "resinRecoveryLiveActivityUseCustomizeBackground",
+        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
     )
     static var resinRecoveryLiveActivityUseCustomizeBackground: Bool = false
 

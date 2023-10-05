@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct PrivacySettingsView: View {
-    @AppStorage("allowAbyssDataCollection")
+    @AppStorage(
+        "allowAbyssDataCollection",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
+    )
     var allowAbyssDataCollection: Bool =
         false
 

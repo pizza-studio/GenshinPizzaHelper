@@ -20,7 +20,8 @@ struct DetailPortalView: View {
     var scenePhase
     var accounts: [Account] { viewModel.accounts }
     @AppStorage(
-        "toolViewShowingAccountUUIDString"
+        "toolViewShowingAccountUUIDString",
+        store: .init(suiteName: "group.GenshinPizzaHelper")
     )
     var showingAccountUUIDString: String?
     var account: Account? {
@@ -359,7 +360,17 @@ struct DetailPortalView: View {
             if let basicInfo: BasicInfos = account.basicInfo {
                 abyssAndPrimogemNavigatorView(accountBasicInfo: basicInfo)
             } else {
-                Text("detailPortal.errorMessage.accountHasNulledBasicInfo").font(.footnote)
+                ForEach($viewModel.accounts, id: \.config.uuid) { $account in
+                    if $account.wrappedValue == account {
+                        NavigationLink {
+                            AccountDetailView(account: $account)
+                        } label: {
+                            HStack {
+                              Text("detailPortal.errorMessage.accountHasNulledBasicInfo").font(.footnote).foregroundStyle(Color.accentColor)
+                            }
+                        }
+                    }
+                }
             }
         } else {
             Text("detailPortal.errorMessage.noAccountAvailableForAbyssDisplay").font(.footnote)
