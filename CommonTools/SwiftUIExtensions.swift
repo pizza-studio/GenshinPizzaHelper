@@ -129,7 +129,7 @@ extension View {
                 Text(stringKey)
                     .font(.systemCondensed(size: textSize, weight: .medium))
                     .padding(.horizontal, 0.3 * textSize)
-                    .alternativeBlurMaterialBackground().clipShape(Capsule())
+                    .adjustedBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
             }
         )
@@ -150,7 +150,7 @@ extension View {
                 Text(stringVerbatim)
                     .font(.systemCondensed(size: textSize, weight: .medium))
                     .padding(.horizontal, 0.3 * textSize)
-                    .alternativeBlurMaterialBackground().clipShape(Capsule())
+                    .adjustedBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
             }
         )

@@ -116,8 +116,8 @@ extension View {
         modifier(BlurMaterialBackground())
     }
 
-    func alternativeBlurMaterialBackground() -> some View {
-        modifier(AlternativeBlurMaterialBackground())
+    func adjustedBlurMaterialBackground() -> some View {
+        modifier(AdjustedBlurMaterialBackground())
     }
 }
 
@@ -136,15 +136,27 @@ struct BlurMaterialBackground: ViewModifier {
     }
 }
 
-// MARK: - AlternativeBlurMaterialBackground
+// MARK: - AdjustedBlurMaterialBackground
 
-struct AlternativeBlurMaterialBackground: ViewModifier {
+struct AdjustedBlurMaterialBackground: ViewModifier {
+    @Environment(\.colorScheme)
+    var colorScheme
+
+    @ViewBuilder
     func body(content: Content) -> some View {
-        content.background(
-            .ultraThinMaterial,
-            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
-        )
-        .contentShape(RoundedRectangle(
+        Group {
+            if colorScheme == .dark {
+                content.background(
+                    .thinMaterial,
+                    in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+                )
+            } else {
+                content.background(
+                    .regularMaterial,
+                    in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+                )
+            }
+        }.contentShape(RoundedRectangle(
             cornerRadius: 20,
             style: .continuous
         ))
