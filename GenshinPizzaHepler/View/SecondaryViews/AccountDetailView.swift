@@ -97,7 +97,10 @@ struct AccountDetailView: View {
                     title: "settings.account.deviceFingerprint".localized,
                     content: bindingDeviceFingerPrint
                 )) {
-                    InfoPreviewer(title: "settings.account.deviceFingerprint".localized, content: bindingDeviceFingerPrint.wrappedValue)
+                    InfoPreviewer(
+                        title: "settings.account.deviceFingerprint".localized,
+                        content: bindingDeviceFingerPrint.wrappedValue
+                    )
                 }
             }
             TestSectionView(
