@@ -556,18 +556,14 @@ private struct ShowAvatarPercentageView: View {
     }
 
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        guard let char = viewModel.charMap?["\(avatar.charId)"] else {
-            return AnyView(EmptyView())
+        guard let asset = CharacterAsset(rawValue: avatar.charId) else {
+            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 30, height: 30))
         }
-        let charName = char.i18nNameFixed(
-            by: viewModel.charLoc,
-            enkaID: avatar.charId
-        )
         let result = HStack {
             Label {
-                Text(charName.localizedWithFix)
+                Text(asset.localized)
             } icon: {
-                char.asset.decoratedIcon(30, cutTo: .face)
+                asset.decoratedIcon(30, cutTo: .face)
             }
             Spacer()
             Text(
@@ -688,18 +684,14 @@ private struct ShowAvatarPercentageViewWithSection: View {
     }
 
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        guard let char = viewModel.charMap?["\(avatar.charId)"] else {
-            return AnyView(EmptyView())
+        guard let asset = CharacterAsset(rawValue: avatar.charId) else {
+            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 30, height: 30))
         }
-        let charName = char.i18nNameFixed(
-            by: viewModel.charLoc,
-            enkaID: avatar.charId
-        )
         let result = HStack {
             Label {
-                Text(charName.localizedWithFix)
+                Text(asset.localized)
             } icon: {
-                char.asset.decoratedIcon(30, cutTo: .face)
+                asset.decoratedIcon(30, cutTo: .face)
             }
             Spacer()
             Text(
@@ -710,7 +702,6 @@ private struct ShowAvatarPercentageViewWithSection: View {
                     ) as NSNumber)!
             )
         }
-
         return AnyView(result)
     }
 
@@ -808,15 +799,15 @@ private struct ShowAvatarPercentageShare: View {
     }
 
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        guard let char = charMap["\(avatar.charId)"] else {
-            return AnyView(EmptyView())
+        guard let asset = CharacterAsset(rawValue: avatar.charId) else {
+            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 30, height: 30))
         }
-        let charName = char.i18nNameFixed(by: charLoc, enkaID: avatar.charId)
+        let charName = asset.localized
         let result = GridRow {
             Label {
-                Text(charName.localizedWithFix).fixedSize()
+                Text(charName).fixedSize()
             } icon: {
-                char.asset.decoratedIcon(30, cutTo: .face)
+                asset.decoratedIcon(30, cutTo: .face)
             }
             Text(
                 percentageFormatter
@@ -880,8 +871,10 @@ private struct ShowTeamPercentageView: View {
                                     team.team.sorted(by: <),
                                     id: \.self
                                 ) { avatarId in
-                                    if let char = charMap["\(avatarId)"] {
-                                        char.asset.decoratedIcon(40, cutTo: .face)
+                                    if let avatar = CharacterAsset(rawValue: avatarId) {
+                                        avatar.decoratedIcon(40, cutTo: .face)
+                                    } else {
+                                        Circle().fill(Color.gray).opacity(0.3).frame(width: 40, height: 40)
                                     }
                                 }
                                 Spacer()
@@ -951,8 +944,10 @@ private struct ShowTeamPercentageShare: View {
                                     team.team.sorted(by: <),
                                     id: \.self
                                 ) { avatarId in
-                                    if let char = charMap["\(avatarId)"] {
-                                        char.asset.decoratedIcon(40, cutTo: .face)
+                                    if let avatar = CharacterAsset(rawValue: avatarId) {
+                                        avatar.decoratedIcon(40, cutTo: .face)
+                                    } else {
+                                        Circle().fill(Color.gray).opacity(0.3).frame(width: 40, height: 40)
                                     }
                                 }
                             }

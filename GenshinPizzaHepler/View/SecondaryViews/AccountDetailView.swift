@@ -94,10 +94,10 @@ struct AccountDetailView: View {
                     }
                 }
                 NavigationLink(destination: TextFieldEditorView(
-                    title: "设备指纹",
+                    title: "settings.account.deviceFingerprint".localized,
                     content: bindingDeviceFingerPrint
                 )) {
-                    InfoPreviewer(title: "设备指纹", content: bindingDeviceFingerPrint.wrappedValue)
+                    InfoPreviewer(title: "settings.account.deviceFingerprint".localized, content: bindingDeviceFingerPrint.wrappedValue)
                 }
             }
             TestSectionView(

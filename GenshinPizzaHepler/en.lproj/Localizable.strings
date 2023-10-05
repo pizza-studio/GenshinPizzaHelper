@@ -1352,3 +1352,4 @@
 "detailPortal.errorMessage.noAccountAvailableForAbyssDisplay" = "Please log in to see Spiral Abyss records.";
 "detailPortal.errorMessage.accountHasNulledBasicInfo" = "Error: account.basicInfo == nil. Please report if this issue still exists even if you have successfully passed the human verification.";
 "settings.account.error.failedFromFetchingAccountInformation" = "Unable to retrieve log-in information";
+"settings.account.deviceFingerprint" = "Device Fingerprint";

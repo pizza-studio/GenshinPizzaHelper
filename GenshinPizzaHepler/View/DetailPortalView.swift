@@ -366,7 +366,12 @@ struct DetailPortalView: View {
                             AccountDetailView(account: $account)
                         } label: {
                             HStack {
-                              Text("detailPortal.errorMessage.accountHasNulledBasicInfo").font(.footnote).foregroundStyle(Color.accentColor)
+                                Image(
+                                    systemName: "exclamationmark.arrow.triangle.2.circlepath"
+                                )
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.red)
+                                Text("detailPortal.errorMessage.accountHasNulledBasicInfo").font(.footnote)
                             }
                         }
                     }
