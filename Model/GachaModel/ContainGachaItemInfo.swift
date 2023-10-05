@@ -76,7 +76,7 @@ extension ContainGachaItemInfo {
             }
         case .weapon:
             if let asset = WeaponAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
-                return asset.filename
+                return asset.fileName
             } else {
                 // TODO: 找不到时的默认图片
                 return ""

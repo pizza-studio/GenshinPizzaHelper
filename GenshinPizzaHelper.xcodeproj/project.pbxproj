@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
+		5B2A9E492ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
+		5B2A9E4A2ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
+		5B2A9E4B2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
+		5B2A9E4C2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
+		5B2A9E4D2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
+		5B2A9E4E2ACEA4B0005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
+		5B2A9E4F2ACEB7D0005C32B6 /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
 		5B43A15629D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15729D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
@@ -891,6 +899,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_DailyMaterialAsset.swift; sourceTree = "<group>"; };
 		5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseUIAccommodations.swift; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
 		5B4CCB222AC3324100E4A0B5 /* ThirdPartyToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyToolsView.swift; sourceTree = "<group>"; };
@@ -1282,6 +1291,7 @@
 				5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */,
 				5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */,
 				5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */,
+				5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */,
 				5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */,
 				5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */,
 			);
@@ -2467,6 +2477,7 @@
 				5BD1C5D62A2A1FC90043C2B1 /* SettingsView.swift in Sources */,
 				5BD1C5D72A2A1FC90043C2B1 /* BackgroundOptions.swift in Sources */,
 				5BD1C5D82A2A1FC90043C2B1 /* AccountIntents.intentdefinition in Sources */,
+				5B2A9E492ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				5BD1C5D92A2A1FC90043C2B1 /* DetailPortalView.swift in Sources */,
 				EAE846082A3767EB0065CF09 /* Verification.swift in Sources */,
 				5BD1C5DA2A2A1FC90043C2B1 /* MainInfoWithDetailView.swift in Sources */,
@@ -2621,6 +2632,7 @@
 				EAE95CC528CE0FC400D975CB /* AccountConfigurationModel.swift in Sources */,
 				EAB1110328CF8423009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EAE5C5B828CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */,
+				5B2A9E4C2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EAE95CD828CE103D00D975CB /* BackgroundOptions.swift in Sources */,
 				5B5F82D22ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EAB11EA629326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift in Sources */,
@@ -2712,6 +2724,7 @@
 				EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */,
 				BFCC06B728CAF60B003E4A54 /* WatchAccountDetailView.swift in Sources */,
 				BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */,
+				5B2A9E4B2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */,
 				5BA0D7A32ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EA185F27292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
@@ -2769,9 +2782,11 @@
 				BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */,
 				5B5F82DA2ACC9638005983AC /* Enum_NameCard.swift in Sources */,
 				BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
+				5B2A9E4E2ACEA4B0005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EA09A01B28A2B8D30023B4AF /* Servers.swift in Sources */,
 				EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */,
 				EAB11EA029325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
+				5B2A9E4F2ACEB7D0005C32B6 /* Enum_WeaponAsset.swift in Sources */,
 				5BA0D7A42ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EA09A01C28A2B8E50023B4AF /* HttpMethod.swift in Sources */,
 				BFFD821028A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
@@ -2847,6 +2862,7 @@
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
 				BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				EA7FDF92292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,
+				5B2A9E4A2ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				EA784CD52902518000918F64 /* FetchHomeModel.swift in Sources */,
@@ -2933,6 +2949,7 @@
 				BFFD820E28A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
 				BFFD822C28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				BFB101D328D5C579000DC631 /* DetailPortalView.swift in Sources */,
+				5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EAE846072A375F540065CF09 /* Verification.swift in Sources */,
 				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				EA11489129D9D1430059DEBF /* ImportGachaView.swift in Sources */,
@@ -3087,6 +3104,7 @@
 				BF0130A529220E7800074450 /* WidgetUserData.swift in Sources */,
 				BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */,
+				5B2A9E4D2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EA185F31292F1AFD003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */,
 				EAE95D0F28CE11D200D975CB /* md5.swift in Sources */,

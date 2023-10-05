@@ -6,6 +6,39 @@ Created by Bill Haku on 2022/8/23.
 
 */
 
+// MARK: - Daily Materials
+
+"$asset.dailyMaterial:talentFreedom" = "「自由」";
+"$asset.dailyMaterial:talentResistance" = "「抗争」";
+"$asset.dailyMaterial:talentBallad" = "「诗文」";
+"$asset.dailyMaterial:talentProsperity" = "「繁荣」";
+"$asset.dailyMaterial:talentDiligence" = "「勤劳」";
+"$asset.dailyMaterial:talentGold" = "「黄金」";
+"$asset.dailyMaterial:talentTransience" = "「浮世」";
+"$asset.dailyMaterial:talentElegance" = "「风雅」";
+"$asset.dailyMaterial:talentLight" = "「天光」";
+"$asset.dailyMaterial:talentAdmonition" = "「诤言」";
+"$asset.dailyMaterial:talentIngenuity" = "「巧思」";
+"$asset.dailyMaterial:talentPraxis" = "「笃行」";
+"$asset.dailyMaterial:talentEquity" = "「公平」";
+"$asset.dailyMaterial:talentJustice" = "「正义」";
+"$asset.dailyMaterial:talentOrder" = "「秩序」";
+"$asset.dailyMaterial:weaponDecarabian" = "「高塔孤王」";
+"$asset.dailyMaterial:weaponBorealWolf" = "「凛风奔狼」";
+"$asset.dailyMaterial:weaponGladiator" = "「狮牙斗士」";
+"$asset.dailyMaterial:weaponGuyun" = "「孤云寒林」";
+"$asset.dailyMaterial:weaponElixir" = "「雾海云间」";
+"$asset.dailyMaterial:weaponAerosiderite" = "「漆黑陨铁」";
+"$asset.dailyMaterial:weaponDistantSea" = "「远海夷地」";
+"$asset.dailyMaterial:weaponNarukami" = "「鸣神御灵」";
+"$asset.dailyMaterial:weaponKijinMask" = "「今昔剧画」";
+"$asset.dailyMaterial:weaponTalisman" = "「谧林涓露」";
+"$asset.dailyMaterial:weaponOasisGarden" = "「绿洲花园」";
+"$asset.dailyMaterial:weaponScorchingMight" = "「烈日威权」";
+"$asset.dailyMaterial:weaponAncientChord" = "「悠古弦音」";
+"$asset.dailyMaterial:weaponDewdrop" = "「纯圣露滴」";
+"$asset.dailyMaterial:weaponPristineSea" = "「无垢之海」";
+
 // MARK: - Character Names
 
 "$asset.character:Hotaru" = "荧";
@@ -59,7 +92,7 @@ Created by Bill Haku on 2022/8/23.
 "$asset.character:Ayato" = "神里绫人";
 "$asset.character:Yelan" = "夜兰";
 "$asset.character:Shinobu" = "久岐忍";
-"$asset.character:Heizo" = "鹿野院平藏";
+"$asset.character:Heizou" = "鹿野院平藏";
 "$asset.character:Tighnari" = "提纳里";
 "$asset.character:Collei" = "柯莱";
 "$asset.character:Dori" = "多莉";
@@ -590,30 +623,6 @@ Created by Bill Haku on 2022/8/23.
 "拒绝" = "拒绝";
 
 // Daily materials
-"「高塔孤王」" = "「高塔孤王」";
-"「凛风奔狼」" = "「凛风奔狼」";
-"「狮牙斗士」" = "「狮牙斗士」";
-"「孤云寒林」" = "「孤云寒林」";
-"「雾海云间」" = "「雾海云间」";
-"「漆黑陨铁」" = "「漆黑陨铁」";
-"「远海夷地」" = "「远海夷地」";
-"「鸣神御灵」" = "「鸣神御灵」";
-"「今昔剧画」" = "「今昔剧画」";
-"「谧林涓露」" = "「谧林涓露」";
-"「绿洲花园」" = "「绿洲花园」";
-"「烈日威权」" = "「烈日威权」";
-"「自由」" = "「自由」";
-"「抗争」" = "「抗争」";
-"「诗文」" = "「诗文」";
-"「繁荣」" = "「繁荣」";
-"「勤劳」" = "「勤劳」";
-"「黄金」" = "「黄金」";
-"「浮世」" = "「浮世」";
-"「风雅」" = "「风雅」";
-"「天光」" = "「天光」";
-"「诤言」" = "「诤言」";
-"「巧思」" = "「巧思」";
-"「笃行」" = "「笃行」";
 
 "今日材料" = "今日材料";
 "今日材料：週日所有材料均可获取" = "今日材料：週日所有材料均可获取";
@@ -1338,12 +1347,6 @@ Created by Bill Haku on 2022/8/23.
 
 // MARK: - 3.0.5
 
-"「公平」" = "「公平」";
-"「正义」" = "「正义」";
-"「秩序」" = "「秩序」";
-"「悠古弦音」" = "「悠古弦音」";
-"「纯圣露滴」" = "「纯圣露滴」";
-"「无垢之海」" = "「无垢之海」";
 
 // MARK: - 3.1.1
 

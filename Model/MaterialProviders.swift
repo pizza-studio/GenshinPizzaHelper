@@ -29,10 +29,26 @@ struct WeaponOrTalentMaterial: Equatable {
         }
 
         init(weapon asset: WeaponAsset) {
-            self.imageString = asset.filename
+            self.imageString = asset.fileName
             self.nameToLocalize = asset.localized
             self.weapon = asset
             self.character = nil
+        }
+
+        init?(asset: DailyMaterialConsumer) {
+            if let asset = asset as? CharacterAsset {
+                self.imageString = asset.frontPhotoFileName
+                self.nameToLocalize = asset.localized
+                self.weapon = nil
+                self.character = asset
+            } else if let asset = asset as? WeaponAsset {
+                self.imageString = asset.fileName
+                self.nameToLocalize = asset.localized
+                self.weapon = asset
+                self.character = nil
+            } else {
+                return nil
+            }
         }
 
         // MARK: Internal

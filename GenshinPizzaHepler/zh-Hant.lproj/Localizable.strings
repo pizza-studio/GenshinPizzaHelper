@@ -6,6 +6,39 @@
 
  */
 
+// MARK: - Daily Materials
+
+"$asset.dailyMaterial:talentFreedom" = "「自由」";
+"$asset.dailyMaterial:talentResistance" = "「抗爭」";
+"$asset.dailyMaterial:talentBallad" = "「詩文」";
+"$asset.dailyMaterial:talentProsperity" = "「繁榮」";
+"$asset.dailyMaterial:talentDiligence" = "「勤勞」";
+"$asset.dailyMaterial:talentGold" = "「黃金」";
+"$asset.dailyMaterial:talentTransience" = "「浮世」";
+"$asset.dailyMaterial:talentElegance" = "「風雅」";
+"$asset.dailyMaterial:talentLight" = "「天光」";
+"$asset.dailyMaterial:talentAdmonition" = "「諍言」";
+"$asset.dailyMaterial:talentIngenuity" = "「巧思」";
+"$asset.dailyMaterial:talentPraxis" = "「篤行」";
+"$asset.dailyMaterial:talentEquity" = "「公平」";
+"$asset.dailyMaterial:talentJustice" = "「正義」";
+"$asset.dailyMaterial:talentOrder" = "「秩序」";
+"$asset.dailyMaterial:weaponDecarabian" = "「高塔孤王」";
+"$asset.dailyMaterial:weaponBorealWolf" = "「凜風奔狼」";
+"$asset.dailyMaterial:weaponGladiator" = "「獅牙鬥士」";
+"$asset.dailyMaterial:weaponGuyun" = "「孤雲寒林」";
+"$asset.dailyMaterial:weaponElixir" = "「霧海雲間」";
+"$asset.dailyMaterial:weaponAerosiderite" = "「漆黑隕鐵」";
+"$asset.dailyMaterial:weaponDistantSea" = "「遠海夷地」";
+"$asset.dailyMaterial:weaponNarukami" = "「鳴神御靈」";
+"$asset.dailyMaterial:weaponKijinMask" = "「今昔劇畫」";
+"$asset.dailyMaterial:weaponTalisman" = "「謐林涓露」";
+"$asset.dailyMaterial:weaponOasisGarden" = "「綠洲花園」";
+"$asset.dailyMaterial:weaponScorchingMight" = "「烈日威權」";
+"$asset.dailyMaterial:weaponAncientChord" = "「悠古弦音」";
+"$asset.dailyMaterial:weaponDewdrop" = "「純聖露滴」";
+"$asset.dailyMaterial:weaponPristineSea" = "「無垢之海」";
+
 // MARK: - Character Names
 
 "$asset.character:Hotaru" = "熒";
@@ -59,7 +92,7 @@
 "$asset.character:Ayato" = "神里綾人";
 "$asset.character:Yelan" = "夜蘭";
 "$asset.character:Shinobu" = "久岐忍";
-"$asset.character:Heizo" = "鹿野院平藏";
+"$asset.character:Heizou" = "鹿野院平藏";
 "$asset.character:Tighnari" = "提納里";
 "$asset.character:Collei" = "柯萊";
 "$asset.character:Dori" = "多莉";
@@ -590,30 +623,6 @@
 "拒绝" = "拒絕";
 
 // Daily materials
-"「高塔孤王」" = "「高塔孤王」";
-"「凛风奔狼」" = "「凜風奔狼」";
-"「狮牙斗士」" = "「獅牙鬥士」";
-"「孤云寒林」" = "「孤雲寒林」";
-"「雾海云间」" = "「霧海雲間」";
-"「漆黑陨铁」" = "「漆黑隕鐵」";
-"「远海夷地」" = "「遠海夷地」";
-"「鸣神御灵」" = "「鳴神御靈」";
-"「今昔剧画」" = "「今昔劇畫」";
-"「谧林涓露」" = "「謐林涓露」";
-"「绿洲花园」" = "「綠洲花園」";
-"「烈日威权」" = "「烈日威權」";
-"「自由」" = "「自由」";
-"「抗争」" = "「抗爭」";
-"「诗文」" = "「詩文」";
-"「繁荣」" = "「繁榮」";
-"「勤劳」" = "「勤勞」";
-"「黄金」" = "「黃金」";
-"「浮世」" = "「浮世」";
-"「风雅」" = "「風雅」";
-"「天光」" = "「天光」";
-"「诤言」" = "「諍言」";
-"「巧思」" = "「巧思」";
-"「笃行」" = "「篤行」";
 
 "今日材料" = "今日材料";
 "今日材料：週日所有材料均可获取" = "今日材料：週日所有材料均可獲取";
@@ -1340,12 +1349,6 @@
 
 // MARK: - 3.0.5
 
-"「公平」" = "「公平」";
-"「正义」" = "「正義」";
-"「秩序」" = "「秩序」";
-"「悠古弦音」" = "「悠古弦音」";
-"「纯圣露滴」" = "「純聖露滴」";
-"「无垢之海」" = "「無垢之海」";
 
 // MARK: - 3.1.1
 

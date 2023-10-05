@@ -6,6 +6,39 @@
 
 */
 
+// MARK: - Daily Materials
+
+"$asset.dailyMaterial:talentFreedom" = "Книги О Свободе";
+"$asset.dailyMaterial:talentResistance" = "Книги О Борьбе";
+"$asset.dailyMaterial:talentBallad" = "Книги О Поэзии";
+"$asset.dailyMaterial:talentProsperity" = "Книги О Процветании";
+"$asset.dailyMaterial:talentDiligence" = "Книги Об Усердии";
+"$asset.dailyMaterial:talentGold" = "Книги О Золоте";
+"$asset.dailyMaterial:talentTransience" = "Книги О Бренности";
+"$asset.dailyMaterial:talentElegance" = "Книги Об Изяществе";
+"$asset.dailyMaterial:talentLight" = "Книги О Свете";
+"$asset.dailyMaterial:talentAdmonition" = "Книги О Наставлениях";
+"$asset.dailyMaterial:talentIngenuity" = "Книги Об Остроумии";
+"$asset.dailyMaterial:talentPraxis" = "Книги О Честности";
+"$asset.dailyMaterial:talentEquity" = "Беспристрастии";
+"$asset.dailyMaterial:talentJustice" = "Справедливости";
+"$asset.dailyMaterial:talentOrder" = "Порядке";
+"$asset.dailyMaterial:weaponDecarabian" = "Декабриан";
+"$asset.dailyMaterial:weaponBorealWolf" = "Арктический Волк";
+"$asset.dailyMaterial:weaponGladiator" = "Львиный Клык";
+"$asset.dailyMaterial:weaponGuyun" = "Гуюнь";
+"$asset.dailyMaterial:weaponElixir" = "Заоблачное Море";
+"$asset.dailyMaterial:weaponAerosiderite" = "Чёрный Сидерит";
+"$asset.dailyMaterial:weaponDistantSea" = "Внешнее Море";
+"$asset.dailyMaterial:weaponNarukami" = "Наруками";
+"$asset.dailyMaterial:weaponKijinMask" = "Маска";
+"$asset.dailyMaterial:weaponTalisman" = "Ледяная Роса";
+"$asset.dailyMaterial:weaponOasisGarden" = "Цветущий Оазис";
+"$asset.dailyMaterial:weaponScorchingMight" = "Пылающая Мощь";
+"$asset.dailyMaterial:weaponAncientChord" = "Древней Струны";
+"$asset.dailyMaterial:weaponDewdrop" = "Чистой Капли Росы";
+"$asset.dailyMaterial:weaponPristineSea" = "Чаша Непорочного Моря";
+
 // MARK: - Character Names
 
 "$asset.character:Hotaru" = "Люмин";
@@ -59,7 +92,7 @@
 "$asset.character:Ayato" = "Аято";
 "$asset.character:Yelan" = "Е Лань";
 "$asset.character:Shinobu" = "Синобу";
-"$asset.character:Heizo" = "Хэйдзо";
+"$asset.character:Heizou" = "Хэйдзо";
 "$asset.character:Tighnari" = "Тигнари";
 "$asset.character:Collei" = "Коллеи";
 "$asset.character:Dori" = "Дори";
@@ -590,30 +623,6 @@
 "拒绝" = "Несогласен";
 
 // Daily materials
-"「高塔孤王」" = "Декабриан";
-"「凛风奔狼」" = "Арктический волк";
-"「狮牙斗士」" = "Львиный клык";
-"「孤云寒林」" = "Гуюнь";
-"「雾海云间」" = "Заоблачное море";
-"「漆黑陨铁」" = "Чёрный сидерит";
-"「远海夷地」" = "Внешнее море";
-"「鸣神御灵」" = "Наруками";
-"「今昔剧画」" = "Маска";
-"「谧林涓露」" = "Ледяная роса";
-"「绿洲花园」" = "Цветущий оазис";
-"「烈日威权」" = "Пылающая мощь";
-"「自由」" = "Книги о Свободе";
-"「抗争」" = "Книги о Борьбе";
-"「诗文」" = "Книги о Поэзии";
-"「繁荣」" = "Книги о Процветании";
-"「勤劳」" = "Книги об Усердии";
-"「黄金」" = "Книги о Золоте";
-"「浮世」" = "Книги о Бренности";
-"「风雅」" = "Книги об Изяществе";
-"「天光」" = "Книги о Свете";
-"「诤言」" = "Книги о Наставлениях";
-"「巧思」" = "Книги об Остроумии";
-"「笃行」" = "Книги о Честности";
 
 "今日材料" = "Сегодняшние материалы";
 "今日材料：星期日所有材料均可获取" = "Доступны все материалы";
@@ -1339,12 +1348,6 @@
 
 // MARK: - 3.0.5
 
-"「公平」" = "Беспристрастии";
-"「正义」" = "Справедливости";
-"「秩序」" = "Порядке";
-"「悠古弦音」" = "Древней Струны";
-"「纯圣露滴」" = "Чистой Капли Росы";
-"「无垢之海」" = "Чаша Непорочного Моря";
 
 // MARK: - 3.1.1
 

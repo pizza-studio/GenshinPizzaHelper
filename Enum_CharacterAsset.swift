@@ -64,7 +64,7 @@ public enum CharacterAsset: Int, CaseIterable {
     case Ayato = 10000066
     case Yelan = 10000060
     case Shinobu = 10000065
-    case Heizo = 10000059
+    case Heizou = 10000059
     case Tighnari = 10000069
     case Collei = 10000067
     case Dori = 10000068
@@ -174,7 +174,7 @@ extension CharacterAsset {
         case .Ayato: return "UI_AvatarIcon_Ayato"
         case .Yelan: return "UI_AvatarIcon_Yelan"
         case .Shinobu: return "UI_AvatarIcon_Shinobu"
-        case .Heizo: return "UI_AvatarIcon_Heizo"
+        case .Heizou: return "UI_AvatarIcon_Heizo"
         case .Tighnari: return "UI_AvatarIcon_Tighnari"
         case .Collei: return "UI_AvatarIcon_Collei"
         case .Dori: return "UI_AvatarIcon_Dori"
@@ -255,7 +255,7 @@ extension CharacterAsset {
         case .Ayato: return .UI_NameCardPic_Ayato_P
         case .Yelan: return .UI_NameCardPic_Yelan_P
         case .Shinobu: return .UI_NameCardPic_Shinobu_P
-        case .Heizo: return .UI_NameCardPic_Heizo_P
+        case .Heizou: return .UI_NameCardPic_Heizo_P
         case .Tighnari: return .UI_NameCardPic_Tighnari_P
         case .Collei: return .UI_NameCardPic_Collei_P
         case .Dori: return .UI_NameCardPic_Dori_P
@@ -340,7 +340,7 @@ extension CharacterAsset {
         case .Ayato: return [4700]
         case .Yelan: return [4800]
         case .Shinobu: return [4900]
-        case .Heizo: return [5000]
+        case .Heizou: return [5000]
         case .Tighnari: return [5200]
         case .Collei: return [5100]
         case .Dori: return [5300]
@@ -365,6 +365,91 @@ extension CharacterAsset {
         case .Wriothesley: return [7200]
         case .Charlotte: return [] // 原神 4.2
         case .Furina: return [] // 原神 4.2
+        }
+    }
+}
+
+// MARK: DailyMaterialConsumer
+
+extension CharacterAsset: DailyMaterialConsumer {
+    public var dailyMaterial: DailyMaterialAsset? {
+        switch self {
+        case .Hotaru: return nil
+        case .Sora: return nil
+        case .Sucrose: return .talentFreedom
+        case .Keqing: return .talentProsperity
+        case .Mona: return .talentResistance
+        case .Chongyun: return .talentDiligence
+        case .Qiqi: return .talentProsperity
+        case .Noelle: return .talentResistance
+        case .Bennett: return .talentResistance
+        case .Fischl: return .talentBallad
+        case .Klee: return .talentFreedom
+        case .Ningguang: return .talentProsperity
+        case .Xingqiu: return .talentGold
+        case .Beidou: return .talentGold
+        case .Xiangling: return .talentDiligence
+        case .Venti: return .talentBallad
+        case .Amber: return .talentFreedom
+        case .Razor: return .talentResistance
+        case .Diluc: return .talentResistance
+        case .Kaeya: return .talentBallad
+        case .Barbara: return .talentFreedom
+        case .Lisa: return .talentBallad
+        case .Jean: return .talentResistance
+        case .Diona: return .talentFreedom
+        case .Tartaglia: return .talentFreedom
+        case .Xinyan: return .talentGold
+        case .Zhongli: return .talentGold
+        case .Albedo: return .talentBallad
+        case .Ganyu: return .talentDiligence
+        case .Xiao: return .talentProsperity
+        case .Hutao: return .talentDiligence
+        case .Rosaria: return .talentBallad
+        case .Yanfei: return .talentGold
+        case .Eula: return .talentResistance
+        case .Kazuha: return .talentDiligence
+        case .Ayaka: return .talentElegance
+        case .Sayu: return .talentLight
+        case .Yoimiya: return .talentTransience
+        case .Aloy: return .talentFreedom
+        case .Sara: return .talentElegance
+        case .Ei: return .talentLight
+        case .Kokomi: return .talentTransience
+        case .Thoma: return .talentTransience
+        case .Itto: return .talentElegance
+        case .Gorou: return .talentLight
+        case .Yunjin: return .talentDiligence
+        case .Shenhe: return .talentProsperity
+        case .Miko: return .talentLight
+        case .Ayato: return .talentElegance
+        case .Yelan: return .talentProsperity
+        case .Shinobu: return .talentElegance
+        case .Heizou: return .talentTransience
+        case .Tighnari: return .talentAdmonition
+        case .Collei: return .talentPraxis
+        case .Dori: return .talentIngenuity
+        case .Candace: return .talentAdmonition
+        case .Cyno: return .talentAdmonition
+        case .Nilou: return .talentPraxis
+        case .Nahida: return .talentIngenuity
+        case .Layla: return .talentIngenuity
+        case .Faruzan: return .talentAdmonition
+        case .Kunikuzushi: return .talentPraxis
+        case .Alhaitham: return .talentIngenuity
+        case .Yaoyao: return .talentDiligence
+        case .Dehya: return .talentPraxis
+        case .Mika: return .talentBallad
+        case .Baizhu: return .talentGold
+        case .Kaveh: return .talentIngenuity
+        case .Kirara: return .talentTransience
+        case .Lyney: return .talentEquity
+        case .Lynette: return .talentOrder
+        case .Freminet: return .talentJustice
+        case .Neuvillette: return .talentEquity
+        case .Wriothesley: return .talentOrder
+        case .Charlotte: return nil // .talentJustice // 原神 4.2
+        case .Furina: return nil // .talentJustice // 原神 4.2
         }
     }
 }

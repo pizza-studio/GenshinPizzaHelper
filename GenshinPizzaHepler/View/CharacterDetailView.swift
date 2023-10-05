@@ -52,7 +52,7 @@ struct CharacterDetailView: View {
             closeView()
         }
         .background(
-            EnkaWebIcon(iconString: avatar.namecardIconString)
+            EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
                 .scaledToFill()
                 .ignoresSafeArea(.all)
                 .overlay(.thinMaterial)

@@ -6,6 +6,39 @@
 
 */
 
+// MARK: - Daily Materials
+
+"$asset.dailyMaterial:talentFreedom" = "Liberté";
+"$asset.dailyMaterial:talentResistance" = "Résistance";
+"$asset.dailyMaterial:talentBallad" = "Poésie";
+"$asset.dailyMaterial:talentProsperity" = "Prospérité";
+"$asset.dailyMaterial:talentDiligence" = "Diligence";
+"$asset.dailyMaterial:talentGold" = "Or";
+"$asset.dailyMaterial:talentTransience" = "Ephémère";
+"$asset.dailyMaterial:talentElegance" = "Elégance";
+"$asset.dailyMaterial:talentLight" = "Lumière";
+"$asset.dailyMaterial:talentAdmonition" = "Admonaistration";
+"$asset.dailyMaterial:talentIngenuity" = "Ingénuité";
+"$asset.dailyMaterial:talentPraxis" = "Usage";
+"$asset.dailyMaterial:talentEquity" = "L'equité";
+"$asset.dailyMaterial:talentJustice" = "La Justice";
+"$asset.dailyMaterial:talentOrder" = "L'ordre";
+"$asset.dailyMaterial:weaponDecarabian" = "Décabarian";
+"$asset.dailyMaterial:weaponBorealWolf" = "Loup Boréal";
+"$asset.dailyMaterial:weaponGladiator" = "Chevalier Du Croc De Lion";
+"$asset.dailyMaterial:weaponGuyun" = "Guyun";
+"$asset.dailyMaterial:weaponElixir" = "Karstique";
+"$asset.dailyMaterial:weaponAerosiderite" = "Aérosidérite Noire";
+"$asset.dailyMaterial:weaponDistantSea" = "Branche Marine";
+"$asset.dailyMaterial:weaponNarukami" = "Narukami";
+"$asset.dailyMaterial:weaponKijinMask" = "Masque";
+"$asset.dailyMaterial:weaponTalisman" = "Talisman De La Rosée";
+"$asset.dailyMaterial:weaponOasisGarden" = "Jardin D'oasis";
+"$asset.dailyMaterial:weaponScorchingMight" = "Pouvoir Brûlant";
+"$asset.dailyMaterial:weaponAncientChord" = "Accord Ancien";
+"$asset.dailyMaterial:weaponDewdrop" = "Rosée Sacrée Pure";
+"$asset.dailyMaterial:weaponPristineSea" = "Gobelet De La Mer Immaculée";
+
 // MARK: - Character Names
 
 "$asset.character:Hotaru" = "Lumine";
@@ -59,7 +92,7 @@
 "$asset.character:Ayato" = "Kamisato Ayato";
 "$asset.character:Yelan" = "Yelan";
 "$asset.character:Shinobu" = "Kuki Shinobu";
-"$asset.character:Heizo" = "Shikanoin Heizou";
+"$asset.character:Heizou" = "Shikanoin Heizou";
 "$asset.character:Tighnari" = "Tighnari";
 "$asset.character:Collei" = "Collei";
 "$asset.character:Dori" = "Dori";
@@ -590,30 +623,6 @@
 "拒绝" = "Refuser";
 
 // Daily materials
-"「高塔孤王」" = "Décabarian";
-"「凛风奔狼」" = "Loup boréal";
-"「狮牙斗士」" = "Chevalier du Croc de Lion";
-"「孤云寒林」" = "Guyun";
-"「雾海云间」" = "karstique";
-"「漆黑陨铁」" = "Aérosidérite noire";
-"「远海夷地」" = "Branche marine";
-"「鸣神御灵」" = "Narukami";
-"「今昔剧画」" = "Masque";
-"「谧林涓露」" = "Talisman de la rosée";
-"「绿洲花园」" = "Jardin d'oasis";
-"「烈日威权」" = "Pouvoir brûlant";
-"「自由」" = "Liberté";
-"「抗争」" = "Résistance";
-"「诗文」" = "Poésie";
-"「繁荣」" = "Prospérité";
-"「勤劳」" = "Diligence";
-"「黄金」" = "Or";
-"「浮世」" = "Ephémère";
-"「风雅」" = "Elégance";
-"「天光」" = "lumière";
-"「诤言」" = "Admonaistration";
-"「巧思」" = "Ingénuité";
-"「笃行」" = "Usage";
 
 "今日材料" = "Les matériaux du jour";
 "今日材料：星期日所有材料均可获取" = "Les matériaux du jour: Tout les matériaux sont disponibles le Dimanche";
@@ -1340,12 +1349,6 @@
 
 // MARK: - 3.0.5
 
-"「公平」" = "L'Equité";
-"「正义」" = "La Justice";
-"「秩序」" = "L'Ordre";
-"「悠古弦音」" = "Accord Ancien";
-"「纯圣露滴」" = "Rosée Sacrée Pure";
-"「无垢之海」" = "Gobelet de la Mer Immaculée";
 
 // MARK: - 3.1.1
 

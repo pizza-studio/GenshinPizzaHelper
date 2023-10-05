@@ -6,6 +6,39 @@
   
 */
 
+// MARK: - Daily Materials
+
+"$asset.dailyMaterial:talentFreedom" = "「자유」";
+"$asset.dailyMaterial:talentResistance" = "「투쟁」";
+"$asset.dailyMaterial:talentBallad" = "「시문」";
+"$asset.dailyMaterial:talentProsperity" = "「번영」";
+"$asset.dailyMaterial:talentDiligence" = "「근면」";
+"$asset.dailyMaterial:talentGold" = "「황금」";
+"$asset.dailyMaterial:talentTransience" = "「부세」";
+"$asset.dailyMaterial:talentElegance" = "「풍아」";
+"$asset.dailyMaterial:talentLight" = "「천광」";
+"$asset.dailyMaterial:talentAdmonition" = "「간언」";
+"$asset.dailyMaterial:talentIngenuity" = "「창의」";
+"$asset.dailyMaterial:talentPraxis" = "「실천」";
+"$asset.dailyMaterial:talentEquity" = "「공평」";
+"$asset.dailyMaterial:talentJustice" = "「정의」";
+"$asset.dailyMaterial:talentOrder" = "「질서」";
+"$asset.dailyMaterial:weaponDecarabian" = "고탑 왕의 깨진 꿈";
+"$asset.dailyMaterial:weaponBorealWolf" = "칼바람 울프의 그리운 고향";
+"$asset.dailyMaterial:weaponGladiator" = "라이언 투사의 이념";
+"$asset.dailyMaterial:weaponGuyun" = "고운한림의 신체";
+"$asset.dailyMaterial:weaponElixir" = "안개구름 속의 전환";
+"$asset.dailyMaterial:weaponAerosiderite" = "흑운철 덩이";
+"$asset.dailyMaterial:weaponDistantSea" = "먼바다의 금빛 가지";
+"$asset.dailyMaterial:weaponNarukami" = "나루카미 어령의 용맹";
+"$asset.dailyMaterial:weaponKijinMask" = "금석극화의 귀인(鬼人)";
+"$asset.dailyMaterial:weaponTalisman" = "숲의 이슬을 닮은 금 부적";
+"$asset.dailyMaterial:weaponOasisGarden" = "오아시스 화원의 진리";
+"$asset.dailyMaterial:weaponScorchingMight" = "태양 같은 권위의 과거";
+"$asset.dailyMaterial:weaponAncientChord" = "오래된 현악의 울림";
+"$asset.dailyMaterial:weaponDewdrop" = "성스러운 이슬의 정수";
+"$asset.dailyMaterial:weaponPristineSea" = "순결한 바다의 금잔";
+
 // MARK: - Character Names
 
 "$asset.character:Hotaru" = "루미네";
@@ -59,7 +92,7 @@
 "$asset.character:Ayato" = "카미사토 아야토";
 "$asset.character:Yelan" = "야란";
 "$asset.character:Shinobu" = "쿠키 시노부";
-"$asset.character:Heizo" = "시카노인 헤이조";
+"$asset.character:Heizou" = "시카노인 헤이조";
 "$asset.character:Tighnari" = "타이나리";
 "$asset.character:Collei" = "콜레이";
 "$asset.character:Dori" = "도리";
@@ -590,30 +623,6 @@
 "拒绝" = "Disagree";
 
 // Daily materials
-"「高塔孤王」" = "Decarabian";
-"「凛风奔狼」" = "Boreal Wolf";
-"「狮牙斗士」" = "Dandelion Gladiator";
-"「孤云寒林」" = "Guyun";
-"「雾海云间」" = "Mist Veiled";
-"「漆黑陨铁」" = "Aerosiderite";
-"「远海夷地」" = "Distant Sea";
-"「鸣神御灵」" = "Narukami";
-"「今昔剧画」" = "Mask";
-"「谧林涓露」" = "Forest Dew";
-"「绿洲花园」" = "Oasis Garden";
-"「烈日威权」" = "Scorching Might";
-"「自由」" = "Freedom";
-"「抗争」" = "Resistance";
-"「诗文」" = "Ballad";
-"「繁荣」" = "Prosperity";
-"「勤劳」" = "Diligence";
-"「黄金」" = "Gold";
-"「浮世」" = "Transience";
-"「风雅」" = "Elegance";
-"「天光」" = "Light";
-"「诤言」" = "Admonition";
-"「巧思」" = "Ingenuity";
-"「笃行」" = "Praxis";
 
 "今日材料" = "Today's Materials";
 "今日材料：星期日所有材料均可获取" = "Today's Materials: All avaliable in Sunday";
@@ -1338,12 +1347,6 @@
 
 // MARK: - 3.0.5
 
-"「公平」" = "Equity";
-"「正义」" = "Justice";
-"「秩序」" = "Order";
-"「悠古弦音」" = "Ancient Chord";
-"「纯圣露滴」" = "Pure Sacred Dewdrop";
-"「无垢之海」" = "Goblet of the Pristine Sea";
 
 // MARK: - 3.1.1
 

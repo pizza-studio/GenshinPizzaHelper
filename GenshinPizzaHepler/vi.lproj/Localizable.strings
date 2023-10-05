@@ -6,6 +6,39 @@
   
 */
 
+// MARK: - Daily Materials
+
+"$asset.dailyMaterial:talentFreedom" = "Tự Do";
+"$asset.dailyMaterial:talentResistance" = "Kháng Chiến";
+"$asset.dailyMaterial:talentBallad" = "Thơ Văn";
+"$asset.dailyMaterial:talentProsperity" = "Phồn Vinh";
+"$asset.dailyMaterial:talentDiligence" = "Chăm Chỉ";
+"$asset.dailyMaterial:talentGold" = "Hoàng Kim";
+"$asset.dailyMaterial:talentTransience" = "Phù Thế";
+"$asset.dailyMaterial:talentElegance" = "Nhã Nhặn";
+"$asset.dailyMaterial:talentLight" = "Ánh Sáng";
+"$asset.dailyMaterial:talentAdmonition" = "Khuyên Nhủ";
+"$asset.dailyMaterial:talentIngenuity" = "Tinh Tế";
+"$asset.dailyMaterial:talentPraxis" = "Thực Hành";
+"$asset.dailyMaterial:talentEquity" = "Công Bằng";
+"$asset.dailyMaterial:talentJustice" = "Chính Nghĩa";
+"$asset.dailyMaterial:talentOrder" = "Trật Tự";
+"$asset.dailyMaterial:weaponDecarabian" = "Xác Tàu Tháp Cô Vương";
+"$asset.dailyMaterial:weaponBorealWolf" = "Nỗi Nhớ Của Sói Bão";
+"$asset.dailyMaterial:weaponGladiator" = "Lí Tưởng Của Đấu Sĩ Nanh Sư Tử";
+"$asset.dailyMaterial:weaponGuyun" = "Thần Thể Rừng Băng Giá";
+"$asset.dailyMaterial:weaponElixir" = "Kim Đơn Biển Sương Mù";
+"$asset.dailyMaterial:weaponAerosiderite" = "Một Góc Thiên Thạch Đen";
+"$asset.dailyMaterial:weaponDistantSea" = "Nhánh Quỳnh Ngọc Của Biển Xa";
+"$asset.dailyMaterial:weaponNarukami" = "Tình Yêu Của Narukami";
+"$asset.dailyMaterial:weaponKijinMask" = "Nanh Cọp Của Gekiga";
+"$asset.dailyMaterial:weaponTalisman" = "Bùa Rừng Xanh Sương Đọng - Sắt";
+"$asset.dailyMaterial:weaponOasisGarden" = "Ân Huệ Vườn Hoa Ốc Đảo";
+"$asset.dailyMaterial:weaponScorchingMight" = "Tia Sáng Của Ánh Nắng Quyền Uy ";
+"$asset.dailyMaterial:weaponAncientChord" = "Cung Đàn Cổ Xưa";
+"$asset.dailyMaterial:weaponDewdrop" = "Giọt Sương Thánh Thuần";
+"$asset.dailyMaterial:weaponPristineSea" = "Của Biển Nguyên Sơ";
+
 // MARK: - Character Names
 
 "$asset.character:Hotaru" = "Lumine";
@@ -59,7 +92,7 @@
 "$asset.character:Ayato" = "Kamisato Ayato";
 "$asset.character:Yelan" = "Yelan";
 "$asset.character:Shinobu" = "Kuki Shinobu";
-"$asset.character:Heizo" = "Shikanoin Heizou";
+"$asset.character:Heizou" = "Shikanoin Heizou";
 "$asset.character:Tighnari" = "Tighnari";
 "$asset.character:Collei" = "Collei";
 "$asset.character:Dori" = "Dori";
@@ -713,30 +746,6 @@
 "拒绝" = "Không đồng ý";
 
 // Daily materials
-"「高塔孤王」" = "Xác Tàu Tháp Cô Vương";
-"「凛风奔狼」" = "Nỗi Nhớ Của Sói Bão";
-"「狮牙斗士」" = "Lí Tưởng Của Đấu Sĩ Nanh Sư Tử";
-"「孤云寒林」" = "Thần Thể Rừng Băng Giá";
-"「雾海云间」" = "Kim Đơn Biển Sương Mù";
-"「漆黑陨铁」" = "Một Góc Thiên Thạch Đen";
-"「远海夷地」" = "Nhánh Quỳnh Ngọc Của Biển Xa";
-"「鸣神御灵」" = "Tình Yêu Của Narukami";
-"「今昔剧画」" = "Nanh Cọp Của Gekiga";
-"「谧林涓露」" = "Bùa Rừng Xanh Sương Đọng - Sắt";
-"「绿洲花园」" = "Ân Huệ Vườn Hoa Ốc Đảo";
-"「烈日威权」" = "Tia Sáng Của Ánh Nắng Quyền Uy ";
-"「自由」" = "Triết Học Của \"Tự Do\"";
-"「抗争」" = "Triết Học Của \"Kháng Chiến\"";
-"「诗文」" = "Triết Học Của \"Thơ Văn\"";
-"「繁荣」" = "Hướng Dẫn Của \"Phồn Vinh\"";
-"「勤劳」" = "Triết Học Của \"Chăm Chỉ\"";
-"「黄金」" = "Triết Học Của \"Hoàng Kim\"";
-"「浮世」" = "Triết Học Của \"Phù Thế\"";
-"「风雅」" = "Triết Học Của \"Nhã Nhặn\"";
-"「天光」" = "Triết Học Của \"Ánh Sáng\"";
-"「诤言」" = "Triết Học Của \"Khuyên Nhủ\"";
-"「巧思」" = "Triết Học Của \"Tinh Tế\"";
-"「笃行」" = "Triết Học Của \"Thực Hành\"";
 
 "今日材料" = "Nguyên Liệu Hôm Nay";
 "今日材料：星期日所有材料均可获取" = "Nguyên Liệu Hôm Nay: Tất Cả NL Đều Mở Vào Ngày Chủ Nhật";
@@ -1491,12 +1500,6 @@
 
 // MARK: - 3.0.5
 
-"「公平」" = "Công Bằng";
-"「正义」" = "Chính Nghĩa";
-"「秩序」" = "Trật Tự";
-"「悠古弦音」" = "Cung Đàn Cổ Xưa";
-"「纯圣露滴」" = "Giọt Sương Thánh Thuần";
-"「无垢之海」" = "Của Biển Nguyên Sơ";
 
 // MARK: - 3.1.1
 

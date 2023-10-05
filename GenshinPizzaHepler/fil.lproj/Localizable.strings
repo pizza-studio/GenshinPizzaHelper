@@ -6,6 +6,39 @@
   
 */
 
+// MARK: - Daily Materials
+
+"$asset.dailyMaterial:talentFreedom" = "Freedom";
+"$asset.dailyMaterial:talentResistance" = "Resistance";
+"$asset.dailyMaterial:talentBallad" = "Ballad";
+"$asset.dailyMaterial:talentProsperity" = "Prosperity";
+"$asset.dailyMaterial:talentDiligence" = "Diligence";
+"$asset.dailyMaterial:talentGold" = "Gold";
+"$asset.dailyMaterial:talentTransience" = "Transience";
+"$asset.dailyMaterial:talentElegance" = "Elegance";
+"$asset.dailyMaterial:talentLight" = "Light";
+"$asset.dailyMaterial:talentAdmonition" = "Admonition";
+"$asset.dailyMaterial:talentIngenuity" = "Ingenuity";
+"$asset.dailyMaterial:talentPraxis" = "Praxis";
+"$asset.dailyMaterial:talentEquity" = "Equity";
+"$asset.dailyMaterial:talentJustice" = "Justice";
+"$asset.dailyMaterial:talentOrder" = "Order";
+"$asset.dailyMaterial:weaponDecarabian" = "Decarabian";
+"$asset.dailyMaterial:weaponBorealWolf" = "Boreal Wolf";
+"$asset.dailyMaterial:weaponGladiator" = "Dandelion Gladiator";
+"$asset.dailyMaterial:weaponGuyun" = "Guyun";
+"$asset.dailyMaterial:weaponElixir" = "Mist Veiled";
+"$asset.dailyMaterial:weaponAerosiderite" = "Aerosiderite";
+"$asset.dailyMaterial:weaponDistantSea" = "Distant Sea";
+"$asset.dailyMaterial:weaponNarukami" = "Narukami";
+"$asset.dailyMaterial:weaponKijinMask" = "Mask";
+"$asset.dailyMaterial:weaponTalisman" = "Forest Dew";
+"$asset.dailyMaterial:weaponOasisGarden" = "Oasis Garden";
+"$asset.dailyMaterial:weaponScorchingMight" = "Scorching Might";
+"$asset.dailyMaterial:weaponAncientChord" = "Ancient Chord";
+"$asset.dailyMaterial:weaponDewdrop" = "Pure Sacred Dewdrop";
+"$asset.dailyMaterial:weaponPristineSea" = "Goblet of the Pristine Sea";
+
 // MARK: - Character Names
 
 "$asset.character:Hotaru" = "Lumine";
@@ -59,7 +92,7 @@
 "$asset.character:Ayato" = "Kamisato Ayato";
 "$asset.character:Yelan" = "Yelan";
 "$asset.character:Shinobu" = "Kuki Shinobu";
-"$asset.character:Heizo" = "Shikanoin Heizou";
+"$asset.character:Heizou" = "Shikanoin Heizou";
 "$asset.character:Tighnari" = "Tighnari";
 "$asset.character:Collei" = "Collei";
 "$asset.character:Dori" = "Dori";
@@ -590,30 +623,6 @@
 "拒绝" = "Hindi sumasang-ayon";
 
 // Daily materials
-"「高塔孤王」" = "Decarabian";
-"「凛风奔狼」" = "Boreal Wolf";
-"「狮牙斗士」" = "Dandelion Gladiator";
-"「孤云寒林」" = "Guyun";
-"「雾海云间」" = "Mist Veiled";
-"「漆黑陨铁」" = "Aerosiderite";
-"「远海夷地」" = "Distant Sea";
-"「鸣神御灵」" = "Narukami";
-"「今昔剧画」" = "Mask";
-"「谧林涓露」" = "Forest Dew";
-"「绿洲花园」" = "Oasis Garden";
-"「烈日威权」" = "Scorching Might";
-"「自由」" = "Freedom";
-"「抗争」" = "Resistance";
-"「诗文」" = "Ballad";
-"「繁荣」" = "Prosperity";
-"「勤劳」" = "Diligence";
-"「黄金」" = "Gold";
-"「浮世」" = "Transience";
-"「风雅」" = "Elegance";
-"「天光」" = "Light";
-"「诤言」" = "Admonition";
-"「巧思」" = "Ingenuity";
-"「笃行」" = "Praxis";
 
 "今日材料" = "Mga Materyales ngayon";
 "今日材料：星期日所有材料均可获取" = "Mga Materyales ngayon: Lahat makukuha itong Linggo";
@@ -1340,12 +1349,6 @@
 
 // MARK: - 3.0.5
 
-"「公平」" = "Equity";
-"「正义」" = "Justice";
-"「秩序」" = "Order";
-"「悠古弦音」" = "Ancient Chord";
-"「纯圣露滴」" = "Pure Sacred Dewdrop";
-"「无垢之海」" = "Goblet of the Pristine Sea";
 
 // MARK: - 3.1.1
 
