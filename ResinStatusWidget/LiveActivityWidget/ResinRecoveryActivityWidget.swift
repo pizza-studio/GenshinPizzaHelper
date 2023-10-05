@@ -205,7 +205,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         .padding()
         .background(alignment: .center) {
             switch context.state.background {
-            case .ramdom:
+            case .random:
                 WidgetBackgroundView(
                     background: .randomNamecardBackground,
                     darkModeOn: true

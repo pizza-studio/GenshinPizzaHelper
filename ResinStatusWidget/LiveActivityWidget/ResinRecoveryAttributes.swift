@@ -134,7 +134,7 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
 }
 
 enum ResinRecoveryActivityBackground: Codable, Equatable, Hashable {
-    case ramdom
+    case random
     case customize([String])
     case noBackground
 }

@@ -35,6 +35,13 @@ class ViewModel: NSObject, ObservableObject {
                 .container
                 .persistentStoreCoordinator
         )
+
+        #if canImport(ActivityKit)
+        if #available(iOS 16.1, *) {
+            // App 启动时也检查并清理可能的错误资料值。
+            ResinRecoveryActivityController.backgroundSettingsSanityCheck()
+        }
+        #endif
     }
 
     // MARK: Internal

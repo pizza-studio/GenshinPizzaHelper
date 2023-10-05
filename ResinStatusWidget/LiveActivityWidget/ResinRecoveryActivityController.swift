@@ -9,7 +9,7 @@
 import ActivityKit
 import Foundation
 import HBMihoyoAPI
-import SwiftUI
+import SwiftUI // 这里用 AppStorage 更省事。哪怕其 binding 特性不起作用，也用不到 binding。
 
 @available(iOS 16.1, *)
 class ResinRecoveryActivityController {
@@ -26,61 +26,12 @@ class ResinRecoveryActivityController {
                 ]
             )
         }
-        backgroundSettingsSanityCheck()
+        Self.backgroundSettingsSanityCheck()
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    static let shared: ResinRecoveryActivityController = .init()
-
-    @AppStorage(
-        "resinRecoveryLiveActivityBackgroundOptions", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var resinRecoveryLiveActivityBackgroundOptions: [String] =
-        .init()
-
-    @AppStorage(
-        "resinRecoveryLiveActivityShowExpedition", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var showExpedition: Bool = true
-
-    @AppStorage(
-        "autoUpdateResinRecoveryTimerUsingReFetchData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var autoUpdateResinRecoveryTimerUsingReFetchData: Bool = false
-
-    var currentActivities: [Activity<ResinRecoveryAttributes>] {
-        Activity<ResinRecoveryAttributes>.activities
-    }
-
-    var allowLiveActivity: Bool {
-        ActivityAuthorizationInfo().areActivitiesEnabled
-    }
-
-    var background: ResinRecoveryActivityBackground {
-        if UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-            .bool(forKey: "resinRecoveryLiveActivityUseEmptyBackground") ??
-            false {
-            return .noBackground
-        } else if !(
-            UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                .bool(
-                    forKey: "resinRecoveryLiveActivityUseCustomizeBackground"
-                ) ??
-                false
-        ) {
-            return .ramdom
-        } else {
-            let backgrounds = resinRecoveryLiveActivityBackgroundOptions
-            if backgrounds.isEmpty {
-                return .customize([NameCard.UI_NameCardPic_Bp20_P.fileName])
-            } else {
-                return .customize(backgrounds)
-            }
-        }
-    }
-
-    func backgroundSettingsSanityCheck() {
+    public static func backgroundSettingsSanityCheck() {
         let backgrounds = resinRecoveryLiveActivityBackgroundOptions
         guard !backgrounds.isEmpty else { return }
         let allValidValues = NameCard.allLegalCases.map(\.fileName)
@@ -95,6 +46,60 @@ class ResinRecoveryActivityController {
         }
         guard insaneValueFound else { return } // 避免重复写入
         resinRecoveryLiveActivityBackgroundOptions = valuesToKeep
+    }
+
+    // MARK: Internal
+
+    static let shared: ResinRecoveryActivityController = .init()
+
+    @AppStorage(
+        "resinRecoveryLiveActivityBackgroundOptions", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    static var resinRecoveryLiveActivityBackgroundOptions: [String] =
+        .init()
+
+    @AppStorage(
+        "resinRecoveryLiveActivityShowExpedition", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    static var showExpedition: Bool = true
+
+    @AppStorage(
+        "autoUpdateResinRecoveryTimerUsingReFetchData", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    static var autoUpdateResinRecoveryTimerUsingReFetchData: Bool = false
+
+    @AppStorage(
+        "resinRecoveryLiveActivityUseEmptyBackground", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    static var resinRecoveryLiveActivityUseEmptyBackground: Bool = false
+
+    @AppStorage(
+        "resinRecoveryLiveActivityUseCustomizeBackground", store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
+    )
+    static var resinRecoveryLiveActivityUseCustomizeBackground: Bool = false
+
+    var currentActivities: [Activity<ResinRecoveryAttributes>] {
+        Activity<ResinRecoveryAttributes>.activities
+    }
+
+    var allowLiveActivity: Bool {
+        ActivityAuthorizationInfo().areActivitiesEnabled
+    }
+
+    var background: ResinRecoveryActivityBackground {
+        if Self.resinRecoveryLiveActivityUseEmptyBackground {
+            return .noBackground
+        } else if !Self.resinRecoveryLiveActivityUseCustomizeBackground {
+            return .random
+        } else {
+            Self.backgroundSettingsSanityCheck()
+            let backgrounds = Self.resinRecoveryLiveActivityBackgroundOptions
+            if backgrounds.isEmpty {
+                return .customize([NameCard.UI_NameCardPic_Bp20_P.fileName])
+            } else {
+                return .customize(backgrounds)
+            }
+        }
     }
 
     func createResinRecoveryTimerActivity(for account: Account) throws {
@@ -119,7 +124,7 @@ class ResinRecoveryActivityController {
         let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
             resinInfo: data.resinInfo,
             expeditionInfo: data.expeditionInfo,
-            showExpedition: showExpedition,
+            showExpedition: Self.showExpedition,
             background: background
         )
         print("expedition=\(data.expeditionInfo.allCompleteTime)")
@@ -158,7 +163,7 @@ class ResinRecoveryActivityController {
                     .ResinRecoveryState = .init(
                         resinInfo: data.resinInfo,
                         expeditionInfo: data.expeditionInfo,
-                        showExpedition: showExpedition,
+                        showExpedition: Self.showExpedition,
                         background: background
                     )
                 await activity.update(using: status)
@@ -208,7 +213,7 @@ class ResinRecoveryActivityController {
         let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
             resinInfo: data.resinInfo,
             expeditionInfo: data.expeditionInfo,
-            showExpedition: showExpedition,
+            showExpedition: Self.showExpedition,
             background: background
         )
         Task {
@@ -221,7 +226,7 @@ class ResinRecoveryActivityController {
     private func updateResinRecoveryTimerActivityUsingReFetchData(
         for config: AccountConfiguration
     ) {
-        guard autoUpdateResinRecoveryTimerUsingReFetchData else { return }
+        guard Self.autoUpdateResinRecoveryTimerUsingReFetchData else { return }
         guard let activity = currentActivities.first(where: { activity in
             activity.attributes.accountUUID == config.uuid
         }) else { return }
@@ -234,7 +239,7 @@ class ResinRecoveryActivityController {
             let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
                 resinInfo: data.resinInfo,
                 expeditionInfo: data.expeditionInfo,
-                showExpedition: self.showExpedition,
+                showExpedition: Self.showExpedition,
                 background: self.background
             )
             Task {
