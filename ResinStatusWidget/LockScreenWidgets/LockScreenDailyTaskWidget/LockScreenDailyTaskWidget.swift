@@ -21,6 +21,7 @@ struct LockScreenDailyTaskWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "的每日委托")
         ) { entry in
             LockScreenDailyTaskWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("每日委托")
         .description("每日委托完成情况")

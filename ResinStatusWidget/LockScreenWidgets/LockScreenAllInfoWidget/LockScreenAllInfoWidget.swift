@@ -255,6 +255,7 @@ struct LockScreenAllInfoWidget: Widget {
             )
         ) { entry in
             LockScreenAllInfoWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("综合信息")
         .description("所有信息，一网打尽")

@@ -21,6 +21,7 @@ struct LockScreenHomeCoinWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "的洞天宝钱")
         ) { entry in
             LockScreenHomeCoinWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("洞天宝钱")
         .description("洞天宝钱数量")

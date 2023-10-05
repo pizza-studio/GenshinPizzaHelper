@@ -9,6 +9,8 @@ import HBMihoyoAPI
 import SwiftUI
 import WidgetKit
 
+// MARK: - LockScreenResinFullTimeWidgetCircular
+
 @available(iOSApplicationExtension 16.0, *)
 struct LockScreenResinFullTimeWidgetCircular<T>: View
     where T: SimplifiedUserDataContainer {
@@ -161,5 +163,30 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                 #endif
             }
         }
+    }
+}
+
+// MARK: - MyContainerBackground
+
+private struct MyContainerBackground<B: View>: ViewModifier {
+    let background: () -> B
+
+    func body(content: Content) -> some View {
+        if #available(iOS 17.0, iOSApplicationExtension 17.0, watchOS 10.0, *) {
+            content.containerBackground(for: .widget) {
+                background()
+            }
+        } else {
+            content
+                .background {
+                    background()
+                }
+        }
+    }
+}
+
+extension View {
+    func lockscreenContainerBackground(@ViewBuilder _ background: @escaping () -> some View) -> some View {
+        modifier(MyContainerBackground(background: background))
     }
 }

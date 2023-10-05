@@ -24,6 +24,7 @@ struct LockScreenLoopWidget: Widget {
             )
         ) { entry in
             LockScreenLoopWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("自动轮换")
         .description("自动展示你最需要的信息")

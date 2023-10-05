@@ -22,10 +22,12 @@ struct LockScreenResinFullTimeWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂回满时间")
         ) { entry in
             LockScreenResinFullTimeWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("原粹树脂回满时间")
         .description("展示原粹树脂与恢复到160树脂的时间")
         .supportedFamilies([.accessoryCircular])
+        .contentMarginsDisabled()
     }
 }
 

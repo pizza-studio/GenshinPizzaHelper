@@ -22,6 +22,7 @@ struct LockScreenExpeditionWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "的探索派遣")
         ) { entry in
             LockScreenExpeditionWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("探索派遣")
         .description("探索派遣完成情况")

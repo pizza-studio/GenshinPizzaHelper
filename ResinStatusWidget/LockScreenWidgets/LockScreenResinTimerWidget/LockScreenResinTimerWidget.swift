@@ -21,6 +21,7 @@ struct LockScreenResinTimerWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂回满倒计时")
         ) { entry in
             LockScreenResinTimerWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("原粹树脂回满倒计时")
         .description("展示原粹树脂与恢复到160树脂的倒计时")

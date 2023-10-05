@@ -21,6 +21,7 @@ struct AlternativeLockScreenResinWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂")
         ) { entry in
             AlternativeLockScreenResinWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("原粹树脂")
         .description("另一种样式的原粹树脂小组件")

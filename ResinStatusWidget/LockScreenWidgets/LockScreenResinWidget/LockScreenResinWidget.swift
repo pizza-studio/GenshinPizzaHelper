@@ -23,6 +23,7 @@ struct LockScreenResinWidget: Widget {
             provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂")
         ) { entry in
             LockScreenResinWidgetView(entry: entry)
+                .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("原粹树脂")
         .description("树脂回复状态")
