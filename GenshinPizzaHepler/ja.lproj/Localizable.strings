@@ -833,7 +833,7 @@
 "week.WS" = "水曜日 & 土曜日";
 
 // Tool View
-"请先选择账号" = "まずアカウントを選んでください";
+"detailPortal.prompt.pleaseSelectAccount" = "まずアカウントを選んでください";
 "角色展示柜" = "キャラショーケース";
 "账号未展示角色" = "ショーケースにはキャラがいません";
 "detailPortal.todayAcquisition.title" = "今日の収穫";

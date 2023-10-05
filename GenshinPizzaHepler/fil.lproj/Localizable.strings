@@ -833,7 +833,7 @@
 "week.WS" = "Miyerkules at Sabado";
 
 // Tool View
-"请先选择账号" = "Pumili muna ng account";
+"detailPortal.prompt.pleaseSelectAccount" = "Pumili muna ng account";
 "角色展示柜" = "Character Showcase";
 "账号未展示角色" = "Walang character mahanap sa Character Showcase";
 "detailPortal.todayAcquisition.title" = "Nakuha Ngayon";

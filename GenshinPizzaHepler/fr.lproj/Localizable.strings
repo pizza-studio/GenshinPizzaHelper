@@ -833,7 +833,7 @@
 "week.WS" = "Mercredi et Samedi";
 
 // Tool View
-"请先选择账号" = "Veuillez d'abord choisir un compte";
+"detailPortal.prompt.pleaseSelectAccount" = "Veuillez d'abord choisir un compte";
 "角色展示柜" = "Vitrine de personnages";
 "账号未展示角色" = "Aucun personnage trouvé dans la vitrine de personnages";
 "detailPortal.todayAcquisition.title" = "Acquisitions d'aujourd'hui";

@@ -970,7 +970,7 @@
 "week.sunday" = "Chủ Nhật";
 
 // Tool View
-"请先选择账号" = "Vui lòng chọn tài khoản trước";
+"detailPortal.prompt.pleaseSelectAccount" = "Vui lòng chọn tài khoản trước";
 "角色展示柜" = "Đội Hình Nhân Vật";
 "账号未展示角色" = "Không thể tìm thấy đội hình nhân vật nào";
 "detailPortal.todayAcquisition.title" = "Hôm Nay Nhận Được";

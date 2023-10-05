@@ -243,6 +243,10 @@ struct DetailPortalView: View {
                     }
                 }
             }
+        } else if accounts.isEmpty {
+            NavigationLink(destination: AddAccountView()) {
+                Label("settings.account.pleaseAddAccountFirst", systemImage: "plus.circle")
+            }
         } else {
             Menu {
                 ForEach(accounts, id: \.config.id) { account in
@@ -252,7 +256,7 @@ struct DetailPortalView: View {
                     }
                 }
             } label: {
-                Label("请先选择账号", systemImage: "arrow.left.arrow.right.circle")
+                Label("detailPortal.prompt.pleaseSelectAccount", systemImage: "arrow.left.arrow.right.circle")
             }
         }
     }

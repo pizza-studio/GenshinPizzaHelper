@@ -136,11 +136,11 @@ enum MaterialWeekday: CaseIterable {
     func describe() -> String {
         switch self {
         case .mondayAndThursday:
-            return "星期一 & 星期四".localized
+            return "week.MR".localized
         case .tuesdayAndFriday:
-            return "星期二 & 星期五".localized
+            return "week.TF".localized
         case .wednesdayAndSaturday:
-            return "星期三 & 星期六".localized
+            return "week.WS".localized
         case .sunday:
             return "week.sunday".localized
         }

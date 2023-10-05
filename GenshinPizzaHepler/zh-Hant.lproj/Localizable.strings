@@ -477,14 +477,14 @@
 "settings.account.errorMessage" = "錯誤內容";
 "settings.account.accountInformation" = "帳號資訊";
 
-"settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "你可以自訂顯示在小工具上的帳號名稱";
+"settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "您可以自訂顯示在小工具上的帳號名稱";
 "settings.account.pasteFromClipboard" = "粘貼自剪貼板";
 
 // Add account
 "settings.account.loginViaMiyousheOrHoyoLab" = "登入米哈遊通行證帳號";
-"settings.account.youMayAlso" = "settings.account.youMayAlso";
+"settings.account.youMayAlso" = "您也可以";
 "settings.account.manualConfiguration" = "手動設定帳號";
-"settings.account.configuration.save" = "settings.account.configuration.save";
+"settings.account.configuration.save" = "保存";
 "settings.account.region.miyoushe" = "陸服";
 "settings.account.region.hoyolabInternational" = "國際服";
 "settings.account.prompt.loginToFetchCookie" = "登入帳號獲取Cookie";
@@ -511,13 +511,13 @@
 "unit.daysOf:%lld" = "%lld天";
 "unit.%lldHH%lldMM" = "%lld小時%lld分鐘";
 "infoBlock.transformerAvailable" = "可使用";
-"week.sunday" = "星期日";
-"week.monday" = "星期一";
-"week.tuesday" = "星期二";
-"week.wednesday" = "星期三";
-"week.thursday" = "星期四";
-"week.friday" = "星期五";
-"week.saturday" = "星期六";
+"week.sunday" = "週日";
+"week.monday" = "週一";
+"week.tuesday" = "週二";
+"week.wednesday" = "週三";
+"week.thursday" = "週四";
+"week.friday" = "週五";
+"week.saturday" = "週六";
 
 "button.savePic" = "保存圖片";
 
@@ -616,11 +616,11 @@
 "「笃行」" = "「篤行」";
 
 "今日材料" = "今日材料";
-"今日材料：星期日所有材料均可获取" = "今日材料：星期日所有材料均可獲取";
+"今日材料：週日所有材料均可获取" = "今日材料：週日所有材料均可獲取";
 
 // large size widget
 "已完成" = "已完成";
-"（星期日所有材料均可获取）" = "（星期日所有材料均可獲取）";
+"（週日所有材料均可获取）" = "（週日所有材料均可獲取）";
 
 // Char's name
 "expedition.info.unknownCharacter.braced" = "（未知角色）";
@@ -737,7 +737,7 @@
 // Lock Screen Widgets
 "树脂回复状态" = "樹脂充填狀態";
 "自动轮换" = "自動輪替";
-"自动展示你最需要的信息" = "自動展示你最需要的資訊";
+"自动展示您最需要的信息" = "自動展示您最需要的資訊";
 "综合信息" = "綜合資訊";
 "所有信息，一网打尽" = "所有資訊，一網打盡";
 "洞天宝钱数量" = "洞天寶錢數量";
@@ -828,12 +828,12 @@
 
 // MARK: - 2.5.0
 // Material Provider
-"week.MR" = "星期一 & 周四";
-"week.TF" = "星期二 & 周五";
-"week.WS" = "星期三 & 周六";
+"week.MR" = "週一 & 周四";
+"week.TF" = "週二 & 周五";
+"week.WS" = "週三 & 周六";
 
 // Tool View
-"请先选择账号" = "請先選擇帳號";
+"detailPortal.prompt.pleaseSelectAccount" = "請先選擇帳號";
 "角色展示柜" = "角色展示櫃";
 "账号未展示角色" = "帳號未展示角色";
 "detailPortal.todayAcquisition.title" = "今日入帳";
