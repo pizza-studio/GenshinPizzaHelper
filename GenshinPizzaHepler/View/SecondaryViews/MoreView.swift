@@ -34,14 +34,14 @@ struct MoreView: View {
                 #endif
             }
             Section {
-                Picker("时区", selection: $defaultServer) {
+                Picker("settings.more.timeZone.title", selection: $defaultServer) {
                     ForEach(Server.allCases) { server in
                         Text(server.rawValue.localized).tag(server.rawValue)
                     }
                 }
             } footer: {
                 Text(
-                    "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：\((Server(rawValue: defaultServer) ?? .asia).timeZone().identifier)。"
+                    "settings.more.timeZone.descriptionWithCurrent:\((Server(rawValue: defaultServer) ?? .asia).timeZone().identifier)。"
                 )
             }
 

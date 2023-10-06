@@ -1126,21 +1126,21 @@
 
 // MARK: - 2.7.12
 "lang.Vietnamese" = "ベトナム語";
-"未重开玩家使用率" = "未再開プレイヤーの使用率";
-"时区" = "タイムゾーン";
-"我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "選択したサーバーのタイムゾーンに基づいて時間を計算します。現在のタイムゾーン：%@。";
-"自2023年4月1日起提供" = "Available From 2023-04-01";
+"abyssDataCollection.characterUsageRateSansRestart" = "未再開プレイヤーの使用率";
+"settings.more.timeZone.title" = "タイムゾーン";
+"settings.more.timeZone.descriptionWithCurrent:%@。" = "選択したサーバーのタイムゾーンに基づいて時間を計算します。現在のタイムゾーン：%@。";
+"abyssDataCollection.availableSince20230401" = "Available From 2023-04-01";
 
 // MARK: - 2.7.14
-"中文汉字纠正" = "中国語UI漢字遣を正す";
-"这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "簡体中国語のUIで（苗字としての）「钟・钟离」を「锺・锺离」と訂正します。繁体中国語UIの場合、「堇」を「菫」と訂正します。";
-"显示圣遗物等级与稀有度" = "聖遺物の稀有度とレベルを表示する";
+"settings.display.chineseKanjiCorrection.title" = "中国語UI漢字遣を正す";
+"settings.display.chineseKanjiCorrection.description" = "簡体中国語のUIで（苗字としての）「钟・钟离」を「锺・锺离」と訂正します。繁体中国語UIの場合、「堇」を「菫」と訂正します。";
+"settings.display.showArtifactRarityAndLevel" = "聖遺物の稀有度とレベルを表示する";
 "$asset.character:RaidenKunikuzushi" = "雷電国崩";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "雷電国崩・憂き世の歌";
-"显示部分角色的真实姓名" = "一部のキャラの本名を表示する";
-"角色详情排版间距适配" = "キャラビューの組版スペーシング自動調整";
-"这仅对 iPad 以及有「刘海」的 iPhone 生效。" = "iPad と Face ID つけの iPhone だけで効ける機能である。";
-"界面偏好设置" = "UI 偏好設定";
+"settings.display.showTheRealNameForKunikuzushi" = "一部のキャラの本名を表示する";
+"settings.display.autoLineSpacingForECDDV" = "キャラビューの組版スペーシング自動調整";
+"settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "iPad と Face ID つけの iPhone だけで効ける機能である。";
+"settings.display.title" = "UI 偏好設定";
 
 // MARK: - 2.8.0
 

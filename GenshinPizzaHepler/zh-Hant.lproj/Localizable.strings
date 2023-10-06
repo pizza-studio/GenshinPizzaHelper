@@ -1126,21 +1126,21 @@
 
 // MARK: - 2.7.12
 "lang.Vietnamese" = "越南語";
-"未重开玩家使用率" = "未重啟玩家使用率";
-"时区" = "時區";
-"我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@" = "我們會根據您所選伺服器對應時區計算每日材料刷新時間。當前時區：%@";
-"自2023年4月1日起提供" = "自2023年4月1日起提供";
+"abyssDataCollection.characterUsageRateSansRestart" = "未重啟玩家使用率";
+"settings.more.timeZone.title" = "時區";
+"settings.more.timeZone.descriptionWithCurrent:%@" = "我們會根據您所選伺服器對應時區計算每日材料刷新時間。當前時區：%@";
+"abyssDataCollection.availableSince20230401" = "自2023年4月1日起提供";
 
 // MARK: - 2.7.14
-"中文汉字纠正" = "中文漢字糾正";
-"这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "這將會在簡體中文當中強制自動恢復目前已被在地語委恢復的「锺」、在繁體中文當中強制自動恢復「堇」的當代繁體中文寫法「菫」。";
-"显示圣遗物等级与稀有度" = "顯示聖遺物等級與稀有度";
+"settings.display.chineseKanjiCorrection.title" = "中文漢字糾正";
+"settings.display.chineseKanjiCorrection.description" = "這將會在簡體中文當中強制自動恢復目前已被在地語委恢復的「锺」、在繁體中文當中強制自動恢復「堇」的當代繁體中文寫法「菫」。";
+"settings.display.showArtifactRarityAndLevel" = "顯示聖遺物等級與稀有度";
 "$asset.character:RaidenKunikuzushi" = "雷電國崩";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "雷電國崩・浮歌";
-"显示部分角色的真实姓名" = "顯示部分角色的真實姓名";
-"角色详情排版间距适配" = "角色詳情排版間距適配";
-"这仅对 iPad 以及有「刘海」的 iPhone 生效。" = "這僅對 iPad 以及有「瀏海」的 iPhone 生效。";
-"界面偏好设置" = "介面偏好設定";
+"settings.display.showTheRealNameForKunikuzushi" = "顯示部分角色的真實姓名";
+"settings.display.autoLineSpacingForECDDV" = "角色詳情排版間距適配";
+"settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "這僅對 iPad 以及有「瀏海」的 iPhone 生效。";
+"settings.display.title" = "介面偏好設定";
 
 // MARK: - 2.8.0
 

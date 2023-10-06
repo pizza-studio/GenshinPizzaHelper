@@ -90,7 +90,7 @@ struct SettingsView: View {
                     }
                     NavigationLink(destination: DisplayOptionsView()) {
                         Label(
-                            "界面偏好设置",
+                            "settings.display.title",
                             systemImage: "uiwindow.split.2x1"
                         )
                     }

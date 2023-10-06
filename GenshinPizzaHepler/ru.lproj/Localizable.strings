@@ -1126,21 +1126,21 @@
 
 // MARK: - 2.7.12
 "lang.Vietnamese" = "Вьетнамский";
-"未重开玩家使用率" = "Уровень использования не перезапущенного игрока";
-"时区" = "Часовой пояс";
-"我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Мы рассчитываем время на основе часового пояса выбранного вами сервера. Текущий часовой пояс: %@.";
-"自2023年4月1日起提供" = "Доступно с 2023-04-01";
+"abyssDataCollection.characterUsageRateSansRestart" = "Уровень использования не перезапущенного игрока";
+"settings.more.timeZone.title" = "Часовой пояс";
+"settings.more.timeZone.descriptionWithCurrent:%@。" = "Мы рассчитываем время на основе часового пояса выбранного вами сервера. Текущий часовой пояс: %@.";
+"abyssDataCollection.availableSince20230401" = "Доступно с 2023-04-01";
 
 // MARK: - 2.7.14
-"中文汉字纠正" = "Коррекция текста в китайском UI";
-"这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
-"显示圣遗物等级与稀有度" = "Показывать уровни артефактов и их редкость";
+"settings.display.chineseKanjiCorrection.title" = "Коррекция текста в китайском UI";
+"settings.display.chineseKanjiCorrection.description" = "This will convert 钟 & 钟离 (as family names) to 锺 & 锺离 when the UI language is Simplified Chinese. If Traditional Chinese, it will instead convert 堇 to 菫.";
+"settings.display.showArtifactRarityAndLevel" = "Показывать уровни артефактов и их редкость";
 "$asset.character:RaidenKunikuzushi" = "Куникудзуси";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Баллада скитальца";
-"显示部分角色的真实姓名" = "Показать настоящие имена для некоторых персонажей";
-"角色详情排版间距适配" = "Адаптивное расположение при просмотре персонажа";
-"这仅对 iPad 以及有「刘海」的 iPhone 生效。" = "Это работает только с iPad и с безкнопочными iPhone.";
-"界面偏好设置" = "Настройки интерфейса";
+"settings.display.showTheRealNameForKunikuzushi" = "Показать настоящие имена для некоторых персонажей";
+"settings.display.autoLineSpacingForECDDV" = "Адаптивное расположение при просмотре персонажа";
+"settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "Это работает только с iPad и с безкнопочными iPhone.";
+"settings.display.title" = "Настройки интерфейса";
 
 // MARK: - 2.8.0
 

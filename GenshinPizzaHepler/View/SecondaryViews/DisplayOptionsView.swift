@@ -37,7 +37,7 @@ struct DisplayOptionsView: View {
                     }
                 )
         }
-        .navigationBarTitle("界面偏好设置", displayMode: .inline)
+        .navigationBarTitle("settings.display.title", displayMode: .inline)
     }
 
     // Function to keep text length in limits
@@ -53,18 +53,18 @@ struct DisplayOptionsView: View {
             if Locale.isUILanguagePanChinese {
                 Section {
                     Toggle(isOn: $forceCharacterWeaponNameFixed) {
-                        Text("中文汉字纠正")
+                        Text("settings.display.chineseKanjiCorrection.title")
                     }
                 } footer: {
                     Text(
-                        "这将会在简体中文当中强制自动恢复目前已被当地语委恢复的「锺」、在繁体中文当中强制自动恢复「堇」的当代繁体中文写法「菫」。"
+                        "settings.display.chineseKanjiCorrection.description"
                     )
                 }
             }
 
             Section {
                 Toggle(isOn: $showRarityAndLevelForArtifacts) {
-                    Text("显示圣遗物等级与稀有度")
+                    Text("settings.display.showArtifactRarityAndLevel")
                 }
                 Toggle(isOn: $showRatingsForArtifacts) {
                     Text("settings.display.showArtifactRank")
@@ -73,7 +73,7 @@ struct DisplayOptionsView: View {
 
             Section {
                 Toggle(isOn: $useActualCharacterNames) {
-                    Text("显示部分角色的真实姓名")
+                    Text("settings.display.showTheRealNameForKunikuzushi")
                 }
 
                 if !useActualCharacterNames {
@@ -99,11 +99,11 @@ struct DisplayOptionsView: View {
             if ThisDevice.notchType != .none || OS.type != .iPhoneOS {
                 Section {
                     Toggle(isOn: $adaptiveSpacingInCharacterView) {
-                        Text("角色详情排版间距适配")
+                        Text("settings.display.autoLineSpacingForECDDV")
                     }
                 } footer: {
                     Text(
-                        "这仅对 iPad 以及有「刘海」的 iPhone 生效。"
+                        "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones"
                     )
                 }
             }
