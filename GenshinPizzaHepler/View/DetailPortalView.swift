@@ -360,22 +360,20 @@ struct DetailPortalView: View {
             if let basicInfo: BasicInfos = account.basicInfo {
                 abyssAndPrimogemNavigatorView(accountBasicInfo: basicInfo)
             } else {
-                ForEach($viewModel.accounts, id: \.config.uuid) { $account in
-                    if $account.wrappedValue == account {
-                        NavigationLink {
-                            AccountDetailView(account: $account)
-                        } label: {
-                            HStack {
-                                Image(
-                                    systemName: "exclamationmark.arrow.triangle.2.circlepath"
-                                )
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.red)
-                                Text(
-                                    "detailPortal.errorMessage.anotherVerificationAttemptRequiredToSeeSpiralAbyssHistory"
-                                )
-                                .font(.footnote)
-                            }
+                if let bindingAccount = $viewModel.accounts.first(where: { $0.wrappedValue == account }) {
+                    NavigationLink {
+                        AccountDetailView(account: bindingAccount)
+                    } label: {
+                        HStack {
+                            Image(
+                                systemName: "exclamationmark.arrow.triangle.2.circlepath"
+                            )
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.red)
+                            Text(
+                                "detailPortal.errorMessage.anotherVerificationAttemptRequiredToSeeSpiralAbyssHistory"
+                            )
+                            .font(.footnote)
                         }
                     }
                 }
