@@ -296,7 +296,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("1群: 813912474")
+                            Text("about.group.qq.1st") + Text("813912474")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -310,7 +310,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("2群: 829996515")
+                            Text("about.group.qq.2nd") + Text("829996515")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -324,7 +324,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("3群: 736320270")
+                            Text("about.group.qq.3rd") + Text("736320270")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -567,7 +567,7 @@ struct ContactUsView: View {
                         HStack {
                             Text("Ngô Phi Phương")
                             Spacer()
-                            Text("越南文")
+                            Text("lang.Vietnamese")
                                 .foregroundColor(.gray)
                         }
                     } icon: {

@@ -58,20 +58,26 @@ struct ImportGachaView: View {
                 title: "成功导入祈愿数据"
             )
         })
-        .alert("开始导入？", isPresented: isReadyToStartAlertShow, presenting: alert, actions: { thisAlert in
-            Button("开始", role: .destructive, action: {
-                switch thisAlert {
-                case let .readyToStartJson(url: url):
-                    processJson(url: url)
-                case let .readyToStartXlsx(url: url):
-                    processXlsx(url: url)
-                }
-            })
-            Button("取消", role: .cancel, action: { alert = nil })
+        .alert(
+            "gacha.import.startImport",
+            isPresented: isReadyToStartAlertShow,
+            presenting: alert,
+            actions: { thisAlert in
+                Button("开始", role: .destructive, action: {
+                    switch thisAlert {
+                    case let .readyToStartJson(url: url):
+                        processJson(url: url)
+                    case let .readyToStartXlsx(url: url):
+                        processXlsx(url: url)
+                    }
+                })
+                Button("取消", role: .cancel, action: { alert = nil })
 
-        }, message: { _ in
-            Text("导入数据需要一段时间，请耐心等待。")
-        })
+            },
+            message: { _ in
+                Text("gacha.import.informThatItNeedsWait")
+            }
+        )
     }
 
     func processJson(url: URL) {
@@ -354,13 +360,13 @@ private struct HelpSheet: View {
             List {
                 Section {
                     Link(destination: URL(string: "https://gi.pizzastudio.org/static/import_tiwatexiaozhushou")!) {
-                        Text("如何从《提瓦特小助手》导入？")
+                        Text("gacha.link.howToImportFromTeyvatAssistant")
                     }
                     Link(destination: URL(string: "https://gi.pizzastudio.org/static/paimonmoe-export.pdf")!) {
-                        Text("如何从paimon.moe导入？")
+                        Text("gacha.instruction.howToImportFromPaimonMoe")
                     }
                 } header: {
-                    Text("教程")
+                    Text("gacha.term.tutorial")
                 }
                 Section {
                     if Locale.isUILanguagePanChinese {

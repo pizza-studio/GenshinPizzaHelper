@@ -183,10 +183,10 @@ private struct GetGachaURLByAPIButton: View {
         } label: {
             switch status {
             case .ready:
-                Text("生成并复制祈愿链接至剪贴板")
+                Text("gacha.link.generateWishLinkToClipboard")
             case .fetching:
                 Label {
-                    Text("正在获取祈愿链接，请稍等")
+                    Text("gacha.fetch.pleaseWaitWhileFetchingTheWishLink")
                 } icon: {
                     ProgressView()
                 }
@@ -196,9 +196,12 @@ private struct GetGachaURLByAPIButton: View {
         .alert(item: $alert) { alert in
             switch alert {
             case let .succeed(url: url):
-                return Alert(title: Text("成功将祈愿链接复制到剪贴板"), message: Text(url))
+                return Alert(
+                    title: Text("gacha.api.result.succeededInCopyingSourceLinkToClipboard"),
+                    message: Text(url)
+                )
             case let .failure(message: message):
-                return Alert(title: Text("生成祈愿链接失败"), message: Text("失败信息：\(message)"))
+                return Alert(title: Text("gacha.fetch.failedInGeneratingTheWishLink"), message: Text("失败信息：\(message)"))
             }
         }
     }

@@ -25,13 +25,17 @@ struct DisplayOptionsView: View {
     var body: some View {
         Group {
             mainView()
-                .alert("请输入自定义流浪者姓名", isPresented: $isCustomizedNameForWandererAlertShow, actions: {
-                    TextField("自定义姓名", text: $customizedNameForWanderer)
-                        .onReceive(Just(customizedNameForWanderer)) { _ in limitText(20) }
-                    Button("完成") {
-                        isCustomizedNameForWandererAlertShow.toggle()
+                .alert(
+                    "settings.display.prompt.customizingNameForKunikuzushi",
+                    isPresented: $isCustomizedNameForWandererAlertShow,
+                    actions: {
+                        TextField("settings.display.customizedNameForKunikuzushi", text: $customizedNameForWanderer)
+                            .onReceive(Just(customizedNameForWanderer)) { _ in limitText(20) }
+                        Button("完成") {
+                            isCustomizedNameForWandererAlertShow.toggle()
+                        }
                     }
-                })
+                )
         }
         .navigationBarTitle("界面偏好设置", displayMode: .inline)
     }
@@ -63,7 +67,7 @@ struct DisplayOptionsView: View {
                     Text("显示圣遗物等级与稀有度")
                 }
                 Toggle(isOn: $showRatingsForArtifacts) {
-                    Text("显示圣遗物评分与评价")
+                    Text("settings.display.showArtifactRank")
                 }
             }
 
@@ -75,14 +79,14 @@ struct DisplayOptionsView: View {
                 if !useActualCharacterNames {
                     if #unavailable(iOS 16) {
                         HStack {
-                            Text("自定义流浪者姓名")
+                            Text("settings.display.customizingNameForKunikuzushi")
                             Spacer()
                             TextField("流浪者".localized, text: $customizedNameForWanderer)
                                 .multilineTextAlignment(.trailing)
                         }
                     } else {
                         HStack {
-                            Text("自定义流浪者姓名")
+                            Text("settings.display.customizingNameForKunikuzushi")
                             Spacer()
                             Button(customizedNameForWanderer == "" ? "流浪者".localized : customizedNameForWanderer) {
                                 isCustomizedNameForWandererAlertShow.toggle()
@@ -106,7 +110,7 @@ struct DisplayOptionsView: View {
 
             Section {
                 Toggle(isOn: $cutShouldersForSmallAvatarPhotos) {
-                    Text("裁掉小尺寸角色照片当中的肩膀")
+                    Text("settings.display.cutShouldersForSmallPhotos")
                 }
             }
 

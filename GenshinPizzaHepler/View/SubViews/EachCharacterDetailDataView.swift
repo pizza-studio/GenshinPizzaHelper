@@ -202,7 +202,7 @@ struct EachCharacterDetailDataView: View {
                let rank = avatar.artifactScoreRank {
                 AttributeLabel(
                     iconString: "UI_Icon_ArtifactRating",
-                    name: "圣遗物评价".localized + " (Beta)",
+                    name: "detailPortal.ECDDV.artifactRank".localized + " (Beta)",
                     value: "\(String(format: "%.0f", totalScore)) (\(rank))",
                     fontSize: fontSize
                 )
@@ -250,7 +250,7 @@ struct EachCharacterDetailDataView: View {
         )
         .corneredTag(
             // TODO: i18n malfunction.
-            "\(String(format: "%.0f", artifact.score ?? -1))分",
+            "detailPortal.ECDDV.scoreUnit:\(String(format: "%.0f", artifact.score ?? -1))",
             alignment: .topLeading,
             textSize: fontSize * 0.72,
             enabled: artifact.score != nil && AppConfig.showRatingsForArtifacts

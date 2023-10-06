@@ -47,7 +47,7 @@ struct MoreView: View {
 
             Section {
                 Link(
-                    "gatcha.term.scriptForFetchingCookies",
+                    "gacha.term.scriptForFetchingCookies",
                     destination: URL(
                         string: "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c"
                     )!

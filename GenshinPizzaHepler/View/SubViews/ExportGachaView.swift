@@ -87,14 +87,14 @@ struct ExportGachaView: View {
                 }
             }
             Section {
-                Picker("选择语言", selection: $params.lang) {
+                Picker("gacha.export.chooseLanguage", selection: $params.lang) {
                     ForEach(GachaLanguageCode.allCases, id: \.rawValue) { code in
                         Text(code.description).tag(code)
                     }
                 }
                 .disabled(true)
             } footer: {
-                Text("UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。")
+                Text("gacha.uigf.notice.pendingMultilingualSupport")
             }
         }
     }
@@ -124,30 +124,42 @@ struct ExportGachaView: View {
                         .disabled(params.uid == nil)
                     }
                 }
-                .alert("保存成功", isPresented: $isSucceedAlertShow, presenting: alert, actions: { _ in
-                    Button("button.okay") {
-                        isSucceedAlertShow = false
+                .alert(
+                    "gacha.export.succeededInSavingToFile",
+                    isPresented: $isSucceedAlertShow,
+                    presenting: alert,
+                    actions: { _ in
+                        Button("button.okay") {
+                            isSucceedAlertShow = false
+                        }
+                    },
+                    message: { thisAlert in
+                        switch thisAlert {
+                        case let .succeed(url):
+                            Text("gacha.export.fileSavedTo:\(url)")
+                        default:
+                            EmptyView()
+                        }
                     }
-                }, message: { thisAlert in
-                    switch thisAlert {
-                    case let .succeed(url):
-                        Text("文件已保存至\(url)")
-                    default:
-                        EmptyView()
+                )
+                .alert(
+                    "gacha.export.failedInSavingToFile",
+                    isPresented: $isFailureAlertShow,
+                    presenting: alert,
+                    actions: { _ in
+                        Button("button.okay") {
+                            isFailureAlertShow = false
+                        }
+                    },
+                    message: { thisAlert in
+                        switch thisAlert {
+                        case let .failure(error):
+                            Text("错误信息：\(error)")
+                        default:
+                            EmptyView()
+                        }
                     }
-                })
-                .alert("保存失败", isPresented: $isFailureAlertShow, presenting: alert, actions: { _ in
-                    Button("button.okay") {
-                        isFailureAlertShow = false
-                    }
-                }, message: { thisAlert in
-                    switch thisAlert {
-                    case let .failure(error):
-                        Text("错误信息：\(error)")
-                    default:
-                        EmptyView()
-                    }
-                })
+                )
                 .fileExporter(
                     isPresented: $isExporterPresented,
                     document: file,

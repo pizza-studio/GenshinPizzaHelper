@@ -493,7 +493,7 @@
 "settings.howToUseNotifications" = "Mẹo: Hãy bật thông báo của ứng dụng";
 "account.server" = "Máy chủ";
 
-"gatcha.term.scriptForFetchingCookies" = "Phím tắt để lấy Cookie";
+"gacha.term.scriptForFetchingCookies" = "Phím tắt để lấy Cookie";
 "settings.misc.rateMeOnAppStore" = "Đánh giá ứng dụng trên App Store";
 "settings.misc.supportUs" = "Ủng hộ chúng tôi";
 "settings.misc.FAQ" = "Câu hỏi thường gặp (FAQ)";
@@ -786,8 +786,8 @@
 "「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。" = "Genshin Pizza Helper không liên kết với miHoYo Co., Ltd. và các công ty con.";
 "原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。" = "Genshin Impact, nội dung và tài liệu trò chơi là nhãn hiệu và bản quyền của HoYoverse.";
 "用户交流群" = "Nhóm giao tiếp người dùng";
-"QQ群1: 813912474" = "QQ Group 1: 813912474";
-"QQ群2: 829996515" = "QQ Group 2: 829996515";
+
+
 "Discord频道: Genshin Pizza Helper" = "Tham gia server Discord của chúng tôi";
 "个人主页" = "Personal Homepage";
 "Bilibili主页" = "Bilibili Homepage";
@@ -1208,8 +1208,8 @@
 // MARK: - 2.7.1
 "加入QQ群" = "Tham Gia Nhóm QQ";
 "加入Discord服务器" = "Tham Gia Server Discord";
-"1群: 813912474" = "Group 1: 813912474";
-"2群: 829996515" = "Group 2: 829996515";
+"about.group.qq.1st" = "Group 1";
+"about.group.qq.2nd" = "Group 2";
 "原神披萨深渊榜网页版" = "Trang Web xếp hạng nhân vật La Hoàn";
 "英语 繁体中文" = "Tiếng Anh , Tiếng Trung (Phồn thể)";
 
@@ -1273,7 +1273,7 @@
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Amber](https://ambr.top/)";
 
 // MARK: - 2.7.12
-"越南文" = "Tiếng Việt";
+"lang.Vietnamese" = "Tiếng Việt";
 "未重开玩家使用率" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
 "时区" = "Múi Giờ";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
@@ -1293,12 +1293,12 @@
 // MARK: - 2.8.0
 
 // artifact rating
-"%@分" = "%@pt";
-"圣遗物评价" = "Xếp Hạng Thánh Di Vật";
-"显示圣遗物评分与评价" = "Hiển Thị Xếp Hạng Và Điểm Số TDV";
-"自定义流浪者姓名" = "Sửa Tên Kẻ Lang Thang";
-"自定义姓名" = "Sửa Tên";
-"请输入自定义流浪者姓名" = "Vui lòng nhập tên tùy chỉnh của Kẻ Lang Thang";
+"detailPortal.ECDDV.scoreUnit:%@" = "%@pt";
+"detailPortal.ECDDV.artifactRank" = "Xếp Hạng Thánh Di Vật";
+"settings.display.showArtifactRank" = "Hiển Thị Xếp Hạng Và Điểm Số TDV";
+"settings.display.customizingNameForKunikuzushi" = "Sửa Tên Kẻ Lang Thang";
+"settings.display.customizedNameForKunikuzushi" = "Sửa Tên";
+"settings.display.prompt.customizingNameForKunikuzushi" = "Vui lòng nhập tên tùy chỉnh của Kẻ Lang Thang";
 
 // cầu nguyện analysis
 "请点击右上角获取抽卡记录" = "Click top right to obtain";
@@ -1435,42 +1435,46 @@
 "自%@到%@" = "Từ %@ đến %@";
 
 // gacha avaliable language
-"泰文" = "Tiếng Thái";
-"朝鲜文" = "Tiếng Hàn Quốc";
-"西班牙文" = "Tiếng Tây Ban Nha";
-"简体中文" = "Tiếng Trung Giản thể";
-"印尼文" = "Tiếng Inđônêxia";
-"葡萄牙文" = "Tiếng Bồ Đào Nha";
-"德文" = "Tiếng Đức";
-"繁体中文" = "Tiếng Trung Phồn thể";
-"英语（美国）" = "Tiếng Anh (Hoa Kỳ)";
-"选择语言" = "Chọn ngôn ngữ";
+"gacha.languageCode.th" = "Thái";
+"gacha.languageCode.ko" = "Tiếng Hàn";
+"gacha.languageCode.es" = "Tiếng Tây Ban Nha";
+"gacha.languageCode.ja" = "Tiếng Nhật";
+"gacha.languageCode.zhCN" = "Tiếng Trung Giản Thể";
+"gacha.languageCode.id" = "Tiếng Indonesia";
+"gacha.languageCode.pt" = "Tiếng Bồ Đào Nha";
+"gacha.languageCode.de" = "Tiếng Đức";
+"gacha.languageCode.fr" = "Tiếng Pháp";
+"gacha.languageCode.zhTW" = "Tiếng Trung Phồn Thể";
+"gacha.languageCode.ru" = "Tiếng Nga";
+"gacha.languageCode.enUS" = "Tiếng Anh (Hoa Kỳ)";
+"gacha.languageCode.vi" = "Tiếng Việt";
+"gacha.export.chooseLanguage" = "Chọn ngôn ngữ";
 
 // Additional terms
-"开始导入？" = "Bắt đầu nhập ?";
-"导入数据需要一段时间，请耐心等待。" = "Quá trình nhập dữ liệu hơi lâu, vui lòng đợi…";
+"gacha.import.startImport" = "Bắt đầu nhập ?";
+"gacha.import.informThatItNeedsWait" = "Quá trình nhập dữ liệu hơi lâu, vui lòng đợi…";
 
 
-"暂无五星祈愿记录" = "Hiện không có bản ghi nguyện vọng 5 sao";
-"成功将祈愿链接复制到剪贴板" = "Sao chép liên kết nguyện vọng vào bảng tạm thành công";
+"gacha.records.noQuintapleStarRecordsFound" = "Hiện không có bản ghi nguyện vọng 5 sao";
+"gacha.api.result.succeededInCopyingSourceLinkToClipboard" = "Sao chép liên kết nguyện vọng vào bảng tạm thành công";
 
 
 // MARK: - 2.8.1
-"生成并复制祈愿链接至剪贴板" = "Tạo và sao chép liên kết nguyện vọng vào bảng tạm";
-"正在获取祈愿链接，请稍等" = "Đang tìm liên kết nguyện vọng, vui lòng đợi";
-"生成祈愿链接失败" = "Tạo liên kết nguyện vọng thất bại";
-"UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。" = "Hỗ trợ nhiều ngôn ngữ cho UIGF vẫn đang được thảo luận và chức năng xuất chỉ hỗ trợ tiếng Trung giản thể hiện tại. Chúng tôi sẽ thêm hỗ trợ cho nhiều ngôn ngữ ngay khi nó được hoàn thành.";
-"3群: 736320270" = "Nhóm 3: 736320270";
-"保存成功" = "Lưu thành công";
-"文件已保存至%@" = "Đã lưu tệp vào %@";
-"保存失败" = "Lưu thất bại";
-"确定要删除吗？" = "Bạn có chắc muốn xóa không?";
-"删除" = "Xóa";
-"删除成功" = "Xóa thành công";
-"清理重复数据成功" = "Đã xóa dữ liệu trùng lặp thành công";
-"如何从《提瓦特小助手》导入？" = "Làm thế nào để nhập từ \"提瓦特小助手\"?";
-"如何从paimon.moe导入？" = "Làm thế nào để nhập từ Paimon.moe?";
-"教程" = "Hướng Dẫn";
+"gacha.link.generateWishLinkToClipboard" = "Tạo và sao chép liên kết nguyện vọng vào bảng tạm";
+"gacha.fetch.pleaseWaitWhileFetchingTheWishLink" = "Đang tìm liên kết nguyện vọng, vui lòng đợi";
+"gacha.fetch.failedInGeneratingTheWishLink" = "Tạo liên kết nguyện vọng thất bại";
+"gacha.uigf.notice.pendingMultilingualSupport" = "Hỗ trợ nhiều ngôn ngữ cho UIGF vẫn đang được thảo luận và chức năng xuất chỉ hỗ trợ tiếng Trung giản thể hiện tại. Chúng tôi sẽ thêm hỗ trợ cho nhiều ngôn ngữ ngay khi nó được hoàn thành.";
+"about.group.qq.3rd" = "Nhóm 3";
+"gacha.export.succeededInSavingToFile" = "Lưu thành công";
+"gacha.export.fileSavedTo:%@" = "Đã lưu tệp vào %@";
+"gacha.export.failedInSavingToFile" = "Lưu thất bại";
+"gacha.prompt.dataRemoval" = "Bạn có chắc muốn xóa không?";
+"gacha.term.delete" = "Xóa";
+"gacha.notice.succeededInRemovingData" = "Xóa thành công";
+"gacha.notice.succeededInDeduplicatingData" = "Đã xóa dữ liệu trùng lặp thành công";
+"gacha.link.howToImportFromTeyvatAssistant" = "Làm thế nào để nhập từ \"提瓦特小助手\"?";
+"gacha.instruction.howToImportFromPaimonMoe" = "Làm thế nào để nhập từ Paimon.moe?";
+"gacha.term.tutorial" = "Hướng Dẫn";
 
 // MARK: - 2.8.5
 

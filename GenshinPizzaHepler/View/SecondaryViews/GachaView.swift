@@ -136,7 +136,7 @@ struct GachaView: View {
                 }
                 GachaStatisticSectionView()
             } else {
-                Text("暂无五星祈愿记录").foregroundColor(.gray)
+                Text("gacha.records.noQuintapleStarRecordsFound").foregroundColor(.gray)
             }
             if #available(iOS 16.0, *) {
                 Section {

@@ -492,7 +492,7 @@ Created by Bill Haku on 2022/8/23.
 "settings.howToUseNotifications" = "通知使用提示";
 "account.server" = "服务器";
 
-"gatcha.term.scriptForFetchingCookies" = "获取Cookie的脚本";
+"gacha.term.scriptForFetchingCookies" = "获取Cookie的脚本";
 "settings.misc.rateMeOnAppStore" = "在App Store评分";
 "settings.misc.supportUs" = "支持我们";
 "settings.misc.FAQ" = "常见使用问题（FAQ）";
@@ -662,8 +662,8 @@ Created by Bill Haku on 2022/8/23.
 "「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。" = "「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。";
 "原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。" = "原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。";
 "用户交流群" = "用户交流群";
-"QQ群1: 813912474" = "QQ群1: 813912474";
-"QQ群2: 829996515" = "QQ群2: 829996515";
+
+
 "Discord频道: Genshin Pizza Helper" = "Discord频道: Genshin Pizza Helper";
 "个人主页" = "个人主页";
 "Bilibili主页" = "Bilibili主页";
@@ -1061,8 +1061,8 @@ Created by Bill Haku on 2022/8/23.
 // MARK: - 2.7.1
 "加入QQ群" = "加入QQ群";
 "加入Discord服务器" = "加入Discord服务器";
-"1群: 813912474" = "1群: 813912474";
-"2群: 829996515" = "2群: 829996515";
+"about.group.qq.1st" = "1群";
+"about.group.qq.2nd" = "2群";
 "原神披萨深渊榜网页版" = "原神披萨深渊榜网页版";
 "英语 繁体中文" = "英语 繁体中文";
 
@@ -1125,7 +1125,7 @@ Created by Bill Haku on 2022/8/23.
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "原神活动信息由[Project Amber](https://ambr.top/)提供";
 
 // MARK: - 2.7.12
-"越南文" = "越南文";
+"lang.Vietnamese" = "越南文";
 "未重开玩家使用率" = "未重开玩家使用率";
 "时区" = "时区";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。";
@@ -1145,15 +1145,15 @@ Created by Bill Haku on 2022/8/23.
 // MARK: - 2.8.0
 
 // Display Options
-"裁掉小尺寸角色照片当中的肩膀" = "裁掉小尺寸角色照片当中的肩膀";
+"settings.display.cutShouldersForSmallPhotos" = "裁掉小尺寸角色照片当中的肩膀";
 
 // artifact rating
-"%@分" = "%@分";
-"圣遗物评价" = "圣遗物评价";
-"显示圣遗物评分与评价" = "显示圣遗物评分与评价";
-"自定义流浪者姓名" = "自定义流浪者姓名";
-"自定义姓名" = "自定义姓名";
-"请输入自定义流浪者姓名" = "请输入自定义流浪者姓名";
+"detailPortal.ECDDV.scoreUnit:%@" = "%@分";
+"detailPortal.ECDDV.artifactRank" = "圣遗物评价";
+"settings.display.showArtifactRank" = "显示圣遗物评分与评价";
+"settings.display.customizingNameForKunikuzushi" = "自定义流浪者姓名";
+"settings.display.customizedNameForKunikuzushi" = "自定义姓名";
+"settings.display.prompt.customizingNameForKunikuzushi" = "请输入自定义流浪者姓名";
 
 // wish analysis
 "请点击右上角获取抽卡记录" = "请点击右上角获取抽卡记录";
@@ -1285,41 +1285,45 @@ Created by Bill Haku on 2022/8/23.
 "自%@到%@" = "自%@到%@";
 
 // gacha avaliable language
-"泰文" = "泰文";
-"朝鲜文" = "朝鲜文";
-"西班牙文" = "西班牙文";
-"简体中文" = "简体中文";
-"印尼文" = "印尼文";
-"葡萄牙文" = "葡萄牙文";
-"德文" = "德文";
-"繁体中文" = "繁体中文";
-"英语（美国）" = "英语（美国）";
-"选择语言" = "选择语言";
+"gacha.languageCode.th" = "泰文";
+"gacha.languageCode.ko" = "韩文/朝鲜文";
+"gacha.languageCode.es" = "西班牙文";
+"gacha.languageCode.ja" = "日文";
+"gacha.languageCode.zhCN" = "简体中文";
+"gacha.languageCode.id" = "印尼文";
+"gacha.languageCode.pt" = "葡萄牙文";
+"gacha.languageCode.de" = "德文";
+"gacha.languageCode.fr" = "法文";
+"gacha.languageCode.zhTW" = "繁体中文";
+"gacha.languageCode.ru" = "俄文";
+"gacha.languageCode.enUS" = "英语（美国）";
+"gacha.languageCode.vi" = "越南文";
+"gacha.export.chooseLanguage" = "选择语言";
 
 // Additional terms
-"开始导入？" = "开始导入？";
-"导入数据需要一段时间，请耐心等待。" = "导入数据需要一段时间，请耐心等待。";
+"gacha.import.startImport" = "开始导入？";
+"gacha.import.informThatItNeedsWait" = "导入数据需要一段时间，请耐心等待。";
 
-"暂无五星祈愿记录" = "暂无五星祈愿记录";
-"成功将祈愿链接复制到剪贴板" = "成功将祈愿链接复制到剪贴板";
+"gacha.records.noQuintapleStarRecordsFound" = "暂无五星祈愿记录";
+"gacha.api.result.succeededInCopyingSourceLinkToClipboard" = "成功将祈愿链接复制到剪贴板";
 
 
 // MARK: - 2.8.1
-"生成并复制祈愿链接至剪贴板" = "生成并复制祈愿链接至剪贴板";
-"正在获取祈愿链接，请稍等" = "正在获取祈愿链接，请稍等";
-"生成祈愿链接失败" = "生成祈愿链接失败";
-"UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。" = "UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。";
-"3群: 736320270" = "3群: 736320270";
-"保存成功" = "保存成功";
-"文件已保存至%@" = "文件已保存至%@";
-"保存失败" = "保存失败";
-"确定要删除吗？" = "确定要删除吗？";
-"删除" = "删除";
-"删除成功" = "删除成功";
-"清理重复数据成功" = "清理重复数据成功";
-"如何从《提瓦特小助手》导入？" = "如何从《提瓦特小助手》导入？";
-"如何从paimon.moe导入？" = "如何从paimon.moe导入？";
-"教程" = "教程";
+"gacha.link.generateWishLinkToClipboard" = "生成并复制祈愿链接至剪贴板";
+"gacha.fetch.pleaseWaitWhileFetchingTheWishLink" = "正在获取祈愿链接，请稍等";
+"gacha.fetch.failedInGeneratingTheWishLink" = "生成祈愿链接失败";
+"gacha.uigf.notice.pendingMultilingualSupport" = "UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。";
+"about.group.qq.3rd" = "3群";
+"gacha.export.succeededInSavingToFile" = "保存成功";
+"gacha.export.fileSavedTo:%@" = "gacha.export.fileSavedTo:%@";
+"gacha.export.failedInSavingToFile" = "保存失败";
+"gacha.prompt.dataRemoval" = "确定要删除吗？";
+"gacha.term.delete" = "删除";
+"gacha.notice.succeededInRemovingData" = "删除成功";
+"gacha.notice.succeededInDeduplicatingData" = "清理重复数据成功";
+"gacha.link.howToImportFromTeyvatAssistant" = "如何从《提瓦特小助手》导入？";
+"gacha.instruction.howToImportFromPaimonMoe" = "如何从paimon.moe导入？";
+"gacha.term.tutorial" = "教程";
 
 // MARK: - 2.8.5
 

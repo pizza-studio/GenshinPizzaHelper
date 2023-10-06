@@ -492,7 +492,7 @@
 "settings.howToUseNotifications" = "Mga Payo: Paano Gumamit ng Notification?";
 "account.server" = "Server";
 
-"gatcha.term.scriptForFetchingCookies" = "Mga Shortcut para sa pagkukuha ng Cookie";
+"gacha.term.scriptForFetchingCookies" = "Mga Shortcut para sa pagkukuha ng Cookie";
 "settings.misc.rateMeOnAppStore" = "I-rate sa App Store";
 "settings.misc.supportUs" = "Mag-donate sa amin";
 "settings.misc.FAQ" = "FAQ";
@@ -662,8 +662,8 @@
 "「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。" = "Ang Genshin Pizza Helper ay hindi kaakibat ng miHoYo Co, Ltd at mga subsidiary nito.";
 "原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。" = "Genshin Impact, game content and materials are trademarks and copyrights of HoYoverse.";
 "用户交流群" = "User Communication Groups";
-"QQ群1: 813912474" = "QQ Group 1: 813912474";
-"QQ群2: 829996515" = "QQ Group 2: 829996515";
+
+
 "Discord频道: Genshin Pizza Helper" = "Sumali sa Discord Server";
 "个人主页" = "Personal na Homepage";
 "Bilibili主页" = "Bilibili Homepage";
@@ -1061,8 +1061,8 @@
 // MARK: - 2.7.1
 "加入QQ群" = "Sumali sa QQ Group";
 "加入Discord服务器" = "Sumali sa Discord Server";
-"1群: 813912474" = "Group 1: 813912474";
-"2群: 829996515" = "Group 2: 829996515";
+"about.group.qq.1st" = "Group 1";
+"about.group.qq.2nd" = "Group 2";
 "原神披萨深渊榜网页版" = "Genshin Pizza Abyss Rank Webpage";
 "英语 繁体中文" = "English Traditional Chinese";
 
@@ -1125,7 +1125,7 @@
 "原神活动信息由[Project Amber](https://ambr.top/)提供" = "Ang impormasyon tungkol sa events sa Genshin Impact ay ibinigay ng [Project Amber](https://ambr.top/)";
 
 // MARK: - 2.7.12
-"越南文" = "Vietnamese";
+"lang.Vietnamese" = "Vietnamese";
 "未重开玩家使用率" = "Non-restarted Player Usage Rate";
 "时区" = "Timezone";
 "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。" = "Kinukuha namin ang oras batay sa timezone ng server na iyong pinili. Kasalukuyang timezone: %@.";
@@ -1145,15 +1145,15 @@
 // MARK: - 2.8.0
 
 // Display Options
-"裁掉小尺寸角色照片当中的肩膀" = "Cut shoulders for small avatar photos";
+"settings.display.cutShouldersForSmallPhotos" = "Cut shoulders for small avatar photos";
 
 // artifact rating
-"%@分" = "%@pt";
-"圣遗物评价" = "Artifact Rank";
-"显示圣遗物评分与评价" = "Ipakita ang artifact scores and ratings";
-"自定义流浪者姓名" = "I-edit ang pangalan ni Wanderer";
-"自定义姓名" = "I-edit ang pangalan";
-"请输入自定义流浪者姓名" = "I-enter ang customized name ni Wanderer";
+"detailPortal.ECDDV.scoreUnit:%@" = "%@pt";
+"detailPortal.ECDDV.artifactRank" = "Artifact Rank";
+"settings.display.showArtifactRank" = "Ipakita ang artifact scores and ratings";
+"settings.display.customizingNameForKunikuzushi" = "I-edit ang pangalan ni Wanderer";
+"settings.display.customizedNameForKunikuzushi" = "I-edit ang pangalan";
+"settings.display.prompt.customizingNameForKunikuzushi" = "I-enter ang customized name ni Wanderer";
 
 // wish analysis
 "请点击右上角获取抽卡记录" = "I-click sa kanang tuktok upang makuha";
@@ -1285,41 +1285,45 @@
 "自%@到%@" = "Mula rito %@ hanggang %@";
 
 // gacha avaliable language
-"泰文" = "Thai";
-"朝鲜文" = "Korean";
-"西班牙文" = "Spanish";
-"简体中文" = "Simplified Chinese";
-"印尼文" = "Indonesian";
-"葡萄牙文" = "Portuguese";
-"德文" = "German";
-"繁体中文" = "Traditional Chinese";
-"英语（美国）" = "English (US)";
-"选择语言" = "Select Language";
+"gacha.languageCode.th" = "Thai";
+"gacha.languageCode.ko" = "Korean";
+"gacha.languageCode.es" = "Espanyol";
+"gacha.languageCode.ja" = "Japanese";
+"gacha.languageCode.zhCN" = "Pinasimpleng na Tsino";
+"gacha.languageCode.id" = "Indonesian";
+"gacha.languageCode.pt" = "Portuguese";
+"gacha.languageCode.de" = "German";
+"gacha.languageCode.fr" = "French";
+"gacha.languageCode.zhTW" = "Tradisyonal na Tsino";
+"gacha.languageCode.ru" = "Russian";
+"gacha.languageCode.enUS" = "Ingles (Estados Unidos)";
+"gacha.languageCode.vi" = "Vietnamese";
+"gacha.export.chooseLanguage" = "Select Language";
 
 // Additional terms
-"开始导入？" = "Simulang mag-import?";
-"导入数据需要一段时间，请耐心等待。" = "Tumatagal ng ilang sandali upang mai-import ang data, maghintay…";
+"gacha.import.startImport" = "Simulang mag-import?";
+"gacha.import.informThatItNeedsWait" = "Tumatagal ng ilang sandali upang mai-import ang data, maghintay…";
 
-"暂无五星祈愿记录" = "Walang 5-star wish record ngayon";
-"成功将祈愿链接复制到剪贴板" = "Na kopya ang link na nais sa clipboard";
+"gacha.records.noQuintapleStarRecordsFound" = "Walang 5-star wish record ngayon";
+"gacha.api.result.succeededInCopyingSourceLinkToClipboard" = "Na kopya ang link na nais sa clipboard";
 
 
 // MARK: - 2.8.1
-"生成并复制祈愿链接至剪贴板" = "Bumuo at kopyahin ang wish link sa clipboard";
-"正在获取祈愿链接，请稍等" = "Kumukuha ng wish link, maghintay";
-"生成祈愿链接失败" = "Hindi makabuo ng link";
-"UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。" = "Ang suporta ng masmaraming wika para sa UIGF ay nasa ilalim pa rin ng diskusyon, at ang pag-export ng pag-export ay kasalukuyang sumusuporta lamang ng Simplified Chinese. Magdaragdag kami ng suporta para sa masmaraming wika kapag nakumpleto na ito.";
-"3群: 736320270" = "Group 3: 736320270";
-"保存成功" = "Nai-save";
-"文件已保存至%@" = "File ay nai-save sa %@";
-"保存失败" = "Hindi ma-save";
-"确定要删除吗？" = "Sigurado ka bang nais mong burahin?";
-"删除" = "Burahin";
-"删除成功" = "Na bura ito";
-"清理重复数据成功" = "Successfully cleaned up duplicate data";
-"如何从《提瓦特小助手》导入？" = "Paano mag import mula sa \"提瓦特小助手\"?";
-"如何从paimon.moe导入？" = "Paano mag import mula sa paimon.moe?";
-"教程" = "Pagtuturo";
+"gacha.link.generateWishLinkToClipboard" = "Bumuo at kopyahin ang wish link sa clipboard";
+"gacha.fetch.pleaseWaitWhileFetchingTheWishLink" = "Kumukuha ng wish link, maghintay";
+"gacha.fetch.failedInGeneratingTheWishLink" = "Hindi makabuo ng link";
+"gacha.uigf.notice.pendingMultilingualSupport" = "Ang suporta ng masmaraming wika para sa UIGF ay nasa ilalim pa rin ng diskusyon, at ang pag-export ng pag-export ay kasalukuyang sumusuporta lamang ng Simplified Chinese. Magdaragdag kami ng suporta para sa masmaraming wika kapag nakumpleto na ito.";
+"about.group.qq.3rd" = "Group 3";
+"gacha.export.succeededInSavingToFile" = "Nai-save";
+"gacha.export.fileSavedTo:%@" = "File ay nai-save sa %@";
+"gacha.export.failedInSavingToFile" = "Hindi ma-save";
+"gacha.prompt.dataRemoval" = "Sigurado ka bang nais mong burahin?";
+"gacha.term.delete" = "Burahin";
+"gacha.notice.succeededInRemovingData" = "Na bura ito";
+"gacha.notice.succeededInDeduplicatingData" = "Successfully cleaned up duplicate data";
+"gacha.link.howToImportFromTeyvatAssistant" = "Paano mag import mula sa \"提瓦特小助手\"?";
+"gacha.instruction.howToImportFromPaimonMoe" = "Paano mag import mula sa paimon.moe?";
+"gacha.term.tutorial" = "Pagtuturo";
 
 // MARK: - 2.8.5
 

@@ -150,21 +150,21 @@ struct GachaSetting: View {
             ExportGachaView(isSheetShow: $isExportSheetShow)
         })
         .alert(
-            "确定要删除吗？",
+            "gacha.prompt.dataRemoval",
             isPresented: $isDeleteConfirmAlertShow,
             presenting: alert,
             actions: deleteConfirmAlertButton,
             message: deleteConfirmAlertMessage
         )
         .alert(
-            "删除成功",
+            "gacha.notice.succeededInRemovingData",
             isPresented: $isDeleteCompletedAlertShow,
             presenting: alert,
             actions: defaultDismissButton,
             message: deleteCompletedAlertMessage
         )
         .alert(
-            "清理重复数据成功",
+            "gacha.notice.succeededInDeduplicatingData",
             isPresented: $isDuplicatedCleanCompletedAlertShow,
             presenting: alert,
             actions: defaultDismissButton,
@@ -206,7 +206,7 @@ struct GachaSetting: View {
 
     @ViewBuilder
     func deleteConfirmAlertButton(_ thisAlert: AlertType) -> some View {
-        Button("删除", role: .destructive) {
+        Button("gacha.term.delete", role: .destructive) {
             alert = nil
             alert = .deleteCompleted(
                 gachaViewModel.manager

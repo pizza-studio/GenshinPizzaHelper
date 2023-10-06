@@ -206,33 +206,6 @@ extension GachaLanguageCode: Codable {
 
 extension GachaLanguageCode: CustomStringConvertible {
     public var description: String {
-        switch self {
-        case .th:
-            return "泰文".localized
-        case .ko:
-            return "朝鲜文".localized
-        case .es:
-            return "西班牙文".localized
-        case .ja:
-            return "日文".localized
-        case .zhCN:
-            return "简体中文".localized
-        case .id:
-            return "印尼文".localized
-        case .pt:
-            return "葡萄牙文".localized
-        case .de:
-            return "德文".localized
-        case .fr:
-            return "法文".localized
-        case .zhTW:
-            return "繁体中文".localized
-        case .ru:
-            return "俄文".localized
-        case .enUS:
-            return "英语（美国）".localized
-        case .vi:
-            return "越南文".localized
-        }
+        "gacha.languageCode.\(String(describing: self))"
     }
 }
