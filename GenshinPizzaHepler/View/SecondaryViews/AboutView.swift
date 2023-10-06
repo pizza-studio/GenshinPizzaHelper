@@ -39,6 +39,8 @@ struct AboutView: View {
                 .font(.caption2)
             Text("原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。")
                 .font(.caption2)
+            Text("桂ICP备2023009538号-2A")
+                .font(.caption2)
         }
     }
 }
