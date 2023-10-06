@@ -726,7 +726,7 @@
 // Notification
 "打开《原神》" = "Mở Genshin Impact";
 "通知设置" = "Cài Đặt thông báo";
-"「%@」原粹树脂提醒" = "%@'s Thông báo Nhựa Nguyên Chất";
+"notification.noticeForChar:%@" ="%@'s Thông báo Nhựa Nguyên Chất";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@ có %lld nhựa ban đầu , sẽ đầy vào lúc %@.";
 "「%@」洞天宝钱提醒" = "%@'s Thông báo tiền động tiên";
 "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@'s Tubby có %lld tiền động tiên bây giờ, sẽ có đầy tại %@.";
@@ -1026,45 +1026,45 @@
 "总计" = "Tổng Cộng";
 
 // CharacterDetailView
-"精炼%lld阶" = "R%lld";
-"生命值" = "HP";
-"攻击力" = "Tấn Công";
-"防御力" = "Phòng Thủ";
-"元素精通" = "Tinh Thông Nguyên Tố";
-"元素充能效率" = "Hiệu Quả Nạp Nguyên Tố";
-"治疗加成" = "Tăng Trị Liệu";
-"暴击率" = "Tỉ Lệ Bạo Kích";
-"暴击伤害" = "ST Bạo Kích";
-"风元素伤害加成" = "Tăng ST Nguyên Tố Phong";
-"冰元素伤害加成" = "Tăng ST Nguyên Tố Băng";
-"雷元素伤害加成" = "Tăng ST Nguyên Tố Lôi";
-"水元素伤害加成" = "Tăng ST Nguyên Tố Thuỷ";
-"火元素伤害加成" = "Tăng ST Nguyên Tố Hoả";
-"岩元素伤害加成" = "Tăng ST Nguyên Tố Nham";
-"草元素伤害加成" = "Tăng ST Nguyên Tố Thảo";
-"物理伤害加成" = "Tăng ST Vật Lý";
-"等级" = "Cấp";
-"命之座" = "Cung Mệnh";
-"%lld命" = "C%lld";
-"基础攻击力" = "Tấn Công";
-"生命值上限" = "HP";
-"暴击率%%" = "%% Tỉ Lệ Bạo";
-"暴击伤害%%" = "%% ST Bạo";
-"治疗加成%%" = "%% Tăng Trị Liệu";
-"受治疗加成" = "Tăng Trị Liệu";
-"元素充能%%" = "%% Nạp";
-"护盾强效" = "Hiệu Quả Khiên";
-"火伤加成%%" = "%% STNT Hoả";
-"水伤加成%%" = "%% STNT Thuỷ";
-"草伤加成%%" = "%% STNT Thảo";
-"雷伤加成%%" = "%% STNT Lôi";
-"风伤加成%%" = "%% STNT Phong";
-"冰伤加成%%" = "%% STNT Băng";
-"岩伤加成%%" = "%% STNT Nham";
-"物伤加成%%" = "%% ST Vật Lý";
-"攻击力%%" = "%% Tấn Công";
-"生命值%%" = "%% HP";
-"防御力%%" = "%% Phòng Thủ";
+"detailPortal.ECDDV.refineRank:%lld" = "R%lld";
+"detailPortal.ECDDV.maxHP" = "HP";
+"detailPortal.ECDDV.ATK" = "Tấn Công";
+"detailPortal.ECDDV.DEF" = "Phòng Thủ";
+"detailPortal.ECDDV.EM" = "Tinh Thông Nguyên Tố";
+"detailPortal.ECDDV.ERCR" = "Hiệu Quả Nạp Nguyên Tố";
+"detailPortal.ECDDV.HB" = "Tăng Trị Liệu";
+"detailPortal.ECDDV.CR" = "Tỉ Lệ Bạo Kích";
+"detailPortal.ECDDV.CDMG" = "ST Bạo Kích";
+"detailPortal.ECDDV.bonus.anemo" = "Tăng ST Nguyên Tố Phong";
+"detailPortal.ECDDV.bonus.cryo" = "Tăng ST Nguyên Tố Băng";
+"detailPortal.ECDDV.bonus.electro" = "Tăng ST Nguyên Tố Lôi";
+"detailPortal.ECDDV.bonus.hydro" = "Tăng ST Nguyên Tố Thuỷ";
+"detailPortal.ECDDV.bonus.pyro" = "Tăng ST Nguyên Tố Hoả";
+"detailPortal.ECDDV.bonus.geo" = "Tăng ST Nguyên Tố Nham";
+"detailPortal.ECDDV.bonus.dendro" = "Tăng ST Nguyên Tố Thảo";
+"detailPortal.ECDDV.bonus.physical" = "Tăng ST Vật Lý";
+"detailPortal.ECDDV.characterLevel" = "Cấp";
+"detailPortal.ECDDV.constellation" = "Cung Mệnh";
+"detailPortal.ECDDV.constellation.unit:%lld" = "C%lld";
+"detailPortal.ECDDV.prop.basicATK" = "Tấn Công";
+"detailPortal.ECDDV.prop.maxHP" = "HP";
+"detailPortal.ECDDV.prop.CR" = "%% Tỉ Lệ Bạo";
+"detailPortal.ECDDV.prop.CDMG" = "%% ST Bạo";
+"detailPortal.ECDDV.prop.bonus.heal" = "%% Tăng Trị Liệu";
+"detailPortal.ECDDV.prop.bonus.healed" = "Tăng Trị Liệu";
+"detailPortal.ECDDV.prop.ERCR" = "%% Nạp";
+"detailPortal.ECDDV.prop.SCMR" = "Hiệu Quả Khiên";
+"detailPortal.ECDDV.prop.bonus.pyro" = "%% STNT Hoả";
+"detailPortal.ECDDV.prop.bonus.hydro" = "%% STNT Thuỷ";
+"detailPortal.ECDDV.prop.bonus.dendro" = "%% STNT Thảo";
+"detailPortal.ECDDV.prop.bonus.electro" = "%% STNT Lôi";
+"detailPortal.ECDDV.prop.bonus.anemo" = "%% STNT Phong";
+"detailPortal.ECDDV.prop.bonus.cryo" = "%% STNT Băng";
+"detailPortal.ECDDV.prop.bonus.geo" = "%% STNT Nham";
+"detailPortal.ECDDV.prop.bonus.physical" = "%% ST Vật Lý";
+"detailPortal.ECDDV.prop.ATK" = "%% Tấn Công";
+"detailPortal.ECDDV.prop.HP" = "%% HP";
+"detailPortal.ECDDV.prop.DEF" = "%% Phòng Thủ";
 
 // Từ Điển Genshin
 "复制英语" = "Sao chép Tiếng Anh";
@@ -1103,8 +1103,8 @@
 "五星角色" = "Nhân Vật 5 Sao";
 "四星角色" = "Nhân Vật 4 Sao";
 "的所有角色" = "Nhân Vật Sở Hữu";
-"生命值上限" = "HP";
-"元素精通​" = "TTNT"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
+"detailPortal.ECDDV.prop.maxHP" = "HP";
+"detailPortal.ECDDV.prop.EM" = "TTNT"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
 
 // MARK: - 2.5.4 HOTFIX
 "账号状态异常，请前往米游社-旅行便笺重新验证" = "Trạng thái tài khoản bất thường, vui lòng vào HoYoLAB để xác minh lại";
@@ -1248,33 +1248,33 @@
 "小组件同步频率" = "Tần suất đồng bộ hóa tiện ích";
 "主屏幕小组件同步频率" = "Tần suất đồng bộ hóa tiện ích màn hình chính";
 "锁定屏幕小组件同步频率" = "Tần suất đồng bộ tiện ích màn hình khóa";
-"我知道了" = "Tôi hiểu rồi";
+"latestVersionInfoView.affirmative" = "Tôi hiểu rồi";
 
 // MARK: -2.7.4
-"「%@」的原粹树脂已回满。" = "%@'s nhựa đã đầy. ";
+"notification.filledFor:%@" = "%@'s nhựa đã đầy. ";
 
 // MARK: - 2.7.8
 "settings.notification.disclaimer.onlyWorksWithNewNotifications" = "Lưu ý: Các thay đổi Cài Đặt thông báo sẽ không có hiệu lực đối với các thông báo hiện được lên lịch.";
 
 // MARK: - 2.7.9
-"俄文" = "Tiếng Nga";
+"lang.Russian" = "Tiếng Nga";
 
 // MARK: - 2.7.10
-"使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "Xếp hạng sử dụng chỉ để tham khảo trong đội hình La Hoàn và không đại diện cho bất kỳ đánh giá nào về nhân vật.";
-"强烈推荐选用的角色" = "Nhân vật được đề xuất cao";
-"推荐选用的角色" = "Nhân vật đề xuất";
-"优先选用的角色" = "Nhân vật ưa thích";
-"可以选用的角色" = "Nhân vật vai trò tuỳ chọn";
-"酌情选用的角色" = "Nhân vật vai trò có sẵn";
-"普遍可用的角色" = "Nhân vật phổ biến";
-"清空缓存 (%@MB)" = "Xoá bộ nhớ cache (%@MB)";
+"abyssDataCollection.usageRate.disclaimer" = "Xếp hạng sử dụng chỉ để tham khảo trong đội hình La Hoàn và không đại diện cho bất kỳ đánh giá nào về nhân vật.";
+"abyssDataCollection.usageRate.recommended.t0" = "Nhân vật được đề xuất cao";
+"abyssDataCollection.usageRate.recommended.t1" = "Nhân vật đề xuất";
+"abyssDataCollection.usageRate.recommended.t2" = "Nhân vật ưa thích";
+"abyssDataCollection.usageRate.recommended.t3" = "Nhân vật vai trò tuỳ chọn";
+"abyssDataCollection.usageRate.recommended.t4" = "Nhân vật vai trò có sẵn";
+"abyssDataCollection.usageRate.recommended.t5" = "Nhân vật phổ biến";
+"settings.more.cleanCacheFilesOfMBs:%@" = "Xoá bộ nhớ cache (%@MB)";
 
-"暂无当前活动信息" = "Hiện tại không có thông tin sự kiện nào";
-"原神活动信息由[Project Amber](https://ambr.top/)提供" = "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Amber](https://ambr.top/)";
+"gameEvents.noCurrentEventInfo" = "Hiện tại không có thông tin sự kiện nào";
+"gameEvents.intelligenceProvider" = "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Amber](https://ambr.top/)";
 
 // MARK: - 2.7.12
 "lang.Vietnamese" = "Tiếng Việt";
-"abyssDataCollection.characterUsageRateSansRestart" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
+"abyssDataCollection.usageRate.characterSansRestart" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
 "settings.more.timeZone.title" = "Múi Giờ";
 "settings.more.timeZone.descriptionWithCurrent:%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
 "abyssDataCollection.availableSince20230401" = "Có sẵn từ 2023-04-01";

@@ -123,7 +123,7 @@ struct MoreView: View {
 
             Section {
                 Button(
-                    "清空缓存 (\(String(format: "%.2f", viewModel.fileSize))MB)"
+                    "settings.more.cleanCacheFilesOfMBs:\(String(format: "%.2f", viewModel.fileSize))"
                 ) {
                     viewModel.clearImageCache()
                 }

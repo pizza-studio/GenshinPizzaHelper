@@ -603,7 +603,7 @@
 // Notification
 "打开《原神》" = "『原神』を開く";
 "通知设置" = "通知設定";
-"「%@」原粹树脂提醒" = "「%@」の天然樹脂注意";
+"notification.noticeForChar:%@" ="「%@」の天然樹脂注意";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "「%@」は今%lld個の樹脂を持っています。%@に満タンになります。";
 "「%@」洞天宝钱提醒" = "「%@」の洞天宝銭注意";
 "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "「%@」は今%lldの洞天宝銭を持っています。%@に満タンになります。";
@@ -889,45 +889,45 @@
 "总计" = "総計";
 
 // CharacterDetailView
-"精炼%lld阶" = "精錬ランク%lld";
-"生命值" = "HP";
-"攻击力" = "攻撃力";
-"防御力" = "防御力";
-"元素精通" = "元素熟知";
-"元素充能效率" = "元素チャージ効率";
-"治疗加成" = "与える治療効果";
-"暴击率" = "会心率";
-"暴击伤害" = "会心ダメージ";
-"风元素伤害加成" = "風元素ダメージ";
-"冰元素伤害加成" = "氷元素ダメージ";
-"雷元素伤害加成" = "雷元素ダメージ";
-"水元素伤害加成" = "水元素ダメージ";
-"火元素伤害加成" = "火元素ダメージ";
-"岩元素伤害加成" = "岩元素ダメージ";
-"草元素伤害加成" = "草元素ダメージ";
-"物理伤害加成" = "物理ダメージ";
-"等级" = "レベル";
-"命之座" = "命ノ星座";
-"%lld命" = "%lld凸";
-"基础攻击力" = "基礎攻撃力";
-"生命值上限" = "HP上限";
-"暴击率%%" = "会心率%%";
-"暴击伤害%%" = "会心ダメ%%";
-"治疗加成%%" = "治療効果%%";
-"受治疗加成" = "HEALED_ADD";
-"元素充能%%" = "元チャ%%";
-"护盾强效" = "SHIELD_COST_MINUS_RATIO";
-"火伤加成%%" = "火ダメ%%";
-"水伤加成%%" = "水ダメ%%";
-"草伤加成%%" = "草ダメ%%";
-"雷伤加成%%" = "雷ダメ%%";
-"风伤加成%%" = "風ダメ%%";
-"冰伤加成%%" = "氷ダメ%%";
-"岩伤加成%%" = "岩ダメ%%";
-"物伤加成%%" = "物理ダメ%%";
-"攻击力%%" = "攻撃力%%";
-"生命值%%" = "HP %%";
-"防御力%%" = "DEF %%";
+"detailPortal.ECDDV.refineRank:%lld" = "精錬ランク%lld";
+"detailPortal.ECDDV.maxHP" = "HP";
+"detailPortal.ECDDV.ATK" = "攻撃力";
+"detailPortal.ECDDV.DEF" = "防御力";
+"detailPortal.ECDDV.EM" = "元素熟知";
+"detailPortal.ECDDV.ERCR" = "元素チャージ効率";
+"detailPortal.ECDDV.HB" = "与える治療効果";
+"detailPortal.ECDDV.CR" = "会心率";
+"detailPortal.ECDDV.CDMG" = "会心ダメージ";
+"detailPortal.ECDDV.bonus.anemo" = "風元素ダメージ増幅";
+"detailPortal.ECDDV.bonus.cryo" = "氷元素ダメージ増幅";
+"detailPortal.ECDDV.bonus.electro" = "雷元素ダメージ増幅";
+"detailPortal.ECDDV.bonus.hydro" = "水元素ダメージ増幅";
+"detailPortal.ECDDV.bonus.pyro" = "火元素ダメージ増幅";
+"detailPortal.ECDDV.bonus.geo" = "岩元素ダメージ増幅";
+"detailPortal.ECDDV.bonus.dendro" = "草元素ダメージ増幅";
+"detailPortal.ECDDV.bonus.physical" = "物理ダメージ増幅";
+"detailPortal.ECDDV.characterLevel" = "レベル";
+"detailPortal.ECDDV.constellation" = "命ノ星座";
+"detailPortal.ECDDV.constellation.unit:%lld" = "%lld凸";
+"detailPortal.ECDDV.prop.basicATK" = "基礎攻撃力";
+"detailPortal.ECDDV.prop.maxHP" = "HP上限";
+"detailPortal.ECDDV.prop.CR" = "会心率%%";
+"detailPortal.ECDDV.prop.CDMG" = "会心ダメ%%";
+"detailPortal.ECDDV.prop.bonus.heal" = "治療効果%%";
+"detailPortal.ECDDV.prop.bonus.healed" = "受治療増幅";
+"detailPortal.ECDDV.prop.ERCR" = "元チャ%%";
+"detailPortal.ECDDV.prop.SCMR" = "シールド増幅";
+"detailPortal.ECDDV.prop.bonus.pyro" = "火ダメ%%";
+"detailPortal.ECDDV.prop.bonus.hydro" = "水ダメ%%";
+"detailPortal.ECDDV.prop.bonus.dendro" = "草ダメ%%";
+"detailPortal.ECDDV.prop.bonus.electro" = "雷ダメ%%";
+"detailPortal.ECDDV.prop.bonus.anemo" = "風ダメ%%";
+"detailPortal.ECDDV.prop.bonus.cryo" = "氷ダメ%%";
+"detailPortal.ECDDV.prop.bonus.geo" = "岩ダメ%%";
+"detailPortal.ECDDV.prop.bonus.physical" = "物理ダメ%%";
+"detailPortal.ECDDV.prop.ATK" = "攻撃力%%";
+"detailPortal.ECDDV.prop.HP" = "HP %%";
+"detailPortal.ECDDV.prop.DEF" = "DEF %%";
 
 // Dictionary
 "复制英语" = "英語をコピー";
@@ -966,7 +966,7 @@
 "五星角色" = "星５キャラ";
 "四星角色" = "星４キャラ";
 "的所有角色" = "の全てのキャラ";
-"元素精通​" = "元素熟知"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
+"detailPortal.ECDDV.prop.EM" = "元素熟知"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
 
 // MARK: - 2.5.4 HOTFIX
 "账号状态异常，请前往米游社-旅行便笺重新验证" = "アカウント異常、HoYoLABでリアルタイムノートを確認してください";
@@ -1100,33 +1100,33 @@
 "小组件同步频率" = "ウィジェットの同期頻度";
 "主屏幕小组件同步频率" = "ホーム画面ウィジェットの同期頻度";
 "锁定屏幕小组件同步频率" = "ロック画面ウィジェットの同期頻度";
-"我知道了" = "了解";
+"latestVersionInfoView.affirmative" = "了解";
 
 // MARK: -2.7.4
-"「%@」的原粹树脂已回满。" = "「%@」の天然樹脂が回復完了。";
+"notification.filledFor:%@" = "「%@」の天然樹脂が回復完了。";
 
 // MARK: - 2.7.8
 "settings.notification.disclaimer.onlyWorksWithNewNotifications" = "注: 通知設定の変更は、現在スケジュールされている通知には反映されません。";
 
 // MARK: - 2.7.9
-"俄文" = "ロシア語";
+"lang.Russian" = "ロシア語";
 
 // MARK: - 2.7.10
-"使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "使用率はアビスチーム編成の参考値であり、キャラの評価を表すものではありません。";
-"强烈推荐选用的角色" = "強く推奨されるキャラ";
-"推荐选用的角色" = "推奨されるキャラ";
-"优先选用的角色" = "優先キャラ";
-"可以选用的角色" = "利用可能なキャラ";
-"酌情选用的角色" = "適宜選択されるキャラ";
-"普遍可用的角色" = "普遍的に利用可能なキャラ";
-"清空缓存 (%@MB)" = "キャッシュを削除 (%@MB)";
+"abyssDataCollection.usageRate.disclaimer" = "使用率はアビスチーム編成の参考値であり、キャラの評価を表すものではありません。";
+"abyssDataCollection.usageRate.recommended.t0" = "強く推奨されるキャラ";
+"abyssDataCollection.usageRate.recommended.t1" = "推奨されるキャラ";
+"abyssDataCollection.usageRate.recommended.t2" = "優先キャラ";
+"abyssDataCollection.usageRate.recommended.t3" = "利用可能なキャラ";
+"abyssDataCollection.usageRate.recommended.t4" = "適宜選択されるキャラ";
+"abyssDataCollection.usageRate.recommended.t5" = "普遍的に利用可能なキャラ";
+"settings.more.cleanCacheFilesOfMBs:%@" = "キャッシュを削除 (%@MB)";
 
-"暂无当前活动信息" = "今のイベントの情報がしばらくありません";
-"原神活动信息由[Project Amber](https://ambr.top/)提供" = "原神のイベントの情報は[Project Amber](https://ambr.top/)が提供しています";
+"gameEvents.noCurrentEventInfo" = "今のイベントの情報がしばらくありません";
+"gameEvents.intelligenceProvider" = "原神のイベントの情報は[Project Amber](https://ambr.top/)が提供しています";
 
 // MARK: - 2.7.12
 "lang.Vietnamese" = "ベトナム語";
-"abyssDataCollection.characterUsageRateSansRestart" = "未再開プレイヤーの使用率";
+"abyssDataCollection.usageRate.characterSansRestart" = "未再開プレイヤーの使用率";
 "settings.more.timeZone.title" = "タイムゾーン";
 "settings.more.timeZone.descriptionWithCurrent:%@。" = "選択したサーバーのタイムゾーンに基づいて時間を計算します。現在のタイムゾーン：%@。";
 "abyssDataCollection.availableSince20230401" = "Available From 2023-04-01";

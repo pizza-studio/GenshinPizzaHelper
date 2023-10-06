@@ -54,7 +54,7 @@ struct CurrentEventNavigator: View {
                             }).count <= 0 {
                                 HStack {
                                     Spacer()
-                                    Text("暂无当前活动信息")
+                                    Text("gameEvents.noCurrentEventInfo")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                     Spacer()

@@ -603,7 +603,7 @@ Created by Bill Haku on 2022/8/23.
 // Notification
 "打开《原神》" = "打开《原神》";
 "通知设置" = "通知设置";
-"「%@」原粹树脂提醒" = "「%@」原粹树脂提醒";
+"notification.noticeForChar:%@" ="「%@」原粹树脂提醒";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "「%@」现有%lld原粹树脂，将在%@ 回满。";
 "「%@」洞天宝钱提醒" = "「%@」洞天宝钱提醒";
 "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。";
@@ -889,45 +889,45 @@ Created by Bill Haku on 2022/8/23.
 "总计" = "总计";
 
 // CharacterDetailView
-"精炼%lld阶" = "精炼%lld阶";
-"生命值" = "生命值";
-"攻击力" = "攻击力";
-"防御力" = "防御力";
-"元素精通" = "元素精通";
-"元素充能效率" = "元素充能效率";
-"治疗加成" = "治疗加成";
-"暴击率" = "暴击率";
-"暴击伤害" = "暴击伤害";
-"风元素伤害加成" = "风元素伤害加成";
-"冰元素伤害加成" = "冰元素伤害加成";
-"雷元素伤害加成" = "雷元素伤害加成";
-"水元素伤害加成" = "水元素伤害加成";
-"火元素伤害加成" = "火元素伤害加成";
-"岩元素伤害加成" = "岩元素伤害加成";
-"草元素伤害加成" = "草元素伤害加成";
-"物理伤害加成" = "物理伤害加成";
-"等级" = "等级";
-"命之座" = "命之座";
-"%lld命" = "%lld命";
-"基础攻击力" = "基础攻击力";
-"生命值上限" = "生命值上限";
-"暴击率%%" = "暴击率%%";
-"暴击伤害%%" = "暴击伤害%%";
-"治疗加成%%" = "治疗加成%%";
-"受治疗加成" = "受治疗加成";
-"元素充能%%" = "元素充能%%";
-"护盾强效" = "护盾强效";
-"火伤加成%%" = "火伤加成%%";
-"水伤加成%%" = "水伤加成%%";
-"草伤加成%%" = "草伤加成%%";
-"雷伤加成%%" = "雷伤加成%%";
-"风伤加成%%" = "风伤加成%%";
-"冰伤加成%%" = "冰伤加成%%";
-"岩伤加成%%" = "岩伤加成%%";
-"物伤加成%%" = "物伤加成%%";
-"攻击力%%" = "攻击力%%";
-"生命值%%" = "生命值%%";
-"防御力%%" = "防御力%%";
+"detailPortal.ECDDV.refineRank:%lld" = "精炼%lld阶";
+"detailPortal.ECDDV.maxHP" = "生命值";
+"detailPortal.ECDDV.ATK" = "攻击力";
+"detailPortal.ECDDV.DEF" = "防御力";
+"detailPortal.ECDDV.EM" = "元素精通";
+"detailPortal.ECDDV.ERCR" = "元素充能效率";
+"detailPortal.ECDDV.HB" = "治疗加成";
+"detailPortal.ECDDV.CR" = "暴击率";
+"detailPortal.ECDDV.CDMG" = "暴击伤害";
+"detailPortal.ECDDV.bonus.anemo" = "风元素伤害加成";
+"detailPortal.ECDDV.bonus.cryo" = "冰元素伤害加成";
+"detailPortal.ECDDV.bonus.electro" = "雷元素伤害加成";
+"detailPortal.ECDDV.bonus.hydro" = "水元素伤害加成";
+"detailPortal.ECDDV.bonus.pyro" = "火元素伤害加成";
+"detailPortal.ECDDV.bonus.geo" = "岩元素伤害加成";
+"detailPortal.ECDDV.bonus.dendro" = "草元素伤害加成";
+"detailPortal.ECDDV.bonus.physical" = "物理伤害加成";
+"detailPortal.ECDDV.characterLevel" = "等级";
+"detailPortal.ECDDV.constellation" = "命之座";
+"detailPortal.ECDDV.constellation.unit:%lld" = "%lld命";
+"detailPortal.ECDDV.prop.basicATK" = "基础攻击力";
+"detailPortal.ECDDV.prop.maxHP" = "生命值上限";
+"detailPortal.ECDDV.prop.CR" = "暴击率%%";
+"detailPortal.ECDDV.prop.CDMG" = "暴击伤害%%";
+"detailPortal.ECDDV.prop.bonus.heal" = "治疗加成%%";
+"detailPortal.ECDDV.prop.bonus.healed" = "受治疗加成";
+"detailPortal.ECDDV.prop.ERCR" = "元素充能%%";
+"detailPortal.ECDDV.prop.SCMR" = "护盾强效";
+"detailPortal.ECDDV.prop.bonus.pyro" = "火伤加成%%";
+"detailPortal.ECDDV.prop.bonus.hydro" = "水伤加成%%";
+"detailPortal.ECDDV.prop.bonus.dendro" = "草伤加成%%";
+"detailPortal.ECDDV.prop.bonus.electro" = "雷伤加成%%";
+"detailPortal.ECDDV.prop.bonus.anemo" = "风伤加成%%";
+"detailPortal.ECDDV.prop.bonus.cryo" = "冰伤加成%%";
+"detailPortal.ECDDV.prop.bonus.geo" = "岩伤加成%%";
+"detailPortal.ECDDV.prop.bonus.physical" = "物伤加成%%";
+"detailPortal.ECDDV.prop.ATK" = "攻击力%%";
+"detailPortal.ECDDV.prop.HP" = "生命值%%";
+"detailPortal.ECDDV.prop.DEF" = "防御力%%";
 
 // Dictionary
 "复制英语" = "复制英语";
@@ -966,7 +966,7 @@ Created by Bill Haku on 2022/8/23.
 "五星角色" = "五星角色";
 "四星角色" = "四星角色";
 "的所有角色" = "的所有角色";
-"元素精通​" = "元素精通​";
+"detailPortal.ECDDV.prop.EM" = "元素精通";
 
 // MARK: - 2.5.4 HOTFIX
 "账号状态异常，请前往米游社-旅行便笺重新验证" = "账号状态异常，请前往米游社-旅行便笺重新验证";
@@ -1100,33 +1100,33 @@ Created by Bill Haku on 2022/8/23.
 "小组件同步频率" = "小组件同步频率";
 "主屏幕小组件同步频率" = "主屏幕小组件同步频率";
 "锁定屏幕小组件同步频率" = "锁定屏幕小组件同步频率";
-"我知道了" = "我知道了";
+"latestVersionInfoView.affirmative" = "我知道了";
 
 // MARK: -2.7.4
-"「%@」的原粹树脂已回满。" = "「%@」的原粹树脂已回满。";
+"notification.filledFor:%@" = "「%@」的原粹树脂已回满。";
 
 // MARK: - 2.7.8
 "settings.notification.disclaimer.onlyWorksWithNewNotifications" = "注意：通知设置更改对目前已安排的通知不生效。";
 
 // MARK: - 2.7.9
-"俄文" = "俄文";
+"lang.Russian" = "俄文";
 
 // MARK: - 2.7.10
-"使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "使用率分级仅作深渊配队参考，不代表对角色的任何评价。";
-"强烈推荐选用的角色" = "强烈推荐选用的角色";
-"推荐选用的角色" = "推荐选用的角色";
-"优先选用的角色" = "优先选用的角色";
-"可以选用的角色" = "可以选用的角色";
-"酌情选用的角色" = "酌情选用的角色";
-"普遍可用的角色" = "普遍可用的角色";
-"清空缓存 (%@MB)" = "清空缓存 (%@MB)";
+"abyssDataCollection.usageRate.disclaimer" = "使用率分级仅作深渊配队参考，不代表对角色的任何评价。";
+"abyssDataCollection.usageRate.recommended.t0" = "强烈推荐选用的角色";
+"abyssDataCollection.usageRate.recommended.t1" = "推荐选用的角色";
+"abyssDataCollection.usageRate.recommended.t2" = "优先选用的角色";
+"abyssDataCollection.usageRate.recommended.t3" = "可以选用的角色";
+"abyssDataCollection.usageRate.recommended.t4" = "酌情选用的角色";
+"abyssDataCollection.usageRate.recommended.t5" = "普遍可用的角色";
+"settings.more.cleanCacheFilesOfMBs:%@" = "清空缓存 (%@MB)";
 
-"暂无当前活动信息" = "暂无当前活动信息";
-"原神活动信息由[Project Amber](https://ambr.top/)提供" = "原神活动信息由[Project Amber](https://ambr.top/)提供";
+"gameEvents.noCurrentEventInfo" = "暂无当前活动信息";
+"gameEvents.intelligenceProvider" = "原神活动信息由[Project Amber](https://ambr.top/)提供";
 
 // MARK: - 2.7.12
 "lang.Vietnamese" = "越南文";
-"abyssDataCollection.characterUsageRateSansRestart" = "未重开玩家使用率";
+"abyssDataCollection.usageRate.characterSansRestart" = "未重开玩家使用率";
 "settings.more.timeZone.title" = "时区";
 "settings.more.timeZone.descriptionWithCurrent:%@。" = "我们会根据您所选服务器对应时区计算每日材料刷新时间。当前时区：%@。";
 "abyssDataCollection.availableSince20230401" = "自2023年4月1日起提供";

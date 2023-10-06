@@ -95,7 +95,7 @@ struct LatestVersionInfoView: View {
             .navigationTitle(isJustUpdated ? "感谢您更新到最新版本" : "发现新版本")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("我知道了") {
+                    Button("latestVersionInfoView.affirmative") {
                         var checkedUpdateVersions = UserDefaults.standard
                             .object(forKey: "checkedUpdateVersions") as? [Int] ??
                             []

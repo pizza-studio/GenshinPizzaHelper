@@ -603,7 +603,7 @@
 // Notification
 "打开《原神》" = "打開《原神》";
 "通知设置" = "通知設定";
-"「%@」原粹树脂提醒" = "「%@」原粹樹脂提醒";
+"notification.noticeForChar:%@" ="「%@」原粹樹脂提醒";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "「%@」現有%lld原粹樹脂，將在%@ 回滿。";
 "「%@」洞天宝钱提醒" = "「%@」洞天寶錢提醒";
 "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "「%@」的洞天財甕現有%lld洞天寶錢，將在%@ 填滿。";
@@ -889,45 +889,45 @@
 "总计" = "總計";
 
 // CharacterDetailView
-"精炼%lld阶" = "精煉%lld階";
-"生命值" = "生命值";
-"攻击力" = "攻擊力";
-"防御力" = "防禦力";
-"元素精通" = "元素精通";
-"元素充能效率" = "元素充能效率";
-"治疗加成" = "治療加成";
-"暴击率" = "暴擊率";
-"暴击伤害" = "暴擊傷害";
-"风元素伤害加成" = "風元素傷害加成";
-"冰元素伤害加成" = "冰元素傷害加成";
-"雷元素伤害加成" = "雷元素傷害加成";
-"水元素伤害加成" = "水元素傷害加成";
-"火元素伤害加成" = "火元素傷害加成";
-"岩元素伤害加成" = "岩元素傷害加成";
-"草元素伤害加成" = "草元素傷害加成";
-"物理伤害加成" = "物理傷害加成";
-"等级" = "等級";
-"命之座" = "命之座";
-"%lld命" = "%lld命";
-"基础攻击力" = "基礎攻擊力";
-"生命值上限" = "生命值上限";
-"暴击率%%" = "暴擊率%%";
-"暴击伤害%%" = "暴擊傷害%%";
-"治疗加成%%" = "治療加成%%";
-"受治疗加成" = "受治療加成";
-"元素充能%%" = "元素充能%%";
-"护盾强效" = "護盾強效";
-"火伤加成%%" = "火傷加成%%";
-"水伤加成%%" = "水傷加成%%";
-"草伤加成%%" = "草傷加成%%";
-"雷伤加成%%" = "雷傷加成%%";
-"风伤加成%%" = "風傷加成%%";
-"冰伤加成%%" = "冰傷加成%%";
-"岩伤加成%%" = "岩傷加成%%";
-"物伤加成%%" = "物傷加成%%";
-"攻击力%%" = "攻擊力%%";
-"生命值%%" = "生命值%%";
-"防御力%%" = "防禦力%%";
+"detailPortal.ECDDV.refineRank:%lld" = "精煉%lld階";
+"detailPortal.ECDDV.maxHP" = "生命值";
+"detailPortal.ECDDV.ATK" = "攻擊力";
+"detailPortal.ECDDV.DEF" = "防禦力";
+"detailPortal.ECDDV.EM" = "元素精通";
+"detailPortal.ECDDV.ERCR" = "元素充能效率";
+"detailPortal.ECDDV.HB" = "治療加成";
+"detailPortal.ECDDV.CR" = "暴擊率";
+"detailPortal.ECDDV.CDMG" = "暴擊傷害";
+"detailPortal.ECDDV.bonus.anemo" = "風元素傷害加成";
+"detailPortal.ECDDV.bonus.cryo" = "冰元素傷害加成";
+"detailPortal.ECDDV.bonus.electro" = "雷元素傷害加成";
+"detailPortal.ECDDV.bonus.hydro" = "水元素傷害加成";
+"detailPortal.ECDDV.bonus.pyro" = "火元素傷害加成";
+"detailPortal.ECDDV.bonus.geo" = "岩元素傷害加成";
+"detailPortal.ECDDV.bonus.dendro" = "草元素傷害加成";
+"detailPortal.ECDDV.bonus.physical" = "物理傷害加成";
+"detailPortal.ECDDV.characterLevel" = "等級";
+"detailPortal.ECDDV.constellation" = "命之座";
+"detailPortal.ECDDV.constellation.unit:%lld" = "%lld命";
+"detailPortal.ECDDV.prop.basicATK" = "基礎攻擊力";
+"detailPortal.ECDDV.prop.maxHP" = "生命值上限";
+"detailPortal.ECDDV.prop.CR" = "暴擊率%%";
+"detailPortal.ECDDV.prop.CDMG" = "暴擊傷害%%";
+"detailPortal.ECDDV.prop.bonus.heal" = "治療加成%%";
+"detailPortal.ECDDV.prop.bonus.healed" = "受治療加成";
+"detailPortal.ECDDV.prop.ERCR" = "元素充能%%";
+"detailPortal.ECDDV.prop.SCMR" = "護盾強效";
+"detailPortal.ECDDV.prop.bonus.pyro" = "火傷加成%%";
+"detailPortal.ECDDV.prop.bonus.hydro" = "水傷加成%%";
+"detailPortal.ECDDV.prop.bonus.dendro" = "草傷加成%%";
+"detailPortal.ECDDV.prop.bonus.electro" = "雷傷加成%%";
+"detailPortal.ECDDV.prop.bonus.anemo" = "風傷加成%%";
+"detailPortal.ECDDV.prop.bonus.cryo" = "冰傷加成%%";
+"detailPortal.ECDDV.prop.bonus.geo" = "岩傷加成%%";
+"detailPortal.ECDDV.prop.bonus.physical" = "物傷加成%%";
+"detailPortal.ECDDV.prop.ATK" = "攻擊力%%";
+"detailPortal.ECDDV.prop.HP" = "生命值%%";
+"detailPortal.ECDDV.prop.DEF" = "防禦力%%";
 
 // Dictionary
 "复制英语" = "複製英語";
@@ -966,7 +966,7 @@
 "五星角色" = "五星角色";
 "四星角色" = "四星角色";
 "的所有角色" = "的所有角色";
-"元素精通​" = "元素精通​";
+"detailPortal.ECDDV.prop.EM" = "元素精通";
 
 // MARK: - 2.5.4 HOTFIX
 "账号状态异常，请前往米游社-旅行便笺重新验证" = "帳號狀態異常，請前往米遊社-旅行便箋重新認證";
@@ -1100,33 +1100,33 @@
 "小组件同步频率" = "小工具同步頻率";
 "主屏幕小组件同步频率" = "主屏幕小工具同步頻率";
 "锁定屏幕小组件同步频率" = "鎖定屏幕小工具同步頻率";
-"我知道了" = "我知道了";
+"latestVersionInfoView.affirmative" = "我知道了";
 
 // MARK: -2.7.4
-"「%@」的原粹树脂已回满。" = "「%@」的原粹樹脂已回滿。";
+"notification.filledFor:%@" = "「%@」的原粹樹脂已回滿。";
 
 // MARK: - 2.7.8
 "settings.notification.disclaimer.onlyWorksWithNewNotifications" = "注意：通知設定更改對目前已安排的通知不生效。";
 
 // MARK: - 2.7.9
-"俄文" = "俄語";
+"lang.Russian" = "俄語";
 
 // MARK: - 2.7.10
-"使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "使用率分級僅作深淵配隊參考，不代表對角色的任何評價。";
-"强烈推荐选用的角色" = "強烈推薦選用的角色";
-"推荐选用的角色" = "推薦選用的角色";
-"优先选用的角色" = "優先選用的角色";
-"可以选用的角色" = "可以選用的角色";
-"酌情选用的角色" = "酌情選用的角色";
-"普遍可用的角色" = "普遍可用的角色";
-"清空缓存 (%@MB)" = "清空緩存 (%@MB)";
+"abyssDataCollection.usageRate.disclaimer" = "使用率分級僅作深淵配隊參考，不代表對角色的任何評價。";
+"abyssDataCollection.usageRate.recommended.t0" = "強烈推薦選用的角色";
+"abyssDataCollection.usageRate.recommended.t1" = "推薦選用的角色";
+"abyssDataCollection.usageRate.recommended.t2" = "優先選用的角色";
+"abyssDataCollection.usageRate.recommended.t3" = "可以選用的角色";
+"abyssDataCollection.usageRate.recommended.t4" = "酌情選用的角色";
+"abyssDataCollection.usageRate.recommended.t5" = "普遍可用的角色";
+"settings.more.cleanCacheFilesOfMBs:%@" = "清空緩存 (%@MB)";
 
-"暂无当前活动信息" = "目前沒有活動資訊";
-"原神活动信息由[Project Amber](https://ambr.top/)提供" = "原神活動資訊由[Project Amber](https://ambr.top/)提供";
+"gameEvents.noCurrentEventInfo" = "目前沒有活動資訊";
+"gameEvents.intelligenceProvider" = "原神活動資訊由[Project Amber](https://ambr.top/)提供";
 
 // MARK: - 2.7.12
 "lang.Vietnamese" = "越南語";
-"abyssDataCollection.characterUsageRateSansRestart" = "未重啟玩家使用率";
+"abyssDataCollection.usageRate.characterSansRestart" = "未重啟玩家使用率";
 "settings.more.timeZone.title" = "時區";
 "settings.more.timeZone.descriptionWithCurrent:%@" = "我們會根據您所選伺服器對應時區計算每日材料刷新時間。當前時區：%@";
 "abyssDataCollection.availableSince20230401" = "自2023年4月1日起提供";

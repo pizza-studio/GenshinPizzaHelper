@@ -38,9 +38,9 @@ struct AllEventsView: View {
                     getRemainDays($0.endAt)?.second! ?? 0 >= 0
                 }).count <= 0 {
                     Spacer(minLength: 50)
-                    Text("暂无当前活动信息")
+                    Text("gameEvents.noCurrentEventInfo")
                         .padding()
-                    Text("原神活动信息由[Project Amber](https://ambr.top/)提供")
+                    Text("gameEvents.intelligenceProvider")
                         .font(.caption)
                 }
                 ForEach(eventContents, id: \.id) { content in

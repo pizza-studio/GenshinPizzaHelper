@@ -85,7 +85,7 @@ struct EachCharacterDetailDataView: View {
             VStack(alignment: .leading, spacing: 3.3 + Self.spacingDelta) {
                 AttributeLabel(
                     name: weapon.nameCorrected,
-                    valueView: Text("精炼\(weapon.refinementRank)阶"),
+                    valueView: Text("detailPortal.ECDDV.refineRank:\(weapon.refinementRank)"),
                     fontSize: fontSize,
                     titleEmphasized: true,
                     hasDash: false
@@ -116,7 +116,8 @@ struct EachCharacterDetailDataView: View {
             if avatar.fightPropMap.healingBonus > 0 {
                 AttributeLabel(
                     iconString: "UI_Icon_MaxHp",
-                    name: "生命值上限".localized + " & " + "治疗加成%%".localized
+                    name: "detailPortal.ECDDV.prop.maxHP".localized + " & " + "detailPortal.ECDDV.prop.bonus.heal"
+                        .localized
                         .percentageMarksTrimmed,
                     value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))" +
                         ", " +
@@ -126,7 +127,7 @@ struct EachCharacterDetailDataView: View {
             } else {
                 AttributeLabel(
                     iconString: "UI_Icon_MaxHp",
-                    name: "生命值上限",
+                    name: "detailPortal.ECDDV.prop.maxHP",
                     value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))",
                     fontSize: fontSize
                 )
@@ -134,7 +135,8 @@ struct EachCharacterDetailDataView: View {
             if avatar.isPhysicalDMGBoostSecondarilyEffective {
                 AttributeLabel(
                     iconString: "UI_Icon_CurAttack",
-                    name: "攻击力".localized + " & " + "物伤加成%%".localized
+                    name: "detailPortal.ECDDV.ATK".localized + " & " + "detailPortal.ECDDV.prop.bonus.physical"
+                        .localized
                         .percentageMarksTrimmed,
                     value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))" +
                         ", " +
@@ -144,46 +146,46 @@ struct EachCharacterDetailDataView: View {
             } else {
                 AttributeLabel(
                     iconString: "UI_Icon_CurAttack",
-                    name: "攻击力",
+                    name: "detailPortal.ECDDV.ATK",
                     value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))",
                     fontSize: fontSize
                 )
             }
             AttributeLabel(
                 iconString: "UI_Icon_CurDefense",
-                name: "防御力",
+                name: "detailPortal.ECDDV.DEF",
                 value: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))",
                 fontSize: fontSize
             )
             AttributeLabel(
                 iconString: "UI_Icon_Element",
-                name: "元素精通",
+                name: "detailPortal.ECDDV.EM",
                 value: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))",
                 fontSize: fontSize
             )
             AttributeLabel(
                 iconString: "UI_Icon_Intee_WindField_ClockwiseRotation",
-                name: "元素充能效率",
+                name: "detailPortal.ECDDV.ERCR",
                 value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%",
                 fontSize: fontSize
             )
             if ThisDevice.useAdaptiveSpacing {
                 AttributeLabel(
                     iconString: "UI_Icon_CriticalRate",
-                    name: "暴击率",
+                    name: "detailPortal.ECDDV.CR",
                     value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%",
                     fontSize: fontSize
                 )
                 AttributeLabel(
                     iconString: "UI_Icon_CriticalDamage",
-                    name: "暴击伤害",
+                    name: "detailPortal.ECDDV.CDMG",
                     value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%",
                     fontSize: fontSize
                 )
             } else {
                 AttributeLabel(
                     iconString: "UI_Icon_CriticalDamage",
-                    name: "暴击率".localized + " & " + "暴击伤害".localized,
+                    name: "detailPortal.ECDDV.CR".localized + " & " + "detailPortal.ECDDV.CDMG".localized,
                     value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%" +
                         ", " +
                         "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%",
@@ -452,13 +454,13 @@ private struct AvatarAndSkillView: View {
                         spacing: 3.3 + spacingDelta / 2
                     ) {
                         AttributeLabel(
-                            name: "等级",
+                            name: "detailPortal.ECDDV.characterLevel",
                             value: avatar.level.description,
                             hasDash: false
                         )
                         AttributeLabel(
-                            name: "命之座",
-                            valueView: Text("\(avatar.talentCount)命"),
+                            name: "detailPortal.ECDDV.constellation",
+                            valueView: Text("detailPortal.ECDDV.constellation.unit:\(avatar.talentCount)"),
                             hasDash: false
                         )
                     }
@@ -619,14 +621,14 @@ extension FightPropMap {
 extension PlayerDetail.Avatar.AvatarElement {
     var dmgBonusLabel: (text: String, icon: String) {
         switch self {
-        case .cryo: return ("冰元素伤害加成", "UI_Icon_Element_Ice")
-        case .anemo: return ("风元素伤害加成", "UI_Icon_Element_Wind")
-        case .electro: return ("雷元素伤害加成", "UI_Icon_Element_Electric")
-        case .hydro: return ("水元素伤害加成", "UI_Icon_Element_Water")
-        case .pyro: return ("火元素伤害加成", "UI_Icon_Element_Fire")
-        case .geo: return ("岩元素伤害加成", "UI_Icon_Element_Rock")
-        case .dendro: return ("草元素伤害加成", "UI_Icon_Element_Grass")
-        case .unknown: return ("物理伤害加成", "UI_Icon_PhysicalAttackUp")
+        case .cryo: return ("detailPortal.ECDDV.bonus.cryo", "UI_Icon_Element_Ice")
+        case .anemo: return ("detailPortal.ECDDV.bonus.anemo", "UI_Icon_Element_Wind")
+        case .electro: return ("detailPortal.ECDDV.bonus.electro", "UI_Icon_Element_Electric")
+        case .hydro: return ("detailPortal.ECDDV.bonus.hydro", "UI_Icon_Element_Water")
+        case .pyro: return ("detailPortal.ECDDV.bonus.pyro", "UI_Icon_Element_Fire")
+        case .geo: return ("detailPortal.ECDDV.bonus.geo", "UI_Icon_Element_Rock")
+        case .dendro: return ("detailPortal.ECDDV.bonus.dendro", "UI_Icon_Element_Grass")
+        case .unknown: return ("detailPortal.ECDDV.bonus.physical", "UI_Icon_PhysicalAttackUp")
         }
     }
 }

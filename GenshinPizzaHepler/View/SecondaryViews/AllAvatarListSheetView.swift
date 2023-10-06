@@ -173,7 +173,7 @@ struct AvatarListItem: View {
                 alignment: .topTrailing
             )
             .corneredTag(
-                "\(avatar.activedConstellationNum)命",
+                "detailPortal.ECDDV.constellation.unit:\(avatar.activedConstellationNum)",
                 alignment: .trailing
             )
             .corneredTag(
@@ -330,7 +330,7 @@ private struct AvatarListItemShare: View {
                         .layoutPriority(1)
                         .fixedSize()
                         .font(.callout)
-                    Text("\(avatar.activedConstellationNum)命")
+                    Text("detailPortal.ECDDV.constellation.unit:\(avatar.activedConstellationNum)")
                         .font(.caption)
                         .padding(.horizontal, 5)
                         .background(

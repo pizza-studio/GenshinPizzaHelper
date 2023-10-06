@@ -538,7 +538,7 @@ struct ContactUsView: View {
                         HStack {
                             Text("Art34222")
                             Spacer()
-                            Text("俄文")
+                            Text("lang.Russian")
                                 .foregroundColor(.gray)
                         }
                     } icon: {

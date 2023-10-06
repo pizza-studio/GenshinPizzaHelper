@@ -603,7 +603,7 @@
 // Notification
 "打开《原神》" = "Открыть Genshin Impact";
 "通知设置" = "Настройки уведомлений";
-"「%@」原粹树脂提醒" = "%@, Уведомляю о Первородной смоле";
+"notification.noticeForChar:%@" ="%@, Уведомляю о Первородной смоле";
 "「%@」现有%lld原粹树脂，将在%@ 回满。" = "%@, вы имеете %lld Первородной смолы сейчас, которая заполнится через %@.";
 "「%@」洞天宝钱提醒" = "%@, Уведомляю о Сокровищах обителя";
 "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。" = "%@, у Пухляша %lld Сокровищей обителя сейчас, которые заполнятся через %@.";
@@ -889,45 +889,45 @@
 "总计" = "Всего";
 
 // CharacterDetailView
-"精炼%lld阶" = "R%lld";
-"生命值" = "ХП";
-"攻击力" = "АТК";
-"防御力" = "ЗЩТ";
-"元素精通" = "Мастерство стихий";
-"元素充能效率" = "Восстановление энергии";
-"治疗加成" = "Бонус лечения";
-"暴击率" = "Крит. шанс";
-"暴击伤害" = "Крит. урон";
-"风元素伤害加成" = "Бонус Анемо урона";
-"冰元素伤害加成" = "Бонус Крио урона";
-"雷元素伤害加成" = "Бонус Электро урона";
-"水元素伤害加成" = "Бонус Гидро урона";
-"火元素伤害加成" = "Бонус Пиро урона";
-"岩元素伤害加成" = "Бонус Гео урона";
-"草元素伤害加成" = "Бонус Дендро урона";
-"物理伤害加成" = "Физический бонус урона";
-"等级" = "Уровень";
-"命之座" = "Созв";
-"%lld命" = "С%lld";
-"基础攻击力" = "АТК";
-"生命值上限" = "Макс ХП";
-"暴击率%%" = "Крит %%";
-"暴击伤害%%" = "КУ %%";
-"治疗加成%%" = "Лечение %%";
-"受治疗加成" = "HEALED_ADD";
-"元素充能%%" = "ВЭ %%";
-"护盾强效" = "SHIELD_COST_MINUS_RATIO";
-"火伤加成%%" = "Пиро %%";
-"水伤加成%%" = "Гидро %%";
-"草伤加成%%" = "Дендро %%";
-"雷伤加成%%" = "Электро %%";
-"风伤加成%%" = "Анемо %%";
-"冰伤加成%%" = "Крио %%";
-"岩伤加成%%" = "Гео %%";
-"物伤加成%%" = "Физ %%";
-"攻击力%%" = "АТК %%";
-"生命值%%" = "ХП %%";
-"防御力%%" = "ЗЩТ %%";
+"detailPortal.ECDDV.refineRank:%lld" = "R%lld";
+"detailPortal.ECDDV.maxHP" = "ХП";
+"detailPortal.ECDDV.ATK" = "АТК";
+"detailPortal.ECDDV.DEF" = "ЗЩТ";
+"detailPortal.ECDDV.EM" = "Мастерство стихий";
+"detailPortal.ECDDV.ERCR" = "Восстановление энергии";
+"detailPortal.ECDDV.HB" = "Бонус лечения";
+"detailPortal.ECDDV.CR" = "Крит. шанс";
+"detailPortal.ECDDV.CDMG" = "Крит. урон";
+"detailPortal.ECDDV.bonus.anemo" = "Бонус Анемо урона";
+"detailPortal.ECDDV.bonus.cryo" = "Бонус Крио урона";
+"detailPortal.ECDDV.bonus.electro" = "Бонус Электро урона";
+"detailPortal.ECDDV.bonus.hydro" = "Бонус Гидро урона";
+"detailPortal.ECDDV.bonus.pyro" = "Бонус Пиро урона";
+"detailPortal.ECDDV.bonus.geo" = "Бонус Гео урона";
+"detailPortal.ECDDV.bonus.dendro" = "Бонус Дендро урона";
+"detailPortal.ECDDV.bonus.physical" = "Физический бонус урона";
+"detailPortal.ECDDV.characterLevel" = "Уровень";
+"detailPortal.ECDDV.constellation" = "Созв";
+"detailPortal.ECDDV.constellation.unit:%lld" = "С%lld";
+"detailPortal.ECDDV.prop.basicATK" = "АТК";
+"detailPortal.ECDDV.prop.maxHP" = "Макс ХП";
+"detailPortal.ECDDV.prop.CR" = "Крит %%";
+"detailPortal.ECDDV.prop.CDMG" = "КУ %%";
+"detailPortal.ECDDV.prop.bonus.heal" = "Лечение %%";
+"detailPortal.ECDDV.prop.bonus.healed" = "HEALED_ADD";
+"detailPortal.ECDDV.prop.ERCR" = "ВЭ %%";
+"detailPortal.ECDDV.prop.SCMR" = "SHIELD_COST_MINUS_RATIO";
+"detailPortal.ECDDV.prop.bonus.pyro" = "Пиро %%";
+"detailPortal.ECDDV.prop.bonus.hydro" = "Гидро %%";
+"detailPortal.ECDDV.prop.bonus.dendro" = "Дендро %%";
+"detailPortal.ECDDV.prop.bonus.electro" = "Электро %%";
+"detailPortal.ECDDV.prop.bonus.anemo" = "Анемо %%";
+"detailPortal.ECDDV.prop.bonus.cryo" = "Крио %%";
+"detailPortal.ECDDV.prop.bonus.geo" = "Гео %%";
+"detailPortal.ECDDV.prop.bonus.physical" = "Физ %%";
+"detailPortal.ECDDV.prop.ATK" = "АТК %%";
+"detailPortal.ECDDV.prop.HP" = "ХП %%";
+"detailPortal.ECDDV.prop.DEF" = "ЗЩТ %%";
 
 // Dictionary
 "复制英语" = "Скопировать английский перевод";
@@ -966,7 +966,7 @@
 "五星角色" = "Только 5-звёздочные";
 "四星角色" = "Только 4-звёздочные";
 "的所有角色" = "Все персонажи";
-"元素精通​" = "EM"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
+"detailPortal.ECDDV.prop.EM" = "EM"; // 此处元素精通后添加了一个零宽字符，用于英文缩写
 
 // MARK: - 2.5.4 HOTFIX
 "账号状态异常，请前往米游社-旅行便笺重新验证" = "Состояние аккаунта ненормальное, пожалуйста, перейдите в HoYoLAB для перепроверки.";
@@ -1100,33 +1100,33 @@
 "小组件同步频率" = "Частота обновления виджета";
 "主屏幕小组件同步频率" = "Частота обновления виджета на экране\"Домой\" ";
 "锁定屏幕小组件同步频率" = "Частота обновления виджета экрана блокировки";
-"我知道了" = "Сделано";
+"latestVersionInfoView.affirmative" = "Сделано";
 
 // MARK: -2.7.4
-"「%@」的原粹树脂已回满。" = "%@, Первородная смола заполнилась.";
+"notification.filledFor:%@" = "%@, Первородная смола заполнилась.";
 
 // MARK: - 2.7.8
 "settings.notification.disclaimer.onlyWorksWithNewNotifications" = "Примечание: Изменения настроек уведомлений не вступят в силу для текущих запланированных уведомлений.";
 
 // MARK: - 2.7.9
-"俄文" = "Русский";
+"lang.Russian" = "Русский";
 
 // MARK: - 2.7.10
-"使用率分级仅作深渊配队参考，不代表对角色的任何评价。" = "Рейтинги использования предназначены только как пример при формировании команды для Бездны и не представляют никакой оценки персонажей.";
-"强烈推荐选用的角色" = "Настоятельно рекомендуемые персонажи";
-"推荐选用的角色" = "Рекомендуемые персонажи";
-"优先选用的角色" = "Предпочтительные персонажи";
-"可以选用的角色" = "Дополнительные персонажи";
-"酌情选用的角色" = "Персонажи на ваше усмотрение";
-"普遍可用的角色" = "Универсальные персонажи";
-"清空缓存 (%@MB)" = "Очистить кэш (%@Мб)";
+"abyssDataCollection.usageRate.disclaimer" = "Рейтинги использования предназначены только как пример при формировании команды для Бездны и не представляют никакой оценки персонажей.";
+"abyssDataCollection.usageRate.recommended.t0" = "Настоятельно рекомендуемые персонажи";
+"abyssDataCollection.usageRate.recommended.t1" = "Рекомендуемые персонажи";
+"abyssDataCollection.usageRate.recommended.t2" = "Предпочтительные персонажи";
+"abyssDataCollection.usageRate.recommended.t3" = "Дополнительные персонажи";
+"abyssDataCollection.usageRate.recommended.t4" = "Персонажи на ваше усмотрение";
+"abyssDataCollection.usageRate.recommended.t5" = "Универсальные персонажи";
+"settings.more.cleanCacheFilesOfMBs:%@" = "Очистить кэш (%@Мб)";
 
-"暂无当前活动信息" = "Отсутствуют текущие сведения о мероприятиях";
-"原神活动信息由[Project Amber](https://ambr.top/)提供" = "Информация о мероприятиях в игре Genshin Impact предоставляется [Project Amber](https://ambr.top/)";
+"gameEvents.noCurrentEventInfo" = "Отсутствуют текущие сведения о мероприятиях";
+"gameEvents.intelligenceProvider" = "Информация о мероприятиях в игре Genshin Impact предоставляется [Project Amber](https://ambr.top/)";
 
 // MARK: - 2.7.12
 "lang.Vietnamese" = "Вьетнамский";
-"abyssDataCollection.characterUsageRateSansRestart" = "Уровень использования не перезапущенного игрока";
+"abyssDataCollection.usageRate.characterSansRestart" = "Уровень использования не перезапущенного игрока";
 "settings.more.timeZone.title" = "Часовой пояс";
 "settings.more.timeZone.descriptionWithCurrent:%@。" = "Мы рассчитываем время на основе часового пояса выбранного вами сервера. Текущий часовой пояс: %@.";
 "abyssDataCollection.availableSince20230401" = "Доступно с 2023-04-01";

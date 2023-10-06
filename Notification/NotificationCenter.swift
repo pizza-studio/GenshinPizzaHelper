@@ -496,12 +496,12 @@ class UserNotificationCenter {
               allowResinNotification else {
             deleteNotification(for: uid, object: .resin); return
         }
-        let titleCN = "「%@」原粹树脂提醒"
+        let titleCN = "notification.noticeForChar:%@"
         let title = String(
             format: NSLocalizedString(titleCN, comment: "noti title"),
             accountName
         )
-        let bodyCN = "「%@」的原粹树脂已回满。"
+        let bodyCN = "notification.filledFor:%@"
         let body = String(
             format: NSLocalizedString(bodyCN, comment: "noti body"),
             accountName
