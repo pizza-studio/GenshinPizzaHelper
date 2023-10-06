@@ -63,12 +63,12 @@ struct IconSettingsView: View {
             IconChooserView()
                 .padding()
             Spacer()
-            Text("感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。")
+            Text("settings.icon.xinzoruo.credits.description")
                 .foregroundColor(.secondary)
                 .font(.footnote)
                 .padding()
         }
-        .navigationTitle("更换App图标")
+        .navigationTitle("settings.icon.xinzoruo.toggle")
         .padding()
     }
 }

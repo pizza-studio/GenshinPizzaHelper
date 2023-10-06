@@ -82,6 +82,6 @@ struct ReverseProxySettingsView: View {
                 )
             }
         }
-        .navigationTitle("反向代理设置")
+        .navigationTitle("settings.reverseProxy.navTitle")
     }
 }

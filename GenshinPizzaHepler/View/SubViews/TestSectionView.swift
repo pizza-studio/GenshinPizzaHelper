@@ -82,8 +82,8 @@ struct TestSectionView: View {
                 }
             })
             if connectStatus == .fail, let error = error, case .accountAbnormal = error {
-                Text("账号状态异常，需要输入验证码")
-                Button("请点击此处输入验证码") {
+                Text("testSectionView.accountStatusAbnormal.promptForVerification")
+                Button("testSectionView.clickHereForVerification") {
                     popVerificationWebSheet()
                 }
             } else {

@@ -56,13 +56,13 @@ struct MoreView: View {
             // FIXME: Proxy not implemented
             Section {
                 NavigationLink(destination: ReverseProxySettingsView()) {
-                    Text("反向代理设置")
+                    Text("settings.reverseProxy.navTitle")
                 }
             }
 
             Section {
                 NavigationLink(destination: IconSettingsView()) {
-                    Text("更换App图标")
+                    Text("settings.icon.xinzoruo.toggle")
                 }
             }
 
@@ -74,9 +74,9 @@ struct MoreView: View {
                             .frame(width: 50, height: 50)
                             .cornerRadius(10)
                         VStack(alignment: .leading) {
-                            Text("星铁披萨小助手")
+                            Text("settings.siblingApps.PizzaHelper4HSR.title")
                                 .foregroundColor(.primary)
-                            Text("星穹铁道游戏助手工具全家桶")
+                            Text("settings.siblingApps.PizzaHelper4HSR.description")
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
                         }
@@ -92,9 +92,9 @@ struct MoreView: View {
                             .frame(width: 50, height: 50)
                             .cornerRadius(10)
                         VStack(alignment: .leading) {
-                            Text("黑塔终端")
+                            Text("settings.siblingApps.HertaTerminal.title")
                                 .foregroundColor(.primary)
-                            Text("与“老婆”们聊天！")
+                            Text("settings.siblingApps.HertaTerminal.description")
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
                         }

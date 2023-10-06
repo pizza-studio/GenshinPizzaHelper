@@ -151,7 +151,7 @@ extension FetchError {
                 retcode
             )
         case .accountAbnormal:
-            return "（1034）账号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式".localized
+            return "requestRelated.accountStatusAbnormal.errorMessage".localized
         case .noStoken:
             return "请重新登录本账号以获取stoken".localized
         default:
@@ -190,7 +190,7 @@ extension FetchError {
                 return "未知错误".localized
             }
         case .accountAbnormal:
-            return "账号状态异常，请打开App填写验证码".localized
+            return "requestRelated.accountStatusAbnormal.promptForVerificationInApp".localized
         case let .unknownError(_, message):
             return message
         case .noStoken:

@@ -48,7 +48,7 @@ struct AddAccountDetailView: View {
             Section {
                 InfoEditor(title: "settings.account.deviceFingerprint".localized, content: $unsavedDeviceFingerPrint)
             } footer: {
-                Text("设备指纹仅限国服账号需要设置")
+                Text("settings.account.intlAccountNeverNeedsDeviceFingerprintSettings")
                     .textCase(.none)
             }
             if unsavedUid != "", unsavedCookie != "" {

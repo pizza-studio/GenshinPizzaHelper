@@ -1323,30 +1323,27 @@ Created by Bill Haku on 2022/8/23.
 
 // MARK: - 2.8.5
 
-"账号状态异常，需要输入验证码" = "账号状态异常，需要输入验证码";
-"请点击此处输入验证码" = "请点击此处输入验证码";
+"testSectionView.accountStatusAbnormal.promptForVerification" = "账号状态异常，需要输入验证码";
+"testSectionView.clickHereForVerification" = "请点击此处输入验证码";
 "account.test.verify.web_sheet.title" = "验证";
-"账号状态异常，请打开App填写验证码" = "账号状态异常，请打开App填写验证码";
-"（1034）账号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "";
+"requestRelated.accountStatusAbnormal.promptForVerificationInApp" = "账号状态异常，请打开App填写验证码";
+"requestRelated.accountStatusAbnormal.errorMessage" = "（1034）账号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式";
 
 // MARK: - 3.0.0
 
-"感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。" = "感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。";
-"更换App图标" = "更换App图标";
+"settings.icon.xinzoruo.credits.description" = "感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。";
+"settings.icon.xinzoruo.toggle" = "更换App图标";
 
 // MARK: - 3.0.1
-"星铁披萨小助手" = "星铁披萨小助手";
-"星穹铁道游戏助手工具全家桶" = "星穹铁道游戏助手工具全家桶";
-"黑塔终端" = "黑塔终端";
-"与“老婆”们聊天！" = "与“老婆”们聊天！";
+"settings.siblingApps.PizzaHelper4HSR.title" = "星铁披萨小助手";
+"settings.siblingApps.PizzaHelper4HSR.description" = "星穹铁道游戏助手工具全家桶";
+"settings.siblingApps.HertaTerminal.title" = "黑塔终端";
+"settings.siblingApps.HertaTerminal.description" = "与「老婆」们聊天！";
 "settings.siblingApps" = "我们的其他作品";
 
 // MARK: - 3.0.4
-"反向代理设置" = "反向代理设置";
-"设备指纹仅限国服账号需要设置" = "设备指纹仅限国服账号需要设置";
-
-// MARK: - 3.0.5
-
+"settings.reverseProxy.navTitle" = "反向代理设置";
+"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "设备指纹仅限国服账号需要设置";
 
 // MARK: - 3.1.1
 

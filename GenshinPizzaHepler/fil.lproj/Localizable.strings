@@ -1323,32 +1323,29 @@
 
 // MARK: - 2.8.5
 
-"账号状态异常,需要输入验证码" = "Pagbubukod sa katayuan ng account, na nagpapahiwatig para sa interactive na pag verify";
-"请点击此处输入验证码" = "Tapikin dito upang magpatuloy sa interactive na pag verify";
+"testSectionView.accountStatusAbnormal.promptForVerification" = "Pagbubukod sa katayuan ng account, na nagpapahiwatig para sa interactive na pag verify";
+"testSectionView.clickHereForVerification" = "Tapikin dito upang magpatuloy sa interactive na pag verify";
 "account.test.verify.web_sheet.title" = "Interactive Na Pag Verify";
-"账号状态异常,请打开App填写验证码" = "Account status exception, pahiwatig para sa in app interactive verification";
-"（1034）账号需要验证，请打开App进行人机验证。建议长按小组件开启简洁模式" = "(1034) Kailangan ng pagpapatunay sa account. Mangyaring buksan ang app para sa pagpapatunay ng tao-kalansay. I-hold ang widget upang paganahin ang compact mode.";
+"requestRelated.accountStatusAbnormal.promptForVerificationInApp" = "Account status exception, pahiwatig para sa in app interactive verification";
+"requestRelated.accountStatusAbnormal.errorMessage" = "(1034) Kailangan ng pagpapatunay sa account. Mangyaring buksan ang app para sa pagpapatunay ng tao-kalansay. I-hold ang widget upang paganahin ang compact mode.";
 
 // MARK: - 3.0.0
 
-"感谢[@心臓弱眞君](https://twitter.com/xinzoruo)为我们绘制了全新的App图标。您也可以继续使用以前的图标。" = "Salamat kay [@心臓弱眞君](https://twitter.com/xinzoruo) sa paglikha ng bagong app icon para sa amin. Maaari ka rin magpatuloy na gumamit ng dating icon.";
-"更换App图标" = "Palitan ang App Icon";
+"settings.icon.xinzoruo.credits.description" = "Salamat kay [@心臓弱眞君](https://twitter.com/xinzoruo) sa paglikha ng bagong app icon para sa amin. Maaari ka rin magpatuloy na gumamit ng dating icon.";
+"settings.icon.xinzoruo.toggle" = "Palitan ang App Icon";
 
 // MARK: - 3.0.1
 
-"星铁披萨小助手" = "HSR Pizza Helper";
-"星穹铁道游戏助手工具全家桶" = "Isang kagamitan para sa mga manlalaro ng Honkai: Star Rail";
-"黑塔终端" = "Herta Terminal";
-"与“老婆”们聊天！" = "Kumustahin ang mga waifu sa HSR";
+"settings.siblingApps.PizzaHelper4HSR.title" = "HSR Pizza Helper";
+"settings.siblingApps.PizzaHelper4HSR.description" = "Isang kagamitan para sa mga manlalaro ng Honkai: Star Rail";
+"settings.siblingApps.HertaTerminal.title" = "Herta Terminal";
+"settings.siblingApps.HertaTerminal.description" = "Kumustahin ang mga waifu sa HSR";
 "settings.siblingApps" = "Iba pang mga gawa namin";
 
 // MARK: - 3.0.4
 
-"反向代理设置" = "Reverse Proxy Settings";
-"设备指纹仅限国服账号需要设置" = "Only accounts of China Mainland servers are needed";
-
-// MARK: - 3.0.5
-
+"settings.reverseProxy.navTitle" = "Reverse Proxy Settings";
+"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "Only accounts of China Mainland servers are needed";
 
 // MARK: - 3.1.1
 
