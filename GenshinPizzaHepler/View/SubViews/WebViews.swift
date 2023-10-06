@@ -3,7 +3,7 @@
 //  GenshinPizzaHepler
 //
 //  Created by Bill Haku on 2022/8/10.
-//  封装了使用WKWebView的各种网页
+//  封装了使用OPWebView的各种网页
 
 import SafariServices
 import SwiftUI
@@ -32,18 +32,18 @@ struct SFSafariViewWrapper: UIViewControllerRepresentable {
 struct WebBroswerView: UIViewRepresentable {
     var url: String = ""
 
-    func makeUIView(context: Context) -> WKWebView {
+    func makeUIView(context: Context) -> OPWebView {
         guard let url = URL(string: url)
         else {
-            return WKWebView()
+            return OPWebView()
         }
         let request = URLRequest(url: url)
-        let webview = WKWebView()
+        let webview = OPWebView()
         webview.load(request)
         return webview
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {
+    func updateUIView(_ uiView: OPWebView, context: Context) {
         if let url = URL(string: url) {
             let request = URLRequest(url: url)
             uiView.load(request)
@@ -65,8 +65,10 @@ struct TeyvatMapWebView: UIViewRepresentable {
 
         var parent: TeyvatMapWebView
 
-        func webView(
-            _ webView: WKWebView,
+        // MARK: Private
+
+        private func webView(
+            _ webView: OPWebView,
             didFinish navigation: WKNavigation!
         ) {
             var js = ""
@@ -100,20 +102,20 @@ struct TeyvatMapWebView: UIViewRepresentable {
         }
     }
 
-    func makeUIView(context: Context) -> WKWebView {
+    func makeUIView(context: Context) -> OPWebView {
         guard let url = URL(string: url)
         else {
-            return WKWebView()
+            return OPWebView()
         }
         let request = URLRequest(url: url)
 
-        let webView = WKWebView()
+        let webView = OPWebView()
         webView.navigationDelegate = context.coordinator
         webView.load(request)
         return webView
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {
+    func updateUIView(_ uiView: OPWebView, context: Context) {
         if let url = URL(string: url) {
             let request = URLRequest(url: url)
             uiView.load(request)
@@ -177,7 +179,7 @@ struct EventDetailWebView: UIViewRepresentable {
 
     @Environment(\.colorScheme)
     var colorScheme
-    let webView = WKWebView()
+    let webView = OPWebView()
 //    let htmlContent: String
     let banner: String
     let nameFull: String
@@ -190,12 +192,12 @@ struct EventDetailWebView: UIViewRepresentable {
         "description": "",
     ]
 
-    static func dismantleUIView(_ uiView: WKWebView, coordinator: Coordinator) {
+    static func dismantleUIView(_ uiView: OPWebView, coordinator: Coordinator) {
         uiView.configuration.userContentController
             .removeScriptMessageHandler(forName: "getArticleInfoBeforeLoaded")
     }
 
-    func makeUIView(context: Context) -> WKWebView {
+    func makeUIView(context: Context) -> OPWebView {
         webView.configuration.userContentController.add(
             makeCoordinator(),
             name: "getArticleInfoBeforeLoaded"
@@ -203,7 +205,7 @@ struct EventDetailWebView: UIViewRepresentable {
         return webView
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {
+    func updateUIView(_ uiView: OPWebView, context: Context) {
         uiView.uiDelegate = context.coordinator
         if let startPageURL = Bundle.main.url(
             forResource: "article",

@@ -261,14 +261,14 @@ struct GeetestValidateView: UIViewRepresentable {
     // swiftlint:disable:next identifier_name
     let gt: String
 
-    let webView = WKWebView()
+    let webView = OPWebView()
     @State
     private var isValidationObtained = false // 标识是否已获取到 validate.value 的内容
 
     @State
     var completion: (String) -> ()
 
-    func makeUIView(context: Context) -> WKWebView {
+    func makeUIView(context: Context) -> OPWebView {
         webView.navigationDelegate = context.coordinator
         webView.configuration.userContentController.removeAllScriptMessageHandlers()
         webView.configuration.userContentController.add(context.coordinator, name: "callbackHandler")
@@ -278,7 +278,7 @@ struct GeetestValidateView: UIViewRepresentable {
         return webView
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {
+    func updateUIView(_ uiView: OPWebView, context: Context) {
         let url = URL(string: "https://gi.pizzastudio.org/geetest/")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.queryItems = [

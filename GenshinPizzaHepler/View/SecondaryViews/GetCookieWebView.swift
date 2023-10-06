@@ -168,8 +168,10 @@ struct CookieGetterWebView: UIViewRepresentable {
 
         var parent: CookieGetterWebView
 
-        func webView(
-            _ webView: WKWebView,
+        // MARK: Private
+
+        private func webView(
+            _ webView: OPWebView,
             didFinish navigation: WKNavigation!
         ) {
             let js = """
@@ -187,10 +189,10 @@ struct CookieGetterWebView: UIViewRepresentable {
     let dataStore: WKWebsiteDataStore
     let httpHeaderFields: [String: String]
 
-    func makeUIView(context: Context) -> WKWebView {
+    func makeUIView(context: Context) -> OPWebView {
         guard let url = URL(string: url)
         else {
-            return WKWebView()
+            return OPWebView()
         }
         dataStore
             .fetchDataRecords(
@@ -216,7 +218,7 @@ struct CookieGetterWebView: UIViewRepresentable {
             timeoutInterval: 10
         )
         request.allHTTPHeaderFields = httpHeaderFields
-        let webview = WKWebView()
+        let webview = OPWebView()
         webview.configuration.websiteDataStore = dataStore
 //        webview.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15"
         webview.navigationDelegate = context.coordinator
@@ -224,7 +226,7 @@ struct CookieGetterWebView: UIViewRepresentable {
         return webview
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {
+    func updateUIView(_ uiView: OPWebView, context: Context) {
         if let url = URL(string: url) {
             var request = URLRequest(
                 url: url,

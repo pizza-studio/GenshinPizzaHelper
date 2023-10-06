@@ -844,7 +844,7 @@ private struct ShowTeamPercentageView: View {
 
     var body: some View {
         List {
-            if let result = result, let charMap = viewModel.charMap {
+            if let result = result {
                 switch result {
                 case let .success(data):
                     let data = data.data

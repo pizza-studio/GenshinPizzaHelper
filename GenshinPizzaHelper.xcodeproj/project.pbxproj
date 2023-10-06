@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
+		5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
 		5B2A9E492ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
 		5B2A9E4A2ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
@@ -899,6 +901,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewExtension.swift; sourceTree = "<group>"; };
 		5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_DailyMaterialAsset.swift; sourceTree = "<group>"; };
 		5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseUIAccommodations.swift; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
@@ -1609,6 +1612,7 @@
 				EA459DA4290CF47700E74F76 /* DismissableSheet.swift */,
 				EAD29446290E717A00716EF7 /* HideTabBar.swift */,
 				EAF8AC1B29C758750047D36C /* CircleClippedBackground.swift */,
+				5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -2503,6 +2507,7 @@
 				5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */,
 				5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */,
 				5BD1C5F12A2A1FC90043C2B1 /* ThisDevice.swift in Sources */,
+				5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */,
 				5BD1C5F22A2A1FC90043C2B1 /* WidgetBackgroundView.swift in Sources */,
 				5BD1C5F32A2A1FC90043C2B1 /* WebImageView.swift in Sources */,
 				5BD1C5F42A2A1FC90043C2B1 /* UtilizationData.swift in Sources */,
@@ -2975,6 +2980,7 @@
 				BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
 				EA1C2CE328F07C1E00E4C28A /* ThisDevice.swift in Sources */,
+				5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */,
 				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BFFD823628A680E000616CE1 /* WebImageView.swift in Sources */,
 				EA784CC62902471600918F64 /* UtilizationData.swift in Sources */,
