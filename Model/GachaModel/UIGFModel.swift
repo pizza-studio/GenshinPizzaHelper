@@ -33,7 +33,7 @@ struct UIGFJson: Codable {
             self.uid = try container.decode(String.self, forKey: .uid)
             self.lang = try container.decode(GachaLanguageCode.self, forKey: .lang)
 
-            let dateFormatter = DateFormatter()
+            let dateFormatter = DateFormatter.Gregorian()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             if let dateString = try container.decodeIfPresent(
@@ -128,7 +128,7 @@ struct UIGFGahcaItem: Codable {
         self.count = try container
             .decodeIfPresent(String.self, forKey: .count) ?? "1"
 
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         if let date = dateFormatter
             .date(from: try container.decode(String.self, forKey: .time)) {
@@ -199,7 +199,7 @@ struct UIGFGahcaItem: Codable {
         try container.encode(itemId, forKey: .itemId)
         try container.encode(count, forKey: .count)
 
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         try container.encode(dateFormatter.string(from: time), forKey: .time)
 

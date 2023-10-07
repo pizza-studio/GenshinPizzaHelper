@@ -233,7 +233,7 @@ extension API {
 
             var paraDict = [String: String]()
             if let queryStartDate = queryStartDate {
-                let dateFormatter = DateFormatter()
+                let dateFormatter = DateFormatter.Gregorian()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 paraDict.updateValue(
                     String(

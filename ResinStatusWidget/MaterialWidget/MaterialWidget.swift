@@ -44,13 +44,13 @@ struct MaterialWidgetView: View {
     var talentMaterials: [WeaponOrTalentMaterial] { entry.talentMateirals }
 
     var weekday: String {
-        let formatter = DateFormatter()
+        let formatter = DateFormatter.Gregorian()
         formatter.dateFormat = "EEE"
         return formatter.string(from: Date())
     }
 
     var dayOfMonth: String {
-        let formatter = DateFormatter()
+        let formatter = DateFormatter.Gregorian()
         formatter.dateFormat = "d"
         return formatter.string(from: Date())
     }
@@ -149,7 +149,7 @@ private struct EventView: View {
     }
 
     func getRemainTimeInterval(_ endAt: String) -> TimeInterval {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter

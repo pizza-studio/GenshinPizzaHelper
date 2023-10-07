@@ -109,7 +109,7 @@ extension AbyssData {
         )
         let abyssDataDate =
             Date(timeIntervalSince1970: Double(abyssData.startTime)!)
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyyMM"
         let abyssSeasonStr = dateFormatter.string(from: abyssDataDate)
         guard let abyssSeasonInt = Int(abyssSeasonStr) else {
@@ -192,7 +192,7 @@ extension AvatarHoldingData {
             "\(account.config.uid!)\(account.config.uid!.md5)\(AppConfig.uidSalt)"
         self.uid = String(obfuscatedUid.md5)
 
-        let formatter = DateFormatter()
+        let formatter = DateFormatter.Gregorian()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.calendar = Calendar(identifier: .gregorian)
         self.updateDate = formatter.string(from: Date())

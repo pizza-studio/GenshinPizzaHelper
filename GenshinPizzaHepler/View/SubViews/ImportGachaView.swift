@@ -183,7 +183,7 @@ struct ImportGachaView: View {
                             count = "1"
                         }
 
-                        let dateFormatter = DateFormatter()
+                        let dateFormatter = DateFormatter.Gregorian()
                         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                         let time: Date
                         if let timeIndex = timeIndex,
@@ -261,7 +261,7 @@ struct ImportGachaView: View {
     private var alert: AlertType?
 
     private var dateFormatter: DateFormatter {
-        let fmt = DateFormatter()
+        let fmt = DateFormatter.Gregorian()
         fmt.dateStyle = .medium
         fmt.timeStyle = .medium
         return fmt
@@ -523,7 +523,7 @@ private struct SucceedView: View {
     // MARK: Private
 
     private var dateFormatter: DateFormatter {
-        let fmt = DateFormatter()
+        let fmt = DateFormatter.Gregorian()
         fmt.dateStyle = .medium
         fmt.timeStyle = .medium
         return fmt

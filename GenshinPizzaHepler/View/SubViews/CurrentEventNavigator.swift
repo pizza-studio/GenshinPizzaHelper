@@ -132,7 +132,7 @@ struct CurrentEventNavigator: View {
     }
 
     func getRemainDays(_ endAt: String) -> IntervalDate? {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = Server(

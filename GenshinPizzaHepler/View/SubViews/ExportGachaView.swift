@@ -47,7 +47,7 @@ struct ExportGachaView: View {
     }
 
     var defaultFileName: String {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyyMMddHHmm"
         return "UIGF_\(uigfJson?.info.uid ?? "")_\(dateFormatter.string(from: uigfJson?.info.exportTime ?? Date()))"
     }
@@ -216,7 +216,7 @@ private struct JsonFile: FileDocument {
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         let encoder = JSONEncoder()
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         encoder.dateEncodingStrategy = .formatted(dateFormatter)
         encoder.keyEncodingStrategy = .convertToSnakeCase

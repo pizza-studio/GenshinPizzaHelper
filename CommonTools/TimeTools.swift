@@ -40,7 +40,7 @@ extension Date {
 }
 
 func relativeTimePointFromNow(second: Int) -> String {
-    let dateFormatter = DateFormatter()
+    let dateFormatter = DateFormatter.Gregorian()
     dateFormatter.dateStyle = .short
     dateFormatter.timeStyle = .short
     dateFormatter.doesRelativeDateFormatting = true
@@ -95,5 +95,13 @@ extension Date {
             minute: minute,
             second: second
         )
+    }
+}
+
+extension DateFormatter {
+    public static func Gregorian() -> DateFormatter {
+        let result = DateFormatter()
+        result.locale = .init(identifier: "en_US_POSIX")
+        return result
     }
 }

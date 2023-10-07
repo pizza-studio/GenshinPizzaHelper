@@ -109,7 +109,7 @@ extension MihoyoAPI {
             print(String(data: data!, encoding: .utf8)!)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let dateFormatter = DateFormatter()
+            let dateFormatter = DateFormatter.Gregorian()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             decoder.dateDecodingStrategy = .formatted(dateFormatter)

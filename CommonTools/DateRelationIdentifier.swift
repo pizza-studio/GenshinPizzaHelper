@@ -36,7 +36,7 @@ extension Date {
     func getRelativeDateString(benchmarkDate: Date = Date()) -> String {
         let relationIdentifier: DateRelationIdentifier =
             .getRelationIdentifier(of: self)
-        let formatter = DateFormatter()
+        let formatter = DateFormatter.Gregorian()
         var component = Locale.Components(locale: Locale.current)
         component.hourCycle = .zeroToTwentyThree
         formatter.locale = Locale(components: component)

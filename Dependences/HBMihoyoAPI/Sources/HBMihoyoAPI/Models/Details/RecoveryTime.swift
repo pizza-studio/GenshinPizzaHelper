@@ -8,6 +8,8 @@
 import CryptoKit
 import Foundation
 
+// MARK: - RecoveryTime
+
 public struct RecoveryTime: Codable {
     // MARK: Lifecycle
 
@@ -81,7 +83,7 @@ public struct RecoveryTime: Codable {
         if let finishedTextPlaceholder = finishedTextPlaceholder {
             guard second != 0 else { return finishedTextPlaceholder.localized }
         }
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.GregorianPrivate()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         dateFormatter.doesRelativeDateFormatting = true
@@ -105,7 +107,7 @@ public struct RecoveryTime: Codable {
         if let finishedTextPlaceholder = finishedTextPlaceholder {
             guard second != 0 else { return finishedTextPlaceholder.localized }
         }
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.GregorianPrivate()
         dateFormatter.dateFormat = "HH:mm"
         dateFormatter.locale = Locale(identifier: Locale.current.identifier)
 
@@ -116,5 +118,13 @@ public struct RecoveryTime: Codable {
         )!
 
         return dateFormatter.string(from: date)
+    }
+}
+
+extension DateFormatter {
+    fileprivate static func GregorianPrivate() -> DateFormatter {
+        let result = DateFormatter()
+        result.locale = .init(identifier: "en_US_POSIX")
+        return result
     }
 }

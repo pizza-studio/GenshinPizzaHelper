@@ -450,7 +450,7 @@ struct AbyssDataCollectionView: View {
                 }
                 HStack {
                     let date: String = {
-                        let formatter = DateFormatter()
+                        let formatter = DateFormatter.Gregorian()
                         formatter.dateStyle = .medium
                         formatter.timeStyle = .medium
                         return formatter.string(from: Date())
@@ -474,7 +474,7 @@ struct AbyssDataCollectionView: View {
     }
 
     func getRemainDays(_ endAt: String) -> IntervalDate? {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = Server(
@@ -1009,7 +1009,7 @@ struct AvatarHoldingAPIParameters {
 
     func describe() -> String {
         let dateString: String = {
-            let formatter = DateFormatter()
+            let formatter = DateFormatter.Gregorian()
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
             return formatter.string(from: date)
@@ -1243,7 +1243,7 @@ struct TeamUtilizationAPIParameters {
 typealias AbyssSeason = Int
 extension AbyssSeason {
     fileprivate static func from(_ date: Date) -> Self {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyyMM"
         let yearMonth = Int(dateFormatter.string(from: date))! * 10
         if Calendar.current.component(.day, from: date) > 15 {
@@ -1259,7 +1259,7 @@ extension AbyssSeason {
 
     fileprivate var startDateOfSeason: Date {
         let seasonString = String(self)
-        let formatter = DateFormatter()
+        let formatter = DateFormatter.Gregorian()
         formatter.dateFormat = "yyyyMM"
         let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
         let year = Calendar.current.component(.year, from: yearMonth)
@@ -1277,7 +1277,7 @@ extension AbyssSeason {
 
     fileprivate func describe() -> String {
         let seasonString = String(self)
-//        let formatter = DateFormatter()
+//        let formatter = DateFormatter.Gregorian()
 //        formatter.dateFormat = "yyyyMM"
 //        let yearMonth = formatter.date(from: String(seasonString.prefix(6)))!
 //        let year = Calendar.current.component(.year, from: yearMonth)
@@ -1344,7 +1344,7 @@ enum ServerChoice {
 
 extension Date {
     fileprivate func yyyyMM() -> Int {
-        let formatter = DateFormatter()
+        let formatter = DateFormatter.Gregorian()
         formatter.dateFormat = "yyyyMM"
         return Int(formatter.string(from: self))!
     }
