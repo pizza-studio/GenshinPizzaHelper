@@ -196,7 +196,7 @@ extension NameCard {
     public static var blacklist: [NameCard] {
         // 此变数用来屏蔽某些正式发行前的内容。
         // 之所以仅对名片这么做，是因为角色往往会提前一个月被米哈游官方借由「天外卫星通信」公开。
-        [.UI_NameCardPic_Furina_P, .UI_NameCardPic_Charlotte_P, .UI_NameCardPic_FD3_P, .UI_NameCardPic_Bp28_P]
+        [.UI_NameCardPic_Furina_P, .UI_NameCardPic_Charlotte_P, .UI_NameCardPic_FD3_P, .UI_NameCardPic_Bp2_P]
     }
 
     public static var allLegalCases: [NameCard] {
