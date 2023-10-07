@@ -1288,7 +1288,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B5F82B12ACC6702005983AC /* Enums */ = {
+		5B18C5492AD0DF4300C745BA /* Enums */ = {
 			isa = PBXGroup;
 			children = (
 				5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */,
@@ -1298,7 +1298,7 @@
 				5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */,
 				5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */,
 			);
-			name = Enums;
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		5BAF708929E5764E0096228B /* Fonts */ = {
@@ -1835,7 +1835,7 @@
 				EA7F67C9289D711200D2CE29 /* README.md */,
 				EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */,
 				BF6C5258289E02B600EA224F /* .github */,
-				5B5F82B12ACC6702005983AC /* Enums */,
+				5B18C5492AD0DF4300C745BA /* Enums */,
 				5BAF708929E5764E0096228B /* Fonts */,
 				EAAF330D28A27AEA0018EFAB /* Model */,
 				BF6C525E289E0F2A00EA224F /* Request */,
