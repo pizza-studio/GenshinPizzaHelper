@@ -395,7 +395,7 @@ struct InAppMaterialNavigator: View {
     }
 
     func getDate() -> String {
-        let formatter = DateFormatter.Gregorian()
+        let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("MMMMd EEEE")
         return formatter.string(from: Date())
     }

@@ -261,7 +261,7 @@ struct ImportGachaView: View {
     private var alert: AlertType?
 
     private var dateFormatter: DateFormatter {
-        let fmt = DateFormatter.Gregorian()
+        let fmt = DateFormatter()
         fmt.dateStyle = .medium
         fmt.timeStyle = .medium
         return fmt
@@ -523,7 +523,7 @@ private struct SucceedView: View {
     // MARK: Private
 
     private var dateFormatter: DateFormatter {
-        let fmt = DateFormatter.Gregorian()
+        let fmt = DateFormatter()
         fmt.dateStyle = .medium
         fmt.timeStyle = .medium
         return fmt

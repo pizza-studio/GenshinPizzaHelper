@@ -52,7 +52,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                                     ))
                                     .widgetAccentable()
                                 let dateString: String = {
-                                    let formatter = DateFormatter.Gregorian()
+                                    let formatter = DateFormatter()
                                     formatter.dateFormat = "HH:mm"
                                     formatter
                                         .locale =
@@ -119,7 +119,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                                     ))
                                     .widgetAccentable()
                                 let dateString: String = {
-                                    let formatter = DateFormatter.Gregorian()
+                                    let formatter = DateFormatter()
                                     formatter.dateFormat = "HH:mm"
                                     return formatter
                                         .string(

@@ -273,7 +273,7 @@ private struct GachaTimeChart: View {
     var gachaViewModel: GachaViewModel
     let type: GachaType
     let formatter: DateFormatter = {
-        let fmt = DateFormatter.Gregorian()
+        let fmt = DateFormatter()
         fmt.dateStyle = .short
         fmt.timeStyle = .none
         return fmt

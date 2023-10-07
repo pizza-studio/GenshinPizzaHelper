@@ -450,7 +450,7 @@ struct AbyssDataCollectionView: View {
                 }
                 HStack {
                     let date: String = {
-                        let formatter = DateFormatter.Gregorian()
+                        let formatter = DateFormatter()
                         formatter.dateStyle = .medium
                         formatter.timeStyle = .medium
                         return formatter.string(from: Date())
@@ -1009,7 +1009,7 @@ struct AvatarHoldingAPIParameters {
 
     func describe() -> String {
         let dateString: String = {
-            let formatter = DateFormatter.Gregorian()
+            let formatter = DateFormatter()
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
             return formatter.string(from: date)

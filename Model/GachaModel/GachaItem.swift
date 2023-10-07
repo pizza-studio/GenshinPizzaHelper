@@ -258,7 +258,7 @@ extension GachaItem: ContainGachaItemInfo {
     }
 
     static let dateFormatter: DateFormatter = {
-        let result = DateFormatter.Gregorian()
+        let result = DateFormatter()
         result.dateStyle = .short
         result.timeStyle = .short
         result.doesRelativeDateFormatting = true
