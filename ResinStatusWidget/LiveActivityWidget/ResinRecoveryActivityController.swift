@@ -38,11 +38,11 @@ class ResinRecoveryActivityController {
         var valuesToKeep = [String]()
         var insaneValueFound = false
         for entry in backgrounds {
-          guard !allValidValues.contains(entry) else { continue }
-          // 之前的剔除方法无效，现在改了判定规则：
-          // 只要发现不合规的 UserDefault 资料，那就全部清空。
-          resinRecoveryLiveActivityBackgroundOptions.removeAll()
-          return
+            guard !allValidValues.contains(entry) else { continue }
+            // 之前的剔除方法无效，现在改了判定规则：
+            // 只要发现不合规的 UserDefault 资料，那就全部清空。
+            resinRecoveryLiveActivityBackgroundOptions.removeAll()
+            return
         }
     }
 

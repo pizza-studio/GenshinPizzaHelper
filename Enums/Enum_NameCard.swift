@@ -193,10 +193,17 @@ public enum NameCard: Int, CaseIterable {
 }
 
 extension NameCard {
+    /// 此变数用来屏蔽某些正式发行前的内容。
+    /// 之所以仅对名片与材料这么做，是因为角色往往会提前一个月被米哈游官方借由「天外卫星通信」公开。
+    /// 加上 .release(since:.Specify(day:month:year:)) 后缀可以使禁令定时消除。
+    /// 建议消除的时间为新版发行之前的纪行的结束日之后的那天。
     public static var blacklist: [NameCard] {
-        // 此变数用来屏蔽某些正式发行前的内容。
-        // 之所以仅对名片这么做，是因为角色往往会提前一个月被米哈游官方借由「天外卫星通信」公开。
-        [.UI_NameCardPic_Furina_P, .UI_NameCardPic_Charlotte_P, .UI_NameCardPic_FD3_P, .UI_NameCardPic_Bp2_P]
+        [
+            .UI_NameCardPic_Furina_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
+            .UI_NameCardPic_Charlotte_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
+            .UI_NameCardPic_FD3_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
+            .UI_NameCardPic_Bp2_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
+        ].compactMap { $0 }
     }
 
     public static var allLegalCases: [NameCard] {
@@ -207,6 +214,16 @@ extension NameCard {
         return result
     }
 
+    /// 自指定日期開始返回 nil。
+    /// - Parameter date: 指定日期
+    /// - Returns: 自指定日期開始返回 nil。
+    public func release(since date: Date?) -> NameCard? {
+        guard let date = date else { return self }
+        return Date() < date ? self : nil
+    }
+}
+
+extension NameCard {
     public var fileName: String { .init(describing: self) }
 
     // 之前的 UserDefaults 参数值是简体中文，且中间的点的符号用的是不同的 Unicode 字元。

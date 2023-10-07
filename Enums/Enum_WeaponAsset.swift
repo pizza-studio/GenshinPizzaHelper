@@ -242,7 +242,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .FinaleOfTheDeep: return .weaponDewdrop
         case .FleuveCendreFerryman: return .weaponAncientChord
         case .TheDockhandsAssistant: return .weaponDewdrop
-        case .SwordOfNarzissenkreuz: return nil // return .weaponAncientChord // 原神 4.2
+        case .SwordOfNarzissenkreuz:
+            return .weaponAncientChord.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
         case .AquilaFavonia: return .weaponDecarabian
         case .SkywardBlade: return .weaponBorealWolf
         case .FreedomSworn: return .weaponGladiator
@@ -252,7 +253,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .HaranGeppakuFutsu: return .weaponNarukami
         case .KeyOfKhajNisut: return .weaponTalisman
         case .LightOfFoliarIncision: return .weaponTalisman
-        case .SplendorOfStillWaters: return nil // return .weaponDewdrop // 原神 4.2
+        case .SplendorOfStillWaters:
+            return .weaponDewdrop.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
         case .WasterGreatsword: return .weaponBorealWolf
         case .OldMercsPal: return .weaponBorealWolf
         case .FerrousShadow: return .weaponDecarabian

@@ -138,7 +138,7 @@
 
 #### 1. 年度大版本更新的情况。
 
-这一部分主要是指武器突破素材与角色天赋素材，也是用 Enum 管理的。相关说明等回头再更新。
+这一部分主要是指武器突破素材与角色天赋素材，也是用 Enum 半自动管理的。相关说明等回头再更新。
 
 #### 2. 每四十五天左右的小版本原神游戏更新的情况。
 
@@ -152,7 +152,14 @@
 - 名片一律在 NameCard 这个 enum 内登记：
     - case 名称填写名片的图片档案名称，以 `_P` 结尾；
     - RawValue 填写名片的 Enka ID。
-- 如果提前加入了名片，则请注意不要比官方更提前地公开名片。此时请善用 `Namecard.blacklist`。
+- 如果提前加入了名片，则请注意不要比官方更提前地公开名片。此时请善用 `Namecard.blacklist`。以白术为例、责令其在所属版本开放之前的那个纪行的结束日之后的那一天开放：
+    ```
+    public static var blacklist: [NameCard] {
+        [
+            .UI_NameCardPic_Baizhuer_P.release(since: .Specify(day: 11, month: 4, year: 2023)),
+        ].compactMap { $0 }
+    }
+    ```
 - 名片名称翻译 Key："$asset.nameCard:\(名片的图片档案名称)"。例：`"$asset.nameCard:UI_NameCardPic_0_P"`。
 
 ##### 2. 角色
@@ -162,8 +169,12 @@
     1. `CharacterAsset.frontPhotoFileName` 变数需要你填入新角色的正面肖像（证件照）的档案名称。该肖像档案放置在 `Assets-NoWatch` 当中的对应目录内即可。Ambr.Top 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请用 Waifu2x 等 AI 手段放大至 512x512（可保证 iPad Pro 高清显示）、再存为 HEIC。详情请洽下文「证件照处理方法」。
     2. `CharacterAsset.namecard` 变数需要你填入新角色的名片。这里按照真实情况填写即可。
     3. `CharacterAsset.possibleProfilePictureIdentifiers` 用来填写每个角色对应的 profilePicture 编号。每个角色可能拥有多个编号。请依照 [ProfilePictureExcelConfigData.json](https://gitlab.com/Dimbreath/AnimeGameData/-/blob/master/ExcelBinOutput/ProfilePictureExcelConfigData.json) 的内容查询到新角色对应的 profilePicture 编号（不超过五位数）。
-    4. `CharacterAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil。
-3. 角色名称翻译 Key："$asset.character:\(case 名称)"。例：`"$asset.character:Keqing"`。
+3. `CharacterAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil、或者用 `.available(since:.Specify(day:month:year:))` 限时封印： 
+    ```
+    case .Baizhu:
+      return .talentGold.available(since: .Specify(day: 11, month: 4, year: 2023))
+    ```
+4. 角色名称翻译 Key："$asset.character:\(case 名称)"。例：`"$asset.character:Keqing"`。
 
 ##### 3. 武器
 
@@ -171,7 +182,11 @@
 2. 之后 Xcode 会报错、引导你填写一些其他内容：
     1. `WeaponAsset.fileNameNotAwaken` 变数需要你填入「尚未觉醒的武器档案名称」。
         1. 对应的素材则为觉醒过的武器图片，放置在 `Assets-NoWatch` 当中的对应目录即可。Ambr.Top 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请转换格式至 HEIC。
-    2. `WeaponAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil。
+    2. `WeaponAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil、或者用 `.available(since:.Specify(day:month:year:))` 限时封印： 
+    ```
+    case .JadefallsSplendor: 
+      return .weaponGuyun.available(since: .Specify(day: 11, month: 4, year: 2023))
+    ```
 3. 武器名称翻译 Key："$asset.weapon:\(case 名称)"。例：`"$asset.weapon:DullBlade"`。
 
 ##### 4. 其他内容

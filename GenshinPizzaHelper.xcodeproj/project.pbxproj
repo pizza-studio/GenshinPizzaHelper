@@ -73,6 +73,13 @@
 		5BAF70A429E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
 		5BAF70A529E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
 		5BAF70A629E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
+		5BAFEAD02AD183D800A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
+		5BAFEAD12AD183D800A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
+		5BAFEAD22AD183EB00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
+		5BAFEAD32AD183EB00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
+		5BAFEAD42AD183ED00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
+		5BAFEAD62AD183EE00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
+		5BAFEAD82AD183FB00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
 		5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AB29E19A8F00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
@@ -921,6 +928,7 @@
 		5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		5BAF709129E5764E0096228B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateImpl.swift; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
@@ -1389,6 +1397,7 @@
 				EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
 				5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */,
+				5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */,
 				EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */,
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 				EA6B9147290EB2EF00B5230B /* GlobalVar.swift */,
@@ -2533,6 +2542,7 @@
 				5BD1C6062A2A1FC90043C2B1 /* ExpeditionInfoBar.swift in Sources */,
 				5BD1C6072A2A1FC90043C2B1 /* MultiTokenResult.swift in Sources */,
 				5BD1C6082A2A1FC90043C2B1 /* ReviewHandler.swift in Sources */,
+				5BAFEAD12AD183D800A5F6C1 /* DateImpl.swift in Sources */,
 				5BD1C6092A2A1FC90043C2B1 /* AccountConfiguration.xcdatamodeld in Sources */,
 				5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */,
 				5BD1C60B2A2A1FC90043C2B1 /* AccountBasicInfosView.swift in Sources */,
@@ -2632,6 +2642,7 @@
 				EAE95CBF28CE0F7500D975CB /* LockScreenResinWidget.swift in Sources */,
 				BFBDD65228ED7B970022B79D /* Result.swift in Sources */,
 				EAB1110A28CF8581009FDF07 /* WidgetsBoundle.swift in Sources */,
+				5BAFEAD32AD183EB00A5F6C1 /* DateImpl.swift in Sources */,
 				EA185F2C292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EA7FF47729309B6A00128A5C /* LockScreenResinFullTimeWidget.swift in Sources */,
 				EA406815292228A200F23479 /* WidgetData.swift in Sources */,
@@ -2710,6 +2721,7 @@
 				EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */,
 				EAB11EA129325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */,
+				5BAFEAD42AD183ED00A5F6C1 /* DateImpl.swift in Sources */,
 				BFCC069A28C9BBD3003E4A54 /* StoreManager.swift in Sources */,
 				BFCC066828C9B6A1003E4A54 /* NotificationController.swift in Sources */,
 				BFCC06B028CA1984003E4A54 /* WatchGameInfoBlock.swift in Sources */,
@@ -2780,6 +2792,7 @@
 				EA784CCF2902517500918F64 /* HomeServerVersion.swift in Sources */,
 				EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */,
 				5B5F82DB2ACC9660005983AC /* ChineseUIAccommodations.swift in Sources */,
+				5BAFEAD82AD183FB00A5F6C1 /* DateImpl.swift in Sources */,
 				EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */,
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
 				EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */,
@@ -2882,6 +2895,7 @@
 				5B5F82B82ACC67B4005983AC /* Enum_NameCard.swift in Sources */,
 				EA36DFBA28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
+				5BAFEAD62AD183EE00A5F6C1 /* DateImpl.swift in Sources */,
 				EAB1110728CF84B5009FDF07 /* WidgetLauncher.swift in Sources */,
 				EA7CD44528CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */,
 				EAAF331028A27B080018EFAB /* Account.swift in Sources */,
@@ -3007,6 +3021,7 @@
 				EA10A66429D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld in Sources */,
 				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA059CD7292347E800400DE3 /* MultiTokenResult.swift in Sources */,
+				5BAFEAD02AD183D800A5F6C1 /* DateImpl.swift in Sources */,
 				BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */,
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */,
@@ -3136,6 +3151,7 @@
 				BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE95D0D28CE11CA00D975CB /* NetworkReachability.swift in Sources */,
 				BF3F98C628EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
+				5BAFEAD22AD183EB00A5F6C1 /* DateImpl.swift in Sources */,
 				EAB11EA329325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				EAE95CFA28CE11A100D975CB /* MaterialProviders.swift in Sources */,
 			);

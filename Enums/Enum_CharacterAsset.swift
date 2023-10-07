@@ -449,8 +449,10 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Freminet: return .talentJustice
         case .Neuvillette: return .talentEquity
         case .Wriothesley: return .talentOrder
-        case .Charlotte: return nil // .talentJustice // 原神 4.2
-        case .Furina: return nil // .talentJustice // 原神 4.2
+        case .Charlotte:
+            return .talentJustice.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
+        case .Furina:
+            return .talentJustice.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
         }
     }
 }
@@ -482,5 +484,14 @@ extension ENCharacterMap.Character {
 extension AllAvatarDetailModel.Avatar {
     public var asset: CharacterAsset? {
         .init(rawValue: id) ?? .Hotaru
+    }
+}
+
+// MARK: Private Array Extension
+
+extension Array {
+    fileprivate func available(since date: Date?) -> Self {
+        guard let date = date else { return self }
+        return Date() < date ? [] : self
     }
 }
