@@ -37,15 +37,13 @@ class ResinRecoveryActivityController {
         let allValidValues = NameCard.allLegalCases.map(\.fileName)
         var valuesToKeep = [String]()
         var insaneValueFound = false
-        backgrounds.forEach { entry in
-            guard allValidValues.contains(entry) else {
-                insaneValueFound = true
-                return
-            }
-            valuesToKeep.append(entry)
+        for entry in backgrounds {
+          guard !allValidValues.contains(entry) else { continue }
+          // 之前的剔除方法无效，现在改了判定规则：
+          // 只要发现不合规的 UserDefault 资料，那就全部清空。
+          resinRecoveryLiveActivityBackgroundOptions.removeAll()
+          return
         }
-        guard insaneValueFound else { return } // 避免重复写入
-        resinRecoveryLiveActivityBackgroundOptions = valuesToKeep
     }
 
     // MARK: Internal
