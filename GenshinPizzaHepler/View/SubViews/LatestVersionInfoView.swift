@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/9/27.
 //
 
+import Defaults
 import HBPizzaHelperAPI
 import StoreKit
 import SwiftUI
@@ -96,16 +97,8 @@ struct LatestVersionInfoView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("latestVersionInfoView.affirmative") {
-                        var checkedUpdateVersions = UserDefaults.standard
-                            .object(forKey: "checkedUpdateVersions") as? [Int] ??
-                            []
-                        checkedUpdateVersions
-                            .append(newestVersionInfos!.buildVersion)
-                        UserDefaults.standard.set(
-                            checkedUpdateVersions,
-                            forKey: "checkedUpdateVersions"
-                        )
-                        UserDefaults.standard.synchronize()
+                        Defaults[.checkedUpdateVersions].append(newestVersionInfos!.buildVersion)
+                        UserDefaults.opSuite.synchronize()
                         if isJustUpdated {
                             let showRate = Bool.random()
                             if showRate {

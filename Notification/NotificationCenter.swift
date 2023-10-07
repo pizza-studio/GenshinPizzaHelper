@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/20.
 //  通知功能提供
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 import UserNotifications
@@ -13,31 +14,18 @@ class UserNotificationCenter {
     // MARK: Lifecycle
 
     private init() {
-        userDefaults?.register(defaults: [
-            "allowResinNotification": true,
-            "resinNotificationNum": 140,
-            "allowFullResinNotification": true,
-            "allowHomeCoinNotification": true,
-            "homeCoinNotificationHourBeforeFull": 8.0,
-            "noticeExpeditionMethodRawValue": 1,
-            "allowWeeklyBossesNotification": true,
-            "weeklyBossesNotificationTimePointData": try! JSONEncoder()
-                .encode(DateComponents(
-                    calendar: .current,
-                    hour: 19,
-                    minute: 0,
-                    weekday: 7
-                )),
-            "allowTransformerNotification": true,
-            "allowDailyTaskNotification": true,
-            "dailyTaskNotificationTimePointData": try! JSONEncoder()
-                .encode(DateComponents(
-                    calendar: .current,
-                    hour: 19,
-                    minute: 0
-                )),
-            "notificationIgnoreUidsData": try! JSONEncoder().encode([String]()),
-        ])
+        Defaults.reset(.allowResinNotification)
+        Defaults.reset(.resinNotificationNum)
+        Defaults.reset(.allowFullResinNotification)
+        Defaults.reset(.allowHomeCoinNotification)
+        Defaults.reset(.homeCoinNotificationHourBeforeFull)
+        Defaults.reset(.noticeExpeditionMethodRawValue)
+        Defaults.reset(.allowWeeklyBossesNotification)
+        Defaults.reset(.weeklyBossesNotificationTimePointData)
+        Defaults.reset(.allowTransformerNotification)
+        Defaults.reset(.allowDailyTaskNotification)
+        Defaults.reset(.dailyTaskNotificationTimePointData)
+        Defaults.reset(.notificationIgnoreUidsData)
         center.setNotificationCategories([normalNotificationCategory])
     }
 
@@ -54,8 +42,6 @@ class UserNotificationCenter {
     }
 
     static let shared: UserNotificationCenter = .init()
-
-    let userDefaults = UserDefaults(suiteName: "group.GenshinPizzaHelper")
 
     // Define the custom actions.
     let openGenshin = UNNotificationAction(
@@ -82,9 +68,7 @@ class UserNotificationCenter {
     }
 
     var ignoreUids: [String] {
-        let data = userDefaults?
-            .data(forKey: "notificationIgnoreUidsData") ??
-            (try! JSONEncoder().encode([String]()))
+        let data = Defaults[.notificationIgnoreUidsData]
         let ignoreUids: [String] = try! JSONDecoder()
             .decode([String].self, from: data)
         return ignoreUids
@@ -280,27 +264,23 @@ class UserNotificationCenter {
 
     // 树脂
     private var allowResinNotification: Bool {
-        userDefaults?.bool(forKey: "allowResinNotification") ?? true
+        Defaults[.allowResinNotification]
     }
 
     private var resinNotificationNum: Double {
-        userDefaults?.double(forKey: "resinNotificationNum") ?? 150
+        Defaults[.resinNotificationNum]
     }
 
     private var allowFullResinNotification: Bool {
-        userDefaults?.bool(forKey: "allowFullResinNotification") ?? true
+        Defaults[.allowFullResinNotification]
     }
 
     private var allowHomeCoinNotification: Bool {
-        userDefaults?.bool(forKey: "allowHomeCoinNotification") ?? true
-    }
-
-    private var homeCoinNotificationHourBeforeFull: Double {
-        userDefaults?.double(forKey: "homeCoinNotificationHourBeforeFull") ?? 8
+        Defaults[.allowHomeCoinNotification]
     }
 
     private var homeCoinNotificationTimeFromFull: Int {
-        Int(homeCoinNotificationHourBeforeFull) * 60 * 60
+        Int(Defaults[.homeCoinNotificationHourBeforeFull]) * 60 * 60
     }
 
     private var homeCoinNotificationTimeDescription: String {
@@ -308,56 +288,30 @@ class UserNotificationCenter {
     }
 
     private var allowExpeditionNotification: Bool {
-        userDefaults?.bool(forKey: "allowExpeditionNotification") ?? true
+        Defaults[.allowExpeditionNotification]
     }
 
     private var noticeExpeditionBy: ExpeditionNoticeMethod {
-        .init(
-            rawValue: userDefaults?
-                .integer(forKey: "noticeExpeditionMethodRawValue") ?? 1
-        )!
-    }
-
-    private var allowWeeklyBossesNotification: Bool {
-        userDefaults?.bool(forKey: "allowWeeklyBossesNotification") ?? true
+        .init(rawValue: Defaults[.noticeExpeditionMethodRawValue]) ?? .unknown
     }
 
     private var weeklyBossesNotificationTimePoint: DateComponents {
-        let data = userDefaults?
-            .data(forKey: "weeklyBossesNotificationTimePointData") ??
-            (
-                try! JSONEncoder()
-                    .encode(DateComponents(
-                        calendar: .current,
-                        hour: 19,
-                        minute: 0,
-                        weekday: 7
-                    ))
-            )
+        let data = Defaults[.weeklyBossesNotificationTimePointData]
         let dateComponents = try! JSONDecoder()
             .decode(DateComponents.self, from: data)
         return dateComponents
     }
 
     private var allowTransformerNotification: Bool {
-        userDefaults?.bool(forKey: "allowTransformerNotification") ?? true
+        Defaults[.allowTransformerNotification]
     }
 
     private var allowDailyTaskNotification: Bool {
-        userDefaults?.bool(forKey: "allowDailyTaskNotification") ?? true
+        Defaults[.allowDailyTaskNotification]
     }
 
     private var dailyTaskNotificationDateComponents: DateComponents {
-        let data = userDefaults?
-            .data(forKey: "dailyTaskNotificationTimePointData") ??
-            (
-                try! JSONEncoder()
-                    .encode(DateComponents(
-                        calendar: .current,
-                        hour: 19,
-                        minute: 0
-                    ))
-            )
+        let data = Defaults[.dailyTaskNotificationTimePointData]
         let dateComponents = try! JSONDecoder()
             .decode(DateComponents.self, from: data)
         return dateComponents
@@ -647,7 +601,7 @@ class UserNotificationCenter {
         guard weeklyBossesInfo.remainResinDiscountNum != 0 else {
             deleteNotification(for: uid, object: .weeklyBosses); return
         }
-        guard allowWeeklyBossesNotification else { return }
+        guard Defaults[.allowWeeklyBossesNotification] else { return }
         let titleCN = "「%@」周本折扣提醒"
         let title = String(
             format: NSLocalizedString(titleCN, comment: "notification title"),

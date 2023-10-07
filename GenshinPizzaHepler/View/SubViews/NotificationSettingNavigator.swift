@@ -5,46 +5,27 @@
 //  Created by 戴藏龙 on 2022/8/21.
 //  通知设置部分
 
+import Defaults
 import SwiftUI
 
 struct NotificationSettingNavigator: View {
     @Environment(\.scenePhase)
     var scenePhase
-    @AppStorage(
-        "allowResinNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowResinNotification: Bool = true
-    @AppStorage(
-        "allowHomeCoinNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowHomeCoinNotification: Bool = true
-    @AppStorage(
-        "allowExpeditionNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowExpeditionNotification: Bool = true
-    @AppStorage(
-        "allowWeeklyBossesNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowWeeklyBossesNotification: Bool = true
-    @AppStorage(
-        "allowTransformerNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowTransformerNotification: Bool = true
-    @AppStorage(
-        "allowDailyTaskNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowDailyTaskNotification: Bool = true
-    @AppStorage(
-        "allowFullResinNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowFullResinNotification: Bool = true
+
+    @Default(.allowResinNotification)
+    var allowResinNotification: Bool
+    @Default(.allowHomeCoinNotification)
+    var allowHomeCoinNotification: Bool
+    @Default(.allowExpeditionNotification)
+    var allowExpeditionNotification: Bool
+    @Default(.allowWeeklyBossesNotification)
+    var allowWeeklyBossesNotification: Bool
+    @Default(.allowTransformerNotification)
+    var allowTransformerNotification: Bool
+    @Default(.allowDailyTaskNotification)
+    var allowDailyTaskNotification: Bool
+    @Default(.allowFullResinNotification)
+    var allowFullResinNotification: Bool
 
     @State
     var isNotificationHintShow: Bool = false

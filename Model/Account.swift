@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/9.
 //  Account所需的所有信息
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 
@@ -214,12 +215,8 @@ extension Account {
     #if !os(watchOS)
     func uploadHoldingData() {
         print("uploadHoldingData START")
-        guard UserDefaults.standard.bool(forKey: "allowAbyssDataCollection")
+        guard Defaults[.allowAbyssDataCollection]
         else { print("not allowed"); return }
-        let userDefault = UserDefaults.standard
-        var hasUploadedAvatarHoldingDataMD5: [String] = userDefault
-            .array(forKey: "hasUploadedAvatarHoldingDataMD5") as? [String] ??
-            []
         if let avatarHoldingData = AvatarHoldingData(
             account: self,
             which: .this
@@ -228,7 +225,7 @@ extension Account {
             encoder.outputFormatting = .sortedKeys
             let data = try! encoder.encode(avatarHoldingData)
             let md5 = String(data: data, encoding: .utf8)!.md5
-            guard !hasUploadedAvatarHoldingDataMD5.contains(md5) else {
+            guard !Defaults[.hasUploadedAvatarHoldingDataMD5].contains(md5) else {
                 print(
                     "uploadHoldingData ERROR: This holding data has uploaded. "
                 ); return
@@ -245,7 +242,7 @@ extension Account {
                     print("uploadHoldingData SUCCEED")
                     saveMD5()
                     print(md5)
-                    print(hasUploadedAvatarHoldingDataMD5)
+                    print(Defaults[.hasUploadedAvatarHoldingDataMD5])
                 case let .failure(error):
                     switch error {
                     case let .uploadError(message):
@@ -260,11 +257,8 @@ extension Account {
                 unlock()
             }
             func saveMD5() {
-                hasUploadedAvatarHoldingDataMD5.append(md5)
-                userDefault.set(
-                    hasUploadedAvatarHoldingDataMD5,
-                    forKey: "hasUploadedAvatarHoldingDataMD5"
-                )
+                Defaults[.hasUploadedAvatarHoldingDataMD5].append(md5)
+                UserDefaults.opSuite.synchronize()
             }
 
         } else {
@@ -282,19 +276,15 @@ extension Account {
 
     func uploadAbyssData() {
         print("uploadAbyssData START")
-        guard UserDefaults.standard.bool(forKey: "allowAbyssDataCollection")
+        guard Defaults[.allowAbyssDataCollection]
         else { print("not allowed"); return }
-        let userDefault = UserDefaults.standard
-        var hasUploadedAbyssDataAccountAndSeasonMD5: [String] = userDefault
-            .array(forKey: "hasUploadedAbyssDataAccountAndSeasonMD5") as? [String] ??
-            []
         if let abyssData = AbyssData(account: self, which: .this) {
             print(
                 "MD5 calculated by \(abyssData.uid)\(abyssData.getLocalAbyssSeason())"
             )
             let md5 = "\(abyssData.uid)\(abyssData.getLocalAbyssSeason())"
                 .md5
-            guard !hasUploadedAbyssDataAccountAndSeasonMD5.contains(md5)
+            guard !Defaults[.hasUploadedAbyssDataAccountAndSeasonMD5].contains(md5)
             else {
                 print(
                     "uploadAbyssData ERROR: This abyss data has uploaded.  "
@@ -327,20 +317,16 @@ extension Account {
                         }
                         print("uploadAbyssData ERROR: \(error)")
                         print(md5)
-                        print(hasUploadedAbyssDataAccountAndSeasonMD5)
+                        print(Defaults[.hasUploadedAbyssDataAccountAndSeasonMD5])
                     }
                     unlock()
                 }
             func saveMD5() {
-                hasUploadedAbyssDataAccountAndSeasonMD5.append(md5)
-                userDefault.set(
-                    hasUploadedAbyssDataAccountAndSeasonMD5,
-                    forKey: "hasUploadedAbyssDataAccountAndSeasonMD5"
-                )
+                Defaults[.hasUploadedAbyssDataAccountAndSeasonMD5].append(md5)
                 print(
-                    "uploadAbyssData MD5: \(hasUploadedAbyssDataAccountAndSeasonMD5)"
+                    "uploadAbyssData MD5: \(Defaults[.hasUploadedAbyssDataAccountAndSeasonMD5])"
                 )
-                userDefault.synchronize()
+                UserDefaults.opSuite.synchronize()
             }
         } else {
             print(
@@ -357,7 +343,7 @@ extension Account {
 
     func uploadHuTaoDBAbyssData() async {
         print("uploadHuTaoDBAbyssData START")
-        guard UserDefaults.standard.bool(forKey: "allowAbyssDataCollection")
+        guard Defaults[.allowAbyssDataCollection]
         else { print("not allowed"); return }
         if let abyssData = await HuTaoDBAbyssData(account: self, which: .this) {
             let encoder = JSONEncoder()

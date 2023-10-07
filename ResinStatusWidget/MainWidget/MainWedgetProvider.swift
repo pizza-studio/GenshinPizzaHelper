@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/7/12.
 //  Widget功能提供
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 import SwiftUI
@@ -88,11 +89,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
         completion: @escaping (Timeline<ResinEntry>) -> ()
     ) {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        var syncFrequencyInMinute =
-            Int(
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                    .double(forKey: "mainWidgetSyncFrequencyInMinute") ?? 60
-            )
+        var syncFrequencyInMinute = Int(Defaults[.mainWidgetSyncFrequencyInMinute])
         if syncFrequencyInMinute == 0 { syncFrequencyInMinute = 60 }
         let currentDate = Date()
         let refreshDate = Calendar.current.date(

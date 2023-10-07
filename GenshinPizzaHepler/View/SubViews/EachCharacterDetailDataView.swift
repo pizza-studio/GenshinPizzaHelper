@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/9/24.
 //
 
+import Defaults
 import HBPizzaHelperAPI
 import SwiftUI
 
@@ -199,7 +200,7 @@ struct EachCharacterDetailDataView: View {
                 value: "\((primaryDMGBonus.amount * 100.0).rounded(toPlaces: 2))%",
                 fontSize: fontSize
             )
-            if AppConfig.showRatingsForArtifacts,
+            if Defaults[.showRatingsForArtifacts],
                let totalScore = avatar.artifactTotalScore,
                let rank = avatar.artifactScoreRank {
                 AttributeLabel(
@@ -248,14 +249,14 @@ struct EachCharacterDetailDataView: View {
             "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
             alignment: .bottom,
             textSize: fontSize * 0.72,
-            enabled: AppConfig.showRarityAndLevelForArtifacts
+            enabled: Defaults[.showRarityAndLevelForArtifacts]
         )
         .corneredTag(
             // TODO: i18n malfunction.
             "detailPortal.ECDDV.scoreUnit:\(String(format: "%.0f", artifact.score ?? -1))",
             alignment: .topLeading,
             textSize: fontSize * 0.72,
-            enabled: artifact.score != nil && AppConfig.showRatingsForArtifacts
+            enabled: artifact.score != nil && Defaults[.showRatingsForArtifacts]
         )
         VStack(spacing: 0 + Self.spacingDelta) {
             Text(artifact.mainAttribute.name.percentageMarksTrimmed)
@@ -286,10 +287,6 @@ struct EachCharacterDetailDataView: View {
     // MARK: Private
 
     private static let spacingDeltaAmount: CGFloat = 5
-
-    private var adaptiveSpacingInCharacterView: Bool {
-        AppConfig.adaptiveSpacingInCharacterView
-    }
 }
 
 // MARK: - AttributeLabel

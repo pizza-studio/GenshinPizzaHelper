@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0033722AD19FE200CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033712AD19FE200CCCC66 /* Defaults */; };
+		5B0033742AD19FE800CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033732AD19FE800CCCC66 /* Defaults */; };
+		5B0033762AD19FED00CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033752AD19FED00CCCC66 /* Defaults */; };
+		5B0033782AD19FFF00CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033772AD19FFF00CCCC66 /* Defaults */; };
+		5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033792AD1A01700CCCC66 /* Defaults */; };
+		5B00337C2AD1A01D00CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B00337B2AD1A01D00CCCC66 /* Defaults */; };
+		5B00337E2AD1A02400CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B00337D2AD1A02400CCCC66 /* Defaults */; };
 		5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
@@ -915,6 +922,7 @@
 		5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseUIAccommodations.swift; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
 		5B4CCB222AC3324100E4A0B5 /* ThirdPartyToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyToolsView.swift; sourceTree = "<group>"; };
+		5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OPHelper_SharedAssembly; path = Dependences/OPHelper_SharedAssembly; sourceTree = "<group>"; };
 		5B5F82AE2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = ko; path = ko.lproj/AccountIntents.intentdefinition; sourceTree = "<group>"; };
 		5B5F82AF2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5B5F82B02ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -924,6 +932,7 @@
 		5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_CostumeAsset.swift; sourceTree = "<group>"; };
 		5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_CharacterAsset_SwiftUIImpl.swift; sourceTree = "<group>"; };
+		5BAE357F2AD19F66003D83DB /* SindreSorhus_Defaults */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SindreSorhus_Defaults; path = Dependences/SindreSorhus_Defaults; sourceTree = "<group>"; };
 		5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
@@ -1217,6 +1226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0033742AD19FE800CCCC66 /* Defaults in Frameworks */,
 				5BD1C65B2A2A1FC90043C2B1 /* CoreXLSX in Frameworks */,
 				5BD1C65C2A2A1FC90043C2B1 /* HBMihoyoAPI in Frameworks */,
 				5BD1C65D2A2A1FC90043C2B1 /* CloudKit.framework in Frameworks */,
@@ -1235,6 +1245,7 @@
 				BF15571329CFE5ED0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				BF20733A29D1412B00AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */,
+				5B00337C2AD1A01D00CCCC66 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1242,6 +1253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */,
 				BF20733829D1412700AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF15571129CFE5E60056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EACBDA5428C9DEF000CEE176 /* CloudKit.framework in Frameworks */,
@@ -1256,6 +1268,7 @@
 				BF15570F29CFE5E10056CFE6 /* HBMihoyoAPI in Frameworks */,
 				BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */,
 				EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */,
+				5B0033782AD19FFF00CCCC66 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1263,6 +1276,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0033762AD19FED00CCCC66 /* Defaults in Frameworks */,
 				BF15570D29CFE5DD0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */,
 				EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */,
@@ -1275,6 +1289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0033722AD19FE200CCCC66 /* Defaults in Frameworks */,
 				BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */,
 				BF15570B29CFE5CF0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
@@ -1289,6 +1304,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B00337E2AD1A02400CCCC66 /* Defaults in Frameworks */,
 				BF20733C29D1413100AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF15571529CFE5F20056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE95CE228CE10A100D975CB /* Intents.framework in Frameworks */,
@@ -1445,6 +1461,8 @@
 				BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */,
 				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
 				BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */,
+				5BAE357F2AD19F66003D83DB /* SindreSorhus_Defaults */,
+				5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -2036,6 +2054,7 @@
 				5BD1C5C12A2A1FC90043C2B1 /* HBPizzaHelperAPI */,
 				5BD1C5C22A2A1FC90043C2B1 /* AlertToast */,
 				5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */,
+				5B0033732AD19FE800CCCC66 /* Defaults */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */;
@@ -2057,6 +2076,7 @@
 			packageProductDependencies = (
 				BF15571229CFE5ED0056CFE6 /* HBMihoyoAPI */,
 				BF20733929D1412B00AD391F /* HBPizzaHelperAPI */,
+				5B00337B2AD1A01D00CCCC66 /* Defaults */,
 			);
 			productName = WatchWidgetExtensionExtension;
 			productReference = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */;
@@ -2098,6 +2118,7 @@
 			packageProductDependencies = (
 				BF15571029CFE5E60056CFE6 /* HBMihoyoAPI */,
 				BF20733729D1412700AD391F /* HBPizzaHelperAPI */,
+				5B0033792AD1A01700CCCC66 /* Defaults */,
 			);
 			productName = "WatchHelper WatchKit Extension";
 			productReference = BFCC065E28C9B6A1003E4A54 /* WatchHelper WatchKit Extension.appex */;
@@ -2119,6 +2140,7 @@
 			packageProductDependencies = (
 				BF15570E29CFE5E10056CFE6 /* HBMihoyoAPI */,
 				BF20733529D1412100AD391F /* HBPizzaHelperAPI */,
+				5B0033772AD19FFF00CCCC66 /* Defaults */,
 			);
 			productName = AccountIntent;
 			productReference = EA099FF328A2B7220023B4AF /* AccountIntent.appex */;
@@ -2140,6 +2162,7 @@
 			packageProductDependencies = (
 				BF15570C29CFE5DD0056CFE6 /* HBMihoyoAPI */,
 				BF20733329D1411A00AD391F /* HBPizzaHelperAPI */,
+				5B0033752AD19FED00CCCC66 /* Defaults */,
 			);
 			productName = ResinStatusWidgetExtension;
 			productReference = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */;
@@ -2170,6 +2193,7 @@
 				BF20733129D1411500AD391F /* HBPizzaHelperAPI */,
 				BF9D74EB29DB1604009A9918 /* AlertToast */,
 				BF9D74EE29DBBA98009A9918 /* CoreXLSX */,
+				5B0033712AD19FE200CCCC66 /* Defaults */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -2191,6 +2215,7 @@
 			packageProductDependencies = (
 				BF15571429CFE5F20056CFE6 /* HBMihoyoAPI */,
 				BF20733B29D1413100AD391F /* HBPizzaHelperAPI */,
+				5B00337D2AD1A02400CCCC66 /* Defaults */,
 			);
 			productName = WatchIntent;
 			productReference = EAE95CE128CE10A000D975CB /* WatchIntent.appex */;
@@ -4035,6 +4060,34 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5B0033712AD19FE200CCCC66 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Defaults;
+		};
+		5B0033732AD19FE800CCCC66 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Defaults;
+		};
+		5B0033752AD19FED00CCCC66 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Defaults;
+		};
+		5B0033772AD19FFF00CCCC66 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Defaults;
+		};
+		5B0033792AD1A01700CCCC66 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Defaults;
+		};
+		5B00337B2AD1A01D00CCCC66 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Defaults;
+		};
+		5B00337D2AD1A02400CCCC66 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Defaults;
+		};
 		5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftPieChart;

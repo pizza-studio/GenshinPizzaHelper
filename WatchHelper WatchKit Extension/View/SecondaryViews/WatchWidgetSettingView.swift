@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/11/25.
 //
 
+import Defaults
 import Foundation
 import SwiftUI
 import WidgetKit
@@ -12,22 +13,12 @@ import WidgetKit
 // MARK: - WatchWidgetSettingView
 
 struct WatchWidgetSettingView: View {
-    @AppStorage(
-        "lockscreenWidgetSyncFrequencyInMinute",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var lockscreenWidgetSyncFrequencyInMinute: Double = 60
-    @AppStorage(
-        "homeCoinRefreshFrequencyInHour",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var homeCoinRefreshFrequency: Double = 30
-
-    @AppStorage(
-        "watchWidgetUseSimplifiedMode",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var watchWidgetUseSimplifiedMode: Bool = true
+    @Default(.lockscreenWidgetSyncFrequencyInMinute)
+    var lockscreenWidgetSyncFrequencyInMinute: Double
+    @Default(.homeCoinRefreshFrequencyInHour)
+    var homeCoinRefreshFrequency: Double
+    @Default(.watchWidgetUseSimplifiedMode)
+    var watchWidgetUseSimplifiedMode: Bool
 
     var lockscreenWidgetRefreshFrequencyFormated: String {
         let formatter = DateComponentsFormatter()
@@ -94,11 +85,8 @@ struct WatchWidgetSettingView: View {
 // MARK: - QueryFrequencySettingView
 
 private struct QueryFrequencySettingView: View {
-    @AppStorage(
-        "lockscreenWidgetSyncFrequencyInMinute",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var lockscreenWidgetSyncFrequencyInMinute: Double = 60
+    @Default(.lockscreenWidgetSyncFrequencyInMinute)
+    var lockscreenWidgetSyncFrequencyInMinute: Double
 
     var lockscreenWidgetRefreshFrequencyFormated: String {
         let formatter = DateComponentsFormatter()
@@ -132,11 +120,8 @@ private struct QueryFrequencySettingView: View {
 // MARK: - HomeCoinRecoverySettingView
 
 private struct HomeCoinRecoverySettingView: View {
-    @AppStorage(
-        "homeCoinRefreshFrequencyInHour",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var homeCoinRefreshFrequency: Double = 30
+    @Default(.homeCoinRefreshFrequencyInHour)
+    var homeCoinRefreshFrequency: Double
 
     var body: some View {
         VStack {

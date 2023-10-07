@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2023/3/28.
 //
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 
@@ -29,14 +30,9 @@ func genGachaURL(
     switch server.region {
     case .cn: urlComponents.host = "hk4e-api.mihoyo.com"
     case .global:
-        if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-            .string(forKey: "reverseProxyHost5"),
-            reverseProxyUrl != "" {
-            urlComponents.host = reverseProxyUrl.replacingOccurrences(of: "https://", with: "")
-                .replacingOccurrences(of: "/", with: "")
-        } else {
-            urlComponents.host = "hk4e-api-os.hoyoverse.com"
-        }
+        let reverseProxyURL = Defaults[.reverseProxyHost5]
+        urlComponents.host = reverseProxyURL.isEmpty ? "hk4e-api-os.hoyoverse.com" : reverseProxyURL
+            .replacingOccurrences(of: "https://", with: "").replacingOccurrences(of: "/", with: "")
     }
     urlComponents.path = "/event/gacha_info/api/getGachaLog"
 
@@ -105,14 +101,9 @@ func genGachaURLString(
     switch server.region {
     case .cn: urlComponents.host = "hk4e-api.mihoyo.com"
     case .global:
-        if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-            .string(forKey: "reverseProxyHost5"),
-            reverseProxyUrl != "" {
-            urlComponents.host = reverseProxyUrl.replacingOccurrences(of: "https://", with: "")
-                .replacingOccurrences(of: "/", with: "")
-        } else {
-            urlComponents.host = "hk4e-api-os.hoyoverse.com"
-        }
+        let reverseProxyURL = Defaults[.reverseProxyHost5]
+        urlComponents.host = reverseProxyURL.isEmpty ? "hk4e-api-os.hoyoverse.com" : reverseProxyURL
+            .replacingOccurrences(of: "https://", with: "").replacingOccurrences(of: "/", with: "")
     }
     urlComponents.path = "/event/gacha_info/api/getGachaLog"
 

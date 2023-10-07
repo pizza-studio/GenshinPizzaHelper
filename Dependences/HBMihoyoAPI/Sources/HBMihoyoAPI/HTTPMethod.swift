@@ -6,6 +6,7 @@
 //  HTTP请求方法
 
 import CryptoKit
+import Defaults
 import Foundation
 
 // MARK: - Method
@@ -47,34 +48,14 @@ struct HttpMethod<T: Codable> {
 
         func getSessionConfiguration() -> URLSessionConfiguration {
             let sessionConfiguration = URLSessionConfiguration.default
-
-            let sessionUseProxy =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .bool(forKey: "useProxy")
-            let sessionProxyHost =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyHost")
-            let sessionProxyPort =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyPort")
-            let sessionProxyUserName =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserName")
-            let sessionProxyPassword =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserPassword")
+            let sessionUseProxy = Defaults[.useProxy]
+            let sessionProxyHost = Defaults[.proxyHost]
+            let sessionProxyPort = Defaults[.proxyPort]
+            let sessionProxyUserName = Defaults[.proxyUserName]
+            let sessionProxyPassword = Defaults[.proxyUserPassword]
             if sessionUseProxy {
-                guard let sessionProxyHost = sessionProxyHost else {
-                    print("Proxy host error")
-                    return sessionConfiguration
-                }
-                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
-                    print("Proxy port error")
-                    return sessionConfiguration
-                }
-
-                if sessionProxyUserName != nil, sessionProxyUserName != "",
-                   sessionProxyPassword != nil, sessionProxyPassword != "" {
+                // 要求两个字串「长度均不为零」的最快速的方法是让两者长度相乘，只要结果不是零就行。
+                if sessionProxyUserName.count * sessionProxyPassword.count != 0 {
                     print("Proxy add authorization")
                     let userPasswordString =
                         "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
@@ -164,13 +145,8 @@ struct HttpMethod<T: Codable> {
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1"
                     clientType = "5"
                 case .global:
-                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                        .string(forKey: "reverseProxyHost1"),
-                        reverseProxyUrl != "" {
-                        baseStr = reverseProxyUrl
-                    } else {
-                        baseStr = "https://bbs-api-os.hoyolab.com/"
-                    }
+                    let reverseProxyURL = Defaults[.reverseProxyHost1]
+                    baseStr = reverseProxyURL.isEmpty ? "https://bbs-api-os.hoyolab.com/" : reverseProxyURL
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
@@ -291,34 +267,14 @@ struct HttpMethod<T: Codable> {
 
         func getSessionConfiguration() -> URLSessionConfiguration {
             let sessionConfiguration = URLSessionConfiguration.default
-
-            let sessionUseProxy =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .bool(forKey: "useProxy")
-            let sessionProxyHost =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyHost")
-            let sessionProxyPort =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyPort")
-            let sessionProxyUserName =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserName")
-            let sessionProxyPassword =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserPassword")
+            let sessionUseProxy = Defaults[.useProxy]
+            let sessionProxyHost = Defaults[.proxyHost]
+            let sessionProxyPort = Defaults[.proxyPort]
+            let sessionProxyUserName = Defaults[.proxyUserName]
+            let sessionProxyPassword = Defaults[.proxyUserPassword]
             if sessionUseProxy {
-                guard let sessionProxyHost = sessionProxyHost else {
-                    print("Proxy host error")
-                    return sessionConfiguration
-                }
-                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
-                    print("Proxy port error")
-                    return sessionConfiguration
-                }
-
-                if sessionProxyUserName != nil, sessionProxyUserName != "",
-                   sessionProxyPassword != nil, sessionProxyPassword != "" {
+                // 要求两个字串「长度均不为零」的最快速的方法是让两者长度相乘，只要结果不是零就行。
+                if sessionProxyUserName.count * sessionProxyPassword.count != 0 {
                     print("Proxy add authorization")
                     let userPasswordString =
                         "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
@@ -501,34 +457,14 @@ struct HttpMethod<T: Codable> {
 
         func getSessionConfiguration() -> URLSessionConfiguration {
             let sessionConfiguration = URLSessionConfiguration.default
-
-            let sessionUseProxy =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .bool(forKey: "useProxy")
-            let sessionProxyHost =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyHost")
-            let sessionProxyPort =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyPort")
-            let sessionProxyUserName =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserName")
-            let sessionProxyPassword =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserPassword")
+            let sessionUseProxy = Defaults[.useProxy]
+            let sessionProxyHost = Defaults[.proxyHost]
+            let sessionProxyPort = Defaults[.proxyPort]
+            let sessionProxyUserName = Defaults[.proxyUserName]
+            let sessionProxyPassword = Defaults[.proxyUserPassword]
             if sessionUseProxy {
-                guard let sessionProxyHost = sessionProxyHost else {
-                    print("Proxy host error")
-                    return sessionConfiguration
-                }
-                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
-                    print("Proxy port error")
-                    return sessionConfiguration
-                }
-
-                if sessionProxyUserName != nil, sessionProxyUserName != "",
-                   sessionProxyPassword != nil, sessionProxyPassword != "" {
+                // 要求两个字串「长度均不为零」的最快速的方法是让两者长度相乘，只要结果不是零就行。
+                if sessionProxyUserName.count * sessionProxyPassword.count != 0 {
                     print("Proxy add authorization")
                     let userPasswordString =
                         "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
@@ -696,34 +632,14 @@ struct HttpMethod<T: Codable> {
 
         func getSessionConfiguration() -> URLSessionConfiguration {
             let sessionConfiguration = URLSessionConfiguration.default
-
-            let sessionUseProxy =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .bool(forKey: "useProxy")
-            let sessionProxyHost =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyHost")
-            let sessionProxyPort =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyPort")
-            let sessionProxyUserName =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserName")
-            let sessionProxyPassword =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserPassword")
+            let sessionUseProxy = Defaults[.useProxy]
+            let sessionProxyHost = Defaults[.proxyHost]
+            let sessionProxyPort = Defaults[.proxyPort]
+            let sessionProxyUserName = Defaults[.proxyUserName]
+            let sessionProxyPassword = Defaults[.proxyUserPassword]
             if sessionUseProxy {
-                guard let sessionProxyHost = sessionProxyHost else {
-                    print("Proxy host error")
-                    return sessionConfiguration
-                }
-                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
-                    print("Proxy port error")
-                    return sessionConfiguration
-                }
-
-                if sessionProxyUserName != nil, sessionProxyUserName != "",
-                   sessionProxyPassword != nil, sessionProxyPassword != "" {
+                // 要求两个字串「长度均不为零」的最快速的方法是让两者长度相乘，只要结果不是零就行。
+                if sessionProxyUserName.count * sessionProxyPassword.count != 0 {
                     print("Proxy add authorization")
                     let userPasswordString =
                         "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
@@ -813,13 +729,8 @@ struct HttpMethod<T: Codable> {
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.36.1"
                     clientType = "5"
                 case .global:
-                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                        .string(forKey: "reverseProxyHost1"),
-                        reverseProxyUrl != "" {
-                        baseStr = reverseProxyUrl
-                    } else {
-                        baseStr = "https://bbs-api-os.hoyolab.com/"
-                    }
+                    let reverseProxyURL = Defaults[.reverseProxyHost1]
+                    baseStr = reverseProxyURL.isEmpty ? "https://bbs-api-os.hoyolab.com/" : reverseProxyURL
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
@@ -939,34 +850,14 @@ struct HttpMethod<T: Codable> {
 
         func getSessionConfiguration() -> URLSessionConfiguration {
             let sessionConfiguration = URLSessionConfiguration.default
-
-            let sessionUseProxy =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .bool(forKey: "useProxy")
-            let sessionProxyHost =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyHost")
-            let sessionProxyPort =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyPort")
-            let sessionProxyUserName =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserName")
-            let sessionProxyPassword =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserPassword")
+            let sessionUseProxy = Defaults[.useProxy]
+            let sessionProxyHost = Defaults[.proxyHost]
+            let sessionProxyPort = Defaults[.proxyPort]
+            let sessionProxyUserName = Defaults[.proxyUserName]
+            let sessionProxyPassword = Defaults[.proxyUserPassword]
             if sessionUseProxy {
-                guard let sessionProxyHost = sessionProxyHost else {
-                    print("Proxy host error")
-                    return sessionConfiguration
-                }
-                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
-                    print("Proxy port error")
-                    return sessionConfiguration
-                }
-
-                if sessionProxyUserName != nil, sessionProxyUserName != "",
-                   sessionProxyPassword != nil, sessionProxyPassword != "" {
+                // 要求两个字串「长度均不为零」的最快速的方法是让两者长度相乘，只要结果不是零就行。
+                if sessionProxyUserName.count * sessionProxyPassword.count != 0 {
                     print("Proxy add authorization")
                     let userPasswordString =
                         "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
@@ -1051,13 +942,10 @@ struct HttpMethod<T: Codable> {
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
                     clientType = "5"
                 case .global:
-                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                        .string(forKey: "reverseProxyHost4"),
-                        reverseProxyUrl != "" {
-                        baseStr = "\(reverseProxyUrl)game_record/app/"
-                    } else {
-                        baseStr = "https://bbs-api-os.hoyoverse.com/game_record/app/"
-                    }
+                    let reverseProxyURL = Defaults[.reverseProxyHost4]
+                    baseStr = reverseProxyURL
+                        .isEmpty ? "https://bbs-api-os.hoyoverse.com/game_record/app/" :
+                        "\(reverseProxyURL)game_record/app/"
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
@@ -1182,13 +1070,8 @@ struct HttpMethod<T: Codable> {
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11.1"
                 case .global:
-                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                        .string(forKey: "reverseProxyHost2"),
-                        reverseProxyUrl != "" {
-                        baseStr = reverseProxyUrl
-                    } else {
-                        baseStr = "https://api-account-os.hoyolab.com/"
-                    }
+                    let reverseProxyURL = Defaults[.reverseProxyHost2]
+                    baseStr = reverseProxyURL.isEmpty ? "https://api-account-os.hoyolab.com/" : reverseProxyURL
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
@@ -1407,34 +1290,14 @@ struct HttpMethod<T: Codable> {
 
         func getSessionConfiguration() -> URLSessionConfiguration {
             let sessionConfiguration = URLSessionConfiguration.default
-
-            let sessionUseProxy =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .bool(forKey: "useProxy")
-            let sessionProxyHost =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyHost")
-            let sessionProxyPort =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyPort")
-            let sessionProxyUserName =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserName")
-            let sessionProxyPassword =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .string(forKey: "proxyUserPassword")
+            let sessionUseProxy = Defaults[.useProxy]
+            let sessionProxyHost = Defaults[.proxyHost]
+            let sessionProxyPort = Defaults[.proxyPort]
+            let sessionProxyUserName = Defaults[.proxyUserName]
+            let sessionProxyPassword = Defaults[.proxyUserPassword]
             if sessionUseProxy {
-                guard let sessionProxyHost = sessionProxyHost else {
-                    print("Proxy host error")
-                    return sessionConfiguration
-                }
-                guard let sessionProxyPort = Int(sessionProxyPort ?? "0") else {
-                    print("Proxy port error")
-                    return sessionConfiguration
-                }
-
-                if sessionProxyUserName != nil, sessionProxyUserName != "",
-                   sessionProxyPassword != nil, sessionProxyPassword != "" {
+                // 要求两个字串「长度均不为零」的最快速的方法是让两者长度相乘，只要结果不是零就行。
+                if sessionProxyUserName.count * sessionProxyPassword.count != 0 {
                     print("Proxy add authorization")
                     let userPasswordString =
                         "\(String(describing: sessionProxyUserName)):\(String(describing: sessionProxyPassword))"
@@ -1522,13 +1385,8 @@ struct HttpMethod<T: Codable> {
                     referer = "https://webstatic.mihoyo.com"
                     origin = "https://webstatic.mihoyo.com"
                 case .global:
-                    if let reverseProxyUrl = UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                        .string(forKey: "reverseProxyHost3"),
-                        reverseProxyUrl != "" {
-                        baseStr = reverseProxyUrl
-                    } else {
-                        baseStr = "https://sg-hk4e-api.hoyolab.com/"
-                    }
+                    let reverseProxyURL = Defaults[.reverseProxyHost3]
+                    baseStr = reverseProxyURL.isEmpty ? "https://sg-hk4e-api.hoyolab.com/" : reverseProxyURL
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0"

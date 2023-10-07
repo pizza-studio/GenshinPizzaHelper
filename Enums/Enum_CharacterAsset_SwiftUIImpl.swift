@@ -5,6 +5,7 @@
 //  Created by ShikiSuen on 2023/10/5.
 //
 
+import Defaults
 import SwiftUI
 
 extension CharacterAsset {
@@ -49,7 +50,7 @@ extension CharacterAsset {
         // 由于 Lava 强烈反对针对证件照的脸裁切与头裁切，
         // 所以不预设启用该功能。
         var cutType = cutType
-        if !AppConfig.cutShouldersForSmallAvatarPhotos {
+        if !Defaults[.cutShouldersForSmallAvatarPhotos] {
             cutType = .shoulder
         }
         return EnkaWebIcon(iconString: costume?.frontPhotoFileName ?? frontPhotoFileName)

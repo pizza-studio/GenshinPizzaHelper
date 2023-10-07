@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2023/6/12.
 //
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 #if canImport(UIKit)
@@ -13,9 +14,9 @@ import UIKit
 
 extension MihoyoAPI {
     public static func getDeviceFingerPrint(region: Region) async throws -> String {
-        let userDefaults = UserDefaults(suiteName: "group.Canglong.HSRPizzaHelper")!
-        if let fingerPrint = userDefaults.string(forKey: "device_finger_print"), fingerPrint != "" {
-            return fingerPrint
+        let existingFingerPrint = Defaults[.deviceFingerPrint]
+        if !existingFingerPrint.isEmpty {
+            return existingFingerPrint
         }
         func generateSeed() -> String {
             let characters = "0123456789abcdef"

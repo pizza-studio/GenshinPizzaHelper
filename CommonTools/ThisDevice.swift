@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/10/7.
 //
 
+import Defaults
 import SwiftUI
 
 // MARK: - ThisDevice
@@ -41,7 +42,7 @@ enum ThisDevice {
 
     public static var useAdaptiveSpacing: Bool {
         (ThisDevice.notchType != .none || OS.type != .iPhoneOS) &&
-            AppConfig.adaptiveSpacingInCharacterView
+            Defaults[.adaptiveSpacingInCharacterView]
     }
 
     /// 检测荧幕解析度是否为 iPhone 5 / 5c / 5s / SE Gen1 / iPod Touch 7th Gen 的最大荧幕解析度。

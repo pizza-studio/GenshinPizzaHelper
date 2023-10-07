@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/10.
 //  封装了使用OPWebView的各种网页
 
+import Defaults
 import SafariServices
 import SwiftUI
 import WebKit
@@ -261,11 +262,8 @@ struct UserPolicyView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("同意") {
-                            UserDefaults.standard.setValue(
-                                true,
-                                forKey: "isPolicyShown"
-                            )
-                            UserDefaults.standard.synchronize()
+                            Defaults[.isPolicyShown] = true
+                            UserDefaults.opSuite.synchronize()
                             sheet = nil
                         }
                     }

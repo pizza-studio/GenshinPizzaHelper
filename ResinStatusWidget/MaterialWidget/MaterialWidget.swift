@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/11/27.
 //
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 import SwiftUI
@@ -152,13 +153,7 @@ private struct EventView: View {
         let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter
-            .timeZone =
-            Server(
-                rawValue: UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                    .string(forKey: "defaultServer") ?? Server.asia.rawValue
-            )?
-            .timeZone() ?? Server.asia.timeZone()
+        dateFormatter.timeZone = (Server(rawValue: Defaults[.defaultServer]) ?? Server.asia).timeZone()
         let endDate = dateFormatter.date(from: endAt)!
         return endDate.timeIntervalSinceReferenceDate - Date()
             .timeIntervalSinceReferenceDate

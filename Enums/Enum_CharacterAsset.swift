@@ -5,6 +5,7 @@
 //  Created by ShikiSuen on 2023/10/3.
 //
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 import HBPizzaHelperAPI
@@ -97,14 +98,14 @@ extension CharacterAsset {
 
     public var localizedKey: String {
         var raw = String(describing: self)
-        if AppConfig.useActualCharacterNames, self == .Kunikuzushi {
+        if Defaults[.useActualCharacterNames], self == .Kunikuzushi {
             raw = "Raiden" + raw
         }
         return "$asset.character:" + raw
     }
 
     public var localized: String {
-        if AppConfig.useActualCharacterNames, self == .Kunikuzushi {
+        if Defaults[.useActualCharacterNames], self == .Kunikuzushi {
             return localizedKey.localized
         }
         return localizedKey.localized.localizedWithFix

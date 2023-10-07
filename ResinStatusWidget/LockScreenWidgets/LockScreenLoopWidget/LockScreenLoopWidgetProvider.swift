@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/28.
 //
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 import WidgetKit
@@ -36,9 +37,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectAccountAndShowWhichInfoIntent()
-            let useSimplifiedMode =
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                    .bool(forKey: "watchWidgetUseSimplifiedMode") ?? true
+            let useSimplifiedMode = Defaults[.watchWidgetUseSimplifiedMode]
             intent.simplifiedMode = useSimplifiedMode as NSNumber
             intent.account = .init(
                 identifier: config.uuid!.uuidString,
@@ -87,12 +86,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
     ) {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        var syncFrequencyInMinute =
-            Int(
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                    .double(forKey: "lockscreenWidgetSyncFrequencyInMinute") ??
-                    60
-            )
+        var syncFrequencyInMinute = Int(Defaults[.lockscreenWidgetSyncFrequencyInMinute])
         if syncFrequencyInMinute == 0 { syncFrequencyInMinute = 60 }
         var refreshDate: Date {
             Calendar.current.date(

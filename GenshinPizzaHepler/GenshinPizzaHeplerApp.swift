@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/7/19.
 //
 
+import Defaults
 import StoreKit
 import SwiftUI
 
@@ -15,17 +16,8 @@ struct GenshinPizzaHeplerApp: App {
     // MARK: Lifecycle
 
     init() {
-//        let buildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! Int
-        let defaultStandard = UserDefaults.standard
-        let isPolicySaved = defaultStandard.bool(forKey: "isPolicyShown")
-        if !isPolicySaved {
-            defaultStandard.setValue(false, forKey: "isPolicyShown")
-        }
-//        let checkedNewestVersion = defaultStandard.integer(forKey: "checkedNewestVersion")
-//        if checkedNewestVersion != buildVersion {
-//            defaultStandard.setValue(buildVersion, forKey: "checkedNewestVersion")
-//        }
-        defaultStandard.synchronize()
+        if !Defaults[.isPolicyShown] { Defaults[.isPolicyShown] = false }
+        UserDefaults.opSuite.synchronize()
         #if !os(watchOS)
         UserNotificationCenter.shared.askPermission()
         #endif

@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/8.
 //  更多页面
 
+import Defaults
 import HBMihoyoAPI
 import SwiftUI
 
@@ -21,15 +22,9 @@ struct MoreView: View {
                 }
                 #if DEBUG
                 Button("清空已检查的版本号") {
-                    UserDefaults.standard.set(
-                        [Int](),
-                        forKey: "checkedUpdateVersions"
-                    )
-                    UserDefaults.standard.set(
-                        0,
-                        forKey: "checkedNewestVersion"
-                    )
-                    UserDefaults.standard.synchronize()
+                    Defaults.reset(.checkedUpdateVersions)
+                    Defaults.reset(.checkedNewestVersion)
+                    UserDefaults.opSuite.synchronize()
                 }
                 #endif
             }
@@ -137,11 +132,8 @@ struct MoreView: View {
     @ObservedObject
     private var viewModel: MoreViewCacheViewModel = .init()
 
-    @AppStorage(
-        "defaultServer",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var defaultServer: String = Server.asia.rawValue
+    @Default(.defaultServer)
+    private var defaultServer: String
 }
 
 // MARK: - MoreViewCacheViewModel

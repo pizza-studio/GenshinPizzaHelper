@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/20.
 //  通知设置View
 
+import Defaults
 import SwiftUI
 
 // MARK: - NotificationSettingView
@@ -12,80 +13,36 @@ import SwiftUI
 struct NotificationSettingView: View {
     @EnvironmentObject
     var viewModel: ViewModel
-    @AppStorage(
-        "allowResinNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowResinNotification: Bool = true
-    @AppStorage(
-        "resinNotificationNum",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var resinNotificationNum: Double = 140
+
     @State
     var showResinSlider: Bool = false
-    @AppStorage(
-        "allowFullResinNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowFullResinNotification: Bool = true
-
-    @AppStorage(
-        "allowHomeCoinNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowHomeCoinNotification: Bool = true
-    @AppStorage(
-        "homeCoinNotificationHourBeforeFull",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var homeCoinNotificationHourBeforeFull: Double = 8
     @State
     var showHomeCoinSlider: Bool = false
 
-    @AppStorage(
-        "allowExpeditionNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowExpeditionNotification: Bool = true
-    @AppStorage(
-        "noticeExpeditionMethodRawValue",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var noticeExpeditionMethodRawValue: Int = 1
-
-    @AppStorage(
-        "allowWeeklyBossesNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowWeeklyBossesNotification: Bool = true
-    @AppStorage(
-        "weeklyBossesNotificationTimePointData",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var weeklyBossesNotificationTimePointData: Data = try! JSONEncoder()
-        .encode(DateComponents(
-            calendar: Calendar.current,
-            hour: 19,
-            minute: 0,
-            weekday: 7
-        ))
-    @AppStorage(
-        "allowTransformerNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowTransformerNotification: Bool = true
-    @AppStorage(
-        "allowDailyTaskNotification",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowDailyTaskNotification: Bool = true
-    @AppStorage(
-        "dailyTaskNotificationTimePointData",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var dailyTaskNotificationTimePointData: Data = try! JSONEncoder()
-        .encode(DateComponents(calendar: Calendar.current, hour: 19, minute: 0))
+    @Default(.allowResinNotification)
+    var allowResinNotification: Bool
+    @Default(.allowHomeCoinNotification)
+    var allowHomeCoinNotification: Bool
+    @Default(.allowExpeditionNotification)
+    var allowExpeditionNotification: Bool
+    @Default(.allowWeeklyBossesNotification)
+    var allowWeeklyBossesNotification: Bool
+    @Default(.allowTransformerNotification)
+    var allowTransformerNotification: Bool
+    @Default(.allowDailyTaskNotification)
+    var allowDailyTaskNotification: Bool
+    @Default(.allowFullResinNotification)
+    var allowFullResinNotification: Bool
+    @Default(.resinNotificationNum)
+    var resinNotificationNum: Double
+    @Default(.homeCoinNotificationHourBeforeFull)
+    var homeCoinNotificationHourBeforeFull: Double
+    @Default(.noticeExpeditionMethodRawValue)
+    var noticeExpeditionMethodRawValue: Int
+    @Default(.weeklyBossesNotificationTimePointData)
+    var weeklyBossesNotificationTimePointData: Data
+    @Default(.dailyTaskNotificationTimePointData)
+    var dailyTaskNotificationTimePointData: Data
 
     var noticeExpeditionBy: Binding<ExpeditionNoticeMethod> {
         .init(get: {
@@ -312,11 +269,8 @@ struct NotificationSettingView: View {
 struct IgnoreNotificationAccountView: View {
     @EnvironmentObject
     var viewModel: ViewModel
-    @AppStorage(
-        "notificationIgnoreUidsData",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var data: Data = try! JSONEncoder().encode([String]())
+    @Default(.notificationIgnoreUidsData)
+    var data: Data
 
     var configs: [AccountConfiguration] { viewModel.accounts.map { $0.config } }
 

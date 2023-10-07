@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/9/17.
 //
 
+import Defaults
 import HBMihoyoAPI
 import HBPizzaHelperAPI
 import SwiftPieChart
@@ -19,11 +20,9 @@ struct DetailPortalView: View {
     @Environment(\.scenePhase)
     var scenePhase
     var accounts: [Account] { viewModel.accounts }
-    @AppStorage(
-        "toolViewShowingAccountUUIDString",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
+    @Default(.detailPortalViewShowingAccountUUIDString)
     var showingAccountUUIDString: String?
+
     var account: Account? {
         accounts.first { account in
             (account.config.uuid?.uuidString ?? "123") ==
@@ -157,24 +156,12 @@ struct DetailPortalView: View {
                 isPresented: $askAllowAbyssDataCollectionAlert
             ) {
                 Button("不允许", role: .destructive) {
-                    UserDefaults.standard.set(
-                        false,
-                        forKey: "allowAbyssDataCollection"
-                    )
-                    UserDefaults.standard.set(
-                        true,
-                        forKey: "hasAskedAllowAbyssDataCollection"
-                    )
+                    Defaults[.allowAbyssDataCollection] = false
+                    Defaults[.hasAskedAllowAbyssDataCollection] = true
                 }
                 Button("允许", role: .cancel, action: {
-                    UserDefaults.standard.set(
-                        true,
-                        forKey: "allowAbyssDataCollection"
-                    )
-                    UserDefaults.standard.set(
-                        true,
-                        forKey: "hasAskedAllowAbyssDataCollection"
-                    )
+                    Defaults[.allowAbyssDataCollection] = true
+                    Defaults[.hasAskedAllowAbyssDataCollection] = true
                 })
             } message: {
                 Text(
@@ -684,8 +671,7 @@ struct DetailPortalView: View {
     }
 
     func checkIfAllowAbyssDataCollection() {
-        if !UserDefaults.standard
-            .bool(forKey: "hasAskedAllowAbyssDataCollection"), account != nil {
+        if !Defaults[.hasAskedAllowAbyssDataCollection], account != nil {
             askAllowAbyssDataCollectionAlert = true
         }
     }
@@ -958,11 +944,8 @@ private struct AllAvatarNavigator: View {
 
     // MARK: Private
 
-    @AppStorage(
-        "cutShouldersForSmallAvatarPhotos",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var cutShouldersForSmallAvatarPhotos: Bool = false
+    @Default(.cutShouldersForSmallAvatarPhotos)
+    private var cutShouldersForSmallAvatarPhotos: Bool
 }
 
 // MARK: - PrimogemTextLabel

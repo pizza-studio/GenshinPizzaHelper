@@ -5,7 +5,9 @@
 //  Created by 戴藏龙 on 2022/11/19.
 //
 
+import Defaults
 import SwiftUI
+
 #if canImport(ActivityKit)
 struct LiveActivitySettingView: View {
     @State
@@ -41,35 +43,17 @@ struct LiveActivitySettingDetailView: View {
 
     @Environment(\.scenePhase)
     var scenePhase
-    @AppStorage(
-        "resinRecoveryLiveActivityUseEmptyBackground",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var resinRecoveryLiveActivityUseEmptyBackground: Bool = false
 
-    @AppStorage(
-        "resinRecoveryLiveActivityUseCustomizeBackground",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var resinRecoveryLiveActivityUseCustomizeBackground: Bool = false
-    @AppStorage(
-        "autoDeliveryResinTimerLiveActivity",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    var autoDeliveryResinTimerLiveActivity: Bool =
-        false
-
-    @AppStorage(
-        "resinRecoveryLiveActivityShowExpedition",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var resinRecoveryLiveActivityShowExpedition: Bool = true
-
-    @AppStorage(
-        "autoUpdateResinRecoveryTimerUsingReFetchData",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var autoUpdateResinRecoveryTimerUsingReFetchData: Bool = true
+    @Default(.resinRecoveryLiveActivityUseEmptyBackground)
+    var resinRecoveryLiveActivityUseEmptyBackground: Bool
+    @Default(.resinRecoveryLiveActivityUseCustomizeBackground)
+    var resinRecoveryLiveActivityUseCustomizeBackground: Bool
+    @Default(.autoDeliveryResinTimerLiveActivity)
+    var autoDeliveryResinTimerLiveActivity: Bool
+    @Default(.resinRecoveryLiveActivityShowExpedition)
+    var resinRecoveryLiveActivityShowExpedition: Bool
+    @Default(.autoUpdateResinRecoveryTimerUsingReFetchData)
+    var autoUpdateResinRecoveryTimerUsingReFetchData: Bool
 
     var useRandomBackground: Binding<Bool> {
         .init {
@@ -207,12 +191,8 @@ struct LiveActivitySettingDetailView: View {
 struct LiveActivityBackgroundPicker: View {
     @State
     private var searchText = ""
-    @AppStorage(
-        "resinRecoveryLiveActivityBackgroundOptions",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    var resinRecoveryLiveActivityBackgroundOptions: [String] =
-        .init()
+    @Default(.resinRecoveryLiveActivityBackgroundOptions)
+    var resinRecoveryLiveActivityBackgroundOptions: [String]
 
     var body: some View {
         List {

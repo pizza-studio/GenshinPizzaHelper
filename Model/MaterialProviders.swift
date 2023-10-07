@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/24.
 //  提供今日材料信息的工具类
 
+import Defaults
 import Foundation
 import HBMihoyoAPI
 
@@ -113,10 +114,7 @@ enum MaterialWeekday: CaseIterable {
 
     static func today() -> Self {
         var calendar = Calendar.current
-        calendar.timeZone = Server(
-            rawValue: UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                .string(forKey: "defaultServer") ?? Server.asia.rawValue
-        )?.timeZone() ?? Server.asia.timeZone()
+        calendar.timeZone = (Server(rawValue: Defaults[.defaultServer]) ?? Server.asia).timeZone()
         let isTimePast4am: Bool = Date() > calendar
             .date(bySettingHour: 4, minute: 0, second: 0, of: Date())!
         let todayWeekDayNum = calendar.dateComponents([.weekday], from: Date())

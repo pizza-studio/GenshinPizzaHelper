@@ -5,6 +5,7 @@
 //  Created by ShikiSuen on 2023/3/26.
 //  检测当前介面语言是否是简体中文或繁体中文，以及在这种情况下的一些特殊操作。
 
+import Defaults
 import Foundation
 import HBPizzaHelperAPI
 
@@ -40,16 +41,16 @@ extension String {
         if contains("旅行者") || localized.contains("旅行者") {
             return "空".localized + " / " + "荧".localized
         }
-        characterNameCheck: switch AppConfig.useActualCharacterNames {
+        characterNameCheck: switch Defaults[.useActualCharacterNames] {
         case true where self == "流浪者":
             return CharacterAsset.Kunikuzushi.localizedKey.localized
         case false
-            where self == CharacterAsset.Kunikuzushi.localizedKey.localized && !AppConfig.customizedNameForWanderer
+            where self == CharacterAsset.Kunikuzushi.localizedKey.localized && !Defaults[.customizedNameForWanderer]
             .isEmpty:
-            return AppConfig.customizedNameForWanderer
+            return Defaults[.customizedNameForWanderer]
         default: break characterNameCheck
         }
-        guard AppConfig.forceCharacterWeaponNameFixed else { return localized }
+        guard Defaults[.forceCharacterWeaponNameFixed] else { return localized }
         if Locale.isUILanguageSimplifiedChinese {
             if localized == "钟离" {
                 return "锺离"

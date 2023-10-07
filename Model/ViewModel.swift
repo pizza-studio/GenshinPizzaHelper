@@ -6,6 +6,7 @@
 //  View中用于加载信息的工具类
 
 import CoreData
+import Defaults
 import Foundation
 import HBMihoyoAPI
 import HBPizzaHelperAPI
@@ -76,21 +77,9 @@ class ViewModel: NSObject, ObservableObject {
         // 从Core Data更新账号信息
         // 检查是否有更改，如果有更改则更新
         DispatchQueue.main.async {
-            let accountConfigs = self.accountConfigurationModel
-                .fetchAccountConfigs()
-            if UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                .string(forKey: "defaultServer") == nil {
-                if !accountConfigs.isEmpty {
-                    UserDefaults(suiteName: "group.GenshinPizzaHelper")?.set(
-                        accountConfigs.first!.server.rawValue,
-                        forKey: "defaultServer"
-                    )
-                } else {
-                    UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                        .register(
-                            defaults: ["defaultServer": Server.asia.rawValue]
-                        )
-                }
+            let accountConfigs = self.accountConfigurationModel.fetchAccountConfigs()
+            if Server(rawValue: Defaults[.defaultServer]) == nil {
+                Defaults[.defaultServer] = (accountConfigs.first?.server ?? .asia).rawValue
             }
 
             if !self.accounts.isEqualTo(accountConfigs) {
@@ -116,13 +105,10 @@ class ViewModel: NSObject, ObservableObject {
                     }
                 }
                 #endif
-                if let showingPlayerDetailOfAccountUUID = UserDefaults
-                    .standard
-                    .string(forKey: "toolViewShowingAccountUUIDString"),
-                    let showingPlayerDetailOfAccount = self.accounts
+                let showingPlayerDetailOfAccountUUID = Defaults[.detailPortalViewShowingAccountUUIDString]
+                if let showingPlayerDetailOfAccount = self.accounts
                     .first(where: { account in
-                        account.config.uuid!
-                            .uuidString == showingPlayerDetailOfAccountUUID
+                        account.config.uuid?.uuidString == showingPlayerDetailOfAccountUUID
                     }) {
                     self
                         .refreshPlayerDetail(
@@ -145,10 +131,8 @@ class ViewModel: NSObject, ObservableObject {
 
     func addAccount(name: String, uid: String, cookie: String, server: Server) {
         // 添加的第一个账号作为材料刷新的时区
-        if accounts
-            .isEmpty {
-            UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                .set(server.rawValue, forKey: "defaultServer")
+        if accounts.isEmpty {
+            Defaults[.defaultServer] = server.rawValue
         }
         // 新增账号至Core Data
         accountConfigurationModel.addAccount(

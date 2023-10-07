@@ -6,6 +6,7 @@
 //  界面偏好设置页面。
 
 import Combine
+import Defaults
 import HBMihoyoAPI
 import SwiftUI
 
@@ -14,11 +15,8 @@ import SwiftUI
 struct DisplayOptionsView: View {
     // MARK: Public
 
-    @AppStorage(
-        "useGuestGachaEvaluator",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    public var useGuestGachaEvaluator: Bool = false
+    @Default(.useGuestGachaEvaluator)
+    public var useGuestGachaEvaluator: Bool
 
     // MARK: Internal
 
@@ -124,50 +122,24 @@ struct DisplayOptionsView: View {
 
     // MARK: Private
 
-    @State
-    private var isCustomizedNameForWandererAlertShow: Bool = false
-
-    @AppStorage(
-        "adaptiveSpacingInCharacterView",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var adaptiveSpacingInCharacterView: Bool = true
-
-    @AppStorage(
-        "showRarityAndLevelForArtifacts",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var showRarityAndLevelForArtifacts: Bool = true
-
-    @AppStorage(
-        "showRatingsForArtifacts",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var showRatingsForArtifacts: Bool = true
-
     @ObservedObject
     private var viewModel: MoreViewCacheViewModel = .init()
 
-    @AppStorage(
-        "forceCharacterWeaponNameFixed",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var forceCharacterWeaponNameFixed: Bool = false
-    @AppStorage(
-        "useActualCharacterNames",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var useActualCharacterNames: Bool = false
+    @State
+    private var isCustomizedNameForWandererAlertShow: Bool = false
 
-    @AppStorage(
-        "customizedNameForWanderer",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var customizedNameForWanderer: String = ""
-
-    @AppStorage(
-        "cutShouldersForSmallAvatarPhotos",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    private var cutShouldersForSmallAvatarPhotos: Bool = false
+    @Default(.adaptiveSpacingInCharacterView)
+    private var adaptiveSpacingInCharacterView: Bool
+    @Default(.showRarityAndLevelForArtifacts)
+    private var showRarityAndLevelForArtifacts: Bool
+    @Default(.showRatingsForArtifacts)
+    private var showRatingsForArtifacts: Bool
+    @Default(.forceCharacterWeaponNameFixed)
+    private var forceCharacterWeaponNameFixed: Bool
+    @Default(.useActualCharacterNames)
+    private var useActualCharacterNames: Bool
+    @Default(.customizedNameForWanderer)
+    private var customizedNameForWanderer: String
+    @Default(.cutShouldersForSmallAvatarPhotos)
+    private var cutShouldersForSmallAvatarPhotos: Bool
 }

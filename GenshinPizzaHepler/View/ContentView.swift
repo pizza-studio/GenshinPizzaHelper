@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/22.
 //  根View
 
+import Defaults
 import HBMihoyoAPI
 import HBPizzaHelperAPI
 import SwiftUI
@@ -20,9 +21,7 @@ struct ContentView: View {
     var scenePhase
 
     @State
-    var selection: Int = UserDefaults.standard
-        .integer(forKey: "AppTabIndex") == 3 ? 0 : UserDefaults.standard
-        .integer(forKey: "AppTabIndex")
+    var selection: Int = !(0 ..< 3).contains(Defaults[.appTabIndex]) ? 0 : Defaults[.appTabIndex]
 
     @State
     var sheetType: ContentViewSheetType?
@@ -31,12 +30,8 @@ struct ContentView: View {
     @State
     var isJustUpdated: Bool = false
 
-    @AppStorage(
-        "autoDeliveryResinTimerLiveActivity",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    var autoDeliveryResinTimerLiveActivity: Bool =
-        false
+    @Default(.autoDeliveryResinTimerLiveActivity)
+    var autoDeliveryResinTimerLiveActivity: Bool
 
     @State
     var isPopUpViewShow: Bool = false
@@ -65,8 +60,8 @@ struct ContentView: View {
                 simpleTaptic(type: .medium)
             }
             selection = $0
-            UserDefaults.standard.setValue($0, forKey: "AppTabIndex")
-            UserDefaults.standard.synchronize()
+            Defaults[.appTabIndex] = $0
+            UserDefaults.opSuite.synchronize()
         }
     ) }
 
@@ -119,9 +114,7 @@ struct ContentView: View {
             switch newPhase {
             case .active:
                 // 检查是否同意过用户协议
-                let isPolicyShown = UserDefaults.standard
-                    .bool(forKey: "isPolicyShown")
-                if !isPolicyShown { sheetType = .userPolicy }
+                if !Defaults[.isPolicyShown] { sheetType = .userPolicy }
                 DispatchQueue.main.async {
                     viewModel.fetchAccount()
                 }
@@ -130,7 +123,7 @@ struct ContentView: View {
                 }
                 UIApplication.shared.applicationIconBadgeNumber = -1
 
-                if isPolicyShown {
+                if Defaults[.isPolicyShown] {
                     // 检查最新版本
                     checkNewestVersion()
                 }
@@ -138,8 +131,7 @@ struct ContentView: View {
                 WidgetCenter.shared.reloadAllTimelines()
                 #if canImport(ActivityKit)
                 if autoDeliveryResinTimerLiveActivity {
-                    let pinToTopAccountUUIDString = UserDefaults.standard
-                        .string(forKey: "pinToTopAccountUUIDString")
+                    let pinToTopAccountUUIDString = Defaults[.pinToTopAccountUUIDString]
                     if #available(iOS 16.1, *) {
                         if let account = viewModel.accounts.first(where: {
                             $0.config.uuid!
@@ -231,17 +223,10 @@ struct ContentView: View {
             )
         }
         .onAppear {
-            UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                .register(defaults: [
-                    "lockscreenWidgetSyncFrequencyInMinute": 60,
-                    "mainWidgetSyncFrequencyInMinute": 60,
-                    "homeCoinRefreshFrequencyInHour": 30,
-                    "watchWidgetUseSimplifiedMode": true,
-                ])
-            UserDefaults.standard.register(defaults: [
-                "alreadyInstallCA": false,
-                "isGachaHelpsheetShown": false,
-            ])
+            Defaults.reset(.lockscreenWidgetSyncFrequencyInMinute)
+            Defaults.reset(.mainWidgetSyncFrequencyInMinute)
+            Defaults.reset(.homeCoinRefreshFrequencyInHour)
+            Defaults.reset(.watchWidgetUseSimplifiedMode)
         }
         .navigate(
             to: NotificationSettingView().environmentObject(viewModel),
@@ -260,37 +245,21 @@ struct ContentView: View {
                     }
                     // 发现新版本
                     if buildVersion < newestVersionInfos.buildVersion {
-                        let checkedUpdateVersions = (
-                            UserDefaults.standard
-                                .array(forKey: "checkedUpdateVersions") ??
-                                []
-                        ) as? [Int]
+                        let checkedUpdateVersions = Defaults[.checkedUpdateVersions]
                         // 若已有存储的检查过的版本号数组
-                        if let checkedUpdateVersions = checkedUpdateVersions {
-                            if !(
-                                checkedUpdateVersions
-                                    .contains(newestVersionInfos.buildVersion)
-                            ) {
-                                sheetType = .foundNewestVersion
-                            }
-                        } else {
-                            // 不存在该数组，仍然显示提示
+                        if !checkedUpdateVersions.contains(newestVersionInfos.buildVersion) {
                             sheetType = .foundNewestVersion
                         }
                     } else {
                         // App版本号>=服务器版本号
-                        let checkedNewestVersion = UserDefaults.standard
-                            .integer(forKey: "checkedNewestVersion")
+                        let checkedNewestVersion = Defaults[.checkedNewestVersion]
                         // 已经看过的版本号小于服务器版本号，说明是第一次打开该新版本
                         if checkedNewestVersion < newestVersionInfos
                             .buildVersion {
                             isJustUpdated = true
                             sheetType = .foundNewestVersion
-                            UserDefaults.standard.setValue(
-                                newestVersionInfos.buildVersion,
-                                forKey: "checkedNewestVersion"
-                            )
-                            UserDefaults.standard.synchronize()
+                            Defaults[.checkedNewestVersion] = newestVersionInfos.buildVersion
+                            UserDefaults.opSuite.synchronize()
                         }
                     }
                 }
@@ -301,33 +270,17 @@ struct ContentView: View {
                         return
                     }
                     if buildVersion < newestVersionInfos.buildVersion {
-                        let checkedUpdateVersions = (
-                            UserDefaults.standard
-                                .array(forKey: "checkedUpdateVersions") ??
-                                []
-                        ) as? [Int]
-                        if let checkedUpdateVersions = checkedUpdateVersions {
-                            if !(
-                                checkedUpdateVersions
-                                    .contains(newestVersionInfos.buildVersion)
-                            ) {
-                                sheetType = .foundNewestVersion
-                            }
-                        } else {
+                        if !Defaults[.checkedUpdateVersions].contains(newestVersionInfos.buildVersion) {
                             sheetType = .foundNewestVersion
                         }
                     } else {
-                        let checkedNewestVersion = UserDefaults.standard
-                            .integer(forKey: "checkedNewestVersion")
+                        let checkedNewestVersion = Defaults[.checkedNewestVersion]
                         if checkedNewestVersion < newestVersionInfos
                             .buildVersion {
                             isJustUpdated = true
                             sheetType = .foundNewestVersion
-                            UserDefaults.standard.setValue(
-                                newestVersionInfos.buildVersion,
-                                forKey: "checkedNewestVersion"
-                            )
-                            UserDefaults.standard.synchronize()
+                            Defaults[.checkedNewestVersion] = newestVersionInfos.buildVersion
+                            UserDefaults.opSuite.synchronize()
                         }
                     }
                 }

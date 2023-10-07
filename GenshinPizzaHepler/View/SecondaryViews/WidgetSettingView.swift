@@ -5,27 +5,18 @@
 //  Created by 戴藏龙 on 2022/11/11.
 //
 
+import Defaults
 import SwiftUI
 
 // MARK: - WidgetSettingView
 
 struct WidgetSettingView: View {
-    @AppStorage(
-        "mainWidgetSyncFrequencyInMinute",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var mainWidgetSyncFrequencyInMinute: Double = 60
-    @AppStorage(
-        "lockscreenWidgetSyncFrequencyInMinute",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var lockscreenWidgetSyncFrequencyInMinute: Double = 60
-
-    @AppStorage(
-        "homeCoinRefreshFrequencyInHour",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var homeCoinRefreshFrequency: Double = 30
+    @Default(.mainWidgetSyncFrequencyInMinute)
+    var mainWidgetSyncFrequencyInMinute: Double
+    @Default(.lockscreenWidgetSyncFrequencyInMinute)
+    var lockscreenWidgetSyncFrequencyInMinute: Double
+    @Default(.homeCoinRefreshFrequencyInHour)
+    var homeCoinRefreshFrequency: Double
 
     @State
     var isWidgetTipsSheetShow: Bool = false

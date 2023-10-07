@@ -5,15 +5,12 @@
 //  Created by 戴藏龙 on 2022/10/16.
 //
 
+import Defaults
 import SwiftUI
 
 struct PrivacySettingsView: View {
-    @AppStorage(
-        "allowAbyssDataCollection",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    var allowAbyssDataCollection: Bool =
-        false
+    @Default(.allowAbyssDataCollection)
+    var allowAbyssDataCollection: Bool
 
     var body: some View {
         List {

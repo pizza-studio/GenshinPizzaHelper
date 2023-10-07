@@ -72,18 +72,19 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate,
         updatedTransactions transactions: [SKPaymentTransaction]
     ) {
         for transaction in transactions {
+            // 因为这里无法事先预知 Transaction 的内容，所以不适合使用 SindreSorhus_Defaults。
             switch transaction.transactionState {
             case .purchasing:
                 transactionState = .purchasing
             case .purchased:
-                UserDefaults.standard.setValue(
+                UserDefaults.opSuite.setValue(
                     true,
                     forKey: transaction.payment.productIdentifier
                 )
                 queue.finishTransaction(transaction)
                 transactionState = .purchased
             case .restored:
-                UserDefaults.standard.setValue(
+                UserDefaults.opSuite.setValue(
                     true,
                     forKey: transaction.payment.productIdentifier
                 )

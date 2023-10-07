@@ -7,6 +7,7 @@
 
 import Charts
 import CoreData
+import Defaults
 import HBMihoyoAPI
 import SwiftUI
 
@@ -278,7 +279,7 @@ private struct GachaStatisticSectionView: View {
             if gachaViewModel.filter.gachaType != .standard {
                 VStack {
                     HStack {
-                        Text(AppConfig.useGuestGachaEvaluator ? "帕姆的评价" : "派蒙的评价")
+                        Text(Defaults[.useGuestGachaEvaluator] ? "帕姆的评价" : "派蒙的评价")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         Spacer()
@@ -292,10 +293,10 @@ private struct GachaStatisticSectionView: View {
                         ForEach(Rank.allCases, id: \.rawValue) { rank in
                             Group {
                                 if judgedRank == rank {
-                                    rank.image(neighborGame: AppConfig.useGuestGachaEvaluator).resizable()
+                                    rank.image(neighborGame: Defaults[.useGuestGachaEvaluator]).resizable()
                                         .scaledToFit()
                                 } else {
-                                    rank.image(neighborGame: AppConfig.useGuestGachaEvaluator).resizable()
+                                    rank.image(neighborGame: Defaults[.useGuestGachaEvaluator]).resizable()
                                         .scaledToFit()
                                         .opacity(0.25)
                                 }

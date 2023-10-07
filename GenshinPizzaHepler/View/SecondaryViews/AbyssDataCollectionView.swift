@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/10/16.
 //
 
+import Defaults
 import HBMihoyoAPI
 import HBPizzaHelperAPI
 import SwiftUI
@@ -477,10 +478,7 @@ struct AbyssDataCollectionView: View {
         let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = Server(
-            rawValue: UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                .string(forKey: "defaultServer") ?? Server.asia.rawValue
-        )?.timeZone() ?? Server.asia.timeZone()
+        dateFormatter.timeZone = (Server(rawValue: Defaults[.defaultServer]) ?? Server.asia).timeZone()
         let endDate = dateFormatter.date(from: endAt)
         guard let endDate = endDate else {
             return nil

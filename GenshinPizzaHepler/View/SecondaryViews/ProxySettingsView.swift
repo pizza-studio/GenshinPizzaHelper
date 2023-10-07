@@ -5,39 +5,22 @@
 //  Created by Bill Haku on 2022/9/5.
 //
 
+import Defaults
 import SwiftUI
 
 struct ReverseProxySettingsView: View {
-    @AppStorage(
-        "useProxy",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var useProxy: Bool = false
-    @AppStorage(
-        "reverseProxyHost1",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var reverseProxy1: String = ""
-    @AppStorage(
-        "reverseProxyHost2",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var reverseProxy2: String = ""
-    @AppStorage(
-        "reverseProxyHost3",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var reverseProxy3: String = ""
-    @AppStorage(
-        "reverseProxyHost4",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var reverseProxy4: String = ""
-    @AppStorage(
-        "reverseProxyHost5",
-        store: UserDefaults(suiteName: "group.GenshinPizzaHelper")
-    )
-    var reverseProxy5: String = ""
+    @Default(.useProxy)
+    var useProxy: Bool
+    @Default(.reverseProxyHost1)
+    var reverseProxy1: String
+    @Default(.reverseProxyHost2)
+    var reverseProxy2: String
+    @Default(.reverseProxyHost3)
+    var reverseProxy3: String
+    @Default(.reverseProxyHost4)
+    var reverseProxy4: String
+    @Default(.reverseProxyHost5)
+    var reverseProxy5: String
 
     var body: some View {
         List {

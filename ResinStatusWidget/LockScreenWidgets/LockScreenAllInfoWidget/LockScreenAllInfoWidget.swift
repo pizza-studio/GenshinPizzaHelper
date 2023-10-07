@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
+import Defaults
 import SwiftUI
 import WidgetKit
 
@@ -62,13 +63,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         let refreshMinute =
-            Int(
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                    .double(
-                        forKey: "lockscreenWidgetRefreshFrequencyInMinute"
-                    ) ??
-                    30
-            )
+            Int(Defaults[.lockscreenWidgetRefreshFrequencyInMinute])
         var refreshDate: Date {
             Calendar.current.date(
                 byAdding: .minute,

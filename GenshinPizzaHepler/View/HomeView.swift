@@ -6,6 +6,7 @@
 //  展示所有账号的主页
 
 import AlertToast
+import Defaults
 import HBMihoyoAPI
 import SwiftUI
 
@@ -119,12 +120,8 @@ private struct PinnedAccountInfoCard: View {
     @EnvironmentObject
     var viewModel: ViewModel
     var animation: Namespace.ID
-    @AppStorage(
-        "pinToTopAccountUUIDString",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    var pinToTopAccountUUIDString: String =
-        ""
+    @Default(.pinToTopAccountUUIDString)
+    var pinToTopAccountUUIDString: String
     @Binding
     var isErrorAlertShow: Bool
     @Binding
@@ -289,12 +286,8 @@ private struct AccountInfoCards: View {
     var viewModel: ViewModel
     var animation: Namespace.ID
 
-    @AppStorage(
-        "pinToTopAccountUUIDString",
-        store: .init(suiteName: "group.GenshinPizzaHelper")
-    )
-    var pinToTopAccountUUIDString: String =
-        ""
+    @Default(.pinToTopAccountUUIDString)
+    var pinToTopAccountUUIDString: String
 
     @State
     var isErrorAlertShow: Bool = false

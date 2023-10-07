@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/9/8.
 //
 
+import Defaults
 import SwiftUI
 import WidgetKit
 
@@ -91,12 +92,9 @@ struct ContentView: View {
             }
         })
         .onAppear {
-            UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                .register(defaults: [
-                    "lockscreenWidgetSyncFrequencyInMinute": 60,
-                    "homeCoinRefreshFrequencyInHour": 30,
-                    "watchWidgetUseSimplifiedMode": true,
-                ])
+            Defaults.reset(.watchWidgetUseSimplifiedMode)
+            Defaults.reset(.lockscreenWidgetSyncFrequencyInMinute)
+            Defaults.reset(.homeCoinRefreshFrequencyInHour)
         }
 //        .onAppear {
 //            viewModel.accounts.forEach { account in

@@ -5,6 +5,7 @@
 //  Created by ShikiSuen on 2023/10/3.
 //
 
+import Defaults
 import Foundation
 
 // MARK: - NameCard
@@ -234,14 +235,14 @@ extension NameCard {
 
     public var localizedKey: String {
         var raw = fileName
-        if AppConfig.useActualCharacterNames, raw.contains("_Wanderer_") {
+        if Defaults[.useActualCharacterNames], raw.contains("_Wanderer_") {
             raw = raw.replacingOccurrences(of: "Wanderer", with: "Kunikuzushi")
         }
         return "$asset.nameCard:" + raw
     }
 
     public var localized: String {
-        if AppConfig.useActualCharacterNames, fileName.contains("Kunikuzushi") {
+        if Defaults[.useActualCharacterNames], fileName.contains("Kunikuzushi") {
             return localizedKey.localized
         }
         return localizedKey.localized.localizedWithFix

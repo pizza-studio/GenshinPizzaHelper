@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2023/3/29.
 //
 
+import Defaults
 import Foundation
 import SwiftUI
 
@@ -126,7 +127,7 @@ extension ContainGachaItemInfo {
         // 由于 Lava 强烈反对针对证件照的脸裁切与头裁切，
         // 所以不预设启用该功能。
         var cutType = cutType
-        if !AppConfig.cutShouldersForSmallAvatarPhotos {
+        if !Defaults[.cutShouldersForSmallAvatarPhotos] {
             cutType = .shoulder
         }
         let asset = CharacterAsset.allCases.filter { $0.officialSimplifiedChineseName == name }.first

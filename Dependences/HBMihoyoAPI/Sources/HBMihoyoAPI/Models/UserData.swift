@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2023/3/25.
 //  小组件和主页用到的各类数据和处理工具
 
+import Defaults
 import Foundation
 
 // MARK: - UserData
@@ -151,17 +152,10 @@ public struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
             guard let currentHomeCoin = Int(homeCoinStr.first ?? ""),
                   let maxHomeCoin = Int(homeCoinStr.last ?? "")
             else { return nil }
-            if UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                .double(forKey: "homeCoinRefreshFrequencyInHour") == 0 {
-                UserDefaults(suiteName: "group.GenshinPizzaHelper")!
-                    .set(30.0, forKey: "homeCoinRefreshFrequencyInHour")
+            if Defaults[.homeCoinRefreshFrequencyInHour] == 0 {
+                Defaults[.homeCoinRefreshFrequencyInHour] = 30
             }
-            var homeCoinRefreshFrequencyInHour =
-                Int(
-                    UserDefaults(suiteName: "group.GenshinPizzaHelper")?
-                        .double(forKey: "homeCoinRefreshFrequencyInHour") ??
-                        30.0
-                )
+            var homeCoinRefreshFrequencyInHour = Int(Defaults[.homeCoinRefreshFrequencyInHour])
             // 我也不知道为什么有时候这玩意取到0，反正给个默认值30吧
             homeCoinRefreshFrequencyInHour = !(4 ... 30)
                 .contains(homeCoinRefreshFrequencyInHour) ? 30 :
