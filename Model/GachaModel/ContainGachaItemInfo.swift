@@ -129,6 +129,11 @@ extension ContainGachaItemInfo {
         if !AppConfig.cutShouldersForSmallAvatarPhotos {
             cutType = .shoulder
         }
+        let asset = CharacterAsset.allCases.filter { $0.officialSimplifiedChineseName == name }.first
+        if let asset = asset {
+            return AnyView(asset.decoratedIcon(size, cutTo: cutType))
+        }
+        // 下述内容是垫底内容，通常情况下不该被触发。
         let result = EnkaWebIcon(iconString: iconImageName)
             .scaledToFill()
             .frame(width: size * cutType.rawValue, height: size * cutType.rawValue)
