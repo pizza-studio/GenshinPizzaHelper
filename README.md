@@ -126,12 +126,6 @@
 
 4. 将所有文件移动覆盖到开源仓库文件夹
 
-## 原神版本更新TODO LIST
-
-> 请务必注意不能上传官方未发布的素材
-> 
-> 全部使用heic格式，压缩为「小」
-
 ### 版本更新
 
 - 角色更新以米游社官方「天外卫星通信」为基准。比如说：4.1 版正式发布的时候，官方就借由天外卫星通信发布了关于 4.2 版的新角色「[芙宁娜](https://www.miyoushe.com/ys/article/43753949)」与「[夏洛蒂](https://www.miyoushe.com/ys/article/43754059)」的情报。**此时可以添加角色素材，但不能添加角色每日素材情报、不能添加名片、不能添加武器（直至官方微信公众号等给出素材为止）。**
@@ -169,7 +163,7 @@
     2. `CharacterAsset.namecard` 变数需要你填入新角色的名片。这里按照真实情况填写即可。
     3. `CharacterAsset.possibleProfilePictureIdentifiers` 用来填写每个角色对应的 profilePicture 编号。每个角色可能拥有多个编号。请依照 [ProfilePictureExcelConfigData.json](https://gitlab.com/Dimbreath/AnimeGameData/-/blob/master/ExcelBinOutput/ProfilePictureExcelConfigData.json) 的内容查询到新角色对应的 profilePicture 编号（不超过五位数）。
     4. `CharacterAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil。
-3. 角色名称翻译 Key："$asset.character:\(case 名称)"。例：`"$$asset.character:Keqing"`。
+3. 角色名称翻译 Key："$asset.character:\(case 名称)"。例：`"$asset.character:Keqing"`。
 
 ##### 3. 武器
 
