@@ -175,6 +175,7 @@
       return .talentGold.available(since: .Specify(day: 11, month: 4, year: 2023))
     ```
 4. 角色名称翻译 Key："$asset.character:\(case 名称)"。例：`"$asset.character:Keqing"`。
+5. 角色的技能图示：直接从 Ambr.top 将技能图示 png 自浏览器拖到本地，然后转成 HEIC。
 
 ##### 3. 武器
 
