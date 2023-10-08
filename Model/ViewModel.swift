@@ -79,10 +79,19 @@ class ViewModel: NSObject, ObservableObject {
     #if !os(watchOS)
     @Published
     var charLoc: [String: String]? = try? JSONDecoder().decode(ENCharacterLoc.self, from: Defaults[.enkaMapLoc])
-        .getLocalizedDictionary()
+        .getLocalizedDictionary() {
+        didSet {
+            Defaults[.lastEnkaDataCheckDate] = .init()
+        }
+    }
+
     @Published
     var charMap: [String: ENCharacterMap.Character]? = try? JSONDecoder()
-        .decode(ENCharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails
+        .decode(ENCharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails {
+        didSet {
+            Defaults[.lastEnkaDataCheckDate] = .init()
+        }
+    }
     #endif
 
     let accountConfigurationModel: AccountConfigurationModel = .shared
