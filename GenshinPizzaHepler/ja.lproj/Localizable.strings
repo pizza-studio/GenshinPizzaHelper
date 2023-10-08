@@ -28,7 +28,7 @@
 "$asset.dailyMaterial:weaponGladiator" = "「獅牙戦士」";
 "$asset.dailyMaterial:weaponGuyun" = "「孤雲寒林」";
 "$asset.dailyMaterial:weaponElixir" = "「霧海雲間」";
-"$asset.dailyMaterial:weaponAerosiderite" = "「漆黒の隕鉄」";
+"$asset.dailyMaterial:weaponAerosiderite" = "「漆黒隕鉄」";
 "$asset.dailyMaterial:weaponDistantSea" = "「遠海夷地」";
 "$asset.dailyMaterial:weaponNarukami" = "「鳴神御霊」";
 "$asset.dailyMaterial:weaponKijinMask" = "「今昔劇画」";

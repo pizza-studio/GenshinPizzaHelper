@@ -33,6 +33,7 @@ extension Defaults.Keys {
 
     // MARK: - Account & Privacy & Policy
 
+    public static let cachedCostumeMap = Key<[Int: Int]>("cachedDostumeMap", default: [:], suite: .opSuite)
     public static let allowAbyssDataCollection = Key<Bool>("allowAbyssDataCollection", default: false, suite: .opSuite)
     public static let hasAskedAllowAbyssDataCollection = Key<Bool>(
         "hasAskedAllowAbyssDataCollection",

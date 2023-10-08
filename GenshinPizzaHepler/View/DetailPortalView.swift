@@ -21,7 +21,13 @@ struct DetailPortalView: View {
     var scenePhase
     var accounts: [Account] { viewModel.accounts }
     @Default(.detailPortalViewShowingAccountUUIDString)
-    var showingAccountUUIDString: String?
+    var showingAccountUUIDString: String? {
+        didSet {
+            if let account = account {
+                viewModel.refreshCostumeMap(for: account)
+            }
+        }
+    }
 
     var account: Account? {
         accounts.first { account in
@@ -267,9 +273,17 @@ struct DetailPortalView: View {
     func playerDetailSection() -> some View {
         if let account = account {
             if let result = account.playerDetailResult {
+                let fetchedDetail = try? result.get()
                 switch result {
                 case .success:
-                    successView()
+                    if let fetchedDetail = fetchedDetail {
+                        successView(fetchedDetail)
+                    } else {
+                        failureView(
+                            error: PlayerDetail.PlayerDetailError
+                                .failToGetCharacterData(message: "account.playerDetailResult.get.returned.nil")
+                        )
+                    }
                 case let .failure(error):
                     failureView(error: error)
                 }
@@ -290,8 +304,7 @@ struct DetailPortalView: View {
     }
 
     @ViewBuilder
-    func successView() -> some View {
-        let playerDetail: PlayerDetail = try! account!.playerDetailResult!.get()
+    func successView(_ playerDetail: PlayerDetail) -> some View {
         Section {
             VStack {
                 if playerDetail.avatars.isEmpty {
@@ -322,18 +335,11 @@ struct DetailPortalView: View {
                                                 account!
                                         }
                                     }
-                                    .onAppear {
-                                        // 同步时装设定至全局预设值。
-                                        let charAsset = avatar.characterAsset
-                                        if let costumeAsset = avatar.costumeAsset {
-                                            viewModel.costumeMap[charAsset] = costumeAsset
-                                        } else {
-                                            viewModel.costumeMap.removeValue(forKey: charAsset)
-                                        }
-                                    }
                             }
                         }
                         .padding(.vertical, 4)
+                    }.onAppear {
+                        viewModel.refreshCostumeMap()
                     }
                 }
                 allAvatarNavigator()

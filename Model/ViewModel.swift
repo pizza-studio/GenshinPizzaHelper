@@ -58,10 +58,19 @@ class ViewModel: NSObject, ObservableObject {
     var showCharacterDetailOfAccount: Account?
     @Published
     var showingCharacterName: String?
+    @Default(.detailPortalViewShowingAccountUUIDString)
+    var showingAccountUUID: String?
+
     @Published
     var costumeMap: [CharacterAsset: CostumeAsset] = [:] {
         willSet {
             CharacterAsset.costumeMap = newValue
+        }
+    }
+
+    var account: Account? {
+        accounts.first { account in
+            (account.config.uuid?.uuidString ?? "123") == showingAccountUUID
         }
     }
 
@@ -223,6 +232,7 @@ class ViewModel: NSObject, ObservableObject {
                                 .playerDetailResult = .failure(error)
                         }
                     }
+                    self.refreshCostumeMap(for: self.accounts[index])
                     self.accounts[index].fetchPlayerDetailComplete = true
                 }
         } else {
@@ -278,6 +288,22 @@ class ViewModel: NSObject, ObservableObject {
                     }
             }
         }
+    }
+
+    /// 同步时装设定至全局预设值。
+    func refreshCostumeMap(for specifiedAccount: Account? = nil) {
+        guard let playerDetail = try? (specifiedAccount ?? account)?.playerDetailResult?.get() else { return }
+        guard !playerDetail.avatars.isEmpty else { return }
+        CharacterAsset.costumeMap.removeAll()
+        let assetPairs = playerDetail.avatars.compactMap { ($0.characterAsset, $0.costumeAsset) }
+        var intDictionary: [Int: Int] = [:]
+        assetPairs.forEach { characterAsset, costumeAsset in
+            CharacterAsset.costumeMap[characterAsset] = costumeAsset
+            intDictionary[characterAsset.rawValue] = costumeAsset?.rawValue ?? nil
+        }
+        costumeMap = CharacterAsset.costumeMap
+        Defaults[.cachedCostumeMap] = intDictionary
+        objectWillChange.send()
     }
 
     func refreshLedgerData() {

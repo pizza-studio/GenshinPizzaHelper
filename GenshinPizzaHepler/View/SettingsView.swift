@@ -18,7 +18,7 @@ struct SettingsView: View {
     var storeManager: StoreManager
 
     @State
-    var isAlertToastShow = false
+    var isAlertToastShown = false
 
     var body: some View {
         NavigationView {
@@ -63,13 +63,6 @@ struct SettingsView: View {
                             systemImage: "shippingbox.fill"
                         )
                     }
-                    #if DEBUG
-                    Button("debug") {
-//                        UserNotificationCenter.shared
-//                            .printAllNotificationRequest()
-                        isAlertToastShow.toggle()
-                    }
-                    #endif
                 }
 
                 Section {
@@ -141,15 +134,25 @@ struct SettingsView: View {
                         Text("开发者与联系方式")
                     }
                 }
-                // 更多
-                NavigationLink(destination: MoreView()) {
-                    Text("settings.more")
+
+                Section {
+                    // 更多
+                    NavigationLink(destination: MoreView()) {
+                        Text("settings.more")
+                    }
+                    #if DEBUG
+                    Button("Alert Toast Debug") {
+                        //                        UserNotificationCenter.shared
+                        //                            .printAllNotificationRequest()
+                        isAlertToastShown.toggle()
+                    }
+                    #endif
                 }
             }
             .navigationTitle("nav.category.settings.name")
         }
         .navigationViewStyle(.stack)
-        .toast(isPresenting: $isAlertToastShow) {
+        .toast(isPresenting: $isAlertToastShown) {
             AlertToast(
                 displayMode: .hud,
                 type: .complete(.green),

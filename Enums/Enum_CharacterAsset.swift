@@ -461,7 +461,14 @@ extension CharacterAsset: DailyMaterialConsumer {
 // MARK: - A Dictionary dedicated for recording players' costume preference.
 
 extension CharacterAsset {
-    public static var costumeMap: [CharacterAsset: CostumeAsset] = [:]
+    public static var costumeMap: [CharacterAsset: CostumeAsset] = {
+        var result = [CharacterAsset: CostumeAsset]()
+        _ = Defaults[.cachedCostumeMap].map { key, value in
+            guard let characterAsset = CharacterAsset(rawValue: key) else { return }
+            result[characterAsset] = .init(rawValue: value)
+        }
+        return result
+    }()
 }
 
 // MARK: - Extending ENCharacterMap.Character
