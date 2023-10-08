@@ -1,3 +1,4 @@
+import Defaults
 import Foundation
 import HBMihoyoAPI
 
@@ -42,20 +43,38 @@ public enum PizzaHelperAPI {
     /// 从EnkaNetwork获取角色ID对应详细信息
     /// - Parameters:
     ///     - completion: 数据
-    public static func fetchENCharacterDetailDatas(
+    public static func fetchENCharacterDetailData(
+        from serverType: EnkaJSONGitServerType? = nil,
         completion: @escaping (
             ENCharacterMap
-        ) -> ()
+        ) -> (),
+        onFailure: (() -> ())? = nil
     ) {
         // 请求类别
-        let urlStr = "api/players/characters.json"
+        let urlPrefix: String = {
+            switch serverType {
+            case .global: return HostType.enkaJSONGitGlobal.rawValue
+            case .mainlandCN: return HostType.enkaJSONGitCN.rawValue
+            case nil: return HostType.generalHost.rawValue
+            }
+        }()
+        let hostType: HostType = {
+            switch serverType {
+            case .global: return .enkaJSONGitGlobal
+            case .mainlandCN: return .enkaJSONGitCN
+            case nil: return .generalHost
+            }
+        }()
+        let urlStr = EnkaResourceType.characters.subURLComponents(serverType: serverType)
+        print("Fetching: \(urlPrefix + urlStr)")
 
         // 请求
         HttpMethod<ENCharacterMap>
             .homeRequest(
                 .get,
                 urlStr,
-                cachedPolicy: .reloadIgnoringLocalCacheData
+                cachedPolicy: .reloadIgnoringLocalCacheData,
+                hostType: hostType
             ) { result in
                 switch result {
                 case let .success(requestResult):
@@ -63,6 +82,8 @@ public enum PizzaHelperAPI {
                     completion(requestResult)
 
                 case .failure:
+                    print("Fetch failed: \(urlPrefix + urlStr)")
+                    if let onFailure = onFailure { onFailure() }
                     print("fetch ENCharacterDetailDatas fail")
                 }
             }
@@ -71,20 +92,38 @@ public enum PizzaHelperAPI {
     /// 从EnkaNetwork获取角色ID对应本地化信息
     /// - Parameters:
     ///     - completion: 数据
-    public static func fetchENCharacterLocDatas(
+    public static func fetchENCharacterLocData(
+        from serverType: EnkaJSONGitServerType? = nil,
         completion: @escaping (
             ENCharacterLoc
-        ) -> ()
+        ) -> (),
+        onFailure: (() -> ())? = nil
     ) {
         // 请求类别
-        let urlStr = "api/players/loc.json"
+        let urlPrefix: String = {
+            switch serverType {
+            case .global: return HostType.enkaJSONGitGlobal.rawValue
+            case .mainlandCN: return HostType.enkaJSONGitCN.rawValue
+            case nil: return HostType.generalHost.rawValue
+            }
+        }()
+        let hostType: HostType = {
+            switch serverType {
+            case .global: return .enkaJSONGitGlobal
+            case .mainlandCN: return .enkaJSONGitCN
+            case nil: return .generalHost
+            }
+        }()
+        let urlStr = EnkaResourceType.loc.subURLComponents(serverType: serverType)
+        print("Fetching: \(urlPrefix + urlStr)")
 
         // 请求
         HttpMethod<ENCharacterLoc>
             .homeRequest(
                 .get,
                 urlStr,
-                cachedPolicy: .reloadIgnoringLocalCacheData
+                cachedPolicy: .reloadIgnoringLocalCacheData,
+                hostType: hostType
             ) { result in
                 switch result {
                 case let .success(requestResult):
@@ -92,7 +131,8 @@ public enum PizzaHelperAPI {
                     completion(requestResult)
 
                 case .failure:
-                    print("fetch ENCharacterLocDatas fail")
+                    print("Fetch failed: \(urlPrefix + urlStr)")
+                    if let onFailure = onFailure { onFailure() }
                 }
             }
     }

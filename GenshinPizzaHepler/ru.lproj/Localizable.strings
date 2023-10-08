@@ -1128,7 +1128,7 @@
 "lang.Vietnamese" = "Вьетнамский";
 "abyssDataCollection.usageRate.characterSansRestart" = "Уровень использования не перезапущенного игрока";
 "settings.more.timeZone.title" = "Часовой пояс";
-"settings.more.timeZone.descriptionWithCurrent:%@。" = "Мы рассчитываем время на основе часового пояса выбранного вами сервера. Текущий часовой пояс: %@.";
+"settings.more.timeZone.descriptionWithCurrent:%@" = "Мы рассчитываем время на основе часового пояса выбранного вами сервера. Текущий часовой пояс: %@.";
 "abyssDataCollection.availableSince20230401" = "Доступно с 2023-04-01";
 
 // MARK: - 2.7.14
@@ -1357,3 +1357,7 @@
 "detailPortal.errorMessage.anotherVerificationAttemptRequiredToSeeSpiralAbyssHistory" = "Please tap here to try the human verification again to see your Spiral Abyss records.";
 "settings.account.error.failedFromFetchingAccountInformation" = "Unable to retrieve log-in information";
 "settings.account.deviceFingerprint" = "Device Fingerprint";
+
+// MARK: - 3.1.2
+
+"settings.more.useEnkaJSONFromGitHosts" = "Fetch Enka JSON data from Git service providers";

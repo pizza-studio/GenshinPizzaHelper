@@ -29,6 +29,10 @@ let package = Package(
             dependencies: [
                 "HBMihoyoAPI",
                 .product(name: "Defaults", package: "SindreSorhus_Defaults"),
+            ],
+            resources: [
+                .process("Assets/characters.json"),
+                .process("Assets/loc.json"),
             ]
         ),
         .testTarget(

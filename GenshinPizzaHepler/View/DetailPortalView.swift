@@ -521,25 +521,27 @@ struct DetailPortalView: View {
                     placement: .navigationBarLeading
                 ) {
                     Group {
-                        switch abyssDataViewSelection {
-                        case .thisTerm:
-                            AbyssShareView(
-                                data: thisAbyssData,
-                                charMap: viewModel.charMap!
-                            )
-                            .environment(
-                                \.locale,
-                                .init(identifier: Locale.current.identifier)
-                            )
-                        case .lastTerm:
-                            AbyssShareView(
-                                data: lastAbyssData,
-                                charMap: viewModel.charMap!
-                            )
-                            .environment(
-                                \.locale,
-                                .init(identifier: Locale.current.identifier)
-                            )
+                        if let charMap = viewModel.charMap {
+                            switch abyssDataViewSelection {
+                            case .thisTerm:
+                                AbyssShareView(
+                                    data: thisAbyssData,
+                                    charMap: charMap
+                                )
+                                .environment(
+                                    \.locale,
+                                    .init(identifier: Locale.current.identifier)
+                                )
+                            case .lastTerm:
+                                AbyssShareView(
+                                    data: lastAbyssData,
+                                    charMap: charMap
+                                )
+                                .environment(
+                                    \.locale,
+                                    .init(identifier: Locale.current.identifier)
+                                )
+                            }
                         }
                     }
                 }

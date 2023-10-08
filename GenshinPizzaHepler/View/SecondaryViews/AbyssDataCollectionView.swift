@@ -264,8 +264,8 @@ struct AbyssDataCollectionView: View {
             }
         }
         .onAppear {
-            if viewModel.charLoc == nil || viewModel.charMap == nil {
-                viewModel.refreshCharLocAndCharMap()
+            if viewModel.enkaDataNeedsUpdate {
+                viewModel.refreshCharLocAndCharMapSansAsync()
             }
         }
         .environmentObject(abyssDataCollectionViewModel)

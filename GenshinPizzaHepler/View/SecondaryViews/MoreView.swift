@@ -36,8 +36,12 @@ struct MoreView: View {
                 }
             } footer: {
                 Text(
-                    "settings.more.timeZone.descriptionWithCurrent:\((Server(rawValue: defaultServer) ?? .asia).timeZone().identifier)。"
+                    "settings.more.timeZone.descriptionWithCurrent:\((Server(rawValue: defaultServer) ?? .asia).timeZone().identifier)"
                 )
+            }
+
+            Section {
+                Toggle("settings.more.useEnkaJSONFromGitHosts", isOn: $useEnkaJSONFromGitHosts)
             }
 
             Section {
@@ -134,6 +138,9 @@ struct MoreView: View {
 
     @Default(.defaultServer)
     private var defaultServer: String
+
+    @Default(.useEnkaJSONFromGitHosts)
+    private var useEnkaJSONFromGitHosts: Bool
 }
 
 // MARK: - MoreViewCacheViewModel

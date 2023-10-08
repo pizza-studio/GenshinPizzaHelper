@@ -1128,7 +1128,7 @@
 "lang.Vietnamese" = "ベトナム語";
 "abyssDataCollection.usageRate.characterSansRestart" = "未再開プレイヤーの使用率";
 "settings.more.timeZone.title" = "タイムゾーン";
-"settings.more.timeZone.descriptionWithCurrent:%@。" = "選択したサーバーのタイムゾーンに基づいて時間を計算します。現在のタイムゾーン：%@。";
+"settings.more.timeZone.descriptionWithCurrent:%@" = "選択したサーバーのタイムゾーンに基づいて時間を計算します。現在のタイムゾーン：%@。";
 "abyssDataCollection.availableSince20230401" = "Available From 2023-04-01";
 
 // MARK: - 2.7.14
@@ -1358,3 +1358,7 @@
 "detailPortal.errorMessage.anotherVerificationAttemptRequiredToSeeSpiralAbyssHistory" = "ここをタップして、アカウント認証をもう一回完了してください。そうすれば深境螺旋の履歴データは利用可能です。";
 "settings.account.error.failedFromFetchingAccountInformation" = "ログインデータは受け取りできませんでした。";
 "settings.account.deviceFingerprint" = "デバイスの指紋";
+
+// MARK: - 3.1.2
+
+"settings.more.useEnkaJSONFromGitHosts" = "Git サービスサイトからの Enka JSON 資料を用いる";

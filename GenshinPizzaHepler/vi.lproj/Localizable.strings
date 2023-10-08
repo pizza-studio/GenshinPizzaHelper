@@ -1276,7 +1276,7 @@
 "lang.Vietnamese" = "Tiếng Việt";
 "abyssDataCollection.usageRate.characterSansRestart" = "Tỷ Lệ Sử Dụng Không Khởi Động Lại";
 "settings.more.timeZone.title" = "Múi Giờ";
-"settings.more.timeZone.descriptionWithCurrent:%@。" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
+"settings.more.timeZone.descriptionWithCurrent:%@" = "Chúng tôi tính toán thời gian dựa trên múi giờ của máy chủ bạn đã chọn . Múi giờ hiện tại: %@.";
 "abyssDataCollection.availableSince20230401" = "Có sẵn từ 2023-04-01";
 
 // MARK: - 2.7.14
@@ -1509,3 +1509,7 @@
 "detailPortal.errorMessage.anotherVerificationAttemptRequiredToSeeSpiralAbyssHistory" = "Please tap here to try the human verification again to see your Spiral Abyss records.";
 "settings.account.error.failedFromFetchingAccountInformation" = "Unable to retrieve log-in information";
 "settings.account.deviceFingerprint" = "Device Fingerprint";
+
+// MARK: - 3.1.2
+
+"settings.more.useEnkaJSONFromGitHosts" = "Fetch Enka JSON data from Git service providers";

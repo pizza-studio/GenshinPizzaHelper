@@ -36,7 +36,9 @@ class ViewModel: NSObject, ObservableObject {
                 .container
                 .persistentStoreCoordinator
         )
-
+        #if !os(watchOS)
+        attemptToFixLocalEnkaStorage()
+        #endif
         #if canImport(ActivityKit)
         if #available(iOS 16.1, *) {
             // App 启动时也检查并清理可能的错误资料值。
@@ -75,8 +77,12 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     #if !os(watchOS)
-    var charLoc: [String: String]?
-    var charMap: [String: ENCharacterMap.Character]?
+    @Published
+    var charLoc: [String: String]? = try? JSONDecoder().decode(ENCharacterLoc.self, from: Defaults[.enkaMapLoc])
+        .getLocalizedDictionary()
+    @Published
+    var charMap: [String: ENCharacterMap.Character]? = try? JSONDecoder()
+        .decode(ENCharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails
     #endif
 
     let accountConfigurationModel: AccountConfigurationModel = .shared
@@ -212,7 +218,7 @@ class ViewModel: NSObject, ObservableObject {
             accounts[index].playerDetailResult = nil
         }
         accounts[index].fetchPlayerDetailComplete = false
-        if let charLoc = charLoc, let charMap = charMap {
+        if let charLoc = charLoc, let charMap = charMap, charLoc.count * charMap.count != 0 {
             accounts[index].config
                 .fetchPlayerDetail(
                     dateWhenNextRefreshable: try? accounts[index]
@@ -238,14 +244,27 @@ class ViewModel: NSObject, ObservableObject {
         } else {
             let group = DispatchGroup()
             group.enter()
-            PizzaHelperAPI.fetchENCharacterLocDatas {
+            PizzaHelperAPI.fetchENCharacterLocData(from: .mainlandCN) {
+                Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
                 self.charLoc = $0.getLocalizedDictionary()
                 group.leave()
+            } onFailure: {
+                PizzaHelperAPI.fetchENCharacterLocData(from: .global) {
+                    self.charLoc = $0.getLocalizedDictionary()
+                    group.leave()
+                }
             }
             group.enter()
-            PizzaHelperAPI.fetchENCharacterDetailDatas {
+            PizzaHelperAPI.fetchENCharacterDetailData(from: .mainlandCN) {
+                Defaults[.enkaMapCharacters] = try! JSONEncoder().encode($0)
                 self.charMap = $0.characterDetails
                 group.leave()
+            } onFailure: {
+                PizzaHelperAPI.fetchENCharacterDetailData(from: .global) {
+                    Defaults[.enkaMapCharacters] = try! JSONEncoder().encode($0)
+                    self.charMap = $0.characterDetails
+                    group.leave()
+                }
             }
             group.notify(queue: .main) {
                 guard let charLoc = self.charLoc else {
@@ -314,12 +333,55 @@ class ViewModel: NSObject, ObservableObject {
         }
     }
 
-    func refreshCharLocAndCharMap() {
-        PizzaHelperAPI.fetchENCharacterLocDatas {
-            self.charLoc = $0.getLocalizedDictionary()
+    // 检查本地 Enka 暂存资料是否损毁。如有损毁，则用 Bundle 内建的 JSON 重建之。
+    public func attemptToFixLocalEnkaStorage() {
+        guard enkaDataWrecked else { return }
+        Defaults.reset(.enkaMapLoc)
+        Defaults.reset(.enkaMapCharacters)
+        charLoc = try? JSONDecoder()
+            .decode(ENCharacterLoc.self, from: Defaults[.enkaMapLoc]).getLocalizedDictionary()
+        charMap = try? JSONDecoder()
+            .decode(ENCharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails
+        guard enkaDataWrecked else { return }
+        // 本地 JSON 资料恢复了也没用。一般情况下不该出现这种情况。
+        refreshCharLocAndCharMapSansAsync()
+    }
+
+    public var enkaDataWrecked: Bool {
+        charLoc.isNil || charMap.isNil || (charLoc?.count ?? 0) * (charMap?.count ?? 0) == 0
+    }
+
+    public var enkaDataNeedsUpdate: Bool {
+        var performCheck = enkaDataWrecked
+        if !performCheck, let expired = Calendar.current.date(byAdding: .hour, value: -2, to: Date()),
+           Defaults[.lastEnkaDataCheckDate] < expired {
+            print("Enka data expired, triggering update.")
+            performCheck = true
+        } else if performCheck {
+            print("Enka data (in local storage) corrupted, triggering update.")
         }
-        PizzaHelperAPI.fetchENCharacterDetailDatas {
+        return performCheck
+    }
+
+    func refreshCharLocAndCharMapSansAsync() {
+        guard enkaDataNeedsUpdate else { return }
+        PizzaHelperAPI.fetchENCharacterLocData(from: .mainlandCN) {
+            Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
+            self.charLoc = $0.getLocalizedDictionary()
+        } onFailure: {
+            PizzaHelperAPI.fetchENCharacterLocData(from: .global) {
+                Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
+                self.charLoc = $0.getLocalizedDictionary()
+            }
+        }
+        PizzaHelperAPI.fetchENCharacterDetailData(from: .mainlandCN) {
+            Defaults[.enkaMapCharacters] = try! JSONEncoder().encode($0)
             self.charMap = $0.characterDetails
+        } onFailure: {
+            PizzaHelperAPI.fetchENCharacterDetailData(from: .global) {
+                Defaults[.enkaMapCharacters] = try! JSONEncoder().encode($0)
+                self.charMap = $0.characterDetails
+            }
         }
     }
     #endif

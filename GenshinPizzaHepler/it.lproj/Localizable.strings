@@ -1128,7 +1128,7 @@
 "lang.Vietnamese" = "Vietnamese";
 "abyssDataCollection.usageRate.characterSansRestart" = "Non-restarted Player Usage Rate";
 "settings.more.timeZone.title" = "Timezone";
-"settings.more.timeZone.descriptionWithCurrent:%@。" = "We calculate time based on the timezone of the server you chose. Current timezone: %@.";
+"settings.more.timeZone.descriptionWithCurrent:%@" = "We calculate time based on the timezone of the server you chose. Current timezone: %@.";
 "abyssDataCollection.availableSince20230401" = "Available From 2023-04-01";
 
 // MARK: - 2.7.14
@@ -1357,3 +1357,7 @@
 "detailPortal.errorMessage.anotherVerificationAttemptRequiredToSeeSpiralAbyssHistory" = "Please tap here to try the human verification again to see your Spiral Abyss records.";
 "settings.account.error.failedFromFetchingAccountInformation" = "Unable to retrieve log-in information";
 "settings.account.deviceFingerprint" = "Device Fingerprint";
+
+// MARK: - 3.1.2
+
+"settings.more.useEnkaJSONFromGitHosts" = "Fetch Enka JSON data from Git service providers";

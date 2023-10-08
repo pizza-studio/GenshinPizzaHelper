@@ -227,7 +227,6 @@
 		5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
 		5BD1C64D2A2A1FC90043C2B1 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42551289F755E00FEFA49 /* TextEditorView.swift */; };
 		5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */; };
-		5BD1C64F2A2A1FC90043C2B1 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
 		5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8445EB29DBFFD700CB8C9F /* Color.swift */; };
 		5BD1C6522A2A1FC90043C2B1 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
@@ -343,9 +342,6 @@
 		BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		BF7500FE28E0452C00CDA64E /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
 		BF75010028E0452C00CDA64E /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
-		BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
-		BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
-		BF75010B28E1486E00CDA64E /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010828E1486E00CDA64E /* HomeAPI.swift */; };
 		BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
@@ -964,7 +960,6 @@
 		BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDictionary.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
-		BF75010828E1486E00CDA64E /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		BF75010F28E14CF500CDA64E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestVersionInfoView.swift; sourceTree = "<group>"; };
 		BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1386,7 +1381,6 @@
 		BF6C525E289E0F2A00EA224F /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				BF75010828E1486E00CDA64E /* HomeAPI.swift */,
 				BFB101D428D5F5BC000DC631 /* OpenAPI.swift */,
 				BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */,
 			);
@@ -2607,7 +2601,6 @@
 				5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */,
 				5BD1C64D2A2A1FC90043C2B1 /* TextEditorView.swift in Sources */,
 				5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */,
-				5BD1C64F2A2A1FC90043C2B1 /* HomeAPI.swift in Sources */,
 				5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingView.swift in Sources */,
 				5BA0D7AA2ACDD41000B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */,
 				5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */,
@@ -2803,7 +2796,6 @@
 				BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
 				EA185F2A292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
-				BF75010B28E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				EA50D66A290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
@@ -2864,7 +2856,6 @@
 				EA7FDF8F292CCB7800BDE83E /* ResinRecoveryActivityController.swift in Sources */,
 				EAD7F02B28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
-				BF75010A28E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				EA7FDF92292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,
 				5B2A9E4A2ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
@@ -3080,7 +3071,6 @@
 				EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */,
 				BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */,
 				EA1C2CE128F0464D00E4C28A /* OverflowContentViewModifier.swift in Sources */,
-				BF75010928E1486E00CDA64E /* HomeAPI.swift in Sources */,
 				EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */,
 				EA8445EC29DBFFD700CB8C9F /* Color.swift in Sources */,
 				5BA0D7A82ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */,

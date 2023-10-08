@@ -48,24 +48,3 @@ extension HttpMethod {
         }
     }
 }
-
-// MARK: - HostType
-
-public enum HostType {
-    case generalHost
-    case artifactRatingHost
-    case abyssHost
-
-    // MARK: Public
-
-    public var hostBase: String {
-        switch self {
-        case .generalHost:
-            return "https://gi.pizzastudio.org/"
-        case .artifactRatingHost:
-            return "https://artifact-rating.pizzastudio.org/"
-        case .abyssHost:
-            return "http://81.70.76.222/"
-        }
-    }
-}
