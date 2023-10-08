@@ -9,18 +9,18 @@ import CryptoKit
 import Defaults
 import Foundation
 
-// MARK: - Method
-
-enum Method {
-    case post
-    case get
-    case put
-}
-
 // MARK: - HttpMethod
 
 @available(iOS 13, watchOS 6, *)
-struct HttpMethod<T: Codable> {
+public struct HttpMethod<T: Codable> {
+    // MARK: - Method
+
+    public enum Method {
+        case post
+        case get
+        case put
+    }
+
     /// 综合的http 各种方法接口
     /// - Parameters:
     ///   - method:Method, http方法的类型
@@ -30,7 +30,7 @@ struct HttpMethod<T: Codable> {
     ///   - uid: String, UID
     ///   - cookie: String， 用户Cookie
     ///   - completion:异步返回处理好的data以及报错的类型
-    static func commonRequest(
+    public static func commonRequest(
         _ method: Method,
         _ urlStr: String,
         _ region: Region,
@@ -255,7 +255,7 @@ struct HttpMethod<T: Codable> {
     ///   - uid: String, UID
     ///   - cookie: String， 用户Cookie
     ///   - completion:异步返回处理好的data以及报错的类型
-    static func commonWidgetRequest(
+    public static func commonWidgetRequest(
         _ method: Method,
         _ urlStr: String,
         _ cookie: String,
@@ -444,7 +444,7 @@ struct HttpMethod<T: Codable> {
     /// - Parameters:
     ///   - login
     ///   - completion:异步返回处理好的data以及报错的类型
-    static func commonGetToken(
+    public static func commonGetToken(
         _ method: Method,
         urlStr: String,
         loginTicket: String,
@@ -616,7 +616,7 @@ struct HttpMethod<T: Codable> {
     ///   - uid: String, UID
     ///   - cookie: String， 用户Cookie
     ///   - completion:异步返回处理好的data以及报错的类型
-    static func spiralAbyssRequest(
+    public static func spiralAbyssRequest(
         _ method: Method,
         _ urlStr: String,
         _ region: Region,
@@ -835,7 +835,7 @@ struct HttpMethod<T: Codable> {
     ///   - uid: String, UID
     ///   - cookie: String， 用户Cookie
     ///   - completion:异步返回处理好的data以及报错的类型
-    static func basicInfoRequest(
+    public static func basicInfoRequest(
         _ method: Method,
         _ urlStr: String,
         _ region: Region,
@@ -946,6 +946,7 @@ struct HttpMethod<T: Codable> {
                     baseStr = reverseProxyURL
                         .isEmpty ? "https://bbs-api-os.hoyoverse.com/game_record/app/" :
                         "\(reverseProxyURL)game_record/app/"
+                    print("Use Reverse Proxy: \(reverseProxyURL.isEmpty ? "Null" : reverseProxyURL)")
                     appVersion = "2.9.1"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
@@ -1045,7 +1046,7 @@ struct HttpMethod<T: Codable> {
     ///   - cookie: String， 用户Cookie
     ///   - serverID: String，服务器ID
     ///   - completion:异步返回处理好的data以及报错的类型
-    static func gameAccountRequest(
+    public static func gameAccountRequest(
         _ method: Method,
         _ urlStr: String,
         _ region: Region,
@@ -1171,7 +1172,7 @@ struct HttpMethod<T: Codable> {
     ///   - completion:异步返回处理好的data以及报错的类型
     ///
     ///  需要自己传URL类型的url过来
-    static func openRequest(
+    public static func openRequest(
         _ method: Method,
         _ url: URL,
         cachedPolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
@@ -1274,7 +1275,7 @@ struct HttpMethod<T: Codable> {
     ///   - region:Region，请求的服务器地区类型
     ///   - cookie: String， 用户Cookie
     ///   - completion:异步返回处理好的data以及报错的类型
-    static func ledgerDataRequest(
+    public static func ledgerDataRequest(
         _ method: Method,
         _ urlStr: String,
         _ month: Int,
@@ -1507,7 +1508,7 @@ struct HttpMethod<T: Codable> {
     ///   - completion:异步返回处理好的data以及报错的类型
     ///
     ///  需要自己传URL类型的url过来
-    static func homeRequest(
+    public static func homeRequest(
         _ method: Method,
         _ urlStr: String,
         cachedPolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
@@ -1602,7 +1603,7 @@ struct HttpMethod<T: Codable> {
     ///   - completion:异步返回处理好的data以及报错的类型
     ///
     ///  需要自己传URL类型的url过来
-    static func postRequest(
+    public static func postRequest(
         _ method: Method,
         baseHost: String = "http://81.70.76.222/",
         urlStr: String,
@@ -1782,7 +1783,7 @@ struct HttpMethod<T: Codable> {
     ///   - completion:异步返回处理好的data以及报错的类型
     ///
     ///  需要自己传URL类型的url过来
-    static func homeServerRequest(
+    public static func homeServerRequest(
         _ method: Method,
         baseHost: String = "http://81.70.76.222",
         urlStr: String,
@@ -1894,7 +1895,7 @@ struct HttpMethod<T: Codable> {
                                 with: "0"
                             ).data(using: .utf8)!
                             let decoder = JSONDecoder()
-                            if baseHost != "http://81.70.76.222" {
+                            if baseHost != "http://81.70.76.222" || baseHost != "https://homa.snapgenshin.com" {
                                 decoder
                                     .keyDecodingStrategy = .convertFromSnakeCase
                             }
@@ -1904,6 +1905,7 @@ struct HttpMethod<T: Codable> {
                                 return
                             }
                             print(response.statusCode)
+                            print(stringData)
 
                             do {
                                 let requestResult = try decoder.decode(
@@ -1936,7 +1938,7 @@ public class API {
 
 // String的扩展，让其具有直接加键值对的功能
 extension String {
-    func addPara(_ key: String, _ value: String) -> String {
+    public func addPara(_ key: String, _ value: String) -> String {
         var str = self
         if str != "" {
             str += "&"

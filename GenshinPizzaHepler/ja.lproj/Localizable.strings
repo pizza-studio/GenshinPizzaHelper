@@ -32,8 +32,8 @@
 "$asset.dailyMaterial:weaponDistantSea" = "「遠海夷地」";
 "$asset.dailyMaterial:weaponNarukami" = "「鳴神御霊」";
 "$asset.dailyMaterial:weaponKijinMask" = "「今昔劇画」";
-"$asset.dailyMaterial:weaponTalisman" = "「静謐な森のしずく」";
-"$asset.dailyMaterial:weaponOasisGarden" = "「オアシスガーデン」";
+"$asset.dailyMaterial:weaponTalisman" = "「静謐森雫」";
+"$asset.dailyMaterial:weaponOasisGarden" = "「オアシス」";
 "$asset.dailyMaterial:weaponScorchingMight" = "「烈日権威」";
 "$asset.dailyMaterial:weaponAncientChord" = "「悠久の弦」";
 "$asset.dailyMaterial:weaponDewdrop" = "「純聖な雫」";

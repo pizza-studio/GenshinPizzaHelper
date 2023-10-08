@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/10/3.
 //
 
+import HBMihoyoAPI
 import SwiftUI
 
 @available(iOS 15, *)
