@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HBMihoyoAPI
 
 // public typealias FetchResult = Result<UserData, FetchError>
 // public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
@@ -46,16 +47,6 @@ private let isMac: Bool = {
     #endif
     #endif
 }()
-
-// MARK: - RequestError
-
-public enum RequestError: Error {
-    case dataTaskError(String)
-    case noResponseData
-    case responseError
-    case decodeError(String)
-    case errorWithCode(Int)
-}
 
 // MARK: - ErrorCode
 

@@ -1505,6 +1505,7 @@ public struct HttpMethod<T: Codable> {
     /// - Parameters:
     ///   - method:Method, http方法的类型
     ///   - url:String，请求的路径
+    ///   - baseStr:请求url前缀，后跟request的类型
     ///   - completion:异步返回处理好的data以及报错的类型
     ///
     ///  需要自己传URL类型的url过来
@@ -1512,6 +1513,8 @@ public struct HttpMethod<T: Codable> {
         _ method: Method,
         _ urlStr: String,
         cachedPolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
+        baseStr: String,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy? = nil,
         completion: @escaping (
             (Result<T, RequestError>) -> ()
         )
@@ -1520,8 +1523,6 @@ public struct HttpMethod<T: Codable> {
 
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
-                // 请求url前缀，后跟request的类型
-                let baseStr: String = "https://gi.pizzastudio.org/"
                 // 由前缀和后缀共同组成的url
                 let url = URLComponents(string: baseStr + urlStr)!
                 // 初始化请求
@@ -1547,7 +1548,10 @@ public struct HttpMethod<T: Codable> {
                 URLSession.shared.dataTask(
                     with: request
                 ) { data, response, error in
-                    // 判断有没有错误（这里无论如何都不会抛因为是自己手动返回错误信息的）
+                    if let statusCode = (response as? HTTPURLResponse)?
+                        .statusCode, statusCode != 200 {
+                        completion(.failure(.errorWithCode(statusCode)))
+                    }
                     print(error ?? "ErrorInfo nil")
                     if let error = error {
                         completion(.failure(.dataTaskError(
@@ -1571,7 +1575,9 @@ public struct HttpMethod<T: Codable> {
                         }
                         DispatchQueue.main.async {
                             let decoder = JSONDecoder()
-//                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            if let keyDecodingStrategy = keyDecodingStrategy {
+                                decoder.keyDecodingStrategy = keyDecodingStrategy
+                            }
 
 //                            let dictionary = try? JSONSerialization.jsonObject(with: data)
 //                            print(dictionary ?? "None")
