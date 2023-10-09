@@ -1330,7 +1330,7 @@
 "testSectionView.accountStatusAbnormal.promptForVerification" = "帳號狀態異常，需要真人認證";
 "testSectionView.clickHereForVerification" = "點擊此處以開始真人認證";
 "account.test.verify.web_sheet.title" = "真人認證";
-"requestRelated.accountStatusAbnormal.promptForVerificationInApp" = "账号状态异常，需要開啟 App 進行真人認證";
+"requestRelated.accountStatusAbnormal.promptForVerificationInApp" = "帳號狀態異常，需要開啟 App 進行真人認證";
 "requestRelated.accountStatusAbnormal.errorMessage" = "（1034）帳號需要認證。請打開應用程式進行真人認證。建議長按小組件開啟簡潔模式。";
 
 // MARK: - 3.0.0
