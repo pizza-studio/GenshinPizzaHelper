@@ -7,6 +7,7 @@
 
 import Defaults
 import Foundation
+import UIKit
 
 // MARK: - NameCard
 
@@ -215,6 +216,10 @@ extension NameCard {
         return result
     }
 
+    public static var defaultValue: NameCard { .UI_NameCardPic_Bp20_P }
+
+    public static var random: NameCard { allCases.randomElement() ?? .defaultValue }
+
     /// 自指定日期開始返回 nil。
     /// - Parameter date: 指定日期
     /// - Returns: 自指定日期開始返回 nil。
@@ -248,3 +253,19 @@ extension NameCard {
         return localizedKey.localized.localizedWithFix
     }
 }
+
+#if !os(watchOS)
+extension NameCard {
+    public var smallImage: UIImage? {
+        guard let uiImage = UIImage(named: fileName) else { return nil }
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        let targetSize = CGSize(width: floor(uiImage.size.width / 2), height: floor(uiImage.size.height / 2))
+        let renderer = UIGraphicsImageRenderer(size: targetSize, format: format)
+        return renderer.image { _ in
+            let newRect = CGRect(origin: .zero, size: targetSize)
+            uiImage.draw(in: newRect)
+        }
+    }
+}
+#endif

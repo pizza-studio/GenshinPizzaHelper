@@ -16,10 +16,12 @@ struct WidgetBackgroundView: View {
     let background: WidgetBackground
     let darkModeOn: Bool
 
+    @State
+    var proxy: GeometryProxy? = nil
+
     var backgroundColors: [Color] { background.colors }
     var backgroundIconName: String? { background.iconName }
     var backgroundImageName: String? { background.imageName }
-
     var body: some View {
         ZStack {
             if !backgroundColors.isEmpty {
@@ -38,33 +40,45 @@ struct WidgetBackgroundView: View {
                         .opacity(0.05)
                         .padding()
                         .frame(width: g.size.width, height: g.size.height)
+                        .onAppear {
+                            proxy = g
+                        }
                 }
             }
 
-            if let backgroundImageName = backgroundImageName {
+            if let backgroundImage = UIImage(named: backgroundImageName ?? "") {
                 switch widgetFamily {
-                case .systemSmall:
+                case .systemLarge, .systemSmall:
                     GeometryReader { g in
-                        Image(backgroundImageName)
+                        Image(uiImage: backgroundImage)
                             .resizable()
                             .scaledToFill()
                             .offset(x: -g.size.width)
                     }
-                case .systemMedium:
-                    Image(backgroundImageName)
-                        .resizable()
-                        .scaledToFill()
-                case .systemLarge:
-                    GeometryReader { g in
-                        Image(backgroundImageName)
-                            .resizable()
-                            .scaledToFill()
-                            .offset(x: -g.size.width)
+                    .onAppear {
+                        NSLog(
+                            "[OPHelper] Successfully initialized UIImage: " +
+                                (backgroundImageName ?? "File name nulled.")
+                        )
                     }
                 default:
-                    Image(backgroundImageName)
+                    // 包括 .systemMedium
+                    Image(uiImage: backgroundImage)
                         .resizable()
                         .scaledToFill()
+                        .onAppear {
+                            NSLog(
+                                "[OPHelper] Successfully initialized UIImage: " +
+                                    (backgroundImageName ?? "File name nulled.")
+                            )
+                        }
+                }
+            } else {
+                EmptyView().onAppear {
+                    NSLog(
+                        "[OPHelper] Failed from initializing UIImage: " +
+                            (backgroundImageName ?? "File name nulled.")
+                    )
                 }
             }
 

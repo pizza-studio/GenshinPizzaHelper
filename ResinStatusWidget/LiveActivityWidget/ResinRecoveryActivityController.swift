@@ -53,7 +53,7 @@ class ResinRecoveryActivityController {
             Self.backgroundSettingsSanityCheck()
             let backgrounds = Defaults[.resinRecoveryLiveActivityBackgroundOptions]
             if backgrounds.isEmpty {
-                return .customize([NameCard.UI_NameCardPic_Bp20_P.fileName])
+                return .customize([NameCard.defaultValue.fileName])
             } else {
                 return .customize(backgrounds)
             }

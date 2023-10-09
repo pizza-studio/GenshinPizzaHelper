@@ -7,6 +7,7 @@
 
 #if canImport(ActivityKit)
 import ActivityKit
+import Defaults
 import Foundation
 import SwiftUI
 import WidgetKit
@@ -119,11 +120,52 @@ struct ResinRecoveryActivityWidget: Widget {
 
 @available(iOS 16.1, *)
 struct ResinRecoveryActivityWidgetLockScreenView: View {
-    let context: ActivityViewContext<ResinRecoveryAttributes>
+    @State
+    var context: ActivityViewContext<ResinRecoveryAttributes>
+
+    @Default(.resinRecoveryLiveActivityBackgroundOptions)
+    var resinRecoveryLiveActivityBackgroundOptions: [String]
 
     var useNoBackground: Bool { context.state.background == .noBackground }
 
     var body: some View {
+        contentView
+        #if !os(watchOS)
+        .background {
+            switch context.state.background {
+            case .random:
+                if let uiImage = NameCard.random.smallImage {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                    Color.black
+                        .opacity(0.3)
+                }
+            // WidgetBackgroundView(background: bg, darkModeOn: true)
+            case .customize:
+                let chosenCardBackgrounds = NameCard.allCases.compactMap { card in
+                    resinRecoveryLiveActivityBackgroundOptions.contains(card.fileName) ? card
+                        : nil
+                }
+                let randomCardBg = chosenCardBackgrounds.randomElement() ?? .defaultValue
+                if let uiImage = randomCardBg.smallImage {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                    Color.black
+                        .opacity(0.3)
+                    // WidgetBackgroundView(background: WidgetBackground(identifier: randomCardBg.fileName,display: randomCardBg.localized),darkModeOn: true)
+                }
+            case .noBackground:
+                EmptyView()
+            }
+        }
+        #endif
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    @ViewBuilder
+    var contentView: some View {
         HStack {
             Grid(verticalSpacing: 7) {
                 if context.state.showNext20Resin {
@@ -203,26 +245,6 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         .shadow(radius: useNoBackground ? 0 : 0.8)
         .foregroundColor(useNoBackground ? .primary : Color("textColor3"))
         .padding()
-        .background(alignment: .center) {
-            switch context.state.background {
-            case .random:
-                WidgetBackgroundView(
-                    background: .randomNamecardBackground,
-                    darkModeOn: true
-                )
-            case let .customize(backgroundOptions):
-                WidgetBackgroundView(
-                    background: backgroundOptions
-                        .map {
-                            WidgetBackground(identifier: $0, display: $0)
-                        }
-                        .randomElement()!,
-                    darkModeOn: true
-                )
-            case .noBackground:
-                EmptyView()
-            }
-        }
     }
 }
 #endif

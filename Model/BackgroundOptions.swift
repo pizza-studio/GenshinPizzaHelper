@@ -48,8 +48,8 @@ struct BackgroundOptions {
 
 extension WidgetBackground {
     static let defaultBackground: WidgetBackground = .init(
-        identifier: NameCard.UI_NameCardPic_Bp20_P.fileName,
-        display: NameCard.UI_NameCardPic_Bp20_P.localized
+        identifier: NameCard.defaultValue.fileName,
+        display: NameCard.defaultValue.localized
     )
     static var randomBackground: WidgetBackground {
         let pickedBackgroundId = BackgroundOptions.allOptions.randomElement()!
@@ -68,7 +68,7 @@ extension WidgetBackground {
     }
 
     static var randomNamecardBackground: WidgetBackground {
-        let pickedBackgroundId = NameCard.allLegalCases.randomElement()!
+        let pickedBackgroundId = NameCard.allLegalCases.randomElement() ?? .defaultValue
         return WidgetBackground(
             identifier: pickedBackgroundId.fileName,
             display: pickedBackgroundId.localized

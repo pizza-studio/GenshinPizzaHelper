@@ -1327,7 +1327,7 @@
 
 // MARK: - 2.8.5
 
-"testSectionView.accountStatusAbnormal.promptForVerification" = "账号状态异常，需要真人認證";
+"testSectionView.accountStatusAbnormal.promptForVerification" = "帳號狀態異常，需要真人認證";
 "testSectionView.clickHereForVerification" = "點擊此處以開始真人認證";
 "account.test.verify.web_sheet.title" = "真人認證";
 "requestRelated.accountStatusAbnormal.promptForVerificationInApp" = "账号状态异常，需要開啟 App 進行真人認證";
