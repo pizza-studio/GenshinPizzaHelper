@@ -24,7 +24,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
 
     enum ShowingData: String, CaseIterable, Identifiable {
         case abyssAvatarsUtilization = "深渊角色使用率"
-        case pvpUtilization = "abyssDataCollection.characterUsageRateSansRestart"
+        case pvpUtilization = "abyssDataCollection.usageRate.characterSansRestart"
         case teamUtilization = "深渊队伍使用率"
         case fullStarHoldingRate = "满星玩家持有率"
         case holdingRate = "全员角色持有率"
