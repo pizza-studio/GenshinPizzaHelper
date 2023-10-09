@@ -182,7 +182,7 @@ public struct SimplifiedUserData: Codable, SimplifiedUserDataContainer {
 extension UserData {
     public static let defaultData = UserData(
         fetchData: FetchData(
-            currentResin: 90,
+            currentResin: 138,
             maxResin: 160,
             resinRecoveryTime: "\((160 - 90) * 8)",
 
