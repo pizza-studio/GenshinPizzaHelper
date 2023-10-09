@@ -43,7 +43,7 @@ struct LockScreenResinWidgetCircular<T>: View
                 } currentValueLabel: {
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.title3, design: .rounded))
-                        .minimumScaleFactor(0.4)
+                        .minimumScaleFactor(0.1)
                 }
                 .gaugeStyle(
                     ProgressGaugeStyle(
@@ -88,7 +88,7 @@ struct LockScreenResinWidgetCircular<T>: View
                 } currentValueLabel: {
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.title3, design: .rounded))
-                        .minimumScaleFactor(0.4)
+                        .minimumScaleFactor(0.1)
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure:
@@ -114,7 +114,7 @@ struct LockScreenResinWidgetCircular<T>: View
                 } currentValueLabel: {
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.title3, design: .rounded))
-                        .minimumScaleFactor(0.4)
+                        .minimumScaleFactor(0.1)
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure:
