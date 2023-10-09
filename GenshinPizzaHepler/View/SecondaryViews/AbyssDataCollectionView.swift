@@ -360,8 +360,7 @@ struct AbyssDataCollectionView: View {
 
     @ViewBuilder
     func shareView() -> some View {
-        if #available(iOS 16, *), let charMap = viewModel.charMap,
-           let charLoc = viewModel.charLoc {
+        if #available(iOS 16, *) {
             VStack {
                 Text(
                     abyssDataCollectionViewModel.showingType.rawValue
@@ -374,9 +373,7 @@ struct AbyssDataCollectionView: View {
                         if let avatars = try? abyssDataCollectionViewModel
                             .avatarHoldingResult?.get().data.avatars {
                             ShowAvatarPercentageShare(
-                                avatars: avatars,
-                                charMap: charMap,
-                                charLoc: charLoc
+                                avatars: avatars
                             )
                         }
 
@@ -384,9 +381,7 @@ struct AbyssDataCollectionView: View {
                         if let avatars = try? abyssDataCollectionViewModel
                             .fullStaAvatarHoldingResult?.get().data.avatars {
                             ShowAvatarPercentageShare(
-                                avatars: avatars,
-                                charMap: charMap,
-                                charLoc: charLoc
+                                avatars: avatars
                             )
                         }
 
@@ -398,9 +393,7 @@ struct AbyssDataCollectionView: View {
                                 avatars: avatars
                                     .sorted(by: {
                                         $0.percentage ?? 0 > $1.percentage ?? 0
-                                    }),
-                                charMap: charMap,
-                                charLoc: charLoc
+                                    })
                             )
                         }
                     case .pvpUtilization:
@@ -411,9 +404,7 @@ struct AbyssDataCollectionView: View {
                                 avatars: avatars
                                     .sorted(by: {
                                         $0.percentage ?? 0 > $1.percentage ?? 0
-                                    }),
-                                charMap: charMap,
-                                charLoc: charLoc
+                                    })
                             )
                         }
                     case .teamUtilization:
@@ -442,9 +433,7 @@ struct AbyssDataCollectionView: View {
                             ShowTeamPercentageShare(
                                 teams: teams.prefix(32)
                                     .sorted(by: { $0.percentage > $1.percentage
-                                    }),
-                                charMap: charMap,
-                                charLoc: charLoc
+                                    })
                             )
                         }
                     }
@@ -766,8 +755,6 @@ private struct ShowAvatarPercentageViewWithSection: View {
 @available(iOS 16.0, *)
 private struct ShowAvatarPercentageShare: View {
     let avatars: [AvatarPercentageModel.Avatar]
-    let charMap: [String: ENCharacterMap.Character]
-    let charLoc: [String: String]
 
     let percentageFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -908,8 +895,6 @@ private struct ShowTeamPercentageView: View {
 
 private struct ShowTeamPercentageShare: View {
     let teams: [TeamUtilizationData.Team]
-    let charMap: [String: ENCharacterMap.Character]
-    let charLoc: [String: String]
 
     let percentageFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
