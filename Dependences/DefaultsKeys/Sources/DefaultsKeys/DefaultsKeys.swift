@@ -1,11 +1,11 @@
 //
 //  File.swift
 //
-//  This file provides UserDefault keys for Genshin Pizza Helper.
 //
-//  Created by ShikiSuen on 2023/10/7.
+//  Created by 戴藏龙 on 2023/10/8.
 //
 
+import Defaults
 import Foundation
 
 extension UserDefaults {

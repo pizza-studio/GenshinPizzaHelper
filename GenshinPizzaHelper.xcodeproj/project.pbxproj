@@ -7,13 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B0033722AD19FE200CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033712AD19FE200CCCC66 /* Defaults */; };
-		5B0033742AD19FE800CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033732AD19FE800CCCC66 /* Defaults */; };
-		5B0033762AD19FED00CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033752AD19FED00CCCC66 /* Defaults */; };
-		5B0033782AD19FFF00CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033772AD19FFF00CCCC66 /* Defaults */; };
 		5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033792AD1A01700CCCC66 /* Defaults */; };
-		5B00337C2AD1A01D00CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B00337B2AD1A01D00CCCC66 /* Defaults */; };
-		5B00337E2AD1A02400CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B00337D2AD1A02400CCCC66 /* Defaults */; };
 		5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
@@ -26,7 +20,6 @@
 		5B2A9E4F2ACEB7D0005C32B6 /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
 		5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */; };
 		5B41C1832AD3011700CDF2C5 /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17F2AD3010600CDF2C5 /* HBPizzaHelperAPI */; };
-		5B41C1842AD3011700CDF2C5 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C1802AD3010600CDF2C5 /* Defaults */; };
 		5B43A15629D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15729D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
@@ -648,6 +641,13 @@
 		EAA2D4122931C36F00BC94A8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAA2D4112931C36F00BC94A8 /* Settings.bundle */; };
 		EAAD03E429D2FD22007D5C80 /* GachaFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */; };
 		EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E529D2FD88007D5C80 /* GachaItem.swift */; };
+		EAAECA152AD3ACFD003525E1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = EAAECA142AD3ACFD003525E1 /* Defaults */; };
+		EAAECA172AD3AD05003525E1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = EAAECA162AD3AD05003525E1 /* Defaults */; };
+		EAAECA192AD3AD09003525E1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = EAAECA182AD3AD09003525E1 /* Defaults */; };
+		EAAECA1B2AD3AD0D003525E1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = EAAECA1A2AD3AD0D003525E1 /* Defaults */; };
+		EAAECA1D2AD3AD12003525E1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = EAAECA1C2AD3AD12003525E1 /* Defaults */; };
+		EAAECA1F2AD3AD16003525E1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = EAAECA1E2AD3AD16003525E1 /* Defaults */; };
+		EAAECA212AD3AD1A003525E1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = EAAECA202AD3AD1A003525E1 /* Defaults */; };
 		EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAAF330F28A27AFE0018EFAB /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
@@ -686,6 +686,13 @@
 		EABE606A28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
 		EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
 		EAC2BA6328FC195600A9060F /* PrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */; };
+		EAC89A5C2AD3AF1600EC5141 /* DefaultsKeys in Frameworks */ = {isa = PBXBuildFile; productRef = EAC89A5B2AD3AF1600EC5141 /* DefaultsKeys */; };
+		EAC89A5E2AD3AF1B00EC5141 /* DefaultsKeys in Frameworks */ = {isa = PBXBuildFile; productRef = EAC89A5D2AD3AF1B00EC5141 /* DefaultsKeys */; };
+		EAC89A602AD3AF1E00EC5141 /* DefaultsKeys in Frameworks */ = {isa = PBXBuildFile; productRef = EAC89A5F2AD3AF1E00EC5141 /* DefaultsKeys */; };
+		EAC89A622AD3AF2200EC5141 /* DefaultsKeys in Frameworks */ = {isa = PBXBuildFile; productRef = EAC89A612AD3AF2200EC5141 /* DefaultsKeys */; };
+		EAC89A642AD3AF2600EC5141 /* DefaultsKeys in Frameworks */ = {isa = PBXBuildFile; productRef = EAC89A632AD3AF2600EC5141 /* DefaultsKeys */; };
+		EAC89A662AD3AF2900EC5141 /* DefaultsKeys in Frameworks */ = {isa = PBXBuildFile; productRef = EAC89A652AD3AF2900EC5141 /* DefaultsKeys */; };
+		EAC89A682AD3AF2C00EC5141 /* DefaultsKeys in Frameworks */ = {isa = PBXBuildFile; productRef = EAC89A672AD3AF2C00EC5141 /* DefaultsKeys */; };
 		EACBDA5428C9DEF000CEE176 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACBDA5328C9DEF000CEE176 /* CloudKit.framework */; };
 		EACBDA5528C9E92800CEE176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		EACBDA5628C9E92800CEE176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
@@ -916,7 +923,6 @@
 		5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_CostumeAsset.swift; sourceTree = "<group>"; };
 		5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_CharacterAsset_SwiftUIImpl.swift; sourceTree = "<group>"; };
-		5BAE357F2AD19F66003D83DB /* SindreSorhus_Defaults */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SindreSorhus_Defaults; path = Dependences/SindreSorhus_Defaults; sourceTree = "<group>"; };
 		5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
@@ -1138,6 +1144,7 @@
 		EAA2D4112931C36F00BC94A8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaFetchModel.swift; sourceTree = "<group>"; };
 		EAAD03E529D2FD88007D5C80 /* GachaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaItem.swift; sourceTree = "<group>"; };
+		EAAECA232AD3AE23003525E1 /* DefaultsKeys */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DefaultsKeys; path = Dependences/DefaultsKeys; sourceTree = "<group>"; };
 		EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountConfigurationModel.swift; sourceTree = "<group>"; };
 		EAAF330E28A27AFE0018EFAB /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EAB110E228CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenDailyTaskWidgetCircular.swift; sourceTree = "<group>"; };
@@ -1207,8 +1214,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B0033742AD19FE800CCCC66 /* Defaults in Frameworks */,
+				EAAECA172AD3AD05003525E1 /* Defaults in Frameworks */,
 				5BD1C65B2A2A1FC90043C2B1 /* CoreXLSX in Frameworks */,
+				EAC89A5E2AD3AF1B00EC5141 /* DefaultsKeys in Frameworks */,
 				5BD1C65C2A2A1FC90043C2B1 /* HBMihoyoAPI in Frameworks */,
 				5BD1C65D2A2A1FC90043C2B1 /* CloudKit.framework in Frameworks */,
 				5BD1C65E2A2A1FC90043C2B1 /* StoreKit.framework in Frameworks */,
@@ -1224,9 +1232,10 @@
 			files = (
 				BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */,
 				BF15571329CFE5ED0056CFE6 /* HBMihoyoAPI in Frameworks */,
+				EAC89A662AD3AF2900EC5141 /* DefaultsKeys in Frameworks */,
 				BF20733A29D1412B00AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */,
-				5B00337C2AD1A01D00CCCC66 /* Defaults in Frameworks */,
+				EAAECA1F2AD3AD16003525E1 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1234,13 +1243,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B41C1842AD3011700CDF2C5 /* Defaults in Frameworks */,
+				EAC89A642AD3AF2600EC5141 /* DefaultsKeys in Frameworks */,
 				5B41C1832AD3011700CDF2C5 /* HBPizzaHelperAPI in Frameworks */,
 				5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */,
 				5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */,
 				BF20733829D1412700AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF15571129CFE5E60056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EACBDA5428C9DEF000CEE176 /* CloudKit.framework in Frameworks */,
+				EAAECA1D2AD3AD12003525E1 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1250,9 +1260,10 @@
 			files = (
 				EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */,
 				BF15570F29CFE5E10056CFE6 /* HBMihoyoAPI in Frameworks */,
+				EAC89A622AD3AF2200EC5141 /* DefaultsKeys in Frameworks */,
 				BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */,
 				EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */,
-				5B0033782AD19FFF00CCCC66 /* Defaults in Frameworks */,
+				EAAECA1B2AD3AD0D003525E1 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,8 +1271,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B0033762AD19FED00CCCC66 /* Defaults in Frameworks */,
+				EAAECA192AD3AD09003525E1 /* Defaults in Frameworks */,
 				BF15570D29CFE5DD0056CFE6 /* HBMihoyoAPI in Frameworks */,
+				EAC89A602AD3AF1E00EC5141 /* DefaultsKeys in Frameworks */,
 				EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */,
 				EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */,
 				BF20733429D1411A00AD391F /* HBPizzaHelperAPI in Frameworks */,
@@ -1273,8 +1285,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B0033722AD19FE200CCCC66 /* Defaults in Frameworks */,
+				EAAECA152AD3ACFD003525E1 /* Defaults in Frameworks */,
 				BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */,
+				EAC89A5C2AD3AF1600EC5141 /* DefaultsKeys in Frameworks */,
 				BF15570B29CFE5CF0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
 				BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */,
@@ -1288,8 +1301,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B00337E2AD1A02400CCCC66 /* Defaults in Frameworks */,
+				EAAECA212AD3AD1A003525E1 /* Defaults in Frameworks */,
 				BF20733C29D1413100AD391F /* HBPizzaHelperAPI in Frameworks */,
+				EAC89A682AD3AF2C00EC5141 /* DefaultsKeys in Frameworks */,
 				BF15571529CFE5F20056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE95CE228CE10A100D975CB /* Intents.framework in Frameworks */,
 			);
@@ -1440,10 +1454,10 @@
 		BFBDD66C28F3F2B80022B79D /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				EAAECA232AD3AE23003525E1 /* DefaultsKeys */,
 				BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */,
 				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
 				BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */,
-				5BAE357F2AD19F66003D83DB /* SindreSorhus_Defaults */,
 				5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */,
 			);
 			name = Packages;
@@ -2036,7 +2050,8 @@
 				5BD1C5C12A2A1FC90043C2B1 /* HBPizzaHelperAPI */,
 				5BD1C5C22A2A1FC90043C2B1 /* AlertToast */,
 				5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */,
-				5B0033732AD19FE800CCCC66 /* Defaults */,
+				EAAECA162AD3AD05003525E1 /* Defaults */,
+				EAC89A5D2AD3AF1B00EC5141 /* DefaultsKeys */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */;
@@ -2058,7 +2073,8 @@
 			packageProductDependencies = (
 				BF15571229CFE5ED0056CFE6 /* HBMihoyoAPI */,
 				BF20733929D1412B00AD391F /* HBPizzaHelperAPI */,
-				5B00337B2AD1A01D00CCCC66 /* Defaults */,
+				EAAECA1E2AD3AD16003525E1 /* Defaults */,
+				EAC89A652AD3AF2900EC5141 /* DefaultsKeys */,
 			);
 			productName = WatchWidgetExtensionExtension;
 			productReference = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */;
@@ -2084,7 +2100,8 @@
 			packageProductDependencies = (
 				5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */,
 				5B41C17F2AD3010600CDF2C5 /* HBPizzaHelperAPI */,
-				5B41C1802AD3010600CDF2C5 /* Defaults */,
+				EAAECA1C2AD3AD12003525E1 /* Defaults */,
+				EAC89A632AD3AF2600EC5141 /* DefaultsKeys */,
 			);
 			productName = WatchHelper;
 			productReference = BFCC065628C9B6A0003E4A54 /* 原神披萨小助手.app */;
@@ -2106,7 +2123,8 @@
 			packageProductDependencies = (
 				BF15570E29CFE5E10056CFE6 /* HBMihoyoAPI */,
 				BF20733529D1412100AD391F /* HBPizzaHelperAPI */,
-				5B0033772AD19FFF00CCCC66 /* Defaults */,
+				EAAECA1A2AD3AD0D003525E1 /* Defaults */,
+				EAC89A612AD3AF2200EC5141 /* DefaultsKeys */,
 			);
 			productName = AccountIntent;
 			productReference = EA099FF328A2B7220023B4AF /* AccountIntent.appex */;
@@ -2128,7 +2146,8 @@
 			packageProductDependencies = (
 				BF15570C29CFE5DD0056CFE6 /* HBMihoyoAPI */,
 				BF20733329D1411A00AD391F /* HBPizzaHelperAPI */,
-				5B0033752AD19FED00CCCC66 /* Defaults */,
+				EAAECA182AD3AD09003525E1 /* Defaults */,
+				EAC89A5F2AD3AF1E00EC5141 /* DefaultsKeys */,
 			);
 			productName = ResinStatusWidgetExtension;
 			productReference = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */;
@@ -2159,7 +2178,8 @@
 				BF20733129D1411500AD391F /* HBPizzaHelperAPI */,
 				BF9D74EB29DB1604009A9918 /* AlertToast */,
 				BF9D74EE29DBBA98009A9918 /* CoreXLSX */,
-				5B0033712AD19FE200CCCC66 /* Defaults */,
+				EAAECA142AD3ACFD003525E1 /* Defaults */,
+				EAC89A5B2AD3AF1600EC5141 /* DefaultsKeys */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -2181,7 +2201,8 @@
 			packageProductDependencies = (
 				BF15571429CFE5F20056CFE6 /* HBMihoyoAPI */,
 				BF20733B29D1413100AD391F /* HBPizzaHelperAPI */,
-				5B00337D2AD1A02400CCCC66 /* Defaults */,
+				EAAECA202AD3AD1A003525E1 /* Defaults */,
+				EAC89A672AD3AF2C00EC5141 /* DefaultsKeys */,
 			);
 			productName = WatchIntent;
 			productReference = EAE95CE128CE10A000D975CB /* WatchIntent.appex */;
@@ -2239,6 +2260,7 @@
 			packageReferences = (
 				BF9D74EA29DB1604009A9918 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				BF9D74ED29DBBA98009A9918 /* XCRemoteSwiftPackageReference "CoreXLSX" */,
+				EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
 			projectDirPath = "";
@@ -3937,34 +3959,18 @@
 				minimumVersion = 0.14.2;
 			};
 		};
+		EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5B0033712AD19FE200CCCC66 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Defaults;
-		};
-		5B0033732AD19FE800CCCC66 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Defaults;
-		};
-		5B0033752AD19FED00CCCC66 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Defaults;
-		};
-		5B0033772AD19FFF00CCCC66 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Defaults;
-		};
 		5B0033792AD1A01700CCCC66 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Defaults;
-		};
-		5B00337B2AD1A01D00CCCC66 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Defaults;
-		};
-		5B00337D2AD1A02400CCCC66 /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Defaults;
 		};
@@ -3975,10 +3981,6 @@
 		5B41C17F2AD3010600CDF2C5 /* HBPizzaHelperAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HBPizzaHelperAPI;
-		};
-		5B41C1802AD3010600CDF2C5 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Defaults;
 		};
 		5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -4063,6 +4065,69 @@
 		BFBDD66E28F3F3C90022B79D /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftPieChart;
+		};
+		EAAECA142AD3ACFD003525E1 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		EAAECA162AD3AD05003525E1 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		EAAECA182AD3AD09003525E1 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		EAAECA1A2AD3AD0D003525E1 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		EAAECA1C2AD3AD12003525E1 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		EAAECA1E2AD3AD16003525E1 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		EAAECA202AD3AD1A003525E1 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		EAC89A5B2AD3AF1600EC5141 /* DefaultsKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DefaultsKeys;
+		};
+		EAC89A5D2AD3AF1B00EC5141 /* DefaultsKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DefaultsKeys;
+		};
+		EAC89A5F2AD3AF1E00EC5141 /* DefaultsKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DefaultsKeys;
+		};
+		EAC89A612AD3AF2200EC5141 /* DefaultsKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DefaultsKeys;
+		};
+		EAC89A632AD3AF2600EC5141 /* DefaultsKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DefaultsKeys;
+		};
+		EAC89A652AD3AF2900EC5141 /* DefaultsKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DefaultsKeys;
+		};
+		EAC89A672AD3AF2C00EC5141 /* DefaultsKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DefaultsKeys;
 		};
 /* End XCSwiftPackageProductDependency section */
 

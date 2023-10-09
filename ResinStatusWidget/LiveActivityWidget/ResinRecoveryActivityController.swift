@@ -15,11 +15,7 @@ import HBMihoyoAPI
 class ResinRecoveryActivityController {
     // MARK: Lifecycle
 
-    private init() {
-        Defaults.reset(.resinRecoveryLiveActivityShowExpedition)
-        Defaults.reset(.resinRecoveryLiveActivityBackgroundOptions)
-        Defaults.reset(.autoUpdateResinRecoveryTimerUsingReFetchData)
-    }
+    private init() {}
 
     // MARK: Public
 

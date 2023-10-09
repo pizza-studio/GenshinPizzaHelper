@@ -14,18 +14,6 @@ class UserNotificationCenter {
     // MARK: Lifecycle
 
     private init() {
-        Defaults.reset(.allowResinNotification)
-        Defaults.reset(.resinNotificationNum)
-        Defaults.reset(.allowFullResinNotification)
-        Defaults.reset(.allowHomeCoinNotification)
-        Defaults.reset(.homeCoinNotificationHourBeforeFull)
-        Defaults.reset(.noticeExpeditionMethodRawValue)
-        Defaults.reset(.allowWeeklyBossesNotification)
-        Defaults.reset(.weeklyBossesNotificationTimePointData)
-        Defaults.reset(.allowTransformerNotification)
-        Defaults.reset(.allowDailyTaskNotification)
-        Defaults.reset(.dailyTaskNotificationTimePointData)
-        Defaults.reset(.notificationIgnoreUidsData)
         center.setNotificationCategories([normalNotificationCategory])
     }
 

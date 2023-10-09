@@ -7,6 +7,7 @@
 
 import CoreData
 import Defaults
+import DefaultsKeys
 import Foundation
 import HBMihoyoAPI
 import HBPizzaHelperAPI
@@ -357,7 +358,7 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     public var enkaDataWrecked: Bool {
-        charLoc.isNil || charMap.isNil || (charLoc?.count ?? 0) * (charMap?.count ?? 0) == 0
+        charLoc == nil || charMap == nil || (charLoc?.count ?? 0) * (charMap?.count ?? 0) == 0
     }
 
     public var enkaDataNeedsUpdate: Bool {

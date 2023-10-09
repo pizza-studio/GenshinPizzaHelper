@@ -222,12 +222,6 @@ struct ContentView: View {
                 "Locale: \(Bundle.main.preferredLocalizations.first ?? "Unknown")"
             )
         }
-        .onAppear {
-            Defaults.reset(.lockscreenWidgetSyncFrequencyInMinute)
-            Defaults.reset(.mainWidgetSyncFrequencyInMinute)
-            Defaults.reset(.homeCoinRefreshFrequencyInHour)
-            Defaults.reset(.watchWidgetUseSimplifiedMode)
-        }
         .navigate(
             to: NotificationSettingView().environmentObject(viewModel),
             when: $isJumpToSettingsView

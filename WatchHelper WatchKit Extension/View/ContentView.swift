@@ -91,11 +91,6 @@ struct ContentView: View {
                 break
             }
         })
-        .onAppear {
-            Defaults.reset(.watchWidgetUseSimplifiedMode)
-            Defaults.reset(.lockscreenWidgetSyncFrequencyInMinute)
-            Defaults.reset(.homeCoinRefreshFrequencyInHour)
-        }
 //        .onAppear {
 //            viewModel.accounts.forEach { account in
 //                viewModel.deleteAccount(account: account)

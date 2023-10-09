@@ -16,7 +16,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../SindreSorhus_Defaults"),
+        .package(url: "https://github.com/sindresorhus/Defaults", from: "1.0.0"),
+        .package(url: "./Dependences/DefaultsKeys", from: "1.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -24,7 +25,8 @@ let package = Package(
         .target(
             name: "HBMihoyoAPI",
             dependencies: [
-                .product(name: "Defaults", package: "SindreSorhus_Defaults"),
+                .product(name: "Defaults", package: "Defaults"),
+                .product(name: "DefaultsKeys", package: "DefaultsKeys"),
             ]
         ),
         .testTarget(
