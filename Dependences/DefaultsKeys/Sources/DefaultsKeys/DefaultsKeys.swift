@@ -194,6 +194,8 @@ extension Defaults.Keys {
         Key<Bool>("useActualCharacterNames", default: false, suite: .opSuite)
     public static let customizedNameForWanderer =
         Key<String>("customizedNameForWanderer", default: .init(), suite: .opSuite)
+    public static let fineResizeCharacterPhotos =
+        Key<Bool>("fineResizeCharacterPhotos", default: true, suite: .opSuite)
     public static let cutShouldersForSmallAvatarPhotos =
         Key<Bool>("cutShouldersForSmallAvatarPhotos", default: false, suite: .opSuite)
     public static let useGuestGachaEvaluator =
