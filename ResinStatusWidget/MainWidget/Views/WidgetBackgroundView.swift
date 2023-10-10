@@ -17,7 +17,7 @@ struct WidgetBackgroundView: View {
     let darkModeOn: Bool
 
     @State
-    var proxy: GeometryProxy? = nil
+    var proxy: GeometryProxy?
 
     var backgroundColors: [Color] { background.colors }
     var backgroundIconName: String? { background.iconName }
