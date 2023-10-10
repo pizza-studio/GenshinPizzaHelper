@@ -54,6 +54,11 @@ struct AccountBasicInfosView: View {
                                 content: "\(basicAccountInfo.stats.electroculusNumber)",
                                 contentStyle: .capsule
                             )
+                            InfoPreviewer(
+                                title: "水神瞳",
+                                content: "\(basicAccountInfo.stats.hydroculusNumber)",
+                                contentStyle: .capsule
+                            )
                         }
                         VStack(spacing: 5) {
                             InfoPreviewer(
@@ -166,6 +171,11 @@ struct AccountBasicInfosView: View {
                             InfoPreviewer(
                                 title: "草神瞳",
                                 content: "\(basicAccountInfo.stats.dendroculusNumber)",
+                                contentStyle: .capsule
+                            )
+                            InfoPreviewer(
+                                title: "水神瞳",
+                                content: "\(basicAccountInfo.stats.hydroculusNumber)",
                                 contentStyle: .capsule
                             )
                         }

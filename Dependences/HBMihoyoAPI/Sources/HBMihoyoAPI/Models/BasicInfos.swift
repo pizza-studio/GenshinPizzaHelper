@@ -33,6 +33,8 @@ public struct BasicInfos: Codable {
         public var luxuriousChestNumber: Int
         /// 雷神瞳
         public var electroculusNumber: Int
+        /// 水神瞳
+        public var hydroculusNumber: Int
         /// 珍贵宝箱数
         public var preciousChestNumber: Int
         /// 深境螺旋
