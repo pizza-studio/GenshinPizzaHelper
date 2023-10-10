@@ -51,17 +51,14 @@ struct AllAvatarListSheetView: View {
 
                 Section {
                     ForEach(showingAvatars, id: \.id) { avatar in
-                        AvatarListItem(
-                            avatar: avatar,
-                            charMap: viewModel.charMap
-                        )
-                        .padding(.horizontal)
-                        .padding(.vertical, 4)
-                        .background {
-                            if let asset = avatar.asset {
-                                EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill().opacity(0.6)
+                        AvatarListItem(avatar: avatar)
+                            .padding(.horizontal)
+                            .padding(.vertical, 4)
+                            .background {
+                                if let asset = avatar.asset {
+                                    EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill().opacity(0.6)
+                                }
                             }
-                        }
                     }
                 }
                 .textCase(.none)
@@ -152,7 +149,6 @@ struct AllAvatarListSheetView: View {
 
 struct AvatarListItem: View {
     let avatar: AllAvatarDetailModel.Avatar
-    let charMap: [String: ENCharacterMap.Character]?
 
     var body: some View {
         HStack(spacing: 3) {
@@ -236,7 +232,6 @@ struct AvatarListItem: View {
 private struct AllAvatarListShareView: View {
     let accountName: String
     let showingAvatars: [AllAvatarDetailModel.Avatar]
-    let charMap: [String: ENCharacterMap.Character]?
 
     var eachColumnAvatars: [[AllAvatarDetailModel.Avatar]] {
         let chunkSize = 16 // 每列的角色数
@@ -262,8 +257,7 @@ private struct AllAvatarListShareView: View {
                     let view = VStack(alignment: .leading) {
                         ForEach(columnAvatars, id: \.id) { avatar in
                             AvatarListItemShare(
-                                avatar: avatar,
-                                charMap: charMap
+                                avatar: avatar
                             )
                         }
                     }
@@ -293,20 +287,13 @@ private struct AllAvatarListShareView: View {
 
 private struct AvatarListItemShare: View {
     let avatar: AllAvatarDetailModel.Avatar
-    let charMap: [String: ENCharacterMap.Character]?
 
     var body: some View {
         HStack {
             ZStack(alignment: .bottomLeading) {
-                Group {
-                    if let char = charMap?["\(avatar.id)"] {
-                        char.asset.decoratedIcon(55, cutTo: .head)
-                    } else {
-                        WebImage(urlStr: avatar.icon)
-                    }
-                }
-                .frame(width: 55, height: 55)
-                .clipShape(Circle())
+                CharacterAsset.match(id: avatar.id).decoratedIcon(55, cutTo: .head)
+                    .frame(width: 55, height: 55)
+                    .clipShape(Circle())
                 ZStack {
                     Image(systemName: "heart.fill")
                         .foregroundColor(Color(UIColor.darkGray))

@@ -691,10 +691,9 @@ struct DetailPortalView: View {
 
     @ViewBuilder
     func allAvatarNavigator() -> some View {
-        if let basicInfo = account?.basicInfo, let charMap = viewModel.charMap {
+        if let basicInfo = account?.basicInfo {
             AllAvatarNavigator(
                 basicInfo: basicInfo,
-                charMap: charMap,
                 sheetType: $sheetType
             )
         }
@@ -993,7 +992,6 @@ private struct AllAvatarNavigator: View {
     // MARK: Internal
 
     let basicInfo: BasicInfos
-    let charMap: [String: ENCharacterMap.Character]
     @Binding
     var sheetType: SheetTypesForDetailPortalView?
 
@@ -1006,10 +1004,9 @@ private struct AllAvatarNavigator: View {
             Spacer()
             HStack(spacing: 3) {
                 ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
-                    if let char = charMap[avatar.id.description] {
-                        // 必须在这里绑一下 AppStorage，不然这个画面的内容不会自动更新。
-                        char.asset.decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
-                    }
+                    // 必须在这里绑一下 AppStorage，不然这个画面的内容不会自动更新。
+                    CharacterAsset.match(id: avatar.id)
+                        .decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
                 }
             }
             .padding(.vertical, 3)

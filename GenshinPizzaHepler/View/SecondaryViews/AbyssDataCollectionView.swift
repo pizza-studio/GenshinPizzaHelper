@@ -263,11 +263,6 @@ struct AbyssDataCollectionView: View {
                 ShowTeamPercentageView()
             }
         }
-        .onAppear {
-            if viewModel.enkaDataNeedsUpdate {
-                viewModel.refreshCharLocAndCharMapSansAsync()
-            }
-        }
         .environmentObject(abyssDataCollectionViewModel)
         .listStyle(.insetGrouped)
         .hideTabBar()
