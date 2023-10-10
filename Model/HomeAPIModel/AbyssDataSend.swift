@@ -250,13 +250,17 @@ struct HuTaoDBAbyssData: Codable {
     var ReservedUserName: String
 }
 
+// MARK: - Constructor (HuTaoDBAbyssData)
+
 extension HuTaoDBAbyssData {
     init?(
         account: Account,
         which season: AccountSpiralAbyssDetail.WhichSeason
     ) async {
         guard let abyssData = account.spiralAbyssDetail?.get(season),
-              let basicInfo = account.basicInfo
+              let basicInfo = account.basicInfo,
+              let uid = account.config.uid,
+              let cookie = account.config.cookie
         else { return nil }
         guard abyssData.totalStar == 36 else { return nil }
 
@@ -264,8 +268,8 @@ extension HuTaoDBAbyssData {
             MihoyoAPI.fetchAllAvatarInfos(
                 region: account.config.server.region,
                 serverID: account.config.server.id,
-                uid: account.config.uid!,
-                cookie: account.config.cookie!
+                uid: uid,
+                cookie: cookie
             ) { result in
                 switch result {
                 case let .success(data):
@@ -276,7 +280,7 @@ extension HuTaoDBAbyssData {
             }
         }
 
-        self.Uid = account.config.uid!
+        self.Uid = uid
         self.Identity = "GenshinPizzaHelper"
         self.ReservedUserName = ""
 
@@ -296,6 +300,8 @@ extension HuTaoDBAbyssData {
         self.SpiralAbyss = .init(data: abyssData)
     }
 }
+
+// MARK: - Constructor (HuTaoDBAbyssData.SpiralAbyss)
 
 extension HuTaoDBAbyssData.SpiralAbyss {
     init?(data: SpiralAbyssDetail) {
@@ -341,5 +347,59 @@ extension HuTaoDBAbyssData.SpiralAbyss {
                 Levels: levelData
             ))
         }
+        if isInsane() { return nil }
+    }
+}
+
+// MARK: - HuTaoDBAbyssData Sanity Checkers.
+
+extension HuTaoDBAbyssData.SpiralAbyss.Floor.Level.Battle {
+    var isInsane: Bool { Avatars.isEmpty }
+}
+
+extension HuTaoDBAbyssData.SpiralAbyss.Floor.Level {
+    mutating func isInsane() -> Bool { selfTidy() == 0 }
+
+    @discardableResult
+    mutating func selfTidy() -> Int {
+        Battles = Battles.filter { !$0.isInsane }
+        return Battles.count
+    }
+}
+
+extension HuTaoDBAbyssData.SpiralAbyss.Floor {
+    mutating func isInsane() -> Bool { selfTidy() == 0 }
+
+    @discardableResult
+    mutating func selfTidy() -> Int {
+        Levels = Levels.compactMap { level in
+            var level = level
+            level.selfTidy()
+            return level.isInsane() ? nil : level
+        }
+        return Levels.count
+    }
+}
+
+extension HuTaoDBAbyssData.SpiralAbyss {
+    mutating func isInsane() -> Bool { selfTidy() == 0 }
+
+    @discardableResult
+    mutating func selfTidy() -> Int {
+        Floors = Floors.compactMap { floor in
+            var floor = floor
+            floor.selfTidy()
+            return floor.isInsane() ? nil : floor
+        }
+        return Floors.count
+    }
+}
+
+extension HuTaoDBAbyssData {
+    static func sanityCheck(_ this: inout HuTaoDBAbyssData) -> Bool {
+        guard var abyss = this.SpiralAbyss else { return true }
+        let sanityResult = abyss.selfTidy()
+        this.SpiralAbyss = (sanityResult == 0) ? nil : abyss
+        return this.SpiralAbyss == nil
     }
 }
