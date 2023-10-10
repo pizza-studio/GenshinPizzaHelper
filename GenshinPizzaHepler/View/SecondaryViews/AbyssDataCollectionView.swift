@@ -544,13 +544,13 @@ private struct ShowAvatarPercentageView: View {
 
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
         guard let asset = CharacterAsset(rawValue: avatar.charId) else {
-            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 30, height: 30))
+            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 32, height: 32))
         }
         let result = HStack {
             Label {
                 Text(asset.localized)
             } icon: {
-                asset.decoratedIcon(30, cutTo: .face)
+                asset.decoratedIcon(32, cutTo: .face)
             }
             Spacer()
             Text(
@@ -672,13 +672,13 @@ private struct ShowAvatarPercentageViewWithSection: View {
 
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
         guard let asset = CharacterAsset(rawValue: avatar.charId) else {
-            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 30, height: 30))
+            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 32, height: 32))
         }
         let result = HStack {
             Label {
                 Text(asset.localized)
             } icon: {
-                asset.decoratedIcon(30, cutTo: .face)
+                asset.decoratedIcon(32, cutTo: .face)
             }
             Spacer()
             Text(
@@ -785,14 +785,14 @@ private struct ShowAvatarPercentageShare: View {
 
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
         guard let asset = CharacterAsset(rawValue: avatar.charId) else {
-            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 30, height: 30))
+            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 32, height: 32))
         }
         let charName = asset.localized
         let result = GridRow {
             Label {
                 Text(charName).fixedSize()
             } icon: {
-                asset.decoratedIcon(30, cutTo: .face)
+                asset.decoratedIcon(32, cutTo: .face)
             }
             Text(
                 percentageFormatter
@@ -857,22 +857,26 @@ private struct ShowTeamPercentageView: View {
                                     id: \.self
                                 ) { avatarId in
                                     if let avatar = CharacterAsset(rawValue: avatarId) {
-                                        avatar.decoratedIcon(40, cutTo: .face)
+                                        avatar.decoratedIcon(48, cutTo: .face, roundRect: true)
                                     } else {
-                                        Circle().fill(Color.gray).opacity(0.3).frame(width: 40, height: 40)
+                                        Circle().fill(Color.gray).opacity(0.3).frame(width: 48, height: 48)
                                     }
                                 }
                                 Spacer()
-
-                                Text(
-                                    percentageFormatter
-                                        .string(from: (
-                                            team
-                                                .percentage
-                                        ) as NSNumber)!
-                                )
-                                Image(systemName: "\(index + 1).circle")
-                                    .font(.system(size: 14, weight: .light))
+                                VStack(alignment: .center) {
+                                    Text(
+                                        percentageFormatter
+                                            .string(from: (
+                                                team
+                                                    .percentage
+                                            ) as NSNumber)!
+                                    )
+                                    .font(.systemCompressed(size: 16, weight: .heavy))
+                                    if index < 50 {
+                                        Image(systemName: "\(index + 1).circle")
+                                            .font(.system(size: 14, weight: .light))
+                                    }
+                                }
                             }
                         }
                     } header: {
@@ -928,9 +932,9 @@ private struct ShowTeamPercentageShare: View {
                                     id: \.self
                                 ) { avatarId in
                                     if let avatar = CharacterAsset(rawValue: avatarId) {
-                                        avatar.decoratedIcon(40, cutTo: .face)
+                                        avatar.decoratedIcon(48, cutTo: .face, roundRect: true)
                                     } else {
-                                        Circle().fill(Color.gray).opacity(0.3).frame(width: 40, height: 40)
+                                        Circle().fill(Color.gray).opacity(0.3).frame(width: 48, height: 48)
                                     }
                                 }
                             }

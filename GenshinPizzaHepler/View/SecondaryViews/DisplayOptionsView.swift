@@ -13,11 +13,6 @@ import SwiftUI
 // MARK: - DisplayOptionsView
 
 struct DisplayOptionsView: View {
-    // MARK: Public
-
-    @Default(.useGuestGachaEvaluator)
-    public var useGuestGachaEvaluator: Bool
-
     // MARK: Internal
 
     var body: some View {
@@ -121,6 +116,9 @@ struct DisplayOptionsView: View {
     }
 
     // MARK: Private
+
+    @Default(.useGuestGachaEvaluator)
+    private var useGuestGachaEvaluator: Bool
 
     @ObservedObject
     private var viewModel: MoreViewCacheViewModel = .init()
