@@ -13,6 +13,11 @@ import SwiftUI
 // MARK: - DisplayOptionsView
 
 struct DisplayOptionsView: View {
+    // MARK: Public
+
+    @Default(.useGuestGachaEvaluator)
+    public var useGuestGachaEvaluator: Bool
+
     // MARK: Internal
 
     var body: some View {
@@ -102,9 +107,6 @@ struct DisplayOptionsView: View {
             }
 
             Section {
-                Toggle(isOn: $fineResizeCharacterPhotos) {
-                    Text("settings.display.fineResizeCharacterPhotos")
-                }
                 Toggle(isOn: $cutShouldersForSmallAvatarPhotos) {
                     Text("settings.display.cutShouldersForSmallPhotos")
                 }
@@ -119,9 +121,6 @@ struct DisplayOptionsView: View {
     }
 
     // MARK: Private
-
-    @Default(.useGuestGachaEvaluator)
-    private var useGuestGachaEvaluator: Bool
 
     @ObservedObject
     private var viewModel: MoreViewCacheViewModel = .init()
@@ -141,8 +140,6 @@ struct DisplayOptionsView: View {
     private var useActualCharacterNames: Bool
     @Default(.customizedNameForWanderer)
     private var customizedNameForWanderer: String
-    @Default(.fineResizeCharacterPhotos)
-    private var fineResizeCharacterPhotos: Bool
     @Default(.cutShouldersForSmallAvatarPhotos)
     private var cutShouldersForSmallAvatarPhotos: Bool
 }

@@ -18,9 +18,7 @@ extension CharacterAsset {
     )
         -> some View {
         let costume = costume ?? Self.costumeMap[self]
-        let namedStr = costume?.frontPhotoFileName ?? frontPhotoFileName
-        Image(uiImage: Self.resizedImage(named: namedStr, contextSize: size)!)
-            .resizable()
+        EnkaWebIcon(iconString: costume?.frontPhotoFileName ?? frontPhotoFileName)
             .scaledToFill()
             .frame(width: size * 0.74, height: size)
             .clipped()
@@ -57,9 +55,7 @@ extension CharacterAsset {
         let ratio = 179.649 / 1024
         let cornerSize = CGSize(width: ratio * size, height: ratio * size)
         let roundCornerSize = CGSize(width: size / 2, height: size / 2)
-        let namedStr = costume?.frontPhotoFileName ?? frontPhotoFileName
-        Image(uiImage: Self.resizedImage(named: namedStr, contextSize: size)!)
-            .resizable()
+        EnkaWebIcon(iconString: costume?.frontPhotoFileName ?? frontPhotoFileName)
             .scaledToFill()
             .frame(width: size * cutType.rawValue, height: size * cutType.rawValue)
             .clipped()
@@ -77,18 +73,5 @@ extension CharacterAsset {
             .frame(width: size, height: size)
             .clipShape(RoundedRectangle(cornerSize: roundRect ? cornerSize : roundCornerSize))
             .contentShape(RoundedRectangle(cornerSize: roundRect ? cornerSize : roundCornerSize))
-    }
-
-    private static func resizedImage(named: String, contextSize size: CGFloat) -> UIImage? {
-        guard let uiImage = UIImage(named: named) else { return nil }
-        guard Defaults[.fineResizeCharacterPhotos] else { return uiImage }
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = UIScreen.main.scale * 2
-        let targetSize = CGSize(width: size, height: size)
-        let renderer = UIGraphicsImageRenderer(size: targetSize, format: format)
-        return renderer.image { _ in
-            let newRect = CGRect(origin: .zero, size: targetSize)
-            uiImage.draw(in: newRect)
-        }
     }
 }

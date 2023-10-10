@@ -857,7 +857,7 @@ private struct ShowTeamPercentageView: View {
                                     id: \.self
                                 ) { avatarId in
                                     if let avatar = CharacterAsset(rawValue: avatarId) {
-                                        avatar.decoratedIcon(40, cutTo: .face, roundRect: true)
+                                        avatar.decoratedIcon(40, cutTo: .face)
                                     } else {
                                         Circle().fill(Color.gray).opacity(0.3).frame(width: 40, height: 40)
                                     }
@@ -928,7 +928,7 @@ private struct ShowTeamPercentageShare: View {
                                     id: \.self
                                 ) { avatarId in
                                     if let avatar = CharacterAsset(rawValue: avatarId) {
-                                        avatar.decoratedIcon(40, cutTo: .face, roundRect: true)
+                                        avatar.decoratedIcon(40, cutTo: .face)
                                     } else {
                                         Circle().fill(Color.gray).opacity(0.3).frame(width: 40, height: 40)
                                     }

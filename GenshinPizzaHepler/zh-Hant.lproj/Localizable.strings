@@ -1362,4 +1362,3 @@
 // MARK: - 3.1.2
 
 "settings.more.useEnkaJSONFromGitHosts" = "利用來自 Git 服務網站的 Enka JSON 資料";
-"settings.display.fineResizeCharacterPhotos" = "以更高畫質處理角色照片縮放";

@@ -1358,4 +1358,3 @@
 // MARK: - 3.1.2
 
 "settings.more.useEnkaJSONFromGitHosts" = "Fetch Enka JSON data from Git service providers";
-"settings.display.fineResizeCharacterPhotos" = "Higher quality for resized character photos";

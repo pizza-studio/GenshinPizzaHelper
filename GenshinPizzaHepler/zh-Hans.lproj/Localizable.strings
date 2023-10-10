@@ -1360,4 +1360,3 @@ Created by Bill Haku on 2022/8/23.
 // MARK: - 3.1.2
 
 "settings.more.useEnkaJSONFromGitHosts" = "利用来自 Git 服务网站的 Enka JSON 数据";
-"settings.display.fineResizeCharacterPhotos" = "以更高画质处理角色照片缩放";
