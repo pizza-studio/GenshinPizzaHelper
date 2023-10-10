@@ -218,7 +218,7 @@ extension NameCard {
 
     public static var defaultValue: NameCard { .UI_NameCardPic_Bp20_P }
 
-    public static var random: NameCard { allCases.randomElement() ?? .defaultValue }
+    public static var random: NameCard { allLegalCases.randomElement() ?? .defaultValue }
 
     /// 自指定日期開始返回 nil。
     /// - Parameter date: 指定日期

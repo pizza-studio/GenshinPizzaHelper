@@ -143,7 +143,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 }
             // WidgetBackgroundView(background: bg, darkModeOn: true)
             case .customize:
-                let chosenCardBackgrounds = NameCard.allCases.compactMap { card in
+                let chosenCardBackgrounds = NameCard.allLegalCases.compactMap { card in
                     resinRecoveryLiveActivityBackgroundOptions.contains(card.fileName) ? card
                         : nil
                 }
