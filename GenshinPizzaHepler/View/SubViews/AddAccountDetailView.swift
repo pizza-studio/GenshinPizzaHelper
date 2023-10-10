@@ -61,6 +61,7 @@ struct AddAccountDetailView: View {
                 )
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("settings.account.accountInformation", displayMode: .inline)
     }
 }

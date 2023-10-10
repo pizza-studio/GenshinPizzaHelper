@@ -79,6 +79,7 @@ struct WidgetSettingView: View {
                 Text("（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。")
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("小组件设置", displayMode: .inline)
         .sheet(isPresented: $isWidgetTipsSheetShow) {
             WidgetTipsView(isSheetShow: $isWidgetTipsSheetShow)

@@ -160,6 +160,7 @@ struct GetGachaClipboardView: View {
             }
             GetGachaResultView(status: $status)
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .onChange(of: status, perform: { newValue in
             switch newValue {
             case .succeed:
@@ -275,6 +276,7 @@ private struct HelpSheet: View {
                     Text("您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。")
                 }
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("帮助")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

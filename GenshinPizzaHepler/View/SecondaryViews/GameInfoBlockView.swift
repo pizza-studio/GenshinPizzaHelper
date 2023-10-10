@@ -24,7 +24,6 @@ struct GameInfoBlock: View {
         if let userData = userData {
             ZStack {
                 HStack {
-                    Spacer()
                     VStack(alignment: .leading, spacing: 5) {
                         if let accountName = accountName {
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
@@ -42,6 +41,7 @@ struct GameInfoBlock: View {
                             Text("\(userData.resinInfo.currentResin)")
                                 .font(.system(size: 50, design: .rounded))
                                 .fontWeight(.medium)
+                                .minimumScaleFactor(0.1)
                                 .foregroundColor(Color("textColor3"))
                                 .shadow(radius: 1)
                                 .matchedGeometryEffect(
@@ -71,17 +71,16 @@ struct GameInfoBlock: View {
                             in: animation
                         )
                     }
-                    .padding()
-                    Spacer()
+                    .frame(maxWidth: .infinity)
                     DetailInfo(userData: userData, viewConfig: viewConfig)
                         .padding(.vertical)
-                        .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
+                        .frame(maxWidth: .infinity)
                         .matchedGeometryEffect(
                             id: "\(accountUUIDString)detail",
                             in: animation
                         )
-                    Spacer()
                 }
+                .padding()
                 .opacity(fetchComplete ? 1 : 0)
                 if !fetchComplete {
                     HStack {

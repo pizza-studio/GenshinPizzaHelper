@@ -222,6 +222,7 @@ struct AddAccountView: View {
 //                    .listRowBackground(Color.white.opacity(0))
 //            }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("settings.account.addAccount", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

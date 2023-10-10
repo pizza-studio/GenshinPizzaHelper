@@ -410,6 +410,7 @@ private struct HelpSheet: View {
                     Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
                 }
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("导入帮助")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -467,6 +468,7 @@ private struct StatusView<V: View>: View {
                 FailureView(status: $status, errorMessage: string)
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
     }
 }
 

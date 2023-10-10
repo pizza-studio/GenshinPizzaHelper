@@ -30,6 +30,7 @@ public struct ThirdPartyToolsView: View {
                 }
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
     }
 
     // MARK: Internal

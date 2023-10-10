@@ -18,6 +18,7 @@ struct TextPlayerView: View {
                 Text(text)
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle(nvTitle ?? title, displayMode: .inline)
     }
 }

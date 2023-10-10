@@ -75,6 +75,7 @@ struct GachaChartView: View {
                 .textCase(.none)
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Menu {

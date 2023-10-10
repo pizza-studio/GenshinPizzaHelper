@@ -113,6 +113,7 @@ struct DisplayOptionsView: View {
                 }
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
     }
 
     // MARK: Private

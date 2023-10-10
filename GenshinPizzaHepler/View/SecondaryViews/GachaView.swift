@@ -166,6 +166,7 @@ struct GachaView: View {
         .sheet(isPresented: $isHelpSheetShow, content: {
             HelpSheet(isShow: $isHelpSheetShow)
         })
+        .sectionSpacing(UIFont.systemFontSize)
     }
 }
 
@@ -184,6 +185,10 @@ private struct GachaStatisticSectionView: View {
 
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
+
+    var reviewIconSize: CGFloat {
+        ThisDevice.isSmallestHDScreenPhone ? 40 : 50
+    }
 
     var body: some View {
         let items = gachaViewModel.sortedAndFilteredGachaItem
@@ -301,7 +306,7 @@ private struct GachaStatisticSectionView: View {
                                         .opacity(0.25)
                                 }
                             }
-                            .frame(width: 50, height: 50)
+                            .frame(width: reviewIconSize, height: reviewIconSize)
                             Spacer()
                         }
                     }
@@ -693,6 +698,7 @@ private struct HelpSheet: View {
                     Text("适用于所有服务器")
                 }
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("抽卡记录获取帮助")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -834,6 +840,7 @@ private struct GachaDetailView: View {
                 }
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("抽取记录")
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {

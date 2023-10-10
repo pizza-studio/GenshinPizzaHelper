@@ -61,7 +61,6 @@ struct DetailPortalView: View {
                 accountSection()
                 playerDetailSection()
                 abyssAndPrimogemNavigator()
-                // if let accountInfo = account?.basicInfo { abyssAndPrimogemNavigatorView(accountBasicInfo: accountInfo) }
                 toolsSection()
             }
             .sectionSpacing(UIFont.systemFontSize)
@@ -351,7 +350,12 @@ struct DetailPortalView: View {
     func abyssAndPrimogemNavigator() -> some View {
         if let account = account {
             if let basicInfo: BasicInfos = account.basicInfo {
-                abyssAndPrimogemNavigatorView(accountBasicInfo: basicInfo)
+                if ThisDevice.isSmallestHDScreenPhone {
+                    // 哀凤 SE2 / SE3 开启荧幕放大模式之后，这个版面很难保证排版完整性、需要专门重新做这份。
+                    abyssAndPrimogemNavigatorViewLegacy(accountBasicInfo: basicInfo)
+                } else {
+                    abyssAndPrimogemNavigatorView(accountBasicInfo: basicInfo)
+                }
             } else if account.fetchPlayerDetailComplete {
                 if let bindingAccount = $viewModel.accounts.first(where: { $0.wrappedValue == account }) {
                     NavigationLink {
@@ -373,6 +377,78 @@ struct DetailPortalView: View {
             }
         } else {
             Text("detailPortal.errorMessage.noAccountAvailableForAbyssDisplay").font(.footnote)
+        }
+    }
+
+    @ViewBuilder
+    func abyssAndPrimogemNavigatorViewLegacy(accountBasicInfo basicInfo: BasicInfos) -> some View {
+        Section {
+            Label(
+                title: {
+                    HStack {
+                        let textString = basicInfo.stats.spiralAbyss.description
+                        Text(textString).fontWeight(.heavy)
+                        if let thisAbyssData = thisAbyssData {
+                            Spacer()
+                            Text("✡︎ \(thisAbyssData.totalStar)").font(.footnote)
+                        }
+                    }
+                },
+                icon: { Image("UI_Icon_Tower").resizable().frame(width: 30, height: 30) }
+            )
+            .onTapGesture {
+                simpleTaptic(type: .medium)
+                sheetType = .mySpiralAbyss
+            }
+            if let result = ledgerDataResult {
+                switch result {
+                case let .success(data):
+                    Label(
+                        title: {
+                            HStack {
+                                Text(data.dayData.currentPrimogems.description).fontWeight(.heavy)
+                                Spacer()
+                                Text("\(data.dayData.currentMora) 🪙").font(.footnote)
+                            }
+                        },
+                        icon: {
+                            Image("UI_ItemIcon_Primogem").resizable().frame(width: 30, height: 30)
+                        }
+                    ).onTapGesture {
+                        simpleTaptic(type: .medium)
+                        sheetType = .myLedgerSheet
+                    }
+                case let .failure(error):
+                    Label(
+                        title: {
+                            switch error {
+                            case .notLoginError:
+                                (
+                                    Text("[\("detailPortal.todayAcquisition.title".localized)]\n") +
+                                        Text("detailPortal.todayAcquisition.reloginRequiredNotice")
+                                )
+                                .font(.footnote)
+                            default:
+                                Text(error.description)
+                                    .font(.footnote)
+                            }
+                        },
+                        icon: {
+                            Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                                .foregroundColor(.red)
+                                .frame(width: 30, height: 30)
+                        }
+                    ).onTapGesture {
+                        switch error {
+                        case .notLoginError:
+                            simpleTaptic(type: .medium)
+                            sheetType = .loginAccountAgainView
+                        default:
+                            viewModel.refreshLedgerData()
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -716,6 +792,7 @@ private struct LedgerSheetView: View {
             List {
                 LedgerSheetViewList(data: data)
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -1055,14 +1132,5 @@ private struct ToolViewNavigationTitleInIOS15: ViewModifier {
 extension View {
     fileprivate func toolViewNavigationTitleInIOS15() -> some View {
         modifier(ToolViewNavigationTitleInIOS15())
-    }
-}
-
-extension View {
-    public func sectionSpacing(_ spacing: CGFloat) -> some View {
-        if #available(iOS 17.0, *) {
-            return listSectionSpacing(spacing)
-        }
-        return self
     }
 }

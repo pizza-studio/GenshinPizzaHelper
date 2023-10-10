@@ -41,10 +41,12 @@ struct DailyTaskInfoBar: View {
 
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Text("\(dailyTaskInfo.finishedTaskNum)")
+                    .lineLimit(1)
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)
                 Text(" / \(dailyTaskInfo.totalTaskNum)")
+                    .lineLimit(1)
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)

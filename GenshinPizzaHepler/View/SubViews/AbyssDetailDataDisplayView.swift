@@ -70,6 +70,7 @@ struct AbyssDetailDataDisplayView: View {
                 AbyssFloorView(floorData: floorData)
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .listStyle(.sidebar)
     }
 }

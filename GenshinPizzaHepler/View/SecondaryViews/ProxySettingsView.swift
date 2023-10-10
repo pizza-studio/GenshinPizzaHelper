@@ -65,6 +65,7 @@ struct ReverseProxySettingsView: View {
                 )
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("settings.reverseProxy.navTitle")
     }
 }

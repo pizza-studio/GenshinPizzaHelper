@@ -111,6 +111,7 @@ struct AccountDetailView: View {
                 deviceFingerPrint: bindingDeviceFingerPrint
             )
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("settings.account.accountInformation", displayMode: .inline)
         .onDisappear {
             viewModel.saveAccount()
@@ -232,6 +233,7 @@ struct AccountDetailSheet<SheetType>: View {
                 deviceFingerPrint: bindingDeviceFingerPrint
             )
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("settings.account.accountInformation", displayMode: .inline)
         .sheet(isPresented: $isWebShown) {
             GetCookieWebView(

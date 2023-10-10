@@ -148,6 +148,7 @@ struct GenshinDictionary: View {
                         }
                     }
                 }
+                .sectionSpacing(UIFont.systemFontSize)
                 .searchable(
                     text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .always),

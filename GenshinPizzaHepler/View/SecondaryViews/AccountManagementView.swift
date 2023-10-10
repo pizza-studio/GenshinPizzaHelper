@@ -57,7 +57,9 @@ struct AccountManagementView: View {
                     EditModeButton(editMode: $editMode)
                 }
             }
-        }.environment(\.editMode, $editMode)
+        }
+        .sectionSpacing(UIFont.systemFontSize)
+        .environment(\.editMode, $editMode)
     }
 }
 

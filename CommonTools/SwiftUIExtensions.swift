@@ -156,3 +156,12 @@ extension View {
         )
     }
 }
+
+extension View {
+    public func sectionSpacing(_ spacing: CGFloat) -> some View {
+        if #available(iOS 17.0, *) {
+            return listSectionSpacing(spacing)
+        }
+        return self
+    }
+}

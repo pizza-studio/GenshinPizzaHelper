@@ -515,6 +515,13 @@ private struct ShowAvatarPercentageView: View {
                 case let .success(data):
                     let data = data.data
                     Section {
+                        Text(
+                            "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
+                        )
+                        .font(.footnote)
+                        .textCase(.none)
+                    }
+                    Section {
                         ForEach(data.avatars.sorted(by: {
                             switch abyssDataCollectionViewModel.showingType {
                             case .abyssAvatarsUtilization, .pvpUtilization,
@@ -527,11 +534,6 @@ private struct ShowAvatarPercentageView: View {
                         }), id: \.charId) { avatar in
                             renderLine(avatar)
                         }
-                    } header: {
-                        Text(
-                            "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
-                        )
-                        .textCase(.none)
                     }
                 case let .failure(error):
                     Text(error.localizedDescription)
@@ -540,24 +542,27 @@ private struct ShowAvatarPercentageView: View {
                 ProgressView()
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
     }
 
     @ViewBuilder
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        let asset = CharacterAsset.match(id: avatar.charId)
-        Label {
-            Text(asset.localized)
-        } icon: {
-            asset.decoratedIcon(32, cutTo: .face)
+        HStack {
+            let asset = CharacterAsset.match(id: avatar.charId)
+            Label {
+                Text(asset.localized).font(.systemCondensed(size: UIFont.systemFontSize * 1.1, weight: .medium))
+            } icon: {
+                asset.decoratedIcon(32, cutTo: .face)
+            }
+            Spacer()
+            Text(
+                percentageFormatter
+                    .string(from: (
+                        avatar
+                            .percentage ?? 0.0
+                    ) as NSNumber)!
+            )
         }
-        Spacer()
-        Text(
-            percentageFormatter
-                .string(from: (
-                    avatar
-                        .percentage ?? 0.0
-                ) as NSNumber)!
-        )
     }
 }
 
@@ -619,6 +624,16 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 switch result {
                 case let .success(data):
                     let data = data.data
+                    Section {
+                        VStack {
+                            Text(
+                                "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
+                            )
+                            Text("使用率分级仅作深渊配队参考，不代表对角色的任何评价。")
+                                .multilineTextAlignment(.leading)
+                                .padding(.bottom, 5)
+                        }.font(.footnote)
+                    }
                     ForEach(0 ..< avatarSectionDatas.count, id: \.self) { i in
                         Section {
                             ForEach(
@@ -629,14 +644,6 @@ private struct ShowAvatarPercentageViewWithSection: View {
                             }
                         } header: {
                             VStack(alignment: .leading) {
-                                if i == 0 {
-                                    Text(
-                                        "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
-                                    )
-                                    Text("使用率分级仅作深渊配队参考，不代表对角色的任何评价。")
-                                        .multilineTextAlignment(.leading)
-                                        .padding(.bottom, 5)
-                                }
                                 switch i {
                                 case 0:
                                     Text("T\(i) ") + Text("强烈推荐选用的角色")
@@ -664,24 +671,27 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 ProgressView()
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
     }
 
     @ViewBuilder
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        let asset = CharacterAsset.match(id: avatar.charId)
-        Label {
-            Text(asset.localized)
-        } icon: {
-            asset.decoratedIcon(32, cutTo: .face)
+        HStack {
+            let asset = CharacterAsset.match(id: avatar.charId)
+            Label {
+                Text(asset.localized).font(.systemCondensed(size: UIFont.systemFontSize * 1.1, weight: .medium))
+            } icon: {
+                asset.decoratedIcon(32, cutTo: .face)
+            }
+            Spacer()
+            Text(
+                percentageFormatter
+                    .string(from: (
+                        avatar
+                            .percentage ?? 0.0
+                    ) as NSNumber)!
+            )
         }
-        Spacer()
-        Text(
-            percentageFormatter
-                .string(from: (
-                    avatar
-                        .percentage ?? 0.0
-                ) as NSNumber)!
-        )
     }
 
     func getDataSection(data: FetchHomeModelResult<AvatarPercentageModel>?)
@@ -777,19 +787,21 @@ private struct ShowAvatarPercentageShare: View {
 
     @ViewBuilder
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        let asset = CharacterAsset.match(id: avatar.charId)
-        Label {
-            Text(asset.localized).fixedSize()
-        } icon: {
-            asset.decoratedIcon(32, cutTo: .face)
+        HStack {
+            let asset = CharacterAsset.match(id: avatar.charId)
+            Label {
+                Text(asset.localized).font(.systemCondensed(size: UIFont.systemFontSize * 1.1, weight: .medium))
+            } icon: {
+                asset.decoratedIcon(32, cutTo: .face)
+            }
+            Text(
+                percentageFormatter
+                    .string(from: (
+                        avatar
+                            .percentage ?? 0.0
+                    ) as NSNumber)!
+            )
         }
-        Text(
-            percentageFormatter
-                .string(from: (
-                    avatar
-                        .percentage ?? 0.0
-                ) as NSNumber)!
-        )
         .fixedSize()
         .gridColumnAlignment(.trailing)
     }
@@ -832,13 +844,20 @@ private struct ShowTeamPercentageView: View {
                         }
                     }()
                     Section {
+                        Text(
+                            "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
+                        )
+                        .font(.footnote)
+                        .textCase(.none)
+                    }
+                    Section {
                         let teams = teams
                             .sorted(by: { $0.percentage > $1.percentage })
                         ForEach(
                             Array(zip(teams.indices, teams)),
                             id: \.0
                         ) { index, team in
-                            HStack {
+                            let lineContent = Group {
                                 ForEach(
                                     team.team.sorted(by: <),
                                     id: \.self
@@ -861,12 +880,12 @@ private struct ShowTeamPercentageView: View {
                                     }
                                 }
                             }
+                            if ThisDevice.isSmallestHDScreenPhone {
+                                HStack(spacing: 2) { lineContent }
+                            } else {
+                                HStack { lineContent }
+                            }
                         }
-                    } header: {
-                        Text(
-                            "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
-                        )
-                        .textCase(.none)
                     }
                 case let .failure(error):
                     Text(error.localizedDescription)
@@ -875,6 +894,7 @@ private struct ShowTeamPercentageView: View {
                 ProgressView()
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
     }
 }
 
@@ -917,6 +937,7 @@ private struct ShowTeamPercentageShare: View {
                                     CharacterAsset.match(id: avatarId).decoratedIcon(48, cutTo: .face, roundRect: true)
                                 }
                             }
+                            Spacer()
                             Text(
                                 percentageFormatter
                                     .string(from: (
@@ -924,6 +945,7 @@ private struct ShowTeamPercentageShare: View {
                                             .percentage
                                     ) as NSNumber)!
                             )
+                            .font(.systemCompressed(size: 16, weight: .heavy))
                         }
                     }
                 }

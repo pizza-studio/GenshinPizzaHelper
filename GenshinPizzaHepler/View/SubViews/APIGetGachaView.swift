@@ -97,6 +97,7 @@ struct APIGetGachaView: View {
             }
             GetGachaResultView(status: $status)
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("获取祈愿记录")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(status == .running)

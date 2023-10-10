@@ -54,10 +54,12 @@ struct ExpeditionInfoBar: View {
             case .byNum, .unknown:
                 HStack(alignment: .lastTextBaseline, spacing: 1) {
                     Text("\(expeditionInfo.currentOngoingTask)")
+                        .lineLimit(1)
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.body, design: .rounded))
                         .minimumScaleFactor(0.2)
                     Text(" / \(expeditionInfo.maxExpedition)")
+                        .lineLimit(1)
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.caption, design: .rounded))
                         .minimumScaleFactor(0.2)

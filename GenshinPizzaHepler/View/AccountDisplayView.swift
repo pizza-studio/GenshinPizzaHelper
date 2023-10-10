@@ -44,7 +44,7 @@ struct AccountDisplayView: View {
     var body: some View {
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     Spacer(minLength: 80)
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
@@ -105,12 +105,10 @@ struct AccountDisplayView: View {
                                     in: animation
                                 )
                             }
-                            .padding(.horizontal)
                             DetailInfo(
                                 userData: userData,
                                 viewConfig: .defaultConfig
                             )
-                            .padding(.horizontal)
                             .matchedGeometryEffect(
                                 id: "\(accountUUIDString)detail",
                                 in: animation
@@ -124,6 +122,7 @@ struct AccountDisplayView: View {
                                     }
                             }
                     }
+                    .frame(maxWidth: 550)
                     Spacer()
                     if !isAccountInfoShow {
                         HStack {
@@ -319,6 +318,7 @@ struct GameInfoBlockForSave: View {
                     Text("\(userData.resinInfo.currentResin)")
                         .font(.system(size: 50, design: .rounded))
                         .fontWeight(.medium)
+                        .minimumScaleFactor(0.1)
                         .foregroundColor(Color("textColor3"))
                         .shadow(radius: 1)
                     Image("树脂")

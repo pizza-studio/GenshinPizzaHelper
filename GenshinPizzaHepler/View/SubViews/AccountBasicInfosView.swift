@@ -16,8 +16,8 @@ struct AccountBasicInfosView: View {
     var body: some View {
         if let basicAccountInfo = basicAccountInfo {
             Section {
-                if Locale.isUILanguagePanChinese {
-                    HStack {
+                if Locale.isUILanguagePanChinese, !ThisDevice.isSmallestHDScreenPhone {
+                    HStack(alignment: .top) {
                         VStack(spacing: 5) {
                             InfoPreviewer(
                                 title: "活跃天数",
@@ -153,6 +153,8 @@ struct AccountBasicInfosView: View {
                                 content: "\(basicAccountInfo.stats.luxuriousChestNumber)",
                                 contentStyle: .capsule
                             )
+                        }
+                        Group {
                             InfoPreviewer(
                                 title: "风神瞳",
                                 content: "\(basicAccountInfo.stats.anemoculusNumber)",

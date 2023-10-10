@@ -149,6 +149,7 @@ struct SettingsView: View {
                     #endif
                 }
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("nav.category.settings.name")
         }
         .navigationViewStyle(.stack)

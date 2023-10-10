@@ -57,6 +57,7 @@ struct TextEditorView: View {
                     .frame(height: 500)
             }
         }
+        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle(title, displayMode: .inline)
         .sheet(item: $getCookieRegion) { region in
             switch region {
@@ -106,6 +107,7 @@ struct TextFieldEditorView: View {
                     .keyboardType(keyboardType)
                     .submitLabel(.done)
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .navigationBarTitle(title, displayMode: .inline)
         } else {
             List {
@@ -118,6 +120,7 @@ struct TextFieldEditorView: View {
                         .submitLabel(.done)
                 }
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .navigationBarTitle(title, displayMode: .inline)
         }
     }
