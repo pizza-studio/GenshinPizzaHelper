@@ -41,6 +41,7 @@
 
 // MARK: - Character Names
 
+"$asset.character:Paimon" = "パイモン";
 "$asset.character:Hotaru" = "蛍";
 "$asset.character:Sora" = "空";
 "$asset.character:Sucrose" = "スクロース";

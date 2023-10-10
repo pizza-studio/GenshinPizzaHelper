@@ -15,6 +15,7 @@ import SwiftUI
 
 /// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
 public enum CharacterAsset: Int, CaseIterable {
+    case Paimon = -114_514
     case Hotaru = 10000007
     case Sora = 10000005
     case Sucrose = 10000043
@@ -96,6 +97,12 @@ public enum CharacterAsset: Int, CaseIterable {
 extension CharacterAsset {
     public var enkaId: Int { rawValue }
 
+    public static var fallbackedValue: CharacterAsset { .Paimon }
+
+    public static func match(id: Int) -> CharacterAsset {
+        .init(rawValue: id) ?? .Paimon
+    }
+
     public var localizedKey: String {
         var raw = String(describing: self)
         if Defaults[.useActualCharacterNames], self == .Kunikuzushi {
@@ -125,6 +132,7 @@ extension CharacterAsset {
 extension CharacterAsset {
     public var frontPhotoFileName: String {
         switch self {
+        case .Paimon: return "UI_AvatarIcon_Paimon"
         case .Hotaru: return "UI_AvatarIcon_PlayerGirl"
         case .Sora: return "UI_AvatarIcon_PlayerBoy"
         case .Sucrose: return "UI_AvatarIcon_Sucrose"
@@ -206,6 +214,7 @@ extension CharacterAsset {
 
     public var namecard: NameCard {
         switch self {
+        case .Paimon: return .UI_NameCardPic_0_P
         case .Hotaru: return .UI_NameCardPic_Bp2_P
         case .Sora: return .UI_NameCardPic_Bp2_P
         case .Sucrose: return .UI_NameCardPic_Sucrose_P
@@ -291,6 +300,7 @@ extension CharacterAsset {
 extension CharacterAsset {
     public var possibleProfilePictureIdentifiers: [Int] {
         switch self {
+        case .Paimon: return [rawValue]
         case .Hotaru: return [2]
         case .Sora: return [1]
         case .Sucrose: return [1400]
@@ -376,6 +386,7 @@ extension CharacterAsset {
 extension CharacterAsset: DailyMaterialConsumer {
     public var dailyMaterial: DailyMaterialAsset? {
         switch self {
+        case .Paimon: return nil
         case .Hotaru: return nil
         case .Sora: return nil
         case .Sucrose: return .talentFreedom
@@ -464,8 +475,7 @@ extension CharacterAsset {
     public static var costumeMap: [CharacterAsset: CostumeAsset] = {
         var result = [CharacterAsset: CostumeAsset]()
         _ = Defaults[.cachedCostumeMap].map { key, value in
-            guard let characterAsset = CharacterAsset(rawValue: key) else { return }
-            result[characterAsset] = .init(rawValue: value)
+            result[CharacterAsset.match(id: key)] = .init(rawValue: value)
         }
         return result
     }()
@@ -483,7 +493,7 @@ extension ENCharacterMap.Character {
     public var asset: CharacterAsset {
         CharacterAsset.allCases.filter { currentChar in
             currentChar.frontPhotoFileName == iconString
-        }.first ?? .Hotaru
+        }.first ?? .fallbackedValue
     }
 }
 
@@ -491,7 +501,7 @@ extension ENCharacterMap.Character {
 
 extension AllAvatarDetailModel.Avatar {
     public var asset: CharacterAsset? {
-        .init(rawValue: id) ?? .Hotaru
+        .init(rawValue: id) ?? .fallbackedValue
     }
 }
 

@@ -542,26 +542,22 @@ private struct ShowAvatarPercentageView: View {
         }
     }
 
+    @ViewBuilder
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        guard let asset = CharacterAsset(rawValue: avatar.charId) else {
-            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 32, height: 32))
+        let asset = CharacterAsset.match(id: avatar.charId)
+        Label {
+            Text(asset.localized)
+        } icon: {
+            asset.decoratedIcon(32, cutTo: .face)
         }
-        let result = HStack {
-            Label {
-                Text(asset.localized)
-            } icon: {
-                asset.decoratedIcon(32, cutTo: .face)
-            }
-            Spacer()
-            Text(
-                percentageFormatter
-                    .string(from: (
-                        avatar
-                            .percentage ?? 0.0
-                    ) as NSNumber)!
-            )
-        }
-        return AnyView(result)
+        Spacer()
+        Text(
+            percentageFormatter
+                .string(from: (
+                    avatar
+                        .percentage ?? 0.0
+                ) as NSNumber)!
+        )
     }
 }
 
@@ -670,26 +666,22 @@ private struct ShowAvatarPercentageViewWithSection: View {
         }
     }
 
+    @ViewBuilder
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        guard let asset = CharacterAsset(rawValue: avatar.charId) else {
-            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 32, height: 32))
+        let asset = CharacterAsset.match(id: avatar.charId)
+        Label {
+            Text(asset.localized)
+        } icon: {
+            asset.decoratedIcon(32, cutTo: .face)
         }
-        let result = HStack {
-            Label {
-                Text(asset.localized)
-            } icon: {
-                asset.decoratedIcon(32, cutTo: .face)
-            }
-            Spacer()
-            Text(
-                percentageFormatter
-                    .string(from: (
-                        avatar
-                            .percentage ?? 0.0
-                    ) as NSNumber)!
-            )
-        }
-        return AnyView(result)
+        Spacer()
+        Text(
+            percentageFormatter
+                .string(from: (
+                    avatar
+                        .percentage ?? 0.0
+                ) as NSNumber)!
+        )
     }
 
     func getDataSection(data: FetchHomeModelResult<AvatarPercentageModel>?)
@@ -783,28 +775,23 @@ private struct ShowAvatarPercentageShare: View {
         }
     }
 
+    @ViewBuilder
     func renderLine(_ avatar: AvatarPercentageModel.Avatar) -> some View {
-        guard let asset = CharacterAsset(rawValue: avatar.charId) else {
-            return AnyView(Circle().fill(Color.gray).opacity(0.3).frame(width: 32, height: 32))
+        let asset = CharacterAsset.match(id: avatar.charId)
+        Label {
+            Text(asset.localized).fixedSize()
+        } icon: {
+            asset.decoratedIcon(32, cutTo: .face)
         }
-        let charName = asset.localized
-        let result = GridRow {
-            Label {
-                Text(charName).fixedSize()
-            } icon: {
-                asset.decoratedIcon(32, cutTo: .face)
-            }
-            Text(
-                percentageFormatter
-                    .string(from: (
-                        avatar
-                            .percentage ?? 0.0
-                    ) as NSNumber)!
-            )
-            .fixedSize()
-            .gridColumnAlignment(.trailing)
-        }
-        return AnyView(result)
+        Text(
+            percentageFormatter
+                .string(from: (
+                    avatar
+                        .percentage ?? 0.0
+                ) as NSNumber)!
+        )
+        .fixedSize()
+        .gridColumnAlignment(.trailing)
     }
 }
 
@@ -856,11 +843,7 @@ private struct ShowTeamPercentageView: View {
                                     team.team.sorted(by: <),
                                     id: \.self
                                 ) { avatarId in
-                                    if let avatar = CharacterAsset(rawValue: avatarId) {
-                                        avatar.decoratedIcon(48, cutTo: .face, roundRect: true)
-                                    } else {
-                                        Circle().fill(Color.gray).opacity(0.3).frame(width: 48, height: 48)
-                                    }
+                                    CharacterAsset.match(id: avatarId).decoratedIcon(48, cutTo: .face, roundRect: true)
                                 }
                                 Spacer()
                                 VStack(alignment: .center) {
@@ -931,11 +914,7 @@ private struct ShowTeamPercentageShare: View {
                                     team.team.sorted(by: <),
                                     id: \.self
                                 ) { avatarId in
-                                    if let avatar = CharacterAsset(rawValue: avatarId) {
-                                        avatar.decoratedIcon(48, cutTo: .face, roundRect: true)
-                                    } else {
-                                        Circle().fill(Color.gray).opacity(0.3).frame(width: 48, height: 48)
-                                    }
+                                    CharacterAsset.match(id: avatarId).decoratedIcon(48, cutTo: .face, roundRect: true)
                                 }
                             }
                             Text(

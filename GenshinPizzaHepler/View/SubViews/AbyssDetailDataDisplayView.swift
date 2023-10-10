@@ -204,7 +204,7 @@ private struct AbyssBattleView: View {
                 }
             }
             ForEach(battleData.avatars, id: \.id) { avatarData in
-                let theAsset = CharacterAsset(rawValue: avatarData.id) ?? .Hotaru
+                let theAsset = CharacterAsset.match(id: avatarData.id)
                 if ThisDevice.isHDPhoneOrPodTouch {
                     theAsset.decoratedIcon(size, cutTo: .head, roundRect: true)
                         .corneredTag("\(avatarData.level)", alignment: .bottomTrailing, textSize: 11)
@@ -240,9 +240,7 @@ private struct BattleDataInfoProvider: View {
             Text(name.localized)
             Spacer()
             Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
-            if let avatarID = avatarID, let asset = CharacterAsset(rawValue: avatarID) {
-                asset.decoratedIcon(32, cutTo: .face)
-            }
+            CharacterAsset.match(id: avatarID ?? -114_514).decoratedIcon(32, cutTo: .face)
         }
     }
 }

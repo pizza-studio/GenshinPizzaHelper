@@ -490,17 +490,15 @@ struct DetailPortalView: View {
                     }
                     .pickerStyle(.segmented)
                     .padding()
-                    if let charMap = viewModel.charMap {
-                        switch abyssDataViewSelection {
-                        case .thisTerm:
-                            AbyssDetailDataDisplayView(
-                                data: thisAbyssData
-                            )
-                        case .lastTerm:
-                            AbyssDetailDataDisplayView(
-                                data: lastAbyssData
-                            )
-                        }
+                    switch abyssDataViewSelection {
+                    case .thisTerm:
+                        AbyssDetailDataDisplayView(
+                            data: thisAbyssData
+                        )
+                    case .lastTerm:
+                        AbyssDetailDataDisplayView(
+                            data: lastAbyssData
+                        )
                     }
                 }
                 .navigationTitle("深境螺旋详情")

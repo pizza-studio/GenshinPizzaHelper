@@ -409,9 +409,6 @@ private struct AvatarListItemShare: View {
 extension AllAvatarDetailModel.Avatar {
     /// 经过错字订正处理的角色姓名
     fileprivate var nameCorrected: String {
-        guard let asset = CharacterAsset(rawValue: id) else {
-            return "EnkaID-\(id)" // 这里的 name 可能是写死的简体中文。
-        }
-        return asset.localized.localizedWithFix
+        CharacterAsset(rawValue: id)?.localized.localizedWithFix ?? "EnkaID-\(id)"
     }
 }

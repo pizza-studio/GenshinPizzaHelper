@@ -41,6 +41,7 @@
 
 // MARK: - Character Names
 
+"$asset.character:Paimon" = "페이몬";
 "$asset.character:Hotaru" = "루미네";
 "$asset.character:Sora" = "아이테르";
 "$asset.character:Sucrose" = "설탕";

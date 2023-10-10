@@ -130,7 +130,7 @@ struct PlayerDetail {
             else { return nil }
             self.character = character
             self.enkaID = avatarInfo.avatarId
-            self.characterAsset = CharacterAsset(rawValue: avatarInfo.avatarId) ?? character.asset
+            self.characterAsset = CharacterAsset.match(id: avatarInfo.avatarId)
             self.costumeAsset = .init(rawValue: avatarInfo.costumeId ?? -114_514)
 
             self.name = localizedDictionary
@@ -603,14 +603,7 @@ struct PlayerDetail {
 
         /// 经过错字订正处理的角色姓名
         var nameCorrected: String {
-            switch enkaID {
-            // 此处使用 CharacterAsset 接管翻译，可准确处理国崩与空荧的姓名。
-            default:
-                guard let asset = CharacterAsset(rawValue: enkaID) else {
-                    return name.localizedWithFix // 应该没问题。
-                }
-                return asset.localized.localizedWithFix
-            }
+            CharacterAsset.match(id: enkaID).localized.localizedWithFix
         }
 
         var nameCorrectedAndTruncated: String {

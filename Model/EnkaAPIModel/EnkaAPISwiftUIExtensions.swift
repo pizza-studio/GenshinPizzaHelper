@@ -65,8 +65,8 @@ extension PlayerDetail.Avatar.AvatarElement {
 
 extension PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
     public var assetFileName: String? {
-        if let avatarId = avatarId, let charAsset = CharacterAsset(rawValue: avatarId) {
-            return charAsset.frontPhotoFileName
+        if let avatarId = avatarId {
+            return CharacterAsset.match(id: avatarId).frontPhotoFileName
         }
         guard let id = id else { return nil }
         let matchedCostume = CostumeAsset.allCases.filter {
@@ -106,19 +106,17 @@ extension PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
 extension PlayerDetail.PlayerBasicInfo {
     @ViewBuilder
     public func cardIcon(_ size: CGFloat) -> some View {
-        if let enkaID = profilePictureAvatarEnkaID, let charAsset = CharacterAsset(rawValue: enkaID) {
-            let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
-            let givenNameCard = NameCard(rawValue: nameCardId)
-            charAsset.cardIcon(size, costume: costume, namecard: givenNameCard)
-        }
+        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -114_514)
+        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
+        let givenNameCard = NameCard(rawValue: nameCardId)
+        charAsset.cardIcon(size, costume: costume, namecard: givenNameCard)
     }
 
     @ViewBuilder
     public func decoratedIcon(_ size: CGFloat) -> some View {
-        if let enkaID = profilePictureAvatarEnkaID, let charAsset = CharacterAsset(rawValue: enkaID) {
-            let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
-            let givenNameCard = NameCard(rawValue: nameCardId)
-            charAsset.decoratedIcon(size, cutTo: .head, costume: costume, namecard: givenNameCard)
-        }
+        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -114_514)
+        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
+        let givenNameCard = NameCard(rawValue: nameCardId)
+        charAsset.decoratedIcon(size, cutTo: .head, costume: costume, namecard: givenNameCard)
     }
 }

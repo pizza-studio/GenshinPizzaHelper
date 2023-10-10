@@ -68,23 +68,3 @@ extension String {
         return localized
     }
 }
-
-// MARK: - ENCharacterMap.Character Extension
-
-extension ENCharacterMap.Character {
-    /// 给定名称翻译表，返回角色姓名。
-    public func i18nNameFixed(
-        by table: [String: String]? = nil,
-        enkaID: Int
-    )
-        -> String {
-        var result = "unknown"
-        // 优先用 CharacterAsset 处理所有情形。
-        if let asset = CharacterAsset(rawValue: enkaID) {
-            return asset.localized.localizedWithFix
-        }
-        guard let x = table?[NameTextMapHash.description] else { return result }
-        result = x.localizedWithFix
-        return result
-    }
-}
