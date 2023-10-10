@@ -517,25 +517,23 @@ struct DetailPortalView: View {
                     placement: .navigationBarLeading
                 ) {
                     Group {
-                        if let charMap = viewModel.charMap {
-                            switch abyssDataViewSelection {
-                            case .thisTerm:
-                                AbyssShareView(
-                                    data: thisAbyssData
-                                )
-                                .environment(
-                                    \.locale,
-                                    .init(identifier: Locale.current.identifier)
-                                )
-                            case .lastTerm:
-                                AbyssShareView(
-                                    data: lastAbyssData
-                                )
-                                .environment(
-                                    \.locale,
-                                    .init(identifier: Locale.current.identifier)
-                                )
-                            }
+                        switch abyssDataViewSelection {
+                        case .thisTerm:
+                            AbyssShareView(
+                                data: thisAbyssData
+                            )
+                            .environment(
+                                \.locale,
+                                .init(identifier: Locale.current.identifier)
+                            )
+                        case .lastTerm:
+                            AbyssShareView(
+                                data: lastAbyssData
+                            )
+                            .environment(
+                                \.locale,
+                                .init(identifier: Locale.current.identifier)
+                            )
                         }
                     }
                 }
