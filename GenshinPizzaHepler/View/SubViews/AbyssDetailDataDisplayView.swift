@@ -13,7 +13,6 @@ import SwiftUI
 
 struct AbyssDetailDataDisplayView: View {
     let data: SpiralAbyssDetail
-    let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
         List {
@@ -38,32 +37,27 @@ struct AbyssDetailDataDisplayView: View {
                     BattleDataInfoProvider(
                         name: "最强一击",
                         value: data.damageRank.first?.value,
-                        avatarID: data.damageRank.first?.avatarId,
-                        charMap: charMap
+                        avatarID: data.damageRank.first?.avatarId
                     )
                     BattleDataInfoProvider(
                         name: "最多击破数",
                         value: data.defeatRank.first?.value,
-                        avatarID: data.defeatRank.first?.avatarId,
-                        charMap: charMap
+                        avatarID: data.defeatRank.first?.avatarId
                     )
                     BattleDataInfoProvider(
                         name: "承受最多伤害",
                         value: data.takeDamageRank.first?.value,
-                        avatarID: data.takeDamageRank.first?.avatarId,
-                        charMap: charMap
+                        avatarID: data.takeDamageRank.first?.avatarId
                     )
                     BattleDataInfoProvider(
                         name: "元素战技释放数",
                         value: data.normalSkillRank.first?.value,
-                        avatarID: data.normalSkillRank.first?.avatarId,
-                        charMap: charMap
+                        avatarID: data.normalSkillRank.first?.avatarId
                     )
                     BattleDataInfoProvider(
                         name: "元素爆发次数",
                         value: data.energySkillRank.first?.value,
-                        avatarID: data.energySkillRank.first?.avatarId,
-                        charMap: charMap
+                        avatarID: data.energySkillRank.first?.avatarId
                     )
                 } header: {
                     Text("战斗数据榜")
@@ -73,7 +67,7 @@ struct AbyssDetailDataDisplayView: View {
             }
 
             ForEach(data.floors.reversed(), id: \.index) { floorData in
-                AbyssFloorView(floorData: floorData, charMap: charMap)
+                AbyssFloorView(floorData: floorData)
             }
         }
         .listStyle(.sidebar)
@@ -84,7 +78,6 @@ struct AbyssDetailDataDisplayView: View {
 
 private struct AbyssFloorView: View {
     let floorData: SpiralAbyssDetail.Floor
-    let charMap: [String: ENCharacterMap.Character]
 
     var foldableTitleText: String {
         let initials = String(
@@ -118,7 +111,7 @@ private struct AbyssFloorView: View {
                     Divider().frame(height: 3)
                 }
                 ForEach(floorData.levels, id: \.index) { levelData in
-                    AbyssLevelView(levelData: levelData, charMap: charMap)
+                    AbyssLevelView(levelData: levelData)
                 }
             }
         } header: {
@@ -133,7 +126,6 @@ private struct AbyssLevelView: View {
     // MARK: Internal
 
     let levelData: SpiralAbyssDetail.Floor.Level
-    let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -158,12 +150,12 @@ private struct AbyssLevelView: View {
                     .type == .macOS {
                     HStack {
                         ForEach(levelData.battles, id: \.index) { battleData in
-                            AbyssBattleView(battleData: battleData, charMap: charMap)
+                            AbyssBattleView(battleData: battleData)
                         }
                     }
                 } else {
                     ForEach(levelData.battles, id: \.index) { battleData in
-                        AbyssBattleView(battleData: battleData, charMap: charMap)
+                        AbyssBattleView(battleData: battleData)
                     }
                 }
             }.environmentObject(orientation)
@@ -182,7 +174,6 @@ private struct AbyssBattleView: View {
     // MARK: Internal
 
     let battleData: SpiralAbyssDetail.Floor.Level.Battle
-    let charMap: [String: ENCharacterMap.Character]
 
     var decoratedIconSize: CGFloat {
         ThisDevice.isSmallestHDScreenPhone ? 45 : 55
@@ -213,33 +204,13 @@ private struct AbyssBattleView: View {
                 }
             }
             ForEach(battleData.avatars, id: \.id) { avatarData in
-                let charID: String = "\(avatarData.id)"
-                if let theChar = charMap[charID] {
-                    if ThisDevice.isHDPhoneOrPodTouch {
-                        theChar.asset.decoratedIcon(size, cutTo: .shoulder, roundRect: true)
-                            .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
-                            .frame(height: size + 5)
-                    } else {
-                        if let charAsset = CharacterAsset(rawValue: avatarData.id) {
-                            charAsset.cardIcon(size / 0.74)
-                                .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
-                                .padding(.vertical, 2)
-                        } else {
-                            theChar.asset.cardIcon(size / 0.74)
-                                .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
-                                .padding(.vertical, 2)
-                        }
-                    }
+                let theAsset = CharacterAsset(rawValue: avatarData.id) ?? .Hotaru
+                if ThisDevice.isHDPhoneOrPodTouch {
+                    theAsset.decoratedIcon(size, cutTo: .head, roundRect: true)
+                        .corneredTag("\(avatarData.level)", alignment: .bottomTrailing, textSize: 11)
+                        .frame(height: size + 5)
                 } else {
-                    let charNameID: String = charMap.getNameID(id: charID)
-                    let charNameCard = "UI_AvatarIcon_\(charNameID)"
-                    EnkaWebIcon(iconString: charNameCard)
-                        .scaledToFill()
-                        .frame(width: size, height: size / 0.74)
-                        .clipped()
-                        .scaledToFit()
-                        .background(Color.gray)
-                        .clipShape(RoundedRectangle(cornerRadius: size / 10))
+                    theAsset.cardIcon(size / 0.74)
                         .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                         .padding(.vertical, 2)
                 }
@@ -263,15 +234,14 @@ private struct BattleDataInfoProvider: View {
     let name: String
     let value: Int?
     let avatarID: Int?
-    let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
         HStack {
             Text(name.localized)
             Spacer()
             Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
-            if let avatarID = avatarID, let character = charMap[avatarID.description] {
-                character.asset.decoratedIcon(32, cutTo: .face)
+            if let avatarID = avatarID, let asset = CharacterAsset(rawValue: avatarID) {
+                asset.decoratedIcon(32, cutTo: .face)
             }
         }
     }
@@ -299,11 +269,10 @@ struct AbyssStarIcon: View {
 
 struct AbyssShareView: View {
     let data: SpiralAbyssDetail
-    let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
         if let floor = data.floors.last {
-            ShareAbyssFloorView(floorData: floor, charMap: charMap)
+            ShareAbyssFloorView(floorData: floor)
         } else {
             Text("No Data")
         }
@@ -314,7 +283,6 @@ struct AbyssShareView: View {
 
 private struct ShareAbyssFloorView: View {
     let floorData: SpiralAbyssDetail.Floor
-    let charMap: [String: ENCharacterMap.Character]
 
     var body: some View {
         VStack {
@@ -328,7 +296,7 @@ private struct ShareAbyssFloorView: View {
             }
             .font(.headline)
             ForEach(floorData.levels, id: \.index) { levelData in
-                AbyssLevelView(levelData: levelData, charMap: charMap)
+                AbyssLevelView(levelData: levelData)
             }
             HStack {
                 Image("AppIconHD")

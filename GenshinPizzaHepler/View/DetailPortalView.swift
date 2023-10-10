@@ -494,13 +494,11 @@ struct DetailPortalView: View {
                         switch abyssDataViewSelection {
                         case .thisTerm:
                             AbyssDetailDataDisplayView(
-                                data: thisAbyssData,
-                                charMap: charMap
+                                data: thisAbyssData
                             )
                         case .lastTerm:
                             AbyssDetailDataDisplayView(
-                                data: lastAbyssData,
-                                charMap: charMap
+                                data: lastAbyssData
                             )
                         }
                     }
@@ -525,8 +523,7 @@ struct DetailPortalView: View {
                             switch abyssDataViewSelection {
                             case .thisTerm:
                                 AbyssShareView(
-                                    data: thisAbyssData,
-                                    charMap: charMap
+                                    data: thisAbyssData
                                 )
                                 .environment(
                                     \.locale,
@@ -534,8 +531,7 @@ struct DetailPortalView: View {
                                 )
                             case .lastTerm:
                                 AbyssShareView(
-                                    data: lastAbyssData,
-                                    charMap: charMap
+                                    data: lastAbyssData
                                 )
                                 .environment(
                                     \.locale,
