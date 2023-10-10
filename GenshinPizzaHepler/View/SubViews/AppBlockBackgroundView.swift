@@ -14,8 +14,6 @@ import WidgetKit
 // MARK: - AppBlockBackgroundView
 
 struct AppBlockBackgroundView: View {
-    @Environment(\.colorScheme)
-    var colorScheme: ColorScheme
     let background: WidgetBackground
     let darkModeOn: Bool
 
@@ -50,7 +48,7 @@ struct AppBlockBackgroundView: View {
                     .scaledToFill()
             }
 
-            if colorScheme == .dark, darkModeOn {
+            if darkModeOn {
                 Color.black
                     .opacity(0.3)
             }

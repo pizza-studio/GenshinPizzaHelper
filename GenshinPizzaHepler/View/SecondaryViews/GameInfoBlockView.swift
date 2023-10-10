@@ -91,16 +91,18 @@ struct GameInfoBlock: View {
                 }
             }
             .background(
-                Image(widgetBackground.imageName!)
-                    .resizable()
-                    .scaledToFill()
-                    .id(widgetBackground.imageName!)
-                    .transition(.opacity)
-                    .matchedGeometryEffect(
-                        id: "\(accountUUIDString)bg",
-                        in: animation
-                    )
-                    .opacity(fetchComplete ? 1 : 0)
+                AppBlockBackgroundView(
+                    background: .init(identifier: widgetBackground.imageName, display: ""),
+                    darkModeOn: true
+                )
+                .id(widgetBackground.imageName!)
+                .transition(.opacity)
+                .matchedGeometryEffect(
+                    id: "\(accountUUIDString)bg",
+                    in: animation
+                )
+                .opacity(fetchComplete ? 1 : 0),
+                alignment: .trailing
             )
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .contentShape(RoundedRectangle(

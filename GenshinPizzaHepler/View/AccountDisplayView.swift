@@ -114,7 +114,9 @@ struct AccountDisplayView: View {
                                 in: animation
                             )
                         }
+                        .frame(width: 152)
                         expeditionsView()
+                            .frame(width: 152)
                             .onAppear {
                                 DispatchQueue.main
                                     .asyncAfter(deadline: .now()) {
@@ -122,7 +124,7 @@ struct AccountDisplayView: View {
                                     }
                             }
                     }
-                    .frame(maxWidth: 550)
+                    .frame(width: 310)
                     Spacer()
                     if !isAccountInfoShow {
                         HStack {
