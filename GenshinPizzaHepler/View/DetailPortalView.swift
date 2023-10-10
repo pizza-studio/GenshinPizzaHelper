@@ -352,7 +352,7 @@ struct DetailPortalView: View {
         if let account = account {
             if let basicInfo: BasicInfos = account.basicInfo {
                 abyssAndPrimogemNavigatorView(accountBasicInfo: basicInfo)
-            } else {
+            } else if account.fetchPlayerDetailComplete {
                 if let bindingAccount = $viewModel.accounts.first(where: { $0.wrappedValue == account }) {
                     NavigationLink {
                         AccountDetailView(account: bindingAccount)
