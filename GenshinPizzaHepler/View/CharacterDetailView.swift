@@ -51,12 +51,20 @@ struct CharacterDetailView: View {
         .onTapGesture {
             closeView()
         }
-        .background(
-            EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-                .overlay(.thinMaterial)
-        )
+        .background {
+            if OS.type == .macOS {
+                EnkaWebIcon(iconString: avatar.namecardIconString)
+                    .scaledToFill()
+                    .ignoresSafeArea(.all)
+                    .blur(radius: 30)
+                    .overlay(Color(UIColor.systemGray6).opacity(0.5))
+            } else {
+                EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
+                    .scaledToFill()
+                    .ignoresSafeArea(.all)
+                    .overlay(.thinMaterial)
+            }
+        }
         .background(
             avatar.element.color
                 .overlay(.thinMaterial)
