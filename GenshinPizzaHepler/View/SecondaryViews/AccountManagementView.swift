@@ -58,6 +58,7 @@ struct AccountManagementView: View {
                 }
             }
         }
+        .frame(maxWidth: 550)
         .sectionSpacing(UIFont.systemFontSize)
         .environment(\.editMode, $editMode)
     }

@@ -30,6 +30,7 @@ public struct ThirdPartyToolsView: View {
                 }
             }
         }
+        .frame(maxWidth: 550)
         .sectionSpacing(UIFont.systemFontSize)
     }
 

@@ -67,18 +67,20 @@ struct SettingsView: View {
 
                 Section {
                     // 该功能对 macCatalyst 无效。
-                    Button {
-                        UIApplication.shared
-                            .open(URL(
-                                string: UIApplication
-                                    .openSettingsURLString
-                            )!)
-                    } label: {
-                        Label {
-                            Text("偏好语言")
-                                .foregroundColor(.primary)
-                        } icon: {
-                            Image(systemName: "globe")
+                    if OS.type != .macOS {
+                        Button {
+                            UIApplication.shared
+                                .open(URL(
+                                    string: UIApplication
+                                        .openSettingsURLString
+                                )!)
+                        } label: {
+                            Label {
+                                Text("偏好语言")
+                                    .foregroundColor(.primary)
+                            } icon: {
+                                Image(systemName: "globe")
+                            }
                         }
                     }
                     NavigationLink(destination: DisplayOptionsView()) {
@@ -103,42 +105,44 @@ struct SettingsView: View {
                 #endif
 
                 Section {
-                    Button("settings.misc.rateMeOnAppStore") {
+                    Button {
                         ReviewHandler.requestReviewIfNotRequestedElseNavigateToAppStore()
+                    } label: {
+                        Label("settings.misc.rateMeOnAppStore", systemImage: "arrow.up.forward.app.fill")
                     }
                     NavigationLink(
                         destination: GlobalDonateView(
                             storeManager: storeManager
                         )
                     ) {
-                        Text("settings.misc.supportUs")
+                        Label("settings.misc.supportUs", systemImage: "dollarsign.square.fill")
                     }
                 }
 
                 Group {
                     Section {
-                        NavigationLink("隐私设置") {
-                            PrivacySettingsView()
+                        NavigationLink(destination: PrivacySettingsView()) {
+                            Label("隐私设置", systemImage: "hand.raised.app.fill")
                         }
-                        NavigationLink("祈愿数据管理") {
-                            GachaSetting()
+                        NavigationLink(destination: GachaSetting()) {
+                            Label("祈愿数据管理", systemImage: "wand.and.stars")
                         }
                     }
                 }
 
                 Section {
                     NavigationLink(destination: GuideVideoLinkView()) {
-                        Text("App介绍视频")
+                        Label("App介绍视频", systemImage: "person.fill.questionmark")
                     }
                     NavigationLink(destination: ContactUsView()) {
-                        Text("开发者与联系方式")
+                        Label("开发者与联系方式", systemImage: "person.2.gobackward")
                     }
                 }
 
                 Section {
                     // 更多
                     NavigationLink(destination: MoreView()) {
-                        Text("settings.more")
+                        Label("settings.more", systemImage: "ellipsis.circle")
                     }
                     #if DEBUG
                     Button("Alert Toast Debug") {
@@ -151,6 +155,7 @@ struct SettingsView: View {
             }
             .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("nav.category.settings.name")
+            .frame(maxWidth: 550)
             DisplayOptionsView() // 预设内容页
         }
         .navigationViewStyle(.columns)

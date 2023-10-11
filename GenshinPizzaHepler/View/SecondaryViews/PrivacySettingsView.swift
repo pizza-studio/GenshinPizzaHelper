@@ -25,6 +25,7 @@ struct PrivacySettingsView: View {
             }
         }
         .sectionSpacing(UIFont.systemFontSize)
+        .frame(maxWidth: 550)
         .navigationBarTitle("隐私设置", displayMode: .inline)
     }
 }

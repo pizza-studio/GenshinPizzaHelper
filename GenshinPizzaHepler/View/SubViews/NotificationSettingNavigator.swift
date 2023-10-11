@@ -58,12 +58,12 @@ struct NotificationSettingNavigator: View {
     var body: some View {
         Section {
             Toggle(isOn: masterSwitch.animation()) {
-                Text("settings.notification.delivery")
+                Label("settings.notification.delivery", systemImage: "app.badge")
             }
             .disabled(!allowNotification)
             if masterSwitch.wrappedValue, allowNotification {
                 NavigationLink(destination: NotificationSettingView()) {
-                    Text("settings.notification.deliverySettings")
+                    Label("settings.notification.deliverySettings", systemImage: "app.badge.fill")
                 }
                 .animation(.easeInOut, value: masterSwitch.wrappedValue)
             }

@@ -108,6 +108,7 @@ struct GuideVideoLinkView: View {
             }
         }
         .sectionSpacing(UIFont.systemFontSize)
+        .frame(maxWidth: 550)
         .navigationBarTitle("App介绍视频")
         .navigationBarTitleDisplayMode(.inline)
     }

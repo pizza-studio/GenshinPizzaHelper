@@ -16,8 +16,8 @@ struct LiveActivitySettingView: View {
     var body: some View {
         if #available(iOS 16.1, *) {
             Section {
-                NavigationLink("树脂计时器设置") {
-                    LiveActivitySettingDetailView()
+                NavigationLink(destination: LiveActivitySettingDetailView()) {
+                    Label("树脂计时器设置", systemImage: "timer")
                 }
             } footer: {
                 Button("树脂计时器是什么？") {
@@ -125,6 +125,7 @@ struct LiveActivitySettingDetailView: View {
             }
             .disabled(!allowLiveActivity)
         }
+        .frame(maxWidth: 550)
         .sectionSpacing(UIFont.systemFontSize)
         .toolbar {
             ToolbarItem {

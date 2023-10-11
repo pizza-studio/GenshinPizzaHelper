@@ -129,7 +129,7 @@ struct MoreView: View {
             }
         }
         .sectionSpacing(UIFont.systemFontSize)
-        .sectionSpacing(UIFont.systemFontSize)
+        .frame(maxWidth: 550)
         .navigationBarTitle("settings.more", displayMode: .inline)
     }
 

@@ -144,6 +144,7 @@ struct GachaSetting: View {
                 }
             }
         }
+        .frame(maxWidth: 550)
         .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("祈愿数据管理")
         .navigationBarTitleDisplayMode(.inline)

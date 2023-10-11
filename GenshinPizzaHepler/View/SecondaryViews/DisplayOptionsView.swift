@@ -18,6 +18,7 @@ struct DisplayOptionsView: View {
     var body: some View {
         Group {
             mainView()
+                .frame(maxWidth: 550)
                 .alert(
                     "settings.display.prompt.customizingNameForKunikuzushi",
                     isPresented: $isCustomizedNameForWandererAlertShow,
