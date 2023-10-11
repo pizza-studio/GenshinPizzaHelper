@@ -32,6 +32,7 @@ struct WatchResinDetailView: View {
     func recoveryTimeText() -> some View {
         if resinInfo.recoveryTime.second != 0 {
             Text("infoBlock.refilledAt:\(resinInfo.recoveryTime.completeTimePointFromNow())")
+                .lineLimit(2)
                 .foregroundColor(.gray)
                 .minimumScaleFactor(0.3)
                 .font(.footnote)

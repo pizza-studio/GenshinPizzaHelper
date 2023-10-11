@@ -836,7 +836,7 @@
 "参量质变仪" = "Máy Biến Đổi Tham Số";
 "周本折扣" = "Vùng Đất Thảo Phạt";
 "infoBlock.transformerAvailable" = "CD Xong";
-"infoBlock.refilledAt:%@" = "Đầy lại trong %@";
+"infoBlock.refilledAt:%@" = "Đầy lại trong \n%@";
 "树脂已全部回满" = "Nhựa đã được phục hồi đầy đủ";
 
 // Donate

@@ -44,6 +44,7 @@ struct LockScreenResinWidgetRectangular<T>: View
                             Text(
                                 "infoBlock.refilledAt:\(data.resinInfo.recoveryTime.completeTimePointFromNow())"
                             )
+                            .lineLimit(2)
                             .font(.footnote)
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(.gray)
@@ -97,6 +98,7 @@ struct LockScreenResinWidgetRectangular<T>: View
                             Text(
                                 "infoBlock.refilledAt:\(data.resinInfo.recoveryTime.completeTimePointFromNow())"
                             )
+                            .lineLimit(2)
                             .font(.footnote)
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(.gray)

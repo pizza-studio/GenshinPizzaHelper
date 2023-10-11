@@ -126,6 +126,7 @@ struct AccountDisplayView: View {
                             }
                     }
                     .frame(width: 310)
+
                     Spacer()
                     if !isAccountInfoShown {
                         HStack {
@@ -275,7 +276,7 @@ struct AccountDisplayView: View {
                     + "\n\(resinInfo.recoveryTime.describeIntervalLong())"
             )
             .font(.caption)
-            .lineLimit(2)
+            .lineLimit(3)
             .minimumScaleFactor(0.2)
             .foregroundColor(Color("textColor3"))
             .lineSpacing(1)

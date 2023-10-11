@@ -28,9 +28,10 @@ struct RecoveryTimeText: View {
                                 localized: "infoBlock.refilledAt:\(resinInfo.recoveryTime.completeTimePointFromNow())"
                             )
                         )
+                        .lineLimit(2)
                         Text(future, style: .relative)
+                            .lineLimit(1)
                     }
-                    .lineLimit(1)
                 } else {
                     Text("infoBlock.resionFullyFilledDescription")
                         .lineLimit(2)
@@ -46,11 +47,12 @@ struct RecoveryTimeText: View {
                             )
                                 + "\n\(resinInfo.recoveryTime.describeIntervalLong())"
                         )
+                        .lineLimit(3)
                     } else {
                         Text("infoBlock.resionFullyFilledDescription")
+                            .lineLimit(2)
                     }
                 }
-                .lineLimit(2)
                 .lineSpacing(1)
             }
         }

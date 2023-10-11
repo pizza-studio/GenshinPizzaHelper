@@ -710,7 +710,7 @@
 "探索派遣" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
-"infoBlock.refilledAt:%@" = "Refilled at %@";
+"infoBlock.refilledAt:%@" = "Refilled at \n%@";
 "树脂已全部回满" = "Resin is fully capped";
 
 // Donate
