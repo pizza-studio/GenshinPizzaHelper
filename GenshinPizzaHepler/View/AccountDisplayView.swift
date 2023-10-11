@@ -30,7 +30,7 @@ struct AccountDisplayView: View {
     @State
     var scrollOffset: CGPoint = .zero
     @State
-    var isAccountInfoShow: Bool = false
+    var isAccountInfoShown: Bool = false
 
     @State
     var isStatusBarHide: Bool = false
@@ -115,6 +115,7 @@ struct AccountDisplayView: View {
                             )
                         }
                         .frame(width: 152)
+                        Spacer()
                         expeditionsView()
                             .frame(width: 152)
                             .onAppear {
@@ -126,7 +127,7 @@ struct AccountDisplayView: View {
                     }
                     .frame(width: 310)
                     Spacer()
-                    if !isAccountInfoShow {
+                    if !isAccountInfoShown {
                         HStack {
                             Spacer()
                             Text("上滑查看更多基本信息")
@@ -154,12 +155,12 @@ struct AccountDisplayView: View {
                     }
                 }
                 .shouldTakeAllVerticalSpace(
-                    !isAccountInfoShow,
+                    !isAccountInfoShown,
                     height: geo.size.height,
                     animation: animation
                 )
                 .readingScrollView(from: "scroll", into: $scrollOffset)
-                if isAccountInfoShow {
+                if isAccountInfoShown {
                     Spacer(minLength: 40)
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
@@ -179,14 +180,14 @@ struct AccountDisplayView: View {
             .coordinateSpace(name: "scroll")
             .onChange(of: scrollOffset) { _ in
                 print("Offset: \(scrollOffset.y)")
-                if scrollOffset.y > 20, !isAccountInfoShow, !isAnimationLocked {
+                if scrollOffset.y > 20, !isAccountInfoShown, !isAnimationLocked {
                     simpleTaptic(type: .medium)
                     withAnimation(.interactiveSpring(
                         response: 0.5,
                         dampingFraction: 0.8,
                         blendDuration: 0.8
                     )) {
-                        isAccountInfoShow = true
+                        isAccountInfoShown = true
                         isStatusBarHide = true
                         isAnimationLocked = true
                         DispatchQueue.global()
@@ -194,7 +195,7 @@ struct AccountDisplayView: View {
                                 isAnimationLocked = false
                             }
                     }
-                } else if scrollOffset.y < -20, isAccountInfoShow,
+                } else if scrollOffset.y < -20, isAccountInfoShown,
                           !isAnimationLocked {
                     simpleTaptic(type: .light)
                     withAnimation(.interactiveSpring(
@@ -202,7 +203,7 @@ struct AccountDisplayView: View {
                         dampingFraction: 0.8,
                         blendDuration: 0.8
                     )) {
-                        isAccountInfoShow = false
+                        isAccountInfoShown = false
                         isStatusBarHide = false
                         isAnimationLocked = true
                         DispatchQueue.global()
@@ -236,7 +237,7 @@ struct AccountDisplayView: View {
     private func closeView() {
         DispatchQueue.main.async {
             // 复位更多信息展示页面
-            isAccountInfoShow = false
+            isAccountInfoShown = false
             isStatusBarHide = false
             scrollOffset = .zero
         }
