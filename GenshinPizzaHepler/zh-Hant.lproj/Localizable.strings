@@ -1364,3 +1364,10 @@
 // MARK: - 3.1.2
 
 "settings.more.useEnkaJSONFromGitHosts" = "利用來自 Git 服務網站的 Enka JSON 資料";
+"ledgerData.action.name.byOther" = "其他";
+"ledgerData.action.name.byAdventure" = "冒險獎勵";
+"ledgerData.action.name.byTask" = "任務獎勵";
+"ledgerData.action.name.byActivity" = "每日活躍";
+"ledgerData.action.name.byAbyss" = "深境螺旋";
+"ledgerData.action.name.byMail" = "郵件獎勵";
+"ledgerData.action.name.byEvent" = "活動獎勵";

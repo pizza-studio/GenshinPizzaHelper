@@ -154,3 +154,25 @@ struct LedgerShareView_Previews: PreviewProvider {
     }
 }
 #endif
+
+// MARK: - LedgerDataActions
+
+public enum LedgerDataActions: Int, CaseIterable {
+    case byOther = 0
+    case byAdventure = 1
+    case byTask = 2
+    case byActivity = 3
+    case byAbyss = 4
+    case byMail = 5
+    case byEvent = 6
+}
+
+extension LedgerDataActions {
+    public var localizedKey: String {
+        "ledgerData.action.name.\(String(describing: self))"
+    }
+
+    public var localized: String {
+        localizedKey.localized
+    }
+}

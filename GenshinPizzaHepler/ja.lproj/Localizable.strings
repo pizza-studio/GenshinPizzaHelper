@@ -1364,3 +1364,10 @@
 // MARK: - 3.1.2
 
 "settings.more.useEnkaJSONFromGitHosts" = "Git サービスサイトからの Enka JSON 資料を用いる";
+"ledgerData.action.name.byOther" = "その他";
+"ledgerData.action.name.byAdventure" = "冒険";
+"ledgerData.action.name.byTask" = "任務";
+"ledgerData.action.name.byActivity" = "活躍";
+"ledgerData.action.name.byAbyss" = "深境螺旋";
+"ledgerData.action.name.byMail" = "メール";
+"ledgerData.action.name.byEvent" = "イベント";

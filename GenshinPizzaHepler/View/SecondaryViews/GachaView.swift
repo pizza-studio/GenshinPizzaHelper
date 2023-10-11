@@ -187,7 +187,7 @@ private struct GachaStatisticSectionView: View {
     var gachaViewModel: GachaViewModel = .shared
 
     var reviewIconSize: CGFloat {
-        ThisDevice.isSmallestHDScreenPhone ? 40 : 50
+        (ThisDevice.isSmallestHDScreenPhone || ThisDevice.isThinnestSplitOnPad) ? 30 : 50
     }
 
     var body: some View {

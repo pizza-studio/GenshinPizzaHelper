@@ -81,7 +81,7 @@ enum ThisDevice {
         let windowSize = window.frame.size
         let big = max(windowSize.width, windowSize.height)
         let small = min(windowSize.width, windowSize.height)
-        return (3 ... 4).contains(big / small)
+        return (2.3 ... 4).contains(big / small)
     }
 
     public static var isWidestSplitOnPad: Bool {
@@ -117,6 +117,14 @@ enum ThisDevice {
         return compatibleA || compatibleB
     }
 
+    public static func getKeyWindow() -> UIWindow? {
+        UIApplication.shared.connectedScenes
+            .compactMap { scene -> UIWindow? in
+                (scene as? UIWindowScene)?.keyWindow
+            }
+            .first
+    }
+
     // MARK: Internal
 
     enum NotchType {
@@ -143,14 +151,6 @@ enum ThisDevice {
         guard let window = getKeyWindow() else { return false }
         let filtered = window.safeAreaInsets.allParamters.filter { $0 >= 44 }
         return filtered.count == 1
-    }
-
-    private static func getKeyWindow() -> UIWindow? {
-        UIApplication.shared.connectedScenes
-            .compactMap { scene -> UIWindow? in
-                (scene as? UIWindowScene)?.keyWindow
-            }
-            .first
     }
 }
 

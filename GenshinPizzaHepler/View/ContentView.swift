@@ -71,12 +71,14 @@ struct ContentView: View {
                 HomeView(animation: animation)
                     .tag(0)
                     .environmentObject(viewModel)
+                    .frame(maxWidth: 500)
                     .tabItem {
                         Label("概览", systemImage: "list.bullet")
                     }
                 DetailPortalView(animation: animation)
                     .tag(1)
                     .environmentObject(viewModel)
+                    .frame(maxWidth: 550)
                     .tabItem {
                         Label("详情", systemImage: "person.text.rectangle")
                     }

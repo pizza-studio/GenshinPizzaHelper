@@ -55,6 +55,9 @@ struct DetailPortalView: View {
     @State
     private var askAllowAbyssDataCollectionAlert: Bool = false
 
+    @StateObject
+    private var orientation = ThisDevice.DeviceOrientation()
+
     var body: some View {
         NavigationView {
             List {
@@ -64,6 +67,7 @@ struct DetailPortalView: View {
                 toolsSection()
             }
             .sectionSpacing(UIFont.systemFontSize)
+            .environmentObject(orientation)
             .refreshable {
                 withAnimation {
                     DispatchQueue.main.async {
@@ -350,7 +354,7 @@ struct DetailPortalView: View {
     func abyssAndPrimogemNavigator() -> some View {
         if let account = account {
             if let basicInfo: BasicInfos = account.basicInfo {
-                if ThisDevice.isSmallestHDScreenPhone {
+                if ThisDevice.isSmallestHDScreenPhone || ThisDevice.isThinnestSplitOnPad {
                     // 哀凤 SE2 / SE3 开启荧幕放大模式之后，这个版面很难保证排版完整性、需要专门重新做这份。
                     abyssAndPrimogemNavigatorViewLegacy(accountBasicInfo: basicInfo)
                 } else {
@@ -707,7 +711,7 @@ struct DetailPortalView: View {
             // 方向键会触发这个画面在 macOS 系统下的异常画面切换行为。
             // 所以这里限制 macOS 在此处以 sheet 的形式呈现这两个画面。
             switch OS.type {
-            case .macOS:
+            case .iPadOS, .macOS:
                 Label {
                     Text("祈愿分析")
                 } icon: {
@@ -818,77 +822,27 @@ private struct LedgerSheetView: View {
 
     // MARK: Private
 
-    private struct LabelInfoProvider: View {
-        let title: String
-        let icon: String
-        let value: Int
-
-        var body: some View {
-            HStack {
-                Label(title: { Text(title.localized) }) {
-                    Image(icon)
-                        .resizable()
-                        .scaledToFit()
-                }
-                Spacer()
-                Text("\(value)")
-            }
-        }
-    }
-
     private struct LedgerSheetViewList: View {
+        // MARK: Internal
+
         let data: LedgerData
 
         var body: some View {
             Section {
-                VStack(spacing: 0) {
-                    LabelInfoProvider(
-                        title: "原石收入",
-                        icon: "UI_ItemIcon_Primogem",
-                        value: data.dayData.currentPrimogems
-                    )
-                    if let lastPrimogem = data.dayData.lastPrimogems {
-                        let primogemsDifference = data.dayData
-                            .currentPrimogems - lastPrimogem
-                        HStack {
-                            Spacer()
-                            Text("较昨日").foregroundColor(.secondary)
-                            Text(
-                                primogemsDifference > 0 ?
-                                    "+\(primogemsDifference)" :
-                                    "\(primogemsDifference)"
-                            )
-                            .foregroundColor(
-                                primogemsDifference > 0 ?
-                                    .green : .red
-                            )
-                            .opacity(0.8)
-                        }.font(.footnote)
-                    }
-                }
-                VStack(spacing: 0) {
-                    LabelInfoProvider(
-                        title: "摩拉收入",
-                        icon: "UI_ItemIcon_Mora",
-                        value: data.dayData.currentMora
-                    )
-                    if let lastMora = data.dayData.lastMora {
-                        let moraDifference = data.dayData.currentMora - lastMora
-                        HStack {
-                            Spacer()
-                            Text("较昨日").foregroundColor(.secondary)
-                            Text(
-                                moraDifference > 0 ? "+\(moraDifference)" :
-                                    "\(moraDifference)"
-                            )
-                            .foregroundColor(
-                                moraDifference > 0 ? .green :
-                                    .red
-                            )
-                            .opacity(0.8)
-                        }.font(.footnote)
-                    }
-                }
+                LabelWithDescription(
+                    title: "原石收入",
+                    memo: "较昨日",
+                    icon: "UI_ItemIcon_Primogem",
+                    mainValue: data.dayData.currentPrimogems,
+                    previousValue: data.dayData.lastPrimogems
+                )
+                LabelWithDescription(
+                    title: "摩拉收入",
+                    memo: "较昨日",
+                    icon: "UI_ItemIcon_Mora",
+                    mainValue: data.dayData.currentMora,
+                    previousValue: data.dayData.lastMora
+                )
             } header: {
                 HStack {
                     Text("detailPortal.todayAcquisition.title")
@@ -905,57 +859,30 @@ private struct LedgerSheetView: View {
                 let dayCountThisMonth = Calendar.current.dateComponents(
                     [.day],
                     from: Date()
-                ).day!
-                let primogemsDifference = data.monthData.currentPrimogems - data
-                    .monthData.lastPrimogems / dayCountThisMonth
-                VStack(spacing: 0) {
-                    LabelInfoProvider(
-                        title: "原石收入",
-                        icon: "UI_ItemIcon_Primogem",
-                        value: data.monthData.currentPrimogems
-                    )
-                    HStack {
-                        Spacer()
-                        Text("较上月同期").foregroundColor(.secondary)
-                        Text(
-                            primogemsDifference > 0 ?
-                                "+\(primogemsDifference)" :
-                                "\(primogemsDifference)"
-                        )
-                        .foregroundColor(
-                            primogemsDifference > 0 ? .green :
-                                .red
-                        )
-                        .opacity(0.8)
-                    }.font(.footnote)
-                }
-                VStack(spacing: 0) {
-                    let moraDifference: Int = data.monthData.currentMora - data
-                        .monthData.lastMora / dayCountThisMonth
-                    LabelInfoProvider(
-                        title: "摩拉收入",
-                        icon: "UI_ItemIcon_Mora",
-                        value: data.monthData.currentMora
-                    )
-                    HStack {
-                        Spacer()
-                        Text("较上月同期").foregroundColor(.secondary)
-                        Text(
-                            moraDifference > 0 ? "+\(moraDifference)" :
-                                "\(moraDifference)"
-                        )
-                        .foregroundColor(moraDifference > 0 ? .green : .red)
-                        .opacity(0.8)
-                    }.font(.footnote)
-                }
+                ).day
+                LabelWithDescription(
+                    title: "原石收入",
+                    memo: "较上月同期",
+                    icon: "UI_ItemIcon_Primogem",
+                    mainValue: data.monthData.currentPrimogems,
+                    previousValue: data.monthData.lastPrimogems / (dayCountThisMonth ?? 1)
+                )
+                LabelWithDescription(
+                    title: "摩拉收入",
+                    memo: "较上月同期",
+                    icon: "UI_ItemIcon_Mora",
+                    mainValue: data.monthData.currentMora,
+                    previousValue: data.monthData.lastMora / (dayCountThisMonth ?? 1)
+                )
             } header: {
                 Text("本月账单 (\(data.dataMonth)月)")
             } footer: {
-                HStack {
+                HStack(alignment: .center) {
                     Spacer()
                     PieChartView(
                         values: data.monthData.groupBy.map { Double($0.num) },
-                        names: data.monthData.groupBy.map { $0.action },
+                        names: data.monthData.groupBy
+                            .map { (LedgerDataActions(rawValue: $0.actionId) ?? .byOther).localized },
                         formatter: { value in String(format: "%.0f", value) },
                         colors: [
                             .blue,
@@ -968,17 +895,51 @@ private struct LedgerSheetView: View {
                             .cyan,
                         ],
                         backgroundColor: Color(UIColor.systemGroupedBackground),
+                        widthFraction: 1,
                         innerRadiusFraction: 0.6
                     )
+                    .frame(minWidth: 280, maxWidth: 280, minHeight: 600, maxHeight: 600)
                     .padding(.vertical)
-                    .frame(
-                        height: UIScreen.main.bounds.width > 1000 ? UIScreen
-                            .main.bounds.height * 0.9 : UIScreen.main.bounds
-                            .height * 0.7
-                    )
-                    .frame(width: UIScreen.main.bounds.width > 1000 ? 500 : nil)
                     .padding(.top)
                     Spacer()
+                }
+            }
+        }
+
+        // MARK: Private
+
+        private struct LabelWithDescription: View {
+            let title: LocalizedStringKey
+            let memo: LocalizedStringKey
+            let icon: String
+            let mainValue: Int
+            let previousValue: Int?
+
+            var delta: Int { mainValue - (previousValue ?? 0) }
+
+            var body: some View {
+                Label {
+                    VStack {
+                        HStack {
+                            Text(title)
+                            Spacer()
+                            Text("\(mainValue)")
+                        }
+                        if previousValue != nil {
+                            HStack {
+                                Text(memo).foregroundColor(.secondary)
+                                Spacer()
+                                switch delta {
+                                case 1...: Text("+\(delta)").foregroundStyle(.green)
+                                default: Text("\(delta)").foregroundStyle(.red)
+                                }
+                            }.font(.footnote).opacity(0.8)
+                        }
+                    }
+                } icon: {
+                    Image(icon)
+                        .resizable()
+                        .scaledToFit()
                 }
             }
         }

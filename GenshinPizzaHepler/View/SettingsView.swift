@@ -151,8 +151,9 @@ struct SettingsView: View {
             }
             .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("nav.category.settings.name")
+            DisplayOptionsView() // 预设内容页
         }
-        .navigationViewStyle(.stack)
+        .navigationViewStyle(.columns)
         .toast(isPresenting: $isAlertToastShown) {
             AlertToast(
                 displayMode: .hud,

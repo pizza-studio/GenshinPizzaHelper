@@ -620,14 +620,15 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 case let .success(data):
                     let data = data.data
                     Section {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text(
                                 "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
                             )
-                            Text("使用率分级仅作深渊配队参考，不代表对角色的任何评价。")
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 5)
-                        }.font(.footnote)
+                            .padding(.bottom, 5)
+                            Text("abyssDataCollection.usageRate.disclaimer")
+                        }
+                        .font(.footnote)
+                        .multilineTextAlignment(.leading)
                     }
                     ForEach(0 ..< avatarSectionDatas.count, id: \.self) { i in
                         Section {
@@ -641,17 +642,17 @@ private struct ShowAvatarPercentageViewWithSection: View {
                             VStack(alignment: .leading) {
                                 switch i {
                                 case 0:
-                                    Text("T\(i) ") + Text("强烈推荐选用的角色")
+                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t0")
                                 case 1:
-                                    Text("T\(i) ") + Text("推荐选用的角色")
+                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t1")
                                 case 2:
-                                    Text("T\(i) ") + Text("优先选用的角色")
+                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t2")
                                 case 3:
-                                    Text("T\(i) ") + Text("普遍可用的角色")
+                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t3")
                                 case 4:
-                                    Text("T\(i) ") + Text("可以选用的角色")
+                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t4")
                                 case 5:
-                                    Text("T\(i) ") + Text("酌情选用的角色")
+                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t5")
                                 default:
                                     EmptyView()
                                 }
@@ -839,11 +840,19 @@ private struct ShowTeamPercentageView: View {
                         }
                     }()
                     Section {
-                        Text(
-                            "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
-                        )
-                        .font(.footnote)
-                        .textCase(.none)
+                        VStack(alignment: .leading) {
+                            let rawString = String(
+                                format: NSLocalizedString("共统计%lld用户%@", comment: ""),
+                                data.totalUsers,
+                                abyssDataCollectionViewModel.paramsDescription
+                            )
+                            let arrays = rawString.components(separatedBy: "·")
+                            ForEach(arrays, id: \.self) { line in
+                                Text(line)
+                                    .font(.footnote)
+                                    .textCase(.none)
+                            }
+                        }
                     }
                     Section {
                         let teams = teams
@@ -890,6 +899,7 @@ private struct ShowTeamPercentageView: View {
             }
         }
         .sectionSpacing(UIFont.systemFontSize)
+        .frame(maxWidth: 414)
     }
 }
 
