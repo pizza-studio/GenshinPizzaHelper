@@ -7,6 +7,7 @@ let package = Package(
     name: "OPHelper_SharedAssembly",
     platforms: [
         .iOS(.v15),
+        .macOS(.v12),
         .watchOS(.v9),
     ],
     products: [
@@ -23,7 +24,7 @@ let package = Package(
         .package(url: "./Dependences/HBMihoyoAPI", from: "1.0.0"),
         .package(url: "./Dependences/HBPizzaHelperAPI", from: "1.0.0"),
         .package(url: "./Dependences/DefaultsKeys", from: "1.0.0"),
-        .package(path: "../SwiftPieChart-1.0.61"),
+        .package(url: "./Dependences/SwiftPieChart-1.0.61", from: "1.0.61"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
