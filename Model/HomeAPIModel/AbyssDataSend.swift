@@ -207,47 +207,47 @@ extension AvatarHoldingData {
 struct HuTaoDBAbyssData: Codable {
     struct SpiralAbyss: Codable {
         struct Damage: Codable {
-            var AvatarId: Int
-            var Value: Int
+            var avatarId: Int
+            var aalue: Int
         }
 
         struct Floor: Codable {
             struct Level: Codable {
                 struct Battle: Codable {
-                    var Index: Int
-                    var Avatars: [Int]
+                    var index: Int
+                    var avatars: [Int]
                 }
 
-                var Index: Int
-                var Star: Int
-                var Battles: [Battle]
+                var index: Int
+                var star: Int
+                var battles: [Battle]
             }
 
-            var Index: Int
-            var Star: Int
-            var Levels: [Level]
+            var index: Int
+            var star: Int
+            var levels: [Level]
         }
 
-        var ScheduleId: Int
-        var TotalBattleTimes: Int
-        var TotalWinTimes: Int
-        var Damage: Damage
-        var TakeDamage: Damage
-        var Floors: [Floor]
+        var scheduleId: Int
+        var totalBattleTimes: Int
+        var totalWinTimes: Int
+        var damage: Damage
+        var takeDamage: Damage
+        var floors: [Floor]
     }
 
     struct Avatar: Codable {
-        var AvatarId: Int
-        var WeaponId: Int
-        var ReliquarySetIds: [Int]
-        var ActivedConstellationNumber: Int
+        var avatarId: Int
+        var weaponId: Int
+        var reliquarySetIds: [Int]
+        var activedConstellationNumber: Int
     }
 
-    var Uid: String
-    var Identity: String
-    var SpiralAbyss: SpiralAbyss?
-    var Avatars: [Avatar]
-    var ReservedUserName: String
+    var uid: String
+    var identity: String
+    var spiralAbyss: SpiralAbyss?
+    var avatars: [Avatar]
+    var reservedUserName: String
 }
 
 // MARK: - Constructor (HuTaoDBAbyssData)
@@ -280,24 +280,24 @@ extension HuTaoDBAbyssData {
             }
         }
 
-        self.Uid = uid
-        self.Identity = "GenshinPizzaHelper"
-        self.ReservedUserName = ""
+        self.uid = uid
+        self.identity = "GenshinPizzaHelper"
+        self.reservedUserName = ""
 
-        self.Avatars = []
+        self.avatars = []
         for myAvatar in basicInfo.avatars {
             guard let avatar = allAvatarInfo.avatars.first(where: { avatar in
                 myAvatar.id == avatar.id
             }) else { return nil }
-            Avatars.append(Avatar(
-                AvatarId: myAvatar.id,
-                WeaponId: avatar.weapon.id,
-                ReliquarySetIds: avatar.reliquaries.map(\.set.id),
-                ActivedConstellationNumber: myAvatar.activedConstellationNum
+            avatars.append(Avatar(
+                avatarId: myAvatar.id,
+                weaponId: avatar.weapon.id,
+                reliquarySetIds: avatar.reliquaries.map(\.set.id),
+                activedConstellationNumber: myAvatar.activedConstellationNum
             ))
         }
 
-        self.SpiralAbyss = .init(data: abyssData)
+        self.spiralAbyss = .init(data: abyssData)
     }
 }
 
@@ -312,39 +312,39 @@ extension HuTaoDBAbyssData.SpiralAbyss {
             data.energySkillRank.first,
             data.normalSkillRank.first,
         ].allSatisfy({ $0 != nil }) else { return nil }
-        ScheduleId = data.scheduleId
-        TotalBattleTimes = data.totalBattleTimes
-        TotalWinTimes = data.totalWinTimes
-        self.Damage = HuTaoDBAbyssData.SpiralAbyss.Damage(
-            AvatarId: data.damageRank.first?.avatarId ?? -1,
-            Value: data.damageRank.first?.value ?? -1
+        scheduleId = data.scheduleId
+        totalBattleTimes = data.totalBattleTimes
+        totalWinTimes = data.totalWinTimes
+        self.damage = HuTaoDBAbyssData.SpiralAbyss.Damage(
+            avatarId: data.damageRank.first?.avatarId ?? -1,
+            aalue: data.damageRank.first?.value ?? -1
         )
-        TakeDamage = HuTaoDBAbyssData.SpiralAbyss.Damage(
-            AvatarId: data.takeDamageRank.first?.avatarId ?? -1,
-            Value: data.takeDamageRank.first?.value ?? -1
+        takeDamage = HuTaoDBAbyssData.SpiralAbyss.Damage(
+            avatarId: data.takeDamageRank.first?.avatarId ?? -1,
+            aalue: data.takeDamageRank.first?.value ?? -1
         )
 
-        Floors = []
+        floors = []
         for myFloorData in data.floors {
             var levelData = [Floor.Level]()
             for myLevelData in myFloorData.levels {
                 var battleData = [Floor.Level.Battle]()
                 for myBattleData in myLevelData.battles {
                     battleData.append(Floor.Level.Battle(
-                        Index: myBattleData.index,
-                        Avatars: myBattleData.avatars.map { $0.id }
+                        index: myBattleData.index,
+                        avatars: myBattleData.avatars.map { $0.id }
                     ))
                 }
                 levelData.append(Floor.Level(
-                    Index: myLevelData.index,
-                    Star: myLevelData.star,
-                    Battles: battleData
+                    index: myLevelData.index,
+                    star: myLevelData.star,
+                    battles: battleData
                 ))
             }
-            Floors.append(Floor(
-                Index: myFloorData.index,
-                Star: myFloorData.star,
-                Levels: levelData
+            floors.append(Floor(
+                index: myFloorData.index,
+                star: myFloorData.star,
+                levels: levelData
             ))
         }
         if isInsane() { return nil }
@@ -354,7 +354,7 @@ extension HuTaoDBAbyssData.SpiralAbyss {
 // MARK: - HuTaoDBAbyssData Sanity Checkers.
 
 extension HuTaoDBAbyssData.SpiralAbyss.Floor.Level.Battle {
-    var isInsane: Bool { Avatars.isEmpty }
+    var isInsane: Bool { avatars.isEmpty }
 }
 
 extension HuTaoDBAbyssData.SpiralAbyss.Floor.Level {
@@ -362,8 +362,8 @@ extension HuTaoDBAbyssData.SpiralAbyss.Floor.Level {
 
     @discardableResult
     mutating func selfTidy() -> Int {
-        Battles = Battles.filter { !$0.isInsane }
-        return Battles.count
+        battles = battles.filter { !$0.isInsane }
+        return battles.count
     }
 }
 
@@ -372,12 +372,12 @@ extension HuTaoDBAbyssData.SpiralAbyss.Floor {
 
     @discardableResult
     mutating func selfTidy() -> Int {
-        Levels = Levels.compactMap { level in
+        levels = levels.compactMap { level in
             var level = level
             level.selfTidy()
             return level.isInsane() ? nil : level
         }
-        return Levels.count
+        return levels.count
     }
 }
 
@@ -386,20 +386,20 @@ extension HuTaoDBAbyssData.SpiralAbyss {
 
     @discardableResult
     mutating func selfTidy() -> Int {
-        Floors = Floors.compactMap { floor in
+        floors = floors.compactMap { floor in
             var floor = floor
             floor.selfTidy()
             return floor.isInsane() ? nil : floor
         }
-        return Floors.count
+        return floors.count
     }
 }
 
 extension HuTaoDBAbyssData {
-    static func sanityCheck(_ this: inout HuTaoDBAbyssData) -> Bool {
-        guard var abyss = this.SpiralAbyss else { return true }
+    mutating func sanityCheck() -> Bool {
+        guard var abyss = spiralAbyss else { return true }
         let sanityResult = abyss.selfTidy()
-        this.SpiralAbyss = (sanityResult == 0) ? nil : abyss
-        return this.SpiralAbyss == nil
+        spiralAbyss = (sanityResult == 0) ? nil : abyss
+        return spiralAbyss == nil
     }
 }
