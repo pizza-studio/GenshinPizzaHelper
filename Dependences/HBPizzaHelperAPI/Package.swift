@@ -28,9 +28,9 @@ let package = Package(
         .target(
             name: "HBPizzaHelperAPI",
             dependencies: [
-                "HBMihoyoAPI",
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "DefaultsKeys", package: "DefaultsKeys"),
+                .product(name: "HBMihoyoAPI", package: "HBMihoyoAPI"),
             ],
             resources: [
                 .process("Assets/characters.json"),
