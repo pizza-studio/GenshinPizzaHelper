@@ -1371,3 +1371,9 @@
 "ledgerData.action.name.byAbyss" = "深境螺旋";
 "ledgerData.action.name.byMail" = "メール";
 "ledgerData.action.name.byEvent" = "イベント";
+"server.region.name.china" = "天空島";
+"server.region.name.bilibili" = "世界樹";
+"server.region.name.us" = "米国";
+"server.region.name.eu" = "欧州";
+"server.region.name.asia" = "極東";
+"server.region.name.cht" = "香港・マカオ・台湾";

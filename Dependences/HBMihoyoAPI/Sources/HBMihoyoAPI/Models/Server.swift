@@ -11,12 +11,18 @@ import Foundation
 
 // 服务器类型
 public enum Server: String, CaseIterable, Identifiable {
-    case china = "天空岛"
-    case bilibili = "世界树"
+    case china = "Tenkuujima"
+    case bilibili = "Sekaijuu"
     case us = "America"
     case eu = "Europe"
     case asia = "Asia"
     case cht = "TW/HK/MO"
+
+    public var localizedKey: String {
+        "server.region.name.\(rawValue)"
+    }
+
+    public var localized: String { localizedKey.localized }
 
     // MARK: Public
 

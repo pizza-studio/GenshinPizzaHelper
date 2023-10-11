@@ -1371,3 +1371,9 @@
 "ledgerData.action.name.byAbyss" = "Abyss";
 "ledgerData.action.name.byMail" = "Mail";
 "ledgerData.action.name.byEvent" = "Event";
+"server.region.name.china" = "Tenkuujima";
+"server.region.name.bilibili" = "Sekaijuu";
+"server.region.name.us" = "America";
+"server.region.name.eu" = "Europe";
+"server.region.name.asia" = "Asia";
+"server.region.name.cht" = "TW/HK/MO";

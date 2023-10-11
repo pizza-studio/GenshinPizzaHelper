@@ -1369,3 +1369,9 @@ Created by Bill Haku on 2022/8/23.
 "ledgerData.action.name.byAbyss" = "深境螺旋";
 "ledgerData.action.name.byMail" = "邮件奖励";
 "ledgerData.action.name.byEvent" = "活动奖励";
+"server.region.name.china" = "天空岛";
+"server.region.name.bilibili" = "世界树";
+"server.region.name.us" = "美利坚";
+"server.region.name.eu" = "欧罗巴";
+"server.region.name.asia" = "亚细亚";
+"server.region.name.cht" = "港澳台";
