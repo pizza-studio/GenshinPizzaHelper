@@ -11,20 +11,20 @@ import Foundation
 
 // 服务器类型
 public enum Server: String, CaseIterable, Identifiable {
-    case china = "Tenkuujima"
-    case bilibili = "Sekaijuu"
+    case china = "天空岛"
+    case bilibili = "世界树"
     case us = "America"
     case eu = "Europe"
     case asia = "Asia"
     case cht = "TW/HK/MO"
 
+    // MARK: Public
+
     public var localizedKey: String {
-        "server.region.name.\(rawValue)"
+        "server.region.name.\(String(describing: self))"
     }
 
     public var localized: String { localizedKey.localized }
-
-    // MARK: Public
 
     public var id: String {
         switch self {

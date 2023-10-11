@@ -89,7 +89,7 @@ struct AccountDetailView: View {
                 }
                 Picker("settings.account.server", selection: $account.config.server) {
                     ForEach(Server.allCases, id: \.self) { server in
-                        Text(server.rawValue)
+                        Text(server.localized)
                             .tag(server)
                     }
                 }
@@ -220,7 +220,7 @@ struct AccountDetailSheet<SheetType>: View {
                 }
                 Picker("settings.account.server", selection: $account.config.server) {
                     ForEach(Server.allCases, id: \.self) { server in
-                        Text(server.rawValue)
+                        Text(server.localized)
                             .tag(server)
                     }
                 }
