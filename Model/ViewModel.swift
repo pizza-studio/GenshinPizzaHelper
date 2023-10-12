@@ -28,7 +28,7 @@ class ViewModel: NSObject, ObservableObject {
         super.init()
 //        self.session.delegate = self
 //        session.activate()
-        fetchAccount()
+        fetchAccountSansAsync()
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(fetchAccount),
@@ -97,52 +97,55 @@ class ViewModel: NSObject, ObservableObject {
 
     let accountConfigurationModel: AccountConfigurationModel = .shared
 
+    func fetchAccountSansAsync() {
+        let accountConfigs = accountConfigurationModel.fetchAccountConfigs()
+        if Server(rawValue: Defaults[.defaultServer]) == nil {
+            Defaults[.defaultServer] = (accountConfigs.first?.server ?? .asia).rawValue
+        }
+
+        if !accounts.isEqualTo(accountConfigs) {
+            accounts = accountConfigs.map { Account(config: $0) }
+            refreshData()
+            print("account fetched")
+            #if !os(watchOS)
+            #if canImport(UIKit)
+            accountConfigs.forEach { config in
+                if config.server.region == .cn {
+                    if (config.deviceFingerPrint == nil) || (config.deviceFingerPrint == "") {
+                        Task {
+                            config
+                                .deviceFingerPrint = (try? await MihoyoAPI.getDeviceFingerPrint(region: .cn)) ?? ""
+                            try? self.accountConfigurationModel.container.viewContext.save()
+                        }
+                    }
+                } else {
+                    if config.deviceFingerPrint == nil {
+                        config.deviceFingerPrint = ""
+                        try? self.accountConfigurationModel.container.viewContext.save()
+                    }
+                }
+            }
+            #endif
+            let showingPlayerDetailOfAccountUUID = Defaults[.detailPortalViewShowingAccountUUIDString]
+            if let showingPlayerDetailOfAccount = accounts
+                .first(where: { account in
+                    account.config.uuid?.uuidString == showingPlayerDetailOfAccountUUID
+                }) {
+                refreshPlayerDetail(
+                    for: showingPlayerDetailOfAccount
+                )
+            }
+            refreshLedgerData()
+            #endif
+        }
+    }
+
     @objc
     func fetchAccount() {
         // 从Core Data更新账号信息
         // 检查是否有更改，如果有更改则更新
         DispatchQueue.main.async {
-            let accountConfigs = self.accountConfigurationModel.fetchAccountConfigs()
-            if Server(rawValue: Defaults[.defaultServer]) == nil {
-                Defaults[.defaultServer] = (accountConfigs.first?.server ?? .asia).rawValue
-            }
-
-            if !self.accounts.isEqualTo(accountConfigs) {
-                self.accounts = accountConfigs.map { Account(config: $0) }
-                self.refreshData()
-                print("account fetched")
-                #if !os(watchOS)
-                #if canImport(UIKit)
-                accountConfigs.forEach { config in
-                    if config.server.region == .cn {
-                        if (config.deviceFingerPrint == nil) || (config.deviceFingerPrint == "") {
-                            Task {
-                                config
-                                    .deviceFingerPrint = (try? await MihoyoAPI.getDeviceFingerPrint(region: .cn)) ?? ""
-                                try? self.accountConfigurationModel.container.viewContext.save()
-                            }
-                        }
-                    } else {
-                        if config.deviceFingerPrint == nil {
-                            config.deviceFingerPrint = ""
-                            try? self.accountConfigurationModel.container.viewContext.save()
-                        }
-                    }
-                }
-                #endif
-                let showingPlayerDetailOfAccountUUID = Defaults[.detailPortalViewShowingAccountUUIDString]
-                if let showingPlayerDetailOfAccount = self.accounts
-                    .first(where: { account in
-                        account.config.uuid?.uuidString == showingPlayerDetailOfAccountUUID
-                    }) {
-                    self
-                        .refreshPlayerDetail(
-                            for: showingPlayerDetailOfAccount
-                        )
-                }
-                self.refreshLedgerData()
-                #endif
-            }
+            fetchAccountSansAsync()
         }
     }
 
