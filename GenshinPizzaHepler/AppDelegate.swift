@@ -28,11 +28,19 @@ class AppDelegate: NSObject, UIApplicationDelegate,
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> ()
     ) {
+        defer { completionHandler() }
         switch response.actionIdentifier {
         case "OPEN_GENSHIN_ACTION":
-            let genshinGameURL = URL(string: "yuanshengame://")!
-            UIApplication.shared.open(genshinGameURL) { _ in
-                print("open genshin success")
+            let genshinAppLocalHeader = "yuanshengame://"
+            let isGenshinInstalled = ThirdPartyToolsView.isInstallation(urlString: genshinAppLocalHeader)
+            if isGenshinInstalled, let gameURL = URL(string: genshinAppLocalHeader) {
+                UIApplication.shared.open(gameURL) { _ in
+                    print("open genshin game succeeded")
+                }
+            } else if let webGenshinURL = URL(string: "https://ys.mihoyo.com/cloud/") {
+                UIApplication.shared.open(webGenshinURL) { _ in
+                    print("open webGenshin succeeded")
+                }
             }
         case "OPEN_NOTIFICATION_SETTING_ACTION":
             let url = URL(string: "ophelper://settings/")!
@@ -42,6 +50,5 @@ class AppDelegate: NSObject, UIApplicationDelegate,
         default:
             break
         }
-        completionHandler()
     }
 }

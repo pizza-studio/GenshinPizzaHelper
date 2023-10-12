@@ -51,7 +51,7 @@ extension ThirdPartyToolsView {
     /// - Returns: View()
     @ViewBuilder
     func genshinCalculatorLink() -> some View {
-        let installed = isInstallation(urlString: "aliceworkshop://")
+        let installed = Self.isInstallation(urlString: "aliceworkshop://")
         if accounts.isEmpty {
             Link(
                 destination: URL(string: "https://apps.apple.com/us/app/id1620751192")!
@@ -121,14 +121,8 @@ extension ThirdPartyToolsView {
         }
     }
 
-    func isInstallation(urlString: String?) -> Bool {
-        let url = URL(string: urlString!)
-        if url == nil {
-            return false
-        }
-        if UIApplication.shared.canOpenURL(url!) {
-            return true
-        }
-        return false
+    public static func isInstallation(urlString: String?) -> Bool {
+        guard let url = URL(string: urlString!) else { return false }
+        return UIApplication.shared.canOpenURL(url)
     }
 }
