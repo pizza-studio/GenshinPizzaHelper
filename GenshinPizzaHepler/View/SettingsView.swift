@@ -155,7 +155,6 @@ struct SettingsView: View {
             }
             .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("nav.category.settings.name")
-            .frame(maxWidth: 550)
             DisplayOptionsView() // 预设内容页
         }
         .navigationViewStyle(.columns)

@@ -260,7 +260,6 @@ struct NotificationSettingView: View {
                 Text("settings.notification.type.parametricTransformer")
             }
         }
-        .frame(maxWidth: 550)
         .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("settings.notification.deliverySettings", displayMode: .inline)
     }

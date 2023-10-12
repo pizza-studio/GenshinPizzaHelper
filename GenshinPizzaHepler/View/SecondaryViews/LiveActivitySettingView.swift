@@ -125,7 +125,6 @@ struct LiveActivitySettingDetailView: View {
             }
             .disabled(!allowLiveActivity)
         }
-        .frame(maxWidth: 550)
         .sectionSpacing(UIFont.systemFontSize)
         .toolbar {
             ToolbarItem {

@@ -67,6 +67,9 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
+            Color(UIColor.systemBackground).frame(maxWidth: .infinity, maxHeight: .infinity)
+                .zIndex(-114_514)
+
             TabView(selection: index) {
                 HomeView(animation: animation)
                     .tag(0)
@@ -78,7 +81,6 @@ struct ContentView: View {
                 DetailPortalView(animation: animation)
                     .tag(1)
                     .environmentObject(viewModel)
-                    .frame(maxWidth: 550)
                     .tabItem {
                         Label("详情", systemImage: "person.text.rectangle")
                     }

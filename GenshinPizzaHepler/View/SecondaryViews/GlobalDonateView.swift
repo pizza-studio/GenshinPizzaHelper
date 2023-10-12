@@ -65,7 +65,6 @@ struct GlobalDonateView: View {
                 }
             }
         }
-        .frame(maxWidth: 550)
         .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("settings.misc.supportUs")
         .navigationBarTitleDisplayMode(.inline)
