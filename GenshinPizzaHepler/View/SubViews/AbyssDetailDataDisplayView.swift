@@ -16,23 +16,21 @@ struct AbyssDetailDataDisplayView: View {
 
     var body: some View {
         List {
-            // 总体战斗结果概览
-            Section {
-                InfoPreviewer(title: "最深抵达", content: data.maxFloor)
-                InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
-                InfoPreviewer(
-                    title: "战斗次数",
-                    content: "\(data.totalBattleTimes)"
-                )
-                InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
-            } header: {
-                Text("战斗概览")
-            }
-
             // 战斗数据榜
-            if !data.damageRank.isEmpty, !data.defeatRank.isEmpty,
-               !data.takeDamageRank.isEmpty, !data.normalSkillRank.isEmpty,
-               !data.energySkillRank.isEmpty {
+            if !data.rankDataMissing {
+                // 总体战斗结果概览
+                Section {
+                    InfoPreviewer(title: "最深抵达", content: data.maxFloor)
+                    InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
+                    InfoPreviewer(
+                        title: "战斗次数",
+                        content: "\(data.totalBattleTimes)"
+                    )
+                    InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
+                } header: {
+                    Text("战斗概览")
+                }
+
                 Section {
                     BattleDataInfoProvider(
                         name: "最强一击",

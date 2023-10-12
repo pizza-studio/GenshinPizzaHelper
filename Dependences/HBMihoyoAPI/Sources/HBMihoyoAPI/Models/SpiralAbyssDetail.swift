@@ -103,6 +103,10 @@ public struct SpiralAbyssDetail: Codable {
     /// 出站次数
     public var revealRank: [CharacterRankModel]
     public var totalStar: Int
+
+    public var rankDataMissing: Bool {
+        damageRank.count * defeatRank.count * takeDamageRank.count * normalSkillRank.count * energySkillRank.count == 0
+    }
 }
 
 // MARK: - AccountSpiralAbyssDetail

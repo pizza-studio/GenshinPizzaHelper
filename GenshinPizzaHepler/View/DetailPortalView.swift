@@ -342,6 +342,9 @@ struct DetailPortalView: View {
                         viewModel.refreshCostumeMap()
                     }
                 }
+                if !playerDetail.avatars.isEmpty {
+                    HelpTextForScrollingOnDesktopComputer(.horizontal)
+                }
                 allAvatarNavigator()
             }
         }

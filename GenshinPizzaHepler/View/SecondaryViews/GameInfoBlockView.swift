@@ -37,6 +37,7 @@ struct GameInfoBlock: View {
                                 in: animation
                             )
                         }
+                        Spacer()
                         HStack(alignment: .firstTextBaseline, spacing: 2) {
                             Text("\(userData.resinInfo.currentResin)")
                                 .font(.system(size: 50, design: .rounded))
@@ -73,7 +74,6 @@ struct GameInfoBlock: View {
                     }
                     .frame(maxWidth: .infinity)
                     DetailInfo(userData: userData, viewConfig: viewConfig)
-                        .padding(.vertical)
                         .frame(maxWidth: .infinity)
                         .matchedGeometryEffect(
                             id: "\(accountUUIDString)detail",
@@ -81,6 +81,7 @@ struct GameInfoBlock: View {
                         )
                 }
                 .padding()
+                .frame(maxHeight: 166)
                 .opacity(fetchComplete ? 1 : 0)
                 if !fetchComplete {
                     HStack {
@@ -105,10 +106,7 @@ struct GameInfoBlock: View {
                 alignment: .trailing
             )
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .contentShape(RoundedRectangle(
-                cornerRadius: 20,
-                style: .continuous
-            ))
+            .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         } else {
             HStack {
                 Spacer()

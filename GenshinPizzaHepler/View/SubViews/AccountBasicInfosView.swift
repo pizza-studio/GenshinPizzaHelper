@@ -200,6 +200,12 @@ struct AccountBasicInfosView: View {
                     .fontWeight(.semibold)
                     .padding(.top)
                     .padding(.bottom, 5)
+            } footer: {
+                HStack {
+                    Spacer()
+                    HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
+                    Spacer()
+                }
             }
             // 一段空白区域用于填充底部，垫高整体
             Spacer(minLength: 50)

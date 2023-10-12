@@ -29,7 +29,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack {
+                VStack(spacing: UIFont.systemFontSize) {
                     // MARK: - 今日材料
 
                     InAppMaterialNavigator()
@@ -46,12 +46,10 @@ struct HomeView: View {
                                 getCurrentEvent()
                             }
                         }
-                        .padding(.bottom, sharedPadding)
 
                     // MARK: - 当前活动
 
                     CurrentEventNavigator(eventContents: $eventContents)
-                        .padding(.bottom, sharedPadding)
                     if viewModel.accounts.isEmpty {
                         NavigationLink(destination: AddAccountView()) {
                             Label("settings.account.pleaseAddAccountFirst", systemImage: "plus.circle")
@@ -180,7 +178,7 @@ private struct PinnedAccountInfoCard: View {
                 widgetBackground: account.background,
                 fetchComplete: account.fetchComplete
             )
-            .padding([.bottom, .horizontal])
+            .padding(.horizontal)
             .listRowBackground(Color.white.opacity(0))
             .onTapGesture {
                 simpleTaptic(type: .medium)
@@ -271,7 +269,7 @@ private struct PinnedAccountInfoCard: View {
                                 .padding(.horizontal)
                         }
                     }
-                    .padding([.bottom, .horizontal])
+                    .padding(.horizontal)
                 }
             }
         default: EmptyView()
@@ -349,7 +347,7 @@ private struct AccountInfoCards: View {
                                 widgetBackground: account.background,
                                 fetchComplete: account.fetchComplete
                             )
-                            .padding([.bottom, .horizontal])
+                            .padding(.horizontal)
                             .listRowBackground(Color.white.opacity(0))
                             .onTapGesture {
                                 simpleTaptic(type: .medium)
@@ -449,13 +447,13 @@ private struct AccountInfoCards: View {
                                             .padding(.horizontal)
                                     }
                                 }
-                                .padding([.bottom, .horizontal])
+                                .padding(.horizontal)
                             }
                         }
                     }
                 } else {
                     ProgressView()
-                        .padding([.bottom, .horizontal])
+                        .padding(.horizontal)
                 }
             }
         }

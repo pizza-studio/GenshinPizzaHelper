@@ -118,8 +118,7 @@ struct InAppMaterialNavigator: View {
                     .padding(.leading, 25)
                     Spacer()
                     Group {
-                        if showRelatedDetailOfMaterial !=
-                            nil { Text("左右滑动查看所有角色") } else { Text("所有材料均可获取") }
+                        Text("所有材料均可获取")
                     }
                     .multilineTextAlignment(.center)
                     .font(.caption)
@@ -374,9 +373,13 @@ struct InAppMaterialNavigator: View {
                         }
                     }
                 }
-                Text("左右滑动查看更多")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                if OS.type == .macOS {
+                    HelpTextForScrollingOnDesktopComputer(.horizontal)
+                } else {
+                    Text("左右滑动查看更多")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
                 Spacer()
             }
             .onTapGesture {

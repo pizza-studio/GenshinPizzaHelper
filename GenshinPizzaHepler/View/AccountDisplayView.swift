@@ -45,7 +45,7 @@ struct AccountDisplayView: View {
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .center) {
-                    Spacer(minLength: 80)
+                    if OS.type != .macOS { Spacer(minLength: 80) }
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
                             VStack(alignment: .leading, spacing: 10) {
@@ -127,7 +127,8 @@ struct AccountDisplayView: View {
                     }
                     .frame(width: 310)
 
-                    Spacer()
+                    HelpTextForScrollingOnDesktopComputer(.vertical).padding()
+                    if OS.type != .macOS { Spacer() }
                     if !isAccountInfoShown {
                         HStack {
                             Spacer()
@@ -151,18 +152,20 @@ struct AccountDisplayView: View {
                                             }
                                         }
                                 }
-                            Spacer()
+                            if OS.type != .macOS { Spacer() }
                         }
                     }
                 }
                 .shouldTakeAllVerticalSpace(
-                    !isAccountInfoShown,
+                    !(isAccountInfoShown && OS.type != .macOS),
                     height: geo.size.height,
                     animation: animation
                 )
                 .readingScrollView(from: "scroll", into: $scrollOffset)
-                if isAccountInfoShown {
-                    Spacer(minLength: 40)
+                if isAccountInfoShown || OS.type == .macOS {
+                    if OS.type != .macOS {
+                        Spacer(minLength: 40)
+                    }
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
                             Image(systemName: "person.fill")

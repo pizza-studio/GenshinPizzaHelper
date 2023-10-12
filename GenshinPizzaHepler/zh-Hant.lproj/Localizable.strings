@@ -1377,3 +1377,4 @@
 "server.region.name.eu" = "歐羅巴";
 "server.region.name.asia" = "亞細亞";
 "server.region.name.cht" = "港澳台";
+"operation.scrolling.guide" = "請使用 (Shift+) 滑鼠滾輪以控制內容捲動檢視。";

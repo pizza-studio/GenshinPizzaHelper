@@ -165,3 +165,27 @@ extension View {
         return self
     }
 }
+
+// MARK: - HelpTextForScrollingOnDesktopComputer
+
+struct HelpTextForScrollingOnDesktopComputer: View {
+    // MARK: Lifecycle
+
+    public init(_ direction: UIAxis) {
+        self.direction = direction
+    }
+
+    // MARK: Internal
+
+    @State
+    var direction: UIAxis
+
+    var body: some View {
+        if OS.type == .macOS {
+            let mark: String = (direction == .horizontal) ? "⇆ " : "⇅ "
+            (Text(mark) + Text("operation.scrolling.guide")).font(.footnote).opacity(0.7)
+        } else {
+            EmptyView()
+        }
+    }
+}

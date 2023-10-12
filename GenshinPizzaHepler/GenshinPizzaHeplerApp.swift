@@ -43,18 +43,33 @@ struct GenshinPizzaHeplerApp: App {
     ]
 
     var body: some Scene {
+        #if os(watchOS)
         WindowGroup {
-            #if os(watchOS)
             ContentView()
                 .environmentObject(viewModel)
-            #else
+        }
+        #else
+        WindowGroup {
             ContentView(storeManager: storeManager)
                 .environmentObject(viewModel)
+                .onReceive(NotificationCenter.default.publisher(for: UIScene.willConnectNotification)) { _ in
+                    if OS.type == .macOS {
+                        let windowSize = CGSize(width: 414, height: 896)
+                        UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+                            .forEach { windowScene in
+                                windowScene.sizeRestrictions?.minimumSize = windowSize
+                                windowScene.sizeRestrictions?.maximumSize = windowSize
+                                if #available(iOS 16, *) {
+                                    windowScene.sizeRestrictions?.allowsFullScreen = false
+                                }
+                            }
+                    }
+                }
                 .onAppear {
                     SKPaymentQueue.default().add(storeManager)
                     storeManager.getProducts(productIDs: productIDs)
                 }
-            #endif
         }
+        #endif
     }
 }

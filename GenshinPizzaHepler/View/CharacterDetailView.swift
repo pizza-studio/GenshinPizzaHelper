@@ -34,6 +34,9 @@ struct CharacterDetailView: View {
     var body: some View {
         if let playerDetail = playerDetail {
             coreBody(detail: playerDetail).environmentObject(orientation)
+                .overlay(alignment: .top) {
+                    HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
+                }
         } else {
             Text("账号未展示角色")
                 .foregroundColor(.secondary)
