@@ -68,4 +68,23 @@ extension CostumeAsset {
         case .KaeyaCostumeDancer: return 201
         }
     }
+
+    public var compatibleNamecard: NameCard? {
+        switch self {
+        case .QinCostumeSea: return .UI_NameCardPic_Csxy1_P
+        case .BarbaraCostumeSummertime: return .UI_NameCardPic_Bp7_P
+        case .NingguangCostumeFloral: return .UI_NameCardPic_TheatreMechanicus2_P
+        case .KeqingCostumeFeather: return .UI_NameCardPic_Cenyan1_P
+        case .QinCostumeWic: return nil
+        case .AmborCostumeWic: return nil
+        case .MonaCostumeWic: return nil
+        case .RosariaCostumeWic: return nil
+        case .DilucCostumeFlamme: return .UI_NameCardPic_Tzz1_P
+        case .FischlCostumeHighness: return .UI_NameCardPic_Bp2_P
+        case .AyakaCostumeFruhling: return .UI_NameCardPic_Fishing_P
+        case .LisaCostumeStudentin: return .UI_NameCardPic_Bp17_P
+        case .KleeCostumeWitch: return .UI_NameCardPic_RedandWhite_P
+        case .KaeyaCostumeDancer: return .UI_NameCardPic_Xumi2_P
+        }
+    }
 }

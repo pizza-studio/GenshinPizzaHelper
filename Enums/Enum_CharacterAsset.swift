@@ -213,6 +213,9 @@ extension CharacterAsset {
     }
 
     public var namecard: NameCard {
+        if let costumeCard = Self.costumeMap[self]?.compatibleNamecard {
+            return costumeCard
+        }
         switch self {
         case .Paimon: return .UI_NameCardPic_0_P
         case .Hotaru: return .UI_NameCardPic_Bp2_P
