@@ -222,7 +222,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>Yil1CB</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>23A344</string>
+	<string>23B5056e</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>15A240d</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -233,7 +233,7 @@
 			<key>INIntentCategory</key>
 			<string>information</string>
 			<key>INIntentDescription</key>
-			<string>为你的小组件选择显示的帐号</string>
+			<string>为你的小组件选择显示的账号</string>
 			<key>INIntentDescriptionID</key>
 			<string>zQrKVi</string>
 			<key>INIntentEligibleForWidgets</key>
@@ -250,7 +250,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>帐号</string>
+					<string>账号</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>EnqoJ9</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -747,7 +747,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>选择帐号</string>
+			<string>选择账号</string>
 			<key>INIntentTitleID</key>
 			<string>sWpemX</string>
 			<key>INIntentType</key>
@@ -759,7 +759,7 @@
 			<key>INIntentCategory</key>
 			<string>information</string>
 			<key>INIntentDescription</key>
-			<string>为你的小组件选择显示的帐号</string>
+			<string>为你的小组件选择显示的账号</string>
 			<key>INIntentDescriptionID</key>
 			<string>NI3XnI</string>
 			<key>INIntentEligibleForWidgets</key>
@@ -776,7 +776,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>帐号</string>
+					<string>账号</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>enBbLR</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -871,7 +871,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>选择帐号</string>
+			<string>选择账号</string>
 			<key>INIntentTitleID</key>
 			<string>vAR6GW</string>
 			<key>INIntentType</key>
@@ -883,7 +883,7 @@
 			<key>INIntentCategory</key>
 			<string>information</string>
 			<key>INIntentDescription</key>
-			<string>为你的小组件选择显示的帐号</string>
+			<string>为你的小组件选择显示的账号</string>
 			<key>INIntentDescriptionID</key>
 			<string>P3fcKK</string>
 			<key>INIntentEligibleForWidgets</key>
@@ -900,7 +900,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>帐号</string>
+					<string>账号</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>TYuPZZ</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -1126,7 +1126,7 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>帐号名称</string>
+			<string>账号名称</string>
 			<key>INTypeDisplayNameID</key>
 			<string>qijLJm</string>
 			<key>INTypeLastPropertyTag</key>

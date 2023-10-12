@@ -848,7 +848,7 @@ Created by Bill Haku on 2022/8/23.
 "角色展示柜" = "角色展示柜";
 "账号未展示角色" = "账号未展示角色";
 "detailPortal.todayAcquisition.title" = "今日入账";
-"detailPortal.todayAcquisition.reloginRequiredNotice" = "需点此重新登录该帐号以查询";
+"detailPortal.todayAcquisition.reloginRequiredNotice" = "需点此重新登录该账号以查询";
 // apiral abyss sheet
 "深境螺旋详情" = "深境螺旋详情";
 "保存%lld层的深渊数据" = "保存%lld层的深渊数据";
