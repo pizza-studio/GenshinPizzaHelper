@@ -8,8 +8,7 @@
 import Defaults
 import Foundation
 import HBMihoyoAPI
-#if canImport(UIKit)
-#if os(iOS) || targetEnvironment(macCatalyst)
+#if !os(watchOS)
 import UIKit
 
 extension MihoyoAPI {
@@ -314,5 +313,4 @@ public enum MiHoYoAPIError: Error {
         }
     }
 }
-#endif
 #endif

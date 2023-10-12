@@ -108,7 +108,6 @@ class ViewModel: NSObject, ObservableObject {
             refreshData()
             print("account fetched")
             #if !os(watchOS)
-            #if canImport(UIKit)
             accountConfigs.forEach { config in
                 if config.server.region == .cn {
                     if (config.deviceFingerPrint == nil) || (config.deviceFingerPrint == "") {
@@ -125,7 +124,6 @@ class ViewModel: NSObject, ObservableObject {
                     }
                 }
             }
-            #endif
             let showingPlayerDetailOfAccountUUID = Defaults[.detailPortalViewShowingAccountUUIDString]
             if let showingPlayerDetailOfAccount = accounts
                 .first(where: { account in
