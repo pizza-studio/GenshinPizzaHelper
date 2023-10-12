@@ -81,7 +81,7 @@ struct DetailPortalView: View {
             }
             .onAppear {
                 if !accounts.isEmpty, showingAccountUUIDString == nil {
-                    showingAccountUUIDString = accounts.first!.config.uuid!
+                    showingAccountUUIDString = accounts.first?.config.uuid?
                         .uuidString
                 }
             }
@@ -92,34 +92,29 @@ struct DetailPortalView: View {
                 case .mySpiralAbyss:
                     spiralAbyssSheetView()
                 case .loginAccountAgainView:
-                    GetLedgerCookieWebView(
-                        title: String(
-                            format: NSLocalizedString(
-                                "请登录「%@」",
-                                comment: ""
-                            ),
-                            viewModel
-                                .accounts[
-                                    viewModel.accounts
-                                        .firstIndex(of: account!)!
-                                ].config.name ?? ""
-                        ),
-                        sheetType: $sheetType,
-                        cookie: Binding(
-                            $viewModel
-                                .accounts[
-                                    viewModel.accounts
-                                        .firstIndex(of: account!)!
-                                ]
-                                .config.cookie
-                        )!,
-                        region: viewModel
-                            .accounts[
-                                viewModel.accounts
-                                    .firstIndex(of: account!)!
-                            ]
-                            .config.server.region
-                    )
+                    Group {
+                        if let account = account, let firstMatchedIndex = viewModel.accounts.firstIndex(of: account),
+                           let binding = Binding(
+                               $viewModel
+                                   .accounts[firstMatchedIndex]
+                                   .config.cookie
+                           ) {
+                            GetLedgerCookieWebView(
+                                title: String(
+                                    format: NSLocalizedString(
+                                        "请登录「%@」",
+                                        comment: ""
+                                    ),
+                                    viewModel.accounts[firstMatchedIndex].config.name ?? ""
+                                ),
+                                sheetType: $sheetType,
+                                cookie: binding,
+                                region: viewModel
+                                    .accounts[firstMatchedIndex]
+                                    .config.server.region
+                            )
+                        }
+                    }
                     .onDisappear {
                         viewModel.refreshLedgerData()
                     }
@@ -262,7 +257,7 @@ struct DetailPortalView: View {
             Menu {
                 ForEach(accounts, id: \.config.id) { account in
                     Button(account.config.name ?? "Name Error") {
-                        showingAccountUUIDString = account.config.uuid!
+                        showingAccountUUIDString = account.config.uuid?
                             .uuidString
                     }
                 }
@@ -301,8 +296,10 @@ struct DetailPortalView: View {
 
     @ViewBuilder
     func allAvatarListView() -> some View {
-        NavigationView {
-            AllAvatarListSheetView(account: account!, sheetType: $sheetType)
+        if let account = account {
+            NavigationView {
+                AllAvatarListSheetView(account: account, sheetType: $sheetType)
+            }
         }
     }
 
@@ -335,7 +332,7 @@ struct DetailPortalView: View {
                                                 avatar.name
                                             viewModel
                                                 .showCharacterDetailOfAccount =
-                                                account!
+                                                account
                                         }
                                     }
                             }
@@ -551,10 +548,12 @@ struct DetailPortalView: View {
 
     @ViewBuilder
     func ledgerSheetView() -> some View {
-        LedgerSheetView(
-            data: try! ledgerDataResult!.get(),
-            sheetType: $sheetType
-        )
+        if let data = try? ledgerDataResult?.get() {
+            LedgerSheetView(
+                data: data,
+                sheetType: $sheetType
+            )
+        }
     }
 
     @ViewBuilder
@@ -630,8 +629,7 @@ struct DetailPortalView: View {
                 ForEach(accounts, id: \.config.id) { account in
                     Button(account.config.name ?? "Name Error") {
                         withAnimation {
-                            showingAccountUUIDString = account.config.uuid!
-                                .uuidString
+                            showingAccountUUIDString = account.config.uuid?.uuidString
                         }
                     }
                 }
