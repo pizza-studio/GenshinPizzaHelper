@@ -145,7 +145,7 @@ class ViewModel: NSObject, ObservableObject {
         // 从Core Data更新账号信息
         // 检查是否有更改，如果有更改则更新
         DispatchQueue.main.async {
-            fetchAccountSansAsync()
+            self.fetchAccountSansAsync()
         }
     }
 
