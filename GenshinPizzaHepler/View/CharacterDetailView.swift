@@ -24,19 +24,28 @@ struct CharacterDetailView: View {
     @State
     var showWaterMark: Bool = true
 
-    var playerDetail: PlayerDetail { try! account.playerDetailResult!.get() }
-    var avatar: PlayerDetail.Avatar {
-        playerDetail.avatars.first(where: { avatar in
+    var playerDetail: PlayerDetail? { try? account.playerDetailResult?.get() }
+    var avatar: PlayerDetail.Avatar? {
+        playerDetail?.avatars.first(where: { avatar in
             avatar.name == showingCharacterName
-        })!
+        })
     }
 
     var body: some View {
-        coreBody.environmentObject(orientation)
+        if let playerDetail = playerDetail {
+            coreBody(detail: playerDetail).environmentObject(orientation)
+        } else {
+            Text("账号未展示角色")
+                .foregroundColor(.secondary)
+        }
+    }
+
+    var bottomSpacerHeight: CGFloat {
+        ThisDevice.isSmallestHDScreenPhone ? 50 : 20
     }
 
     @ViewBuilder
-    var coreBody: some View {
+    func coreBody(detail playerDetail: PlayerDetail) -> some View {
         TabView(selection: $showingCharacterName.animation()) {
             ForEach(playerDetail.avatars, id: \.name) { avatar in
                 framedCoreView(avatar)
@@ -52,23 +61,21 @@ struct CharacterDetailView: View {
             closeView()
         }
         .background {
-            if OS.type == .macOS {
-                EnkaWebIcon(iconString: avatar.namecardIconString)
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
-                    .blur(radius: 30)
-                    .overlay(Color(UIColor.systemGray6).opacity(0.5))
-            } else {
-                EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
-                    .overlay(.thinMaterial)
+            if let avatar = avatar {
+                if OS.type == .macOS {
+                    EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
+                        .scaledToFill()
+                        .ignoresSafeArea(.all)
+                        .blur(radius: 30)
+                        .overlay(Color(UIColor.systemGray6).opacity(0.5))
+                } else {
+                    EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
+                        .scaledToFill()
+                        .ignoresSafeArea(.all)
+                        .overlay(.thinMaterial)
+                }
             }
         }
-        .background(
-            avatar.element.color
-                .overlay(.thinMaterial)
-        )
         .addWaterMark(showWaterMark)
         .onChange(of: showingCharacterName) { _ in
             simpleTaptic(type: .selection)
@@ -101,10 +108,6 @@ struct CharacterDetailView: View {
                 }
             }
         }
-    }
-
-    var bottomSpacerHeight: CGFloat {
-        ThisDevice.isSmallestHDScreenPhone ? 50 : 20
     }
 
     @ViewBuilder

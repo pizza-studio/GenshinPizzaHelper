@@ -210,7 +210,7 @@ struct ContentView: View {
                     .value,
                     let accountIndex = viewModel.accounts
                     .firstIndex(where: {
-                        ($0.config.uuid?.uuidString ?? "") == accountUUIDString
+                        $0.config.uuid?.uuidString == accountUUIDString
                     }) {
                     settingForAccountIndex = accountIndex
                     sheetType = .accountSetting
