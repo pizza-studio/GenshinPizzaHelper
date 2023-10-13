@@ -879,10 +879,8 @@ private struct ShowTeamPercentageView: View {
                                             ) as NSNumber)!
                                     )
                                     .font(.systemCompressed(size: 16, weight: .heavy))
-                                    let matchedSymbol = SFSymbol.allSymbols.filter { symbol in
-                                        String(describing: symbol) == "_\(index + 1)Circle"
-                                    }.first
-                                    if let matchedSymbol = matchedSymbol {
+                                    let matchedSymbol = SFSymbol(rawValue: "\(index + 1).circle")
+                                    if SFSymbol.allSymbols.contains(matchedSymbol) {
                                         Image(systemSymbol: matchedSymbol)
                                             .font(.system(size: 14, weight: .light))
                                     }
@@ -935,10 +933,8 @@ private struct ShowTeamPercentageShare: View {
                 VStack {
                     ForEach(teams, id: \.0) { index, team in
                         HStack {
-                            let matchedSymbol = SFSymbol.allSymbols.filter { symbol in
-                                String(describing: symbol) == "_\(index + 1)Circle"
-                            }.first
-                            if let matchedSymbol = matchedSymbol {
+                            let matchedSymbol = SFSymbol(rawValue: "\(index + 1).circle")
+                            if SFSymbol.allSymbols.contains(matchedSymbol) {
                                 Image(systemSymbol: matchedSymbol)
                                     .font(.system(size: 14, weight: .light))
                                     .foregroundColor(.gray)
