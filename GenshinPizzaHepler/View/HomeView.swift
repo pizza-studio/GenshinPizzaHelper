@@ -368,7 +368,6 @@ private struct AccountInfoCards: View {
                             }
                         }
                         .contextMenu {
-                            let shouldRemove = pinToTopAccountUUIDString == accountConfigUUID.uuidString
                             Button("home.infoCard.pinToTop".localized) {
                                 withAnimation {
                                     pinToTopAccountUUIDString = accountConfigUUID.uuidString
