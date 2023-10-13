@@ -163,6 +163,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         }
         #endif
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .activityBackgroundTint(.clear)
     }
 
     @ViewBuilder
