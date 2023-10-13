@@ -1024,7 +1024,8 @@
 // Notification setting
 "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Ang mga notification ay nilikha nang lokal at awtomatikong na-update kapag nag-refresh ang widget, o kapag binuksan mo ang app. \nKapag matagal ng oras nang hindi binubuksan ang app o nang hindi gumagamit ng widget ay maaaring magresulta sa hindi tumpak na mga abiso. \nAng notification ay maaari lamang mai-refresh sa pamamagitan ng pagbubukas ng app kung ang widget ay nasa \"simplified mode\";";
 
-"顶置" = "I-Pin sa taas";";
+"home.infoCard.unpin" = "Unpin";
+"home.infoCard.pinToTop" = "I-Pin sa taas";";
 （1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Ang katayuan ng account ay hindi normal. Inirerekomenda na bawasan ang dalas ng kahilingan ng widget, o mahabang pindutin ang widget upang gamitin ang simple mode";
 "请重新登录本账号以获取stoken" = "Mag-login ulit sa account na ito upang makuha ang stoken";
 "请登录「%@」" = "Log in to \"%@\"";

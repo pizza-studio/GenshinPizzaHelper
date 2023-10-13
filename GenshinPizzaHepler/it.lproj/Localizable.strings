@@ -1024,7 +1024,8 @@
 // Notification setting
 "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Notifications are created locally and are automatically updated when the widget refreshes, or when you open the App. \nLong periods of time without opening the App or without using the widget may result in inaccurate notifications. \nSome notifications may only be refreshed by opening the App if the widget is in clean mode.";
 
-"顶置" = "Pin to Top";
+"home.infoCard.unpin" = "Unpin";
+"home.infoCard.pinToTop" = "Pin to Top";
 "（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) The account status is abnormal. It is recommended to reduce the widget request frequency, or long press the widget to open the simple mode";
 "请重新登录本账号以获取stoken" = "Please re-login this account to get stoken";
 "请登录「%@」" = "Log in to \"%@\"";

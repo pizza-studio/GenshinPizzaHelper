@@ -196,6 +196,12 @@ private struct PinnedAccountInfoCard: View {
             }
             .contextMenu {
                 if #available(iOS 16, *) {
+                    Button("home.infoCard.unpin".localized) {
+                        withAnimation {
+                            Defaults.reset(.pinToTopAccountUUIDString)
+                            viewModel.objectWillChange.send()
+                        }
+                    }
                     Button("button.savePic".localized) {
                         let view = GameInfoBlockForSave(
                             userData: userData,
@@ -335,97 +341,96 @@ private struct AccountInfoCards: View {
                    $0.config.uuid?
                        .uuidString ?? "1" == pinToTopAccountUUIDString
                }) {
-                if account.result != nil {
+                if account.result != nil, let accountConfigUUID = account.config.uuid {
                     switch account.result! {
                     case let .success(userData):
-                        if let accountConfigUUID = account.config.uuid {
-                            GameInfoBlock(
-                                userData: userData,
-                                accountName: account.config.name,
-                                accountUUIDString: accountConfigUUID
-                                    .uuidString,
-                                animation: animation,
-                                widgetBackground: account.background,
-                                fetchComplete: account.fetchComplete
-                            )
-                            .padding(.horizontal)
-                            .listRowBackground(Color.white.opacity(0))
-                            .onTapGesture {
-                                simpleTaptic(type: .medium)
-                                withAnimation(
-                                    .interactiveSpring(
-                                        response: 0.5,
-                                        dampingFraction: 0.8,
-                                        blendDuration: 0.8
-                                    )
-                                ) {
-                                    viewModel.showDetailOfAccount = account
-                                }
-                            }
-                            .contextMenu {
-                                Button("顶置".localized) {
-                                    withAnimation {
-                                        pinToTopAccountUUIDString = account
-                                            .config.uuid!.uuidString
-                                    }
-                                }
-                                if #available(iOS 16, *) {
-                                    Button("保存图片".localized) {
-                                        let view = GameInfoBlockForSave(
-                                            userData: userData,
-                                            accountName: account.config
-                                                .name ?? "",
-                                            accountUUIDString: account
-                                                .config.uuid?.uuidString ?? "",
-                                            animation: animation,
-                                            widgetBackground: account
-                                                .background
-                                        ).environment(
-                                            \.locale,
-                                            .init(
-                                                identifier: Locale.current
-                                                    .identifier
-                                            )
-                                        )
-                                        let renderer =
-                                            ImageRenderer(content: view)
-                                        renderer.scale = UIScreen.main.scale
-                                        if let image = renderer.uiImage {
-                                            UIImageWriteToSavedPhotosAlbum(
-                                                image,
-                                                nil,
-                                                nil,
-                                                nil
-                                            )
-                                        }
-                                    }
-                                }
-                                #if canImport(ActivityKit)
-                                if #available(iOS 16.1, *) {
-                                    Button("为该账号开启树脂计时器") {
-                                        do {
-                                            try ResinRecoveryActivityController
-                                                .shared
-                                                .createResinRecoveryTimerActivity(
-                                                    for: account
-                                                )
-                                            isSucceedAlertShow.toggle()
-                                        } catch {
-                                            errorMessage = error
-                                                .localizedDescription
-                                            isErrorAlertShow.toggle()
-                                        }
-                                    }
-                                }
-                                #endif
-                                #if DEBUG
-                                Button("Toast Debug") {
-                                    isSucceedAlertShow.toggle()
-                                    print("isSucceedAlertShow toggle")
-                                }
-                                #endif
+                        GameInfoBlock(
+                            userData: userData,
+                            accountName: account.config.name,
+                            accountUUIDString: accountConfigUUID
+                                .uuidString,
+                            animation: animation,
+                            widgetBackground: account.background,
+                            fetchComplete: account.fetchComplete
+                        )
+                        .padding(.horizontal)
+                        .listRowBackground(Color.white.opacity(0))
+                        .onTapGesture {
+                            simpleTaptic(type: .medium)
+                            withAnimation(
+                                .interactiveSpring(
+                                    response: 0.5,
+                                    dampingFraction: 0.8,
+                                    blendDuration: 0.8
+                                )
+                            ) {
+                                viewModel.showDetailOfAccount = account
                             }
                         }
+                        .contextMenu {
+                            let shouldRemove = pinToTopAccountUUIDString == accountConfigUUID.uuidString
+                            Button("home.infoCard.pinToTop".localized) {
+                                withAnimation {
+                                    pinToTopAccountUUIDString = accountConfigUUID.uuidString
+                                }
+                            }
+                            if #available(iOS 16, *) {
+                                Button("button.savePic".localized) {
+                                    let view = GameInfoBlockForSave(
+                                        userData: userData,
+                                        accountName: account.config
+                                            .name ?? "",
+                                        accountUUIDString: account
+                                            .config.uuid?.uuidString ?? "",
+                                        animation: animation,
+                                        widgetBackground: account
+                                            .background
+                                    ).environment(
+                                        \.locale,
+                                        .init(
+                                            identifier: Locale.current
+                                                .identifier
+                                        )
+                                    )
+                                    let renderer =
+                                        ImageRenderer(content: view)
+                                    renderer.scale = UIScreen.main.scale
+                                    if let image = renderer.uiImage {
+                                        UIImageWriteToSavedPhotosAlbum(
+                                            image,
+                                            nil,
+                                            nil,
+                                            nil
+                                        )
+                                    }
+                                }
+                            }
+                            #if canImport(ActivityKit)
+                            if #available(iOS 16.1, *) {
+                                Button("为该账号开启树脂计时器") {
+                                    do {
+                                        try ResinRecoveryActivityController
+                                            .shared
+                                            .createResinRecoveryTimerActivity(
+                                                for: account
+                                            )
+                                        isSucceedAlertShow.toggle()
+                                    } catch {
+                                        errorMessage = error
+                                            .localizedDescription
+                                        isErrorAlertShow.toggle()
+                                    }
+                                }
+                            }
+                            #endif
+                            #if DEBUG
+                            Button("Toast Debug") {
+                                isSucceedAlertShow.toggle()
+                                print("isSucceedAlertShow toggle")
+                            }
+                            #endif
+                        }
+
                     case .failure:
                         HStack {
                             NavigationLink {

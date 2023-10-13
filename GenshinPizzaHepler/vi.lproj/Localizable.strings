@@ -1171,7 +1171,8 @@
 // Notification setting
 "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。" = "Thông báo được tạo cục bộ và được cập nhật tự động khi tiện ích làm mới hoặc khi bạn mở Ứng dụng. \nViệc không mở Ứng dụng trong thời gian dài hoặc không sử dụng tiện ích có thể dẫn đến thông báo không chính xác. \nMột số thông báo chỉ có thể được làm mới bằng cách mở ứng dụng nếu tiện ích ở chế độ làm mới.";
 
-"顶置" = "Ghim đầu trang";
+"home.infoCard.unpin" = "Unpin";
+"home.infoCard.pinToTop" = "Ghim đầu trang";
 "（1034）账号状态异常，建议降低小组件同步频率，或长按小组件开启简洁模式" = "(1034) Trạng thái tài khoản là bất thường. Bạn nên giảm tần suất yêu cầu tiện ích hoặc nhấn và giữ tiện ích để mở chế độ đơn giản";
 "请重新登录本账号以获取stoken" = "Vui lòng đăng nhập lại tài khoản này để nhận được Token";
 "请登录「%@」" = "Đăng nhập vào \"%@\"";
