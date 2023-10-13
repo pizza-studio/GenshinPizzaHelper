@@ -1379,3 +1379,4 @@
 "server.region.name.asia" = "亞細亞";
 "server.region.name.cht" = "港澳台";
 "operation.scrolling.guide" = "請使用 (Shift+) 滑鼠滾輪以控制內容捲動檢視。";
+"detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "請選擇帳號以檢視深境螺旋記錄。";

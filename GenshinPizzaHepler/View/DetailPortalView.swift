@@ -381,7 +381,11 @@ struct DetailPortalView: View {
                 }
             }
         } else {
-            Text("detailPortal.errorMessage.noAccountAvailableForAbyssDisplay").font(.footnote)
+            if accounts.isEmpty {
+                Text("detailPortal.errorMessage.noAccountAvailableForAbyssDisplay").font(.footnote)
+            } else {
+                Text("detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay").font(.footnote)
+            }
         }
     }
 

@@ -1377,3 +1377,4 @@ Created by Bill Haku on 2022/8/23.
 "server.region.name.asia" = "亚细亚";
 "server.region.name.cht" = "港澳台";
 "operation.scrolling.guide" = "请使用 (Shift+) 鼠标滚轮以控制内容卷动检视。";
+"detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "请选择账号以检视深境螺旋记录。";
