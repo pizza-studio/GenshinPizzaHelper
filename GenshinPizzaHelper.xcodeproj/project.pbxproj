@@ -351,8 +351,6 @@
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
 		BF85D77628CE0B9F003F3479 /* WatchWidgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */; };
 		BF85D77928CE0BA0003F3479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF85D77828CE0BA0003F3479 /* Assets.xcassets */; };
-		BF85D77B28CE0BA0003F3479 /* WatchWidgetExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */; };
-		BF85D77C28CE0BA0003F3479 /* WatchWidgetExtension.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */; };
 		BF85D78628CE18F2003F3479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		BF85D78728CE18F3003F3479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		BF85D78D28D02CCA003F3479 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70213028B50D7800A6BBA9 /* Localizable.strings */; };
@@ -975,7 +973,6 @@
 		BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestVersionInfoView.swift; sourceTree = "<group>"; };
 		BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetExtension.swift; sourceTree = "<group>"; };
-		BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WatchWidgetExtension.intentdefinition; sourceTree = "<group>"; };
 		BF85D77828CE0BA0003F3479 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF85D77A28CE0BA0003F3479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBasicInfosView.swift; sourceTree = "<group>"; };
@@ -1454,7 +1451,6 @@
 			isa = PBXGroup;
 			children = (
 				BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */,
-				BF85D77728CE0B9F003F3479 /* WatchWidgetExtension.intentdefinition */,
 				BF85D77828CE0BA0003F3479 /* Assets.xcassets */,
 				BF85D77A28CE0BA0003F3479 /* Info.plist */,
 			);
@@ -2705,7 +2701,6 @@
 				EAE95CC428CE0FC100D975CB /* Account.swift in Sources */,
 				EA7CD44128CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
 				5BA0D7A22ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
-				BF85D77B28CE0BA0003F3479 /* WatchWidgetExtension.intentdefinition in Sources */,
 				EAD7F02828D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
 				EA6B914C290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				EAB11EA229325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
@@ -2765,7 +2760,6 @@
 				BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */,
 				5BA0D7A32ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EA185F27292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
-				BF85D77C28CE0BA0003F3479 /* WatchWidgetExtension.intentdefinition in Sources */,
 				EAE846182A3773410065CF09 /* ViewModel.swift in Sources */,
 				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
 				5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
