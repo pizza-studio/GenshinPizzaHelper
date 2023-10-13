@@ -229,10 +229,12 @@ private struct WorldExplorationsView: View {
             WebImage(urlStr: data.icon)
                 .frame(width: 70, height: 70)
             Text(data.name)
+                .fixedSize()
             Text(calculatePercentage(
                 value: Double(data.explorationPercentage) /
                     Double(1000)
             ))
+            .fixedSize()
             .font(.footnote)
         }
     }
@@ -254,7 +256,9 @@ private struct WorldOfferingsExplorationsView: View {
             WebImage(urlStr: data.icon)
                 .frame(width: 30, height: 30)
             Text(data.name)
+                .fixedSize()
             Text("Lv. \(data.level)")
+                .fixedSize()
                 .font(.footnote)
         }
     }
