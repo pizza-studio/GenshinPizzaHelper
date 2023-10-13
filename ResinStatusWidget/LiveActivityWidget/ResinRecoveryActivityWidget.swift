@@ -141,6 +141,10 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                         .scaledToFill()
                     Color.black
                         .opacity(0.3)
+                } else {
+                    EmptyView().onAppear {
+                        NSLog("[OPHelper] Activity Kit Error: Background (random) initialization failed.")
+                    }
                 }
             // WidgetBackgroundView(background: bg, darkModeOn: true)
             case .customize:
@@ -156,6 +160,12 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                     Color.black
                         .opacity(0.3)
                     // WidgetBackgroundView(background: WidgetBackground(identifier: randomCardBg.fileName,display: randomCardBg.localized),darkModeOn: true)
+                } else {
+                    EmptyView().onAppear {
+                        NSLog(
+                            "[OPHelper] Activity Kit Error: Background (\(randomCardBg.fileName)) initialization failed."
+                        )
+                    }
                 }
             case .noBackground:
                 EmptyView()
