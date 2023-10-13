@@ -124,10 +124,13 @@ struct GachaView: View {
             if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
                 if #available(iOS 16.0, *) {
                     Section {
-                        GachaChart(
-                            items: gachaViewModel
-                                .filteredGachaItemsWithCount
-                        )
+                        VStack {
+                            GachaChart(
+                                items: gachaViewModel
+                                    .filteredGachaItemsWithCount
+                            )
+                            HelpTextForScrollingOnDesktopComputer(.horizontal)
+                        }
                         NavigationLink {
                             GachaChartView()
                                 .environmentObject(gachaViewModel)
