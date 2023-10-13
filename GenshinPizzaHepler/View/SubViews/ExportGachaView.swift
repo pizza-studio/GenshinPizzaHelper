@@ -89,7 +89,7 @@ struct ExportGachaView: View {
             Section {
                 Picker("gacha.export.chooseLanguage", selection: $params.lang) {
                     ForEach(GachaLanguageCode.allCases, id: \.rawValue) { code in
-                        Text(code.description).tag(code)
+                        Text(code.localized).tag(code)
                     }
                 }
                 .disabled(true)

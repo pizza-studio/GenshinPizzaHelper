@@ -204,8 +204,12 @@ extension GachaLanguageCode: Codable {
 
 // MARK: CustomStringConvertible
 
-extension GachaLanguageCode: CustomStringConvertible {
-    public var description: String {
+extension GachaLanguageCode {
+    public var localizedKey: String {
         "gacha.languageCode.\(String(describing: self))"
+    }
+
+    public var localized: String {
+        localizedKey.localized
     }
 }
