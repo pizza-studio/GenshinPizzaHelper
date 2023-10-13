@@ -124,7 +124,7 @@ struct GachaView: View {
             if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
                 if #available(iOS 16.0, *) {
                     Section {
-                        VStack {
+                        VStack(alignment: .leading) {
                             GachaChart(
                                 items: gachaViewModel
                                     .filteredGachaItemsWithCount
