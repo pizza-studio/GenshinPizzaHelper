@@ -6,6 +6,7 @@
 //  主页展示账号信息的Block
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 struct GameInfoBlock: View {
@@ -27,7 +28,7 @@ struct GameInfoBlock: View {
                     VStack(alignment: .leading, spacing: 5) {
                         if let accountName = accountName {
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
-                                Image(systemName: "person.fill")
+                                Image(systemSymbol: .personFill)
                                 Text(accountName)
                             }
                             .font(.footnote)
@@ -62,7 +63,7 @@ struct GameInfoBlock: View {
                                 )
                         }
                         HStack {
-                            Image(systemName: "hourglass.circle")
+                            Image(systemSymbol: .hourglassCircle)
                                 .foregroundColor(Color("textColor3"))
                                 .font(.title3)
                             recoveryTimeText(resinInfo: userData.resinInfo)

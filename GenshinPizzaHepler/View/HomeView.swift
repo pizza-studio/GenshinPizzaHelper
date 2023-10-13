@@ -8,6 +8,7 @@
 import AlertToast
 import Defaults
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - HomeView
@@ -52,7 +53,7 @@ struct HomeView: View {
                     CurrentEventNavigator(eventContents: $eventContents)
                     if viewModel.accounts.isEmpty {
                         NavigationLink(destination: AddAccountView()) {
-                            Label("settings.account.pleaseAddAccountFirst", systemImage: "plus.circle")
+                            Label("settings.account.pleaseAddAccountFirst", systemSymbol: .plusCircle)
                         }
                         .padding(sharedPadding)
                         .blurMaterialBackground()

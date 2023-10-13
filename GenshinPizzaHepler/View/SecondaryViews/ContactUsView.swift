@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/29.
 //  联系我们View
 
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - ContactUsView
@@ -35,7 +36,7 @@ struct ContactUsView: View {
                             .padding(.vertical, 5)
                     }
                     Spacer()
-                    Image(systemName: "chevron.right")
+                    Image(systemSymbol: .chevronRight)
                         .rotationEffect(.degrees(isLavaDetailShow ? 90 : 0))
                 }
                 .onTapGesture {
@@ -99,7 +100,7 @@ struct ContactUsView: View {
                             .padding(.vertical, 5)
                     }
                     Spacer()
-                    Image(systemName: "chevron.right")
+                    Image(systemSymbol: .chevronRight)
                         .rotationEffect(.degrees(isHakubillDetailShow ? 90 : 0))
                 }
                 .onTapGesture {
@@ -196,7 +197,7 @@ struct ContactUsView: View {
                             .padding(.vertical, 5)
                     }
                     Spacer()
-                    Image(systemName: "chevron.right")
+                    Image(systemSymbol: .chevronRight)
                         .rotationEffect(.degrees(isShikiDetailShow ? 90 : 0))
                 }
                 .onTapGesture {

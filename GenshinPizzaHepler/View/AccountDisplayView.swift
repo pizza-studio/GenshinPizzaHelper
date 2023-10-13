@@ -6,6 +6,7 @@
 //  弹出的展示账号详细信息的View
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - AccountDisplayView
@@ -53,7 +54,7 @@ struct AccountDisplayView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 2
                                 ) {
-                                    Image(systemName: "person.fill")
+                                    Image(systemSymbol: .personFill)
                                     Text(accountName)
                                 }
                                 .font(.footnote)
@@ -92,7 +93,7 @@ struct AccountDisplayView: View {
                                         )
                                 }
                                 HStack {
-                                    Image(systemName: "hourglass.circle")
+                                    Image(systemSymbol: .hourglassCircle)
                                         .foregroundColor(Color("textColor3"))
                                         .font(.title3)
                                     recoveryTimeText(
@@ -168,7 +169,7 @@ struct AccountDisplayView: View {
                     }
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
-                            Image(systemName: "person.fill")
+                            Image(systemSymbol: .personFill)
                             Text("\(accountName) (\(account.config.uid ?? ""))")
                         }
                         .font(.headline)
@@ -315,7 +316,7 @@ struct GameInfoBlockForSave: View {
             Spacer()
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Image(systemName: "person.fill")
+                    Image(systemSymbol: .personFill)
                     Text(accountName)
                 }
                 .font(.footnote)
@@ -337,7 +338,7 @@ struct GameInfoBlockForSave: View {
                         }
                 }
                 HStack {
-                    Image(systemName: "hourglass.circle")
+                    Image(systemSymbol: .hourglassCircle)
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                     RecoveryTimeText(resinInfo: userData.resinInfo)

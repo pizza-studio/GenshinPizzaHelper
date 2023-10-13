@@ -8,6 +8,7 @@
 import AppIntents
 import Foundation
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - MainInfo
@@ -57,7 +58,7 @@ struct MainInfo: View {
         VStack(alignment: .leading, spacing: 0) {
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Image(systemName: "person.fill")
+                    Image(systemSymbol: .personFill)
                     Text(accountName)
                         .allowsTightening(true)
                         .lineLimit(1)
@@ -88,7 +89,7 @@ struct MainInfo: View {
             HStack {
                 if #available(iOS 17, *) {
                     Button(intent: WidgetRefreshIntent()) {
-                        Image(systemName: "arrow.clockwise.circle")
+                        Image(systemSymbol: .arrowClockwiseCircle)
                             .font(.title3)
                             .foregroundColor(Color("textColor3"))
                             .clipShape(.circle)
@@ -101,7 +102,7 @@ struct MainInfo: View {
                                 .foregroundColor(Color("textColor3"))
                                 .font(.title3)
                         } else {
-                            Image(systemName: "exclamationmark.circle")
+                            Image(systemSymbol: .exclamationmarkCircle)
                                 .foregroundColor(Color("textColor3"))
                                 .font(.title3)
                         }
@@ -153,7 +154,7 @@ struct MainInfoSimplified: View {
         VStack(alignment: .leading, spacing: 0) {
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Image(systemName: "person.fill")
+                    Image(systemSymbol: .personFill)
                     Text(accountName)
                         .allowsTightening(true)
                         .lineLimit(1)
@@ -184,7 +185,7 @@ struct MainInfoSimplified: View {
             HStack {
                 if #available(iOS 17, *) {
                     Button(intent: WidgetRefreshIntent()) {
-                        Image(systemName: "arrow.clockwise.circle")
+                        Image(systemSymbol: .arrowClockwiseCircle)
                             .font(.title3)
                             .foregroundColor(Color("textColor3"))
                             .clipShape(.circle)
@@ -197,7 +198,7 @@ struct MainInfoSimplified: View {
                                 .foregroundColor(Color("textColor3"))
                                 .font(.title3)
                         } else {
-                            Image(systemName: "exclamationmark.circle")
+                            Image(systemSymbol: .exclamationmarkCircle)
                                 .foregroundColor(Color("textColor3"))
                                 .font(.title3)
                         }

@@ -6,6 +6,7 @@
 //
 
 import Defaults
+import SFSafeSymbols
 import SwiftUI
 
 #if canImport(ActivityKit)
@@ -17,7 +18,7 @@ struct LiveActivitySettingView: View {
         if #available(iOS 16.1, *) {
             Section {
                 NavigationLink(destination: LiveActivitySettingDetailView()) {
-                    Label("树脂计时器设置", systemImage: "timer")
+                    Label("树脂计时器设置", systemSymbol: .timer)
                 }
             } footer: {
                 Button("树脂计时器是什么？") {
@@ -70,7 +71,7 @@ struct LiveActivitySettingDetailView: View {
                     Label {
                         Text("实时活动功能未开启")
                     } icon: {
-                        Image(systemName: "exclamationmark.circle")
+                        Image(systemSymbol: .exclamationmarkCircle)
                             .foregroundColor(.red)
                     }
                     Button("前往设置开启实时活动功能") {
@@ -131,7 +132,7 @@ struct LiveActivitySettingDetailView: View {
                 Button {
                     isHelpSheetShow.toggle()
                 } label: {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemSymbol: .questionmarkCircle)
                 }
             }
         }
@@ -222,7 +223,7 @@ struct LiveActivityBackgroundPicker: View {
                                     name == backgroundImageView.fileName
                                 }
                         } label: {
-                            Image(systemName: "checkmark.circle.fill")
+                            Image(systemSymbol: .checkmarkCircleFill)
                                 .foregroundColor(.accentColor)
                         }
                     } else {
@@ -230,7 +231,7 @@ struct LiveActivityBackgroundPicker: View {
                             resinRecoveryLiveActivityBackgroundOptions
                                 .append(backgroundImageView.fileName)
                         } label: {
-                            Image(systemName: "checkmark.circle")
+                            Image(systemSymbol: .checkmarkCircle)
                                 .foregroundColor(.accentColor)
                         }
                     }

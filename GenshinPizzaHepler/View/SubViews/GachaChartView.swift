@@ -6,6 +6,7 @@
 //
 
 import Charts
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - GachaChartView
@@ -47,7 +48,7 @@ struct GachaChartView: View {
 //            } label: {
 //                Label(
 //                    "其他图表",
-//                    systemImage: "chart.bar.doc.horizontal"
+//                    systemSymbol: .chartBarDocHorizontal
 //                )
 //            }
             Section {
@@ -99,7 +100,7 @@ struct GachaChartView: View {
                     }
                 } label: {
                     HStack {
-                        Image(systemName: "arrow.left.arrow.right.circle")
+                        Image(systemSymbol: .arrowLeftArrowRightCircle)
                         if let uid: String = gachaViewModel.filter.uid {
                             if let name: String = viewModel.accounts
                                 .first(where: { $0.config.uid == uid })?.config

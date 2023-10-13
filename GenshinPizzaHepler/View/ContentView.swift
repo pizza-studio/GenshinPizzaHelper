@@ -8,6 +8,7 @@
 import Defaults
 import HBMihoyoAPI
 import HBPizzaHelperAPI
+import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
@@ -76,19 +77,19 @@ struct ContentView: View {
                     .environmentObject(viewModel)
                     .frame(maxWidth: 500)
                     .tabItem {
-                        Label("概览", systemImage: "list.bullet")
+                        Label("概览", systemSymbol: .listBullet)
                     }
                 DetailPortalView(animation: animation)
                     .tag(1)
                     .environmentObject(viewModel)
                     .tabItem {
-                        Label("详情", systemImage: "person.text.rectangle")
+                        Label("详情", systemSymbol: .personTextRectangle)
                     }
                 SettingsView(storeManager: storeManager)
                     .tag(2)
                     .environmentObject(viewModel)
                     .tabItem {
-                        Label("nav.category.settings.name", systemImage: "gear")
+                        Label("nav.category.settings.name", systemSymbol: .gear)
                     }
             }
             .zIndex(0)

@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 struct LockScreenResinWidgetInline<T>: View
@@ -16,9 +17,9 @@ struct LockScreenResinWidgetInline<T>: View
         switch result {
         case let .success(data):
             if data.resinInfo.isFull {
-                Image(systemName: "moon.stars.fill")
+                Image(systemSymbol: .moonStarsFill)
             } else {
-                Image(systemName: "moon.fill")
+                Image(systemSymbol: .moonFill)
             }
             Text(
                 "\(data.resinInfo.currentResin)  \(data.resinInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "", unisStyle: .brief))"
@@ -26,7 +27,7 @@ struct LockScreenResinWidgetInline<T>: View
         // 似乎不能插入自定义的树脂图片，也许以后会开放
 //                Image("icon.resin")
         case .failure:
-            Image(systemName: "moon.fill")
+            Image(systemSymbol: .moonFill)
             Text("…")
         }
     }

@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/10/13.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 extension View {
@@ -61,7 +62,7 @@ struct ToolbarSavePhotoButton<ViewToRender: View>: ViewModifier {
                         Button {
                             isAlertShow = true
                         } label: {
-                            Image(systemName: "square.and.arrow.down")
+                            Image(systemSymbol: .squareAndArrowDown)
                         }
                     }
                 }

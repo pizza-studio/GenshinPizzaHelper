@@ -7,6 +7,7 @@
 
 import Foundation
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
@@ -67,7 +68,7 @@ struct LockScreenResinWidgetCircular<T>: View
                             .scaledToFit()
                     )
                 } currentValueLabel: {
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
                 .gaugeStyle(
                     ProgressGaugeStyle(
@@ -97,7 +98,7 @@ struct LockScreenResinWidgetCircular<T>: View
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             }
@@ -123,7 +124,7 @@ struct LockScreenResinWidgetCircular<T>: View
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             }

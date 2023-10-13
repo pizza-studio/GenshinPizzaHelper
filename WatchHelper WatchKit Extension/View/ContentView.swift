@@ -6,6 +6,7 @@
 //
 
 import Defaults
+import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
@@ -27,7 +28,7 @@ struct ContentView: View {
                     Text("请等待账号从iCloud同步")
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
-                    Image(systemName: "icloud.and.arrow.down")
+                    Image(systemSymbol: .icloudAndArrowDown)
                     ProgressView()
                 }
             } else {

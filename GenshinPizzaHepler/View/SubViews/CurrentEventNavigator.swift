@@ -7,6 +7,7 @@
 
 import Defaults
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 struct CurrentEventNavigator: View {
@@ -34,7 +35,7 @@ struct CurrentEventNavigator: View {
                         Text("查看全部活动")
                             .font(.caption)
                             .foregroundColor(.secondary)
-                        Image(systemName: "chevron.forward")
+                        Image(systemSymbol: .chevronForward)
                             .padding(.leading, 5)
                             .foregroundColor(.secondary)
                     }

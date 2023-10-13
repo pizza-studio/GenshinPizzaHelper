@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - LockScreenResinWidgetRectangular
@@ -57,7 +58,7 @@ struct LockScreenResinWidgetRectangular<T>: View
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 40
-                            Text(Image(systemName: "ellipsis"))
+                            Text(Image(systemSymbol: .ellipsis))
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
@@ -111,7 +112,7 @@ struct LockScreenResinWidgetRectangular<T>: View
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 40
-                            Text(Image(systemName: "ellipsis"))
+                            Text(Image(systemSymbol: .ellipsis))
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")

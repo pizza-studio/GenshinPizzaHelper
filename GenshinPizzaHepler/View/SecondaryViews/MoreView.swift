@@ -7,6 +7,7 @@
 
 import Defaults
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - MoreView
@@ -81,7 +82,7 @@ struct MoreView: View {
                         }
 
                         Spacer()
-                        Image(systemName: "chevron.forward")
+                        Image(systemSymbol: .chevronForward)
                     }
                 }
                 Link(destination: URL(string: "https://apps.apple.com/cn/app/id6450712191")!) {
@@ -99,7 +100,7 @@ struct MoreView: View {
                         }
 
                         Spacer()
-                        Image(systemName: "chevron.forward")
+                        Image(systemSymbol: .chevronForward)
                     }
                 }
             } header: {

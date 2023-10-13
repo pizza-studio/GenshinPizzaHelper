@@ -6,6 +6,7 @@
 //
 
 import AlertToast
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - GetGachaClipboardView
@@ -105,7 +106,7 @@ struct GetGachaClipboardView: View {
                     Label {
                         Text("成功获取到祈愿链接")
                     } icon: {
-                        Image(systemName: "checkmark.circle")
+                        Image(systemSymbol: .checkmarkCircle)
                             .foregroundColor(.green)
                     }
 
@@ -221,7 +222,7 @@ struct GetGachaClipboardView: View {
                 Button {
                     isHelpSheetShow.toggle()
                 } label: {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemSymbol: .questionmarkCircle)
                 }
             }
         }

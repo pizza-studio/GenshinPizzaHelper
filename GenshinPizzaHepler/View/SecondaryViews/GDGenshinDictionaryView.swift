@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 @available(iOS 15, *)
@@ -181,12 +182,12 @@ struct GenshinDictionary: View {
                     Button(action: {
                         showInfoSheet.toggle()
                     }) {
-                        Image(systemName: "info.circle")
+                        Image(systemSymbol: .infoCircle)
                     }
                     Button(action: {
                         showSafari.toggle()
                     }) {
-                        Image(systemName: "safari")
+                        Image(systemSymbol: .safari)
                     }
                 }
             }
@@ -231,7 +232,7 @@ struct GenshinDictionary: View {
                         Button(action: {
                             showSafari.toggle()
                         }) {
-                            Image(systemName: "safari")
+                            Image(systemSymbol: .safari)
                         }
                     }
                 }

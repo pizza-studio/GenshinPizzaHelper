@@ -6,6 +6,7 @@
 //  通知设置部分
 
 import Defaults
+import SFSafeSymbols
 import SwiftUI
 
 struct NotificationSettingNavigator: View {
@@ -58,12 +59,12 @@ struct NotificationSettingNavigator: View {
     var body: some View {
         Section {
             Toggle(isOn: masterSwitch.animation()) {
-                Label("settings.notification.delivery", systemImage: "app.badge")
+                Label("settings.notification.delivery", systemSymbol: .appBadge)
             }
             .disabled(!allowNotification)
             if masterSwitch.wrappedValue, allowNotification {
                 NavigationLink(destination: NotificationSettingView()) {
-                    Label("settings.notification.deliverySettings", systemImage: "app.badge.fill")
+                    Label("settings.notification.deliverySettings", systemSymbol: .appBadgeFill)
                 }
                 .animation(.easeInOut, value: masterSwitch.wrappedValue)
             }

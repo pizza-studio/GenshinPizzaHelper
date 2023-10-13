@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 struct ExpeditionInfoBar: View {
@@ -19,7 +20,7 @@ struct ExpeditionInfoBar: View {
 
     var isExpeditionAllCompleteImage: some View {
         notice
-            ? Image(systemName: "exclamationmark")
+            ? Image(systemSymbol: .exclamationmark)
             .overlayImageWithRingProgressBar(
                 expeditionViewConfig
                     .noticeExpeditionWhenAllCompleted ? expeditionInfo
@@ -27,7 +28,7 @@ struct ExpeditionInfoBar: View {
                     .nextCompletePercentage,
                 scaler: 0.78
             )
-            : Image(systemName: "figure.walk")
+            : Image(systemSymbol: .figureWalk)
             .overlayImageWithRingProgressBar(
                 expeditionViewConfig
                     .noticeExpeditionWhenAllCompleted ? expeditionInfo

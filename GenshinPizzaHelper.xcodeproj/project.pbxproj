@@ -49,6 +49,11 @@
 		5B5F82DA2ACC9638005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
 		5B5F82DB2ACC9660005983AC /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B5F82DC2ACC966F005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
+		5B8C1B312AD8F3C5009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */; };
+		5B8C1B332AD8F3DE009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */; };
+		5B8C1B352AD9083A009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B342AD9083A009F3B44 /* SFSafeSymbols */; };
+		5B8C1B372AD90850009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B362AD90850009F3B44 /* SFSafeSymbols */; };
+		5B8C1B392AD90855009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B382AD90855009F3B44 /* SFSafeSymbols */; };
 		5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3029D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3129D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
@@ -1214,6 +1219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8C1B332AD8F3DE009F3B44 /* SFSafeSymbols in Frameworks */,
 				EAAECA172AD3AD05003525E1 /* Defaults in Frameworks */,
 				5BD1C65B2A2A1FC90043C2B1 /* CoreXLSX in Frameworks */,
 				EAC89A5E2AD3AF1B00EC5141 /* DefaultsKeys in Frameworks */,
@@ -1233,6 +1239,7 @@
 				BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */,
 				BF15571329CFE5ED0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAC89A662AD3AF2900EC5141 /* DefaultsKeys in Frameworks */,
+				5B8C1B372AD90850009F3B44 /* SFSafeSymbols in Frameworks */,
 				BF20733A29D1412B00AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */,
 				EAAECA1F2AD3AD16003525E1 /* Defaults in Frameworks */,
@@ -1246,6 +1253,7 @@
 				EAC89A642AD3AF2600EC5141 /* DefaultsKeys in Frameworks */,
 				5B41C1832AD3011700CDF2C5 /* HBPizzaHelperAPI in Frameworks */,
 				5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */,
+				5B8C1B392AD90855009F3B44 /* SFSafeSymbols in Frameworks */,
 				5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */,
 				BF20733829D1412700AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF15571129CFE5E60056CFE6 /* HBMihoyoAPI in Frameworks */,
@@ -1277,6 +1285,7 @@
 				EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */,
 				EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */,
 				BF20733429D1411A00AD391F /* HBPizzaHelperAPI in Frameworks */,
+				5B8C1B352AD9083A009F3B44 /* SFSafeSymbols in Frameworks */,
 				EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1285,6 +1294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8C1B312AD8F3C5009F3B44 /* SFSafeSymbols in Frameworks */,
 				EAAECA152AD3ACFD003525E1 /* Defaults in Frameworks */,
 				BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */,
 				EAC89A5C2AD3AF1600EC5141 /* DefaultsKeys in Frameworks */,
@@ -2052,6 +2062,7 @@
 				5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */,
 				EAAECA162AD3AD05003525E1 /* Defaults */,
 				EAC89A5D2AD3AF1B00EC5141 /* DefaultsKeys */,
+				5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */;
@@ -2075,6 +2086,7 @@
 				BF20733929D1412B00AD391F /* HBPizzaHelperAPI */,
 				EAAECA1E2AD3AD16003525E1 /* Defaults */,
 				EAC89A652AD3AF2900EC5141 /* DefaultsKeys */,
+				5B8C1B362AD90850009F3B44 /* SFSafeSymbols */,
 			);
 			productName = WatchWidgetExtensionExtension;
 			productReference = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */;
@@ -2102,6 +2114,7 @@
 				5B41C17F2AD3010600CDF2C5 /* HBPizzaHelperAPI */,
 				EAAECA1C2AD3AD12003525E1 /* Defaults */,
 				EAC89A632AD3AF2600EC5141 /* DefaultsKeys */,
+				5B8C1B382AD90855009F3B44 /* SFSafeSymbols */,
 			);
 			productName = WatchHelper;
 			productReference = BFCC065628C9B6A0003E4A54 /* 原神披萨小助手.app */;
@@ -2148,6 +2161,7 @@
 				BF20733329D1411A00AD391F /* HBPizzaHelperAPI */,
 				EAAECA182AD3AD09003525E1 /* Defaults */,
 				EAC89A5F2AD3AF1E00EC5141 /* DefaultsKeys */,
+				5B8C1B342AD9083A009F3B44 /* SFSafeSymbols */,
 			);
 			productName = ResinStatusWidgetExtension;
 			productReference = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */;
@@ -2180,6 +2194,7 @@
 				BF9D74EE29DBBA98009A9918 /* CoreXLSX */,
 				EAAECA142AD3ACFD003525E1 /* Defaults */,
 				EAC89A5B2AD3AF1600EC5141 /* DefaultsKeys */,
+				5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -2261,6 +2276,7 @@
 				BF9D74EA29DB1604009A9918 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				BF9D74ED29DBBA98009A9918 /* XCRemoteSwiftPackageReference "CoreXLSX" */,
 				EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */,
+				5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
 			projectDirPath = "";
@@ -3927,6 +3943,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
 		5BD1C5C32A2A1FC90043C2B1 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
@@ -3981,6 +4005,31 @@
 		5B41C17F2AD3010600CDF2C5 /* HBPizzaHelperAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HBPizzaHelperAPI;
+		};
+		5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		5B8C1B342AD9083A009F3B44 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		5B8C1B362AD90850009F3B44 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		5B8C1B382AD90855009F3B44 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
 		};
 		5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;

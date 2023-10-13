@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 struct WeeklyBossesInfoBar: View {
@@ -13,9 +14,9 @@ struct WeeklyBossesInfoBar: View {
 
     var isWeeklyBossesFinishedImage: some View {
         weeklyBossesInfo.isComplete
-            ? Image(systemName: "checkmark")
+            ? Image(systemSymbol: .checkmark)
             .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
-            : Image(systemName: "questionmark")
+            : Image(systemSymbol: .questionmark)
             .overlayImageWithRingProgressBar(1.0)
     }
 

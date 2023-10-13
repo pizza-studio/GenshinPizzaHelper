@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2023/3/31.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 @available(iOS 15.0, *)
@@ -131,7 +132,7 @@ struct GachaSetting: View {
                 } label: {
                     Label(
                         "导出UIGF祈愿记录",
-                        systemImage: "square.and.arrow.up.on.square"
+                        systemSymbol: .squareAndArrowUpOnSquare
                     )
                 }
             }

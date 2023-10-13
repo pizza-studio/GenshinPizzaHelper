@@ -6,6 +6,7 @@
 //
 
 import AlertToast
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - AccountManagementView
@@ -48,7 +49,7 @@ struct AccountManagementView: View {
                         }
                 }
                 NavigationLink(destination: AddAccountView()) {
-                    Label("settings.account.addAccount", systemImage: "plus.circle")
+                    Label("settings.account.addAccount", systemSymbol: .plusCircle)
                 }
             } header: {
                 HStack {

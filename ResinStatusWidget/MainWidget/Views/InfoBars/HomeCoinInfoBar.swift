@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 struct HomeCoinInfoBar: View {
@@ -13,16 +14,16 @@ struct HomeCoinInfoBar: View {
 
     var isHomeCoinFullImage: some View {
         homeCoinInfo.maxHomeCoin == 300
-            ? Image(systemName: "leaf.fill")
+            ? Image(systemSymbol: .leafFill)
             .overlayImageWithRingProgressBar(homeCoinInfo.percentage)
             : (
                 (homeCoinInfo.isFull)
-                    ? Image(systemName: "exclamationmark")
+                    ? Image(systemSymbol: .exclamationmark)
                     .overlayImageWithRingProgressBar(
                         homeCoinInfo.percentage,
                         scaler: 0.78
                     )
-                    : Image(systemName: "leaf.fill")
+                    : Image(systemSymbol: .leafFill)
                     .overlayImageWithRingProgressBar(homeCoinInfo.percentage)
             )
     }

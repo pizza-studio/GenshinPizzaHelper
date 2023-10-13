@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/8/25.
 //  主页今日材料页面
 
+import SFSafeSymbols
 import SwiftUI
 
 struct InAppMaterialNavigator: View {
@@ -83,7 +84,7 @@ struct InAppMaterialNavigator: View {
                         .padding(.top)
                         .padding(.bottom, -10)
                     }
-                    Image(systemName: "chevron.forward")
+                    Image(systemSymbol: .chevronForward)
                         .rotationEffect(
                             Angle(degrees: showMaterialDetail ? 90 : 0),
                             anchor: .center
@@ -144,7 +145,7 @@ struct InAppMaterialNavigator: View {
                         .font(.caption)
                         .padding(.vertical)
                     }
-                    Image(systemName: "chevron.forward")
+                    Image(systemSymbol: .chevronForward)
                         .rotationEffect(
                             Angle(degrees: showMaterialDetail ? 90 : 0),
                             anchor: .center

@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
@@ -28,7 +29,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
             }
             #if os(watchOS)
@@ -59,7 +60,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
             }
             #if os(watchOS)
@@ -78,7 +79,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
             }
             #if os(watchOS)

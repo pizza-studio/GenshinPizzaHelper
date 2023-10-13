@@ -7,6 +7,7 @@
 
 import HBMihoyoAPI
 import HBPizzaHelperAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - AllAvatarListSheetView
@@ -85,7 +86,7 @@ struct AllAvatarListSheetView: View {
                             }
                         }
                     } label: {
-                        Image(systemName: "arrow.left.arrow.right.circle")
+                        Image(systemSymbol: .arrowLeftArrowRightCircle)
                     }
                 }
             }
@@ -295,7 +296,7 @@ private struct AvatarListItemShare: View {
                     .frame(width: 55, height: 55)
                     .clipShape(Circle())
                 ZStack {
-                    Image(systemName: "heart.fill")
+                    Image(systemSymbol: .heartFill)
                         .foregroundColor(Color(UIColor.darkGray))
                         .blendMode(.hardLight)
                     Text("\(avatar.fetter)")

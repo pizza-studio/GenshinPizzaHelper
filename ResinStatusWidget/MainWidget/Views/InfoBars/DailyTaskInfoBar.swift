@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 struct DailyTaskInfoBar: View {
@@ -14,14 +15,14 @@ struct DailyTaskInfoBar: View {
     var isTaskRewardReceivedImage: some View {
         if !dailyTaskInfo.isTaskRewardReceived {
             if dailyTaskInfo.finishedTaskNum == dailyTaskInfo.totalTaskNum {
-                return Image(systemName: "exclamationmark")
+                return Image(systemSymbol: .exclamationmark)
                     .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
             } else {
-                return Image(systemName: "questionmark")
+                return Image(systemSymbol: .questionmark)
                     .overlayImageWithRingProgressBar(1.0)
             }
         } else {
-            return Image(systemName: "checkmark")
+            return Image(systemSymbol: .checkmark)
                 .overlayImageWithRingProgressBar(1.0, scaler: 0.70)
         }
     }

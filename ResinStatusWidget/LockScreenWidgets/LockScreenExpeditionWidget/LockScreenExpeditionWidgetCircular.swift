@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
@@ -30,7 +31,7 @@ struct LockScreenExpeditionWidgetCircular<T>: View
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
             }
             #if os(watchOS)
@@ -52,7 +53,7 @@ struct LockScreenExpeditionWidgetCircular<T>: View
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
             }
             #if os(watchOS)
@@ -74,7 +75,7 @@ struct LockScreenExpeditionWidgetCircular<T>: View
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
-                    Image(systemName: "ellipsis")
+                    Image(systemSymbol: .ellipsis)
                 }
             }
             #if os(watchOS)

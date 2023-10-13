@@ -6,6 +6,7 @@
 //
 
 import Defaults
+import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
@@ -409,7 +410,7 @@ struct LockScreenAllInfoWidgetView: View {
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.resin"))")
                                     .widgetAccentable()
-                                Text(Image(systemName: "ellipsis"))
+                                Text(Image(systemSymbol: .ellipsis))
                                 Spacer()
                                 Text("\(Image("icon.expedition"))")
                                     .widgetAccentable()
@@ -417,14 +418,14 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                                 Spacer()
                             }
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.homeCoin"))")
                                     .widgetAccentable()
-                                Text("\(Image(systemName: "ellipsis"))")
+                                Text("\(Image(systemSymbol: .ellipsis))")
                                 Spacer()
                                 Text("\(Image("icon.dailyTask"))")
                                     .widgetAccentable()
@@ -432,13 +433,13 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                             }
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.transformer"))")
                                     .widgetAccentable()
-                                Text(Image(systemName: "ellipsis"))
+                                Text(Image(systemSymbol: .ellipsis))
                                 Spacer()
                                 Text("\(Image("icon.weeklyBosses"))")
                                     .widgetAccentable()
@@ -446,7 +447,7 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                                 Spacer()
                             }
@@ -522,7 +523,7 @@ struct LockScreenAllInfoWidgetView: View {
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.resin"))")
                                     .widgetAccentable()
-                                Text(Image(systemName: "ellipsis"))
+                                Text(Image(systemSymbol: .ellipsis))
                                 Spacer()
                                 Text("\(Image("icon.expedition"))")
                                     .widgetAccentable()
@@ -530,14 +531,14 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                                 Spacer()
                             }
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.homeCoin"))")
                                     .widgetAccentable()
-                                Text("\(Image(systemName: "ellipsis"))")
+                                Text("\(Image(systemSymbol: .ellipsis))")
                                 Spacer()
                                 Text("\(Image("icon.dailyTask"))")
                                     .widgetAccentable()
@@ -545,13 +546,13 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                             }
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.transformer"))")
                                     .widgetAccentable()
-                                Text(Image(systemName: "ellipsis"))
+                                Text(Image(systemSymbol: .ellipsis))
                                 Spacer()
                                 Text("\(Image("icon.weeklyBosses"))")
                                     .widgetAccentable()
@@ -559,7 +560,7 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                                 Spacer()
                             }
@@ -655,7 +656,7 @@ struct LockScreenAllInfoWidgetView: View {
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.resin"))")
                                     .widgetAccentable()
-                                Text(Image(systemName: "ellipsis"))
+                                Text(Image(systemSymbol: .ellipsis))
                                 Spacer()
                                 Text("\(Image("icon.expedition"))")
                                     .widgetAccentable()
@@ -663,14 +664,14 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                                 Spacer()
                             }
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.homeCoin"))")
                                     .widgetAccentable()
-                                Text("\(Image(systemName: "ellipsis"))")
+                                Text("\(Image(systemSymbol: .ellipsis))")
                                 Spacer()
                                 Text("\(Image("icon.dailyTask"))")
                                     .widgetAccentable()
@@ -678,13 +679,13 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                             }
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.transformer"))")
                                     .widgetAccentable()
-                                Text(Image(systemName: "ellipsis"))
+                                Text(Image(systemSymbol: .ellipsis))
                                 Spacer()
                                 Text("\(Image("icon.weeklyBosses"))")
                                     .widgetAccentable()
@@ -692,7 +693,7 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                                 Spacer()
                             }
@@ -758,7 +759,7 @@ struct LockScreenAllInfoWidgetView: View {
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.resin"))")
                                     .widgetAccentable()
-                                Text(Image(systemName: "ellipsis"))
+                                Text(Image(systemSymbol: .ellipsis))
                                 Spacer()
                                 Text("\(Image("icon.expedition"))")
                                     .widgetAccentable()
@@ -766,14 +767,14 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                                 Spacer()
                             }
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.homeCoin"))")
                                     .widgetAccentable()
-                                Text("\(Image(systemName: "ellipsis"))")
+                                Text("\(Image(systemSymbol: .ellipsis))")
                                 Spacer()
                                 Text("\(Image("icon.dailyTask"))")
                                     .widgetAccentable()
@@ -781,7 +782,7 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemName: "ellipsis"))
+                                    Text(Image(systemSymbol: .ellipsis))
                                 }
                             }
                         }

@@ -6,6 +6,7 @@
 //  设置View
 
 import AlertToast
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - SettingsView
@@ -55,7 +56,7 @@ struct SettingsView: View {
                 ) {
                     Label(
                         "settings.account.myAccount",
-                        systemImage: "person.fill"
+                        systemSymbol: .personFill
                     )
                 }
             }
@@ -75,7 +76,7 @@ struct SettingsView: View {
                 ) {
                     Label(
                         "settings.misc.FAQ",
-                        systemImage: "person.fill.questionmark"
+                        systemSymbol: .personFillQuestionmark
                     )
                 }
                 NavigationLink(
@@ -86,7 +87,7 @@ struct SettingsView: View {
                 ) {
                     Label(
                         "旅行工具",
-                        systemImage: "shippingbox.fill"
+                        systemSymbol: .shippingboxFill
                     )
                 }
             }
@@ -105,20 +106,20 @@ struct SettingsView: View {
                             Text("偏好语言")
                                 .foregroundColor(.primary)
                         } icon: {
-                            Image(systemName: "globe")
+                            Image(systemSymbol: .globe)
                         }
                     }
                 }
                 NavigationLink(destination: DisplayOptionsView()) {
                     Label(
                         "settings.display.title",
-                        systemImage: "uiwindow.split.2x1"
+                        systemSymbol: .pc
                     )
                 }
                 NavigationLink(destination: WidgetSettingView()) {
                     Label(
                         "小组件设置",
-                        systemImage: "speedometer"
+                        systemSymbol: .speedometer
                     )
                 }
             }
@@ -134,41 +135,41 @@ struct SettingsView: View {
                 Button {
                     ReviewHandler.requestReviewIfNotRequestedElseNavigateToAppStore()
                 } label: {
-                    Label("settings.misc.rateMeOnAppStore", systemImage: "arrow.up.forward.app.fill")
+                    Label("settings.misc.rateMeOnAppStore", systemSymbol: .arrowUpForwardApp)
                 }
                 NavigationLink(
                     destination: GlobalDonateView(
                         storeManager: storeManager
                     )
                 ) {
-                    Label("settings.misc.supportUs", systemImage: "dollarsign.square.fill")
+                    Label("settings.misc.supportUs", systemSymbol: .dollarsignSquare)
                 }
             }
 
             Group {
                 Section {
                     NavigationLink(destination: PrivacySettingsView()) {
-                        Label("隐私设置", systemImage: "hand.raised.app.fill")
+                        Label("隐私设置", systemSymbol: .handRaisedSlashFill)
                     }
                     NavigationLink(destination: GachaSetting()) {
-                        Label("祈愿数据管理", systemImage: "wand.and.stars")
+                        Label("祈愿数据管理", systemSymbol: .wandAndStars)
                     }
                 }
             }
 
             Section {
                 NavigationLink(destination: GuideVideoLinkView()) {
-                    Label("App介绍视频", systemImage: "person.fill.questionmark")
+                    Label("App介绍视频", systemSymbol: .personFillQuestionmark)
                 }
                 NavigationLink(destination: ContactUsView()) {
-                    Label("开发者与联系方式", systemImage: "person.2.gobackward")
+                    Label("开发者与联系方式", systemSymbol: .personCropCircleBadgeClock)
                 }
             }
 
             Section {
                 // 更多
                 NavigationLink(destination: MoreView()) {
-                    Label("settings.more", systemImage: "ellipsis.circle")
+                    Label("settings.more", systemSymbol: .ellipsisCircle)
                 }
                 #if DEBUG
                 Button("Alert Toast Debug") {
@@ -177,6 +178,8 @@ struct SettingsView: View {
                     isAlertToastShown.toggle()
                 }
                 #endif
+            } footer: {
+                Spacer()
             }
         }
         .sectionSpacing(UIFont.systemFontSize)

@@ -9,6 +9,7 @@
 import ActivityKit
 import Defaults
 import Foundation
+import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
@@ -24,7 +25,7 @@ struct ResinRecoveryActivityWidget: Widget {
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
                     HStack(alignment: .lastTextBaseline, spacing: 2) {
-                        Image(systemName: "person.fill")
+                        Image(systemSymbol: .personFill)
                         Text(context.attributes.accountName)
                     }
                     .foregroundColor(Color("textColor.appIconLike"))
@@ -234,7 +235,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
             VStack {
                 Spacer()
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Image(systemName: "person.fill")
+                    Image(systemSymbol: .personFill)
                     Text(context.attributes.accountName)
                 }
                 .font(.footnote)

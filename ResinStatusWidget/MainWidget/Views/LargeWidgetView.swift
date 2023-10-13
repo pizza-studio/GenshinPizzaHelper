@@ -6,6 +6,7 @@
 //  大号Widget布局View
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - LargeWidgetView
@@ -81,7 +82,7 @@ struct LargeWidgetView: View {
 //            Spacer()
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Image(systemName: "person.fill")
+                    Image(systemSymbol: .personFill)
                     Text(accountName)
                 }
                 .font(.footnote)
@@ -110,7 +111,7 @@ struct LargeWidgetView: View {
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
                     } else {
-                        Image(systemName: "exclamationmark.circle")
+                        Image(systemSymbol: .exclamationmarkCircle)
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
                     }
@@ -229,7 +230,7 @@ struct LargeWidgetViewSimplified: View {
 //            Spacer()
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Image(systemName: "person.fill")
+                    Image(systemSymbol: .personFill)
                     Text(accountName)
                 }
                 .font(.footnote)
@@ -258,7 +259,7 @@ struct LargeWidgetViewSimplified: View {
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
                     } else {
-                        Image(systemName: "exclamationmark.circle")
+                        Image(systemSymbol: .exclamationmarkCircle)
                             .foregroundColor(Color("textColor3"))
                             .font(.title3)
                     }

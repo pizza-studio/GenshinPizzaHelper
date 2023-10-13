@@ -9,6 +9,7 @@ import Charts
 import CoreData
 import Defaults
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - GachaView
@@ -96,7 +97,7 @@ struct GachaView: View {
                     }
                 } label: {
                     HStack {
-                        Image(systemName: "arrow.left.arrow.right.circle")
+                        Image(systemSymbol: .arrowLeftArrowRightCircle)
                         if let uid: String = gachaViewModel.filter.uid {
                             if let name: String = viewModel.accounts
                                 .first(where: { $0.config.uid == uid })?.config
@@ -131,7 +132,7 @@ struct GachaView: View {
                             GachaChartView()
                                 .environmentObject(gachaViewModel)
                         } label: {
-                            Label("更多图表", systemImage: "chart.bar.xaxis")
+                            Label("更多图表", systemSymbol: .chartBarXaxis)
                         }
                     }
                 }
@@ -215,7 +216,7 @@ private struct GachaStatisticSectionView: View {
             )
         Section {
             HStack {
-                Label("当前已垫", systemImage: "flag.fill")
+                Label("当前已垫", systemSymbol: .flagFill)
                 Spacer()
                 Text(
                     "\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽"
@@ -224,7 +225,7 @@ private struct GachaStatisticSectionView: View {
             HStack {
                 Label(
                     showDrawingNumber ? "总抽数" : "总消耗原石数",
-                    systemImage: "hand.tap.fill"
+                    systemSymbol: .handTapFill
                 )
                 Spacer()
                 let total = gachaViewModel.sortedAndFilteredGachaItem
@@ -237,7 +238,7 @@ private struct GachaStatisticSectionView: View {
             HStack {
                 Label(
                     showDrawingNumber ? "五星平均抽数" : "五星平均消耗原石数",
-                    systemImage: "star"
+                    systemSymbol: .star
                 )
                 Spacer()
                 let number = fiveStarItemsWithCount.map { $0.count }
@@ -249,7 +250,7 @@ private struct GachaStatisticSectionView: View {
                 HStack {
                     Label(
                         showDrawingNumber ? "限定五星平均抽数" : "限定五星平均消耗原石数",
-                        systemImage: "star.fill"
+                        systemSymbol: .starFill
                     )
                     Spacer()
                     Text(
@@ -274,7 +275,7 @@ private struct GachaStatisticSectionView: View {
                                 .count +
                                 ((fiveStars.last?.isLose5050() ?? false) ? 1 : 0)
                         ) // 小保底次数 = 限定五星数量（如果抽的第一个是非限定，则多一次小保底）
-                    Label("不歪率", systemImage: "chart.pie.fill")
+                    Label("不歪率", systemSymbol: .chartPieFill)
                     Spacer()
                     Text(
                         "\(fmt.string(from: pct as NSNumber)!)"
@@ -567,31 +568,31 @@ private struct GetGachaNavigationMenu: View {
             Button {
                 isHelpSheetShow.toggle()
             } label: {
-                Label("我该选哪个？", systemImage: "questionmark.diamond")
+                Label("我该选哪个？", systemSymbol: .questionmarkDiamond)
             }
 
             if showByAPI {
                 Button {
                     showView1.toggle()
                 } label: {
-                    Label("通过API获取", systemImage: "network")
+                    Label("通过API获取", systemSymbol: .network)
                 }
             }
             Button {
                 showView3.toggle()
             } label: {
-                Label("通过粘贴祈愿页面URL获取", image: "list.bullet.clipboard")
+                Label("通过粘贴祈愿页面URL获取", systemSymbol: .docOnClipboard)
             }
             Button {
                 showView4.toggle()
             } label: {
                 Label(
                     "导入UIGF祈愿记录",
-                    systemImage: "square.and.arrow.down.on.square"
+                    systemSymbol: .squareAndArrowDownOnSquare
                 )
             }
         } label: {
-            Image(systemName: "goforward.plus")
+            Image(systemSymbol: .goforwardPlus)
         }
         .background(
             Group {
@@ -641,27 +642,27 @@ private struct HelpSheet: View {
                 Section {
                     Label(
                         "无论选择哪种方式，我们都为您提供了详细的操作教程",
-                        systemImage: "person.fill.questionmark"
+                        systemSymbol: .personFillQuestionmark
                     )
                     // TODO: not completed gacha tutorial video
 //                    Label(
 //                        "您也可以选择参考我们的视频完成相关操作",
-//                        systemImage: "hand.thumbsup.fill"
+//                        systemSymbol: .handThumbsupFill
 //                    )
 //                    GachaHelpVideoLink()
                 }
                 Section {
-                    Label("如果您的账号所在服务器位于中国大陆", systemImage: "text.bubble")
-                    Label("请优先选择「通过API」一键获取", systemImage: "network")
+                    Label("如果您的账号所在服务器位于中国大陆", systemSymbol: .textBubble)
+                    Label("请优先选择「通过API」一键获取", systemSymbol: .network)
                 } footer: {
                     Text("仅适用于中国大陆服务器")
                         .bold()
                 }
                 Section {
-                    Label("国际服务器玩家该怎么办", systemImage: "text.bubble")
+                    Label("国际服务器玩家该怎么办", systemSymbol: .textBubble)
                     Label(
                         "建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程",
-                        systemImage: "doc.on.clipboard"
+                        systemSymbol: .docOnClipboard
                     )
                 } footer: {
                     Text("适用于所有服务器")
@@ -669,7 +670,7 @@ private struct HelpSheet: View {
                 Section {
                     Label(
                         "如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入",
-                        systemImage: "square.and.arrow.down.on.square"
+                        systemSymbol: .squareAndArrowDownOnSquare
                     )
                     if Bundle.main.preferredLocalizations.first?.prefix(2) == "zh" {
                         Link(
@@ -679,7 +680,7 @@ private struct HelpSheet: View {
                         ) {
                             Label(
                                 "支持UIGF的软件",
-                                systemImage: "app.badge.checkmark"
+                                systemSymbol: .appBadgeCheckmark
                             )
                         }
                     } else {
@@ -690,7 +691,7 @@ private struct HelpSheet: View {
                         ) {
                             Label(
                                 "支持UIGF的软件",
-                                systemImage: "app.badge.checkmark"
+                                systemSymbol: .appBadgeCheckmark
                             )
                         }
                     }
@@ -871,7 +872,7 @@ private struct GachaDetailView: View {
                     }
                 } label: {
                     HStack {
-                        Image(systemName: "arrow.left.arrow.right.circle")
+                        Image(systemSymbol: .arrowLeftArrowRightCircle)
                         if let uid: String = gachaViewModel.filter.uid {
                             if let name: String = viewModel.accounts
                                 .first(where: { $0.config.uid == uid })?.config

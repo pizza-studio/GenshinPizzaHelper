@@ -7,6 +7,7 @@
 
 import AlertToast
 import CoreXLSX
+import SFSafeSymbols
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -38,7 +39,7 @@ struct ImportGachaView: View {
                 Button {
                     isHelpSheetShow.toggle()
                 } label: {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemSymbol: .questionmarkCircle)
                 }
             }
         })
@@ -377,7 +378,7 @@ private struct HelpSheet: View {
                         ) {
                             Label(
                                 "支持UIGF的软件",
-                                systemImage: "app.badge.checkmark"
+                                systemSymbol: .appBadgeCheckmark
                             )
                         }
                     } else {
@@ -388,7 +389,7 @@ private struct HelpSheet: View {
                         ) {
                             Label(
                                 "支持UIGF的软件",
-                                systemImage: "app.badge.checkmark"
+                                systemSymbol: .appBadgeCheckmark
                             )
                         }
                     }
@@ -502,7 +503,7 @@ private struct SucceedView: View {
             Label {
                 Text("成功导入祈愿数据")
             } icon: {
-                Image(systemName: "checkmark.circle")
+                Image(systemSymbol: .checkmarkCircle)
                     .foregroundColor(.green)
             }
             Text("UID: \(info.uid)")

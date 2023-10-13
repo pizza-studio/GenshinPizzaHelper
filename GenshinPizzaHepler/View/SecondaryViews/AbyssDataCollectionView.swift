@@ -8,6 +8,7 @@
 import Defaults
 import HBMihoyoAPI
 import HBPizzaHelperAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - AbyssDataCollectionViewModel
@@ -250,7 +251,7 @@ struct AbyssDataCollectionView: View {
                     ShowAvatarPercentageViewWithSection()
                 } else {
                     VStack {
-                        Image(systemName: "clock.badge.exclamationmark")
+                        Image(systemSymbol: .clockBadgeExclamationmark)
                             .font(.largeTitle)
                         Text("abyssDataCollection.availableSince20230401")
                             .padding()
@@ -271,7 +272,7 @@ struct AbyssDataCollectionView: View {
                 Button {
                     isWebSheetShow = true
                 } label: {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemSymbol: .questionmarkCircle)
                 }
             }
             ToolbarItem(placement: .principal) {
@@ -289,7 +290,7 @@ struct AbyssDataCollectionView: View {
                     }
                 } label: {
                     HStack {
-                        Image(systemName: "arrow.left.arrow.right.circle")
+                        Image(systemSymbol: .arrowLeftArrowRightCircle)
                         Text(
                             abyssDataCollectionViewModel.showingType.rawValue
                                 .localized
@@ -878,8 +879,11 @@ private struct ShowTeamPercentageView: View {
                                             ) as NSNumber)!
                                     )
                                     .font(.systemCompressed(size: 16, weight: .heavy))
-                                    if index < 50 {
-                                        Image(systemName: "\(index + 1).circle")
+                                    let matchedSymbol = SFSymbol.allSymbols.filter { symbol in
+                                        String(describing: symbol) == "_\(index + 1)Circle"
+                                    }.first
+                                    if let matchedSymbol = matchedSymbol {
+                                        Image(systemSymbol: matchedSymbol)
                                             .font(.system(size: 14, weight: .light))
                                     }
                                 }
@@ -931,9 +935,18 @@ private struct ShowTeamPercentageShare: View {
                 VStack {
                     ForEach(teams, id: \.0) { index, team in
                         HStack {
-                            Image(systemName: "\(index + 1).circle")
-                                .font(.system(size: 14, weight: .light))
-                                .foregroundColor(.gray)
+                            let matchedSymbol = SFSymbol.allSymbols.filter { symbol in
+                                String(describing: symbol) == "_\(index + 1)Circle"
+                            }.first
+                            if let matchedSymbol = matchedSymbol {
+                                Image(systemSymbol: matchedSymbol)
+                                    .font(.system(size: 14, weight: .light))
+                                    .foregroundColor(.gray)
+                            } else {
+                                Image(systemSymbol: .questionmark)
+                                    .font(.system(size: 14, weight: .light))
+                                    .foregroundColor(.gray)
+                            }
                             HStack {
                                 ForEach(
                                     team.team.sorted(by: <),

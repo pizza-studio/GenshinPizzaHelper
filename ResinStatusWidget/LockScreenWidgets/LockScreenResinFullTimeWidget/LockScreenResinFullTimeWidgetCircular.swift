@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
@@ -90,7 +91,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                             .resizable()
                             .scaledToFit()
                             .frame(height: 10)
-                        Image(systemName: "ellipsis")
+                        Image(systemSymbol: .ellipsis)
                     }
                 }
                 .padding(.vertical, 2)
@@ -153,7 +154,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                             .resizable()
                             .scaledToFit()
                             .frame(height: 10)
-                        Image(systemName: "ellipsis")
+                        Image(systemSymbol: .ellipsis)
                     }
                 }
                 .padding(.vertical, 2)

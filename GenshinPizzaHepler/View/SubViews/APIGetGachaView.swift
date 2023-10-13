@@ -8,6 +8,7 @@
 import AlertToast
 import Charts
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - APIGetGachaView
@@ -323,7 +324,7 @@ struct GettingGachaBar: View {
                 Button {
                     observer.shouldCancel = true
                 } label: {
-                    Image(systemName: "square.circle")
+                    Image(systemSymbol: .squareCircle)
                 }
             }
         } footer: {
@@ -381,7 +382,7 @@ struct GetGachaResultView: View {
                 Label {
                     Text("成功获取祈愿数据")
                 } icon: {
-                    Image(systemName: "checkmark.circle")
+                    Image(systemSymbol: .checkmarkCircle)
                         .foregroundColor(.green)
                 }
             } footer: {
@@ -408,7 +409,7 @@ struct GetGachaResultView: View {
                 Label {
                     Text("获取祈愿记录失败")
                 } icon: {
-                    Image(systemName: "xmark.circle")
+                    Image(systemSymbol: .xmarkCircle)
                         .foregroundColor(.red)
                 }
                 Text("ERROR: \(error.localizedDescription)")

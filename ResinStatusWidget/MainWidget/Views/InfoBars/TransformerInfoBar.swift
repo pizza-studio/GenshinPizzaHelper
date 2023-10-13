@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 struct TransformerInfoBar: View {
@@ -13,12 +14,12 @@ struct TransformerInfoBar: View {
 
     var isTransformerCompleteImage: some View {
         transformerInfo.isComplete
-            ? Image(systemName: "exclamationmark")
+            ? Image(systemSymbol: .exclamationmark)
             .overlayImageWithRingProgressBar(
                 transformerInfo.percentage,
                 scaler: 0.78
             )
-            : Image(systemName: "hourglass")
+            : Image(systemSymbol: .hourglass)
             .overlayImageWithRingProgressBar(transformerInfo.percentage)
     }
 

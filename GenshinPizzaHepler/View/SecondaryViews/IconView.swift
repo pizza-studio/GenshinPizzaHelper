@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2023/6/12.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - IconView
@@ -25,7 +26,7 @@ struct IconView: View {
             .padding([.trailing], 2)
             .if(selected) {
                 $0.overlay(
-                    Image(systemName: "checkmark.circle.fill")
+                    Image(systemSymbol: .checkmarkCircleFill)
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(.green),
                     alignment: .bottomTrailing

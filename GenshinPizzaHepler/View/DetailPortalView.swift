@@ -8,6 +8,7 @@
 import Defaults
 import HBMihoyoAPI
 import HBPizzaHelperAPI
+import SFSafeSymbols
 import SwiftPieChart
 import SwiftUI
 
@@ -251,7 +252,7 @@ struct DetailPortalView: View {
             }
         } else if accounts.isEmpty {
             NavigationLink(destination: AddAccountView()) {
-                Label("settings.account.pleaseAddAccountFirst", systemImage: "plus.circle")
+                Label("settings.account.pleaseAddAccountFirst", systemSymbol: .plusCircle)
             }
         } else {
             Menu {
@@ -262,7 +263,7 @@ struct DetailPortalView: View {
                     }
                 }
             } label: {
-                Label("detailPortal.prompt.pleaseSelectAccount", systemImage: "arrow.left.arrow.right.circle")
+                Label("detailPortal.prompt.pleaseSelectAccount", systemSymbol: .arrowLeftArrowRightCircle)
             }
         }
     }
@@ -438,7 +439,7 @@ struct DetailPortalView: View {
                             }
                         },
                         icon: {
-                            Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                            Image(systemSymbol: .exclamationmarkArrowTriangle2Circlepath)
                                 .foregroundColor(.red)
                                 .frame(width: 30, height: 30)
                         }
@@ -637,7 +638,7 @@ struct DetailPortalView: View {
                     }
                 }
             } label: {
-                Image(systemName: "arrow.left.arrow.right.circle")
+                Image(systemSymbol: .arrowLeftArrowRightCircle)
                     .font(.title2)
             }
         } else {
@@ -650,7 +651,7 @@ struct DetailPortalView: View {
         Section {
             HStack {
                 Spacer()
-                Image(systemName: "exclamationmark.arrow.triangle.2.circlepath")
+                Image(systemSymbol: .exclamationmarkArrowTriangle2Circlepath)
                     .foregroundColor(.red)
                     .onTapGesture {
                         if let account = account {

@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/9/6.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 struct WidgetTipsView: View {
@@ -15,9 +16,9 @@ struct WidgetTipsView: View {
         NavigationView {
             List {
                 Section(header: Text("如何配置小组件和修改小组件背景？").textCase(.none)) {
-                    Label("长按小组件，选择编辑\"原神披萨小助手\"", systemImage: "1.circle")
+                    Label("长按小组件，选择编辑\"原神披萨小助手\"", systemSymbol: ._01Circle)
                         .padding(.vertical, 10)
-                    Label("根据提示选择设置项或启用/关闭功能或修改背景", systemImage: "2.circle")
+                    Label("根据提示选择设置项或启用/关闭功能或修改背景", systemSymbol: ._02Circle)
                         .padding(.vertical, 10)
                 }
 
@@ -29,7 +30,7 @@ struct WidgetTipsView: View {
                         .navigationTitle("如何添加小组件？")
                         .navigationBarTitleDisplayMode(.inline)
                     ) {
-                        Label("关于如何添加小组件，请参考Apple支持文档", systemImage: "safari")
+                        Label("关于如何添加小组件，请参考Apple支持文档", systemSymbol: .safari)
                             .padding(.vertical, 10)
                     }
                     NavigationLink(
@@ -41,13 +42,13 @@ struct WidgetTipsView: View {
                     ) {
                         Label(
                             "关于如何在Apple Watch上添加复杂功能，请参考Apple支持文档",
-                            systemImage: "safari"
+                            systemSymbol: .safari
                         )
                         .padding(.vertical, 10)
                     }
                     Label(
                         "如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件",
-                        systemImage: "exclamationmark.circle"
+                        systemSymbol: .exclamationmarkCircle
                     )
                     .padding(.vertical, 10)
                 }
@@ -61,7 +62,7 @@ struct WidgetTipsView: View {
                     ) {
                         Label(
                             "settings.misc.FAQ",
-                            systemImage: "person.fill.questionmark"
+                            systemSymbol: .personFillQuestionmark
                         )
                     }
                 }

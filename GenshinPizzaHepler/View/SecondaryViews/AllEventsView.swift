@@ -7,6 +7,7 @@
 
 import Defaults
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - AllEventsView
@@ -80,7 +81,7 @@ struct AllEventsView: View {
                     Spacer()
                     HStack {
                         HStack(spacing: 2) {
-                            Image(systemName: "hourglass.circle")
+                            Image(systemSymbol: .hourglassCircle)
                                 .font(.caption)
                             Group {
                                 if getRemainDays(content.endAt) == nil {

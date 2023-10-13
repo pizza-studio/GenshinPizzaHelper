@@ -6,6 +6,7 @@
 //  测试连接部分的View
 
 import HBMihoyoAPI
+import SFSafeSymbols
 import SwiftUI
 import WebKit
 
@@ -41,14 +42,14 @@ struct TestSectionView: View {
                     case .unknown:
                         Text("")
                     case .success:
-                        Image(systemName: "checkmark")
+                        Image(systemSymbol: .checkmark)
                             .foregroundColor(.green)
                     case .fail:
                         if let error = error, case .accountAbnormal = error {
-                            Image(systemName: "questionmark.circle")
+                            Image(systemSymbol: .questionmarkCircle)
                                 .foregroundColor(.yellow)
                         } else {
-                            Image(systemName: "xmark")
+                            Image(systemSymbol: .xmark)
                                 .foregroundColor(.red)
                         }
                     case .testing:
