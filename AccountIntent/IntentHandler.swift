@@ -54,7 +54,7 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
         let accountIntents: [AccountIntent] = accountConfigs.map { config in
             AccountIntent(
                 identifier: config.uuid!.uuidString,
-                display: config.name! + "(\(config.server.rawValue))"
+                display: config.name! + "(\(config.server.localized))"
             )
         }
         let collection = INObjectCollection(items: accountIntents)
@@ -79,7 +79,7 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
         let accountIntents: [AccountIntent] = accountConfigs.map { config in
             AccountIntent(
                 identifier: config.uuid!.uuidString,
-                display: config.name! + "(\(config.server.rawValue))"
+                display: config.name! + "(\(config.server.localized))"
             )
         }
         let collection = INObjectCollection(items: accountIntents)
@@ -104,7 +104,7 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
         let accountIntents: [AccountIntent] = accountConfigs.map { config in
             AccountIntent(
                 identifier: config.uuid!.uuidString,
-                display: config.name! + "(\(config.server.rawValue))"
+                display: config.name! + "(\(config.server.localized))"
             )
         }
         let collection = INObjectCollection(items: accountIntents)

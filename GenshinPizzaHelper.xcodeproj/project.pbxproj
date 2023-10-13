@@ -295,7 +295,7 @@
 		BF3F98C528EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		BF3F98C628EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */; };
-		BF6C526B289E116700EA224F /* MainWedgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* MainWedgetProvider.swift */; };
+		BF6C526B289E116700EA224F /* MainWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* MainWidgetProvider.swift */; };
 		BF6C5272289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		BF6C5273289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		BF6C5275289E137200EA224F /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
@@ -1079,7 +1079,7 @@
 		EA30F9A52886B49200AE7BEA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		EA30F9A82886B49200AE7BEA /* MainWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidget.swift; sourceTree = "<group>"; };
 		EA30F9AC2886B49300AE7BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA30F9B42886B4C800AE7BEA /* MainWedgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWedgetProvider.swift; sourceTree = "<group>"; };
+		EA30F9B42886B4C800AE7BEA /* MainWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetProvider.swift; sourceTree = "<group>"; };
 		EA32D57329D749E60003978A /* MIMTGetGachaURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIMTGetGachaURL.swift; sourceTree = "<group>"; };
 		EA36DFB928E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetTransformerCircular.swift; sourceTree = "<group>"; };
 		EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetWeeklyBossesCircular.swift; sourceTree = "<group>"; };
@@ -2005,7 +2005,7 @@
 			isa = PBXGroup;
 			children = (
 				EA30F9A82886B49200AE7BEA /* MainWidget.swift */,
-				EA30F9B42886B4C800AE7BEA /* MainWedgetProvider.swift */,
+				EA30F9B42886B4C800AE7BEA /* MainWidgetProvider.swift */,
 				EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */,
 				BFE42537289E4FF700FEFA49 /* Views */,
 			);
@@ -2905,7 +2905,7 @@
 				EAB1110728CF84B5009FDF07 /* WidgetLauncher.swift in Sources */,
 				EA7CD44528CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */,
 				EAAF331028A27B080018EFAB /* Account.swift in Sources */,
-				BF6C526B289E116700EA224F /* MainWedgetProvider.swift in Sources */,
+				BF6C526B289E116700EA224F /* MainWidgetProvider.swift in Sources */,
 				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
 				BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				5B918A3029D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,

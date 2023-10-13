@@ -33,7 +33,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             intent.simplifiedMode = useSimplifiedMode as NSNumber
             intent.account = .init(
                 identifier: config.uuid!.uuidString,
-                display: config.name! + "(\(config.server.rawValue))"
+                display: config.name! + "(\(config.server.localized))"
             )
             return IntentRecommendation(
                 intent: intent,
