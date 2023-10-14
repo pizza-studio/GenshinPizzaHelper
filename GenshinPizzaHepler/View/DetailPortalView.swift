@@ -719,19 +719,43 @@ struct DetailPortalView: View {
             switch OS.type {
             case .iPadOS, .macOS:
                 Label {
-                    Text("祈愿分析")
+                    HStack {
+                        Text("祈愿分析")
+                        Spacer()
+                        LinearGradient(
+                            gradient: Gradient(colors: [.clear, .gray]),
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
+                        .opacity(0.0001)
+                        // 上述 Text 之后追加的部件使得整行都可以成为触控区域
+                    }
                 } icon: {
                     Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
                         .scaledToFit()
-                }.onTapGesture {
+                }
+                .onTapGesture {
                     sheetType = .gachaAnalysis
                 }
                 Label {
-                    Text("深渊统计榜单")
+                    HStack {
+                        Text("深渊统计榜单")
+                        Spacer()
+                        LinearGradient(
+                            gradient: Gradient(colors: [.clear, .gray]),
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
+                        .opacity(0.0001)
+                        // 上述 Text 之后追加的部件使得整行都可以成为触控区域
+                    }
                 } icon: {
                     Image("UI_MarkTower_EffigyChallenge_01").resizable()
                         .scaledToFit()
-                }.onTapGesture {
+                }
+                .onTapGesture {
                     sheetType = .rankedSpiralAbyss
                 }
             default:
