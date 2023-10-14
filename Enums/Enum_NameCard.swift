@@ -256,16 +256,6 @@ extension NameCard {
 
 #if !os(watchOS)
 extension NameCard {
-    public var smallImage: UIImage? {
-        guard let uiImage = UIImage(named: fileName) else { return nil }
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let targetSize = CGSize(width: floor(uiImage.size.width / 3), height: floor(uiImage.size.height / 3))
-        let renderer = UIGraphicsImageRenderer(size: targetSize, format: format)
-        return renderer.image { _ in
-            let newRect = CGRect(origin: .zero, size: targetSize)
-            uiImage.draw(in: newRect)
-        }
-    }
+    public var smallImage: UIImage? { UIImage(named: fileName) }
 }
 #endif
