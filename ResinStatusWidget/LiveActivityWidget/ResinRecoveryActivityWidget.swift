@@ -135,38 +135,22 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         .background {
             switch context.state.background {
             case .random:
-                if let uiImage = NameCard.random.smallImage {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                    Color.black
-                        .opacity(0.3)
-                } else {
-                    EmptyView().onAppear {
-                        NSLog("[OPHelper] Activity Kit Error: Background (random) initialization failed.")
-                    }
-                }
-            // WidgetBackgroundView(background: bg, darkModeOn: true)
+                Image(NameCard.random.fileName)
+                    .resizable()
+                    .scaledToFill()
+                Color.black
+                    .opacity(0.3)
             case .customize:
                 let chosenCardBackgrounds = NameCard.allLegalCases.compactMap { card in
                     resinRecoveryLiveActivityBackgroundOptions.contains(card.fileName) ? card
                         : nil
                 }
                 let randomCardBg = chosenCardBackgrounds.randomElement() ?? .defaultValue
-                if let uiImage = randomCardBg.smallImage {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                    Color.black
-                        .opacity(0.3)
-                    // WidgetBackgroundView(background: WidgetBackground(identifier: randomCardBg.fileName,display: randomCardBg.localized),darkModeOn: true)
-                } else {
-                    EmptyView().onAppear {
-                        NSLog(
-                            "[OPHelper] Activity Kit Error: Background (\(randomCardBg.fileName)) initialization failed."
-                        )
-                    }
-                }
+                Image(randomCardBg.fileName)
+                    .resizable()
+                    .scaledToFill()
+                Color.black
+                    .opacity(0.3)
             case .noBackground:
                 EmptyView()
             }
