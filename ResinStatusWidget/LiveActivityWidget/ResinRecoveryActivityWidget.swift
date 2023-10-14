@@ -135,16 +135,12 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         .background {
             switch context.state.background {
             case .random:
-                // 这里得用 data 还原到 UIImage。
-                // Ref: https://developer.apple.com/forums/thread/716902?answerId=737819022#737819022
-                if let uiImage = UIImage(data: NameCard.random.smallImageData) {
+                if let uiImage = NameCard.random.smallImage {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
-                        .overlay {
-                            Color.black
-                                .opacity(0.3)
-                        }
+                    Color.black
+                        .opacity(0.3)
                 } else {
                     EmptyView().onAppear {
                         NSLog("[OPHelper] Activity Kit Error: Background (random) initialization failed.")
@@ -152,21 +148,17 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                 }
             // WidgetBackgroundView(background: bg, darkModeOn: true)
             case .customize:
-                // 这里得用 data 还原到 UIImage。
-                // Ref: https://developer.apple.com/forums/thread/716902?answerId=737819022#737819022
                 let chosenCardBackgrounds = NameCard.allLegalCases.compactMap { card in
                     resinRecoveryLiveActivityBackgroundOptions.contains(card.fileName) ? card
                         : nil
                 }
                 let randomCardBg = chosenCardBackgrounds.randomElement() ?? .defaultValue
-                if let uiImage = UIImage(data: randomCardBg.smallImageData) {
+                if let uiImage = randomCardBg.smallImage {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
-                        .overlay {
-                            Color.black
-                                .opacity(0.3)
-                        }
+                    Color.black
+                        .opacity(0.3)
                     // WidgetBackgroundView(background: WidgetBackground(identifier: randomCardBg.fileName,display: randomCardBg.localized),darkModeOn: true)
                 } else {
                     EmptyView().onAppear {
