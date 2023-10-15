@@ -1380,3 +1380,5 @@
 "server.region.name.cht" = "香港・マカオ・台湾";
 "operation.scrolling.guide" = "(Shift+) マウスホイールでスクロールを制御する。";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "深境螺旋記録はアカウントを選択してから表示できます。";
+"detailPortal.player.worldBalancedLevel.short" = "均衡レベル";
+"detailPortal.player.achievementsTitle.short" = "アチーブメント";

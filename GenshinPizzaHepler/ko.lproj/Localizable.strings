@@ -1377,3 +1377,5 @@
 "server.region.name.cht" = "TW/HK/MO";
 "operation.scrolling.guide" = "Use (Shift+) Mouse Wheel to scroll contents.";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "Please choose an account to see Spiral Abyss records.";
+"detailPortal.player.worldBalancedLevel.short" = "WL/EL";
+"detailPortal.player.achievementsTitle.short" = "Achievements";

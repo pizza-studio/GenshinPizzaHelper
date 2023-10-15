@@ -230,6 +230,15 @@ struct DetailPortalView: View {
                                 )
                         }
                     }
+                } footer: {
+                    HStack {
+                        Text("Lv.\(playerDetail.basicInfo.level)")
+                        let worldBalancedLevelTitle = "detailPortal.player.worldBalancedLevel.short".localized
+                        Text("\(worldBalancedLevelTitle): \(playerDetail.basicInfo.worldLevel)")
+                        Spacer()
+                        let achievementsTitle = "detailPortal.player.achievementsTitle.short".localized
+                        Text("\(achievementsTitle): \(playerDetail.basicInfo.finishAchievementNum)")
+                    }
                 }
             } else {
                 Section {
