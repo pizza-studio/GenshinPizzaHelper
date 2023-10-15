@@ -545,13 +545,13 @@ Created by Bill Haku on 2022/8/23.
 "unit.daysOf:%lld" = "%lld天";
 "unit.%lldHH%lldMM" = "%lld小时%lld分钟";
 "infoBlock.transformerAvailable" = "可使用";
-"week.sunday" = "週日";
-"week.monday" = "週一";
-"week.tuesday" = "週二";
-"week.wednesday" = "週三";
-"week.thursday" = "週四";
-"week.friday" = "週五";
-"week.saturday" = "週六";
+"week.sunday" = "周日";
+"week.monday" = "周一";
+"week.tuesday" = "周二";
+"week.wednesday" = "周三";
+"week.thursday" = "周四";
+"week.friday" = "周五";
+"week.saturday" = "周六";
 
 "button.savePic" = "保存图片";
 
@@ -626,11 +626,11 @@ Created by Bill Haku on 2022/8/23.
 // Daily materials
 
 "今日材料" = "今日材料";
-"今日材料：週日所有材料均可获取" = "今日材料：週日所有材料均可获取";
+"今日材料：周日所有材料均可获取" = "今日材料：周日所有材料均可获取";
 
 // large size widget
 "已完成" = "已完成";
-"（週日所有材料均可获取）" = "（週日所有材料均可获取）";
+"（周日所有材料均可获取）" = "（周日所有材料均可获取）";
 
 // Char's name
 "expedition.info.unknownCharacter.braced" = "（未知角色）";
@@ -839,9 +839,9 @@ Created by Bill Haku on 2022/8/23.
 
 // MARK: - 2.5.0
 // Material Provider
-"week.MR" = "週一 & 週四";
-"week.TF" = "週二 & 週五";
-"week.WS" = "週三 & 週六";
+"week.MR" = "周一 & 周四";
+"week.TF" = "周二 & 周五";
+"week.WS" = "周三 & 周六";
 
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "请先选择账号";
