@@ -56,7 +56,7 @@ struct SettingViewIOS16: View {
     var isAlertToastShown = false
 
     @State
-    var selectedView: Navigation?
+    var selectedView: Navigation? = .uiPreference
 
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
@@ -400,6 +400,7 @@ private struct SettingViewIOS15: View {
         }
         .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("nav.category.settings.name")
+        DisplayOptionsView()
         #if DEBUG
             .toast(isPresenting: $isAlertToastShown) {
                 AlertToast(
