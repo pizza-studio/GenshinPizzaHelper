@@ -1441,6 +1441,7 @@
 		BF7500FA28E0445300CDA64E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BFF683EC2A374AC0005470EA /* App Icons */,
 				BF7500FB28E0452C00CDA64E /* app.css */,
 				BF7500FD28E0452C00CDA64E /* article.html */,
 			);
@@ -1902,20 +1903,19 @@
 		EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */ = {
 			isa = PBXGroup;
 			children = (
-				BFF683EC2A374AC0005470EA /* App Icons */,
-				5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */,
-				BF70210628B33D8300A6BBA9 /* AppDelegate.swift */,
-				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
-				EA1B76762886B89F007A5216 /* Info.plist */,
-				BF70213028B50D7800A6BBA9 /* Localizable.strings */,
-				BF70213728B5259300A6BBA9 /* InfoPlist.strings */,
-				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
-				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,
-				EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */,
-				EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */,
+				EABD7DBF2886B2D300B7F0FD /* Preview Content */,
 				BF7500FA28E0445300CDA64E /* Resources */,
 				EAAF330828A276360018EFAB /* View */,
-				EABD7DBF2886B2D300B7F0FD /* Preview Content */,
+				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
+				5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */,
+				EA1B76762886B89F007A5216 /* Info.plist */,
+				BF70210628B33D8300A6BBA9 /* AppDelegate.swift */,
+				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
+				EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */,
+				EA30F99B2886B46C00AE7BEA /* Assets.xcassets */,
+				EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */,
+				BF70213728B5259300A6BBA9 /* InfoPlist.strings */,
+				BF70213028B50D7800A6BBA9 /* Localizable.strings */,
 			);
 			path = GenshinPizzaHepler;
 			sourceTree = "<group>";
