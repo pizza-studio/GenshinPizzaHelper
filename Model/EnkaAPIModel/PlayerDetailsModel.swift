@@ -40,7 +40,7 @@ struct PlayerDetailFetchModel: Codable {
         var nameCardId: Int
         /// 已解锁成就数
         var finishAchievementNum: Int
-        /// 本期深渊乘数
+        /// 本期深渊层数
         var towerFloorIndex: Int?
         /// 本期深渊间数
         var towerLevelIndex: Int?

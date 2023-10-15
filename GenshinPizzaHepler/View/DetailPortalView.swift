@@ -395,6 +395,7 @@ struct DetailPortalView: View {
             Label(
                 title: {
                     HStack {
+                        // try! account?.playerDetailResult?.get().basicInfo.towerFloorLevelSimplified ??
                         let textString = basicInfo.stats.spiralAbyss.description
                         Text(textString).fontWeight(.heavy)
                         if let thisAbyssData = thisAbyssData {

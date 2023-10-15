@@ -61,6 +61,9 @@ struct PlayerDetail {
             self.level = playerInfo.level
             self.signature = playerInfo.signature ?? ""
             self.worldLevel = playerInfo.worldLevel
+            self.finishAchievementNum = playerInfo.finishAchievementNum
+            self.towerFloorIndex = playerInfo.towerFloorIndex
+            self.towerLevelIndex = playerInfo.towerLevelIndex
             self.nameCardId = playerInfo.nameCardId
             self.showingNameCards = playerInfo.showNameCardIdList ?? []
             self.profilePictureAvatarEnkaID = playerInfo.profilePicture.avatarIdDeducted
@@ -99,6 +102,13 @@ struct PlayerDetail {
         /// 世界等级
         var worldLevel: Int
 
+        /// 已解锁成就数
+        var finishAchievementNum: Int
+        /// 本期深渊层数
+        var towerFloorIndex: Int?
+        /// 本期深渊间数
+        var towerLevelIndex: Int?
+
         /// 资料名片ID
         var nameCardId: Int
         /// 玩家头像
@@ -110,6 +120,11 @@ struct PlayerDetail {
 
         /// 正在展示的名片
         var showingNameCards: [Int]
+
+        var towerFloorLevelSimplified: String? {
+            guard let floor = towerFloorIndex, let level = towerLevelIndex else { return "nil" }
+            return "\(floor)-\(level)"
+        }
     }
 
     /// 游戏角色
