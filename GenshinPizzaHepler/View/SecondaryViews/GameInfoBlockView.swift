@@ -62,6 +62,7 @@ struct GameInfoBlock: View {
                                     in: animation
                                 )
                         }
+                        Spacer()
                         HStack {
                             Image(systemSymbol: .hourglassCircle)
                                 .foregroundColor(Color("textColor3"))
