@@ -40,7 +40,7 @@ struct AddAccountDetailView: View {
                 }
                 Picker("settings.account.server", selection: $unsavedServer) {
                     ForEach(Server.allCases, id: \.self) { server in
-                        Text(server.rawValue)
+                        Text(server.localized)
                             .tag(server)
                     }
                 }

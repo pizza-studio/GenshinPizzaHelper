@@ -32,7 +32,7 @@ struct MoreView: View {
             Section {
                 Picker("settings.more.timeZone.title", selection: $defaultServer) {
                     ForEach(Server.allCases) { server in
-                        Text(server.rawValue.localized).tag(server.rawValue)
+                        Text(server.localized).tag(server.rawValue)
                     }
                 }
             } footer: {

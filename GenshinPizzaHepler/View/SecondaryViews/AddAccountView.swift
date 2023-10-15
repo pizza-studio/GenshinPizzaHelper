@@ -182,7 +182,7 @@ struct AddAccountView: View {
                     HStack {
                         Text("UID: " + unsavedUid)
                         Spacer()
-                        Text(unsavedServer.rawValue)
+                        Text(unsavedServer.localized)
                     }
                 } footer: {
                     Text("settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget")

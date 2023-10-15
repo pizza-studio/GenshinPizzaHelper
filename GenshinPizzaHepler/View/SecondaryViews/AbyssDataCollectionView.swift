@@ -978,7 +978,7 @@ private struct AvatarHoldingParamsSettingBar: View {
         Menu {
             Button("所有服务器") { params.serverChoice = .all }
             ForEach(Server.allCases, id: \.rawValue) { server in
-                Button("\(server.rawValue)") {
+                Button("\(server.localized)") {
                     params.serverChoice = .server(server)
                 }
             }
@@ -1037,7 +1037,7 @@ private struct FullStarAvatarHoldingParamsSettingBar: View {
         Menu {
             Button("所有服务器") { params.serverChoice = .all }
             ForEach(Server.allCases, id: \.rawValue) { server in
-                Button("\(server.rawValue)") {
+                Button("\(server.localized)") {
                     params.serverChoice = .server(server)
                 }
             }
@@ -1090,7 +1090,7 @@ private struct UtilizationParasSettingBar: View {
         Menu {
             Button("所有服务器") { params.serverChoice = .all }
             ForEach(Server.allCases, id: \.rawValue) { server in
-                Button("\(server.rawValue)") {
+                Button("\(server.localized)") {
                     params.serverChoice = .server(server)
                 }
             }
@@ -1159,7 +1159,7 @@ private struct TeamUtilizationParasSettingBar: View {
         Menu {
             Button("所有服务器") { params.serverChoice = .all }
             ForEach(Server.allCases, id: \.rawValue) { server in
-                Button("\(server.rawValue)") {
+                Button("\(server.localized)") {
                     params.serverChoice = .server(server)
                 }
             }
@@ -1339,7 +1339,7 @@ enum ServerChoice {
         case .all:
             return "所有服务器".localized
         case let .server(server):
-            return server.rawValue
+            return server.localized
         }
     }
 }
