@@ -355,7 +355,7 @@ struct DetailPortalView: View {
     func abyssAndPrimogemNavigator() -> some View {
         if let account = account {
             if let basicInfo: BasicInfos = account.basicInfo {
-                if ThisDevice.isSmallestHDScreenPhone || ThisDevice.isThinnestSplitOnPad {
+                if OS.type == .macOS || ThisDevice.isSmallestHDScreenPhone || ThisDevice.isThinnestSplitOnPad {
                     // 哀凤 SE2 / SE3 开启荧幕放大模式之后，这个版面很难保证排版完整性、需要专门重新做这份。
                     abyssAndPrimogemNavigatorViewLegacy(accountBasicInfo: basicInfo)
                 } else {
@@ -398,8 +398,15 @@ struct DetailPortalView: View {
                         // try! account?.playerDetailResult?.get().basicInfo.towerFloorLevelSimplified ??
                         let textString = basicInfo.stats.spiralAbyss.description
                         Text(textString).fontWeight(.heavy)
+                        Spacer()
+                        LinearGradient(
+                            gradient: Gradient(colors: [.clear, .gray]),
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
+                        .opacity(0.0001)
                         if let thisAbyssData = thisAbyssData {
-                            Spacer()
                             Text("✡︎ \(thisAbyssData.totalStar)").font(.footnote)
                         }
                     }
@@ -419,7 +426,16 @@ struct DetailPortalView: View {
                                 Text(data.dayData.currentPrimogems.description).fontWeight(.heavy)
                                 Spacer()
                                 Text("\(data.dayData.currentMora) 🪙").font(.footnote)
-                            }
+                            }.frame(maxWidth: .infinity)
+                                .background {
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [.clear, .gray]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                    .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
+                                    .opacity(0.0001)
+                                }
                         },
                         icon: {
                             Image("UI_ItemIcon_Primogem").resizable().frame(width: 30, height: 30)
@@ -434,8 +450,19 @@ struct DetailPortalView: View {
                             switch error {
                             case .notLoginError:
                                 (
-                                    Text("[\("detailPortal.todayAcquisition.title".localized)]\n") +
-                                        Text("detailPortal.todayAcquisition.reloginRequiredNotice")
+                                    HStack {
+                                        Text("[\("detailPortal.todayAcquisition.title".localized)] ") +
+                                            Text("detailPortal.todayAcquisition.reloginRequiredNotice")
+                                    }.frame(maxWidth: .infinity, alignment: .leading)
+                                        .background {
+                                            LinearGradient(
+                                                gradient: Gradient(colors: [.clear, .gray]),
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                            .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
+                                            .opacity(0.0001)
+                                        }
                                 )
                                 .font(.footnote)
                             default:
