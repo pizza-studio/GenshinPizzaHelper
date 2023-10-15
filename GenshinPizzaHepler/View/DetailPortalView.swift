@@ -198,8 +198,17 @@ struct DetailPortalView: View {
         if let account = account {
             if let playerDetail = try? account.playerDetailResult?.get() {
                 Section {
-                    HStack {
-                        playerDetail.basicInfo.decoratedIcon(64)
+                    HStack(spacing: 0) {
+                        HStack {
+                            playerDetail.basicInfo.decoratedIcon(64)
+                            Spacer()
+                        }
+                        .frame(width: 74)
+                        .corneredTag(
+                            verbatim: "Lv.\(playerDetail.basicInfo.level)",
+                            alignment: .bottomTrailing,
+                            textSize: 12
+                        )
                         VStack(alignment: .leading) {
                             HStack(spacing: 10) {
                                 VStack(alignment: .leading) {
@@ -220,24 +229,14 @@ struct DetailPortalView: View {
                                 Spacer()
                                 selectAccountManuButton()
                             }
-                            Text("UID: \(account.config.uid ?? "")")
-                                .foregroundColor(.secondary)
-                                .font(.footnote)
-                                .lineLimit(1)
-                                .fixedSize(
-                                    horizontal: false,
-                                    vertical: true
-                                )
                         }
                     }
                 } footer: {
                     HStack {
-                        Text("Lv.\(playerDetail.basicInfo.level)")
+                        Text("UID: \(account.config.uid ?? "1145141919810")")
+                        Spacer()
                         let worldBalancedLevelTitle = "detailPortal.player.worldBalancedLevel.short".localized
                         Text("\(worldBalancedLevelTitle): \(playerDetail.basicInfo.worldLevel)")
-                        Spacer()
-                        let achievementsTitle = "detailPortal.player.achievementsTitle.short".localized
-                        Text("\(achievementsTitle): \(playerDetail.basicInfo.finishAchievementNum)")
                     }
                 }
             } else {
