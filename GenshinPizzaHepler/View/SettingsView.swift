@@ -160,21 +160,31 @@ struct SettingViewIOS16: View {
                     }
                 }
 
+                /// 此处只能这样分别弄成两个 Section，否则在某些旧版 iOS 系统下可能会有异常（会出现空白行）。
+                #if DEBUG
                 Section {
                     // 更多
                     NavigationLink(value: Navigation.more) {
                         Label("settings.more", systemSymbol: .ellipsisCircle)
                     }
-                    #if DEBUG
                     Button("Alert Toast Debug") {
                         //                        UserNotificationCenter.shared
                         //                            .printAllNotificationRequest()
                         isAlertToastShown.toggle()
                     }
-                    #endif
                 } footer: {
                     Spacer()
                 }
+                #else
+                Section {
+                    // 更多
+                    NavigationLink(value: Navigation.more) {
+                        Label("settings.more", systemSymbol: .ellipsisCircle)
+                    }
+                } footer: {
+                    Spacer()
+                }
+                #endif
             }
             .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("nav.category.settings.name")
@@ -382,21 +392,31 @@ private struct SettingViewIOS15: View {
                 }
             }
 
+            /// 此处只能这样分别弄成两个 Section，否则在某些旧版 iOS 系统下可能会有异常（会出现空白行）。
+            #if DEBUG
             Section {
                 // 更多
                 NavigationLink(destination: MoreView()) {
                     Label("settings.more", systemSymbol: .ellipsisCircle)
                 }
-                #if DEBUG
                 Button("Alert Toast Debug") {
                     //                        UserNotificationCenter.shared
                     //                            .printAllNotificationRequest()
                     isAlertToastShown.toggle()
                 }
-                #endif
             } footer: {
                 Spacer()
             }
+            #else
+            Section {
+                // 更多
+                NavigationLink(destination: MoreView()) {
+                    Label("settings.more", systemSymbol: .ellipsisCircle)
+                }
+            } footer: {
+                Spacer()
+            }
+            #endif
         }
         .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("nav.category.settings.name")
