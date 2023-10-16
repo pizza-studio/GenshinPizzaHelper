@@ -195,44 +195,36 @@ private struct PinnedAccountInfoCard: View {
                 }
             }
             .contextMenu {
-                if #available(iOS 16, *) {
-                    Button("home.infoCard.unpin".localized) {
-                        withAnimation {
-                            Defaults.reset(.pinToTopAccountUUIDString)
-                            viewModel.objectWillChange.send()
-                        }
+                Button("home.infoCard.unpin".localized) {
+                    withAnimation {
+                        Defaults.reset(.pinToTopAccountUUIDString)
+                        viewModel.objectWillChange.send()
                     }
-                    Button("button.savePic".localized) {
-                        let view = GameInfoBlockForSave(
-                            userData: userData,
-                            accountName: account.config
-                                .name ?? "",
-                            accountUUIDString: account
-                                .config.uuid?
-                                .uuidString ?? "",
-                            animation: animation,
-                            widgetBackground: account
-                                .background
-                        ).environment(
-                            \.locale,
-                            .init(
-                                identifier: Locale
-                                    .current.identifier
-                            )
+                }
+                if #available(iOS 16, *) {
+                    let view = GameInfoBlockForSave(
+                        userData: userData,
+                        accountName: account.config
+                            .name ?? "",
+                        accountUUIDString: account
+                            .config.uuid?
+                            .uuidString ?? "",
+                        animation: animation,
+                        widgetBackground: account
+                            .background
+                    ).environment(
+                        \.locale,
+                        .init(
+                            identifier: Locale
+                                .current.identifier
                         )
-                        let renderer =
-                            ImageRenderer(content: view)
-                        renderer.scale = UIScreen.main
-                            .scale
-                        if let image = renderer
-                            .uiImage {
-                            UIImageWriteToSavedPhotosAlbum(
-                                image,
-                                nil,
-                                nil,
-                                nil
-                            )
-                        }
+                    )
+                    if let uiImage = view.asUiImage() {
+                        let image = Image(uiImage: uiImage)
+                        ShareLink(
+                            item: image,
+                            preview: SharePreview("button.savePic".localized, image: image)
+                        )
                     }
                 }
                 #if canImport(ActivityKit)
@@ -374,34 +366,28 @@ private struct AccountInfoCards: View {
                                 }
                             }
                             if #available(iOS 16, *) {
-                                Button("button.savePic".localized) {
-                                    let view = GameInfoBlockForSave(
-                                        userData: userData,
-                                        accountName: account.config
-                                            .name ?? "",
-                                        accountUUIDString: account
-                                            .config.uuid?.uuidString ?? "",
-                                        animation: animation,
-                                        widgetBackground: account
-                                            .background
-                                    ).environment(
-                                        \.locale,
-                                        .init(
-                                            identifier: Locale.current
-                                                .identifier
-                                        )
+                                let view = GameInfoBlockForSave(
+                                    userData: userData,
+                                    accountName: account.config
+                                        .name ?? "",
+                                    accountUUIDString: account
+                                        .config.uuid?.uuidString ?? "",
+                                    animation: animation,
+                                    widgetBackground: account
+                                        .background
+                                ).environment(
+                                    \.locale,
+                                    .init(
+                                        identifier: Locale.current
+                                            .identifier
                                     )
-                                    let renderer =
-                                        ImageRenderer(content: view)
-                                    renderer.scale = UIScreen.main.scale
-                                    if let image = renderer.uiImage {
-                                        UIImageWriteToSavedPhotosAlbum(
-                                            image,
-                                            nil,
-                                            nil,
-                                            nil
-                                        )
-                                    }
+                                )
+                                if let uiImage = view.asUiImage() {
+                                    let image = Image(uiImage: uiImage)
+                                    ShareLink(
+                                        item: image,
+                                        preview: SharePreview("button.savePic".localized, image: image)
+                                    )
                                 }
                             }
                             #if canImport(ActivityKit)
