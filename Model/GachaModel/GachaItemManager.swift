@@ -135,7 +135,7 @@ public class GachaModelManager {
 
     /// 返回已保存的新数据数量
     func addRecordItems(
-        _ items: [UIGFGahcaItem],
+        _ items: [UIGFGachaItem],
         uid: String,
         lang: GachaLanguageCode
     )

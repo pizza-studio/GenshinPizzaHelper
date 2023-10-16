@@ -77,12 +77,12 @@ struct UIGFJson: Codable {
     }
 
     let info: Info
-    let list: [UIGFGahcaItem]
+    let list: [UIGFGachaItem]
 }
 
-// MARK: - UIGFGahcaItem
+// MARK: - UIGFGachaItem
 
-struct UIGFGahcaItem: Codable {
+struct UIGFGachaItem: Codable {
     // MARK: Lifecycle
 
     init(
@@ -214,7 +214,7 @@ struct UIGFGahcaItem: Codable {
     }
 }
 
-extension UIGFGahcaItem {
+extension UIGFGachaItem {
     public mutating func editId(_ newId: String) {
         id = newId
     }
@@ -257,8 +257,8 @@ extension UIGFGahcaItem {
 }
 
 extension GachaItemMO {
-    func toUIGFGahcaItem(_ languageCode: GachaLanguageCode) -> UIGFGahcaItem {
-        var item = UIGFGahcaItem(
+    func toUIGFGachaItem(_ languageCode: GachaLanguageCode) -> UIGFGachaItem {
+        var item = UIGFGachaItem(
             gachaType: .init(rawValue: Int(gachaType))!,
             itemId: itemId!,
             count: String(count),

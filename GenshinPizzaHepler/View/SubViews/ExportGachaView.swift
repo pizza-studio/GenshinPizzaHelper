@@ -115,7 +115,7 @@ struct ExportGachaView: View {
                         Button("导出") {
                             let uid = params.uid!
                             let items = gachaViewModel.manager.fetchAllMO(uid: uid)
-                                .map { $0.toUIGFGahcaItem(params.lang) }
+                                .map { $0.toUIGFGachaItem(params.lang) }
                             uigfJson = .init(
                                 info: .init(uid: uid, lang: params.lang),
                                 list: items
