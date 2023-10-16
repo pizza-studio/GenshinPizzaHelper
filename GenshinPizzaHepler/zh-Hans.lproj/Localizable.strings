@@ -1372,10 +1372,10 @@ Created by Bill Haku on 2022/8/23.
 "ledgerData.action.name.byEvent" = "活动奖励";
 "server.region.name.china" = "天空岛";
 "server.region.name.bilibili" = "世界树";
-"server.region.name.us" = "美利坚";
-"server.region.name.eu" = "欧罗巴";
-"server.region.name.asia" = "亚细亚";
-"server.region.name.cht" = "港澳台";
+"server.region.name.us" = "美洲 (America)";
+"server.region.name.eu" = "欧洲 (Europe)";
+"server.region.name.asia" = "亚洲 (Asia)";
+"server.region.name.cht" = "港澳台 (HK/MO/TW)";
 "operation.scrolling.guide" = "请使用 (Shift+) 鼠标滚轮以控制内容卷动检视。";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "请选择账号以检视深境螺旋记录。";
 "detailPortal.player.worldBalancedLevel.short" = "均衡等级";

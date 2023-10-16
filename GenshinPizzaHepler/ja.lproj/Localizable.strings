@@ -1374,10 +1374,10 @@
 "ledgerData.action.name.byEvent" = "イベント";
 "server.region.name.china" = "天空島";
 "server.region.name.bilibili" = "世界樹";
-"server.region.name.us" = "米国";
-"server.region.name.eu" = "欧州";
-"server.region.name.asia" = "極東";
-"server.region.name.cht" = "香港・マカオ・台湾";
+"server.region.name.us" = "アメリカ (America)";
+"server.region.name.eu" = "ヨーロッパ (Europe)";
+"server.region.name.asia" = "アジア (Asia)";
+"server.region.name.cht" = "香港・マカオ・台湾 (HK/MO/TW)";
 "operation.scrolling.guide" = "(Shift+) マウスホイールでスクロールを制御する。";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "深境螺旋記録はアカウントを選択してから表示できます。";
 "detailPortal.player.worldBalancedLevel.short" = "均衡レベル";

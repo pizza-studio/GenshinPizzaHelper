@@ -1374,10 +1374,10 @@
 "ledgerData.action.name.byEvent" = "活動獎勵";
 "server.region.name.china" = "天空島";
 "server.region.name.bilibili" = "世界樹";
-"server.region.name.us" = "美利堅";
-"server.region.name.eu" = "歐羅巴";
-"server.region.name.asia" = "亞細亞";
-"server.region.name.cht" = "港澳台";
+"server.region.name.us" = "美洲 (America)";
+"server.region.name.eu" = "歐洲 (Europe)";
+"server.region.name.asia" = "亞洲 (Asia)";
+"server.region.name.cht" = "港澳台 (HK/MO/TW)";
 "operation.scrolling.guide" = "請使用 (Shift+) 滑鼠滾輪以控制內容捲動檢視。";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "請選擇帳號以檢視深境螺旋記錄。";
 "detailPortal.player.worldBalancedLevel.short" = "均衡等級";
