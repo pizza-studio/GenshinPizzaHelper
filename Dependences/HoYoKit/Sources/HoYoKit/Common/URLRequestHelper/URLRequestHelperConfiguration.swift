@@ -58,7 +58,7 @@ enum URLRequestHelperConfiguration {
     static func xRpcAppVersion(region: Region) -> String {
         switch region {
         case .china:
-            return "2.51.1"
+            return "2.60.1"
         case .global:
             return "2.33.0"
         }
@@ -103,7 +103,7 @@ enum URLRequestHelperConfiguration {
 
             "x-rpc-app_version": xRpcAppVersion(region: region),
             "x-rpc-client_type": xRpcClientType(region: region),
-            "x-rpc-page": "3.1.3_#/rpg",
+            "x-rpc-page": "v4.1.5-ys_#/ys/daily",
             "x-rpc-device_id": deviceId,
             "x-rpc-language": Locale.miHoYoAPILanguage.rawValue,
 

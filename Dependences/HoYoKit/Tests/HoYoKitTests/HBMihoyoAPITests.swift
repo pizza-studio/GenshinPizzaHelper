@@ -2,114 +2,69 @@ import Foundation
 @testable import HoYoKit
 import XCTest
 
+// MARK: - HBMihoyoAPITests
+
 final class HBMihoyoAPITests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
+    func testDailyNoteDecode() throws {
+        let exampleURL = Bundle.module.url(forResource: "daily_note_example", withExtension: "json")!
+        let exampleData = try Data(contentsOf: exampleURL)
+        _ = try DailyNote.decodeFromMiHoYoAPIJSONResult(data: exampleData)
     }
 
-    func testDailyNoteDecode() throws {
-        let data = #"""
-        {
-          "retcode" : 0,
-          "message" : "OK",
-          "data" : {
-            "total_task_num" : 4,
-            "max_resin" : 160,
-            "resin_discount_num_limit" : 3,
-            "current_resin" : 55,
-            "current_expedition_num" : 5,
-            "home_coin_recovery_time" : "164417",
-            "calendar_url" : "",
-            "daily_task" : {
-              "finished_num" : 4,
-              "is_extra_task_reward_received" : true,
-              "attendance_rewards" : [
-                {
-                  "status" : "AttendanceRewardStatusTakenAward",
-                  "progress" : 2000
-                },
-                {
-                  "status" : "AttendanceRewardStatusTakenAward",
-                  "progress" : 2000
-                },
-                {
-                  "status" : "AttendanceRewardStatusTakenAward",
-                  "progress" : 2000
-                },
-                {
-                  "status" : "AttendanceRewardStatusTakenAward",
-                  "progress" : 2000
-                }
-              ],
-              "total_num" : 4,
-              "task_rewards" : [
-                {
-                  "status" : "TaskRewardStatusUnfinished"
-                },
-                {
-                  "status" : "TaskRewardStatusUnfinished"
-                },
-                {
-                  "status" : "TaskRewardStatusUnfinished"
-                },
-                {
-                  "status" : "TaskRewardStatusUnfinished"
-                }
-              ],
-              "attendance_visible" : true
-            },
-            "max_home_coin" : 2400,
-            "expeditions" : [
-              {
-                "status" : "Ongoing",
-                "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/8c08c93d61e4f4da591d56dd8dab8287.png",
-                "remained_time" : "27195"
-              },
-              {
-                "status" : "Ongoing",
-                "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/1498c7158c0875b0cf1c667ab2a9f8c4.png",
-                "remained_time" : "27195"
-              },
-              {
-                "status" : "Ongoing",
-                "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/a6cb35ffbfe4f9c93ab2e98f9ed27425.png",
-                "remained_time" : "45115"
-              },
-              {
-                "status" : "Ongoing",
-                "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/bb98002c172f4ccb9f18778bb19c65a1.png",
-                "remained_time" : "45115"
-              },
-              {
-                "status" : "Ongoing",
-                "avatar_side_icon" : "https:\/\/act-webstatic.mihoyo.com\/hk4e\/e20200928calculate\/item_avatar_side_icon_u96d7e\/8af1c9288d855e2551daae602ab8a543.png",
-                "remained_time" : "45115"
-              }
-            ],
-            "max_expedition_num" : 5,
-            "finished_task_num" : 4,
-            "is_extra_task_reward_received" : true,
-            "current_home_coin" : 1020,
-            "remain_resin_discount_num" : 2,
-            "transformer" : {
-              "obtained" : true,
-              "recovery_time" : {
-                "Day" : 0,
-                "Minute" : 0,
-                "reached" : true,
-                "Second" : 0,
-                "Hour" : 0
-              },
-              "noticed" : false,
-              "latest_job_id" : "0",
-              "wiki" : "https:\/\/bbs.mihoyo.com\/ys\/obc\/content\/1562\/detail?bbs_presentation_style=no_header"
-            },
-            "resin_recovery_time" : "50002"
-          }
+    func testWidgetDailyNoteDecode() throws {
+        let exampleURL = Bundle.module.url(forResource: "widget_daily_note_example", withExtension: "json")!
+        let exampleData = try Data(contentsOf: exampleURL)
+        _ = try WidgetDailyNote.decodeFromMiHoYoAPIJSONResult(data: exampleData)
+    }
+
+    func testDailyNoteAPIChina() async throws {
+        do {
+            _ = try await MiHoYoAPI.dailyNote(
+                server: TestData.China.server,
+                uid: TestData.China.uid,
+                cookie: TestData.China.testCookie,
+                deviceFingerPrint: nil
+            )
+        } catch MiHoYoAPIError.verificationNeeded {
+            print("China API need verification")
+        } catch {
+            throw error
         }
-        """#.data(using: .utf8)!
-        _ = try DailyNote.decodeFromMiHoYoAPIJSONResult(data: data)
+    }
+
+    func testDailyNoteAPIGlobal() async throws {
+        _ = try await MiHoYoAPI.dailyNote(server: TestData.Global.server, uid: TestData.Global.uid, cookie: TestData.Global.testCookie, deviceFingerPrint: nil)
+    }
+
+    func testWidgetDailyNoteAPIChina() async throws {
+        _ = try await MiHoYoAPI.widgetDailyNote(cookie: TestData.China.testCookie, deviceFingerPrint: nil)
+    }
+
+    func testGetSTokenV2API() async throws {
+        _ = try await MiHoYoAPI.sTokenV2(cookie: TestData.China.testCookie)
     }
 }
+
+enum TestData {
+    enum China {
+        static let uid = "114514001"
+
+        static let server: Server = .china
+
+        static let testCookie = """
+        stuid=114514004; stoken=SANITIZED ltuid=114514004; ltoken=SANITIZED
+        """
+    }
+
+    enum Global {
+        static let uid = "114514006"
+
+        static let server: Server = .asia
+
+        static let testCookie = """
+        G_ENABLED_IDPS=google; _MHYUUID=2b816df6-9164-437a-8bcb-6ae7f29a0878; DEVICEFP=38d7eaa5fef19; mi18nLang=en-us; _ga=GA1.2.2114925491.1663166136; _gid=GA1.2.1006187314.1663166136; DEVICEFP_SEED_ID=130a980a314cfc57; DEVICEFP_SEED_TIME=1663166136479; ltoken=SANITIZED ltuid=208504340; cookie_token=SANITIZED account_id=208504340; 
+        """
+    }
+}
+
+
