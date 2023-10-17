@@ -115,10 +115,10 @@ struct AccountDisplayView: View {
                                 in: animation
                             )
                         }
-                        .frame(width: 152)
+                        .frame(maxWidth: 152)
                         Spacer()
                         expeditionsView()
-                            .frame(width: 152)
+                            .frame(maxWidth: 152)
                             .onAppear {
                                 DispatchQueue.main
                                     .asyncAfter(deadline: .now()) {
@@ -126,7 +126,7 @@ struct AccountDisplayView: View {
                                     }
                             }
                     }
-                    .frame(width: 310)
+                    .frame(maxWidth: 310)
 
                     HelpTextForScrollingOnDesktopComputer(.vertical).padding()
                     if OS.type != .macOS { Spacer() }
