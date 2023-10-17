@@ -76,8 +76,9 @@ struct ToolbarSavePhotoButton<ViewToRender: View>: ViewModifier {
                     \.locale,
                     .init(identifier: Locale.current.identifier)
                 )
+                .background { Color(red: 0.96, green: 0.96, blue: 0.96) }
         )
-        renderer.scale = UIScreen.main.scale
+        renderer.scale = 3
         return renderer.uiImage
     }
 }
