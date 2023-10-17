@@ -186,6 +186,7 @@ struct SettingViewIOS16: View {
                 }
                 #endif
             }
+            .listStyle(.insetGrouped)
             .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("nav.category.settings.name")
         } detail: {
@@ -272,7 +273,7 @@ private struct SettingViewIOS15: View {
 
     var body: some View {
         NavigationView {
-            navList
+            navList.listStyle(.insetGrouped)
             DisplayOptionsView() // 预设内容页
         }
         #if DEBUG
