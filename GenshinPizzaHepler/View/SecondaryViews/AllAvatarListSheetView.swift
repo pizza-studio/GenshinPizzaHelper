@@ -57,7 +57,13 @@ struct AllAvatarListSheetView: View {
                             .padding(.vertical, 4)
                             .background {
                                 if let asset = avatar.asset {
-                                    EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill().opacity(0.6)
+                                    let bg = EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill()
+                                        .opacity(0.6)
+                                    if #unavailable(iOS 17) {
+                                        bg.frame(maxHeight: 63).clipped()
+                                    } else {
+                                        bg
+                                    }
                                 }
                             }
                     }
