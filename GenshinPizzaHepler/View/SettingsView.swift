@@ -420,7 +420,6 @@ private struct SettingViewIOS15: View {
         }
         .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("nav.category.settings.name")
-        DisplayOptionsView()
         #if DEBUG
             .toast(isPresenting: $isAlertToastShown) {
                 AlertToast(
