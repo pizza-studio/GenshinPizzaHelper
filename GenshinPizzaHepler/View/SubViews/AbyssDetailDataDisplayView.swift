@@ -69,7 +69,7 @@ struct AbyssDetailDataDisplayView: View {
             }
         }
         .sectionSpacing(UIFont.systemFontSize)
-        .listStyle(.sidebar)
+        .listStyle(.insetGrouped)
     }
 }
 

@@ -67,6 +67,7 @@ struct DetailPortalView: View {
                 abyssAndPrimogemNavigator()
                 toolsSection()
             }
+            .listStyle(.insetGrouped)
             .sectionSpacing(UIFont.systemFontSize)
             .environmentObject(orientation)
             .refreshable {
