@@ -81,7 +81,7 @@ enum ThisDevice {
         let windowSize = window.frame.size
         let big = max(windowSize.width, windowSize.height)
         let small = min(windowSize.width, windowSize.height)
-        return (2.3 ... 4).contains(big / small)
+        return (2.2 ... 4).contains(big / small)
     }
 
     public static var isWidestSplitOnPad: Bool {
