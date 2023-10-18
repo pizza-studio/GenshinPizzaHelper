@@ -37,6 +37,15 @@ enum URLRequestHelperConfiguration {
         }
     }
 
+    static func hk4eAPIURLHost(region: Region) -> String {
+        switch region {
+        case .china:
+            "hk4e-api.mihoyo.com"
+        case .global:
+            "sg-hk4e-api.hoyolab.com"
+        }
+    }
+
     static func hostInHeaders(region: Region) -> String {
         switch region {
         case .china:

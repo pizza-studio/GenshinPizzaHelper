@@ -15,7 +15,7 @@ public enum MiHoYoAPI {}
 
 @available(iOS 15.0, *)
 extension MiHoYoAPI {
-    /// Generate `api-takumi-record.mihoyo.com` / `bbs-api-os.mihoyo.com` request for miHoYo API
+    /// Generate `api-takumi-record.mihoyo.com` / `bbs-api-os.hoyolab.com` request for miHoYo API
     /// - Parameters:
     ///   - httpMethod: http method of request. Default `GET`.
     ///   - region: region of account
@@ -106,7 +106,7 @@ extension MiHoYoAPI {
 
         components.path = path
 
-        components.queryItems = queryItems
+        components.queryItems = queryItems.sorted(by: { $0.name < $1.name})
 
         guard let url = components.url else {
             let unknownErrorRetcode = -9999
@@ -127,11 +127,13 @@ extension MiHoYoAPI {
         if let cookie = cookie {
             request.setValue(cookie, forHTTPHeaderField: "Cookie")
         }
+
         request.setValue(
             URLRequestHelper.getDS(region: region, query: url.query ?? "", body: body),
             forHTTPHeaderField: "DS"
         )
         if let body = body {
+            request.httpBody = body
             request.setValue(
                 "\(body.count)",
                 forHTTPHeaderField: "Content-Length"
