@@ -11,12 +11,12 @@ import Foundation
 
 /// The server of an StarRail account.
 public enum Server: String, CaseIterable {
-    case china = "cn_gf01"
-    case bilibili = "cn_qd01"
-    case unitedStates = "os_usa"
-    case europe = "os_euro"
-    case asia = "os_asia"
-    case hongKongMacauTaiwan = "os_cht"
+    case china = "天空岛"
+    case bilibili = "世界树"
+    case unitedStates = "America"
+    case europe = "Europe"
+    case asia = "Asia"
+    case hongKongMacauTaiwan = "TW/HK/MO"
 }
 
 extension Server {
@@ -30,8 +30,14 @@ extension Server {
         }
     }
 
+    public var localized: String { localizedKey.localized }
+
+    public var localizedKey: String {
+        "server.region.name.\(String(describing: self))"
+    }
+
     /// The timezone of the server.
-    public var timeZone: TimeZone {
+    public func timeZone() -> TimeZone {
         switch self {
         case .asia, .bilibili, .china, .hongKongMacauTaiwan:
             return .init(secondsFromGMT: 8 * 60 * 60) ?? .current
@@ -47,13 +53,49 @@ extension Server {
 
 extension Server: Identifiable {
     public var id: String {
-        rawValue
+        switch self {
+        case .china:
+            return "cn_gf01"
+        case .bilibili:
+            return "cn_qd01"
+        case .unitedStates:
+            return "os_usa"
+        case .europe:
+            return "os_euro"
+        case .asia:
+            return "os_asia"
+        case .hongKongMacauTaiwan:
+            return "os_cht"
+        }
+    }
+
+    public static func id(_ id: String) -> Self {
+        switch id {
+        case "cn_gf01":
+            return .china
+        case "cn_qd01":
+            return .bilibili
+        case "os_usa":
+            return .unitedStates
+        case "os_euro":
+            return .europe
+        case "os_asia":
+            return .asia
+        case "os_cht":
+            return .hongKongMacauTaiwan
+        default:
+            return .china
+        }
     }
 }
 
 // MARK: Codable
 
 extension Server: Codable {}
+
+// MARK: RawRepresentable
+
+extension Server: RawRepresentable {}
 
 // MARK: CustomStringConvertible
 

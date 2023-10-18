@@ -8,6 +8,7 @@
 import Defaults
 import Foundation
 import HBMihoyoAPI
+import HoYoKit
 #if !os(watchOS)
 import UIKit
 

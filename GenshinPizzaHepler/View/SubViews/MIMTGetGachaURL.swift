@@ -6,6 +6,7 @@
 //
 
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 func parseURLToAuthkeyAndOtherParams(urlString: String)

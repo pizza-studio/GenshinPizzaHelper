@@ -7,6 +7,7 @@
 
 import Defaults
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 

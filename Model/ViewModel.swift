@@ -11,6 +11,7 @@ import DefaultsKeys
 import Foundation
 import HBMihoyoAPI
 import HBPizzaHelperAPI
+import HoYoKit
 import StoreKit
 import SwiftUI
 import WatchConnectivity
@@ -109,11 +110,11 @@ class ViewModel: NSObject, ObservableObject {
             print("account fetched")
             #if !os(watchOS)
             accountConfigs.forEach { config in
-                if config.server.region == .cn {
+                if config.server.region == .china {
                     if (config.deviceFingerPrint == nil) || (config.deviceFingerPrint == "") {
                         Task {
                             config
-                                .deviceFingerPrint = (try? await MihoyoAPI.getDeviceFingerPrint(region: .cn)) ?? ""
+                                .deviceFingerPrint = (try? await MihoyoAPI.getDeviceFingerPrint(region: .china)) ?? ""
                             try? self.accountConfigurationModel.container.viewContext.save()
                         }
                     }

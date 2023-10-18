@@ -7,6 +7,7 @@
 
 import Foundation
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - ThirdPartyToolsView
@@ -99,7 +100,7 @@ extension ThirdPartyToolsView {
         let regions = availableRegions.isEmpty ? Region.allCases : availableRegions
         ForEach(regions, id: \.self) { region in
             switch region {
-            case .cn: NavigationLink(
+            case .china: NavigationLink(
                     destination:
                     TeyvatMapWebView(isHoYoLAB: false)
                         .navigationTitle("提瓦特大地图")

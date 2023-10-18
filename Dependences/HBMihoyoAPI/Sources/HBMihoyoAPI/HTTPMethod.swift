@@ -8,11 +8,12 @@
 import CryptoKit
 import Defaults
 import Foundation
+import HoYoKit
 
 // MARK: - HttpMethod
 
 @available(iOS 13, watchOS 6, *)
-public struct HttpMethod<T: Codable> {
+public struct HttpMethod<T: Decodable> {
     // MARK: - Method
 
     public enum Method {
@@ -112,7 +113,7 @@ public struct HttpMethod<T: Codable> {
         func get_ds_token(uid: String, server_id: String) -> String {
             let s: String
             switch region {
-            case .cn:
+            case .china:
                 s = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
             case .global:
                 s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
@@ -138,7 +139,7 @@ public struct HttpMethod<T: Codable> {
                 let userAgent: String
                 let clientType: String
                 switch region {
-                case .cn:
+                case .china:
                     baseStr = "https://api-takumi-record.mihoyo.com/"
                     appVersion = "2.51.1"
                     userAgent =
@@ -701,7 +702,7 @@ public struct HttpMethod<T: Codable> {
             -> String {
             let s: String
             switch region {
-            case .cn:
+            case .china:
                 s = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
             case .global:
                 s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
@@ -722,7 +723,7 @@ public struct HttpMethod<T: Codable> {
                 let userAgent: String
                 let clientType: String
                 switch region {
-                case .cn:
+                case .china:
                     baseStr = "https://api-takumi-record.mihoyo.com/"
                     appVersion = "2.36.1"
                     userAgent =
@@ -914,7 +915,7 @@ public struct HttpMethod<T: Codable> {
         func get_ds_token(uid: String, server_id: String) -> String {
             let s: String
             switch region {
-            case .cn:
+            case .china:
                 s = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
             case .global:
                 s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
@@ -934,7 +935,7 @@ public struct HttpMethod<T: Codable> {
                 let userAgent: String
                 let clientType: String
                 switch region {
-                case .cn:
+                case .china:
                     baseStr =
                         "https://api-takumi-record.mihoyo.com/game_record/app/"
                     appVersion = "2.11.1"
@@ -1065,7 +1066,7 @@ public struct HttpMethod<T: Codable> {
                 let appVersion: String
                 let userAgent: String
                 switch region {
-                case .cn:
+                case .china:
                     baseStr = "https://api-takumi.mihoyo.com/"
                     appVersion = "2.11.1"
                     userAgent =
@@ -1080,7 +1081,7 @@ public struct HttpMethod<T: Codable> {
                 // 由前缀和后缀共同组成的url
                 var url = URLComponents(string: baseStr + urlStr)!
                 switch region {
-                case .cn:
+                case .china:
                     url
                         .queryItems =
                         [URLQueryItem(name: "game_biz", value: "hk4e_cn")]
@@ -1355,7 +1356,7 @@ public struct HttpMethod<T: Codable> {
         func get_ds_token(uid: String, server_id: String) -> String {
             let s: String
             switch region {
-            case .cn:
+            case .china:
                 s = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
             case .global:
                 s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
@@ -1377,7 +1378,7 @@ public struct HttpMethod<T: Codable> {
                 let referer: String
                 let origin: String
                 switch region {
-                case .cn:
+                case .china:
                     baseStr = "https://hk4e-api.mihoyo.com/"
                     appVersion = "2.11.1"
                     userAgent =
@@ -1398,7 +1399,7 @@ public struct HttpMethod<T: Codable> {
                 // 由前缀和后缀共同组成的url
                 var url = URLComponents(string: baseStr + urlStr)!
                 switch region {
-                case .cn:
+                case .china:
                     url.queryItems = [
                         URLQueryItem(name: "month", value: String(month)),
                         URLQueryItem(name: "bind_uid", value: String(uid)),
@@ -1645,7 +1646,7 @@ public struct HttpMethod<T: Codable> {
 
                 if let region = region {
                     switch region {
-                    case .cn:
+                    case .china:
                         request.setValue(
                             "5",
                             forHTTPHeaderField: "x-rpc-client_type"

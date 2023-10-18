@@ -6,6 +6,7 @@
 //  设置页账号详细信息View
 
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - AccountDetailView

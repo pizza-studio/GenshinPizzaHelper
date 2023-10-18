@@ -6,6 +6,7 @@
 //  添加账号的View
 
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 import WebKit
 
@@ -55,7 +56,7 @@ struct AddAccountView: View {
     private var fetchAccountStatus: FetchAccountStatus = .unknown
 
     @State
-    private var region: Region = .cn
+    private var region: Region = .china
 
     @State
     private var loginError: FetchError?
@@ -82,7 +83,7 @@ struct AddAccountView: View {
                     } else {
                         Menu {
                             Button("settings.account.region.miyoushe") {
-                                region = .cn
+                                region = .china
                                 openWebView()
                             }
                             Button("settings.account.region.hoyolabInternational") {
@@ -316,9 +317,9 @@ struct AddAccountView: View {
     private func openWebView() {
         isWebShown.toggle()
         Task {
-            if region == .cn {
+            if region == .china {
                 do {
-                    unsavedDeviceFingerPrint = try await MihoyoAPI.getDeviceFingerPrint(region: .cn)
+                    unsavedDeviceFingerPrint = try await MihoyoAPI.getDeviceFingerPrint(region: .china)
                 } catch {
                     print(error)
                 }

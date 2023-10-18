@@ -139,7 +139,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             completion: @escaping ([AccountOnlyEntry]) -> ()
         ) {
             switch config.server.region {
-            case .cn:
+            case .china:
                 if configuration.simplifiedMode?.boolValue ?? true {
                     getSimplifiedTimelineEntries(config: config) { entries in
                         completion(entries)

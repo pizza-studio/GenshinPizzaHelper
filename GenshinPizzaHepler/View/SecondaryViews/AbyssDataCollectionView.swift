@@ -8,6 +8,7 @@
 import Defaults
 import HBMihoyoAPI
 import HBPizzaHelperAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 

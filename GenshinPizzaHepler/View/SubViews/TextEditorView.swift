@@ -6,6 +6,7 @@
 //  封装了TextEditor和TextField的修改文本的页面
 
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - TextEditorView
@@ -36,7 +37,7 @@ struct TextEditorView: View {
                         )
                         Menu {
                             Button("settings.account.region.miyoushe") {
-                                getCookieRegion = .cn
+                                getCookieRegion = .china
                                 isWebShown.toggle()
                             }
                             Button("settings.account.region.hoyolabInternational") {
@@ -61,11 +62,11 @@ struct TextEditorView: View {
         .navigationBarTitle(title, displayMode: .inline)
         .sheet(item: $getCookieRegion) { region in
             switch region {
-            case .cn:
+            case .china:
                 GetCookieWebView(
                     isShown: $isWebShown,
                     cookie: $content,
-                    region: .cn
+                    region: .china
                 )
                 .onChange(of: isWebShown) { _ in
                     getCookieRegion = nil

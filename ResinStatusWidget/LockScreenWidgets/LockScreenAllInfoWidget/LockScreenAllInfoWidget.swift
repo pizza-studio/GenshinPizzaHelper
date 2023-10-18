@@ -93,7 +93,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         guard configuration.account != nil else {
             // 如果还未选择账号，默认获取第一个
             switch configs.first!.server.region {
-            case .cn:
+            case .china:
                 if configuration.simplifiedMode?.boolValue ?? true {
                     configs.first!.fetchSimplifiedResult { simplifiedResult in
                         let entry = AccountOnlyEntry(
@@ -178,7 +178,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
 
         // 正常情况
         switch config.server.region {
-        case .cn:
+        case .china:
             if configuration.simplifiedMode?.boolValue ?? true {
                 config.fetchSimplifiedResult { result in
                     let entry = AccountOnlyEntry(

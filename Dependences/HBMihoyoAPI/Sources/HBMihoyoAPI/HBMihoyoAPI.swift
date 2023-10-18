@@ -1,6 +1,7 @@
 import Defaults
 import DefaultsKeys
 import Foundation
+import HoYoKit
 
 @available(iOS 13, watchOS 8, *)
 public enum MihoyoAPI {
@@ -29,7 +30,7 @@ public enum MihoyoAPI {
         func get_ds_token(uid: String, server_id: String) -> String {
             let s: String
             switch region {
-            case .cn:
+            case .china:
                 s = "egBrFMO1BPBG0UX5XOuuwMRLZKwTVKRV"
             case .global:
                 s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
@@ -493,7 +494,7 @@ public enum MihoyoAPI {
         func get_ds_token(body: String) -> String {
             let s: String
             switch region {
-            case .cn:
+            case .china:
                 s = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
             case .global:
                 s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
@@ -518,7 +519,7 @@ public enum MihoyoAPI {
         let urlHost: String
         let body: RequestBody
         switch region {
-        case .cn:
+        case .china:
             urlHost = "https://api-takumi-record.mihoyo.com/"
             body = .init(role_id: uid, server: serverID, need_external: nil)
         case .global:
@@ -625,7 +626,7 @@ public enum MihoyoAPI {
         }
 
         switch region {
-        case .cn:
+        case .china:
             // 先随便发送一个请求
             MihoyoAPI.fetchInfos(
                 region: region,
@@ -699,7 +700,7 @@ public enum MihoyoAPI {
 
             var accounts: [FetchedAccount] = []
             let group = DispatchGroup()
-            let globalServers: [Server] = [.cht, .asia, .eu, .us]
+            let globalServers: [Server] = [.asia, .europe, .unitedStates, .hongKongMacauTaiwan]
             globalServers.forEach { server in
                 group.enter()
                 // 先随便发送一个请求
@@ -897,7 +898,7 @@ public enum MihoyoAPI {
         // 请求类别
         let urlStr: String
         switch region {
-        case .cn:
+        case .china:
             urlStr = "event/ys_ledger/monthInfo"
         case .global:
             urlStr = "event/ysledgeros/month_info"

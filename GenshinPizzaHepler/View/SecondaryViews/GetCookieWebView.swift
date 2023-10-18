@@ -7,6 +7,7 @@
 
 import AlertToast
 import HBMihoyoAPI
+import HoYoKit
 import SafariServices
 import SwiftUI
 import WebKit
@@ -29,7 +30,7 @@ struct GetCookieWebView: View {
 
     var url: String {
         switch region {
-        case .cn:
+        case .china:
             return "https://user.mihoyo.com/#/login/captcha"
         case .global:
             return "https://www.hoyolab.com/"
@@ -38,7 +39,7 @@ struct GetCookieWebView: View {
 
     var httpHeaderFields: [String: String] {
         switch region {
-        case .cn:
+        case .china:
             return [
                 "Host": "user.mihoyo.com",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -74,7 +75,7 @@ struct GetCookieWebView: View {
                         cookie = ""
 
                         switch region {
-                        case .cn:
+                        case .china:
                             DispatchQueue.main.async {
                                 dataStore.httpCookieStore
                                     .getAllCookies { cookies in
@@ -266,7 +267,7 @@ struct GetLedgerCookieWebView<V>: View {
 
     var url: String {
         switch region {
-        case .cn:
+        case .china:
             return "https://m.miyoushe.com/ys/#/home/0"
         case .global:
             return "https://m.hoyolab.com/"
@@ -275,7 +276,7 @@ struct GetLedgerCookieWebView<V>: View {
 
     var httpHeaderFields: [String: String] {
         switch region {
-        case .cn:
+        case .china:
             return [
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
                 "Accept-Language": "zh-CN,zh-Hans;q=0.9",
@@ -306,7 +307,7 @@ struct GetLedgerCookieWebView<V>: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("完成") {
                         switch region {
-                        case .cn:
+                        case .china:
                             DispatchQueue.main.async {
                                 var cookieDict: [String: String] = .init()
                                 cookie.components(separatedBy: "; ")

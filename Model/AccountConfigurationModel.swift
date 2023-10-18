@@ -8,6 +8,7 @@
 import CoreData
 import Foundation
 import HBMihoyoAPI
+import HoYoKit
 import Intents
 
 class AccountConfigurationModel {

@@ -7,6 +7,7 @@
 
 import Foundation
 import HBMihoyoAPI
+import HoYoKit
 
 extension API {
     enum PSAServer {

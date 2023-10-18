@@ -6,6 +6,7 @@
 //  添加账号页面的详细信息
 
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 struct AddAccountDetailView: View {

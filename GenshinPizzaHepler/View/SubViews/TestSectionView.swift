@@ -6,6 +6,7 @@
 //  测试连接部分的View
 
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 import WebKit
@@ -96,7 +97,7 @@ struct TestSectionView: View {
             }
 
             if connectStatus == .success {
-                if !cookie.contains("stoken"), server.region == .cn {
+                if !cookie.contains("stoken"), server.region == .china {
                     Label {
                         Text("本账号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。")
                     } icon: {

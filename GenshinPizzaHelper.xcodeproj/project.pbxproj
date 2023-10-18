@@ -638,6 +638,20 @@
 		EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
 		EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
 		EAA2D4122931C36F00BC94A8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAA2D4112931C36F00BC94A8 /* Settings.bundle */; };
+		EAA969F32ADFA80C00C0852E /* AccountConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */; };
+		EAA969F42ADFA80C00C0852E /* AccountConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */; };
+		EAA969F52ADFA80C00C0852E /* AccountConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */; };
+		EAA969F62ADFA80C00C0852E /* AccountConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */; };
+		EAA969F72ADFA80C00C0852E /* AccountConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */; };
+		EAA969F82ADFA80C00C0852E /* AccountConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */; };
+		EAA969F92ADFA80C00C0852E /* AccountConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */; };
+		EAA969FB2ADFA99C00C0852E /* HoYoKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAA969FA2ADFA99C00C0852E /* HoYoKit */; };
+		EAA969FD2ADFA9A100C0852E /* HoYoKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAA969FC2ADFA9A100C0852E /* HoYoKit */; };
+		EAA969FF2ADFA9A500C0852E /* HoYoKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAA969FE2ADFA9A500C0852E /* HoYoKit */; };
+		EAA96A012ADFA9A900C0852E /* HoYoKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAA96A002ADFA9A900C0852E /* HoYoKit */; };
+		EAA96A032ADFA9AD00C0852E /* HoYoKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAA96A022ADFA9AD00C0852E /* HoYoKit */; };
+		EAA96A052ADFA9B200C0852E /* HoYoKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAA96A042ADFA9B200C0852E /* HoYoKit */; };
+		EAA96A072ADFA9B500C0852E /* HoYoKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAA96A062ADFA9B500C0852E /* HoYoKit */; };
 		EAAD03E429D2FD22007D5C80 /* GachaFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */; };
 		EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E529D2FD88007D5C80 /* GachaItem.swift */; };
 		EAAECA152AD3ACFD003525E1 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = EAAECA142AD3ACFD003525E1 /* Defaults */; };
@@ -1140,6 +1154,7 @@
 		EAA08C6C29D7BEC000DAB5FA /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		EAA2CE3F292C909D00BF8DDE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAA2D4112931C36F00BC94A8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountConfiguration.swift; sourceTree = "<group>"; };
 		EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaFetchModel.swift; sourceTree = "<group>"; };
 		EAAD03E529D2FD88007D5C80 /* GachaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaItem.swift; sourceTree = "<group>"; };
 		EAAECA232AD3AE23003525E1 /* DefaultsKeys */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DefaultsKeys; path = Dependences/DefaultsKeys; sourceTree = "<group>"; };
@@ -1219,6 +1234,7 @@
 				5BD1C65C2A2A1FC90043C2B1 /* HBMihoyoAPI in Frameworks */,
 				5BD1C65D2A2A1FC90043C2B1 /* CloudKit.framework in Frameworks */,
 				5BD1C65E2A2A1FC90043C2B1 /* StoreKit.framework in Frameworks */,
+				EAA969FD2ADFA9A100C0852E /* HoYoKit in Frameworks */,
 				5BD1C65F2A2A1FC90043C2B1 /* AlertToast in Frameworks */,
 				5BD1C6602A2A1FC90043C2B1 /* HBPizzaHelperAPI in Frameworks */,
 				5BD1C6612A2A1FC90043C2B1 /* SwiftPieChart in Frameworks */,
@@ -1235,6 +1251,7 @@
 				5B8C1B372AD90850009F3B44 /* SFSafeSymbols in Frameworks */,
 				BF20733A29D1412B00AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */,
+				EAA96A052ADFA9B200C0852E /* HoYoKit in Frameworks */,
 				EAAECA1F2AD3AD16003525E1 /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1245,6 +1262,7 @@
 			files = (
 				EAC89A642AD3AF2600EC5141 /* DefaultsKeys in Frameworks */,
 				5B41C1832AD3011700CDF2C5 /* HBPizzaHelperAPI in Frameworks */,
+				EAA96A032ADFA9AD00C0852E /* HoYoKit in Frameworks */,
 				5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */,
 				5B8C1B392AD90855009F3B44 /* SFSafeSymbols in Frameworks */,
 				5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */,
@@ -1263,6 +1281,7 @@
 				BF15570F29CFE5E10056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAC89A622AD3AF2200EC5141 /* DefaultsKeys in Frameworks */,
 				BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */,
+				EAA96A012ADFA9A900C0852E /* HoYoKit in Frameworks */,
 				EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */,
 				EAAECA1B2AD3AD0D003525E1 /* Defaults in Frameworks */,
 			);
@@ -1275,6 +1294,7 @@
 				EAAECA192AD3AD09003525E1 /* Defaults in Frameworks */,
 				BF15570D29CFE5DD0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAC89A602AD3AF1E00EC5141 /* DefaultsKeys in Frameworks */,
+				EAA969FF2ADFA9A500C0852E /* HoYoKit in Frameworks */,
 				EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */,
 				EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */,
 				BF20733429D1411A00AD391F /* HBPizzaHelperAPI in Frameworks */,
@@ -1294,6 +1314,7 @@
 				BF15570B29CFE5CF0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
 				BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */,
+				EAA969FB2ADFA99C00C0852E /* HoYoKit in Frameworks */,
 				BF9D74EC29DB1604009A9918 /* AlertToast in Frameworks */,
 				BF20733229D1411500AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BFBDD66F28F3F3C90022B79D /* SwiftPieChart in Frameworks */,
@@ -1304,6 +1325,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA96A072ADFA9B500C0852E /* HoYoKit in Frameworks */,
 				EAAECA212AD3AD1A003525E1 /* Defaults in Frameworks */,
 				BF20733C29D1413100AD391F /* HBPizzaHelperAPI in Frameworks */,
 				EAC89A682AD3AF2C00EC5141 /* DefaultsKeys in Frameworks */,
@@ -1805,6 +1827,7 @@
 		EAAF330D28A27AEA0018EFAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */,
 				EAE846052A375F410065CF09 /* Verification */,
 				EA025C8029D280BB0075F780 /* GachaModel */,
 				EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */,
@@ -2056,6 +2079,7 @@
 				EAAECA162AD3AD05003525E1 /* Defaults */,
 				EAC89A5D2AD3AF1B00EC5141 /* DefaultsKeys */,
 				5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */,
+				EAA969FC2ADFA9A100C0852E /* HoYoKit */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */;
@@ -2080,6 +2104,7 @@
 				EAAECA1E2AD3AD16003525E1 /* Defaults */,
 				EAC89A652AD3AF2900EC5141 /* DefaultsKeys */,
 				5B8C1B362AD90850009F3B44 /* SFSafeSymbols */,
+				EAA96A042ADFA9B200C0852E /* HoYoKit */,
 			);
 			productName = WatchWidgetExtensionExtension;
 			productReference = BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */;
@@ -2108,6 +2133,7 @@
 				EAAECA1C2AD3AD12003525E1 /* Defaults */,
 				EAC89A632AD3AF2600EC5141 /* DefaultsKeys */,
 				5B8C1B382AD90855009F3B44 /* SFSafeSymbols */,
+				EAA96A022ADFA9AD00C0852E /* HoYoKit */,
 			);
 			productName = WatchHelper;
 			productReference = BFCC065628C9B6A0003E4A54 /* 原神披萨小助手.app */;
@@ -2131,6 +2157,7 @@
 				BF20733529D1412100AD391F /* HBPizzaHelperAPI */,
 				EAAECA1A2AD3AD0D003525E1 /* Defaults */,
 				EAC89A612AD3AF2200EC5141 /* DefaultsKeys */,
+				EAA96A002ADFA9A900C0852E /* HoYoKit */,
 			);
 			productName = AccountIntent;
 			productReference = EA099FF328A2B7220023B4AF /* AccountIntent.appex */;
@@ -2155,6 +2182,7 @@
 				EAAECA182AD3AD09003525E1 /* Defaults */,
 				EAC89A5F2AD3AF1E00EC5141 /* DefaultsKeys */,
 				5B8C1B342AD9083A009F3B44 /* SFSafeSymbols */,
+				EAA969FE2ADFA9A500C0852E /* HoYoKit */,
 			);
 			productName = ResinStatusWidgetExtension;
 			productReference = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */;
@@ -2188,6 +2216,7 @@
 				EAAECA142AD3ACFD003525E1 /* Defaults */,
 				EAC89A5B2AD3AF1600EC5141 /* DefaultsKeys */,
 				5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */,
+				EAA969FA2ADFA99C00C0852E /* HoYoKit */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -2211,6 +2240,7 @@
 				BF20733B29D1413100AD391F /* HBPizzaHelperAPI */,
 				EAAECA202AD3AD1A003525E1 /* Defaults */,
 				EAC89A672AD3AF2C00EC5141 /* DefaultsKeys */,
+				EAA96A062ADFA9B500C0852E /* HoYoKit */,
 			);
 			productName = WatchIntent;
 			productReference = EAE95CE128CE10A000D975CB /* WatchIntent.appex */;
@@ -2510,6 +2540,7 @@
 				5BD1C5DD2A2A1FC90043C2B1 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				5BD1C5DE2A2A1FC90043C2B1 /* WebViews.swift in Sources */,
 				5BD1C5DF2A2A1FC90043C2B1 /* TeamUtilizationData.swift in Sources */,
+				EAA969F42ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				5BD1C5E02A2A1FC90043C2B1 /* GameInfoBlockView.swift in Sources */,
 				5BD1C5E12A2A1FC90043C2B1 /* GachaFetch.swift in Sources */,
 				5BD1C5E22A2A1FC90043C2B1 /* AccountConfigurationModel.swift in Sources */,
@@ -2710,6 +2741,7 @@
 				EAD7F02428D017D20047A8F1 /* LockScreenLoopWidgetCircular.swift in Sources */,
 				EAE95D0E28CE11CB00D975CB /* NetworkReachability.swift in Sources */,
 				EAE95D0C28CE11C300D975CB /* IntentHandler.swift in Sources */,
+				EAA969F82ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EAD7F03128D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift in Sources */,
 				BF7500E328DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA7CD44628CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */,
@@ -2746,6 +2778,7 @@
 				5B5F82D12ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EA185F2B292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EA185F2F292F1AFC003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
+				EAA969F72ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */,
 				BFCC06B728CAF60B003E4A54 /* WatchAccountDetailView.swift in Sources */,
 				BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */,
@@ -2800,6 +2833,7 @@
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
 				EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */,
 				BFB101E928D6C755000DC631 /* ViewTools.swift in Sources */,
+				EAA969F62ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				5B5F82DC2ACC966F005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EA784CD62902518100918F64 /* FetchHomeModel.swift in Sources */,
@@ -2916,6 +2950,7 @@
 				EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				EAB11EA82932728700CD4ECA /* MaterialWidget.swift in Sources */,
 				5B43A15729D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
+				EAA969F52ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EAD7F02628D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
 				EA498C922927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */,
@@ -2979,6 +3014,7 @@
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
+				EAA969F32ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */,
 				EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EAB11E9E29325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
@@ -3137,6 +3173,7 @@
 				EAE95CF028CE112B00D975CB /* AccountIntents.intentdefinition in Sources */,
 				EA185F2D292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EAE95CF728CE11A100D975CB /* Account.swift in Sources */,
+				EAA969F92ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EA6B914D290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */,
@@ -4110,6 +4147,34 @@
 		BFBDD66E28F3F3C90022B79D /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftPieChart;
+		};
+		EAA969FA2ADFA99C00C0852E /* HoYoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HoYoKit;
+		};
+		EAA969FC2ADFA9A100C0852E /* HoYoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HoYoKit;
+		};
+		EAA969FE2ADFA9A500C0852E /* HoYoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HoYoKit;
+		};
+		EAA96A002ADFA9A900C0852E /* HoYoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HoYoKit;
+		};
+		EAA96A022ADFA9AD00C0852E /* HoYoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HoYoKit;
+		};
+		EAA96A042ADFA9B200C0852E /* HoYoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HoYoKit;
+		};
+		EAA96A062ADFA9B500C0852E /* HoYoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HoYoKit;
 		};
 		EAAECA142AD3ACFD003525E1 /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;

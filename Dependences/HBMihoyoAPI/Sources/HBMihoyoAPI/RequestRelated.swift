@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HoYoKit
 
 public typealias FetchResult = Result<UserData, FetchError>
 public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
@@ -289,7 +290,7 @@ public struct MultiToken: Codable {
 
 // MARK: - RequestAccountListResult
 
-public struct RequestAccountListResult: Codable {
+public struct RequestAccountListResult: Decodable {
     public let retcode: Int
     public let message: String
     public let data: AccountListData?
@@ -297,21 +298,6 @@ public struct RequestAccountListResult: Codable {
 
 // MARK: - AccountListData
 
-public struct AccountListData: Codable {
+public struct AccountListData: Decodable {
     public let list: [FetchedAccount]
-}
-
-// MARK: - FetchedAccount
-
-public struct FetchedAccount: Codable, Hashable, Identifiable {
-    public let region: String
-    public let gameBiz: String
-    public let nickname: String
-    public let level: Int
-    public let isOfficial: Bool
-    public let regionName: String
-    public let gameUid: String
-    public let isChosen: Bool
-
-    public var id: String { gameUid }
 }
