@@ -25,67 +25,61 @@ struct CurrentEventNavigator: View {
 
     var body: some View {
         if !eventContents.isEmpty {
-            NavigationLink {
-                AllEventsView(eventContents: $eventContents)
-            } label: {
-                VStack(spacing: 0) {
-                    HStack(spacing: 2) {
-                        Text("即将结束的活动")
-                            .foregroundColor(.primary)
-                        Spacer()
-                        Text("查看全部活动")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        Image(systemSymbol: .chevronForward)
-                            .padding(.leading, 5)
-                            .foregroundColor(.secondary)
-                    }
-                    .font(.caption)
-                    .padding(.top)
-                    .padding(.horizontal, 25)
-                    .padding(.bottom, 13)
-                    HStack(spacing: 3) {
-                        Rectangle()
-                            .foregroundColor(.secondary)
-                            .frame(width: 4, height: 60)
-                        VStack(spacing: 7) {
-                            if eventContents.filter({
+            VStack(spacing: 0) {
+                HStack(spacing: 2) {
+                    Text("即将结束的活动")
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text("查看全部活动")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Image(systemSymbol: .chevronForward)
+                        .padding(.leading, 5)
+                        .foregroundColor(.secondary)
+                }
+                .font(.caption)
+                .padding(.bottom, 13)
+                HStack(spacing: 3) {
+                    Rectangle()
+                        .foregroundColor(.secondary)
+                        .frame(width: 4, height: 60)
+                    VStack(spacing: 7) {
+                        if eventContents.filter({
+                            (getRemainDays($0.endAt)?.day ?? 0) >= 0
+                                && (getRemainDays($0.endAt)?.hour ?? 0) >= 0
+                                && (getRemainDays($0.endAt)?.minute ?? 0) >=
+                                0
+                        }).count <= 0 {
+                            HStack {
+                                Spacer()
+                                Text("gameEvents.noCurrentEventInfo")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Spacer()
+                            }
+                        } else {
+                            ForEach(eventContents.filter {
                                 (getRemainDays($0.endAt)?.day ?? 0) >= 0
-                                    && (getRemainDays($0.endAt)?.hour ?? 0) >= 0
-                                    && (getRemainDays($0.endAt)?.minute ?? 0) >=
+                                    && (
+                                        getRemainDays($0.endAt)?.hour ?? 0
+                                    ) >=
                                     0
-                            }).count <= 0 {
-                                HStack {
-                                    Spacer()
-                                    Text("gameEvents.noCurrentEventInfo")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
-                                }
-                            } else {
-                                ForEach(eventContents.filter {
-                                    (getRemainDays($0.endAt)?.day ?? 0) >= 0
-                                        && (
-                                            getRemainDays($0.endAt)?.hour ?? 0
-                                        ) >=
-                                        0
-                                        &&
-                                        (
-                                            getRemainDays($0.endAt)?
-                                                .minute ?? 0
-                                        ) >=
-                                        0
-                                }.prefix(3), id: \.id) { content in
-                                    eventItem(event: content)
-                                }
+                                    &&
+                                    (
+                                        getRemainDays($0.endAt)?
+                                            .minute ?? 0
+                                    ) >=
+                                    0
+                            }.prefix(3), id: \.id) { content in
+                                eventItem(event: content)
                             }
                         }
                     }
-                    .padding(.bottom)
-                    .padding(.horizontal, 27)
                 }
-                .blurMaterialBackground()
-                .padding(.horizontal)
+            }
+            .background {
+                NavigationLink("", destination: { AllEventsView(eventContents: $eventContents) })
+                    .opacity(0)
             }
         }
     }

@@ -10,7 +10,7 @@ import Foundation
 extension MiHoYoAPI {
     public static func ledgerData(month: Int, uid: String, server: Server, cookie: String) async throws -> LedgerData {
         let cookie = try await { () -> String in
-            if server.region == .china {
+            if server.region == .mainlandCN {
                 let cookieToken = try await cookieToken(cookie: cookie)
                 return "cookie_token=\(cookieToken.cookieToken); account_id=\(cookieToken.uid);"
             } else {
@@ -18,11 +18,11 @@ extension MiHoYoAPI {
             }
         }()
         let queryItems: [URLQueryItem] = switch server.region {
-        case .china:
+        case .mainlandCN:
             [
                 .init(name: "month", value: "\(month)"),
                 .init(name: "bind_uid", value: "\(uid)"),
-                .init(name: "bind_region", value: server.rawValue),
+                .init(name: "bind_region", value: server.id),
                 .init(
                     name: "bbs_presentation_style",
                     value: "fullscreen"
@@ -35,7 +35,7 @@ extension MiHoYoAPI {
         case .global:
             [
                 URLQueryItem(name: "month", value: String(month)),
-                URLQueryItem(name: "region", value: server.rawValue),
+                URLQueryItem(name: "region", value: server.id),
                 URLQueryItem(name: "uid", value: String(uid)),
                 URLQueryItem(name: "lang", value: Locale.miHoYoAPILanguage.rawValue),
             ]
@@ -43,7 +43,7 @@ extension MiHoYoAPI {
         let request = try await generateRequest(
             region: server.region,
             host: URLRequestHelperConfiguration.hk4eAPIURLHost(region: server.region),
-            path: server.region == .china ? "/event/ys_ledger/monthInfo" : "/event/ysledgeros/month_info",
+            path: server.region == .mainlandCN ? "/event/ys_ledger/monthInfo" : "/event/ysledgeros/month_info",
             queryItems: queryItems,
             cookie: cookie,
             additionalHeaders: nil

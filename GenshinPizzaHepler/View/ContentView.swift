@@ -72,7 +72,7 @@ struct ContentView: View {
                 .zIndex(-114_514)
 
             TabView(selection: index) {
-                HomeView(animation: animation)
+                NewHomeView()
                     .tag(0)
                     .environmentObject(viewModel)
                     .frame(maxWidth: 500)

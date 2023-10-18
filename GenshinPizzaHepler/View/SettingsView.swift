@@ -186,17 +186,9 @@ struct SettingViewIOS16: View {
                 }
                 #endif
             }
+            .listStyle(.insetGrouped)
             .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("nav.category.settings.name")
-            #if DEBUG
-                .toast(isPresenting: $isAlertToastShown) {
-                    AlertToast(
-                        displayMode: .hud,
-                        type: .complete(.green),
-                        title: "Complete"
-                    )
-                }
-            #endif
         } detail: {
             NavigationStack {
                 if let selectedView {
@@ -255,6 +247,15 @@ struct SettingViewIOS16: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
+        #if DEBUG
+            .toast(isPresenting: $isAlertToastShown) {
+                AlertToast(
+                    displayMode: .hud,
+                    type: .complete(.green),
+                    title: "Complete"
+                )
+            }
+        #endif
     }
 }
 
@@ -272,9 +273,18 @@ private struct SettingViewIOS15: View {
 
     var body: some View {
         NavigationView {
-            navList
+            navList.listStyle(.insetGrouped)
             DisplayOptionsView() // 预设内容页
         }
+        #if DEBUG
+        .toast(isPresenting: $isAlertToastShown) {
+                AlertToast(
+                    displayMode: .hud,
+                    type: .complete(.green),
+                    title: "Complete"
+                )
+            }
+        #endif
     }
 
     @ViewBuilder
@@ -420,15 +430,5 @@ private struct SettingViewIOS15: View {
         }
         .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("nav.category.settings.name")
-        DisplayOptionsView()
-        #if DEBUG
-            .toast(isPresenting: $isAlertToastShown) {
-                AlertToast(
-                    displayMode: .hud,
-                    type: .complete(.green),
-                    title: "Complete"
-                )
-            }
-        #endif
     }
 }

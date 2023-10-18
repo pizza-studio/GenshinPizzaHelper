@@ -57,46 +57,34 @@ struct InAppMaterialNavigator: View {
                             Text("今日材料")
                         }
                     }
-                    .padding(.leading, 25)
                     .font(.caption)
-                    .padding(.top)
-                    .padding(.bottom, -10)
                     Spacer()
                     if showMaterialDetail == false {
                         Text(getDate())
                             .font(.caption)
-                            .padding(.top)
-                            .padding(.bottom, -10)
                     } else {
-                        Button("收起") {
-                            simpleTaptic(type: .light)
-                            withAnimation(.interactiveSpring(
-                                response: 0.25,
-                                dampingFraction: 1.0,
-                                blendDuration: 0
-                            )) {
-                                showingWeekday = .today()
-                                showRelatedDetailOfMaterial = nil
-                                showMaterialDetail = false
+                        Button("收起") {}
+                            .onTapGesture {
+                                simpleTaptic(type: .light)
+                                withAnimation(.interactiveSpring(
+                                    response: 0.25,
+                                    dampingFraction: 1.0,
+                                    blendDuration: 0
+                                )) {
+                                    showingWeekday = .today()
+                                    showRelatedDetailOfMaterial = nil
+                                    showMaterialDetail = false
+                                }
                             }
-                        }
-                        .font(.caption)
-                        .padding(.top)
-                        .padding(.bottom, -10)
+                            .font(.caption)
                     }
                     Image(systemSymbol: .chevronForward)
                         .rotationEffect(
                             Angle(degrees: showMaterialDetail ? 90 : 0),
                             anchor: .center
                         )
-                        .foregroundColor(
-                            showMaterialDetail ? .accentColor :
-                                .secondary
-                        )
-                        .padding(.trailing, 25)
                         .font(.caption)
-                        .padding(.top)
-                        .padding(.bottom, -10)
+                        .foregroundColor(showMaterialDetail ? .accentColor : .primary)
                 } else {
                     Group {
                         if showMaterialDetail {
@@ -115,46 +103,38 @@ struct InAppMaterialNavigator: View {
                         }
                     }
                     .font(.caption)
-                    .padding(.vertical)
-                    .padding(.leading, 25)
                     Spacer()
                     Group {
                         Text("所有材料均可获取")
                     }
                     .multilineTextAlignment(.center)
                     .font(.caption)
-                    .padding()
                     Spacer()
                     if showMaterialDetail == false {
                         Text(getDate())
                             .font(.caption)
                             .padding(.vertical)
                     } else {
-                        Button("收起") {
-                            simpleTaptic(type: .light)
-                            withAnimation(.interactiveSpring(
-                                response: 0.25,
-                                dampingFraction: 1.0,
-                                blendDuration: 0
-                            )) {
-                                showingWeekday = .today()
-                                showRelatedDetailOfMaterial = nil
-                                showMaterialDetail = false
+                        Button("收起") {}
+                            .onTapGesture {
+                                simpleTaptic(type: .light)
+                                withAnimation(.interactiveSpring(
+                                    response: 0.25,
+                                    dampingFraction: 1.0,
+                                    blendDuration: 0
+                                )) {
+                                    showingWeekday = .today()
+                                    showRelatedDetailOfMaterial = nil
+                                    showMaterialDetail = false
+                                }
                             }
-                        }
-                        .font(.caption)
-                        .padding(.vertical)
+                            .font(.caption)
                     }
                     Image(systemSymbol: .chevronForward)
                         .rotationEffect(
                             Angle(degrees: showMaterialDetail ? 90 : 0),
                             anchor: .center
                         )
-                        .foregroundColor(
-                            showMaterialDetail ? .accentColor :
-                                .secondary
-                        )
-                        .padding(.trailing, 25)
                         .font(.caption)
                 }
             }
@@ -163,18 +143,12 @@ struct InAppMaterialNavigator: View {
             } else {
                 if showRelatedDetailOfMaterial == nil {
                     materialsDetail()
-                        .padding(
-                            showingWeekday != .sunday ? .vertical :
-                                .bottom
-                        )
                 } else {
                     materialRelatedItemView()
-                        .padding()
                 }
             }
         }
-        .blurMaterialBackground()
-        .padding(.horizontal)
+        .padding()
         .onTapGesture {
             if !showMaterialDetail {
                 simpleTaptic(type: .light)
@@ -206,6 +180,7 @@ struct InAppMaterialNavigator: View {
                 break
             }
         }
+        .listRowInsets(EdgeInsets())
     }
 
     @ViewBuilder
@@ -244,7 +219,6 @@ struct InAppMaterialNavigator: View {
                     }
                 }
             }
-            .padding(.vertical)
         } else {
             EmptyView()
         }

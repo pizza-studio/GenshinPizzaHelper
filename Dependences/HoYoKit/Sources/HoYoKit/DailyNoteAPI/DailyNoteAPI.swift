@@ -18,7 +18,7 @@ extension MiHoYoAPI {
         -> DailyNote {
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
-            .init(name: "server", value: server.rawValue),
+            .init(name: "server", value: server.id),
         ]
 
         let additionalHeaders: [String: String]? = {
@@ -58,7 +58,7 @@ extension MiHoYoAPI {
         }()
 
         let request = try await Self.generateRecordAPIRequest(
-            region: .china,
+            region: .mainlandCN,
             path: "/game_record/app/genshin/aapi/widget/v2",
             queryItems: [],
             cookie: cookie,

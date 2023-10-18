@@ -29,7 +29,7 @@ extension MiHoYoAPI {
         }()
 
         let encoder = JSONEncoder()
-        let body = try encoder.encode(RequestBody(role_id: uid, server: server.rawValue))
+        let body = try encoder.encode(RequestBody(role_id: uid, server: server.id))
 
         let request = try await Self.generateRecordAPIRequest(
             httpMethod: .post,

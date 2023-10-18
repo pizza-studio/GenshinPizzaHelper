@@ -69,6 +69,7 @@ struct GenshinPizzaHeplerApp: App {
                     SKPaymentQueue.default().add(storeManager)
                     storeManager.getProducts(productIDs: productIDs)
                 }
+                .environment(\.managedObjectContext, AccountConfigurationModel.shared.container.viewContext)
         }
         #endif
     }

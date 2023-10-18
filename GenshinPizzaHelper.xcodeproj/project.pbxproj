@@ -779,6 +779,13 @@
 		EAEC420028B0994C0056D182 /* 洞天宝钱.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F628B0994C0056D182 /* 洞天宝钱.png */; };
 		EAEC420128B0994C0056D182 /* 洞天宝钱.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F628B0994C0056D182 /* 洞天宝钱.png */; };
 		EAEC420228B0994C0056D182 /* 洞天宝钱.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F628B0994C0056D182 /* 洞天宝钱.png */; };
+		EAEE8ECD2AE08D9A00F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
+		EAEE8ECE2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
+		EAEE8ECF2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
+		EAEE8ED02AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
+		EAEE8ED12AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
+		EAEE8ED22AE08DA000F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
+		EAEE8ED32AE08DA100F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
 		EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
 		EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */; };
 		EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
@@ -1204,6 +1211,7 @@
 		EAEC41F428B0994C0056D182 /* 树脂.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "树脂.png"; sourceTree = "<group>"; };
 		EAEC41F528B0994C0056D182 /* 周本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周本.png"; sourceTree = "<group>"; };
 		EAEC41F628B0994C0056D182 /* 洞天宝钱.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "洞天宝钱.png"; sourceTree = "<group>"; };
+		EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyLocalizedError.swift; sourceTree = "<group>"; };
 		EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinInfoBar.swift; sourceTree = "<group>"; };
 		EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpeditionInfoBar.swift; sourceTree = "<group>"; };
 		EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskInfoBar.swift; sourceTree = "<group>"; };
@@ -1844,6 +1852,7 @@
 				EA406810292228A200F23479 /* WidgetData.swift */,
 				EA059CD6292347E800400DE3 /* MultiTokenResult.swift */,
 				BFF684082A3753C8005470EA /* Icon.swift */,
+				EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2586,6 +2595,7 @@
 				5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */,
 				5BD1C60B2A2A1FC90043C2B1 /* AccountBasicInfosView.swift in Sources */,
 				5B5F82CE2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
+				EAEE8ECE2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
 				5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */,
 				5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */,
 				5BD1C60E2A2A1FC90043C2B1 /* PropertyDictionary.swift in Sources */,
@@ -2716,6 +2726,7 @@
 				EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAB110EA28CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
 				EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
+				EAEE8ED22AE08DA000F406E4 /* AnyLocalizedError.swift in Sources */,
 				5B5F82D52ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */,
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
@@ -2796,6 +2807,7 @@
 				EABE606928D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */,
 				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
 				BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */,
+				EAEE8ED12AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */,
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
 				EAE8461A2A3773690065CF09 /* Verification.swift in Sources */,
@@ -2841,6 +2853,7 @@
 				5B5F82DA2ACC9638005983AC /* Enum_NameCard.swift in Sources */,
 				BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				5B2A9E4E2ACEA4B0005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
+				EAEE8ED02AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */,
 				EA09A01B28A2B8D30023B4AF /* Servers.swift in Sources */,
 				EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */,
 				EAB11EA029325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
@@ -2882,6 +2895,7 @@
 				5BA0D7AD2ACDD51300B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */,
 				EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
 				EA784CD12902517800918F64 /* AvatarHoldingData.swift in Sources */,
+				EAEE8ECF2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
 				EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */,
 				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
 				EA42251628E2B963006D4578 /* LockScreenWidgetProvider.swift in Sources */,
@@ -3060,6 +3074,7 @@
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */,
 				5B5F82CD2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
+				EAEE8ECD2AE08D9A00F406E4 /* AnyLocalizedError.swift in Sources */,
 				BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */,
 				EAD3247129DFE878002779F3 /* CollectionChunked.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
@@ -3163,6 +3178,7 @@
 				5B2A9E4D2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EA185F31292F1AFD003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */,
+				EAEE8ED32AE08DA100F406E4 /* AnyLocalizedError.swift in Sources */,
 				EA5B0B232AD11F1500FB3F32 /* TimeTools.swift in Sources */,
 				EAE95D0F28CE11D200D975CB /* md5.swift in Sources */,
 				EAE95CF428CE116F00D975CB /* StringExtensions.swift in Sources */,

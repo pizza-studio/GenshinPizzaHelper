@@ -19,7 +19,7 @@ extension MiHoYoAPI {
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
             .init(name: "schedule_type", value: round.rawValue),
-            .init(name: "server", value: server.rawValue),
+            .init(name: "server", value: server.id),
         ]
 
         let additionalHeaders: [String: String]? = {
