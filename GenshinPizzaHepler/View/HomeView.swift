@@ -26,7 +26,8 @@ struct HomeView: View {
 
     var sharedPadding: CGFloat = UIFont.systemFontSize / 2
 
-    var accounts: [Account] { viewModel.accounts }
+    @FetchRequest(sortDescriptors: [.init(keyPath: \AccountConfiguration.priority, ascending: false)]) var accounts: FetchedResults<AccountConfiguration>
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -419,7 +420,7 @@ private struct AccountInfoCards: View {
                     case .failure:
                         HStack {
                             NavigationLink {
-                                AccountDetailView(account: $account)
+                                AccountDetailView(account: )
                             } label: {
                                 ZStack {
                                     Image(

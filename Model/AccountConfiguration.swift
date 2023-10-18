@@ -35,16 +35,54 @@ extension AccountConfiguration {
 
     @NSManaged
     public var cookie: String?
+    var safeCookie: String {
+        get {
+            cookie ?? ""
+        } set {
+            cookie = newValue
+        }
+    }
+
     @NSManaged
     public var deviceFingerPrint: String?
+    var safeDeviceFingerPrint: String {
+        get {
+            deviceFingerPrint ?? ""
+        } set {
+            deviceFingerPrint = newValue
+        }
+    }
+
     @NSManaged
     public var name: String?
+    var safeName: String {
+        get {
+            name ?? ""
+        } set {
+            name = newValue
+        }
+    }
+
     @NSManaged
     public var serverRawValue: String?
     @NSManaged
     public var uid: String?
+    var safeUid: String {
+        get {
+            uid ?? ""
+        } set {
+            uid = newValue
+        }
+    }
     @NSManaged
     public var uuid: UUID?
+    var safeUuid: String {
+        get {
+            uuid ?? UUID()
+        } set {
+            uuid = newValue
+        }
+    }
     @NSManaged
     public var priority: Int
 }
