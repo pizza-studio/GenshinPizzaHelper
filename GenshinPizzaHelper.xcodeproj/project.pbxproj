@@ -168,7 +168,6 @@
 		5BD1C6132A2A1FC90043C2B1 /* CurrentEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */; };
 		5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */; };
 		5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
-		5BD1C6162A2A1FC90043C2B1 /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
 		5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
 		5BD1C6192A2A1FC90043C2B1 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
@@ -322,9 +321,6 @@
 		BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
 		BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
 		BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
-		BF7500D128DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
-		BF7500D228DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
-		BF7500D328DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */; };
 		BF7500D828DEA80700CDA64E /* EachCharacterDetailDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */; };
 		BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
@@ -958,7 +954,6 @@
 		BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
-		BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsModel.swift; sourceTree = "<group>"; };
 		BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachCharacterDetailDataView.swift; sourceTree = "<group>"; };
 		BF7500DE28DEC99400CDA64E /* NumberTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTools.swift; sourceTree = "<group>"; };
 		BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDictionary.swift; sourceTree = "<group>"; };
@@ -1698,7 +1693,6 @@
 		EA46D0C328EA75FE00DFE603 /* EnkaAPIModel */ = {
 			isa = PBXGroup;
 			children = (
-				BF7500D028DC41EB00CDA64E /* PlayerDetailsModel.swift */,
 				EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */,
 				5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */,
 			);
@@ -2564,7 +2558,6 @@
 				BFF684122A375487005470EA /* IconView.swift in Sources */,
 				5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */,
 				5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */,
-				5BD1C6162A2A1FC90043C2B1 /* PlayerDetailsModel.swift in Sources */,
 				5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */,
 				5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */,
 				5BD1C6192A2A1FC90043C2B1 /* HomeCoinInfoBar.swift in Sources */,
@@ -2813,7 +2806,6 @@
 				EA6B914A290EB3B800B5230B /* GlobalVar.swift in Sources */,
 				BF3F98C328EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */,
-				BF7500D328DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				BFBDD65028ED7B960022B79D /* Result.swift in Sources */,
 				BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
@@ -2919,7 +2911,6 @@
 				5BA0D7A52ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EAB11E9F29325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
-				BF7500D228DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
 				BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
@@ -3034,7 +3025,6 @@
 				BFF684112A375487005470EA /* IconView.swift in Sources */,
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
-				BF7500D128DC41EB00CDA64E /* PlayerDetailsModel.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,

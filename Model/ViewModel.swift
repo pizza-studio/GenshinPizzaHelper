@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/7/12.
 //  View中用于加载信息的工具类
 
+import Combine
 import CoreData
 import Defaults
 import DefaultsKeys
@@ -38,6 +39,10 @@ class ViewModel: NSObject, ObservableObject {
                 .persistentStoreCoordinator
         )
         #if !os(watchOS)
+        let enkaSputnikCancellable = enkaSputnik.objectWillChange.sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }
+        anyCancellables.append(enkaSputnikCancellable)
         enkaSputnik.attemptToFixLocalEnkaStorage()
         #endif
         #if canImport(ActivityKit)
@@ -52,9 +57,11 @@ class ViewModel: NSObject, ObservableObject {
 
     static let shared = ViewModel()
 
+    var anyCancellables: [AnyCancellable] = []
+
     #if !os(watchOS)
     @ObservedObject
-    var enkaSputnik = EnkaSputnik.shared
+    var enkaSputnik = Enka.Sputnik.shared
     #endif
 
     @Published
@@ -234,7 +241,7 @@ class ViewModel: NSObject, ObservableObject {
                     case let .success(model):
                         self.accounts[index]
                             .playerDetailResult = .success(.init(
-                                playerDetailFetchModel: model,
+                                PlayerDetailFetchModel: model,
                                 localizedDictionary: dataSet.charLoc,
                                 characterMap: dataSet.charMap
                             ))
@@ -251,24 +258,6 @@ class ViewModel: NSObject, ObservableObject {
                 }
         } else {
             enkaSputnik.refreshCharLocAndCharMapWithAsync { dataSet in
-                guard let dataSet = dataSet else {
-                    let err: PlayerDetail.PlayerDetailError = {
-                        if self.enkaSputnik.charMap == nil {
-                            return .failToGetCharacterDictionary
-                        }
-                        if self.enkaSputnik.charLoc == nil {
-                            return .failToGetLocalizedDictionary
-                        }
-                        return .failToGetCharacterData(message: "Null Error. ID: EA92F3EC")
-                    }()
-                    if self.accounts.indices.contains(index) {
-                        self.accounts[index]
-                            .playerDetailResult =
-                            .failure(err)
-                        self.accounts[index].fetchPlayerDetailComplete = true
-                    }
-                    return
-                }
                 self.accounts[index].config
                     .fetchPlayerDetail(
                         dateWhenNextRefreshable: try? self
@@ -279,7 +268,7 @@ class ViewModel: NSObject, ObservableObject {
                         case let .success(model):
                             self.accounts[index]
                                 .playerDetailResult = .success(.init(
-                                    playerDetailFetchModel: model,
+                                    PlayerDetailFetchModel: model,
                                     localizedDictionary: dataSet.charLoc,
                                     characterMap: dataSet.charMap
                                 ))
@@ -293,6 +282,16 @@ class ViewModel: NSObject, ObservableObject {
                         self.accounts[index]
                             .fetchPlayerDetailComplete = true
                     }
+            } onError: { rawError in
+                var err: PlayerDetail.PlayerDetailError {
+                    switch rawError {
+                    case .charLocInvalid: return .failToGetLocalizedDictionary
+                    case .charMapInvalid: return .failToGetCharacterDictionary
+                    }
+                }
+                guard self.accounts.indices.contains(index) else { return }
+                self.accounts[index].playerDetailResult = .failure(err)
+                self.accounts[index].fetchPlayerDetailComplete = true
             }
         }
     }

@@ -18,27 +18,27 @@ struct PlayerDetail {
     // MARK: - 初始化
 
     init(
-        playerDetailFetchModel: PlayerDetailFetchModel,
+        PlayerDetailFetchModel: Enka.PlayerDetailFetchModel,
         localizedDictionary: [String: String],
-        characterMap: [String: ENCharacterMap.Character]
+        characterMap: [String: Enka.CharacterMap.Character]
     ) {
         self.basicInfo = .init(
-            playerInfo: playerDetailFetchModel.playerInfo,
+            playerInfo: PlayerDetailFetchModel.playerInfo,
             characterMap: characterMap
         )
-        if let avatarInfoList = playerDetailFetchModel.avatarInfoList {
+        if let avatarInfoList = PlayerDetailFetchModel.avatarInfoList {
             self.avatars = avatarInfoList.compactMap { avatarInfo in
                 .init(
                     avatarInfo: avatarInfo,
                     localizedDictionary: localizedDictionary,
                     characterDictionary: characterMap,
-                    uid: playerDetailFetchModel.uid
+                    uid: PlayerDetailFetchModel.uid
                 )
             }
         } else { self.avatars = .init() }
         self.nextRefreshableDate = Calendar.current.date(
             byAdding: .second,
-            value: playerDetailFetchModel.ttl ?? 30,
+            value: PlayerDetailFetchModel.ttl ?? 30,
             to: Date()
         )!
     }
@@ -54,8 +54,8 @@ struct PlayerDetail {
         // MARK: Lifecycle
 
         init(
-            playerInfo: PlayerDetailFetchModel.PlayerInfo,
-            characterMap: [String: ENCharacterMap.Character]
+            playerInfo: Enka.PlayerDetailFetchModel.PlayerInfo,
+            characterMap: [String: Enka.CharacterMap.Character]
         ) {
             self.nickname = playerInfo.nickname
             self.level = playerInfo.level
@@ -132,9 +132,9 @@ struct PlayerDetail {
         // MARK: Lifecycle
 
         init?(
-            avatarInfo: PlayerDetailFetchModel.AvatarInfo,
+            avatarInfo: Enka.PlayerDetailFetchModel.AvatarInfo,
             localizedDictionary: [String: String],
-            characterDictionary: [String: ENCharacterMap.Character],
+            characterDictionary: [String: Enka.CharacterMap.Character],
             uid: String?
         ) {
             guard let character =
@@ -315,7 +315,7 @@ struct PlayerDetail {
             // MARK: Lifecycle
 
             init?(
-                weaponEquipment: PlayerDetailFetchModel.AvatarInfo.EquipList,
+                weaponEquipment: Enka.PlayerDetailFetchModel.AvatarInfo.EquipList,
                 localizedDictionary: [String: String]
             ) {
                 guard weaponEquipment.flat.itemType == "ITEM_WEAPON"
@@ -411,7 +411,7 @@ struct PlayerDetail {
             // MARK: Lifecycle
 
             init?(
-                artifactEquipment: PlayerDetailFetchModel.AvatarInfo.EquipList,
+                artifactEquipment: Enka.PlayerDetailFetchModel.AvatarInfo.EquipList,
                 localizedDictionary: [String: String],
                 score: Double?
             ) {
@@ -600,7 +600,7 @@ struct PlayerDetail {
         var artifactScoreRank: String?
 
         /// 角色属性
-        let fightPropMap: FightPropMap
+        let fightPropMap: Enka.FightPropMap
 
         /// 正脸图
         let iconString: String
@@ -614,7 +614,7 @@ struct PlayerDetail {
         let uid: String
 
         /// 原始 character 資料備份。
-        let character: ENCharacterMap.Character
+        let character: Enka.CharacterMap.Character
 
         /// 经过错字订正处理的角色姓名
         var nameCorrected: String {

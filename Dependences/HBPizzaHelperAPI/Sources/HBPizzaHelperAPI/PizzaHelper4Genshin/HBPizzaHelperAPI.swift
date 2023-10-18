@@ -44,9 +44,9 @@ public enum PizzaHelperAPI {
     /// - Parameters:
     ///     - completion: 数据
     public static func fetchENCharacterDetailData(
-        from serverType: EnkaJSONGitServerType? = nil,
+        from serverType: Enka.JSONGitServerType? = nil,
         completion: @escaping (
-            ENCharacterMap
+            Enka.CharacterMap
         ) -> (),
         onFailure: (() -> ())? = nil
     ) {
@@ -65,11 +65,11 @@ public enum PizzaHelperAPI {
             case nil: return .generalHost
             }
         }()
-        let urlStr = EnkaResourceType.characters.subURLComponents(serverType: serverType)
+        let urlStr = Enka.ResourceType.characters.subURLComponents(serverType: serverType)
         print("Fetching: \(urlPrefix + urlStr)")
 
         // 请求
-        HttpMethod<ENCharacterMap>
+        HttpMethod<Enka.CharacterMap>
             .homeRequest(
                 .get,
                 urlStr,
@@ -92,10 +92,10 @@ public enum PizzaHelperAPI {
     /// 从EnkaNetwork获取角色ID对应本地化信息
     /// - Parameters:
     ///     - completion: 数据
-    public static func fetchENCharacterLocData(
-        from serverType: EnkaJSONGitServerType? = nil,
+    public static func fetchCharacterLocData(
+        from serverType: Enka.JSONGitServerType? = nil,
         completion: @escaping (
-            ENCharacterLoc
+            Enka.CharacterLoc
         ) -> (),
         onFailure: (() -> ())? = nil
     ) {
@@ -114,11 +114,11 @@ public enum PizzaHelperAPI {
             case nil: return .generalHost
             }
         }()
-        let urlStr = EnkaResourceType.loc.subURLComponents(serverType: serverType)
+        let urlStr = Enka.ResourceType.loc.subURLComponents(serverType: serverType)
         print("Fetching: \(urlPrefix + urlStr)")
 
         // 请求
-        HttpMethod<ENCharacterLoc>
+        HttpMethod<Enka.CharacterLoc>
             .homeRequest(
                 .get,
                 urlStr,

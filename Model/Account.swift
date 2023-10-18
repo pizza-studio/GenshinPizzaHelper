@@ -8,6 +8,7 @@
 import Defaults
 import Foundation
 import HBMihoyoAPI
+import HBPizzaHelperAPI
 
 // MARK: - Account
 
@@ -133,7 +134,7 @@ extension AccountConfiguration {
     func fetchPlayerDetail(
         dateWhenNextRefreshable: Date?,
         _ completion: @escaping (Result<
-            PlayerDetailFetchModel,
+            Enka.PlayerDetailFetchModel,
             PlayerDetail.PlayerDetailError
         >) -> ()
     ) {

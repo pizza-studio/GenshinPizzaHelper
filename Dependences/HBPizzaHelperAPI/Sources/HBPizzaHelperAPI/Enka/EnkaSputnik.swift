@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  EnkaSputnik.swift
 //
 //
 //  Created by ShikiSuen on 2023/10/18.
@@ -8,50 +8,52 @@
 import Defaults
 import Foundation
 
-// MARK: - EnkaSputnik
+// MARK: - Enka Sputnik
 
 #if !os(watchOS)
-public class EnkaSputnik: ObservableObject {
-    // MARK: Lifecycle
+extension Enka {
+    public class Sputnik: ObservableObject {
+        // MARK: Lifecycle
 
-    private init() {}
+        private init() {}
 
-    // MARK: Public
+        // MARK: Public
 
-    public typealias CharLoc = [String: String]
-    public typealias CharMap = [String: ENCharacterMap.Character]
+        public typealias CharLoc = [String: String]
+        public typealias CharMap = [String: Enka.CharacterMap.Character]
 
-    public struct DataSet {
-        public let charLoc: CharLoc
-        public let charMap: CharMap
-    }
-
-    public static let shared = EnkaSputnik()
-
-    @Published
-    public var charLoc: CharLoc? = try? JSONDecoder().decode(ENCharacterLoc.self, from: Defaults[.enkaMapLoc])
-        .getLocalizedDictionary() {
-        didSet {
-            Defaults[.lastEnkaDataCheckDate] = .init()
+        public struct DataSet {
+            public let charLoc: CharLoc
+            public let charMap: CharMap
         }
-    }
 
-    @Published
-    public var charMap: CharMap? = try? JSONDecoder()
-        .decode(ENCharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails {
-        didSet {
-            Defaults[.lastEnkaDataCheckDate] = .init()
+        public static let shared = Enka.Sputnik()
+
+        @Published
+        public var charLoc: CharLoc? = try? JSONDecoder().decode(Enka.CharacterLoc.self, from: Defaults[.enkaMapLoc])
+            .getLocalizedDictionary() {
+            didSet {
+                Defaults[.lastEnkaDataCheckDate] = .init()
+            }
         }
+
+        @Published
+        public var charMap: CharMap? = try? JSONDecoder()
+            .decode(Enka.CharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails {
+            didSet {
+                Defaults[.lastEnkaDataCheckDate] = .init()
+            }
+        }
+
+        // MARK: Private
+
+        private let gcdGroup = DispatchGroup()
     }
-
-    // MARK: Private
-
-    private let gcdGroup = DispatchGroup()
 }
 
 // MARK: - Dynamic Variables
 
-extension EnkaSputnik {
+extension Enka.Sputnik {
     public var enkaDataWrecked: Bool {
         charLoc == nil || charMap == nil || (charLoc?.count ?? 0) * (charMap?.count ?? 0) == 0
     }
@@ -76,15 +78,15 @@ extension EnkaSputnik {
 
 // MARK: - Data Updaters
 
-extension EnkaSputnik {
+extension Enka.Sputnik {
     // 同步 Enka 资料，只是不用 Async。
     public func refreshCharLocAndCharMapSansAsync() {
         guard enkaDataNeedsUpdate else { return }
-        PizzaHelperAPI.fetchENCharacterLocData(from: .mainlandCN) {
+        PizzaHelperAPI.fetchCharacterLocData(from: .mainlandCN) {
             Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
             self.charLoc = $0.getLocalizedDictionary()
         } onFailure: {
-            PizzaHelperAPI.fetchENCharacterLocData(from: .global) {
+            PizzaHelperAPI.fetchCharacterLocData(from: .global) {
                 Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
                 self.charLoc = $0.getLocalizedDictionary()
             }
@@ -101,14 +103,17 @@ extension EnkaSputnik {
     }
 
     // 同步 Enka 资料，使用 GCD Async。
-    public func refreshCharLocAndCharMapWithAsync(onFinish: @escaping (DataSet?) -> ()) {
+    public func refreshCharLocAndCharMapWithAsync(
+        onFinish: @escaping (DataSet) -> (),
+        onError: @escaping (DataFetchError) -> ()
+    ) {
         gcdGroup.enter()
-        PizzaHelperAPI.fetchENCharacterLocData(from: .mainlandCN) {
+        PizzaHelperAPI.fetchCharacterLocData(from: .mainlandCN) {
             Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
             self.charLoc = $0.getLocalizedDictionary()
             self.gcdGroup.leave()
         } onFailure: {
-            PizzaHelperAPI.fetchENCharacterLocData(from: .global) {
+            PizzaHelperAPI.fetchCharacterLocData(from: .global) {
                 self.charLoc = $0.getLocalizedDictionary()
                 self.gcdGroup.leave()
             }
@@ -126,26 +131,47 @@ extension EnkaSputnik {
             }
         }
         gcdGroup.notify(queue: .main) {
-            onFinish(self.availableDataSet)
+            guard let dataSet = self.availableDataSet else {
+                if self.charMap?.isEmpty ?? true {
+                    onError(.charMapInvalid)
+                    return
+                }
+                if self.charLoc?.isEmpty ?? true {
+                    onError(.charLocInvalid)
+                    return
+                }
+                return
+            }
+            onFinish(dataSet)
         }
     }
 }
 
 // MARK: - Data Fixers
 
-extension EnkaSputnik {
+extension Enka.Sputnik {
     // 检查本地 Enka 暂存资料是否损毁。如有损毁，则用 Bundle 内建的 JSON 重建之。
     public func attemptToFixLocalEnkaStorage() {
         guard enkaDataWrecked else { return }
         Defaults.reset(.enkaMapLoc)
         Defaults.reset(.enkaMapCharacters)
         charLoc = try? JSONDecoder()
-            .decode(ENCharacterLoc.self, from: Defaults[.enkaMapLoc]).getLocalizedDictionary()
+            .decode(Enka.CharacterLoc.self, from: Defaults[.enkaMapLoc]).getLocalizedDictionary()
         charMap = try? JSONDecoder()
-            .decode(ENCharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails
+            .decode(Enka.CharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails
         guard enkaDataWrecked else { return }
         // 本地 JSON 资料恢复了也没用。一般情况下不该出现这种情况。
         refreshCharLocAndCharMapSansAsync()
     }
 }
+
+// MARK: - Fetch Errors
+
+extension Enka.Sputnik {
+    public enum DataFetchError: Error {
+        case charMapInvalid
+        case charLocInvalid
+    }
+}
+
 #endif

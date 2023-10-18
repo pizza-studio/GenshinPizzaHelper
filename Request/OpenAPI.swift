@@ -7,6 +7,7 @@
 
 import Foundation
 import HBMihoyoAPI
+import HBPizzaHelperAPI
 
 extension API {
     enum OpenAPIs {
@@ -55,7 +56,7 @@ extension API {
             _ uid: String,
             dateWhenNextRefreshable: Date?,
             completion: @escaping (
-                Result<PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>
+                Result<Enka.PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>
             ) -> ()
         ) {
             if let date = dateWhenNextRefreshable, date > Date() {
@@ -160,7 +161,7 @@ extension API {
             let url = URL(string: urlStr)!
 
             // 请求
-            HttpMethod<PlayerDetailFetchModel>
+            HttpMethod<Enka.PlayerDetailFetchModel>
                 .openRequest(
                     .get,
                     url

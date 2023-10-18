@@ -29,7 +29,7 @@ public enum DecoratedIconCutType: CGFloat {
     }
 }
 
-extension ENCharacterMap.Character {
+extension Enka.CharacterMap.Character {
     var elementColor: Color {
         guard let element = PlayerDetail.Avatar.AvatarElement(rawValue: Element) else {
             return .pink
@@ -63,7 +63,7 @@ extension PlayerDetail.Avatar.AvatarElement {
 
 // MARK: - Profile Picture JSON Data Interpreter
 
-extension PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
+extension Enka.PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
     public var assetFileName: String? {
         if let avatarId = avatarId {
             return CharacterAsset.match(id: avatarId).frontPhotoFileName
