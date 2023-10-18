@@ -6,8 +6,8 @@
 //  根View
 
 import Defaults
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit

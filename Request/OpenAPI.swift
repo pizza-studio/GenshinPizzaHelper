@@ -6,8 +6,8 @@
 //
 
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 
 extension API {
     enum OpenAPIs {

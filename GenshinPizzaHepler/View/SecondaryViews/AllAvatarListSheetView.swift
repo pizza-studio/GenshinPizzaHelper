@@ -5,8 +5,8 @@
 //  Created by 戴藏龙 on 2022/10/22.
 //
 
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 import SFSafeSymbols
 import SwiftUI
 

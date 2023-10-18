@@ -6,8 +6,8 @@
 //
 
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 
 #if !os(watchOS)
 typealias PlayerDetailsFetchResult = Result<

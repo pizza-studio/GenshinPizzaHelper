@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: Enka Character Icons
 
-import HBPizzaHelperAPI
+import GIPizzaKit
 
 // MARK: - DecoratedIconCutType
 

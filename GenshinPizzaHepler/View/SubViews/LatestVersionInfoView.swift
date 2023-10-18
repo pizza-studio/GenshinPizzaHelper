@@ -6,7 +6,7 @@
 //
 
 import Defaults
-import HBPizzaHelperAPI
+import GIPizzaKit
 import StoreKit
 import SwiftUI
 

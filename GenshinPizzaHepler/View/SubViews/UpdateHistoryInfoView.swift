@@ -5,7 +5,7 @@
 //  Created by Bill Haku on 2022/10/2.
 //
 
-import HBPizzaHelperAPI
+import GIPizzaKit
 import SwiftUI
 
 struct UpdateHistoryInfoView: View {

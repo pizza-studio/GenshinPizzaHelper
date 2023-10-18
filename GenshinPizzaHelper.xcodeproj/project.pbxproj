@@ -19,7 +19,7 @@
 		5B2A9E4E2ACEA4B0005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
 		5B2A9E4F2ACEB7D0005C32B6 /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
 		5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */; };
-		5B41C1832AD3011700CDF2C5 /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17F2AD3010600CDF2C5 /* HBPizzaHelperAPI */; };
+		5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17F2AD3010600CDF2C5 /* GIPizzaKit */; };
 		5B43A15629D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15729D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
@@ -239,7 +239,7 @@
 		5BD1C65D2A2A1FC90043C2B1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE326C528A79A0C0009908E /* CloudKit.framework */; };
 		5BD1C65E2A2A1FC90043C2B1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */; };
 		5BD1C65F2A2A1FC90043C2B1 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C22A2A1FC90043C2B1 /* AlertToast */; };
-		5BD1C6602A2A1FC90043C2B1 /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C12A2A1FC90043C2B1 /* HBPizzaHelperAPI */; };
+		5BD1C6602A2A1FC90043C2B1 /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C12A2A1FC90043C2B1 /* GIPizzaKit */; };
 		5BD1C6612A2A1FC90043C2B1 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */; };
 		5BD1C6632A2A1FC90043C2B1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
 		5BD1C6642A2A1FC90043C2B1 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
@@ -280,12 +280,12 @@
 		BF15571129CFE5E60056CFE6 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF15571029CFE5E60056CFE6 /* HBMihoyoAPI */; };
 		BF15571329CFE5ED0056CFE6 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF15571229CFE5ED0056CFE6 /* HBMihoyoAPI */; };
 		BF15571529CFE5F20056CFE6 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF15571429CFE5F20056CFE6 /* HBMihoyoAPI */; };
-		BF20733229D1411500AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733129D1411500AD391F /* HBPizzaHelperAPI */; };
-		BF20733429D1411A00AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733329D1411A00AD391F /* HBPizzaHelperAPI */; };
-		BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733529D1412100AD391F /* HBPizzaHelperAPI */; };
-		BF20733829D1412700AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733729D1412700AD391F /* HBPizzaHelperAPI */; };
-		BF20733A29D1412B00AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733929D1412B00AD391F /* HBPizzaHelperAPI */; };
-		BF20733C29D1413100AD391F /* HBPizzaHelperAPI in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733B29D1413100AD391F /* HBPizzaHelperAPI */; };
+		BF20733229D1411500AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733129D1411500AD391F /* GIPizzaKit */; };
+		BF20733429D1411A00AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733329D1411A00AD391F /* GIPizzaKit */; };
+		BF20733629D1412100AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733529D1412100AD391F /* GIPizzaKit */; };
+		BF20733829D1412700AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733729D1412700AD391F /* GIPizzaKit */; };
+		BF20733A29D1412B00AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733929D1412B00AD391F /* GIPizzaKit */; };
+		BF20733C29D1413100AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733B29D1413100AD391F /* GIPizzaKit */; };
 		BF3F98BF28E9190700D1B5CF /* UpdateHistoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */; };
 		BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		BF3F98C228EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
@@ -929,7 +929,7 @@
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
-		BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HBPizzaHelperAPI; path = Dependences/HBPizzaHelperAPI; sourceTree = "<group>"; };
+		BF20733029D13BCA00AD391F /* GIPizzaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GIPizzaKit; path = Dependences/GIPizzaKit; sourceTree = "<group>"; };
 		BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfoView.swift; sourceTree = "<group>"; };
 		BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDDictionaryDataModel.swift; sourceTree = "<group>"; };
 		BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDGenshinDictionaryView.swift; sourceTree = "<group>"; };
@@ -1214,7 +1214,7 @@
 				5BD1C65D2A2A1FC90043C2B1 /* CloudKit.framework in Frameworks */,
 				5BD1C65E2A2A1FC90043C2B1 /* StoreKit.framework in Frameworks */,
 				5BD1C65F2A2A1FC90043C2B1 /* AlertToast in Frameworks */,
-				5BD1C6602A2A1FC90043C2B1 /* HBPizzaHelperAPI in Frameworks */,
+				5BD1C6602A2A1FC90043C2B1 /* GIPizzaKit in Frameworks */,
 				5BD1C6612A2A1FC90043C2B1 /* SwiftPieChart in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1227,7 +1227,7 @@
 				BF15571329CFE5ED0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAC89A662AD3AF2900EC5141 /* DefaultsKeys in Frameworks */,
 				5B8C1B372AD90850009F3B44 /* SFSafeSymbols in Frameworks */,
-				BF20733A29D1412B00AD391F /* HBPizzaHelperAPI in Frameworks */,
+				BF20733A29D1412B00AD391F /* GIPizzaKit in Frameworks */,
 				BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */,
 				EAAECA1F2AD3AD16003525E1 /* Defaults in Frameworks */,
 			);
@@ -1242,7 +1242,7 @@
 				5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */,
 				5B8C1B392AD90855009F3B44 /* SFSafeSymbols in Frameworks */,
 				5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */,
-				BF20733829D1412700AD391F /* HBPizzaHelperAPI in Frameworks */,
+				BF20733829D1412700AD391F /* GIPizzaKit in Frameworks */,
 				BF15571129CFE5E60056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EACBDA5428C9DEF000CEE176 /* CloudKit.framework in Frameworks */,
 				EAAECA1D2AD3AD12003525E1 /* Defaults in Frameworks */,
@@ -1257,6 +1257,7 @@
 				BF15570F29CFE5E10056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAC89A622AD3AF2200EC5141 /* DefaultsKeys in Frameworks */,
 				BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */,
+				BF20733629D1412100AD391F /* GIPizzaKit in Frameworks */,
 				EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */,
 				EAAECA1B2AD3AD0D003525E1 /* Defaults in Frameworks */,
 			);
@@ -1271,7 +1272,7 @@
 				EAC89A602AD3AF1E00EC5141 /* DefaultsKeys in Frameworks */,
 				EA40C45328A7A16E00888828 /* CloudKit.framework in Frameworks */,
 				EA30F9A62886B49200AE7BEA /* SwiftUI.framework in Frameworks */,
-				BF20733429D1411A00AD391F /* HBPizzaHelperAPI in Frameworks */,
+				BF20733429D1411A00AD391F /* GIPizzaKit in Frameworks */,
 				5B8C1B352AD9083A009F3B44 /* SFSafeSymbols in Frameworks */,
 				EA30F9A42886B49200AE7BEA /* WidgetKit.framework in Frameworks */,
 			);
@@ -1289,7 +1290,7 @@
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
 				BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */,
 				BF9D74EC29DB1604009A9918 /* AlertToast in Frameworks */,
-				BF20733229D1411500AD391F /* HBPizzaHelperAPI in Frameworks */,
+				BF20733229D1411500AD391F /* GIPizzaKit in Frameworks */,
 				BFBDD66F28F3F3C90022B79D /* SwiftPieChart in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1299,7 +1300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAAECA212AD3AD1A003525E1 /* Defaults in Frameworks */,
-				BF20733C29D1413100AD391F /* HBPizzaHelperAPI in Frameworks */,
+				BF20733C29D1413100AD391F /* GIPizzaKit in Frameworks */,
 				EAC89A682AD3AF2C00EC5141 /* DefaultsKeys in Frameworks */,
 				BF15571529CFE5F20056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE95CE228CE10A100D975CB /* Intents.framework in Frameworks */,
@@ -1452,10 +1453,11 @@
 			isa = PBXGroup;
 			children = (
 				EAAECA232AD3AE23003525E1 /* DefaultsKeys */,
-				BF20733029D13BCA00AD391F /* HBPizzaHelperAPI */,
-				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
+				BF20733029D13BCA00AD391F /* GIPizzaKit */,
 				BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */,
+				EA7262C82ADE64DD0062414B /* HoYoKit */,
 				5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */,
+				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -2042,7 +2044,7 @@
 			packageProductDependencies = (
 				5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */,
 				5BD1C5C02A2A1FC90043C2B1 /* HBMihoyoAPI */,
-				5BD1C5C12A2A1FC90043C2B1 /* HBPizzaHelperAPI */,
+				5BD1C5C12A2A1FC90043C2B1 /* GIPizzaKit */,
 				5BD1C5C22A2A1FC90043C2B1 /* AlertToast */,
 				5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */,
 				EAAECA162AD3AD05003525E1 /* Defaults */,
@@ -2068,7 +2070,7 @@
 			name = WatchWidgetExtensionExtension;
 			packageProductDependencies = (
 				BF15571229CFE5ED0056CFE6 /* HBMihoyoAPI */,
-				BF20733929D1412B00AD391F /* HBPizzaHelperAPI */,
+				BF20733929D1412B00AD391F /* GIPizzaKit */,
 				EAAECA1E2AD3AD16003525E1 /* Defaults */,
 				EAC89A652AD3AF2900EC5141 /* DefaultsKeys */,
 				5B8C1B362AD90850009F3B44 /* SFSafeSymbols */,
@@ -2096,7 +2098,7 @@
 			name = WatchHelper;
 			packageProductDependencies = (
 				5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */,
-				5B41C17F2AD3010600CDF2C5 /* HBPizzaHelperAPI */,
+				5B41C17F2AD3010600CDF2C5 /* GIPizzaKit */,
 				EAAECA1C2AD3AD12003525E1 /* Defaults */,
 				EAC89A632AD3AF2600EC5141 /* DefaultsKeys */,
 				5B8C1B382AD90855009F3B44 /* SFSafeSymbols */,
@@ -2120,7 +2122,7 @@
 			name = AccountIntent;
 			packageProductDependencies = (
 				BF15570E29CFE5E10056CFE6 /* HBMihoyoAPI */,
-				BF20733529D1412100AD391F /* HBPizzaHelperAPI */,
+				BF20733529D1412100AD391F /* GIPizzaKit */,
 				EAAECA1A2AD3AD0D003525E1 /* Defaults */,
 				EAC89A612AD3AF2200EC5141 /* DefaultsKeys */,
 			);
@@ -2143,7 +2145,7 @@
 			name = ResinStatusWidgetExtension;
 			packageProductDependencies = (
 				BF15570C29CFE5DD0056CFE6 /* HBMihoyoAPI */,
-				BF20733329D1411A00AD391F /* HBPizzaHelperAPI */,
+				BF20733329D1411A00AD391F /* GIPizzaKit */,
 				EAAECA182AD3AD09003525E1 /* Defaults */,
 				EAC89A5F2AD3AF1E00EC5141 /* DefaultsKeys */,
 				5B8C1B342AD9083A009F3B44 /* SFSafeSymbols */,
@@ -2174,7 +2176,7 @@
 			packageProductDependencies = (
 				BFBDD66E28F3F3C90022B79D /* SwiftPieChart */,
 				BF15570A29CFE5CF0056CFE6 /* HBMihoyoAPI */,
-				BF20733129D1411500AD391F /* HBPizzaHelperAPI */,
+				BF20733129D1411500AD391F /* GIPizzaKit */,
 				BF9D74EB29DB1604009A9918 /* AlertToast */,
 				BF9D74EE29DBBA98009A9918 /* CoreXLSX */,
 				EAAECA142AD3ACFD003525E1 /* Defaults */,
@@ -2200,7 +2202,7 @@
 			name = WatchIntent;
 			packageProductDependencies = (
 				BF15571429CFE5F20056CFE6 /* HBMihoyoAPI */,
-				BF20733B29D1413100AD391F /* HBPizzaHelperAPI */,
+				BF20733B29D1413100AD391F /* GIPizzaKit */,
 				EAAECA202AD3AD1A003525E1 /* Defaults */,
 				EAC89A672AD3AF2C00EC5141 /* DefaultsKeys */,
 			);
@@ -3978,9 +3980,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = HBMihoyoAPI;
 		};
-		5B41C17F2AD3010600CDF2C5 /* HBPizzaHelperAPI */ = {
+		5B41C17F2AD3010600CDF2C5 /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HBPizzaHelperAPI;
+			productName = GIPizzaKit;
 		};
 		5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -4015,9 +4017,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = HBMihoyoAPI;
 		};
-		5BD1C5C12A2A1FC90043C2B1 /* HBPizzaHelperAPI */ = {
+		5BD1C5C12A2A1FC90043C2B1 /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HBPizzaHelperAPI;
+			productName = GIPizzaKit;
 		};
 		5BD1C5C22A2A1FC90043C2B1 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -4053,29 +4055,29 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = HBMihoyoAPI;
 		};
-		BF20733129D1411500AD391F /* HBPizzaHelperAPI */ = {
+		BF20733129D1411500AD391F /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HBPizzaHelperAPI;
+			productName = GIPizzaKit;
 		};
-		BF20733329D1411A00AD391F /* HBPizzaHelperAPI */ = {
+		BF20733329D1411A00AD391F /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HBPizzaHelperAPI;
+			productName = GIPizzaKit;
 		};
-		BF20733529D1412100AD391F /* HBPizzaHelperAPI */ = {
+		BF20733529D1412100AD391F /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HBPizzaHelperAPI;
+			productName = GIPizzaKit;
 		};
-		BF20733729D1412700AD391F /* HBPizzaHelperAPI */ = {
+		BF20733729D1412700AD391F /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HBPizzaHelperAPI;
+			productName = GIPizzaKit;
 		};
-		BF20733929D1412B00AD391F /* HBPizzaHelperAPI */ = {
+		BF20733929D1412B00AD391F /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HBPizzaHelperAPI;
+			productName = GIPizzaKit;
 		};
-		BF20733B29D1413100AD391F /* HBPizzaHelperAPI */ = {
+		BF20733B29D1413100AD391F /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HBPizzaHelperAPI;
+			productName = GIPizzaKit;
 		};
 		BF9D74EB29DB1604009A9918 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;

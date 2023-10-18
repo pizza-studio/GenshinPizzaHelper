@@ -7,8 +7,8 @@
 
 import Defaults
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 import SwiftUI
 
 // MARK: - CharacterAsset

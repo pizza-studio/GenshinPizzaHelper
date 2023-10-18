@@ -5,8 +5,8 @@
 //  Created by 戴藏龙 on 2022/10/7.
 //
 
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 import SwiftUI
 
 // MARK: - AbyssDetailDataDisplayView

@@ -10,6 +10,7 @@ import CoreData
 import Defaults
 import DefaultsKeys
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
 import HBPizzaHelperAPI
 import StoreKit

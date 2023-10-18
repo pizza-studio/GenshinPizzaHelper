@@ -22,7 +22,7 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/sindresorhus/Defaults", from: "7.3.1"),
         .package(url: "./Dependences/HBMihoyoAPI", from: "1.0.0"),
-        .package(url: "./Dependences/HBPizzaHelperAPI", from: "1.0.0"),
+        .package(url: "./Dependences/GIPizzaKit", from: "1.0.0"),
         .package(url: "./Dependences/DefaultsKeys", from: "1.0.0"),
         .package(url: "./Dependences/SwiftPieChart-1.0.61", from: "1.0.61"),
     ],
@@ -36,7 +36,7 @@ let package = Package(
                 .product(name: "DefaultsKeys", package: "DefaultsKeys"),
                 .product(name: "SwiftPieChart", package: "SwiftPieChart-1.0.61"),
                 .product(name: "HBMihoyoAPI", package: "HBMihoyoAPI"),
-                .product(name: "HBPizzaHelperAPI", package: "HBPizzaHelperAPI"),
+                .product(name: "GIPizzaKit", package: "GIPizzaKit"),
             ]
         ),
         .testTarget(
