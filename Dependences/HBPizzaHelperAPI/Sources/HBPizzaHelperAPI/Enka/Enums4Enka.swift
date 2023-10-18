@@ -2,7 +2,7 @@
 //  File.swift
 //
 //
-//  Created by ShikiSuen on 2023/10/8.
+//  Created by ShikiSuen on 2023/10/18.
 //
 
 import Defaults
@@ -36,20 +36,6 @@ public enum EnkaResourceType: String {
     public func subURLComponents(serverType: EnkaJSONGitServerType? = nil) -> String {
         serverType != nil ? "store/\(json)" : "api/players/\(json)"
     }
-}
-
-// MARK: - HostType
-
-public enum HostType: String {
-    case generalHost = "https://gi.pizzastudio.org/"
-    case artifactRatingHost = "https://artifact-rating.pizzastudio.org/"
-    case abyssHost = "http://81.70.76.222/"
-    case enkaJSONGitCN = "https://gitcode.net/SHIKISUEN/Enka-API-docs/-/raw/master/"
-    case enkaJSONGitGlobal = "https://raw.githubusercontent.com/EnkaNetwork/API-docs/master/"
-
-    // MARK: Public
-
-    public var hostBase: String { rawValue }
 }
 
 // MARK: - EnkaJSONGitServerType

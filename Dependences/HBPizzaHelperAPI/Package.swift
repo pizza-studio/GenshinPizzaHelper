@@ -33,8 +33,8 @@ let package = Package(
                 .product(name: "HBMihoyoAPI", package: "HBMihoyoAPI"),
             ],
             resources: [
-                .process("Assets/characters.json"),
-                .process("Assets/loc.json"),
+                .process("Enka/Assets/characters.json"),
+                .process("Enka/Assets/loc.json"),
             ]
         ),
         .testTarget(
