@@ -74,15 +74,17 @@ extension AccountConfiguration {
             uid = newValue
         }
     }
+
     @NSManaged
     public var uuid: UUID?
-    var safeUuid: String {
+    var safeUuid: UUID {
         get {
             uuid ?? UUID()
         } set {
             uuid = newValue
         }
     }
+
     @NSManaged
     public var priority: Int
 }
