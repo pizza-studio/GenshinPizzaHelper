@@ -184,9 +184,11 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     func refreshData() {
+        let accountsCount = accounts.count
         accounts.indices.forEach { index in
             accounts[index].fetchComplete = false
             accounts[index].config.fetchResult { result in
+                guard accountsCount == self.accounts.count else { return }
                 self.accounts[index].result = result
                 self.accounts[index].background = .randomNamecardBackground
                 self.accounts[index].fetchComplete = true
@@ -196,23 +198,28 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     func refreshAbyssAndBasicInfo() {
+        let accountsCount = accounts.count
         accounts.indices.forEach { index in
             #if !os(watchOS)
             let group = DispatchGroup()
             group.enter()
             accounts[index].config.fetchBasicInfo { basicInfo in
+                guard accountsCount == self.accounts.count else { return }
                 self.accounts[index].basicInfo = basicInfo
                 self.accounts[index].uploadHoldingData()
                 group.leave()
             }
             group.enter()
             self.accounts[index].config.fetchAbyssInfo { data in
+                guard accountsCount == self.accounts.count else { return }
                 self.accounts[index].spiralAbyssDetail = data
                 group.leave()
             }
             group.notify(queue: .main) {
+                guard accountsCount == self.accounts.count else { return }
                 self.accounts[index].uploadAbyssData()
                 Task {
+                    guard accountsCount == self.accounts.count else { return }
                     await self.accounts[index].uploadHuTaoDBAbyssData()
                 }
             }
@@ -223,6 +230,7 @@ class ViewModel: NSObject, ObservableObject {
     #if !os(watchOS)
     func refreshPlayerDetail(for account: Account) {
         guard let index = accounts.firstIndex(of: account) else { return }
+        let accountsCount = accounts.count
         // 如果之前返回了错误，则删除fail的result
         if let result = accounts[index].playerDetailResult,
            (try? result.get()) == nil {
@@ -244,7 +252,9 @@ class ViewModel: NSObject, ObservableObject {
                                 characterMap: charMap
                             ))
                     case let .failure(error):
-                        if self.accounts[index].playerDetailResult == nil {
+                        // 有崩溃报告指出此处的 self.accounts 不包含该 index 的内容，故增设限制条件。
+                        // 如果在上文执行过程当中 accounts 的内容数量出现变动，则不执行这段内容。
+                        if self.accounts.count == accountsCount, self.accounts[index].playerDetailResult == nil {
                             self.accounts[index]
                                 .playerDetailResult = .failure(error)
                         }
