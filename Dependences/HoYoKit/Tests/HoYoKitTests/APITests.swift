@@ -2,7 +2,7 @@ import Foundation
 @testable import HoYoKit
 import XCTest
 
-// MARK: - HBMihoyoAPITests
+// MARK: - APITests
 
 final class APITests: XCTestCase {
     func testDailyNoteAPIChina() async throws {
@@ -11,7 +11,7 @@ final class APITests: XCTestCase {
                 server: TestData.China.server,
                 uid: TestData.China.uid,
                 cookie: TestData.China.testCookie,
-                deviceFingerPrint: nil
+                deviceFingerPrint: TestData.China.deviceFingerPrint
             )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
@@ -61,7 +61,12 @@ final class APITests: XCTestCase {
 
     func testBasicInfoAPIChina() async throws {
         do {
-            _ = try await MiHoYoAPI.basicInfo(server: TestData.China.server, uid: TestData.China.uid, cookie: TestData.China.testCookie, deviceFingerPrint: nil)
+            _ = try await MiHoYoAPI.basicInfo(
+                server: TestData.China.server,
+                uid: TestData.China.uid,
+                cookie: TestData.China.testCookie,
+                deviceFingerPrint: TestData.China.deviceFingerPrint
+            )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
         } catch {
@@ -70,12 +75,23 @@ final class APITests: XCTestCase {
     }
 
     func testBasicInfoAPIGlobal() async throws {
-        _ = try await MiHoYoAPI.basicInfo(server: TestData.Global.server, uid: TestData.Global.uid, cookie: TestData.Global.testCookie, deviceFingerPrint: nil)
+        _ = try await MiHoYoAPI.basicInfo(
+            server: TestData.Global.server,
+            uid: TestData.Global.uid,
+            cookie: TestData.Global.testCookie,
+            deviceFingerPrint: nil
+        )
     }
 
     func testAbyssAPIChina() async throws {
         do {
-            _ = try await MiHoYoAPI.abyssData(round: .this, server: TestData.China.server, uid: TestData.China.uid, cookie: TestData.China.testCookie, deviceFingerPrint: nil)
+            _ = try await MiHoYoAPI.abyssData(
+                round: .this,
+                server: TestData.China.server,
+                uid: TestData.China.uid,
+                cookie: TestData.China.testCookie,
+                deviceFingerPrint: TestData.China.deviceFingerPrint
+            )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
         } catch {
@@ -84,12 +100,23 @@ final class APITests: XCTestCase {
     }
 
     func testAbyssAPIGlobal() async throws {
-        _ = try await MiHoYoAPI.abyssData(round: .this, server: TestData.Global.server, uid: TestData.Global.uid, cookie: TestData.Global.testCookie, deviceFingerPrint: nil)
+        _ = try await MiHoYoAPI.abyssData(
+            round: .this,
+            server: TestData.Global.server,
+            uid: TestData.Global.uid,
+            cookie: TestData.Global.testCookie,
+            deviceFingerPrint: nil
+        )
     }
 
     func testAllAvatarAPIChina() async throws {
         do {
-            _ = try await MiHoYoAPI.allAvatarDetail(server: TestData.China.server, uid: TestData.China.uid, cookie: TestData.China.testCookie, deviceFingerPrint: nil)
+            _ = try await MiHoYoAPI.allAvatarDetail(
+                server: TestData.China.server,
+                uid: TestData.China.uid,
+                cookie: TestData.China.testCookie,
+                deviceFingerPrint: TestData.China.deviceFingerPrint
+            )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
         } catch {
@@ -98,7 +125,12 @@ final class APITests: XCTestCase {
     }
 
     func testAllAvatarAPIGlobal() async throws {
-        _ = try await MiHoYoAPI.allAvatarDetail(server: TestData.Global.server, uid: TestData.Global.uid, cookie: TestData.Global.testCookie, deviceFingerPrint: nil)
+        _ = try await MiHoYoAPI.allAvatarDetail(
+            server: TestData.Global.server,
+            uid: TestData.Global.uid,
+            cookie: TestData.Global.testCookie,
+            deviceFingerPrint: nil
+        )
     }
 }
 
@@ -113,6 +145,8 @@ enum TestData {
         static let testCookie = """
         stuid=114514004; stoken=SANITIZED ltuid=114514004; ltoken=SANITIZED
         """
+
+        static let deviceFingerPrint = "1145141919810"
     }
 
     enum Global {

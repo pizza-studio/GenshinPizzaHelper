@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 戴藏龙 on 2023/10/17.
 //
@@ -8,7 +8,11 @@
 import Foundation
 
 public struct BasicInfos: Codable, DecodableFromMiHoYoAPIJSONResult {
+    // MARK: Public
+
     public struct Stats: Codable {
+        // MARK: Public
+
         /// 解锁角色数
         public var avatarNumber: Int
         /// 精致宝箱数
@@ -42,6 +46,8 @@ public struct BasicInfos: Codable, DecodableFromMiHoYoAPIJSONResult {
         /// 奇馈宝箱数
         public var magicChestNumber: Int
 
+        // MARK: Internal
+
         enum CodingKeys: String, CodingKey {
             case avatarNumber = "avatar_number"
             case exquisiteChestNumber = "exquisite_chest_number"
@@ -63,6 +69,8 @@ public struct BasicInfos: Codable, DecodableFromMiHoYoAPIJSONResult {
     }
 
     public struct WorldExploration: Codable {
+        // MARK: Public
+
         public struct Offering: Codable {
             public var name: String
             public var level: Int
@@ -83,24 +91,28 @@ public struct BasicInfos: Codable, DecodableFromMiHoYoAPIJSONResult {
         public var name: String
         public var strategyUrl: String
 
+        // MARK: Internal
+
         enum CodingKeys: String, CodingKey {
-            case id = "id"
+            case id
             case backgroundImage = "background_image"
             case mapUrl = "map_url"
             case parentId = "parent_id"
-            case type = "type"
-            case offerings = "offerings"
-            case level = "level"
+            case type
+            case offerings
+            case level
             case explorationPercentage = "exploration_percentage"
-            case icon = "icon"
+            case icon
             case innerIcon = "inner_icon"
-            case cover = "cover"
-            case name = "name"
+            case cover
+            case name
             case strategyUrl = "strategy_url"
         }
     }
 
     public struct Avatar: Codable, Identifiable {
+        // MARK: Public
+
         public var fetter: Int
         public var rarity: Int
         public var cardImage: String
@@ -111,6 +123,8 @@ public struct BasicInfos: Codable, DecodableFromMiHoYoAPIJSONResult {
         public var level: Int
         public var name: String
         public var activedConstellationNum: Int
+
+        // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
             case fetter
@@ -129,7 +143,9 @@ public struct BasicInfos: Codable, DecodableFromMiHoYoAPIJSONResult {
     public var stats: Stats
     public var worldExplorations: [WorldExploration]
     public var avatars: [Avatar]
-    
+
+    // MARK: Internal
+
     enum CodingKeys: String, CodingKey {
         case stats
         case worldExplorations = "world_explorations"

@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 戴藏龙 on 2023/10/17.
 //
@@ -14,7 +14,7 @@ extension MiHoYoAPI {
         cookie: String,
         deviceFingerPrint: String?
     ) async throws
-    -> AllAvatarDetailModel {
+        -> AllAvatarDetailModel {
         struct RequestBody: Codable {
             let role_id: String
             let server: String
@@ -42,7 +42,7 @@ extension MiHoYoAPI {
         )
 
         let (data, _) = try await URLSession.shared.data(for: request)
-        
+
         return try await .decodeFromMiHoYoAPIJSONResult(data: data, with: request)
     }
 }

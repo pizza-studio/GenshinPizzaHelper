@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 戴藏龙 on 2023/10/17.
 //
@@ -9,6 +9,8 @@ import Foundation
 
 public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult {
     public struct Avatar: Codable, Equatable {
+        // MARK: Public
+
         public struct Costume: Codable {
             public var id: Int
             public var name: String
@@ -16,10 +18,16 @@ public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult {
         }
 
         public struct Reliquary: Codable {
+            // MARK: Public
+
             public struct Set: Codable {
                 public struct Affix: Codable {
+                    // MARK: Public
+
                     public var activationNumber: Int
                     public var effect: String
+
+                    // MARK: Internal
 
                     enum CodingKeys: String, CodingKey {
                         case activationNumber = "activation_number"
@@ -41,6 +49,8 @@ public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult {
             public var name: String
             public var icon: String
 
+            // MARK: Internal
+
             enum CodingKeys: String, CodingKey {
                 case pos
                 case rarity
@@ -54,6 +64,8 @@ public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult {
         }
 
         public struct Weapon: Codable {
+            // MARK: Public
+
             public var rarity: Int
             public var icon: String
             public var id: Int
@@ -63,6 +75,8 @@ public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult {
             public var type: Int
             public var promoteLevel: Int
             public var desc: String
+
+            // MARK: Internal
 
             enum CodingKeys: String, CodingKey {
                 case rarity
@@ -78,12 +92,16 @@ public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult {
         }
 
         public struct Constellation: Codable {
+            // MARK: Public
+
             public var effect: String
             public var id: Int
             public var icon: String
             public var name: String
             public var pos: Int
             public var isActived: Bool
+
+            // MARK: Internal
 
             enum CodingKeys: String, CodingKey {
                 case effect
@@ -124,20 +142,22 @@ public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult {
             lhs.id == rhs.id
         }
 
+        // MARK: Internal
+
         enum CodingKeys: String, CodingKey {
-            case id = "id"
-            case element = "element"
-            case costumes = "costumes"
-            case reliquaries = "reliquaries"
-            case level = "level"
-            case image = "image"
-            case icon = "icon"
-            case weapon = "weapon"
-            case fetter = "fetter"
-            case constellations = "constellations"
+            case id
+            case element
+            case costumes
+            case reliquaries
+            case level
+            case image
+            case icon
+            case weapon
+            case fetter
+            case constellations
             case activedConstellationNum = "actived_constellation_num"
-            case name = "name"
-            case rarity = "rarity"
+            case name
+            case rarity
         }
     }
 

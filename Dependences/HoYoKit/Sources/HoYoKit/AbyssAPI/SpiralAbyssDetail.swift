@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 戴藏龙 on 2023/10/17.
 //
@@ -8,7 +8,11 @@
 import Foundation
 
 public struct SpiralAbyssDetail: Codable, DecodableFromMiHoYoAPIJSONResult {
+    // MARK: Public
+
     public struct CharacterRankModel: Codable {
+        // MARK: Public
+
         /// 角色ID
         public var avatarId: Int
         /// 排名对应的值
@@ -17,6 +21,8 @@ public struct SpiralAbyssDetail: Codable, DecodableFromMiHoYoAPIJSONResult {
         public var avatarIcon: String
         /// 角色星级（4/5）
         public var rarity: Int
+
+        // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
             case avatarId = "avatar_id"
@@ -27,7 +33,11 @@ public struct SpiralAbyssDetail: Codable, DecodableFromMiHoYoAPIJSONResult {
     }
 
     public struct Floor: Codable {
+        // MARK: Public
+
         public struct Level: Codable {
+            // MARK: Public
+
             public struct Battle: Codable {
                 public struct Avatar: Codable {
                     /// 角色ID
@@ -57,6 +67,8 @@ public struct SpiralAbyssDetail: Codable, DecodableFromMiHoYoAPIJSONResult {
             /// 本间序数，第几件
             public var index: Int
 
+            // MARK: Internal
+
             enum CodingKeys: String, CodingKey {
                 case star
                 case maxStar = "max_star"
@@ -85,15 +97,21 @@ public struct SpiralAbyssDetail: Codable, DecodableFromMiHoYoAPIJSONResult {
             star == maxStar
         }
 
+        // MARK: Internal
+
         enum CodingKeys: String, CodingKey {
             case isUnlock = "is_unlock"
             case settleTime = "settle_time"
-            case star = "star"
-            case levels = "levels"
+            case star
+            case levels
             case maxStar = "max_star"
-            case icon = "icon"
-            case index = "index"
+            case icon
+            case index
         }
+    }
+
+    public enum AbyssRound: String {
+        case this = "1", last = "2"
     }
 
     /// 元素爆发排名（只有第一个）
@@ -130,12 +148,14 @@ public struct SpiralAbyssDetail: Codable, DecodableFromMiHoYoAPIJSONResult {
         damageRank.count * defeatRank.count * takeDamageRank.count * normalSkillRank.count * energySkillRank.count == 0
     }
 
+    // MARK: Internal
+
     enum CodingKeys: String, CodingKey {
         case energySkillRank = "energy_skill_rank"
         case startTime = "start_time"
         case totalWinTimes = "total_win_times"
         case maxFloor = "max_floor"
-        case floors = "floors"
+        case floors
         case totalBattleTimes = "total_battle_times"
         case takeDamageRank = "take_damage_rank"
         case isUnlock = "is_unlock"
@@ -146,9 +166,5 @@ public struct SpiralAbyssDetail: Codable, DecodableFromMiHoYoAPIJSONResult {
         case scheduleId = "schedule_id"
         case revealRank = "reveal_rank"
         case totalStar = "total_star"
-    }
-
-    public enum AbyssRound: String {
-        case this = "1", last = "2"
     }
 }

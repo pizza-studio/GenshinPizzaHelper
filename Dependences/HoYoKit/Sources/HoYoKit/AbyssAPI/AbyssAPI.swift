@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by 戴藏龙 on 2023/10/17.
 //
@@ -15,7 +15,7 @@ extension MiHoYoAPI {
         cookie: String,
         deviceFingerPrint: String?
     ) async throws
-    -> SpiralAbyssDetail {
+        -> SpiralAbyssDetail {
         let queryItems: [URLQueryItem] = [
             .init(name: "role_id", value: uid),
             .init(name: "schedule_type", value: round.rawValue),

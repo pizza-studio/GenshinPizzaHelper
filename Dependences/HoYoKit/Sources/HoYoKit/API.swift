@@ -106,7 +106,7 @@ extension MiHoYoAPI {
 
         components.path = path
 
-        components.queryItems = queryItems.sorted(by: { $0.name < $1.name})
+        components.queryItems = queryItems.sorted(by: { $0.name < $1.name })
 
         guard let url = components.url else {
             let unknownErrorRetcode = -9999
