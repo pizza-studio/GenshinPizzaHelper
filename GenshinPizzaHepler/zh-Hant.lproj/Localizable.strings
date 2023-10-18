@@ -1380,4 +1380,8 @@
 "server.region.name.cht" = "港澳台 (HK/MO/TW)";
 "operation.scrolling.guide" = "請使用 (Shift+) 滑鼠滾輪以控制內容捲動檢視。";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "請選擇帳號以檢視深境螺旋記錄。";
-"detailPortal.player.worldBalancedLevel.short" = "均衡等級";
+
+// MARK: - 3.1.4
+
+"detailPortal.player.worldLevel" = "世界等級";
+"detailPortal.player.adventureRank.short:%@" = "%@階";

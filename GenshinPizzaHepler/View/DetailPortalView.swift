@@ -206,7 +206,7 @@ struct DetailPortalView: View {
                         }
                         .frame(width: 74)
                         .corneredTag(
-                            verbatim: "Lv.\(playerDetail.basicInfo.level)",
+                            "detailPortal.player.adventureRank.short:\(playerDetail.basicInfo.level.description)",
                             alignment: .bottomTrailing,
                             textSize: 12
                         )
@@ -236,8 +236,8 @@ struct DetailPortalView: View {
                     HStack {
                         Text("UID: \(account.config.uid ?? "1145141919810")")
                         Spacer()
-                        let worldBalancedLevelTitle = "detailPortal.player.worldBalancedLevel.short".localized
-                        Text("\(worldBalancedLevelTitle): \(playerDetail.basicInfo.worldLevel)")
+                        let worldLevelTitle = "detailPortal.player.worldLevel".localized
+                        Text("\(worldLevelTitle): \(playerDetail.basicInfo.worldLevel)")
                     }
                 }
             } else {
