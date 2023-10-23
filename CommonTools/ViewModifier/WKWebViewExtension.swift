@@ -23,9 +23,12 @@ public class OPWebView: WKWebView {
 
     static let mobileConfig: WKWebViewConfiguration = {
         let result = WKWebViewConfiguration()
-        let pref = WKWebpagePreferences()
-        pref.preferredContentMode = .mobile
-        result.defaultWebpagePreferences = pref
+        let pagePref = WKWebpagePreferences()
+        let viewPref = WKPreferences()
+        viewPref.isTextInteractionEnabled = true
+        pagePref.preferredContentMode = .mobile
+        result.defaultWebpagePreferences = pagePref
+        result.preferences = viewPref
         return result
     }()
 }
