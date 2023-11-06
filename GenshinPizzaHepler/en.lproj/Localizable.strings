@@ -1368,12 +1368,12 @@
 "ledgerData.action.name.byAbyss" = "Abyss";
 "ledgerData.action.name.byMail" = "Mail";
 "ledgerData.action.name.byEvent" = "Event";
-"server.region.name.china" = "Tenkuujima";
-"server.region.name.bilibili" = "Sekaiju";
+"server.region.name.celestia" = "Tenkuunoshima (Celestia)";
+"server.region.name.irminsul" = "Sekaiju (Irminsul)";
 "server.region.name.us" = "America";
 "server.region.name.eu" = "Europe";
 "server.region.name.asia" = "Asia";
-"server.region.name.cht" = "TW/HK/MO";
+"server.region.name.hongKongMacauTaiwan" = "TW/HK/MO";
 "operation.scrolling.guide" = "Use (Shift+) Mouse Wheel to scroll contents.";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "Please choose an account to see Spiral Abyss records.";
 

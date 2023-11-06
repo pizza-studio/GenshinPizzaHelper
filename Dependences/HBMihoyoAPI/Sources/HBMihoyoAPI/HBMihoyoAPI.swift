@@ -699,7 +699,7 @@ public enum MihoyoAPI {
 
             var accounts: [FetchedAccount] = []
             let group = DispatchGroup()
-            let globalServers: [Server] = [.cht, .asia, .eu, .us]
+            let globalServers: [Server] = [.hongKongMacauTaiwan, .asia, .eu, .us]
             globalServers.forEach { server in
                 group.enter()
                 // 先随便发送一个请求

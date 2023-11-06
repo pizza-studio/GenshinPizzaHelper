@@ -1372,12 +1372,12 @@
 "ledgerData.action.name.byAbyss" = "深境螺旋";
 "ledgerData.action.name.byMail" = "メール";
 "ledgerData.action.name.byEvent" = "イベント";
-"server.region.name.china" = "天空島";
-"server.region.name.bilibili" = "世界樹";
+"server.region.name.celestia" = "天空島";
+"server.region.name.irminsul" = "世界樹";
 "server.region.name.us" = "アメリカ (America)";
 "server.region.name.eu" = "ヨーロッパ (Europe)";
 "server.region.name.asia" = "アジア (Asia)";
-"server.region.name.cht" = "香港・マカオ・台湾 (HK/MO/TW)";
+"server.region.name.hongKongMacauTaiwan" = "香港・マカオ・台湾 (HK/MO/TW)";
 "operation.scrolling.guide" = "(Shift+) マウスホイールでスクロールを制御する。";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "深境螺旋記録はアカウントを選択してから表示できます。";
 

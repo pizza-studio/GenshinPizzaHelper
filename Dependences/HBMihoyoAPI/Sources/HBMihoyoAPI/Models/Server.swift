@@ -11,12 +11,12 @@ import Foundation
 
 // 服务器类型
 public enum Server: String, CaseIterable, Identifiable {
-    case china = "天空岛"
-    case bilibili = "世界树"
+    case celestia = "天空岛"
+    case irminsul = "世界树"
     case us = "America"
     case eu = "Europe"
     case asia = "Asia"
-    case cht = "TW/HK/MO"
+    case hongKongMacauTaiwan = "TW/HK/MO"
 
     // MARK: Public
 
@@ -28,9 +28,9 @@ public enum Server: String, CaseIterable, Identifiable {
 
     public var id: String {
         switch self {
-        case .china:
+        case .celestia:
             return "cn_gf01"
-        case .bilibili:
+        case .irminsul:
             return "cn_qd01"
         case .us:
             return "os_usa"
@@ -38,16 +38,16 @@ public enum Server: String, CaseIterable, Identifiable {
             return "os_euro"
         case .asia:
             return "os_asia"
-        case .cht:
+        case .hongKongMacauTaiwan:
             return "os_cht"
         }
     }
 
     public var region: Region {
         switch self {
-        case .bilibili, .china:
+        case .celestia, .irminsul:
             return .cn
-        case .asia, .cht, .eu, .us:
+        case .asia, .eu, .hongKongMacauTaiwan, .us:
             return .global
         }
     }
@@ -55,9 +55,9 @@ public enum Server: String, CaseIterable, Identifiable {
     public static func id(_ id: String) -> Self {
         switch id {
         case "cn_gf01":
-            return .china
+            return .celestia
         case "cn_qd01":
-            return .bilibili
+            return .irminsul
         case "os_usa":
             return .us
         case "os_euro":
@@ -65,15 +65,15 @@ public enum Server: String, CaseIterable, Identifiable {
         case "os_asia":
             return .asia
         case "os_cht":
-            return .cht
+            return .hongKongMacauTaiwan
         default:
-            return .china
+            return .celestia
         }
     }
 
     public func timeZone() -> TimeZone {
         switch self {
-        case .asia, .bilibili, .china, .cht:
+        case .asia, .celestia, .hongKongMacauTaiwan, .irminsul:
             return .init(secondsFromGMT: 8 * 60 * 60) ?? .current
         case .us:
             return .init(secondsFromGMT: -5 * 60 * 60) ?? .current

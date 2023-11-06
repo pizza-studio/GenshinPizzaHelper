@@ -26,7 +26,7 @@ struct AddAccountView: View {
     @State
     private var unsavedCookie: String = ""
     @State
-    private var unsavedServer: Server = .china
+    private var unsavedServer: Server = .celestia
     @State
     private var unsavedDeviceFingerPrint: String = ""
 

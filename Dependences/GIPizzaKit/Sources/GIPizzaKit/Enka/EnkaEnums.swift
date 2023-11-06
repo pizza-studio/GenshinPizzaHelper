@@ -50,8 +50,8 @@ extension Enka {
     }
 }
 
-extension Server {
+extension HBMihoyoAPI.Server {
     public var jsonServer: Enka.JSONGitServerType {
-        [.chinaMainland, .bilibili].contains(self) ? .mainlandCN : .global
+        [.celestia, .irminsul].contains(self) ? .mainlandCN : .global
     }
 }
