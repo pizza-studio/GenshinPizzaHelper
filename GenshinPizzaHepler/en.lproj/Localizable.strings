@@ -475,10 +475,10 @@
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "Celebration: Euphonia";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "Achievement: Perpetual";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "Fontaine: Redemption";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_FD3_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Bp28_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "Furina: Banquet";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Charlotte: Exclusive";
+"$asset.nameCard:UI_NameCardPic_FD3_P" = "Fontaine: Completeness";
+"$asset.nameCard:UI_NameCardPic_Bp28_P" = "Travel Notes: Whirling Waltz";
 
 // MARK: - 2.0 & above
 // Settings view

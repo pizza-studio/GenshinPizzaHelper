@@ -475,8 +475,8 @@ Created by Bill Haku on 2022/8/23.
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "庆典·奏雅";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "成就·永续";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "枫丹·罚赎";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "芙宁娜·欢宴";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "夏洛蒂·独家";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "枫丹·浑然";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "纪行·旋舞";
 

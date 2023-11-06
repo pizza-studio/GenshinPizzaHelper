@@ -475,10 +475,10 @@
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "Célébration - Euphonie";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "Succès - Perpétuité";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "Fontaine - Expiation";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_FD3_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Bp28_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "Furina - Banquet";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Charlotte - Scoop";
+"$asset.nameCard:UI_NameCardPic_FD3_P" = "Fontaine - Exhaustivité";
+"$asset.nameCard:UI_NameCardPic_Bp28_P" = "PB - Valse tournoyante";
 
 // MARK: - 2.0 & above
 // Settings view

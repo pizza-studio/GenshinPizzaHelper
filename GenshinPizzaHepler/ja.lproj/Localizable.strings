@@ -475,10 +475,10 @@
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "祭典·奏雅";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "アチーブメント·永続";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "フォンテーヌ·罰と贖い";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_FD3_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Bp28_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "フリーナ·歓宴";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "シャルロット·独占";
+"$asset.nameCard:UI_NameCardPic_FD3_P" = "フォンテーヌ·調和";
+"$asset.nameCard:UI_NameCardPic_Bp28_P" = "紀行·旋舞";
 
 // MARK: - 2.0 & above
 // Settings view

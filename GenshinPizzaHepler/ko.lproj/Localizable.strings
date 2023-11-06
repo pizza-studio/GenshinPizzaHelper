@@ -475,10 +475,10 @@
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "축제·우아한 선율";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "업적·영속";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "폰타인·죄와 벌";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_FD3_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Bp28_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "푸리나·연회";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "샤를로트·독점 보도";
+"$asset.nameCard:UI_NameCardPic_FD3_P" = "폰타인·혼연";
+"$asset.nameCard:UI_NameCardPic_Bp28_P" = "기행·원무";
 
 // MARK: - 2.0 & above
 // Settings view

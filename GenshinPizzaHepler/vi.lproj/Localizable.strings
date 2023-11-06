@@ -475,10 +475,10 @@
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "Lễ Hội - Nhã Tấu";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "Thành Tựu - Mãi Tiếp Bước";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "Fontaine - Chuộc Tội";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_FD3_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Bp28_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "Furina - Tiệc Mừng";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Charlotte - Độc Quyền";
+"$asset.nameCard:UI_NameCardPic_FD3_P" = "Fontaine - Trọn Vẹn";
+"$asset.nameCard:UI_NameCardPic_Bp28_P" = "Nhật Ký Hành Trình - Vũ Điệu";
 
 // MARK: - 2.0 & above
 // Settings view

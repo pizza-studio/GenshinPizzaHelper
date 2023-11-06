@@ -475,10 +475,10 @@
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "Благозвучие";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "Постоянство";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "Искупление";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_FD3_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Bp28_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "Банкет";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Эксклюзив";
+"$asset.nameCard:UI_NameCardPic_FD3_P" = "Полнота";
+"$asset.nameCard:UI_NameCardPic_Bp28_P" = "Вихрь вальса";
 
 // MARK: - 2.0 & above
 // Settings view
