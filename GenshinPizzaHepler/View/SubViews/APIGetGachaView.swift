@@ -118,7 +118,7 @@ struct APIGetGachaView: View {
                 displayMode: .alert,
                 type: .complete(.green),
                 title: "成功获取祈愿数据",
-                subTitle: "共保存了\(observer.newItemCount)条新的祈愿数据"
+                subTitle: "共保存了\(observer.newItemCount)条新的祈愿数据".localized
             )
         })
         .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
