@@ -8,7 +8,6 @@
 import Defaults
 import Foundation
 import HBMihoyoAPI
-import HoYoKit
 
 // MARK: - HostType
 
