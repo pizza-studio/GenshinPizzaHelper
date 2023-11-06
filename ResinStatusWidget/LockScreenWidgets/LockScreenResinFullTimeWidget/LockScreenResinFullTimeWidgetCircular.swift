@@ -74,7 +74,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                                         .caption,
                                         design: .monospaced
                                     ))
-                                    .minimumScaleFactor(0.5)
+                                    .minimumScaleFactor(0.1)
                                     .foregroundColor(.secondary)
                             } else {
                                 Text("\(data.resinInfo.currentResin)")
@@ -138,7 +138,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                                         .caption,
                                         design: .monospaced
                                     ))
-                                    .minimumScaleFactor(0.5)
+                                    .minimumScaleFactor(0.1)
                             } else {
                                 Text("\(data.resinInfo.currentResin)")
                                     .font(.system(

@@ -28,6 +28,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                 case let .success(data):
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.body, design: .rounded).weight(.medium))
+                        .minimumScaleFactor(0.1)
                 case .failure:
                     Image(systemSymbol: .ellipsis)
                 }
@@ -59,6 +60,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                 case let .success(data):
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.body, design: .rounded).weight(.medium))
+                        .minimumScaleFactor(0.1)
                 case .failure:
                     Image(systemSymbol: .ellipsis)
                 }
@@ -78,6 +80,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                 case let .success(data):
                     Text("\(data.resinInfo.currentResin)")
                         .font(.system(.body, design: .rounded).weight(.medium))
+                        .minimumScaleFactor(0.1)
                 case .failure:
                     Image(systemSymbol: .ellipsis)
                 }
