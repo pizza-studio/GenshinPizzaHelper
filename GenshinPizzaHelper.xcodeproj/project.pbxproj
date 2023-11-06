@@ -1238,7 +1238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC89A642AD3AF2600EC5141 /* DefaultsKeys in Frameworks */,
-				5B41C1832AD3011700CDF2C5 /* HBPizzaHelperAPI in Frameworks */,
+				5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */,
 				5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */,
 				5B8C1B392AD90855009F3B44 /* SFSafeSymbols in Frameworks */,
 				5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */,
@@ -1256,7 +1256,6 @@
 				EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */,
 				BF15570F29CFE5E10056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAC89A622AD3AF2200EC5141 /* DefaultsKeys in Frameworks */,
-				BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */,
 				BF20733629D1412100AD391F /* GIPizzaKit in Frameworks */,
 				EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */,
 				EAAECA1B2AD3AD0D003525E1 /* Defaults in Frameworks */,
@@ -1455,7 +1454,6 @@
 				EAAECA232AD3AE23003525E1 /* DefaultsKeys */,
 				BF20733029D13BCA00AD391F /* GIPizzaKit */,
 				BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */,
-				EA7262C82ADE64DD0062414B /* HoYoKit */,
 				5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */,
 				BFBDD66D28F3F2B80022B79D /* SwiftPieChart-1.0.61 */,
 			);
@@ -2122,7 +2120,6 @@
 			name = AccountIntent;
 			packageProductDependencies = (
 				BF15570E29CFE5E10056CFE6 /* HBMihoyoAPI */,
-				BF20733529D1412100AD391F /* GIPizzaKit */,
 				EAAECA1A2AD3AD0D003525E1 /* Defaults */,
 				EAC89A612AD3AF2200EC5141 /* DefaultsKeys */,
 			);
@@ -2218,7 +2215,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					BF85D77028CE0B9E003F3479 = {
 						CreatedOnToolsVersion = 14.0;
