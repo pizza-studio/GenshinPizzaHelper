@@ -378,8 +378,8 @@ extension CharacterAsset {
         case .Freminet: return [7000]
         case .Neuvillette: return [7100]
         case .Wriothesley: return [7200]
-        case .Charlotte: return [] // 原神 4.2
-        case .Furina: return [] // 原神 4.2
+        case .Charlotte: return [7300]
+        case .Furina: return [7400]
         }
     }
 }
@@ -464,10 +464,8 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Freminet: return .talentJustice
         case .Neuvillette: return .talentEquity
         case .Wriothesley: return .talentOrder
-        case .Charlotte:
-            return .talentJustice.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
-        case .Furina:
-            return .talentJustice.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
+        case .Charlotte: return .talentJustice
+        case .Furina: return .talentJustice
         }
     }
 }

@@ -41,7 +41,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case FinaleOfTheDeep = 11425
     case FleuveCendreFerryman = 11426
     case TheDockhandsAssistant = 11427
-    case SwordOfNarzissenkreuz = 11428 // 原神 4.2
+    case SwordOfNarzissenkreuz = 11428
     case AquilaFavonia = 11501
     case SkywardBlade = 11502
     case FreedomSworn = 11503
@@ -51,7 +51,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case HaranGeppakuFutsu = 11510
     case KeyOfKhajNisut = 11511
     case LightOfFoliarIncision = 11512
-    case SplendorOfStillWaters = 11513 // 原神 4.2
+    case SplendorOfStillWaters = 11513
     case WasterGreatsword = 12101
     case OldMercsPal = 12201
     case FerrousShadow = 12301
@@ -242,8 +242,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .FinaleOfTheDeep: return .weaponDewdrop
         case .FleuveCendreFerryman: return .weaponAncientChord
         case .TheDockhandsAssistant: return .weaponDewdrop
-        case .SwordOfNarzissenkreuz:
-            return .weaponAncientChord.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
+        case .SwordOfNarzissenkreuz: return .weaponAncientChord
         case .AquilaFavonia: return .weaponDecarabian
         case .SkywardBlade: return .weaponBorealWolf
         case .FreedomSworn: return .weaponGladiator
@@ -253,8 +252,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .HaranGeppakuFutsu: return .weaponNarukami
         case .KeyOfKhajNisut: return .weaponTalisman
         case .LightOfFoliarIncision: return .weaponTalisman
-        case .SplendorOfStillWaters:
-            return .weaponDewdrop.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
+        case .SplendorOfStillWaters: return .weaponDewdrop
         case .WasterGreatsword: return .weaponBorealWolf
         case .OldMercsPal: return .weaponBorealWolf
         case .FerrousShadow: return .weaponDecarabian

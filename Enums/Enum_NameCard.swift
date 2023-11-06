@@ -188,10 +188,10 @@ public enum NameCard: Int, CaseIterable {
     case UI_NameCardPic_Guqin_P = 210177
     case UI_NameCardPic_Tzz8_P = 210178
     case UI_NameCardPic_FD2_P = 210179
-    case UI_NameCardPic_Furina_P = 210180 // 原神 4.2
-    case UI_NameCardPic_Charlotte_P = 210181 // 原神 4.2
-    case UI_NameCardPic_FD3_P = 210182 // 原神 4.2
-    case UI_NameCardPic_Bp28_P = 210183 // 原神 4.2
+    case UI_NameCardPic_Furina_P = 210180
+    case UI_NameCardPic_Charlotte_P = 210181
+    case UI_NameCardPic_FD3_P = 210182
+    case UI_NameCardPic_Bp28_P = 210183
 }
 
 extension NameCard {
@@ -201,10 +201,7 @@ extension NameCard {
     /// 建议消除的时间为新版发行之前的纪行的结束日之后的那天。
     public static var blacklist: [NameCard] {
         [
-            .UI_NameCardPic_Furina_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
-            .UI_NameCardPic_Charlotte_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
-            .UI_NameCardPic_FD3_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
-            .UI_NameCardPic_Bp28_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
+            // 此处插入的内容的范例：.UI_NameCardPic_Furina_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
         ].compactMap { $0 }
     }
 
