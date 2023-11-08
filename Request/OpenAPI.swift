@@ -152,7 +152,7 @@ extension API {
         ) {
             var urlStr = "https://gi.pizzastudio.org/static/player_detail_data_example_2.json"
             #if DEBUG
-            if uid == "114514003" {
+            if ["114514003", "114514007"].contains(uid) {
                 urlStr = "https://enka.network/api/uid/\(uid)/"
             }
             #else
