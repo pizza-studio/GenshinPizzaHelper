@@ -265,7 +265,7 @@ extension Enka {
         }
 
         /// 账号基本信息
-        public var playerInfo: PlayerInfo
+        public var playerInfo: PlayerInfo?
         /// 正在展示的角色的详细信息
         public var avatarInfoList: [AvatarInfo]?
         public var ttl: Int?

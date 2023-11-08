@@ -53,10 +53,11 @@ struct PlayerDetail {
     struct PlayerBasicInfo {
         // MARK: Lifecycle
 
-        init(
-            playerInfo: Enka.PlayerDetailFetchModel.PlayerInfo,
+        init?(
+            playerInfo: Enka.PlayerDetailFetchModel.PlayerInfo?,
             characterMap: [String: Enka.CharacterMap.Character]
         ) {
+            guard let playerInfo = playerInfo else { return nil }
             self.nickname = playerInfo.nickname
             self.level = playerInfo.level
             self.signature = playerInfo.signature ?? ""
@@ -831,7 +832,7 @@ struct PlayerDetail {
 
     let nextRefreshableDate: Date
 
-    let basicInfo: PlayerBasicInfo
+    let basicInfo: PlayerBasicInfo?
 
     let avatars: [Avatar]
 }

@@ -201,24 +201,28 @@ struct DetailPortalView: View {
                 Section {
                     HStack(spacing: 0) {
                         HStack {
-                            playerDetail.basicInfo.decoratedIcon(64)
+                            if let basicInfo = playerDetail.basicInfo {
+                                basicInfo.decoratedIcon(64)
+                            } else {
+                                CharacterAsset.Paimon.decoratedIcon(64)
+                            }
                             Spacer()
                         }
                         .frame(width: 74)
                         .corneredTag(
-                            "detailPortal.player.adventureRank.short:\(playerDetail.basicInfo.level.description)",
+                            "detailPortal.player.adventureRank.short:\(playerDetail.basicInfo?.level.description ?? "213")",
                             alignment: .bottomTrailing,
                             textSize: 12
                         )
                         VStack(alignment: .leading) {
                             HStack(spacing: 10) {
                                 VStack(alignment: .leading) {
-                                    Text(playerDetail.basicInfo.nickname)
+                                    Text(playerDetail.basicInfo?.nickname ?? "ERROR: 114_514")
                                         .font(.title3)
                                         .bold()
                                         .padding(.top, 5)
                                         .lineLimit(1)
-                                    Text(playerDetail.basicInfo.signature)
+                                    Text(playerDetail.basicInfo?.signature ?? "Error detail: 114_514_19_19_810")
                                         .foregroundColor(.secondary)
                                         .font(.footnote)
                                         .lineLimit(2)
@@ -237,7 +241,7 @@ struct DetailPortalView: View {
                         Text("UID: \(account.config.uid ?? "1145141919810")")
                         Spacer()
                         let worldLevelTitle = "detailPortal.player.worldLevel".localized
-                        Text("\(worldLevelTitle): \(playerDetail.basicInfo.worldLevel)")
+                        Text("\(worldLevelTitle): \(playerDetail.basicInfo?.worldLevel ?? 114514)")
                     }
                 }
             } else {
