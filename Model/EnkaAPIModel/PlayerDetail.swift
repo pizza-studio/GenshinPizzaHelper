@@ -417,11 +417,11 @@ struct PlayerDetail {
             ) {
                 guard artifactEquipment.flat.itemType == "ITEM_RELIQUARY"
                 else { return nil }
-                self.id = artifactEquipment.flat.nameTextMapHash
+                self.id = artifactEquipment.flat.nameTextMapHash.description
                 self.name = localizedDictionary
                     .nameFromHashMap(artifactEquipment.flat.nameTextMapHash)
                 self.setName = localizedDictionary
-                    .nameFromHashMap(artifactEquipment.flat.setNameTextMapHash!)
+                    .nameFromHashMap(artifactEquipment.flat.setNameTextMapHash?.description ?? "unknown")
                 self.mainAttribute = Attribute(
                     name: PropertyDictionary
                         .getLocalizedName(

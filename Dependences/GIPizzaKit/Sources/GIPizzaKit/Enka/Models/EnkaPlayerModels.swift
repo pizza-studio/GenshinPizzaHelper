@@ -208,9 +208,9 @@ extension Enka {
                     }
 
                     /// 装备名的哈希值
-                    public var nameTextMapHash: String
+                    public var nameTextMapHash: Int
                     /// 圣遗物套装名称的哈希值
-                    public var setNameTextMapHash: String?
+                    public var setNameTextMapHash: Int?
                     /// 装备稀有度
                     public var rankLevel: Int
                     /// 圣遗物主词条
