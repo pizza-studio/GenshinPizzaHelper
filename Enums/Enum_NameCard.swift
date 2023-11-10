@@ -247,7 +247,14 @@ extension NameCard {
         if Defaults[.useActualCharacterNames], fileName.contains("Kunikuzushi") {
             return localizedKey.localized
         }
-        return localizedKey.localized.localizedWithFix
+        var result = localizedKey.localized.localizedWithFix
+        if !Defaults[.useActualCharacterNames], fileName.contains("_Yoimiya_") {
+            result = result.replacingOccurrences(of: "Naganohara ", with: "")
+            result = result.replacingOccurrences(of: "長野原", with: "")
+            result = result.replacingOccurrences(of: "나가노하라 ", with: "")
+            result = result.replacingOccurrences(of: "长野原", with: "")
+        }
+        return result
     }
 }
 

@@ -115,7 +115,15 @@ extension CharacterAsset {
         if Defaults[.useActualCharacterNames], self == .Kunikuzushi {
             return localizedKey.localized
         }
-        return localizedKey.localized.localizedWithFix
+        var result = localizedKey.localized.localizedWithFix
+        if !Defaults[.useActualCharacterNames], self == .Yoimiya {
+            result = result.replacingOccurrences(of: "Naganohara ", with: "")
+            result = result.replacingOccurrences(of: "Наганохара ", with: "")
+            result = result.replacingOccurrences(of: "長野原", with: "")
+            result = result.replacingOccurrences(of: "나가노하라 ", with: "")
+            result = result.replacingOccurrences(of: "长野原", with: "")
+        }
+        return result
     }
 }
 
