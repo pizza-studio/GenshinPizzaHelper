@@ -92,11 +92,11 @@ extension Enka.PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
     }
 
     public var costumeIdDeducted: Int? {
-        guard let id = id else { return avatarId }
+        guard let id = id else { return costumeId ?? avatarId }
         let matchedCostume = CostumeAsset.allCases.filter {
             $0.profilePictureIdentifier == id
         }.first
-        guard let matchedCostume = matchedCostume else { return avatarId }
+        guard let matchedCostume = matchedCostume else { return costumeId ?? avatarId }
         return matchedCostume.rawValue
     }
 }

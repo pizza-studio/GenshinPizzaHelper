@@ -27,6 +27,8 @@ extension Enka {
                 public let id: Int?
                 /// 旧 API，不要删，否则自 4.1 版发行开始起没改过肖像的玩家会受到影响。
                 public var avatarId: Int?
+                /// 旧 API，不要删，否则自 4.1 版发行开始起没改过肖像的玩家会受到影响。
+                public var costumeId: Int?
             }
 
             /// 名称
