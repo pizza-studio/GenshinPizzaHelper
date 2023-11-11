@@ -10,14 +10,9 @@ import Foundation
 
 extension UserDefaults {
     public static let opSuite = UserDefaults(suiteName: "group.GenshinPizzaHelper") ?? .standard
-    public static let debugSuite = UserDefaults(suiteName: "group.GenshinPizzaHelper.storageForDebug") ?? .opSuite
 }
 
 extension Defaults.Keys {
-    // MARK: - Debug
-
-    public static let jsonDebugDictionary = Key<[String: String]>("jsonDebugDictionary", default: [:], suite: .opSuite)
-
     // MARK: - Shared
 
     public static let appTabIndex = Key<Int>("appTabIndex", default: 0, suite: .opSuite)
