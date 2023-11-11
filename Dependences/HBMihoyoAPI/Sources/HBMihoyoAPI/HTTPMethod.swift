@@ -1239,10 +1239,16 @@ public struct HttpMethod<T: Codable> {
                         }
                         DispatchQueue.main.async {
                             let decoder = JSONDecoder()
-//                            decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-//                            let dictionary = try? JSONSerialization.jsonObject(with: data)
-//                            print(dictionary ?? "None")
+                            // decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            #if DEBUG
+                            print("================= OPENREQUEST_DUMP START ==================")
+                            print(String(data: data, encoding: .utf8) ?? "INVALID JSON DATA.")
+                            print("================= OPENREQUEST_DUMP ENDED ==================")
+                            // let dictionary = try? JSONSerialization.jsonObject(with: data)
+                            // print("================= OPENREQUEST_DUMP START ==================")
+                            // print(dictionary ?? "None")
+                            // print("================= OPENREQUEST_DUMP ENDED ==================")
+                            #endif
 
                             do {
                                 let requestResult = try decoder.decode(
