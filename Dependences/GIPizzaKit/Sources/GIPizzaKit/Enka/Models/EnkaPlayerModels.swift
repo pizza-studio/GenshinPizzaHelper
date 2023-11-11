@@ -272,6 +272,8 @@ extension Enka {
         public var avatarInfoList: [AvatarInfo]?
         public var ttl: Int?
         public var uid: String?
+        /// Enka 偶尔会返回错误讯息。
+        public var message: String?
     }
 
     // MARK: - FightPropMap
