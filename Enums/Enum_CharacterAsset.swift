@@ -132,10 +132,12 @@ extension CharacterAsset {
 extension CharacterAsset {
     public var officialRawNameInEnglish: String {
         ("$asset.character:" + String(describing: self)).i18n("en")
+            .replacingOccurrences(of: "Naganohara ", with: "")
     }
 
     public var officialSimplifiedChineseName: String {
         ("$asset.character:" + String(describing: self)).i18n("zh-Hans")
+            .replacingOccurrences(of: "长野原", with: "")
     }
 }
 
