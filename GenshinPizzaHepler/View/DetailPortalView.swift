@@ -222,14 +222,18 @@ struct DetailPortalView: View {
                                         .bold()
                                         .padding(.top, 5)
                                         .lineLimit(1)
-                                    Text(playerDetail.basicInfo?.signature ?? "Error detail: 114_514_19_19_810")
-                                        .foregroundColor(.secondary)
-                                        .font(.footnote)
-                                        .lineLimit(2)
-                                        .fixedSize(
-                                            horizontal: false,
-                                            vertical: true
-                                        )
+                                    Text(
+                                        playerDetail.basicInfo?
+                                            .signature ??
+                                            "Enka Error: \(playerDetail.enkaMessage ?? "114_514_19_19_810")"
+                                    )
+                                    .foregroundColor(.secondary)
+                                    .font(.footnote)
+                                    .lineLimit(2)
+                                    .fixedSize(
+                                        horizontal: false,
+                                        vertical: true
+                                    )
                                 }
                                 Spacer()
                                 selectAccountManuButton()

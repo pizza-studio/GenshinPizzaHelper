@@ -26,6 +26,7 @@ struct PlayerDetail {
             playerInfo: PlayerDetailFetchModel.playerInfo,
             characterMap: characterMap
         )
+        self.enkaMessage = PlayerDetailFetchModel.message
         if let avatarInfoList = PlayerDetailFetchModel.avatarInfoList {
             self.avatars = avatarInfoList.compactMap { avatarInfo in
                 .init(
@@ -835,6 +836,8 @@ struct PlayerDetail {
     let basicInfo: PlayerBasicInfo?
 
     let avatars: [Avatar]
+
+    let enkaMessage: String?
 }
 
 extension Dictionary where Key == String, Value == String {
