@@ -78,6 +78,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case MailedFlower = 12418
     case TalkingStick = 12424
     case TidalShadow = 12425
+    case UltimateOverloardsMegaMagicSword = 12426 // 原神 4.3
     case PortablePowerSaw = 12427
     case SkywardPride = 12501
     case WolfsGravestone = 12502
@@ -85,6 +86,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case TheUnforged = 12504
     case RedhornStonethresher = 12510
     case BeaconOfTheReedSea = 12511
+    case ConsideredJudgement = 12512 // 原神 4.3
     case BeginnersProtector = 13101
     case IronPoint = 13201
     case WhiteTassel = 13301
@@ -279,6 +281,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .MailedFlower: return .weaponGladiator
         case .TalkingStick: return .weaponOasisGarden
         case .TidalShadow: return .weaponPristineSea
+        case .UltimateOverloardsMegaMagicSword: return .weaponPristineSea.available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3 // 原神 4.3
         case .PortablePowerSaw: return .weaponPristineSea
         case .SkywardPride: return .weaponBorealWolf
         case .WolfsGravestone: return .weaponGladiator
@@ -286,6 +289,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .TheUnforged: return .weaponElixir
         case .RedhornStonethresher: return .weaponNarukami
         case .BeaconOfTheReedSea: return .weaponScorchingMight
+        case .ConsideredJudgement: return .weaponAncientChord.available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3 // 原神 4.3
         case .BeginnersProtector: return .weaponGladiator
         case .IronPoint: return .weaponGladiator
         case .WhiteTassel: return .weaponGuyun
@@ -573,6 +577,8 @@ extension WeaponAsset {
         case .ThunderingPulse: return "UI_EquipIcon_Bow_Narukami"
         case .HuntersPath: return "UI_EquipIcon_Bow_Ayus"
         case .TheFirstGreatMagic: return "UI_EquipIcon_Bow_Pledge"
+        case .UltimateOverloardsMegaMagicSword: return "UI_EquipIcon_Claymore_Champion" // 原神 4.3
+        case .ConsideredJudgement: return "UI_EquipIcon_Claymore_GoldenVerdict" // 原神 4.3
         }
     }
 }

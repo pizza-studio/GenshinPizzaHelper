@@ -118,8 +118,10 @@
 "$asset.character:Wriothesley" = "Ризли";
 "$asset.character:Charlotte" = "Шарлотта";
 "$asset.character:Furina" = "Фурина";
+"$asset.character:Chevreuse" = "Шеврёз";
+"$asset.character:Navia" = "Навия";
 
-// MARK: - Weapn Names
+// MARK: - Weapon Names
 
 "$asset.weapon:DullBlade" = "Тупой меч";
 "$asset.weapon:SilverSword" = "Серебряный меч";
@@ -297,6 +299,8 @@
 "$asset.weapon:ThunderingPulse" = "Громовой пульс";
 "$asset.weapon:HuntersPath" = "Охотничья тропа";
 "$asset.weapon:TheFirstGreatMagic" = "Первый великий фокус";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Магический супермеч высшего владыки";
+"$asset.weapon:ConsideredJudgement" = "Обдуманное суждение";
 
 // MARK: - Namecard Icons
 
@@ -479,6 +483,8 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Эксклюзив";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "Полнота";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "Вихрь вальса";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
 
 // MARK: - 2.0 & above
 // Settings view

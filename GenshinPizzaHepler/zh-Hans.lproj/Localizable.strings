@@ -118,8 +118,10 @@ Created by Bill Haku on 2022/8/23.
 "$asset.character:Wriothesley" = "莱欧斯利";
 "$asset.character:Charlotte" = "夏洛蒂";
 "$asset.character:Furina" = "芙宁娜";
+"$asset.character:Chevreuse" = "夏沃蕾";
+"$asset.character:Navia" = "娜维娅";
 
-// MARK: - Weapn Names
+// MARK: - Weapon Names
 
 "$asset.weapon:DullBlade" = "无锋剑";
 "$asset.weapon:SilverSword" = "银剑";
@@ -297,6 +299,8 @@ Created by Bill Haku on 2022/8/23.
 "$asset.weapon:ThunderingPulse" = "飞雷之弦振";
 "$asset.weapon:HuntersPath" = "猎人之径";
 "$asset.weapon:TheFirstGreatMagic" = "最初的大魔术";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "究极霸王超级魔剑";
+"$asset.weapon:ConsideredJudgement" = "裁断";
 
 // MARK: - Namecard Icons
 
@@ -479,6 +483,8 @@ Created by Bill Haku on 2022/8/23.
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "夏洛蒂·独家";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "枫丹·浑然";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "纪行·旋舞";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
 
 // MARK: - 2.0 & above
 // Settings view

@@ -118,8 +118,10 @@
 "$asset.character:Wriothesley" = "라이오슬리";
 "$asset.character:Charlotte" = "샤를로트";
 "$asset.character:Furina" = "푸리나";
+"$asset.character:Chevreuse" = "슈브르즈";
+"$asset.character:Navia" = "나비아";
 
-// MARK: - Weapn Names
+// MARK: - Weapon Names
 
 "$asset.weapon:DullBlade" = "무인검";
 "$asset.weapon:SilverSword" = "실버 소드";
@@ -297,6 +299,8 @@
 "$asset.weapon:ThunderingPulse" = "비뢰의 고동";
 "$asset.weapon:HuntersPath" = "사냥꾼의 길";
 "$asset.weapon:TheFirstGreatMagic" = "최초의 대마술";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "궁극의 패왕 특급 마검";
+"$asset.weapon:ConsideredJudgement" = "판단";
 
 // MARK: - Namecard Icons
 
@@ -479,6 +483,8 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "샤를로트·독점 보도";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "폰타인·혼연";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "기행·원무";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
 
 // MARK: - 2.0 & above
 // Settings view

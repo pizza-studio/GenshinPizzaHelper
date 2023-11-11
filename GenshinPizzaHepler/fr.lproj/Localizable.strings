@@ -118,8 +118,10 @@
 "$asset.character:Wriothesley" = "Wriothesley";
 "$asset.character:Charlotte" = "Charlotte";
 "$asset.character:Furina" = "Furina";
+"$asset.character:Chevreuse" = "Chevreuse";
+"$asset.character:Navia" = "Navia";
 
-// MARK: - Weapn Names
+// MARK: - Weapon Names
 
 "$asset.weapon:DullBlade" = "Épée émoussée";
 "$asset.weapon:SilverSword" = "Épée en argent";
@@ -297,6 +299,8 @@
 "$asset.weapon:ThunderingPulse" = "Pulsation du tonnerre";
 "$asset.weapon:HuntersPath" = "La voie du chasseur";
 "$asset.weapon:TheFirstGreatMagic" = "La première grande magie";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Méga épée magique du suzerain ultime";
+"$asset.weapon:ConsideredJudgement" = "Condamneur";
 
 // MARK: - Namecard Icons
 
@@ -479,6 +483,8 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Charlotte - Scoop";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "Fontaine - Exhaustivité";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "PB - Valse tournoyante";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
 
 // MARK: - 2.0 & above
 // Settings view

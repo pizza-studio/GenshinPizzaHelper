@@ -192,16 +192,20 @@ public enum NameCard: Int, CaseIterable {
     case UI_NameCardPic_Charlotte_P = 210181
     case UI_NameCardPic_FD3_P = 210182
     case UI_NameCardPic_Bp28_P = 210183
+    case UI_NameCardPic_Navia_P = 210184
+    case UI_NameCardPic_Chevreuse_P = 210185
 }
 
 extension NameCard {
     /// 此变数用来屏蔽某些正式发行前的内容。
     /// 之所以仅对名片与材料这么做，是因为角色往往会提前一个月被米哈游官方借由「天外卫星通信」公开。
     /// 加上 .release(since:.Specify(day:month:year:)) 后缀可以使禁令定时消除。
-    /// 建议消除的时间为新版发行之前的纪行的结束日之后的那天。
+    /// 建议消除的时间为新版发行之前的纪行的结束日起再加两天。
     public static var blacklist: [NameCard] {
         [
             // 此处插入的内容的范例：.UI_NameCardPic_Furina_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
+            .UI_NameCardPic_Navia_P.release(since: .Specify(day: 20, month: 12, year: 2023)),
+            .UI_NameCardPic_Chevreuse_P.release(since: .Specify(day: 20, month: 12, year: 2023)),
         ].compactMap { $0 }
     }
 

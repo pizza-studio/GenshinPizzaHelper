@@ -118,8 +118,10 @@
 "$asset.character:Wriothesley" = "萊歐斯利";
 "$asset.character:Charlotte" = "夏洛蒂";
 "$asset.character:Furina" = "芙寧娜";
+"$asset.character:Chevreuse" = "夏沃蕾";
+"$asset.character:Navia" = "娜維婭";
 
-// MARK: - Weapn Names
+// MARK: - Weapon Names
 
 "$asset.weapon:DullBlade" = "無鋒劍";
 "$asset.weapon:SilverSword" = "銀劍";
@@ -297,6 +299,8 @@
 "$asset.weapon:ThunderingPulse" = "飛雷之弦振";
 "$asset.weapon:HuntersPath" = "獵人之徑";
 "$asset.weapon:TheFirstGreatMagic" = "最初的大魔術";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "究極霸王超級魔劍";
+"$asset.weapon:ConsideredJudgement" = "裁斷";
 
 // MARK: - Namecard Icons
 
@@ -479,6 +483,8 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "夏洛蒂·獨家";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "楓丹·渾然";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "紀行·旋舞";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
 
 // MARK: - 2.0 & above
 // Settings view

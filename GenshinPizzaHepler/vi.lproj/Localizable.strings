@@ -118,8 +118,10 @@
 "$asset.character:Wriothesley" = "Wriothesley";
 "$asset.character:Charlotte" = "Charlotte";
 "$asset.character:Furina" = "Furina";
+"$asset.character:Chevreuse" = "Chevreuse";
+"$asset.character:Navia" = "Navia";
 
-// MARK: - Weapn Names
+// MARK: - Weapon Names
 
 "$asset.weapon:DullBlade" = "Vô Phong Kiếm";
 "$asset.weapon:SilverSword" = "Kiếm Bạc";
@@ -297,6 +299,8 @@
 "$asset.weapon:ThunderingPulse" = "Sấm Sét Rung Động";
 "$asset.weapon:HuntersPath" = "Con Đường Thợ Săn";
 "$asset.weapon:TheFirstGreatMagic" = "Màn Ảo Thuật Đầu Tiên";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Bá Vương Tối Thượng Siêu Cấp Ma Kiếm";
+"$asset.weapon:ConsideredJudgement" = "Lời Phán Quyết";
 
 // MARK: - Namecard Icons
 
@@ -479,6 +483,8 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Charlotte - Độc Quyền";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "Fontaine - Trọn Vẹn";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "Nhật Ký Hành Trình - Vũ Điệu";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
 
 // MARK: - 2.0 & above
 // Settings view

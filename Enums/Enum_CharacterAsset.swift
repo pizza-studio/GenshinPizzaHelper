@@ -92,6 +92,8 @@ public enum CharacterAsset: Int, CaseIterable {
     case Wriothesley = 10000086
     case Charlotte = 10000088
     case Furina = 10000089
+    case Chevreuse = 10000090
+    case Navia = 10000091
 }
 
 extension CharacterAsset {
@@ -217,6 +219,8 @@ extension CharacterAsset {
         case .Wriothesley: return "UI_AvatarIcon_Wriothesley"
         case .Charlotte: return "UI_AvatarIcon_Charlotte"
         case .Furina: return "UI_AvatarIcon_Furina"
+        case .Chevreuse: return "UI_AvatarIcon_Chevreuse"
+        case .Navia: return "UI_AvatarIcon_Navia"
         }
     }
 
@@ -302,6 +306,8 @@ extension CharacterAsset {
         case .Wriothesley: return .UI_NameCardPic_Wriothesley_P
         case .Charlotte: return .UI_NameCardPic_Charlotte_P
         case .Furina: return .UI_NameCardPic_Furina_P
+        case .Chevreuse: return .UI_NameCardPic_Chevreuse_P
+        case .Navia: return .UI_NameCardPic_Navia_P
         }
     }
 }
@@ -388,6 +394,8 @@ extension CharacterAsset {
         case .Wriothesley: return [7200]
         case .Charlotte: return [7300]
         case .Furina: return [7400]
+        case .Chevreuse: return [] // 原神 4.3
+        case .Navia: return [] // 原神 4.3
         }
     }
 }
@@ -474,6 +482,8 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Wriothesley: return .talentOrder
         case .Charlotte: return .talentJustice
         case .Furina: return .talentJustice
+        case .Chevreuse: return .talentOrder.available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
+        case .Navia: return .talentEquity.available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         }
     }
 }
