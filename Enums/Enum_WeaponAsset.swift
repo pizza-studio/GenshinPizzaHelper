@@ -281,7 +281,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .MailedFlower: return .weaponGladiator
         case .TalkingStick: return .weaponOasisGarden
         case .TidalShadow: return .weaponPristineSea
-        case .UltimateOverloardsMegaMagicSword: return .weaponPristineSea.available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3 // 原神 4.3
+        case .UltimateOverloardsMegaMagicSword: return .weaponPristineSea
+            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         case .PortablePowerSaw: return .weaponPristineSea
         case .SkywardPride: return .weaponBorealWolf
         case .WolfsGravestone: return .weaponGladiator
@@ -289,7 +290,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .TheUnforged: return .weaponElixir
         case .RedhornStonethresher: return .weaponNarukami
         case .BeaconOfTheReedSea: return .weaponScorchingMight
-        case .ConsideredJudgement: return .weaponAncientChord.available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3 // 原神 4.3
+        case .ConsideredJudgement: return .weaponAncientChord
+            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         case .BeginnersProtector: return .weaponGladiator
         case .IronPoint: return .weaponGladiator
         case .WhiteTassel: return .weaponGuyun

@@ -482,8 +482,10 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Wriothesley: return .talentOrder
         case .Charlotte: return .talentJustice
         case .Furina: return .talentJustice
-        case .Chevreuse: return .talentOrder.available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
-        case .Navia: return .talentEquity.available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
+        case .Chevreuse: return .talentOrder
+            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
+        case .Navia: return .talentEquity
+            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         }
     }
 }
