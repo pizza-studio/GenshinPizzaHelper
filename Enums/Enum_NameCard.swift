@@ -241,8 +241,12 @@ extension NameCard {
 
     public var localizedKey: String {
         var raw = fileName
-        if Defaults[.useActualCharacterNames], raw.contains("_Wanderer_") {
-            raw = raw.replacingOccurrences(of: "Wanderer", with: "Kunikuzushi")
+        if Defaults[.useActualCharacterNames] {
+            if raw.contains("_Wanderer_") {
+                raw = raw.replacingOccurrences(of: "Wanderer", with: "Kunikuzushi")
+            } else if raw.contains("_Yoimiya_") {
+                raw = raw.replacingOccurrences(of: "_Yoimiya_", with: "_NaganoharaYoimiya_")
+            }
         }
         return "$asset.nameCard:" + raw
     }
@@ -252,12 +256,6 @@ extension NameCard {
             return localizedKey.localized
         }
         var result = localizedKey.localized.localizedWithFix
-        if !Defaults[.useActualCharacterNames], fileName.contains("_Yoimiya_") {
-            result = result.replacingOccurrences(of: "Naganohara ", with: "")
-            result = result.replacingOccurrences(of: "長野原", with: "")
-            result = result.replacingOccurrences(of: "나가노하라 ", with: "")
-            result = result.replacingOccurrences(of: "长野原", with: "")
-        }
         return result
     }
 }

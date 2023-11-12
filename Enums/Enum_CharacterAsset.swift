@@ -107,8 +107,12 @@ extension CharacterAsset {
 
     public var localizedKey: String {
         var raw = String(describing: self)
-        if Defaults[.useActualCharacterNames], self == .Kunikuzushi {
-            raw = "Raiden" + raw
+        if Defaults[.useActualCharacterNames] {
+            switch self {
+            case .Kunikuzushi: raw = "Raiden" + raw
+            case .Yoimiya: raw = "Naganohara" + raw
+            default: break
+            }
         }
         return "$asset.character:" + raw
     }
@@ -118,13 +122,6 @@ extension CharacterAsset {
             return localizedKey.localized
         }
         var result = localizedKey.localized.localizedWithFix
-        if !Defaults[.useActualCharacterNames], self == .Yoimiya {
-            result = result.replacingOccurrences(of: "Naganohara ", with: "")
-            result = result.replacingOccurrences(of: "Наганохара ", with: "")
-            result = result.replacingOccurrences(of: "長野原", with: "")
-            result = result.replacingOccurrences(of: "나가노하라 ", with: "")
-            result = result.replacingOccurrences(of: "长野原", with: "")
-        }
         return result
     }
 }
@@ -132,12 +129,10 @@ extension CharacterAsset {
 extension CharacterAsset {
     public var officialRawNameInEnglish: String {
         ("$asset.character:" + String(describing: self)).i18n("en")
-            .replacingOccurrences(of: "Naganohara ", with: "")
     }
 
     public var officialSimplifiedChineseName: String {
         ("$asset.character:" + String(describing: self)).i18n("zh-Hans")
-            .replacingOccurrences(of: "长野原", with: "")
     }
 }
 

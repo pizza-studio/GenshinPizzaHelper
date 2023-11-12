@@ -79,7 +79,8 @@
 "$asset.character:Kazuha" = "Кадзуха";
 "$asset.character:Ayaka" = "Аяка";
 "$asset.character:Sayu" = "Саю";
-"$asset.character:Yoimiya" = "Наганохара Ёимия";
+"$asset.character:NaganoharaYoimiya" = "Наганохара Ёимия";
+"$asset.character:Yoimiya" = "Ёимия";
 "$asset.character:Aloy" = "Элой";
 "$asset.character:Sara" = "Сара";
 "$asset.character:Ei" = "Райдэн";
@@ -381,6 +382,7 @@
 "$asset.nameCard:UI_NameCardPic_Oraionokami_P" = "Священная сакура";
 "$asset.nameCard:UI_NameCardPic_Bp8_P" = "Великий храм Наруками";
 "$asset.nameCard:UI_NameCardPic_Ayaka_P" = "Веер";
+"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "Искры золотой рыбки";
 "$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "Искры золотой рыбки";
 "$asset.nameCard:UI_NameCardPic_Sayu_P" = "Мудзи-Мудзи Дарума";
 "$asset.nameCard:UI_NameCardPic_Dq1_P" = "Эмблема Райдэн";

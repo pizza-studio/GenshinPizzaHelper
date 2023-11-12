@@ -79,7 +79,8 @@
 "$asset.character:Kazuha" = "楓原万葉";
 "$asset.character:Ayaka" = "神里綾華";
 "$asset.character:Sayu" = "早柚";
-"$asset.character:Yoimiya" = "長野原宵宮";
+"$asset.character:NaganoharaYoimiya" = "長野原宵宮";
+"$asset.character:Yoimiya" = "宵宮";
 "$asset.character:Aloy" = "アーロイ";
 "$asset.character:Sara" = "九条裟羅";
 "$asset.character:Ei" = "雷電将軍";
@@ -381,7 +382,8 @@
 "$asset.nameCard:UI_NameCardPic_Oraionokami_P" = "稲妻·神櫻";
 "$asset.nameCard:UI_NameCardPic_Bp8_P" = "紀行·鳴神大社";
 "$asset.nameCard:UI_NameCardPic_Ayaka_P" = "神里綾華·扇子";
-"$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "長野原宵宮·琉金の花火";
+"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "長野原宵宮·琉金の花火";
+"$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "宵宮·琉金の花火";
 "$asset.nameCard:UI_NameCardPic_Sayu_P" = "早柚·むじむじだるま";
 "$asset.nameCard:UI_NameCardPic_Dq1_P" = "稲妻·雷電の紋";
 "$asset.nameCard:UI_NameCardPic_Dq2_P" = "稲妻·神里の紋";
