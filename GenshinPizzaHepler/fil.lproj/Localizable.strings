@@ -1223,7 +1223,7 @@
 "等待祈愿链接…" = "Naghihintay para sa wish history URL…";
 "开始获取祈愿记录" = "Simulan ang pagkuha ng mga wish records";
 "成功获取祈愿数据" = "Nakuha ang data ng nais";
-"共保存了%lld条新的祈愿数据" = "Isang kabuuan ng %lld ang mga wish data na nai-save";
+"gacha.messages.newEntriesSaved:%lld" = "Isang kabuuan ng %lld ang mga wish data na nai-save";
 "获取失败，因为错误：\n%@" = "Hindi makuha dahil sa error:\n%@";
 "成功获取到祈愿记录链接" = "Nakuha ang wish history URL";
 "请点击「开始获取祈愿记录」以继续" = "I-click ang 'Start obtaining wish records' para matuloy";

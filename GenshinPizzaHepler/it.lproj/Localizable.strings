@@ -1223,7 +1223,7 @@
 "等待祈愿链接…" = "Waiting for the wish history URL…";
 "开始获取祈愿记录" = "Start obtaining wish records";
 "成功获取祈愿数据" = "Successfully obtained wish data";
-"共保存了%lld条新的祈愿数据" = "A total of %lld new wish data has been saved";
+"gacha.messages.newEntriesSaved:%lld" = "A total of %lld new wish data has been saved";
 "获取失败，因为错误：\n%@" = "Failed to obtain due to error:\n%@";
 "成功获取到祈愿记录链接" = "Successfully obtained the wish history URL";
 "请点击「开始获取祈愿记录」以继续" = "Please click 'Start obtaining wish records' to continue";

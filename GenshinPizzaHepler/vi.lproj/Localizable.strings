@@ -1369,7 +1369,7 @@
 "等待祈愿链接…" = "Đang đợi URL lịch sử cầu nguyện…";
 "开始获取祈愿记录" = "Bắt đầu lấy lịch sử cầu nguyện";
 "成功获取祈愿数据" = "Đã thu thập thành công dữ liệu cầu nguyện";
-"共保存了%lld条新的祈愿数据" = "Tổng cộng %lld dữ liệu cầu nguyện mới đã được lưu";
+"gacha.messages.newEntriesSaved:%lld" = "Tổng cộng %lld dữ liệu cầu nguyện mới đã được lưu";
 "获取失败，因为错误：\n%@" = "Không lấy được do lỗi:\n%@";
 "成功获取到祈愿记录链接" = "Đã lấy thành công URL lịch sử cầu nguyện";
 "请点击「开始获取祈愿记录」以继续" = "Vui lòng nhấp vào 'Bắt đầu lấy bản ghi cầu nguyện' để tiếp tục";
