@@ -66,7 +66,7 @@ struct DisplayOptionsView: View {
 
             Section {
                 Toggle(isOn: $useActualCharacterNames) {
-                    Text("settings.display.showTheRealNameForKunikuzushi")
+                    Text("settings.display.useActualCharacterNames")
                 }
 
                 if !useActualCharacterNames {

@@ -1148,7 +1148,7 @@
 "settings.display.showArtifactRarityAndLevel" = "Ipakita ang artifact levels at rarity stars";
 "$asset.character:RaidenKunikuzushi" = "Raiden Kunikuzushi";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Raiden Kunikuzushi: Drifter's Ballad";
-"settings.display.showTheRealNameForKunikuzushi" = "Ipakita ang mga tunay na pangalan ng mga character";
+"settings.display.useActualCharacterNames" = "Ipakita ang mga tunay na pangalan ng mga character";
 "settings.display.autoLineSpacingForECDDV" = "Adaptive layout sa character view";
 "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "Ito ay gumagana lamang sa iPad at ang iPhone model na may notch.";
 "settings.display.title" = "Mga setting ng UI";

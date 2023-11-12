@@ -1148,7 +1148,7 @@
 "settings.display.showArtifactRarityAndLevel" = "聖遺物の稀有度とレベルを表示する";
 "$asset.character:RaidenKunikuzushi" = "雷電国崩";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "雷電国崩・憂き世の歌";
-"settings.display.showTheRealNameForKunikuzushi" = "一部のキャラの本名を表示する";
+"settings.display.useActualCharacterNames" = "一部のキャラの本名を表示する";
 "settings.display.autoLineSpacingForECDDV" = "キャラビューの組版スペーシング自動調整";
 "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "iPad と Face ID つけの iPhone だけで効ける機能である。";
 "settings.display.title" = "UI 偏好設定";

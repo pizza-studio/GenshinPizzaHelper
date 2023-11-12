@@ -1296,7 +1296,7 @@
 "settings.display.showArtifactRarityAndLevel" = "Hiển thị cấp độ nhân vật và phẩm chất";
 "$asset.character:RaidenKunikuzushi" = "Raiden Kunikuzushi";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Raiden Kunikuzushi - Phù Ca";
-"settings.display.showTheRealNameForKunikuzushi" = "Hiển thị tên thật của một số nhân vật";
+"settings.display.useActualCharacterNames" = "Hiển thị tên thật của một số nhân vật";
 "settings.display.autoLineSpacingForECDDV" = "Bố cục trong chế độ xem nhân vật";
 "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "Tính năng này chỉ hoạt động với iPad và các dòng iPhone có tai thỏ.";
 "settings.display.title" = "Tùy Chọn Giao Diện";

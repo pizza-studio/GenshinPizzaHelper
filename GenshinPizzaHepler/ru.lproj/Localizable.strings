@@ -1148,7 +1148,7 @@
 "settings.display.showArtifactRarityAndLevel" = "Показывать уровни артефактов и их редкость";
 "$asset.character:RaidenKunikuzushi" = "Куникудзуси";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Баллада скитальца";
-"settings.display.showTheRealNameForKunikuzushi" = "Показать настоящие имена для некоторых персонажей";
+"settings.display.useActualCharacterNames" = "Показать настоящие имена для некоторых персонажей";
 "settings.display.autoLineSpacingForECDDV" = "Адаптивное расположение при просмотре персонажа";
 "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "Это работает только с iPad и с безкнопочными iPhone.";
 "settings.display.title" = "Настройки интерфейса";

@@ -1148,7 +1148,7 @@
 "settings.display.showArtifactRarityAndLevel" = "Show artifact levels and rarity stars";
 "$asset.character:RaidenKunikuzushi" = "Raiden Kunikuzushi";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Raiden Kunikuzushi - Ballade d'errance";
-"settings.display.showTheRealNameForKunikuzushi" = "Show certain characters' real names";
+"settings.display.useActualCharacterNames" = "Show certain characters' real names";
 "settings.display.autoLineSpacingForECDDV" = "Adaptive layout in character view";
 "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "This only works with iPad and notched iPhone models.";
 "settings.display.title" = "UI Settings";
