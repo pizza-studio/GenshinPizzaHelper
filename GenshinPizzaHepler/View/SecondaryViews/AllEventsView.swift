@@ -22,6 +22,9 @@ struct AllEventsView: View {
         second: Int?
     )
 
+    @Environment(\.colorScheme)
+    var colorScheme
+
     @Binding
     var eventContents: [EventModel]
     @State
@@ -32,6 +35,14 @@ struct AllEventsView: View {
     var showDetailTransaction: Bool = false
     @Namespace
     var animation
+
+    var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
 
     var body: some View {
         ScrollView {
@@ -58,6 +69,7 @@ struct AllEventsView: View {
         }
         .navigationTitle("当前活动")
         .navigationBarTitleDisplayMode(.inline)
+        .background(Color(uiColor: viewBackgroundColor))
     }
 
     // MARK: CARD VIEW
