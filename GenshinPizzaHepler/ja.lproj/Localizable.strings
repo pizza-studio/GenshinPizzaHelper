@@ -675,6 +675,8 @@
 
 "Discord频道: Genshin Pizza Helper" = "Discordに参加する";
 "个人主页" = "個人ホームページ";
+"官方网站" = "https://pizzastudio.org";
+"官方X（Twitter）账号" = "@PizzaStudio_jp";
 "Bilibili主页" = "Bilibili ホームページ";
 "GitHub主页" = "GitHub ホームページ";
 "水里的碳酸钙" = "Bill Haku";
@@ -719,7 +721,7 @@
 "探索派遣" = "探索派遣";
 "参量质变仪" = "参量物質変化器";
 "周本折扣" = "週ボス";
-"infoBlock.refilledAt:%@" = "%@に\m全て回復";
+"infoBlock.refilledAt:%@" = "%@まで全て回復";
 "树脂已全部回满" = "樹脂が全て回復しました";
 
 // Donate
@@ -858,7 +860,7 @@
 "detailPortal.todayAcquisition.title" = "今日の収穫";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "タップしてもう一度ログインしてください";
 // apiral abyss sheet
-"深境螺旋详情" = "深境螺旋情報";
+"深境螺旋详情" = "深境螺旋の情報";
 "保存%lld层的深渊数据" = "第%lld層の情報をセーブ";
 "上期深渊" = "前期";
 "本期深渊" = "今期";
@@ -1123,7 +1125,7 @@
 "lang.Russian" = "ロシア語";
 
 // MARK: - 2.7.10
-"abyssDataCollection.usageRate.disclaimer" = "使用率はアビスチーム編成の参考値であり、キャラの評価を表すものではありません。";
+"abyssDataCollection.usageRate.disclaimer" = "使用率は深境螺旋チーム編成の参考値であり、キャラの評価を表すものではありません。";
 "abyssDataCollection.usageRate.recommended.t0" = "強く推奨されるキャラ";
 "abyssDataCollection.usageRate.recommended.t1" = "推奨されるキャラ";
 "abyssDataCollection.usageRate.recommended.t2" = "優先キャラ";

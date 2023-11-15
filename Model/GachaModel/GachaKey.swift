@@ -9,6 +9,7 @@ import CommonCrypto
 import CryptoKit
 import Foundation
 import HBMihoyoAPI
+import UIKit
 
 @available(iOS 13, *)
 extension MihoyoAPI {
@@ -57,7 +58,7 @@ extension MihoyoAPI {
             "Referer": "https://webstatic.mihoyo.com",
             "x-rpc-app_version": "2.38.1",
             "x-rpc-client_type": "5",
-            "x-rpc-device_id": "CBEC8312-AA77-489E-AE8A-8D498DE24E90",
+            "x-rpc-device_id": (UIDevice.current.identifierForVendor ?? UUID()).uuidString,
             "x-requested-with": "com.mihoyo.hyperion",
             "Cookie": account.cookie!,
             "DS": get_ds_token(),

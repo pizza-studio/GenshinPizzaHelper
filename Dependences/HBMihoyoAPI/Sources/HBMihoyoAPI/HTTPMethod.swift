@@ -8,6 +8,7 @@
 import CryptoKit
 import Defaults
 import Foundation
+import UIKit
 
 // MARK: - HttpMethod
 
@@ -259,6 +260,7 @@ public struct HttpMethod<T: Codable> {
         _ method: Method,
         _ urlStr: String,
         _ cookie: String,
+        _ device_id: UUID,
         completion: @escaping (
             (Result<T, RequestError>) -> ()
         )
@@ -372,7 +374,7 @@ public struct HttpMethod<T: Codable> {
                     "x-rpc-client_type": clientType,
                     "Referer": "https://app.mihoyo.com/",
                     "Cookie": cookie,
-                    "x-rpc-device_id": "",
+                    "x-rpc-device_id": device_id.uuidString,
                     "x-rpc-channel": "appstore",
                 ]
                 // http方法
@@ -623,6 +625,8 @@ public struct HttpMethod<T: Codable> {
         _ serverID: String,
         _ uid: String,
         _ cookie: String,
+        _ deviceFingerPrint: String,
+        _ uuid: UUID,
         _ scheduleType: String,
         completion: @escaping (
             (Result<T, RequestError>) -> ()
@@ -761,6 +765,9 @@ public struct HttpMethod<T: Codable> {
                     "x-rpc-client_type": clientType,
                     "Referer": "https://webstatic.mihoyo.com/",
                     "Cookie": cookie,
+                    "x-rpc-device_fp": deviceFingerPrint,
+                    "x-rpc-device_name": "iPhone",
+                    "x-rpc-device_id": uuid.uuidString,
                 ]
                 // http方法
                 switch method {
@@ -842,6 +849,8 @@ public struct HttpMethod<T: Codable> {
         _ serverID: String,
         _ uid: String,
         _ cookie: String,
+        _ deviceFingerPrint: String,
+        _ uuid: UUID,
         completion: @escaping (
             (Result<T, RequestError>) -> ()
         )
@@ -973,6 +982,9 @@ public struct HttpMethod<T: Codable> {
                     "Origin": "https://webstatic.mihoyo.com",
                     "Accept-Encoding": "gzip, deflate",
                     "Cookie": cookie,
+                    "x-rpc-device_fp": deviceFingerPrint,
+                    "x-rpc-device_name": "iPhone",
+                    "x-rpc-device_id": uuid.uuidString,
                 ]
                 // http方法
                 switch method {
@@ -1289,6 +1301,8 @@ public struct HttpMethod<T: Codable> {
         _ serverID: String,
         _ region: Region,
         _ cookie: String,
+        _ deviceFingerPrint: String,
+        _ uuid: UUID,
         completion: @escaping (
             (Result<T, RequestError>) -> ()
         )
@@ -1441,6 +1455,9 @@ public struct HttpMethod<T: Codable> {
                     "Accept-Encoding": "gzip, deflate",
                     "Referer": referer,
                     "Cookie": cookie,
+                    "x-rpc-device_fp": deviceFingerPrint,
+                    "x-rpc-device_name": "iPhone",
+                    "x-rpc-device_id": uuid.uuidString,
                 ]
                 // http方法
                 switch method {

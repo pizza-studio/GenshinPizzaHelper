@@ -9,6 +9,7 @@ import CoreData
 import Foundation
 import HBMihoyoAPI
 import Intents
+import UIKit
 
 class AccountConfigurationModel {
     // MARK: Lifecycle
@@ -79,7 +80,14 @@ class AccountConfigurationModel {
         newAccount.uid = uid
         newAccount.cookie = cookie
         newAccount.server = server
-        newAccount.uuid = UUID()
+
+        #if !os(watchOS)
+        let uuid = UIDevice.current.identifierForVendor ?? UUID()
+        #else
+        let uuid = UUID()
+        #endif
+
+        newAccount.uuid = uuid
         saveAccountConfigs()
     }
 

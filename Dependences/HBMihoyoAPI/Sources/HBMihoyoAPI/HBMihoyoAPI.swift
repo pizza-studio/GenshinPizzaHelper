@@ -1,6 +1,7 @@
 import Defaults
 import DefaultsKeys
 import Foundation
+import UIKit
 
 @available(iOS 13, watchOS 8, *)
 public enum MihoyoAPI {
@@ -16,7 +17,7 @@ public enum MihoyoAPI {
         serverID: String,
         uid: String,
         cookie: String,
-        uuid: UUID = UUID(),
+        uuid: UUID,
         deviceFingerPrint: String?,
         completion: @escaping (
             FetchResult
@@ -182,7 +183,7 @@ public enum MihoyoAPI {
                 serverID,
                 uid,
                 cookie,
-                UUID(),
+                uuid,
                 deviceFingerPrint
             ) { result in
                 switch result {
@@ -402,6 +403,7 @@ public enum MihoyoAPI {
     ///     - completion: 数据
     public static func fetchSimplifiedInfos(
         cookie: String,
+        deviceId: UUID,
         completion: @escaping (
             SimplifiedUserDataResult
         ) -> ()
@@ -412,7 +414,8 @@ public enum MihoyoAPI {
             .commonWidgetRequest(
                 .get,
                 urlStr,
-                cookie
+                cookie,
+                deviceId
             ) { result in
                 switch result {
                 case let .success(requestResult):
@@ -613,6 +616,7 @@ public enum MihoyoAPI {
     public static func getUserGameRolesByCookie(
         _ cookie: String,
         _ region: Region,
+        _ deviceId: UUID,
         completion: @escaping (
             Result<[FetchedAccount], FetchError>
         ) -> ()
@@ -632,6 +636,7 @@ public enum MihoyoAPI {
                 serverID: "cn_gf01",
                 uid: "12345678",
                 cookie: cookie,
+                uuid: deviceId,
                 deviceFingerPrint: nil
             ) { _ in
                 HttpMethod<RequestAccountListResult>
@@ -708,6 +713,7 @@ public enum MihoyoAPI {
                     serverID: server.id,
                     uid: "12345678",
                     cookie: cookie,
+                    uuid: deviceId,
                     deviceFingerPrint: nil
                 ) { _ in
                     HttpMethod<RequestAccountListResult>
@@ -792,6 +798,8 @@ public enum MihoyoAPI {
         serverID: String,
         uid: String,
         cookie: String,
+        deviceFingerPrint: String,
+        deviceId: UUID,
         completion: @escaping (
             BasicInfoFetchResult
         ) -> ()
@@ -811,7 +819,9 @@ public enum MihoyoAPI {
                 region,
                 serverID,
                 uid,
-                cookie
+                cookie,
+                deviceFingerPrint,
+                deviceId
             ) { result in
                 switch result {
                 case let .success(requestResult):
@@ -890,6 +900,8 @@ public enum MihoyoAPI {
         serverID: String,
         region: Region,
         cookie: String,
+        deviceFingerPrint: String,
+        deviceId: UUID,
         completion: @escaping (
             LedgerDataFetchResult
         ) -> ()
@@ -916,7 +928,9 @@ public enum MihoyoAPI {
                 uid,
                 serverID,
                 region,
-                cookie
+                cookie,
+                deviceFingerPrint,
+                deviceId
             ) { result in
                 switch result {
                 case let .success(requestResult):
@@ -993,6 +1007,8 @@ public enum MihoyoAPI {
         serverID: String,
         uid: String,
         cookie: String,
+        deviceFingerPrint: String,
+        deviceId: UUID,
         scheduleType: String,
         completion: @escaping (
             SpiralAbyssDetailFetchResult
@@ -1014,6 +1030,8 @@ public enum MihoyoAPI {
                 serverID,
                 uid,
                 cookie,
+                deviceFingerPrint,
+                deviceId,
                 scheduleType
             ) { result in
                 switch result {

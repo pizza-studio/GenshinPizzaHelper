@@ -155,7 +155,7 @@ extension API {
             let enkaOfficial = "https://enka.network/api/uid/" + uid
             var urlStr = isMiyousheUID ? enkaMirror : enkaOfficial
             #if DEBUG
-            if !["114514003", "114514007"].contains(uid) {
+            if !["114514003", "114514007", "114514002"].contains(uid) {
                 urlStr = "https://gi.pizzastudio.org/static/player_detail_data_example_2.json"
             }
             #endif

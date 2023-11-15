@@ -299,18 +299,19 @@ struct AddAccountView: View {
         else { loginError = .notLoginError(-100, "settings.account.error.failedFromFetchingAccountInformation"); return
         }
         fetchAccountStatus = .progressing
-        MihoyoAPI.getUserGameRolesByCookie(unsavedCookie, region) { result in
-            switch result {
-            case let .success(fetchedAccountArray):
-                accountsForSelected = fetchedAccountArray
-                if !accountsForSelected
-                    .isEmpty { selectedAccount = accountsForSelected.first! }
-                loginError = nil
-            case let .failure(fetchError):
-                loginError = fetchError
+        MihoyoAPI
+            .getUserGameRolesByCookie(unsavedCookie, region, UIDevice.current.identifierForVendor ?? UUID()) { result in
+                switch result {
+                case let .success(fetchedAccountArray):
+                    accountsForSelected = fetchedAccountArray
+                    if !accountsForSelected
+                        .isEmpty { selectedAccount = accountsForSelected.first! }
+                    loginError = nil
+                case let .failure(fetchError):
+                    loginError = fetchError
+                }
+                fetchAccountStatus = .finished
             }
-            fetchAccountStatus = .finished
-        }
     }
 
     private func openWebView() {

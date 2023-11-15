@@ -13,10 +13,10 @@ import UIKit
 
 extension MihoyoAPI {
     public static func getDeviceFingerPrint(region: Region) async throws -> String {
-        let existingFingerPrint = Defaults[.deviceFingerPrint]
-        if !existingFingerPrint.isEmpty {
-            return existingFingerPrint
-        }
+//        let existingFingerPrint = Defaults[.deviceFingerPrint]
+//        if !existingFingerPrint.isEmpty {
+//            return existingFingerPrint
+//        }
         func generateSeed() -> String {
             let characters = "0123456789abcdef"
             var result = ""
@@ -36,7 +36,7 @@ extension MihoyoAPI {
         }
 
         let url = URL(string: "https://public-data-api.mihoyo.com/device-fp/api/getFp")!
-        let body: [String: String] = await [
+        let accountFpBody: [String: String] = await [
             "seed_id": generateSeed(),
             "device_id": (UIDevice.current.identifierForVendor ?? UUID()).uuidString,
             "platform": "5",
@@ -49,12 +49,29 @@ extension MihoyoAPI {
             "app_name": "account_cn",
             "device_fp": "38d7ee834d1e9",
         ]
+        let body: [String: String] = await [
+            "seed_id": generateSeed(),
+            "device_id": (UIDevice.current.identifierForVendor ?? UUID()).uuidString,
+            "platform": "5",
+            "seed_time": "\(Int(Date().timeIntervalSince1970) * 1000)",
+            // swiftlint:disable line_length
+            "ext_fields": """
+            {"vendor":"--","ramCapacity":"3662","cpuCores":"6","chargeStatus":"3","romCapacity":"121947","ramRemain":"76","accelerometer":"0.054596x-0.290237x-0.957809","networkType":"WIFI","screenSize":"390×844","isJailBreak":"0","gyroscope":"-0.024806x0.070681x-0.020708","IDFV":"275379E1-5FB1-42B9-86D6-F4F80A6CAC2C","proxyStatus":"1","magnetometer":"-118.163391x-247.904663x-353.548492","batteryStatus":"100","cpuType":"CPU_TYPE_ARM64","model":"iPhone13,2","osVersion":"17.1.1","romRemain":"3963","appMemory":"60"}
+            """,
+            // swiftlint:enable line_length
+            "app_name": "bbs_cn",
+            "device_fp": "38d7ebd3b45ae",
+        ]
         var request = URLRequest(url: url)
         request.httpBody = try JSONEncoder().encode(body)
         request.httpMethod = "POST"
         let (data, _) = try await URLSession.shared.data(for: request)
         let fingerPrint = try DeviceFingerPrintResult.decodeFromMiHoYoAPIJSONResult(data: data)
             .device_fp
+
+        print(
+            "get device_fp \(fingerPrint) for \(await UIDevice.current.identifierForVendor?.uuidString ?? "unexpected empty")"
+        )
         return fingerPrint
     }
 
