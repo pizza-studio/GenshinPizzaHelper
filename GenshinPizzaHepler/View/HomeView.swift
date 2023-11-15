@@ -22,6 +22,10 @@ struct HomeView: View {
 
     @Environment(\.scenePhase)
     var scenePhase
+
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
+
     @State
     var eventContents: [EventModel] = []
 
@@ -40,7 +44,7 @@ struct HomeView: View {
     var accounts: [Account] { viewModel.accounts }
     var body: some View {
         HStack {
-            Spacer()
+            if horizontalSizeClass != .compact { Spacer() }
             NavigationView {
                 ScrollView {
                     VStack(spacing: UIFont.systemFontSize) {
@@ -88,7 +92,7 @@ struct HomeView: View {
                 .background(Color(uiColor: viewBackgroundColor))
             }
             .navigationViewStyle(.stack)
-            .frame(maxWidth: 500)
+            .frame(maxWidth: horizontalSizeClass == .compact ? nil : 500)
             .myRefreshable {
                 withAnimation {
                     DispatchQueue.main.async {
@@ -97,7 +101,7 @@ struct HomeView: View {
                     getCurrentEvent()
                 }
             }
-            Spacer()
+            if horizontalSizeClass != .compact { Spacer() }
         }
         .background(Color(uiColor: viewBackgroundColor))
     }
