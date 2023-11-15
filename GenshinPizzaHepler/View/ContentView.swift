@@ -21,6 +21,9 @@ struct ContentView: View {
     @Environment(\.scenePhase)
     var scenePhase
 
+    @Environment(\.colorScheme)
+    var colorScheme
+
     @State
     var selection: Int = !(0 ..< 3).contains(Defaults[.appTabIndex]) ? 0 : Defaults[.appTabIndex]
 
@@ -66,16 +69,23 @@ struct ContentView: View {
         }
     ) }
 
+    var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
     var body: some View {
         ZStack {
-            Color(UIColor.systemBackground).frame(maxWidth: .infinity, maxHeight: .infinity)
+            Color(uiColor: viewBackgroundColor).frame(maxWidth: .infinity, maxHeight: .infinity)
                 .zIndex(-114_514)
 
             TabView(selection: index) {
                 HomeView(animation: animation)
                     .tag(0)
                     .environmentObject(viewModel)
-                    .frame(maxWidth: 500)
                     .tabItem {
                         Label("概览", systemSymbol: .listBullet)
                     }

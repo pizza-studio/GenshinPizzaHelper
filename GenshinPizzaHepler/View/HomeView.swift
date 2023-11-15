@@ -17,6 +17,9 @@ struct HomeView: View {
     @EnvironmentObject
     var viewModel: ViewModel
 
+    @Environment(\.colorScheme)
+    var colorScheme
+
     @Environment(\.scenePhase)
     var scenePhase
     @State
@@ -26,61 +29,77 @@ struct HomeView: View {
 
     var sharedPadding: CGFloat = UIFont.systemFontSize / 2
 
+    var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
     var accounts: [Account] { viewModel.accounts }
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: UIFont.systemFontSize) {
-                    // MARK: - 今日材料
+        HStack {
+            Spacer()
+            NavigationView {
+                ScrollView {
+                    VStack(spacing: UIFont.systemFontSize) {
+                        // MARK: - 今日材料
 
-                    InAppMaterialNavigator()
-                        .onChange(of: scenePhase, perform: { newPhase in
-                            switch newPhase {
-                            case .active:
-                                getCurrentEvent()
-                            default:
-                                break
+                        InAppMaterialNavigator()
+                            .onChange(of: scenePhase, perform: { newPhase in
+                                switch newPhase {
+                                case .active:
+                                    getCurrentEvent()
+                                default:
+                                    break
+                                }
+                            })
+                            .onAppear {
+                                if eventContents.isEmpty {
+                                    getCurrentEvent()
+                                }
                             }
-                        })
-                        .onAppear {
-                            if eventContents.isEmpty {
-                                getCurrentEvent()
+
+                        // MARK: - 当前活动
+
+                        CurrentEventNavigator(eventContents: $eventContents)
+                        if viewModel.accounts.isEmpty {
+                            NavigationLink(destination: AddAccountView()) {
+                                Label("settings.account.pleaseAddAccountFirst", systemSymbol: .plusCircle)
                             }
+                            .padding(sharedPadding)
+                            .blurMaterialBackground()
+                            .clipShape(RoundedRectangle(
+                                cornerRadius: 10,
+                                style: .continuous
+                            ))
+                            .padding(.top, sharedPadding * 2)
+                        } else {
+                            // MARK: - 账号信息
+
+                            AccountInfoCards(animation: animation)
                         }
-
-                    // MARK: - 当前活动
-
-                    CurrentEventNavigator(eventContents: $eventContents)
-                    if viewModel.accounts.isEmpty {
-                        NavigationLink(destination: AddAccountView()) {
-                            Label("settings.account.pleaseAddAccountFirst", systemSymbol: .plusCircle)
-                        }
-                        .padding(sharedPadding)
-                        .blurMaterialBackground()
-                        .clipShape(RoundedRectangle(
-                            cornerRadius: 10,
-                            style: .continuous
-                        ))
-                        .padding(.top, sharedPadding * 2)
-                    } else {
-                        // MARK: - 账号信息
-
-                        AccountInfoCards(animation: animation)
                     }
+                    .background(Color(uiColor: viewBackgroundColor))
+                }
+                .navigationTitle("app.title.full")
+                .navigationBarTitleDisplayMode(.large)
+                .background(Color(uiColor: viewBackgroundColor))
+            }
+            .navigationViewStyle(.stack)
+            .frame(maxWidth: 500)
+            .myRefreshable {
+                withAnimation {
+                    DispatchQueue.main.async {
+                        viewModel.refreshData()
+                    }
+                    getCurrentEvent()
                 }
             }
-            .navigationTitle("app.title.full")
-            .navigationBarTitleDisplayMode(.large)
+            Spacer()
         }
-        .navigationViewStyle(.stack)
-        .myRefreshable {
-            withAnimation {
-                DispatchQueue.main.async {
-                    viewModel.refreshData()
-                }
-                getCurrentEvent()
-            }
-        }
+        .background(Color(uiColor: viewBackgroundColor))
     }
 
     func getCurrentEvent() {

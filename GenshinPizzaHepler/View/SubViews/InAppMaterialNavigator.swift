@@ -25,7 +25,18 @@ struct InAppMaterialNavigator: View {
     @Namespace
     var animationMaterial
 
+    @Environment(\.colorScheme)
+    var colorScheme
+
     let imageWidth = CGFloat(50)
+
+    var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
 
     var talentMaterialProvider: TalentMaterialProvider {
         .init(weekday: showingWeekday)
@@ -173,7 +184,13 @@ struct InAppMaterialNavigator: View {
                 }
             }
         }
-        .blurMaterialBackground()
+        .background(
+            Color(uiColor: sectionBackgroundColor),
+            in: RoundedRectangle(
+                cornerRadius: 20,
+                style: .continuous
+            )
+        )
         .padding(.horizontal)
         .onTapGesture {
             if !showMaterialDetail {
