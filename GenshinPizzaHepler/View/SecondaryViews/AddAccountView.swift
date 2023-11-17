@@ -244,8 +244,12 @@ struct AddAccountView: View {
                         name: unsavedName,
                         uid: unsavedUid,
                         cookie: unsavedCookie,
-                        server: unsavedServer
+                        server: unsavedServer,
+                        deviceFingerPrint: unsavedDeviceFingerPrint
                     )
+                    for account in viewModel.accounts {
+                        print("All Accounts: \(account.config.name ?? "name nil") - \(account.config.uid ?? "uid nil")")
+                    }
                     presentationMode.wrappedValue.dismiss()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         ReviewHandler.requestReview()

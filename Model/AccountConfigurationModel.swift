@@ -73,7 +73,7 @@ class AccountConfigurationModel {
         }
     }
 
-    func addAccount(name: String, uid: String, cookie: String, server: Server) {
+    func addAccount(name: String, uid: String, cookie: String, server: Server, deviceFingerPrint: String) {
         // 新增账号至Core Data
         let newAccount = AccountConfiguration(context: container.viewContext)
         newAccount.name = name
@@ -81,13 +81,15 @@ class AccountConfigurationModel {
         newAccount.cookie = cookie
         newAccount.server = server
 
-        #if !os(watchOS)
-        let uuid = UIDevice.current.identifierForVendor ?? UUID()
-        #else
-        let uuid = UUID()
-        #endif
+//        #if !os(watchOS)
+//        let uuid = UIDevice.current.identifierForVendor ?? UUID()
+//        #else
+//        let uuid = UUID()
+//        #endif
 
-        newAccount.uuid = uuid
+        // The UUID here is only used for distinguishing accounts, NOT for the device UUID!
+        newAccount.uuid = UUID()
+        newAccount.deviceFingerPrint = deviceFingerPrint
         saveAccountConfigs()
     }
 

@@ -149,7 +149,7 @@ class ViewModel: NSObject, ObservableObject {
         print("force account fetched")
     }
 
-    func addAccount(name: String, uid: String, cookie: String, server: Server) {
+    func addAccount(name: String, uid: String, cookie: String, server: Server, deviceFingerPrint: String) {
         // 添加的第一个账号作为材料刷新的时区
         if accounts.isEmpty {
             Defaults[.defaultServer] = server.rawValue
@@ -159,7 +159,8 @@ class ViewModel: NSObject, ObservableObject {
             name: name,
             uid: uid,
             cookie: cookie,
-            server: server
+            server: server,
+            deviceFingerPrint: deviceFingerPrint
         )
         fetchAccount()
     }
