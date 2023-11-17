@@ -300,7 +300,12 @@ struct AddAccountView: View {
 
     fileprivate func getAccountsForSelect() {
         guard unsavedCookie != ""
-        else { loginError = .notLoginError(-100, "settings.account.error.failedFromFetchingAccountInformation"); return
+        else {
+            loginError = .notLoginError(
+                -100,
+                "settings.account.error.failedFromFetchingAccountInformation".localized
+            )
+            return
         }
         fetchAccountStatus = .progressing
         MihoyoAPI

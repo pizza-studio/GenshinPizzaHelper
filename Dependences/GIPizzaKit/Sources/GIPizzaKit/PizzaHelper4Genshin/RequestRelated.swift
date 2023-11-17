@@ -135,7 +135,7 @@ extension FetchError {
         case .requestError:
             return "网络错误".localized
         case .notLoginError:
-            return "未获取到登录信息，请重试".localized
+            return "settings.account.error.failedFromFetchingAccountInformation".localized
         case let .unknownError(retcode, _):
             return String(
                 format: NSLocalizedString("未知错误码：%lld", comment: "未知错误码：%lld"),
