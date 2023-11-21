@@ -856,7 +856,8 @@
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "請先選擇帳號";
 "角色展示柜" = "角色展示櫃";
-"账号未展示角色" = "帳號未展示角色";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka 沒能成功從遊戲伺服器取得玩家資料。";
+"account.playerDetailResult.message.characterShowCaseClassified" = "帳號未展示角色詳情";
 "detailPortal.todayAcquisition.title" = "今日入帳";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "需点此重新登入該帳號以查詢";
 // apiral abyss sheet

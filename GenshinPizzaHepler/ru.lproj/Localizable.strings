@@ -856,7 +856,8 @@
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "Пожалуйста, выберите сначала аккаунт";
 "角色展示柜" = "Галерея персонажей";
-"账号未展示角色" = "Не найдено такого персонажа в галерее персонажей";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka failed from retrieving the player's data from the game server.";
+"account.playerDetailResult.message.characterShowCaseClassified" = "Не найдено такого персонажа в галерее персонажей";
 "detailPortal.todayAcquisition.title" = "Получено сегодня";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "Пожалуйста, нажмите, чтобы повторно войти в систему для запроса этой части.";
 // apiral abyss sheet

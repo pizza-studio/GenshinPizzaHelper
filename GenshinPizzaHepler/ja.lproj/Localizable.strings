@@ -856,7 +856,8 @@
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "まずアカウントを選んでください";
 "角色展示柜" = "キャラショーケース";
-"账号未展示角色" = "ショーケースにはキャラがいません";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka にてゲームサーバーからプレーヤー資料を取り出すのはできなかった。";
+"account.playerDetailResult.message.characterShowCaseClassified" = "ショーケースにはキャラがいません";
 "detailPortal.todayAcquisition.title" = "今日の収穫";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "タップしてもう一度ログインしてください";
 // apiral abyss sheet

@@ -856,7 +856,8 @@
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "Please choose account first";
 "角色展示柜" = "Character Showcase";
-"账号未展示角色" = "No characters found in the Character Showcase";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka failed from retrieving the player's data from the game server.";
+"account.playerDetailResult.message.characterShowCaseClassified" = "No characters found in the Character Showcase";
 "detailPortal.todayAcquisition.title" = "Acquired Today";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "Please tap to relogin to query this part.";
 // apiral abyss sheet

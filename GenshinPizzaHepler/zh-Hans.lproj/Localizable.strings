@@ -856,7 +856,8 @@ Created by Bill Haku on 2022/8/23.
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "请先选择账号";
 "角色展示柜" = "角色展示柜";
-"账号未展示角色" = "账号未展示角色";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka 未能成功从游戏服务器取得玩家数据。";
+"account.playerDetailResult.message.characterShowCaseClassified" = "账号未展示角色详情";
 "detailPortal.todayAcquisition.title" = "今日入账";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "需点此重新登录该账号以查询";
 // apiral abyss sheet

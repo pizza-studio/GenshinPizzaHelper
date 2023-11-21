@@ -292,7 +292,7 @@ struct DetailPortalView: View {
                 let fetchedDetail = try? result.get()
                 switch result {
                 case .success:
-                    if let fetchedDetail = fetchedDetail {
+                    if let fetchedDetail = fetchedDetail, fetchedDetail.basicInfo != nil {
                         successView(fetchedDetail)
                     } else {
                         failureView(
@@ -326,8 +326,16 @@ struct DetailPortalView: View {
         Section {
             VStack {
                 if playerDetail.avatars.isEmpty {
-                    Text("账号未展示角色")
-                        .foregroundColor(.secondary)
+                    Text(
+                        playerDetail
+                            .basicInfo != nil
+                            ? "account.playerDetailResult.message.characterShowCaseClassified"
+                            : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
+                    )
+                    .foregroundColor(.secondary)
+                    if let msg = playerDetail.enkaMessage {
+                        Text(msg).foregroundColor(.secondary).controlSize(.small)
+                    }
                 } else {
                     ScrollView(.horizontal) {
                         HStack {

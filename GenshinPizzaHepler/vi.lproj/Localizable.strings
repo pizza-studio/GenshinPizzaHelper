@@ -993,7 +993,8 @@
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "Vui lòng chọn tài khoản trước";
 "角色展示柜" = "Đội Hình Nhân Vật";
-"账号未展示角色" = "Không thể tìm thấy đội hình nhân vật nào";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka failed from retrieving the player's data from the game server.";
+"account.playerDetailResult.message.characterShowCaseClassified" = "Không thể tìm thấy đội hình nhân vật nào";
 "detailPortal.todayAcquisition.title" = "Hôm Nay Nhận Được";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "Vui lòng nhấn để đăng nhập lại để truy vấn phần này.";
 // apiral abyss sheet

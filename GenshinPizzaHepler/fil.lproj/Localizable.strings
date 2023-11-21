@@ -856,7 +856,8 @@
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "Pumili muna ng account";
 "角色展示柜" = "Character Showcase";
-"账号未展示角色" = "Walang character mahanap sa Character Showcase";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka failed from retrieving the player's data from the game server.";
+"account.playerDetailResult.message.characterShowCaseClassified" = "Walang character mahanap sa Character Showcase";
 "detailPortal.todayAcquisition.title" = "Nakuha Ngayon";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "Please tap to relogin to query this part.";
 // apiral abyss sheet
