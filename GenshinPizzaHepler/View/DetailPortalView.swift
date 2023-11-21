@@ -217,7 +217,7 @@ struct DetailPortalView: View {
                         VStack(alignment: .leading) {
                             HStack(spacing: 10) {
                                 VStack(alignment: .leading) {
-                                    Text(playerDetail.basicInfo?.nickname ?? "ERROR: 114_514")
+                                    Text(playerDetail.basicInfo?.nickname ?? "ENKA ERROR")
                                         .font(.title3)
                                         .bold()
                                         .padding(.top, 5)
@@ -225,7 +225,7 @@ struct DetailPortalView: View {
                                     Text(
                                         playerDetail.basicInfo?
                                             .signature ??
-                                            "Enka Error: \(playerDetail.enkaMessage ?? "114_514_19_19_810")"
+                                            "↑: \(playerDetail.enkaMessage ?? "UNKNOWN_ENKA_ERROR")"
                                     )
                                     .foregroundColor(.secondary)
                                     .font(.footnote)
@@ -242,10 +242,10 @@ struct DetailPortalView: View {
                     }
                 } footer: {
                     HStack {
-                        Text("UID: \(account.config.uid ?? "1145141919810")")
+                        Text("UID: \(account.config.uid ?? "UID_NULLED")")
                         Spacer()
                         let worldLevelTitle = "detailPortal.player.worldLevel".localized
-                        Text("\(worldLevelTitle): \(playerDetail.basicInfo?.worldLevel ?? 114514)")
+                        Text("\(worldLevelTitle): \(playerDetail.basicInfo?.worldLevel ?? 213)")
                     }
                 }
             } else {

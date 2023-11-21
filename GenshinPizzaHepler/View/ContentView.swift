@@ -80,7 +80,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Color(uiColor: viewBackgroundColor).frame(maxWidth: .infinity, maxHeight: .infinity)
-                .zIndex(-114_514)
+                .zIndex(-213)
 
             TabView(selection: index) {
                 HomeView(animation: animation)

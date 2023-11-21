@@ -15,7 +15,7 @@ import SwiftUI
 
 /// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
 public enum CharacterAsset: Int, CaseIterable {
-    case Paimon = -114_514
+    case Paimon = -213
     case Hotaru = 10000007
     case Sora = 10000005
     case Sucrose = 10000043
@@ -504,7 +504,7 @@ extension Enka.CharacterMap.Character {
     public var enkaID: Int {
         CharacterAsset.allCases.filter { currentChar in
             currentChar.frontPhotoFileName == iconString
-        }.first?.enkaId ?? -114_514
+        }.first?.enkaId ?? -213
     }
 
     public var asset: CharacterAsset {

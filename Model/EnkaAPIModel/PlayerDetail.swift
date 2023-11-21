@@ -148,7 +148,7 @@ struct PlayerDetail {
             self.character = character
             self.enkaID = avatarInfo.avatarId
             self.characterAsset = CharacterAsset.match(id: avatarInfo.avatarId)
-            self.costumeAsset = .init(rawValue: avatarInfo.costumeId ?? -114_514)
+            self.costumeAsset = .init(rawValue: avatarInfo.costumeId ?? -213)
 
             self.name = localizedDictionary
                 .nameFromHashMap(character.NameTextMapHash)

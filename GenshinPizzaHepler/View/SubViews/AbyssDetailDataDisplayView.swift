@@ -239,7 +239,7 @@ private struct BattleDataInfoProvider: View {
             Text(name.localized)
             Spacer()
             Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
-            CharacterAsset.match(id: avatarID ?? -114_514).decoratedIcon(32, cutTo: .face)
+            CharacterAsset.match(id: avatarID ?? -213).decoratedIcon(32, cutTo: .face)
         }
     }
 }

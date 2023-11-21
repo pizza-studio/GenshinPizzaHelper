@@ -106,16 +106,16 @@ extension Enka.PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
 extension PlayerDetail.PlayerBasicInfo {
     @ViewBuilder
     public func cardIcon(_ size: CGFloat) -> some View {
-        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -114_514)
-        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
+        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -213)
+        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -213) // Nullable
         let givenNameCard = NameCard(rawValue: nameCardId)
         charAsset.cardIcon(size, costume: costume, namecard: givenNameCard)
     }
 
     @ViewBuilder
     public func decoratedIcon(_ size: CGFloat) -> some View {
-        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -114_514)
-        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
+        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -213)
+        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -213) // Nullable
         let givenNameCard = NameCard(rawValue: nameCardId)
         charAsset.decoratedIcon(size, cutTo: .head, costume: costume, namecard: givenNameCard)
     }
