@@ -293,25 +293,16 @@ struct DetailPortalView: View {
                 switch result {
                 case .success:
                     if let fetchedDetail = fetchedDetail {
-                        if fetchedDetail.basicInfo == nil {
-                            failureView(
-                                error: PlayerDetail.PlayerDetailError
-                                    .failToGetCharacterData(
-                                        message: fetchedDetail
-                                            .enkaMessage ?? "account.playerDetailResult.get.returned.nil"
-                                    )
-                            )
-                        } else {
-                            successView(fetchedDetail)
-                        }
+                        // 此时拿到的资料可能是以 HTTP 200 送过来的错误资料。总之交给 dataFetchedView() 处理。
+                        dataFetchedView(fetchedDetail)
                     } else {
-                        failureView(
+                        dataFetchFailedView(
                             error: PlayerDetail.PlayerDetailError
                                 .failToGetCharacterData(message: "account.playerDetailResult.get.returned.nil")
                         )
                     }
                 case let .failure(error):
-                    failureView(error: error)
+                    dataFetchFailedView(error: error)
                 }
             } else if !account.fetchPlayerDetailComplete {
                 loadingView()
@@ -332,7 +323,7 @@ struct DetailPortalView: View {
     }
 
     @ViewBuilder
-    func successView(_ playerDetail: PlayerDetail) -> some View {
+    func dataFetchedView(_ playerDetail: PlayerDetail) -> some View {
         Section {
             VStack {
                 if playerDetail.avatars.isEmpty {
@@ -696,7 +687,7 @@ struct DetailPortalView: View {
     }
 
     @ViewBuilder
-    func failureView(error: PlayerDetail.PlayerDetailError) -> some View {
+    func dataFetchFailedView(error: PlayerDetail.PlayerDetailError) -> some View {
         Section {
             HStack {
                 Spacer()
