@@ -121,8 +121,7 @@ extension CharacterAsset {
         if Defaults[.useActualCharacterNames], self == .Kunikuzushi {
             return localizedKey.localized
         }
-        var result = localizedKey.localized.localizedWithFix
-        return result
+        return localizedKey.localized.localizedWithFix
     }
 }
 
