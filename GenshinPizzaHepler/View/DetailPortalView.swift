@@ -292,8 +292,18 @@ struct DetailPortalView: View {
                 let fetchedDetail = try? result.get()
                 switch result {
                 case .success:
-                    if let fetchedDetail = fetchedDetail, fetchedDetail.basicInfo != nil {
-                        successView(fetchedDetail)
+                    if let fetchedDetail = fetchedDetail {
+                        if fetchedDetail.basicInfo == nil {
+                            failureView(
+                                error: PlayerDetail.PlayerDetailError
+                                    .failToGetCharacterData(
+                                        message: fetchedDetail
+                                            .enkaMessage ?? "account.playerDetailResult.get.returned.nil"
+                                    )
+                            )
+                        } else {
+                            successView(fetchedDetail)
+                        }
                     } else {
                         failureView(
                             error: PlayerDetail.PlayerDetailError
