@@ -9,17 +9,15 @@ import Foundation
 
 // MARK: - WidgetDailyNote
 
-public struct WidgetDailyNote {
-    // MARK: Public
-
-    public struct DailyTaskInformation {
+public struct WidgetDailyNote: DailyNote {
+    public struct DailyTaskInformation: HoYoKit.DailyTaskInformation {
         public let totalTaskCount: Int
         public let finishedTaskCount: Int
         public let isExtraRewardReceived: Bool
     }
 
-    public struct ExpeditionInformation {
-        public struct Expedition {
+    public struct ExpeditionInformation: HoYoKit.ExpeditionInformation {
+        public struct Expedition: HoYoKit.Expedition {
             public let isFinished: Bool
             public let iconURL: URL
         }
@@ -28,23 +26,23 @@ public struct WidgetDailyNote {
         public let expeditions: [Expedition]
     }
 
-    public struct HomeCoinInformation {
-        let maxHomeCoin: Int
-        let currentHomeCoin: Int
+    public struct HomeCoinInformation: HoYoKit.HomeCoinInformation {
+        public let maxHomeCoin: Int
+        public let currentHomeCoin: Int
+
+        public let fullTime: Date
     }
 
-    public struct ResinInformation {
+    public struct ResinInformation: HoYoKit.ResinInformation {
         public let maxResin: Int
         public let currentResin: Int
         public let resinRecoveryTime: Date
     }
 
-    // MARK: Internal
-
-    let dailyTaskInformation: DailyTaskInformation
-    let expeditionInformation: ExpeditionInformation
-    let homeCoinInformation: HomeCoinInformation
-    let resinInformation: ResinInformation
+    public let dailyTaskInformation: DailyTaskInformation
+    public let expeditionInformation: ExpeditionInformation
+    public let homeCoinInformation: HomeCoinInformation
+    public let resinInformation: ResinInformation
 }
 
 extension WidgetDailyNote {

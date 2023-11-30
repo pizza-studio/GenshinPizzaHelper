@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension DailyNote.HomeCoinInformation: Decodable {
+extension GeneralDailyNote.HomeCoinInformation: Decodable {
     private enum CodingKeys: String, CodingKey {
         case maxHomeCoin = "max_home_coin"
         case currentHomeCoin = "current_home_coin"

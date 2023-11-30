@@ -105,11 +105,14 @@ class ViewModel: NSObject, ObservableObject {
             print("account fetched")
             #if !os(watchOS)
             accountConfigs.forEach { config in
-                if config.server.region == .china {
+                if config.server.region == .mainlandChina {
                     if (config.deviceFingerPrint == nil) || (config.deviceFingerPrint == "") {
                         Task {
                             config
-                                .deviceFingerPrint = (try? await MihoyoAPI.getDeviceFingerPrint(region: .china)) ?? ""
+                                .deviceFingerPrint = (
+                                    try? await MihoyoAPI
+                                        .getDeviceFingerPrint(region: .mainlandChina)
+                                ) ?? ""
                             try? self.accountConfigurationModel.container.viewContext.save()
                         }
                     }

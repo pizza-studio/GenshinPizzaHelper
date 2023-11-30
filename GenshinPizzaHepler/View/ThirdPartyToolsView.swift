@@ -100,7 +100,7 @@ extension ThirdPartyToolsView {
         let regions = availableRegions.isEmpty ? Region.allCases : availableRegions
         ForEach(regions, id: \.self) { region in
             switch region {
-            case .china: NavigationLink(
+            case .mainlandChina: NavigationLink(
                     destination:
                     TeyvatMapWebView(isHoYoLAB: false)
                         .navigationTitle("提瓦特大地图")

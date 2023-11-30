@@ -7,9 +7,9 @@
 
 import Foundation
 
-// MARK: - DailyNote + Decodable
+// MARK: - GeneralDailyNote + Decodable
 
-extension DailyNote: Decodable {
+extension GeneralDailyNote: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         self.dailyTaskInformation = try container.decode(DailyTaskInformation.self)
@@ -21,6 +21,6 @@ extension DailyNote: Decodable {
     }
 }
 
-// MARK: - DailyNote + DecodableFromMiHoYoAPIJSONResult
+// MARK: - GeneralDailyNote + DecodableFromMiHoYoAPIJSONResult
 
-extension DailyNote: DecodableFromMiHoYoAPIJSONResult {}
+extension GeneralDailyNote: DecodableFromMiHoYoAPIJSONResult {}

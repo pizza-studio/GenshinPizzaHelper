@@ -27,7 +27,7 @@ struct AddAccountView: View {
     @State
     private var unsavedCookie: String = ""
     @State
-    private var unsavedServer: Server = .celestia
+    private var unsavedServer: Server = .china
     @State
     private var unsavedDeviceFingerPrint: String = ""
 
@@ -56,7 +56,7 @@ struct AddAccountView: View {
     private var fetchAccountStatus: FetchAccountStatus = .unknown
 
     @State
-    private var region: Region = .china
+    private var region: Region = .mainlandChina
 
     @State
     private var loginError: FetchError?
@@ -83,7 +83,7 @@ struct AddAccountView: View {
                     } else {
                         Menu {
                             Button("settings.account.region.miyoushe") {
-                                region = .china
+                                region = .mainlandChina
                                 openWebView()
                             }
                             Button("settings.account.region.hoyolabInternational") {
@@ -327,9 +327,9 @@ struct AddAccountView: View {
     private func openWebView() {
         isWebShown.toggle()
         Task {
-            if region == .china {
+            if region == .mainlandChina {
                 do {
-                    unsavedDeviceFingerPrint = try await MihoyoAPI.getDeviceFingerPrint(region: .china)
+                    unsavedDeviceFingerPrint = try await MihoyoAPI.getDeviceFingerPrint(region: .mainlandChina)
                 } catch {
                     print(error)
                 }

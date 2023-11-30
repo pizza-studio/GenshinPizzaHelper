@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension DailyNote.TransformerInformation: Decodable {
+extension GeneralDailyNote.TransformerInformation: Decodable {
     public init(from decoder: Decoder) throws {
         let basicContainer = try decoder.container(keyedBy: BasicCodingKeys.self)
         let container = try basicContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .transformer)

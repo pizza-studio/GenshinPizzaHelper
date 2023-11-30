@@ -37,7 +37,7 @@ struct TextEditorView: View {
                         )
                         Menu {
                             Button("settings.account.region.miyoushe") {
-                                getCookieRegion = .china
+                                getCookieRegion = .mainlandChina
                                 isWebShown.toggle()
                             }
                             Button("settings.account.region.hoyolabInternational") {
@@ -62,11 +62,11 @@ struct TextEditorView: View {
         .navigationBarTitle(title, displayMode: .inline)
         .sheet(item: $getCookieRegion) { region in
             switch region {
-            case .china:
+            case .mainlandChina:
                 GetCookieWebView(
                     isShown: $isWebShown,
                     cookie: $content,
-                    region: .china
+                    region: .mainlandChina
                 )
                 .onChange(of: isWebShown) { _ in
                     getCookieRegion = nil

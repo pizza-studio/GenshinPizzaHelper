@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension DailyNote.WeeklyBossesInformation: Decodable {
+extension GeneralDailyNote.WeeklyBossesInformation: Decodable {
     private enum CodingKeys: String, CodingKey {
         case totalResinDiscount = "resin_discount_num_limit"
         case remainResinDiscount = "remain_resin_discount_num"

@@ -7,9 +7,9 @@
 
 import Foundation
 
-// MARK: - DailyNote.ExpeditionInformation + Decodable
+// MARK: - GeneralDailyNote.ExpeditionInformation + Decodable
 
-extension DailyNote.ExpeditionInformation: Decodable {
+extension GeneralDailyNote.ExpeditionInformation: Decodable {
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
@@ -20,19 +20,23 @@ extension DailyNote.ExpeditionInformation: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.maxExpeditionsCount = try container.decode(Int.self, forKey: .maxExpeditionsCount)
-        self.expeditions = try container.decode([DailyNote.ExpeditionInformation.Expedition].self, forKey: .expeditions)
+        self.expeditions = try container.decode(
+            [GeneralDailyNote.ExpeditionInformation.Expedition].self,
+            forKey: .expeditions
+        )
     }
 }
 
-// MARK: - DailyNote.ExpeditionInformation.Expedition + Decodable
+// MARK: - GeneralDailyNote.ExpeditionInformation.Expedition + Decodable
 
-extension DailyNote.ExpeditionInformation.Expedition: Decodable {
+extension GeneralDailyNote.ExpeditionInformation.Expedition: Decodable {
     public init(from decoder: Decoder) throws {
-        let container: KeyedDecodingContainer<DailyNote.ExpeditionInformation.Expedition.CodingKeys> = try decoder
-            .container(keyedBy: DailyNote.ExpeditionInformation.Expedition.CodingKeys.self)
+        let container: KeyedDecodingContainer<GeneralDailyNote.ExpeditionInformation.Expedition.CodingKeys> =
+            try decoder
+                .container(keyedBy: GeneralDailyNote.ExpeditionInformation.Expedition.CodingKeys.self)
         if let timeIntervalUntilFinish = TimeInterval(try container.decode(
             String.self,
-            forKey: DailyNote.ExpeditionInformation.Expedition.CodingKeys.finishTime
+            forKey: GeneralDailyNote.ExpeditionInformation.Expedition.CodingKeys.finishTime
         )) {
             self.finishTime = Date(timeIntervalSinceNow: timeIntervalUntilFinish)
         } else {
@@ -46,7 +50,7 @@ extension DailyNote.ExpeditionInformation.Expedition: Decodable {
         }
         self.iconURL = try container.decode(
             URL.self,
-            forKey: DailyNote.ExpeditionInformation.Expedition.CodingKeys.iconURL
+            forKey: GeneralDailyNote.ExpeditionInformation.Expedition.CodingKeys.iconURL
         )
     }
 

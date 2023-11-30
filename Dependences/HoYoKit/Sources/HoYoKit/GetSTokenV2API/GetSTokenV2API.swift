@@ -13,7 +13,7 @@ extension MiHoYoAPI {
     public static func sTokenV2(cookie: String) async throws -> String {
         let request = try await generateRequest(
             httpMethod: .post,
-            region: .china,
+            region: .mainlandChina,
             host: "passport-api.mihoyo.com",
             path: "/account/ma-cn-session/app/getTokenBySToken",
             queryItems: [],

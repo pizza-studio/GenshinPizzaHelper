@@ -97,7 +97,7 @@ struct TestSectionView: View {
             }
 
             if connectStatus == .success {
-                if !cookie.contains("stoken"), server.region == .china {
+                if !cookie.contains("stoken"), server.region == .mainlandChina {
                     Label {
                         Text("本账号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。")
                     } icon: {

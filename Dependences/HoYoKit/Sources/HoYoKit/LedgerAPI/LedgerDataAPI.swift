@@ -10,7 +10,7 @@ import Foundation
 extension MiHoYoAPI {
     public static func ledgerData(month: Int, uid: String, server: Server, cookie: String) async throws -> LedgerData {
         let cookie = try await { () -> String in
-            if server.region == .mainlandCN {
+            if server.region == .mainlandChina {
                 let cookieToken = try await cookieToken(cookie: cookie)
                 return "cookie_token=\(cookieToken.cookieToken); account_id=\(cookieToken.uid);"
             } else {
@@ -18,7 +18,7 @@ extension MiHoYoAPI {
             }
         }()
         let queryItems: [URLQueryItem] = switch server.region {
-        case .mainlandCN:
+        case .mainlandChina:
             [
                 .init(name: "month", value: "\(month)"),
                 .init(name: "bind_uid", value: "\(uid)"),
@@ -43,7 +43,7 @@ extension MiHoYoAPI {
         let request = try await generateRequest(
             region: server.region,
             host: URLRequestHelperConfiguration.hk4eAPIURLHost(region: server.region),
-            path: server.region == .mainlandCN ? "/event/ys_ledger/monthInfo" : "/event/ysledgeros/month_info",
+            path: server.region == .mainlandChina ? "/event/ys_ledger/monthInfo" : "/event/ysledgeros/month_info",
             queryItems: queryItems,
             cookie: cookie,
             additionalHeaders: nil

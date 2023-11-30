@@ -187,7 +187,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             completion: @escaping ([ResinEntry]) -> ()
         ) {
             switch config.server.region {
-            case .china:
+            case .mainlandChina:
                 if configuration.simplifiedMode?.boolValue ?? true {
                     getSimplifiedTimelineEntries(config: config) { entries in
                         completion(entries)

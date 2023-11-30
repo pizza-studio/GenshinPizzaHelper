@@ -24,7 +24,7 @@ extension Server {
     public var region: Region {
         switch self {
         case .bilibili, .china:
-            return .china
+            return .mainlandChina
         case .asia, .europe, .hongKongMacauTaiwan, .unitedStates:
             return .global
         }

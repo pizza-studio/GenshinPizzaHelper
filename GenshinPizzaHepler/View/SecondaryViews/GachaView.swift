@@ -69,7 +69,7 @@ struct GachaView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 GetGachaNavigationMenu(
                     showByAPI: viewModel.accounts
-                        .first(where: { $0.config.server.region == .china }) !=
+                        .first(where: { $0.config.server.region == .mainlandChina }) !=
                         nil,
                     isHelpSheetShow: $isHelpSheetShow
                 )

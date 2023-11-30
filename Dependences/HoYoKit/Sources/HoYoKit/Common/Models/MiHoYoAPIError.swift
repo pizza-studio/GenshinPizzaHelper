@@ -13,6 +13,7 @@ import Foundation
 @available(iOS 15.0, *)
 public enum MiHoYoAPIError: Error {
     case verificationNeeded
+    case fingerPrintNeeded
     case other(retcode: Int, message: String)
 
     // MARK: Lifecycle
@@ -20,6 +21,8 @@ public enum MiHoYoAPIError: Error {
     public init(retcode: Int, message: String) {
         if retcode == 1034 {
             self = .verificationNeeded
+        } else if retcode == 5003 {
+            self = .fingerPrintNeeded
         } else {
             self = .other(retcode: retcode, message: message)
         }

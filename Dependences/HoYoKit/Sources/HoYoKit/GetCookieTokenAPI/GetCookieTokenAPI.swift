@@ -11,7 +11,7 @@ extension MiHoYoAPI {
     /// 返回CookieToken，需要验证SToken。
     static func cookieToken(cookie: String) async throws -> GetCookieTokenResult {
         let request = try await generateRequest(
-            region: .china,
+            region: .mainlandChina,
             host: "api-takumi.mihoyo.com",
             path: "/auth/api/getCookieAccountInfoBySToken",
             queryItems: [],

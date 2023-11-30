@@ -10,7 +10,7 @@ import UIKit
 
 @available(iOS 15.0, *)
 extension MiHoYoAPI {
-    public static func getDeviceFingerPrint(region: Region) async throws -> String {
+    public static func getDeviceFingerPrint(deviceId: UUID) async throws -> String {
         func generateSeed() -> String {
             let characters = "0123456789abcdef"
             var result = ""
@@ -30,11 +30,7 @@ extension MiHoYoAPI {
         }
 
         let url = URL(string: "https://public-data-api.mihoyo.com/device-fp/api/getFp")!
-        #if !os(watchOS)
-        let deviceId = await (UIDevice.current.identifierForVendor ?? UUID()).uuidString
-        #else
-        let deviceId = UUID().uuidString
-        #endif
+        let deviceId = deviceId.uuidString
         let body: [String: String] = [
             "seed_id": generateSeed(),
             "device_id": deviceId,

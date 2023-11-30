@@ -33,7 +33,7 @@ struct APIGetGachaView: View {
 
     var acountConfigsFiltered: [AccountConfiguration] {
         viewModel.accounts.compactMap {
-            guard $0.config.server.region == .china else { return nil }
+            guard $0.config.server.region == .mainlandChina else { return nil }
             return $0.config
         }
     }
@@ -89,7 +89,7 @@ struct APIGetGachaView: View {
                     GetGachaURLByAPIButton(accountUID: account)
                 } footer: {
                     if !viewModel.accounts.map(\.config)
-                        .allSatisfy({ $0.server.region == .china }) {
+                        .allSatisfy({ $0.server.region == .mainlandChina }) {
                         Text("暂不支持国际服")
                     }
                 }

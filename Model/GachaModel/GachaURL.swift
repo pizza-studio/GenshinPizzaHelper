@@ -20,7 +20,7 @@ func genGachaURL(
     -> URL {
     let gameBiz: String
     switch server.region {
-    case .china: gameBiz = "hk4e_cn"
+    case .mainlandChina: gameBiz = "hk4e_cn"
     case .global: gameBiz = "hk4e_global"
     }
 
@@ -29,7 +29,7 @@ func genGachaURL(
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
     switch server.region {
-    case .china: urlComponents.host = "hk4e-api.mihoyo.com"
+    case .mainlandChina: urlComponents.host = "hk4e-api.mihoyo.com"
     case .global:
         let reverseProxyURL = Defaults[.reverseProxyHost5]
         urlComponents.host = reverseProxyURL.isEmpty ? "hk4e-api-os.hoyoverse.com" : reverseProxyURL
@@ -39,7 +39,7 @@ func genGachaURL(
 
     let gameVersion: String
     switch server.region {
-    case .china: gameVersion = "CNRELiOS3.5.0_R13695448_S13586568_D13718257"
+    case .mainlandChina: gameVersion = "CNRELiOS3.5.0_R13695448_S13586568_D13718257"
     case .global: gameVersion = "OSRELWin3.5.0_R13695448_S13586568_D13948595"
     }
 
@@ -91,7 +91,7 @@ func genGachaURLString(
     -> String {
     let gameBiz: String
     switch server.region {
-    case .china: gameBiz = "hk4e_cn"
+    case .mainlandChina: gameBiz = "hk4e_cn"
     case .global: gameBiz = "hk4e_global"
     }
 
@@ -100,7 +100,7 @@ func genGachaURLString(
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
     switch server.region {
-    case .china: urlComponents.host = "hk4e-api.mihoyo.com"
+    case .mainlandChina: urlComponents.host = "hk4e-api.mihoyo.com"
     case .global:
         let reverseProxyURL = Defaults[.reverseProxyHost5]
         urlComponents.host = reverseProxyURL.isEmpty ? "hk4e-api-os.hoyoverse.com" : reverseProxyURL
@@ -110,7 +110,7 @@ func genGachaURLString(
 
     let gameVersion: String
     switch server.region {
-    case .china: gameVersion = "CNRELiOS3.5.0_R13695448_S13586568_D13718257"
+    case .mainlandChina: gameVersion = "CNRELiOS3.5.0_R13695448_S13586568_D13718257"
     case .global: gameVersion = "OSRELWin3.5.0_R13695448_S13586568_D13948595"
     }
 

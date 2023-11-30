@@ -37,15 +37,15 @@ struct NewHomeView: View {
 
 struct AccountInfoCardView: View {
     enum Status {
-        case succeed(dailyNote: DailyNote)
+        case succeed(dailyNote: GeneralDailyNote)
         case failure(error: AnyLocalizedError)
-        case progress
+        case progress(Task<(), Never>?)
     }
 
     struct NoteView: View {
         // MARK: Internal
 
-        let dailyNote: DailyNote
+        let dailyNote: GeneralDailyNote
         let account: AccountConfiguration
 
         var body: some View {
@@ -94,7 +94,7 @@ struct AccountInfoCardView: View {
     let account: AccountConfiguration
 
     @State
-    var status: Status = .progress
+    var status: Status = .progress(nil)
 
     @Environment(\.scenePhase)
     var scenePhase
@@ -113,33 +113,29 @@ struct AccountInfoCardView: View {
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
             case .active:
-                Task {
-                    await fetchDailyNote()
-                }
+                fetchDailyNote()
             default:
                 break
             }
         })
     }
 
-    func fetchDailyNote() async {
-        status = .progress
-        do {
-            status = .succeed(dailyNote: try await MiHoYoAPI.dailyNote(for: account))
-        } catch {
-            status = .failure(error: AnyLocalizedError(error))
+    func fetchDailyNote() {
+        if case let .progress(task) = status { task?.cancel() }
+        let task = Task {
+            do {
+                status = .succeed(dailyNote: try await MiHoYoAPI.generalDailyNote(
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                ))
+            } catch {
+                status = .failure(error: AnyLocalizedError(error))
+            }
         }
-    }
-}
-
-extension MiHoYoAPI {
-    static func dailyNote(for account: AccountConfiguration) async throws -> DailyNote {
-        try await dailyNote(
-            server: account.server,
-            uid: account.safeUid,
-            cookie: account.safeCookie,
-            deviceFingerPrint: account.safeDeviceFingerPrint
-        )
+        status = .progress(task)
     }
 }
 
@@ -229,7 +225,6 @@ struct HomeView: View {
         colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 
-    var accounts: [Account] { viewModel.accounts }
     var body: some View {
         HStack {
             if horizontalSizeClass != .compact { Spacer() }

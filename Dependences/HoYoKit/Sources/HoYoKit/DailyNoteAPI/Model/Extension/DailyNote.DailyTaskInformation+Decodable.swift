@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: Decodable
 
-extension DailyNote.DailyTaskInformation: Decodable {
+extension GeneralDailyNote.DailyTaskInformation: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 

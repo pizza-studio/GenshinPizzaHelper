@@ -21,7 +21,7 @@ extension MihoyoAPI {
     ) {
         let gameBiz: String
         switch account.server.region {
-        case .china: gameBiz = "hk4e_cn"
+        case .mainlandChina: gameBiz = "hk4e_cn"
         case .global: gameBiz = "hk4e_global"
         }
         let genAuthKeyParam = GenAuthKeyParam(
@@ -93,7 +93,7 @@ extension MihoyoAPI {
         func get_ds_token() -> String {
             let s: String
             switch account.server.region {
-            case .china:
+            case .mainlandChina:
                 s = "yUZ3s0Sna1IrSNfk29Vo6vRapdOyqyhB"
             case .global:
                 s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
