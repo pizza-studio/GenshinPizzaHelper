@@ -7,7 +7,9 @@
 
 import Defaults
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
+import UIKit
 
 // MARK: - Account
 
@@ -55,12 +57,18 @@ extension AccountConfiguration {
         guard (uid != nil) || (cookie != nil)
         else { completion(.failure(.noFetchInfo)); return }
 
+        #if !os(watchOS)
+        let uuid = UIDevice.current.identifierForVendor ?? UUID()
+        #else
+        let uuid = UUID()
+        #endif
+
         MihoyoAPI.fetchInfos(
             region: server.region,
             serverID: server.id,
             uid: uid!,
             cookie: cookie!,
-            uuid: uuid ?? UUID(),
+            uuid: uuid,
             deviceFingerPrint: deviceFingerPrint
         ) { result in
             completion(result)
@@ -96,7 +104,14 @@ extension AccountConfiguration {
         else { completion(.failure(.noFetchInfo)); return }
         guard cookie.contains("stoken")
         else { completion(.failure(.noStoken)); return }
-        MihoyoAPI.fetchSimplifiedInfos(cookie: cookie) { result in
+
+        #if !os(watchOS)
+        let uuid = UIDevice.current.identifierForVendor ?? UUID()
+        #else
+        let uuid = UUID()
+        #endif
+
+        MihoyoAPI.fetchSimplifiedInfos(cookie: cookie, deviceId: uuid) { result in
             completion(result)
             #if !os(watchOS)
             switch result {
@@ -114,11 +129,19 @@ extension AccountConfiguration {
     }
 
     func fetchBasicInfo(_ completion: @escaping (BasicInfos) -> ()) {
+        #if !os(watchOS)
+        let uuid = UIDevice.current.identifierForVendor ?? UUID()
+        #else
+        let uuid = UUID()
+        #endif
+
         MihoyoAPI.fetchBasicInfos(
             region: server.region,
             serverID: server.id,
             uid: uid ?? "",
-            cookie: cookie ?? ""
+            cookie: cookie ?? "",
+            deviceFingerPrint: deviceFingerPrint ?? "",
+            deviceId: uuid
         ) { result in
             switch result {
             case let .success(data):
@@ -133,7 +156,7 @@ extension AccountConfiguration {
     func fetchPlayerDetail(
         dateWhenNextRefreshable: Date?,
         _ completion: @escaping (Result<
-            PlayerDetailFetchModel,
+            Enka.PlayerDetailFetchModel,
             PlayerDetail.PlayerDetailError
         >) -> ()
     ) {
@@ -151,11 +174,20 @@ extension AccountConfiguration {
         _ completion: @escaping (SpiralAbyssDetail) -> ()
     ) {
         // thisAbyssData
+
+        #if !os(watchOS)
+        let uuid = UIDevice.current.identifierForVendor ?? UUID()
+        #else
+        let uuid = UUID()
+        #endif
+
         MihoyoAPI.fetchSpiralAbyssInfos(
             region: server.region,
             serverID: server.id,
             uid: uid!,
             cookie: cookie!,
+            deviceFingerPrint: deviceFingerPrint ?? "",
+            deviceId: uuid,
             scheduleType: round.rawValue
         ) { result in
             switch result {
@@ -194,12 +226,20 @@ extension AccountConfiguration {
         _ completion: @escaping (LedgerDataFetchResult)
             -> ()
     ) {
+        #if !os(watchOS)
+        let uuid = UIDevice.current.identifierForVendor ?? UUID()
+        #else
+        let uuid = UUID()
+        #endif
+
         MihoyoAPI.fetchLedgerInfos(
             month: 0,
             uid: uid!,
             serverID: server.id,
             region: server.region,
-            cookie: cookie!
+            cookie: cookie!,
+            deviceFingerPrint: deviceFingerPrint ?? "",
+            deviceId: uuid
         ) { result in
             completion(result)
         }

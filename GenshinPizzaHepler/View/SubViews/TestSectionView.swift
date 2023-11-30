@@ -120,12 +120,21 @@ struct TestSectionView: View {
             }
         })
         .onAppear {
+            let uuid: UUID
+            if let id = UIDevice.current.identifierForVendor {
+                uuid = id
+                print("get device_id success, using \(uuid)")
+            } else {
+                uuid = UUID()
+                print("get device_id fail, using \(uuid)")
+            }
             if connectStatus == .testing {
                 MihoyoAPI.fetchInfos(
                     region: server.region,
                     serverID: server.id,
                     uid: uid,
                     cookie: cookie,
+                    uuid: uuid,
                     deviceFingerPrint: deviceFingerPrint
                 ) { result in
                     switch result {
@@ -139,12 +148,21 @@ struct TestSectionView: View {
             }
         }
         .onChange(of: connectStatus) { newValue in
+            let uuid: UUID
+            if let id = UIDevice.current.identifierForVendor {
+                uuid = id
+                print("get device_id success, using \(uuid)")
+            } else {
+                uuid = UUID()
+                print("get device_id fail, using \(uuid)")
+            }
             if newValue == .testing {
                 MihoyoAPI.fetchInfos(
                     region: server.region,
                     serverID: server.id,
                     uid: uid,
                     cookie: cookie,
+                    uuid: uuid,
                     deviceFingerPrint: deviceFingerPrint
                 ) { result in
                     switch result {

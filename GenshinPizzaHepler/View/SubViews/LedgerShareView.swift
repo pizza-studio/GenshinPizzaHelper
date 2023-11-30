@@ -149,7 +149,7 @@ struct LedgerShareView_Previews: PreviewProvider {
     static func generateSharePhoto() -> UIImage? {
         let renderer =
             ImageRenderer(content: LedgerShareView(data: ledgerData))
-        renderer.scale = UIScreen.main.scale
+        renderer.scale = 3
         return renderer.uiImage
     }
 }

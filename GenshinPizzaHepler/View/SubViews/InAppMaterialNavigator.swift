@@ -25,7 +25,18 @@ struct InAppMaterialNavigator: View {
     @Namespace
     var animationMaterial
 
+    @Environment(\.colorScheme)
+    var colorScheme
+
     let imageWidth = CGFloat(50)
+
+    var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
 
     var talentMaterialProvider: TalentMaterialProvider {
         .init(weekday: showingWeekday)

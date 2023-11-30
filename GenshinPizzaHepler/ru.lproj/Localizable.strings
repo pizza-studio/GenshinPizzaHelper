@@ -79,6 +79,7 @@
 "$asset.character:Kazuha" = "Кадзуха";
 "$asset.character:Ayaka" = "Аяка";
 "$asset.character:Sayu" = "Саю";
+"$asset.character:NaganoharaYoimiya" = "Наганохара Ёимия";
 "$asset.character:Yoimiya" = "Ёимия";
 "$asset.character:Aloy" = "Элой";
 "$asset.character:Sara" = "Сара";
@@ -118,8 +119,10 @@
 "$asset.character:Wriothesley" = "Ризли";
 "$asset.character:Charlotte" = "Шарлотта";
 "$asset.character:Furina" = "Фурина";
+"$asset.character:Chevreuse" = "Шеврёз";
+"$asset.character:Navia" = "Навия";
 
-// MARK: - Weapn Names
+// MARK: - Weapon Names
 
 "$asset.weapon:DullBlade" = "Тупой меч";
 "$asset.weapon:SilverSword" = "Серебряный меч";
@@ -297,11 +300,13 @@
 "$asset.weapon:ThunderingPulse" = "Громовой пульс";
 "$asset.weapon:HuntersPath" = "Охотничья тропа";
 "$asset.weapon:TheFirstGreatMagic" = "Первый великий фокус";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Магический супермеч высшего владыки";
+"$asset.weapon:ConsideredJudgement" = "Обдуманное суждение";
 
 // MARK: - Namecard Icons
 
 "$asset.nameCard:UI_NameCardPic_0_P" = "Новый мир";
-"$asset.nameCard:UI_NameCardPic_Bp10_P" = "Ловец ветра";
+"$asset.nameCard:UI_NameCardPic_Bp1_P" = "Ловец ветра";
 "$asset.nameCard:UI_NameCardPic_Ambor_P" = "Барон Зайчик";
 "$asset.nameCard:UI_NameCardPic_Klee_P" = "Бомбочка";
 "$asset.nameCard:UI_NameCardPic_Diluc_P" = "Огненная птица";
@@ -323,41 +328,41 @@
 "$asset.nameCard:UI_NameCardPic_Csxy1_P" = "Исследователь";
 "$asset.nameCard:UI_NameCardPic_Mxsy_P" = "Профессионал";
 "$asset.nameCard:UI_NameCardPic_Yxzl_P" = "Герой";
-"$asset.nameCard:UI_NameCardPic_Md1_P" = "Песнь ветра";
-"$asset.nameCard:UI_NameCardPic_Ly1_P" = "Каменный покой";
-"$asset.nameCard:UI_NameCardPic_Yszj2_P" = "Цвета радуги";
+"$asset.nameCard:UI_NameCardPic_Md_P" = "Песнь ветра";
+"$asset.nameCard:UI_NameCardPic_Ly_P" = "Каменный покой";
+"$asset.nameCard:UI_NameCardPic_Yszj_P" = "Цвета радуги";
 "$asset.nameCard:UI_NameCardPic_Sss_P" = "Мастер лучник";
 "$asset.nameCard:UI_NameCardPic_Tzz1_P" = "Испытания";
 "$asset.nameCard:UI_NameCardPic_Sj1_P" = "Глубины бездны";
 "$asset.nameCard:UI_NameCardPic_Olah1_P" = "Горный житель";
 "$asset.nameCard:UI_NameCardPic_Zdg1_P" = "Вечный холод";
-"$asset.nameCard:UI_NameCardPic_Ly_P" = "Неожиданный поворот";
+"$asset.nameCard:UI_NameCardPic_Lyws1_P" = "Неожиданный поворот";
 "$asset.nameCard:UI_NameCardPic_Ysxf1_P" = "Долгожданная встреча";
 "$asset.nameCard:UI_NameCardPic_Ningguang_P" = "Величие феникса";
 "$asset.nameCard:UI_NameCardPic_Beidou_P" = "Якорь";
 "$asset.nameCard:UI_NameCardPic_Chongyun_P" = "Духовные лезвия";
 "$asset.nameCard:UI_NameCardPic_Tzz2_P" = "Испытания II";
-"$asset.nameCard:UI_NameCardPic_Bp20_P" = "Погасшая звезда";
+"$asset.nameCard:UI_NameCardPic_Bp2_P" = "Погасшая звезда";
 "$asset.nameCard:UI_NameCardPic_Diona_P" = "Мяу-мяу!";
 "$asset.nameCard:UI_NameCardPic_Zhongli_P" = "Падение кометы";
 "$asset.nameCard:UI_NameCardPic_Xinyan_P" = "Музыка свободы";
 "$asset.nameCard:UI_NameCardPic_Tartaglia_P" = "Маска";
-"$asset.nameCard:UI_NameCardPic_Md_P" = "Почётный рыцарь";
-"$asset.nameCard:UI_NameCardPic_Md2_P" = "Молитва";
-"$asset.nameCard:UI_NameCardPic_Ly2_P" = "Паруса";
-"$asset.nameCard:UI_NameCardPic_Lyws1_P" = "Среди облаков";
+"$asset.nameCard:UI_NameCardPic_Md2_P" = "Почётный рыцарь";
+"$asset.nameCard:UI_NameCardPic_Md1_P" = "Молитва";
+"$asset.nameCard:UI_NameCardPic_Ly1_P" = "Паруса";
+"$asset.nameCard:UI_NameCardPic_Ly2_P" = "Среди облаков";
 "$asset.nameCard:UI_NameCardPic_Tzz3_P" = "Испытания III";
 "$asset.nameCard:UI_NameCardPic_Xssdlk_P" = "Снежный пик";
 "$asset.nameCard:UI_NameCardPic_Ganyu_P" = "Цилинь";
 "$asset.nameCard:UI_NameCardPic_Albedo_P" = "Цветок солнца";
 "$asset.nameCard:UI_NameCardPic_Bp3_P" = "Мел";
 "$asset.nameCard:UI_NameCardPic_ElderTree_P" = "Древнее дерево";
-"$asset.nameCard:UI_NameCardPic_EffigyChallenge02_P" = "Гипостазис";
+"$asset.nameCard:UI_NameCardPic_EffigyChallenge_P" = "Гипостазис";
 "$asset.nameCard:UI_NameCardPic_Xiao_P" = "Маска Якса";
 "$asset.nameCard:UI_NameCardPic_Hutao_P" = "Упокоение духов";
 "$asset.nameCard:UI_NameCardPic_Bp4_P" = "Лунный фонарь";
 "$asset.nameCard:UI_NameCardPic_LanternRite_P" = "Свет фонаря";
-"$asset.nameCard:UI_NameCardPic_TheatreMechanicus2_P" = "Механикус";
+"$asset.nameCard:UI_NameCardPic_TheatreMechanicus_P" = "Механикус";
 "$asset.nameCard:UI_NameCardPic_Rosaria_P" = "Каторга";
 "$asset.nameCard:UI_NameCardPic_Bp5_P" = "Анемония";
 "$asset.nameCard:UI_NameCardPic_RedandWhite_P" = "Великое пиршество";
@@ -367,16 +372,17 @@
 "$asset.nameCard:UI_NameCardPic_Feiyan_P" = "Справедливость";
 "$asset.nameCard:UI_NameCardPic_Eula_P" = "Морозная печать";
 "$asset.nameCard:UI_NameCardPic_Bp6_P" = "Другая реальность";
-"$asset.nameCard:UI_NameCardPic_Homeworld1_P" = "Чайная песня";
+"$asset.nameCard:UI_NameCardPic_Homeworld_P" = "Чайная песня";
 "$asset.nameCard:UI_NameCardPic_Kazuha_P" = "Любование клёном";
 "$asset.nameCard:UI_NameCardPic_Bp7_P" = "Летний зной";
-"$asset.nameCard:UI_NameCardPic_Homeworld2_P" = "Дом отдыха";
+"$asset.nameCard:UI_NameCardPic_Homeworld1_P" = "Дом отдыха";
 "$asset.nameCard:UI_NameCardPic_Google_P" = "Необъятность";
 "$asset.nameCard:UI_NameCardPic_BounceConjuringChallenge_P" = "Бабах-мяч";
-"$asset.nameCard:UI_NameCardPic_EffigyChallenge_P" = "Песнь битвы";
+"$asset.nameCard:UI_NameCardPic_EffigyChallenge02_P" = "Песнь битвы";
 "$asset.nameCard:UI_NameCardPic_Oraionokami_P" = "Священная сакура";
 "$asset.nameCard:UI_NameCardPic_Bp8_P" = "Великий храм Наруками";
 "$asset.nameCard:UI_NameCardPic_Ayaka_P" = "Веер";
+"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "Искры золотой рыбки";
 "$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "Искры золотой рыбки";
 "$asset.nameCard:UI_NameCardPic_Sayu_P" = "Мудзи-Мудзи Дарума";
 "$asset.nameCard:UI_NameCardPic_Dq1_P" = "Эмблема Райдэн";
@@ -384,9 +390,9 @@
 "$asset.nameCard:UI_NameCardPic_Ysxf2_P" = "Врата";
 "$asset.nameCard:UI_NameCardPic_Csxy2_P" = "Преодоление";
 "$asset.nameCard:UI_NameCardPic_Tzz4_P" = "Каменный дракон";
-"$asset.nameCard:UI_NameCardPic_Homeworld_P" = "Пышное цветение";
+"$asset.nameCard:UI_NameCardPic_Homeworld2_P" = "Пышное цветение";
 "$asset.nameCard:UI_NameCardPic_Daoqi1_P" = "Герб Кудзё";
-"$asset.nameCard:UI_NameCardPic_TheatreMechanicus_P" = "Великолепный расчёт";
+"$asset.nameCard:UI_NameCardPic_TheatreMechanicus2_P" = "Великолепный расчёт";
 "$asset.nameCard:UI_NameCardPic_Shougun_P" = "Просветление";
 "$asset.nameCard:UI_NameCardPic_Kokomi_P" = "Морская бездна";
 "$asset.nameCard:UI_NameCardPic_Sara_P" = "Тэнгу";
@@ -397,69 +403,69 @@
 "$asset.nameCard:UI_NameCardPic_Concert_P" = "Внимательное ухо";
 "$asset.nameCard:UI_NameCardPic_Sumo_P" = "Икки";
 "$asset.nameCard:UI_NameCardPic_Tohma_P" = "Пламенный рукав";
-"$asset.nameCard:UI_NameCardPic_Bp11_P" = "Божественный генерал";
+"$asset.nameCard:UI_NameCardPic_Bp10_P" = "Божественный генерал";
 "$asset.nameCard:UI_NameCardPic_Daoqi3_P" = "Перо орла";
 "$asset.nameCard:UI_NameCardPic_Gorou_P" = "Безмятежный пёс";
 "$asset.nameCard:UI_NameCardPic_Itto_P" = "Лицо óни";
-"$asset.nameCard:UI_NameCardPic_Bp12_P" = "Паслён";
+"$asset.nameCard:UI_NameCardPic_Bp11_P" = "Паслён";
 "$asset.nameCard:UI_NameCardPic_Shenhe_P" = "Гребень";
 "$asset.nameCard:UI_NameCardPic_Yunjin_P" = "Рифма";
 "$asset.nameCard:UI_NameCardPic_Daoqi4_P" = "Токоё";
-"$asset.nameCard:UI_NameCardPic_Bp13_P" = "Струящиеся оттенки";
+"$asset.nameCard:UI_NameCardPic_Bp12_P" = "Струящиеся оттенки";
 "$asset.nameCard:UI_NameCardPic_Bartender_P" = "Кубки и развлечения";
 "$asset.nameCard:UI_NameCardPic_Yae1_P" = "Мечтательная кицунэ";
-"$asset.nameCard:UI_NameCardPic_Bp14_P" = "Пробуждение";
+"$asset.nameCard:UI_NameCardPic_Bp13_P" = "Пробуждение";
 "$asset.nameCard:UI_NameCardPic_Ayato_P" = "Лёгкая зыбь";
 "$asset.nameCard:UI_NameCardPic_LuminanceStone_P" = "Камень света";
 "$asset.nameCard:UI_NameCardPic_Tzz5_P" = "Раскат грома";
 "$asset.nameCard:UI_NameCardPic_Cenyan1_P" = "Разлом";
-"$asset.nameCard:UI_NameCardPic_Bp15_P" = "Иродори";
+"$asset.nameCard:UI_NameCardPic_Bp14_P" = "Иродори";
 "$asset.nameCard:UI_NameCardPic_Yelan_P" = "Бросок";
 "$asset.nameCard:UI_NameCardPic_Shinobu_P" = "Сеть";
-"$asset.nameCard:UI_NameCardPic_Bp16_P" = "Провидение";
+"$asset.nameCard:UI_NameCardPic_Bp15_P" = "Провидение";
 "$asset.nameCard:UI_NameCardPic_Heizo_P" = "Тэмари";
-"$asset.nameCard:UI_NameCardPic_Bp17_P" = "Лазурный берег";
+"$asset.nameCard:UI_NameCardPic_Bp16_P" = "Лазурный берег";
 "$asset.nameCard:UI_NameCardPic_Tighnari_P" = "Омовение росами";
 "$asset.nameCard:UI_NameCardPic_Collei_P" = "Благородство леопарда";
 "$asset.nameCard:UI_NameCardPic_Dori_P" = "Джинн";
-"$asset.nameCard:UI_NameCardPic_Bp18_P" = "Чаща леса";
+"$asset.nameCard:UI_NameCardPic_Bp17_P" = "Чаща леса";
 "$asset.nameCard:UI_NameCardPic_Csxy3_P" = "Странствие";
 "$asset.nameCard:UI_NameCardPic_Ysxf3_P" = "Судьбоносная встреча";
 "$asset.nameCard:UI_NameCardPic_Xm1_P" = "Драгоценный лес";
 "$asset.nameCard:UI_NameCardPic_Xumi1_P" = "Наблюдение";
 "$asset.nameCard:UI_NameCardPic_Xumi2_P" = "Безупречность";
-"$asset.nameCard:UI_NameCardPic_Bp19_P" = "Возвращение ветров";
+"$asset.nameCard:UI_NameCardPic_Bp18_P" = "Возвращение ветров";
 "$asset.nameCard:UI_NameCardPic_Cyno_P" = "Спокойствие";
 "$asset.nameCard:UI_NameCardPic_Candace_P" = "Серая цапля";
 "$asset.nameCard:UI_NameCardPic_Nilou_P" = "Танец лотоса";
-"$asset.nameCard:UI_NameCardPic_Yszj_P" = "Семь лучей";
+"$asset.nameCard:UI_NameCardPic_Yszj2_P" = "Семь лучей";
 "$asset.nameCard:UI_NameCardPic_Xm2_P" = "Идущий по песку";
 "$asset.nameCard:UI_NameCardPic_Tzz6_P" = "Зеркальные воспоминания";
 "$asset.nameCard:UI_NameCardPic_Nahida_P" = "Полумесяц";
 "$asset.nameCard:UI_NameCardPic_Layla_P" = "Грёзы";
-"$asset.nameCard:UI_NameCardPic_Bp1_P" = "Грибная страна";
+"$asset.nameCard:UI_NameCardPic_Bp19_P" = "Грибная страна";
 "$asset.nameCard:UI_NameCardPic_Wanderer_P" = "Баллада скитальца";
 "$asset.nameCard:UI_NameCardPic_Faruzan_P" = "Запечатанный секрет";
 "$asset.nameCard:UI_NameCardPic_Gcg1_P" = "Призыватель";
-"$asset.nameCard:UI_NameCardPic_Bp21_P" = "Звёздные реки";
+"$asset.nameCard:UI_NameCardPic_Bp20_P" = "Звёздные реки";
 "$asset.nameCard:UI_NameCardPic_Alhatham_P" = "Прозрение";
 "$asset.nameCard:UI_NameCardPic_Yaoyao_P" = "Юэгуй";
 "$asset.nameCard:UI_NameCardPic_Cadillac_P" = "Ленточные облака";
-"$asset.nameCard:UI_NameCardPic_Bp22_P" = "Благозвучие";
+"$asset.nameCard:UI_NameCardPic_Bp21_P" = "Благозвучие";
 "$asset.nameCard:UI_NameCardPic_Xm3_P" = "Пыль";
 "$asset.nameCard:UI_NameCardPic_Dehya_P" = "Очищающее пламя";
 "$asset.nameCard:UI_NameCardPic_Mika_P" = "Указатель";
-"$asset.nameCard:UI_NameCardPic_Bp23_P" = "Искусный замысел";
+"$asset.nameCard:UI_NameCardPic_Bp22_P" = "Искусный замысел";
 "$asset.nameCard:UI_NameCardPic_Baizhuer_P" = "Облегчение";
 "$asset.nameCard:UI_NameCardPic_Kaveh_P" = "Сводчатый дворец";
 "$asset.nameCard:UI_NameCardPic_Xm4_P" = "Бесконечность";
 "$asset.nameCard:UI_NameCardPic_Tzz7_P" = "Сумерки перехода";
 "$asset.nameCard:UI_NameCardPic_Vasara_P" = "Большая мечта";
 "$asset.nameCard:UI_NameCardPic_OfferingPari_P" = "Амрита";
-"$asset.nameCard:UI_NameCardPic_Bp24_P" = "Корона славы";
+"$asset.nameCard:UI_NameCardPic_Bp23_P" = "Корона славы";
 "$asset.nameCard:UI_NameCardPic_Kirara_P" = "Посылка нэко";
-"$asset.nameCard:UI_NameCardPic_Bp25_P" = "Секреты";
-"$asset.nameCard:UI_NameCardPic_Bp26_P" = "Сияющие цвета";
+"$asset.nameCard:UI_NameCardPic_Bp24_P" = "Секреты";
+"$asset.nameCard:UI_NameCardPic_Bp25_P" = "Сияющие цвета";
 "$asset.nameCard:UI_NameCardPic_Liney_P" = "Притворство";
 "$asset.nameCard:UI_NameCardPic_Linette_P" = "Серьёзность";
 "$asset.nameCard:UI_NameCardPic_Freminet_P" = "Прогресс";
@@ -468,17 +474,19 @@
 "$asset.nameCard:UI_NameCardPic_Csxy4_P" = "Мореход";
 "$asset.nameCard:UI_NameCardPic_Fontaine1_P" = "Удивительный механизм";
 "$asset.nameCard:UI_NameCardPic_Fontaine2_P" = "Новости";
-"$asset.nameCard:UI_NameCardPic_Bp27_P" = "Первозданные воды";
+"$asset.nameCard:UI_NameCardPic_Bp26_P" = "Первозданные воды";
 "$asset.nameCard:UI_NameCardPic_Neuvillette_P" = "Наплыв";
 "$asset.nameCard:UI_NameCardPic_Wriothesley_P" = "Удержание";
-"$asset.nameCard:UI_NameCardPic_Bp28_P" = "Падающая звезда";
+"$asset.nameCard:UI_NameCardPic_Bp27_P" = "Падающая звезда";
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "Благозвучие";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "Постоянство";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "Искупление";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_FD3_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Bp2_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "Банкет";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Эксклюзив";
+"$asset.nameCard:UI_NameCardPic_FD3_P" = "Полнота";
+"$asset.nameCard:UI_NameCardPic_Bp28_P" = "Вихрь вальса";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
 
 // MARK: - 2.0 & above
 // Settings view
@@ -668,6 +676,8 @@
 "Discord频道: Genshin Pizza Helper" = "Присоединиться в Discord";
 "个人主页" = "Собственный сайт";
 "Bilibili主页" = "Bilibili страница";
+"官方网站" = "Official Website";
+"官方X（Twitter）账号" = "Official X (Twitter) Account";
 "GitHub主页" = "GitHub аккаунт";
 "水里的碳酸钙" = "Bill Haku";
 
@@ -846,7 +856,8 @@
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "Пожалуйста, выберите сначала аккаунт";
 "角色展示柜" = "Галерея персонажей";
-"账号未展示角色" = "Не найдено такого персонажа в галерее персонажей";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka failed from retrieving the player's data from the game server.";
+"account.playerDetailResult.message.characterShowCaseClassified" = "Не найдено такого персонажа в галерее персонажей";
 "detailPortal.todayAcquisition.title" = "Получено сегодня";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "Пожалуйста, нажмите, чтобы повторно войти в систему для запроса этой части.";
 // apiral abyss sheet
@@ -1140,7 +1151,7 @@
 "settings.display.showArtifactRarityAndLevel" = "Показывать уровни артефактов и их редкость";
 "$asset.character:RaidenKunikuzushi" = "Куникудзуси";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Баллада скитальца";
-"settings.display.showTheRealNameForKunikuzushi" = "Показать настоящие имена для некоторых персонажей";
+"settings.display.useActualCharacterNames" = "Показать настоящие имена для некоторых персонажей";
 "settings.display.autoLineSpacingForECDDV" = "Адаптивное расположение при просмотре персонажа";
 "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "Это работает только с iPad и с безкнопочными iPhone.";
 "settings.display.title" = "Настройки интерфейса";
@@ -1215,7 +1226,7 @@
 "等待祈愿链接…" = "Ожидание URL круток…";
 "开始获取祈愿记录" = "Начать получение записей круток";
 "成功获取祈愿数据" = "Данные о крутках успешно получены";
-"共保存了%lld条新的祈愿数据" = "Около %lld данных о крутках были сохранены";
+"gacha.messages.newEntriesSaved:%lld" = "Около %lld данных о крутках были сохранены";
 "获取失败，因为错误：\n%@" = "Ошибка получения данных:\n%@";
 "成功获取到祈愿记录链接" = "URL-адрес истории круток успешно получен";
 "请点击「开始获取祈愿记录」以继续" = "Нажмите 'Начать получение записей круток' для продолжения";
@@ -1371,12 +1382,16 @@
 "ledgerData.action.name.byAbyss" = "Abyss";
 "ledgerData.action.name.byMail" = "Mail";
 "ledgerData.action.name.byEvent" = "Event";
-"server.region.name.china" = "Tenkuujima";
-"server.region.name.bilibili" = "Sekaiju";
+"server.region.name.celestia" = "Tenkuunoshima (Celestia)";
+"server.region.name.irminsul" = "Sekaiju (Irminsul)";
 "server.region.name.us" = "America";
 "server.region.name.eu" = "Europe";
 "server.region.name.asia" = "Asia";
-"server.region.name.cht" = "TW/HK/MO";
+"server.region.name.hongKongMacauTaiwan" = "TW/HK/MO";
 "operation.scrolling.guide" = "Use (Shift+) Mouse Wheel to scroll contents.";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "Please choose an account to see Spiral Abyss records.";
-"detailPortal.player.worldBalancedLevel.short" = "WL/EL";
+
+// MARK: - 3.1.4
+
+"detailPortal.player.worldLevel" = "World Level";
+"detailPortal.player.adventureRank.short:%@" = "AR %@";

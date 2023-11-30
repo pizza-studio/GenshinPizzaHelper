@@ -23,13 +23,87 @@ struct ContactUsView: View {
 
     var body: some View {
         List {
-            // developer - lava
+            // developer - pizza studio
             Section(header: Text("settings.misc.devCrew")) {
+                HStack {
+                    Image("AppIconHD")
+                        .resizable()
+                        .clipShape(Circle())
+                        .frame(width: 40, height: 40)
+                    VStack(alignment: .leading) {
+                        Text("Pizza Studio")
+                            .bold()
+                            .padding(.vertical, 5)
+                    }
+                    Spacer()
+                    Image(systemSymbol: .chevronRight)
+                        .rotationEffect(.degrees(isPizzaStudioDetailShow ? 90 : 0))
+                }
+                .onTapGesture {
+                    simpleTaptic(type: .light)
+                    withAnimation {
+                        isPizzaStudioDetailShow.toggle()
+                    }
+                }
+                if isPizzaStudioDetailShow {
+                    Link(destination: URL(string: "https://pizzastudio.org")!) {
+                        Label {
+                            Text("官方网站")
+                        } icon: {
+                            Image("homepage")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+
+                    Link(
+                        destination: URL(
+                            string: "mailto:contact@pizzastudio.org"
+                        )!
+                    ) {
+                        Label {
+                            Text("contact@pizzastduio.org")
+                        } icon: {
+                            Image("email")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    Link(
+                        destination: URL(
+                            string: "https://github.com/pizza-studio"
+                        )!
+                    ) {
+                        Label {
+                            Text("GitHub主页")
+                        } icon: {
+                            Image("github")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    if Bundle.main.preferredLocalizations.first == "ja" {
+                        Link(
+                            destination: URL(string: "https://twitter.com/@PizzaStudio_jp")!
+                        ) {
+                            Label {
+                                Text("官方X（Twitter）账号")
+                            } icon: {
+                                Image("twitter")
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                        }
+                    }
+                }
+            }
+            // developer - lava
+            Section {
                 HStack {
                     Image("avatar.lava")
                         .resizable()
                         .clipShape(Circle())
-                        .frame(width: 50, height: 50)
+                        .frame(width: 40, height: 40)
                     VStack(alignment: .leading) {
                         Text("Lava")
                             .bold()
@@ -93,7 +167,7 @@ struct ContactUsView: View {
                     Image("avatar.hakubill")
                         .resizable()
                         .clipShape(Circle())
-                        .frame(width: 50, height: 50)
+                        .frame(width: 40, height: 40)
                     VStack(alignment: .leading) {
                         Text("水里的碳酸钙")
                             .bold()
@@ -138,7 +212,7 @@ struct ContactUsView: View {
                         Label {
                             Text("Twitter主页")
                         } icon: {
-                            Image("twitter")
+                            Image("twitter.old")
                                 .resizable()
                                 .scaledToFit()
                         }
@@ -190,7 +264,7 @@ struct ContactUsView: View {
                     Image("avatar.shikisuen")
                         .resizable()
                         .clipShape(Circle())
-                        .frame(width: 50, height: 50)
+                        .frame(width: 40, height: 40)
                     VStack(alignment: .leading) {
                         Text("Shiki Suen (孙志贵)")
                             .bold()
@@ -237,7 +311,7 @@ struct ContactUsView: View {
                         Label {
                             Text("Twitter主页")
                         } icon: {
-                            Image("twitter")
+                            Image("twitter.old")
                                 .resizable()
                                 .scaledToFit()
                         }
@@ -461,7 +535,7 @@ struct ContactUsView: View {
                         Label {
                             Text("Twitter主页")
                         } icon: {
-                            Image("twitter")
+                            Image("twitter.old")
                                 .resizable()
                                 .scaledToFit()
                         }
@@ -669,6 +743,8 @@ struct ContactUsView: View {
     private var isLavaDetailShow = false
     @State
     private var isShikiDetailShow = false
+    @State
+    private var isPizzaStudioDetailShow = true
 }
 
 // MARK: - CaptionLabelStyle

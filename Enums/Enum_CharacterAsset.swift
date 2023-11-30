@@ -7,15 +7,15 @@
 
 import Defaults
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 import SwiftUI
 
 // MARK: - CharacterAsset
 
 /// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
 public enum CharacterAsset: Int, CaseIterable {
-    case Paimon = -114_514
+    case Paimon = -213
     case Hotaru = 10000007
     case Sora = 10000005
     case Sucrose = 10000043
@@ -92,6 +92,8 @@ public enum CharacterAsset: Int, CaseIterable {
     case Wriothesley = 10000086
     case Charlotte = 10000088
     case Furina = 10000089
+    case Chevreuse = 10000090
+    case Navia = 10000091
 }
 
 extension CharacterAsset {
@@ -105,8 +107,12 @@ extension CharacterAsset {
 
     public var localizedKey: String {
         var raw = String(describing: self)
-        if Defaults[.useActualCharacterNames], self == .Kunikuzushi {
-            raw = "Raiden" + raw
+        if Defaults[.useActualCharacterNames] {
+            switch self {
+            case .Kunikuzushi: raw = "Raiden" + raw
+            case .Yoimiya: raw = "Naganohara" + raw
+            default: break
+            }
         }
         return "$asset.character:" + raw
     }
@@ -209,6 +215,8 @@ extension CharacterAsset {
         case .Wriothesley: return "UI_AvatarIcon_Wriothesley"
         case .Charlotte: return "UI_AvatarIcon_Charlotte"
         case .Furina: return "UI_AvatarIcon_Furina"
+        case .Chevreuse: return "UI_AvatarIcon_Chevreuse"
+        case .Navia: return "UI_AvatarIcon_Navia"
         }
     }
 
@@ -294,6 +302,8 @@ extension CharacterAsset {
         case .Wriothesley: return .UI_NameCardPic_Wriothesley_P
         case .Charlotte: return .UI_NameCardPic_Charlotte_P
         case .Furina: return .UI_NameCardPic_Furina_P
+        case .Chevreuse: return .UI_NameCardPic_Chevreuse_P
+        case .Navia: return .UI_NameCardPic_Navia_P
         }
     }
 }
@@ -378,8 +388,10 @@ extension CharacterAsset {
         case .Freminet: return [7000]
         case .Neuvillette: return [7100]
         case .Wriothesley: return [7200]
-        case .Charlotte: return [] // 原神 4.2
-        case .Furina: return [] // 原神 4.2
+        case .Charlotte: return [7300]
+        case .Furina: return [7400]
+        case .Chevreuse: return [] // 原神 4.3
+        case .Navia: return [] // 原神 4.3
         }
     }
 }
@@ -464,10 +476,12 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Freminet: return .talentJustice
         case .Neuvillette: return .talentEquity
         case .Wriothesley: return .talentOrder
-        case .Charlotte:
-            return .talentJustice.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
-        case .Furina:
-            return .talentJustice.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
+        case .Charlotte: return .talentJustice
+        case .Furina: return .talentJustice
+        case .Chevreuse: return .talentOrder
+            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
+        case .Navia: return .talentEquity
+            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         }
     }
 }
@@ -484,13 +498,13 @@ extension CharacterAsset {
     }()
 }
 
-// MARK: - Extending ENCharacterMap.Character
+// MARK: - Extending Enka.CharacterMap.Character
 
-extension ENCharacterMap.Character {
+extension Enka.CharacterMap.Character {
     public var enkaID: Int {
         CharacterAsset.allCases.filter { currentChar in
             currentChar.frontPhotoFileName == iconString
-        }.first?.enkaId ?? -114_514
+        }.first?.enkaId ?? -213
     }
 
     public var asset: CharacterAsset {

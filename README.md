@@ -136,7 +136,7 @@
         - 新武器：添加了也无妨，只要每日素材填 nil 就行、直到官方正式公布。这样就可以防止新武器提前在 App 内显示出来。
 - 新情报与新图片素材优先从 Ambr.Top 获取。SnapGenshin 也可以。
 - 虽然现在已经有了 Enka 资料的本地寄存机制，但也请勿忘更新 `gi.pizzastudio.org` 伺服器当中的各种 JSON 档案。
-    - 也得更新 HBPizzaHelperAPI 这个 Swift Package 内部的 Assets 资料夹下的已经存在的 JSON 档案。这些档案是垫底档案、用来在下载的 JSON 出现损毁时就地救援。
+    - 也得更新 GIPizzaKit 这个 Swift Package 内部的 Assets 资料夹下的已经存在的 JSON 档案。这些档案是垫底档案、用来在下载的 JSON 出现损毁时就地救援。
 
 #### 1. 年度大版本更新的情况。
 
@@ -156,7 +156,7 @@
 - 名片一律在 NameCard 这个 enum 内登记：
     - case 名称填写名片的图片档案名称，以 `_P` 结尾；
     - RawValue 填写名片的 Enka ID。
-- 如果提前加入了名片，则请注意不要比官方更提前地公开名片。此时请善用 `Namecard.blacklist`。以白术为例、责令其在所属版本开放之前的那个纪行的结束日之后的那一天开放：
+- 如果提前加入了名片，则请注意不要比官方更提前地公开名片。此时请善用 `Namecard.blacklist`。以白术为例、责令其在所属版本开放之前的那个纪行的结束日起再加两天再开放：
     ```
     public static var blacklist: [NameCard] {
         [

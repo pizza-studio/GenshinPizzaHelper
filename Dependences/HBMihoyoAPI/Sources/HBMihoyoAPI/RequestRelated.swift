@@ -19,7 +19,7 @@ public typealias AllAvatarDetailFetchResult = Result<
 
 #if !os(watchOS)
 //    typealias PlayerDetailsFetchResult = Result<
-//        PlayerDetailFetchModel,
+//        Enka.PlayerDetailFetchModel,
 //        RequestError
 //    >
 //    typealias PlayerDetailResult = Result<

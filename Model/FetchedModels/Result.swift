@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
 
 #if !os(watchOS)
 typealias PlayerDetailsFetchResult = Result<
-    PlayerDetailFetchModel,
+    Enka.PlayerDetailFetchModel,
     RequestError
 >
 typealias PlayerDetailResult = Result<

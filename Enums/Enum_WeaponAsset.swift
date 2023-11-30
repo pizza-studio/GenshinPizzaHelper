@@ -41,7 +41,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case FinaleOfTheDeep = 11425
     case FleuveCendreFerryman = 11426
     case TheDockhandsAssistant = 11427
-    case SwordOfNarzissenkreuz = 11428 // 原神 4.2
+    case SwordOfNarzissenkreuz = 11428
     case AquilaFavonia = 11501
     case SkywardBlade = 11502
     case FreedomSworn = 11503
@@ -51,7 +51,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case HaranGeppakuFutsu = 11510
     case KeyOfKhajNisut = 11511
     case LightOfFoliarIncision = 11512
-    case SplendorOfStillWaters = 11513 // 原神 4.2
+    case SplendorOfStillWaters = 11513
     case WasterGreatsword = 12101
     case OldMercsPal = 12201
     case FerrousShadow = 12301
@@ -78,6 +78,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case MailedFlower = 12418
     case TalkingStick = 12424
     case TidalShadow = 12425
+    case UltimateOverloardsMegaMagicSword = 12426 // 原神 4.3
     case PortablePowerSaw = 12427
     case SkywardPride = 12501
     case WolfsGravestone = 12502
@@ -85,6 +86,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case TheUnforged = 12504
     case RedhornStonethresher = 12510
     case BeaconOfTheReedSea = 12511
+    case ConsideredJudgement = 12512 // 原神 4.3
     case BeginnersProtector = 13101
     case IronPoint = 13201
     case WhiteTassel = 13301
@@ -242,8 +244,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .FinaleOfTheDeep: return .weaponDewdrop
         case .FleuveCendreFerryman: return .weaponAncientChord
         case .TheDockhandsAssistant: return .weaponDewdrop
-        case .SwordOfNarzissenkreuz:
-            return .weaponAncientChord.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
+        case .SwordOfNarzissenkreuz: return .weaponAncientChord
         case .AquilaFavonia: return .weaponDecarabian
         case .SkywardBlade: return .weaponBorealWolf
         case .FreedomSworn: return .weaponGladiator
@@ -253,8 +254,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .HaranGeppakuFutsu: return .weaponNarukami
         case .KeyOfKhajNisut: return .weaponTalisman
         case .LightOfFoliarIncision: return .weaponTalisman
-        case .SplendorOfStillWaters:
-            return .weaponDewdrop.available(since: .Specify(day: 7, month: 11, year: 2023)) // 原神 4.2
+        case .SplendorOfStillWaters: return .weaponDewdrop
         case .WasterGreatsword: return .weaponBorealWolf
         case .OldMercsPal: return .weaponBorealWolf
         case .FerrousShadow: return .weaponDecarabian
@@ -281,6 +281,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .MailedFlower: return .weaponGladiator
         case .TalkingStick: return .weaponOasisGarden
         case .TidalShadow: return .weaponPristineSea
+        case .UltimateOverloardsMegaMagicSword: return .weaponPristineSea
+            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         case .PortablePowerSaw: return .weaponPristineSea
         case .SkywardPride: return .weaponBorealWolf
         case .WolfsGravestone: return .weaponGladiator
@@ -288,6 +290,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .TheUnforged: return .weaponElixir
         case .RedhornStonethresher: return .weaponNarukami
         case .BeaconOfTheReedSea: return .weaponScorchingMight
+        case .ConsideredJudgement: return .weaponAncientChord
+            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         case .BeginnersProtector: return .weaponGladiator
         case .IronPoint: return .weaponGladiator
         case .WhiteTassel: return .weaponGuyun
@@ -575,6 +579,8 @@ extension WeaponAsset {
         case .ThunderingPulse: return "UI_EquipIcon_Bow_Narukami"
         case .HuntersPath: return "UI_EquipIcon_Bow_Ayus"
         case .TheFirstGreatMagic: return "UI_EquipIcon_Bow_Pledge"
+        case .UltimateOverloardsMegaMagicSword: return "UI_EquipIcon_Claymore_Champion" // 原神 4.3
+        case .ConsideredJudgement: return "UI_EquipIcon_Claymore_GoldenVerdict" // 原神 4.3
         }
     }
 }

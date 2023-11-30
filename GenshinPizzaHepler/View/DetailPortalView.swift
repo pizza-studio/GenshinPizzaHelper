@@ -6,8 +6,8 @@
 //
 
 import Defaults
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 import SFSafeSymbols
 import SwiftPieChart
 import SwiftUI
@@ -67,6 +67,7 @@ struct DetailPortalView: View {
                 abyssAndPrimogemNavigator()
                 toolsSection()
             }
+            .listStyle(.insetGrouped)
             .sectionSpacing(UIFont.systemFontSize)
             .environmentObject(orientation)
             .refreshable {
@@ -200,31 +201,39 @@ struct DetailPortalView: View {
                 Section {
                     HStack(spacing: 0) {
                         HStack {
-                            playerDetail.basicInfo.decoratedIcon(64)
+                            if let basicInfo = playerDetail.basicInfo {
+                                basicInfo.decoratedIcon(64)
+                            } else {
+                                CharacterAsset.Paimon.decoratedIcon(64)
+                            }
                             Spacer()
                         }
                         .frame(width: 74)
                         .corneredTag(
-                            verbatim: "Lv.\(playerDetail.basicInfo.level)",
+                            "detailPortal.player.adventureRank.short:\(playerDetail.basicInfo?.level.description ?? "213")",
                             alignment: .bottomTrailing,
                             textSize: 12
                         )
                         VStack(alignment: .leading) {
                             HStack(spacing: 10) {
                                 VStack(alignment: .leading) {
-                                    Text(playerDetail.basicInfo.nickname)
+                                    Text(playerDetail.basicInfo?.nickname ?? "ENKA ERROR")
                                         .font(.title3)
                                         .bold()
                                         .padding(.top, 5)
                                         .lineLimit(1)
-                                    Text(playerDetail.basicInfo.signature)
-                                        .foregroundColor(.secondary)
-                                        .font(.footnote)
-                                        .lineLimit(2)
-                                        .fixedSize(
-                                            horizontal: false,
-                                            vertical: true
-                                        )
+                                    Text(
+                                        playerDetail.basicInfo?
+                                            .signature ??
+                                            "↑: \(playerDetail.enkaMessage ?? "UNKNOWN_ENKA_ERROR")"
+                                    )
+                                    .foregroundColor(.secondary)
+                                    .font(.footnote)
+                                    .lineLimit(2)
+                                    .fixedSize(
+                                        horizontal: false,
+                                        vertical: true
+                                    )
                                 }
                                 Spacer()
                                 selectAccountManuButton()
@@ -233,10 +242,10 @@ struct DetailPortalView: View {
                     }
                 } footer: {
                     HStack {
-                        Text("UID: \(account.config.uid ?? "1145141919810")")
+                        Text("UID: \(account.config.uid ?? "UID_NULLED")")
                         Spacer()
-                        let worldBalancedLevelTitle = "detailPortal.player.worldBalancedLevel.short".localized
-                        Text("\(worldBalancedLevelTitle): \(playerDetail.basicInfo.worldLevel)")
+                        let worldLevelTitle = "detailPortal.player.worldLevel".localized
+                        Text("\(worldLevelTitle): \(playerDetail.basicInfo?.worldLevel ?? 213)")
                     }
                 }
             } else {
@@ -284,15 +293,16 @@ struct DetailPortalView: View {
                 switch result {
                 case .success:
                     if let fetchedDetail = fetchedDetail {
-                        successView(fetchedDetail)
+                        // 此时拿到的资料可能是以 HTTP 200 送过来的错误资料。总之交给 dataFetchedView() 处理。
+                        dataFetchedView(fetchedDetail)
                     } else {
-                        failureView(
+                        dataFetchFailedView(
                             error: PlayerDetail.PlayerDetailError
                                 .failToGetCharacterData(message: "account.playerDetailResult.get.returned.nil")
                         )
                     }
                 case let .failure(error):
-                    failureView(error: error)
+                    dataFetchFailedView(error: error)
                 }
             } else if !account.fetchPlayerDetailComplete {
                 loadingView()
@@ -313,12 +323,20 @@ struct DetailPortalView: View {
     }
 
     @ViewBuilder
-    func successView(_ playerDetail: PlayerDetail) -> some View {
+    func dataFetchedView(_ playerDetail: PlayerDetail) -> some View {
         Section {
             VStack {
                 if playerDetail.avatars.isEmpty {
-                    Text("账号未展示角色")
-                        .foregroundColor(.secondary)
+                    Text(
+                        playerDetail
+                            .basicInfo != nil
+                            ? "account.playerDetailResult.message.characterShowCaseClassified"
+                            : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
+                    )
+                    .foregroundColor(.secondary)
+                    if let msg = playerDetail.enkaMessage {
+                        Text(msg).foregroundColor(.secondary).controlSize(.small)
+                    }
                 } else {
                     ScrollView(.horizontal) {
                         HStack {
@@ -400,90 +418,48 @@ struct DetailPortalView: View {
     @ViewBuilder
     func abyssAndPrimogemNavigatorViewLegacy(accountBasicInfo basicInfo: BasicInfos) -> some View {
         Section {
-            Label(
-                title: {
-                    HStack {
-                        // try! account?.playerDetailResult?.get().basicInfo.towerFloorLevelSimplified ??
-                        let textString = basicInfo.stats.spiralAbyss.description
-                        Text(textString).fontWeight(.heavy)
-                        Spacer()
-                        LinearGradient(
-                            gradient: Gradient(colors: [.clear, .gray]),
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                        .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
-                        .opacity(0.0001)
-                        if let thisAbyssData = thisAbyssData {
-                            Text("✡︎ \(thisAbyssData.totalStar)").font(.footnote)
-                        }
-                    }
-                },
-                icon: { Image("UI_Icon_Tower").resizable().frame(width: 30, height: 30) }
-            )
-            .onTapGesture {
+            Button {
                 simpleTaptic(type: .medium)
                 sheetType = .mySpiralAbyss
+            } label: {
+                Label(
+                    title: {
+                        HStack {
+                            // try! account?.playerDetailResult?.get().basicInfo.towerFloorLevelSimplified ??
+                            let textString = basicInfo.stats.spiralAbyss.description
+                            Text(textString).fontWeight(.heavy)
+                            Spacer()
+                            if let thisAbyssData = thisAbyssData {
+                                Text("✡︎ \(thisAbyssData.totalStar)").font(.footnote)
+                            }
+                        }
+                        .foregroundStyle(Color.primary)
+                    },
+                    icon: { Image("UI_Icon_Tower").resizable().frame(width: 30, height: 30) }
+                )
             }
             if let result = ledgerDataResult {
                 switch result {
                 case let .success(data):
-                    Label(
-                        title: {
-                            HStack {
-                                Text(data.dayData.currentPrimogems.description).fontWeight(.heavy)
-                                Spacer()
-                                Text("\(data.dayData.currentMora) 🪙").font(.footnote)
-                            }.frame(maxWidth: .infinity)
-                                .background {
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [.clear, .gray]),
-                                        startPoint: .leading,
-                                        endPoint: .trailing
-                                    )
-                                    .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
-                                    .opacity(0.0001)
-                                }
-                        },
-                        icon: {
-                            Image("UI_ItemIcon_Primogem").resizable().frame(width: 30, height: 30)
-                        }
-                    ).onTapGesture {
+                    Button {
                         simpleTaptic(type: .medium)
                         sheetType = .myLedgerSheet
+                    } label: {
+                        Label(
+                            title: {
+                                HStack {
+                                    Text(data.dayData.currentPrimogems.description).fontWeight(.heavy)
+                                    Spacer()
+                                    Text("\(data.dayData.currentMora) 🪙").font(.footnote)
+                                }.foregroundStyle(Color.primary)
+                            },
+                            icon: {
+                                Image("UI_ItemIcon_Primogem").resizable().frame(width: 30, height: 30)
+                            }
+                        )
                     }
                 case let .failure(error):
-                    Label(
-                        title: {
-                            switch error {
-                            case .notLoginError:
-                                (
-                                    HStack {
-                                        Text("[\("detailPortal.todayAcquisition.title".localized)] ") +
-                                            Text("detailPortal.todayAcquisition.reloginRequiredNotice")
-                                    }.frame(maxWidth: .infinity, alignment: .leading)
-                                        .background {
-                                            LinearGradient(
-                                                gradient: Gradient(colors: [.clear, .gray]),
-                                                startPoint: .leading,
-                                                endPoint: .trailing
-                                            )
-                                            .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
-                                            .opacity(0.0001)
-                                        }
-                                )
-                                .font(.footnote)
-                            default:
-                                Text(error.description)
-                                    .font(.footnote)
-                            }
-                        },
-                        icon: {
-                            Image(systemSymbol: .exclamationmarkArrowTriangle2Circlepath)
-                                .foregroundColor(.red)
-                                .frame(width: 30, height: 30)
-                        }
-                    ).onTapGesture {
+                    Button {
                         switch error {
                         case .notLoginError:
                             simpleTaptic(type: .medium)
@@ -491,6 +467,30 @@ struct DetailPortalView: View {
                         default:
                             viewModel.refreshLedgerData()
                         }
+                    } label: {
+                        Label(
+                            title: {
+                                switch error {
+                                case .notLoginError:
+                                    (
+                                        HStack {
+                                            Text("[\("detailPortal.todayAcquisition.title".localized)] ") +
+                                                Text("detailPortal.todayAcquisition.reloginRequiredNotice")
+                                        }.foregroundStyle(Color.primary)
+                                    )
+                                    .font(.footnote)
+                                default:
+                                    Text(error.description)
+                                        .font(.footnote)
+                                        .foregroundStyle(Color.primary)
+                                }
+                            },
+                            icon: {
+                                Image(systemSymbol: .exclamationmarkArrowTriangle2Circlepath)
+                                    .foregroundColor(.red)
+                                    .frame(width: 30, height: 30)
+                            }
+                        )
                     }
                 }
             }
@@ -687,7 +687,7 @@ struct DetailPortalView: View {
     }
 
     @ViewBuilder
-    func failureView(error: PlayerDetail.PlayerDetailError) -> some View {
+    func dataFetchFailedView(error: PlayerDetail.PlayerDetailError) -> some View {
         Section {
             HStack {
                 Spacer()
@@ -754,45 +754,27 @@ struct DetailPortalView: View {
             // 所以这里限制 macOS 在此处以 sheet 的形式呈现这两个画面。
             switch OS.type {
             case .iPadOS, .macOS:
-                Label {
-                    HStack {
-                        Text("祈愿分析")
-                        Spacer()
-                        LinearGradient(
-                            gradient: Gradient(colors: [.clear, .gray]),
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                        .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
-                        .opacity(0.0001)
-                        // 上述 Text 之后追加的部件使得整行都可以成为触控区域
-                    }
-                } icon: {
-                    Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
-                        .scaledToFit()
-                }
-                .onTapGesture {
+                Button {
                     sheetType = .gachaAnalysis
-                }
-                Label {
-                    HStack {
-                        Text("深渊统计榜单")
-                        Spacer()
-                        LinearGradient(
-                            gradient: Gradient(colors: [.clear, .gray]),
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                        .clipShape(RoundedRectangle(cornerSize: .init(width: 16, height: 16)))
-                        .opacity(0.0001)
-                        // 上述 Text 之后追加的部件使得整行都可以成为触控区域
+                } label: {
+                    Label {
+                        Text("祈愿分析")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
+                            .scaledToFit()
                     }
-                } icon: {
-                    Image("UI_MarkTower_EffigyChallenge_01").resizable()
-                        .scaledToFit()
                 }
-                .onTapGesture {
+                Button {
                     sheetType = .rankedSpiralAbyss
+                } label: {
+                    Label {
+                        Text("深渊统计榜单")
+                            .foregroundColor(.primary)
+                    } icon: {
+                        Image("UI_MarkTower_EffigyChallenge_01").resizable()
+                            .scaledToFit()
+                    }
                 }
             default:
                 NavigationLink(destination: GachaView()) {

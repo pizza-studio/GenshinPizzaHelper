@@ -79,6 +79,7 @@
 "$asset.character:Kazuha" = "Kaedehara Kazuha";
 "$asset.character:Ayaka" = "Kamisato Ayaka";
 "$asset.character:Sayu" = "Sayu";
+"$asset.character:NaganoharaYoimiya" = "Naganohara Yoimiya";
 "$asset.character:Yoimiya" = "Yoimiya";
 "$asset.character:Aloy" = "Aloy";
 "$asset.character:Sara" = "Kujou Sara";
@@ -118,8 +119,10 @@
 "$asset.character:Wriothesley" = "Wriothesley";
 "$asset.character:Charlotte" = "Charlotte";
 "$asset.character:Furina" = "Furina";
+"$asset.character:Chevreuse" = "Chevreuse";
+"$asset.character:Navia" = "Navia";
 
-// MARK: - Weapn Names
+// MARK: - Weapon Names
 
 "$asset.weapon:DullBlade" = "Épée émoussée";
 "$asset.weapon:SilverSword" = "Épée en argent";
@@ -297,11 +300,13 @@
 "$asset.weapon:ThunderingPulse" = "Pulsation du tonnerre";
 "$asset.weapon:HuntersPath" = "La voie du chasseur";
 "$asset.weapon:TheFirstGreatMagic" = "La première grande magie";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Méga épée magique du suzerain ultime";
+"$asset.weapon:ConsideredJudgement" = "Condamneur";
 
 // MARK: - Namecard Icons
 
 "$asset.nameCard:UI_NameCardPic_0_P" = "Genshin Impact - Un monde nouveau";
-"$asset.nameCard:UI_NameCardPic_Bp10_P" = "PB - Attrape-vent";
+"$asset.nameCard:UI_NameCardPic_Bp1_P" = "PB - Attrape-vent";
 "$asset.nameCard:UI_NameCardPic_Ambor_P" = "Amber - Baron Lapinou";
 "$asset.nameCard:UI_NameCardPic_Klee_P" = "Klee - Chaud devant !";
 "$asset.nameCard:UI_NameCardPic_Diluc_P" = "Diluc - Flambée mortelle";
@@ -323,41 +328,41 @@
 "$asset.nameCard:UI_NameCardPic_Csxy1_P" = "Succès - Pérégrinations";
 "$asset.nameCard:UI_NameCardPic_Mxsy_P" = "Succès - Virtuose";
 "$asset.nameCard:UI_NameCardPic_Yxzl_P" = "Succès - Héroïque périple";
-"$asset.nameCard:UI_NameCardPic_Md1_P" = "Mondstadt - Chant du vent";
-"$asset.nameCard:UI_NameCardPic_Ly1_P" = "Liyue - Paix de la roche";
-"$asset.nameCard:UI_NameCardPic_Yszj2_P" = "Succès - Prisme";
+"$asset.nameCard:UI_NameCardPic_Md_P" = "Mondstadt - Chant du vent";
+"$asset.nameCard:UI_NameCardPic_Ly_P" = "Liyue - Paix de la roche";
+"$asset.nameCard:UI_NameCardPic_Yszj_P" = "Succès - Prisme";
 "$asset.nameCard:UI_NameCardPic_Sss_P" = "Succès - Archerie";
 "$asset.nameCard:UI_NameCardPic_Tzz1_P" = "Succès - Défi";
 "$asset.nameCard:UI_NameCardPic_Sj1_P" = "Succès - Secrets profonds";
 "$asset.nameCard:UI_NameCardPic_Olah1_P" = "Succès - Brutaux des collines";
 "$asset.nameCard:UI_NameCardPic_Zdg1_P" = "Succès - Pays de la neige";
-"$asset.nameCard:UI_NameCardPic_Ly_P" = "Succès - Suspense";
+"$asset.nameCard:UI_NameCardPic_Lyws1_P" = "Succès - Suspense";
 "$asset.nameCard:UI_NameCardPic_Ysxf1_P" = "Succès - Rencontre";
 "$asset.nameCard:UI_NameCardPic_Ningguang_P" = "Ningguang - Phénix";
 "$asset.nameCard:UI_NameCardPic_Beidou_P" = "Beidou - Levée d'ancre";
 "$asset.nameCard:UI_NameCardPic_Chongyun_P" = "Chongyun - Lame de l'esprit";
 "$asset.nameCard:UI_NameCardPic_Tzz2_P" = "Succès - Défi (2)";
-"$asset.nameCard:UI_NameCardPic_Bp20_P" = "PB - Météorite";
+"$asset.nameCard:UI_NameCardPic_Bp2_P" = "PB - Météorite";
 "$asset.nameCard:UI_NameCardPic_Diona_P" = "Diona - Miaou !";
 "$asset.nameCard:UI_NameCardPic_Zhongli_P" = "Zhongli - Chute de météore";
 "$asset.nameCard:UI_NameCardPic_Xinyan_P" = "Xinyan - Final";
 "$asset.nameCard:UI_NameCardPic_Tartaglia_P" = "Tartaglia - Posture du démon";
-"$asset.nameCard:UI_NameCardPic_Md_P" = "Mondstadt - Célébrité";
-"$asset.nameCard:UI_NameCardPic_Md2_P" = "Mondstadt - Vœux";
-"$asset.nameCard:UI_NameCardPic_Ly2_P" = "Liyue - Navires";
-"$asset.nameCard:UI_NameCardPic_Lyws1_P" = "Liyue - Dans les nuages";
+"$asset.nameCard:UI_NameCardPic_Md2_P" = "Mondstadt - Célébrité";
+"$asset.nameCard:UI_NameCardPic_Md1_P" = "Mondstadt - Vœux";
+"$asset.nameCard:UI_NameCardPic_Ly1_P" = "Liyue - Navires";
+"$asset.nameCard:UI_NameCardPic_Ly2_P" = "Liyue - Dans les nuages";
 "$asset.nameCard:UI_NameCardPic_Tzz3_P" = "Succès - Défi (3)";
 "$asset.nameCard:UI_NameCardPic_Xssdlk_P" = "Succès - Sommet enneigé";
 "$asset.nameCard:UI_NameCardPic_Ganyu_P" = "Ganyu - Qilin";
 "$asset.nameCard:UI_NameCardPic_Albedo_P" = "Albedo - Radiance solaire";
 "$asset.nameCard:UI_NameCardPic_Bp3_P" = "PB - Craie";
 "$asset.nameCard:UI_NameCardPic_ElderTree_P" = "Permagel - Arbre ancien";
-"$asset.nameCard:UI_NameCardPic_EffigyChallenge02_P" = "Célébration - Hypostase";
+"$asset.nameCard:UI_NameCardPic_EffigyChallenge_P" = "Célébration - Hypostase";
 "$asset.nameCard:UI_NameCardPic_Xiao_P" = "Xiao - Masque";
 "$asset.nameCard:UI_NameCardPic_Hutao_P" = "Hu Tao - Pacificatrice";
 "$asset.nameCard:UI_NameCardPic_Bp4_P" = "PB - Mingxiao";
 "$asset.nameCard:UI_NameCardPic_LanternRite_P" = "Célébration - Lanternes";
-"$asset.nameCard:UI_NameCardPic_TheatreMechanicus2_P" = "Célébration - Échecs";
+"$asset.nameCard:UI_NameCardPic_TheatreMechanicus_P" = "Célébration - Échecs";
 "$asset.nameCard:UI_NameCardPic_Rosaria_P" = "Rosalia - Éternel labeur";
 "$asset.nameCard:UI_NameCardPic_Bp5_P" = "PB - Alizée";
 "$asset.nameCard:UI_NameCardPic_RedandWhite_P" = "Célébration - Festin";
@@ -367,16 +372,17 @@
 "$asset.nameCard:UI_NameCardPic_Feiyan_P" = "Yanfei - Impartialité";
 "$asset.nameCard:UI_NameCardPic_Eula_P" = "Eula - Sceau de glace";
 "$asset.nameCard:UI_NameCardPic_Bp6_P" = "PB - Autre monde";
-"$asset.nameCard:UI_NameCardPic_Homeworld1_P" = "Succès - Heure du thé";
+"$asset.nameCard:UI_NameCardPic_Homeworld_P" = "Succès - Heure du thé";
 "$asset.nameCard:UI_NameCardPic_Kazuha_P" = "Kazuha - Chasse en montagne d'automne";
 "$asset.nameCard:UI_NameCardPic_Bp7_P" = "PB - Été";
-"$asset.nameCard:UI_NameCardPic_Homeworld2_P" = "Succès - Maison de vacances";
+"$asset.nameCard:UI_NameCardPic_Homeworld1_P" = "Succès - Maison de vacances";
 "$asset.nameCard:UI_NameCardPic_Google_P" = "Célébration - Immensité";
 "$asset.nameCard:UI_NameCardPic_BounceConjuringChallenge_P" = "Célébration - Badaboum";
-"$asset.nameCard:UI_NameCardPic_EffigyChallenge_P" = "Célébration - Chant guerrier";
+"$asset.nameCard:UI_NameCardPic_EffigyChallenge02_P" = "Célébration - Chant guerrier";
 "$asset.nameCard:UI_NameCardPic_Oraionokami_P" = "Inazuma - Cerisier sacré";
 "$asset.nameCard:UI_NameCardPic_Bp8_P" = "PB - Sanctuaire de Narukami";
 "$asset.nameCard:UI_NameCardPic_Ayaka_P" = "Kamisato Ayaka - Éventail";
+"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "Naganohara Yoimiya - Étincelle dorée";
 "$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "Yoimiya - Étincelle dorée";
 "$asset.nameCard:UI_NameCardPic_Sayu_P" = "Sayu - Daruma Muji-muji";
 "$asset.nameCard:UI_NameCardPic_Dq1_P" = "Inazuma - Emblème de Raiden";
@@ -384,9 +390,9 @@
 "$asset.nameCard:UI_NameCardPic_Ysxf2_P" = "Succès - Porte";
 "$asset.nameCard:UI_NameCardPic_Csxy2_P" = "Succès - Traversée";
 "$asset.nameCard:UI_NameCardPic_Tzz4_P" = "Succès - Dragon de pierre";
-"$asset.nameCard:UI_NameCardPic_Homeworld_P" = "Succès - Pleine floraison";
+"$asset.nameCard:UI_NameCardPic_Homeworld2_P" = "Succès - Pleine floraison";
 "$asset.nameCard:UI_NameCardPic_Daoqi1_P" = "Inazuma - Insigne de Kujou";
-"$asset.nameCard:UI_NameCardPic_TheatreMechanicus_P" = "Célébration - Ingéniosité";
+"$asset.nameCard:UI_NameCardPic_TheatreMechanicus2_P" = "Célébration - Ingéniosité";
 "$asset.nameCard:UI_NameCardPic_Shougun_P" = "Shogun Raiden - Révélation";
 "$asset.nameCard:UI_NameCardPic_Kokomi_P" = "Sangonomiya Kokomi - Profondeurs";
 "$asset.nameCard:UI_NameCardPic_Sara_P" = "Kujou Sara - Tengu";
@@ -397,69 +403,69 @@
 "$asset.nameCard:UI_NameCardPic_Concert_P" = "Célébration - Délice mélodieux";
 "$asset.nameCard:UI_NameCardPic_Sumo_P" = "Célébration - Ikki";
 "$asset.nameCard:UI_NameCardPic_Tohma_P" = "Thomas - Brassards ardents";
-"$asset.nameCard:UI_NameCardPic_Bp11_P" = "PB - Général céleste";
+"$asset.nameCard:UI_NameCardPic_Bp10_P" = "PB - Général céleste";
 "$asset.nameCard:UI_NameCardPic_Daoqi3_P" = "Inazuma - Plume d'aigle";
 "$asset.nameCard:UI_NameCardPic_Gorou_P" = "Gorou - Chien serein";
 "$asset.nameCard:UI_NameCardPic_Itto_P" = "Itto - Visage d'Oni";
-"$asset.nameCard:UI_NameCardPic_Bp12_P" = "PB - Lyratum";
+"$asset.nameCard:UI_NameCardPic_Bp11_P" = "PB - Lyratum";
 "$asset.nameCard:UI_NameCardPic_Shenhe_P" = "Shenhe - Peigne";
 "$asset.nameCard:UI_NameCardPic_Yunjin_P" = "Yun Jin - Rime";
 "$asset.nameCard:UI_NameCardPic_Daoqi4_P" = "Inazuma - Tokoyo";
-"$asset.nameCard:UI_NameCardPic_Bp13_P" = "PB - Teinte fluide";
+"$asset.nameCard:UI_NameCardPic_Bp12_P" = "PB - Teinte fluide";
 "$asset.nameCard:UI_NameCardPic_Bartender_P" = "Célébration - Enivrement";
 "$asset.nameCard:UI_NameCardPic_Yae1_P" = "Yae Miko - Kitsune rêveuse";
-"$asset.nameCard:UI_NameCardPic_Bp14_P" = "PB - Éveil";
+"$asset.nameCard:UI_NameCardPic_Bp13_P" = "PB - Éveil";
 "$asset.nameCard:UI_NameCardPic_Ayato_P" = "Kamisato Ayato - Ondulation";
 "$asset.nameCard:UI_NameCardPic_LuminanceStone_P" = "Lumen - Pierre de lumière";
 "$asset.nameCard:UI_NameCardPic_Tzz5_P" = "Succès - Coup de tonnerre";
 "$asset.nameCard:UI_NameCardPic_Cenyan1_P" = "Succès - Gouffre";
-"$asset.nameCard:UI_NameCardPic_Bp15_P" = "PB - Irodori";
+"$asset.nameCard:UI_NameCardPic_Bp14_P" = "PB - Irodori";
 "$asset.nameCard:UI_NameCardPic_Yelan_P" = "Yelan - Jet";
 "$asset.nameCard:UI_NameCardPic_Shinobu_P" = "Kuki Shinobu - Tissage";
-"$asset.nameCard:UI_NameCardPic_Bp16_P" = "PB - Destinée";
+"$asset.nameCard:UI_NameCardPic_Bp15_P" = "PB - Destinée";
 "$asset.nameCard:UI_NameCardPic_Heizo_P" = "Shikanoin Heizou - Temari";
-"$asset.nameCard:UI_NameCardPic_Bp17_P" = "PB - Azur marin";
+"$asset.nameCard:UI_NameCardPic_Bp16_P" = "PB - Azur marin";
 "$asset.nameCard:UI_NameCardPic_Tighnari_P" = "Tighnari - Baigné de rosée";
 "$asset.nameCard:UI_NameCardPic_Collei_P" = "Collei - Vertu";
 "$asset.nameCard:UI_NameCardPic_Dori_P" = "Dori - Lampe magique";
-"$asset.nameCard:UI_NameCardPic_Bp18_P" = "PB - Fond des bois";
+"$asset.nameCard:UI_NameCardPic_Bp17_P" = "PB - Fond des bois";
 "$asset.nameCard:UI_NameCardPic_Csxy3_P" = "Succès - Errance";
 "$asset.nameCard:UI_NameCardPic_Ysxf3_P" = "Succès - Destin";
 "$asset.nameCard:UI_NameCardPic_Xm1_P" = "Sumeru - Bois scintillants";
 "$asset.nameCard:UI_NameCardPic_Xumi1_P" = "Sumeru - Observance";
 "$asset.nameCard:UI_NameCardPic_Xumi2_P" = "Sumeru - Rectitude";
-"$asset.nameCard:UI_NameCardPic_Bp19_P" = "PB - Vent de retour";
+"$asset.nameCard:UI_NameCardPic_Bp18_P" = "PB - Vent de retour";
 "$asset.nameCard:UI_NameCardPic_Cyno_P" = "Cyno - Sérénité";
 "$asset.nameCard:UI_NameCardPic_Candace_P" = "Candace - Héronne cendrée";
 "$asset.nameCard:UI_NameCardPic_Nilou_P" = "Nilou - Danse du lotus";
-"$asset.nameCard:UI_NameCardPic_Yszj_P" = "Succès - Sept lumières";
+"$asset.nameCard:UI_NameCardPic_Yszj2_P" = "Succès - Sept lumières";
 "$asset.nameCard:UI_NameCardPic_Xm2_P" = "Sumeru - Marche-sable";
 "$asset.nameCard:UI_NameCardPic_Tzz6_P" = "Succès - Rêves reflétés";
 "$asset.nameCard:UI_NameCardPic_Nahida_P" = "Nahida - Croissant";
 "$asset.nameCard:UI_NameCardPic_Layla_P" = "Layla - Rêverie";
-"$asset.nameCard:UI_NameCardPic_Bp1_P" = "PB - Fongisme";
+"$asset.nameCard:UI_NameCardPic_Bp19_P" = "PB - Fongisme";
 "$asset.nameCard:UI_NameCardPic_Wanderer_P" = "Nomade - Ballade d'errance";
 "$asset.nameCard:UI_NameCardPic_Faruzan_P" = "Faruzan - Secret scellé";
 "$asset.nameCard:UI_NameCardPic_Gcg1_P" = "Succès - Invocateur";
-"$asset.nameCard:UI_NameCardPic_Bp21_P" = "PB - Rivières stellaires";
+"$asset.nameCard:UI_NameCardPic_Bp20_P" = "PB - Rivières stellaires";
 "$asset.nameCard:UI_NameCardPic_Alhatham_P" = "Alhaitham - Érudition";
 "$asset.nameCard:UI_NameCardPic_Yaoyao_P" = "Yaoyao - Yuegui";
 "$asset.nameCard:UI_NameCardPic_Cadillac_P" = "Célébration - Nuage lenticulaire";
-"$asset.nameCard:UI_NameCardPic_Bp22_P" = "PB - Rime";
+"$asset.nameCard:UI_NameCardPic_Bp21_P" = "PB - Rime";
 "$asset.nameCard:UI_NameCardPic_Xm3_P" = "Sumeru - Tempête de sable";
 "$asset.nameCard:UI_NameCardPic_Dehya_P" = "Dehya - Feu purifiant";
 "$asset.nameCard:UI_NameCardPic_Mika_P" = "Mika - Index";
-"$asset.nameCard:UI_NameCardPic_Bp23_P" = "PB - Débrouillardise";
+"$asset.nameCard:UI_NameCardPic_Bp22_P" = "PB - Débrouillardise";
 "$asset.nameCard:UI_NameCardPic_Baizhuer_P" = "Baizhu - Soulagement";
 "$asset.nameCard:UI_NameCardPic_Kaveh_P" = "Kaveh - Firmament";
 "$asset.nameCard:UI_NameCardPic_Xm4_P" = "Succès - Myriade";
 "$asset.nameCard:UI_NameCardPic_Tzz7_P" = "Succès - Crépuscule éphémère";
 "$asset.nameCard:UI_NameCardPic_Vasara_P" = "Sumeru - Grand rêve";
 "$asset.nameCard:UI_NameCardPic_OfferingPari_P" = "Sumeru - Amrita";
-"$asset.nameCard:UI_NameCardPic_Bp24_P" = "PB - Lauriers";
+"$asset.nameCard:UI_NameCardPic_Bp23_P" = "PB - Lauriers";
 "$asset.nameCard:UI_NameCardPic_Kirara_P" = "Kirara - Neko-colis";
-"$asset.nameCard:UI_NameCardPic_Bp25_P" = "PB - Secret d'invoqueur";
-"$asset.nameCard:UI_NameCardPic_Bp26_P" = "PB - Enluminure";
+"$asset.nameCard:UI_NameCardPic_Bp24_P" = "PB - Secret d'invoqueur";
+"$asset.nameCard:UI_NameCardPic_Bp25_P" = "PB - Enluminure";
 "$asset.nameCard:UI_NameCardPic_Liney_P" = "Lyney - Simulacre";
 "$asset.nameCard:UI_NameCardPic_Linette_P" = "Lynette - Intégrité";
 "$asset.nameCard:UI_NameCardPic_Freminet_P" = "Fréminet - Progrès";
@@ -468,17 +474,19 @@
 "$asset.nameCard:UI_NameCardPic_Csxy4_P" = "Succès - Vogue";
 "$asset.nameCard:UI_NameCardPic_Fontaine1_P" = "Fontaine - Technologie";
 "$asset.nameCard:UI_NameCardPic_Fontaine2_P" = "Fontaine - Actualités";
-"$asset.nameCard:UI_NameCardPic_Bp27_P" = "PB - Source des eaux";
+"$asset.nameCard:UI_NameCardPic_Bp26_P" = "PB - Source des eaux";
 "$asset.nameCard:UI_NameCardPic_Neuvillette_P" = "Neuvillette - Afflux";
 "$asset.nameCard:UI_NameCardPic_Wriothesley_P" = "Wriothesley - Détention";
-"$asset.nameCard:UI_NameCardPic_Bp28_P" = "PB - Étoile filante";
+"$asset.nameCard:UI_NameCardPic_Bp27_P" = "PB - Étoile filante";
 "$asset.nameCard:UI_NameCardPic_Guqin_P" = "Célébration - Euphonie";
 "$asset.nameCard:UI_NameCardPic_Tzz8_P" = "Succès - Perpétuité";
 "$asset.nameCard:UI_NameCardPic_FD2_P" = "Fontaine - Expiation";
-"$asset.nameCard:UI_NameCardPic_Furina_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_FD3_P" = "？？？";
-"$asset.nameCard:UI_NameCardPic_Bp2_P" = "？？？";
+"$asset.nameCard:UI_NameCardPic_Furina_P" = "Furina - Banquet";
+"$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Charlotte - Scoop";
+"$asset.nameCard:UI_NameCardPic_FD3_P" = "Fontaine - Exhaustivité";
+"$asset.nameCard:UI_NameCardPic_Bp28_P" = "PB - Valse tournoyante";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
 
 // MARK: - 2.0 & above
 // Settings view
@@ -667,6 +675,8 @@
 
 "Discord频道: Genshin Pizza Helper" = "Serveur Discord";
 "个人主页" = "Page Personelle";
+"官方网站" = "Official Website";
+"官方X（Twitter）账号" = "Official X (Twitter) Account";
 "Bilibili主页" = "Page Bilibili";
 "GitHub主页" = "Page GitHub";
 "水里的碳酸钙" = "Bill Haku";
@@ -846,7 +856,8 @@
 // Tool View
 "detailPortal.prompt.pleaseSelectAccount" = "Veuillez d'abord choisir un compte";
 "角色展示柜" = "Vitrine de personnages";
-"账号未展示角色" = "Aucun personnage trouvé dans la vitrine de personnages";
+"account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" = "Enka failed from retrieving the player's data from the game server.";
+"account.playerDetailResult.message.characterShowCaseClassified" = "Aucun personnage trouvé dans la vitrine de personnages";
 "detailPortal.todayAcquisition.title" = "Acquisitions d'aujourd'hui";
 "detailPortal.todayAcquisition.reloginRequiredNotice" = "Veuillez appuyer pour vous reconnecter et effectuer la recherche.";
 // apiral abyss sheet
@@ -1140,7 +1151,7 @@
 "settings.display.showArtifactRarityAndLevel" = "Show artifact levels and rarity stars";
 "$asset.character:RaidenKunikuzushi" = "Raiden Kunikuzushi";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Raiden Kunikuzushi - Ballade d'errance";
-"settings.display.showTheRealNameForKunikuzushi" = "Show certain characters' real names";
+"settings.display.useActualCharacterNames" = "Show certain characters' real names";
 "settings.display.autoLineSpacingForECDDV" = "Adaptive layout in character view";
 "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" = "This only works with iPad and notched iPhone models.";
 "settings.display.title" = "UI Settings";
@@ -1215,7 +1226,7 @@
 "等待祈愿链接…" = "En attente de l'URL de l'historique de souhaits…";
 "开始获取祈愿记录" = "Commencer à obtenir les enregistrements de souhaits";
 "成功获取祈愿数据" = "Données de souhaits obtenues avec succès";
-"共保存了%lld条新的祈愿数据" = "Un total de %lld nouvelles données de souhaits ont été enregistrées";
+"gacha.messages.newEntriesSaved:%lld" = "Un total de %lld nouvelles données de souhaits ont été enregistrées";
 "获取失败，因为错误：\n%@" = "Échec de l'obtention en raison d'une erreur :\n%@";
 "成功获取到祈愿记录链接" = "URL de l'historique de souhaits obtenue avec succès";
 "请点击「开始获取祈愿记录」以继续" = "Veuillez cliquer sur 'Commencer à obtenir les enregistrements de souhaits' pour continuer";
@@ -1372,12 +1383,16 @@
 "ledgerData.action.name.byAbyss" = "Abyss";
 "ledgerData.action.name.byMail" = "Mail";
 "ledgerData.action.name.byEvent" = "Event";
-"server.region.name.china" = "Tenkuujima";
-"server.region.name.bilibili" = "Sekaiju";
+"server.region.name.celestia" = "Tenkuunoshima (Celestia)";
+"server.region.name.irminsul" = "Sekaiju (Irminsul)";
 "server.region.name.us" = "America";
 "server.region.name.eu" = "Europe";
 "server.region.name.asia" = "Asia";
-"server.region.name.cht" = "TW/HK/MO";
+"server.region.name.hongKongMacauTaiwan" = "TW/HK/MO";
 "operation.scrolling.guide" = "Use (Shift+) Mouse Wheel to scroll contents.";
 "detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay" = "Please choose an account to see Spiral Abyss records.";
-"detailPortal.player.worldBalancedLevel.short" = "WL/EL";
+
+// MARK: - 3.1.4
+
+"detailPortal.player.worldLevel" = "World Level";
+"detailPortal.player.adventureRank.short:%@" = "AR %@";

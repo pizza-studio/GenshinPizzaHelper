@@ -42,7 +42,7 @@ extension Defaults.Keys {
         suite: .opSuite
     )
     public static let isPolicyShown = Key<Bool>("isPolicyShown", default: false, suite: .opSuite)
-    public static let deviceFingerPrint = Key<String>("device_finger_print", default: "", suite: .opSuite)
+//    public static let deviceFingerPrint = Key<String>("device_finger_print", default: "", suite: .opSuite)
     public static let hasUploadedAvatarHoldingDataMD5 = Key<[String]>(
         "hasUploadedAvatarHoldingDataMD5",
         default: .init(),

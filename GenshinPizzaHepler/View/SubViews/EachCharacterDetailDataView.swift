@@ -6,7 +6,7 @@
 //
 
 import Defaults
-import HBPizzaHelperAPI
+import GIPizzaKit
 import SwiftUI
 
 // MARK: - EachCharacterDetailDataView
@@ -578,7 +578,7 @@ extension PlayerDetail.Avatar {
     }
 }
 
-extension FightPropMap {
+extension Enka.FightPropMap {
     /// 给所有伤害加成做排序，最高加成得以排在最开头。
     var allPairedDMGBoostsSorted: [(amount: Double, element: PlayerDetail.Avatar.AvatarElement)] {
         [

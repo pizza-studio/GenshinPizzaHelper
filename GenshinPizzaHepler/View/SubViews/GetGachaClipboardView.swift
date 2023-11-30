@@ -177,7 +177,10 @@ struct GetGachaClipboardView: View {
                 displayMode: .alert,
                 type: .complete(.green),
                 title: "成功获取祈愿数据",
-                subTitle: "共保存了\(observer.newItemCount)条新的祈愿数据"
+                subTitle: String(
+                    format: "gacha.messages.newEntriesSaved:%lld".localized,
+                    observer.newItemCount.description
+                )
             )
         })
         .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {

@@ -7,7 +7,7 @@
 
 import Defaults
 import Foundation
-import HBPizzaHelperAPI
+import GIPizzaKit
 
 extension Locale {
     public static var isUILanguagePanChinese: Bool {

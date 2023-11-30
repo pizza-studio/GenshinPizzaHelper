@@ -18,7 +18,7 @@ extension View {
                 .init(identifier: Locale.current.identifier)
             )
         )
-        renderer.scale = UIScreen.main.scale
+        renderer.scale = 3
         return renderer.uiImage
     }
 }

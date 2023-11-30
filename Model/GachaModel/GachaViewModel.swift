@@ -123,7 +123,7 @@ class GachaViewModel: ObservableObject {
                     self.filter
                         .uid ==
                         nil
-                ) || !self.allAvaliableAccountUID.contains(self.filter.uid ?? "114514") {
+                ) || !self.allAvaliableAccountUID.contains(self.filter.uid ?? "UID_NULL") {
                     self.filter.uid = self.allAvaliableAccountUID.first
                 }
                 self.objectWillChange.send()

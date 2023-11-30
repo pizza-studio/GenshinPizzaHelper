@@ -5,10 +5,12 @@
 //  Created by 戴藏龙 on 2022/7/12.
 //  View中用于加载信息的工具类
 
+import Combine
 import CoreData
 import Defaults
 import DefaultsKeys
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
 import HBPizzaHelperAPI
 import HoYoKit
@@ -22,13 +24,13 @@ import WatchConnectivity
 class ViewModel: NSObject, ObservableObject {
     // MARK: Lifecycle
 
-//    var session: WCSession
+    //    var session: WCSession
 
     init(session: WCSession = .default) {
-//        self.session = session
+        //        self.session = session
         super.init()
-//        self.session.delegate = self
-//        session.activate()
+        //        self.session.delegate = self
+        //        session.activate()
         fetchAccountSansAsync()
         NotificationCenter.default.addObserver(
             self,
@@ -39,7 +41,11 @@ class ViewModel: NSObject, ObservableObject {
                 .persistentStoreCoordinator
         )
         #if !os(watchOS)
-        attemptToFixLocalEnkaStorage()
+        let enkaSputnikCancellable = enkaSputnik.objectWillChange.sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }
+        anyCancellables.append(enkaSputnikCancellable)
+        enkaSputnik.attemptToFixLocalEnkaStorage()
         #endif
         #if canImport(ActivityKit)
         if #available(iOS 16.1, *) {
@@ -53,6 +59,13 @@ class ViewModel: NSObject, ObservableObject {
 
     static let shared = ViewModel()
 
+    var anyCancellables: [AnyCancellable] = []
+
+    #if !os(watchOS)
+    @ObservedObject
+    var enkaSputnik = Enka.Sputnik.shared
+    #endif
+
     @Published
     var accounts: [Account] = []
 
@@ -64,6 +77,8 @@ class ViewModel: NSObject, ObservableObject {
     var showingCharacterName: String?
     @Default(.detailPortalViewShowingAccountUUIDString)
     var showingAccountUUID: String?
+
+    let accountConfigurationModel: AccountConfigurationModel = .shared
 
     @Published
     var costumeMap: [CharacterAsset: CostumeAsset] = [:] {
@@ -77,26 +92,6 @@ class ViewModel: NSObject, ObservableObject {
             (account.config.uuid?.uuidString ?? "123") == showingAccountUUID
         }
     }
-
-    #if !os(watchOS)
-    @Published
-    var charLoc: [String: String]? = try? JSONDecoder().decode(ENCharacterLoc.self, from: Defaults[.enkaMapLoc])
-        .getLocalizedDictionary() {
-        didSet {
-            Defaults[.lastEnkaDataCheckDate] = .init()
-        }
-    }
-
-    @Published
-    var charMap: [String: ENCharacterMap.Character]? = try? JSONDecoder()
-        .decode(ENCharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails {
-        didSet {
-            Defaults[.lastEnkaDataCheckDate] = .init()
-        }
-    }
-    #endif
-
-    let accountConfigurationModel: AccountConfigurationModel = .shared
 
     func fetchAccountSansAsync() {
         let accountConfigs = accountConfigurationModel.fetchAccountConfigs()
@@ -156,7 +151,7 @@ class ViewModel: NSObject, ObservableObject {
         print("force account fetched")
     }
 
-    func addAccount(name: String, uid: String, cookie: String, server: Server) {
+    func addAccount(name: String, uid: String, cookie: String, server: Server, deviceFingerPrint: String) {
         // 添加的第一个账号作为材料刷新的时区
         if accounts.isEmpty {
             Defaults[.defaultServer] = server.rawValue
@@ -166,7 +161,8 @@ class ViewModel: NSObject, ObservableObject {
             name: name,
             uid: uid,
             cookie: cookie,
-            server: server
+            server: server,
+            deviceFingerPrint: deviceFingerPrint
         )
         fetchAccount()
     }
@@ -185,9 +181,11 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     func refreshData() {
+        let accountsCount = accounts.count
         accounts.indices.forEach { index in
             accounts[index].fetchComplete = false
             accounts[index].config.fetchResult { result in
+                guard accountsCount == self.accounts.count else { return }
                 self.accounts[index].result = result
                 self.accounts[index].background = .randomNamecardBackground
                 self.accounts[index].fetchComplete = true
@@ -197,23 +195,28 @@ class ViewModel: NSObject, ObservableObject {
     }
 
     func refreshAbyssAndBasicInfo() {
+        let accountsCount = accounts.count
         accounts.indices.forEach { index in
             #if !os(watchOS)
             let group = DispatchGroup()
             group.enter()
             accounts[index].config.fetchBasicInfo { basicInfo in
+                guard accountsCount == self.accounts.count else { return }
                 self.accounts[index].basicInfo = basicInfo
                 self.accounts[index].uploadHoldingData()
                 group.leave()
             }
             group.enter()
             self.accounts[index].config.fetchAbyssInfo { data in
+                guard accountsCount == self.accounts.count else { return }
                 self.accounts[index].spiralAbyssDetail = data
                 group.leave()
             }
             group.notify(queue: .main) {
+                guard accountsCount == self.accounts.count else { return }
                 self.accounts[index].uploadAbyssData()
                 Task {
+                    guard accountsCount == self.accounts.count else { return }
                     await self.accounts[index].uploadHuTaoDBAbyssData()
                 }
             }
@@ -224,13 +227,14 @@ class ViewModel: NSObject, ObservableObject {
     #if !os(watchOS)
     func refreshPlayerDetail(for account: Account) {
         guard let index = accounts.firstIndex(of: account) else { return }
+        let accountsCount = accounts.count
         // 如果之前返回了错误，则删除fail的result
         if let result = accounts[index].playerDetailResult,
            (try? result.get()) == nil {
             accounts[index].playerDetailResult = nil
         }
         accounts[index].fetchPlayerDetailComplete = false
-        if let charLoc = charLoc, let charMap = charMap, charLoc.count * charMap.count != 0 {
+        if let dataSet = enkaSputnik.availableDataSet {
             accounts[index].config
                 .fetchPlayerDetail(
                     dateWhenNextRefreshable: try? accounts[index]
@@ -240,12 +244,14 @@ class ViewModel: NSObject, ObservableObject {
                     case let .success(model):
                         self.accounts[index]
                             .playerDetailResult = .success(.init(
-                                playerDetailFetchModel: model,
-                                localizedDictionary: charLoc,
-                                characterMap: charMap
+                                PlayerDetailFetchModel: model,
+                                localizedDictionary: dataSet.charLoc,
+                                characterMap: dataSet.charMap
                             ))
                     case let .failure(error):
-                        if self.accounts[index].playerDetailResult == nil {
+                        // 有崩溃报告指出此处的 self.accounts 不包含该 index 的内容，故增设限制条件。
+                        // 如果在上文执行过程当中 accounts 的内容数量出现变动，则不执行这段内容。
+                        if self.accounts.count == accountsCount, self.accounts[index].playerDetailResult == nil {
                             self.accounts[index]
                                 .playerDetailResult = .failure(error)
                         }
@@ -254,45 +260,7 @@ class ViewModel: NSObject, ObservableObject {
                     self.accounts[index].fetchPlayerDetailComplete = true
                 }
         } else {
-            let group = DispatchGroup()
-            group.enter()
-            PizzaHelperAPI.fetchENCharacterLocData(from: .mainlandCN) {
-                Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
-                self.charLoc = $0.getLocalizedDictionary()
-                group.leave()
-            } onFailure: {
-                PizzaHelperAPI.fetchENCharacterLocData(from: .global) {
-                    self.charLoc = $0.getLocalizedDictionary()
-                    group.leave()
-                }
-            }
-            group.enter()
-            PizzaHelperAPI.fetchENCharacterDetailData(from: .mainlandCN) {
-                Defaults[.enkaMapCharacters] = try! JSONEncoder().encode($0)
-                self.charMap = $0.characterDetails
-                group.leave()
-            } onFailure: {
-                PizzaHelperAPI.fetchENCharacterDetailData(from: .global) {
-                    Defaults[.enkaMapCharacters] = try! JSONEncoder().encode($0)
-                    self.charMap = $0.characterDetails
-                    group.leave()
-                }
-            }
-            group.notify(queue: .main) {
-                guard let charLoc = self.charLoc else {
-                    self.accounts[index]
-                        .playerDetailResult =
-                        .failure(.failToGetLocalizedDictionary)
-                    self.accounts[index].fetchPlayerDetailComplete = true
-                    return
-                }
-                guard let charMap = self.charMap else {
-                    self.accounts[index]
-                        .playerDetailResult =
-                        .failure(.failToGetCharacterDictionary)
-                    self.accounts[index].fetchPlayerDetailComplete = true
-                    return
-                }
+            enkaSputnik.refreshCharLocAndCharMapWithAsync { dataSet in
                 self.accounts[index].config
                     .fetchPlayerDetail(
                         dateWhenNextRefreshable: try? self
@@ -303,9 +271,9 @@ class ViewModel: NSObject, ObservableObject {
                         case let .success(model):
                             self.accounts[index]
                                 .playerDetailResult = .success(.init(
-                                    playerDetailFetchModel: model,
-                                    localizedDictionary: charLoc,
-                                    characterMap: charMap
+                                    PlayerDetailFetchModel: model,
+                                    localizedDictionary: dataSet.charLoc,
+                                    characterMap: dataSet.charMap
                                 ))
                         case let .failure(error):
                             if self.accounts[index]
@@ -317,6 +285,16 @@ class ViewModel: NSObject, ObservableObject {
                         self.accounts[index]
                             .fetchPlayerDetailComplete = true
                     }
+            } onError: { rawError in
+                var err: PlayerDetail.PlayerDetailError {
+                    switch rawError {
+                    case .charLocInvalid: return .failToGetLocalizedDictionary
+                    case .charMapInvalid: return .failToGetCharacterDictionary
+                    }
+                }
+                guard self.accounts.indices.contains(index) else { return }
+                self.accounts[index].playerDetailResult = .failure(err)
+                self.accounts[index].fetchPlayerDetailComplete = true
             }
         }
     }
@@ -341,58 +319,6 @@ class ViewModel: NSObject, ObservableObject {
         accounts.indices.forEach { index in
             self.accounts[index].config.fetchLedgerData { result in
                 self.accounts[index].ledgeDataResult = result
-            }
-        }
-    }
-
-    // 检查本地 Enka 暂存资料是否损毁。如有损毁，则用 Bundle 内建的 JSON 重建之。
-    public func attemptToFixLocalEnkaStorage() {
-        guard enkaDataWrecked else { return }
-        Defaults.reset(.enkaMapLoc)
-        Defaults.reset(.enkaMapCharacters)
-        charLoc = try? JSONDecoder()
-            .decode(ENCharacterLoc.self, from: Defaults[.enkaMapLoc]).getLocalizedDictionary()
-        charMap = try? JSONDecoder()
-            .decode(ENCharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails
-        guard enkaDataWrecked else { return }
-        // 本地 JSON 资料恢复了也没用。一般情况下不该出现这种情况。
-        refreshCharLocAndCharMapSansAsync()
-    }
-
-    public var enkaDataWrecked: Bool {
-        charLoc == nil || charMap == nil || (charLoc?.count ?? 0) * (charMap?.count ?? 0) == 0
-    }
-
-    public var enkaDataNeedsUpdate: Bool {
-        var performCheck = enkaDataWrecked
-        if !performCheck, let expired = Calendar.current.date(byAdding: .hour, value: -2, to: Date()),
-           Defaults[.lastEnkaDataCheckDate] < expired {
-            print("Enka data expired, triggering update.")
-            performCheck = true
-        } else if performCheck {
-            print("Enka data (in local storage) corrupted, triggering update.")
-        }
-        return performCheck
-    }
-
-    func refreshCharLocAndCharMapSansAsync() {
-        guard enkaDataNeedsUpdate else { return }
-        PizzaHelperAPI.fetchENCharacterLocData(from: .mainlandCN) {
-            Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
-            self.charLoc = $0.getLocalizedDictionary()
-        } onFailure: {
-            PizzaHelperAPI.fetchENCharacterLocData(from: .global) {
-                Defaults[.enkaMapLoc] = try! JSONEncoder().encode($0)
-                self.charLoc = $0.getLocalizedDictionary()
-            }
-        }
-        PizzaHelperAPI.fetchENCharacterDetailData(from: .mainlandCN) {
-            Defaults[.enkaMapCharacters] = try! JSONEncoder().encode($0)
-            self.charMap = $0.characterDetails
-        } onFailure: {
-            PizzaHelperAPI.fetchENCharacterDetailData(from: .global) {
-                Defaults[.enkaMapCharacters] = try! JSONEncoder().encode($0)
-                self.charMap = $0.characterDetails
             }
         }
     }

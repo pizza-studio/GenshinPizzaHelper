@@ -5,8 +5,8 @@
 //  Created by 戴藏龙 on 2022/10/7.
 //
 
+import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 import SwiftUI
 
 // MARK: - AbyssDetailDataDisplayView
@@ -69,7 +69,7 @@ struct AbyssDetailDataDisplayView: View {
             }
         }
         .sectionSpacing(UIFont.systemFontSize)
-        .listStyle(.sidebar)
+        .listStyle(.insetGrouped)
     }
 }
 
@@ -239,7 +239,7 @@ private struct BattleDataInfoProvider: View {
             Text(name.localized)
             Spacer()
             Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
-            CharacterAsset.match(id: avatarID ?? -114_514).decoratedIcon(32, cutTo: .face)
+            CharacterAsset.match(id: avatarID ?? -213).decoratedIcon(32, cutTo: .face)
         }
     }
 }

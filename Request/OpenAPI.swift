@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
 
 extension API {
@@ -55,7 +56,7 @@ extension API {
             _ uid: String,
             dateWhenNextRefreshable: Date?,
             completion: @escaping (
-                Result<PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>
+                Result<Enka.PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>
             ) -> ()
         ) {
             if let date = dateWhenNextRefreshable, date > Date() {
@@ -149,18 +150,19 @@ extension API {
                 PlayerDetailsFetchResult
             ) -> ()
         ) {
-            var urlStr = "https://gi.pizzastudio.org/static/player_detail_data_example_2.json"
+            let isMiyousheUID = Self.isMiyousheUID(uid: uid)
+            let enkaMirror = "https://profile.microgg.cn/api/uid/" + uid
+            let enkaOfficial = "https://enka.network/api/uid/" + uid
+            var urlStr = isMiyousheUID ? enkaMirror : enkaOfficial
             #if DEBUG
-            if uid == "114514003" {
-                urlStr = "https://enka.network/api/uid/\(uid)/"
+            if !["114514003", "114514007", "114514002"].contains(uid) {
+                urlStr = "https://gi.pizzastudio.org/static/player_detail_data_example_2.json"
             }
-            #else
-            urlStr = "https://enka.network/api/uid/\(uid)/"
             #endif
             let url = URL(string: urlStr)!
 
             // 请求
-            HttpMethod<PlayerDetailFetchModel>
+            HttpMethod<Enka.PlayerDetailFetchModel>
                 .openRequest(
                     .get,
                     url
@@ -170,9 +172,31 @@ extension API {
                         print("request succeed")
                         completion(.success(requestResult))
                     case let .failure(requestError):
-                        completion(.failure(requestError))
+                        if !isMiyousheUID {
+                            completion(.failure(requestError))
+                        } else {
+                            // microgg 的 enka 服务使用出错的时候，会尝试从 enka 官网存取国服 uid 的资料。
+                            HttpMethod<Enka.PlayerDetailFetchModel>
+                                .openRequest(
+                                    .get,
+                                    URL(string: enkaOfficial)!
+                                ) { result in
+                                    switch result {
+                                    case let .success(requestResult):
+                                        print("request succeed")
+                                        completion(.success(requestResult))
+                                    case let .failure(requestError):
+                                        completion(.failure(requestError))
+                                    }
+                                }
+                        }
                     }
                 }
+        }
+
+        private static func isMiyousheUID(uid: String) -> Bool {
+            guard let initial = uid.first else { return false }
+            return "12345".contains(initial)
         }
     }
 }

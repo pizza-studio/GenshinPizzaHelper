@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: Enka Character Icons
 
-import HBPizzaHelperAPI
+import GIPizzaKit
 
 // MARK: - DecoratedIconCutType
 
@@ -29,7 +29,7 @@ public enum DecoratedIconCutType: CGFloat {
     }
 }
 
-extension ENCharacterMap.Character {
+extension Enka.CharacterMap.Character {
     var elementColor: Color {
         guard let element = PlayerDetail.Avatar.AvatarElement(rawValue: Element) else {
             return .pink
@@ -63,7 +63,7 @@ extension PlayerDetail.Avatar.AvatarElement {
 
 // MARK: - Profile Picture JSON Data Interpreter
 
-extension PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
+extension Enka.PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
     public var assetFileName: String? {
         if let avatarId = avatarId {
             return CharacterAsset.match(id: avatarId).frontPhotoFileName
@@ -92,11 +92,11 @@ extension PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
     }
 
     public var costumeIdDeducted: Int? {
-        guard let id = id else { return avatarId }
+        guard let id = id else { return costumeId ?? avatarId }
         let matchedCostume = CostumeAsset.allCases.filter {
             $0.profilePictureIdentifier == id
         }.first
-        guard let matchedCostume = matchedCostume else { return avatarId }
+        guard let matchedCostume = matchedCostume else { return costumeId ?? avatarId }
         return matchedCostume.rawValue
     }
 }
@@ -106,16 +106,16 @@ extension PlayerDetailFetchModel.PlayerInfo.ProfilePicture {
 extension PlayerDetail.PlayerBasicInfo {
     @ViewBuilder
     public func cardIcon(_ size: CGFloat) -> some View {
-        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -114_514)
-        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
+        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -213)
+        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -213) // Nullable
         let givenNameCard = NameCard(rawValue: nameCardId)
         charAsset.cardIcon(size, costume: costume, namecard: givenNameCard)
     }
 
     @ViewBuilder
     public func decoratedIcon(_ size: CGFloat) -> some View {
-        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -114_514)
-        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -114_514) // Nullable
+        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -213)
+        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -213) // Nullable
         let givenNameCard = NameCard(rawValue: nameCardId)
         charAsset.decoratedIcon(size, cutTo: .head, costume: costume, namecard: givenNameCard)
     }

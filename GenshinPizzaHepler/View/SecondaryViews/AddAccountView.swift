@@ -27,7 +27,7 @@ struct AddAccountView: View {
     @State
     private var unsavedCookie: String = ""
     @State
-    private var unsavedServer: Server = .china
+    private var unsavedServer: Server = .celestia
     @State
     private var unsavedDeviceFingerPrint: String = ""
 
@@ -245,8 +245,12 @@ struct AddAccountView: View {
                         name: unsavedName,
                         uid: unsavedUid,
                         cookie: unsavedCookie,
-                        server: unsavedServer
+                        server: unsavedServer,
+                        deviceFingerPrint: unsavedDeviceFingerPrint
                     )
+                    for account in viewModel.accounts {
+                        print("All Accounts: \(account.config.name ?? "name nil") - \(account.config.uid ?? "uid nil")")
+                    }
                     presentationMode.wrappedValue.dismiss()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         ReviewHandler.requestReview()
@@ -297,21 +301,27 @@ struct AddAccountView: View {
 
     fileprivate func getAccountsForSelect() {
         guard unsavedCookie != ""
-        else { loginError = .notLoginError(-100, "settings.account.error.failedFromFetchingAccountInformation"); return
+        else {
+            loginError = .notLoginError(
+                -100,
+                "settings.account.error.failedFromFetchingAccountInformation".localized
+            )
+            return
         }
         fetchAccountStatus = .progressing
-        MihoyoAPI.getUserGameRolesByCookie(unsavedCookie, region) { result in
-            switch result {
-            case let .success(fetchedAccountArray):
-                accountsForSelected = fetchedAccountArray
-                if !accountsForSelected
-                    .isEmpty { selectedAccount = accountsForSelected.first! }
-                loginError = nil
-            case let .failure(fetchError):
-                loginError = fetchError
+        MihoyoAPI
+            .getUserGameRolesByCookie(unsavedCookie, region, UIDevice.current.identifierForVendor ?? UUID()) { result in
+                switch result {
+                case let .success(fetchedAccountArray):
+                    accountsForSelected = fetchedAccountArray
+                    if !accountsForSelected
+                        .isEmpty { selectedAccount = accountsForSelected.first! }
+                    loginError = nil
+                case let .failure(fetchError):
+                    loginError = fetchError
+                }
+                fetchAccountStatus = .finished
             }
-            fetchAccountStatus = .finished
-        }
     }
 
     private func openWebView() {

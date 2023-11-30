@@ -15,10 +15,16 @@ struct SettingsView: View {
     @StateObject
     var storeManager: StoreManager
 
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
+
     var body: some View {
         Group {
             if #available(iOS 16, *) {
-                SettingViewIOS16(storeManager: storeManager)
+                SettingViewIOS16(
+                    storeManager: storeManager,
+                    selectedView: horizontalSizeClass == .compact ? nil : .uiPreference
+                )
             } else {
                 SettingViewIOS15(storeManager: storeManager)
             }
@@ -56,7 +62,7 @@ struct SettingViewIOS16: View {
     var isAlertToastShown = false
 
     @State
-    var selectedView: Navigation? = .uiPreference
+    var selectedView: Navigation?
 
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
@@ -277,7 +283,7 @@ private struct SettingViewIOS15: View {
             DisplayOptionsView() // 预设内容页
         }
         #if DEBUG
-        .toast(isPresenting: $isAlertToastShown) {
+            .toast(isPresenting: $isAlertToastShown) {
                 AlertToast(
                     displayMode: .hud,
                     type: .complete(.green),

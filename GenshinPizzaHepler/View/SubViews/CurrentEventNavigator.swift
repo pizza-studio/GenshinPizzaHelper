@@ -20,8 +20,19 @@ struct CurrentEventNavigator: View {
         second: Int?
     )
 
+    @Environment(\.colorScheme)
+    var colorScheme
+
     @Binding
     var eventContents: [EventModel]
+
+    var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
 
     var body: some View {
         if !eventContents.isEmpty {

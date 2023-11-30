@@ -6,6 +6,7 @@
 //
 
 import Defaults
+import GIPizzaKit
 import HBMihoyoAPI
 import HBPizzaHelperAPI
 import HoYoKit
@@ -808,6 +809,8 @@ private struct ShowAvatarPercentageShare: View {
 // MARK: - ShowTeamPercentageView
 
 private struct ShowTeamPercentageView: View {
+    @Environment(\.colorScheme)
+    var colorScheme
     @EnvironmentObject
     var viewModel: ViewModel
     @EnvironmentObject
@@ -820,89 +823,123 @@ private struct ShowTeamPercentageView: View {
         return formatter
     }()
 
+    let sectionCornerSize = CGSize(width: UIFont.smallSystemFontSize, height: UIFont.smallSystemFontSize)
+
     var result: TeamUtilizationDataFetchModelResult? {
         abyssDataCollectionViewModel.teamUtilizationDataFetchModelResult
     }
 
+    var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
     var body: some View {
-        List {
-            if let result = result {
-                switch result {
-                case let .success(data):
-                    let data = data.data
-                    let teams: [TeamUtilizationData.Team] = {
-                        switch abyssDataCollectionViewModel
-                            .teamUtilizationParams.half {
-                        case .all:
-                            return data.teams
-                        case .firstHalf:
-                            return data.teamsFH
-                        case .secondHalf:
-                            return data.teamsSH
-                        }
-                    }()
-                    Section {
-                        VStack(alignment: .leading) {
-                            let rawString = String(
-                                format: NSLocalizedString("共统计%lld用户%@", comment: ""),
-                                data.totalUsers,
-                                abyssDataCollectionViewModel.paramsDescription
-                            )
-                            let arrays = rawString.components(separatedBy: "·")
-                            ForEach(arrays, id: \.self) { line in
-                                Text(line)
-                                    .font(.footnote)
-                                    .textCase(.none)
-                            }
-                        }
-                    }
-                    Section {
-                        let teams = teams
-                            .sorted(by: { $0.percentage > $1.percentage })
-                        ForEach(
-                            Array(zip(teams.indices, teams)),
-                            id: \.0
-                        ) { index, team in
-                            let lineContent = Group {
-                                ForEach(
-                                    team.team.sorted(by: <),
-                                    id: \.self
-                                ) { avatarId in
-                                    CharacterAsset.match(id: avatarId).decoratedIcon(48, cutTo: .face, roundRect: true)
+        ScrollView(.vertical) {
+            HStack {
+                Spacer()
+                VStack(spacing: 2) {
+                    if let result = result {
+                        switch result {
+                        case let .success(dataPackage):
+                            let data = dataPackage.data
+                            let teams: [TeamUtilizationData.Team] = {
+                                switch abyssDataCollectionViewModel
+                                    .teamUtilizationParams.half {
+                                case .all:
+                                    return data.teams
+                                case .firstHalf:
+                                    return data.teamsFH
+                                case .secondHalf:
+                                    return data.teamsSH
                                 }
-                                Spacer()
-                                VStack(alignment: .center) {
-                                    Text(
-                                        percentageFormatter
-                                            .string(from: (
-                                                team
-                                                    .percentage
-                                            ) as NSNumber)!
-                                    )
-                                    .font(.systemCompressed(size: 16, weight: .heavy))
-                                    let matchedSymbol = SFSymbol(rawValue: "\(index + 1).circle")
-                                    if SFSymbol.allSymbols.contains(matchedSymbol) {
-                                        Image(systemSymbol: matchedSymbol)
-                                            .font(.system(size: 14, weight: .light))
+                            }()
+                            Section {
+                                HStack {
+                                    Text(descriptionPaneText(data: data))
+                                        .font(.footnote)
+                                        .textCase(.none)
+                                    Spacer()
+                                }
+                                .padding(UIFont.smallSystemFontSize)
+                                .background(
+                                    Color(uiColor: sectionBackgroundColor),
+                                    in: RoundedRectangle(cornerSize: sectionCornerSize)
+                                )
+                            }
+                            Spacer()
+                                .frame(height: UIFont.smallSystemFontSize)
+                            VStack(spacing: 1) {
+                                Section {
+                                    let teams = teams
+                                        .sorted(by: { $0.percentage > $1.percentage })
+                                    ForEach(
+                                        Array(zip(teams.indices, teams)),
+                                        id: \.0
+                                    ) { index, team in
+                                        let lineContent = Group {
+                                            ForEach(
+                                                team.team.sorted(by: <),
+                                                id: \.self
+                                            ) { avatarId in
+                                                CharacterAsset.match(id: avatarId)
+                                                    .decoratedIcon(48, cutTo: .face, roundRect: true)
+                                            }
+                                            Spacer()
+                                            VStack(alignment: .center) {
+                                                Text(
+                                                    percentageFormatter
+                                                        .string(from: (
+                                                            team
+                                                                .percentage
+                                                        ) as NSNumber)!
+                                                )
+                                                .font(.systemCompressed(size: 16, weight: .heavy))
+                                                let matchedSymbol = SFSymbol(rawValue: "\(index + 1).circle")
+                                                if SFSymbol.allSymbols.contains(matchedSymbol) {
+                                                    Image(systemSymbol: matchedSymbol)
+                                                        .font(.system(size: 14, weight: .light))
+                                                }
+                                            }
+                                        }
+                                        Group {
+                                            if ThisDevice.isSmallestHDScreenPhone {
+                                                HStack(spacing: 2) { lineContent }
+                                            } else {
+                                                HStack { lineContent }
+                                            }
+                                        }
+                                        .padding(.horizontal, UIFont.smallSystemFontSize)
+                                        .padding(.vertical, 4)
+                                        .background(
+                                            Color(uiColor: sectionBackgroundColor)
+                                        )
                                     }
                                 }
-                            }
-                            if ThisDevice.isSmallestHDScreenPhone {
-                                HStack(spacing: 2) { lineContent }
-                            } else {
-                                HStack { lineContent }
-                            }
+                            }.clipShape(RoundedRectangle(cornerSize: sectionCornerSize))
+                        case let .failure(error):
+                            Text(error.localizedDescription)
                         }
+                    } else {
+                        ProgressView()
                     }
-                case let .failure(error):
-                    Text(error.localizedDescription)
                 }
-            } else {
-                ProgressView()
+                .frame(maxWidth: 414)
+                Spacer()
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
-        .frame(maxWidth: 414)
+        .background(Color(uiColor: viewBackgroundColor))
+    }
+
+    func descriptionPaneText(data: TeamUtilizationData) -> String {
+        String(
+            format: NSLocalizedString("共统计%lld用户%@", comment: ""),
+            data.totalUsers,
+            abyssDataCollectionViewModel.paramsDescription
+        ).replacingOccurrences(of: "·", with: "\n")
     }
 }
 
