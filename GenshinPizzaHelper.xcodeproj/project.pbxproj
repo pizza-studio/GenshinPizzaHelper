@@ -644,6 +644,7 @@
 		EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
 		EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
 		EA9C2D1028CE26840053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
+		EA9C33B22B19C42100E9531C /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
 		EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
 		EAA2D4122931C36F00BC94A8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAA2D4112931C36F00BC94A8 /* Settings.bundle */; };
 		EAA969F32ADFA80C00C0852E /* AccountConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */; };
@@ -1167,6 +1168,7 @@
 		EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingView.swift; sourceTree = "<group>"; };
 		EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
 		EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCircular.swift; sourceTree = "<group>"; };
+		EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoteAPI.swift; sourceTree = "<group>"; };
 		EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppMaterialNavigator.swift; sourceTree = "<group>"; };
 		EAA08C6C29D7BEC000DAB5FA /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		EAA2CE3F292C909D00BF8DDE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1847,6 +1849,14 @@
 			path = LockScreenHomeCoinWidget;
 			sourceTree = "<group>";
 		};
+		EA9C33B02B19C40600E9531C /* Account API */ = {
+			isa = PBXGroup;
+			children = (
+				EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */,
+			);
+			path = "Account API";
+			sourceTree = "<group>";
+		};
 		EAAF330828A276360018EFAB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1866,6 +1876,7 @@
 		EAAF330D28A27AEA0018EFAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA9C33B02B19C40600E9531C /* Account API */,
 				EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */,
 				EA025C8029D280BB0075F780 /* GachaModel */,
 				EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */,
@@ -3051,6 +3062,7 @@
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
+				EA9C33B22B19C42100E9531C /* DailyNoteAPI.swift in Sources */,
 				EA759D672B19989A0080C775 /* EditAccountSheetView.swift in Sources */,
 				EAA969F32ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */,

@@ -36,6 +36,12 @@ public protocol ExpeditionInformation {
     var expeditions: [Expedition] { get }
 }
 
+extension ExpeditionInformation {
+    public var ongoingExpeditionCount: Int {
+        expeditions.filter { !$0.isFinished }.count
+    }
+}
+
 // MARK: - Expedition
 
 public protocol Expedition {

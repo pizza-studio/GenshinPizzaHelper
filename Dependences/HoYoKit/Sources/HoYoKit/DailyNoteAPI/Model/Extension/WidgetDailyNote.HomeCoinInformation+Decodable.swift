@@ -17,6 +17,6 @@ extension WidgetDailyNote.HomeCoinInformation: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.maxHomeCoin = try container.decode(Int.self, forKey: .maxHomeCoin)
         self.currentHomeCoin = try container.decode(Int.self, forKey: .currentHomeCoin)
-        self.fullTime = Date(timeIntervalSinceNow: TimeInterval((maxHomeCoin - currentHomeCoin) * 30 * 60 * 60))
+        self.fullTime = Date(timeIntervalSinceNow: TimeInterval((maxHomeCoin - currentHomeCoin) * 120))
     }
 }

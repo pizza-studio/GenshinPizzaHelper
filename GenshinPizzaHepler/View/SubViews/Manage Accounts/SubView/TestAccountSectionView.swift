@@ -49,7 +49,7 @@ struct TestAccountSectionView: View {
         }
         Task {
             do {
-                _ = try await MiHoYoAPI.generalDailyNote(
+                _ = try await MiHoYoAPI.dailyNote(
                     server: account.server,
                     uid: account.safeUid,
                     cookie: account.safeCookie,
