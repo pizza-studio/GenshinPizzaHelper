@@ -96,11 +96,6 @@ enum URLRequestHelperConfiguration {
     /// - Parameter region: the region of the account
     /// - Returns: http request headers
     static func defaultHeaders(region: Region, additionalHeaders: [String: String]?) async throws -> [String: String] {
-        #if !os(watchOS)
-        let deviceId = await (UIDevice.current.identifierForVendor ?? UUID()).uuidString
-        #else
-        let deviceId = UUID().uuidString
-        #endif
         var headers = [
             "User-Agent": userAgent,
             "Referer": referer(region: region),
@@ -113,7 +108,6 @@ enum URLRequestHelperConfiguration {
             "x-rpc-app_version": xRpcAppVersion(region: region),
             "x-rpc-client_type": xRpcClientType(region: region),
             "x-rpc-page": "v4.1.5-ys_#/ys/daily",
-            "x-rpc-device_id": deviceId,
             "x-rpc-language": Locale.miHoYoAPILanguage.rawValue,
 
             "Sec-Fetch-Dest": "empty",

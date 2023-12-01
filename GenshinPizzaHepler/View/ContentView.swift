@@ -54,8 +54,14 @@ struct ContentView: View {
             .infoDictionary!["CFBundleVersion"] as! String
     )!
 
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: false
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
+
     @State
-    var settingForAccountIndex: Int?
+    var settingForAccount: AccountConfiguration?
 
     var index: Binding<Int> { Binding(
         get: { selection },
@@ -89,12 +95,12 @@ struct ContentView: View {
                     .tabItem {
                         Label("概览", systemSymbol: .listBullet)
                     }
-                DetailPortalView(animation: animation)
-                    .tag(1)
-                    .environmentObject(viewModel)
-                    .tabItem {
-                        Label("详情", systemSymbol: .personTextRectangle)
-                    }
+//                DetailPortalView(animation: animation)
+//                    .tag(1)
+//                    .environmentObject(viewModel)
+//                    .tabItem {
+//                        Label("详情", systemSymbol: .personTextRectangle)
+//                    }
                 SettingsView(storeManager: storeManager)
                     .tag(2)
                     .environmentObject(viewModel)
@@ -200,11 +206,8 @@ struct ContentView: View {
                 .interactiveDismissDisabled()
             case .accountSetting:
                 NavigationView {
-                    AccountDetailView(
-                        account: $viewModel
-                            .accounts[settingForAccountIndex!]
-                    )
-                    .dismissableSheet(sheet: $sheetType)
+                    EditAccountView(account: settingForAccount!)
+                        .dismissableSheet(sheet: $sheetType)
                 }
             }
         }
@@ -221,11 +224,11 @@ struct ContentView: View {
                     resolvingAgainstBaseURL: true
                 )?.queryItems?.first(where: { $0.name == "accountUUIDString" })?
                     .value,
-                    let accountIndex = viewModel.accounts
-                    .firstIndex(where: {
-                        $0.config.uuid?.uuidString == accountUUIDString
+                    let account = accounts
+                    .first(where: {
+                        $0.uuid?.uuidString == accountUUIDString
                     }) {
-                    settingForAccountIndex = accountIndex
+                    settingForAccount = account
                     sheetType = .accountSetting
                 }
             default:

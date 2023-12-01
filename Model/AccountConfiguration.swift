@@ -94,3 +94,19 @@ extension AccountConfiguration {
 extension AccountConfiguration: Identifiable {
     public var id: UUID { uuid ?? UUID() }
 }
+
+extension AccountConfiguration {
+    func isValid() -> Bool {
+        let fingerPrintValid = if server.region == .mainlandChina {
+            deviceFingerPrint != nil && deviceFingerPrint != ""
+        } else { true }
+        return true
+            && uid != nil
+            && uid != ""
+            && cookie != nil
+            && cookie != ""
+            && uuid != nil
+            && name != nil
+            && fingerPrintValid
+    }
+}

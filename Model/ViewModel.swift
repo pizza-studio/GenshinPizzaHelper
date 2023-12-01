@@ -110,8 +110,8 @@ class ViewModel: NSObject, ObservableObject {
                         Task {
                             config
                                 .deviceFingerPrint = (
-                                    try? await MihoyoAPI
-                                        .getDeviceFingerPrint(region: .mainlandChina)
+                                    try? await MiHoYoAPI
+                                        .getDeviceFingerPrint(deviceId: config.safeUuid)
                                 ) ?? ""
                             try? self.accountConfigurationModel.container.viewContext.save()
                         }

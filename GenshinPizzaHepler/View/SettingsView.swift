@@ -200,7 +200,7 @@ struct SettingViewIOS16: View {
                 if let selectedView {
                     switch selectedView {
                     case .myAccount:
-                        AccountManagementView().environmentObject(viewModel)
+                        ManageAccountsView().environmentObject(viewModel)
                     case .faq:
                         let url: String = {
                             switch Bundle.main.preferredLocalizations.first {
@@ -298,7 +298,7 @@ private struct SettingViewIOS15: View {
         List {
             Section {
                 NavigationLink(
-                    destination: AccountManagementView().environmentObject(viewModel)
+                    destination: ManageAccountsView().environmentObject(viewModel)
                 ) {
                     Label(
                         "settings.account.myAccount",

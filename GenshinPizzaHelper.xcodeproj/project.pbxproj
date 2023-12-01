@@ -176,7 +176,6 @@
 		5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		5BD1C61D2A2A1FC90043C2B1 /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
 		5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
-		5BD1C61F2A2A1FC90043C2B1 /* GetCookieWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */; };
 		5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
 		5BD1C6212A2A1FC90043C2B1 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
 		5BD1C6222A2A1FC90043C2B1 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
@@ -184,7 +183,6 @@
 		5BD1C6242A2A1FC90043C2B1 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		5BD1C6252A2A1FC90043C2B1 /* GetGachaClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */; };
 		5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101F128D85B28000DC631 /* AllEventsView.swift */; };
-		5BD1C6272A2A1FC90043C2B1 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */; };
 		5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8AC1B29C758750047D36C /* CircleClippedBackground.swift */; };
 		5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
@@ -232,7 +230,6 @@
 		5BD1C6552A2A1FC90043C2B1 /* GachaFetchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E329D2FD22007D5C80 /* GachaFetchModel.swift */; };
 		5BD1C6562A2A1FC90043C2B1 /* GachaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8529D286540075F780 /* GachaViewModel.swift */; };
 		5BD1C6572A2A1FC90043C2B1 /* MIMTGetGachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32D57329D749E60003978A /* MIMTGetGachaURL.swift */; };
-		5BD1C6582A2A1FC90043C2B1 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42553289F87C800FEFA49 /* AddAccountView.swift */; };
 		5BD1C6592A2A1FC90043C2B1 /* DisplayOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */; };
 		5BD1C65B2A2A1FC90043C2B1 /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C42A2A1FC90043C2B1 /* CoreXLSX */; };
 		5BD1C65C2A2A1FC90043C2B1 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD1C5C02A2A1FC90043C2B1 /* HBMihoyoAPI */; };
@@ -409,10 +406,8 @@
 		BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42546289E987800FEFA49 /* TextPlayerView.swift */; };
 		BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */; };
 		BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254A289F67F600FEFA49 /* SettingsView.swift */; };
-		BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */; };
 		BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
 		BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42551289F755E00FEFA49 /* TextEditorView.swift */; };
-		BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42553289F87C800FEFA49 /* AddAccountView.swift */; };
 		BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */; };
 		BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
 		BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */; };
@@ -574,6 +569,24 @@
 		EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA721E3C28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */; };
 		EA721E3D28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */; };
+		EA759D652B19989A0080C775 /* GeetestValidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D5C2B19989A0080C775 /* GeetestValidateView.swift */; };
+		EA759D662B19989A0080C775 /* GeetestValidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D5C2B19989A0080C775 /* GeetestValidateView.swift */; };
+		EA759D672B19989A0080C775 /* EditAccountSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D5D2B19989A0080C775 /* EditAccountSheetView.swift */; };
+		EA759D682B19989A0080C775 /* EditAccountSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D5D2B19989A0080C775 /* EditAccountSheetView.swift */; };
+		EA759D692B19989A0080C775 /* ManageAccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D5E2B19989A0080C775 /* ManageAccountsView.swift */; };
+		EA759D6A2B19989A0080C775 /* ManageAccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D5E2B19989A0080C775 /* ManageAccountsView.swift */; };
+		EA759D6B2B19989A0080C775 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D602B19989A0080C775 /* AccountDetailView.swift */; };
+		EA759D6C2B19989A0080C775 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D602B19989A0080C775 /* AccountDetailView.swift */; };
+		EA759D6D2B19989A0080C775 /* TestAccountSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D612B19989A0080C775 /* TestAccountSectionView.swift */; };
+		EA759D6E2B19989A0080C775 /* TestAccountSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D612B19989A0080C775 /* TestAccountSectionView.swift */; };
+		EA759D6F2B19989A0080C775 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D622B19989A0080C775 /* EditAccountView.swift */; };
+		EA759D702B19989A0080C775 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D622B19989A0080C775 /* EditAccountView.swift */; };
+		EA759D712B19989A0080C775 /* GetCookieWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D632B19989A0080C775 /* GetCookieWebView.swift */; };
+		EA759D722B19989A0080C775 /* GetCookieWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D632B19989A0080C775 /* GetCookieWebView.swift */; };
+		EA759D732B19989A0080C775 /* CreateAccountSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D642B19989A0080C775 /* CreateAccountSheetView.swift */; };
+		EA759D742B19989A0080C775 /* CreateAccountSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D642B19989A0080C775 /* CreateAccountSheetView.swift */; };
+		EA759D762B199A2C0080C775 /* Server+Descriptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D752B199A2C0080C775 /* Server+Descriptable.swift */; };
+		EA759D772B199A2C0080C775 /* Server+Descriptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D752B199A2C0080C775 /* Server+Descriptable.swift */; };
 		EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
 		EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
 		EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
@@ -600,7 +613,6 @@
 		EA78BF09290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
 		EA78BF0A290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
 		EA78BF0B290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
-		EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */; };
 		EA7CD43D28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */; };
 		EA7CD43E28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */; };
 		EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7CD43F28CF27AF00857493 /* LockScreenResinWidgetRectangular.swift */; };
@@ -724,10 +736,7 @@
 		EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */; };
 		EAE5C5B728CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
 		EAE5C5B828CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
-		EAE846072A375F540065CF09 /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE846062A375F540065CF09 /* Verification.swift */; };
-		EAE846082A3767EB0065CF09 /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE846062A375F540065CF09 /* Verification.swift */; };
 		EAE846182A3773410065CF09 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
-		EAE8461A2A3773690065CF09 /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE846062A375F540065CF09 /* Verification.swift */; };
 		EAE95C6C28CDCA5900D975CB /* ProgressGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */; };
 		EAE95C6F28CDD38100D975CB /* LockScreenResinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */; };
 		EAE95C7128CDD52C00D975CB /* LockScreenResinWidgetInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */; };
@@ -1023,10 +1032,8 @@
 		BFE42546289E987800FEFA49 /* TextPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPlayerView.swift; sourceTree = "<group>"; };
 		BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoView.swift; sourceTree = "<group>"; };
 		BFE4254A289F67F600FEFA49 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPreviewerView.swift; sourceTree = "<group>"; };
 		BFE42551289F755E00FEFA49 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
-		BFE42553289F87C800FEFA49 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoBlockView.swift; sourceTree = "<group>"; };
 		BFE4258528A0AC1500FEFA49 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		BFE4258728A0AE2700FEFA49 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -1122,6 +1129,15 @@
 		EA6B9147290EB2EF00B5230B /* GlobalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
 		EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetCorner.swift; sourceTree = "<group>"; };
 		EA7262C82ADE64DD0062414B /* HoYoKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HoYoKit; path = Dependences/HoYoKit; sourceTree = "<group>"; };
+		EA759D5C2B19989A0080C775 /* GeetestValidateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeetestValidateView.swift; sourceTree = "<group>"; };
+		EA759D5D2B19989A0080C775 /* EditAccountSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAccountSheetView.swift; sourceTree = "<group>"; };
+		EA759D5E2B19989A0080C775 /* ManageAccountsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageAccountsView.swift; sourceTree = "<group>"; };
+		EA759D602B19989A0080C775 /* AccountDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
+		EA759D612B19989A0080C775 /* TestAccountSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAccountSectionView.swift; sourceTree = "<group>"; };
+		EA759D622B19989A0080C775 /* EditAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
+		EA759D632B19989A0080C775 /* GetCookieWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
+		EA759D642B19989A0080C775 /* CreateAccountSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountSheetView.swift; sourceTree = "<group>"; };
+		EA759D752B199A2C0080C775 /* Server+Descriptable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+Descriptable.swift"; sourceTree = "<group>"; };
 		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
 		EA784CC32902462C00918F64 /* FetchHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHomeModel.swift; sourceTree = "<group>"; };
 		EA784CC52902471600918F64 /* UtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilizationData.swift; sourceTree = "<group>"; };
@@ -1129,7 +1145,6 @@
 		EA784CC9290248CA00918F64 /* HomeServerVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServerVersion.swift; sourceTree = "<group>"; };
 		EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPercentageModel.swift; sourceTree = "<group>"; };
 		EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeaponTalentMaterial.xcassets; sourceTree = "<group>"; };
-		EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
 		EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeWatchCornerResinWidget.swift; sourceTree = "<group>"; };
 		EA7CD43F28CF27AF00857493 /* LockScreenResinWidgetRectangular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetRectangular.swift; sourceTree = "<group>"; };
 		EA7CD44428CF4A7D00857493 /* LockScreenAllInfoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenAllInfoWidget.swift; sourceTree = "<group>"; };
@@ -1194,7 +1209,6 @@
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDetailDataDisplayView.swift; sourceTree = "<group>"; };
 		EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCorner.swift; sourceTree = "<group>"; };
-		EAE846062A375F540065CF09 /* Verification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verification.swift; sourceTree = "<group>"; };
 		EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGaugeStyle.swift; sourceTree = "<group>"; };
 		EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCircular.swift; sourceTree = "<group>"; };
 		EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetInline.swift; sourceTree = "<group>"; };
@@ -1264,7 +1278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC89A642AD3AF2600EC5141 /* DefaultsKeys in Frameworks */,
-				5B41C1832AD3011700CDF2C5 /* HBPizzaHelperAPI in Frameworks */,
+				5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */,
 				EAA96A032ADFA9AD00C0852E /* HoYoKit in Frameworks */,
 				5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */,
 				5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */,
@@ -1284,7 +1298,7 @@
 				EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */,
 				BF15570F29CFE5E10056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAC89A622AD3AF2200EC5141 /* DefaultsKeys in Frameworks */,
-				BF20733629D1412100AD391F /* HBPizzaHelperAPI in Frameworks */,
+				BF20733629D1412100AD391F /* GIPizzaKit in Frameworks */,
 				EAA96A012ADFA9A900C0852E /* HoYoKit in Frameworks */,
 				BF20733629D1412100AD391F /* GIPizzaKit in Frameworks */,
 				EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */,
@@ -1379,9 +1393,7 @@
 			children = (
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */,
-				BFE4254C289F6ACE00FEFA49 /* AccountDetailView.swift */,
 				5BE5D99B2ACB0956009A732C /* AccountManagementView.swift */,
-				BFE42553289F87C800FEFA49 /* AddAccountView.swift */,
 				EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */,
 				BFB101F128D85B28000DC631 /* AllEventsView.swift */,
 				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
@@ -1389,7 +1401,6 @@
 				5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */,
 				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
 				BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */,
-				EA79FDC228AB4DF800B50D6F /* GetCookieWebView.swift */,
 				BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */,
 				BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */,
 				EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */,
@@ -1589,6 +1600,7 @@
 		BFE4254E289F6BA100FEFA49 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				EA759D5B2B19989A0080C775 /* Manage Accounts */,
 				EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */,
 				BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */,
 				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
@@ -1752,6 +1764,29 @@
 			path = FetchedModels;
 			sourceTree = "<group>";
 		};
+		EA759D5B2B19989A0080C775 /* Manage Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				EA759D5C2B19989A0080C775 /* GeetestValidateView.swift */,
+				EA759D5D2B19989A0080C775 /* EditAccountSheetView.swift */,
+				EA759D5E2B19989A0080C775 /* ManageAccountsView.swift */,
+				EA759D642B19989A0080C775 /* CreateAccountSheetView.swift */,
+				EA759D5F2B19989A0080C775 /* SubView */,
+			);
+			path = "Manage Accounts";
+			sourceTree = "<group>";
+		};
+		EA759D5F2B19989A0080C775 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				EA759D602B19989A0080C775 /* AccountDetailView.swift */,
+				EA759D612B19989A0080C775 /* TestAccountSectionView.swift */,
+				EA759D622B19989A0080C775 /* EditAccountView.swift */,
+				EA759D632B19989A0080C775 /* GetCookieWebView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		EA784CC2290245CC00918F64 /* HomeAPIModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1832,7 +1867,6 @@
 			isa = PBXGroup;
 			children = (
 				EAA969F22ADFA80C00C0852E /* AccountConfiguration.swift */,
-				EAE846052A375F410065CF09 /* Verification */,
 				EA025C8029D280BB0075F780 /* GachaModel */,
 				EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */,
 				EAAF330E28A27AFE0018EFAB /* Account.swift */,
@@ -1849,6 +1883,7 @@
 				EA059CD6292347E800400DE3 /* MultiTokenResult.swift */,
 				BFF684082A3753C8005470EA /* Icon.swift */,
 				EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */,
+				EA759D752B199A2C0080C775 /* Server+Descriptable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1974,14 +2009,6 @@
 				EAD7F02928D01B8C0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift */,
 			);
 			path = AlternativeLockScreenResinWidget;
-			sourceTree = "<group>";
-		};
-		EAE846052A375F410065CF09 /* Verification */ = {
-			isa = PBXGroup;
-			children = (
-				EAE846062A375F540065CF09 /* Verification.swift */,
-			);
-			path = Verification;
 			sourceTree = "<group>";
 		};
 		EAE95C6A28CDCA2D00D975CB /* SubView */ = {
@@ -2521,9 +2548,11 @@
 				5BD1C5C92A2A1FC90043C2B1 /* AppConfig.swift in Sources */,
 				5BD1C5CA2A2A1FC90043C2B1 /* PSAServerAPI.swift in Sources */,
 				5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */,
+				EA759D6C2B19989A0080C775 /* AccountDetailView.swift in Sources */,
 				5B5F82B62ACC67B0005983AC /* Enum_NameCard.swift in Sources */,
 				5BD1C5CC2A2A1FC90043C2B1 /* EachCharacterDetailDataView.swift in Sources */,
 				5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */,
+				EA759D6E2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
 				5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */,
 				5BD1C5CF2A2A1FC90043C2B1 /* md5.swift in Sources */,
 				5BD1C5D02A2A1FC90043C2B1 /* LedgerShareView.swift in Sources */,
@@ -2537,9 +2566,10 @@
 				5BD1C5D82A2A1FC90043C2B1 /* AccountIntents.intentdefinition in Sources */,
 				5B2A9E492ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				5BD1C5D92A2A1FC90043C2B1 /* DetailPortalView.swift in Sources */,
-				EAE846082A3767EB0065CF09 /* Verification.swift in Sources */,
+				EA759D702B19989A0080C775 /* EditAccountView.swift in Sources */,
 				5BD1C5DA2A2A1FC90043C2B1 /* MainInfoWithDetailView.swift in Sources */,
 				5BD1C5DB2A2A1FC90043C2B1 /* ImportGachaView.swift in Sources */,
+				EA759D6A2B19989A0080C775 /* ManageAccountsView.swift in Sources */,
 				5BD1C5DC2A2A1FC90043C2B1 /* ResinRecoveryActivityController.swift in Sources */,
 				5BD1C5DD2A2A1FC90043C2B1 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				5BD1C5DE2A2A1FC90043C2B1 /* WebViews.swift in Sources */,
@@ -2556,7 +2586,9 @@
 				5BD1C5E82A2A1FC90043C2B1 /* ArrayOfStringRawPresentable.swift in Sources */,
 				5BD1C5E92A2A1FC90043C2B1 /* GachaURL.swift in Sources */,
 				5BD1C5EA2A2A1FC90043C2B1 /* ResinRecoveryActivityWidget.swift in Sources */,
+				EA759D772B199A2C0080C775 /* Server+Descriptable.swift in Sources */,
 				5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */,
+				EA759D722B19989A0080C775 /* GetCookieWebView.swift in Sources */,
 				5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */,
 				5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharableInIOS16.swift in Sources */,
 				5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */,
@@ -2577,6 +2609,7 @@
 				5BD1C5FE2A2A1FC90043C2B1 /* StringExtensions.swift in Sources */,
 				5BD1C5FF2A2A1FC90043C2B1 /* ContactUsView.swift in Sources */,
 				5BD1C6002A2A1FC90043C2B1 /* RingProgressBarView.swift in Sources */,
+				EA759D742B19989A0080C775 /* CreateAccountSheetView.swift in Sources */,
 				5BD1C6012A2A1FC90043C2B1 /* GDGenshinDictionaryView.swift in Sources */,
 				5BD1C6022A2A1FC90043C2B1 /* PrivacySettingsView.swift in Sources */,
 				5BD1C6032A2A1FC90043C2B1 /* TransformerInfoBar.swift in Sources */,
@@ -2612,7 +2645,6 @@
 				5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */,
 				5BD1C61D2A2A1FC90043C2B1 /* TestSectionView.swift in Sources */,
 				5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */,
-				5BD1C61F2A2A1FC90043C2B1 /* GetCookieWebView.swift in Sources */,
 				5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */,
 				5BD1C6212A2A1FC90043C2B1 /* AppBlockBackgroundView.swift in Sources */,
 				5BD1C6222A2A1FC90043C2B1 /* StoreManager.swift in Sources */,
@@ -2621,7 +2653,6 @@
 				5BD1C6252A2A1FC90043C2B1 /* GetGachaClipboardView.swift in Sources */,
 				5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */,
 				5BA0D7A62ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
-				5BD1C6272A2A1FC90043C2B1 /* AccountDetailView.swift in Sources */,
 				5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */,
 				5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */,
 				5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */,
@@ -2644,6 +2675,7 @@
 				5BD1C63A2A2A1FC90043C2B1 /* CharacterDetailView.swift in Sources */,
 				5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */,
 				5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */,
+				EA759D682B19989A0080C775 /* EditAccountSheetView.swift in Sources */,
 				5BD1C63D2A2A1FC90043C2B1 /* HideTabBar.swift in Sources */,
 				5BD1C63E2A2A1FC90043C2B1 /* AllAvatarListSheetView.swift in Sources */,
 				5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */,
@@ -2671,8 +2703,8 @@
 				5BD1C6542A2A1FC90043C2B1 /* ThanksView.swift in Sources */,
 				5BD1C6552A2A1FC90043C2B1 /* GachaFetchModel.swift in Sources */,
 				5BD1C6562A2A1FC90043C2B1 /* GachaViewModel.swift in Sources */,
+				EA759D662B19989A0080C775 /* GeetestValidateView.swift in Sources */,
 				5BD1C6572A2A1FC90043C2B1 /* MIMTGetGachaURL.swift in Sources */,
-				5BD1C6582A2A1FC90043C2B1 /* AddAccountView.swift in Sources */,
 				5BD1C6592A2A1FC90043C2B1 /* DisplayOptionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2804,7 +2836,6 @@
 				EAEE8ED12AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */,
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
-				EAE8461A2A3773690065CF09 /* Verification.swift in Sources */,
 				5B5F82D82ACC95A7005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
@@ -3012,26 +3043,30 @@
 				BFFD822C28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				BFB101D328D5C579000DC631 /* DetailPortalView.swift in Sources */,
 				5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
-				EAE846072A375F540065CF09 /* Verification.swift in Sources */,
 				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				EA11489129D9D1430059DEBF /* ImportGachaView.swift in Sources */,
+				EA759D712B19989A0080C775 /* GetCookieWebView.swift in Sources */,
 				EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */,
 				5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
+				EA759D672B19989A0080C775 /* EditAccountSheetView.swift in Sources */,
 				EAA969F32ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */,
 				EAAF330A28A277F90018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EAB11E9E29325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
+				EA759D6B2B19989A0080C775 /* AccountDetailView.swift in Sources */,
 				BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
 				EA025C8E29D28D150075F780 /* APIGetGachaView.swift in Sources */,
 				EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */,
+				EA759D652B19989A0080C775 /* GeetestValidateView.swift in Sources */,
 				EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */,
 				EA7FDF91292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,
 				EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */,
 				EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				BFCC065328C732D5003E4A54 /* WidgetTipsView.swift in Sources */,
+				EA759D762B199A2C0080C775 /* Server+Descriptable.swift in Sources */,
 				5BE5D99C2ACB0956009A732C /* AccountManagementView.swift in Sources */,
 				EA025C8429D2834E0075F780 /* GachaItemManager.swift in Sources */,
 				EA081EFC28F85040009433D8 /* ToolbarSharableInIOS16.swift in Sources */,
@@ -3052,6 +3087,7 @@
 				EA1C2CE528F07DBE00E4C28A /* HiddenWaterMark.swift in Sources */,
 				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA196B0228B769340091FAE0 /* StringExtensions.swift in Sources */,
+				EA759D6D2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
 				BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */,
 				BFFD823228A651F500616CE1 /* RingProgressBarView.swift in Sources */,
 				BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */,
@@ -3089,7 +3125,6 @@
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
 				EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */,
-				EA79FDC328AB4DF800B50D6F /* GetCookieWebView.swift in Sources */,
 				EA784CCA290248CA00918F64 /* HomeServerVersion.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
 				BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */,
@@ -3097,7 +3132,6 @@
 				BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EA11488D29D99B590059DEBF /* GetGachaClipboardView.swift in Sources */,
 				BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */,
-				BFE4254D289F6ACE00FEFA49 /* AccountDetailView.swift in Sources */,
 				EAF8AC1C29C758750047D36C /* CircleClippedBackground.swift in Sources */,
 				5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
@@ -3117,11 +3151,13 @@
 				EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */,
+				EA759D732B19989A0080C775 /* CreateAccountSheetView.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
 				EAD29447290E717A00716EF7 /* HideTabBar.swift in Sources */,
 				EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */,
 				BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */,
+				EA759D692B19989A0080C775 /* ManageAccountsView.swift in Sources */,
 				EA459DA5290CF47700E74F76 /* DismissableSheet.swift in Sources */,
 				EA784CC82902485600918F64 /* AvatarHoldingData.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
@@ -3145,10 +3181,10 @@
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
 				BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */,
 				EAAD03E429D2FD22007D5C80 /* GachaFetchModel.swift in Sources */,
+				EA759D6F2B19989A0080C775 /* EditAccountView.swift in Sources */,
 				EA025C8629D286540075F780 /* GachaViewModel.swift in Sources */,
 				EA32D57429D749E60003978A /* MIMTGetGachaURL.swift in Sources */,
 				5BA0D7A02ACDABAA00B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
-				BFE42554289F87C800FEFA49 /* AddAccountView.swift in Sources */,
 				5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
