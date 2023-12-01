@@ -30,6 +30,7 @@ struct TestSectionView: View {
     var server: Server
     @Binding
     var deviceFingerPrint: String
+    let deviceId: UUID
 
     var body: some View {
         Section {
@@ -187,7 +188,7 @@ struct TestSectionView: View {
             do {
                 let verification = try await MiHoYoAPI.createVerification(
                     cookie: cookie,
-                    deviceFingerPrint: deviceFingerPrint
+                    deviceFingerPrint: deviceFingerPrint, deviceId: deviceId
                 )
                 sheetItem = .gotVerification(verification)
             } catch {
@@ -203,7 +204,7 @@ struct TestSectionView: View {
                     challenge: challenge,
                     validate: validate,
                     cookie: cookie,
-                    deviceFingerPrint: deviceFingerPrint
+                    deviceFingerPrint: deviceFingerPrint, deviceId: deviceId
                 )
                 connectStatus = .testing
                 viewModel.refreshData()

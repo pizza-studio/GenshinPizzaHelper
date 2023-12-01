@@ -45,6 +45,7 @@ struct CreateAccountSheetView: View {
                         globalDailyNoteCardRefreshSubject.send(())
                         alertToastVariable.isDoneButtonTapped.toggle()
                     }
+                    .disabled(status != .gotAccount)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("sys.cancel") {

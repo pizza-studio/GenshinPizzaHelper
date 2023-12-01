@@ -49,12 +49,12 @@ struct TestAccountSectionView: View {
         }
         Task {
             do {
-                _ = try await MiHoYoAPI.dailyNote(
+                _ = try await MiHoYoAPI.generalDailyNote(
                     server: account.server,
                     uid: account.safeUid,
                     cookie: account.safeCookie,
-                    deviceFingerPrint: nil,
-                    deviceId: nil
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
                 )
                 withAnimation {
                     status = .succeeded
@@ -192,7 +192,7 @@ struct TestAccountSectionView: View {
                 do {
                     let verification = try await MiHoYoAPI.createVerification(
                         cookie: account.safeCookie,
-                        deviceFingerPrint: account.deviceFingerPrint
+                        deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
                     )
                     status = .gotVerification(verification)
                     sheetItem = .gotVerification(verification)
@@ -209,7 +209,7 @@ struct TestAccountSectionView: View {
                         challenge: challenge,
                         validate: validate,
                         cookie: account.safeCookie,
-                        deviceFingerPrint: account.deviceFingerPrint
+                        deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
                     )
                     withAnimation {
                         shouldRefreshAccount()

@@ -9,18 +9,24 @@ import Foundation
 
 @available(iOS 15.0, *)
 extension MiHoYoAPI {
-    public static func createVerification(cookie: String, deviceFingerPrint: String?) async throws -> Verification {
+    public static func createVerification(
+        cookie: String,
+        deviceFingerPrint: String?,
+        deviceId: UUID?
+    ) async throws
+        -> Verification {
         let queryItems: [URLQueryItem] = [
             .init(name: "is_high", value: "true"),
         ]
 
         var additionalHeaders: [String: String] = [:]
-        if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
+        if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
             additionalHeaders["x-rpc-device_fp"] = deviceFingerPrint
+            additionalHeaders["x-rpc-device_id"] = deviceId.uuidString
         }
         additionalHeaders["x-rpc-challenge_path"] =
-            "https://api-takumi-record.mihoyo.com/game_record/app/hkrpg/api/note"
-        additionalHeaders["x-rpc-challenge_game"] = "6"
+            "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote"
+        additionalHeaders["x-rpc-challenge_game"] = "2"
 
         var urlComponents =
             URLComponents(string: "https://api-takumi-record.mihoyo.com/game_record/app/card/wapi/createVerification")!
@@ -48,16 +54,18 @@ extension MiHoYoAPI {
         challenge: String,
         validate: String,
         cookie: String,
-        deviceFingerPrint: String?
+        deviceFingerPrint: String?,
+        deviceId: UUID?
     ) async throws
         -> VerifyVerification {
         var additionalHeaders: [String: String] = [:]
-        if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
+        if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
             additionalHeaders["x-rpc-device_fp"] = deviceFingerPrint
+            additionalHeaders["x-rpc-device_id"] = deviceId.uuidString
         }
         additionalHeaders["x-rpc-challenge_path"] =
-            "https://api-takumi-record.mihoyo.com/game_record/app/hkrpg/api/note"
-        additionalHeaders["x-rpc-challenge_game"] = "6"
+            "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote"
+        additionalHeaders["x-rpc-challenge_game"] = "2"
 
         struct VerifyVerificationBody: Encodable {
             let geetestChallenge: String

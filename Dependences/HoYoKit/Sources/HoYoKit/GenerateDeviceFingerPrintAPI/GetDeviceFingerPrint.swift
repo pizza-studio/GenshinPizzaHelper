@@ -38,11 +38,11 @@ extension MiHoYoAPI {
             "seed_time": "\(Int(Date().timeIntervalSince1970) * 1000)",
             // swiftlint:disable line_length
             "ext_fields": """
-            {"userAgent":"Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.50.1","browserScreenSize":281520,"maxTouchPoints":5,"isTouchSupported":true,"browserLanguage":"zh-CN","browserPlat":"iPhone","browserTimeZone":"Asia/Shanghai","webGlRender":"Apple GPU","webGlVendor":"Apple Inc.","numOfPlugins":0,"listOfPlugins":"unknown","screenRatio":3,"deviceMemory":"unknown","hardwareConcurrency":"4","cpuClass":"unknown","ifNotTrack":"unknown","ifAdBlock":0,"hasLiedResolution":1,"hasLiedOs":0,"hasLiedBrowser":0}
+            {"vendor":"--","ramCapacity":"3662","cpuCores":"6","chargeStatus":"3","romCapacity":"121947","ramRemain":"76","accelerometer":"0.054596x-0.290237x-0.957809","networkType":"WIFI","screenSize":"390×844","isJailBreak":"0","gyroscope":"-0.024806x0.070681x-0.020708","IDFV":"275379E1-5FB1-42B9-86D6-F4F80A6CAC2C","proxyStatus":"1","magnetometer":"-118.163391x-247.904663x-353.548492","batteryStatus":"100","cpuType":"CPU_TYPE_ARM64","model":"iPhone13,2","osVersion":"17.1.1","romRemain":"3963","appMemory":"60"}
             """,
             // swiftlint:enable line_length
-            "app_name": "account_cn",
-            "device_fp": "38d7ee834d1e9",
+            "app_name": "bbs_cn",
+            "device_fp": "38d7ebd3b45ae",
         ]
         var request = URLRequest(url: url)
         request.httpBody = try JSONEncoder().encode(body)
