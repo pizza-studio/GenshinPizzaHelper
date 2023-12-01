@@ -38,6 +38,7 @@ struct NewHomeView: View {
                 globalDailyNoteCardRefreshSubject.send(())
             }
             .sectionSpacing(UIFont.systemFontSize)
+            .navigationTitle("app.home.title")
         }
     }
 }
@@ -213,6 +214,8 @@ struct AccountInfoCardView: View {
             case .progress:
                 ProgressView()
             }
+        } header: {
+            Text(account.safeName)
         }
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
