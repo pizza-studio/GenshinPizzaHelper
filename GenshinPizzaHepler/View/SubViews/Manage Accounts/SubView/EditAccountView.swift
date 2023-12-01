@@ -45,6 +45,9 @@ struct EditAccountView: View {
         if let accountsForSelected = accountsForSelected {
             SelectAccountView(account: account, accountsForSelected: accountsForSelected)
         }
+        if account.server.region == .mainlandChina {
+            RegenerateDeviceFingerPrintSection(account: account)
+        }
         Section {
             NavigationLink {
                 AccountDetailView(
@@ -152,6 +155,85 @@ private struct SelectAccountView: View {
                 self.account.uid = account.gameUid
                 self.account.server = Server(rawValue: account.region) ?? .china
             }
+        }
+    }
+}
+
+// MARK: - RegenerateDeviceFingerPrintSection
+
+private struct RegenerateDeviceFingerPrintSection: View {
+    // MARK: Lifecycle
+
+    init(account: AccountConfiguration) {
+        self._account = ObservedObject(wrappedValue: account)
+    }
+
+    // MARK: Internal
+
+    enum Status {
+        case pending
+        case progress(Task<(), Never>)
+        case succeed
+        case fail(Error)
+    }
+
+    @ObservedObject
+    var account: AccountConfiguration
+
+    @State
+    var isErrorAlertShown: Bool = false
+    @State
+    var error: AnyLocalizedError?
+
+    @State
+    var status: Status = .pending
+
+    var body: some View {
+        Section {
+            Button {
+                if case let .progress(task) = status {
+                    task.cancel()
+                }
+                let task = Task {
+                    do {
+                        account.deviceFingerPrint = try await MiHoYoAPI.getDeviceFingerPrint(deviceId: account.safeUuid)
+                        status = .succeed
+                    } catch {
+                        status = .fail(error)
+                        self.error = AnyLocalizedError(error)
+                    }
+                }
+                status = .progress(task)
+            } label: {
+                switch status {
+                case .pending:
+                    Text("account.regenerateDeviceFingerPrint.label")
+                case .progress:
+                    ProgressView()
+                case .succeed:
+                    Label {
+                        Text("account.regenerateDeviceFingerPrint.label")
+                    } icon: {
+                        Image(systemSymbol: .checkmarkCircle)
+                            .foregroundStyle(.green)
+                    }
+                case .fail:
+                    Label {
+                        Text("account.regenerateDeviceFingerPrint.label")
+                    } icon: {
+                        Image(systemSymbol: .xmarkCircle)
+                            .foregroundStyle(.red)
+                    }
+                }
+            }
+            .disabled({ if case .progress = status { true } else { false }}())
+            .alert(isPresented: $isErrorAlertShown, error: error) { _ in
+                Button("sys.done") { isErrorAlertShown = false }
+            } message: { error in
+                Text(error.localizedDescription)
+            }
+        } footer: {
+            Text("account.regenerateDeviceFingerPrint.footer")
         }
     }
 }

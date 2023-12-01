@@ -47,99 +47,80 @@ struct InAppMaterialNavigator: View {
     }
 
     var body: some View {
-        VStack {
+        Section {
             HStack {
-                if showingWeekday != .sunday {
-                    Group {
-                        if showMaterialDetail {
-                            Menu(showingWeekday.describe()) {
-                                ForEach(
-                                    MaterialWeekday.allCases,
-                                    id: \.hashValue
-                                ) { weekday in
-                                    Button(weekday.describe()) {
-                                        withAnimation {
-                                            showingWeekday = weekday
-                                        }
-                                    }
-                                }
-                            }
-                        } else {
-                            Text("今日材料")
-                        }
-                    }
-                    .font(.caption)
-                    Spacer()
-                    if showMaterialDetail == false {
-                        Text(getDate())
-                            .font(.caption)
-                    } else {
-                        Button("收起") {}
-                            .onTapGesture {
-                                simpleTaptic(type: .light)
-                                withAnimation(.interactiveSpring(
-                                    response: 0.25,
-                                    dampingFraction: 1.0,
-                                    blendDuration: 0
-                                )) {
-                                    showingWeekday = .today()
-                                    showRelatedDetailOfMaterial = nil
-                                    showMaterialDetail = false
-                                }
-                            }
-                            .font(.caption)
-                    }
-                    Image(systemSymbol: .chevronForward)
-                        .rotationEffect(
-                            Angle(degrees: showMaterialDetail ? 90 : 0),
-                            anchor: .center
-                        )
-                        .font(.caption)
-                        .foregroundColor(showMaterialDetail ? .accentColor : .primary)
+                Spacer()
+                if !showMaterialDetail {
+                    materials()
                 } else {
-                    Group {
-                        if showMaterialDetail {
-                            Menu(showingWeekday.describe()) {
-                                ForEach(
-                                    MaterialWeekday.allCases,
-                                    id: \.hashValue
-                                ) { weekday in
-                                    Button(weekday.describe()) {
+                    if showRelatedDetailOfMaterial == nil {
+                        materialsDetail()
+                    } else {
+                        materialRelatedItemView()
+                    }
+                }
+                Spacer()
+            }
+            .padding()
+            .onTapGesture { switchStatus() }
+            .onChange(of: scenePhase) { newValue in
+                switch newValue {
+                case .active:
+                    showingWeekday = .today()
+                default:
+                    break
+                }
+            }
+            .listRowInsets(EdgeInsets())
+        } header: {
+            HStack {
+                Group {
+                    if showMaterialDetail {
+                        Menu(showingWeekday.describe()) {
+                            ForEach(
+                                MaterialWeekday.allCases,
+                                id: \.hashValue
+                            ) { weekday in
+                                Button(weekday.describe()) {
+                                    withAnimation {
                                         showingWeekday = weekday
                                     }
                                 }
                             }
-                        } else {
-                            Text("今日材料")
                         }
-                    }
-                    .font(.caption)
-                    Spacer()
-                    Group {
-                        Text("所有材料均可获取")
-                    }
-                    .multilineTextAlignment(.center)
-                    .font(.caption)
-                    Spacer()
-                    if showMaterialDetail == false {
-                        Text(getDate())
-                            .font(.caption)
-                            .padding(.vertical)
                     } else {
-                        Button("收起") {}
-                            .onTapGesture {
-                                simpleTaptic(type: .light)
-                                withAnimation(.interactiveSpring(
-                                    response: 0.25,
-                                    dampingFraction: 1.0,
-                                    blendDuration: 0
-                                )) {
-                                    showingWeekday = .today()
-                                    showRelatedDetailOfMaterial = nil
-                                    showMaterialDetail = false
-                                }
+                        Text("今日材料")
+                            .foregroundColor(.primary)
+                    }
+                }
+                .font(.caption)
+                Spacer()
+                HStack(spacing: 2) {
+                    if showMaterialDetail == false {
+                        Button {
+                            switchStatus()
+                        } label: {
+                            Text(getDate())
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    } else {
+                        Button {
+                            simpleTaptic(type: .light)
+                            withAnimation(.interactiveSpring(
+                                response: 0.25,
+                                dampingFraction: 1.0,
+                                blendDuration: 0
+                            )) {
+                                showingWeekday = .today()
+                                showRelatedDetailOfMaterial = nil
+                                showMaterialDetail = false
                             }
-                            .font(.caption)
+                        } label: {
+                            HStack {
+                                Text("收起").font(.caption)
+                            }
+                        }
                     }
                     Image(systemSymbol: .chevronForward)
                         .rotationEffect(
@@ -147,51 +128,34 @@ struct InAppMaterialNavigator: View {
                             anchor: .center
                         )
                         .font(.caption)
-                }
-            }
-            if !showMaterialDetail {
-                materials()
-            } else {
-                if showRelatedDetailOfMaterial == nil {
-                    materialsDetail()
-                } else {
-                    materialRelatedItemView()
+                        .foregroundColor(showMaterialDetail ? .accentColor : .secondary)
                 }
             }
         }
-        .padding()
-        .onTapGesture {
-            if !showMaterialDetail {
-                simpleTaptic(type: .light)
-                withAnimation(.interactiveSpring(
-                    response: 0.25,
-                    dampingFraction: 1.0,
-                    blendDuration: 0
-                )) {
-                    showingWeekday = .today()
-                    showMaterialDetail = true
-                }
-            }
-            if showRelatedDetailOfMaterial != nil {
-                simpleTaptic(type: .light)
-                withAnimation(.interactiveSpring(
-                    response: 0.25,
-                    dampingFraction: 1.0,
-                    blendDuration: 0
-                )) {
-                    showRelatedDetailOfMaterial = nil
-                }
-            }
-        }
-        .onChange(of: scenePhase) { newValue in
-            switch newValue {
-            case .active:
+    }
+
+    func switchStatus() {
+        if !showMaterialDetail {
+            simpleTaptic(type: .light)
+            withAnimation(.interactiveSpring(
+                response: 0.25,
+                dampingFraction: 1.0,
+                blendDuration: 0
+            )) {
                 showingWeekday = .today()
-            default:
-                break
+                showMaterialDetail = true
             }
         }
-        .listRowInsets(EdgeInsets())
+        if showRelatedDetailOfMaterial != nil {
+            simpleTaptic(type: .light)
+            withAnimation(.interactiveSpring(
+                response: 0.25,
+                dampingFraction: 1.0,
+                blendDuration: 0
+            )) {
+                showRelatedDetailOfMaterial = nil
+            }
+        }
     }
 
     @ViewBuilder
@@ -231,7 +195,7 @@ struct InAppMaterialNavigator: View {
                 }
             }
         } else {
-            EmptyView()
+            Text("所有材料均可获取")
         }
     }
 

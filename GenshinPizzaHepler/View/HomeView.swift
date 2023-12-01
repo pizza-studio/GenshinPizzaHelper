@@ -12,9 +12,9 @@ import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
-// MARK: - NewHomeView
+// MARK: - HomeView
 
-struct NewHomeView: View {
+struct HomeView: View {
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
         ascending: false
@@ -37,7 +37,6 @@ struct NewHomeView: View {
             .refreshable {
                 globalDailyNoteCardRefreshSubject.send(())
             }
-            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("app.home.title")
         }
     }
@@ -216,6 +215,7 @@ struct AccountInfoCardView: View {
             }
         } header: {
             Text(account.safeName)
+                .foregroundColor(.primary)
         }
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
@@ -253,25 +253,21 @@ struct TodayMaterialView: View {
     var eventContents: [EventModel] = []
 
     var body: some View {
-        Section {
-            InAppMaterialNavigator()
-                .onChange(of: scenePhase, perform: { newPhase in
-                    switch newPhase {
-                    case .active:
-                        getCurrentEvent()
-                    default:
-                        break
-                    }
-                })
-                .onAppear {
-                    if eventContents.isEmpty {
-                        getCurrentEvent()
-                    }
+        InAppMaterialNavigator()
+            .onChange(of: scenePhase, perform: { newPhase in
+                switch newPhase {
+                case .active:
+                    getCurrentEvent()
+                default:
+                    break
                 }
-        }
-        Section {
-            CurrentEventNavigator(eventContents: $eventContents)
-        }
+            })
+            .onAppear {
+                if eventContents.isEmpty {
+                    getCurrentEvent()
+                }
+            }
+        CurrentEventNavigator(eventContents: $eventContents)
     }
 
     func getCurrentEvent() {

@@ -36,20 +36,7 @@ struct CurrentEventNavigator: View {
 
     var body: some View {
         if !eventContents.isEmpty {
-            VStack(spacing: 0) {
-                HStack(spacing: 2) {
-                    Text("即将结束的活动")
-                        .foregroundColor(.primary)
-                    Spacer()
-                    Text("查看全部活动")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Image(systemSymbol: .chevronForward)
-                        .padding(.leading, 5)
-                        .foregroundColor(.secondary)
-                }
-                .font(.caption)
-                .padding(.bottom, 13)
+            Section {
                 HStack(spacing: 3) {
                     Rectangle()
                         .foregroundColor(.secondary)
@@ -86,6 +73,22 @@ struct CurrentEventNavigator: View {
                             }
                         }
                     }
+                }
+            } header: {
+                NavigationLink {
+                    AllEventsView(eventContents: $eventContents)
+                } label: {
+                    HStack(spacing: 2) {
+                        Text("即将结束的活动")
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Text("查看全部活动")
+                            .foregroundColor(.secondary)
+                        Image(systemSymbol: .chevronForward)
+                            .padding(.leading, 5)
+                            .foregroundColor(.secondary)
+                    }
+                    .font(.caption)
                 }
             }
             .background {

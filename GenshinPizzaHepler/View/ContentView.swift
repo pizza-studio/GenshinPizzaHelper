@@ -89,7 +89,7 @@ struct ContentView: View {
                 .zIndex(-213)
 
             TabView(selection: index) {
-                NewHomeView()
+                HomeView()
                     .tag(0)
                     .environmentObject(viewModel)
                     .tabItem {
