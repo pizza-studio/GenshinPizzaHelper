@@ -8,7 +8,7 @@
 import Defaults
 import Foundation
 import GIPizzaKit
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - CharacterAsset

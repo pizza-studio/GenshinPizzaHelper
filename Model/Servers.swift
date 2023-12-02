@@ -13,7 +13,11 @@ import HoYoKit
 extension AccountConfiguration {
     var server: Server {
         get {
-            Server(rawValue: serverRawValue!)!
+            if let serverRawValue {
+                Server(rawValue: serverRawValue) ?? .china
+            } else {
+                Server.china
+            }
         }
         set {
             serverRawValue = newValue.rawValue

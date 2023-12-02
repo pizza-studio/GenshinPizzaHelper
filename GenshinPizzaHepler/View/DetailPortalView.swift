@@ -28,7 +28,6 @@ final private class DetailPortalViewModel: ObservableObject {
         } else {
             self.selectedAccount = nil
         }
-        refresh()
     }
 
     // MARK: Internal
@@ -47,13 +46,12 @@ final private class DetailPortalViewModel: ObservableObject {
 
     @Published
     var selectedAccount: AccountConfiguration? {
-        didSet {
-            detailPortalViewRefreshSubject.send(())
-        }
+        didSet { refresh() }
     }
 
     func refresh() {
         fetchPlayerDetail()
+        fetchBasicInfo()
     }
 
     func fetchPlayerDetail() {
@@ -122,8 +120,6 @@ final private class DetailPortalViewModel: ObservableObject {
     }
 }
 
-let detailPortalViewRefreshSubject: PassthroughSubject<(), Never> = .init()
-
 // MARK: - DetailPortalView
 
 struct DetailPortalView: View {
@@ -133,11 +129,11 @@ struct DetailPortalView: View {
         NavigationView {
             List {
                 SelectAccountSection(selectedAccount: $detailPortalViewModel.selectedAccount)
+                if let account = detailPortalViewModel.selectedAccount {
+                    PlayerDetailSection(account: account)
+                }
             }
             .refreshable {
-                detailPortalViewRefreshSubject.send(())
-            }
-            .onReceive(detailPortalViewRefreshSubject) { _ in
                 detailPortalViewModel.refresh()
             }
         }
@@ -165,9 +161,13 @@ private struct SelectAccountSection: View {
         if let selectedAccount {
             if case let .succeed((playerDetail, _)) = detailPortalViewModel.playerDetailStatus,
                let basicInfo = playerDetail.basicInfo {
-                normalAccountPickerView(playerDetail: playerDetail, basicInfo: basicInfo)
+                normalAccountPickerView(
+                    playerDetail: playerDetail,
+                    basicInfo: basicInfo,
+                    selectedAccount: selectedAccount
+                )
             } else {
-                noBasicInfoFallBackView()
+                noBasicInfoFallBackView(selectedAccount: selectedAccount)
             }
         } else {
             noSelectAccountView()
@@ -175,7 +175,12 @@ private struct SelectAccountSection: View {
     }
 
     @ViewBuilder
-    func normalAccountPickerView(playerDetail: PlayerDetail, basicInfo: PlayerDetail.PlayerBasicInfo) -> some View {
+    func normalAccountPickerView(
+        playerDetail: PlayerDetail,
+        basicInfo: PlayerDetail.PlayerBasicInfo,
+        selectedAccount: AccountConfiguration
+    )
+        -> some View {
         Section {
             HStack(spacing: 0) {
                 HStack {
@@ -209,14 +214,14 @@ private struct SelectAccountSection: View {
                         SelectAccountMenu {
                             Image(systemSymbol: .arrowLeftArrowRightCircle)
                         } completion: { account in
-                            selectedAccount = account
+                            self.selectedAccount = account
                         }
                     }
                 }
             }
         } footer: {
             HStack {
-                Text("UID: \(selectedAccount!.safeUid)")
+                Text("UID: \(selectedAccount.safeUid)")
                 Spacer()
                 let worldLevelTitle = "detailPortal.player.worldLevel".localized
                 Text("\(worldLevelTitle): \(basicInfo.worldLevel)")
@@ -225,7 +230,7 @@ private struct SelectAccountSection: View {
     }
 
     @ViewBuilder
-    func noBasicInfoFallBackView() -> some View {
+    func noBasicInfoFallBackView(selectedAccount: AccountConfiguration) -> some View {
         Section {
             HStack(spacing: 0) {
                 HStack {
@@ -236,7 +241,7 @@ private struct SelectAccountSection: View {
                 VStack(alignment: .leading) {
                     HStack(spacing: 10) {
                         VStack(alignment: .leading) {
-                            Text(selectedAccount!.safeName)
+                            Text(selectedAccount.safeName)
                                 .font(.title3)
                                 .bold()
                                 .padding(.top, 5)
@@ -246,14 +251,14 @@ private struct SelectAccountSection: View {
                         SelectAccountMenu {
                             Image(systemSymbol: .arrowLeftArrowRightCircle)
                         } completion: { account in
-                            selectedAccount = account
+                            self.selectedAccount = account
                         }
                     }
                 }
             }
         } footer: {
             HStack {
-                Text("UID: \(selectedAccount!.safeUid)")
+                Text("UID: \(selectedAccount.safeUid)")
             }
         }
     }
@@ -294,17 +299,111 @@ private struct SelectAccountSection: View {
             }
         }
     }
+}
 
-    private struct DisplaySelectedAccountView: View {
+// MARK: - PlayerDetailSection.DataFetchedView.ID + Identifiable
+
+extension PlayerDetailSection.DataFetchedView.ID: Identifiable {
+    public var id: String { self }
+}
+
+// MARK: - PlayerDetailSection
+
+private struct PlayerDetailSection: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    struct DataFetchedView: View {
+        typealias ID = String
+
+        let playerDetail: PlayerDetail
         let account: AccountConfiguration
 
+        @State
+        var showingCharacterName: ID?
+
         var body: some View {
-            Text("")
+            VStack {
+                if playerDetail.avatars.isEmpty {
+                    Text(
+                        playerDetail
+                            .basicInfo != nil
+                            ? "account.playerDetailResult.message.characterShowCaseClassified"
+                            : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
+                    )
+                    .foregroundColor(.secondary)
+                    if let msg = playerDetail.enkaMessage {
+                        Text(msg).foregroundColor(.secondary).controlSize(.small)
+                    }
+                } else {
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(
+                                playerDetail.avatars,
+                                id: \.name
+                            ) { avatar in
+                                avatar.characterAsset.cardIcon(75)
+                                    .onTapGesture {
+                                        simpleTaptic(type: .medium)
+                                        withAnimation(
+                                            .interactiveSpring(
+                                                response: 0.25,
+                                                dampingFraction: 1.0,
+                                                blendDuration: 0
+                                            )
+                                        ) {
+                                            showingCharacterName =
+                                                avatar.name
+                                        }
+                                    }
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    }
+                }
+                if !playerDetail.avatars.isEmpty {
+                    HelpTextForScrollingOnDesktopComputer(.horizontal)
+                }
+            }
+            .fullScreenCover(item: $showingCharacterName) { characterName in
+                CharacterDetailView(
+                    account: account,
+                    showingCharacterName: characterName,
+                    playerDetail: playerDetail
+                ) {
+                    showingCharacterName = nil
+                }
+                .environment(\.colorScheme, .dark)
+            }
+        }
+    }
+
+    let account: AccountConfiguration
+
+    var playerDetailStatus: DetailPortalViewModel
+        .Status<(PlayerDetail, nextRefreshableDate: Date)> { detailPortalViewModel.playerDetailStatus }
+
+    var body: some View {
+        Section {
+            switch playerDetailStatus {
+            case .progress:
+                ProgressView().id(UUID())
+            case let .fail(error):
+                Label {
+                    Text(error.localizedDescription)
+                } icon: {
+                    Image(systemSymbol: .xmarkCircle)
+                        .foregroundColor(.red)
+                }
+            case let .succeed((playerDetail, _)):
+                DataFetchedView(playerDetail: playerDetail, account: account)
+            }
+            AllAvatarNavigator(account: account)
         }
     }
 }
 
-// MARK: - DetailPortalView
+// MARK: - AllAvatarNavigator
 
 // @available(iOS 15.0, *)
 // struct DetailPortalView: View {
@@ -1288,40 +1387,19 @@ private struct SelectAccountSection: View {
 //
 //// MARK: - AllAvatarNavigator
 //
-// @available(iOS 15.0, *)
-// private struct AllAvatarNavigator: View {
-//    // MARK: Internal
-//
-//    let basicInfo: BasicInfos
-//    @Binding
-//    var sheetType: SheetTypesForDetailPortalView?
-//
-//    var body: some View {
-//        HStack(alignment: .center) {
-//            Text("所有角色")
-//                .padding(.trailing)
-//                .font(.footnote)
-//                .foregroundColor(.primary)
-//            Spacer()
-//            HStack(spacing: 3) {
-//                ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
-//                    // 必须在这里绑一下 AppStorage，不然这个画面的内容不会自动更新。
-//                    CharacterAsset.match(id: avatar.id)
-//                        .decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
-//                }
-//            }
-//            .padding(.vertical, 3)
-//        }
-//        .onTapGesture {
-//            sheetType = .allAvatarList
-//        }
-//    }
-//
-//    // MARK: Private
-//
-//    @Default(.cutShouldersForSmallAvatarPhotos)
-//    private var cutShouldersForSmallAvatarPhotos: Bool
-// }
+@available(iOS 15.0, *)
+private struct AllAvatarNavigator: View {
+    let account: AccountConfiguration
+
+    var body: some View {
+        NavigationLink("所有角色") {
+            AllAvatarListSheetView(account: account)
+        }
+    }
+}
+
+// MARK: - PlayerDetail.Avatar + Identifiable
+
 //
 //// MARK: - PrimogemTextLabel
 //

@@ -16,7 +16,6 @@ struct CharacterDetailView: View {
 
     @State
     var showingCharacterName: String
-    var animation: Namespace.ID
 
     @State
     var showTabViewIndex: Bool = false
@@ -119,8 +118,7 @@ struct CharacterDetailView: View {
         VStack {
             Spacer().frame(width: 25, height: 10)
             EachCharacterDetailDataView(
-                avatar: avatar,
-                animation: animation
+                avatar: avatar
             ).frame(minWidth: 620, maxWidth: 830) // For iPad
                 .frame(width: condenseHorizontally ? 620 : nil)
                 .fixedSize(

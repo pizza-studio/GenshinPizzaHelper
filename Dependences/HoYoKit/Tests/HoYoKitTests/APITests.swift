@@ -16,7 +16,7 @@ final class APITests: XCTestCase {
                 uid: TestData.China.uid,
                 cookie: TestData.China.testCookie,
                 deviceFingerPrint: TestData.China.deviceFingerPrint,
-                deviceId: UUID()
+                deviceId: TestData.China.deviceId
             )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
@@ -42,7 +42,7 @@ final class APITests: XCTestCase {
                 uid: TestData.China.uid,
                 cookie: TestData.China.testCookie,
                 deviceFingerPrint: TestData.China.deviceFingerPrint,
-                deviceId: UUID()
+                deviceId: TestData.China.deviceId
             )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
@@ -101,7 +101,8 @@ final class APITests: XCTestCase {
                 server: TestData.China.server,
                 uid: TestData.China.uid,
                 cookie: TestData.China.testCookie,
-                deviceFingerPrint: TestData.China.deviceFingerPrint
+                deviceFingerPrint: TestData.China.deviceFingerPrint,
+                deviceId: TestData.China.deviceId
             )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
@@ -115,7 +116,7 @@ final class APITests: XCTestCase {
             server: TestData.Global.server,
             uid: TestData.Global.uid,
             cookie: TestData.Global.testCookie,
-            deviceFingerPrint: nil
+            deviceFingerPrint: nil, deviceId: nil
         )
     }
 
@@ -126,7 +127,8 @@ final class APITests: XCTestCase {
                 server: TestData.China.server,
                 uid: TestData.China.uid,
                 cookie: TestData.China.testCookie,
-                deviceFingerPrint: TestData.China.deviceFingerPrint
+                deviceFingerPrint: TestData.China.deviceFingerPrint,
+                deviceId: TestData.China.deviceId
             )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
@@ -141,7 +143,7 @@ final class APITests: XCTestCase {
             server: TestData.Global.server,
             uid: TestData.Global.uid,
             cookie: TestData.Global.testCookie,
-            deviceFingerPrint: nil
+            deviceFingerPrint: nil, deviceId: nil
         )
     }
 
@@ -151,7 +153,7 @@ final class APITests: XCTestCase {
                 server: TestData.China.server,
                 uid: TestData.China.uid,
                 cookie: TestData.China.testCookie,
-                deviceFingerPrint: TestData.China.deviceFingerPrint
+                deviceFingerPrint: TestData.China.deviceFingerPrint, deviceId: TestData.China.deviceId
             )
         } catch MiHoYoAPIError.verificationNeeded {
             print("China API need verification")
@@ -165,7 +167,7 @@ final class APITests: XCTestCase {
             server: TestData.Global.server,
             uid: TestData.Global.uid,
             cookie: TestData.Global.testCookie,
-            deviceFingerPrint: nil
+            deviceFingerPrint: nil, deviceId: nil
         )
     }
 }
@@ -183,6 +185,7 @@ enum TestData {
         """
 
         static let deviceFingerPrint = "1145141919810"
+        static let deviceId = UUID()
     }
 
     enum Global {
