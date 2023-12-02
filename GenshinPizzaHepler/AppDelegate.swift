@@ -32,16 +32,17 @@ class AppDelegate: NSObject, UIApplicationDelegate,
         switch response.actionIdentifier {
         case "OPEN_GENSHIN_ACTION":
             let genshinAppLocalHeader = "yuanshengame://"
-            let isGenshinInstalled = ThirdPartyToolsView.isInstallation(urlString: genshinAppLocalHeader)
-            if isGenshinInstalled, let gameURL = URL(string: genshinAppLocalHeader) {
-                UIApplication.shared.open(gameURL) { _ in
-                    print("open genshin game succeeded")
-                }
-            } else if let webGenshinURL = URL(string: "https://ys.mihoyo.com/cloud/") {
-                UIApplication.shared.open(webGenshinURL) { _ in
-                    print("open webGenshin succeeded")
-                }
-            }
+        // TODO: notification url
+//            let isGenshinInstalled = ThirdPartyToolsView.isInstallation(urlString: genshinAppLocalHeader)
+//            if isGenshinInstalled, let gameURL = URL(string: genshinAppLocalHeader) {
+//                UIApplication.shared.open(gameURL) { _ in
+//                    print("open genshin game succeeded")
+//                }
+//            } else if let webGenshinURL = URL(string: "https://ys.mihoyo.com/cloud/") {
+//                UIApplication.shared.open(webGenshinURL) { _ in
+//                    print("open webGenshin succeeded")
+//                }
+//            }
         case "OPEN_NOTIFICATION_SETTING_ACTION":
             let url = URL(string: "ophelper://settings/")!
             UIApplication.shared.open(url) { _ in

@@ -12,8 +12,12 @@ import UniformTypeIdentifiers
 
 @available(iOS 15.0, *)
 struct ExportGachaView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: false
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
+
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
 
@@ -73,8 +77,8 @@ struct ExportGachaView: View {
                             gachaViewModel.allAvaliableAccountUID,
                             id: \.self
                         ) { uid in
-                            if let name = viewModel.accounts
-                                .first(where: { $0.config.uid! == uid })?.config
+                            if let name = accounts
+                                .first(where: { $0.uid! == uid })?
                                 .name {
                                 Text("\(name) (\(uid))")
                                     .tag(Optional(uid))

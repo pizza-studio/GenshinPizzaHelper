@@ -12,7 +12,8 @@ extension MiHoYoAPI {
         server: Server,
         uid: String,
         cookie: String,
-        deviceFingerPrint: String?
+        deviceFingerPrint: String?,
+        deviceId: UUID?
     ) async throws
         -> AllAvatarDetailModel {
         struct RequestBody: Codable {
@@ -21,8 +22,11 @@ extension MiHoYoAPI {
         }
 
         let additionalHeaders: [String: String]? = {
-            if let deviceFingerPrint, !deviceFingerPrint.isEmpty {
-                return ["x-rpc-device_fp": deviceFingerPrint]
+            if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
+                return [
+                    "x-rpc-device_fp": deviceFingerPrint,
+                    "x-rpc-device_id": deviceId.uuidString,
+                ]
             } else {
                 return nil
             }

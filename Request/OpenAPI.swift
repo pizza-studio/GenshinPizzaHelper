@@ -54,6 +54,60 @@ extension API {
         ///     - completion: 数据
         static func fetchPlayerDetail(
             _ uid: String,
+            dateWhenNextRefreshable: Date?
+        ) async throws
+            -> Enka.PlayerDetailFetchModel {
+            if let date = dateWhenNextRefreshable, date > Date() {
+                throw PlayerDetail.PlayerDetailError.refreshTooFast(dateWhenRefreshable: date)
+                print(
+                    "PLAYER DETAIL FETCH 刷新太快了，请在\(date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)秒后刷新"
+                )
+            } else {
+                let isMiyousheUID = Self.isMiyousheUID(uid: uid)
+                let enkaMirror = "https://profile.microgg.cn/api/uid/" + uid
+                let enkaOfficial = "https://enka.network/api/uid/" + uid
+                var urlStr = isMiyousheUID ? enkaMirror : enkaOfficial
+                #if DEBUG
+                if !["114514003", "114514007", "114514002"].contains(uid) {
+                    urlStr = "https://gi.pizzastudio.org/static/player_detail_data_example_2.json"
+                }
+                #endif
+                let url = URL(string: urlStr)!
+
+                if isMiyousheUID {
+                    do {
+                        let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
+                        let requestResult = try JSONDecoder().decode(
+                            Enka.PlayerDetailFetchModel.self,
+                            from: data
+                        )
+                        return requestResult
+                    } catch {
+                        let (data, _) = try await URLSession.shared
+                            .data(for: URLRequest(url: URL(string: enkaOfficial)!))
+                        let requestResult = try JSONDecoder().decode(
+                            Enka.PlayerDetailFetchModel.self,
+                            from: data
+                        )
+                        return requestResult
+                    }
+                } else {
+                    let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
+                    let requestResult = try JSONDecoder().decode(
+                        Enka.PlayerDetailFetchModel.self,
+                        from: data
+                    )
+                    return requestResult
+                }
+            }
+        }
+
+        /// 获取游戏内玩家详细信息
+        /// - Parameters:
+        ///     - uid: 用户UID
+        ///     - completion: 数据
+        static func fetchPlayerDetail(
+            _ uid: String,
             dateWhenNextRefreshable: Date?,
             completion: @escaping (
                 Result<Enka.PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>

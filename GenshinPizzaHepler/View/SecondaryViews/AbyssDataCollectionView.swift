@@ -8,7 +8,6 @@
 import Defaults
 import GIPizzaKit
 import HBMihoyoAPI
-import HBPizzaHelperAPI
 import HoYoKit
 import SFSafeSymbols
 import SwiftUI
@@ -234,8 +233,6 @@ struct AbyssDataCollectionView: View {
         second: Int?
     )
 
-    @EnvironmentObject
-    var viewModel: ViewModel
     @StateObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel =
         .init()
@@ -479,8 +476,6 @@ struct AbyssDataCollectionView: View {
 
 private struct ShowAvatarPercentageView: View {
     @EnvironmentObject
-    var viewModel: ViewModel
-    @EnvironmentObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     let percentageFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -567,8 +562,6 @@ private struct ShowAvatarPercentageView: View {
 // MARK: - ShowAvatarPercentageViewWithSection
 
 private struct ShowAvatarPercentageViewWithSection: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
     @EnvironmentObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     let percentageFormatter: NumberFormatter = {
@@ -811,8 +804,6 @@ private struct ShowAvatarPercentageShare: View {
 private struct ShowTeamPercentageView: View {
     @Environment(\.colorScheme)
     var colorScheme
-    @EnvironmentObject
-    var viewModel: ViewModel
     @EnvironmentObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     let percentageFormatter: NumberFormatter = {

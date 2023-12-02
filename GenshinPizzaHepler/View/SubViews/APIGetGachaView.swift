@@ -14,8 +14,11 @@ import SwiftUI
 // MARK: - APIGetGachaView
 
 struct APIGetGachaView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: false
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
     @StateObject
@@ -32,9 +35,9 @@ struct APIGetGachaView: View {
     var isErrorGetGachaRecordAlertShow: Bool = false
 
     var acountConfigsFiltered: [AccountConfiguration] {
-        viewModel.accounts.compactMap {
-            guard $0.config.server.region == .mainlandChina else { return nil }
-            return $0.config
+        accounts.compactMap {
+            guard $0.server.region == .mainlandChina else { return nil }
+            return $0
         }
     }
 
@@ -58,9 +61,9 @@ struct APIGetGachaView: View {
                     }
                     .onAppear {
                         if account == nil {
-                            account = viewModel.accounts
-                                .filter { $0.config.server.region != .global }
-                                .first?.config.uid
+                            account = accounts
+                                .filter { $0.server.region != .global }
+                                .first?.uid
                         }
                     }
                     Button("获取祈愿记录") {
@@ -68,9 +71,8 @@ struct APIGetGachaView: View {
                         status = .running
                         let account = account!
                         gachaViewModel.getGachaAndSaveFor(
-                            viewModel.accounts
-                                .first(where: { $0.config.uid == account })!
-                                .config,
+                            accounts
+                                .first(where: { $0.uid == account })!,
                             observer: observer
                         ) { result in
                             switch result {
@@ -88,7 +90,7 @@ struct APIGetGachaView: View {
                     .disabled(account == nil)
                     GetGachaURLByAPIButton(accountUID: account)
                 } footer: {
-                    if !viewModel.accounts.map(\.config)
+                    if !accounts
                         .allSatisfy({ $0.server.region == .mainlandChina }) {
                         Text("暂不支持国际服")
                     }
@@ -160,8 +162,6 @@ private struct GetGachaURLByAPIButton: View {
         }
     }
 
-    @EnvironmentObject
-    var viewModel: ViewModel
     let accountUID: String?
 
     @State
@@ -170,11 +170,16 @@ private struct GetGachaURLByAPIButton: View {
     @State
     var status: Status = .ready
 
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: false
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
+
     var body: some View {
         Button {
             genGachaURLByAPI(
-                account: viewModel.accounts.first(where: { $0.config.uid! == accountUID })!
-                    .config
+                account: accounts.first(where: { $0.uid! == accountUID })!
             ) { result in
                 status = .ready
                 switch result {

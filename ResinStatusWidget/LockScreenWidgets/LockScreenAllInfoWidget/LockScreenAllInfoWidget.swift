@@ -104,17 +104,18 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
                             accountName: configs.first!.name,
                             accountUUIDString: configs.first!.uuid?.uuidString
                         )
-                        let timeline = Timeline(
+                        let timeline = Timeline<AccountOnlyEntry>(
                             entries: [entry],
                             policy: .after(refreshDate)
                         )
-                        #if !os(watchOS) && canImport(ActivityKit)
-                        if #available(iOSApplicationExtension 16.1, *) {
-                            ResinRecoveryActivityController.shared
-                                .updateAllResinRecoveryTimerActivityUsingReFetchData(
-                                )
-                        }
-                        #endif
+                        // TODO: activity kit refactor
+//                        #if !os(watchOS) && canImport(ActivityKit)
+//                        if #available(iOSApplicationExtension 16.1, *) {
+//                            ResinRecoveryActivityController.shared
+//                                .updateAllResinRecoveryTimerActivityUsingReFetchData(
+//                                )
+//                        }
+//                        #endif
                         completion(timeline)
                         print("Widget Fetch succeed")
                     }
@@ -191,13 +192,14 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
                         entries: [entry],
                         policy: .after(refreshDate)
                     )
-                    #if !os(watchOS) && canImport(ActivityKit)
-                    if #available(iOSApplicationExtension 16.1, *) {
-                        ResinRecoveryActivityController.shared
-                            .updateAllResinRecoveryTimerActivityUsingReFetchData(
-                            )
-                    }
-                    #endif
+                    // TODO: activity kit
+//                    #if !os(watchOS) && canImport(ActivityKit)
+//                    if #available(iOSApplicationExtension 16.1, *) {
+//                        ResinRecoveryActivityController.shared
+//                            .updateAllResinRecoveryTimerActivityUsingReFetchData(
+//                            )
+//                    }
+//                    #endif
                     completion(timeline)
                     print("Widget Fetch succeed")
                 }

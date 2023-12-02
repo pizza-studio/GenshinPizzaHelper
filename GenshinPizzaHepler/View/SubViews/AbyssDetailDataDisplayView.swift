@@ -7,6 +7,7 @@
 
 import GIPizzaKit
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - AbyssDetailDataDisplayView

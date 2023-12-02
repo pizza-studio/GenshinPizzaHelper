@@ -15,8 +15,8 @@ import WidgetKit
 // MARK: - ContentView
 
 struct ContentView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
+//    @EnvironmentObject
+//    var viewModel: ViewModel
 
     @Environment(\.scenePhase)
     var scenePhase
@@ -91,57 +91,48 @@ struct ContentView: View {
             TabView(selection: index) {
                 HomeView()
                     .tag(0)
-                    .environmentObject(viewModel)
                     .tabItem {
                         Label("概览", systemSymbol: .listBullet)
                     }
-//                DetailPortalView(animation: animation)
-//                    .tag(1)
-//                    .environmentObject(viewModel)
-//                    .tabItem {
-//                        Label("详情", systemSymbol: .personTextRectangle)
-//                    }
+                DetailPortalView()
+                    .tag(1)
+                    .tabItem {
+                        Label("详情", systemSymbol: .personTextRectangle)
+                    }
                 SettingsView(storeManager: storeManager)
                     .tag(2)
-                    .environmentObject(viewModel)
                     .tabItem {
                         Label("nav.category.settings.name", systemSymbol: .gear)
                     }
             }
-            .zIndex(0)
+//            .zIndex(0)
 
-            if let showDetailOfAccount = viewModel.showDetailOfAccount {
-                Color.black
-                    .ignoresSafeArea()
-                AccountDisplayView(
-                    account: showDetailOfAccount,
-                    animation: animation
-                )
-                .zIndex(1)
-            }
-            if let account = viewModel.showCharacterDetailOfAccount {
-                Color.black
-                    .ignoresSafeArea()
-                CharacterDetailView(
-                    account: account,
-                    showingCharacterName: viewModel.showingCharacterName!,
-                    animation: animation
-                )
-                .environment(\.colorScheme, .dark)
-                .zIndex(2)
-            }
+//            if let showDetailOfAccount = viewModel.showDetailOfAccount {
+//                Color.black
+//                    .ignoresSafeArea()
+//                AccountDisplayView(
+//                    account: showDetailOfAccount,
+//                    animation: animation
+//                )
+//                .zIndex(1)
+//            }
+//            if let account = viewModel.showCharacterDetailOfAccount {
+//                Color.black
+//                    .ignoresSafeArea()
+//                CharacterDetailView(
+//                    account: account,
+//                    showingCharacterName: viewModel.showingCharacterName!,
+//                    animation: animation
+//                )
+//                .environment(\.colorScheme, .dark)
+//                .zIndex(2)
+//            }
         }
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
             case .active:
                 // 检查是否同意过用户协议
                 if !Defaults[.isPolicyShown] { sheetType = .userPolicy }
-                DispatchQueue.main.async {
-                    viewModel.fetchAccount()
-                }
-                DispatchQueue.main.async {
-                    viewModel.refreshData()
-                }
                 UIApplication.shared.applicationIconBadgeNumber = -1
 
                 if Defaults[.isPolicyShown] {
@@ -150,44 +141,6 @@ struct ContentView: View {
                 }
             case .inactive:
                 WidgetCenter.shared.reloadAllTimelines()
-                #if canImport(ActivityKit)
-                if autoDeliveryResinTimerLiveActivity {
-                    let pinToTopAccountUUIDString = Defaults[.pinToTopAccountUUIDString]
-                    if #available(iOS 16.1, *) {
-                        if let account = viewModel.accounts.first(where: {
-                            $0.config.uuid!
-                                .uuidString == pinToTopAccountUUIDString
-                        }) {
-                            try? ResinRecoveryActivityController.shared
-                                .createResinRecoveryTimerActivity(
-                                    for: account
-                                )
-                        } else {
-                            if let account = viewModel.accounts
-                                .filter({ account in
-                                    (try? account.result?.get()) != nil
-                                }).min(by: { lhs, rhs in
-                                    (
-                                        try! lhs.result!.get().resinInfo
-                                            .recoveryTime
-                                            .second
-                                    ) <
-                                        (
-                                            try! rhs.result!.get().resinInfo
-                                                .recoveryTime.second
-                                        )
-                                }) {
-                                try? ResinRecoveryActivityController.shared
-                                    .createResinRecoveryTimerActivity(
-                                        for: account
-                                    )
-                            }
-                        }
-                    }
-                } else {
-                    print("not allow autoDeliveryResinTimerLiveActivity")
-                }
-                #endif
             default:
                 break
             }
@@ -241,7 +194,7 @@ struct ContentView: View {
             )
         }
         .navigate(
-            to: NotificationSettingView().environmentObject(viewModel),
+            to: NotificationSettingView(),
             when: $isJumpToSettingsView
         )
     }

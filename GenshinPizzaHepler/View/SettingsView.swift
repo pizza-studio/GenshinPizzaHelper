@@ -52,9 +52,6 @@ struct SettingViewIOS16: View {
         case more
     }
 
-    @EnvironmentObject
-    var viewModel: ViewModel
-
     @StateObject
     var storeManager: StoreManager
 
@@ -125,11 +122,12 @@ struct SettingViewIOS16: View {
                 // 通知设置
                 NotificationSettingNavigatorIOS16(selectedView: $selectedView)
 
-                #if canImport(ActivityKit)
-                if #available(iOS 16.1, *) {
-                    LiveActivitySettingView(selectedView: $selectedView)
-                }
-                #endif
+                // TODO: live activity
+//                #if canImport(ActivityKit)
+//                if #available(iOS 16.1, *) {
+//                    LiveActivitySettingView(selectedView: $selectedView)
+//                }
+//                #endif
 
                 Section {
                     Button {
@@ -200,7 +198,7 @@ struct SettingViewIOS16: View {
                 if let selectedView {
                     switch selectedView {
                     case .myAccount:
-                        ManageAccountsView().environmentObject(viewModel)
+                        ManageAccountsView()
                     case .faq:
                         let url: String = {
                             switch Bundle.main.preferredLocalizations.first {
@@ -214,10 +212,11 @@ struct SettingViewIOS16: View {
                             .navigationTitle("FAQ")
                             .navigationBarTitleDisplayMode(.inline)
                     case .tool:
-                        ThirdPartyToolsView()
-                            .environmentObject(viewModel)
-                            .navigationTitle("旅行工具")
-                            .navigationBarTitleDisplayMode(.inline)
+                        // TODO: 3rd party tool view
+//                        ThirdPartyToolsView()
+//                            .navigationTitle("旅行工具")
+//                            .navigationBarTitleDisplayMode(.inline)
+                        EmptyView()
                     case .uiPreference:
                         DisplayOptionsView()
                     case .widgetSetting:
@@ -225,13 +224,15 @@ struct SettingViewIOS16: View {
                     case .notificationSetting:
                         NotificationSettingView()
                     case .resinTimerSetting:
-                        #if canImport(ActivityKit)
-                        if #available(iOS 16.1, *) {
-                            LiveActivitySettingDetailView()
-                        }
-                        #else
+                        // TODO: live activity
+//                        #if canImport(ActivityKit)
+//                        if #available(iOS 16.1, *) {
+//                            LiveActivitySettingDetailView()
+//                        }
+//                        #else
+//                        EmptyView()
+//                        #endif
                         EmptyView()
-                        #endif
                     case .donate:
                         GlobalDonateView(
                             storeManager: storeManager
@@ -268,9 +269,6 @@ struct SettingViewIOS16: View {
 // MARK: - SettingViewIOS15
 
 private struct SettingViewIOS15: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
-
     @StateObject
     var storeManager: StoreManager
 
@@ -298,7 +296,7 @@ private struct SettingViewIOS15: View {
         List {
             Section {
                 NavigationLink(
-                    destination: ManageAccountsView().environmentObject(viewModel)
+                    destination: ManageAccountsView()
                 ) {
                     Label(
                         "settings.account.myAccount",
@@ -325,17 +323,17 @@ private struct SettingViewIOS15: View {
                         systemSymbol: .personFillQuestionmark
                     )
                 }
-                NavigationLink(
-                    destination: ThirdPartyToolsView()
-                        .environmentObject(viewModel)
-                        .navigationTitle("旅行工具")
-                        .navigationBarTitleDisplayMode(.inline)
-                ) {
-                    Label(
-                        "旅行工具",
-                        systemSymbol: .shippingboxFill
-                    )
-                }
+//                NavigationLink(
+//                    destination: ThirdPartyToolsView()
+//                        .environmentObject(viewModel)
+//                        .navigationTitle("旅行工具")
+//                        .navigationBarTitleDisplayMode(.inline)
+//                ) {
+//                    Label(
+//                        "旅行工具",
+//                        systemSymbol: .shippingboxFill
+//                    )
+//                }
             }
 
             Section {

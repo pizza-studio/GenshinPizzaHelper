@@ -14,9 +14,13 @@ import SwiftUI
 @available(iOS 16.0, *)
 struct GachaChartView: View {
     @EnvironmentObject
-    var viewModel: ViewModel
-    @EnvironmentObject
     var gachaViewModel: GachaViewModel
+
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: false
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
 
     var body: some View {
         List {
@@ -85,8 +89,8 @@ struct GachaChartView: View {
                         id: \.self
                     ) { uid in
                         Group {
-                            if let name: String = viewModel.accounts
-                                .first(where: { $0.config.uid == uid })?.config
+                            if let name: String = accounts
+                                .first(where: { $0.uid == uid })?
                                 .name {
                                 Button(name) {
                                     gachaViewModel.filter.uid = uid
@@ -102,8 +106,8 @@ struct GachaChartView: View {
                     HStack {
                         Image(systemSymbol: .arrowLeftArrowRightCircle)
                         if let uid: String = gachaViewModel.filter.uid {
-                            if let name: String = viewModel.accounts
-                                .first(where: { $0.config.uid == uid })?.config
+                            if let name: String = accounts
+                                .first(where: { $0.uid == uid })?
                                 .name {
                                 Text(name)
                             } else {

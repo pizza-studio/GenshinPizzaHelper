@@ -73,37 +73,4 @@ class AccountConfigurationModel {
             return []
         }
     }
-
-    func addAccount(name: String, uid: String, cookie: String, server: Server, deviceFingerPrint: String) {
-        // 新增账号至Core Data
-        let newAccount = AccountConfiguration(context: container.viewContext)
-        newAccount.name = name
-        newAccount.uid = uid
-        newAccount.cookie = cookie
-        newAccount.server = server
-
-//        #if !os(watchOS)
-//        let uuid = UIDevice.current.identifierForVendor ?? UUID()
-//        #else
-//        let uuid = UUID()
-//        #endif
-
-        // The UUID here is only used for distinguishing accounts, NOT for the device UUID!
-        newAccount.uuid = UUID()
-        newAccount.deviceFingerPrint = deviceFingerPrint
-        saveAccountConfigs()
-    }
-
-    func deleteAccount(account: Account) {
-        container.viewContext.delete(account.config)
-        saveAccountConfigs()
-    }
-
-    func saveAccountConfigs() {
-        do {
-            try container.viewContext.save()
-        } catch {
-            print("ERROR SAVING. \(error.localizedDescription)")
-        }
-    }
 }

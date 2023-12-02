@@ -5,12 +5,304 @@
 //  Created by Bill Haku on 2022/9/17.
 //
 
+import Combine
 import Defaults
 import GIPizzaKit
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftPieChart
 import SwiftUI
+
+// MARK: - DetailPortalViewModel
+
+final private class DetailPortalViewModel: ObservableObject {
+    // MARK: Lifecycle
+
+    init() {
+        let request = AccountConfiguration.fetchRequest()
+        request.sortDescriptors = [.init(keyPath: \AccountConfiguration.priority, ascending: false)]
+        let accounts = try! AccountConfigurationModel.shared.container.viewContext.fetch(request)
+        if let account = accounts.first {
+            self.selectedAccount = account
+        } else {
+            self.selectedAccount = nil
+        }
+        refresh()
+    }
+
+    // MARK: Internal
+
+    enum Status<T> {
+        case progress(Task<(), Never>?)
+        case fail(Error)
+        case succeed(T)
+    }
+
+    @Published
+    var playerDetailStatus: Status<(PlayerDetail, nextRefreshableDate: Date)> = .progress(nil)
+
+    @Published
+    var basicInfoStatus: Status<BasicInfos> = .progress(nil)
+
+    @Published
+    var selectedAccount: AccountConfiguration? {
+        didSet {
+            detailPortalViewRefreshSubject.send(())
+        }
+    }
+
+    func refresh() {
+        fetchPlayerDetail()
+    }
+
+    func fetchPlayerDetail() {
+        guard let selectedAccount else { return }
+        if case let .succeed((_, refreshableDate)) = playerDetailStatus {
+            guard Date() > refreshableDate else { return }
+        }
+        if case let .progress(task) = playerDetailStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let result = try await API.OpenAPIs.fetchPlayerDetail(
+                    selectedAccount.safeUid,
+                    dateWhenNextRefreshable: nil
+                )
+                guard let charLoc = Enka.Sputnik.shared.charLoc else {
+                    throw PlayerDetail.PlayerDetailError.failToGetLocalizedDictionary
+                }
+                guard let charMap = Enka.Sputnik.shared.charMap else {
+                    throw PlayerDetail.PlayerDetailError.failToGetCharacterDictionary
+                }
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.playerDetailStatus = .succeed((
+                            PlayerDetail(
+                                PlayerDetailFetchModel: result,
+                                localizedDictionary: charLoc,
+                                characterMap: charMap
+                            ),
+                            Date()
+                        ))
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.playerDetailStatus = .fail(error)
+                }
+            }
+        }
+        playerDetailStatus = .progress(task)
+    }
+
+    func fetchBasicInfo() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = basicInfoStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let result = try await MiHoYoAPI.basicInfo(
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.basicInfoStatus = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.basicInfoStatus = .fail(error)
+                }
+            }
+        }
+        basicInfoStatus = .progress(task)
+    }
+}
+
+let detailPortalViewRefreshSubject: PassthroughSubject<(), Never> = .init()
+
+// MARK: - DetailPortalView
+
+struct DetailPortalView: View {
+    // MARK: Internal
+
+    var body: some View {
+        NavigationView {
+            List {
+                SelectAccountSection(selectedAccount: $detailPortalViewModel.selectedAccount)
+            }
+            .refreshable {
+                detailPortalViewRefreshSubject.send(())
+            }
+            .onReceive(detailPortalViewRefreshSubject) { _ in
+                detailPortalViewModel.refresh()
+            }
+        }
+        .environmentObject(detailPortalViewModel)
+    }
+
+    // MARK: Private
+
+    @StateObject
+    private var detailPortalViewModel: DetailPortalViewModel = .init()
+}
+
+// MARK: - SelectAccountSection
+
+private struct SelectAccountSection: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    // MARK: Internal
+
+    @Binding
+    var selectedAccount: AccountConfiguration?
+
+    var body: some View {
+        if let selectedAccount {
+            if case let .succeed((playerDetail, _)) = detailPortalViewModel.playerDetailStatus,
+               let basicInfo = playerDetail.basicInfo {
+                normalAccountPickerView(playerDetail: playerDetail, basicInfo: basicInfo)
+            } else {
+                noBasicInfoFallBackView()
+            }
+        } else {
+            noSelectAccountView()
+        }
+    }
+
+    @ViewBuilder
+    func normalAccountPickerView(playerDetail: PlayerDetail, basicInfo: PlayerDetail.PlayerBasicInfo) -> some View {
+        Section {
+            HStack(spacing: 0) {
+                HStack {
+                    basicInfo.decoratedIcon(64)
+                    Spacer()
+                }
+                .frame(width: 74)
+                .corneredTag(
+                    "detailPortal.player.adventureRank.short:\(basicInfo.level)",
+                    alignment: .bottomTrailing,
+                    textSize: 12
+                )
+                VStack(alignment: .leading) {
+                    HStack(spacing: 10) {
+                        VStack(alignment: .leading) {
+                            Text(basicInfo.nickname)
+                                .font(.title3)
+                                .bold()
+                                .padding(.top, 5)
+                                .lineLimit(1)
+                            Text(basicInfo.signature)
+                                .foregroundColor(.secondary)
+                                .font(.footnote)
+                                .lineLimit(2)
+                                .fixedSize(
+                                    horizontal: false,
+                                    vertical: true
+                                )
+                        }
+                        Spacer()
+                        SelectAccountMenu {
+                            Image(systemSymbol: .arrowLeftArrowRightCircle)
+                        } completion: { account in
+                            selectedAccount = account
+                        }
+                    }
+                }
+            }
+        } footer: {
+            HStack {
+                Text("UID: \(selectedAccount!.safeUid)")
+                Spacer()
+                let worldLevelTitle = "detailPortal.player.worldLevel".localized
+                Text("\(worldLevelTitle): \(basicInfo.worldLevel)")
+            }
+        }
+    }
+
+    @ViewBuilder
+    func noBasicInfoFallBackView() -> some View {
+        Section {
+            HStack(spacing: 0) {
+                HStack {
+                    CharacterAsset.Paimon.decoratedIcon(64)
+                    Spacer()
+                }
+                .frame(width: 74)
+                VStack(alignment: .leading) {
+                    HStack(spacing: 10) {
+                        VStack(alignment: .leading) {
+                            Text(selectedAccount!.safeName)
+                                .font(.title3)
+                                .bold()
+                                .padding(.top, 5)
+                                .lineLimit(1)
+                        }
+                        Spacer()
+                        SelectAccountMenu {
+                            Image(systemSymbol: .arrowLeftArrowRightCircle)
+                        } completion: { account in
+                            selectedAccount = account
+                        }
+                    }
+                }
+            }
+        } footer: {
+            HStack {
+                Text("UID: \(selectedAccount!.safeUid)")
+            }
+        }
+    }
+
+    @ViewBuilder
+    func noSelectAccountView() -> some View {
+        Section {
+            SelectAccountMenu {
+                Label("detailPortal.prompt.pleaseSelectAccount", systemSymbol: .arrowLeftArrowRightCircle)
+            } completion: { account in
+                selectedAccount = account
+            }
+        }
+    }
+
+    // MARK: Private
+
+    private struct SelectAccountMenu<T: View>: View {
+        @FetchRequest(sortDescriptors: [.init(
+            keyPath: \AccountConfiguration.priority,
+            ascending: false
+        )])
+        var accounts: FetchedResults<AccountConfiguration>
+
+        let label: () -> T
+
+        let completion: (AccountConfiguration) -> ()
+
+        var body: some View {
+            Menu {
+                ForEach(accounts, id: \.safeUuid) { account in
+                    Button(account.safeName) {
+                        completion(account)
+                    }
+                }
+            } label: {
+                label()
+            }
+        }
+    }
+
+    private struct DisplaySelectedAccountView: View {
+        let account: AccountConfiguration
+
+        var body: some View {
+            Text("")
+        }
+    }
+}
 
 // MARK: - DetailPortalView
 

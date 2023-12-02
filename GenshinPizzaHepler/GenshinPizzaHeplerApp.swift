@@ -23,9 +23,9 @@ struct GenshinPizzaHeplerApp: App {
         #endif
     }
 
-    // MARK: Internal
+// MARK: Internal
 
-    let viewModel: ViewModel = .shared
+//    let viewModel: ViewModel = .shared
     #if !os(watchOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self)
     var appDelegate
@@ -46,12 +46,10 @@ struct GenshinPizzaHeplerApp: App {
         #if os(watchOS)
         WindowGroup {
             ContentView()
-                .environmentObject(viewModel)
         }
         #else
         WindowGroup {
             ContentView(storeManager: storeManager)
-                .environmentObject(viewModel)
 //                .onReceive(NotificationCenter.default.publisher(for: UIScene.willConnectNotification)) { _ in
 //                    if OS.type == .macOS {
 //                        let windowSize = CGSize(width: 414, height: 896)

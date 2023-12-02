@@ -15,7 +15,15 @@ extension Enka {
     public class Sputnik: ObservableObject {
         // MARK: Lifecycle
 
-        private init() {}
+        private init() {
+            self.charLoc = try? JSONDecoder().decode(Enka.CharacterLoc.self, from: Defaults[.enkaMapLoc])
+                .getLocalizedDictionary()
+            self.charMap = try? JSONDecoder()
+                .decode(Enka.CharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails
+            if enkaDataNeedsUpdate {
+                refreshCharLocAndCharMapSansAsync()
+            }
+        }
 
         // MARK: Public
 
@@ -30,16 +38,14 @@ extension Enka {
         public static let shared = Enka.Sputnik()
 
         @Published
-        public var charLoc: CharLoc? = try? JSONDecoder().decode(Enka.CharacterLoc.self, from: Defaults[.enkaMapLoc])
-            .getLocalizedDictionary() {
+        public var charLoc: CharLoc? {
             didSet {
                 Defaults[.lastEnkaDataCheckDate] = .init()
             }
         }
 
         @Published
-        public var charMap: CharMap? = try? JSONDecoder()
-            .decode(Enka.CharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails {
+        public var charMap: CharMap? {
             didSet {
                 Defaults[.lastEnkaDataCheckDate] = .init()
             }
