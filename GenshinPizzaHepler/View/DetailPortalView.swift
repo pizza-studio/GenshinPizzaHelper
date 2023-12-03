@@ -324,46 +324,30 @@ private struct PlayerDetailSection: View {
 
         var body: some View {
             VStack {
-                if playerDetail.avatars.isEmpty {
-                    Text(
-                        playerDetail
-                            .basicInfo != nil
-                            ? "account.playerDetailResult.message.characterShowCaseClassified"
-                            : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
-                    )
-                    .foregroundColor(.secondary)
-                    if let msg = playerDetail.enkaMessage {
-                        Text(msg).foregroundColor(.secondary).controlSize(.small)
-                    }
-                } else {
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(
-                                playerDetail.avatars,
-                                id: \.name
-                            ) { avatar in
-                                avatar.characterAsset.cardIcon(75)
-                                    .onTapGesture {
-                                        simpleTaptic(type: .medium)
-                                        withAnimation(
-                                            .interactiveSpring(
-                                                response: 0.25,
-                                                dampingFraction: 1.0,
-                                                blendDuration: 0
-                                            )
-                                        ) {
-                                            showingCharacterName =
-                                                avatar.name
-                                        }
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(
+                            playerDetail.avatars,
+                            id: \.name
+                        ) { avatar in
+                            avatar.characterAsset.cardIcon(75)
+                                .onTapGesture {
+                                    simpleTaptic(type: .medium)
+                                    withAnimation(
+                                        .interactiveSpring(
+                                            response: 0.25,
+                                            dampingFraction: 1.0,
+                                            blendDuration: 0
+                                        )
+                                    ) {
+                                        showingCharacterName = avatar.name
                                     }
-                            }
+                                }
                         }
-                        .padding(.vertical, 4)
                     }
+                    .padding(.vertical, 4)
                 }
-                if !playerDetail.avatars.isEmpty {
-                    HelpTextForScrollingOnDesktopComputer(.horizontal)
-                }
+                HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
             .fullScreenCover(item: $showingCharacterName) { characterName in
                 CharacterDetailView(
@@ -389,14 +373,40 @@ private struct PlayerDetailSection: View {
             case .progress:
                 ProgressView().id(UUID())
             case let .fail(error):
-                Label {
-                    Text(error.localizedDescription)
-                } icon: {
-                    Image(systemSymbol: .xmarkCircle)
-                        .foregroundColor(.red)
-                }
+                Button(action: {
+                    detailPortalViewModel.refresh()
+                }, label: {
+                    Label {
+                        Text(error.localizedDescription)
+                    } icon: {
+                        Image(systemSymbol: .xmarkCircle)
+                            .foregroundColor(.red)
+                    }
+                })
             case let .succeed((playerDetail, _)):
-                DataFetchedView(playerDetail: playerDetail, account: account)
+                if playerDetail.avatars.isEmpty {
+                    Button(action: {
+                        detailPortalViewModel.refresh()
+                    }, label: {
+                        Label {
+                            Text(
+                                playerDetail
+                                    .basicInfo != nil
+                                    ? "account.playerDetailResult.message.characterShowCaseClassified"
+                                    : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
+                            )
+                            .foregroundColor(.secondary)
+                            if let msg = playerDetail.enkaMessage {
+                                Text(msg).foregroundColor(.secondary).controlSize(.small)
+                            }
+                        } icon: {
+                            Image(systemSymbol: .xmarkCircle)
+                                .foregroundColor(.red)
+                        }
+                    })
+                } else {
+                    DataFetchedView(playerDetail: playerDetail, account: account)
+                }
             }
             AllAvatarNavigator(account: account)
         }
