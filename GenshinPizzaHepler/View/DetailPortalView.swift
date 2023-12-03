@@ -28,6 +28,11 @@ final private class DetailPortalViewModel: ObservableObject {
         } else {
             self.selectedAccount = nil
         }
+        let enkaSputnikCancellable = enkaSputnik.objectWillChange.sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }
+        anyCancellables.append(enkaSputnikCancellable)
+        enkaSputnik.attemptToFixLocalEnkaStorage()
     }
 
     // MARK: Internal
@@ -37,6 +42,11 @@ final private class DetailPortalViewModel: ObservableObject {
         case fail(Error)
         case succeed(T)
     }
+
+    @ObservedObject
+    var enkaSputnik = Enka.Sputnik.shared
+
+    var anyCancellables: [AnyCancellable] = []
 
     @Published
     var playerDetailStatus: Status<(PlayerDetail, nextRefreshableDate: Date)> = .progress(nil)
