@@ -22,8 +22,8 @@ final private class DetailPortalViewModel: ObservableObject {
     init() {
         let request = AccountConfiguration.fetchRequest()
         request.sortDescriptors = [.init(keyPath: \AccountConfiguration.priority, ascending: false)]
-        let accounts = try! AccountConfigurationModel.shared.container.viewContext.fetch(request)
-        if let account = accounts.first {
+        let accounts = try? AccountConfigurationModel.shared.container.viewContext.fetch(request)
+        if let accounts, let account = accounts.first {
             self.selectedAccount = account
         } else {
             self.selectedAccount = nil
