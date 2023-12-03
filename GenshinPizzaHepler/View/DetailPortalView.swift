@@ -14,6 +14,8 @@ import SFSafeSymbols
 import SwiftPieChart
 import SwiftUI
 
+let detailPortalRefreshSubject: PassthroughSubject<(), Never> = .init()
+
 // MARK: - DetailPortalViewModel
 
 final private class DetailPortalViewModel: ObservableObject {
@@ -52,6 +54,7 @@ final private class DetailPortalViewModel: ObservableObject {
     func refresh() {
         fetchPlayerDetail()
         fetchBasicInfo()
+        detailPortalRefreshSubject.send(())
     }
 
     func fetchPlayerDetail() {
@@ -131,6 +134,9 @@ struct DetailPortalView: View {
                 SelectAccountSection(selectedAccount: $detailPortalViewModel.selectedAccount)
                 if let account = detailPortalViewModel.selectedAccount {
                     PlayerDetailSection(account: account)
+                    Section {
+                        AbyssInfoNavigator(account: account)
+                    }
                 }
             }
             .refreshable {
@@ -402,6 +408,86 @@ private struct PlayerDetailSection: View {
             AllAvatarNavigator(account: account)
         }
     }
+}
+
+// MARK: - AbyssInfoNavigator
+
+private struct AbyssInfoNavigator: View {
+    // MARK: Internal
+
+    let account: AccountConfiguration
+
+    @State
+    var result: Result<SpiralAbyssDetail, Error>?
+
+    var body: some View {
+        Group {
+            switch result {
+            case let .success(data):
+                AbyssInfoView(abyssInfo: data)
+            case let .failure(error):
+                Text(error.localizedDescription)
+            case nil:
+                ProgressView()
+            }
+        }
+        .task(id: taskId) {
+            result = nil
+            do {
+                let result = try await MiHoYoAPI.abyssData(
+                    round: .this,
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                )
+                self.result = .success(result)
+            } catch {
+                result = .failure(error)
+            }
+        }
+        .onReceive(detailPortalRefreshSubject, perform: { _ in
+            taskId = UUID()
+        })
+    }
+
+    // MARK: Private
+
+    private struct AbyssInfoView: View {
+        // MARK: Internal
+
+        let abyssInfo: SpiralAbyssDetail
+
+        var body: some View {
+            VStack {
+                HStack {
+                    Text("app.detailPortal.abyss.title").bold()
+                    Spacer()
+                }
+                HStack(spacing: 10) {
+                    Image("UI_Icon_Tower")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: iconFrame, height: iconFrame)
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Text(verbatim: "\(abyssInfo.maxFloor)")
+                            .font(.title)
+                        Spacer()
+                        Text(verbatim: "✡︎ \(abyssInfo.totalStar)")
+                            .font(.title)
+                    }
+                }
+            }
+        }
+
+        // MARK: Private
+
+        private let iconFrame: CGFloat = 40
+    }
+
+    @State
+    private var taskId: UUID = .init()
 }
 
 // MARK: - AllAvatarNavigator
