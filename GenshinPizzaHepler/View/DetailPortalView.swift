@@ -189,7 +189,7 @@ private struct SelectAccountSection: View {
                 }
                 .frame(width: 74)
                 .corneredTag(
-                    "detailPortal.player.adventureRank.short:\(basicInfo.level)",
+                    "detailPortal.player.adventureRank.short:\(basicInfo.level.description)",
                     alignment: .bottomTrailing,
                     textSize: 12
                 )
