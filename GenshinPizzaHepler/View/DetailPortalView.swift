@@ -342,20 +342,21 @@ private struct PlayerDetailSection: View {
                                 playerDetail.avatars,
                                 id: \.name
                             ) { avatar in
-                                avatar.characterAsset.cardIcon(75)
-                                    .onTapGesture {
-                                        simpleTaptic(type: .medium)
-                                        withAnimation(
-                                            .interactiveSpring(
-                                                response: 0.25,
-                                                dampingFraction: 1.0,
-                                                blendDuration: 0
-                                            )
-                                        ) {
-                                            showingCharacterName =
-                                                avatar.name
-                                        }
+                                Button {
+                                    simpleTaptic(type: .medium)
+                                    withAnimation(
+                                        .interactiveSpring(
+                                            response: 0.25,
+                                            dampingFraction: 1.0,
+                                            blendDuration: 0
+                                        )
+                                    ) {
+                                        showingCharacterName =
+                                            avatar.name
                                     }
+                                } label: {
+                                    avatar.characterAsset.cardIcon(75)
+                                }
                             }
                         }
                         .padding(.vertical, 4)
