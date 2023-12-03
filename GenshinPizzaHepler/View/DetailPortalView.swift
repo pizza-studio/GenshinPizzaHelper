@@ -41,19 +41,23 @@ final private class DetailPortalViewModel: ObservableObject {
     }
 
     @Published
+    var selectedAccount: AccountConfiguration? {
+        didSet { refresh() }
+    }
+
+    @Published
     var playerDetailStatus: Status<(PlayerDetail, nextRefreshableDate: Date)> = .progress(nil)
 
     @Published
     var basicInfoStatus: Status<BasicInfos> = .progress(nil)
 
     @Published
-    var selectedAccount: AccountConfiguration? {
-        didSet { refresh() }
-    }
+    var spiralAbyssDetailStatus: Status<SpiralAbyssDetail> = .progress(nil)
 
     func refresh() {
         fetchPlayerDetail()
         fetchBasicInfo()
+        fetchSpiralAbyssInfo()
         detailPortalRefreshSubject.send(())
     }
 
@@ -121,6 +125,33 @@ final private class DetailPortalViewModel: ObservableObject {
         }
         basicInfoStatus = .progress(task)
     }
+
+    func fetchSpiralAbyssInfo() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = spiralAbyssDetailStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let result = try await MiHoYoAPI.abyssData(
+                    round: .this,
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.spiralAbyssDetailStatus = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.spiralAbyssDetailStatus = .fail(error)
+                }
+            }
+        }
+        spiralAbyssDetailStatus = .progress(task)
+    }
 }
 
 // MARK: - DetailPortalView
@@ -135,7 +166,7 @@ struct DetailPortalView: View {
                 if let account = detailPortalViewModel.selectedAccount {
                     PlayerDetailSection(account: account)
                     Section {
-                        AbyssInfoNavigator(account: account)
+                        AbyssInfoNavigator(account: account, status: detailPortalViewModel.spiralAbyssDetailStatus)
                     }
                 }
             }
@@ -440,40 +471,25 @@ private struct AbyssInfoNavigator: View {
     // MARK: Internal
 
     let account: AccountConfiguration
-
-    @State
-    var result: Result<SpiralAbyssDetail, Error>?
+    let status: DetailPortalViewModel.Status<SpiralAbyssDetail>
 
     var body: some View {
         Group {
-            switch result {
-            case let .success(data):
+            switch status {
+            case .progress:
+                VStack {
+                    Text("app.detailPortal.abyss.title").bold()
+                    ProgressView()
+                }
+            case let .fail(error):
+                VStack {
+                    Text("app.detailPortal.abyss.title").bold()
+                    Text(error.localizedDescription)
+                }
+            case let .succeed(data):
                 AbyssInfoView(abyssInfo: data)
-            case let .failure(error):
-                Text(error.localizedDescription)
-            case nil:
-                ProgressView()
             }
         }
-        .task(id: taskId) {
-            result = nil
-            do {
-                let result = try await MiHoYoAPI.abyssData(
-                    round: .this,
-                    server: account.server,
-                    uid: account.safeUid,
-                    cookie: account.safeCookie,
-                    deviceFingerPrint: account.safeDeviceFingerPrint,
-                    deviceId: account.safeUuid
-                )
-                self.result = .success(result)
-            } catch {
-                result = .failure(error)
-            }
-        }
-        .onReceive(detailPortalRefreshSubject, perform: { _ in
-            taskId = UUID()
-        })
     }
 
     // MARK: Private
@@ -484,22 +500,23 @@ private struct AbyssInfoNavigator: View {
         let abyssInfo: SpiralAbyssDetail
 
         var body: some View {
-            VStack {
-                HStack {
+            NavigationLink {
+                AbyssDetailDataDisplayView(data: abyssInfo)
+            } label: {
+                VStack {
                     Text("app.detailPortal.abyss.title").bold()
-                    Spacer()
-                }
-                HStack(spacing: 10) {
-                    Image("UI_Icon_Tower")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame)
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        Text(verbatim: "\(abyssInfo.maxFloor)")
-                            .font(.title)
-                        Spacer()
-                        Text(verbatim: "✡︎ \(abyssInfo.totalStar)")
-                            .font(.title)
+                    HStack(spacing: 10) {
+                        Image("UI_Icon_Tower")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: iconFrame, height: iconFrame)
+                        HStack(alignment: .lastTextBaseline, spacing: 0) {
+                            Text(verbatim: "\(abyssInfo.maxFloor)")
+                                .font(.title)
+                            Spacer()
+                            Text(verbatim: "✡︎ \(abyssInfo.totalStar)")
+                                .font(.title)
+                        }
                     }
                 }
             }
@@ -509,9 +526,6 @@ private struct AbyssInfoNavigator: View {
 
         private let iconFrame: CGFloat = 40
     }
-
-    @State
-    private var taskId: UUID = .init()
 }
 
 // MARK: - AllAvatarNavigator

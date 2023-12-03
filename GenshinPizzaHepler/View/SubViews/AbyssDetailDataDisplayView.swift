@@ -16,61 +16,64 @@ struct AbyssDetailDataDisplayView: View {
     let data: SpiralAbyssDetail
 
     var body: some View {
-        List {
-            // 战斗数据榜
-            if !data.rankDataMissing {
-                // 总体战斗结果概览
-                Section {
-                    InfoPreviewer(title: "最深抵达", content: data.maxFloor)
-                    InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
-                    InfoPreviewer(
-                        title: "战斗次数",
-                        content: "\(data.totalBattleTimes)"
-                    )
-                    InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
-                } header: {
-                    Text("战斗概览")
+        NavigationView {
+            List {
+                // 战斗数据榜
+                if !data.rankDataMissing {
+                    // 总体战斗结果概览
+                    Section {
+                        InfoPreviewer(title: "最深抵达", content: data.maxFloor)
+                        InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
+                        InfoPreviewer(
+                            title: "战斗次数",
+                            content: "\(data.totalBattleTimes)"
+                        )
+                        InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
+                    } header: {
+                        Text("战斗概览")
+                    }
+
+                    Section {
+                        BattleDataInfoProvider(
+                            name: "最强一击",
+                            value: data.damageRank.first?.value,
+                            avatarID: data.damageRank.first?.avatarId
+                        )
+                        BattleDataInfoProvider(
+                            name: "最多击破数",
+                            value: data.defeatRank.first?.value,
+                            avatarID: data.defeatRank.first?.avatarId
+                        )
+                        BattleDataInfoProvider(
+                            name: "承受最多伤害",
+                            value: data.takeDamageRank.first?.value,
+                            avatarID: data.takeDamageRank.first?.avatarId
+                        )
+                        BattleDataInfoProvider(
+                            name: "元素战技释放数",
+                            value: data.normalSkillRank.first?.value,
+                            avatarID: data.normalSkillRank.first?.avatarId
+                        )
+                        BattleDataInfoProvider(
+                            name: "元素爆发次数",
+                            value: data.energySkillRank.first?.value,
+                            avatarID: data.energySkillRank.first?.avatarId
+                        )
+                    } header: {
+                        Text("战斗数据榜")
+                    }
+                } else {
+                    Text("暂无本期深渊数据")
                 }
 
-                Section {
-                    BattleDataInfoProvider(
-                        name: "最强一击",
-                        value: data.damageRank.first?.value,
-                        avatarID: data.damageRank.first?.avatarId
-                    )
-                    BattleDataInfoProvider(
-                        name: "最多击破数",
-                        value: data.defeatRank.first?.value,
-                        avatarID: data.defeatRank.first?.avatarId
-                    )
-                    BattleDataInfoProvider(
-                        name: "承受最多伤害",
-                        value: data.takeDamageRank.first?.value,
-                        avatarID: data.takeDamageRank.first?.avatarId
-                    )
-                    BattleDataInfoProvider(
-                        name: "元素战技释放数",
-                        value: data.normalSkillRank.first?.value,
-                        avatarID: data.normalSkillRank.first?.avatarId
-                    )
-                    BattleDataInfoProvider(
-                        name: "元素爆发次数",
-                        value: data.energySkillRank.first?.value,
-                        avatarID: data.energySkillRank.first?.avatarId
-                    )
-                } header: {
-                    Text("战斗数据榜")
+                ForEach(data.floors.reversed(), id: \.index) { floorData in
+                    AbyssFloorView(floorData: floorData)
                 }
-            } else {
-                Text("暂无本期深渊数据")
             }
-
-            ForEach(data.floors.reversed(), id: \.index) { floorData in
-                AbyssFloorView(floorData: floorData)
-            }
+            .sectionSpacing(UIFont.systemFontSize)
+            .listStyle(.insetGrouped)
+            .navigationTitle("深境螺旋详情")
         }
-        .sectionSpacing(UIFont.systemFontSize)
-        .listStyle(.insetGrouped)
     }
 }
 

@@ -281,7 +281,7 @@ private struct SettingViewIOS15: View {
             DisplayOptionsView() // 预设内容页
         }
         #if DEBUG
-            .toast(isPresenting: $isAlertToastShown) {
+        .toast(isPresenting: $isAlertToastShown) {
                 AlertToast(
                     displayMode: .hud,
                     type: .complete(.green),
