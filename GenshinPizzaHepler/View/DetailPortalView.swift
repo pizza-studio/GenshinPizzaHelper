@@ -24,12 +24,17 @@ final private class DetailPortalViewModel: ObservableObject {
     init() {
         let request = AccountConfiguration.fetchRequest()
         request.sortDescriptors = [.init(keyPath: \AccountConfiguration.priority, ascending: false)]
-        let accounts = try! AccountConfigurationModel.shared.container.viewContext.fetch(request)
-        if let account = accounts.first {
+        let accounts = try? AccountConfigurationModel.shared.container.viewContext.fetch(request)
+        if let accounts, let account = accounts.first {
             self.selectedAccount = account
         } else {
             self.selectedAccount = nil
         }
+        let enkaSputnikCancellable = enkaSputnik.objectWillChange.sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }
+        anyCancellables.append(enkaSputnikCancellable)
+        enkaSputnik.attemptToFixLocalEnkaStorage()
     }
 
     // MARK: Internal
@@ -39,6 +44,11 @@ final private class DetailPortalViewModel: ObservableObject {
         case fail(Error)
         case succeed(T)
     }
+
+    @ObservedObject
+    var enkaSputnik = Enka.Sputnik.shared
+
+    var anyCancellables: [AnyCancellable] = []
 
     @Published
     var playerDetailStatus: Status<(PlayerDetail, nextRefreshableDate: Date)> = .progress(nil)
@@ -195,7 +205,7 @@ private struct SelectAccountSection: View {
                 }
                 .frame(width: 74)
                 .corneredTag(
-                    "detailPortal.player.adventureRank.short:\(basicInfo.level)",
+                    "detailPortal.player.adventureRank.short:\(basicInfo.level.description)",
                     alignment: .bottomTrailing,
                     textSize: 12
                 )
@@ -365,12 +375,10 @@ private struct PlayerDetailSection: View {
                                 }
                             }
                         }
-                        .padding(.vertical, 4)
                     }
+                    .padding(.vertical, 4)
                 }
-                if !playerDetail.avatars.isEmpty {
-                    HelpTextForScrollingOnDesktopComputer(.horizontal)
-                }
+                HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
             .fullScreenCover(item: $showingCharacterName) { characterName in
                 CharacterDetailView(
@@ -396,14 +404,40 @@ private struct PlayerDetailSection: View {
             case .progress:
                 ProgressView().id(UUID())
             case let .fail(error):
-                Label {
-                    Text(error.localizedDescription)
-                } icon: {
-                    Image(systemSymbol: .xmarkCircle)
-                        .foregroundColor(.red)
-                }
+                Button(action: {
+                    detailPortalViewModel.refresh()
+                }, label: {
+                    Label {
+                        Text(error.localizedDescription)
+                    } icon: {
+                        Image(systemSymbol: .xmarkCircle)
+                            .foregroundColor(.red)
+                    }
+                })
             case let .succeed((playerDetail, _)):
-                DataFetchedView(playerDetail: playerDetail, account: account)
+                if playerDetail.avatars.isEmpty {
+                    Button(action: {
+                        detailPortalViewModel.refresh()
+                    }, label: {
+                        Label {
+                            Text(
+                                playerDetail
+                                    .basicInfo != nil
+                                    ? "account.playerDetailResult.message.characterShowCaseClassified"
+                                    : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
+                            )
+                            .foregroundColor(.secondary)
+                            if let msg = playerDetail.enkaMessage {
+                                Text(msg).foregroundColor(.secondary).controlSize(.small)
+                            }
+                        } icon: {
+                            Image(systemSymbol: .xmarkCircle)
+                                .foregroundColor(.red)
+                        }
+                    })
+                } else {
+                    DataFetchedView(playerDetail: playerDetail, account: account)
+                }
             }
             AllAvatarNavigator(account: account)
         }
