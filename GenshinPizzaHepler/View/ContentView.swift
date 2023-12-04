@@ -99,8 +99,13 @@ struct ContentView: View {
                     .tabItem {
                         Label("详情", systemSymbol: .personTextRectangle)
                     }
-                SettingsView(storeManager: storeManager)
+                ToolView()
                     .tag(2)
+                    .tabItem {
+                        Label("工具", systemSymbol: .shippingboxFill)
+                    }
+                SettingsView(storeManager: storeManager)
+                    .tag(3)
                     .tabItem {
                         Label("nav.category.settings.name", systemSymbol: .gear)
                     }

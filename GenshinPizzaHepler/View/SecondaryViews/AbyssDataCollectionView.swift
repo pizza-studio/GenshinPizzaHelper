@@ -265,7 +265,6 @@ struct AbyssDataCollectionView: View {
         }
         .environmentObject(abyssDataCollectionViewModel)
         .listStyle(.insetGrouped)
-        .hideTabBar()
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {

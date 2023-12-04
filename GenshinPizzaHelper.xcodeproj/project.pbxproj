@@ -517,6 +517,7 @@
 		EA30F9A92886B49200AE7BEA /* MainWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9A82886B49200AE7BEA /* MainWidget.swift */; };
 		EA30F9AF2886B49300AE7BEA /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA32D57429D749E60003978A /* MIMTGetGachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32D57329D749E60003978A /* MIMTGetGachaURL.swift */; };
+		EA3621D52B1D6809007CAB4D /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3621D42B1D6809007CAB4D /* ToolView.swift */; };
 		EA36DFBA28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFB928E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift */; };
 		EA36DFBB28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFB928E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift */; };
 		EA36DFBD28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */; };
@@ -1100,6 +1101,7 @@
 		EA30F9AC2886B49300AE7BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA30F9B42886B4C800AE7BEA /* MainWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetProvider.swift; sourceTree = "<group>"; };
 		EA32D57329D749E60003978A /* MIMTGetGachaURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIMTGetGachaURL.swift; sourceTree = "<group>"; };
+		EA3621D42B1D6809007CAB4D /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		EA36DFB928E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetTransformerCircular.swift; sourceTree = "<group>"; };
 		EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetWeeklyBossesCircular.swift; sourceTree = "<group>"; };
 		EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetProvider.swift; sourceTree = "<group>"; };
@@ -1869,6 +1871,7 @@
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
 				5B4CCB222AC3324100E4A0B5 /* ThirdPartyToolsView.swift */,
+				EA3621D42B1D6809007CAB4D /* ToolView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3093,6 +3096,7 @@
 				EA56E08A28A26C0D00A64262 /* Result.swift in Sources */,
 				EAAF330F28A27AFE0018EFAB /* Account.swift in Sources */,
 				EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */,
+				EA3621D52B1D6809007CAB4D /* ToolView.swift in Sources */,
 				5B5F82B32ACC6714005983AC /* Enum_NameCard.swift in Sources */,
 				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
 				BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */,

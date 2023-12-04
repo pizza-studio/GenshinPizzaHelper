@@ -119,7 +119,6 @@ struct GachaView: View {
             }
         }
         .environmentObject(gachaViewModel)
-        .hideTabBar()
     }
 
     @ViewBuilder
