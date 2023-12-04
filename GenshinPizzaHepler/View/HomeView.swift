@@ -212,7 +212,7 @@ struct AccountInfoCardView: View {
             case let .failure(error):
                 ErrorView(account: account, error: error)
             case .progress:
-                ProgressView()
+                ProgressView().id(UUID())
             }
         } header: {
             Text(account.safeName)
@@ -221,15 +221,13 @@ struct AccountInfoCardView: View {
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
             case .active:
-                Task {
-                    await dailyNoteViewModel.getDailyNote()
-                }
+                dailyNoteViewModel.getDailyNote()
             default:
                 break
             }
         })
         .onReceive(globalDailyNoteCardRefreshSubject, perform: { _ in
-            Task { await dailyNoteViewModel.getDailyNoteUncheck() }
+            dailyNoteViewModel.getDailyNoteUncheck()
         })
     }
 
@@ -270,36 +268,42 @@ class DailyNoteViewModel: ObservableObject {
     let account: AccountConfiguration
 
     /// Fetches the daily note and updates the published `dailyNote` property accordingly.
-    func getDailyNote() async {
+    @MainActor
+    func getDailyNote() {
         if case let .succeed(_, refreshDate) = dailyNoteStatus {
             // check if note is older than 15 minutes
             let shouldUpdateAfterMinute: Double = 15
             let shouldUpdateAfterSecond = 60.0 * shouldUpdateAfterMinute
 
             if Date().timeIntervalSince(refreshDate) > shouldUpdateAfterSecond {
-                await getDailyNoteUncheck()
+                getDailyNoteUncheck()
             }
         } else if case .progress = dailyNoteStatus {
             return // another operation is already in progress
         } else {
-            await getDailyNoteUncheck()
+            getDailyNoteUncheck()
         }
     }
 
     /// Asynchronously fetches the daily note using the MiHoYoAPI with the account information it was initialized with.
     @MainActor
-    func getDailyNoteUncheck() async {
-        if case let .progress(task) = dailyNoteStatus { task?.cancel() }
-        do {
-            let result = try await account.dailyNote()
-            withAnimation {
-                dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
-            }
-        } catch {
-            withAnimation {
-                dailyNoteStatus = .failure(error: AnyLocalizedError(error))
+    func getDailyNoteUncheck() {
+        if case let .progress(task) = dailyNoteStatus {
+            task?.cancel()
+        }
+        let task = Task {
+            do {
+                let result = try await account.dailyNote()
+                withAnimation {
+                    dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
+                }
+            } catch {
+                withAnimation {
+                    dailyNoteStatus = .failure(error: AnyLocalizedError(error))
+                }
             }
         }
+        dailyNoteStatus = .progress(task)
     }
 }
 
