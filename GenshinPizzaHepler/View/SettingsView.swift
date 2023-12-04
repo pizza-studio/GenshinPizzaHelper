@@ -280,8 +280,9 @@ private struct SettingViewIOS15: View {
             navList.listStyle(.insetGrouped)
             DisplayOptionsView() // 预设内容页
         }
+        .navigationViewStyle(.columns)
         #if DEBUG
-        .toast(isPresenting: $isAlertToastShown) {
+            .toast(isPresenting: $isAlertToastShown) {
                 AlertToast(
                     displayMode: .hud,
                     type: .complete(.green),

@@ -34,6 +34,7 @@ struct HomeView: View {
                     }
                 }
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .refreshable {
                 globalDailyNoteCardRefreshSubject.send(())
             }

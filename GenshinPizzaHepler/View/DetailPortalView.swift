@@ -228,6 +228,7 @@ struct DetailPortalView: View {
                     }
                 }
             }
+            .sectionSpacing(UIFont.systemFontSize)
             .refreshable {
                 detailPortalViewModel.refresh()
             }
