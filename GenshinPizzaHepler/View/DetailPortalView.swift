@@ -107,12 +107,7 @@ final class DetailPortalViewModel: ObservableObject {
                     selectedAccount.safeUid,
                     dateWhenNextRefreshable: nil
                 )
-                guard let charLoc = Enka.Sputnik.shared.charLoc else {
-                    throw PlayerDetail.PlayerDetailError.failToGetLocalizedDictionary
-                }
-                guard let charMap = Enka.Sputnik.shared.charMap else {
-                    throw PlayerDetail.PlayerDetailError.failToGetCharacterDictionary
-                }
+                let (charLoc, charMap) = try await Enka.Sputnik.shared.getEnkaDataSet()
                 DispatchQueue.main.async {
                     withAnimation {
                         self.playerDetailStatus = .succeed((
