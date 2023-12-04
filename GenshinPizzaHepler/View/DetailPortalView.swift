@@ -41,11 +41,6 @@ final private class DetailPortalViewModel: ObservableObject {
     }
 
     @Published
-    var selectedAccount: AccountConfiguration? {
-        didSet { refresh() }
-    }
-
-    @Published
     var playerDetailStatus: Status<(PlayerDetail, nextRefreshableDate: Date)> = .progress(nil)
 
     @Published
@@ -54,10 +49,19 @@ final private class DetailPortalViewModel: ObservableObject {
     @Published
     var spiralAbyssDetailStatus: Status<SpiralAbyssDetail> = .progress(nil)
 
+    @Published
+    var ledgerDataStatus: Status<LedgerData> = .progress(nil)
+
+    @Published
+    var selectedAccount: AccountConfiguration? {
+        didSet { refresh() }
+    }
+
     func refresh() {
         fetchPlayerDetail()
         fetchBasicInfo()
         fetchSpiralAbyssInfo()
+        fetchLedgerData()
         detailPortalRefreshSubject.send(())
     }
 
@@ -152,6 +156,32 @@ final private class DetailPortalViewModel: ObservableObject {
         }
         spiralAbyssDetailStatus = .progress(task)
     }
+
+    func fetchLedgerData() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = ledgerDataStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let month = Calendar.current.dateComponents([.month], from: Date()).month!
+                let result = try await MiHoYoAPI.ledgerData(
+                    month: month,
+                    uid: account.safeUid,
+                    server: account.server,
+                    cookie: account.safeCookie
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.ledgerDataStatus = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.ledgerDataStatus = .fail(error)
+                }
+            }
+        }
+        spiralAbyssDetailStatus = .progress(task)
+    }
 }
 
 // MARK: - DetailPortalView
@@ -166,7 +196,8 @@ struct DetailPortalView: View {
                 if let account = detailPortalViewModel.selectedAccount {
                     PlayerDetailSection(account: account)
                     Section {
-                        AbyssInfoNavigator(account: account, status: detailPortalViewModel.spiralAbyssDetailStatus)
+                        AbyssInfoNavigator(status: detailPortalViewModel.spiralAbyssDetailStatus)
+                        LedgerDataNavigator(status: detailPortalViewModel.ledgerDataStatus)
                     }
                 }
             }
@@ -465,12 +496,73 @@ private struct PlayerDetailSection: View {
     }
 }
 
+// MARK: - LedgerDataNavigator
+
+private struct LedgerDataNavigator: View {
+    // MARK: Internal
+
+    let status: DetailPortalViewModel.Status<LedgerData>
+
+    var body: some View {
+        Group {
+            switch status {
+            case .progress:
+                VStack {
+                    Text("app.detailPortal.ledger.title").bold()
+                    ProgressView()
+                }
+            case let .fail(error):
+                VStack {
+                    Text("app.detailPortal.ledger.title").bold()
+                    Text(error.localizedDescription)
+                }
+            case let .succeed(data):
+                AbyssInfoView(ledgerData: data)
+            }
+        }
+    }
+
+    // MARK: Private
+
+    private struct AbyssInfoView: View {
+        // MARK: Internal
+
+        let ledgerData: LedgerData
+
+        var body: some View {
+            NavigationLink {
+                LedgerView(data: ledgerData)
+            } label: {
+                VStack {
+                    HStack {
+                        Text("app.detailPortal.ledger.title").bold()
+                        Spacer()
+                    }
+
+                    HStack(spacing: 10) {
+                        Image("UI_ItemIcon_Primogem")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: iconFrame, height: iconFrame)
+                        Text(verbatim: "\(ledgerData.monthData.currentPrimogems)")
+                            .font(.title)
+                        Spacer()
+                    }
+                }
+            }
+        }
+
+        // MARK: Private
+
+        private let iconFrame: CGFloat = 40
+    }
+}
+
 // MARK: - AbyssInfoNavigator
 
 private struct AbyssInfoNavigator: View {
     // MARK: Internal
 
-    let account: AccountConfiguration
     let status: DetailPortalViewModel.Status<SpiralAbyssDetail>
 
     var body: some View {
@@ -504,7 +596,10 @@ private struct AbyssInfoNavigator: View {
                 AbyssDetailDataDisplayView(data: abyssInfo)
             } label: {
                 VStack {
-                    Text("app.detailPortal.abyss.title").bold()
+                    HStack {
+                        Text("app.detailPortal.abyss.title").bold()
+                        Spacer()
+                    }
                     HStack(spacing: 10) {
                         Image("UI_Icon_Tower")
                             .resizable()
@@ -517,6 +612,7 @@ private struct AbyssInfoNavigator: View {
                             Text(verbatim: "✡︎ \(abyssInfo.totalStar)")
                                 .font(.title)
                         }
+                        Spacer()
                     }
                 }
             }
@@ -1523,7 +1619,7 @@ private struct AllAvatarNavigator: View {
     }
 }
 
-// MARK: - PlayerDetail.Avatar + Identifiable
+// MARK: - LedgerView
 
 //
 //// MARK: - PrimogemTextLabel
@@ -1635,3 +1731,129 @@ private struct AllAvatarNavigator: View {
 //        modifier(ToolViewNavigationTitleInIOS15())
 //    }
 // }
+
+private struct LedgerView: View {
+    // MARK: Internal
+
+    let data: LedgerData
+
+    var body: some View {
+        List {
+            Section {
+                LabelWithDescription(
+                    title: "原石收入",
+                    memo: "较昨日",
+                    icon: "UI_ItemIcon_Primogem",
+                    mainValue: data.dayData.currentPrimogems,
+                    previousValue: data.dayData.lastPrimogems
+                )
+                LabelWithDescription(
+                    title: "摩拉收入",
+                    memo: "较昨日",
+                    icon: "UI_ItemIcon_Mora",
+                    mainValue: data.dayData.currentMora,
+                    previousValue: data.dayData.lastMora
+                )
+            } header: {
+                HStack {
+                    Text("detailPortal.todayAcquisition.title")
+                    Spacer()
+                    Text("\(data.date ?? "")")
+                }
+            } footer: {
+                Text("仅统计充值途径以外获取的资源。数据存在延迟。")
+                    .font(.footnote)
+                    .multilineTextAlignment(.leading)
+            }
+
+            Section {
+                let dayCountThisMonth = Calendar.current.dateComponents(
+                    [.day],
+                    from: Date()
+                ).day
+                LabelWithDescription(
+                    title: "原石收入",
+                    memo: "较上月同期",
+                    icon: "UI_ItemIcon_Primogem",
+                    mainValue: data.monthData.currentPrimogems,
+                    previousValue: data.monthData.lastPrimogems / (dayCountThisMonth ?? 1)
+                )
+                LabelWithDescription(
+                    title: "摩拉收入",
+                    memo: "较上月同期",
+                    icon: "UI_ItemIcon_Mora",
+                    mainValue: data.monthData.currentMora,
+                    previousValue: data.monthData.lastMora / (dayCountThisMonth ?? 1)
+                )
+            } header: {
+                Text("本月账单 (\(data.dataMonth)月)")
+            } footer: {
+                HStack(alignment: .center) {
+                    Spacer()
+                    PieChartView(
+                        values: data.monthData.groupBy.map { Double($0.num) },
+                        names: data.monthData.groupBy
+                            .map { (LedgerDataActions(rawValue: $0.actionId) ?? .byOther).localized },
+                        formatter: { value in String(format: "%.0f", value) },
+                        colors: [
+                            .blue,
+                            .green,
+                            .orange,
+                            .yellow,
+                            .purple,
+                            .gray,
+                            .brown,
+                            .cyan,
+                        ],
+                        backgroundColor: Color(UIColor.systemGroupedBackground),
+                        widthFraction: 1,
+                        innerRadiusFraction: 0.6
+                    )
+                    .frame(minWidth: 280, maxWidth: 280, minHeight: 600, maxHeight: 600)
+                    .padding(.vertical)
+                    .padding(.top)
+                    Spacer()
+                }
+            }
+        }
+        .navigationTitle("原石摩拉账簿")
+    }
+
+    // MARK: Private
+
+    private struct LabelWithDescription: View {
+        let title: LocalizedStringKey
+        let memo: LocalizedStringKey
+        let icon: String
+        let mainValue: Int
+        let previousValue: Int?
+
+        var delta: Int { mainValue - (previousValue ?? 0) }
+
+        var body: some View {
+            Label {
+                VStack {
+                    HStack {
+                        Text(title)
+                        Spacer()
+                        Text("\(mainValue)")
+                    }
+                    if previousValue != nil {
+                        HStack {
+                            Text(memo).foregroundColor(.secondary)
+                            Spacer()
+                            switch delta {
+                            case 1...: Text("+\(delta)").foregroundStyle(.green)
+                            default: Text("\(delta)").foregroundStyle(.red)
+                            }
+                        }.font(.footnote).opacity(0.8)
+                    }
+                }
+            } icon: {
+                Image(icon)
+                    .resizable()
+                    .scaledToFit()
+            }
+        }
+    }
+}
