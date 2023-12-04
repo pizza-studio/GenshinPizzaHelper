@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import HBMihoyoAPI
+import HoYoKit
 #if canImport(ActivityKit)
 import ActivityKit
 
@@ -20,21 +20,18 @@ struct ResinRecoveryAttributes: ActivityAttributes {
         // MARK: Lifecycle
 
         init(
-            resinInfo: ResinInfo,
-            expeditionInfo: ExpeditionInfo,
+            resinInfo: ResinInformation,
+            expeditionInfo: some ExpeditionInformation,
             showExpedition: Bool,
             background: ResinRecoveryActivityBackground
         ) {
             self.resinCountWhenUpdated = resinInfo.currentResin
-            self
-                .resinRecoveryTimeUntilFullInSecondWhenUpdated =
-                TimeInterval(resinInfo.recoveryTime.second)
-            self.updatedTime = resinInfo.updateDate
-            self
-                .expeditionAllCompleteTimeInterval = TimeInterval(
-                    expeditionInfo
-                        .allCompleteTime.second
-                )
+            self.resinRecoveryTime = resinInfo.resinRecoveryTime
+            if let expeditionInfo = expeditionInfo as? GeneralDailyNote.ExpeditionInformation {
+                self.expeditionAllCompleteTime = expeditionInfo.expeditions.map(\.finishTime).max()
+            } else {
+                self.expeditionAllCompleteTime = nil
+            }
             self.showExpedition = showExpedition
             self.background = background
         }
@@ -42,9 +39,8 @@ struct ResinRecoveryAttributes: ActivityAttributes {
         // MARK: Internal
 
         let resinCountWhenUpdated: Int
-        let resinRecoveryTimeUntilFullInSecondWhenUpdated: TimeInterval
-        let updatedTime: Date
-        let expeditionAllCompleteTimeInterval: TimeInterval
+        let resinRecoveryTime: Date
+        let expeditionAllCompleteTime: Date?
         let showExpedition: Bool
 
         let background: ResinRecoveryActivityBackground
@@ -58,50 +54,16 @@ struct ResinRecoveryAttributes: ActivityAttributes {
 
 @available(iOS 16.1, *)
 extension ResinRecoveryAttributes.ResinRecoveryState {
-    /// 求余获得**更新时**距离下一个树脂的TimeInterval
-    var timeIntervalFromNextResinWhenUpdated: TimeInterval {
-        Double(resinRecoveryTimeUntilFullInSecondWhenUpdated)
-            .truncatingRemainder(dividingBy: Double(8 * 60))
-    }
-
-    /// 距离信息更新时的TimeInterval
-    var timeIntervalFromUpdatedTime: TimeInterval {
-        Date().timeIntervalSince(updatedTime)
-    }
-
-    /// 当前距离树脂回满需要的TimeInterval
-    var resinRecoveryTimeIntervalUntilFull: TimeInterval {
-        resinRecoveryTimeUntilFullInSecondWhenUpdated -
-            timeIntervalFromUpdatedTime
-    }
-
-    /// 树脂回满的时间点
-    var resinFullTime: Date {
-        updatedTime
-            .addingTimeInterval(
-                resinRecoveryTimeUntilFullInSecondWhenUpdated
-            )
-    }
-
-    /// 当前还需多少树脂才能回满
-    var resinToFull: Int {
-        Int(ceil(resinRecoveryTimeIntervalUntilFull / (8 * 60)))
-    }
-
-    /// 当前树脂数量
     var currentResin: Int {
-        160 - resinToFull
-    }
-
-    /// 当前距离下个树脂回复所需时间
-    var nextResinRecoveryTimeInterval: TimeInterval {
-        resinRecoveryTimeIntervalUntilFull
-            .truncatingRemainder(dividingBy: 8 * 60)
-    }
-
-    /// 下个树脂回复的时间点
-    var nextResinRecoveryTime: Date {
-        Date().addingTimeInterval(nextResinRecoveryTimeInterval)
+        let secondRemaining = resinRecoveryTime.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+        let minuteRemaining = Double(secondRemaining) / 60
+        let currentResin: Int
+        if minuteRemaining == 0 {
+            currentResin = 160
+        } else {
+            currentResin = 160 - Int(minuteRemaining / 8)
+        }
+        return currentResin
     }
 
     /// 下一20倍数树脂
@@ -113,23 +75,9 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
         next20ResinCount != 160
     }
 
-    /// 下一20倍数树脂回复所需时间
-    var next20ResinRecoveryTimeInterval: TimeInterval {
-        resinRecoveryTimeIntervalUntilFull
-            .truncatingRemainder(dividingBy: 8 * 60 * 20)
-    }
-
     /// 下一20倍数树脂回复时间点
     var next20ResinRecoveryTime: Date {
-        Date().addingTimeInterval(next20ResinRecoveryTimeInterval)
-    }
-
-    var allExpeditionCompleteTime: Date {
-        Date().addingTimeInterval(expeditionAllCompleteTimeInterval)
-    }
-
-    var showExpeditionInfo: Bool {
-        showExpedition
+        Date(timeIntervalSinceNow: TimeInterval((currentResin - next20ResinCount) * 8 * 60))
     }
 }
 

@@ -39,7 +39,6 @@ struct SettingViewIOS16: View {
     enum Navigation {
         case myAccount
         case faq
-        case tool
         case uiPreference
         case widgetSetting
         case notificationSetting
@@ -79,12 +78,6 @@ struct SettingViewIOS16: View {
                             systemSymbol: .personFillQuestionmark
                         )
                     }
-                    NavigationLink(value: Navigation.tool) {
-                        Label(
-                            "旅行工具",
-                            systemSymbol: .shippingboxFill
-                        )
-                    }
                 }
 
                 Section {
@@ -122,12 +115,11 @@ struct SettingViewIOS16: View {
                 // 通知设置
                 NotificationSettingNavigatorIOS16(selectedView: $selectedView)
 
-                // TODO: live activity
-//                #if canImport(ActivityKit)
-//                if #available(iOS 16.1, *) {
-//                    LiveActivitySettingView(selectedView: $selectedView)
-//                }
-//                #endif
+                #if canImport(ActivityKit)
+                if #available(iOS 16.1, *) {
+                    LiveActivitySettingView(selectedView: $selectedView)
+                }
+                #endif
 
                 Section {
                     Button {
@@ -211,12 +203,6 @@ struct SettingViewIOS16: View {
                         WebBroswerView(url: url)
                             .navigationTitle("FAQ")
                             .navigationBarTitleDisplayMode(.inline)
-                    case .tool:
-                        // TODO: 3rd party tool view
-//                        ThirdPartyToolsView()
-//                            .navigationTitle("旅行工具")
-//                            .navigationBarTitleDisplayMode(.inline)
-                        EmptyView()
                     case .uiPreference:
                         DisplayOptionsView()
                     case .widgetSetting:
@@ -224,14 +210,14 @@ struct SettingViewIOS16: View {
                     case .notificationSetting:
                         NotificationSettingView()
                     case .resinTimerSetting:
-                        // TODO: live activity
-//                        #if canImport(ActivityKit)
-//                        if #available(iOS 16.1, *) {
-//                            LiveActivitySettingDetailView()
-//                        }
-//                        #else
-//                        EmptyView()
-//                        #endif
+                         TODO: live activity
+                        #if canImport(ActivityKit)
+                        if #available(iOS 16.1, *) {
+                            LiveActivitySettingDetailView()
+                        }
+                        #else
+                        EmptyView()
+                        #endif
                         EmptyView()
                     case .donate:
                         GlobalDonateView(

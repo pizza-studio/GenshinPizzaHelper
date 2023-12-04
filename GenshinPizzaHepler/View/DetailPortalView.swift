@@ -867,49 +867,6 @@ private struct BasicInfoNavigator: View {
 private struct BasicInfoView: View {
     // MARK: Internal
 
-    private struct DataDisplayView: View {
-        // MARK: Lifecycle
-
-        init(symbol: Image, label: LocalizedStringKey, value: String) {
-            self.symbol = symbol
-            self.label = label
-            self.value = value
-        }
-
-        init(label: LocalizedStringKey, value: String) {
-            self.symbol = nil
-            self.label = label
-            self.value = value
-        }
-
-        // MARK: Internal
-
-        let symbol: Image?
-        let label: LocalizedStringKey
-        let value: String
-
-        var body: some View {
-            if let symbol {
-                Label {
-                    HStack {
-                        Text(label)
-                        Spacer()
-                        Text(verbatim: value)
-                    }
-                } icon: {
-                    symbol.resizable().scaledToFit()
-                        .frame(height: 30)
-                }
-            } else {
-                HStack {
-                    Text(label)
-                    Spacer()
-                    Text(verbatim: value)
-                }
-            }
-        }
-    }
-
     let data: BasicInfos
 
     var body: some View {
@@ -986,6 +943,49 @@ private struct BasicInfoView: View {
     }
 
     // MARK: Private
+
+    private struct DataDisplayView: View {
+        // MARK: Lifecycle
+
+        init(symbol: Image, label: LocalizedStringKey, value: String) {
+            self.symbol = symbol
+            self.label = label
+            self.value = value
+        }
+
+        init(label: LocalizedStringKey, value: String) {
+            self.symbol = nil
+            self.label = label
+            self.value = value
+        }
+
+        // MARK: Internal
+
+        let symbol: Image?
+        let label: LocalizedStringKey
+        let value: String
+
+        var body: some View {
+            if let symbol {
+                Label {
+                    HStack {
+                        Text(label)
+                        Spacer()
+                        Text(verbatim: value)
+                    }
+                } icon: {
+                    symbol.resizable().scaledToFit()
+                        .frame(height: 30)
+                }
+            } else {
+                HStack {
+                    Text(label)
+                    Spacer()
+                    Text(verbatim: value)
+                }
+            }
+        }
+    }
 
     private struct WorldExplorationView: View {
         struct WorldDataLabel: View {

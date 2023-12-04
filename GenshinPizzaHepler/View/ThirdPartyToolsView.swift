@@ -12,11 +12,6 @@ import SwiftUI
 
 // MARK: - ThirdPartyToolsView
 
-// TODO: 小工具板块
-
-// 因应群内多数用户的要求，将「小工具」由 ToolsView 挪到这里。
-// 因为无法知道当前玩家固定了哪个账号，所以会根据当前登入账号数量来显示多个原神计算器入口。
-
 public struct ThirdPartyToolsView: View {
     // MARK: Public
 

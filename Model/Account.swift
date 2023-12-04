@@ -12,47 +12,48 @@ import HBMihoyoAPI
 import HoYoKit
 import UIKit
 
+// MARK: - Account
+
 //// MARK: - Account
-//
-// struct Account: Equatable, Hashable {
-//    // MARK: Lifecycle
-//
-//    init(config: AccountConfiguration) {
-//        self.config = config
-//    }
-//
-//    // MARK: Internal
-//
-//    var config: AccountConfiguration
-//
-//    // 树脂等信息
-//    var result: FetchResult?
-//    var background: WidgetBackground = .randomNamecardBackground
-//    var basicInfo: BasicInfos?
-//    var fetchComplete: Bool = false
-//
-//    #if !os(watchOS)
-//    var playerDetailResult: Result<
-//        PlayerDetail,
-//        PlayerDetail.PlayerDetailError
-//    >?
-//    var fetchPlayerDetailComplete: Bool = false
-//
-//    // 深渊
-//    var spiralAbyssDetail: AccountSpiralAbyssDetail?
-//    // 账簿，旅行札记
-//    var ledgeDataResult: LedgerDataFetchResult?
-//    #endif
-//
-//    static func == (lhs: Account, rhs: Account) -> Bool {
-//        lhs.config == rhs.config
-//    }
-//
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(config)
-//    }
-// }
-//
+struct Account: Equatable, Hashable {
+    // MARK: Lifecycle
+
+    init(config: AccountConfiguration) {
+        self.config = config
+    }
+
+    // MARK: Internal
+
+    var config: AccountConfiguration
+
+    // 树脂等信息
+    var result: FetchResult?
+    var background: WidgetBackground = .randomNamecardBackground
+    var basicInfo: BasicInfos?
+    var fetchComplete: Bool = false
+
+    #if !os(watchOS)
+    var playerDetailResult: Result<
+        PlayerDetail,
+        PlayerDetail.PlayerDetailError
+    >?
+    var fetchPlayerDetailComplete: Bool = false
+
+    // 深渊
+    var spiralAbyssDetail: AccountSpiralAbyssDetail?
+    // 账簿，旅行札记
+    var ledgeDataResult: LedgerDataFetchResult?
+    #endif
+
+    static func == (lhs: Account, rhs: Account) -> Bool {
+        lhs.config == rhs.config
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(config)
+    }
+}
+
 extension AccountConfiguration {
     func fetchResult(_ completion: @escaping (FetchResult) -> ()) {
         guard (uid != nil) || (cookie != nil)

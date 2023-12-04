@@ -84,7 +84,7 @@ struct ResinRecoveryActivityWidget: Widget {
                                     .font(.caption2)
                                 Text(
                                     timerInterval: Date() ... context.state
-                                        .resinFullTime,
+                                        .resinRecoveryTime,
                                     countsDown: true
                                 )
                                 .multilineTextAlignment(.leading)
@@ -195,7 +195,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             .font(.caption2)
                         Text(
                             timerInterval: Date() ... context.state
-                                .resinFullTime,
+                                .resinRecoveryTime,
                             countsDown: true
                         )
                         .multilineTextAlignment(.leading)
@@ -204,7 +204,8 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                     .gridColumnAlignment(.leading)
 //                    .frame(width: 140)
                 }
-                if context.state.showExpeditionInfo {
+                if context.state.showExpedition, let time = context.state
+                    .expeditionAllCompleteTime {
                     GridRow {
                         Image("派遣探索")
                             .resizable()
@@ -214,8 +215,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             Text("距离派遣探索全部完成")
                                 .font(.caption2)
                             Text(
-                                timerInterval: Date() ... context.state
-                                    .allExpeditionCompleteTime,
+                                timerInterval: Date() ... time,
                                 countsDown: true
                             )
                             .multilineTextAlignment(.leading)
