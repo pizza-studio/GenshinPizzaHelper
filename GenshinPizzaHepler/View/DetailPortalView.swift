@@ -837,17 +837,17 @@ private struct BasicInfoNavigator: View {
             }
         case let .succeed(data):
             NavigationLink {
-                Text("")
+                BasicInfoView(data: data)
             } label: {
                 VStack(alignment: .leading) {
                     Text("app.detailPortal.basicInfo.title").bold()
                     HStack(spacing: 10) {
-                        Image("UI_Icon_Reunion_RewardOpen")
+                        Image("UI_ItemIcon_116006")
                             .resizable()
                             .scaledToFit()
                             .frame(width: iconFrame, height: iconFrame)
                         Text(
-                            verbatim: "\(data.stats.commonChestNumber + data.stats.exquisiteChestNumber + data.stats.luxuriousChestNumber)"
+                            verbatim: "\(data.stats.luxuriousChestNumber)"
                         )
                         .font(.title)
                         Spacer()
@@ -860,4 +860,202 @@ private struct BasicInfoNavigator: View {
     // MARK: Private
 
     private let iconFrame: CGFloat = 40
+}
+
+// MARK: - BasicInfoView
+
+private struct BasicInfoView: View {
+    // MARK: Internal
+
+    private struct DataDisplayView: View {
+        // MARK: Lifecycle
+
+        init(symbol: Image, label: LocalizedStringKey, value: String) {
+            self.symbol = symbol
+            self.label = label
+            self.value = value
+        }
+
+        init(label: LocalizedStringKey, value: String) {
+            self.symbol = nil
+            self.label = label
+            self.value = value
+        }
+
+        // MARK: Internal
+
+        let symbol: Image?
+        let label: LocalizedStringKey
+        let value: String
+
+        var body: some View {
+            if let symbol {
+                Label {
+                    HStack {
+                        Text(label)
+                        Spacer()
+                        Text(verbatim: value)
+                    }
+                } icon: {
+                    symbol.resizable().scaledToFit()
+                        .frame(height: 30)
+                }
+            } else {
+                HStack {
+                    Text(label)
+                    Spacer()
+                    Text(verbatim: value)
+                }
+            }
+        }
+    }
+
+    let data: BasicInfos
+
+    var body: some View {
+        List {
+            Section {
+                DataDisplayView(label: "活跃天数", value: "\(data.stats.activeDayNumber)")
+                DataDisplayView(label: "获得角色", value: "\(data.stats.avatarNumber)")
+                DataDisplayView(label: "深境螺旋", value: data.stats.spiralAbyss)
+                DataDisplayView(
+                    label: "成就达成",
+                    value: "\(data.stats.achievementNumber)"
+                )
+                DataDisplayView(
+                    label: "解锁锚点",
+                    value: "\(data.stats.wayPointNumber)"
+                )
+                DataDisplayView(
+                    label: "解锁秘境",
+                    value: "\(data.stats.domainNumber)"
+                )
+            }
+
+            Section {
+                DataDisplayView(label: "普通宝箱", value: "\(data.stats.commonChestNumber)")
+                DataDisplayView(
+                    label: "珍贵宝箱",
+                    value: "\(data.stats.preciousChestNumber)"
+                )
+                DataDisplayView(
+                    label: "精致宝箱",
+                    value: "\(data.stats.exquisiteChestNumber)"
+                )
+                DataDisplayView(
+                    label: "华丽宝箱",
+                    value: "\(data.stats.luxuriousChestNumber)"
+                )
+            }
+            Section {
+                DataDisplayView(
+                    symbol: Image("UI_ItemIcon_107001"),
+                    label: "风神瞳",
+                    value: "\(data.stats.anemoculusNumber)"
+                )
+                DataDisplayView(
+                    symbol: Image("UI_ItemIcon_107003"),
+                    label: "岩神瞳",
+                    value: "\(data.stats.geoculusNumber)"
+                )
+                DataDisplayView(
+                    symbol: Image("UI_ItemIcon_107014"),
+                    label: "雷神瞳",
+                    value: "\(data.stats.electroculusNumber)"
+                )
+                DataDisplayView(
+                    symbol: Image("UI_ItemIcon_107017"),
+                    label: "水神瞳",
+                    value: "\(data.stats.hydroculusNumber)"
+                )
+                DataDisplayView(
+                    symbol: Image("Item_Hydroculus"),
+                    label: "草神瞳",
+                    value: "\(data.stats.dendroculusNumber)"
+                )
+            }
+            Section {
+                ForEach(data.worldExplorations.sorted {
+                    $0.id < $1.id
+                }, id: \.id) { worldData in
+                    WorldExplorationView(worldData: worldData)
+                }
+            }
+        }
+        .navigationTitle("app.detailPortal.basicInfo.title")
+    }
+
+    // MARK: Private
+
+    private struct WorldExplorationView: View {
+        struct WorldDataLabel: View {
+            @Environment(\.colorScheme)
+            private var colorScheme
+            let worldData: BasicInfos.WorldExploration
+
+            var body: some View {
+                Label {
+                    Text(worldData.name)
+                    Spacer()
+                    Text(calculatePercentage(
+                        value: Double(worldData.explorationPercentage) /
+                            Double(1000)
+                    ))
+                } icon: {
+                    if let url = URL(string: worldData.icon) {
+                        AsyncImage(url: url, content: { image in
+                            switch colorScheme {
+                            case .dark:
+                                image.resizable().scaledToFit()
+                                    .frame(height: 30)
+                            case .light:
+                                image.resizable().scaledToFit()
+                                    .frame(height: 30)
+                                    .colorInvert()
+                            @unknown default:
+                                image.resizable().scaledToFit()
+                                    .frame(height: 30)
+                            }
+                        }) {
+                            ProgressView()
+                        }
+                    }
+                }
+            }
+
+            func calculatePercentage(value: Double) -> String {
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .percent
+                return formatter.string(from: value as NSNumber) ?? "Error"
+            }
+        }
+
+        let worldData: BasicInfos.WorldExploration
+
+        var body: some View {
+            if !worldData.offerings.isEmpty {
+                DisclosureGroup {
+                    ForEach(worldData.offerings, id: \.name) { offering in
+                        Label {
+                            Text(offering.name)
+                            Spacer()
+                            Text("Lv. \(offering.level)")
+                        } icon: {
+                            if let url = URL(string: offering.icon) {
+                                AsyncImage(url: url, content: { image in
+                                    image.resizable().scaledToFit().frame(height: 30)
+                                }) {
+                                    ProgressView()
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    WorldDataLabel(worldData: worldData)
+                }
+            } else {
+                WorldDataLabel(worldData: worldData)
+            }
+        }
+    }
 }
