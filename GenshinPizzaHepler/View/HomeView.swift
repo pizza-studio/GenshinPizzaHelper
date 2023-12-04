@@ -45,11 +45,13 @@ struct HomeView: View {
 // MARK: - AccountInfoCardView
 
 struct AccountInfoCardView: View {
-    enum Status {
-        case succeed(dailyNote: any DailyNote)
-        case failure(error: AnyLocalizedError)
-        case progress(Task<(), Never>?)
+    // MARK: Lifecycle
+
+    init(account: AccountConfiguration) {
+        self._dailyNoteViewModel = .init(wrappedValue: DailyNoteViewModel(account: account))
     }
+
+    // MARK: Internal
 
     struct NoteView: View {
         // MARK: Internal
@@ -195,18 +197,17 @@ struct AccountInfoCardView: View {
         }()
     }
 
-    let account: AccountConfiguration
-
-    @State
-    var status: Status = .progress(nil)
-
     @Environment(\.scenePhase)
     var scenePhase
+
+    var account: AccountConfiguration { dailyNoteViewModel.account }
+
+    var status: DailyNoteViewModel.Status { dailyNoteViewModel.dailyNoteStatus }
 
     var body: some View {
         Section {
             switch status {
-            case let .succeed(dailyNote):
+            case let .succeed(dailyNote, _):
                 NoteView(dailyNote: dailyNote, account: account)
             case let .failure(error):
                 ErrorView(account: account, error: error)
@@ -220,26 +221,85 @@ struct AccountInfoCardView: View {
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
             case .active:
-                fetchDailyNote()
+                Task {
+                    await dailyNoteViewModel.getDailyNote()
+                }
             default:
                 break
             }
         })
         .onReceive(globalDailyNoteCardRefreshSubject, perform: { _ in
-            fetchDailyNote()
+            Task { await dailyNoteViewModel.getDailyNoteUncheck() }
         })
     }
 
-    func fetchDailyNote() {
-        if case let .progress(task) = status { task?.cancel() }
-        let task = Task {
-            do {
-                status = .succeed(dailyNote: try await account.dailyNote())
-            } catch {
-                status = .failure(error: AnyLocalizedError(error))
+    // MARK: Private
+
+    @StateObject
+    private var dailyNoteViewModel: DailyNoteViewModel
+}
+
+// MARK: - DailyNoteViewModel
+
+class DailyNoteViewModel: ObservableObject {
+    // MARK: Lifecycle
+
+    /// Initializes a new instance of the view model.
+    ///
+    /// - Parameter account: The account for which the daily note will be fetched.
+    init(account: AccountConfiguration) {
+        self.account = account
+        Task {
+            await getDailyNoteUncheck()
+        }
+    }
+
+    // MARK: Internal
+
+    enum Status {
+        case succeed(dailyNote: any DailyNote, refreshDate: Date)
+        case failure(error: AnyLocalizedError)
+        case progress(Task<(), Never>?)
+    }
+
+    /// The current daily note.
+    @Published
+    private(set) var dailyNoteStatus: Status = .progress(nil)
+
+    /// The account for which the daily note is being fetched.
+    let account: AccountConfiguration
+
+    /// Fetches the daily note and updates the published `dailyNote` property accordingly.
+    func getDailyNote() async {
+        if case let .succeed(_, refreshDate) = dailyNoteStatus {
+            // check if note is older than 15 minutes
+            let shouldUpdateAfterMinute: Double = 15
+            let shouldUpdateAfterSecond = 60.0 * shouldUpdateAfterMinute
+
+            if Date().timeIntervalSince(refreshDate) > shouldUpdateAfterSecond {
+                await getDailyNoteUncheck()
+            }
+        } else if case .progress = dailyNoteStatus {
+            return // another operation is already in progress
+        } else {
+            await getDailyNoteUncheck()
+        }
+    }
+
+    /// Asynchronously fetches the daily note using the MiHoYoAPI with the account information it was initialized with.
+    @MainActor
+    func getDailyNoteUncheck() async {
+        if case let .progress(task) = dailyNoteStatus { task?.cancel() }
+        do {
+            let result = try await account.dailyNote()
+            withAnimation {
+                dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
+            }
+        } catch {
+            withAnimation {
+                dailyNoteStatus = .failure(error: AnyLocalizedError(error))
             }
         }
-        status = .progress(task)
     }
 }
 

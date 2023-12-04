@@ -18,7 +18,7 @@ let detailPortalRefreshSubject: PassthroughSubject<(), Never> = .init()
 
 // MARK: - DetailPortalViewModel
 
-final private class DetailPortalViewModel: ObservableObject {
+final class DetailPortalViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {
@@ -53,6 +53,9 @@ final private class DetailPortalViewModel: ObservableObject {
     var ledgerDataStatus: Status<LedgerData> = .progress(nil)
 
     @Published
+    var allAvatarInfoStatus: Status<AllAvatarDetailModel> = .progress(nil)
+
+    @Published
     var selectedAccount: AccountConfiguration? {
         didSet { refresh() }
     }
@@ -62,7 +65,34 @@ final private class DetailPortalViewModel: ObservableObject {
         fetchBasicInfo()
         fetchSpiralAbyssInfo()
         fetchLedgerData()
+        fetchAllAvatarInfo()
         detailPortalRefreshSubject.send(())
+    }
+
+    func fetchAllAvatarInfo() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = allAvatarInfoStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let result = try await MiHoYoAPI.allAvatarDetail(
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.allAvatarInfoStatus = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.allAvatarInfoStatus = .fail(error)
+                }
+            }
+        }
+        allAvatarInfoStatus = .progress(task)
     }
 
     func fetchPlayerDetail() {
@@ -491,7 +521,43 @@ private struct PlayerDetailSection: View {
                     DataFetchedView(playerDetail: playerDetail, account: account)
                 }
             }
-            AllAvatarNavigator(account: account)
+            AllAvatarNavigator(status: detailPortalViewModel.allAvatarInfoStatus)
+        }
+    }
+}
+
+// MARK: - AllAvatarNavigator
+
+private struct AllAvatarNavigator: View {
+    var status: DetailPortalViewModel.Status<AllAvatarDetailModel>
+
+    var body: some View {
+        switch status {
+        case .progress:
+            VStack {
+                Text("app.detailPortal.allAvatar.title").bold()
+                ProgressView()
+            }
+        case let .fail(error):
+            VStack {
+                Text("app.detailPortal.allAvatar.title").bold()
+                Text(error.localizedDescription)
+            }
+        case let .succeed(data):
+            NavigationLink {
+                AllAvatarListSheetView(status: status)
+            } label: {
+                VStack(alignment: .leading) {
+                    Text("app.detailPortal.allAvatar.title").bold()
+                    HStack(spacing: 3) {
+                        ForEach(data.avatars.prefix(5), id: \.id) { avatar in
+                            if let asset = avatar.asset {
+                                asset.decoratedIcon(30)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -624,7 +690,7 @@ private struct AbyssInfoNavigator: View {
     }
 }
 
-// MARK: - AllAvatarNavigator
+// MARK: - LedgerView
 
 // @available(iOS 15.0, *)
 // struct DetailPortalView: View {
@@ -1608,18 +1674,6 @@ private struct AbyssInfoNavigator: View {
 //
 //// MARK: - AllAvatarNavigator
 //
-@available(iOS 15.0, *)
-private struct AllAvatarNavigator: View {
-    let account: AccountConfiguration
-
-    var body: some View {
-        NavigationLink("所有角色") {
-            AllAvatarListSheetView(account: account)
-        }
-    }
-}
-
-// MARK: - LedgerView
 
 //
 //// MARK: - PrimogemTextLabel

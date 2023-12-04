@@ -13,25 +13,10 @@ import SwiftUI
 // MARK: - AllAvatarListSheetView
 
 struct AllAvatarListSheetView: View {
-    // MARK: Lifecycle
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
 
-    init(account: AccountConfiguration) {
-        self.account = account
-        self._status = .init(initialValue: .progress(nil))
-    }
-
-    // MARK: Internal
-
-    enum Status {
-        case progress(Task<(), Never>?)
-        case succeed(AllAvatarDetailModel)
-        case fail(Error)
-    }
-
-    @State
-    var status: Status
-
-    let account: AccountConfiguration
+    var status: DetailPortalViewModel.Status<AllAvatarDetailModel>
 
     @Environment(\.dismiss)
     var dismiss
@@ -91,7 +76,7 @@ struct AllAvatarListSheetView: View {
                             .foregroundColor(.red)
                     }
                     Button {
-                        fetchData()
+                        detailPortalViewModel.refresh()
                     } label: {
                         Label {
                             Text("sys.retry")
@@ -122,30 +107,8 @@ struct AllAvatarListSheetView: View {
             }
         }
         .refreshable {
-            fetchData()
+            detailPortalViewModel.refresh()
         }
-        .onAppear {
-            fetchData()
-        }
-    }
-
-    func fetchData() {
-        if case let .progress(task) = status { task?.cancel() }
-        let task = Task {
-            do {
-                let result = try await MiHoYoAPI.allAvatarDetail(
-                    server: account.server,
-                    uid: account.safeUid,
-                    cookie: account.safeCookie,
-                    deviceFingerPrint: account.safeDeviceFingerPrint,
-                    deviceId: account.safeUuid
-                )
-                status = .succeed(result)
-            } catch {
-                status = .fail(error)
-            }
-        }
-        status = .progress(task)
     }
 
     func goldNum(data: AllAvatarDetailModel)
