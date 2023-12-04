@@ -58,10 +58,10 @@ extension API {
         ) async throws
             -> Enka.PlayerDetailFetchModel {
             if let date = dateWhenNextRefreshable, date > Date() {
-                throw PlayerDetail.PlayerDetailError.refreshTooFast(dateWhenRefreshable: date)
                 print(
                     "PLAYER DETAIL FETCH 刷新太快了，请在\(date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)秒后刷新"
                 )
+                throw PlayerDetail.PlayerDetailError.refreshTooFast(dateWhenRefreshable: date)
             } else {
                 let isMiyousheUID = Self.isMiyousheUID(uid: uid)
                 let enkaMirror = "https://profile.microgg.cn/api/uid/" + uid
