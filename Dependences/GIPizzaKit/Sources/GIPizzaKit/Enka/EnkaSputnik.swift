@@ -73,8 +73,13 @@ extension Enka {
                 }.value
 
                 // save charLoc and charMap to UserDefault
-                Defaults[.enkaMapLoc] = try! await JSONEncoder().encode(charLocRaw)
-                Defaults[.enkaMapCharacters] = try! await JSONEncoder().encode(charMapRaw)
+                if let newMapLoc = try? await JSONEncoder().encode(charLocRaw) {
+                    Defaults[.enkaMapLoc] = newMapLoc
+                }
+
+                if let newMapCharacters = try? await JSONEncoder().encode(charMapRaw) {
+                    Defaults[.enkaMapCharacters] = newMapCharacters
+                }
 
                 Defaults[.lastEnkaDataCheckDate] = Date()
 
