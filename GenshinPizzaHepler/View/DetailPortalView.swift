@@ -103,19 +103,20 @@ final class DetailPortalViewModel: ObservableObject {
         if case let .progress(task) = playerDetailStatus { task?.cancel() }
         let task = Task {
             do {
-                let result = try await API.OpenAPIs.fetchPlayerDetail(
+                async let result = try await API.OpenAPIs.fetchPlayerDetail(
                     selectedAccount.safeUid,
                     dateWhenNextRefreshable: nil
                 )
-                let (charLoc, charMap) = try await Enka.Sputnik.shared.getEnkaDataSet()
+                async let (charLoc, charMap) = try await Enka.Sputnik.shared.getEnkaDataSet()
+                let playerDetail = try await PlayerDetail(
+                    PlayerDetailFetchModel: result,
+                    localizedDictionary: charLoc,
+                    characterMap: charMap
+                )
                 DispatchQueue.main.async {
                     withAnimation {
                         self.playerDetailStatus = .succeed((
-                            PlayerDetail(
-                                PlayerDetailFetchModel: result,
-                                localizedDictionary: charLoc,
-                                characterMap: charMap
-                            ),
+                            playerDetail,
                             Date()
                         ))
                     }
