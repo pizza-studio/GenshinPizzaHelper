@@ -5,22 +5,29 @@
 //  Created by 戴藏龙 on 2022/8/7.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
+// MARK: - TransformerInfoBar
+
 struct TransformerInfoBar: View {
-    let transformerInfo: TransformerInfo
+    let transformerInfo: GeneralDailyNote.TransformerInformation
+
+    var percentage: Double {
+        let second = transformerInfo.recoveryTime.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+        return second / Double(7 * 24 * 60 * 60)
+    }
 
     var isTransformerCompleteImage: some View {
-        transformerInfo.isComplete
+        (transformerInfo.recoveryTime <= Date())
             ? Image(systemSymbol: .exclamationmark)
             .overlayImageWithRingProgressBar(
-                transformerInfo.percentage,
+                percentage,
                 scaler: 0.78
             )
             : Image(systemSymbol: .hourglass)
-            .overlayImageWithRingProgressBar(transformerInfo.percentage)
+            .overlayImageWithRingProgressBar(1)
     }
 
     var body: some View {
@@ -36,11 +43,7 @@ struct TransformerInfoBar: View {
                 .foregroundColor(Color("textColor3"))
             HStack(alignment: .lastTextBaseline, spacing: 1) {
                 Text(
-                    transformerInfo.recoveryTime
-                        .describeIntervalShort(
-                            finishedTextPlaceholder: "infoBlock.transformerAvailable"
-                                .localized
-                        )
+                    intervalFormatter.string(from: TimeInterval.sinceNow(to: transformerInfo.recoveryTime))!
                 )
                 .foregroundColor(Color("textColor3"))
                 .lineLimit(1)
@@ -50,3 +53,11 @@ struct TransformerInfoBar: View {
         }
     }
 }
+
+private let intervalFormatter: DateComponentsFormatter = {
+    let dateComponentFormatter = DateComponentsFormatter()
+    dateComponentFormatter.allowedUnits = [.hour, .minute]
+    dateComponentFormatter.maximumUnitCount = 2
+    dateComponentFormatter.unitsStyle = .brief
+    return dateComponentFormatter
+}()

@@ -6,17 +6,16 @@
 //
 
 import Foundation
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenResinWidgetCircular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenResinWidgetCircular: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -24,8 +23,8 @@ struct LockScreenResinWidgetCircular<T>: View
             switch result {
             case let .success(data):
                 Gauge(
-                    value: Double(data.resinInfo.currentResin) /
-                        Double(data.resinInfo.maxResin)
+                    value: Double(data.resinInformation.calculatedCurrentResin) /
+                        Double(data.resinInformation.maxResin)
                 ) {
                     LinearGradient(
                         colors: [
@@ -42,7 +41,7 @@ struct LockScreenResinWidgetCircular<T>: View
                             .scaledToFit()
                     )
                 } currentValueLabel: {
-                    Text("\(data.resinInfo.currentResin)")
+                    Text("\(data.resinInformation.calculatedCurrentResin)")
                         .font(.system(.title3, design: .rounded))
                         .minimumScaleFactor(0.1)
                 }
@@ -80,14 +79,14 @@ struct LockScreenResinWidgetCircular<T>: View
             switch result {
             case let .success(data):
                 Gauge(
-                    value: Double(data.resinInfo.currentResin) /
-                        Double(data.resinInfo.maxResin)
+                    value: Double(data.resinInformation.calculatedCurrentResin) /
+                        Double(data.resinInformation.maxResin)
                 ) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {
-                    Text("\(data.resinInfo.currentResin)")
+                    Text("\(data.resinInformation.calculatedCurrentResin)")
                         .font(.system(.title3, design: .rounded))
                         .minimumScaleFactor(0.1)
                 }
@@ -106,14 +105,14 @@ struct LockScreenResinWidgetCircular<T>: View
             switch result {
             case let .success(data):
                 Gauge(
-                    value: Double(data.resinInfo.currentResin) /
-                        Double(data.resinInfo.maxResin)
+                    value: Double(data.resinInformation.calculatedCurrentResin) /
+                        Double(data.resinInformation.maxResin)
                 ) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
                 } currentValueLabel: {
-                    Text("\(data.resinInfo.currentResin)")
+                    Text("\(data.resinInformation.calculatedCurrentResin)")
                         .font(.system(.title3, design: .rounded))
                         .minimumScaleFactor(0.1)
                 }

@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/11.
 //
 
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
@@ -46,39 +47,23 @@ struct LockScreenHomeCoinWidgetView: View {
     let entry: LockScreenWidgetProvider.Entry
     var body: some View {
         Group {
-            switch dataKind {
-            case let .normal(result):
-                switch family {
-                #if os(watchOS)
-                case .accessoryCorner:
-                    LockScreenHomeCoinWidgetCorner(result: result)
-                #endif
-                case .accessoryCircular:
-                    LockScreenHomeCoinWidgetCircular(result: result)
-                case .accessoryRectangular:
-                    LockScreenHomeCoinWidgetRectangular(result: result)
-                default:
-                    EmptyView()
-                }
-            case let .simplified(result):
-                switch family {
-                #if os(watchOS)
-                case .accessoryCorner:
-                    LockScreenHomeCoinWidgetCorner(result: result)
-                #endif
-                case .accessoryCircular:
-                    LockScreenHomeCoinWidgetCircular(result: result)
-                case .accessoryRectangular:
-                    LockScreenHomeCoinWidgetRectangular(result: result)
-                default:
-                    EmptyView()
-                }
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenHomeCoinWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenHomeCoinWidgetCircular(result: result)
+            case .accessoryRectangular:
+                LockScreenHomeCoinWidgetRectangular(result: result)
+            default:
+                EmptyView()
             }
         }
         .widgetURL(url)
     }
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: Result<any DailyNote, any Error> { entry.result }
 //    let result: FetchResult = .defaultFetchResult
     var accountName: String? { entry.accountName }
 
@@ -96,21 +81,11 @@ struct LockScreenHomeCoinWidgetView: View {
             return components.url!
         }()
 
-        switch entry.widgetDataKind {
-        case let .normal(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
-        case let .simplified(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
         }
     }
 }

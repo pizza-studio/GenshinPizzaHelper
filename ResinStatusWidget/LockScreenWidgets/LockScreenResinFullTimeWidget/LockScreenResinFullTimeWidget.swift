@@ -39,7 +39,7 @@ struct LockScreenResinFullTimeWidgetView: View {
     var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: LockScreenWidgetProvider.Entry.Result { entry.result }
     var accountName: String? { entry.accountName }
 
     var url: URL? {
@@ -56,32 +56,17 @@ struct LockScreenResinFullTimeWidgetView: View {
             return components.url!
         }()
 
-        switch entry.widgetDataKind {
-        case let .normal(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
-        case let .simplified(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
         }
     }
 
     var body: some View {
         Group {
-            switch dataKind {
-            case let .normal(result):
-                LockScreenResinFullTimeWidgetCircular(result: result)
-            case let .simplified(result):
-                LockScreenResinFullTimeWidgetCircular(result: result)
-            }
+            LockScreenResinFullTimeWidgetCircular(result: result)
         }
         .widgetURL(url)
     }

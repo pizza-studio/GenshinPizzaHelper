@@ -10,6 +10,8 @@ import Foundation
 import HoYoKit
 import UserNotifications
 
+// MARK: - UserNotificationCenter
+
 class UserNotificationCenter {
     // MARK: Lifecycle
 
@@ -392,7 +394,11 @@ class UserNotificationCenter {
             resinNotificationTimeDescription
         )
         createNotification(
-            in: Int(TimeInterval.sinceNow(to: Calendar.current.date(byAdding: .second, value: -resinNotificationTimeFromFull, to: resinInfo.resinRecoveryTime)!)),
+            in: Int(TimeInterval.sinceNow(to: Calendar.current.date(
+                byAdding: .second,
+                value: -resinNotificationTimeFromFull,
+                to: resinInfo.resinRecoveryTime
+            )!)),
             for: accountName,
             object: .resin,
             title: title,
@@ -435,8 +441,9 @@ class UserNotificationCenter {
         with homeCoinInfo: HomeCoinInformation,
         uid: String
     ) {
-        guard Int(TimeInterval.sinceNow(to: homeCoinInfo.fullTime
-            )) > homeCoinNotificationTimeFromFull,
+        guard Int(TimeInterval.sinceNow(
+            to: homeCoinInfo.fullTime
+        )) > homeCoinNotificationTimeFromFull,
             allowHomeCoinNotification else {
             deleteNotification(for: uid, object: .homeCoin); return
         }
@@ -632,17 +639,3 @@ private let dateFormatter: DateFormatter = {
     dateFormatter.locale = Locale(identifier: Locale.current.identifier)
     return dateFormatter
 }()
-
-extension TimeInterval {
-    static func sinceNow(to date: Date) -> Self {
-        return date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
-    }
-
-    static func toNow(from date: Date) -> Self {
-        return Date().timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate
-    }
-
-    init(from dateA: Date, to dateB: Date) {
-        self = dateB.timeIntervalSinceReferenceDate - dateA.timeIntervalSinceReferenceDate
-    }
-}

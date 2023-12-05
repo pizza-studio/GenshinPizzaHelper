@@ -5,7 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
@@ -45,45 +45,26 @@ struct LockScreenLoopWidgetView: View {
     let entry: LockScreenLoopWidgetProvider.Entry
     var body: some View {
         Group {
-            switch dataKind {
-            case let .normal(result):
-                switch family {
-                #if os(watchOS)
-                case .accessoryCorner:
-                    LockScreenLoopWidgetCorner(result: result)
-                #endif
-                case .accessoryCircular:
-                    LockScreenLoopWidgetCircular(
-                        result: result,
-                        showWeeklyBosses: showWeeklyBosses,
-                        showTransformer: showTransformer,
-                        resinStyle: resinStyle
-                    )
-                default:
-                    EmptyView()
-                }
-            case let .simplified(result):
-                switch family {
-                #if os(watchOS)
-                case .accessoryCorner:
-                    LockScreenLoopWidgetCorner(result: result)
-                #endif
-                case .accessoryCircular:
-                    SimplifiedLockScreenLoopWidgetCircular(
-                        result: result,
-                        showWeeklyBosses: showWeeklyBosses,
-                        showTransformer: showTransformer,
-                        resinStyle: resinStyle
-                    )
-                default:
-                    EmptyView()
-                }
+            switch family {
+            #if os(watchOS)
+            case .accessoryCorner:
+                LockScreenLoopWidgetCorner(result: result)
+            #endif
+            case .accessoryCircular:
+                LockScreenLoopWidgetCircular(
+                    result: result,
+                    showWeeklyBosses: showWeeklyBosses,
+                    showTransformer: showTransformer,
+                    resinStyle: resinStyle
+                )
+            default:
+                EmptyView()
             }
         }
         .widgetURL(url)
     }
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: Result<any DailyNote, any Error> { entry.result }
     var accountName: String? { entry.accountName }
     var showWeeklyBosses: Bool { entry.showWeeklyBosses }
     var showTransformer: Bool { entry.showTransformer }
@@ -103,62 +84,18 @@ struct LockScreenLoopWidgetView: View {
             return components.url!
         }()
 
-        switch entry.widgetDataKind {
-        case let .normal(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
-        case let .simplified(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
         }
     }
 }
 
 // MARK: - LockScreenLoopWidgetType
 
-enum LockScreenLoopWidgetType {
-    case resin
-    case expedition
-    case dailyTask
-    case homeCoin
-    case transformer
-    case weeklyBosses
-
-    // MARK: Internal
-
-    static func autoChoose(result: FetchResult) -> LockScreenLoopWidgetType {
-        switch result {
-        case let .success(data):
-            if data.homeCoinInfo.score > data.resinInfo.score {
-                return .homeCoin
-            } else if data.expeditionInfo.score > data.resinInfo.score {
-                return .expedition
-            } else if data.resinInfo.score > data.resinInfo.score {
-                return .dailyTask
-            } else if data.weeklyBossesInfo.score > data.resinInfo.score {
-                return .weeklyBosses
-            } else if data.transformerInfo.score > data.resinInfo.score {
-                return .transformer
-            } else {
-                return .resin
-            }
-        case .failure:
-            return .resin
-        }
-    }
-}
-
-// MARK: - SimplifiedLockScreenLoopWidgetType
-
-enum SimplifiedLockScreenLoopWidgetType {
+enum LockScreenLoopWidgetType: CaseIterable {
     case resin
     case expedition
     case dailyTask
@@ -166,19 +103,21 @@ enum SimplifiedLockScreenLoopWidgetType {
 
     // MARK: Internal
 
-    static func autoChoose<T>(result: SimplifiedUserDataContainerResult<T>)
-        -> Self where T: SimplifiedUserDataContainer {
+    static func autoChoose(result: Result<any DailyNote, any Error>)
+        -> Self {
         switch result {
         case let .success(data):
-            if data.homeCoinInfo.score > data.resinInfo.score {
-                return .homeCoin
-            } else if data.expeditionInfo.score > data.resinInfo.score {
-                return .expedition
-            } else if data.resinInfo.score > data.resinInfo.score {
-                return .dailyTask
-            } else {
-                return .resin
-            }
+            // TODO: choose which to display
+            return .allCases.randomElement()!
+//            if data.homeCoinInfo.score > data.resinInfo.score {
+//                return .homeCoin
+//            } else if data.expeditionInfo.score > data.resinInfo.score {
+//                return .expedition
+//            } else if data.resinInfo.score > data.resinInfo.score {
+//                return .dailyTask
+//            } else {
+//                return .resin
+//            }
         case .failure:
             return .resin
         }

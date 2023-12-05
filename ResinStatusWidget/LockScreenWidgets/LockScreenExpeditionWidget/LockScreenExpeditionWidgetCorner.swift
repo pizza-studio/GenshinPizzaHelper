@@ -5,21 +5,34 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
+// MARK: - LockScreenExpeditionWidgetCorner
+
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenExpeditionWidgetCorner<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenExpeditionWidgetCorner: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var text: String {
         switch result {
         case let .success(data):
-            return "\(data.expeditionInfo.currentOngoingTask)/\(data.expeditionInfo.maxExpedition) \(data.expeditionInfo.nextCompleteTimeIgnoreFinished.describeIntervalLong(finishedTextPlaceholder: "已全部完成".localized))"
+            let timeDescription: String = {
+                if data.expeditionInformation.allCompleted {
+                    return "已全部完成".localized
+                } else {
+                    if let expeditionInformation = data.expeditionInformation as? GeneralDailyNote
+                        .ExpeditionInformation {
+                        return formatter.string(from: expeditionInformation.expeditions.map(\.finishTime).max()!)
+                    } else {
+                        return ""
+                    }
+                }
+            }()
+            return "\(data.expeditionInformation.ongoingExpeditionCount)/\(data.expeditionInformation.maxExpeditionsCount) \(timeDescription)"
         case .failure:
             return "探索派遣".localized
         }
@@ -33,3 +46,11 @@ struct LockScreenExpeditionWidgetCorner<T>: View
             .widgetLabel(text)
     }
 }
+
+private let formatter: DateFormatter = {
+    let fmt = DateFormatter()
+    fmt.doesRelativeDateFormatting = true
+    fmt.dateStyle = .short
+    fmt.timeStyle = .short
+    return fmt
+}()

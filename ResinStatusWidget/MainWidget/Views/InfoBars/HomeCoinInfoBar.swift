@@ -5,26 +5,32 @@
 //  Created by 戴藏龙 on 2022/8/7.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
 struct HomeCoinInfoBar: View {
-    let homeCoinInfo: HomeCoinInfo
+    let homeCoinInfo: HomeCoinInformation
 
     var isHomeCoinFullImage: some View {
         homeCoinInfo.maxHomeCoin == 300
             ? Image(systemSymbol: .leafFill)
-            .overlayImageWithRingProgressBar(homeCoinInfo.percentage)
+            .overlayImageWithRingProgressBar(
+                Double(homeCoinInfo.calculatedCurrentHomeCoin) /
+                    Double(homeCoinInfo.maxHomeCoin)
+            )
             : (
-                (homeCoinInfo.isFull)
+                (homeCoinInfo.calculatedCurrentHomeCoin != homeCoinInfo.maxHomeCoin)
                     ? Image(systemSymbol: .exclamationmark)
                     .overlayImageWithRingProgressBar(
-                        homeCoinInfo.percentage,
+                        Double(homeCoinInfo.calculatedCurrentHomeCoin) / Double(homeCoinInfo.maxHomeCoin),
                         scaler: 0.78
                     )
                     : Image(systemSymbol: .leafFill)
-                    .overlayImageWithRingProgressBar(homeCoinInfo.percentage)
+                    .overlayImageWithRingProgressBar(
+                        Double(homeCoinInfo.calculatedCurrentHomeCoin) /
+                            Double(homeCoinInfo.maxHomeCoin)
+                    )
             )
     }
 

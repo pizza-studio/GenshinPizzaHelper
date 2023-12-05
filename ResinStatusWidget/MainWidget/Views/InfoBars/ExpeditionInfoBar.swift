@@ -5,35 +5,18 @@
 //  Created by 戴藏龙 on 2022/8/7.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
 struct ExpeditionInfoBar: View {
-    let expeditionInfo: ExpeditionInfo
+    let expeditionInfo: any ExpeditionInformation
     let expeditionViewConfig: ExpeditionViewConfiguration
 
-    var notice: Bool {
-        expeditionViewConfig.noticeExpeditionWhenAllCompleted ? expeditionInfo
-            .allCompleted : expeditionInfo.anyCompleted
-    }
-
     var isExpeditionAllCompleteImage: some View {
-        notice
-            ? Image(systemSymbol: .exclamationmark)
+        Image(systemSymbol: .figureWalk)
             .overlayImageWithRingProgressBar(
-                expeditionViewConfig
-                    .noticeExpeditionWhenAllCompleted ? expeditionInfo
-                    .allCompletedPercentage : expeditionInfo
-                    .nextCompletePercentage,
-                scaler: 0.78
-            )
-            : Image(systemSymbol: .figureWalk)
-            .overlayImageWithRingProgressBar(
-                expeditionViewConfig
-                    .noticeExpeditionWhenAllCompleted ? expeditionInfo
-                    .allCompletedPercentage : expeditionInfo
-                    .nextCompletePercentage,
+                1,
                 scaler: 1,
                 offset: (0.3, 0)
             )
@@ -51,80 +34,17 @@ struct ExpeditionInfoBar: View {
                 .frame(maxWidth: 13, maxHeight: 13)
                 .foregroundColor(Color("textColor3"))
 
-            switch expeditionViewConfig.expeditionShowingMethod {
-            case .byNum, .unknown:
-                HStack(alignment: .lastTextBaseline, spacing: 1) {
-                    Text("\(expeditionInfo.currentOngoingTask)")
-                        .lineLimit(1)
-                        .foregroundColor(Color("textColor3"))
-                        .font(.system(.body, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                    Text(" / \(expeditionInfo.maxExpedition)")
-                        .lineLimit(1)
-                        .foregroundColor(Color("textColor3"))
-                        .font(.system(.caption, design: .rounded))
-                        .minimumScaleFactor(0.2)
-                }
-            case .byTimePoint:
-                if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
-                    Text(
-                        expeditionInfo.allCompleteTime
-                            .completeTimePointFromNow(
-                                finishedTextPlaceholder: "已全部完成"
-                                    .localized
-                            )
-                    )
+            HStack(alignment: .lastTextBaseline, spacing: 1) {
+                Text("\(expeditionInfo.ongoingExpeditionCount)")
+                    .lineLimit(1)
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)
+                Text(" / \(expeditionInfo.maxExpeditionsCount)")
                     .lineLimit(1)
-                } else {
-                    Text(
-                        expeditionInfo.nextCompleteTime
-                            .completeTimePointFromNow(
-                                finishedTextPlaceholder:
-                                String(
-                                    format: NSLocalizedString(
-                                        "%lld个已完成",
-                                        comment: "%lld done"
-                                    ),
-                                    expeditionInfo
-                                        .maxExpedition - expeditionInfo
-                                        .currentOngoingTask
-                                )
-                            )
-                    )
                     .foregroundColor(Color("textColor3"))
-                    .font(.system(.body, design: .rounded))
+                    .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
-                    .lineLimit(1)
-                }
-            case .byTimeInterval:
-                if expeditionViewConfig.noticeExpeditionWhenAllCompleted {
-                    Text(
-                        expeditionInfo.allCompleteTime
-                            .describeIntervalShort(
-                                finishedTextPlaceholder: "已全部完成"
-                                    .localized
-                            )
-                    )
-                    .foregroundColor(Color("textColor3"))
-                    .font(.system(.body, design: .rounded))
-                    .minimumScaleFactor(0.2)
-                    .lineLimit(1)
-                } else {
-                    Text(
-                        expeditionInfo.nextCompleteTime
-                            .describeIntervalShort(
-                                finishedTextPlaceholder: "已全部完成"
-                                    .localized
-                            )
-                    )
-                    .foregroundColor(Color("textColor3"))
-                    .font(.system(.body, design: .rounded))
-                    .minimumScaleFactor(0.2)
-                    .lineLimit(1)
-                }
             }
         }
     }

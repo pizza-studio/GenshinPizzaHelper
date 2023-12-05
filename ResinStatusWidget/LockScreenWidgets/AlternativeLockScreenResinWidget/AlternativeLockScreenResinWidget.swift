@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
@@ -37,7 +38,7 @@ struct AlternativeLockScreenResinWidgetView: View {
     var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: Result<any DailyNote, any Error> { entry.result }
     var accountName: String? { entry.accountName }
 
     var url: URL? {
@@ -54,33 +55,16 @@ struct AlternativeLockScreenResinWidgetView: View {
             return components.url!
         }()
 
-        switch entry.widgetDataKind {
-        case let .normal(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
-        case let .simplified(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
         }
     }
 
     var body: some View {
-        Group {
-            switch dataKind {
-            case let .normal(result):
-                AlternativeLockScreenResinWidgetCircular(result: result)
-            case let .simplified(result):
-                AlternativeLockScreenResinWidgetCircular(result: result)
-            }
-        }
-        .widgetURL(url)
+        AlternativeLockScreenResinWidgetCircular(result: result)
+            .widgetURL(url)
     }
 }

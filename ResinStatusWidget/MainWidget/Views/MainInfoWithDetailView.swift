@@ -6,13 +6,13 @@
 //  中号Widget布局
 
 import Foundation
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - MainInfoWithDetail
 
 struct MainInfoWithDetail: View {
-    let userData: UserData
+    var dailyNote: any DailyNote
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
 
@@ -20,38 +20,13 @@ struct MainInfoWithDetail: View {
         HStack {
             Spacer()
             MainInfo(
-                userData: userData,
+                dailyNote: dailyNote,
                 viewConfig: viewConfig,
                 accountName: accountName
             )
             .padding()
             Spacer()
-            DetailInfo(userData: userData, viewConfig: viewConfig)
-                .padding([.vertical])
-                .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
-            Spacer()
-        }
-    }
-}
-
-// MARK: - MainInfoWithDetailSimplified
-
-struct MainInfoWithDetailSimplified: View {
-    let userData: SimplifiedUserData
-    let viewConfig: WidgetViewConfiguration
-    let accountName: String?
-
-    var body: some View {
-        HStack {
-            Spacer()
-            MainInfoSimplified(
-                userData: userData,
-                viewConfig: viewConfig,
-                accountName: accountName
-            )
-            .padding()
-            Spacer()
-            DetailInfoSimplified(userData: userData, viewConfig: viewConfig)
+            DetailInfo(dailyNote: dailyNote, viewConfig: viewConfig)
                 .padding([.vertical])
                 .frame(maxWidth: UIScreen.main.bounds.width / 8 * 3)
             Spacer()

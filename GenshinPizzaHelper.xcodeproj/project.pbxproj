@@ -636,6 +636,12 @@
 		EA7FF47629309B6A00128A5C /* LockScreenResinFullTimeWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF474293095BB00128A5C /* LockScreenResinFullTimeWidgetCircular.swift */; };
 		EA7FF47729309B6A00128A5C /* LockScreenResinFullTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF4722930959700128A5C /* LockScreenResinFullTimeWidget.swift */; };
 		EA8445EC29DBFFD700CB8C9F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8445EB29DBFFD700CB8C9F /* Color.swift */; };
+		EA887D332B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
+		EA887D342B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
+		EA887D352B1EAF62006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
+		EA887D362B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
+		EA887D372B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
+		EA887D382B1EAF64006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
 		EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8978D729DA716400E0903E /* ExportGachaView.swift */; };
 		EA8C85EB29DE928500FBAADF /* gacha_lang_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */; };
 		EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
@@ -2585,6 +2591,7 @@
 				5BD1C5DB2A2A1FC90043C2B1 /* ImportGachaView.swift in Sources */,
 				EA759D6A2B19989A0080C775 /* ManageAccountsView.swift in Sources */,
 				5BD1C5DC2A2A1FC90043C2B1 /* ResinRecoveryActivityController.swift in Sources */,
+				EA887D332B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				5BD1C5DD2A2A1FC90043C2B1 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				5BD1C5DE2A2A1FC90043C2B1 /* WebViews.swift in Sources */,
 				5BD1C5DF2A2A1FC90043C2B1 /* TeamUtilizationData.swift in Sources */,
@@ -2742,6 +2749,7 @@
 				EAE95CD828CE103D00D975CB /* BackgroundOptions.swift in Sources */,
 				5B5F82D22ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EAB11EA629326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift in Sources */,
+				EA887D372B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				EAB1110428CF8423009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
 				5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */,
 				BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */,
@@ -2852,6 +2860,7 @@
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
 				5B5F82D82ACC95A7005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
+				EA887D362B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
 				BFBDD65128ED7B970022B79D /* Result.swift in Sources */,
 				EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */,
@@ -2897,6 +2906,7 @@
 				EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */,
 				EAB11EA029325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				5B2A9E4F2ACEB7D0005C32B6 /* Enum_WeaponAsset.swift in Sources */,
+				EA887D352B1EAF62006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				5BA0D7A42ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				BFFD821028A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
 				EA6B914A290EB3B800B5230B /* GlobalVar.swift in Sources */,
@@ -3009,6 +3019,7 @@
 				5BA0D7A52ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EAB11E9F29325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
+				EA887D342B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
 				BF6C5279289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
@@ -3233,6 +3244,7 @@
 				EA185F2D292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EAE95CF728CE11A100D975CB /* Account.swift in Sources */,
 				EAA969F92ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
+				EA887D382B1EAF64006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				EA6B914D290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */,

@@ -5,17 +5,18 @@
 //  Created by 戴藏龙 on 2022/11/27.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
+// MARK: - LockScreenHomeCoinWidgetRectangular
+
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenHomeCoinWidgetRectangular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenHomeCoinWidgetRectangular: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -61,14 +62,14 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                     }
                     GridRow(alignment: .lastTextBaseline) {
                         let size: CGFloat = 23
-                        Text("\(data.resinInfo.currentResin)")
+                        Text("\(data.resinInformation.calculatedCurrentResin)")
                             .font(.system(
                                 size: size,
                                 weight: .medium,
                                 design: .rounded
                             ))
                         Spacer()
-                        Text("\(data.homeCoinInfo.currentHomeCoin)")
+                        Text("\(data.homeCoinInformation.calculatedCurrentHomeCoin)")
                             .font(.system(
                                 size: size,
                                 weight: .medium,
@@ -80,19 +81,19 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                     .foregroundColor(.primary)
                     .widgetAccentable()
                     GridRow(alignment: .lastTextBaseline) {
-                        if data.resinInfo.isFull {
+                        if data.resinInformation.calculatedCurrentResin >= data.resinInformation.maxResin {
                             Text("已回满")
                         } else {
                             Text(
-                                "\(Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)).getRelativeDateString())"
+                                "\(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
                             )
                         }
                         Spacer()
-                        if data.homeCoinInfo.isFull {
+                        if data.homeCoinInformation.calculatedCurrentHomeCoin >= data.homeCoinInformation.maxHomeCoin {
                             Text("已回满")
                         } else {
                             Text(
-                                "\(Date(timeIntervalSinceNow: TimeInterval(data.homeCoinInfo.recoveryTime.second)).getRelativeDateString())"
+                                "\(dateFormatter.string(from: data.homeCoinInformation.fullTime))"
                             )
                         }
                         Spacer()
@@ -180,14 +181,14 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                     }
                     GridRow(alignment: .lastTextBaseline) {
                         let size: CGFloat = 23
-                        Text("\(data.resinInfo.currentResin)")
+                        Text("\(data.resinInformation.calculatedCurrentResin)")
                             .font(.system(
                                 size: size,
                                 weight: .medium,
                                 design: .rounded
                             ))
                         Spacer()
-                        Text("\(data.homeCoinInfo.currentHomeCoin)")
+                        Text("\(data.homeCoinInformation.calculatedCurrentHomeCoin)")
                             .font(.system(
                                 size: size,
                                 weight: .medium,
@@ -199,19 +200,19 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
                     .foregroundColor(.primary)
                     .widgetAccentable()
                     GridRow(alignment: .lastTextBaseline) {
-                        if data.resinInfo.isFull {
+                        if data.resinInformation.calculatedCurrentResin >= data.resinInformation.maxResin {
                             Text("已回满")
                         } else {
                             Text(
-                                "\(Date(timeIntervalSinceNow: TimeInterval(data.resinInfo.recoveryTime.second)).getRelativeDateString())"
+                                "\(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
                             )
                         }
                         Spacer()
-                        if data.homeCoinInfo.isFull {
+                        if data.homeCoinInformation.calculatedCurrentHomeCoin >= data.homeCoinInformation.maxHomeCoin {
                             Text("已回满")
                         } else {
                             Text(
-                                "\(Date(timeIntervalSinceNow: TimeInterval(data.homeCoinInfo.recoveryTime.second)).getRelativeDateString())"
+                                "\(dateFormatter.string(from: data.homeCoinInformation.fullTime))"
                             )
                         }
                         Spacer()
@@ -288,3 +289,19 @@ struct LockScreenHomeCoinWidgetRectangular<T>: View
         }
     }
 }
+
+private let dateFormatter: DateFormatter = {
+    let fmt = DateFormatter()
+    fmt.doesRelativeDateFormatting = true
+    fmt.dateStyle = .none
+    fmt.timeStyle = .short
+    return fmt
+}()
+
+private let intervalFormatter: DateComponentsFormatter = {
+    let dateComponentFormatter = DateComponentsFormatter()
+    dateComponentFormatter.allowedUnits = [.hour, .minute]
+    dateComponentFormatter.maximumUnitCount = 2
+    dateComponentFormatter.unitsStyle = .brief
+    return dateComponentFormatter
+}()

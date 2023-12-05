@@ -42,7 +42,7 @@ extension ExpeditionInformation {
     }
 
     public var allCompleted: Bool {
-        expeditions.filter { !$0.isFinished }.count == 0
+        expeditions.filter { !$0.isFinished }.isEmpty
     }
 }
 
@@ -67,4 +67,20 @@ public protocol ResinInformation {
     var maxResin: Int { get }
     var currentResin: Int { get }
     var resinRecoveryTime: Date { get }
+}
+
+extension ResinInformation {
+    public var calculatedCurrentResin: Int {
+        let secondToFull = resinRecoveryTime.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+        guard secondToFull > 0 else { return maxResin }
+        return maxResin - Int(secondToFull / 8 / 60)
+    }
+}
+
+extension HomeCoinInformation {
+    public var calculatedCurrentHomeCoin: Int {
+        let secondToFull = fullTime.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+        guard secondToFull > 0 else { return maxHomeCoin }
+        return maxHomeCoin - Int(secondToFull / 120)
+    }
 }

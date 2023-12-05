@@ -17,6 +17,14 @@ extension AccountConfiguration {
             deviceFingerPrint: safeDeviceFingerPrint,
             deviceId: safeUuid
         )
+
+        #if !os(watchOS)
+        UserNotificationCenter.shared.createAllNotification(for: safeName, with: dailyNote, uid: safeUid)
+
+        if #available(iOS 16.1, *) {
+            ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: self, data: dailyNote)
+        }
+        #endif
         return dailyNote
     }
 }

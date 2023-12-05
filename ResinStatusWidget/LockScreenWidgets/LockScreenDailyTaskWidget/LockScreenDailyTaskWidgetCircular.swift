@@ -5,17 +5,16 @@
 //  Created by 戴藏龙 on 2022/9/11.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenDailyTaskWidgetCircular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenDailyTaskWidgetCircular: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -27,7 +26,7 @@ struct LockScreenDailyTaskWidgetCircular<T>: View
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)"
+                        "\(data.dailyTaskInformation.finishedTaskCount) / \(data.dailyTaskInformation.totalTaskCount)"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
@@ -50,7 +49,7 @@ struct LockScreenDailyTaskWidgetCircular<T>: View
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)"
+                        "\(data.dailyTaskInformation.finishedTaskCount) / \(data.dailyTaskInformation.totalTaskCount)"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
@@ -72,7 +71,7 @@ struct LockScreenDailyTaskWidgetCircular<T>: View
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)"
+                        "\(data.dailyTaskInformation.finishedTaskCount) / \(data.dailyTaskInformation.totalTaskCount)"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:

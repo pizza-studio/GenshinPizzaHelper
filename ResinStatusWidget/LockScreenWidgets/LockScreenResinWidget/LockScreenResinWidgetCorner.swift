@@ -5,27 +5,28 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
+// MARK: - LockScreenResinWidgetCorner
+
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenResinWidgetCorner<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenResinWidgetCorner: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var text: String {
         switch result {
         case let .success(data):
-            if data.resinInfo.isFull {
+            if data.resinInformation.calculatedCurrentResin >= data.resinInformation.maxResin {
                 return String(format: NSLocalizedString(
                     "160, 已回满",
                     comment: "resin"
                 ))
             } else {
-                return "\(data.resinInfo.currentResin), \(data.resinInfo.recoveryTime.describeIntervalShort()), \(data.resinInfo.recoveryTime.completeTimePointFromNowShort())"
+                return "\(data.resinInformation.calculatedCurrentResin), \(intervalFormatter.string(from: TimeInterval.sinceNow(to: data.resinInformation.resinRecoveryTime))!), \(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
             }
         case .failure:
             return "原粹树脂".localized
@@ -40,3 +41,19 @@ struct LockScreenResinWidgetCorner<T>: View
             .widgetLabel(text)
     }
 }
+
+private let dateFormatter: DateFormatter = {
+    let fmt = DateFormatter()
+    fmt.doesRelativeDateFormatting = true
+    fmt.dateStyle = .none
+    fmt.timeStyle = .short
+    return fmt
+}()
+
+private let intervalFormatter: DateComponentsFormatter = {
+    let dateComponentFormatter = DateComponentsFormatter()
+    dateComponentFormatter.allowedUnits = [.hour, .minute]
+    dateComponentFormatter.maximumUnitCount = 2
+    dateComponentFormatter.unitsStyle = .brief
+    return dateComponentFormatter
+}()

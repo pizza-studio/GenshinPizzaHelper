@@ -5,7 +5,7 @@
 //  Created by 戴藏龙 on 2022/11/25.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -13,12 +13,11 @@ import WidgetKit
 // MARK: - LockScreenResinFullTimeWidgetCircular
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenResinFullTimeWidgetCircular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenResinFullTimeWidgetCircular: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -44,8 +43,8 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                     switch result {
                     case let .success(data):
                         VStack(spacing: -2) {
-                            if !data.resinInfo.isFull {
-                                Text("\(data.resinInfo.currentResin)")
+                            if data.resinInformation.calculatedCurrentResin != data.resinInformation.maxResin {
+                                Text("\(data.resinInformation.calculatedCurrentResin)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,
@@ -61,11 +60,8 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                                     return formatter
                                         .string(
                                             from: Date(
-                                                timeIntervalSinceNow: TimeInterval(
-                                                    data
-                                                        .resinInfo.recoveryTime
-                                                        .second
-                                                )
+                                                timeIntervalSinceNow: TimeInterval
+                                                    .sinceNow(to: data.resinInformation.resinRecoveryTime)
                                             )
                                         )
                                 }()
@@ -77,7 +73,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                                     .minimumScaleFactor(0.1)
                                     .foregroundColor(.secondary)
                             } else {
-                                Text("\(data.resinInfo.currentResin)")
+                                Text("\(data.resinInformation.calculatedCurrentResin)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,
@@ -111,8 +107,8 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                     switch result {
                     case let .success(data):
                         VStack(spacing: -2) {
-                            if !data.resinInfo.isFull {
-                                Text("\(data.resinInfo.currentResin)")
+                            if data.resinInformation.calculatedCurrentResin != data.resinInformation.maxResin {
+                                Text("\(data.resinInformation.currentResin)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,
@@ -125,11 +121,8 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                                     return formatter
                                         .string(
                                             from: Date(
-                                                timeIntervalSinceNow: TimeInterval(
-                                                    data
-                                                        .resinInfo.recoveryTime
-                                                        .second
-                                                )
+                                                timeIntervalSinceNow: TimeInterval
+                                                    .sinceNow(to: data.resinInformation.resinRecoveryTime)
                                             )
                                         )
                                 }()
@@ -140,7 +133,7 @@ struct LockScreenResinFullTimeWidgetCircular<T>: View
                                     ))
                                     .minimumScaleFactor(0.1)
                             } else {
-                                Text("\(data.resinInfo.currentResin)")
+                                Text("\(data.resinInformation.calculatedCurrentResin)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,

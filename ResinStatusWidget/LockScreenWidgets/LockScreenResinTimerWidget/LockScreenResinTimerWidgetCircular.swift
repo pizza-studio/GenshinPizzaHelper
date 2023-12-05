@@ -6,18 +6,17 @@
 //
 
 import Foundation
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenResinTimerWidgetCircular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenResinTimerWidgetCircular: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -43,12 +42,12 @@ struct LockScreenResinTimerWidgetCircular<T>: View
                     switch result {
                     case let .success(data):
                         VStack(spacing: 1) {
-                            if !data.resinInfo.isFull {
+                            if data.resinInformation.calculatedCurrentResin != data.resinInformation.maxResin {
                                 Text(
-                                    Date(timeIntervalSinceNow: TimeInterval(
-                                        data
-                                            .resinInfo.recoveryTime.second
-                                    )),
+                                    Date(
+                                        timeIntervalSinceNow: TimeInterval
+                                            .sinceNow(to: data.resinInformation.resinRecoveryTime)
+                                    ),
                                     style: .timer
                                 )
                                 .multilineTextAlignment(.center)
@@ -56,7 +55,7 @@ struct LockScreenResinTimerWidgetCircular<T>: View
                                 .minimumScaleFactor(0.1)
                                 .widgetAccentable()
                                 .frame(width: 50)
-                                Text("\(data.resinInfo.currentResin)")
+                                Text("\(data.resinInformation.calculatedCurrentResin)")
                                     .font(.system(
                                         .body,
                                         design: .rounded,
@@ -66,7 +65,7 @@ struct LockScreenResinTimerWidgetCircular<T>: View
                                         Color("textColor.originResin")
                                     )
                             } else {
-                                Text("\(data.resinInfo.currentResin)")
+                                Text("\(data.resinInformation.calculatedCurrentResin)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,
@@ -101,12 +100,12 @@ struct LockScreenResinTimerWidgetCircular<T>: View
                     switch result {
                     case let .success(data):
                         VStack(spacing: 1) {
-                            if !data.resinInfo.isFull {
+                            if data.resinInformation.calculatedCurrentResin != data.resinInformation.maxResin {
                                 Text(
-                                    Date(timeIntervalSinceNow: TimeInterval(
-                                        data
-                                            .resinInfo.recoveryTime.second
-                                    )),
+                                    Date(
+                                        timeIntervalSinceNow: TimeInterval
+                                            .sinceNow(to: data.resinInformation.resinRecoveryTime)
+                                    ),
                                     style: .timer
                                 )
                                 .multilineTextAlignment(.center)
@@ -114,14 +113,14 @@ struct LockScreenResinTimerWidgetCircular<T>: View
                                 .minimumScaleFactor(0.1)
                                 .widgetAccentable()
                                 .frame(width: 50)
-                                Text("\(data.resinInfo.currentResin)")
+                                Text("\(data.resinInformation.calculatedCurrentResin)")
                                     .font(.system(
                                         .body,
                                         design: .rounded,
                                         weight: .medium
                                     ))
                             } else {
-                                Text("\(data.resinInfo.currentResin)")
+                                Text("\(data.resinInformation.calculatedCurrentResin)")
                                     .font(.system(
                                         size: 20,
                                         weight: .medium,

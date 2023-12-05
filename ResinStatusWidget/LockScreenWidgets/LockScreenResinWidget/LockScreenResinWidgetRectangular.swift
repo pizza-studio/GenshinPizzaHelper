@@ -5,19 +5,18 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
 // MARK: - LockScreenResinWidgetRectangular
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenResinWidgetRectangular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenResinWidgetRectangular: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -28,7 +27,7 @@ struct LockScreenResinWidgetRectangular<T>: View
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 40
-                            Text("\(data.resinInfo.currentResin)")
+                            Text("\(data.resinInformation.calculatedCurrentResin)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
@@ -37,13 +36,13 @@ struct LockScreenResinWidgetRectangular<T>: View
                         }
                         .widgetAccentable()
                         .foregroundColor(Color("iconColor.resin.middle"))
-                        if data.resinInfo.isFull {
+                        if data.resinInformation.calculatedCurrentResin >= data.resinInformation.maxResin {
                             Text("已回满")
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                         } else {
                             Text(
-                                "infoBlock.refilledAt:\(data.resinInfo.recoveryTime.completeTimePointFromNow())"
+                                "infoBlock.refilledAt:\(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
                             )
                             .lineLimit(2)
                             .font(.footnote)
@@ -81,7 +80,7 @@ struct LockScreenResinWidgetRectangular<T>: View
                     VStack(alignment: .leading) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             let size: CGFloat = 40
-                            Text("\(data.resinInfo.currentResin)")
+                            Text("\(data.resinInformation.calculatedCurrentResin)")
                                 .font(.system(size: size, design: .rounded))
                                 .minimumScaleFactor(0.5)
                             Text("\(Image("icon.resin"))")
@@ -90,14 +89,14 @@ struct LockScreenResinWidgetRectangular<T>: View
                         }
                         .foregroundColor(.primary)
                         .widgetAccentable()
-                        if data.resinInfo.isFull {
+                        if data.resinInformation.calculatedCurrentResin >= data.resinInformation.maxResin {
                             Text("已回满")
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .foregroundColor(.gray)
                         } else {
                             Text(
-                                "infoBlock.refilledAt:\(data.resinInfo.recoveryTime.completeTimePointFromNow())"
+                                "infoBlock.refilledAt:\(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
                             )
                             .lineLimit(2)
                             .font(.footnote)
@@ -169,3 +168,19 @@ extension View {
         ))
     }
 }
+
+private let dateFormatter: DateFormatter = {
+    let fmt = DateFormatter()
+    fmt.doesRelativeDateFormatting = true
+    fmt.dateStyle = .none
+    fmt.timeStyle = .short
+    return fmt
+}()
+
+private let intervalFormatter: DateComponentsFormatter = {
+    let dateComponentFormatter = DateComponentsFormatter()
+    dateComponentFormatter.allowedUnits = [.hour, .minute]
+    dateComponentFormatter.maximumUnitCount = 2
+    dateComponentFormatter.unitsStyle = .brief
+    return dateComponentFormatter
+}()

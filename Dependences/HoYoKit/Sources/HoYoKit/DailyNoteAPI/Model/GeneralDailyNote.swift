@@ -67,7 +67,7 @@ public struct GeneralDailyNote: DailyNote {
 }
 
 extension GeneralDailyNote {
-    func exampleData() -> GeneralDailyNote {
+    public static func exampleData() -> GeneralDailyNote {
         let exampleURL = Bundle.module.url(forResource: "daily_note_example", withExtension: "json")!
         let exampleData = try! Data(contentsOf: exampleURL)
         return try! GeneralDailyNote.decodeFromMiHoYoAPIJSONResult(data: exampleData)

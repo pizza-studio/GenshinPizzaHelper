@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/7/13.
 //  Widget主View
 
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
@@ -43,7 +44,7 @@ struct WidgetViewEntryView: View {
     var family: WidgetFamily
     let entry: MainWidgetProvider.Entry
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: Result<any DailyNote, any Error> { entry.result }
     var viewConfig: WidgetViewConfiguration { entry.viewConfig }
     var accountName: String? { entry.accountName }
 
@@ -61,21 +62,11 @@ struct WidgetViewEntryView: View {
             return components.url!
         }()
 
-        switch dataKind {
-        case let .normal(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
-        case let .simplified(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
         }
     }
 
@@ -89,35 +80,18 @@ struct WidgetViewEntryView: View {
                     darkModeOn: viewConfig.isDarkModeOn
                 )
             }
-            switch dataKind {
-            case let .normal(result):
-                switch result {
-                case let .success(userData):
-                    WidgetMainView(
-                        userData: userData,
-                        viewConfig: viewConfig,
-                        accountName: accountName
-                    )
-                case let .failure(error):
-                    WidgetErrorView(
-                        error: error,
-                        message: viewConfig.noticeMessage ?? ""
-                    )
-                }
-            case let .simplified(result):
-                switch result {
-                case let .success(userData):
-                    MainWidgetSimplifiedView(
-                        userData: userData,
-                        viewConfig: viewConfig,
-                        accountName: accountName
-                    )
-                case let .failure(error):
-                    WidgetErrorView(
-                        error: error,
-                        message: viewConfig.noticeMessage ?? ""
-                    )
-                }
+            switch result {
+            case let .success(dailyNote):
+                WidgetMainView(
+                    dailyNote: dailyNote,
+                    viewConfig: viewConfig,
+                    accountName: accountName
+                )
+            case let .failure(error):
+                WidgetErrorView(
+                    error: error,
+                    message: viewConfig.noticeMessage ?? ""
+                )
             }
         }
         .widgetURL(url)

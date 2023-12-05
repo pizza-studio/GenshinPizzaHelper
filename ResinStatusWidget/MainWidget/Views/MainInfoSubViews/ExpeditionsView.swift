@@ -5,25 +5,20 @@
 //  Created by 戴藏龙 on 2022/8/23.
 //  探索派遣View
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 struct ExpeditionsView: View {
-    let expeditions: [Expedition]
+    let expeditions: [any Expedition]
     var useAsyncImage: Bool = false
 
     var body: some View {
         VStack {
-            ForEach(expeditions, id: \.charactersEnglishName) { expedition in
+            ForEach(expeditions, id: \.iconURL) { expedition in
                 EachExpeditionView(
                     expedition: expedition,
                     useAsyncImage: useAsyncImage
                 )
-                if expedition
-                    .charactersEnglishName !=
-                    (expeditions.last?.charactersEnglishName ?? "") {
-                    Spacer()
-                }
             }
         }
 //        .background(WidgetBackgroundView(background: .randomNamecardBackground, darkModeOn: true))

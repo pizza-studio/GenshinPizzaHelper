@@ -5,16 +5,15 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenDailyTaskWidgetCorner<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenDailyTaskWidgetCorner: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch result {
@@ -25,17 +24,17 @@ struct LockScreenDailyTaskWidgetCorner<T>: View
                 .padding(3.5)
                 .widgetLabel {
                     Gauge(
-                        value: Double(data.dailyTaskInfo.finishedTaskNum),
-                        in: 0 ... Double(data.dailyTaskInfo.totalTaskNum)
+                        value: Double(data.dailyTaskInformation.finishedTaskCount),
+                        in: 0 ... Double(data.dailyTaskInformation.totalTaskCount)
                     ) {
                         Text("每日委托")
                     } currentValueLabel: {
                         Text(
-                            "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)"
+                            "\(data.dailyTaskInformation.finishedTaskCount) / \(data.dailyTaskInformation.totalTaskCount)"
                         )
                     } minimumValueLabel: {
                         Text(
-                            "  \(data.dailyTaskInfo.finishedTaskNum)/\(data.dailyTaskInfo.totalTaskNum)  "
+                            "  \(data.dailyTaskInformation.finishedTaskCount)/\(data.dailyTaskInformation.totalTaskCount)  "
                         )
                     } maximumValueLabel: {
                         Text("")

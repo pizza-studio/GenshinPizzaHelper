@@ -7,13 +7,17 @@
 
 import Defaults
 import Foundation
+import HBMihoyoAPI
+import HoYoKit
 import WidgetKit
 
 // MARK: - AccountOnlyEntry
 
 struct AccountOnlyEntry: TimelineEntry {
+    typealias Result = Swift.Result<any DailyNote, any Error>
+
     let date: Date
-    let widgetDataKind: WidgetDataKind
+    let result: Result
     var accountName: String?
     let accountUUIDString: String?
 }
@@ -45,7 +49,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> AccountOnlyEntry {
         AccountOnlyEntry(
             date: Date(),
-            widgetDataKind: .normal(result: .defaultFetchResult),
+            result: .success(GeneralDailyNote.exampleData()),
             accountName: "荧",
             accountUUIDString: nil
         )
@@ -58,7 +62,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
     ) {
         let entry = AccountOnlyEntry(
             date: Date(),
-            widgetDataKind: .normal(result: .defaultFetchResult),
+            result: .success(GeneralDailyNote.exampleData()),
             accountName: "荧",
             accountUUIDString: nil
         )
@@ -88,7 +92,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         guard !configs.isEmpty else {
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                widgetDataKind: .normal(result: .failure(.noFetchInfo)),
+                result: .failure(FetchError.noFetchInfo),
                 accountUUIDString: nil
             )
             let timeline = Timeline(
@@ -100,9 +104,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         }
 
         guard configuration.account != nil else {
-            getTimelineEntries(config: configs.first!) { entries in
-                completion(.init(entries: entries, policy: .after(refreshDate)))
-            }
+            getTimelineEntries(config: configs.first!)
             return
         }
 
@@ -117,7 +119,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                widgetDataKind: .normal(result: .failure(.noFetchInfo)),
+                result: .failure(FetchError.noFetchInfo),
                 accountUUIDString: nil
             )
             let timeline = Timeline(
@@ -129,102 +131,32 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             return
         }
 
-        // 正常情况
-        getTimelineEntries(config: config) { entries in
-            completion(.init(entries: entries, policy: .after(refreshDate)))
-        }
+        getTimelineEntries(config: config)
 
-        func getTimelineEntries(
-            config: AccountConfiguration,
-            completion: @escaping ([AccountOnlyEntry]) -> ()
-        ) {
-            switch config.server.region {
-            case .mainlandChina:
-                if configuration.simplifiedMode?.boolValue ?? true {
-                    getSimplifiedTimelineEntries(config: config) { entries in
-                        completion(entries)
+        func getTimelineEntries(config: AccountConfiguration) {
+            Task {
+                do {
+                    let data = try await config.dailyNote()
+                    let entries = (0 ... 40).map { index in
+                        let timeInterval = TimeInterval(index * 8 * 60)
+                        let entryDate =
+                            Date(timeIntervalSinceNow: timeInterval)
+                        return AccountOnlyEntry(
+                            date: entryDate,
+                            result: .success(data),
+                            accountName: config.name,
+                            accountUUIDString: config.uuid?.uuidString
+                        )
                     }
-                } else {
-                    getNormalTimelineEntries(config: config) { entries in
-                        completion(entries)
-                    }
-                }
-            case .global:
-                getNormalTimelineEntries(config: config) { entries in
-                    completion(entries)
-                }
-            }
-        }
-
-        func getSimplifiedTimelineEntries(
-            config: AccountConfiguration,
-            completion: @escaping ([AccountOnlyEntry]) -> ()
-        ) {
-            config.fetchSimplifiedResult { result in
-                switch result {
-                case let .success(data):
-                    completion(
-                        (0 ... 40).map { index in
-                            let timeInterval = TimeInterval(index * 8 * 60)
-                            let entryDate =
-                                Date(timeIntervalSinceNow: timeInterval)
-                            let entryData = data.dataAfter(timeInterval)
-                            return .init(
-                                date: entryDate,
-                                widgetDataKind: .simplified(
-                                    result: .success(entryData)
-                                ),
-                                accountName: config.name,
-                                accountUUIDString: config.uuid?.uuidString
-                            )
-                        }
-                    )
-                case .failure:
+                } catch {
                     let entry = AccountOnlyEntry(
                         date: currentDate,
-                        widgetDataKind: .simplified(result: result),
+                        result: .failure(error),
                         accountName: config.name,
                         accountUUIDString: config.uuid?.uuidString
                     )
-                    completion([entry])
+                    completion(.init(entries: [entry], policy: .after(refreshDate)))
                 }
-                print("Widget Fetch succeed")
-            }
-        }
-
-        func getNormalTimelineEntries(
-            config: AccountConfiguration,
-            completion: @escaping ([AccountOnlyEntry]) -> ()
-        ) {
-            config.fetchResult { result in
-                switch result {
-                case let .success(data):
-                    completion(
-                        (0 ... 40).map { index in
-                            let timeInterval = TimeInterval(index * 8 * 60)
-                            let entryDate =
-                                Date(timeIntervalSinceNow: timeInterval)
-                            let entryData = data.dataAfter(timeInterval)
-                            return .init(
-                                date: entryDate,
-                                widgetDataKind: .normal(
-                                    result: .success(entryData)
-                                ),
-                                accountName: config.name,
-                                accountUUIDString: config.uuid?.uuidString
-                            )
-                        }
-                    )
-                case .failure:
-                    let entry = AccountOnlyEntry(
-                        date: currentDate,
-                        widgetDataKind: .normal(result: result),
-                        accountName: config.name,
-                        accountUUIDString: config.uuid?.uuidString
-                    )
-                    completion([entry])
-                }
-                print("Widget Fetch succeed")
             }
         }
     }

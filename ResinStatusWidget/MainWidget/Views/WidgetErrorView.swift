@@ -9,11 +9,11 @@ import HBMihoyoAPI
 import SwiftUI
 
 struct WidgetErrorView: View {
-    let error: FetchError
+    let error: any Error
     let message: String
 
     var body: some View {
-        Text(error.description)
+        Text(error.localizedDescription)
             .font(.title3)
             .foregroundColor(.gray)
             .padding()

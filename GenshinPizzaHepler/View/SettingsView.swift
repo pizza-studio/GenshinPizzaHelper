@@ -210,7 +210,7 @@ struct SettingViewIOS16: View {
                     case .notificationSetting:
                         NotificationSettingView()
                     case .resinTimerSetting:
-                         TODO: live activity
+//                        TODO: live activity
                         #if canImport(ActivityKit)
                         if #available(iOS 16.1, *) {
                             LiveActivitySettingDetailView()
@@ -218,7 +218,6 @@ struct SettingViewIOS16: View {
                         #else
                         EmptyView()
                         #endif
-                        EmptyView()
                     case .donate:
                         GlobalDonateView(
                             storeManager: storeManager
