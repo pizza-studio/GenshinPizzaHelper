@@ -158,6 +158,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
                             accountUUIDString: nil
                         )
                     }
+                    completion(.init(entries: entries, policy: .after(refreshDate)))
                 } catch {
                     let entry = ResinEntry(
                         date: currentDate,

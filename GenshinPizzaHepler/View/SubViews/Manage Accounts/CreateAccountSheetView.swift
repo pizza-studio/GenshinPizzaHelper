@@ -43,7 +43,6 @@ struct CreateAccountSheetView: View {
                     Button("sys.done") {
                         saveAccount()
                         globalDailyNoteCardRefreshSubject.send(())
-                        alertToastVariable.isDoneButtonTapped.toggle()
                     }
                     .disabled(status != .gotAccount)
                 }

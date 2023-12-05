@@ -137,6 +137,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
                             accountUUIDString: config.uuid?.uuidString
                         )
                     }
+                    completion(.init(entries: entries, policy: .after(refreshDate)))
                 } catch {
                     let entry = AccountOnlyEntry(
                         date: currentDate,

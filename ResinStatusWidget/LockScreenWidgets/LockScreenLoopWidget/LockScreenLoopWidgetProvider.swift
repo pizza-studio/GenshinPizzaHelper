@@ -169,6 +169,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                             usingResinStyle: style
                         )
                     }
+                    completion(.init(entries: entries, policy: .after(refreshDate)))
                 } catch {
                     let entry = AccountAndShowWhichInfoIntentEntry(
                         date: currentDate,
