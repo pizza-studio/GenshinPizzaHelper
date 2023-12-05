@@ -165,7 +165,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                                 .showWeeklyBosses as! Bool,
                             showTransformer: configuration
                                 .showTransformer as! Bool,
-                            accountUUIDString: config.uuid?.uuidString,
+                            accountUUIDString: config.safeUuid.uuidString,
                             usingResinStyle: style
                         )
                     }
@@ -178,7 +178,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
                         showWeeklyBosses: configuration
                             .showWeeklyBosses as! Bool,
                         showTransformer: configuration.showTransformer as! Bool,
-                        accountUUIDString: config.uuid?.uuidString,
+                        accountUUIDString: config.safeUuid.uuidString,
                         usingResinStyle: style
                     )
                     completion(.init(entries: [entry], policy: .after(refreshDate)))

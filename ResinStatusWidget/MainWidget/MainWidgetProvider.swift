@@ -152,19 +152,20 @@ struct MainWidgetProvider: IntentTimelineProvider {
                         let entryDate =
                             Date(timeIntervalSinceNow: timeInterval)
                         return ResinEntry(
-                            date: currentDate,
+                            date: entryDate,
                             result: .success(data),
                             viewConfig: viewConfig,
-                            accountUUIDString: nil
+                            accountName: config.safeName,
+                            accountUUIDString: config.safeUuid.uuidString
                         )
                     }
                     completion(.init(entries: entries, policy: .after(refreshDate)))
                 } catch {
                     let entry = ResinEntry(
-                        date: currentDate,
+                        date: Date(),
                         result: .failure(error),
                         viewConfig: viewConfig,
-                        accountUUIDString: nil
+                        accountUUIDString: config.safeUuid.uuidString
                     )
                     completion(.init(entries: [entry], policy: .after(refreshDate)))
                 }

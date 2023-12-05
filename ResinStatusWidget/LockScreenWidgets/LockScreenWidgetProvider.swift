@@ -144,8 +144,8 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
                         return AccountOnlyEntry(
                             date: entryDate,
                             result: .success(data),
-                            accountName: config.name,
-                            accountUUIDString: config.uuid?.uuidString
+                            accountName: config.safeName,
+                            accountUUIDString: config.safeUuid.uuidString
                         )
                     }
                     completion(.init(entries: entries, policy: .after(refreshDate)))
