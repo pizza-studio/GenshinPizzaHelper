@@ -34,10 +34,10 @@ struct RecoveryTimeText: View {
             } else {
                 Group {
                     if resinInfo.resinRecoveryTime < Date() {
-                        Text(
-                            dateFormatter.string(from: resinInfo.resinRecoveryTime)
-                                +
-                                "\n\(intervalFormatter.string(from: TimeInterval.sinceNow(to: resinInfo.resinRecoveryTime))!)"
+                        (
+                            Text(resinInfo.resinRecoveryTime, style: .relative)
+                                + Text(verbatim: "\n")
+                                + Text(dateFormatter.string(from: resinInfo.resinRecoveryTime))
                         )
                         .lineLimit(3)
                     } else {
