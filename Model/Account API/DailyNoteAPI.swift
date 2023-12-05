@@ -20,7 +20,9 @@ extension AccountConfiguration {
 
         #if !os(watchOS)
         UserNotificationCenter.shared.createAllNotification(for: safeName, with: dailyNote, uid: safeUid)
+        #endif
 
+        #if canImport(ActivityKit)
         if #available(iOS 16.1, *) {
             ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: self, data: dailyNote)
         }
