@@ -84,54 +84,27 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack {
-            Color(uiColor: viewBackgroundColor).frame(maxWidth: .infinity, maxHeight: .infinity)
-                .zIndex(-213)
-
-            TabView(selection: index) {
-                HomeView()
-                    .tag(0)
-                    .tabItem {
-                        Label("概览", systemSymbol: .listBullet)
-                    }
-                DetailPortalView()
-                    .tag(1)
-                    .tabItem {
-                        Label("详情", systemSymbol: .personTextRectangle)
-                    }
-                ToolView()
-                    .tag(2)
-                    .tabItem {
-                        Label("工具", systemSymbol: .shippingboxFill)
-                    }
-                SettingsView(storeManager: storeManager)
-                    .tag(3)
-                    .tabItem {
-                        Label("nav.category.settings.name", systemSymbol: .gear)
-                    }
-            }
-//            .zIndex(0)
-
-//            if let showDetailOfAccount = viewModel.showDetailOfAccount {
-//                Color.black
-//                    .ignoresSafeArea()
-//                AccountDisplayView(
-//                    account: showDetailOfAccount,
-//                    animation: animation
-//                )
-//                .zIndex(1)
-//            }
-//            if let account = viewModel.showCharacterDetailOfAccount {
-//                Color.black
-//                    .ignoresSafeArea()
-//                CharacterDetailView(
-//                    account: account,
-//                    showingCharacterName: viewModel.showingCharacterName!,
-//                    animation: animation
-//                )
-//                .environment(\.colorScheme, .dark)
-//                .zIndex(2)
-//            }
+        TabView(selection: index) {
+            HomeView()
+                .tag(0)
+                .tabItem {
+                    Label("概览", systemSymbol: .listBullet)
+                }
+            DetailPortalView()
+                .tag(1)
+                .tabItem {
+                    Label("详情", systemSymbol: .personTextRectangle)
+                }
+            ToolView()
+                .tag(2)
+                .tabItem {
+                    Label("工具", systemSymbol: .shippingboxFill)
+                }
+            SettingsView(storeManager: storeManager)
+                .tag(3)
+                .tabItem {
+                    Label("nav.category.settings.name", systemSymbol: .gear)
+                }
         }
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
