@@ -217,7 +217,7 @@ extension NameCard {
         return result
     }
 
-    public static var defaultValue: NameCard { .UI_NameCardPic_Bp20_P }
+    public static var defaultValue: NameCard { .UI_NameCardPic_Bp2_P }
 
     public static var random: NameCard { allLegalCases.randomElement() ?? .defaultValue }
 
