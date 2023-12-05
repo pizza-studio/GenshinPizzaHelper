@@ -79,7 +79,7 @@ struct AccountInfoCardView: View {
 
         var body: some View {
             // Resin
-            VStack {
+            VStack(alignment: .leading) {
                 let resinIntel = dailyNote.resinInformation
                 if OS.type != .macOS {
                     HStack {
@@ -117,7 +117,7 @@ struct AccountInfoCardView: View {
                 }
             }
             // Daily Task
-            VStack {
+            VStack(alignment: .leading) {
                 let dailyTask = dailyNote.dailyTaskInformation
                 if OS.type != .macOS {
                     HStack {
@@ -154,7 +154,7 @@ struct AccountInfoCardView: View {
                 }
             }
             // Coin
-            VStack {
+            VStack(alignment: .leading) {
                 let homeCoin = dailyNote.homeCoinInformation
                 if OS.type != .macOS {
                     HStack {
@@ -198,7 +198,7 @@ struct AccountInfoCardView: View {
                 }
             }
             // Expedition
-            VStack {
+            VStack(alignment: .leading) {
                 let expeditionInfo = dailyNote.expeditionInformation
                 if OS.type != .macOS {
                     HStack {
