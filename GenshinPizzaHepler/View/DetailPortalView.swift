@@ -922,13 +922,13 @@ private struct BasicInfoView: View {
                 )
                 DataDisplayView(
                     symbol: Image("UI_ItemIcon_107017"),
-                    label: "水神瞳",
-                    value: "\(data.stats.hydroculusNumber)"
+                    label: "草神瞳",
+                    value: "\(data.stats.dendroculusNumber)"
                 )
                 DataDisplayView(
                     symbol: Image("Item_Hydroculus"),
-                    label: "草神瞳",
-                    value: "\(data.stats.dendroculusNumber)"
+                    label: "水神瞳",
+                    value: "\(data.stats.hydroculusNumber)"
                 )
             }
             Section {
