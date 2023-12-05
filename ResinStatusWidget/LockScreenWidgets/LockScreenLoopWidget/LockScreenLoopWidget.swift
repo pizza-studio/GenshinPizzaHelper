@@ -107,17 +107,39 @@ enum LockScreenLoopWidgetType: CaseIterable {
         -> Self {
         switch result {
         case let .success(data):
-            // TODO: choose which to display
-            return .allCases.randomElement()!
-//            if data.homeCoinInfo.score > data.resinInfo.score {
-//                return .homeCoin
-//            } else if data.expeditionInfo.score > data.resinInfo.score {
-//                return .expedition
-//            } else if data.resinInfo.score > data.resinInfo.score {
-//                return .dailyTask
-//            } else {
-//                return .resin
-//            }
+            let homeCoinInfoScore = Double(data.homeCoinInformation.calculatedCurrentHomeCoin) /
+                Double(data.homeCoinInformation.maxHomeCoin)
+            let resinInfoScore = 1.1 * Double(data.resinInformation.calculatedCurrentResin) /
+                Double(data.resinInformation.maxResin)
+            let expeditionInfoScore = if data.expeditionInformation.allCompleted { 120.0 / 160.0 } else { 0.0 }
+            let dailyTaskInfoScore = if Date() > Calendar.current
+                .date(bySettingHour: 20, minute: 0, second: 0, of: Date())! {
+                if data.dailyTaskInformation.finishedTaskCount != data.dailyTaskInformation.totalTaskCount {
+                    0.8
+                } else {
+                    if data.dailyTaskInformation.isExtraRewardReceived {
+                        0.0
+                    } else {
+                        1.2
+                    }
+                }
+            } else {
+                if !data.dailyTaskInformation.isExtraRewardReceived,
+                   data.dailyTaskInformation.finishedTaskCount == data.dailyTaskInformation.totalTaskCount {
+                    1.2
+                } else {
+                    0.0
+                }
+            }
+            if homeCoinInfoScore > resinInfoScore {
+                return .homeCoin
+            } else if expeditionInfoScore > resinInfoScore {
+                return .expedition
+            } else if dailyTaskInfoScore > resinInfoScore {
+                return .dailyTask
+            } else {
+                return .resin
+            }
         case .failure:
             return .resin
         }

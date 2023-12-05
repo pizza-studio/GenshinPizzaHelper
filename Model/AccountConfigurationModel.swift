@@ -63,7 +63,7 @@ class AccountConfigurationModel {
         container.viewContext.refreshAllObjects()
         let request =
             NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
-
+        request.sortDescriptors = [.init(keyPath: \AccountConfiguration.priority, ascending: true)]
         do {
             let accountConfigs = try container.viewContext.fetch(request)
             return accountConfigs
