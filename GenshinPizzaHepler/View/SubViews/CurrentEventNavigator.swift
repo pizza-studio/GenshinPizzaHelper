@@ -74,6 +74,7 @@ struct CurrentEventNavigator: View {
                         }
                     }
                 }
+                .padding(.vertical, OS.type == .macOS ? UIFont.systemFontSize : 0)
             } header: {
                 NavigationLink {
                     AllEventsView(eventContents: $eventContents)

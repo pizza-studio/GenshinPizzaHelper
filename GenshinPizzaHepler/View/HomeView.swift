@@ -15,6 +15,8 @@ import SwiftUI
 // MARK: - HomeView
 
 struct HomeView: View {
+    // MARK: Internal
+
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
         ascending: true
@@ -25,12 +27,14 @@ struct HomeView: View {
         NavigationView {
             List {
                 TodayMaterialView()
+                    .listRowBackground(Color(uiColor: sectionBackgroundColor))
                 if accounts.isEmpty {
                     AddNewAccountButton()
                         .listRowBackground(Color.white.opacity(0))
                 } else {
                     ForEach(accounts) { account in
                         AccountInfoCardView(account: account)
+                            .listRowBackground(Color(uiColor: sectionBackgroundColor))
                     }
                 }
             }
@@ -40,6 +44,19 @@ struct HomeView: View {
             }
             .navigationTitle("app.home.title")
         }
+    }
+
+    // MARK: Private
+
+    @Environment(\.colorScheme)
+    private var colorScheme
+
+    private var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    private var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 }
 
@@ -61,27 +78,37 @@ struct AccountInfoCardView: View {
         let account: AccountConfiguration
 
         var body: some View {
-            VStack {
-                HStack {
-                    Text("app.dailynote.card.resin.label").bold()
-                    Spacer()
+            // Resin
+            VStack(alignment: .leading) {
+                let resinIntel = dailyNote.resinInformation
+                if OS.type != .macOS {
+                    HStack {
+                        Text("app.dailynote.card.resin.label").bold()
+                        Spacer()
+                    }
                 }
                 HStack(spacing: 10) {
                     Image("树脂")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame)
+                        .frame(width: iconFrame, height: iconFrame * 1.1)
+                        .overlay(alignment: .bottomTrailing) {
+                            if resinIntel.resinRecoveryTime <= Date() {
+                                Text(verbatim: "✅")
+                                    .font(.caption)
+                            }
+                        }
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        Text(verbatim: "\(dailyNote.resinInformation.currentResin)")
+                        Text(verbatim: "\(resinIntel.currentResin)")
                             .font(.title)
-                        Text(verbatim: " / \(dailyNote.resinInformation.maxResin)")
+                        Text(verbatim: " / \(resinIntel.maxResin)")
                             .font(.caption)
                         Spacer()
-                        if dailyNote.resinInformation.resinRecoveryTime > Date() {
+                        if resinIntel.resinRecoveryTime > Date() {
                             (
-                                Text(dailyNote.resinInformation.resinRecoveryTime, style: .relative)
+                                Text(resinIntel.resinRecoveryTime, style: .relative)
                                     + Text(verbatim: "\n")
-                                    + Text(dateFormatter.string(from: dailyNote.resinInformation.resinRecoveryTime))
+                                    + Text(dateFormatter.string(from: resinIntel.resinRecoveryTime))
                             )
                             .multilineTextAlignment(.trailing)
                             .font(.caption2)
@@ -89,18 +116,26 @@ struct AccountInfoCardView: View {
                     }
                 }
             }
-            // daily task
-            VStack {
+            // Daily Task
+            VStack(alignment: .leading) {
                 let dailyTask = dailyNote.dailyTaskInformation
-                HStack {
-                    Text("app.dailynote.card.dailyTask.label").bold()
-                    Spacer()
+                if OS.type != .macOS {
+                    HStack {
+                        Text("app.dailynote.card.dailyTask.label").bold()
+                        Spacer()
+                    }
                 }
                 HStack(spacing: 10) {
                     Image("每日任务")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame)
+                        .frame(width: iconFrame, height: iconFrame * 1.1)
+                        .overlay(alignment: .bottomTrailing) {
+                            if dailyTask.finishedTaskCount == dailyTask.totalTaskCount {
+                                Text(verbatim: "✅")
+                                    .font(.caption)
+                            }
+                        }
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text(verbatim: "\(dailyTask.finishedTaskCount)")
                             .font(.title)
@@ -110,23 +145,40 @@ struct AccountInfoCardView: View {
                         switch dailyTask.isExtraRewardReceived {
                         case true:
                             Text("app.dailynote.card.dailyTask.extraReward.received")
+                                .font(.caption2)
                         case false:
                             Text("app.dailynote.card.dailyTask.extraReward.notReceived")
+                                .font(.caption2)
                         }
                     }
                 }
             }
-            VStack {
+            // Coin
+            VStack(alignment: .leading) {
                 let homeCoin = dailyNote.homeCoinInformation
-                HStack {
-                    Text("app.dailynote.card.homeCoin.label").bold()
-                    Spacer()
+                if OS.type != .macOS {
+                    HStack {
+                        Text("app.dailynote.card.homeCoin.label").bold()
+                        Spacer()
+                    }
                 }
                 HStack(spacing: 10) {
-                    Image("洞天宝钱")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame)
+                    ZStack(alignment: .center) {
+                        // 洞天宝钱的图示显得实在有些太大了，这里软处理一下。
+                        Rectangle()
+                            .frame(width: iconFrame, height: iconFrame * 1.1)
+                            .foregroundStyle(Color.clear)
+                        Image("洞天宝钱")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
+                    }
+                    .overlay(alignment: .bottomTrailing) {
+                        if homeCoin.fullTime <= Date() {
+                            Text(verbatim: "✅")
+                                .font(.caption)
+                        }
+                    }
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text(verbatim: "\(homeCoin.currentHomeCoin)")
                             .font(.title)
@@ -145,22 +197,33 @@ struct AccountInfoCardView: View {
                     }
                 }
             }
-            VStack {
+            // Expedition
+            VStack(alignment: .leading) {
                 let expeditionInfo = dailyNote.expeditionInformation
-                HStack {
-                    Text("app.dailynote.card.expedition.label").bold()
-                    Spacer()
+                if OS.type != .macOS {
+                    HStack {
+                        Text("app.dailynote.card.expedition.label").bold()
+                        Spacer()
+                    }
                 }
                 HStack(spacing: 10) {
                     Image("派遣探索")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame)
+                        .frame(width: iconFrame, height: iconFrame * 1.1)
+                        .overlay(alignment: .bottomTrailing) {
+                            if expeditionInfo.allCompleted {
+                                Text(verbatim: "✅")
+                                    .font(.caption)
+                            }
+                        }
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        Text(verbatim: "\(expeditionInfo.ongoingExpeditionCount)")
-                            .font(.title)
-                        Text(verbatim: " / \(expeditionInfo.maxExpeditionsCount)")
-                            .font(.caption)
+                        if OS.type != .macOS {
+                            Text(verbatim: "\(expeditionInfo.ongoingExpeditionCount)")
+                                .font(.title)
+                            Text(verbatim: " / \(expeditionInfo.maxExpeditionsCount)")
+                                .font(.caption)
+                        }
                         Spacer()
                         HStack {
                             ForEach(expeditionInfo.expeditions, id: \.iconURL) { expedition in

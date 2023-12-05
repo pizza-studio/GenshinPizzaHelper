@@ -532,12 +532,12 @@ private struct AllAvatarNavigator: View {
     var body: some View {
         switch status {
         case .progress:
-            VStack {
+            VStack(alignment: .leading) {
                 Text("app.detailPortal.allAvatar.title").bold()
                 ProgressView()
             }
         case let .fail(error):
-            VStack {
+            VStack(alignment: .leading) {
                 Text("app.detailPortal.allAvatar.title").bold()
                 Text(error.localizedDescription)
             }
@@ -571,12 +571,12 @@ private struct LedgerDataNavigator: View {
         Group {
             switch status {
             case .progress:
-                VStack {
+                VStack(alignment: .leading) {
                     Text("app.detailPortal.ledger.title").bold()
                     ProgressView()
                 }
             case let .fail(error):
-                VStack {
+                VStack(alignment: .leading) {
                     Text("app.detailPortal.ledger.title").bold()
                     Text(error.localizedDescription)
                 }
@@ -597,7 +597,7 @@ private struct LedgerDataNavigator: View {
             NavigationLink {
                 LedgerView(data: ledgerData)
             } label: {
-                VStack {
+                VStack(alignment: .leading) {
                     HStack {
                         Text("app.detailPortal.ledger.title").bold()
                         Spacer()
@@ -633,12 +633,12 @@ private struct AbyssInfoNavigator: View {
         Group {
             switch status {
             case .progress:
-                VStack {
+                VStack(alignment: .leading) {
                     Text("app.detailPortal.abyss.title").bold()
                     ProgressView()
                 }
             case let .fail(error):
-                VStack {
+                VStack(alignment: .leading) {
                     Text("app.detailPortal.abyss.title").bold()
                     Text(error.localizedDescription)
                 }
@@ -659,7 +659,7 @@ private struct AbyssInfoNavigator: View {
             NavigationLink {
                 AbyssDetailDataDisplayView(data: abyssInfo)
             } label: {
-                VStack {
+                VStack(alignment: .leading) {
                     HStack {
                         Text("app.detailPortal.abyss.title").bold()
                         Spacer()
@@ -790,7 +790,7 @@ private struct LedgerView: View {
 
         var body: some View {
             Label {
-                VStack {
+                VStack(alignment: .leading) {
                     HStack {
                         Text(title)
                         Spacer()
@@ -826,12 +826,12 @@ private struct BasicInfoNavigator: View {
     var body: some View {
         switch status {
         case .progress:
-            VStack {
+            VStack(alignment: .leading) {
                 Text("app.detailPortal.basicInfo.title").bold()
                 ProgressView()
             }
         case let .fail(error):
-            VStack {
+            VStack(alignment: .leading) {
                 Text("app.detailPortal.basicInfo.title").bold()
                 Text(error.localizedDescription)
             }
@@ -922,13 +922,13 @@ private struct BasicInfoView: View {
                 )
                 DataDisplayView(
                     symbol: Image("UI_ItemIcon_107017"),
-                    label: "水神瞳",
-                    value: "\(data.stats.hydroculusNumber)"
+                    label: "草神瞳",
+                    value: "\(data.stats.dendroculusNumber)"
                 )
                 DataDisplayView(
                     symbol: Image("Item_Hydroculus"),
-                    label: "草神瞳",
-                    value: "\(data.stats.dendroculusNumber)"
+                    label: "水神瞳",
+                    value: "\(data.stats.hydroculusNumber)"
                 )
             }
             Section {
