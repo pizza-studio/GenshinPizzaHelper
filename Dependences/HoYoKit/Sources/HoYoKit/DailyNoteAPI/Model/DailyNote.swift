@@ -40,6 +40,10 @@ extension ExpeditionInformation {
     public var ongoingExpeditionCount: Int {
         expeditions.filter { !$0.isFinished }.count
     }
+
+    public var allCompleted: Bool {
+        expeditions.filter { !$0.isFinished }.count == 0
+    }
 }
 
 // MARK: - Expedition

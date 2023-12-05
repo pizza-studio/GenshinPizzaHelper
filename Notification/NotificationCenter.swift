@@ -7,7 +7,7 @@
 
 import Defaults
 import Foundation
-import HBMihoyoAPI
+import HoYoKit
 import UserNotifications
 
 class UserNotificationCenter {
@@ -160,75 +160,48 @@ class UserNotificationCenter {
 
     func createAllNotification(
         for accountName: String,
-        with userData: UserData,
+        with data: some DailyNote,
         uid: String
     ) {
         print("Creating all notification")
         guard !ignoreUids.contains(uid) else { return }
         createResinNotification(
             for: accountName,
-            with: userData.resinInfo,
+            with: data.resinInformation,
             uid: uid
         )
         createFullResinNotification(
             for: accountName,
-            with: userData.resinInfo,
+            with: data.resinInformation,
             uid: uid
         )
         createHomeCoinNotification(
             for: accountName,
-            with: userData.homeCoinInfo,
+            with: data.homeCoinInformation,
             uid: uid
         )
         createExpeditionNotification(
             for: accountName,
-            with: userData.expeditionInfo,
-            uid: uid
-        )
-        createWeeklyBossesNotification(
-            for: accountName,
-            with: userData.weeklyBossesInfo,
-            uid: uid
-        )
-        createTransformerNotification(
-            for: accountName,
-            with: userData.transformerInfo,
+            with: data.expeditionInformation,
             uid: uid
         )
         createDailyTaskNotification(
             for: accountName,
-            with: userData.dailyTaskInfo,
+            with: data.dailyTaskInformation,
             uid: uid
         )
-    }
-
-    func createAllNotification(
-        for accountName: String,
-        with simplifiedUserData: SimplifiedUserData,
-        uid: String
-    ) {
-        print("Creating all notification")
-        guard !ignoreUids.contains(uid) else { return }
-        createResinNotification(
-            for: accountName,
-            with: simplifiedUserData.resinInfo,
-            uid: uid
-        )
-        createFullResinNotification(
-            for: accountName,
-            with: simplifiedUserData.resinInfo,
-            uid: uid
-        )
-        createHomeCoinNotification(
-            for: accountName,
-            with: simplifiedUserData.homeCoinInfo,
-            uid: uid
-        )
-        createDailyTaskNotification(
-            for: accountName,
-            with: simplifiedUserData.dailyTaskInfo,
-            uid: uid
-        )
+        if let data = data as? GeneralDailyNote {
+            createWeeklyBossesNotification(
+                for: accountName,
+                with: data.weeklyBossesInformation,
+                uid: uid
+            )
+            createTransformerNotification(
+                for: accountName,
+                with: data.transformerInformation,
+                uid: uid
+            )
+        }
     }
 
     // MARK: Private
@@ -392,15 +365,14 @@ class UserNotificationCenter {
 
     private func createResinNotification(
         for accountName: String,
-        with resinInfo: ResinInfo,
+        with resinInfo: ResinInformation,
         uid: String
     ) {
         let resinNotificationTimeFromFull = (
-            resinInfo
-                .maxResin - Int(resinNotificationNum)
+            160 - Int(resinNotificationNum)
         ) * 8 * 60
         var resinNotificationTimeDescription: String {
-            relativeTimePointFromNow(second: resinInfo.recoveryTime.second)
+            dateFormatter.string(from: resinInfo.resinRecoveryTime)
         }
         guard resinInfo.currentResin < Int(resinNotificationNum),
               allowResinNotification else {
@@ -420,7 +392,7 @@ class UserNotificationCenter {
             resinNotificationTimeDescription
         )
         createNotification(
-            in: resinInfo.recoveryTime.second - resinNotificationTimeFromFull,
+            in: Int(TimeInterval.sinceNow(to: Calendar.current.date(byAdding: .second, value: -resinNotificationTimeFromFull, to: resinInfo.resinRecoveryTime)!)),
             for: accountName,
             object: .resin,
             title: title,
@@ -431,7 +403,7 @@ class UserNotificationCenter {
 
     private func createFullResinNotification(
         for accountName: String,
-        with resinInfo: ResinInfo,
+        with resinInfo: ResinInformation,
         uid: String
     ) {
         guard resinInfo.currentResin < 160, allowFullResinNotification,
@@ -449,7 +421,7 @@ class UserNotificationCenter {
             accountName
         )
         createNotification(
-            in: resinInfo.recoveryTime.second,
+            in: Int(TimeInterval.sinceNow(to: resinInfo.resinRecoveryTime)),
             for: accountName,
             object: .resinFull,
             title: title,
@@ -460,19 +432,18 @@ class UserNotificationCenter {
 
     private func createHomeCoinNotification(
         for accountName: String,
-        with homeCoinInfo: HomeCoinInfo,
+        with homeCoinInfo: HomeCoinInformation,
         uid: String
     ) {
-        guard homeCoinInfo.recoveryTime
-            .second > homeCoinNotificationTimeFromFull,
+        guard Int(TimeInterval.sinceNow(to: homeCoinInfo.fullTime
+            )) > homeCoinNotificationTimeFromFull,
             allowHomeCoinNotification else {
             deleteNotification(for: uid, object: .homeCoin); return
         }
         guard allowHomeCoinNotification else { return }
 
         var currentHomeCoinWhenNotify: Int {
-            let totalTime = Double(homeCoinInfo.recoveryTime.second) /
-                (1.0 - homeCoinInfo.percentage)
+            let totalTime = TimeInterval.sinceNow(to: homeCoinInfo.fullTime)
             var recoveryPercentageWhenNotify: Double {
                 1 - (Double(homeCoinNotificationTimeFromFull) / totalTime)
             }
@@ -496,8 +467,7 @@ class UserNotificationCenter {
         )
 
         createNotification(
-            in: homeCoinInfo.recoveryTime
-                .second - homeCoinNotificationTimeFromFull,
+            in: Int(TimeInterval.sinceNow(to: homeCoinInfo.fullTime)),
             for: accountName,
             object: .homeCoin,
             title: title,
@@ -508,77 +478,41 @@ class UserNotificationCenter {
 
     private func createExpeditionNotification(
         for accountName: String,
-        with expeditionInfo: ExpeditionInfo,
+        with expeditionInfo: some ExpeditionInformation,
         uid: String
     ) {
-        switch noticeExpeditionBy {
-        case .allCompleted, .unknown:
-            guard !expeditionInfo.allCompleted,
-                  allowExpeditionNotification else {
-                deleteNotification(for: uid, object: .expedition); return
-            }
-            let object: Object = .expedition
-            let titleCN = "「%@」探索派遣提醒"
-            let title = String(
-                format: NSLocalizedString(titleCN, comment: "noti title"),
-                accountName
-            )
-            let bodyCN = "「%@」的探索派遣已全部完成。"
-            let body = String(
-                format: NSLocalizedString(bodyCN, comment: "noti body"),
-                accountName
-            )
-            createNotification(
-                in: expeditionInfo.allCompleteTime.second,
-                for: accountName,
-                object: object,
-                title: title,
-                body: body,
-                uid: uid
-            )
-        case .nextCompleted:
-            guard !expeditionInfo.allCompleted,
-                  allowExpeditionNotification else {
-                deleteNotification(for: uid, object: .expedition); return
-            }
-            expeditionInfo.expeditions.forEach { expedition in
-                guard !expedition.isComplete else {
-                    deleteNotification(
-                        for: uid,
-                        object: .expedition,
-                        idSuffix: expedition.charactersEnglishName
-                    ); return
-                }
-                let charID = expedition.charactersEnglishName
-                let charName = expedition.characterName
-                let object: Object = .expedition
-                let titleCN = "「%@」探索派遣提醒"
-                let title = String(
-                    format: NSLocalizedString(titleCN, comment: "noti title"),
-                    accountName
-                )
-                let bodyCN = "%@的探索派遣已完成。"
-                let body = String(
-                    format: NSLocalizedString(bodyCN, comment: "noti body"),
-                    charName
-                )
-
-                createNotification(
-                    in: expedition.recoveryTime.second,
-                    for: accountName,
-                    object: object,
-                    title: title,
-                    body: body,
-                    uid: uid,
-                    idSuffix: charID
-                )
-            }
+        guard let expeditionInfo = expeditionInfo as? GeneralDailyNote.ExpeditionInformation else {
+            return
         }
+        guard !expeditionInfo.allCompleted,
+              allowExpeditionNotification else {
+            deleteNotification(for: uid, object: .expedition); return
+        }
+        let object: Object = .expedition
+        let titleCN = "「%@」探索派遣提醒"
+        let title = String(
+            format: NSLocalizedString(titleCN, comment: "noti title"),
+            accountName
+        )
+        let bodyCN = "「%@」的探索派遣已全部完成。"
+        let body = String(
+            format: NSLocalizedString(bodyCN, comment: "noti body"),
+            accountName
+        )
+        guard let allCompleteTime = expeditionInfo.expeditions.map(\.finishTime).max() else { return }
+        createNotification(
+            in: Int(TimeInterval.sinceNow(to: allCompleteTime)),
+            for: accountName,
+            object: object,
+            title: title,
+            body: body,
+            uid: uid
+        )
     }
 
     private func createWeeklyBossesNotification(
         for accountName: String,
-        with weeklyBossesInfo: WeeklyBossesInfo,
+        with weeklyBossesInfo: GeneralDailyNote.WeeklyBossesInformation,
         uid: String
     ) {
         guard Date() < Calendar.current.nextDate(
@@ -586,7 +520,7 @@ class UserNotificationCenter {
             matching: weeklyBossesNotificationTimePoint,
             matchingPolicy: .nextTime
         )! else { return }
-        guard weeklyBossesInfo.remainResinDiscountNum != 0 else {
+        guard weeklyBossesInfo.remainResinDiscount != 0 else {
             deleteNotification(for: uid, object: .weeklyBosses); return
         }
         guard Defaults[.allowWeeklyBossesNotification] else { return }
@@ -599,7 +533,7 @@ class UserNotificationCenter {
         let body = String(
             format: NSLocalizedString(bodyCN, comment: "notification body"),
             accountName,
-            weeklyBossesInfo.remainResinDiscountNum
+            weeklyBossesInfo.remainResinDiscount
         )
 
         createNotification(
@@ -614,10 +548,10 @@ class UserNotificationCenter {
 
     private func createTransformerNotification(
         for accountName: String,
-        with transformerInfo: TransformerInfo,
+        with transformerInfo: GeneralDailyNote.TransformerInformation,
         uid: String
     ) {
-        guard !transformerInfo.isComplete, allowTransformerNotification,
+        guard transformerInfo.recoveryTime > Date(), allowTransformerNotification,
               transformerInfo.obtained else {
             deleteNotification(for: uid, object: .transformer); return
         }
@@ -634,7 +568,7 @@ class UserNotificationCenter {
         let object: Object = .transformer
 
         createNotification(
-            in: transformerInfo.recoveryTime.second,
+            in: Int(TimeInterval.sinceNow(to: transformerInfo.recoveryTime)),
             for: accountName,
             object: object,
             title: title,
@@ -645,7 +579,7 @@ class UserNotificationCenter {
 
     private func createDailyTaskNotification(
         for accountName: String,
-        with dailyTaskInfo: DailyTaskInfo,
+        with dailyTaskInfo: DailyTaskInformation,
         uid: String
     ) {
         guard Date() < Calendar.current.nextDate(
@@ -653,7 +587,7 @@ class UserNotificationCenter {
             matching: dailyTaskNotificationDateComponents,
             matchingPolicy: .nextTime
         )! else { return }
-        guard !dailyTaskInfo.isTaskRewardReceived else {
+        guard !dailyTaskInfo.isExtraRewardReceived else {
             deleteNotification(for: uid, object: .dailyTask); return
         }
         guard allowDailyTaskNotification else { return }
@@ -663,12 +597,12 @@ class UserNotificationCenter {
             accountName
         )
         var body: String {
-            if dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum != 0 {
+            if dailyTaskInfo.totalTaskCount - dailyTaskInfo.finishedTaskCount != 0 {
                 let cn = "「%@」的每日委托还剩余%lld个未完成。"
                 return String(
                     format: NSLocalizedString(cn, comment: "cn"),
                     accountName,
-                    dailyTaskInfo.totalTaskNum - dailyTaskInfo.finishedTaskNum
+                    dailyTaskInfo.totalTaskCount - dailyTaskInfo.finishedTaskCount
                 )
             } else {
                 let cn = "「%@」的每日委托奖励还未领取。"
@@ -687,5 +621,28 @@ class UserNotificationCenter {
             body: body,
             uid: uid
         )
+    }
+}
+
+private let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter.Gregorian()
+    dateFormatter.dateStyle = .short
+    dateFormatter.timeStyle = .short
+    dateFormatter.doesRelativeDateFormatting = true
+    dateFormatter.locale = Locale(identifier: Locale.current.identifier)
+    return dateFormatter
+}()
+
+extension TimeInterval {
+    static func sinceNow(to date: Date) -> Self {
+        return date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+    }
+
+    static func toNow(from date: Date) -> Self {
+        return Date().timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate
+    }
+
+    init(from dateA: Date, to dateB: Date) {
+        self = dateB.timeIntervalSinceReferenceDate - dateA.timeIntervalSinceReferenceDate
     }
 }
