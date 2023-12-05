@@ -15,6 +15,8 @@ import SwiftUI
 // MARK: - HomeView
 
 struct HomeView: View {
+    // MARK: Internal
+
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
         ascending: false
@@ -25,12 +27,14 @@ struct HomeView: View {
         NavigationView {
             List {
                 TodayMaterialView()
+                    .listRowBackground(Color(uiColor: sectionBackgroundColor))
                 if accounts.isEmpty {
                     AddNewAccountButton()
                         .listRowBackground(Color.white.opacity(0))
                 } else {
                     ForEach(accounts) { account in
                         AccountInfoCardView(account: account)
+                            .listRowBackground(Color(uiColor: sectionBackgroundColor))
                     }
                 }
             }
@@ -40,6 +44,19 @@ struct HomeView: View {
             }
             .navigationTitle("app.home.title")
         }
+    }
+
+    // MARK: Private
+
+    @Environment(\.colorScheme)
+    private var colorScheme
+
+    private var viewBackgroundColor: UIColor {
+        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
+    }
+
+    private var sectionBackgroundColor: UIColor {
+        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 }
 
@@ -61,6 +78,7 @@ struct AccountInfoCardView: View {
         let account: AccountConfiguration
 
         var body: some View {
+            // Resin
             VStack {
                 let resinIntel = dailyNote.resinInformation
                 if OS.type != .macOS {
@@ -73,7 +91,7 @@ struct AccountInfoCardView: View {
                     Image("树脂")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame)
+                        .frame(width: iconFrame, height: iconFrame * 1.1)
                         .overlay(alignment: .bottomTrailing) {
                             if resinIntel.resinRecoveryTime <= Date() {
                                 Text(verbatim: "✅")
@@ -98,7 +116,7 @@ struct AccountInfoCardView: View {
                     }
                 }
             }
-            // daily task
+            // Daily Task
             VStack {
                 let dailyTask = dailyNote.dailyTaskInformation
                 if OS.type != .macOS {
@@ -111,7 +129,7 @@ struct AccountInfoCardView: View {
                     Image("每日任务")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame)
+                        .frame(width: iconFrame, height: iconFrame * 1.1)
                         .overlay(alignment: .bottomTrailing) {
                             if dailyTask.finishedTaskCount == dailyTask.totalTaskCount {
                                 Text(verbatim: "✅")
@@ -135,6 +153,7 @@ struct AccountInfoCardView: View {
                     }
                 }
             }
+            // Coin
             VStack {
                 let homeCoin = dailyNote.homeCoinInformation
                 if OS.type != .macOS {
@@ -147,7 +166,7 @@ struct AccountInfoCardView: View {
                     ZStack(alignment: .center) {
                         // 洞天宝钱的图示显得实在有些太大了，这里软处理一下。
                         Rectangle()
-                            .frame(width: iconFrame, height: iconFrame)
+                            .frame(width: iconFrame, height: iconFrame * 1.1)
                             .foregroundStyle(Color.clear)
                         Image("洞天宝钱")
                             .resizable()
@@ -178,6 +197,7 @@ struct AccountInfoCardView: View {
                     }
                 }
             }
+            // Expedition
             VStack {
                 let expeditionInfo = dailyNote.expeditionInformation
                 if OS.type != .macOS {
@@ -190,7 +210,7 @@ struct AccountInfoCardView: View {
                     Image("派遣探索")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame)
+                        .frame(width: iconFrame, height: iconFrame * 1.1)
                         .overlay(alignment: .bottomTrailing) {
                             if expeditionInfo.allCompleted {
                                 Text(verbatim: "✅")
