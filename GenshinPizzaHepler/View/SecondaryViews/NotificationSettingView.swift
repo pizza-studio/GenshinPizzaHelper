@@ -266,7 +266,7 @@ struct NotificationSettingView: View {
 struct IgnoreNotificationAccountView: View {
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
-        ascending: false
+        ascending: true
     )])
     var configs: FetchedResults<AccountConfiguration>
 

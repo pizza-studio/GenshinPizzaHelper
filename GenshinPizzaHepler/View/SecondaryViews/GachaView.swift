@@ -18,7 +18,7 @@ import SwiftUI
 struct GachaView: View {
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
-        ascending: false
+        ascending: true
     )])
     var accounts: FetchedResults<AccountConfiguration>
 
@@ -825,7 +825,7 @@ extension GachaItem {
 private struct GachaDetailView: View {
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
-        ascending: false
+        ascending: true
     )])
     var accounts: FetchedResults<AccountConfiguration>
 

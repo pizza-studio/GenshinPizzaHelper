@@ -16,7 +16,7 @@ import SwiftUI
 struct APIGetGachaView: View {
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
-        ascending: false
+        ascending: true
     )])
     var accounts: FetchedResults<AccountConfiguration>
     @StateObject
@@ -172,7 +172,7 @@ private struct GetGachaURLByAPIButton: View {
 
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
-        ascending: false
+        ascending: true
     )])
     var accounts: FetchedResults<AccountConfiguration>
 

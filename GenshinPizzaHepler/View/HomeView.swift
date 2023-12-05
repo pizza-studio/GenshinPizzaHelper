@@ -17,7 +17,7 @@ import SwiftUI
 struct HomeView: View {
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
-        ascending: false
+        ascending: true
     )])
     var accounts: FetchedResults<AccountConfiguration>
 
