@@ -158,7 +158,7 @@ private struct WatchEachExpeditionView: View {
 private let dateFormatter: DateFormatter = {
     let fmt = DateFormatter()
     fmt.doesRelativeDateFormatting = true
-    fmt.dateStyle = .none
+    fmt.dateStyle = .short
     fmt.timeStyle = .short
     return fmt
 }()

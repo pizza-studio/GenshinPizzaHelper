@@ -13,24 +13,16 @@ struct HomeCoinInfoBar: View {
     let homeCoinInfo: HomeCoinInformation
 
     var isHomeCoinFullImage: some View {
-        homeCoinInfo.maxHomeCoin == 300
-            ? Image(systemSymbol: .leafFill)
+        (homeCoinInfo.calculatedCurrentHomeCoin == homeCoinInfo.maxHomeCoin)
+            ? Image(systemSymbol: .exclamationmark)
+            .overlayImageWithRingProgressBar(
+                Double(homeCoinInfo.calculatedCurrentHomeCoin) / Double(homeCoinInfo.maxHomeCoin),
+                scaler: 0.78
+            )
+            : Image(systemSymbol: .leafFill)
             .overlayImageWithRingProgressBar(
                 Double(homeCoinInfo.calculatedCurrentHomeCoin) /
                     Double(homeCoinInfo.maxHomeCoin)
-            )
-            : (
-                (homeCoinInfo.calculatedCurrentHomeCoin != homeCoinInfo.maxHomeCoin)
-                    ? Image(systemSymbol: .exclamationmark)
-                    .overlayImageWithRingProgressBar(
-                        Double(homeCoinInfo.calculatedCurrentHomeCoin) / Double(homeCoinInfo.maxHomeCoin),
-                        scaler: 0.78
-                    )
-                    : Image(systemSymbol: .leafFill)
-                    .overlayImageWithRingProgressBar(
-                        Double(homeCoinInfo.calculatedCurrentHomeCoin) /
-                            Double(homeCoinInfo.maxHomeCoin)
-                    )
             )
     }
 
