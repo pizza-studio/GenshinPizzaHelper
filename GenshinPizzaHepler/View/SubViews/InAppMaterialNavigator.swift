@@ -299,7 +299,7 @@ struct InAppMaterialNavigator: View {
                             )
                     }
                     ScrollView(.horizontal) {
-                        HStack {
+                        HStack(alignment: .top) {
                             ForEach(
                                 material.relatedItem,
                                 id: \.imageString
@@ -307,17 +307,25 @@ struct InAppMaterialNavigator: View {
                                 VStack {
                                     if let char = item.character {
                                         char.cardIcon(90)
+                                        let charNameFormatted = char.localized
+                                            .split(separator: " ").joined(separator: "\n")
+                                        Text(charNameFormatted)
+                                            .font(.footnote)
+                                            .foregroundColor(.secondary)
+                                            .padding(.bottom)
                                     } else {
                                         Image(item.imageString)
                                             .resizable()
                                             .scaledToFill()
                                             .frame(width: 75, height: 90)
                                             .clipped()
+                                        let itemNameFormatted = item.displayName.localized
+                                            .split(separator: " ").joined(separator: "\n")
+                                        Text(itemNameFormatted)
+                                            .font(.footnote)
+                                            .foregroundColor(.secondary)
+                                            .padding(.bottom)
                                     }
-                                    Text(item.displayName)
-                                        .font(.footnote)
-                                        .foregroundColor(.secondary)
-                                        .padding(.bottom)
                                 }
                             }
                         }
