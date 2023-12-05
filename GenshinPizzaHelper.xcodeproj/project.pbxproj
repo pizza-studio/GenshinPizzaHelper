@@ -524,6 +524,7 @@
 		EA36DFBE28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFBC28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift */; };
 		EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */; };
 		EA36DFC728E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36DFC528E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift */; };
+		EA39B5232B1EE47D0075F4B0 /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3621D42B1D6809007CAB4D /* ToolView.swift */; };
 		EA3A9DB329D4812300CF4230 /* GachaChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A9DB229D4812300CF4230 /* GachaChartView.swift */; };
 		EA406811292228A200F23479 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
 		EA406812292228A200F23479 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA406810292228A200F23479 /* WidgetData.swift */; };
@@ -2622,6 +2623,7 @@
 				5BD1C5F62A2A1FC90043C2B1 /* DeviceRecognizer.swift in Sources */,
 				5BD1C5F72A2A1FC90043C2B1 /* Result.swift in Sources */,
 				5BD1C5F82A2A1FC90043C2B1 /* Account.swift in Sources */,
+				EA39B5232B1EE47D0075F4B0 /* ToolView.swift in Sources */,
 				5BD1C5F92A2A1FC90043C2B1 /* WidgetErrorView.swift in Sources */,
 				5BD1C5FA2A2A1FC90043C2B1 /* InfoPreviewerView.swift in Sources */,
 				5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */,

@@ -46,6 +46,7 @@ struct GenshinPizzaHeplerApp: App {
         #if os(watchOS)
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, AccountConfigurationModel.shared.container.viewContext)
         }
         #else
         WindowGroup {
