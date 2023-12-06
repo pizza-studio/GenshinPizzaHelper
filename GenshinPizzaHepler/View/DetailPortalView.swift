@@ -234,6 +234,7 @@ struct DetailPortalView: View {
             }
         }
         .environmentObject(detailPortalViewModel)
+        .navigationViewStyle(.stack)
     }
 
     // MARK: Private
@@ -419,7 +420,7 @@ private struct PlayerDetailSection: View {
         var showingCharacterName: ID?
 
         var body: some View {
-            VStack {
+            VStack(alignment: .leading) {
                 if playerDetail.avatars.isEmpty {
                     Text(
                         playerDetail
@@ -535,7 +536,7 @@ private struct AllAvatarNavigator: View {
             }
         case let .succeed(data):
             InformationRowView("app.detailPortal.allAvatar.title") {
-                NavigationLink {
+                NavigationLinkSheetable {
                     AllAvatarListSheetView(status: status)
                 } label: {
                     HStack(spacing: 3) {
@@ -590,18 +591,19 @@ private struct LedgerDataNavigator: View {
 
         var body: some View {
             InformationRowView("app.detailPortal.ledger.title") {
-                NavigationLink {
+                let contentToDisplay = HStack(spacing: 10) {
+                    Image("UI_ItemIcon_Primogem")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: iconFrame, height: iconFrame)
+                    Text(verbatim: "\(ledgerData.monthData.currentPrimogems)")
+                        .font(.title)
+                    Spacer()
+                }
+                NavigationLinkSheetable {
                     LedgerView(data: ledgerData)
                 } label: {
-                    HStack(spacing: 10) {
-                        Image("UI_ItemIcon_Primogem")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: iconFrame, height: iconFrame)
-                        Text(verbatim: "\(ledgerData.monthData.currentPrimogems)")
-                            .font(.title)
-                        Spacer()
-                    }
+                    contentToDisplay
                 }
             }
         }
@@ -646,7 +648,7 @@ private struct AbyssInfoNavigator: View {
 
         var body: some View {
             InformationRowView("app.detailPortal.abyss.title") {
-                NavigationLink {
+                NavigationLinkSheetable {
                     AbyssDetailDataDisplayView(data: abyssInfo)
                 } label: {
                     HStack(spacing: 10) {
@@ -826,7 +828,7 @@ private struct BasicInfoNavigator: View {
             }
         case let .succeed(data):
             InformationRowView("app.detailPortal.basicInfo.title") {
-                NavigationLink {
+                NavigationLinkSheetable {
                     BasicInfoView(data: data)
                 } label: {
                     HStack(spacing: 10) {
