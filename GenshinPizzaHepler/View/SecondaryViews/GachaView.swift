@@ -69,6 +69,7 @@ struct GachaView: View {
                     }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 GetGachaNavigationMenu(
@@ -136,6 +137,7 @@ struct GachaView: View {
                         }
                         NavigationLink {
                             GachaChartView()
+                                .navigationBarTitleDisplayMode(.inline)
                                 .environmentObject(gachaViewModel)
                         } label: {
                             Label("更多图表", systemSymbol: .chartBarXaxis)
