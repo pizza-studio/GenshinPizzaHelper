@@ -650,6 +650,8 @@
 		EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */; };
 		EA9BE57F2B200B9400143817 /* AlwaysShowSideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */; };
 		EA9BE5802B200B9400143817 /* AlwaysShowSideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */; };
+		EA9BE5822B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE5812B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift */; };
+		EA9BE5832B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE5812B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift */; };
 		EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
 		EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
 		EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
@@ -1178,6 +1180,7 @@
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
 		EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingView.swift; sourceTree = "<group>"; };
 		EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysShowSideBar.swift; sourceTree = "<group>"; };
+		EA9BE5812B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MiHoYoAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
 		EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
 		EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCircular.swift; sourceTree = "<group>"; };
 		EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoteAPI.swift; sourceTree = "<group>"; };
@@ -1909,6 +1912,7 @@
 				BFF684082A3753C8005470EA /* Icon.swift */,
 				EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */,
 				EA759D752B199A2C0080C775 /* Server+Descriptable.swift */,
+				EA9BE5812B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2666,6 +2670,7 @@
 				5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */,
 				EA9BE5802B200B9400143817 /* AlwaysShowSideBar.swift in Sources */,
 				5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */,
+				EA9BE5832B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift in Sources */,
 				5BD1C6192A2A1FC90043C2B1 /* HomeCoinInfoBar.swift in Sources */,
 				5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */,
 				5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */,
@@ -3153,6 +3158,7 @@
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
 				EA9BE57F2B200B9400143817 /* AlwaysShowSideBar.swift in Sources */,
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
+				EA9BE5822B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
 				5B5F82BD2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */,

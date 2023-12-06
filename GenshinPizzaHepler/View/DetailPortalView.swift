@@ -18,6 +18,7 @@ let detailPortalRefreshSubject: PassthroughSubject<(), Never> = .init()
 
 // MARK: - DetailPortalViewModel
 
+@MainActor
 final class DetailPortalViewModel: ObservableObject {
     // MARK: Lifecycle
 
@@ -222,9 +223,9 @@ struct DetailPortalView: View {
                 if let account = detailPortalViewModel.selectedAccount {
                     PlayerDetailSection(account: account)
                     Section {
-                        AbyssInfoNavigator(status: detailPortalViewModel.spiralAbyssDetailStatus)
-                        LedgerDataNavigator(status: detailPortalViewModel.ledgerDataStatus)
-                        BasicInfoNavigator(status: detailPortalViewModel.basicInfoStatus)
+                        AbyssInfoNavigator(account: account, status: detailPortalViewModel.spiralAbyssDetailStatus)
+                        LedgerDataNavigator(account: account, status: detailPortalViewModel.ledgerDataStatus)
+                        BasicInfoNavigator(account: account, status: detailPortalViewModel.basicInfoStatus)
                     }
                 }
             }
@@ -483,16 +484,7 @@ private struct PlayerDetailSection: View {
             case .progress:
                 ProgressView().id(UUID())
             case let .fail(error):
-                Button(action: {
-                    detailPortalViewModel.refresh()
-                }, label: {
-                    Label {
-                        Text(error.localizedDescription)
-                    } icon: {
-                        Image(systemSymbol: .xmarkCircle)
-                            .foregroundColor(.red)
-                    }
-                })
+                ErrorView(account: account, error: error)
             case let .succeed((playerDetail, _)):
                 if playerDetail.avatars.isEmpty {
                     Button(action: {
@@ -518,7 +510,7 @@ private struct PlayerDetailSection: View {
                     DataFetchedView(playerDetail: playerDetail, account: account)
                 }
             }
-            AllAvatarNavigator(status: detailPortalViewModel.allAvatarInfoStatus)
+            AllAvatarNavigator(account: account, status: detailPortalViewModel.allAvatarInfoStatus)
         }
     }
 }
@@ -526,6 +518,7 @@ private struct PlayerDetailSection: View {
 // MARK: - AllAvatarNavigator
 
 private struct AllAvatarNavigator: View {
+    let account: AccountConfiguration
     var status: DetailPortalViewModel.Status<AllAvatarDetailModel>
 
     var body: some View {
@@ -538,7 +531,7 @@ private struct AllAvatarNavigator: View {
         case let .fail(error):
             VStack(alignment: .leading) {
                 Text("app.detailPortal.allAvatar.title").bold()
-                Text(error.localizedDescription)
+                ErrorView(account: account, error: error)
             }
         case let .succeed(data):
             NavigationLink {
@@ -564,6 +557,7 @@ private struct AllAvatarNavigator: View {
 private struct LedgerDataNavigator: View {
     // MARK: Internal
 
+    let account: AccountConfiguration
     let status: DetailPortalViewModel.Status<LedgerData>
 
     var body: some View {
@@ -577,7 +571,7 @@ private struct LedgerDataNavigator: View {
             case let .fail(error):
                 VStack(alignment: .leading) {
                     Text("app.detailPortal.ledger.title").bold()
-                    Text(error.localizedDescription)
+                    ErrorView(account: account, error: error)
                 }
             case let .succeed(data):
                 AbyssInfoView(ledgerData: data)
@@ -601,7 +595,6 @@ private struct LedgerDataNavigator: View {
                         Text("app.detailPortal.ledger.title").bold()
                         Spacer()
                     }
-
                     HStack(spacing: 10) {
                         Image("UI_ItemIcon_Primogem")
                             .resizable()
@@ -626,6 +619,7 @@ private struct LedgerDataNavigator: View {
 private struct AbyssInfoNavigator: View {
     // MARK: Internal
 
+    let account: AccountConfiguration
     let status: DetailPortalViewModel.Status<SpiralAbyssDetail>
 
     var body: some View {
@@ -639,7 +633,7 @@ private struct AbyssInfoNavigator: View {
             case let .fail(error):
                 VStack(alignment: .leading) {
                     Text("app.detailPortal.abyss.title").bold()
-                    Text(error.localizedDescription)
+                    ErrorView(account: account, error: error)
                 }
             case let .succeed(data):
                 AbyssInfoView(abyssInfo: data)
@@ -820,6 +814,7 @@ private struct LedgerView: View {
 private struct BasicInfoNavigator: View {
     // MARK: Internal
 
+    let account: AccountConfiguration
     let status: DetailPortalViewModel.Status<BasicInfos>
 
     var body: some View {
@@ -832,7 +827,7 @@ private struct BasicInfoNavigator: View {
         case let .fail(error):
             VStack(alignment: .leading) {
                 Text("app.detailPortal.basicInfo.title").bold()
-                Text(error.localizedDescription)
+                ErrorView(account: account, error: error)
             }
         case let .succeed(data):
             NavigationLink {
@@ -1057,4 +1052,164 @@ private struct BasicInfoView: View {
             }
         }
     }
+}
+
+// MARK: - ErrorView
+
+private struct ErrorView: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    let account: AccountConfiguration
+    let error: Error
+
+    var body: some View {
+        if let miHoYoAPIError = error as? MiHoYoAPIError,
+           case .verificationNeeded = miHoYoAPIError {
+            VerificationNeededView(account: account) {
+                detailPortalViewModel.refresh()
+            }
+        } else {
+            Button {
+                detailPortalViewModel.refresh()
+            } label: {
+                Label {
+                    HStack {
+                        Text(error.localizedDescription)
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Image(systemSymbol: .arrowClockwiseCircle)
+                    }
+                } icon: {
+                    Image(systemSymbol: .exclamationmarkCircle)
+                        .foregroundStyle(.red)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - VerificationNeededView
+
+private struct VerificationNeededView: View {
+    // MARK: Internal
+
+    let account: AccountConfiguration
+    let completion: () -> ()
+
+    var body: some View {
+        Button {
+            status = .progressing
+            popVerificationWebSheet()
+        } label: {
+            Label {
+                Text("account.test.verify.button")
+            } icon: {
+                Image(systemSymbol: .exclamationmarkTriangle)
+                    .foregroundStyle(.yellow)
+            }
+        }
+        .sheet(item: $sheetItem, content: { item in
+            switch item {
+            case let .gotVerification(verification):
+                NavigationView {
+                    GeetestValidateView(
+                        challenge: verification.challenge,
+                        gt: verification.gt,
+                        completion: { validate in
+                            status = .pending
+                            verifyValidate(challenge: verification.challenge, validate: validate)
+                            sheetItem = nil
+                        }
+                    )
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("sys.cancel") {
+                                sheetItem = nil
+                            }
+                        }
+                    }
+                    .navigationTitle("account.test.verify.web_sheet.title")
+                }
+                .navigationViewStyle(.stack)
+            }
+        })
+        if case let .fail(error) = status {
+            Text("Error: \(error.localizedDescription)")
+        }
+    }
+
+    func popVerificationWebSheet() {
+        Task(priority: .userInitiated) {
+            do {
+                let verification = try await MiHoYoAPI.createVerification(
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
+                )
+                status = .gotVerification(verification)
+                sheetItem = .gotVerification(verification)
+            } catch {
+                status = .fail(error)
+            }
+        }
+    }
+
+    func verifyValidate(challenge: String, validate: String) {
+        Task {
+            do {
+                _ = try await MiHoYoAPI.verifyVerification(
+                    challenge: challenge,
+                    validate: validate,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
+                )
+                completion()
+            } catch {
+                status = .fail(error)
+            }
+        }
+    }
+
+    // MARK: Private
+
+    private enum Status: CustomStringConvertible {
+        case pending
+        case progressing
+        case gotVerification(Verification)
+        case fail(Error)
+
+        // MARK: Internal
+
+        var description: String {
+            switch self {
+            case let .fail(error):
+                return "ERROR: \(error.localizedDescription)"
+            case .progressing:
+                return "gettingVerification"
+            case let .gotVerification(verification):
+                return "Challenge: \(verification.challenge)"
+            case .pending:
+                return "PENDING"
+            }
+        }
+    }
+
+    private enum SheetItem: Identifiable {
+        case gotVerification(Verification)
+
+        // MARK: Internal
+
+        var id: Int {
+            switch self {
+            case let .gotVerification(verification):
+                return verification.challenge.hashValue
+            }
+        }
+    }
+
+    @State
+    private var status: Status = .progressing
+
+    @State
+    private var sheetItem: SheetItem?
 }
