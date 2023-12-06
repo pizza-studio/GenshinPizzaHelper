@@ -110,12 +110,13 @@ struct SettingViewIOS16: View {
                             systemSymbol: .speedometer
                         )
                     }
-                    #if canImport(ActivityKit)
-                    if #available(iOS 16.1, *) {
-                        LiveActivitySettingView(selectedView: $selectedView)
-                    }
-                    #endif
                 }
+
+                #if canImport(ActivityKit)
+                if #available(iOS 16.1, *) {
+                    LiveActivitySettingView(selectedView: $selectedView)
+                }
+                #endif
 
                 Section {
                     Button {
