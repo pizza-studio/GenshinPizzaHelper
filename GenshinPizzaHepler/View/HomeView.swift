@@ -25,7 +25,7 @@ struct HomeView: View {
         NavigationView {
             List {
                 Group {
-                    TodayMaterialView()
+                    TodayMaterialEventView()
                     if accounts.isEmpty {
                         AddNewAccountButton()
                             .listRowBackground(Color.white.opacity(0))
@@ -303,9 +303,9 @@ class DailyNoteViewModel: ObservableObject {
     }
 }
 
-// MARK: - TodayMaterialView
+// MARK: - TodayMaterialEventView
 
-struct TodayMaterialView: View {
+struct TodayMaterialEventView: View {
     @Environment(\.scenePhase)
     var scenePhase
 

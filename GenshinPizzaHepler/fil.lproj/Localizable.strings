@@ -789,8 +789,8 @@
 
 // Home View
 "当前活动" = "Mga events ngayon";
-"即将结束的活动" = "Mga event na malapit na matapos";
-"查看全部活动" = "Lahat ng events ngayon";
+"currentEventNavigator.pendingEvents.title" = "Mga event na malapit na matapos";
+"currentEventNavigator.viewAll.title" = "Lahat ng events ngayon";
 "账号基本信息" = "Account Basic Infos";
 "剩余 %lld天" = "%lld araw na natitira";
 "剩余 %lld小时" = "%lld oras na natitira";
@@ -1396,3 +1396,7 @@
 
 "detailPortal.player.worldLevel" = "World Level";
 "detailPortal.player.adventureRank.short:%@" = "AR %@";
+
+// MARK: - 4.0.0
+
+"currentEventNavigator.tapToViewAll.title" = "Tap to View All";

@@ -789,8 +789,8 @@ Created by Bill Haku on 2022/8/23.
 
 // Home View
 "当前活动" = "当前活动";
-"即将结束的活动" = "即将结束的活动";
-"查看全部活动" = "查看全部活动";
+"currentEventNavigator.pendingEvents.title" = "即将结束的活动";
+"currentEventNavigator.viewAll.title" = "查看全部活动";
 "账号基本信息" = "账号基本信息";
 "剩余 %lld天" = "剩余 %lld天";
 "剩余 %lld小时" = "剩余 %lld小时";
@@ -1394,3 +1394,7 @@ Created by Bill Haku on 2022/8/23.
 
 "detailPortal.player.worldLevel" = "世界等级";
 "detailPortal.player.adventureRank.short:%@" = "%@级";
+
+// MARK: - 4.0.0
+
+"currentEventNavigator.tapToViewAll.title" = "点击以全部查看";

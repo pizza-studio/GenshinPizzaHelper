@@ -789,8 +789,8 @@
 
 // Home View
 "当前活动" = "Проходящие события";
-"即将结束的活动" = "Заканчивающиеся события";
-"查看全部活动" = "Все проходящие события";
+"currentEventNavigator.pendingEvents.title" = "Заканчивающиеся события";
+"currentEventNavigator.viewAll.title" = "Все проходящие события";
 "账号基本信息" = "Основная информация об аккаунте";
 "剩余 %lld天" = "Осталось %lld дней(-я)";
 "剩余 %lld小时" = "Осталось %lld часов(-а)";
@@ -1395,3 +1395,7 @@
 
 "detailPortal.player.worldLevel" = "World Level";
 "detailPortal.player.adventureRank.short:%@" = "AR %@";
+
+// MARK: - 4.0.0
+
+"currentEventNavigator.tapToViewAll.title" = "Tap to View All";

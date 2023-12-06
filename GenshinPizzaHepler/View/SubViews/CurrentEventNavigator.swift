@@ -34,6 +34,14 @@ struct CurrentEventNavigator: View {
         colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 
+    var validEventContents: [EventModel] {
+        eventContents.filter {
+            (getRemainDays($0.endAt)?.day ?? 0) >= 0
+                && (getRemainDays($0.endAt)?.hour ?? 0) >= 0
+                && (getRemainDays($0.endAt)?.minute ?? 0) >= 0
+        }
+    }
+
     var body: some View {
         if !eventContents.isEmpty {
             Section {
@@ -42,12 +50,8 @@ struct CurrentEventNavigator: View {
                         .foregroundColor(.secondary)
                         .frame(width: 4, height: 60)
                     VStack(spacing: 7) {
-                        if eventContents.filter({
-                            (getRemainDays($0.endAt)?.day ?? 0) >= 0
-                                && (getRemainDays($0.endAt)?.hour ?? 0) >= 0
-                                && (getRemainDays($0.endAt)?.minute ?? 0) >=
-                                0
-                        }).count <= 0 {
+                        let eventContentsValid = validEventContents.prefix(3)
+                        if eventContentsValid.isEmpty {
                             HStack {
                                 Spacer()
                                 Text("gameEvents.noCurrentEventInfo")
@@ -56,45 +60,42 @@ struct CurrentEventNavigator: View {
                                 Spacer()
                             }
                         } else {
-                            ForEach(eventContents.filter {
-                                (getRemainDays($0.endAt)?.day ?? 0) >= 0
-                                    && (
-                                        getRemainDays($0.endAt)?.hour ?? 0
-                                    ) >=
-                                    0
-                                    &&
-                                    (
-                                        getRemainDays($0.endAt)?
-                                            .minute ?? 0
-                                    ) >=
-                                    0
-                            }.prefix(3), id: \.id) { content in
+                            ForEach(eventContentsValid, id: \.id) { content in
                                 eventItem(event: content)
                             }
                         }
                     }
                 }
+                .contentShape(Rectangle())
             } header: {
-                NavigationLink {
+                NavigationLinkSheetable {
                     AllEventsView(eventContents: $eventContents)
                 } label: {
                     HStack(spacing: 2) {
-                        Text("即将结束的活动")
+                        Text("currentEventNavigator.pendingEvents.title")
                             .foregroundColor(.primary)
                             .font(.headline)
                         Spacer()
-                        Text("查看全部活动")
-                            .foregroundColor(.secondary)
-                        Image(systemSymbol: .chevronForward)
-                            .padding(.leading, 5)
-                            .foregroundColor(.secondary)
+                        if OS.type != .macOS {
+                            Text("currentEventNavigator.viewAll.title")
+                                .foregroundColor(.secondary)
+                            Image(systemSymbol: .chevronForward)
+                                .padding(.leading, 5)
+                                .foregroundColor(.secondary)
+                        } else {
+                            Text("currentEventNavigator.tapToViewAll.title")
+                                .foregroundColor(.secondary)
+                        }
                     }
                     .font(.caption)
                 }
             }
             .background {
-                NavigationLink("", destination: { AllEventsView(eventContents: $eventContents) })
-                    .opacity(0)
+                NavigationLinkSheetable {
+                    AllEventsView(eventContents: $eventContents)
+                } label: {
+                    Rectangle()
+                }.opacity(0)
             }
         }
     }

@@ -924,8 +924,8 @@
 
 // Home View
 "当前活动" = "Sự Kiện Đang Diễn Ra";
-"即将结束的活动" = "Sự Kiện Sắp Kết Thúc";
-"查看全部活动" = "Tất Cả Sự Kiện Đang Diễn Ra";
+"currentEventNavigator.pendingEvents.title" = "Sự Kiện Sắp Kết Thúc";
+"currentEventNavigator.viewAll.title" = "Tất Cả Sự Kiện Đang Diễn Ra";
 "账号基本信息" = "Thông tin cơ bản về tài khoản";
 "剩余 %lld天" = "Còn Lại %lld Ngày";
 "剩余 %lld小时" = "Còn Lại %lld Giờ";
@@ -1547,3 +1547,7 @@
 
 "detailPortal.player.worldLevel" = "World Level";
 "detailPortal.player.adventureRank.short:%@" = "AR %@";
+
+// MARK: - 4.0.0
+
+"currentEventNavigator.tapToViewAll.title" = "Tap to View All";
