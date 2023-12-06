@@ -264,6 +264,7 @@ struct AbyssDataCollectionView: View {
             }
         }
         .environmentObject(abyssDataCollectionViewModel)
+        .navigationBarTitleDisplayMode(.inline)
         .listStyle(.insetGrouped)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
