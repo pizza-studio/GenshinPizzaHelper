@@ -67,7 +67,7 @@ struct ContentView: View {
         get: { selection },
         set: {
             if $0 != selection {
-                simpleTaptic(type: .medium)
+                simpleTaptic(type: .selection)
             }
             selection = $0
             Defaults[.appTabIndex] = $0
