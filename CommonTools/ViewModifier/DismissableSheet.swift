@@ -77,3 +77,47 @@ extension View {
         ))
     }
 }
+
+// MARK: - NavigationLinkSheetable
+
+struct NavigationLinkSheetable<D: View, L: View>: View {
+    // MARK: Lifecycle
+
+    public init(@ViewBuilder destination: @escaping () -> D, @ViewBuilder label: @escaping () -> L) {
+        self.destination = destination
+        self.label = label
+    }
+
+    // MARK: Internal
+
+    var body: some View {
+        if OS.type == .macOS {
+            Button {
+                isSheetShown.toggle()
+            } label: {
+                label()
+            }
+            .foregroundStyle(.primary)
+            .sheet(isPresented: $isSheetShown) {
+                NavigationView {
+                    destination()
+                        .navigationBarTitleDisplayMode(.inline)
+                        .dismissableSheet(isSheetShow: $isSheetShown)
+                }
+            }
+        } else {
+            NavigationLink(destination: destination(), label: { label() })
+        }
+    }
+
+    // MARK: Private
+
+    @ViewBuilder
+    private let destination: () -> D
+
+    @ViewBuilder
+    private let label: () -> L
+
+    @State
+    private var isSheetShown = false
+}
