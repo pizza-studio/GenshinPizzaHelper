@@ -29,7 +29,7 @@ struct LockScreenResinWidgetCorner: View {
                 return "\(data.resinInformation.calculatedCurrentResin), \(intervalFormatter.string(from: TimeInterval.sinceNow(to: data.resinInformation.resinRecoveryTime))!), \(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
             }
         case .failure:
-            return "原粹树脂".localized
+            return "app.dailynote.card.resin.label".localized
         }
     }
 

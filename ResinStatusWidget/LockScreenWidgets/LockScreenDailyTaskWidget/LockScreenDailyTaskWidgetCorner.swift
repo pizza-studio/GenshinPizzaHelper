@@ -27,7 +27,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
                         value: Double(data.dailyTaskInformation.finishedTaskCount),
                         in: 0 ... Double(data.dailyTaskInformation.totalTaskCount)
                     ) {
-                        Text("每日委托")
+                        Text("app.dailynote.card.dailyTask.label")
                     } currentValueLabel: {
                         Text(
                             "\(data.dailyTaskInformation.finishedTaskCount) / \(data.dailyTaskInformation.totalTaskCount)"
@@ -45,7 +45,7 @@ struct LockScreenDailyTaskWidgetCorner: View {
                 .resizable()
                 .scaledToFit()
                 .padding(4.5)
-                .widgetLabel("每日委托".localized)
+                .widgetLabel("app.dailynote.card.dailyTask.label".localized)
         }
     }
 }

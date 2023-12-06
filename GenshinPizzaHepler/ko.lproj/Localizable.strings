@@ -715,10 +715,10 @@
 
 // MARK: - 2.2
 // Watch App
-"原粹树脂" = "Original Resin";
-"洞天宝钱" = "Realm Currency";
-"每日委托" = "Daily Commission";
-"探索派遣" = "Expedition";
+"app.dailynote.card.resin.label" = "Original Resin";
+"app.dailynote.card.homeCoin.label" = "Realm Currency";
+"app.dailynote.card.dailyTask.label" = "Daily Commission";
+"app.dailynote.card.expedition.label" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
 "infoBlock.refilledAt:%@" = "Refilled at \n%@";
@@ -783,9 +783,9 @@
 
 // MARK: - 2.4
 // Content View
-"概览" = "Overview";
-"详情" = "Details";
-"工具" = "Tools";
+"app.home.title" = "Overview";
+"app.detailPortal.title" = "Details";
+"app.tools.title" = "Tools";
 
 // Home View
 "当前活动" = "Ongoing Events";
@@ -891,7 +891,7 @@
 "由爱丽丝工坊提供（未安装）" = "Provided by Alice Workshop";
 "旅行工具" = "Gadgets for Travellers";
 // Ledger sheet
-"原石摩拉账簿" = "Primogems and Mora Ledger";
+"app.detailPortal.ledger.title" = "Primogems and Mora Ledger";
 "保存本月原石账簿图片" = "Save image of this month's primogems ladger";
 "原石收入" = "Primogems";
 "摩拉收入" = "Mora";
@@ -1398,3 +1398,8 @@
 
 "currentEventNavigator.tapToViewAll.title" = "Tap to View All";
 "settings.display.hideSubSectionTitleFromInformationRowView" = "Hide sub-section titles from information rows";
+"app.detailPortal.allAvatar.title" = "All Characters";
+"app.detailPortal.basicInfo.title" = "Basic Statistics";
+"app.detailPortal.abyss.title" = "Spiral Abyss Records";
+"app.dailynote.card.dailyTask.extraReward.received" = "Extra Reward Retrieved";
+"app.dailynote.card.dailyTask.extraReward.notReceived" = "Extra Reward Available";

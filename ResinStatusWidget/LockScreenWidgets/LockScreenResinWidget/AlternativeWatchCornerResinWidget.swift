@@ -62,7 +62,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
                     value: Double(resinInfo.calculatedCurrentResin),
                     in: 0 ... Double(resinInfo.maxResin)
                 ) {
-                    Text("原粹树脂")
+                    Text("app.dailynote.card.resin.label")
                 } currentValueLabel: {
                     Text("\(resinInfo.calculatedCurrentResin)")
                 } minimumValueLabel: {

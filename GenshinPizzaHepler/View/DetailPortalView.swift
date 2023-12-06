@@ -785,7 +785,7 @@ private struct LedgerView: View {
                 }
             }
         }
-        .navigationTitle("原石摩拉账簿")
+        .navigationTitle("app.detailPortal.ledger.title")
     }
 
     // MARK: Private

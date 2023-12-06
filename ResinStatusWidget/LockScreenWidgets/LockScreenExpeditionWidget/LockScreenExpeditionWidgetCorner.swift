@@ -34,7 +34,7 @@ struct LockScreenExpeditionWidgetCorner: View {
             }()
             return "\(data.expeditionInformation.ongoingExpeditionCount)/\(data.expeditionInformation.maxExpeditionsCount) \(timeDescription)"
         case .failure:
-            return "探索派遣".localized
+            return "app.dailynote.card.expedition.label".localized
         }
     }
 

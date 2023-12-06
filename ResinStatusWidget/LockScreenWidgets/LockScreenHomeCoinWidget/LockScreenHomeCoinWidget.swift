@@ -24,7 +24,7 @@ struct LockScreenHomeCoinWidget: Widget {
             LockScreenHomeCoinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("洞天宝钱")
+        .configurationDisplayName("app.dailynote.card.homeCoin.label")
         .description("洞天宝钱数量")
         #if os(watchOS)
             .supportedFamilies([

@@ -39,7 +39,7 @@ struct ToolView: View {
                 }
                 ThirdPartyToolsView()
             }
-            .navigationTitle("app.tool.title")
+            .navigationTitle("app.tools.title")
         }
         .alwaysShowSideBar()
     }

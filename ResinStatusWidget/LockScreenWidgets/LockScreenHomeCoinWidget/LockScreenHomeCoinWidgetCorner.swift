@@ -22,7 +22,7 @@ struct LockScreenHomeCoinWidgetCorner: View {
         case let .success(data):
             return "\(data.homeCoinInformation.calculatedCurrentHomeCoin), \(intervalFormatter.string(from: TimeInterval.sinceNow(to: data.homeCoinInformation.fullTime))!)"
         case .failure:
-            return "洞天宝钱".localized
+            return "app.dailynote.card.homeCoin.label".localized
         }
     }
 

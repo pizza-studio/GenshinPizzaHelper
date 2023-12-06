@@ -88,17 +88,17 @@ struct ContentView: View {
             HomeView()
                 .tag(0)
                 .tabItem {
-                    Label("概览", systemSymbol: .listBullet)
+                    Label("app.home.title", systemSymbol: .listBullet)
                 }
             DetailPortalView()
                 .tag(1)
                 .tabItem {
-                    Label("详情", systemSymbol: .personTextRectangle)
+                    Label("app.detailPortal.title", systemSymbol: .personTextRectangle)
                 }
             ToolView()
                 .tag(2)
                 .tabItem {
-                    Label("工具", systemSymbol: .shippingboxFill)
+                    Label("app.tools.title", systemSymbol: .shippingboxFill)
                 }
             SettingsView(storeManager: storeManager)
                 .tag(3)

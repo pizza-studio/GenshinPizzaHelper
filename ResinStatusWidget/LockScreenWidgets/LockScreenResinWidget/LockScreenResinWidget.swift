@@ -26,7 +26,7 @@ struct LockScreenResinWidget: Widget {
             LockScreenResinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("原粹树脂")
+        .configurationDisplayName("app.dailynote.card.resin.label")
         .description("树脂回复状态")
         #if os(watchOS)
             .supportedFamilies([

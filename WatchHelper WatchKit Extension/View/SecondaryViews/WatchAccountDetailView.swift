@@ -24,13 +24,13 @@ struct WatchAccountDetailView: View {
                     Divider()
                     VStack(alignment: .leading, spacing: 5) {
                         WatchAccountDetailItemView(
-                            title: "洞天宝钱",
+                            title: "app.dailynote.card.homeCoin.label",
                             value: "\(data.homeCoinInformation.currentHomeCoin)",
                             icon: Image("洞天宝钱")
                         )
                         Divider()
                         WatchAccountDetailItemView(
-                            title: "每日委托",
+                            title: "app.dailynote.card.dailyTask.label",
                             value: "\(data.dailyTaskInformation.finishedTaskCount) / \(data.dailyTaskInformation.totalTaskCount)",
                             icon: Image("每日任务")
                         )
@@ -56,7 +56,7 @@ struct WatchAccountDetailView: View {
                         }
                         Divider()
                         WatchAccountDetailItemView(
-                            title: "探索派遣",
+                            title: "app.dailynote.card.expedition.label",
                             value: "\(data.expeditionInformation.ongoingExpeditionCount) / \(data.expeditionInformation.maxExpeditionsCount)",
                             icon: Image("派遣探索")
                         )

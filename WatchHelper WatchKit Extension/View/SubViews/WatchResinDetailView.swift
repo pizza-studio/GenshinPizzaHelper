@@ -20,7 +20,7 @@ struct WatchResinDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 25)
-                Text("原粹树脂")
+                Text("app.dailynote.card.resin.label")
                     .foregroundColor(.gray)
             }
             Text("\(resinInfo.currentResin)")

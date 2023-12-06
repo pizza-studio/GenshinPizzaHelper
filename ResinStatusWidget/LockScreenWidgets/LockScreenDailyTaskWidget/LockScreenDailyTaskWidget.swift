@@ -24,7 +24,7 @@ struct LockScreenDailyTaskWidget: Widget {
             LockScreenDailyTaskWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("每日委托")
+        .configurationDisplayName("app.dailynote.card.dailyTask.label")
         .description("每日委托完成情况")
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])

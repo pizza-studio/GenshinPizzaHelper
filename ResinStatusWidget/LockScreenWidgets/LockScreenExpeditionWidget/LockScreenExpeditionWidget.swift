@@ -24,7 +24,7 @@ struct LockScreenExpeditionWidget: Widget {
             LockScreenExpeditionWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("探索派遣")
+        .configurationDisplayName("app.dailynote.card.expedition.label")
         .description("探索派遣完成情况")
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])

@@ -839,10 +839,10 @@
 
 // MARK: - 2.2
 // Watch App
-"原粹树脂" = "Nhựa Nguyên Chất";
-"洞天宝钱" = "Tiền Động Tiên";
-"每日委托" = "Nhiệm Vụ Hàng Ngày";
-"探索派遣" = "Phái Đi Thám Hiểm";
+"app.dailynote.card.resin.label" = "Nhựa Nguyên Chất";
+"app.dailynote.card.homeCoin.label" = "Tiền Động Tiên";
+"app.dailynote.card.dailyTask.label" = "Nhiệm Vụ Hàng Ngày";
+"app.dailynote.card.expedition.label" = "Phái Đi Thám Hiểm";
 "参量质变仪" = "Máy Biến Đổi Tham Số";
 "周本折扣" = "Vùng Đất Thảo Phạt";
 "infoBlock.transformerAvailable" = "CD Xong";
@@ -918,9 +918,9 @@
 
 // MARK: - 2.4
 // Content View
-"概览" = "Tổng Quan";
-"详情" = "Chi tiết";
-"工具" = "Công Cụ";
+"app.home.title" = "Tổng Quan";
+"app.detailPortal.title" = "Chi tiết";
+"app.tools.title" = "Công Cụ";
 
 // Home View
 "当前活动" = "Sự Kiện Đang Diễn Ra";
@@ -1028,7 +1028,7 @@
 "由爱丽丝工坊提供（未安装）" = "Cung cấp bởi Alice Workshop";
 "旅行工具" = "Dông cụ du lịch";
 // Ledger sheet
-"原石摩拉账簿" = "Nhật Ký Nhà Lữ Hành";
+"app.detailPortal.ledger.title" = "Nhật Ký Nhà Lữ Hành";
 "保存本月原石账簿图片" = "Lưu hình ảnh nguyên thạch và mora có được của tháng này";
 "原石收入" = "Nguyên Thạch";
 "摩拉收入" = "Mora";
@@ -1552,3 +1552,8 @@
 
 "currentEventNavigator.tapToViewAll.title" = "Tap to View All";
 "settings.display.hideSubSectionTitleFromInformationRowView" = "Hide sub-section titles from information rows";
+"app.detailPortal.allAvatar.title" = "All Characters";
+"app.detailPortal.basicInfo.title" = "Basic Statistics";
+"app.detailPortal.abyss.title" = "Spiral Abyss Records";
+"app.dailynote.card.dailyTask.extraReward.received" = "Extra Reward Retrieved";
+"app.dailynote.card.dailyTask.extraReward.notReceived" = "Extra Reward Available";
