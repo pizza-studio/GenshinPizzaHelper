@@ -455,13 +455,10 @@ private struct PlayerDetailSection: View {
                             ) { avatar in
                                 Button {
                                     simpleTaptic(type: .medium)
-                                    withAnimation(
-                                        .interactiveSpring(
-                                            response: 0.25,
-                                            dampingFraction: 1.0,
-                                            blendDuration: 0
-                                        )
-                                    ) {
+                                    var transaction = Transaction()
+                                    transaction.animation = .easeInOut
+                                    transaction.disablesAnimations = true
+                                    withTransaction(transaction) {
                                         showingCharacterName =
                                             avatar.name
                                     }
@@ -481,7 +478,12 @@ private struct PlayerDetailSection: View {
                     showingCharacterName: characterName,
                     playerDetail: playerDetail
                 ) {
-                    showingCharacterName = nil
+                    var transaction = Transaction()
+                    transaction.animation = .easeInOut
+                    transaction.disablesAnimations = true
+                    withTransaction(transaction) {
+                        showingCharacterName = nil
+                    }
                 }
                 .environment(\.colorScheme, .dark)
             }
