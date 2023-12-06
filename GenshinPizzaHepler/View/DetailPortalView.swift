@@ -658,8 +658,8 @@ private struct AbyssInfoNavigator: View {
                             HStack(alignment: .lastTextBaseline, spacing: 0) {
                                 Text(verbatim: "\(abyssInfo.maxFloor)")
                                     .font(.title)
-                                Text(verbatim: "✡︎ \(abyssInfo.totalStar)")
-                                    .font(.caption)
+                                Text(verbatim: "  ✡︎ \(abyssInfo.totalStar)")
+                                    .font(.title3)
                             }
                             Spacer()
                         } else {
