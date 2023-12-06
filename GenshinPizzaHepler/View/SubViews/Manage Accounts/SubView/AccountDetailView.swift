@@ -68,7 +68,7 @@ struct AccountDetailView: View {
                 }
                 Picker("sys.label.server", selection: $unsavedServer) {
                     ForEach(Server.allCases, id: \.self) { server in
-                        Text(server.description).tag(server)
+                        Text(server.localized).tag(server)
                     }
                 }
             }

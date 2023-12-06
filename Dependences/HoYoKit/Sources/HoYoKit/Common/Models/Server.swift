@@ -33,7 +33,20 @@ extension Server {
     public var localized: String { localizedKey.localized }
 
     public var localizedKey: String {
-        "server.region.name.\(String(describing: self))"
+        switch self {
+        case .china:
+            return "server.region.name.celestia"
+        case .bilibili:
+            return "server.region.name.irminsul"
+        case .unitedStates:
+            return "server.region.name.us"
+        case .europe:
+            return "server.region.name.eu"
+        case .asia:
+            return "server.region.name.asia"
+        case .hongKongMacauTaiwan:
+            return "server.region.name.hongKongMacauTaiwan"
+        }
     }
 
     /// The timezone of the server.

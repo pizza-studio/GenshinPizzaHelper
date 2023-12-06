@@ -42,7 +42,7 @@ struct ManageAccountsView: View {
                                     .foregroundColor(.primary)
                                 HStack {
                                     Text(account.uid ?? "")
-                                    Text(account.server.description)
+                                    Text(account.server.localized)
                                 }
                                 .font(.footnote)
                                 .foregroundColor(.secondary)

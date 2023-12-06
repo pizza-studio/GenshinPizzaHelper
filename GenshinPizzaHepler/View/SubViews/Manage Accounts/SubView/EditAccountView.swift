@@ -39,7 +39,7 @@ struct EditAccountView: View {
             HStack {
                 Text("UID: " + (account.uid ?? ""))
                 Spacer()
-                Text(account.server.description)
+                Text(account.server.localized)
             }
         }
         if let accountsForSelected = accountsForSelected {
