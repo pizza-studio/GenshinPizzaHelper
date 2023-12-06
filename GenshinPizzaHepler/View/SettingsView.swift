@@ -234,7 +234,7 @@ struct SettingViewIOS16: View {
                 }
             }
         }
-        .navigationSplitViewStyle(.balanced)
+        .alwaysShowSideBar()
         #if DEBUG
             .toast(isPresenting: $isAlertToastShown) {
                 AlertToast(
@@ -261,7 +261,7 @@ private struct SettingViewIOS15: View {
             navList.listStyle(.insetGrouped)
             DisplayOptionsView() // 预设内容页
         }
-        .navigationViewStyle(.columns)
+        .alwaysShowSideBar()
         #if DEBUG
             .toast(isPresenting: $isAlertToastShown) {
                 AlertToast(

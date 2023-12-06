@@ -15,7 +15,7 @@ private struct AlwaysShowSideBar: ViewModifier {
         if #available(iOS 16.0, *) {
             content.navigationSplitViewStyle(.balanced)
         } else {
-            content
+            content.navigationViewStyle(.columns)
         }
     }
 }
