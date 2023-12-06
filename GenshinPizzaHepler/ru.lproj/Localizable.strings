@@ -517,7 +517,7 @@
 "settings.account.server" = "Сервер";
 "settings.account.testConnection" = "Проверка соединения";
 "settings.account.errorMessage" = "Подробности ошибки";
-"settings.account.accountInformation" = "Информация аккаунта";
+"settings.account.accountDetails" = "Информация аккаунта";
 
 "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "Ваш ник учетной записи будет изображен на виджете";
 "settings.account.pasteFromClipboard" = "Вставить с буфера обмена";
@@ -695,7 +695,7 @@
 "密码" = "Пароль";
 
 // Setting View
-"完成" = "Готово";
+"sys.done" = "Готово";
 "编辑" = "Изменить";
 
 //Widget Tips
@@ -955,7 +955,7 @@
 "**日语** %@" = "**JA** %@";
 "**中文** %@" = "**ZH** %@";
 
-"取消" = "Отмена";
+"sys.cancel" = "Отмена";
 
 // UpdateHistoryInfoView
 "更新公告" = "Новое обновление";
@@ -1362,7 +1362,7 @@
 // MARK: - 3.0.4
 
 "settings.reverseProxy.navTitle" = "Reverse Proxy Settings";
-"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "Only accounts of China Mainland servers are needed";
+"settings.account.regenerateDeviceFingerPrint.footer" = "Only Celestia and Irminsul server accounts require the device fingerprint.";
 
 // MARK: - 3.1.1
 
@@ -1405,3 +1405,6 @@
 "app.detailPortal.abyss.title" = "Spiral Abyss Records";
 "app.dailynote.card.dailyTask.extraReward.received" = "Extra Reward Retrieved";
 "app.dailynote.card.dailyTask.extraReward.notReceived" = "Extra Reward Available";
+"settings.account.regenerateDeviceFingerPrint.label" = "Regenerate Device Fingerprint";
+"sys.label.cookie" = "Cookie";
+"settings.account.manage.title" = "Account Management";

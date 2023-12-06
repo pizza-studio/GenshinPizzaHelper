@@ -513,11 +513,11 @@ Created by Bill Haku on 2022/8/23.
 // Account detail
 "settings.account.reloginHoyoLabAccount" = "重新登录米哈游通行证账号";
 "settings.account.config" = "账号配置";
-"settings.account.username" = "账号名";
+"settings.account.username" = "账号名称";
 "settings.account.server" = "服务器";
 "settings.account.testConnection" = "测试连接";
 "settings.account.errorMessage" = "错误内容";
-"settings.account.accountInformation" = "账号信息";
+"settings.account.accountDetails" = "账号信息";
 
 "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "你可以自定义显示在小组件上的账号名称";
 "settings.account.pasteFromClipboard" = "粘贴自剪贴板";
@@ -695,7 +695,7 @@ Created by Bill Haku on 2022/8/23.
 "密码" = "密码";
 
 // Setting View
-"完成" = "完成";
+"sys.done" = "完成";
 "编辑" = "编辑";
 
 //Widget Tips
@@ -955,7 +955,7 @@ Created by Bill Haku on 2022/8/23.
 "**日语** %@" = "**日语** %@";
 "**中文** %@" = "**中文** %@";
 
-"取消" = "取消";
+"sys.cancel" = "取消";
 
 // UpdateHistoryInfoView
 "更新公告" = "更新公告";
@@ -1361,7 +1361,7 @@ Created by Bill Haku on 2022/8/23.
 
 // MARK: - 3.0.4
 "settings.reverseProxy.navTitle" = "反向代理设置";
-"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "设备指纹仅限国服账号需要设置";
+"settings.account.regenerateDeviceFingerPrint.footer" = "设备指纹仅限天空岛和世界树服务器账号所必需。";
 
 // MARK: - 3.1.1
 
@@ -1404,4 +1404,6 @@ Created by Bill Haku on 2022/8/23.
 "app.detailPortal.abyss.title" = "深境螺旋战绩";
 "app.dailynote.card.dailyTask.extraReward.received" = "已领取额外奖励";
 "app.dailynote.card.dailyTask.extraReward.notReceived" = "额外奖励待领取";
-
+"settings.account.regenerateDeviceFingerPrint.label" = "重新生成设备指纹";
+"sys.label.cookie" = "Cookie";
+"settings.account.manage.title" = "管理账号";

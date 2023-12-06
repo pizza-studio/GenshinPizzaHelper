@@ -36,7 +36,7 @@ struct CreateAccountSheetView: View {
                     gotAccountView()
                 }
             }
-            .navigationTitle("account.new")
+            .navigationTitle("settings.account.addAccount")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -230,7 +230,7 @@ private struct RequireLoginView: View {
                 if unsavedCookie == "" || unsavedCookie == nil {
                     Text("account.label.login")
                 } else {
-                    Text("account.label.relogin")
+                    Text("settings.account.reloginHoyoLabAccount")
                 }
             }
             .frame(

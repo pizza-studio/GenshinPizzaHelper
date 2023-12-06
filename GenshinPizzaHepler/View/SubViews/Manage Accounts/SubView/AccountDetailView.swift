@@ -54,10 +54,14 @@ struct AccountDetailView: View {
         List {
             Section {
                 HStack {
-                    Text("account.label.nickname")
+                    Text("settings.account.username")
                     Spacer()
-                    TextField("account.label.nickname", text: $unsavedName, prompt: Text("account.label.nickname"))
-                        .multilineTextAlignment(.trailing)
+                    TextField(
+                        "settings.account.username",
+                        text: $unsavedName,
+                        prompt: Text("settings.account.username")
+                    )
+                    .multilineTextAlignment(.trailing)
                 }
                 HStack {
                     Text("UID")
@@ -66,7 +70,7 @@ struct AccountDetailView: View {
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                 }
-                Picker("sys.label.server", selection: $unsavedServer) {
+                Picker("settings.account.server", selection: $unsavedServer) {
                     ForEach(Server.allCases, id: \.self) { server in
                         Text(server.localized).tag(server)
                     }
@@ -82,13 +86,13 @@ struct AccountDetailView: View {
                     .textCase(.none)
             }
             Section {
-                TextField("account.fp.label", text: $deviceFingerPrint)
+                TextField("settings.account.deviceFingerprint", text: $deviceFingerPrint)
                     .multilineTextAlignment(.leading)
             } header: {
-                Text("account.fp.label")
+                Text("settings.account.deviceFingerprint")
                     .textCase(.none)
             }
         }
-        .navigationBarTitle("account.label.detail", displayMode: .inline)
+        .navigationBarTitle("settings.account.accountDetails", displayMode: .inline)
     }
 }

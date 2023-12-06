@@ -370,7 +370,7 @@ private struct AddNewAccountButton: View {
         VStack {
             HStack {
                 Spacer()
-                Label("account.new", systemSymbol: .plusCircle)
+                Label("settings.account.addAccount", systemSymbol: .plusCircle)
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)

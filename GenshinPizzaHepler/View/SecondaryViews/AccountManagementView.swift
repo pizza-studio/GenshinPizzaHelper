@@ -81,7 +81,7 @@ import SwiftUI
 //            }
 //        } label: {
 //            if editMode.isEditing {
-//                Text("完成")
+//                Text("sys.done")
 //                    .font(.footnote)
 //            } else {
 //                Text("编辑")

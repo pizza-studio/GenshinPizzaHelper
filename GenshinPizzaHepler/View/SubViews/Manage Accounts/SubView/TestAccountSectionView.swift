@@ -20,7 +20,7 @@ struct TestAccountSectionView: View {
                 doTest()
             } label: {
                 HStack {
-                    Text("account.new.test")
+                    Text("settings.account.testConnection")
                     Spacer()
                     buttonIcon()
                 }

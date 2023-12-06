@@ -69,7 +69,7 @@ struct WidgetTipsView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
+                    Button("sys.done") {
                         isSheetShow.toggle()
                     }
                 }

@@ -49,7 +49,7 @@ import SwiftUI
 //            Section {
 //                InfoEditor(title: "settings.account.deviceFingerprint".localized, content: $unsavedDeviceFingerPrint)
 //            } footer: {
-//                Text("settings.account.intlAccountNeverNeedsDeviceFingerprintSettings")
+//                Text("settings.account.regenerateDeviceFingerPrint.footer")
 //                    .textCase(.none)
 //            }
 //            if unsavedUid != "", unsavedCookie != "" {
@@ -63,6 +63,6 @@ import SwiftUI
 //            }
 //        }
 //        .sectionSpacing(UIFont.systemFontSize)
-//        .navigationBarTitle("settings.account.accountInformation", displayMode: .inline)
+//        .navigationBarTitle("settings.account.accountDetails", displayMode: .inline)
 //    }
 // }

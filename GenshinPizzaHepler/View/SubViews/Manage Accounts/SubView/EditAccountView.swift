@@ -30,9 +30,9 @@ struct EditAccountView: View {
         }
         Section {
             HStack {
-                Text("account.label.nickname")
+                Text("settings.account.username")
                 Spacer()
-                TextField("account.label.nickname", text: accountName)
+                TextField("settings.account.username", text: accountName)
                     .multilineTextAlignment(.trailing)
             }
         } header: {
@@ -58,7 +58,7 @@ struct EditAccountView: View {
                     unsavedDeviceFingerPrint: $account.safeDeviceFingerPrint
                 )
             } label: {
-                Text("account.label.detail")
+                Text("settings.account.accountDetails")
             }
         }
 
@@ -91,7 +91,7 @@ private struct RequireLoginView: View {
         Button {
             isGetCookieWebViewShown.toggle()
         } label: {
-            Text("account.label.relogin")
+            Text("settings.account.reloginHoyoLabAccount")
                 .frame(
                     maxWidth: .infinity,
                     maxHeight: .infinity
@@ -126,7 +126,7 @@ private struct SelectAccountView: View {
 
     var body: some View {
         Section {
-            // 如果该帐号绑定的UID不止一个，则显示Picker选择帐号
+            // 如果该账号绑定的UID不止一个，则显示Picker选择账号
             if accountsForSelected.count > 1 {
                 Picker("account.label.select", selection: selectedAccount) {
                     ForEach(
@@ -207,19 +207,19 @@ private struct RegenerateDeviceFingerPrintSection: View {
             } label: {
                 switch status {
                 case .pending:
-                    Text("account.regenerateDeviceFingerPrint.label")
+                    Text("settings.account.regenerateDeviceFingerPrint.label")
                 case .progress:
                     ProgressView()
                 case .succeed:
                     Label {
-                        Text("account.regenerateDeviceFingerPrint.label")
+                        Text("settings.account.regenerateDeviceFingerPrint.label")
                     } icon: {
                         Image(systemSymbol: .checkmarkCircle)
                             .foregroundStyle(.green)
                     }
                 case .fail:
                     Label {
-                        Text("account.regenerateDeviceFingerPrint.label")
+                        Text("settings.account.regenerateDeviceFingerPrint.label")
                     } icon: {
                         Image(systemSymbol: .xmarkCircle)
                             .foregroundStyle(.red)
@@ -233,7 +233,7 @@ private struct RegenerateDeviceFingerPrintSection: View {
                 Text(error.localizedDescription)
             }
         } footer: {
-            Text("account.regenerateDeviceFingerPrint.footer")
+            Text("settings.account.regenerateDeviceFingerPrint.footer")
         }
     }
 }

@@ -513,11 +513,11 @@
 // Account detail
 "settings.account.reloginHoyoLabAccount" = "重新登入米哈遊通行證帳號";
 "settings.account.config" = "帳號配置";
-"settings.account.username" = "帳號名";
+"settings.account.username" = "帳號名稱";
 "settings.account.server" = "伺服器";
 "settings.account.testConnection" = "測試連線";
 "settings.account.errorMessage" = "錯誤內容";
-"settings.account.accountInformation" = "帳號資訊";
+"settings.account.accountDetails" = "帳號資訊";
 
 "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "您可以自訂顯示在小工具上的帳號名稱";
 "settings.account.pasteFromClipboard" = "粘貼自剪貼板";
@@ -695,7 +695,7 @@
 "密码" = "密碼";
 
 // Setting View
-"完成" = "完成";
+"sys.done" = "完成";
 "编辑" = "編輯";
 
 //Widget Tips
@@ -955,7 +955,7 @@
 "**日语** %@" = "**日語** %@";
 "**中文** %@" = "**中文** %@";
 
-"取消" = "取消";
+"sys.cancel" = "取消";
 
 // UpdateHistoryInfoView
 "更新公告" = "更新公告";
@@ -1363,7 +1363,7 @@
 // MARK: - 3.0.4
 
 "settings.reverseProxy.navTitle" = "反向代理設定";
-"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "設備指紋僅限國服帳號需要設置";
+"settings.account.regenerateDeviceFingerPrint.footer" = "設備指紋僅限天空島和世界樹伺服器帳號所必需。";
 
 // MARK: - 3.1.1
 
@@ -1406,4 +1406,6 @@
 "app.detailPortal.abyss.title" = "深境螺旋戰績";
 "app.dailynote.card.dailyTask.extraReward.received" = "已領取額外獎勵";
 "app.dailynote.card.dailyTask.extraReward.notReceived" = "額外獎勵待領取";
-
+"settings.account.regenerateDeviceFingerPrint.label" = "重新生成設備指紋";
+"sys.label.cookie" = "Cookie";
+"settings.account.manage.title" = "管理帳號";

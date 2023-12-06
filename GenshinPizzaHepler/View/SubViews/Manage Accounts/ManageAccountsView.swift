@@ -28,7 +28,7 @@ struct ManageAccountsView: View {
                 Button {
                     sheetType = .createNewAccount(AccountConfiguration(context: viewContext))
                 } label: {
-                    Label("account.new", systemSymbol: .plusCircle)
+                    Label("settings.account.addAccount", systemSymbol: .plusCircle)
                 }
             }
             Section {
@@ -56,7 +56,7 @@ struct ManageAccountsView: View {
                 .onMove(perform: moveItems)
             }
         }
-        .navigationTitle("account.manage.title")
+        .navigationTitle("settings.account.manage.title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $sheetType, content: { type in
             switch type {

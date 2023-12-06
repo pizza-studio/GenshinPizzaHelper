@@ -283,7 +283,7 @@ private struct HelpSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
+                    Button("sys.done") {
                         isPresented.toggle()
                     }
                 }

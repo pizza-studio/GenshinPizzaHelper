@@ -518,7 +518,7 @@
 "settings.account.server" = "Máy chủ";
 "settings.account.testConnection" = "Kiểm tra kết nối";
 "settings.account.errorMessage" = "Chi tiết lỗi";
-"settings.account.accountInformation" = "Thông tin tài khoản";
+"settings.account.accountDetails" = "Thông tin tài khoản";
 
 "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "Tên tài khoản tùy chỉnh của bạn được hiển thị trên tiện ích";
 "settings.account.pasteFromClipboard" = "Dán từ Clipboard";
@@ -533,7 +533,7 @@
 "settings.account.prompt.loginToFetchCookie" = "Lấy Cookie thông qua HoYoLAB";
 
 "settings.account.prompt.pleaseFinishLogin" = "Vui lòng hoàn tất đăng nhập";
-"完成" = "Xong";
+"sys.done" = "Xong";
 "settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "Không thể lấy Cookie. Vui lòng thử lại.";
 "settings.account.configuration.notFinishedYet" = "Cấu hình tài khoản chưa hoàn tất";
 "settings.account.configuration.beforeAddingYourAccount" = "Trước khi thêm tài khoản của bạn…";
@@ -819,7 +819,7 @@
 "密码" = "Mật khẩu";
 
 // Setting View
-"完成" = "Xong";
+"sys.done" = "Xong";
 "编辑" = "Sửa";
 
 //tiện ích Tips
@@ -1092,7 +1092,7 @@
 "**日语** %@" = "**JA** %@";
 "**中文** %@" = "**ZH** %@";
 
-"取消" = "Huỷ Bỏ";
+"sys.cancel" = "Huỷ Bỏ";
 
 // UpdateHistoryInfoView
 "更新公告" = "Thông báo cập nhật";
@@ -1514,7 +1514,7 @@
 // MARK: - 3.0.4
 
 "settings.reverseProxy.navTitle" = "Reverse Proxy Settings";
-"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "Only accounts of China Mainland servers are needed";
+"settings.account.regenerateDeviceFingerPrint.footer" = "Only Celestia and Irminsul server accounts require the device fingerprint.";
 
 // MARK: - 3.1.1
 
@@ -1557,3 +1557,6 @@
 "app.detailPortal.abyss.title" = "Spiral Abyss Records";
 "app.dailynote.card.dailyTask.extraReward.received" = "Extra Reward Retrieved";
 "app.dailynote.card.dailyTask.extraReward.notReceived" = "Extra Reward Available";
+"settings.account.regenerateDeviceFingerPrint.label" = "Regenerate Device Fingerprint";
+"sys.label.cookie" = "Cookie";
+"settings.account.manage.title" = "Account Management";

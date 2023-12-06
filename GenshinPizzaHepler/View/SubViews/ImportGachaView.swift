@@ -72,7 +72,7 @@ struct ImportGachaView: View {
                         processXlsx(url: url)
                     }
                 })
-                Button("取消", role: .cancel, action: { alert = nil })
+                Button("sys.cancel", role: .cancel, action: { alert = nil })
 
             },
             message: { _ in
@@ -415,7 +415,7 @@ private struct HelpSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
+                    Button("sys.done") {
                         isShow.toggle()
                     }
                 }

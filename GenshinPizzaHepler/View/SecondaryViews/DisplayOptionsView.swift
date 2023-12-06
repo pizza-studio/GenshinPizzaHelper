@@ -24,7 +24,7 @@ struct DisplayOptionsView: View {
                     actions: {
                         TextField("settings.display.customizedNameForKunikuzushi", text: $customizedNameForWanderer)
                             .onReceive(Just(customizedNameForWanderer)) { _ in limitText(20) }
-                        Button("完成") {
+                        Button("sys.done") {
                             isCustomizedNameForWandererAlertShow.toggle()
                         }
                     }

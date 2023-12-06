@@ -217,7 +217,7 @@ struct GenshinDictionary: View {
                             Button(action: {
                                 showInfoSheet.toggle()
                             }) {
-                                Text("完成")
+                                Text("sys.done")
                             }
                         }
                     }

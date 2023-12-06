@@ -73,7 +73,7 @@ import WebKit
 //                        )
 //                        .toolbar {
 //                            ToolbarItem(placement: .navigationBarLeading) {
-//                                Button("取消") {
+//                                Button("sys.cancel") {
 //                                    sheetItem = nil
 //                                }
 //                            }

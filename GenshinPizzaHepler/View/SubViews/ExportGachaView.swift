@@ -110,7 +110,7 @@ struct ExportGachaView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button("取消") {
+                        Button("sys.cancel") {
                             isSheetShow.toggle()
                         }
                     }

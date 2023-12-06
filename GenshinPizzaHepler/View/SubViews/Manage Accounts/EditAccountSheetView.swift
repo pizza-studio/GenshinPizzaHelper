@@ -25,7 +25,7 @@ struct EditAccountSheetView: View {
             List {
                 EditAccountView(account: account)
             }
-            .navigationTitle("account.edit.title")
+            .navigationTitle("settings.account.config")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
