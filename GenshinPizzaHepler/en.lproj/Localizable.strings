@@ -1396,3 +1396,4 @@
 // MARK: - 4.0.0
 
 "currentEventNavigator.tapToViewAll.title" = "Tap to View All";
+"settings.display.hideSubSectionTitleFromInformationRowView" = "Hide sub-section titles from information rows";

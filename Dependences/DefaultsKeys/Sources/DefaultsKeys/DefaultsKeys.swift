@@ -182,6 +182,8 @@ extension Defaults.Keys {
 
     // MARK: - Display Options
 
+    public static let hideSubSectionTitleFromInformationRowView =
+        Key<Bool>("hideSubSectionTitleFromInformationRowView", default: false, suite: .opSuite)
     public static let adaptiveSpacingInCharacterView =
         Key<Bool>("adaptiveSpacingInCharacterView", default: true, suite: .opSuite)
     public static let showRarityAndLevelForArtifacts =
