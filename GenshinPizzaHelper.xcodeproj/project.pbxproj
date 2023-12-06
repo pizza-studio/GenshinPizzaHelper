@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033792AD1A01700CCCC66 /* Defaults */; };
+		5B0808A52B204ACB00C8E0FA /* InformationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAEF91C2B2046E9005440E0 /* InformationRowView.swift */; };
 		5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
@@ -2610,6 +2611,7 @@
 				EAA969F42ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				5BD1C5E02A2A1FC90043C2B1 /* GameInfoBlockView.swift in Sources */,
 				5BD1C5E12A2A1FC90043C2B1 /* GachaFetch.swift in Sources */,
+				5B0808A52B204ACB00C8E0FA /* InformationRowView.swift in Sources */,
 				5BD1C5E22A2A1FC90043C2B1 /* AccountConfigurationModel.swift in Sources */,
 				5BD1C5E32A2A1FC90043C2B1 /* DateRelationIdentifier.swift in Sources */,
 				5BD1C5E42A2A1FC90043C2B1 /* ViewTools.swift in Sources */,
