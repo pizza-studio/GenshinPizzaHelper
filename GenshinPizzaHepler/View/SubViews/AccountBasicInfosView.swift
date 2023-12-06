@@ -17,7 +17,8 @@ struct AccountBasicInfosView: View {
     var body: some View {
         if let basicAccountInfo = basicAccountInfo {
             Section {
-                if Locale.isUILanguagePanChinese, !ThisDevice.isSmallestHDScreenPhone {
+                if Locale.isUILanguagePanChinese,
+                   !(ThisDevice.isSmallestSlideOverWindowWidth || ThisDevice.isSmallestHDScreenPhone) {
                     HStack(alignment: .top) {
                         VStack(spacing: 5) {
                             InfoPreviewer(
