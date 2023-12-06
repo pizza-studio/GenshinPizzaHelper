@@ -518,6 +518,8 @@ private struct PlayerDetailSection: View {
 // MARK: - AllAvatarNavigator
 
 private struct AllAvatarNavigator: View {
+    // MARK: Internal
+
     let account: AccountConfiguration
     var status: DetailPortalViewModel.Status<AllAvatarDetailModel>
 
@@ -538,15 +540,20 @@ private struct AllAvatarNavigator: View {
                 } label: {
                     HStack(spacing: 3) {
                         ForEach(data.avatars.prefix(5), id: \.id) { avatar in
-                            if let asset = avatar.asset {
-                                asset.decoratedIcon(30)
-                            }
+                            // 这里宜用 CharacterAsset.match，可以让尚未支持的角色显示成派蒙、方便尽早发现这类问题。
+                            CharacterAsset.match(id: avatar.id)
+                                .decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
                         }
                     }
                 }
             }
         }
     }
+
+    // MARK: Private
+
+    @Default(.cutShouldersForSmallAvatarPhotos)
+    private var cutShouldersForSmallAvatarPhotos: Bool
 }
 
 // MARK: - LedgerDataNavigator
