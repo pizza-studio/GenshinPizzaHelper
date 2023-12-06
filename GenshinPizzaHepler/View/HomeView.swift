@@ -101,9 +101,8 @@ struct AccountInfoCardView: View {
 
         var body: some View {
             // Resin
-            VStack(alignment: .leading) {
+            InformationRowView("app.dailynote.card.resin.label") {
                 let resinIntel = dailyNote.resinInformation
-                Text("app.dailynote.card.resin.label").bold()
                 HStack(spacing: 10) {
                     Image("树脂")
                         .resizable()
@@ -129,9 +128,8 @@ struct AccountInfoCardView: View {
                 }
             }
             // Daily Task
-            VStack(alignment: .leading) {
+            InformationRowView("app.dailynote.card.dailyTask.label") {
                 let dailyTask = dailyNote.dailyTaskInformation
-                Text("app.dailynote.card.dailyTask.label").bold()
                 HStack(spacing: 10) {
                     Image("每日任务")
                         .resizable()
@@ -155,9 +153,8 @@ struct AccountInfoCardView: View {
                 }
             }
             // Coin
-            VStack(alignment: .leading) {
+            InformationRowView("app.dailynote.card.homeCoin.label") {
                 let homeCoin = dailyNote.homeCoinInformation
-                Text("app.dailynote.card.homeCoin.label").bold()
                 HStack(spacing: 10) {
                     Image("洞天宝钱")
                         .resizable()
@@ -183,9 +180,8 @@ struct AccountInfoCardView: View {
                 }
             }
             // Expedition
-            VStack(alignment: .leading) {
+            InformationRowView("app.dailynote.card.expedition.label") {
                 let expeditionInfo = dailyNote.expeditionInformation
-                Text("app.dailynote.card.expedition.label").bold()
                 HStack(spacing: 10) {
                     Image("派遣探索")
                         .resizable()

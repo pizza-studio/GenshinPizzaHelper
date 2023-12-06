@@ -524,21 +524,18 @@ private struct AllAvatarNavigator: View {
     var body: some View {
         switch status {
         case .progress:
-            VStack(alignment: .leading) {
-                Text("app.detailPortal.allAvatar.title").bold()
+            InformationRowView("app.detailPortal.allAvatar.title") {
                 ProgressView()
             }
         case let .fail(error):
-            VStack(alignment: .leading) {
-                Text("app.detailPortal.allAvatar.title").bold()
+            InformationRowView("app.detailPortal.allAvatar.title") {
                 ErrorView(account: account, error: error)
             }
         case let .succeed(data):
-            NavigationLink {
-                AllAvatarListSheetView(status: status)
-            } label: {
-                VStack(alignment: .leading) {
-                    Text("app.detailPortal.allAvatar.title").bold()
+            InformationRowView("app.detailPortal.allAvatar.title") {
+                NavigationLink {
+                    AllAvatarListSheetView(status: status)
+                } label: {
                     HStack(spacing: 3) {
                         ForEach(data.avatars.prefix(5), id: \.id) { avatar in
                             if let asset = avatar.asset {
@@ -564,13 +561,11 @@ private struct LedgerDataNavigator: View {
         Group {
             switch status {
             case .progress:
-                VStack(alignment: .leading) {
-                    Text("app.detailPortal.ledger.title").bold()
-                    ProgressView()
+                InformationRowView("app.detailPortal.ledger.title") {
+                    ProgressView().id(UUID())
                 }
             case let .fail(error):
-                VStack(alignment: .leading) {
-                    Text("app.detailPortal.ledger.title").bold()
+                InformationRowView("app.detailPortal.ledger.title") {
                     ErrorView(account: account, error: error)
                 }
             case let .succeed(data):
@@ -587,14 +582,10 @@ private struct LedgerDataNavigator: View {
         let ledgerData: LedgerData
 
         var body: some View {
-            NavigationLink {
-                LedgerView(data: ledgerData)
-            } label: {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("app.detailPortal.ledger.title").bold()
-                        Spacer()
-                    }
+            InformationRowView("app.detailPortal.ledger.title") {
+                NavigationLink {
+                    LedgerView(data: ledgerData)
+                } label: {
                     HStack(spacing: 10) {
                         Image("UI_ItemIcon_Primogem")
                             .resizable()
@@ -626,13 +617,11 @@ private struct AbyssInfoNavigator: View {
         Group {
             switch status {
             case .progress:
-                VStack(alignment: .leading) {
-                    Text("app.detailPortal.abyss.title").bold()
-                    ProgressView()
+                InformationRowView("app.detailPortal.abyss.title") {
+                    ProgressView().id(UUID())
                 }
             case let .fail(error):
-                VStack(alignment: .leading) {
-                    Text("app.detailPortal.abyss.title").bold()
+                InformationRowView("app.detailPortal.abyss.title") {
                     ErrorView(account: account, error: error)
                 }
             case let .succeed(data):
@@ -649,14 +638,10 @@ private struct AbyssInfoNavigator: View {
         let abyssInfo: SpiralAbyssDetail
 
         var body: some View {
-            NavigationLink {
-                AbyssDetailDataDisplayView(data: abyssInfo)
-            } label: {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("app.detailPortal.abyss.title").bold()
-                        Spacer()
-                    }
+            InformationRowView("app.detailPortal.abyss.title") {
+                NavigationLink {
+                    AbyssDetailDataDisplayView(data: abyssInfo)
+                } label: {
                     HStack(spacing: 10) {
                         Image("UI_Icon_Tower")
                             .resizable()
@@ -825,21 +810,18 @@ private struct BasicInfoNavigator: View {
     var body: some View {
         switch status {
         case .progress:
-            VStack(alignment: .leading) {
-                Text("app.detailPortal.basicInfo.title").bold()
-                ProgressView()
+            InformationRowView("app.detailPortal.basicInfo.title") {
+                ProgressView().id(UUID())
             }
         case let .fail(error):
-            VStack(alignment: .leading) {
-                Text("app.detailPortal.basicInfo.title").bold()
+            InformationRowView("app.detailPortal.basicInfo.title") {
                 ErrorView(account: account, error: error)
             }
         case let .succeed(data):
-            NavigationLink {
-                BasicInfoView(data: data)
-            } label: {
-                VStack(alignment: .leading) {
-                    Text("app.detailPortal.basicInfo.title").bold()
+            InformationRowView("app.detailPortal.basicInfo.title") {
+                NavigationLink {
+                    BasicInfoView(data: data)
+                } label: {
                     HStack(spacing: 10) {
                         Image("UI_ItemIcon_116006")
                             .resizable()
