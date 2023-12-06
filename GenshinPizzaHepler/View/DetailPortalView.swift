@@ -209,6 +209,20 @@ final class DetailPortalViewModel: ObservableObject {
         }
         spiralAbyssDetailStatus = .progress(task)
     }
+
+    /// 同步时装设定至全局预设值。
+    func refreshCostumeMap(playerDetail: PlayerDetail) {
+        guard !playerDetail.avatars.isEmpty else { return }
+        CharacterAsset.costumeMap.removeAll()
+        let assetPairs = playerDetail.avatars.compactMap { ($0.characterAsset, $0.costumeAsset) }
+        var intDictionary: [Int: Int] = [:]
+        assetPairs.forEach { characterAsset, costumeAsset in
+            CharacterAsset.costumeMap[characterAsset] = costumeAsset
+            intDictionary[characterAsset.rawValue] = costumeAsset?.rawValue ?? nil
+        }
+        Defaults[.cachedCostumeMap] = intDictionary
+        objectWillChange.send()
+    }
 }
 
 // MARK: - DetailPortalView
@@ -509,6 +523,9 @@ private struct PlayerDetailSection: View {
                     })
                 } else {
                     DataFetchedView(playerDetail: playerDetail, account: account)
+                        .onAppear {
+                            detailPortalViewModel.refreshCostumeMap(playerDetail: playerDetail)
+                        }
                 }
             }
             AllAvatarNavigator(account: account, status: detailPortalViewModel.allAvatarInfoStatus)
