@@ -662,14 +662,19 @@ private struct AbyssInfoNavigator: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: iconFrame, height: iconFrame)
-                        HStack(alignment: .lastTextBaseline, spacing: 0) {
-                            Text(verbatim: "\(abyssInfo.maxFloor)")
-                                .font(.title)
+                        if abyssInfo.maxFloor != "0-0" {
+                            HStack(alignment: .lastTextBaseline, spacing: 0) {
+                                Text(verbatim: "\(abyssInfo.maxFloor)")
+                                    .font(.title)
+                                Text(verbatim: "✡︎ \(abyssInfo.totalStar)")
+                                    .font(.caption)
+                            }
                             Spacer()
-                            Text(verbatim: "✡︎ \(abyssInfo.totalStar)")
-                                .font(.title)
+                        } else {
+                            Text("暂无本期深渊数据")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
-                        Spacer()
                     }
                 }
             }
