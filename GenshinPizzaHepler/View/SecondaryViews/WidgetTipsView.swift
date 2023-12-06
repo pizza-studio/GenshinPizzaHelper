@@ -74,7 +74,6 @@ struct WidgetTipsView: View {
                     }
                 }
             }
-            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("小组件使用提示")
             .navigationBarTitleDisplayMode(.inline)
         }

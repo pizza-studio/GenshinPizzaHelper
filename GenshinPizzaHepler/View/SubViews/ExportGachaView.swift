@@ -101,7 +101,6 @@ struct ExportGachaView: View {
                 Text("gacha.uigf.notice.pendingMultilingualSupport")
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
     }
 
     var body: some View {

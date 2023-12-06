@@ -74,7 +74,6 @@ struct CurrentEventNavigator: View {
                         }
                     }
                 }
-                .padding(.vertical, OS.type == .macOS ? UIFont.systemFontSize : 0)
             } header: {
                 NavigationLink {
                     AllEventsView(eventContents: $eventContents)
@@ -82,6 +81,7 @@ struct CurrentEventNavigator: View {
                     HStack(spacing: 2) {
                         Text("即将结束的活动")
                             .foregroundColor(.primary)
+                            .font(.headline)
                         Spacer()
                         Text("查看全部活动")
                             .foregroundColor(.secondary)

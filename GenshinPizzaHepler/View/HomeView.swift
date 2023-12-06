@@ -15,8 +15,6 @@ import SwiftUI
 // MARK: - HomeView
 
 struct HomeView: View {
-    // MARK: Internal
-
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
         ascending: true
@@ -26,37 +24,24 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List {
-                TodayMaterialView()
-                    .listRowBackground(Color(uiColor: sectionBackgroundColor))
-                if accounts.isEmpty {
-                    AddNewAccountButton()
-                        .listRowBackground(Color.white.opacity(0))
-                } else {
-                    ForEach(accounts) { account in
-                        AccountInfoCardView(account: account)
-                            .listRowBackground(Color(uiColor: sectionBackgroundColor))
+                Group {
+                    TodayMaterialView()
+                    if accounts.isEmpty {
+                        AddNewAccountButton()
+                            .listRowBackground(Color.white.opacity(0))
+                    } else {
+                        ForEach(accounts) { account in
+                            AccountInfoCardView(account: account)
+                        }
                     }
                 }
             }
-            .sectionSpacing(UIFont.systemFontSize)
             .refreshable {
                 globalDailyNoteCardRefreshSubject.send(())
             }
             .navigationTitle("app.home.title")
         }
-    }
-
-    // MARK: Private
-
-    @Environment(\.colorScheme)
-    private var colorScheme
-
-    private var viewBackgroundColor: UIColor {
-        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
-    }
-
-    private var sectionBackgroundColor: UIColor {
-        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
+        .navigationViewStyle(.stack)
     }
 }
 
@@ -71,7 +56,44 @@ struct AccountInfoCardView: View {
 
     // MARK: Internal
 
-    struct NoteView: View {
+    @Environment(\.scenePhase)
+    var scenePhase
+
+    var account: AccountConfiguration { dailyNoteViewModel.account }
+
+    var status: DailyNoteViewModel.Status { dailyNoteViewModel.dailyNoteStatus }
+
+    var body: some View {
+        Section {
+            switch status {
+            case let .succeed(dailyNote, _):
+                NoteView(dailyNote: dailyNote, account: account)
+            case let .failure(error):
+                ErrorView(account: account, error: error)
+            case .progress:
+                ProgressView().id(UUID())
+            }
+        } header: {
+            Text(account.safeName)
+                .foregroundColor(.primary)
+                .font(.headline)
+        }
+        .onChange(of: scenePhase, perform: { newPhase in
+            switch newPhase {
+            case .active:
+                dailyNoteViewModel.getDailyNote()
+            default:
+                break
+            }
+        })
+        .onReceive(globalDailyNoteCardRefreshSubject, perform: { _ in
+            dailyNoteViewModel.getDailyNoteUncheck()
+        })
+    }
+
+    // MARK: Private
+
+    private struct NoteView: View {
         // MARK: Internal
 
         let dailyNote: any DailyNote
@@ -81,23 +103,13 @@ struct AccountInfoCardView: View {
             // Resin
             VStack(alignment: .leading) {
                 let resinIntel = dailyNote.resinInformation
-                if OS.type != .macOS {
-                    HStack {
-                        Text("app.dailynote.card.resin.label").bold()
-                        Spacer()
-                    }
-                }
+                Text("app.dailynote.card.resin.label").bold()
                 HStack(spacing: 10) {
                     Image("树脂")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame * 1.1)
-                        .overlay(alignment: .bottomTrailing) {
-                            if resinIntel.resinRecoveryTime <= Date() {
-                                Text(verbatim: "✅")
-                                    .font(.caption)
-                            }
-                        }
+                        .scaleEffect(1.1)
+                        .frame(width: iconFrame, height: iconFrame)
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text(verbatim: "\(resinIntel.currentResin)")
                             .font(.title)
@@ -119,23 +131,12 @@ struct AccountInfoCardView: View {
             // Daily Task
             VStack(alignment: .leading) {
                 let dailyTask = dailyNote.dailyTaskInformation
-                if OS.type != .macOS {
-                    HStack {
-                        Text("app.dailynote.card.dailyTask.label").bold()
-                        Spacer()
-                    }
-                }
+                Text("app.dailynote.card.dailyTask.label").bold()
                 HStack(spacing: 10) {
                     Image("每日任务")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame * 1.1)
-                        .overlay(alignment: .bottomTrailing) {
-                            if dailyTask.finishedTaskCount == dailyTask.totalTaskCount {
-                                Text(verbatim: "✅")
-                                    .font(.caption)
-                            }
-                        }
+                        .frame(width: iconFrame, height: iconFrame)
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text(verbatim: "\(dailyTask.finishedTaskCount)")
                             .font(.title)
@@ -156,29 +157,13 @@ struct AccountInfoCardView: View {
             // Coin
             VStack(alignment: .leading) {
                 let homeCoin = dailyNote.homeCoinInformation
-                if OS.type != .macOS {
-                    HStack {
-                        Text("app.dailynote.card.homeCoin.label").bold()
-                        Spacer()
-                    }
-                }
+                Text("app.dailynote.card.homeCoin.label").bold()
                 HStack(spacing: 10) {
-                    ZStack(alignment: .center) {
-                        // 洞天宝钱的图示显得实在有些太大了，这里软处理一下。
-                        Rectangle()
-                            .frame(width: iconFrame, height: iconFrame * 1.1)
-                            .foregroundStyle(Color.clear)
-                        Image("洞天宝钱")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
-                    }
-                    .overlay(alignment: .bottomTrailing) {
-                        if homeCoin.fullTime <= Date() {
-                            Text(verbatim: "✅")
-                                .font(.caption)
-                        }
-                    }
+                    Image("洞天宝钱")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
+                        .frame(width: iconFrame, height: iconFrame)
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text(verbatim: "\(homeCoin.currentHomeCoin)")
                             .font(.title)
@@ -200,30 +185,17 @@ struct AccountInfoCardView: View {
             // Expedition
             VStack(alignment: .leading) {
                 let expeditionInfo = dailyNote.expeditionInformation
-                if OS.type != .macOS {
-                    HStack {
-                        Text("app.dailynote.card.expedition.label").bold()
-                        Spacer()
-                    }
-                }
+                Text("app.dailynote.card.expedition.label").bold()
                 HStack(spacing: 10) {
                     Image("派遣探索")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: iconFrame, height: iconFrame * 1.1)
-                        .overlay(alignment: .bottomTrailing) {
-                            if expeditionInfo.allCompleted {
-                                Text(verbatim: "✅")
-                                    .font(.caption)
-                            }
-                        }
+                        .frame(width: iconFrame, height: iconFrame)
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        if OS.type != .macOS {
-                            Text(verbatim: "\(expeditionInfo.ongoingExpeditionCount)")
-                                .font(.title)
-                            Text(verbatim: " / \(expeditionInfo.maxExpeditionsCount)")
-                                .font(.caption)
-                        }
+                        Text(verbatim: "\(expeditionInfo.ongoingExpeditionCount)")
+                            .font(.title)
+                        Text(verbatim: " / \(expeditionInfo.maxExpeditionsCount)")
+                            .font(.caption)
                         Spacer()
                         HStack {
                             ForEach(expeditionInfo.expeditions, id: \.iconURL) { expedition in
@@ -260,42 +232,6 @@ struct AccountInfoCardView: View {
             return dateFormatter
         }()
     }
-
-    @Environment(\.scenePhase)
-    var scenePhase
-
-    var account: AccountConfiguration { dailyNoteViewModel.account }
-
-    var status: DailyNoteViewModel.Status { dailyNoteViewModel.dailyNoteStatus }
-
-    var body: some View {
-        Section {
-            switch status {
-            case let .succeed(dailyNote, _):
-                NoteView(dailyNote: dailyNote, account: account)
-            case let .failure(error):
-                ErrorView(account: account, error: error)
-            case .progress:
-                ProgressView().id(UUID())
-            }
-        } header: {
-            Text(account.safeName)
-                .foregroundColor(.primary)
-        }
-        .onChange(of: scenePhase, perform: { newPhase in
-            switch newPhase {
-            case .active:
-                dailyNoteViewModel.getDailyNote()
-            default:
-                break
-            }
-        })
-        .onReceive(globalDailyNoteCardRefreshSubject, perform: { _ in
-            dailyNoteViewModel.getDailyNoteUncheck()
-        })
-    }
-
-    // MARK: Private
 
     @StateObject
     private var dailyNoteViewModel: DailyNoteViewModel

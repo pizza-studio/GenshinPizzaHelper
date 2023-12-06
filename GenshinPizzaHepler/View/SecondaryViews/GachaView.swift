@@ -173,7 +173,6 @@ struct GachaView: View {
         .sheet(isPresented: $isHelpSheetShow, content: {
             HelpSheet(isShow: $isHelpSheetShow)
         })
-        .sectionSpacing(UIFont.systemFontSize)
     }
 }
 
@@ -705,7 +704,6 @@ private struct HelpSheet: View {
                     Text("适用于所有服务器")
                 }
             }
-            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("抽卡记录获取帮助")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -851,7 +849,6 @@ private struct GachaDetailView: View {
                 }
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("抽取记录")
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {

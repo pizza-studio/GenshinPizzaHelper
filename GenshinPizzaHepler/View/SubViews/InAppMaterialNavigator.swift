@@ -91,6 +91,7 @@ struct InAppMaterialNavigator: View {
                     } else {
                         Text("今日材料")
                             .foregroundColor(.primary)
+                            .font(.headline)
                     }
                 }
                 .font(.caption)

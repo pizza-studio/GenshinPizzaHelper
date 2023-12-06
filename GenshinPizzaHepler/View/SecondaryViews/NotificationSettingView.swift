@@ -256,7 +256,6 @@ struct NotificationSettingView: View {
                 Text("settings.notification.type.parametricTransformer")
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("settings.notification.deliverySettings", displayMode: .inline)
     }
 }
@@ -291,7 +290,6 @@ struct IgnoreNotificationAccountView: View {
                 )
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
     }
 }
 

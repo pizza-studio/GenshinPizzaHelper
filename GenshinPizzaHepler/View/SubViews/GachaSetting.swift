@@ -149,7 +149,6 @@ struct GachaSetting: View {
                 }
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("祈愿数据管理")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isExportSheetShow, content: {

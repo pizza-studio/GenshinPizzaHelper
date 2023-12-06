@@ -534,7 +534,6 @@ private struct ShowAvatarPercentageView: View {
                 ProgressView()
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
     }
 
     @ViewBuilder
@@ -662,7 +661,6 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 ProgressView()
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
     }
 
     @ViewBuilder

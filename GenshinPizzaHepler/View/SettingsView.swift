@@ -22,8 +22,7 @@ struct SettingsView: View {
         Group {
             if #available(iOS 16, *) {
                 SettingViewIOS16(
-                    storeManager: storeManager,
-                    selectedView: horizontalSizeClass == .compact ? nil : .uiPreference
+                    storeManager: storeManager
                 )
             } else {
                 SettingViewIOS15(storeManager: storeManager)
@@ -70,8 +69,6 @@ struct SettingViewIOS16: View {
                             systemSymbol: .personFill
                         )
                     }
-                }
-                Section {
                     NavigationLink(value: Navigation.faq) {
                         Label(
                             "settings.misc.FAQ",
@@ -79,6 +76,9 @@ struct SettingViewIOS16: View {
                         )
                     }
                 }
+
+                // 通知设置
+                NotificationSettingNavigatorIOS16(selectedView: $selectedView)
 
                 Section {
                     // 该功能对 macCatalyst 无效。
@@ -110,16 +110,12 @@ struct SettingViewIOS16: View {
                             systemSymbol: .speedometer
                         )
                     }
+                    #if canImport(ActivityKit)
+                    if #available(iOS 16.1, *) {
+                        LiveActivitySettingView(selectedView: $selectedView)
+                    }
+                    #endif
                 }
-
-                // 通知设置
-                NotificationSettingNavigatorIOS16(selectedView: $selectedView)
-
-                #if canImport(ActivityKit)
-                if #available(iOS 16.1, *) {
-                    LiveActivitySettingView(selectedView: $selectedView)
-                }
-                #endif
 
                 Section {
                     Button {
@@ -183,7 +179,6 @@ struct SettingViewIOS16: View {
                 #endif
             }
             .listStyle(.insetGrouped)
-            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("nav.category.settings.name")
         } detail: {
             NavigationStack {
@@ -418,7 +413,6 @@ private struct SettingViewIOS15: View {
             }
             #endif
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("nav.category.settings.name")
     }
 }

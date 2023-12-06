@@ -648,6 +648,8 @@
 		EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */; };
+		EA9BE57F2B200B9400143817 /* AlwaysShowSideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */; };
+		EA9BE5802B200B9400143817 /* AlwaysShowSideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */; };
 		EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
 		EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */; };
 		EA9C2D0E28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */; };
@@ -1175,6 +1177,7 @@
 		EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_lang_dictionary.json; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
 		EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingView.swift; sourceTree = "<group>"; };
+		EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysShowSideBar.swift; sourceTree = "<group>"; };
 		EA9C2D0628CE23BC0053ED1E /* LockScreenHomeCoinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidget.swift; sourceTree = "<group>"; };
 		EA9C2D0D28CE25FB0053ED1E /* LockScreenHomeCoinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHomeCoinWidgetCircular.swift; sourceTree = "<group>"; };
 		EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoteAPI.swift; sourceTree = "<group>"; };
@@ -1693,6 +1696,7 @@
 				EAD29446290E717A00716EF7 /* HideTabBar.swift */,
 				EAF8AC1B29C758750047D36C /* CircleClippedBackground.swift */,
 				5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */,
+				EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -2660,6 +2664,7 @@
 				5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */,
 				5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */,
 				5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */,
+				EA9BE5802B200B9400143817 /* AlwaysShowSideBar.swift in Sources */,
 				5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */,
 				5BD1C6192A2A1FC90043C2B1 /* HomeCoinInfoBar.swift in Sources */,
 				5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */,
@@ -3146,6 +3151,7 @@
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
+				EA9BE57F2B200B9400143817 /* AlwaysShowSideBar.swift in Sources */,
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EAF43C8528A0121100D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
@@ -3840,8 +3846,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3884,8 +3890,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

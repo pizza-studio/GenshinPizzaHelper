@@ -39,7 +39,6 @@ struct BackgroundsPreviewView: View {
                 .listRowBackground(Color.white.opacity(0))
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .listStyle(.insetGrouped)
         .searchable(text: $searchText)
         .navigationTitle("settings.travelTools.backgroundNamecardPreview")

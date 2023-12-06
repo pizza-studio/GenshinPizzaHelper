@@ -39,8 +39,8 @@ struct ToolView: View {
                 }
                 ThirdPartyToolsView()
             }
-            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("app.tool.title")
         }
+        .alwaysShowSideBar()
     }
 }

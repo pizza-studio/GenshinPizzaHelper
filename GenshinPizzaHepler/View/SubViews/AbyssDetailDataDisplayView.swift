@@ -69,7 +69,6 @@ struct AbyssDetailDataDisplayView: View {
                 AbyssFloorView(floorData: floorData)
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .listStyle(.insetGrouped)
         .navigationTitle("深境螺旋详情")
     }
