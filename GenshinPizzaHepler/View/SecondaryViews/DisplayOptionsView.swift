@@ -108,12 +108,6 @@ struct DisplayOptionsView: View {
             }
 
             Section {
-                Toggle(isOn: $hideSubSectionTitleFromInformationRowView) {
-                    Text("settings.display.hideSubSectionTitleFromInformationRowView")
-                }
-            }
-
-            Section {
                 Toggle(isOn: $useGuestGachaEvaluator) {
                     Text("settings.uiRelated.useGuestGachaEvaluator")
                 }
@@ -132,8 +126,6 @@ struct DisplayOptionsView: View {
     @State
     private var isCustomizedNameForWandererAlertShow: Bool = false
 
-    @Default(.hideSubSectionTitleFromInformationRowView)
-    private var hideSubSectionTitleFromInformationRowView: Bool
     @Default(.adaptiveSpacingInCharacterView)
     private var adaptiveSpacingInCharacterView: Bool
     @Default(.showRarityAndLevelForArtifacts)

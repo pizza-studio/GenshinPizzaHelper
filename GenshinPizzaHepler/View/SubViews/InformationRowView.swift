@@ -19,21 +19,15 @@ struct InformationRowView<L: View>: View {
 
     // MARK: Internal
 
-    let title: LocalizedStringKey
     @ViewBuilder
     let labelContent: () -> L
 
+    let title: LocalizedStringKey
+
     var body: some View {
         VStack(alignment: .leading) {
-            if !hideSubSectionTitleFromInformationRowView {
-                Text(title).bold()
-            }
+            Text(title).bold()
             labelContent()
         }
     }
-
-    // MARK: Private
-
-    @Default(.hideSubSectionTitleFromInformationRowView)
-    private var hideSubSectionTitleFromInformationRowView: Bool
 }

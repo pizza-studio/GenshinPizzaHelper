@@ -1398,7 +1398,6 @@ Created by Bill Haku on 2022/8/23.
 // MARK: - 4.0.0
 
 "currentEventNavigator.tapToViewAll.title" = "点击以全部查看";
-"settings.display.hideSubSectionTitleFromInformationRowView" = "隐藏每一笔资讯列的独立小标题";
 "app.detailPortal.allAvatar.title" = "所有角色清单";
 "app.detailPortal.basicInfo.title" = "账号基础统计";
 "app.detailPortal.abyss.title" = "深境螺旋战绩";

@@ -1400,7 +1400,6 @@
 // MARK: - 4.0.0
 
 "currentEventNavigator.tapToViewAll.title" = "點擊以全部檢視";
-"settings.display.hideSubSectionTitleFromInformationRowView" = "隱藏每一筆資訊列的獨立小標題";
 "app.detailPortal.allAvatar.title" = "所有角色清單";
 "app.detailPortal.basicInfo.title" = "帳號基礎統計";
 "app.detailPortal.abyss.title" = "深境螺旋戰績";

@@ -1399,7 +1399,6 @@
 // MARK: - 4.0.0
 
 "currentEventNavigator.tapToViewAll.title" = "Tap to View All";
-"settings.display.hideSubSectionTitleFromInformationRowView" = "Hide sub-section titles from information rows";
 "app.detailPortal.allAvatar.title" = "All Characters";
 "app.detailPortal.basicInfo.title" = "Basic Statistics";
 "app.detailPortal.abyss.title" = "Spiral Abyss Records";

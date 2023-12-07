@@ -1400,7 +1400,6 @@
 // MARK: - 4.0.0
 
 "currentEventNavigator.tapToViewAll.title" = "タップで全てを";
-"settings.display.hideSubSectionTitleFromInformationRowView" = "情報条目の小タイトルを隠す";
 "app.detailPortal.allAvatar.title" = "全てのキャラ";
 "app.detailPortal.basicInfo.title" = "基本情報統計";
 "app.detailPortal.abyss.title" = "深境螺旋の実績";
