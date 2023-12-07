@@ -13,14 +13,14 @@ import SwiftUI
 @available(iOS 16.1, *)
 struct LiveActivitySettingView: View {
     @Binding
-    var selectedView: SettingViewIOS16.Navigation?
+    var selectedView: SettingsView.Navigation?
 
     @State
     var isAlertShow: Bool = false
 
     var body: some View {
         Section {
-            NavigationLink(value: SettingViewIOS16.Navigation.resinTimerSetting) {
+            NavigationLink(value: SettingsView.Navigation.resinTimerSetting) {
                 Label("树脂计时器设置", systemSymbol: .timer)
             }
         } footer: {
