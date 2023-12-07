@@ -114,6 +114,7 @@ final class DetailPortalViewModel: ObservableObject {
                     localizedDictionary: charLoc,
                     characterMap: charMap
                 )
+                refreshCostumeMap(playerDetail: playerDetail)
                 DispatchQueue.main.async {
                     withAnimation {
                         self.playerDetailStatus = .succeed((
@@ -221,7 +222,6 @@ final class DetailPortalViewModel: ObservableObject {
             intDictionary[characterAsset.rawValue] = costumeAsset?.rawValue ?? nil
         }
         Defaults[.cachedCostumeMap] = intDictionary
-        objectWillChange.send()
     }
 }
 
@@ -525,9 +525,6 @@ private struct PlayerDetailSection: View {
                     })
                 } else {
                     DataFetchedView(playerDetail: playerDetail, account: account)
-                        .onAppear {
-                            detailPortalViewModel.refreshCostumeMap(playerDetail: playerDetail)
-                        }
                 }
             }
             AllAvatarNavigator(account: account, status: detailPortalViewModel.allAvatarInfoStatus)
