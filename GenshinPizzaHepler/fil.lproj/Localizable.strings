@@ -882,7 +882,7 @@
 "下半" = "2nd";
 "获取渊星数" = "Mga Abyss Star na nakuha";
 // Other tool
-"提瓦特大地图" = "Teyvat Interactive na Mapa";
+"tools.teyvatInteractiveMap" = "Teyvat Interactive na Mapa";
 "请稍等%lld秒再刷新" = "Mag-antay ng %lld na segundo bago i-refresh.";
 "请下滑刷新" = "I-slide down upang i-refresh";
 "原神中英日辞典" = "Genshin Dictionary";

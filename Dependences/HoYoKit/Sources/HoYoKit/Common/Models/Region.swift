@@ -16,6 +16,17 @@ public enum Region: String, CaseIterable {
     case mainlandChina = "hk4e_cn"
     // Other servers
     case global = "hk4e_global"
+
+    // MARK: Public
+
+    public var teyvatInteractiveMapURL: URL? {
+        switch self {
+        case .mainlandChina:
+            URL(string: "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html")
+        case .global:
+            URL(string: "https://act.hoyolab.com/ys/app/interactive-map/index.html")
+        }
+    }
 }
 
 // MARK: Identifiable

@@ -1019,7 +1019,7 @@
 "下半" = "Phần\nCuối";
 "获取渊星数" = "Số Sao Thu Được Ở Phòng";
 // Other tool
-"提瓦特大地图" = "Bản Đồ Tương Tác Teyvat";
+"tools.teyvatInteractiveMap" = "Bản Đồ Tương Tác Teyvat";
 "请稍等%lld秒再刷新" = "Vui lòng đợi %lld giây trước khi làm mới.";
 "请下滑刷新" = "Vui lòng trượt xuống để làm mới";
 "原神中英日辞典" = "Từ Điển Genshin Impact";

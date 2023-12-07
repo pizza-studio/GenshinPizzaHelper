@@ -123,25 +123,15 @@ extension ThirdPartyToolsView {
     func mapNavigationLink() -> some View {
         let regions = availableRegions.isEmpty ? Region.allCases : availableRegions
         ForEach(regions, id: \.self) { region in
-            switch region {
-            case .mainlandChina: NavigationLink(
-                    destination:
-                    TeyvatMapWebView(isHoYoLAB: false)
-                        .navigationTitle("提瓦特大地图")
-                        .navigationBarTitleDisplayMode(.inline)
-                ) {
-                    let additionalFlag = regions.count > 1 ? " 🇨🇳" : ""
-                    Text("提瓦特大地图".localized + additionalFlag)
-                }
-            case .global: NavigationLink(
-                    destination:
-                    TeyvatMapWebView(isHoYoLAB: true)
-                        .navigationTitle("提瓦特大地图")
-                        .navigationBarTitleDisplayMode(.inline)
-                ) {
-                    let additionalFlag = regions.count > 1 ? " 🌏" : ""
-                    Text("提瓦特大地图".localized + additionalFlag)
-                }
+            let emoji = region == .mainlandChina ? " 🇨🇳" : " 🌏"
+            let additionalFlag = regions.count > 1 ? emoji : ""
+            NavigationLink(
+                destination:
+                TeyvatMapWebView(region: region)
+                    .navigationTitle("tools.teyvatInteractiveMap")
+                    .navigationBarTitleDisplayMode(.inline)
+            ) {
+                Text("tools.teyvatInteractiveMap".localized + additionalFlag)
             }
         }
     }
