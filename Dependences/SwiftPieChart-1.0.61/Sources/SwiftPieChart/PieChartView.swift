@@ -56,7 +56,8 @@ public struct PieChartView: View {
                     ForEach(0 ..< values.count, id: \.self) { i in
                         PieSlice(pieSliceData: slices[i])
                             .scaleEffect(activeIndex == i ? 1.03 : 1)
-                            .animation(Animation.spring())
+                            // iOS 16 开始需要提供 value，这里一律塞 UUID()。
+                            .animation(Animation.spring(), value: UUID())
                     }
                     .frame(
                         width: widthFraction * geometry.size.width,
