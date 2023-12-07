@@ -125,13 +125,19 @@ extension ThirdPartyToolsView {
         ForEach(regions, id: \.self) { region in
             let emoji = region == .mainlandChina ? " 🇨🇳" : " 🌏"
             let additionalFlag = regions.count > 1 ? emoji : ""
-            NavigationLink(
-                destination:
-                TeyvatMapWebView(region: region)
-                    .navigationTitle("tools.teyvatInteractiveMap")
-                    .navigationBarTitleDisplayMode(.inline)
-            ) {
-                Text("tools.teyvatInteractiveMap".localized + additionalFlag)
+            if OS.type == .macOS, let url = region.teyvatInteractiveMapURL {
+                Link(destination: url) {
+                    Text("tools.teyvatInteractiveMap".localized + additionalFlag)
+                }
+            } else {
+                NavigationLink(
+                    destination:
+                    TeyvatMapWebView(region: region)
+                        .navigationTitle("tools.teyvatInteractiveMap")
+                        .navigationBarTitleDisplayMode(.inline)
+                ) {
+                    Text("tools.teyvatInteractiveMap".localized + additionalFlag)
+                }
             }
         }
     }
