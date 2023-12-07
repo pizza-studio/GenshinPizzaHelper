@@ -644,7 +644,7 @@ private struct HelpSheet: View {
     var isShow: Bool
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     Label(
