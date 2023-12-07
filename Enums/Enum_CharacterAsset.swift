@@ -491,11 +491,20 @@ extension CharacterAsset: DailyMaterialConsumer {
 extension CharacterAsset {
     public static var costumeMap: [CharacterAsset: CostumeAsset] = {
         var result = [CharacterAsset: CostumeAsset]()
-        _ = Defaults[.cachedCostumeMap].map { key, value in
-            result[CharacterAsset.match(id: key)] = .init(rawValue: value)
+        Defaults[.cachedCostumeMap].forEach { key, value in
+            guard let validCostume = CostumeAsset(rawValue: value) else { return }
+            result[CharacterAsset.match(id: key)] = validCostume
         }
         return result
-    }()
+    }() {
+        didSet {
+            var intDictionary: [Int: Int] = [:]
+            costumeMap.forEach { character, costume in
+                intDictionary[character.rawValue] = costume.rawValue
+            }
+            Defaults[.cachedCostumeMap] = intDictionary
+        }
+    }
 }
 
 // MARK: - Extending Enka.CharacterMap.Character

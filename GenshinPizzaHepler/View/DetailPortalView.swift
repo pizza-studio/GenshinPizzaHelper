@@ -215,13 +215,11 @@ final class DetailPortalViewModel: ObservableObject {
     func refreshCostumeMap(playerDetail: PlayerDetail) {
         guard !playerDetail.avatars.isEmpty else { return }
         CharacterAsset.costumeMap.removeAll()
-        let assetPairs = playerDetail.avatars.compactMap { ($0.characterAsset, $0.costumeAsset) }
-        var intDictionary: [Int: Int] = [:]
+        let assetPairs = playerDetail.avatars.map { ($0.characterAsset, $0.costumeAsset) }
         assetPairs.forEach { characterAsset, costumeAsset in
+            guard let costumeAsset = costumeAsset else { return }
             CharacterAsset.costumeMap[characterAsset] = costumeAsset
-            intDictionary[characterAsset.rawValue] = costumeAsset?.rawValue ?? nil
         }
-        Defaults[.cachedCostumeMap] = intDictionary
     }
 }
 
