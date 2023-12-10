@@ -48,6 +48,7 @@ struct ToolView: View {
                 }
                 ThirdPartyToolsView()
             }
+            .listStyle(.insetGrouped)
             .navigationTitle("app.tools.title")
         } detail: {
             NavigationStack {
@@ -63,7 +64,7 @@ struct ToolView: View {
                 case .namecardsPreview:
                     BackgroundsPreviewView()
                 case nil:
-                    EmptyView()
+                    GachaView()
                 }
             }
         }

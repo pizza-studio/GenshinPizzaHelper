@@ -27,8 +27,6 @@
 		5B43A15A29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */; };
-		5B4CCB232AC3324100E4A0B5 /* ThirdPartyToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CCB222AC3324100E4A0B5 /* ThirdPartyToolsView.swift */; };
-		5B4CCB242AC336AD00E4A0B5 /* ThirdPartyToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CCB222AC3324100E4A0B5 /* ThirdPartyToolsView.swift */; };
 		5B5F82B32ACC6714005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
 		5B5F82B62ACC67B0005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
 		5B5F82B82ACC67B4005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
@@ -951,7 +949,6 @@
 		5B41C1812AD3010700CDF2C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseUIAccommodations.swift; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
-		5B4CCB222AC3324100E4A0B5 /* ThirdPartyToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyToolsView.swift; sourceTree = "<group>"; };
 		5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OPHelper_SharedAssembly; path = Dependences/OPHelper_SharedAssembly; sourceTree = "<group>"; };
 		5B5F82AE2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = ko; path = ko.lproj/AccountIntents.intentdefinition; sourceTree = "<group>"; };
 		5B5F82AF2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1888,7 +1885,6 @@
 				BFB101D228D5C579000DC631 /* DetailPortalView.swift */,
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
 				BFE4254A289F67F600FEFA49 /* SettingsView.swift */,
-				5B4CCB222AC3324100E4A0B5 /* ThirdPartyToolsView.swift */,
 				EA3621D42B1D6809007CAB4D /* ToolView.swift */,
 			);
 			path = View;
@@ -2727,7 +2723,6 @@
 				5BD1C6472A2A1FC90043C2B1 /* AbyssDetailDataDisplayView.swift in Sources */,
 				5BD1C6482A2A1FC90043C2B1 /* ShareSheet.swift in Sources */,
 				5BD1C6492A2A1FC90043C2B1 /* DetailInfoView.swift in Sources */,
-				5B4CCB242AC336AD00E4A0B5 /* ThirdPartyToolsView.swift in Sources */,
 				5BD1C64A2A2A1FC90043C2B1 /* UpdateHistoryInfoView.swift in Sources */,
 				5BD1C64B2A2A1FC90043C2B1 /* ContentView.swift in Sources */,
 				5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */,
@@ -3215,7 +3210,6 @@
 				EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */,
 				EAFC5CCD28B4EFC600770BBB /* ShareSheet.swift in Sources */,
 				BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */,
-				5B4CCB232AC3324100E4A0B5 /* ThirdPartyToolsView.swift in Sources */,
 				BF3F98BF28E9190700D1B5CF /* UpdateHistoryInfoView.swift in Sources */,
 				BF70210928B3909F00A6BBA9 /* ContentView.swift in Sources */,
 				EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */,

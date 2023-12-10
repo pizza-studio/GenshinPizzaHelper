@@ -160,53 +160,51 @@ struct SettingsView: View {
             .navigationTitle("nav.category.settings.name")
         } detail: {
             NavigationStack {
-                if let selectedView {
-                    switch selectedView {
-                    case .myAccount:
-                        ManageAccountsView()
-                    case .faq:
-                        let url: String = {
-                            switch Bundle.main.preferredLocalizations.first {
-                            case "zh-Hans", "zh-Hant", "zh-HK":
-                                return "https://gi.pizzastudio.org/static/faq.html"
-                            default:
-                                return "https://gi.pizzastudio.org/static/faq_en.html"
-                            }
-                        }()
-                        WebBroswerView(url: url)
-                            .navigationTitle("FAQ")
-                            .navigationBarTitleDisplayMode(.inline)
-                    case .uiPreference:
-                        DisplayOptionsView()
-                    case .widgetSetting:
-                        WidgetSettingView()
-                    case .notificationSetting:
-                        NotificationSettingView()
-                    case .resinTimerSetting:
-//                        TODO: live activity
-                        #if canImport(ActivityKit)
-                        if #available(iOS 16.1, *) {
-                            LiveActivitySettingDetailView()
+                switch selectedView {
+                case .myAccount:
+                    ManageAccountsView()
+                case .faq:
+                    let url: String = {
+                        switch Bundle.main.preferredLocalizations.first {
+                        case "zh-Hans", "zh-Hant", "zh-HK":
+                            return "https://gi.pizzastudio.org/static/faq.html"
+                        default:
+                            return "https://gi.pizzastudio.org/static/faq_en.html"
                         }
-                        #else
-                        EmptyView()
-                        #endif
-                    case .donate:
-                        GlobalDonateView(
-                            storeManager: storeManager
-                        )
-                    case .privacy:
-                        PrivacySettingsView()
-                    case .wishDataManagement:
-                        GachaSetting()
-                    case .appIntroductionVideo:
-                        GuideVideoLinkView()
-                    case .contact:
-                        ContactUsView()
-                    case .more:
-                        MoreView()
+                    }()
+                    WebBroswerView(url: url)
+                        .navigationTitle("FAQ")
+                        .navigationBarTitleDisplayMode(.inline)
+                case .uiPreference:
+                    DisplayOptionsView()
+                case .widgetSetting:
+                    WidgetSettingView()
+                case .notificationSetting:
+                    NotificationSettingView()
+                case .resinTimerSetting:
+                    // TODO: live activity
+                    #if canImport(ActivityKit)
+                    if #available(iOS 16.1, *) {
+                        LiveActivitySettingDetailView()
                     }
-                } else {
+                    #else
+                    EmptyView()
+                    #endif
+                case .donate:
+                    GlobalDonateView(
+                        storeManager: storeManager
+                    )
+                case .privacy:
+                    PrivacySettingsView()
+                case .wishDataManagement:
+                    GachaSetting()
+                case .appIntroductionVideo:
+                    GuideVideoLinkView()
+                case .contact:
+                    ContactUsView()
+                case .more:
+                    MoreView()
+                case nil:
                     DisplayOptionsView()
                 }
             }
