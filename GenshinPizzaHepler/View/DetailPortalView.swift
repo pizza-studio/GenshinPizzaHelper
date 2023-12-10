@@ -1216,6 +1216,16 @@ private struct VerificationNeededView: View {
     let account: AccountConfiguration
     let completion: () -> ()
 
+    var disableButton: Bool {
+        if case .progressing = status {
+            true
+        } else if case .gotVerification = status {
+            true
+        } else {
+            false
+        }
+    }
+
     var body: some View {
         Button {
             status = .progressing
@@ -1228,6 +1238,7 @@ private struct VerificationNeededView: View {
                     .foregroundStyle(.yellow)
             }
         }
+        .disabled(disableButton)
         .sheet(item: $sheetItem, content: { item in
             switch item {
             case let .gotVerification(verification):
@@ -1279,7 +1290,8 @@ private struct VerificationNeededView: View {
                     challenge: challenge,
                     validate: validate,
                     cookie: account.safeCookie,
-                    deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
+                    deviceFingerPrint: account.deviceFingerPrint,
+                    deviceId: account.safeUuid
                 )
                 completion()
             } catch {
@@ -1326,7 +1338,7 @@ private struct VerificationNeededView: View {
     }
 
     @State
-    private var status: Status = .progressing
+    private var status: Status = .pending
 
     @State
     private var sheetItem: SheetItem?
