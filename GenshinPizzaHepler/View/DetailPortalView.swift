@@ -477,9 +477,34 @@ struct DetailPortalView: View {
             }
         }
         .environmentObject(detailPortalViewModel)
+        .alert(
+            "是否允许我们收集您的深渊数据？",
+            isPresented: $askAllowAbyssDataCollectionAlert
+        ) {
+            Button("不允许", role: .destructive) {
+                Defaults[.allowAbyssDataCollection] = false
+                Defaults[.hasAskedAllowAbyssDataCollection] = true
+            }
+            Button("允许", role: .cancel, action: {
+                Defaults[.allowAbyssDataCollection] = true
+                Defaults[.hasAskedAllowAbyssDataCollection] = true
+            })
+        } message: {
+            Text(
+                "我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。更多相关问题，请查看深渊统计榜单页面右上角的FAQ。"
+            )
+        }
+        .onAppear {
+            if !Defaults[.hasAskedAllowAbyssDataCollection] {
+                askAllowAbyssDataCollectionAlert = true
+            }
+        }
     }
 
     // MARK: Private
+
+    @State
+    private var askAllowAbyssDataCollectionAlert: Bool = false
 
     @StateObject
     private var detailPortalViewModel: DetailPortalViewModel = .init()
