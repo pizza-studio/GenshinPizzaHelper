@@ -80,6 +80,7 @@ final class DetailPortalViewModel: ObservableObject {
         fetchSpiralAbyssInfo()
         fetchLedgerData()
         fetchAllAvatarInfo()
+        uploadData()
         detailPortalRefreshSubject.send(())
     }
 
@@ -248,6 +249,185 @@ final class DetailPortalViewModel: ObservableObject {
         assetPairs.forEach { characterAsset, costumeAsset in
             guard let costumeAsset = costumeAsset else { return }
             CharacterAsset.costumeMap[characterAsset] = costumeAsset
+        }
+    }
+
+    func uploadData() {
+        Task(priority: .background) {
+            guard let account = selectedAccount else { return }
+            if case let .progress(task) = basicInfoStatus {
+                await task?.value
+            }
+            if case let .progress(task) = spiralAbyssDetailStatus {
+                await task?.value
+            }
+            if case let .progress(task) = allAvatarInfoStatus {
+                await task?.value
+            }
+            if case let .succeed(basicInfo) = basicInfoStatus {
+                uploadHoldingData(account: account, basicInfo: basicInfo)
+                if case let .succeed(abyssData) = spiralAbyssDetailStatus {
+                    uploadAbyssData(account: account, abyssData: abyssData, basicInfo: basicInfo)
+                    if case let .succeed(allAvatarData) = allAvatarInfoStatus {
+                        uploadHuTaoDBAbyssData(
+                            account: account,
+                            abyssData: abyssData,
+                            basicInfo: basicInfo,
+                            allAvatarInfo: allAvatarData
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    func uploadAbyssData(account: AccountConfiguration, abyssData: SpiralAbyssDetail, basicInfo: BasicInfos) {
+        guard Defaults[.allowAbyssDataCollection] else { return }
+        guard let uploadData = AbyssData(
+            accountUID: account.safeUid,
+            server: account.server,
+            basicInfo: basicInfo,
+            abyssData: abyssData,
+            which: .this
+        ) else { return }
+        let md5 = "\(account.safeUid)\(uploadData.getLocalAbyssSeason())"
+            .md5
+        guard !Defaults[.hasUploadedAbyssDataAccountAndSeasonMD5].contains(md5)
+        else {
+            print(
+                "uploadAbyssData ERROR: This abyss data has uploaded.  "
+            ); return
+        }
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .sortedKeys
+        let data = try! encoder.encode(abyssData)
+        print(String(data: data, encoding: .utf8)!)
+        API.PSAServer.uploadUserData(
+            path: "/abyss/upload",
+            data: data
+        ) { result in
+            switch result {
+            case .success:
+                print("uploadAbyssData SUCCEED")
+                saveMD5()
+            case let .failure(error):
+                switch error {
+                case let .uploadError(message):
+                    if message == "uid existed" {
+                        saveMD5()
+                    }
+                default:
+                    break
+                }
+                print("uploadAbyssData ERROR: \(error)")
+                print(md5)
+                print(Defaults[.hasUploadedAbyssDataAccountAndSeasonMD5])
+            }
+        }
+        func saveMD5() {
+            Defaults[.hasUploadedAbyssDataAccountAndSeasonMD5].append(md5)
+            print(
+                "uploadAbyssData MD5: \(Defaults[.hasUploadedAbyssDataAccountAndSeasonMD5])"
+            )
+            UserDefaults.opSuite.synchronize()
+        }
+    }
+
+    func uploadHoldingData(account: AccountConfiguration, basicInfo: BasicInfos) {
+        print("uploadHoldingData START")
+        guard Defaults[.allowAbyssDataCollection]
+        else { print("not allowed"); return }
+        if let avatarHoldingData = AvatarHoldingData(
+            accountUID: account.safeUid,
+            server: account.server,
+            basicInfo: basicInfo,
+            which: .this
+        ) {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .sortedKeys
+            let data = try! encoder.encode(avatarHoldingData)
+            let md5 = String(data: data, encoding: .utf8)!.md5
+            guard !Defaults[.hasUploadedAvatarHoldingDataMD5].contains(md5) else {
+                print(
+                    "uploadHoldingData ERROR: This holding data has uploaded. "
+                ); return
+            }
+            guard !UPLOAD_HOLDING_DATA_LOCKED
+            else { print("uploadHoldingDataLocked is locked"); return }
+            API.PSAServer.uploadUserData(
+                path: "/user_holding/upload",
+                data: data
+            ) { result in
+                switch result {
+                case .success:
+                    print("uploadHoldingData SUCCEED")
+                    saveMD5()
+                    print(md5)
+                    print(Defaults[.hasUploadedAvatarHoldingDataMD5])
+                case let .failure(error):
+                    switch error {
+                    case let .uploadError(message):
+                        if message == "uid existed" || message ==
+                            "Insert Failed" {
+                            saveMD5()
+                        }
+                    default:
+                        break
+                    }
+                }
+            }
+            func saveMD5() {
+                Defaults[.hasUploadedAvatarHoldingDataMD5].append(md5)
+                UserDefaults.opSuite.synchronize()
+            }
+
+        } else {
+            print(
+                "uploadAbyssData ERROR: generate data fail. Maybe because not full star."
+            )
+        }
+    }
+
+    func uploadHuTaoDBAbyssData(
+        account: AccountConfiguration,
+        abyssData: SpiralAbyssDetail,
+        basicInfo: BasicInfos,
+        allAvatarInfo: AllAvatarDetailModel
+    ) {
+        Task(priority: .background) {
+            print("uploadHuTaoDBAbyssData START")
+            guard Defaults[.allowAbyssDataCollection]
+            else { print("not allowed"); return }
+            if let abyssData = await HuTaoDBAbyssData(
+                accountUID: account.safeUid,
+                server: account.server,
+                cookie: account.safeCookie,
+                basicInfo: basicInfo,
+                abyssData: abyssData,
+                allAvatarInfo: allAvatarInfo,
+                which: .this
+            ) {
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .sortedKeys
+                let data = try! encoder.encode(abyssData)
+                print(String(data: data, encoding: .utf8)!)
+                API.PSAServer
+                    .uploadHuTaoDBUserData(
+                        path: "/Record/Upload",
+                        data: data
+                    ) { result in
+                        switch result {
+                        case .success:
+                            print("uploadHuTaoDBAbyssData SUCCEED")
+                        case let .failure(error):
+                            print("uploadHuTaoDBAbyssData ERROR: \(error)")
+                        }
+                    }
+            } else {
+                print(
+                    "uploadHuTaoDBAbyssData ERROR: generate data fail. Maybe because not full star."
+                )
+            }
         }
     }
 }

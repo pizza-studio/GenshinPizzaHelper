@@ -261,25 +261,10 @@ extension HuTaoDBAbyssData {
         cookie: String,
         basicInfo: BasicInfos,
         abyssData: SpiralAbyssDetail,
+        allAvatarInfo: AllAvatarDetailModel,
         which season: AccountSpiralAbyssDetail.WhichSeason
     ) async {
         guard abyssData.totalStar == 36 else { return nil }
-
-        let allAvatarInfo = await withCheckedContinuation { continuation in
-            MihoyoAPI.fetchAllAvatarInfos(
-                region: server.region,
-                serverID: server.id,
-                uid: accountUID,
-                cookie: cookie
-            ) { result in
-                switch result {
-                case let .success(data):
-                    continuation.resume(with: .success(data))
-                case .failure:
-                    break
-                }
-            }
-        }
 
         self.uid = accountUID
         self.identity = "GenshinPizzaHelper"
