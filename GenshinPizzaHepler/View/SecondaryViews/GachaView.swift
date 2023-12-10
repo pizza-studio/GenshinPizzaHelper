@@ -32,143 +32,106 @@ struct GachaView: View {
     var isHelpSheetShow: Bool = false
 
     var body: some View {
-        Group {
-            if #available(iOS 16.0, *) {
-                mainView()
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) {
-                            Menu {
-                                ForEach(
-                                    GachaType
-                                        .allAvaliableGachaType()
-                                ) { gachaType in
-                                    Button(gachaType.localizedDescription()) {
-                                        withAnimation {
-                                            gachaViewModel.filter
-                                                .gachaType = gachaType
-                                        }
-                                    }
-                                }
-                            } label: {
-                                Text(
-                                    gachaViewModel.filter.gachaType
-                                        .localizedDescription()
-                                )
-                            }
-                        }
-                    }
-            } else {
-                mainView()
-                    .toolbar {
-                        ToolbarItemGroup(placement: .bottomBar) {
-                            FilterEditor(
-                                filter: $gachaViewModel.filter,
-                                showTime: $showTime
-                            )
-                        }
-                    }
-            }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                GetGachaNavigationMenu(
-                    showByAPI: accounts
-                        .first(where: { $0.server.region == .mainlandChina }) !=
-                        nil,
-                    isHelpSheetShow: $isHelpSheetShow
-                )
-            }
-
-            ToolbarItem(placement: .principal) {
-                Menu {
-                    ForEach(
-                        gachaViewModel.allAvaliableAccountUID,
-                        id: \.self
-                    ) { uid in
-                        Group {
-                            if let name: String = accounts
-                                .first(where: { $0.uid == uid })?
-                                .name {
-                                Button(name) {
-                                    gachaViewModel.filter.uid = uid
-                                }
-                            } else {
-                                Button(uid) {
-                                    gachaViewModel.filter.uid = uid
+        mainView()
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Menu {
+                        ForEach(
+                            GachaType
+                                .allAvaliableGachaType()
+                        ) { gachaType in
+                            Button(gachaType.localizedDescription()) {
+                                withAnimation {
+                                    gachaViewModel.filter
+                                        .gachaType = gachaType
                                 }
                             }
                         }
-                    }
-                } label: {
-                    HStack {
-                        Image(systemSymbol: .arrowLeftArrowRightCircle)
-                        if let uid: String = gachaViewModel.filter.uid {
-                            if let name: String = accounts
-                                .first(where: { $0.uid == uid })?
-                                .name {
-                                Text(name)
-                            } else {
-                                Text(uid)
-                            }
-                        } else {
-                            Text("请点击右上角获取抽卡记录")
-                        }
+                    } label: {
+                        Text(
+                            gachaViewModel.filter.gachaType
+                                .localizedDescription()
+                        )
                     }
                 }
-                .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    GetGachaNavigationMenu(
+                        showByAPI: accounts
+                            .first(where: { $0.server.region == .mainlandChina }) !=
+                            nil,
+                        isHelpSheetShow: $isHelpSheetShow
+                    )
+                }
+
+                ToolbarItem(placement: .principal) {
+                    Menu {
+                        ForEach(
+                            gachaViewModel.allAvaliableAccountUID,
+                            id: \.self
+                        ) { uid in
+                            Group {
+                                if let name: String = accounts
+                                    .first(where: { $0.uid == uid })?
+                                    .name {
+                                    Button(name) {
+                                        gachaViewModel.filter.uid = uid
+                                    }
+                                } else {
+                                    Button(uid) {
+                                        gachaViewModel.filter.uid = uid
+                                    }
+                                }
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemSymbol: .arrowLeftArrowRightCircle)
+                            if let uid: String = gachaViewModel.filter.uid {
+                                if let name: String = accounts
+                                    .first(where: { $0.uid == uid })?
+                                    .name {
+                                    Text(name)
+                                } else {
+                                    Text(uid)
+                                }
+                            } else {
+                                Text("请点击右上角获取抽卡记录")
+                            }
+                        }
+                    }
+                    .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
+                }
             }
-        }
-        .environmentObject(gachaViewModel)
+            .environmentObject(gachaViewModel)
     }
 
     @ViewBuilder
     func mainView() -> some View {
         List {
             if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
-                if #available(iOS 16.0, *) {
-                    Section {
-                        VStack(alignment: .leading) {
-                            GachaChart(
-                                items: gachaViewModel
-                                    .filteredGachaItemsWithCount
-                            )
-                            HelpTextForScrollingOnDesktopComputer(.horizontal)
-                        }
-                        NavigationLink {
-                            GachaChartView()
-                                .navigationBarTitleDisplayMode(.inline)
-                                .environmentObject(gachaViewModel)
-                        } label: {
-                            Label("更多图表", systemSymbol: .chartBarXaxis)
-                        }
+                Section {
+                    VStack(alignment: .leading) {
+                        GachaChart(
+                            items: gachaViewModel
+                                .filteredGachaItemsWithCount
+                        )
+                        HelpTextForScrollingOnDesktopComputer(.horizontal)
+                    }
+                    NavigationLink {
+                        GachaChartView()
+                            .navigationBarTitleDisplayMode(.inline)
+                            .environmentObject(gachaViewModel)
+                    } label: {
+                        Label("更多图表", systemSymbol: .chartBarXaxis)
                     }
                 }
                 GachaStatisticSectionView()
             } else {
                 Text("gacha.records.noQuintapleStarRecordsFound").foregroundColor(.gray)
             }
-            if #available(iOS 16.0, *) {
-                Section {
-                    NavigationLink("详细记录") {
-                        GachaDetailView()
-                    }
-                }
-            } else {
-                Section {
-                    ForEach(
-                        gachaViewModel.filteredGachaItemsWithCount,
-                        id: \.0.id
-                    ) { item, count in
-                        VStack(spacing: 1) {
-                            GachaItemBar(
-                                item: item,
-                                count: count,
-                                showTime: showTime,
-                                showingType: gachaViewModel.filter.rank
-                            )
-                        }
-                    }
+            Section {
+                NavigationLink("详细记录") {
+                    GachaDetailView()
                 }
             }
         }
