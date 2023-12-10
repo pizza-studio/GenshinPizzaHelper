@@ -5,877 +5,789 @@
 //  Created by Bill Haku on 2022/9/17.
 //
 
+import Combine
 import Defaults
 import GIPizzaKit
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftPieChart
 import SwiftUI
 
+let detailPortalRefreshSubject: PassthroughSubject<(), Never> = .init()
+
+// MARK: - DetailPortalViewModel
+
+@MainActor
+final class DetailPortalViewModel: ObservableObject {
+    // MARK: Lifecycle
+
+    init() {
+        let request = AccountConfiguration.fetchRequest()
+        request.sortDescriptors = [.init(keyPath: \AccountConfiguration.priority, ascending: true)]
+        let accounts = try? AccountConfigurationModel.shared.container.viewContext.fetch(request)
+        if let accounts, let account = accounts.first {
+            self.selectedAccount = account
+        } else {
+            self.selectedAccount = nil
+        }
+    }
+
+    // MARK: Internal
+
+    enum Status<T> {
+        case progress(Task<(), Never>?)
+        case fail(Error)
+        case succeed(T)
+    }
+
+    typealias PlayerDetailStatus = Status<(PlayerDetail, nextRefreshableDate: Date)>
+    typealias BasicInfoStatus = Status<BasicInfos>
+    typealias SpiralAbyssDetailStatus = Status<SpiralAbyssDetail>
+    typealias LedgerDataStatus = Status<LedgerData>
+    typealias AllAvatarInfoStatus = Status<AllAvatarDetailModel>
+
+    @Published
+    var playerDetailStatus: PlayerDetailStatus = .progress(nil)
+
+    @Published
+    var basicInfoStatus: BasicInfoStatus = .progress(nil)
+
+    @Published
+    var spiralAbyssDetailStatus: SpiralAbyssDetailStatus = .progress(nil)
+
+    @Published
+    var ledgerDataStatus: LedgerDataStatus = .progress(nil)
+
+    @Published
+    var allAvatarInfoStatus: AllAvatarInfoStatus = .progress(nil)
+
+    @Published
+    var currentBasicInfo: PlayerDetail.PlayerBasicInfo?
+
+    @Published
+    var selectedAccount: AccountConfiguration? {
+        didSet { refresh() }
+    }
+
+    var currentAccountNamecardFileName: String {
+        (NameCard(rawValue: currentBasicInfo?.nameCardId ?? 0) ?? NameCard.defaultValueForAppBackground).fileName
+    }
+
+    func refresh() {
+        fetchPlayerDetail()
+        fetchBasicInfo()
+        fetchSpiralAbyssInfo()
+        fetchLedgerData()
+        fetchAllAvatarInfo()
+        detailPortalRefreshSubject.send(())
+    }
+
+    func fetchAllAvatarInfo() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = allAvatarInfoStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let result = try await MiHoYoAPI.allAvatarDetail(
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.allAvatarInfoStatus = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.allAvatarInfoStatus = .fail(error)
+                }
+            }
+        }
+        allAvatarInfoStatus = .progress(task)
+    }
+
+    func fetchPlayerDetail() {
+        guard let selectedAccount else { return }
+        if case let .succeed((_, refreshableDate)) = playerDetailStatus {
+            guard Date() > refreshableDate else { return }
+        }
+        if case let .progress(task) = playerDetailStatus { task?.cancel() }
+        let task = Task {
+            do {
+                async let result = try await API.OpenAPIs.fetchPlayerDetail(
+                    selectedAccount.safeUid,
+                    dateWhenNextRefreshable: nil
+                )
+                async let (charLoc, charMap) = try await Enka.Sputnik.shared.getEnkaDataSet()
+                let playerDetail = try await PlayerDetail(
+                    PlayerDetailFetchModel: result,
+                    localizedDictionary: charLoc,
+                    characterMap: charMap
+                )
+                refreshCostumeMap(playerDetail: playerDetail)
+                currentBasicInfo = playerDetail.basicInfo
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.playerDetailStatus = .succeed((
+                            playerDetail,
+                            Date()
+                        ))
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.playerDetailStatus = .fail(error)
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            withAnimation { [weak self] in
+                guard let self else { return }
+                playerDetailStatus = .progress(task)
+            }
+        }
+    }
+
+    func fetchBasicInfo() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = basicInfoStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let result = try await MiHoYoAPI.basicInfo(
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.basicInfoStatus = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.basicInfoStatus = .fail(error)
+                }
+            }
+        }
+        basicInfoStatus = .progress(task)
+    }
+
+    func fetchSpiralAbyssInfo() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = spiralAbyssDetailStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let result = try await MiHoYoAPI.abyssData(
+                    round: .this,
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.spiralAbyssDetailStatus = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.spiralAbyssDetailStatus = .fail(error)
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            withAnimation { [weak self] in
+                guard let self else { return }
+                spiralAbyssDetailStatus = .progress(task)
+            }
+        }
+    }
+
+    func fetchLedgerData() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = ledgerDataStatus { task?.cancel() }
+        let task = Task {
+            do {
+                let month = Calendar.current.dateComponents([.month], from: Date()).month!
+                let result = try await MiHoYoAPI.ledgerData(
+                    month: month,
+                    uid: account.safeUid,
+                    server: account.server,
+                    cookie: account.safeCookie
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.ledgerDataStatus = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.ledgerDataStatus = .fail(error)
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            withAnimation { [weak self] in
+                guard let self else { return }
+                spiralAbyssDetailStatus = .progress(task)
+            }
+        }
+    }
+
+    /// 同步时装设定至全局预设值。
+    func refreshCostumeMap(playerDetail: PlayerDetail) {
+        guard !playerDetail.avatars.isEmpty else { return }
+        CharacterAsset.costumeMap.removeAll()
+        let assetPairs = playerDetail.avatars.map { ($0.characterAsset, $0.costumeAsset) }
+        assetPairs.forEach { characterAsset, costumeAsset in
+            guard let costumeAsset = costumeAsset else { return }
+            CharacterAsset.costumeMap[characterAsset] = costumeAsset
+        }
+    }
+}
+
 // MARK: - DetailPortalView
 
-@available(iOS 15.0, *)
 struct DetailPortalView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
-    @Environment(\.scenePhase)
-    var scenePhase
-    var accounts: [Account] { viewModel.accounts }
-    @Default(.detailPortalViewShowingAccountUUIDString)
-    var showingAccountUUIDString: String? {
-        didSet {
-            if let account = account {
-                viewModel.refreshCostumeMap(for: account)
+    // MARK: Internal
+
+    var body: some View {
+        NavigationStack {
+            List {
+                SelectAccountSection(selectedAccount: $detailPortalViewModel.selectedAccount)
+                    .listRowMaterialBackground()
+                if let account = detailPortalViewModel.selectedAccount {
+                    PlayerDetailSection(account: account)
+                        .listRowMaterialBackground()
+                    Section {
+                        AbyssInfoNavigator(account: account, status: detailPortalViewModel.spiralAbyssDetailStatus)
+                        LedgerDataNavigator(account: account, status: detailPortalViewModel.ledgerDataStatus)
+                        BasicInfoNavigator(account: account, status: detailPortalViewModel.basicInfoStatus)
+                    }
+                    .listRowMaterialBackground()
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .background {
+                EnkaWebIcon(iconString: detailPortalViewModel.currentAccountNamecardFileName)
+                    .scaledToFill()
+                    .ignoresSafeArea(.all)
+                    .overlay(.ultraThinMaterial)
+            }
+            .refreshable {
+                detailPortalViewModel.refresh()
+            }
+            .navigationDestination(for: BasicInfos.self) { data in
+                BasicInfoView(data: data)
+            }
+            .navigationDestination(for: SpiralAbyssDetail.self) { data in
+                AbyssDetailDataDisplayView(data: data)
+            }
+            .navigationDestination(for: LedgerData.self) { data in
+                LedgerView(data: data)
+            }
+            .navigationDestination(for: AllAvatarDetailModel.self) { data in
+                AllAvatarListSheetView(data: data)
             }
         }
+        .environmentObject(detailPortalViewModel)
     }
 
-    var account: Account? {
-        accounts.first { account in
-            (account.config.uuid?.uuidString ?? "123") ==
-                showingAccountUUIDString
-        }
-    }
-
-    var showingCharacterDetail: Bool {
-        viewModel.showCharacterDetailOfAccount != nil
-    }
-
-    @State
-    private var sheetType: SheetTypesForDetailPortalView?
-
-    var thisAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.this }
-    var lastAbyssData: SpiralAbyssDetail? { account?.spiralAbyssDetail?.last }
-    @State
-    private var abyssDataViewSelection: AbyssDataType = .thisTerm
-
-    var ledgerDataResult: LedgerDataFetchResult? { account?.ledgeDataResult }
-
-    var animation: Namespace.ID
-
-    @State
-    private var askAllowAbyssDataCollectionAlert: Bool = false
+    // MARK: Private
 
     @StateObject
-    private var orientation = ThisDevice.DeviceOrientation()
+    private var detailPortalViewModel: DetailPortalViewModel = .init()
+}
+
+// MARK: - SelectAccountSection
+
+private struct SelectAccountSection: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    // MARK: Internal
+
+    @Binding
+    var selectedAccount: AccountConfiguration?
 
     var body: some View {
-        NavigationView {
-            List {
-                accountSection()
-                playerDetailSection()
-                abyssAndPrimogemNavigator()
-                toolsSection()
-            }
-            .listStyle(.insetGrouped)
-            .sectionSpacing(UIFont.systemFontSize)
-            .environmentObject(orientation)
-            .refreshable {
-                withAnimation {
-                    DispatchQueue.main.async {
-                        if let account = account {
-                            viewModel.refreshPlayerDetail(for: account)
-                        }
-                        viewModel.refreshAbyssAndBasicInfo()
-                        viewModel.refreshLedgerData()
-                    }
-                }
-            }
-            .onAppear {
-                if !accounts.isEmpty, showingAccountUUIDString == nil {
-                    showingAccountUUIDString = accounts.first?.config.uuid?
-                        .uuidString
-                }
-            }
-            .sheet(item: $sheetType) { type in
-                switch type {
-                case .myLedgerSheet:
-                    ledgerSheetView()
-                case .mySpiralAbyss:
-                    spiralAbyssSheetView()
-                case .loginAccountAgainView:
-                    Group {
-                        if let account = account, let firstMatchedIndex = viewModel.accounts.firstIndex(of: account),
-                           let binding = Binding(
-                               $viewModel
-                                   .accounts[firstMatchedIndex]
-                                   .config.cookie
-                           ) {
-                            GetLedgerCookieWebView(
-                                title: String(
-                                    format: NSLocalizedString(
-                                        "请登录「%@」",
-                                        comment: ""
-                                    ),
-                                    viewModel.accounts[firstMatchedIndex].config.name ?? ""
-                                ),
-                                sheetType: $sheetType,
-                                cookie: binding,
-                                region: viewModel
-                                    .accounts[firstMatchedIndex]
-                                    .config.server.region
-                            )
-                        }
-                    }
-                    .onDisappear {
-                        viewModel.refreshLedgerData()
-                    }
-                case .allAvatarList:
-                    allAvatarListView()
-                case .gachaAnalysis:
-                    NavigationView {
-                        GachaView()
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarLeading) {
-                                    Button("完成") {
-                                        sheetType = nil
-                                    }
-                                }
-                            }
-                    }
-                case .rankedSpiralAbyss:
-                    NavigationView {
-                        AbyssDataCollectionView()
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarLeading) {
-                                    Button("完成") {
-                                        sheetType = nil
-                                    }
-                                }
-                            }
-                    }
-                }
-            }
-            .onChange(of: account) { newAccount in
-                withAnimation {
-                    DispatchQueue.main.async {
-                        if let newAccount = newAccount {
-                            viewModel.refreshPlayerDetail(for: newAccount)
-                        }
-                    }
-                }
-            }
-            .toolViewNavigationTitleInIOS15()
-            .onAppear { checkIfAllowAbyssDataCollection() }
-            .alert(
-                "是否允许我们收集您的深渊数据？",
-                isPresented: $askAllowAbyssDataCollectionAlert
-            ) {
-                Button("不允许", role: .destructive) {
-                    Defaults[.allowAbyssDataCollection] = false
-                    Defaults[.hasAskedAllowAbyssDataCollection] = true
-                }
-                Button("允许", role: .cancel, action: {
-                    Defaults[.allowAbyssDataCollection] = true
-                    Defaults[.hasAskedAllowAbyssDataCollection] = true
-                })
-            } message: {
-                Text(
-                    "我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。更多相关问题，请查看深渊统计榜单页面右上角的FAQ。"
+        if let selectedAccount {
+            if case let .succeed((playerDetail, _)) = detailPortalViewModel.playerDetailStatus,
+               let basicInfo = playerDetail.basicInfo {
+                normalAccountPickerView(
+                    playerDetail: playerDetail,
+                    basicInfo: basicInfo,
+                    selectedAccount: selectedAccount
                 )
+            } else {
+                noBasicInfoFallBackView(selectedAccount: selectedAccount)
             }
-            .onChange(of: scenePhase, perform: { newPhase in
-                switch newPhase {
-                case .active:
-                    withAnimation {
-                        DispatchQueue.main.async {
-                            if let account = account {
-                                viewModel.refreshPlayerDetail(for: account)
-                            }
-                            viewModel.refreshAbyssAndBasicInfo()
-                            viewModel.refreshLedgerData()
-                        }
-                    }
-                default:
-                    break
-                }
-            })
+        } else {
+            noSelectAccountView()
         }
-        .navigationViewStyle(.stack)
     }
 
     @ViewBuilder
-    func accountSection() -> some View {
-        if let account = account {
-            if let playerDetail = try? account.playerDetailResult?.get() {
-                Section {
-                    HStack(spacing: 0) {
-                        HStack {
-                            if let basicInfo = playerDetail.basicInfo {
-                                basicInfo.decoratedIcon(64)
-                            } else {
-                                CharacterAsset.Paimon.decoratedIcon(64)
-                            }
-                            Spacer()
-                        }
-                        .frame(width: 74)
-                        .corneredTag(
-                            "detailPortal.player.adventureRank.short:\(playerDetail.basicInfo?.level.description ?? "213")",
-                            alignment: .bottomTrailing,
-                            textSize: 12
-                        )
+    func normalAccountPickerView(
+        playerDetail: PlayerDetail,
+        basicInfo: PlayerDetail.PlayerBasicInfo,
+        selectedAccount: AccountConfiguration
+    )
+        -> some View {
+        Section {
+            HStack(spacing: 0) {
+                HStack {
+                    basicInfo.decoratedIcon(64)
+                    Spacer()
+                }
+                .frame(width: 74)
+                .corneredTag(
+                    "detailPortal.player.adventureRank.short:\(basicInfo.level.description)",
+                    alignment: .bottomTrailing,
+                    textSize: 12
+                )
+                VStack(alignment: .leading) {
+                    HStack(spacing: 10) {
                         VStack(alignment: .leading) {
-                            HStack(spacing: 10) {
-                                VStack(alignment: .leading) {
-                                    Text(playerDetail.basicInfo?.nickname ?? "ENKA ERROR")
-                                        .font(.title3)
-                                        .bold()
-                                        .padding(.top, 5)
-                                        .lineLimit(1)
-                                    Text(
-                                        playerDetail.basicInfo?
-                                            .signature ??
-                                            "↑: \(playerDetail.enkaMessage ?? "UNKNOWN_ENKA_ERROR")"
-                                    )
-                                    .foregroundColor(.secondary)
-                                    .font(.footnote)
-                                    .lineLimit(2)
-                                    .fixedSize(
-                                        horizontal: false,
-                                        vertical: true
-                                    )
-                                }
-                                Spacer()
-                                selectAccountManuButton()
-                            }
+                            Text(basicInfo.nickname)
+                                .font(.title3)
+                                .bold()
+                                .padding(.top, 5)
+                                .lineLimit(1)
+                            Text(basicInfo.signature)
+                                .foregroundColor(.secondary)
+                                .font(.footnote)
+                                .lineLimit(2)
+                                .fixedSize(
+                                    horizontal: false,
+                                    vertical: true
+                                )
                         }
-                    }
-                } footer: {
-                    HStack {
-                        Text("UID: \(account.config.uid ?? "UID_NULLED")")
                         Spacer()
-                        let worldLevelTitle = "detailPortal.player.worldLevel".localized
-                        Text("\(worldLevelTitle): \(playerDetail.basicInfo?.worldLevel ?? 213)")
-                    }
-                }
-            } else {
-                Section {
-                    VStack {
-                        HStack {
-                            Text(account.config.name ?? "")
-                            Spacer()
-                            selectAccountManuButton()
-                        }
-                        Text("UID: \(account.config.uid ?? "")")
-                            .foregroundColor(.secondary)
-                            .font(.footnote)
-                            .lineLimit(1)
-                            .fixedSize(
-                                horizontal: false,
-                                vertical: true
-                            )
-                    }
-                }
-            }
-        } else if accounts.isEmpty {
-            NavigationLink(destination: AddAccountView()) {
-                Label("settings.account.pleaseAddAccountFirst", systemSymbol: .plusCircle)
-            }
-        } else {
-            Menu {
-                ForEach(accounts, id: \.config.id) { account in
-                    Button(account.config.name ?? "Name Error") {
-                        showingAccountUUIDString = account.config.uuid?
-                            .uuidString
-                    }
-                }
-            } label: {
-                Label("detailPortal.prompt.pleaseSelectAccount", systemSymbol: .arrowLeftArrowRightCircle)
-            }
-        }
-    }
-
-    @ViewBuilder
-    func playerDetailSection() -> some View {
-        if let account = account {
-            if let result = account.playerDetailResult {
-                let fetchedDetail = try? result.get()
-                switch result {
-                case .success:
-                    if let fetchedDetail = fetchedDetail {
-                        // 此时拿到的资料可能是以 HTTP 200 送过来的错误资料。总之交给 dataFetchedView() 处理。
-                        dataFetchedView(fetchedDetail)
-                    } else {
-                        dataFetchFailedView(
-                            error: PlayerDetail.PlayerDetailError
-                                .failToGetCharacterData(message: "account.playerDetailResult.get.returned.nil")
-                        )
-                    }
-                case let .failure(error):
-                    dataFetchFailedView(error: error)
-                }
-            } else if !account.fetchPlayerDetailComplete {
-                loadingView()
-            }
-        }
-        if (try? account?.playerDetailResult?.get()) == nil {
-            Section { allAvatarNavigator() }
-        }
-    }
-
-    @ViewBuilder
-    func allAvatarListView() -> some View {
-        if let account = account {
-            NavigationView {
-                AllAvatarListSheetView(account: account, sheetType: $sheetType)
-            }
-        }
-    }
-
-    @ViewBuilder
-    func dataFetchedView(_ playerDetail: PlayerDetail) -> some View {
-        Section {
-            VStack {
-                if playerDetail.avatars.isEmpty {
-                    Text(
-                        playerDetail
-                            .basicInfo != nil
-                            ? "account.playerDetailResult.message.characterShowCaseClassified"
-                            : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
-                    )
-                    .foregroundColor(.secondary)
-                    if let msg = playerDetail.enkaMessage {
-                        Text(msg).foregroundColor(.secondary).controlSize(.small)
-                    }
-                } else {
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(
-                                playerDetail.avatars,
-                                id: \.name
-                            ) { avatar in
-                                avatar.characterAsset.cardIcon(75)
-                                    .onTapGesture {
-                                        simpleTaptic(type: .medium)
-                                        withAnimation(
-                                            .interactiveSpring(
-                                                response: 0.25,
-                                                dampingFraction: 1.0,
-                                                blendDuration: 0
-                                            )
-                                        ) {
-                                            viewModel
-                                                .showingCharacterName =
-                                                avatar.name
-                                            viewModel
-                                                .showCharacterDetailOfAccount =
-                                                account
-                                        }
-                                    }
-                            }
-                        }
-                        .padding(.vertical, 4)
-                    }.onAppear {
-                        viewModel.refreshCostumeMap()
-                    }
-                }
-                if !playerDetail.avatars.isEmpty {
-                    HelpTextForScrollingOnDesktopComputer(.horizontal)
-                }
-                allAvatarNavigator()
-            }
-        }
-    }
-
-    @ViewBuilder
-    func abyssAndPrimogemNavigator() -> some View {
-        if let account = account {
-            if let basicInfo: BasicInfos = account.basicInfo {
-                if OS.type == .macOS || ThisDevice.isSmallestHDScreenPhone || ThisDevice.isThinnestSplitOnPad {
-                    // 哀凤 SE2 / SE3 开启荧幕放大模式之后，这个版面很难保证排版完整性、需要专门重新做这份。
-                    abyssAndPrimogemNavigatorViewLegacy(accountBasicInfo: basicInfo)
-                } else {
-                    abyssAndPrimogemNavigatorView(accountBasicInfo: basicInfo)
-                }
-            } else if account.fetchPlayerDetailComplete {
-                if let bindingAccount = $viewModel.accounts.first(where: { $0.wrappedValue == account }) {
-                    NavigationLink {
-                        AccountDetailView(account: bindingAccount)
-                    } label: {
-                        HStack {
-                            Image(
-                                systemName: "exclamationmark.arrow.triangle.2.circlepath"
-                            )
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.red)
-                            Text(
-                                "detailPortal.errorMessage.anotherVerificationAttemptRequiredToSeeSpiralAbyssHistory"
-                            )
-                            .font(.footnote)
+                        SelectAccountMenu {
+                            Image(systemSymbol: .arrowLeftArrowRightCircle)
+                        } completion: { account in
+                            self.selectedAccount = account
                         }
                     }
                 }
-            }
-        } else {
-            if accounts.isEmpty {
-                Text("detailPortal.errorMessage.noAccountAvailableForAbyssDisplay").font(.footnote)
-            } else {
-                Text("detailPortal.errorMessage.plzChooseAnAccountForAbyssDisplay").font(.footnote)
-            }
-        }
-    }
-
-    @ViewBuilder
-    func abyssAndPrimogemNavigatorViewLegacy(accountBasicInfo basicInfo: BasicInfos) -> some View {
-        Section {
-            Button {
-                simpleTaptic(type: .medium)
-                sheetType = .mySpiralAbyss
-            } label: {
-                Label(
-                    title: {
-                        HStack {
-                            // try! account?.playerDetailResult?.get().basicInfo.towerFloorLevelSimplified ??
-                            let textString = basicInfo.stats.spiralAbyss.description
-                            Text(textString).fontWeight(.heavy)
-                            Spacer()
-                            if let thisAbyssData = thisAbyssData {
-                                Text("✡︎ \(thisAbyssData.totalStar)").font(.footnote)
-                            }
-                        }
-                        .foregroundStyle(Color.primary)
-                    },
-                    icon: { Image("UI_Icon_Tower").resizable().frame(width: 30, height: 30) }
-                )
-            }
-            if let result = ledgerDataResult {
-                switch result {
-                case let .success(data):
-                    Button {
-                        simpleTaptic(type: .medium)
-                        sheetType = .myLedgerSheet
-                    } label: {
-                        Label(
-                            title: {
-                                HStack {
-                                    Text(data.dayData.currentPrimogems.description).fontWeight(.heavy)
-                                    Spacer()
-                                    Text("\(data.dayData.currentMora) 🪙").font(.footnote)
-                                }.foregroundStyle(Color.primary)
-                            },
-                            icon: {
-                                Image("UI_ItemIcon_Primogem").resizable().frame(width: 30, height: 30)
-                            }
-                        )
-                    }
-                case let .failure(error):
-                    Button {
-                        switch error {
-                        case .notLoginError:
-                            simpleTaptic(type: .medium)
-                            sheetType = .loginAccountAgainView
-                        default:
-                            viewModel.refreshLedgerData()
-                        }
-                    } label: {
-                        Label(
-                            title: {
-                                switch error {
-                                case .notLoginError:
-                                    (
-                                        HStack {
-                                            Text("[\("detailPortal.todayAcquisition.title".localized)] ") +
-                                                Text("detailPortal.todayAcquisition.reloginRequiredNotice")
-                                        }.foregroundStyle(Color.primary)
-                                    )
-                                    .font(.footnote)
-                                default:
-                                    Text(error.description)
-                                        .font(.footnote)
-                                        .foregroundStyle(Color.primary)
-                                }
-                            },
-                            icon: {
-                                Image(systemSymbol: .exclamationmarkArrowTriangle2Circlepath)
-                                    .foregroundColor(.red)
-                                    .frame(width: 30, height: 30)
-                            }
-                        )
-                    }
-                }
-            }
-        }
-    }
-
-    @ViewBuilder
-    func abyssAndPrimogemNavigatorView(accountBasicInfo basicInfo: BasicInfos) -> some View {
-        Section {
-            HStack(spacing: 30) {
-                Spacer()
-                VStack {
-                    VStack(spacing: 7) {
-                        AbyssTextLabel(
-                            text: "\(basicInfo.stats.spiralAbyss)"
-                        )
-                        if let thisAbyssData = thisAbyssData {
-                            HStack {
-                                AbyssStarIcon()
-                                    .frame(width: 30, height: 30)
-                                Text("\(thisAbyssData.totalStar)")
-                                    .font(.system(.body, design: .rounded))
-                            }
-                        } else {
-                            ProgressView()
-                                .onTapGesture {
-                                    viewModel.refreshAbyssAndBasicInfo()
-                                }
-                        }
-                    }
-                    .frame(height: 100)
-                }
-                .frame(maxWidth: .infinity)
-                .onTapGesture {
-                    simpleTaptic(type: .medium)
-                    sheetType = .mySpiralAbyss
-                }
-                Divider()
-                VStack {
-                    if let result = ledgerDataResult {
-                        VStack(spacing: 10) {
-                            switch result {
-                            case let .success(data):
-                                PrimogemTextLabel(
-                                    primogem: data.dayData
-                                        .currentPrimogems
-                                )
-                                MoraTextLabel(
-                                    mora: data.dayData
-                                        .currentMora
-                                )
-                            case let .failure(error):
-                                Image(
-                                    systemName: "exclamationmark.arrow.triangle.2.circlepath"
-                                )
-                                .foregroundColor(.red)
-                                switch error {
-                                case .notLoginError:
-                                    (
-                                        Text("[\("detailPortal.todayAcquisition.title".localized)]\n") +
-                                            Text("detailPortal.todayAcquisition.reloginRequiredNotice")
-                                    )
-                                    .font(.footnote)
-                                    .multilineTextAlignment(.center)
-                                default:
-                                    Text(error.description)
-                                }
-                            }
-                        }
-                        .frame(height: 105)
-                    } else {
-                        ProgressView()
-                            .frame(height: 100)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .onTapGesture {
-                    if let result = ledgerDataResult {
-                        switch result {
-                        case .success:
-                            simpleTaptic(type: .medium)
-                            sheetType = .myLedgerSheet
-                        case let .failure(error):
-                            switch error {
-                            case .notLoginError:
-                                simpleTaptic(type: .medium)
-                                sheetType = .loginAccountAgainView
-                            default:
-                                viewModel.refreshLedgerData()
-                            }
-                        }
-                    }
-                }
-                Spacer()
-            }
-        }
-        .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
-    }
-
-    @ViewBuilder
-    func ledgerSheetView() -> some View {
-        if let data = try? ledgerDataResult?.get() {
-            LedgerSheetView(
-                data: data,
-                sheetType: $sheetType
-            )
-        }
-    }
-
-    @ViewBuilder
-    func spiralAbyssSheetView() -> some View {
-        if let thisAbyssData = thisAbyssData,
-           let lastAbyssData = lastAbyssData {
-            NavigationView {
-                VStack {
-                    Picker("", selection: $abyssDataViewSelection) {
-                        ForEach(AbyssDataType.allCases, id: \.self) { option in
-                            Text(option.rawValue.localized)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .padding()
-                    switch abyssDataViewSelection {
-                    case .thisTerm:
-                        AbyssDetailDataDisplayView(
-                            data: thisAbyssData
-                        )
-                    case .lastTerm:
-                        AbyssDetailDataDisplayView(
-                            data: lastAbyssData
-                        )
-                    }
-                }
-                .navigationTitle("深境螺旋详情")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("完成") {
-                            sheetType = nil
-                        }
-                    }
-                }
-                .toolbarSavePhotoButtonInIOS16(
-                    title: String(
-                        localized: "保存\(thisAbyssData.floors.last?.index ?? 12)层的深渊数据"
-                    ),
-                    placement: .navigationBarLeading
-                ) {
-                    Group {
-                        switch abyssDataViewSelection {
-                        case .thisTerm:
-                            AbyssShareView(
-                                data: thisAbyssData
-                            )
-                            .environment(
-                                \.locale,
-                                .init(identifier: Locale.current.identifier)
-                            )
-                        case .lastTerm:
-                            AbyssShareView(
-                                data: lastAbyssData
-                            )
-                            .environment(
-                                \.locale,
-                                .init(identifier: Locale.current.identifier)
-                            )
-                        }
-                    }
-                }
-            }
-        } else {
-            ProgressView()
-        }
-    }
-
-    @ViewBuilder
-    func selectAccountManuButton() -> some View {
-        if accounts.count > 1 {
-            Menu {
-                ForEach(accounts, id: \.config.id) { account in
-                    Button(account.config.name ?? "Name Error") {
-                        withAnimation {
-                            showingAccountUUIDString = account.config.uuid?.uuidString
-                        }
-                    }
-                }
-            } label: {
-                Image(systemSymbol: .arrowLeftArrowRightCircle)
-                    .font(.title2)
-            }
-        } else {
-            EmptyView()
-        }
-    }
-
-    @ViewBuilder
-    func dataFetchFailedView(error: PlayerDetail.PlayerDetailError) -> some View {
-        Section {
-            HStack {
-                Spacer()
-                Image(systemSymbol: .exclamationmarkArrowTriangle2Circlepath)
-                    .foregroundColor(.red)
-                    .onTapGesture {
-                        if let account = account {
-                            viewModel.refreshPlayerDetail(for: account)
-                        }
-                    }
-                Spacer()
             }
         } footer: {
-            switch error {
-            case .failToGetLocalizedDictionary:
-                Text("fail to get localized dictionary")
-            case .failToGetCharacterDictionary:
-                Text("fail to get character dictionary")
-            case let .failToGetCharacterData(message):
-                Text(message)
-            case let .refreshTooFast(dateWhenRefreshable):
-                if dateWhenRefreshable.timeIntervalSinceReferenceDate - Date()
-                    .timeIntervalSinceReferenceDate > 0 {
-                    let second = Int(
-                        dateWhenRefreshable
-                            .timeIntervalSinceReferenceDate - Date()
-                            .timeIntervalSinceReferenceDate
-                    )
-                    Text(String(localized: "请稍等\(second)秒再刷新"))
-                } else {
-                    Text("请下滑刷新")
-                }
-            }
-        }
-    }
-
-    @ViewBuilder
-    func loadingView() -> some View {
-        Section {
             HStack {
+                Text("UID: \(selectedAccount.safeUid)")
                 Spacer()
-                ProgressView()
-                Spacer()
+                let worldLevelTitle = "detailPortal.player.worldLevel".localized
+                Text("\(worldLevelTitle): \(basicInfo.worldLevel)")
             }
         }
     }
 
     @ViewBuilder
-    func allAvatarNavigator() -> some View {
-        if let basicInfo = account?.basicInfo {
-            AllAvatarNavigator(
-                basicInfo: basicInfo,
-                sheetType: $sheetType
-            )
-        }
-    }
-
-    @ViewBuilder
-    func toolsSection() -> some View {
+    func noBasicInfoFallBackView(selectedAccount: AccountConfiguration) -> some View {
         Section {
-            // 这里有一个 SwiftUI 故障导致的陈年 Bug。
-            // 如果在这个画面存在任何 Navigation Link 的话，
-            // 方向键会触发这个画面在 macOS 系统下的异常画面切换行为。
-            // 所以这里限制 macOS 在此处以 sheet 的形式呈现这两个画面。
-            switch OS.type {
-            case .iPadOS, .macOS:
-                Button {
-                    sheetType = .gachaAnalysis
-                } label: {
-                    Label {
-                        Text("祈愿分析")
-                            .foregroundColor(.primary)
-                    } icon: {
-                        Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
-                            .scaledToFit()
+            HStack(spacing: 0) {
+                HStack {
+                    CharacterAsset.Paimon.decoratedIcon(64)
+                    Spacer()
+                }
+                .frame(width: 74)
+                VStack(alignment: .leading) {
+                    HStack(spacing: 10) {
+                        VStack(alignment: .leading) {
+                            Text(selectedAccount.safeName)
+                                .font(.title3)
+                                .bold()
+                                .padding(.top, 5)
+                                .lineLimit(1)
+                        }
+                        Spacer()
+                        SelectAccountMenu {
+                            Image(systemSymbol: .arrowLeftArrowRightCircle)
+                        } completion: { account in
+                            self.selectedAccount = account
+                        }
                     }
                 }
-                Button {
-                    sheetType = .rankedSpiralAbyss
-                } label: {
-                    Label {
-                        Text("深渊统计榜单")
-                            .foregroundColor(.primary)
-                    } icon: {
-                        Image("UI_MarkTower_EffigyChallenge_01").resizable()
-                            .scaledToFit()
-                    }
-                }
-            default:
-                NavigationLink(destination: GachaView()) {
-                    Label {
-                        Text("祈愿分析")
-                    } icon: {
-                        Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
-                            .scaledToFit()
-                    }
-                }
-                NavigationLink(destination: AbyssDataCollectionView()) {
-                    Label {
-                        Text("深渊统计榜单")
-                    } icon: {
-                        Image("UI_MarkTower_EffigyChallenge_01").resizable()
-                            .scaledToFit()
-                    }
-                }
+            }
+        } footer: {
+            HStack {
+                Text("UID: \(selectedAccount.safeUid)")
             }
         }
     }
 
-    func checkIfAllowAbyssDataCollection() {
-        if !Defaults[.hasAskedAllowAbyssDataCollection], account != nil {
-            askAllowAbyssDataCollectionAlert = true
-        }
-    }
-}
-
-// MARK: - SheetTypesForDetailPortalView
-
-enum SheetTypesForDetailPortalView: Identifiable {
-    case mySpiralAbyss
-    case myLedgerSheet
-    case loginAccountAgainView
-    case allAvatarList
-    case gachaAnalysis
-    case rankedSpiralAbyss
-
-    // MARK: Internal
-
-    var id: Int {
-        hashValue
-    }
-}
-
-// MARK: - AbyssDataType
-
-private enum AbyssDataType: String, CaseIterable {
-    case thisTerm = "本期深渊"
-    case lastTerm = "上期深渊"
-}
-
-// MARK: - LedgerSheetView
-
-@available(iOS 15.0, *)
-private struct LedgerSheetView: View {
-    // MARK: Internal
-
-    let data: LedgerData
-    @Binding
-    var sheetType: SheetTypesForDetailPortalView?
-
-    var body: some View {
-        NavigationView {
-            List {
-                LedgerSheetViewList(data: data)
-            }
-            .sectionSpacing(UIFont.systemFontSize)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
-                        sheetType = nil
-                    }
-                }
-                ToolbarItem(placement: .principal) {
-                    Text("原石摩拉账簿").bold()
-                }
-            }
-            .toolbarSavePhotoButtonInIOS16(
-                title: "保存本月原石账簿图片".localized,
-                placement: .navigationBarLeading
-            ) {
-                LedgerShareView(data: data)
-                    .environment(
-                        \.locale,
-                        .init(identifier: Locale.current.identifier)
-                    )
+    @ViewBuilder
+    func noSelectAccountView() -> some View {
+        Section {
+            SelectAccountMenu {
+                Label("detailPortal.prompt.pleaseSelectAccount", systemSymbol: .arrowLeftArrowRightCircle)
+            } completion: { account in
+                selectedAccount = account
             }
         }
     }
 
     // MARK: Private
 
-    private struct LedgerSheetViewList: View {
-        // MARK: Internal
+    private struct SelectAccountMenu<T: View>: View {
+        @FetchRequest(sortDescriptors: [.init(
+            keyPath: \AccountConfiguration.priority,
+            ascending: true
+        )])
+        var accounts: FetchedResults<AccountConfiguration>
 
-        let data: LedgerData
+        let label: () -> T
+
+        let completion: (AccountConfiguration) -> ()
 
         var body: some View {
+            Menu {
+                ForEach(accounts, id: \.safeUuid) { account in
+                    Button(account.safeName) {
+                        completion(account)
+                    }
+                }
+            } label: {
+                label()
+            }
+        }
+    }
+}
+
+// MARK: - PlayerDetailSection.DataFetchedView.ID + Identifiable
+
+extension PlayerDetailSection.DataFetchedView.ID: Identifiable {
+    public var id: String { self }
+}
+
+// MARK: - PlayerDetailSection
+
+private struct PlayerDetailSection: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    struct DataFetchedView: View {
+        typealias ID = String
+
+        let playerDetail: PlayerDetail
+        let account: AccountConfiguration
+
+        @State
+        var showingCharacterName: ID?
+
+        var body: some View {
+            VStack(alignment: .leading) {
+                // 此处不处理 avatars.isEmpty 之情形，因为在 PlayerDetailSection 已经处理过了。
+                // （Enka 被天空岛服务器喂屎的情形也会导致 playerDetail.avatars 成为空阵列。）
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(
+                            playerDetail.avatars,
+                            id: \.name
+                        ) { avatar in
+                            Button {
+                                simpleTaptic(type: .medium)
+                                var transaction = Transaction()
+                                // transaction.animation = .easeInOut
+                                transaction.disablesAnimations = true // 要想恢复动画的话，请删掉这行。
+                                withTransaction(transaction) {
+                                    showingCharacterName = avatar.name
+                                }
+                            } label: {
+                                avatar.characterAsset.cardIcon(75)
+                            }
+                        }
+                    }
+                }
+                .padding(.vertical, 4)
+                HelpTextForScrollingOnDesktopComputer(.horizontal)
+            }
+            .fullScreenCover(item: $showingCharacterName) { characterName in
+                CharacterDetailView(
+                    account: account,
+                    showingCharacterName: characterName,
+                    playerDetail: playerDetail
+                ) {
+                    var transaction = Transaction()
+                    // transaction.animation = .easeInOut
+                    transaction.disablesAnimations = true // 要想恢复动画的话，请删掉这行。
+                    withTransaction(transaction) {
+                        showingCharacterName = nil
+                    }
+                }
+                .environment(\.colorScheme, .dark)
+            }
+        }
+    }
+
+    let account: AccountConfiguration
+
+    var playerDetailStatus: DetailPortalViewModel
+        .Status<(PlayerDetail, nextRefreshableDate: Date)> { detailPortalViewModel.playerDetailStatus }
+
+    var body: some View {
+        Section {
+            switch playerDetailStatus {
+            case .progress:
+                ProgressView().id(UUID())
+            case let .fail(error):
+                ErrorView(account: account, error: error) {
+                    detailPortalViewModel.fetchPlayerDetail()
+                }
+            case let .succeed((playerDetail, _)):
+                if playerDetail.avatars.isEmpty {
+                    Button(action: {
+                        detailPortalViewModel.refresh()
+                    }, label: {
+                        Label {
+                            VStack {
+                                Text(
+                                    playerDetail
+                                        .basicInfo != nil
+                                        ? "account.playerDetailResult.message.characterShowCaseClassified"
+                                        : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
+                                )
+                                .foregroundColor(.secondary)
+                                if let msg = playerDetail.enkaMessage {
+                                    Text(msg).foregroundColor(.secondary).controlSize(.small).font(.footnote)
+                                }
+                            }
+                        } icon: {
+                            Image(systemSymbol: .xmarkCircle)
+                                .foregroundColor(.red)
+                        }
+                    })
+                } else {
+                    DataFetchedView(playerDetail: playerDetail, account: account)
+                }
+            }
+            AllAvatarNavigator(account: account, status: detailPortalViewModel.allAvatarInfoStatus)
+        }
+    }
+}
+
+// MARK: - AllAvatarNavigator
+
+private struct AllAvatarNavigator: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    // MARK: Internal
+
+    let account: AccountConfiguration
+    var status: DetailPortalViewModel.Status<AllAvatarDetailModel>
+
+    var body: some View {
+        switch status {
+        case .progress:
+            InformationRowView("app.detailPortal.allAvatar.title") {
+                ProgressView()
+            }
+        case let .fail(error):
+            InformationRowView("app.detailPortal.allAvatar.title") {
+                ErrorView(account: account, error: error) {
+                    detailPortalViewModel.fetchAllAvatarInfo()
+                }
+            }
+        case let .succeed(data):
+            InformationRowView("app.detailPortal.allAvatar.title") {
+                let thisLabel = HStack(spacing: 3) {
+                    ForEach(data.avatars.prefix(5), id: \.id) { avatar in
+                        // 这里宜用 CharacterAsset.match，可以让尚未支持的角色显示成派蒙、方便尽早发现这类问题。
+                        CharacterAsset.match(id: avatar.id)
+                            .decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
+                    }
+                }
+                if OS.type == .macOS {
+                    SheetCaller(forceDarkMode: true) {
+                        AllAvatarListSheetView(data: data)
+                    } label: {
+                        thisLabel
+                    }
+                } else {
+                    NavigationLink(value: data) {
+                        thisLabel
+                    }
+                }
+            }
+        }
+    }
+
+    // MARK: Private
+
+    @Default(.cutShouldersForSmallAvatarPhotos)
+    private var cutShouldersForSmallAvatarPhotos: Bool
+}
+
+// MARK: - LedgerDataNavigator
+
+private struct LedgerDataNavigator: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    // MARK: Internal
+
+    let account: AccountConfiguration
+    let status: DetailPortalViewModel.Status<LedgerData>
+
+    var body: some View {
+        Group {
+            switch status {
+            case .progress:
+                InformationRowView("app.detailPortal.ledger.title") {
+                    ProgressView().id(UUID())
+                }
+            case let .fail(error):
+                InformationRowView("app.detailPortal.ledger.title") {
+                    ErrorView(account: account, error: error) {
+                        detailPortalViewModel.fetchLedgerData()
+                    }
+                }
+            case let .succeed(data):
+                LedgerDataView(ledgerData: data)
+            }
+        }
+    }
+
+    // MARK: Fileprivate
+
+    fileprivate struct LedgerDataView: View {
+        // MARK: Internal
+
+        let ledgerData: LedgerData
+
+        @ViewBuilder
+        var displayLabel: some View {
+            HStack(spacing: 10) {
+                Image("UI_ItemIcon_Primogem")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: iconFrame, height: iconFrame)
+                Text(verbatim: "\(ledgerData.monthData.currentPrimogems)")
+                    .font(.title)
+                Spacer()
+            }
+        }
+
+        var body: some View {
+            InformationRowView("app.detailPortal.ledger.title") {
+                if OS.type == .macOS {
+                    SheetCaller(forceDarkMode: true) {
+                        LedgerView(data: ledgerData)
+                    } label: {
+                        displayLabel
+                    }
+                } else {
+                    NavigationLink(value: ledgerData) {
+                        displayLabel
+                    }
+                }
+            }
+        }
+
+        // MARK: Private
+
+        private let iconFrame: CGFloat = 40
+    }
+}
+
+// MARK: - AbyssInfoNavigator
+
+private struct AbyssInfoNavigator: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    // MARK: Internal
+
+    let account: AccountConfiguration
+    let status: DetailPortalViewModel.Status<SpiralAbyssDetail>
+
+    var body: some View {
+        Group {
+            switch status {
+            case .progress:
+                InformationRowView("app.detailPortal.abyss.title") {
+                    ProgressView().id(UUID())
+                }
+            case let .fail(error):
+                InformationRowView("app.detailPortal.abyss.title") {
+                    ErrorView(account: account, error: error) {
+                        detailPortalViewModel.fetchSpiralAbyssInfo()
+                    }
+                }
+            case let .succeed(data):
+                AbyssInfoView(abyssInfo: data)
+            }
+        }
+    }
+
+    // MARK: Fileprivate
+
+    fileprivate struct AbyssInfoView: View {
+        // MARK: Internal
+
+        let abyssInfo: SpiralAbyssDetail
+
+        @ViewBuilder
+        var displayLabel: some View {
+            HStack(spacing: 10) {
+                Image("UI_Icon_Tower")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: iconFrame, height: iconFrame)
+                if abyssInfo.maxFloor != "0-0" {
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Text(verbatim: "\(abyssInfo.maxFloor)")
+                            .font(.title)
+                        Text(verbatim: "  ✡︎ \(abyssInfo.totalStar)")
+                            .font(.title3)
+                    }
+                    Spacer()
+                } else {
+                    Text("暂无本期深渊数据")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+        }
+
+        var body: some View {
+            InformationRowView("app.detailPortal.abyss.title") {
+                if OS.type == .macOS {
+                    SheetCaller(forceDarkMode: true) {
+                        AbyssDetailDataDisplayView(data: abyssInfo)
+                    } label: {
+                        displayLabel
+                    }
+                } else {
+                    NavigationLink(value: abyssInfo) {
+                        displayLabel
+                    }
+                }
+            }
+        }
+
+        // MARK: Private
+
+        private let iconFrame: CGFloat = 40
+    }
+}
+
+// MARK: - LedgerView
+
+private struct LedgerView: View {
+    // MARK: Internal
+
+    let data: LedgerData
+
+    var body: some View {
+        List {
             Section {
                 LabelWithDescription(
                     title: "原石收入",
@@ -953,190 +865,469 @@ private struct LedgerSheetView: View {
                 }
             }
         }
+        .navigationTitle("app.detailPortal.ledger.title")
+    }
 
-        // MARK: Private
+    // MARK: Private
 
-        private struct LabelWithDescription: View {
-            let title: LocalizedStringKey
-            let memo: LocalizedStringKey
-            let icon: String
-            let mainValue: Int
-            let previousValue: Int?
+    private struct LabelWithDescription: View {
+        let title: LocalizedStringKey
+        let memo: LocalizedStringKey
+        let icon: String
+        let mainValue: Int
+        let previousValue: Int?
 
-            var delta: Int { mainValue - (previousValue ?? 0) }
+        var delta: Int { mainValue - (previousValue ?? 0) }
 
-            var body: some View {
-                Label {
-                    VStack {
-                        HStack {
-                            Text(title)
-                            Spacer()
-                            Text("\(mainValue)")
-                        }
-                        if previousValue != nil {
-                            HStack {
-                                Text(memo).foregroundColor(.secondary)
-                                Spacer()
-                                switch delta {
-                                case 1...: Text("+\(delta)").foregroundStyle(.green)
-                                default: Text("\(delta)").foregroundStyle(.red)
-                                }
-                            }.font(.footnote).opacity(0.8)
-                        }
+        var body: some View {
+            Label {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(title)
+                        Spacer()
+                        Text("\(mainValue)")
                     }
-                } icon: {
-                    Image(icon)
-                        .resizable()
-                        .scaledToFit()
+                    if previousValue != nil {
+                        HStack {
+                            Text(memo).foregroundColor(.secondary)
+                            Spacer()
+                            switch delta {
+                            case 1...: Text("+\(delta)").foregroundStyle(.green)
+                            default: Text("\(delta)").foregroundStyle(.red)
+                            }
+                        }.font(.footnote).opacity(0.8)
+                    }
                 }
+            } icon: {
+                Image(icon)
+                    .resizable()
+                    .scaledToFit()
             }
         }
     }
 }
 
-// MARK: - AllAvatarNavigator
+// MARK: - BasicInfoNavigator
 
-@available(iOS 15.0, *)
-private struct AllAvatarNavigator: View {
+private struct BasicInfoNavigator: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
     // MARK: Internal
 
-    let basicInfo: BasicInfos
-    @Binding
-    var sheetType: SheetTypesForDetailPortalView?
+    let account: AccountConfiguration
+    let status: DetailPortalViewModel.Status<BasicInfos>
 
     var body: some View {
-        HStack(alignment: .center) {
-            Text("所有角色")
-                .padding(.trailing)
-                .font(.footnote)
-                .foregroundColor(.primary)
-            Spacer()
-            HStack(spacing: 3) {
-                ForEach(basicInfo.avatars.prefix(5), id: \.id) { avatar in
-                    // 必须在这里绑一下 AppStorage，不然这个画面的内容不会自动更新。
-                    CharacterAsset.match(id: avatar.id)
-                        .decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
+        switch status {
+        case .progress:
+            InformationRowView("app.detailPortal.basicInfo.title") {
+                ProgressView().id(UUID())
+            }
+        case let .fail(error):
+            InformationRowView("app.detailPortal.basicInfo.title") {
+                ErrorView(account: account, error: error) {
+                    detailPortalViewModel.fetchBasicInfo()
                 }
             }
-            .padding(.vertical, 3)
-        }
-        .onTapGesture {
-            sheetType = .allAvatarList
+        case let .succeed(data):
+            let thisLabel = HStack(spacing: 10) {
+                Image("UI_ItemIcon_116006")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: iconFrame, height: iconFrame)
+                Text(
+                    verbatim: "\(data.stats.luxuriousChestNumber)"
+                )
+                .font(.title)
+                Spacer()
+            }
+            InformationRowView("app.detailPortal.basicInfo.title") {
+                if OS.type == .macOS {
+                    SheetCaller(forceDarkMode: true) {
+                        BasicInfoView(data: data)
+                    } label: {
+                        thisLabel
+                    }
+                } else {
+                    NavigationLink(value: data) {
+                        thisLabel
+                    }
+                }
+            }
         }
     }
 
     // MARK: Private
 
-    @Default(.cutShouldersForSmallAvatarPhotos)
-    private var cutShouldersForSmallAvatarPhotos: Bool
+    private let iconFrame: CGFloat = 40
 }
 
-// MARK: - PrimogemTextLabel
+// MARK: - BasicInfoView
 
-private struct PrimogemTextLabel: View {
-    let primogem: Int
-    @State
-    var labelHeight = CGFloat.zero
+private struct BasicInfoView: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
+
+    // MARK: Internal
+
+    let data: BasicInfos
 
     var body: some View {
-        HStack {
-            Image("UI_ItemIcon_Primogem")
-                .resizable()
-                .scaledToFit()
-                .frame(maxHeight: labelHeight)
-            Text("\(primogem)")
-                .font(.system(.largeTitle, design: .rounded))
-                .lineLimit(1)
-                .fixedSize(horizontal: false, vertical: true)
-                .minimumScaleFactor(0.7)
-                .overlay(
-                    GeometryReader(content: { geometry in
-                        Color.clear
-                            .onAppear(perform: {
-                                labelHeight = geometry.frame(in: .local)
-                                    .size.height
-                            })
-                    })
+        List {
+            Section {
+                DataDisplayView(label: "活跃天数", value: "\(data.stats.activeDayNumber)")
+                DataDisplayView(label: "获得角色", value: "\(data.stats.avatarNumber)")
+                DataDisplayView(label: "深境螺旋", value: data.stats.spiralAbyss)
+                DataDisplayView(
+                    label: "成就达成",
+                    value: "\(data.stats.achievementNumber)"
                 )
+                DataDisplayView(
+                    label: "解锁锚点",
+                    value: "\(data.stats.wayPointNumber)"
+                )
+                DataDisplayView(
+                    label: "解锁秘境",
+                    value: "\(data.stats.domainNumber)"
+                )
+            }
+            .listRowMaterialBackground()
+
+            Section {
+                DataDisplayView(label: "普通宝箱", value: "\(data.stats.commonChestNumber)")
+                DataDisplayView(
+                    label: "珍贵宝箱",
+                    value: "\(data.stats.preciousChestNumber)"
+                )
+                DataDisplayView(
+                    label: "精致宝箱",
+                    value: "\(data.stats.exquisiteChestNumber)"
+                )
+                DataDisplayView(
+                    label: "华丽宝箱",
+                    value: "\(data.stats.luxuriousChestNumber)"
+                )
+            }
+            .listRowMaterialBackground()
+
+            Section {
+                DataDisplayView(
+                    symbol: Image("UI_ItemIcon_107001"),
+                    label: "风神瞳",
+                    value: "\(data.stats.anemoculusNumber)"
+                )
+                DataDisplayView(
+                    symbol: Image("UI_ItemIcon_107003"),
+                    label: "岩神瞳",
+                    value: "\(data.stats.geoculusNumber)"
+                )
+                DataDisplayView(
+                    symbol: Image("UI_ItemIcon_107014"),
+                    label: "雷神瞳",
+                    value: "\(data.stats.electroculusNumber)"
+                )
+                DataDisplayView(
+                    symbol: Image("UI_ItemIcon_107017"),
+                    label: "草神瞳",
+                    value: "\(data.stats.dendroculusNumber)"
+                )
+                DataDisplayView(
+                    symbol: Image("Item_Hydroculus"),
+                    label: "水神瞳",
+                    value: "\(data.stats.hydroculusNumber)"
+                )
+            }
+            .listRowMaterialBackground()
+
+            Section {
+                ForEach(data.worldExplorations.sorted {
+                    $0.id < $1.id
+                }, id: \.id) { worldData in
+                    WorldExplorationView(worldData: worldData)
+                }
+            }
+            .listRowMaterialBackground()
+        }
+        .scrollContentBackground(.hidden)
+        .background {
+            EnkaWebIcon(iconString: detailPortalViewModel.currentAccountNamecardFileName)
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+                .overlay(.ultraThinMaterial)
+        }
+        .navigationTitle("app.detailPortal.basicInfo.title")
+    }
+
+    // MARK: Private
+
+    private struct DataDisplayView: View {
+        // MARK: Lifecycle
+
+        init(symbol: Image, label: LocalizedStringKey, value: String) {
+            self.symbol = symbol
+            self.label = label
+            self.value = value
+        }
+
+        init(label: LocalizedStringKey, value: String) {
+            self.symbol = nil
+            self.label = label
+            self.value = value
+        }
+
+        // MARK: Internal
+
+        let symbol: Image?
+        let label: LocalizedStringKey
+        let value: String
+
+        var body: some View {
+            if let symbol {
+                Label {
+                    HStack {
+                        Text(label)
+                        Spacer()
+                        Text(verbatim: value)
+                    }
+                } icon: {
+                    symbol.resizable().scaledToFit()
+                        .frame(height: 30)
+                }
+            } else {
+                HStack {
+                    Text(label)
+                    Spacer()
+                    Text(verbatim: value)
+                }
+            }
+        }
+    }
+
+    private struct WorldExplorationView: View {
+        struct WorldDataLabel: View {
+            @Environment(\.colorScheme)
+            private var colorScheme
+            let worldData: BasicInfos.WorldExploration
+
+            var body: some View {
+                Label {
+                    Text(worldData.name)
+                    Spacer()
+                    Text(calculatePercentage(
+                        value: Double(worldData.explorationPercentage) /
+                            Double(1000)
+                    ))
+                } icon: {
+                    if let url = URL(string: worldData.icon) {
+                        AsyncImage(url: url, content: { image in
+                            let basicResponse = image.resizable().scaledToFit().frame(height: 30)
+                            if colorScheme == .light {
+                                basicResponse.colorInvert()
+                            } else {
+                                basicResponse
+                            }
+                        }) {
+                            ProgressView()
+                        }
+                    }
+                }
+            }
+
+            func calculatePercentage(value: Double) -> String {
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .percent
+                return formatter.string(from: value as NSNumber) ?? "Error"
+            }
+        }
+
+        let worldData: BasicInfos.WorldExploration
+
+        var body: some View {
+            if !worldData.offerings.isEmpty {
+                DisclosureGroup {
+                    ForEach(worldData.offerings, id: \.name) { offering in
+                        Label {
+                            Text(offering.name)
+                            Spacer()
+                            Text("Lv. \(offering.level)")
+                        } icon: {
+                            if let url = URL(string: offering.icon) {
+                                AsyncImage(url: url, content: { image in
+                                    image.resizable().scaledToFit().frame(height: 30)
+                                }) {
+                                    ProgressView()
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    WorldDataLabel(worldData: worldData)
+                }
+            } else {
+                WorldDataLabel(worldData: worldData)
+            }
         }
     }
 }
 
-// MARK: - MoraTextLabel
+// MARK: - ErrorView
 
-private struct MoraTextLabel: View {
-    let mora: Int
-    @State
-    var labelHeight = CGFloat.zero
+private struct ErrorView: View {
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
 
-    var body: some View {
-        HStack {
-            Image("UI_ItemIcon_Mora")
-                .resizable()
-                .scaledToFit()
-                .frame(maxHeight: labelHeight)
-            Text("\(mora)")
-                .font(.system(.body, design: .rounded))
-                .overlay(
-                    GeometryReader(content: { geometry in
-                        Color.clear
-                            .onAppear(perform: {
-                                labelHeight = geometry.frame(in: .local)
-                                    .size.height
-                            })
-                    })
-                )
-        }
-    }
-}
+    let account: AccountConfiguration
+    let error: Error
 
-// MARK: - AbyssTextLabel
-
-private struct AbyssTextLabel: View {
-    let text: String
-    @State
-    var labelHeight = CGFloat.zero
+    let completion: () -> ()
 
     var body: some View {
-        HStack {
-            Image("UI_Icon_Tower")
-                .resizable()
-                .scaledToFit()
-                .frame(maxHeight: labelHeight)
-            Text(text)
-                .font(.system(.largeTitle, design: .rounded))
-                .lineLimit(1)
-                .fixedSize(horizontal: false, vertical: true)
-                .minimumScaleFactor(0.7)
-                .overlay(
-                    GeometryReader(content: { geometry in
-                        Color.clear
-                            .onAppear(perform: {
-                                labelHeight = geometry.frame(in: .local)
-                                    .size.height
-                            })
-                    })
-                )
-        }
-    }
-}
-
-// MARK: - ToolViewNavigationTitleInIOS15
-
-private struct ToolViewNavigationTitleInIOS15: ViewModifier {
-    func body(content: Content) -> some View {
-        if #available(iOS 16, *) {
-            content
+        if let miHoYoAPIError = error as? MiHoYoAPIError,
+           case .verificationNeeded = miHoYoAPIError {
+            VerificationNeededView(account: account) {
+                detailPortalViewModel.refresh()
+            }
         } else {
-            content
-                .navigationTitle("披萨工具盒")
-                .navigationBarTitleDisplayMode(.inline)
+            Button {
+                completion()
+            } label: {
+                Label {
+                    HStack {
+                        Text(error.localizedDescription)
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Image(systemSymbol: .arrowClockwiseCircle)
+                    }
+                } icon: {
+                    Image(systemSymbol: .exclamationmarkCircle)
+                        .foregroundStyle(.red)
+                }
+            }
         }
     }
 }
 
-extension View {
-    fileprivate func toolViewNavigationTitleInIOS15() -> some View {
-        modifier(ToolViewNavigationTitleInIOS15())
+// MARK: - VerificationNeededView
+
+private struct VerificationNeededView: View {
+    // MARK: Internal
+
+    let account: AccountConfiguration
+    let completion: () -> ()
+
+    var body: some View {
+        Button {
+            status = .progressing
+            popVerificationWebSheet()
+        } label: {
+            Label {
+                Text("account.test.verify.button")
+            } icon: {
+                Image(systemSymbol: .exclamationmarkTriangle)
+                    .foregroundStyle(.yellow)
+            }
+        }
+        .sheet(item: $sheetItem, content: { item in
+            switch item {
+            case let .gotVerification(verification):
+                NavigationStack {
+                    GeetestValidateView(
+                        challenge: verification.challenge,
+                        gt: verification.gt,
+                        completion: { validate in
+                            status = .pending
+                            verifyValidate(challenge: verification.challenge, validate: validate)
+                            sheetItem = nil
+                        }
+                    )
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("sys.cancel") {
+                                sheetItem = nil
+                            }
+                        }
+                    }
+                    .navigationTitle("account.test.verify.web_sheet.title")
+                }
+            }
+        })
+        if case let .fail(error) = status {
+            Text("Error: \(error.localizedDescription)")
+        }
     }
+
+    func popVerificationWebSheet() {
+        Task(priority: .userInitiated) {
+            do {
+                let verification = try await MiHoYoAPI.createVerification(
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
+                )
+                status = .gotVerification(verification)
+                sheetItem = .gotVerification(verification)
+            } catch {
+                status = .fail(error)
+            }
+        }
+    }
+
+    func verifyValidate(challenge: String, validate: String) {
+        Task {
+            do {
+                _ = try await MiHoYoAPI.verifyVerification(
+                    challenge: challenge,
+                    validate: validate,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
+                )
+                completion()
+            } catch {
+                status = .fail(error)
+            }
+        }
+    }
+
+    // MARK: Private
+
+    private enum Status: CustomStringConvertible {
+        case pending
+        case progressing
+        case gotVerification(Verification)
+        case fail(Error)
+
+        // MARK: Internal
+
+        var description: String {
+            switch self {
+            case let .fail(error):
+                return "ERROR: \(error.localizedDescription)"
+            case .progressing:
+                return "gettingVerification"
+            case let .gotVerification(verification):
+                return "Challenge: \(verification.challenge)"
+            case .pending:
+                return "PENDING"
+            }
+        }
+    }
+
+    private enum SheetItem: Identifiable {
+        case gotVerification(Verification)
+
+        // MARK: Internal
+
+        var id: Int {
+            switch self {
+            case let .gotVerification(verification):
+                return verification.challenge.hashValue
+            }
+        }
+    }
+
+    @State
+    private var status: Status = .progressing
+
+    @State
+    private var sheetItem: SheetItem?
 }

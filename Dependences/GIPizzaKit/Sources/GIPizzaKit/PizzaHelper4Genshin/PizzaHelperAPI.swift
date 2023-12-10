@@ -44,12 +44,9 @@ public enum PizzaHelperAPI {
     /// - Parameters:
     ///     - completion: 数据
     public static func fetchENCharacterDetailData(
-        from serverType: Enka.JSONGitServerType? = nil,
-        completion: @escaping (
-            Enka.CharacterMap
-        ) -> (),
-        onFailure: (() -> ())? = nil
-    ) {
+        from serverType: Enka.JSONGitServerType? = nil
+    ) async throws
+        -> Enka.CharacterMap {
         // 请求类别
         let urlPrefix: String = {
             switch serverType {
@@ -69,36 +66,35 @@ public enum PizzaHelperAPI {
         print("Fetching: \(urlPrefix + urlStr)")
 
         // 请求
-        HttpMethod<Enka.CharacterMap>
-            .homeRequest(
-                .get,
-                urlStr,
-                cachedPolicy: .reloadIgnoringLocalCacheData,
-                hostType: hostType
-            ) { result in
-                switch result {
-                case let .success(requestResult):
-                    print("request succeed")
-                    completion(requestResult)
+        return try await withCheckedThrowingContinuation { continuation in
+            HttpMethod<Enka.CharacterMap>
+                .homeRequest(
+                    .get,
+                    urlStr,
+                    cachedPolicy: .reloadIgnoringLocalCacheData,
+                    hostType: hostType
+                ) { result in
+                    switch result {
+                    case let .success(requestResult):
+                        print("request succeed")
+                        continuation.resume(returning: requestResult)
 
-                case .failure:
-                    print("Fetch failed: \(urlPrefix + urlStr)")
-                    if let onFailure = onFailure { onFailure() }
-                    print("fetch ENCharacterDetailDatas fail")
+                    case let .failure(error):
+                        print("Fetch failed: \(urlPrefix + urlStr)")
+                        continuation.resume(throwing: error)
+                        print("fetch ENCharacterDetailDatas fail")
+                    }
                 }
-            }
+        }
     }
 
     /// 从EnkaNetwork获取角色ID对应本地化信息
     /// - Parameters:
     ///     - completion: 数据
     public static func fetchCharacterLocData(
-        from serverType: Enka.JSONGitServerType? = nil,
-        completion: @escaping (
-            Enka.CharacterLoc
-        ) -> (),
-        onFailure: (() -> ())? = nil
-    ) {
+        from serverType: Enka.JSONGitServerType? = nil
+    ) async throws
+        -> Enka.CharacterLoc {
         // 请求类别
         let urlPrefix: String = {
             switch serverType {
@@ -118,23 +114,24 @@ public enum PizzaHelperAPI {
         print("Fetching: \(urlPrefix + urlStr)")
 
         // 请求
-        HttpMethod<Enka.CharacterLoc>
-            .homeRequest(
-                .get,
-                urlStr,
-                cachedPolicy: .reloadIgnoringLocalCacheData,
-                hostType: hostType
-            ) { result in
-                switch result {
-                case let .success(requestResult):
-                    print("request succeed")
-                    completion(requestResult)
-
-                case .failure:
-                    print("Fetch failed: \(urlPrefix + urlStr)")
-                    if let onFailure = onFailure { onFailure() }
+        return try await withCheckedThrowingContinuation { continuation in
+            HttpMethod<Enka.CharacterLoc>
+                .homeRequest(
+                    .get,
+                    urlStr,
+                    cachedPolicy: .reloadIgnoringLocalCacheData,
+                    hostType: hostType
+                ) { result in
+                    switch result {
+                    case let .success(requestResult):
+                        print("request succeed")
+                        continuation.resume(returning: requestResult)
+                    case let .failure(error):
+                        print("Fetch failed: \(urlPrefix + urlStr)")
+                        continuation.resume(throwing: error)
+                    }
                 }
-            }
+        }
     }
 
     public static func getArtifactRatingScore(

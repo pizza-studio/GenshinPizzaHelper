@@ -149,7 +149,6 @@ struct GenshinDictionary: View {
                         }
                     }
                 }
-                .sectionSpacing(UIFont.systemFontSize)
                 .searchable(
                     text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .always),
@@ -198,7 +197,7 @@ struct GenshinDictionary: View {
                 .ignoresSafeArea()
             })
             .sheet(isPresented: $showInfoSheet) {
-                NavigationView {
+                NavigationStack {
                     VStack(alignment: .leading) {
                         Text(
                             "本功能由[原神中英日辞典](https://genshin-dictionary.com/)提供。"
@@ -218,7 +217,7 @@ struct GenshinDictionary: View {
                             Button(action: {
                                 showInfoSheet.toggle()
                             }) {
-                                Text("完成")
+                                Text("sys.done")
                             }
                         }
                     }

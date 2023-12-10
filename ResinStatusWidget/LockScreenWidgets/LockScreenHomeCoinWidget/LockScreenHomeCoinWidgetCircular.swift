@@ -5,17 +5,18 @@
 //  Created by 戴藏龙 on 2022/9/11.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
+import WidgetKit
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenHomeCoinWidgetCircular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenHomeCoinWidgetCircular: View {
+    let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -26,7 +27,7 @@ struct LockScreenHomeCoinWidgetCircular<T>: View
                     .scaledToFit()
                 switch result {
                 case let .success(data):
-                    Text("\(data.homeCoinInfo.currentHomeCoin)")
+                    Text("\(data.homeCoinInformation.calculatedCurrentHomeCoin(referTo: entry.date))")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
                     Image(systemSymbol: .ellipsis)
@@ -47,7 +48,7 @@ struct LockScreenHomeCoinWidgetCircular<T>: View
                     .foregroundColor(Color("iconColor.homeCoin.lightBlue"))
                 switch result {
                 case let .success(data):
-                    Text("\(data.homeCoinInfo.currentHomeCoin)")
+                    Text("\(data.homeCoinInformation.calculatedCurrentHomeCoin(referTo: entry.date))")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
                     Image(systemSymbol: .ellipsis)
@@ -67,7 +68,7 @@ struct LockScreenHomeCoinWidgetCircular<T>: View
 
                 switch result {
                 case let .success(data):
-                    Text("\(data.homeCoinInfo.currentHomeCoin)")
+                    Text("\(data.homeCoinInformation.calculatedCurrentHomeCoin(referTo: entry.date))")
                         .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
                     Image(systemSymbol: .ellipsis)

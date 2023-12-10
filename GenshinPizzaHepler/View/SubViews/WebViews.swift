@@ -6,6 +6,7 @@
 //  封装了使用OPWebView的各种网页
 
 import Defaults
+import HoYoKit
 import SafariServices
 import SwiftUI
 import WebKit
@@ -93,18 +94,10 @@ struct TeyvatMapWebView: UIViewRepresentable {
         }
     }
 
-    var isHoYoLAB: Bool
-
-    var url: String {
-        if isHoYoLAB {
-            return "https://act.hoyolab.com/ys/app/interactive-map/index.html"
-        } else {
-            return "https://webstatic.mihoyo.com/ys/app/interactive-map/index.html"
-        }
-    }
+    var region: Region
 
     func makeUIView(context: Context) -> OPWebView {
-        guard let url = URL(string: url)
+        guard let url = region.teyvatInteractiveMapURL
         else {
             return OPWebView()
         }
@@ -117,7 +110,7 @@ struct TeyvatMapWebView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: OPWebView, context: Context) {
-        if let url = URL(string: url) {
+        if let url = region.teyvatInteractiveMapURL {
             let request = URLRequest(url: url)
             uiView.load(request)
         }
@@ -251,7 +244,7 @@ struct UserPolicyView: View {
     var sheet: ContentViewSheetType?
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             WebBroswerView(url: "https://gi.pizzastudio.org/static/policy.html")
                 .ignoresSafeArea()
                 .toolbar {

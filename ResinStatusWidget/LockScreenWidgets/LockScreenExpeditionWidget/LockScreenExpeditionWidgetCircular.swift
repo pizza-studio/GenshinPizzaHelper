@@ -5,17 +5,16 @@
 //  Created by 戴藏龙 on 2022/9/11.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenExpeditionWidgetCircular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenExpeditionWidgetCircular: View {
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -27,7 +26,7 @@ struct LockScreenExpeditionWidgetCircular<T>: View
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)"
+                        "\(data.expeditionInformation.ongoingExpeditionCount) / \(data.expeditionInformation.maxExpeditionsCount)"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
@@ -49,7 +48,7 @@ struct LockScreenExpeditionWidgetCircular<T>: View
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)"
+                        "\(data.expeditionInformation.ongoingExpeditionCount) / \(data.expeditionInformation.maxExpeditionsCount)"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:
@@ -71,7 +70,7 @@ struct LockScreenExpeditionWidgetCircular<T>: View
                 switch result {
                 case let .success(data):
                     Text(
-                        "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)"
+                        "\(data.expeditionInformation.ongoingExpeditionCount) / \(data.expeditionInformation.maxExpeditionsCount)"
                     )
                     .font(.system(.body, design: .rounded).weight(.medium))
                 case .failure:

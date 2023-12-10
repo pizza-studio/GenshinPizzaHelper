@@ -58,6 +58,11 @@ enum ThisDevice {
         return min(screenSize.width, screenSize.height) < 375
     }
 
+    public static var isSmallestSlideOverWindowWidth: Bool {
+        guard let window = getKeyWindow() else { return Self.isSmallestHDScreenPhone }
+        return min(window.frame.width, window.frame.height) < 375
+    }
+
     public static var scaleRatioCompatible: CGFloat {
         guard let window = getKeyWindow() else { return 1 }
         let windowSize = window.bounds.size

@@ -48,8 +48,8 @@ struct BackgroundOptions {
 
 extension WidgetBackground {
     static let defaultBackground: WidgetBackground = .init(
-        identifier: NameCard.defaultValue.fileName,
-        display: NameCard.defaultValue.localized
+        identifier: NameCard.defaultValueForWidget.fileName,
+        display: NameCard.defaultValueForWidget.localized
     )
     static var randomBackground: WidgetBackground {
         let pickedBackgroundId = BackgroundOptions.allOptions.randomElement()!

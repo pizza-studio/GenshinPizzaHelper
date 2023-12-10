@@ -20,12 +20,15 @@ struct GenshinPizzaHeplerApp: App {
         UserDefaults.opSuite.synchronize()
         #if !os(watchOS)
         UserNotificationCenter.shared.askPermission()
+        if OS.type == .macOS {
+            UITabBar.appearance().unselectedItemTintColor = .gray
+        }
         #endif
     }
 
-    // MARK: Internal
+// MARK: Internal
 
-    let viewModel: ViewModel = .shared
+//    let viewModel: ViewModel = .shared
     #if !os(watchOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self)
     var appDelegate
@@ -46,12 +49,11 @@ struct GenshinPizzaHeplerApp: App {
         #if os(watchOS)
         WindowGroup {
             ContentView()
-                .environmentObject(viewModel)
+                .environment(\.managedObjectContext, AccountConfigurationModel.shared.container.viewContext)
         }
         #else
         WindowGroup {
             ContentView(storeManager: storeManager)
-                .environmentObject(viewModel)
 //                .onReceive(NotificationCenter.default.publisher(for: UIScene.willConnectNotification)) { _ in
 //                    if OS.type == .macOS {
 //                        let windowSize = CGSize(width: 414, height: 896)
@@ -69,6 +71,7 @@ struct GenshinPizzaHeplerApp: App {
                     SKPaymentQueue.default().add(storeManager)
                     storeManager.getProducts(productIDs: productIDs)
                 }
+                .environment(\.managedObjectContext, AccountConfigurationModel.shared.container.viewContext)
         }
         #endif
     }

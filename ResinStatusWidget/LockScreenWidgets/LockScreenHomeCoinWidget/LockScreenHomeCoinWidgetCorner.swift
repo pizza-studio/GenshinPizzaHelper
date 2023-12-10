@@ -5,23 +5,26 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
+import WidgetKit
+
+// MARK: - LockScreenHomeCoinWidgetCorner
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenHomeCoinWidgetCorner<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenHomeCoinWidgetCorner: View {
+    let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var text: String {
         switch result {
         case let .success(data):
-            return "\(data.homeCoinInfo.currentHomeCoin), \(data.homeCoinInfo.recoveryTime.describeIntervalShort(finishedTextPlaceholder: "已填满".localized))"
+            return "\(data.homeCoinInformation.calculatedCurrentHomeCoin(referTo: entry.date)), \(intervalFormatter.string(from: TimeInterval.sinceNow(to: data.homeCoinInformation.fullTime))!)"
         case .failure:
-            return "洞天宝钱".localized
+            return "app.dailynote.card.homeCoin.label".localized
         }
     }
 
@@ -33,3 +36,11 @@ struct LockScreenHomeCoinWidgetCorner<T>: View
             .widgetLabel(text)
     }
 }
+
+private let intervalFormatter: DateComponentsFormatter = {
+    let dateComponentFormatter = DateComponentsFormatter()
+    dateComponentFormatter.allowedUnits = [.hour, .minute]
+    dateComponentFormatter.maximumUnitCount = 2
+    dateComponentFormatter.unitsStyle = .brief
+    return dateComponentFormatter
+}()

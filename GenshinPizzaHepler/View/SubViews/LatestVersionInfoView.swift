@@ -19,7 +19,7 @@ struct LatestVersionInfoView: View {
     var isJustUpdated: Bool
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack {

@@ -13,14 +13,14 @@ import SwiftUI
 @available(iOS 16.1, *)
 struct LiveActivitySettingView: View {
     @Binding
-    var selectedView: SettingViewIOS16.Navigation?
+    var selectedView: SettingsView.Navigation?
 
     @State
     var isAlertShow: Bool = false
 
     var body: some View {
         Section {
-            NavigationLink(value: SettingViewIOS16.Navigation.resinTimerSetting) {
+            NavigationLink(value: SettingsView.Navigation.resinTimerSetting) {
                 Label("树脂计时器设置", systemSymbol: .timer)
             }
         } footer: {
@@ -128,7 +128,6 @@ struct LiveActivitySettingDetailView: View {
             }
             .disabled(!allowLiveActivity)
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .toolbar {
             ToolbarItem {
                 Button {
@@ -141,7 +140,7 @@ struct LiveActivitySettingDetailView: View {
         .navigationTitle("树脂计时器设置")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isHelpSheetShow) {
-            NavigationView {
+            NavigationStack {
                 WebBroswerView(
                     url: "https://gi.pizzastudio.org/static/resin_timer_help.html"
                 )

@@ -8,13 +8,14 @@
 import Defaults
 import Foundation
 import HBMihoyoAPI
+import HoYoKit
 import WidgetKit
 
 // MARK: - AccountAndShowWhichInfoIntentEntry
 
 struct AccountAndShowWhichInfoIntentEntry: TimelineEntry {
     let date: Date
-    let widgetDataKind: WidgetDataKind
+    let result: Result<any DailyNote, any Error>
     var accountName: String?
 
     var showWeeklyBosses: Bool = false
@@ -56,7 +57,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         -> AccountAndShowWhichInfoIntentEntry {
         AccountAndShowWhichInfoIntentEntry(
             date: Date(),
-            widgetDataKind: .normal(result: .defaultFetchResult),
+            result: .success(GeneralDailyNote.exampleData()),
             accountName: "荧",
             accountUUIDString: nil,
             usingResinStyle: .default_
@@ -70,7 +71,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
     ) {
         let entry = AccountAndShowWhichInfoIntentEntry(
             date: Date(),
-            widgetDataKind: .normal(result: .defaultFetchResult),
+            result: .success(GeneralDailyNote.exampleData()),
             accountName: "荧",
             accountUUIDString: nil,
             usingResinStyle: .default_
@@ -104,7 +105,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         guard !configs.isEmpty else {
             let entry = AccountAndShowWhichInfoIntentEntry(
                 date: currentDate,
-                widgetDataKind: .normal(result: .failure(.noFetchInfo)),
+                result: .failure(FetchError.noFetchInfo),
                 accountUUIDString: nil,
                 usingResinStyle: style
             )
@@ -118,9 +119,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         guard configuration.account != nil else {
             let config = configs.first!
-            getTimelineEntries(config: config) { entries in
-                completion(.init(entries: entries, policy: .after(refreshDate)))
-            }
+            getTimelineEntries(config: config)
             return
         }
 
@@ -135,7 +134,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = AccountAndShowWhichInfoIntentEntry(
                 date: currentDate,
-                widgetDataKind: .normal(result: .failure(.noFetchInfo)),
+                result: .failure(FetchError.noFetchInfo),
                 accountUUIDString: nil,
                 usingResinStyle: style
             )
@@ -148,120 +147,42 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             return
         }
 
-        // 正常情况
-        getTimelineEntries(config: config) { entries in
-            completion(.init(entries: entries, policy: .after(refreshDate)))
-        }
+        getTimelineEntries(config: config)
 
-        func getTimelineEntries(
-            config: AccountConfiguration,
-            completion: @escaping ([AccountAndShowWhichInfoIntentEntry]) -> ()
-        ) {
-            switch config.server.region {
-            case .cn:
-                if configuration.simplifiedMode?.boolValue ?? true {
-                    getSimplifiedTimelineEntries(config: config) { entries in
-                        completion(entries)
+        func getTimelineEntries(config: AccountConfiguration) {
+            Task {
+                do {
+                    let data = try await config.dailyNote()
+                    let entries = (0 ... 40).map { index in
+                        let timeInterval = TimeInterval(index * 8 * 60)
+                        let entryDate =
+                            Date(timeIntervalSinceNow: timeInterval)
+                        return AccountAndShowWhichInfoIntentEntry(
+                            date: entryDate,
+                            result: .success(data),
+                            accountName: config.name,
+                            showWeeklyBosses: configuration
+                                .showWeeklyBosses as! Bool,
+                            showTransformer: configuration
+                                .showTransformer as! Bool,
+                            accountUUIDString: config.safeUuid.uuidString,
+                            usingResinStyle: style
+                        )
                     }
-                } else {
-                    getNormalTimelineEntries(config: config) { entries in
-                        completion(entries)
-                    }
-                }
-            case .global:
-                getNormalTimelineEntries(config: config) { entries in
-                    completion(entries)
-                }
-            }
-        }
-
-        func getSimplifiedTimelineEntries(
-            config: AccountConfiguration,
-            completion: @escaping ([AccountAndShowWhichInfoIntentEntry]) -> ()
-        ) {
-            config.fetchSimplifiedResult { result in
-                switch result {
-                case let .success(data):
-                    completion(
-                        (0 ... 40).map { index in
-                            let timeInterval = TimeInterval(index * 8 * 60)
-                            let entryDate =
-                                Date(timeIntervalSinceNow: timeInterval)
-                            let entryData = data.dataAfter(timeInterval)
-                            return .init(
-                                date: entryDate,
-                                widgetDataKind: .simplified(
-                                    result: .success(entryData)
-                                ),
-                                accountName: config.name,
-                                showWeeklyBosses: configuration
-                                    .showWeeklyBosses as! Bool,
-                                showTransformer: configuration
-                                    .showTransformer as! Bool,
-                                accountUUIDString: config.uuid?.uuidString,
-                                usingResinStyle: style
-                            )
-                        }
-                    )
-                case .failure:
+                    completion(.init(entries: entries, policy: .after(refreshDate)))
+                } catch {
                     let entry = AccountAndShowWhichInfoIntentEntry(
                         date: currentDate,
-                        widgetDataKind: .simplified(result: result),
+                        result: .failure(error),
                         accountName: config.name,
                         showWeeklyBosses: configuration
                             .showWeeklyBosses as! Bool,
                         showTransformer: configuration.showTransformer as! Bool,
-                        accountUUIDString: config.uuid?.uuidString,
+                        accountUUIDString: config.safeUuid.uuidString,
                         usingResinStyle: style
                     )
-                    completion([entry])
+                    completion(.init(entries: [entry], policy: .after(refreshDate)))
                 }
-                print("Widget Fetch succeed")
-            }
-        }
-
-        func getNormalTimelineEntries(
-            config: AccountConfiguration,
-            completion: @escaping ([AccountAndShowWhichInfoIntentEntry]) -> ()
-        ) {
-            config.fetchResult { result in
-                switch result {
-                case let .success(data):
-                    completion(
-                        (0 ... 40).map { index in
-                            let timeInterval = TimeInterval(index * 8 * 60)
-                            let entryDate =
-                                Date(timeIntervalSinceNow: timeInterval)
-                            let entryData = data.dataAfter(timeInterval)
-                            return .init(
-                                date: entryDate,
-                                widgetDataKind: .normal(
-                                    result: .success(entryData)
-                                ),
-                                accountName: config.name,
-                                showWeeklyBosses: configuration
-                                    .showWeeklyBosses as! Bool,
-                                showTransformer: configuration
-                                    .showTransformer as! Bool,
-                                accountUUIDString: config.uuid?.uuidString,
-                                usingResinStyle: style
-                            )
-                        }
-                    )
-                case .failure:
-                    let entry = AccountAndShowWhichInfoIntentEntry(
-                        date: currentDate,
-                        widgetDataKind: .normal(result: result),
-                        accountName: config.name,
-                        showWeeklyBosses: configuration
-                            .showWeeklyBosses as! Bool,
-                        showTransformer: configuration.showTransformer as! Bool,
-                        accountUUIDString: config.uuid?.uuidString,
-                        usingResinStyle: style
-                    )
-                    completion([entry])
-                }
-                print("Widget Fetch succeed")
             }
         }
     }

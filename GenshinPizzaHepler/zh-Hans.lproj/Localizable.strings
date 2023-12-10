@@ -513,11 +513,11 @@ Created by Bill Haku on 2022/8/23.
 // Account detail
 "settings.account.reloginHoyoLabAccount" = "重新登录米哈游通行证账号";
 "settings.account.config" = "账号配置";
-"settings.account.username" = "账号名";
+"settings.account.username" = "账号名称";
 "settings.account.server" = "服务器";
 "settings.account.testConnection" = "测试连接";
 "settings.account.errorMessage" = "错误内容";
-"settings.account.accountInformation" = "账号信息";
+"settings.account.accountDetails" = "账号信息";
 
 "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "你可以自定义显示在小组件上的账号名称";
 "settings.account.pasteFromClipboard" = "粘贴自剪贴板";
@@ -695,7 +695,7 @@ Created by Bill Haku on 2022/8/23.
 "密码" = "密码";
 
 // Setting View
-"完成" = "完成";
+"sys.done" = "完成";
 "编辑" = "编辑";
 
 //Widget Tips
@@ -715,10 +715,10 @@ Created by Bill Haku on 2022/8/23.
 
 // MARK: - 2.2
 // Watch App
-"原粹树脂" = "原粹树脂";
-"洞天宝钱" = "洞天宝钱";
-"每日委托" = "每日委托";
-"探索派遣" = "探索派遣";
+"app.dailynote.card.resin.label" = "原粹树脂";
+"app.dailynote.card.homeCoin.label" = "洞天宝钱";
+"app.dailynote.card.dailyTask.label" = "每日委托";
+"app.dailynote.card.expedition.label" = "探索派遣";
 "参量质变仪" = "参量质变仪";
 "周本折扣" = "周本折扣";
 "infoBlock.refilledAt:%@" = "%@ 回满";
@@ -783,14 +783,14 @@ Created by Bill Haku on 2022/8/23.
 
 // MARK: - 2.4
 // Content View
-"概览" = "概览";
-"详情" = "详情";
-"工具" = "工具";
+"app.home.title" = "概览";
+"app.detailPortal.title" = "详情";
+"app.tools.title" = "工具";
 
 // Home View
 "当前活动" = "当前活动";
-"即将结束的活动" = "即将结束的活动";
-"查看全部活动" = "查看全部活动";
+"currentEventNavigator.pendingEvents.title" = "即将结束的活动";
+"currentEventNavigator.viewAll.title" = "查看全部活动";
 "账号基本信息" = "账号基本信息";
 "剩余 %lld天" = "剩余 %lld天";
 "剩余 %lld小时" = "剩余 %lld小时";
@@ -882,7 +882,7 @@ Created by Bill Haku on 2022/8/23.
 "下半" = "下半";
 "获取渊星数" = "获取渊星数";
 // Other tool
-"提瓦特大地图" = "提瓦特大地图";
+"tools.teyvatInteractiveMap" = "提瓦特大地图";
 "请稍等%lld秒再刷新" = "请稍等%lld秒再刷新";
 "请下滑刷新" = "请下滑刷新";
 "原神中英日辞典" = "原神中英日辞典";
@@ -891,7 +891,7 @@ Created by Bill Haku on 2022/8/23.
 "由爱丽丝工坊提供（未安装）" = "由爱丽丝工坊提供（未安装）";
 "旅行工具" = "旅行工具";
 // Ledger sheet
-"原石摩拉账簿" = "原石摩拉账簿";
+"app.detailPortal.ledger.title" = "原石摩拉账簿";
 "保存本月原石账簿图片" = "保存本月原石账簿图片";
 "原石收入" = "原石收入";
 "摩拉收入" = "摩拉收入";
@@ -955,7 +955,7 @@ Created by Bill Haku on 2022/8/23.
 "**日语** %@" = "**日语** %@";
 "**中文** %@" = "**中文** %@";
 
-"取消" = "取消";
+"sys.cancel" = "取消";
 
 // UpdateHistoryInfoView
 "更新公告" = "更新公告";
@@ -1361,7 +1361,7 @@ Created by Bill Haku on 2022/8/23.
 
 // MARK: - 3.0.4
 "settings.reverseProxy.navTitle" = "反向代理设置";
-"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "设备指纹仅限国服账号需要设置";
+"settings.account.regenerateDeviceFingerPrint.footer" = "设备指纹仅限天空岛和世界树服务器账号所必需。";
 
 // MARK: - 3.1.1
 
@@ -1394,3 +1394,15 @@ Created by Bill Haku on 2022/8/23.
 
 "detailPortal.player.worldLevel" = "世界等级";
 "detailPortal.player.adventureRank.short:%@" = "%@级";
+
+// MARK: - 4.0.0
+
+"currentEventNavigator.tapToViewAll.title" = "点击以全部查看";
+"app.detailPortal.allAvatar.title" = "所有角色清单";
+"app.detailPortal.basicInfo.title" = "账号基础统计";
+"app.detailPortal.abyss.title" = "深境螺旋战绩";
+"app.dailynote.card.dailyTask.extraReward.received" = "已领取额外奖励";
+"app.dailynote.card.dailyTask.extraReward.notReceived" = "额外奖励待领取";
+"settings.account.regenerateDeviceFingerPrint.label" = "重新生成设备指纹";
+"sys.label.cookie" = "Cookie";
+"settings.account.manage.title" = "管理账号";

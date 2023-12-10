@@ -8,6 +8,7 @@
 import Defaults
 import GIPizzaKit
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -232,8 +233,6 @@ struct AbyssDataCollectionView: View {
         second: Int?
     )
 
-    @EnvironmentObject
-    var viewModel: ViewModel
     @StateObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel =
         .init()
@@ -265,8 +264,8 @@ struct AbyssDataCollectionView: View {
             }
         }
         .environmentObject(abyssDataCollectionViewModel)
+        .navigationBarTitleDisplayMode(.inline)
         .listStyle(.insetGrouped)
-        .hideTabBar()
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -345,7 +344,7 @@ struct AbyssDataCollectionView: View {
                     return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
                 }
             }()
-            NavigationView {
+            NavigationStack {
                 WebBroswerView(url: url)
                     .dismissableSheet(isSheetShow: $isWebSheetShow)
                     .navigationTitle("深渊统计榜单FAQ")
@@ -477,8 +476,6 @@ struct AbyssDataCollectionView: View {
 
 private struct ShowAvatarPercentageView: View {
     @EnvironmentObject
-    var viewModel: ViewModel
-    @EnvironmentObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     let percentageFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -538,7 +535,6 @@ private struct ShowAvatarPercentageView: View {
                 ProgressView()
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
     }
 
     @ViewBuilder
@@ -565,8 +561,6 @@ private struct ShowAvatarPercentageView: View {
 // MARK: - ShowAvatarPercentageViewWithSection
 
 private struct ShowAvatarPercentageViewWithSection: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
     @EnvironmentObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     let percentageFormatter: NumberFormatter = {
@@ -668,7 +662,6 @@ private struct ShowAvatarPercentageViewWithSection: View {
                 ProgressView()
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
     }
 
     @ViewBuilder
@@ -809,8 +802,6 @@ private struct ShowAvatarPercentageShare: View {
 private struct ShowTeamPercentageView: View {
     @Environment(\.colorScheme)
     var colorScheme
-    @EnvironmentObject
-    var viewModel: ViewModel
     @EnvironmentObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
     let percentageFormatter: NumberFormatter = {

@@ -9,6 +9,7 @@ import Combine
 import CoreData
 import Foundation
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - GachaViewModel

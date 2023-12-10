@@ -517,7 +517,7 @@
 "settings.account.server" = "Server";
 "settings.account.testConnection" = "Test Connection";
 "settings.account.errorMessage" = "Error Details";
-"settings.account.accountInformation" = "Account Infos";
+"settings.account.accountDetails" = "Account Infos";
 
 "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "Your custom account name displayed on Widget";
 "settings.account.pasteFromClipboard" = "Paste from Clipboard";
@@ -694,7 +694,7 @@
 "密码" = "Password";
 
 // Setting View
-"完成" = "Done";
+"sys.done" = "Done";
 "编辑" = "Edit";
 
 //Widget Tips
@@ -714,10 +714,10 @@
 
 // MARK: - 2.2
 // Watch App
-"原粹树脂" = "Original Resin";
-"洞天宝钱" = "Realm Currency";
-"每日委托" = "Daily Commission";
-"探索派遣" = "Expedition";
+"app.dailynote.card.resin.label" = "Original Resin";
+"app.dailynote.card.homeCoin.label" = "Realm Currency";
+"app.dailynote.card.dailyTask.label" = "Daily Commission";
+"app.dailynote.card.expedition.label" = "Expedition";
 "参量质变仪" = "Parametric Transformer";
 "周本折扣" = "Weekly Boss";
 "infoBlock.refilledAt:%@" = "Refilled at \n%@";
@@ -782,14 +782,14 @@
 
 // MARK: - 2.4
 // Content View
-"概览" = "Overview";
-"详情" = "Details";
-"工具" = "Tools";
+"app.home.title" = "Overview";
+"app.detailPortal.title" = "Details";
+"app.tools.title" = "Tools";
 
 // Home View
 "当前活动" = "Ongoing Events";
-"即将结束的活动" = "Soon to end events";
-"查看全部活动" = "All ongoing events";
+"currentEventNavigator.pendingEvents.title" = "Soon to end events";
+"currentEventNavigator.viewAll.title" = "All ongoing events";
 "账号基本信息" = "Account Basic Infos";
 "剩余 %lld天" = "%lld days left";
 "剩余 %lld小时" = "%lld hours left";
@@ -881,7 +881,7 @@
 "下半" = "2nd";
 "获取渊星数" = "Abyss Star Obtained";
 // Other tool
-"提瓦特大地图" = "Teyvat Interactive Map";
+"tools.teyvatInteractiveMap" = "Teyvat Interactive Map";
 "请稍等%lld秒再刷新" = "Please wait for %lld seconds before refreshing.";
 "请下滑刷新" = "Please slide down to refresh";
 "原神中英日辞典" = "Genshin Dictionary";
@@ -890,7 +890,7 @@
 "由爱丽丝工坊提供（未安装）" = "Provided by Alice Workshop";
 "旅行工具" = "Gadgets for Travellers";
 // Ledger sheet
-"原石摩拉账簿" = "Primogems and Mora Ledger";
+"app.detailPortal.ledger.title" = "Primogems and Mora Ledger";
 "保存本月原石账簿图片" = "Save image of this month's primogems ladger";
 "原石收入" = "Primogems";
 "摩拉收入" = "Mora";
@@ -954,7 +954,7 @@
 "**日语** %@" = "**JA** %@";
 "**中文** %@" = "**ZH** %@";
 
-"取消" = "Cancel";
+"sys.cancel" = "Cancel";
 
 // UpdateHistoryInfoView
 "更新公告" = "Update Announcement";
@@ -1359,7 +1359,7 @@
 
 // MARK: - 3.0.4
 "settings.reverseProxy.navTitle" = "Reverse Proxy Settings";
-"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "Only accounts of China Mainland servers are needed";
+"settings.account.regenerateDeviceFingerPrint.footer" = "Only Celestia and Irminsul server accounts require the device fingerprint.";
 
 // MARK: - 3.1.1
 
@@ -1392,3 +1392,15 @@
 
 "detailPortal.player.worldLevel" = "World Level";
 "detailPortal.player.adventureRank.short:%@" = "AR %@";
+
+// MARK: - 4.0.0
+
+"currentEventNavigator.tapToViewAll.title" = "Tap to View All";
+"app.detailPortal.allAvatar.title" = "All Characters";
+"app.detailPortal.basicInfo.title" = "Basic Statistics";
+"app.detailPortal.abyss.title" = "Spiral Abyss Records";
+"app.dailynote.card.dailyTask.extraReward.received" = "Extra Reward Retrieved";
+"app.dailynote.card.dailyTask.extraReward.notReceived" = "Extra Reward Available";
+"settings.account.regenerateDeviceFingerPrint.label" = "Regenerate Device Fingerprint";
+"sys.label.cookie" = "Cookie";
+"settings.account.manage.title" = "Account Management";

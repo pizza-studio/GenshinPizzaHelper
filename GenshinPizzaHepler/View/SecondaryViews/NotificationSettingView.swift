@@ -11,9 +11,6 @@ import SwiftUI
 // MARK: - NotificationSettingView
 
 struct NotificationSettingView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
-
     @State
     var showResinSlider: Bool = false
     @State
@@ -139,7 +136,6 @@ struct NotificationSettingView: View {
             Section {
                 NavigationLink(
                     destination: IgnoreNotificationAccountView()
-                        .environmentObject(viewModel)
                 ) {
                     Text("settings.notification.accountsReceivingNotifications")
                 }
@@ -260,7 +256,6 @@ struct NotificationSettingView: View {
                 Text("settings.notification.type.parametricTransformer")
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("settings.notification.deliverySettings", displayMode: .inline)
     }
 }
@@ -268,12 +263,14 @@ struct NotificationSettingView: View {
 // MARK: - IgnoreNotificationAccountView
 
 struct IgnoreNotificationAccountView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: true
+    )])
+    var configs: FetchedResults<AccountConfiguration>
+
     @Default(.notificationIgnoreUidsData)
     var data: Data
-
-    var configs: [AccountConfiguration] { viewModel.accounts.map { $0.config } }
 
     var ignoreUids: Binding<[String]> {
         .init {
@@ -293,7 +290,6 @@ struct IgnoreNotificationAccountView: View {
                 )
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
     }
 }
 

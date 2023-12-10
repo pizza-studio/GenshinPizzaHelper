@@ -517,7 +517,7 @@
 "settings.account.server" = "サーバー";
 "settings.account.testConnection" = "接続状況をテストする";
 "settings.account.errorMessage" = "エラーの詳細";
-"settings.account.accountInformation" = "アカウント情報";
+"settings.account.accountDetails" = "アカウント情報";
 
 "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "ウィジェットに表示されているアカウント名をカスタマイズできます";
 "settings.account.pasteFromClipboard" = "クリップボードから貼り付ける";
@@ -695,7 +695,7 @@
 "密码" = "パスワード";
 
 // Setting View
-"完成" = "完了";
+"sys.done" = "完了";
 "编辑" = "編集";
 
 //Widget Tips
@@ -715,10 +715,10 @@
 
 // MARK: - 2.2
 // Watch App
-"原粹树脂" = "天然樹脂";
-"洞天宝钱" = "洞天宝銭";
-"每日委托" = "デイリー依頼";
-"探索派遣" = "探索派遣";
+"app.dailynote.card.resin.label" = "天然樹脂";
+"app.dailynote.card.homeCoin.label" = "洞天宝銭";
+"app.dailynote.card.dailyTask.label" = "デイリー依頼";
+"app.dailynote.card.expedition.label" = "探索派遣";
 "参量质变仪" = "参量物質変化器";
 "周本折扣" = "週ボス";
 "infoBlock.refilledAt:%@" = "%@まで全て回復";
@@ -783,14 +783,14 @@
 
 // MARK: - 2.4
 // Content View
-"概览" = "概要";
-"详情" = "詳細";
-"工具" = "ツール";
+"app.home.title" = "概要";
+"app.detailPortal.title" = "詳細";
+"app.tools.title" = "ツール";
 
 // Home View
 "当前活动" = "進行中のイベント";
-"即将结束的活动" = "現在開催中のイベント";
-"查看全部活动" = "全てのイベント";
+"currentEventNavigator.pendingEvents.title" = "現在開催中のイベント";
+"currentEventNavigator.viewAll.title" = "全てのイベント";
 "账号基本信息" = "Account Basic Infos";
 "剩余 %lld天" = "残り%lld日";
 "剩余 %lld小时" = "残り%lld時間";
@@ -882,7 +882,7 @@
 "下半" = "下半";
 "获取渊星数" = "獲得した星";
 // Other tool
-"提瓦特大地图" = "テイワットマップ";
+"tools.teyvatInteractiveMap" = "テイワットマップ";
 "请稍等%lld秒再刷新" = "%lld秒だけお待ちください";
 "请下滑刷新" = "下にスライドしてリフレッシュしてください";
 "原神中英日辞典" = "原神英語・中国語辞典";
@@ -891,7 +891,7 @@
 "由爱丽丝工坊提供（未安装）" = "アリスワークショップ提供";
 "旅行工具" = "旅のユーティリティ";
 // Ledger sheet
-"原石摩拉账簿" = "原石モラ元帳";
+"app.detailPortal.ledger.title" = "原石モラ元帳";
 "保存本月原石账簿图片" = "今月の原石元帳のイメージをセーブ";
 "原石收入" = "原石収入";
 "摩拉收入" = "モラ収入";
@@ -955,7 +955,7 @@
 "**日语** %@" = "**日本語** %@";
 "**中文** %@" = "**中国語** %@";
 
-"取消" = "キャンセル";
+"sys.cancel" = "キャンセル";
 
 // UpdateHistoryInfoView
 "更新公告" = "お知らせ";
@@ -1363,7 +1363,7 @@
 // MARK: - 3.0.4
 
 "settings.reverseProxy.navTitle" = "逆接代理の設定";
-"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "デバイスの指紋は、中国本土のサーバーアカウントに制限されているため、設定する必要があります。";
+"settings.account.regenerateDeviceFingerPrint.footer" = "デバイスの指紋は、天空の島・世界中その２つサーバーのアカウントに制限されているため、設定する必要があります。";
 
 // MARK: - 3.1.1
 
@@ -1396,3 +1396,15 @@
 
 "detailPortal.player.worldLevel" = "世界ランク";
 "detailPortal.player.adventureRank.short:%@" = "AR %@";
+
+// MARK: - 4.0.0
+
+"currentEventNavigator.tapToViewAll.title" = "タップで全てを";
+"app.detailPortal.allAvatar.title" = "全てのキャラ";
+"app.detailPortal.basicInfo.title" = "基本情報統計";
+"app.detailPortal.abyss.title" = "深境螺旋の実績";
+"app.dailynote.card.dailyTask.extraReward.received" = "追加報酬受取済";
+"app.dailynote.card.dailyTask.extraReward.notReceived" = "追加報酬未受取";
+"settings.account.regenerateDeviceFingerPrint.label" = "デバイスの指紋を再作成";
+"sys.label.cookie" = "Cookie";
+"settings.account.manage.title" = "アカウント管理";

@@ -5,7 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
@@ -39,44 +39,34 @@ struct AlternativeWatchCornerResinWidgetView: View {
     var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: Result<any DailyNote, any Error> { entry.result }
     var accountName: String? { entry.accountName }
 
     var body: some View {
-        switch dataKind {
-        case let .normal(result):
-            switch result {
-            case let .success(data):
-                resinView(resinInfo: data.resinInfo)
-            case .failure:
-                failureView()
-            }
-        case let .simplified(result):
-            switch result {
-            case let .success(data):
-                resinView(resinInfo: data.resinInfo)
-            case .failure:
-                failureView()
-            }
+        switch result {
+        case let .success(data):
+            resinView(resinInfo: data.resinInformation)
+        case .failure:
+            failureView()
         }
     }
 
     @ViewBuilder
-    func resinView(resinInfo: ResinInfo) -> some View {
+    func resinView(resinInfo: ResinInformation) -> some View {
         Image("icon.resin")
             .resizable()
             .scaledToFit()
             .padding(4)
             .widgetLabel {
                 Gauge(
-                    value: Double(resinInfo.currentResin),
+                    value: Double(resinInfo.calculatedCurrentResin(referTo: entry.date)),
                     in: 0 ... Double(resinInfo.maxResin)
                 ) {
-                    Text("原粹树脂")
+                    Text("app.dailynote.card.resin.label")
                 } currentValueLabel: {
-                    Text("\(resinInfo.currentResin)")
+                    Text("\(resinInfo.calculatedCurrentResin(referTo: entry.date))")
                 } minimumValueLabel: {
-                    Text("\(resinInfo.currentResin)")
+                    Text("\(resinInfo.calculatedCurrentResin(referTo: entry.date))")
                 } maximumValueLabel: {
                     Text("")
                 }

@@ -518,7 +518,7 @@
 "settings.account.server" = "Máy chủ";
 "settings.account.testConnection" = "Kiểm tra kết nối";
 "settings.account.errorMessage" = "Chi tiết lỗi";
-"settings.account.accountInformation" = "Thông tin tài khoản";
+"settings.account.accountDetails" = "Thông tin tài khoản";
 
 "settings.account.explain.youCanCustomizeAccountNamesShownInTheWidget" = "Tên tài khoản tùy chỉnh của bạn được hiển thị trên tiện ích";
 "settings.account.pasteFromClipboard" = "Dán từ Clipboard";
@@ -533,7 +533,7 @@
 "settings.account.prompt.loginToFetchCookie" = "Lấy Cookie thông qua HoYoLAB";
 
 "settings.account.prompt.pleaseFinishLogin" = "Vui lòng hoàn tất đăng nhập";
-"完成" = "Xong";
+"sys.done" = "Xong";
 "settings.account.errorMessage.failedFromGettingUIDAndServerInfo" = "Không thể lấy Cookie. Vui lòng thử lại.";
 "settings.account.configuration.notFinishedYet" = "Cấu hình tài khoản chưa hoàn tất";
 "settings.account.configuration.beforeAddingYourAccount" = "Trước khi thêm tài khoản của bạn…";
@@ -819,7 +819,7 @@
 "密码" = "Mật khẩu";
 
 // Setting View
-"完成" = "Xong";
+"sys.done" = "Xong";
 "编辑" = "Sửa";
 
 //tiện ích Tips
@@ -839,10 +839,10 @@
 
 // MARK: - 2.2
 // Watch App
-"原粹树脂" = "Nhựa Nguyên Chất";
-"洞天宝钱" = "Tiền Động Tiên";
-"每日委托" = "Nhiệm Vụ Hàng Ngày";
-"探索派遣" = "Phái Đi Thám Hiểm";
+"app.dailynote.card.resin.label" = "Nhựa Nguyên Chất";
+"app.dailynote.card.homeCoin.label" = "Tiền Động Tiên";
+"app.dailynote.card.dailyTask.label" = "Nhiệm Vụ Hàng Ngày";
+"app.dailynote.card.expedition.label" = "Phái Đi Thám Hiểm";
 "参量质变仪" = "Máy Biến Đổi Tham Số";
 "周本折扣" = "Vùng Đất Thảo Phạt";
 "infoBlock.transformerAvailable" = "CD Xong";
@@ -918,14 +918,14 @@
 
 // MARK: - 2.4
 // Content View
-"概览" = "Tổng Quan";
-"详情" = "Chi tiết";
-"工具" = "Công Cụ";
+"app.home.title" = "Tổng Quan";
+"app.detailPortal.title" = "Chi tiết";
+"app.tools.title" = "Công Cụ";
 
 // Home View
 "当前活动" = "Sự Kiện Đang Diễn Ra";
-"即将结束的活动" = "Sự Kiện Sắp Kết Thúc";
-"查看全部活动" = "Tất Cả Sự Kiện Đang Diễn Ra";
+"currentEventNavigator.pendingEvents.title" = "Sự Kiện Sắp Kết Thúc";
+"currentEventNavigator.viewAll.title" = "Tất Cả Sự Kiện Đang Diễn Ra";
 "账号基本信息" = "Thông tin cơ bản về tài khoản";
 "剩余 %lld天" = "Còn Lại %lld Ngày";
 "剩余 %lld小时" = "Còn Lại %lld Giờ";
@@ -1019,7 +1019,7 @@
 "下半" = "Phần\nCuối";
 "获取渊星数" = "Số Sao Thu Được Ở Phòng";
 // Other tool
-"提瓦特大地图" = "Bản Đồ Tương Tác Teyvat";
+"tools.teyvatInteractiveMap" = "Bản Đồ Tương Tác Teyvat";
 "请稍等%lld秒再刷新" = "Vui lòng đợi %lld giây trước khi làm mới.";
 "请下滑刷新" = "Vui lòng trượt xuống để làm mới";
 "原神中英日辞典" = "Từ Điển Genshin Impact";
@@ -1028,7 +1028,7 @@
 "由爱丽丝工坊提供（未安装）" = "Cung cấp bởi Alice Workshop";
 "旅行工具" = "Dông cụ du lịch";
 // Ledger sheet
-"原石摩拉账簿" = "Nhật Ký Nhà Lữ Hành";
+"app.detailPortal.ledger.title" = "Nhật Ký Nhà Lữ Hành";
 "保存本月原石账簿图片" = "Lưu hình ảnh nguyên thạch và mora có được của tháng này";
 "原石收入" = "Nguyên Thạch";
 "摩拉收入" = "Mora";
@@ -1092,7 +1092,7 @@
 "**日语** %@" = "**JA** %@";
 "**中文** %@" = "**ZH** %@";
 
-"取消" = "Huỷ Bỏ";
+"sys.cancel" = "Huỷ Bỏ";
 
 // UpdateHistoryInfoView
 "更新公告" = "Thông báo cập nhật";
@@ -1514,7 +1514,7 @@
 // MARK: - 3.0.4
 
 "settings.reverseProxy.navTitle" = "Reverse Proxy Settings";
-"settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" = "Only accounts of China Mainland servers are needed";
+"settings.account.regenerateDeviceFingerPrint.footer" = "Only Celestia and Irminsul server accounts require the device fingerprint.";
 
 // MARK: - 3.1.1
 
@@ -1547,3 +1547,15 @@
 
 "detailPortal.player.worldLevel" = "World Level";
 "detailPortal.player.adventureRank.short:%@" = "AR %@";
+
+// MARK: - 4.0.0
+
+"currentEventNavigator.tapToViewAll.title" = "Tap to View All";
+"app.detailPortal.allAvatar.title" = "All Characters";
+"app.detailPortal.basicInfo.title" = "Basic Statistics";
+"app.detailPortal.abyss.title" = "Spiral Abyss Records";
+"app.dailynote.card.dailyTask.extraReward.received" = "Extra Reward Retrieved";
+"app.dailynote.card.dailyTask.extraReward.notReceived" = "Extra Reward Available";
+"settings.account.regenerateDeviceFingerPrint.label" = "Regenerate Device Fingerprint";
+"sys.label.cookie" = "Cookie";
+"settings.account.manage.title" = "Account Management";

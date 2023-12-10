@@ -39,7 +39,7 @@ extension View {
                 .navigationBarHidden(true)
 
             if binding.wrappedValue {
-                NavigationView {
+                NavigationStack {
                     NavigationLink(
                         destination: view,
                         isActive: binding
@@ -127,6 +127,17 @@ struct BlurMaterialBackground: ViewModifier {
             cornerRadius: 20,
             style: .continuous
         ))
+    }
+}
+
+// MARK: - Regualr Material List Row Background
+
+extension View {
+    @inlinable
+    public func listRowMaterialBackground() -> some View {
+        listRowBackground(
+            Color.clear.background(.thinMaterial, in: Rectangle())
+        )
     }
 }
 

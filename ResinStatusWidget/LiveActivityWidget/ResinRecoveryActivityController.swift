@@ -9,7 +9,7 @@
 import ActivityKit
 import Defaults
 import Foundation
-import HBMihoyoAPI
+import HoYoKit
 
 @available(iOS 16.1, *)
 class ResinRecoveryActivityController {
@@ -53,26 +53,23 @@ class ResinRecoveryActivityController {
             Self.backgroundSettingsSanityCheck()
             let backgrounds = Defaults[.resinRecoveryLiveActivityBackgroundOptions]
             if backgrounds.isEmpty {
-                return .customize([NameCard.defaultValue.fileName])
+                return .customize([NameCard.defaultValueForWidget.fileName])
             } else {
                 return .customize(backgrounds)
             }
         }
     }
 
-    func createResinRecoveryTimerActivity(for account: Account) throws {
+    func createResinRecoveryTimerActivity(for account: AccountConfiguration, data: some DailyNote) throws {
         guard allowLiveActivity else {
             throw CreateLiveActivityError.notAllowed
         }
-        let accountName = account.config.name ?? ""
-        let accountUUID: UUID = account.config.uuid ?? UUID()
-        // TODO: debug mode
-        guard let data = (try? account.result?.get()) else {
-            throw CreateLiveActivityError.noInfo
-        }
+        let accountName = account.safeName
+        let accountUUID: UUID = account.safeUuid
+
         guard !currentActivities.map({ $0.attributes.accountUUID })
-            .contains(account.config.uuid!) else {
-            updateResinRecoveryTimerActivity(for: account)
+            .contains(account.safeUuid) else {
+            updateResinRecoveryTimerActivity(for: account, data: data)
             return
         }
         let attributes: ResinRecoveryAttributes = .init(
@@ -80,12 +77,12 @@ class ResinRecoveryActivityController {
             accountUUID: accountUUID
         )
         let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
-            resinInfo: data.resinInfo,
-            expeditionInfo: data.expeditionInfo,
+            resinInfo: data.resinInformation,
+            expeditionInfo: data.expeditionInformation,
             showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
             background: background
         )
-        print("expedition=\(data.expeditionInfo.allCompleteTime)")
+
         do {
             let deliveryActivity = try Activity.request(
                 attributes: attributes,
@@ -101,26 +98,22 @@ class ResinRecoveryActivityController {
         }
     }
 
-    func updateResinRecoveryTimerActivity(for account: Account) {
+    func updateResinRecoveryTimerActivity(for account: AccountConfiguration, data: some DailyNote) {
         currentActivities.filter { activity in
-            activity.attributes.accountUUID == account.config.uuid ?? UUID()
+            activity.attributes.accountUUID == account.uuid ?? UUID()
         }.forEach { activity in
             Task {
-                guard let data = (try? account.result?.get())
-                else { return }
                 guard Date
                     .now <
-                    Date(timeIntervalSinceNow: TimeInterval(
-                        data.resinInfo
-                            .recoveryTime.second
-                    )) else {
+                    data.resinInformation
+                    .resinRecoveryTime else {
                     endActivity(for: account)
                     return
                 }
                 let status: ResinRecoveryAttributes
                     .ResinRecoveryState = .init(
-                        resinInfo: data.resinInfo,
-                        expeditionInfo: data.expeditionInfo,
+                        resinInfo: data.resinInformation,
+                        expeditionInfo: data.expeditionInformation,
                         showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
                         background: background
                     )
@@ -129,9 +122,9 @@ class ResinRecoveryActivityController {
         }
     }
 
-    func endActivity(for account: Account) {
+    func endActivity(for account: AccountConfiguration) {
         currentActivities.filter { activity in
-            activity.attributes.accountUUID == account.config.uuid ?? UUID()
+            activity.attributes.accountUUID == account.uuid ?? UUID()
         }.forEach { activity in
             Task {
                 await activity.end()
@@ -139,69 +132,10 @@ class ResinRecoveryActivityController {
         }
     }
 
-    func updateAllResinRecoveryTimerActivity(for accounts: [Account]) {
-        accounts.forEach { account in
-            updateResinRecoveryTimerActivity(for: account)
-        }
-    }
-
     func endAllActivity() {
         currentActivities.forEach { activity in
             Task {
                 await activity.end()
-            }
-        }
-    }
-
-    func updateAllResinRecoveryTimerActivityUsingReFetchData() {
-        let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
-        configs.forEach { config in
-            updateResinRecoveryTimerActivityUsingReFetchData(for: config)
-        }
-    }
-
-    func updateResinRecoveryTimerActivity(
-        for config: AccountConfiguration,
-        using result: FetchResult
-    ) {
-        guard let activity = currentActivities.first(where: { activity in
-            activity.attributes.accountUUID == config.uuid
-        }) else { return }
-        guard let data = try? result.get() else { return }
-        let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
-            resinInfo: data.resinInfo,
-            expeditionInfo: data.expeditionInfo,
-            showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
-            background: background
-        )
-        Task {
-            await activity.update(using: status)
-        }
-    }
-
-    // MARK: Private
-
-    private func updateResinRecoveryTimerActivityUsingReFetchData(
-        for config: AccountConfiguration
-    ) {
-        guard Defaults[.autoUpdateResinRecoveryTimerUsingReFetchData] else { return }
-        guard let activity = currentActivities.first(where: { activity in
-            activity.attributes.accountUUID == config.uuid
-        }) else { return }
-        guard Date() > activity.contentState.next20ResinRecoveryTime
-            || Date() > activity.contentState.resinFullTime
-            || Date() > activity.contentState.allExpeditionCompleteTime
-        else { return }
-        config.fetchResult { result in
-            guard let data = try? result.get() else { return }
-            let status: ResinRecoveryAttributes.ResinRecoveryState = .init(
-                resinInfo: data.resinInfo,
-                expeditionInfo: data.expeditionInfo,
-                showExpedition: Defaults[.resinRecoveryLiveActivityShowExpedition],
-                background: self.background
-            )
-            Task {
-                await activity.update(using: status)
             }
         }
     }

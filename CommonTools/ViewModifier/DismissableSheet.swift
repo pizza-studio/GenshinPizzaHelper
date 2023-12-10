@@ -12,7 +12,7 @@ import SwiftUI
 struct DismissableSheet<Item>: ViewModifier where Item: Identifiable {
     @Binding
     var sheet: Item?
-    var title: String = "完成"
+    var title: String = "sys.done"
     var todoOnDismiss: () -> ()
 
     func body(content: Content) -> some View {
@@ -30,7 +30,7 @@ struct DismissableSheet<Item>: ViewModifier where Item: Identifiable {
 extension View {
     func dismissableSheet<Item>(
         sheet: Binding<Item?>,
-        title: String = "完成",
+        title: String = "sys.done",
         todoOnDismiss: @escaping () -> () = {}
     )
         -> some View
@@ -48,7 +48,7 @@ extension View {
 struct DismissableBoolSheet: ViewModifier {
     @Binding
     var isSheetShow: Bool
-    var title: String = "完成"
+    var title: String = "sys.done"
     var todoOnDismiss: () -> ()
 
     func body(content: Content) -> some View {
@@ -66,7 +66,7 @@ struct DismissableBoolSheet: ViewModifier {
 extension View {
     func dismissableSheet(
         isSheetShow: Binding<Bool>,
-        title: String = "完成",
+        title: String = "sys.done",
         todoOnDismiss: @escaping () -> () = {}
     )
         -> some View {
@@ -76,4 +76,59 @@ extension View {
             todoOnDismiss: todoOnDismiss
         ))
     }
+}
+
+// MARK: - SheetCaller
+
+struct SheetCaller<D: View, L: View>: View {
+    // MARK: Lifecycle
+
+    public init(
+        forceDarkMode: Bool = false,
+        @ViewBuilder destination: @escaping () -> D,
+        @ViewBuilder label: @escaping () -> L
+    ) {
+        self.destination = destination
+        self.label = label
+        self.forceDarkMode = forceDarkMode
+    }
+
+    // MARK: Public
+
+    @State
+    public var forceDarkMode: Bool
+
+    // MARK: Internal
+
+    var body: some View {
+        Button {
+            isSheetShown.toggle()
+        } label: {
+            label()
+        }
+        .foregroundStyle(.primary)
+        .sheet(isPresented: $isSheetShown) {
+            let sheetContent = NavigationView {
+                destination()
+                    .navigationBarTitleDisplayMode(.inline)
+                    .dismissableSheet(isSheetShow: $isSheetShown)
+            }
+            if forceDarkMode {
+                sheetContent.environment(\.colorScheme, .dark)
+            } else {
+                sheetContent
+            }
+        }
+    }
+
+    // MARK: Private
+
+    @ViewBuilder
+    private let destination: () -> D
+
+    @ViewBuilder
+    private let label: () -> L
+
+    @State
+    private var isSheetShown = false
 }

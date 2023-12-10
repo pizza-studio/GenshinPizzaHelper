@@ -32,7 +32,7 @@ class AppDelegate: NSObject, UIApplicationDelegate,
         switch response.actionIdentifier {
         case "OPEN_GENSHIN_ACTION":
             let genshinAppLocalHeader = "yuanshengame://"
-            let isGenshinInstalled = ThirdPartyToolsView.isInstallation(urlString: genshinAppLocalHeader)
+            let isGenshinInstalled = GenshinCalculatorLink.isInstallation(urlString: genshinAppLocalHeader)
             if isGenshinInstalled, let gameURL = URL(string: genshinAppLocalHeader) {
                 UIApplication.shared.open(gameURL) { _ in
                     print("open genshin game succeeded")

@@ -6,7 +6,7 @@
 //
 
 import GIPizzaKit
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -14,122 +14,85 @@ import SwiftUI
 
 struct AllAvatarListSheetView: View {
     @EnvironmentObject
-    var viewModel: ViewModel
-    @State
-    var allAvatarInfo: AllAvatarDetailModel?
-    @State
-    private var allAvatarListDisplayType: AllAvatarListDisplayType = .all
+    private var detailPortalViewModel: DetailPortalViewModel
 
-    let account: Account
+    var data: AllAvatarDetailModel
 
-    @Binding
-    var sheetType: SheetTypesForDetailPortalView?
-
-    var showingAvatars: [AllAvatarDetailModel.Avatar] {
-        switch allAvatarListDisplayType {
-        case .all:
-            return allAvatarInfo?.avatars ?? []
-        case ._4star:
-            return allAvatarInfo?.avatars.filter { $0.rarity == 4 } ?? []
-        case ._5star:
-            return allAvatarInfo?.avatars.filter { $0.rarity == 5 } ?? []
-        }
-    }
+    @Environment(\.dismiss)
+    var dismiss
 
     var body: some View {
-        if let allAvatarInfo = allAvatarInfo {
-            List {
-                Section {
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(
-                            "共拥有\(allAvatarInfo.avatars.count)名角色，其中五星角色\(allAvatarInfo.avatars.filter { $0.rarity == 5 }.count)名，四星角色\(allAvatarInfo.avatars.filter { $0.rarity == 4 }.count)名。"
-                        )
-                        Text(
-                            "共获得\(goldNum(data: allAvatarInfo).allGold)金，其中角色\(goldNum(data: allAvatarInfo).charGold)金，武器\(goldNum(data: allAvatarInfo).weaponGold)金。（未统计旅行者和无人装备的五星武器）"
-                        )
-                    }.font(.footnote)
+        List {
+            var showingAvatars: [AllAvatarDetailModel.Avatar] {
+                switch allAvatarListDisplayType {
+                case .all:
+                    return data.avatars
+                case ._4star:
+                    return data.avatars.filter { $0.rarity == 4 }
+                case ._5star:
+                    return data.avatars.filter { $0.rarity == 5 }
                 }
-
-                Section {
-                    ForEach(showingAvatars, id: \.id) { avatar in
-                        AvatarListItem(avatar: avatar)
-                            .padding(.horizontal)
-                            .padding(.vertical, 4)
-                            .background {
-                                if let asset = avatar.asset {
-                                    let bg = EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill()
-                                        .opacity(0.6)
-                                    if #unavailable(iOS 17) {
-                                        bg.frame(maxHeight: 63).clipped()
-                                    } else {
-                                        bg
-                                    }
-                                }
-                            }
-                    }
-                }
-                .textCase(.none)
-                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
-            .navigationTitle("我的角色")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
-                        sheetType = nil
-                    }
-                }
-                ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Menu {
-                        ForEach(
-                            AllAvatarListDisplayType.allCases,
-                            id: \.rawValue
-                        ) { choice in
-                            Button(choice.rawValue.localized) {
-                                withAnimation {
-                                    allAvatarListDisplayType = choice
+            Section {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(
+                        "共拥有\(data.avatars.count)名角色，其中五星角色\(data.avatars.filter { $0.rarity == 5 }.count)名，四星角色\(data.avatars.filter { $0.rarity == 4 }.count)名。"
+                    )
+                    Text(
+                        "共获得\(goldNum(data: data).allGold)金，其中角色\(goldNum(data: data).charGold)金，武器\(goldNum(data: data).weaponGold)金。（未统计旅行者和无人装备的五星武器）"
+                    )
+                }.font(.footnote)
+            }.listRowMaterialBackground()
+            Section {
+                ForEach(showingAvatars, id: \.id) { avatar in
+                    AvatarListItem(avatar: avatar)
+                        .padding(.horizontal)
+                        .padding(.vertical, 4)
+                        .background {
+                            if let asset = avatar.asset {
+                                let bg = EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill()
+                                    .opacity(0.6)
+                                if #unavailable(iOS 17) {
+                                    bg.frame(maxHeight: 63).clipped()
+                                } else {
+                                    bg
                                 }
                             }
                         }
-                    } label: {
-                        Image(systemSymbol: .arrowLeftArrowRightCircle)
-                    }
                 }
             }
-            .sectionSpacing(UIFont.systemFontSize)
-        } else {
-            ProgressView()
-                .onAppear {
-                    MihoyoAPI.fetchAllAvatarInfos(
-                        region: account.config.server.region,
-                        serverID: account.config.server.id,
-                        uid: account.config.uid!,
-                        cookie: account.config.cookie!
-                    ) { result in
-                        switch result {
-                        case let .success(data):
-                            allAvatarInfo = data
-                        case .failure:
-                            break
-                        }
-                    }
-                }
-                .navigationTitle("我的角色")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("完成") {
-                            sheetType = nil
-                        }
-                    }
-                }
+            .textCase(.none)
+            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
-    }
-
-    private enum AllAvatarListDisplayType: String, CaseIterable {
-        case all = "全部角色"
-        case _5star = "五星角色"
-        case _4star = "四星角色"
+        .scrollContentBackground(.hidden)
+        .background {
+            EnkaWebIcon(iconString: detailPortalViewModel.currentAccountNamecardFileName)
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+                .overlay(.ultraThinMaterial)
+        }
+        .navigationTitle("我的角色")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Menu {
+                    ForEach(
+                        AllAvatarListDisplayType.allCases,
+                        id: \.rawValue
+                    ) { choice in
+                        Button(choice.rawValue.localized) {
+                            withAnimation {
+                                allAvatarListDisplayType = choice
+                            }
+                        }
+                    }
+                } label: {
+                    Image(systemSymbol: .arrowLeftArrowRightCircle)
+                }
+            }
+        }
+        .refreshable {
+            detailPortalViewModel.refresh()
+        }
     }
 
     func goldNum(data: AllAvatarDetailModel)
@@ -150,6 +113,17 @@ struct AllAvatarListSheetView: View {
         }
         return (charGold + weaponGold, charGold, weaponGold)
     }
+
+    // MARK: Private
+
+    private enum AllAvatarListDisplayType: String, CaseIterable {
+        case all = "全部角色"
+        case _5star = "五星角色"
+        case _4star = "四星角色"
+    }
+
+    @State
+    private var allAvatarListDisplayType: AllAvatarListDisplayType = .all
 }
 
 // MARK: - AvatarListItem

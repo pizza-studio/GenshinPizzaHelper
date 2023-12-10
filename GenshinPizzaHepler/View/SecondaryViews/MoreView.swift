@@ -7,6 +7,7 @@
 
 import Defaults
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -129,7 +130,6 @@ struct MoreView: View {
                 }
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationBarTitle("settings.more", displayMode: .inline)
     }
 

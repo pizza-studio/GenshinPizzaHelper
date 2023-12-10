@@ -8,33 +8,20 @@
 import SwiftUI
 
 struct AccountInfoView: View {
-    var account: Account
+    var account: AccountConfiguration
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(account.config.name!)
+                Text(account.safeName)
                     .bold()
                     .padding(.vertical)
-                if let result = account.result {
-                    Spacer()
-                    switch result {
-                    case .failure:
-                        Image(
-                            systemName: "exclamationmark.arrow.triangle.2.circlepath"
-                        )
-                        .padding()
-                        .foregroundColor(.red)
-                    case .success:
-                        EmptyView()
-                    }
-                }
             }
 
             HStack {
-                Text("UID: \(account.config.uid!)")
+                Text("UID: \(account.safeUid)")
                 Spacer()
-                Text("account.server".localized + ": " + account.config.server.localized)
+                Text("account.server".localized + ": " + account.server.localized)
             }
             .font(.caption)
         }

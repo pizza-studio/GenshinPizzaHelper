@@ -5,17 +5,18 @@
 //  Created by 戴藏龙 on 2022/9/11.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
+import WidgetKit
 
 @available(iOSApplicationExtension 16.0, *)
-struct AlternativeLockScreenResinWidgetCircular<T>: View
-    where T: SimplifiedUserDataContainer {
+struct AlternativeLockScreenResinWidgetCircular: View {
+    let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
         switch widgetRenderingMode {
@@ -26,7 +27,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                     .scaledToFit()
                 switch result {
                 case let .success(data):
-                    Text("\(data.resinInfo.currentResin)")
+                    Text("\(data.resinInformation.calculatedCurrentResin(referTo: entry.date))")
                         .font(.system(.body, design: .rounded).weight(.medium))
                         .minimumScaleFactor(0.1)
                 case .failure:
@@ -58,7 +59,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                 )
                 switch result {
                 case let .success(data):
-                    Text("\(data.resinInfo.currentResin)")
+                    Text("\(data.resinInformation.calculatedCurrentResin(referTo: entry.date))")
                         .font(.system(.body, design: .rounded).weight(.medium))
                         .minimumScaleFactor(0.1)
                 case .failure:
@@ -78,7 +79,7 @@ struct AlternativeLockScreenResinWidgetCircular<T>: View
                     .scaledToFit()
                 switch result {
                 case let .success(data):
-                    Text("\(data.resinInfo.currentResin)")
+                    Text("\(data.resinInformation.calculatedCurrentResin(referTo: entry.date))")
                         .font(.system(.body, design: .rounded).weight(.medium))
                         .minimumScaleFactor(0.1)
                 case .failure:

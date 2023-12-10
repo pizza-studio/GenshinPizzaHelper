@@ -16,8 +16,12 @@ import SwiftUI
 
 @available(iOS 15.0, *)
 struct GachaView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: true
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
+
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
 
@@ -65,11 +69,12 @@ struct GachaView: View {
                     }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 GetGachaNavigationMenu(
-                    showByAPI: viewModel.accounts
-                        .first(where: { $0.config.server.region == .cn }) !=
+                    showByAPI: accounts
+                        .first(where: { $0.server.region == .mainlandChina }) !=
                         nil,
                     isHelpSheetShow: $isHelpSheetShow
                 )
@@ -82,8 +87,8 @@ struct GachaView: View {
                         id: \.self
                     ) { uid in
                         Group {
-                            if let name: String = viewModel.accounts
-                                .first(where: { $0.config.uid == uid })?.config
+                            if let name: String = accounts
+                                .first(where: { $0.uid == uid })?
                                 .name {
                                 Button(name) {
                                     gachaViewModel.filter.uid = uid
@@ -99,8 +104,8 @@ struct GachaView: View {
                     HStack {
                         Image(systemSymbol: .arrowLeftArrowRightCircle)
                         if let uid: String = gachaViewModel.filter.uid {
-                            if let name: String = viewModel.accounts
-                                .first(where: { $0.config.uid == uid })?.config
+                            if let name: String = accounts
+                                .first(where: { $0.uid == uid })?
                                 .name {
                                 Text(name)
                             } else {
@@ -115,7 +120,6 @@ struct GachaView: View {
             }
         }
         .environmentObject(gachaViewModel)
-        .hideTabBar()
     }
 
     @ViewBuilder
@@ -133,6 +137,7 @@ struct GachaView: View {
                         }
                         NavigationLink {
                             GachaChartView()
+                                .navigationBarTitleDisplayMode(.inline)
                                 .environmentObject(gachaViewModel)
                         } label: {
                             Label("更多图表", systemSymbol: .chartBarXaxis)
@@ -170,7 +175,6 @@ struct GachaView: View {
         .sheet(isPresented: $isHelpSheetShow, content: {
             HelpSheet(isShow: $isHelpSheetShow)
         })
-        .sectionSpacing(UIFont.systemFontSize)
     }
 }
 
@@ -640,7 +644,7 @@ private struct HelpSheet: View {
     var isShow: Bool
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     Label(
@@ -702,12 +706,11 @@ private struct HelpSheet: View {
                     Text("适用于所有服务器")
                 }
             }
-            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("抽卡记录获取帮助")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
+                    Button("sys.done") {
                         isShow.toggle()
                     }
                 }
@@ -820,8 +823,12 @@ extension GachaItem {
 // MARK: - GachaDetailView
 
 private struct GachaDetailView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: true
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
+
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
 
@@ -844,7 +851,6 @@ private struct GachaDetailView: View {
                 }
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("抽取记录")
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
@@ -860,8 +866,8 @@ private struct GachaDetailView: View {
                         id: \.self
                     ) { uid in
                         Group {
-                            if let name: String = viewModel.accounts
-                                .first(where: { $0.config.uid == uid })?.config
+                            if let name: String = accounts
+                                .first(where: { $0.uid == uid })?
                                 .name {
                                 Button(name) {
                                     gachaViewModel.filter.uid = uid
@@ -877,8 +883,8 @@ private struct GachaDetailView: View {
                     HStack {
                         Image(systemSymbol: .arrowLeftArrowRightCircle)
                         if let uid: String = gachaViewModel.filter.uid {
-                            if let name: String = viewModel.accounts
-                                .first(where: { $0.config.uid == uid })?.config
+                            if let name: String = accounts
+                                .first(where: { $0.uid == uid })?
                                 .name {
                                 Text(name)
                             } else {

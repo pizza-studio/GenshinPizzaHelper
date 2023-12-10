@@ -5,11 +5,13 @@
 //  Created by 戴藏龙 on 2022/9/9.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
+// MARK: - WatchResinDetailView
+
 struct WatchResinDetailView: View {
-    let resinInfo: ResinInfo
+    let resinInfo: ResinInformation
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -18,7 +20,7 @@ struct WatchResinDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 25)
-                Text("原粹树脂")
+                Text("app.dailynote.card.resin.label")
                     .foregroundColor(.gray)
             }
             Text("\(resinInfo.currentResin)")
@@ -30,8 +32,8 @@ struct WatchResinDetailView: View {
 
     @ViewBuilder
     func recoveryTimeText() -> some View {
-        if resinInfo.recoveryTime.second != 0 {
-            Text("infoBlock.refilledAt:\(resinInfo.recoveryTime.completeTimePointFromNow())")
+        if resinInfo.resinRecoveryTime >= Date() {
+            Text("infoBlock.refilledAt:\(dateFormatter.string(from: resinInfo.resinRecoveryTime))")
                 .lineLimit(2)
                 .foregroundColor(.gray)
                 .minimumScaleFactor(0.3)
@@ -44,3 +46,19 @@ struct WatchResinDetailView: View {
         }
     }
 }
+
+private let dateFormatter: DateFormatter = {
+    let fmt = DateFormatter()
+    fmt.doesRelativeDateFormatting = true
+    fmt.dateStyle = .short
+    fmt.timeStyle = .short
+    return fmt
+}()
+
+private let intervalFormatter: DateComponentsFormatter = {
+    let dateComponentFormatter = DateComponentsFormatter()
+    dateComponentFormatter.allowedUnits = [.hour, .minute]
+    dateComponentFormatter.maximumUnitCount = 2
+    dateComponentFormatter.unitsStyle = .brief
+    return dateComponentFormatter
+}()

@@ -6,96 +6,50 @@
 //  其他游戏内信息
 
 import Foundation
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
+import WidgetKit
 
 // MARK: - DetailInfo
 
 struct DetailInfo: View {
-    let userData: UserData
+    let entry: any TimelineEntry
+    let dailyNote: any DailyNote
     let viewConfig: WidgetViewConfiguration
 
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
-            if userData.homeCoinInfo.maxHomeCoin != 0 {
-                HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
+            if dailyNote.homeCoinInformation.maxHomeCoin != 0 {
+                HomeCoinInfoBar(entry: entry, homeCoinInfo: dailyNote.homeCoinInformation)
             }
 
-            if userData.dailyTaskInfo.totalTaskNum != 0 {
-                DailyTaskInfoBar(dailyTaskInfo: userData.dailyTaskInfo)
+            if dailyNote.dailyTaskInformation.totalTaskCount != 0 {
+                DailyTaskInfoBar(dailyTaskInfo: dailyNote.dailyTaskInformation)
             }
 
-            if userData.expeditionInfo.maxExpedition != 0 {
+            if dailyNote.expeditionInformation.maxExpeditionsCount != 0 {
                 ExpeditionInfoBar(
-                    expeditionInfo: userData.expeditionInfo,
+                    expeditionInfo: dailyNote.expeditionInformation,
                     expeditionViewConfig: viewConfig.expeditionViewConfig
                 )
             }
 
-            switch viewConfig.weeklyBossesShowingMethod {
-            case .disappearAfterCompleted, .unknown:
-                if userData.transformerInfo.obtained,
-                   viewConfig.showTransformer {
-                    if userData.weeklyBossesInfo.isComplete {
-                        TransformerInfoBar(
-                            transformerInfo: userData
-                                .transformerInfo
+            if let dailyNote = dailyNote as? GeneralDailyNote {
+                if dailyNote.transformerInformation.obtained, viewConfig.showTransformer {
+                    TransformerInfoBar(transformerInfo: dailyNote.transformerInformation)
+                }
+                switch viewConfig.weeklyBossesShowingMethod {
+                case .neverShow:
+                    EmptyView()
+                case .disappearAfterCompleted:
+                    if dailyNote.weeklyBossesInformation.remainResinDiscount != 0 {
+                        WeeklyBossesInfoBar(
+                            weeklyBossesInfo: dailyNote.weeklyBossesInformation
                         )
                     }
+                case .alwaysShow, .unknown:
+                    WeeklyBossesInfoBar(weeklyBossesInfo: dailyNote.weeklyBossesInformation)
                 }
-            case .alwaysShow, .neverShow:
-                if userData.transformerInfo.obtained,
-                   viewConfig.showTransformer {
-                    TransformerInfoBar(
-                        transformerInfo: userData
-                            .transformerInfo
-                    )
-                }
-            }
-
-            switch viewConfig.weeklyBossesShowingMethod {
-            case .disappearAfterCompleted, .unknown:
-                if !userData.weeklyBossesInfo
-                    .isComplete {
-                    WeeklyBossesInfoBar(
-                        weeklyBossesInfo: userData
-                            .weeklyBossesInfo
-                    )
-                }
-            case .neverShow:
-                EmptyView()
-            case .alwaysShow:
-                WeeklyBossesInfoBar(weeklyBossesInfo: userData.weeklyBossesInfo)
-            }
-        }
-        .padding(.trailing)
-    }
-}
-
-// MARK: - DetailInfoSimplified
-
-struct DetailInfoSimplified: View {
-    let userData: SimplifiedUserData
-    let viewConfig: WidgetViewConfiguration
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 13) {
-            if userData.homeCoinInfo.maxHomeCoin != 0 {
-                HomeCoinInfoBar(homeCoinInfo: userData.homeCoinInfo)
-            }
-
-            if userData.dailyTaskInfo.totalTaskNum != 0 {
-                DailyTaskInfoBar(dailyTaskInfo: userData.dailyTaskInfo)
-            }
-
-            if userData.expeditionInfo.maxExpedition != 0 {
-                ExpeditionInfoBar(
-                    expeditionInfo: userData.expeditionInfo,
-                    expeditionViewConfig: .init(
-                        noticeExpeditionWhenAllCompleted: true,
-                        expeditionShowingMethod: .byNum
-                    )
-                )
             }
         }
         .padding(.trailing)

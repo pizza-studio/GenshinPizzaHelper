@@ -65,7 +65,6 @@ struct GlobalDonateView: View {
                 }
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("settings.misc.supportUs")
         .navigationBarTitleDisplayMode(.inline)
     }

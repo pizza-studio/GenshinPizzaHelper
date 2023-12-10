@@ -7,54 +7,21 @@
 
 import AppIntents
 import Foundation
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
+import WidgetKit
 
 // MARK: - MainInfo
 
 struct MainInfo: View {
-    let userData: UserData
+    let entry: any TimelineEntry
+    let dailyNote: any DailyNote
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
     let accountNameTest = "settings.account.myAccount"
 
-    var condensedResin: Int { userData.resinInfo.currentResin / 40 }
-
     var body: some View {
-        let transformerCompleted: Bool = userData.transformerInfo
-            .isComplete && userData.transformerInfo.obtained && viewConfig
-            .showTransformer
-        let expeditionCompleted: Bool = viewConfig.expeditionViewConfig
-            .noticeExpeditionWhenAllCompleted ? userData.expeditionInfo
-            .allCompleted : userData.expeditionInfo.anyCompleted
-        let weeklyBossesNotice: Bool = (
-            viewConfig
-                .weeklyBossesShowingMethod != .neverShow
-        ) && !userData
-            .weeklyBossesInfo.isComplete && Calendar.current
-            .isDateInWeekend(Date())
-        let dailyTaskNotice: Bool = !userData.dailyTaskInfo
-            .isTaskRewardReceived &&
-            (
-                userData.dailyTaskInfo.finishedTaskNum == userData.dailyTaskInfo
-                    .totalTaskNum
-            )
-
-        // 需要马上上号
-        let needToLoginImediately: Bool = (
-            userData.resinInfo
-                .isFull ||
-                (
-                    userData.homeCoinInfo.isFull && userData.homeCoinInfo
-                        .maxHomeCoin != 300
-                ) || expeditionCompleted || transformerCompleted ||
-                dailyTaskNotice
-        )
-        // 可以晚些再上号，包括每日任务和周本
-        let needToLoginSoon: Bool = !userData.dailyTaskInfo
-            .isTaskRewardReceived || weeklyBossesNotice
-
         VStack(alignment: .leading, spacing: 0) {
             if let accountName = accountName {
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
@@ -70,7 +37,7 @@ struct MainInfo: View {
             }
 
             HStack(alignment: .firstTextBaseline, spacing: 2) {
-                Text("\(userData.resinInfo.currentResin)")
+                Text("\(dailyNote.resinInformation.calculatedCurrentResin(referTo: entry.date))")
                     .font(.system(size: 50, design: .rounded))
                     .fontWeight(.medium)
                     .minimumScaleFactor(0.1)
@@ -96,123 +63,11 @@ struct MainInfo: View {
                     }
                     .buttonStyle(.plain)
                 } else {
-                    if needToLoginImediately {
-                        if needToLoginSoon {
-                            Image("exclamationmark.circle.questionmark")
-                                .foregroundColor(Color("textColor3"))
-                                .font(.title3)
-                        } else {
-                            Image(systemSymbol: .exclamationmarkCircle)
-                                .foregroundColor(Color("textColor3"))
-                                .font(.title3)
-                        }
-                    } else if needToLoginSoon {
-                        Image("hourglass.circle.questionmark")
-                            .foregroundColor(Color("textColor3"))
-                            .font(.title3)
-                    } else {
-                        Image("hourglass.circle")
-                            .foregroundColor(Color("textColor3"))
-                            .font(.title3)
-                    }
+                    Image(systemSymbol: .exclamationmarkCircle)
+                        .foregroundColor(Color("textColor3"))
+                        .font(.title3)
                 }
-                RecoveryTimeText(resinInfo: userData.resinInfo)
-            }
-        }
-    }
-}
-
-// MARK: - MainInfoSimplified
-
-struct MainInfoSimplified: View {
-    let userData: SimplifiedUserData
-    let viewConfig: WidgetViewConfiguration
-    let accountName: String?
-    let accountNameTest = "settings.account.myAccount"
-
-    var condensedResin: Int { userData.resinInfo.currentResin / 40 }
-
-    var body: some View {
-        let expeditionCompleted: Bool = viewConfig.expeditionViewConfig
-            .noticeExpeditionWhenAllCompleted ? userData.expeditionInfo
-            .allCompleted : userData.expeditionInfo.anyCompleted
-        let dailyTaskNotice: Bool = !userData.dailyTaskInfo
-            .isTaskRewardReceived &&
-            (
-                userData.dailyTaskInfo.finishedTaskNum == userData.dailyTaskInfo
-                    .totalTaskNum
-            )
-
-        // 需要马上上号
-        let needToLoginImediately: Bool = (
-            userData.resinInfo.isFull || userData
-                .homeCoinInfo.isFull || expeditionCompleted || dailyTaskNotice
-        )
-        // 可以晚些再上号，包括每日任务和周本
-        let needToLoginSoon: Bool = !userData.dailyTaskInfo.isTaskRewardReceived
-
-        VStack(alignment: .leading, spacing: 0) {
-            if let accountName = accountName {
-                HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Image(systemSymbol: .personFill)
-                    Text(accountName)
-                        .allowsTightening(true)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                }
-                .font(.footnote)
-                .foregroundColor(Color("textColor3"))
-                Spacer()
-            }
-
-            HStack(alignment: .firstTextBaseline, spacing: 2) {
-                Text("\(userData.resinInfo.currentResin)")
-                    .font(.system(size: 50, design: .rounded))
-                    .fontWeight(.medium)
-                    .minimumScaleFactor(0.1)
-                    .foregroundColor(Color("textColor3"))
-                    .shadow(radius: 1)
-                Image("树脂")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 30)
-                    .alignmentGuide(.firstTextBaseline) { context in
-                        context[.bottom] - 0.17 * context.height
-                    }
-                    .shadow(radius: 0.8)
-            }
-            Spacer()
-            HStack {
-                if #available(iOS 17, *) {
-                    Button(intent: WidgetRefreshIntent()) {
-                        Image(systemSymbol: .arrowClockwiseCircle)
-                            .font(.title3)
-                            .foregroundColor(Color("textColor3"))
-                            .clipShape(.circle)
-                    }
-                    .buttonStyle(.plain)
-                } else {
-                    if needToLoginImediately {
-                        if needToLoginSoon {
-                            Image("exclamationmark.circle.questionmark")
-                                .foregroundColor(Color("textColor3"))
-                                .font(.title3)
-                        } else {
-                            Image(systemSymbol: .exclamationmarkCircle)
-                                .foregroundColor(Color("textColor3"))
-                                .font(.title3)
-                        }
-                    } else if needToLoginSoon {
-                        Image("hourglass.circle.questionmark")
-                            .foregroundColor(Color("textColor3"))
-                            .font(.title3)
-                    } else {
-                        Image("hourglass.circle")
-                            .foregroundColor(Color("textColor3"))
-                            .font(.title3)
-                    }
-                }
-                RecoveryTimeText(resinInfo: userData.resinInfo)
+                RecoveryTimeText(entry: entry, resinInfo: dailyNote.resinInformation)
             }
         }
     }

@@ -7,6 +7,7 @@
 
 import GIPizzaKit
 import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - AbyssDetailDataDisplayView
@@ -30,6 +31,7 @@ struct AbyssDetailDataDisplayView: View {
                 } header: {
                     Text("战斗概览")
                 }
+                .listRowMaterialBackground()
 
                 Section {
                     BattleDataInfoProvider(
@@ -60,16 +62,24 @@ struct AbyssDetailDataDisplayView: View {
                 } header: {
                     Text("战斗数据榜")
                 }
+                .listRowMaterialBackground()
             } else {
-                Text("暂无本期深渊数据")
+                Text("暂无本期深渊数据").listRowMaterialBackground()
             }
 
             ForEach(data.floors.reversed(), id: \.index) { floorData in
-                AbyssFloorView(floorData: floorData)
+                AbyssFloorView(floorData: floorData).listRowMaterialBackground()
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .listStyle(.insetGrouped)
+        .scrollContentBackground(.hidden)
+        .background {
+            EnkaWebIcon(iconString: NameCard.UI_NameCardPic_Sj1_P.fileName)
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+                .overlay(.ultraThinMaterial)
+        }
+        .navigationTitle("深境螺旋详情")
     }
 }
 
@@ -133,7 +143,7 @@ private struct AbyssLevelView: View {
                     .font(.subheadline)
                     .bold()
                 Spacer()
-                if ThisDevice.isSmallestHDScreenPhone {
+                if ThisDevice.isSmallestSlideOverWindowWidth || ThisDevice.isSmallestHDScreenPhone {
                     ForEach(0 ..< levelData.star, id: \.self) { _ in
                         Text(verbatim: "✶")
                     }
@@ -175,13 +185,16 @@ private struct AbyssBattleView: View {
     let battleData: SpiralAbyssDetail.Floor.Level.Battle
 
     var decoratedIconSize: CGFloat {
-        ThisDevice.isSmallestHDScreenPhone ? 45 : 55
+        (ThisDevice.isSmallestSlideOverWindowWidth || ThisDevice.isSmallestHDScreenPhone) ? 45 : 55
     }
 
     var body: some View {
         let intSpacing: CGFloat = ThisDevice.isHDPhoneOrPodTouch ? 0 : 2
         let size = decoratedIconSize
-        let hasTermLabel = !(ThisDevice.isThinnestSplitOnPad || ThisDevice.isSmallestHDScreenPhone || OS.type == .macOS)
+        let hasTermLabel = !(
+            ThisDevice.isThinnestSplitOnPad || ThisDevice.isSmallestSlideOverWindowWidth || ThisDevice
+                .isSmallestHDScreenPhone || OS.type == .macOS
+        )
         HStack(alignment: .center, spacing: intSpacing) {
             Spacer().frame(minWidth: 0)
             Group {

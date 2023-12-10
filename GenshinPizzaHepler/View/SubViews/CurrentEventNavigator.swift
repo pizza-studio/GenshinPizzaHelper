@@ -7,6 +7,7 @@
 
 import Defaults
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -33,75 +34,82 @@ struct CurrentEventNavigator: View {
         colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 
+    var validEventContents: [EventModel] {
+        eventContents.filter {
+            (getRemainDays($0.endAt)?.day ?? 0) >= 0
+                && (getRemainDays($0.endAt)?.hour ?? 0) >= 0
+                && (getRemainDays($0.endAt)?.minute ?? 0) >= 0
+        }
+    }
+
     var body: some View {
         if !eventContents.isEmpty {
-            NavigationLink {
-                AllEventsView(eventContents: $eventContents)
-            } label: {
-                VStack(spacing: 0) {
-                    HStack(spacing: 2) {
-                        Text("即将结束的活动")
-                            .foregroundColor(.primary)
-                        Spacer()
-                        Text("查看全部活动")
-                            .font(.caption)
+            Section {
+                HStack(spacing: 3) {
+                    Rectangle()
+                        .foregroundColor(.secondary)
+                        .frame(width: 4, height: 60)
+                    VStack(spacing: 7) {
+                        let eventContentsValid = validEventContents.prefix(3)
+                        if eventContentsValid.isEmpty {
+                            HStack {
+                                Spacer()
+                                Text("gameEvents.noCurrentEventInfo")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Spacer()
+                            }
+                        } else {
+                            ForEach(eventContentsValid, id: \.id) { content in
+                                eventItem(event: content)
+                            }
+                        }
+                    }
+                }
+                .contentShape(Rectangle())
+            } header: {
+                let thisLabel = HStack(spacing: 2) {
+                    Text("currentEventNavigator.pendingEvents.title")
+                        .foregroundColor(.primary)
+                        .font(.headline)
+                    Spacer()
+                    if OS.type != .macOS {
+                        Text("currentEventNavigator.viewAll.title")
                             .foregroundColor(.secondary)
                         Image(systemSymbol: .chevronForward)
                             .padding(.leading, 5)
                             .foregroundColor(.secondary)
-                    }
-                    .font(.caption)
-                    .padding(.top)
-                    .padding(.horizontal, 25)
-                    .padding(.bottom, 13)
-                    HStack(spacing: 3) {
-                        Rectangle()
+                    } else {
+                        Text("currentEventNavigator.tapToViewAll.title")
                             .foregroundColor(.secondary)
-                            .frame(width: 4, height: 60)
-                        VStack(spacing: 7) {
-                            if eventContents.filter({
-                                (getRemainDays($0.endAt)?.day ?? 0) >= 0
-                                    && (getRemainDays($0.endAt)?.hour ?? 0) >= 0
-                                    && (getRemainDays($0.endAt)?.minute ?? 0) >=
-                                    0
-                            }).count <= 0 {
-                                HStack {
-                                    Spacer()
-                                    Text("gameEvents.noCurrentEventInfo")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
-                                }
-                            } else {
-                                ForEach(eventContents.filter {
-                                    (getRemainDays($0.endAt)?.day ?? 0) >= 0
-                                        && (
-                                            getRemainDays($0.endAt)?.hour ?? 0
-                                        ) >=
-                                        0
-                                        &&
-                                        (
-                                            getRemainDays($0.endAt)?
-                                                .minute ?? 0
-                                        ) >=
-                                        0
-                                }.prefix(3), id: \.id) { content in
-                                    eventItem(event: content)
-                                }
-                            }
-                        }
                     }
-                    .padding(.bottom)
-                    .padding(.horizontal, 27)
                 }
-                .background(
-                    Color(uiColor: sectionBackgroundColor),
-                    in: RoundedRectangle(
-                        cornerRadius: 20,
-                        style: .continuous
-                    )
-                )
-                .padding(.horizontal)
+                .font(.caption)
+                if OS.type == .macOS {
+                    SheetCaller(forceDarkMode: true) {
+                        AllEventsView(eventContents: eventContents)
+                    } label: {
+                        thisLabel
+                    }
+                } else {
+                    NavigationLink(value: HomeView.EventModelArrayWrapper(eventContents: eventContents)) {
+                        thisLabel
+                    }
+                }
+            }
+            .background {
+                if OS.type == .macOS {
+                    SheetCaller(forceDarkMode: true) {
+                        AllEventsView(eventContents: eventContents)
+                    } label: {
+                        Rectangle()
+                    }.opacity(0)
+                } else {
+                    NavigationLink(value: HomeView.EventModelArrayWrapper(eventContents: eventContents)) {
+                        Rectangle()
+                    }
+                    .opacity(0)
+                }
             }
         }
     }

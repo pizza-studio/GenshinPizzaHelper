@@ -13,7 +13,7 @@ struct WidgetTipsView: View {
     var isSheetShow: Bool
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section(header: Text("如何配置小组件和修改小组件背景？").textCase(.none)) {
                     Label("长按小组件，选择编辑\"原神披萨小助手\"", systemSymbol: ._01Circle)
@@ -69,12 +69,11 @@ struct WidgetTipsView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
+                    Button("sys.done") {
                         isSheetShow.toggle()
                     }
                 }
             }
-            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("小组件使用提示")
             .navigationBarTitleDisplayMode(.inline)
         }

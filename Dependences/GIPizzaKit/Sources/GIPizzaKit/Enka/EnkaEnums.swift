@@ -8,6 +8,9 @@
 import Defaults
 import Foundation
 import HBMihoyoAPI
+import HoYoKit
+
+// MARK: - Enka.ResourceType
 
 extension Enka {
     // MARK: - Enka.ResourceType
@@ -49,8 +52,8 @@ extension Enka {
     }
 }
 
-extension HBMihoyoAPI.Server {
+extension HoYoKit.Server {
     public var jsonServer: Enka.JSONGitServerType {
-        [.celestia, .irminsul].contains(self) ? .mainlandCN : .global
+        [.china, .bilibili].contains(self) ? .mainlandCN : .global
     }
 }

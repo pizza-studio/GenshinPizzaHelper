@@ -8,102 +8,363 @@
 import AlertToast
 import Defaults
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
+
+// MARK: - Navigation
+
+private enum Navigation {
+    case eventView
+}
 
 // MARK: - HomeView
 
 struct HomeView: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
+    struct EventModelArrayWrapper: Hashable {
+        let eventContents: [EventModel]
 
-    @Environment(\.colorScheme)
-    var colorScheme
+        static func == (lhs: HomeView.EventModelArrayWrapper, rhs: HomeView.EventModelArrayWrapper) -> Bool {
+            lhs.eventContents.map(\.name.EN) == rhs.eventContents.map(\.name.EN)
+        }
+
+        func hash(into hasher: inout Hasher) {
+            eventContents.forEach { event in
+                hasher.combine(event.id)
+            }
+        }
+    }
+
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: true
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Group {
+                    TodayMaterialEventView().listRowMaterialBackground()
+                    if accounts.isEmpty {
+                        AddNewAccountButton()
+                            .listRowBackground(Color.white.opacity(0))
+                    } else {
+                        ForEach(accounts) { account in
+                            AccountInfoCardView(account: account).listRowMaterialBackground()
+                        }
+                    }
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .background {
+                EnkaWebIcon(iconString: NameCard.defaultValueForAppBackground.fileName)
+                    .scaledToFill()
+                    .ignoresSafeArea(.all)
+                    .overlay(.ultraThinMaterial)
+            }
+            .refreshable {
+                globalDailyNoteCardRefreshSubject.send(())
+            }
+            .navigationTitle("app.home.title")
+            .navigationDestination(for: EventModelArrayWrapper.self) { eventModelArrayWrapper in
+                AllEventsView(eventContents: eventModelArrayWrapper.eventContents)
+            }
+        }
+    }
+}
+
+// MARK: - AccountInfoCardView
+
+struct AccountInfoCardView: View {
+    // MARK: Lifecycle
+
+    init(account: AccountConfiguration) {
+        self._dailyNoteViewModel = .init(wrappedValue: DailyNoteViewModel(account: account))
+    }
+
+    // MARK: Internal
 
     @Environment(\.scenePhase)
     var scenePhase
 
-    @Environment(\.horizontalSizeClass)
-    var horizontalSizeClass
+    var account: AccountConfiguration { dailyNoteViewModel.account }
+
+    var status: DailyNoteViewModel.Status { dailyNoteViewModel.dailyNoteStatus }
+
+    var body: some View {
+        Section {
+            switch status {
+            case let .succeed(dailyNote, _):
+                NoteView(dailyNote: dailyNote, account: account)
+            case let .failure(error):
+                ErrorView(account: account, error: error)
+            case .progress:
+                ProgressView().id(UUID())
+            }
+        } header: {
+            Text(account.safeName)
+                .foregroundColor(.primary)
+                .font(.headline)
+        }
+        .onChange(of: scenePhase, perform: { newPhase in
+            switch newPhase {
+            case .active:
+                dailyNoteViewModel.getDailyNote()
+            default:
+                break
+            }
+        })
+        .onReceive(globalDailyNoteCardRefreshSubject, perform: { _ in
+            dailyNoteViewModel.getDailyNoteUncheck()
+        })
+    }
+
+    // MARK: Private
+
+    private struct NoteView: View {
+        // MARK: Internal
+
+        let dailyNote: any DailyNote
+        let account: AccountConfiguration
+
+        var body: some View {
+            // Resin
+            InformationRowView("app.dailynote.card.resin.label") {
+                let resinIntel = dailyNote.resinInformation
+                HStack(spacing: 10) {
+                    Image("树脂")
+                        .resizable()
+                        .scaledToFit()
+                        .scaleEffect(1.1)
+                        .frame(width: iconFrame, height: iconFrame)
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Text(verbatim: "\(resinIntel.currentResin)")
+                            .font(.title)
+                        Text(verbatim: " / \(resinIntel.maxResin)")
+                            .font(.caption)
+                        Spacer()
+                        if resinIntel.resinRecoveryTime > Date() {
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(dateFormatter.string(from: resinIntel.resinRecoveryTime))
+                                    + Text(verbatim: "\n")
+                                    +
+                                    Text(
+                                        intervalFormatter
+                                            .string(from: TimeInterval.sinceNow(to: resinIntel.resinRecoveryTime))!
+                                    )
+                            }
+                            .multilineTextAlignment(.trailing)
+                            .font(.caption2)
+                        }
+                    }
+                }
+            }
+            // Daily Task
+            InformationRowView("app.dailynote.card.dailyTask.label") {
+                let dailyTask = dailyNote.dailyTaskInformation
+                HStack(spacing: 10) {
+                    Image("每日任务")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: iconFrame, height: iconFrame)
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Text(verbatim: "\(dailyTask.finishedTaskCount)")
+                            .font(.title)
+                        Text(verbatim: " / \(dailyTask.totalTaskCount)")
+                            .font(.caption)
+                        Spacer()
+                        switch dailyTask.isExtraRewardReceived {
+                        case true:
+                            Text("app.dailynote.card.dailyTask.extraReward.received")
+                                .font(.caption2)
+                        case false:
+                            Text("app.dailynote.card.dailyTask.extraReward.notReceived")
+                                .font(.caption2)
+                        }
+                    }
+                }
+            }
+            // Coin
+            InformationRowView("app.dailynote.card.homeCoin.label") {
+                let homeCoin = dailyNote.homeCoinInformation
+                HStack(spacing: 10) {
+                    Image("洞天宝钱")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
+                        .frame(width: iconFrame, height: iconFrame)
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Text(verbatim: "\(homeCoin.currentHomeCoin)")
+                            .font(.title)
+                        Text(verbatim: " / \(homeCoin.maxHomeCoin)")
+                            .font(.caption)
+                        Spacer()
+                        if homeCoin.fullTime > Date() {
+                            (
+                                Text(dateFormatter.string(from: homeCoin.fullTime))
+                                    + Text(verbatim: "\n")
+                                    +
+                                    Text(
+                                        intervalFormatter
+                                            .string(from: TimeInterval.sinceNow(to: homeCoin.fullTime))!
+                                    )
+                            )
+                            .multilineTextAlignment(.trailing)
+                            .font(.caption2)
+                        }
+                    }
+                }
+            }
+            // Expedition
+            InformationRowView("app.dailynote.card.expedition.label") {
+                let expeditionInfo = dailyNote.expeditionInformation
+                HStack(spacing: 10) {
+                    Image("派遣探索")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: iconFrame, height: iconFrame)
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Text(verbatim: "\(expeditionInfo.ongoingExpeditionCount)")
+                            .font(.title)
+                        Text(verbatim: " / \(expeditionInfo.maxExpeditionsCount)")
+                            .font(.caption)
+                        Spacer()
+                        HStack {
+                            ForEach(expeditionInfo.expeditions, id: \.iconURL) { expedition in
+                                AsyncImage(url: expedition.iconURL) { image in
+                                    GeometryReader { g in
+                                        image.resizable().scaleEffect(1.4)
+                                            .scaledToFit()
+                                            .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
+                                    }
+                                } placeholder: {
+                                    ProgressView().id(UUID())
+                                }
+                                .overlay(
+                                    Circle()
+                                        .stroke(expedition.isFinished ? .green : .secondary, lineWidth: 3)
+                                )
+                                .frame(width: 30, height: 30)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // MARK: Private
+
+        private let iconFrame: CGFloat = 40
+
+        private let dateFormatter: DateFormatter = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .short
+            dateFormatter.doesRelativeDateFormatting = true
+            return dateFormatter
+        }()
+    }
+
+    @StateObject
+    private var dailyNoteViewModel: DailyNoteViewModel
+}
+
+// MARK: - DailyNoteViewModel
+
+class DailyNoteViewModel: ObservableObject {
+    // MARK: Lifecycle
+
+    /// Initializes a new instance of the view model.
+    ///
+    /// - Parameter account: The account for which the daily note will be fetched.
+    init(account: AccountConfiguration) {
+        self.account = account
+        Task {
+            await getDailyNoteUncheck()
+        }
+    }
+
+    // MARK: Internal
+
+    enum Status {
+        case succeed(dailyNote: any DailyNote, refreshDate: Date)
+        case failure(error: AnyLocalizedError)
+        case progress(Task<(), Never>?)
+    }
+
+    /// The current daily note.
+    @Published
+    private(set) var dailyNoteStatus: Status = .progress(nil)
+
+    /// The account for which the daily note is being fetched.
+    let account: AccountConfiguration
+
+    /// Fetches the daily note and updates the published `dailyNote` property accordingly.
+    @MainActor
+    func getDailyNote() {
+        if case let .succeed(_, refreshDate) = dailyNoteStatus {
+            // check if note is older than 15 minutes
+            let shouldUpdateAfterMinute: Double = 15
+            let shouldUpdateAfterSecond = 60.0 * shouldUpdateAfterMinute
+
+            if Date().timeIntervalSince(refreshDate) > shouldUpdateAfterSecond {
+                getDailyNoteUncheck()
+            }
+        } else if case .progress = dailyNoteStatus {
+            return // another operation is already in progress
+        } else {
+            getDailyNoteUncheck()
+        }
+    }
+
+    /// Asynchronously fetches the daily note using the MiHoYoAPI with the account information it was initialized with.
+    @MainActor
+    func getDailyNoteUncheck() {
+        if case let .progress(task) = dailyNoteStatus {
+            task?.cancel()
+        }
+        let task = Task {
+            do {
+                let result = try await account.dailyNote()
+                withAnimation {
+                    dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
+                }
+            } catch {
+                withAnimation {
+                    dailyNoteStatus = .failure(error: AnyLocalizedError(error))
+                }
+            }
+        }
+        dailyNoteStatus = .progress(task)
+    }
+}
+
+// MARK: - TodayMaterialEventView
+
+struct TodayMaterialEventView: View {
+    @Environment(\.scenePhase)
+    var scenePhase
 
     @State
     var eventContents: [EventModel] = []
 
-    var animation: Namespace.ID
-
-    var sharedPadding: CGFloat = UIFont.systemFontSize / 2
-
-    var viewBackgroundColor: UIColor {
-        colorScheme == .light ? UIColor.secondarySystemBackground : UIColor.systemBackground
-    }
-
-    var sectionBackgroundColor: UIColor {
-        colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
-    }
-
-    var accounts: [Account] { viewModel.accounts }
     var body: some View {
-        HStack {
-            if horizontalSizeClass != .compact { Spacer() }
-            NavigationView {
-                ScrollView {
-                    VStack(spacing: UIFont.systemFontSize) {
-                        // MARK: - 今日材料
-
-                        InAppMaterialNavigator()
-                            .onChange(of: scenePhase, perform: { newPhase in
-                                switch newPhase {
-                                case .active:
-                                    getCurrentEvent()
-                                default:
-                                    break
-                                }
-                            })
-                            .onAppear {
-                                if eventContents.isEmpty {
-                                    getCurrentEvent()
-                                }
-                            }
-
-                        // MARK: - 当前活动
-
-                        CurrentEventNavigator(eventContents: $eventContents)
-                        if viewModel.accounts.isEmpty {
-                            NavigationLink(destination: AddAccountView()) {
-                                Label("settings.account.pleaseAddAccountFirst", systemSymbol: .plusCircle)
-                            }
-                            .padding(sharedPadding)
-                            .blurMaterialBackground()
-                            .clipShape(RoundedRectangle(
-                                cornerRadius: 10,
-                                style: .continuous
-                            ))
-                            .padding(.top, sharedPadding * 2)
-                        } else {
-                            // MARK: - 账号信息
-
-                            AccountInfoCards(animation: animation)
-                        }
-                    }
-                    .background(Color(uiColor: viewBackgroundColor))
+        InAppMaterialNavigator()
+            .onChange(of: scenePhase, perform: { newPhase in
+                switch newPhase {
+                case .active:
+                    getCurrentEvent()
+                default:
+                    break
                 }
-                .navigationTitle("app.title.full")
-                .navigationBarTitleDisplayMode(.large)
-                .background(Color(uiColor: viewBackgroundColor))
-            }
-            .navigationViewStyle(.stack)
-            .frame(maxWidth: horizontalSizeClass == .compact ? nil : 500)
-            .myRefreshable {
-                withAnimation {
-                    DispatchQueue.main.async {
-                        viewModel.refreshData()
-                    }
+            })
+            .onAppear {
+                if eventContents.isEmpty {
                     getCurrentEvent()
                 }
             }
-            if horizontalSizeClass != .compact { Spacer() }
-        }
-        .background(Color(uiColor: viewBackgroundColor))
+        CurrentEventNavigator(eventContents: $eventContents)
     }
 
     func getCurrentEvent() {
@@ -134,342 +395,108 @@ extension View {
     }
 }
 
-// MARK: - PinnedAccountInfoCard
+// MARK: - AddNewAccountButton
 
-private struct PinnedAccountInfoCard: View {
+private struct AddNewAccountButton: View {
     // MARK: Internal
 
-    @EnvironmentObject
-    var viewModel: ViewModel
-    var animation: Namespace.ID
-    @Default(.pinToTopAccountUUIDString)
-    var pinToTopAccountUUIDString: String
-    @Binding
-    var isErrorAlertShow: Bool
-    @Binding
-    var errorMessage: String
-
-    @Binding
-    var isSucceedAlertShow: Bool
-
-    var accountIndex: Int? {
-        viewModel.accounts
-            .firstIndex(where: {
-                $0.config.uuid?.uuidString ?? "1" == pinToTopAccountUUIDString
-            })
-    }
-
-    var bindingAccount: Binding<Account>? {
-        if let accountIndex = accountIndex {
-            return $viewModel.accounts[accountIndex]
-        } else {
-            return nil
-        }
-    }
+    @State
+    var isNewAccountSheetShow: Bool = false
 
     var body: some View {
-        realBody
+        VStack {
+            HStack {
+                Spacer()
+                Label("settings.account.addAccount", systemSymbol: .plusCircle)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.blue, lineWidth: 4)
+                    )
+                    .background(
+                        .regularMaterial,
+                        in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    )
+                    .contentShape(RoundedRectangle(
+                        cornerRadius: 20,
+                        style: .continuous
+                    ))
+                    .clipShape(RoundedRectangle(
+                        cornerRadius: 20,
+                        style: .continuous
+                    ))
+                    .onTapGesture {
+                        isNewAccountSheetShow.toggle()
+                    }
+                    .sheet(isPresented: $isNewAccountSheetShow) {
+                        CreateAccountSheetView(
+                            account: AccountConfiguration(context: viewContext),
+                            isShown: $isNewAccountSheetShow
+                        )
+                    }
+                Spacer()
+            }
+        }
     }
 
     // MARK: Private
 
-    private var realBody: some View {
-        guard let accountIndex = accountIndex
-        else { return AnyView(EmptyView()) }
-        let account: Account = viewModel.accounts[accountIndex]
-        guard account != viewModel.showDetailOfAccount
-        else { return AnyView(EmptyView()) }
-        guard let accountResult = account.result
-        else { return AnyView(ProgressView().padding([.bottom, .horizontal])) }
-        return AnyView(buildBodyView(for: accountResult, account: account))
-    }
-
-    @ViewBuilder
-    private func buildBodyView(
-        for accountResult: FetchResult,
-        account: Account
-    )
-        -> some View {
-        switch accountResult {
-        case let .success(userData)
-            where account.config.uuid != nil:
-            GameInfoBlock(
-                userData: userData,
-                accountName: account.config.name,
-                accountUUIDString: account.config.uuid!
-                    .uuidString,
-                animation: animation,
-                widgetBackground: account.background,
-                fetchComplete: account.fetchComplete
-            )
-            .padding(.horizontal)
-            .listRowBackground(Color.white.opacity(0))
-            .onTapGesture {
-                simpleTaptic(type: .medium)
-                withAnimation(
-                    .interactiveSpring(
-                        response: 0.5,
-                        dampingFraction: 0.8,
-                        blendDuration: 0.8
-                    )
-                ) {
-                    viewModel
-                        .showDetailOfAccount = account
-                }
-            }
-            .contextMenu {
-                Button("home.infoCard.unpin".localized) {
-                    withAnimation {
-                        Defaults.reset(.pinToTopAccountUUIDString)
-                        viewModel.objectWillChange.send()
-                    }
-                }
-                if #available(iOS 16, *) {
-                    let view = GameInfoBlockForSave(
-                        userData: userData,
-                        accountName: account.config
-                            .name ?? "",
-                        accountUUIDString: account
-                            .config.uuid?
-                            .uuidString ?? "",
-                        animation: animation,
-                        widgetBackground: account
-                            .background
-                    ).environment(
-                        \.locale,
-                        .init(
-                            identifier: Locale
-                                .current.identifier
-                        )
-                    )
-                    if let uiImage = view.asUiImage() {
-                        let image = Image(uiImage: uiImage)
-                        ShareLink(
-                            item: image,
-                            preview: SharePreview("button.savePic".localized, image: image)
-                        )
-                    }
-                }
-                #if canImport(ActivityKit)
-                if #available(iOS 16.1, *) {
-                    Button("为该账号开启树脂计时器") {
-                        do {
-                            try ResinRecoveryActivityController
-                                .shared
-                                .createResinRecoveryTimerActivity(
-                                    for: account
-                                )
-                            isSucceedAlertShow.toggle()
-                        } catch {
-                            errorMessage = error
-                                .localizedDescription
-                            isErrorAlertShow.toggle()
-                        }
-                    }
-                }
-                #endif
-            }
-        case .failure:
-            HStack {
-                NavigationLink {
-                    AccountDetailView(account: bindingAccount!)
-                } label: {
-                    ZStack {
-                        Image(
-                            systemName: "exclamationmark.arrow.triangle.2.circlepath"
-                        )
-                        .padding()
-                        .foregroundColor(.red)
-                        HStack {
-                            Spacer()
-                            Text(account.config.name ?? "")
-                                .foregroundColor(Color(
-                                    UIColor
-                                        .systemGray4
-                                ))
-                                .font(.caption2)
-                                .padding(.horizontal)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-            }
-        default: EmptyView()
-        }
-    }
+    @Environment(\.managedObjectContext)
+    private var viewContext
 }
 
-// MARK: - AccountInfoCards
+// MARK: - ErrorView
 
-private struct AccountInfoCards: View {
-    @EnvironmentObject
-    var viewModel: ViewModel
-    var animation: Namespace.ID
+private struct ErrorView: View {
+    // MARK: Internal
 
-    @Default(.pinToTopAccountUUIDString)
-    var pinToTopAccountUUIDString: String
-
-    @State
-    var isErrorAlertShow: Bool = false
-    @State
-    var errorMessage: String = ""
-    @State
-    var isSucceedAlertShow: Bool = false
+    let account: AccountConfiguration
+    var error: Error
 
     var body: some View {
-        PinnedAccountInfoCard(
-            animation: animation,
-            isErrorAlertShow: $isErrorAlertShow,
-            errorMessage: $errorMessage,
-            isSucceedAlertShow: $isSucceedAlertShow
-        )
-        .overlay(
-            EmptyView()
-//                .alert(isPresented: $isSucceedAlertShow) {
-//                    Alert(title: Text("创建树脂计时器成功".localized))
-//                }
-                .toast(isPresenting: $isSucceedAlertShow) {
-                    AlertToast(
-                        displayMode: .hud,
-                        type: .complete(.green),
-                        title: "创建树脂计时器成功"
-                    )
+        Button {
+            isEditAccountSheetShown.toggle()
+        } label: {
+            switch error {
+            case MiHoYoAPIError.verificationNeeded:
+                Label {
+                    Text("app.dailynote.card.error.need_verification.button")
+                } icon: {
+                    Image(systemSymbol: .questionmarkCircle)
+                        .foregroundColor(.yellow)
                 }
-        )
-        .overlay(
-            EmptyView()
-//                .alert(isPresented: $isErrorAlertShow) {
-//                    Alert(title: Text("ERROR \(errorMessage)"))
-//                }
-                .toast(isPresenting: $isErrorAlertShow) {
-                    AlertToast(
-                        displayMode: .hud,
-                        type: .error(.red),
-                        title: "ERROR \(errorMessage)"
-                    )
-                }
-        )
-        ForEach($viewModel.accounts, id: \.config.uuid) { $account in
-            if account != viewModel.showDetailOfAccount,
-               account != viewModel.accounts
-               .first(where: {
-                   $0.config.uuid?
-                       .uuidString ?? "1" == pinToTopAccountUUIDString
-               }) {
-                if account.result != nil, let accountConfigUUID = account.config.uuid {
-                    switch account.result! {
-                    case let .success(userData):
-                        GameInfoBlock(
-                            userData: userData,
-                            accountName: account.config.name,
-                            accountUUIDString: accountConfigUUID
-                                .uuidString,
-                            animation: animation,
-                            widgetBackground: account.background,
-                            fetchComplete: account.fetchComplete
-                        )
-                        .padding(.horizontal)
-                        .listRowBackground(Color.white.opacity(0))
-                        .onTapGesture {
-                            simpleTaptic(type: .medium)
-                            withAnimation(
-                                .interactiveSpring(
-                                    response: 0.5,
-                                    dampingFraction: 0.8,
-                                    blendDuration: 0.8
-                                )
-                            ) {
-                                viewModel.showDetailOfAccount = account
-                            }
-                        }
-                        .contextMenu {
-                            Button("home.infoCard.pinToTop".localized) {
-                                withAnimation {
-                                    pinToTopAccountUUIDString = accountConfigUUID.uuidString
-                                }
-                            }
-                            if #available(iOS 16, *) {
-                                let view = GameInfoBlockForSave(
-                                    userData: userData,
-                                    accountName: account.config
-                                        .name ?? "",
-                                    accountUUIDString: account
-                                        .config.uuid?.uuidString ?? "",
-                                    animation: animation,
-                                    widgetBackground: account
-                                        .background
-                                ).environment(
-                                    \.locale,
-                                    .init(
-                                        identifier: Locale.current
-                                            .identifier
-                                    )
-                                )
-                                if let uiImage = view.asUiImage() {
-                                    let image = Image(uiImage: uiImage)
-                                    ShareLink(
-                                        item: image,
-                                        preview: SharePreview("button.savePic".localized, image: image)
-                                    )
-                                }
-                            }
-                            #if canImport(ActivityKit)
-                            if #available(iOS 16.1, *) {
-                                Button("为该账号开启树脂计时器") {
-                                    do {
-                                        try ResinRecoveryActivityController
-                                            .shared
-                                            .createResinRecoveryTimerActivity(
-                                                for: account
-                                            )
-                                        isSucceedAlertShow.toggle()
-                                    } catch {
-                                        errorMessage = error
-                                            .localizedDescription
-                                        isErrorAlertShow.toggle()
-                                    }
-                                }
-                            }
-                            #endif
-                            #if DEBUG
-                            Button("Toast Debug") {
-                                isSucceedAlertShow.toggle()
-                                print("isSucceedAlertShow toggle")
-                            }
-                            #endif
-                        }
-
-                    case .failure:
-                        HStack {
-                            NavigationLink {
-                                AccountDetailView(account: $account)
-                            } label: {
-                                ZStack {
-                                    Image(
-                                        systemName: "exclamationmark.arrow.triangle.2.circlepath"
-                                    )
-                                    .padding()
-                                    .foregroundColor(.red)
-                                    HStack {
-                                        Spacer()
-                                        Text(account.config.name ?? "")
-                                            .foregroundColor(Color(
-                                                UIColor
-                                                    .systemGray4
-                                            ))
-                                            .font(.caption2)
-                                            .padding(.horizontal)
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
-                        }
-                    }
-                } else {
-                    ProgressView()
-                        .padding(.horizontal)
+            default:
+                Label {
+                    Text("app.dailynote.card.error.other_error.button")
+                } icon: {
+                    Image(systemSymbol: .exclamationmarkCircle)
+                        .foregroundColor(.red)
                 }
             }
         }
+        .sheet(isPresented: $isEditAccountSheetShown, content: {
+            EditAccountSheetView(account: account, isShown: $isEditAccountSheetShown)
+        })
     }
+
+    // MARK: Private
+
+    @State
+    private var isEditAccountSheetShown: Bool = false
 }
+
+private let dateFormatter: DateFormatter = {
+    let fmt = DateFormatter()
+    fmt.dateStyle = .short
+    fmt.timeStyle = .short
+    fmt.doesRelativeDateFormatting = true
+    return fmt
+}()
+
+private let intervalFormatter: DateComponentsFormatter = {
+    let dateComponentFormatter = DateComponentsFormatter()
+    dateComponentFormatter.allowedUnits = [.hour, .minute]
+    dateComponentFormatter.maximumUnitCount = 2
+    dateComponentFormatter.unitsStyle = .brief
+    return dateComponentFormatter
+}()

@@ -31,8 +31,12 @@ struct GachaSetting: View {
         }
     }
 
-    @EnvironmentObject
-    var viewModel: ViewModel
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: true
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
+
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
 
@@ -93,8 +97,8 @@ struct GachaSetting: View {
                             gachaViewModel.allAvaliableAccountUID,
                             id: \.self
                         ) { uid in
-                            if let name = viewModel.accounts
-                                .first(where: { $0.config.uid! == uid })?.config
+                            if let name = accounts
+                                .first(where: { $0.uid! == uid })?
                                 .name {
                                 Text("\(name) (\(uid))")
                                     .tag(Optional(uid))
@@ -145,7 +149,6 @@ struct GachaSetting: View {
                 }
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("祈愿数据管理")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isExportSheetShow, content: {
@@ -230,7 +233,7 @@ struct GachaSetting: View {
         let endDate: Date = deleteAll ? .distantFuture : endDate
         let rangeDesc: String = deleteAll ? "所有".localized :
             Self.rangeFormatter.string(from: startDate, to: endDate)
-        let nameDesc: String = viewModel.accounts.first(where: { $0.config.uid! == account! })?.config
+        let nameDesc: String = accounts.first(where: { $0.uid! == account! })?
             .name ?? account ?? ""
         Text(
             "即将删除「\(nameDesc)」\(rangeDesc)的祈愿数据。"

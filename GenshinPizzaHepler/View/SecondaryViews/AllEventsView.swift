@@ -7,6 +7,7 @@
 
 import Defaults
 import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
@@ -25,7 +26,6 @@ struct AllEventsView: View {
     @Environment(\.colorScheme)
     var colorScheme
 
-    @Binding
     var eventContents: [EventModel]
     @State
     var expandCards: Bool = false
@@ -66,6 +66,13 @@ struct AllEventsView: View {
                     }
                 }
             }
+        }
+        .scrollContentBackground(.hidden)
+        .background {
+            EnkaWebIcon(iconString: NameCard.defaultValueForAppBackground.fileName)
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+                .overlay(.ultraThinMaterial)
         }
         .navigationTitle("当前活动")
         .navigationBarTitleDisplayMode(.inline)

@@ -105,3 +105,17 @@ extension DateFormatter {
         return result
     }
 }
+
+extension TimeInterval {
+    static func sinceNow(to date: Date) -> Self {
+        date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
+    }
+
+    static func toNow(from date: Date) -> Self {
+        Date().timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate
+    }
+
+    init(from dateA: Date, to dateB: Date) {
+        self = dateB.timeIntervalSinceReferenceDate - dateA.timeIntervalSinceReferenceDate
+    }
+}

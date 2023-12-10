@@ -719,7 +719,6 @@ struct ContactUsView: View {
                 }
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
         .navigationTitle("开发者与联系方式")
         .navigationBarTitleDisplayMode(.inline)
     }

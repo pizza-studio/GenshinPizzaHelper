@@ -5,27 +5,28 @@
 //  Created by 戴藏龙 on 2022/9/14.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
+import WidgetKit
 
 @available(iOSApplicationExtension 16.0, *)
-struct LockScreenLoopWidgetCorner<T>: View
-    where T: SimplifiedUserDataContainer {
+struct LockScreenLoopWidgetCorner: View {
+    let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
 
-    let result: SimplifiedUserDataContainerResult<T>
+    let result: Result<any DailyNote, any Error>
 
     var body: some View {
-        switch SimplifiedLockScreenLoopWidgetType.autoChoose(result: result) {
+        switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {
         case .resin:
-            LockScreenResinWidgetCorner(result: result)
+            LockScreenResinWidgetCorner(entry: entry, result: result)
         case .dailyTask:
             LockScreenDailyTaskWidgetCorner(result: result)
         case .expedition:
             LockScreenExpeditionWidgetCorner(result: result)
         case .homeCoin:
-            LockScreenHomeCoinWidgetCorner(result: result)
+            LockScreenHomeCoinWidgetCorner(entry: entry, result: result)
         }
     }
 }

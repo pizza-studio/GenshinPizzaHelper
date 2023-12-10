@@ -14,9 +14,8 @@ import SwiftUI
 struct EachCharacterDetailDataView: View {
     // MARK: Lifecycle
 
-    init(avatar: PlayerDetail.Avatar, animation: Namespace.ID) {
+    init(avatar: PlayerDetail.Avatar) {
         self.avatar = avatar
-        self.animation = animation
     }
 
     // MARK: Internal
@@ -26,8 +25,6 @@ struct EachCharacterDetailDataView: View {
     }
 
     var avatar: PlayerDetail.Avatar
-
-    var animation: Namespace.ID
 
     var body: some View {
         HStack(alignment: .top, spacing: 0) {

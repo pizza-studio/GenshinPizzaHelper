@@ -5,87 +5,90 @@
 //  Created by Bill Haku on 2022/9/9.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 
 // MARK: - WatchAccountDetailView
 
 struct WatchAccountDetailView: View {
-    var userData: Result<UserData, FetchError>
+    var data: any DailyNote
     let accountName: String?
     var uid: String?
 
     var body: some View {
-        switch userData {
-        case let .success(data):
-            ScrollView {
-                VStack(alignment: .leading) {
-                    Group {
+        ScrollView {
+            VStack(alignment: .leading) {
+                Group {
+                    Divider()
+                    WatchResinDetailView(resinInfo: data.resinInformation)
+                    Divider()
+                    VStack(alignment: .leading, spacing: 5) {
+                        WatchAccountDetailItemView(
+                            title: "app.dailynote.card.homeCoin.label",
+                            value: "\(data.homeCoinInformation.currentHomeCoin)",
+                            icon: Image("洞天宝钱")
+                        )
                         Divider()
-                        WatchResinDetailView(resinInfo: data.resinInfo)
-                        Divider()
-                        VStack(alignment: .leading, spacing: 5) {
-                            WatchAccountDetailItemView(
-                                title: "洞天宝钱",
-                                value: "\(data.homeCoinInfo.currentHomeCoin)",
-                                icon: Image("洞天宝钱")
-                            )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "每日委托",
-                                value: "\(data.dailyTaskInfo.finishedTaskNum) / \(data.dailyTaskInfo.totalTaskNum)",
-                                icon: Image("每日任务")
-                            )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "参量质变仪",
-                                value: "\(data.transformerInfo.recoveryTime.describeIntervalLong(finishedTextPlaceholder: "infoBlock.transformerAvailable".localized))",
-                                icon: Image("参量质变仪")
-                            )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "周本折扣",
-                                value: "\(data.weeklyBossesInfo.hasUsedResinDiscountNum) / \(data.weeklyBossesInfo.resinDiscountNumLimit)",
-                                icon: Image("征讨领域")
-                            )
-                            Divider()
-                            WatchAccountDetailItemView(
-                                title: "探索派遣",
-                                value: "\(data.expeditionInfo.currentOngoingTask) / \(data.expeditionInfo.maxExpedition)",
-                                icon: Image("派遣探索")
-                            )
+                        WatchAccountDetailItemView(
+                            title: "app.dailynote.card.dailyTask.label",
+                            value: "\(data.dailyTaskInformation.finishedTaskCount) / \(data.dailyTaskInformation.totalTaskCount)",
+                            icon: Image("每日任务")
+                        )
+                        if let data = data as? GeneralDailyNote {
+                            Group {
+                                Divider()
+                                WatchAccountDetailItemView(
+                                    title: "参量质变仪",
+                                    value: intervalFormatter
+                                        .string(
+                                            from: TimeInterval
+                                                .sinceNow(to: data.transformerInformation.recoveryTime)
+                                        )!,
+                                    icon: Image("参量质变仪")
+                                )
+                                Divider()
+                                WatchAccountDetailItemView(
+                                    title: "周本折扣",
+                                    value: "\(data.weeklyBossesInformation.remainResinDiscount) / \(data.weeklyBossesInformation.totalResinDiscount)",
+                                    icon: Image("征讨领域")
+                                )
+                            }
                         }
                         Divider()
-                        VStack(alignment: .leading, spacing: 10) {
-                            ForEach(
-                                data.expeditionInfo.expeditions,
-                                id: \.charactersEnglishName
-                            ) { expedition in
-                                WatchEachExpeditionView(
-                                    expedition: expedition,
-                                    useAsyncImage: true
-                                )
-                                .frame(maxHeight: 40)
-                            }
+                        WatchAccountDetailItemView(
+                            title: "app.dailynote.card.expedition.label",
+                            value: "\(data.expeditionInformation.ongoingExpeditionCount) / \(data.expeditionInformation.maxExpeditionsCount)",
+                            icon: Image("派遣探索")
+                        )
+                    }
+                    Divider()
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(
+                            data.expeditionInformation.expeditions,
+                            id: \.iconURL
+                        ) { expedition in
+                            WatchEachExpeditionView(
+                                expedition: expedition,
+                                useAsyncImage: true
+                            )
+                            .frame(maxHeight: 40)
                         }
                     }
                 }
             }
-            .navigationTitle(accountName ?? "")
-        case .failure:
-            Text("Error")
         }
+        .navigationTitle(accountName ?? "")
     }
 
-    func recoveryTimeText(resinInfo: ResinInfo) -> String {
-        if resinInfo.recoveryTime.second != 0 {
+    func recoveryTimeText(resinInfo: ResinInformation) -> String {
+        if resinInfo.resinRecoveryTime >= Date() {
             let localizedStr = NSLocalizedString(
                 "infoBlock.refilledAt:%@",
                 comment: "resin replenished"
             )
             return String(
                 format: localizedStr,
-                resinInfo.recoveryTime.completeTimePointFromNow()
+                dateFormatter.string(from: resinInfo.resinRecoveryTime)
             )
         } else {
             return "infoBlock.resionFullyFilledDescription".localized
@@ -96,46 +99,40 @@ struct WatchAccountDetailView: View {
 // MARK: - WatchEachExpeditionView
 
 private struct WatchEachExpeditionView: View {
-    let expedition: Expedition
+    let expedition: any Expedition
     let viewConfig: WidgetViewConfiguration = .defaultConfig
     var useAsyncImage: Bool = false
     var animationDelay: Double = 0
 
     var body: some View {
         HStack {
-            webView(url: expedition.avatarSideIconUrl)
-                .padding(.trailing)
-            VStack(alignment: .leading) {
-                Text(
-                    expedition.recoveryTime
-                        .describeIntervalLong(
-                            finishedTextPlaceholder: "已完成"
-                                .localized
-                        )
-                )
-                .font(.footnote)
-                percentageBar(expedition.percentage)
+            AsyncImage(url: expedition.iconURL, content: { image in
+                GeometryReader { g in
+                    image.resizable()
+                        .scaledToFit()
+                        .scaleEffect(1.5)
+                        .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
+                }
+            }, placeholder: {
+                ProgressView()
+            })
+            .frame(width: 25, height: 25)
+            if let expedition = expedition as? GeneralDailyNote.ExpeditionInformation.Expedition {
+                VStack(alignment: .leading) {
+                    Text(intervalFormatter.string(from: TimeInterval.sinceNow(to: expedition.finishTime))!)
+                        .font(.footnote)
+                    percentageBar(TimeInterval.sinceNow(to: expedition.finishTime) / Double(20 * 60 * 60))
+                }
+            } else {
+                VStack(alignment: .leading) {
+                    Text(expedition.isFinished ? "已完成" : "未完成")
+                        .font(.footnote)
+                    percentageBar(expedition.isFinished ? 0 : 1)
+                }
             }
         }
         .foregroundColor(Color("textColor3"))
-    }
-
-    @ViewBuilder
-    func webView(url: URL) -> some View {
-        GeometryReader { g in
-            if useAsyncImage {
-                WebImage(urlStr: expedition.avatarSideIcon)
-                    .scaleEffect(1.5)
-                    .scaledToFit()
-                    .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
-            } else {
-                NetworkImage(url: expedition.avatarSideIconUrl)
-                    .scaleEffect(1.5)
-                    .scaledToFit()
-                    .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
-            }
-        }
-        .frame(width: 25, height: 25)
+        .padding(.trailing)
     }
 
     @ViewBuilder
@@ -157,3 +154,19 @@ private struct WatchEachExpeditionView: View {
         .frame(height: 7)
     }
 }
+
+private let dateFormatter: DateFormatter = {
+    let fmt = DateFormatter()
+    fmt.doesRelativeDateFormatting = true
+    fmt.dateStyle = .short
+    fmt.timeStyle = .short
+    return fmt
+}()
+
+private let intervalFormatter: DateComponentsFormatter = {
+    let dateComponentFormatter = DateComponentsFormatter()
+    dateComponentFormatter.allowedUnits = [.hour, .minute]
+    dateComponentFormatter.maximumUnitCount = 2
+    dateComponentFormatter.unitsStyle = .brief
+    return dateComponentFormatter
+}()

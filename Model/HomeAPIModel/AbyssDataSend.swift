@@ -7,6 +7,7 @@
 
 import Foundation
 import HBMihoyoAPI
+import HoYoKit
 
 // MARK: - AvatarHoldingData
 
@@ -91,17 +92,17 @@ struct AbyssData: Codable {
 
 extension AbyssData {
     init?(
-        account: Account,
+        accountUID: String,
+        server: Server,
+        basicInfo: BasicInfos,
+        abyssData: SpiralAbyssDetail,
         which season: AccountSpiralAbyssDetail.WhichSeason
     ) {
-        guard let abyssData = account.spiralAbyssDetail?.get(season),
-              let basicInfo = account.basicInfo
-        else { return nil }
         guard abyssData.totalStar == 36 else { return nil }
         let obfuscatedUid =
-            "\(account.config.uid!)\(account.config.uid!.md5)\(AppConfig.uidSalt)"
+            "\(accountUID)\(accountUID.md5)\(AppConfig.uidSalt)"
         self.uid = obfuscatedUid.md5
-        self.server = account.config.server.id
+        self.server = server.id
 
         let component = Calendar.current.dateComponents(
             [.year, .month, .day],
@@ -184,12 +185,13 @@ extension Array where Element == AbyssData.SubmitDetailModel {
 
 extension AvatarHoldingData {
     init?(
-        account: Account,
+        accountUID: String,
+        server: Server,
+        basicInfo: BasicInfos,
         which season: AccountSpiralAbyssDetail.WhichSeason
     ) {
-        guard let basicInfo = account.basicInfo else { return nil }
         let obfuscatedUid =
-            "\(account.config.uid!)\(account.config.uid!.md5)\(AppConfig.uidSalt)"
+            "\(accountUID)\(accountUID.md5)\(AppConfig.uidSalt)"
         self.uid = String(obfuscatedUid.md5)
 
         let formatter = DateFormatter.Gregorian()
@@ -198,7 +200,7 @@ extension AvatarHoldingData {
         self.updateDate = formatter.string(from: Date())
 
         self.owningChars = basicInfo.avatars.map { $0.id }
-        self.serverId = account.config.server.id
+        self.serverId = server.id
     }
 }
 
@@ -254,21 +256,20 @@ struct HuTaoDBAbyssData: Codable {
 
 extension HuTaoDBAbyssData {
     init?(
-        account: Account,
+        accountUID: String,
+        server: Server,
+        cookie: String,
+        basicInfo: BasicInfos,
+        abyssData: SpiralAbyssDetail,
         which season: AccountSpiralAbyssDetail.WhichSeason
     ) async {
-        guard let abyssData = account.spiralAbyssDetail?.get(season),
-              let basicInfo = account.basicInfo,
-              let uid = account.config.uid,
-              let cookie = account.config.cookie
-        else { return nil }
         guard abyssData.totalStar == 36 else { return nil }
 
         let allAvatarInfo = await withCheckedContinuation { continuation in
             MihoyoAPI.fetchAllAvatarInfos(
-                region: account.config.server.region,
-                serverID: account.config.server.id,
-                uid: uid,
+                region: server.region,
+                serverID: server.id,
+                uid: accountUID,
                 cookie: cookie
             ) { result in
                 switch result {
@@ -280,7 +281,7 @@ extension HuTaoDBAbyssData {
             }
         }
 
-        self.uid = uid
+        self.uid = accountUID
         self.identity = "GenshinPizzaHelper"
         self.reservedUserName = ""
 

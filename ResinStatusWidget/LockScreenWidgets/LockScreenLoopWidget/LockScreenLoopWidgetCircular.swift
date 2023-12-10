@@ -5,16 +5,18 @@
 //  Created by 戴藏龙 on 2022/9/11.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
+import WidgetKit
 
 // MARK: - LockScreenLoopWidgetCircular
 
 @available(iOSApplicationExtension 16.0, *)
 struct LockScreenLoopWidgetCircular: View {
+    let entry: any TimelineEntry
     @Environment(\.widgetRenderingMode)
     var widgetRenderingMode
-    let result: FetchResult
+    let result: Result<any DailyNote, any Error>
 
     let showWeeklyBosses: Bool
     let showTransformer: Bool
@@ -22,72 +24,24 @@ struct LockScreenLoopWidgetCircular: View {
     let resinStyle: AutoRotationUsingResinWidgetStyle
 
     var body: some View {
-        switch LockScreenLoopWidgetType.autoChoose(result: result) {
+        switch LockScreenLoopWidgetType.autoChoose(entry: entry, result: result) {
         case .resin:
             switch resinStyle {
             case .default_, .unknown:
-                AlternativeLockScreenResinWidgetCircular(result: result)
+                AlternativeLockScreenResinWidgetCircular(entry: entry, result: result)
             case .timer:
-                LockScreenResinTimerWidgetCircular(result: result)
+                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
             case .time:
-                LockScreenResinFullTimeWidgetCircular(result: result)
+                LockScreenResinFullTimeWidgetCircular(entry: entry, result: result)
             case .circle:
-                LockScreenResinWidgetCircular(result: result)
+                LockScreenResinWidgetCircular(entry: entry, result: result)
             }
         case .dailyTask:
             LockScreenDailyTaskWidgetCircular(result: result)
         case .expedition:
             LockScreenExpeditionWidgetCircular(result: result)
         case .homeCoin:
-            LockScreenHomeCoinWidgetCircular(result: result)
-        case .transformer:
-            if showTransformer {
-                LockScreenLoopWidgetTransformerCircular(result: result)
-            } else {
-                AlternativeLockScreenResinWidgetCircular(result: result)
-            }
-        case .weeklyBosses:
-            if showWeeklyBosses {
-                LockScreenLoopWidgetWeeklyBossesCircular(result: result)
-            } else {
-                AlternativeLockScreenResinWidgetCircular(result: result)
-            }
-        }
-    }
-}
-
-// MARK: - SimplifiedLockScreenLoopWidgetCircular
-
-@available(iOSApplicationExtension 16.0, *)
-struct SimplifiedLockScreenLoopWidgetCircular: View {
-    @Environment(\.widgetRenderingMode)
-    var widgetRenderingMode
-    let result: SimplifiedUserDataResult
-
-    let showWeeklyBosses: Bool
-    let showTransformer: Bool
-
-    let resinStyle: AutoRotationUsingResinWidgetStyle
-
-    var body: some View {
-        switch SimplifiedLockScreenLoopWidgetType.autoChoose(result: result) {
-        case .resin:
-            switch resinStyle {
-            case .default_, .unknown:
-                AlternativeLockScreenResinWidgetCircular(result: result)
-            case .timer:
-                LockScreenResinTimerWidgetCircular(result: result)
-            case .time:
-                LockScreenResinFullTimeWidgetCircular(result: result)
-            case .circle:
-                LockScreenResinWidgetCircular(result: result)
-            }
-        case .dailyTask:
-            LockScreenDailyTaskWidgetCircular(result: result)
-        case .expedition:
-            LockScreenExpeditionWidgetCircular(result: result)
-        case .homeCoin:
-            LockScreenHomeCoinWidgetCircular(result: result)
+            LockScreenHomeCoinWidgetCircular(entry: entry, result: result)
         }
     }
 }

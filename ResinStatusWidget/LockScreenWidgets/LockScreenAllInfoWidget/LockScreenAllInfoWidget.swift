@@ -6,6 +6,8 @@
 //
 
 import Defaults
+import GIPizzaKit
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -36,7 +38,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> AccountOnlyEntry {
         AccountOnlyEntry(
             date: Date(),
-            widgetDataKind: .normal(result: .defaultFetchResult),
+            result: .success(GeneralDailyNote.exampleData()),
             accountName: "荧",
             accountUUIDString: nil
         )
@@ -49,7 +51,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
     ) {
         let entry = AccountOnlyEntry(
             date: Date(),
-            widgetDataKind: .normal(result: .defaultFetchResult),
+            result: .success(GeneralDailyNote.exampleData()),
             accountName: "荧",
             accountUUIDString: nil
         )
@@ -79,7 +81,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         guard !configs.isEmpty else {
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                widgetDataKind: .normal(result: .failure(.noFetchInfo)),
+                result: .failure(FetchError.noFetchInfo),
                 accountUUIDString: nil
             )
             let timeline = Timeline(
@@ -91,65 +93,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         }
 
         guard configuration.account != nil else {
-            // 如果还未选择账号，默认获取第一个
-            switch configs.first!.server.region {
-            case .cn:
-                if configuration.simplifiedMode?.boolValue ?? true {
-                    configs.first!.fetchSimplifiedResult { simplifiedResult in
-                        let entry = AccountOnlyEntry(
-                            date: currentDate,
-                            widgetDataKind: .simplified(
-                                result: simplifiedResult
-                            ),
-                            accountName: configs.first!.name,
-                            accountUUIDString: configs.first!.uuid?.uuidString
-                        )
-                        let timeline = Timeline(
-                            entries: [entry],
-                            policy: .after(refreshDate)
-                        )
-                        #if !os(watchOS) && canImport(ActivityKit)
-                        if #available(iOSApplicationExtension 16.1, *) {
-                            ResinRecoveryActivityController.shared
-                                .updateAllResinRecoveryTimerActivityUsingReFetchData(
-                                )
-                        }
-                        #endif
-                        completion(timeline)
-                        print("Widget Fetch succeed")
-                    }
-                } else {
-                    configs.first!.fetchResult { result in
-                        let entry = AccountOnlyEntry(
-                            date: currentDate,
-                            widgetDataKind: .normal(result: result),
-                            accountName: configs.first!.name,
-                            accountUUIDString: configs.first?.uuid?.uuidString
-                        )
-                        let timeline = Timeline(
-                            entries: [entry],
-                            policy: .after(refreshDate)
-                        )
-                        completion(timeline)
-                        print("Widget Fetch succeed")
-                    }
-                }
-            case .global:
-                configs.first!.fetchResult { result in
-                    let entry = AccountOnlyEntry(
-                        date: currentDate,
-                        widgetDataKind: .normal(result: result),
-                        accountName: configs.first!.name,
-                        accountUUIDString: configs.first?.uuid?.uuidString
-                    )
-                    let timeline = Timeline(
-                        entries: [entry],
-                        policy: .after(refreshDate)
-                    )
-                    completion(timeline)
-                    print("Widget Fetch succeed")
-                }
-            }
+            getTimelineEntries(config: configs.first!)
             return
         }
 
@@ -164,7 +108,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                widgetDataKind: .normal(result: .failure(.noFetchInfo)),
+                result: .failure(FetchError.noFetchInfo),
                 accountUUIDString: nil
             )
             let timeline = Timeline(
@@ -177,60 +121,32 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         }
 
         // 正常情况
-        switch config.server.region {
-        case .cn:
-            if configuration.simplifiedMode?.boolValue ?? true {
-                config.fetchSimplifiedResult { result in
-                    let entry = AccountOnlyEntry(
-                        date: currentDate,
-                        widgetDataKind: .simplified(result: result),
-                        accountName: config.name,
-                        accountUUIDString: config.uuid?.uuidString
-                    )
-                    let timeline = Timeline(
-                        entries: [entry],
-                        policy: .after(refreshDate)
-                    )
-                    #if !os(watchOS) && canImport(ActivityKit)
-                    if #available(iOSApplicationExtension 16.1, *) {
-                        ResinRecoveryActivityController.shared
-                            .updateAllResinRecoveryTimerActivityUsingReFetchData(
-                            )
+
+        func getTimelineEntries(config: AccountConfiguration) {
+            Task {
+                do {
+                    let data = try await config.dailyNote()
+                    let entries = (0 ... 40).map { index in
+                        let timeInterval = TimeInterval(index * 8 * 60)
+                        let entryDate =
+                            Date(timeIntervalSinceNow: timeInterval)
+                        return AccountOnlyEntry(
+                            date: entryDate,
+                            result: .success(data),
+                            accountName: config.name,
+                            accountUUIDString: config.uuid?.uuidString
+                        )
                     }
-                    #endif
-                    completion(timeline)
-                    print("Widget Fetch succeed")
-                }
-            } else {
-                config.fetchResult { result in
+                    completion(.init(entries: entries, policy: .after(refreshDate)))
+                } catch {
                     let entry = AccountOnlyEntry(
                         date: currentDate,
-                        widgetDataKind: .normal(result: result),
+                        result: .failure(error),
                         accountName: config.name,
                         accountUUIDString: config.uuid?.uuidString
                     )
-                    let timeline = Timeline(
-                        entries: [entry],
-                        policy: .after(refreshDate)
-                    )
-                    completion(timeline)
-                    print("Widget Fetch succeed")
+                    completion(.init(entries: [entry], policy: .after(refreshDate)))
                 }
-            }
-        case .global:
-            config.fetchResult { result in
-                let entry = AccountOnlyEntry(
-                    date: currentDate,
-                    widgetDataKind: .normal(result: result),
-                    accountName: config.name,
-                    accountUUIDString: config.uuid?.uuidString
-                )
-                let timeline = Timeline(
-                    entries: [entry],
-                    policy: .after(refreshDate)
-                )
-                completion(timeline)
-                print("Widget Fetch succeed")
             }
         }
     }
@@ -269,7 +185,7 @@ struct LockScreenAllInfoWidgetView: View {
     var widgetRenderingMode
     let entry: LockScreenAllInfoWidgetProvider.Entry
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: Result<any DailyNote, any Error> { entry.result }
     var accountName: String? { entry.accountName }
 
     var url: URL? {
@@ -286,21 +202,11 @@ struct LockScreenAllInfoWidgetView: View {
             return components.url!
         }()
 
-        switch entry.widgetDataKind {
-        case let .normal(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
-        case let .simplified(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
         }
     }
 
@@ -308,78 +214,77 @@ struct LockScreenAllInfoWidgetView: View {
         Group {
             switch widgetRenderingMode {
             case .fullColor:
-                switch dataKind {
-                case let .normal(result):
-                    switch result {
-                    case let .success(data):
-                        Grid(
-                            alignment: .leadingFirstTextBaseline,
-                            horizontalSpacing: 3,
-                            verticalSpacing: 2
-                        ) {
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.resin"))")
-                                    .widgetAccentable()
-                                    .foregroundColor(Color("iconColor.resin"))
-                                Text("\(data.resinInfo.currentResin)")
-                                Spacer()
-                                Text("\(Image("icon.expedition"))")
-                                    .widgetAccentable()
-                                    .foregroundColor(
-                                        Color("iconColor.expedition")
-                                    )
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.expeditionInfo.currentOngoingTask)"
-                                    )
-                                    Text(
-                                        " / \(data.expeditionInfo.maxExpedition)"
-                                    )
-                                    .font(.caption)
-                                }
-                                Spacer()
+                switch result {
+                case let .success(data):
+                    Grid(
+                        alignment: .leadingFirstTextBaseline,
+                        horizontalSpacing: 3,
+                        verticalSpacing: 2
+                    ) {
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.resin"))")
+                                .widgetAccentable()
+                                .foregroundColor(Color("iconColor.resin"))
+                            Text("\(data.resinInformation.calculatedCurrentResin(referTo: entry.date))")
+                            Spacer()
+                            Text("\(Image("icon.expedition"))")
+                                .widgetAccentable()
+                                .foregroundColor(
+                                    Color("iconColor.expedition")
+                                )
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
+                                Text(
+                                    "\(data.expeditionInformation.ongoingExpeditionCount)"
+                                )
+                                Text(
+                                    " / \(data.expeditionInformation.maxExpeditionsCount)"
+                                )
+                                .font(.caption)
                             }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.homeCoin"))")
-                                    .widgetAccentable()
-                                    .foregroundColor(
-                                        Color("iconColor.homeCoin")
-                                    )
-                                Text("\(data.homeCoinInfo.currentHomeCoin)")
-                                Spacer()
-                                Text("\(Image("icon.dailyTask"))")
-                                    .foregroundColor(
-                                        Color("iconColor.dailyTask")
-                                    )
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.dailyTaskInfo.finishedTaskNum)"
-                                    )
-                                    Text(
-                                        " / \(data.dailyTaskInfo.totalTaskNum)"
-                                    )
-                                    .font(.caption)
-                                }
+                            Spacer()
+                        }
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.homeCoin"))")
+                                .widgetAccentable()
+                                .foregroundColor(
+                                    Color("iconColor.homeCoin")
+                                )
+                            Text("\(data.homeCoinInformation.calculatedCurrentHomeCoin(referTo: entry.date))")
+                            Spacer()
+                            Text("\(Image("icon.dailyTask"))")
+                                .foregroundColor(
+                                    Color("iconColor.dailyTask")
+                                )
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
+                                Text(
+                                    "\(data.dailyTaskInformation.finishedTaskCount)"
+                                )
+                                Text(
+                                    " / \(data.dailyTaskInformation.totalTaskCount)"
+                                )
+                                .font(.caption)
                             }
+                        }
+                        if let data = data as? GeneralDailyNote {
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.transformer"))")
                                     .foregroundColor(
                                         Color("iconColor.transformer")
                                     )
                                     .widgetAccentable()
-                                Text(
-                                    data.transformerInfo.recoveryTime
-                                        .describeIntervalShort(
-                                            finishedTextPlaceholder: "infoBlock.transformerAvailable"
-                                        )
-                                )
+                                let day = Calendar.current.dateComponents(
+                                    [.day],
+                                    from: Date(),
+                                    to: data.transformerInformation.recoveryTime
+                                ).day!
+                                Text("\(day)天")
                                 Spacer()
                                 Text("\(Image("icon.weeklyBosses"))")
                                     .widgetAccentable()
@@ -391,301 +296,130 @@ struct LockScreenAllInfoWidgetView: View {
                                     spacing: 0
                                 ) {
                                     Text(
-                                        "\(data.weeklyBossesInfo.hasUsedResinDiscountNum)"
+                                        "\(data.weeklyBossesInformation.remainResinDiscount)"
                                     )
                                     Text(
-                                        " / \(data.weeklyBossesInfo.resinDiscountNumLimit)"
+                                        " / \(data.weeklyBossesInformation.totalResinDiscount)"
                                     )
                                     .font(.caption)
                                 }
                                 Spacer()
                             }
                         }
-                    case .failure:
-                        Grid(
-                            alignment: .leadingFirstTextBaseline,
-                            horizontalSpacing: 3,
-                            verticalSpacing: 2
-                        ) {
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.resin"))")
-                                    .widgetAccentable()
-                                Text(Image(systemSymbol: .ellipsis))
-                                Spacer()
-                                Text("\(Image("icon.expedition"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                                Spacer()
-                            }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.homeCoin"))")
-                                    .widgetAccentable()
-                                Text("\(Image(systemSymbol: .ellipsis))")
-                                Spacer()
-                                Text("\(Image("icon.dailyTask"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                            }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.transformer"))")
-                                    .widgetAccentable()
-                                Text(Image(systemSymbol: .ellipsis))
-                                Spacer()
-                                Text("\(Image("icon.weeklyBosses"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                                Spacer()
-                            }
-                        }
-                        .foregroundColor(.gray)
                     }
-                case let .simplified(result):
-                    switch result {
-                    case let .success(data):
-                        Grid(
-                            alignment: .leadingFirstTextBaseline,
-                            horizontalSpacing: 3,
-                            verticalSpacing: 2
-                        ) {
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.resin"))")
-                                    .widgetAccentable()
-                                    .foregroundColor(Color("iconColor.resin"))
-                                Text("\(data.resinInfo.currentResin)")
-                                Spacer()
-                                Text("\(Image("icon.expedition"))")
-                                    .widgetAccentable()
-                                    .foregroundColor(
-                                        Color("iconColor.expedition")
-                                    )
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.expeditionInfo.currentOngoingTask)"
-                                    )
-                                    Text(
-                                        " / \(data.expeditionInfo.maxExpedition)"
-                                    )
-                                    .font(.caption)
-                                }
-                                Spacer()
+                case .failure:
+                    Grid(
+                        alignment: .leadingFirstTextBaseline,
+                        horizontalSpacing: 3,
+                        verticalSpacing: 2
+                    ) {
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.resin"))")
+                                .widgetAccentable()
+                            Text(Image(systemSymbol: .ellipsis))
+                            Spacer()
+                            Text("\(Image("icon.expedition"))")
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
+                                Text(Image(systemSymbol: .ellipsis))
                             }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.homeCoin"))")
-                                    .widgetAccentable()
-                                    .foregroundColor(
-                                        Color("iconColor.homeCoin")
-                                    )
-                                Text("\(data.homeCoinInfo.currentHomeCoin)")
-                                Spacer()
-                                Text("\(Image("icon.dailyTask"))")
-                                    .foregroundColor(
-                                        Color("iconColor.dailyTask")
-                                    )
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.dailyTaskInfo.finishedTaskNum)"
-                                    )
-                                    Text(
-                                        " / \(data.dailyTaskInfo.totalTaskNum)"
-                                    )
-                                    .font(.caption)
-                                }
+                            Spacer()
+                        }
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.homeCoin"))")
+                                .widgetAccentable()
+                            Text("\(Image(systemSymbol: .ellipsis))")
+                            Spacer()
+                            Text("\(Image("icon.dailyTask"))")
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
+                                Text(Image(systemSymbol: .ellipsis))
                             }
                         }
-                    case .failure:
-                        Grid(
-                            alignment: .leadingFirstTextBaseline,
-                            horizontalSpacing: 3,
-                            verticalSpacing: 2
-                        ) {
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.resin"))")
-                                    .widgetAccentable()
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.transformer"))")
+                                .widgetAccentable()
+                            Text(Image(systemSymbol: .ellipsis))
+                            Spacer()
+                            Text("\(Image("icon.weeklyBosses"))")
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
                                 Text(Image(systemSymbol: .ellipsis))
-                                Spacer()
-                                Text("\(Image("icon.expedition"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                                Spacer()
                             }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.homeCoin"))")
-                                    .widgetAccentable()
-                                Text("\(Image(systemSymbol: .ellipsis))")
-                                Spacer()
-                                Text("\(Image("icon.dailyTask"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                            }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.transformer"))")
-                                    .widgetAccentable()
-                                Text(Image(systemSymbol: .ellipsis))
-                                Spacer()
-                                Text("\(Image("icon.weeklyBosses"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                                Spacer()
-                            }
+                            Spacer()
                         }
-                        .foregroundColor(.gray)
                     }
+                    .foregroundColor(.gray)
                 }
 
             default:
-                switch dataKind {
-                case let .normal(result):
-                    switch result {
-                    case let .success(data):
-                        Grid(
-                            alignment: .leadingFirstTextBaseline,
-                            horizontalSpacing: 3,
-                            verticalSpacing: 2
-                        ) {
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.resin"))")
-                                    .widgetAccentable()
-                                Text("\(data.resinInfo.currentResin)")
-                                Spacer()
-                                Text("\(Image("icon.expedition"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.expeditionInfo.currentOngoingTask)"
-                                    )
-                                    Text(
-                                        " / \(data.expeditionInfo.maxExpedition)"
-                                    )
-                                    .font(.caption)
-                                }
-                                Spacer()
-                            }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.homeCoin"))")
-                                    .widgetAccentable()
-                                Text("\(data.homeCoinInfo.currentHomeCoin)")
-                                Spacer()
-                                Text("\(Image("icon.dailyTask"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.dailyTaskInfo.finishedTaskNum)"
-                                    )
-                                    Text(
-                                        " / \(data.dailyTaskInfo.totalTaskNum)"
-                                    )
-                                    .font(.caption)
-                                }
-                            }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.transformer"))")
-                                    .widgetAccentable()
+                switch result {
+                case let .success(data):
+                    Grid(
+                        alignment: .leadingFirstTextBaseline,
+                        horizontalSpacing: 3,
+                        verticalSpacing: 2
+                    ) {
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.resin"))")
+                                .widgetAccentable()
+                            Text("\(data.resinInformation.calculatedCurrentResin(referTo: entry.date))")
+                            Spacer()
+                            Text("\(Image("icon.expedition"))")
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
                                 Text(
-                                    data.transformerInfo.recoveryTime
-                                        .describeIntervalShort(
-                                            finishedTextPlaceholder: "infoBlock.transformerAvailable"
-                                        )
+                                    "\(data.expeditionInformation.ongoingExpeditionCount)"
                                 )
-                                Spacer()
-                                Text("\(Image("icon.weeklyBosses"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.weeklyBossesInfo.hasUsedResinDiscountNum)"
-                                    )
-                                    Text(
-                                        " / \(data.weeklyBossesInfo.resinDiscountNumLimit)"
-                                    )
-                                    .font(.caption)
-                                }
-                                Spacer()
+                                Text(
+                                    " / \(data.expeditionInformation.maxExpeditionsCount)"
+                                )
+                                .font(.caption)
+                            }
+                            Spacer()
+                        }
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.homeCoin"))")
+                                .widgetAccentable()
+                            Text("\(data.homeCoinInformation.calculatedCurrentHomeCoin(referTo: entry.date))")
+                            Spacer()
+                            Text("\(Image("icon.dailyTask"))")
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
+                                Text(
+                                    "\(data.dailyTaskInformation.finishedTaskCount)"
+                                )
+                                Text(
+                                    " / \(data.dailyTaskInformation.totalTaskCount)"
+                                )
+                                .font(.caption)
                             }
                         }
-                    case .failure:
-                        Grid(
-                            alignment: .leadingFirstTextBaseline,
-                            horizontalSpacing: 3,
-                            verticalSpacing: 2
-                        ) {
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.resin"))")
-                                    .widgetAccentable()
-                                Text(Image(systemSymbol: .ellipsis))
-                                Spacer()
-                                Text("\(Image("icon.expedition"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                                Spacer()
-                            }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.homeCoin"))")
-                                    .widgetAccentable()
-                                Text("\(Image(systemSymbol: .ellipsis))")
-                                Spacer()
-                                Text("\(Image("icon.dailyTask"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                            }
+                        if let data = data as? GeneralDailyNote {
                             GridRow(alignment: .lastTextBaseline) {
                                 Text("\(Image("icon.transformer"))")
                                     .widgetAccentable()
-                                Text(Image(systemSymbol: .ellipsis))
+                                let day = Calendar.current.dateComponents(
+                                    [.day],
+                                    from: Date(),
+                                    to: data.transformerInformation.recoveryTime
+                                ).day!
+                                Text("\(day)天")
                                 Spacer()
                                 Text("\(Image("icon.weeklyBosses"))")
                                     .widgetAccentable()
@@ -693,101 +427,70 @@ struct LockScreenAllInfoWidgetView: View {
                                     alignment: .lastTextBaseline,
                                     spacing: 0
                                 ) {
-                                    Text(Image(systemSymbol: .ellipsis))
+                                    Text(
+                                        "\(data.weeklyBossesInformation.remainResinDiscount)"
+                                    )
+                                    Text(
+                                        " / \(data.weeklyBossesInformation.totalResinDiscount)"
+                                    )
+                                    .font(.caption)
                                 }
                                 Spacer()
                             }
                         }
-                        .foregroundColor(.gray)
                     }
-                case let .simplified(result):
-                    switch result {
-                    case let .success(data):
-                        Grid(
-                            alignment: .leadingFirstTextBaseline,
-                            horizontalSpacing: 3,
-                            verticalSpacing: 2
-                        ) {
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.resin"))")
-                                    .widgetAccentable()
-                                Text("\(data.resinInfo.currentResin)")
-                                Spacer()
-                                Text("\(Image("icon.expedition"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.expeditionInfo.currentOngoingTask)"
-                                    )
-                                    Text(
-                                        " / \(data.expeditionInfo.maxExpedition)"
-                                    )
-                                    .font(.caption)
-                                }
-                                Spacer()
-                            }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.homeCoin"))")
-                                    .widgetAccentable()
-                                Text("\(data.homeCoinInfo.currentHomeCoin)")
-                                Spacer()
-                                Text("\(Image("icon.dailyTask"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(
-                                        "\(data.dailyTaskInfo.finishedTaskNum)"
-                                    )
-                                    Text(
-                                        " / \(data.dailyTaskInfo.totalTaskNum)"
-                                    )
-                                    .font(.caption)
-                                }
-                            }
-                        }
-                    case .failure:
-                        Grid(
-                            alignment: .leadingFirstTextBaseline,
-                            horizontalSpacing: 3,
-                            verticalSpacing: 2
-                        ) {
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.resin"))")
-                                    .widgetAccentable()
+                case .failure:
+                    Grid(
+                        alignment: .leadingFirstTextBaseline,
+                        horizontalSpacing: 3,
+                        verticalSpacing: 2
+                    ) {
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.resin"))")
+                                .widgetAccentable()
+                            Text(Image(systemSymbol: .ellipsis))
+                            Spacer()
+                            Text("\(Image("icon.expedition"))")
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
                                 Text(Image(systemSymbol: .ellipsis))
-                                Spacer()
-                                Text("\(Image("icon.expedition"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
-                                Spacer()
                             }
-                            GridRow(alignment: .lastTextBaseline) {
-                                Text("\(Image("icon.homeCoin"))")
-                                    .widgetAccentable()
-                                Text("\(Image(systemSymbol: .ellipsis))")
-                                Spacer()
-                                Text("\(Image("icon.dailyTask"))")
-                                    .widgetAccentable()
-                                HStack(
-                                    alignment: .lastTextBaseline,
-                                    spacing: 0
-                                ) {
-                                    Text(Image(systemSymbol: .ellipsis))
-                                }
+                            Spacer()
+                        }
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.homeCoin"))")
+                                .widgetAccentable()
+                            Text("\(Image(systemSymbol: .ellipsis))")
+                            Spacer()
+                            Text("\(Image("icon.dailyTask"))")
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
+                                Text(Image(systemSymbol: .ellipsis))
                             }
                         }
-                        .foregroundColor(.gray)
+                        GridRow(alignment: .lastTextBaseline) {
+                            Text("\(Image("icon.transformer"))")
+                                .widgetAccentable()
+                            Text(Image(systemSymbol: .ellipsis))
+                            Spacer()
+                            Text("\(Image("icon.weeklyBosses"))")
+                                .widgetAccentable()
+                            HStack(
+                                alignment: .lastTextBaseline,
+                                spacing: 0
+                            ) {
+                                Text(Image(systemSymbol: .ellipsis))
+                            }
+                            Spacer()
+                        }
                     }
+                    .foregroundColor(.gray)
                 }
             }
         }

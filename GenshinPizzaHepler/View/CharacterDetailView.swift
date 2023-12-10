@@ -12,35 +12,31 @@ import SwiftUI
 struct CharacterDetailView: View {
     // MARK: Internal
 
-    @EnvironmentObject
-    var viewModel: ViewModel
-    var account: Account
+    var account: AccountConfiguration
+
     @State
     var showingCharacterName: String
-    var animation: Namespace.ID
 
     @State
     var showTabViewIndex: Bool = false
     @State
     var showWaterMark: Bool = true
 
-    var playerDetail: PlayerDetail? { try? account.playerDetailResult?.get() }
+    var playerDetail: PlayerDetail
+
+    let closeView: () -> ()
+
     var avatar: PlayerDetail.Avatar? {
-        playerDetail?.avatars.first(where: { avatar in
+        playerDetail.avatars.first(where: { avatar in
             avatar.name == showingCharacterName
         })
     }
 
     var body: some View {
-        if let playerDetail = playerDetail {
-            coreBody(detail: playerDetail).environmentObject(orientation)
-                .overlay(alignment: .top) {
-                    HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
-                }
-        } else {
-            Text("账号未展示角色")
-                .foregroundColor(.secondary)
-        }
+        coreBody(detail: playerDetail).environmentObject(orientation)
+            .overlay(alignment: .top) {
+                HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
+            }
     }
 
     var bottomSpacerHeight: CGFloat {
@@ -122,8 +118,7 @@ struct CharacterDetailView: View {
         VStack {
             Spacer().frame(width: 25, height: 10)
             EachCharacterDetailDataView(
-                avatar: avatar,
-                animation: animation
+                avatar: avatar
             ).frame(minWidth: 620, maxWidth: 830) // For iPad
                 .frame(width: condenseHorizontally ? 620 : nil)
                 .fixedSize(
@@ -132,18 +127,6 @@ struct CharacterDetailView: View {
                 )
                 .scaleEffect(scaleRatioCompatible)
             Spacer().frame(width: 25, height: bottomSpacerHeight)
-        }
-    }
-
-    func closeView() {
-        simpleTaptic(type: .light)
-        withAnimation(.interactiveSpring(
-            response: 0.25,
-            dampingFraction: 1.0,
-            blendDuration: 0
-        )) {
-            viewModel.showCharacterDetailOfAccount = nil
-            viewModel.showingCharacterName = nil
         }
     }
 

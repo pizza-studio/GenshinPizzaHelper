@@ -5,16 +5,16 @@
 //  Created by 戴藏龙 on 2022/8/7.
 //
 
-import HBMihoyoAPI
+import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
 struct DailyTaskInfoBar: View {
-    let dailyTaskInfo: DailyTaskInfo
+    let dailyTaskInfo: DailyTaskInformation
 
     var isTaskRewardReceivedImage: some View {
-        if !dailyTaskInfo.isTaskRewardReceived {
-            if dailyTaskInfo.finishedTaskNum == dailyTaskInfo.totalTaskNum {
+        if !dailyTaskInfo.isExtraRewardReceived {
+            if dailyTaskInfo.finishedTaskCount == dailyTaskInfo.totalTaskCount {
                 return Image(systemSymbol: .exclamationmark)
                     .overlayImageWithRingProgressBar(1.0, scaler: 0.78)
             } else {
@@ -41,18 +41,18 @@ struct DailyTaskInfoBar: View {
                 .foregroundColor(Color("textColor3"))
 
             HStack(alignment: .lastTextBaseline, spacing: 1) {
-                Text("\(dailyTaskInfo.finishedTaskNum)")
+                Text("\(dailyTaskInfo.finishedTaskCount)")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.body, design: .rounded))
                     .minimumScaleFactor(0.2)
-                Text(" / \(dailyTaskInfo.totalTaskNum)")
+                Text(" / \(dailyTaskInfo.totalTaskCount)")
                     .lineLimit(1)
                     .foregroundColor(Color("textColor3"))
                     .font(.system(.caption, design: .rounded))
                     .minimumScaleFactor(0.2)
-                if !dailyTaskInfo.isTaskRewardReceived,
-                   dailyTaskInfo.finishedTaskNum == dailyTaskInfo.totalTaskNum {
+                if !dailyTaskInfo.isExtraRewardReceived,
+                   dailyTaskInfo.finishedTaskCount == dailyTaskInfo.totalTaskCount {
                     Text("（未领取）")
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.caption, design: .rounded))

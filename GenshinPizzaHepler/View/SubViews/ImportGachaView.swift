@@ -72,7 +72,7 @@ struct ImportGachaView: View {
                         processXlsx(url: url)
                     }
                 })
-                Button("取消", role: .cancel, action: { alert = nil })
+                Button("sys.cancel", role: .cancel, action: { alert = nil })
 
             },
             message: { _ in
@@ -357,7 +357,7 @@ private struct HelpSheet: View {
     var isShow: Bool
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     Link(destination: URL(string: "https://gi.pizzastudio.org/static/import_tiwatexiaozhushou")!) {
@@ -411,12 +411,11 @@ private struct HelpSheet: View {
                     Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
                 }
             }
-            .sectionSpacing(UIFont.systemFontSize)
             .navigationTitle("导入帮助")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("完成") {
+                    Button("sys.done") {
                         isShow.toggle()
                     }
                 }
@@ -469,7 +468,6 @@ private struct StatusView<V: View>: View {
                 FailureView(status: $status, errorMessage: string)
             }
         }
-        .sectionSpacing(UIFont.systemFontSize)
     }
 }
 

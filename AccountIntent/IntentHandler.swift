@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HoYoKit
 import Intents
 
 // MARK: - IntentHandler

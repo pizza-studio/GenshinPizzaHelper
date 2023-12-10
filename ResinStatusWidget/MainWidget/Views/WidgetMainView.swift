@@ -5,14 +5,15 @@
 //  Created by 戴藏龙 on 2022/8/7.
 //  Widget总体布局分类
 
-import HBMihoyoAPI
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
 struct WidgetMainView: View {
+    let entry: any TimelineEntry
     @Environment(\.widgetFamily)
     var family: WidgetFamily
-    var userData: UserData
+    var dailyNote: any DailyNote
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
 
@@ -20,26 +21,30 @@ struct WidgetMainView: View {
         switch family {
         case .systemSmall:
             MainInfo(
-                userData: userData,
+                entry: entry,
+                dailyNote: dailyNote,
                 viewConfig: viewConfig,
                 accountName: viewConfig.showAccountName ? accountName : nil
             )
             .padding()
         case .systemMedium:
             MainInfoWithDetail(
-                userData: userData,
+                entry: entry,
+                dailyNote: dailyNote,
                 viewConfig: viewConfig,
                 accountName: viewConfig.showAccountName ? accountName : nil
             )
         case .systemLarge:
             LargeWidgetView(
-                userData: userData,
+                entry: entry,
+                dailyNote: dailyNote,
                 viewConfig: viewConfig,
                 accountName: viewConfig.showAccountName ? accountName : nil
             )
         default:
             MainInfoWithDetail(
-                userData: userData,
+                entry: entry,
+                dailyNote: dailyNote,
                 viewConfig: viewConfig,
                 accountName: viewConfig.showAccountName ? accountName : nil
             )

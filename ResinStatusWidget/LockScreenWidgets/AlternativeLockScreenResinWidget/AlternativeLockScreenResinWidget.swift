@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
@@ -23,7 +24,7 @@ struct AlternativeLockScreenResinWidget: Widget {
             AlternativeLockScreenResinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("原粹树脂")
+        .configurationDisplayName("app.dailynote.card.resin.label")
         .description("另一种样式的原粹树脂小组件")
         .supportedFamilies([.accessoryCircular])
     }
@@ -37,7 +38,7 @@ struct AlternativeLockScreenResinWidgetView: View {
     var family: WidgetFamily
     let entry: LockScreenWidgetProvider.Entry
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: Result<any DailyNote, any Error> { entry.result }
     var accountName: String? { entry.accountName }
 
     var url: URL? {
@@ -54,33 +55,16 @@ struct AlternativeLockScreenResinWidgetView: View {
             return components.url!
         }()
 
-        switch entry.widgetDataKind {
-        case let .normal(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
-        case let .simplified(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
         }
     }
 
     var body: some View {
-        Group {
-            switch dataKind {
-            case let .normal(result):
-                AlternativeLockScreenResinWidgetCircular(result: result)
-            case let .simplified(result):
-                AlternativeLockScreenResinWidgetCircular(result: result)
-            }
-        }
-        .widgetURL(url)
+        AlternativeLockScreenResinWidgetCircular(entry: entry, result: result)
+            .widgetURL(url)
     }
 }

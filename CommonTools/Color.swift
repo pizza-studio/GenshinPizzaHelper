@@ -56,4 +56,8 @@ extension Color {
             additionalBrightness: added
         ))
     }
+
+    static var accessibilityAccent: Color {
+        Color.accentColor.addSaturation(-0.5)
+    }
 }

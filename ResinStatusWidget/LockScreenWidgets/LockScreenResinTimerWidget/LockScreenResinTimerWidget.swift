@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/11/25.
 //
 
+import HoYoKit
 import SwiftUI
 import WidgetKit
 
@@ -44,23 +45,13 @@ struct LockScreenResinTimerWidgetView: View {
         switch family {
         case .accessoryCircular:
             Group {
-                switch dataKind {
-                case let .normal(result):
-                    LockScreenResinTimerWidgetCircular(result: result)
-                case let .simplified(result):
-                    LockScreenResinTimerWidgetCircular(result: result)
-                }
+                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
             }
             .widgetURL(url)
         #if os(watchOS)
         case .accessoryCorner:
             Group {
-                switch dataKind {
-                case let .normal(result):
-                    LockScreenResinTimerWidgetCircular(result: result)
-                case let .simplified(result):
-                    LockScreenResinTimerWidgetCircular(result: result)
-                }
+                LockScreenResinTimerWidgetCircular(entry: entry, result: result)
             }
             .widgetURL(url)
         #endif
@@ -69,7 +60,7 @@ struct LockScreenResinTimerWidgetView: View {
         }
     }
 
-    var dataKind: WidgetDataKind { entry.widgetDataKind }
+    var result: Result<any DailyNote, any Error> { entry.result }
     var accountName: String? { entry.accountName }
 
     var url: URL? {
@@ -86,21 +77,11 @@ struct LockScreenResinTimerWidgetView: View {
             return components.url!
         }()
 
-        switch entry.widgetDataKind {
-        case let .normal(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
-        case let .simplified(result):
-            switch result {
-            case .success:
-                return nil
-            case .failure:
-                return errorURL
-            }
+        switch result {
+        case .success:
+            return nil
+        case .failure:
+            return errorURL
         }
     }
 }
