@@ -149,8 +149,10 @@ struct ContentView: View {
                 .interactiveDismissDisabled()
             case .accountSetting:
                 NavigationStack {
-                    EditAccountView(account: settingForAccount!)
-                        .dismissableSheet(sheet: $sheetType)
+                    List {
+                        EditAccountView(account: settingForAccount!)
+                    }
+                    .dismissableSheet(sheet: $sheetType)
                 }
             }
         }
