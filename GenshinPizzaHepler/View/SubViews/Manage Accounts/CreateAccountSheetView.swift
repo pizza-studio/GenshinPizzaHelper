@@ -228,7 +228,7 @@ private struct RequireLoginView: View {
         } label: {
             Group {
                 if unsavedCookie == "" || unsavedCookie == nil {
-                    Text("account.label.login")
+                    Text("settings.account.loginViaMiyousheOrHoyoLab")
                 } else {
                     Text("settings.account.reloginHoyoLabAccount")
                 }
