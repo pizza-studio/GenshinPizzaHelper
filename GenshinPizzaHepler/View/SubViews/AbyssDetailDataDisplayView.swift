@@ -80,6 +80,9 @@ struct AbyssDetailDataDisplayView: View {
                 .overlay(.ultraThinMaterial)
         }
         .navigationTitle("深境螺旋详情")
+        .toolbarSavePhotoButton(visible: !data.rankDataMissing) {
+            AbyssShareView(data: data)
+        }
     }
 }
 
@@ -318,5 +321,13 @@ private struct ShareAbyssFloorView: View {
             }
         }
         .padding()
+        .foregroundStyle(.white)
+        .background {
+            EnkaWebIcon(iconString: NameCard.UI_NameCardPic_Sj1_P.fileName)
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+                .overlay(.ultraThinMaterial)
+        }
+        .environment(\.colorScheme, .dark)
     }
 }

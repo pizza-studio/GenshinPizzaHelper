@@ -128,7 +128,7 @@
 		5BD1C5EA2A2A1FC90043C2B1 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
 		5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */; };
 		5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8329D2834E0075F780 /* GachaItemManager.swift */; };
-		5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharableInIOS16.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */; };
+		5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharable.swift */; };
 		5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
 		5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
 		5BD1C5F12A2A1FC90043C2B1 /* ThisDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */; };
@@ -468,7 +468,7 @@
 		EA06373128CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */; };
 		EA0718C329059602009D4730 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
 		EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07C65528B11DB40030E338 /* NotificationSettingView.swift */; };
-		EA081EFC28F85040009433D8 /* ToolbarSharableInIOS16.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */; };
+		EA081EFC28F85040009433D8 /* ToolbarSharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharable.swift */; };
 		EA099FF528A2B7220023B4AF /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA099FF428A2B7220023B4AF /* Intents.framework */; };
 		EA099FFC28A2B7220023B4AF /* AccountIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
@@ -1080,7 +1080,7 @@
 		EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCorner.swift; sourceTree = "<group>"; };
 		EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-NoWatch.xcassets"; sourceTree = "<group>"; };
 		EA07C65528B11DB40030E338 /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
-		EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarSharableInIOS16.swift; sourceTree = "<group>"; };
+		EA081EFB28F85040009433D8 /* ToolbarSharable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarSharable.swift; sourceTree = "<group>"; };
 		EA099FF328A2B7220023B4AF /* AccountIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccountIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA099FF428A2B7220023B4AF /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		EA099FF928A2B7220023B4AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1694,7 +1694,7 @@
 			children = (
 				EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */,
 				EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */,
-				EA081EFB28F85040009433D8 /* ToolbarSharableInIOS16.swift */,
+				EA081EFB28F85040009433D8 /* ToolbarSharable.swift */,
 				EA5232282903E0D6007A4CF4 /* ReverseMask.swift */,
 				EA459DA4290CF47700E74F76 /* DismissableSheet.swift */,
 				EAD29446290E717A00716EF7 /* HideTabBar.swift */,
@@ -2621,7 +2621,7 @@
 				5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */,
 				EA759D722B19989A0080C775 /* GetCookieWebView.swift in Sources */,
 				5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */,
-				5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharableInIOS16.swift in Sources */,
+				5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharable.swift in Sources */,
 				5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */,
 				5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */,
 				5BD1C5F12A2A1FC90043C2B1 /* ThisDevice.swift in Sources */,
@@ -3108,7 +3108,7 @@
 				EA759D762B199A2C0080C775 /* Server+Descriptable.swift in Sources */,
 				5BE5D99C2ACB0956009A732C /* AccountManagementView.swift in Sources */,
 				EA025C8429D2834E0075F780 /* GachaItemManager.swift in Sources */,
-				EA081EFC28F85040009433D8 /* ToolbarSharableInIOS16.swift in Sources */,
+				EA081EFC28F85040009433D8 /* ToolbarSharable.swift in Sources */,
 				BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
 				EA1C2CE328F07C1E00E4C28A /* ThisDevice.swift in Sources */,

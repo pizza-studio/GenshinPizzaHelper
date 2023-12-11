@@ -328,7 +328,7 @@ struct AbyssDataCollectionView: View {
                 }
             }
         }
-        .toolbarSavePhotoButtonInIOS16 {
+        .toolbarSavePhotoButton {
             shareView()
         }
         .sheet(isPresented: $isWebSheetShow) {

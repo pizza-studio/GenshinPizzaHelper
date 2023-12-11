@@ -9,16 +9,18 @@ import SFSafeSymbols
 import SwiftUI
 
 extension View {
-    func toolbarSavePhotoButtonInIOS16<ViewToRender: View>(
+    func toolbarSavePhotoButton<ViewToRender: View>(
         title: String = "保存".localized,
         placement: ToolbarItemPlacement = .navigationBarTrailing,
+        visible: Bool = true,
         viewToShare: @escaping () -> ViewToRender
     )
         -> some View {
         modifier(ToolbarSavePhotoButton(
             viewToRender: viewToShare,
             placement: placement,
-            title: title
+            title: title,
+            isButtonShown: visible
         ))
     }
 }
@@ -31,11 +33,13 @@ struct ToolbarSavePhotoButton<ViewToRender: View>: ViewModifier {
     init(
         @ViewBuilder viewToRender: @escaping () -> ViewToRender,
         placement: ToolbarItemPlacement = .navigationBarTrailing,
-        title: String
+        title: String,
+        isButtonShown: Bool = true
     ) {
         self.viewToRender = viewToRender()
         self.placement = placement
         self.title = title
+        self.isButtonShown = isButtonShown
     }
 
     // MARK: Internal
@@ -46,10 +50,10 @@ struct ToolbarSavePhotoButton<ViewToRender: View>: ViewModifier {
     let title: String
 
     @State
-    var isAlertShow: Bool = false
+    var isButtonShown: Bool = true
 
     func body(content: Content) -> some View {
-        if #available(iOS 16, *) {
+        if isButtonShown {
             content
                 .toolbar {
                     ToolbarItem(placement: placement) {
