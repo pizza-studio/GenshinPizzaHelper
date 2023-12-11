@@ -449,6 +449,9 @@ struct DetailPortalView: View {
                         AbyssInfoNavigator(account: account, status: detailPortalViewModel.spiralAbyssDetailStatus)
                         LedgerDataNavigator(account: account, status: detailPortalViewModel.ledgerDataStatus)
                         BasicInfoNavigator(account: account, status: detailPortalViewModel.basicInfoStatus)
+//                        VerificationNeededView(account: account) {
+//                            detailPortalViewModel.refresh()
+//                        }
                     }
                     .listRowMaterialBackground()
                 }
@@ -1432,44 +1435,48 @@ private struct VerificationNeededView: View {
     }
 
     var body: some View {
-        Button {
-            status = .progressing
-            popVerificationWebSheet()
-        } label: {
-            Label {
-                Text("account.test.verify.button")
-            } icon: {
-                Image(systemSymbol: .exclamationmarkTriangle)
-                    .foregroundStyle(.yellow)
-            }
-        }
-        .disabled(disableButton)
-        .sheet(item: $sheetItem, content: { item in
-            switch item {
-            case let .gotVerification(verification):
-                NavigationStack {
-                    GeetestValidateView(
-                        challenge: verification.challenge,
-                        gt: verification.gt,
-                        completion: { validate in
-                            status = .pending
-                            verifyValidate(challenge: verification.challenge, validate: validate)
-                            sheetItem = nil
-                        }
-                    )
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button("sys.cancel") {
-                                sheetItem = nil
-                            }
-                        }
-                    }
-                    .navigationTitle("account.test.verify.web_sheet.title")
+        VStack {
+            Button {
+                status = .progressing
+                popVerificationWebSheet()
+            } label: {
+                Label {
+                    Text("account.test.verify.button")
+                } icon: {
+                    Image(systemSymbol: .exclamationmarkTriangle)
+                        .foregroundStyle(.yellow)
                 }
             }
-        })
-        if case let .fail(error) = status {
-            Text("Error: \(error.localizedDescription)")
+            .disabled(disableButton)
+            .sheet(item: $sheetItem, content: { item in
+                switch item {
+                case let .gotVerification(verification):
+                    NavigationStack {
+                        GeetestValidateView(
+                            challenge: verification.challenge,
+                            gt: verification.gt,
+                            completion: { validate in
+                                DispatchQueue.main.async {
+                                    status = .pending
+                                    verifyValidate(challenge: verification.challenge, validate: validate)
+                                    sheetItem = nil
+                                }
+                            }
+                        )
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button("sys.cancel") {
+                                    sheetItem = nil
+                                }
+                            }
+                        }
+                        .navigationTitle("account.test.verify.web_sheet.title")
+                    }
+                }
+            })
+            if case let .fail(error) = status {
+                Text("Error: \(error.localizedDescription)")
+            }
         }
     }
 
@@ -1480,8 +1487,10 @@ private struct VerificationNeededView: View {
                     cookie: account.safeCookie,
                     deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
                 )
-                status = .gotVerification(verification)
-                sheetItem = .gotVerification(verification)
+                DispatchQueue.main.async {
+                    status = .gotVerification(verification)
+                    sheetItem = .gotVerification(verification)
+                }
             } catch {
                 status = .fail(error)
             }
