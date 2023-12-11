@@ -83,25 +83,14 @@ struct ContentView: View {
         colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 
-    var toolbarColorScheme: ColorScheme {
-        switch selection {
-        case 0, 1:
-            .dark
-        default:
-            colorScheme
-        }
-    }
-
     var body: some View {
         TabView(selection: index) {
             HomeView()
-                .tint(.accessibilityAccent)
                 .tag(0)
                 .tabItem {
                     Label("app.home.title", systemSymbol: .listBullet)
                 }
             DetailPortalView()
-                .tint(.accessibilityAccent)
                 .tag(1)
                 .tabItem {
                     Label("app.detailPortal.title", systemSymbol: .personTextRectangle)
@@ -117,7 +106,9 @@ struct ContentView: View {
                     Label("nav.category.settings.name", systemSymbol: .gear)
                 }
         }
-        .environment(\.colorScheme, toolbarColorScheme)
+        .tint(.accessibilityAccent)
+        // 下面这一行不需要，因为已经在 info.plist 当中针对 App 全局锁定 dark 模式、更有效。
+        // .environment(\.colorScheme, .dark)
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
             case .active:
