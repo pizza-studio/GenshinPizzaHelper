@@ -142,15 +142,21 @@ private struct AbyssLevelView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 0) {
-                Text("第\(levelData.index)间")
-                    .font(.subheadline)
-                    .bold()
-                Spacer()
                 if ThisDevice.isSmallestSlideOverWindowWidth || ThisDevice.isSmallestHDScreenPhone {
+                    Text("第\(levelData.index)间")
+                        .font(.subheadline)
+                        .bold()
+                        .frame(minHeight: 20)
+                    Spacer()
                     ForEach(0 ..< levelData.star, id: \.self) { _ in
                         Text(verbatim: "✶")
                     }
                 } else {
+                    Text("第\(levelData.index)间")
+                        .font(.subheadline)
+                        .bold()
+                        .frame(minHeight: 25)
+                    Spacer()
                     ForEach(0 ..< levelData.star, id: \.self) { _ in
                         AbyssStarIcon()
                             .frame(width: 25, height: 25)
