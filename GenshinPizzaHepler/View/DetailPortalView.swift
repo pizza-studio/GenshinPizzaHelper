@@ -175,7 +175,11 @@ final class DetailPortalViewModel: ObservableObject {
                 }
             }
         }
-        basicInfoStatus = .progress(task)
+        DispatchQueue.main.async {
+            withAnimation {
+                self.basicInfoStatus = .progress(task)
+            }
+        }
     }
 
     func fetchSpiralAbyssInfo() {
@@ -1471,6 +1475,7 @@ private struct VerificationNeededView: View {
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Button("sys.cancel") {
+                                    status = .pending
                                     sheetItem = nil
                                 }
                             }
