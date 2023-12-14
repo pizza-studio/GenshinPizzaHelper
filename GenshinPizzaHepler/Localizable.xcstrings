@@ -49348,62 +49348,62 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "All ongoing events"
+            "state" : "needs_review",
+            "value" : "All"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lahat ng events ngayon"
+            "value" : "Lahat"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All ongoing events"
+            "value" : "Tout"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All ongoing events"
+            "value" : "Tutti"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "全てのイベント"
+            "value" : "すべて"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All ongoing events"
+            "value" : "모두"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Все проходящие события"
+            "value" : "Все"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tất Cả Sự Kiện Đang Diễn Ra"
+            "value" : "Tất cả"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "查看全部活动"
+            "value" : "全部"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "檢視全部活動"
+            "state" : "needs_review",
+            "value" : "全部"
           }
         }
       }

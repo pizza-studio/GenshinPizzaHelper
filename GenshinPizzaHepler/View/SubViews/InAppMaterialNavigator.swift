@@ -101,9 +101,11 @@ struct InAppMaterialNavigator: View {
                         Button {
                             switchStatus()
                         } label: {
-                            Text(getDate())
+                            Text(Date().formatted(.dateTime.weekday(.wide)))
                                 .font(.caption)
                                 .foregroundColor(.secondary)
+                                .lineLimit(2)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
                     } else {
                         Button {
