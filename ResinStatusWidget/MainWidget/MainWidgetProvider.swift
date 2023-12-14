@@ -58,8 +58,9 @@ struct MainWidgetProvider: IntentTimelineProvider {
         completion: @escaping (Timeline<ResinEntry>) -> ()
     ) {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        var syncFrequencyInMinute = Int(Defaults[.mainWidgetSyncFrequencyInMinute])
-        if syncFrequencyInMinute == 0 { syncFrequencyInMinute = 60 }
+//        var syncFrequencyInMinute = Int(Defaults[.mainWidgetSyncFrequencyInMinute])
+//        if syncFrequencyInMinute == 0 { syncFrequencyInMinute = 60 }
+        var syncFrequencyInMinute = widgetRefreshByMinute
         let currentDate = Date()
         let refreshDate = Calendar.current.date(
             byAdding: .minute,

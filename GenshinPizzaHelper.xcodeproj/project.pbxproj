@@ -480,6 +480,7 @@
 		EA09A02228A2B8F80023B4AF /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
+		EA09FDEC2B2BB07A00862DFB /* WidgetRefreshTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09FDEB2B2BB07A00862DFB /* WidgetRefreshTime.swift */; };
 		EA0A6D0B29DDC74000A356A4 /* GachaTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */; };
 		EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */; };
 		EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
@@ -1074,6 +1075,7 @@
 		EA099FF928A2B7220023B4AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA09A02328A2BA820023B4AF /* AccountIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AccountIntent.entitlements; sourceTree = "<group>"; };
 		EA09A02428A2C2E60023B4AF /* IntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		EA09FDEB2B2BB07A00862DFB /* WidgetRefreshTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRefreshTime.swift; sourceTree = "<group>"; };
 		EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaTranslateManager.swift; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
@@ -1725,6 +1727,7 @@
 				EA498C8B2927CFFA00E7D2D7 /* LiveActivityWidget */,
 				EA30F9AC2886B49300AE7BEA /* Info.plist */,
 				EAB1110628CF84B5009FDF07 /* WidgetLauncher.swift */,
+				EA09FDEB2B2BB07A00862DFB /* WidgetRefreshTime.swift */,
 			);
 			path = ResinStatusWidget;
 			sourceTree = "<group>";
@@ -3011,6 +3014,7 @@
 				EAA969F52ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EAD7F02628D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
 				BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */,
+				EA09FDEC2B2BB07A00862DFB /* WidgetRefreshTime.swift in Sources */,
 				5BA0D7A52ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA80A9432B2ADFF100124B33 /* ResinRecoveryActivityWidget.swift in Sources */,

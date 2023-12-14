@@ -30,40 +30,40 @@ struct WidgetSettingView: View {
                 }
             }
 
-            Section {
-                SettingSlider(
-                    title: "widget.settings.sync.frequency.homeScreen",
-                    value: $mainWidgetSyncFrequencyInMinute,
-                    valueFormatterString: "widget.settings.sync.speed:%@",
-                    bounds: 30 ... 300,
-                    step: 10
-                ) { value in
-                    let formatter = DateComponentsFormatter()
-                    formatter.maximumUnitCount = 2
-                    formatter.unitsStyle = .short
-                    formatter.zeroFormattingBehavior = .dropAll
-                    return formatter.string(from: value * 60.0)!
-                }
-                SettingSlider(
-                    title: "widget.settings.sync.frequency.lockScreen",
-                    value: $lockscreenWidgetSyncFrequencyInMinute,
-                    valueFormatterString: "widget.settings.sync.speed:%@",
-                    bounds: 30 ... 300,
-                    step: 10
-                ) { value in
-                    let formatter = DateComponentsFormatter()
-                    formatter.maximumUnitCount = 2
-                    formatter.unitsStyle = .short
-                    formatter.zeroFormattingBehavior = .dropAll
-                    return formatter.string(from: value * 60.0)!
-                }
-            } header: {
-                Text("widget.settings.sync.frequency.title")
-            } footer: {
-                Text(
-                    "widget.refresh.note"
-                )
-            }
+//            Section {
+//                SettingSlider(
+//                    title: "widget.settings.sync.frequency.homeScreen",
+//                    value: $mainWidgetSyncFrequencyInMinute,
+//                    valueFormatterString: "widget.settings.sync.speed:%@",
+//                    bounds: 30 ... 300,
+//                    step: 10
+//                ) { value in
+//                    let formatter = DateComponentsFormatter()
+//                    formatter.maximumUnitCount = 2
+//                    formatter.unitsStyle = .short
+//                    formatter.zeroFormattingBehavior = .dropAll
+//                    return formatter.string(from: value * 60.0)!
+//                }
+//                SettingSlider(
+//                    title: "widget.settings.sync.frequency.lockScreen",
+//                    value: $lockscreenWidgetSyncFrequencyInMinute,
+//                    valueFormatterString: "widget.settings.sync.speed:%@",
+//                    bounds: 30 ... 300,
+//                    step: 10
+//                ) { value in
+//                    let formatter = DateComponentsFormatter()
+//                    formatter.maximumUnitCount = 2
+//                    formatter.unitsStyle = .short
+//                    formatter.zeroFormattingBehavior = .dropAll
+//                    return formatter.string(from: value * 60.0)!
+//                }
+//            } header: {
+//                Text("widget.settings.sync.frequency.title")
+//            } footer: {
+//                Text(
+//                    "widget.refresh.note"
+//                )
+//            }
 
             Section {
                 SettingSlider(

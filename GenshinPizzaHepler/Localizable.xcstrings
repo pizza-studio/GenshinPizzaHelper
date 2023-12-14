@@ -71332,6 +71332,7 @@
       }
     },
     "widget.refresh.note" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -71911,7 +71912,7 @@
       }
     },
     "widget.settings.sync.frequency.homeScreen" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -71976,7 +71977,7 @@
       }
     },
     "widget.settings.sync.frequency.lockScreen" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
