@@ -49,54 +49,60 @@ struct ResinRecoveryActivityWidget: Widget {
                 .contentMargins(.leading, 15)
                 DynamicIslandExpandedRegion(.bottom) {
                     HStack {
-                        HStack {
-                            Image("树脂")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxHeight: 40)
-                            VStack(alignment: .leading) {
-                                let nextCount = String(
-                                    format: "widget.next20Resin:%lld",
-                                    context.state.next20ResinCount
-                                ).localized
-                                Text(nextCount)
-                                    .font(.caption2)
-                                Text(
-                                    timerInterval: Date() ... context.state
-                                        .next20ResinRecoveryTime,
-                                    countsDown: true
-                                )
-                                .multilineTextAlignment(.leading)
-                                .font(.system(.title2, design: .rounded))
-                                .foregroundColor(
-                                    Color("textColor.originResin")
-                                )
+                        if Date() < context.state.next20ResinRecoveryTime {
+                            HStack {
+                                Image("树脂")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: 40)
+                                VStack(alignment: .leading) {
+                                    let nextCount = String(
+                                        format: "widget.next20Resin:%lld",
+                                        context.state.next20ResinCount
+                                    ).localized
+                                    Text(nextCount)
+                                        .font(.caption2)
+                                    Text(
+                                        timerInterval: Date() ... context.state
+                                            .next20ResinRecoveryTime,
+                                        countsDown: true
+                                    )
+                                    .multilineTextAlignment(.leading)
+                                    .font(.system(.title2, design: .rounded))
+                                    .foregroundColor(
+                                        Color("textColor.originResin")
+                                    )
+                                }
+                                .gridColumnAlignment(.leading)
+                                .frame(width: 100)
                             }
-                            .gridColumnAlignment(.leading)
-                            .frame(width: 100)
                         }
                         Spacer()
-                        HStack {
-                            Image("浓缩树脂")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxHeight: 40)
-                            VStack(alignment: .leading) {
-                                Text("widget.next160Resin")
-                                    .font(.caption2)
-                                Text(
-                                    timerInterval: Date() ... context.state
-                                        .resinRecoveryTime,
-                                    countsDown: true
-                                )
-                                .multilineTextAlignment(.leading)
-                                .font(.system(.title2, design: .rounded))
-                                .foregroundColor(
-                                    Color("textColor.originResin")
-                                )
+                        if Date() < context.state
+                            .resinRecoveryTime {
+                            HStack {
+                                Image("浓缩树脂")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: 40)
+                                VStack(alignment: .leading) {
+                                    Text("widget.next160Resin")
+                                        .font(.caption2)
+
+                                    Text(
+                                        timerInterval: Date() ... context.state
+                                            .resinRecoveryTime,
+                                        countsDown: true
+                                    )
+                                    .multilineTextAlignment(.leading)
+                                    .font(.system(.title2, design: .rounded))
+                                    .foregroundColor(
+                                        Color("textColor.originResin")
+                                    )
+                                }
+                                .gridColumnAlignment(.leading)
+                                .frame(width: 100)
                             }
-                            .gridColumnAlignment(.leading)
-                            .frame(width: 100)
                         }
                     }
                     .foregroundColor(Color("textColor3"))
@@ -104,19 +110,21 @@ struct ResinRecoveryActivityWidget: Widget {
             } compactLeading: {
                 Image("树脂").resizable().scaledToFit()
             } compactTrailing: {
-                Text(
-                    timerInterval: Date() ... context.state
-                        .next20ResinRecoveryTime,
-                    countsDown: true,
-                    showsHours: false
-                )
-                .monospacedDigit()
-                .multilineTextAlignment(.center)
-                .frame(width: 60)
-                .foregroundColor(Color("textColor2"))
+                if Date() < context.state
+                    .next20ResinRecoveryTime {
+                    Text(
+                        timerInterval: Date() ... context.state
+                            .next20ResinRecoveryTime,
+                        countsDown: true,
+                        showsHours: false
+                    )
+                    .monospacedDigit()
+                    .multilineTextAlignment(.center)
+                    .frame(width: 60)
+                    .foregroundColor(Color("textColor2"))
+                }
             } minimal: {
-                EmptyView()
-//                Image("树脂").resizable().scaledToFit()
+                Image("树脂").resizable().scaledToFit()
             }
         }
     }
@@ -167,7 +175,8 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     var contentView: some View {
         HStack {
             Grid(verticalSpacing: 7) {
-                if context.state.showNext20Resin {
+                if context.state.showNext20Resin,
+                   Date() < context.state.next20ResinRecoveryTime {
                     GridRow {
                         Image("树脂")
                             .resizable()
@@ -189,27 +198,31 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
 //                        .frame(width: 140)
                     }
                 }
-                GridRow {
-                    Image("浓缩树脂")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 35)
-                    VStack(alignment: .leading) {
-                        Text("widget.next160Resin")
-                            .font(.caption2)
-                        Text(
-                            timerInterval: Date() ... context.state
-                                .resinRecoveryTime,
-                            countsDown: true
-                        )
-                        .multilineTextAlignment(.leading)
-                        .font(.system(.title2, design: .rounded))
+                if Date() < context.state
+                    .resinRecoveryTime {
+                    GridRow {
+                        Image("浓缩树脂")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 35)
+                        VStack(alignment: .leading) {
+                            Text("widget.next160Resin")
+                                .font(.caption2)
+                            Text(
+                                timerInterval: Date() ... context.state
+                                    .resinRecoveryTime,
+                                countsDown: true
+                            )
+                            .multilineTextAlignment(.leading)
+                            .font(.system(.title2, design: .rounded))
+                        }
+                        .gridColumnAlignment(.leading)
+                        //                    .frame(width: 140)
                     }
-                    .gridColumnAlignment(.leading)
-//                    .frame(width: 140)
                 }
-                if context.state.showExpedition, let time = context.state
-                    .expeditionAllCompleteTime {
+                if context.state.showExpedition,
+                   let time = context.state.expeditionAllCompleteTime,
+                   Date() < time {
                     GridRow {
                         Image("派遣探索")
                             .resizable()
