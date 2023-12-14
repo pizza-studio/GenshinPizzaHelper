@@ -70373,6 +70373,9 @@
         }
       }
     },
+    "widget.currentResin" : {
+
+    },
     "widget.expedition.timeToAllCompletion" : {
       "localizations" : {
         "en" : {

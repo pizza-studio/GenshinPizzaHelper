@@ -63,7 +63,7 @@ struct MainInfo: View {
                     }
                     .buttonStyle(.plain)
                 } else {
-                    Image(systemSymbol: .exclamationmarkCircle)
+                    Image(systemSymbol: .hourglassCircle)
                         .foregroundColor(Color("textColor3"))
                         .font(.title3)
                 }

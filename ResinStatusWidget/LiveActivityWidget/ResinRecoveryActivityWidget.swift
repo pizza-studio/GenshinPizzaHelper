@@ -7,6 +7,7 @@
 
 #if canImport(ActivityKit)
 import ActivityKit
+import AppIntents
 import Defaults
 import Foundation
 import SFSafeSymbols
@@ -141,61 +142,92 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     var useNoBackground: Bool { context.state.background == .noBackground }
 
     var body: some View {
-        contentView
+        let mainContent = contentView
         #if !os(watchOS)
-        .background {
-            switch context.state.background {
-            case .random:
-                Image(NameCard.random.fileName)
-                    .resizable()
-                    .scaledToFill()
-                Color.black
-                    .opacity(0.3)
-            case .customize:
-                let chosenCardBackgrounds = NameCard.allLegalCases.compactMap { card in
-                    resinRecoveryLiveActivityBackgroundOptions.contains(card.fileName) ? card
-                        : nil
+            .background {
+                switch context.state.background {
+                case .random:
+                    Image(NameCard.random.fileName)
+                        .resizable()
+                        .scaledToFill()
+                    Color.black
+                        .opacity(0.3)
+                case .customize:
+                    let chosenCardBackgrounds = NameCard.allLegalCases.compactMap { card in
+                        resinRecoveryLiveActivityBackgroundOptions.contains(card.fileName) ? card
+                            : nil
+                    }
+                    let randomCardBg = chosenCardBackgrounds.randomElement() ?? .defaultValue
+                    Image(randomCardBg.fileName)
+                        .resizable()
+                        .scaledToFill()
+                    Color.black
+                        .opacity(0.3)
+                case .noBackground:
+                    EmptyView()
                 }
-                let randomCardBg = chosenCardBackgrounds.randomElement() ?? .defaultValue
-                Image(randomCardBg.fileName)
-                    .resizable()
-                    .scaledToFill()
-                Color.black
-                    .opacity(0.3)
-            case .noBackground:
-                EmptyView()
             }
-        }
         #endif
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .activityBackgroundTint(.clear)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .activityBackgroundTint(.clear)
+        if #available(iOS 17, *) {
+            Button(intent: ResinTimerRerenderIntent()) {
+                mainContent
+            }
+            .buttonStyle(.plain)
+            .ignoresSafeArea()
+        } else {
+            mainContent
+        }
     }
 
     @ViewBuilder
     var contentView: some View {
         HStack {
             Grid(verticalSpacing: 7) {
-                if context.state.showNext20Resin,
-                   Date() < context.state.next20ResinRecoveryTime {
+                if #available(iOS 17, *) {
                     GridRow {
                         Image("树脂")
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 38)
                         VStack(alignment: .leading) {
-                            let nextCount = String(format: "widget.next20Resin:%lld", context.state.next20ResinCount)
-                            Text(nextCount)
+                            Text("widget.currentResin")
                                 .font(.caption2)
-                            Text(
-                                timerInterval: Date() ... context.state
-                                    .next20ResinRecoveryTime,
-                                countsDown: true
-                            )
-                            .multilineTextAlignment(.leading)
-                            .font(.system(.title2, design: .rounded))
+                            HStack(alignment: .lastTextBaseline, spacing: 0) {
+                                Text(verbatim: "\(context.state.currentResin)")
+                                    .font(.system(.title2, design: .rounded))
+                                Text(verbatim: " / 160")
+                                    .font(.caption)
+                            }
                         }
                         .gridColumnAlignment(.leading)
-//                        .frame(width: 140)
+                    }
+                } else {
+                    if context.state.showNext20Resin,
+                       Date() < context.state.next20ResinRecoveryTime {
+                        GridRow {
+                            Image("树脂")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 38)
+                            VStack(alignment: .leading) {
+                                let nextCount = String(
+                                    format: "widget.next20Resin:%lld",
+                                    context.state.next20ResinCount
+                                )
+                                Text(nextCount)
+                                    .font(.caption2)
+                                Text(
+                                    timerInterval: Date() ... context.state
+                                        .next20ResinRecoveryTime,
+                                    countsDown: true
+                                )
+                                .multilineTextAlignment(.leading)
+                                .font(.system(.title2, design: .rounded))
+                            }
+                            .gridColumnAlignment(.leading)
+                        }
                     }
                 }
                 if Date() < context.state
@@ -246,13 +278,27 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
             Spacer()
             VStack {
                 Spacer()
-                HStack(alignment: .lastTextBaseline, spacing: 2) {
-                    Image(systemSymbol: .personFill)
-                    Text(context.attributes.accountName)
+                if #available(iOS 17, *) {
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Text(context.attributes.accountName)
+                        Button(intent: ResinTimerRefreshIntent()) {
+                            Image(systemSymbol: .arrowTriangle2CirclepathCircle)
+                                .clipShape(.circle)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    .font(.footnote)
+                    .padding(.top, 3)
+                    .padding(.leading, 3)
+                } else {
+                    HStack(alignment: .lastTextBaseline, spacing: 2) {
+                        Image(systemSymbol: .personFill)
+                        Text(context.attributes.accountName)
+                    }
+                    .font(.footnote)
+                    .padding(.top, 3)
+                    .padding(.leading, 3)
                 }
-                .font(.footnote)
-                .padding(.top, 3)
-                .padding(.leading, 3)
             }
         }
         .shadow(radius: useNoBackground ? 0 : 0.8)
@@ -261,3 +307,44 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
     }
 }
 #endif
+
+// MARK: - ResinTimerRefreshIntent
+
+@available(iOSApplicationExtension 16.1, iOS 16.1, *)
+struct ResinTimerRefreshIntent: AppIntent {
+    static var title: LocalizedStringResource = "Refresh"
+
+    func perform() async throws -> some IntentResult {
+        let activities = ResinRecoveryActivityController.shared.currentActivities
+        let accounts = AccountConfigurationModel.shared.fetchAccountConfigs()
+        await withThrowingTaskGroup(of: Void.self) { taskGroup in
+            activities.forEach { activity in
+                taskGroup.addTask {
+                    guard let account = accounts.first(where: { account in
+                        account.safeUuid == activity.attributes.accountUUID
+                    }) else { return }
+                    let result = try await account.dailyNote()
+                    ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: account, data: result)
+                }
+            }
+        }
+        return .result()
+    }
+}
+
+// MARK: - ResinTimerRerenderIntent
+
+@available(iOSApplicationExtension 16.1, iOS 16.1, *)
+struct ResinTimerRerenderIntent: AppIntent {
+    static var title: LocalizedStringResource = "Refresh"
+
+    func perform() async throws -> some IntentResult {
+        let activities = ResinRecoveryActivityController.shared.currentActivities
+        activities.forEach { activity in
+            Task {
+                await activity.update(using: activity.contentState)
+            }
+        }
+        return .result()
+    }
+}
