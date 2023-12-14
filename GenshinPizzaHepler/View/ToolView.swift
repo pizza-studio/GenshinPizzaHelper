@@ -46,15 +46,7 @@ struct ToolView: View {
                         }
                     }
                 }
-                .listRowMaterialBackground()
-                ThirdPartyToolsView().listRowMaterialBackground()
-            }
-            .scrollContentBackground(.hidden)
-            .background {
-                EnkaWebIcon(iconString: NameCard.defaultValueForAppBackground.fileName)
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
-                    .overlay(.ultraThinMaterial)
+                ThirdPartyToolsView()
             }
             .listStyle(.insetGrouped)
             .navigationTitle("app.tools.title")

@@ -61,7 +61,7 @@ struct HomeView: View {
                 EnkaWebIcon(iconString: NameCard.defaultValueForAppBackground.fileName)
                     .scaledToFill()
                     .ignoresSafeArea(.all)
-                    .overlay(.ultraThinMaterial)
+                    .blur(radius: 50)
             }
             .refreshable {
                 globalDailyNoteCardRefreshSubject.send(())

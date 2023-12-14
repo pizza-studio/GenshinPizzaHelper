@@ -58,6 +58,6 @@ extension Color {
     }
 
     static var accessibilityAccent: Color {
-        Color.accentColor.addSaturation(-0.25)
+        Color.accentColor.addSaturation(-0.5)
     }
 }

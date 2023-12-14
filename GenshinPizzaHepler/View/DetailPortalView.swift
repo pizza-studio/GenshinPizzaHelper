@@ -465,7 +465,7 @@ struct DetailPortalView: View {
                 EnkaWebIcon(iconString: detailPortalViewModel.currentAccountNamecardFileName)
                     .scaledToFill()
                     .ignoresSafeArea(.all)
-                    .overlay(.ultraThinMaterial)
+                    .blur(radius: 50)
             }
             .refreshable {
                 detailPortalViewModel.refresh()
