@@ -1567,3 +1567,28 @@ private struct VerificationNeededView: View {
     @State
     private var sheetItem: SheetItem?
 }
+
+// MARK: - InformationRowView
+
+private struct InformationRowView<L: View>: View {
+    // MARK: Lifecycle
+
+    init(_ title: LocalizedStringKey, @ViewBuilder labelContent: @escaping () -> L) {
+        self.title = title
+        self.labelContent = labelContent
+    }
+
+    // MARK: Internal
+
+    @ViewBuilder
+    let labelContent: () -> L
+
+    let title: LocalizedStringKey
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(title).bold()
+            labelContent()
+        }
+    }
+}

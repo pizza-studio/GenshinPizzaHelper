@@ -268,13 +268,15 @@ struct AccountInfoCardView: View {
                         Text(verbatim: " / \(dailyTask.totalTaskCount)")
                             .font(.caption)
                         Spacer()
-                        switch dailyTask.isExtraRewardReceived {
-                        case true:
-                            Text("app.dailynote.card.dailyTask.extraReward.received")
-                                .font(.caption2)
-                        case false:
-                            Text("app.dailynote.card.dailyTask.extraReward.notReceived")
-                                .font(.caption2)
+                        if dailyTask.finishedTaskCount == dailyTask.totalTaskCount {
+                            switch dailyTask.isExtraRewardReceived {
+                            case true:
+                                Text("app.dailynote.card.dailyTask.extraReward.received")
+                                    .font(.caption2)
+                            case false:
+                                Text("app.dailynote.card.dailyTask.extraReward.notReceived")
+                                    .font(.caption2)
+                            }
                         }
                     }
                 }
@@ -317,6 +319,7 @@ struct AccountInfoCardView: View {
                     Image("派遣探索")
                         .resizable()
                         .scaledToFit()
+                        .frame(width: iconFrame * 0.9, height: iconFrame * 0.9)
                         .frame(width: iconFrame, height: iconFrame)
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text(verbatim: "\(expeditionInfo.ongoingExpeditionCount)")
@@ -608,3 +611,28 @@ private let intervalFormatter: DateComponentsFormatter = {
     dateComponentFormatter.unitsStyle = .brief
     return dateComponentFormatter
 }()
+
+// MARK: - InformationRowView
+
+private struct InformationRowView<L: View>: View {
+    // MARK: Lifecycle
+
+    init(_ title: LocalizedStringKey, @ViewBuilder labelContent: @escaping () -> L) {
+        self.title = title
+        self.labelContent = labelContent
+    }
+
+    // MARK: Internal
+
+    @ViewBuilder
+    let labelContent: () -> L
+
+    let title: LocalizedStringKey
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(title).font(.subheadline).bold()
+            labelContent()
+        }
+    }
+}
