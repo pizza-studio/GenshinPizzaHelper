@@ -68,19 +68,3 @@ public protocol ResinInformation {
     var currentResin: Int { get }
     var resinRecoveryTime: Date { get }
 }
-
-extension ResinInformation {
-    public func calculatedCurrentResin(referTo date: Date) -> Int {
-        let secondToFull = resinRecoveryTime.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate
-        guard secondToFull > 0 else { return maxResin }
-        return maxResin - Int(secondToFull / 8 / 60)
-    }
-}
-
-extension HomeCoinInformation {
-    public func calculatedCurrentHomeCoin(referTo date: Date) -> Int {
-        let secondToFull = fullTime.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate
-        guard secondToFull > 0 else { return maxHomeCoin }
-        return maxHomeCoin - Int(secondToFull / 120)
-    }
-}
