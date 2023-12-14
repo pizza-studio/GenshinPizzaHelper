@@ -83,12 +83,30 @@ class ResinRecoveryActivityController {
             background: background
         )
 
+        print(status.currentResin)
+        print(status.next20ResinCount)
+        print(status.showNext20Resin)
+        print(status.next20ResinRecoveryTime)
+
         do {
             let deliveryActivity = try Activity.request(
                 attributes: attributes,
                 contentState: status
             )
             print("request activity succeed ID=\(deliveryActivity.id)")
+            Task {
+                for await state in deliveryActivity.activityStateUpdates {
+                    print(state)
+                }
+            }
+//            Task {
+//                if #available(iOSApplicationExtension 16.2, *) {
+//                    for await content in deliveryActivity.contentUpdates {
+//                        print(content)
+//                    }
+//                }
+//            }
+
         } catch {
             print(
                 "Error requesting pizza delivery Live Activity \(error.localizedDescription)."

@@ -115,7 +115,8 @@ struct ResinRecoveryActivityWidget: Widget {
                 .frame(width: 60)
                 .foregroundColor(Color("textColor2"))
             } minimal: {
-                Image("树脂").resizable().scaledToFit()
+                EmptyView()
+//                Image("树脂").resizable().scaledToFit()
             }
         }
     }
@@ -174,7 +175,6 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             .frame(maxHeight: 38)
                         VStack(alignment: .leading) {
                             let nextCount = String(format: "widget.next20Resin:%lld", context.state.next20ResinCount)
-                                .localized
                             Text(nextCount)
                                 .font(.caption2)
                             Text(

@@ -95,13 +95,11 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: index) {
             HomeView()
-                .tint(.accessibilityAccent)
                 .tag(0)
                 .tabItem {
                     Label("app.home.title", systemSymbol: .listBullet)
                 }
             DetailPortalView()
-                .tint(.accessibilityAccent)
                 .tag(1)
                 .tabItem {
                     Label("app.detailPortal.title", systemSymbol: .personTextRectangle)

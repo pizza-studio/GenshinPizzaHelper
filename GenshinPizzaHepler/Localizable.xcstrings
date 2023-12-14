@@ -31005,6 +31005,9 @@
         }
       }
     },
+    "1034问题的解决方案" : {
+
+    },
     "736320270" : {
       "localizations" : {
         "ja" : {
@@ -45427,6 +45430,12 @@
         }
       }
     },
+    "app.home.editAccount" : {
+
+    },
+    "app.home.enableLiveActivity" : {
+
+    },
     "app.home.fold" : {
       "localizations" : {
         "en" : {
@@ -45555,6 +45564,9 @@
           }
         }
       }
+    },
+    "app.home.pinToTop" : {
+
     },
     "app.home.tip.swipe" : {
       "localizations" : {
@@ -49199,6 +49211,9 @@
           }
         }
       }
+    },
+    "Cookie" : {
+
     },
     "currentEventNavigator.pendingEvents.title" : {
       "localizations" : {
@@ -59832,6 +59847,9 @@
         }
       }
     },
+    "settings.account.accountInformation" : {
+
+    },
     "settings.account.addAccount" : {
       "localizations" : {
         "en" : {
@@ -60673,6 +60691,9 @@
           }
         }
       }
+    },
+    "settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" : {
+
     },
     "settings.account.login.instruction" : {
       "extractionState" : "manual",
@@ -72436,6 +72457,9 @@
         }
       }
     },
+    "上滑查看更多基本信息" : {
+
+    },
     "不允许" : {
 
     },
@@ -72471,7 +72495,13 @@
     "加入Telegram频道" : {
 
     },
+    "取消" : {
+
+    },
     "失败信息：%@" : {
+
+    },
+    "完成" : {
 
     },
     "寻空" : {
@@ -72580,6 +72610,9 @@
         }
       }
     },
+    "本账号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" : {
+
+    },
     "树脂" : {
 
     },
@@ -72626,6 +72659,9 @@
           }
         }
       }
+    },
+    "编辑" : {
+
     },
     "角色" : {
 

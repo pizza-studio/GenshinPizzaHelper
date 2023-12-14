@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2023/11/30.
 //
 
+import Defaults
 import Foundation
 import HoYoKit
 
@@ -28,7 +29,7 @@ extension AccountConfiguration {
         #endif
 
         #if canImport(ActivityKit)
-        if #available(iOS 16.1, *) {
+        if #available(iOS 16.1, *), Defaults[.autoUpdateResinRecoveryTimerUsingReFetchData] {
             ResinRecoveryActivityController.shared.updateResinRecoveryTimerActivity(for: self, data: dailyNote)
         }
         #endif

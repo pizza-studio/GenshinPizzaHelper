@@ -103,9 +103,23 @@ struct AccountInfoCardView: View {
                 ProgressView().id(UUID())
             }
         } header: {
-            Text(account.safeName)
-                .foregroundColor(.primary)
-                .font(.headline)
+            HStack {
+                Text(account.safeName)
+                    .foregroundColor(.primary)
+                    .font(.headline)
+                Spacer()
+                Menu {
+//                    PinToTopButton(account: account)
+//                    EditAccountButton(account: account)
+                    #if canImport(ActivityKit)
+                    if #available(iOS 16.1, *), case let .succeed(dailyNote, _) = status {
+                        EnableLiveActivityButton(account: account, dailyNote: dailyNote)
+                    }
+                    #endif
+                } label: {
+                    Image(systemSymbol: .ellipsisCircle)
+                }
+            }
         }
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
@@ -121,6 +135,86 @@ struct AccountInfoCardView: View {
     }
 
     // MARK: Private
+
+    private struct PinToTopButton: View {
+        @Environment(\.managedObjectContext)
+        private var viewContext
+
+        // MARK: Internal
+
+        let account: AccountConfiguration
+
+        var body: some View {
+            Button("app.home.pinToTop") {
+                withAnimation {
+                    account.priority = accounts.map(\.priority).min() ?? 0 - 1
+                    try? viewContext.save()
+                }
+            }
+        }
+
+        // MARK: Private
+
+        @FetchRequest(sortDescriptors: [.init(
+            keyPath: \AccountConfiguration.priority,
+            ascending: true
+        )])
+        private var accounts: FetchedResults<AccountConfiguration>
+    }
+
+    private struct EditAccountButton: View {
+        // MARK: Internal
+
+        let account: AccountConfiguration
+
+        var body: some View {
+            Button("app.home.editAccount") {
+                showEditAccountSheet = true
+            }
+            .sheet(isPresented: $showEditAccountSheet, content: {
+                EditAccountSheetView(account: account, isShown: $showEditAccountSheet)
+            })
+        }
+
+        // MARK: Private
+
+        @State
+        private var showEditAccountSheet: Bool = false
+    }
+
+    @available(iOS 16.1, *)
+    private struct EnableLiveActivityButton: View {
+        // MARK: Internal
+
+        let account: AccountConfiguration
+        let dailyNote: any DailyNote
+
+        var body: some View {
+            Button("app.home.enableLiveActivity") {
+                do {
+                    try ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
+                        for: account,
+                        data: dailyNote
+                    )
+                } catch {
+                    self.error = .otherError(error)
+                    showErrorAlert.toggle()
+                }
+            }
+            .alert(isPresented: $showErrorAlert, error: error) {
+                Button("sys.cancel") {
+                    showErrorAlert.toggle()
+                }
+            }
+        }
+
+        // MARK: Private
+
+        @State
+        private var error: AnyLocalizedError? = nil
+        @State
+        private var showErrorAlert: Bool = false
+    }
 
     private struct NoteView: View {
         // MARK: Internal
@@ -330,6 +424,20 @@ class DailyNoteViewModel: ObservableObject {
                 withAnimation {
                     dailyNoteStatus = .succeed(dailyNote: result, refreshDate: Date())
                 }
+                #if canImport(ActivityKit)
+                if #available(iOS 16.1, *),
+                   Defaults[.autoDeliveryResinTimerLiveActivity] {
+                    Task {
+                        let accounts = AccountConfigurationModel.shared.fetchAccountConfigs()
+                        if account == accounts.first {
+                            try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
+                                for: account,
+                                data: result
+                            )
+                        }
+                    }
+                }
+                #endif
             } catch {
                 withAnimation {
                     dailyNoteStatus = .failure(error: AnyLocalizedError(error))

@@ -77,7 +77,7 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
 
     /// 下一20倍数树脂回复时间点
     var next20ResinRecoveryTime: Date {
-        Date(timeIntervalSinceNow: TimeInterval((currentResin - next20ResinCount) * 8 * 60))
+        Date(timeIntervalSinceNow: TimeInterval((next20ResinCount - currentResin) * 8 * 60))
     }
 }
 

@@ -125,7 +125,6 @@
 		5BD1C5E72A2A1FC90043C2B1 /* GachaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD03E529D2FD88007D5C80 /* GachaItem.swift */; };
 		5BD1C5E82A2A1FC90043C2B1 /* ArrayOfStringRawPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */; };
 		5BD1C5E92A2A1FC90043C2B1 /* GachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8929D2883A0075F780 /* GachaURL.swift */; };
-		5BD1C5EA2A2A1FC90043C2B1 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
 		5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */; };
 		5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8329D2834E0075F780 /* GachaItemManager.swift */; };
 		5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharable.swift */; };
@@ -544,8 +543,6 @@
 		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
 		EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
-		EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
-		EA498C922927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
 		EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
 		EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C005829D2FFD100637B19 /* GachaFetch.swift */; };
@@ -636,6 +633,9 @@
 		EA7FF475293095BB00128A5C /* LockScreenResinFullTimeWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF474293095BB00128A5C /* LockScreenResinFullTimeWidgetCircular.swift */; };
 		EA7FF47629309B6A00128A5C /* LockScreenResinFullTimeWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF474293095BB00128A5C /* LockScreenResinFullTimeWidgetCircular.swift */; };
 		EA7FF47729309B6A00128A5C /* LockScreenResinFullTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FF4722930959700128A5C /* LockScreenResinFullTimeWidget.swift */; };
+		EA80A8A52B2ADE6600124B33 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
+		EA80A8A62B2ADE6700124B33 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
+		EA80A9432B2ADFF100124B33 /* ResinRecoveryActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */; };
 		EA8445EC29DBFFD700CB8C9F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8445EB29DBFFD700CB8C9F /* Color.swift */; };
 		EA887D332B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
 		EA887D342B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
@@ -1156,6 +1156,7 @@
 		EA7FF47B2930A35300128A5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA7FF4812930A3F300128A5C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA7FF4832930A41700128A5C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AccountIntents.strings"; sourceTree = "<group>"; };
+		EA80A93E2B2ADEBA00124B33 /* ResinStatusWidgetExtension copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ResinStatusWidgetExtension copy-Info.plist"; path = "/Users/canglong/Programs/GenshinPizzaHelper/ResinStatusWidgetExtension copy-Info.plist"; sourceTree = "<absolute>"; };
 		EA8445EB29DBFFD700CB8C9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA8978D729DA716400E0903E /* ExportGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportGachaView.swift; sourceTree = "<group>"; };
 		EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_lang_dictionary.json; sourceTree = "<group>"; };
@@ -1954,6 +1955,7 @@
 				EAE95CE328CE10A100D975CB /* WatchIntent */,
 				EA30F9A22886B49200AE7BEA /* Frameworks */,
 				EABD7DB72886B2D200B7F0FD /* Products */,
+				EA80A93E2B2ADEBA00124B33 /* ResinStatusWidgetExtension copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2295,7 +2297,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					BF85D77028CE0B9E003F3479 = {
@@ -2582,6 +2584,7 @@
 				5BD1C5DB2A2A1FC90043C2B1 /* ImportGachaView.swift in Sources */,
 				EA759D6A2B19989A0080C775 /* ManageAccountsView.swift in Sources */,
 				5BD1C5DC2A2A1FC90043C2B1 /* ResinRecoveryActivityController.swift in Sources */,
+				EA80A8A62B2ADE6700124B33 /* ResinRecoveryActivityWidget.swift in Sources */,
 				EA887D332B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				5BD1C5DD2A2A1FC90043C2B1 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				5BD1C5DE2A2A1FC90043C2B1 /* WebViews.swift in Sources */,
@@ -2598,7 +2601,6 @@
 				5BD1C5E72A2A1FC90043C2B1 /* GachaItem.swift in Sources */,
 				5BD1C5E82A2A1FC90043C2B1 /* ArrayOfStringRawPresentable.swift in Sources */,
 				5BD1C5E92A2A1FC90043C2B1 /* GachaURL.swift in Sources */,
-				5BD1C5EA2A2A1FC90043C2B1 /* ResinRecoveryActivityWidget.swift in Sources */,
 				EA759D772B199A2C0080C775 /* Server+Descriptable.swift in Sources */,
 				5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */,
 				EA759D722B19989A0080C775 /* GetCookieWebView.swift in Sources */,
@@ -3008,10 +3010,10 @@
 				5B43A15729D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EAA969F52ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EAD7F02628D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
-				EA498C922927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				5BA0D7A52ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
+				EA80A9432B2ADFF100124B33 /* ResinRecoveryActivityWidget.swift in Sources */,
 				EAB11E9F29325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				EA887D342B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */,
@@ -3070,6 +3072,7 @@
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
+				EA80A8A52B2ADE6600124B33 /* ResinRecoveryActivityWidget.swift in Sources */,
 				EA9C33B22B19C42100E9531C /* DailyNoteAPI.swift in Sources */,
 				EA759D672B19989A0080C775 /* EditAccountSheetView.swift in Sources */,
 				EAA969F32ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
@@ -3085,7 +3088,6 @@
 				EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */,
 				EA7FDF91292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,
 				EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */,
-				EA498C912927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift in Sources */,
 				BFCC065328C732D5003E4A54 /* WidgetTipsView.swift in Sources */,
 				EA759D762B199A2C0080C775 /* Server+Descriptable.swift in Sources */,
 				5BE5D99C2ACB0956009A732C /* AccountManagementView.swift in Sources */,
@@ -3607,6 +3609,7 @@
 				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ResinStatusWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3637,6 +3640,7 @@
 				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ResinStatusWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
