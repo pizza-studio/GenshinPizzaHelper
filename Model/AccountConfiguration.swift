@@ -24,6 +24,7 @@ public class AccountConfiguration: NSManagedObject {
         setPrimitiveValue("", forKey: #keyPath(AccountConfiguration.uid))
         setPrimitiveValue("", forKey: #keyPath(AccountConfiguration.deviceFingerPrint))
         setPrimitiveValue(0, forKey: #keyPath(AccountConfiguration.priority))
+        setPrimitiveValue(nil, forKey: #keyPath(AccountConfiguration.sTokenV2))
     }
 }
 
@@ -87,6 +88,9 @@ extension AccountConfiguration {
 
     @NSManaged
     public var priority: Int
+
+    @NSManaged
+    public var sTokenV2: String?
 }
 
 // MARK: Identifiable

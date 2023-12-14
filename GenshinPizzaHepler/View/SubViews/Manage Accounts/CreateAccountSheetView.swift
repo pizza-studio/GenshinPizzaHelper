@@ -128,13 +128,7 @@ struct CreateAccountSheetView: View {
                     Text("account.login.manual.1")
                         .font(.footnote)
                     NavigationLink {
-                        AccountDetailView(
-                            unsavedName: $account.name,
-                            unsavedUid: $account.uid,
-                            unsavedCookie: $account.cookie,
-                            unsavedServer: $account.server,
-                            unsavedDeviceFingerPrint: $account.safeDeviceFingerPrint
-                        )
+                        AccountDetailView(account: account)
                     } label: {
                         Text("account.login.manual.2")
                             .font(.footnote)

@@ -49,13 +49,7 @@ struct TestAccountSectionView: View {
         }
         Task {
             do {
-                _ = try await MiHoYoAPI.dailyNote(
-                    server: account.server,
-                    uid: account.safeUid,
-                    cookie: account.safeCookie,
-                    deviceFingerPrint: account.safeDeviceFingerPrint,
-                    deviceId: account.safeUuid
-                )
+                _ = try await account.dailyNote()
                 withAnimation {
                     status = .succeeded
                 }

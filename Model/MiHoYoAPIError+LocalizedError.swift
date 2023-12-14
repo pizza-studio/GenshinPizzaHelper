@@ -15,6 +15,8 @@ extension MiHoYoAPIError: LocalizedError {
             "MiHoYoAPIError.verificationNeeded.errorDescription"
         case .fingerPrintNeeded:
             "MiHoYoAPIError.fingerPrintNeeded.errorDescription"
+        case .noStokenV2:
+            "MiHoYoAPIError.noStokenV2.errorDescription"
         case let .other(retcode, message):
             "(\(retcode)): \(message)"
         }

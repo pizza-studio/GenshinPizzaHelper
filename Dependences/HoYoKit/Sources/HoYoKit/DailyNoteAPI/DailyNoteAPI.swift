@@ -13,13 +13,23 @@ extension MiHoYoAPI {
         server: Server,
         uid: String,
         cookie: String,
+        sTokenV2: String?,
         deviceFingerPrint: String?,
         deviceId: UUID?
     ) async throws
         -> any DailyNote {
         switch server.region {
         case .mainlandChina:
-            return try await widgetDailyNote(cookie: cookie, deviceFingerPrint: deviceFingerPrint, deviceId: deviceId)
+            if let sTokenV2 {
+                return try await widgetDailyNote(
+                    cookie: cookie,
+                    sTokenV2: sTokenV2,
+                    deviceFingerPrint: deviceFingerPrint,
+                    deviceId: deviceId
+                )
+            } else {
+                throw MiHoYoAPIError.noStokenV2
+            }
         case .global:
             return try await generalDailyNote(
                 server: server,
@@ -70,11 +80,11 @@ extension MiHoYoAPI {
 
     static func widgetDailyNote(
         cookie: String,
+        sTokenV2: String,
         deviceFingerPrint: String?,
         deviceId: UUID?
     ) async throws
         -> WidgetDailyNote {
-        let sTokenV2 = try await sTokenV2(cookie: cookie)
         let cookie = cookie + "stoken: \(sTokenV2)"
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {

@@ -10,10 +10,15 @@ import HoYoKit
 
 extension AccountConfiguration {
     func dailyNote() async throws -> any DailyNote {
+        if server.region == .mainlandChina, sTokenV2 == nil {
+            sTokenV2 = try await MiHoYoAPI.sTokenV2(cookie: safeCookie)
+        }
+
         let dailyNote = try await MiHoYoAPI.dailyNote(
             server: server,
             uid: safeUid,
             cookie: safeCookie,
+            sTokenV2: sTokenV2,
             deviceFingerPrint: safeDeviceFingerPrint,
             deviceId: safeUuid
         )

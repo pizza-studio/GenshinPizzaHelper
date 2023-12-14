@@ -14,6 +14,7 @@ import Foundation
 public enum MiHoYoAPIError: Error {
     case verificationNeeded
     case fingerPrintNeeded
+    case noStokenV2
     case other(retcode: Int, message: String)
 
     // MARK: Lifecycle
