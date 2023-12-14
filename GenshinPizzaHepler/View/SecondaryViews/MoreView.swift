@@ -20,10 +20,10 @@ struct MoreView: View {
         List {
             Section {
                 NavigationLink(destination: UpdateHistoryInfoView()) {
-                    Text("检查更新")
+                    Text("settings.update.title")
                 }
                 #if DEBUG
-                Button("清空已检查的版本号") {
+                Button("settings.update.cleanChecked") {
                     Defaults.reset(.checkedUpdateVersions)
                     Defaults.reset(.checkedNewestVersion)
                     UserDefaults.opSuite.synchronize()

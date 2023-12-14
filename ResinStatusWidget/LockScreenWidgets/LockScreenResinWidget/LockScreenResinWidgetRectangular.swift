@@ -40,7 +40,7 @@ struct LockScreenResinWidgetRectangular: View {
                         .foregroundColor(Color("iconColor.resin.middle"))
                         if data.resinInformation.calculatedCurrentResin(referTo: entry.date) >= data.resinInformation
                             .maxResin {
-                            Text("已回满")
+                            Text("widget.resin.full")
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                         } else {
@@ -94,7 +94,7 @@ struct LockScreenResinWidgetRectangular: View {
                         .widgetAccentable()
                         if data.resinInformation.calculatedCurrentResin(referTo: entry.date) >= data.resinInformation
                             .maxResin {
-                            Text("已回满")
+                            Text("widget.resin.full")
                                 .font(.footnote)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .foregroundColor(.gray)

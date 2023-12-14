@@ -97,19 +97,19 @@ extension WidgetBackground {
 
     var iconName: String? {
         switch identifier {
-        case "风元素":
+        case "game.elements.anemo":
             return "风元素图标"
-        case "水元素":
+        case "game.elements.hydro":
             return "水元素图标"
-        case "冰元素":
+        case "game.elements.cryo":
             return "冰元素图标"
-        case "火元素":
+        case "game.elements.pyro":
             return "火元素图标"
-        case "岩元素":
+        case "game.elements.geo":
             return "岩元素图标"
-        case "雷元素":
+        case "game.elements.dendro":
             return "雷元素图标"
-        case "草元素":
+        case "game.elements.dendro":
             return "草元素图标"
         default:
             return nil
@@ -118,86 +118,86 @@ extension WidgetBackground {
 
     var colors: [Color] {
         switch identifier {
-        case "★★★★紫":
+        case "app.background.purple":
             return [
                 Color("bgColor.purple.1"),
                 Color("bgColor.purple.2"),
                 Color("bgColor.purple.3"),
             ]
-        case "★★★★★金":
+        case "app.background.gold":
             return [
                 Color("bgColor.yellow.1"),
                 Color("bgColor.yellow.2"),
                 Color("bgColor.yellow.3"),
             ]
-        case "★灰":
+        case "app.background.gray":
             return [
                 Color("bgColor.gray.1"),
                 Color("bgColor.gray.2"),
                 Color("bgColor.gray.3"),
             ]
-        case "★★绿":
+        case "app.background.green":
             return [
                 Color("bgColor.green.1"),
                 Color("bgColor.green.2"),
                 Color("bgColor.green.3"),
             ]
-        case "★★★蓝":
+        case "app.background.blue":
             return [
                 Color("bgColor.blue.1"),
                 Color("bgColor.blue.2"),
                 Color("bgColor.blue.3"),
             ]
-        case "★★★★★红":
+        case "app.background.red":
             return [
                 Color("bgColor.red.1"),
                 Color("bgColor.red.2"),
                 Color("bgColor.red.3"),
             ]
 
-        case "风元素":
+        case "game.elements.anemo":
             return [
                 Color("bgColor.wind.1"),
                 Color("bgColor.wind.2"),
                 Color("bgColor.wind.3"),
             ]
-        case "水元素":
+        case "game.elements.hydro":
             return [
                 Color("bgColor.water.1"),
                 Color("bgColor.water.2"),
                 Color("bgColor.water.3"),
             ]
-        case "冰元素":
+        case "game.elements.cryo":
             return [
                 Color("bgColor.ice.1"),
                 Color("bgColor.ice.2"),
                 Color("bgColor.ice.3"),
             ]
-        case "火元素":
+        case "game.elements.pyro":
             return [
                 Color("bgColor.fire.1"),
                 Color("bgColor.fire.2"),
                 Color("bgColor.fire.3"),
             ]
-        case "岩元素":
+        case "game.elements.geo":
             return [
                 Color("bgColor.stone.1"),
                 Color("bgColor.stone.2"),
                 Color("bgColor.stone.3"),
             ]
-        case "雷元素":
+        case "game.elements.dendro":
             return [
                 Color("bgColor.thunder.1"),
                 Color("bgColor.thunder.2"),
                 Color("bgColor.thunder.3"),
             ]
-        case "草元素":
+        case "game.elements.dendro":
             return [
                 Color("bgColor.glass.1"),
                 Color("bgColor.glass.2"),
                 Color("bgColor.glass.3"),
             ]
-        case "纠缠之缘":
+        case "app.background.intertwinedFate":
             return [
                 Color("bgColor.intertwinedFate.1"),
                 Color("bgColor.intertwinedFate.2"),

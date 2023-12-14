@@ -231,11 +231,11 @@ extension GachaFilter.Rank: CustomStringConvertible {
     var description: String {
         switch self {
         case .five:
-            return "五星".localized
+            return "app.gacha.record.5star".localized
         case .fourAndFive:
-            return "四星及五星".localized
+            return "app.gacha.record.4&5star".localized
         case .threeAndFourAndFive:
-            return "所有记录".localized
+            return "app.gacha.record.all".localized
         }
     }
 }

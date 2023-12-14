@@ -40,7 +40,7 @@ struct LatestVersionInfoView: View {
                         .padding(.bottom)
                     if !getLocalizedNoticeInfos(meta: newestVersionInfos!)
                         .isEmpty {
-                        Text("更新公告")
+                        Text("app.update.announcement.title")
                             .bold()
                             .font(.title2)
                             .padding(.vertical, 2)
@@ -53,7 +53,7 @@ struct LatestVersionInfoView: View {
                         Divider()
                             .padding(.vertical)
                     }
-                    Text("更新内容：")
+                    Text("app.update.content.title")
                         .bold()
                         .font(.title2)
                         .padding(.vertical, 2)
@@ -75,7 +75,7 @@ struct LatestVersionInfoView: View {
                                     string: "itms-beta://beta.itunes.apple.com/v1/app/1635319193"
                                 )!
                             ) {
-                                Text("前往TestFlight更新")
+                                Text("app.update.goto.tf")
                             }
                             .padding(.top)
                         case .AppStore:
@@ -84,7 +84,7 @@ struct LatestVersionInfoView: View {
                                     string: "itms-apps://apps.apple.com/us/app/id1635319193"
                                 )!
                             ) {
-                                Text("前往App Store更新")
+                                Text("app.update.goto.as")
                             }
                             .padding(.top)
                         }
@@ -93,7 +93,7 @@ struct LatestVersionInfoView: View {
                 }
                 .padding(.horizontal)
             }
-            .navigationTitle(isJustUpdated ? "感谢您更新到最新版本" : "发现新版本")
+            .navigationTitle(isJustUpdated ? "app.update.thanks" : "app.update.found")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("latestVersionInfoView.affirmative") {

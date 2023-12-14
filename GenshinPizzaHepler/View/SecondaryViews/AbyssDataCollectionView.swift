@@ -25,11 +25,11 @@ class AbyssDataCollectionViewModel: ObservableObject {
     // MARK: Internal
 
     enum ShowingData: String, CaseIterable, Identifiable {
-        case abyssAvatarsUtilization = "深渊角色使用率"
+        case abyssAvatarsUtilization = "app.abyss.rank.usageRate.characters"
         case pvpUtilization = "abyssDataCollection.usageRate.characterSansRestart"
-        case teamUtilization = "深渊队伍使用率"
-        case fullStarHoldingRate = "满星玩家持有率"
-        case holdingRate = "全员角色持有率"
+        case teamUtilization = "app.abyss.rank.usageRate.teams"
+        case fullStarHoldingRate = "app.abyss.rank.holdingRate.36star"
+        case holdingRate = "app.abyss.rank.holdingRate.all"
 
         // MARK: Internal
 
@@ -347,7 +347,7 @@ struct AbyssDataCollectionView: View {
             NavigationStack {
                 WebBroswerView(url: url)
                     .dismissableSheet(isSheetShow: $isWebSheetShow)
-                    .navigationTitle("深渊统计榜单FAQ")
+                    .navigationTitle("app.abyss.rank.faq")
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
@@ -440,11 +440,16 @@ struct AbyssDataCollectionView: View {
                         formatter.timeStyle = .medium
                         return formatter.string(from: Date())
                     }()
-                    Text(
-                        "共统计\(abyssDataCollectionViewModel.totalDataCount)用户\(abyssDataCollectionViewModel.paramsDescription)\n\(abyssDataCollectionViewModel.paramsDetailDescription)·生成于\(date)"
-                    )
-                    .font(.footnote)
-                    .minimumScaleFactor(0.5)
+                    let statInfo = String(
+                        format: "app.abyss.stat.1:%lld%@%@%@",
+                        abyssDataCollectionViewModel.totalDataCount,
+                        abyssDataCollectionViewModel.paramsDescription,
+                        abyssDataCollectionViewModel.paramsDetailDescription,
+                        date
+                    ).localized
+                    Text(statInfo)
+                        .font(.footnote)
+                        .minimumScaleFactor(0.5)
                     Spacer()
                     Image("AppIconHD")
                         .resizable()
@@ -508,11 +513,14 @@ private struct ShowAvatarPercentageView: View {
                 case let .success(data):
                     let data = data.data
                     Section {
-                        Text(
-                            "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
-                        )
-                        .font(.footnote)
-                        .textCase(.none)
+                        let statInfo = String(
+                            format: "app.abyss.stat.2:%lld%@",
+                            data.totalUsers,
+                            abyssDataCollectionViewModel.paramsDescription
+                        ).localized
+                        Text(statInfo)
+                            .font(.footnote)
+                            .textCase(.none)
                     }
                     Section {
                         ForEach(data.avatars.sorted(by: {
@@ -616,10 +624,13 @@ private struct ShowAvatarPercentageViewWithSection: View {
                     let data = data.data
                     Section {
                         VStack(alignment: .leading) {
-                            Text(
-                                "共统计\(data.totalUsers)用户\(abyssDataCollectionViewModel.paramsDescription)"
-                            )
-                            .padding(.bottom, 5)
+                            let statInfo = String(
+                                format: "app.abyss.stat.2:%lld%@",
+                                data.totalUsers,
+                                abyssDataCollectionViewModel.paramsDescription
+                            ).localized
+                            Text(statInfo)
+                                .padding(.bottom, 5)
                             Text("abyssDataCollection.usageRate.disclaimer")
                         }
                         .font(.footnote)
@@ -925,7 +936,7 @@ private struct ShowTeamPercentageView: View {
 
     func descriptionPaneText(data: TeamUtilizationData) -> String {
         String(
-            format: NSLocalizedString("共统计%lld用户%@", comment: ""),
+            format: NSLocalizedString("app.abyss.stat.2:%lld%@", comment: ""),
             data.totalUsers,
             abyssDataCollectionViewModel.paramsDescription
         ).replacingOccurrences(of: "·", with: "\n")
@@ -1003,7 +1014,7 @@ private struct AvatarHoldingParamsSettingBar: View {
 
     var body: some View {
         Menu {
-            Button("所有服务器") { params.serverChoice = .all }
+            Button("app.abyss.rank.server.filter.all") { params.serverChoice = .all }
             ForEach(Server.allCases, id: \.rawValue) { server in
                 Button("\(server.localized)") {
                     params.serverChoice = .server(server)
@@ -1044,7 +1055,7 @@ struct AvatarHoldingAPIParameters {
             return formatter.string(from: date)
         }()
         return String(
-            format: NSLocalizedString("·仅自%@后提交的数据", comment: ""),
+            format: NSLocalizedString("app.abyss.rank.note.3", comment: ""),
             dateString
         )
     }
@@ -1062,7 +1073,7 @@ private struct FullStarAvatarHoldingParamsSettingBar: View {
 
     var body: some View {
         Menu {
-            Button("所有服务器") { params.serverChoice = .all }
+            Button("app.abyss.rank.server.filter.all") { params.serverChoice = .all }
             ForEach(Server.allCases, id: \.rawValue) { server in
                 Button("\(server.localized)") {
                     params.serverChoice = .server(server)
@@ -1115,7 +1126,7 @@ private struct UtilizationParasSettingBar: View {
 
     var body: some View {
         Menu {
-            Button("所有服务器") { params.serverChoice = .all }
+            Button("app.abyss.rank.server.filter.all") { params.serverChoice = .all }
             ForEach(Server.allCases, id: \.rawValue) { server in
                 Button("\(server.localized)") {
                     params.serverChoice = .server(server)
@@ -1127,12 +1138,14 @@ private struct UtilizationParasSettingBar: View {
         Spacer()
         Menu {
             ForEach((9 ... 12).reversed(), id: \.self) { number in
-                Button("\(number)层") {
+                let floorString = String(format: "app.abyss.rank.floor.title:%lld", number).localized
+                Button(floorString) {
                     params.floor = number
                 }
             }
         } label: {
-            Text("\(params.floor)层")
+            let floorString = String(format: "app.abyss.rank.floor.title:%lld", params.floor).localized
+            Text(floorString)
         }
         Spacer()
         Menu {
@@ -1163,12 +1176,12 @@ struct UtilizationAPIParameters {
     }
 
     func describe() -> String {
-        "·仅包含满星玩家·计算方法：角色使用人数/角色拥有人数".localized
+        "app.abyss.rank.note.1".localized
     }
 
     func detail() -> String {
         String(
-            format: NSLocalizedString("%@·%@·%lld层", comment: "detail"),
+            format: NSLocalizedString("app.abyss.collection.1:%@%@%lld", comment: "detail"),
             serverChoice.describe(),
             season.describe(),
             floor
@@ -1184,7 +1197,7 @@ private struct TeamUtilizationParasSettingBar: View {
 
     var body: some View {
         Menu {
-            Button("所有服务器") { params.serverChoice = .all }
+            Button("app.abyss.rank.server.filter.all") { params.serverChoice = .all }
             ForEach(Server.allCases, id: \.rawValue) { server in
                 Button("\(server.localized)") {
                     params.serverChoice = .server(server)
@@ -1196,12 +1209,14 @@ private struct TeamUtilizationParasSettingBar: View {
         Spacer()
         Menu {
             ForEach((9 ... 12).reversed(), id: \.self) { number in
-                Button("\(number)层") {
+                let floorString = String(format: "app.abyss.rank.floor.title:%lld", number).localized
+                Button(floorString) {
                     params.floor = number
                 }
             }
         } label: {
-            Text("\(params.floor)层")
+            let floorString = String(format: "app.abyss.rank.floor.title:%lld", params.floor).localized
+            Text(floorString)
         }
         Spacer()
         Menu {
@@ -1233,9 +1248,9 @@ private struct TeamUtilizationParasSettingBar: View {
 
 struct TeamUtilizationAPIParameters {
     enum Half: String, CaseIterable {
-        case all = "整层"
-        case secondHalf = "下半"
-        case firstHalf = "上半"
+        case all = "app.abyss.rank.season.both"
+        case secondHalf = "app.abyss.half.2"
+        case firstHalf = "app.abyss.half.1"
     }
 
     var season: AbyssSeason = .from(Date())
@@ -1255,12 +1270,12 @@ struct TeamUtilizationAPIParameters {
     }
 
     func describe() -> String {
-        "·仅包含满星玩家·包含旅行者的队伍已合并".localized
+        "app.abyss.rank.note.2".localized
     }
 
     func detail() -> String {
         String(
-            format: NSLocalizedString("%@·%@·%lld层·%@", comment: "detail"),
+            format: NSLocalizedString("app.abyss.collection.2:%@%@%lld%@", comment: "detail"),
             serverChoice.describe(),
             season.describe(),
             floor,
@@ -1313,9 +1328,9 @@ extension AbyssSeason {
 //        let month = Calendar.current.component(.month, from: yearMonth)
         let half = {
             if String(seasonString.suffix(1)) == "0" {
-                return "上".localized
+                return "app.abyss.rank.season.1".localized
             } else {
-                return "下".localized
+                return "app.abyss.rank.season.2".localized
             }
         }()
         let yearStr = String(seasonString.prefix(6).prefix(4))
@@ -1323,7 +1338,7 @@ extension AbyssSeason {
             return ""
         }
         let monthStr = String(describing: monthNum)
-        return yearStr + " " + monthStr + "月".localized + half
+        return yearStr + " " + monthStr + "app.abyss.rank.season.unit".localized + half
     }
 
     fileprivate static func choices(
@@ -1364,7 +1379,7 @@ enum ServerChoice {
     func describe() -> String {
         switch self {
         case .all:
-            return "所有服务器".localized
+            return "app.abyss.rank.server.filter.all".localized
         case let .server(server):
             return server.localized
         }

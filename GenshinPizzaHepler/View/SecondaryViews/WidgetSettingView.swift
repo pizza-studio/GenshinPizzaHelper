@@ -25,16 +25,16 @@ struct WidgetSettingView: View {
         List {
             Section {
                 Button { isWidgetTipsSheetShow.toggle() } label: {
-                    Text("使用小组件遇到了问题？")
+                    Text("app.tips.widget.general.title")
                         .multilineTextAlignment(.leading)
                 }
             }
 
             Section {
                 SettingSlider(
-                    title: "主屏幕小组件同步频率",
+                    title: "widget.settings.sync.frequency.homeScreen",
                     value: $mainWidgetSyncFrequencyInMinute,
-                    valueFormatterString: "每%@",
+                    valueFormatterString: "widget.settings.sync.speed:%@",
                     bounds: 30 ... 300,
                     step: 10
                 ) { value in
@@ -45,9 +45,9 @@ struct WidgetSettingView: View {
                     return formatter.string(from: value * 60.0)!
                 }
                 SettingSlider(
-                    title: "锁定屏幕小组件同步频率",
+                    title: "widget.settings.sync.frequency.lockScreen",
                     value: $lockscreenWidgetSyncFrequencyInMinute,
-                    valueFormatterString: "每%@",
+                    valueFormatterString: "widget.settings.sync.speed:%@",
                     bounds: 30 ... 300,
                     step: 10
                 ) { value in
@@ -58,28 +58,28 @@ struct WidgetSettingView: View {
                     return formatter.string(from: value * 60.0)!
                 }
             } header: {
-                Text("小组件同步频率")
+                Text("widget.settings.sync.frequency.title")
             } footer: {
                 Text(
-                    "小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。"
+                    "widget.refresh.note"
                 )
             }
 
             Section {
                 SettingSlider(
-                    title: "洞天宝钱回复速度",
+                    title: "settings.widget.realmCurrency.speed",
                     value: $homeCoinRefreshFrequency,
-                    valueFormatterString: "每小时%@个",
+                    valueFormatterString: "widget.settings.realmCurrency.speed:%@",
                     bounds: 4 ... 30,
                     step: 2
                 ) { value in
                     "\(Int(value))"
                 }
             } footer: {
-                Text("（仅简洁模式）未正确设置可能导致洞天宝钱通知无法正确触发，洞天宝钱数量不正确。")
+                Text("settings.widget.simplifiedMode.note.notification")
             }
         }
-        .navigationBarTitle("小组件设置", displayMode: .inline)
+        .navigationBarTitle("settings.widget.title", displayMode: .inline)
         .sheet(isPresented: $isWidgetTipsSheetShow) {
             WidgetTipsView(isSheetShow: $isWidgetTipsSheetShow)
         }

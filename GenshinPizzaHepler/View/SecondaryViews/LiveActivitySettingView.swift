@@ -21,16 +21,16 @@ struct LiveActivitySettingView: View {
     var body: some View {
         Section {
             NavigationLink(value: SettingsView.Navigation.resinTimerSetting) {
-                Label("树脂计时器设置", systemSymbol: .timer)
+                Label("settings.resinTimer.title", systemSymbol: .timer)
             }
         } footer: {
-            Button("树脂计时器是什么？") {
+            Button("widget.autoResinTimer.explanation") {
                 isAlertShow.toggle()
             }
             .font(.footnote)
         }
         .alert(
-            "若开启，在退出本App时会自动启用一个「实时活动」树脂计时器。默认为顶置的账号，或树脂最少的账号开启计时器。您也可以在「概览」页长按某个账号的卡片手动开启，或启用多个计时器。",
+            "widget.autoResinTimer.explanation.detail",
             isPresented: $isAlertShow
         ) {
             Button("OK") {
@@ -71,12 +71,12 @@ struct LiveActivitySettingDetailView: View {
             if !allowLiveActivity {
                 Section {
                     Label {
-                        Text("实时活动功能未开启")
+                        Text("settings.realtimeActivity.notEnabled")
                     } icon: {
                         Image(systemSymbol: .exclamationmarkCircle)
                             .foregroundColor(.red)
                     }
-                    Button("前往设置开启实时活动功能") {
+                    Button("widget.autoResinTimer.explanation.gotoSettings") {
                         UIApplication.shared
                             .open(URL(
                                 string: UIApplication
@@ -89,41 +89,41 @@ struct LiveActivitySettingDetailView: View {
             Group {
                 Section {
                     Toggle(
-                        "自动启用树脂计时器",
+                        "widget.autoResinTimer",
                         isOn: $autoDeliveryResinTimerLiveActivity
                             .animation()
                     )
                 }
                 Section {
-                    Button("如何隐藏灵动岛？如何关闭树脂计时器？") {
+                    Button("settings.dynamicIsland.howToHide") {
                         isHowToCloseDynamicIslandAlertShow.toggle()
                     }
                 }
                 Section {
                     Toggle(
-                        "展示派遣探索",
+                        "settings.showExpedition.title",
                         isOn: $resinRecoveryLiveActivityShowExpedition
                     )
                 }
                 Section {
                     Toggle(
-                        "使用透明背景",
+                        "settings.useTransparentBackground.title",
                         isOn: $resinRecoveryLiveActivityUseEmptyBackground
                             .animation()
                     )
                     if !resinRecoveryLiveActivityUseEmptyBackground {
                         Toggle(
-                            "随机背景",
+                            "settings.randomBackground.title",
                             isOn: useRandomBackground.animation()
                         )
                         if resinRecoveryLiveActivityUseCustomizeBackground {
-                            NavigationLink("选择背景") {
+                            NavigationLink("settings.background.choose") {
                                 LiveActivityBackgroundPicker()
                             }
                         }
                     }
                 } header: {
-                    Text("树脂计时器背景")
+                    Text("settings.resinTimer.background.title")
                 }
             }
             .disabled(!allowLiveActivity)
@@ -137,7 +137,7 @@ struct LiveActivitySettingDetailView: View {
                 }
             }
         }
-        .navigationTitle("树脂计时器设置")
+        .navigationTitle("settings.resinTimer.title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isHelpSheetShow) {
             NavigationStack {
@@ -148,14 +148,14 @@ struct LiveActivitySettingDetailView: View {
             }
         }
         .alert(
-            "隐藏灵动岛 / 关闭树脂计时器",
+            "settings.dynamicIsland.title",
             isPresented: $isHowToCloseDynamicIslandAlertShow
         ) {
             Button("OK") {
                 isHowToCloseDynamicIslandAlertShow.toggle()
             }
         } message: {
-            Text("您可以从左右向中间滑动灵动岛，即可隐藏灵动岛。\n在锁定屏幕上左滑树脂计时器，即可关闭树脂计时器和灵动岛。")
+            Text("settings.dynamicIsland.howToHide.answer")
         }
         .onAppear {
             withAnimation {

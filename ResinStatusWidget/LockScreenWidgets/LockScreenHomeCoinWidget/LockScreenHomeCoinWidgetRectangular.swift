@@ -84,7 +84,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                     GridRow(alignment: .lastTextBaseline) {
                         if data.resinInformation.calculatedCurrentResin(referTo: entry.date) >= data.resinInformation
                             .maxResin {
-                            Text("已回满")
+                            Text("widget.resin.full")
                         } else {
                             Text(
                                 "\(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
@@ -93,7 +93,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         Spacer()
                         if data.homeCoinInformation.calculatedCurrentHomeCoin(referTo: entry.date) >= data
                             .homeCoinInformation.maxHomeCoin {
-                            Text("已回满")
+                            Text("widget.resin.full")
                         } else {
                             Text(
                                 "\(dateFormatter.string(from: data.homeCoinInformation.fullTime))"
@@ -205,7 +205,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                     GridRow(alignment: .lastTextBaseline) {
                         if data.resinInformation.calculatedCurrentResin(referTo: entry.date) >= data.resinInformation
                             .maxResin {
-                            Text("已回满")
+                            Text("widget.resin.full")
                         } else {
                             Text(
                                 "\(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
@@ -214,7 +214,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                         Spacer()
                         if data.homeCoinInformation.calculatedCurrentHomeCoin(referTo: entry.date) >= data
                             .homeCoinInformation.maxHomeCoin {
-                            Text("已回满")
+                            Text("widget.resin.full")
                         } else {
                             Text(
                                 "\(dateFormatter.string(from: data.homeCoinInformation.fullTime))"

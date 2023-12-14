@@ -101,13 +101,13 @@ extension FetchError {
     public var description: String {
         switch self {
         case .defaultStatus:
-            return "请先刷新以获取树脂状态".localized
+            return "error.refresh".localized
         case .noFetchInfo:
-            return (isMac ? "请右键编辑小组件选择账号" : "请长按小组件选择账号").localized
+            return (isMac ? "error.selectAccount.mac" : "error.selectAccount.ios").localized
         case let .cookieInvalid(retcode, _):
             return String(
                 format: NSLocalizedString(
-                    "错误码%lld：Cookie失效，请重新登录",
+                    "error.cookieInvalid:%lld",
                     comment: "错误码%@：Cookie失效，请重新登录"
                 ),
                 retcode
@@ -115,7 +115,7 @@ extension FetchError {
         case let .unmachedAccountCookie(retcode, _):
             return String(
                 format: NSLocalizedString(
-                    "错误码%lld：米游社账号与UID不匹配，请手动输入UID",
+                    "error.uidNotMatch:%lld",
                     comment: "错误码%@：米游社账号与UID不匹配"
                 ),
                 retcode
@@ -123,28 +123,28 @@ extension FetchError {
         case let .accountInvalid(retcode, _):
             return String(
                 format: NSLocalizedString(
-                    "错误码%lld：UID有误",
+                    "error.uidError:%lld",
                     comment: "错误码%@：UID有误"
                 ),
                 retcode
             )
         case .dataNotFound:
-            return "请前往米游社（或Hoyolab）打开旅行便笺功能".localized
+            return "error.gotoHoyolab".localized
         case .decodeError:
-            return "解码错误：请检查网络环境".localized
+            return "error.decodeError".localized
         case .requestError:
-            return "网络错误".localized
+            return "error.networkError".localized
         case .notLoginError:
             return "settings.account.error.failedFromFetchingAccountInformation".localized
         case let .unknownError(retcode, _):
             return String(
-                format: NSLocalizedString("未知错误码：%lld", comment: "未知错误码：%lld"),
+                format: NSLocalizedString("error.unknown:%lld", comment: "error.unknown:%lld"),
                 retcode
             )
         case .accountAbnormal:
             return "requestRelated.accountStatusAbnormal.errorMessage".localized
         case .noStoken:
-            return "请重新登录本账号以获取stoken".localized
+            return "settings.notification.note.relogin".localized
         default:
             return ""
         }
@@ -174,18 +174,18 @@ extension FetchError {
             case let .dataTaskError(message):
                 return "\(message)"
             case .noResponseData:
-                return "无返回数据".localized
+                return "error.noReturnBack".localized
             case .responseError:
-                return "无响应".localized
+                return "error.noResponse".localized
             default:
-                return "未知错误".localized
+                return "error.unknown".localized
             }
         case .accountAbnormal:
             return "requestRelated.accountStatusAbnormal.promptForVerificationInApp".localized
         case let .unknownError(_, message):
             return message
         case .noStoken:
-            return "请重新登录本账号以获取stoken".localized
+            return "settings.notification.note.relogin".localized
         default:
             return ""
         }

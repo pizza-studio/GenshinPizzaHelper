@@ -38,7 +38,7 @@ struct WatchAccountDetailView: View {
                             Group {
                                 Divider()
                                 WatchAccountDetailItemView(
-                                    title: "参量质变仪",
+                                    title: "app.dailynote.card.transformer",
                                     value: intervalFormatter
                                         .string(
                                             from: TimeInterval
@@ -48,7 +48,7 @@ struct WatchAccountDetailView: View {
                                 )
                                 Divider()
                                 WatchAccountDetailItemView(
-                                    title: "周本折扣",
+                                    title: "app.dailynote.card.weeklyBoss",
                                     value: "\(data.weeklyBossesInformation.remainResinDiscount) / \(data.weeklyBossesInformation.totalResinDiscount)",
                                     icon: Image("征讨领域")
                                 )
@@ -125,7 +125,7 @@ private struct WatchEachExpeditionView: View {
                 }
             } else {
                 VStack(alignment: .leading) {
-                    Text(expedition.isFinished ? "已完成" : "未完成")
+                    Text(expedition.isFinished ? "app.finished" : "未完成")
                         .font(.footnote)
                     percentageBar(expedition.isFinished ? 0 : 1)
                 }

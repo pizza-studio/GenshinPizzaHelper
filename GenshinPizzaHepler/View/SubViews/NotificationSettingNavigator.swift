@@ -74,14 +74,14 @@ struct NotificationSettingNavigator: View {
                 .animation(.easeInOut, value: masterSwitch.wrappedValue)
             }
             if !allowNotification {
-                Button("前往设置开启通知") {
+                Button("settings.notification.gotoSettings") {
                     UIApplication.shared
                         .open(URL(string: UIApplication.openSettingsURLString)!)
                 }
             }
         } footer: {
             if !allowNotification {
-                Text("未启用通知，请前往设置开启。")
+                Text("settings.notification.notEnabled")
             } else {
                 if masterSwitch.wrappedValue {
                     Button("settings.howToUseNotifications") {
@@ -94,7 +94,7 @@ struct NotificationSettingNavigator: View {
         .alert(isPresented: $isNotificationHintShow) {
             Alert(
                 title: Text(
-                    "您的通知均在本地创建，并在小组件自动刷新时，或您主动打开App时自动更新。\n长时间未打开App或未使用小组件可能会导致通知不准确。\n小组件若处于简洁模式下，部分通知可能仅能通过打开App刷新。"
+                    "settings.notification.note.update"
                 )
             )
         }

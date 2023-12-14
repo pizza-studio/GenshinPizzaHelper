@@ -67,9 +67,11 @@ struct GachaChartView: View {
                         gachaViewModel.filter.gachaType.localizedDescription()
                     )
                     Spacer()
-                    Button(
-                        "切换为\(gachaViewModel.filter.gachaType.nextOne().localizedDescription())"
-                    ) {
+                    let switchContent = String(
+                        format: "app.gacha.chart.switch.button:%@",
+                        gachaViewModel.filter.gachaType.nextOne().localizedDescription()
+                    ).localized
+                    Button(switchContent) {
                         withAnimation {
                             gachaViewModel.filter.gachaType = gachaViewModel
                                 .filter.gachaType.nextOne()
@@ -113,7 +115,7 @@ struct GachaChartView: View {
                                 Text(uid)
                             }
                         } else {
-                            Text("请点击右上角获取抽卡记录")
+                            Text("app.gacha.get.button")
                         }
                     }
                 }
@@ -189,7 +191,7 @@ private struct GachaItemChart: View {
         Chart {
             ForEach(items, id: \.0.id) { item in
                 BarMark(
-                    x: .value("抽数", item.count),
+                    x: .value("sys.pull", item.count),
                     y: .value("角色", item.0.id),
                     width: 20
                 )
@@ -207,7 +209,7 @@ private struct GachaItemChart: View {
                         }
                     }
                 }
-                .foregroundStyle(by: .value("抽数", item.0.id))
+                .foregroundStyle(by: .value("sys.pull", item.0.id))
             }
             if !fiveStarItems.isEmpty {
                 RuleMark(x: .value(
@@ -220,7 +222,7 @@ private struct GachaItemChart: View {
                 .annotation(alignment: .topLeading) {
                     if isFirst {
                         Text(
-                            "平均抽数："
+                            "app.gacha.avg.pull"
                                 .localized + averagePullsCount.description
                         )
                         .font(.caption).foregroundColor(.gray)
@@ -332,12 +334,12 @@ private struct GachaTimeChart: View {
     var body: some View {
         Chart(gachaTypeDateCount) {
             LineMark(
-                x: .value("日期", $0.date),
-                y: .value("抽数", $0.count)
+                x: .value("sys.date", $0.date),
+                y: .value("sys.pull", $0.count)
             )
             .foregroundStyle(color)
-//            .foregroundStyle(by: .value("祈愿类型", $0.type.localizedDescription()))
-            PointMark(x: .value("日期", $0.date), y: .value("抽数", $0.count))
+//            .foregroundStyle(by: .value("app.gacha.label.gachaType", $0.type.localizedDescription()))
+            PointMark(x: .value("sys.date", $0.date), y: .value("sys.pull", $0.count))
                 .foregroundStyle(by: .value("是否有五星", $0.contain5Star))
         }
         .chartLegend(.hidden)

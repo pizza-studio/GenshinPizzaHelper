@@ -31,8 +31,8 @@ struct MainWidget: Widget {
         ) { entry in
             WidgetViewEntryView(entry: entry)
         }
-        .configurationDisplayName("原神状态")
-        .description("查询树脂恢复状态")
+        .configurationDisplayName("widget.status.title")
+        .description("widget.status.enquiry.title")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

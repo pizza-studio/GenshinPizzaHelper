@@ -19,12 +19,12 @@ struct AlternativeWatchCornerResinWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂")
+            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
         ) { entry in
             AlternativeWatchCornerResinWidgetView(entry: entry)
         }
         .configurationDisplayName("树脂")
-        .description("树脂回复状态")
+        .description("widget.intro.resin")
         #if os(watchOS)
             .supportedFamilies([.accessoryCorner])
         #endif

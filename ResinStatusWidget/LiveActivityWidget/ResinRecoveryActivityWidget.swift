@@ -55,10 +55,12 @@ struct ResinRecoveryActivityWidget: Widget {
                                 .scaledToFit()
                                 .frame(maxHeight: 40)
                             VStack(alignment: .leading) {
-                                Text(
-                                    "距离\(context.state.next20ResinCount)树脂"
-                                )
-                                .font(.caption2)
+                                let nextCount = String(
+                                    format: "widget.next20Resin:%lld",
+                                    context.state.next20ResinCount
+                                ).localized
+                                Text(nextCount)
+                                    .font(.caption2)
                                 Text(
                                     timerInterval: Date() ... context.state
                                         .next20ResinRecoveryTime,
@@ -80,7 +82,7 @@ struct ResinRecoveryActivityWidget: Widget {
                                 .scaledToFit()
                                 .frame(maxHeight: 40)
                             VStack(alignment: .leading) {
-                                Text("距离160树脂")
+                                Text("widget.next160Resin")
                                     .font(.caption2)
                                 Text(
                                     timerInterval: Date() ... context.state
@@ -171,7 +173,9 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             .scaledToFit()
                             .frame(maxHeight: 38)
                         VStack(alignment: .leading) {
-                            Text("距离\(context.state.next20ResinCount)树脂")
+                            let nextCount = String(format: "widget.next20Resin:%lld", context.state.next20ResinCount)
+                                .localized
+                            Text(nextCount)
                                 .font(.caption2)
                             Text(
                                 timerInterval: Date() ... context.state
@@ -191,7 +195,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                         .scaledToFit()
                         .frame(maxHeight: 35)
                     VStack(alignment: .leading) {
-                        Text("距离160树脂")
+                        Text("widget.next160Resin")
                             .font(.caption2)
                         Text(
                             timerInterval: Date() ... context.state
@@ -212,7 +216,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             .scaledToFit()
                             .frame(maxHeight: 29)
                         VStack(alignment: .leading) {
-                            Text("距离派遣探索全部完成")
+                            Text("widget.expedition.timeToAllCompletion")
                                 .font(.caption2)
                             Text(
                                 timerInterval: Date() ... time,

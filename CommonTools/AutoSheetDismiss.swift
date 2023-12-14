@@ -88,27 +88,3 @@ extension UIViewController {
         }
     }
 }
-
-// MARK: - ModalContent
-
-struct ModalContent: View {
-    // MARK: Internal
-
-    var body: some View {
-        VStack {
-            Text("Hello")
-                .padding()
-
-            Button {
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                Text("Dismiss")
-            }
-        }
-    }
-
-    // MARK: Private
-
-    @Environment(\.presentationMode)
-    private var presentationMode
-}

@@ -48,7 +48,7 @@ struct ContactUsView: View {
                 if isPizzaStudioDetailShow {
                     Link(destination: URL(string: "https://pizzastudio.org")!) {
                         Label {
-                            Text("官方网站")
+                            Text("contact.officialWebsite")
                         } icon: {
                             Image("homepage")
                                 .resizable()
@@ -75,7 +75,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("GitHub主页")
+                            Text("contact.github")
                         } icon: {
                             Image("github")
                                 .resizable()
@@ -87,7 +87,7 @@ struct ContactUsView: View {
                             destination: URL(string: "https://twitter.com/@PizzaStudio_jp")!
                         ) {
                             Label {
-                                Text("官方X（Twitter）账号")
+                                Text("contact.twitter")
                             } icon: {
                                 Image("twitter")
                                     .resizable()
@@ -139,7 +139,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("Bilibili主页")
+                            Text("contact.bilibili")
                         } icon: {
                             Image("bilibili")
                                 .resizable()
@@ -152,7 +152,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("GitHub主页")
+                            Text("contact.github")
                         } icon: {
                             Image("github")
                                 .resizable()
@@ -169,7 +169,7 @@ struct ContactUsView: View {
                         .clipShape(Circle())
                         .frame(width: 40, height: 40)
                     VStack(alignment: .leading) {
-                        Text("水里的碳酸钙")
+                        Text("contact.billHaku")
                             .bold()
                             .padding(.vertical, 5)
                     }
@@ -186,7 +186,7 @@ struct ContactUsView: View {
                 if isHakubillDetailShow {
                     Link(destination: URL(string: "https://hakubill.tech")!) {
                         Label {
-                            Text("个人主页")
+                            Text("contact.personalHP")
                         } icon: {
                             Image("homepage")
                                 .resizable()
@@ -210,7 +210,7 @@ struct ContactUsView: View {
                             URL(string: "https://twitter.com/Haku_Bill")!
                     ) {
                         Label {
-                            Text("Twitter主页")
+                            Text("contact.developer.twitter")
                         } icon: {
                             Image("twitter.old")
                                 .resizable()
@@ -223,7 +223,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("YouTube频道")
+                            Text("contact.developer.youtube")
                         } icon: {
                             Image("youtube")
                                 .resizable()
@@ -236,7 +236,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("Bilibili主页")
+                            Text("contact.bilibili")
                         } icon: {
                             Image("bilibili")
                                 .resizable()
@@ -249,7 +249,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("GitHub主页")
+                            Text("contact.github")
                         } icon: {
                             Image("github")
                                 .resizable()
@@ -285,7 +285,7 @@ struct ContactUsView: View {
                         destination: URL(string: "https://shikisuen.gitee.io/")!
                     ) {
                         Label {
-                            Text("个人主页")
+                            Text("contact.personalHP")
                         } icon: {
                             Image("homepage")
                                 .resizable()
@@ -309,7 +309,7 @@ struct ContactUsView: View {
                             URL(string: "https://twitter.com/ShikiSuen")!
                     ) {
                         Label {
-                            Text("Twitter主页")
+                            Text("contact.developer.twitter")
                         } icon: {
                             Image("twitter.old")
                                 .resizable()
@@ -322,7 +322,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("Bilibili主页")
+                            Text("contact.bilibili")
                         } icon: {
                             Image("bilibili")
                                 .resizable()
@@ -335,7 +335,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("GitHub主页")
+                            Text("contact.github")
                         } icon: {
                             Image("github")
                                 .resizable()
@@ -347,7 +347,7 @@ struct ContactUsView: View {
 
             // app contact
             Section(
-                header: Text("用户交流群"),
+                header: Text("contact.group.header"),
                 footer: Text(groupFooterText).textCase(.none)
             ) {
                 Menu {
@@ -357,7 +357,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("加入QQ频道")
+                            Text("about.group.qq.channel")
                         } icon: {
                             Image("qq.circle")
                                 .resizable()
@@ -408,7 +408,7 @@ struct ContactUsView: View {
                     }
                 } label: {
                     Label {
-                        Text("加入QQ群")
+                        Text("app.contact.joinQQGroup")
                     } icon: {
                         Image("qq")
                             .resizable()
@@ -420,7 +420,7 @@ struct ContactUsView: View {
                     destination: URL(string: "https://discord.gg/g8nCgKsaMe")!
                 ) {
                     Label {
-                        Text("加入Discord服务器")
+                        Text("app.contact.joinDiscordServer")
                     } icon: {
                         Image("discord")
                             .resizable()
@@ -484,12 +484,12 @@ struct ContactUsView: View {
             }
 
             // special thanks
-            Section(header: Text("翻译提供")) {
+            Section(header: Text("contact.translator.header")) {
                 Label {
                     HStack {
                         Text("Lava")
                         Spacer()
-                        Text("英文")
+                        Text("contact.translator.en")
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -500,9 +500,9 @@ struct ContactUsView: View {
                 }
                 Label {
                     HStack {
-                        Text("水里的碳酸钙")
+                        Text("contact.billHaku")
                         Spacer()
-                        Text("日文".localized + " & " + "英文".localized)
+                        Text("contact.translator.ja".localized + " & " + "contact.translator.en".localized)
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -515,7 +515,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("ShikiSuen")
                         Spacer()
-                        Text("繁体中文".localized + " & " + "日文".localized)
+                        Text("繁体中文".localized + " & " + "contact.translator.ja".localized)
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -533,7 +533,7 @@ struct ContactUsView: View {
                             URL(string: "https://twitter.com/hutao_hati")!
                     ) {
                         Label {
-                            Text("Twitter主页")
+                            Text("contact.developer.twitter")
                         } icon: {
                             Image("twitter.old")
                                 .resizable()
@@ -546,7 +546,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("YouTube频道")
+                            Text("contact.developer.youtube")
                         } icon: {
                             Image("youtube")
                                 .resizable()
@@ -569,9 +569,9 @@ struct ContactUsView: View {
                 } label: {
                     Label {
                         HStack {
-                            Text("たお👻🍑")
+                            Text("contact.translator.hatti")
                             Spacer()
-                            Text("日文")
+                            Text("contact.translator.ja")
                                 .foregroundColor(.gray)
                         }
                     } icon: {
@@ -585,7 +585,7 @@ struct ContactUsView: View {
                     HStack {
                         Text("Qi")
                         Spacer()
-                        Text("法文")
+                        Text("contact.translator.fr")
                             .foregroundColor(.gray)
                     }
                 } icon: {
@@ -674,7 +674,7 @@ struct ContactUsView: View {
                     }
                 }
             }
-            Section(header: Text("特别鸣谢")) {
+            Section(header: Text("donate.specialThanks")) {
                 Menu {
                     Link(
                         destination: URL(
@@ -694,7 +694,7 @@ struct ContactUsView: View {
                         HStack {
                             Text("郁离居士")
                             Spacer()
-                            Text("图片素材制作")
+                            Text("contact.thanks.ming")
                                 .foregroundColor(.gray)
                         }
                     } icon: {
@@ -719,7 +719,7 @@ struct ContactUsView: View {
                 }
             }
         }
-        .navigationTitle("开发者与联系方式")
+        .navigationTitle("contact.title")
         .navigationBarTitleDisplayMode(.inline)
     }
 

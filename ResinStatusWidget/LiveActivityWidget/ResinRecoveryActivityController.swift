@@ -151,12 +151,12 @@ extension CreateLiveActivityError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .notAllowed:
-            return "系统设置不允许本软件开启实时活动，请前往开启".localized
+            return "settings.resinTimer.error.systemSettings".localized
         case .noInfo:
-            return "账号未获取信息".localized
+            return "settings.resinTimer.error.noInfo".localized
         case let .otherError(message):
             return String(
-                format: NSLocalizedString("未知错误：%@", comment: ""),
+                format: NSLocalizedString("settings.resinTimer.error.unknown:%@", comment: ""),
                 message
             )
         }

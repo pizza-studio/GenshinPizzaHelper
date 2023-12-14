@@ -98,7 +98,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
                 getTimelineEntries(config: configs.first!, viewConfig: viewConfig)
             } else {
                 // 如果还没设置账号，要求进入App获取账号
-                viewConfig.addMessage("请长按进入小组件设置账号信息")
+                viewConfig.addMessage("请长按进入settings.widget.title账号信息")
                 let entry = ResinEntry(
                     date: currentDate,
                     result: .failure(FetchError.noFetchInfo),

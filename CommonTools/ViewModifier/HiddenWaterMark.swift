@@ -19,7 +19,7 @@ struct HiddenWaterMark: ViewModifier {
                     cornerRadius: 5,
                     style: .continuous
                 ))
-            Text("披萨小助手").font(.footnote).bold()
+            Text("app.name.short").font(.footnote).bold()
         }
         .frame(maxWidth: 270, maxHeight: 20)
         switch ThisDevice.notchType {

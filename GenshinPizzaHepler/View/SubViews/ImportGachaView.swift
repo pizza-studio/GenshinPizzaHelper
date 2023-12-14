@@ -46,7 +46,7 @@ struct ImportGachaView: View {
         .sheet(isPresented: $isHelpSheetShow, content: {
             HelpSheet(isShow: $isHelpSheetShow)
         })
-        .navigationTitle("导入UIGF祈愿记录")
+        .navigationTitle("app.gacha.import.uigf")
         .onChange(of: status, perform: { newValue in
             if case .succeed = newValue {
                 isCompleteAlertShow.toggle()
@@ -56,7 +56,7 @@ struct ImportGachaView: View {
             .init(
                 displayMode: .alert,
                 type: .complete(.green),
-                title: "成功导入祈愿数据"
+                title: "app.gacha.import.success"
             )
         })
         .alert(
@@ -64,7 +64,7 @@ struct ImportGachaView: View {
             isPresented: isReadyToStartAlertShow,
             presenting: alert,
             actions: { thisAlert in
-                Button("开始", role: .destructive, action: {
+                Button("sys.start", role: .destructive, action: {
                     switch thisAlert {
                     case let .readyToStartJson(url: url):
                         processJson(url: url)
@@ -115,7 +115,7 @@ struct ImportGachaView: View {
                 }
                 url.stopAccessingSecurityScopedResource()
             } else {
-                status = .failure("无法访问文件".localized)
+                status = .failure("app.gacha.import.fail.fileAccessFail".localized)
             }
         }
     }
@@ -137,7 +137,7 @@ struct ImportGachaView: View {
                           let worksheet = try? file.parseWorksheet(at: path),
                           let sharedStrings = try file.parseSharedStrings()
                     else {
-                        status = .failure("原始数据不存在".localized); return
+                        status = .failure("app.gacha.import.fail.rawDataNotExist".localized); return
                     }
                     guard let head = worksheet.data?.rows.first?.cells
                         .map({ $0.stringValue(sharedStrings) }),
@@ -147,7 +147,7 @@ struct ImportGachaView: View {
                         let itemTypeIndex = head.firstIndex(where: { $0 == "item_type" }),
                         let nameIndex = head.firstIndex(where: { $0 == "name" }),
                         let uidIndex = head.firstIndex(where: { $0 == "uid" }) else {
-                        status = .failure("数据表缺失数据".localized); return
+                        status = .failure("app.gacha.import.fail.dataTableMissingData".localized); return
                     }
                     let idIndex = head.firstIndex(where: { $0 == "id" })
                     let itemIdIndex = head.firstIndex(where: { $0 == "item_id" })
@@ -229,14 +229,14 @@ struct ImportGachaView: View {
                     if !items.isEmpty {
                         status = .succeed(.init(uid: items.first!.uid, totalCount: items.count, newCount: newCount))
                     } else {
-                        status = .failure("未成功从文件中解码数据".localized)
+                        status = .failure("app.gacha.import.fail.decodeError".localized)
                     }
                 } catch {
                     status = .failure(error.localizedDescription)
                 }
                 url.stopAccessingSecurityScopedResource()
             } else {
-                status = .failure("无法访问文件")
+                status = .failure("app.gacha.import.fail.fileAccessFail")
             }
         }
     }
@@ -377,7 +377,7 @@ private struct HelpSheet: View {
                             )!
                         ) {
                             Label(
-                                "支持UIGF的软件",
+                                "app.gacha.import.help.uigf.button",
                                 systemSymbol: .appBadgeCheckmark
                             )
                         }
@@ -388,16 +388,16 @@ private struct HelpSheet: View {
                             )!
                         ) {
                             Label(
-                                "支持UIGF的软件",
+                                "app.gacha.import.help.uigf.button",
                                 systemSymbol: .appBadgeCheckmark
                             )
                         }
                     }
                 } footer: {
-                    Text("我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。")
+                    Text("app.gacha.import.uigf.verified.note.2")
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                Section(header: Text("以下程序或平台的JSON导出格式已通过可用性验证").textCase(.none)) {
+                Section(header: Text("app.gacha.import.uigf.verified.json").textCase(.none)) {
                     Link("提瓦特小助手", destination: URL(string: "https://api.lelaer.com/ys/uploadGacha.php")!)
                     Link(
                         "genshin-wish-export",
@@ -406,12 +406,12 @@ private struct HelpSheet: View {
                     Link("寻空", destination: URL(string: "https://xunkong.cc")!)
                     Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
                 }
-                Section(header: Text("以下程序或平台的XLSX导出格式已通过可用性验证").textCase(.none)) {
+                Section(header: Text("app.gacha.import.uigf.verified.xlsx").textCase(.none)) {
                     Link("寻空", destination: URL(string: "https://xunkong.cc")!)
                     Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
                 }
             }
-            .navigationTitle("导入帮助")
+            .navigationTitle("sys.help")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -479,9 +479,10 @@ private struct FailureView: View {
     let errorMessage: String
 
     var body: some View {
-        Text("导入失败")
-        Text("错误信息：\(errorMessage)")
-        Button("重试") {
+        Text("app.gacha.import.fail")
+        let errorContent = String(format: "app.gacha.import.errorContent:%@", errorMessage).localized
+        Text(errorContent)
+        Button("app.gacha.import.retry") {
             status = .pending
         }
     }
@@ -499,24 +500,29 @@ private struct SucceedView: View {
     var body: some View {
         Section {
             Label {
-                Text("成功导入祈愿数据")
+                Text("app.gacha.import.success")
             } icon: {
                 Image(systemSymbol: .checkmarkCircle)
                     .foregroundColor(.green)
             }
             Text("UID: \(info.uid)")
             if let app = info.app {
-                Text("数据来自：\(app)")
+                let sourceInfo = String(format: "app.gacha.import.info.source:%@", app).localized
+                Text(sourceInfo)
             }
             if let date = info.exportDate {
-                Text("导出时间：\(dateFormatter.string(from: date))")
+                let timeInfo = String(format: "app.gacha.import.info.time:%@", dateFormatter.string(from: date))
+                    .localized
+                Text(timeInfo)
             }
         }
         Section {
-            Text("导入了\(info.totalCount)条记录")
-            Text("储存了\(info.newCount)条新记录")
+            let importInfo = String(format: "app.gacha.import.info.import:%lld", info.totalCount).localized
+            let storageInfo = String(format: "app.gacha.import.info.storage:%lld", info.newCount).localized
+            Text(importInfo)
+            Text(storageInfo)
         }
-        Button("继续导入") {
+        Button("app.gacha.import.continue") {
             status = .pending
         }
     }
@@ -536,7 +542,7 @@ private struct SucceedView: View {
 private struct ReadingView: View {
     var body: some View {
         Label {
-            Text("导入中，请稍候…")
+            Text("app.gacha.import.working")
         } icon: {
             ProgressView()
         }
@@ -555,7 +561,7 @@ private struct ImportView: View {
     var body: some View {
         StatusView(status: $status) {
             Section {
-                PopFileButton(title: "导入UIGF JSON格式祈愿记录", allowedContentTypes: [.json]) { result in
+                PopFileButton(title: "app.gacha.import.uigf.json", allowedContentTypes: [.json]) { result in
                     switch result {
                     case let .success(url):
                         alert = .readyToStartJson(url: url)
@@ -563,7 +569,7 @@ private struct ImportView: View {
                         status = .failure(error.localizedDescription)
                     }
                 }
-                PopFileButton(title: "导入UIGF XLSX格式祈愿记录", allowedContentTypes: [.xlsx]) { result in
+                PopFileButton(title: "app.gacha.import.uigf.xlsx", allowedContentTypes: [.xlsx]) { result in
                     switch result {
                     case let .success(url):
                         alert = .readyToStartXlsx(url: url)
@@ -573,7 +579,7 @@ private struct ImportView: View {
                 }
             } footer: {
                 Text(
-                    "我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。"
+                    "app.gacha.import.uigf.verified.note.1"
                 )
             }
         }
@@ -593,12 +599,12 @@ private struct ImportViewIOS15: View {
     var body: some View {
         StatusView(status: $status) {
             Section {
-                Button("导入UIGF祈愿记录") {
+                Button("app.gacha.import.uigf") {
                     isImportSheetShow.toggle()
                 }
             } footer: {
                 Text(
-                    "我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。"
+                    "app.gacha.import.uigf.verified.note.1"
                 )
                 .fixedSize(horizontal: false, vertical: true)
             }

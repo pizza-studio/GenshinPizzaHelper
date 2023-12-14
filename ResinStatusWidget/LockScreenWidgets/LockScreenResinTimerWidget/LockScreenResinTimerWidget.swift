@@ -19,13 +19,13 @@ struct LockScreenResinTimerWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂回满倒计时")
+            provider: LockScreenWidgetProvider(recommendationsTag: "widget.resin.refillTime.countdown.ofSb")
         ) { entry in
             LockScreenResinTimerWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("原粹树脂回满倒计时")
-        .description("展示原粹树脂与恢复到160树脂的倒计时")
+        .configurationDisplayName("widget.resin.refillTime.countdown.title")
+        .description("widget.resin.refillTime.countdown.show.title")
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCircular])
         #else

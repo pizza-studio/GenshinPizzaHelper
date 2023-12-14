@@ -89,7 +89,7 @@ struct InAppMaterialNavigator: View {
                             }
                         }
                     } else {
-                        Text("今日材料")
+                        Text("app.todayMaterial.title")
                             .foregroundColor(.primary)
                             .font(.headline)
                     }
@@ -119,7 +119,7 @@ struct InAppMaterialNavigator: View {
                             }
                         } label: {
                             HStack {
-                                Text("收起").font(.caption)
+                                Text("app.home.fold").font(.caption)
                             }
                         }
                     }
@@ -196,7 +196,7 @@ struct InAppMaterialNavigator: View {
                 }
             }
         } else {
-            Text("所有材料均可获取")
+            Text("app.material.allAvailable")
         }
     }
 
@@ -335,7 +335,7 @@ struct InAppMaterialNavigator: View {
                 if OS.type == .macOS {
                     HelpTextForScrollingOnDesktopComputer(.horizontal)
                 } else {
-                    Text("左右滑动查看更多")
+                    Text("app.home.tip.swipe")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

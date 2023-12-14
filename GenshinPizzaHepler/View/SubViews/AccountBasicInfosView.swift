@@ -22,79 +22,79 @@ struct AccountBasicInfosView: View {
                     HStack(alignment: .top) {
                         VStack(spacing: 5) {
                             InfoPreviewer(
-                                title: "活跃天数",
+                                title: "app.account.basicInfo.daysActive",
                                 content: "\(basicAccountInfo.stats.activeDayNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "获得角色",
+                                title: "app.account.basicInfo.characters",
                                 content: "\(basicAccountInfo.stats.avatarNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "深境螺旋",
+                                title: "app.account.basicInfo.abyss",
                                 content: basicAccountInfo.stats.spiralAbyss,
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "普通宝箱",
+                                title: "app.account.basicInfo.chest.1",
                                 content: "\(basicAccountInfo.stats.commonChestNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "珍贵宝箱",
+                                title: "app.account.basicInfo.chest.3",
                                 content: "\(basicAccountInfo.stats.preciousChestNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "风神瞳",
+                                title: "app.account.basicInfo.anemo",
                                 content: "\(basicAccountInfo.stats.anemoculusNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "雷神瞳",
+                                title: "app.account.basicInfo.electro",
                                 content: "\(basicAccountInfo.stats.electroculusNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "水神瞳",
+                                title: "app.account.basicInfo.hydro",
                                 content: "\(basicAccountInfo.stats.hydroculusNumber)",
                                 contentStyle: .capsule
                             )
                         }
                         VStack(spacing: 5) {
                             InfoPreviewer(
-                                title: "成就达成",
+                                title: "app.account.basicInfo.achievements",
                                 content: "\(basicAccountInfo.stats.achievementNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "解锁锚点",
+                                title: "app.account.basicInfo.waypoints",
                                 content: "\(basicAccountInfo.stats.wayPointNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "解锁秘境",
+                                title: "app.account.basicInfo.domains",
                                 content: "\(basicAccountInfo.stats.domainNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "精致宝箱",
+                                title: "app.account.basicInfo.chest.2",
                                 content: "\(basicAccountInfo.stats.exquisiteChestNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "华丽宝箱",
+                                title: "app.account.basicInfo.chest.4",
                                 content: "\(basicAccountInfo.stats.luxuriousChestNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "岩神瞳",
+                                title: "app.account.basicInfo.geo",
                                 content: "\(basicAccountInfo.stats.geoculusNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "草神瞳",
+                                title: "app.account.basicInfo.dendro",
                                 content: "\(basicAccountInfo.stats.dendroculusNumber)",
                                 contentStyle: .capsule
                             )
@@ -104,81 +104,81 @@ struct AccountBasicInfosView: View {
                     VStack(spacing: 5) {
                         Group {
                             InfoPreviewer(
-                                title: "活跃天数",
+                                title: "app.account.basicInfo.daysActive",
                                 content: "\(basicAccountInfo.stats.activeDayNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "获得角色",
+                                title: "app.account.basicInfo.characters",
                                 content: "\(basicAccountInfo.stats.avatarNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "深境螺旋",
+                                title: "app.account.basicInfo.abyss",
                                 content: basicAccountInfo.stats.spiralAbyss,
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "成就达成",
+                                title: "app.account.basicInfo.achievements",
                                 content: "\(basicAccountInfo.stats.achievementNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "解锁锚点",
+                                title: "app.account.basicInfo.waypoints",
                                 content: "\(basicAccountInfo.stats.wayPointNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "解锁秘境",
+                                title: "app.account.basicInfo.domains",
                                 content: "\(basicAccountInfo.stats.domainNumber)",
                                 contentStyle: .capsule
                             )
                         }
                         Group {
                             InfoPreviewer(
-                                title: "普通宝箱",
+                                title: "app.account.basicInfo.chest.1",
                                 content: "\(basicAccountInfo.stats.commonChestNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "珍贵宝箱",
+                                title: "app.account.basicInfo.chest.3",
                                 content: "\(basicAccountInfo.stats.preciousChestNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "精致宝箱",
+                                title: "app.account.basicInfo.chest.2",
                                 content: "\(basicAccountInfo.stats.exquisiteChestNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "华丽宝箱",
+                                title: "app.account.basicInfo.chest.4",
                                 content: "\(basicAccountInfo.stats.luxuriousChestNumber)",
                                 contentStyle: .capsule
                             )
                         }
                         Group {
                             InfoPreviewer(
-                                title: "风神瞳",
+                                title: "app.account.basicInfo.anemo",
                                 content: "\(basicAccountInfo.stats.anemoculusNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "雷神瞳",
+                                title: "app.account.basicInfo.electro",
                                 content: "\(basicAccountInfo.stats.electroculusNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "岩神瞳",
+                                title: "app.account.basicInfo.geo",
                                 content: "\(basicAccountInfo.stats.geoculusNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "草神瞳",
+                                title: "app.account.basicInfo.dendro",
                                 content: "\(basicAccountInfo.stats.dendroculusNumber)",
                                 contentStyle: .capsule
                             )
                             InfoPreviewer(
-                                title: "水神瞳",
+                                title: "app.account.basicInfo.hydro",
                                 content: "\(basicAccountInfo.stats.hydroculusNumber)",
                                 contentStyle: .capsule
                             )
@@ -186,7 +186,7 @@ struct AccountBasicInfosView: View {
                     }
                 }
             } header: {
-                Text("数据总览")
+                Text("app.account.basicInfo.summary")
                     .font(.headline)
                     .fontWeight(.semibold)
                     .padding(.top)
@@ -197,7 +197,7 @@ struct AccountBasicInfosView: View {
                     WorldExplorationsViewAll(basicAccountInfo: basicAccountInfo)
                 }
             } header: {
-                Text("世界探索")
+                Text("app.account.basicInfo.exploration")
                     .font(.headline)
                     .fontWeight(.semibold)
                     .padding(.top)

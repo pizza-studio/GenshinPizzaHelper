@@ -53,7 +53,7 @@ struct DailyTaskInfoBar: View {
                     .minimumScaleFactor(0.2)
                 if !dailyTaskInfo.isExtraRewardReceived,
                    dailyTaskInfo.finishedTaskCount == dailyTaskInfo.totalTaskCount {
-                    Text("（未领取）")
+                    Text("widget.status.not_received")
                         .foregroundColor(Color("textColor3"))
                         .font(.system(.caption, design: .rounded))
                         .minimumScaleFactor(0.2)

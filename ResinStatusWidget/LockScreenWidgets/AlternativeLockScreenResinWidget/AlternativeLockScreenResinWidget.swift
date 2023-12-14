@@ -19,13 +19,13 @@ struct AlternativeLockScreenResinWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂")
+            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.resin")
         ) { entry in
             AlternativeLockScreenResinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("app.dailynote.card.resin.label")
-        .description("另一种样式的原粹树脂小组件")
+        .description("widget.intro.resin.2")
         .supportedFamilies([.accessoryCircular])
     }
 }

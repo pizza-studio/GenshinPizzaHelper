@@ -18,24 +18,22 @@ struct GlobalDonateView: View {
     var body: some View {
         List {
             Section {
-                Text(
-                    "请注意，以下内容为无偿捐赠，我们不会为您提供任何额外的服务。\n我们承诺，您对「原神披萨小助手」的捐赠仅用于覆盖App开发过程中的直接成本，包括但不限于苹果开发者计划会员资格的年费等。超出这部分成本的捐赠金额将悉数再次捐出。感谢您对我们的支持。"
-                )
-                .padding()
-                .fixedSize(horizontal: false, vertical: true)
+                Text("donate.msg")
+                    .padding()
+                    .fixedSize(horizontal: false, vertical: true)
             }
             Section {
                 NavigationLink(
                     destination: WebBroswerView(
                         url: "https://gi.pizzastudio.org/static/thanks.html"
                     )
-                    .navigationTitle("特别鸣谢")
+                    .navigationTitle("donate.specialThanks")
                 ) {
-                    Text("特别鸣谢")
+                    Text("donate.specialThanks")
                 }
             }
 
-            Section(header: Text("捐赠项目")) {
+            Section(header: Text("donate.item.header")) {
                 if storeManager.myProducts.isEmpty {
                     HStack {
                         Spacer()
@@ -52,7 +50,7 @@ struct GlobalDonateView: View {
                                 .font(.caption2)
                         }
                         Spacer()
-                        Button("支付") {
+                        Button("donate.item.pay") {
                             storeManager.purchaseProduct(product: product)
                         }
                         .padding(.horizontal, 8)

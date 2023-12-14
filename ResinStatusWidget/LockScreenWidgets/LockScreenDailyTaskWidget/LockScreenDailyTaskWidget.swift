@@ -19,13 +19,13 @@ struct LockScreenDailyTaskWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "的每日委托")
+            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.dailyCommission")
         ) { entry in
             LockScreenDailyTaskWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("app.dailynote.card.dailyTask.label")
-        .description("每日委托完成情况")
+        .description("widget.intro.dailyCommission")
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else

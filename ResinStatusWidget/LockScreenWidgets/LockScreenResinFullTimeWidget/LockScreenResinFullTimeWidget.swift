@@ -19,13 +19,13 @@ struct LockScreenResinFullTimeWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "的原粹树脂回满时间")
+            provider: LockScreenWidgetProvider(recommendationsTag: "widget.resin.refillTime.ofSb")
         ) { entry in
             LockScreenResinFullTimeWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("原粹树脂回满时间")
-        .description("展示原粹树脂与恢复到160树脂的时间")
+        .configurationDisplayName("widget.resin.refillTime.title")
+        .description("widget.resin.refillTime.show.title")
         .supportedFamilies([.accessoryCircular])
         .contentMarginsDisabled()
     }

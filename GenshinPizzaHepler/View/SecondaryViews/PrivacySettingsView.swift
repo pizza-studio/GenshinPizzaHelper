@@ -16,14 +16,14 @@ struct PrivacySettingsView: View {
         List {
             Section {
                 Toggle(isOn: $allowAbyssDataCollection) {
-                    Text("允许收集深渊数据")
+                    Text("settings.privacy.abyssDataCollect")
                 }
             } footer: {
                 Text(
-                    "我们希望收集您已拥有的角色和在攻克深渊时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深渊角色使用率、队伍使用率等情况。更多相关问题，请查看深渊统计榜单页面右上角的FAQ。"
+                    "settings.privacy.abyssDataCollect.detail"
                 )
             }
         }
-        .navigationBarTitle("隐私设置", displayMode: .inline)
+        .navigationBarTitle("settings.privacy.title", displayMode: .inline)
     }
 }

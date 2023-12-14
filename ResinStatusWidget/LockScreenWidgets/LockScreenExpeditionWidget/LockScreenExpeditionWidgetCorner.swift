@@ -22,7 +22,7 @@ struct LockScreenExpeditionWidgetCorner: View {
         case let .success(data):
             let timeDescription: String = {
                 if data.expeditionInformation.allCompleted {
-                    return "已全部完成".localized
+                    return "widget.status.done".localized
                 } else {
                     if let expeditionInformation = data.expeditionInformation as? GeneralDailyNote
                         .ExpeditionInformation {

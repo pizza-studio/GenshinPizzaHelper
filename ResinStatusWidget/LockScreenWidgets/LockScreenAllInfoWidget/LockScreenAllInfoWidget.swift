@@ -163,14 +163,14 @@ struct LockScreenAllInfoWidget: Widget {
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
             provider: LockScreenAllInfoWidgetProvider(
-                recommendationsTag: "的综合信息"
+                recommendationsTag: "watch.info.dailyCommission"
             )
         ) { entry in
             LockScreenAllInfoWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("综合信息")
-        .description("所有信息，一网打尽")
+        .configurationDisplayName("widget.intro.generalInfo")
+        .description("widget.intro.generalInfo.detail")
         .supportedFamilies([.accessoryRectangular])
     }
 }

@@ -31,8 +31,8 @@ struct MaterialWidget: Widget {
         ) { entry in
             MaterialWidgetView(entry: entry)
         }
-        .configurationDisplayName("活动和材料")
-        .description("展示近日活动和今天可以获取的武器和天赋材料。")
+        .configurationDisplayName("widget.material.title")
+        .description("widget.material.description")
         .supportedFamilies([.systemMedium])
     }
 }

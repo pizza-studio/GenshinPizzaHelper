@@ -74,7 +74,7 @@ struct AllEventsView: View {
                 .ignoresSafeArea(.all)
                 .overlay(.ultraThinMaterial)
         }
-        .navigationTitle("当前活动")
+        .navigationTitle("app.home.ongoingEvents")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(uiColor: viewBackgroundColor))
     }

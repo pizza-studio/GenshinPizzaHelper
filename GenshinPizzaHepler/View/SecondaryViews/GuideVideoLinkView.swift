@@ -19,7 +19,7 @@ struct GuideVideoLinkView: View {
                         )
                 )!) {
                     Label {
-                        Text("打开Bilibili观看")
+                        Text("app.open.bilibili")
                     } icon: {
                         Image("bilibili")
                             .resizable()
@@ -33,7 +33,7 @@ struct GuideVideoLinkView: View {
                     )!
                 ) {
                     Label {
-                        Text("打开YouTube观看")
+                        Text("app.open.youtube")
                     } icon: {
                         Image("youtube")
                             .resizable()
@@ -49,7 +49,7 @@ struct GuideVideoLinkView: View {
                     )!
                 ) {
                     Label {
-                        Text("打开YouTube观看")
+                        Text("app.open.youtube")
                     } icon: {
                         Image("youtube")
                             .resizable()
@@ -65,7 +65,7 @@ struct GuideVideoLinkView: View {
                         )
                 )!) {
                     Label {
-                        Text("打开Bilibili观看")
+                        Text("app.open.bilibili")
                     } icon: {
                         Image("bilibili")
                             .resizable()
@@ -81,7 +81,7 @@ struct GuideVideoLinkView: View {
                     )!
                 ) {
                     Label {
-                        Text("打开YouTube观看")
+                        Text("app.open.youtube")
                     } icon: {
                         Image("youtube")
                             .resizable()
@@ -97,7 +97,7 @@ struct GuideVideoLinkView: View {
                         )
                 )!) {
                     Label {
-                        Text("打开Bilibili观看")
+                        Text("app.open.bilibili")
                     } icon: {
                         Image("bilibili")
                             .resizable()
@@ -107,7 +107,7 @@ struct GuideVideoLinkView: View {
                 }
             }
         }
-        .navigationBarTitle("App介绍视频")
+        .navigationBarTitle("app.introduce.title")
         .navigationBarTitleDisplayMode(.inline)
     }
 

@@ -20,14 +20,14 @@ struct LockScreenLoopWidget: Widget {
             kind: kind,
             intent: SelectAccountAndShowWhichInfoIntent.self,
             provider: LockScreenLoopWidgetProvider(
-                recommendationsTag: "的智能轮换信息"
+                recommendationsTag: "watch.info.autoRotation"
             )
         ) { entry in
             LockScreenLoopWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
-        .configurationDisplayName("自动轮换")
-        .description("自动展示你最需要的信息")
+        .configurationDisplayName("widget.intro.autoRotation")
+        .description("widget.intro.autoDisplay")
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else

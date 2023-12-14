@@ -97,6 +97,8 @@ struct GachaView: View {
                             } else {
                                 Text("请点击右上角获取抽卡记录")
                             }
+                        } else {
+                            Text("app.gacha.get.button")
                         }
                     }
                     .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
@@ -109,29 +111,49 @@ struct GachaView: View {
     func mainView() -> some View {
         List {
             if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
-                Section {
-                    VStack(alignment: .leading) {
-                        GachaChart(
-                            items: gachaViewModel
-                                .filteredGachaItemsWithCount
-                        )
-                        HelpTextForScrollingOnDesktopComputer(.horizontal)
-                    }
-                    NavigationLink {
-                        GachaChartView()
-                            .navigationBarTitleDisplayMode(.inline)
-                            .environmentObject(gachaViewModel)
-                    } label: {
-                        Label("更多图表", systemSymbol: .chartBarXaxis)
+                if #available(iOS 16.0, *) {
+                    Section {
+                        VStack(alignment: .leading) {
+                            GachaChart(
+                                items: gachaViewModel
+                                    .filteredGachaItemsWithCount
+                            )
+                            HelpTextForScrollingOnDesktopComputer(.horizontal)
+                        }
+                        NavigationLink {
+                            GachaChartView()
+                                .navigationBarTitleDisplayMode(.inline)
+                                .environmentObject(gachaViewModel)
+                        } label: {
+                            Label("app.gacha.chart.more.button", systemSymbol: .chartBarXaxis)
+                        }
                     }
                 }
                 GachaStatisticSectionView()
             } else {
                 Text("gacha.records.noQuintapleStarRecordsFound").foregroundColor(.gray)
             }
-            Section {
-                NavigationLink("详细记录") {
-                    GachaDetailView()
+            if #available(iOS 16.0, *) {
+                Section {
+                    NavigationLink("app.gacha.details.button") {
+                        GachaDetailView()
+                    }
+                }
+            } else {
+                Section {
+                    ForEach(
+                        gachaViewModel.filteredGachaItemsWithCount,
+                        id: \.0.id
+                    ) { item, count in
+                        VStack(spacing: 1) {
+                            GachaItemBar(
+                                item: item,
+                                count: count,
+                                showTime: showTime,
+                                showingType: gachaViewModel.filter.rank
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -186,15 +208,18 @@ private struct GachaStatisticSectionView: View {
             )
         Section {
             HStack {
-                Label("当前已垫", systemSymbol: .flagFill)
+                Label("app.gacha.afterLast5Star", systemSymbol: .flagFill)
                 Spacer()
-                Text(
-                    "\(gachaViewModel.sortedAndFilteredGachaItem.firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count)抽"
-                )
+                let pullInfo = String(
+                    format: "app.gacha.pull:%lld",
+                    gachaViewModel.sortedAndFilteredGachaItem
+                        .firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count
+                ).localized
+                Text(pullInfo)
             }
             HStack {
                 Label(
-                    showDrawingNumber ? "总抽数" : "总消耗原石数",
+                    showDrawingNumber ? "app.gacha.allPull" : "app.gacha.total.primogems",
                     systemSymbol: .handTapFill
                 )
                 Spacer()
@@ -207,7 +232,7 @@ private struct GachaStatisticSectionView: View {
             }
             HStack {
                 Label(
-                    showDrawingNumber ? "五星平均抽数" : "五星平均消耗原石数",
+                    showDrawingNumber ? "app.gacha.avg.5star.pull" : "app.gacha.avg.5star.primogems",
                     systemSymbol: .star
                 )
                 Spacer()
@@ -219,7 +244,7 @@ private struct GachaStatisticSectionView: View {
             if gachaViewModel.filter.gachaType != .standard {
                 HStack {
                     Label(
-                        showDrawingNumber ? "限定五星平均抽数" : "限定五星平均消耗原石数",
+                        showDrawingNumber ? "app.gacha.avg.5starLimited.pull" : "app.gacha.avg.5starLimited.primogems",
                         systemSymbol: .starFill
                     )
                     Spacer()
@@ -245,7 +270,7 @@ private struct GachaStatisticSectionView: View {
                                 .count +
                                 ((fiveStars.last?.isLose5050() ?? false) ? 1 : 0)
                         ) // 小保底次数 = 限定五星数量（如果抽的第一个是非限定，则多一次小保底）
-                    Label("不歪率", systemSymbol: .chartPieFill)
+                    Label("app.gacha.won50-50", systemSymbol: .chartPieFill)
                     Spacer()
                     Text(
                         "\(fmt.string(from: pct as NSNumber)!)"
@@ -255,7 +280,7 @@ private struct GachaStatisticSectionView: View {
             if gachaViewModel.filter.gachaType != .standard {
                 VStack {
                     HStack {
-                        Text(Defaults[.useGuestGachaEvaluator] ? "帕姆的评价" : "派蒙的评价")
+                        Text(Defaults[.useGuestGachaEvaluator] ? "app.gacha.review.pom-pom" : "app.gacha.review.paimon")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         Spacer()
@@ -284,7 +309,7 @@ private struct GachaStatisticSectionView: View {
                 }
             }
         } header: {
-            Text("统计数据")
+            Text("app.gacha.stat.title")
                 .textCase(.none)
         }
         .onTapGesture {
@@ -461,13 +486,13 @@ private struct GachaChart: View {
                 ForEach(fiveStarItems, id: \.0.id) { item in
                     BarMark(
                         x: .value("角色", item.0.id),
-                        y: .value("抽数", item.count)
+                        y: .value("sys.pull", item.count)
                     )
                     .annotation(position: .top) {
                         Text("\(item.count)").foregroundColor(.gray)
                             .font(.caption)
                     }
-                    .foregroundStyle(by: .value("抽数", item.0.id))
+                    .foregroundStyle(by: .value("sys.pull", item.0.id))
                 }
                 if !fiveStarItems.isEmpty {
                     RuleMark(y: .value(
@@ -538,26 +563,26 @@ private struct GetGachaNavigationMenu: View {
             Button {
                 isHelpSheetShow.toggle()
             } label: {
-                Label("我该选哪个？", systemSymbol: .questionmarkDiamond)
+                Label("app.gacha.import.which", systemSymbol: .questionmarkDiamond)
             }
 
             if showByAPI {
                 Button {
                     showView1.toggle()
                 } label: {
-                    Label("通过API获取", systemSymbol: .network)
+                    Label("app.gacha.import.api", systemSymbol: .network)
                 }
             }
             Button {
                 showView3.toggle()
             } label: {
-                Label("通过粘贴祈愿页面URL获取", systemSymbol: .docOnClipboard)
+                Label("app.gacha.import.url", systemSymbol: .docOnClipboard)
             }
             Button {
                 showView4.toggle()
             } label: {
                 Label(
-                    "导入UIGF祈愿记录",
+                    "app.gacha.import.uigf",
                     systemSymbol: .squareAndArrowDownOnSquare
                 )
             }
@@ -611,35 +636,35 @@ private struct HelpSheet: View {
             List {
                 Section {
                     Label(
-                        "无论选择哪种方式，我们都为您提供了详细的操作教程",
+                        "app.gacha.import.help.1",
                         systemSymbol: .personFillQuestionmark
                     )
                     // TODO: not completed gacha tutorial video
 //                    Label(
-//                        "您也可以选择参考我们的视频完成相关操作",
+//                        "app.gacha.import.help.2",
 //                        systemSymbol: .handThumbsupFill
 //                    )
 //                    GachaHelpVideoLink()
                 }
                 Section {
-                    Label("如果您的账号所在服务器位于中国大陆", systemSymbol: .textBubble)
-                    Label("请优先选择「通过API」一键获取", systemSymbol: .network)
+                    Label("app.gacha.import.help.3", systemSymbol: .textBubble)
+                    Label("app.gacha.import.help.4", systemSymbol: .network)
                 } footer: {
-                    Text("仅适用于中国大陆服务器")
+                    Text("app.gacha.import.server.cn")
                         .bold()
                 }
                 Section {
-                    Label("国际服务器玩家该怎么办", systemSymbol: .textBubble)
+                    Label("app.gacha.import.help.5", systemSymbol: .textBubble)
                     Label(
-                        "建议使用「通过粘贴祈愿页面URL」获取，我们亦内附了教程",
+                        "app.gacha.import.help.6",
                         systemSymbol: .docOnClipboard
                     )
                 } footer: {
-                    Text("适用于所有服务器")
+                    Text("app.gacha.import.server.all")
                 }
                 Section {
                     Label(
-                        "如果您之前使用其他软件获取过祈愿记录，且该软件支持导出UIGF（统一可交换祈愿记录标准）格式的文件，您可以将其导入",
+                        "app.gacha.import.help.7",
                         systemSymbol: .squareAndArrowDownOnSquare
                     )
                     if Bundle.main.preferredLocalizations.first?.prefix(2) == "zh" {
@@ -649,7 +674,7 @@ private struct HelpSheet: View {
                             )!
                         ) {
                             Label(
-                                "支持UIGF的软件",
+                                "app.gacha.import.help.uigf.button",
                                 systemSymbol: .appBadgeCheckmark
                             )
                         }
@@ -660,16 +685,16 @@ private struct HelpSheet: View {
                             )!
                         ) {
                             Label(
-                                "支持UIGF的软件",
+                                "app.gacha.import.help.uigf.button",
                                 systemSymbol: .appBadgeCheckmark
                             )
                         }
                     }
                 } footer: {
-                    Text("适用于所有服务器")
+                    Text("app.gacha.import.server.all")
                 }
             }
-            .navigationTitle("抽卡记录获取帮助")
+            .navigationTitle("app.gacha.import.help.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -690,7 +715,7 @@ private struct GachaHelpVideoLink: View {
             string: "https://www.bilibili.com/video/BV1Lg411S7wa"
         )!) {
             Label {
-                Text("打开Bilibili观看")
+                Text("app.open.bilibili")
             } icon: {
                 Image("bilibili")
                     .resizable()
@@ -704,7 +729,7 @@ private struct GachaHelpVideoLink: View {
             )!
         ) {
             Label {
-                Text("打开YouTube观看")
+                Text("app.open.youtube")
             } icon: {
                 Image("youtube")
                     .resizable()
@@ -854,7 +879,7 @@ private struct GachaDetailView: View {
                                 Text(uid)
                             }
                         } else {
-                            Text("请点击右上角获取抽卡记录")
+                            Text("app.gacha.get.button")
                         }
                     }
                 }

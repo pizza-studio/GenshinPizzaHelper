@@ -84,7 +84,7 @@ import SwiftUI
 //                Text("sys.done")
 //                    .font(.footnote)
 //            } else {
-//                Text("编辑")
+//                Text("sys.edit")
 //                    .font(.footnote)
 //            }
 //        }

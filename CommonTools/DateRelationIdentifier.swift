@@ -44,9 +44,9 @@ extension Date {
         let datePrefix: String
         switch relationIdentifier {
         case .today:
-            datePrefix = "今天 "
+            datePrefix = "app.today"
         case .tomorrow:
-            datePrefix = "明天 "
+            datePrefix = "app.tomorrow"
         case .other:
             datePrefix = ""
             formatter.dateFormat = "EEE H:mm"

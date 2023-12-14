@@ -134,30 +134,30 @@ extension _GachaType {
     func localizedDescription() -> String {
         switch self {
         case .newPlayer:
-            return "初行者推荐祈愿".localized
+            return "app.gacha.beginner.title".localized
         case .standard:
-            return "常驻祈愿".localized
+            return "app.gacha.standard.title".localized
         case .character:
-            return "角色活动祈愿".localized
+            return "app.gacha.character.title".localized
         case .weapon:
-            return "武器活动祈愿".localized
+            return "app.gacha.weapon.title".localized
         case .character2:
-            return "角色活动祈愿-2".localized
+            return "app.gacha.character-2.title".localized
         }
     }
 
     func description() -> String {
         switch self {
         case .newPlayer:
-            return "初行者推荐祈愿".localized
+            return "app.gacha.beginner.title".localized
         case .standard:
-            return "常驻祈愿".localized
+            return "app.gacha.standard.title".localized
         case .character:
-            return "角色活动祈愿".localized
+            return "app.gacha.character.title".localized
         case .weapon:
-            return "武器活动祈愿".localized
+            return "app.gacha.weapon.title".localized
         case .character2:
-            return "角色活动祈愿-2".localized
+            return "app.gacha.character-2.title".localized
         }
     }
 }
@@ -198,13 +198,13 @@ extension GachaType {
     func localizedDescription() -> String {
         switch self {
         case .newPlayer:
-            return "初行者推荐祈愿".localized
+            return "app.gacha.beginner.title".localized
         case .standard:
-            return "常驻祈愿".localized
+            return "app.gacha.standard.title".localized
         case .character:
-            return "角色活动祈愿".localized
+            return "app.gacha.character.title".localized
         case .weapon:
-            return "武器活动祈愿".localized
+            return "app.gacha.weapon.title".localized
         }
     }
 

@@ -173,7 +173,7 @@ struct ContentView: View {
         }
         .onAppear {
             print(
-                "Locale: \(Bundle.main.preferredLocalizations.first ?? "Unknown")"
+                "Locale: \(Bundle.main.preferredLocalizations.first ?? "sys.unknown")"
             )
         }
         .navigate(

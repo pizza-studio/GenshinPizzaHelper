@@ -31,13 +31,13 @@ struct AboutView: View {
             Spacer()
 
             NavigationLink(destination: ThanksView()) {
-                Text("开源组件与第三方API致谢")
+                Text("app.about.thanks.title")
                     .padding()
                     .font(.callout)
             }
-            Text("「原神披萨小助手」与上海米哈游网络科技股份有限公司及其子公司无关。")
+            Text("contact.note.1")
                 .font(.caption2)
-            Text("原神的游戏内容和各种游戏内素材与商标的版权都属于米哈游。")
+            Text("contact.note.2")
                 .font(.caption2)
             Text("桂ICP备2023009538号-2A")
                 .font(.caption2)

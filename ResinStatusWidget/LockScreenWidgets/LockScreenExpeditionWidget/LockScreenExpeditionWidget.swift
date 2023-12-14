@@ -19,13 +19,13 @@ struct LockScreenExpeditionWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "的探索派遣")
+            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.expedition")
         ) { entry in
             LockScreenExpeditionWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("app.dailynote.card.expedition.label")
-        .description("探索派遣完成情况")
+        .description("widget.intro.expedition")
         #if os(watchOS)
             .supportedFamilies([.accessoryCircular, .accessoryCorner])
         #else

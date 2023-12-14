@@ -85,7 +85,7 @@ struct GetGachaClipboardView: View {
         List {
             if urls.isEmpty {
                 Section {
-                    Button("从剪贴板中获取祈愿URL") {
+                    Button("app.gacha.get.url.clipboard") {
                         if let str = UIPasteboard.general.string {
                             if case .success =
                                 parseURLToAuthkeyAndOtherParams(urlString: str) {
@@ -104,7 +104,7 @@ struct GetGachaClipboardView: View {
             } else {
                 Section {
                     Label {
-                        Text("成功获取到祈愿链接")
+                        Text("app.gacha.get.url.success")
                     } icon: {
                         Image(systemSymbol: .checkmarkCircle)
                             .foregroundColor(.green)
@@ -113,7 +113,7 @@ struct GetGachaClipboardView: View {
                 } footer: {
                     HStack {
                         Spacer()
-                        Button("重新获取祈愿链接") {
+                        Button("app.gacha.get.url.retry") {
                             urls = []
                         }.font(.caption)
                     }
@@ -121,7 +121,7 @@ struct GetGachaClipboardView: View {
             }
 
             if status != .running {
-                Button(urls.isEmpty ? "等待祈愿链接…" : "开始获取祈愿记录") {
+                Button(urls.isEmpty ? "app.gacha.get.waiting" : "app.gacha.get.start") {
                     observer.initialize()
                     status = .running
                     let parseResults = urls.compactMap { urlString in
@@ -175,7 +175,7 @@ struct GetGachaClipboardView: View {
             .init(
                 displayMode: .alert,
                 type: .complete(.green),
-                title: "成功获取祈愿数据",
+                title: "app.gacha.get.success",
                 subTitle: String(
                     format: "gacha.messages.newEntriesSaved:%lld".localized,
                     observer.newItemCount.description
@@ -185,10 +185,11 @@ struct GetGachaClipboardView: View {
         .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
             guard case let .failure(error) = status
             else { return .init(displayMode: .alert, type: .loading) }
+            let errorTitle = String(format: "app.gacha.get.error:%@", error.localizedDescription).localized
             return .init(
                 displayMode: .alert,
                 type: .error(.red),
-                title: "获取失败，因为错误：\n\(error.localizedDescription)"
+                title: errorTitle
             )
         })
         .sheet(isPresented: $isHelpSheetShow, content: {
@@ -196,29 +197,30 @@ struct GetGachaClipboardView: View {
         })
         .navigationBarBackButtonHidden(status == .running)
         .alert(
-            "成功获取到祈愿记录链接",
+            "app.gacha.get.link.success",
             isPresented: isGetURLSucceedAlertShow,
             presenting: alert,
             actions: { _ in },
             message: { _ in
-                Text("请点击「开始获取祈愿记录」以继续")
+                Text("app.gacha.get.link.continue")
             }
         )
         .alert(
-            "从剪贴板上获取到的链接有误",
+            "app.gacha.get.url.invalidUrl",
             isPresented: isUrlInPasteboardIsInvalidAlertShow,
             presenting: alert,
             actions: { _ in },
             message: { alert in
                 switch alert {
                 case let .urlInPasteboardIsInvalid(url: url):
-                    Text("预期应获取到祈愿链接，但获取到了错误的内容：\n\(url)")
+                    let errorContent = String(format: "app.gacha.get.url.error:%@", url).localized
+                    Text(errorContent)
                 default:
                     EmptyView()
                 }
             }
         )
-        .alert("未能从剪贴板获取到内容", isPresented: isPasteboardNoDataAlertShow, actions: {})
+        .alert("app.gacha.get.url.clipboardNil", isPresented: isPasteboardNoDataAlertShow, actions: {})
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -228,7 +230,7 @@ struct GetGachaClipboardView: View {
                 }
             }
         }
-        .navigationTitle("获取祈愿记录")
+        .navigationTitle("app.gacha.get.title")
         .navigationBarTitleDisplayMode(.inline)
         .environmentObject(observer)
     }
@@ -268,18 +270,18 @@ private struct HelpSheet: View {
             List {
                 Section {
                     Link(
-                        "由paimon.moe提供的获取祈愿链接的方法",
+                        "app.gacha.get.url.paimonMoe",
                         destination: URL(
                             string: "https://paimon.moe/wish/import"
                         )!
                     )
                 } header: {
-                    Text("其他获取祈愿链接的方法")
+                    Text("app.gacha.get.url.other")
                 } footer: {
-                    Text("您可以将其他软件获取的祈愿链接粘贴至本软件以获取祈愿记录。但本软件不对外部程序可靠性负责。")
+                    Text("app.gacha.get.url.other.detail")
                 }
             }
-            .navigationTitle("帮助")
+            .navigationTitle("sys.help")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

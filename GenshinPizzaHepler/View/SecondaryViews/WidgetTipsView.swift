@@ -15,45 +15,45 @@ struct WidgetTipsView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header: Text("如何配置小组件和修改小组件背景？").textCase(.none)) {
-                    Label("长按小组件，选择编辑\"原神披萨小助手\"", systemSymbol: ._01Circle)
+                Section(header: Text("app.tips.widget.background.header").textCase(.none)) {
+                    Label("app.tips.widget.background.1", systemSymbol: ._01Circle)
                         .padding(.vertical, 10)
-                    Label("根据提示选择设置项或启用/关闭功能或修改背景", systemSymbol: ._02Circle)
+                    Label("app.tips.widget.background.2", systemSymbol: ._02Circle)
                         .padding(.vertical, 10)
                 }
 
-                Section(header: Text("如何添加小组件和锁屏小组件？").textCase(.none)) {
+                Section(header: Text("app.tips.widget.add.header").textCase(.none)) {
                     NavigationLink(
                         destination: WebBroswerView(
                             url: "https://support.apple.com/HT207122"
                         )
-                        .navigationTitle("如何添加小组件？")
+                        .navigationTitle("app.tips.widget.add.header")
                         .navigationBarTitleDisplayMode(.inline)
                     ) {
-                        Label("关于如何添加小组件，请参考Apple支持文档", systemSymbol: .safari)
+                        Label("app.tips.widget.add.1", systemSymbol: .safari)
                             .padding(.vertical, 10)
                     }
                     NavigationLink(
                         destination: WebBroswerView(
                             url: "https://support.apple.com/HT205536"
                         )
-                        .navigationTitle("如何添加复杂功能？")
+                        .navigationTitle("app.tips.widget.watch.add.header")
                         .navigationBarTitleDisplayMode(.inline)
                     ) {
                         Label(
-                            "关于如何在Apple Watch上添加复杂功能，请参考Apple支持文档",
+                            "app.tips.widget.add.content",
                             systemSymbol: .safari
                         )
                         .padding(.vertical, 10)
                     }
                     Label(
-                        "如果您未能在小组件选单内找到本软件的小组件，请重启并等待十分钟后再尝试添加小组件",
+                        "app.tips.widget.add.2",
                         systemSymbol: .exclamationmarkCircle
                     )
                     .padding(.vertical, 10)
                 }
 
-                Section(header: Text("还有其他问题？").textCase(.none)) {
+                Section(header: Text("app.tips.other").textCase(.none)) {
                     NavigationLink(
                         destination: WebBroswerView(
                             url: "https://gi.pizzastudio.org/static/faq.html"
@@ -74,7 +74,7 @@ struct WidgetTipsView: View {
                     }
                 }
             }
-            .navigationTitle("小组件使用提示")
+            .navigationTitle("app.tips.widget.title")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

@@ -19,13 +19,13 @@ struct LockScreenHomeCoinWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: SelectOnlyAccountIntent.self,
-            provider: LockScreenWidgetProvider(recommendationsTag: "的洞天宝钱")
+            provider: LockScreenWidgetProvider(recommendationsTag: "watch.info.RealmCurrency")
         ) { entry in
             LockScreenHomeCoinWidgetView(entry: entry)
                 .lockscreenContainerBackground { EmptyView() }
         }
         .configurationDisplayName("app.dailynote.card.homeCoin.label")
-        .description("洞天宝钱数量")
+        .description("widget.intro.homeCoin")
         #if os(watchOS)
             .supportedFamilies([
                 .accessoryCircular,

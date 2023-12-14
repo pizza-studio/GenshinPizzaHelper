@@ -18,7 +18,8 @@ struct LedgerShareView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack {
-                Text("\(data.dataMonth)月原石收入")
+                let income = String(format: "app.ledger.primogem.income.title:%lld", data.dataMonth).localized
+                Text(income)
                     .font(.title).bold()
                 PieChartView(
                     values: data.monthData.groupBy.map { Double($0.num) },

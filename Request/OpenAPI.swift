@@ -154,7 +154,7 @@ extension API {
                         case .responseError:
                             completion(
                                 .failure(
-                                    .failToGetCharacterData(message: "请求无响应")
+                                    .failToGetCharacterData(message: "请求error.noResponse")
                                 )
                             )
                         }

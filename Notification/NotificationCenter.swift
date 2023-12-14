@@ -36,12 +36,12 @@ class UserNotificationCenter {
     // Define the custom actions.
     let openGenshin = UNNotificationAction(
         identifier: "OPEN_GENSHIN_ACTION",
-        title: "打开《原神》".localized,
+        title: "notification.operation.open_genshin".localized,
         options: [.foreground]
     )
     let openNotificationSetting = UNNotificationAction(
         identifier: "OPEN_NOTIFICATION_SETTING_ACTION",
-        title: "通知设置".localized,
+        title: "notification.operation.settings".localized,
         options: [.foreground]
     )
     let center = UNUserNotificationCenter.current()
@@ -386,7 +386,7 @@ class UserNotificationCenter {
             format: NSLocalizedString(titleCN, comment: "noti title"),
             accountName
         )
-        let bodyCN = "「%@」现有%lld原粹树脂，将在%@ 回满。"
+        let bodyCN = "notification.noticeForResin.body:%@%lld%@"
         let body = String(
             format: NSLocalizedString(bodyCN, comment: "noti body"),
             accountName,
@@ -460,12 +460,12 @@ class UserNotificationCenter {
             )
         }
 
-        let titleCN = "「%@」洞天宝钱提醒"
+        let titleCN = "notification.noticeForHomeCoin:%@"
         let title = String(
             format: NSLocalizedString(titleCN, comment: "noti title"),
             accountName
         )
-        let bodyCN = "「%@」的洞天财瓮现有%lld洞天宝钱，将在%@ 填满。"
+        let bodyCN = "notification.noticeForHomeCoin.body:%@%lld%@"
         let body = String(
             format: NSLocalizedString(bodyCN, comment: "no body"),
             accountName,
@@ -496,12 +496,12 @@ class UserNotificationCenter {
             deleteNotification(for: uid, object: .expedition); return
         }
         let object: Object = .expedition
-        let titleCN = "「%@」探索派遣提醒"
+        let titleCN = "notification.noticeForExpedition:%@"
         let title = String(
             format: NSLocalizedString(titleCN, comment: "noti title"),
             accountName
         )
-        let bodyCN = "「%@」的探索派遣已全部完成。"
+        let bodyCN = "notification.noticeForExpedition.done:%@"
         let body = String(
             format: NSLocalizedString(bodyCN, comment: "noti body"),
             accountName
@@ -531,12 +531,12 @@ class UserNotificationCenter {
             deleteNotification(for: uid, object: .weeklyBosses); return
         }
         guard Defaults[.allowWeeklyBossesNotification] else { return }
-        let titleCN = "「%@」周本折扣提醒"
+        let titleCN = "notification.noticeWeeklyBoss:%@"
         let title = String(
             format: NSLocalizedString(titleCN, comment: "notification title"),
             accountName
         )
-        let bodyCN = "「%@」的周本树脂折扣树脂折扣还剩%lld次。"
+        let bodyCN = "notification.noticeWeeklyBoss.body:%@%lld"
         let body = String(
             format: NSLocalizedString(bodyCN, comment: "notification body"),
             accountName,
@@ -562,12 +562,12 @@ class UserNotificationCenter {
               transformerInfo.obtained else {
             deleteNotification(for: uid, object: .transformer); return
         }
-        let titleCN = "「%@」参量质变仪提醒"
+        let titleCN = "notification.noticeTransformer:%@"
         let title = String(
             format: NSLocalizedString(titleCN, comment: "notification title"),
             accountName
         )
-        let bodyCN = "「%@」的参量质变仪已经可以使用。"
+        let bodyCN = "notification.noticeTransformer.done:%@"
         let body = String(
             format: NSLocalizedString(bodyCN, comment: "body"),
             accountName
@@ -598,21 +598,21 @@ class UserNotificationCenter {
             deleteNotification(for: uid, object: .dailyTask); return
         }
         guard allowDailyTaskNotification else { return }
-        let titleCN = "「%@」每日委托提醒"
+        let titleCN = "notification.noticeDailyCommission:%@"
         let title = String(
             format: NSLocalizedString(titleCN, comment: "noti title"),
             accountName
         )
         var body: String {
             if dailyTaskInfo.totalTaskCount - dailyTaskInfo.finishedTaskCount != 0 {
-                let cn = "「%@」的每日委托还剩余%lld个未完成。"
+                let cn = "notification.noticeDailyCommission.left:%@%lld"
                 return String(
                     format: NSLocalizedString(cn, comment: "cn"),
                     accountName,
                     dailyTaskInfo.totalTaskCount - dailyTaskInfo.finishedTaskCount
                 )
             } else {
-                let cn = "「%@」的每日委托奖励还未领取。"
+                let cn = "notification.noticeDailyCommission.award:%@"
                 return String(
                     format: NSLocalizedString(cn, comment: "cn"),
                     accountName

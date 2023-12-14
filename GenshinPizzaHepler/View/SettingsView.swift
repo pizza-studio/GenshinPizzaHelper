@@ -70,7 +70,7 @@ struct SettingsView: View {
                                 )!)
                         } label: {
                             Label {
-                                Text("偏好语言")
+                                Text("settings.language.title")
                                     .foregroundColor(.primary)
                             } icon: {
                                 Image(systemSymbol: .globe)
@@ -85,7 +85,7 @@ struct SettingsView: View {
                     }
                     NavigationLink(value: Navigation.widgetSetting) {
                         Label(
-                            "小组件设置",
+                            "settings.widget.title",
                             systemSymbol: .speedometer
                         )
                     }
@@ -111,26 +111,28 @@ struct SettingsView: View {
                 }
                 .listRowMaterialBackground()
 
-                Section {
-                    NavigationLink(
-                        value: Navigation.privacy,
-                        label: { Label("隐私设置", systemSymbol: .handRaisedSlashFill) }
-                    )
-                    NavigationLink(
-                        value: Navigation.wishDataManagement,
-                        label: { Label("祈愿数据管理", systemSymbol: .wandAndStars) }
-                    )
+                Group {
+                    Section {
+                        NavigationLink(
+                            value: Navigation.privacy,
+                            label: { Label("settings.privacy.title", systemSymbol: .handRaisedSlashFill) }
+                        )
+                        NavigationLink(
+                            value: Navigation.wishDataManagement,
+                            label: { Label("app.gacha.data.management.title", systemSymbol: .wandAndStars) }
+                        )
+                    }
                 }
                 .listRowMaterialBackground()
 
                 Section {
                     NavigationLink(
                         value: Navigation.appIntroductionVideo,
-                        label: { Label("App介绍视频", systemSymbol: .personFillQuestionmark) }
+                        label: { Label("app.introduce.title", systemSymbol: .personFillQuestionmark) }
                     )
 
                     NavigationLink(value: Navigation.contact) {
-                        Label("开发者与联系方式", systemSymbol: .personCropCircleBadgeClock)
+                        Label("contact.title", systemSymbol: .personCropCircleBadgeClock)
                     }
                 }
                 .listRowMaterialBackground()

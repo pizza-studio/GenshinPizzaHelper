@@ -45,10 +45,10 @@ struct APIGetGachaView: View {
         List {
             if status != .running {
                 Section {
-                    Picker("选择账号", selection: $account) {
+                    Picker("app.gacha.account.select.title", selection: $account) {
                         Group {
                             if account == nil {
-                                Text("未选择").tag(String?(nil))
+                                Text("app.gacha.account.select.notSelected").tag(String?(nil))
                             }
                             ForEach(
                                 acountConfigsFiltered,
@@ -66,7 +66,7 @@ struct APIGetGachaView: View {
                                 .first?.uid
                         }
                     }
-                    Button("获取祈愿记录") {
+                    Button("app.gacha.get.title") {
                         observer.initialize()
                         status = .running
                         let account = account!
@@ -92,7 +92,7 @@ struct APIGetGachaView: View {
                 } footer: {
                     if !accounts
                         .allSatisfy({ $0.server.region == .mainlandChina }) {
-                        Text("暂不支持国际服")
+                        Text("app.gacha.note.globalServers")
                     }
                 }
             } else {
@@ -100,7 +100,7 @@ struct APIGetGachaView: View {
             }
             GetGachaResultView(status: $status)
         }
-        .navigationTitle("获取祈愿记录")
+        .navigationTitle("app.gacha.get.title")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(status == .running)
         .environmentObject(observer)
@@ -118,7 +118,7 @@ struct APIGetGachaView: View {
             .init(
                 displayMode: .alert,
                 type: .complete(.green),
-                title: "成功获取祈愿数据",
+                title: "app.gacha.get.success",
                 subTitle: String(
                     format: "gacha.messages.newEntriesSaved:%lld".localized,
                     observer.newItemCount
@@ -128,10 +128,11 @@ struct APIGetGachaView: View {
         .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
             guard case let .failure(error) = status
             else { return .init(displayMode: .alert, type: .loading) }
+            let errorTitle = String(format: "app.gacha.get.error:%@", error.localizedDescription).localized
             return .init(
                 displayMode: .alert,
                 type: .error(.red),
-                title: "获取失败，因为错误：\n\(error.localizedDescription)"
+                title: errorTitle
             )
         })
     }
@@ -291,10 +292,10 @@ private struct GetGachaChart: View {
     var body: some View {
         Chart(data) {
             LineMark(
-                x: .value("日期", $0.date),
-                y: .value("抽数", $0.count)
+                x: .value("sys.date", $0.date),
+                y: .value("sys.pull", $0.count)
             )
-            .foregroundStyle(by: .value("祈愿类型", $0.type.localizedDescription()))
+            .foregroundStyle(by: .value("app.gacha.label.gachaType", $0.type.localizedDescription()))
         }
         .chartForegroundStyleScale([
             GachaType.standard.localizedDescription(): .green,
@@ -326,7 +327,7 @@ struct GettingGachaBar: View {
             HStack {
                 ProgressView()
                 Spacer()
-                Text("正在获取祈愿记录…请等待")
+                Text("app.gacha.get.info.waiting")
                 Spacer()
                 Button {
                     observer.shouldCancel = true
@@ -337,15 +338,26 @@ struct GettingGachaBar: View {
         } footer: {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(
-                        "卡池：\(observer.gachaType.localizedDescription())"
-                    )
-                    Text("页码：\(observer.page.description)")
+                    let poolType = String(
+                        format: "app.gacha.get.info.pool:%@",
+                        observer.gachaType.localizedDescription()
+                    ).localized
+                    let pageNumber = String(format: "app.gacha.get.info.page:%@", observer.page.description).localized
+                    Text(poolType)
+                    Text(pageNumber)
                 }
                 Spacer()
                 VStack(alignment: .leading) {
-                    Text("已获取记录：\(observer.currentItems.count.description)条")
-                    Text("获取到新记录：\(observer.newItemCount.description)条")
+                    let recordInfo = String(
+                        format: "app.gacha.get.info.record:%@",
+                        observer.currentItems.count.description
+                    ).localized
+                    let newRecordInfo = String(
+                        format: "app.gacha.get.info.record.new:%@",
+                        observer.newItemCount.description
+                    ).localized
+                    Text(recordInfo)
+                    Text(newRecordInfo)
                 }
             }
         }
@@ -387,15 +399,18 @@ struct GetGachaResultView: View {
         if status == .succeed {
             Section {
                 Label {
-                    Text("成功获取祈愿数据")
+                    Text("app.gacha.get.success")
                 } icon: {
                     Image(systemSymbol: .checkmarkCircle)
                         .foregroundColor(.green)
                 }
             } footer: {
-                Text(
-                    "获取到\(observer.currentItems.count.description)条记录，成功保存\(observer.newItemCount.description)条新记录\n请返回上一级查看，或继续获取其他账号的记录"
-                )
+                let resultContent = String(
+                    format: "app.gacha.get.result:%@%@",
+                    observer.currentItems.count.description,
+                    observer.newItemCount.description
+                ).localized
+                Text(resultContent)
             }
         }
 
@@ -408,13 +423,13 @@ struct GetGachaResultView: View {
                         GachaItemBar(item: item)
                     }
                 } header: {
-                    Text(status == .running ? "成功获取到一批…" : "")
+                    Text(status == .running ? "app.gacha.get.running" : "")
                 }
             }
         case let .failure(error):
             Section {
                 Label {
-                    Text("获取祈愿记录失败")
+                    Text("app.gacha.get.info.fail")
                 } icon: {
                     Image(systemSymbol: .xmarkCircle)
                         .foregroundColor(.red)

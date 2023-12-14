@@ -79,20 +79,20 @@ struct GachaSetting: View {
     var body: some View {
         List {
             Section {
-                Button("清理重复数据") {
+                Button("app.gacha.data.clean.title") {
                     alert = .duplicatedCleanCompleted(
                         gachaViewModel.manager
                             .cleanDuplicatedItems()
                     )
                 }
             } footer: {
-                Text("清理因iCloud同步导致出现的重复祈愿记录")
+                Text("app.gacha.data.clean.detail")
             }
 
             Section {
-                Picker("选择账号", selection: $account) {
+                Picker("app.gacha.account.select.title", selection: $account) {
                     Group {
-                        Text("未选择").tag(String?(nil))
+                        Text("app.gacha.account.select.notSelected").tag(String?(nil))
                         ForEach(
                             gachaViewModel.allAvaliableAccountUID,
                             id: \.self
@@ -109,20 +109,20 @@ struct GachaSetting: View {
                         }
                     }
                 }
-                Toggle("删除所有时间的记录", isOn: $deleteAll)
+                Toggle("app.gacha.data.clean.all", isOn: $deleteAll)
                 if !deleteAll {
                     DatePicker(
-                        "开始日期",
+                        "app.gacha.data.clean.date.start",
                         selection: $startDate,
                         displayedComponents: .date
                     )
                     DatePicker(
-                        "结束日期",
+                        "app.gacha.data.clean.date.end",
                         selection: $endDate,
                         displayedComponents: .date
                     )
                 }
-                Button("删除祈愿记录") {
+                Button("app.gacha.data.clean.button") {
                     alert = .deleteCheck
                 }
                 .disabled(account == nil)
@@ -135,7 +135,7 @@ struct GachaSetting: View {
                     }
                 } label: {
                     Label(
-                        "导出UIGF祈愿记录",
+                        "app.gacha.export.title",
                         systemSymbol: .squareAndArrowUpOnSquare
                     )
                 }
@@ -149,7 +149,7 @@ struct GachaSetting: View {
                 }
             }
         }
-        .navigationTitle("祈愿数据管理")
+        .navigationTitle("app.gacha.data.management.title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isExportSheetShow, content: {
             ExportGachaView(isSheetShow: $isExportSheetShow)
@@ -193,7 +193,8 @@ struct GachaSetting: View {
     func duplicatedCleanCompletedAlertMessage(_ thisAlert: AlertType) -> some View {
         switch thisAlert {
         case let .duplicatedCleanCompleted(count):
-            Text("删除了\(count)条重复数据")
+            let deleteContent = String(format: "app.gacha.data.clean.complete.info.duplicated:%lld", count).localized
+            Text(deleteContent)
         default:
             EmptyView()
         }
@@ -203,7 +204,8 @@ struct GachaSetting: View {
     func deleteCompletedAlertMessage(_ thisAlert: AlertType) -> some View {
         switch thisAlert {
         case let .deleteCompleted(count):
-            Text("删除了\(count)条数据")
+            let deleteContent = String(format: "app.gacha.data.clean.complete.info:%lld", count).localized
+            Text(deleteContent)
         default:
             EmptyView()
         }
@@ -231,13 +233,12 @@ struct GachaSetting: View {
     func deleteConfirmAlertMessage(_ thisAlert: AlertType) -> some View {
         let startDate: Date = deleteAll ? .distantPast : startDate
         let endDate: Date = deleteAll ? .distantFuture : endDate
-        let rangeDesc: String = deleteAll ? "所有".localized :
+        let rangeDesc: String = deleteAll ? "sys.all".localized :
             Self.rangeFormatter.string(from: startDate, to: endDate)
         let nameDesc: String = accounts.first(where: { $0.uid! == account! })?
             .name ?? account ?? ""
-        Text(
-            "即将删除「\(nameDesc)」\(rangeDesc)的祈愿数据。"
-        )
+        let messageContent = String(format: "app.gacha.data.clean.confirm:%@%@", nameDesc, rangeDesc).localized
+        Text(messageContent)
     }
 
     // MARK: Private

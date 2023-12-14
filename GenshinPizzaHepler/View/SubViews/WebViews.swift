@@ -249,12 +249,12 @@ struct UserPolicyView: View {
                 .ignoresSafeArea()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button("拒绝") {
+                        Button("app.disagree") {
                             exit(1)
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("同意") {
+                        Button("app.agree") {
                             Defaults[.isPolicyShown] = true
                             UserDefaults.opSuite.synchronize()
                             sheet = nil

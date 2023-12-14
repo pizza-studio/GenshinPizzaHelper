@@ -68,10 +68,10 @@ struct ExportGachaView: View {
     func main() -> some View {
         List {
             Section {
-                Picker("选择账号", selection: $params.uid) {
+                Picker("app.gacha.account.select.title", selection: $params.uid) {
                     Group {
                         if params.uid == nil {
-                            Text("未选择").tag(String?(nil))
+                            Text("app.gacha.account.select.notSelected").tag(String?(nil))
                         }
                         ForEach(
                             gachaViewModel.allAvaliableAccountUID,
@@ -106,7 +106,7 @@ struct ExportGachaView: View {
     var body: some View {
         NavigationStack {
             main()
-                .navigationTitle("导出祈愿记录")
+                .navigationTitle("app.gacha.data.export.button")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

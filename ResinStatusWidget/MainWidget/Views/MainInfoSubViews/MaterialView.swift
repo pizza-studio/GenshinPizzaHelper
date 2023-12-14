@@ -38,7 +38,7 @@ struct MaterialView: View {
                 }
             }
         } else {
-            Text("（星期日所有材料均可获取）".localized)
+            Text("widget.material.sunday".localized)
                 .foregroundColor(Color("textColor3"))
                 .font(.caption)
                 .lineLimit(1)

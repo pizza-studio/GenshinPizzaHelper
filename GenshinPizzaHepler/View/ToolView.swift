@@ -29,7 +29,7 @@ struct ToolView: View {
                 Section {
                     NavigationLink(value: Navigation.gacha) {
                         Label {
-                            Text("祈愿分析")
+                            Text("app.gacha.title")
                                 .foregroundColor(.primary)
                         } icon: {
                             Image("UI_MarkPoint_SummerTimeV2_Dungeon_04").resizable()
@@ -38,7 +38,7 @@ struct ToolView: View {
                     }
                     NavigationLink(value: Navigation.abyss) {
                         Label {
-                            Text("深渊统计榜单")
+                            Text("app.abyss.rank.title")
                                 .foregroundColor(.primary)
                         } icon: {
                             Image("UI_MarkTower_EffigyChallenge_01").resizable()
@@ -87,7 +87,7 @@ public struct ThirdPartyToolsView: View {
     public var body: some View {
         Section {
             NavigationLink(value: ToolView.Navigation.dictionary) {
-                Text("原神中英日辞典")
+                Text("tools.dictionary.title")
             }
             mapNavigationLink()
             genshinCalculatorLink()
@@ -138,9 +138,9 @@ struct GenshinCalculatorLink: View {
                 destination: URL(string: "https://apps.apple.com/us/app/id1620751192")!
             ) {
                 VStack(alignment: .leading) {
-                    Text("原神计算器")
+                    Text("tools.calculator.title")
                         .foregroundColor(.primary)
-                    Text("由爱丽丝工坊提供（未安装）")
+                    Text("tools.calculator.info.2")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
@@ -150,9 +150,9 @@ struct GenshinCalculatorLink: View {
                 isAlertShow.toggle()
             } label: {
                 VStack(alignment: .leading) {
-                    Text("原神计算器")
+                    Text("tools.calculator.title")
                         .foregroundColor(.primary)
-                    Text("由爱丽丝工坊提供")
+                    Text("tools.calculator.info")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }

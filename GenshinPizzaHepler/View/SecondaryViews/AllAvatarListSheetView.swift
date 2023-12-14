@@ -35,12 +35,20 @@ struct AllAvatarListSheetView: View {
             }
             Section {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(
-                        "共拥有\(data.avatars.count)名角色，其中五星角色\(data.avatars.filter { $0.rarity == 5 }.count)名，四星角色\(data.avatars.filter { $0.rarity == 4 }.count)名。"
+                    let charCount = String(
+                        format: "app.characters.count.character:%lld%lld%lld",
+                        data.avatars.count,
+                        data.avatars.filter { $0.rarity == 5 }.count,
+                        data.avatars.filter { $0.rarity == 4 }.count
+                    ).localized
+                    Text(charCount)
+                    let weaponCount = String(
+                        format: "app.characters.count.weapon:%lld%lld%lld",
+                        goldNum(data: data).allGold,
+                        goldNum(data: data).charGold,
+                        goldNum(data: data).weaponGold
                     )
-                    Text(
-                        "共获得\(goldNum(data: data).allGold)金，其中角色\(goldNum(data: data).charGold)金，武器\(goldNum(data: data).weaponGold)金。（未统计旅行者和无人装备的五星武器）"
-                    )
+                    Text(weaponCount)
                 }.font(.footnote)
             }.listRowMaterialBackground()
             Section {
@@ -71,7 +79,7 @@ struct AllAvatarListSheetView: View {
                 .ignoresSafeArea(.all)
                 .overlay(.ultraThinMaterial)
         }
-        .navigationTitle("我的角色")
+        .navigationTitle("app.characters.title")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Menu {
@@ -117,9 +125,9 @@ struct AllAvatarListSheetView: View {
     // MARK: Private
 
     private enum AllAvatarListDisplayType: String, CaseIterable {
-        case all = "全部角色"
-        case _5star = "五星角色"
-        case _4star = "四星角色"
+        case all = "app.characters.filter.all"
+        case _5star = "app.characters.filter.5star"
+        case _4star = "app.characters.filter.4star"
     }
 
     @State
@@ -197,7 +205,7 @@ struct AvatarListItem: View {
                 .frame(width: 50, height: 50)
             }
             .corneredTag(
-                "精\(avatar.weapon.affixLevel)",
+                LocalizedStringKey(String(format: "weapon.affix:%lld", avatar.weapon.affixLevel)),
                 alignment: .topLeading
             )
             .corneredTag(
@@ -229,7 +237,7 @@ private struct AllAvatarListShareView: View {
             // Title
             HStack(alignment: .lastTextBaseline) {
                 Text("\(accountName)").font(.title).bold()
-                Text("的所有角色").font(.title)
+                Text("app.characters.ownedCharacters.title").font(.title)
             }
             .padding(.bottom, 9)
             // 正文
@@ -339,7 +347,8 @@ private struct AvatarListItemShare: View {
                             Text("Lv. \(avatar.weapon.level)")
                                 .font(.callout)
                                 .fixedSize()
-                            Text("精\(avatar.weapon.affixLevel)")
+                            let affix = String(format: "weapon.affix:%lld", avatar.weapon.affixLevel).localized
+                            Text(affix)
                                 .font(.caption)
                                 .padding(.horizontal, 5)
                                 .background(

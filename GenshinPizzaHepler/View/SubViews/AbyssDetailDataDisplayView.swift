@@ -21,50 +21,50 @@ struct AbyssDetailDataDisplayView: View {
             if !data.rankDataMissing {
                 // 总体战斗结果概览
                 Section {
-                    InfoPreviewer(title: "最深抵达", content: data.maxFloor)
-                    InfoPreviewer(title: "获得渊星", content: "\(data.totalStar)")
+                    InfoPreviewer(title: "app.abyss.info.deepest", content: data.maxFloor)
+                    InfoPreviewer(title: "app.abyss.info.star", content: "\(data.totalStar)")
                     InfoPreviewer(
-                        title: "战斗次数",
+                        title: "app.abyss.info.battle",
                         content: "\(data.totalBattleTimes)"
                     )
-                    InfoPreviewer(title: "获胜次数", content: "\(data.totalWinTimes)")
+                    InfoPreviewer(title: "app.abyss.info.win", content: "\(data.totalWinTimes)")
                 } header: {
-                    Text("战斗概览")
+                    Text("app.abyss.info.summary")
                 }
                 .listRowMaterialBackground()
 
                 Section {
                     BattleDataInfoProvider(
-                        name: "最强一击",
+                        name: "app.abyss.info.strongest",
                         value: data.damageRank.first?.value,
                         avatarID: data.damageRank.first?.avatarId
                     )
                     BattleDataInfoProvider(
-                        name: "最多击破数",
+                        name: "app.abyss.info.mostDefeats",
                         value: data.defeatRank.first?.value,
                         avatarID: data.defeatRank.first?.avatarId
                     )
                     BattleDataInfoProvider(
-                        name: "承受最多伤害",
+                        name: "app.abyss.info.mostDamageTaken",
                         value: data.takeDamageRank.first?.value,
                         avatarID: data.takeDamageRank.first?.avatarId
                     )
                     BattleDataInfoProvider(
-                        name: "元素战技释放数",
+                        name: "app.abyss.info.mostESkills",
                         value: data.normalSkillRank.first?.value,
                         avatarID: data.normalSkillRank.first?.avatarId
                     )
                     BattleDataInfoProvider(
-                        name: "元素爆发次数",
+                        name: "app.abyss.info.mostQSkills",
                         value: data.energySkillRank.first?.value,
                         avatarID: data.energySkillRank.first?.avatarId
                     )
                 } header: {
-                    Text("战斗数据榜")
+                    Text("app.abyss.info.notableStats")
                 }
                 .listRowMaterialBackground()
             } else {
-                Text("暂无本期深渊数据").listRowMaterialBackground()
+                Text("app.abyss.noData").listRowMaterialBackground()
             }
 
             ForEach(data.floors.reversed(), id: \.index) { floorData in
@@ -79,7 +79,7 @@ struct AbyssDetailDataDisplayView: View {
                 .ignoresSafeArea(.all)
                 .overlay(.ultraThinMaterial)
         }
-        .navigationTitle("深境螺旋详情")
+        .navigationTitle("app.abyss.info.title")
         .toolbarSavePhotoButton(visible: !data.rankDataMissing) {
             AbyssShareView(data: data)
         }
@@ -93,14 +93,14 @@ private struct AbyssFloorView: View {
 
     var foldableTitleText: String {
         let initials = String(
-            format: NSLocalizedString("第%lld层", comment: ""),
+            format: NSLocalizedString("app.abyss.info.floor", comment: ""),
             floorData.index
         )
         if ThisDevice.isHDPhoneOrPodTouch || OS.type == .macOS {
             let buffer = NSMutableString()
             buffer.append(initials)
             buffer.append(" - ")
-            buffer.append("获取渊星数".localized)
+            buffer.append("app.abyss.star.obtained".localized)
             buffer.append(": ")
             buffer.append("\(floorData.star)/\(floorData.maxStar)")
             return buffer.description
@@ -114,7 +114,7 @@ private struct AbyssFloorView: View {
             VStack(spacing: intSpacing) {
                 if !(ThisDevice.isHDPhoneOrPodTouch || OS.type == .macOS) {
                     HStack {
-                        Label(title: { Text("获取渊星数") }) {
+                        Label(title: { Text("app.abyss.star.obtained") }) {
                             AbyssStarIcon()
                         }
                         Spacer()
@@ -211,13 +211,13 @@ private struct AbyssBattleView: View {
                     HStack {
                         switch battleData.index {
                         case 1:
-                            Text("上半")
+                            Text("app.abyss.half.1")
                                 .font(.system(size: UIFont.smallSystemFontSize, design: .monospaced)).fixedSize()
                         case 2:
-                            Text("下半")
+                            Text("app.abyss.half.2")
                                 .font(.system(size: UIFont.smallSystemFontSize, design: .monospaced)).fixedSize()
                         default:
-                            Text("Unknown")
+                            Text("sys.unknown")
                                 .font(.system(size: UIFont.smallSystemFontSize, design: .monospaced)).fixedSize()
                         }
                         Spacer()
@@ -309,7 +309,7 @@ private struct ShareAbyssFloorView: View {
             HStack {
                 AbyssStarIcon()
                     .frame(width: 30, height: 30)
-                Text("获取渊星数")
+                Text("app.abyss.star.obtained")
                 Spacer()
                 Text("\(floorData.star)/\(floorData.maxStar)")
             }

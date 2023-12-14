@@ -38,7 +38,7 @@ struct ContentView: View {
         NavigationStack {
             if accounts.isEmpty {
                 VStack {
-                    Text("请等待账号从iCloud同步")
+                    Text("watch.sync.tips")
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
                     Image(systemSymbol: .icloudAndArrowDown)

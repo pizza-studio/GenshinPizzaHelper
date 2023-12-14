@@ -962,7 +962,7 @@ private struct AbyssInfoNavigator: View {
                     }
                     Spacer()
                 } else {
-                    Text("暂无本期深渊数据")
+                    Text("app.abyss.noData")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -1007,15 +1007,15 @@ private struct LedgerView: View {
         List {
             Section {
                 LabelWithDescription(
-                    title: "原石收入",
-                    memo: "较昨日",
+                    title: "app.ledger.primogems",
+                    memo: "app.ledger.compare",
                     icon: "UI_ItemIcon_Primogem",
                     mainValue: data.dayData.currentPrimogems,
                     previousValue: data.dayData.lastPrimogems
                 )
                 LabelWithDescription(
-                    title: "摩拉收入",
-                    memo: "较昨日",
+                    title: "app.ledger.mora",
+                    memo: "app.ledger.compare",
                     icon: "UI_ItemIcon_Mora",
                     mainValue: data.dayData.currentMora,
                     previousValue: data.dayData.lastMora
@@ -1027,7 +1027,7 @@ private struct LedgerView: View {
                     Text("\(data.date ?? "")")
                 }
             } footer: {
-                Text("仅统计充值途径以外获取的资源。数据存在延迟。")
+                Text("app.ledger.tip")
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
             }
@@ -1038,15 +1038,15 @@ private struct LedgerView: View {
                     from: Date()
                 ).day
                 LabelWithDescription(
-                    title: "原石收入",
-                    memo: "较上月同期",
+                    title: "app.ledger.primogems",
+                    memo: "app.ledger.compare.month",
                     icon: "UI_ItemIcon_Primogem",
                     mainValue: data.monthData.currentPrimogems,
                     previousValue: data.monthData.lastPrimogems / (dayCountThisMonth ?? 1)
                 )
                 LabelWithDescription(
-                    title: "摩拉收入",
-                    memo: "较上月同期",
+                    title: "app.ledger.mora",
+                    memo: "app.ledger.compare.month",
                     icon: "UI_ItemIcon_Mora",
                     mainValue: data.monthData.currentMora,
                     previousValue: data.monthData.lastMora / (dayCountThisMonth ?? 1)
@@ -1193,36 +1193,36 @@ private struct BasicInfoView: View {
     var body: some View {
         List {
             Section {
-                DataDisplayView(label: "活跃天数", value: "\(data.stats.activeDayNumber)")
-                DataDisplayView(label: "获得角色", value: "\(data.stats.avatarNumber)")
-                DataDisplayView(label: "深境螺旋", value: data.stats.spiralAbyss)
+                DataDisplayView(label: "app.account.basicInfo.daysActive", value: "\(data.stats.activeDayNumber)")
+                DataDisplayView(label: "app.account.basicInfo.characters", value: "\(data.stats.avatarNumber)")
+                DataDisplayView(label: "app.account.basicInfo.abyss", value: data.stats.spiralAbyss)
                 DataDisplayView(
-                    label: "成就达成",
+                    label: "app.account.basicInfo.achievements",
                     value: "\(data.stats.achievementNumber)"
                 )
                 DataDisplayView(
-                    label: "解锁锚点",
+                    label: "app.account.basicInfo.waypoints",
                     value: "\(data.stats.wayPointNumber)"
                 )
                 DataDisplayView(
-                    label: "解锁秘境",
+                    label: "app.account.basicInfo.domains",
                     value: "\(data.stats.domainNumber)"
                 )
             }
             .listRowMaterialBackground()
 
             Section {
-                DataDisplayView(label: "普通宝箱", value: "\(data.stats.commonChestNumber)")
+                DataDisplayView(label: "app.account.basicInfo.chest.1", value: "\(data.stats.commonChestNumber)")
                 DataDisplayView(
-                    label: "珍贵宝箱",
+                    label: "app.account.basicInfo.chest.3",
                     value: "\(data.stats.preciousChestNumber)"
                 )
                 DataDisplayView(
-                    label: "精致宝箱",
+                    label: "app.account.basicInfo.chest.2",
                     value: "\(data.stats.exquisiteChestNumber)"
                 )
                 DataDisplayView(
-                    label: "华丽宝箱",
+                    label: "app.account.basicInfo.chest.4",
                     value: "\(data.stats.luxuriousChestNumber)"
                 )
             }
@@ -1231,27 +1231,27 @@ private struct BasicInfoView: View {
             Section {
                 DataDisplayView(
                     symbol: Image("UI_ItemIcon_107001"),
-                    label: "风神瞳",
+                    label: "app.account.basicInfo.anemo",
                     value: "\(data.stats.anemoculusNumber)"
                 )
                 DataDisplayView(
                     symbol: Image("UI_ItemIcon_107003"),
-                    label: "岩神瞳",
+                    label: "app.account.basicInfo.geo",
                     value: "\(data.stats.geoculusNumber)"
                 )
                 DataDisplayView(
                     symbol: Image("UI_ItemIcon_107014"),
-                    label: "雷神瞳",
+                    label: "app.account.basicInfo.electro",
                     value: "\(data.stats.electroculusNumber)"
                 )
                 DataDisplayView(
                     symbol: Image("UI_ItemIcon_107017"),
-                    label: "草神瞳",
+                    label: "app.account.basicInfo.dendro",
                     value: "\(data.stats.dendroculusNumber)"
                 )
                 DataDisplayView(
                     symbol: Image("Item_Hydroculus"),
-                    label: "水神瞳",
+                    label: "app.account.basicInfo.hydro",
                     value: "\(data.stats.hydroculusNumber)"
                 )
             }

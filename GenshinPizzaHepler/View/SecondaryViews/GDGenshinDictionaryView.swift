@@ -127,18 +127,18 @@ struct GenshinDictionary: View {
                                     dictionaryItemCell(word: item)
                                         .id(item.id)
                                         .contextMenu {
-                                            Button("复制英语") {
+                                            Button("app.dictionary.copy.en") {
                                                 UIPasteboard.general
                                                     .string = item.en
                                             }
                                             if let zhcn = item.zhCN {
-                                                Button("复制中文") {
+                                                Button("app.dictionary.copy.zh") {
                                                     UIPasteboard.general
                                                         .string = zhcn
                                                 }
                                             }
                                             if let ja = item.ja {
-                                                Button("复制日语") {
+                                                Button("app.dictionary.copy.ja") {
                                                     UIPasteboard.general
                                                         .string = ja
                                                 }
@@ -152,7 +152,7 @@ struct GenshinDictionary: View {
                 .searchable(
                     text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .always),
-                    prompt: "支持易错字、简写和英文标签"
+                    prompt: "app.dictionary.tip.search"
                 )
                 .overlay(alignment: .trailing) {
                     if searchText.isEmpty {
@@ -174,7 +174,7 @@ struct GenshinDictionary: View {
                     }
                 }
             }
-            .navigationTitle("原神中英日辞典")
+            .navigationTitle("tools.dictionary.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -199,18 +199,14 @@ struct GenshinDictionary: View {
             .sheet(isPresented: $showInfoSheet) {
                 NavigationStack {
                     VStack(alignment: .leading) {
-                        Text(
-                            "本功能由[原神中英日辞典](https://genshin-dictionary.com/)提供。"
-                        )
-                        Text("当前共收录了\(dictionaryData.count)个原神专有词语，并还在继续更新中。")
-                        Text(
-                            "如发现辞典内容有误或其他问题，英语&日语问题请在Twitter私信联系[シクリ](https://twitter.com/xicri_gi?s=21&t=p-r6hSgh_TXt7iddPNZM1w)，英语&中文问题请通过邮件联系[Bill Haku](mailto:i@hakubill.tech)。"
-                        )
+                        Text("app.dictionary.tip.info")
+                        Text(String(format: "app.dictionary.tip.count:%lld", dictionaryData.count))
+                        Text("app.dictionary.tip.contact")
                         Spacer()
                     }
                     .padding(.horizontal)
                     .multilineTextAlignment(.leading)
-                    .navigationBarTitle("关于原神中英日辞典")
+                    .navigationBarTitle("app.dictionary.about.title")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
@@ -224,7 +220,7 @@ struct GenshinDictionary: View {
                 }
             }
         } else {
-            ProgressView().navigationTitle("原神中英日辞典")
+            ProgressView().navigationTitle("tools.dictionary.title")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -254,15 +250,15 @@ struct GenshinDictionary: View {
     @ViewBuilder
     func dictionaryItemCell(word: GDDictionary) -> some View {
         VStack(alignment: .leading) {
-            Text("**英语** \(word.en)")
+            Text(String(format: "app.dictionary.content.en:%@", word.en))
             if let zhcn = word.zhCN {
-                Text("**中文** \(zhcn)")
+                Text(String(format: "app.dictionary.content.zh:%@", zhcn))
             }
             if let ja = word.ja {
                 if let jaPron = word.pronunciationJa {
-                    Text("**日语** \(ja)") + Text(" (\(jaPron))").font(.footnote)
+                    Text(String(format: "app.dictionary.content.ja:%@", ja)) + Text(" (\(jaPron))").font(.footnote)
                 } else {
-                    Text("**日语** \(ja)")
+                    Text(String(format: "app.dictionary.content.ja:%@", ja))
                 }
             }
             if let tags = word.tags {

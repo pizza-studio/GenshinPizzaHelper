@@ -39,7 +39,7 @@ struct WatchResinDetailView: View {
                 .minimumScaleFactor(0.3)
                 .font(.footnote)
         } else {
-            Text("树脂已全部回满")
+            Text("app.dailynote.card.resinFull")
                 .foregroundColor(.gray)
                 .minimumScaleFactor(0.3)
                 .font(.footnote)

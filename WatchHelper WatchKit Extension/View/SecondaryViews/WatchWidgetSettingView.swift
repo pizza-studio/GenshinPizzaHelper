@@ -36,10 +36,10 @@ struct WatchWidgetSettingView: View {
                     QueryFrequencySettingView()
                 } label: {
                     HStack {
-                        Text("小组件同步频率")
+                        Text("widget.settings.sync.frequency.title")
                         Spacer()
                         Text(String(
-                            format: NSLocalizedString("每%@", comment: ""),
+                            format: NSLocalizedString("widget.settings.sync.speed:%@", comment: ""),
                             lockscreenWidgetRefreshFrequencyFormated
                         ))
                         .foregroundColor(.accentColor)
@@ -47,9 +47,9 @@ struct WatchWidgetSettingView: View {
                 }
             }
             Section {
-                Toggle("使用简洁模式", isOn: $watchWidgetUseSimplifiedMode)
+                Toggle("settings.widget.simplifiedMode.title", isOn: $watchWidgetUseSimplifiedMode)
             } footer: {
-                Text("仅国服用户。更改该项需要重新添加小组件。")
+                Text("settings.widget.simplifiedMode.note")
             }
             if watchWidgetUseSimplifiedMode {
                 Section {
@@ -57,11 +57,11 @@ struct WatchWidgetSettingView: View {
                         HomeCoinRecoverySettingView()
                     } label: {
                         HStack {
-                            Text("洞天宝钱回复速度")
+                            Text("settings.widget.realmCurrency.speed")
                             Spacer()
                             Text(String(
                                 format: NSLocalizedString(
-                                    "每小时%lld个",
+                                    "settings.widget.realmCurrency.speed.detail",
                                     comment: ""
                                 ),
                                 Int(homeCoinRefreshFrequency)
@@ -70,7 +70,7 @@ struct WatchWidgetSettingView: View {
                         }
                     }
                 } footer: {
-                    Text("（仅简洁模式）未正确设置可能导致洞天宝钱数量不准确。")
+                    Text("settings.widget.simplifiedMode.note.realmCurrency")
                 }
             }
         }
@@ -99,9 +99,9 @@ private struct QueryFrequencySettingView: View {
 
     var body: some View {
         VStack {
-            Text("小组件同步频率").foregroundColor(.accentColor)
+            Text("widget.settings.sync.frequency.title").foregroundColor(.accentColor)
             Text(String(
-                format: NSLocalizedString("每%@", comment: ""),
+                format: NSLocalizedString("widget.settings.sync.speed:%@", comment: ""),
                 lockscreenWidgetRefreshFrequencyFormated
             ))
             .font(.title3)
@@ -125,9 +125,9 @@ private struct HomeCoinRecoverySettingView: View {
 
     var body: some View {
         VStack {
-            Text("洞天宝钱回复速度").foregroundColor(.accentColor)
+            Text("settings.widget.realmCurrency.speed").foregroundColor(.accentColor)
             Text(String(
-                format: NSLocalizedString("每小时%lld个", comment: ""),
+                format: NSLocalizedString("settings.widget.realmCurrency.speed.detail", comment: ""),
                 Int(homeCoinRefreshFrequency)
             ))
             .font(.title3)
