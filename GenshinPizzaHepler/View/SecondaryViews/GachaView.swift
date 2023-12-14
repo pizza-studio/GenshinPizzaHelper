@@ -95,10 +95,8 @@ struct GachaView: View {
                                     Text(uid)
                                 }
                             } else {
-                                Text("请点击右上角获取抽卡记录")
+                                Text("app.gacha.get.button")
                             }
-                        } else {
-                            Text("app.gacha.get.button")
                         }
                     }
                     .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
