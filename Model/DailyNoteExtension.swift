@@ -13,7 +13,7 @@ extension ResinInformation {
     public func calculatedCurrentResin(referTo date: Date) -> Int {
         let secondToFull = resinRecoveryTime.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate
         guard secondToFull > 0 else { return maxResin }
-        return maxResin - Int(secondToFull / 8 / 60)
+        return maxResin - Int(ceil(secondToFull / 8 / 60))
     }
 }
 

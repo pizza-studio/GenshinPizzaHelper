@@ -58,12 +58,12 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
         let secondRemaining = resinRecoveryTime.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate
         let minuteRemaining = Double(secondRemaining) / 60
         let currentResin: Int
-        if minuteRemaining == 0 {
+        if minuteRemaining <= 0 {
             currentResin = 160
         } else {
-            currentResin = 160 - Int(minuteRemaining / 8)
+            currentResin = 160 - Int(ceil(minuteRemaining / 8))
         }
-        return currentResin - 1
+        return currentResin
     }
 
     /// 下一20倍数树脂

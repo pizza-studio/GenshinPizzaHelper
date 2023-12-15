@@ -31090,6 +31090,9 @@
         }
       }
     },
+    "1034问题的解决方案" : {
+
+    },
     "736320270" : {
       "localizations" : {
         "ja" : {
@@ -60305,6 +60308,9 @@
         }
       }
     },
+    "settings.account.accountInformation" : {
+
+    },
     "settings.account.addAccount" : {
       "localizations" : {
         "en" : {
@@ -61146,6 +61152,9 @@
           }
         }
       }
+    },
+    "settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" : {
+
     },
     "settings.account.login.instruction" : {
       "extractionState" : "manual",
@@ -73061,6 +73070,9 @@
         }
       }
     },
+    "上滑查看更多基本信息" : {
+
+    },
     "不允许" : {
       "localizations" : {
         "en" : {
@@ -73174,7 +73186,6 @@
       }
     },
     "取消" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -73201,7 +73212,6 @@
       }
     },
     "完成" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -73439,6 +73449,9 @@
         }
       }
     },
+    "本账号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" : {
+
+    },
     "树脂" : {
       "localizations" : {
         "en" : {
@@ -73526,7 +73539,6 @@
       }
     },
     "编辑" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
