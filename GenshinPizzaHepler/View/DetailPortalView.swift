@@ -107,7 +107,9 @@ final class DetailPortalViewModel: ObservableObject {
                 }
             }
         }
-        allAvatarInfoStatus = .progress(task)
+        DispatchQueue.main.async {
+            self.allAvatarInfoStatus = .progress(task)
+        }
     }
 
     func fetchPlayerDetail() {

@@ -624,12 +624,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
                     let data = data.data
                     Section {
                         VStack(alignment: .leading) {
-                            let statInfo = String(
-                                format: "app.abyss.stat.2:%lld%@",
-                                data.totalUsers,
-                                abyssDataCollectionViewModel.paramsDescription
-                            ).localized
-                            Text(statInfo)
+                            Text("app.abyss.stat.2:\(data.totalUsers)\(abyssDataCollectionViewModel.paramsDescription)")
                                 .padding(.bottom, 5)
                             Text("abyssDataCollection.usageRate.disclaimer")
                         }
@@ -1138,14 +1133,12 @@ private struct UtilizationParasSettingBar: View {
         Spacer()
         Menu {
             ForEach((9 ... 12).reversed(), id: \.self) { number in
-                let floorString = String(format: "app.abyss.rank.floor.title:%lld", number).localized
-                Button(floorString) {
+                Button("app.abyss.rank.floor.title:\(number)") {
                     params.floor = number
                 }
             }
         } label: {
-            let floorString = String(format: "app.abyss.rank.floor.title:%lld", params.floor).localized
-            Text(floorString)
+            Text("app.abyss.rank.floor.title:\(params.floor)")
         }
         Spacer()
         Menu {
@@ -1209,14 +1202,12 @@ private struct TeamUtilizationParasSettingBar: View {
         Spacer()
         Menu {
             ForEach((9 ... 12).reversed(), id: \.self) { number in
-                let floorString = String(format: "app.abyss.rank.floor.title:%lld", number).localized
-                Button(floorString) {
+                Button("app.abyss.rank.floor.title:\(number)") {
                     params.floor = number
                 }
             }
         } label: {
-            let floorString = String(format: "app.abyss.rank.floor.title:%lld", params.floor).localized
-            Text(floorString)
+            Text("app.abyss.rank.floor.title:\(params.floor)")
         }
         Spacer()
         Menu {

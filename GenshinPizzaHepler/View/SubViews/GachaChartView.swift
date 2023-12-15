@@ -67,11 +67,9 @@ struct GachaChartView: View {
                         gachaViewModel.filter.gachaType.localizedDescription()
                     )
                     Spacer()
-                    let switchContent = String(
-                        format: "app.gacha.chart.switch.button:%@",
-                        gachaViewModel.filter.gachaType.nextOne().localizedDescription()
-                    ).localized
-                    Button(switchContent) {
+                    Button(
+                        "app.gacha.chart.switch.button:\(gachaViewModel.filter.gachaType.nextOne().localizedDescription())"
+                    ) {
                         withAnimation {
                             gachaViewModel.filter.gachaType = gachaViewModel
                                 .filter.gachaType.nextOne()

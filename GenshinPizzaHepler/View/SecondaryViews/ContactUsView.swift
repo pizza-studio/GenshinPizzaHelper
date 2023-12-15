@@ -464,7 +464,7 @@ struct ContactUsView: View {
                             )!
                         ) {
                             Label {
-                                Text("русскоязычный канал")
+                                Text(verbatim: "русскоязычный канал")
                             } icon: {
                                 Image("telegram")
                                     .resizable()
@@ -487,7 +487,7 @@ struct ContactUsView: View {
             Section(header: Text("contact.translator.header")) {
                 Label {
                     HStack {
-                        Text("Lava")
+                        Text(verbatim: "Lava")
                         Spacer()
                         Text("contact.translator.en")
                             .foregroundColor(.gray)
@@ -513,7 +513,7 @@ struct ContactUsView: View {
                 }
                 Label {
                     HStack {
-                        Text("ShikiSuen")
+                        Text(verbatim: "ShikiSuen")
                         Spacer()
                         Text("繁体中文".localized + " & " + "contact.translator.ja".localized)
                             .foregroundColor(.gray)

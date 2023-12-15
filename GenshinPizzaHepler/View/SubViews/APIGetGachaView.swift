@@ -119,16 +119,13 @@ struct APIGetGachaView: View {
                 displayMode: .alert,
                 type: .complete(.green),
                 title: "app.gacha.get.success",
-                subTitle: String(
-                    format: "gacha.messages.newEntriesSaved:%lld".localized,
-                    observer.newItemCount
-                )
+                subTitle: "gacha.messages.newEntriesSaved:\(observer.newItemCount)".localized
             )
         })
         .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
             guard case let .failure(error) = status
             else { return .init(displayMode: .alert, type: .loading) }
-            let errorTitle = String(format: "app.gacha.get.error:%@", error.localizedDescription).localized
+            let errorTitle = "app.gacha.get.error:\(error.localizedDescription)".localized
             return .init(
                 displayMode: .alert,
                 type: .error(.red),
@@ -338,26 +335,13 @@ struct GettingGachaBar: View {
         } footer: {
             HStack {
                 VStack(alignment: .leading) {
-                    let poolType = String(
-                        format: "app.gacha.get.info.pool:%@",
-                        observer.gachaType.localizedDescription()
-                    ).localized
-                    let pageNumber = String(format: "app.gacha.get.info.page:%@", observer.page.description).localized
-                    Text(poolType)
-                    Text(pageNumber)
+                    Text("app.gacha.get.info.pool:\(observer.gachaType.localizedDescription())")
+                    Text("app.gacha.get.info.page:\(observer.page.description)")
                 }
                 Spacer()
                 VStack(alignment: .leading) {
-                    let recordInfo = String(
-                        format: "app.gacha.get.info.record:%@",
-                        observer.currentItems.count.description
-                    ).localized
-                    let newRecordInfo = String(
-                        format: "app.gacha.get.info.record.new:%@",
-                        observer.newItemCount.description
-                    ).localized
-                    Text(recordInfo)
-                    Text(newRecordInfo)
+                    Text("app.gacha.get.info.record:\(observer.currentItems.count.description)")
+                    Text("app.gacha.get.info.record.new:\(observer.newItemCount.description)")
                 }
             }
         }
@@ -405,12 +389,7 @@ struct GetGachaResultView: View {
                         .foregroundColor(.green)
                 }
             } footer: {
-                let resultContent = String(
-                    format: "app.gacha.get.result:%@%@",
-                    observer.currentItems.count.description,
-                    observer.newItemCount.description
-                ).localized
-                Text(resultContent)
+                Text("app.gacha.get.result:\(observer.currentItems.count.description)\(observer.newItemCount.description)")
             }
         }
 

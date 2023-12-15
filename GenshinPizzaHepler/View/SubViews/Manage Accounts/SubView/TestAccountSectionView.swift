@@ -33,10 +33,6 @@ struct TestAccountSectionView: View {
                     doTest()
                 }
             }
-        } footer: {
-            if verificationErrorHasOccurred {
-                Text("account.test.footer.recommend_device_fp")
-            }
         }
         .onAppear {
             doTest()

@@ -208,12 +208,9 @@ private struct GachaStatisticSectionView: View {
             HStack {
                 Label("app.gacha.afterLast5Star", systemSymbol: .flagFill)
                 Spacer()
-                let pullInfo = String(
-                    format: "app.gacha.pull:%lld",
-                    gachaViewModel.sortedAndFilteredGachaItem
-                        .firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count
-                ).localized
-                Text(pullInfo)
+                let pull: Int = gachaViewModel.sortedAndFilteredGachaItem
+                    .firstIndex(where: { $0.rankType == .five }) ?? gachaViewModel.sortedAndFilteredGachaItem.count
+                Text("app.gacha.pull:\(pull)")
             }
             HStack {
                 Label(
