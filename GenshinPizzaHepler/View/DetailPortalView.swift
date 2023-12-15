@@ -1471,6 +1471,7 @@ private struct VerificationNeededView: View {
                                 }
                             }
                         )
+                        .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Button("sys.cancel") {
@@ -1565,6 +1566,9 @@ private struct VerificationNeededView: View {
 
     @State
     private var sheetItem: SheetItem?
+
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
 }
 
 // MARK: - InformationRowView
