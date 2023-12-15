@@ -95,7 +95,9 @@ struct CookieGetterWebView: UIViewRepresentable {
 
         var parent: CookieGetterWebView
 
-        func webView(
+        // MARK: Private
+
+        private func webView(
             _ webView: OPWebView,
             didFinish _: WKNavigation!
         ) {
