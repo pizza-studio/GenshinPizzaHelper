@@ -37,17 +37,19 @@ extension View {
             self
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
-
-            if binding.wrappedValue {
-                NavigationStack {
-                    NavigationLink(
-                        destination: view,
-                        isActive: binding
-                    ) {
-                        EmptyView()
+                .overlay {
+                    if binding.wrappedValue {
+                        NavigationStack {
+                            NavigationLink(
+                                destination: view.onDisappear {
+                                    binding.wrappedValue = false
+                                }
+                            ) {
+                                EmptyView()
+                            }
+                        }.animation(.default, value: 200)
                     }
-                }.animation(.default, value: 200)
-            }
+                }
         }
     }
 }
