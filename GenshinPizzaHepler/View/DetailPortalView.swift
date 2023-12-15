@@ -471,10 +471,10 @@ struct DetailPortalView: View {
                 BasicInfoView(data: data)
             }
             .navigationDestination(for: SpiralAbyssDetail.self) { data in
-                AbyssDetailDataDisplayView(data: data).environment(\.colorScheme, .dark)
+                AbyssDetailDataDisplayView(data: data)
             }
             .navigationDestination(for: LedgerData.self) { data in
-                LedgerView(data: data).environment(\.colorScheme, .dark)
+                LedgerView(data: data)
             }
             .navigationDestination(for: AllAvatarDetailModel.self) { data in
                 AllAvatarListSheetView(data: data)
@@ -887,7 +887,7 @@ private struct LedgerDataNavigator: View {
         var body: some View {
             InformationRowView("app.detailPortal.ledger.title") {
                 if OS.type == .macOS {
-                    SheetCaller(forceDarkMode: true) {
+                    SheetCaller(forceDarkMode: false) {
                         LedgerView(data: ledgerData)
                     } label: {
                         displayLabel
@@ -971,7 +971,7 @@ private struct AbyssInfoNavigator: View {
                 // 如果没有本期深境螺旋数据的话，就不响应任何点击行为。
                 if abyssInfo.maxFloor != "0-0" {
                     if OS.type == .macOS {
-                        SheetCaller(forceDarkMode: true) {
+                        SheetCaller(forceDarkMode: false) {
                             AbyssDetailDataDisplayView(data: abyssInfo)
                         } label: {
                             displayLabel
