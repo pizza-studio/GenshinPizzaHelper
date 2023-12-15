@@ -176,10 +176,15 @@ extension View {
         background {
             EnkaWebIcon(iconString: fileNameOverride ?? NameCard.currentValueForAppBackground.fileName)
                 .scaledToFill()
-                .ignoresSafeArea(.all)
-                .overlay(Color(uiColor: .systemBackground).opacity(0.3))
-                .blur(radius: 50)
                 .scaleEffect(1.5)
+                .blur(radius: 50)
+                .ignoresSafeArea(.all)
+                .saturation(2)
+                .overlay(
+                    Color(uiColor: .systemBackground)
+                        .opacity(0.4)
+                        .blendMode(.hardLight)
+                )
         }
     }
 }
