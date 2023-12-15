@@ -298,9 +298,6 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
         .padding()
     }
 }
-#endif
-
-// MARK: - ResinTimerRefreshIntent
 
 @available(iOSApplicationExtension 16.1, iOS 16.1, *)
 struct ResinTimerRefreshIntent: AppIntent {
@@ -340,3 +337,7 @@ struct ResinTimerRerenderIntent: AppIntent {
         return .result()
     }
 }
+
+#endif
+
+// MARK: - ResinTimerRefreshIntent

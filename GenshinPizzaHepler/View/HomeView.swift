@@ -182,6 +182,7 @@ struct AccountInfoCardView: View {
         private var showEditAccountSheet: Bool = false
     }
 
+    #if canImport(ActivityKit)
     @available(iOS 16.1, *)
     private struct EnableLiveActivityButton: View {
         // MARK: Internal
@@ -215,7 +216,7 @@ struct AccountInfoCardView: View {
         @State
         private var showErrorAlert: Bool = false
     }
-
+    #endif
     private struct NoteView: View {
         // MARK: Internal
 
