@@ -107,7 +107,7 @@ extension WidgetBackground {
             return "火元素图标"
         case "game.elements.geo":
             return "岩元素图标"
-        case "game.elements.dendro":
+        case "game.elements.electro":
             return "雷元素图标"
         case "game.elements.dendro":
             return "草元素图标"
@@ -185,7 +185,7 @@ extension WidgetBackground {
                 Color("bgColor.stone.2"),
                 Color("bgColor.stone.3"),
             ]
-        case "game.elements.dendro":
+        case "game.elements.electro":
             return [
                 Color("bgColor.thunder.1"),
                 Color("bgColor.thunder.2"),
