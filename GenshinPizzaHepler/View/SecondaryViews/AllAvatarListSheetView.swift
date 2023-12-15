@@ -36,14 +36,14 @@ struct AllAvatarListSheetView: View {
             Section {
                 VStack(alignment: .leading, spacing: 3) {
                     let charCount = String(
-                        format: "app.characters.count.character:%lld%lld%lld",
+                        format: "app.characters.count.character:%lld%lld%lld".localized,
                         data.avatars.count,
                         data.avatars.filter { $0.rarity == 5 }.count,
                         data.avatars.filter { $0.rarity == 4 }.count
-                    ).localized
+                    )
                     Text(charCount)
                     let weaponCount = String(
-                        format: "app.characters.count.weapon:%lld%lld%lld",
+                        format: "app.characters.count.weapon:%lld%lld%lld".localized,
                         goldNum(data: data).allGold,
                         goldNum(data: data).charGold,
                         goldNum(data: data).weaponGold
@@ -200,7 +200,7 @@ struct AvatarListItem: View {
                 .frame(width: 50, height: 50)
             }
             .corneredTag(
-                LocalizedStringKey(String(format: "weapon.affix:%lld", avatar.weapon.affixLevel)),
+                LocalizedStringKey("weapon.affix:\(avatar.weapon.affixLevel)"),
                 alignment: .topLeading
             )
             .corneredTag(

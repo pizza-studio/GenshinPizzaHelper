@@ -43,9 +43,9 @@ extension Enka {
             public var nameCardId: Int
             /// 已解锁成就数
             public var finishAchievementNum: Int
-            /// 本期深渊层数
+            /// 本期深境螺旋层数
             public var towerFloorIndex: Int?
-            /// 本期深渊间数
+            /// 本期深境螺旋间数
             public var towerLevelIndex: Int?
             /// 正在展示角色信息列表（ID与等级）
             public var showAvatarInfoList: [ShowAvatarInfo]?

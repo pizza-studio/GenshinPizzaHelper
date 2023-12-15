@@ -77,7 +77,7 @@ import HoYoKit
 //
 //    /// 元素爆发排名（只有第一个）
 //    public var energySkillRank: [CharacterRankModel]
-//    /// 本期深渊开始时间
+//    /// 本期深境螺旋开始时间
 //    public var startTime: String
 //    /// 总胜利次数
 //    public var totalWinTimes: Int
@@ -89,17 +89,17 @@ import HoYoKit
 //    public var totalBattleTimes: Int
 //    /// 最高承受伤害排名（只有最高）
 //    public var takeDamageRank: [CharacterRankModel]
-//    /// 是否解锁深渊
+//    /// 是否解锁深境螺旋
 //    public var isUnlock: Bool
 //    /// 最多击败敌人数量排名（只有最高
 //    public var defeatRank: [CharacterRankModel]
-//    /// 本期深渊结束时间
+//    /// 本期深境螺旋结束时间
 //    public var endTime: String
 //    /// 元素战记伤害排名（只有最高）
 //    public var normalSkillRank: [CharacterRankModel]
 //    /// 元素战记伤害排名（只有最高）
 //    public var damageRank: [CharacterRankModel]
-//    /// 深渊期数ID，每期+1
+//    /// 深境螺旋期数ID，每期+1
 //    public var scheduleId: Int
 //    /// 出站次数
 //    public var revealRank: [CharacterRankModel]

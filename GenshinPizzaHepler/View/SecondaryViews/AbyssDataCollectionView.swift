@@ -46,12 +46,12 @@ class AbyssDataCollectionViewModel: ObservableObject {
     @Published
     var fullStaAvatarHoldingResult: AvatarHoldingReceiveDataFetchModelResult?
 
-    // MARK: - 深渊使用率
+    // MARK: - 深境螺旋使用率
 
     @Published
     var utilizationDataFetchModelResult: UtilizationDataFetchModelResult?
 
-    // MARK: - 深渊队伍使用率
+    // MARK: - 深境螺旋队伍使用率
 
     @Published
     var teamUtilizationDataFetchModelResult: TeamUtilizationDataFetchModelResult?
@@ -95,7 +95,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
     }
 
     var paramsDescription: String {
-        switch showingType {
+        let result: String = { switch showingType {
         case .fullStarHoldingRate:
             return fullStarHoldingParam.describe()
         case .holdingRate:
@@ -105,6 +105,8 @@ class AbyssDataCollectionViewModel: ObservableObject {
         case .teamUtilization:
             return teamUtilizationParams.describe()
         }
+        }()
+        return result.replacingOccurrences(of: "·", with: "\n")
     }
 
     var totalDataCount: Int {
@@ -513,12 +515,7 @@ private struct ShowAvatarPercentageView: View {
                 case let .success(data):
                     let data = data.data
                     Section {
-                        let statInfo = String(
-                            format: "app.abyss.stat.2:%lld%@",
-                            data.totalUsers,
-                            abyssDataCollectionViewModel.paramsDescription
-                        ).localized
-                        Text(statInfo)
+                        Text("app.abyss.stat.2:\(data.totalUsers)\(abyssDataCollectionViewModel.paramsDescription)")
                             .font(.footnote)
                             .textCase(.none)
                     }
@@ -854,9 +851,11 @@ private struct ShowTeamPercentageView: View {
                             }()
                             Section {
                                 HStack {
-                                    Text(descriptionPaneText(data: data))
-                                        .font(.footnote)
-                                        .textCase(.none)
+                                    Text(
+                                        "app.abyss.stat.2:\(data.totalUsers)\(abyssDataCollectionViewModel.paramsDescription)"
+                                    )
+                                    .font(.footnote)
+                                    .textCase(.none)
                                     Spacer()
                                 }
                                 .padding(UIFont.smallSystemFontSize)
@@ -927,14 +926,6 @@ private struct ShowTeamPercentageView: View {
             }
         }
         .background(Color(uiColor: viewBackgroundColor))
-    }
-
-    func descriptionPaneText(data: TeamUtilizationData) -> String {
-        String(
-            format: NSLocalizedString("app.abyss.stat.2:%lld%@", comment: ""),
-            data.totalUsers,
-            abyssDataCollectionViewModel.paramsDescription
-        ).replacingOccurrences(of: "·", with: "\n")
     }
 }
 

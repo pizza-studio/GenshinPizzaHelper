@@ -104,7 +104,7 @@ extension API {
                 }
         }
 
-        /// 深渊角色使用率
+        /// 深境螺旋角色使用率
         static func fetchAbyssUtilizationData(
             season: Int? = nil,
             server: Server? = nil,
@@ -324,7 +324,7 @@ extension API {
                 }
         }
 
-        /// 深渊角色使用率
+        /// 深境螺旋角色使用率
         static func fetchTeamUtilizationData(
             season: Int? = nil,
             server: Server? = nil,

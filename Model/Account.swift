@@ -38,7 +38,7 @@ import UIKit
 //    >?
 //    var fetchPlayerDetailComplete: Bool = false
 //
-//    // 深渊
+//    // 深境螺旋
 //    var spiralAbyssDetail: AccountSpiralAbyssDetail?
 //    // 账簿，旅行札记
 //    var ledgeDataResult: LedgerDataFetchResult?

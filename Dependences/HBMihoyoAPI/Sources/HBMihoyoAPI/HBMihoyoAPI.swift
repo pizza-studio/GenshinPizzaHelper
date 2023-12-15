@@ -996,7 +996,7 @@ public enum MihoyoAPI {
     }
 
     #if !os(watchOS)
-    /// 获取深渊信息
+    /// 获取深境螺旋信息
     /// - Parameters:
     ///     - region: 服务器地区
     ///     - serverID: 服务器ID

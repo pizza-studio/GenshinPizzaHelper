@@ -106,9 +106,9 @@ struct PlayerDetail {
 
         /// 已解锁成就数
         var finishAchievementNum: Int
-        /// 本期深渊层数
+        /// 本期深境螺旋层数
         var towerFloorIndex: Int?
-        /// 本期深渊间数
+        /// 本期深境螺旋间数
         var towerLevelIndex: Int?
 
         /// 资料名片ID

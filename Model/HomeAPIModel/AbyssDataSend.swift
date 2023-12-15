@@ -12,9 +12,9 @@ import HoYoKit
 // MARK: - AvatarHoldingData
 
 struct AvatarHoldingData: Codable {
-    /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深渊
+    /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深境螺旋
     let uid: String
-    /// 深渊期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
+    /// 深境螺旋期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
     var updateDate: String
     /// 玩家已解锁角色
     let owningChars: [Int]
@@ -24,12 +24,12 @@ struct AvatarHoldingData: Codable {
 
 // MARK: - AbyssData
 
-/// 用于向服务器发送的深渊数据
+/// 用于向服务器发送的深境螺旋数据
 struct AbyssData: Codable {
     struct SubmitDetailModel: Codable {
-        /// 深渊层数
+        /// 深境螺旋层数
         let floor: Int
-        /// 深渊间数
+        /// 深境螺旋间数
         let room: Int
         /// 上半间/下半间，1表示上半，2表示下半
         let half: Int
@@ -53,22 +53,22 @@ struct AbyssData: Codable {
     /// 提交数据的ID
     var submitId: String = UUID().uuidString
 
-    /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深渊
+    /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深境螺旋
     let uid: String
 
     /// 提交时间的时间戳since1970
     var submitTime: Int = .init(Date().timeIntervalSince1970)
 
-    /// 深渊期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
+    /// 深境螺旋期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
     var abyssSeason: Int
 
     /// 账号服务器ID
     let server: String
 
-    /// 每半间深渊的数据
+    /// 每半间深境螺旋的数据
     let submitDetails: [SubmitDetailModel]
 
-    /// 深渊伤害等数据的排名统计
+    /// 深境螺旋伤害等数据的排名统计
     let abyssRank: AbyssRankModel?
 
     /// 玩家已解锁角色
