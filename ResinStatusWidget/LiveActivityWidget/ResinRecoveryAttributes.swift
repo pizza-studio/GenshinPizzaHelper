@@ -63,7 +63,7 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
         } else {
             currentResin = 160 - Int(minuteRemaining / 8)
         }
-        return currentResin
+        return currentResin - 1
     }
 
     /// 下一20倍数树脂
