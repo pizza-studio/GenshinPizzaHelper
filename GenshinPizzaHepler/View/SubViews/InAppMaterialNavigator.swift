@@ -76,7 +76,7 @@ struct InAppMaterialNavigator: View {
             HStack {
                 Group {
                     if showMaterialDetail {
-                        Menu(showingWeekday.describe()) {
+                        Menu {
                             ForEach(
                                 MaterialWeekday.allCases,
                                 id: \.hashValue
@@ -87,51 +87,57 @@ struct InAppMaterialNavigator: View {
                                     }
                                 }
                             }
+                        } label: {
+                            Text(showingWeekday.describe())
+                                .font(.caption)
                         }
+                        .headerFooterVisibilityEnhanced()
                     } else {
                         Text("app.todayMaterial.title")
                             .foregroundColor(.primary)
                             .font(.headline)
                     }
                 }
-                .font(.caption)
                 Spacer()
-                HStack(spacing: 2) {
-                    if showMaterialDetail == false {
-                        Button {
-                            switchStatus()
-                        } label: {
+                let chevronForwardImage = Image(systemSymbol: .chevronForward)
+                    .rotationEffect(
+                        Angle(degrees: showMaterialDetail ? 90 : 0),
+                        anchor: .center
+                    )
+                switch showMaterialDetail {
+                case false:
+                    Button {
+                        switchStatus()
+                    } label: {
+                        HStack(spacing: 2) {
                             Text(Date().formatted(.dateTime.weekday(.wide)))
-                                .font(.caption)
-                                .foregroundColor(.secondary)
                                 .lineLimit(2)
                                 .fixedSize(horizontal: false, vertical: true)
+                            chevronForwardImage
                         }
-                    } else {
-                        Button {
-                            simpleTaptic(type: .light)
-                            withAnimation(.interactiveSpring(
-                                response: 0.25,
-                                dampingFraction: 1.0,
-                                blendDuration: 0
-                            )) {
-                                showingWeekday = .today()
-                                showRelatedDetailOfMaterial = nil
-                                showMaterialDetail = false
-                            }
-                        } label: {
-                            HStack {
-                                Text("app.home.fold").font(.caption)
-                            }
-                        }
-                    }
-                    Image(systemSymbol: .chevronForward)
-                        .rotationEffect(
-                            Angle(degrees: showMaterialDetail ? 90 : 0),
-                            anchor: .center
-                        )
                         .font(.caption)
-                        .foregroundColor(showMaterialDetail ? .accentColor : .secondary)
+                    }
+                    .headerFooterVisibilityEnhanced()
+                case true:
+                    Button {
+                        simpleTaptic(type: .light)
+                        withAnimation(.interactiveSpring(
+                            response: 0.25,
+                            dampingFraction: 1.0,
+                            blendDuration: 0
+                        )) {
+                            showingWeekday = .today()
+                            showRelatedDetailOfMaterial = nil
+                            showMaterialDetail = false
+                        }
+                    } label: {
+                        HStack(spacing: 2) {
+                            Text("app.home.fold")
+                            chevronForwardImage
+                        }
+                        .font(.caption)
+                    }
+                    .headerFooterVisibilityEnhanced()
                 }
             }
         }

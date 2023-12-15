@@ -214,3 +214,17 @@ extension View {
         tint(.accentColor)
     }
 }
+
+// MARK: - View.headerFooterVisibilityEnhanced
+
+extension View {
+    @ViewBuilder
+    func headerFooterVisibilityEnhanced(leaveFontColorAsIs: Bool = false) -> some View {
+        if leaveFontColorAsIs {
+            foregroundStyle(.primary.opacity(0.7))
+                .shadow(color: .init(uiColor: .systemBackground), radius: 2, x: 0, y: 0)
+        } else {
+            shadow(color: .init(uiColor: .systemBackground), radius: 2, x: 0, y: 0)
+        }
+    }
+}

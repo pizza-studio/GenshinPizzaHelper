@@ -111,7 +111,8 @@ struct AccountInfoCardView: View {
                         EnableLiveActivityButton(account: account, dailyNote: dailyNote)
                     }
                 } label: {
-                    Image(systemSymbol: .ellipsisCircle).opacity(0.6)
+                    Image(systemSymbol: .ellipsisCircle)
+                        .headerFooterVisibilityEnhanced()
                 }
                 #endif
             }

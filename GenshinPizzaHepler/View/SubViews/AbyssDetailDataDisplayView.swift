@@ -30,6 +30,7 @@ struct AbyssDetailDataDisplayView: View {
                     InfoPreviewer(title: "app.abyss.info.win", content: "\(data.totalWinTimes)")
                 } header: {
                     Text("app.abyss.info.summary")
+                        .headerFooterVisibilityEnhanced()
                 }
                 .listRowMaterialBackground()
 
@@ -61,6 +62,7 @@ struct AbyssDetailDataDisplayView: View {
                     )
                 } header: {
                     Text("app.abyss.info.notableStats")
+                        .headerFooterVisibilityEnhanced()
                 }
                 .listRowMaterialBackground()
             } else {
@@ -123,6 +125,7 @@ private struct AbyssFloorView: View {
             }
         } header: {
             Text(foldableTitleText)
+                .headerFooterVisibilityEnhanced()
         }
     }
 }

@@ -67,18 +67,18 @@ struct CurrentEventNavigator: View {
                         .foregroundColor(.primary)
                         .font(.headline)
                     Spacer()
-                    if OS.type != .macOS {
-                        Text("currentEventNavigator.viewAll.title")
-                            .foregroundColor(.secondary)
-                        Image(systemSymbol: .chevronForward)
-                            .padding(.leading, 5)
-                            .foregroundColor(.secondary)
-                    } else {
-                        Text("currentEventNavigator.tapToViewAll.title")
-                            .foregroundColor(.secondary)
+                    Group {
+                        if OS.type != .macOS {
+                            Text("currentEventNavigator.viewAll.title")
+                            Image(systemSymbol: .chevronForward)
+                                .padding(.leading, 5)
+                        } else {
+                            Text("currentEventNavigator.tapToViewAll.title")
+                        }
                     }
+                    .headerFooterVisibilityEnhanced()
+                    .font(.caption)
                 }
-                .font(.caption)
                 if OS.type == .macOS {
                     SheetCaller(forceDarkMode: false) {
                         AllEventsView(eventContents: eventContents)

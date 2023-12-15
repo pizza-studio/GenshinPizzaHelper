@@ -594,6 +594,7 @@ private struct SelectAccountSection: View {
                 let worldLevelTitle = "detailPortal.player.worldLevel".localized
                 Text("\(worldLevelTitle): \(basicInfo.worldLevel)")
             }
+            .headerFooterVisibilityEnhanced()
         }
     }
 
@@ -628,6 +629,7 @@ private struct SelectAccountSection: View {
             HStack {
                 Text("UID: \(selectedAccount.safeUid)")
             }
+            .headerFooterVisibilityEnhanced()
         }
     }
 
@@ -1023,10 +1025,12 @@ private struct LedgerView: View {
                     Spacer()
                     Text("\(data.date ?? "")")
                 }
+                .headerFooterVisibilityEnhanced()
             } footer: {
                 Text("app.ledger.tip")
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
+                    .headerFooterVisibilityEnhanced()
             }
             .listRowMaterialBackground()
 
@@ -1051,6 +1055,7 @@ private struct LedgerView: View {
                 )
             } header: {
                 Text("本月账单 (\(data.dataMonth)月)")
+                    .headerFooterVisibilityEnhanced()
             } footer: {
                 HStack(alignment: .center) {
                     Spacer()
