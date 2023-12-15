@@ -546,8 +546,6 @@ private struct GachaChart: View {
 
 @available(iOS 15.0, *)
 private struct GetGachaNavigationMenu: View {
-    // MARK: Internal
-
     let showByAPI: Bool
 
     @Binding
@@ -562,62 +560,26 @@ private struct GetGachaNavigationMenu: View {
             }
 
             if showByAPI {
-                Button {
-                    showView1.toggle()
-                } label: {
+                NavigationLink(
+                    destination: APIGetGachaView()
+                ) {
                     Label("app.gacha.import.api", systemSymbol: .network)
                 }
             }
-            Button {
-                showView3.toggle()
-            } label: {
+            NavigationLink(
+                destination: GetGachaClipboardView()
+            ) {
                 Label("app.gacha.import.url", systemSymbol: .docOnClipboard)
             }
-            Button {
-                showView4.toggle()
-            } label: {
-                Label(
-                    "app.gacha.import.uigf",
-                    systemSymbol: .squareAndArrowDownOnSquare
-                )
+            NavigationLink(
+                destination: ImportGachaView()
+            ) {
+                Label("app.gacha.import.uigf", systemSymbol: .squareAndArrowDownOnSquare)
             }
         } label: {
             Image(systemSymbol: .goforwardPlus)
         }
-        .background(
-            Group {
-                NavigationLink(
-                    destination: APIGetGachaView(),
-                    isActive: $showView1
-                ) {
-                    EmptyView()
-                }
-                NavigationLink(
-                    destination: GetGachaClipboardView(),
-                    isActive: $showView3
-                ) {
-                    EmptyView()
-                }
-                NavigationLink(
-                    destination: ImportGachaView(),
-                    isActive: $showView4
-                ) {
-                    EmptyView()
-                }
-            }
-        )
     }
-
-    // MARK: Private
-
-    @State
-    private var showView1 = false
-    @State
-    private var showView2 = false
-    @State
-    private var showView3 = false
-    @State
-    private var showView4 = false
 }
 
 // MARK: - HelpSheet
