@@ -221,10 +221,10 @@ extension View {
     @ViewBuilder
     func headerFooterVisibilityEnhanced(leaveFontColorAsIs: Bool = false) -> some View {
         if leaveFontColorAsIs {
-            foregroundStyle(.primary.opacity(0.7))
-                .shadow(color: .init(uiColor: .systemBackground), radius: 2, x: 0, y: 0)
+            foregroundStyle(.primary.opacity(0.75))
+                .shadow(color: .init(uiColor: .systemBackground), radius: 4, x: 0, y: 0)
         } else {
-            shadow(color: .init(uiColor: .systemBackground), radius: 2, x: 0, y: 0)
+            shadow(color: .init(uiColor: .systemBackground), radius: 4, x: 0, y: 0)
         }
     }
 }
