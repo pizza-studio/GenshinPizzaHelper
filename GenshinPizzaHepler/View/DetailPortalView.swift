@@ -1028,6 +1028,7 @@ private struct LedgerView: View {
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
             }
+            .listRowMaterialBackground()
 
             Section {
                 let dayCountThisMonth = Calendar.current.dateComponents(
@@ -1078,7 +1079,10 @@ private struct LedgerView: View {
                     Spacer()
                 }
             }
+            .listRowMaterialBackground()
         }
+        .scrollContentBackground(.hidden)
+        .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
         .navigationTitle("app.detailPortal.ledger.title")
     }
 
@@ -1119,6 +1123,9 @@ private struct LedgerView: View {
             }
         }
     }
+
+    @EnvironmentObject
+    private var detailPortalViewModel: DetailPortalViewModel
 }
 
 // MARK: - BasicInfoNavigator
