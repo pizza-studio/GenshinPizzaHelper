@@ -62,33 +62,29 @@ struct CurrentEventNavigator: View {
                     }
                 }
             } header: {
-                let thisLabel = HStack(spacing: 2) {
+                HStack(spacing: 2) {
                     Text("currentEventNavigator.pendingEvents.title")
                         .foregroundColor(.primary)
                         .font(.headline)
                     Spacer()
                     Group {
                         if OS.type != .macOS {
-                            Text("currentEventNavigator.viewAll.title")
-                            Image(systemSymbol: .chevronForward)
-                                .padding(.leading, 5)
+                            NavigationLink(value: HomeView.EventModelArrayWrapper(eventContents: eventContents)) {
+                                HStack {
+                                    Text("currentEventNavigator.viewAll.title")
+                                    Image(systemSymbol: .chevronForward).padding(.leading, 5)
+                                }
+                            }
                         } else {
-                            Text("currentEventNavigator.tapToViewAll.title")
+                            SheetCaller(forceDarkMode: false) {
+                                AllEventsView(eventContents: eventContents)
+                            } label: {
+                                Text("currentEventNavigator.tapToViewAll.title")
+                            }
                         }
                     }
                     .headerFooterVisibilityEnhanced()
                     .font(.caption)
-                }
-                if OS.type == .macOS {
-                    SheetCaller(forceDarkMode: false) {
-                        AllEventsView(eventContents: eventContents)
-                    } label: {
-                        thisLabel
-                    }
-                } else {
-                    NavigationLink(value: HomeView.EventModelArrayWrapper(eventContents: eventContents)) {
-                        thisLabel
-                    }
                 }
             }
             .background {
