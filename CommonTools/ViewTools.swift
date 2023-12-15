@@ -177,7 +177,7 @@ extension View {
             EnkaWebIcon(iconString: fileNameOverride ?? NameCard.currentValueForAppBackground.fileName)
                 .scaledToFill()
                 .ignoresSafeArea(.all)
-                .overlay(Color(uiColor: .systemBackground).opacity(0.5))
+                .overlay(Color(uiColor: .systemBackground).opacity(0.3))
                 .blur(radius: 50)
                 .scaleEffect(1.5)
         }

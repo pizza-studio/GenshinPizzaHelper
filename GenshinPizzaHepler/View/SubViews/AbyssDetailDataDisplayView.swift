@@ -255,7 +255,7 @@ private struct BattleDataInfoProvider: View {
         HStack {
             Text(name.localized)
             Spacer()
-            Text("\(value ?? -1)").foregroundColor(.init(UIColor.systemGray))
+            Text("\(value ?? -1)").foregroundColor(.primary.opacity(0.7))
             CharacterAsset.match(id: avatarID ?? -213).decoratedIcon(32, cutTo: .face)
         }
     }

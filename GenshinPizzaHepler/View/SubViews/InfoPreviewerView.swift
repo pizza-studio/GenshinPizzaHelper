@@ -28,7 +28,7 @@ struct InfoPreviewer: View {
             switch contentStyle {
             case .standard:
                 Text(content)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.primary.opacity(0.7))
             case .capsule:
                 Text(content)
                     .foregroundColor(textColor)

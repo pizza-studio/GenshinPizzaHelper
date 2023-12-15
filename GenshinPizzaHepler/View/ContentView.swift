@@ -85,7 +85,7 @@ struct ContentView: View {
 
     var tintForCurrentTab: Color {
         switch selection {
-        case 0, 1: return .accessibilityAccent
+        case 0, 1: return .accessibilityAccent(colorScheme)
         default: return .accentColor
         }
     }
