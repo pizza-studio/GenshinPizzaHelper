@@ -168,6 +168,23 @@ struct AdjustedBlurMaterialBackground: ViewModifier {
     }
 }
 
+// MARK: - NavigationBackground
+
+extension View {
+    @ViewBuilder
+    func listContainerBackground(fileNameOverride: String? = nil) -> some View {
+        background {
+            EnkaWebIcon(iconString: fileNameOverride ?? NameCard.currentValueForAppBackground.fileName)
+                .scaledToFill()
+                .ignoresSafeArea(.all)
+                .overlay(Color(uiColor: .systemBackground).opacity(0.2))
+                .blur(radius: 50)
+        }
+    }
+}
+
+// MARK: - View.if().
+
 extension View {
     @ViewBuilder
     func `if`<T: View>(_ conditional: Bool, transform: (Self) -> T) -> some View {

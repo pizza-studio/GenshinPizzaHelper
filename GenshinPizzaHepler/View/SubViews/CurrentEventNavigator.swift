@@ -80,7 +80,7 @@ struct CurrentEventNavigator: View {
                 }
                 .font(.caption)
                 if OS.type == .macOS {
-                    SheetCaller(forceDarkMode: true) {
+                    SheetCaller(forceDarkMode: false) {
                         AllEventsView(eventContents: eventContents)
                     } label: {
                         thisLabel
@@ -93,7 +93,7 @@ struct CurrentEventNavigator: View {
             }
             .background {
                 if OS.type == .macOS {
-                    SheetCaller(forceDarkMode: true) {
+                    SheetCaller(forceDarkMode: false) {
                         AllEventsView(eventContents: eventContents)
                     } label: {
                         Rectangle()

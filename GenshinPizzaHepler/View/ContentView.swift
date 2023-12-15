@@ -83,15 +83,6 @@ struct ContentView: View {
         colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 
-    var colorSchemeForCurrentTab: ColorScheme {
-        switch selection {
-        case 0, 1:
-            return .dark
-        default:
-            return colorScheme
-        }
-    }
-
     var tintForCurrentTab: Color {
         switch selection {
         case 0, 1: return .accessibilityAccent
@@ -123,7 +114,6 @@ struct ContentView: View {
                 }
         }
         .tint(tintForCurrentTab)
-        .environment(\.colorScheme, colorSchemeForCurrentTab)
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
             case .active:

@@ -73,12 +73,7 @@ struct AbyssDetailDataDisplayView: View {
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
-        .background {
-            EnkaWebIcon(iconString: NameCard.UI_NameCardPic_Sj1_P.fileName)
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-                .blur(radius: 50)
-        }
+        .listContainerBackground(fileNameOverride: NameCard.UI_NameCardPic_Sj1_P.fileName)
         .navigationTitle("app.abyss.info.title")
         .toolbarSavePhotoButton(visible: !data.rankDataMissing) {
             AbyssShareView(data: data)
@@ -328,12 +323,7 @@ private struct ShareAbyssFloorView: View {
         }
         .padding()
         .foregroundStyle(.white)
-        .background {
-            EnkaWebIcon(iconString: NameCard.UI_NameCardPic_Sj1_P.fileName)
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-                .blur(radius: 50)
-        }
+        .listContainerBackground(fileNameOverride: NameCard.UI_NameCardPic_Sj1_P.fileName)
         .environment(\.colorScheme, .dark)
     }
 }

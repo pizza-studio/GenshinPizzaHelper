@@ -73,12 +73,7 @@ struct AllAvatarListSheetView: View {
             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
         .scrollContentBackground(.hidden)
-        .background {
-            EnkaWebIcon(iconString: detailPortalViewModel.currentAccountNamecardFileName)
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-                .overlay(.ultraThinMaterial)
-        }
+        .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
         .navigationTitle("app.characters.title")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {

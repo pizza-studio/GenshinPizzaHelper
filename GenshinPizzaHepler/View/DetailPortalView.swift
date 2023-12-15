@@ -463,12 +463,7 @@ struct DetailPortalView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-            .background {
-                EnkaWebIcon(iconString: detailPortalViewModel.currentAccountNamecardFileName)
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
-                    .blur(radius: 50)
-            }
+            .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
             .refreshable {
                 detailPortalViewModel.refresh()
             }
@@ -819,7 +814,7 @@ private struct AllAvatarNavigator: View {
                     }
                 }
                 if OS.type == .macOS {
-                    SheetCaller(forceDarkMode: true) {
+                    SheetCaller(forceDarkMode: false) {
                         AllAvatarListSheetView(data: data)
                     } label: {
                         thisLabel
@@ -892,7 +887,7 @@ private struct LedgerDataNavigator: View {
         var body: some View {
             InformationRowView("app.detailPortal.ledger.title") {
                 if OS.type == .macOS {
-                    SheetCaller(forceDarkMode: true) {
+                    SheetCaller(forceDarkMode: false) {
                         LedgerView(data: ledgerData)
                     } label: {
                         displayLabel
@@ -976,7 +971,7 @@ private struct AbyssInfoNavigator: View {
                 // 如果没有本期深境螺旋数据的话，就不响应任何点击行为。
                 if abyssInfo.maxFloor != "0-0" {
                     if OS.type == .macOS {
-                        SheetCaller(forceDarkMode: true) {
+                        SheetCaller(forceDarkMode: false) {
                             AbyssDetailDataDisplayView(data: abyssInfo)
                         } label: {
                             displayLabel
@@ -1163,7 +1158,7 @@ private struct BasicInfoNavigator: View {
             }
             InformationRowView("app.detailPortal.basicInfo.title") {
                 if OS.type == .macOS {
-                    SheetCaller(forceDarkMode: true) {
+                    SheetCaller(forceDarkMode: false) {
                         BasicInfoView(data: data)
                     } label: {
                         thisLabel
@@ -1269,12 +1264,7 @@ private struct BasicInfoView: View {
             .listRowMaterialBackground()
         }
         .scrollContentBackground(.hidden)
-        .background {
-            EnkaWebIcon(iconString: detailPortalViewModel.currentAccountNamecardFileName)
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-                .overlay(.ultraThinMaterial)
-        }
+        .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
         .navigationTitle("app.detailPortal.basicInfo.title")
     }
 

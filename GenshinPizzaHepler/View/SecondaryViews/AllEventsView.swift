@@ -68,12 +68,7 @@ struct AllEventsView: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .background {
-            EnkaWebIcon(iconString: NameCard.currentValueForAppBackground.fileName)
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-                .blur(radius: 50)
-        }
+        .listContainerBackground()
         .navigationTitle("app.home.ongoingEvents")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(uiColor: viewBackgroundColor))
