@@ -57,11 +57,7 @@ struct ResinRecoveryActivityWidget: Widget {
                                     .scaledToFit()
                                     .frame(maxHeight: 40)
                                 VStack(alignment: .leading) {
-                                    let nextCount = String(
-                                        format: "widget.next20Resin:%lld",
-                                        context.state.next20ResinCount
-                                    ).localized
-                                    Text(nextCount)
+                                    Text("widget.next20Resin:\(context.state.next20ResinCount)")
                                         .font(.caption2)
                                     Text(
                                         timerInterval: Date() ... context.state
@@ -212,11 +208,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                                 .scaledToFit()
                                 .frame(maxHeight: 38)
                             VStack(alignment: .leading) {
-                                let nextCount = String(
-                                    format: "widget.next20Resin:%lld",
-                                    context.state.next20ResinCount
-                                )
-                                Text(nextCount)
+                                Text("widget.next20Resin:\(context.state.next20ResinCount)")
                                     .font(.caption2)
                                 Text(
                                     timerInterval: Date() ... context.state

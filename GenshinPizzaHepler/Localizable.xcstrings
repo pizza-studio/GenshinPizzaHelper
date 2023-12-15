@@ -41345,7 +41345,6 @@
       }
     },
     "app.gacha.get.result:%@%@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -71811,7 +71810,6 @@
     },
     "widget.next20Resin:%lld" : {
       "comment" : "Real-time activity",
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -389,7 +389,9 @@ struct GetGachaResultView: View {
                         .foregroundColor(.green)
                 }
             } footer: {
-                Text("app.gacha.get.result:\(observer.currentItems.count.description)\(observer.newItemCount.description)")
+                Text(
+                    "app.gacha.get.result:\(observer.currentItems.count.description)\(observer.newItemCount.description)"
+                )
             }
         }
 
