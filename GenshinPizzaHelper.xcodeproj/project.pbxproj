@@ -1165,7 +1165,6 @@
 		EA7FF47B2930A35300128A5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA7FF4812930A3F300128A5C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA7FF4832930A41700128A5C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AccountIntents.strings"; sourceTree = "<group>"; };
-		EA80A93E2B2ADEBA00124B33 /* ResinStatusWidgetExtension copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ResinStatusWidgetExtension copy-Info.plist"; path = "/Users/canglong/Programs/GenshinPizzaHelper/ResinStatusWidgetExtension copy-Info.plist"; sourceTree = "<absolute>"; };
 		EA8445EB29DBFFD700CB8C9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA8978D729DA716400E0903E /* ExportGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportGachaView.swift; sourceTree = "<group>"; };
 		EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_lang_dictionary.json; sourceTree = "<group>"; };
@@ -1964,7 +1963,6 @@
 				EAE95CE328CE10A100D975CB /* WatchIntent */,
 				EA30F9A22886B49200AE7BEA /* Frameworks */,
 				EABD7DB72886B2D200B7F0FD /* Products */,
-				EA80A93E2B2ADEBA00124B33 /* ResinStatusWidgetExtension copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
