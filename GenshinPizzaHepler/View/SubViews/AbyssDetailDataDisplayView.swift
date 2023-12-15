@@ -77,7 +77,7 @@ struct AbyssDetailDataDisplayView: View {
             EnkaWebIcon(iconString: NameCard.UI_NameCardPic_Sj1_P.fileName)
                 .scaledToFill()
                 .ignoresSafeArea(.all)
-                .overlay(.ultraThinMaterial)
+                .blur(radius: 50)
         }
         .navigationTitle("app.abyss.info.title")
         .toolbarSavePhotoButton(visible: !data.rankDataMissing) {
@@ -332,7 +332,7 @@ private struct ShareAbyssFloorView: View {
             EnkaWebIcon(iconString: NameCard.UI_NameCardPic_Sj1_P.fileName)
                 .scaledToFill()
                 .ignoresSafeArea(.all)
-                .overlay(.ultraThinMaterial)
+                .blur(radius: 50)
         }
         .environment(\.colorScheme, .dark)
     }
