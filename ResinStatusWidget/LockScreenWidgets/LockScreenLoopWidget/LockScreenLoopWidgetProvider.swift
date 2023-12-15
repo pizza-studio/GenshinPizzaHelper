@@ -87,7 +87,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
     ) {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        var syncFrequencyInMinute = widgetRefreshByMinute
+        let syncFrequencyInMinute = widgetRefreshByMinute
         var refreshDate: Date {
             Calendar.current.date(
                 byAdding: .minute,
