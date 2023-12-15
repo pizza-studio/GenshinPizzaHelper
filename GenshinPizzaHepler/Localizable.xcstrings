@@ -68596,12 +68596,6 @@
     },
     "T%lld " : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "T%lld"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
