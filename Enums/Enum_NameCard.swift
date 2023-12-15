@@ -9,10 +9,17 @@ import Defaults
 import Foundation
 import UIKit
 
+// MARK: - UserDefaults
+
+extension Defaults.Keys {
+    public static let appBackgroundNameCardID =
+        Key<NameCard>("appBackgroundNameCardID", default: .defaultValueForAppBackground, suite: .opSuite)
+}
+
 // MARK: - NameCard
 
 /// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
-public enum NameCard: Int, CaseIterable {
+public enum NameCard: Int, CaseIterable, _DefaultsSerializable {
     case UI_NameCardPic_0_P = 210001
     case UI_NameCardPic_Bp1_P = 210002
     case UI_NameCardPic_Ambor_P = 210003
@@ -222,6 +229,8 @@ extension NameCard {
     public static var defaultValueForWidget: NameCard { .UI_NameCardPic_Bp2_P }
 
     public static var defaultValueForAppBackground: NameCard { .UI_NameCardPic_Yelan_P }
+
+    public static var currentValueForAppBackground: NameCard { Defaults[.appBackgroundNameCardID] }
 
     public static var random: NameCard { allLegalCases.randomElement() ?? .defaultValue }
 

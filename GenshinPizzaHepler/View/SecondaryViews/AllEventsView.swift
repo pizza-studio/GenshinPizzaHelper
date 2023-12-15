@@ -69,7 +69,7 @@ struct AllEventsView: View {
         }
         .scrollContentBackground(.hidden)
         .background {
-            EnkaWebIcon(iconString: NameCard.defaultValueForAppBackground.fileName)
+            EnkaWebIcon(iconString: NameCard.currentValueForAppBackground.fileName)
                 .scaledToFill()
                 .ignoresSafeArea(.all)
                 .blur(radius: 50)

@@ -71,7 +71,7 @@ final class DetailPortalViewModel: ObservableObject {
     }
 
     var currentAccountNamecardFileName: String {
-        (NameCard(rawValue: currentBasicInfo?.nameCardId ?? 0) ?? NameCard.defaultValueForAppBackground).fileName
+        (NameCard(rawValue: currentBasicInfo?.nameCardId ?? 0) ?? NameCard.currentValueForAppBackground).fileName
     }
 
     func refresh() {

@@ -43,6 +43,26 @@ struct DisplayOptionsView: View {
     @ViewBuilder
     func mainView() -> some View {
         List {
+            Section {
+                Picker("settings.display.appBackgroundNameCardID", selection: $appBackgroundNameCardID) {
+                    ForEach(NameCard.allCases, id: \.rawValue) { card in
+                        Label {
+                            Text(card.localized)
+                        } icon: {
+                            GeometryReader { g in
+                                Image(card.fileName)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .offset(x: -g.size.width)
+                            }
+                            .clipShape(Circle())
+                            .frame(width: 30, height: 30)
+                        }.tag(card)
+                    }
+                }
+                .pickerStyle(.navigationLink)
+            }
+
             if Locale.isUILanguagePanChinese {
                 Section {
                     Toggle(isOn: $forceCharacterWeaponNameFixed) {
@@ -140,4 +160,6 @@ struct DisplayOptionsView: View {
     private var customizedNameForWanderer: String
     @Default(.cutShouldersForSmallAvatarPhotos)
     private var cutShouldersForSmallAvatarPhotos: Bool
+    @Default(.appBackgroundNameCardID)
+    private var appBackgroundNameCardID: NameCard
 }
