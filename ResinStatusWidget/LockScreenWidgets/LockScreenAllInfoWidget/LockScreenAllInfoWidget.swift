@@ -103,8 +103,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         )
         print(configs.first!.uuid!, configuration)
 
-        guard let config = configs
-            .first(where: { $0.uuid == selectedAccountUUID }) else {
+        guard configs.contains(where: { $0.uuid == selectedAccountUUID }) else {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = AccountOnlyEntry(
                 date: currentDate,
