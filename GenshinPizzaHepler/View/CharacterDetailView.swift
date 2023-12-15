@@ -61,18 +61,12 @@ struct CharacterDetailView: View {
         }
         .background {
             if let avatar = avatar {
-                if OS.type == .macOS {
-                    EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
-                        .scaledToFill()
-                        .ignoresSafeArea(.all)
-                        .blur(radius: 30)
-                        .overlay(Color(UIColor.systemGray6).opacity(0.5))
-                } else {
-                    EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
-                        .scaledToFill()
-                        .ignoresSafeArea(.all)
-                        .overlay(.thinMaterial)
-                }
+                EnkaWebIcon(iconString: avatar.characterAsset.namecard.fileName)
+                    .scaledToFill()
+                    .scaleEffect(1.2)
+                    .ignoresSafeArea(.all)
+                    .blur(radius: 30)
+                    .overlay(Color(UIColor.systemGray6).opacity(0.5))
             }
         }
         .addWaterMark(showWaterMark)
