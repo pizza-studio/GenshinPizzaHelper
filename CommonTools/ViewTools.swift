@@ -173,16 +173,17 @@ struct AdjustedBlurMaterialBackground: ViewModifier {
 extension View {
     @ViewBuilder
     func listContainerBackground(fileNameOverride: String? = nil) -> some View {
+        let fileName = fileNameOverride ?? NameCard.currentValueForAppBackground.fileName
         background {
-            EnkaWebIcon(iconString: fileNameOverride ?? NameCard.currentValueForAppBackground.fileName)
+            EnkaWebIcon(iconString: fileName)
                 .scaledToFill()
-                .scaleEffect(1.5)
+                .scaleEffect(1.2)
                 .blur(radius: 50)
                 .ignoresSafeArea(.all)
-                .saturation(2)
+                .saturation(1.5)
                 .overlay(
                     Color(uiColor: .systemBackground)
-                        .opacity(0.4)
+                        .opacity(0.3)
                         .blendMode(.hardLight)
                 )
         }
