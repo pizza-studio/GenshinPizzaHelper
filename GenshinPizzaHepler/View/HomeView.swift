@@ -108,17 +108,17 @@ struct AccountInfoCardView: View {
                     .foregroundColor(.primary)
                     .font(.headline)
                 Spacer()
+                #if canImport(ActivityKit)
                 Menu {
 //                    PinToTopButton(account: account)
 //                    EditAccountButton(account: account)
-                    #if canImport(ActivityKit)
                     if #available(iOS 16.1, *), case let .succeed(dailyNote, _) = status {
                         EnableLiveActivityButton(account: account, dailyNote: dailyNote)
                     }
-                    #endif
                 } label: {
                     Image(systemSymbol: .ellipsisCircle)
                 }
+                #endif
             }
         }
         .onChange(of: scenePhase, perform: { newPhase in

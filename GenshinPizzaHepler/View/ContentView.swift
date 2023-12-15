@@ -83,12 +83,19 @@ struct ContentView: View {
         colorScheme == .dark ? UIColor.secondarySystemBackground : UIColor.systemBackground
     }
 
-    var toolbarColorScheme: ColorScheme {
+    var colorSchemeForCurrentTab: ColorScheme {
         switch selection {
         case 0, 1:
-            .dark
+            return .dark
         default:
-            colorScheme
+            return colorScheme
+        }
+    }
+
+    var tintForCurrentTab: Color {
+        switch selection {
+        case 0, 1: return .accessibilityAccent
+        default: return .accentColor
         }
     }
 
@@ -115,7 +122,8 @@ struct ContentView: View {
                     Label("nav.category.settings.name", systemSymbol: .gear)
                 }
         }
-        .environment(\.colorScheme, toolbarColorScheme)
+        .tint(tintForCurrentTab)
+        .environment(\.colorScheme, colorSchemeForCurrentTab)
         .onChange(of: scenePhase, perform: { newPhase in
             switch newPhase {
             case .active:
