@@ -95,10 +95,8 @@ struct CookieGetterWebView: UIViewRepresentable {
 
         var parent: CookieGetterWebView
 
-        // MARK: Private
-
-        private func webView(
-            _ webView: OPWebView,
+        func webView(
+            _ webView: WKWebView,
             didFinish _: WKNavigation!
         ) {
             let jsonScript = """
@@ -172,6 +170,8 @@ struct CookieGetterWebView: UIViewRepresentable {
         Coordinator(self)
     }
 }
+
+extension CookieGetterWebView {}
 
 private func getURL(region: Region) -> String {
     switch region {
