@@ -1094,13 +1094,20 @@ private struct LedgerView: View {
     // MARK: Private
 
     private struct LabelWithDescription: View {
+        @Environment(\.colorScheme)
+        var colorScheme
+
         let title: LocalizedStringKey
         let memo: LocalizedStringKey
         let icon: String
         let mainValue: Int
         let previousValue: Int?
 
-        var delta: Int { mainValue - (previousValue ?? 0) }
+        var valueDelta: Int { mainValue - (previousValue ?? 0) }
+
+        var brightnessDelta: Double {
+            colorScheme == .dark ? 0 : -0.35
+        }
 
         var body: some View {
             Label {
@@ -1114,9 +1121,11 @@ private struct LedgerView: View {
                         HStack {
                             Text(memo).foregroundColor(.secondary)
                             Spacer()
-                            switch delta {
-                            case 1...: Text("+\(delta)").foregroundStyle(.green)
-                            default: Text("\(delta)").foregroundStyle(.red)
+                            switch valueDelta {
+                            case 1...: Text("+\(valueDelta)")
+                                .foregroundStyle(.green).brightness(brightnessDelta)
+                            default: Text("\(valueDelta)")
+                                .foregroundStyle(.red).brightness(brightnessDelta)
                             }
                         }.font(.footnote).opacity(0.8)
                     }
