@@ -45,28 +45,22 @@ struct CurrentEventNavigator: View {
     var body: some View {
         if !eventContents.isEmpty {
             Section {
-                HStack(spacing: 3) {
-                    Rectangle()
-                        .foregroundColor(.secondary)
-                        .frame(width: 4, height: 60)
-                    VStack(spacing: 7) {
-                        let eventContentsValid = validEventContents.prefix(3)
-                        if eventContentsValid.isEmpty {
-                            HStack {
-                                Spacer()
-                                Text("gameEvents.noCurrentEventInfo")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                Spacer()
-                            }
-                        } else {
-                            ForEach(eventContentsValid, id: \.id) { content in
-                                eventItem(event: content)
-                            }
+                VStack(spacing: 7) {
+                    let eventContentsValid = validEventContents.prefix(3)
+                    if eventContentsValid.isEmpty {
+                        HStack {
+                            Spacer()
+                            Text("gameEvents.noCurrentEventInfo")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                            Spacer()
+                        }
+                    } else {
+                        ForEach(eventContentsValid, id: \.id) { content in
+                            eventItem(event: content)
                         }
                     }
                 }
-                .contentShape(Rectangle())
             } header: {
                 let thisLabel = HStack(spacing: 2) {
                     Text("currentEventNavigator.pendingEvents.title")
