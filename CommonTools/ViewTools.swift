@@ -204,3 +204,13 @@ extension View {
         }
     }
 }
+
+// MARK: - View.restoreAppTint.
+
+extension View {
+    @ViewBuilder
+    func restoreSystemTint() -> some View {
+        // tint(.init(uiColor: UIColor.tintColor))
+        tint(.accentColor)
+    }
+}
