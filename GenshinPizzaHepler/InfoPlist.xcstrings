@@ -1,5 +1,5 @@
 {
-  "sourceLanguage" : "zh-Hans",
+  "sourceLanguage" : "en",
   "strings" : {
     "CFBundleDisplayName" : {
       "comment" : "InfoPlist.strings\n  GenshinPizzaHelper\n\n  Created by Bill Haku on 2022/8/23.",
@@ -118,12 +118,6 @@
             "value" : "Pizza Helper for Genshin"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "披萨小助手"
-          }
-        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -201,7 +195,7 @@
       "comment" : "Copyright (human-readable)",
       "extractionState" : "extracted_with_value",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : ""
@@ -259,12 +253,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cho phép quyền lưu và truy cập ảnh vào máy"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "请允许保存图片"
           }
         },
         "zh-Hant" : {

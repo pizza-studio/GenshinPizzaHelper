@@ -2339,7 +2339,7 @@
 			};
 			buildConfigurationList = EABD7DB12886B2D200B7F0FD /* Build configuration list for PBXProject "GenshinPizzaHelper" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = "zh-Hans";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
