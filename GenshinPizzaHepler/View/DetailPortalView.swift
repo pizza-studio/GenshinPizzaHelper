@@ -963,7 +963,9 @@ private struct AbyssInfoNavigator: View {
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text(verbatim: "\(abyssInfo.maxFloor)")
                             .font(.title)
-                        Text(verbatim: "  ✡︎ \(abyssInfo.totalStar)")
+                        AbyssStarIcon()
+                            .frame(width: 16, height: 16)
+                        Text(verbatim: "\(abyssInfo.totalStar)")
                             .font(.title3)
                     }
                     Spacer()
