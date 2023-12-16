@@ -175,17 +175,17 @@ struct GetGachaClipboardView: View {
             .init(
                 displayMode: .alert,
                 type: .complete(.green),
-                title: "app.gacha.get.success",
+                title: "app.gacha.get.success".localized,
                 subTitle: String(
                     format: "gacha.messages.newEntriesSaved:%lld".localized,
-                    observer.newItemCount.description
+                    observer.newItemCount
                 )
             )
         })
         .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
             guard case let .failure(error) = status
             else { return .init(displayMode: .alert, type: .loading) }
-            let errorTitle = String(format: "app.gacha.get.error:%@", error.localizedDescription).localized
+            let errorTitle = String(format: "app.gacha.get.error:%@".localized, error.localizedDescription)
             return .init(
                 displayMode: .alert,
                 type: .error(.red),
@@ -213,7 +213,7 @@ struct GetGachaClipboardView: View {
             message: { alert in
                 switch alert {
                 case let .urlInPasteboardIsInvalid(url: url):
-                    let errorContent = String(format: "app.gacha.get.url.error:%@", url).localized
+                    let errorContent = String(format: "app.gacha.get.url.error:%@".localized, url)
                     Text(errorContent)
                 default:
                     EmptyView()

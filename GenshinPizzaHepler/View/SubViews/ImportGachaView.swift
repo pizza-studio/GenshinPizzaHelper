@@ -56,11 +56,11 @@ struct ImportGachaView: View {
             .init(
                 displayMode: .alert,
                 type: .complete(.green),
-                title: "app.gacha.import.success"
+                title: "app.gacha.import.success".localized
             )
         })
         .alert(
-            "gacha.import.startImport",
+            "gacha.import.startImport".localized,
             isPresented: isReadyToStartAlertShow,
             presenting: alert,
             actions: { thisAlert in

@@ -118,14 +118,14 @@ struct APIGetGachaView: View {
             .init(
                 displayMode: .alert,
                 type: .complete(.green),
-                title: "app.gacha.get.success",
-                subTitle: "gacha.messages.newEntriesSaved:\(observer.newItemCount)".localized
+                title: "app.gacha.get.success".localized,
+                subTitle: String(format: "gacha.messages.newEntriesSaved:%lld".localized, observer.newItemCount)
             )
         })
         .toast(isPresenting: $isErrorGetGachaRecordAlertShow, alert: {
             guard case let .failure(error) = status
             else { return .init(displayMode: .alert, type: .loading) }
-            let errorTitle = "app.gacha.get.error:\(error.localizedDescription)".localized
+            let errorTitle = String(format: "app.gacha.get.error:%@".localized, error.localizedDescription)
             return .init(
                 displayMode: .alert,
                 type: .error(.red),
