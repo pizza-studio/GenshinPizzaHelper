@@ -219,12 +219,35 @@ extension View {
 
 extension View {
     @ViewBuilder
-    func headerFooterVisibilityEnhanced(leaveFontColorAsIs: Bool = false) -> some View {
-        if leaveFontColorAsIs {
-            foregroundStyle(.primary.opacity(0.75))
-                .shadow(color: .init(uiColor: .systemBackground), radius: 4, x: 0, y: 0)
-        } else {
-            shadow(color: .init(uiColor: .systemBackground), radius: 4, x: 0, y: 0)
+    func secondaryColorVerseBackground() -> some View {
+        foregroundColor(.primary.opacity(0.75))
+    }
+}
+
+// MARK: - AccentVerseBackground
+
+struct AccentVerseBackground: ViewModifier {
+    @Environment(\.colorScheme)
+    var colorScheme
+
+    func body(content: Content) -> some View {
+        switch colorScheme {
+        case .light:
+            content
+                .foregroundColor(Color(uiColor: UIColor.darkGray))
+                .blendMode(.colorDodge)
+        case .dark:
+            content
+                .foregroundColor(Color(uiColor: UIColor.lightGray))
+                .blendMode(.colorDodge)
+        @unknown default:
+            content
         }
+    }
+}
+
+extension View {
+    func accentVerseBackground() -> some View {
+        modifier(AccentVerseBackground())
     }
 }

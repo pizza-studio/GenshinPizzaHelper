@@ -70,7 +70,7 @@ struct CurrentEventNavigator: View {
                     Group {
                         if OS.type != .macOS {
                             NavigationLink(value: HomeView.EventModelArrayWrapper(eventContents: eventContents)) {
-                                HStack {
+                                HStack(spacing: 2) {
                                     Text("currentEventNavigator.viewAll.title")
                                     Image(systemSymbol: .chevronForward).padding(.leading, 5)
                                 }
@@ -83,7 +83,7 @@ struct CurrentEventNavigator: View {
                             }
                         }
                     }
-                    .headerFooterVisibilityEnhanced()
+                    .secondaryColorVerseBackground()
                     .font(.caption)
                 }
             }

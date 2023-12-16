@@ -112,7 +112,8 @@ struct AccountInfoCardView: View {
                     }
                 } label: {
                     Image(systemSymbol: .ellipsisCircle)
-                        .headerFooterVisibilityEnhanced()
+                        .font(.caption)
+                        .secondaryColorVerseBackground()
                 }
                 #endif
             }

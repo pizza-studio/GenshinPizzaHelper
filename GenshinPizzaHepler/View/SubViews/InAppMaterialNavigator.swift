@@ -91,7 +91,7 @@ struct InAppMaterialNavigator: View {
                             Text(showingWeekday.describe())
                                 .font(.caption)
                         }
-                        .headerFooterVisibilityEnhanced()
+                        .accentVerseBackground()
                     } else {
                         Text("app.todayMaterial.title")
                             .foregroundColor(.primary)
@@ -117,7 +117,7 @@ struct InAppMaterialNavigator: View {
                         }
                         .font(.caption)
                     }
-                    .headerFooterVisibilityEnhanced()
+                    .secondaryColorVerseBackground()
                 case true:
                     Button {
                         simpleTaptic(type: .light)
@@ -137,7 +137,7 @@ struct InAppMaterialNavigator: View {
                         }
                         .font(.caption)
                     }
-                    .headerFooterVisibilityEnhanced()
+                    .accentVerseBackground()
                 }
             }
         }
