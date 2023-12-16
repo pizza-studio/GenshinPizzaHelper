@@ -47,9 +47,7 @@ struct DisplayOptionsView: View {
                 Picker("settings.display.appBackgroundNameCardID", selection: $appBackgroundNameCardID) {
                     ForEach(NameCard.allCases, id: \.rawValue) { card in
                         Label {
-                            // 这玩意在 macOS 系统的明亮模式下抽风，会等好几秒才重新显示文字。
-                            // 所以手动复写正确的文字颜色。
-                            Text(card.localized).foregroundStyle(.primary)
+                            Text(card.localized)
                         } icon: {
                             GeometryReader { g in
                                 Image(card.fileName)
