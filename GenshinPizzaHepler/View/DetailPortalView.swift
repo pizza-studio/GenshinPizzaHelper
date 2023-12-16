@@ -1074,7 +1074,7 @@ private struct LedgerView: View {
                             .brown,
                             .cyan,
                         ],
-                        backgroundColor: Color(UIColor.systemGroupedBackground),
+                        backgroundColor: .clear,
                         widthFraction: 1,
                         innerRadiusFraction: 0.6
                     )

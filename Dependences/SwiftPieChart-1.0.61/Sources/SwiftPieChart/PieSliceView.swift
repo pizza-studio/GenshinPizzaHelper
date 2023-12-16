@@ -56,6 +56,7 @@ struct PieSlice: View {
                                 CGFloat(1.0 - 0.78 * sin(midRadians))
                         )
                         .foregroundColor(Color.white)
+                        .shadow(color: .black, radius: 3)
                 }
             }
         }

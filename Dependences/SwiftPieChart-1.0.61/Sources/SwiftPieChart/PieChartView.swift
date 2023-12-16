@@ -5,6 +5,9 @@
 //  Created by Nazar Ilamanov on 4/23/21.
 //
 
+// 该组件针对原神披萨助手专案的具体需求而经过修改。
+// This package has been modified to fit PizzaHelper4Genshin's needs.
+
 import SwiftUI
 
 // MARK: - PieChartView
@@ -98,7 +101,7 @@ public struct PieChartView: View {
                             }
                     )
                     Circle()
-                        .fill(backgroundColor)
+                        .fill(.ultraThinMaterial)
                         .frame(
                             width: widthFraction * geometry.size
                                 .width * innerRadiusFraction,
@@ -115,7 +118,8 @@ public struct PieChartView: View {
                                 )) : names[activeIndex]
                         )
                         .font(.headline)
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(Color(uiColor: .secondaryLabel))
+                        .shadow(color: .init(uiColor: .systemBackground), radius: 3)
                         Text(
                             formatter(
                                 activeIndex == -1 ? values
@@ -123,6 +127,7 @@ public struct PieChartView: View {
                             )
                         )
                         .font(.title)
+                        .shadow(color: .init(uiColor: .systemBackground), radius: 3)
                     }
                 }
                 PieChartRows(
@@ -200,11 +205,12 @@ struct PieChartRows: View {
                     VStack(alignment: .trailing) {
                         Text(values[i])
                         Text(percents[i])
-                            .foregroundColor(Color.gray)
+                            .foregroundColor(Color(uiColor: .secondaryLabel))
                     }
                 }
             }
         }
+        .shadow(color: .init(uiColor: .systemBackground), radius: 3)
     }
 }
 
