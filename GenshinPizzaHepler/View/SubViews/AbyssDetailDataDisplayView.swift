@@ -147,7 +147,7 @@ private struct AbyssLevelView: View {
                         .frame(minHeight: 20)
                     Spacer()
                     ForEach(0 ..< levelData.star, id: \.self) { _ in
-                        Text(verbatim: "✶")
+                        Text(verbatim: "✡︎")
                     }
                 } else {
                     Text("第\(levelData.index)间")
