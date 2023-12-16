@@ -39,7 +39,6 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         return configs.map { config in
             let intent = SelectAccountAndShowWhichInfoIntent()
             let useSimplifiedMode = Defaults[.watchWidgetUseSimplifiedMode]
-            intent.simplifiedMode = useSimplifiedMode as NSNumber
             intent.account = .init(
                 identifier: config.uuid!.uuidString,
                 display: config.name! + "(\(config.server.localized))"

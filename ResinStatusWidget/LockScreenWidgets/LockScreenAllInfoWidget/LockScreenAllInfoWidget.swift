@@ -23,7 +23,6 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
-            intent.simplifiedMode = true
             intent.account = .init(
                 identifier: config.uuid!.uuidString,
                 display: config.name! + "(\(config.server.localized))"

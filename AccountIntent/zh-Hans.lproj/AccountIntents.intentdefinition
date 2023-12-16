@@ -222,11 +222,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>Yil1CB</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>23B5056e</string>
+	<string>23A339</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>15A240d</string>
+	<string>15C65</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>15.0</string>
+	<string>15.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -375,53 +375,11 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>简洁模式（仅国服用户）</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>kvvRzi</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>4</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>TlVSDK</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>P9Zjkv</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>simplifiedMode</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
-					<key>INIntentParameterTag</key>
-					<integer>44</integer>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
 					<string>显示参量质变仪</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>MVmO5f</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>5</integer>
+					<integer>4</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -465,71 +423,11 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>探索派遣提醒于</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>lbRsap</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>6</integer>
-					<key>INIntentParameterEnumType</key>
-					<string>ExpeditionNoticeMethod</string>
-					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>Yil1CB</string>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>allCompleted</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>expeditionNoticeMethod</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${expeditionNoticeMethod}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>l4a3No</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${expeditionNoticeMethod}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>e0kZEQ</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
-						</dict>
-					</array>
-					<key>INIntentParameterTag</key>
-					<integer>31</integer>
-					<key>INIntentParameterType</key>
-					<string>Integer</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
 					<string>派遣探索展示方式</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>dUyzRX</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>7</integer>
+					<integer>5</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>ExpeditionShowingMethod</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
@@ -589,7 +487,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>hT68r4</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>8</integer>
+					<integer>6</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>WeeklyBossesShowingMethod</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
@@ -649,7 +547,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>mKzz1P</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>9</integer>
+					<integer>7</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -693,7 +591,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>K2iJCd</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>10</integer>
+					<integer>8</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -809,50 +707,6 @@
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>简洁模式（仅国服用户）</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>vVnBDJ</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>2</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>tBnBc9</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>811dFy</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>simplifiedMode</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
-					<key>INIntentParameterTag</key>
-					<integer>4</integer>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
-				</dict>
 			</array>
 			<key>INIntentResponse</key>
 			<dict>
@@ -937,55 +791,11 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>简洁模式（仅国服用户）</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>QGKioO</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>2</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>l8vjWP</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>dA3Ajr</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>simplifiedMode</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
-					<key>INIntentParameterTag</key>
-					<integer>9</integer>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
 					<string>展示周本折扣</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>DQpiCm</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>3</integer>
+					<integer>2</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -1014,7 +824,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>XXexIV</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>4</integer>
+					<integer>3</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
@@ -1043,7 +853,7 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>J4NStK</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>5</integer>
+					<integer>4</integer>
 					<key>INIntentParameterEnumType</key>
 					<string>AutoRotationUsingResinWidgetStyle</string>
 					<key>INIntentParameterEnumTypeNamespace</key>

@@ -121,14 +121,6 @@ extension WidgetViewConfiguration {
     init(_ intent: SelectAccountIntent, _ noticeMessage: String?) {
         self.showAccountName = true
         self.showTransformer = intent.showTransformer?.boolValue ?? true
-        self.expeditionViewConfig = ExpeditionViewConfiguration(
-            noticeExpeditionWhenAllCompleted: intent.expeditionNoticeMethod
-                .rawValue != 2,
-            expeditionShowingMethod: ExpeditionShowingMethod(
-                rawValue: intent
-                    .expeditionShowingMethod.rawValue
-            ) ?? .byNum
-        )
         self.weeklyBossesShowingMethod = intent.weeklyBossesShowingMethod
         self.randomBackground = intent.randomBackground?.boolValue ?? false
         if let backgrounds = intent.background {

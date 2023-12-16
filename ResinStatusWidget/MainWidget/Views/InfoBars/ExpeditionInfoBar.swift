@@ -11,7 +11,6 @@ import SwiftUI
 
 struct ExpeditionInfoBar: View {
     let expeditionInfo: any ExpeditionInformation
-    let expeditionViewConfig: ExpeditionViewConfiguration
 
     var isExpeditionAllCompleteImage: some View {
         Image(systemSymbol: .figureWalk)

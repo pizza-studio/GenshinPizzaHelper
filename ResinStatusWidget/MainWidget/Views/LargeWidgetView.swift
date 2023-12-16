@@ -97,8 +97,7 @@ struct LargeWidgetView: View {
 
             if dailyNote.expeditionInformation.maxExpeditionsCount != 0 {
                 ExpeditionInfoBar(
-                    expeditionInfo: dailyNote.expeditionInformation,
-                    expeditionViewConfig: viewConfig.expeditionViewConfig
+                    expeditionInfo: dailyNote.expeditionInformation
                 )
             }
 

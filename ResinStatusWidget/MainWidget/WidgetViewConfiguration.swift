@@ -16,10 +16,6 @@ struct WidgetViewConfiguration {
     init() {
         self.showAccountName = true
         self.showTransformer = true
-        self.expeditionViewConfig = ExpeditionViewConfiguration(
-            noticeExpeditionWhenAllCompleted: true,
-            expeditionShowingMethod: .byNum
-        )
         self.weeklyBossesShowingMethod = .alwaysShow
         self.selectedBackgrounds = [.defaultBackground]
         self.randomBackground = false
@@ -37,10 +33,6 @@ struct WidgetViewConfiguration {
     ) {
         self.showAccountName = showAccountName
         self.showTransformer = showTransformer
-        self.expeditionViewConfig = ExpeditionViewConfiguration(
-            noticeExpeditionWhenAllCompleted: noticeExpeditionWhenAllCompleted,
-            expeditionShowingMethod: .byNum
-        )
         self.weeklyBossesShowingMethod = .disappearAfterCompleted
         self.randomBackground = false
         self.selectedBackgrounds = [.defaultBackground]
@@ -54,7 +46,6 @@ struct WidgetViewConfiguration {
 
     let showAccountName: Bool
     let showTransformer: Bool
-    let expeditionViewConfig: ExpeditionViewConfiguration
     let weeklyBossesShowingMethod: WeeklyBossesShowingMethod
     var noticeMessage: String?
 
