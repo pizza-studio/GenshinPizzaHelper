@@ -72,7 +72,7 @@ struct CurrentEventNavigator: View {
                             NavigationLink(value: HomeView.EventModelArrayWrapper(eventContents: eventContents)) {
                                 HStack(spacing: 2) {
                                     Text("currentEventNavigator.viewAll.title")
-                                    Image(systemSymbol: .chevronForward).padding(.leading, 5)
+                                    Image(systemSymbol: .chevronForward)
                                 }
                             }
                         } else {
