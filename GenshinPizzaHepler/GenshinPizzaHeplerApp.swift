@@ -20,9 +20,6 @@ struct GenshinPizzaHeplerApp: App {
         UserDefaults.opSuite.synchronize()
         #if !os(watchOS)
         UserNotificationCenter.shared.askPermission()
-        if OS.type == .macOS {
-            UITabBar.appearance().unselectedItemTintColor = .gray
-        }
         #endif
     }
 
