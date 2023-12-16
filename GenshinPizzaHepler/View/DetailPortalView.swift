@@ -979,7 +979,6 @@ private struct AbyssInfoNavigator: View {
                 }
             case let .succeed(data):
                 AbyssInfoView(abyssInfo: data)
-                    .environmentObject(detailPortalViewModel)
             }
         }
     }
