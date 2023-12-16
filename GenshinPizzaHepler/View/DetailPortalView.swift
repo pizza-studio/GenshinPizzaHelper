@@ -704,14 +704,12 @@ private struct PlayerDetailSection: View {
                         ) { avatar in
                             Button {
                                 simpleTaptic(type: .medium)
-//                                var transaction = Transaction()
+                                var transaction = Transaction()
                                 // transaction.animation = .easeInOut
-//                                transaction.disablesAnimations = true
-                                // 要想恢复动画的话，请删掉这行。
-//                                withTransaction(transaction) {
-//                                    showingCharacterName = avatar.name
-//                                }
-                                showingCharacterName = avatar.name
+                                transaction.disablesAnimations = true // 要想恢复动画的话，请删掉这行。
+                                withTransaction(transaction) {
+                                    showingCharacterName = avatar.name
+                                }
                             } label: {
                                 avatar.characterAsset.cardIcon(75)
                             }
@@ -727,15 +725,12 @@ private struct PlayerDetailSection: View {
                     showingCharacterName: characterName,
                     playerDetail: playerDetail
                 ) {
-                    simpleTaptic(type: .medium)
-//                    var transaction = Transaction()
+                    var transaction = Transaction()
                     // transaction.animation = .easeInOut
-//                    transaction.disablesAnimations = true
-                    // 要想恢复动画的话，请删掉这行。
-//                    withTransaction(transaction) {
-//                        showingCharacterName = nil
-//                    }
-                    showingCharacterName = nil
+                    transaction.disablesAnimations = true // 要想恢复动画的话，请删掉这行。
+                    withTransaction(transaction) {
+                        showingCharacterName = nil
+                    }
                 }
                 .environment(\.colorScheme, .dark)
             }
