@@ -975,21 +975,16 @@ private struct AbyssInfoNavigator: View {
 
         var body: some View {
             InformationRowView("app.detailPortal.abyss.title") {
-                // 如果没有本期深境螺旋数据的话，就不响应任何点击行为。
-                if abyssInfo.maxFloor != "0-0" {
-                    if OS.type == .macOS {
-                        SheetCaller(forceDarkMode: false) {
-                            AbyssDetailDataDisplayView(data: abyssInfo)
-                        } label: {
-                            displayLabel
-                        }
-                    } else {
-                        NavigationLink(value: abyssInfo) {
-                            displayLabel
-                        }
+                if OS.type == .macOS {
+                    SheetCaller(forceDarkMode: false) {
+                        AbyssDetailDataDisplayView(data: abyssInfo)
+                    } label: {
+                        displayLabel
                     }
                 } else {
-                    displayLabel
+                    NavigationLink(value: abyssInfo) {
+                        displayLabel
+                    }
                 }
             }
         }
