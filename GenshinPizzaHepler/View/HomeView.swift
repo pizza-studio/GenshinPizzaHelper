@@ -45,13 +45,14 @@ struct HomeView: View {
         NavigationStack {
             List {
                 Group {
-                    TodayMaterialEventView().listRowMaterialBackground()
+                    TodayMaterialEventView()
+                        .listRowMaterialBackground()
                     if accounts.isEmpty {
                         AddNewAccountButton()
-                            .listRowBackground(Color.white.opacity(0))
                     } else {
                         ForEach(accounts) { account in
-                            AccountInfoCardView(account: account).listRowMaterialBackground()
+                            AccountInfoCardView(account: account)
+                                .listRowMaterialBackground()
                         }
                     }
                 }
@@ -513,38 +514,18 @@ private struct AddNewAccountButton: View {
     var isNewAccountSheetShow: Bool = false
 
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Label("settings.account.addAccount", systemSymbol: .plusCircle)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.blue, lineWidth: 4)
-                    )
-                    .background(
-                        .regularMaterial,
-                        in: RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    )
-                    .contentShape(RoundedRectangle(
-                        cornerRadius: 20,
-                        style: .continuous
-                    ))
-                    .clipShape(RoundedRectangle(
-                        cornerRadius: 20,
-                        style: .continuous
-                    ))
-                    .onTapGesture {
-                        isNewAccountSheetShow.toggle()
-                    }
-                    .sheet(isPresented: $isNewAccountSheetShow) {
-                        CreateAccountSheetView(
-                            account: AccountConfiguration(context: viewContext),
-                            isShown: $isNewAccountSheetShow
-                        ).restoreSystemTint()
-                    }
-                Spacer()
-            }
+        Button(action: {
+            isNewAccountSheetShow.toggle()
+        }, label: {
+            Label("settings.account.addAccount", systemSymbol: .plusCircle)
+        })
+        .listRowMaterialBackground()
+        .sheet(isPresented: $isNewAccountSheetShow) {
+            CreateAccountSheetView(
+                account: AccountConfiguration(context: viewContext),
+                isShown: $isNewAccountSheetShow
+            )
+            .restoreSystemTint()
         }
     }
 
