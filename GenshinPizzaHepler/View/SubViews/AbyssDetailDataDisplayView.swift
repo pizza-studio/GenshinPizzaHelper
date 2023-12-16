@@ -25,56 +25,18 @@ struct AbyssDetailDataDisplayView: View {
     let currentData: SpiralAbyssDetail
     let previousStatus: DetailPortalViewModel.Status<SpiralAbyssDetail>
 
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
+
     var body: some View {
         List {
             // 战斗数据榜
             if !data.rankDataMissing {
-                // 总体战斗结果概览
-                Section {
-                    InfoPreviewer(title: "app.abyss.info.deepest", content: data.maxFloor)
-                    InfoPreviewer(title: "app.abyss.info.star", content: "\(data.totalStar)")
-                    InfoPreviewer(
-                        title: "app.abyss.info.battle",
-                        content: "\(data.totalBattleTimes)"
-                    )
-                    InfoPreviewer(title: "app.abyss.info.win", content: "\(data.totalWinTimes)")
-                } header: {
-                    Text("app.abyss.info.summary")
-                        .secondaryColorVerseBackground()
+                if OS.type == .macOS || horizontalSizeClass != .compact {
+                    statisticViewNormal
+                } else {
+                    statisticViewCompact
                 }
-                .listRowMaterialBackground()
-
-                Section {
-                    BattleDataInfoProvider(
-                        name: "app.abyss.info.strongest",
-                        value: data.damageRank.first?.value,
-                        avatarID: data.damageRank.first?.avatarId
-                    )
-                    BattleDataInfoProvider(
-                        name: "app.abyss.info.mostDefeats",
-                        value: data.defeatRank.first?.value,
-                        avatarID: data.defeatRank.first?.avatarId
-                    )
-                    BattleDataInfoProvider(
-                        name: "app.abyss.info.mostDamageTaken",
-                        value: data.takeDamageRank.first?.value,
-                        avatarID: data.takeDamageRank.first?.avatarId
-                    )
-                    BattleDataInfoProvider(
-                        name: "app.abyss.info.mostESkills",
-                        value: data.normalSkillRank.first?.value,
-                        avatarID: data.normalSkillRank.first?.avatarId
-                    )
-                    BattleDataInfoProvider(
-                        name: "app.abyss.info.mostQSkills",
-                        value: data.energySkillRank.first?.value,
-                        avatarID: data.energySkillRank.first?.avatarId
-                    )
-                } header: {
-                    Text("app.abyss.info.notableStats")
-                        .secondaryColorVerseBackground()
-                }
-                .listRowMaterialBackground()
             } else {
                 Text("app.abyss.noData").listRowMaterialBackground()
             }
@@ -119,6 +81,137 @@ struct AbyssDetailDataDisplayView: View {
         ) {
             AbyssShareView(data: data)
         }
+    }
+
+    @ViewBuilder
+    var statisticViewNormal: some View {
+        // 总体战斗结果概览
+        Section {
+            VStack {
+                Grid {
+                    GridRow {
+                        AbyssValueCellView(
+                            value: data.maxFloor, description: "app.abyss.info.deepest", avatar: {}
+                        )
+                        AbyssValueCellView(
+                            value: "\(data.totalBattleTimes)",
+                            description: "app.abyss.info.battle", avatar: {}
+                        )
+                        AbyssValueCellView(
+                            value: "\(data.totalWinTimes)",
+                            description: "app.abyss.info.win", avatar: {}
+                        )
+                    }
+                    GridRow {
+                        AbyssValueCellView(
+                            value: "\(data.totalStar)", description: "app.abyss.info.star", avatar: {}
+                        )
+                        AbyssValueCellView(
+                            value: sayNullableInt(data.takeDamageRank.first?.value),
+                            description: "app.abyss.info.mostDamageTaken",
+                            avatar: {
+                                makeAvatar(data.takeDamageRank.first?.avatarId)
+                            }
+                        )
+                        AbyssValueCellView(
+                            value: sayNullableInt(data.damageRank.first?.value),
+                            description: "app.abyss.info.strongest",
+                            avatar: {
+                                makeAvatar(data.damageRank.first?.avatarId)
+                            }
+                        )
+                    }
+                    GridRow {
+                        AbyssValueCellView(
+                            value: sayNullableInt(data.defeatRank.first?.value),
+                            description: "app.abyss.info.mostDefeats",
+                            avatar: {
+                                makeAvatar(data.defeatRank.first?.avatarId)
+                            }
+                        )
+                        AbyssValueCellView(
+                            value: sayNullableInt(data.normalSkillRank.first?.value),
+                            description: "app.abyss.info.mostESkills",
+                            avatar: {
+                                makeAvatar(data.normalSkillRank.first?.avatarId)
+                            }
+                        )
+                        AbyssValueCellView(
+                            value: sayNullableInt(data.energySkillRank.first?.value),
+                            description: "app.abyss.info.mostQSkills",
+                            avatar: {
+                                makeAvatar(data.energySkillRank.first?.avatarId)
+                            }
+                        )
+                    }
+                }
+                .frame(maxWidth: .infinity)
+            }
+        } header: {
+            Text("app.abyss.info.summary")
+                .secondaryColorVerseBackground()
+        }
+        .listRowMaterialBackground()
+    }
+
+    @ViewBuilder
+    var statisticViewCompact: some View {
+        // 总体战斗结果概览
+        Section {
+            InfoPreviewer(title: "app.abyss.info.deepest", content: data.maxFloor)
+            InfoPreviewer(title: "app.abyss.info.star", content: "\(data.totalStar)")
+            InfoPreviewer(
+                title: "app.abyss.info.battle",
+                content: "\(data.totalBattleTimes)"
+            )
+            InfoPreviewer(title: "app.abyss.info.win", content: "\(data.totalWinTimes)")
+        } header: {
+            Text("app.abyss.info.summary")
+                .secondaryColorVerseBackground()
+        }
+        .listRowMaterialBackground()
+
+        Section {
+            BattleDataInfoProvider(
+                name: "app.abyss.info.strongest",
+                value: data.damageRank.first?.value,
+                avatarID: data.damageRank.first?.avatarId
+            )
+            BattleDataInfoProvider(
+                name: "app.abyss.info.mostDefeats",
+                value: data.defeatRank.first?.value,
+                avatarID: data.defeatRank.first?.avatarId
+            )
+            BattleDataInfoProvider(
+                name: "app.abyss.info.mostDamageTaken",
+                value: data.takeDamageRank.first?.value,
+                avatarID: data.takeDamageRank.first?.avatarId
+            )
+            BattleDataInfoProvider(
+                name: "app.abyss.info.mostESkills",
+                value: data.normalSkillRank.first?.value,
+                avatarID: data.normalSkillRank.first?.avatarId
+            )
+            BattleDataInfoProvider(
+                name: "app.abyss.info.mostQSkills",
+                value: data.energySkillRank.first?.value,
+                avatarID: data.energySkillRank.first?.avatarId
+            )
+        } header: {
+            Text("app.abyss.info.notableStats")
+                .secondaryColorVerseBackground()
+        }
+        .listRowMaterialBackground()
+    }
+
+    @ViewBuilder
+    func makeAvatar(_ id: Int?) -> some View {
+        CharacterAsset.match(id: id ?? -213).decoratedIcon(48, cutTo: .face)
+            .frame(width: 52, alignment: .center)
+    }
+
+    func sayNullableInt(_ int: Int?) -> String {
+        int?.description ?? "-1"
     }
 
     // MARK: Private
@@ -391,5 +484,39 @@ private struct ShareAbyssFloorView: View {
         .foregroundStyle(.white)
         .listContainerBackground(fileNameOverride: NameCard.UI_NameCardPic_Sj1_P.fileName)
         .environment(\.colorScheme, .dark)
+    }
+}
+
+// MARK: - AbyssValueCellView
+
+private struct AbyssValueCellView<Avatar: View>: View {
+    let value: String
+    let description: LocalizedStringKey
+    @ViewBuilder
+    let avatar: () -> Avatar
+
+    var body: some View {
+        HStack(alignment: .center) {
+            VStack(alignment: .center) {
+                Text(verbatim: value)
+                    .lineLimit(1)
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .fontWidth(.compressed)
+                    .minimumScaleFactor(0.3)
+                Text(description)
+                    .lineLimit(1)
+                    .font(.caption)
+                    .minimumScaleFactor(0.3)
+            }
+            .frame(maxWidth: .infinity)
+            avatar()
+        }
+        .frame(maxWidth: .infinity)
+        .padding(8)
+        .background(
+            .regularMaterial,
+            in: RoundedRectangle(cornerRadius: 8, style: .circular)
+        )
     }
 }

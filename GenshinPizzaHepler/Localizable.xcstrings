@@ -2297,7 +2297,6 @@
       }
     },
     "app.abyss.info.battle" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2362,7 +2361,6 @@
       }
     },
     "app.abyss.info.deepest" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2491,30 +2489,29 @@
       }
     },
     "app.abyss.info.mostDamageTaken" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Most Damage Taken"
+            "value" : "DMG Taken"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Most Damage Taken"
+            "value" : "DMG Taken"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Most Damage Taken"
+            "value" : "DMG Taken"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Most Damage Taken"
+            "value" : "DMG Taken"
           }
         },
         "ja" : {
@@ -2526,7 +2523,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Most Damage Taken"
+            "value" : "DMG Taken"
           }
         },
         "ru" : {
@@ -2556,7 +2553,6 @@
       }
     },
     "app.abyss.info.mostDefeats" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2621,30 +2617,29 @@
       }
     },
     "app.abyss.info.mostESkills" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Skills Cast"
+            "value" : "Elemental Skills"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Skills Cast"
+            "value" : "Elemental Skills"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Skills Cast"
+            "value" : "Elemental Skills"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Skills Cast"
+            "value" : "Elemental Skills"
           }
         },
         "ja" : {
@@ -2656,7 +2651,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Skills Cast"
+            "value" : "Elemental Skills"
           }
         },
         "ru" : {
@@ -2686,30 +2681,29 @@
       }
     },
     "app.abyss.info.mostQSkills" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Bursts Unleashed"
+            "value" : "Elemental Bursts"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Bursts Unleashed"
+            "value" : "Elemental Bursts"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Bursts Unleashed"
+            "value" : "Elemental Bursts"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Bursts Unleashed"
+            "value" : "Elemental Bursts"
           }
         },
         "ja" : {
@@ -2721,7 +2715,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elemental Bursts Unleashed"
+            "value" : "Elemental Bursts"
           }
         },
         "ru" : {
@@ -2880,7 +2874,6 @@
       }
     },
     "app.abyss.info.star" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2945,30 +2938,29 @@
       }
     },
     "app.abyss.info.strongest" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strongest Single Strike"
+            "value" : "Best Single Strike"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strongest Single Strike"
+            "value" : "Best Single Strike"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strongest Single Strike"
+            "value" : "Best Single Strike"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strongest Single Strike"
+            "value" : "Best Single Strike"
           }
         },
         "ja" : {
@@ -2980,7 +2972,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strongest Single Strike"
+            "value" : "Best Single Strike"
           }
         },
         "ru" : {
@@ -3139,7 +3131,6 @@
       }
     },
     "app.abyss.info.win" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
