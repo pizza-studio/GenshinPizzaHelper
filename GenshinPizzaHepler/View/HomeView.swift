@@ -433,12 +433,10 @@ class DailyNoteViewModel: ObservableObject {
                    Defaults[.autoDeliveryResinTimerLiveActivity] {
                     Task {
                         let accounts = AccountConfigurationModel.shared.fetchAccountConfigs()
-                        if account == accounts.first {
-                            try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
-                                for: account,
-                                data: result
-                            )
-                        }
+                        try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
+                            for: account,
+                            data: result
+                        )
                     }
                 }
                 #endif
