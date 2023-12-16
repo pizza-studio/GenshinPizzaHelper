@@ -170,7 +170,9 @@ struct AccountInfoCardView: View {
                 showEditAccountSheet = true
             }
             .sheet(isPresented: $showEditAccountSheet, content: {
-                EditAccountSheetView(account: account, isShown: $showEditAccountSheet).restoreSystemTint()
+                EditAccountSheetView(account: account, isShown: $showEditAccountSheet)
+                    .scrollContentBackground(.visible)
+                    .restoreSystemTint()
             })
         }
 
@@ -525,6 +527,7 @@ private struct AddNewAccountButton: View {
                 account: AccountConfiguration(context: viewContext),
                 isShown: $isNewAccountSheetShow
             )
+            .scrollContentBackground(.visible)
             .restoreSystemTint()
         }
     }
@@ -565,7 +568,9 @@ private struct ErrorView: View {
             }
         }
         .sheet(isPresented: $isEditAccountSheetShown, content: {
-            EditAccountSheetView(account: account, isShown: $isEditAccountSheetShown).restoreSystemTint()
+            EditAccountSheetView(account: account, isShown: $isEditAccountSheetShown)
+                .scrollContentBackground(.visible)
+                .restoreSystemTint()
         })
     }
 
