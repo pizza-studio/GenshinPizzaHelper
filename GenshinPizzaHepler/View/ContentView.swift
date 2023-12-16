@@ -97,11 +97,13 @@ struct ContentView: View {
                 .tabItem {
                     Label("app.home.title", systemSymbol: .listBullet)
                 }
+                .toolbarBackground(.thinMaterial, for: .tabBar)
             DetailPortalView()
                 .tag(1)
                 .tabItem {
                     Label("app.detailPortal.title", systemSymbol: .personTextRectangle)
                 }
+                .toolbarBackground(.thinMaterial, for: .tabBar)
             ToolView()
                 .tag(2)
                 .tabItem {
