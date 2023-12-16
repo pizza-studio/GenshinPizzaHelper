@@ -506,7 +506,10 @@ struct DetailPortalView: View {
                 BasicInfoView(data: data)
             }
             .navigationDestination(for: SpiralAbyssDetail.self) { data in
-                AbyssDetailDataDisplayView(data: data)
+                AbyssDetailDataDisplayView(
+                    data: data,
+                    previousStatus: detailPortalViewModel.spiralAbyssDetailStatusPrevious
+                )
             }
             .navigationDestination(for: LedgerData.self) { data in
                 LedgerView(data: data)
@@ -976,6 +979,7 @@ private struct AbyssInfoNavigator: View {
                 }
             case let .succeed(data):
                 AbyssInfoView(abyssInfo: data)
+                    .environmentObject(detailPortalViewModel)
             }
         }
     }
@@ -983,6 +987,9 @@ private struct AbyssInfoNavigator: View {
     // MARK: Fileprivate
 
     fileprivate struct AbyssInfoView: View {
+        @EnvironmentObject
+        private var detailPortalViewModel: DetailPortalViewModel
+
         // MARK: Internal
 
         let abyssInfo: SpiralAbyssDetail
@@ -1016,7 +1023,10 @@ private struct AbyssInfoNavigator: View {
             InformationRowView("app.detailPortal.abyss.title") {
                 if OS.type == .macOS {
                     SheetCaller(forceDarkMode: false) {
-                        AbyssDetailDataDisplayView(data: abyssInfo)
+                        AbyssDetailDataDisplayView(
+                            data: abyssInfo,
+                            previousStatus: detailPortalViewModel.spiralAbyssDetailStatusPrevious
+                        )
                     } label: {
                         displayLabel
                     }

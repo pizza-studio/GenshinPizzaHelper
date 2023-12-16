@@ -13,10 +13,57 @@ import SwiftUI
 // MARK: - AbyssDetailDataDisplayView
 
 struct AbyssDetailDataDisplayView: View {
-    let data: SpiralAbyssDetail
+    // MARK: Lifecycle
+
+    public init(data: SpiralAbyssDetail, previousStatus: DetailPortalViewModel.Status<SpiralAbyssDetail>) {
+        self.currentData = data
+        self.previousStatus = previousStatus
+    }
+
+    // MARK: Internal
+
+    @State
+    var season: AccountSpiralAbyssDetail.WhichSeason = .this
+
+    let previousStatus: DetailPortalViewModel.Status<SpiralAbyssDetail>
+
+    @State
+    var currentData: SpiralAbyssDetail
+
+    var previousData: SpiralAbyssDetail? {
+        switch previousStatus {
+        case .fail, .progress: return nil
+        case let .succeed(dataPrev): return dataPrev
+        }
+    }
+
+    var data: SpiralAbyssDetail {
+        switch season {
+        case .this:
+            return currentData
+        case .last:
+            return previousData ?? currentData
+        }
+    }
 
     var body: some View {
         List {
+            if previousData != nil {
+                Picker("", selection: $season) {
+                    Text("abyss.detailDataDisplayView.season.current").tag(AccountSpiralAbyssDetail.WhichSeason.this)
+                    Text("abyss.detailDataDisplayView.season.previous").tag(AccountSpiralAbyssDetail.WhichSeason.last)
+                }
+                .labelsHidden()
+                .fontWidth(.condensed)
+                .pickerStyle(.segmented)
+                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .opacity(0.9)
+                .background(
+                    RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
+                )
+                .listRowBackground(Color.clear)
+            }
+
             // 战斗数据榜
             if !data.rankDataMissing {
                 // 总体战斗结果概览
