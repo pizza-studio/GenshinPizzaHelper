@@ -85,12 +85,14 @@ struct SheetCaller<D: View, L: View>: View {
 
     public init(
         forceDarkMode: Bool = false,
+        sansFinishButton: Bool = false,
         @ViewBuilder destination: @escaping () -> D,
         @ViewBuilder label: @escaping () -> L
     ) {
         self.destination = destination
         self.label = label
         self.forceDarkMode = forceDarkMode
+        self.sansFinishButton = sansFinishButton
     }
 
     // MARK: Public
@@ -109,9 +111,14 @@ struct SheetCaller<D: View, L: View>: View {
         .foregroundStyle(.primary)
         .sheet(isPresented: $isSheetShown) {
             let sheetContent = NavigationView {
-                destination()
-                    .navigationBarTitleDisplayMode(.inline)
-                    .dismissableSheet(isSheetShow: $isSheetShown)
+                if sansFinishButton {
+                    destination()
+                        .navigationBarTitleDisplayMode(.inline)
+                } else {
+                    destination()
+                        .navigationBarTitleDisplayMode(.inline)
+                        .dismissableSheet(isSheetShow: $isSheetShown)
+                }
             }
             if forceDarkMode {
                 sheetContent.environment(\.colorScheme, .dark)
@@ -122,6 +129,9 @@ struct SheetCaller<D: View, L: View>: View {
     }
 
     // MARK: Private
+
+    @State
+    private var sansFinishButton: Bool
 
     @ViewBuilder
     private let destination: () -> D

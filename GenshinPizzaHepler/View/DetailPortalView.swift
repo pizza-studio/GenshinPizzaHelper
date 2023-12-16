@@ -507,7 +507,7 @@ struct DetailPortalView: View {
             }
             .navigationDestination(for: SpiralAbyssDetail.self) { data in
                 AbyssDetailDataDisplayView(
-                    data: data,
+                    currentData: data,
                     previousStatus: detailPortalViewModel.spiralAbyssDetailStatusPrevious
                 )
             }
@@ -1023,9 +1023,9 @@ private struct AbyssInfoNavigator: View {
         var body: some View {
             InformationRowView("app.detailPortal.abyss.title") {
                 if OS.type == .macOS {
-                    SheetCaller(forceDarkMode: false) {
+                    SheetCaller(forceDarkMode: false, sansFinishButton: true) {
                         AbyssDetailDataDisplayView(
-                            data: abyssInfo,
+                            currentData: abyssInfo,
                             previousStatus: detailPortalViewModel.spiralAbyssDetailStatusPrevious
                         )
                     } label: {
