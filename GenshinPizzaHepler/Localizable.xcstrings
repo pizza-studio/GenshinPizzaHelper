@@ -31476,12 +31476,13 @@
       }
     },
     "abyss.detailDataDisplayView.season.current" : {
+      "comment" : "Shortened ",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Current Phase"
+            "value" : "CURR"
           }
         },
         "ja" : {
@@ -31505,12 +31506,13 @@
       }
     },
     "abyss.detailDataDisplayView.season.previous" : {
+      "comment" : "Shortened",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Previous Phase"
+            "value" : "PREV"
           }
         },
         "ja" : {
