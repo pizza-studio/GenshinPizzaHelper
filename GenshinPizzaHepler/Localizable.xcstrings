@@ -73628,6 +73628,254 @@
         }
       }
     },
+    "widgetError.accountSelectNeeded" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Please right-click and edit the widget to config your account"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Please long press the widget to config your account"
+                }
+              }
+            }
+          }
+        },
+        "fil" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mangyaring i-right-click at i-edit ang widget upang i-configure ang iyong account"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "I-pindutin ng matagal ang widget upang i-configure ang iyong account"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Veuillez faire un clic droit et modifier le widget pour configurer votre compte"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Merci d'apuyer longement le widget pour choisir votre compte"
+                }
+              }
+            }
+          }
+        },
+        "it" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Fai clic con il pulsante destro del mouse e modifica il widget per configurare il tuo account"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Please long press the widget to config your account"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "ウィジェットを右クリックで編集して、アカウントを選んでください"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "ウィジェットを長押してアカウントを選んでください"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Please right-click and edit the widget to config your account"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Please long press the widget to config your account"
+                }
+              }
+            }
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Пожалуйста, щелкните правой кнопкой мыши и отредактируйте виджет, чтобы настроить свою учетную запись"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Пожалуйста, удерживайте палец чтобы изменить параметры аккаунта"
+                }
+              }
+            }
+          }
+        },
+        "vi" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Vui lòng nhấp chuột phải và chỉnh sửa tiện ích để định cấu hình tài khoản của bạn"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Vui lòng nhấn và giữ tiện ích để cấu hình tài khoản của bạn"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "请右键编辑小组件选择账号"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "请长按小组件选择账号"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hant" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "請右鍵編輯小組件選擇帳號"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "請長按小工具選擇帳號"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "widgetError.noAccountFound" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account not found. Please add an account or try restarting the device."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walang natagpuang account. Mangyaring magdagdag ng account o subukang i-restart ang device"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compte introuvable. Veuillez ajouter un compte ou essayer de redémarrer l'appareil."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account non trovato. Si prega di aggiungere un account o provare a riavviare il dispositivo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントが見つかりません。アカウントを追加するか、デバイスを再起動してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정을 찾을 수 없습니다. 계정을 추가하거나 기기를 다시 시작해주세요."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аккаунт не найден. Пожалуйста, добавьте аккаунт или попробуйте перезагрузить устройство."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tài khoản không được tìm thấy. Vui lòng thêm một tài khoản hoặc thử khởi động lại thiết bị."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未找到账号。请先添加账号或尝试重启设备。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未找到賬號。請先添加賬號或嘗試重啟設備。"
+          }
+        }
+      }
+    },
     "Xinzoruo (心臓弱眞君)" : {
       "localizations" : {
         "ja" : {

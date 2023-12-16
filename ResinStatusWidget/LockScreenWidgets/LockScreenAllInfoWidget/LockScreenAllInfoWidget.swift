@@ -80,7 +80,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
         guard !configs.isEmpty else {
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                result: .failure(FetchError.noFetchInfo),
+                result: .failure(WidgetError.noAccountFound),
                 accountUUIDString: nil
             )
             let timeline = Timeline(
@@ -106,7 +106,7 @@ struct LockScreenAllInfoWidgetProvider: IntentTimelineProvider {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                result: .failure(FetchError.noFetchInfo),
+                result: .failure(WidgetError.accountSelectNeeded),
                 accountUUIDString: nil
             )
             let timeline = Timeline(

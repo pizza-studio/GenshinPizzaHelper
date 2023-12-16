@@ -102,7 +102,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
         guard !configs.isEmpty else {
             let entry = AccountAndShowWhichInfoIntentEntry(
                 date: currentDate,
-                result: .failure(FetchError.noFetchInfo),
+                result: .failure(WidgetError.noAccountFound),
                 accountUUIDString: nil,
                 usingResinStyle: style
             )
@@ -131,7 +131,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = AccountAndShowWhichInfoIntentEntry(
                 date: currentDate,
-                result: .failure(FetchError.noFetchInfo),
+                result: .failure(WidgetError.accountSelectNeeded),
                 accountUUIDString: nil,
                 usingResinStyle: style
             )

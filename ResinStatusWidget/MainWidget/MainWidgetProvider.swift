@@ -78,7 +78,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             viewConfig.addMessage("请进入App设置账号信息")
             let entry = ResinEntry(
                 date: currentDate,
-                result: .failure(FetchError.noFetchInfo),
+                result: .failure(WidgetError.noAccountFound),
                 viewConfig: viewConfig,
                 accountUUIDString: nil
             )
@@ -102,7 +102,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
                 viewConfig.addMessage("请长按进入settings.widget.title账号信息")
                 let entry = ResinEntry(
                     date: currentDate,
-                    result: .failure(FetchError.noFetchInfo),
+                    result: .failure(WidgetError.accountSelectNeeded),
                     viewConfig: viewConfig,
                     accountUUIDString: nil
                 )
@@ -129,7 +129,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             viewConfig.addMessage("请长按进入小组件重新设置账号信息")
             let entry = ResinEntry(
                 date: currentDate,
-                result: .failure(FetchError.noFetchInfo),
+                result: .failure(WidgetError.accountSelectNeeded),
                 viewConfig: viewConfig,
                 accountUUIDString: nil
             )

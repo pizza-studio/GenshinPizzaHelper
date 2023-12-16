@@ -33,7 +33,6 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
-            let useSimplifiedMode = Defaults[.watchWidgetUseSimplifiedMode]
             intent.account = .init(
                 identifier: config.uuid!.uuidString,
                 display: config.name! + "(\(config.server.localized))"
@@ -92,7 +91,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
         guard !configs.isEmpty else {
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                result: .failure(FetchError.noFetchInfo),
+                result: .failure(WidgetError.noAccountFound),
                 accountUUIDString: nil
             )
             let timeline = Timeline(
@@ -119,7 +118,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             // 有时候删除账号，Intent没更新就会出现这样的情况
             let entry = AccountOnlyEntry(
                 date: currentDate,
-                result: .failure(FetchError.noFetchInfo),
+                result: .failure(WidgetError.accountSelectNeeded),
                 accountUUIDString: nil
             )
             let timeline = Timeline(
