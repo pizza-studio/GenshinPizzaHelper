@@ -54,7 +54,10 @@ final class DetailPortalViewModel: ObservableObject {
     var basicInfoStatus: BasicInfoStatus = .progress(nil)
 
     @Published
-    var spiralAbyssDetailStatus: SpiralAbyssDetailStatus = .progress(nil)
+    var spiralAbyssDetailStatusCurrent: SpiralAbyssDetailStatus = .progress(nil)
+
+    @Published
+    var spiralAbyssDetailStatusPrevious: SpiralAbyssDetailStatus = .progress(nil)
 
     @Published
     var ledgerDataStatus: LedgerDataStatus = .progress(nil)
@@ -77,7 +80,8 @@ final class DetailPortalViewModel: ObservableObject {
     func refresh() {
         fetchPlayerDetail()
         fetchBasicInfo()
-        fetchSpiralAbyssInfo()
+        fetchSpiralAbyssInfoCurrent()
+        fetchSpiralAbyssInfoPrevious()
         fetchLedgerData()
         fetchAllAvatarInfo()
         uploadData()
@@ -147,9 +151,8 @@ final class DetailPortalViewModel: ObservableObject {
             }
         }
         DispatchQueue.main.async {
-            withAnimation { [weak self] in
-                guard let self else { return }
-                playerDetailStatus = .progress(task)
+            withAnimation {
+                self.playerDetailStatus = .progress(task)
             }
         }
     }
@@ -184,9 +187,40 @@ final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    func fetchSpiralAbyssInfo() {
+    func fetchSpiralAbyssInfoPrevious() {
         guard let account = selectedAccount else { return }
-        if case let .progress(task) = spiralAbyssDetailStatus { task?.cancel() }
+        if case let .progress(task) = spiralAbyssDetailStatusPrevious { task?.cancel() }
+        let task = Task {
+            do {
+                let result = try await MiHoYoAPI.abyssData(
+                    round: .last,
+                    server: account.server,
+                    uid: account.safeUid,
+                    cookie: account.safeCookie,
+                    deviceFingerPrint: account.safeDeviceFingerPrint,
+                    deviceId: account.safeUuid
+                )
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.spiralAbyssDetailStatusPrevious = .succeed(result)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.spiralAbyssDetailStatusPrevious = .fail(error)
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            withAnimation {
+                self.spiralAbyssDetailStatusPrevious = .progress(task)
+            }
+        }
+    }
+
+    func fetchSpiralAbyssInfoCurrent() {
+        guard let account = selectedAccount else { return }
+        if case let .progress(task) = spiralAbyssDetailStatusCurrent { task?.cancel() }
         let task = Task {
             do {
                 let result = try await MiHoYoAPI.abyssData(
@@ -199,19 +233,18 @@ final class DetailPortalViewModel: ObservableObject {
                 )
                 DispatchQueue.main.async {
                     withAnimation {
-                        self.spiralAbyssDetailStatus = .succeed(result)
+                        self.spiralAbyssDetailStatusCurrent = .succeed(result)
                     }
                 }
             } catch {
                 DispatchQueue.main.async {
-                    self.spiralAbyssDetailStatus = .fail(error)
+                    self.spiralAbyssDetailStatusCurrent = .fail(error)
                 }
             }
         }
         DispatchQueue.main.async {
-            withAnimation { [weak self] in
-                guard let self else { return }
-                spiralAbyssDetailStatus = .progress(task)
+            withAnimation {
+                self.spiralAbyssDetailStatusCurrent = .progress(task)
             }
         }
     }
@@ -240,9 +273,8 @@ final class DetailPortalViewModel: ObservableObject {
             }
         }
         DispatchQueue.main.async {
-            withAnimation { [weak self] in
-                guard let self else { return }
-                spiralAbyssDetailStatus = .progress(task)
+            withAnimation {
+                self.ledgerDataStatus = .progress(task)
             }
         }
     }
@@ -264,7 +296,7 @@ final class DetailPortalViewModel: ObservableObject {
             if case let .progress(task) = basicInfoStatus {
                 await task?.value
             }
-            if case let .progress(task) = spiralAbyssDetailStatus {
+            if case let .progress(task) = spiralAbyssDetailStatusCurrent {
                 await task?.value
             }
             if case let .progress(task) = allAvatarInfoStatus {
@@ -272,7 +304,7 @@ final class DetailPortalViewModel: ObservableObject {
             }
             if case let .succeed(basicInfo) = basicInfoStatus {
                 uploadHoldingData(account: account, basicInfo: basicInfo)
-                if case let .succeed(abyssData) = spiralAbyssDetailStatus {
+                if case let .succeed(abyssData) = spiralAbyssDetailStatusCurrent {
                     uploadAbyssData(account: account, abyssData: abyssData, basicInfo: basicInfo)
                     if case let .succeed(allAvatarData) = allAvatarInfoStatus {
                         uploadHuTaoDBAbyssData(
@@ -452,7 +484,10 @@ struct DetailPortalView: View {
                     PlayerDetailSection(account: account)
                         .listRowMaterialBackground()
                     Section {
-                        AbyssInfoNavigator(account: account, status: detailPortalViewModel.spiralAbyssDetailStatus)
+                        AbyssInfoNavigator(
+                            account: account,
+                            status: detailPortalViewModel.spiralAbyssDetailStatusCurrent
+                        )
                         LedgerDataNavigator(account: account, status: detailPortalViewModel.ledgerDataStatus)
                         BasicInfoNavigator(account: account, status: detailPortalViewModel.basicInfoStatus)
 //                        VerificationNeededView(account: account) {
@@ -936,7 +971,7 @@ private struct AbyssInfoNavigator: View {
             case let .fail(error):
                 InformationRowView("app.detailPortal.abyss.title") {
                     ErrorView(account: account, error: error) {
-                        detailPortalViewModel.fetchSpiralAbyssInfo()
+                        detailPortalViewModel.fetchSpiralAbyssInfoCurrent()
                     }
                 }
             case let .succeed(data):
