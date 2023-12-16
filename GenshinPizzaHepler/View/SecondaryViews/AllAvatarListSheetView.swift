@@ -35,20 +35,18 @@ struct AllAvatarListSheetView: View {
             }
             Section {
                 VStack(alignment: .leading, spacing: 3) {
-                    let charCount = String(
-                        format: "app.characters.count.character:%lld%lld%lld".localized,
-                        data.avatars.count,
-                        data.avatars.filter { $0.rarity == 5 }.count,
-                        data.avatars.filter { $0.rarity == 4 }.count
+                    let a = data.avatars.count
+                    let b = data.avatars.filter { $0.rarity == 5 }.count
+                    let c = data.avatars.filter { $0.rarity == 4 }.count
+                    Text(
+                        "app.characters.count.character:\(a, specifier: "%lld")\(b, specifier: "%lld")\(c, specifier: "%lld")"
                     )
-                    Text(charCount)
-                    let weaponCount = String(
-                        format: "app.characters.count.weapon:%lld%lld%lld".localized,
-                        goldNum(data: data).allGold,
-                        goldNum(data: data).charGold,
-                        goldNum(data: data).weaponGold
+                    let d = goldNum(data: data).allGold
+                    let e = goldNum(data: data).charGold
+                    let f = goldNum(data: data).weaponGold
+                    Text(
+                        "app.characters.count.weapon:\(d, specifier: "%lld")\(e, specifier: "%lld")\(f, specifier: "%lld")"
                     )
-                    Text(weaponCount)
                 }.font(.footnote)
             }.listRowMaterialBackground()
             Section {
@@ -297,7 +295,7 @@ private struct AvatarListItemShare: View {
                         .lineLimit(1)
                         .layoutPriority(1)
                     Spacer()
-                    Text("Lv. \(avatar.level)")
+                    Text(verbatim: "Lv. \(avatar.level)")
                         .layoutPriority(1)
                         .fixedSize()
                         .font(.callout)
@@ -339,7 +337,7 @@ private struct AvatarListItemShare: View {
                         .frame(width: 25, height: 25)
                         .padding(.trailing, 3)
                         HStack(alignment: .lastTextBaseline, spacing: 5) {
-                            Text("Lv. \(avatar.weapon.level)")
+                            Text(verbatim: "Lv. \(avatar.weapon.level)")
                                 .font(.callout)
                                 .fixedSize()
                             let affix = String(format: "weapon.affix:%lld", avatar.weapon.affixLevel).localized

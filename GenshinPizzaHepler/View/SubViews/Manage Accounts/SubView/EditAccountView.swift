@@ -37,7 +37,7 @@ struct EditAccountView: View {
             }
         } header: {
             HStack {
-                Text("UID: " + (account.uid ?? ""))
+                Text(verbatim: "UID: " + (account.uid ?? ""))
                 Spacer()
                 Text(account.server.localized)
             }

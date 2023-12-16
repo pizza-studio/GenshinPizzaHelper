@@ -15,7 +15,7 @@ struct ThanksView: View {
             Divider()
             Group {
                 Text(
-                    "SwiftPieChart - Nazar Ilamanov\nhttps://github.com/ilamanov/SwiftPieChart"
+                    verbatim: "SwiftPieChart - Nazar Ilamanov\nhttps://github.com/ilamanov/SwiftPieChart"
                 )
             }
             .font(.caption)

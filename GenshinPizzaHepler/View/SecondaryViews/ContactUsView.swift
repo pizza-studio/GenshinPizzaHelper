@@ -31,7 +31,7 @@ struct ContactUsView: View {
                         .clipShape(Circle())
                         .frame(width: 40, height: 40)
                     VStack(alignment: .leading) {
-                        Text("Pizza Studio")
+                        Text(verbatim: "Pizza Studio")
                             .bold()
                             .padding(.vertical, 5)
                     }
@@ -62,7 +62,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("contact@pizzastduio.org")
+                            Text(verbatim: "contact@pizzastudio.org")
                         } icon: {
                             Image("email")
                                 .resizable()
@@ -105,7 +105,7 @@ struct ContactUsView: View {
                         .clipShape(Circle())
                         .frame(width: 40, height: 40)
                     VStack(alignment: .leading) {
-                        Text("Lava")
+                        Text(verbatim: "Lava")
                             .bold()
                             .padding(.vertical, 5)
                     }
@@ -126,7 +126,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("daicanglong@gmail.com")
+                            Text(verbatim: "daicanglong@gmail.com")
                         } icon: {
                             Image("email")
                                 .resizable()
@@ -195,7 +195,7 @@ struct ContactUsView: View {
                     }
                     Link(destination: URL(string: "mailto:i@hakubill.tech")!) {
                         Label {
-                            Text("i@hakubill.tech")
+                            Text(verbatim: "i@hakubill.tech")
                         } icon: {
                             Image("email")
                                 .resizable()
@@ -294,7 +294,7 @@ struct ContactUsView: View {
                     }
                     Link(destination: URL(string: "mailto:shikisuen@pm.me")!) {
                         Label {
-                            Text("shikisuen@pm.me")
+                            Text(verbatim: "shikisuen@pm.me")
                         } icon: {
                             Image("email")
                                 .resizable()
@@ -371,7 +371,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("about.group.qq.1st") + Text("813912474")
+                            Text("about.group.qq.1st") + Text(verbatim: "813912474")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -385,7 +385,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("about.group.qq.2nd") + Text("829996515")
+                            Text("about.group.qq.2nd") + Text(verbatim: "829996515")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -399,7 +399,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("about.group.qq.3rd") + Text("736320270")
+                            Text("about.group.qq.3rd") + Text(verbatim: "736320270")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -450,7 +450,7 @@ struct ContactUsView: View {
                             )!
                         ) {
                             Label {
-                                Text("English Channel")
+                                Text(verbatim: "English Channel")
                             } icon: {
                                 Image("telegram")
                                     .resizable()
@@ -513,7 +513,7 @@ struct ContactUsView: View {
                 }
                 Label {
                     HStack {
-                        Text(verbatim: "ShikiSuen")
+                        Text(verbatim: "Shiki Suen")
                         Spacer()
                         Text("繁体中文".localized + " & " + "contact.translator.ja".localized)
                             .foregroundColor(.gray)
@@ -559,7 +559,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("TikTok")
+                            Text(verbatim: "TikTok")
                         } icon: {
                             Image("tiktok")
                                 .resizable()
@@ -583,7 +583,7 @@ struct ContactUsView: View {
                 }
                 Label {
                     HStack {
-                        Text("Qi")
+                        Text(verbatim: "Qi")
                         Spacer()
                         Text("contact.translator.fr")
                             .foregroundColor(.gray)
@@ -601,7 +601,7 @@ struct ContactUsView: View {
                             URL(string: "https://vk.com/arrteem40")!
                     ) {
                         Label {
-                            Text("VK")
+                            Text(verbatim: "VK")
                         } icon: {
                             Image("vk")
                                 .resizable()
@@ -611,7 +611,7 @@ struct ContactUsView: View {
                 } label: {
                     Label {
                         HStack {
-                            Text("Art34222")
+                            Text(verbatim: "Art34222")
                             Spacer()
                             Text("lang.Russian")
                                 .foregroundColor(.gray)
@@ -630,7 +630,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("Facebook主页")
+                            Text(verbatim: "Facebook")
                         } icon: {
                             Image("facebook")
                                 .resizable()
@@ -640,7 +640,7 @@ struct ContactUsView: View {
                 } label: {
                     Label {
                         HStack {
-                            Text("Ngô Phi Phương")
+                            Text(verbatim: "Ngô Phi Phương")
                             Spacer()
                             Text("lang.Vietnamese")
                                 .foregroundColor(.gray)
@@ -655,7 +655,7 @@ struct ContactUsView: View {
                 Link(destination: URL(string: "https://chat.openai.com/chat")!) {
                     Label {
                         HStack {
-                            Text("ChatGPT")
+                            Text(verbatim: "ChatGPT")
                             Spacer()
                             Text("繁体中文")
                                 .foregroundColor(.gray)
@@ -682,7 +682,7 @@ struct ContactUsView: View {
                         )!
                     ) {
                         Label {
-                            Text("QQ")
+                            Text(verbatim: "QQ")
                         } icon: {
                             Image("qq")
                                 .resizable()
@@ -692,7 +692,7 @@ struct ContactUsView: View {
                 } label: {
                     Label {
                         HStack {
-                            Text("郁离居士")
+                            Text(verbatim: "郁离居士")
                             Spacer()
                             Text("contact.thanks.ming")
                                 .foregroundColor(.gray)
@@ -706,7 +706,7 @@ struct ContactUsView: View {
                 }
                 Label {
                     HStack {
-                        Text("Xinzoruo (心臓弱眞君)")
+                        Text(verbatim: "Xinzoruo (心臓弱眞君)")
                         Spacer()
                         Text("Logo")
                             .foregroundColor(.gray)

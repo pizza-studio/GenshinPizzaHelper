@@ -259,7 +259,7 @@ private struct WorldOfferingsExplorationsView: View {
                 .frame(width: 30, height: 30)
             Text(data.name)
                 .fixedSize()
-            Text("Lv. \(data.level)")
+            Text(verbatim: "Lv. \(data.level)")
                 .fixedSize()
                 .font(.footnote)
         }

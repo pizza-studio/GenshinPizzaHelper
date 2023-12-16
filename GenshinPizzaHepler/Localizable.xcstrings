@@ -26769,7 +26769,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "宗室长弓"
+            "value" : ""
           }
         },
         "zh-Hant" : {
@@ -31204,57 +31204,6 @@
         }
       }
     },
-    "1034问题的解决方案" : {
-
-    },
-    "736320270" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "736320270"
-          }
-        }
-      }
-    },
-    "813912474" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "813912474"
-          }
-        }
-      }
-    },
-    "829996515" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "829996515"
-          }
-        }
-      }
-    },
     "about.group.qq.1st" : {
       "localizations" : {
         "en" : {
@@ -32130,7 +32079,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。"
+            "value" : ""
           }
         },
         "zh-Hant" : {
@@ -36778,7 +36727,6 @@
       }
     },
     "app.characters.count.character:%lld%lld%lld" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -36843,7 +36791,6 @@
       }
     },
     "app.characters.count.weapon:%lld%lld%lld" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -36967,7 +36914,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "app.characters.filter.4star"
+            "value" : "四星角色"
           }
         }
       }
@@ -37097,7 +37044,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "app.characters.filter.all"
+            "value" : "全部角色"
           }
         }
       }
@@ -48524,22 +48471,6 @@
         }
       }
     },
-    "Art34222" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Art34222"
-          }
-        }
-      }
-    },
     "button.okay" : {
       "localizations" : {
         "en" : {
@@ -48693,22 +48624,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "角色展櫃 API - Enka Network (https://enka.network)"
-          }
-        }
-      }
-    },
-    "ChatGPT" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ChatGPT"
           }
         }
       }
@@ -49862,38 +49777,6 @@
         }
       }
     },
-    "contact@pizzastduio.org" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "contact@pizzastduio.org"
-          }
-        }
-      }
-    },
-    "Cookie" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cookie"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cookie"
-          }
-        }
-      }
-    },
     "currentEventNavigator.pendingEvents.title" : {
       "localizations" : {
         "en" : {
@@ -50027,7 +49910,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "All"
           }
         },
@@ -50083,38 +49966,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "全部"
-          }
-        }
-      }
-    },
-    "daicanglong@gmail.com" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "daicanglong@gmail.com"
-          }
-        }
-      }
-    },
-    "Delete all records (DEBUG ONLY)" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete all records (DEBUG ONLY)"
           }
         }
       }
@@ -53647,22 +53498,6 @@
         }
       }
     },
-    "English Channel" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "English Channel"
-          }
-        }
-      }
-    },
     "Error" : {
       "localizations" : {
         "ja" : {
@@ -54600,6 +54435,12 @@
             "state" : "translated",
             "value" : "Events API - Project Amber (https://ambr.top)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "活動 API - 安柏專案 (https://ambr.top)"
+          }
         }
       }
     },
@@ -54668,34 +54509,6 @@
         }
       }
     },
-    "Facebook主页" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Facebook"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Facebookページ"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Facebook主页"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Facebook 主頁"
-          }
-        }
-      }
-    },
     "FAQ" : {
       "localizations" : {
         "en" : {
@@ -54711,6 +54524,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "FAQ"
@@ -54914,7 +54733,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "File saved to %@"
           }
         },
@@ -58749,72 +58568,6 @@
         }
       }
     },
-    "Lv. %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lv. %lld"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lv. %lld"
-          }
-        }
-      }
-    },
-    "Lv.%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lv.%lld"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lv.%lld"
-          }
-        }
-      }
-    },
-    "Lv.%lld ☆%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lv.%1$lld ☆%2$lld"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lv.%1$lld ☆%2$lld"
-          }
-        }
-      }
-    },
     "nav.category.settings.name" : {
       "localizations" : {
         "en" : {
@@ -58875,22 +58628,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
-          }
-        }
-      }
-    },
-    "Ngô Phi Phương" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ngô Phi Phương"
           }
         }
       }
@@ -60122,44 +59859,31 @@
         }
       }
     },
-    "Pizza Studio" : {
+    "pieChart.total" : {
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "合計"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pizza Studio"
-          }
-        }
-      }
-    },
-    "Qi" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
+            "value" : "总计"
           }
         },
-        "zh-Hans" : {
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Qi"
-          }
-        }
-      }
-    },
-    "QQ" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
+            "value" : "總計"
           }
         }
       }
@@ -60775,9 +60499,6 @@
           }
         }
       }
-    },
-    "settings.account.accountInformation" : {
-
     },
     "settings.account.addAccount" : {
       "localizations" : {
@@ -61621,9 +61342,6 @@
         }
       }
     },
-    "settings.account.intlAccountNeverNeedsDeviceFingerprintSettings" : {
-
-    },
     "settings.account.login.instruction" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -62272,71 +61990,6 @@
         }
       }
     },
-    "settings.account.regenerateDeviceFingerPrint.footer" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Only Celestia and Irminsul server accounts require the device fingerprint."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Only Celestia and Irminsul server accounts require the device fingerprint."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Only Celestia and Irminsul server accounts require the device fingerprint."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Only Celestia and Irminsul server accounts require the device fingerprint."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイスの指紋は、天空の島・世界中その２つサーバーのアカウントに制限されているため、設定する必要があります。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Only Celestia and Irminsul server accounts require the device fingerprint."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Only Celestia and Irminsul server accounts require the device fingerprint."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Only Celestia and Irminsul server accounts require the device fingerprint."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设备指纹仅限天空岛和世界树服务器账号所必需。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設備指紋僅限天空島和世界樹伺服器帳號所必需。"
-          }
-        }
-      }
-    },
     "settings.account.regenerateDeviceFingerPrint.label" : {
       "localizations" : {
         "en" : {
@@ -62696,6 +62349,12 @@
             "value" : "STokenV2"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STokenV2"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -62707,6 +62366,12 @@
     "settings.account.stokenV2.header" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "STokenV2"
+          }
+        },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "STokenV2"
@@ -62982,7 +62647,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Animate on opening character showcase"
           }
         },
@@ -63000,7 +62665,7 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "點開角色展櫃時顯示動畫效果"
           }
         }
@@ -63010,7 +62675,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "UI Background"
           }
         },
@@ -68364,33 +68029,13 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "孫 志貴 （このいと　しき）"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Shiki Suen (孫志貴)"
-          }
-        }
-      }
-    },
-    "ShikiSuen" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      }
-    },
-    "shikisuen@pm.me" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
           }
         }
       }
@@ -69700,48 +69345,7 @@
       }
     },
     "UID" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UID"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UID"
-          }
-        }
-      }
-    },
-    "UID: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UID: %@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UID: %@"
-          }
-        }
-      }
+
     },
     "unit.%lldHH%lldMM" : {
       "extractionState" : "manual",
@@ -72533,71 +72137,6 @@
         }
       }
     },
-    "widget.refresh.note" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The widget is fixed to refresh every 8 minutes, the sync frequency will not affect the widget refresh. It is recommended that you set a longer sync frequency if possible and open the app to sync once after each tour."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ang widget ay naayos upang i-refresh tuwing 8 na minuto, ang dalas ng pag -sync ay hindi makakaapekto sa pag-refresh ng widget. Inirerekomenda na magtakda ka ng isang mas mahabang dalas ng pag-sync kung maaari at buksan ang app upang mag-sync isang beses pagkatapos ng bawat oras."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The widget is fixed to refresh every 8 minutes, the sync frequency will not affect the widget refresh. It is recommended that you set a longer sync frequency if possible and open the app to sync once after each tour."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The widget is fixed to refresh every 8 minutes, the sync frequency will not affect the widget refresh. It is recommended that you set a longer sync frequency if possible and open the app to sync once after each tour."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ウィジェットは 8 分ごとに更新されるように固定されており、同期の頻度はウィジェットの更新に影響しません。 可能であればより長い同期頻度を設定し、ゲームをプレイした後に一度アプリを開いて同期することをお勧めします。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The widget is fixed to refresh every 8 minutes, the sync frequency will not affect the widget refresh. It is recommended that you set a longer sync frequency if possible and open the app to sync once after each tour."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Виджет обновляется каждые 8 ​​минут, частота обновления не влияет на показания виджета. Рекомендуется установить более длинную частоту обновления, если это возможно и почаще открывать приложение для синхронизации."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiện ích được cố định để làm mới cứ sau 8 phút, tần suất đồng bộ hóa sẽ không ảnh hưởng đến việc làm mới tiện ích. Bạn nên đặt tần suất đồng bộ dài hơn nếu có thể và mở ứng dụng để đồng bộ một lần sau mỗi chuyến tham quan."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "小组件固定每8分钟刷新一次，同步频率不会影响小组件刷新。建议您尽可能设置更长的同步频率，并在每次游玩后打开App自动同步一次。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "小工具固定每8分鐘刷新一次，同步頻率不會影響小工具刷新。建議您儘可能設定更長的同步頻率，並在每次遊玩後打開App自動同步一次。"
-          }
-        }
-      }
-    },
     "widget.resin.full" : {
       "localizations" : {
         "en" : {
@@ -73932,9 +73471,6 @@
         }
       }
     },
-    "上滑查看更多基本信息" : {
-
-    },
     "不允许" : {
       "localizations" : {
         "en" : {
@@ -74119,9 +73655,6 @@
         }
       }
     },
-    "取消" : {
-
-    },
     "失败信息：%@" : {
       "localizations" : {
         "en" : {
@@ -74143,9 +73676,6 @@
           }
         }
       }
-    },
-    "完成" : {
-
     },
     "寻空" : {
       "localizations" : {
@@ -74489,9 +74019,6 @@
         }
       }
     },
-    "本账号无stoken，可能影响简洁模式下小组件使用。建议重新登录以获取stoken。" : {
-
-    },
     "树脂" : {
       "localizations" : {
         "en" : {
@@ -74619,9 +74146,6 @@
           }
         }
       }
-    },
-    "编辑" : {
-
     },
     "角色" : {
       "localizations" : {

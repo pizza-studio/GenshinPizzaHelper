@@ -48,7 +48,7 @@ struct UpdateHistoryInfoView: View {
                             getLocalizedNoticeInfos(meta: newestVersionInfos!),
                             id: \.self
                         ) { item in
-                            Text("∙ ") + Text(item.toAttributedString())
+                            Text(verbatim: "∙ ") + Text(item.toAttributedString())
                         }
                         Divider()
                             .padding(.vertical)
@@ -63,7 +63,7 @@ struct UpdateHistoryInfoView: View {
                         getLocalizedUpdateInfos(meta: newestVersionInfos!),
                         id: \.self
                     ) { item in
-                        Text("∙ ") + Text(item.toAttributedString())
+                        Text(verbatim: "∙ ") + Text(item.toAttributedString())
                     }
                 } else {
                     Text("Loading")
@@ -113,7 +113,7 @@ struct UpdateHistoryInfoView: View {
                                 ),
                                 id: \.self
                             ) { item in
-                                Text("∙ ") + Text(item.toAttributedString())
+                                Text(verbatim: "∙ ") + Text(item.toAttributedString())
                             }
                         }
                     }

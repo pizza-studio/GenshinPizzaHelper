@@ -505,7 +505,7 @@ private struct SucceedView: View {
                 Image(systemSymbol: .checkmarkCircle)
                     .foregroundColor(.green)
             }
-            Text("UID: \(info.uid)")
+            Text(verbatim: "UID: \(info.uid)")
             if let app = info.app {
                 let sourceInfo = String(format: "app.gacha.import.info.source:%@", app).localized
                 Text(sourceInfo)

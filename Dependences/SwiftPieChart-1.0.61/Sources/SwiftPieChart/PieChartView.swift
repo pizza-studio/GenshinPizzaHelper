@@ -113,7 +113,7 @@ public struct PieChartView: View {
                         Text(
                             activeIndex == -1 ?
                                 String(format: NSLocalizedString(
-                                    "总计",
+                                    "pieChart.total",
                                     comment: "total"
                                 )) : names[activeIndex]
                         )

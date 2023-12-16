@@ -36,9 +36,9 @@ struct AccountDetailView: View {
                     .multilineTextAlignment(.trailing)
                 }
                 HStack {
-                    Text("UID")
+                    Text(verbatim: "UID")
                     Spacer()
-                    TextField("UID", text: $account.safeUid, prompt: Text("UID"))
+                    TextField("UID", text: $account.safeUid, prompt: Text(verbatim: "UID"))
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
                 }

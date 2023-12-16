@@ -142,7 +142,8 @@ struct GachaSetting: View {
             }
             if isDebugButtonsShow {
                 Section {
-                    Button("Delete all records (DEBUG ONLY)") {
+                    let buttonTextForRemovingAllRecords = "Delete all records (DEBUG ONLY)"
+                    Button(buttonTextForRemovingAllRecords) {
                         gachaViewModel.manager.deleteAllRecord()
                         gachaViewModel.refetchGachaItems()
                     }

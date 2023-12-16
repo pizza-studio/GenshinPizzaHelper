@@ -48,7 +48,7 @@ struct LatestVersionInfoView: View {
                             getLocalizedNoticeInfos(meta: newestVersionInfos!),
                             id: \.self
                         ) { item in
-                            Text("∙ ") + Text(item.toAttributedString())
+                            Text(verbatim: "∙ ") + Text(item.toAttributedString())
                         }
                         Divider()
                             .padding(.vertical)
@@ -62,7 +62,7 @@ struct LatestVersionInfoView: View {
                             getLocalizedUpdateInfos(meta: newestVersionInfos!),
                             id: \.self
                         ) { item in
-                            Text("∙ ") + Text(item.toAttributedString())
+                            Text(verbatim: "∙ ") + Text(item.toAttributedString())
                         }
                     } else {
                         Text("Loading")

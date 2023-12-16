@@ -81,7 +81,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
             .padding(6)
             .widgetLabel {
                 Gauge(value: 0, in: 0 ... 160) {
-                    Text("0")
+                    Text(verbatim: "0")
                 }
             }
     }

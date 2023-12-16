@@ -127,7 +127,6 @@
 		5BD1C5EB2A2A1FC90043C2B1 /* WidgetTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065228C732D5003E4A54 /* WidgetTipsView.swift */; };
 		5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8329D2834E0075F780 /* GachaItemManager.swift */; };
 		5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA081EFB28F85040009433D8 /* ToolbarSharable.swift */; };
-		5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
 		5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42538289E500F00FEFA49 /* MainInfoView.swift */; };
 		5BD1C5F12A2A1FC90043C2B1 /* ThisDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */; };
 		5BD1C5F22A2A1FC90043C2B1 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
@@ -170,7 +169,6 @@
 		5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
 		5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
-		5BD1C61D2A2A1FC90043C2B1 /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
 		5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
 		5BD1C6212A2A1FC90043C2B1 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
@@ -300,7 +298,6 @@
 		BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
 		BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
 		BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
-		BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */; };
 		BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
 		BF70211C28B4B52500A6BBA9 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
 		BF70211D28B4B52500A6BBA9 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
@@ -596,7 +593,6 @@
 		EA759D772B199A2C0080C775 /* Server+Descriptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA759D752B199A2C0080C775 /* Server+Descriptable.swift */; };
 		EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
 		EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
-		EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75DD0928A0BF450099E70A /* TestSectionView.swift */; };
 		EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
 		EA784CC42902462C00918F64 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
 		EA784CC62902471600918F64 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
@@ -997,7 +993,6 @@
 		BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticSupport.swift; sourceTree = "<group>"; };
 		BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRecognizer.swift; sourceTree = "<group>"; };
 		BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBlockBackgroundView.swift; sourceTree = "<group>"; };
-		BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDisplayView.swift; sourceTree = "<group>"; };
 		BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundsPreviewView.swift; sourceTree = "<group>"; };
 		BF70211B28B4B52500A6BBA9 /* ViewTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTools.swift; sourceTree = "<group>"; };
 		BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -1150,7 +1145,6 @@
 		EA759D632B19989A0080C775 /* GetCookieWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
 		EA759D642B19989A0080C775 /* CreateAccountSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountSheetView.swift; sourceTree = "<group>"; };
 		EA759D752B199A2C0080C775 /* Server+Descriptable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+Descriptable.swift"; sourceTree = "<group>"; };
-		EA75DD0928A0BF450099E70A /* TestSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSectionView.swift; sourceTree = "<group>"; };
 		EA784CC32902462C00918F64 /* FetchHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHomeModel.swift; sourceTree = "<group>"; };
 		EA784CC52902471600918F64 /* UtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilizationData.swift; sourceTree = "<group>"; };
 		EA784CC72902485600918F64 /* AvatarHoldingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarHoldingData.swift; sourceTree = "<group>"; };
@@ -1637,7 +1631,6 @@
 				EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */,
 				BFFD823128A651F500616CE1 /* RingProgressBarView.swift */,
 				EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */,
-				EA75DD0928A0BF450099E70A /* TestSectionView.swift */,
 				BFE42551289F755E00FEFA49 /* TextEditorView.swift */,
 				BFE42546289E987800FEFA49 /* TextPlayerView.swift */,
 				BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */,
@@ -1878,7 +1871,6 @@
 			children = (
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
-				BF70211428B3AACC00A6BBA9 /* AccountDisplayView.swift */,
 				EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */,
 				BF70210828B3909F00A6BBA9 /* ContentView.swift */,
 				BFB101D228D5C579000DC631 /* DetailPortalView.swift */,
@@ -2621,7 +2613,6 @@
 				EA759D722B19989A0080C775 /* GetCookieWebView.swift in Sources */,
 				5BD1C5EC2A2A1FC90043C2B1 /* GachaItemManager.swift in Sources */,
 				5BD1C5EE2A2A1FC90043C2B1 /* ToolbarSharable.swift in Sources */,
-				5BD1C5EF2A2A1FC90043C2B1 /* AccountDisplayView.swift in Sources */,
 				5BD1C5F02A2A1FC90043C2B1 /* MainInfoView.swift in Sources */,
 				5BD1C5F12A2A1FC90043C2B1 /* ThisDevice.swift in Sources */,
 				5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */,
@@ -2677,7 +2668,6 @@
 				5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */,
 				5B5F82BE2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */,
 				5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */,
-				5BD1C61D2A2A1FC90043C2B1 /* TestSectionView.swift in Sources */,
 				5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */,
 				5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */,
 				5BD1C6212A2A1FC90043C2B1 /* AppBlockBackgroundView.swift in Sources */,
@@ -3119,7 +3109,6 @@
 				5BE5D99C2ACB0956009A732C /* AccountManagementView.swift in Sources */,
 				EA025C8429D2834E0075F780 /* GachaItemManager.swift in Sources */,
 				EA081EFC28F85040009433D8 /* ToolbarSharable.swift in Sources */,
-				BF70211528B3AACC00A6BBA9 /* AccountDisplayView.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
 				EA1C2CE328F07C1E00E4C28A /* ThisDevice.swift in Sources */,
 				5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */,
@@ -3176,7 +3165,6 @@
 				5B5F82BD2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
-				EA75DD0A28A0BF450099E70A /* TestSectionView.swift in Sources */,
 				EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */,
 				EA784CCA290248CA00918F64 /* HomeServerVersion.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,

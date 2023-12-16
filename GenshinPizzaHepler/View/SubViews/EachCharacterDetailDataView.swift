@@ -76,7 +76,7 @@ struct EachCharacterDetailDataView: View {
             }
             .frame(width: maxHeight, height: maxHeight)
             .corneredTag(
-                "Lv.\(weapon.level)",
+                verbatim: "Lv.\(weapon.level)",
                 alignment: .bottom,
                 textSize: ceil(fontSize * 0.86)
             )
@@ -243,7 +243,7 @@ struct EachCharacterDetailDataView: View {
         .scaledToFit()
         .frame(width: fontSize * 4, height: fontSize * 4 + Self.spacingDelta)
         .corneredTag(
-            "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
+            verbatim: "Lv.\(artifact.level) ☆\(artifact.rankLevel.rawValue)",
             alignment: .bottom,
             textSize: fontSize * 0.72,
             enabled: Defaults[.showRarityAndLevelForArtifacts]

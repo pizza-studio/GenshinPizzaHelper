@@ -19,7 +19,7 @@ struct AccountInfoView: View {
             }
 
             HStack {
-                Text("UID: \(account.safeUid)")
+                Text(verbatim: "UID: \(account.safeUid)")
                 Spacer()
                 Text("account.server".localized + ": " + account.server.localized)
             }

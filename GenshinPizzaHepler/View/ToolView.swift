@@ -156,7 +156,7 @@ struct GenshinCalculatorLink: View {
                             string: "aliceworkshop://app/import?uid=\(account.safeUid)"
                         )!
                     ) {
-                        Text("UID: \(account.safeUid)")
+                        Text(verbatim: "UID: \(account.safeUid)")
                     }
                 }
                 Button("sys.cancel", role: .cancel) {

@@ -289,11 +289,11 @@ private struct AbyssBattleView: View {
                 let theAsset = CharacterAsset.match(id: avatarData.id)
                 if ThisDevice.isHDPhoneOrPodTouch {
                     theAsset.decoratedIcon(size, cutTo: .head, roundRect: true)
-                        .corneredTag("\(avatarData.level)", alignment: .bottomTrailing, textSize: 11)
+                        .corneredTag(verbatim: "\(avatarData.level)", alignment: .bottomTrailing, textSize: 11)
                         .frame(height: size + 5)
                 } else {
                     theAsset.cardIcon(size / 0.74)
-                        .corneredTag("Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
+                        .corneredTag(verbatim: "Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
                         .padding(.vertical, 2)
                 }
                 if avatarData.id != battleData.avatars.last!.id {

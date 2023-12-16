@@ -627,7 +627,7 @@ private struct SelectAccountSection: View {
             }
         } footer: {
             HStack {
-                Text("UID: \(selectedAccount.safeUid)")
+                Text(verbatim: "UID: \(selectedAccount.safeUid)")
                 Spacer()
                 let worldLevelTitle = "detailPortal.player.worldLevel".localized
                 Text("\(worldLevelTitle): \(basicInfo.worldLevel)")
@@ -665,7 +665,7 @@ private struct SelectAccountSection: View {
             }
         } footer: {
             HStack {
-                Text("UID: \(selectedAccount.safeUid)")
+                Text(verbatim: "UID: \(selectedAccount.safeUid)")
             }
             .secondaryColorVerseBackground()
         }
@@ -1430,7 +1430,7 @@ private struct BasicInfoView: View {
                         Label {
                             Text(offering.name)
                             Spacer()
-                            Text("Lv. \(offering.level)")
+                            Text(verbatim: "Lv. \(offering.level)")
                         } icon: {
                             if let url = URL(string: offering.icon) {
                                 AsyncImage(url: url, content: { image in
