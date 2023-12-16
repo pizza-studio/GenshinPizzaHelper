@@ -1001,13 +1001,15 @@ private struct AbyssInfoNavigator: View {
                     .scaledToFit()
                     .frame(width: iconFrame, height: iconFrame)
                 if abyssInfo.maxFloor != "0-0" {
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                    HStack(alignment: .lastTextBaseline) {
                         Text(verbatim: "\(abyssInfo.maxFloor)")
                             .font(.title)
-                        AbyssStarIcon()
-                            .frame(width: 16, height: 16)
-                        Text(verbatim: "\(abyssInfo.totalStar)")
-                            .font(.title3)
+                        HStack(alignment: .center, spacing: 2) {
+                            AbyssStarIcon()
+                                .frame(width: 20, height: 20)
+                            Text(verbatim: "\(abyssInfo.totalStar)")
+                                .font(.title3)
+                        }
                     }
                     Spacer()
                 } else {
