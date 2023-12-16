@@ -99,7 +99,6 @@ struct AbyssDetailDataDisplayView: View {
                             .tag(AccountSpiralAbyssDetail.WhichSeason.last)
                     }
                     .labelsHidden()
-                    .fontWidth(.condensed)
                     .pickerStyle(.segmented)
                     .background(
                         RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
