@@ -103,6 +103,7 @@ struct GachaView: View {
                 }
             }
             .environmentObject(gachaViewModel)
+            .navigationBarTitleDisplayMode(.inline)
     }
 
     @ViewBuilder
