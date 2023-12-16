@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GIPizzaKit
 
 extension WeaponOrTalentMaterial {
     // MARK: - Weapon Material choices

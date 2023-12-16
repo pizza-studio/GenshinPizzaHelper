@@ -7,7 +7,6 @@
 
 import Defaults
 import Foundation
-import UIKit
 
 // MARK: - UserDefaults
 
@@ -266,14 +265,8 @@ extension NameCard {
 
     public var localized: String {
         if Defaults[.useActualCharacterNames], fileName.contains("Kunikuzushi") {
-            return localizedKey.localized
+            return localizedKey.spmLocalized
         }
-        return localizedKey.localized.localizedWithFix
+        return localizedKey.spmLocalized.localizedWithFix
     }
 }
-
-#if !os(watchOS)
-extension NameCard {
-    public var smallImage: UIImage? { UIImage(named: fileName) }
-}
-#endif

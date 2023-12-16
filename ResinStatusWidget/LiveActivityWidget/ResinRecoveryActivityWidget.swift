@@ -10,6 +10,7 @@ import ActivityKit
 import AppIntents
 import Defaults
 import Foundation
+import GIPizzaKit
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit

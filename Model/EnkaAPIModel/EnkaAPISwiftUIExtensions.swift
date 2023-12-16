@@ -6,11 +6,8 @@
 //
 
 import Foundation
-import SwiftUI
-
-// MARK: Enka Character Icons
-
 import GIPizzaKit
+import SwiftUI
 
 // MARK: - DecoratedIconCutType
 

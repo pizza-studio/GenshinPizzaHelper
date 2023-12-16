@@ -9,6 +9,7 @@
 import ActivityKit
 import Defaults
 import Foundation
+import GIPizzaKit
 import HoYoKit
 
 @available(iOS 16.1, *)

@@ -10,43 +10,9 @@
 		5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033792AD1A01700CCCC66 /* Defaults */; };
 		5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
-		5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
-		5B2A9E492ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
-		5B2A9E4A2ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
-		5B2A9E4B2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
-		5B2A9E4C2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
-		5B2A9E4D2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
-		5B2A9E4E2ACEA4B0005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */; };
-		5B2A9E4F2ACEB7D0005C32B6 /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
 		5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */; };
 		5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17F2AD3010600CDF2C5 /* GIPizzaKit */; };
-		5B43A15629D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
-		5B43A15729D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
-		5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
-		5B43A15A29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
-		5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */; };
-		5B5F82B32ACC6714005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
-		5B5F82B62ACC67B0005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
-		5B5F82B82ACC67B4005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
-		5B5F82B92ACC67B4005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
-		5B5F82BA2ACC67B5005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
-		5B5F82BB2ACC67B5005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
-		5B5F82BD2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
-		5B5F82BE2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
-		5B5F82CD2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
-		5B5F82CE2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
-		5B5F82CF2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
-		5B5F82D12ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
-		5B5F82D22ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
-		5B5F82D32ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
-		5B5F82D42ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
-		5B5F82D52ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
-		5B5F82D82ACC95A7005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
-		5B5F82D92ACC95DB005983AC /* Enum_WeaponAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */; };
-		5B5F82DA2ACC9638005983AC /* Enum_NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */; };
-		5B5F82DB2ACC9660005983AC /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
-		5B5F82DC2ACC966F005983AC /* Enum_CharacterAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */; };
 		5B8C1B312AD8F3C5009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */; };
 		5B8C1B332AD8F3DE009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */; };
 		5B8C1B352AD9083A009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B342AD9083A009F3B44 /* SFSafeSymbols */; };
@@ -55,18 +21,11 @@
 		5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3029D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3129D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
-		5BA0D7A02ACDABAA00B4DBC2 /* Enum_CostumeAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */; };
-		5BA0D7A12ACDC43700B4DBC2 /* Enum_CostumeAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */; };
-		5BA0D7A22ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */; };
-		5BA0D7A32ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */; };
-		5BA0D7A42ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */; };
-		5BA0D7A52ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */; };
-		5BA0D7A62ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */; };
-		5BA0D7A82ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */; };
-		5BA0D7AA2ACDD41000B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */; };
-		5BA0D7AB2ACDD44A00B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */; };
+		5BA0D7A82ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */; };
+		5BA0D7AA2ACDD41000B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */; };
+		5BA0D7AB2ACDD44A00B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */; };
 		5BA0D7AC2ACDD4BF00B4DBC2 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
-		5BA0D7AD2ACDD51300B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */; };
+		5BA0D7AD2ACDD51300B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */; };
 		5BAF709229E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
 		5BAF709329E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
 		5BAF709429E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
@@ -79,13 +38,6 @@
 		5BAF70A429E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
 		5BAF70A529E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
 		5BAF70A629E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
-		5BAFEAD02AD183D800A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
-		5BAFEAD12AD183D800A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
-		5BAFEAD22AD183EB00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
-		5BAFEAD32AD183EB00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
-		5BAFEAD42AD183ED00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
-		5BAFEAD62AD183EE00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
-		5BAFEAD82AD183FB00A5F6C1 /* DateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */; };
 		5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AB29E19A8F00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
@@ -99,7 +51,6 @@
 		5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8F29D28D3D0075F780 /* GachaView.swift */; };
 		5BD1C5CF2A2A1FC90043C2B1 /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		5BD1C5D02A2A1FC90043C2B1 /* LedgerShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCEA7628F95A75004817FB /* LedgerShareView.swift */; };
-		5BD1C5D12A2A1FC90043C2B1 /* ChineseUIAccommodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */; };
 		5BD1C5D22A2A1FC90043C2B1 /* TextPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42546289E987800FEFA49 /* TextPlayerView.swift */; };
 		5BD1C5D32A2A1FC90043C2B1 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258528A0AC1500FEFA49 /* MoreView.swift */; };
 		5BD1C5D42A2A1FC90043C2B1 /* AccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */; };
@@ -214,7 +165,6 @@
 		5BD1C64A2A2A1FC90043C2B1 /* UpdateHistoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */; };
 		5BD1C64B2A2A1FC90043C2B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210828B3909F00A6BBA9 /* ContentView.swift */; };
 		5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
-		5BD1C64D2A2A1FC90043C2B1 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42551289F755E00FEFA49 /* TextEditorView.swift */; };
 		5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */; };
 		5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
 		5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8445EB29DBFFD700CB8C9F /* Color.swift */; };
@@ -253,8 +203,6 @@
 		5BD1C6772A2A1FC90043C2B1 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
 		5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5BE5D99C2ACB0956009A732C /* AccountManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5D99B2ACB0956009A732C /* AccountManagementView.swift */; };
-		5BE5D9A02ACB0A01009A732C /* AccountManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5D99B2ACB0956009A732C /* AccountManagementView.swift */; };
 		BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A129220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
@@ -401,7 +349,6 @@
 		BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */; };
 		BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254A289F67F600FEFA49 /* SettingsView.swift */; };
 		BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
-		BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42551289F755E00FEFA49 /* TextEditorView.swift */; };
 		BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */; };
 		BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
 		BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */; };
@@ -955,27 +902,19 @@
 
 /* Begin PBXFileReference section */
 		5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewExtension.swift; sourceTree = "<group>"; };
-		5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_DailyMaterialAsset.swift; sourceTree = "<group>"; };
 		5B41C1812AD3010700CDF2C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseUIAccommodations.swift; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
 		5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OPHelper_SharedAssembly; path = Dependences/OPHelper_SharedAssembly; sourceTree = "<group>"; };
 		5B5F82AE2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = ko; path = ko.lproj/AccountIntents.intentdefinition; sourceTree = "<group>"; };
-		5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_NameCard.swift; sourceTree = "<group>"; };
-		5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_WeaponAsset.swift; sourceTree = "<group>"; };
-		5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_CharacterAsset.swift; sourceTree = "<group>"; };
 		5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
-		5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_CostumeAsset.swift; sourceTree = "<group>"; };
-		5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum_CharacterAsset_SwiftUIImpl.swift; sourceTree = "<group>"; };
+		5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplEnum_CharacterAsset_SwiftUI.swift; sourceTree = "<group>"; };
 		5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		5BAF709129E5764E0096228B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateImpl.swift; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
-		5BE5D99B2ACB0956009A732C /* AccountManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagementView.swift; sourceTree = "<group>"; };
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
@@ -1048,7 +987,6 @@
 		BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoView.swift; sourceTree = "<group>"; };
 		BFE4254A289F67F600FEFA49 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPreviewerView.swift; sourceTree = "<group>"; };
-		BFE42551289F755E00FEFA49 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoBlockView.swift; sourceTree = "<group>"; };
 		BFE4258528A0AC1500FEFA49 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		BFE4258728A0AE2700FEFA49 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -1368,12 +1306,7 @@
 		5B18C5492AD0DF4300C745BA /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				5B5F82CC2ACC8332005983AC /* Enum_CharacterAsset.swift */,
-				5BA0D7A72ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift */,
-				5BA0D79F2ACDABA900B4DBC2 /* Enum_CostumeAsset.swift */,
-				5B2A9E472ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift */,
-				5B5F82B22ACC6714005983AC /* Enum_NameCard.swift */,
-				5B5F82BC2ACC7095005983AC /* Enum_WeaponAsset.swift */,
+				5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1402,7 +1335,6 @@
 			children = (
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */,
-				5BE5D99B2ACB0956009A732C /* AccountManagementView.swift */,
 				EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */,
 				BFB101F128D85B28000DC631 /* AllEventsView.swift */,
 				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
@@ -1458,8 +1390,6 @@
 				BF75010F28E14CF500CDA64E /* AppConfig.swift */,
 				EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
-				5B43A15529D06D5C002EE971 /* ChineseUIAccommodations.swift */,
-				5BAFEACF2AD183D800A5F6C1 /* DateImpl.swift */,
 				EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */,
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 				EA6B9147290EB2EF00B5230B /* GlobalVar.swift */,
@@ -1631,7 +1561,6 @@
 				EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */,
 				BFFD823128A651F500616CE1 /* RingProgressBarView.swift */,
 				EAFC5CCC28B4EFC600770BBB /* ShareSheet.swift */,
-				BFE42551289F755E00FEFA49 /* TextEditorView.swift */,
 				BFE42546289E987800FEFA49 /* TextPlayerView.swift */,
 				BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */,
 				BFFD823528A680E000616CE1 /* WebImageView.swift */,
@@ -2570,14 +2499,12 @@
 				5BD1C5CA2A2A1FC90043C2B1 /* PSAServerAPI.swift in Sources */,
 				5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */,
 				EA759D6C2B19989A0080C775 /* AccountDetailView.swift in Sources */,
-				5B5F82B62ACC67B0005983AC /* Enum_NameCard.swift in Sources */,
 				5BD1C5CC2A2A1FC90043C2B1 /* EachCharacterDetailDataView.swift in Sources */,
 				5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */,
 				EA759D6E2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
 				5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */,
 				5BD1C5CF2A2A1FC90043C2B1 /* md5.swift in Sources */,
 				5BD1C5D02A2A1FC90043C2B1 /* LedgerShareView.swift in Sources */,
-				5BD1C5D12A2A1FC90043C2B1 /* ChineseUIAccommodations.swift in Sources */,
 				5BD1C5D22A2A1FC90043C2B1 /* TextPlayerView.swift in Sources */,
 				5BD1C5D32A2A1FC90043C2B1 /* MoreView.swift in Sources */,
 				5BD1C5D42A2A1FC90043C2B1 /* AccountInfoView.swift in Sources */,
@@ -2585,7 +2512,6 @@
 				5BD1C5D62A2A1FC90043C2B1 /* SettingsView.swift in Sources */,
 				5BD1C5D72A2A1FC90043C2B1 /* BackgroundOptions.swift in Sources */,
 				5BD1C5D82A2A1FC90043C2B1 /* AccountIntents.intentdefinition in Sources */,
-				5B2A9E492ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				5BD1C5D92A2A1FC90043C2B1 /* DetailPortalView.swift in Sources */,
 				EA759D702B19989A0080C775 /* EditAccountView.swift in Sources */,
 				5BD1C5DA2A2A1FC90043C2B1 /* MainInfoWithDetailView.swift in Sources */,
@@ -2642,11 +2568,9 @@
 				5BD1C6062A2A1FC90043C2B1 /* ExpeditionInfoBar.swift in Sources */,
 				5BD1C6072A2A1FC90043C2B1 /* MultiTokenResult.swift in Sources */,
 				5BD1C6082A2A1FC90043C2B1 /* ReviewHandler.swift in Sources */,
-				5BAFEAD12AD183D800A5F6C1 /* DateImpl.swift in Sources */,
 				5BD1C6092A2A1FC90043C2B1 /* AccountConfiguration.xcdatamodeld in Sources */,
 				5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */,
 				5BD1C60B2A2A1FC90043C2B1 /* AccountBasicInfosView.swift in Sources */,
-				5B5F82CE2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EAEE8ECE2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
 				5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */,
 				5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */,
@@ -2666,7 +2590,6 @@
 				EA9BE5832B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift in Sources */,
 				5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */,
 				5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */,
-				5B5F82BE2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */,
 				5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */,
 				5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */,
 				5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */,
@@ -2677,7 +2600,6 @@
 				EA09FDF02B2BB30100862DFB /* DailyNoteExtension.swift in Sources */,
 				5BD1C6252A2A1FC90043C2B1 /* GetGachaClipboardView.swift in Sources */,
 				5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */,
-				5BA0D7A62ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */,
 				5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */,
 				5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */,
@@ -2690,7 +2612,6 @@
 				5BD1C6312A2A1FC90043C2B1 /* GachaKey.swift in Sources */,
 				5BD1C6322A2A1FC90043C2B1 /* EachExpeditionView.swift in Sources */,
 				5BD1C6332A2A1FC90043C2B1 /* MaterialChoices.swift in Sources */,
-				5BE5D9A02ACB0A01009A732C /* AccountManagementView.swift in Sources */,
 				5BD1C6342A2A1FC90043C2B1 /* AboutView.swift in Sources */,
 				5BD1C6352A2A1FC90043C2B1 /* AbyssDataCollectionView.swift in Sources */,
 				5BD1C6362A2A1FC90043C2B1 /* FetchHomeModel.swift in Sources */,
@@ -2717,10 +2638,9 @@
 				5BD1C64A2A2A1FC90043C2B1 /* UpdateHistoryInfoView.swift in Sources */,
 				5BD1C64B2A2A1FC90043C2B1 /* ContentView.swift in Sources */,
 				5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */,
-				5BD1C64D2A2A1FC90043C2B1 /* TextEditorView.swift in Sources */,
 				5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */,
 				5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingView.swift in Sources */,
-				5BA0D7AA2ACDD41000B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */,
+				5BA0D7AA2ACDD41000B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
 				5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */,
 				5BD1C6522A2A1FC90043C2B1 /* GlobalDonateView.swift in Sources */,
 				5BD1C6532A2A1FC90043C2B1 /* AutoSheetDismiss.swift in Sources */,
@@ -2740,17 +2660,13 @@
 				EAE95CBF28CE0F7500D975CB /* LockScreenResinWidget.swift in Sources */,
 				BFBDD65228ED7B970022B79D /* Result.swift in Sources */,
 				EAB1110A28CF8581009FDF07 /* WidgetsBoundle.swift in Sources */,
-				5BAFEAD32AD183EB00A5F6C1 /* DateImpl.swift in Sources */,
 				EA185F2C292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EA7FF47729309B6A00128A5C /* LockScreenResinFullTimeWidget.swift in Sources */,
 				EA406815292228A200F23479 /* WidgetData.swift in Sources */,
-				5B43A15A29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EAE95CC528CE0FC400D975CB /* AccountConfigurationModel.swift in Sources */,
 				EAB1110328CF8423009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EAE5C5B828CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */,
-				5B2A9E4C2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EAE95CD828CE103D00D975CB /* BackgroundOptions.swift in Sources */,
-				5B5F82D22ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EAB11EA629326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift in Sources */,
 				EA887D372B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				EAB1110428CF8423009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
@@ -2773,7 +2689,6 @@
 				EA9C2D0928CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				EAD7F02A28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
 				EA09FDF32B2BB30200862DFB /* DailyNoteExtension.swift in Sources */,
-				5B5F82BA2ACC67B5005983AC /* Enum_NameCard.swift in Sources */,
 				EABE606A28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
 				EAB1110228CF8423009FDF07 /* LockScreenExpeditionWidgetCircular.swift in Sources */,
 				EA721E3D28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */,
@@ -2781,7 +2696,6 @@
 				EAB110EA28CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
 				EAE95CD728CE102600D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
 				EAEE8ED22AE08DA000F406E4 /* AnyLocalizedError.swift in Sources */,
-				5B5F82D52ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */,
 				EAE95CC228CE0F7D00D975CB /* ProgressGaugeStyle.swift in Sources */,
 				EAE95CD628CE0FF000D975CB /* Servers.swift in Sources */,
 				EAE95D1028CE11D200D975CB /* md5.swift in Sources */,
@@ -2789,7 +2703,6 @@
 				EA7FF47629309B6A00128A5C /* LockScreenResinFullTimeWidgetCircular.swift in Sources */,
 				EAE95CC428CE0FC100D975CB /* Account.swift in Sources */,
 				EA7CD44128CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
-				5BA0D7A22ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EAD7F02828D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
 				EA6B914C290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				EAB11EA229325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
@@ -2823,7 +2736,6 @@
 				EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */,
 				EAB11EA129325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */,
-				5BAFEAD42AD183ED00A5F6C1 /* DateImpl.swift in Sources */,
 				EAE2C8A02B2DA2FB004304D2 /* WidgetError.swift in Sources */,
 				BFCC069A28C9BBD3003E4A54 /* StoreManager.swift in Sources */,
 				BFCC066828C9B6A1003E4A54 /* NotificationController.swift in Sources */,
@@ -2835,27 +2747,22 @@
 				BFCC066628C9B6A1003E4A54 /* ContentView.swift in Sources */,
 				EA7FF4692930666300128A5C /* WatchWidgetSettingView.swift in Sources */,
 				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
-				5B5F82B92ACC67B4005983AC /* Enum_NameCard.swift in Sources */,
 				BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */,
 				EA406814292228A200F23479 /* WidgetData.swift in Sources */,
 				BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BF0130A329220E7800074450 /* WidgetUserData.swift in Sources */,
 				BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */,
 				BFCC069C28C9BBD3003E4A54 /* StringExtensions.swift in Sources */,
-				5B5F82D12ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EA185F2B292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EA185F2F292F1AFC003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EAA969F72ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */,
 				BFCC06B728CAF60B003E4A54 /* WatchAccountDetailView.swift in Sources */,
 				BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */,
-				5B2A9E4B2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */,
-				5BA0D7A32ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EA185F27292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
 				EAE846182A3773410065CF09 /* ViewModel.swift in Sources */,
 				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
-				5B43A15929D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EAF55E2128CC8F1A00902AE7 /* WidgetViewConfiguration.swift in Sources */,
 				BF7500F728E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
@@ -2866,7 +2773,6 @@
 				EAEE8ED12AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */,
 				BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */,
 				BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */,
-				5B5F82D82ACC95A7005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
 				EA887D362B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
@@ -2897,27 +2803,20 @@
 				EA784CCF2902517500918F64 /* HomeServerVersion.swift in Sources */,
 				EA09FDF12B2BB30100862DFB /* DailyNoteExtension.swift in Sources */,
 				EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */,
-				5B5F82DB2ACC9660005983AC /* ChineseUIAccommodations.swift in Sources */,
-				5BAFEAD82AD183FB00A5F6C1 /* DateImpl.swift in Sources */,
 				EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */,
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
 				EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */,
 				BFB101E928D6C755000DC631 /* ViewTools.swift in Sources */,
 				EAA969F62ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
-				5B5F82DC2ACC966F005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EA784CD62902518100918F64 /* FetchHomeModel.swift in Sources */,
 				BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */,
-				5B5F82DA2ACC9638005983AC /* Enum_NameCard.swift in Sources */,
 				BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
-				5B2A9E4E2ACEA4B0005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EAEE8ED02AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */,
 				EA09A01B28A2B8D30023B4AF /* Servers.swift in Sources */,
 				EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */,
 				EAB11EA029325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
-				5B2A9E4F2ACEB7D0005C32B6 /* Enum_WeaponAsset.swift in Sources */,
 				EA887D352B1EAF62006EDAB8 /* DailyNoteAPI.swift in Sources */,
-				5BA0D7A42ACDC43800B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				BFFD821028A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
 				EA6B914A290EB3B800B5230B /* GlobalVar.swift in Sources */,
 				BF3F98C328EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
@@ -2929,7 +2828,7 @@
 				EA50D66A290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
-				5BA0D7AB2ACDD44A00B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */,
+				5BA0D7AB2ACDD44A00B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
 				EA784CCE2902517200918F64 /* AvatarPercentageModel.swift in Sources */,
 				5BBCB6AF29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */,
@@ -2948,9 +2847,8 @@
 				BFBDD64E28ED7B940022B79D /* Result.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
-				5B5F82CF2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				BF7500F528E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
-				5BA0D7AD2ACDD51300B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */,
+				5BA0D7AD2ACDD51300B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
 				EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
 				EA784CD12902517800918F64 /* AvatarHoldingData.swift in Sources */,
 				EAEE8ECF2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
@@ -2964,7 +2862,6 @@
 				EABE606828D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */,
 				EA30F9A92886B49200AE7BEA /* MainWidget.swift in Sources */,
 				5BA0D7AC2ACDD4BF00B4DBC2 /* EnkaAPISwiftUIExtensions.swift in Sources */,
-				5B5F82D92ACC95DB005983AC /* Enum_WeaponAsset.swift in Sources */,
 				EAD7F03028D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift in Sources */,
 				BFFD822D28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				EAFC5CD328B5190500770BBB /* EachExpeditionView.swift in Sources */,
@@ -2988,7 +2885,6 @@
 				EAD7F02B28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
 				EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */,
 				EA7FDF92292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,
-				5B2A9E4A2ACEA1EA005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EAE2C89E2B2DA2F9004304D2 /* WidgetError.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
@@ -2998,10 +2894,8 @@
 				EA406812292228A200F23479 /* WidgetData.swift in Sources */,
 				EA784CD92902518A00918F64 /* OpenAPI.swift in Sources */,
 				EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
-				5B5F82B82ACC67B4005983AC /* Enum_NameCard.swift in Sources */,
 				EA36DFBA28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
-				5BAFEAD62AD183EE00A5F6C1 /* DateImpl.swift in Sources */,
 				EAB1110728CF84B5009FDF07 /* WidgetLauncher.swift in Sources */,
 				EA7CD44528CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */,
 				EAAF331028A27B080018EFAB /* Account.swift in Sources */,
@@ -3022,12 +2916,10 @@
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
 				EAB110E728CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				EAB11EA82932728700CD4ECA /* MaterialWidget.swift in Sources */,
-				5B43A15729D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EAA969F52ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EAD7F02628D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
 				BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				EA09FDEC2B2BB07A00862DFB /* WidgetRefreshTime.swift in Sources */,
-				5BA0D7A52ACDC43900B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA80A9432B2ADFF100124B33 /* ResinRecoveryActivityWidget.swift in Sources */,
 				EAB11E9F29325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
@@ -3071,7 +2963,6 @@
 				EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EACCEA7728F95A75004817FB /* LedgerShareView.swift in Sources */,
-				5B43A15629D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */,
 				BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */,
 				BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */,
@@ -3080,7 +2971,6 @@
 				BFFD820E28A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
 				BFFD822C28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				BFB101D328D5C579000DC631 /* DetailPortalView.swift in Sources */,
-				5B2A9E482ACEA1B4005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				BFE42559289FA04E00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
 				EA11489129D9D1430059DEBF /* ImportGachaView.swift in Sources */,
 				EA759D712B19989A0080C775 /* GetCookieWebView.swift in Sources */,
@@ -3106,7 +2996,6 @@
 				EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */,
 				BFCC065328C732D5003E4A54 /* WidgetTipsView.swift in Sources */,
 				EA759D762B199A2C0080C775 /* Server+Descriptable.swift in Sources */,
-				5BE5D99C2ACB0956009A732C /* AccountManagementView.swift in Sources */,
 				EA025C8429D2834E0075F780 /* GachaItemManager.swift in Sources */,
 				EA081EFC28F85040009433D8 /* ToolbarSharable.swift in Sources */,
 				BFE4255A289FA12C00FEFA49 /* MainInfoView.swift in Sources */,
@@ -3121,7 +3010,6 @@
 				EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */,
 				EA3621D52B1D6809007CAB4D /* ToolView.swift in Sources */,
 				EACDCB3E2B2D9D83005D1D74 /* WidgetError.swift in Sources */,
-				5B5F82B32ACC6714005983AC /* Enum_NameCard.swift in Sources */,
 				EA2064D32B255CE5002B9961 /* HomeCoinInfoBar.swift in Sources */,
 				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
 				BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */,
@@ -3138,11 +3026,9 @@
 				EA10A66429D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld in Sources */,
 				EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */,
 				EA059CD7292347E800400DE3 /* MultiTokenResult.swift in Sources */,
-				5BAFEAD02AD183D800A5F6C1 /* DateImpl.swift in Sources */,
 				BFFD823A28A73A5400616CE1 /* ReviewHandler.swift in Sources */,
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */,
-				5B5F82CD2ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EAEE8ECD2AE08D9A00F406E4 /* AnyLocalizedError.swift in Sources */,
 				BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */,
 				EAD3247129DFE878002779F3 /* CollectionChunked.swift in Sources */,
@@ -3162,7 +3048,6 @@
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EA9BE5822B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift in Sources */,
 				EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
-				5B5F82BD2ACC7095005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */,
@@ -3213,11 +3098,10 @@
 				BF3F98BF28E9190700D1B5CF /* UpdateHistoryInfoView.swift in Sources */,
 				BF70210928B3909F00A6BBA9 /* ContentView.swift in Sources */,
 				EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */,
-				BFE42552289F755E00FEFA49 /* TextEditorView.swift in Sources */,
 				EA1C2CE128F0464D00E4C28A /* OverflowContentViewModifier.swift in Sources */,
 				EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */,
 				EA8445EC29DBFFD700CB8C9F /* Color.swift in Sources */,
-				5BA0D7A82ACDD3F100B4DBC2 /* Enum_CharacterAsset_SwiftUIImpl.swift in Sources */,
+				5BA0D7A82ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
 				BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */,
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
 				BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */,
@@ -3225,7 +3109,6 @@
 				EA759D6F2B19989A0080C775 /* EditAccountView.swift in Sources */,
 				EA025C8629D286540075F780 /* GachaViewModel.swift in Sources */,
 				EA32D57429D749E60003978A /* MIMTGetGachaURL.swift in Sources */,
-				5BA0D7A02ACDABAA00B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3235,7 +3118,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BBCB6AB29E19A8F00C18A33 /* WebImageView.swift in Sources */,
-				5BA0D7A12ACDC43700B4DBC2 /* Enum_CostumeAsset.swift in Sources */,
 				EA185F29292F1ACD003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
 				EA406816292228A200F23479 /* WidgetData.swift in Sources */,
 				EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
@@ -3243,7 +3125,6 @@
 				BF0130A529220E7800074450 /* WidgetUserData.swift in Sources */,
 				BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */,
-				5B2A9E4D2ACEA1EB005C32B6 /* Enum_DailyMaterialAsset.swift in Sources */,
 				EA185F31292F1AFD003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */,
 				EAEE8ED32AE08DA100F406E4 /* AnyLocalizedError.swift in Sources */,
@@ -3253,7 +3134,6 @@
 				EAE95CF428CE116F00D975CB /* StringExtensions.swift in Sources */,
 				EAE95CF628CE11A100D975CB /* AccountConfigurationModel.swift in Sources */,
 				EAE95CF528CE117B00D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
-				5B5F82D42ACC9593005983AC /* Enum_WeaponAsset.swift in Sources */,
 				BFBDD65328ED7B980022B79D /* Result.swift in Sources */,
 				EAE95CF028CE112B00D975CB /* AccountIntents.intentdefinition in Sources */,
 				EA185F2D292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
@@ -3262,16 +3142,12 @@
 				EA887D382B1EAF64006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				EAE2C8A22B2DA2FB004304D2 /* WidgetError.swift in Sources */,
 				EA6B914D290EB3BA00B5230B /* GlobalVar.swift in Sources */,
-				5B43A15B29D06D5C002EE971 /* ChineseUIAccommodations.swift in Sources */,
 				EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */,
-				5B5F82D32ACC8332005983AC /* Enum_CharacterAsset.swift in Sources */,
 				EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */,
-				5B5F82BB2ACC67B5005983AC /* Enum_NameCard.swift in Sources */,
 				EAE95CF228CE115D00D975CB /* WidgetViewConfiguration.swift in Sources */,
 				BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE95D0D28CE11CA00D975CB /* NetworkReachability.swift in Sources */,
 				BF3F98C628EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
-				5BAFEAD22AD183EB00A5F6C1 /* DateImpl.swift in Sources */,
 				EAB11EA329325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				EAE95CFA28CE11A100D975CB /* MaterialProviders.swift in Sources */,
 			);

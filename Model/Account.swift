@@ -13,7 +13,8 @@ import UIKit
 
 // MARK: - Account
 
-//// MARK: - Account
+// MARK: - Account
+
 // struct Account: Equatable, Hashable {
 //    // MARK: Lifecycle
 //

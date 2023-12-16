@@ -86,7 +86,7 @@ extension DailyMaterialAsset {
         "$asset.dailyMaterial:" + String(describing: self)
     }
 
-    public var localized: String { localizedKey.localized }
+    public var localized: String { localizedKey.spmLocalized }
 
     public var fileName: String { .init(describing: self) }
 }

@@ -13,8 +13,12 @@ import Foundation
 // MARK: - String
 
 extension String {
-    var localized: String {
-        String(format: NSLocalizedString(self, comment: "namecards"))
+    public var localized: String {
+        String(format: NSLocalizedString(self, comment: ""))
+    }
+
+    public var spmLocalized: String {
+        String(format: NSLocalizedString(self, bundle: Bundle.module, comment: ""))
     }
 }
 

@@ -7,9 +7,7 @@
 
 import Defaults
 import Foundation
-import GIPizzaKit
 import HoYoKit
-import SwiftUI
 
 // MARK: - CharacterAsset
 
@@ -119,9 +117,9 @@ extension CharacterAsset {
 
     public var localized: String {
         if Defaults[.useActualCharacterNames], self == .Kunikuzushi {
-            return localizedKey.localized
+            return localizedKey.spmLocalized
         }
-        return localizedKey.localized.localizedWithFix
+        return localizedKey.spmLocalized.localizedWithFix
     }
 }
 

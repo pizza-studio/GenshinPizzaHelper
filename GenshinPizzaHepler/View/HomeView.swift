@@ -212,7 +212,7 @@ struct AccountInfoCardView: View {
         // MARK: Private
 
         @State
-        private var error: AnyLocalizedError? = nil
+        private var error: AnyLocalizedError?
         @State
         private var showErrorAlert: Bool = false
     }
@@ -432,7 +432,7 @@ class DailyNoteViewModel: ObservableObject {
                 if #available(iOS 16.1, *),
                    Defaults[.autoDeliveryResinTimerLiveActivity] {
                     Task {
-                        let accounts = AccountConfigurationModel.shared.fetchAccountConfigs()
+                        // let accounts = AccountConfigurationModel.shared.fetchAccountConfigs()
                         try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
                             for: account,
                             data: result

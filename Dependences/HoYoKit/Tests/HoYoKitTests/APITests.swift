@@ -194,7 +194,7 @@ enum TestData {
         static let server: Server = .asia
 
         static let testCookie = """
-        G_ENABLED_IDPS=google; _MHYUUID=2b816df6-9164-437a-8bcb-6ae7f29a0878; DEVICEFP=38d7eaa5fef19; mi18nLang=en-us; _ga=GA1.2.2114925491.1663166136; _gid=GA1.2.1006187314.1663166136; DEVICEFP_SEED_ID=130a980a314cfc57; DEVICEFP_SEED_TIME=1663166136479; ltoken=SANITIZED ltuid=208504340; cookie_token=SANITIZED account_id=208504340; 
+        G_ENABLED_IDPS=google; _MHYUUID=2b816df6-9164-437a-8bcb-6ae7f29a0878; DEVICEFP=38d7eaa5fef19; mi18nLang=en-us; _ga=GA1.2.2114925491.1663166136; _gid=GA1.2.1006187314.1663166136; DEVICEFP_SEED_ID=130a980a314cfc57; DEVICEFP_SEED_TIME=1663166136479; ltoken=SANITIZED ltuid=208504340; cookie_token=SANITIZED account_id=208504340;
         """
     }
 }

@@ -6,6 +6,7 @@
 //  Widget和App内的背景支持
 
 import Foundation
+import GIPizzaKit
 import SwiftUI
 
 // MARK: - BackgroundOptions
@@ -23,7 +24,7 @@ struct BackgroundOptions {
         "game.elements.cryo",
         "game.elements.pyro",
         "game.elements.geo",
-        "game.elements.dendro",
+        "game.elements.electro",
         "game.elements.dendro",
         "app.background.intertwinedFate",
     ]
@@ -33,7 +34,7 @@ struct BackgroundOptions {
         "game.elements.cryo",
         "game.elements.pyro",
         "game.elements.geo",
-        "game.elements.dendro",
+        "game.elements.electro",
         "game.elements.dendro",
     ]
     static let namecards: [String] = NameCard.allLegalCases.map(\.fileName)

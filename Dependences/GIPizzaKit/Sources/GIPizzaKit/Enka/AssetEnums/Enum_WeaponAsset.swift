@@ -196,7 +196,7 @@ extension WeaponAsset {
 
     public var localizedKey: String { "$asset.weapon:" + String(describing: self) }
 
-    public var localized: String { localizedKey.localized.localizedWithFix }
+    public var localized: String { localizedKey.spmLocalized.localizedWithFix }
 }
 
 extension WeaponAsset {

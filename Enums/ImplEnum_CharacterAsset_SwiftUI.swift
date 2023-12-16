@@ -6,6 +6,7 @@
 //
 
 import Defaults
+import GIPizzaKit
 import SwiftUI
 
 extension CharacterAsset {

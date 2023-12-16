@@ -327,7 +327,9 @@ import WatchConnectivity
 //    #endif
 // }
 //
-//// MARK: WCSessionDelegate
+
+// MARK: WCSessionDelegate
+
 //
 // extension ViewModel: WCSessionDelegate {
 //    #if !os(watchOS)
