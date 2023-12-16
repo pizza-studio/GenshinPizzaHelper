@@ -198,4 +198,6 @@ extension Defaults.Keys {
         Key<Bool>("cutShouldersForSmallAvatarPhotos", default: false, suite: .opSuite)
     public static let useGuestGachaEvaluator =
         Key<Bool>("useGuestGachaEvaluator", default: false, suite: .opSuite)
+    public static let animateOnCallingCharacterShowcase =
+        Key<Bool>("animateOnCallingCharacterShowcase", default: true, suite: .opSuite)
 }

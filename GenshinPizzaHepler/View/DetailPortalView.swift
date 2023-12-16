@@ -684,6 +684,8 @@ private struct PlayerDetailSection: View {
     private var detailPortalViewModel: DetailPortalViewModel
 
     struct DataFetchedView: View {
+        // MARK: Internal
+
         typealias ID = String
 
         let playerDetail: PlayerDetail
@@ -705,8 +707,8 @@ private struct PlayerDetailSection: View {
                             Button {
                                 simpleTaptic(type: .medium)
                                 var transaction = Transaction()
-                                // transaction.animation = .easeInOut
-                                transaction.disablesAnimations = true // 要想恢复动画的话，请删掉这行。
+                                transaction.animation = .easeInOut
+                                transaction.disablesAnimations = !animateOnCallingCharacterShowcase
                                 withTransaction(transaction) {
                                     showingCharacterName = avatar.name
                                 }
@@ -726,8 +728,8 @@ private struct PlayerDetailSection: View {
                     playerDetail: playerDetail
                 ) {
                     var transaction = Transaction()
-                    // transaction.animation = .easeInOut
-                    transaction.disablesAnimations = true // 要想恢复动画的话，请删掉这行。
+                    transaction.animation = .easeInOut
+                    transaction.disablesAnimations = !animateOnCallingCharacterShowcase
                     withTransaction(transaction) {
                         showingCharacterName = nil
                     }
@@ -735,6 +737,11 @@ private struct PlayerDetailSection: View {
                 .environment(\.colorScheme, .dark)
             }
         }
+
+        // MARK: Private
+
+        @Default(.animateOnCallingCharacterShowcase)
+        private var animateOnCallingCharacterShowcase: Bool
     }
 
     let account: AccountConfiguration

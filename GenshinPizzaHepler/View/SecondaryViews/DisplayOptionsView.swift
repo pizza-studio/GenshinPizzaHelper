@@ -47,7 +47,9 @@ struct DisplayOptionsView: View {
                 Picker("settings.display.appBackgroundNameCardID", selection: $appBackgroundNameCardID) {
                     ForEach(NameCard.allCases, id: \.rawValue) { card in
                         Label {
-                            Text(card.localized)
+                            // 这玩意在 macOS 系统的明亮模式下抽风，会等好几秒才重新显示文字。
+                            // 所以手动复写正确的文字颜色。
+                            Text(card.localized).foregroundStyle(.primary)
                         } icon: {
                             GeometryReader { g in
                                 Image(card.fileName)
@@ -61,6 +63,12 @@ struct DisplayOptionsView: View {
                     }
                 }
                 .pickerStyle(.navigationLink)
+            }
+
+            Section {
+                Toggle(isOn: $animateOnCallingCharacterShowcase) {
+                    Text("settings.display.animateOnCallingCharacterShowcase.title")
+                }
             }
 
             if Locale.isUILanguagePanChinese {
@@ -162,4 +170,6 @@ struct DisplayOptionsView: View {
     private var cutShouldersForSmallAvatarPhotos: Bool
     @Default(.appBackgroundNameCardID)
     private var appBackgroundNameCardID: NameCard
+    @Default(.animateOnCallingCharacterShowcase)
+    private var animateOnCallingCharacterShowcase: Bool
 }
