@@ -212,9 +212,9 @@ private func getHTTPHeaderFields(region: Region) -> [String: String] {
             "accept-language": "zh-CN,zh-Hans;q=0.9",
             "accept-encoding": "gzip, deflate, br",
             "user-agent": """
-            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) \
-            AppleWebKit/537.36 (KHTML, like Gecko) \
-            Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52
+            Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) \
+            AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 \
+            Safari/604.1
             """,
             "cache-control": "max-age=0",
         ]
