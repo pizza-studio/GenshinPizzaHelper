@@ -3,6 +3,12 @@
   "strings" : {
     "" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25,6 +31,12 @@
     },
     "\n" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +87,12 @@
     },
     " (%@)" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -97,6 +115,12 @@
     },
     " / %lld" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +171,12 @@
     },
     "…" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +227,12 @@
     },
     "%@ (%@)" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -331,6 +367,12 @@
     },
     "%lld / %lld" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -437,6 +479,12 @@
     },
     "∙ " : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -448,11 +496,23 @@
             "state" : "translated",
             "value" : "∙ "
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
     "0" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -463,6 +523,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       }
@@ -1389,13 +1455,13 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ゲーム内データを請求するには、UID と Cookie が必要でございます。次の Web ページで「HoYoLab・米遊社」アカウントをログインすると、上記の個人データがこのデバイスと（現在ログイン中の）iCloud に保存することになります。その後、「HoYoLab・米遊社」アプリと同様の方法で貴殿のゲーム内データ情報を取得します。貴殿の個人情報は（我らにも）誰にも送信しません。その情報の取り扱いの安全性を配慮する必要もなく、とても安全です。弊アプリはオープンソースであり、誰もがプログラムの基本動作を審査することができます。"
+            "value" : "ゲーム内データを請求するには、UID と Cookie が必要でございます。次の Web ページで「HoYoLab」アカウントをログインすると、上記の個人データがこのデバイスと（現在ログイン中の）iCloud に保存することになります。その後、「HoYoLab」アプリと同様の方法であなたのゲーム内データ情報を取得します。あなたの個人情報は（我らにも）誰にも送信しません。その情報の取り扱いの安全性を配慮する必要もなく、とても安全です。弊アプリはオープンソースであり、誰もがプログラムの基本動作を審査することができます。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "为了请求您的游戏内的数据，我们需要获取您的UID和Cookie，这是获取数据的必要参数。您在接下来的网页登录后，我们会在您的本地和iCloud存储您的个人数据。然后我们通过类似米游社的方式获取您的游戏内的数据信息。您的个人信息不会发送给任何人，包括我们自己。您的个人信息将会是非常安全的。本程序是开源程序，每个人都可以检查和监督本程序的全部底层行为。"
           }
         },
         "zh-Hant" : {
@@ -1417,7 +1483,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "弊アプリは「ハッキングプラグイン」やその他の違法なプログラムではございません。弊アプリは「株式会社米哈遊」のコンテンツに関するミハ・ツアーの二次創作の規則を遵守しています。弊アプリはオープンソースであり、誰もがプログラムの基本動作を審査することができます。詳しくは「設定-FAQ」をご覧ください。"
+            "value" : "弊アプリは「ハッキングプラグイン」やその他の違法なプログラムではございません。弊アプリは「miHoYo Corp.」のコンテンツに関するmiHoYoの二次創作の規則を遵守しています。弊アプリはオープンソースであり、誰もがプログラムの基本動作を審査することができます。詳しくは「設定-FAQ」をご覧ください。"
           }
         },
         "zh-Hans" : {
@@ -1889,6 +1955,12 @@
     },
     "Alert Toast Debug" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6321,7 +6393,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "全てのキャラ"
+            "value" : "全てのキャラクター"
           }
         },
         "ko" : {
@@ -6385,7 +6457,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "の全てのキャラ"
+            "value" : "の全てのキャラクター"
           }
         },
         "ko" : {
@@ -7342,7 +7414,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "全てのキャラ"
+            "value" : "全てのキャラクター"
           }
         },
         "ko" : {
@@ -9918,7 +9990,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud同期の間違いによる重複（祈願履歴）データを取り除きます。"
+            "value" : "iCloud同期の間違いによる重複（祈願履歴）データを取り除く"
           }
         },
         "ko" : {
@@ -10753,7 +10825,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "祈願履歴取得中…少々お待ちを"
+            "value" : "祈願履歴取得中…少々お待ちください"
           }
         },
         "ko" : {
@@ -22807,6 +22879,12 @@
     },
     "Error" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26289,7 +26367,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "雷元素"
           }
         },
@@ -26651,6 +26729,12 @@
     },
     "Genshin Dictionary API - Genshin Dictionary (https://genshin-dictionary.com)" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26662,11 +26746,23 @@
             "state" : "translated",
             "value" : "Genshin Dictionary API - Genshin Dictionary (https://genshin-dictionary.com)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
     "genshin-wish-export" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26677,6 +26773,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "genshin-wish-export"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       }
@@ -26813,6 +26915,12 @@
     },
     "https://api-account-os.hoyolab.com/" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26824,11 +26932,23 @@
             "state" : "translated",
             "value" : "https://api-account-os.hoyolab.com/"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
     "https://bbs-api-os.hoyolab.com/" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26840,11 +26960,23 @@
             "state" : "translated",
             "value" : "https://bbs-api-os.hoyolab.com/"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
     "https://bbs-api-os.hoyoverse.com/" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26856,11 +26988,23 @@
             "state" : "translated",
             "value" : "https://bbs-api-os.hoyoverse.com/"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
     "https://hk4e-api-os.hoyoverse.com/" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26872,11 +27016,23 @@
             "state" : "translated",
             "value" : "https://hk4e-api-os.hoyoverse.com/"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
     "https://sg-hk4e-api.hoyolab.com/" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26888,11 +27044,23 @@
             "state" : "translated",
             "value" : "https://sg-hk4e-api.hoyolab.com/"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
     "i@hakubill.tech" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26903,6 +27071,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "i@hakubill.tech"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       }
@@ -26937,7 +27111,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@まで全て回復"
+            "value" : "%@に全回復"
           }
         },
         "ko" : {
@@ -27297,6 +27471,12 @@
     },
     "Lava" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27307,6 +27487,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lava"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       }
@@ -27926,6 +28112,12 @@
     },
     "Logo" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27936,6 +28128,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Logo"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       }
@@ -28843,7 +29041,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "「%@」の参量物質変化器はもう使えます。"
+            "value" : "「%@」の参量物質変化器は既に使えます。"
           }
         },
         "ko" : {
@@ -29150,7 +29348,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "うむ"
+            "value" : "OK"
           }
         },
         "zh-Hans" : {
@@ -30290,7 +30488,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "セーブ"
+            "value" : "保存"
           }
         },
         "ko" : {
@@ -31732,6 +31930,12 @@
             "state" : "translated",
             "value" : "STokenV2"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
         }
       }
     },
@@ -31753,6 +31957,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "STokenV2"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
           }
         }
       }
@@ -34533,7 +34743,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "満タンになる%lld時間前に"
+            "value" : "全回復になる%lld時間前に"
           }
         },
         "ko" : {
@@ -34598,7 +34808,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "stokenを取得するには、このアカウントに再度ログインしてください"
+            "value" : "stokenを取得するのため、このアカウントに再度ログインしてください"
           }
         },
         "ko" : {
@@ -35559,7 +35769,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "こちらは貴殿の「ご所有のキャラ資料」と「深境螺旋でご使用していたキャラ資料」を集めようとしていますが、貴殿の許可が必要です。ご許可があれば、弊アプリで集められていた「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。それについてのよくある質問は、「深境螺旋ランキング」その画面の右上のFAQをタップしてご覧ください。"
+            "value" : "こちらはあなたの「ご所有のキャラ資料」と「深境螺旋でご使用していたキャラ資料」を集めようとしていますが、あなたの許可が必要です。ご許可があれば、弊アプリで集められていた「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。それについてのよくある質問は、「深境螺旋ランキング」その画面の右上のFAQをタップしてご覧ください。"
           }
         },
         "ko" : {
@@ -37398,6 +37608,12 @@
     },
     "Shiki Suen (孙志贵)" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37414,7 +37630,19 @@
     },
     "SwiftPieChart - Nazar Ilamanov\nhttps://github.com/ilamanov/SwiftPieChart" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
@@ -38180,10 +38408,22 @@
     },
     "T%lld " : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T%lld"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "T%lld"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T%lld"
           }
         }
       }
@@ -38386,7 +38626,19 @@
     },
     "TikTok" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
@@ -38717,7 +38969,26 @@
       }
     },
     "UID" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "unit.%lldHH%lldMM" : {
       "extractionState" : "manual",
@@ -39139,6 +39410,12 @@
     },
     "VK" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -39344,17 +39621,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "的探索派遣"
-          }
-        }
-      }
-    },
-    "watch.info.generalInfo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "'s General Infos"
           }
         }
       }
@@ -42791,6 +43057,12 @@
     },
     "Xinzoruo (心臓弱眞君)" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -42813,6 +43085,12 @@
     },
     "Yunzai-Bot" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -42829,6 +43107,12 @@
     },
     "русскоязычный канал" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -42901,6 +43185,12 @@
     },
     "中文频道" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43051,6 +43341,12 @@
     },
     "寻空" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43160,7 +43456,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "貴殿の「ご所有のキャラ資料」と「深境螺旋でご使用していたキャラ資料」を集めようとしていますが、貴殿の許可が必要です。ご許可があれば、弊アプリで集められていた「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。それについてのよくある質問は、「深境螺旋ランキング」その画面の右上のFAQをタップしてご覧ください。"
+            "value" : "あなたの「ご所有のキャラ資料」と「深境螺旋でご使用していたキャラ資料」を集めようとしていますが、あなたの許可が必要です。ご許可があれば、弊アプリで集められていた「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。それについてのよくある質問は、「深境螺旋ランキング」その画面の右上のFAQをタップしてご覧ください。"
           }
         },
         "zh-Hans" : {
@@ -43194,7 +43490,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " 抽取记录"
+            "value" : "抽取记录"
           }
         },
         "zh-Hant" : {
@@ -43207,6 +43503,12 @@
     },
     "提瓦特小助手" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43421,6 +43723,12 @@
     },
     "桂ICP备2023009538号-2A" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43499,6 +43807,12 @@
     },
     "繁体中文" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43549,6 +43863,12 @@
     },
     "郁离居士" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
