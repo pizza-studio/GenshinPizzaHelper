@@ -24,7 +24,7 @@ struct ReverseProxySettingsView: View {
 
     var body: some View {
         List {
-            Section(header: Text("https://bbs-api-os.hoyolab.com/").textCase(.none)) {
+            Section(header: Text(verbatim: "https://bbs-api-os.hoyolab.com/").textCase(.none)) {
                 InfoEditor(
                     title: "settings.account.server",
                     content: $reverseProxy1,
@@ -32,7 +32,7 @@ struct ReverseProxySettingsView: View {
                     style: .vertical
                 )
             }
-            Section(header: Text("https://api-account-os.hoyolab.com/").textCase(.none)) {
+            Section(header: Text(verbatim: "https://api-account-os.hoyolab.com/").textCase(.none)) {
                 InfoEditor(
                     title: "settings.account.server",
                     content: $reverseProxy2,
@@ -40,7 +40,7 @@ struct ReverseProxySettingsView: View {
                     style: .vertical
                 )
             }
-            Section(header: Text("https://sg-hk4e-api.hoyolab.com/").textCase(.none)) {
+            Section(header: Text(verbatim: "https://sg-hk4e-api.hoyolab.com/").textCase(.none)) {
                 InfoEditor(
                     title: "settings.account.server",
                     content: $reverseProxy3,
@@ -48,7 +48,7 @@ struct ReverseProxySettingsView: View {
                     style: .vertical
                 )
             }
-            Section(header: Text("https://bbs-api-os.hoyoverse.com/").textCase(.none)) {
+            Section(header: Text(verbatim: "https://bbs-api-os.hoyoverse.com/").textCase(.none)) {
                 InfoEditor(
                     title: "settings.account.server",
                     content: $reverseProxy4,
@@ -56,7 +56,7 @@ struct ReverseProxySettingsView: View {
                     style: .vertical
                 )
             }
-            Section(header: Text("https://hk4e-api-os.hoyoverse.com/").textCase(.none)) {
+            Section(header: Text(verbatim: "https://hk4e-api-os.hoyoverse.com/").textCase(.none)) {
                 InfoEditor(
                     title: "settings.account.server",
                     content: $reverseProxy5,
