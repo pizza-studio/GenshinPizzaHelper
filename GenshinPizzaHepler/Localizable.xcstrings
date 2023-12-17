@@ -1477,13 +1477,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo's secondary creation rules. This App is an opensource project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
+            "value" : "This procedure is not an illegal procedure such as plug-ins. This program abides by the relevant content of miHoYo (Co., Ltd.)'s rules regarding derivative works. This App is an open-source project. Everyone can check and supervise all the underlying behaviors of this program. For details, see Settings - FAQ."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "弊アプリは「ハッキングプラグイン」やその他の違法なプログラムではございません。弊アプリは「miHoYo Corp.」のコンテンツに関するmiHoYoの二次創作の規則を遵守しています。弊アプリはオープンソースであり、誰もがプログラムの基本動作を審査することができます。詳しくは「設定-FAQ」をご覧ください。"
+            "value" : "弊アプリは「ハッキングプラグイン」やその他の違法なプログラムではございません。弊アプリは「miHoYo Co., Ltd.」のコンテンツに関するmiHoYoの二次創作の規則を遵守しています。弊アプリはオープンソースであり、誰もがプログラムの基本動作を審査することができます。詳しくは「設定-FAQ」をご覧ください。"
           }
         },
         "zh-Hans" : {
