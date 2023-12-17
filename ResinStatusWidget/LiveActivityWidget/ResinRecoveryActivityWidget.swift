@@ -272,17 +272,14 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
             VStack {
                 Spacer()
                 if #available(iOS 17, *) {
-                    HStack(alignment: .lastTextBaseline, spacing: 2) {
-                        Text(context.attributes.accountName)
-                        Button(intent: ResinTimerRefreshIntent()) {
+                    Button(intent: ResinTimerRefreshIntent()) {
+                        HStack(alignment: .lastTextBaseline, spacing: 2) {
+                            Text(context.attributes.accountName)
                             Image(systemSymbol: .arrowTriangle2CirclepathCircle)
-                                .clipShape(.circle)
                         }
-                        .buttonStyle(.plain)
                     }
+                    .buttonStyle(.plain)
                     .font(.footnote)
-                    .padding(.top, 3)
-                    .padding(.leading, 3)
                 } else {
                     HStack(alignment: .lastTextBaseline, spacing: 2) {
                         Image(systemSymbol: .personFill)
