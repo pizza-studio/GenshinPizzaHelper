@@ -87,7 +87,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                             Text("widget.resin.full")
                         } else {
                             Text(
-                                "\(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
+                                "\(format(data.resinInformation.resinRecoveryTime))"
                             )
                         }
                         Spacer()
@@ -96,7 +96,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                             Text("widget.resin.full")
                         } else {
                             Text(
-                                "\(dateFormatter.string(from: data.homeCoinInformation.fullTime))"
+                                "\(format(data.homeCoinInformation.fullTime))"
                             )
                         }
                         Spacer()
@@ -208,7 +208,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                             Text("widget.resin.full")
                         } else {
                             Text(
-                                "\(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
+                                "\(format(data.resinInformation.resinRecoveryTime))"
                             )
                         }
                         Spacer()
@@ -217,7 +217,7 @@ struct LockScreenHomeCoinWidgetRectangular: View {
                             Text("widget.resin.full")
                         } else {
                             Text(
-                                "\(dateFormatter.string(from: data.homeCoinInformation.fullTime))"
+                                "\(format(data.homeCoinInformation.fullTime))"
                             )
                         }
                         Spacer()
@@ -295,14 +295,6 @@ struct LockScreenHomeCoinWidgetRectangular: View {
     }
 }
 
-private let dateFormatter: DateFormatter = {
-    let fmt = DateFormatter()
-    fmt.doesRelativeDateFormatting = true
-    fmt.dateStyle = .short
-    fmt.timeStyle = .short
-    return fmt
-}()
-
 private let intervalFormatter: DateComponentsFormatter = {
     let dateComponentFormatter = DateComponentsFormatter()
     dateComponentFormatter.allowedUnits = [.hour, .minute]
@@ -310,3 +302,24 @@ private let intervalFormatter: DateComponentsFormatter = {
     dateComponentFormatter.unitsStyle = .brief
     return dateComponentFormatter
 }()
+
+private func format(_ date: Date) -> String {
+    let relationIdentifier: DateRelationIdentifier =
+        .getRelationIdentifier(of: date)
+    let formatter = DateFormatter.Gregorian()
+    var component = Locale.Components(locale: Locale.current)
+    component.hourCycle = .zeroToTwentyThree
+    formatter.locale = Locale(components: component)
+    formatter.dateFormat = "H:mm"
+    let datePrefix: String
+    switch relationIdentifier {
+    case .today:
+        datePrefix = "app.today"
+    case .tomorrow:
+        datePrefix = "app.tomorrow"
+    case .other:
+        datePrefix = ""
+        formatter.dateFormat = "EEE H:mm"
+    }
+    return datePrefix.localized + formatter.string(from: date)
+}
