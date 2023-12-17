@@ -122,11 +122,11 @@ struct ContactUsView: View {
                 if isLavaDetailShow {
                     Link(
                         destination: URL(
-                            string: "mailto:daicanglong@gmail.com"
+                            string: "mailto:lava@pizzastudio.org"
                         )!
                     ) {
                         Label {
-                            Text(verbatim: "daicanglong@gmail.com")
+                            Text(verbatim: "lava@pizzastudio.org")
                         } icon: {
                             Image("email")
                                 .resizable()
@@ -193,9 +193,9 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: URL(string: "mailto:i@hakubill.tech")!) {
+                    Link(destination: URL(string: "mailto:haku@pizzastudio.org")!) {
                         Label {
-                            Text(verbatim: "i@hakubill.tech")
+                            Text(verbatim: "haku@pizzastudio.org")
                         } icon: {
                             Image("email")
                                 .resizable()
