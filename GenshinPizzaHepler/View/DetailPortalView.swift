@@ -490,6 +490,9 @@ struct DetailPortalView: View {
                         )
                         LedgerDataNavigator(account: account, status: detailPortalViewModel.ledgerDataStatus)
                         BasicInfoNavigator(account: account, status: detailPortalViewModel.basicInfoStatus)
+//                        VerificationNeededView(account: account) {
+//                            detailPortalViewModel.refresh()
+//                        }
                     }
                     .listRowMaterialBackground()
                 }
@@ -1462,10 +1465,7 @@ private struct ErrorView: View {
     var body: some View {
         if let miHoYoAPIError = error as? MiHoYoAPIError,
            case .verificationNeeded = miHoYoAPIError {
-            PromptForVerificationView(account: account) {
-                // 不触发刷新步骤的话，目前叫出的验证码可能已经过期、哪怕通过验证也只会10306错误。
-                detailPortalViewModel.refresh()
-            } completion: {
+            VerificationNeededView(account: account) {
                 detailPortalViewModel.refresh()
             }
         } else {
@@ -1488,13 +1488,12 @@ private struct ErrorView: View {
     }
 }
 
-// MARK: - PromptForVerificationView
+// MARK: - VerificationNeededView
 
-private struct PromptForVerificationView: View {
+private struct VerificationNeededView: View {
     // MARK: Internal
 
     let account: AccountConfiguration
-    let preparation: () -> ()
     let completion: () -> ()
 
     var disableButton: Bool {
@@ -1558,7 +1557,6 @@ private struct PromptForVerificationView: View {
     func popVerificationWebSheet() {
         Task(priority: .userInitiated) {
             do {
-                preparation()
                 let verification = try await MiHoYoAPI.createVerification(
                     cookie: account.safeCookie,
                     deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
