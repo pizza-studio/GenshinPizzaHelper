@@ -30,7 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EABD7DB52886B2D200B7F0FD"
                BuildableName = "&#x62ab;&#x8428;&#x5c0f;&#x52a9;&#x624b;.app"
-               BlueprintName = "GenshinPizzaHepler"
+               BlueprintName = "GenshinPizzaHelper"
                ReferencedContainer = "container:GenshinPizzaHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

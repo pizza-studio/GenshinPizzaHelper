@@ -2,7 +2,7 @@
   "retcode" : 0,
   "message" : "OK",
   "data" : {
-    "uid" : 114514001,
+    "uid" : 123456789,
     "month_data" : {
       "current_primogems" : 4615,
       "current_primogems_level" : 3,
@@ -67,7 +67,7 @@
     ],
     "month" : 10,
     "nickname" : "鱼抓猫小",
-    "account_id" : 114514004,
+    "account_id" : 123456789,
     "day_data" : {
       "current_mora" : 0,
       "last_primogems" : 260,

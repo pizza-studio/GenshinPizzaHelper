@@ -922,6 +922,8 @@
 		BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfoView.swift; sourceTree = "<group>"; };
 		BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDDictionaryDataModel.swift; sourceTree = "<group>"; };
 		BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDGenshinDictionaryView.swift; sourceTree = "<group>"; };
+		BF6BAA3D2B31442A007274FF /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BF6BAA3E2B31442A007274FF /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		BF6C525A289E02B600EA224F /* ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ios.yml; sourceTree = "<group>"; };
 		BF6C5271289E12DA00EA224F /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
 		BF6C5274289E137200EA224F /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
@@ -1876,6 +1878,8 @@
 				EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */,
 				EA6829DB28A2523800E57462 /* .gitignore */,
 				EA7F67C9289D711200D2CE29 /* README.md */,
+				BF6BAA3E2B31442A007274FF /* CONTRIBUTING.md */,
+				BF6BAA3D2B31442A007274FF /* LICENSE */,
 				EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */,
 				BF6C5258289E02B600EA224F /* .github */,
 				5B18C5492AD0DF4300C745BA /* Enums */,
@@ -2169,9 +2173,9 @@
 			productReference = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		EABD7DB52886B2D200B7F0FD /* GenshinPizzaHepler */ = {
+		EABD7DB52886B2D200B7F0FD /* GenshinPizzaHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHepler" */;
+			buildConfigurationList = EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHelper" */;
 			buildPhases = (
 				BFF5CCA8293B9FF90049F66A /* Clang-Format */,
 				EABD7DB22886B2D200B7F0FD /* Sources */,
@@ -2187,7 +2191,7 @@
 				EA099FFB28A2B7220023B4AF /* PBXTargetDependency */,
 				BFCC067528C9B6A2003E4A54 /* PBXTargetDependency */,
 			);
-			name = GenshinPizzaHepler;
+			name = GenshinPizzaHelper;
 			packageProductDependencies = (
 				BFBDD66E28F3F3C90022B79D /* SwiftPieChart */,
 				BF15570A29CFE5CF0056CFE6 /* HBMihoyoAPI */,
@@ -2287,7 +2291,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EABD7DB52886B2D200B7F0FD /* GenshinPizzaHepler */,
+				EABD7DB52886B2D200B7F0FD /* GenshinPizzaHelper */,
 				5BD1C5B82A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch */,
 				EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */,
 				EA099FF228A2B7220023B4AF /* AccountIntent */,
@@ -3879,7 +3883,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHepler" */ = {
+		EABD7DC42886B2D300B7F0FD /* Build configuration list for PBXNativeTarget "GenshinPizzaHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EABD7DC52886B2D300B7F0FD /* Debug */,
