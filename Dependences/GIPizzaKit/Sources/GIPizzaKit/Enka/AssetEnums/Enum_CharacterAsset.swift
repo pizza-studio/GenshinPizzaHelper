@@ -125,11 +125,11 @@ extension CharacterAsset {
 
 extension CharacterAsset {
     public var officialRawNameInEnglish: String {
-        ("$asset.character:" + String(describing: self)).i18n("en")
+        ("$asset.character:" + String(describing: self)).i18nSPM("en")
     }
 
     public var officialSimplifiedChineseName: String {
-        ("$asset.character:" + String(describing: self)).i18n("zh-Hans")
+        ("$asset.character:" + String(describing: self)).i18nSPM("zh-Hans")
     }
 }
 

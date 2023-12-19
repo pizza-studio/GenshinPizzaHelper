@@ -201,7 +201,7 @@ extension WeaponAsset {
 
 extension WeaponAsset {
     public var officialRawNameInEnglish: String {
-        ("$asset.weapon:" + String(describing: self)).i18n("en")
+        ("$asset.weapon:" + String(describing: self)).i18nSPM("en")
     }
 
     public var officialSimplifiedChineseName: String {

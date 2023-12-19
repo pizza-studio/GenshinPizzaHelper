@@ -250,7 +250,7 @@ extension NameCard {
     // 之前的 UserDefaults 参数值是简体中文，且中间的点的符号用的是不同的 Unicode 字元。
     // 请勿主动使用该参数，除非是为了将使用者的旧版 UserDefaults 参数设定做自动纠偏处理。
     public var deprecatedRawFilename: String {
-        "$asset.nameCard:\(fileName)".i18n("zh-Hans").replacingOccurrences(of: "·", with: "・")
+        "$asset.nameCard:\(fileName)".i18nSPM("zh-Hans").replacingOccurrences(of: "·", with: "・")
     }
 
     public var localizedKey: String {
