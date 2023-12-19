@@ -66,7 +66,7 @@ extension API {
                 let isMiyousheUID = Self.isMiyousheUID(uid: uid)
                 let enkaMirror = "https://profile.microgg.cn/api/uid/" + uid
                 let enkaOfficial = "https://enka.network/api/uid/" + uid
-                var urlStr = isMiyousheUID ? enkaMirror : enkaOfficial
+                let urlStr = isMiyousheUID ? enkaMirror : enkaOfficial
                 let url = URL(string: urlStr)!
 
                 if isMiyousheUID {
@@ -202,7 +202,7 @@ extension API {
             let isMiyousheUID = Self.isMiyousheUID(uid: uid)
             let enkaMirror = "https://profile.microgg.cn/api/uid/" + uid
             let enkaOfficial = "https://enka.network/api/uid/" + uid
-            var urlStr = isMiyousheUID ? enkaMirror : enkaOfficial
+            let urlStr = isMiyousheUID ? enkaMirror : enkaOfficial
             let url = URL(string: urlStr)!
 
             // 请求
