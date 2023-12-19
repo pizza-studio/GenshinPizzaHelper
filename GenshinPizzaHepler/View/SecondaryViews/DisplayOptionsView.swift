@@ -46,7 +46,7 @@ struct DisplayOptionsView: View {
         List {
             Section {
                 Picker("settings.display.appBackgroundNameCardID", selection: $appBackgroundNameCardID) {
-                    ForEach(NameCard.allCases, id: \.rawValue) { card in
+                    ForEach(NameCard.allLegalCases, id: \.rawValue) { card in
                         Label {
                             Text(card.localized)
                         } icon: {
