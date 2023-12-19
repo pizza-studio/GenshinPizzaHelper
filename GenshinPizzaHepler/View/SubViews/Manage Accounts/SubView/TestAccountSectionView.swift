@@ -181,7 +181,9 @@ struct TestAccountSectionView: View {
                 do {
                     let verification = try await MiHoYoAPI.createVerification(
                         cookie: account.safeCookie,
-                        deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
+                        deviceFingerPrint: account.deviceFingerPrint,
+                        challengePath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote",
+                        deviceId: account.safeUuid
                     )
                     status = .gotVerification(verification)
                     sheetItem = .gotVerification(verification)
@@ -197,6 +199,7 @@ struct TestAccountSectionView: View {
                     _ = try await MiHoYoAPI.verifyVerification(
                         challenge: challenge,
                         validate: validate,
+                        challengePath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote",
                         cookie: account.safeCookie,
                         deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
                     )

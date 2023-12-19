@@ -12,6 +12,7 @@ extension MiHoYoAPI {
     public static func createVerification(
         cookie: String,
         deviceFingerPrint: String?,
+        challengePath: String,
         deviceId: UUID?
     ) async throws
         -> Verification {
@@ -24,8 +25,7 @@ extension MiHoYoAPI {
             additionalHeaders["x-rpc-device_fp"] = deviceFingerPrint
             additionalHeaders["x-rpc-device_id"] = deviceId.uuidString
         }
-        additionalHeaders["x-rpc-challenge_path"] =
-            "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote"
+        additionalHeaders["x-rpc-challenge_path"] = challengePath
         additionalHeaders["x-rpc-challenge_game"] = "2"
 
         var urlComponents =
@@ -53,6 +53,7 @@ extension MiHoYoAPI {
     public static func verifyVerification(
         challenge: String,
         validate: String,
+        challengePath: String,
         cookie: String,
         deviceFingerPrint: String?,
         deviceId: UUID?
@@ -63,8 +64,7 @@ extension MiHoYoAPI {
             additionalHeaders["x-rpc-device_fp"] = deviceFingerPrint
             additionalHeaders["x-rpc-device_id"] = deviceId.uuidString
         }
-        additionalHeaders["x-rpc-challenge_path"] =
-            "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote"
+        additionalHeaders["x-rpc-challenge_path"] = challengePath
         additionalHeaders["x-rpc-challenge_game"] = "2"
 
         struct VerifyVerificationBody: Encodable {

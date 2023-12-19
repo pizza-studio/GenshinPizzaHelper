@@ -793,7 +793,7 @@ private struct PlayerDetailSection: View {
             case .progress:
                 ProgressView().id(UUID())
             case let .fail(error):
-                ErrorView(account: account, error: error) {
+                ErrorView(account: account, apiPath: "", error: error) {
                     detailPortalViewModel.fetchPlayerDetail()
                 }
             case let .succeed((playerDetail, _)):
@@ -847,7 +847,11 @@ private struct AllAvatarNavigator: View {
             }
         case let .fail(error):
             InformationRowView("app.detailPortal.allAvatar.title") {
-                ErrorView(account: account, error: error) {
+                ErrorView(
+                    account: account,
+                    apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/character",
+                    error: error
+                ) {
                     detailPortalViewModel.fetchAllAvatarInfo()
                 }
             }
@@ -901,7 +905,11 @@ private struct LedgerDataNavigator: View {
                 }
             case let .fail(error):
                 InformationRowView("app.detailPortal.ledger.title") {
-                    ErrorView(account: account, error: error) {
+                    ErrorView(
+                        account: account,
+                        apiPath: "https://hk4e-api.mihoyo.com/event/ys_ledger/monthInfo",
+                        error: error
+                    ) {
                         detailPortalViewModel.fetchLedgerData()
                     }
                 }
@@ -973,7 +981,11 @@ private struct AbyssInfoNavigator: View {
                 }
             case let .fail(error):
                 InformationRowView("app.detailPortal.abyss.title") {
-                    ErrorView(account: account, error: error) {
+                    ErrorView(
+                        account: account,
+                        apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/spiralAbyss",
+                        error: error
+                    ) {
                         detailPortalViewModel.fetchSpiralAbyssInfoCurrent()
                     }
                 }
@@ -1211,7 +1223,11 @@ private struct BasicInfoNavigator: View {
             }
         case let .fail(error):
             InformationRowView("app.detailPortal.basicInfo.title") {
-                ErrorView(account: account, error: error) {
+                ErrorView(
+                    account: account,
+                    apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index",
+                    error: error
+                ) {
                     detailPortalViewModel.fetchBasicInfo()
                 }
             }
@@ -1458,6 +1474,7 @@ private struct ErrorView: View {
     private var detailPortalViewModel: DetailPortalViewModel
 
     let account: AccountConfiguration
+    let apiPath: String
     let error: Error
 
     let completion: () -> ()
@@ -1465,7 +1482,7 @@ private struct ErrorView: View {
     var body: some View {
         if let miHoYoAPIError = error as? MiHoYoAPIError,
            case .verificationNeeded = miHoYoAPIError {
-            VerificationNeededView(account: account) {
+            VerificationNeededView(account: account, challengePath: apiPath) {
                 detailPortalViewModel.refresh()
             }
         } else {
@@ -1494,6 +1511,7 @@ private struct VerificationNeededView: View {
     // MARK: Internal
 
     let account: AccountConfiguration
+    let challengePath: String
     let completion: () -> ()
 
     var disableButton: Bool {
@@ -1559,7 +1577,8 @@ private struct VerificationNeededView: View {
             do {
                 let verification = try await MiHoYoAPI.createVerification(
                     cookie: account.safeCookie,
-                    deviceFingerPrint: account.deviceFingerPrint, deviceId: account.safeUuid
+                    deviceFingerPrint: account.deviceFingerPrint, challengePath: challengePath,
+                    deviceId: account.safeUuid
                 )
                 DispatchQueue.main.async {
                     status = .gotVerification(verification)
@@ -1576,7 +1595,7 @@ private struct VerificationNeededView: View {
             do {
                 _ = try await MiHoYoAPI.verifyVerification(
                     challenge: challenge,
-                    validate: validate,
+                    validate: validate, challengePath: challengePath,
                     cookie: account.safeCookie,
                     deviceFingerPrint: account.deviceFingerPrint,
                     deviceId: account.safeUuid
