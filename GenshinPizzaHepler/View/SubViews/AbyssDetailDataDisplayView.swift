@@ -54,7 +54,7 @@ struct AbyssDetailDataDisplayView: View {
                 ToolbarItem(
                     placement: .navigationBarTrailing
                 ) {
-                    Picker("", selection: $season) {
+                    Picker("", selection: $season.animation()) {
                         Text("abyss.detailDataDisplayView.season.current")
                             .tag(AccountSpiralAbyssDetail.WhichSeason.this)
                         Text("abyss.detailDataDisplayView.season.previous")
