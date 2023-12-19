@@ -482,5 +482,6 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "シャルロット·独占";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "フォンテーヌ·調和";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "紀行·旋舞";
-"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
-"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "ナヴィア·棘薔薇";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "シュヴルーズ·弐型";
+"$asset.nameCard:UI_NameCardPic_Bp29_P" = "紀行·時彫り";

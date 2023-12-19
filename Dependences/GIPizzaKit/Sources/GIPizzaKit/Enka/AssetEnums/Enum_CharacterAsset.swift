@@ -388,8 +388,8 @@ extension CharacterAsset {
         case .Wriothesley: return [7200]
         case .Charlotte: return [7300]
         case .Furina: return [7400]
-        case .Chevreuse: return [] // 原神 4.3
-        case .Navia: return [] // 原神 4.3
+        case .Chevreuse: return [7600] // 原神 4.3
+        case .Navia: return [7500] // 原神 4.3
         }
     }
 }

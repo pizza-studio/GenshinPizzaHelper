@@ -482,5 +482,6 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Charlotte: Exclusive";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "Fontaine: Completeness";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "Travel Notes: Whirling Waltz";
-"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
-"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia: Rosula";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse: Type II";
+"$asset.nameCard:UI_NameCardPic_Bp29_P" = "Travel Notes: Time Inscribed";

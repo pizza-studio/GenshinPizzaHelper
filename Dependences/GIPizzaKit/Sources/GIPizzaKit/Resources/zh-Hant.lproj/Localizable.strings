@@ -482,5 +482,6 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "夏洛蒂·獨家";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "楓丹·渾然";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "紀行·旋舞";
-"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
-"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "娜維婭·刺玫";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "夏沃蕾·貳型";
+"$asset.nameCard:UI_NameCardPic_Bp29_P" = "紀行·時雕";

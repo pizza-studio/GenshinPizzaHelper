@@ -484,3 +484,6 @@
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "Appunti di viaggio: Valzer vorticoso";
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia: Rosula";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse: Tipo II";
+"$asset.nameCard:UI_NameCardPic_Bp29_P" = "Appunti di viaggio: Iscrizione del tempo";

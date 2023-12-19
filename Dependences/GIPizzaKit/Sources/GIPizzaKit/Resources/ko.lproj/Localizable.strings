@@ -482,5 +482,6 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "샤를로트·독점 보도";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "폰타인·혼연";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "기행·원무";
-"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
-"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "나비아·가시 장미";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "슈브르즈·제2형";
+"$asset.nameCard:UI_NameCardPic_Bp29_P" = "기행·시간의 각인";

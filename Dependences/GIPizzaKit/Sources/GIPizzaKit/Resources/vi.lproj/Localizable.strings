@@ -484,3 +484,6 @@
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "Nhật Ký Hành Trình - Vũ Điệu";
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia (missing i18n)";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse (missing i18n)";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia - Rosula";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse - Mẫu II";
+"$asset.nameCard:UI_NameCardPic_Bp29_P" = "Nhật Ký Hành Trình - Khắc Ghi";

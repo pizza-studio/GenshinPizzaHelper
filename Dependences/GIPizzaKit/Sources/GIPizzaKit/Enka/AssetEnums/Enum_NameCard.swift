@@ -200,6 +200,7 @@ public enum NameCard: Int, CaseIterable, _DefaultsSerializable {
     case UI_NameCardPic_Bp28_P = 210183
     case UI_NameCardPic_Navia_P = 210184
     case UI_NameCardPic_Chevreuse_P = 210185
+    case UI_NameCardPic_Bp29_P = 210186
 }
 
 extension NameCard {
@@ -212,6 +213,7 @@ extension NameCard {
             // 此处插入的内容的范例：.UI_NameCardPic_Furina_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
             .UI_NameCardPic_Navia_P.release(since: .Specify(day: 20, month: 12, year: 2023)),
             .UI_NameCardPic_Chevreuse_P.release(since: .Specify(day: 20, month: 12, year: 2023)),
+            .UI_NameCardPic_Bp29_P.release(since: .Specify(day: 20, month: 12, year: 2023)),
         ].compactMap { $0 }
     }
 
