@@ -13,9 +13,9 @@ struct GuideVideoLinkView: View {
             Section(header: Text("中文")) {
                 Link(destination: (
                     isInstallation(urlString: "bilibili://") ?
-                        URL(string: "bilibili://video/BV1Lg411S7wa")! :
+                        URL(string: "bilibili://video/BV1fC4y1v7yx")! :
                         URL(
-                            string: "https://www.bilibili.com/video/BV1Lg411S7wa"
+                            string: "https://www.bilibili.com/video/BV1fC4y1v7yx/"
                         )
                 )!) {
                     Label {
@@ -29,7 +29,7 @@ struct GuideVideoLinkView: View {
                 }
                 Link(
                     destination: URL(
-                        string: "https://www.youtube.com/watch?v=k9G2N8XYFm4"
+                        string: "https://youtu.be/fS5g-U3E0wI"
                     )!
                 ) {
                     Label {
@@ -77,7 +77,7 @@ struct GuideVideoLinkView: View {
             Section(header: Text("日本語")) {
                 Link(
                     destination: URL(
-                        string: "https://www.youtube.com/watch?v=ceSLVHhBpJI"
+                        string: "https://youtu.be/a28FbE4qKU0"
                     )!
                 ) {
                     Label {
@@ -91,9 +91,9 @@ struct GuideVideoLinkView: View {
                 }
                 Link(destination: (
                     isInstallation(urlString: "bilibili://") ?
-                        URL(string: "bilibili://video/BV1Re4y1d7a6")! :
+                        URL(string: "bilibili://video/BV1eN4y1p7M8")! :
                         URL(
-                            string: "https://www.bilibili.com/video/BV1Re4y1d7a6"
+                            string: "https://www.bilibili.com/video/BV1eN4y1p7M8/"
                         )
                 )!) {
                     Label {
