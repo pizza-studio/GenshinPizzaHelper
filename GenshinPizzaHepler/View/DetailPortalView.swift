@@ -1342,9 +1342,7 @@ private struct BasicInfoView: View {
             .listRowMaterialBackground()
 
             Section {
-                ForEach(data.worldExplorations.sorted {
-                    $0.id < $1.id
-                }, id: \.id) { worldData in
+                ForEach(data.worldExplorations.sortedDataWithDeduplication, id: \.id) { worldData in
                     WorldExplorationView(worldData: worldData)
                 }
             }
@@ -1676,5 +1674,27 @@ private struct InformationRowView<L: View>: View {
             Text(title).bold()
             labelContent()
         }
+    }
+}
+
+// MARK: - Extending [Offering]
+
+extension Array where Element == BasicInfos.WorldExploration {
+    public var sortedDataWithDeduplication: [BasicInfos.WorldExploration] {
+        var offered: Set<BasicInfos.WorldExploration.Offering> = .init()
+        var result = [BasicInfos.WorldExploration]()
+        forEach { this in
+            var this = this
+            let oldOfferings = this.offerings
+            this.offerings.removeAll()
+            oldOfferings.forEach { offering in
+                guard !offered.contains(offering) else { return }
+                this.offerings.append(offering)
+                offered.insert(offering)
+            }
+            // 从伺服器拿到的资料是反序排列的，这里给它正过来。
+            result.insert(this, at: result.startIndex)
+        }
+        return result
     }
 }
