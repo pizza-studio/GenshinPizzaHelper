@@ -10412,7 +10412,6 @@
       }
     },
     "app.gacha.get.error:%@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -25539,7 +25538,6 @@
       }
     },
     "gacha.messages.newEntriesSaved:%lld" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
