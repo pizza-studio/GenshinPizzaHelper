@@ -104,7 +104,6 @@
 		5BD1C6082A2A1FC90043C2B1 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823928A73A5400616CE1 /* ReviewHandler.swift */; };
 		5BD1C6092A2A1FC90043C2B1 /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8129D280FD0075F780 /* GachaModel.swift */; };
-		5BD1C60B2A2A1FC90043C2B1 /* AccountBasicInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */; };
 		5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3247029DFE878002779F3 /* CollectionChunked.swift */; };
 		5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		5BD1C60E2A2A1FC90043C2B1 /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
@@ -281,7 +280,6 @@
 		BF85D77928CE0BA0003F3479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF85D77828CE0BA0003F3479 /* Assets.xcassets */; };
 		BF85D78628CE18F2003F3479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
 		BF85D78728CE18F3003F3479 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA30F99B2886B46C00AE7BEA /* Assets.xcassets */; };
-		BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */; };
 		BF9D74EC29DB1604009A9918 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BF9D74EB29DB1604009A9918 /* AlertToast */; };
 		BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = BF9D74EE29DBBA98009A9918 /* CoreXLSX */; };
 		BFB101D328D5C579000DC631 /* DetailPortalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D228D5C579000DC631 /* DetailPortalView.swift */; };
@@ -951,7 +949,6 @@
 		BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetExtension.swift; sourceTree = "<group>"; };
 		BF85D77828CE0BA0003F3479 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF85D77A28CE0BA0003F3479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountBasicInfosView.swift; sourceTree = "<group>"; };
 		BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HBMihoyoAPI; path = Dependences/HBMihoyoAPI; sourceTree = "<group>"; };
 		BFB101D228D5C579000DC631 /* DetailPortalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPortalView.swift; sourceTree = "<group>"; };
 		BFB101D428D5F5BC000DC631 /* OpenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAPI.swift; sourceTree = "<group>"; };
@@ -1543,7 +1540,6 @@
 			children = (
 				EA759D5B2B19989A0080C775 /* Manage Accounts */,
 				EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */,
-				BF85D79128D06633003F3479 /* AccountBasicInfosView.swift */,
 				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
 				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
 				EA025C8D29D28D150075F780 /* APIGetGachaView.swift */,
@@ -2574,7 +2570,6 @@
 				5BD1C6082A2A1FC90043C2B1 /* ReviewHandler.swift in Sources */,
 				5BD1C6092A2A1FC90043C2B1 /* AccountConfiguration.xcdatamodeld in Sources */,
 				5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */,
-				5BD1C60B2A2A1FC90043C2B1 /* AccountBasicInfosView.swift in Sources */,
 				EAEE8ECE2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
 				5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */,
 				5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */,
@@ -3034,7 +3029,6 @@
 				EAFB232028A26C80006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */,
 				EAEE8ECD2AE08D9A00F406E4 /* AnyLocalizedError.swift in Sources */,
-				BF85D79228D06633003F3479 /* AccountBasicInfosView.swift in Sources */,
 				EAD3247129DFE878002779F3 /* CollectionChunked.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
