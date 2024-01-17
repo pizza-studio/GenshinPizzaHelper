@@ -61,9 +61,11 @@ struct MoreView: View {
                 }
             }
 
-            Section {
-                NavigationLink(destination: IconSettingsView()) {
-                    Text("settings.icon.xinzoruo.toggle")
+            if [.iPhoneOS, .iPadOS].contains(OS.type) {
+                Section {
+                    NavigationLink(destination: IconSettingsView()) {
+                        Text("settings.icon.xinzoruo.toggle")
+                    }
                 }
             }
 
