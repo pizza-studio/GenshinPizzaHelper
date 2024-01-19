@@ -201,6 +201,12 @@ public enum NameCard: Int, CaseIterable, _DefaultsSerializable {
     case UI_NameCardPic_Navia_P = 210184
     case UI_NameCardPic_Chevreuse_P = 210185
     case UI_NameCardPic_Bp29_P = 210186
+    case UI_NameCardPic_Liuyun_P = 21087
+    case UI_NameCardPic_Gaming_P = 21088
+    case UI_NameCardPic_Chenyu1_P = 21089
+    case UI_NameCardPic_OfferingSilong_P = 21090
+    case UI_NameCardPic_Bp30_P = 21091
+    case UI_NameCardPic_OST4_P = 21092
 }
 
 extension NameCard {
@@ -211,9 +217,12 @@ extension NameCard {
     public static var blacklist: [NameCard] {
         [
             // 此处插入的内容的范例：.UI_NameCardPic_Furina_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
-            .UI_NameCardPic_Navia_P.release(since: .Specify(day: 20, month: 12, year: 2023)),
-            .UI_NameCardPic_Chevreuse_P.release(since: .Specify(day: 20, month: 12, year: 2023)),
-            .UI_NameCardPic_Bp29_P.release(since: .Specify(day: 20, month: 12, year: 2023)),
+            .UI_NameCardPic_Liuyun_P.release(since: .Specify(day: 31, month: 1, year: 2024)),
+            .UI_NameCardPic_Gaming_P.release(since: .Specify(day: 31, month: 1, year: 2024)),
+            .UI_NameCardPic_Chenyu1_P.release(since: .Specify(day: 31, month: 1, year: 2024)),
+            .UI_NameCardPic_OfferingSilong_P.release(since: .Specify(day: 31, month: 1, year: 2024)),
+            .UI_NameCardPic_Bp30_P.release(since: .Specify(day: 31, month: 1, year: 2024)),
+            .UI_NameCardPic_OST4_P.release(since: .Specify(day: 31, month: 1, year: 2024)),
         ].compactMap { $0 }
     }
 

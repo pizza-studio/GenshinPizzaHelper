@@ -78,7 +78,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case MailedFlower = 12418
     case TalkingStick = 12424
     case TidalShadow = 12425
-    case UltimateOverloardsMegaMagicSword = 12426 // 原神 4.3
+    case UltimateOverloardsMegaMagicSword = 12426
     case PortablePowerSaw = 12427
     case SkywardPride = 12501
     case WolfsGravestone = 12502
@@ -86,7 +86,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case TheUnforged = 12504
     case RedhornStonethresher = 12510
     case BeaconOfTheReedSea = 12511
-    case ConsideredJudgement = 12512 // 原神 4.3
+    case ConsideredJudgement = 12512
     case BeginnersProtector = 13101
     case IronPoint = 13201
     case WhiteTassel = 13301
@@ -152,6 +152,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case TulaytullahsRemembrance = 14512
     case CashflowSupervision = 14513
     case TomeOfTheEternalFlow = 14514
+    case CranesEchoingCall = 14515 // 原神 4.4
     case HuntersBow = 15101
     case SeasonedHuntersBow = 15201
     case RavenBow = 15301
@@ -282,7 +283,6 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .TalkingStick: return .weaponOasisGarden
         case .TidalShadow: return .weaponPristineSea
         case .UltimateOverloardsMegaMagicSword: return .weaponPristineSea
-            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         case .PortablePowerSaw: return .weaponPristineSea
         case .SkywardPride: return .weaponBorealWolf
         case .WolfsGravestone: return .weaponGladiator
@@ -291,7 +291,6 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .RedhornStonethresher: return .weaponNarukami
         case .BeaconOfTheReedSea: return .weaponScorchingMight
         case .ConsideredJudgement: return .weaponAncientChord
-            .available(since: .Specify(day: 20, month: 12, year: 2023)) // 原神 4.3
         case .BeginnersProtector: return .weaponGladiator
         case .IronPoint: return .weaponGladiator
         case .WhiteTassel: return .weaponGuyun
@@ -357,6 +356,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .TulaytullahsRemembrance: return .weaponScorchingMight
         case .CashflowSupervision: return .weaponPristineSea
         case .TomeOfTheEternalFlow: return .weaponDewdrop
+        case .CranesEchoingCall: return .weaponElixir
+            .available(since: .Specify(day: 31, month: 1, year: 2024)) // 原神 4.4
         case .HuntersBow: return .weaponBorealWolf
         case .SeasonedHuntersBow: return .weaponBorealWolf
         case .RavenBow: return .weaponDecarabian
@@ -470,6 +471,7 @@ extension WeaponAsset {
         case .MailedFlower: return "UI_EquipIcon_Claymore_Fleurfair"
         case .TalkingStick: return "UI_EquipIcon_Claymore_BeastTamer"
         case .TidalShadow: return "UI_EquipIcon_Claymore_Vorpal"
+        case .UltimateOverloardsMegaMagicSword: return "UI_EquipIcon_Claymore_Champion"
         case .PortablePowerSaw: return "UI_EquipIcon_Claymore_Mechanic"
         case .SkywardPride: return "UI_EquipIcon_Claymore_Dvalin"
         case .WolfsGravestone: return "UI_EquipIcon_Claymore_Wolfmound"
@@ -477,6 +479,7 @@ extension WeaponAsset {
         case .TheUnforged: return "UI_EquipIcon_Claymore_Kunwu"
         case .RedhornStonethresher: return "UI_EquipIcon_Claymore_Itadorimaru"
         case .BeaconOfTheReedSea: return "UI_EquipIcon_Claymore_Deshret"
+        case .ConsideredJudgement: return "UI_EquipIcon_Claymore_GoldenVerdict"
         case .BeginnersProtector: return "UI_EquipIcon_Pole_Gewalt"
         case .IronPoint: return "UI_EquipIcon_Pole_Rod"
         case .WhiteTassel: return "UI_EquipIcon_Pole_Ruby"
@@ -542,6 +545,7 @@ extension WeaponAsset {
         case .TulaytullahsRemembrance: return "UI_EquipIcon_Catalyst_Alaya"
         case .CashflowSupervision: return "UI_EquipIcon_Catalyst_Wheatley"
         case .TomeOfTheEternalFlow: return "UI_EquipIcon_Catalyst_Iudex"
+        case .CranesEchoingCall: return "UI_EquipIcon_Catalyst_MountainGale" // 原神 4.4
         case .HuntersBow: return "UI_EquipIcon_Bow_Hunters"
         case .SeasonedHuntersBow: return "UI_EquipIcon_Bow_Old"
         case .RavenBow: return "UI_EquipIcon_Bow_Crowfeather"
@@ -579,8 +583,6 @@ extension WeaponAsset {
         case .ThunderingPulse: return "UI_EquipIcon_Bow_Narukami"
         case .HuntersPath: return "UI_EquipIcon_Bow_Ayus"
         case .TheFirstGreatMagic: return "UI_EquipIcon_Bow_Pledge"
-        case .UltimateOverloardsMegaMagicSword: return "UI_EquipIcon_Claymore_Champion" // 原神 4.3
-        case .ConsideredJudgement: return "UI_EquipIcon_Claymore_GoldenVerdict" // 原神 4.3
         }
     }
 }
