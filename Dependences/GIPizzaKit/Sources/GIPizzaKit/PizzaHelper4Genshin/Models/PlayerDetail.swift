@@ -473,6 +473,12 @@ public struct PlayerDetail {
             /// 圣遗物评分
             public var score: Double?
 
+            /// 圣遗物套装编号
+            public var setId: Int? {
+                let arr = iconString.split(separator: "_")
+                return arr.count == 4 ? Int(arr[2]) : nil
+            }
+
             public var identifier: String {
                 UUID().uuidString
             }
@@ -545,6 +551,22 @@ public struct PlayerDetail {
             case dendro = "Grass"
             /// 原人
             case unknown = "Unknown"
+
+            // MARK: Public
+
+            /// 角色元素能力属性，依照原神提瓦特大陆游历顺序起算。物理属性为 0、风属性为 1、岩 2、雷 3，依次类推。
+            public var enumerationId: Int {
+                switch self {
+                case .cryo: 7
+                case .anemo: 1
+                case .electro: 3
+                case .hydro: 5
+                case .pyro: 6
+                case .geo: 2
+                case .dendro: 4
+                case .unknown: 0
+                }
+            }
         }
 
         /// 角色星级，橙色为四星，紫色为五星
@@ -710,6 +732,7 @@ extension PlayerDetail.Avatar {
         let extractedData = extractArtifactSetData()
         let artifactRatingRequest = ArtifactRatingRequest(
             cid: enkaID,
+            characterElement: element.enumerationId,
             flower: extractedData[.flower] ?? .init(),
             plume: extractedData[.plume] ?? .init(),
             sands: extractedData[.sands] ?? .init(),

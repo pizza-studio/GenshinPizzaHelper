@@ -55,6 +55,7 @@ public struct ArtifactRatingRequest {
 
     public init(
         cid: Int,
+        characterElement: Int,
         flower: Artifact,
         plume: Artifact,
         sands: Artifact,
@@ -62,6 +63,7 @@ public struct ArtifactRatingRequest {
         circlet: Artifact
     ) {
         self.cid = cid
+        self.characterElement = characterElement
         self.flower = flower
         self.plume = plume
         self.sands = sands
@@ -83,6 +85,7 @@ public struct ArtifactRatingRequest {
         public var mainProp5: Artifact5MainProp?
         public var star: Int = 5
         public var lv: Int = 20
+        public var setId: Int = 114_514
         public var atkPercent: Double = 0
         public var hpPercent: Double = 0
         public var defPercent: Double = 0
@@ -130,6 +133,8 @@ public struct ArtifactRatingRequest {
 
     /// 角色ID
     public var cid: Int
+    /// 角色元素能力属性，依照原神提瓦特大陆游历顺序起算。物理属性为 0、风属性为 1、岩 2、雷 3，依次类推。
+    public var characterElement: Int = 0
     /// 花
     public var flower: Artifact
     /// 羽毛

@@ -142,6 +142,7 @@ public enum PizzaHelperAPI {
     ) {
         var urlStr = "?"
         urlStr = urlStr.addPara("cid", String(artifacts.cid))
+        urlStr = urlStr.addPara("elementId", String(artifacts.characterElement))
 
         urlStr = urlStr.addPara("fstar", String(artifacts.flower.star))
         urlStr = urlStr.addPara("flv", String(artifacts.flower.lv))
@@ -315,6 +316,12 @@ public enum PizzaHelperAPI {
             urlStr = urlStr.addPara("stat5hp", String(artifacts.circlet.hp))
             urlStr = urlStr.addPara("stat5def", String(artifacts.circlet.def))
         }
+
+        urlStr = urlStr.addPara("stat1setId", String(artifacts.flower.setId))
+        urlStr = urlStr.addPara("stat2setId", String(artifacts.plume.setId))
+        urlStr = urlStr.addPara("stat3setId", String(artifacts.sands.setId))
+        urlStr = urlStr.addPara("stat4setId", String(artifacts.goblet.setId))
+        urlStr = urlStr.addPara("stat5setId", String(artifacts.circlet.setId))
 
         // 请求
         HttpMethod<ArtifactRatingScoreResult>
