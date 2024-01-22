@@ -220,7 +220,7 @@ struct PlayerDetail {
                 "\(uid)\(uid.md5)\(AppConfig.uidSalt)"
             self.uid = String(obfuscatedUid.md5)
 
-//            var artifactScores: ArtifactRatingScoreResult?
+            // var artifactScores: ArtifactRatingScoreResult?
             print("Get artifact rating of \(name)")
             PizzaHelperAPI
                 .getArtifactRatingScore(
@@ -322,65 +322,36 @@ struct PlayerDetail {
             ) {
                 guard weaponEquipment.flat.itemType == "ITEM_WEAPON"
                 else { return nil }
-                self.name = localizedDictionary
-                    .nameFromHashMap(weaponEquipment.flat.nameTextMapHash)
+                self.name = localizedDictionary.nameFromHashMap(weaponEquipment.flat.nameTextMapHash)
                 self.level = weaponEquipment.weapon!.level
-                self
-                    .refinementRank = (
-                        weaponEquipment.weapon!.affixMap?.affix
-                            .first?.value ?? 0
-                    ) + 1
-
-                let mainAttributeName: String = PropertyDictionary
-                    .getLocalizedName("FIGHT_PROP_BASE_ATTACK")
-                let mainAttributeValue: Double = weaponEquipment.flat
-                    .weaponStats?.first(where: { stats in
-                        stats.appendPropId == "FIGHT_PROP_BASE_ATTACK"
-                    })?.statValue ?? 0
-                self.mainAttribute = .init(
-                    name: mainAttributeName,
-                    value: mainAttributeValue,
-                    rawName: "FIGHT_PROP_BASE_ATTACK"
-                )
-
-                if weaponEquipment.flat.weaponStats?.first(where: { stats in
-                    stats.appendPropId != "FIGHT_PROP_BASE_ATTACK"
-                }) != nil {
-                    let subAttributeName: String = PropertyDictionary
-                        .getLocalizedName(
-                            weaponEquipment.flat.weaponStats?
-                                .first(where: { stats in
-                                    stats
-                                        .appendPropId !=
-                                        "FIGHT_PROP_BASE_ATTACK"
-                                })?.appendPropId ?? ""
-                        )
-                    let subAttributeValue: Double = weaponEquipment.flat
-                        .weaponStats?.first(where: { stats in
-                            stats.appendPropId != "FIGHT_PROP_BASE_ATTACK"
-                        })?.statValue ?? 0
-                    self.subAttribute = .init(
-                        name: subAttributeName,
-                        value: subAttributeValue,
-                        rawName:
-                        weaponEquipment.flat.weaponStats?
-                            .first(where: { stats in
-                                stats
-                                    .appendPropId !=
-                                    "FIGHT_PROP_BASE_ATTACK"
-                            })?.appendPropId ?? ""
-                    )
-                } else {
-                    self.subAttribute = nil
-                }
-
+                self.refinementRank = (weaponEquipment.weapon!.affixMap?.affix.first?.value ?? 0) + 1
                 self.iconString = weaponEquipment.flat.icon
+                self.rankLevel = .init(rawValue: weaponEquipment.flat.rankLevel) ?? .four
 
-                self
-                    .rankLevel = .init(
-                        rawValue: weaponEquipment.flat
-                            .rankLevel
-                    ) ?? .four
+                self.mainAttribute = .init(
+                    name: AvatarAttribute.baseATK.localized,
+                    value: 0,
+                    rawName: AvatarAttribute.baseATK.rawValue
+                )
+                self.subAttribute = nil
+                weaponEquipment.flat.weaponStats?.forEach { currentStat in
+                    guard let type = AvatarAttribute(rawValue: currentStat.appendPropId) else { return }
+                    let localizedAttributeName = type.localized
+                    switch type {
+                    case .baseATK:
+                        self.mainAttribute = .init(
+                            name: localizedAttributeName,
+                            value: currentStat.statValue,
+                            rawName: currentStat.appendPropId
+                        )
+                    default:
+                        self.subAttribute = .init(
+                            name: localizedAttributeName,
+                            value: currentStat.statValue,
+                            rawName: currentStat.appendPropId
+                        )
+                    }
+                }
             }
 
             // MARK: Internal
@@ -392,9 +363,9 @@ struct PlayerDetail {
             /// 精炼等阶 (1-5)
             let refinementRank: Int
             /// 武器主属性
-            let mainAttribute: Attribute
+            var mainAttribute: Attribute
             /// 武器副属性
-            let subAttribute: Attribute?
+            var subAttribute: Attribute?
             /// 武器图标ID
             let iconString: String
             /// 武器星级
@@ -425,7 +396,7 @@ struct PlayerDetail {
                 self.setName = localizedDictionary
                     .nameFromHashMap(artifactEquipment.flat.setNameTextMapHash!)
                 self.mainAttribute = Attribute(
-                    name: PropertyDictionary
+                    name: AvatarAttribute
                         .getLocalizedName(
                             artifactEquipment.flat
                                 .reliquaryMainstat!.mainPropId
@@ -437,7 +408,7 @@ struct PlayerDetail {
                 self.subAttributes = artifactEquipment.flat.reliquarySubstats?
                     .map { stats in
                         Attribute(
-                            name: PropertyDictionary
+                            name: AvatarAttribute
                                 .getLocalizedName(stats.appendPropId),
                             value: stats.statValue,
                             rawName: stats.appendPropId
@@ -523,7 +494,7 @@ struct PlayerDetail {
             }
 
             /// 属性图标的ID
-//            let iconString: String
+            // let iconString: String
 
             // MARK: Internal
 
@@ -671,151 +642,6 @@ struct PlayerDetail {
             hasher.combine(name)
         }
 
-        func convert2ArtifactRatingModel() -> ArtifactRatingRequest {
-            func readFromEnkaDatas(position: Int) -> ArtifactRatingRequest
-                .Artifact {
-                let positionType: PlayerDetail.Avatar.Artifact.ArtifactType = {
-                    switch position {
-                    case 1:
-                        return .flower
-                    case 2:
-                        return .plume
-                    case 3:
-                        return .sand
-                    case 4:
-                        return .goblet
-                    case 5:
-                        return .circlet
-                    default:
-                        return .flower
-                    }
-                }()
-
-                var artifact = ArtifactRatingRequest.Artifact()
-                if let thisEnkaObject = artifacts
-                    .first(where: { $0.artifactType == positionType }) {
-                    artifact.star = thisEnkaObject.rankLevel.rawValue
-                    artifact.lv = thisEnkaObject.level
-                    for subAttr in thisEnkaObject.subAttributes {
-                        print("\(subAttr.rawName)-\(subAttr.value)")
-                    }
-                    artifact.atkPercent = thisEnkaObject.subAttributes
-                        .first(where: {
-                            $0.rawName == "FIGHT_PROP_ATTACK_PERCENT"
-                        })?.value ?? 0
-                    artifact.hpPercent = thisEnkaObject.subAttributes
-                        .first(where: { $0.rawName == "FIGHT_PROP_HP_PERCENT"
-                        })?
-                        .value ?? 0
-                    artifact.defPercent = thisEnkaObject.subAttributes
-                        .first(where: {
-                            $0.rawName == "FIGHT_PROP_DEFENSE_PERCENT"
-                        })?.value ?? 0
-                    artifact.em = thisEnkaObject.subAttributes
-                        .first(where: {
-                            $0.rawName == "FIGHT_PROP_ELEMENT_MASTERY"
-                        })?.value ?? 0
-                    artifact.erPercent = thisEnkaObject.subAttributes
-                        .first(where: {
-                            $0.rawName == "FIGHT_PROP_CHARGE_EFFICIENCY"
-                        })?.value ?? 0
-                    artifact.crPercent = thisEnkaObject.subAttributes
-                        .first(where: { $0.rawName == "FIGHT_PROP_CRITICAL" })?
-                        .value ?? 0
-                    artifact.cdPercent = thisEnkaObject.subAttributes
-                        .first(where: { $0.rawName == "FIGHT_PROP_CRITICAL_HURT"
-                        })?.value ?? 0
-                    artifact.atk = thisEnkaObject.subAttributes
-                        .first(where: { $0.rawName == "FIGHT_PROP_ATTACK" })?
-                        .value ?? 0
-                    artifact.hp = thisEnkaObject.subAttributes
-                        .first(where: { $0.rawName == "FIGHT_PROP_HP" })?
-                        .value ?? 0
-                    artifact.def = thisEnkaObject.subAttributes
-                        .first(where: { $0.rawName == "FIGHT_PROP_DEFENSE" })?
-                        .value ?? 0
-
-                    if position == 3 {
-                        switch thisEnkaObject.mainAttribute.rawName {
-                        case "FIGHT_PROP_HP_PERCENT":
-                            artifact.mainProp3 = .hpPercentage
-                        case "FIGHT_PROP_ATTACK_PERCENT":
-                            artifact.mainProp3 = .atkPercentage
-                        case "FIGHT_PROP_DEFENSE_PERCENT":
-                            artifact.mainProp3 = .defPercentage
-                        case "FIGHT_PROP_ELEMENT_MASTERY":
-                            artifact.mainProp3 = .em
-                        case "FIGHT_PROP_CHARGE_EFFICIENCY":
-                            artifact.mainProp3 = .er
-                        default:
-                            artifact.mainProp3 = nil
-                        }
-                    } else if position == 4 {
-                        switch thisEnkaObject.mainAttribute.rawName {
-                        case "FIGHT_PROP_HP_PERCENT":
-                            artifact.mainProp4 = .hpPercentage
-                        case "FIGHT_PROP_ATTACK_PERCENT":
-                            artifact.mainProp4 = .atkPercentage
-                        case "FIGHT_PROP_DEFENSE_PERCENT":
-                            artifact.mainProp4 = .defPercentage
-                        case "FIGHT_PROP_ELEMENT_MASTERY":
-                            artifact.mainProp4 = .em
-                        case "FIGHT_PROP_PHYSICAL_ADD_HURT":
-                            artifact.mainProp4 = .physicalDmg
-                        case "FIGHT_PROP_FIRE_ADD_HURT":
-                            artifact.mainProp4 = .pyroDmg
-                        case "FIGHT_PROP_ELEC_ADD_HURT":
-                            artifact.mainProp4 = .electroDmg
-                        case "FIGHT_PROP_WATER_ADD_HURT":
-                            artifact.mainProp4 = .hydroDmg
-                        case "FIGHT_PROP_WIND_ADD_HURT":
-                            artifact.mainProp4 = .anemoDmg
-                        case "FIGHT_PROP_ICE_ADD_HURT":
-                            artifact.mainProp4 = .cryoDmg
-                        case "FIGHT_PROP_ROCK_ADD_HURT":
-                            artifact.mainProp4 = .geoDmg
-                        case "FIGHT_PROP_GRASS_ADD_HURT":
-                            artifact.mainProp4 = .dendroDmg
-                        default:
-                            artifact.mainProp4 = nil
-                        }
-                    } else if position == 5 {
-                        switch thisEnkaObject.mainAttribute.rawName {
-                        case "FIGHT_PROP_HP_PERCENT":
-                            artifact.mainProp5 = .hpPercentage
-                        case "FIGHT_PROP_ATTACK_PERCENT":
-                            artifact.mainProp5 = .atkPercentage
-                        case "FIGHT_PROP_DEFENSE_PERCENT":
-                            artifact.mainProp5 = .defPercentage
-                        case "FIGHT_PROP_ELEMENT_MASTERY":
-                            artifact.mainProp5 = .em
-                        case "FIGHT_PROP_CRITICAL":
-                            artifact.mainProp5 = .critRate
-                        case "FIGHT_PROP_CRITICAL_HURT":
-                            artifact.mainProp5 = .critDmg
-                        case "FIGHT_PROP_HEAL_ADD":
-                            artifact.mainProp5 = .healingBonus
-                        default:
-                            artifact.mainProp5 = nil
-                        }
-                    }
-                }
-
-                return artifact
-            }
-
-            let artifactRatingRequest = ArtifactRatingRequest(
-                cid: enkaID,
-                flower: readFromEnkaDatas(position: 1),
-                plume: readFromEnkaDatas(position: 2),
-                sands: readFromEnkaDatas(position: 3),
-                goblet: readFromEnkaDatas(position: 4),
-                circlet: readFromEnkaDatas(position: 5)
-            )
-
-            return artifactRatingRequest
-        }
-
         // MARK: Private
 
         /// 英文名ID（用于图标）
@@ -863,5 +689,153 @@ enum RankLevel: Int {
 
     var squaredBackgroundIconString: String {
         "UI_QualityBg_\(rawValue)s"
+    }
+}
+
+// MARK: - Artifact Rating Support
+
+extension PlayerDetail.Avatar {
+    func convert2ArtifactRatingModel() -> ArtifactRatingRequest {
+        let artifactRatingRequest = ArtifactRatingRequest(
+            cid: enkaID,
+            flower: readFromEnkaDatas(position: 1),
+            plume: readFromEnkaDatas(position: 2),
+            sands: readFromEnkaDatas(position: 3),
+            goblet: readFromEnkaDatas(position: 4),
+            circlet: readFromEnkaDatas(position: 5)
+        )
+
+        return artifactRatingRequest
+    }
+
+    func readFromEnkaDatas(position: Int) -> ArtifactRatingRequest.Artifact {
+        let positionType: PlayerDetail.Avatar.Artifact.ArtifactType = {
+            switch position {
+            case 1:
+                return .flower
+            case 2:
+                return .plume
+            case 3:
+                return .sand
+            case 4:
+                return .goblet
+            case 5:
+                return .circlet
+            default:
+                return .flower
+            }
+        }()
+
+        var artifact = ArtifactRatingRequest.Artifact()
+        if let thisEnkaObject = artifacts
+            .first(where: { $0.artifactType == positionType }) {
+            artifact.star = thisEnkaObject.rankLevel.rawValue
+            artifact.lv = thisEnkaObject.level
+            for subAttr in thisEnkaObject.subAttributes {
+                print("\(subAttr.rawName)-\(subAttr.value)")
+            }
+            artifact.atkPercent = thisEnkaObject.subAttributes
+                .first(where: {
+                    $0.rawName == "FIGHT_PROP_ATTACK_PERCENT"
+                })?.value ?? 0
+            artifact.hpPercent = thisEnkaObject.subAttributes
+                .first(where: { $0.rawName == "FIGHT_PROP_HP_PERCENT"
+                })?
+                .value ?? 0
+            artifact.defPercent = thisEnkaObject.subAttributes
+                .first(where: {
+                    $0.rawName == "FIGHT_PROP_DEFENSE_PERCENT"
+                })?.value ?? 0
+            artifact.em = thisEnkaObject.subAttributes
+                .first(where: {
+                    $0.rawName == "FIGHT_PROP_ELEMENT_MASTERY"
+                })?.value ?? 0
+            artifact.erPercent = thisEnkaObject.subAttributes
+                .first(where: {
+                    $0.rawName == "FIGHT_PROP_CHARGE_EFFICIENCY"
+                })?.value ?? 0
+            artifact.crPercent = thisEnkaObject.subAttributes
+                .first(where: { $0.rawName == "FIGHT_PROP_CRITICAL" })?
+                .value ?? 0
+            artifact.cdPercent = thisEnkaObject.subAttributes
+                .first(where: { $0.rawName == "FIGHT_PROP_CRITICAL_HURT"
+                })?.value ?? 0
+            artifact.atk = thisEnkaObject.subAttributes
+                .first(where: { $0.rawName == "FIGHT_PROP_ATTACK" })?
+                .value ?? 0
+            artifact.hp = thisEnkaObject.subAttributes
+                .first(where: { $0.rawName == "FIGHT_PROP_HP" })?
+                .value ?? 0
+            artifact.def = thisEnkaObject.subAttributes
+                .first(where: { $0.rawName == "FIGHT_PROP_DEFENSE" })?
+                .value ?? 0
+
+            if position == 3 {
+                switch thisEnkaObject.mainAttribute.rawName {
+                case "FIGHT_PROP_HP_PERCENT":
+                    artifact.mainProp3 = .hpPercentage
+                case "FIGHT_PROP_ATTACK_PERCENT":
+                    artifact.mainProp3 = .atkPercentage
+                case "FIGHT_PROP_DEFENSE_PERCENT":
+                    artifact.mainProp3 = .defPercentage
+                case "FIGHT_PROP_ELEMENT_MASTERY":
+                    artifact.mainProp3 = .em
+                case "FIGHT_PROP_CHARGE_EFFICIENCY":
+                    artifact.mainProp3 = .er
+                default:
+                    artifact.mainProp3 = nil
+                }
+            } else if position == 4 {
+                switch thisEnkaObject.mainAttribute.rawName {
+                case "FIGHT_PROP_HP_PERCENT":
+                    artifact.mainProp4 = .hpPercentage
+                case "FIGHT_PROP_ATTACK_PERCENT":
+                    artifact.mainProp4 = .atkPercentage
+                case "FIGHT_PROP_DEFENSE_PERCENT":
+                    artifact.mainProp4 = .defPercentage
+                case "FIGHT_PROP_ELEMENT_MASTERY":
+                    artifact.mainProp4 = .em
+                case "FIGHT_PROP_PHYSICAL_ADD_HURT":
+                    artifact.mainProp4 = .physicoDmg
+                case "FIGHT_PROP_FIRE_ADD_HURT":
+                    artifact.mainProp4 = .pyroDmg
+                case "FIGHT_PROP_ELEC_ADD_HURT":
+                    artifact.mainProp4 = .electroDmg
+                case "FIGHT_PROP_WATER_ADD_HURT":
+                    artifact.mainProp4 = .hydroDmg
+                case "FIGHT_PROP_WIND_ADD_HURT":
+                    artifact.mainProp4 = .anemoDmg
+                case "FIGHT_PROP_ICE_ADD_HURT":
+                    artifact.mainProp4 = .cryoDmg
+                case "FIGHT_PROP_ROCK_ADD_HURT":
+                    artifact.mainProp4 = .geoDmg
+                case "FIGHT_PROP_GRASS_ADD_HURT":
+                    artifact.mainProp4 = .dendroDmg
+                default:
+                    artifact.mainProp4 = nil
+                }
+            } else if position == 5 {
+                switch thisEnkaObject.mainAttribute.rawName {
+                case "FIGHT_PROP_HP_PERCENT":
+                    artifact.mainProp5 = .hpPercentage
+                case "FIGHT_PROP_ATTACK_PERCENT":
+                    artifact.mainProp5 = .atkPercentage
+                case "FIGHT_PROP_DEFENSE_PERCENT":
+                    artifact.mainProp5 = .defPercentage
+                case "FIGHT_PROP_ELEMENT_MASTERY":
+                    artifact.mainProp5 = .em
+                case "FIGHT_PROP_CRITICAL":
+                    artifact.mainProp5 = .critRate
+                case "FIGHT_PROP_CRITICAL_HURT":
+                    artifact.mainProp5 = .critDmg
+                case "FIGHT_PROP_HEAL_ADD":
+                    artifact.mainProp5 = .healingBonus
+                default:
+                    artifact.mainProp5 = nil
+                }
+            }
+        }
+
+        return artifact
     }
 }

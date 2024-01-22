@@ -130,15 +130,15 @@ struct EachCharacterDetailDataView: View {
                     fontSize: fontSize
                 )
             }
-            if avatar.isPhysicalDMGBoostSecondarilyEffective {
+            if avatar.isPhysicoDMGBoostSecondarilyEffective {
                 AttributeLabel(
                     iconString: "UI_Icon_CurAttack",
-                    name: "detailPortal.ECDDV.ATK".localized + " & " + "detailPortal.ECDDV.prop.bonus.physical"
+                    name: "detailPortal.ECDDV.ATK".localized + " & " + "detailPortal.ECDDV.prop.bonus.physico"
                         .localized
                         .percentageMarksTrimmed,
                     value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))" +
                         ", " +
-                        "\((avatar.fightPropMap.physicalDamage * 100.0).rounded(toPlaces: 2))%",
+                        "\((avatar.fightPropMap.physicoDamage * 100.0).rounded(toPlaces: 2))%",
                     fontSize: fontSize
                 )
             } else {
@@ -558,7 +558,7 @@ extension PlayerDetail.Avatar {
         case .pyro: return fightPropMap.pyroDamagePaired
         case .geo: return fightPropMap.geoDamagePaired
         case .dendro: return fightPropMap.dendroDamagePaired
-        case .unknown: return fightPropMap.physicalDamagePaired
+        case .unknown: return fightPropMap.physicoDamagePaired
         }
     }
 
@@ -570,8 +570,8 @@ extension PlayerDetail.Avatar {
     }
 
     /// 物理伤害加成是否有效、且物理伤害加成是否为最强元素加成
-    var isPhysicalDMGBoostSecondarilyEffective: Bool {
-        fightPropMap.physicalDamage > 0 && (highestDMGBoostIntel.element != .unknown)
+    var isPhysicoDMGBoostSecondarilyEffective: Bool {
+        fightPropMap.physicoDamage > 0 && (highestDMGBoostIntel.element != .unknown)
     }
 }
 
@@ -579,7 +579,7 @@ extension Enka.FightPropMap {
     /// 给所有伤害加成做排序，最高加成得以排在最开头。
     var allPairedDMGBoostsSorted: [(amount: Double, element: PlayerDetail.Avatar.AvatarElement)] {
         [
-            physicalDamagePaired,
+            physicoDamagePaired,
             pyroDamagePaired,
             electroDamagePaired,
             hydroDamagePaired,
@@ -593,7 +593,7 @@ extension Enka.FightPropMap {
     }
 
     /// 物理伤害加成（配对）
-    var physicalDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (physicalDamage, .unknown)
+    var physicoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (physicoDamage, .unknown)
     }
 
     /// 火元素伤害加成（配对）
@@ -615,14 +615,14 @@ extension Enka.FightPropMap {
 extension PlayerDetail.Avatar.AvatarElement {
     var dmgBonusLabel: (text: String, icon: String) {
         switch self {
-        case .cryo: return ("detailPortal.ECDDV.bonus.cryo", "UI_Icon_Element_Ice")
-        case .anemo: return ("detailPortal.ECDDV.bonus.anemo", "UI_Icon_Element_Wind")
-        case .electro: return ("detailPortal.ECDDV.bonus.electro", "UI_Icon_Element_Electric")
-        case .hydro: return ("detailPortal.ECDDV.bonus.hydro", "UI_Icon_Element_Water")
-        case .pyro: return ("detailPortal.ECDDV.bonus.pyro", "UI_Icon_Element_Fire")
-        case .geo: return ("detailPortal.ECDDV.bonus.geo", "UI_Icon_Element_Rock")
-        case .dendro: return ("detailPortal.ECDDV.bonus.dendro", "UI_Icon_Element_Grass")
-        case .unknown: return ("detailPortal.ECDDV.bonus.physical", "UI_Icon_PhysicalAttackUp")
+        case .cryo: return ("detailPortal.ECDDV.bonus.cryo", "UI_Icon_Element_Cryo")
+        case .anemo: return ("detailPortal.ECDDV.bonus.anemo", "UI_Icon_Element_Anemo")
+        case .electro: return ("detailPortal.ECDDV.bonus.electro", "UI_Icon_Element_Electro")
+        case .hydro: return ("detailPortal.ECDDV.bonus.hydro", "UI_Icon_Element_Hydro")
+        case .pyro: return ("detailPortal.ECDDV.bonus.pyro", "UI_Icon_Element_Pyro")
+        case .geo: return ("detailPortal.ECDDV.bonus.geo", "UI_Icon_Element_Geo")
+        case .dendro: return ("detailPortal.ECDDV.bonus.dendro", "UI_Icon_Element_Dendro")
+        case .unknown: return ("detailPortal.ECDDV.bonus.physico", "UI_Icon_Element_Physico_Amp")
         }
     }
 }

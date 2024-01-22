@@ -19739,7 +19739,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.physical" : {
+    "detailPortal.ECDDV.bonus.physico" : {
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {
@@ -21168,7 +21168,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.physical" : {
+    "detailPortal.ECDDV.prop.bonus.physico" : {
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {

@@ -108,7 +108,7 @@ public struct ArtifactRatingRequest {
         case atkPercentage = 2
         case defPercentage = 3
         case em = 4
-        case physicalDmg = 5
+        case physicoDmg = 5
         case pyroDmg = 6
         case hydroDmg = 7
         case cryoDmg = 8

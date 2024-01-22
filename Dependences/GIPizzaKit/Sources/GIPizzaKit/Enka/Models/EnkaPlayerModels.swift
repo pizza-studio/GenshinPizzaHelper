@@ -301,7 +301,7 @@ extension Enka {
         public var elementalMastery: Double
 
         /// 物理伤害加成
-        public var physicalDamage: Double
+        public var physicoDamage: Double
         /// 火元素伤害加成
         public var pyroDamage: Double
         /// 雷元素伤害加成
@@ -318,7 +318,7 @@ extension Enka {
         public var cryoDamage: Double
 
         /// 物理抗性
-        public var physicalResistance: Double
+        public var physicoResistance: Double
         /// 火元素抗性
         public var pyroResistance: Double
         /// 雷元素抗性
@@ -361,8 +361,8 @@ extension Enka {
             case healingBonus = "26"
             case healedBonus = "27"
             case elementalMastery = "28"
-            case physicalResistance = "29"
-            case physicalDamage = "30"
+            case physicoResistance = "29"
+            case physicoDamage = "30"
             case pyroDamage = "40"
             case electroDamage = "41"
             case hydroDamage = "42"

@@ -106,7 +106,6 @@
 		5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8129D280FD0075F780 /* GachaModel.swift */; };
 		5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3247029DFE878002779F3 /* CollectionChunked.swift */; };
 		5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
-		5BD1C60E2A2A1FC90043C2B1 /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		5BD1C60F2A2A1FC90043C2B1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210A28B3910800A6BBA9 /* HomeView.swift */; };
 		5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		5BD1C6112A2A1FC90043C2B1 /* NotificationSettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */; };
@@ -259,12 +258,6 @@
 		BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E328DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
-		BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
-		BF7500F528E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
-		BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
-		BF7500F728E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
-		BF7500F828E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
-		BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */; };
 		BF7500FE28E0452C00CDA64E /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
 		BF75010028E0452C00CDA64E /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
 		BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
@@ -940,7 +933,6 @@
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
 		BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachCharacterDetailDataView.swift; sourceTree = "<group>"; };
 		BF7500DE28DEC99400CDA64E /* NumberTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTools.swift; sourceTree = "<group>"; };
-		BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDictionary.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
 		BF75010F28E14CF500CDA64E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
@@ -1395,7 +1387,6 @@
 				BF6C5271289E12DA00EA224F /* md5.swift */,
 				BF6C5277289E153400EA224F /* NetworkReachability.swift */,
 				BF7500DE28DEC99400CDA64E /* NumberTools.swift */,
-				BF7500F328E02F4500CDA64E /* PropertyDictionary.swift */,
 				BFFD823928A73A5400616CE1 /* ReviewHandler.swift */,
 				BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */,
 				EA196B0128B769340091FAE0 /* StringExtensions.swift */,
@@ -2573,7 +2564,6 @@
 				EAEE8ECE2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
 				5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */,
 				5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */,
-				5BD1C60E2A2A1FC90043C2B1 /* PropertyDictionary.swift in Sources */,
 				5BD1C60F2A2A1FC90043C2B1 /* HomeView.swift in Sources */,
 				BFF6840A2A3753C8005470EA /* Icon.swift in Sources */,
 				5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */,
@@ -2705,7 +2695,6 @@
 				EAD7F02828D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
 				EA6B914C290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				EAB11EA229325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
-				BF7500F828E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA36DFBB28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
 				BF0130A429220E7800074450 /* WidgetUserData.swift in Sources */,
 				BF3F98C528EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
@@ -2763,7 +2752,6 @@
 				EAE846182A3773410065CF09 /* ViewModel.swift in Sources */,
 				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
 				EAF55E2128CC8F1A00902AE7 /* WidgetViewConfiguration.swift in Sources */,
-				BF7500F728E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
 				EA6B914B290EB3B900B5230B /* GlobalVar.swift in Sources */,
 				EABE606928D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */,
@@ -2821,7 +2809,6 @@
 				BF3F98C328EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */,
 				BFBDD65028ED7B960022B79D /* Result.swift in Sources */,
-				BF7500F628E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
 				EA185F2A292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EA50D66A290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
@@ -2846,7 +2833,6 @@
 				BFBDD64E28ED7B940022B79D /* Result.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
-				BF7500F528E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				5BA0D7AD2ACDD51300B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
 				EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
 				EA784CD12902517800918F64 /* AvatarHoldingData.swift in Sources */,
@@ -3031,7 +3017,6 @@
 				EAEE8ECD2AE08D9A00F406E4 /* AnyLocalizedError.swift in Sources */,
 				EAD3247129DFE878002779F3 /* CollectionChunked.swift in Sources */,
 				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
-				BF7500F428E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
 				BFF684092A3753C8005470EA /* Icon.swift in Sources */,
 				EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
@@ -3121,7 +3106,6 @@
 				EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
 				BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BF0130A529220E7800074450 /* WidgetUserData.swift in Sources */,
-				BF7500F928E02F4500CDA64E /* PropertyDictionary.swift in Sources */,
 				EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */,
 				EA185F31292F1AFD003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */,
