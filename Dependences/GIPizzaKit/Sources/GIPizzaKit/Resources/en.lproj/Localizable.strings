@@ -118,6 +118,8 @@
 "$asset.character:Furina" = "Furina";
 "$asset.character:Chevreuse" = "Chevreuse";
 "$asset.character:Navia" = "Navia";
+"$asset.character:Gaming" = "Gaming";
+"$asset.character:Xianyun" = "Xianyun";
 
 // MARK: - Weapon Names
 
@@ -260,6 +262,7 @@
 "$asset.weapon:TulaytullahsRemembrance" = "Tulaytullah's Remembrance";
 "$asset.weapon:CashflowSupervision" = "Cashflow Supervision";
 "$asset.weapon:TomeOfTheEternalFlow" = "Tome of the Eternal Flow";
+"$asset.weapon:CranesEchoingCall" = "Crane's Echoing Call";
 "$asset.weapon:HuntersBow" = "Hunter's Bow";
 "$asset.weapon:SeasonedHuntersBow" = "Seasoned Hunter's Bow";
 "$asset.weapon:RavenBow" = "Raven Bow";
@@ -485,3 +488,9 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia: Rosula";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse: Type II";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "Travel Notes: Time Inscribed";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Achievement: Adeptal Valley";
+"$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Achievement: Rainjade Rite";
+"$asset.nameCard:UI_NameCardPic_Bp30_P" = "Travel Notes: Vivid Flight";
+"$asset.nameCard:UI_NameCardPic_OST4_P" = "Album: The Stellar Moments";

@@ -118,6 +118,8 @@
 "$asset.character:Furina" = "芙寧娜";
 "$asset.character:Chevreuse" = "夏沃蕾";
 "$asset.character:Navia" = "娜維婭";
+"$asset.character:Gaming" = "嘉明";
+"$asset.character:Xianyun" = "閒雲";
 
 // MARK: - Weapon Names
 
@@ -260,6 +262,7 @@
 "$asset.weapon:TulaytullahsRemembrance" = "圖萊杜拉的回憶";
 "$asset.weapon:CashflowSupervision" = "金流監督";
 "$asset.weapon:TomeOfTheEternalFlow" = "萬世流湧大典";
+"$asset.weapon:CranesEchoingCall" = "鶴鳴餘音";
 "$asset.weapon:HuntersBow" = "獵弓";
 "$asset.weapon:SeasonedHuntersBow" = "歷練的獵弓";
 "$asset.weapon:RavenBow" = "鴉羽弓";
@@ -485,3 +488,9 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "娜維婭·刺玫";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "夏沃蕾·貳型";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "紀行·時雕";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "成就·仙谷";
+"$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "成就·投瓏";
+"$asset.nameCard:UI_NameCardPic_Bp30_P" = "紀行·彩鷂";
+"$asset.nameCard:UI_NameCardPic_OST4_P" = "專輯·閃耀的群星";

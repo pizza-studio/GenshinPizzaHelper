@@ -118,6 +118,8 @@
 "$asset.character:Furina" = "Furina";
 "$asset.character:Chevreuse" = "Chevreuse";
 "$asset.character:Navia" = "Navia";
+"$asset.character:Gaming" = "Gaming";
+"$asset.character:Xianyun" = "Xianyun";
 
 // MARK: - Weapon Names
 
@@ -260,6 +262,7 @@
 "$asset.weapon:TulaytullahsRemembrance" = "Hồi Ức Tulaytullah";
 "$asset.weapon:CashflowSupervision" = "Quản Đốc Vàng Ròng";
 "$asset.weapon:TomeOfTheEternalFlow" = "Nghi Thức Dòng Chảy Vĩnh Hằng";
+"$asset.weapon:CranesEchoingCall" = "Dư Âm Tiếng Hạc";
 "$asset.weapon:HuntersBow" = "Cung Săn Bắn";
 "$asset.weapon:SeasonedHuntersBow" = "Cung Săn Bắn Tôi Luyện";
 "$asset.weapon:RavenBow" = "Cung Lông Quạ";
@@ -487,3 +490,9 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia - Rosula";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse - Mẫu II";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "Nhật Ký Hành Trình - Khắc Ghi";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Thành Tựu - Tiên Cốc";
+"$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Thành Tựu - Mưa Ngọc";
+"$asset.nameCard:UI_NameCardPic_Bp30_P" = "Nhật Ký Hành Trình - Sắc Diều";
+"$asset.nameCard:UI_NameCardPic_OST4_P" = "Tuyển Tập - Chòm Sao Lấp Lánh";

@@ -118,6 +118,8 @@
 "$asset.character:Furina" = "Furina";
 "$asset.character:Chevreuse" = "Chevreuse";
 "$asset.character:Navia" = "Navia";
+"$asset.character:Gaming" = "Gaming";
+"$asset.character:Xianyun" = "Xianyun";
 
 // MARK: - Weapon Names
 
@@ -260,6 +262,7 @@
 "$asset.weapon:TulaytullahsRemembrance" = "Rimembranza di Tulaytullah";
 "$asset.weapon:CashflowSupervision" = "Supervisione pecuniaria";
 "$asset.weapon:TomeOfTheEternalFlow" = "Tomo del flusso perenne";
+"$asset.weapon:CranesEchoingCall" = "Canto della gru echeggiante";
 "$asset.weapon:HuntersBow" = "Arco da caccia";
 "$asset.weapon:SeasonedHuntersBow" = "Arco da caccia per esperti";
 "$asset.weapon:RavenBow" = "Arco corvino";
@@ -487,3 +490,9 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia: Rosula";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse: Tipo II";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "Appunti di viaggio: Iscrizione del tempo";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Obiettivo: Valle adeptica";
+"$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Obiettivo: Rito della Giada pluviale";
+"$asset.nameCard:UI_NameCardPic_Bp30_P" = "Appunti di viaggio: Colori in volo";
+"$asset.nameCard:UI_NameCardPic_OST4_P" = "Album: The Stellar Moments";

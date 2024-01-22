@@ -118,6 +118,8 @@
 "$asset.character:Furina" = "Furina";
 "$asset.character:Chevreuse" = "Chevreuse";
 "$asset.character:Navia" = "Navia";
+"$asset.character:Gaming" = "Gaming";
+"$asset.character:Xianyun" = "Xianyun";
 
 // MARK: - Weapon Names
 
@@ -260,6 +262,7 @@
 "$asset.weapon:TulaytullahsRemembrance" = "Mémoire de Tulaytullah";
 "$asset.weapon:CashflowSupervision" = "Supervision de trésorerie";
 "$asset.weapon:TomeOfTheEternalFlow" = "Tome du flux éternel";
+"$asset.weapon:CranesEchoingCall" = "Écho de la grue";
 "$asset.weapon:HuntersBow" = "Arc de chasse";
 "$asset.weapon:SeasonedHuntersBow" = "Arc de chasse aguerri";
 "$asset.weapon:RavenBow" = "Arc du corbeau";
@@ -485,3 +488,9 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia : Rosula";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse : Type II";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "PB - Marque du temps";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Succès - Vallée adeptale";
+"$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Succès - Pluie de jades";
+"$asset.nameCard:UI_NameCardPic_Bp30_P" = "PB - Vol coloré";
+"$asset.nameCard:UI_NameCardPic_OST4_P" = "Album - Moments stellaires";

@@ -118,6 +118,8 @@
 "$asset.character:Furina" = "Фурина";
 "$asset.character:Chevreuse" = "Шеврёз";
 "$asset.character:Navia" = "Навия";
+"$asset.character:Gaming" = "Ка Мин";
+"$asset.character:Xianyun" = "Сянь Юнь";
 
 // MARK: - Weapon Names
 
@@ -260,6 +262,7 @@
 "$asset.weapon:TulaytullahsRemembrance" = "Воспоминания Тулайтуллы";
 "$asset.weapon:CashflowSupervision" = "Казначейский надзор";
 "$asset.weapon:TomeOfTheEternalFlow" = "Обряд вечного течения";
+"$asset.weapon:CranesEchoingCall" = "Звонкий клич журавля";
 "$asset.weapon:HuntersBow" = "Лук охотника";
 "$asset.weapon:SeasonedHuntersBow" = "Лук опытного охотника";
 "$asset.weapon:RavenBow" = "Лук ворона";
@@ -487,3 +490,9 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Росула";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Модель № 2";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "Резьба по времени";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Долина Адептов";
+"$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Брошенный нефрит";
+"$asset.nameCard:UI_NameCardPic_Bp30_P" = "Яркие птицы";
+"$asset.nameCard:UI_NameCardPic_OST4_P" = "The Stellar Moments";
