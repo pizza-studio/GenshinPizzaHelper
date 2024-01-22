@@ -10,6 +10,12 @@ import DefaultsKeys
 import Foundation
 
 extension String {
+    /// 检测是否包含汉字或假名。
+    /// Remark: 暂无全形标点检测之功能。
+    public var containsKanjiOrKana: Bool {
+        range(of: #"\p{Script=Han}|\p{Script=Katakana}|\p{Script=Hiragana}"#, options: .regularExpression) != nil
+    }
+
     public func i18n(_ identifier: String? = nil) -> String {
         let identifier = identifier ?? Bundle.main.preferredLocalizations.first
         let moduleLProjPath = Bundle.module.path(forResource: identifier, ofType: "lproj")

@@ -7,5 +7,5 @@
 
 import Foundation
 
-var UPLOAD_ABYSS_DATA_LOCKED = false
-var UPLOAD_HOLDING_DATA_LOCKED = false
+public var UPLOAD_ABYSS_DATA_LOCKED = false
+public var UPLOAD_HOLDING_DATA_LOCKED = false

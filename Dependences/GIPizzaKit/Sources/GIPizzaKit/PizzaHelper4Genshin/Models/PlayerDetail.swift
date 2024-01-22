@@ -6,18 +6,27 @@
 //
 
 import Foundation
-import GIPizzaKit
 import HBMihoyoAPI
-import SwiftUI
+
+// MARK: - Fetched Models
+
+public typealias PlayerDetailsFetchResult = Result<
+    Enka.PlayerDetailFetchModel,
+    RequestError
+>
+public typealias PlayerDetailResult = Result<
+    PlayerDetail,
+    PlayerDetail.PlayerDetailError
+>
 
 // MARK: - PlayerDetail
 
-struct PlayerDetail {
+public struct PlayerDetail {
     // MARK: Lifecycle
 
     // MARK: - 初始化
 
-    init(
+    public init(
         PlayerDetailFetchModel: Enka.PlayerDetailFetchModel,
         localizedDictionary: [String: String],
         characterMap: [String: Enka.CharacterMap.Character]
@@ -44,17 +53,17 @@ struct PlayerDetail {
         )!
     }
 
-    // MARK: Internal
+    // MARK: Public
 
     // MARK: - 本地化工具及其他词典
 
     // MARK: - Model
 
     /// 账号基本信息
-    struct PlayerBasicInfo {
+    public struct PlayerBasicInfo {
         // MARK: Lifecycle
 
-        init?(
+        public init?(
             playerInfo: Enka.PlayerDetailFetchModel.PlayerInfo?,
             characterMap: [String: Enka.CharacterMap.Character]
         ) {
@@ -93,47 +102,47 @@ struct PlayerDetail {
             }
         }
 
-        // MARK: Internal
+        // MARK: Public
 
         /// 名称
-        var nickname: String
+        public var nickname: String
         /// 等级
-        var level: Int
+        public var level: Int
         /// 签名
-        var signature: String
+        public var signature: String
         /// 世界等级
-        var worldLevel: Int
+        public var worldLevel: Int
 
         /// 已解锁成就数
-        var finishAchievementNum: Int
+        public var finishAchievementNum: Int
         /// 本期深境螺旋层数
-        var towerFloorIndex: Int?
+        public var towerFloorIndex: Int?
         /// 本期深境螺旋间数
-        var towerLevelIndex: Int?
+        public var towerLevelIndex: Int?
 
         /// 资料名片ID
-        var nameCardId: Int
+        public var nameCardId: Int
         /// 玩家头像
-        var profilePictureAvatarIconString: String?
+        public var profilePictureAvatarIconString: String?
         /// 玩家头像对应的角色 enkaID
-        var profilePictureAvatarEnkaID: Int?
+        public var profilePictureAvatarEnkaID: Int?
         /// 玩家头像对应的角色的时装编号 enkaID
-        var profilePictureCostumeID: Int?
+        public var profilePictureCostumeID: Int?
 
         /// 正在展示的名片
-        var showingNameCards: [Int]
+        public var showingNameCards: [Int]
 
-        var towerFloorLevelSimplified: String? {
+        public var towerFloorLevelSimplified: String? {
             guard let floor = towerFloorIndex, let level = towerLevelIndex else { return "nil" }
             return "\(floor)-\(level)"
         }
     }
 
     /// 游戏角色
-    class Avatar: Hashable {
+    public class Avatar: Hashable {
         // MARK: Lifecycle
 
-        init?(
+        public init?(
             avatarInfo: Enka.PlayerDetailFetchModel.AvatarInfo,
             localizedDictionary: [String: String],
             characterDictionary: [String: Enka.CharacterMap.Character],
@@ -289,22 +298,22 @@ struct PlayerDetail {
                 }
         }
 
-        // MARK: Internal
+        // MARK: Public
 
         // Model
         /// 天赋
-        struct Skill: Hashable {
+        public struct Skill: Hashable {
             /// 天赋名字(字典没有，暂时无法使用)
-            let name: String
+            public let name: String
             /// 固有天赋等级
-            let level: Int
+            public let level: Int
             /// 加权天赋等级（被命之座影响过的天赋等级
-            let levelAdjusted: Int
+            public let levelAdjusted: Int
             /// 天赋图标ID
-            let iconString: String
+            public let iconString: String
 
             /// 设定杂凑方法
-            func hash(into hasher: inout Hasher) {
+            public func hash(into hasher: inout Hasher) {
                 hasher.combine(name)
                 hasher.combine(level)
                 hasher.combine(levelAdjusted)
@@ -313,7 +322,7 @@ struct PlayerDetail {
         }
 
         /// 武器
-        struct Weapon {
+        public struct Weapon {
             // MARK: Lifecycle
 
             init?(
@@ -354,33 +363,33 @@ struct PlayerDetail {
                 }
             }
 
-            // MARK: Internal
+            // MARK: Public
 
             /// 武器名字
-            let name: String
+            public let name: String
             /// 武器等级
-            let level: Int
+            public let level: Int
             /// 精炼等阶 (1-5)
-            let refinementRank: Int
+            public let refinementRank: Int
             /// 武器主属性
-            var mainAttribute: Attribute
+            public var mainAttribute: Attribute
             /// 武器副属性
-            var subAttribute: Attribute?
+            public var subAttribute: Attribute?
             /// 武器图标ID
-            let iconString: String
+            public let iconString: String
             /// 武器星级
-            let rankLevel: RankLevel
+            public let rankLevel: RankLevel
 
             /// 突破后武器图标ID
-            var awakenedIconString: String { "\(iconString)_Awaken" }
+            public var awakenedIconString: String { "\(iconString)_Awaken" }
             /// 经过错字订正处理的武器名称
-            var nameCorrected: String {
+            public var nameCorrected: String {
                 name.localizedWithFix
             }
         }
 
         /// 圣遗物
-        struct Artifact: Identifiable, Equatable, Hashable {
+        public struct Artifact: Identifiable, Equatable, Hashable {
             // MARK: Lifecycle
 
             init?(
@@ -435,13 +444,7 @@ struct PlayerDetail {
 
             // MARK: Public
 
-            public func hash(into hasher: inout Hasher) {
-                hasher.combine(identifier)
-            }
-
-            // MARK: Internal
-
-            enum ArtifactType: String, CaseIterable {
+            public enum ArtifactType: String, CaseIterable {
                 case flower = "EQUIP_BRACER"
                 case plume = "EQUIP_NECKLACE"
                 case sand = "EQUIP_SHOES"
@@ -449,45 +452,49 @@ struct PlayerDetail {
                 case circlet = "EQUIP_DRESS"
             }
 
-            let id: String
+            public let id: String
 
             /// 圣遗物名字（词典没有，暂不可用）
-            let name: String
+            public let name: String
             /// 所属圣遗物套装的名字
-            let setName: String
+            public let setName: String
             /// 圣遗物的主属性
-            let mainAttribute: Attribute
+            public let mainAttribute: Attribute
             /// 圣遗物的副属性
-            let subAttributes: [Attribute]
+            public let subAttributes: [Attribute]
             /// 圣遗物图标ID
-            let iconString: String
+            public let iconString: String
             /// 圣遗物所属部位
-            let artifactType: ArtifactType
+            public let artifactType: ArtifactType
             /// 圣遗物等级
-            let level: Int
+            public let level: Int
             /// 圣遗物星级
-            let rankLevel: RankLevel
+            public let rankLevel: RankLevel
             /// 圣遗物评分
-            var score: Double?
+            public var score: Double?
 
-            var identifier: String {
+            public var identifier: String {
                 UUID().uuidString
             }
 
-            static func == (
+            public static func == (
                 lhs: PlayerDetail.Avatar.Artifact,
                 rhs: PlayerDetail.Avatar.Artifact
             )
                 -> Bool {
                 lhs.id == rhs.id
             }
+
+            public func hash(into hasher: inout Hasher) {
+                hasher.combine(identifier)
+            }
         }
 
         /// 任意属性
-        struct Attribute {
+        public struct Attribute {
             // MARK: Lifecycle
 
-            init(name: String, value: Double, rawName: String) {
+            public init(name: String, value: Double, rawName: String) {
                 self.name = name
                 self.value = value
                 self.rawName = rawName
@@ -496,13 +503,13 @@ struct PlayerDetail {
             /// 属性图标的ID
             // let iconString: String
 
-            // MARK: Internal
+            // MARK: Public
 
-            let name: String
-            var value: Double
-            let rawName: String
+            public let name: String
+            public var value: Double
+            public let rawName: String
 
-            var valueString: String {
+            public var valueString: String {
                 let result: NSMutableString
                 if floor(value) == value {
                     result = .init(string: "\(Int(value))")
@@ -514,10 +521,14 @@ struct PlayerDetail {
                 }
                 return result.description
             }
+
+            public var matchedType: AvatarAttribute? {
+                .init(rawValue: rawName)
+            }
         }
 
         /// 元素类型
-        enum AvatarElement: String {
+        public enum AvatarElement: String {
             /// 冰
             case cryo = "Ice"
             /// 风
@@ -537,7 +548,7 @@ struct PlayerDetail {
         }
 
         /// 角色星级，橙色为四星，紫色为五星
-        enum Quality: String {
+        public enum Quality: String {
             /// 紫色，四星角色
             case purple = "QUALITY_PURPLE"
             /// 橙色，五星角色
@@ -547,54 +558,54 @@ struct PlayerDetail {
         }
 
         /// 名字
-        let name: String
+        public let name: String
         /// 元素
-        let element: AvatarElement
+        public let element: AvatarElement
         /// 命之座等级 (0-6)
-        let talentCount: Int
+        public let talentCount: Int
         /// 天赋
-        let skills: [Skill]
+        public let skills: [Skill]
 
         /// 时装
-        let costumeAsset: CostumeAsset?
+        public let costumeAsset: CostumeAsset?
         /// 角色 Asset
-        let characterAsset: CharacterAsset
+        public let characterAsset: CharacterAsset
 
         /// 等级
-        let level: Int
+        public let level: Int
 
         /// 武器
-        let weapon: Weapon
+        public let weapon: Weapon
         /// 圣遗物
-        var artifacts: [Artifact]
+        public var artifacts: [Artifact]
         /// 圣遗物总分
-        var artifactTotalScore: Double?
+        public var artifactTotalScore: Double?
         /// 圣遗物评价
-        var artifactScoreRank: String?
+        public var artifactScoreRank: String?
 
         /// 角色属性
-        let fightPropMap: Enka.FightPropMap
+        public let fightPropMap: Enka.FightPropMap
 
         /// 正脸图
-        let iconString: String
+        public let iconString: String
         /// 侧脸图
-        let sideIconString: String
-        let quality: Quality
+        public let sideIconString: String
+        public let quality: Quality
 
         /// Enka Character ID
-        let enkaID: Int
+        public let enkaID: Int
         /// UID
-        let uid: String
+        public let uid: String
 
         /// 原始 character 資料備份。
-        let character: Enka.CharacterMap.Character
+        public let character: Enka.CharacterMap.Character
 
         /// 经过错字订正处理的角色姓名
-        var nameCorrected: String {
+        public var nameCorrected: String {
             CharacterAsset.match(id: enkaID).localized.localizedWithFix
         }
 
-        var nameCorrectedAndTruncated: String {
+        public var nameCorrectedAndTruncated: String {
             let rawName = nameCorrected
             let finalName = NSMutableString()
             let maxCharsKept = 18
@@ -619,7 +630,7 @@ struct PlayerDetail {
         }
 
         /// 名片
-        var namecardIconString: String {
+        public var namecardIconString: String {
             // 主角没有对应名片
             if nameID == "PlayerGirl" || nameID == "PlayerBoy" {
                 return "UI_NameCardPic_Bp2_P"
@@ -630,7 +641,7 @@ struct PlayerDetail {
             }
         }
 
-        static func == (
+        public static func == (
             lhs: PlayerDetail.Avatar,
             rhs: PlayerDetail.Avatar
         )
@@ -638,7 +649,7 @@ struct PlayerDetail {
             lhs.hashValue == rhs.hashValue
         }
 
-        func hash(into hasher: inout Hasher) {
+        public func hash(into hasher: inout Hasher) {
             hasher.combine(name)
         }
 
@@ -650,20 +661,20 @@ struct PlayerDetail {
         }
     }
 
-    enum PlayerDetailError: Error {
+    public enum PlayerDetailError: Error {
         case failToGetLocalizedDictionary
         case failToGetCharacterDictionary
         case failToGetCharacterData(message: String)
         case refreshTooFast(dateWhenRefreshable: Date)
     }
 
-    let nextRefreshableDate: Date
+    public let nextRefreshableDate: Date
 
-    let basicInfo: PlayerBasicInfo?
+    public let basicInfo: PlayerBasicInfo?
 
-    let avatars: [Avatar]
+    public let avatars: [Avatar]
 
-    let enkaMessage: String?
+    public let enkaMessage: String?
 }
 
 extension Dictionary where Key == String, Value == String {
@@ -678,16 +689,16 @@ extension Dictionary where Key == String, Value == String {
 
 // MARK: - RankLevel
 
-enum RankLevel: Int {
+public enum RankLevel: Int {
     case one = 1, two = 2, three = 3, four = 4, five = 5
 
-    // MARK: Internal
+    // MARK: Public
 
-    var rectangularBackgroundIconString: String {
+    public var rectangularBackgroundIconString: String {
         "UI_QualityBg_\(rawValue)"
     }
 
-    var squaredBackgroundIconString: String {
+    public var squaredBackgroundIconString: String {
         "UI_QualityBg_\(rawValue)s"
     }
 }
@@ -695,7 +706,7 @@ enum RankLevel: Int {
 // MARK: - Artifact Rating Support
 
 extension PlayerDetail.Avatar {
-    func convert2ArtifactRatingModel() -> ArtifactRatingRequest {
+    public func convert2ArtifactRatingModel() -> ArtifactRatingRequest {
         let artifactRatingRequest = ArtifactRatingRequest(
             cid: enkaID,
             flower: readFromEnkaDatas(position: 1),
@@ -708,7 +719,7 @@ extension PlayerDetail.Avatar {
         return artifactRatingRequest
     }
 
-    func readFromEnkaDatas(position: Int) -> ArtifactRatingRequest.Artifact {
+    public func readFromEnkaDatas(position: Int) -> ArtifactRatingRequest.Artifact {
         let positionType: PlayerDetail.Avatar.Artifact.ArtifactType = {
             switch position {
             case 1:

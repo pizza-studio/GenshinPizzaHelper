@@ -6,17 +6,16 @@
 //
 
 import Foundation
-import GIPizzaKit
 import HBMihoyoAPI
 
 extension API {
-    enum OpenAPIs {
-        // MARK: Internal
+    public enum OpenAPIs {
+        // MARK: Public
 
         /// 获取当前活动信息
         /// - Parameters:
         ///     - completion: 数据
-        static func fetchCurrentEvents(
+        public static func fetchCurrentEvents(
             completion: @escaping (
                 CurrentEventsFetchResult
             ) -> ()
@@ -52,7 +51,7 @@ extension API {
         /// - Parameters:
         ///     - uid: 用户UID
         ///     - completion: 数据
-        static func fetchPlayerDetail(
+        public static func fetchPlayerDetail(
             _ uid: String,
             dateWhenNextRefreshable: Date?
         ) async throws
@@ -101,7 +100,7 @@ extension API {
         /// - Parameters:
         ///     - uid: 用户UID
         ///     - completion: 数据
-        static func fetchPlayerDetail(
+        public static func fetchPlayerDetail(
             _ uid: String,
             dateWhenNextRefreshable: Date?,
             completion: @escaping (
@@ -161,7 +160,7 @@ extension API {
         /// 获取原神辞典数据
         /// - Parameters:
         ///     - completion: 数据
-        static func fetchGenshinDictionaryData(
+        public static func fetchGenshinDictionaryData(
             completion: @escaping (
                 [GDDictionary]
             ) -> ()

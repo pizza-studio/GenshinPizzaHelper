@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - AppConfiguration
 
-enum AppConfiguration {
+public enum AppConfiguration {
     case Debug
     case TestFlight
     case AppStore
@@ -18,15 +18,11 @@ enum AppConfiguration {
 
 // MARK: - AppConfig
 
-enum AppConfig {
-    // MARK: Internal
-
-    // OPENSOURCE: 替换以下内容为「Opensource Secret」
-    static let homeAPISalt: String = "2f2d1f9e00719112e88d92d98165f9aa"
-    static let uidSalt: String = "GenshinPizzaHelper"
+public enum AppConfig {
+    // MARK: Public
 
     // This can be used to add debug statements.
-    static var isDebug: Bool {
+    public static var isDebug: Bool {
         #if DEBUG
         return true
         #else
@@ -34,7 +30,7 @@ enum AppConfig {
         #endif
     }
 
-    static var appConfiguration: AppConfiguration {
+    public static var appConfiguration: AppConfiguration {
         if isDebug {
             return .Debug
         } else if isTestFlight {
@@ -43,6 +39,12 @@ enum AppConfig {
             return .AppStore
         }
     }
+
+    // MARK: Internal
+
+    // OPENSOURCE: 替换以下内容为「Opensource Secret」
+    static let homeAPISalt: String = "2f2d1f9e00719112e88d92d98165f9aa"
+    static let uidSalt: String = "GenshinPizzaHelper"
 
     // MARK: Private
 

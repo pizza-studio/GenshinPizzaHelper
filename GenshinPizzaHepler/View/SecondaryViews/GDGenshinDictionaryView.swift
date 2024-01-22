@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/10/3.
 //
 
+import GIPizzaKit
 import HBMihoyoAPI
 import SFSafeSymbols
 import SwiftUI

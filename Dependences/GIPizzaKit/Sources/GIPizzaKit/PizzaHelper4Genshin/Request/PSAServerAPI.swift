@@ -10,9 +10,9 @@ import HBMihoyoAPI
 import HoYoKit
 
 extension API {
-    enum PSAServer {
+    public enum PSAServer {
         /// 上传数据
-        static func uploadUserData(
+        public static func uploadUserData(
             path: String,
             data: Data,
             _ completion: @escaping (PSAServerPostResultModelResult) -> ()
@@ -64,7 +64,7 @@ extension API {
         }
 
         /// 上传数据
-        static func uploadHuTaoDBUserData(
+        public static func uploadHuTaoDBUserData(
             path: String,
             data: Data,
             _ completion: @escaping (HuTaoServerPostResultModelResult) -> ()
@@ -105,7 +105,7 @@ extension API {
         }
 
         /// 深境螺旋角色使用率
-        static func fetchAbyssUtilizationData(
+        public static func fetchAbyssUtilizationData(
             season: Int? = nil,
             server: Server? = nil,
             floor: Int = 12,
@@ -166,7 +166,7 @@ extension API {
         }
 
         /// 满星玩家持有率
-        static func fetchFullStarHoldingRateData(
+        public static func fetchFullStarHoldingRateData(
             season: Int? = nil,
             server: Server? = nil,
             _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult)
@@ -223,7 +223,7 @@ extension API {
         }
 
         /// 所有玩家持有率
-        static func fetchHoldingRateData(
+        public static func fetchHoldingRateData(
             queryStartDate: Date? = nil,
             server: Server? = nil,
             _ completion: @escaping (AvatarHoldingReceiveDataFetchModelResult)
@@ -284,7 +284,7 @@ extension API {
         }
 
         /// 后台服务器版本
-        static func fetchHomeServerVersion(
+        public static func fetchHomeServerVersion(
             _ completion: @escaping (HomeServerVersionFetchModelResult) -> ()
         ) {
             // 请求类别
@@ -325,7 +325,7 @@ extension API {
         }
 
         /// 深境螺旋角色使用率
-        static func fetchTeamUtilizationData(
+        public static func fetchTeamUtilizationData(
             season: Int? = nil,
             server: Server? = nil,
             floor: Int = 12,

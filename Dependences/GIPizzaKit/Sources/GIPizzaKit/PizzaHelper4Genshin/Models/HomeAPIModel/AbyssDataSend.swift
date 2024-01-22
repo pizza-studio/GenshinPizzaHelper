@@ -11,77 +11,77 @@ import HoYoKit
 
 // MARK: - AvatarHoldingData
 
-struct AvatarHoldingData: Codable {
+public struct AvatarHoldingData: Codable {
     /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深境螺旋
-    let uid: String
+    public let uid: String
     /// 深境螺旋期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
-    var updateDate: String
+    public var updateDate: String
     /// 玩家已解锁角色
-    let owningChars: [Int]
+    public let owningChars: [Int]
     /// 账号所属服务器ID
-    let serverId: String
+    public let serverId: String
 }
 
 // MARK: - AbyssData
 
 /// 用于向服务器发送的深境螺旋数据
-struct AbyssData: Codable {
-    struct SubmitDetailModel: Codable {
+public struct AbyssData: Codable {
+    public struct SubmitDetailModel: Codable {
         /// 深境螺旋层数
-        let floor: Int
+        public let floor: Int
         /// 深境螺旋间数
-        let room: Int
+        public let room: Int
         /// 上半间/下半间，1表示上半，2表示下半
-        let half: Int
+        public let half: Int
 
         /// 使用了哪些角色
-        let usedChars: [Int]
+        public let usedChars: [Int]
     }
 
-    struct AbyssRankModel: Codable {
+    public struct AbyssRankModel: Codable {
         /// 造成的最高伤害
-        let topDamageValue: Int
+        public let topDamageValue: Int
 
         /// 最高伤害的角色ID，下同
-        let topDamage: Int
-        let topTakeDamage: Int
-        let topDefeat: Int
-        let topEUsed: Int
-        let topQUsed: Int
+        public let topDamage: Int
+        public let topTakeDamage: Int
+        public let topDefeat: Int
+        public let topEUsed: Int
+        public let topQUsed: Int
     }
 
     /// 提交数据的ID
-    var submitId: String = UUID().uuidString
+    public var submitId: String = UUID().uuidString
 
     /// 混淆后的UID的哈希值，用于标记是哪一位玩家打的深境螺旋
-    let uid: String
+    public let uid: String
 
     /// 提交时间的时间戳since1970
-    var submitTime: Int = .init(Date().timeIntervalSince1970)
+    public var submitTime: Int = .init(Date().timeIntervalSince1970)
 
     /// 深境螺旋期数，格式为年月日+上/下半月，其中上半月用奇数表示，下半月后偶数表示，如"2022101"
-    var abyssSeason: Int
+    public var abyssSeason: Int
 
     /// 账号服务器ID
-    let server: String
+    public let server: String
 
     /// 每半间深境螺旋的数据
-    let submitDetails: [SubmitDetailModel]
+    public let submitDetails: [SubmitDetailModel]
 
     /// 深境螺旋伤害等数据的排名统计
-    let abyssRank: AbyssRankModel?
+    public let abyssRank: AbyssRankModel?
 
     /// 玩家已解锁角色
-    let owningChars: [Int]
+    public let owningChars: [Int]
 
     /// 战斗次数
-    let battleCount: Int
+    public let battleCount: Int
 
     /// 获胜次数
-    let winCount: Int
+    public let winCount: Int
 
     /// 返回结尾只有0或1的abyssSeason信息
-    func getLocalAbyssSeason() -> Int {
+    public func getLocalAbyssSeason() -> Int {
         if abyssSeason % 2 == 0 {
             return (abyssSeason / 10) * 10
         } else {
@@ -91,7 +91,7 @@ struct AbyssData: Codable {
 }
 
 extension AbyssData {
-    init?(
+    public init?(
         accountUID: String,
         server: Server,
         basicInfo: BasicInfos,
@@ -143,7 +143,7 @@ extension AbyssData {
 }
 
 extension AbyssData.AbyssRankModel {
-    init?(data: SpiralAbyssDetail) {
+    public init?(data: SpiralAbyssDetail) {
         guard [
             data.damageRank.first,
             data.defeatRank.first,
@@ -160,8 +160,8 @@ extension AbyssData.AbyssRankModel {
     }
 }
 
-extension Array where Element == AbyssData.SubmitDetailModel {
-    static func generateArrayFrom(
+extension [AbyssData.SubmitDetailModel] {
+    public static func generateArrayFrom(
         data: SpiralAbyssDetail,
         basicInfo: BasicInfos
     ) -> [AbyssData.SubmitDetailModel] {
@@ -184,7 +184,7 @@ extension Array where Element == AbyssData.SubmitDetailModel {
 }
 
 extension AvatarHoldingData {
-    init?(
+    public init?(
         accountUID: String,
         server: Server,
         basicInfo: BasicInfos,
@@ -206,56 +206,56 @@ extension AvatarHoldingData {
 
 // MARK: - HuTaoDBAbyssData
 
-struct HuTaoDBAbyssData: Codable {
-    struct SpiralAbyss: Codable {
-        struct Damage: Codable {
-            var avatarId: Int
-            var aalue: Int
+public struct HuTaoDBAbyssData: Codable {
+    public struct SpiralAbyss: Codable {
+        public struct Damage: Codable {
+            public var avatarId: Int
+            public var aalue: Int
         }
 
-        struct Floor: Codable {
-            struct Level: Codable {
-                struct Battle: Codable {
-                    var index: Int
-                    var avatars: [Int]
+        public struct Floor: Codable {
+            public struct Level: Codable {
+                public struct Battle: Codable {
+                    public var index: Int
+                    public var avatars: [Int]
                 }
 
-                var index: Int
-                var star: Int
-                var battles: [Battle]
+                public var index: Int
+                public var star: Int
+                public var battles: [Battle]
             }
 
-            var index: Int
-            var star: Int
-            var levels: [Level]
+            public var index: Int
+            public var star: Int
+            public var levels: [Level]
         }
 
-        var scheduleId: Int
-        var totalBattleTimes: Int
-        var totalWinTimes: Int
-        var damage: Damage
-        var takeDamage: Damage
-        var floors: [Floor]
+        public var scheduleId: Int
+        public var totalBattleTimes: Int
+        public var totalWinTimes: Int
+        public var damage: Damage
+        public var takeDamage: Damage
+        public var floors: [Floor]
     }
 
-    struct Avatar: Codable {
-        var avatarId: Int
-        var weaponId: Int
-        var reliquarySetIds: [Int]
-        var activedConstellationNumber: Int
+    public struct Avatar: Codable {
+        public var avatarId: Int
+        public var weaponId: Int
+        public var reliquarySetIds: [Int]
+        public var activedConstellationNumber: Int
     }
 
-    var uid: String
-    var identity: String
-    var spiralAbyss: SpiralAbyss?
-    var avatars: [Avatar]
-    var reservedUserName: String
+    public var uid: String
+    public var identity: String
+    public var spiralAbyss: SpiralAbyss?
+    public var avatars: [Avatar]
+    public var reservedUserName: String
 }
 
 // MARK: - Constructor (HuTaoDBAbyssData)
 
 extension HuTaoDBAbyssData {
-    init?(
+    public init?(
         accountUID: String,
         server: Server,
         cookie: String,
@@ -290,7 +290,7 @@ extension HuTaoDBAbyssData {
 // MARK: - Constructor (HuTaoDBAbyssData.SpiralAbyss)
 
 extension HuTaoDBAbyssData.SpiralAbyss {
-    init?(data: SpiralAbyssDetail) {
+    public init?(data: SpiralAbyssDetail) {
         guard [
             data.damageRank.first,
             data.defeatRank.first,
@@ -340,24 +340,24 @@ extension HuTaoDBAbyssData.SpiralAbyss {
 // MARK: - HuTaoDBAbyssData Sanity Checkers.
 
 extension HuTaoDBAbyssData.SpiralAbyss.Floor.Level.Battle {
-    var isInsane: Bool { avatars.isEmpty }
+    public var isInsane: Bool { avatars.isEmpty }
 }
 
 extension HuTaoDBAbyssData.SpiralAbyss.Floor.Level {
-    mutating func isInsane() -> Bool { selfTidy() == 0 }
+    public mutating func isInsane() -> Bool { selfTidy() == 0 }
 
     @discardableResult
-    mutating func selfTidy() -> Int {
+    public mutating func selfTidy() -> Int {
         battles = battles.filter { !$0.isInsane }
         return battles.count
     }
 }
 
 extension HuTaoDBAbyssData.SpiralAbyss.Floor {
-    mutating func isInsane() -> Bool { selfTidy() == 0 }
+    public mutating func isInsane() -> Bool { selfTidy() == 0 }
 
     @discardableResult
-    mutating func selfTidy() -> Int {
+    public mutating func selfTidy() -> Int {
         levels = levels.compactMap { level in
             var level = level
             level.selfTidy()
@@ -368,10 +368,10 @@ extension HuTaoDBAbyssData.SpiralAbyss.Floor {
 }
 
 extension HuTaoDBAbyssData.SpiralAbyss {
-    mutating func isInsane() -> Bool { selfTidy() == 0 }
+    public mutating func isInsane() -> Bool { selfTidy() == 0 }
 
     @discardableResult
-    mutating func selfTidy() -> Int {
+    public mutating func selfTidy() -> Int {
         floors = floors.compactMap { floor in
             var floor = floor
             floor.selfTidy()
@@ -382,7 +382,7 @@ extension HuTaoDBAbyssData.SpiralAbyss {
 }
 
 extension HuTaoDBAbyssData {
-    mutating func sanityCheck() -> Bool {
+    public mutating func sanityCheck() -> Bool {
         guard var abyss = spiralAbyss else { return true }
         let sanityResult = abyss.selfTidy()
         spiralAbyss = (sanityResult == 0) ? nil : abyss

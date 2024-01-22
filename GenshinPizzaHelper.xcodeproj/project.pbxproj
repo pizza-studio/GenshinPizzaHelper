@@ -43,8 +43,6 @@
 		5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
 		5BBCB6AF29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
 		5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210628B33D8300A6BBA9 /* AppDelegate.swift */; };
-		5BD1C5C92A2A1FC90043C2B1 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
-		5BD1C5CA2A2A1FC90043C2B1 /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
 		5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */; };
 		5BD1C5CC2A2A1FC90043C2B1 /* EachCharacterDetailDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */; };
 		5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A9DB229D4812300CF4230 /* GachaChartView.swift */; };
@@ -64,7 +62,6 @@
 		5BD1C5DC2A2A1FC90043C2B1 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		5BD1C5DD2A2A1FC90043C2B1 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
 		5BD1C5DE2A2A1FC90043C2B1 /* WebViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF068BD428A335F9002E7334 /* WebViews.swift */; };
-		5BD1C5DF2A2A1FC90043C2B1 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
 		5BD1C5E02A2A1FC90043C2B1 /* GameInfoBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */; };
 		5BD1C5E12A2A1FC90043C2B1 /* GachaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C005829D2FFD100637B19 /* GachaFetch.swift */; };
 		5BD1C5E22A2A1FC90043C2B1 /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
@@ -82,16 +79,13 @@
 		5BD1C5F12A2A1FC90043C2B1 /* ThisDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */; };
 		5BD1C5F22A2A1FC90043C2B1 /* WidgetBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9028A0160800D89787 /* WidgetBackgroundView.swift */; };
 		5BD1C5F32A2A1FC90043C2B1 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
-		5BD1C5F42A2A1FC90043C2B1 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
 		5BD1C5F62A2A1FC90043C2B1 /* DeviceRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */; };
-		5BD1C5F72A2A1FC90043C2B1 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
 		5BD1C5F82A2A1FC90043C2B1 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
 		5BD1C5F92A2A1FC90043C2B1 /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
 		5BD1C5FA2A2A1FC90043C2B1 /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
 		5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
 		5BD1C5FC2A2A1FC90043C2B1 /* HiddenWaterMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */; };
 		5BD1C5FD2A2A1FC90043C2B1 /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
-		5BD1C5FE2A2A1FC90043C2B1 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringExtensions.swift */; };
 		5BD1C5FF2A2A1FC90043C2B1 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
 		5BD1C6002A2A1FC90043C2B1 /* RingProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823128A651F500616CE1 /* RingProgressBarView.swift */; };
 		5BD1C6012A2A1FC90043C2B1 /* GDGenshinDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */; };
@@ -105,7 +99,6 @@
 		5BD1C6092A2A1FC90043C2B1 /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8129D280FD0075F780 /* GachaModel.swift */; };
 		5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3247029DFE878002779F3 /* CollectionChunked.swift */; };
-		5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		5BD1C60F2A2A1FC90043C2B1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210A28B3910800A6BBA9 /* HomeView.swift */; };
 		5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		5BD1C6112A2A1FC90043C2B1 /* NotificationSettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */; };
@@ -115,32 +108,24 @@
 		5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
-		5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
-		5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
-		5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
 		5BD1C6212A2A1FC90043C2B1 /* AppBlockBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */; };
 		5BD1C6222A2A1FC90043C2B1 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
 		5BD1C6232A2A1FC90043C2B1 /* ReverseMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232282903E0D6007A4CF4 /* ReverseMask.swift */; };
-		5BD1C6242A2A1FC90043C2B1 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		5BD1C6252A2A1FC90043C2B1 /* GetGachaClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */; };
 		5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101F128D85B28000DC631 /* AllEventsView.swift */; };
 		5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8AC1B29C758750047D36C /* CircleClippedBackground.swift */; };
 		5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
-		5BD1C62B2A2A1FC90043C2B1 /* AvatarPercentageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */; };
 		5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
 		5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
 		5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
-		5BD1C62F2A2A1FC90043C2B1 /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
-		5BD1C6302A2A1FC90043C2B1 /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
 		5BD1C6312A2A1FC90043C2B1 /* GachaKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8729D287970075F780 /* GachaKey.swift */; };
 		5BD1C6322A2A1FC90043C2B1 /* EachExpeditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */; };
 		5BD1C6332A2A1FC90043C2B1 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
 		5BD1C6342A2A1FC90043C2B1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
 		5BD1C6352A2A1FC90043C2B1 /* AbyssDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */; };
-		5BD1C6362A2A1FC90043C2B1 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
 		5BD1C6372A2A1FC90043C2B1 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		5BD1C6382A2A1FC90043C2B1 /* ExportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8978D729DA716400E0903E /* ExportGachaView.swift */; };
 		5BD1C6392A2A1FC90043C2B1 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07C65528B11DB40030E338 /* NotificationSettingView.swift */; };
@@ -151,7 +136,6 @@
 		5BD1C63E2A2A1FC90043C2B1 /* AllAvatarListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */; };
 		5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
 		5BD1C6402A2A1FC90043C2B1 /* DismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA459DA4290CF47700E74F76 /* DismissableSheet.swift */; };
-		5BD1C6412A2A1FC90043C2B1 /* AvatarHoldingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC72902485600918F64 /* AvatarHoldingData.swift */; };
 		5BD1C6422A2A1FC90043C2B1 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
 		5BD1C6432A2A1FC90043C2B1 /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		5BD1C6442A2A1FC90043C2B1 /* ContainGachaItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */; };
@@ -222,12 +206,6 @@
 		BF20733A29D1412B00AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733929D1412B00AD391F /* GIPizzaKit */; };
 		BF20733C29D1413100AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733B29D1413100AD391F /* GIPizzaKit */; };
 		BF3F98BF28E9190700D1B5CF /* UpdateHistoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */; };
-		BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
-		BF3F98C228EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
-		BF3F98C328EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
-		BF3F98C428EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
-		BF3F98C528EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
-		BF3F98C628EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */; };
 		BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */; };
 		BF6C526B289E116700EA224F /* MainWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* MainWidgetProvider.swift */; };
 		BF6C5272289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
@@ -260,12 +238,6 @@
 		BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500FE28E0452C00CDA64E /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
 		BF75010028E0452C00CDA64E /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
-		BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
-		BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
-		BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
-		BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
-		BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
-		BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75010F28E14CF500CDA64E /* AppConfig.swift */; };
 		BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
 		BF85D77228CE0B9E003F3479 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A32886B49200AE7BEA /* WidgetKit.framework */; };
 		BF85D77328CE0B9E003F3479 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA30F9A52886B49200AE7BEA /* SwiftUI.framework */; };
@@ -276,16 +248,10 @@
 		BF9D74EC29DB1604009A9918 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = BF9D74EB29DB1604009A9918 /* AlertToast */; };
 		BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = BF9D74EE29DBBA98009A9918 /* CoreXLSX */; };
 		BFB101D328D5C579000DC631 /* DetailPortalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D228D5C579000DC631 /* DetailPortalView.swift */; };
-		BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */; };
 		BFB101E928D6C755000DC631 /* ViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211B28B4B52500A6BBA9 /* ViewTools.swift */; };
 		BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101EF28D7262A000DC631 /* ThanksView.swift */; };
 		BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101F128D85B28000DC631 /* AllEventsView.swift */; };
-		BFBDD64E28ED7B940022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
-		BFBDD65028ED7B960022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
-		BFBDD65128ED7B970022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
-		BFBDD65228ED7B970022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
-		BFBDD65328ED7B980022B79D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
 		BFBDD66F28F3F3C90022B79D /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = BFBDD66E28F3F3C90022B79D /* SwiftPieChart */; };
 		BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
@@ -306,9 +272,7 @@
 		BFCC069428C9BBC8003E4A54 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		BFCC069A28C9BBD3003E4A54 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
 		BFCC069B28C9BBD3003E4A54 /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
-		BFCC069C28C9BBD3003E4A54 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringExtensions.swift */; };
 		BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
-		BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
 		BFCC06A528C9BD9E003E4A54 /* AccountIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823028A650C300616CE1 /* AccountIntents.intentdefinition */; };
 		BFCC06B028CA1984003E4A54 /* WatchGameInfoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC06AF28CA1984003E4A54 /* WatchGameInfoBlock.swift */; };
@@ -334,8 +298,6 @@
 		BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
 		BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */; };
 		BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
-		BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
-		BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42546289E987800FEFA49 /* TextPlayerView.swift */; };
 		BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */; };
 		BFE4254B289F67F600FEFA49 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254A289F67F600FEFA49 /* SettingsView.swift */; };
@@ -347,9 +309,6 @@
 		BFE4255B289FA12F00FEFA49 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */; };
 		BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258528A0AC1500FEFA49 /* MoreView.swift */; };
 		BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
-		BFE7AFE42909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
-		BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
-		BFE7AFE62909533700C75E7F /* PSAServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */; };
 		BFF683ED2A374CA1005470EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF85D77828CE0BA0003F3479 /* Assets.xcassets */; };
 		BFF683F02A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
 		BFF683F12A374E17005470EA /* icon.ophelper.old.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF683EE2A374E16005470EA /* icon.ophelper.old.png */; };
@@ -411,7 +370,6 @@
 		EA09A01B28A2B8D30023B4AF /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
 		EA09A01F28A2B8F40023B4AF /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
 		EA09A02028A2B8F50023B4AF /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
-		EA09A02228A2B8F80023B4AF /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA09FDEC2B2BB07A00862DFB /* WidgetRefreshTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09FDEB2B2BB07A00862DFB /* WidgetRefreshTime.swift */; };
@@ -442,13 +400,9 @@
 		EA185F2F292F1AFC003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */; };
 		EA185F30292F1AFD003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */; };
 		EA185F31292F1AFD003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */; };
-		EA196B0228B769340091FAE0 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringExtensions.swift */; };
-		EA196B0328B769340091FAE0 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringExtensions.swift */; };
-		EA196B0428B769640091FAE0 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringExtensions.swift */; };
 		EA1C2CE128F0464D00E4C28A /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */; };
 		EA1C2CE328F07C1E00E4C28A /* ThisDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */; };
 		EA1C2CE528F07DBE00E4C28A /* HiddenWaterMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */; };
-		EA1D09D128F319F5001DCC2A /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
 		EA2064D22B255CE4002B9961 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
 		EA2064D32B255CE5002B9961 /* HomeCoinInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */; };
 		EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7F9C6E28AFF9B300DEAFEB /* NotificationCenter.swift */; };
@@ -480,9 +434,6 @@
 		EA42251628E2B963006D4578 /* LockScreenWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */; };
 		EA42251B28E2BBB8006D4578 /* LockScreenWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */; };
 		EA459DA5290CF47700E74F76 /* DismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA459DA4290CF47700E74F76 /* DismissableSheet.swift */; };
-		EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
-		EA46D0C628EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
-		EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */; };
 		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
 		EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
@@ -490,24 +441,12 @@
 		EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
 		EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C005829D2FFD100637B19 /* GachaFetch.swift */; };
 		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
-		EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
-		EA50D669290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
-		EA50D66A290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */; };
 		EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */; };
 		EA5232292903E0D6007A4CF4 /* ReverseMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232282903E0D6007A4CF4 /* ReverseMask.swift */; };
-		EA56E08A28A26C0D00A64262 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56E07828A26C0D00A64262 /* Result.swift */; };
-		EA5B0B222AD11F1300FB3F32 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
-		EA5B0B232AD11F1500FB3F32 /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42543289E523D00FEFA49 /* TimeTools.swift */; };
 		EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1028B6274E00C95A7E /* MaterialView.swift */; };
 		EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EA5F4D1528B644DA00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
 		EA6829DC28A2523800E57462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EA6829DB28A2523800E57462 /* .gitignore */; };
-		EA6B9148290EB2EF00B5230B /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
-		EA6B9149290EB3B800B5230B /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
-		EA6B914A290EB3B800B5230B /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
-		EA6B914B290EB3B900B5230B /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
-		EA6B914C290EB3BA00B5230B /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
-		EA6B914D290EB3BA00B5230B /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B9147290EB2EF00B5230B /* GlobalVar.swift */; };
 		EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EA721E3C28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */; };
 		EA721E3D28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */; };
@@ -532,25 +471,6 @@
 		EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9428A0163A00D89787 /* WidgetMainView.swift */; };
 		EA75DD0828A0B1260099E70A /* WidgetErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C9628A0166100D89787 /* WidgetErrorView.swift */; };
 		EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4254F289F6BDA00FEFA49 /* InfoPreviewerView.swift */; };
-		EA784CC42902462C00918F64 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
-		EA784CC62902471600918F64 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
-		EA784CC82902485600918F64 /* AvatarHoldingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC72902485600918F64 /* AvatarHoldingData.swift */; };
-		EA784CCA290248CA00918F64 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
-		EA784CCC2902511E00918F64 /* AvatarPercentageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */; };
-		EA784CCD2902517200918F64 /* AvatarPercentageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */; };
-		EA784CCE2902517200918F64 /* AvatarPercentageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */; };
-		EA784CCF2902517500918F64 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
-		EA784CD02902517600918F64 /* HomeServerVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC9290248CA00918F64 /* HomeServerVersion.swift */; };
-		EA784CD12902517800918F64 /* AvatarHoldingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC72902485600918F64 /* AvatarHoldingData.swift */; };
-		EA784CD22902517800918F64 /* AvatarHoldingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC72902485600918F64 /* AvatarHoldingData.swift */; };
-		EA784CD32902517B00918F64 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
-		EA784CD42902517C00918F64 /* UtilizationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC52902471600918F64 /* UtilizationData.swift */; };
-		EA784CD52902518000918F64 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
-		EA784CD62902518100918F64 /* FetchHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA784CC32902462C00918F64 /* FetchHomeModel.swift */; };
-		EA784CD72902518500918F64 /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
-		EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */; };
-		EA784CD92902518A00918F64 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
-		EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101D428D5F5BC000DC631 /* OpenAPI.swift */; };
 		EA78BF09290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
 		EA78BF0A290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
 		EA78BF0B290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */; };
@@ -719,7 +639,6 @@
 		EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		EAE95CF228CE115D00D975CB /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */; };
-		EAE95CF428CE116F00D975CB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringExtensions.swift */; };
 		EAE95CF528CE117B00D975CB /* AccountConfiguration.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */; };
 		EAE95CF628CE11A100D975CB /* AccountConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */; };
 		EAE95CF728CE11A100D975CB /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF330E28A27AFE0018EFAB /* Account.swift */; };
@@ -731,7 +650,6 @@
 		EAE95D0E28CE11CB00D975CB /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
 		EAE95D0F28CE11D200D975CB /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		EAE95D1028CE11D200D975CB /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
-		EAE95D1128CE11DB00D975CB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196B0128B769340091FAE0 /* StringExtensions.swift */; };
 		EAEC41E228B096170056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EAEC41E328B096180056D182 /* 每日任务.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2FF0E828B093AE0050C016 /* 每日任务.png */; };
 		EAEC41F728B0994C0056D182 /* 参量质变仪.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F328B0994C0056D182 /* 参量质变仪.png */; };
@@ -911,7 +829,6 @@
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
 		BF20733029D13BCA00AD391F /* GIPizzaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GIPizzaKit; path = Dependences/GIPizzaKit; sourceTree = "<group>"; };
 		BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfoView.swift; sourceTree = "<group>"; };
-		BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDDictionaryDataModel.swift; sourceTree = "<group>"; };
 		BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDGenshinDictionaryView.swift; sourceTree = "<group>"; };
 		BF6BAA3D2B31442A007274FF /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BF6BAA3E2B31442A007274FF /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
@@ -935,7 +852,6 @@
 		BF7500DE28DEC99400CDA64E /* NumberTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTools.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
-		BF75010F28E14CF500CDA64E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestVersionInfoView.swift; sourceTree = "<group>"; };
 		BF85D77128CE0B9E003F3479 /* WatchWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WatchWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF85D77528CE0B9F003F3479 /* WatchWidgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgetExtension.swift; sourceTree = "<group>"; };
@@ -943,7 +859,6 @@
 		BF85D77A28CE0BA0003F3479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFA0E4A129D05BCB004B6C13 /* HBMihoyoAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HBMihoyoAPI; path = Dependences/HBMihoyoAPI; sourceTree = "<group>"; };
 		BFB101D228D5C579000DC631 /* DetailPortalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPortalView.swift; sourceTree = "<group>"; };
-		BFB101D428D5F5BC000DC631 /* OpenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAPI.swift; sourceTree = "<group>"; };
 		BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentEventNavigator.swift; sourceTree = "<group>"; };
 		BFB101EF28D7262A000DC631 /* ThanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksView.swift; sourceTree = "<group>"; };
 		BFB101F128D85B28000DC631 /* AllEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsView.swift; sourceTree = "<group>"; };
@@ -973,7 +888,6 @@
 		BFE4253A289E504C00FEFA49 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		BFE4253C289E507F00FEFA49 /* MainInfoWithDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoWithDetailView.swift; sourceTree = "<group>"; };
 		BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryTimeTextView.swift; sourceTree = "<group>"; };
-		BFE42543289E523D00FEFA49 /* TimeTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTools.swift; sourceTree = "<group>"; };
 		BFE42546289E987800FEFA49 /* TextPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPlayerView.swift; sourceTree = "<group>"; };
 		BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoView.swift; sourceTree = "<group>"; };
 		BFE4254A289F67F600FEFA49 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -981,7 +895,6 @@
 		BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoBlockView.swift; sourceTree = "<group>"; };
 		BFE4258528A0AC1500FEFA49 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		BFE4258728A0AE2700FEFA49 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSAServerAPI.swift; sourceTree = "<group>"; };
 		BFE9DADF29A33C3C00C0A1DD /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		BFF683EE2A374E16005470EA /* icon.ophelper.old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.ophelper.old.png; sourceTree = "<group>"; };
 		BFF683EF2A374E16005470EA /* icon.ophelper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.ophelper.png; sourceTree = "<group>"; };
@@ -1022,12 +935,10 @@
 		EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGachaClipboardView.swift; sourceTree = "<group>"; };
 		EA11488E29D9A8730059DEBF /* UIGFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGFModel.swift; sourceTree = "<group>"; };
 		EA11489029D9D1430059DEBF /* ImportGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportGachaView.swift; sourceTree = "<group>"; };
-		EA196B0128B769340091FAE0 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EA1B76762886B89F007A5216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowContentViewModifier.swift; sourceTree = "<group>"; };
 		EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisDevice.swift; sourceTree = "<group>"; };
 		EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenWaterMark.swift; sourceTree = "<group>"; };
-		EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDataSend.swift; sourceTree = "<group>"; };
 		EA2FF0E828B093AE0050C016 /* 每日任务.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "每日任务.png"; sourceTree = "<group>"; };
 		EA30F99B2886B46C00AE7BEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ResinStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1046,7 +957,6 @@
 		EA40681729222A1300F23479 /* MainWidgetSimplifiedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetSimplifiedView.swift; sourceTree = "<group>"; };
 		EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgetProvider.swift; sourceTree = "<group>"; };
 		EA459DA4290CF47700E74F76 /* DismissableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableSheet.swift; sourceTree = "<group>"; };
-		EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailView.swift; sourceTree = "<group>"; };
 		EA4960E629D7D28200BA5ECF /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/NetworkExtension.framework; sourceTree = DEVELOPER_DIR; };
 		EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryAttributes.swift; sourceTree = "<group>"; };
@@ -1055,14 +965,11 @@
 		EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySettingView.swift; sourceTree = "<group>"; };
 		EA49D901297A603700746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA4C005829D2FFD100637B19 /* GachaFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaFetch.swift; sourceTree = "<group>"; };
-		EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamUtilizationData.swift; sourceTree = "<group>"; };
 		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
 		EA5232282903E0D6007A4CF4 /* ReverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseMask.swift; sourceTree = "<group>"; };
-		EA56E07828A26C0D00A64262 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		EA5F4D1028B6274E00C95A7E /* MaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProviders.swift; sourceTree = "<group>"; };
 		EA6829DB28A2523800E57462 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		EA6B9147290EB2EF00B5230B /* GlobalVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
 		EA721E3B28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenLoopWidgetCorner.swift; sourceTree = "<group>"; };
 		EA7262C82ADE64DD0062414B /* HoYoKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HoYoKit; path = Dependences/HoYoKit; sourceTree = "<group>"; };
 		EA759D5C2B19989A0080C775 /* GeetestValidateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeetestValidateView.swift; sourceTree = "<group>"; };
@@ -1074,11 +981,6 @@
 		EA759D632B19989A0080C775 /* GetCookieWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCookieWebView.swift; sourceTree = "<group>"; };
 		EA759D642B19989A0080C775 /* CreateAccountSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountSheetView.swift; sourceTree = "<group>"; };
 		EA759D752B199A2C0080C775 /* Server+Descriptable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+Descriptable.swift"; sourceTree = "<group>"; };
-		EA784CC32902462C00918F64 /* FetchHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchHomeModel.swift; sourceTree = "<group>"; };
-		EA784CC52902471600918F64 /* UtilizationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilizationData.swift; sourceTree = "<group>"; };
-		EA784CC72902485600918F64 /* AvatarHoldingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarHoldingData.swift; sourceTree = "<group>"; };
-		EA784CC9290248CA00918F64 /* HomeServerVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServerVersion.swift; sourceTree = "<group>"; };
-		EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPercentageModel.swift; sourceTree = "<group>"; };
 		EA78BF08290806000042AC4C /* WeaponTalentMaterial.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WeaponTalentMaterial.xcassets; sourceTree = "<group>"; };
 		EA7CD43C28CF210000857493 /* AlternativeWatchCornerResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeWatchCornerResinWidget.swift; sourceTree = "<group>"; };
 		EA7CD43F28CF27AF00857493 /* LockScreenResinWidgetRectangular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetRectangular.swift; sourceTree = "<group>"; };
@@ -1365,35 +1267,22 @@
 			path = workflows;
 			sourceTree = "<group>";
 		};
-		BF6C525E289E0F2A00EA224F /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				BFB101D428D5F5BC000DC631 /* OpenAPI.swift */,
-				BFE7AFE32909533700C75E7F /* PSAServerAPI.swift */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
 		BF6C5270289E12B500EA224F /* CommonTools */ = {
 			isa = PBXGroup;
 			children = (
 				EA1C2CDF28F0463E00E4C28A /* ViewModifier */,
-				BF75010F28E14CF500CDA64E /* AppConfig.swift */,
 				EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
 				EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */,
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
-				EA6B9147290EB2EF00B5230B /* GlobalVar.swift */,
 				BF6C5271289E12DA00EA224F /* md5.swift */,
 				BF6C5277289E153400EA224F /* NetworkReachability.swift */,
 				BF7500DE28DEC99400CDA64E /* NumberTools.swift */,
 				BFFD823928A73A5400616CE1 /* ReviewHandler.swift */,
 				BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */,
-				EA196B0128B769340091FAE0 /* StringExtensions.swift */,
 				5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */,
 				BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */,
 				EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */,
-				BFE42543289E523D00FEFA49 /* TimeTools.swift */,
 				BF70211B28B4B52500A6BBA9 /* ViewTools.swift */,
 				EA8445EB29DBFFD700CB8C9F /* Color.swift */,
 				EAD3247029DFE878002779F3 /* CollectionChunked.swift */,
@@ -1668,7 +1557,6 @@
 		EA46D0C328EA75FE00DFE603 /* EnkaAPIModel */ = {
 			isa = PBXGroup;
 			children = (
-				EA46D0C428EACBFC00DFE603 /* PlayerDetail.swift */,
 				5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */,
 			);
 			path = EnkaAPIModel;
@@ -1687,7 +1575,6 @@
 		EA56E07528A26C0D00A64262 /* FetchedModels */ = {
 			isa = PBXGroup;
 			children = (
-				EA56E07828A26C0D00A64262 /* Result.swift */,
 				BF01309F29220E7800074450 /* WidgetUserData.swift */,
 			);
 			path = FetchedModels;
@@ -1714,20 +1601,6 @@
 				EA759D632B19989A0080C775 /* GetCookieWebView.swift */,
 			);
 			path = SubView;
-			sourceTree = "<group>";
-		};
-		EA784CC2290245CC00918F64 /* HomeAPIModel */ = {
-			isa = PBXGroup;
-			children = (
-				EA1D09D028F319F5001DCC2A /* AbyssDataSend.swift */,
-				EA784CCB2902511E00918F64 /* AvatarPercentageModel.swift */,
-				EA784CC32902462C00918F64 /* FetchHomeModel.swift */,
-				EA50D667290E20A50045C0D0 /* TeamUtilizationData.swift */,
-				EA784CC52902471600918F64 /* UtilizationData.swift */,
-				EA784CC72902485600918F64 /* AvatarHoldingData.swift */,
-				EA784CC9290248CA00918F64 /* HomeServerVersion.swift */,
-			);
-			path = HomeAPIModel;
 			sourceTree = "<group>";
 		};
 		EA7CD44228CF4A5F00857493 /* LockScreenAllInfoWidget */ = {
@@ -1808,14 +1681,12 @@
 				EAAF330928A277F90018EFAB /* AccountConfigurationModel.swift */,
 				EAAF330E28A27AFE0018EFAB /* Account.swift */,
 				BFFD820D28A5F64800616CE1 /* BackgroundOptions.swift */,
-				BF3F98C028EAB0AB00D1B5CF /* GDDictionaryDataModel.swift */,
 				EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */,
 				EABE606028D9F6970018CAF6 /* MaterialChoices.swift */,
 				BF6C5274289E137200EA224F /* Servers.swift */,
 				EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */,
 				EA46D0C328EA75FE00DFE603 /* EnkaAPIModel */,
 				EA56E07528A26C0D00A64262 /* FetchedModels */,
-				EA784CC2290245CC00918F64 /* HomeAPIModel */,
 				EA406810292228A200F23479 /* WidgetData.swift */,
 				EA059CD6292347E800400DE3 /* MultiTokenResult.swift */,
 				BFF684082A3753C8005470EA /* Icon.swift */,
@@ -1872,7 +1743,6 @@
 				5B18C5492AD0DF4300C745BA /* Enums */,
 				5BAF708929E5764E0096228B /* Fonts */,
 				EAAF330D28A27AEA0018EFAB /* Model */,
-				BF6C525E289E0F2A00EA224F /* Request */,
 				BF6C5270289E12B500EA224F /* CommonTools */,
 				EABD7DB82886B2D200B7F0FD /* GenshinPizzaHepler */,
 				EA30F9A72886B49200AE7BEA /* ResinStatusWidget */,
@@ -2486,8 +2356,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */,
-				5BD1C5C92A2A1FC90043C2B1 /* AppConfig.swift in Sources */,
-				5BD1C5CA2A2A1FC90043C2B1 /* PSAServerAPI.swift in Sources */,
 				5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */,
 				EA759D6C2B19989A0080C775 /* AccountDetailView.swift in Sources */,
 				5BD1C5CC2A2A1FC90043C2B1 /* EachCharacterDetailDataView.swift in Sources */,
@@ -2513,7 +2381,6 @@
 				EA887D332B1EAF61006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				5BD1C5DD2A2A1FC90043C2B1 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				5BD1C5DE2A2A1FC90043C2B1 /* WebViews.swift in Sources */,
-				5BD1C5DF2A2A1FC90043C2B1 /* TeamUtilizationData.swift in Sources */,
 				EAA969F42ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				5BD1C5E02A2A1FC90043C2B1 /* GameInfoBlockView.swift in Sources */,
 				5BD1C5E12A2A1FC90043C2B1 /* GachaFetch.swift in Sources */,
@@ -2535,9 +2402,7 @@
 				5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */,
 				5BD1C5F22A2A1FC90043C2B1 /* WidgetBackgroundView.swift in Sources */,
 				5BD1C5F32A2A1FC90043C2B1 /* WebImageView.swift in Sources */,
-				5BD1C5F42A2A1FC90043C2B1 /* UtilizationData.swift in Sources */,
 				5BD1C5F62A2A1FC90043C2B1 /* DeviceRecognizer.swift in Sources */,
-				5BD1C5F72A2A1FC90043C2B1 /* Result.swift in Sources */,
 				5BD1C5F82A2A1FC90043C2B1 /* Account.swift in Sources */,
 				EA39B5232B1EE47D0075F4B0 /* ToolView.swift in Sources */,
 				EAE2C89D2B2DA2F8004304D2 /* WidgetError.swift in Sources */,
@@ -2547,7 +2412,6 @@
 				5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */,
 				5BD1C5FC2A2A1FC90043C2B1 /* HiddenWaterMark.swift in Sources */,
 				5BD1C5FD2A2A1FC90043C2B1 /* WeeklyBossesInfoBar.swift in Sources */,
-				5BD1C5FE2A2A1FC90043C2B1 /* StringExtensions.swift in Sources */,
 				5BD1C5FF2A2A1FC90043C2B1 /* ContactUsView.swift in Sources */,
 				5BD1C6002A2A1FC90043C2B1 /* RingProgressBarView.swift in Sources */,
 				EA759D742B19989A0080C775 /* CreateAccountSheetView.swift in Sources */,
@@ -2563,7 +2427,6 @@
 				5BD1C60A2A2A1FC90043C2B1 /* GachaModel.swift in Sources */,
 				EAEE8ECE2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
 				5BD1C60C2A2A1FC90043C2B1 /* CollectionChunked.swift in Sources */,
-				5BD1C60D2A2A1FC90043C2B1 /* TimeTools.swift in Sources */,
 				5BD1C60F2A2A1FC90043C2B1 /* HomeView.swift in Sources */,
 				BFF6840A2A3753C8005470EA /* Icon.swift in Sources */,
 				5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */,
@@ -2577,33 +2440,25 @@
 				EA9BE5802B200B9400143817 /* AlwaysShowSideBar.swift in Sources */,
 				5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */,
 				EA9BE5832B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift in Sources */,
-				5BD1C61A2A2A1FC90043C2B1 /* PlayerDetail.swift in Sources */,
-				5BD1C61B2A2A1FC90043C2B1 /* GDDictionaryDataModel.swift in Sources */,
 				5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */,
 				5BD1C61E2A2A1FC90043C2B1 /* WidgetViewConfiguration.swift in Sources */,
-				5BD1C6202A2A1FC90043C2B1 /* HomeServerVersion.swift in Sources */,
 				5BD1C6212A2A1FC90043C2B1 /* AppBlockBackgroundView.swift in Sources */,
 				5BD1C6222A2A1FC90043C2B1 /* StoreManager.swift in Sources */,
 				5BD1C6232A2A1FC90043C2B1 /* ReverseMask.swift in Sources */,
-				5BD1C6242A2A1FC90043C2B1 /* OpenAPI.swift in Sources */,
 				EA09FDF02B2BB30100862DFB /* DailyNoteExtension.swift in Sources */,
 				5BD1C6252A2A1FC90043C2B1 /* GetGachaClipboardView.swift in Sources */,
 				5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */,
 				5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */,
 				5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */,
 				5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */,
-				5BD1C62B2A2A1FC90043C2B1 /* AvatarPercentageModel.swift in Sources */,
 				5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */,
 				5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */,
 				5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */,
-				5BD1C62F2A2A1FC90043C2B1 /* GlobalVar.swift in Sources */,
-				5BD1C6302A2A1FC90043C2B1 /* AbyssDataSend.swift in Sources */,
 				5BD1C6312A2A1FC90043C2B1 /* GachaKey.swift in Sources */,
 				5BD1C6322A2A1FC90043C2B1 /* EachExpeditionView.swift in Sources */,
 				5BD1C6332A2A1FC90043C2B1 /* MaterialChoices.swift in Sources */,
 				5BD1C6342A2A1FC90043C2B1 /* AboutView.swift in Sources */,
 				5BD1C6352A2A1FC90043C2B1 /* AbyssDataCollectionView.swift in Sources */,
-				5BD1C6362A2A1FC90043C2B1 /* FetchHomeModel.swift in Sources */,
 				5BD1C6372A2A1FC90043C2B1 /* WidgetUserData.swift in Sources */,
 				5BD1C6382A2A1FC90043C2B1 /* ExportGachaView.swift in Sources */,
 				5BD1C6392A2A1FC90043C2B1 /* NotificationSettingView.swift in Sources */,
@@ -2615,7 +2470,6 @@
 				5BD1C63E2A2A1FC90043C2B1 /* AllAvatarListSheetView.swift in Sources */,
 				5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */,
 				5BD1C6402A2A1FC90043C2B1 /* DismissableSheet.swift in Sources */,
-				5BD1C6412A2A1FC90043C2B1 /* AvatarHoldingData.swift in Sources */,
 				5BD1C6422A2A1FC90043C2B1 /* NetworkReachability.swift in Sources */,
 				5BD1C6432A2A1FC90043C2B1 /* NumberTools.swift in Sources */,
 				5BD1C6442A2A1FC90043C2B1 /* ContainGachaItemInfo.swift in Sources */,
@@ -2647,7 +2501,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAE95CBF28CE0F7500D975CB /* LockScreenResinWidget.swift in Sources */,
-				BFBDD65228ED7B970022B79D /* Result.swift in Sources */,
 				EAB1110A28CF8581009FDF07 /* WidgetsBoundle.swift in Sources */,
 				EA185F2C292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EA7FF47729309B6A00128A5C /* LockScreenResinFullTimeWidget.swift in Sources */,
@@ -2660,7 +2513,6 @@
 				EA887D372B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				EAB1110428CF8423009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
 				5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */,
-				BF75011428E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EAE95CDA28CE103D00D975CB /* MaterialProviders.swift in Sources */,
 				EAE2C8A12B2DA2FB004304D2 /* WidgetError.swift in Sources */,
 				EA09FDF52B2BB32000862DFB /* WidgetRefreshTime.swift in Sources */,
@@ -2693,17 +2545,13 @@
 				EAE95CC428CE0FC100D975CB /* Account.swift in Sources */,
 				EA7CD44128CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
 				EAD7F02828D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
-				EA6B914C290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				EAB11EA229325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				EA36DFBB28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
 				BF0130A429220E7800074450 /* WidgetUserData.swift in Sources */,
-				BF3F98C528EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EAE95D0B28CE11C100D975CB /* AccountIntents.intentdefinition in Sources */,
-				EA5B0B222AD11F1300FB3F32 /* TimeTools.swift in Sources */,
 				EA36DFC728E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
 				EAB110E828CF72E8009FDF07 /* LockScreenDailyTaskWidgetCircular.swift in Sources */,
 				BF85D77628CE0B9F003F3479 /* WatchWidgetExtension.swift in Sources */,
-				EAE95D1128CE11DB00D975CB /* StringExtensions.swift in Sources */,
 				EAD7F02428D017D20047A8F1 /* LockScreenLoopWidgetCircular.swift in Sources */,
 				EAE95D0E28CE11CB00D975CB /* NetworkReachability.swift in Sources */,
 				EAE95D0C28CE11C300D975CB /* IntentHandler.swift in Sources */,
@@ -2720,7 +2568,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFCC068A28C9BBC8003E4A54 /* Account.swift in Sources */,
-				BF3F98C428EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */,
 				EAB11EA129325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */,
@@ -2734,13 +2581,10 @@
 				EA059CDA292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				BFCC066628C9B6A1003E4A54 /* ContentView.swift in Sources */,
 				EA7FF4692930666300128A5C /* WatchWidgetSettingView.swift in Sources */,
-				BFCC069E28C9BBD3003E4A54 /* TimeTools.swift in Sources */,
 				BFCC069328C9BBC8003E4A54 /* AccountConfigurationModel.swift in Sources */,
 				EA406814292228A200F23479 /* WidgetData.swift in Sources */,
-				BF75011328E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BF0130A329220E7800074450 /* WidgetUserData.swift in Sources */,
 				BFCC066C28C9B6A1003E4A54 /* ComplicationController.swift in Sources */,
-				BFCC069C28C9BBD3003E4A54 /* StringExtensions.swift in Sources */,
 				EA185F2B292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EA185F2F292F1AFC003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EAA969F72ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
@@ -2753,7 +2597,6 @@
 				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
 				EAF55E2128CC8F1A00902AE7 /* WidgetViewConfiguration.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
-				EA6B914B290EB3B900B5230B /* GlobalVar.swift in Sources */,
 				EABE606928D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */,
 				BFCC06B928CAF660003E4A54 /* WatchAccountDetailItemView.swift in Sources */,
 				BFCC06B128CA1C59003E4A54 /* AccountConfiguration.xcdatamodeld in Sources */,
@@ -2763,7 +2606,6 @@
 				BFCC066A28C9B6A1003E4A54 /* NotificationView.swift in Sources */,
 				EA887D362B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				BFCC069F28C9BBD3003E4A54 /* NetworkReachability.swift in Sources */,
-				BFBDD65128ED7B970022B79D /* Result.swift in Sources */,
 				EAF55E1D28CC8E2200902AE7 /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2772,31 +2614,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA196B0428B769640091FAE0 /* StringExtensions.swift in Sources */,
 				EAE2C89F2B2DA2FA004304D2 /* WidgetError.swift in Sources */,
-				BFE7AFE62909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				EA09A00E28A2B8700023B4AF /* Account.swift in Sources */,
 				EA09A00D28A2B8660023B4AF /* AccountConfigurationModel.swift in Sources */,
-				EA09A02228A2B8F80023B4AF /* TimeTools.swift in Sources */,
 				EA185F26292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
 				EA406813292228A200F23479 /* WidgetData.swift in Sources */,
-				EA784CD22902517800918F64 /* AvatarHoldingData.swift in Sources */,
-				BF75011228E14CF500CDA64E /* AppConfig.swift in Sources */,
 				EA185F2E292F1AFC003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
 				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
-				EA784CD42902517C00918F64 /* UtilizationData.swift in Sources */,
 				5B918A3129D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,
-				EA784CCF2902517500918F64 /* HomeServerVersion.swift in Sources */,
 				EA09FDF12B2BB30100862DFB /* DailyNoteExtension.swift in Sources */,
-				EA784CDA2902518A00918F64 /* OpenAPI.swift in Sources */,
-				EA784CD82902518500918F64 /* AbyssDataSend.swift in Sources */,
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
 				EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */,
 				BFB101E928D6C755000DC631 /* ViewTools.swift in Sources */,
 				EAA969F62ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EA09A02628A2C2E60023B4AF /* IntentHandler.swift in Sources */,
-				EA784CD62902518100918F64 /* FetchHomeModel.swift in Sources */,
 				BFFD823828A680E000616CE1 /* WebImageView.swift in Sources */,
 				BF70211128B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				EAEE8ED02AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */,
@@ -2805,17 +2637,11 @@
 				EAB11EA029325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				EA887D352B1EAF62006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				BFFD821028A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
-				EA6B914A290EB3B800B5230B /* GlobalVar.swift in Sources */,
-				BF3F98C328EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EA2FF0DA28B017F40050C016 /* NotificationCenter.swift in Sources */,
-				BFBDD65028ED7B960022B79D /* Result.swift in Sources */,
-				EA46D0C728EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
 				EA185F2A292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
-				EA50D66A290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
 				5BA0D7AB2ACDD44A00B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
-				EA784CCE2902517200918F64 /* AvatarPercentageModel.swift in Sources */,
 				5BBCB6AF29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */,
 				EA059CD9292347E800400DE3 /* MultiTokenResult.swift in Sources */,
@@ -2827,15 +2653,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF43C8D28A0150400D89787 /* ExpeditionInfoBar.swift in Sources */,
-				EA46D0C628EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
-				BF3F98C228EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EA7CD43D28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
-				BFBDD64E28ED7B940022B79D /* Result.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
 				5BA0D7AD2ACDD51300B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
 				EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
-				EA784CD12902517800918F64 /* AvatarHoldingData.swift in Sources */,
 				EAEE8ECF2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
 				EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */,
 				EAF43C8F28A0150800D89787 /* TransformerInfoBar.swift in Sources */,
@@ -2858,13 +2680,9 @@
 				EAB110FE28CF8422009FDF07 /* LockScreenExpeditionWidgetCircular.swift in Sources */,
 				EAB110E928CF72E8009FDF07 /* LockScreenDailyTaskWidgetCorner.swift in Sources */,
 				EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
-				EA784CD72902518500918F64 /* AbyssDataSend.swift in Sources */,
 				EA7CD44028CF27AF00857493 /* LockScreenResinWidgetRectangular.swift in Sources */,
-				EA784CD02902517600918F64 /* HomeServerVersion.swift in Sources */,
 				EAB11EA529326FE500CD4ECA /* LockScreenHomeCoinWidgetRectangular.swift in Sources */,
 				EA7FF475293095BB00128A5C /* LockScreenResinFullTimeWidgetCircular.swift in Sources */,
-				BF75011128E14CF500CDA64E /* AppConfig.swift in Sources */,
-				EA50D669290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				EA09A02528A2C2E60023B4AF /* IntentHandler.swift in Sources */,
 				EA7FDF8F292CCB7800BDE83E /* ResinRecoveryActivityController.swift in Sources */,
 				EAD7F02B28D01B8D0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift in Sources */,
@@ -2873,11 +2691,9 @@
 				EAE2C89E2B2DA2F9004304D2 /* WidgetError.swift in Sources */,
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
-				EA784CD52902518000918F64 /* FetchHomeModel.swift in Sources */,
 				EA7FF46C2930870900128A5C /* LockScreenResinTimerWidget.swift in Sources */,
 				BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA406812292228A200F23479 /* WidgetData.swift in Sources */,
-				EA784CD92902518A00918F64 /* OpenAPI.swift in Sources */,
 				EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				EA36DFBA28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
 				BFE4253D289E507F00FEFA49 /* MainInfoWithDetailView.swift in Sources */,
@@ -2888,14 +2704,12 @@
 				EAF43C8E28A0150600D89787 /* DailyTaskInfoBar.swift in Sources */,
 				BF70211028B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
 				5B918A3029D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,
-				EA196B0328B769340091FAE0 /* StringExtensions.swift in Sources */,
 				EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
 				EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */,
 				EAFC5CD028B518FC00770BBB /* ExpeditionsView.swift in Sources */,
 				BFE4253B289E504C00FEFA49 /* DetailInfoView.swift in Sources */,
 				EA40681829222A1300F23479 /* MainWidgetSimplifiedView.swift in Sources */,
 				EAB1110028CF8422009FDF07 /* LockScreenExpeditionWidgetCorner.swift in Sources */,
-				EA784CD32902517B00918F64 /* UtilizationData.swift in Sources */,
 				EAB110FF28CF8422009FDF07 /* LockScreenExpeditionWidget.swift in Sources */,
 				EA75DD0728A0B1250099E70A /* WidgetMainView.swift in Sources */,
 				EAFC5CD628B5303C00770BBB /* LargeWidgetView.swift in Sources */,
@@ -2903,7 +2717,6 @@
 				EAB11EA82932728700CD4ECA /* MaterialWidget.swift in Sources */,
 				EAA969F52ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EAD7F02628D017D50047A8F1 /* LockScreenLoopWidget.swift in Sources */,
-				BFE7AFE52909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				EA09FDEC2B2BB07A00862DFB /* WidgetRefreshTime.swift in Sources */,
 				EAF43C8C28A0150200D89787 /* HomeCoinInfoBar.swift in Sources */,
 				EA80A9432B2ADFF100124B33 /* ResinRecoveryActivityWidget.swift in Sources */,
@@ -2914,15 +2727,12 @@
 				BF6C5273289E12DA00EA224F /* md5.swift in Sources */,
 				EA75DD0C28A0C0200099E70A /* InfoPreviewerView.swift in Sources */,
 				EA36DFBD28E3E3D20060AD4F /* LockScreenLoopWidgetWeeklyBossesCircular.swift in Sources */,
-				EA6B9149290EB3B800B5230B /* GlobalVar.swift in Sources */,
-				EA784CCD2902517200918F64 /* AvatarPercentageModel.swift in Sources */,
 				BFFD823328A651F500616CE1 /* RingProgressBarView.swift in Sources */,
 				EA7FF4732930959700128A5C /* LockScreenResinFullTimeWidget.swift in Sources */,
 				BFFD820F28A5F64800616CE1 /* BackgroundOptions.swift in Sources */,
 				BF0130A129220E7800074450 /* WidgetUserData.swift in Sources */,
 				EAAF330B28A2798B0018EFAB /* AccountConfigurationModel.swift in Sources */,
 				EAB110EB28CF72E8009FDF07 /* LockScreenDailyTaskWidget.swift in Sources */,
-				BFE42545289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BFE42542289E520A00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				BFCC064F28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
 				EA721E3C28D16FB500CEB049 /* LockScreenLoopWidgetCorner.swift in Sources */,
@@ -2940,8 +2750,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */,
-				BF75011028E14CF500CDA64E /* AppConfig.swift in Sources */,
-				BFE7AFE42909533700C75E7F /* PSAServerAPI.swift in Sources */,
 				EA0A6D0B29DDC74000A356A4 /* GachaTranslateManager.swift in Sources */,
 				BF7500D828DEA80700CDA64E /* EachCharacterDetailDataView.swift in Sources */,
 				EA3A9DB329D4812300CF4230 /* GachaChartView.swift in Sources */,
@@ -2962,7 +2770,6 @@
 				EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */,
 				5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
-				EA50D668290E20A50045C0D0 /* TeamUtilizationData.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
 				EA80A8A52B2ADE6600124B33 /* ResinRecoveryActivityWidget.swift in Sources */,
 				EA9C33B22B19C42100E9531C /* DailyNoteAPI.swift in Sources */,
@@ -2988,9 +2795,7 @@
 				5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */,
 				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BFFD823628A680E000616CE1 /* WebImageView.swift in Sources */,
-				EA784CC62902471600918F64 /* UtilizationData.swift in Sources */,
 				BF70210F28B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
-				EA56E08A28A26C0D00A64262 /* Result.swift in Sources */,
 				EAAF330F28A27AFE0018EFAB /* Account.swift in Sources */,
 				EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */,
 				EA3621D52B1D6809007CAB4D /* ToolView.swift in Sources */,
@@ -3000,7 +2805,6 @@
 				BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */,
 				EA1C2CE528F07DBE00E4C28A /* HiddenWaterMark.swift in Sources */,
 				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
-				EA196B0228B769340091FAE0 /* StringExtensions.swift in Sources */,
 				EA759D6D2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
 				BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */,
 				BFFD823228A651F500616CE1 /* RingProgressBarView.swift in Sources */,
@@ -3016,7 +2820,6 @@
 				EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */,
 				EAEE8ECD2AE08D9A00F406E4 /* AnyLocalizedError.swift in Sources */,
 				EAD3247129DFE878002779F3 /* CollectionChunked.swift in Sources */,
-				BFE42544289E523D00FEFA49 /* TimeTools.swift in Sources */,
 				BF70210B28B3910800A6BBA9 /* HomeView.swift in Sources */,
 				BFF684092A3753C8005470EA /* Icon.swift in Sources */,
 				EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
@@ -3030,33 +2833,25 @@
 				EA9BE57F2B200B9400143817 /* AlwaysShowSideBar.swift in Sources */,
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
 				EA9BE5822B200FF800143817 /* MiHoYoAPIError+LocalizedError.swift in Sources */,
-				EA46D0C528EACBFC00DFE603 /* PlayerDetail.swift in Sources */,
-				BF3F98C128EAB0AB00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				BF6C5275289E137200EA224F /* Servers.swift in Sources */,
 				EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */,
-				EA784CCA290248CA00918F64 /* HomeServerVersion.swift in Sources */,
 				BF70211328B39E7600A6BBA9 /* AppBlockBackgroundView.swift in Sources */,
 				BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */,
 				EA5232292903E0D6007A4CF4 /* ReverseMask.swift in Sources */,
-				BFB101D528D5F5BC000DC631 /* OpenAPI.swift in Sources */,
 				EA09FDEF2B2BB30000862DFB /* DailyNoteExtension.swift in Sources */,
 				EA11488D29D99B590059DEBF /* GetGachaClipboardView.swift in Sources */,
 				BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */,
 				EAF8AC1C29C758750047D36C /* CircleClippedBackground.swift in Sources */,
 				5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,
 				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
-				EA784CCC2902511E00918F64 /* AvatarPercentageModel.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
-				EA6B9148290EB2EF00B5230B /* GlobalVar.swift in Sources */,
-				EA1D09D128F319F5001DCC2A /* AbyssDataSend.swift in Sources */,
 				EA025C8829D287970075F780 /* GachaKey.swift in Sources */,
 				EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EABE606128D9F6970018CAF6 /* MaterialChoices.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
 				EAB5798128FC278D00C5D075 /* AbyssDataCollectionView.swift in Sources */,
-				EA784CC42902462C00918F64 /* FetchHomeModel.swift in Sources */,
 				BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */,
 				EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
@@ -3069,7 +2864,6 @@
 				BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */,
 				EA759D692B19989A0080C775 /* ManageAccountsView.swift in Sources */,
 				EA459DA5290CF47700E74F76 /* DismissableSheet.swift in Sources */,
-				EA784CC82902485600918F64 /* AvatarHoldingData.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
 				BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE2AD4829D3D06900FF9612 /* ContainGachaItemInfo.swift in Sources */,
@@ -3104,32 +2898,26 @@
 				EA185F29292F1ACD003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
 				EA406816292228A200F23479 /* WidgetData.swift in Sources */,
 				EABE606B28D9F6AC0018CAF6 /* MaterialChoices.swift in Sources */,
-				BF75011528E14CF500CDA64E /* AppConfig.swift in Sources */,
 				BF0130A529220E7800074450 /* WidgetUserData.swift in Sources */,
 				EAE95CF128CE112E00D975CB /* IntentHandler.swift in Sources */,
 				EA185F31292F1AFD003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EAE95CFB28CE11A100D975CB /* Servers.swift in Sources */,
 				EAEE8ED32AE08DA100F406E4 /* AnyLocalizedError.swift in Sources */,
-				EA5B0B232AD11F1500FB3F32 /* TimeTools.swift in Sources */,
 				EAE95D0F28CE11D200D975CB /* md5.swift in Sources */,
 				EA09FDF42B2BB30200862DFB /* DailyNoteExtension.swift in Sources */,
-				EAE95CF428CE116F00D975CB /* StringExtensions.swift in Sources */,
 				EAE95CF628CE11A100D975CB /* AccountConfigurationModel.swift in Sources */,
 				EAE95CF528CE117B00D975CB /* AccountConfiguration.xcdatamodeld in Sources */,
-				BFBDD65328ED7B980022B79D /* Result.swift in Sources */,
 				EAE95CF028CE112B00D975CB /* AccountIntents.intentdefinition in Sources */,
 				EA185F2D292F1ADC003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				EAE95CF728CE11A100D975CB /* Account.swift in Sources */,
 				EAA969F92ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EA887D382B1EAF64006EDAB8 /* DailyNoteAPI.swift in Sources */,
 				EAE2C8A22B2DA2FB004304D2 /* WidgetError.swift in Sources */,
-				EA6B914D290EB3BA00B5230B /* GlobalVar.swift in Sources */,
 				EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */,
 				EAE95CF228CE115D00D975CB /* WidgetViewConfiguration.swift in Sources */,
 				BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE95D0D28CE11CA00D975CB /* NetworkReachability.swift in Sources */,
-				BF3F98C628EAB0AC00D1B5CF /* GDDictionaryDataModel.swift in Sources */,
 				EAB11EA329325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				EAE95CFA28CE11A100D975CB /* MaterialProviders.swift in Sources */,
 			);

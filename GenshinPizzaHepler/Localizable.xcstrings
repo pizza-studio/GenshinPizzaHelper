@@ -20454,7 +20454,7 @@
       }
     },
     "detailPortal.ECDDV.maxHP" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20519,7 +20519,7 @@
       }
     },
     "detailPortal.ECDDV.prop.ATK" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20584,7 +20584,7 @@
       }
     },
     "detailPortal.ECDDV.prop.basicATK" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20649,7 +20649,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.anemo" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20714,7 +20714,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.cryo" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20779,7 +20779,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.dendro" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20844,7 +20844,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.electro" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20909,7 +20909,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.geo" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21039,7 +21039,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.healed" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21104,7 +21104,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.hydro" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21234,7 +21234,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.pyro" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21299,7 +21299,7 @@
       }
     },
     "detailPortal.ECDDV.prop.CDMG" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21364,7 +21364,7 @@
       }
     },
     "detailPortal.ECDDV.prop.CR" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21429,7 +21429,7 @@
       }
     },
     "detailPortal.ECDDV.prop.DEF" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21494,7 +21494,7 @@
       }
     },
     "detailPortal.ECDDV.prop.EM" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21559,7 +21559,7 @@
       }
     },
     "detailPortal.ECDDV.prop.ERCR" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21624,7 +21624,7 @@
       }
     },
     "detailPortal.ECDDV.prop.HP" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21754,7 +21754,7 @@
       }
     },
     "detailPortal.ECDDV.prop.SCMR" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -38897,7 +38897,7 @@
       }
     },
     "unit.daysOf:%lld" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -38962,7 +38962,7 @@
       }
     },
     "unit.HHMM:%lldHH%lldMM" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -39028,7 +39028,7 @@
     },
     "unit.hrs:%lld" : {
       "comment" : "Game Info block",
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -39093,7 +39093,7 @@
       }
     },
     "unit.mins:%lld" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -39222,6 +39222,7 @@
       }
     },
     "Unknown" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
