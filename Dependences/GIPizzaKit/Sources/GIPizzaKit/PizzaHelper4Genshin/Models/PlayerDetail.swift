@@ -246,7 +246,7 @@ public struct PlayerDetail {
                             case .plume:
                                 self.artifacts[index].score = artifactScores
                                     .stat2pt
-                            case .sand:
+                            case .sands:
                                 self.artifacts[index].score = artifactScores
                                     .stat3pt
                             case .goblet:
@@ -447,7 +447,7 @@ public struct PlayerDetail {
             public enum ArtifactType: String, CaseIterable {
                 case flower = "EQUIP_BRACER"
                 case plume = "EQUIP_NECKLACE"
-                case sand = "EQUIP_SHOES"
+                case sands = "EQUIP_SHOES"
                 case goblet = "EQUIP_RING"
                 case circlet = "EQUIP_DRESS"
             }
@@ -707,146 +707,79 @@ public enum RankLevel: Int {
 
 extension PlayerDetail.Avatar {
     public func convert2ArtifactRatingModel() -> ArtifactRatingRequest {
+        let extractedData = extractArtifactSetData()
         let artifactRatingRequest = ArtifactRatingRequest(
             cid: enkaID,
-            flower: readFromEnkaDatas(position: 1),
-            plume: readFromEnkaDatas(position: 2),
-            sands: readFromEnkaDatas(position: 3),
-            goblet: readFromEnkaDatas(position: 4),
-            circlet: readFromEnkaDatas(position: 5)
+            flower: extractedData[.flower] ?? .init(),
+            plume: extractedData[.plume] ?? .init(),
+            sands: extractedData[.sands] ?? .init(),
+            goblet: extractedData[.goblet] ?? .init(),
+            circlet: extractedData[.circlet] ?? .init()
         )
 
         return artifactRatingRequest
     }
 
-    public func readFromEnkaDatas(position: Int) -> ArtifactRatingRequest.Artifact {
-        let positionType: PlayerDetail.Avatar.Artifact.ArtifactType = {
-            switch position {
-            case 1:
-                return .flower
-            case 2:
-                return .plume
-            case 3:
-                return .sand
-            case 4:
-                return .goblet
-            case 5:
-                return .circlet
-            default:
-                return .flower
-            }
-        }()
+    typealias ArtifactsDataDictionary = [PlayerDetail.Avatar.Artifact.ArtifactType: ArtifactRatingRequest.Artifact]
 
-        var artifact = ArtifactRatingRequest.Artifact()
-        if let thisEnkaObject = artifacts
-            .first(where: { $0.artifactType == positionType }) {
-            artifact.star = thisEnkaObject.rankLevel.rawValue
-            artifact.lv = thisEnkaObject.level
-            for subAttr in thisEnkaObject.subAttributes {
-                print("\(subAttr.rawName)-\(subAttr.value)")
-            }
-            artifact.atkPercent = thisEnkaObject.subAttributes
-                .first(where: {
-                    $0.rawName == "FIGHT_PROP_ATTACK_PERCENT"
-                })?.value ?? 0
-            artifact.hpPercent = thisEnkaObject.subAttributes
-                .first(where: { $0.rawName == "FIGHT_PROP_HP_PERCENT"
-                })?
-                .value ?? 0
-            artifact.defPercent = thisEnkaObject.subAttributes
-                .first(where: {
-                    $0.rawName == "FIGHT_PROP_DEFENSE_PERCENT"
-                })?.value ?? 0
-            artifact.em = thisEnkaObject.subAttributes
-                .first(where: {
-                    $0.rawName == "FIGHT_PROP_ELEMENT_MASTERY"
-                })?.value ?? 0
-            artifact.erPercent = thisEnkaObject.subAttributes
-                .first(where: {
-                    $0.rawName == "FIGHT_PROP_CHARGE_EFFICIENCY"
-                })?.value ?? 0
-            artifact.crPercent = thisEnkaObject.subAttributes
-                .first(where: { $0.rawName == "FIGHT_PROP_CRITICAL" })?
-                .value ?? 0
-            artifact.cdPercent = thisEnkaObject.subAttributes
-                .first(where: { $0.rawName == "FIGHT_PROP_CRITICAL_HURT"
-                })?.value ?? 0
-            artifact.atk = thisEnkaObject.subAttributes
-                .first(where: { $0.rawName == "FIGHT_PROP_ATTACK" })?
-                .value ?? 0
-            artifact.hp = thisEnkaObject.subAttributes
-                .first(where: { $0.rawName == "FIGHT_PROP_HP" })?
-                .value ?? 0
-            artifact.def = thisEnkaObject.subAttributes
-                .first(where: { $0.rawName == "FIGHT_PROP_DEFENSE" })?
-                .value ?? 0
-
-            if position == 3 {
-                switch thisEnkaObject.mainAttribute.rawName {
-                case "FIGHT_PROP_HP_PERCENT":
-                    artifact.mainProp3 = .hpPercentage
-                case "FIGHT_PROP_ATTACK_PERCENT":
-                    artifact.mainProp3 = .atkPercentage
-                case "FIGHT_PROP_DEFENSE_PERCENT":
-                    artifact.mainProp3 = .defPercentage
-                case "FIGHT_PROP_ELEMENT_MASTERY":
-                    artifact.mainProp3 = .em
-                case "FIGHT_PROP_CHARGE_EFFICIENCY":
-                    artifact.mainProp3 = .er
-                default:
-                    artifact.mainProp3 = nil
-                }
-            } else if position == 4 {
-                switch thisEnkaObject.mainAttribute.rawName {
-                case "FIGHT_PROP_HP_PERCENT":
-                    artifact.mainProp4 = .hpPercentage
-                case "FIGHT_PROP_ATTACK_PERCENT":
-                    artifact.mainProp4 = .atkPercentage
-                case "FIGHT_PROP_DEFENSE_PERCENT":
-                    artifact.mainProp4 = .defPercentage
-                case "FIGHT_PROP_ELEMENT_MASTERY":
-                    artifact.mainProp4 = .em
-                case "FIGHT_PROP_PHYSICAL_ADD_HURT":
-                    artifact.mainProp4 = .physicoDmg
-                case "FIGHT_PROP_FIRE_ADD_HURT":
-                    artifact.mainProp4 = .pyroDmg
-                case "FIGHT_PROP_ELEC_ADD_HURT":
-                    artifact.mainProp4 = .electroDmg
-                case "FIGHT_PROP_WATER_ADD_HURT":
-                    artifact.mainProp4 = .hydroDmg
-                case "FIGHT_PROP_WIND_ADD_HURT":
-                    artifact.mainProp4 = .anemoDmg
-                case "FIGHT_PROP_ICE_ADD_HURT":
-                    artifact.mainProp4 = .cryoDmg
-                case "FIGHT_PROP_ROCK_ADD_HURT":
-                    artifact.mainProp4 = .geoDmg
-                case "FIGHT_PROP_GRASS_ADD_HURT":
-                    artifact.mainProp4 = .dendroDmg
-                default:
-                    artifact.mainProp4 = nil
-                }
-            } else if position == 5 {
-                switch thisEnkaObject.mainAttribute.rawName {
-                case "FIGHT_PROP_HP_PERCENT":
-                    artifact.mainProp5 = .hpPercentage
-                case "FIGHT_PROP_ATTACK_PERCENT":
-                    artifact.mainProp5 = .atkPercentage
-                case "FIGHT_PROP_DEFENSE_PERCENT":
-                    artifact.mainProp5 = .defPercentage
-                case "FIGHT_PROP_ELEMENT_MASTERY":
-                    artifact.mainProp5 = .em
-                case "FIGHT_PROP_CRITICAL":
-                    artifact.mainProp5 = .critRate
-                case "FIGHT_PROP_CRITICAL_HURT":
-                    artifact.mainProp5 = .critDmg
-                case "FIGHT_PROP_HEAL_ADD":
-                    artifact.mainProp5 = .healingBonus
-                default:
-                    artifact.mainProp5 = nil
+    func extractArtifactSetData() -> ArtifactsDataDictionary {
+        var arrResult = ArtifactsDataDictionary()
+        artifacts.forEach { thisRawEnkaArtifact in
+            var result = ArtifactRatingRequest.Artifact()
+            let artifactType = thisRawEnkaArtifact.artifactType
+            result.star = thisRawEnkaArtifact.rankLevel.rawValue
+            result.lv = thisRawEnkaArtifact.level
+            // 副词条
+            thisRawEnkaArtifact.subAttributes.forEach { thisRawEnkaAttr in
+                defer { print("\(thisRawEnkaAttr.rawName)-\(thisRawEnkaAttr.value)") }
+                switch AvatarAttribute(rawValue: thisRawEnkaAttr.rawName) {
+                case .ATK: result.atk = thisRawEnkaAttr.value
+                case .DEF: result.def = thisRawEnkaAttr.value
+                case .EM: result.em = thisRawEnkaAttr.value
+                case .critRate: result.crPercent = thisRawEnkaAttr.value
+                case .critDmg: result.cdPercent = thisRawEnkaAttr.value
+                case .chargeEfficiency: result.erPercent = thisRawEnkaAttr.value
+                case .HP: result.hp = thisRawEnkaAttr.value
+                case .ATKAmp: result.atkPercent = thisRawEnkaAttr.value
+                case .HPAmp: result.hpPercent = thisRawEnkaAttr.value
+                case .DEFAmp: result.defPercent = thisRawEnkaAttr.value
+                default: break
                 }
             }
+            // 主词条。
+            let mainAttributeType = AvatarAttribute(rawValue: thisRawEnkaArtifact.mainAttribute.rawName)
+            switch (artifactType, mainAttributeType) {
+            case (.sands, .HPAmp): result.mainProp3 = .hpPercentage
+            case (.sands, .ATKAmp): result.mainProp3 = .atkPercentage
+            case (.sands, .DEFAmp): result.mainProp3 = .defPercentage
+            case (.sands, .EM): result.mainProp3 = .em
+            case (.sands, .chargeEfficiency): result.mainProp3 = .er
+            case (.sands, _): result.mainProp3 = nil
+            case (.goblet, .HPAmp): result.mainProp4 = .hpPercentage
+            case (.goblet, .ATKAmp): result.mainProp4 = .atkPercentage
+            case (.goblet, .DEFAmp): result.mainProp4 = .defPercentage
+            case (.goblet, .EM): result.mainProp4 = .em
+            case (.goblet, .dmgAmpPhysico): result.mainProp4 = .physicoDmg
+            case (.goblet, .dmgAmpAnemo): result.mainProp4 = .anemoDmg
+            case (.goblet, .dmgAmpGeo): result.mainProp4 = .geoDmg
+            case (.goblet, .dmgAmpElectro): result.mainProp4 = .electroDmg
+            case (.goblet, .dmgAmpDendro): result.mainProp4 = .dendroDmg
+            case (.goblet, .dmgAmpHydro): result.mainProp4 = .hydroDmg
+            case (.goblet, .dmgAmpPyro): result.mainProp4 = .pyroDmg
+            case (.goblet, .dmgAmpCryo): result.mainProp4 = .cryoDmg
+            case (.goblet, _): result.mainProp4 = nil
+            case (.circlet, .HPAmp): result.mainProp5 = .hpPercentage
+            case (.circlet, .ATKAmp): result.mainProp5 = .atkPercentage
+            case (.circlet, .DEFAmp): result.mainProp5 = .defPercentage
+            case (.circlet, .EM): result.mainProp5 = .em
+            case (.circlet, .critRate): result.mainProp5 = .critRate
+            case (.circlet, .critDmg): result.mainProp5 = .critDmg
+            case (.circlet, .healAmp): result.mainProp5 = .healingBonus
+            case (.circlet, _): result.mainProp5 = nil
+            case (_, _): break
+            }
+            arrResult[artifactType] = result
         }
-
-        return artifact
+        return arrResult
     }
 }
