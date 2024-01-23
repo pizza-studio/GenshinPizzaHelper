@@ -42,13 +42,6 @@ struct WebBrowserView: UIViewRepresentable {
         // MARK: Internal
 
         var parent: WebBrowserView
-
-        func webView(
-            _ webView: WKWebView,
-            didFinish navigation: WKNavigation!
-        ) {
-            webView.injectDarkModeAwareness()
-        }
     }
 
     var url: String = ""

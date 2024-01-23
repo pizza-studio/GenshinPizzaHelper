@@ -50,12 +50,3 @@ public class OPWebView: WKWebView {
         return result
     }
 }
-
-extension WKWebView {
-    public func injectDarkModeAwareness() {
-        let cssString = "@media (prefers-color-scheme: dark) { body { background: #333; color: white; } }"
-        let jsString =
-            "var style = document.createElement('style'); style.innerHTML = '\(cssString)'; document.head.appendChild(style);"
-        evaluateJavaScript(jsString)
-    }
-}
