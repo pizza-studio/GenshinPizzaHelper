@@ -142,7 +142,7 @@ struct LiveActivitySettingDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isHelpSheetShow) {
             NavigationStack {
-                WebBroswerView(
+                WebBrowserView(
                     url: "https://gi.pizzastudio.org/static/resin_timer_help.html"
                 )
                 .dismissableSheet(isSheetShow: $isHelpSheetShow)

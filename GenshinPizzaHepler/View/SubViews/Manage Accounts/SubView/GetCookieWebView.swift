@@ -107,6 +107,7 @@ struct CookieGetterWebView: UIViewRepresentable {
             setTimeout(() => {clearInterval(timer);timer = null}, 10000);
             """
             webView.evaluateJavaScript(jsonScript)
+            webView.injectDarkModeAwareness()
         }
     }
 

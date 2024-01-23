@@ -29,10 +29,33 @@ struct SFSafariViewWrapper: UIViewControllerRepresentable {
     ) {}
 }
 
-// MARK: - WebBroswerView
+// MARK: - WebBrowserView
 
-struct WebBroswerView: UIViewRepresentable {
+struct WebBrowserView: UIViewRepresentable {
+    class Coordinator: NSObject, WKNavigationDelegate {
+        // MARK: Lifecycle
+
+        init(_ parent: WebBrowserView) {
+            self.parent = parent
+        }
+
+        // MARK: Internal
+
+        var parent: WebBrowserView
+
+        func webView(
+            _ webView: WKWebView,
+            didFinish navigation: WKNavigation!
+        ) {
+            webView.injectDarkModeAwareness()
+        }
+    }
+
     var url: String = ""
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
 
     func makeUIView(context: Context) -> OPWebView {
         guard let url = URL(string: url)
@@ -67,10 +90,8 @@ struct TeyvatMapWebView: UIViewRepresentable {
 
         var parent: TeyvatMapWebView
 
-        // MARK: Private
-
-        private func webView(
-            _ webView: OPWebView,
+        func webView(
+            _ webView: WKWebView,
             didFinish navigation: WKNavigation!
         ) {
             var js = ""
@@ -104,6 +125,7 @@ struct TeyvatMapWebView: UIViewRepresentable {
         let request = URLRequest(url: url)
 
         let webView = OPWebView()
+        webView.configuration.userContentController.removeAllUserScripts() // 对提瓦特地图禁用自动 dark mode 支持。
         webView.navigationDelegate = context.coordinator
         webView.load(request)
         return webView
@@ -245,7 +267,7 @@ struct UserPolicyView: View {
 
     var body: some View {
         NavigationStack {
-            WebBroswerView(url: "https://gi.pizzastudio.org/static/policy.html")
+            WebBrowserView(url: "https://gi.pizzastudio.org/static/policy.html")
                 .ignoresSafeArea()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

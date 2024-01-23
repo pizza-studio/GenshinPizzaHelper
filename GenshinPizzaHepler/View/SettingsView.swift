@@ -172,7 +172,7 @@ struct SettingsView: View {
                             return "https://gi.pizzastudio.org/static/faq_en.html"
                         }
                     }()
-                    WebBroswerView(url: url)
+                    WebBrowserView(url: url)
                         .navigationTitle("FAQ")
                         .navigationBarTitleDisplayMode(.inline)
                 case .uiPreference:

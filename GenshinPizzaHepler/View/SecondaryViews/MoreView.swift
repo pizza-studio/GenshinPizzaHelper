@@ -112,7 +112,7 @@ struct MoreView: View {
 
             Section {
                 NavigationLink(
-                    destination: WebBroswerView(
+                    destination: WebBrowserView(
                         url: "https://gi.pizzastudio.org/static/policy.html"
                     )
                     .navigationTitle("settings.misc.EULA")

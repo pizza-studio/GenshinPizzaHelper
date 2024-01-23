@@ -347,7 +347,7 @@ struct AbyssDataCollectionView: View {
                 }
             }()
             NavigationStack {
-                WebBroswerView(url: url)
+                WebBrowserView(url: url)
                     .dismissableSheet(isSheetShow: $isWebSheetShow)
                     .navigationTitle("app.abyss.rank.faq")
                     .navigationBarTitleDisplayMode(.inline)

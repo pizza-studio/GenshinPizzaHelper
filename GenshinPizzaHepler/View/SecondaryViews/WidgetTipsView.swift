@@ -24,7 +24,7 @@ struct WidgetTipsView: View {
 
                 Section(header: Text("app.tips.widget.add.header").textCase(.none)) {
                     NavigationLink(
-                        destination: WebBroswerView(
+                        destination: WebBrowserView(
                             url: "https://support.apple.com/HT207122"
                         )
                         .navigationTitle("app.tips.widget.add.header")
@@ -34,7 +34,7 @@ struct WidgetTipsView: View {
                             .padding(.vertical, 10)
                     }
                     NavigationLink(
-                        destination: WebBroswerView(
+                        destination: WebBrowserView(
                             url: "https://support.apple.com/HT205536"
                         )
                         .navigationTitle("app.tips.widget.watch.add.header")
@@ -55,7 +55,7 @@ struct WidgetTipsView: View {
 
                 Section(header: Text("app.tips.other").textCase(.none)) {
                     NavigationLink(
-                        destination: WebBroswerView(
+                        destination: WebBrowserView(
                             url: "https://gi.pizzastudio.org/static/faq.html"
                         )
                         .navigationTitle("FAQ")

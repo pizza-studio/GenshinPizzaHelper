@@ -33,6 +33,10 @@ struct GeetestValidateView: UIViewRepresentable {
                 }
             }
         }
+
+        func webView(_ webView: WKWebView, didFinish _: WKNavigation!) {
+            webView.injectDarkModeAwareness()
+        }
     }
 
     let challenge: String

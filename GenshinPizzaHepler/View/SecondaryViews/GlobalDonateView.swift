@@ -24,7 +24,7 @@ struct GlobalDonateView: View {
             }
             Section {
                 NavigationLink(
-                    destination: WebBroswerView(
+                    destination: WebBrowserView(
                         url: "https://gi.pizzastudio.org/static/thanks.html"
                     )
                     .navigationTitle("donate.specialThanks")
