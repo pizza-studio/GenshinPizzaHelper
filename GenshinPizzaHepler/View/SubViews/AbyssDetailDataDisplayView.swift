@@ -125,7 +125,7 @@ struct AbyssDetailDataDisplayView: View {
     private var dismiss
 
     private var columns: Int {
-        max(Int(floor($containerSize.wrappedValue.width / 200)), 2)
+        min(max(Int(floor($containerSize.wrappedValue.width / 200)), 2), 4)
     }
 
     private var previousData: SpiralAbyssDetail? {
