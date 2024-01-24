@@ -25,18 +25,38 @@ struct AbyssDetailDataDisplayView: View {
     let currentData: SpiralAbyssDetail
     let previousStatus: DetailPortalViewModel.Status<SpiralAbyssDetail>
 
-    @Environment(\.horizontalSizeClass)
-    var horizontalSizeClass
+    @Namespace
+    var animation
 
     var body: some View {
+        GeometryReader { geometry in
+            coreBodyView.onAppear {
+                containerSize = geometry.size
+            }.onChange(of: geometry.size) { newSize in
+                containerSize = newSize
+            }
+        }
+    }
+
+    @ViewBuilder
+    var coreBodyView: some View {
         List {
             // 战斗数据榜
             if !data.rankDataMissing {
-                if OS.type == .macOS || horizontalSizeClass != .compact {
-                    statisticViewNormal
-                } else {
-                    statisticViewCompact
+                Section {
+                    StaggeredGrid(
+                        columns: columns,
+                        outerPadding: false,
+                        scroll: false,
+                        list: data.summarizedIntoCells(compact: columns % 2 == 0),
+                        content: { currentCell in
+                            AbyssValueCellView(cellData: currentCell)
+                                .matchedGeometryEffect(id: currentCell.id, in: animation)
+                        }
+                    )
+                    .animation(.easeInOut, value: columns)
                 }
+                .listRowMaterialBackground()
             } else {
                 Text("app.abyss.noData").listRowMaterialBackground()
             }
@@ -81,146 +101,29 @@ struct AbyssDetailDataDisplayView: View {
         ) {
             AbyssShareView(data: data)
         }
-    }
-
-    @ViewBuilder
-    var statisticViewNormal: some View {
-        // 总体战斗结果概览
-        Section {
-            VStack {
-                Grid {
-                    GridRow {
-                        AbyssValueCellView(
-                            value: data.maxFloor, description: "app.abyss.info.deepest", avatar: {}
-                        )
-                        AbyssValueCellView(
-                            value: "\(data.totalBattleTimes)",
-                            description: "app.abyss.info.battle", avatar: {}
-                        )
-                        AbyssValueCellView(
-                            value: "\(data.totalWinTimes)",
-                            description: "app.abyss.info.win", avatar: {}
-                        )
-                    }
-                    GridRow {
-                        AbyssValueCellView(
-                            value: "\(data.totalStar)", description: "app.abyss.info.star", avatar: {}
-                        )
-                        AbyssValueCellView(
-                            value: sayNullableInt(data.takeDamageRank.first?.value),
-                            description: "app.abyss.info.mostDamageTaken",
-                            avatar: {
-                                makeAvatar(data.takeDamageRank.first?.avatarId)
-                            }
-                        )
-                        AbyssValueCellView(
-                            value: sayNullableInt(data.damageRank.first?.value),
-                            description: "app.abyss.info.strongest",
-                            avatar: {
-                                makeAvatar(data.damageRank.first?.avatarId)
-                            }
-                        )
-                    }
-                    GridRow {
-                        AbyssValueCellView(
-                            value: sayNullableInt(data.defeatRank.first?.value),
-                            description: "app.abyss.info.mostDefeats",
-                            avatar: {
-                                makeAvatar(data.defeatRank.first?.avatarId)
-                            }
-                        )
-                        AbyssValueCellView(
-                            value: sayNullableInt(data.normalSkillRank.first?.value),
-                            description: "app.abyss.info.mostESkills",
-                            avatar: {
-                                makeAvatar(data.normalSkillRank.first?.avatarId)
-                            }
-                        )
-                        AbyssValueCellView(
-                            value: sayNullableInt(data.energySkillRank.first?.value),
-                            description: "app.abyss.info.mostQSkills",
-                            avatar: {
-                                makeAvatar(data.energySkillRank.first?.avatarId)
-                            }
-                        )
-                    }
-                }
-                .frame(maxWidth: .infinity)
-            }
-        } header: {
-            Text("app.abyss.info.summary")
-                .secondaryColorVerseBackground()
-        }
-        .listRowMaterialBackground()
-    }
-
-    @ViewBuilder
-    var statisticViewCompact: some View {
-        // 总体战斗结果概览
-        Section {
-            InfoPreviewer(title: "app.abyss.info.deepest", content: data.maxFloor)
-            InfoPreviewer(title: "app.abyss.info.star", content: "\(data.totalStar)")
-            InfoPreviewer(
-                title: "app.abyss.info.battle",
-                content: "\(data.totalBattleTimes)"
-            )
-            InfoPreviewer(title: "app.abyss.info.win", content: "\(data.totalWinTimes)")
-        } header: {
-            Text("app.abyss.info.summary")
-                .secondaryColorVerseBackground()
-        }
-        .listRowMaterialBackground()
-
-        Section {
-            BattleDataInfoProvider(
-                name: "app.abyss.info.strongest",
-                value: data.damageRank.first?.value,
-                avatarID: data.damageRank.first?.avatarId
-            )
-            BattleDataInfoProvider(
-                name: "app.abyss.info.mostDefeats",
-                value: data.defeatRank.first?.value,
-                avatarID: data.defeatRank.first?.avatarId
-            )
-            BattleDataInfoProvider(
-                name: "app.abyss.info.mostDamageTaken",
-                value: data.takeDamageRank.first?.value,
-                avatarID: data.takeDamageRank.first?.avatarId
-            )
-            BattleDataInfoProvider(
-                name: "app.abyss.info.mostESkills",
-                value: data.normalSkillRank.first?.value,
-                avatarID: data.normalSkillRank.first?.avatarId
-            )
-            BattleDataInfoProvider(
-                name: "app.abyss.info.mostQSkills",
-                value: data.energySkillRank.first?.value,
-                avatarID: data.energySkillRank.first?.avatarId
-            )
-        } header: {
-            Text("app.abyss.info.notableStats")
-                .secondaryColorVerseBackground()
-        }
-        .listRowMaterialBackground()
-    }
-
-    @ViewBuilder
-    func makeAvatar(_ id: Int?) -> some View {
-        CharacterAsset.match(id: id ?? -213).decoratedIcon(48, cutTo: .face)
-            .frame(width: 52, alignment: .center)
-    }
-
-    func sayNullableInt(_ int: Int?) -> String {
-        int?.description ?? "-1"
+        .environmentObject(orientation)
     }
 
     // MARK: Private
+
+    @Environment(\.horizontalSizeClass)
+    private var horizontalSizeClass
+
+    @StateObject
+    private var orientation = ThisDevice.DeviceOrientation()
+
+    @State
+    private var containerSize: CGSize = .zero
 
     @State
     private var season: AccountSpiralAbyssDetail.WhichSeason = .this
 
     @Environment(\.dismiss)
     private var dismiss
+
+    private var columns: Int {
+        max(Int(floor($containerSize.wrappedValue.width / 200)), 2)
+    }
 
     private var previousData: SpiralAbyssDetail? {
         switch previousStatus {
@@ -403,23 +306,6 @@ private struct AbyssBattleView: View {
     private var orientation = ThisDevice.DeviceOrientation()
 }
 
-// MARK: - BattleDataInfoProvider
-
-private struct BattleDataInfoProvider: View {
-    let name: String
-    let value: Int?
-    let avatarID: Int?
-
-    var body: some View {
-        HStack {
-            Text(name.localized)
-            Spacer()
-            Text("\(value ?? -1)").foregroundColor(.primary.opacity(0.7))
-            CharacterAsset.match(id: avatarID ?? -213).decoratedIcon(32, cutTo: .face)
-        }
-    }
-}
-
 // MARK: - AbyssStarIcon
 
 struct AbyssStarIcon: View {
@@ -489,28 +375,25 @@ private struct ShareAbyssFloorView: View {
 
 // MARK: - AbyssValueCellView
 
-private struct AbyssValueCellView<Avatar: View>: View {
-    let value: String
-    let description: LocalizedStringKey
-    @ViewBuilder
-    let avatar: () -> Avatar
+private struct AbyssValueCellView: View {
+    let cellData: AbyssValueCell
 
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .center) {
-                Text(verbatim: value)
+                Text(verbatim: cellData.value)
                     .lineLimit(1)
                     .font(.title)
                     .fontWeight(.heavy)
                     .fontWidth(.compressed)
                     .minimumScaleFactor(0.3)
-                Text(description)
+                Text(cellData.description)
                     .lineLimit(1)
                     .font(.caption)
                     .minimumScaleFactor(0.3)
             }
             .frame(maxWidth: .infinity)
-            avatar()
+            cellData.makeAvatar()
         }
         .frame(maxWidth: .infinity)
         .padding(8)
@@ -518,5 +401,91 @@ private struct AbyssValueCellView<Avatar: View>: View {
             .regularMaterial,
             in: RoundedRectangle(cornerRadius: 8, style: .circular)
         )
+    }
+}
+
+// MARK: - AbyssValueCell
+
+private struct AbyssValueCell: Identifiable, Hashable {
+    // MARK: Lifecycle
+
+    public init(value: String, description: String, avatarId: Int? = nil) {
+        self.avatarId = avatarId
+        self.value = value
+        self.description = description.localized
+    }
+
+    public init(value: Int?, description: String, avatarId: Int? = nil) {
+        self.avatarId = avatarId
+        self.value = (value ?? -1).description
+        self.description = description.localized
+    }
+
+    // MARK: Internal
+
+    let id: Int = UUID().hashValue
+    let avatarId: Int?
+    var value: String
+    var description: String
+
+    func makeAvatar() -> some View {
+        guard let avatarId = avatarId else { return AnyView(EmptyView()) }
+        guard let avatar = CharacterAsset(rawValue: avatarId) else { return AnyView(EmptyView()) }
+        let result = avatar.decoratedIcon(48, cutTo: .face).frame(width: 52, alignment: .center)
+        return AnyView(result)
+    }
+}
+
+extension SpiralAbyssDetail {
+    fileprivate func summarizedIntoCells(compact: Bool = false) -> [AbyssValueCell] {
+        var result = [AbyssValueCell]()
+        result.append(AbyssValueCell(value: maxFloor, description: "app.abyss.info.deepest"))
+        if compact {
+            let appendCell = AbyssValueCell(value: totalBattleTimes, description: "app.abyss.info.battle")
+            var newCell = AbyssValueCell(value: totalWinTimes, description: "app.abyss.info.win")
+            newCell.value += " / \(appendCell.value)"
+            newCell.description += " / \(appendCell.description)"
+            result.append(newCell)
+        } else {
+            result.append(AbyssValueCell(value: totalBattleTimes, description: "app.abyss.info.battle"))
+            result.append(AbyssValueCell(value: totalWinTimes, description: "app.abyss.info.win"))
+        }
+        result.append(AbyssValueCell(value: totalStar, description: "app.abyss.info.star"))
+        result.append(
+            AbyssValueCell(
+                value: takeDamageRank.first?.value,
+                description: "app.abyss.info.mostDamageTaken",
+                avatarId: takeDamageRank.first?.avatarId
+            )
+        )
+        result.append(
+            AbyssValueCell(
+                value: damageRank.first?.value,
+                description: "app.abyss.info.strongest",
+                avatarId: damageRank.first?.avatarId
+            )
+        )
+        result.append(
+            AbyssValueCell(
+                value: defeatRank.first?.value,
+                description: "app.abyss.info.mostDefeats",
+                avatarId: defeatRank.first?.avatarId
+            )
+        )
+        result.append(
+            AbyssValueCell(
+                value: normalSkillRank.first?.value,
+                description: "app.abyss.info.mostESkills",
+                avatarId: normalSkillRank.first?.avatarId
+            )
+        )
+        result.append(
+            AbyssValueCell(
+                value: energySkillRank.first?.value,
+                description: "app.abyss.info.mostQSkills",
+                avatarId: energySkillRank.first?.avatarId
+            )
+        )
+        return result
     }
 }

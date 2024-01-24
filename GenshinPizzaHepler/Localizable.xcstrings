@@ -2373,25 +2373,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battles Fought"
+            "value" : "Battles"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battles Fought"
+            "value" : "Battles"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battles Fought"
+            "value" : "Battles"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battles Fought"
+            "value" : "Battles"
           }
         },
         "ja" : {
@@ -2403,7 +2403,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battles Fought"
+            "value" : "Battles"
           }
         },
         "ru" : {
@@ -2817,6 +2817,7 @@
       }
     },
     "app.abyss.info.notableStats" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3074,6 +3075,7 @@
       }
     },
     "app.abyss.info.summary" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3207,25 +3209,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win Times"
+            "value" : "Wins"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win Times"
+            "value" : "Wins"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win Times"
+            "value" : "Wins"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win Times"
+            "value" : "Wins"
           }
         },
         "ja" : {
@@ -3237,7 +3239,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Win Times"
+            "value" : "Wins"
           }
         },
         "ru" : {
