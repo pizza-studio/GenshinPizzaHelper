@@ -55,6 +55,9 @@ struct AbyssDetailDataDisplayView: View {
                         }
                     )
                     .animation(.easeInOut, value: columns)
+                } header: {
+                    Text("app.abyss.info.summary")
+                        .secondaryColorVerseBackground()
                 }
                 .listRowMaterialBackground()
             } else {
