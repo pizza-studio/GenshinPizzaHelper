@@ -34,10 +34,15 @@ struct CharacterDetailView: View {
     }
 
     var body: some View {
-        coreBody(detail: playerDetail).environmentObject(orientation)
-            .overlay(alignment: .top) {
-                HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
-            }
+        GeometryReader { geometry in
+            coreBody(detail: playerDetail)
+                .environmentObject(orientation)
+                .overlay(alignment: .top) {
+                    HelpTextForScrollingOnDesktopComputer(.horizontal).padding()
+                }.onChange(of: geometry.size) { _ in
+                    showTabViewIndex = $showTabViewIndex.wrappedValue // 强制重新渲染整个画面。
+                }
+        }
     }
 
     var bottomSpacerHeight: CGFloat {
