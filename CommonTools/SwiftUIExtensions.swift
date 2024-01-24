@@ -119,7 +119,8 @@ extension View {
         alignment: Alignment,
         textSize: CGFloat = 12,
         opacity: CGFloat = 1,
-        enabled: Bool = true
+        enabled: Bool = true,
+        padding: CGFloat = 0
     )
         -> some View {
         guard stringKey != "", enabled else { return AnyView(self) }
@@ -131,6 +132,7 @@ extension View {
                     .padding(.horizontal, 0.3 * textSize)
                     .adjustedBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
+                    .padding(padding)
             }
         )
     }
@@ -140,7 +142,8 @@ extension View {
         alignment: Alignment,
         textSize: CGFloat = 12,
         opacity: CGFloat = 1,
-        enabled: Bool = true
+        enabled: Bool = true,
+        padding: CGFloat = 0
     )
         -> some View {
         guard stringVerbatim != "", enabled else { return AnyView(self) }
@@ -152,6 +155,7 @@ extension View {
                     .padding(.horizontal, 0.3 * textSize)
                     .adjustedBlurMaterialBackground().clipShape(Capsule())
                     .opacity(opacity)
+                    .padding(padding)
             }
         )
     }

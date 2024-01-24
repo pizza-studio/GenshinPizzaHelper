@@ -93,7 +93,12 @@ struct NameCardCellView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .cornerRadius(10)
-            .corneredTag(verbatim: card.localized, alignment: .bottomLeading)
+            .corneredTag(
+                verbatim: card.localized,
+                alignment: .bottomLeading,
+                opacity: 0.9,
+                padding: 6
+            )
     }
 }
 
