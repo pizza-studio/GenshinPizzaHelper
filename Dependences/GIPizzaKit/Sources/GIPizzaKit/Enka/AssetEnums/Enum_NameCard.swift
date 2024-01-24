@@ -209,6 +209,12 @@ public enum NameCard: Int, CaseIterable, _DefaultsSerializable {
     case UI_NameCardPic_OST4_P = 21092
 }
 
+// MARK: Identifiable, Hashable
+
+extension NameCard: Identifiable, Hashable {
+    public var id: Int { rawValue }
+}
+
 extension NameCard {
     /// 此变数用来屏蔽某些正式发行前的内容。
     /// 之所以仅对名片与材料这么做，是因为角色往往会提前一个月被米哈游官方借由「天外卫星通信」公开。

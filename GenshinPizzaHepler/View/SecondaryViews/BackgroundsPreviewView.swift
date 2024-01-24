@@ -13,36 +13,40 @@ import SwiftUI
 struct BackgroundsPreviewView: View {
     // MARK: Internal
 
+    @StateObject
+    private var orientation = ThisDevice.DeviceOrientation()
+
+    @Namespace
+    var animation
+
+    @State
+    var containerSize: CGSize = .zero
+
+    var columns: Int {
+        max(Int(floor($containerSize.wrappedValue.width / 240)), 1)
+    }
+
     var body: some View {
-        List {
-            ForEach(searchResults, id: \.rawValue) { currentCard in
-                Section {
-                    WidgetBackgroundView(
-                        background: generateBackground(currentCard.fileName),
-                        darkModeOn: false
-                    )
-                    .listRowInsets(.init(
-                        top: 0,
-                        leading: 0,
-                        bottom: 0,
-                        trailing: 0
-                    ))
-                    .clipShape(RoundedRectangle(
-                        cornerRadius: 20,
-                        style: .continuous
-                    ))
-                } header: {
-                    Text(
-                        currentCard.localized
-                    )
-                }
-                .textCase(.none)
-                .listRowBackground(Color.white.opacity(0))
+        GeometryReader { geometry in
+            coreBodyView.onAppear {
+                containerSize = geometry.size
+            }.onChange(of: geometry.size) { newSize in
+                containerSize = newSize
             }
         }
-        .listStyle(.insetGrouped)
+    }
+
+    @ViewBuilder
+    var coreBodyView: some View {
+        StaggeredGrid(columns: columns, list: searchResults, content: { currentCard in
+            currentCard.suiCellView
+                .matchedGeometryEffect(id: currentCard.id, in: animation)
+        })
         .searchable(text: $searchText)
+        .padding(.horizontal)
+        .animation(.easeInOut, value: columns)
         .navigationTitle("settings.travelTools.backgroundNamecardPreview")
+        .environmentObject(orientation)
     }
 
     var searchResults: [NameCard] {
@@ -74,5 +78,29 @@ struct BackgroundsPreviewView: View {
 struct BackgroundsPreviewView_Previews: PreviewProvider {
     static var previews: some View {
         BackgroundsPreviewView()
+    }
+}
+
+// MARK: - NameCardCellView
+
+// 因为我们声明T为可识别的…
+// 所以我们需要传递可识别集合/数组…
+struct NameCardCellView: View {
+    var card: NameCard
+
+    var body: some View {
+        Image(card.fileName)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .cornerRadius(10)
+            .corneredTag(verbatim: card.localized, alignment: .bottomLeading)
+    }
+}
+
+// MARK: - NameCard SwiftUI Extension
+
+extension NameCard {
+    public var suiCellView: some View {
+        NameCardCellView(card: self)
     }
 }

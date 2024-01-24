@@ -185,6 +185,8 @@
 		5BD1C6772A2A1FC90043C2B1 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
 		5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BEF4B862B60D711007FB100 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */; };
+		5BEF4B872B60D78C007FB100 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */; };
 		BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A129220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
@@ -824,6 +826,7 @@
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
+		5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
 		BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSheetDismiss.swift; sourceTree = "<group>"; };
@@ -1223,6 +1226,14 @@
 			path = Roboto_Condensed;
 			sourceTree = "<group>";
 		};
+		5BEF4B842B60D6FC007FB100 /* CustomizedViewStructs */ = {
+			isa = PBXGroup;
+			children = (
+				5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */,
+			);
+			path = CustomizedViewStructs;
+			sourceTree = "<group>";
+		};
 		BF0D437F28C3897600FA600F /* SecondaryViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1270,6 +1281,7 @@
 		BF6C5270289E12B500EA224F /* CommonTools */ = {
 			isa = PBXGroup;
 			children = (
+				5BEF4B842B60D6FC007FB100 /* CustomizedViewStructs */,
 				EA1C2CDF28F0463E00E4C28A /* ViewModifier */,
 				EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
@@ -1284,6 +1296,7 @@
 				BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */,
 				EA1C2CE228F07C1E00E4C28A /* ThisDevice.swift */,
 				BF70211B28B4B52500A6BBA9 /* ViewTools.swift */,
+				5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */,
 				EA8445EB29DBFFD700CB8C9F /* Color.swift */,
 				EAD3247029DFE878002779F3 /* CollectionChunked.swift */,
 			);
@@ -1496,7 +1509,6 @@
 				EA459DA4290CF47700E74F76 /* DismissableSheet.swift */,
 				EAD29446290E717A00716EF7 /* HideTabBar.swift */,
 				EAF8AC1B29C758750047D36C /* CircleClippedBackground.swift */,
-				5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */,
 				EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */,
 			);
 			path = ViewModifier;
@@ -2456,6 +2468,7 @@
 				5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */,
 				5BD1C6312A2A1FC90043C2B1 /* GachaKey.swift in Sources */,
 				5BD1C6322A2A1FC90043C2B1 /* EachExpeditionView.swift in Sources */,
+				5BEF4B872B60D78C007FB100 /* StaggeredGrid.swift in Sources */,
 				5BD1C6332A2A1FC90043C2B1 /* MaterialChoices.swift in Sources */,
 				5BD1C6342A2A1FC90043C2B1 /* AboutView.swift in Sources */,
 				5BD1C6352A2A1FC90043C2B1 /* AbyssDataCollectionView.swift in Sources */,
@@ -2850,6 +2863,7 @@
 				EA025C8829D287970075F780 /* GachaKey.swift in Sources */,
 				EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EABE606128D9F6970018CAF6 /* MaterialChoices.swift in Sources */,
+				5BEF4B862B60D711007FB100 /* StaggeredGrid.swift in Sources */,
 				BFE4258828A0AE2700FEFA49 /* AboutView.swift in Sources */,
 				EAB5798128FC278D00C5D075 /* AbyssDataCollectionView.swift in Sources */,
 				BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */,
