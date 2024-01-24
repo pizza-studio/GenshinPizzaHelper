@@ -19,13 +19,17 @@ public struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hasha
     public init(
         columns: Int,
         showsIndicators: Bool = false,
+        outerPadding: Bool = true,
+        scroll: Bool = true,
         spacing: CGFloat = 10,
         list: [T],
         @ViewBuilder content: @escaping (T) -> Content
     ) {
         self.content = content
         self.list = list
+        self.outerPadding = outerPadding
         self.spacing = spacing
+        self.scroll = scroll
         self.showsIndicators = showsIndicators
         self.columns = columns
     }
@@ -45,21 +49,12 @@ public struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hasha
     public var spacing: CGFloat
 
     public var body: some View {
-        ScrollView(.vertical, showsIndicators: showsIndicators) {
-            HStack(alignment: .top) {
-                ForEach(setUpList(), id: \.self) { columnsData in
-
-                    // 优化使用LazyStack…
-                    LazyVStack(spacing: spacing) {
-                        ForEach(columnsData) { object in
-                            content(object)
-                        }
-                    }
-                }
+        if scroll {
+            ScrollView(.vertical, showsIndicators: showsIndicators) {
+                innerContent
             }
-            // 只有垂直填充…
-            // 水平填充将是用户可选的…
-            .padding(.vertical)
+        } else {
+            innerContent
         }
     }
 
@@ -83,5 +78,29 @@ public struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hasha
             }
         }
         return gridArray
+    }
+
+    // MARK: Internal
+
+    @State
+    var outerPadding: Bool
+
+    @State
+    var scroll: Bool
+
+    @ViewBuilder
+    var innerContent: some View {
+        HStack(alignment: .top) {
+            ForEach(setUpList(), id: \.self) { columnsData in
+
+                // 优化使用LazyStack…
+                LazyVStack(spacing: spacing) {
+                    ForEach(columnsData) { object in
+                        content(object)
+                    }
+                }
+            }
+        }
+        .padding(.vertical, outerPadding ? spacing : 0)
     }
 }
