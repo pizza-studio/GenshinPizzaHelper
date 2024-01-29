@@ -13,6 +13,13 @@ import WidgetKit
 // MARK: - WatchWidgetSettingView
 
 struct WatchWidgetSettingView: View {
+    // MARK: Internal
+
+    @FetchRequest(sortDescriptors: [.init(
+        keyPath: \AccountConfiguration.priority,
+        ascending: true
+    )])
+    var accounts: FetchedResults<AccountConfiguration>
     @Default(.lockscreenWidgetSyncFrequencyInMinute)
     var lockscreenWidgetSyncFrequencyInMinute: Double
     @Default(.homeCoinRefreshFrequencyInHour)
@@ -31,6 +38,25 @@ struct WatchWidgetSettingView: View {
 
     var body: some View {
         List {
+            Section {
+                ForEach(accounts) { account in
+                    Text(account.name ?? "Unknown")
+                }
+                .onDelete(perform: { indexSet in
+                    for offset in indexSet {
+                        let account = accounts[offset]
+                        viewContext.delete(account)
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                })
+            } header: {
+                Text("settings.account.myAccount")
+                    .textCase(.none)
+            }
             Section {
                 NavigationLink {
                     QueryFrequencySettingView()
@@ -80,6 +106,11 @@ struct WatchWidgetSettingView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @Environment(\.managedObjectContext)
+    private var viewContext
 }
 
 // MARK: - QueryFrequencySettingView

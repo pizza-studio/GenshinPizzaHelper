@@ -12,11 +12,11 @@ extension MiHoYoAPIError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .verificationNeeded:
-            "MiHoYoAPIError.verificationNeeded.errorDescription"
+            String(localized: "MiHoYoAPIError.verificationNeeded.errorDescription")
         case .fingerPrintNeeded:
-            "MiHoYoAPIError.fingerPrintNeeded.errorDescription"
+            String(localized: "MiHoYoAPIError.fingerPrintNeeded.errorDescription")
         case .noStokenV2:
-            "MiHoYoAPIError.noStokenV2.errorDescription"
+            String(localized: "MiHoYoAPIError.noStokenV2.errorDescription")
         case let .other(retcode, message):
             "(\(retcode)): \(message)"
         }

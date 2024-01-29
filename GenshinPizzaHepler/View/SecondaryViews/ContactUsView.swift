@@ -515,7 +515,7 @@ struct ContactUsView: View {
                     HStack {
                         Text(verbatim: "Shiki Suen")
                         Spacer()
-                        Text("繁体中文".localized + " & " + "contact.translator.ja".localized)
+                        Text("contact.translator.zhtw".localized + " & " + "contact.translator.ja".localized)
                             .foregroundColor(.gray)
                     }
                 } icon: {

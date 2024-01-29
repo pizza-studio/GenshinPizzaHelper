@@ -22,6 +22,8 @@ private let refreshSubject: PassthroughSubject<(), Never> = .init()
 // MARK: - ContentView
 
 struct ContentView: View {
+    // MARK: Internal
+
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
         ascending: true
@@ -73,6 +75,12 @@ struct ContentView: View {
                 break
             }
         })
+        .alert(item: $connectivityManager.notificationMessage) { message in
+            Alert(
+                title: Text(message.text),
+                dismissButton: .default(Text("sys.done"))
+            )
+        }
 //        .onAppear {
 //            let account = AccountConfiguration(context: viewContext)
 //            account.name = "Lava"
@@ -80,6 +88,11 @@ struct ContentView: View {
 //            account.cookie = testCookie
 //        }
     }
+
+    // MARK: Private
+
+    @ObservedObject
+    private var connectivityManager = WatchConnectivityManager.shared
 }
 
 // MARK: - DetailNavigator

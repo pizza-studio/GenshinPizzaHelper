@@ -15991,7 +15991,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "すべての素材が入手できます"
+            "value" : "すべての素材が入手可能"
           }
         },
         "ko" : {
@@ -18959,6 +18959,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日語"
+          }
+        }
+      }
+    },
+    "contact.translator.zhtw" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chinese (Traditional)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繁体字中国語"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繁体中文"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繁體中文"
           }
         }
       }
@@ -27980,6 +28009,90 @@
         }
       }
     },
+    "MiHoYoAPIError.fingerPrintNeeded.errorDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device fingerprint is missing. Delete your account in the app and log in again to get it."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイス指紋が欠けている。再ログインください"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "缺少设备指纹信息。请尝试删除账号后重新登陆以获取指纹"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "缺少裝置指紋資訊。請嘗試刪除賬號後重新登陸以獲取指紋"
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.noStokenV2.errorDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StokenV2 is missing in your Cookie. Delete your account in the app and log in again."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CookieのStokenV2がかけている。再ログインください"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cookie缺少StokenV2字段。请尝试删除账号后重新登陆"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cookie缺少StokenV2欄位。請嘗試刪除賬號後重新登陸"
+          }
+        }
+      }
+    },
+    "MiHoYoAPIError.verificationNeeded.errorDescription" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verification is needed."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人間認証が必要"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要通过验证"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要通過驗證"
+          }
+        }
+      }
+    },
     "nav.category.settings.name" : {
       "localizations" : {
         "en" : {
@@ -31042,7 +31155,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "マイアカウント"
+            "value" : "アカウント"
           }
         },
         "ko" : {
@@ -37462,6 +37575,12 @@
             "value" : "孫 志貴 （このいと　しき）"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiki Suen (孙志贵)"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37484,10 +37603,101 @@
             "value" : ""
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftPieChart - Nazar Ilamanov\nhttps://github.com/ilamanov/SwiftPieChart"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
+          }
+        }
+      }
+    },
+    "sys.account.force_push" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force to push your accounts to paired Apple Watch"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強制的にすべてのアカウントをApple Watchにプッシュします"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "强制同步账号到Apple Watch"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "強制推送您的所有帳號到Apple Watch"
+          }
+        }
+      }
+    },
+    "sys.account.force_push.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is prepared when syncing via iCloud is not working on your Apple Watch."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この機能は、Apple WatchでのiCloudアカウント同期が利用できない場合にのみ使用できます。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本功能仅当在您的Apple Watch上通过iCloud同步帐号功能不可用时使用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本功能僅當在您的Apple Watch上通過iCloud同步帳號功能不可用時使用。"
+          }
+        }
+      }
+    },
+    "sys.account.force_push.received" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Received these accounts from your iPhone:\n"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以下のアカウントがiPhoneから受信されました:\n"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从您的iPhone收到了以下帐号:\n"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從您的iPhone收到了以下帳號:\n"
           }
         }
       }
@@ -41390,7 +41600,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "（日曜日はすべての素材が入手できます）"
+            "value" : "（日曜日はすべての素材が入手可能）"
           }
         },
         "ko" : {
@@ -43194,6 +43404,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "寻空"
           }
         },
         "zh-Hant" : {

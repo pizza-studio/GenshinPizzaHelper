@@ -70,6 +70,21 @@ struct MoreView: View {
             }
 
             Section {
+                Button("sys.account.force_push") {
+                    var accountInfo = String(localized: "sys.account.force_push.received")
+                    for account in accounts {
+                        accountInfo += "\(String(describing: account.name!)) (\(String(describing: account.uid!)))\n"
+                    }
+                    for account in accounts {
+                        WatchConnectivityManager.shared.sendAccounts(account, accountInfo)
+                    }
+                }
+            } footer: {
+                Text("sys.account.force_push.footer")
+                    .textCase(.none)
+            }
+
+            Section {
                 Link(destination: URL(string: "https://apps.apple.com/app/id6448894222")!) {
                     HStack {
                         Image("icon.hsrhelper")
@@ -145,6 +160,12 @@ struct MoreView: View {
 
     @Default(.useEnkaJSONFromGitHosts)
     private var useEnkaJSONFromGitHosts: Bool
+
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \AccountConfiguration.priority, ascending: true)],
+        animation: .default
+    )
+    private var accounts: FetchedResults<AccountConfiguration>
 }
 
 // MARK: - MoreViewCacheViewModel

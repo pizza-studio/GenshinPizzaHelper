@@ -209,6 +209,9 @@
 		BF20733C29D1413100AD391F /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF20733B29D1413100AD391F /* GIPizzaKit */; };
 		BF3F98BF28E9190700D1B5CF /* UpdateHistoryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */; };
 		BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */; };
+		BF57A60F2B67803200E56CAD /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57A60E2B67803200E56CAD /* WatchConnectivityManager.swift */; };
+		BF57A6102B67803200E56CAD /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57A60E2B67803200E56CAD /* WatchConnectivityManager.swift */; };
+		BF57A6112B67803200E56CAD /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF57A60E2B67803200E56CAD /* WatchConnectivityManager.swift */; };
 		BF6C526B289E116700EA224F /* MainWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30F9B42886B4C800AE7BEA /* MainWidgetProvider.swift */; };
 		BF6C5272289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
 		BF6C5273289E12DA00EA224F /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
@@ -833,6 +836,7 @@
 		BF20733029D13BCA00AD391F /* GIPizzaKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GIPizzaKit; path = Dependences/GIPizzaKit; sourceTree = "<group>"; };
 		BF3F98BE28E9190700D1B5CF /* UpdateHistoryInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfoView.swift; sourceTree = "<group>"; };
 		BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDGenshinDictionaryView.swift; sourceTree = "<group>"; };
+		BF57A60E2B67803200E56CAD /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		BF6BAA3D2B31442A007274FF /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BF6BAA3E2B31442A007274FF /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		BF6C525A289E02B600EA224F /* ios.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = ios.yml; sourceTree = "<group>"; };
@@ -1299,6 +1303,7 @@
 				5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */,
 				EA8445EB29DBFFD700CB8C9F /* Color.swift */,
 				EAD3247029DFE878002779F3 /* CollectionChunked.swift */,
+				BF57A60E2B67803200E56CAD /* WatchConnectivityManager.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
@@ -2421,6 +2426,7 @@
 				5BD1C5F92A2A1FC90043C2B1 /* WidgetErrorView.swift in Sources */,
 				EA2064D22B255CE4002B9961 /* HomeCoinInfoBar.swift in Sources */,
 				5BD1C5FA2A2A1FC90043C2B1 /* InfoPreviewerView.swift in Sources */,
+				BF57A6102B67803200E56CAD /* WatchConnectivityManager.swift in Sources */,
 				5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */,
 				5BD1C5FC2A2A1FC90043C2B1 /* HiddenWaterMark.swift in Sources */,
 				5BD1C5FD2A2A1FC90043C2B1 /* WeeklyBossesInfoBar.swift in Sources */,
@@ -2582,6 +2588,7 @@
 			files = (
 				BFCC068A28C9BBC8003E4A54 /* Account.swift in Sources */,
 				EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */,
+				BF57A6112B67803200E56CAD /* WatchConnectivityManager.swift in Sources */,
 				EAB11EA129325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE2C8A02B2DA2FB004304D2 /* WidgetError.swift in Sources */,
@@ -2816,6 +2823,7 @@
 				EA2064D32B255CE5002B9961 /* HomeCoinInfoBar.swift in Sources */,
 				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
 				BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */,
+				BF57A60F2B67803200E56CAD /* WatchConnectivityManager.swift in Sources */,
 				EA1C2CE528F07DBE00E4C28A /* HiddenWaterMark.swift in Sources */,
 				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA759D6D2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
@@ -3007,7 +3015,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -3049,7 +3057,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -3091,7 +3099,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WatchWidgetExtensionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchWidgetExtension/Info.plist;
@@ -3123,7 +3131,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WatchWidgetExtensionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchWidgetExtension/Info.plist;
@@ -3157,7 +3165,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "WatchHelper WatchKit Extension/WatchHelper WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchHelper/Info.plist;
@@ -3193,7 +3201,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "WatchHelper WatchKit Extension/WatchHelper WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchHelper/Info.plist;
@@ -3223,7 +3231,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = AccountIntent/AccountIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AccountIntent/Info.plist;
@@ -3251,7 +3259,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = AccountIntent/AccountIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AccountIntent/Info.plist;
@@ -3281,7 +3289,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ResinStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
@@ -3312,7 +3320,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ResinStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ResinStatusWidget/Info.plist;
@@ -3468,7 +3476,7 @@
 				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_PREVIEWS = YES;
@@ -3512,7 +3520,7 @@
 				CODE_SIGN_ENTITLEMENTS = GenshinPizzaHepler/GenshinPizzaHepler.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_ASSET_PATHS = "\"GenshinPizzaHepler/Preview Content\"";
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				ENABLE_PREVIEWS = YES;
@@ -3552,7 +3560,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WatchIntent/WatchIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchIntent/Info.plist;
@@ -3582,7 +3590,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WatchIntent/WatchIntent.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2536;
+				CURRENT_PROJECT_VERSION = 2539;
 				DEVELOPMENT_TEAM = 45Z6V4YD5U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WatchIntent/Info.plist;
