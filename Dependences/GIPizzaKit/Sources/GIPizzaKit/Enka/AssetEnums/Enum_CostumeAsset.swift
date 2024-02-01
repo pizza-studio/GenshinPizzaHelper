@@ -24,6 +24,9 @@ public enum CostumeAsset: Int, CaseIterable {
     case LisaCostumeStudentin = 200601
     case KleeCostumeWitch = 202901
     case KaeyaCostumeDancer = 201501
+    case ShenheCostumeDai = 206301
+    case XingqiuCostumeBamboo = 202501
+    case GanyuCostumeYu = 203701
 }
 
 extension CostumeAsset {
@@ -31,23 +34,30 @@ extension CostumeAsset {
         "UI_AvatarIcon_\(String(describing: self))"
     }
 
+  public var character: CharacterAsset {
+    switch self {
+    case .QinCostumeSea: return .Jean
+    case .BarbaraCostumeSummertime: return .Barbara
+    case .NingguangCostumeFloral: return .Ningguang
+    case .KeqingCostumeFeather: return .Keqing
+    case .QinCostumeWic: return .Jean
+    case .AmborCostumeWic: return .Amber
+    case .MonaCostumeWic: return .Mona
+    case .RosariaCostumeWic: return .Rosaria
+    case .DilucCostumeFlamme: return .Diluc
+    case .FischlCostumeHighness: return .Fischl
+    case .AyakaCostumeFruhling: return .Ayaka
+    case .LisaCostumeStudentin: return .Lisa
+    case .KleeCostumeWitch: return .Klee
+    case .KaeyaCostumeDancer: return .Kaeya
+    case .ShenheCostumeDai: return .Shenhe
+    case .XingqiuCostumeBamboo: return .Xingqiu
+    case .GanyuCostumeYu: return .Ganyu
+    }
+  }
+
     public var characterId: Int {
-        switch self {
-        case .QinCostumeSea: return 10000003
-        case .BarbaraCostumeSummertime: return 10000014
-        case .NingguangCostumeFloral: return 10000027
-        case .KeqingCostumeFeather: return 10000042
-        case .QinCostumeWic: return 10000003
-        case .AmborCostumeWic: return 10000021
-        case .MonaCostumeWic: return 10000041
-        case .RosariaCostumeWic: return 10000045
-        case .DilucCostumeFlamme: return 10000016
-        case .FischlCostumeHighness: return 10000031
-        case .AyakaCostumeFruhling: return 10000002
-        case .LisaCostumeStudentin: return 10000006
-        case .KleeCostumeWitch: return 10000029
-        case .KaeyaCostumeDancer: return 10000015
-        }
+      character.rawValue
     }
 
     public var profilePictureIdentifier: Int {
@@ -66,6 +76,9 @@ extension CostumeAsset {
         case .LisaCostumeStudentin: return 301
         case .KleeCostumeWitch: return 2101
         case .KaeyaCostumeDancer: return 201
+        case .ShenheCostumeDai: return 4501
+        case .XingqiuCostumeBamboo: return 801
+        case .GanyuCostumeYu: return 2701
         }
     }
 
@@ -85,6 +98,9 @@ extension CostumeAsset {
         case .LisaCostumeStudentin: return .UI_NameCardPic_Bp17_P
         case .KleeCostumeWitch: return .UI_NameCardPic_RedandWhite_P
         case .KaeyaCostumeDancer: return .UI_NameCardPic_Xumi2_P
+        case .ShenheCostumeDai: return .UI_NameCardPic_Bp21_P
+        case .XingqiuCostumeBamboo: return .UI_NameCardPic_Bp30_P
+        case .GanyuCostumeYu: return .UI_NameCardPic_OST4_P
         }
     }
 }

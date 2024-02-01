@@ -490,8 +490,8 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Росула";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Модель № 2";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "Резьба по времени";
-"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
-"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "Белые облака";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "Ман Чай";
 "$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Долина Адептов";
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Брошенный нефрит";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "Яркие птицы";

@@ -488,8 +488,8 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "娜维娅·刺玫";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "夏沃蕾·贰型";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "纪行·时雕";
-"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
-"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "闲云·鹤云";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "嘉明·文仔";
 "$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "成就·仙谷";
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "成就·投珑";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "纪行·彩鹞";

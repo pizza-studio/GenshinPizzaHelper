@@ -330,7 +330,7 @@ extension CharacterAsset {
         case .Fischl: return [1000, 1001]
         case .Klee: return [2100, 2101]
         case .Ningguang: return [900, 901]
-        case .Xingqiu: return [800, 801] // 原神 4.4 推論，待正式版再核實
+        case .Xingqiu: return [800, 801]
         case .Beidou: return [700]
         case .Xiangling: return [600]
         case .Venti: return [2000]
@@ -346,7 +346,7 @@ extension CharacterAsset {
         case .Xinyan: return [2400]
         case .Zhongli: return [2500]
         case .Albedo: return [2600]
-        case .Ganyu: return [2700, 2701] // 原神 4.4 推論，待正式版再核實
+        case .Ganyu: return [2700, 2701]
         case .Xiao: return [2800]
         case .Hutao: return [2900]
         case .Rosaria: return [3000, 3001]
@@ -364,7 +364,7 @@ extension CharacterAsset {
         case .Itto: return [4300]
         case .Gorou: return [4200]
         case .Yunjin: return [4400]
-        case .Shenhe: return [4500, 4501] // 原神 4.4 推論，待正式版再核實
+        case .Shenhe: return [4500, 4501]
         case .Miko: return [4600]
         case .Ayato: return [4700]
         case .Yelan: return [4800]
@@ -396,8 +396,8 @@ extension CharacterAsset {
         case .Furina: return [7400]
         case .Chevreuse: return [7600]
         case .Navia: return [7500]
-        case .Gaming: return [7700] // 原神 4.4 推論，待正式版再核實
-        case .Xianyun: return [7800] // 原神 4.4 推論，待正式版再核實
+        case .Gaming: return [7700]
+        case .Xianyun: return [7800]
         }
     }
 }

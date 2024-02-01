@@ -485,11 +485,11 @@
 "$asset.nameCard:UI_NameCardPic_Charlotte_P" = "Charlotte - Scoop";
 "$asset.nameCard:UI_NameCardPic_FD3_P" = "Fontaine - Exhaustivité";
 "$asset.nameCard:UI_NameCardPic_Bp28_P" = "PB - Valse tournoyante";
-"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia : Rosula";
-"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse : Type II";
+"$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia - Rosula";
+"$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse - Type II";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "PB - Marque du temps";
-"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
-"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "Xianyun – Nuage blanc";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "Gaming – Man Chai";
 "$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Succès - Vallée adeptale";
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Succès - Pluie de jades";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "PB - Vol coloré";

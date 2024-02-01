@@ -490,8 +490,8 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia: Rosula";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse: Tipo II";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "Appunti di viaggio: Iscrizione del tempo";
-"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
-"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "Xianyun – Nuage blanc";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "Gaming – Man Chai";
 "$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Obiettivo: Valle adeptica";
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Obiettivo: Rito della Giada pluviale";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "Appunti di viaggio: Colori in volo";

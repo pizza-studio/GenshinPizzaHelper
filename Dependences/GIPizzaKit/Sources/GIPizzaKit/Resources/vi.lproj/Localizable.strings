@@ -490,8 +490,8 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "Navia - Rosula";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "Chevreuse - Mẫu II";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "Nhật Ký Hành Trình - Khắc Ghi";
-"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
-"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "Xianyun – Mây Trắng";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "Gaming – A Văn";
 "$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "Thành Tựu - Tiên Cốc";
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Thành Tựu - Mưa Ngọc";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "Nhật Ký Hành Trình - Sắc Diều";

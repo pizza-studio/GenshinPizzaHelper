@@ -488,8 +488,8 @@
 "$asset.nameCard:UI_NameCardPic_Navia_P" = "나비아·가시 장미";
 "$asset.nameCard:UI_NameCardPic_Chevreuse_P" = "슈브르즈·제2형";
 "$asset.nameCard:UI_NameCardPic_Bp29_P" = "기행·시간의 각인";
-"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "[i18n:NameCard_Xianyun]";
-"$asset.nameCard:UI_NameCardPic_Gaming_P" = "[i18n:NameCard_Gaming]";
+"$asset.nameCard:UI_NameCardPic_Liuyun_P" = "한운·학 구름";
+"$asset.nameCard:UI_NameCardPic_Gaming_P" = "가명·문동이";
 "$asset.nameCard:UI_NameCardPic_Chenyu1_P" = "업적·선계 협곡";
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "업적·옥 투척";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "기행·오색 연";
