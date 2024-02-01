@@ -487,9 +487,7 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Chevreuse: return .talentOrder
         case .Navia: return .talentEquity
         case .Gaming: return .talentProsperity
-            .available(since: .Specify(day: 31, month: 1, year: 2024)) // 原神 4.4
         case .Xianyun: return .talentGold
-            .available(since: .Specify(day: 31, month: 1, year: 2024)) // 原神 4.4
         }
     }
 }

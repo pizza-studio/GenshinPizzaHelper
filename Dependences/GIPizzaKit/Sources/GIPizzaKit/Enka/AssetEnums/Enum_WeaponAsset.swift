@@ -152,7 +152,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case TulaytullahsRemembrance = 14512
     case CashflowSupervision = 14513
     case TomeOfTheEternalFlow = 14514
-    case CranesEchoingCall = 14515 // 原神 4.4
+    case CranesEchoingCall = 14515
     case HuntersBow = 15101
     case SeasonedHuntersBow = 15201
     case RavenBow = 15301
@@ -357,7 +357,6 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .CashflowSupervision: return .weaponPristineSea
         case .TomeOfTheEternalFlow: return .weaponDewdrop
         case .CranesEchoingCall: return .weaponElixir
-            .available(since: .Specify(day: 31, month: 1, year: 2024)) // 原神 4.4
         case .HuntersBow: return .weaponBorealWolf
         case .SeasonedHuntersBow: return .weaponBorealWolf
         case .RavenBow: return .weaponDecarabian
@@ -545,7 +544,7 @@ extension WeaponAsset {
         case .TulaytullahsRemembrance: return "UI_EquipIcon_Catalyst_Alaya"
         case .CashflowSupervision: return "UI_EquipIcon_Catalyst_Wheatley"
         case .TomeOfTheEternalFlow: return "UI_EquipIcon_Catalyst_Iudex"
-        case .CranesEchoingCall: return "UI_EquipIcon_Catalyst_MountainGale" // 原神 4.4
+        case .CranesEchoingCall: return "UI_EquipIcon_Catalyst_MountainGale"
         case .HuntersBow: return "UI_EquipIcon_Bow_Hunters"
         case .SeasonedHuntersBow: return "UI_EquipIcon_Bow_Old"
         case .RavenBow: return "UI_EquipIcon_Bow_Crowfeather"
