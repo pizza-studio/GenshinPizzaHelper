@@ -34,30 +34,30 @@ extension CostumeAsset {
         "UI_AvatarIcon_\(String(describing: self))"
     }
 
-  public var character: CharacterAsset {
-    switch self {
-    case .QinCostumeSea: return .Jean
-    case .BarbaraCostumeSummertime: return .Barbara
-    case .NingguangCostumeFloral: return .Ningguang
-    case .KeqingCostumeFeather: return .Keqing
-    case .QinCostumeWic: return .Jean
-    case .AmborCostumeWic: return .Amber
-    case .MonaCostumeWic: return .Mona
-    case .RosariaCostumeWic: return .Rosaria
-    case .DilucCostumeFlamme: return .Diluc
-    case .FischlCostumeHighness: return .Fischl
-    case .AyakaCostumeFruhling: return .Ayaka
-    case .LisaCostumeStudentin: return .Lisa
-    case .KleeCostumeWitch: return .Klee
-    case .KaeyaCostumeDancer: return .Kaeya
-    case .ShenheCostumeDai: return .Shenhe
-    case .XingqiuCostumeBamboo: return .Xingqiu
-    case .GanyuCostumeYu: return .Ganyu
+    public var character: CharacterAsset {
+        switch self {
+        case .QinCostumeSea: return .Jean
+        case .BarbaraCostumeSummertime: return .Barbara
+        case .NingguangCostumeFloral: return .Ningguang
+        case .KeqingCostumeFeather: return .Keqing
+        case .QinCostumeWic: return .Jean
+        case .AmborCostumeWic: return .Amber
+        case .MonaCostumeWic: return .Mona
+        case .RosariaCostumeWic: return .Rosaria
+        case .DilucCostumeFlamme: return .Diluc
+        case .FischlCostumeHighness: return .Fischl
+        case .AyakaCostumeFruhling: return .Ayaka
+        case .LisaCostumeStudentin: return .Lisa
+        case .KleeCostumeWitch: return .Klee
+        case .KaeyaCostumeDancer: return .Kaeya
+        case .ShenheCostumeDai: return .Shenhe
+        case .XingqiuCostumeBamboo: return .Xingqiu
+        case .GanyuCostumeYu: return .Ganyu
+        }
     }
-  }
 
     public var characterId: Int {
-      character.rawValue
+        character.rawValue
     }
 
     public var profilePictureIdentifier: Int {

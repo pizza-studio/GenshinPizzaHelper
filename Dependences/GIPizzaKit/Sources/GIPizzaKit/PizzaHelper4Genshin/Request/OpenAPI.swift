@@ -240,7 +240,7 @@ extension API {
         private static func isMiyousheUID(uid: String) -> Bool {
             var uid = uid
             while uid.count > 9 {
-              uid = uid.dropFirst().description
+                uid = uid.dropFirst().description
             }
             guard let initial = uid.first else { return false }
             return "12345".contains(initial)
