@@ -11,7 +11,9 @@
         - 新角色的每日素材：`CharacterAsset.dailyMaterial` 当中将对应的内容设为 nil。
         - 新武器的每日素材：`WeaponAsset.dailyMaterial` 当中将对应的内容设为 nil。
         - 新武器：添加了也无妨，只要每日素材填 nil 就行、直到官方正式公布。这样就可以防止新武器提前在 App 内显示出来。
-- 新情报与新图片素材优先从 Ambr.Top 获取。SnapGenshin 也可以。
+- 新情报与新图片素材的**正式服版本**优先从 Ambr.Top 获取。
+    - 从 2024 年 2 月 8 日起，任何针对原神新版本做的提前适配**均得使用自制 PS 素材、直至该版本正式开服才可以换上官方素材**。
+    - 角色证件照片的前期替代版本可由米游社官方「天外卫星通信」文章当中的插图剪裁制作。
 - 虽然现在已经有了 Enka 资料的本地寄存机制，但也请勿忘更新 `gi.pizzastudio.org` 伺服器当中的各种 JSON 档案。
     - 也得更新 GIPizzaKit 这个 Swift Package 内部的 Assets 资料夹下的已经存在的 JSON 档案。这些档案是垫底档案、用来在下载的 JSON 出现损毁时就地救援。
 - 本文提到的所有 Asset Enum 及其本地化翻译资料都位于 GIPizzaKit 这个 Swift Package 内。
