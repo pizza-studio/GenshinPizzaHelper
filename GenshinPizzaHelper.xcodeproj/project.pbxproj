@@ -356,6 +356,12 @@
 		EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8929D2883A0075F780 /* GachaURL.swift */; };
 		EA025C8E29D28D150075F780 /* APIGetGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8D29D28D150075F780 /* APIGetGachaView.swift */; };
 		EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8F29D28D3D0075F780 /* GachaView.swift */; };
+		EA02810D2B79DE6C003FE7AF /* GIDictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA02810A2B79DDAC003FE7AF /* GIDictionaryModel.swift */; };
+		EA02810E2B79DE6C003FE7AF /* GIDictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA02810A2B79DDAC003FE7AF /* GIDictionaryModel.swift */; };
+		EA02810F2B79DE96003FE7AF /* GIDictionaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA02810B2B79DDAC003FE7AF /* GIDictionaryAPI.swift */; };
+		EA0281102B79DE96003FE7AF /* GIDictionaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA02810B2B79DDAC003FE7AF /* GIDictionaryAPI.swift */; };
+		EA0281112B79DE98003FE7AF /* GIDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA02810C2B79DDAC003FE7AF /* GIDictionaryView.swift */; };
+		EA0281122B79DE99003FE7AF /* GIDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA02810C2B79DDAC003FE7AF /* GIDictionaryView.swift */; };
 		EA059CD7292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
 		EA059CD8292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
 		EA059CD9292347E800400DE3 /* MultiTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA059CD6292347E800400DE3 /* MultiTokenResult.swift */; };
@@ -922,6 +928,9 @@
 		EA025C8929D2883A0075F780 /* GachaURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaURL.swift; sourceTree = "<group>"; };
 		EA025C8D29D28D150075F780 /* APIGetGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetGachaView.swift; sourceTree = "<group>"; };
 		EA025C8F29D28D3D0075F780 /* GachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaView.swift; sourceTree = "<group>"; };
+		EA02810A2B79DDAC003FE7AF /* GIDictionaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIDictionaryModel.swift; sourceTree = "<group>"; };
+		EA02810B2B79DDAC003FE7AF /* GIDictionaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIDictionaryAPI.swift; sourceTree = "<group>"; };
+		EA02810C2B79DDAC003FE7AF /* GIDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIDictionaryView.swift; sourceTree = "<group>"; };
 		EA059CD6292347E800400DE3 /* MultiTokenResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTokenResult.swift; sourceTree = "<group>"; };
 		EA06372F28CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenResinWidgetCorner.swift; sourceTree = "<group>"; };
 		EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-NoWatch.xcassets"; sourceTree = "<group>"; };
@@ -1493,6 +1502,16 @@
 			path = GachaModel;
 			sourceTree = "<group>";
 		};
+		EA0281082B79DD96003FE7AF /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				EA02810A2B79DDAC003FE7AF /* GIDictionaryModel.swift */,
+				EA02810B2B79DDAC003FE7AF /* GIDictionaryAPI.swift */,
+				EA02810C2B79DDAC003FE7AF /* GIDictionaryView.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
 		EA099FF628A2B7220023B4AF /* AccountIntent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1677,6 +1696,7 @@
 		EAAF330828A276360018EFAB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EA0281082B79DD96003FE7AF /* Dictionary */,
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
 				EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */,
@@ -2380,6 +2400,7 @@
 				EA759D6E2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
 				5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */,
 				5BD1C5CF2A2A1FC90043C2B1 /* md5.swift in Sources */,
+				EA02810E2B79DE6C003FE7AF /* GIDictionaryModel.swift in Sources */,
 				5BD1C5D02A2A1FC90043C2B1 /* LedgerShareView.swift in Sources */,
 				5BD1C5D22A2A1FC90043C2B1 /* TextPlayerView.swift in Sources */,
 				5BD1C5D32A2A1FC90043C2B1 /* MoreView.swift in Sources */,
@@ -2419,6 +2440,7 @@
 				5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */,
 				5BD1C5F22A2A1FC90043C2B1 /* WidgetBackgroundView.swift in Sources */,
 				5BD1C5F32A2A1FC90043C2B1 /* WebImageView.swift in Sources */,
+				EA0281102B79DE96003FE7AF /* GIDictionaryAPI.swift in Sources */,
 				5BD1C5F62A2A1FC90043C2B1 /* DeviceRecognizer.swift in Sources */,
 				5BD1C5F82A2A1FC90043C2B1 /* Account.swift in Sources */,
 				EA39B5232B1EE47D0075F4B0 /* ToolView.swift in Sources */,
@@ -2481,6 +2503,7 @@
 				5BD1C6372A2A1FC90043C2B1 /* WidgetUserData.swift in Sources */,
 				5BD1C6382A2A1FC90043C2B1 /* ExportGachaView.swift in Sources */,
 				5BD1C6392A2A1FC90043C2B1 /* NotificationSettingView.swift in Sources */,
+				EA0281122B79DE99003FE7AF /* GIDictionaryView.swift in Sources */,
 				5BD1C63A2A2A1FC90043C2B1 /* CharacterDetailView.swift in Sources */,
 				5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */,
 				5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */,
@@ -2777,6 +2800,7 @@
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EACCEA7728F95A75004817FB /* LedgerShareView.swift in Sources */,
 				BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */,
+				EA02810D2B79DE6C003FE7AF /* GIDictionaryModel.swift in Sources */,
 				BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */,
 				BFE42549289F66CE00FEFA49 /* AccountInfoView.swift in Sources */,
 				EA406811292228A200F23479 /* WidgetData.swift in Sources */,
@@ -2816,6 +2840,7 @@
 				EAF43C9328A0161D00D89787 /* WidgetBackgroundView.swift in Sources */,
 				BFFD823628A680E000616CE1 /* WebImageView.swift in Sources */,
 				BF70210F28B396B900A6BBA9 /* DeviceRecognizer.swift in Sources */,
+				EA02810F2B79DE96003FE7AF /* GIDictionaryAPI.swift in Sources */,
 				EAAF330F28A27AFE0018EFAB /* Account.swift in Sources */,
 				EAF43C9728A0166100D89787 /* WidgetErrorView.swift in Sources */,
 				EA3621D52B1D6809007CAB4D /* ToolView.swift in Sources */,
@@ -2878,6 +2903,7 @@
 				EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */,
+				EA0281112B79DE98003FE7AF /* GIDictionaryView.swift in Sources */,
 				EA759D732B19989A0080C775 /* CreateAccountSheetView.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,

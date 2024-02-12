@@ -20,7 +20,7 @@ public enum MiHoYoAPIError: Error {
     // MARK: Lifecycle
 
     public init(retcode: Int, message: String) {
-        if retcode == 1034 {
+        if retcode == 1034 || retcode == 10103 {
             self = .verificationNeeded
         } else if retcode == 5003 {
             self = .fingerPrintNeeded

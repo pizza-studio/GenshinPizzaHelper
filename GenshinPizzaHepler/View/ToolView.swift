@@ -18,6 +18,7 @@ struct ToolView: View {
         case dictionary
         case map(Region)
         case namecardsPreview
+        case newDictionary
     }
 
     @State
@@ -45,6 +46,15 @@ struct ToolView: View {
                                 .scaledToFit()
                         }
                     }
+                    NavigationLink(value: Navigation.newDictionary) {
+                        Label {
+                            Text("app.pizza_dictionary.title")
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image("UI_MarkTower_EffigyChallenge_01").resizable()
+                                .scaledToFit()
+                        }
+                    }
                 }
                 ThirdPartyToolsView()
             }
@@ -63,6 +73,8 @@ struct ToolView: View {
                     TeyvatMapWebView(region: region)
                 case .namecardsPreview:
                     BackgroundsPreviewView()
+                case .newDictionary:
+                    GIDictionaryView()
                 case nil:
                     GachaView()
                 }

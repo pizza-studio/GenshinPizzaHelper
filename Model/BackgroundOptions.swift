@@ -11,7 +11,7 @@ import SwiftUI
 
 // MARK: - BackgroundOptions
 
-struct BackgroundOptions {
+enum BackgroundOptions {
     static let colors: [String] = [
         "app.background.gray",
         "app.background.green",
