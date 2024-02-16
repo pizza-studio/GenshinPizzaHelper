@@ -105,13 +105,13 @@ struct GIDictionaryView: View {
                         NavigationLink {
                             DictionaryTranslationDetailView(translation: translation)
                         } label: {
-                            HStack(alignment: .lastTextBaseline) {
+                            VStack(alignment: .leading) {
+                                Text(translation.targetLanguage.description)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
                                 Text(translation.target)
                                     .font(.headline)
                                     .lineLimit(1)
-                                Spacer()
-                                Text(translation.targetLanguage.rawValue)
-                                    .font(.caption)
                             }
                         }
                     }
@@ -129,14 +129,13 @@ struct GIDictionaryView: View {
         }
         .navigationTitle("tool.dictionary.title")
         .searchable(
-            text: $viewModel.query,
-            prompt: "tool.dictionary.search.prompt"
+            text: $viewModel.query
         )
-//        .toolbar {
-//            Link(destination: URL(string: "https://hsrdict.pizzastudio.org/")!) {
-//                Image(systemSymbol: .safari)
-//            }
-//        }
+        .toolbar {
+            Link(destination: URL(string: "https://gidict.pizzastudio.org/")!) {
+                Image(systemSymbol: .safari)
+            }
+        }
     }
 
     // MARK: Private

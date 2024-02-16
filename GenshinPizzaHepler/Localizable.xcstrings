@@ -16220,6 +16220,7 @@
       }
     },
     "app.pizza_dictionary.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -38853,6 +38854,7 @@
       }
     },
     "tool.dictionary.search.prompt" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

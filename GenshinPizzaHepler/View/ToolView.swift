@@ -48,10 +48,10 @@ struct ToolView: View {
                     }
                     NavigationLink(value: Navigation.newDictionary) {
                         Label {
-                            Text("app.pizza_dictionary.title")
+                            Text("tool.dictionary.title")
                                 .foregroundColor(.primary)
                         } icon: {
-                            Image("UI_MarkTower_EffigyChallenge_01").resizable()
+                            Image("UI_MarkPoint_Library_Sumeru").resizable()
                                 .scaledToFit()
                         }
                     }
