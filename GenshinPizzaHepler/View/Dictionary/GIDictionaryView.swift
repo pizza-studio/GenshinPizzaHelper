@@ -99,7 +99,7 @@ struct GIDictionaryView: View {
         List {
             if let currentResult = viewModel.currentResult {
                 if currentResult.translations.isEmpty {
-                    Text("tool.dictionary.not_fount")
+                    Text("tool.dictionary.not_found")
                 } else {
                     ForEach(currentResult.translations) { translation in
                         NavigationLink {

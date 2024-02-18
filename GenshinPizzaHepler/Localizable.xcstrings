@@ -16239,6 +16239,12 @@
             "state" : "translated",
             "value" : "披萨原神词典"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "披薩原神辭典"
+          }
         }
       }
     },
@@ -38740,6 +38746,12 @@
             "state" : "translated",
             "value" : "已拷贝"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已拷貝"
+          }
         }
       }
     },
@@ -38761,6 +38773,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "命中词"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "命中詞語"
           }
         }
       }
@@ -38784,6 +38802,12 @@
             "state" : "translated",
             "value" : "详情"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詳情"
+          }
         }
       }
     },
@@ -38805,6 +38829,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "翻译"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "翻譯"
           }
         }
       }
@@ -38828,10 +38858,16 @@
             "state" : "translated",
             "value" : "获取更多"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "獲取更多資訊"
+          }
         }
       }
     },
-    "tool.dictionary.not_fount" : {
+    "tool.dictionary.not_found" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -38849,6 +38885,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未找到关键词"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒能找到關鍵詞"
           }
         }
       }
@@ -38873,6 +38915,12 @@
             "state" : "translated",
             "value" : "搜索（区分大小写）"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜尋（區分大小寫）"
+          }
         }
       }
     },
@@ -38894,6 +38942,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "披萨原神词典"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "披薩原神辭典"
           }
         }
       }
