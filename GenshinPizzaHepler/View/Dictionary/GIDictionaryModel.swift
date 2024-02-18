@@ -91,31 +91,31 @@ extension DictionaryLanguage: CustomStringConvertible {
     var description: String {
         switch self {
         case .english:
-            return "tool.dictionary.language.english".localized
+            String(localized: "tool.dictionary.language.english")
         case .portuguese:
-            return "tool.dictionary.language.portuguese".localized
+            String(localized: "tool.dictionary.language.portuguese")
         case .japanese:
-            return "tool.dictionary.language.japanese".localized
+            String(localized: "tool.dictionary.language.japanese")
         case .indonesian:
-            return "tool.dictionary.language.indonesian".localized
+            String(localized: "tool.dictionary.language.indonesian")
         case .korean:
-            return "tool.dictionary.language.korean".localized
+            String(localized: "tool.dictionary.language.korean")
         case .thai:
-            return "tool.dictionary.language.thai".localized
+            String(localized: "tool.dictionary.language.thai")
         case .french:
-            return "tool.dictionary.language.french".localized
+            String(localized: "tool.dictionary.language.french")
         case .simplifiedChinese:
-            return "tool.dictionary.language.simplified_chinese".localized
+            String(localized: "tool.dictionary.language.simplified_chinese")
         case .russian:
-            return "tool.dictionary.language.russian".localized
+            String(localized: "tool.dictionary.language.russian")
         case .german:
-            return "tool.dictionary.language.german".localized
+            String(localized: "tool.dictionary.language.german")
         case .traditionalChinese:
-            return "tool.dictionary.language.traditional_chinese".localized
+            String(localized: "tool.dictionary.language.traditional_chinese")
         case .spanish:
-            return "tool.dictionary.language.spanish".localized
+            String(localized: "tool.dictionary.language.spanish")
         case .vietnamese:
-            return "tool.dictionary.language.vietnamese".localized
+            String(localized: "tool.dictionary.language.vietnamese")
         }
     }
 }
