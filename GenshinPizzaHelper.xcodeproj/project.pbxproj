@@ -38,6 +38,10 @@
 		5BAF70A429E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
 		5BAF70A529E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
 		5BAF70A629E5764E0096228B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF709129E5764E0096228B /* LICENSE.txt */; };
+		5BAFAFDB2B8287B500619092 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5BAFAFDA2B8287B500619092 /* Dynamic */; };
+		5BAFAFDD2B8287C200619092 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5BAFAFDC2B8287C200619092 /* Dynamic */; };
+		5BAFAFDF2B8288AB00619092 /* UIWindowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */; };
+		5BAFAFE02B8288AB00619092 /* UIWindowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */; };
 		5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AB29E19A8F00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
@@ -832,6 +836,7 @@
 		5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		5BAF709129E5764E0096228B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowImpl.swift; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
@@ -1100,6 +1105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BAFAFDD2B8287C200619092 /* Dynamic in Frameworks */,
 				5B8C1B332AD8F3DE009F3B44 /* SFSafeSymbols in Frameworks */,
 				EAAECA172AD3AD05003525E1 /* Defaults in Frameworks */,
 				5BD1C65B2A2A1FC90043C2B1 /* CoreXLSX in Frameworks */,
@@ -1182,6 +1188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BAFAFDB2B8287B500619092 /* Dynamic in Frameworks */,
 				5B8C1B312AD8F3C5009F3B44 /* SFSafeSymbols in Frameworks */,
 				EAAECA152AD3ACFD003525E1 /* Defaults in Frameworks */,
 				BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */,
@@ -1313,6 +1320,7 @@
 				EA8445EB29DBFFD700CB8C9F /* Color.swift */,
 				EAD3247029DFE878002779F3 /* CollectionChunked.swift */,
 				BF57A60E2B67803200E56CAD /* WatchConnectivityManager.swift */,
+				5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */,
 			);
 			path = CommonTools;
 			sourceTree = "<group>";
@@ -1960,6 +1968,7 @@
 				EAC89A5D2AD3AF1B00EC5141 /* DefaultsKeys */,
 				5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */,
 				EAA969FC2ADFA9A100C0852E /* HoYoKit */,
+				5BAFAFDC2B8287C200619092 /* Dynamic */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */;
@@ -2096,6 +2105,7 @@
 				EAC89A5B2AD3AF1600EC5141 /* DefaultsKeys */,
 				5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */,
 				EAA969FA2ADFA99C00C0852E /* HoYoKit */,
+				5BAFAFDA2B8287B500619092 /* Dynamic */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -2180,6 +2190,7 @@
 				EAAECA132AD3ACF5003525E1 /* XCRemoteSwiftPackageReference "Defaults" */,
 				5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				EA4E304D2ADE66BD008AB517 /* XCLocalSwiftPackageReference "Dependences/HoYoKit" */,
+				5BAFAFD92B8287B500619092 /* XCRemoteSwiftPackageReference "Dynamic" */,
 			);
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
 			projectDirPath = "";
@@ -2413,6 +2424,7 @@
 				EA759D702B19989A0080C775 /* EditAccountView.swift in Sources */,
 				5BD1C5DA2A2A1FC90043C2B1 /* MainInfoWithDetailView.swift in Sources */,
 				5BD1C5DB2A2A1FC90043C2B1 /* ImportGachaView.swift in Sources */,
+				5BAFAFE02B8288AB00619092 /* UIWindowImpl.swift in Sources */,
 				EA759D6A2B19989A0080C775 /* ManageAccountsView.swift in Sources */,
 				5BD1C5DC2A2A1FC90043C2B1 /* ResinRecoveryActivityController.swift in Sources */,
 				EA80A8A62B2ADE6700124B33 /* ResinRecoveryActivityWidget.swift in Sources */,
@@ -2813,6 +2825,7 @@
 				EA759D712B19989A0080C775 /* GetCookieWebView.swift in Sources */,
 				EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */,
 				5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */,
+				5BAFAFDF2B8288AB00619092 /* UIWindowImpl.swift in Sources */,
 				BF068BD528A335F9002E7334 /* WebViews.swift in Sources */,
 				BFE42556289F9FBE00FEFA49 /* GameInfoBlockView.swift in Sources */,
 				EA80A8A52B2ADE6600124B33 /* ResinRecoveryActivityWidget.swift in Sources */,
@@ -3733,6 +3746,14 @@
 				minimumVersion = 4.1.1;
 			};
 		};
+		5BAFAFD92B8287B500619092 /* XCRemoteSwiftPackageReference "Dynamic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mhdhejazi/Dynamic";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		5BD1C5C32A2A1FC90043C2B1 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
@@ -3812,6 +3833,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
+		};
+		5BAFAFDA2B8287B500619092 /* Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BAFAFD92B8287B500619092 /* XCRemoteSwiftPackageReference "Dynamic" */;
+			productName = Dynamic;
+		};
+		5BAFAFDC2B8287C200619092 /* Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BAFAFD92B8287B500619092 /* XCRemoteSwiftPackageReference "Dynamic" */;
+			productName = Dynamic;
 		};
 		5BD1C5BF2A2A1FC90043C2B1 /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;

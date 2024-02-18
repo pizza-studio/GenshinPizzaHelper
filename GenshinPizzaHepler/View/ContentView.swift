@@ -6,6 +6,7 @@
 //  根View
 
 import Defaults
+import Dynamic
 import GIPizzaKit
 import HBMihoyoAPI
 import SFSafeSymbols
@@ -182,6 +183,9 @@ struct ContentView: View {
             print(
                 "Locale: \(Bundle.main.preferredLocalizations.first ?? "sys.unknown")"
             )
+            if let keyWindow = ThisDevice.getKeyWindow() {
+                keyWindow.scaleFactor = 1
+            }
         }
         .navigate(
             to: NotificationSettingView(),
