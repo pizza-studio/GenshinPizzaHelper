@@ -53,7 +53,7 @@
 2. 之后 Xcode 会报错、引导你填写一些其他内容：
     1. `CharacterAsset.frontPhotoFileName` 变数需要你填入新角色的正面肖像（证件照）的档案名称。该肖像档案放置在 `Assets-NoWatch` 当中的对应目录内即可。Ambr.Top 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请用 Waifu2x 等 AI 手段放大至 512x512（可保证 iPad Pro 高清显示）、再存为 HEIC。详情请洽下文「证件照处理方法」。
     2. `CharacterAsset.namecard` 变数需要你填入新角色的名片。这里按照真实情况填写即可。
-    3. `CharacterAsset.possibleProfilePictureIdentifiers` 用来填写每个角色对应的 profilePicture 编号。每个角色可能拥有多个编号。请依照 [ProfilePictureExcelConfigData.json](https://gitlab.com/Dimbreath/AnimeGameData/-/blob/master/ExcelBinOutput/ProfilePictureExcelConfigData.json) 的内容查询到新角色对应的 profilePicture 编号（不超过五位数）。
+    3. `CharacterAsset.possibleProfilePictureIdentifiers` 用来填写每个角色对应的 profilePicture 编号。每个角色可能拥有多个编号。请依照 [ProfilePictureExcelConfigData.json](https://gitlab.com/Dimbreath/AnimeGameData/-/blob/main/ExcelBinOutput/ProfilePictureExcelConfigData.json) 的内容查询到新角色对应的 profilePicture 编号（不超过五位数）。
 3. `CharacterAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil、或者用 `.available(since:.Specify(day:month:year:))` 限时封印： 
     ```
     case .Baizhu:
