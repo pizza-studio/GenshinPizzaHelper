@@ -128,6 +128,7 @@ public enum _GachaType: Int, CaseIterable {
     case character = 301
     case weapon = 302
     case character2 = 400
+    case chronicled = 500
 }
 
 extension _GachaType {
@@ -143,6 +144,8 @@ extension _GachaType {
             return "app.gacha.weapon.title".localized
         case .character2:
             return "app.gacha.character-2.title".localized
+        case .chronicled:
+            return String(localized: "app.gacha.chronicled.title")
         }
     }
 
@@ -158,6 +161,8 @@ extension _GachaType {
             return "app.gacha.weapon.title".localized
         case .character2:
             return "app.gacha.character-2.title".localized
+        case .chronicled:
+            return String(localized: "app.gacha.chronicled.title")
         }
     }
 }
@@ -170,6 +175,7 @@ public enum GachaType: Int {
     case standard = 200
     case character = 301
     case weapon = 302
+    case chronicled = 500
 }
 
 // @available(iOS 16.0, *)
@@ -192,6 +198,7 @@ extension GachaType {
         case .standard: return .standard
         case .newPlayer: return .newPlayer
         case .weapon: return .weapon
+        case .chronicled: return .chronicled
         }
     }
 
@@ -205,11 +212,13 @@ extension GachaType {
             return "app.gacha.character.title".localized
         case .weapon:
             return "app.gacha.weapon.title".localized
+        case .chronicled:
+            return String(localized: "app.gacha.chronicled.title")
         }
     }
 
     static func allAvaliableGachaType() -> [Self] {
-        [.character, .weapon, .standard]
+        [.character, .weapon, .standard, .chronicled]
     }
 
     static func from(_ id: String) -> Self {
@@ -232,7 +241,8 @@ extension _GachaType {
         switch self {
         case .standard: return .character
         case .character: return .weapon
-        case .character2: return nil
+        case .character2: return .chronicled
+        case .chronicled: return nil
         default: return nil
         }
     }

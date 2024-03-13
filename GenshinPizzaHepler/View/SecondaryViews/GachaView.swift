@@ -237,7 +237,7 @@ private struct GachaStatisticSectionView: View {
                     max(fiveStarItemsWithCount.count, 1)
                 Text("\(showDrawingNumber ? number : number * 160)")
             }
-            if gachaViewModel.filter.gachaType != .standard {
+            if ![GachaType]([.standard, .chronicled]).contains(gachaViewModel.filter.gachaType) {
                 HStack {
                     Label(
                         showDrawingNumber ? "app.gacha.avg.5starLimited.pull" : "app.gacha.avg.5starLimited.primogems",
@@ -273,7 +273,7 @@ private struct GachaStatisticSectionView: View {
                     )
                 }
             }
-            if gachaViewModel.filter.gachaType != .standard {
+            if ![GachaType]([.standard, .chronicled]).contains(gachaViewModel.filter.gachaType) {
                 VStack {
                     HStack {
                         Text(Defaults[.useGuestGachaEvaluator] ? "app.gacha.review.pom-pom" : "app.gacha.review.paimon")
@@ -310,14 +310,14 @@ private struct GachaStatisticSectionView: View {
         }
         .onTapGesture {
             simpleTaptic(type: .light)
-            if gachaViewModel.filter.gachaType != .standard {
+            if ![GachaType]([.standard, .chronicled]).contains(gachaViewModel.filter.gachaType) {
                 withAnimation(.easeInOut(duration: 0.1)) {
                     showDrawingNumber.toggle()
                 }
             }
         }
         .onReceive(gachaViewModel.objectWillChange) {
-            if gachaViewModel.filter.gachaType == .standard {
+            if ![GachaType]([.standard, .chronicled]).contains(gachaViewModel.filter.gachaType) {
                 showDrawingNumber = true
             }
         }
@@ -701,7 +701,7 @@ private struct GachaHelpVideoLink: View {
 extension GachaItem {
     /// 是否歪了
     func isLose5050() -> Bool {
-        guard gachaType != .standard else { return false }
+        guard ![GachaType]([.standard, .chronicled]).contains(gachaType) else { return false }
         guard ![
             "阿莫斯之弓",
             "天空之翼",

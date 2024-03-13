@@ -131,6 +131,8 @@ extension GachaType {
         case .weapon:
             return .standard
         case .standard:
+            return .chronicled
+        case .chronicled:
             return .character
         default:
             return .character
