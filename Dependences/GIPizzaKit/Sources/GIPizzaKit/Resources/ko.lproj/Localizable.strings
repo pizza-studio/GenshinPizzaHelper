@@ -120,6 +120,7 @@
 "$asset.character:Navia" = "나비아";
 "$asset.character:Gaming" = "가명";
 "$asset.character:Xianyun" = "한운";
+"$asset.character:Chiori" = "치오리";
 
 // MARK: - Weapon Names
 
@@ -164,6 +165,7 @@
 "$asset.weapon:KeyOfKhajNisut" = "성현의 열쇠";
 "$asset.weapon:LightOfFoliarIncision" = "잎을 가르는 빛";
 "$asset.weapon:SplendorOfStillWaters" = "조용히 샘솟는 빛";
+"$asset.weapon:UrakuMisugiri" = "우라쿠의 미스기리";
 "$asset.weapon:WasterGreatsword" = "훈련용 대검";
 "$asset.weapon:OldMercsPal" = "용병 중검";
 "$asset.weapon:FerrousShadow" = "강철의 그림자";
@@ -218,6 +220,7 @@
 "$asset.weapon:MissiveWindspear" = "날카로운 바람의 서신";
 "$asset.weapon:BalladOfTheFjords" = "협만의 노래";
 "$asset.weapon:RightfulReward" = "공의의 보상";
+"$asset.weapon:DialoguesOfTheDesertSages" = "위대한 사막 현자의 대답";
 "$asset.weapon:ProspectorsDrill" = "탐사용 드릴";
 "$asset.weapon:StaffOfHoma" = "호마의 지팡이";
 "$asset.weapon:SkywardSpine" = "천공의 마루";
@@ -494,3 +497,5 @@
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "업적·옥 투척";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "기행·오색 연";
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "앨범·빛나는 뭇별";
+"$asset.nameCard:UI_NameCardPic_Chiori_P" = "치오리·펼친 소매";
+"$asset.nameCard:UI_NameCardPic_Bp31_P" = "기행·응축된 신비";

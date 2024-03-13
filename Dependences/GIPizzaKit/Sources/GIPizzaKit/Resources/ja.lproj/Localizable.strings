@@ -120,6 +120,7 @@
 "$asset.character:Navia" = "ナヴィア";
 "$asset.character:Gaming" = "嘉明";
 "$asset.character:Xianyun" = "閑雲";
+"$asset.character:Chiori" = "千織";
 
 // MARK: - Weapon Names
 
@@ -164,6 +165,7 @@
 "$asset.weapon:KeyOfKhajNisut" = "聖顕の鍵";
 "$asset.weapon:LightOfFoliarIncision" = "萃光の裁葉";
 "$asset.weapon:SplendorOfStillWaters" = "静水流転の輝き";
+"$asset.weapon:UrakuMisugiri" = "有楽御簾切";
 "$asset.weapon:WasterGreatsword" = "訓練用大剣";
 "$asset.weapon:OldMercsPal" = "傭兵の重剣";
 "$asset.weapon:FerrousShadow" = "鉄影段平";
@@ -218,6 +220,7 @@
 "$asset.weapon:MissiveWindspear" = "風信の矛";
 "$asset.weapon:BalladOfTheFjords" = "フィヨルドの歌";
 "$asset.weapon:RightfulReward" = "正義の報酬";
+"$asset.weapon:DialoguesOfTheDesertSages" = "砂中の賢者達の問答";
 "$asset.weapon:ProspectorsDrill" = "プロスペクタードリル";
 "$asset.weapon:StaffOfHoma" = "護摩の杖";
 "$asset.weapon:SkywardSpine" = "天空の脊";
@@ -494,3 +497,5 @@
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "アチーブメント·玉投げ";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "紀行·彩鷹";
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "アルバム·燦めく星たち";
+"$asset.nameCard:UI_NameCardPic_Chiori_P" = "千織·展袂";
+"$asset.nameCard:UI_NameCardPic_Bp31_P" = "紀行·魔萃";

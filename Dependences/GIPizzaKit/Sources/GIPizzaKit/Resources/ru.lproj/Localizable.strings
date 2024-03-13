@@ -120,6 +120,7 @@
 "$asset.character:Navia" = "Навия";
 "$asset.character:Gaming" = "Ка Мин";
 "$asset.character:Xianyun" = "Сянь Юнь";
+"$asset.character:Chiori" = "Тиори";
 
 // MARK: - Weapon Names
 
@@ -164,6 +165,7 @@
 "$asset.weapon:KeyOfKhajNisut" = "Ключ Хадж-нисут";
 "$asset.weapon:LightOfFoliarIncision" = "Свет лиственного разреза";
 "$asset.weapon:SplendorOfStillWaters" = "Блеск тихих вод";
+"$asset.weapon:UrakuMisugiri" = "Ураку мисугири";
 "$asset.weapon:WasterGreatsword" = "Двуручный меч богатыря";
 "$asset.weapon:OldMercsPal" = "Лучший друг наёмника";
 "$asset.weapon:FerrousShadow" = "Металлическая тень";
@@ -218,6 +220,7 @@
 "$asset.weapon:MissiveWindspear" = "Копьё послания ветров";
 "$asset.weapon:BalladOfTheFjords" = "Баллада фьордов";
 "$asset.weapon:RightfulReward" = "Справедливая награда";
+"$asset.weapon:DialoguesOfTheDesertSages" = "Диалог пустынных мудрецов";
 "$asset.weapon:ProspectorsDrill" = "Бур рудоискателя";
 "$asset.weapon:StaffOfHoma" = "Посох Хомы";
 "$asset.weapon:SkywardSpine" = "Небесная ось";
@@ -496,3 +499,5 @@
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Брошенный нефрит";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "Яркие птицы";
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "The Stellar Moments";
+"$asset.nameCard:UI_NameCardPic_Chiori_P" = "Развевающиеся рукава";
+"$asset.nameCard:UI_NameCardPic_Bp31_P" = "Мистическое скопление";

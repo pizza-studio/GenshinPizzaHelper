@@ -120,6 +120,7 @@
 "$asset.character:Navia" = "Navia";
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
+"$asset.character:Chiori" = "Chiori";
 
 // MARK: - Weapon Names
 
@@ -164,6 +165,7 @@
 "$asset.weapon:KeyOfKhajNisut" = "Chìa Khóa Khaj-Nisut";
 "$asset.weapon:LightOfFoliarIncision" = "Ánh Lá Phán Quyết";
 "$asset.weapon:SplendorOfStillWaters" = "Sắc Nước Lộng Lẫy";
+"$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
 "$asset.weapon:WasterGreatsword" = "Kiếm Huấn Luyện";
 "$asset.weapon:OldMercsPal" = "Kiếm Dụng Binh";
 "$asset.weapon:FerrousShadow" = "Kiếm Thiết Ảnh";
@@ -218,6 +220,7 @@
 "$asset.weapon:MissiveWindspear" = "Mũi Nhọn Của Gió";
 "$asset.weapon:BalladOfTheFjords" = "Khúc Ca Vịnh Hẹp";
 "$asset.weapon:RightfulReward" = "Thù Lao Của Chính Nghĩa";
+"$asset.weapon:DialoguesOfTheDesertSages" = "Đối Thoại Của Hiền Giả Sa Mạc";
 "$asset.weapon:ProspectorsDrill" = "Mũi Khoan Thăm Dò";
 "$asset.weapon:StaffOfHoma" = "Trượng Hộ Ma";
 "$asset.weapon:SkywardSpine" = "Xương Sống Thiên Không";
@@ -496,3 +499,5 @@
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Thành Tựu - Mưa Ngọc";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "Nhật Ký Hành Trình - Sắc Diều";
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "Tuyển Tập - Chòm Sao Lấp Lánh";
+"$asset.nameCard:UI_NameCardPic_Chiori_P" = "Chiori - Tay Áo Trình Diễn";
+"$asset.nameCard:UI_NameCardPic_Bp31_P" = "Nhật Ký Hành Trình - Hóa Kỹ";

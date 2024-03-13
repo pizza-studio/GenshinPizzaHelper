@@ -120,6 +120,7 @@
 "$asset.character:Navia" = "Navia";
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
+"$asset.character:Chiori" = "Chiori";
 
 // MARK: - Weapon Names
 
@@ -164,6 +165,7 @@
 "$asset.weapon:KeyOfKhajNisut" = "Key of Khaj-Nisut";
 "$asset.weapon:LightOfFoliarIncision" = "Light of Foliar Incision";
 "$asset.weapon:SplendorOfStillWaters" = "Splendor of Still Waters";
+"$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
 "$asset.weapon:WasterGreatsword" = "Waster Greatsword";
 "$asset.weapon:OldMercsPal" = "Old Merc's Pal";
 "$asset.weapon:FerrousShadow" = "Ferrous Shadow";
@@ -218,6 +220,7 @@
 "$asset.weapon:MissiveWindspear" = "Missive Windspear";
 "$asset.weapon:BalladOfTheFjords" = "Ballad of the Fjords";
 "$asset.weapon:RightfulReward" = "Rightful Reward";
+"$asset.weapon:DialoguesOfTheDesertSages" = "Dialogues of the Desert Sages";
 "$asset.weapon:ProspectorsDrill" = "Prospector's Drill";
 "$asset.weapon:StaffOfHoma" = "Staff of Homa";
 "$asset.weapon:SkywardSpine" = "Skyward Spine";
@@ -494,3 +497,5 @@
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Achievement: Rainjade Rite";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "Travel Notes: Vivid Flight";
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "Album: The Stellar Moments";
+"$asset.nameCard:UI_NameCardPic_Chiori_P" = "Chiori: Spectacular Sleeves";
+"$asset.nameCard:UI_NameCardPic_Bp31_P" = "Travel Notes: Arcane Amassing";

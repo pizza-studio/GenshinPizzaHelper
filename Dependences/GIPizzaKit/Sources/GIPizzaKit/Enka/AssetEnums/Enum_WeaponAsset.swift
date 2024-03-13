@@ -52,6 +52,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case KeyOfKhajNisut = 11511
     case LightOfFoliarIncision = 11512
     case SplendorOfStillWaters = 11513
+    case UrakuMisugiri = 11514
     case WasterGreatsword = 12101
     case OldMercsPal = 12201
     case FerrousShadow = 12301
@@ -108,6 +109,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case MissiveWindspear = 13419
     case BalladOfTheFjords = 13424
     case RightfulReward = 13425
+    case DialoguesOfTheDesertSages = 13426
     case ProspectorsDrill = 13427
     case StaffOfHoma = 13501
     case SkywardSpine = 13502
@@ -256,6 +258,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .KeyOfKhajNisut: return .weaponTalisman
         case .LightOfFoliarIncision: return .weaponTalisman
         case .SplendorOfStillWaters: return .weaponDewdrop
+        case .UrakuMisugiri: return .talentLight
         case .WasterGreatsword: return .weaponBorealWolf
         case .OldMercsPal: return .weaponBorealWolf
         case .FerrousShadow: return .weaponDecarabian
@@ -312,6 +315,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .MissiveWindspear: return .weaponBorealWolf
         case .BalladOfTheFjords: return .weaponPristineSea
         case .RightfulReward: return .weaponPristineSea
+        case .DialoguesOfTheDesertSages: return .weaponTalisman
         case .ProspectorsDrill: return .weaponAncientChord
         case .StaffOfHoma: return .weaponAerosiderite
         case .SkywardSpine: return .weaponGladiator
@@ -444,6 +448,7 @@ extension WeaponAsset {
         case .KeyOfKhajNisut: return "UI_EquipIcon_Sword_Deshret"
         case .LightOfFoliarIncision: return "UI_EquipIcon_Sword_Ayus"
         case .SplendorOfStillWaters: return "UI_EquipIcon_Sword_Regalis"
+        case .UrakuMisugiri: return "UI_EquipIcon_Sword_Needle"
         case .WasterGreatsword: return "UI_EquipIcon_Claymore_Aniki"
         case .OldMercsPal: return "UI_EquipIcon_Claymore_Oyaji"
         case .FerrousShadow: return "UI_EquipIcon_Claymore_Glaive"
@@ -500,6 +505,7 @@ extension WeaponAsset {
         case .MissiveWindspear: return "UI_EquipIcon_Pole_Windvane"
         case .BalladOfTheFjords: return "UI_EquipIcon_Pole_Shanty"
         case .RightfulReward: return "UI_EquipIcon_Pole_Vorpal"
+        case .DialoguesOfTheDesertSages: return "UI_EquipIcon_Pole_Caduceus"
         case .ProspectorsDrill: return "UI_EquipIcon_Pole_Mechanic"
         case .StaffOfHoma: return "UI_EquipIcon_Pole_Homa"
         case .SkywardSpine: return "UI_EquipIcon_Pole_Dvalin"

@@ -120,6 +120,7 @@
 "$asset.character:Navia" = "Navia";
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
+"$asset.character:Chiori" = "Chiori";
 
 // MARK: - Weapon Names
 
@@ -164,6 +165,7 @@
 "$asset.weapon:KeyOfKhajNisut" = "Chiave del Khaj-Nisut";
 "$asset.weapon:LightOfFoliarIncision" = "Lume del Taglio frondoso";
 "$asset.weapon:SplendorOfStillWaters" = "Fulgore delle placide acque";
+"$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
 "$asset.weapon:WasterGreatsword" = "Spadone dell'incapace";
 "$asset.weapon:OldMercsPal" = "Lama del mercenario";
 "$asset.weapon:FerrousShadow" = "Ombra di ferro";
@@ -218,6 +220,7 @@
 "$asset.weapon:MissiveWindspear" = "Missiva del vento";
 "$asset.weapon:BalladOfTheFjords" = "Ballata dei fiordi";
 "$asset.weapon:RightfulReward" = "Equa ricompensa";
+"$asset.weapon:DialoguesOfTheDesertSages" = "Dialoghi dei saggi del deserto";
 "$asset.weapon:ProspectorsDrill" = "Trivella mineraria";
 "$asset.weapon:StaffOfHoma" = "Bastone di Homa";
 "$asset.weapon:SkywardSpine" = "Lancia d'osso celeste";
@@ -496,3 +499,5 @@
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Obiettivo: Rito della Giada pluviale";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "Appunti di viaggio: Colori in volo";
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "Album: The Stellar Moments";
+"$asset.nameCard:UI_NameCardPic_Chiori_P" = "Chiori: Maniche mozzafiato";
+"$asset.nameCard:UI_NameCardPic_Bp31_P" = "Appunti di viaggio: Convergenza arcana";

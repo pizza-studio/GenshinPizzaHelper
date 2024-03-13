@@ -120,6 +120,7 @@
 "$asset.character:Navia" = "娜维娅";
 "$asset.character:Gaming" = "嘉明";
 "$asset.character:Xianyun" = "闲云";
+"$asset.character:Chiori" = "千织";
 
 // MARK: - Weapon Names
 
@@ -164,6 +165,7 @@
 "$asset.weapon:KeyOfKhajNisut" = "圣显之钥";
 "$asset.weapon:LightOfFoliarIncision" = "裁叶萃光";
 "$asset.weapon:SplendorOfStillWaters" = "静水流涌之辉";
+"$asset.weapon:UrakuMisugiri" = "有乐御簾切";
 "$asset.weapon:WasterGreatsword" = "训练大剑";
 "$asset.weapon:OldMercsPal" = "佣兵重剑";
 "$asset.weapon:FerrousShadow" = "铁影阔剑";
@@ -218,6 +220,7 @@
 "$asset.weapon:MissiveWindspear" = "风信之锋";
 "$asset.weapon:BalladOfTheFjords" = "峡湾长歌";
 "$asset.weapon:RightfulReward" = "公义的酬报";
+"$asset.weapon:DialoguesOfTheDesertSages" = "沙中伟贤的对答";
 "$asset.weapon:ProspectorsDrill" = "勘探钻机";
 "$asset.weapon:StaffOfHoma" = "护摩之杖";
 "$asset.weapon:SkywardSpine" = "天空之脊";
@@ -494,3 +497,5 @@
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "成就·投珑";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "纪行·彩鹞";
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "专辑·闪耀的群星";
+"$asset.nameCard:UI_NameCardPic_Chiori_P" = "千织·展袖";
+"$asset.nameCard:UI_NameCardPic_Bp31_P" = "纪行·魔萃";

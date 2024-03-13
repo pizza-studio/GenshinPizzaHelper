@@ -94,6 +94,7 @@ public enum CharacterAsset: Int, CaseIterable {
     case Navia = 10000091
     case Gaming = 10000092
     case Xianyun = 10000093
+    case Chiori = 10000094
 }
 
 extension CharacterAsset {
@@ -219,6 +220,7 @@ extension CharacterAsset {
         case .Navia: return "UI_AvatarIcon_Navia"
         case .Gaming: return "UI_AvatarIcon_Gaming"
         case .Xianyun: return "UI_AvatarIcon_Liuyun"
+        case .Chiori: return "UI_AvatarIcon_Chiori"
         }
     }
 
@@ -308,6 +310,7 @@ extension CharacterAsset {
         case .Navia: return .UI_NameCardPic_Navia_P
         case .Gaming: return .UI_NameCardPic_Gaming_P
         case .Xianyun: return .UI_NameCardPic_Liuyun_P
+        case .Chiori: return .UI_NameCardPic_Chiori_P
         }
     }
 }
@@ -398,6 +401,7 @@ extension CharacterAsset {
         case .Navia: return [7500]
         case .Gaming: return [7700]
         case .Xianyun: return [7800]
+        case .Chiori: return [7900]
         }
     }
 }
@@ -488,6 +492,7 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Navia: return .talentEquity
         case .Gaming: return .talentProsperity
         case .Xianyun: return .talentGold
+        case .Chiori: return .talentLight
         }
     }
 }

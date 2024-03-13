@@ -207,6 +207,8 @@ public enum NameCard: Int, CaseIterable, _DefaultsSerializable {
     case UI_NameCardPic_OfferingSilong_P = 21090
     case UI_NameCardPic_Bp30_P = 21091
     case UI_NameCardPic_OST4_P = 21092
+    case UI_NameCardPic_Chiori_P = 21093
+    case UI_NameCardPic_Bp31_P = 21094
 }
 
 // MARK: Identifiable, Hashable

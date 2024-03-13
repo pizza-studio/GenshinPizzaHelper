@@ -120,6 +120,7 @@
 "$asset.character:Navia" = "Navia";
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
+"$asset.character:Chiori" = "Chiori";
 
 // MARK: - Weapon Names
 
@@ -164,6 +165,7 @@
 "$asset.weapon:KeyOfKhajNisut" = "Clé de Khaj-Nisut";
 "$asset.weapon:LightOfFoliarIncision" = "Lumière d'incision foliaire";
 "$asset.weapon:SplendorOfStillWaters" = "Splendeur des eaux calmes";
+"$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
 "$asset.weapon:WasterGreatsword" = "Épée d'entraînement";
 "$asset.weapon:OldMercsPal" = "Lame du mercenaire";
 "$asset.weapon:FerrousShadow" = "Ombre ferreuse";
@@ -218,6 +220,7 @@
 "$asset.weapon:MissiveWindspear" = "Lance du vent saisonnier";
 "$asset.weapon:BalladOfTheFjords" = "Ballade des fjords";
 "$asset.weapon:RightfulReward" = "Récompense légitime";
+"$asset.weapon:DialoguesOfTheDesertSages" = "Dialogues des sages du désert";
 "$asset.weapon:ProspectorsDrill" = "Foret de prospecteur";
 "$asset.weapon:StaffOfHoma" = "Bâton de Homa";
 "$asset.weapon:SkywardSpine" = "Berge de la Voûte d'Azur";
@@ -494,3 +497,5 @@
 "$asset.nameCard:UI_NameCardPic_OfferingSilong_P" = "Succès - Pluie de jades";
 "$asset.nameCard:UI_NameCardPic_Bp30_P" = "PB - Vol coloré";
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "Album - Moments stellaires";
+"$asset.nameCard:UI_NameCardPic_Chiori_P" = "Chiori - Manches spectaculaires";
+"$asset.nameCard:UI_NameCardPic_Bp31_P" = "PB - Arcanicité";
