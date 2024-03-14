@@ -497,6 +497,97 @@ extension CharacterAsset: DailyMaterialConsumer {
     }
 }
 
+// MARK: - Elements
+
+extension CharacterAsset {
+    public var element: PlayerDetail.Avatar.AvatarElement? {
+        switch self {
+        case .Paimon: return nil
+        case .Hotaru: return nil // 主角可能对应多个属性，得单独判断
+        case .Sora: return nil // 主角可能对应多个属性，得单独判断
+        case .Sucrose: return .anemo
+        case .Keqing: return .electro
+        case .Mona: return .hydro
+        case .Chongyun: return .cryo
+        case .Qiqi: return .cryo
+        case .Noelle: return .geo
+        case .Bennett: return .pyro
+        case .Fischl: return .electro
+        case .Klee: return .pyro
+        case .Ningguang: return .geo
+        case .Xingqiu: return .hydro
+        case .Beidou: return .electro
+        case .Xiangling: return .pyro
+        case .Venti: return .anemo
+        case .Amber: return .pyro
+        case .Razor: return .electro
+        case .Diluc: return .pyro
+        case .Kaeya: return .cryo
+        case .Barbara: return .hydro
+        case .Lisa: return .electro
+        case .Jean: return .anemo
+        case .Diona: return .cryo
+        case .Tartaglia: return .hydro
+        case .Xinyan: return .pyro
+        case .Zhongli: return .geo
+        case .Albedo: return .geo
+        case .Ganyu: return .cryo
+        case .Xiao: return .anemo
+        case .Hutao: return .pyro
+        case .Rosaria: return .cryo
+        case .Yanfei: return .pyro
+        case .Eula: return .cryo
+        case .Kazuha: return .anemo
+        case .Ayaka: return .cryo
+        case .Sayu: return .anemo
+        case .Yoimiya: return .pyro
+        case .Aloy: return .cryo
+        case .Sara: return .electro
+        case .Ei: return .electro
+        case .Kokomi: return .hydro
+        case .Thoma: return .pyro
+        case .Itto: return .geo
+        case .Gorou: return .geo
+        case .Yunjin: return .geo
+        case .Shenhe: return .cryo
+        case .Miko: return .electro
+        case .Ayato: return .hydro
+        case .Yelan: return .hydro
+        case .Shinobu: return .electro
+        case .Heizou: return .anemo
+        case .Tighnari: return .dendro
+        case .Collei: return .dendro
+        case .Dori: return .electro
+        case .Candace: return .hydro
+        case .Cyno: return .electro
+        case .Nilou: return .hydro
+        case .Nahida: return .dendro
+        case .Layla: return .cryo
+        case .Faruzan: return .anemo
+        case .Kunikuzushi: return .anemo
+        case .Alhaitham: return .dendro
+        case .Yaoyao: return .dendro
+        case .Dehya: return .pyro
+        case .Mika: return .cryo
+        case .Baizhu: return .dendro
+        case .Kaveh: return .dendro
+        case .Kirara: return .dendro
+        case .Lyney: return .pyro
+        case .Lynette: return .anemo
+        case .Freminet: return .cryo
+        case .Neuvillette: return .hydro
+        case .Wriothesley: return .cryo
+        case .Charlotte: return .cryo
+        case .Furina: return .hydro
+        case .Chevreuse: return .pyro
+        case .Navia: return .geo
+        case .Gaming: return .pyro
+        case .Xianyun: return .anemo
+        case .Chiori: return .geo
+        }
+    }
+}
+
 // MARK: - A Dictionary dedicated for recording players' costume preference.
 
 extension CharacterAsset {
