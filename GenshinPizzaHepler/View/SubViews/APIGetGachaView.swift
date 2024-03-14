@@ -298,6 +298,7 @@ private struct GetGachaChart: View {
             GachaType.standard.localizedDescription(): .green,
             GachaType.character.localizedDescription(): .blue,
             GachaType.weapon.localizedDescription(): .yellow,
+            GachaType.chronicled.localizedDescription(): .purple,
         ])
 //        .chartXAxis {
 //            AxisMarks { value in

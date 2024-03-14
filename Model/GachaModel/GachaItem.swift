@@ -241,8 +241,7 @@ extension _GachaType {
         switch self {
         case .standard: return .character
         case .character: return .weapon
-        case .character2: return .chronicled
-        case .chronicled: return nil
+        case .weapon: return .chronicled
         default: return nil
         }
     }
