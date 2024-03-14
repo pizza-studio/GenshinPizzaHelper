@@ -764,6 +764,7 @@ extension PlayerDetail.Avatar {
             var result = ArtifactRatingRequest.Artifact()
             let artifactType = thisRawEnkaArtifact.artifactType
             result.star = thisRawEnkaArtifact.rankLevel.rawValue
+            result.setId = thisRawEnkaArtifact.setId ?? -114_514
             result.lv = thisRawEnkaArtifact.level
             // 副词条
             thisRawEnkaArtifact.subAttributes.forEach { thisRawEnkaAttr in

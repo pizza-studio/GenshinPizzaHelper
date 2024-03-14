@@ -85,7 +85,7 @@ public struct ArtifactRatingRequest {
         public var mainProp5: Artifact5MainProp?
         public var star: Int = 5
         public var lv: Int = 20
-        public var setId: Int = 114_514
+        public var setId: Int = -114_514
         public var atkPercent: Double = 0
         public var hpPercent: Double = 0
         public var defPercent: Double = 0
@@ -96,6 +96,14 @@ public struct ArtifactRatingRequest {
         public var atk: Double = 0
         public var hp: Double = 0
         public var def: Double = 0
+
+        public var isNull: Bool {
+            setId == -114_514
+        }
+
+        public var isValid: Bool {
+            !isNull
+        }
     }
 
     public enum Artifact3MainProp: Int {
@@ -145,6 +153,14 @@ public struct ArtifactRatingRequest {
     public var goblet: Artifact
     /// 头
     public var circlet: Artifact
+
+    public var allArtifacts: [Artifact] {
+        [flower, plume, sands, goblet, circlet]
+    }
+
+    public var allValidArtifacts: [Artifact] {
+        allArtifacts.filter(\.isValid)
+    }
 }
 
 // MARK: - ArtifactScoreCollectModel

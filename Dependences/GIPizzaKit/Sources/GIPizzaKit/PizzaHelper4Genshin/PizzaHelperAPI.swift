@@ -140,6 +140,13 @@ public enum PizzaHelperAPI {
             ArtifactRatingScoreResult
         ) -> ()
     ) {
+        if let result = ArtifactRatingSputnik(request: artifacts).evaluate() {
+            completion(result)
+            return
+        }
+
+        // 以下内容保留，以便在本地无法生成数据的时候使用线上服务生成的数据。
+
         var urlStr = "?"
         urlStr = urlStr.addPara("cid", String(artifacts.cid))
         urlStr = urlStr.addPara("elementId", String(artifacts.characterElement))
