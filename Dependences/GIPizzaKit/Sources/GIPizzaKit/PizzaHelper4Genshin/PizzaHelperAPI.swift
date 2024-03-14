@@ -46,7 +46,7 @@ public enum PizzaHelperAPI {
     public static func fetchENCharacterDetailData(
         from serverType: Enka.JSONGitServerType? = nil
     ) async throws
-        -> Enka.CharacterMapRaw {
+        -> Enka.CharacterMap {
         // 请求类别
         let urlPrefix: String = {
             switch serverType {
@@ -67,7 +67,7 @@ public enum PizzaHelperAPI {
 
         // 请求
         return try await withCheckedThrowingContinuation { continuation in
-            HttpMethod<Enka.CharacterMapRaw>
+            HttpMethod<Enka.CharacterMap>
                 .homeRequest(
                     .get,
                     urlStr,

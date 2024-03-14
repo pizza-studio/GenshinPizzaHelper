@@ -12,7 +12,6 @@ import Foundation
 extension Enka {
     public static let sharedDecoder = JSONDecoder()
     public static let sharedEncoder = JSONEncoder()
-    public typealias CharacterMapRaw = [String: MaybeCharacter]
     public typealias CharacterMap = [String: Character]
 
     public struct Costume: Codable {
@@ -116,11 +115,5 @@ extension Enka.CharacterMap {
 
     public func getNameID(id: String) -> String {
         self[id]?.nameID ?? ""
-    }
-}
-
-extension Enka.CharacterMapRaw {
-    public var sanitized: Enka.CharacterMap {
-        compactMapValues { $0.sanitized }
     }
 }

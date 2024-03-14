@@ -39,7 +39,7 @@ extension Enka {
             let storedCharLoc = try? JSONDecoder().decode(Enka.CharacterLoc.self, from: Defaults[.enkaMapLoc])
                 .getLocalizedDictionary()
             let storedCharMap = try? JSONDecoder()
-                .decode(Enka.CharacterMapRaw.self, from: Defaults[.enkaMapCharacters])
+                .decode(Enka.CharacterMap.self, from: Defaults[.enkaMapCharacters])
 
             let enkaDataWrecked = storedCharLoc == nil || storedCharMap == nil || (storedCharLoc?.count ?? 0) *
                 (storedCharMap?.count ?? 0) == 0
@@ -53,8 +53,8 @@ extension Enka {
 
             let needUpdate = enkaDataWrecked || enkaDataExpired
 
-            if !needUpdate {
-                return (storedCharLoc!, storedCharMap!.sanitized)
+            if !needUpdate, let storedCharLoc, let storedCharMap {
+                return (storedCharLoc, storedCharMap)
             } else {
                 // fetch data
                 async let charLocRaw = try await Task {
@@ -83,7 +83,7 @@ extension Enka {
 
                 Defaults[.lastEnkaDataCheckDate] = Date()
 
-                return try await (charLocRaw.getLocalizedDictionary(), charMapRaw.sanitized)
+                return try await (charLocRaw.getLocalizedDictionary(), charMapRaw)
             }
         }
     }
