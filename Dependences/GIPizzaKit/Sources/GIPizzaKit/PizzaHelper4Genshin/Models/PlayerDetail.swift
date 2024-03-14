@@ -29,7 +29,7 @@ public struct PlayerDetail {
     public init(
         PlayerDetailFetchModel: Enka.PlayerDetailFetchModel,
         localizedDictionary: [String: String],
-        characterMap: [String: Enka.CharacterMap.Character]
+        characterMap: Enka.CharacterMap
     ) {
         self.basicInfo = .init(
             playerInfo: PlayerDetailFetchModel.playerInfo,
@@ -65,7 +65,7 @@ public struct PlayerDetail {
 
         public init?(
             playerInfo: Enka.PlayerDetailFetchModel.PlayerInfo?,
-            characterMap: [String: Enka.CharacterMap.Character]
+            characterMap: Enka.CharacterMap
         ) {
             guard let playerInfo = playerInfo else { return nil }
             self.nickname = playerInfo.nickname
@@ -145,7 +145,7 @@ public struct PlayerDetail {
         public init?(
             avatarInfo: Enka.PlayerDetailFetchModel.AvatarInfo,
             localizedDictionary: [String: String],
-            characterDictionary: [String: Enka.CharacterMap.Character],
+            characterDictionary: Enka.CharacterMap,
             uid: String?
         ) {
             guard let character =
@@ -179,17 +179,14 @@ public struct PlayerDetail {
             self.sideIconString = character.SideIconName
 
             self.skills = character.SkillOrder.compactMap { skillID in
-                let rawLevel = avatarInfo.skillLevelMap
-                    .skillLevel[skillID.description] ?? 0
+                let rawLevel = avatarInfo.skillLevelMap[skillID.description] ?? 0
                 guard rawLevel > 0 else { return nil } // 原生等级从 1 开始算。
-                let icon = character.Skills
-                    .skillData[String(skillID)] ??
+                let icon = character.Skills[skillID.description] ??
                     "UI_Talent_Combine_Skill_ExtraItem"
                 // 从 proudSkillExtraLevelMap 获取所有可能的天赋等级加成数据。
                 var adjustedDelta = avatarInfo
                     .proudSkillExtraLevelMap?[(
-                        character.ProudMap
-                            .proudMapData[skillID.description] ?? 0
+                        character.ProudMap[skillID.description] ?? 0
                     ).description] ?? 0
                 // 对该笔天赋等级加成数据做去余处理，以图仅保留命之座天赋加成。
                 adjustedDelta = adjustedDelta - adjustedDelta % 3
@@ -333,7 +330,7 @@ public struct PlayerDetail {
                 else { return nil }
                 self.name = localizedDictionary.nameFromHashMap(weaponEquipment.flat.nameTextMapHash)
                 self.level = weaponEquipment.weapon!.level
-                self.refinementRank = (weaponEquipment.weapon!.affixMap?.affix.first?.value ?? 0) + 1
+                self.refinementRank = (weaponEquipment.weapon?.affixMap?.first?.value ?? 0) + 1
                 self.iconString = weaponEquipment.flat.icon
                 self.rankLevel = .init(rawValue: weaponEquipment.flat.rankLevel) ?? .four
 
@@ -620,7 +617,7 @@ public struct PlayerDetail {
         public let uid: String
 
         /// 原始 character 資料備份。
-        public let character: Enka.CharacterMap.Character
+        public let character: Enka.Character
 
         /// 经过错字订正处理的角色姓名
         public var nameCorrected: String {

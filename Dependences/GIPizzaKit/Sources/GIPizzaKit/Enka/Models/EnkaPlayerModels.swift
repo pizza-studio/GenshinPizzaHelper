@@ -91,45 +91,6 @@ extension Enka {
                 }
             }
 
-            public struct SkillLevelMap: Codable {
-                // MARK: Lifecycle
-
-                public init(from decoder: Decoder) throws {
-                    let container = try decoder.container(keyedBy: SkillKey.self)
-
-                    var skill = [String: Int]()
-                    for key in container.allKeys {
-                        if let model = try? container
-                            .decode(Int.self, forKey: key) {
-                            skill[key.stringValue] = model
-                        }
-                    }
-                    self.skillLevel = skill
-                }
-
-                // MARK: Public
-
-                public struct SkillKey: CodingKey {
-                    // MARK: Lifecycle
-
-                    public init?(stringValue: String) {
-                        self.stringValue = stringValue
-                    }
-
-                    public init?(intValue: Int) {
-                        self.stringValue = "\(intValue)"
-                        self.intValue = intValue
-                    }
-
-                    // MARK: Public
-
-                    public var stringValue: String
-                    public var intValue: Int?
-                }
-
-                public var skillLevel: [String: Int]
-            }
-
             /// 装备列表的一项，包括武器和圣遗物
             public struct EquipList: Codable {
                 /// 圣遗物
@@ -143,54 +104,12 @@ extension Enka {
                 }
 
                 public struct Weapon: Codable {
-                    public struct AffixMap: Codable {
-                        // MARK: Lifecycle
-
-                        public init(from decoder: Decoder) throws {
-                            let container = try decoder
-                                .container(keyedBy: AffixKey.self)
-
-                            var affixDict = [String: Int]()
-                            for key in container.allKeys {
-                                if let model = try? container.decode(
-                                    Int.self,
-                                    forKey: key
-                                ) {
-                                    affixDict[key.stringValue] = model
-                                }
-                            }
-                            self.affix = affixDict
-                        }
-
-                        // MARK: Public
-
-                        public struct AffixKey: CodingKey {
-                            // MARK: Lifecycle
-
-                            public init?(stringValue: String) {
-                                self.stringValue = stringValue
-                            }
-
-                            public init?(intValue: Int) {
-                                self.stringValue = "\(intValue)"
-                                self.intValue = intValue
-                            }
-
-                            // MARK: Public
-
-                            public var stringValue: String
-                            public var intValue: Int?
-                        }
-
-                        public var affix: [String: Int]
-                    }
-
                     /// 武器等级
                     public var level: Int
                     /// 武器突破等级
                     public var promoteLevel: Int?
                     /// 武器精炼等级（0-4）
-                    public var affixMap: AffixMap?
+                    public var affixMap: [String: Int]?
                 }
 
                 public struct Flat: Codable {
@@ -255,7 +174,7 @@ extension Enka {
             /// 所有固定天赋ID的列表
             public var inherentProudSkillList: [Int]
             /// 天赋等级的字典，skillLevelMap.skillLevel: [天赋ID(String) : 等级(Int)]
-            public var skillLevelMap: SkillLevelMap
+            public var skillLevelMap: [String: Int]
             /// 装备列表，包括武器和圣遗物
             public var equipList: [EquipList]
             /// 角色好感等级，fetterInfo.expLevel

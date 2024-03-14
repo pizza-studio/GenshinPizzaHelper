@@ -26,7 +26,7 @@ public enum DecoratedIconCutType: CGFloat {
     }
 }
 
-extension Enka.CharacterMap.Character {
+extension Enka.Character {
     var elementColor: Color {
         guard let element = PlayerDetail.Avatar.AvatarElement(rawValue: Element) else {
             return .pink

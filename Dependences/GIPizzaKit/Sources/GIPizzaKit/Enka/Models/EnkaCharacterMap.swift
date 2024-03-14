@@ -10,177 +10,102 @@ import Foundation
 // MARK: - Enka.CharacterMap
 
 extension Enka {
-    public struct CharacterMap: Codable {
-        // MARK: Lifecycle
+    public static let sharedDecoder = JSONDecoder()
+    public static let sharedEncoder = JSONEncoder()
+    public typealias CharacterMapRaw = [String: MaybeCharacter]
+    public typealias CharacterMap = [String: Character]
 
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CharacterKey.self)
+    public struct Costume: Codable {
+        let sideIconName: String
+        let icon: String
+        let art: String
+        let avatarId: Int
+    }
 
-            var character = [String: Character]()
-            for key in container.allKeys {
-                if let model = try? container.decode(Character.self, forKey: key) {
-                    character[key.stringValue] = model
-                }
-            }
-            self.characterDetails = character
-        }
-
+    public struct MaybeCharacter: Codable {
         // MARK: Public
 
-        public struct CharacterKey: CodingKey {
-            // MARK: Lifecycle
-
-            public init?(stringValue: String) {
-                self.stringValue = stringValue
-            }
-
-            public init?(intValue: Int) {
-                self.stringValue = "\(intValue)"
-                self.intValue = intValue
-            }
-
-            // MARK: Public
-
-            public var stringValue: String
-            public var intValue: Int?
+        public var sanitized: Character? {
+            guard let data = try? sharedEncoder.encode(self) else { return nil }
+            return try? sharedDecoder.decode(Character.self, from: data)
         }
 
-        public struct Character: Codable {
-            public struct Skill: Codable {
-                // MARK: Lifecycle
+        // MARK: Internal
 
-                public init(from decoder: Decoder) throws {
-                    let container = try decoder.container(keyedBy: SkillKey.self)
+        /// 元素
+        var Element: String?
+        /// 技能图标
+        var Consts: [String]?
+        /// 技能顺序
+        var SkillOrder: [Int]?
+        /// 技能
+        var Skills: [String: String]?
+        /// 与命之座有关的技能加成资料?
+        var ProudMap: [String: Int]?
+        /// 名字的hashmap
+        var NameTextMapHash: Int?
+        /// 侧脸图
+        var SideIconName: String?
+        /// 星级
+        var QualityType: String?
+        /// 服饰
+        var Costumes: [String: Costume]?
+    }
 
-                    var skill = [String: String]()
-                    for key in container.allKeys {
-                        if let model = try? container.decode(
-                            String.self,
-                            forKey: key
-                        ) {
-                            skill[key.stringValue] = model
-                        }
-                    }
-                    self.skillData = skill
-                }
+    public struct Character: Codable {
+        /// 元素
+        public var Element: String
+        /// 技能图标
+        public var Consts: [String]
+        /// 技能顺序
+        public var SkillOrder: [Int]
+        /// 技能
+        public var Skills: [String: String]
+        /// 与命之座有关的技能加成资料?
+        public var ProudMap: [String: Int]
+        /// 名字的hashmap
+        public var NameTextMapHash: Int
+        /// 侧脸图
+        public var SideIconName: String
+        /// 星级
+        public var QualityType: String
+        /// 服饰
+        public var Costumes: [String: Costume]?
 
-                // MARK: Public
+        /// 正脸图
+        public var iconString: String {
+            SideIconName.replacingOccurrences(of: "_Side", with: "")
+        }
 
-                public struct SkillKey: CodingKey {
-                    // MARK: Lifecycle
+        /// icon用的名字
+        public var nameID: String {
+            iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")
+        }
 
-                    public init?(stringValue: String) {
-                        self.stringValue = stringValue
-                    }
-
-                    public init?(intValue: Int) {
-                        self.stringValue = "\(intValue)"
-                        self.intValue = intValue
-                    }
-
-                    // MARK: Public
-
-                    public var stringValue: String
-                    public var intValue: Int?
-                }
-
-                public var skillData: [String: String]
-            }
-
-            public struct ProudMap: Codable {
-                // MARK: Lifecycle
-
-                public init(from decoder: Decoder) throws {
-                    let container = try decoder.container(keyedBy: ProudKey.self)
-
-                    var proud = [String: Int]()
-                    for key in container.allKeys {
-                        if let model = try? container
-                            .decode(Int.self, forKey: key) {
-                            proud[key.stringValue] = model
-                        }
-                    }
-                    self.proudMapData = proud
-                }
-
-                // MARK: Public
-
-                public struct ProudKey: CodingKey {
-                    // MARK: Lifecycle
-
-                    public init?(stringValue: String) {
-                        self.stringValue = stringValue
-                    }
-
-                    public init?(intValue: Int) {
-                        self.stringValue = "\(intValue)"
-                        self.intValue = intValue
-                    }
-
-                    // MARK: Public
-
-                    public var stringValue: String
-                    public var intValue: Int?
-                }
-
-                public var proudMapData: [String: Int]
-            }
-
-            /// 元素
-            public var Element: String
-            /// 技能图标
-            public var Consts: [String]
-            /// 技能顺序
-            public var SkillOrder: [Int]
-            /// 技能
-            public var Skills: Skill
-            /// 与命之座有关的技能加成资料?
-            public var ProudMap: ProudMap
-            /// 名字的hashmap
-            public var NameTextMapHash: Int
-            /// 侧脸图
-            public var SideIconName: String
-            /// 星级
-            public var QualityType: String
-
-            /// 正脸图
-            public var iconString: String {
-                SideIconName.replacingOccurrences(of: "_Side", with: "")
-            }
-
-            /// icon用的名字
-            public var nameID: String {
-                iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")
-            }
-
-            /// 检测是否是主角兄妹当中的某位。都不是的话则返回 nil。
-            /// 是 Hotaru 則返回 true，是 Sora 則返回 false。
-            public var isLumine: Bool? {
-                switch nameID {
-                case "PlayerGirl": return true
-                case "PlayerBoy": return false
-                default: return nil
-                }
-            }
-
-            /// 名片
-            public var namecardIconString: String {
-                // 主角没有对应名片；八重神子与绮良良的名片名称无法推算、只能单独定义。
-                switch nameID {
-                case "PlayerBoy", "PlayerGirl": return "UI_NameCardPic_Bp2_P"
-                case "Yae": return "UI_NameCardPic_Yae1_P"
-                case "Momoka": return "UI_NameCardPic_Kirara_P"
-                default: return "UI_NameCardPic_\(nameID)_P"
-                }
+        /// 检测是否是主角兄妹当中的某位。都不是的话则返回 nil。
+        /// 是 Hotaru 則返回 true，是 Sora 則返回 false。
+        public var isLumine: Bool? {
+            switch nameID {
+            case "PlayerGirl": return true
+            case "PlayerBoy": return false
+            default: return nil
             }
         }
 
-        public var characterDetails: [String: Character]
+        /// 名片
+        public var namecardIconString: String {
+            // 主角没有对应名片；八重神子与绮良良的名片名称无法推算、只能单独定义。
+            switch nameID {
+            case "PlayerBoy", "PlayerGirl": return "UI_NameCardPic_Bp2_P"
+            case "Yae": return "UI_NameCardPic_Yae1_P"
+            case "Momoka": return "UI_NameCardPic_Kirara_P"
+            default: return "UI_NameCardPic_\(nameID)_P"
+            }
+        }
     }
 }
 
-extension Dictionary
-    where Key == String, Value == Enka.CharacterMap.Character {
+extension Enka.CharacterMap {
     public func getIconString(id: String) -> String {
         self[id]?.iconString ?? ""
     }
@@ -191,5 +116,11 @@ extension Dictionary
 
     public func getNameID(id: String) -> String {
         self[id]?.nameID ?? ""
+    }
+}
+
+extension Enka.CharacterMapRaw {
+    public var sanitized: Enka.CharacterMap {
+        compactMapValues { $0.sanitized }
     }
 }

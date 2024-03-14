@@ -19,8 +19,8 @@ extension Enka {
 
         // MARK: Public
 
-        public typealias CharLoc = [String: String]
-        public typealias CharMap = [String: Enka.CharacterMap.Character]
+        public typealias CharLoc = Enka.CharacterLoc.LocDict
+        public typealias CharMap = Enka.CharacterMap
 
         public struct DataSet {
             public let charLoc: CharLoc
@@ -39,7 +39,7 @@ extension Enka {
             let storedCharLoc = try? JSONDecoder().decode(Enka.CharacterLoc.self, from: Defaults[.enkaMapLoc])
                 .getLocalizedDictionary()
             let storedCharMap = try? JSONDecoder()
-                .decode(Enka.CharacterMap.self, from: Defaults[.enkaMapCharacters]).characterDetails
+                .decode(Enka.CharacterMapRaw.self, from: Defaults[.enkaMapCharacters])
 
             let enkaDataWrecked = storedCharLoc == nil || storedCharMap == nil || (storedCharLoc?.count ?? 0) *
                 (storedCharMap?.count ?? 0) == 0
@@ -54,7 +54,7 @@ extension Enka {
             let needUpdate = enkaDataWrecked || enkaDataExpired
 
             if !needUpdate {
-                return (storedCharLoc!, storedCharMap!)
+                return (storedCharLoc!, storedCharMap!.sanitized)
             } else {
                 // fetch data
                 async let charLocRaw = try await Task {
@@ -83,7 +83,7 @@ extension Enka {
 
                 Defaults[.lastEnkaDataCheckDate] = Date()
 
-                return try await (charLocRaw.getLocalizedDictionary(), charMapRaw.characterDetails)
+                return try await (charLocRaw.getLocalizedDictionary(), charMapRaw.sanitized)
             }
         }
     }
