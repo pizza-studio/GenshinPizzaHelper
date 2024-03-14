@@ -531,23 +531,39 @@ public struct PlayerDetail {
         }
 
         /// 元素类型
-        public enum AvatarElement: String {
-            /// 冰
-            case cryo = "Ice"
+        public enum AvatarElement: String, CaseIterable {
+            /// 原人
+            case unknown = "Unknown"
             /// 风
             case anemo = "Wind"
+            /// 岩
+            case geo = "Rock"
             /// 雷
             case electro = "Electric"
+            /// 草
+            case dendro = "Grass"
             /// 水
             case hydro = "Water"
             /// 火
             case pyro = "Fire"
-            /// 岩
-            case geo = "Rock"
-            /// 草
-            case dendro = "Grass"
-            /// 原人
-            case unknown = "Unknown"
+            /// 冰
+            case cryo = "Ice"
+
+            // MARK: Lifecycle
+
+            public init?(id: Int) {
+                switch id {
+                case 0: self = .unknown
+                case 1: self = .anemo
+                case 2: self = .geo
+                case 3: self = .electro
+                case 4: self = .dendro
+                case 5: self = .hydro
+                case 6: self = .pyro
+                case 7: self = .cryo
+                default: return nil
+                }
+            }
 
             // MARK: Public
 
