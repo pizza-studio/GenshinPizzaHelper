@@ -112,6 +112,18 @@ public struct ArtifactRatingRequest {
         case defPercentage = 3
         case em = 4
         case er = 5
+
+        // MARK: Internal
+
+        var translated: ArtifactRatingSputnik.Param {
+            switch self {
+            case .hpPercentage: return .hpR
+            case .atkPercentage: return .atkR
+            case .defPercentage: return .defR
+            case .em: return .em
+            case .er: return .er
+            }
+        }
     }
 
     public enum Artifact4MainProp: Int {
@@ -127,6 +139,25 @@ public struct ArtifactRatingRequest {
         case anemoDmg = 10
         case geoDmg = 11
         case dendroDmg = 12
+
+        // MARK: Internal
+
+        var translated: ArtifactRatingSputnik.Param {
+            switch self {
+            case .hpPercentage: return .hpR
+            case .atkPercentage: return .atkR
+            case .defPercentage: return .defR
+            case .em: return .em
+            case .physicoDmg: return .emd(.physico)
+            case .pyroDmg: return .emd(.pyro)
+            case .hydroDmg: return .emd(.hydro)
+            case .cryoDmg: return .emd(.cryo)
+            case .electroDmg: return .emd(.electro)
+            case .anemoDmg: return .emd(.anemo)
+            case .geoDmg: return .emd(.geo)
+            case .dendroDmg: return .emd(.dendro)
+            }
+        }
     }
 
     public enum Artifact5MainProp: Int {
@@ -137,6 +168,20 @@ public struct ArtifactRatingRequest {
         case critRate = 5
         case critDmg = 6
         case healingBonus = 7
+
+        // MARK: Internal
+
+        var translated: ArtifactRatingSputnik.Param {
+            switch self {
+            case .hpPercentage: return .hpR
+            case .atkPercentage: return .atkR
+            case .defPercentage: return .defR
+            case .em: return .em
+            case .critRate: return .cr
+            case .critDmg: return .cd
+            case .healingBonus: return .heal
+            }
+        }
     }
 
     /// 角色ID

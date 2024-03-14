@@ -164,7 +164,7 @@ public struct PlayerDetail {
 
             self
                 .element = AvatarElement(rawValue: character.Element) ??
-                .unknown
+                .physico
 
             if let talentIdList = avatarInfo.talentIdList {
                 self.talentCount = talentIdList.count
@@ -531,9 +531,9 @@ public struct PlayerDetail {
         }
 
         /// 元素类型
-        public enum AvatarElement: String, CaseIterable {
+        public enum AvatarElement: String, CaseIterable, Hashable {
             /// 原人
-            case unknown = "Unknown"
+            case physico = "Unknown"
             /// 风
             case anemo = "Wind"
             /// 岩
@@ -553,7 +553,7 @@ public struct PlayerDetail {
 
             public init?(id: Int) {
                 switch id {
-                case 0: self = .unknown
+                case 0: self = .physico
                 case 1: self = .anemo
                 case 2: self = .geo
                 case 3: self = .electro
@@ -577,7 +577,7 @@ public struct PlayerDetail {
                 case .pyro: 6
                 case .geo: 2
                 case .dendro: 4
-                case .unknown: 0
+                case .physico: 0
                 }
             }
         }

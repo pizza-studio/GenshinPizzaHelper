@@ -52,7 +52,7 @@ extension PlayerDetail.Avatar.AvatarElement {
             return .orange
         case .dendro:
             return .green
-        case .unknown:
+        case .physico:
             return .gray
         }
     }

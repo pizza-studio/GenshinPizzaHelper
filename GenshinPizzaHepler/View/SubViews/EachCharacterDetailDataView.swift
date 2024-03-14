@@ -558,7 +558,7 @@ extension PlayerDetail.Avatar {
         case .pyro: return fightPropMap.pyroDamagePaired
         case .geo: return fightPropMap.geoDamagePaired
         case .dendro: return fightPropMap.dendroDamagePaired
-        case .unknown: return fightPropMap.physicoDamagePaired
+        case .physico: return fightPropMap.physicoDamagePaired
         }
     }
 
@@ -571,7 +571,7 @@ extension PlayerDetail.Avatar {
 
     /// 物理伤害加成是否有效、且物理伤害加成是否为最强元素加成
     var isPhysicoDMGBoostSecondarilyEffective: Bool {
-        fightPropMap.physicoDamage > 0 && (highestDMGBoostIntel.element != .unknown)
+        fightPropMap.physicoDamage > 0 && (highestDMGBoostIntel.element != .physico)
     }
 }
 
@@ -593,7 +593,7 @@ extension Enka.FightPropMap {
     }
 
     /// 物理伤害加成（配对）
-    var physicoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (physicoDamage, .unknown)
+    var physicoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (physicoDamage, .physico)
     }
 
     /// 火元素伤害加成（配对）
@@ -622,7 +622,7 @@ extension PlayerDetail.Avatar.AvatarElement {
         case .pyro: return ("detailPortal.ECDDV.bonus.pyro", "UI_Icon_Element_Pyro")
         case .geo: return ("detailPortal.ECDDV.bonus.geo", "UI_Icon_Element_Geo")
         case .dendro: return ("detailPortal.ECDDV.bonus.dendro", "UI_Icon_Element_Dendro")
-        case .unknown: return ("detailPortal.ECDDV.bonus.physico", "UI_Icon_Element_Physico_Amp")
+        case .physico: return ("detailPortal.ECDDV.bonus.physico", "UI_Icon_Element_Physico_Amp")
         }
     }
 }

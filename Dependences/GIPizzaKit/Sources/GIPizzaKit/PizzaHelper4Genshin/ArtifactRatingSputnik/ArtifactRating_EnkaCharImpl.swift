@@ -26,7 +26,13 @@ typealias CharacterStatScoreModel = [ArtifactRatingSputnik.Param: ArtifactSubSta
 
 extension CharacterStatScoreModel {
     func getRaw(_ param: ArtifactRatingSputnik.Param) -> Double {
-        self[param]?.rawValue ?? 0
+        if let fetched = self[param] {
+            return fetched.rawValue
+        }
+        switch param {
+        case .emd: return ArtifactSubStatScore.highest.rawValue
+        default: return 0
+        }
     }
 }
 
@@ -237,6 +243,7 @@ extension CharacterAsset {
                 .hp: .none,
                 .defR: .none,
                 .def: .none,
+                .emd(.physico): .highest, // Shiki Suen
             ]
         case .Tartaglia: return [
                 .cr: .highest,
@@ -597,6 +604,7 @@ extension CharacterAsset {
                 .hp: .none,
                 .defR: .none,
                 .def: .none,
+                .emd(.physico): .highest, // Shiki Suen
             ]
         case .Noelle: return [
                 .cr: .highest,
@@ -789,6 +797,7 @@ extension CharacterAsset {
                 .hp: .none,
                 .defR: .high,
                 .def: .low,
+                .emd(.physico): .highest, // Shiki Suen
             ]
         case .Lisa: return [
                 .cr: .highest,
@@ -981,6 +990,7 @@ extension CharacterAsset {
                 .hp: .none,
                 .defR: .none,
                 .def: .none,
+                .heal: .high,
             ]
         case .Chevreuse:
             // By ShikiSuen, referring Bilibili Wiki.
