@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import JavaScriptCore
 
 // MARK: - ArtifactRatingSputnik
 
