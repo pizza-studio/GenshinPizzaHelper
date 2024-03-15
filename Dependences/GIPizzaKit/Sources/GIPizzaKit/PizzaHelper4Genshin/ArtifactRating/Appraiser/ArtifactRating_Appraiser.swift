@@ -129,7 +129,7 @@ extension ArtifactRating.RatingRequest.Artifact {
             let mainPropParam = mainProp3?.translated
                 ?? mainProp4?.translated
                 ?? mainProp5?.translated
-            let mainPropWeight = Double(lv) * 0.25
+            let mainPropWeight = Double(lv) * 0.25 + 1
             if let mainPropParam = mainPropParam {
                 shouldAdjustForMainProp = true
                 switch mainPropParam {
