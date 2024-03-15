@@ -186,8 +186,6 @@ extension Defaults.Keys {
         Key<Bool>("adaptiveSpacingInCharacterView", default: true, suite: .opSuite)
     public static let showRarityAndLevelForArtifacts =
         Key<Bool>("showRarityAndLevelForArtifacts", default: true, suite: .opSuite)
-    public static let artifactRatingOptions =
-        Key<ArtifactRatingOptions>("artifactRatingOptions", default: .allEnabled, suite: .opSuite)
     public static let forceCharacterWeaponNameFixed =
         Key<Bool>("forceCharacterWeaponNameFixed", default: false, suite: .opSuite)
     public static let useActualCharacterNames =
@@ -200,24 +198,4 @@ extension Defaults.Keys {
         Key<Bool>("useGuestGachaEvaluator", default: false, suite: .opSuite)
     public static let animateOnCallingCharacterShowcase =
         Key<Bool>("animateOnCallingCharacterShowcase", default: true, suite: .opSuite)
-}
-
-// MARK: - ArtifactRatingOptions
-
-public struct ArtifactRatingOptions: OptionSet, _DefaultsSerializable {
-    // MARK: Lifecycle
-
-    public init(rawValue: Int) {
-        self.rawValue = rawValue
-    }
-
-    // MARK: Public
-
-    public static let none = Self([])
-    public static let allEnabled = Self([.enabled, .considerMainProps, .considerHyperbloomElectroRoles])
-    public static let enabled = Self(rawValue: 1 << 0)
-    public static let considerMainProps = Self(rawValue: 1 << 1)
-    public static let considerHyperbloomElectroRoles = Self(rawValue: 1 << 2)
-
-    public let rawValue: Int
 }
