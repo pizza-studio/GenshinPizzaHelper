@@ -10,8 +10,6 @@ import Foundation
 // MARK: - Enka.CharacterMap
 
 extension Enka {
-    public static let sharedDecoder = JSONDecoder()
-    public static let sharedEncoder = JSONEncoder()
     public typealias CharacterMap = [String: Character]
 
     public struct Costume: Codable {
@@ -19,36 +17,6 @@ extension Enka {
         let icon: String
         let art: String
         let avatarId: Int
-    }
-
-    public struct MaybeCharacter: Codable {
-        // MARK: Public
-
-        public var sanitized: Character? {
-            guard let data = try? sharedEncoder.encode(self) else { return nil }
-            return try? sharedDecoder.decode(Character.self, from: data)
-        }
-
-        // MARK: Internal
-
-        /// 元素
-        var Element: String?
-        /// 技能图标
-        var Consts: [String]?
-        /// 技能顺序
-        var SkillOrder: [Int]?
-        /// 技能
-        var Skills: [String: String]?
-        /// 与命之座有关的技能加成资料?
-        var ProudMap: [String: Int]?
-        /// 名字的hashmap
-        var NameTextMapHash: Int?
-        /// 侧脸图
-        var SideIconName: String?
-        /// 星级
-        var QualityType: String?
-        /// 服饰
-        var Costumes: [String: Costume]?
     }
 
     public struct Character: Codable {
