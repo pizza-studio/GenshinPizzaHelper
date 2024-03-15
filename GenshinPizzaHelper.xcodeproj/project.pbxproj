@@ -826,6 +826,7 @@
 
 /* Begin PBXFileReference section */
 		5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewExtension.swift; sourceTree = "<group>"; };
+		5B3DF7BF2BA49C040015ACC9 /* DevDocs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DevDocs; sourceTree = "<group>"; };
 		5B41C1812AD3010700CDF2C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
 		5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OPHelper_SharedAssembly; path = Dependences/OPHelper_SharedAssembly; sourceTree = "<group>"; };
@@ -1783,6 +1784,7 @@
 		EABD7DAD2886B2D200B7F0FD = {
 			isa = PBXGroup;
 			children = (
+				5B3DF7BF2BA49C040015ACC9 /* DevDocs */,
 				EAA2D4112931C36F00BC94A8 /* Settings.bundle */,
 				BFBDD66C28F3F2B80022B79D /* Packages */,
 				EAE95D1228CE133F00D975CB /* WatchWidgetExtensionExtension.entitlements */,
