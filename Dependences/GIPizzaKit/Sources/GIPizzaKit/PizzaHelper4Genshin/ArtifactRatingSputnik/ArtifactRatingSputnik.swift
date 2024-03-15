@@ -129,7 +129,15 @@ extension ArtifactRatingRequest.Artifact {
                 let avatarElement = avatar.element
                 let fallbackElement = PlayerDetail.Avatar.AvatarElement(id: request.characterElement)
                 predefinedElement = predefinedElement ?? avatarElement ?? fallbackElement
-                if gobletAmpedElement == predefinedElement {
+
+                // 特殊处理：风系角色的扩散伤害。比如说如雷万叶要打雷伤，此时带雷伤杯。
+
+                var handleSwirl = false
+                if (avatarElement ?? fallbackElement) == .anemo {
+                    handleSwirl = [.anemo, .pyro, .hydro, .electro, .cryo].contains(predefinedElement)
+                }
+
+                if gobletAmpedElement == predefinedElement || handleSwirl {
                     stackedScore.append(getPt(mainPropWeight, mainPropParam))
                 }
             default:
