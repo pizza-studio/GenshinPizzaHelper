@@ -6,6 +6,8 @@
 // Ref: https://github.com/Kamihimmel/artifactrating/
 
 import Darwin
+import Defaults
+import DefaultsKeys
 
 // MARK: - ArtifactRating.Appraiser
 
@@ -109,45 +111,48 @@ extension ArtifactRating.RatingRequest.Artifact {
             getPt(def, .def),
         ]
 
-        // 钟杯帽主词条只可能最多出现一个。
-        let mainPropParam = mainProp3?.translated
-            ?? mainProp4?.translated
-            ?? mainProp5?.translated
-        let mainPropWeight = Double(lv) * 0.25
+        // 主詞條處理。
         var shouldAdjustForMainProp = false
-        checkMainProp: if let mainPropParam = mainPropParam {
-            shouldAdjustForMainProp = true
-            switch mainPropParam {
-            case let .dmgAmp(gobletAmpedElement):
-                // 元素伤害加成需要额外处理。
-                // 预设情况下会尊重与角色属性对应的元素伤害加成。
-                // 但是优菈、雷泽、辛焱这三位物理角色被专门指定优先尊重物理伤害加成。
-                // 然后再检查杯子的伤害加成元素种类是否与被尊重的伤害加成元素一致。
-                // 不一致的话，则这个杯子的主词条将不再参与计分。
-                var predefinedElement: PlayerDetail.Avatar.AvatarElement?
-                ratingModel.keys.forEach { currentParam in
-                    switch currentParam {
-                    case let .dmgAmp(predefinedValue): predefinedElement = predefinedValue
-                    default: return
+        checkMainProps: if Defaults[.artifactRatingOptions].contains(.considerMainProps) {
+            // 钟杯帽主词条只可能最多出现一个。
+            let mainPropParam = mainProp3?.translated
+                ?? mainProp4?.translated
+                ?? mainProp5?.translated
+            let mainPropWeight = Double(lv) * 0.25
+            if let mainPropParam = mainPropParam {
+                shouldAdjustForMainProp = true
+                switch mainPropParam {
+                case let .dmgAmp(gobletAmpedElement):
+                    // 元素伤害加成需要额外处理。
+                    // 预设情况下会尊重与角色属性对应的元素伤害加成。
+                    // 但是优菈、雷泽、辛焱这三位物理角色被专门指定优先尊重物理伤害加成。
+                    // 然后再检查杯子的伤害加成元素种类是否与被尊重的伤害加成元素一致。
+                    // 不一致的话，则这个杯子的主词条将不再参与计分。
+                    var predefinedElement: PlayerDetail.Avatar.AvatarElement?
+                    ratingModel.keys.forEach { currentParam in
+                        switch currentParam {
+                        case let .dmgAmp(predefinedValue): predefinedElement = predefinedValue
+                        default: return
+                        }
                     }
-                }
-                guard let avatar = CharacterAsset(rawValue: request.cid) else { break checkMainProp }
-                let avatarElement = avatar.element
-                let fallbackElement = PlayerDetail.Avatar.AvatarElement(id: request.characterElement)
-                predefinedElement = predefinedElement ?? avatarElement ?? fallbackElement
+                    guard let avatar = CharacterAsset(rawValue: request.cid) else { break checkMainProps }
+                    let avatarElement = avatar.element
+                    let fallbackElement = PlayerDetail.Avatar.AvatarElement(id: request.characterElement)
+                    predefinedElement = predefinedElement ?? avatarElement ?? fallbackElement
 
-                // 特殊处理：风系角色的扩散伤害。比如说如雷万叶要打雷伤，此时带雷伤杯。
+                    // 特殊处理：风系角色的扩散伤害。比如说如雷万叶要打雷伤，此时带雷伤杯。
 
-                var handleSwirl = false
-                if (avatarElement ?? fallbackElement) == .anemo {
-                    handleSwirl = [.anemo, .pyro, .hydro, .electro, .cryo].contains(predefinedElement)
-                }
+                    var handleSwirl = false
+                    if (avatarElement ?? fallbackElement) == .anemo {
+                        handleSwirl = [.anemo, .pyro, .hydro, .electro, .cryo].contains(predefinedElement)
+                    }
 
-                if gobletAmpedElement == predefinedElement || handleSwirl {
+                    if gobletAmpedElement == predefinedElement || handleSwirl {
+                        stackedScore.append(getPt(mainPropWeight, mainPropParam))
+                    }
+                default:
                     stackedScore.append(getPt(mainPropWeight, mainPropParam))
                 }
-            default:
-                stackedScore.append(getPt(mainPropWeight, mainPropParam))
             }
         }
 
@@ -164,6 +169,8 @@ extension ArtifactRating.RatingRequest.Artifact {
 
 extension ArtifactRating.Appraiser {
     public func evaluate() -> ArtifactRating.ScoreResult? {
+        let options = Defaults[.artifactRatingOptions]
+        guard options.contains(.enabled) else { return nil }
         guard let char = CharacterAsset(rawValue: request.cid) else { return nil }
         var ratingModel = char.getArtifactRatingModel()
 
@@ -175,7 +182,7 @@ extension ArtifactRating.Appraiser {
         /// For example, if Raiden Shogun has a 4-set Paradise Lost equipped,
         ///  then her Element Master should be considered the most useful.
 
-        do {
+        if options.contains(.considerHyperbloomElectroRoles) {
             let hyperbloomSets4: Set<Int> = [15028, 15026, 15025, 10007]
             var setIdValuesDetected = Set<Int>()
 
