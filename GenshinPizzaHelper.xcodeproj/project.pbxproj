@@ -1227,6 +1227,15 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		5B3DF7BE2BA49B600015ACC9 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				EA10A66229D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld */,
+				EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
 		5BAF708929E5764E0096228B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1774,17 +1783,16 @@
 		EABD7DAD2886B2D200B7F0FD = {
 			isa = PBXGroup;
 			children = (
-				EA10A66229D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld */,
 				EAA2D4112931C36F00BC94A8 /* Settings.bundle */,
 				BFBDD66C28F3F2B80022B79D /* Packages */,
 				EAE95D1228CE133F00D975CB /* WatchWidgetExtensionExtension.entitlements */,
-				EAFB231E28A26C56006A8EDC /* AccountConfiguration.xcdatamodeld */,
 				EA6829DB28A2523800E57462 /* .gitignore */,
 				EA7F67C9289D711200D2CE29 /* README.md */,
 				BF6BAA3E2B31442A007274FF /* CONTRIBUTING.md */,
 				BF6BAA3D2B31442A007274FF /* LICENSE */,
 				EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */,
 				BF6C5258289E02B600EA224F /* .github */,
+				5B3DF7BE2BA49B600015ACC9 /* DataModels */,
 				5B18C5492AD0DF4300C745BA /* Enums */,
 				5BAF708929E5764E0096228B /* Fonts */,
 				EAAF330D28A27AEA0018EFAB /* Model */,
