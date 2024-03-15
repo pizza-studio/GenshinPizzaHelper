@@ -192,22 +192,21 @@ extension ArtifactRating.Appraiser {
         /// For example, if Raiden Shogun has a 4-set Paradise Lost equipped,
         ///  then her Element Master should be considered the most useful.
 
-        if options.contains(.considerHyperbloomElectroRoles) {
+        checkHyperBloomElectro: if options.contains(.considerHyperbloomElectroRoles) {
             let hyperbloomSets4: Set<Int> = [15028, 15026, 15025, 10007]
-            var setIdValuesDetected = Set<Int>()
-
-            if PlayerDetail.Avatar.AvatarElement(id: request.characterElement) == .electro {
-                var accumulation = 0
-                request.allValidArtifacts.forEach { artifact in
-                    if hyperbloomSets4.contains(artifact.setId) {
-                        setIdValuesDetected.insert(artifact.setId)
-                        accumulation += 1
-                    }
-                }
-                if accumulation >= 4, setIdValuesDetected.count <= 2 {
-                    ratingModel[.em] = .highest
-                }
+            var sumDict: [Int: Int] = [:]
+            guard let avatar = CharacterAsset(rawValue: request.cid) else { break checkHyperBloomElectro }
+            let element = avatar.element ?? PlayerDetail.Avatar.AvatarElement(id: request.characterElement)
+            guard element == .electro else { break checkHyperBloomElectro }
+            request.allValidArtifacts.forEach { artifact in
+                sumDict[artifact.setId, default: 0] += hyperbloomSets4.contains(artifact.setId) ? 1 : 0
             }
+            let valuesTrimmed: [Int] = sumDict.values.compactMap { [2, 4].contains($0) ? $0 : nil }
+            let patternsMatched: Bool = valuesTrimmed == [2, 2] || valuesTrimmed == [4]
+            // 这样一判断的话，肯定不是四件套就是 2+2。
+            let shouldBoost = sumDict.values.reduce(0, +) >= 4 && sumDict.keys.count <= 2 && patternsMatched
+            guard shouldBoost else { break checkHyperBloomElectro }
+            ratingModel[.em] = .highest
         }
 
         var scores: [Int: Double] = [:]
