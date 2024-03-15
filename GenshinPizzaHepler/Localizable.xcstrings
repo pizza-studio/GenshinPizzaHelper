@@ -32386,25 +32386,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Accomodating Electro HyperBloom Builds"
+            "value" : "Accommodating electro hyperbloom builds"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Accomodating Electro HyperBloom Builds"
+            "value" : "Accommodating electro hyperbloom builds"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Accomodating Electro HyperBloom Builds"
+            "value" : "Accommodating electro hyperbloom builds"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Accomodating Electro HyperBloom Builds"
+            "value" : "Accommodating electro hyperbloom builds"
           }
         },
         "ja" : {
@@ -32416,31 +32416,31 @@
         "ko" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Accomodating Electro HyperBloom Builds"
+            "value" : "Accommodating electro hyperbloom builds"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Accomodating Electro HyperBloom Builds"
+            "value" : "Accommodating electro hyperbloom builds"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Accomodating Electro HyperBloom Builds"
+            "value" : "Accommodating electro hyperbloom builds"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "评分时照顾被强行种堕的雷系角色"
+            "value" : "评分时照顾被故意培养成超绽放打手的雷系角色"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "評分時照顧被強行種墮的雷系角色"
+            "value" : "評分時照顧被故意培養成超綻放打手的雷系角色"
           }
         }
       }
