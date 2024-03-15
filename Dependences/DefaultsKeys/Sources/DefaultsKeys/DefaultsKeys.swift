@@ -186,8 +186,6 @@ extension Defaults.Keys {
         Key<Bool>("adaptiveSpacingInCharacterView", default: true, suite: .opSuite)
     public static let showRarityAndLevelForArtifacts =
         Key<Bool>("showRarityAndLevelForArtifacts", default: true, suite: .opSuite)
-    public static let showRatingsForArtifacts =
-        Key<Bool>("showRatingsForArtifacts", default: true, suite: .opSuite)
     public static let artifactRatingOptions =
         Key<ArtifactRatingOptions>("artifactRatingOptions", default: .allEnabled, suite: .opSuite)
     public static let forceCharacterWeaponNameFixed =
