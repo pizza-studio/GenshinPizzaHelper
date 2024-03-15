@@ -87,7 +87,7 @@ struct DisplayOptionsView: View {
                 Toggle(isOn: $showRarityAndLevelForArtifacts) {
                     Text("settings.display.showArtifactRarityAndLevel")
                 }
-                Toggle(isOn: $artifactRatingOptions.bind(.enabled)) {
+                Toggle(isOn: $artifactRatingOptions.bind(.enabled, animate: true)) {
                     Text("settings.display.artifactRatingOptions")
                 }
                 if artifactRatingOptions.contains(.enabled) {
@@ -101,7 +101,7 @@ struct DisplayOptionsView: View {
             }
 
             Section {
-                Toggle(isOn: $useActualCharacterNames) {
+                Toggle(isOn: $useActualCharacterNames.animation()) {
                     Text("settings.display.useActualCharacterNames")
                 }
 
