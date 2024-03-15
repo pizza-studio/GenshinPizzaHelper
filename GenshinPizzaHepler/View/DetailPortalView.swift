@@ -518,11 +518,6 @@ struct DetailPortalView: View {
             .navigationDestination(for: AllAvatarDetailModel.self) { data in
                 AllAvatarListSheetView(data: data)
             }
-            .onChange(of: artifactRatingOptions) { _ in
-                Task {
-                    detailPortalViewModel.refresh()
-                }
-            }
         }
         .environmentObject(detailPortalViewModel)
         .alert(
@@ -550,9 +545,6 @@ struct DetailPortalView: View {
     }
 
     // MARK: Private
-
-    @Default(.artifactRatingOptions)
-    private var artifactRatingOptions: ArtifactRatingOptions
 
     @State
     private var askAllowAbyssDataCollectionAlert: Bool = false
@@ -762,6 +754,13 @@ private struct PlayerDetailSection: View {
                             } label: {
                                 avatar.characterAsset.cardIcon(75)
                             }
+                            .onChange(of: artifactRatingOptions) { _ in
+                                Task {
+                                    withAnimation {
+                                        avatar.fetchArtifactRatings()
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -789,6 +788,9 @@ private struct PlayerDetailSection: View {
 
         @Default(.animateOnCallingCharacterShowcase)
         private var animateOnCallingCharacterShowcase: Bool
+
+        @Default(.artifactRatingOptions)
+        private var artifactRatingOptions: ArtifactRatingOptions
     }
 
     let account: AccountConfiguration

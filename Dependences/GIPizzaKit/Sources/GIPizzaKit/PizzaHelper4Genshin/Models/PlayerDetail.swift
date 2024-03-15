@@ -225,74 +225,7 @@ public struct PlayerDetail {
             let obfuscatedUid =
                 "\(uid)\(uid.md5)\(AppConfig.uidSalt)"
             self.uid = String(obfuscatedUid.md5)
-
-            // var artifactScores: ArtifactRating.ScoreResult?
-            print("Get artifact rating of \(name)")
-            PizzaHelperAPI
-                .getArtifactRatingScore(
-                    artifacts: convert2ArtifactRatingModel()
-                ) { artifactScores in
-                    DispatchQueue.main.async {
-                        self.artifactTotalScore = artifactScores.allpt
-                        self.artifactScoreRank = artifactScores.result
-                        for index in 0 ..< self.artifacts.count {
-                            switch self.artifacts[index].artifactType {
-                            case .flower:
-                                self.artifacts[index].score = artifactScores
-                                    .stat1pt
-                            case .plume:
-                                self.artifacts[index].score = artifactScores
-                                    .stat2pt
-                            case .sands:
-                                self.artifacts[index].score = artifactScores
-                                    .stat3pt
-                            case .goblet:
-                                self.artifacts[index].score = artifactScores
-                                    .stat4pt
-                            case .circlet:
-                                self.artifacts[index].score = artifactScores
-                                    .stat5pt
-                            }
-                        }
-                    }
-                    DispatchQueue.global(qos: .background).async {
-                        // upload data to opserver
-                        let encoder = JSONEncoder()
-                        encoder.outputFormatting = .sortedKeys
-                        let artifactScoreCollectData = artifactScores
-                            .convertToCollectionModel(
-                                uid: self.uid,
-                                charId: String(self.enkaID)
-                            )
-                        let data = try! encoder.encode(artifactScoreCollectData)
-                        let md5 = String(data: data, encoding: .utf8)!.md5
-                        guard !UPLOAD_HOLDING_DATA_LOCKED
-                        else {
-                            print(
-                                "uploadArtifactScoreDataLocked is locked"
-                            ); return
-                        }
-                        API.PSAServer.uploadUserData(
-                            path: "/artifact_rank/upload",
-                            data: data
-                        ) { result in
-                            switch result {
-                            case .success:
-                                print("uploadArtifactData SUCCEED")
-                                print(md5)
-                            case let .failure(error):
-                                switch error {
-                                case let .uploadError(message):
-                                    if message == "Insert Failed" {
-                                        print(message)
-                                    }
-                                default:
-                                    break
-                                }
-                            }
-                        }
-                    }
-                }
+            fetchArtifactRatings(collect: true)
         }
 
         // MARK: Public
@@ -682,6 +615,76 @@ public struct PlayerDetail {
         )
             -> Bool {
             lhs.hashValue == rhs.hashValue
+        }
+
+        public func fetchArtifactRatings(collect: Bool = false) {
+            print("Get artifact rating of \(name)")
+            PizzaHelperAPI
+                .getArtifactRatingScore(
+                    artifacts: convert2ArtifactRatingModel()
+                ) { artifactScores in
+                    DispatchQueue.main.async {
+                        self.artifactTotalScore = artifactScores.allpt
+                        self.artifactScoreRank = artifactScores.result
+                        for index in 0 ..< self.artifacts.count {
+                            switch self.artifacts[index].artifactType {
+                            case .flower:
+                                self.artifacts[index].score = artifactScores
+                                    .stat1pt
+                            case .plume:
+                                self.artifacts[index].score = artifactScores
+                                    .stat2pt
+                            case .sands:
+                                self.artifacts[index].score = artifactScores
+                                    .stat3pt
+                            case .goblet:
+                                self.artifacts[index].score = artifactScores
+                                    .stat4pt
+                            case .circlet:
+                                self.artifacts[index].score = artifactScores
+                                    .stat5pt
+                            }
+                        }
+                    }
+                    DispatchQueue.global(qos: .background).async {
+                        guard collect else { return }
+                        // upload data to opserver
+                        let encoder = JSONEncoder()
+                        encoder.outputFormatting = .sortedKeys
+                        let artifactScoreCollectData = artifactScores
+                            .convertToCollectionModel(
+                                uid: self.uid,
+                                charId: String(self.enkaID)
+                            )
+                        let data = try! encoder.encode(artifactScoreCollectData)
+                        let md5 = String(data: data, encoding: .utf8)!.md5
+                        guard !UPLOAD_HOLDING_DATA_LOCKED
+                        else {
+                            print(
+                                "uploadArtifactScoreDataLocked is locked"
+                            ); return
+                        }
+                        API.PSAServer.uploadUserData(
+                            path: "/artifact_rank/upload",
+                            data: data
+                        ) { result in
+                            switch result {
+                            case .success:
+                                print("uploadArtifactData SUCCEED")
+                                print(md5)
+                            case let .failure(error):
+                                switch error {
+                                case let .uploadError(message):
+                                    if message == "Insert Failed" {
+                                        print(message)
+                                    }
+                                default:
+                                    break
+                                }
+                            }
+                        }
+                    }
+                }
         }
 
         public func hash(into hasher: inout Hasher) {
