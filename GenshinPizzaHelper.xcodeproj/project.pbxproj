@@ -1143,7 +1143,6 @@
 				EAC89A642AD3AF2600EC5141 /* DefaultsKeys in Frameworks */,
 				5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */,
 				EAA96A032ADFA9AD00C0852E /* HoYoKit in Frameworks */,
-				5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */,
 				5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */,
 				5B8C1B392AD90855009F3B44 /* SFSafeSymbols in Frameworks */,
 				5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */,
@@ -1163,7 +1162,6 @@
 				EAC89A622AD3AF2200EC5141 /* DefaultsKeys in Frameworks */,
 				BF20733629D1412100AD391F /* GIPizzaKit in Frameworks */,
 				EAA96A012ADFA9A900C0852E /* HoYoKit in Frameworks */,
-				BF20733629D1412100AD391F /* GIPizzaKit in Frameworks */,
 				EA40C45428A7A19000888828 /* CloudKit.framework in Frameworks */,
 				EAAECA1B2AD3AD0D003525E1 /* Defaults in Frameworks */,
 			);
@@ -2028,7 +2026,6 @@
 			name = WatchHelper;
 			packageProductDependencies = (
 				5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */,
-				5B41C17F2AD3010600CDF2C5 /* GIPizzaKit */,
 				EAAECA1C2AD3AD12003525E1 /* Defaults */,
 				EAC89A632AD3AF2600EC5141 /* DefaultsKeys */,
 				5B8C1B382AD90855009F3B44 /* SFSafeSymbols */,
@@ -2153,7 +2150,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					BF85D77028CE0B9E003F3479 = {
 						CreatedOnToolsVersion = 14.0;
