@@ -1,34 +1,36 @@
-//
-//  ArtifactRatingSputnik.swift
-//
-//
-//  Created by ShikiSuen on 2024/3/15.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
-import Foundation
+// 当前文件的所有与圣遗物评分的方法均衍生自爱丽丝工房的原始评分脚本（MIT License）。
+// Ref: https://github.com/Kamihimmel/artifactrating/
 
-// MARK: - ArtifactRatingSputnik
+import Darwin
 
-public struct ArtifactRatingSputnik {
-    public enum Param: Hashable {
-        case cr
-        case cd
-        case er
-        case em
-        case atkR
-        case atk
-        case hpR
-        case hp
-        case defR
-        case def
-        case emd(PlayerDetail.Avatar.AvatarElement) // 元素伤害
-        case heal // 治疗加成
+// MARK: - ArtifactRating.Appraiser
+
+extension ArtifactRating {
+    public struct Appraiser {
+        public enum Param: Hashable {
+            case cr
+            case cd
+            case er
+            case em
+            case atkAmp
+            case atk
+            case hpAmp
+            case hp
+            case defAmp
+            case def
+            case dmgAmp(PlayerDetail.Avatar.AvatarElement) // 元素伤害加成或物理伤害加成
+            case heal // 治疗加成
+        }
+
+        public let request: ArtifactRating.RatingRequest
     }
-
-    public let request: ArtifactRatingRequest
 }
 
-extension ArtifactRatingSputnik {
+extension ArtifactRating.Appraiser {
     public static func tellTier(score: Int) -> String {
         // 给脸黑的玩家们一点面子，不然太沮丧了。
         // 另外，考虑到钟杯帽主词条带来的分数上涨，这里也稍微将 S 段位的分数线划分得更严格一些。
@@ -51,53 +53,57 @@ extension ArtifactRatingSputnik {
     }
 
     public static func getDefaultRoll(
-        for param: ArtifactRatingSputnik.Param, star5: Bool
+        for param: ArtifactRating.Appraiser.Param, star5: Bool
     )
         -> Double {
         switch (param, star5) {
-        case (.emd, true): return 7.0
+        case (.dmgAmp, true): return 7.0
         case (.cr, true): return 3.3
         case (.cd, true): return 6.6
         case (.er, true): return 5.5
         case (.em, true): return 20
-        case (.atkR, true): return 5
+        case (.atkAmp, true): return 5
         case (.atk, true): return 17
-        case (.hpR, true): return 5
+        case (.hpAmp, true): return 5
         case (.hp, true): return 264
-        case (.defR, true): return 6.2
+        case (.defAmp, true): return 6.2
         case (.def, true): return 20
         case (.heal, true): return 5.4
-        case (.emd, false): return 6.3
+        case (.dmgAmp, false): return 6.3
         case (.cr, false): return 2.65
         case (.cd, false): return 5.3
         case (.er, false): return 4.4
         case (.em, false): return 16
-        case (.atkR, false): return 3.95
+        case (.atkAmp, false): return 3.95
         case (.atk, false): return 13
-        case (.hpR, false): return 3.95
+        case (.hpAmp, false): return 3.95
         case (.hp, false): return 203
-        case (.defR, false): return 5
+        case (.defAmp, false): return 5
         case (.def, false): return 16
         case (.heal, false): return 4.8
         }
     }
 }
 
-extension ArtifactRatingRequest.Artifact {
-    func getSubScore(using ratingModel: CharacterStatScoreModel, for request: ArtifactRatingRequest) -> Double {
+extension ArtifactRating.RatingRequest.Artifact {
+    func getSubScore(
+        using ratingModel: ArtifactRating.CharacterStatScoreModel,
+        for request: ArtifactRating.RatingRequest
+    )
+        -> Double {
         let isStar5: Bool = star >= 5
-        func getPt(_ base: Double, _ param: ArtifactRatingSputnik.Param) -> Double {
-            (base / ArtifactRatingSputnik.getDefaultRoll(for: param, star5: isStar5)) * ratingModel.getRaw(param)
+        func getPt(_ base: Double, _ param: ArtifactRating.Appraiser.Param) -> Double {
+            (base / ArtifactRating.Appraiser.getDefaultRoll(for: param, star5: isStar5)) * ratingModel.getRaw(param)
         }
 
         var stackedScore: [Double] = [
-            getPt(atkPercent, .atkR),
-            getPt(hpPercent, .hpR),
-            getPt(defPercent, .defR),
-            getPt(crPercent, .cr),
-            getPt(cdPercent, .cd),
+            getPt(atkAmp, .atkAmp),
+            getPt(hpAmp, .hpAmp),
+            getPt(defAmp, .defAmp),
+            getPt(critRate, .cr),
+            getPt(critDmg, .cd),
             getPt(em, .em),
-            getPt(erPercent, .er),
+            getPt(er, .er),
             getPt(atk, .atk),
             getPt(hp, .hp),
             getPt(def, .def),
@@ -112,7 +118,7 @@ extension ArtifactRatingRequest.Artifact {
         checkMainProp: if let mainPropParam = mainPropParam {
             shouldAdjustForMainProp = true
             switch mainPropParam {
-            case let .emd(gobletAmpedElement):
+            case let .dmgAmp(gobletAmpedElement):
                 // 元素伤害加成需要额外处理。
                 // 预设情况下会尊重与角色属性对应的元素伤害加成。
                 // 但是优菈、雷泽、辛焱这三位物理角色被专门指定优先尊重物理伤害加成。
@@ -121,7 +127,7 @@ extension ArtifactRatingRequest.Artifact {
                 var predefinedElement: PlayerDetail.Avatar.AvatarElement?
                 ratingModel.keys.forEach { currentParam in
                     switch currentParam {
-                    case let .emd(predefinedValue): predefinedElement = predefinedValue
+                    case let .dmgAmp(predefinedValue): predefinedElement = predefinedValue
                     default: return
                     }
                 }
@@ -156,8 +162,8 @@ extension ArtifactRatingRequest.Artifact {
     }
 }
 
-extension ArtifactRatingSputnik {
-    public func evaluate() -> ArtifactRatingScoreResult? {
+extension ArtifactRating.Appraiser {
+    public func evaluate() -> ArtifactRating.ScoreResult? {
         guard let char = CharacterAsset(rawValue: request.cid) else { return nil }
         var ratingModel = char.getArtifactRatingModel()
 
@@ -195,7 +201,7 @@ extension ArtifactRatingSputnik {
             return score
         }.reduce(0, +)
 
-        return ArtifactRatingScoreResult(
+        return ArtifactRating.ScoreResult(
             charactername: char.localized,
             stat1pt: scores[0] ?? 0,
             stat2pt: scores[1] ?? 0,

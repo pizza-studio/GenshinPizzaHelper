@@ -1,55 +1,45 @@
-//
-//  ArtifactRating_EnkaCharImpl.swift
-//
-//
-//  Created by ShikiSuen on 2024/3/15.
-//
-
-import Foundation
-
-// MARK: - ArtifactSubStatScore
-
-enum ArtifactSubStatScore: Double, Codable {
-    case highest = 30
-    case higher = 20
-    case high = 15
-    case medium = 10
-    case low = 7.5
-    case lower = 5
-    case lowest = 2.5
-    case none = 0
-}
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 // MARK: - CharacterStatScoreModel
 
-typealias CharacterStatScoreModel = [ArtifactRatingSputnik.Param: ArtifactSubStatScore]
+extension ArtifactRating {
+    public typealias CharacterStatScoreModel = [ArtifactRating.Appraiser.Param: ArtifactSubStatScore]
+}
 
-extension CharacterStatScoreModel {
-    func getRaw(_ param: ArtifactRatingSputnik.Param) -> Double {
+extension ArtifactRating.CharacterStatScoreModel {
+    func getRaw(_ param: ArtifactRating.Appraiser.Param) -> Double {
         if let fetched = self[param] {
             return fetched.rawValue
         }
         switch param {
-        case .emd: return ArtifactSubStatScore.highest.rawValue
+        case .dmgAmp: return ArtifactSubStatScore.highest.rawValue
         default: return 0
         }
     }
 }
 
+// 以下内容不受 GPL 保护。
+// 其中，所有与圣遗物评分的方法均衍生自下述来源：
+// - 爱丽丝工房的原始评分脚本: https://github.com/Kamihimmel/artifactrating/
+// - 披萨助手依据 BiliBili 百科的主词条推荐而做出的决策。
+// 详情请洽下文的具体的内文脚注。
+
 extension CharacterAsset {
     /// 这个部分的角色排序暂时按照爱丽丝工房的脚本来处理。
-    func getArtifactRatingModel() -> CharacterStatScoreModel {
+    func getArtifactRatingModel() -> ArtifactRating.CharacterStatScoreModel {
         switch self {
         case .Miko: return [
                 .cr: .highest,
                 .cd: .highest,
                 .er: .none,
                 .em: .higher,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .lower,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Xiao: return [
@@ -57,11 +47,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Hutao: return [
@@ -69,11 +59,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .higher,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .high,
+                .hpAmp: .high,
                 .hp: .low,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Ganyu: return [
@@ -81,11 +71,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .higher,
-                .atkR: .higher,
+                .atkAmp: .higher,
                 .atk: .medium,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Yelan: return [
@@ -93,11 +83,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .medium,
-                .atkR: .none,
+                .atkAmp: .none,
                 .atk: .none,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .medium,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Ei: return [
@@ -105,11 +95,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .highest,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Kunikuzushi: return [
@@ -117,11 +107,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Cyno: return [
@@ -129,11 +119,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .higher,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Alhaitham: return [
@@ -141,11 +131,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .higher,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Itto: return [
@@ -153,11 +143,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .high,
+                .defAmp: .high,
                 .def: .none,
             ]
         case .Nahida: return [
@@ -165,11 +155,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .highest,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Nilou: return [
@@ -177,11 +167,11 @@ extension CharacterAsset {
                 .cd: .higher,
                 .er: .none,
                 .em: .higher,
-                .atkR: .none,
+                .atkAmp: .none,
                 .atk: .none,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .high,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Ayaka: return [
@@ -189,11 +179,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .higher,
+                .atkAmp: .higher,
                 .atk: .medium,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Ayato: return [
@@ -201,11 +191,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .high,
+                .hpAmp: .high,
                 .hp: .low,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Tighnari: return [
@@ -213,11 +203,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .higher,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Yoimiya: return [
@@ -225,11 +215,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Eula: return [
@@ -237,24 +227,24 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
-                .emd(.physico): .highest, // Shiki Suen
+                .dmgAmp(.physico): .highest, // Shiki Suen
             ]
         case .Tartaglia: return [
                 .cr: .highest,
                 .cd: .highest,
                 .er: .none,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Zhongli: return [
@@ -262,11 +252,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .high,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .higher,
+                .hpAmp: .higher,
                 .hp: .medium,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Kazuha: return [
@@ -274,11 +264,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .highest,
-                .atkR: .higher,
+                .atkAmp: .higher,
                 .atk: .medium,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Venti: return [
@@ -286,11 +276,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .highest,
-                .atkR: .higher,
+                .atkAmp: .higher,
                 .atk: .medium,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Keqing: return [
@@ -298,11 +288,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .higher,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Shenhe: return [
@@ -310,11 +300,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .none,
-                .atkR: .highest,
+                .atkAmp: .highest,
                 .atk: .medium,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Diluc: return [
@@ -322,11 +312,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .higher,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Klee: return [
@@ -334,11 +324,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Jean: return [
@@ -346,11 +336,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .higher,
+                .atkAmp: .higher,
                 .atk: .medium,
-                .hpR: .lower,
+                .hpAmp: .lower,
                 .hp: .lowest,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Bennett: return [
@@ -358,11 +348,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .highest,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .high,
+                .hpAmp: .high,
                 .hp: .low,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Kokomi: return [
@@ -370,11 +360,11 @@ extension CharacterAsset {
                 .cd: .none,
                 .er: .higher,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .medium,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Xingqiu: return [
@@ -382,11 +372,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .high,
                 .em: .low,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Xiangling: return [
@@ -394,11 +384,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .higher,
                 .em: .higher,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Fischl: return [
@@ -406,11 +396,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Shinobu: return [
@@ -418,11 +408,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .high,
                 .em: .highest,
-                .atkR: .lower,
+                .atkAmp: .lower,
                 .atk: .lowest,
-                .hpR: .higher,
+                .hpAmp: .higher,
                 .hp: .medium,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Dehya: return [
@@ -430,11 +420,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .medium,
+                .hpAmp: .medium,
                 .hp: .lower,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Faruzan: return [
@@ -442,11 +432,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .high,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Albedo: return [
@@ -454,11 +444,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .lower,
+                .atkAmp: .lower,
                 .atk: .lowest,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .high,
+                .defAmp: .high,
                 .def: .low,
             ]
         case .Mona: return [
@@ -466,11 +456,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Sara: return [
@@ -478,11 +468,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .lower,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Gorou: return [
@@ -490,11 +480,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .highest,
                 .em: .none,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .high,
+                .defAmp: .high,
                 .def: .medium,
             ]
         case .Yunjin: return [
@@ -502,11 +492,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .highest,
                 .em: .none,
-                .atkR: .lower,
+                .atkAmp: .lower,
                 .atk: .lowest,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .highest,
+                .defAmp: .highest,
                 .def: .high,
             ]
         case .Rosaria: return [
@@ -514,11 +504,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .higher,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Thoma: return [
@@ -526,11 +516,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .higher,
                 .em: .higher,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .higher,
+                .hpAmp: .higher,
                 .hp: .medium,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Layla: return [
@@ -538,11 +528,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .high,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Diona: return [
@@ -550,11 +540,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .higher,
                 .em: .none,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .lower,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .high,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Candace: return [
@@ -562,11 +552,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .none,
-                .atkR: .none,
+                .atkAmp: .none,
                 .atk: .none,
-                .hpR: .higher,
+                .hpAmp: .higher,
                 .hp: .medium,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Beidou: return [
@@ -574,11 +564,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .lower,
+                .hpAmp: .lower,
                 .hp: .lowest,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Mika: return [
@@ -586,11 +576,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .high,
+                .hpAmp: .high,
                 .hp: .low,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Razor: return [
@@ -598,24 +588,24 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
-                .emd(.physico): .highest, // Shiki Suen
+                .dmgAmp(.physico): .highest, // Shiki Suen
             ]
         case .Noelle: return [
                 .cr: .highest,
                 .cd: .highest,
                 .er: .lower,
                 .em: .none,
-                .atkR: .lower,
+                .atkAmp: .lower,
                 .atk: .lowest,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .high,
+                .defAmp: .high,
                 .def: .low,
             ]
         case .Ningguang: return [
@@ -623,11 +613,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Sucrose: return [
@@ -635,11 +625,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .highest,
-                .atkR: .higher,
+                .atkAmp: .higher,
                 .atk: .medium,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Yanfei: return [
@@ -647,11 +637,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .lower,
+                .hpAmp: .lower,
                 .hp: .lowest,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Heizou: return [
@@ -659,11 +649,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Kaeya: return [
@@ -671,11 +661,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Yaoyao: return [
@@ -683,11 +673,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .high,
+                .hpAmp: .high,
                 .hp: .low,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Collei: return [
@@ -695,11 +685,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Sayu: return [
@@ -707,11 +697,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Dori: return [
@@ -719,11 +709,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .low,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .high,
+                .hpAmp: .high,
                 .hp: .low,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Chongyun: return [
@@ -731,11 +721,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .low,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Barbara: return [
@@ -743,11 +733,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .high,
+                .hpAmp: .high,
                 .hp: .low,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Baizhu: return [
@@ -755,11 +745,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .high,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .high,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Qiqi: return [
@@ -767,11 +757,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .high,
                 .em: .lower,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Amber: return [
@@ -779,11 +769,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .high,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .lower,
+                .hpAmp: .lower,
                 .hp: .low,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Xinyan: return [
@@ -791,24 +781,24 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .high,
+                .defAmp: .high,
                 .def: .low,
-                .emd(.physico): .highest, // Shiki Suen
+                .dmgAmp(.physico): .highest, // Shiki Suen
             ]
         case .Lisa: return [
                 .cr: .highest,
                 .cd: .highest,
                 .er: .high,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Aloy: return [
@@ -816,11 +806,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .lower,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Sora: return [
@@ -828,11 +818,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .high,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Hotaru: return [
@@ -840,11 +830,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .high,
                 .em: .medium,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Lyney: return [
@@ -852,11 +842,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .lower,
                 .em: .lower,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .high,
+                .defAmp: .high,
                 .def: .low,
             ]
         case .Wriothesley: return [
@@ -864,11 +854,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .low,
                 .em: .low,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Neuvillette: return [
@@ -876,11 +866,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .low,
                 .em: .none,
-                .atkR: .none,
+                .atkAmp: .none,
                 .atk: .none,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .medium,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Furina: return [
@@ -888,11 +878,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .high,
                 .em: .none,
-                .atkR: .none,
+                .atkAmp: .none,
                 .atk: .none,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .medium,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Navia: return [
@@ -900,11 +890,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .low,
                 .em: .none,
-                .atkR: .high,
+                .atkAmp: .high,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         // 此处为止的内容是截至 2024 年 2 月时的爱丽丝工房原始脚本内容。
@@ -914,11 +904,11 @@ extension CharacterAsset {
                 .cd: .none,
                 .er: .none,
                 .em: .none,
-                .atkR: .none,
+                .atkAmp: .none,
                 .atk: .none,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Kaveh:
@@ -928,11 +918,11 @@ extension CharacterAsset {
                 .cd: .medium,
                 .er: .high,
                 .em: .highest,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .medium,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Kirara:
@@ -942,11 +932,11 @@ extension CharacterAsset {
                 .cd: .none,
                 .er: .high,
                 .em: .none,
-                .atkR: .none,
+                .atkAmp: .none,
                 .atk: .none,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .higher,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Lynette:
@@ -956,11 +946,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .highest,
                 .em: .high,
-                .atkR: .higher,
+                .atkAmp: .higher,
                 .atk: .high,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Freminet:
@@ -970,11 +960,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .none,
                 .em: .none,
-                .atkR: .higher,
+                .atkAmp: .higher,
                 .atk: .high,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Charlotte:
@@ -984,11 +974,11 @@ extension CharacterAsset {
                 .cd: .none,
                 .er: .highest,
                 .em: .none,
-                .atkR: .highest,
+                .atkAmp: .highest,
                 .atk: .highest,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
                 .heal: .high,
             ]
@@ -999,11 +989,11 @@ extension CharacterAsset {
                 .cd: .none,
                 .er: .higher,
                 .em: .none,
-                .atkR: .none,
+                .atkAmp: .none,
                 .atk: .none,
-                .hpR: .highest,
+                .hpAmp: .highest,
                 .hp: .highest,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Gaming:
@@ -1013,11 +1003,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .medium,
                 .em: .highest,
-                .atkR: .highest,
+                .atkAmp: .highest,
                 .atk: .higher,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Xianyun:
@@ -1027,11 +1017,11 @@ extension CharacterAsset {
                 .cd: .medium,
                 .er: .highest,
                 .em: .none,
-                .atkR: .highest,
+                .atkAmp: .highest,
                 .atk: .high,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .none,
+                .defAmp: .none,
                 .def: .none,
             ]
         case .Chiori:
@@ -1041,11 +1031,11 @@ extension CharacterAsset {
                 .cd: .highest,
                 .er: .low,
                 .em: .none,
-                .atkR: .medium,
+                .atkAmp: .medium,
                 .atk: .low,
-                .hpR: .none,
+                .hpAmp: .none,
                 .hp: .none,
-                .defR: .highest,
+                .defAmp: .highest,
                 .def: .medium,
             ]
         }

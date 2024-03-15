@@ -135,12 +135,12 @@ public enum PizzaHelperAPI {
     }
 
     public static func getArtifactRatingScore(
-        artifacts: ArtifactRatingRequest,
+        artifacts: ArtifactRating.RatingRequest,
         completion: @escaping (
-            ArtifactRatingScoreResult
+            ArtifactRating.ScoreResult
         ) -> ()
     ) {
-        if let result = ArtifactRatingSputnik(request: artifacts).evaluate() {
+        if let result = ArtifactRating.Appraiser(request: artifacts).evaluate() {
             completion(result)
             return
         }
@@ -155,28 +155,28 @@ public enum PizzaHelperAPI {
         urlStr = urlStr.addPara("flv", String(artifacts.flower.lv))
         urlStr = urlStr.addPara(
             "stat1atkpercent",
-            String(artifacts.flower.atkPercent)
+            String(artifacts.flower.atkAmp)
         )
         urlStr = urlStr.addPara(
             "stat1hppercent",
-            String(artifacts.flower.hpPercent)
+            String(artifacts.flower.hpAmp)
         )
         urlStr = urlStr.addPara(
             "stat1defpercent",
-            String(artifacts.flower.defPercent)
+            String(artifacts.flower.defAmp)
         )
         urlStr = urlStr.addPara("stat1EM", String(artifacts.flower.em))
         urlStr = urlStr.addPara(
             "stat1ERpercent",
-            String(artifacts.flower.erPercent)
+            String(artifacts.flower.er)
         )
         urlStr = urlStr.addPara(
             "stat1CRpercent",
-            String(artifacts.flower.crPercent)
+            String(artifacts.flower.critRate)
         )
         urlStr = urlStr.addPara(
             "stat1CDpercent",
-            String(artifacts.flower.cdPercent)
+            String(artifacts.flower.critDmg)
         )
         urlStr = urlStr.addPara("stat1atk", String(artifacts.flower.atk))
         urlStr = urlStr.addPara("stat1hp", String(artifacts.flower.hp))
@@ -186,28 +186,28 @@ public enum PizzaHelperAPI {
         urlStr = urlStr.addPara("plv", String(artifacts.plume.lv))
         urlStr = urlStr.addPara(
             "stat2atkpercent",
-            String(artifacts.plume.atkPercent)
+            String(artifacts.plume.atkAmp)
         )
         urlStr = urlStr.addPara(
             "stat2hppercent",
-            String(artifacts.plume.hpPercent)
+            String(artifacts.plume.hpAmp)
         )
         urlStr = urlStr.addPara(
             "stat2defpercent",
-            String(artifacts.plume.defPercent)
+            String(artifacts.plume.defAmp)
         )
         urlStr = urlStr.addPara("stat2EM", String(artifacts.plume.em))
         urlStr = urlStr.addPara(
             "stat2ERpercent",
-            String(artifacts.plume.erPercent)
+            String(artifacts.plume.er)
         )
         urlStr = urlStr.addPara(
             "stat2CRpercent",
-            String(artifacts.plume.crPercent)
+            String(artifacts.plume.critRate)
         )
         urlStr = urlStr.addPara(
             "stat2CDpercent",
-            String(artifacts.plume.cdPercent)
+            String(artifacts.plume.critDmg)
         )
         urlStr = urlStr.addPara("stat2atk", String(artifacts.plume.atk))
         urlStr = urlStr.addPara("stat2hp", String(artifacts.plume.hp))
@@ -222,28 +222,28 @@ public enum PizzaHelperAPI {
             )
             urlStr = urlStr.addPara(
                 "stat3atkpercent",
-                String(artifacts.sands.atkPercent)
+                String(artifacts.sands.atkAmp)
             )
             urlStr = urlStr.addPara(
                 "stat3hppercent",
-                String(artifacts.sands.hpPercent)
+                String(artifacts.sands.hpAmp)
             )
             urlStr = urlStr.addPara(
                 "stat3defpercent",
-                String(artifacts.sands.defPercent)
+                String(artifacts.sands.defAmp)
             )
             urlStr = urlStr.addPara("stat3EM", String(artifacts.sands.em))
             urlStr = urlStr.addPara(
                 "stat3ERpercent",
-                String(artifacts.sands.erPercent)
+                String(artifacts.sands.er)
             )
             urlStr = urlStr.addPara(
                 "stat3CRpercent",
-                String(artifacts.sands.crPercent)
+                String(artifacts.sands.critRate)
             )
             urlStr = urlStr.addPara(
                 "stat3CDpercent",
-                String(artifacts.sands.cdPercent)
+                String(artifacts.sands.critDmg)
             )
             urlStr = urlStr.addPara("stat3atk", String(artifacts.sands.atk))
             urlStr = urlStr.addPara("stat3hp", String(artifacts.sands.hp))
@@ -259,28 +259,28 @@ public enum PizzaHelperAPI {
             )
             urlStr = urlStr.addPara(
                 "stat4atkpercent",
-                String(artifacts.goblet.atkPercent)
+                String(artifacts.goblet.atkAmp)
             )
             urlStr = urlStr.addPara(
                 "stat4hppercent",
-                String(artifacts.goblet.hpPercent)
+                String(artifacts.goblet.hpAmp)
             )
             urlStr = urlStr.addPara(
                 "stat4defpercent",
-                String(artifacts.goblet.defPercent)
+                String(artifacts.goblet.defAmp)
             )
             urlStr = urlStr.addPara("stat4EM", String(artifacts.goblet.em))
             urlStr = urlStr.addPara(
                 "stat4ERpercent",
-                String(artifacts.goblet.erPercent)
+                String(artifacts.goblet.er)
             )
             urlStr = urlStr.addPara(
                 "stat4CRpercent",
-                String(artifacts.goblet.crPercent)
+                String(artifacts.goblet.critRate)
             )
             urlStr = urlStr.addPara(
                 "stat4CDpercent",
-                String(artifacts.goblet.cdPercent)
+                String(artifacts.goblet.critDmg)
             )
             urlStr = urlStr.addPara("stat4atk", String(artifacts.goblet.atk))
             urlStr = urlStr.addPara("stat4hp", String(artifacts.goblet.hp))
@@ -296,28 +296,28 @@ public enum PizzaHelperAPI {
             )
             urlStr = urlStr.addPara(
                 "stat5atkpercent",
-                String(artifacts.circlet.atkPercent)
+                String(artifacts.circlet.atkAmp)
             )
             urlStr = urlStr.addPara(
                 "stat5hppercent",
-                String(artifacts.circlet.hpPercent)
+                String(artifacts.circlet.hpAmp)
             )
             urlStr = urlStr.addPara(
                 "stat5defpercent",
-                String(artifacts.circlet.defPercent)
+                String(artifacts.circlet.defAmp)
             )
             urlStr = urlStr.addPara("stat5EM", String(artifacts.circlet.em))
             urlStr = urlStr.addPara(
                 "stat5ERpercent",
-                String(artifacts.circlet.erPercent)
+                String(artifacts.circlet.er)
             )
             urlStr = urlStr.addPara(
                 "stat5CRpercent",
-                String(artifacts.circlet.crPercent)
+                String(artifacts.circlet.critRate)
             )
             urlStr = urlStr.addPara(
                 "stat5CDpercent",
-                String(artifacts.circlet.cdPercent)
+                String(artifacts.circlet.critDmg)
             )
             urlStr = urlStr.addPara("stat5atk", String(artifacts.circlet.atk))
             urlStr = urlStr.addPara("stat5hp", String(artifacts.circlet.hp))
@@ -331,7 +331,7 @@ public enum PizzaHelperAPI {
         urlStr = urlStr.addPara("stat5setId", String(artifacts.circlet.setId))
 
         // 请求
-        HttpMethod<ArtifactRatingScoreResult>
+        HttpMethod<ArtifactRating.ScoreResult>
             .homeRequest(
                 .get,
                 urlStr,

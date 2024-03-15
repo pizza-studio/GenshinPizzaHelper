@@ -226,7 +226,7 @@ public struct PlayerDetail {
                 "\(uid)\(uid.md5)\(AppConfig.uidSalt)"
             self.uid = String(obfuscatedUid.md5)
 
-            // var artifactScores: ArtifactRatingScoreResult?
+            // var artifactScores: ArtifactRating.ScoreResult?
             print("Get artifact rating of \(name)")
             PizzaHelperAPI
                 .getArtifactRatingScore(
@@ -260,7 +260,7 @@ public struct PlayerDetail {
                         let encoder = JSONEncoder()
                         encoder.outputFormatting = .sortedKeys
                         let artifactScoreCollectData = artifactScores
-                            .convert2ArtifactScoreCollectModel(
+                            .convertToCollectionModel(
                                 uid: self.uid,
                                 charId: String(self.enkaID)
                             )
@@ -741,9 +741,9 @@ public enum RankLevel: Int {
 // MARK: - Artifact Rating Support
 
 extension PlayerDetail.Avatar {
-    public func convert2ArtifactRatingModel() -> ArtifactRatingRequest {
+    public func convert2ArtifactRatingModel() -> ArtifactRating.RatingRequest {
         let extractedData = extractArtifactSetData()
-        let artifactRatingRequest = ArtifactRatingRequest(
+        return ArtifactRating.RatingRequest(
             cid: enkaID,
             characterElement: element.enumerationId,
             flower: extractedData[.flower] ?? .init(),
@@ -752,16 +752,14 @@ extension PlayerDetail.Avatar {
             goblet: extractedData[.goblet] ?? .init(),
             circlet: extractedData[.circlet] ?? .init()
         )
-
-        return artifactRatingRequest
     }
 
-    typealias ArtifactsDataDictionary = [PlayerDetail.Avatar.Artifact.ArtifactType: ArtifactRatingRequest.Artifact]
+    typealias ArtifactsDataDictionary = [Artifact.ArtifactType: ArtifactRating.RatingRequest.Artifact]
 
     func extractArtifactSetData() -> ArtifactsDataDictionary {
         var arrResult = ArtifactsDataDictionary()
         artifacts.forEach { thisRawEnkaArtifact in
-            var result = ArtifactRatingRequest.Artifact()
+            var result = ArtifactRating.RatingRequest.Artifact()
             let artifactType = thisRawEnkaArtifact.artifactType
             result.star = thisRawEnkaArtifact.rankLevel.rawValue
             result.setId = thisRawEnkaArtifact.setId ?? -114_514
@@ -773,41 +771,41 @@ extension PlayerDetail.Avatar {
                 case .ATK: result.atk = thisRawEnkaAttr.value
                 case .DEF: result.def = thisRawEnkaAttr.value
                 case .EM: result.em = thisRawEnkaAttr.value
-                case .critRate: result.crPercent = thisRawEnkaAttr.value
-                case .critDmg: result.cdPercent = thisRawEnkaAttr.value
-                case .chargeEfficiency: result.erPercent = thisRawEnkaAttr.value
+                case .critRate: result.critRate = thisRawEnkaAttr.value
+                case .critDmg: result.critDmg = thisRawEnkaAttr.value
+                case .chargeEfficiency: result.er = thisRawEnkaAttr.value
                 case .HP: result.hp = thisRawEnkaAttr.value
-                case .ATKAmp: result.atkPercent = thisRawEnkaAttr.value
-                case .HPAmp: result.hpPercent = thisRawEnkaAttr.value
-                case .DEFAmp: result.defPercent = thisRawEnkaAttr.value
+                case .ATKAmp: result.atkAmp = thisRawEnkaAttr.value
+                case .HPAmp: result.hpAmp = thisRawEnkaAttr.value
+                case .DEFAmp: result.defAmp = thisRawEnkaAttr.value
                 default: break
                 }
             }
             // 主词条。
             let mainAttributeType = AvatarAttribute(rawValue: thisRawEnkaArtifact.mainAttribute.rawName)
             switch (artifactType, mainAttributeType) {
-            case (.sands, .HPAmp): result.mainProp3 = .hpPercentage
-            case (.sands, .ATKAmp): result.mainProp3 = .atkPercentage
-            case (.sands, .DEFAmp): result.mainProp3 = .defPercentage
+            case (.sands, .HPAmp): result.mainProp3 = .hpAmp
+            case (.sands, .ATKAmp): result.mainProp3 = .atkAmp
+            case (.sands, .DEFAmp): result.mainProp3 = .defAmp
             case (.sands, .EM): result.mainProp3 = .em
             case (.sands, .chargeEfficiency): result.mainProp3 = .er
             case (.sands, _): result.mainProp3 = nil
-            case (.goblet, .HPAmp): result.mainProp4 = .hpPercentage
-            case (.goblet, .ATKAmp): result.mainProp4 = .atkPercentage
-            case (.goblet, .DEFAmp): result.mainProp4 = .defPercentage
+            case (.goblet, .HPAmp): result.mainProp4 = .hpAmp
+            case (.goblet, .ATKAmp): result.mainProp4 = .atkAmp
+            case (.goblet, .DEFAmp): result.mainProp4 = .defAmp
             case (.goblet, .EM): result.mainProp4 = .em
-            case (.goblet, .dmgAmpPhysico): result.mainProp4 = .physicoDmg
-            case (.goblet, .dmgAmpAnemo): result.mainProp4 = .anemoDmg
-            case (.goblet, .dmgAmpGeo): result.mainProp4 = .geoDmg
-            case (.goblet, .dmgAmpElectro): result.mainProp4 = .electroDmg
-            case (.goblet, .dmgAmpDendro): result.mainProp4 = .dendroDmg
-            case (.goblet, .dmgAmpHydro): result.mainProp4 = .hydroDmg
-            case (.goblet, .dmgAmpPyro): result.mainProp4 = .pyroDmg
-            case (.goblet, .dmgAmpCryo): result.mainProp4 = .cryoDmg
+            case (.goblet, .dmgAmpPhysico): result.mainProp4 = .dmgAmpPhysico
+            case (.goblet, .dmgAmpAnemo): result.mainProp4 = .dmgAmpAnemo
+            case (.goblet, .dmgAmpGeo): result.mainProp4 = .dmgAmpGeo
+            case (.goblet, .dmgAmpElectro): result.mainProp4 = .dmgAmpElectro
+            case (.goblet, .dmgAmpDendro): result.mainProp4 = .dmgAmpDendro
+            case (.goblet, .dmgAmpHydro): result.mainProp4 = .dmgAmpHydro
+            case (.goblet, .dmgAmpPyro): result.mainProp4 = .dmgAmpPyro
+            case (.goblet, .dmgAmpCryo): result.mainProp4 = .dmgAmpCryo
             case (.goblet, _): result.mainProp4 = nil
-            case (.circlet, .HPAmp): result.mainProp5 = .hpPercentage
-            case (.circlet, .ATKAmp): result.mainProp5 = .atkPercentage
-            case (.circlet, .DEFAmp): result.mainProp5 = .defPercentage
+            case (.circlet, .HPAmp): result.mainProp5 = .hpAmp
+            case (.circlet, .ATKAmp): result.mainProp5 = .atkAmp
+            case (.circlet, .DEFAmp): result.mainProp5 = .defAmp
             case (.circlet, .EM): result.mainProp5 = .em
             case (.circlet, .critRate): result.mainProp5 = .critRate
             case (.circlet, .critDmg): result.mainProp5 = .critDmg
