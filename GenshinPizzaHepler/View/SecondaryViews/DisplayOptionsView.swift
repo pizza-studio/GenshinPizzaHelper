@@ -7,6 +7,7 @@
 
 import Combine
 import Defaults
+import DefaultsKeys
 import GIPizzaKit
 import HBMihoyoAPI
 import SwiftUI
@@ -86,8 +87,14 @@ struct DisplayOptionsView: View {
                 Toggle(isOn: $showRarityAndLevelForArtifacts) {
                     Text("settings.display.showArtifactRarityAndLevel")
                 }
-                Toggle(isOn: $showRatingsForArtifacts) {
-                    Text("settings.display.showArtifactRank")
+                Toggle(isOn: $artifactRatingOptions.bind(.enabled)) {
+                    Text("settings.display.artifactRatingOptions")
+                }
+                Toggle(isOn: $artifactRatingOptions.bind(.considerMainProps)) {
+                    Text("settings.display.artifactRatingOptions.considerMainProps")
+                }
+                Toggle(isOn: $artifactRatingOptions.bind(.considerHyperbloomElectroRoles)) {
+                    Text("settings.display.artifactRatingOptions.considerHyperBloomElectroRoles")
                 }
             }
 
@@ -157,8 +164,8 @@ struct DisplayOptionsView: View {
     private var adaptiveSpacingInCharacterView: Bool
     @Default(.showRarityAndLevelForArtifacts)
     private var showRarityAndLevelForArtifacts: Bool
-    @Default(.showRatingsForArtifacts)
-    private var showRatingsForArtifacts: Bool
+    @Default(.artifactRatingOptions)
+    private var artifactRatingOptions: ArtifactRatingOptions
     @Default(.forceCharacterWeaponNameFixed)
     private var forceCharacterWeaponNameFixed: Bool
     @Default(.useActualCharacterNames)

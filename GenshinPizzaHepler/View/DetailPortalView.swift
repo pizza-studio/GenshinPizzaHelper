@@ -7,6 +7,7 @@
 
 import Combine
 import Defaults
+import DefaultsKeys
 import GIPizzaKit
 import HBMihoyoAPI
 import HoYoKit
@@ -517,6 +518,11 @@ struct DetailPortalView: View {
             .navigationDestination(for: AllAvatarDetailModel.self) { data in
                 AllAvatarListSheetView(data: data)
             }
+            .onChange(of: artifactRatingOptions) { _ in
+                Task {
+                    detailPortalViewModel.refresh()
+                }
+            }
         }
         .environmentObject(detailPortalViewModel)
         .alert(
@@ -544,6 +550,9 @@ struct DetailPortalView: View {
     }
 
     // MARK: Private
+
+    @Default(.artifactRatingOptions)
+    private var artifactRatingOptions: ArtifactRatingOptions
 
     @State
     private var askAllowAbyssDataCollectionAlert: Bool = false

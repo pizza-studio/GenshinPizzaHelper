@@ -197,7 +197,7 @@ struct EachCharacterDetailDataView: View {
                 value: "\((primaryDMGBonus.amount * 100.0).rounded(toPlaces: 2))%",
                 fontSize: fontSize
             )
-            if Defaults[.showRatingsForArtifacts],
+            if Defaults[.artifactRatingOptions].contains(.enabled),
                let totalScore = avatar.artifactTotalScore,
                let rank = avatar.artifactScoreRank {
                 AttributeLabel(
@@ -253,7 +253,7 @@ struct EachCharacterDetailDataView: View {
             "detailPortal.ECDDV.scoreUnit:\(String(format: "%.0f", artifact.score ?? -1))",
             alignment: .topLeading,
             textSize: fontSize * 0.72,
-            enabled: artifact.score != nil && Defaults[.showRatingsForArtifacts]
+            enabled: artifact.score != nil && Defaults[.artifactRatingOptions].contains(.enabled)
         )
         VStack(spacing: 0 + Self.spacingDelta) {
             Text(artifact.mainAttribute.name.percentageMarksTrimmed)
