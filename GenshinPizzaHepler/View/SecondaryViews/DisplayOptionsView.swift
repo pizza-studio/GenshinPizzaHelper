@@ -90,11 +90,13 @@ struct DisplayOptionsView: View {
                 Toggle(isOn: $artifactRatingOptions.bind(.enabled)) {
                     Text("settings.display.artifactRatingOptions")
                 }
-                Toggle(isOn: $artifactRatingOptions.bind(.considerMainProps)) {
-                    Text("settings.display.artifactRatingOptions.considerMainProps")
-                }
-                Toggle(isOn: $artifactRatingOptions.bind(.considerHyperbloomElectroRoles)) {
-                    Text("settings.display.artifactRatingOptions.considerHyperBloomElectroRoles")
+                if artifactRatingOptions.contains(.enabled) {
+                    Toggle(isOn: $artifactRatingOptions.bind(.considerMainProps)) {
+                        Text("settings.display.artifactRatingOptions.considerMainProps")
+                    }
+                    Toggle(isOn: $artifactRatingOptions.bind(.considerHyperbloomElectroRoles)) {
+                        Text("settings.display.artifactRatingOptions.considerHyperBloomElectroRoles")
+                    }
                 }
             }
 
