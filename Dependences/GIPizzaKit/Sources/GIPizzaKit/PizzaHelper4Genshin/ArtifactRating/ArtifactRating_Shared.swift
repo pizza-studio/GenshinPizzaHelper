@@ -27,7 +27,7 @@ public struct ArtifactRatingOptions: OptionSet, _DefaultsSerializable {
 
     // MARK: Public
 
-    public static let none = Self([])
+    public static let allDisabled = Self([])
     public static let allEnabled = Self([.enabled, .considerMainProps, .considerHyperbloomElectroRoles])
     public static let enabled = Self(rawValue: 1 << 0)
     public static let considerMainProps = Self(rawValue: 1 << 1)

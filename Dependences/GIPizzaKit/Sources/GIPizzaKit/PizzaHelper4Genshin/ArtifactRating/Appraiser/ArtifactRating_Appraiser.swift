@@ -13,6 +13,15 @@ import DefaultsKeys
 
 extension ArtifactRating {
     public struct Appraiser {
+        // MARK: Lifecycle
+
+        public init(request: ArtifactRating.RatingRequest, options: ArtifactRatingOptions? = nil) {
+            self.request = request
+            self.options = options ?? Defaults[.artifactRatingOptions]
+        }
+
+        // MARK: Public
+
         public enum Param: Hashable {
             case cr
             case cd
@@ -29,6 +38,7 @@ extension ArtifactRating {
         }
 
         public let request: ArtifactRating.RatingRequest
+        public let options: ArtifactRatingOptions
     }
 }
 
@@ -90,7 +100,8 @@ extension ArtifactRating.Appraiser {
 extension ArtifactRating.RatingRequest.Artifact {
     func getSubScore(
         using ratingModel: ArtifactRating.CharacterStatScoreModel,
-        for request: ArtifactRating.RatingRequest
+        for request: ArtifactRating.RatingRequest,
+        options: ArtifactRatingOptions
     )
         -> Double {
         let isStar5: Bool = star >= 5
@@ -113,7 +124,7 @@ extension ArtifactRating.RatingRequest.Artifact {
 
         // 主詞條處理。
         var shouldAdjustForMainProp = false
-        checkMainProps: if Defaults[.artifactRatingOptions].contains(.considerMainProps) {
+        checkMainProps: if options.contains(.considerMainProps) {
             // 钟杯帽主词条只可能最多出现一个。
             let mainPropParam = mainProp3?.translated
                 ?? mainProp4?.translated
@@ -169,7 +180,6 @@ extension ArtifactRating.RatingRequest.Artifact {
 
 extension ArtifactRating.Appraiser {
     public func evaluate() -> ArtifactRating.ScoreResult? {
-        let options = Defaults[.artifactRatingOptions]
         guard options.contains(.enabled) else { return nil }
         guard let char = CharacterAsset(rawValue: request.cid) else { return nil }
         var ratingModel = char.getArtifactRatingModel()
@@ -203,7 +213,7 @@ extension ArtifactRating.Appraiser {
         var scores: [Int: Double] = [:]
 
         let totalScore: Double = request.allArtifacts.enumerated().map {
-            let score = $0.element.getSubScore(using: ratingModel, for: request)
+            let score = $0.element.getSubScore(using: ratingModel, for: request, options: options)
             scores[$0.offset] = score
             return score
         }.reduce(0, +)

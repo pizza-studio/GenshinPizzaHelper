@@ -619,9 +619,10 @@ public struct PlayerDetail {
 
         public func fetchArtifactRatings(collect: Bool = false) {
             print("Get artifact rating of \(name)")
+            let artifactsModel = convert2ArtifactRatingModel()
             PizzaHelperAPI
                 .getArtifactRatingScore(
-                    artifacts: convert2ArtifactRatingModel()
+                    artifacts: artifactsModel
                 ) { artifactScores in
                     DispatchQueue.main.async {
                         self.artifactTotalScore = artifactScores.allpt
@@ -646,45 +647,44 @@ public struct PlayerDetail {
                             }
                         }
                     }
-                    DispatchQueue.global(qos: .background).async {
-                        guard collect else { return }
-                        // upload data to opserver
-                        let encoder = JSONEncoder()
-                        encoder.outputFormatting = .sortedKeys
-                        let artifactScoreCollectData = artifactScores
-                            .convertToCollectionModel(
-                                uid: self.uid,
-                                charId: String(self.enkaID)
-                            )
-                        let data = try! encoder.encode(artifactScoreCollectData)
-                        let md5 = String(data: data, encoding: .utf8)!.md5
-                        guard !UPLOAD_HOLDING_DATA_LOCKED
-                        else {
-                            print(
-                                "uploadArtifactScoreDataLocked is locked"
-                            ); return
-                        }
-                        API.PSAServer.uploadUserData(
-                            path: "/artifact_rank/upload",
-                            data: data
-                        ) { result in
-                            switch result {
-                            case .success:
-                                print("uploadArtifactData SUCCEED")
-                                print(md5)
-                            case let .failure(error):
-                                switch error {
-                                case let .uploadError(message):
-                                    if message == "Insert Failed" {
-                                        print(message)
-                                    }
-                                default:
-                                    break
-                                }
+                }
+            DispatchQueue.global(qos: .background).async {
+                guard collect else { return }
+                // 要上传的记录资料得忽略掉任何评分加成选项。
+                let retrieved = ArtifactRating.Appraiser(request: artifactsModel, options: .allDisabled).evaluate()
+                guard let retrieved = retrieved else { return }
+                print("Uploading artifact rating for \(self.name)")
+                // upload data to opserver
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .sortedKeys
+                let dataToCollect = retrieved.convertToCollectionModel(uid: self.uid, charId: String(self.enkaID))
+                let data = try! encoder.encode(dataToCollect)
+                let md5 = String(data: data, encoding: .utf8)!.md5
+                guard !UPLOAD_HOLDING_DATA_LOCKED
+                else {
+                    print("uploadArtifactScoreDataLocked is locked")
+                    return
+                }
+                API.PSAServer.uploadUserData(
+                    path: "/artifact_rank/upload",
+                    data: data
+                ) { result in
+                    switch result {
+                    case .success:
+                        print("uploadArtifactData SUCCEED")
+                        print(md5)
+                    case let .failure(error):
+                        switch error {
+                        case let .uploadError(message):
+                            if message == "Insert Failed" {
+                                print(message)
                             }
+                        default:
+                            break
                         }
                     }
                 }
+            }
         }
 
         public func hash(into hasher: inout Hasher) {
