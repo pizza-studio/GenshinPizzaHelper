@@ -108,8 +108,9 @@ extension ArtifactRatingRequest.Artifact {
             ?? mainProp4?.translated
             ?? mainProp5?.translated
         let mainPropWeight = Double(lv) * 0.25
-        var mainPropCounted = false
+        var shouldAdjustForMainProp = false
         checkMainProp: if let mainPropParam = mainPropParam {
+            shouldAdjustForMainProp = true
             switch mainPropParam {
             case let .emd(gobletAmpedElement):
                 // 元素伤害加成需要额外处理。
@@ -130,16 +131,14 @@ extension ArtifactRatingRequest.Artifact {
                 predefinedElement = predefinedElement ?? avatarElement ?? fallbackElement
                 if gobletAmpedElement == predefinedElement {
                     stackedScore.append(getPt(mainPropWeight, mainPropParam))
-                    mainPropCounted = true
                 }
             default:
                 stackedScore.append(getPt(mainPropWeight, mainPropParam))
-                mainPropCounted = true
             }
         }
 
         var result = stackedScore.reduce(0, +)
-        if mainPropCounted {
+        if shouldAdjustForMainProp {
             // 因为引入了主词条加分机制，导致分数上涨得有些虚高了。这里给总分乘以 0.9。
             // 理论上，此处的调整不会影响到花翎，只会影响到钟杯帽。
             // 这也就是说，如果角色带了与自己属性或者特长不相配的属性伤害杯的话，反而会「扣分」。
