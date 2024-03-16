@@ -104,11 +104,11 @@ struct AllEventsView: View {
                                 } else if getRemainDays(content.endAt)!
                                     .day! > 0 {
                                     Text(
-                                        "剩余 \(getRemainDays(content.endAt)!.day!)天"
+                                        "app.event.daysLeft:\(getRemainDays(content.endAt)!.day!)"
                                     )
                                 } else {
                                     Text(
-                                        "剩余 \(getRemainDays(content.endAt)!.hour!)小时"
+                                        "app.event.hoursLeft:\(getRemainDays(content.endAt)!.hour!)"
                                     )
                                 }
                             }
