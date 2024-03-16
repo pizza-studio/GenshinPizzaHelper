@@ -144,7 +144,7 @@ private struct SelectAccountView: View {
             if let account = account {
                 self.account.name = account.nickname
                 self.account.uid = account.gameUid
-                self.account.server = Server(rawValue: account.region) ?? .china
+                self.account.server = .init(rawValue: account.region) ?? .init(uid: account.gameUid) ?? .china
             }
         }
     }

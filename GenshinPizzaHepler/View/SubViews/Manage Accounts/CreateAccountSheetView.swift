@@ -100,7 +100,7 @@ struct CreateAccountSheetView: View {
                     if let account = accountsForSelected.first {
                         self.account.name = account.nickname
                         self.account.uid = account.gameUid
-                        self.account.server = Server(rawValue: account.region) ?? .china
+                        self.account.server = .init(rawValue: account.region) ?? .init(uid: account.gameUid) ?? .china
                     } else {
                         getAccountError = .customize("account.login.error.no.account.found")
                     }

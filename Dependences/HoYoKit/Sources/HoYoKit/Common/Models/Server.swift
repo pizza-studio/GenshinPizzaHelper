@@ -17,6 +17,25 @@ public enum Server: String, CaseIterable {
     case europe = "Europe"
     case asia = "Asia"
     case hongKongMacauTaiwan = "TW/HK/MO"
+
+    // MARK: Lifecycle
+
+    public init?(uid: String?) {
+        guard var theUID = uid else { return nil }
+        while theUID.count > 9 {
+            theUID = theUID.dropFirst().description
+        }
+        guard let initial = theUID.first, let initialInt = Int(initial.description) else { return nil }
+        switch initialInt {
+        case 1 ... 4: self = .china
+        case 5: self = .bilibili
+        case 6: self = .unitedStates
+        case 7: self = .europe
+        case 8: self = .asia
+        case 9: self = .hongKongMacauTaiwan
+        default: return nil
+        }
+    }
 }
 
 extension Server {
