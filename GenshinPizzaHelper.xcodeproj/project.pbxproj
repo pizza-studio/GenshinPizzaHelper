@@ -109,7 +109,6 @@
 		5BD1C6122A2A1FC90043C2B1 /* UIGFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488E29D9A8730059DEBF /* UIGFModel.swift */; };
 		5BD1C6132A2A1FC90043C2B1 /* CurrentEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */; };
 		5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */; };
-		5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */; };
 		5BD1C61C2A2A1FC90043C2B1 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5274289E137200EA224F /* Servers.swift */; };
@@ -587,7 +586,6 @@
 		EAB5798128FC278D00C5D075 /* AbyssDataCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */; };
 		EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
 		EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
-		EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DCC2886B3D700B7F0FD /* icon.png */; };
 		EABE606128D9F6970018CAF6 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
 		EABE606828D9F6AB0018CAF6 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
@@ -631,7 +629,6 @@
 		EAE569FB28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */; };
 		EAE5C5B728CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
 		EAE5C5B828CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE5C5B628CEECF400BD5031 /* LockScreenHomeCoinWidgetCorner.swift */; };
-		EAE846182A3773410065CF09 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */; };
 		EAE95C6C28CDCA5900D975CB /* ProgressGaugeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6B28CDCA5900D975CB /* ProgressGaugeStyle.swift */; };
 		EAE95C6F28CDD38100D975CB /* LockScreenResinWidgetCircular.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C6E28CDD38100D975CB /* LockScreenResinWidgetCircular.swift */; };
 		EAE95C7128CDD52C00D975CB /* LockScreenResinWidgetInline.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE95C7028CDD52C00D975CB /* LockScreenResinWidgetInline.swift */; };
@@ -1049,7 +1046,6 @@
 		EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "披萨小助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinPizzaHeplerApp.swift; sourceTree = "<group>"; };
 		EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		EABD7DCC2886B3D700B7F0FD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		EABE606028D9F6970018CAF6 /* MaterialChoices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialChoices.swift; sourceTree = "<group>"; };
 		EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsView.swift; sourceTree = "<group>"; };
@@ -1733,7 +1729,6 @@
 				EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */,
 				EABE606028D9F6970018CAF6 /* MaterialChoices.swift */,
 				BF6C5274289E137200EA224F /* Servers.swift */,
-				EABD7DC72886B2DA00B7F0FD /* ViewModel.swift */,
 				EA46D0C328EA75FE00DFE603 /* EnkaAPIModel */,
 				EA56E07528A26C0D00A64262 /* FetchedModels */,
 				EA406810292228A200F23479 /* WidgetData.swift */,
@@ -2490,7 +2485,6 @@
 				5BD1C6132A2A1FC90043C2B1 /* CurrentEventNavigator.swift in Sources */,
 				BFF684122A375487005470EA /* IconView.swift in Sources */,
 				5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */,
-				5BD1C6152A2A1FC90043C2B1 /* ViewModel.swift in Sources */,
 				5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */,
 				EA9BE5802B200B9400143817 /* AlwaysShowSideBar.swift in Sources */,
 				5BD1C6182A2A1FC90043C2B1 /* BackgroundsPreviewView.swift in Sources */,
@@ -2650,7 +2644,6 @@
 				BFCC068C28C9BBC8003E4A54 /* MaterialProviders.swift in Sources */,
 				BFCC069D28C9BBD3003E4A54 /* TapticSupport.swift in Sources */,
 				EA185F27292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */,
-				EAE846182A3773410065CF09 /* ViewModel.swift in Sources */,
 				BFCC06B528CA21AB003E4A54 /* AppBlockBackgroundView.swift in Sources */,
 				EAF55E2128CC8F1A00902AE7 /* WidgetViewConfiguration.swift in Sources */,
 				BFCC068228C9BB95003E4A54 /* GenshinPizzaHeplerApp.swift in Sources */,
@@ -2889,7 +2882,6 @@
 				BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */,
 				BFF684112A375487005470EA /* IconView.swift in Sources */,
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,
-				EABD7DC82886B2DA00B7F0FD /* ViewModel.swift in Sources */,
 				EABD7DBA2886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift in Sources */,
 				EA9BE57F2B200B9400143817 /* AlwaysShowSideBar.swift in Sources */,
 				BF70211928B4863000A6BBA9 /* BackgroundsPreviewView.swift in Sources */,
