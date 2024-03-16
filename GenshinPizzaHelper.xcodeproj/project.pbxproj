@@ -121,7 +121,6 @@
 		5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101F128D85B28000DC631 /* AllEventsView.swift */; };
 		5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8AC1B29C758750047D36C /* CircleClippedBackground.swift */; };
 		5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
-		5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
 		5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
 		5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
 		5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
@@ -449,7 +448,6 @@
 		EA42251628E2B963006D4578 /* LockScreenWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */; };
 		EA42251B28E2BBB8006D4578 /* LockScreenWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */; };
 		EA459DA5290CF47700E74F76 /* DismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA459DA4290CF47700E74F76 /* DismissableSheet.swift */; };
-		EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */; };
 		EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
@@ -979,7 +977,6 @@
 		EA40681729222A1300F23479 /* MainWidgetSimplifiedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetSimplifiedView.swift; sourceTree = "<group>"; };
 		EA42251528E2B963006D4578 /* LockScreenWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgetProvider.swift; sourceTree = "<group>"; };
 		EA459DA4290CF47700E74F76 /* DismissableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableSheet.swift; sourceTree = "<group>"; };
-		EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountDetailView.swift; sourceTree = "<group>"; };
 		EA4960E629D7D28200BA5ECF /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/System/Library/Frameworks/NetworkExtension.framework; sourceTree = DEVELOPER_DIR; };
 		EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryAttributes.swift; sourceTree = "<group>"; };
 		EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityWidget.swift; sourceTree = "<group>"; };
@@ -1464,7 +1461,6 @@
 				EA759D5B2B19989A0080C775 /* Manage Accounts */,
 				EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */,
 				BFE42548289F66CE00FEFA49 /* AccountInfoView.swift */,
-				EA47FEB628AF459300B7FCFF /* AddAccountDetailView.swift */,
 				EA025C8D29D28D150075F780 /* APIGetGachaView.swift */,
 				BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */,
 				BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */,
@@ -2509,7 +2505,6 @@
 				5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */,
 				5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */,
 				5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */,
-				5BD1C62A2A2A1FC90043C2B1 /* AddAccountDetailView.swift in Sources */,
 				5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */,
 				5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */,
 				5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */,
@@ -2909,7 +2904,6 @@
 				BFB101F228D85B28000DC631 /* AllEventsView.swift in Sources */,
 				EAF8AC1C29C758750047D36C /* CircleClippedBackground.swift in Sources */,
 				5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,
-				EA47FEB728AF459300B7FCFF /* AddAccountDetailView.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
