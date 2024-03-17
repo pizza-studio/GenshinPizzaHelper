@@ -1669,13 +1669,6 @@
       }
     },
     "account.PlayerDetail.FetchedResult.message.characterShowCaseClassified" : {
-
-    },
-    "account.PlayerDetail.FetchedResult.message.enkaGotNulledResultFromCelestiaServer" : {
-
-    },
-    "account.playerDetailResult.message.characterShowCaseClassified" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1739,8 +1732,7 @@
         }
       }
     },
-    "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" : {
-      "extractionState" : "stale",
+    "account.PlayerDetail.FetchedResult.message.enkaGotNulledResultFromCelestiaServer" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
