@@ -17,6 +17,9 @@ public struct PlayerDetail {
         localizedDictionary: [String: String],
         characterMap: Enka.CharacterMap
     ) {
+        var rawResultTXT = [Int: String]()
+        var rawResultMD = [Int: String]()
+
         self.basicInfo = .init(
             playerInfo: PlayerDetailFetchModel.playerInfo,
             characterMap: characterMap
@@ -24,12 +27,18 @@ public struct PlayerDetail {
         self.enkaMessage = PlayerDetailFetchModel.message
         if let avatarInfoList = PlayerDetailFetchModel.avatarInfoList {
             self.avatars = avatarInfoList.compactMap { avatarInfo in
-                .init(
+                let newAvatar = Avatar(
                     avatarInfo: avatarInfo,
                     localizedDictionary: localizedDictionary,
                     characterDictionary: characterMap,
                     uid: PlayerDetailFetchModel.uid
                 )
+                if let newAvatar = newAvatar {
+                    rawResultTXT[newAvatar.enkaID] = newAvatar
+                        .summarize(locMap: localizedDictionary, useMarkDown: false)
+                    rawResultMD[newAvatar.enkaID] = newAvatar.summarize(locMap: localizedDictionary, useMarkDown: true)
+                }
+                return newAvatar
             }
         } else { self.avatars = .init() }
         self.nextRefreshableDate = Calendar.current.date(
@@ -37,6 +46,8 @@ public struct PlayerDetail {
             value: PlayerDetailFetchModel.ttl ?? 30,
             to: Date()
         )!
+        self.summariesText = rawResultTXT
+        self.summariesMarkDown = rawResultMD
     }
 
     // MARK: Public
@@ -46,6 +57,10 @@ public struct PlayerDetail {
     public let basicInfo: PlayerBasicInfo?
 
     public let avatars: [Avatar]
+
+    public let summariesText: [Int: String]
+
+    public let summariesMarkDown: [Int: String]
 
     public let enkaMessage: String?
 }
