@@ -18,7 +18,7 @@ extension PlayerDetail.Avatar {
 
         func indentNode(_ level: UInt = 0) -> String {
             if !useMarkDown {
-                return "// \(String(repeating: " ", count: Int(level)))→ "
+                return " \(String(repeating: " ", count: Int(level)))→ "
             } else {
                 return "- ###\(String(repeating: "#", count: Int(level))) "
             }
@@ -26,7 +26,7 @@ extension PlayerDetail.Avatar {
 
         func indent(_ level: UInt = 0) -> String {
             if !useMarkDown {
-                return "// \(String(repeating: " ", count: Int(level)))"
+                return " \(String(repeating: " ", count: Int(level)))"
             } else {
                 return "\(String(repeating: "\t", count: Int(level)))- "
             }
@@ -36,8 +36,8 @@ extension PlayerDetail.Avatar {
             useMarkDown ? "**\(str)**" : str
         }
 
-        // 姓名, 等级, 命之座, 十六进位天赋
-        var headLine = useMarkDown ? "### " : "// "
+        // 姓名, 等级, 命之座, 天赋等级
+        var headLine = useMarkDown ? "### " : " "
         headLine.append(nameCorrected + " ")
         headLine.append("[Lv.\(level), C\(constellation)]")
         let skillLevels: String = skills.map { skillUnit in
