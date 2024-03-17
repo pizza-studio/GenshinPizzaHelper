@@ -1,5 +1,5 @@
 //
-//  CharacterDetailDatasView.swift
+//  EachCharacterDetailDataView.swift
 //  GenshinPizzaHelper
 //
 //  Created by Bill Haku on 2022/9/24.
@@ -109,107 +109,15 @@ struct EachCharacterDetailDataView: View {
 
     @ViewBuilder
     func probView(fontSize: CGFloat = 25) -> some View {
-        // Other prob
-        let probRows = Group {
-            if avatar.fightPropMap.healingBonus > 0 {
-                AttributeLabel(
-                    iconString: "UI_Icon_MaxHp",
-                    name: "detailPortal.ECDDV.prop.maxHP".localized + " & " + "detailPortal.ECDDV.prop.bonus.heal"
-                        .localized
-                        .percentageMarksTrimmed,
-                    value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))" +
-                        ", " +
-                        "\((avatar.fightPropMap.healingBonus * 100).rounded(toPlaces: 2))%",
-                    fontSize: fontSize
-                )
-            } else {
-                AttributeLabel(
-                    iconString: "UI_Icon_MaxHp",
-                    name: "detailPortal.ECDDV.prop.maxHP",
-                    value: "\(avatar.fightPropMap.HP.rounded(toPlaces: 1))",
-                    fontSize: fontSize
-                )
-            }
-            if avatar.isPhysicoDMGBoostSecondarilyEffective {
-                AttributeLabel(
-                    iconString: "UI_Icon_CurAttack",
-                    name: "detailPortal.ECDDV.ATK".localized + " & " + "detailPortal.ECDDV.prop.bonus.physico"
-                        .localized
-                        .percentageMarksTrimmed,
-                    value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))" +
-                        ", " +
-                        "\((avatar.fightPropMap.physicoDamage * 100.0).rounded(toPlaces: 2))%",
-                    fontSize: fontSize
-                )
-            } else {
-                AttributeLabel(
-                    iconString: "UI_Icon_CurAttack",
-                    name: "detailPortal.ECDDV.ATK",
-                    value: "\(avatar.fightPropMap.ATK.rounded(toPlaces: 1))",
-                    fontSize: fontSize
-                )
-            }
-            AttributeLabel(
-                iconString: "UI_Icon_CurDefense",
-                name: "detailPortal.ECDDV.DEF",
-                value: "\(avatar.fightPropMap.DEF.rounded(toPlaces: 1))",
-                fontSize: fontSize
-            )
-            AttributeLabel(
-                iconString: "UI_Icon_Element",
-                name: "detailPortal.ECDDV.EM",
-                value: "\(avatar.fightPropMap.elementalMastery.rounded(toPlaces: 1))",
-                fontSize: fontSize
-            )
-            AttributeLabel(
-                iconString: "UI_Icon_Intee_WindField_ClockwiseRotation",
-                name: "detailPortal.ECDDV.ERCR",
-                value: "\((avatar.fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%",
-                fontSize: fontSize
-            )
-            if ThisDevice.useAdaptiveSpacing {
-                AttributeLabel(
-                    iconString: "UI_Icon_CriticalRate",
-                    name: "detailPortal.ECDDV.CR",
-                    value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%",
-                    fontSize: fontSize
-                )
-                AttributeLabel(
-                    iconString: "UI_Icon_CriticalDamage",
-                    name: "detailPortal.ECDDV.CDMG",
-                    value: "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%",
-                    fontSize: fontSize
-                )
-            } else {
-                AttributeLabel(
-                    iconString: "UI_Icon_CriticalDamage",
-                    name: "detailPortal.ECDDV.CR".localized + " & " + "detailPortal.ECDDV.CDMG".localized,
-                    value: "\((avatar.fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%" +
-                        ", " +
-                        "\((avatar.fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%",
-                    fontSize: fontSize
-                )
-            }
-            let primaryDMGBonus = avatar.highestDMGBoostIntel
-            AttributeLabel(
-                iconString: primaryDMGBonus.element.dmgBonusLabel.icon,
-                name: primaryDMGBonus.element.dmgBonusLabel.text,
-                value: "\((primaryDMGBonus.amount * 100.0).rounded(toPlaces: 2))%",
-                fontSize: fontSize
-            )
-            if Defaults[.artifactRatingOptions].contains(.enabled),
-               let totalScore = avatar.artifactTotalScore,
-               let rank = avatar.artifactScoreRank {
-                AttributeLabel(
-                    iconString: "UI_Icon_ArtifactRating",
-                    name: "detailPortal.ECDDV.artifactRank".localized,
-                    value: "\(String(format: "%.0f", totalScore)) (\(rank))",
-                    fontSize: fontSize
-                )
-            }
-        }
         VStack(spacing: 3.3 + Self.spacingDelta) {
-            probRows
+            ForEach(avatar.getProbBackendDataPairs(useAdaptiveSpacing: ThisDevice.useAdaptiveSpacing)) { probData in
+                AttributeLabel(
+                    iconString: probData.iconString,
+                    name: probData.name,
+                    value: probData.value,
+                    fontSize: fontSize
+                )
+            }
         }
     }
 

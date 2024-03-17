@@ -1668,7 +1668,14 @@
         }
       }
     },
+    "account.PlayerDetail.FetchedResult.message.characterShowCaseClassified" : {
+
+    },
+    "account.PlayerDetail.FetchedResult.message.enkaGotNulledResultFromCelestiaServer" : {
+
+    },
     "account.playerDetailResult.message.characterShowCaseClassified" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1733,6 +1740,7 @@
       }
     },
     "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19137,6 +19145,12 @@
         }
       }
     },
+    "Copy markdown summary" : {
+
+    },
+    "Copy text summary" : {
+
+    },
     "currentEventNavigator.pendingEvents.title" : {
       "localizations" : {
         "en" : {
@@ -19331,7 +19345,7 @@
       }
     },
     "detailPortal.ECDDV.artifactRank" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19396,7 +19410,7 @@
       }
     },
     "detailPortal.ECDDV.ATK" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19461,7 +19475,7 @@
       }
     },
     "detailPortal.ECDDV.bonus.anemo" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19526,7 +19540,7 @@
       }
     },
     "detailPortal.ECDDV.bonus.cryo" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19591,7 +19605,7 @@
       }
     },
     "detailPortal.ECDDV.bonus.dendro" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19656,7 +19670,7 @@
       }
     },
     "detailPortal.ECDDV.bonus.electro" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19721,7 +19735,7 @@
       }
     },
     "detailPortal.ECDDV.bonus.geo" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19786,7 +19800,7 @@
       }
     },
     "detailPortal.ECDDV.bonus.hydro" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19851,7 +19865,7 @@
       }
     },
     "detailPortal.ECDDV.bonus.physico" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19916,7 +19930,7 @@
       }
     },
     "detailPortal.ECDDV.bonus.pyro" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19981,7 +19995,7 @@
       }
     },
     "detailPortal.ECDDV.CDMG" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20240,7 +20254,7 @@
       }
     },
     "detailPortal.ECDDV.CR" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20305,7 +20319,7 @@
       }
     },
     "detailPortal.ECDDV.DEF" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20370,7 +20384,7 @@
       }
     },
     "detailPortal.ECDDV.EM" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20435,7 +20449,7 @@
       }
     },
     "detailPortal.ECDDV.ERCR" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21085,7 +21099,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.heal" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21280,7 +21294,7 @@
       }
     },
     "detailPortal.ECDDV.prop.bonus.physico" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -21800,7 +21814,7 @@
       }
     },
     "detailPortal.ECDDV.prop.maxHP" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
