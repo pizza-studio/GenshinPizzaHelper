@@ -67,6 +67,28 @@ extension PlayerDetail.Avatar {
             case sands = "EQUIP_SHOES"
             case goblet = "EQUIP_RING"
             case circlet = "EQUIP_DRESS"
+
+            // MARK: Public
+
+            public var sortId: Int {
+                switch self {
+                case .flower: 0
+                case .plume: 1
+                case .sands: 2
+                case .goblet: 3
+                case .circlet: 4
+                }
+            }
+
+            public var emojiRepresentable: String {
+                switch self {
+                case .flower: "🌷"
+                case .plume: "🪶"
+                case .sands: "⏳"
+                case .goblet: "🍷"
+                case .circlet: "👑"
+                }
+            }
         }
 
         public let id: String

@@ -15,9 +15,6 @@ extension PlayerDetail.Avatar {
             self.rawName = rawName
         }
 
-        /// 属性图标的ID
-        // let iconString: String
-
         // MARK: Public
 
         public let name: String
@@ -26,15 +23,46 @@ extension PlayerDetail.Avatar {
 
         public var valueString: String {
             var result: String
+            // 不能仅用这个来判定某个属性是否以 % 标记。
+            // 得务必用 isPercentageRepresentable 判断。
             if floor(value) == value {
                 result = "\(Int(value))"
             } else {
                 result = String(format: "%.1f", value)
             }
-            if let last = name.last, ["％", "%"].contains(last) {
+            if isPercentageRepresentable {
                 result.append("%")
             }
             return result.description
+        }
+
+        public var isPercentageRepresentable: Bool {
+            switch matchedType {
+            case .baseATK: return false
+            case .maxHP: return false
+            case .ATK: return false
+            case .DEF: return false
+            case .EM: return false
+            case .critRate: return true
+            case .critDmg: return true
+            case .healAmp: return true
+            case .healedAmp: return true
+            case .chargeEfficiency: return true
+            case .shieldCostMinusRatio: return true
+            case .dmgAmpPyro: return true
+            case .dmgAmpHydro: return true
+            case .dmgAmpDendro: return true
+            case .dmgAmpElectro: return true
+            case .dmgAmpAnemo: return true
+            case .dmgAmpCryo: return true
+            case .dmgAmpGeo: return true
+            case .dmgAmpPhysico: return true
+            case .HP: return false
+            case .ATKAmp: return true
+            case .HPAmp: return true
+            case .DEFAmp: return true
+            case nil: return false
+            }
         }
 
         public var matchedType: AvatarAttribute? {

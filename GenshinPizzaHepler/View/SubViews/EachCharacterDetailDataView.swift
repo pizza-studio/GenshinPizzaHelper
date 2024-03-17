@@ -521,10 +521,6 @@ extension PlayerDetail.Avatar.Artifact {
 // MARK: - Skill Extension (SwiftUI)
 
 extension PlayerDetail.Avatar.Skill {
-    var isLevelAdjusted: Bool {
-        levelAdjusted != level
-    }
-
     func levelDisplay(size: CGFloat) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
             Text("\(level)").font(.system(size: size * 0.93, weight: .heavy))
@@ -543,86 +539,5 @@ extension String {
         if !contains("％"), !contains("%") { return self }
         return replacingOccurrences(of: "％", with: "")
             .replacingOccurrences(of: "%", with: "")
-    }
-}
-
-// MARK: - Extensions for Calculating DMG Bonuses
-
-extension PlayerDetail.Avatar {
-    var baseDMGBoostIntel: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) {
-        switch element {
-        case .cryo: return fightPropMap.cryoDamagePaired
-        case .anemo: return fightPropMap.anemoDamagePaired
-        case .electro: return fightPropMap.electroDamagePaired
-        case .hydro: return fightPropMap.hydroDamagePaired
-        case .pyro: return fightPropMap.pyroDamagePaired
-        case .geo: return fightPropMap.geoDamagePaired
-        case .dendro: return fightPropMap.dendroDamagePaired
-        case .physico: return fightPropMap.physicoDamagePaired
-        }
-    }
-
-    var highestDMGBoostIntel: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) {
-        let base = baseDMGBoostIntel
-        let result = fightPropMap.allPairedDMGBoostsSorted.first ?? baseDMGBoostIntel
-        // 如果一个角色的所有元素加成都是 0% 的话，则排序结果会不准确。此时优先使用 baseDMGBoostIntel。
-        return result.amount == base.amount ? base : result
-    }
-
-    /// 物理伤害加成是否有效、且物理伤害加成是否为最强元素加成
-    var isPhysicoDMGBoostSecondarilyEffective: Bool {
-        fightPropMap.physicoDamage > 0 && (highestDMGBoostIntel.element != .physico)
-    }
-}
-
-extension Enka.FightPropMap {
-    /// 给所有伤害加成做排序，最高加成得以排在最开头。
-    var allPairedDMGBoostsSorted: [(amount: Double, element: PlayerDetail.Avatar.TeyvatElement)] {
-        [
-            physicoDamagePaired,
-            pyroDamagePaired,
-            electroDamagePaired,
-            hydroDamagePaired,
-            dendroDamagePaired,
-            anemoDamagePaired,
-            geoDamagePaired,
-            cryoDamagePaired,
-        ].sorted {
-            $0.amount > $1.amount
-        }
-    }
-
-    /// 物理伤害加成（配对）
-    var physicoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (physicoDamage, .physico)
-    }
-
-    /// 火元素伤害加成（配对）
-    var pyroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (pyroDamage, .pyro) }
-    /// 雷元素伤害加成（配对）
-    var electroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (electroDamage, .electro) }
-    /// 水元素伤害加成（配对）
-    var hydroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (hydroDamage, .hydro) }
-    /// 草元素伤害加成（配对）
-    var dendroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (dendroDamage, .dendro) }
-    /// 风元素伤害加成（配对）
-    var anemoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (anemoDamage, .anemo) }
-    /// 岩元素伤害加成（配对）
-    var geoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (geoDamage, .geo) }
-    /// 冰元素伤害加成（配对）
-    var cryoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (cryoDamage, .cryo) }
-}
-
-extension PlayerDetail.Avatar.TeyvatElement {
-    var dmgBonusLabel: (text: String, icon: String) {
-        switch self {
-        case .cryo: return ("detailPortal.ECDDV.bonus.cryo", "UI_Icon_Element_Cryo")
-        case .anemo: return ("detailPortal.ECDDV.bonus.anemo", "UI_Icon_Element_Anemo")
-        case .electro: return ("detailPortal.ECDDV.bonus.electro", "UI_Icon_Element_Electro")
-        case .hydro: return ("detailPortal.ECDDV.bonus.hydro", "UI_Icon_Element_Hydro")
-        case .pyro: return ("detailPortal.ECDDV.bonus.pyro", "UI_Icon_Element_Pyro")
-        case .geo: return ("detailPortal.ECDDV.bonus.geo", "UI_Icon_Element_Geo")
-        case .dendro: return ("detailPortal.ECDDV.bonus.dendro", "UI_Icon_Element_Dendro")
-        case .physico: return ("detailPortal.ECDDV.bonus.physico", "UI_Icon_Element_Physico_Amp")
-        }
     }
 }

@@ -138,7 +138,6 @@
 		5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
 		5BD1C6402A2A1FC90043C2B1 /* DismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA459DA4290CF47700E74F76 /* DismissableSheet.swift */; };
 		5BD1C6422A2A1FC90043C2B1 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
-		5BD1C6432A2A1FC90043C2B1 /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		5BD1C6442A2A1FC90043C2B1 /* ContainGachaItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */; };
 		5BD1C6452A2A1FC90043C2B1 /* GachaSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01F84D29D68EFE002A374C /* GachaSetting.swift */; };
 		5BD1C6462A2A1FC90043C2B1 /* WidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */; };
@@ -236,12 +235,6 @@
 		BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
 		BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
 		BF7500D828DEA80700CDA64E /* EachCharacterDetailDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */; };
-		BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
-		BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
-		BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
-		BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
-		BF7500E328DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
-		BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500DE28DEC99400CDA64E /* NumberTools.swift */; };
 		BF7500FE28E0452C00CDA64E /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
 		BF75010028E0452C00CDA64E /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
 		BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
@@ -856,7 +849,6 @@
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
 		BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachCharacterDetailDataView.swift; sourceTree = "<group>"; };
-		BF7500DE28DEC99400CDA64E /* NumberTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTools.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
 		BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestVersionInfoView.swift; sourceTree = "<group>"; };
@@ -1302,7 +1294,6 @@
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 				BF6C5271289E12DA00EA224F /* md5.swift */,
 				BF6C5277289E153400EA224F /* NetworkReachability.swift */,
-				BF7500DE28DEC99400CDA64E /* NumberTools.swift */,
 				BFFD823928A73A5400616CE1 /* ReviewHandler.swift */,
 				BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */,
 				5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */,
@@ -2511,7 +2502,6 @@
 				5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */,
 				5BD1C6402A2A1FC90043C2B1 /* DismissableSheet.swift in Sources */,
 				5BD1C6422A2A1FC90043C2B1 /* NetworkReachability.swift in Sources */,
-				5BD1C6432A2A1FC90043C2B1 /* NumberTools.swift in Sources */,
 				5BD1C6442A2A1FC90043C2B1 /* ContainGachaItemInfo.swift in Sources */,
 				5BD1C6452A2A1FC90043C2B1 /* GachaSetting.swift in Sources */,
 				5BD1C6462A2A1FC90043C2B1 /* WidgetSettingView.swift in Sources */,
@@ -2596,7 +2586,6 @@
 				EAE95D0C28CE11C300D975CB /* IntentHandler.swift in Sources */,
 				EAA969F82ADFA80C00C0852E /* AccountConfiguration.swift in Sources */,
 				EAD7F03128D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift in Sources */,
-				BF7500E328DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA7CD44628CF4B0500857493 /* LockScreenAllInfoWidget.swift in Sources */,
 				EAE95CDC28CE104600D975CB /* WidgetViewConfiguration.swift in Sources */,
 			);
@@ -2609,7 +2598,6 @@
 				EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */,
 				BF57A6112B67803200E56CAD /* WatchConnectivityManager.swift in Sources */,
 				EAB11EA129325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
-				BF7500E228DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE2C8A02B2DA2FB004304D2 /* WidgetError.swift in Sources */,
 				BFCC069A28C9BBD3003E4A54 /* StoreManager.swift in Sources */,
 				BFCC066828C9B6A1003E4A54 /* NotificationController.swift in Sources */,
@@ -2658,7 +2646,6 @@
 				EA406813292228A200F23479 /* WidgetData.swift in Sources */,
 				EA185F2E292F1AFC003E7E32 /* ArrayOfStringRawPresentable.swift in Sources */,
 				EA09A00B28A2B8270023B4AF /* AccountConfiguration.xcdatamodeld in Sources */,
-				BF7500E128DEC99400CDA64E /* NumberTools.swift in Sources */,
 				5B918A3129D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,
 				EA09FDF12B2BB30100862DFB /* DailyNoteExtension.swift in Sources */,
 				EA09A02028A2B8F50023B4AF /* md5.swift in Sources */,
@@ -2729,7 +2716,6 @@
 				BF6C5276289E137200EA224F /* Servers.swift in Sources */,
 				EA06373028CEDA7C00497F71 /* LockScreenResinWidgetCorner.swift in Sources */,
 				EA7FF46C2930870900128A5C /* LockScreenResinTimerWidget.swift in Sources */,
-				BF7500E028DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EA406812292228A200F23479 /* WidgetData.swift in Sources */,
 				EA9C2D0828CE23F00053ED1E /* LockScreenHomeCoinWidget.swift in Sources */,
 				EA36DFBA28E3E27D0060AD4F /* LockScreenLoopWidgetTransformerCircular.swift in Sources */,
@@ -2904,7 +2890,6 @@
 				EA759D692B19989A0080C775 /* ManageAccountsView.swift in Sources */,
 				EA459DA5290CF47700E74F76 /* DismissableSheet.swift in Sources */,
 				BF6C5278289E153400EA224F /* NetworkReachability.swift in Sources */,
-				BF7500DF28DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE2AD4829D3D06900FF9612 /* ContainGachaItemInfo.swift in Sources */,
 				EA01F84E29D68EFE002A374C /* GachaSetting.swift in Sources */,
 				EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */,
@@ -2954,7 +2939,6 @@
 				EA059CDC292347E800400DE3 /* MultiTokenResult.swift in Sources */,
 				EAE95CF328CE116800D975CB /* BackgroundOptions.swift in Sources */,
 				EAE95CF228CE115D00D975CB /* WidgetViewConfiguration.swift in Sources */,
-				BF7500E428DEC99400CDA64E /* NumberTools.swift in Sources */,
 				EAE95D0D28CE11CA00D975CB /* NetworkReachability.swift in Sources */,
 				EAB11EA329325CD500CD4ECA /* DateRelationIdentifier.swift in Sources */,
 				EAE95CFA28CE11A100D975CB /* MaterialProviders.swift in Sources */,
