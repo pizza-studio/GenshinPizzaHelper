@@ -126,6 +126,20 @@ struct CharacterDetailView: View {
                     vertical: true
                 )
                 .scaleEffect(scaleRatioCompatible)
+                .contextMenu {
+                    Group {
+                        if let textSummary = playerDetail.summariesText[avatar.enkaID] {
+                            Button("app.detailPortal.avatar.summarzeToClipboard.asText") {
+                                UIPasteboard.general.string = textSummary
+                            }
+                        }
+                        if let mdSummary = playerDetail.summariesMarkDown[avatar.enkaID] {
+                            Button("app.detailPortal.avatar.summarzeToClipboard.asMD") {
+                                UIPasteboard.general.string = mdSummary
+                            }
+                        }
+                    }
+                }
             Spacer().frame(width: 25, height: bottomSpacerHeight)
         }
     }
