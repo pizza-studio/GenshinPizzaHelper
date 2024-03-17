@@ -1,9 +1,6 @@
-//
-//  PSAServerAPI.swift
-//  GenshinPizzaHelper
-//
-//  Created by Bill Haku on 2022/10/26.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import Foundation
 import HBMihoyoAPI

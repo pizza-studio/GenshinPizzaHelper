@@ -28,14 +28,14 @@ public enum DecoratedIconCutType: CGFloat {
 
 extension Enka.Character {
     var elementColor: Color {
-        guard let element = PlayerDetail.Avatar.AvatarElement(rawValue: Element) else {
+        guard let element = PlayerDetail.Avatar.TeyvatElement(rawValue: Element) else {
             return .pink
         }
         return element.color
     }
 }
 
-extension PlayerDetail.Avatar.AvatarElement {
+extension PlayerDetail.Avatar.TeyvatElement {
     var color: Color {
         switch self {
         case .cryo:

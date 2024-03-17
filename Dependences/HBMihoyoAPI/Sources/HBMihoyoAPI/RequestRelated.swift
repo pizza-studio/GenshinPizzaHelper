@@ -18,13 +18,13 @@ public typealias AllAvatarDetailFetchResult = Result<
 >
 
 #if !os(watchOS)
-//    typealias PlayerDetailsFetchResult = Result<
+//    typealias PlayerDetail.FetchResult = Result<
 //        Enka.PlayerDetailFetchModel,
 //        RequestError
 //    >
-//    typealias PlayerDetailResult = Result<
+//    typealias PlayerDetail.FetchedResult = Result<
 //        PlayerDetail,
-//        PlayerDetail.PlayerDetailError
+//        PlayerDetail.Exceptions
 //    >
 public typealias SpiralAbyssDetailFetchResult = Result<
     SpiralAbyssDetail,

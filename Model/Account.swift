@@ -33,9 +33,9 @@ import UIKit
 //    var fetchComplete: Bool = false
 //
 //    #if !os(watchOS)
-//    var playerDetailResult: Result<
+//    var PlayerDetail.FetchedResult: Result<
 //        PlayerDetail,
-//        PlayerDetail.PlayerDetailError
+//        PlayerDetail.Exceptions
 //    >?
 //    var fetchPlayerDetailComplete: Bool = false
 //
@@ -160,7 +160,7 @@ import UIKit
 //        dateWhenNextRefreshable: Date?,
 //        _ completion: @escaping (Result<
 //            Enka.PlayerDetailFetchModel,
-//            PlayerDetail.PlayerDetailError
+//            PlayerDetail.Exceptions
 //        >) -> ()
 //    ) {
 //        guard let uid = uid else { return }

@@ -1,9 +1,6 @@
-//
-//  CharacterAssets.swift
-//  GenshinPizzaHepler
-//
-//  Created by ShikiSuen on 2023/10/3.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import Defaults
 import Foundation
@@ -12,7 +9,7 @@ import HoYoKit
 // MARK: - CharacterAsset
 
 /// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
-public enum CharacterAsset: Int, CaseIterable {
+public enum CharacterAsset: Int, CaseIterable, Hashable {
     case Paimon = -213
     case Hotaru = 10000007
     case Sora = 10000005
@@ -500,7 +497,7 @@ extension CharacterAsset: DailyMaterialConsumer {
 // MARK: - Elements
 
 extension CharacterAsset {
-    public var element: PlayerDetail.Avatar.AvatarElement? {
+    public var element: PlayerDetail.Avatar.TeyvatElement? {
         switch self {
         case .Paimon: return nil
         case .Hotaru: return nil // 主角可能对应多个属性，得单独判断

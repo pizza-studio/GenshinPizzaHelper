@@ -1,9 +1,6 @@
-//
-//  RequestRelated.swift
-//
-//
-//  Created by Bill Haku on 2023/3/27.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import Foundation
 import HBMihoyoAPI
@@ -18,13 +15,13 @@ import HBMihoyoAPI
 // >
 
 #if !os(watchOS)
-//    typealias PlayerDetailsFetchResult = Result<
+//    typealias PlayerDetail.FetchResult = Result<
 //        Enka.PlayerDetailFetchModel,
 //        RequestError
 //    >
-//    typealias PlayerDetailResult = Result<
+//    typealias PlayerDetail.FetchedResult = Result<
 //        PlayerDetail,
-//        PlayerDetail.PlayerDetailError
+//        PlayerDetail.Exceptions
 //    >
 //    public typealias SpiralAbyssDetailFetchResult = Result<
 //        SpiralAbyssDetail,

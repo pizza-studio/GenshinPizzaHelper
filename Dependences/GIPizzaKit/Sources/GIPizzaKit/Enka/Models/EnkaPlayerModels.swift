@@ -1,9 +1,6 @@
-//
-//  EnkaPlayerModels.swift
-//  GenshinPizzaHelper
-//
-//  Created by Bill Haku on 2022/9/22.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import Foundation
 
@@ -197,7 +194,7 @@ extension Enka {
 
     // MARK: - FightPropMap
 
-    public struct FightPropMap: Codable {
+    public struct FightPropMap: Codable, Hashable {
         // MARK: Public
 
         /// 基础生命

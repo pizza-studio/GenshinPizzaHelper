@@ -816,8 +816,9 @@ private struct PlayerDetailSection: View {
                                 Text(
                                     playerDetail
                                         .basicInfo != nil
-                                        ? "account.playerDetailResult.message.characterShowCaseClassified"
-                                        : "account.playerDetailResult.message.enkaGotNulledResultFromCelestiaServer"
+                                        ? "account.PlayerDetail.FetchedResult.message.characterShowCaseClassified"
+                                        :
+                                        "account.PlayerDetail.FetchedResult.message.enkaGotNulledResultFromCelestiaServer"
                                 )
                                 .foregroundColor(.secondary)
                                 if let msg = playerDetail.enkaMessage {

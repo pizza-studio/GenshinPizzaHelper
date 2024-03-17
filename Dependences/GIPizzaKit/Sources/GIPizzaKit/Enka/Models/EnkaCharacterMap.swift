@@ -1,9 +1,6 @@
-//
-//  EnkaCharacterMap.swift
-//
-//
-//  Created by Bill Haku on 2023/3/27.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import Foundation
 
@@ -12,14 +9,14 @@ import Foundation
 extension Enka {
     public typealias CharacterMap = [String: Character]
 
-    public struct Costume: Codable {
+    public struct Costume: Codable, Hashable {
         let sideIconName: String
         let icon: String
         let art: String
         let avatarId: Int
     }
 
-    public struct Character: Codable {
+    public struct Character: Codable, Hashable {
         /// 元素
         public var Element: String
         /// 技能图标

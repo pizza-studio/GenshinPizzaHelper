@@ -454,7 +454,7 @@ private struct AvatarAndSkillView: View {
                         )
                         AttributeLabel(
                             name: "detailPortal.ECDDV.constellation",
-                            valueView: Text("detailPortal.ECDDV.constellation.unit:\(avatar.talentCount)"),
+                            valueView: Text("detailPortal.ECDDV.constellation.unit:\(avatar.constellation)"),
                             hasDash: false
                         )
                     }
@@ -549,7 +549,7 @@ extension String {
 // MARK: - Extensions for Calculating DMG Bonuses
 
 extension PlayerDetail.Avatar {
-    var baseDMGBoostIntel: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) {
+    var baseDMGBoostIntel: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) {
         switch element {
         case .cryo: return fightPropMap.cryoDamagePaired
         case .anemo: return fightPropMap.anemoDamagePaired
@@ -562,7 +562,7 @@ extension PlayerDetail.Avatar {
         }
     }
 
-    var highestDMGBoostIntel: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) {
+    var highestDMGBoostIntel: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) {
         let base = baseDMGBoostIntel
         let result = fightPropMap.allPairedDMGBoostsSorted.first ?? baseDMGBoostIntel
         // 如果一个角色的所有元素加成都是 0% 的话，则排序结果会不准确。此时优先使用 baseDMGBoostIntel。
@@ -577,7 +577,7 @@ extension PlayerDetail.Avatar {
 
 extension Enka.FightPropMap {
     /// 给所有伤害加成做排序，最高加成得以排在最开头。
-    var allPairedDMGBoostsSorted: [(amount: Double, element: PlayerDetail.Avatar.AvatarElement)] {
+    var allPairedDMGBoostsSorted: [(amount: Double, element: PlayerDetail.Avatar.TeyvatElement)] {
         [
             physicoDamagePaired,
             pyroDamagePaired,
@@ -593,26 +593,26 @@ extension Enka.FightPropMap {
     }
 
     /// 物理伤害加成（配对）
-    var physicoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (physicoDamage, .physico)
+    var physicoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (physicoDamage, .physico)
     }
 
     /// 火元素伤害加成（配对）
-    var pyroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (pyroDamage, .pyro) }
+    var pyroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (pyroDamage, .pyro) }
     /// 雷元素伤害加成（配对）
-    var electroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (electroDamage, .electro) }
+    var electroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (electroDamage, .electro) }
     /// 水元素伤害加成（配对）
-    var hydroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (hydroDamage, .hydro) }
+    var hydroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (hydroDamage, .hydro) }
     /// 草元素伤害加成（配对）
-    var dendroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (dendroDamage, .dendro) }
+    var dendroDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (dendroDamage, .dendro) }
     /// 风元素伤害加成（配对）
-    var anemoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (anemoDamage, .anemo) }
+    var anemoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (anemoDamage, .anemo) }
     /// 岩元素伤害加成（配对）
-    var geoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (geoDamage, .geo) }
+    var geoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (geoDamage, .geo) }
     /// 冰元素伤害加成（配对）
-    var cryoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.AvatarElement) { (cryoDamage, .cryo) }
+    var cryoDamagePaired: (amount: Double, element: PlayerDetail.Avatar.TeyvatElement) { (cryoDamage, .cryo) }
 }
 
-extension PlayerDetail.Avatar.AvatarElement {
+extension PlayerDetail.Avatar.TeyvatElement {
     var dmgBonusLabel: (text: String, icon: String) {
         switch self {
         case .cryo: return ("detailPortal.ECDDV.bonus.cryo", "UI_Icon_Element_Cryo")

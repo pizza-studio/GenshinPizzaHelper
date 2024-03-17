@@ -1,9 +1,6 @@
-//
-//  OpenAPI.swift
-//  GenshinPizzaHelper
-//
-//  Created by Bill Haku on 2022/9/17.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import Foundation
 import HBMihoyoAPI
@@ -61,7 +58,7 @@ extension API {
                 print(
                     "PLAYER DETAIL FETCH 刷新太快了，请在\(date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)秒后刷新"
                 )
-                throw PlayerDetail.PlayerDetailError.refreshTooFast(dateWhenRefreshable: date)
+                throw PlayerDetail.Exception.refreshTooFast(dateWhenRefreshable: date)
             } else {
                 let isMiyousheUID = Self.isMiyousheUID(uid: uid)
                 let enkaMirror = "https://profile.microgg.cn/api/uid/" + uid
@@ -105,7 +102,7 @@ extension API {
             _ uid: String,
             dateWhenNextRefreshable: Date?,
             completion: @escaping (
-                Result<Enka.PlayerDetailFetchModel, PlayerDetail.PlayerDetailError>
+                Result<Enka.PlayerDetailFetchModel, PlayerDetail.Exception>
             ) -> ()
         ) {
             if let date = dateWhenNextRefreshable, date > Date() {
@@ -196,7 +193,7 @@ extension API {
         private static func fetchPlayerDatas(
             _ uid: String,
             completion: @escaping (
-                PlayerDetailsFetchResult
+                PlayerDetail.FetchResult
             ) -> ()
         ) {
             let isMiyousheUID = Self.isMiyousheUID(uid: uid)

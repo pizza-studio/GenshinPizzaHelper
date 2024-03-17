@@ -1,15 +1,12 @@
-//
-//  Enum_ProfilePicture.swift
-//  GenshinPizzaHepler
-//
-//  Created by ShikiSuen on 2023/10/4.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import Foundation
 
 // MARK: - CostumeAsset
 
-public enum CostumeAsset: Int, CaseIterable {
+public enum CostumeAsset: Int, CaseIterable, Hashable {
     case QinCostumeSea = 200301
     case BarbaraCostumeSummertime = 201401
     case NingguangCostumeFloral = 202701

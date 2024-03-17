@@ -1,9 +1,6 @@
-//
-//  EnkaCharacterLoc.swift
-//
-//
-//  Created by Bill Haku on 2023/3/27.
-//
+// (c) 2022 and onwards Pizza Studio (GPL v3.0 License).
+// ====================
+// This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import Foundation
 
@@ -46,5 +43,15 @@ extension Enka.CharacterLoc {
         default:
             return en
         }
+    }
+}
+
+extension Enka.CharacterLoc.LocDict {
+    public func nameFromHashMap(_ hashID: Int) -> String {
+        self["\(hashID)"] ?? "unknown"
+    }
+
+    public func nameFromHashMap(_ hashID: String) -> String {
+        self[hashID] ?? "unknown"
     }
 }
