@@ -261,9 +261,13 @@ extension PlayerDetail {
     }
 }
 
-// MARK: - PlayerDetail.Avatar + Hashable, Equatable
+// MARK: - PlayerDetail.Avatar + Hashable, Equatable, Identifiable
 
-extension PlayerDetail.Avatar: Hashable, Equatable {
+extension PlayerDetail.Avatar: Hashable, Equatable, Identifiable {
+    /// Avatar 只会出现在一个展柜内。同一个展柜在理论上不会出现重复的角色。
+    /// 所以在这里用 enkaId 当 id 已经足够了。
+    public var id: Int { enkaID }
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(name)
         hasher.combine(element)

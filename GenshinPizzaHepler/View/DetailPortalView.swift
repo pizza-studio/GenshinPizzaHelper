@@ -738,10 +738,7 @@ private struct PlayerDetailSection: View {
                 // （Enka 被天空岛服务器喂屎的情形也会导致 playerDetail.avatars 成为空阵列。）
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(
-                            playerDetail.avatars,
-                            id: \.name
-                        ) { avatar in
+                        ForEach(playerDetail.avatars) { avatar in
                             Button {
                                 simpleTaptic(type: .medium)
                                 var transaction = Transaction()

@@ -52,7 +52,7 @@ struct CharacterDetailView: View {
     @ViewBuilder
     func coreBody(detail playerDetail: PlayerDetail) -> some View {
         TabView(selection: $showingCharacterName.animation()) {
-            ForEach(playerDetail.avatars, id: \.name) { avatar in
+            ForEach(playerDetail.avatars) { avatar in
                 framedCoreView(avatar)
             }
         }
