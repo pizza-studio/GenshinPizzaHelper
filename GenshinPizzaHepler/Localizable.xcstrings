@@ -7374,13 +7374,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "将该角色的面板总结为 Markdown"
+            "value" : "将该角色的面板以 Markdown 的形式写入剪贴板"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "將該角色的面板總結為 Markdown"
+            "value" : "將該角色的面板以 Markdown 的形式寫入剪貼簿"
           }
         }
       }
@@ -7438,13 +7438,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "将该角色的面板总结为纯文本"
+            "value" : "将该角色的面板以纯文本的形式写入剪贴板"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "將該角色的面板總結為純文字"
+            "value" : "將該角色的面板以純文字的形式寫入剪貼簿"
           }
         }
       }
