@@ -52,7 +52,8 @@ struct CharacterDetailView: View {
     @ViewBuilder
     func coreBody(detail playerDetail: PlayerDetail) -> some View {
         TabView(selection: $showingCharacterName.animation()) {
-            ForEach(playerDetail.avatars) { avatar in
+            // TabView 以 Name 为依据，不能仅依赖资料本身的 Identifiable 特性。
+            ForEach(playerDetail.avatars, id: \.name) { avatar in
                 framedCoreView(avatar)
             }
         }

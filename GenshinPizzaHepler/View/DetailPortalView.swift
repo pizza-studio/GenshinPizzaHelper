@@ -738,13 +738,15 @@ private struct PlayerDetailSection: View {
                 // （Enka 被天空岛服务器喂屎的情形也会导致 playerDetail.avatars 成为空阵列。）
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(playerDetail.avatars) { avatar in
+                        // TabView 以 Name 为依据，不能仅依赖资料本身的 Identifiable 特性。
+                        ForEach(playerDetail.avatars, id: \.name) { avatar in
                             Button {
                                 simpleTaptic(type: .medium)
                                 var transaction = Transaction()
                                 transaction.animation = .easeInOut
                                 transaction.disablesAnimations = !animateOnCallingCharacterShowcase
                                 withTransaction(transaction) {
+                                    // TabView 以 Name 为依据。
                                     showingCharacterName = avatar.name
                                 }
                             } label: {
