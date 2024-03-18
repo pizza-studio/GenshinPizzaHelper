@@ -6,6 +6,7 @@ import Defaults
 import DefaultsKeys
 import Foundation
 
+#if !os(watchOS)
 extension PlayerDetail.Avatar {
     public func summarize(locMap: Enka.Sputnik.CharLoc, useMarkDown: Bool = false) -> String {
         var resultLines = useMarkDown ? [] : ["//====================="]
@@ -127,3 +128,5 @@ extension PlayerDetail.Avatar {
         return resultLines.joined(separator: "\n")
     }
 }
+
+#endif

@@ -33,11 +33,13 @@ public struct PlayerDetail {
                     characterDictionary: characterMap,
                     uid: PlayerDetailFetchModel.uid
                 )
+                #if !os(watchOS)
                 if let newAvatar = newAvatar {
                     rawResultTXT[newAvatar.enkaID] = newAvatar
                         .summarize(locMap: localizedDictionary, useMarkDown: false)
                     rawResultMD[newAvatar.enkaID] = newAvatar.summarize(locMap: localizedDictionary, useMarkDown: true)
                 }
+                #endif
                 return newAvatar
             }
         } else { self.avatars = .init() }
