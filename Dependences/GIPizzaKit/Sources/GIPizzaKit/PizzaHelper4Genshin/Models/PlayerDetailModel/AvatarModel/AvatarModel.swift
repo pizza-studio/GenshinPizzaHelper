@@ -185,34 +185,29 @@ extension PlayerDetail {
         public func fetchArtifactRatings(collect: Bool = false) {
             print("Get artifact rating of \(name)")
             let artifactsModel = convert2ArtifactRatingModel()
-            PizzaHelperAPI
-                .getArtifactRatingScore(
-                    artifacts: artifactsModel
-                ) { artifactScores in
-                    DispatchQueue.main.async {
-                        self.artifactTotalScore = artifactScores.allpt
-                        self.artifactScoreRank = artifactScores.result
-                        for index in 0 ..< self.artifacts.count {
-                            switch self.artifacts[index].artifactType {
-                            case .flower:
-                                self.artifacts[index].score = artifactScores
-                                    .stat1pt
-                            case .plume:
-                                self.artifacts[index].score = artifactScores
-                                    .stat2pt
-                            case .sands:
-                                self.artifacts[index].score = artifactScores
-                                    .stat3pt
-                            case .goblet:
-                                self.artifacts[index].score = artifactScores
-                                    .stat4pt
-                            case .circlet:
-                                self.artifacts[index].score = artifactScores
-                                    .stat5pt
-                            }
-                        }
+            if let artifactScores = ArtifactRating.Appraiser(request: artifactsModel).evaluate() {
+                artifactTotalScore = artifactScores.allpt
+                artifactScoreRank = artifactScores.result
+                for index in 0 ..< artifacts.count {
+                    switch artifacts[index].artifactType {
+                    case .flower:
+                        artifacts[index].score = artifactScores
+                            .stat1pt
+                    case .plume:
+                        artifacts[index].score = artifactScores
+                            .stat2pt
+                    case .sands:
+                        artifacts[index].score = artifactScores
+                            .stat3pt
+                    case .goblet:
+                        artifacts[index].score = artifactScores
+                            .stat4pt
+                    case .circlet:
+                        artifacts[index].score = artifactScores
+                            .stat5pt
                     }
                 }
+            }
             DispatchQueue.global(qos: .background).async {
                 guard collect else { return }
                 // 要上传的记录资料得忽略掉任何评分加成选项。
