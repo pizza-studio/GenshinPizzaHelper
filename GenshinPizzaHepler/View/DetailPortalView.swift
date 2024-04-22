@@ -604,6 +604,17 @@ private struct SelectAccountSection: View {
             HStack(spacing: 0) {
                 HStack {
                     basicInfo.decoratedIcon(64)
+                    #if os(OSX) || targetEnvironment(macCatalyst)
+                        .contextMenu {
+                            Group {
+                                Button("↺") {
+                                    withAnimation {
+                                        vmDPV.refresh()
+                                    }
+                                }
+                            }
+                        }
+                    #endif
                     Spacer()
                 }
                 .frame(width: 74)
@@ -655,6 +666,17 @@ private struct SelectAccountSection: View {
             HStack(spacing: 0) {
                 HStack {
                     CharacterAsset.Paimon.decoratedIcon(64)
+                    #if os(OSX) || targetEnvironment(macCatalyst)
+                        .contextMenu {
+                            Group {
+                                Button("↺") {
+                                    withAnimation {
+                                        vmDPV.refresh()
+                                    }
+                                }
+                            }
+                        }
+                    #endif
                     Spacer()
                 }
                 .frame(width: 74)
