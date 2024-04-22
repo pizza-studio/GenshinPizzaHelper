@@ -499,6 +499,8 @@ struct DetailPortalView: View {
             }
             .scrollContentBackground(.hidden)
             .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
+            .disabled(isFetching)
+            .saturation(saturation)
             .refreshable {
                 detailPortalViewModel.refresh()
             }
@@ -550,6 +552,17 @@ struct DetailPortalView: View {
 
     @StateObject
     private var detailPortalViewModel: DetailPortalViewModel = .init()
+
+    private var isFetching: Bool {
+        switch detailPortalViewModel.playerDetailStatus {
+        case .progress: return true
+        default: return false
+        }
+    }
+
+    private var saturation: CGFloat {
+        isFetching ? 0 : 1
+    }
 }
 
 // MARK: - SelectAccountSection
