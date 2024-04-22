@@ -50,7 +50,7 @@ struct GetGachaClipboardView: View {
 
     fileprivate var isUrlInPasteboardIsInvalidAlertShow: Binding<Bool> {
         .init {
-            if case .urlInPasteboardIsInvalid(url: _) = alert {
+            if case .urlInPasteboardIsInvalid = alert {
                 return true
             } else {
                 return false

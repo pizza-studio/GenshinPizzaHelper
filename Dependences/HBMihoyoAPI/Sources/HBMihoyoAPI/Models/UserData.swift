@@ -386,55 +386,6 @@ extension SimplifiedUserData {
 // MARK: - FetchData
 
 public struct FetchData: Codable {
-    // MARK: Lifecycle
-
-    init(
-        // 用于测试和提供小组件预览视图的默认数据
-        currentResin: Int,
-        maxResin: Int,
-        resinRecoveryTime: String,
-
-        finishedTaskNum: Int,
-        totalTaskNum: Int,
-        isExtraTaskRewardReceived: Bool,
-
-        remainResinDiscountNum: Int,
-        resinDiscountNumLimit: Int,
-
-        currentExpeditionNum: Int,
-        maxExpeditionNum: Int,
-        expeditions: [Expedition],
-
-        currentHomeCoin: Int,
-        maxHomeCoin: Int,
-        homeCoinRecoveryTime: String,
-
-        transformer: TransformerData
-    ) {
-        self.currentResin = currentResin
-        self.maxResin = maxResin
-        self.resinRecoveryTime = resinRecoveryTime
-
-        self.finishedTaskNum = finishedTaskNum
-        self.totalTaskNum = totalTaskNum
-        self.isExtraTaskRewardReceived = isExtraTaskRewardReceived
-
-        self.remainResinDiscountNum = remainResinDiscountNum
-        self.resinDiscountNumLimit = resinDiscountNumLimit
-
-        self.currentExpeditionNum = currentExpeditionNum
-        self.maxExpeditionNum = maxExpeditionNum
-        self.expeditions = expeditions
-
-        self.currentHomeCoin = currentHomeCoin
-        self.maxHomeCoin = maxHomeCoin
-        self.homeCoinRecoveryTime = homeCoinRecoveryTime
-
-        self.transformer = transformer
-    }
-
-    // MARK: Internal
-
     // 树脂
     // decode
     let currentResin: Int
