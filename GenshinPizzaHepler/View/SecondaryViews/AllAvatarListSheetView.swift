@@ -14,7 +14,7 @@ import SwiftUI
 
 struct AllAvatarListSheetView: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     var data: AllAvatarDetailModel
 
@@ -71,7 +71,7 @@ struct AllAvatarListSheetView: View {
             .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
         .scrollContentBackground(.hidden)
-        .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
+        .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
         .navigationTitle("app.characters.title")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -92,7 +92,7 @@ struct AllAvatarListSheetView: View {
             }
         }
         .refreshable {
-            detailPortalViewModel.refresh()
+            vmDPV.refresh()
         }
     }
 

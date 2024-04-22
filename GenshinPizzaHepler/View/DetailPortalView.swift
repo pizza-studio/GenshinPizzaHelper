@@ -478,31 +478,31 @@ struct DetailPortalView: View {
     var body: some View {
         NavigationStack {
             List {
-                SelectAccountSection(selectedAccount: $detailPortalViewModel.selectedAccount)
+                SelectAccountSection(selectedAccount: $vmDPV.selectedAccount)
                     .listRowMaterialBackground()
-                if let account = detailPortalViewModel.selectedAccount {
+                if let account = vmDPV.selectedAccount {
                     PlayerDetailSection(account: account)
                         .listRowMaterialBackground()
                     Section {
                         AbyssInfoNavigator(
                             account: account,
-                            status: detailPortalViewModel.spiralAbyssDetailStatusCurrent
+                            status: vmDPV.spiralAbyssDetailStatusCurrent
                         )
-                        LedgerDataNavigator(account: account, status: detailPortalViewModel.ledgerDataStatus)
-                        BasicInfoNavigator(account: account, status: detailPortalViewModel.basicInfoStatus)
+                        LedgerDataNavigator(account: account, status: vmDPV.ledgerDataStatus)
+                        BasicInfoNavigator(account: account, status: vmDPV.basicInfoStatus)
 //                        VerificationNeededView(account: account) {
-//                            detailPortalViewModel.refresh()
+//                            vmDPV.refresh()
 //                        }
                     }
                     .listRowMaterialBackground()
                 }
             }
             .scrollContentBackground(.hidden)
-            .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
+            .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
             .disabled(isFetching)
             .saturation(saturation)
             .refreshable {
-                detailPortalViewModel.refresh()
+                vmDPV.refresh()
             }
             .navigationDestination(for: BasicInfos.self) { data in
                 BasicInfoView(data: data)
@@ -510,7 +510,7 @@ struct DetailPortalView: View {
             .navigationDestination(for: SpiralAbyssDetail.self) { data in
                 AbyssDetailDataDisplayView(
                     currentData: data,
-                    previousStatus: detailPortalViewModel.spiralAbyssDetailStatusPrevious
+                    previousStatus: vmDPV.spiralAbyssDetailStatusPrevious
                 )
             }
             .navigationDestination(for: LedgerData.self) { data in
@@ -520,7 +520,7 @@ struct DetailPortalView: View {
                 AllAvatarListSheetView(data: data)
             }
         }
-        .environmentObject(detailPortalViewModel)
+        .environmentObject(vmDPV)
         .alert(
             "是否允许我们收集您的深境螺旋数据？",
             isPresented: $askAllowAbyssDataCollectionAlert
@@ -551,10 +551,10 @@ struct DetailPortalView: View {
     private var askAllowAbyssDataCollectionAlert: Bool = false
 
     @StateObject
-    private var detailPortalViewModel: DetailPortalViewModel = .init()
+    private var vmDPV: DetailPortalViewModel = .init()
 
     private var isFetching: Bool {
-        switch detailPortalViewModel.playerDetailStatus {
+        switch vmDPV.playerDetailStatus {
         case .progress: return true
         default: return false
         }
@@ -569,7 +569,7 @@ struct DetailPortalView: View {
 
 private struct SelectAccountSection: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     // MARK: Internal
 
@@ -578,7 +578,7 @@ private struct SelectAccountSection: View {
 
     var body: some View {
         if let selectedAccount {
-            if case let .succeed((playerDetail, _)) = detailPortalViewModel.playerDetailStatus,
+            if case let .succeed((playerDetail, _)) = vmDPV.playerDetailStatus,
                let basicInfo = playerDetail.basicInfo {
                 normalAccountPickerView(
                     playerDetail: playerDetail,
@@ -732,7 +732,7 @@ extension PlayerDetailSection.DataFetchedView.ID: Identifiable {
 
 private struct PlayerDetailSection: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     struct DataFetchedView: View {
         // MARK: Internal
@@ -807,7 +807,7 @@ private struct PlayerDetailSection: View {
     let account: AccountConfiguration
 
     var playerDetailStatus: DetailPortalViewModel
-        .Status<(PlayerDetail, nextRefreshableDate: Date)> { detailPortalViewModel.playerDetailStatus }
+        .Status<(PlayerDetail, nextRefreshableDate: Date)> { vmDPV.playerDetailStatus }
 
     var body: some View {
         Section {
@@ -816,12 +816,12 @@ private struct PlayerDetailSection: View {
                 ProgressView().id(UUID())
             case let .fail(error):
                 ErrorView(account: account, apiPath: "", error: error) {
-                    detailPortalViewModel.fetchPlayerDetail()
+                    vmDPV.fetchPlayerDetail()
                 }
             case let .succeed((playerDetail, _)):
                 if playerDetail.avatars.isEmpty {
                     Button(action: {
-                        detailPortalViewModel.refresh()
+                        vmDPV.refresh()
                     }, label: {
                         Label {
                             VStack {
@@ -846,7 +846,7 @@ private struct PlayerDetailSection: View {
                     DataFetchedView(playerDetail: playerDetail, account: account)
                 }
             }
-            AllAvatarNavigator(account: account, status: detailPortalViewModel.allAvatarInfoStatus)
+            AllAvatarNavigator(account: account, status: vmDPV.allAvatarInfoStatus)
         }
     }
 }
@@ -855,7 +855,7 @@ private struct PlayerDetailSection: View {
 
 private struct AllAvatarNavigator: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     // MARK: Internal
 
@@ -875,7 +875,7 @@ private struct AllAvatarNavigator: View {
                     apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/character",
                     error: error
                 ) {
-                    detailPortalViewModel.fetchAllAvatarInfo()
+                    vmDPV.fetchAllAvatarInfo()
                 }
             }
         case let .succeed(data):
@@ -912,7 +912,7 @@ private struct AllAvatarNavigator: View {
 
 private struct LedgerDataNavigator: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     // MARK: Internal
 
@@ -933,7 +933,7 @@ private struct LedgerDataNavigator: View {
                         apiPath: "https://hk4e-api.mihoyo.com/event/ys_ledger/monthInfo",
                         error: error
                     ) {
-                        detailPortalViewModel.fetchLedgerData()
+                        vmDPV.fetchLedgerData()
                     }
                 }
             case let .succeed(data):
@@ -988,7 +988,7 @@ private struct LedgerDataNavigator: View {
 
 private struct AbyssInfoNavigator: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     // MARK: Internal
 
@@ -1009,7 +1009,7 @@ private struct AbyssInfoNavigator: View {
                         apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/spiralAbyss",
                         error: error
                     ) {
-                        detailPortalViewModel.fetchSpiralAbyssInfoCurrent()
+                        vmDPV.fetchSpiralAbyssInfoCurrent()
                     }
                 }
             case let .succeed(data):
@@ -1022,7 +1022,7 @@ private struct AbyssInfoNavigator: View {
 
     fileprivate struct AbyssInfoView: View {
         @EnvironmentObject
-        private var detailPortalViewModel: DetailPortalViewModel
+        private var vmDPV: DetailPortalViewModel
 
         // MARK: Internal
 
@@ -1061,7 +1061,7 @@ private struct AbyssInfoNavigator: View {
                     SheetCaller(forceDarkMode: false, sansFinishButton: true) {
                         AbyssDetailDataDisplayView(
                             currentData: abyssInfo,
-                            previousStatus: detailPortalViewModel.spiralAbyssDetailStatusPrevious
+                            previousStatus: vmDPV.spiralAbyssDetailStatusPrevious
                         )
                     } label: {
                         displayLabel
@@ -1172,7 +1172,7 @@ private struct LedgerView: View {
             .listRowMaterialBackground()
         }
         .scrollContentBackground(.hidden)
-        .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
+        .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
         .navigationTitle("app.detailPortal.ledger.title")
     }
 
@@ -1224,14 +1224,14 @@ private struct LedgerView: View {
     }
 
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 }
 
 // MARK: - BasicInfoNavigator
 
 private struct BasicInfoNavigator: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     // MARK: Internal
 
@@ -1251,7 +1251,7 @@ private struct BasicInfoNavigator: View {
                     apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index",
                     error: error
                 ) {
-                    detailPortalViewModel.fetchBasicInfo()
+                    vmDPV.fetchBasicInfo()
                 }
             }
         case let .succeed(data):
@@ -1291,7 +1291,7 @@ private struct BasicInfoNavigator: View {
 
 private struct BasicInfoView: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     // MARK: Internal
 
@@ -1372,7 +1372,7 @@ private struct BasicInfoView: View {
             .listRowMaterialBackground()
         }
         .scrollContentBackground(.hidden)
-        .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
+        .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
         .navigationTitle("app.detailPortal.basicInfo.title")
     }
 
@@ -1492,7 +1492,7 @@ private struct BasicInfoView: View {
 
 private struct ErrorView: View {
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 
     let account: AccountConfiguration
     let apiPath: String
@@ -1504,7 +1504,7 @@ private struct ErrorView: View {
         if let miHoYoAPIError = error as? MiHoYoAPIError,
            case .verificationNeeded = miHoYoAPIError {
             VerificationNeededView(account: account, challengePath: apiPath) {
-                detailPortalViewModel.refresh()
+                vmDPV.refresh()
             }
         } else {
             Button {
@@ -1574,7 +1574,7 @@ private struct VerificationNeededView: View {
                                 }
                             }
                         )
-                        .listContainerBackground(fileNameOverride: detailPortalViewModel.currentAccountNamecardFileName)
+                        .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Button("sys.cancel") {
@@ -1672,7 +1672,7 @@ private struct VerificationNeededView: View {
     private var sheetItem: SheetItem?
 
     @EnvironmentObject
-    private var detailPortalViewModel: DetailPortalViewModel
+    private var vmDPV: DetailPortalViewModel
 }
 
 // MARK: - InformationRowView
