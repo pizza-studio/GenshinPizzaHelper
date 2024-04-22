@@ -282,6 +282,17 @@ struct ContactUsView: View {
                 }
                 if isShikiDetailShow {
                     Link(
+                        destination: URL(string: "https://music.163.com/#/artist/desc?id=60323623")!
+                    ) {
+                        Label {
+                            Text("contact.163MusicArtistHP")
+                        } icon: {
+                            Image("icon.163CloudMusic")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                    Link(
                         destination: URL(string: "https://shikisuen.gitee.io/")!
                     ) {
                         Label {
