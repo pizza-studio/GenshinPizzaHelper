@@ -284,23 +284,33 @@ private struct AbyssBattleView: View {
                     }
                 }
             }
-            ForEach(battleData.avatars, id: \.id) { avatarData in
+            ForEach(guardedAvatars, id: \.id) { avatarData in
                 let theAsset = CharacterAsset.match(id: avatarData.id)
-                if ThisDevice.isHDPhoneOrPodTouch {
-                    theAsset.decoratedIcon(size, cutTo: .head, roundRect: true)
-                        .corneredTag(verbatim: "\(avatarData.level)", alignment: .bottomTrailing, textSize: 11)
-                        .frame(height: size + 5)
-                } else {
-                    theAsset.cardIcon(size / 0.74)
-                        .corneredTag(verbatim: "Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
-                        .padding(.vertical, 2)
-                }
+                ZStack {
+                    if ThisDevice.isHDPhoneOrPodTouch {
+                        theAsset.decoratedIcon(size, cutTo: .head, roundRect: true)
+                            .corneredTag(verbatim: "\(avatarData.level)", alignment: .bottomTrailing, textSize: 11)
+                            .frame(height: size + 5)
+                    } else {
+                        theAsset.cardIcon(size / 0.74)
+                            .corneredTag(verbatim: "Lv.\(avatarData.level)", alignment: .bottom, textSize: 11)
+                            .padding(.vertical, 2)
+                    }
+                }.opacity(theAsset == .Paimon ? 0 : 1)
                 if avatarData.id != battleData.avatars.last!.id {
                     Spacer().frame(minWidth: 0)
                 }
             }
             Spacer().frame(minWidth: 0, maxWidth: hasTermLabel ? .infinity : nil)
         }.environmentObject(orientation)
+    }
+
+    var guardedAvatars: [SpiralAbyssDetail.Floor.Level.Battle.Avatar] {
+        var result = battleData.avatars
+        while result.count < 4 {
+            result.append(.init(id: -213, icon: "", level: -213, rarity: 5))
+        }
+        return result
     }
 
     // MARK: Private

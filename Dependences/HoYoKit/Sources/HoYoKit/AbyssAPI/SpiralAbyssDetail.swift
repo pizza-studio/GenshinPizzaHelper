@@ -40,6 +40,17 @@ public struct SpiralAbyssDetail: Codable, DecodableFromMiHoYoAPIJSONResult, Hash
 
             public struct Battle: Codable, Hashable {
                 public struct Avatar: Codable, Hashable {
+                    // MARK: Lifecycle
+
+                    public init(id: Int, icon: String, level: Int, rarity: Int) {
+                        self.id = id
+                        self.icon = icon
+                        self.level = level
+                        self.rarity = rarity
+                    }
+
+                    // MARK: Public
+
                     /// 角色ID
                     public var id: Int
                     /// 角色头像
