@@ -667,6 +667,13 @@
 		EAEE8ED12AE08D9F00F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
 		EAEE8ED22AE08DA000F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
 		EAEE8ED32AE08DA100F406E4 /* AnyLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */; };
+		EAF381512BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */; };
+		EAF381522BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */; };
+		EAF381532BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */; };
+		EAF381542BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */; };
+		EAF381552BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */; };
+		EAF381562BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */; };
+		EAF381572BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */; };
 		EAF43C8728A0132B00D89787 /* ExpeditionInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */; };
 		EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
 		EAF43C8B28A0144900D89787 /* TransformerInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8A28A0144900D89787 /* TransformerInfoBar.swift */; };
@@ -1060,6 +1067,7 @@
 		EAEC41F528B0994C0056D182 /* 周本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周本.png"; sourceTree = "<group>"; };
 		EAEC41F628B0994C0056D182 /* 洞天宝钱.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "洞天宝钱.png"; sourceTree = "<group>"; };
 		EAEE8ECC2AE08D9A00F406E4 /* AnyLocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyLocalizedError.swift; sourceTree = "<group>"; };
+		EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		EAF43C8428A0121100D89787 /* HomeCoinInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinInfoBar.swift; sourceTree = "<group>"; };
 		EAF43C8628A0132B00D89787 /* ExpeditionInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpeditionInfoBar.swift; sourceTree = "<group>"; };
 		EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskInfoBar.swift; sourceTree = "<group>"; };
@@ -1755,6 +1763,7 @@
 		EABD7DAD2886B2D200B7F0FD = {
 			isa = PBXGroup;
 			children = (
+				EAF381502BD794CC0095C0E4 /* PrivacyInfo.xcprivacy */,
 				5B3DF7BF2BA49C040015ACC9 /* DevDocs */,
 				EAA2D4112931C36F00BC94A8 /* Settings.bundle */,
 				BFBDD66C28F3F2B80022B79D /* Packages */,
@@ -2198,6 +2207,7 @@
 				5BD1C6652A2A1FC90043C2B1 /* WeaponTalentMaterial.xcassets in Resources */,
 				5BD1C6662A2A1FC90043C2B1 /* 每日任务.png in Resources */,
 				BFF683F92A374E17005470EA /* icon.ophelper.png in Resources */,
+				EAF381522BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */,
 				5BD1C6672A2A1FC90043C2B1 /* icon.png in Resources */,
 				BFCC414D2B29A82700ECB10D /* InfoPlist.xcstrings in Resources */,
 				5BD1C6682A2A1FC90043C2B1 /* app.css in Resources */,
@@ -2223,6 +2233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF85D78628CE18F2003F3479 /* Assets.xcassets in Resources */,
+				EAF381562BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */,
 				BFCC41512B29A82700ECB10D /* InfoPlist.xcstrings in Resources */,
 				BFF683FE2A374E17005470EA /* icon.ophelper.png in Resources */,
 				BFF683F62A374E17005470EA /* icon.ophelper.old.png in Resources */,
@@ -2238,6 +2249,7 @@
 				EACBDA5628C9E92800CEE176 /* Assets.xcassets in Resources */,
 				BFF683F52A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				BFCC41502B29A82700ECB10D /* InfoPlist.xcstrings in Resources */,
+				EAF381552BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */,
 				BFF683FC2A374E17005470EA /* icon.ophelper.png in Resources */,
 				BFCC067128C9B6A2003E4A54 /* Preview Assets.xcassets in Resources */,
 				BFF683ED2A374CA1005470EA /* Assets.xcassets in Resources */,
@@ -2256,6 +2268,7 @@
 				EAEC41F928B0994C0056D182 /* 参量质变仪.png in Resources */,
 				EA78BF0B290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				5BAF709729E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */,
+				EAF381542BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */,
 				5BAF70A329E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */,
 				BFFD821228A5F9A100616CE1 /* Assets.xcassets in Resources */,
 				5BAF70A629E5764E0096228B /* LICENSE.txt in Resources */,
@@ -2280,6 +2293,7 @@
 				EA7F67CA289D711200D2CE29 /* README.md in Resources */,
 				BFFD821128A5F9A000616CE1 /* Assets.xcassets in Resources */,
 				5BAF709629E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */,
+				EAF381532BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */,
 				5BAF70A229E5764E0096228B /* RobotoCondensed-Regular.ttf in Resources */,
 				5BAF70A529E5764E0096228B /* LICENSE.txt in Resources */,
 				BFF683FA2A374E17005470EA /* icon.ophelper.png in Resources */,
@@ -2301,6 +2315,7 @@
 				EA78BF09290806000042AC4C /* WeaponTalentMaterial.xcassets in Resources */,
 				EA2FF0E928B093AE0050C016 /* 每日任务.png in Resources */,
 				BFF683F82A374E17005470EA /* icon.ophelper.png in Resources */,
+				EAF381512BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */,
 				BFF683F02A374E17005470EA /* icon.ophelper.old.png in Resources */,
 				BFCC414C2B29A82700ECB10D /* InfoPlist.xcstrings in Resources */,
 				EABD7DCD2886B3D700B7F0FD /* icon.png in Resources */,
@@ -2325,6 +2340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF381572BD794CC0095C0E4 /* PrivacyInfo.xcprivacy in Resources */,
 				BFCC41522B29A82700ECB10D /* InfoPlist.xcstrings in Resources */,
 				BF85D78728CE18F3003F3479 /* Assets.xcassets in Resources */,
 				BFCC415A2B29A83400ECB10D /* Localizable.xcstrings in Resources */,
