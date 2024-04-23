@@ -607,7 +607,7 @@ private struct SelectAccountSection: View {
                     #if os(OSX) || targetEnvironment(macCatalyst)
                         .contextMenu {
                             Group {
-                                Button("↺") {
+                                Button("↺".description) {
                                     withAnimation {
                                         vmDPV.refresh()
                                     }
@@ -669,7 +669,7 @@ private struct SelectAccountSection: View {
                     #if os(OSX) || targetEnvironment(macCatalyst)
                         .contextMenu {
                             Group {
-                                Button("↺") {
+                                Button("↺".description) {
                                     withAnimation {
                                         vmDPV.refresh()
                                     }
