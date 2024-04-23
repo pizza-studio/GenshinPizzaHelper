@@ -1038,6 +1038,20 @@ extension CharacterAsset {
                 .defAmp: .highest,
                 .def: .medium,
             ]
+        case .Arlecchino:
+            // By ShikiSuen:
+            return [
+                .cr: .highest,
+                .cd: .highest,
+                .er: .none,
+                .em: .none,
+                .atkAmp: .high,
+                .atk: .low,
+                .hpAmp: .high,
+                .hp: .low,
+                .defAmp: .none,
+                .def: .none,
+            ]
         }
     }
 }

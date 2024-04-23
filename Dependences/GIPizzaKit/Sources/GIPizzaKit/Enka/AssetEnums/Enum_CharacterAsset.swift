@@ -92,6 +92,7 @@ public enum CharacterAsset: Int, CaseIterable, Hashable {
     case Gaming = 10000092
     case Xianyun = 10000093
     case Chiori = 10000094
+    case Arlecchino = 10000096
 }
 
 extension CharacterAsset {
@@ -218,6 +219,7 @@ extension CharacterAsset {
         case .Gaming: return "UI_AvatarIcon_Gaming"
         case .Xianyun: return "UI_AvatarIcon_Liuyun"
         case .Chiori: return "UI_AvatarIcon_Chiori"
+        case .Arlecchino: return "UI_AvatarIcon_Arlecchino"
         }
     }
 
@@ -308,6 +310,7 @@ extension CharacterAsset {
         case .Gaming: return .UI_NameCardPic_Gaming_P
         case .Xianyun: return .UI_NameCardPic_Liuyun_P
         case .Chiori: return .UI_NameCardPic_Chiori_P
+        case .Arlecchino: return .UI_NameCardPic_Arlecchino_P
         }
     }
 }
@@ -399,6 +402,7 @@ extension CharacterAsset {
         case .Gaming: return [7700]
         case .Xianyun: return [7800]
         case .Chiori: return [7900]
+        case .Arlecchino: return [8000]
         }
     }
 }
@@ -490,6 +494,7 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Gaming: return .talentProsperity
         case .Xianyun: return .talentGold
         case .Chiori: return .talentLight
+        case .Arlecchino: return .talentOrder
         }
     }
 }
@@ -581,6 +586,7 @@ extension CharacterAsset {
         case .Gaming: return .pyro
         case .Xianyun: return .anemo
         case .Chiori: return .geo
+        case .Arlecchino: return .pyro
         }
     }
 }

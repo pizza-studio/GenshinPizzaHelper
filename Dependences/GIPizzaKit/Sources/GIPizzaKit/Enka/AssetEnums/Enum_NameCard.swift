@@ -198,14 +198,19 @@ public enum NameCard: Int, CaseIterable, _DefaultsSerializable {
     case UI_NameCardPic_Navia_P = 210184
     case UI_NameCardPic_Chevreuse_P = 210185
     case UI_NameCardPic_Bp29_P = 210186
-    case UI_NameCardPic_Liuyun_P = 21087
-    case UI_NameCardPic_Gaming_P = 21088
-    case UI_NameCardPic_Chenyu1_P = 21089
-    case UI_NameCardPic_OfferingSilong_P = 21090
-    case UI_NameCardPic_Bp30_P = 21091
-    case UI_NameCardPic_OST4_P = 21092
-    case UI_NameCardPic_Chiori_P = 21093
-    case UI_NameCardPic_Bp31_P = 21094
+    case UI_NameCardPic_Liuyun_P = 210187
+    case UI_NameCardPic_Gaming_P = 210188
+    case UI_NameCardPic_Chenyu1_P = 210189
+    case UI_NameCardPic_OfferingSilong_P = 210190
+    case UI_NameCardPic_Bp30_P = 210191
+    case UI_NameCardPic_OST4_P = 210192
+    case UI_NameCardPic_Chiori_P = 210193
+    case UI_NameCardPic_Bp31_P = 210194
+    case UI_NameCardPic_Arlecchino_P = 210195
+    case UI_NameCardPic_Deep_P = 210196
+    case UI_NameCardPic_Tzz9_P = 210197
+    case UI_NameCardPic_WishingPond_P = 210198
+    case UI_NameCardPic_GreatFestivalV2_P = 210199
 }
 
 // MARK: Identifiable, Hashable
