@@ -121,6 +121,7 @@
 "$asset.character:Gaming" = "嘉明";
 "$asset.character:Xianyun" = "閑雲";
 "$asset.character:Chiori" = "千織";
+"$asset.character:Arlecchino" = "アルレッキーノ";
 
 // MARK: - Weapon Names
 
@@ -229,6 +230,7 @@
 "$asset.weapon:CalamityQueller" = "息災";
 "$asset.weapon:EngulfingLightning" = "草薙の稲光";
 "$asset.weapon:StaffOfTheScarletSands" = "赤砂の杖";
+"$asset.weapon:CrimsonMoonSemblance" = "赤月のシルエット";
 "$asset.weapon:ApprenticesNotes" = "生徒ノート";
 "$asset.weapon:PocketGrimoire" = "ポケット魔導書";
 "$asset.weapon:MagicGuide" = "魔導緒論";
@@ -499,3 +501,8 @@
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "アルバム·燦めく星たち";
 "$asset.nameCard:UI_NameCardPic_Chiori_P" = "千織·展袂";
 "$asset.nameCard:UI_NameCardPic_Bp31_P" = "紀行·魔萃";
+"$asset.nameCard:UI_NameCardPic_Arlecchino_P" = "アルレッキーノ·規則";
+"$asset.nameCard:UI_NameCardPic_Deep_P" = "フォンテーヌ·調律";
+"$asset.nameCard:UI_NameCardPic_Tzz9_P" = "アチーブメント·掣鯨";
+"$asset.nameCard:UI_NameCardPic_WishingPond_P" = "フォンテーヌ·ルキナ";
+"$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "紀行·邦魂";

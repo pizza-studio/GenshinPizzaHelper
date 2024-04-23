@@ -121,6 +121,7 @@
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
 "$asset.character:Chiori" = "Chiori";
+"$asset.character:Arlecchino" = "Arlecchino";
 
 // MARK: - Weapon Names
 
@@ -229,6 +230,7 @@
 "$asset.weapon:CalamityQueller" = "Flagello delle calamità";
 "$asset.weapon:EngulfingLightning" = "Fulmine fagocitante";
 "$asset.weapon:StaffOfTheScarletSands" = "Bastone delle sabbie scarlatte";
+"$asset.weapon:CrimsonMoonSemblance" = "Forma della Luna cremisi";
 "$asset.weapon:ApprenticesNotes" = "Appunti dell'apprendista";
 "$asset.weapon:PocketGrimoire" = "Grimorio tascabile";
 "$asset.weapon:MagicGuide" = "Manuale di magia";
@@ -501,3 +503,8 @@
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "Album: The Stellar Moments";
 "$asset.nameCard:UI_NameCardPic_Chiori_P" = "Chiori: Maniche mozzafiato";
 "$asset.nameCard:UI_NameCardPic_Bp31_P" = "Appunti di viaggio: Convergenza arcana";
+"$asset.nameCard:UI_NameCardPic_Arlecchino_P" = "Arlecchino: Editto";
+"$asset.nameCard:UI_NameCardPic_Deep_P" = "Fontaine: Armonizzazione";
+"$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Obiettivo: Cacciabalene";
+"$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Fontaine: Lucine";
+"$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "Appunti di viaggio: Regni del rock";

@@ -121,6 +121,7 @@
 "$asset.character:Gaming" = "가명";
 "$asset.character:Xianyun" = "한운";
 "$asset.character:Chiori" = "치오리";
+"$asset.character:Arlecchino" = "아를레키노";
 
 // MARK: - Weapon Names
 
@@ -229,6 +230,7 @@
 "$asset.weapon:CalamityQueller" = "식재";
 "$asset.weapon:EngulfingLightning" = "예초의 번개";
 "$asset.weapon:StaffOfTheScarletSands" = "적색 사막의 지팡이";
+"$asset.weapon:CrimsonMoonSemblance" = "붉은 달의 형상";
 "$asset.weapon:ApprenticesNotes" = "학도의 노트";
 "$asset.weapon:PocketGrimoire" = "포켓 주술서";
 "$asset.weapon:MagicGuide" = "마도 서론";
@@ -499,3 +501,8 @@
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "앨범·빛나는 뭇별";
 "$asset.nameCard:UI_NameCardPic_Chiori_P" = "치오리·펼친 소매";
 "$asset.nameCard:UI_NameCardPic_Bp31_P" = "기행·응축된 신비";
+"$asset.nameCard:UI_NameCardPic_Arlecchino_P" = "아를레키노·규칙";
+"$asset.nameCard:UI_NameCardPic_Deep_P" = "폰타인·조율";
+"$asset.nameCard:UI_NameCardPic_Tzz9_P" = "업적·포경";
+"$asset.nameCard:UI_NameCardPic_WishingPond_P" = "폰타인·루키나 분수";
+"$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "기행·로큰롤";

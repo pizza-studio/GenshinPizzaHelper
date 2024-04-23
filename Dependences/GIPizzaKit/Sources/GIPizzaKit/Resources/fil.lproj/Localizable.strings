@@ -121,6 +121,7 @@
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
 "$asset.character:Chiori" = "Chiori";
+"$asset.character:Arlecchino" = "Arlecchino";
 
 // MARK: - Weapon Names
 
@@ -229,6 +230,7 @@
 "$asset.weapon:CalamityQueller" = "Calamity Queller";
 "$asset.weapon:EngulfingLightning" = "Engulfing Lightning";
 "$asset.weapon:StaffOfTheScarletSands" = "Staff of the Scarlet Sands";
+"$asset.weapon:CrimsonMoonSemblance" = "Crimson Moon's Semblance";
 "$asset.weapon:ApprenticesNotes" = "Apprentice's Notes";
 "$asset.weapon:PocketGrimoire" = "Pocket Grimoire";
 "$asset.weapon:MagicGuide" = "Magic Guide";
@@ -499,3 +501,8 @@
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "Album: The Stellar Moments";
 "$asset.nameCard:UI_NameCardPic_Chiori_P" = "Chiori: Spectacular Sleeves";
 "$asset.nameCard:UI_NameCardPic_Bp31_P" = "Travel Notes: Arcane Amassing";
+"$asset.nameCard:UI_NameCardPic_Arlecchino_P" = "Arlecchino: Edict";
+"$asset.nameCard:UI_NameCardPic_Deep_P" = "Fontaine: Attunement";
+"$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Achievement: Whalewrangler";
+"$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Fontaine: Lucine";
+"$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "Travel Notes: The Realms Rocked";

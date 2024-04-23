@@ -121,6 +121,7 @@
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
 "$asset.character:Chiori" = "Chiori";
+"$asset.character:Arlecchino" = "Arlecchino";
 
 // MARK: - Weapon Names
 
@@ -229,6 +230,7 @@
 "$asset.weapon:CalamityQueller" = "Hủy Diệt";
 "$asset.weapon:EngulfingLightning" = "Đoạn Thảo Trường Đao";
 "$asset.weapon:StaffOfTheScarletSands" = "Quyền Trượng Cát Đỏ";
+"$asset.weapon:CrimsonMoonSemblance" = "Hình Thái Xích Nguyệt";
 "$asset.weapon:ApprenticesNotes" = "Nhật Ký Học Sinh";
 "$asset.weapon:PocketGrimoire" = "Sổ Tay Ma Pháp";
 "$asset.weapon:MagicGuide" = "Tóm Tắt Ma Pháp";
@@ -501,3 +503,8 @@
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "Tuyển Tập - Chòm Sao Lấp Lánh";
 "$asset.nameCard:UI_NameCardPic_Chiori_P" = "Chiori - Tay Áo Trình Diễn";
 "$asset.nameCard:UI_NameCardPic_Bp31_P" = "Nhật Ký Hành Trình - Hóa Kỹ";
+"$asset.nameCard:UI_NameCardPic_Arlecchino_P" = "Arlecchino - Sắc Lệnh";
+"$asset.nameCard:UI_NameCardPic_Deep_P" = "Fontaine - Chỉnh Âm";
+"$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Thành Tựu - Săn Cá Voi";
+"$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Fontaine - Suối Sương";
+"$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "Nhật Ký Hành Trình - Rung Chuyển";

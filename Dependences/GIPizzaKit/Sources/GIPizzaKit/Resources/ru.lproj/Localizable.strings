@@ -121,6 +121,7 @@
 "$asset.character:Gaming" = "Ка Мин";
 "$asset.character:Xianyun" = "Сянь Юнь";
 "$asset.character:Chiori" = "Тиори";
+"$asset.character:Arlecchino" = "Арлекино";
 
 // MARK: - Weapon Names
 
@@ -229,6 +230,7 @@
 "$asset.weapon:CalamityQueller" = "Усмиритель бед";
 "$asset.weapon:EngulfingLightning" = "Сияющая жатва";
 "$asset.weapon:StaffOfTheScarletSands" = "Посох алых песков";
+"$asset.weapon:CrimsonMoonSemblance" = "Очертания алой луны";
 "$asset.weapon:ApprenticesNotes" = "Записи ученика";
 "$asset.weapon:PocketGrimoire" = "Карманный гримуар";
 "$asset.weapon:MagicGuide" = "Руководство по магии";
@@ -501,3 +503,8 @@
 "$asset.nameCard:UI_NameCardPic_OST4_P" = "The Stellar Moments";
 "$asset.nameCard:UI_NameCardPic_Chiori_P" = "Развевающиеся рукава";
 "$asset.nameCard:UI_NameCardPic_Bp31_P" = "Мистическое скопление";
+"$asset.nameCard:UI_NameCardPic_Arlecchino_P" = "Правила";
+"$asset.nameCard:UI_NameCardPic_Deep_P" = "Настройка инструмента";
+"$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Укротитель китов";
+"$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Люсин";
+"$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "Рок-королевства";
