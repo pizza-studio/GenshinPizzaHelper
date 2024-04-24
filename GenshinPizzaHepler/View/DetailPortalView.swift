@@ -550,10 +550,6 @@ struct DetailPortalView: View {
 
     @StateObject
     private var vmDPV: DetailPortalViewModel = .init()
-
-    private var saturation: CGFloat {
-        isFetching ? 0 : 1
-    }
 }
 
 // MARK: - SelectAccountSection
