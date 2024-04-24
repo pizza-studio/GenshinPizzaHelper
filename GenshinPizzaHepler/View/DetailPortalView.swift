@@ -507,8 +507,13 @@ struct DetailPortalView: View {
             }
             .navigationDestination(for: SpiralAbyssDetail.self) { data in
                 AbyssDetailDataDisplayView(
-                    currentData: data,
-                    previousStatus: vmDPV.spiralAbyssDetailStatusPrevious
+                    currentSeason: data,
+                    previousSeason: {
+                        switch vmDPV.spiralAbyssDetailStatusPrevious {
+                        case let .succeed(prevData): return prevData
+                        default: return nil
+                        }
+                    }()
                 )
             }
             .navigationDestination(for: LedgerData.self) { data in
@@ -1069,8 +1074,13 @@ private struct AbyssInfoNavigator: View {
                 if OS.type == .macOS {
                     SheetCaller(forceDarkMode: false, sansFinishButton: true) {
                         AbyssDetailDataDisplayView(
-                            currentData: abyssInfo,
-                            previousStatus: vmDPV.spiralAbyssDetailStatusPrevious
+                            currentSeason: abyssInfo,
+                            previousSeason: {
+                                switch vmDPV.spiralAbyssDetailStatusPrevious {
+                                case let .succeed(prevData): return prevData
+                                default: return nil
+                                }
+                            }()
                         )
                     } label: {
                         displayLabel

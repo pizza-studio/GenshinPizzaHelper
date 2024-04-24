@@ -15,15 +15,15 @@ import SwiftUI
 struct AbyssDetailDataDisplayView: View {
     // MARK: Lifecycle
 
-    public init(currentData: SpiralAbyssDetail, previousStatus: DetailPortalViewModel.Status<SpiralAbyssDetail>) {
-        self.currentData = currentData
-        self.previousStatus = previousStatus
+    public init(currentSeason: SpiralAbyssDetail, previousSeason: SpiralAbyssDetail?) {
+        self.currentData = currentSeason
+        self.previousData = previousSeason
     }
 
     // MARK: Internal
 
     let currentData: SpiralAbyssDetail
-    let previousStatus: DetailPortalViewModel.Status<SpiralAbyssDetail>
+    let previousData: SpiralAbyssDetail?
 
     @Namespace
     var animation
@@ -126,13 +126,6 @@ struct AbyssDetailDataDisplayView: View {
 
     private var columns: Int {
         min(max(Int(floor($containerSize.wrappedValue.width / 200)), 2), 4)
-    }
-
-    private var previousData: SpiralAbyssDetail? {
-        switch previousStatus {
-        case .fail, .progress: return nil
-        case let .succeed(dataPrev): return dataPrev
-        }
     }
 
     private var data: SpiralAbyssDetail {
