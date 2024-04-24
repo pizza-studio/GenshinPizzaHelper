@@ -22,11 +22,14 @@ struct InfiniteProgressBar: View {
             .overlay(GeometryReader { geo in
                 overlayRect(in: geo.frame(in: .local))
             })
+            .clipped()
+            .clipShape(RoundedRectangle(cornerRadius: 4))
     }
 
     // MARK: Private
 
-    @State private var offset = minOffset
+    @State
+    private var offset = minOffset
 
     private func overlayRect(in rect: CGRect) -> some View {
         let width = rect.width * coverPercentage
