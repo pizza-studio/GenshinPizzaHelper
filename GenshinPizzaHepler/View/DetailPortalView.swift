@@ -499,7 +499,6 @@ struct DetailPortalView: View {
             }
             .scrollContentBackground(.hidden)
             .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
-            .disabled(isFetching)
             .refreshable {
                 vmDPV.refresh()
             }
@@ -551,13 +550,6 @@ struct DetailPortalView: View {
 
     @StateObject
     private var vmDPV: DetailPortalViewModel = .init()
-
-    private var isFetching: Bool {
-        switch vmDPV.playerDetailStatus {
-        case .progress: return true
-        default: return false
-        }
-    }
 
     private var saturation: CGFloat {
         isFetching ? 0 : 1
