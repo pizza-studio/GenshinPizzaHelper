@@ -901,7 +901,7 @@ private struct AllAvatarNavigator: View {
                             .decoratedIcon(30, cutTo: cutShouldersForSmallAvatarPhotos ? .face : .shoulder)
                     }
                 }
-                if OS.type == .macOS {
+                if #unavailable(macOS 14), OS.type == .macOS {
                     SheetCaller(forceDarkMode: false) {
                         AllAvatarListSheetView(data: data)
                     } label: {
@@ -978,7 +978,7 @@ private struct LedgerDataNavigator: View {
 
         var body: some View {
             InformationRowView("app.detailPortal.ledger.title") {
-                if OS.type == .macOS {
+                if #unavailable(macOS 14), OS.type == .macOS {
                     SheetCaller(forceDarkMode: false) {
                         LedgerView(data: ledgerData)
                     } label: {
@@ -1071,7 +1071,7 @@ private struct AbyssInfoNavigator: View {
 
         var body: some View {
             InformationRowView("app.detailPortal.abyss.title") {
-                if OS.type == .macOS {
+                if #unavailable(macOS 14), OS.type == .macOS {
                     SheetCaller(forceDarkMode: false, sansFinishButton: true) {
                         AbyssDetailDataDisplayView(
                             currentSeason: abyssInfo,
@@ -1286,7 +1286,7 @@ private struct BasicInfoNavigator: View {
                 Spacer()
             }
             InformationRowView("app.detailPortal.basicInfo.title") {
-                if OS.type == .macOS {
+                if #unavailable(macOS 14), OS.type == .macOS {
                     SheetCaller(forceDarkMode: false) {
                         BasicInfoView(data: data)
                     } label: {
