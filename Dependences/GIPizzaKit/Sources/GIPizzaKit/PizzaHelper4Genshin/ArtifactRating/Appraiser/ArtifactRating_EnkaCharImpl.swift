@@ -1039,16 +1039,16 @@ extension CharacterAsset {
                 .def: .medium,
             ]
         case .Arlecchino:
-            // By ShikiSuen:
+            // By Kamihimmel:
             return [
                 .cr: .highest,
                 .cd: .highest,
                 .er: .none,
-                .em: .none,
+                .em: .medium,
                 .atkAmp: .high,
                 .atk: .low,
-                .hpAmp: .high,
-                .hp: .low,
+                .hpAmp: .none,
+                .hp: .none,
                 .defAmp: .none,
                 .def: .none,
             ]
