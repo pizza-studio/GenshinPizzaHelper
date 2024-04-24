@@ -827,7 +827,7 @@ private struct PlayerDetailSection: View {
         Section {
             switch playerDetailStatus {
             case .progress:
-                ProgressView().id(UUID())
+                InfiniteProgressBar().id(UUID())
             case let .fail(error):
                 ErrorView(account: account, apiPath: "", error: error) {
                     vmDPV.fetchPlayerDetail()

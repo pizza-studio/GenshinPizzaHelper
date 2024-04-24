@@ -12,6 +12,8 @@
 		5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */; };
 		5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17F2AD3010600CDF2C5 /* GIPizzaKit */; };
+		5B4A251F2BD8F6E500614070 /* LinearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */; };
+		5B4A25202BD8F6E500614070 /* LinearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */; };
 		5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */; };
 		5B8C1B312AD8F3C5009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */; };
 		5B8C1B332AD8F3DE009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */; };
@@ -816,6 +818,7 @@
 		5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewExtension.swift; sourceTree = "<group>"; };
 		5B3DF7BF2BA49C040015ACC9 /* DevDocs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DevDocs; sourceTree = "<group>"; };
 		5B41C1812AD3010700CDF2C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearProgressView.swift; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
 		5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OPHelper_SharedAssembly; path = Dependences/OPHelper_SharedAssembly; sourceTree = "<group>"; };
 		5B5F82AE2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = ko; path = ko.lproj/AccountIntents.intentdefinition; sourceTree = "<group>"; };
@@ -1242,6 +1245,7 @@
 		5BEF4B842B60D6FC007FB100 /* CustomizedViewStructs */ = {
 			isa = PBXGroup;
 			children = (
+				5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */,
 				5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */,
 			);
 			path = CustomizedViewStructs;
@@ -2456,6 +2460,7 @@
 				EA2064D22B255CE4002B9961 /* HomeCoinInfoBar.swift in Sources */,
 				5BD1C5FA2A2A1FC90043C2B1 /* InfoPreviewerView.swift in Sources */,
 				BF57A6102B67803200E56CAD /* WatchConnectivityManager.swift in Sources */,
+				5B4A25202BD8F6E500614070 /* LinearProgressView.swift in Sources */,
 				5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */,
 				5BD1C5FC2A2A1FC90043C2B1 /* HiddenWaterMark.swift in Sources */,
 				5BD1C5FD2A2A1FC90043C2B1 /* WeeklyBossesInfoBar.swift in Sources */,
@@ -2844,6 +2849,7 @@
 				BFE42550289F6BDA00FEFA49 /* InfoPreviewerView.swift in Sources */,
 				BFCC065128C6F8E1003E4A54 /* GuideVideoLinkView.swift in Sources */,
 				BF57A60F2B67803200E56CAD /* WatchConnectivityManager.swift in Sources */,
+				5B4A251F2BD8F6E500614070 /* LinearProgressView.swift in Sources */,
 				EA1C2CE528F07DBE00E4C28A /* HiddenWaterMark.swift in Sources */,
 				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA759D6D2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
