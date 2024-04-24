@@ -500,7 +500,6 @@ struct DetailPortalView: View {
             .scrollContentBackground(.hidden)
             .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
             .disabled(isFetching)
-            .saturation(saturation)
             .refreshable {
                 vmDPV.refresh()
             }
