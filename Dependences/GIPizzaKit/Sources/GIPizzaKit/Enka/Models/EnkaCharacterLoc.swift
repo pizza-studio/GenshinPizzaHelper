@@ -21,8 +21,8 @@ extension Enka.CharacterLoc {
     public var fr: LocDict { self["fr"] ?? [:] }
     public var es: LocDict { self["es"] ?? [:] }
     public var de: LocDict { self["de"] ?? [:] }
-    public var zh_Hans: LocDict { self["zh-TW"] ?? [:] }
-    public var zh_Hant: LocDict { self["zh-CN"] ?? [:] }
+    public var zh_Hans: LocDict { self["zh-tw"] ?? self["zh-TW"] ?? self["zh-Tw"] ?? [:] }
+    public var zh_Hant: LocDict { self["zh-cn"] ?? self["zh-CN"] ?? self["zh-Cn"] ?? [:] }
 
     public func getLocalizedDictionary() -> LocDict {
         switch Bundle.main.preferredLocalizations.first {
