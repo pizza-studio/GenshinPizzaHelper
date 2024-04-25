@@ -22,6 +22,7 @@ enum OS: Int {
 
     static let type: OS = {
         let maybePad = UIDevice.modelIdentifier.contains("iPad") || UIDevice.current.userInterfaceIdiom == .pad
+        guard !ProcessInfo.processInfo.isiOSAppOnMac else { return .macOS }
         #if os(OSX)
         return .macOS
         #elseif os(watchOS)
