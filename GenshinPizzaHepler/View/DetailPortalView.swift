@@ -78,17 +78,19 @@ final class DetailPortalViewModel: ObservableObject {
     }
 
     func refresh() {
-        fetchPlayerDetail()
-        fetchBasicInfo()
-        fetchSpiralAbyssInfoCurrent()
-        fetchSpiralAbyssInfoPrevious()
-        fetchLedgerData()
-        fetchAllAvatarInfo()
-        uploadData()
-        detailPortalRefreshSubject.send(())
+        Task {
+            await fetchPlayerDetail()
+            await fetchBasicInfo()
+            await fetchSpiralAbyssInfoCurrent()
+            await fetchSpiralAbyssInfoPrevious()
+            await fetchLedgerData()
+            await fetchAllAvatarInfo()
+            await uploadData()
+            detailPortalRefreshSubject.send(())
+        }
     }
 
-    func fetchAllAvatarInfo() {
+    func fetchAllAvatarInfo() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = allAvatarInfoStatus { task?.cancel() }
         let task = Task {
@@ -100,23 +102,23 @@ final class DetailPortalViewModel: ObservableObject {
                     deviceFingerPrint: account.safeDeviceFingerPrint,
                     deviceId: account.safeUuid
                 )
-                DispatchQueue.main.async {
+                Task {
                     withAnimation {
                         self.allAvatarInfoStatus = .succeed(result)
                     }
                 }
             } catch {
-                DispatchQueue.main.async {
+                Task {
                     self.allAvatarInfoStatus = .fail(error)
                 }
             }
         }
-        DispatchQueue.main.async {
+        Task {
             self.allAvatarInfoStatus = .progress(task)
         }
     }
 
-    func fetchPlayerDetail() {
+    func fetchPlayerDetail() async {
         guard let selectedAccount else { return }
         if case let .succeed((_, refreshableDate)) = playerDetailStatus {
             guard Date() > refreshableDate else { return }
@@ -136,7 +138,7 @@ final class DetailPortalViewModel: ObservableObject {
                 )
                 refreshCostumeMap(playerDetail: playerDetail)
                 currentBasicInfo = playerDetail.basicInfo
-                DispatchQueue.main.async {
+                Task {
                     withAnimation {
                         self.playerDetailStatus = .succeed((
                             playerDetail,
@@ -145,19 +147,19 @@ final class DetailPortalViewModel: ObservableObject {
                     }
                 }
             } catch {
-                DispatchQueue.main.async {
+                Task {
                     self.playerDetailStatus = .fail(error)
                 }
             }
         }
-        DispatchQueue.main.async {
+        Task {
             withAnimation {
                 self.playerDetailStatus = .progress(task)
             }
         }
     }
 
-    func fetchBasicInfo() {
+    func fetchBasicInfo() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = basicInfoStatus { task?.cancel() }
         let task = Task {
@@ -169,25 +171,25 @@ final class DetailPortalViewModel: ObservableObject {
                     deviceFingerPrint: account.safeDeviceFingerPrint,
                     deviceId: account.safeUuid
                 )
-                DispatchQueue.main.async {
+                Task {
                     withAnimation {
                         self.basicInfoStatus = .succeed(result)
                     }
                 }
             } catch {
-                DispatchQueue.main.async {
+                Task {
                     self.basicInfoStatus = .fail(error)
                 }
             }
         }
-        DispatchQueue.main.async {
+        Task {
             withAnimation {
                 self.basicInfoStatus = .progress(task)
             }
         }
     }
 
-    func fetchSpiralAbyssInfoPrevious() {
+    func fetchSpiralAbyssInfoPrevious() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = spiralAbyssDetailStatusPrevious { task?.cancel() }
         let task = Task {
@@ -200,25 +202,25 @@ final class DetailPortalViewModel: ObservableObject {
                     deviceFingerPrint: account.safeDeviceFingerPrint,
                     deviceId: account.safeUuid
                 )
-                DispatchQueue.main.async {
+                Task {
                     withAnimation {
                         self.spiralAbyssDetailStatusPrevious = .succeed(result)
                     }
                 }
             } catch {
-                DispatchQueue.main.async {
+                Task {
                     self.spiralAbyssDetailStatusPrevious = .fail(error)
                 }
             }
         }
-        DispatchQueue.main.async {
+        Task {
             withAnimation {
                 self.spiralAbyssDetailStatusPrevious = .progress(task)
             }
         }
     }
 
-    func fetchSpiralAbyssInfoCurrent() {
+    func fetchSpiralAbyssInfoCurrent() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = spiralAbyssDetailStatusCurrent { task?.cancel() }
         let task = Task {
@@ -231,25 +233,25 @@ final class DetailPortalViewModel: ObservableObject {
                     deviceFingerPrint: account.safeDeviceFingerPrint,
                     deviceId: account.safeUuid
                 )
-                DispatchQueue.main.async {
+                Task {
                     withAnimation {
                         self.spiralAbyssDetailStatusCurrent = .succeed(result)
                     }
                 }
             } catch {
-                DispatchQueue.main.async {
+                Task {
                     self.spiralAbyssDetailStatusCurrent = .fail(error)
                 }
             }
         }
-        DispatchQueue.main.async {
+        Task {
             withAnimation {
                 self.spiralAbyssDetailStatusCurrent = .progress(task)
             }
         }
     }
 
-    func fetchLedgerData() {
+    func fetchLedgerData() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = ledgerDataStatus { task?.cancel() }
         let task = Task {
@@ -261,18 +263,18 @@ final class DetailPortalViewModel: ObservableObject {
                     server: account.server,
                     cookie: account.safeCookie
                 )
-                DispatchQueue.main.async {
+                Task {
                     withAnimation {
                         self.ledgerDataStatus = .succeed(result)
                     }
                 }
             } catch {
-                DispatchQueue.main.async {
+                Task {
                     self.ledgerDataStatus = .fail(error)
                 }
             }
         }
-        DispatchQueue.main.async {
+        Task {
             withAnimation {
                 self.ledgerDataStatus = .progress(task)
             }
@@ -290,7 +292,7 @@ final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    func uploadData() {
+    func uploadData() async {
         Task(priority: .background) {
             guard let account = selectedAccount else { return }
             if case let .progress(task) = basicInfoStatus {
@@ -303,9 +305,9 @@ final class DetailPortalViewModel: ObservableObject {
                 await task?.value
             }
             if case let .succeed(basicInfo) = basicInfoStatus {
-                uploadHoldingData(account: account, basicInfo: basicInfo)
+                await uploadHoldingData(account: account, basicInfo: basicInfo)
                 if case let .succeed(abyssData) = spiralAbyssDetailStatusCurrent {
-                    uploadAbyssData(account: account, abyssData: abyssData, basicInfo: basicInfo)
+                    await uploadAbyssData(account: account, abyssData: abyssData, basicInfo: basicInfo)
                     if case let .succeed(allAvatarData) = allAvatarInfoStatus {
                         uploadHuTaoDBAbyssData(
                             account: account,
@@ -319,7 +321,7 @@ final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    func uploadAbyssData(account: AccountConfiguration, abyssData: SpiralAbyssDetail, basicInfo: BasicInfos) {
+    func uploadAbyssData(account: AccountConfiguration, abyssData: SpiralAbyssDetail, basicInfo: BasicInfos) async {
         guard Defaults[.allowAbyssDataCollection] else { return }
         guard let uploadData = AbyssData(
             accountUID: account.safeUid,
@@ -371,7 +373,7 @@ final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    func uploadHoldingData(account: AccountConfiguration, basicInfo: BasicInfos) {
+    func uploadHoldingData(account: AccountConfiguration, basicInfo: BasicInfos) async {
         print("uploadHoldingData START")
         guard Defaults[.allowAbyssDataCollection]
         else { print("not allowed"); return }
@@ -830,7 +832,9 @@ private struct PlayerDetailSection: View {
                 InfiniteProgressBar().id(UUID())
             case let .fail(error):
                 ErrorView(account: account, apiPath: "", error: error) {
-                    vmDPV.fetchPlayerDetail()
+                    Task {
+                        await vmDPV.fetchPlayerDetail()
+                    }
                 }
             case let .succeed((playerDetail, _)):
                 if playerDetail.avatars.isEmpty {
@@ -889,7 +893,9 @@ private struct AllAvatarNavigator: View {
                     apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/character",
                     error: error
                 ) {
-                    vmDPV.fetchAllAvatarInfo()
+                    Task {
+                        await vmDPV.fetchAllAvatarInfo()
+                    }
                 }
             }
         case let .succeed(data):
@@ -947,7 +953,9 @@ private struct LedgerDataNavigator: View {
                         apiPath: "https://hk4e-api.mihoyo.com/event/ys_ledger/monthInfo",
                         error: error
                     ) {
-                        vmDPV.fetchLedgerData()
+                        Task {
+                            await vmDPV.fetchLedgerData()
+                        }
                     }
                 }
             case let .succeed(data):
@@ -1023,7 +1031,9 @@ private struct AbyssInfoNavigator: View {
                         apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/spiralAbyss",
                         error: error
                     ) {
-                        vmDPV.fetchSpiralAbyssInfoCurrent()
+                        Task {
+                            await vmDPV.fetchSpiralAbyssInfoCurrent()
+                        }
                     }
                 }
             case let .succeed(data):
@@ -1270,7 +1280,9 @@ private struct BasicInfoNavigator: View {
                     apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index",
                     error: error
                 ) {
-                    vmDPV.fetchBasicInfo()
+                    Task {
+                        await vmDPV.fetchBasicInfo()
+                    }
                 }
             }
         case let .succeed(data):
@@ -1586,7 +1598,7 @@ private struct VerificationNeededView: View {
                             challenge: verification.challenge,
                             gt: verification.gt,
                             completion: { validate in
-                                DispatchQueue.main.async {
+                                Task {
                                     status = .pending
                                     verifyValidate(challenge: verification.challenge, validate: validate)
                                     sheetItem = nil
@@ -1620,7 +1632,7 @@ private struct VerificationNeededView: View {
                     deviceFingerPrint: account.deviceFingerPrint, challengePath: challengePath,
                     deviceId: account.safeUuid
                 )
-                DispatchQueue.main.async {
+                Task {
                     status = .gotVerification(verification)
                     sheetItem = .gotVerification(verification)
                 }
