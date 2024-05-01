@@ -12,3 +12,4 @@ included: # 执行 linting 时包含的路径。如果出现这个 `--path` 会�
   # - Source
 excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高。
   - Dependences/GachaMIMTServer
+  - Build/
