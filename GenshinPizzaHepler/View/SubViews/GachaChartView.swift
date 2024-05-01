@@ -308,7 +308,7 @@ private struct GachaTimeChart: View {
     }
 
     var gachaTypeDateCount: [GachaTypeDateCountAndIfContain5Star] {
-        let dates = Set<Date>.init(itemsFiltered.map { $0.time })
+        let dates = Set<Date>(itemsFiltered.map { $0.time })
         return dates.map { date in
             GachaTypeDateCountAndIfContain5Star(
                 date: date,

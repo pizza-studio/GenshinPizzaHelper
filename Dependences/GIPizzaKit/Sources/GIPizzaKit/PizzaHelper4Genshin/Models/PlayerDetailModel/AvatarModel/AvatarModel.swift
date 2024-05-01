@@ -5,6 +5,8 @@
 import Foundation
 import HBMihoyoAPI
 
+// MARK: - PlayerDetail.Avatar
+
 extension PlayerDetail {
     /// 游戏角色
     public class Avatar {

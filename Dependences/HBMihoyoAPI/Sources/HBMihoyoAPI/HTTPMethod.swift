@@ -343,11 +343,11 @@ public struct HttpMethod<T: Decodable> {
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
                 // 请求url前缀，后跟request的类型
-                let baseStr: String = "https://api-takumi-record.mihoyo.com/"
-                let appVersion: String = "2.34.1"
-                let userAgent: String =
+                let baseStr = "https://api-takumi-record.mihoyo.com/"
+                let appVersion = "2.34.1"
+                let userAgent =
                     "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
-                let clientType: String = "2"
+                let clientType = "2"
 //                switch region {
 //                case .cn:
 //                    baseStr = "https://api-takumi-record.mihoyo.com/"
@@ -524,7 +524,7 @@ public struct HttpMethod<T: Decodable> {
         if networkReachability.reachable {
             DispatchQueue.global(qos: .userInteractive).async {
                 // 请求url前缀，后跟request的类型
-                let baseStr: String = "https://api-takumi.mihoyo.com/"
+                let baseStr = "https://api-takumi.mihoyo.com/"
 //                switch region {
 //                case .cn:
 //                    baseStr = "https://api-takumi-record.mihoyo.com/"
