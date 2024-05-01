@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/10/22.
 //
 
+import Flow
 import GIPizzaKit
 import HoYoKit
 import SFSafeSymbols
@@ -13,67 +14,49 @@ import SwiftUI
 // MARK: - AllAvatarListSheetView
 
 struct AllAvatarListSheetView: View {
+    // MARK: Internal
+
     @EnvironmentObject
-    private var vmDPV: DetailPortalViewModel
+    var vmDPV: DetailPortalViewModel
 
     var data: AllAvatarDetailModel
 
-    @Environment(\.dismiss)
-    var dismiss
+    @State
+    var expanded: Bool = true
 
     var body: some View {
         List {
-            var showingAvatars: [AllAvatarDetailModel.Avatar] {
-                switch allAvatarListDisplayType {
-                case .all:
-                    return data.avatars
-                case ._4star:
-                    return data.avatars.filter { $0.rarity == 4 }
-                case ._5star:
-                    return data.avatars.filter { $0.rarity == 5 }
-                }
-            }
             Section {
                 VStack(alignment: .leading, spacing: 3) {
-                    let a = data.avatars.count
-                    let b = data.avatars.filter { $0.rarity == 5 }.count
-                    let c = data.avatars.filter { $0.rarity == 4 }.count
-                    Text(
-                        "app.characters.count.character:\(a, specifier: "%lld")\(b, specifier: "%lld")\(c, specifier: "%lld")"
-                    )
-                    let d = goldNum(data: data).allGold
-                    let e = goldNum(data: data).charGold
-                    let f = goldNum(data: data).weaponGold
-                    Text(
-                        "app.characters.count.weapon:\(d, specifier: "%lld")\(e, specifier: "%lld")\(f, specifier: "%lld")"
-                    )
+                    Text(characterStats)
+                    Text(weaponStats)
                 }.font(.footnote)
             }.listRowMaterialBackground()
-            Section {
-                ForEach(showingAvatars, id: \.id) { avatar in
-                    AvatarListItem(avatar: avatar)
-                        .padding(.horizontal)
-                        .padding(.vertical, 4)
-                        .background {
-                            if let asset = avatar.asset {
-                                let bg = EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill()
-                                    .opacity(0.6)
-                                if #unavailable(iOS 17) {
-                                    bg.frame(maxHeight: 63).clipped()
-                                } else {
-                                    bg
-                                }
-                            }
-                        }
+            Group {
+                if expanded {
+                    allAvatarListFull
+                } else {
+                    allAvatarListCondensed
                 }
-            }
-            .textCase(.none)
-            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+            }.listRowMaterialBackground()
         }
         .scrollContentBackground(.hidden)
         .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
         .navigationTitle("app.characters.title")
         .toolbar {
+            ToolbarItem(
+                placement: .navigationBarTrailing
+            ) {
+                Picker("", selection: $expanded.animation()) {
+                    Text(verbatim: "展开").tag(true)
+                    Text(verbatim: "摺叠").tag(false)
+                }
+                .labelsHidden()
+                .pickerStyle(.segmented)
+                .background(
+                    RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
+                )
+            }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Menu {
                     ForEach(
@@ -93,6 +76,40 @@ struct AllAvatarListSheetView: View {
         }
         .refreshable {
             vmDPV.refresh()
+        }
+    }
+
+    @ViewBuilder
+    var allAvatarListFull: some View {
+        Section {
+            ForEach(showingAvatars, id: \.id) { avatar in
+                AvatarListItem(avatar: avatar, condensed: false)
+                    .padding(.horizontal)
+                    .padding(.vertical, 4)
+                    .background {
+                        if let asset = avatar.asset {
+                            let bg = EnkaWebIcon(iconString: asset.namecard.fileName).scaledToFill()
+                                .opacity(0.6)
+                            if #unavailable(iOS 17) {
+                                bg.frame(maxHeight: 63).clipped()
+                            } else {
+                                bg
+                            }
+                        }
+                    }
+            }
+        }
+        .textCase(.none)
+        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+    }
+
+    @ViewBuilder
+    var allAvatarListCondensed: some View {
+        HFlow {
+            ForEach(showingAvatars, id: \.id) { avatar in
+                AvatarListItem(avatar: avatar, condensed: true)
+                    .padding(.vertical, 4)
+            }
         }
     }
 
@@ -123,14 +140,45 @@ struct AllAvatarListSheetView: View {
         case _4star = "app.characters.filter.4star"
     }
 
+    @Environment(\.dismiss)
+    private var dismiss
+
     @State
     private var allAvatarListDisplayType: AllAvatarListDisplayType = .all
+
+    private var characterStats: LocalizedStringKey {
+        let a = data.avatars.count
+        let b = data.avatars.filter { $0.rarity == 5 }.count
+        let c = data.avatars.filter { $0.rarity == 4 }.count
+        return "app.characters.count.character:\(a, specifier: "%lld")\(b, specifier: "%lld")\(c, specifier: "%lld")"
+    }
+
+    private var weaponStats: LocalizedStringKey {
+        let d = goldNum(data: data).allGold
+        let e = goldNum(data: data).charGold
+        let f = goldNum(data: data).weaponGold
+        return "app.characters.count.weapon:\(d, specifier: "%lld")\(e, specifier: "%lld")\(f, specifier: "%lld")"
+    }
+
+    private var showingAvatars: [AllAvatarDetailModel.Avatar] {
+        switch allAvatarListDisplayType {
+        case .all:
+            return data.avatars
+        case ._4star:
+            return data.avatars.filter { $0.rarity == 4 }
+        case ._5star:
+            return data.avatars.filter { $0.rarity == 5 }
+        }
+    }
 }
 
 // MARK: - AvatarListItem
 
 struct AvatarListItem: View {
     let avatar: AllAvatarDetailModel.Avatar
+
+    @State
+    var condensed: Bool
 
     var body: some View {
         HStack(spacing: 3) {
@@ -159,52 +207,54 @@ struct AvatarListItem: View {
                 alignment: .bottomTrailing,
                 enabled: !avatar.isProtagonist
             )
-            VStack(spacing: 3) {
-                HStack(alignment: .lastTextBaseline, spacing: 5) {
-                    Text(avatar.nameCorrected)
-                        .font(.systemCompressed(size: 20, weight: .bold))
-                        .fixedSize(horizontal: true, vertical: false)
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(1)
-                    Spacer()
-                }
-                HStack(spacing: 0) {
-                    ForEach(avatar.reliquaries, id: \.id) { reliquary in
-                        Group {
-                            WebImage(urlStr: reliquary.icon)
-                                .scaledToFit()
-                        }
-                        .frame(width: 20, height: 20)
+            if !condensed {
+                VStack(spacing: 3) {
+                    HStack(alignment: .lastTextBaseline, spacing: 5) {
+                        Text(avatar.nameCorrected)
+                            .font(.systemCompressed(size: 20, weight: .bold))
+                            .fixedSize(horizontal: true, vertical: false)
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(1)
+                        Spacer()
                     }
-                    Spacer().frame(height: 20)
+                    HStack(spacing: 0) {
+                        ForEach(avatar.reliquaries, id: \.id) { reliquary in
+                            Group {
+                                WebImage(urlStr: reliquary.icon)
+                                    .scaledToFit()
+                            }
+                            .frame(width: 20, height: 20)
+                        }
+                        Spacer().frame(height: 20)
+                    }
                 }
-            }
-            ZStack(alignment: .bottomLeading) {
-                Group {
-                    EnkaWebIcon(
-                        iconString: RankLevel(
-                            rawValue: avatar
-                                .weapon.rarity
-                        )?
-                            .squaredBackgroundIconString ?? ""
-                    )
-                    .opacity(0.5)
-                    .scaledToFit()
-                    .scaleEffect(1.1)
-                    .clipShape(Circle())
-                    WebImage(urlStr: avatar.weapon.icon)
+                ZStack(alignment: .bottomLeading) {
+                    Group {
+                        EnkaWebIcon(
+                            iconString: RankLevel(
+                                rawValue: avatar
+                                    .weapon.rarity
+                            )?
+                                .squaredBackgroundIconString ?? ""
+                        )
+                        .opacity(0.5)
                         .scaledToFit()
+                        .scaleEffect(1.1)
+                        .clipShape(Circle())
+                        WebImage(urlStr: avatar.weapon.icon)
+                            .scaledToFit()
+                    }
+                    .frame(width: 50, height: 50)
                 }
-                .frame(width: 50, height: 50)
+                .corneredTag(
+                    LocalizedStringKey("weapon.affix:\(avatar.weapon.affixLevel)"),
+                    alignment: .topLeading
+                )
+                .corneredTag(
+                    verbatim: "Lv.\(avatar.weapon.level)",
+                    alignment: .bottomTrailing
+                )
             }
-            .corneredTag(
-                LocalizedStringKey("weapon.affix:\(avatar.weapon.affixLevel)"),
-                alignment: .topLeading
-            )
-            .corneredTag(
-                verbatim: "Lv.\(avatar.weapon.level)",
-                alignment: .bottomTrailing
-            )
         }
     }
 }

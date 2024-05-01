@@ -15,6 +15,8 @@
 		5B4A251F2BD8F6E500614070 /* LinearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */; };
 		5B4A25202BD8F6E500614070 /* LinearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */; };
 		5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */; };
+		5B5266C02BE2B20C006C8ADF /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 5B5266BF2BE2B20C006C8ADF /* Flow */; };
+		5B5266C22BE2B217006C8ADF /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 5B5266C12BE2B217006C8ADF /* Flow */; };
 		5B8C1B312AD8F3C5009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */; };
 		5B8C1B332AD8F3DE009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */; };
 		5B8C1B352AD9083A009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B342AD9083A009F3B44 /* SFSafeSymbols */; };
@@ -1098,6 +1100,7 @@
 				5B8C1B332AD8F3DE009F3B44 /* SFSafeSymbols in Frameworks */,
 				EAAECA172AD3AD05003525E1 /* Defaults in Frameworks */,
 				5BD1C65B2A2A1FC90043C2B1 /* CoreXLSX in Frameworks */,
+				5B5266C22BE2B217006C8ADF /* Flow in Frameworks */,
 				EAC89A5E2AD3AF1B00EC5141 /* DefaultsKeys in Frameworks */,
 				5BD1C65C2A2A1FC90043C2B1 /* HBMihoyoAPI in Frameworks */,
 				5BD1C65D2A2A1FC90043C2B1 /* CloudKit.framework in Frameworks */,
@@ -1179,6 +1182,7 @@
 				5B8C1B312AD8F3C5009F3B44 /* SFSafeSymbols in Frameworks */,
 				EAAECA152AD3ACFD003525E1 /* Defaults in Frameworks */,
 				BF9D74EF29DBBA98009A9918 /* CoreXLSX in Frameworks */,
+				5B5266C02BE2B20C006C8ADF /* Flow in Frameworks */,
 				EAC89A5C2AD3AF1600EC5141 /* DefaultsKeys in Frameworks */,
 				BF15570B29CFE5CF0056CFE6 /* HBMihoyoAPI in Frameworks */,
 				EAE326C628A79A0C0009908E /* CloudKit.framework in Frameworks */,
@@ -1963,6 +1967,7 @@
 				5B8C1B322AD8F3DE009F3B44 /* SFSafeSymbols */,
 				EAA969FC2ADFA9A100C0852E /* HoYoKit */,
 				5BAFAFDC2B8287C200619092 /* Dynamic */,
+				5B5266C12BE2B217006C8ADF /* Flow */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = 5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */;
@@ -2099,6 +2104,7 @@
 				5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */,
 				EAA969FA2ADFA99C00C0852E /* HoYoKit */,
 				5BAFAFDA2B8287B500619092 /* Dynamic */,
+				5B5266BF2BE2B20C006C8ADF /* Flow */,
 			);
 			productName = GenshinPizzaHepler;
 			productReference = EABD7DB62886B2D200B7F0FD /* 披萨小助手.app */;
@@ -2184,6 +2190,7 @@
 				5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				EA4E304D2ADE66BD008AB517 /* XCLocalSwiftPackageReference "Dependences/HoYoKit" */,
 				5BAFAFD92B8287B500619092 /* XCRemoteSwiftPackageReference "Dynamic" */,
+				5B5266BE2BE2B20C006C8ADF /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */,
 			);
 			productRefGroup = EABD7DB72886B2D200B7F0FD /* Products */;
 			projectDirPath = "";
@@ -3721,6 +3728,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5B5266BE2BE2B20C006C8ADF /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tevelee/SwiftUI-Flow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.1;
+			};
+		};
 		5B8C1B2F2AD8F3C5009F3B44 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols";
@@ -3791,6 +3806,16 @@
 		5B41C17F2AD3010600CDF2C5 /* GIPizzaKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GIPizzaKit;
+		};
+		5B5266BF2BE2B20C006C8ADF /* Flow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B5266BE2BE2B20C006C8ADF /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */;
+			productName = Flow;
+		};
+		5B5266C12BE2B217006C8ADF /* Flow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B5266BE2BE2B20C006C8ADF /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */;
+			productName = Flow;
 		};
 		5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
