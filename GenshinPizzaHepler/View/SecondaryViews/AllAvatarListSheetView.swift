@@ -45,17 +45,12 @@ struct AllAvatarListSheetView: View {
         .navigationTitle("app.characters.title")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Picker("", selection: $expanded.animation()) {
+                    Text("detailPortal.aalsv.expand.tabText").tag(true)
+                    Text("detailPortal.aalsv.collapse.tabText").tag(false)
+                }
+                .pickerStyle(.menu)
                 Menu {
-                    Picker("", selection: $expanded.animation()) {
-                        Text("detailPortal.aalsv.expand.tabText").tag(true)
-                        Text("detailPortal.aalsv.collapse.tabText").tag(false)
-                    }
-                    .labelsHidden()
-                    .pickerStyle(.segmented)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
-                    )
-                    Divider()
                     ForEach(
                         AllAvatarListDisplayType.allCases,
                         id: \.rawValue
@@ -108,7 +103,9 @@ struct AllAvatarListSheetView: View {
                     .padding(.vertical, 4)
             }
         }
-        .listRowInsets(.init(top: 4, leading: 4, bottom: 4, trailing: 4))
+        #if !os(OSX) && !targetEnvironment(macCatalyst)
+        .listRowInsets(.init(top: 4, leading: 8, bottom: 4, trailing: 4))
+        #endif
     }
 
     func goldNum(data: AllAvatarDetailModel)
