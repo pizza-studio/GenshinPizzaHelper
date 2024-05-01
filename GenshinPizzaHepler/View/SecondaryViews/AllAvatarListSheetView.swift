@@ -175,6 +175,8 @@ struct AllAvatarListSheetView: View {
 // MARK: - AvatarListItem
 
 struct AvatarListItem: View {
+    // MARK: Internal
+
     let avatar: AllAvatarDetailModel.Avatar
 
     @State
@@ -203,7 +205,7 @@ struct AvatarListItem: View {
                 alignment: .trailing
             )
             .corneredTag(
-                verbatim: "♡\(avatar.fetter)",
+                verbatim: fetterTag,
                 alignment: .bottomTrailing,
                 enabled: !avatar.isProtagonist
             )
@@ -256,6 +258,12 @@ struct AvatarListItem: View {
                 )
             }
         }
+    }
+
+    // MARK: Private
+
+    private var fetterTag: String {
+        condensed ? "" : "♡\(avatar.fetter)"
     }
 }
 
