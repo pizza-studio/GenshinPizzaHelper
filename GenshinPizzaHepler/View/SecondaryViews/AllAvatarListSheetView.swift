@@ -44,21 +44,18 @@ struct AllAvatarListSheetView: View {
         .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
         .navigationTitle("app.characters.title")
         .toolbar {
-            ToolbarItem(
-                placement: .navigationBarTrailing
-            ) {
-                Picker("", selection: $expanded.animation()) {
-                    Text(verbatim: "展开").tag(true)
-                    Text(verbatim: "摺叠").tag(false)
-                }
-                .labelsHidden()
-                .pickerStyle(.segmented)
-                .background(
-                    RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
-                )
-            }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Menu {
+                    Picker("", selection: $expanded.animation()) {
+                        Text("detailPortal.aalsv.expand.tabText").tag(true)
+                        Text("detailPortal.aalsv.collapse.tabText").tag(false)
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.segmented)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8).foregroundStyle(.thinMaterial)
+                    )
+                    Divider()
                     ForEach(
                         AllAvatarListDisplayType.allCases,
                         id: \.rawValue
@@ -111,6 +108,7 @@ struct AllAvatarListSheetView: View {
                     .padding(.vertical, 4)
             }
         }
+        .listRowInsets(.init(top: 4, leading: 4, bottom: 4, trailing: 4))
     }
 
     func goldNum(data: AllAvatarDetailModel)
