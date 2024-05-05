@@ -124,6 +124,8 @@ struct CreateAccountSheetView: View {
             RequireLoginView(unsavedCookie: $account.cookie, region: $region)
         } footer: {
             VStack(alignment: .leading) {
+                Text("account.login.cn_disabled_desc")
+                    .foregroundStyle(.red)
                 HStack {
                     Text("account.login.manual.1")
                         .font(.footnote)
@@ -215,6 +217,7 @@ private struct RequireLoginView: View {
                 getCookieWebViewRegion = .mainlandChina
                 region = .mainlandChina
             }
+            .disabled(true)
             Button("sys.server.os") {
                 getCookieWebViewRegion = .global
                 region = .global
