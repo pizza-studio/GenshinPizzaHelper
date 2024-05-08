@@ -526,38 +526,9 @@ struct DetailPortalView: View {
             }
         }
         .environmentObject(vmDPV)
-        #if !os(iOS)
-            .alert(
-                "settings.privacy.abyssDataCollect",
-                isPresented: $askAllowAbyssDataCollectionAlert
-            ) {
-                Button("不允许", role: .destructive) {
-                    Defaults[.allowAbyssDataCollection] = false
-                    Defaults[.hasAskedAllowAbyssDataCollection] = true
-                }
-                Button("允许", role: .cancel, action: {
-                    Defaults[.allowAbyssDataCollection] = true
-                    Defaults[.hasAskedAllowAbyssDataCollection] = true
-                })
-            } message: {
-                VStack {
-                    Text(
-                        "settings.privacy.abyssDataCollect.detail"
-                    )
-                    Spacer()
-                    Text("settings.privacy.abyssDataCollect.additionalNotice").foregroundStyle(.red)
-                }
-            }
-            .onAppear {
-                if !Defaults[.hasAskedAllowAbyssDataCollection] {
-                    askAllowAbyssDataCollectionAlert = true
-                }
-            }
-        #else
-            .onAppear {
-                AppConfig.requestConsentForSpiralAbyssDataUpload()
-            }
-        #endif
+        .onAppear {
+            AppConfig.requestConsentForSpiralAbyssDataUpload()
+        }
     }
 
     // MARK: Private

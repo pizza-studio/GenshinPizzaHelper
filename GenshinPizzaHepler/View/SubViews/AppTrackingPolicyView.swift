@@ -22,11 +22,4 @@ extension AppConfig {
             }
         }
     }
-
-    static var textsForSpiralAbyssDataConsent: (title: String, desc: String) {
-        (
-            String(localized: .init(stringLiteral: "settings.privacy.abyssDataCollect")),
-            String(localized: .init(stringLiteral: "settings.privacy.abyssDataCollect.detail"))
-        )
-    }
 }
