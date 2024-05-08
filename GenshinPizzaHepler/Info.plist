@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>We hope to collect information about your game characters and which of them you have used in Spiral Abyss. If you agree to share your data with us, you will be able to view real-time summaries of Abyss character usage rates, team usage rates, and other related information within the app. For more details, please refer to the FAQ in the upper right corner of the Spiral Abyss page.</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
