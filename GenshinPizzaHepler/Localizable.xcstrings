@@ -44284,6 +44284,7 @@
       }
     },
     "不允许" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -44368,6 +44369,7 @@
       }
     },
     "允许" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
