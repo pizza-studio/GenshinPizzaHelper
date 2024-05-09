@@ -1,5 +1,6 @@
 // MARK: - Exceptions
 
+"$asset.character:Peruere" = "佩露薇利";
 "$asset.character:RaidenKunikuzushi" = "雷电国崩";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "雷电国崩・浮歌";
 

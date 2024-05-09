@@ -1,5 +1,6 @@
 // MARK: - Exceptions
 
+"$asset.character:Peruere" = "Перуэр";
 "$asset.character:RaidenKunikuzushi" = "Куникудзуси";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Баллада скитальца";
 
