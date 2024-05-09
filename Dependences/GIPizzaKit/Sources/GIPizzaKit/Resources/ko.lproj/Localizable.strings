@@ -1,8 +1,9 @@
 // MARK: - Exceptions
 
 "$asset.character:Peruere" = "페르엘";
-"$asset.character:RaidenKunikuzushi" = "Raiden Kunikuzushi";
-"$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Raiden Kunikuzushi: Drifter's Ballad";
+"$asset.character:RaidenKunikuzushi" = "라이덴 쿠니쿠즈시";
+"$asset.nameCard:UI_NameCardPic_Peruere_P" = "페르엘·규칙";
+"$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "라이덴 쿠니쿠즈시·떠도는 자의 노래";
 
 // MARK: - Daily Materials
 

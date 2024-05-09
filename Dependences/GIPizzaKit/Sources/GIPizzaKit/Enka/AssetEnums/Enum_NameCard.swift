@@ -279,6 +279,8 @@ extension NameCard {
                 raw = raw.replacingOccurrences(of: "Wanderer", with: "Kunikuzushi")
             } else if raw.contains("_Yoimiya_") {
                 raw = raw.replacingOccurrences(of: "_Yoimiya_", with: "_NaganoharaYoimiya_")
+            } else if raw.contains("_Arlecchino_") {
+                raw = raw.replacingOccurrences(of: "_Arlecchino_", with: "_Peruere_")
             }
         }
         return "$asset.nameCard:" + raw

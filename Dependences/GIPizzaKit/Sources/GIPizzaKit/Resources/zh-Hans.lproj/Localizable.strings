@@ -2,6 +2,7 @@
 
 "$asset.character:Peruere" = "佩露薇利";
 "$asset.character:RaidenKunikuzushi" = "雷电国崩";
+"$asset.nameCard:UI_NameCardPic_Arlecchino_P" = "佩露薇利·法度";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "雷电国崩・浮歌";
 
 // MARK: - Daily Materials

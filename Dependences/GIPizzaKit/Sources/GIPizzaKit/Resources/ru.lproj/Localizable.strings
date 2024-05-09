@@ -2,6 +2,7 @@
 
 "$asset.character:Peruere" = "Перуэр";
 "$asset.character:RaidenKunikuzushi" = "Куникудзуси";
+"$asset.nameCard:UI_NameCardPic_Peruere_P" = "Правила";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Баллада скитальца";
 
 // MARK: - Daily Materials
