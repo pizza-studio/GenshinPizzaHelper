@@ -44284,7 +44284,6 @@
       }
     },
     "不允许" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -44369,7 +44368,6 @@
       }
     },
     "允许" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -44559,6 +44557,34 @@
         }
       }
     },
+    "我们希望收集您已拥有的角色和在攻克深境螺旋时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深境螺旋角色使用率、队伍使用率等情况。更多相关问题，请查看深境螺旋统计榜单页面右上角的FAQ。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We hope to collect information about your characters and the characters you use in abyss. If you agree to share your data with us, you will be able to view real-time summaries of Abyss character usage rates, team usage rates, and other related information within the app. For more details, please refer to the FAQ in the upper right corner of the Spiral Abyss page."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたの「ご所有のキャラ資料」と「深境螺旋でご使用していたキャラ資料」を集めようとしていますが、あなたの許可が必要です。ご許可があれば、弊アプリで集められていた「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。それについてのよくある質問は、「深境螺旋ランキング」その画面の右上のFAQをタップしてご覧ください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们希望收集您已拥有的角色和在攻克深境螺旋时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深境螺旋角色使用率、队伍使用率等情况。更多相关问题，请查看深境螺旋统计榜单页面右上角的FAQ。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我們希望收集您已擁有的角色和在攻克深境螺旋時使用的角色。如果您同意我們使用您的戰績資料，您將可以在App內查看我們實時彙總的深境螺旋角色使用率、隊伍使用率等情況。更多相關問題，請查看深境螺旋統計榜單頁面右上角的FAQ。"
+          }
+        }
+      }
+    },
     "抽取记录" : {
       "localizations" : {
         "en" : {
@@ -44639,6 +44665,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
+          }
+        }
+      }
+    },
+    "是否允许我们收集您的深境螺旋数据？" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow us collect your spiral abyss data?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深境螺旋のデータの収集のご許可、よろしいですか。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是否允许我们收集您的深境螺旋数据？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是否允許我們收集您的深境螺旋數據？"
           }
         }
       }

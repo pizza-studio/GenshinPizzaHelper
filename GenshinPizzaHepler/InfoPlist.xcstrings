@@ -274,47 +274,6 @@
           }
         }
       }
-    },
-    "NSUserTrackingUsageDescription" : {
-      "comment" : "Privacy - Tracking Usage Description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We hope to collect information about your game characters and which of them you have used in Spiral Abyss. If you agree to share your data with us, you will be able to view real-time summaries of Abyss character usage rates, team usage rates, and other related information within the app. For more details, please refer to the FAQ in the upper right corner of the Spiral Abyss page. The data collection only happens inside this app."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あなたの「ご所有のキャラ資料」と「深境螺旋でご使用していたキャラ資料」を集めようとしていますが、あなたの許可が必要です。ご許可があれば、弊アプリで集められていた「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。それについてのよくある質問は、「深境螺旋ランキング」その画面の右上のFAQをタップしてご覧ください。データの収集はこのアプリ内部だけに発生します。"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нам необходимо собрать информацию о персонажах, которыми вы владеете и о персонажах, которых вы использовали в Витой Бездне. Если вы разрешите собирать эти данные, вы сможете смотреть пикрейт персонажей, отрядов и прочего в Витой Бездне в реальном времени. За подробностями вы можете обратиться в ЧАВО в правом верхнем углу пикрейта Витой Бездны."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chúng tôi rất mong được thu thập các nhân vật bạn sở hữu và các nhân vật bạn đã sử dụng trong La Hoàn Thâm Cảnh . Nếu bạn cho phép chúng tôi thu thập dữ liệu, bạn có thể kiểm tra Tỷ lệ sử dụng nhân vật theo thời gian thực, Tỷ lệ sử dụng đội hình , v.v. trong ứng dụng. Để biết thêm chi tiết, bạn có thể đọc Câu hỏi thường gặp ở góc trên bên phải của Chế độ xem danh sách hàng đầu trong La Hoàn."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我们希望收集您已拥有的角色和在攻克深境螺旋时使用的角色。如果您同意我们使用您的战绩数据，您将可以在App内查看我们实时汇总的深境螺旋角色使用率、队伍使用率等情况。更多相关问题，请查看深境螺旋统计榜单页面右上角的 FAQ。该收集行为仅发生在该 App 内。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我們希望收集您已擁有的角色和在攻克深境螺旋時使用的角色。如果您同意我們使用您的戰績資料，您將可以在App內查看我們實時彙總的深境螺旋角色使用率、隊伍使用率等情況。更多相關問題，請查看深境螺旋統計榜單頁面右上角的 FAQ。該收集行為僅發生在該 App 內。"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

@@ -526,8 +526,25 @@ struct DetailPortalView: View {
             }
         }
         .environmentObject(vmDPV)
+        .alert(
+            "settings.privacy.abyssDataCollect",
+            isPresented: $askAllowAbyssDataCollectionAlert
+        ) {
+            Button("不允许", role: .destructive) {
+                Defaults[.allowAbyssDataCollection] = false
+                Defaults[.hasAskedAllowAbyssDataCollection] = true
+            }
+            Button("允许", role: .cancel, action: {
+                Defaults[.allowAbyssDataCollection] = true
+                Defaults[.hasAskedAllowAbyssDataCollection] = true
+            })
+        } message: {
+            Text("settings.privacy.abyssDataCollect.detail")
+        }
         .onAppear {
-            AppConfig.requestConsentForSpiralAbyssDataUpload()
+            if !Defaults[.hasAskedAllowAbyssDataCollection] {
+                askAllowAbyssDataCollectionAlert = true
+            }
         }
     }
 
