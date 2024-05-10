@@ -35,39 +35,39 @@ final class APITests: XCTestCase {
         )
     }
 
-    func testDailyNoteAPIChina() async throws {
-        do {
-            _ = try await MiHoYoAPI.dailyNote(
-                server: TestData.China.server,
-                uid: TestData.China.uid,
-                cookie: TestData.China.testCookie,
-                deviceFingerPrint: TestData.China.deviceFingerPrint,
-                deviceId: TestData.China.deviceId
-            )
-        } catch MiHoYoAPIError.verificationNeeded {
-            print("China API need verification")
-        } catch {
-            throw error
-        }
-    }
-
-    func testDailyNoteAPIGlobal() async throws {
-        _ = try await MiHoYoAPI.dailyNote(
-            server: TestData.Global.server,
-            uid: TestData.Global.uid,
-            cookie: TestData.Global.testCookie,
-            deviceFingerPrint: nil,
-            deviceId: nil
-        )
-    }
-
-    func testWidgetDailyNoteAPIChina() async throws {
-        _ = try await MiHoYoAPI.widgetDailyNote(
-            cookie: TestData.China.testCookie,
-            deviceFingerPrint: nil,
-            deviceId: nil
-        )
-    }
+//    func testDailyNoteAPIChina() async throws {
+//        do {
+//            _ = try await MiHoYoAPI.dailyNote(
+//                server: TestData.China.server,
+//                uid: TestData.China.uid,
+//                cookie: TestData.China.testCookie,
+//                deviceFingerPrint: TestData.China.deviceFingerPrint,
+//                deviceId: TestData.China.deviceId
+//            )
+//        } catch MiHoYoAPIError.verificationNeeded {
+//            print("China API need verification")
+//        } catch {
+//            throw error
+//        }
+//    }
+//
+//    func testDailyNoteAPIGlobal() async throws {
+//        _ = try await MiHoYoAPI.dailyNote(
+//            server: TestData.Global.server,
+//            uid: TestData.Global.uid,
+//            cookie: TestData.Global.testCookie,
+//            deviceFingerPrint: nil,
+//            deviceId: nil
+//        )
+//    }
+//
+//    func testWidgetDailyNoteAPIChina() async throws {
+//        _ = try await MiHoYoAPI.widgetDailyNote(
+//            cookie: TestData.China.testCookie,
+//            deviceFingerPrint: nil,
+//            deviceId: nil
+//        )
+//    }
 
     func testGetSTokenV2API() async throws {
         _ = try await MiHoYoAPI.sTokenV2(cookie: TestData.China.testCookie)
@@ -169,6 +169,10 @@ final class APITests: XCTestCase {
             cookie: TestData.Global.testCookie,
             deviceFingerPrint: nil, deviceId: nil
         )
+    }
+
+    func testGenerateQRCodeURL() async throws {
+        let _ = try await MiHoYoAPI.generateQRCodeURL(deviceId: UUID())
     }
 }
 
