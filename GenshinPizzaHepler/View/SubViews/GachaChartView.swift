@@ -6,6 +6,8 @@
 //
 
 import Charts
+import Defaults
+import DefaultsKeys
 import SFSafeSymbols
 import SwiftUI
 
@@ -144,6 +146,8 @@ extension GachaType {
 
 @available(iOS 16.0, *)
 private struct GachaItemChart: View {
+    // MARK: Internal
+
     let items: [(GachaItem, count: Int)]
 
     var fiveStarItems: [(GachaItem, count: Int)] {
@@ -167,6 +171,10 @@ private struct GachaItemChart: View {
                 }
             }
         }
+    }
+
+    var lose5050IconStr: String {
+        useGuestGachaEvaluator ? "Pom-Pom_Sticker_32" : "UI_EmotionIcon5"
     }
 
     func matchedItems(with value: String) -> [GachaItem] {
@@ -201,7 +209,7 @@ private struct GachaItemChart: View {
                         Text("\(item.count)").foregroundColor(.gray)
                             .font(.caption)
                         if item.0.isLose5050() {
-                            Image("UI_EmotionIcon5").resizable().scaledToFit()
+                            Image(lose5050IconStr).resizable().scaledToFit()
                                 .frame(width: frame, height: frame)
                                 .offset(y: -5)
                         } else {
@@ -271,6 +279,11 @@ private struct GachaItemChart: View {
         .chartForegroundStyleScale(range: colors(items: items))
         .chartLegend(.hidden)
     }
+
+    // MARK: Private
+
+    @Default(.useGuestGachaEvaluator)
+    private var useGuestGachaEvaluator: Bool
 }
 
 // MARK: - GachaTimeChart
@@ -295,7 +308,7 @@ private struct GachaTimeChart: View {
     }
 
     var gachaTypeDateCount: [GachaTypeDateCountAndIfContain5Star] {
-        let dates = Set<Date>.init(itemsFiltered.map { $0.time })
+        let dates = Set<Date>(itemsFiltered.map { $0.time })
         return dates.map { date in
             GachaTypeDateCountAndIfContain5Star(
                 date: date,

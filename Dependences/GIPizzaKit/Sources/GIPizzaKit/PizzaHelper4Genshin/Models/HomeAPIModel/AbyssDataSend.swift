@@ -164,7 +164,8 @@ extension [AbyssData.SubmitDetailModel] {
     public static func generateArrayFrom(
         data: SpiralAbyssDetail,
         basicInfo: BasicInfos
-    ) -> [AbyssData.SubmitDetailModel] {
+    )
+        -> [AbyssData.SubmitDetailModel] {
         data.floors.flatMap { floor in
             floor.levels.flatMap { level in
                 level.battles.compactMap { battle in

@@ -93,13 +93,13 @@ private struct SettingSlider<V>: View where V: BinaryFloatingPoint,
     let title: String
     @Binding
     var value: V
-    var valueFormatterString: String = "%@"
+    var valueFormatterString = "%@"
     let bounds: ClosedRange<V>
     let step: V.Stride
     var formatMethod: (V) -> String = { "\($0)" }
 
     @State
-    var showSlider: Bool = false
+    var showSlider = false
 
     var body: some View {
         HStack {

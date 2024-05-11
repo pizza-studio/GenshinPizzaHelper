@@ -197,7 +197,8 @@ extension Binding where Value: OptionSet, Value == Value.Element {
     func bind(
         _ options: Value,
         animate: Bool = false
-    ) -> Binding<Bool> {
+    )
+        -> Binding<Bool> {
         .init { () -> Bool in
             self.wrappedValue.contains(options)
         } set: { newValue in

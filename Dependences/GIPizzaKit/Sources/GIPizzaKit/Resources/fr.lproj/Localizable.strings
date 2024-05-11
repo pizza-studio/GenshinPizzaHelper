@@ -1,6 +1,8 @@
 // MARK: - Exceptions
 
+"$asset.character:Peruere" = "Peruere";
 "$asset.character:RaidenKunikuzushi" = "Raiden Kunikuzushi";
+"$asset.nameCard:UI_NameCardPic_Peruere_P" = "Peruere - Édit";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Raiden Kunikuzushi - Ballade d'errance";
 
 // MARK: - Daily Materials

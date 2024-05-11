@@ -1,6 +1,8 @@
 // MARK: - Exceptions
 
+"$asset.character:Peruere" = "ペルヴェーレ";
 "$asset.character:RaidenKunikuzushi" = "雷電国崩";
+"$asset.nameCard:UI_NameCardPic_Peruere_P" = "ペルヴェーレ·規則";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "雷電国崩・憂き世の歌";
 
 // MARK: - Daily Materials

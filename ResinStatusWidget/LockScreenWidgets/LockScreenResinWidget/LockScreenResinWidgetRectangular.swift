@@ -164,7 +164,8 @@ extension View {
         lineLimit: Int = 1,
         minimumScaleFactor: CGFloat = 0.01,
         percentage: CGFloat = 1
-    ) -> ModifiedContent<Self, FitSystemFont> {
+    )
+        -> ModifiedContent<Self, FitSystemFont> {
         modifier(FitSystemFont(
             lineLimit: lineLimit,
             minimumScaleFactor: minimumScaleFactor,

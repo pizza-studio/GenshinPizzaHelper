@@ -13,7 +13,8 @@ struct ShareSheet: UIViewControllerRepresentable {
         _ completed: Bool,
         _ returnedItems: [Any]?,
         _ error: Error?
-    ) -> ()
+    )
+        -> ()
 
     let activityItems: [Any]
     let applicationActivities: [UIActivity]? = nil

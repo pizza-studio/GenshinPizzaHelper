@@ -15,7 +15,7 @@ extension [String]: RawRepresentable {
             return String(data: data, encoding: .utf8)!
         } else {
             return String(
-                data: try! encoder.encode([String].init()),
+                data: try! encoder.encode([String]()),
                 encoding: .utf8
             )!
         }

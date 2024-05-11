@@ -194,7 +194,8 @@ class GachaViewModel: ObservableObject {
 
     func importGachaFromUIGFJson(
         uigfJson: UIGFJson
-    ) -> (uid: String, totalCount: Int, newCount: Int) {
+    )
+        -> (uid: String, totalCount: Int, newCount: Int) {
         let info = uigfJson.info
         let items = uigfJson.list
         let newCount = manager.addRecordItems(

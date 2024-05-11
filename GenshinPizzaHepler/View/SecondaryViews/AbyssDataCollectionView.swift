@@ -1326,7 +1326,8 @@ extension AbyssSeason {
     fileprivate static func choices(
         pvp: Bool = false,
         from date: Date = Date()
-    ) -> [AbyssSeason] {
+    )
+        -> [AbyssSeason] {
         var choices = [Self]()
         var date = date
         var startDate = Calendar.current

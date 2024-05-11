@@ -110,6 +110,7 @@ extension CharacterAsset {
             switch self {
             case .Kunikuzushi: raw = "Raiden" + raw
             case .Yoimiya: raw = "Naganohara" + raw
+            case .Arlecchino: raw = "Peruere"
             default: break
             }
         }

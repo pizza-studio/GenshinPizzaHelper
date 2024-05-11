@@ -157,7 +157,7 @@ struct SettingsView: View {
                 #endif
             }
             .listStyle(.insetGrouped)
-            .navigationTitle("nav.category.settings.name")
+            .navigationTitle("nav.category.settings.name.full")
         } detail: {
             NavigationStack {
                 switch selectedView {

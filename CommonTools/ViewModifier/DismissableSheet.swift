@@ -12,7 +12,7 @@ import SwiftUI
 struct DismissableSheet<Item>: ViewModifier where Item: Identifiable {
     @Binding
     var sheet: Item?
-    var title: String = "sys.done"
+    var title = "sys.done"
     var todoOnDismiss: () -> ()
 
     func body(content: Content) -> some View {

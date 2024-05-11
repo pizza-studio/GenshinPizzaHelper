@@ -4,6 +4,8 @@
 
 import Foundation
 
+// MARK: - Enka.CharacterLoc
+
 extension Enka {
     public typealias CharacterLoc = [String: [String: String]]
 }
