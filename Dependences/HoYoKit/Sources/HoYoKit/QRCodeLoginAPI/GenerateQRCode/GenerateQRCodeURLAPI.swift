@@ -22,7 +22,7 @@ extension MiHoYoAPI {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
 
-        request.httpBody = try encoder.encode(Body(appId: "4", device: "app_id"))
+        request.httpBody = try encoder.encode(Body(appId: "4", device: deviceId.uuidString))
 
         let (data, _) = try await URLSession.shared.data(for: request)
 
@@ -33,7 +33,7 @@ extension MiHoYoAPI {
         let ticket = urlComponents?.queryItems?.first(where: { item in
             item.name == "ticket"
         })?.value
-        
+
         guard let ticket else { throw MiHoYoAPIError.other(retcode: -999, message: "Invalid URL \(resultURL)") }
 
         return (url: resultURL, ticket: ticket)
@@ -62,4 +62,10 @@ private func generateQRCode(from string: String) -> UIImage? {
     }
 
     return nil
+}
+
+func generate64RandomString() -> String {
+    let lettersAndNumbers = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    let randomString = String((0..<64).map { _ in lettersAndNumbers.randomElement()! })
+    return randomString
 }

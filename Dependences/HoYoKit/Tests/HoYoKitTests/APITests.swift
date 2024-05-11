@@ -172,7 +172,17 @@ final class APITests: XCTestCase {
     }
 
     func testGenerateQRCodeURL() async throws {
-        let _ = try await MiHoYoAPI.generateQRCodeURL(deviceId: UUID())
+        let uuid = UUID()
+        let result = try await MiHoYoAPI.generateQRCodeURL(deviceId: uuid)
+        print(result)
+        print("UUID: \(uuid.uuidString)")
+    }
+
+    func testQueryQRCodeStatus() async throws {
+        let ticket = "663f8cc24d9dbd6113e69a42"
+        let deviceId = UUID(uuidString: "E586D107-AA73-4CA0-8467-BC15B3A6FEAC")!
+        let result = try await MiHoYoAPI.queryQRCodeStatus(deviceId: deviceId, ticket: ticket)
+        print(result)
     }
 }
 
