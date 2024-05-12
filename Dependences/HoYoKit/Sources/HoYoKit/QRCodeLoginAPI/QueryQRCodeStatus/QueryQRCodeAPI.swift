@@ -8,7 +8,7 @@
 import Foundation
 
 extension MiHoYoAPI {
-    static func queryQRCodeStatus(deviceId: UUID, ticket: String) async throws -> QueryQRCodeStatus {
+    static public func queryQRCodeStatus(deviceId: UUID, ticket: String) async throws -> QueryQRCodeStatus {
         let appId = "4"
         var request = URLRequest(url: URL(string: "https://hk4e-sdk.mihoyo.com/hk4e_cn/combo/panda/qrcode/query")!)
         request.httpMethod = "POST"

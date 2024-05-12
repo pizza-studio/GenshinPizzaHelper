@@ -220,3 +220,102 @@ private func getHTTPHeaderFields(region: Region) -> [String: String] {
         ]
     }
 }
+
+// MARK: - QRCodeGetCookieView
+
+struct QRCodeGetCookieView: View {
+    @Environment(\.dismiss)
+    private var dismiss
+
+    @State
+    private var qrCodeAndTicket: (qrCode: UIImage, ticket: String)?
+    @State
+    private var taskId: UUID = .init()
+    @State
+    private var error: Error?
+
+    @Binding
+    var cookie: String!
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    if let qrCodeAndTicket {
+                        Image(uiImage: qrCodeAndTicket.qrCode)
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200, height: 200)
+                    } else if let error {
+                        Label {
+                            Text(error.localizedDescription)
+                        } icon: {
+                            Image(systemSymbol: .exclamationmarkCircle)
+                                .foregroundStyle(.red)
+                        }
+                        Button("sys.retry") {
+                            taskId = UUID()
+                        }
+                    } else {
+                        ProgressView()
+                    }
+                } footer: {
+                    Text("Please take a screenshot of the qr code and scan it in miyoushe")
+                }
+            }
+            .navigationTitle("account.login.title")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("sys.cancel") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+        .task(id: taskId) {
+            print("TaskID: \(taskId)")
+            do {
+                qrCodeAndTicket = try await MiHoYoAPI.generateLoginQRCode(deviceId: taskId)
+                QRCodeCheckLoop: while !Task.isCancelled {
+                    let status = try await MiHoYoAPI.queryQRCodeStatus(
+                        deviceId: taskId,
+                        ticket: qrCodeAndTicket!.ticket
+                    )
+
+                    print("QRCodeStatus: \(status)")
+
+                    if case let .confirmed(accountId: accountId, token: gameToken) = status {
+                        let stoken = try await MiHoYoAPI.gameToken2StokenV2(
+                            accountId: accountId,
+                            gameToken: gameToken
+                        ).stoken
+                        print("SToken: \(stoken)")
+
+                        let ltoken = try await MiHoYoAPI.stoken2LTokenV1(
+                            accountId: accountId,
+                            stoken: stoken
+                        ).ltoken
+                        print("LToken: \(ltoken)")
+
+                        var cookie = ""
+                        cookie += "stuid=" + accountId + "; "
+                        cookie += "stoken=" + stoken + "; "
+                        cookie += "ltuid=" + accountId + "; "
+                        cookie += "ltoken=" + ltoken + "; "
+                        self.cookie = cookie
+
+                        dismiss()
+
+                        break QRCodeCheckLoop
+                    }
+
+                    try await Task.sleep(nanoseconds: 2 * 1_000_000_000) // 2 seconds
+                }
+            } catch {
+                self.error = error
+            }
+        }
+    }
+}

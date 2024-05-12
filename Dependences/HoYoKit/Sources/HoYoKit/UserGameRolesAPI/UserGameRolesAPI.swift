@@ -26,4 +26,22 @@ extension MiHoYoAPI {
         let list = try FetchedAccountDecodeHelper.decodeFromMiHoYoAPIJSONResult(data: data)
         return list.list
     }
+
+    public static func getUserGameRolesByStoken(region: Region, cookie: String) async throws -> [FetchedAccount] {
+        let queryItems: [URLQueryItem] = [
+            .init(name: "game_biz", value: region.rawValue),
+        ]
+
+        let request = try await Self.generateAccountAPIRequest(
+            region: region,
+            path: "/binding/api/getUserGameRolesByCookie",
+            queryItems: queryItems,
+            cookie: cookie
+        )
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+
+        let list = try FetchedAccountDecodeHelper.decodeFromMiHoYoAPIJSONResult(data: data)
+        return list.list
+    }
 }

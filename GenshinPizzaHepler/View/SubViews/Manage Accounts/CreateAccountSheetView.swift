@@ -124,8 +124,6 @@ struct CreateAccountSheetView: View {
             RequireLoginView(unsavedCookie: $account.cookie, region: $region)
         } footer: {
             VStack(alignment: .leading) {
-                Text("account.login.cn_disabled_desc")
-                    .foregroundStyle(.red)
                 HStack {
                     Text("account.login.manual.1")
                         .font(.footnote)
@@ -217,7 +215,6 @@ private struct RequireLoginView: View {
                 getCookieWebViewRegion = .mainlandChina
                 region = .mainlandChina
             }
-            .disabled(true)
             Button("sys.server.os") {
                 getCookieWebViewRegion = .global
                 region = .global
@@ -236,17 +233,22 @@ private struct RequireLoginView: View {
             )
         }
         .sheet(item: $getCookieWebViewRegion, content: { region in
-            GetCookieWebView(
-                isShown: .init(get: {
-                    getCookieWebViewRegion != nil
-                }, set: { newValue in
-                    if !newValue {
-                        getCookieWebViewRegion = nil
-                    }
-                }),
-                cookie: $unsavedCookie,
-                region: region
-            )
+            switch region {
+            case .mainlandChina:
+                QRCodeGetCookieView(cookie: $unsavedCookie)
+            case .global:
+                GetCookieWebView(
+                    isShown: .init(get: {
+                        getCookieWebViewRegion != nil
+                    }, set: { newValue in
+                        if !newValue {
+                            getCookieWebViewRegion = nil
+                        }
+                    }),
+                    cookie: $unsavedCookie,
+                    region: region
+                )
+            }
         })
     }
 }

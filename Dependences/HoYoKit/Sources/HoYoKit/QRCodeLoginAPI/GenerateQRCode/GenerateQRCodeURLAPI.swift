@@ -6,6 +6,7 @@
 //
 
 import CoreImage
+import CoreImage.CIFilterBuiltins
 import Foundation
 import UIKit
 
@@ -50,14 +51,14 @@ extension MiHoYoAPI {
 }
 
 private func generateQRCode(from string: String) -> UIImage? {
-    let data = string.data(using: String.Encoding.ascii)
+    let context = CIContext()
+    let filter = CIFilter.qrCodeGenerator()
 
-    if let filter = CIFilter(name: "CIQRCodeGenerator") {
-        filter.setValue(data, forKey: "inputMessage")
-        let transform = CGAffineTransform(scaleX: 3, y: 3)
+    filter.message = Data(string.utf8)
 
-        if let output = filter.outputImage?.transformed(by: transform) {
-            return UIImage(ciImage: output)
+    if let outputImage = filter.outputImage {
+        if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+            return UIImage(cgImage: cgImage)
         }
     }
 
@@ -66,6 +67,6 @@ private func generateQRCode(from string: String) -> UIImage? {
 
 func generate64RandomString() -> String {
     let lettersAndNumbers = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    let randomString = String((0..<64).map { _ in lettersAndNumbers.randomElement()! })
+    let randomString = String((0 ..< 64).map { _ in lettersAndNumbers.randomElement()! })
     return randomString
 }
