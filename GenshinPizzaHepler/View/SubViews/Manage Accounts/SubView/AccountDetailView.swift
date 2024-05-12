@@ -77,7 +77,7 @@ struct AccountDetailView: View {
                     .multilineTextAlignment(.leading)
                     RegenerateSTokenV2Button(account: account)
                 } header: {
-                    Text("settings.account.stokenV2.header")
+                    Text(verbatim: "STokenV2")
                         .textCase(.none)
                 }
             }
