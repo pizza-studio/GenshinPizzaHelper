@@ -1584,35 +1584,6 @@
         }
       }
     },
-    "account.login.cn_disabled_desc" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sorry, login feature for China mainland server (Celestia and Irminsul server) is temporary down. We are working on this. You can now manually config your account with your own effective Miyoushe Cookie. "
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "深く残念ながら、中国大陸のサーバー（天空の島サーバーと世界樹サーバー）のアカウントのログインは現時点でできません。一刻も早く使えるよう、我らは策を練っています。幸い、使える「米遊社Cookieデータ」がお持ちしている場合、ご自分でそれを書き込んでログインするのは可能です。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "抱歉，中国大陆服务器（天空岛＆世界树）的登录功能暂时无法使用。我们正在努力寻求解决方案。目前您仍可以通过「自行填写有效米游社Cookie」的方式来手动登录。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "抱歉，中國大陸伺服器（天空島＆世界樹）的登入功能暫時無法使用。我們正在努力尋求解決方案。目前您仍可以藉由「自行填寫有效米游社Cookie」的方式來手動登入。"
-          }
-        }
-      }
-    },
     "account.login.manual.1" : {
       "localizations" : {
         "en" : {
@@ -1833,10 +1804,22 @@
             "value" : "I have scanned. Please check. "
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキャン済み、ご検査を"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "已扫描，请检查"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已掃描，請檢查"
           }
         }
       }
@@ -1846,13 +1829,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please directly or take a screenshot to the photo album and use miyoushe to scan the QR code"
+            "value" : "Please use MiYouShe app to scan the QR code. You may also want to screenshot this QR code for the scanning."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社アプリで直接にスキャンするか、あるいは画面画像を撮ってからスキャンしてください。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请直接或截图至相簿后，使用米游社扫描二维码"
+            "value" : "请使用米游社 App 扫描该二维码。您也可以将该二维码用屏幕截图的方式存下来扫描。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請使用米遊社 App 掃描該 QR Code。您也可以將該 QR Code 用螢幕擷圖的方式存下來掃描。"
           }
         }
       }
@@ -1862,13 +1857,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The returned result shows that the QR code has not been scanned. Please try again or regenerate the QR code for scanning."
+            "value" : "Server response indicates that the QR code has not been scanned. Please try scanning it again or regenerate a new QR code for scanning."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーからの報告によって、先のQRコードが未スキャンの状態のままのようです。それをもう一度スキャンするか、あるいはQRコードを再生成してスキャンしてください。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "返回结果显示二维码未扫描，请重试或重新生成二维码扫描"
+            "value" : "服务器回传讯息指出该二维码尚未被扫描。请重新尝试扫描、或者重新生成新的二维码再尝试。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伺服器回傳訊息指出該 QR Code 尚未被掃描。請重新嘗試掃描、或者重新生成新的 QR Code 再嘗試。"
           }
         }
       }
@@ -1878,13 +1885,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regenerate QR code"
+            "value" : "Regenerate the QR code"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QRコードを再生成"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新生成二维码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新生成 QR Code"
           }
         }
       }
@@ -1897,10 +1916,22 @@
             "value" : "Login by scanning the QR code"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QRコードスキャンでログイン"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "通过扫描二维码登录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "藉由 QR Code 掃描的方式登入"
           }
         }
       }
@@ -44641,35 +44672,6 @@
         }
       }
     },
-    "我们希望收集您已拥有的角色和在攻克深境螺旋时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深境螺旋角色使用率、队伍使用率等情况。更多相关问题，请查看深境螺旋统计榜单页面右上角的FAQ。" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We hope to collect information about your characters and the characters you use in abyss. If you agree to share your data with us, you will be able to view real-time summaries of Abyss character usage rates, team usage rates, and other related information within the app. For more details, please refer to the FAQ in the upper right corner of the Spiral Abyss page."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あなたの「ご所有のキャラ資料」と「深境螺旋でご使用していたキャラ資料」を集めようとしていますが、あなたの許可が必要です。ご許可があれば、弊アプリで集められていた「全サーバーの深境螺旋全キャラ使用率」「サーバーの深境螺旋全チーム使用率」その情報の正確性をもっと向上することはできます。それについてのよくある質問は、「深境螺旋ランキング」その画面の右上のFAQをタップしてご覧ください。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我们希望收集您已拥有的角色和在攻克深境螺旋时使用的角色。如果您同意我们使用您的数据，您将可以在App内查看我们实时汇总的深境螺旋角色使用率、队伍使用率等情况。更多相关问题，请查看深境螺旋统计榜单页面右上角的FAQ。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我們希望收集您已擁有的角色和在攻克深境螺旋時使用的角色。如果您同意我們使用您的戰績資料，您將可以在App內查看我們實時彙總的深境螺旋角色使用率、隊伍使用率等情況。更多相關問題，請查看深境螺旋統計榜單頁面右上角的FAQ。"
-          }
-        }
-      }
-    },
     "抽取记录" : {
       "localizations" : {
         "en" : {
@@ -44750,35 +44752,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
-          }
-        }
-      }
-    },
-    "是否允许我们收集您的深境螺旋数据？" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Allow us collect your spiral abyss data?"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "深境螺旋のデータの収集のご許可、よろしいですか。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "是否允许我们收集您的深境螺旋数据？"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "是否允許我們收集您的深境螺旋數據？"
           }
         }
       }
