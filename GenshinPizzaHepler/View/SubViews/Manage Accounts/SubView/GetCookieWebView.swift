@@ -237,6 +237,9 @@ struct QRCodeGetCookieView: View {
     @Binding
     var cookie: String!
 
+    @State
+    private var isNotScannedAlertShow: Bool = false
+
     var body: some View {
         NavigationStack {
             List {
@@ -247,6 +250,49 @@ struct QRCodeGetCookieView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 200, height: 200)
+
+                        Button("account.qr_code_login.check_scanned") {
+                            Task {
+                                do {
+                                    let status = try await MiHoYoAPI.queryQRCodeStatus(
+                                        deviceId: taskId,
+                                        ticket: qrCodeAndTicket.ticket
+                                    )
+
+                                    if case let .confirmed(accountId: accountId, token: gameToken) = status {
+                                        let stokenResult = try await MiHoYoAPI.gameToken2StokenV2(
+                                            accountId: accountId,
+                                            gameToken: gameToken
+                                        )
+                                        let stoken = stokenResult.stoken
+                                        let mid = stokenResult.mid
+
+                                        let ltoken = try await MiHoYoAPI.stoken2LTokenV1(
+                                            mid: mid,
+                                            stoken: stoken
+                                        ).ltoken
+
+                                        var cookie = ""
+                                        cookie += "stuid=" + accountId + "; "
+                                        cookie += "stoken=" + stoken + "; "
+                                        cookie += "ltuid=" + accountId + "; "
+                                        cookie += "ltoken=" + ltoken + "; "
+                                        cookie += "mid=" + mid + "; "
+                                        self.cookie = cookie
+
+                                        dismiss()
+                                    } else {
+                                        isNotScannedAlertShow = true
+                                    }
+                                } catch {
+                                    self.error = error
+                                }
+                            }
+                        }
+
+                        Button("account.qr_code_login.regenerate_qrcode") {
+                            taskId = UUID()
+                        }
                     } else if let error {
                         Label {
                             Text(error.localizedDescription)
@@ -261,10 +307,15 @@ struct QRCodeGetCookieView: View {
                         ProgressView()
                     }
                 } footer: {
-                    Text("Please take a screenshot of the qr code and scan it in miyoushe")
+                    Text("account.qr_code_login.footer")
                 }
             }
-            .navigationTitle("account.login.title")
+            .alert("account.qr_code_login.not_scanned_alert", isPresented: $isNotScannedAlertShow, actions: {
+                Button("sys.done") {
+                    isNotScannedAlertShow.toggle()
+                }
+            })
+            .navigationTitle("account.qr_code_login.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -275,47 +326,8 @@ struct QRCodeGetCookieView: View {
             }
         }
         .task(id: taskId) {
-            print("TaskID: \(taskId)")
             do {
                 qrCodeAndTicket = try await MiHoYoAPI.generateLoginQRCode(deviceId: taskId)
-                QRCodeCheckLoop: while !Task.isCancelled {
-                    let status = try await MiHoYoAPI.queryQRCodeStatus(
-                        deviceId: taskId,
-                        ticket: qrCodeAndTicket!.ticket
-                    )
-
-                    print("QRCodeStatus: \(status)")
-
-                    if case let .confirmed(accountId: accountId, token: gameToken) = status {
-                        let stokenResult = try await MiHoYoAPI.gameToken2StokenV2(
-                            accountId: accountId,
-                            gameToken: gameToken
-                        )
-                        let stoken = stokenResult.stoken
-                        let mid = stokenResult.mid
-                        print("SToken: \(stoken)")
-
-                        let ltoken = try await MiHoYoAPI.stoken2LTokenV1(
-                            mid: mid,
-                            stoken: stoken
-                        ).ltoken
-                        print("LToken: \(ltoken)")
-
-                        var cookie = ""
-                        cookie += "stuid=" + accountId + "; "
-                        cookie += "stoken=" + stoken + "; "
-                        cookie += "ltuid=" + accountId + "; "
-                        cookie += "ltoken=" + ltoken + "; "
-                        cookie += "mid=" + mid + "; "
-                        self.cookie = cookie
-
-                        dismiss()
-
-                        break QRCodeCheckLoop
-                    }
-
-                    try await Task.sleep(nanoseconds: 2 * 1_000_000_000) // 2 seconds
-                }
             } catch {
                 self.error = error
             }
