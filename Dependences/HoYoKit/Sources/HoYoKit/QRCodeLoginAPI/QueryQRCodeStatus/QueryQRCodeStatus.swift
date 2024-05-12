@@ -12,7 +12,7 @@ import Foundation
 public enum QueryQRCodeStatus: Decodable {
     case unscanned
     case scanned
-    case confirmed(uid: String, token: String)
+    case confirmed(accountId: String, token: String)
 
     // MARK: Lifecycle
 
@@ -32,7 +32,7 @@ public enum QueryQRCodeStatus: Decodable {
                 ConfirmedDataDecodeHelper.self,
                 from: jsonString.data(using: .utf8)!
             )
-            self = .confirmed(uid: decodedConfirmedData.uid, token: decodedConfirmedData.token)
+            self = .confirmed(accountId: decodedConfirmedData.uid, token: decodedConfirmedData.token)
         }
     }
 

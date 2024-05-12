@@ -176,14 +176,32 @@ final class APITests: XCTestCase {
         let result = try await MiHoYoAPI.generateQRCodeURL(deviceId: uuid)
         print(result)
         print("UUID: \(uuid.uuidString)")
+
+        let ticket = result.ticket
+        let deviceId = uuid
+        while true {
+            let result = try await MiHoYoAPI.queryQRCodeStatus(deviceId: deviceId, ticket: ticket)
+            print(result)
+
+            if case .confirmed = result { break }
+
+            try await Task.sleep(nanoseconds: 5 * 1_000_000_000)
+        }
     }
 
     func testQueryQRCodeStatus() async throws {
-        let ticket = "663f8cc24d9dbd6113e69a42"
-        let deviceId = UUID(uuidString: "E586D107-AA73-4CA0-8467-BC15B3A6FEAC")!
+        let ticket = "6640304f2ce2082e053fba4b"
+        let deviceId = UUID(uuidString: "8FE68837-9A62-4426-9345-5792E497E591")!
         let result = try await MiHoYoAPI.queryQRCodeStatus(deviceId: deviceId, ticket: ticket)
         print(result)
     }
+
+    func testGameToken2StokenV2() async throws {
+        let gameToken = "3fCyidqHyD7bYkAsxDefdJCIZzJA2SHy"
+        let accountId = "193706962"
+        let result = try await MiHoYoAPI.gameToken2StokenV2(accountId: accountId, gameToken: gameToken)
+        print(result)
+    } 
 }
 
 // MARK: - TestData
