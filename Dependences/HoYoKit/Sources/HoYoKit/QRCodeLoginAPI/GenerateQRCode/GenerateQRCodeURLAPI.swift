@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2024/5/10.
 //
 
+#if !os(watchOS)
 import CoreImage
 import CoreImage.CIFilterBuiltins
 import Foundation
@@ -70,3 +71,4 @@ func generate64RandomString() -> String {
     let randomString = String((0 ..< 64).map { _ in lettersAndNumbers.randomElement()! })
     return randomString
 }
+#endif
