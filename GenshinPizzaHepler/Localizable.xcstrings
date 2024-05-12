@@ -1825,6 +1825,86 @@
         }
       }
     },
+    "account.qr_code_login.check_scanned" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I have scanned. Please check. "
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已扫描，请检查"
+          }
+        }
+      }
+    },
+    "account.qr_code_login.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please directly or take a screenshot to the photo album and use miyoushe to scan the QR code"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请直接或截图至相簿后，使用米游社扫描二维码"
+          }
+        }
+      }
+    },
+    "account.qr_code_login.not_scanned_alert" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The returned result shows that the QR code has not been scanned. Please try again or regenerate the QR code for scanning."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回结果显示二维码未扫描，请重试或重新生成二维码扫描"
+          }
+        }
+      }
+    },
+    "account.qr_code_login.regenerate_qrcode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regenerate QR code"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新生成二维码"
+          }
+        }
+      }
+    },
+    "account.qr_code_login.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login by scanning the QR code"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过扫描二维码登录"
+          }
+        }
+      }
+    },
     "account.server" : {
       "extractionState" : "migrated",
       "localizations" : {
@@ -29799,9 +29879,6 @@
           }
         }
       }
-    },
-    "Please take a screenshot of the qr code and scan it in miyoushe" : {
-
     },
     "Refresh" : {
       "localizations" : {
