@@ -16,20 +16,28 @@ public struct GameToken2StokenV2Data: Decodable, DecodableFromMiHoYoAPIJSONResul
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let tokenData = try container.decode(Token.self, forKey: .token)
         self.stoken = tokenData.token
+        let userInfo = try container.decode(UserInfo.self, forKey: .userInfo)
+        self.mid = userInfo.mid
     }
 
     // MARK: Public
 
     public let stoken: String
+    public let mid: String
 
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
         case token
+        case userInfo = "user_info"
     }
 
     struct Token: Decodable {
         let token: String
+    }
+
+    struct UserInfo: Decodable {
+        let mid: String
     }
 }
 

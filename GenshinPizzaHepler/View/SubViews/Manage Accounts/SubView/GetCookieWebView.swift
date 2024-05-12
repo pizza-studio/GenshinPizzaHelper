@@ -287,14 +287,16 @@ struct QRCodeGetCookieView: View {
                     print("QRCodeStatus: \(status)")
 
                     if case let .confirmed(accountId: accountId, token: gameToken) = status {
-                        let stoken = try await MiHoYoAPI.gameToken2StokenV2(
+                        let stokenResult = try await MiHoYoAPI.gameToken2StokenV2(
                             accountId: accountId,
                             gameToken: gameToken
-                        ).stoken
+                        )
+                        let stoken = stokenResult.stoken
+                        let mid = stokenResult.mid
                         print("SToken: \(stoken)")
 
                         let ltoken = try await MiHoYoAPI.stoken2LTokenV1(
-                            accountId: accountId,
+                            mid: mid,
                             stoken: stoken
                         ).ltoken
                         print("LToken: \(ltoken)")
@@ -304,6 +306,7 @@ struct QRCodeGetCookieView: View {
                         cookie += "stoken=" + stoken + "; "
                         cookie += "ltuid=" + accountId + "; "
                         cookie += "ltoken=" + ltoken + "; "
+                        cookie += "mid=" + mid + "; "
                         self.cookie = cookie
 
                         dismiss()

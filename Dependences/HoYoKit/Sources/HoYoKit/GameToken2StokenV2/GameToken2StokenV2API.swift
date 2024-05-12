@@ -30,12 +30,12 @@ extension MiHoYoAPI {
         return try .decodeFromMiHoYoAPIJSONResult(data: result)
     }
 
-    public static func stoken2LTokenV1(accountId: String, stoken: String) async throws -> Stoken2LTokenV1Data {
+    public static func stoken2LTokenV1(mid: String, stoken: String) async throws -> Stoken2LTokenV1Data {
         var request =
             URLRequest(url: URL(string: "https://passport-api.mihoyo.com/account/auth/api/getLTokenBySToken")!)
         request.httpMethod = "GET"
 
-        request.setValue("stuid=\(accountId); stoken=\(stoken); ", forHTTPHeaderField: "cookie")
+        request.setValue("mid=\(mid); stoken=\(stoken); ", forHTTPHeaderField: "cookie")
 
         let (result, _) = try await URLSession.shared.data(for: request)
         return try .decodeFromMiHoYoAPIJSONResult(data: result)

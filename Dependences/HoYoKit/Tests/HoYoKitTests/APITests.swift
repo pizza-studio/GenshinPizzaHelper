@@ -198,15 +198,16 @@ final class APITests: XCTestCase {
 
     func testGameToken2StokenV2() async throws {
         let gameToken = ""
-        let accountId = "193706962"
+        let accountId = ""
         let result = try await MiHoYoAPI.gameToken2StokenV2(accountId: accountId, gameToken: gameToken)
         print(result)
     }
 
     func testStoken2LTokenV1() async throws {
-        let stoken = ""
-        let accountId = "193706962"
-        let result = try await MiHoYoAPI.stoken2LTokenV1(accountId: accountId, stoken: stoken)
+        let stoken =
+            ""
+        let mid = ""
+        let result = try await MiHoYoAPI.stoken2LTokenV1(mid: mid, stoken: stoken)
         print(result)
     }
 }
