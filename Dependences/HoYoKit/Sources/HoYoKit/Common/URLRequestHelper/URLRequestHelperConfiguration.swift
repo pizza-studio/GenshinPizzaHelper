@@ -7,17 +7,20 @@
 
 import Foundation
 import SwiftUI
+#if os(iOS)
 import UIKit
+#endif
 
 // MARK: - URLRequestHelperConfiguration
 
 /// Abstract class storing salt, version, etc for API.
-@available(iOS 15.0, *)
 enum URLRequestHelperConfiguration {
-    static let userAgent: String = """
-    Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) \
-    AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1
-    """
+    static func getUserAgent(region: Region) -> String {
+        """
+        Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) \
+        AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/\(Self.xRpcAppVersion(region: region))
+        """
+    }
 
     static func recordURLAPIHost(region: Region) -> String {
         switch region {
@@ -67,9 +70,9 @@ enum URLRequestHelperConfiguration {
     static func xRpcAppVersion(region: Region) -> String {
         switch region {
         case .mainlandChina:
-            return "2.60.1"
+            return "2.71.1"
         case .global:
-            return "2.33.0"
+            return "2.54.0"
         }
     }
 
@@ -96,8 +99,13 @@ enum URLRequestHelperConfiguration {
     /// - Parameter region: the region of the account
     /// - Returns: http request headers
     static func defaultHeaders(region: Region, additionalHeaders: [String: String]?) async throws -> [String: String] {
+        #if os(iOS)
+        let deviceId = await (UIDevice.current.identifierForVendor ?? UUID()).uuidString
+        #else
+        let deviceId = UUID().uuidString
+        #endif
         var headers = [
-            "User-Agent": userAgent,
+            "User-Agent": Self.getUserAgent(region: region),
             "Referer": referer(region: region),
             "Origin": referer(region: region),
             "Accept-Encoding": "gzip, deflate, br",
@@ -108,6 +116,7 @@ enum URLRequestHelperConfiguration {
             "x-rpc-app_version": xRpcAppVersion(region: region),
             "x-rpc-client_type": xRpcClientType(region: region),
             "x-rpc-page": "v4.1.5-ys_#/ys/daily",
+            "x-rpc-device_id": deviceId,
             "x-rpc-language": Locale.miHoYoAPILanguage.rawValue,
 
             "Sec-Fetch-Dest": "empty",
