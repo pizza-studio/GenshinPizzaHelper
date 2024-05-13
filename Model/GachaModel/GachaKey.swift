@@ -56,7 +56,7 @@ extension MihoyoAPI {
             "Host": "api-takumi.mihoyo.com",
             "Accept": "application/json, text/plain, */*",
             "Referer": "https://webstatic.mihoyo.com",
-            "x-rpc-app_version": "2.38.1",
+            "x-rpc-app_version": "2.71.1",
             "x-rpc-client_type": "5",
             "x-rpc-device_id": (UIDevice.current.identifierForVendor ?? UUID()).uuidString,
             "x-requested-with": "com.mihoyo.hyperion",
@@ -94,9 +94,9 @@ extension MihoyoAPI {
             let s: String
             switch account.server.region {
             case .mainlandChina:
-                s = "yUZ3s0Sna1IrSNfk29Vo6vRapdOyqyhB"
+                s = "EJncUPGnOHajenjLhBOsdpwEMZmiCmQX"
             case .global:
-                s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
+                s = "rk4xg2hakoi26nljpr099fv9fck1ah10"
                 // TODO: Manually wanted crash.
                 assert(false, "CanglongCI wants a crash here.")
             }

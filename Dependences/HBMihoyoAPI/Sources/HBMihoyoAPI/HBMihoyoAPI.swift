@@ -32,9 +32,9 @@ public enum MihoyoAPI {
             let s: String
             switch region {
             case .mainlandChina:
-                s = "egBrFMO1BPBG0UX5XOuuwMRLZKwTVKRV"
+                s = "rtvTthKxEyreVXQCnhluFgLXPOFKPHlA"
             case .global:
-                s = "okr4obncj8bw5a65hbnn5oo6ixjc3l9w"
+                s = "599uqkwc0dlqu3h6epzjzfhgyyrd44ae"
             }
             let t = String(Int(Date().timeIntervalSince1970))
             let r = String(Int.random(in: 100000 ..< 200000))
@@ -57,8 +57,8 @@ public enum MihoyoAPI {
             var request = URLRequest(url: url)
             request.allHTTPHeaderFields = [
                 "DS": get_ds_token(uid: uid, server_id: serverID),
-                "x-rpc-app_version": "2.51.1",
-                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1",
+                "x-rpc-app_version": "2.71.1",
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.71.1",
                 "x-rpc-client_type": "5",
                 "Referer": "https://app.mihoyo.com/",
                 "Cookie": cookie,
@@ -113,8 +113,8 @@ public enum MihoyoAPI {
                 request.httpMethod = "POST"
                 request.allHTTPHeaderFields = [
                     "DS": get_ds_token(uid: uid, server_id: serverID),
-                    "x-rpc-app_version": "2.51.1",
-                    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1",
+                    "x-rpc-app_version": "2.71.1",
+                    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.71.1",
                     "x-rpc-client_type": "5",
                     "Referer": "https://app.mihoyo.com/",
                     "Cookie": cookie,
