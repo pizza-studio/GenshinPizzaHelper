@@ -227,13 +227,6 @@ struct QRCodeGetCookieView: View {
     @Environment(\.dismiss)
     private var dismiss
 
-//    @State
-//    private var qrCodeAndTicket: (qrCode: UIImage, ticket: String)?
-//    @State
-//    private var taskId: UUID = .init()
-//    @State
-//    private var error: Error?
-
     @StateObject
     var viewModel = QRCodeGetCookieViewModel.shared
 
