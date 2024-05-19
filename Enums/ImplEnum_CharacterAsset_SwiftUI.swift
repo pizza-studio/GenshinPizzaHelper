@@ -33,6 +33,7 @@ extension CharacterAsset {
             )
             .clipShape(RoundedRectangle(cornerRadius: size / 10))
             .contentShape(RoundedRectangle(cornerRadius: size / 10))
+            .compositingGroup()
     }
 
     /// 显示带有背景的角色肖像。
@@ -74,5 +75,6 @@ extension CharacterAsset {
             .frame(width: size, height: size)
             .clipShape(RoundedRectangle(cornerSize: roundRect ? cornerSize : roundCornerSize))
             .contentShape(RoundedRectangle(cornerSize: roundRect ? cornerSize : roundCornerSize))
+            .compositingGroup()
     }
 }
