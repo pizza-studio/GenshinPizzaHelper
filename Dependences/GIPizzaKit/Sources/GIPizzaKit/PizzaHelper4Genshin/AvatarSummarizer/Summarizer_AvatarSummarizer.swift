@@ -106,7 +106,7 @@ extension PlayerDetail.Avatar {
         }
         addSeparator()
 
-        artifacts.enumerated().forEach { _, currentArtifact in
+        artifacts.forEach { currentArtifact in
             var currentArtifactPropName = locMap[currentArtifact.mainAttribute.rawName] ?? currentArtifact.mainAttribute
                 .rawName
             let mainPropStr = "\(currentArtifactPropName): \(currentArtifact.mainAttribute.valueString)"
