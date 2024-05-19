@@ -76,6 +76,7 @@ struct CharacterDetailView: View {
                     .overlay(Color(UIColor.systemGray6).opacity(0.5))
             }
         }
+        .clipped()
         .addWaterMark(showWaterMark)
         .onChange(of: showingCharacterName) { _ in
             simpleTaptic(type: .selection)
