@@ -227,12 +227,8 @@ struct QRCodeGetCookieView: View {
     @Environment(\.dismiss)
     private var dismiss
 
-    @State
-    private var qrCodeAndTicket: (qrCode: UIImage, ticket: String)?
-    @State
-    private var taskId: UUID = .init()
-    @State
-    private var error: Error?
+    @StateObject
+    var viewModel = QRCodeGetCookieViewModel.shared
 
     @Binding
     var cookie: String!
@@ -247,7 +243,7 @@ struct QRCodeGetCookieView: View {
         NavigationStack {
             List {
                 Section {
-                    if let error {
+                    if let error = viewModel.error {
                         Label {
                             Text(error.localizedDescription)
                         } icon: {
@@ -255,9 +251,9 @@ struct QRCodeGetCookieView: View {
                                 .foregroundStyle(.red)
                         }
                         Button("sys.retry") {
-                            taskId = UUID()
+                            viewModel.reCreateQRCode()
                         }
-                    } else if let qrCodeAndTicket {
+                    } else if let qrCodeAndTicket = viewModel.qrCodeAndTicket {
                         Image(uiImage: qrCodeAndTicket.qrCode)
                             .interpolation(.none)
                             .resizable()
@@ -272,7 +268,7 @@ struct QRCodeGetCookieView: View {
                                     isCheckingScanning = true
                                     do {
                                         let status = try await MiHoYoAPI.queryQRCodeStatus(
-                                            deviceId: taskId,
+                                            deviceId: viewModel.taskId,
                                             ticket: qrCodeAndTicket.ticket
                                         )
 
@@ -302,7 +298,7 @@ struct QRCodeGetCookieView: View {
                                             isNotScannedAlertShow = true
                                         }
                                     } catch {
-                                        self.error = error
+                                        viewModel.error = error
                                     }
                                     isCheckingScanning = false
                                 }
@@ -310,7 +306,7 @@ struct QRCodeGetCookieView: View {
                         }
 
                         Button("account.qr_code_login.regenerate_qrcode") {
-                            taskId = UUID()
+                            viewModel.reCreateQRCode()
                         }
                     } else {
                         ProgressView()
@@ -334,13 +330,48 @@ struct QRCodeGetCookieView: View {
                 }
             }
         }
-        .task(id: taskId) {
+    }
+}
+
+// MARK: - QRCodeGetCookieViewModel
+
+class QRCodeGetCookieViewModel: ObservableObject {
+    // MARK: Lifecycle
+
+    init() {
+        self.taskId = .init()
+        Task {
             do {
-                qrCodeAndTicket = nil
-                qrCodeAndTicket = try await MiHoYoAPI.generateLoginQRCode(deviceId: taskId)
+                self.qrCodeAndTicket = nil
+                self.qrCodeAndTicket = try await MiHoYoAPI.generateLoginQRCode(deviceId: taskId)
             } catch {
                 self.error = error
             }
         }
     }
+
+    // MARK: Public
+
+    public func reCreateQRCode() {
+        taskId = .init()
+        Task {
+            do {
+                self.qrCodeAndTicket = nil
+                self.qrCodeAndTicket = try await MiHoYoAPI.generateLoginQRCode(deviceId: taskId)
+            } catch {
+                self.error = error
+            }
+        }
+    }
+
+    // MARK: Internal
+
+    static var shared: QRCodeGetCookieViewModel = .init()
+
+    @Published
+    var qrCodeAndTicket: (qrCode: UIImage, ticket: String)?
+    @Published
+    var taskId: UUID
+    @Published
+    var error: Error?
 }
