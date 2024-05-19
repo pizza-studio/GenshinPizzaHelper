@@ -171,8 +171,6 @@ struct CookieGetterWebView: UIViewRepresentable {
     }
 }
 
-extension CookieGetterWebView {}
-
 private func getURL(region: Region) -> String {
     switch region {
     case .mainlandChina:
