@@ -239,7 +239,7 @@ struct QRCodeGetCookieView: View {
 
     private var qrWidth: CGFloat {
         #if os(OSX) || targetEnvironment(macCatalyst)
-        400
+        340
         #else
         280
         #endif
@@ -258,6 +258,16 @@ struct QRCodeGetCookieView: View {
         renderer.scale = 2
         guard let newImg = renderer.cgImage else { return nil }
         return Image(decorative: newImg, scale: 1)
+    }
+
+    private static var isMiyousheInstalled: Bool {
+        UIApplication.shared.canOpenURL(URL(string: miyousheHeader)!)
+    }
+
+    private static var miyousheHeader: String { "mihoyobbs://" }
+
+    private static var miyousheStorePage: String {
+        "https://apps.apple.com/cn/app/id1470182559"
     }
 
     var body: some View {
@@ -289,6 +299,11 @@ struct QRCodeGetCookieView: View {
                                     .padding()
                             }
                             Spacer()
+                        }
+                        .overlay(alignment: .bottom) {
+                            Text("account.qr_code_login.click_qr_to_save").font(.footnote)
+                                .padding(4)
+                                .background(RoundedRectangle(cornerRadius: 8).foregroundColor(.primary.opacity(0.05)))
                         }
                         if isCheckingScanning {
                             ProgressView()
@@ -332,6 +347,24 @@ struct QRCodeGetCookieView: View {
                                     }
                                     isCheckingScanning = false
                                 }
+                            }
+                        }
+
+                        if Self.isMiyousheInstalled {
+                            Link(
+                                destination: URL(
+                                    string: Self.miyousheHeader
+                                )!
+                            ) {
+                                Text("account.qr_code_login.open_miyoushe")
+                            }
+                        } else {
+                            Link(
+                                destination: URL(
+                                    string: Self.miyousheStorePage
+                                )!
+                            ) {
+                                Text("account.qr_code_login.open_miyoushe_mas_page")
                             }
                         }
 
