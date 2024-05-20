@@ -252,7 +252,7 @@ struct QRCodeGetCookieView: View {
                             viewModel.reCreateQRCode()
                         }
                     } else if let qrCodeAndTicket = viewModel.qrCodeAndTicket {
-                        Image(uiImage: qrCodeAndTicket.qrCode)
+                        Image(decorative: qrCodeAndTicket.qrCode, scale: 1)
                             .interpolation(.none)
                             .resizable()
                             .scaledToFit()
@@ -367,7 +367,7 @@ class QRCodeGetCookieViewModel: ObservableObject {
     static var shared: QRCodeGetCookieViewModel = .init()
 
     @Published
-    var qrCodeAndTicket: (qrCode: UIImage, ticket: String)?
+    var qrCodeAndTicket: (qrCode: CGImage, ticket: String)?
     @Published
     var taskId: UUID
     @Published
