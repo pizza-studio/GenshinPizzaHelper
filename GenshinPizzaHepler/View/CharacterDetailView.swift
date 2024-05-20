@@ -77,6 +77,7 @@ struct CharacterDetailView: View {
             }
         }
         .clipped()
+        .compositingGroup()
         .addWaterMark(showWaterMark)
         .onChange(of: showingCharacterName) { _ in
             simpleTaptic(type: .selection)
