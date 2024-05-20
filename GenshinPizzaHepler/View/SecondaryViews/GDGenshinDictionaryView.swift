@@ -251,15 +251,16 @@ struct GenshinDictionary: View {
     @ViewBuilder
     func dictionaryItemCell(word: GDDictionary) -> some View {
         VStack(alignment: .leading) {
-            Text(String(format: "app.dictionary.content.en:%@", word.en))
+            Text(DictLang.en.i18nHeader).bold() + Text(word.en)
             if let zhcn = word.zhCN {
-                Text(String(format: "app.dictionary.content.zh:%@", zhcn))
+                Text(DictLang.zh.i18nHeader).bold() + Text(zhcn)
             }
             if let ja = word.ja {
                 if let jaPron = word.pronunciationJa {
-                    Text(String(format: "app.dictionary.content.ja:%@", ja)) + Text(" (\(jaPron))").font(.footnote)
+                    Text(DictLang.ja.i18nHeader).bold() + Text(ja) + Text(" (\(jaPron))")
+                        .font(.footnote)
                 } else {
-                    Text(String(format: "app.dictionary.content.ja:%@", ja))
+                    Text(DictLang.ja.i18nHeader).bold()
                 }
             }
             if let tags = word.tags {
@@ -280,6 +281,22 @@ struct GenshinDictionary: View {
                     }
                 }
                 .padding(.top, -5)
+            }
+        }
+    }
+
+    private enum DictLang {
+        case en
+        case zh
+        case ja
+
+        // MARK: Internal
+
+        var i18nHeader: String {
+            switch self {
+            case .en: return "app.dictionary.content.en.header".localized
+            case .zh: return "app.dictionary.content.zh.header".localized
+            case .ja: return "app.dictionary.content.ja.header".localized
             }
         }
     }

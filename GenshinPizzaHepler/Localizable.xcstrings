@@ -7846,197 +7846,197 @@
         }
       }
     },
-    "app.dictionary.content.en:%@" : {
+    "app.dictionary.content.en.header" : {
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**EN** %@"
+            "value" : "EN "
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**EN** %@"
+            "value" : "EN "
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**EN** %@"
+            "value" : "EN "
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**EN** %@"
+            "value" : "EN "
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**英　語** %@"
+            "value" : "英　語 "
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**EN** %@"
+            "value" : "EN "
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**EN** %@"
+            "value" : "EN "
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**EN** %@"
+            "value" : "EN "
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**英语** %@"
+            "value" : "英语 "
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**英語** %@"
+            "value" : "英語 "
           }
         }
       }
     },
-    "app.dictionary.content.ja:%@" : {
+    "app.dictionary.content.ja.header" : {
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**JA** %@"
+            "value" : "JA "
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**JA** %@"
+            "value" : "JA "
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**JA** %@"
+            "value" : "JA "
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**JA** %@"
+            "value" : "JA "
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**日本語** %@"
+            "value" : "日本語 "
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**JA** %@"
+            "value" : "JA "
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**JA** %@"
+            "value" : "JA "
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**JA** %@"
+            "value" : "JA "
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**日语** %@"
+            "value" : "日语 "
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**日語** %@"
+            "value" : "日語 "
           }
         }
       }
     },
-    "app.dictionary.content.zh:%@" : {
+    "app.dictionary.content.zh.header" : {
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**ZH** %@"
+            "value" : "ZH "
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**ZH** %@"
+            "value" : "ZH "
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**CN** %@"
+            "value" : "CN "
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**ZH** %@"
+            "value" : "ZH "
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**中国語** %@"
+            "value" : "中国語 "
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**ZH** %@"
+            "value" : "ZH "
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**ZH** %@"
+            "value" : "ZH "
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**ZH** %@"
+            "value" : "ZH "
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**中文** %@"
+            "value" : "中文 "
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "**中文** %@"
+            "value" : "中文 "
           }
         }
       }
