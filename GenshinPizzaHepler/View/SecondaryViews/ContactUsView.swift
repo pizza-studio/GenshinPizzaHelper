@@ -303,9 +303,9 @@ struct ContactUsView: View {
                                 .scaledToFit()
                         }
                     }
-                    Link(destination: URL(string: "mailto:shikisuen@pm.me")!) {
+                    Link(destination: URL(string: "mailto:shikisuen@yeah.net")!) {
                         Label {
-                            Text(verbatim: "shikisuen@pm.me")
+                            Text(verbatim: "shikisuen@yeah.net")
                         } icon: {
                             Image("email")
                                 .resizable()
