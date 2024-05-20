@@ -39552,25 +39552,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fetch more"
+            "value" : "Click here to fetch more results."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "もっとを獲得"
+            "value" : "タップして他の検索結果を受け取る"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "获取更多"
+            "value" : "点此请求更多检索结果"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "獲取更多資訊"
+            "value" : "點此請求更多檢索結果"
           }
         }
       }
