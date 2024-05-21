@@ -22,7 +22,7 @@ struct AllAvatarListSheetView: View {
     var data: AllAvatarDetailModel
 
     @State
-    var expanded: Bool = true
+    var expanded: Bool = false
 
     var body: some View {
         List {
@@ -89,6 +89,7 @@ struct AllAvatarListSheetView: View {
                             }
                         }
                     }
+                    .compositingGroup()
             }
         }
         .textCase(.none)
@@ -97,15 +98,20 @@ struct AllAvatarListSheetView: View {
 
     @ViewBuilder
     var allAvatarListCondensed: some View {
-        HFlow {
-            ForEach(showingAvatars, id: \.id) { avatar in
-                AvatarListItem(avatar: avatar, condensed: true)
-                    .padding(.vertical, 4)
+        HStack {
+            Spacer()
+            HFlow {
+                ForEach(showingAvatars, id: \.id) { avatar in
+                    AvatarListItem(avatar: avatar, condensed: true)
+                        .padding(.vertical, 4)
+                        .compositingGroup()
+                }
             }
+            #if !os(OSX) && !targetEnvironment(macCatalyst)
+            .listRowInsets(.init(top: 4, leading: 8, bottom: 4, trailing: 4))
+            #endif
+            Spacer()
         }
-        #if !os(OSX) && !targetEnvironment(macCatalyst)
-        .listRowInsets(.init(top: 4, leading: 8, bottom: 4, trailing: 4))
-        #endif
     }
 
     func goldNum(data: AllAvatarDetailModel)
