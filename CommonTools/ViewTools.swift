@@ -5,6 +5,7 @@
 //  Created by Bill Haku on 2022/8/23.
 //  View的一些高效扩展
 
+import Defaults
 import Foundation
 import GIPizzaKit
 import SwiftUI
@@ -176,21 +177,43 @@ struct AdjustedBlurMaterialBackground: ViewModifier {
 extension View {
     @ViewBuilder
     func listContainerBackground(fileNameOverride: String? = nil) -> some View {
-        let fileName = fileNameOverride ?? NameCard.currentValueForAppBackground.fileName
         background {
-            EnkaWebIcon(iconString: fileName)
-                .scaledToFill()
-                .scaleEffect(1.2)
-                .blur(radius: 50)
-                .ignoresSafeArea(.all)
-                .saturation(1.5)
-                .overlay(
-                    Color(uiColor: .systemBackground)
-                        .opacity(0.3)
-                        .blendMode(.hardLight)
-                )
+            WallpaperView(fileNameOverride: fileNameOverride)
         }
     }
+}
+
+// MARK: - WallpaperView
+
+struct WallpaperView: View {
+    // MARK: Lifecycle
+
+    public init(fileNameOverride: String? = nil) {
+        self.fileNameOverride = fileNameOverride
+    }
+
+    // MARK: Internal
+
+    var fileNameOverride: String?
+
+    var body: some View {
+        EnkaWebIcon(iconString: fileNameOverride ?? appBackgroundNameCard.fileName)
+            .scaledToFill()
+            .scaleEffect(1.2)
+            .blur(radius: 50)
+            .ignoresSafeArea(.all)
+            .saturation(1.5)
+            .overlay(
+                Color(uiColor: .systemBackground)
+                    .opacity(0.3)
+                    .blendMode(.hardLight)
+            )
+    }
+
+    // MARK: Private
+
+    @Default(.appBackgroundNameCardID)
+    private var appBackgroundNameCard: NameCard
 }
 
 // MARK: - View.if().
