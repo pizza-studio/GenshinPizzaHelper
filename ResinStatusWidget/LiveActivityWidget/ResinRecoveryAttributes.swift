@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HBMihoyoAPI
 import HoYoKit
 #if canImport(ActivityKit)
 import ActivityKit
@@ -59,9 +60,9 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
         let minuteRemaining = Double(secondRemaining) / 60
         let currentResin: Int
         if minuteRemaining <= 0 {
-            currentResin = 160
+            currentResin = ResinInfo.defaultMaxResin
         } else {
-            currentResin = 160 - Int(ceil(minuteRemaining / 8))
+            currentResin = ResinInfo.defaultMaxResin - Int(ceil(minuteRemaining / 8))
         }
         return currentResin
     }
@@ -72,7 +73,7 @@ extension ResinRecoveryAttributes.ResinRecoveryState {
     }
 
     var showNext20Resin: Bool {
-        next20ResinCount != 160
+        next20ResinCount != ResinInfo.defaultMaxResin
     }
 
     /// 下一20倍数树脂回复时间点

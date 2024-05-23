@@ -183,8 +183,8 @@ extension UserData {
     public static let defaultData = UserData(
         fetchData: FetchData(
             currentResin: 138,
-            maxResin: 160,
-            resinRecoveryTime: "\((160 - 90) * 8)",
+            maxResin: ResinInfo.defaultMaxResin,
+            resinRecoveryTime: "\((ResinInfo.defaultMaxResin - 90) * 8)",
 
             finishedTaskNum: 3,
             totalTaskNum: 4,
@@ -264,7 +264,7 @@ extension UserData {
         }
         var resinRecoveryTime = resinInfo.recoveryTime.second - Int(second)
         if resinRecoveryTime < 0 { resinRecoveryTime = 0 }
-        var currentResin = 160 -
+        var currentResin = ResinInfo.defaultMaxResin -
             Int(ceil(Double(resinRecoveryTime) / (8.0 * 60.0)))
         if currentResin < 0 { currentResin = 0 }
 
@@ -338,7 +338,7 @@ extension SimplifiedUserData {
         }
         var resinRecoveryTime = resinInfo.recoveryTime.second - Int(second)
         if resinRecoveryTime < 0 { resinRecoveryTime = 0 }
-        var currentResin = 160 -
+        var currentResin = ResinInfo.defaultMaxResin -
             Int(ceil(Double(resinRecoveryTime) / (8.0 * 60.0)))
         if currentResin < 0 { currentResin = 0 }
 

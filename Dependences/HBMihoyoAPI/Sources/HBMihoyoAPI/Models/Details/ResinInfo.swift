@@ -23,6 +23,13 @@ public struct ResinInfo: Codable {
 
     // MARK: Public
 
+    public static let defaultMaxResin: Int = {
+        guard let threshold = Date(day: 5, month: 6, year: 2024), Date.now < threshold else {
+            return 200
+        }
+        return 160
+    }()
+
     public let currentResin: Int
     public let maxResin: Int
     public let updateDate: Date

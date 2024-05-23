@@ -11,6 +11,7 @@ import AppIntents
 import Defaults
 import Foundation
 import GIPizzaKit
+import HBMihoyoAPI
 import SFSafeSymbols
 import SwiftUI
 import WidgetKit
@@ -194,7 +195,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             HStack(alignment: .lastTextBaseline, spacing: 0) {
                                 Text(verbatim: "\(context.state.currentResin)")
                                     .font(.system(.title2, design: .rounded))
-                                Text(verbatim: " / 160")
+                                Text(verbatim: " / \(ResinInfo.defaultMaxResin)")
                                     .font(.caption)
                             }
                         }

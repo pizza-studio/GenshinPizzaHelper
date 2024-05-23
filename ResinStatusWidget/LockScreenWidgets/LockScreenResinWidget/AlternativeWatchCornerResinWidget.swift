@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
+import HBMihoyoAPI
 import HoYoKit
 import SwiftUI
 import WidgetKit
@@ -80,7 +81,7 @@ struct AlternativeWatchCornerResinWidgetView: View {
             .scaledToFit()
             .padding(6)
             .widgetLabel {
-                Gauge(value: 0, in: 0 ... 160) {
+                Gauge(value: 0, in: 0 ... Double(ResinInfo.defaultMaxResin)) {
                     Text(verbatim: "0")
                 }
             }

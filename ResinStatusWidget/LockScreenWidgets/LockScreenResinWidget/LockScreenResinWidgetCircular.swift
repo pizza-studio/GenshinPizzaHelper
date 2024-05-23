@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HBMihoyoAPI
 import HoYoKit
 import SFSafeSymbols
 import SwiftUI
@@ -53,7 +54,7 @@ struct LockScreenResinWidgetCircular: View {
                     )
                 )
             case .failure:
-                Gauge(value: 160, in: 0.0 ... 160.0) {
+                Gauge(value: Double(ResinInfo.defaultMaxResin), in: 0.0 ... Double(ResinInfo.defaultMaxResin)) {
                     LinearGradient(
                         colors: [
                             .init("iconColor.resin.dark"),
@@ -94,7 +95,7 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure:
-                Gauge(value: 160, in: 0.0 ... 160.0) {
+                Gauge(value: Double(ResinInfo.defaultMaxResin), in: 0.0 ... Double(ResinInfo.defaultMaxResin)) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()
@@ -120,7 +121,7 @@ struct LockScreenResinWidgetCircular: View {
                 }
                 .gaugeStyle(ProgressGaugeStyle())
             case .failure:
-                Gauge(value: 160, in: 0.0 ... 160.0) {
+                Gauge(value: Double(ResinInfo.defaultMaxResin), in: 0.0 ... Double(ResinInfo.defaultMaxResin)) {
                     Image("icon.resin")
                         .resizable()
                         .scaledToFit()

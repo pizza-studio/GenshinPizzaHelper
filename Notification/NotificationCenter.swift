@@ -8,6 +8,7 @@
 import Defaults
 import Foundation
 import GIPizzaKit
+import HBMihoyoAPI
 import HoYoKit
 import UserNotifications
 
@@ -372,7 +373,7 @@ class UserNotificationCenter {
         uid: String
     ) {
         let resinNotificationTimeFromFull = (
-            160 - Int(resinNotificationNum)
+            ResinInfo.defaultMaxResin - Int(resinNotificationNum)
         ) * 8 * 60
         var resinNotificationTimeDescription: String {
             dateFormatter.string(from: resinInfo.resinRecoveryTime)
@@ -413,7 +414,7 @@ class UserNotificationCenter {
         with resinInfo: ResinInformation,
         uid: String
     ) {
-        guard resinInfo.currentResin < 160, allowFullResinNotification,
+        guard resinInfo.currentResin < ResinInfo.defaultMaxResin, allowFullResinNotification,
               allowResinNotification else {
             deleteNotification(for: uid, object: .resin); return
         }

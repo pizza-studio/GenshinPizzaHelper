@@ -5,6 +5,7 @@
 //  Created by 戴藏龙 on 2022/9/12.
 //
 
+import HBMihoyoAPI
 import HoYoKit
 import SwiftUI
 import WidgetKit
@@ -24,7 +25,7 @@ struct LockScreenResinWidgetCorner: View {
         case let .success(data):
             if data.resinInformation.calculatedCurrentResin(referTo: entry.date) >= data.resinInformation.maxResin {
                 return String(format: NSLocalizedString(
-                    "160, 已回满",
+                    "\(ResinInfo.defaultMaxResin), 已回满",
                     comment: "resin"
                 ))
             } else {
