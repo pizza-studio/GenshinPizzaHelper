@@ -152,7 +152,7 @@
 		5BD1C64B2A2A1FC90043C2B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210828B3909F00A6BBA9 /* ContentView.swift */; };
 		5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF43C8828A013CE00D89787 /* DailyTaskInfoBar.swift */; };
 		5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */; };
-		5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
+		5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift */; };
 		5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8445EB29DBFFD700CB8C9F /* Color.swift */; };
 		5BD1C6522A2A1FC90043C2B1 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
 		5BD1C6532A2A1FC90043C2B1 /* AutoSheetDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */; };
@@ -444,7 +444,7 @@
 		EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		EA498C8E2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		EA498C972928732A00E7D2D7 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
-		EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */; };
+		EA498C992928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift */; };
 		EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C005829D2FFD100637B19 /* GachaFetch.swift */; };
 		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */; };
@@ -975,7 +975,7 @@
 		EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryAttributes.swift; sourceTree = "<group>"; };
 		EA498C902927E47300E7D2D7 /* ResinRecoveryActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityWidget.swift; sourceTree = "<group>"; };
 		EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinRecoveryActivityController.swift; sourceTree = "<group>"; };
-		EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySettingView.swift; sourceTree = "<group>"; };
+		EA498C982928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySettingNavigator.swift; sourceTree = "<group>"; };
 		EA49D901297A603700746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA4C005829D2FFD100637B19 /* GachaFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaFetch.swift; sourceTree = "<group>"; };
 		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
@@ -1271,7 +1271,7 @@
 				BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */,
 				BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */,
 				BFF684102A375487005470EA /* IconView.swift */,
-				EA498C982928B4BD00E7D2D7 /* LiveActivitySettingView.swift */,
+				EA498C982928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift */,
 				BFE4258528A0AC1500FEFA49 /* MoreView.swift */,
 				EA07C65528B11DB40030E338 /* NotificationSettingView.swift */,
 				EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */,
@@ -2540,7 +2540,7 @@
 				5BD1C64B2A2A1FC90043C2B1 /* ContentView.swift in Sources */,
 				5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */,
 				5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */,
-				5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingView.swift in Sources */,
+				5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingNavigator.swift in Sources */,
 				5BA0D7AA2ACDD41000B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
 				5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */,
 				5BD1C6522A2A1FC90043C2B1 /* GlobalDonateView.swift in Sources */,
@@ -2929,7 +2929,7 @@
 				BF70210928B3909F00A6BBA9 /* ContentView.swift in Sources */,
 				EAF43C8928A013CE00D89787 /* DailyTaskInfoBar.swift in Sources */,
 				EA1C2CE128F0464D00E4C28A /* OverflowContentViewModifier.swift in Sources */,
-				EA498C992928B4BD00E7D2D7 /* LiveActivitySettingView.swift in Sources */,
+				EA498C992928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift in Sources */,
 				EA8445EC29DBFFD700CB8C9F /* Color.swift in Sources */,
 				5BA0D7A82ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
 				BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */,

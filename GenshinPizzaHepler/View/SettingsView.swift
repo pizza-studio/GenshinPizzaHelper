@@ -94,7 +94,7 @@ struct SettingsView: View {
 
                 #if canImport(ActivityKit)
                 if #available(iOS 16.1, *) {
-                    LiveActivitySettingView(selectedView: $selectedView)
+                    LiveActivitySettingNavigator(selectedView: $selectedView)
                         .listRowMaterialBackground()
                 }
                 #endif

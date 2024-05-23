@@ -12,7 +12,7 @@ import SwiftUI
 
 #if canImport(ActivityKit)
 @available(iOS 16.1, *)
-struct LiveActivitySettingView: View {
+struct LiveActivitySettingNavigator: View {
     @Binding
     var selectedView: SettingsView.Navigation?
 
@@ -29,6 +29,7 @@ struct LiveActivitySettingView: View {
                 isAlertShow.toggle()
             }
             .font(.footnote)
+            .accentVerseBackground()
         }
         .alert(
             "widget.autoResinTimer.explanation.detail",
