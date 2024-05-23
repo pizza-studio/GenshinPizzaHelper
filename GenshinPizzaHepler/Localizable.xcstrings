@@ -533,59 +533,6 @@
         }
       }
     },
-    "160, 已回满" : {
-      "comment" : "resin",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "160, Full"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "160, puno"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "160, full"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "160, 回復完了"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "160, full"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "160, полная"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "160, đầy"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "160, 已回滿"
-          }
-        }
-      }
-    },
     "about.group.qq.1st" : {
       "localizations" : {
         "en" : {
@@ -43158,66 +43105,66 @@
         }
       }
     },
-    "widget.next160Resin" : {
+    "widget.nextMaxResin" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Time to 160 Resins"
+            "value" : "Time to Max Resins"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oras hanggang 160 Resins"
+            "value" : "Oras hanggang Max Resins"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Time to 160 resins"
+            "value" : "Time to Max resins"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Time to 160 Resins"
+            "value" : "Time to Max Resins"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "160個樹脂まで"
+            "value" : "樹脂満載まで"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Time to 160 Resins"
+            "value" : "Time to Max Resins"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Время до 160 Первородной смолы"
+            "value" : "Время до Max Первородной смолы"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thời gian đầy 160 Nhựa"
+            "value" : "Thời gian đầy Max Nhựa"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "距离160树脂"
+            "value" : "距离树脂回满"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "距離160樹脂"
+            "value" : "距離樹脂回滿"
           }
         }
       }

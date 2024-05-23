@@ -85,7 +85,7 @@ struct ResinRecoveryActivityWidget: Widget {
                                     .scaledToFit()
                                     .frame(maxHeight: 40)
                                 VStack(alignment: .leading) {
-                                    Text("widget.next160Resin")
+                                    Text("widget.nextMaxResin")
                                         .font(.caption2)
 
                                     Text(
@@ -232,7 +232,7 @@ struct ResinRecoveryActivityWidgetLockScreenView: View {
                             .scaledToFit()
                             .frame(maxHeight: 35)
                         VStack(alignment: .leading) {
-                            Text("widget.next160Resin")
+                            Text("widget.nextMaxResin")
                                 .font(.caption2)
                             Text(
                                 timerInterval: Date() ... context.state

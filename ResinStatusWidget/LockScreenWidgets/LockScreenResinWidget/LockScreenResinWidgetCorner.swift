@@ -24,10 +24,7 @@ struct LockScreenResinWidgetCorner: View {
         switch result {
         case let .success(data):
             if data.resinInformation.calculatedCurrentResin(referTo: entry.date) >= data.resinInformation.maxResin {
-                return String(format: NSLocalizedString(
-                    "\(ResinInfo.defaultMaxResin), 已回满",
-                    comment: "resin"
-                ))
+                return "\(ResinInfo.defaultMaxResin), " + "已回满".localized
             } else {
                 return "\(data.resinInformation.calculatedCurrentResin(referTo: entry.date)), \(intervalFormatter.string(from: TimeInterval.sinceNow(to: data.resinInformation.resinRecoveryTime))!), \(dateFormatter.string(from: data.resinInformation.resinRecoveryTime))"
             }
