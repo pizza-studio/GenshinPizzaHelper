@@ -53,9 +53,11 @@ struct SettingsView: View {
                         )
                     }
                 }
+                .listRowMaterialBackground()
 
                 // 通知设置
                 NotificationSettingNavigator(selectedView: $selectedView)
+                    .listRowMaterialBackground()
 
                 Section {
                     // 该功能对 macCatalyst 无效。
@@ -88,6 +90,7 @@ struct SettingsView: View {
                         )
                     }
                 }
+                .listRowMaterialBackground()
 
                 #if canImport(ActivityKit)
                 if #available(iOS 16.1, *) {
@@ -105,19 +108,19 @@ struct SettingsView: View {
                         Label("settings.misc.supportUs", systemSymbol: .dollarsignSquare)
                     })
                 }
+                .listRowMaterialBackground()
 
-                Group {
-                    Section {
-                        NavigationLink(
-                            value: Navigation.privacy,
-                            label: { Label("settings.privacy.title", systemSymbol: .handRaisedSlashFill) }
-                        )
-                        NavigationLink(
-                            value: Navigation.wishDataManagement,
-                            label: { Label("app.gacha.data.management.title", systemSymbol: .wandAndStars) }
-                        )
-                    }
+                Section {
+                    NavigationLink(
+                        value: Navigation.privacy,
+                        label: { Label("settings.privacy.title", systemSymbol: .handRaisedSlashFill) }
+                    )
+                    NavigationLink(
+                        value: Navigation.wishDataManagement,
+                        label: { Label("app.gacha.data.management.title", systemSymbol: .wandAndStars) }
+                    )
                 }
+                .listRowMaterialBackground()
 
                 Section {
                     NavigationLink(
@@ -129,6 +132,7 @@ struct SettingsView: View {
                         Label("contact.title", systemSymbol: .personCropCircleBadgeClock)
                     }
                 }
+                .listRowMaterialBackground()
 
                 /// 此处只能这样分别弄成两个 Section，否则在某些旧版 iOS 系统下可能会有异常（会出现空白行）。
                 #if DEBUG
@@ -145,6 +149,7 @@ struct SettingsView: View {
                 } footer: {
                     Spacer()
                 }
+                .listRowMaterialBackground()
                 #else
                 Section {
                     // 更多
@@ -154,9 +159,12 @@ struct SettingsView: View {
                 } footer: {
                     Spacer()
                 }
+                .listRowMaterialBackground()
                 #endif
             }
             .listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
+            .listContainerBackground()
             .navigationTitle("nav.category.settings.name.full")
         } detail: {
             NavigationStack {
