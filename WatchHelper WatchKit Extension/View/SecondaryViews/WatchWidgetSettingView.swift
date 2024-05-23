@@ -54,7 +54,7 @@ struct WatchWidgetSettingView: View {
                     }
                 })
             } header: {
-                Text("settings.account.myAccount")
+                Text("account.manage.title")
                     .textCase(.none)
             }
             Section {

@@ -19,7 +19,7 @@ struct MainInfo: View {
     let dailyNote: any DailyNote
     let viewConfig: WidgetViewConfiguration
     let accountName: String?
-    let accountNameTest = "settings.account.myAccount"
+    let accountNameTest = "account.manage.title"
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {

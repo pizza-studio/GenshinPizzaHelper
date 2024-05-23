@@ -42,7 +42,7 @@ struct SettingsView: View {
                 Section {
                     NavigationLink(value: Navigation.myAccount) {
                         Label(
-                            "settings.account.myAccount",
+                            "account.manage.title",
                             systemSymbol: .personFill
                         )
                     }
