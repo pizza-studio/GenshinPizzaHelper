@@ -595,7 +595,7 @@ private struct SelectAccountSection: View {
         Section {
             HStack(spacing: 0) {
                 HStack {
-                    basicInfo.decoratedIcon(64)
+                    basicInfo.accountProfileIcon(64)
                     #if os(OSX) || targetEnvironment(macCatalyst)
                         .contextMenu {
                             Group {

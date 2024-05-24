@@ -63,18 +63,43 @@ extension PlayerDetail.Avatar.TeyvatElement {
 
 extension PlayerDetail.PlayerBasicInfo {
     @ViewBuilder
-    public func cardIcon(_ size: CGFloat) -> some View {
-        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -213)
-        let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -213) // Nullable
-        let givenNameCard = NameCard(rawValue: nameCardId)
-        charAsset.cardIcon(size, costume: costume, namecard: givenNameCard)
+    public func accountProfileIcon(_ size: CGFloat) -> some View {
+        if let dataSet = costumedCharAssetDataSet {
+            dataSet.characterAsset.decoratedIcon(
+                size,
+                cutTo: .head,
+                costume: dataSet.costume,
+                namecard: dataSet.namecard
+            )
+        } else {
+            let placeholder = CharacterAsset.fallbackedValue.decoratedIcon(size, cutTo: .head)
+            if let url = Enka.queryProfilePictureURL(pfpID: neutralPFPID.description) {
+                AsyncImage(url: url) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: size, height: size, alignment: .center)
+                        .clipShape(Circle())
+                        .contentShape(Circle())
+                        .compositingGroup()
+                } placeholder: {
+                    CharacterAsset.fallbackedValue.decoratedIcon(size, cutTo: .head)
+                }
+            } else {
+                placeholder
+            }
+        }
     }
 
-    @ViewBuilder
-    public func decoratedIcon(_ size: CGFloat) -> some View {
-        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID ?? -213)
+    private var costumedCharAssetDataSet: (
+        characterAsset: CharacterAsset,
+        costume: CostumeAsset?,
+        namecard: NameCard?
+    )? {
+        guard let profilePictureAvatarEnkaID = profilePictureAvatarEnkaID else { return nil }
+        let charAsset = CharacterAsset.match(id: profilePictureAvatarEnkaID)
         let costume = CostumeAsset(rawValue: profilePictureCostumeID ?? -213) // Nullable
-        let givenNameCard = NameCard(rawValue: nameCardId)
-        charAsset.decoratedIcon(size, cutTo: .head, costume: costume, namecard: givenNameCard)
+        let givenNameCard = NameCard(rawValue: nameCardId) // Nullable
+        return (charAsset, costume, givenNameCard)
     }
 }

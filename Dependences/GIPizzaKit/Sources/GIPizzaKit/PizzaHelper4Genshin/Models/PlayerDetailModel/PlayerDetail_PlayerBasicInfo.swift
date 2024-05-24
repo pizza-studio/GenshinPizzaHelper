@@ -24,6 +24,7 @@ extension PlayerDetail {
             self.profilePictureAvatarEnkaID = playerInfo.profilePicture.avatarIdDeducted
             self.profilePictureCostumeID = playerInfo.profilePicture.costumeIdDeducted
             self.profilePictureAvatarIconString = playerInfo.profilePicture.assetFileName
+            self.neutralPFPID = playerInfo.profilePicture.id ?? 1
             // 线下资料批配失败的场合（因为线下资料的更新可能会滞后）：
             if profilePictureAvatarIconString == nil {
                 if let profilePictureId = playerInfo.profilePicture.id {
@@ -66,8 +67,10 @@ extension PlayerDetail {
 
         /// 资料名片ID
         public var nameCardId: Int
-        /// 玩家头像
+        /// 玩家肖像（与角色强绑定）
         public var profilePictureAvatarIconString: String?
+        /// 玩家肖像（与角色不绑定）
+        public var neutralPFPID: Int
         /// 玩家头像对应的角色 enkaID
         public var profilePictureAvatarEnkaID: Int?
         /// 玩家头像对应的角色的时装编号 enkaID
