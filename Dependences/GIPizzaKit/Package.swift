@@ -38,6 +38,7 @@ let package = Package(
             resources: [
                 .process("Enka/Assets/characters.json"),
                 .process("Enka/Assets/loc.json"),
+                .process("Enka/Assets/pfps.json"),
             ]
         ),
         .testTarget(

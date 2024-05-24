@@ -21,4 +21,12 @@ final class GIPizzaKitTests: XCTestCase {
         print(weapon.localized)
         assert(namecard.localized.first != "$")
     }
+
+    func testPFPQuery() throws {
+        let x = Enka.queryProfilePictureURL(pfpID: "100050")
+        XCTAssertNotNil(x)
+        if let x = x {
+            print(x)
+        }
+    }
 }
