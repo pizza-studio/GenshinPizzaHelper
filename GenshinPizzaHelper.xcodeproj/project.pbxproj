@@ -25,11 +25,11 @@
 		5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3029D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
 		5B918A3129D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */; };
-		5BA0D7A82ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */; };
-		5BA0D7AA2ACDD41000B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */; };
-		5BA0D7AB2ACDD44A00B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */; };
+		5BA0D7A82ACDD3F100B4DBC2 /* CharacterIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* CharacterIconView.swift */; };
+		5BA0D7AA2ACDD41000B4DBC2 /* CharacterIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* CharacterIconView.swift */; };
+		5BA0D7AB2ACDD44A00B4DBC2 /* CharacterIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* CharacterIconView.swift */; };
 		5BA0D7AC2ACDD4BF00B4DBC2 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
-		5BA0D7AD2ACDD51300B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */; };
+		5BA0D7AD2ACDD51300B4DBC2 /* CharacterIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0D7A72ACDD3F100B4DBC2 /* CharacterIconView.swift */; };
 		5BAF709229E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
 		5BAF709329E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
 		5BAF709429E5764E0096228B /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */; };
@@ -825,7 +825,7 @@
 		5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OPHelper_SharedAssembly; path = Dependences/OPHelper_SharedAssembly; sourceTree = "<group>"; };
 		5B5F82AE2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = ko; path = ko.lproj/AccountIntents.intentdefinition; sourceTree = "<group>"; };
 		5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
-		5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplEnum_CharacterAsset_SwiftUI.swift; sourceTree = "<group>"; };
+		5BA0D7A72ACDD3F100B4DBC2 /* CharacterIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterIconView.swift; sourceTree = "<group>"; };
 		5BAF708B29E5764E0096228B /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
@@ -1210,12 +1210,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B18C5492AD0DF4300C745BA /* Enums */ = {
+		5B18C5492AD0DF4300C745BA /* SharedViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				5BA0D7A72ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift */,
+				5BA0D7A72ACDD3F100B4DBC2 /* CharacterIconView.swift */,
 			);
-			path = Enums;
+			path = SharedViewComponents;
 			sourceTree = "<group>";
 		};
 		5B3DF7BE2BA49B600015ACC9 /* DataModels */ = {
@@ -1783,7 +1783,7 @@
 				EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */,
 				BF6C5258289E02B600EA224F /* .github */,
 				5B3DF7BE2BA49B600015ACC9 /* DataModels */,
-				5B18C5492AD0DF4300C745BA /* Enums */,
+				5B18C5492AD0DF4300C745BA /* SharedViewComponents */,
 				5BAF708929E5764E0096228B /* Fonts */,
 				EAAF330D28A27AEA0018EFAB /* Model */,
 				BF6C5270289E12B500EA224F /* CommonTools */,
@@ -2541,7 +2541,7 @@
 				5BD1C64C2A2A1FC90043C2B1 /* DailyTaskInfoBar.swift in Sources */,
 				5BD1C64E2A2A1FC90043C2B1 /* OverflowContentViewModifier.swift in Sources */,
 				5BD1C6502A2A1FC90043C2B1 /* LiveActivitySettingNavigator.swift in Sources */,
-				5BA0D7AA2ACDD41000B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
+				5BA0D7AA2ACDD41000B4DBC2 /* CharacterIconView.swift in Sources */,
 				5BD1C6512A2A1FC90043C2B1 /* Color.swift in Sources */,
 				5BD1C6522A2A1FC90043C2B1 /* GlobalDonateView.swift in Sources */,
 				5BD1C6532A2A1FC90043C2B1 /* AutoSheetDismiss.swift in Sources */,
@@ -2693,7 +2693,7 @@
 				EA185F2A292F1ADB003E7E32 /* ResinRecoveryAttributes.swift in Sources */,
 				BFFD823428A651FA00616CE1 /* RingProgressBarView.swift in Sources */,
 				BFFD822E28A650C300616CE1 /* AccountIntents.intentdefinition in Sources */,
-				5BA0D7AB2ACDD44A00B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
+				5BA0D7AB2ACDD44A00B4DBC2 /* CharacterIconView.swift in Sources */,
 				5BBCB6AF29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */,
 				BF0130A229220E7800074450 /* WidgetUserData.swift in Sources */,
 				EA059CD9292347E800400DE3 /* MultiTokenResult.swift in Sources */,
@@ -2708,7 +2708,7 @@
 				EA7CD43D28CF210000857493 /* AlternativeWatchCornerResinWidget.swift in Sources */,
 				EAFB232128A26C81006A8EDC /* AccountConfiguration.xcdatamodeld in Sources */,
 				EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */,
-				5BA0D7AD2ACDD51300B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
+				5BA0D7AD2ACDD51300B4DBC2 /* CharacterIconView.swift in Sources */,
 				EA36DFC628E3E7810060AD4F /* LockScreenLoopWidgetProvider.swift in Sources */,
 				EAEE8ECF2AE08D9E00F406E4 /* AnyLocalizedError.swift in Sources */,
 				EAF55E2528CC908D00902AE7 /* WidgetsBoundle.swift in Sources */,
@@ -2931,7 +2931,7 @@
 				EA1C2CE128F0464D00E4C28A /* OverflowContentViewModifier.swift in Sources */,
 				EA498C992928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift in Sources */,
 				EA8445EC29DBFFD700CB8C9F /* Color.swift in Sources */,
-				5BA0D7A82ACDD3F100B4DBC2 /* ImplEnum_CharacterAsset_SwiftUI.swift in Sources */,
+				5BA0D7A82ACDD3F100B4DBC2 /* CharacterIconView.swift in Sources */,
 				BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */,
 				BF068BD728A343C5002E7334 /* AutoSheetDismiss.swift in Sources */,
 				BFB101F028D7262A000DC631 /* ThanksView.swift in Sources */,

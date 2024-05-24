@@ -13,6 +13,7 @@ import SwiftUI
 
 public enum DecoratedIconCutType: CGFloat {
     case shoulder = 1
+    case card = 1.000_001
     case head = 1.5
     case face = 2
 
@@ -20,7 +21,7 @@ public enum DecoratedIconCutType: CGFloat {
 
     func shiftedAmount(containerSize size: CGFloat) -> CGFloat {
         switch self {
-        case .shoulder: return 0
+        case .card, .shoulder: return 0
         default: return size / (4 * rawValue)
         }
     }
