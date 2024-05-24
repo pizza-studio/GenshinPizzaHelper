@@ -15,7 +15,7 @@ extension MiHoYoAPI {
         deviceFingerPrint: String?,
         deviceId: UUID?
     ) async throws
-        -> AllAvatarDetailModel {
+        -> CharacterInventoryModel {
         struct RequestBody: Codable {
             let role_id: String
             let server: String

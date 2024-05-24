@@ -138,7 +138,7 @@
 		5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		5BD1C63D2A2A1FC90043C2B1 /* HideTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD29446290E717A00716EF7 /* HideTabBar.swift */; };
-		5BD1C63E2A2A1FC90043C2B1 /* AllAvatarListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */; };
+		5BD1C63E2A2A1FC90043C2B1 /* CharacterInventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* CharacterInventoryView.swift */; };
 		5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
 		5BD1C6402A2A1FC90043C2B1 /* DismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA459DA4290CF47700E74F76 /* DismissableSheet.swift */; };
 		5BD1C6422A2A1FC90043C2B1 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5277289E153400EA224F /* NetworkReachability.swift */; };
@@ -447,7 +447,7 @@
 		EA498C992928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C982928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift */; };
 		EA4C005929D2FFD100637B19 /* GachaFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C005829D2FFD100637B19 /* GachaFetch.swift */; };
 		EA4D1FD128BA544C00E5B744 /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
-		EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */; };
+		EA5232272903D976007A4CF4 /* CharacterInventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232262903D976007A4CF4 /* CharacterInventoryView.swift */; };
 		EA5232292903E0D6007A4CF4 /* ReverseMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5232282903E0D6007A4CF4 /* ReverseMask.swift */; };
 		EA5F4D1228B6274E00C95A7E /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1028B6274E00C95A7E /* MaterialView.swift */; };
 		EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */; };
@@ -978,7 +978,7 @@
 		EA498C982928B4BD00E7D2D7 /* LiveActivitySettingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySettingNavigator.swift; sourceTree = "<group>"; };
 		EA49D901297A603700746A2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AccountIntents.strings; sourceTree = "<group>"; };
 		EA4C005829D2FFD100637B19 /* GachaFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GachaFetch.swift; sourceTree = "<group>"; };
-		EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAvatarListSheetView.swift; sourceTree = "<group>"; };
+		EA5232262903D976007A4CF4 /* CharacterInventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInventoryView.swift; sourceTree = "<group>"; };
 		EA5232282903E0D6007A4CF4 /* ReverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseMask.swift; sourceTree = "<group>"; };
 		EA5F4D1028B6274E00C95A7E /* MaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		EA5F4D1328B644BD00C95A7E /* MaterialProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialProviders.swift; sourceTree = "<group>"; };
@@ -1260,7 +1260,7 @@
 			children = (
 				BFE4258728A0AE2700FEFA49 /* AboutView.swift */,
 				EAB5798028FC278D00C5D075 /* AbyssDataCollectionView.swift */,
-				EA5232262903D976007A4CF4 /* AllAvatarListSheetView.swift */,
+				EA5232262903D976007A4CF4 /* CharacterInventoryView.swift */,
 				BFB101F128D85B28000DC631 /* AllEventsView.swift */,
 				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
 				BF70214528BC82D400A6BBA9 /* ContactUsView.swift */,
@@ -2526,7 +2526,7 @@
 				5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */,
 				EA759D682B19989A0080C775 /* EditAccountSheetView.swift in Sources */,
 				5BD1C63D2A2A1FC90043C2B1 /* HideTabBar.swift in Sources */,
-				5BD1C63E2A2A1FC90043C2B1 /* AllAvatarListSheetView.swift in Sources */,
+				5BD1C63E2A2A1FC90043C2B1 /* CharacterInventoryView.swift in Sources */,
 				5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */,
 				5BD1C6402A2A1FC90043C2B1 /* DismissableSheet.swift in Sources */,
 				5BD1C6422A2A1FC90043C2B1 /* NetworkReachability.swift in Sources */,
@@ -2914,7 +2914,7 @@
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
 				EAD29447290E717A00716EF7 /* HideTabBar.swift in Sources */,
-				EA5232272903D976007A4CF4 /* AllAvatarListSheetView.swift in Sources */,
+				EA5232272903D976007A4CF4 /* CharacterInventoryView.swift in Sources */,
 				BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */,
 				EA759D692B19989A0080C775 /* ManageAccountsView.swift in Sources */,
 				EA459DA5290CF47700E74F76 /* DismissableSheet.swift in Sources */,

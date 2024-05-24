@@ -11,15 +11,15 @@ import HoYoKit
 import SFSafeSymbols
 import SwiftUI
 
-// MARK: - AllAvatarListSheetView
+// MARK: - CharacterInventoryView
 
-struct AllAvatarListSheetView: View {
+struct CharacterInventoryView: View {
     // MARK: Internal
 
     @EnvironmentObject
     var vmDPV: DetailPortalViewModel
 
-    var data: AllAvatarDetailModel
+    var data: CharacterInventoryModel
 
     @State
     var expanded: Bool = false
@@ -46,8 +46,8 @@ struct AllAvatarListSheetView: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Picker("", selection: $expanded.animation()) {
-                    Text("detailPortal.aalsv.expand.tabText").tag(true)
-                    Text("detailPortal.aalsv.collapse.tabText").tag(false)
+                    Text("detailPortal.inventoryView.expand.tabText").tag(true)
+                    Text("detailPortal.inventoryView.collapse.tabText").tag(false)
                 }
                 .pickerStyle(.menu)
                 Menu {
@@ -114,7 +114,7 @@ struct AllAvatarListSheetView: View {
         }
     }
 
-    func goldNum(data: AllAvatarDetailModel)
+    func goldNum(data: CharacterInventoryModel)
         -> (allGold: Int, charGold: Int, weaponGold: Int) {
         var charGold = 0
         var weaponGold = 0
@@ -161,7 +161,7 @@ struct AllAvatarListSheetView: View {
         return "app.characters.count.weapon:\(d, specifier: "%lld")\(e, specifier: "%lld")\(f, specifier: "%lld")"
     }
 
-    private var showingAvatars: [AllAvatarDetailModel.Avatar] {
+    private var showingAvatars: [CharacterInventoryModel.Avatar] {
         switch allAvatarListDisplayType {
         case .all:
             return data.avatars
@@ -178,7 +178,7 @@ struct AllAvatarListSheetView: View {
 struct AvatarListItem: View {
     // MARK: Internal
 
-    let avatar: AllAvatarDetailModel.Avatar
+    let avatar: CharacterInventoryModel.Avatar
 
     @State
     var condensed: Bool
@@ -272,9 +272,9 @@ struct AvatarListItem: View {
 
 private struct AllAvatarListShareView: View {
     let accountName: String
-    let showingAvatars: [AllAvatarDetailModel.Avatar]
+    let showingAvatars: [CharacterInventoryModel.Avatar]
 
-    var eachColumnAvatars: [[AllAvatarDetailModel.Avatar]] {
+    var eachColumnAvatars: [[CharacterInventoryModel.Avatar]] {
         let chunkSize = 16 // 每列的角色数
         return stride(from: 0, to: showingAvatars.count, by: chunkSize).map {
             Array(showingAvatars[
@@ -327,7 +327,7 @@ private struct AllAvatarListShareView: View {
 // MARK: - AvatarListItemShare
 
 private struct AvatarListItemShare: View {
-    let avatar: AllAvatarDetailModel.Avatar
+    let avatar: CharacterInventoryModel.Avatar
 
     var body: some View {
         HStack {
@@ -433,9 +433,9 @@ private struct AvatarListItemShare: View {
     }
 }
 
-// MARK: - AllAvatarDetailModel.Avatar.nameCorrected Extension.
+// MARK: - CharacterInventoryModel.Avatar.nameCorrected Extension.
 
-extension AllAvatarDetailModel.Avatar {
+extension CharacterInventoryModel.Avatar {
     /// 经过错字订正处理的角色姓名
     fileprivate var nameCorrected: String {
         CharacterAsset(rawValue: id)?.localized.localizedWithFix ?? "EnkaID-\(id)"

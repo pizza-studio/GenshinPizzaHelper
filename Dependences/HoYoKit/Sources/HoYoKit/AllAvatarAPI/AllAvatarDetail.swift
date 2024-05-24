@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult, Hashable {
+public struct CharacterInventoryModel: Codable, DecodableFromMiHoYoAPIJSONResult, Hashable {
     public struct Avatar: Codable, Equatable, Hashable {
         // MARK: Public
 
@@ -135,8 +135,8 @@ public struct AllAvatarDetailModel: Codable, DecodableFromMiHoYoAPIJSONResult, H
         }
 
         public static func == (
-            lhs: AllAvatarDetailModel.Avatar,
-            rhs: AllAvatarDetailModel.Avatar
+            lhs: CharacterInventoryModel.Avatar,
+            rhs: CharacterInventoryModel.Avatar
         )
             -> Bool {
             lhs.id == rhs.id

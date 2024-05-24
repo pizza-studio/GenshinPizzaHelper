@@ -45,7 +45,7 @@ final class DetailPortalViewModel: ObservableObject {
     typealias BasicInfoStatus = Status<BasicInfos>
     typealias SpiralAbyssDetailStatus = Status<SpiralAbyssDetail>
     typealias LedgerDataStatus = Status<LedgerData>
-    typealias AllAvatarInfoStatus = Status<AllAvatarDetailModel>
+    typealias AllAvatarInfoStatus = Status<CharacterInventoryModel>
 
     @Published
     var playerDetailStatus: PlayerDetailStatus = .progress(nil)
@@ -432,7 +432,7 @@ final class DetailPortalViewModel: ObservableObject {
         account: AccountConfiguration,
         abyssData: SpiralAbyssDetail,
         basicInfo: BasicInfos,
-        allAvatarInfo: AllAvatarDetailModel
+        allAvatarInfo: CharacterInventoryModel
     ) {
         Task(priority: .background) {
             print("uploadHuTaoDBAbyssData START")
@@ -521,8 +521,8 @@ struct DetailPortalView: View {
             .navigationDestination(for: LedgerData.self) { data in
                 LedgerView(data: data)
             }
-            .navigationDestination(for: AllAvatarDetailModel.self) { data in
-                AllAvatarListSheetView(data: data)
+            .navigationDestination(for: CharacterInventoryModel.self) { data in
+                CharacterInventoryView(data: data)
             }
         }
         .environmentObject(vmDPV)
@@ -876,7 +876,7 @@ private struct AllAvatarNavigator: View {
     // MARK: Internal
 
     let account: AccountConfiguration
-    var status: DetailPortalViewModel.Status<AllAvatarDetailModel>
+    var status: DetailPortalViewModel.Status<CharacterInventoryModel>
 
     var body: some View {
         switch status {
@@ -907,7 +907,7 @@ private struct AllAvatarNavigator: View {
                 }
                 if #unavailable(macOS 14), OS.type == .macOS {
                     SheetCaller(forceDarkMode: false) {
-                        AllAvatarListSheetView(data: data)
+                        CharacterInventoryView(data: data)
                     } label: {
                         thisLabel
                     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-// public struct AllAvatarDetailModel: Codable {
+// public struct CharacterInventoryModel: Codable {
 //    public struct Avatar: Codable, Equatable {
 //        public struct Costume: Codable {
 //            public var id: Int
@@ -80,8 +80,8 @@ import Foundation
 //        }
 //
 //        public static func == (
-//            lhs: AllAvatarDetailModel.Avatar,
-//            rhs: AllAvatarDetailModel.Avatar
+//            lhs: CharacterInventoryModel.Avatar,
+//            rhs: CharacterInventoryModel.Avatar
 //        )
 //            -> Bool {
 //            lhs.id == rhs.id

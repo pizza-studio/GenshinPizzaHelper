@@ -629,9 +629,9 @@ extension Enka.Character {
     }
 }
 
-// MARK: - AllAvatarDetailModel.Avatar Assets
+// MARK: - CharacterInventoryModel.Avatar Assets
 
-extension AllAvatarDetailModel.Avatar {
+extension CharacterInventoryModel.Avatar {
     public var asset: CharacterAsset? {
         .init(rawValue: id) ?? .fallbackedValue
     }

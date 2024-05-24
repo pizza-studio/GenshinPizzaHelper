@@ -262,7 +262,7 @@ extension HuTaoDBAbyssData {
         cookie: String,
         basicInfo: BasicInfos,
         abyssData: SpiralAbyssDetail,
-        allAvatarInfo: AllAvatarDetailModel,
+        allAvatarInfo: CharacterInventoryModel,
         which season: AccountSpiralAbyssDetail.WhichSeason
     ) async {
         guard abyssData.totalStar == 36 else { return nil }

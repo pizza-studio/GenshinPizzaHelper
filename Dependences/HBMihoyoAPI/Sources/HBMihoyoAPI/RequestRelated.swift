@@ -13,7 +13,7 @@ public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
 public typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
 public typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
 public typealias AllAvatarDetailFetchResult = Result<
-    AllAvatarDetailModel,
+    CharacterInventoryModel,
     FetchError
 >
 
@@ -90,7 +90,7 @@ public struct LedgerDataRequestResult: Codable {
 // MARK: - AllAvatarDetailRequestDetail
 
 public struct AllAvatarDetailRequestDetail: Codable {
-    let data: AllAvatarDetailModel?
+    let data: CharacterInventoryModel?
     let message: String
     let retcode: Int
 }

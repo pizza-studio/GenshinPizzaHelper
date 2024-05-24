@@ -19734,7 +19734,7 @@
         }
       }
     },
-    "detailPortal.aalsv.collapse.tabText" : {
+    "detailPortal.inventoryView.collapse.tabText" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19762,7 +19762,7 @@
         }
       }
     },
-    "detailPortal.aalsv.expand.tabText" : {
+    "detailPortal.inventoryView.expand.tabText" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {

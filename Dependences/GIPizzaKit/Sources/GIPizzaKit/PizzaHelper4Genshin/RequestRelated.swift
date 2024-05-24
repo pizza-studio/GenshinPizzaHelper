@@ -10,7 +10,7 @@ import HBMihoyoAPI
 // public typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
 // public typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
 // public typealias AllAvatarDetailFetchResult = Result<
-//    AllAvatarDetailModel,
+//    CharacterInventoryModel,
 //    FetchError
 // >
 

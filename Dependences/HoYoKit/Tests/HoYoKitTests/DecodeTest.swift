@@ -44,6 +44,6 @@ final class DecodeTests: XCTestCase {
     func testAllAvatarDecode() throws {
         let exampleURL = Bundle.module.url(forResource: "all_avatar_data", withExtension: "json")!
         let exampleData = try Data(contentsOf: exampleURL)
-        _ = try AllAvatarDetailModel.decodeFromMiHoYoAPIJSONResult(data: exampleData)
+        _ = try CharacterInventoryModel.decodeFromMiHoYoAPIJSONResult(data: exampleData)
     }
 }
