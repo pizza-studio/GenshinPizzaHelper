@@ -1,5 +1,5 @@
 //
-//  LiveActivitySettingView.swift
+//  LiveActivitySettingNavigator.swift
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/11/19.
@@ -29,7 +29,6 @@ struct LiveActivitySettingNavigator: View {
                 isAlertShow.toggle()
             }
             .font(.footnote)
-            .accentVerseBackground()
         }
         .alert(
             "widget.autoResinTimer.explanation.detail",

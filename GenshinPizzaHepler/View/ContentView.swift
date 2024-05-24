@@ -115,7 +115,6 @@ struct ContentView: View {
                 .tabItem {
                     Label("nav.category.settings.name", systemSymbol: .gear)
                 }
-                .toolbarBackground(.thinMaterial, for: .tabBar)
         }
         .tint(tintForCurrentTab)
         .onChange(of: scenePhase, perform: { newPhase in

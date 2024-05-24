@@ -88,7 +88,6 @@ struct NotificationSettingNavigator: View {
                         isNotificationHintShow = true
                     }
                     .font(.footnote)
-                    .accentVerseBackground()
                 }
             }
         }
