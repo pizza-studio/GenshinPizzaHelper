@@ -19751,13 +19751,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "摺叠"
+            "value" : "收起"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "摺疊"
+            "value" : "收起"
           }
         }
       }
