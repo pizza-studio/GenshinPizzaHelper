@@ -98,9 +98,9 @@ struct CharacterInventoryView: View {
 
     @ViewBuilder
     var allAvatarListCondensed: some View {
-        HStack {
+        HStack(alignment: .center) {
             Spacer()
-            HFlow {
+            HFlow(spacing: flowSpacing) {
                 ForEach(showingAvatars, id: \.id) { avatar in
                     AvatarListItem(avatar: avatar, condensed: true)
                         .padding(.vertical, 4)
@@ -108,11 +108,17 @@ struct CharacterInventoryView: View {
                 }
             }
             #if !os(OSX) && !targetEnvironment(macCatalyst)
-            .listRowInsets(.init(top: 4, leading: 8, bottom: 4, trailing: 4))
+            .listRowInsets(.init(top: 4, leading: 3, bottom: 4, trailing: 1))
             #endif
             Spacer()
         }
     }
+
+    #if !os(OSX) && !targetEnvironment(macCatalyst)
+    let flowSpacing: CGFloat = 8
+    #else
+    let flowSpacing: CGFloat = 2
+    #endif
 
     func goldNum(data: CharacterInventoryModel)
         -> (allGold: Int, charGold: Int, weaponGold: Int) {
@@ -184,7 +190,7 @@ struct AvatarListItem: View {
     var condensed: Bool
 
     var body: some View {
-        HStack(spacing: 3) {
+        HStack(spacing: condensed ? 0 : 3) {
             ZStack(alignment: .bottomLeading) {
                 Group {
                     if let asset = avatar.asset {
@@ -196,7 +202,7 @@ struct AvatarListItem: View {
                 .frame(width: 55, height: 55)
                 .clipShape(Circle())
             }
-            .frame(width: 75, alignment: .leading)
+            .frame(width: condensed ? 70 : 75, alignment: .leading)
             .corneredTag(
                 verbatim: "Lv.\(avatar.level)",
                 alignment: .topTrailing
