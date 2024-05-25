@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5B00337A2AD1A01700CCCC66 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0033792AD1A01700CCCC66 /* Defaults */; };
+		5B11A26C2C020152006B0BF9 /* CGImageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11A26B2C020151006B0BF9 /* CGImageImpl.swift */; };
+		5B11A26D2C020152006B0BF9 /* CGImageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11A26B2C020151006B0BF9 /* CGImageImpl.swift */; };
 		5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */; };
@@ -817,6 +819,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B11A26B2C020151006B0BF9 /* CGImageImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageImpl.swift; sourceTree = "<group>"; };
 		5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewExtension.swift; sourceTree = "<group>"; };
 		5B3DF7BF2BA49C040015ACC9 /* DevDocs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DevDocs; sourceTree = "<group>"; };
 		5B41C1812AD3010700CDF2C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1306,6 +1309,7 @@
 				EA1C2CDF28F0463E00E4C28A /* ViewModifier */,
 				EA7FDF90292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift */,
 				BF068BD628A343C5002E7334 /* AutoSheetDismiss.swift */,
+				5B11A26B2C020151006B0BF9 /* CGImageImpl.swift */,
 				EAB11E9D29325CD500CD4ECA /* DateRelationIdentifier.swift */,
 				BF70210E28B396B900A6BBA9 /* DeviceRecognizer.swift */,
 				BF6C5271289E12DA00EA224F /* md5.swift */,
@@ -2525,6 +2529,7 @@
 				5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */,
 				5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */,
 				EA759D682B19989A0080C775 /* EditAccountSheetView.swift in Sources */,
+				5B11A26D2C020152006B0BF9 /* CGImageImpl.swift in Sources */,
 				5BD1C63D2A2A1FC90043C2B1 /* HideTabBar.swift in Sources */,
 				5BD1C63E2A2A1FC90043C2B1 /* CharacterInventoryView.swift in Sources */,
 				5BD1C63F2A2A1FC90043C2B1 /* LatestVersionInfoView.swift in Sources */,
@@ -2914,6 +2919,7 @@
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
 				BFCC064E28C6154F003E4A54 /* ProxySettingsView.swift in Sources */,
 				EAD29447290E717A00716EF7 /* HideTabBar.swift in Sources */,
+				5B11A26C2C020152006B0BF9 /* CGImageImpl.swift in Sources */,
 				EA5232272903D976007A4CF4 /* CharacterInventoryView.swift in Sources */,
 				BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */,
 				EA759D692B19989A0080C775 /* ManageAccountsView.swift in Sources */,
