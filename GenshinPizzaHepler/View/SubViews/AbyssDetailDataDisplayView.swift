@@ -401,7 +401,7 @@ private struct AbyssValueCellView: View {
             .frame(maxWidth: .infinity)
             cellData.makeAvatar()
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, minHeight: 48)
         .padding(8)
         .background(
             .regularMaterial,
