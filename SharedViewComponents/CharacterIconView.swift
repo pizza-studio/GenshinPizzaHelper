@@ -135,6 +135,7 @@ public struct CharacterIconView: View {
     }
 
     private var cutTypeGuarded: DecoratedIconCutType {
-        !cutShouder ? .shoulder : cutType
+        guard cutType != .card else { return .card }
+        return !cutShouder ? .shoulder : cutType
     }
 }
