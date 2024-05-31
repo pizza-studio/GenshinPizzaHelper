@@ -45,7 +45,7 @@ final class DetailPortalViewModel: ObservableObject {
     typealias BasicInfoStatus = Status<BasicInfos>
     typealias SpiralAbyssDetailStatus = Status<SpiralAbyssDetail>
     typealias LedgerDataStatus = Status<LedgerData>
-    typealias AllAvatarInfoStatus = Status<CharacterInventoryModel>
+    typealias CharInventoryStatus = Status<CharacterInventoryModel>
 
     @Published
     var playerDetailStatus: PlayerDetailStatus = .progress(nil)
@@ -63,7 +63,7 @@ final class DetailPortalViewModel: ObservableObject {
     var ledgerDataStatus: LedgerDataStatus = .progress(nil)
 
     @Published
-    var allAvatarInfoStatus: AllAvatarInfoStatus = .progress(nil)
+    var characterInventoryStatus: CharInventoryStatus = .progress(nil)
 
     @Published
     var currentBasicInfo: PlayerDetail.PlayerBasicInfo?
@@ -84,15 +84,15 @@ final class DetailPortalViewModel: ObservableObject {
             await fetchSpiralAbyssInfoCurrent()
             await fetchSpiralAbyssInfoPrevious()
             await fetchLedgerData()
-            await fetchAllAvatarInfo()
+            await fetchCharacterInventoryList()
             await uploadData()
             detailPortalRefreshSubject.send(())
         }
     }
 
-    func fetchAllAvatarInfo() async {
+    func fetchCharacterInventoryList() async {
         guard let account = selectedAccount else { return }
-        if case let .progress(task) = allAvatarInfoStatus { task?.cancel() }
+        if case let .progress(task) = characterInventoryStatus { task?.cancel() }
         let task = Task {
             do {
                 let result = try await MiHoYoAPI.allAvatarDetail(
@@ -104,17 +104,17 @@ final class DetailPortalViewModel: ObservableObject {
                 )
                 Task {
                     withAnimation {
-                        self.allAvatarInfoStatus = .succeed(result)
+                        self.characterInventoryStatus = .succeed(result)
                     }
                 }
             } catch {
                 Task {
-                    self.allAvatarInfoStatus = .fail(error)
+                    self.characterInventoryStatus = .fail(error)
                 }
             }
         }
         Task {
-            self.allAvatarInfoStatus = .progress(task)
+            self.characterInventoryStatus = .progress(task)
         }
     }
 
@@ -301,14 +301,14 @@ final class DetailPortalViewModel: ObservableObject {
             if case let .progress(task) = spiralAbyssDetailStatusCurrent {
                 await task?.value
             }
-            if case let .progress(task) = allAvatarInfoStatus {
+            if case let .progress(task) = characterInventoryStatus {
                 await task?.value
             }
             if case let .succeed(basicInfo) = basicInfoStatus {
                 await uploadHoldingData(account: account, basicInfo: basicInfo)
                 if case let .succeed(abyssData) = spiralAbyssDetailStatusCurrent {
                     await uploadAbyssData(account: account, abyssData: abyssData, basicInfo: basicInfo)
-                    if case let .succeed(allAvatarData) = allAvatarInfoStatus {
+                    if case let .succeed(allAvatarData) = characterInventoryStatus {
                         uploadHuTaoDBAbyssData(
                             account: account,
                             abyssData: abyssData,
@@ -862,14 +862,14 @@ private struct PlayerDetailSection: View {
                     DataFetchedView(playerDetail: playerDetail, account: account)
                 }
             }
-            AllAvatarNavigator(account: account, status: vmDPV.allAvatarInfoStatus)
+            CharInventoryNavigator(account: account, status: vmDPV.characterInventoryStatus)
         }
     }
 }
 
-// MARK: - AllAvatarNavigator
+// MARK: - CharInventoryNavigator
 
-private struct AllAvatarNavigator: View {
+private struct CharInventoryNavigator: View {
     @EnvironmentObject
     private var vmDPV: DetailPortalViewModel
 
@@ -892,7 +892,7 @@ private struct AllAvatarNavigator: View {
                     error: error
                 ) {
                     Task {
-                        await vmDPV.fetchAllAvatarInfo()
+                        await vmDPV.fetchCharacterInventoryList()
                     }
                 }
             }
