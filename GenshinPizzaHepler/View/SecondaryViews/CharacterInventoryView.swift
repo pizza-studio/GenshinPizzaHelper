@@ -115,7 +115,7 @@ struct CharacterInventoryView: View {
     }
 
     #if !os(OSX) && !targetEnvironment(macCatalyst)
-    let flowSpacing: CGFloat = 8
+    let flowSpacing: CGFloat = 4
     #else
     let flowSpacing: CGFloat = 2
     #endif
