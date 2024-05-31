@@ -6288,7 +6288,7 @@
         }
       }
     },
-    "app.characters.count.weapon:%lld%lld%lld" : {
+    "app.characters.count.golds:%lld%lld%lld" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {

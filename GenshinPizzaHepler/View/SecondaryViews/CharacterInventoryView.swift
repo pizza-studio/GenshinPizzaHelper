@@ -29,7 +29,7 @@ struct CharacterInventoryView: View {
             Section {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(characterStats)
-                    Text(weaponStats)
+                    Text(goldStats)
                 }.font(.footnote)
             }.listRowMaterialBackground()
             Group {
@@ -160,11 +160,11 @@ struct CharacterInventoryView: View {
         return "app.characters.count.character:\(a, specifier: "%lld")\(b, specifier: "%lld")\(c, specifier: "%lld")"
     }
 
-    private var weaponStats: LocalizedStringKey {
+    private var goldStats: LocalizedStringKey {
         let d = goldNum(data: data).allGold
         let e = goldNum(data: data).charGold
         let f = goldNum(data: data).weaponGold
-        return "app.characters.count.weapon:\(d, specifier: "%lld")\(e, specifier: "%lld")\(f, specifier: "%lld")"
+        return "app.characters.count.golds:\(d, specifier: "%lld")\(e, specifier: "%lld")\(f, specifier: "%lld")"
     }
 
     private var showingAvatars: [CharacterInventoryModel.Avatar] {
