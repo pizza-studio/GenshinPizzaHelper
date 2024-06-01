@@ -26,14 +26,14 @@ extension PlayerDetail.Avatar.Skill {
 extension PlayerDetail.Avatar.TeyvatElement {
     public var dmgBonusLabel: (text: String, icon: String) {
         switch self {
-        case .cryo: return ("detailPortal.ECDDV.bonus.cryo", "UI_Icon_Element_Cryo")
-        case .anemo: return ("detailPortal.ECDDV.bonus.anemo", "UI_Icon_Element_Anemo")
-        case .electro: return ("detailPortal.ECDDV.bonus.electro", "UI_Icon_Element_Electro")
-        case .hydro: return ("detailPortal.ECDDV.bonus.hydro", "UI_Icon_Element_Hydro")
-        case .pyro: return ("detailPortal.ECDDV.bonus.pyro", "UI_Icon_Element_Pyro")
-        case .geo: return ("detailPortal.ECDDV.bonus.geo", "UI_Icon_Element_Geo")
-        case .dendro: return ("detailPortal.ECDDV.bonus.dendro", "UI_Icon_Element_Dendro")
-        case .physico: return ("detailPortal.ECDDV.bonus.physico", "UI_Icon_Element_Physico_Amp")
+        case .cryo: return ("detailPortal.EASV.bonus.cryo", "UI_Icon_Element_Cryo")
+        case .anemo: return ("detailPortal.EASV.bonus.anemo", "UI_Icon_Element_Anemo")
+        case .electro: return ("detailPortal.EASV.bonus.electro", "UI_Icon_Element_Electro")
+        case .hydro: return ("detailPortal.EASV.bonus.hydro", "UI_Icon_Element_Hydro")
+        case .pyro: return ("detailPortal.EASV.bonus.pyro", "UI_Icon_Element_Pyro")
+        case .geo: return ("detailPortal.EASV.bonus.geo", "UI_Icon_Element_Geo")
+        case .dendro: return ("detailPortal.EASV.bonus.dendro", "UI_Icon_Element_Dendro")
+        case .physico: return ("detailPortal.EASV.bonus.physico", "UI_Icon_Element_Physico_Amp")
         }
     }
 }

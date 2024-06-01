@@ -120,7 +120,7 @@ struct CharacterDetailView: View {
         -> some View {
         VStack {
             Spacer().frame(width: 25, height: 10)
-            EachCharacterDetailDataView(
+            EachAvatarStatView(
                 avatar: avatar
             ).frame(minWidth: 620, maxWidth: 830) // For iPad
                 .frame(width: condenseHorizontally ? 620 : nil)

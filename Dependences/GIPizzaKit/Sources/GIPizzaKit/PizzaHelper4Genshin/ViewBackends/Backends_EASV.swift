@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
-// ECDDV (EachCharacterDetailDataView) 视图的有些前端运算必须放到后端来，不然会卡死 compiler。
+// EASV (EachAvatarStatView) 视图的有些前端运算必须放到后端来，不然会卡死 compiler。
 
 import Defaults
 import Foundation
@@ -33,7 +33,7 @@ extension PlayerDetail.Avatar {
         if fightPropMap.healingBonus > 0 {
             result.append(.init(
                 iconString: "UI_Icon_MaxHp",
-                name: "detailPortal.ECDDV.prop.maxHP".localized + " & " + "detailPortal.ECDDV.prop.bonus.heal"
+                name: "detailPortal.EASV.prop.maxHP".localized + " & " + "detailPortal.EASV.prop.bonus.heal"
                     .localized
                     .percentageMarksTrimmed,
                 value: "\(fightPropMap.HP.rounded(toPlaces: 1))" +
@@ -43,7 +43,7 @@ extension PlayerDetail.Avatar {
         } else {
             result.append(.init(
                 iconString: "UI_Icon_MaxHp",
-                name: "detailPortal.ECDDV.prop.maxHP",
+                name: "detailPortal.EASV.prop.maxHP",
                 value: "\(fightPropMap.HP.rounded(toPlaces: 1))"
             ))
         }
@@ -51,7 +51,7 @@ extension PlayerDetail.Avatar {
         if isPhysicoDMGBoostSecondarilyEffective {
             result.append(.init(
                 iconString: "UI_Icon_CurAttack",
-                name: "detailPortal.ECDDV.ATK".localized + " & " + "detailPortal.ECDDV.prop.bonus.physico"
+                name: "detailPortal.EASV.ATK".localized + " & " + "detailPortal.EASV.prop.bonus.physico"
                     .localized
                     .percentageMarksTrimmed,
                 value: "\(fightPropMap.ATK.rounded(toPlaces: 1))" +
@@ -61,41 +61,41 @@ extension PlayerDetail.Avatar {
         } else {
             result.append(.init(
                 iconString: "UI_Icon_CurAttack",
-                name: "detailPortal.ECDDV.ATK",
+                name: "detailPortal.EASV.ATK",
                 value: "\(fightPropMap.ATK.rounded(toPlaces: 1))"
             ))
         }
         result.append(.init(
             iconString: "UI_Icon_CurDefense",
-            name: "detailPortal.ECDDV.DEF",
+            name: "detailPortal.EASV.DEF",
             value: "\(fightPropMap.DEF.rounded(toPlaces: 1))"
         ))
         result.append(.init(
             iconString: "UI_Icon_Element",
-            name: "detailPortal.ECDDV.EM",
+            name: "detailPortal.EASV.EM",
             value: "\(fightPropMap.elementalMastery.rounded(toPlaces: 1))"
         ))
         result.append(.init(
             iconString: "UI_Icon_Intee_WindField_ClockwiseRotation",
-            name: "detailPortal.ECDDV.ERCR",
+            name: "detailPortal.EASV.ERCR",
             value: "\((fightPropMap.energyRecharge * 100).rounded(toPlaces: 2))%"
         ))
 
         if useAdaptiveSpacing {
             result.append(.init(
                 iconString: "UI_Icon_CriticalRate",
-                name: "detailPortal.ECDDV.CR",
+                name: "detailPortal.EASV.CR",
                 value: "\((fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%"
             ))
             result.append(.init(
                 iconString: "UI_Icon_CriticalDamage",
-                name: "detailPortal.ECDDV.CDMG",
+                name: "detailPortal.EASV.CDMG",
                 value: "\((fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%"
             ))
         } else {
             result.append(.init(
                 iconString: "UI_Icon_CriticalDamage",
-                name: "detailPortal.ECDDV.CR".localized + " & " + "detailPortal.ECDDV.CDMG".localized,
+                name: "detailPortal.EASV.CR".localized + " & " + "detailPortal.EASV.CDMG".localized,
                 value: "\((fightPropMap.criticalRate * 100).rounded(toPlaces: 2))%" +
                     ", " +
                     "\((fightPropMap.criticalDamage * 100.0).rounded(toPlaces: 2))%"
@@ -112,7 +112,7 @@ extension PlayerDetail.Avatar {
            let rank = artifactScoreRank {
             result.append(.init(
                 iconString: "UI_Icon_ArtifactRating",
-                name: "detailPortal.ECDDV.artifactRank".localized,
+                name: "detailPortal.EASV.artifactRank".localized,
                 value: "\(String(format: "%.0f", totalScore)) (\(rank))"
             ))
         }

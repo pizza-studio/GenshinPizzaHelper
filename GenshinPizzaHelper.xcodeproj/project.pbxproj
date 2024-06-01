@@ -54,7 +54,7 @@
 		5BBCB6AF29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
 		5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210628B33D8300A6BBA9 /* AppDelegate.swift */; };
 		5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */; };
-		5BD1C5CC2A2A1FC90043C2B1 /* EachCharacterDetailDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */; };
+		5BD1C5CC2A2A1FC90043C2B1 /* EachAvatarStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachAvatarStatView.swift */; };
 		5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A9DB229D4812300CF4230 /* GachaChartView.swift */; };
 		5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8F29D28D3D0075F780 /* GachaView.swift */; };
 		5BD1C5CF2A2A1FC90043C2B1 /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C5271289E12DA00EA224F /* md5.swift */; };
@@ -240,7 +240,7 @@
 		BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
 		BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
 		BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
-		BF7500D828DEA80700CDA64E /* EachCharacterDetailDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */; };
+		BF7500D828DEA80700CDA64E /* EachAvatarStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachAvatarStatView.swift */; };
 		BF7500FE28E0452C00CDA64E /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
 		BF75010028E0452C00CDA64E /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
 		BF75011728E2F41300CDA64E /* LatestVersionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */; };
@@ -863,7 +863,7 @@
 		BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
 		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
-		BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachCharacterDetailDataView.swift; sourceTree = "<group>"; };
+		BF7500D728DEA80700CDA64E /* EachAvatarStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachAvatarStatView.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
 		BF75011628E2F41300CDA64E /* LatestVersionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestVersionInfoView.swift; sourceTree = "<group>"; };
@@ -1463,7 +1463,7 @@
 				EA025C8D29D28D150075F780 /* APIGetGachaView.swift */,
 				BF70211228B39E7600A6BBA9 /* AppBlockBackgroundView.swift */,
 				BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */,
-				BF7500D728DEA80700CDA64E /* EachCharacterDetailDataView.swift */,
+				BF7500D728DEA80700CDA64E /* EachAvatarStatView.swift */,
 				EA8978D729DA716400E0903E /* ExportGachaView.swift */,
 				EA3A9DB229D4812300CF4230 /* GachaChartView.swift */,
 				EA01F84D29D68EFE002A374C /* GachaSetting.swift */,
@@ -2417,7 +2417,7 @@
 				5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */,
 				5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */,
 				EA759D6C2B19989A0080C775 /* AccountDetailView.swift in Sources */,
-				5BD1C5CC2A2A1FC90043C2B1 /* EachCharacterDetailDataView.swift in Sources */,
+				5BD1C5CC2A2A1FC90043C2B1 /* EachAvatarStatView.swift in Sources */,
 				5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */,
 				EA759D6E2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
 				5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */,
@@ -2806,7 +2806,7 @@
 			files = (
 				BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */,
 				EA0A6D0B29DDC74000A356A4 /* GachaTranslateManager.swift in Sources */,
-				BF7500D828DEA80700CDA64E /* EachCharacterDetailDataView.swift in Sources */,
+				BF7500D828DEA80700CDA64E /* EachAvatarStatView.swift in Sources */,
 				EA3A9DB329D4812300CF4230 /* GachaChartView.swift in Sources */,
 				EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,

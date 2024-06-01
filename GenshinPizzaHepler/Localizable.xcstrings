@@ -19790,7 +19790,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.artifactRank" : {
+    "detailPortal.EASV.artifactRank" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -19855,7 +19855,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.ATK" : {
+    "detailPortal.EASV.ATK" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -19920,7 +19920,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.anemo" : {
+    "detailPortal.EASV.bonus.anemo" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -19985,7 +19985,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.cryo" : {
+    "detailPortal.EASV.bonus.cryo" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20050,7 +20050,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.dendro" : {
+    "detailPortal.EASV.bonus.dendro" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20115,7 +20115,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.electro" : {
+    "detailPortal.EASV.bonus.electro" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20180,7 +20180,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.geo" : {
+    "detailPortal.EASV.bonus.geo" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20245,7 +20245,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.hydro" : {
+    "detailPortal.EASV.bonus.hydro" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20310,7 +20310,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.physico" : {
+    "detailPortal.EASV.bonus.physico" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20375,7 +20375,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.bonus.pyro" : {
+    "detailPortal.EASV.bonus.pyro" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20440,7 +20440,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.CDMG" : {
+    "detailPortal.EASV.CDMG" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20505,7 +20505,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.characterLevel" : {
+    "detailPortal.EASV.characterLevel" : {
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {
@@ -20570,7 +20570,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.constellation" : {
+    "detailPortal.EASV.constellation" : {
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {
@@ -20635,7 +20635,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.constellation.unit:%lld" : {
+    "detailPortal.EASV.constellation.unit:%lld" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -20699,7 +20699,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.CR" : {
+    "detailPortal.EASV.CR" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20764,7 +20764,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.DEF" : {
+    "detailPortal.EASV.DEF" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20829,7 +20829,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.EM" : {
+    "detailPortal.EASV.EM" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20894,7 +20894,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.ERCR" : {
+    "detailPortal.EASV.ERCR" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -20959,7 +20959,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.HB" : {
+    "detailPortal.EASV.HB" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21024,7 +21024,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.maxHP" : {
+    "detailPortal.EASV.maxHP" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21089,7 +21089,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.ATK" : {
+    "detailPortal.EASV.prop.ATK" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21154,7 +21154,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.basicATK" : {
+    "detailPortal.EASV.prop.basicATK" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21219,7 +21219,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.anemo" : {
+    "detailPortal.EASV.prop.bonus.anemo" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21284,7 +21284,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.cryo" : {
+    "detailPortal.EASV.prop.bonus.cryo" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21349,7 +21349,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.dendro" : {
+    "detailPortal.EASV.prop.bonus.dendro" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21414,7 +21414,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.electro" : {
+    "detailPortal.EASV.prop.bonus.electro" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21479,7 +21479,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.geo" : {
+    "detailPortal.EASV.prop.bonus.geo" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21544,7 +21544,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.heal" : {
+    "detailPortal.EASV.prop.bonus.heal" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21609,7 +21609,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.healed" : {
+    "detailPortal.EASV.prop.bonus.healed" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21674,7 +21674,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.hydro" : {
+    "detailPortal.EASV.prop.bonus.hydro" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21739,7 +21739,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.physico" : {
+    "detailPortal.EASV.prop.bonus.physico" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21804,7 +21804,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.bonus.pyro" : {
+    "detailPortal.EASV.prop.bonus.pyro" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21869,7 +21869,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.CDMG" : {
+    "detailPortal.EASV.prop.CDMG" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21934,7 +21934,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.CR" : {
+    "detailPortal.EASV.prop.CR" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -21999,7 +21999,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.DEF" : {
+    "detailPortal.EASV.prop.DEF" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -22064,7 +22064,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.EM" : {
+    "detailPortal.EASV.prop.EM" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -22129,7 +22129,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.ERCR" : {
+    "detailPortal.EASV.prop.ERCR" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -22194,7 +22194,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.HP" : {
+    "detailPortal.EASV.prop.HP" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -22259,7 +22259,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.maxHP" : {
+    "detailPortal.EASV.prop.maxHP" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -22324,7 +22324,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.prop.SCMR" : {
+    "detailPortal.EASV.prop.SCMR" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -22389,7 +22389,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.refineRank:%lld" : {
+    "detailPortal.EASV.refineRank:%lld" : {
       "comment" : "CharacterDetailView",
       "localizations" : {
         "en" : {
@@ -22454,7 +22454,7 @@
         }
       }
     },
-    "detailPortal.ECDDV.scoreUnit:%@" : {
+    "detailPortal.EASV.scoreUnit:%@" : {
       "comment" : "artifact rating",
       "localizations" : {
         "en" : {
@@ -32988,7 +32988,7 @@
         }
       }
     },
-    "settings.display.autoLineSpacingForECDDV" : {
+    "settings.display.autoLineSpacingForEASV" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -33052,7 +33052,7 @@
         }
       }
     },
-    "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones" : {
+    "settings.display.autoLineSpacingForEASV.onlyWorksWithNotchedPhones" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {

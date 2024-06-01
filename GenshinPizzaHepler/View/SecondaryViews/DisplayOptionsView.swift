@@ -127,11 +127,11 @@ struct DisplayOptionsView: View {
             if ThisDevice.notchType != .none || OS.type != .iPhoneOS {
                 Section {
                     Toggle(isOn: $adaptiveSpacingInCharacterView) {
-                        Text("settings.display.autoLineSpacingForECDDV")
+                        Text("settings.display.autoLineSpacingForEASV")
                     }
                 } footer: {
                     Text(
-                        "settings.display.autoLineSpacingForECDDV.onlyWorksWithNotchedPhones"
+                        "settings.display.autoLineSpacingForEASV.onlyWorksWithNotchedPhones"
                     )
                 }
             }

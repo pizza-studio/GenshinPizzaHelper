@@ -9,9 +9,9 @@ import Defaults
 import GIPizzaKit
 import SwiftUI
 
-// MARK: - EachCharacterDetailDataView
+// MARK: - EachAvatarStatView
 
-struct EachCharacterDetailDataView: View {
+struct EachAvatarStatView: View {
     // MARK: Lifecycle
 
     init(avatar: PlayerDetail.Avatar) {
@@ -83,7 +83,7 @@ struct EachCharacterDetailDataView: View {
             VStack(alignment: .leading, spacing: 3.3 + Self.spacingDelta) {
                 AttributeLabel(
                     name: weapon.nameCorrected,
-                    valueView: Text("detailPortal.ECDDV.refineRank:\(weapon.refinementRank)"),
+                    valueView: Text("detailPortal.EASV.refineRank:\(weapon.refinementRank)"),
                     fontSize: fontSize,
                     titleEmphasized: true,
                     hasDash: false
@@ -158,7 +158,7 @@ struct EachCharacterDetailDataView: View {
         )
         .corneredTag(
             // TODO: i18n malfunction.
-            "detailPortal.ECDDV.scoreUnit:\(String(format: "%.0f", artifact.score ?? -1))",
+            "detailPortal.EASV.scoreUnit:\(String(format: "%.0f", artifact.score ?? -1))",
             alignment: .topLeading,
             textSize: fontSize * 0.72,
             enabled: artifact.score != nil && Defaults[.artifactRatingOptions].contains(.enabled)
@@ -356,13 +356,13 @@ private struct AvatarAndSkillView: View {
                         spacing: 3.3 + spacingDelta / 2
                     ) {
                         AttributeLabel(
-                            name: "detailPortal.ECDDV.characterLevel",
+                            name: "detailPortal.EASV.characterLevel",
                             value: avatar.level.description,
                             hasDash: false
                         )
                         AttributeLabel(
-                            name: "detailPortal.ECDDV.constellation",
-                            valueView: Text("detailPortal.ECDDV.constellation.unit:\(avatar.constellation)"),
+                            name: "detailPortal.EASV.constellation",
+                            valueView: Text("detailPortal.EASV.constellation.unit:\(avatar.constellation)"),
                             hasDash: false
                         )
                     }
@@ -409,7 +409,7 @@ private struct AvatarAndSkillView: View {
     // MARK: Private
 
     private var spacingDelta: CGFloat {
-        EachCharacterDetailDataView.spacingDelta
+        EachAvatarStatView.spacingDelta
     }
 }
 
