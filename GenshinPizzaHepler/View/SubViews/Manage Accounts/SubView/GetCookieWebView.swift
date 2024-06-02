@@ -45,7 +45,7 @@ struct GetCookieWebView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("sys.cancel") {
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             isShown.toggle()
                         }
                     }
@@ -53,7 +53,9 @@ struct GetCookieWebView: View {
             }
             .alert("settings.account.login.instruction", isPresented: $showAlert) {
                 Button("sys.done") {
-                    showAlert = false
+                    Task.detached { @MainActor in
+                        showAlert = false
+                    }
                 }
             }
         }
