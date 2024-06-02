@@ -23,6 +23,9 @@ struct GetCookieWebView: View {
 
     var dataStore: WKWebsiteDataStore = .default()
 
+    @State
+    var showAlert: Bool = true
+
     var body: some View {
         NavigationStack {
             CookieGetterWebView(
@@ -42,8 +45,15 @@ struct GetCookieWebView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("sys.cancel") {
-                        isShown.toggle()
+                        DispatchQueue.main.async {
+                            isShown.toggle()
+                        }
                     }
+                }
+            }
+            .alert("settings.account.login.instruction", isPresented: $showAlert) {
+                Button("sys.done") {
+                    showAlert = false
                 }
             }
         }
