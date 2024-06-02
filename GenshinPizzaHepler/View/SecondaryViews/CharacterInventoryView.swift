@@ -25,54 +25,58 @@ struct CharacterInventoryView: View {
     var expanded: Bool = false
 
     var body: some View {
-        List {
-            Section {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(characterStats)
-                    Text(goldStats)
-                }.font(.footnote)
-            }.listRowMaterialBackground()
-            Group {
-                if expanded {
-                    allAvatarListFull
-                } else {
-                    allAvatarListCondensed
-                }
-            }.listRowMaterialBackground()
-        }
-        .scrollContentBackground(.hidden)
-        .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
-        .navigationTitle("app.characters.title")
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Picker("", selection: $expanded.animation()) {
-                    Text("detailPortal.inventoryView.expand.tabText").tag(true)
-                    Text("detailPortal.inventoryView.collapse.tabText").tag(false)
-                }
-                .pickerStyle(.menu)
-                Menu {
-                    ForEach(
-                        AllAvatarListDisplayType.allCases,
-                        id: \.rawValue
-                    ) { choice in
-                        Button(choice.rawValue.localized) {
-                            withAnimation {
-                                allAvatarListDisplayType = choice
+        GeometryReader { proxy in
+            // 首次傳入的 canvasWidth 會是 0，這裡給個保底的數字。
+            let canvasWidth = Swift.max(proxy.size.width, 280)
+            List {
+                Section {
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(characterStats)
+                        Text(goldStats)
+                    }.font(.footnote)
+                }.listRowMaterialBackground()
+                Group {
+                    if expanded {
+                        renderAllAvatarListFull()
+                    } else {
+                        renderAllAvatarListCondensed(canvasWidth: canvasWidth)
+                    }
+                }.listRowMaterialBackground()
+            }
+            .scrollContentBackground(.hidden)
+            .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
+            .navigationTitle("app.characters.title")
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Picker("", selection: $expanded.animation()) {
+                        Text("detailPortal.inventoryView.expand.tabText").tag(true)
+                        Text("detailPortal.inventoryView.collapse.tabText").tag(false)
+                    }
+                    .pickerStyle(.menu)
+                    Menu {
+                        ForEach(
+                            AllAvatarListDisplayType.allCases,
+                            id: \.rawValue
+                        ) { choice in
+                            Button(choice.rawValue.localized) {
+                                withAnimation {
+                                    allAvatarListDisplayType = choice
+                                }
                             }
                         }
+                    } label: {
+                        Image(systemSymbol: .arrowLeftArrowRightCircle)
                     }
-                } label: {
-                    Image(systemSymbol: .arrowLeftArrowRightCircle)
                 }
             }
-        }
-        .refreshable {
-            vmDPV.refresh()
+            .refreshable {
+                vmDPV.refresh()
+            }
         }
     }
 
     @ViewBuilder
-    var allAvatarListFull: some View {
+    func renderAllAvatarListFull() -> some View {
         Section {
             ForEach(showingAvatars, id: \.id) { avatar in
                 AvatarListItem(avatar: avatar, condensed: false)
@@ -97,20 +101,16 @@ struct CharacterInventoryView: View {
     }
 
     @ViewBuilder
-    var allAvatarListCondensed: some View {
-        HStack(alignment: .center) {
-            Spacer()
-            HFlow(spacing: flowSpacing) {
-                ForEach(showingAvatars, id: \.id) { avatar in
-                    AvatarListItem(avatar: avatar, condensed: true)
-                        .padding(.vertical, 4)
-                        .compositingGroup()
-                }
+    func renderAllAvatarListCondensed(canvasWidth: CGFloat) -> some View {
+        let lineCapacity = Int(floor((canvasWidth - 40) / 70))
+        let gridColumnsFixed = [GridItem](repeating: .init(.flexible()), count: lineCapacity)
+        LazyVGrid(columns: gridColumnsFixed, spacing: 2) {
+            ForEach(showingAvatars, id: \.id) { avatar in
+                // WIDTH: 70, HEIGHT: 63
+                AvatarListItem(avatar: avatar, condensed: true)
+                    .padding(.vertical, 4)
+                    .compositingGroup()
             }
-            #if !os(OSX) && !targetEnvironment(macCatalyst)
-            .listRowInsets(.init(top: 4, leading: 3, bottom: 4, trailing: 1))
-            #endif
-            Spacer()
         }
     }
 
