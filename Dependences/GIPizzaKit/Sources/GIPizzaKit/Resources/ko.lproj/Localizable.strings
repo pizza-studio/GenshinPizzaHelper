@@ -123,7 +123,10 @@
 "$asset.character:Gaming" = "가명";
 "$asset.character:Xianyun" = "한운";
 "$asset.character:Chiori" = "치오리";
+"$asset.character:Sigewinne" = "시그윈";
 "$asset.character:Arlecchino" = "아를레키노";
+"$asset.character:Sethos" = "세토스";
+"$asset.character:Clorinde" = "클로린드";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:LightOfFoliarIncision" = "잎을 가르는 빛";
 "$asset.weapon:SplendorOfStillWaters" = "조용히 샘솟는 빛";
 "$asset.weapon:UrakuMisugiri" = "우라쿠의 미스기리";
+"$asset.weapon:Absolution" = "사면";
 "$asset.weapon:WasterGreatsword" = "훈련용 대검";
 "$asset.weapon:OldMercsPal" = "용병 중검";
 "$asset.weapon:FerrousShadow" = "강철의 그림자";
@@ -195,6 +199,7 @@
 "$asset.weapon:MailedFlower" = "꽃 장식 대검";
 "$asset.weapon:TalkingStick" = "대화봉";
 "$asset.weapon:TidalShadow" = "파도 그림자 대검";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "궁극의 패왕 특급 마검";
 "$asset.weapon:PortablePowerSaw" = "휴대용 체인톱";
 "$asset.weapon:SkywardPride" = "천공의 긍지";
 "$asset.weapon:WolfsGravestone" = "늑대의 말로";
@@ -202,6 +207,7 @@
 "$asset.weapon:TheUnforged" = "무공의 검";
 "$asset.weapon:RedhornStonethresher" = "쇄석의 붉은 뿔";
 "$asset.weapon:BeaconOfTheReedSea" = "갈대 바다의 등대";
+"$asset.weapon:ConsideredJudgement" = "판단";
 "$asset.weapon:BeginnersProtector" = "초보자의 장창";
 "$asset.weapon:IronPoint" = "철촉창";
 "$asset.weapon:WhiteTassel" = "백술창";
@@ -298,6 +304,7 @@
 "$asset.weapon:IbisPiercer" = "꿰뚫는 따오기 부리";
 "$asset.weapon:ScionOfTheBlazingSun" = "뜨거운 태양의 후손";
 "$asset.weapon:SongOfStillness" = "고요한 노래";
+"$asset.weapon:Cloudforged" = "축운";
 "$asset.weapon:RangeGauge" = "거리 측정기";
 "$asset.weapon:SkywardHarp" = "천공의 날개";
 "$asset.weapon:AmosBow" = "아모스의 활";
@@ -307,8 +314,7 @@
 "$asset.weapon:ThunderingPulse" = "비뢰의 고동";
 "$asset.weapon:HuntersPath" = "사냥꾼의 길";
 "$asset.weapon:TheFirstGreatMagic" = "최초의 대마술";
-"$asset.weapon:UltimateOverloardsMegaMagicSword" = "궁극의 패왕 특급 마검";
-"$asset.weapon:ConsideredJudgement" = "판단";
+"$asset.weapon:SilverShowerHeartStrings" = "심금을 울리는 하얀 비";
 
 // MARK: - Namecard Icons
 
@@ -508,3 +514,8 @@
 "$asset.nameCard:UI_NameCardPic_Tzz9_P" = "업적·포경";
 "$asset.nameCard:UI_NameCardPic_WishingPond_P" = "폰타인·루키나 분수";
 "$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "기행·로큰롤";
+"$asset.nameCard:UI_NameCardPic_Clorinde_P" = "클로린드·역할극";
+"$asset.nameCard:UI_NameCardPic_Sigewinne_P" = "시그윈·치료법";
+"$asset.nameCard:UI_NameCardPic_Sethos_P" = "세토스·바";
+"$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "업적·환상 시편";
+"$asset.nameCard:UI_NameCardPic_Bp33_P" = "기행·모의전";

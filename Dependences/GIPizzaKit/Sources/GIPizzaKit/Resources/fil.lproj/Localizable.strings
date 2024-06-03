@@ -123,7 +123,10 @@
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
 "$asset.character:Chiori" = "Chiori";
+"$asset.character:Sigewinne" = "Sigewinne";
 "$asset.character:Arlecchino" = "Arlecchino";
+"$asset.character:Sethos" = "Sethos";
+"$asset.character:Clorinde" = "Clorinde";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:LightOfFoliarIncision" = "Light of Foliar Incision";
 "$asset.weapon:SplendorOfStillWaters" = "Splendor of Still Waters";
 "$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
+"$asset.weapon:Absolution" = "Absolution";
 "$asset.weapon:WasterGreatsword" = "Waster Greatsword";
 "$asset.weapon:OldMercsPal" = "Old Merc's Pal";
 "$asset.weapon:FerrousShadow" = "Ferrous Shadow";
@@ -195,6 +199,7 @@
 "$asset.weapon:MailedFlower" = "Mailed Flower";
 "$asset.weapon:TalkingStick" = "Talking Stick";
 "$asset.weapon:TidalShadow" = "Tidal Shadow";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Ultimate Overlord's Mega Magic Sword";
 "$asset.weapon:PortablePowerSaw" = "Portable Power Saw";
 "$asset.weapon:SkywardPride" = "Skyward Pride";
 "$asset.weapon:WolfsGravestone" = "Wolf's Gravestone";
@@ -202,6 +207,7 @@
 "$asset.weapon:TheUnforged" = "The Unforged";
 "$asset.weapon:RedhornStonethresher" = "Redhorn Stonethresher";
 "$asset.weapon:BeaconOfTheReedSea" = "Beacon of the Reed Sea";
+"$asset.weapon:ConsideredJudgement" = "Considered Judgment";
 "$asset.weapon:BeginnersProtector" = "Beginner's Protector";
 "$asset.weapon:IronPoint" = "Iron Point";
 "$asset.weapon:WhiteTassel" = "White Tassel";
@@ -298,6 +304,7 @@
 "$asset.weapon:IbisPiercer" = "Ibis Piercer";
 "$asset.weapon:ScionOfTheBlazingSun" = "Scion of the Blazing Sun";
 "$asset.weapon:SongOfStillness" = "Song of Stillness";
+"$asset.weapon:Cloudforged" = "Cloudforged";
 "$asset.weapon:RangeGauge" = "Range Gauge";
 "$asset.weapon:SkywardHarp" = "Skyward Harp";
 "$asset.weapon:AmosBow" = "Amos' Bow";
@@ -307,8 +314,7 @@
 "$asset.weapon:ThunderingPulse" = "Thundering Pulse";
 "$asset.weapon:HuntersPath" = "Hunter's Path";
 "$asset.weapon:TheFirstGreatMagic" = "The First Great Magic";
-"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Ultimate Overlord's Mega Magic Sword";
-"$asset.weapon:ConsideredJudgement" = "Considered Judgment";
+"$asset.weapon:SilverShowerHeartStrings" = "Silvershower";
 
 // MARK: - Namecard Icons
 
@@ -508,3 +514,8 @@
 "$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Achievement: Whalewrangler";
 "$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Fontaine: Lucine";
 "$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "Travel Notes: The Realms Rocked";
+"$asset.nameCard:UI_NameCardPic_Clorinde_P" = "Clorinde: Roleplay";
+"$asset.nameCard:UI_NameCardPic_Sigewinne_P" = "Sigewinne: Treatment";
+"$asset.nameCard:UI_NameCardPic_Sethos_P" = "Sethos: Ba Fragment";
+"$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "Achievement: Poetic Pages";
+"$asset.nameCard:UI_NameCardPic_Bp33_P" = "Travel Notes: Simulnation";

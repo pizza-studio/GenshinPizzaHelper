@@ -123,7 +123,10 @@
 "$asset.character:Gaming" = "嘉明";
 "$asset.character:Xianyun" = "闲云";
 "$asset.character:Chiori" = "千织";
+"$asset.character:Sigewinne" = "希格雯";
 "$asset.character:Arlecchino" = "阿蕾奇诺";
+"$asset.character:Sethos" = "赛索斯";
+"$asset.character:Clorinde" = "克洛琳德";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:LightOfFoliarIncision" = "裁叶萃光";
 "$asset.weapon:SplendorOfStillWaters" = "静水流涌之辉";
 "$asset.weapon:UrakuMisugiri" = "有乐御簾切";
+"$asset.weapon:Absolution" = "赦罪";
 "$asset.weapon:WasterGreatsword" = "训练大剑";
 "$asset.weapon:OldMercsPal" = "佣兵重剑";
 "$asset.weapon:FerrousShadow" = "铁影阔剑";
@@ -195,6 +199,7 @@
 "$asset.weapon:MailedFlower" = "饰铁之花";
 "$asset.weapon:TalkingStick" = "聊聊棒";
 "$asset.weapon:TidalShadow" = "浪影阔剑";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "究极霸王超级魔剑";
 "$asset.weapon:PortablePowerSaw" = "便携动力锯";
 "$asset.weapon:SkywardPride" = "天空之傲";
 "$asset.weapon:WolfsGravestone" = "狼的末路";
@@ -202,6 +207,7 @@
 "$asset.weapon:TheUnforged" = "无工之剑";
 "$asset.weapon:RedhornStonethresher" = "赤角石溃杵";
 "$asset.weapon:BeaconOfTheReedSea" = "苇海信标";
+"$asset.weapon:ConsideredJudgement" = "裁断";
 "$asset.weapon:BeginnersProtector" = "新手长枪";
 "$asset.weapon:IronPoint" = "铁尖枪";
 "$asset.weapon:WhiteTassel" = "白缨枪";
@@ -298,6 +304,7 @@
 "$asset.weapon:IbisPiercer" = "鹮穿之喙";
 "$asset.weapon:ScionOfTheBlazingSun" = "烈阳之嗣";
 "$asset.weapon:SongOfStillness" = "静谧之曲";
+"$asset.weapon:Cloudforged" = "筑云";
 "$asset.weapon:RangeGauge" = "测距规";
 "$asset.weapon:SkywardHarp" = "天空之翼";
 "$asset.weapon:AmosBow" = "阿莫斯之弓";
@@ -307,8 +314,7 @@
 "$asset.weapon:ThunderingPulse" = "飞雷之弦振";
 "$asset.weapon:HuntersPath" = "猎人之径";
 "$asset.weapon:TheFirstGreatMagic" = "最初的大魔术";
-"$asset.weapon:UltimateOverloardsMegaMagicSword" = "究极霸王超级魔剑";
-"$asset.weapon:ConsideredJudgement" = "裁断";
+"$asset.weapon:SilverShowerHeartStrings" = "白雨心弦";
 
 // MARK: - Namecard Icons
 
@@ -508,3 +514,8 @@
 "$asset.nameCard:UI_NameCardPic_Tzz9_P" = "成就·掣鲸";
 "$asset.nameCard:UI_NameCardPic_WishingPond_P" = "枫丹·露泉";
 "$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "纪行·邦摇";
+"$asset.nameCard:UI_NameCardPic_Clorinde_P" = "克洛琳德·取人";
+"$asset.nameCard:UI_NameCardPic_Sigewinne_P" = "希格雯·疗法";
+"$asset.nameCard:UI_NameCardPic_Sethos_P" = "塞索斯·跋灵";
+"$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "成就·诗页";
+"$asset.nameCard:UI_NameCardPic_Bp33_P" = "纪行·衍演";

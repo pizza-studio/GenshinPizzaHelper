@@ -1,0 +1,86 @@
+seq,Key,SymbolName,EnkaID,codename,filename-photo,filename-namecard,talentMaterial,en,chs,cht,jp,kr,fr,it,ru,de,vi
+1,$asset.character:Hotaru,Hotaru,10000007,PlayerGirl,UI_AvatarIcon_PlayerGirl,UI_NameCardPic_Bp2_P,all,Lumine,荧,熒,蛍,루미네,Lumine,Lumine,Люмин,Lumine,Lumine
+2,$asset.character:Sora,Sora,10000005,PlayerBoy,UI_AvatarIcon_PlayerBoy,UI_NameCardPic_Bp2_P,all,Aether,空,空,空,아이테르,Aether,Aether,Итэр,Aether,Aether
+3,$asset.character:Sucrose,Sucrose,10000043,Sucrose,UI_AvatarIcon_Sucrose,UI_NameCardPic_Sucrose_P,talentFreedom,Sucrose,砂糖,砂糖,スクロース,설탕,Sucrose,Sucrose,Сахароза,Saccharose,Sucrose
+4,$asset.character:Keqing,Keqing,10000042,Keqing,UI_AvatarIcon_Keqing,UI_NameCardPic_Keqing_P,talentProsperity,Keqing,刻晴,刻晴,刻晴,각청,Keqing,Keqing,Кэ Цин,Keqing,Keqing
+5,$asset.character:Mona,Mona,10000041,Mona,UI_AvatarIcon_Mona,UI_NameCardPic_Mona_P,talentResistance,Mona,莫娜,莫娜,モナ,모나,Mona,Mona,Мона,Mona,Mona
+6,$asset.character:Chongyun,Chongyun,10000036,Chongyun,UI_AvatarIcon_Chongyun,UI_NameCardPic_Chongyun_P,talentDiligence,Chongyun,重云,重雲,重雲,중운,Chongyun,Chongyun,Чун Юнь,Chongyun,Chongyun
+7,$asset.character:Qiqi,Qiqi,10000035,Qiqi,UI_AvatarIcon_Qiqi,UI_NameCardPic_Qiqi_P,talentProsperity,Qiqi,七七,七七,七七,치치,Qiqi,Qiqi,Ци Ци,Qiqi,Qiqi
+8,$asset.character:Noelle,Noelle,10000034,Noel,UI_AvatarIcon_Noel,UI_NameCardPic_Noel_P,talentResistance,Noelle,诺艾尔,諾艾爾,ノエル,노엘,Noëlle,Noelle,Ноэлль,Noelle,Noelle
+9,$asset.character:Bennett,Bennett,10000032,Bennett,UI_AvatarIcon_Bennett,UI_NameCardPic_Bennett_P,talentResistance,Bennett,班尼特,班尼特,ベネット,베넷,Bennett,Bennett,Беннет,Bennett,Bennett
+10,$asset.character:Fischl,Fischl,10000031,Fischl,UI_AvatarIcon_Fischl,UI_NameCardPic_Fischl_P,talentBallad,Fischl,菲谢尔,菲謝爾,フィッシュル,피슬,Fischl,Fischl,Фишль,Fischl,Fischl
+11,$asset.character:Klee,Klee,10000029,Klee,UI_AvatarIcon_Klee,UI_NameCardPic_Klee_P,talentFreedom,Klee,可莉,可莉,クレー,클레,Klee,Klee,Кли,Klee,Klee
+12,$asset.character:Ningguang,Ningguang,10000027,Ningguang,UI_AvatarIcon_Ningguang,UI_NameCardPic_Ningguang_P,talentProsperity,Ningguang,凝光,凝光,凝光,응광,Ningguang,Ningguang,Нин Гуан,Ningguang,Ningguang
+13,$asset.character:Xingqiu,Xingqiu,10000025,Xingqiu,UI_AvatarIcon_Xingqiu,UI_NameCardPic_Xingqiu_P,talentGold,Xingqiu,行秋,行秋,行秋,행추,Xingqiu,Xingqiu,Син Цю,Xingqiu,Xingqiu
+14,$asset.character:Beidou,Beidou,10000024,Beidou,UI_AvatarIcon_Beidou,UI_NameCardPic_Beidou_P,talentGold,Beidou,北斗,北斗,北斗,북두,Beidou,Beidou,Бэй Доу,Beidou,Beidou
+15,$asset.character:Xiangling,Xiangling,10000023,Xiangling,UI_AvatarIcon_Xiangling,UI_NameCardPic_Xiangling_P,talentDiligence,Xiangling,香菱,香菱,香菱,향릉,Xiangling,Xiangling,Сян Лин,Xiangling,Xiangling
+16,$asset.character:Venti,Venti,10000022,Venti,UI_AvatarIcon_Venti,UI_NameCardPic_Venti_P,talentBallad,Venti,温迪,溫迪,ウェンティ,벤티,Venti,Venti,Венти,Venti,Venti
+17,$asset.character:Amber,Amber,10000021,Ambor,UI_AvatarIcon_Ambor,UI_NameCardPic_Ambor_P,talentFreedom,Amber,安柏,安柏,アンバー,엠버,Amber,Amber,Эмбер,Amber,Amber
+18,$asset.character:Razor,Razor,10000020,Razor,UI_AvatarIcon_Razor,UI_NameCardPic_Razor_P,talentResistance,Razor,雷泽,雷澤,レザー,레이저,Razor,Razor,Рэйзор,Razor,Razor
+19,$asset.character:Diluc,Diluc,10000016,Diluc,UI_AvatarIcon_Diluc,UI_NameCardPic_Diluc_P,talentResistance,Diluc,迪卢克,迪盧克,ディルック,다이루크,Diluc,Diluc,Дилюк,Diluc,Diluc
+20,$asset.character:Kaeya,Kaeya,10000015,Kaeya,UI_AvatarIcon_Kaeya,UI_NameCardPic_Kaeya_P,talentBallad,Kaeya,凯亚,凱亞,ガイア,케이아,Kaeya,Kaeya,Кэйа,Kaeya,Kaeya
+21,$asset.character:Barbara,Barbara,10000014,Barbara,UI_AvatarIcon_Barbara,UI_NameCardPic_Barbara_P,talentFreedom,Barbara,芭芭拉,芭芭拉,バーバラ,바바라,Barbara,Barbara,Барбара,Barbara,Barbara
+22,$asset.character:Lisa,Lisa,10000006,Lisa,UI_AvatarIcon_Lisa,UI_NameCardPic_Lisa_P,talentBallad,Lisa,丽莎,麗莎,リサ,리사,Lisa,Lisa,Лиза,Lisa,Lisa
+23,$asset.character:Jean,Jean,10000003,Qin,UI_AvatarIcon_Qin,UI_NameCardPic_Qin_P,talentResistance,Jean,琴,琴,ジン,진,Jean,Jean,Джинн,Jean,Jean
+24,$asset.character:Diona,Diona,10000039,Diona,UI_AvatarIcon_Diona,UI_NameCardPic_Diona_P,talentFreedom,Diona,迪奥娜,迪奧娜,ディオナ,디오나,Diona,Diona,Диона,Diona,Diona
+25,$asset.character:Tartaglia,Tartaglia,10000033,Tartaglia,UI_AvatarIcon_Tartaglia,UI_NameCardPic_Tartaglia_P,talentFreedom,Tartaglia,达达利亚,達達利亞,タルタリヤ,타르탈리아,Tartaglia,Tartaglia,Тарталья,Tartaglia,Tartaglia
+26,$asset.character:Xinyan,Xinyan,10000044,Xinyan,UI_AvatarIcon_Xinyan,UI_NameCardPic_Xinyan_P,talentGold,Xinyan,辛焱,辛焱,辛炎,신염,Xinyan,Xinyan,Синь Янь,Xinyan,Xinyan
+27,$asset.character:Zhongli,Zhongli,10000030,Zhongli,UI_AvatarIcon_Zhongli,UI_NameCardPic_Zhongli_P,talentGold,Zhongli,钟离,鍾離,鍾離,종려,Zhongli,Zhongli,Чжун Ли,Zhongli,Zhongli
+28,$asset.character:Albedo,Albedo,10000038,Albedo,UI_AvatarIcon_Albedo,UI_NameCardPic_Albedo_P,talentBallad,Albedo,阿贝多,阿貝多,アルベド,알베도,Albedo,Albedo,Альбедо,Albedo,Albedo
+29,$asset.character:Ganyu,Ganyu,10000037,Ganyu,UI_AvatarIcon_Ganyu,UI_NameCardPic_Ganyu_P,talentDiligence,Ganyu,甘雨,甘雨,甘雨,감우,Ganyu,Ganyu,Гань Юй,Ganyu,Ganyu
+30,$asset.character:Xiao,Xiao,10000026,Xiao,UI_AvatarIcon_Xiao,UI_NameCardPic_Xiao_P,talentProsperity,Xiao,魈,魈,魈,소,Xiao,Xiao,Сяо,Xiao,Xiao
+31,$asset.character:Hutao,Hutao,10000046,Hutao,UI_AvatarIcon_Hutao,UI_NameCardPic_Hutao_P,talentDiligence,Hu Tao,胡桃,胡桃,胡桃,호두,Hu Tao,Hu Tao,Ху Тао,Hu Tao,Hu Tao
+32,$asset.character:Rosaria,Rosaria,10000045,Rosaria,UI_AvatarIcon_Rosaria,UI_NameCardPic_Rosaria_P,talentBallad,Rosaria,罗莎莉亚,蘿莎莉亞,ロサリア,로자리아,Rosalia,Rosaria,Розария,Rosaria,Rosaria
+33,$asset.character:Yanfei,Yanfei,10000048,Feiyan,UI_AvatarIcon_Feiyan,UI_NameCardPic_Feiyan_P,talentGold,Yanfei,烟绯,煙緋,煙緋,연비,Yanfei,Yanfei,Янь Фэй,Yanfei,Yanfei
+34,$asset.character:Eula,Eula,10000051,Eula,UI_AvatarIcon_Eula,UI_NameCardPic_Eula_P,talentResistance,Eula,优菈,優菈,エウルア,유라,Eula,Eula,Эола,Eula,Eula
+35,$asset.character:Kazuha,Kazuha,10000047,Kazuha,UI_AvatarIcon_Kazuha,UI_NameCardPic_Kazuha_P,talentDiligence,Kaedehara Kazuha,枫原万叶,楓原萬葉,楓原万葉,카에데하라 카즈하,Kaedehara Kazuha,Kaedehara Kazuha,Кадзуха,Kaedehara Kazuha,Kaedehara Kazuha
+36,$asset.character:Ayaka,Ayaka,10000002,Ayaka,UI_AvatarIcon_Ayaka,UI_NameCardPic_Ayaka_P,talentElegance,Kamisato Ayaka,神里绫华,神里綾華,神里綾華,카미사토 아야카,Kamisato Ayaka,Kamisato Ayaka,Аяка,Kamisato Ayaka,Kamisato Ayaka
+37,$asset.character:Sayu,Sayu,10000053,Sayu,UI_AvatarIcon_Sayu,UI_NameCardPic_Sayu_P,talentLight,Sayu,早柚,早柚,早柚,사유,Sayu,Sayu,Саю,Sayu,Sayu
+38,$asset.character:Yoimiya,Yoimiya,10000049,Yoimiya,UI_AvatarIcon_Yoimiya,UI_NameCardPic_Yoimiya_P,talentTransience,Naganohara Yoimiya,长野原宵宫,長野原宵宮,長野原宵宮,나가노하라 요이미야,Naganohara Yoimiya,Naganohara Yoimiya,Наганохара Ёимия,Naganohara Yoimiya,Naganohara Yoimiya
+39,$asset.character:Aloy,Aloy,10000062,Aloy,UI_AvatarIcon_Aloy,UI_NameCardPic_Aloy_P,talentFreedom,Aloy,埃洛伊,亞蘿伊,アーロイ,에일로이,Aloy,Aloy,Элой,Aloy,Aloy
+40,$asset.character:Sara,Sara,10000056,Sara,UI_AvatarIcon_Sara,UI_NameCardPic_Sara_P,talentElegance,Kujou Sara,九条裟罗,九條裟羅,九条裟羅,쿠죠 사라,Kujou Sara,Kujou Sara,Сара,Kujou Sara,Kujou Sara
+41,$asset.character:Ei,Ei,10000052,Shougun,UI_AvatarIcon_Shougun,UI_NameCardPic_Shougun_P,talentLight,Raiden Shogun,雷电将军,雷電將軍,雷電将軍,라이덴 쇼군,Shogun Raiden,Shogun Raiden,Райдэн,Shougun Raiden,Raiden Shogun
+42,$asset.character:Kokomi,Kokomi,10000054,Kokomi,UI_AvatarIcon_Kokomi,UI_NameCardPic_Kokomi_P,talentTransience,Sangonomiya Kokomi,珊瑚宫心海,珊瑚宮心海,珊瑚宮心海,산고노미야 코코미,Sangonomiya Kokomi,Sangonomiya Kokomi,Кокоми,Sangonomiya Kokomi,Sangonomiya Kokomi
+43,$asset.character:Thoma,Thoma,10000050,Tohma,UI_AvatarIcon_Tohma,UI_NameCardPic_Tohma_P,talentTransience,Thoma,托马,托馬,トーマ,토마,Thomas,Thoma,Тома,Thoma,Thoma
+44,$asset.character:Itto,Itto,10000057,Itto,UI_AvatarIcon_Itto,UI_NameCardPic_Itto_P,talentElegance,Arataki Itto,荒泷一斗,荒瀧一斗,荒瀧一斗,아라타키 이토,Arataki Itto,Arataki Itto,Итто,Arataki Itto,Arataki Itto
+45,$asset.character:Gorou,Gorou,10000055,Gorou,UI_AvatarIcon_Gorou,UI_NameCardPic_Gorou_P,talentLight,Gorou,五郎,五郎,ゴロー,고로,Gorou,Gorou,Горо,Gorou,Gorou
+46,$asset.character:Yunjin,Yunjin,10000064,Yunjin,UI_AvatarIcon_Yunjin,UI_NameCardPic_Yunjin_P,talentDiligence,Yun Jin,云堇,雲堇,雲菫,운근,Yun Jin,Yun Jin,Юнь Цзинь,Yun Jin,Yun Jin
+47,$asset.character:Shenhe,Shenhe,10000063,Shenhe,UI_AvatarIcon_Shenhe,UI_NameCardPic_Shenhe_P,talentProsperity,Shenhe,申鹤,申鶴,申鶴,신학,Shenhe,Shenhe,Шэнь Хэ,Shenhe,Shenhe
+48,$asset.character:Miko,Miko,10000058,Yae,UI_AvatarIcon_Yae,UI_NameCardPic_Yae1_P,talentLight,Yae Miko,八重神子,八重神子,八重神子,야에 미코,Yae Miko,Yae Miko,Яэ Мико,Yae Miko,Yae Miko
+49,$asset.character:Ayato,Ayato,10000066,Ayato,UI_AvatarIcon_Ayato,UI_NameCardPic_Ayato_P,talentElegance,Kamisato Ayato,神里绫人,神里綾人,神里綾人,카미사토 아야토,Kamisato Ayato,Kamisato Ayato,Аято,Kamisato Ayato,Kamisato Ayato
+50,$asset.character:Yelan,Yelan,10000060,Yelan,UI_AvatarIcon_Yelan,UI_NameCardPic_Yelan_P,talentProsperity,Yelan,夜兰,夜蘭,夜蘭,야란,Yelan,Yelan,Е Лань,Yelan,Yelan
+51,$asset.character:Shinobu,Shinobu,10000065,Shinobu,UI_AvatarIcon_Shinobu,UI_NameCardPic_Shinobu_P,talentElegance,Kuki Shinobu,久岐忍,久岐忍,久岐忍,쿠키 시노부,Kuki Shinobu,Kuki Shinobu,Синобу,Kuki Shinobu,Kuki Shinobu
+52,$asset.character:Heizou,Heizou,10000059,Heizo,UI_AvatarIcon_Heizo,UI_NameCardPic_Heizo_P,talentTransience,Shikanoin Heizou,鹿野院平藏,鹿野院平藏,鹿野院平蔵,시카노인 헤이조,Shikanoin Heizou,Shikanoin Heizou,Хэйдзо,Shikanoin Heizou,Shikanoin Heizou
+53,$asset.character:Tighnari,Tighnari,10000069,Tighnari,UI_AvatarIcon_Tighnari,UI_NameCardPic_Tighnari_P,talentAdmonition,Tighnari,提纳里,提納里,ティナリ,타이나리,Tighnari,Tighnari,Тигнари,Tighnari,Tighnari
+54,$asset.character:Collei,Collei,10000067,Collei,UI_AvatarIcon_Collei,UI_NameCardPic_Collei_P,talentPraxis,Collei,柯莱,柯萊,コレイ,콜레이,Collei,Collei,Коллеи,Collei,Collei
+55,$asset.character:Dori,Dori,10000068,Dori,UI_AvatarIcon_Dori,UI_NameCardPic_Dori_P,talentIngenuity,Dori,多莉,多莉,ドリー,도리,Dori,Dori,Дори,Dori,Dori
+56,$asset.character:Candace,Candace,10000072,Candace,UI_AvatarIcon_Candace,UI_NameCardPic_Candace_P,talentAdmonition,Candace,坎蒂丝,坎蒂絲,キャンディス,캔디스,Candace,Candace,Кандакия,Candace,Candace
+57,$asset.character:Cyno,Cyno,10000071,Cyno,UI_AvatarIcon_Cyno,UI_NameCardPic_Cyno_P,talentAdmonition,Cyno,赛诺,賽諾,セノ,사이노,Cyno,Cyno,Сайно,Cyno,Cyno
+58,$asset.character:Nilou,Nilou,10000070,Nilou,UI_AvatarIcon_Nilou,UI_NameCardPic_Nilou_P,talentPraxis,Nilou,妮露,妮露,ニィロウ,닐루,Nilou,Nilou,Нилу,Nilou,Nilou
+59,$asset.character:Nahida,Nahida,10000073,Nahida,UI_AvatarIcon_Nahida,UI_NameCardPic_Nahida_P,talentIngenuity,Nahida,纳西妲,納西妲,ナヒーダ,나히다,Nahida,Nahida,Нахида,Nahida,Nahida
+60,$asset.character:Layla,Layla,10000074,Layla,UI_AvatarIcon_Layla,UI_NameCardPic_Layla_P,talentIngenuity,Layla,莱依拉,萊依拉,レイラ,레일라,Layla,Layla,Лайла,Layla,Layla
+61,$asset.character:Faruzan,Faruzan,10000076,Faruzan,UI_AvatarIcon_Faruzan,UI_NameCardPic_Faruzan_P,talentAdmonition,Faruzan,珐露珊,琺露珊,ファルザン,파루잔,Faruzan,Faruzan,Фарузан,Faruzan,Faruzan
+62,$asset.character:Kunikuzushi,Kunikuzushi,10000075,Wanderer,UI_AvatarIcon_Wanderer,UI_NameCardPic_Wanderer_P,talentPraxis,Wanderer,流浪者,流浪者,放浪者,방랑자,Nomade,Vagabondo,Странник,Wanderer,Kẻ Lang Thang
+63,$asset.character:Alhaitham,Alhaitham,10000078,Alhatham,UI_AvatarIcon_Alhatham,UI_NameCardPic_Alhatham_P,talentIngenuity,Alhaitham,艾尔海森,艾爾海森,アルハイゼン,알하이탐,Alhaitham,Alhaitham,Аль-Хайтам,Alhaitham,Alhaitham
+64,$asset.character:Yaoyao,Yaoyao,10000077,Yaoyao,UI_AvatarIcon_Yaoyao,UI_NameCardPic_Yaoyao_P,talentDiligence,Yaoyao,瑶瑶,瑤瑤,ヨォーヨ,요요,Yaoyao,Yaoyao,Яо Яо,Yaoyao,Yaoyao
+65,$asset.character:Dehya,Dehya,10000079,Dehya,UI_AvatarIcon_Dehya,UI_NameCardPic_Dehya_P,talentPraxis,Dehya,迪希雅,迪希雅,ディシア,데히야,Dehya,Dehya,Дэхья,Dehya,Dehya
+66,$asset.character:Mika,Mika,10000080,Mika,UI_AvatarIcon_Mika,UI_NameCardPic_Mika_P,talentBallad,Mika,米卡,米卡,ミカ,미카,Mika,Mika,Мика,Mika,Mika
+67,$asset.character:Baizhu,Baizhu,10000082,Baizhuer,UI_AvatarIcon_Baizhuer,UI_NameCardPic_Baizhuer_P,talentGold,Baizhu,白术,白朮,白朮,백출,Baizhu,Baizhu,Бай Чжу,Baizhu,Baizhu
+68,$asset.character:Kaveh,Kaveh,10000081,Kaveh,UI_AvatarIcon_Kaveh,UI_NameCardPic_Kaveh_P,talentIngenuity,Kaveh,卡维,卡維,カーヴェ,카베,Kaveh,Kaveh,Кавех,Kaveh,Kaveh
+69,$asset.character:Kirara,Kirara,10000061,Momoka,UI_AvatarIcon_Momoka,UI_NameCardPic_Kirara_P,talentTransience,Kirara,绮良良,綺良良,綺良々,키라라,Kirara,Kirara,Кирара,Kirara,Kirara
+70,$asset.character:Lyney,Lyney,10000084,Liney,UI_AvatarIcon_Liney,UI_NameCardPic_Liney_P,talentEquity,Lyney,林尼,林尼,リネ,리니,Lyney,Lyney,Лини,Lyney,Lyney
+71,$asset.character:Lynette,Lynette,10000083,Linette,UI_AvatarIcon_Linette,UI_NameCardPic_Linette_P,talentOrder,Lynette,琳妮特,琳妮特,リネット,리넷,Lynette,Lynette,Линетт,Lynette,Lynette
+72,$asset.character:Freminet,Freminet,10000085,Freminet,UI_AvatarIcon_Freminet,UI_NameCardPic_Freminet_P,talentJustice,Freminet,菲米尼,菲米尼,フレミネ,프레미네,Fréminet,Freminet,Фремине,Fréminet,Freminet
+73,$asset.character:Neuvillette,Neuvillette,10000087,Neuvillette,UI_AvatarIcon_Neuvillette,UI_NameCardPic_Neuvillette_P,talentEquity,Neuvillette,那维莱特,那維萊特,ヌヴィレット,느비예트,Neuvillette,Neuvillette,Нёвиллет,Neuvillette,Neuvillette
+74,$asset.character:Wriothesley,Wriothesley,10000086,Wriothesley,UI_AvatarIcon_Wriothesley,UI_NameCardPic_Wriothesley_P,talentOrder,Wriothesley,莱欧斯利,萊歐斯利,リオセスリ,라이오슬리,Wriothesley,Wriothesley,Ризли,Wriothesley,Wriothesley
+75,$asset.character:Charlotte,Charlotte,10000088,Charlotte,UI_AvatarIcon_Charlotte,UI_NameCardPic_Charlotte_P,talentJustice,Charlotte,夏洛蒂,夏洛蒂,シャルロット,샤를로트,Charlotte,Charlotte,Шарлотта,Charlotte,Charlotte
+76,$asset.character:Furina,Furina,10000089,Furina,UI_AvatarIcon_Furina,UI_NameCardPic_Furina_P,talentJustice,Furina,芙宁娜,芙寧娜,フリーナ,푸리나,Furina,Furina,Фурина,Furina,Furina
+77,$asset.character:Chevreuse,Chevreuse,10000090,Chevreuse,UI_AvatarIcon_Chevreuse,UI_NameCardPic_Chevreuse_P,talentOrder,Chevreuse,夏沃蕾,夏沃蕾,シュヴルーズ,슈브르즈,Chevreuse,Chevreuse,Шеврёз,Chevreuse,Chevreuse
+78,$asset.character:Navia,Navia,10000091,Navia,UI_AvatarIcon_Navia,UI_NameCardPic_Navia_P,talentEquity,Navia,娜维娅,娜維婭,ナヴィア,나비아,Navia,Navia,Навия,Navia,Navia
+79,$asset.character:Gaming,Gaming,10000092,Gaming,UI_AvatarIcon_Gaming,UI_NameCardPic_Gaming_P,talentProsperity,Gaming,嘉明,嘉明,嘉明,가명,Xianyun,Xianyun,Ка Мин,Xianyun,Xianyun
+80,$asset.character:Xianyun,Xianyun,10000093,Liuyun,UI_AvatarIcon_Liuyun,UI_NameCardPic_Liuyun_P,talentGold,Xianyun,闲云,閒雲,閑雲,한운,Gaming,Gaming,Сянь Юнь,Gaming,Gaming
+81,$asset.character:Chiori,Chiori,10000094,Chiori,UI_AvatarIcon_Chiori,UI_NameCardPic_Chiori_P,talentLight,Chiori,千织,千織,千織,치오리,Chiori,Chiori,Тиори,Chiori,Chiori
+82,$asset.character:Sigewinne,Sigewinne,10000095,Sigewinne,UI_AvatarIcon_Sigewinne,UI_NameCardPic_Sigewinne_P,talentEquity,Sigewinne,希格雯,希格雯,シグウィン,시그윈,Sigewinne,Sigewinne,Сиджвин,Sigewinne,Sigewinne
+83,$asset.character:Arlecchino,Arlecchino,10000096,Arlecchino,UI_AvatarIcon_Arlecchino,UI_NameCardPic_Arlecchino_P,talentOrder,Arlecchino,阿蕾奇诺,阿蕾奇諾,アルレッキーノ,아를레키노,Arlecchino,Arlecchino,Арлекино,Arlecchino,Arlecchino
+84,$asset.character:Sethos,Sethos,10000097,Sethos,UI_AvatarIcon_Sethos,UI_NameCardPic_Sethos_P,talentPraxis,Sethos,赛索斯,賽索斯,セトス,세토스,Sethos,Sethos,Сетос,Sethos,Sethos
+85,$asset.character:Clorinde,Clorinde,10000098,Clorinde,UI_AvatarIcon_Clorinde,UI_NameCardPic_Clorinde_P,talentJustice,Clorinde,克洛琳德,克洛琳德,クロリンデ,클로린드,Clorinde,Clorinde,Клоринда,Clorinde,Clorinde

@@ -123,7 +123,10 @@
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
 "$asset.character:Chiori" = "Chiori";
+"$asset.character:Sigewinne" = "Sigewinne";
 "$asset.character:Arlecchino" = "Arlecchino";
+"$asset.character:Sethos" = "Sethos";
+"$asset.character:Clorinde" = "Clorinde";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:LightOfFoliarIncision" = "Ánh Lá Phán Quyết";
 "$asset.weapon:SplendorOfStillWaters" = "Sắc Nước Lộng Lẫy";
 "$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
+"$asset.weapon:Absolution" = "Xá Tội";
 "$asset.weapon:WasterGreatsword" = "Kiếm Huấn Luyện";
 "$asset.weapon:OldMercsPal" = "Kiếm Dụng Binh";
 "$asset.weapon:FerrousShadow" = "Kiếm Thiết Ảnh";
@@ -195,6 +199,7 @@
 "$asset.weapon:MailedFlower" = "Đóa Hoa Tôn Màu Thép";
 "$asset.weapon:TalkingStick" = "Gậy Đàm Phán";
 "$asset.weapon:TidalShadow" = "Bóng Tối Thủy Triều";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Bá Vương Tối Thượng Siêu Cấp Ma Kiếm";
 "$asset.weapon:PortablePowerSaw" = "Máy Cưa Cầm Tay";
 "$asset.weapon:SkywardPride" = "Thiên Không Kiêu Ngạo";
 "$asset.weapon:WolfsGravestone" = "Đường Cùng Của Sói";
@@ -202,6 +207,7 @@
 "$asset.weapon:TheUnforged" = "Kiếm Vô Công";
 "$asset.weapon:RedhornStonethresher" = "Xích Giác Phá Thạch Đao";
 "$asset.weapon:BeaconOfTheReedSea" = "Hải Đăng Bờ Biển Lau";
+"$asset.weapon:ConsideredJudgement" = "Lời Phán Quyết";
 "$asset.weapon:BeginnersProtector" = "Thương Tân Thủ";
 "$asset.weapon:IronPoint" = "Thương Sắt";
 "$asset.weapon:WhiteTassel" = "Thương Bạch Anh";
@@ -298,6 +304,7 @@
 "$asset.weapon:IbisPiercer" = "Mỏ Cò Xuyên Thấu";
 "$asset.weapon:ScionOfTheBlazingSun" = "Hậu Duệ Mặt Trời";
 "$asset.weapon:SongOfStillness" = "Khúc Ca Tĩnh Lặng";
+"$asset.weapon:Cloudforged" = "Trúc Vân";
 "$asset.weapon:RangeGauge" = "Máy Đo Cự Ly";
 "$asset.weapon:SkywardHarp" = "Cánh Thiên Không";
 "$asset.weapon:AmosBow" = "Cung Amos";
@@ -307,8 +314,7 @@
 "$asset.weapon:ThunderingPulse" = "Sấm Sét Rung Động";
 "$asset.weapon:HuntersPath" = "Con Đường Thợ Săn";
 "$asset.weapon:TheFirstGreatMagic" = "Màn Ảo Thuật Đầu Tiên";
-"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Bá Vương Tối Thượng Siêu Cấp Ma Kiếm";
-"$asset.weapon:ConsideredJudgement" = "Lời Phán Quyết";
+"$asset.weapon:SilverShowerHeartStrings" = "Màn Mưa Tơ Lòng";
 
 // MARK: - Namecard Icons
 
@@ -510,3 +516,8 @@
 "$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Thành Tựu - Săn Cá Voi";
 "$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Fontaine - Suối Sương";
 "$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "Nhật Ký Hành Trình - Rung Chuyển";
+"$asset.nameCard:UI_NameCardPic_Clorinde_P" = "Clorinde - Nhập Vai";
+"$asset.nameCard:UI_NameCardPic_Sigewinne_P" = "Sigewinne - Liệu Trình";
+"$asset.nameCard:UI_NameCardPic_Sethos_P" = "Sethos - Bạt Linh";
+"$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "Thành Tựu - Trang Thơ";
+"$asset.nameCard:UI_NameCardPic_Bp33_P" = "Nhật Ký Hành Trình - Mô Phỏng";

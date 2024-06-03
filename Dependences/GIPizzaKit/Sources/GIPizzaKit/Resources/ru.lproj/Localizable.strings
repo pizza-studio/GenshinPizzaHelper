@@ -123,7 +123,10 @@
 "$asset.character:Gaming" = "Ка Мин";
 "$asset.character:Xianyun" = "Сянь Юнь";
 "$asset.character:Chiori" = "Тиори";
+"$asset.character:Sigewinne" = "Сиджвин";
 "$asset.character:Arlecchino" = "Арлекино";
+"$asset.character:Sethos" = "Сетос";
+"$asset.character:Clorinde" = "Клоринда";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:LightOfFoliarIncision" = "Свет лиственного разреза";
 "$asset.weapon:SplendorOfStillWaters" = "Блеск тихих вод";
 "$asset.weapon:UrakuMisugiri" = "Ураку мисугири";
+"$asset.weapon:Absolution" = "Отпущение грехов";
 "$asset.weapon:WasterGreatsword" = "Двуручный меч богатыря";
 "$asset.weapon:OldMercsPal" = "Лучший друг наёмника";
 "$asset.weapon:FerrousShadow" = "Металлическая тень";
@@ -195,6 +199,7 @@
 "$asset.weapon:MailedFlower" = "Цветок в латах";
 "$asset.weapon:TalkingStick" = "Говорящая палица";
 "$asset.weapon:TidalShadow" = "Тень волны";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Магический супермеч высшего владыки";
 "$asset.weapon:PortablePowerSaw" = "Переносная мотопила";
 "$asset.weapon:SkywardPride" = "Небесное величие";
 "$asset.weapon:WolfsGravestone" = "Волчья погибель";
@@ -202,6 +207,7 @@
 "$asset.weapon:TheUnforged" = "Некованый";
 "$asset.weapon:RedhornStonethresher" = "Краснорогий камнеруб";
 "$asset.weapon:BeaconOfTheReedSea" = "Маяк тростникового моря";
+"$asset.weapon:ConsideredJudgement" = "Обдуманное суждение";
 "$asset.weapon:BeginnersProtector" = "Копьё новичка";
 "$asset.weapon:IronPoint" = "Железный наконечник";
 "$asset.weapon:WhiteTassel" = "Белая кисть";
@@ -298,6 +304,7 @@
 "$asset.weapon:IbisPiercer" = "Клюв ибиса";
 "$asset.weapon:ScionOfTheBlazingSun" = "Наследник слепящего солнца";
 "$asset.weapon:SongOfStillness" = "Мелодия покоя";
+"$asset.weapon:Cloudforged" = "Выкованный из облаков";
 "$asset.weapon:RangeGauge" = "Дальномер";
 "$asset.weapon:SkywardHarp" = "Небесное крыло";
 "$asset.weapon:AmosBow" = "Лук Амоса";
@@ -307,8 +314,7 @@
 "$asset.weapon:ThunderingPulse" = "Громовой пульс";
 "$asset.weapon:HuntersPath" = "Охотничья тропа";
 "$asset.weapon:TheFirstGreatMagic" = "Первый великий фокус";
-"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Магический супермеч высшего владыки";
-"$asset.weapon:ConsideredJudgement" = "Обдуманное суждение";
+"$asset.weapon:SilverShowerHeartStrings" = "Сердечные струны";
 
 // MARK: - Namecard Icons
 
@@ -510,3 +516,8 @@
 "$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Укротитель китов";
 "$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Люсин";
 "$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "Рок-королевства";
+"$asset.nameCard:UI_NameCardPic_Clorinde_P" = "Ролевая игра";
+"$asset.nameCard:UI_NameCardPic_Sigewinne_P" = "Терапия";
+"$asset.nameCard:UI_NameCardPic_Sethos_P" = "Осколок Ба";
+"$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "Поэтичные страницы";
+"$asset.nameCard:UI_NameCardPic_Bp33_P" = "Симуляция";

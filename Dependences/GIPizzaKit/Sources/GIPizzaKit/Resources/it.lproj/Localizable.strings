@@ -123,7 +123,10 @@
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
 "$asset.character:Chiori" = "Chiori";
+"$asset.character:Sigewinne" = "Sigewinne";
 "$asset.character:Arlecchino" = "Arlecchino";
+"$asset.character:Sethos" = "Sethos";
+"$asset.character:Clorinde" = "Clorinde";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:LightOfFoliarIncision" = "Lume del Taglio frondoso";
 "$asset.weapon:SplendorOfStillWaters" = "Fulgore delle placide acque";
 "$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
+"$asset.weapon:Absolution" = "Assoluzione";
 "$asset.weapon:WasterGreatsword" = "Spadone dell'incapace";
 "$asset.weapon:OldMercsPal" = "Lama del mercenario";
 "$asset.weapon:FerrousShadow" = "Ombra di ferro";
@@ -195,6 +199,7 @@
 "$asset.weapon:MailedFlower" = "Fiore corazzato";
 "$asset.weapon:TalkingStick" = "Bastone parlante";
 "$asset.weapon:TidalShadow" = "Mareombra";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Spada magica del Super Signore Supremo";
 "$asset.weapon:PortablePowerSaw" = "Sega elettrica portatile";
 "$asset.weapon:SkywardPride" = "Orgoglio celeste";
 "$asset.weapon:WolfsGravestone" = "Trapasso ululante";
@@ -202,6 +207,7 @@
 "$asset.weapon:TheUnforged" = "Spadone grezzo";
 "$asset.weapon:RedhornStonethresher" = "Spaccarocce Cornorosso";
 "$asset.weapon:BeaconOfTheReedSea" = "Faro del Mare dei Giunchi";
+"$asset.weapon:ConsideredJudgement" = "Giudizio ponderato";
 "$asset.weapon:BeginnersProtector" = "Lancia del principiante";
 "$asset.weapon:IronPoint" = "Punta di ferro";
 "$asset.weapon:WhiteTassel" = "Pennacchio bianco";
@@ -298,6 +304,7 @@
 "$asset.weapon:IbisPiercer" = "Becco d'ibis";
 "$asset.weapon:ScionOfTheBlazingSun" = "Erede del sole ardente";
 "$asset.weapon:SongOfStillness" = "Canto del silenzio";
+"$asset.weapon:Cloudforged" = "Forgianuvole";
 "$asset.weapon:RangeGauge" = "Indicatore distanziometrico";
 "$asset.weapon:SkywardHarp" = "Arpa celeste";
 "$asset.weapon:AmosBow" = "Arco di Amos";
@@ -307,8 +314,7 @@
 "$asset.weapon:ThunderingPulse" = "Battito tonante";
 "$asset.weapon:HuntersPath" = "Sentiero del cacciatore";
 "$asset.weapon:TheFirstGreatMagic" = "Prima grande magia";
-"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Spada magica del Super Signore Supremo";
-"$asset.weapon:ConsideredJudgement" = "Giudizio ponderato";
+"$asset.weapon:SilverShowerHeartStrings" = "Candido cuore della pioggia";
 
 // MARK: - Namecard Icons
 
@@ -510,3 +516,8 @@
 "$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Obiettivo: Cacciabalene";
 "$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Fontaine: Lucine";
 "$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "Appunti di viaggio: Regni del rock";
+"$asset.nameCard:UI_NameCardPic_Clorinde_P" = "Clorinde: Gioco di ruolo";
+"$asset.nameCard:UI_NameCardPic_Sigewinne_P" = "Sigewinne: Terapia";
+"$asset.nameCard:UI_NameCardPic_Sethos_P" = "Sethos: Frammento di Ba";
+"$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "Obiettivo: Pagine poetiche";
+"$asset.nameCard:UI_NameCardPic_Bp33_P" = "Appunti di viaggio: Politeama";

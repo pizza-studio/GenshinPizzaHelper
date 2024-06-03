@@ -123,7 +123,10 @@
 "$asset.character:Gaming" = "嘉明";
 "$asset.character:Xianyun" = "閑雲";
 "$asset.character:Chiori" = "千織";
+"$asset.character:Sigewinne" = "シグウィン";
 "$asset.character:Arlecchino" = "アルレッキーノ";
+"$asset.character:Sethos" = "セトス";
+"$asset.character:Clorinde" = "クロリンデ";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:LightOfFoliarIncision" = "萃光の裁葉";
 "$asset.weapon:SplendorOfStillWaters" = "静水流転の輝き";
 "$asset.weapon:UrakuMisugiri" = "有楽御簾切";
+"$asset.weapon:Absolution" = "赦罪";
 "$asset.weapon:WasterGreatsword" = "訓練用大剣";
 "$asset.weapon:OldMercsPal" = "傭兵の重剣";
 "$asset.weapon:FerrousShadow" = "鉄影段平";
@@ -195,6 +199,7 @@
 "$asset.weapon:MailedFlower" = "鉄彩の花";
 "$asset.weapon:TalkingStick" = "話死合い棒";
 "$asset.weapon:TidalShadow" = "タイダル·シャドー";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "究極覇王スーパー魔剣";
 "$asset.weapon:PortablePowerSaw" = "携帯型チェーンソー";
 "$asset.weapon:SkywardPride" = "天空の傲";
 "$asset.weapon:WolfsGravestone" = "狼の末路";
@@ -202,6 +207,7 @@
 "$asset.weapon:TheUnforged" = "無工の剣";
 "$asset.weapon:RedhornStonethresher" = "赤角石塵滅砕";
 "$asset.weapon:BeaconOfTheReedSea" = "葦海の標";
+"$asset.weapon:ConsideredJudgement" = "裁断";
 "$asset.weapon:BeginnersProtector" = "新米の長槍";
 "$asset.weapon:IronPoint" = "鉄尖槍";
 "$asset.weapon:WhiteTassel" = "白纓槍";
@@ -298,6 +304,7 @@
 "$asset.weapon:IbisPiercer" = "トキの嘴";
 "$asset.weapon:ScionOfTheBlazingSun" = "烈日の後嗣";
 "$asset.weapon:SongOfStillness" = "静寂の唄";
+"$asset.weapon:Cloudforged" = "築雲";
 "$asset.weapon:RangeGauge" = "レンジゲージ";
 "$asset.weapon:SkywardHarp" = "天空の翼";
 "$asset.weapon:AmosBow" = "アモスの弓";
@@ -307,8 +314,7 @@
 "$asset.weapon:ThunderingPulse" = "飛雷の鳴弦";
 "$asset.weapon:HuntersPath" = "狩人の道";
 "$asset.weapon:TheFirstGreatMagic" = "始まりの大魔術";
-"$asset.weapon:UltimateOverloardsMegaMagicSword" = "究極覇王スーパー魔剣";
-"$asset.weapon:ConsideredJudgement" = "裁断";
+"$asset.weapon:SilverShowerHeartStrings" = "白雨心弦";
 
 // MARK: - Namecard Icons
 
@@ -508,3 +514,8 @@
 "$asset.nameCard:UI_NameCardPic_Tzz9_P" = "アチーブメント·掣鯨";
 "$asset.nameCard:UI_NameCardPic_WishingPond_P" = "フォンテーヌ·ルキナ";
 "$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "紀行·邦魂";
+"$asset.nameCard:UI_NameCardPic_Clorinde_P" = "クロリンデ·ロールプレイ";
+"$asset.nameCard:UI_NameCardPic_Sigewinne_P" = "シグウィン·治療法";
+"$asset.nameCard:UI_NameCardPic_Sethos_P" = "セトス·跋霊";
+"$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "アチーブメント·詩のページ";
+"$asset.nameCard:UI_NameCardPic_Bp33_P" = "紀行·演習";

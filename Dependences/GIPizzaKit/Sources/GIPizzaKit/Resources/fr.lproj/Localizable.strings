@@ -123,7 +123,10 @@
 "$asset.character:Gaming" = "Gaming";
 "$asset.character:Xianyun" = "Xianyun";
 "$asset.character:Chiori" = "Chiori";
+"$asset.character:Sigewinne" = "Sigewinne";
 "$asset.character:Arlecchino" = "Arlecchino";
+"$asset.character:Sethos" = "Sethos";
+"$asset.character:Clorinde" = "Clorinde";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:LightOfFoliarIncision" = "Lumière d'incision foliaire";
 "$asset.weapon:SplendorOfStillWaters" = "Splendeur des eaux calmes";
 "$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
+"$asset.weapon:Absolution" = "Absolution";
 "$asset.weapon:WasterGreatsword" = "Épée d'entraînement";
 "$asset.weapon:OldMercsPal" = "Lame du mercenaire";
 "$asset.weapon:FerrousShadow" = "Ombre ferreuse";
@@ -195,6 +199,7 @@
 "$asset.weapon:MailedFlower" = "Fleur de mailles";
 "$asset.weapon:TalkingStick" = "Bâton bavard";
 "$asset.weapon:TidalShadow" = "Ombre tidale";
+"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Méga épée magique du suzerain ultime";
 "$asset.weapon:PortablePowerSaw" = "Scie électrique portative";
 "$asset.weapon:SkywardPride" = "Fierté de la Voûte d'Azur";
 "$asset.weapon:WolfsGravestone" = "Mort-du-loup";
@@ -202,6 +207,7 @@
 "$asset.weapon:TheUnforged" = "Lame brute";
 "$asset.weapon:RedhornStonethresher" = "Brise-pierre de corne rouge";
 "$asset.weapon:BeaconOfTheReedSea" = "Balise de la mer de roseaux";
+"$asset.weapon:ConsideredJudgement" = "Condamneur";
 "$asset.weapon:BeginnersProtector" = "Lance du débutant";
 "$asset.weapon:IronPoint" = "Pointe de fer";
 "$asset.weapon:WhiteTassel" = "Pampille blanche";
@@ -298,6 +304,7 @@
 "$asset.weapon:IbisPiercer" = "Perceur d'ibis";
 "$asset.weapon:ScionOfTheBlazingSun" = "Descendant du soleil flamboyant";
 "$asset.weapon:SongOfStillness" = "Chant de quiétude";
+"$asset.weapon:Cloudforged" = "Nimbus-forgé";
 "$asset.weapon:RangeGauge" = "Jauge de portée";
 "$asset.weapon:SkywardHarp" = "Ailes de la Voûte d'Azur";
 "$asset.weapon:AmosBow" = "Arc d'Amos";
@@ -307,8 +314,7 @@
 "$asset.weapon:ThunderingPulse" = "Pulsation du tonnerre";
 "$asset.weapon:HuntersPath" = "La voie du chasseur";
 "$asset.weapon:TheFirstGreatMagic" = "La première grande magie";
-"$asset.weapon:UltimateOverloardsMegaMagicSword" = "Méga épée magique du suzerain ultime";
-"$asset.weapon:ConsideredJudgement" = "Condamneur";
+"$asset.weapon:SilverShowerHeartStrings" = "Corde de pluie blanche";
 
 // MARK: - Namecard Icons
 
@@ -508,3 +514,8 @@
 "$asset.nameCard:UI_NameCardPic_Tzz9_P" = "Succès - Baleinier";
 "$asset.nameCard:UI_NameCardPic_WishingPond_P" = "Fontaine - Lucine";
 "$asset.nameCard:UI_NameCardPic_GreatFestivalV2_P" = "PB - Rock-athon";
+"$asset.nameCard:UI_NameCardPic_Clorinde_P" = "Clorinde - Jeu de rôle";
+"$asset.nameCard:UI_NameCardPic_Sigewinne_P" = "Sigewinne - Traitement";
+"$asset.nameCard:UI_NameCardPic_Sethos_P" = "Sethos - Fragment de Ba";
+"$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "Succès - Poésie";
+"$asset.nameCard:UI_NameCardPic_Bp33_P" = "PB - Simulnation";
