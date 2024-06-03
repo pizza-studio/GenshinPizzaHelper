@@ -141,6 +141,16 @@ struct CharacterDetailView: View {
                                 UIPasteboard.general.string = mdSummary
                             }
                         }
+                        #if os(OSX) || targetEnvironment(macCatalyst)
+                        Divider()
+                        ForEach(playerDetail.avatars) { theAvatar in
+                            Button(theAvatar.nameCorrected) {
+                                withAnimation {
+                                    showingCharacterIdentifier = theAvatar.enkaID
+                                }
+                            }
+                        }
+                        #endif
                     }
                 }
             Spacer().frame(width: 25, height: bottomSpacerHeight)
