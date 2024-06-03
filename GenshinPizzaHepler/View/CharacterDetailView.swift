@@ -16,7 +16,7 @@ struct CharacterDetailView: View {
     var account: AccountConfiguration
 
     @State
-    var showingCharacterName: String
+    var showingCharacterIdentifier: Int
 
     @State
     var showTabViewIndex: Bool = false
@@ -29,7 +29,7 @@ struct CharacterDetailView: View {
 
     var avatar: PlayerDetail.Avatar? {
         playerDetail.avatars.first(where: { avatar in
-            avatar.name == showingCharacterName
+            avatar.enkaID == showingCharacterIdentifier
         })
     }
 
@@ -51,9 +51,9 @@ struct CharacterDetailView: View {
 
     @ViewBuilder
     func coreBody(detail playerDetail: PlayerDetail) -> some View {
-        TabView(selection: $showingCharacterName.animation()) {
-            // TabView 以 Name 为依据，不能仅依赖资料本身的 Identifiable 特性。
-            ForEach(playerDetail.avatars, id: \.name) { avatar in
+        TabView(selection: $showingCharacterIdentifier.animation()) {
+            // TabView 以 EnkaID 为依据。
+            ForEach(playerDetail.avatars, id: \.enkaID) { avatar in
                 framedCoreView(avatar)
             }
         }
@@ -79,7 +79,7 @@ struct CharacterDetailView: View {
         .clipped()
         .compositingGroup()
         .addWaterMark(showWaterMark)
-        .onChange(of: showingCharacterName) { _ in
+        .onChange(of: showingCharacterIdentifier) { _ in
             simpleTaptic(type: .selection)
             withAnimation(.easeIn(duration: 0.1)) {
                 showTabViewIndex = true

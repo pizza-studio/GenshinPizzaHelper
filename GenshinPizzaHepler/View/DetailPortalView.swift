@@ -741,7 +741,7 @@ private struct SelectAccountSection: View {
 // MARK: - PlayerDetailSection.DataFetchedView.ID + Identifiable
 
 extension PlayerDetailSection.DataFetchedView.ID: Identifiable {
-    public var id: String { self }
+    public var id: Int { self }
 }
 
 // MARK: - PlayerDetailSection
@@ -753,13 +753,13 @@ private struct PlayerDetailSection: View {
     struct DataFetchedView: View {
         // MARK: Internal
 
-        typealias ID = String
+        typealias ID = Int
 
         let playerDetail: PlayerDetail
         let account: AccountConfiguration
 
         @State
-        var showingCharacterName: ID?
+        var showingCharacterIdentifier: ID?
 
         var body: some View {
             VStack(alignment: .leading) {
@@ -768,7 +768,7 @@ private struct PlayerDetailSection: View {
                 ScrollView(.horizontal) {
                     HStack {
                         // TabView 以 Name 为依据，不能仅依赖资料本身的 Identifiable 特性。
-                        ForEach(playerDetail.avatars, id: \.name) { avatar in
+                        ForEach(playerDetail.avatars, id: \.enkaID) { avatar in
                             Button {
                                 simpleTaptic(type: .medium)
                                 var transaction = Transaction()
@@ -776,7 +776,7 @@ private struct PlayerDetailSection: View {
                                 transaction.disablesAnimations = !animateOnCallingCharacterShowcase
                                 withTransaction(transaction) {
                                     // TabView 以 Name 为依据。
-                                    showingCharacterName = avatar.name
+                                    showingCharacterIdentifier = avatar.enkaID
                                 }
                             } label: {
                                 avatar.characterAsset.cardIcon(75)
@@ -794,17 +794,17 @@ private struct PlayerDetailSection: View {
                 .padding(.vertical, 4)
                 HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
-            .fullScreenCover(item: $showingCharacterName) { characterName in
+            .fullScreenCover(item: $showingCharacterIdentifier) { characterName in
                 CharacterDetailView(
                     account: account,
-                    showingCharacterName: characterName,
+                    showingCharacterIdentifier: characterName,
                     playerDetail: playerDetail
                 ) {
                     var transaction = Transaction()
                     transaction.animation = .easeInOut
                     transaction.disablesAnimations = !animateOnCallingCharacterShowcase
                     withTransaction(transaction) {
-                        showingCharacterName = nil
+                        showingCharacterIdentifier = nil
                     }
                 }
                 .environment(\.colorScheme, .dark)
