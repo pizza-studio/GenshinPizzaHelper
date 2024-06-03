@@ -831,7 +831,7 @@ private struct PlayerDetailSection: View {
             case .progress:
                 InfiniteProgressBar().id(UUID())
             case let .fail(error):
-                ErrorView(account: account, apiPath: "", error: error) {
+                DPVErrorView(account: account, apiPath: "", error: error) {
                     Task {
                         await vmDPV.fetchPlayerDetail()
                     }
@@ -888,7 +888,7 @@ private struct CharInventoryNavigator: View {
             }
         case let .fail(error):
             InformationRowView("app.detailPortal.allAvatar.title") {
-                ErrorView(
+                DPVErrorView(
                     account: account,
                     apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/character",
                     error: error
@@ -948,7 +948,7 @@ private struct LedgerDataNavigator: View {
                 }
             case let .fail(error):
                 InformationRowView("app.detailPortal.ledger.title") {
-                    ErrorView(
+                    DPVErrorView(
                         account: account,
                         apiPath: "https://hk4e-api.mihoyo.com/event/ys_ledger/monthInfo",
                         error: error
@@ -1026,7 +1026,7 @@ private struct AbyssInfoNavigator: View {
                 }
             case let .fail(error):
                 InformationRowView("app.detailPortal.abyss.title") {
-                    ErrorView(
+                    DPVErrorView(
                         account: account,
                         apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/spiralAbyss",
                         error: error
@@ -1275,7 +1275,7 @@ private struct BasicInfoNavigator: View {
             }
         case let .fail(error):
             InformationRowView("app.detailPortal.basicInfo.title") {
-                ErrorView(
+                DPVErrorView(
                     account: account,
                     apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index",
                     error: error
@@ -1519,9 +1519,9 @@ private struct BasicInfoView: View {
     }
 }
 
-// MARK: - ErrorView
+// MARK: - DPVErrorView
 
-private struct ErrorView: View {
+private struct DPVErrorView: View {
     @EnvironmentObject
     private var vmDPV: DetailPortalViewModel
 
@@ -1622,6 +1622,8 @@ private struct VerificationNeededView: View {
                 Text("Error: \(error.localizedDescription)")
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .clipShape(Rectangle())
     }
 
     func popVerificationWebSheet() {
@@ -1727,6 +1729,8 @@ private struct InformationRowView<L: View>: View {
         VStack(alignment: .leading) {
             Text(title).bold()
             labelContent()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .clipShape(Rectangle())
         }
     }
 }
