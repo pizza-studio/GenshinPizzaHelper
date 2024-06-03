@@ -50,6 +50,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case LightOfFoliarIncision = 11512
     case SplendorOfStillWaters = 11513
     case UrakuMisugiri = 11514
+    case Absolution = 11515
     case WasterGreatsword = 12101
     case OldMercsPal = 12201
     case FerrousShadow = 12301
@@ -181,6 +182,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case IbisPiercer = 15419
     case ScionOfTheBlazingSun = 15424
     case SongOfStillness = 15425
+    case Cloudforged = 15426
     case RangeGauge = 15427
     case SkywardHarp = 15501
     case AmosBow = 15502
@@ -190,6 +192,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case ThunderingPulse = 15509
     case HuntersPath = 15511
     case TheFirstGreatMagic = 15512
+    case SilverShowerHeartStrings = 15513
 }
 
 extension WeaponAsset {
@@ -257,6 +260,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .LightOfFoliarIncision: return .weaponTalisman
         case .SplendorOfStillWaters: return .weaponDewdrop
         case .UrakuMisugiri: return .talentLight
+        case .Absolution: return .weaponAncientChord
         case .WasterGreatsword: return .weaponBorealWolf
         case .OldMercsPal: return .weaponBorealWolf
         case .FerrousShadow: return .weaponDecarabian
@@ -388,6 +392,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .IbisPiercer: return .weaponTalisman
         case .ScionOfTheBlazingSun: return .weaponScorchingMight
         case .SongOfStillness: return .weaponAncientChord
+        case .Cloudforged: return .weaponAerosiderite
         case .RangeGauge: return .weaponAncientChord
         case .SkywardHarp: return .weaponBorealWolf
         case .AmosBow: return .weaponGladiator
@@ -397,6 +402,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .ThunderingPulse: return .weaponNarukami
         case .HuntersPath: return .weaponScorchingMight
         case .TheFirstGreatMagic: return .weaponAncientChord
+        case .SilverShowerHeartStrings: return .weaponDewdrop
         }
     }
 }
@@ -448,6 +454,7 @@ extension WeaponAsset {
         case .LightOfFoliarIncision: return "UI_EquipIcon_Sword_Ayus"
         case .SplendorOfStillWaters: return "UI_EquipIcon_Sword_Regalis"
         case .UrakuMisugiri: return "UI_EquipIcon_Sword_Needle"
+        case .Absolution: return "UI_EquipIcon_Sword_Estoc"
         case .WasterGreatsword: return "UI_EquipIcon_Claymore_Aniki"
         case .OldMercsPal: return "UI_EquipIcon_Claymore_Oyaji"
         case .FerrousShadow: return "UI_EquipIcon_Claymore_Glaive"
@@ -579,6 +586,7 @@ extension WeaponAsset {
         case .IbisPiercer: return "UI_EquipIcon_Bow_Ibis"
         case .ScionOfTheBlazingSun: return "UI_EquipIcon_Bow_Gurabad"
         case .SongOfStillness: return "UI_EquipIcon_Bow_Vorpal"
+        case .Cloudforged: return "UI_EquipIcon_Bow_Ultimatum"
         case .RangeGauge: return "UI_EquipIcon_Bow_Mechanic"
         case .SkywardHarp: return "UI_EquipIcon_Bow_Dvalin"
         case .AmosBow: return "UI_EquipIcon_Bow_Amos"
@@ -588,6 +596,7 @@ extension WeaponAsset {
         case .ThunderingPulse: return "UI_EquipIcon_Bow_Narukami"
         case .HuntersPath: return "UI_EquipIcon_Bow_Ayus"
         case .TheFirstGreatMagic: return "UI_EquipIcon_Bow_Pledge"
+        case .SilverShowerHeartStrings: return "UI_EquipIcon_Bow_Arcdange"
         }
     }
 }

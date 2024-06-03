@@ -92,7 +92,10 @@ public enum CharacterAsset: Int, CaseIterable, Hashable {
     case Gaming = 10000092
     case Xianyun = 10000093
     case Chiori = 10000094
+    case Sigewinne = 10000095
     case Arlecchino = 10000096
+    case Sethos = 10000097
+    case Clorinde = 10000098
 }
 
 extension CharacterAsset {
@@ -220,7 +223,10 @@ extension CharacterAsset {
         case .Gaming: return "UI_AvatarIcon_Gaming"
         case .Xianyun: return "UI_AvatarIcon_Liuyun"
         case .Chiori: return "UI_AvatarIcon_Chiori"
+        case .Sigewinne: return "UI_AvatarIcon_Sigewinne"
         case .Arlecchino: return "UI_AvatarIcon_Arlecchino"
+        case .Sethos: return "UI_AvatarIcon_Clorinde"
+        case .Clorinde: return "UI_AvatarIcon_Sethos"
         }
     }
 
@@ -311,7 +317,10 @@ extension CharacterAsset {
         case .Gaming: return .UI_NameCardPic_Gaming_P
         case .Xianyun: return .UI_NameCardPic_Liuyun_P
         case .Chiori: return .UI_NameCardPic_Chiori_P
+        case .Sigewinne: return .UI_NameCardPic_Sigewinne_P
         case .Arlecchino: return .UI_NameCardPic_Arlecchino_P
+        case .Sethos: return .UI_NameCardPic_Sethos_P
+        case .Clorinde: return .UI_NameCardPic_Clorinde_P
         }
     }
 }
@@ -403,7 +412,10 @@ extension CharacterAsset {
         case .Gaming: return [7700]
         case .Xianyun: return [7800]
         case .Chiori: return [7900]
+        case .Sigewinne: return [8300]
         case .Arlecchino: return [8000]
+        case .Sethos: return [8200]
+        case .Clorinde: return [8100]
         }
     }
 }
@@ -495,7 +507,10 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Gaming: return .talentProsperity
         case .Xianyun: return .talentGold
         case .Chiori: return .talentLight
+        case .Sigewinne: return .talentEquity
         case .Arlecchino: return .talentOrder
+        case .Sethos: return .talentPraxis
+        case .Clorinde: return .talentJustice
         }
     }
 }
@@ -587,7 +602,10 @@ extension CharacterAsset {
         case .Gaming: return .pyro
         case .Xianyun: return .anemo
         case .Chiori: return .geo
+        case .Sigewinne: return .hydro
         case .Arlecchino: return .pyro
+        case .Sethos: return .electro
+        case .Clorinde: return .electro
         }
     }
 }
