@@ -69,19 +69,22 @@ struct MoreView: View {
                 }
             }
 
-            Section {
-                Button("sys.account.force_push") {
-                    var accountInfo = String(localized: "sys.account.force_push.received")
-                    for account in accounts {
-                        accountInfo += "\(String(describing: account.name!)) (\(String(describing: account.uid!)))\n"
+            if WatchConnectivityManager.isSupported {
+                Section {
+                    Button("sys.account.force_push") {
+                        var accountInfo = String(localized: "sys.account.force_push.received")
+                        for account in accounts {
+                            accountInfo +=
+                                "\(String(describing: account.name!)) (\(String(describing: account.uid!)))\n"
+                        }
+                        for account in accounts {
+                            WatchConnectivityManager.shared.sendAccounts(account, accountInfo)
+                        }
                     }
-                    for account in accounts {
-                        WatchConnectivityManager.shared.sendAccounts(account, accountInfo)
-                    }
+                } footer: {
+                    Text("sys.account.force_push.footer")
+                        .textCase(.none)
                 }
-            } footer: {
-                Text("sys.account.force_push.footer")
-                    .textCase(.none)
             }
 
             Section {
