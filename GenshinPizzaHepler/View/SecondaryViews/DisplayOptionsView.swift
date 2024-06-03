@@ -62,6 +62,9 @@ struct DisplayOptionsView: View {
                     }
                 }
                 .pickerStyle(.navigationLink)
+                Toggle(isOn: $restoreTabOnLaunching) {
+                    Text("setting.uirelated.restoreTabOnLaunching")
+                }
             }
 
             Section {
@@ -161,6 +164,8 @@ struct DisplayOptionsView: View {
     @State
     private var isCustomizedNameForWandererAlertShow: Bool = false
 
+    @Default(.restoreTabOnLaunching)
+    private var restoreTabOnLaunching: Bool
     @Default(.adaptiveSpacingInCharacterView)
     private var adaptiveSpacingInCharacterView: Bool
     @Default(.showRarityAndLevelForArtifacts)

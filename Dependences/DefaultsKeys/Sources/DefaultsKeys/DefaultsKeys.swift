@@ -16,6 +16,7 @@ extension Defaults.Keys {
     // MARK: - Shared
 
     public static let appTabIndex = Key<Int>("appTabIndex", default: 0, suite: .opSuite)
+    public static let restoreTabOnLaunching = Key<Bool>("restoreTabOnLaunching", default: true, suite: .opSuite)
     public static let checkedNewestVersion = Key<Int>("checkedNewestVersion", default: 0, suite: .opSuite)
     public static let checkedUpdateVersions = Key<[Int]>("checkedUpdateVersions", default: .init(), suite: .opSuite)
     public static let defaultServer = Key<String>("defaultServer", default: "Asia", suite: .opSuite)

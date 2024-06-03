@@ -26,7 +26,11 @@ struct ContentView: View {
     var colorScheme
 
     @State
-    var selection: Int = !(0 ..< 3).contains(Defaults[.appTabIndex]) ? 0 : Defaults[.appTabIndex]
+    var selection: Int = {
+        guard Defaults[.restoreTabOnLaunching] else { return 0 }
+        guard (0 ..< 3).contains(Defaults[.appTabIndex]) else { return 0 }
+        return Defaults[.appTabIndex]
+    }()
 
     @State
     var sheetType: ContentViewSheetType?
