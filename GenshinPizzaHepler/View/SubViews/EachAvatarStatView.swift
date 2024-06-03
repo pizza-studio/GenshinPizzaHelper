@@ -27,25 +27,24 @@ struct EachAvatarStatView: View {
     var avatar: PlayerDetail.Avatar
 
     var body: some View {
-        HStack(alignment: .top, spacing: 0) {
-            VStack(spacing: 6.5 + Self.spacingDelta) {
-                AvatarAndSkillView(avatar: avatar, fontSize: 25)
-                    .padding(.bottom, 2)
-                ZStack {
-                    Color.black.opacity(0.1).cornerRadius(14)
-                    VStack(spacing: 6.5 + Self.spacingDelta) {
-                        weapon(fontSize: 25)
-                        probView(fontSize: 25)
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 10)
-                }.fixedSize(horizontal: false, vertical: true)
-                HStack(alignment: .top, spacing: Self.spacingDelta) {
-                    artifactsDetailsView()
-                }
+        LazyVStack(spacing: 6.5 + Self.spacingDelta) {
+            AvatarAndSkillView(avatar: avatar, fontSize: 25)
+                .padding(.bottom, 2)
+            LazyVStack(spacing: 6.5 + Self.spacingDelta) {
+                weapon(fontSize: 25)
+                probView(fontSize: 25)
             }
-        }.padding(Self.spacingDeltaAmount * 7)
-            .padding(.vertical, Self.spacingDeltaAmount * 5)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .background {
+                Color.black.opacity(0.1).cornerRadius(14)
+            }
+            HStack(alignment: .top, spacing: Self.spacingDelta) {
+                artifactsDetailsView()
+            }
+        }
+        .padding(Self.spacingDeltaAmount * 7)
+        .padding(.vertical, Self.spacingDeltaAmount * 5)
     }
 
     @ViewBuilder
