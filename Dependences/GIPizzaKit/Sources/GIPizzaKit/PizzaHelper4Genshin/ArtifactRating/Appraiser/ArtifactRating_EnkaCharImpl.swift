@@ -728,22 +728,26 @@ extension CharacterAsset {
                 .defAmp: .none,
                 .def: .none,
             ]
-        case .Barbara: return [
+        case .Barbara:
+            // By ShikiSuen.
+            return [
                 .cr: .highest,
                 .cd: .highest,
-                .er: .medium,
-                .em: .medium,
+                .er: .higher,
+                .em: .high,
                 .atkAmp: .high,
                 .atk: .low,
-                .hpAmp: .high,
-                .hp: .low,
+                .hpAmp: .highest,
+                .hp: .higher,
                 .defAmp: .none,
                 .def: .none,
             ]
-        case .Baizhu: return [
+        case .Baizhu:
+            // By ShikiSuen.
+            return [
                 .cr: .highest,
                 .cd: .highest,
-                .er: .high,
+                .er: .higher,
                 .em: .high,
                 .atkAmp: .high,
                 .atk: .low,
@@ -1038,6 +1042,20 @@ extension CharacterAsset {
                 .defAmp: .highest,
                 .def: .medium,
             ]
+        case .Sigewinne:
+            // By ShikiSuen.
+            return [
+                .cr: .medium,
+                .cr: .medium,
+                .er: .medium,
+                .em: .medium,
+                .atkAmp: .high,
+                .atk: .low,
+                .hpAmp: .highest,
+                .hp: .higher,
+                .defAmp: .none,
+                .def: .none,
+            ]
         case .Arlecchino:
             // By Kamihimmel:
             return [
@@ -1049,6 +1067,34 @@ extension CharacterAsset {
                 .atk: .low,
                 .hpAmp: .none,
                 .hp: .none,
+                .defAmp: .none,
+                .def: .none,
+            ]
+        case .Sethos:
+            // By ShikiSuen.
+            return [
+                .cr: .highest,
+                .cd: .highest,
+                .er: .none,
+                .em: .highest,
+                .atkAmp: .high,
+                .atk: .low,
+                .hpAmp: .none,
+                .hp: .none,
+                .defAmp: .none,
+                .def: .none,
+            ]
+        case .Clorinde:
+            // By ShikiSuen.
+            return [
+                .cr: .highest,
+                .cd: .highest,
+                .er: .higher,
+                .em: .high,
+                .atkAmp: .none,
+                .atk: .none,
+                .hpAmp: .highest,
+                .hp: .higher,
                 .defAmp: .none,
                 .def: .none,
             ]
