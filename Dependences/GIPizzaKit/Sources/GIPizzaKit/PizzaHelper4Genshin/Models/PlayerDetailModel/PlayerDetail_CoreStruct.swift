@@ -13,25 +13,26 @@ public struct PlayerDetail {
     // MARK: - 初始化
 
     public init(
-        PlayerDetailFetchModel: Enka.PlayerDetailFetchModel,
+        fetchedModel: Enka.PlayerDetailFetchModel,
         localizedDictionary: [String: String],
         characterMap: Enka.CharacterMap
     ) {
+        self.rawFetchedData = fetchedModel
         var rawResultTXT = [Int: String]()
         var rawResultMD = [Int: String]()
 
         self.basicInfo = .init(
-            playerInfo: PlayerDetailFetchModel.playerInfo,
+            playerInfo: fetchedModel.playerInfo,
             characterMap: characterMap
         )
-        self.enkaMessage = PlayerDetailFetchModel.message
-        if let avatarInfoList = PlayerDetailFetchModel.avatarInfoList {
+        self.enkaMessage = fetchedModel.message
+        if let avatarInfoList = fetchedModel.avatarInfoList {
             self.avatars = avatarInfoList.compactMap { avatarInfo in
                 let newAvatar = Avatar(
                     avatarInfo: avatarInfo,
                     localizedDictionary: localizedDictionary,
                     characterDictionary: characterMap,
-                    uid: PlayerDetailFetchModel.uid
+                    uid: fetchedModel.uid
                 )
                 #if !os(watchOS)
                 if let newAvatar = newAvatar {
@@ -45,7 +46,7 @@ public struct PlayerDetail {
         } else { self.avatars = .init() }
         self.nextRefreshableDate = Calendar.current.date(
             byAdding: .second,
-            value: PlayerDetailFetchModel.ttl ?? 30,
+            value: fetchedModel.ttl ?? 30,
             to: Date()
         )!
         self.summariesText = rawResultTXT
@@ -53,6 +54,8 @@ public struct PlayerDetail {
     }
 
     // MARK: Public
+
+    public let rawFetchedData: Enka.PlayerDetailFetchModel
 
     public let nextRefreshableDate: Date
 
@@ -65,4 +68,12 @@ public struct PlayerDetail {
     public let summariesMarkDown: [Int: String]
 
     public let enkaMessage: String?
+}
+
+extension Enka.CharacterMap {
+    public func checkValidity(against fetchedProfile: Enka.PlayerDetailFetchModel) -> Bool {
+        let fetchedIDs = Set<String>(fetchedProfile.avatarInfoList?.map(\.avatarId.description) ?? [])
+        let allSelfIDs = Set<String>(keys)
+        return fetchedIDs.isSubset(of: allSelfIDs)
+    }
 }

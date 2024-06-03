@@ -31,7 +31,8 @@ extension Enka {
             Defaults.reset(.enkaMapCharacters)
         }
 
-        public func getEnkaDataSet() async throws -> (charLoc: CharLoc, charMap: CharMap) {
+        public func getEnkaDataSet(updateCheck: ((CharMap) -> Bool)? = nil) async throws
+            -> (charLoc: CharLoc, charMap: CharMap) {
             // Read charloc and charmap from UserDefault
             let storedCharLoc = try? JSONDecoder().decode(Enka.CharacterLoc.self, from: Defaults[.enkaMapLoc])
                 .getLocalizedDictionary()
@@ -42,11 +43,17 @@ extension Enka {
                 (storedCharMap?.count ?? 0) == 0
             if enkaDataWrecked { resetLocalEnkaStorage() }
 
-            let enkaDataExpired = Calendar.current.date(
+            var enkaDataExpired = Calendar.current.date(
                 byAdding: .hour,
                 value: 2,
                 to: Defaults[.lastEnkaDataCheckDate]
             )! < Date()
+
+            if let updateCheck = updateCheck,
+               let storedCharMap = storedCharMap,
+               !updateCheck(storedCharMap) {
+                enkaDataExpired = true
+            }
 
             let needUpdate = enkaDataWrecked || enkaDataExpired
 
