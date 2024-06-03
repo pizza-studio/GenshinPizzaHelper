@@ -76,6 +76,32 @@ struct CharacterDetailView: View {
                     .overlay(Color(UIColor.systemGray6).opacity(0.5))
             }
         }
+        .contextMenu {
+            if let avatar = avatar {
+                Group {
+                    if let textSummary = playerDetail.summariesText[avatar.enkaID] {
+                        Button("app.detailPortal.avatar.summarzeToClipboard.asText") {
+                            UIPasteboard.general.string = textSummary
+                        }
+                    }
+                    if let mdSummary = playerDetail.summariesMarkDown[avatar.enkaID] {
+                        Button("app.detailPortal.avatar.summarzeToClipboard.asMD") {
+                            UIPasteboard.general.string = mdSummary
+                        }
+                    }
+                    #if os(OSX) || targetEnvironment(macCatalyst)
+                    Divider()
+                    ForEach(playerDetail.avatars) { theAvatar in
+                        Button(theAvatar.nameCorrected) {
+                            withAnimation {
+                                showingCharacterIdentifier = theAvatar.enkaID
+                            }
+                        }
+                    }
+                    #endif
+                }
+            }
+        }
         .clipped()
         .compositingGroup()
         .addWaterMark(showWaterMark)
@@ -129,30 +155,6 @@ struct CharacterDetailView: View {
                     vertical: true
                 )
                 .scaleEffect(scaleRatioCompatible)
-                .contextMenu {
-                    Group {
-                        if let textSummary = playerDetail.summariesText[avatar.enkaID] {
-                            Button("app.detailPortal.avatar.summarzeToClipboard.asText") {
-                                UIPasteboard.general.string = textSummary
-                            }
-                        }
-                        if let mdSummary = playerDetail.summariesMarkDown[avatar.enkaID] {
-                            Button("app.detailPortal.avatar.summarzeToClipboard.asMD") {
-                                UIPasteboard.general.string = mdSummary
-                            }
-                        }
-                        #if os(OSX) || targetEnvironment(macCatalyst)
-                        Divider()
-                        ForEach(playerDetail.avatars) { theAvatar in
-                            Button(theAvatar.nameCorrected) {
-                                withAnimation {
-                                    showingCharacterIdentifier = theAvatar.enkaID
-                                }
-                            }
-                        }
-                        #endif
-                    }
-                }
             Spacer().frame(width: 25, height: bottomSpacerHeight)
         }
     }
