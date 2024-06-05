@@ -1085,16 +1085,16 @@ extension CharacterAsset {
                 .def: .none,
             ]
         case .Clorinde:
-            // By ShikiSuen.
+            // By Kamihimmel.
             return [
                 .cr: .highest,
                 .cd: .highest,
-                .er: .higher,
-                .em: .high,
-                .atkAmp: .none,
-                .atk: .none,
-                .hpAmp: .highest,
-                .hp: .higher,
+                .er: .low,
+                .em: .medium,
+                .atkAmp: .high,
+                .atk: .low,
+                .hpAmp: .none,
+                .hp: .none,
                 .defAmp: .none,
                 .def: .none,
             ]
