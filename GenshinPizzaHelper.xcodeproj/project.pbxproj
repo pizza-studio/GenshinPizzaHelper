@@ -48,6 +48,8 @@
 		5BAFAFDD2B8287C200619092 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5BAFAFDC2B8287C200619092 /* Dynamic */; };
 		5BAFAFDF2B8288AB00619092 /* UIWindowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */; };
 		5BAFAFE02B8288AB00619092 /* UIWindowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */; };
+		5BB792AF2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */; };
+		5BB792B02C1067BC00AFCBF5 /* GetCookieQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */; };
 		5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AB29E19A8F00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
@@ -834,6 +836,7 @@
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		5BAF709129E5764E0096228B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowImpl.swift; sourceTree = "<group>"; };
+		5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieQRCodeView.swift; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
@@ -1645,6 +1648,7 @@
 				EA759D602B19989A0080C775 /* AccountDetailView.swift */,
 				EA759D612B19989A0080C775 /* TestAccountSectionView.swift */,
 				EA759D622B19989A0080C775 /* EditAccountView.swift */,
+				5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */,
 				EA759D632B19989A0080C775 /* GetCookieWebView.swift */,
 			);
 			path = SubView;
@@ -2451,6 +2455,7 @@
 				5BD1C5E52A2A1FC90043C2B1 /* APIGetGachaView.swift in Sources */,
 				5BD1C5E62A2A1FC90043C2B1 /* MaterialProviders.swift in Sources */,
 				5BD1C5E72A2A1FC90043C2B1 /* GachaItem.swift in Sources */,
+				5BB792B02C1067BC00AFCBF5 /* GetCookieQRCodeView.swift in Sources */,
 				5BD1C5E82A2A1FC90043C2B1 /* ArrayOfStringRawPresentable.swift in Sources */,
 				5BD1C5E92A2A1FC90043C2B1 /* GachaURL.swift in Sources */,
 				EA759D772B199A2C0080C775 /* Server+Descriptable.swift in Sources */,
@@ -2841,6 +2846,7 @@
 				EA5F4D1428B644BD00C95A7E /* MaterialProviders.swift in Sources */,
 				EA759D652B19989A0080C775 /* GeetestValidateView.swift in Sources */,
 				EAAD03E629D2FD88007D5C80 /* GachaItem.swift in Sources */,
+				5BB792AF2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift in Sources */,
 				EA7FDF91292CCD7000BDE83E /* ArrayOfStringRawPresentable.swift in Sources */,
 				EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */,
 				BFCC065328C732D5003E4A54 /* WidgetTipsView.swift in Sources */,

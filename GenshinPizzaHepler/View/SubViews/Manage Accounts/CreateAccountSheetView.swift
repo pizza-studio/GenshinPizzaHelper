@@ -235,7 +235,7 @@ private struct RequireLoginView: View {
         .sheet(item: $getCookieWebViewRegion, content: { region in
             switch region {
             case .mainlandChina:
-                QRCodeGetCookieView(cookie: $unsavedCookie)
+                GetCookieQRCodeView(cookie: $unsavedCookie)
             case .global:
                 GetCookieWebView(
                     isShown: .init(get: {
