@@ -225,8 +225,8 @@ extension CharacterAsset {
         case .Chiori: return "UI_AvatarIcon_Chiori"
         case .Sigewinne: return "UI_AvatarIcon_Sigewinne"
         case .Arlecchino: return "UI_AvatarIcon_Arlecchino"
-        case .Sethos: return "UI_AvatarIcon_Clorinde"
-        case .Clorinde: return "UI_AvatarIcon_Sethos"
+        case .Sethos: return "UI_AvatarIcon_Sethos"
+        case .Clorinde: return "UI_AvatarIcon_Clorinde"
         }
     }
 
