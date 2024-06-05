@@ -39028,6 +39028,7 @@
       }
     },
     "sys.retry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
