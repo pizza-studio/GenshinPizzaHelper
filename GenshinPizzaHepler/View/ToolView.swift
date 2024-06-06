@@ -71,6 +71,8 @@ struct ToolView: View {
                     GenshinDictionary()
                 case let .map(region):
                     TeyvatMapWebView(region: region)
+                        .navigationTitle("tools.teyvatInteractiveMap")
+                        .navigationBarTitleDisplayMode(.inline)
                 case .namecardsPreview:
                     BackgroundsPreviewView()
                 case .newDictionary:
