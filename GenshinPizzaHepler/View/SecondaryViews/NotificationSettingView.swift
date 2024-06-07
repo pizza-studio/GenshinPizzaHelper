@@ -6,6 +6,7 @@
 //  通知设置View
 
 import Defaults
+import HBMihoyoAPI
 import SwiftUI
 
 // MARK: - NotificationSettingView
@@ -30,8 +31,8 @@ struct NotificationSettingView: View {
     var allowDailyTaskNotification: Bool
     @Default(.allowFullResinNotification)
     var allowFullResinNotification: Bool
-    @Default(.resinNotificationNum)
-    var resinNotificationNum: Double
+    @Default(.resinNotificationThreshold)
+    var resinNotificationThreshold: Double
     @Default(.homeCoinNotificationHourBeforeFull)
     var homeCoinNotificationHourBeforeFull: Double
     @Default(.noticeExpeditionMethodRawValue)
@@ -151,16 +152,17 @@ struct NotificationSettingView: View {
                         Button(action: {
                             withAnimation { showResinSlider.toggle() }
                         }) {
-                            Text("unit.resin:\(Int(resinNotificationNum))")
+                            Text("unit.resin:\(Int(resinNotificationThreshold))")
                         }
                     }
                     if showResinSlider {
+                        let maxNotifable = Double(ResinInfo.defaultMaxResin)
                         Slider(
-                            value: $resinNotificationNum,
-                            in: 10 ... 150,
+                            value: $resinNotificationThreshold,
+                            in: 10 ... maxNotifable,
                             step: 5.0,
                             label: {
-                                Text("settings.notification.threshold".localized + ": \(resinNotificationNum)")
+                                Text("settings.notification.threshold".localized + ": \(resinNotificationThreshold)")
                             }
                         )
                     }

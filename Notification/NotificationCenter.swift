@@ -232,8 +232,8 @@ class UserNotificationCenter {
         Defaults[.allowResinNotification]
     }
 
-    private var resinNotificationNum: Double {
-        Defaults[.resinNotificationNum]
+    private var resinNotificationThreshold: Double {
+        Defaults[.resinNotificationThreshold]
     }
 
     private var allowFullResinNotification: Bool {
@@ -373,12 +373,12 @@ class UserNotificationCenter {
         uid: String
     ) {
         let resinNotificationTimeFromFull = (
-            ResinInfo.defaultMaxResin - Int(resinNotificationNum)
+            ResinInfo.defaultMaxResin - Int(resinNotificationThreshold)
         ) * 8 * 60
         var resinNotificationTimeDescription: String {
             dateFormatter.string(from: resinInfo.resinRecoveryTime)
         }
-        guard resinInfo.currentResin < Int(resinNotificationNum),
+        guard resinInfo.currentResin < Int(resinNotificationThreshold),
               allowResinNotification else {
             deleteNotification(for: uid, object: .resin); return
         }
@@ -392,7 +392,7 @@ class UserNotificationCenter {
         let body = String(
             format: NSLocalizedString(bodyCN, comment: "noti body"),
             accountName,
-            Int(resinNotificationNum),
+            Int(resinNotificationThreshold),
             resinNotificationTimeDescription
         )
         createNotification(

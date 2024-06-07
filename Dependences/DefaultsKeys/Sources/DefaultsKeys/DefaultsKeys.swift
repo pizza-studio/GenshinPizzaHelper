@@ -120,7 +120,12 @@ extension Defaults.Keys {
     // MARK: - UserNotificationCenter
 
     public static let allowResinNotification = Key<Bool>("allowResinNotification", default: true, suite: .opSuite)
-    public static let resinNotificationNum = Key<Double>("resinNotificationNum", default: 150, suite: .opSuite)
+    // 得保留「resinNotificationNum」原始 rawValue 命名，不然无法继承用户既有设定。
+    public static let resinNotificationThreshold = Key<Double>(
+        "resinNotificationNum",
+        default: 180,
+        suite: .opSuite
+    )
     public static let allowFullResinNotification = Key<Bool>(
         "allowFullResinNotification",
         default: true,
