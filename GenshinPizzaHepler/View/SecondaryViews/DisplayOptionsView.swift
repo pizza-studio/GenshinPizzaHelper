@@ -45,6 +45,9 @@ struct DisplayOptionsView: View {
     func mainView() -> some View {
         List {
             Section {
+                Toggle(isOn: $restoreTabOnLaunching) {
+                    Text("setting.uirelated.restoreTabOnLaunching")
+                }
                 Picker("settings.display.appBackgroundNameCardID", selection: $appBackgroundNameCardID) {
                     ForEach(NameCard.allLegalCases, id: \.rawValue) { card in
                         Label {
@@ -62,9 +65,6 @@ struct DisplayOptionsView: View {
                     }
                 }
                 .pickerStyle(.navigationLink)
-                Toggle(isOn: $restoreTabOnLaunching) {
-                    Text("setting.uirelated.restoreTabOnLaunching")
-                }
             }
 
             Section {
