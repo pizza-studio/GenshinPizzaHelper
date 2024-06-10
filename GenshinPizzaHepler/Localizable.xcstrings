@@ -40327,7 +40327,6 @@
     },
     "tools.teyvatInteractiveMap" : {
       "comment" : "Other tool",
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
