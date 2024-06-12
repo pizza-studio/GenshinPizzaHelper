@@ -8,7 +8,7 @@
 import Foundation
 
 public struct CharacterInventoryModel: Codable, DecodableFromMiHoYoAPIJSONResult, Hashable {
-    public struct Avatar: Codable, Equatable, Hashable {
+    public struct Avatar: Codable, Equatable, Hashable, Identifiable {
         // MARK: Public
 
         public struct Costume: Codable, Hashable {

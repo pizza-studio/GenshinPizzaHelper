@@ -14,66 +14,60 @@ import SwiftUI
 // MARK: - CharacterInventoryView
 
 struct CharacterInventoryView: View {
+    // MARK: Lifecycle
+
+    public init(data: CharacterInventoryModel) {
+        self.data = data
+    }
+
     // MARK: Internal
 
-    @EnvironmentObject
-    var vmDPV: DetailPortalViewModel
-
-    var data: CharacterInventoryModel
-
-    @State
-    var expanded: Bool = false
-
     var body: some View {
-        GeometryReader { proxy in
-            // 首次傳入的 canvasWidth 會是 0，這裡給個保底的數字。
-            let canvasWidth = Swift.max(proxy.size.width, 280)
-            List {
-                Section {
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(characterStats)
-                        if expanded {
-                            Text(goldStats)
-                        }
-                    }.font(.footnote)
-                }.listRowMaterialBackground()
-                Group {
+        List {
+            Section {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(characterStats)
                     if expanded {
-                        renderAllAvatarListFull()
-                    } else {
-                        renderAllAvatarListCondensed(canvasWidth: canvasWidth)
+                        Text(goldStats)
                     }
-                }.listRowMaterialBackground()
-            }
-            .scrollContentBackground(.hidden)
-            .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
-            .navigationTitle("app.characters.title")
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Picker("", selection: $expanded.animation()) {
-                        Text("detailPortal.inventoryView.expand.tabText").tag(true)
-                        Text("detailPortal.inventoryView.collapse.tabText").tag(false)
-                    }
-                    .pickerStyle(.menu)
-                    Menu {
-                        ForEach(
-                            AllAvatarListDisplayType.allCases,
-                            id: \.rawValue
-                        ) { choice in
-                            Button(choice.rawValue.localized) {
-                                withAnimation {
-                                    allAvatarListDisplayType = choice
-                                }
+                }.font(.footnote)
+            }.listRowMaterialBackground()
+            Group {
+                if expanded {
+                    renderAllAvatarListFull()
+                } else {
+                    renderAllAvatarListCondensed()
+                }
+            }.listRowMaterialBackground()
+        }
+        .scrollContentBackground(.hidden)
+        .listContainerBackground(fileNameOverride: vmDPV.currentAccountNamecardFileName)
+        .navigationTitle("app.characters.title")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Picker("", selection: $expanded.animation()) {
+                    Text("detailPortal.inventoryView.expand.tabText").tag(true)
+                    Text("detailPortal.inventoryView.collapse.tabText").tag(false)
+                }
+                .pickerStyle(.menu)
+                Menu {
+                    ForEach(
+                        AllAvatarListDisplayType.allCases,
+                        id: \.rawValue
+                    ) { choice in
+                        Button(choice.rawValue.localized) {
+                            withAnimation {
+                                allAvatarListDisplayType = choice
                             }
                         }
-                    } label: {
-                        Image(systemSymbol: .arrowLeftArrowRightCircle)
                     }
+                } label: {
+                    Image(systemSymbol: .arrowLeftArrowRightCircle)
                 }
             }
-            .refreshable {
-                vmDPV.refresh()
-            }
+        }
+        .refreshable {
+            vmDPV.refresh()
         }
     }
 
@@ -103,15 +97,24 @@ struct CharacterInventoryView: View {
     }
 
     @ViewBuilder
-    func renderAllAvatarListCondensed(canvasWidth: CGFloat) -> some View {
-        let lineCapacity = Int(floor((canvasWidth - 40) / 70))
-        let gridColumnsFixed = [GridItem](repeating: .init(.flexible()), count: lineCapacity)
-        LazyVGrid(columns: gridColumnsFixed, spacing: 2) {
-            ForEach(showingAvatars, id: \.id) { avatar in
-                // WIDTH: 70, HEIGHT: 63
-                AvatarListItem(avatar: avatar, condensed: true)
-                    .padding(.vertical, 4)
-                    .compositingGroup()
+    func renderAllAvatarListCondensed() -> some View {
+        StaggeredGrid(
+            columns: lineCapacity, outerPadding: false,
+            scroll: false, spacing: 2, list: showingAvatars
+        ) { avatar in
+            // WIDTH: 70, HEIGHT: 63
+            AvatarListItem(avatar: avatar, condensed: true)
+                .padding(.vertical, 4)
+                .compositingGroup()
+        }
+        .environmentObject(orientation)
+        .overlay {
+            GeometryReader { geometry in
+                Color.clear.onAppear {
+                    containerSize = geometry.size
+                }.onChange(of: geometry.size) { newSize in
+                    containerSize = newSize
+                }
             }
         }
     }
@@ -149,11 +152,20 @@ struct CharacterInventoryView: View {
         case _4star = "app.characters.filter.4star"
     }
 
-    @Environment(\.dismiss)
-    private var dismiss
+    private let data: CharacterInventoryModel
 
     @State
     private var allAvatarListDisplayType: AllAvatarListDisplayType = .all
+    @State
+    private var expanded: Bool = false
+    @State
+    private var containerSize: CGSize = .init(width: 320, height: 320)
+    @StateObject
+    private var orientation = ThisDevice.DeviceOrientation()
+    @Environment(\.dismiss)
+    private var dismiss
+    @EnvironmentObject
+    private var vmDPV: DetailPortalViewModel
 
     private var characterStats: LocalizedStringKey {
         let a = data.avatars.count
@@ -178,6 +190,10 @@ struct CharacterInventoryView: View {
         case ._5star:
             return data.avatars.filter { $0.rarity == 5 }
         }
+    }
+
+    private var lineCapacity: Int {
+        Int(floor((containerSize.width - 20) / 70))
     }
 }
 
