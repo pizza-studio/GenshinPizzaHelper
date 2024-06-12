@@ -32,7 +32,9 @@ struct CharacterInventoryView: View {
                 Section {
                     VStack(alignment: .leading, spacing: 3) {
                         Text(characterStats)
-                        Text(goldStats)
+                        if expanded {
+                            Text(goldStats)
+                        }
                     }.font(.footnote)
                 }.listRowMaterialBackground()
                 Group {
