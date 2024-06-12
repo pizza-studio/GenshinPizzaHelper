@@ -2131,7 +2131,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請點擊此處完成真人認證"
+            "value" : "請點擊此處完成人機驗證"
           }
         }
       }
@@ -2189,13 +2189,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "验证"
+            "value" : "人机验证"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "真人認證"
+            "value" : "人機驗證"
           }
         }
       }
@@ -7020,7 +7020,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "需要認證"
+            "value" : "需要人機驗證"
           }
         }
       }
@@ -22523,7 +22523,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請點此重新完成真人認證、以檢視深境螺旋戰績。"
+            "value" : "請點此重新完成人機驗證、以檢視深境螺旋戰績。"
           }
         }
       }
@@ -24030,7 +24030,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請右鍵編輯小組件選擇帳號"
+            "value" : "請右鍵編輯小工具選擇帳號"
           }
         }
       }
@@ -30153,7 +30153,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "（1034）帳號需要認證。請打開應用程式進行真人認證。建議長按小組件開啟簡潔模式。"
+            "value" : "（1034）帳號需要人機驗證。請打開應用程式進行驗證。建議長按 開啟簡潔模式。"
           }
         }
       }
@@ -30218,7 +30218,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "帳號狀態異常，需要開啟 App 進行真人認證"
+            "value" : "帳號狀態異常，需要開啟 App 進行人機驗證"
           }
         }
       }
@@ -33840,7 +33840,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "您可以從左右向中間滑動動態島，即可隱藏動態島。\n在鎖定屏幕上左滑樹脂計時器，即可關閉樹脂計時器和動態島。"
+            "value" : "您可以從左右向中間滑動動態島，即可隱藏動態島。\n在鎖定畫面上左滑樹脂計時器，即可關閉樹脂計時器和動態島。"
           }
         }
       }
@@ -39323,7 +39323,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "帳號狀態異常，需要真人認證"
+            "value" : "帳號狀態異常，需要人機驗證"
           }
         }
       }
@@ -39388,7 +39388,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "點擊此處以開始真人認證"
+            "value" : "點擊此處以開始人機驗證"
           }
         }
       }
@@ -43773,7 +43773,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "主屏幕小工具同步頻率"
+            "value" : "主畫面小工具同步頻率"
           }
         }
       }
@@ -43838,7 +43838,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "鎖定屏幕小工具同步頻率"
+            "value" : "鎖定畫面小工具同步頻率"
           }
         }
       }
@@ -44400,7 +44400,7 @@
               "mac" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "請右鍵編輯小組件選擇帳號"
+                  "value" : "請右鍵編輯小工具選擇帳號"
                 }
               },
               "other" : {
