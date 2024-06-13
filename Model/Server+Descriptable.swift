@@ -8,7 +8,13 @@
 import Foundation
 import HoYoKit
 
-extension Server: CustomStringConvertible {
+#if hasFeature(RetroactiveAttribute)
+extension Server: @retroactive CustomStringConvertible {}
+#else
+extension Server: CustomStringConvertible {}
+#endif
+
+extension Server {
     public var description: String {
         switch self {
         case .china:

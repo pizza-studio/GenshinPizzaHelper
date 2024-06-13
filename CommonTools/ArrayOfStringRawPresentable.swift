@@ -7,7 +7,13 @@
 
 import Foundation
 
-extension [String]: RawRepresentable {
+#if hasFeature(RetroactiveAttribute)
+extension [String]: @retroactive RawRepresentable {}
+#else
+extension [String]: RawRepresentable {}
+#endif
+
+extension [String] {
     public typealias RawValue = String
     public var rawValue: RawValue {
         let encoder = JSONEncoder()

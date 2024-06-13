@@ -740,7 +740,13 @@ private struct SelectAccountSection: View {
 
 // MARK: - PlayerDetailSection.DataFetchedView.ID + Identifiable
 
-extension PlayerDetailSection.DataFetchedView.ID: Identifiable {
+#if hasFeature(RetroactiveAttribute)
+extension PlayerDetailSection.DataFetchedView.ID: @retroactive Identifiable {}
+#else
+extension PlayerDetailSection.DataFetchedView.ID: Identifiable {}
+#endif
+
+extension PlayerDetailSection.DataFetchedView.ID {
     public var id: Int { self }
 }
 
