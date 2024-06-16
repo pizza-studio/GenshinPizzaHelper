@@ -48,6 +48,8 @@
 		5BAFAFDD2B8287C200619092 /* Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5BAFAFDC2B8287C200619092 /* Dynamic */; };
 		5BAFAFDF2B8288AB00619092 /* UIWindowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */; };
 		5BAFAFE02B8288AB00619092 /* UIWindowImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */; };
+		5BB58AF22C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB58AF12C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift */; };
+		5BB58AF32C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB58AF12C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift */; };
 		5BB792AF2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */; };
 		5BB792B02C1067BC00AFCBF5 /* GetCookieQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */; };
 		5BBCB6AA29E19A8E00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
@@ -836,6 +838,7 @@
 		5BAF709029E5764E0096228B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		5BAF709129E5764E0096228B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		5BAFAFDE2B8288AB00619092 /* UIWindowImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowImpl.swift; sourceTree = "<group>"; };
+		5BB58AF12C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieWebView_Genshin.swift; sourceTree = "<group>"; };
 		5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieQRCodeView.swift; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1650,6 +1653,7 @@
 				EA759D622B19989A0080C775 /* EditAccountView.swift */,
 				5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */,
 				EA759D632B19989A0080C775 /* GetCookieWebView.swift */,
+				5BB58AF12C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -2425,6 +2429,7 @@
 				5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */,
 				EA759D6E2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
 				5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */,
+				5BB58AF32C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift in Sources */,
 				5BD1C5CF2A2A1FC90043C2B1 /* md5.swift in Sources */,
 				EA02810E2B79DE6C003FE7AF /* GIDictionaryModel.swift in Sources */,
 				5BD1C5D02A2A1FC90043C2B1 /* LedgerShareView.swift in Sources */,
@@ -2816,6 +2821,7 @@
 				EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */,
 				BF6C5272289E12DA00EA224F /* md5.swift in Sources */,
 				EACCEA7728F95A75004817FB /* LedgerShareView.swift in Sources */,
+				5BB58AF22C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift in Sources */,
 				BFE42547289E987800FEFA49 /* TextPlayerView.swift in Sources */,
 				EA02810D2B79DE6C003FE7AF /* GIDictionaryModel.swift in Sources */,
 				BFE4258628A0AC1600FEFA49 /* MoreView.swift in Sources */,
