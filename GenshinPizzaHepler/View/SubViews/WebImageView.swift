@@ -60,7 +60,7 @@ class WebImageLoaderViewModel: ObservableObject {
 
     init(imgUrl: String) {
         self.imgUrl = imgUrl
-        DispatchQueue.main.async {
+        Task.detached { @MainActor in
             self.imageData = self.loadImageCache(url: imgUrl)
         }
     }
@@ -126,9 +126,10 @@ class WebImageLoaderViewModel: ObservableObject {
                 let imageFileURL = self.imageFolderURL
                     .appendingPathComponent(url!.lastPathComponent)
                 print("save: fileURL:\(imageFileURL)")
+                // swiftlint:disable:next force_try
                 try! data!.write(to: imageFileURL)
                 img = UIImage(data: data!)
-                DispatchQueue.main.async {
+                Task.detached { @MainActor [img] in
                     self.imageData = img
                 }
             }
@@ -197,7 +198,7 @@ struct HomeSourceWebIcon: View {
 
 extension View {
     fileprivate func dispatchedTask(_ task: @escaping () -> ()) -> some View {
-        DispatchQueue.main.async {
+        Task.detached { @MainActor in
             task()
         }
         return self

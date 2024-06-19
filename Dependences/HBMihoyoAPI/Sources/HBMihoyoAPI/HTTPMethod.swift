@@ -221,7 +221,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
@@ -415,7 +415,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
@@ -582,7 +582,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
@@ -807,7 +807,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
@@ -1024,7 +1024,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
@@ -1151,7 +1151,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
@@ -1250,7 +1250,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             // decoder.keyDecodingStrategy = .convertFromSnakeCase
                             #if DEBUG
@@ -1497,7 +1497,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
 
@@ -1597,7 +1597,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             if let keyDecodingStrategy = keyDecodingStrategy {
                                 decoder.keyDecodingStrategy = keyDecodingStrategy
@@ -1776,7 +1776,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             let decoder = JSONDecoder()
                             if baseHost != "http://81.70.76.222/" {
                                 decoder
@@ -1906,7 +1906,7 @@ public struct HttpMethod<T: Decodable> {
                             print("response error")
                             return
                         }
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             guard let stringData = String(
                                 data: data,
                                 encoding: .utf8

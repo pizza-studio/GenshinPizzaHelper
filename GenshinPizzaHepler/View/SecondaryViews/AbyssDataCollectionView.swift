@@ -227,6 +227,8 @@ class AbyssDataCollectionViewModel: ObservableObject {
 // MARK: - AbyssDataCollectionView
 
 struct AbyssDataCollectionView: View {
+    // MARK: Internal
+
     typealias IntervalDate = (
         month: Int?,
         day: Int?,
@@ -248,7 +250,7 @@ struct AbyssDataCollectionView: View {
             case .abyssAvatarsUtilization:
                 ShowAvatarPercentageViewWithSection()
             case .pvpUtilization:
-                if getRemainDays("2023-04-01 00:04:00")!.second! < 0 {
+                if Self.getRemainDays("2023-04-01 00:04:00")!.second! < 0 {
                     ShowAvatarPercentageViewWithSection()
                 } else {
                     VStack {
@@ -334,20 +336,8 @@ struct AbyssDataCollectionView: View {
             shareView()
         }
         .sheet(isPresented: $isWebSheetShow) {
-            let url: String = {
-                switch Bundle.main.preferredLocalizations.first?.prefix(2) {
-                case "zh":
-                    return "https://gi.pizzastudio.org/static/faq_abyss.html"
-                case "en":
-                    return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
-                case "ja":
-                    return "https://gi.pizzastudio.org/static/faq_abyss_ja.html"
-                default:
-                    return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
-                }
-            }()
             NavigationStack {
-                WebBrowserView(url: url)
+                WebBrowserView(url: Self.faqURL)
                     .dismissableSheet(isSheetShow: $isWebSheetShow)
                     .navigationTitle("app.abyss.rank.faq")
                     .navigationBarTitleDisplayMode(.inline)
@@ -465,7 +455,22 @@ struct AbyssDataCollectionView: View {
         }
     }
 
-    func getRemainDays(_ endAt: String) -> IntervalDate? {
+    // MARK: Private
+
+    private static let faqURL: String = {
+        switch Bundle.main.preferredLocalizations.first?.prefix(2) {
+        case "zh":
+            return "https://gi.pizzastudio.org/static/faq_abyss.html"
+        case "en":
+            return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
+        case "ja":
+            return "https://gi.pizzastudio.org/static/faq_abyss_ja.html"
+        default:
+            return "https://gi.pizzastudio.org/static/faq_abyss_en.html"
+        }
+    }()
+
+    private static func getRemainDays(_ endAt: String) -> IntervalDate? {
         let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -614,8 +619,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
 
     var body: some View {
         List {
-            if let result = result,
-               let avatarSectionDatas = avatarSectionDatas {
+            if let result = result, let avatarSectionDatas = avatarSectionDatas {
                 switch result {
                 case let .success(data):
                     let data = data.data
@@ -630,29 +634,20 @@ private struct ShowAvatarPercentageViewWithSection: View {
                     }
                     ForEach(0 ..< avatarSectionDatas.count, id: \.self) { i in
                         Section {
-                            ForEach(
-                                avatarSectionDatas[i],
-                                id: \.charId
-                            ) { avatar in
+                            ForEach(avatarSectionDatas[i], id: \.charId) { avatar in
                                 renderLine(avatar)
                             }
                         } header: {
                             VStack(alignment: .leading) {
-                                switch i {
-                                case 0:
-                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t0")
-                                case 1:
-                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t1")
-                                case 2:
-                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t2")
-                                case 3:
-                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t3")
-                                case 4:
-                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t4")
-                                case 5:
-                                    Text("T\(i) ") + Text("abyssDataCollection.usageRate.recommended.t5")
-                                default:
-                                    EmptyView()
+                                if (0 ... 5).contains(i) {
+                                    let rawStr = Text(
+                                        String(
+                                            localized: .init(
+                                                stringLiteral: "abyssDataCollection.usageRate.recommended.t\(i)"
+                                            )
+                                        )
+                                    )
+                                    Text("T\(i) ") + rawStr
                                 }
                             }
                             .textCase(.none)
@@ -803,18 +798,12 @@ private struct ShowAvatarPercentageShare: View {
 // MARK: - ShowTeamPercentageView
 
 private struct ShowTeamPercentageView: View {
+    // MARK: Internal
+
     @Environment(\.colorScheme)
     var colorScheme
     @EnvironmentObject
     var abyssDataCollectionViewModel: AbyssDataCollectionViewModel
-    let percentageFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .percent
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-        return formatter
-    }()
-
     let sectionCornerSize = CGSize(width: UIFont.smallSystemFontSize, height: UIFont.smallSystemFontSize)
 
     var result: TeamUtilizationDataFetchModelResult? {
@@ -834,91 +823,20 @@ private struct ShowTeamPercentageView: View {
             HStack {
                 Spacer()
                 VStack(spacing: 2) {
-                    if let result = result {
-                        switch result {
-                        case let .success(dataPackage):
-                            let data = dataPackage.data
-                            let teams: [TeamUtilizationData.Team] = {
-                                switch abyssDataCollectionViewModel
-                                    .teamUtilizationParams.half {
-                                case .all:
-                                    return data.teams
-                                case .firstHalf:
-                                    return data.teamsFH
-                                case .secondHalf:
-                                    return data.teamsSH
-                                }
-                            }()
+                    if let data = extractDataPackage() {
+                        let teams = extractTeams(from: data)
+                        renderHeaderSection(data: data)
+                        Spacer().frame(height: UIFont.smallSystemFontSize)
+                        VStack(spacing: 1) {
                             Section {
-                                HStack {
-                                    Text(
-                                        "app.abyss.stat.2:\(data.totalUsers)\(abyssDataCollectionViewModel.paramsDescription)"
-                                    )
-                                    .font(.footnote)
-                                    .textCase(.none)
-                                    Spacer()
+                                ForEach(Array(teams.enumerated()), id: \.offset) { index, team in
+                                    renderTeamLine(team: team, index: index)
                                 }
-                                .padding(UIFont.smallSystemFontSize)
-                                .background(
-                                    Color(uiColor: sectionBackgroundColor),
-                                    in: RoundedRectangle(cornerSize: sectionCornerSize)
-                                )
                             }
-                            Spacer()
-                                .frame(height: UIFont.smallSystemFontSize)
-                            VStack(spacing: 1) {
-                                Section {
-                                    let teams = teams
-                                        .sorted(by: { $0.percentage > $1.percentage })
-                                    ForEach(
-                                        Array(zip(teams.indices, teams)),
-                                        id: \.0
-                                    ) { index, team in
-                                        let lineContent = Group {
-                                            ForEach(
-                                                team.team.sorted(by: <),
-                                                id: \.self
-                                            ) { avatarId in
-                                                CharacterAsset.match(id: avatarId)
-                                                    .decoratedIcon(48, cutTo: .face, roundRect: true)
-                                            }
-                                            Spacer()
-                                            VStack(alignment: .center) {
-                                                Text(
-                                                    percentageFormatter
-                                                        .string(from: (
-                                                            team
-                                                                .percentage
-                                                        ) as NSNumber)!
-                                                )
-                                                .font(.systemCompressed(size: 16, weight: .heavy))
-                                                let matchedSymbol = SFSymbol(rawValue: "\(index + 1).circle")
-                                                if SFSymbol.allSymbols.contains(matchedSymbol) {
-                                                    Image(systemSymbol: matchedSymbol)
-                                                        .font(.system(size: 14, weight: .light))
-                                                }
-                                            }
-                                        }
-                                        Group {
-                                            if ThisDevice.isSmallestHDScreenPhone {
-                                                HStack(spacing: 2) { lineContent }
-                                            } else {
-                                                HStack { lineContent }
-                                            }
-                                        }
-                                        .padding(.horizontal, UIFont.smallSystemFontSize)
-                                        .padding(.vertical, 4)
-                                        .background(
-                                            Color(uiColor: sectionBackgroundColor)
-                                        )
-                                    }
-                                }
-                            }.clipShape(RoundedRectangle(cornerSize: sectionCornerSize))
-                        case let .failure(error):
-                            Text(error.localizedDescription)
-                        }
-                    } else {
-                        ProgressView()
+                        }.clipShape(RoundedRectangle(cornerSize: sectionCornerSize))
+                    }
+                    if let errorText = dataExtractionErrorText() {
+                        Text(errorText)
                     }
                 }
                 .frame(maxWidth: 414)
@@ -927,20 +845,100 @@ private struct ShowTeamPercentageView: View {
         }
         .background(Color(uiColor: viewBackgroundColor))
     }
-}
 
-// MARK: - ShowTeamPercentageShare
+    // MARK: Private
 
-private struct ShowTeamPercentageShare: View {
-    let teams: [TeamUtilizationData.Team]
-
-    let percentageFormatter: NumberFormatter = {
+    private static let percentageFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
         return formatter
     }()
+
+    private static func getMatchedSFSymbol(raw: String) -> SFSymbol? {
+        let matchedSymbol = SFSymbol(rawValue: raw)
+        return SFSymbol.allSymbols.contains(matchedSymbol) ? matchedSymbol : nil
+    }
+
+    private static func percentageViewAssets(value: Double, index: Int) -> (String, SFSymbol?)? {
+        guard let perc = percentageFormatter.string(from: value as NSNumber) else { return nil }
+        return (perc, Self.getMatchedSFSymbol(raw: "\(index + 1).circle"))
+    }
+
+    private func extractDataPackage() -> TeamUtilizationData? {
+        guard case let .success(dataPkg) = result else { return nil }
+        return dataPkg.data
+    }
+
+    private func dataExtractionErrorText() -> String? {
+        guard case let .failure(error) = result else { return nil }
+        return error.localizedDescription
+    }
+
+    private func extractTeams(from data: TeamUtilizationData) -> [TeamUtilizationData.Team] {
+        let result: [TeamUtilizationData.Team]
+        switch abyssDataCollectionViewModel.teamUtilizationParams.half {
+        case .all: result = data.teams
+        case .firstHalf: result = data.teamsFH
+        case .secondHalf: result = data.teamsSH
+        }
+        return result.sorted(by: { $0.percentage > $1.percentage })
+    }
+
+    @ViewBuilder
+    private func renderTeamLine(team: TeamUtilizationData.Team, index: Int) -> some View {
+        HStack(spacing: ThisDevice.isSmallestHDScreenPhone ? 2 : nil) {
+            ForEach(team.team.sorted(by: <), id: \.self) { avatarId in
+                CharacterAsset.match(id: avatarId)
+                    .decoratedIcon(48, cutTo: .face, roundRect: true)
+            }
+            Spacer()
+            percentageView(value: team.percentage, index: index)
+        }
+        .padding(.horizontal, UIFont.smallSystemFontSize)
+        .padding(.vertical, 4)
+        .background(
+            Color(uiColor: sectionBackgroundColor)
+        )
+    }
+
+    @ViewBuilder
+    private func percentageView(value: Double, index: Int) -> some View {
+        if let assets = Self.percentageViewAssets(value: value, index: index) {
+            Text(assets.0).font(.systemCompressed(size: 16, weight: .heavy))
+            if let symbol = assets.1 {
+                Image(systemSymbol: symbol).font(.system(size: 14, weight: .light))
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func renderHeaderSection(data: TeamUtilizationData) -> some View {
+        Section {
+            HStack {
+                Text(
+                    "app.abyss.stat.2:\(data.totalUsers)\(abyssDataCollectionViewModel.paramsDescription)"
+                )
+                .font(.footnote)
+                .textCase(.none)
+                Spacer()
+            }
+            .padding(UIFont.smallSystemFontSize)
+            .background(
+                Color(uiColor: sectionBackgroundColor),
+                in: RoundedRectangle(cornerSize: sectionCornerSize)
+            )
+        }
+    }
+}
+
+// MARK: - ShowTeamPercentageShare
+
+private struct ShowTeamPercentageShare: View {
+    // MARK: Internal
+
+    let teams: [TeamUtilizationData.Team]
 
     var eachColumnTeams: [[(Int, TeamUtilizationData.Team)]] {
         let chunkSize = 16 // 每列的角色数
@@ -976,20 +974,24 @@ private struct ShowTeamPercentageShare: View {
                                 }
                             }
                             Spacer()
-                            Text(
-                                percentageFormatter
-                                    .string(from: (
-                                        team
-                                            .percentage
-                                    ) as NSNumber)!
-                            )
-                            .font(.systemCompressed(size: 16, weight: .heavy))
+                            Text(Self.percentageFormatter.string(from: (team.percentage) as NSNumber)!)
+                                .font(.systemCompressed(size: 16, weight: .heavy))
                         }
                     }
                 }
             }
         }
     }
+
+    // MARK: Private
+
+    private static let percentageFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
 }
 
 // MARK: - AvatarHoldingParamsSettingBar

@@ -14,6 +14,8 @@ import SwiftUI
 // MARK: - APIGetGachaView
 
 struct APIGetGachaView: View {
+    // MARK: Internal
+
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
         ascending: true
@@ -43,62 +45,7 @@ struct APIGetGachaView: View {
 
     var body: some View {
         List {
-            if status != .running {
-                Section {
-                    Picker("app.gacha.account.select.title", selection: $account) {
-                        Group {
-                            if account == nil {
-                                Text("app.gacha.account.select.notSelected").tag(String?(nil))
-                            }
-                            ForEach(
-                                acountConfigsFiltered,
-                                id: \.uid
-                            ) { account in
-                                Text("\(account.name!) (\(account.uid!))")
-                                    .tag(Optional(account.uid!))
-                            }
-                        }
-                    }
-                    .onAppear {
-                        if account == nil {
-                            account = accounts
-                                .filter { $0.server.region != .global }
-                                .first?.uid
-                        }
-                    }
-                    Button("app.gacha.get.title") {
-                        observer.initialize()
-                        status = .running
-                        let account = account!
-                        gachaViewModel.getGachaAndSaveFor(
-                            accounts
-                                .first(where: { $0.uid == account })!,
-                            observer: observer
-                        ) { result in
-                            switch result {
-                            case .success:
-                                withAnimation {
-                                    status = .succeed
-                                }
-                            case let .failure(error):
-                                withAnimation {
-                                    status = .failure(error)
-                                }
-                            }
-                        }
-                    }
-                    .disabled(account == nil)
-                    GetGachaURLByAPIButton(accountUID: account)
-                } footer: {
-                    if !accounts
-                        .allSatisfy({ $0.server.region == .mainlandChina }) {
-                        Text("app.gacha.note.globalServers")
-                    }
-                }
-            } else {
-                GettingGachaBar()
-            }
-            GetGachaResultView(status: $status)
+            listContents()
         }
         .navigationTitle("app.gacha.get.title")
         .navigationBarTitleDisplayMode(.inline)
@@ -132,6 +79,85 @@ struct APIGetGachaView: View {
                 title: errorTitle
             )
         })
+    }
+
+    // MARK: Private
+
+    private var shouldShowGlobalServerNotice: Bool {
+        accounts.map(\.server.region).contains(.global)
+    }
+
+    private var accountPickerPairs: [(value: String, tag: String?)] {
+        var result = [(value: String, tag: String?)]()
+        if account == nil {
+            result.append(("app.gacha.account.select.notSelected", nil))
+        }
+        result.append(contentsOf: acountConfigsFiltered.map {
+            ("\($0.name!) (\($0.uid!))", $0.uid!)
+        })
+        return result
+    }
+
+    @MainActor
+    private func accountRefreshOnNil() {
+        if account == nil {
+            account = accounts.filter { $0.server.region != .global }.first?.uid
+        }
+    }
+
+    @ViewBuilder
+    private func listContents() -> some View {
+        if status != .running {
+            Section {
+                accountPicker().onAppear {
+                    accountRefreshOnNil()
+                }
+                Button("app.gacha.get.title") {
+                    getGacha()
+                }
+                .disabled(account == nil)
+                GetGachaURLByAPIButton(accountUID: account)
+            } footer: {
+                if shouldShowGlobalServerNotice {
+                    Text("app.gacha.note.globalServers")
+                }
+            }
+        } else {
+            GettingGachaBar()
+        }
+        GetGachaResultView(status: $status)
+    }
+
+    @ViewBuilder
+    private func accountPicker() -> some View {
+        Picker("app.gacha.account.select.title", selection: $account) {
+            Group {
+                ForEach(accountPickerPairs, id: \.tag) { value, tag in
+                    Text(value).tag(tag)
+                }
+            }
+        }
+    }
+
+    @MainActor
+    private func getGacha() {
+        guard let account else { return }
+        let firstAccount = accounts.first(where: { $0.uid == account })
+        guard let firstAccount else { return }
+        observer.initialize()
+        status = .running
+        gachaViewModel.getGachaAndSaveFor(firstAccount, observer: observer) { result in
+            switch result {
+            case .success:
+                withAnimation {
+                    status = .succeed
+                }
+            case let .failure(error):
+                withAnimation {
+                    status = .failure(error)
+                }
+            }
+        }
     }
 }
 

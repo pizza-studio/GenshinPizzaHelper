@@ -97,10 +97,9 @@ extension MihoyoAPI {
 
         let request = URLRequest(url: url)
 
-        URLSession.shared.dataTask(with: request) { data, _, error in
+        func handleRetrievedData(data: Data?, error: (any Error)?) {
             print(error ?? "ErrorInfo nil")
-            guard error == nil
-            else {
+            guard error == nil else {
                 completion(.failure(.networkError(
                     message: error?
                         .localizedDescription ?? "Unknow Network Error"
@@ -114,18 +113,20 @@ extension MihoyoAPI {
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            let randomTime = TimeInterval.random(in: GET_GACHA_DELAY_RANDOM_RANGE)
+            let deadline: DispatchTime = .now() + randomTime
             do {
                 let result = try decoder.decode(
                     GachaResult_FM.self,
                     from: data!
                 )
                 let items = try result.toGachaItemArray()
-                DispatchQueue.main.async {
+                Task.detached { @MainActor in
                     observer.got(items)
                 }
                 manager.addRecordItems(items) { itemIsNewAndSavedSucceed in
                     if itemIsNewAndSavedSucceed {
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             observer.saveNewItemSucceed()
                         }
                     }
@@ -133,39 +134,31 @@ extension MihoyoAPI {
                 if observer.shouldCancel {
                     completion(.success(()))
                 } else if !items.isEmpty {
-                    DispatchQueue.global(qos: .userInteractive)
-                        .asyncAfter(
-                            deadline: .now() + TimeInterval
-                                .random(in: GET_GACHA_DELAY_RANDOM_RANGE)
-                        ) {
-                            innerGetGachaLogAndSave(
-                                server: server,
-                                authkey: authkey,
-                                gachaType: gachaType,
-                                page: page + 1,
-                                endId: items.last!.id,
-                                manager: manager,
-                                observer: observer
-                            ) { result in
-                                completion(result)
-                            }
+                    DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: deadline) {
+                        innerGetGachaLogAndSave(
+                            server: server,
+                            authkey: authkey,
+                            gachaType: gachaType,
+                            page: page + 1,
+                            endId: items.last!.id,
+                            manager: manager,
+                            observer: observer
+                        ) { result in
+                            completion(result)
                         }
+                    }
                 } else if let gachaType = gachaType.next() {
-                    DispatchQueue.global(qos: .userInteractive)
-                        .asyncAfter(
-                            deadline: .now() + TimeInterval
-                                .random(in: GET_GACHA_DELAY_RANDOM_RANGE)
-                        ) {
-                            innerGetGachaLogAndSave(
-                                server: server,
-                                authkey: authkey,
-                                gachaType: gachaType,
-                                manager: manager,
-                                observer: observer
-                            ) { result in
-                                completion(result)
-                            }
+                    DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: deadline) {
+                        innerGetGachaLogAndSave(
+                            server: server,
+                            authkey: authkey,
+                            gachaType: gachaType,
+                            manager: manager,
+                            observer: observer
+                        ) { result in
+                            completion(result)
                         }
+                    }
                 } else {
                     completion(.success(()))
                 }
@@ -181,6 +174,10 @@ extension MihoyoAPI {
                     )
                 )
             }
+        }
+
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            handleRetrievedData(data: data, error: error)
         }.resume()
     }
 }

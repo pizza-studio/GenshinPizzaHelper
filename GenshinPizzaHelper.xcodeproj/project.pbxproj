@@ -17,6 +17,8 @@
 		5B4A251F2BD8F6E500614070 /* LinearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */; };
 		5B4A25202BD8F6E500614070 /* LinearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */; };
 		5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */; };
+		5B4D13C32C22F2FB00EB7945 /* LinkLabelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D13C22C22F2FB00EB7945 /* LinkLabelItem.swift */; };
+		5B4D13C42C22F2FB00EB7945 /* LinkLabelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4D13C22C22F2FB00EB7945 /* LinkLabelItem.swift */; };
 		5B5266C02BE2B20C006C8ADF /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 5B5266BF2BE2B20C006C8ADF /* Flow */; };
 		5B5266C22BE2B217006C8ADF /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 5B5266C12BE2B217006C8ADF /* Flow */; };
 		5B8C1B312AD8F3C5009F3B44 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8C1B302AD8F3C5009F3B44 /* SFSafeSymbols */; };
@@ -99,7 +101,7 @@
 		5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC065028C6F8E1003E4A54 /* GuideVideoLinkView.swift */; };
 		5BD1C5FC2A2A1FC90043C2B1 /* HiddenWaterMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C2CE428F07DBE00E4C28A /* HiddenWaterMark.swift */; };
 		5BD1C5FD2A2A1FC90043C2B1 /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
-		5BD1C5FF2A2A1FC90043C2B1 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
+		5BD1C5FF2A2A1FC90043C2B1 /* ContactInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactInfoView.swift */; };
 		5BD1C6002A2A1FC90043C2B1 /* RingProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823128A651F500616CE1 /* RingProgressBarView.swift */; };
 		5BD1C6012A2A1FC90043C2B1 /* GDGenshinDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3F98C728EAB2F200D1B5CF /* GDGenshinDictionaryView.swift */; };
 		5BD1C6022A2A1FC90043C2B1 /* PrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2BA6228FC195600A9060F /* PrivacySettingsView.swift */; };
@@ -243,7 +245,7 @@
 		BF70214028BA4B3F00A6BBA9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */; };
 		BF70214228BA4B6A00A6BBA9 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */; };
 		BF70214428BA51F700A6BBA9 /* GlobalDonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */; };
-		BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactUsView.swift */; };
+		BF70214628BC82D400A6BBA9 /* ContactInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70214528BC82D400A6BBA9 /* ContactInfoView.swift */; };
 		BF7500D828DEA80700CDA64E /* EachAvatarStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachAvatarStatView.swift */; };
 		BF7500FE28E0452C00CDA64E /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FB28E0452C00CDA64E /* app.css */; };
 		BF75010028E0452C00CDA64E /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
@@ -829,6 +831,7 @@
 		5B41C1812AD3010700CDF2C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearProgressView.swift; sourceTree = "<group>"; };
 		5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayOptionsView.swift; sourceTree = "<group>"; };
+		5B4D13C22C22F2FB00EB7945 /* LinkLabelItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkLabelItem.swift; sourceTree = "<group>"; };
 		5B4D6EB82AD1A17C00ABEF29 /* OPHelper_SharedAssembly */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OPHelper_SharedAssembly; path = Dependences/OPHelper_SharedAssembly; sourceTree = "<group>"; };
 		5B5F82AE2ACC57F5005983AC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = ko; path = ko.lproj/AccountIntents.intentdefinition; sourceTree = "<group>"; };
 		5B918A2E29D2B3AC00F5B93D /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
@@ -868,7 +871,7 @@
 		BF70213F28BA4B3F00A6BBA9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BF70214128BA4B6A00A6BBA9 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		BF70214328BA51F700A6BBA9 /* GlobalDonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDonateView.swift; sourceTree = "<group>"; };
-		BF70214528BC82D400A6BBA9 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
+		BF70214528BC82D400A6BBA9 /* ContactInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoView.swift; sourceTree = "<group>"; };
 		BF7500D728DEA80700CDA64E /* EachAvatarStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachAvatarStatView.swift; sourceTree = "<group>"; };
 		BF7500FB28E0452C00CDA64E /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
 		BF7500FD28E0452C00CDA64E /* article.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = article.html; sourceTree = "<group>"; };
@@ -1259,6 +1262,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */,
+				5B4D13C22C22F2FB00EB7945 /* LinkLabelItem.swift */,
 				5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */,
 			);
 			path = CustomizedViewStructs;
@@ -1272,7 +1276,7 @@
 				EA5232262903D976007A4CF4 /* CharacterInventoryView.swift */,
 				BFB101F128D85B28000DC631 /* AllEventsView.swift */,
 				BF70211828B4863000A6BBA9 /* BackgroundsPreviewView.swift */,
-				BF70214528BC82D400A6BBA9 /* ContactUsView.swift */,
+				BF70214528BC82D400A6BBA9 /* ContactInfoView.swift */,
 				5B4B6FFA29D421A50030501D /* DisplayOptionsView.swift */,
 				EA025C8F29D28D3D0075F780 /* GachaView.swift */,
 				BFE42555289F9FBE00FEFA49 /* GameInfoBlockView.swift */,
@@ -2485,7 +2489,7 @@
 				5BD1C5FB2A2A1FC90043C2B1 /* GuideVideoLinkView.swift in Sources */,
 				5BD1C5FC2A2A1FC90043C2B1 /* HiddenWaterMark.swift in Sources */,
 				5BD1C5FD2A2A1FC90043C2B1 /* WeeklyBossesInfoBar.swift in Sources */,
-				5BD1C5FF2A2A1FC90043C2B1 /* ContactUsView.swift in Sources */,
+				5BD1C5FF2A2A1FC90043C2B1 /* ContactInfoView.swift in Sources */,
 				5BD1C6002A2A1FC90043C2B1 /* RingProgressBarView.swift in Sources */,
 				EA759D742B19989A0080C775 /* CreateAccountSheetView.swift in Sources */,
 				5BD1C6012A2A1FC90043C2B1 /* GDGenshinDictionaryView.swift in Sources */,
@@ -2564,6 +2568,7 @@
 				5BD1C6552A2A1FC90043C2B1 /* GachaFetchModel.swift in Sources */,
 				5BD1C6562A2A1FC90043C2B1 /* GachaViewModel.swift in Sources */,
 				EA759D662B19989A0080C775 /* GeetestValidateView.swift in Sources */,
+				5B4D13C42C22F2FB00EB7945 /* LinkLabelItem.swift in Sources */,
 				5BD1C6572A2A1FC90043C2B1 /* MIMTGetGachaURL.swift in Sources */,
 				5BD1C6592A2A1FC90043C2B1 /* DisplayOptionsView.swift in Sources */,
 			);
@@ -2877,7 +2882,7 @@
 				EA1C2CE528F07DBE00E4C28A /* HiddenWaterMark.swift in Sources */,
 				EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */,
 				EA759D6D2B19989A0080C775 /* TestAccountSectionView.swift in Sources */,
-				BF70214628BC82D400A6BBA9 /* ContactUsView.swift in Sources */,
+				BF70214628BC82D400A6BBA9 /* ContactInfoView.swift in Sources */,
 				BFFD823228A651F500616CE1 /* RingProgressBarView.swift in Sources */,
 				BF3F98C828EAB2F200D1B5CF /* GDGenshinDictionaryView.swift in Sources */,
 				EAC2BA6328FC195600A9060F /* PrivacySettingsView.swift in Sources */,
@@ -2956,6 +2961,7 @@
 				EAAD03E429D2FD22007D5C80 /* GachaFetchModel.swift in Sources */,
 				EA759D6F2B19989A0080C775 /* EditAccountView.swift in Sources */,
 				EA025C8629D286540075F780 /* GachaViewModel.swift in Sources */,
+				5B4D13C32C22F2FB00EB7945 /* LinkLabelItem.swift in Sources */,
 				EA32D57429D749E60003978A /* MIMTGetGachaURL.swift in Sources */,
 				5B4B6FFB29D421A50030501D /* DisplayOptionsView.swift in Sources */,
 			);

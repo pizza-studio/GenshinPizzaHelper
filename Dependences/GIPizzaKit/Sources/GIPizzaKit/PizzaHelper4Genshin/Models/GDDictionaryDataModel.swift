@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct GDDictionary: Codable {
+public struct GDDictionary: Codable, Identifiable {
     public struct Variants: Codable {
         public var en: [String]?
         public var ja: [String]?

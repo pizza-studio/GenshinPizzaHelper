@@ -14,7 +14,7 @@ class ReviewHandler {
     // MARK: Lifecycle
 
 //    static func requestReview() {
-//        DispatchQueue.main.async {
+//        Task.detached { @MainActor in
 //            if let scene = UIApplication.shared.connectedScenes
 //                .first(where: { $0.activationState == .foregroundActive
 //                }) as? UIWindowScene {
@@ -30,7 +30,7 @@ class ReviewHandler {
         #if DEBUG
         Defaults.reset(.lastVersionPromptedForReviewKey)
         #else
-        DispatchQueue.main.async {
+        Task.detached { @MainActor in
             // Keep track of the most recent app version that prompts the user for a review.
             let lastVersionPromptedForReview = Defaults[.lastVersionPromptedForReviewKey]
 

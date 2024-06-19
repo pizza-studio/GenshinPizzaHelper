@@ -29,7 +29,7 @@ private class GIDictionaryViewModel: ObservableObject {
                 self.queryStatus = .fetching(Task(priority: .high) {
                     do {
                         let result = try await GIDictionaryAPI.translation(query: query, page: 1, pageSize: 20)
-                        DispatchQueue.main.async {
+                        Task.detached { @MainActor in
                             self.currentResult = result
                             self.queryStatus = .pending
                         }
@@ -63,7 +63,7 @@ private class GIDictionaryViewModel: ObservableObject {
                     page: nextPage,
                     pageSize: 20
                 )
-                DispatchQueue.main.async {
+                Task.detached { @MainActor in
                     self.currentResult?.totalPage = result.totalPage
                     self.currentResult?.translations.append(contentsOf: result.translations)
                     self.queryStatus = .pending
@@ -147,6 +147,14 @@ struct GIDictionaryView: View {
 // MARK: - DictionaryTranslationDetailView
 
 private struct DictionaryTranslationDetailView: View {
+    // MARK: Lifecycle
+
+    public init(translation: GIDictionaryTranslationResult.Translation) {
+        self.translation = translation
+        self.listedTranslations = Array(translation.translationDictionary)
+            .sorted(by: { $0.key.rawValue > $1.key.rawValue })
+    }
+
     // MARK: Internal
 
     let translation: GIDictionaryTranslationResult.Translation
@@ -163,10 +171,7 @@ private struct DictionaryTranslationDetailView: View {
                 }
             }
             Section {
-                ForEach(
-                    translation.translationDictionary.map { ($0, $1) }.sorted(by: { $0.0.rawValue > $1.0.rawValue }),
-                    id: \.0
-                ) { key, value in
+                ForEach(listedTranslations, id: \.0) { key, value in
                     Button {
                         UIPasteboard.general.string = value
                         isAlertShow.toggle()
@@ -194,6 +199,8 @@ private struct DictionaryTranslationDetailView: View {
     }
 
     // MARK: Private
+
+    private let listedTranslations: [(DictionaryLanguage, String)]
 
     @State
     private var isAlertShow: Bool = false

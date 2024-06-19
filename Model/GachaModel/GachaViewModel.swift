@@ -92,7 +92,7 @@ class GachaViewModel: ObservableObject {
                 return filteredItems.count - index
             }
         }
-        DispatchQueue.main.async {
+        Task.detached { @MainActor in
             withAnimation {
                 self.filteredGachaItemsWithCount = zip(filteredItems, counts)
                     .filter { item, _ in
@@ -116,7 +116,7 @@ class GachaViewModel: ObservableObject {
     }
 
     func refetchGachaItems() {
-        DispatchQueue.main.async {
+        Task.detached { @MainActor in
             withAnimation {
                 self.refreshAllAvaliableAccountUID()
                 if (
@@ -276,7 +276,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     }
 
     func fetching(page: Int, gachaType: _GachaType) {
-        DispatchQueue.main.async {
+        Task.detached { @MainActor in
             withAnimation {
                 self.page = page
                 self.gachaType = gachaType
@@ -313,15 +313,16 @@ public class GachaFetchProgressObserver: ObservableObject {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let date = item.time
         let type = GachaType.from(item.gachaType)
-        if gachaTypeDateCounts
-            .filter({ ($0.date == date) && ($0.type == type) }).isEmpty {
+        let filteredGTDC: [GachaTypeDateCount] = gachaTypeDateCounts.filter {
+            ($0.date == date) && ($0.type == type)
+        }
+        if filteredGTDC.isEmpty {
+            let filteredFM: [GachaItem_FM] = currentItems.filter {
+                ($0.time <= date) && (GachaType.from($0.gachaType) == type)
+            }
             let count = GachaTypeDateCount(
                 date: date,
-                count: currentItems
-                    .filter {
-                        ($0.time <= date) &&
-                            (GachaType.from($0.gachaType) == type)
-                    }.count,
+                count: filteredFM.count,
                 type: .from(item.gachaType)
             )
             gachaTypeDateCounts.append(count)
@@ -334,7 +335,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     }
 
     func saveNewItemSucceed() {
-        DispatchQueue.main.async {
+        Task.detached { @MainActor in
             withAnimation {
                 self.newItemCount += 1
             }

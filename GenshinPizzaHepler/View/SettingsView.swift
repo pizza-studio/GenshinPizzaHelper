@@ -201,7 +201,7 @@ struct SettingsView: View {
                 case .appIntroductionVideo:
                     GuideVideoLinkView()
                 case .contact:
-                    ContactUsView()
+                    ContactInfoView()
                 case .more:
                     MoreView()
                 case nil:

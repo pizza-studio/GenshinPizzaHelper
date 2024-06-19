@@ -106,7 +106,7 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
 extension WatchConnectivityManager: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         if let notificationText = message[kMessageKey] as? String {
-            DispatchQueue.main.async { [weak self] in
+            Task.detached { @MainActor [weak self] in
                 self?.notificationMessage = NotificationMessage(text: notificationText)
             }
         }
@@ -130,7 +130,7 @@ extension WatchConnectivityManager: WCSessionDelegate {
             } catch {
                 print("save account failed: \(error)")
             }
-            DispatchQueue.main.async { [weak self] in
+            Task.detached { @MainActor [weak self] in
                 self?.sharedAccounts.append(accountReceived)
             }
         }

@@ -10,6 +10,8 @@ import HBMihoyoAPI
 import SFSafeSymbols
 import SwiftUI
 
+// MARK: - GenshinDictionary
+
 @available(iOS 15, *)
 struct GenshinDictionary: View {
     @State
@@ -22,52 +24,16 @@ struct GenshinDictionary: View {
     private var showInfoSheet: Bool = false
     var searchResults: [GDDictionary]? {
         if searchText.isEmpty || dictionaryData == nil {
-            return dictionaryData?.sorted {
-                $0.id < $1.id
-            }
-        } else {
-            return dictionaryData!.filter {
-                $0.en.localizedCaseInsensitiveContains(searchText) ||
-                    ($0.zhCN != nil && $0.zhCN!.contains(searchText)) ||
-                    ($0.ja != nil && $0.ja!.contains(searchText)) ||
-                    (
-                        $0
-                            .variants != nil &&
-                            (
-                                (
-                                    $0.variants!.en != nil && $0.variants!.en!
-                                        .contains(where: {
-                                            $0
-                                                .caseInsensitiveCompare(
-                                                    searchText
-                                                ) ==
-                                                .orderedSame
-                                        })
-                                ) ||
-                                    (
-                                        $0.variants!.zhCN != nil && $0
-                                            .variants!.zhCN!
-                                            .contains(searchText)
-                                    ) ||
-                                    (
-                                        $0.variants!.ja != nil && $0
-                                            .variants!.ja!
-                                            .contains(searchText)
-                                    )
-                            )
-                    ) ||
-                    (
-                        $0.tags != nil && $0.tags!
-                            .contains(where: {
-                                $0
-                                    .caseInsensitiveCompare(searchText) ==
-                                    .orderedSame
-                            })
-                    )
+            return dictionaryData?.sorted { $0.id < $1.id }
+        } else if let dictionaryData {
+            return dictionaryData.filter {
+                $0.contains(target: searchText)
             }
             .sorted {
                 $0.id < $1.id
             }
+        } else {
+            return nil
         }
     }
 
@@ -100,93 +66,39 @@ struct GenshinDictionary: View {
         "Z",
     ]
 
-    func checkLetterInSearchResults(_ letter: String) -> Bool {
-        let searchResults = searchResults ?? []
-        return searchResults.filter { $0.id.hasPrefix(letter.lowercased()) }
-            .isEmpty
-    }
-
     var body: some View {
-        if let searchResults = searchResults,
-           let dictionaryData = dictionaryData {
+        let hasResults = searchResults?.isEmpty ?? false
+        if hasResults, let dictionaryData {
             ScrollViewReader { value in
-                List {
-                    ForEach(alphabet, id: \.self) { letter in
-                        if !checkLetterInSearchResults(letter) {
-                            Section(header: Text(letter)) {
-                                ForEach(
-                                    searchResults
-                                        .filter {
-                                            $0.id
-                                                .hasPrefix(
-                                                    letter
-                                                        .lowercased()
-                                                )
-                                        },
-                                    id: \.id
-                                ) { item in
-                                    dictionaryItemCell(word: item)
-                                        .id(item.id)
-                                        .contextMenu {
-                                            Button("app.dictionary.copy.en") {
-                                                UIPasteboard.general
-                                                    .string = item.en
-                                            }
-                                            if let zhcn = item.zhCN {
-                                                Button("app.dictionary.copy.zh") {
-                                                    UIPasteboard.general
-                                                        .string = zhcn
-                                                }
-                                            }
-                                            if let ja = item.ja {
-                                                Button("app.dictionary.copy.ja") {
-                                                    UIPasteboard.general
-                                                        .string = ja
-                                                }
-                                            }
+                renderScrollViewContent()
+                    .overlay(alignment: .trailing) {
+                        if searchText.isEmpty {
+                            VStack(spacing: 5) {
+                                ForEach(0 ..< alphabet.count, id: \.self) { idx in
+                                    Button(action: {
+                                        withAnimation {
+                                            value.scrollTo(alphabet[idx], anchor: .top)
                                         }
+                                    }, label: {
+                                        Text(alphabet[idx]).font(.footnote)
+                                    })
                                 }
-                            }.id(letter)
-                        }
-                    }
-                }
-                .searchable(
-                    text: $searchText,
-                    placement: .navigationBarDrawer(displayMode: .always),
-                    prompt: "app.dictionary.tip.search"
-                )
-                .overlay(alignment: .trailing) {
-                    if searchText.isEmpty {
-                        VStack(spacing: 5) {
-                            ForEach(0 ..< alphabet.count, id: \.self) { idx in
-                                Button(action: {
-                                    withAnimation {
-                                        value.scrollTo(
-                                            alphabet[idx],
-                                            anchor: .top
-                                        )
-                                    }
-                                }, label: {
-                                    Text(alphabet[idx])
-                                        .font(.footnote)
-                                })
                             }
                         }
                     }
-                }
             }
             .navigationTitle("tools.dictionary.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
+                    Button {
                         showInfoSheet.toggle()
-                    }) {
+                    } label: {
                         Image(systemSymbol: .infoCircle)
                     }
-                    Button(action: {
+                    Button {
                         showSafari.toggle()
-                    }) {
+                    } label: {
                         Image(systemSymbol: .safari)
                     }
                 }
@@ -198,36 +110,16 @@ struct GenshinDictionary: View {
                 .ignoresSafeArea()
             })
             .sheet(isPresented: $showInfoSheet) {
-                NavigationStack {
-                    VStack(alignment: .leading) {
-                        Text("app.dictionary.tip.info")
-                        Text(String(format: "app.dictionary.tip.count:%lld", dictionaryData.count))
-                        Text("app.dictionary.tip.contact")
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    .multilineTextAlignment(.leading)
-                    .navigationBarTitle("app.dictionary.about.title")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                showInfoSheet.toggle()
-                            }) {
-                                Text("sys.done")
-                            }
-                        }
-                    }
-                }
+                infoSheet(dataCount: dictionaryData.count)
             }
         } else {
             ProgressView().navigationTitle("tools.dictionary.title")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
+                        Button {
                             showSafari.toggle()
-                        }) {
+                        } label: {
                             Image(systemSymbol: .safari)
                         }
                     }
@@ -256,11 +148,12 @@ struct GenshinDictionary: View {
                 Text(DictLang.zh.i18nHeader).bold() + Text(zhcn)
             }
             if let ja = word.ja {
+                let header = Text(DictLang.ja.i18nHeader).bold()
                 if let jaPron = word.pronunciationJa {
-                    Text(DictLang.ja.i18nHeader).bold() + Text(ja) + Text(" (\(jaPron))")
+                    header + Text(ja) + Text(" (\(jaPron))")
                         .font(.footnote)
                 } else {
-                    Text(DictLang.ja.i18nHeader).bold()
+                    header
                 }
             }
             if let tags = word.tags {
@@ -299,5 +192,104 @@ struct GenshinDictionary: View {
             case .ja: return "app.dictionary.content.ja.header".localized
             }
         }
+    }
+
+    private func checkLetterInSearchResults(_ letter: String) -> [GDDictionary] {
+        searchResults?.filter { $0.id.hasPrefix(letter.lowercased()) } ?? []
+    }
+
+    @ViewBuilder
+    private func infoSheet(dataCount: Int) -> some View {
+        NavigationStack {
+            VStack(alignment: .leading) {
+                Text("app.dictionary.tip.info")
+                Text(String(format: "app.dictionary.tip.count:%lld", dataCount))
+                Text("app.dictionary.tip.contact")
+                Spacer()
+            }
+            .padding(.horizontal)
+            .multilineTextAlignment(.leading)
+            .navigationBarTitle("app.dictionary.about.title")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showInfoSheet.toggle()
+                    }) {
+                        Text("sys.done")
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func renderScrollViewContent() -> some View {
+        List {
+            ForEach(alphabet, id: \.self) { letter in
+                renderEachSearchResult(byLetter: letter)
+            }
+        }
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "app.dictionary.tip.search"
+        )
+    }
+
+    @ViewBuilder
+    private func renderEachSearchResult(byLetter letter: String) -> some View {
+        let matchedResults = checkLetterInSearchResults(letter)
+        if !matchedResults.isEmpty {
+            Section(header: Text(letter)) {
+                ForEach(matchedResults) { item in
+                    dictionaryItemCell(word: item)
+                        .id(item.id)
+                        .contextMenu {
+                            Button("app.dictionary.copy.en") {
+                                UIPasteboard.general.string = item.en
+                            }
+                            if let zhcn = item.zhCN {
+                                Button("app.dictionary.copy.zh") {
+                                    UIPasteboard.general.string = zhcn
+                                }
+                            }
+                            if let ja = item.ja {
+                                Button("app.dictionary.copy.ja") {
+                                    UIPasteboard.general.string = ja
+                                }
+                            }
+                        }
+                }
+            }.id(letter)
+        }
+    }
+}
+
+extension GDDictionary {
+    public func contains(target: String) -> Bool {
+        guard !baseDataContains(target) else { return true }
+        guard !variantDataContains(target) else { return true }
+        guard !tagContains(target) else { return true }
+        return false
+    }
+
+    private func baseDataContains(_ target: String) -> Bool {
+        [en, zhCN, ja].compactMap { $0?.localizedCaseInsensitiveContains(target) }.contains(true)
+    }
+
+    private func variantDataContains(_ target: String) -> Bool {
+        guard let variants = variants else { return false }
+        let allVariants: [String] = [variants.en, variants.zhCN, variants.ja].compactMap { $0 }.reduce([], +)
+        for variant in allVariants {
+            if variant.localizedCaseInsensitiveContains(target) {
+                return true
+            }
+        }
+        return false
+    }
+
+    private func tagContains(_ target: String) -> Bool {
+        tags?.contains { $0.caseInsensitiveCompare(target) == .orderedSame } ?? false
     }
 }

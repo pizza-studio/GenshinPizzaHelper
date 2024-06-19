@@ -27,12 +27,12 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate,
 
         if !response.products.isEmpty {
             for fetchedProduct in response.products {
-                DispatchQueue.main.async {
+                Task.detached { @MainActor in
                     self.myProducts.append(fetchedProduct)
                     print("Appended \(fetchedProduct.productIdentifier)")
                 }
             }
-            DispatchQueue.main.async {
+            Task.detached { @MainActor in
                 self.myProducts = self.myProducts.sorted {
                     $0.price.decimalValue < $1.price.decimalValue
                 }
