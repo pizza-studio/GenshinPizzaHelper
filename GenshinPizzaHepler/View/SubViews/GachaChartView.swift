@@ -161,13 +161,13 @@ private struct GachaItemChart: View {
     var body: some View {
 //        subChart(items: fiveStarItems.chunked(into: 60)[1])
         VStack(spacing: -12) {
-            ForEach(fiveStarItems.chunked(into: 60), id: \.first!.0.id) { items in
-                let isFirst = fiveStarItems.first!.0.id == items.first!.0.id
-                let isLast = fiveStarItems.last!.0.id == items.last!.0.id
+            ForEach(fiveStarItems.chunked(into: 60), id: \.first!.0.id) { chunked in
+                let isFirst = fiveStarItems.first!.0.id == chunked.first!.0.id
+                let isLast = fiveStarItems.last!.0.id == chunked.last!.0.id
                 if isFirst {
-                    subChart(items: items, isFirst: isFirst, isLast: isLast).padding(.top)
+                    subChart(items: chunked, isFirst: isFirst, isLast: isLast).padding(.top)
                 } else {
-                    subChart(items: items, isFirst: isFirst, isLast: isLast)
+                    subChart(items: chunked, isFirst: isFirst, isLast: isLast)
                 }
             }
         }
