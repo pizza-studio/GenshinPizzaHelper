@@ -135,10 +135,17 @@ struct CreateAccountSheetView: View {
                         Text("account.login.manual.2")
                             .font(.footnote)
                     }
+                    Text(verbatim: " || ")
+                    Menu {
+                        OtherSettingsView.linksForManagingHoYoLabAccounts
+                    } label: {
+                        Group {
+                            Text("sys.manage_hoyolab_account") + Text(verbatim: "(Safari)")
+                        }
+                        .font(.footnote)
+                    }
                 }
-                if !account.isValid() {
-                    ExplanationView()
-                }
+                ExplanationView()
             }
         }
         .onChange(of: account.cookie) { newValue in
@@ -204,6 +211,8 @@ struct CreateAccountSheetView: View {
 // MARK: - RequireLoginView
 
 private struct RequireLoginView: View {
+    // MARK: Internal
+
     @State
     var getCookieWebViewRegion: Region?
     @Binding
@@ -214,16 +223,14 @@ private struct RequireLoginView: View {
     var body: some View {
         Menu {
             Button("sys.server.cn") {
-                getCookieWebViewRegion = .mainlandChina
-                region = .mainlandChina
+                assign(region: .mainlandChina)
             }
             Button("sys.server.os") {
-                getCookieWebViewRegion = .global
-                region = .global
+                assign(region: .global)
             }
         } label: {
             Group {
-                if unsavedCookie == "" || unsavedCookie == nil {
+                if isUnsavedCookieInvalid {
                     Text("settings.account.loginViaMiyousheOrHoyoLab")
                 } else {
                     Text("settings.account.reloginHoyoLabAccount")
@@ -240,18 +247,33 @@ private struct RequireLoginView: View {
                 GetCookieQRCodeView(cookie: $unsavedCookie)
             case .global:
                 GetCookieWebView(
-                    isShown: .init(get: {
-                        getCookieWebViewRegion != nil
-                    }, set: { newValue in
-                        if !newValue {
-                            getCookieWebViewRegion = nil
-                        }
-                    }),
+                    isShown: isCookieWebViewShown,
                     cookie: $unsavedCookie,
                     region: region
                 )
             }
         })
+    }
+
+    // MARK: Private
+
+    private var isUnsavedCookieInvalid: Bool {
+        (unsavedCookie ?? "").isEmpty
+    }
+
+    private var isCookieWebViewShown: Binding<Bool> {
+        .init(get: {
+            getCookieWebViewRegion != nil
+        }, set: { newValue in
+            if !newValue {
+                getCookieWebViewRegion = nil
+            }
+        })
+    }
+
+    private func assign(region givenRegion: Region) {
+        getCookieWebViewRegion = givenRegion
+        region = givenRegion
     }
 }
 
@@ -317,22 +339,49 @@ private enum GetAccountError: LocalizedError {
 // MARK: - ExplanationView
 
 private struct ExplanationView: View {
+    // MARK: Internal
+
     var body: some View {
         Group {
             Divider()
                 .padding(.vertical)
-            Text("account.explanation.title.1")
-                .font(.footnote)
-                .bold()
-            Text("account.explanation.1")
-                .font(.footnote)
-            Text("\n")
-                .font(.footnote)
-            Text("account.explanation.title.2")
-                .font(.footnote)
-                .bold()
-            Text("account.explanation.2")
-                .font(.footnote)
+            VStack(alignment: .leading, spacing: 9) {
+                Text(verbatim: beareOfTextHeader)
+                    .font(.callout)
+                    .bold()
+                    .foregroundColor(.red)
+                ForEach(beareOfTextContents, id: \.self) { currentLine in
+                    Text(verbatim: currentLine)
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                }
+                Text("account.explanation.title.1")
+                    .font(.callout)
+                    .bold()
+                    .padding(.top)
+                Text("account.explanation.1")
+                    .font(.subheadline)
+                Text("account.explanation.title.2")
+                    .font(.callout)
+                    .bold()
+                    .padding(.top)
+                Text("account.explanation.2")
+                    .font(.subheadline)
+            }
         }
+    }
+
+    // MARK: Private
+
+    private let bewareOfTextLines: [String] = String(
+        localized: .init(stringLiteral: "account.notice.bewareof")
+    ).split(separator: "\n\n").map(\.description)
+
+    private var beareOfTextHeader: String {
+        bewareOfTextLines.first ?? "BewareOf_Header"
+    }
+
+    private var beareOfTextContents: [String] {
+        Array(bewareOfTextLines.dropFirst())
     }
 }
