@@ -158,9 +158,6 @@ struct DisplayOptionsView: View {
     @Default(.useGuestGachaEvaluator)
     private var useGuestGachaEvaluator: Bool
 
-    @ObservedObject
-    private var viewModel: MoreViewCacheViewModel = .init()
-
     @State
     private var isCustomizedNameForWandererAlertShow: Bool = false
 

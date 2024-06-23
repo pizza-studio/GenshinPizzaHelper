@@ -16303,6 +16303,34 @@
         }
       }
     },
+    "app.miyoushe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miyoushe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米游社"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社"
+          }
+        }
+      }
+    },
     "app.name.short" : {
       "comment" : "Water mark",
       "localizations" : {
@@ -38310,70 +38338,6 @@
         }
       }
     },
-    "sys.contact.title.officialWebsite" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Official Website"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Official Website"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Official Website"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Official Website"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "https://pizzastudio.org"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Official Website"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Official Website"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Official Website"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "官方网站"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "官方網站"
-          }
-        }
-      }
-    },
     "sys.contact.title.groups" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -38463,6 +38427,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "個人主頁"
+          }
+        }
+      }
+    },
+    "sys.contact.title.officialWebsite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Website"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Website"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Website"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Website"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://pizzastudio.org"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Website"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Website"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Website"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "官方网站"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "官方網站"
           }
         }
       }
@@ -38877,6 +38905,98 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cookie"
+          }
+        }
+      }
+    },
+    "sys.manage_hoyolab_account" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage your HoYoLAB / Miyoushe account"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Administra tu cuenta de HoYoLAB / Miyoushe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "米遊社通行証 / HOYOVERSE通行証の管理"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Управление моей учетной записью HoYoLAB / Miyoushe"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quản lý tài khoản HoYoLAB / Miyoushe của bạn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理米游社 / HoYoLAB 通行证"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理米遊社 / HoYoLAB 通行證"
+          }
+        }
+      }
+    },
+    "sys.manage_hoyolab_account.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can register / manage / delete your HoYoLAB / Miyoushe account through the proceeding web page."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede registrar/administrar/eliminar su cuenta HoYoLAB/Miyoushe a través de la página web correspondiente."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ここでタップしてからのWebページで米遊社通行証・HOYOVERSE通行証のアカウントの「入会申込・管理・退会削除」はできます。"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы можете зарегистрировать/управлять/удалить свою учетную запись HoYoLAB/Miyoushe через соответствующую веб-страницу."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn có thể đăng ký/quản lý/xóa tài khoản HoYoLAB / Miyoushe của mình thông qua trang web tiếp tục."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以在点击该按钮之后前往的网页内注册/管理/注销您的米游社 / HoYoLAB 通行证。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以在點擊該按鈕之後前往的網頁內註冊/管理/註銷您的米遊社 / HoYoLAB 通行證。"
           }
         }
       }

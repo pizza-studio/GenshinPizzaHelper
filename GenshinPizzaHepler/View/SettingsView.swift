@@ -203,7 +203,7 @@ struct SettingsView: View {
                 case .contact:
                     ContactInfoView()
                 case .more:
-                    MoreView()
+                    OtherSettingsView()
                 case nil:
                     DisplayOptionsView()
                 }
