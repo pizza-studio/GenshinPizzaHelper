@@ -58,6 +58,8 @@
 		5BBCB6AB29E19A8F00C18A33 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		5BBCB6AD29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
 		5BBCB6AF29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */; };
+		5BCBAEF52C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBAEF42C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift */; };
+		5BCBAEF62C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBAEF42C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift */; };
 		5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210628B33D8300A6BBA9 /* AppDelegate.swift */; };
 		5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */; };
 		5BD1C5CC2A2A1FC90043C2B1 /* EachAvatarStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachAvatarStatView.swift */; };
@@ -844,6 +846,7 @@
 		5BB58AF12C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieWebView_Genshin.swift; sourceTree = "<group>"; };
 		5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieQRCodeView.swift; sourceTree = "<group>"; };
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
+		5BCBAEF42C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieQRCodeView_Genshin.swift; sourceTree = "<group>"; };
 		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
 		5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
@@ -1656,6 +1659,7 @@
 				EA759D612B19989A0080C775 /* TestAccountSectionView.swift */,
 				EA759D622B19989A0080C775 /* EditAccountView.swift */,
 				5BB792AE2C1067BC00AFCBF5 /* GetCookieQRCodeView.swift */,
+				5BCBAEF42C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift */,
 				EA759D632B19989A0080C775 /* GetCookieWebView.swift */,
 				5BB58AF12C1F4FDB00793C0A /* GetCookieWebView_Genshin.swift */,
 			);
@@ -2526,6 +2530,7 @@
 				5BD1C6262A2A1FC90043C2B1 /* AllEventsView.swift in Sources */,
 				5BD1C6282A2A1FC90043C2B1 /* CircleClippedBackground.swift in Sources */,
 				5BD1C6292A2A1FC90043C2B1 /* SwiftUIExtensions.swift in Sources */,
+				5BCBAEF62C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift in Sources */,
 				5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */,
 				5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */,
 				5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */,
@@ -2919,6 +2924,7 @@
 				EAF8AC1C29C758750047D36C /* CircleClippedBackground.swift in Sources */,
 				5B918A2F29D2B3AC00F5B93D /* SwiftUIExtensions.swift in Sources */,
 				BFE42558289FA00B00FEFA49 /* RecoveryTimeTextView.swift in Sources */,
+				5BCBAEF52C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
 				EA025C8829D287970075F780 /* GachaKey.swift in Sources */,
