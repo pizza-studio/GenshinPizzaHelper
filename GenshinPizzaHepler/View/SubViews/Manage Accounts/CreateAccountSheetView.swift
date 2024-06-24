@@ -39,12 +39,14 @@ struct CreateAccountSheetView: View {
             .navigationTitle("settings.account.addAccount")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("sys.done") {
-                        saveAccount()
-                        globalDailyNoteCardRefreshSubject.send(())
+                if status != .pending {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("sys.done") {
+                            saveAccount()
+                            globalDailyNoteCardRefreshSubject.send(())
+                        }
+                        .disabled(status != .gotAccount)
                     }
-                    .disabled(status != .gotAccount)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("sys.cancel") {
@@ -122,34 +124,37 @@ struct CreateAccountSheetView: View {
 
     @ViewBuilder
     func pendingView() -> some View {
-        Section {
-            RequireLoginView(unsavedCookie: $account.cookie, region: $region)
-        } footer: {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("account.login.manual.1")
-                        .font(.footnote)
-                    NavigationLink {
-                        AccountDetailView(account: account)
-                    } label: {
-                        Text("account.login.manual.2")
-                            .font(.footnote)
-                    }
-                    Text(verbatim: " || ")
-                    Menu {
-                        OtherSettingsView.linksForManagingHoYoLabAccounts
-                    } label: {
+        Group {
+            Section {
+                RequireLoginView(unsavedCookie: $account.cookie, region: $region)
+                Menu {
+                    OtherSettingsView.linksForManagingHoYoLabAccounts
+                } label: {
+                    Color.clear.overlay {
                         Group {
                             Text("sys.manage_hoyolab_account") + Text(verbatim: "(Safari)")
                         }
                         .font(.footnote)
-                    }
+                    }.clipShape(Rectangle())
                 }
-                ExplanationView()
+            } footer: {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("account.login.manual.1")
+                        NavigationLink {
+                            AccountDetailView(account: account)
+                        } label: {
+                            Text("account.login.manual.2")
+                                .font(.footnote)
+                        }
+                    }
+                    Divider().padding(.vertical)
+                    ExplanationView()
+                }
             }
         }
-        .onChange(of: account.cookie) { newValue in
-            if newValue != nil, newValue != "" {
+        .onChange(of: account.cookie) { _ in
+            if account.hasValidCookie {
                 status = .gotCookie
             }
         }
@@ -343,8 +348,6 @@ private struct ExplanationView: View {
 
     var body: some View {
         Group {
-            Divider()
-                .padding(.vertical)
             VStack(alignment: .leading, spacing: 9) {
                 Text(verbatim: beareOfTextHeader)
                     .font(.callout)

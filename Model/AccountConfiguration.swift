@@ -44,6 +44,10 @@ extension AccountConfiguration {
         }
     }
 
+    public var hasValidCookie: Bool {
+        !(cookie ?? "").isEmpty
+    }
+
     @NSManaged
     public var deviceFingerPrint: String?
     var safeDeviceFingerPrint: String {
