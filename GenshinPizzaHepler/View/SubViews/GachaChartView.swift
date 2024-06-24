@@ -15,6 +15,8 @@ import SwiftUI
 
 @available(iOS 16.0, *)
 struct GachaChartView: View {
+    // MARK: Internal
+
     @EnvironmentObject
     var gachaViewModel: GachaViewModel
 
@@ -24,62 +26,33 @@ struct GachaChartView: View {
     )])
     var accounts: FetchedResults<AccountConfiguration>
 
+    @ViewBuilder
+    var listHeader: some View {
+        HStack {
+            Text(
+                gachaViewModel.filter.gachaType.localizedDescription()
+            )
+            Spacer()
+            Button(
+                "app.gacha.chart.switch.button:\(gachaViewModel.filter.gachaType.nextOne().localizedDescription())"
+            ) {
+                withAnimation {
+                    gachaViewModel.filter.gachaType = gachaViewModel
+                        .filter.gachaType.nextOne()
+                }
+            }
+            .font(.caption)
+        }
+        .textCase(.none)
+    }
+
     var body: some View {
         List {
-//            NavigationLink {
-//                List {
-//                    Section {
-//                        ForEach(
-//                            [
-//                                GachaType.character,
-//                                GachaType.weapon,
-//                                GachaType.standard,
-//                            ],
-//                            id: \.rawValue
-//                        ) { type in
-//                            VStack(alignment: .trailing, spacing: 0) {
-//                                Text(type.localizedDescription()).font(.caption)
-//                                    .foregroundColor(.gray)
-//                                GachaTimeChart(
-//                                    gachaViewModel: gachaViewModel,
-//                                    type: type
-//                                )
-//                            }
-//                        }
-//                    } header: {
-//                        Text("总抽数分布")
-//                    }
-//                    .navigationTitle("其他图表")
-//                }
-//            } label: {
-//                Label(
-//                    "其他图表",
-//                    systemSymbol: .chartBarDocHorizontal
-//                )
-//            }
             Section {
-                GachaItemChart(
-                    items: gachaViewModel
-                        .filteredGachaItemsWithCount
-                )
-                .environmentObject(gachaViewModel)
+                GachaItemChart(items: gachaViewModel.filteredGachaItemsWithCount)
+                    .environmentObject(gachaViewModel)
             } header: {
-                HStack {
-                    Text(
-                        gachaViewModel.filter.gachaType.localizedDescription()
-                    )
-                    Spacer()
-                    Button(
-                        "app.gacha.chart.switch.button:\(gachaViewModel.filter.gachaType.nextOne().localizedDescription())"
-                    ) {
-                        withAnimation {
-                            gachaViewModel.filter.gachaType = gachaViewModel
-                                .filter.gachaType.nextOne()
-                        }
-                    }
-                    .font(.caption)
-                }
-                .textCase(.none)
+                listHeader
             }
         }
         .toolbar {
@@ -90,16 +63,8 @@ struct GachaChartView: View {
                         id: \.self
                     ) { uid in
                         Group {
-                            if let name: String = accounts
-                                .first(where: { $0.uid == uid })?
-                                .name {
-                                Button(name) {
-                                    gachaViewModel.filter.uid = uid
-                                }
-                            } else {
-                                Button(uid) {
-                                    gachaViewModel.filter.uid = uid
-                                }
+                            Button(convertUIDtoNameTitleString(uid: uid)) {
+                                gachaViewModel.filter.uid = uid
                             }
                         }
                     }
@@ -107,13 +72,7 @@ struct GachaChartView: View {
                     HStack {
                         Image(systemSymbol: .arrowLeftArrowRightCircle)
                         if let uid: String = gachaViewModel.filter.uid {
-                            if let name: String = accounts
-                                .first(where: { $0.uid == uid })?
-                                .name {
-                                Text(name)
-                            } else {
-                                Text(uid)
-                            }
+                            Text(convertUIDtoNameTitleString(uid: uid))
                         } else {
                             Text("app.gacha.get.button")
                         }
@@ -122,6 +81,12 @@ struct GachaChartView: View {
                 .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
             }
         }
+    }
+
+    // MARK: Private
+
+    private func convertUIDtoNameTitleString(uid: String) -> String {
+        accounts.first(where: { $0.uid == uid })?.name ?? uid
     }
 }
 
@@ -165,9 +130,9 @@ private struct GachaItemChart: View {
                 let isFirst = fiveStarItems.first!.0.id == chunked.first!.0.id
                 let isLast = fiveStarItems.last!.0.id == chunked.last!.0.id
                 if isFirst {
-                    subChart(items: chunked, isFirst: isFirst, isLast: isLast).padding(.top)
+                    subChart(givenItems: chunked, isFirst: isFirst, isLast: isLast).padding(.top)
                 } else {
-                    subChart(items: chunked, isFirst: isFirst, isLast: isLast)
+                    subChart(givenItems: chunked, isFirst: isFirst, isLast: isLast)
                 }
             }
         }
@@ -194,96 +159,113 @@ private struct GachaItemChart: View {
         }
     }
 
+    // MARK: Private
+
+    private typealias ItemPair = (GachaItem, count: Int)
+
+    @Default(.useGuestGachaEvaluator)
+    private var useGuestGachaEvaluator: Bool
+
     @ViewBuilder
-    func subChart(items: [(GachaItem, count: Int)], isFirst: Bool, isLast: Bool) -> some View {
+    private func subChart(
+        givenItems: [ItemPair],
+        isFirst: Bool,
+        isLast: Bool
+    )
+        -> some View {
         Chart {
             ForEach(items, id: \.0.id) { item in
-                BarMark(
-                    x: .value("sys.pull", item.count),
-                    y: .value("角色", item.0.id),
-                    width: 20
-                )
-                .annotation(position: .trailing) {
-                    HStack(spacing: 3) {
-                        let frame: CGFloat = 35
-                        Text("\(item.count)").foregroundColor(.gray)
-                            .font(.caption)
-                        if item.0.isLose5050() {
-                            Image(lose5050IconStr).resizable().scaledToFit()
-                                .frame(width: frame, height: frame)
-                                .offset(y: -5)
-                        } else {
-                            EmptyView()
-                        }
-                    }
-                }
-                .foregroundStyle(by: .value("sys.pull", item.0.id))
+                drawChartContent(for: item)
             }
             if !fiveStarItems.isEmpty {
-                RuleMark(x: .value(
-                    "平均",
-                    fiveStarItems.map { $0.count }
-                        .reduce(0, +) / max(fiveStarItems.count, 1)
-                ))
-                .foregroundStyle(.gray)
-                .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
-                .annotation(alignment: .topLeading) {
-                    if isFirst {
-                        Text(
-                            "app.gacha.avg.pull"
-                                .localized + averagePullsCount.description
-                        )
-                        .font(.caption).foregroundColor(.gray)
+                RuleMark(x: .value("平均", averagePullsCount))
+                    .foregroundStyle(.gray)
+                    .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
+                    .annotation(alignment: .topLeading) {
+                        if isFirst {
+                            Text(
+                                verbatim:
+                                "app.gacha.avg.pull".localized
+                                    + averagePullsCount.description
+                            )
+                            .font(.caption).foregroundColor(.gray)
+                        }
                     }
-                }
             }
         }
-        .chartYAxis(content: {
-            AxisMarks(preset: .aligned, position: .leading) { value in
-                AxisValueLabel(content: {
-                    if let id = value.as(String.self),
-                       let item = items
-                       .first(where: { $0.0.id == id })?.0 {
-                        item.decoratedIconView(45, cutTo: .head)
-                    } else {
-                        EmptyView()
-                    }
-                })
-            }
-            AxisMarks { value in
-                AxisValueLabel(content: {
-                    if let theValue = value.as(String.self),
-                       let item = matchedItems(with: theValue).first {
-                        Text(item.localizedName)
-                            .offset(y: items.count == 1 ? 0 : 8)
-                    } else {
-                        EmptyView()
-                    }
-                })
-            }
-        })
-        .chartXAxis(content: {
-            AxisMarks(values: [0, 25, 50, 75, 100]) { _ in
-                AxisGridLine()
-                if isLast {
-                    AxisValueLabel()
-                } else {
-                    AxisValueLabel {
-                        EmptyView()
-                    }
-                }
-            }
-        })
+        .chartYAxis {
+            axisContentY()
+        }
+        .chartXAxis {
+            axisContentX(isLast: isLast)
+        }
         .chartXScale(domain: 0 ... 110)
         .frame(height: CGFloat(items.count * 65))
         .chartForegroundStyleScale(range: colors(items: items))
         .chartLegend(.hidden)
     }
 
-    // MARK: Private
+    @ChartContentBuilder
+    private func drawChartContent(for item: ItemPair) -> some ChartContent {
+        BarMark(
+            x: .value("sys.pull", item.count),
+            y: .value("角色", item.0.id),
+            width: 20
+        )
+        .annotation(position: .trailing) {
+            HStack(spacing: 3) {
+                let frame: CGFloat = 35
+                Text("\(item.count)").foregroundColor(.gray).font(.caption)
+                if item.0.isLose5050() {
+                    Image(lose5050IconStr).resizable().scaledToFit()
+                        .frame(width: frame, height: frame)
+                        .offset(y: -5)
+                } else {
+                    EmptyView()
+                }
+            }
+        }
+        .foregroundStyle(by: .value("sys.pull", item.0.id))
+    }
 
-    @Default(.useGuestGachaEvaluator)
-    private var useGuestGachaEvaluator: Bool
+    @AxisContentBuilder
+    private func axisContentY() -> some AxisContent {
+        AxisMarks(preset: .aligned, position: .leading) { value in
+            AxisValueLabel(content: {
+                if let id = value.as(String.self),
+                   let item = matchedItems(with: id).first {
+                    item.decoratedIconView(45, cutTo: .head)
+                } else {
+                    EmptyView()
+                }
+            })
+        }
+        AxisMarks { value in
+            AxisValueLabel(content: {
+                if let theValue = value.as(String.self),
+                   let item = matchedItems(with: theValue).first {
+                    Text(item.localizedName)
+                        .offset(y: items.count == 1 ? 0 : 8)
+                } else {
+                    EmptyView()
+                }
+            })
+        }
+    }
+
+    @AxisContentBuilder
+    private func axisContentX(isLast: Bool) -> some AxisContent {
+        AxisMarks(values: [0, 25, 50, 75, 100]) { _ in
+            AxisGridLine()
+            if isLast {
+                AxisValueLabel()
+            } else {
+                AxisValueLabel {
+                    EmptyView()
+                }
+            }
+        }
+    }
 }
 
 // MARK: - GachaTimeChart
@@ -308,18 +290,15 @@ private struct GachaTimeChart: View {
     }
 
     var gachaTypeDateCount: [GachaTypeDateCountAndIfContain5Star] {
-        let dates = Set<Date>(itemsFiltered.map { $0.time })
+        let dates = Set<Date>(itemsFiltered.map(\.time))
         return dates.map { date in
-            GachaTypeDateCountAndIfContain5Star(
+            let count: Int = itemsFiltered.filter { $0.time <= date }.count
+            let contains5Star: Bool = !itemsFiltered.filter { $0.time == date && $0.rankType == .five }.isEmpty
+            return GachaTypeDateCountAndIfContain5Star(
                 date: date,
-                count: itemsFiltered
-                    .filter { $0.time <= date }
-                    .count,
+                count: count,
                 type: type,
-                contain5Star: itemsFiltered
-                    .filter { $0.time == date }
-                    .contains(where: { $0.rankType == .five }) ? "true" :
-                    "false"
+                contain5Star: contains5Star ? "true" : "false"
             )
         }.sorted(by: { $0.date > $1.date })
     }
