@@ -75,10 +75,8 @@ struct GetCookieQRCodeView: View {
         viewModel.scanningConfirmationStatus = .automatically(task)
     }
 
-    private func loginCheckScannedButtonDidPressed(ticket: String) async {
-        if case let .automatically(task) = viewModel.scanningConfirmationStatus {
-            task.cancel()
-        }
+    private func loginCheckScannedButtonDidPress(ticket: String) async {
+        viewModel.cancelAllConfirmationTasks(resetState: false)
         let task = Task.detached { @MainActor in
             do {
                 let status = try await MiHoYoAPI.queryQRCodeStatus(
@@ -151,7 +149,7 @@ struct GetCookieQRCodeView: View {
         }
     }
 
-    var body: some View {
+    public var body: some View {
         NavigationStack {
             List {
                 Section {
@@ -163,7 +161,7 @@ struct GetCookieQRCodeView: View {
                         } else {
                             Button("account.qr_code_login.check_scanned") {
                                 Task {
-                                    await loginCheckScannedButtonDidPressed(
+                                    await loginCheckScannedButtonDidPress(
                                         ticket: qrCodeAndTicket.ticket
                                     )
                                 }
@@ -209,6 +207,9 @@ struct GetCookieQRCodeView: View {
                     }
                 }
             }
+        }
+        .onDisappear {
+            viewModel.cancelAllConfirmationTasks(resetState: true)
         }
     }
 }
@@ -272,6 +273,17 @@ class GetCookieQRCodeViewModel: ObservableObject {
             if error != nil {
                 qrCodeAndTicket = nil
             }
+        }
+    }
+
+    func cancelAllConfirmationTasks(resetState: Bool) {
+        switch scanningConfirmationStatus {
+        case let .automatically(task), let .manually(task):
+            task.cancel()
+            if resetState {
+                scanningConfirmationStatus = .idle
+            }
+        case .idle: return
         }
     }
 }
