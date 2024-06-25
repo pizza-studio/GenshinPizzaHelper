@@ -241,7 +241,7 @@ private struct RequireLoginView: View {
                 if isUnsavedCookieInvalid {
                     Text("settings.account.loginViaMiyousheOrHoyoLab")
                 } else {
-                    Text("settings.account.reloginHoyoLabAccount")
+                    Text("settings.account.loginViaMiyousheOrHoyoLab.relogin")
                 }
             }
             .frame(

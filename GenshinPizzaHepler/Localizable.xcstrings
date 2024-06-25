@@ -31049,61 +31049,126 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Login via HoYoLAB"
+            "value" : "Login via HoYoLAB / Miyoushe"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mag-login gamit ng HoYoLAB"
+            "value" : "Mag-login gamit ng HoYoLAB / Miyoushe"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Connection via HoYoLAB"
+            "value" : "Connection via HoYoLAB / Miyoushe"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Login via HoYoLAB"
+            "value" : "Login via HoYoLAB / Miyoushe"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "HoYoLABからログイン"
+            "value" : "HoYoLAB・米遊社通行証ログイン"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Login via HoYoLAB"
+            "value" : "Login via HoYoLAB / Miyoushe"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Войти с помощью HoYoLAB"
+            "value" : "Войти с помощью HoYoLAB / Miyoushe"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đăng nhập bằng HoYoLAB"
+            "value" : "Đăng nhập bằng HoYoLAB / Miyoushe"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "登录米哈游通行证账号"
+            "value" : "登录米游社 / HoYoLAB 通行证"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "登入米哈遊通行證帳號"
+            "value" : "登入米遊社 / HoYoLAB 通行證"
+          }
+        }
+      }
+    },
+    "settings.account.loginViaMiyousheOrHoyoLab.relogin" : {
+      "comment" : "Account detail",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relogin to HoYoLAB / Miyoushe"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mag-login ulit sa HoYoLAB / Miyoushe"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reconnection à HoYoLAB / Miyoushe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relogin to HoYoLAB / Miyoushe"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HoYoLAB・米遊社通行証の再ログイン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relogin to HoYoLAB / Miyoushe"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перезайти в HoYoLAB / Miyoushe"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đăng nhập lại bằng HoYoLAB / Miyoushe"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新登录米游社 / HoYoLAB 通行证"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新登入米遊社 / HoYoLAB 通行證"
           }
         }
       }
@@ -31780,71 +31845,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "陸服"
-          }
-        }
-      }
-    },
-    "settings.account.reloginHoyoLabAccount" : {
-      "comment" : "Account detail",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Relogin to HoYoLAB"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mag-login ulit sa HoYoLAB"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reconnection à HoYoLAB"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Relogin to HoYoLAB"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HoYoLABに再度ログインします"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Relogin to HoYoLAB"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перезайти в HoYoLAB"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Đăng nhập lại bằng HoYoLAB"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新登录米哈游通行证账号"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新登入米哈遊通行證帳號"
           }
         }
       }
