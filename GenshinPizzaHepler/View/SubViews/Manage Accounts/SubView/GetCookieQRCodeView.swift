@@ -207,9 +207,6 @@ struct GetCookieQRCodeView: View {
                 }
             }
         }
-        .onDisappear {
-            viewModel.cancelAllConfirmationTasks(resetState: true)
-        }
     }
 }
 
