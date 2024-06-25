@@ -78,7 +78,7 @@ final class DetailPortalViewModel: ObservableObject {
     }
 
     func refresh() {
-        Task {
+        Task.detached { @MainActor [self] in
             await fetchPlayerDetail()
             await fetchBasicInfo()
             await fetchSpiralAbyssInfoCurrent()
@@ -93,7 +93,7 @@ final class DetailPortalViewModel: ObservableObject {
     func fetchCharacterInventoryList() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = characterInventoryStatus { task?.cancel() }
-        let task = Task {
+        let task = Task.detached { @MainActor in
             do {
                 let result = try await MiHoYoAPI.allAvatarDetail(
                     server: account.server,
@@ -102,18 +102,18 @@ final class DetailPortalViewModel: ObservableObject {
                     deviceFingerPrint: account.safeDeviceFingerPrint,
                     deviceId: account.safeUuid
                 )
-                Task {
+                Task.detached { @MainActor in
                     withAnimation {
                         self.characterInventoryStatus = .succeed(result)
                     }
                 }
             } catch {
-                Task {
+                Task.detached { @MainActor in
                     self.characterInventoryStatus = .fail(error)
                 }
             }
         }
-        Task {
+        Task.detached { @MainActor in
             self.characterInventoryStatus = .progress(task)
         }
     }
@@ -124,7 +124,7 @@ final class DetailPortalViewModel: ObservableObject {
             guard Date() > refreshableDate else { return }
         }
         if case let .progress(task) = playerDetailStatus { task?.cancel() }
-        let task = Task {
+        let task = Task.detached { @MainActor [self] in
             do {
                 let fetchedModel = try await API.OpenAPIs.fetchPlayerDetail(
                     selectedAccount.safeUid,
@@ -140,7 +140,7 @@ final class DetailPortalViewModel: ObservableObject {
                 )
                 refreshCostumeMap(playerDetail: playerDetail)
                 currentBasicInfo = playerDetail.basicInfo
-                Task {
+                Task.detached { @MainActor in
                     withAnimation {
                         self.playerDetailStatus = .succeed((
                             playerDetail,
@@ -149,12 +149,12 @@ final class DetailPortalViewModel: ObservableObject {
                     }
                 }
             } catch {
-                Task {
+                Task.detached { @MainActor in
                     self.playerDetailStatus = .fail(error)
                 }
             }
         }
-        Task {
+        Task.detached { @MainActor in
             withAnimation {
                 self.playerDetailStatus = .progress(task)
             }
@@ -164,7 +164,7 @@ final class DetailPortalViewModel: ObservableObject {
     func fetchBasicInfo() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = basicInfoStatus { task?.cancel() }
-        let task = Task {
+        let task = Task.detached { @MainActor in
             do {
                 let result = try await MiHoYoAPI.basicInfo(
                     server: account.server,
@@ -173,18 +173,18 @@ final class DetailPortalViewModel: ObservableObject {
                     deviceFingerPrint: account.safeDeviceFingerPrint,
                     deviceId: account.safeUuid
                 )
-                Task {
+                Task.detached { @MainActor in
                     withAnimation {
                         self.basicInfoStatus = .succeed(result)
                     }
                 }
             } catch {
-                Task {
+                Task.detached { @MainActor in
                     self.basicInfoStatus = .fail(error)
                 }
             }
         }
-        Task {
+        Task.detached { @MainActor in
             withAnimation {
                 self.basicInfoStatus = .progress(task)
             }
@@ -194,7 +194,7 @@ final class DetailPortalViewModel: ObservableObject {
     func fetchSpiralAbyssInfoPrevious() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = spiralAbyssDetailStatusPrevious { task?.cancel() }
-        let task = Task {
+        let task = Task.detached { @MainActor in
             do {
                 let result = try await MiHoYoAPI.abyssData(
                     round: .last,
@@ -204,18 +204,18 @@ final class DetailPortalViewModel: ObservableObject {
                     deviceFingerPrint: account.safeDeviceFingerPrint,
                     deviceId: account.safeUuid
                 )
-                Task {
+                Task.detached { @MainActor in
                     withAnimation {
                         self.spiralAbyssDetailStatusPrevious = .succeed(result)
                     }
                 }
             } catch {
-                Task {
+                Task.detached { @MainActor in
                     self.spiralAbyssDetailStatusPrevious = .fail(error)
                 }
             }
         }
-        Task {
+        Task.detached { @MainActor in
             withAnimation {
                 self.spiralAbyssDetailStatusPrevious = .progress(task)
             }
@@ -225,7 +225,7 @@ final class DetailPortalViewModel: ObservableObject {
     func fetchSpiralAbyssInfoCurrent() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = spiralAbyssDetailStatusCurrent { task?.cancel() }
-        let task = Task {
+        let task = Task.detached { @MainActor in
             do {
                 let result = try await MiHoYoAPI.abyssData(
                     round: .this,
@@ -235,18 +235,18 @@ final class DetailPortalViewModel: ObservableObject {
                     deviceFingerPrint: account.safeDeviceFingerPrint,
                     deviceId: account.safeUuid
                 )
-                Task {
+                Task.detached { @MainActor in
                     withAnimation {
                         self.spiralAbyssDetailStatusCurrent = .succeed(result)
                     }
                 }
             } catch {
-                Task {
+                Task.detached { @MainActor in
                     self.spiralAbyssDetailStatusCurrent = .fail(error)
                 }
             }
         }
-        Task {
+        Task.detached { @MainActor in
             withAnimation {
                 self.spiralAbyssDetailStatusCurrent = .progress(task)
             }
@@ -256,7 +256,7 @@ final class DetailPortalViewModel: ObservableObject {
     func fetchLedgerData() async {
         guard let account = selectedAccount else { return }
         if case let .progress(task) = ledgerDataStatus { task?.cancel() }
-        let task = Task {
+        let task = Task.detached { @MainActor in
             do {
                 let month = Calendar.current.dateComponents([.month], from: Date()).month!
                 let result = try await MiHoYoAPI.ledgerData(
@@ -265,18 +265,18 @@ final class DetailPortalViewModel: ObservableObject {
                     server: account.server,
                     cookie: account.safeCookie
                 )
-                Task {
+                Task.detached { @MainActor in
                     withAnimation {
                         self.ledgerDataStatus = .succeed(result)
                     }
                 }
             } catch {
-                Task {
+                Task.detached { @MainActor in
                     self.ledgerDataStatus = .fail(error)
                 }
             }
         }
-        Task {
+        Task.detached { @MainActor in
             withAnimation {
                 self.ledgerDataStatus = .progress(task)
             }
@@ -788,7 +788,7 @@ private struct PlayerDetailSection: View {
                                 avatar.characterAsset.cardIcon(75)
                             }
                             .onChange(of: artifactRatingOptions) { _ in
-                                Task {
+                                Task.detached { @MainActor in
                                     withAnimation {
                                         avatar.fetchArtifactRatings()
                                     }
@@ -838,7 +838,7 @@ private struct PlayerDetailSection: View {
                 InfiniteProgressBar().id(UUID())
             case let .fail(error):
                 DPVErrorView(account: account, apiPath: "", error: error) {
-                    Task {
+                    Task.detached { @MainActor in
                         await vmDPV.fetchPlayerDetail()
                     }
                 }
@@ -899,7 +899,7 @@ private struct CharInventoryNavigator: View {
                     apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/character",
                     error: error
                 ) {
-                    Task {
+                    Task.detached { @MainActor in
                         await vmDPV.fetchCharacterInventoryList()
                     }
                 }
@@ -959,7 +959,7 @@ private struct LedgerDataNavigator: View {
                         apiPath: "https://hk4e-api.mihoyo.com/event/ys_ledger/monthInfo",
                         error: error
                     ) {
-                        Task {
+                        Task.detached { @MainActor in
                             await vmDPV.fetchLedgerData()
                         }
                     }
@@ -1037,7 +1037,7 @@ private struct AbyssInfoNavigator: View {
                         apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/spiralAbyss",
                         error: error
                     ) {
-                        Task {
+                        Task.detached { @MainActor in
                             await vmDPV.fetchSpiralAbyssInfoCurrent()
                         }
                     }
@@ -1286,7 +1286,7 @@ private struct BasicInfoNavigator: View {
                     apiPath: "https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index",
                     error: error
                 ) {
-                    Task {
+                    Task.detached { @MainActor in
                         await vmDPV.fetchBasicInfo()
                     }
                 }
@@ -1604,7 +1604,7 @@ private struct VerificationNeededView: View {
                             challenge: verification.challenge,
                             gt: verification.gt,
                             completion: { validate in
-                                Task {
+                                Task.detached { @MainActor in
                                     status = .pending
                                     verifyValidate(challenge: verification.challenge, validate: validate)
                                     sheetItem = nil
@@ -1640,7 +1640,7 @@ private struct VerificationNeededView: View {
                     deviceFingerPrint: account.deviceFingerPrint, challengePath: challengePath,
                     deviceId: account.safeUuid
                 )
-                Task {
+                Task.detached { @MainActor in
                     status = .gotVerification(verification)
                     sheetItem = .gotVerification(verification)
                 }
@@ -1651,7 +1651,7 @@ private struct VerificationNeededView: View {
     }
 
     func verifyValidate(challenge: String, validate: String) {
-        Task {
+        Task.detached { @MainActor in
             do {
                 _ = try await MiHoYoAPI.verifyVerification(
                     challenge: challenge,
