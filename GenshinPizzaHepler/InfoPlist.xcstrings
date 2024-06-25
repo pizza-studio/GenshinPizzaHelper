@@ -211,66 +211,65 @@
     },
     "NSPhotoLibraryAddUsageDescription" : {
       "comment" : "Privacy - Photo Library Additions Usage Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please allow images to be saved"
+            "value" : "This permission allows this app to write generated images to Photos library when user requested this app to do, including QR Codes, etc."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paki-payagan ang mga imahe na mai-save"
+            "value" : "Ang pahintulot na ito ay nagbibigay-daan sa app na ito na magsulat ng mga nabuong larawan sa Photos library kapag hiniling ng user na gawin ang app na ito, kabilang ang mga QR Code, atbp."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Merci d'autoriser les images à être enregistrée"
+            "value" : "Cette autorisation permet à cette application d'écrire les images générées dans la bibliothèque de photos lorsque l'utilisateur a demandé à cette application de le faire, y compris les codes QR, etc."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please allow images to be saved"
+            "value" : "Questa autorizzazione consente a questa app di scrivere le immagini generate nella libreria Foto quando l'utente lo richiede, inclusi i codici QR, ecc."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "画像を保存することを許可してください"
+            "value" : "ユーザーの命令により、アプリが生成した画像（QRコードなど）をPhotosアプリに書き出す権限許可です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please allow images to be saved"
+            "value" : "이 권한을 사용하면 사용자가 이 앱에 QR 코드 등을 포함하여 요청한 경우 이 앱이 생성된 이미지를 사진 라이브러리에 쓸 수 있습니다."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пожалуйста, разрешите сохранять скриншоты"
+            "value" : "Это разрешение позволяет этому приложению записывать сгенерированные изображения в библиотеку фотографий по запросу пользователя, включая QR-коды и т. д."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cho phép quyền lưu và truy cập ảnh vào máy"
+            "value" : "Quyền này cho phép ứng dụng này ghi các hình ảnh đã tạo vào thư viện Ảnh khi người dùng yêu cầu ứng dụng này thực hiện, bao gồm cả Mã QR, v.v."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "请允许保存图片"
+            "state" : "translated",
+            "value" : "该准许令将允许该 App 在使用者要求的时候将生成的图片档案（比如 QR Code 二维码）写入到系统内建的照片应用内。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "請允許保存圖片"
+            "value" : "該准許令將允許該 App 在使用者要求的時候將生成的圖片檔案（比如 QR Code）寫入到系統內建的照片應用內。"
           }
         }
       }

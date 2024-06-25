@@ -848,7 +848,6 @@
 		5BBCB6AC29E19E6B00C18A33 /* EnkaAPISwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnkaAPISwiftUIExtensions.swift; sourceTree = "<group>"; };
 		5BCBAEF42C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookieQRCodeView_Genshin.swift; sourceTree = "<group>"; };
 		5BD1C6802A2A1FC90043C2B1 /* GenshinPizzaHelperSansWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinPizzaHelperSansWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GenshinPizzaHeplerSansWatch-Info.plist"; path = "/Users/shikisuen/Repos/GenshinPizzaHelper/GenshinPizzaHeplerSansWatch-Info.plist"; sourceTree = "<absolute>"; };
 		5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
 		BF01309F29220E7800074450 /* WidgetUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUserData.swift; sourceTree = "<group>"; };
 		BF068BD428A335F9002E7334 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
@@ -1841,7 +1840,6 @@
 				BF7500FA28E0445300CDA64E /* Resources */,
 				EAAF330828A276360018EFAB /* View */,
 				EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */,
-				5BD1C6812A2A1FC90043C2B1 /* GenshinPizzaHeplerSansWatch-Info.plist */,
 				EA1B76762886B89F007A5216 /* Info.plist */,
 				BF70210628B33D8300A6BBA9 /* AppDelegate.swift */,
 				EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */,
