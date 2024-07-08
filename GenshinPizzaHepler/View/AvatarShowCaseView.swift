@@ -1,5 +1,5 @@
 //
-//  CharacterDetailView.swift
+//  AvatarShowCaseView.swift
 //  GenshinPizzaHepler
 //
 //  Created by 戴藏龙 on 2022/10/3.
@@ -8,9 +8,9 @@
 import GIPizzaKit
 import SwiftUI
 
-// MARK: - CharacterDetailView
+// MARK: - AvatarShowCaseView
 
-struct CharacterDetailView: View {
+struct AvatarShowCaseView: View {
     // MARK: Internal
 
     var account: AccountConfiguration

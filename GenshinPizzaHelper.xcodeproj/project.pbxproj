@@ -144,7 +144,7 @@
 		5BD1C6372A2A1FC90043C2B1 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
 		5BD1C6382A2A1FC90043C2B1 /* ExportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8978D729DA716400E0903E /* ExportGachaView.swift */; };
 		5BD1C6392A2A1FC90043C2B1 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07C65528B11DB40030E338 /* NotificationSettingView.swift */; };
-		5BD1C63A2A2A1FC90043C2B1 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */; };
+		5BD1C63A2A2A1FC90043C2B1 /* AvatarShowCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* AvatarShowCaseView.swift */; };
 		5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09A02428A2C2E60023B4AF /* IntentHandler.swift */; };
 		5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC064D28C6154F003E4A54 /* ProxySettingsView.swift */; };
 		5BD1C63D2A2A1FC90043C2B1 /* HideTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD29446290E717A00716EF7 /* HideTabBar.swift */; };
@@ -618,7 +618,7 @@
 		EAD7F03128D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7F02D28D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift */; };
 		EADCC0A828A518F000358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
 		EADCC0AB28A51A2500358B5E /* WidgetViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */; };
-		EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */; };
+		EADE317028EB31EA00CB7354 /* AvatarShowCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE316F28EB31EA00CB7354 /* AvatarShowCaseView.swift */; };
 		EAE2AD4829D3D06900FF9612 /* ContainGachaItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */; };
 		EAE2C89D2B2DA2F8004304D2 /* WidgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACDCB3D2B2D9D83005D1D74 /* WidgetError.swift */; };
 		EAE2C89E2B2DA2F9004304D2 /* WidgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACDCB3D2B2D9D83005D1D74 /* WidgetError.swift */; };
@@ -1069,7 +1069,7 @@
 		EAD7F02928D01B8C0047A8F1 /* AlternativeLockScreenResinWidgetCircular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidgetCircular.swift; sourceTree = "<group>"; };
 		EAD7F02D28D01F2A0047A8F1 /* AlternativeLockScreenResinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeLockScreenResinWidget.swift; sourceTree = "<group>"; };
 		EADCC0A628A516BC00358B5E /* WidgetViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewConfiguration.swift; sourceTree = "<group>"; };
-		EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		EADE316F28EB31EA00CB7354 /* AvatarShowCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShowCaseView.swift; sourceTree = "<group>"; };
 		EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainGachaItemInfo.swift; sourceTree = "<group>"; };
 		EAE326C528A79A0C0009908E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		EAE569FA28EFBB54000D6856 /* AbyssDetailDataDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbyssDetailDataDisplayView.swift; sourceTree = "<group>"; };
@@ -1725,7 +1725,7 @@
 				EA0281082B79DD96003FE7AF /* Dictionary */,
 				BF0D437F28C3897600FA600F /* SecondaryViews */,
 				BFE4254E289F6BA100FEFA49 /* SubViews */,
-				EADE316F28EB31EA00CB7354 /* CharacterDetailView.swift */,
+				EADE316F28EB31EA00CB7354 /* AvatarShowCaseView.swift */,
 				BF70210828B3909F00A6BBA9 /* ContentView.swift */,
 				BFB101D228D5C579000DC631 /* DetailPortalView.swift */,
 				BF70210A28B3910800A6BBA9 /* HomeView.swift */,
@@ -2542,7 +2542,7 @@
 				5BD1C6382A2A1FC90043C2B1 /* ExportGachaView.swift in Sources */,
 				5BD1C6392A2A1FC90043C2B1 /* NotificationSettingView.swift in Sources */,
 				EA0281122B79DE99003FE7AF /* GIDictionaryView.swift in Sources */,
-				5BD1C63A2A2A1FC90043C2B1 /* CharacterDetailView.swift in Sources */,
+				5BD1C63A2A2A1FC90043C2B1 /* AvatarShowCaseView.swift in Sources */,
 				5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */,
 				5BD1C63C2A2A1FC90043C2B1 /* ProxySettingsView.swift in Sources */,
 				EA759D682B19989A0080C775 /* EditAccountSheetView.swift in Sources */,
@@ -2934,7 +2934,7 @@
 				BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */,
 				EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
-				EADE317028EB31EA00CB7354 /* CharacterDetailView.swift in Sources */,
+				EADE317028EB31EA00CB7354 /* AvatarShowCaseView.swift in Sources */,
 				EA0281112B79DE98003FE7AF /* GIDictionaryView.swift in Sources */,
 				EA759D732B19989A0080C775 /* CreateAccountSheetView.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,

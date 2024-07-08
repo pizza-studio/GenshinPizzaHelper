@@ -801,7 +801,7 @@ private struct PlayerDetailSection: View {
                 HelpTextForScrollingOnDesktopComputer(.horizontal)
             }
             .fullScreenCover(item: $showingCharacterIdentifier) { characterName in
-                CharacterDetailView(
+                AvatarShowCaseView(
                     account: account,
                     showingCharacterIdentifier: characterName,
                     playerDetail: playerDetail
