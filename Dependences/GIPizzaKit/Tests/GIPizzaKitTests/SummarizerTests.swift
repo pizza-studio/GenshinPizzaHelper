@@ -15,7 +15,7 @@ final class SummarizerTests: XCTestCase {
             Enka.CharacterLoc.self, from: Data(
                 contentsOf: Bundle.module.url(forResource: "loc", withExtension: "json")!
             )
-        )["zh-CN"]!
+        )["ja"]!
     }()
 
     /// 测试本地化
