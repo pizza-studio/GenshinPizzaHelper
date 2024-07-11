@@ -1046,7 +1046,7 @@ extension CharacterAsset {
             // By ShikiSuen.
             return [
                 .cr: .medium,
-                .cr: .medium,
+                .cd: .medium,
                 .er: .medium,
                 .em: .medium,
                 .atkAmp: .high,
