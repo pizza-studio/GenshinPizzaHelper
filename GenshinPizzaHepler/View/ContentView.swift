@@ -153,7 +153,9 @@ struct ContentView: View {
             case .accountSetting:
                 NavigationStack {
                     List {
-                        EditAccountView(account: settingForAccount!)
+                        if let settingForAccount = settingForAccount {
+                            EditAccountView(account: settingForAccount)
+                        }
                     }
                     .dismissableSheet(sheet: $sheetType)
                 }
