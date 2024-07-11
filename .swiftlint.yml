@@ -11,5 +11,5 @@ opt_in_rules: # 一些规则仅仅是可选的
 included: # 执行 linting 时包含的路径。如果出现这个 `--path` 会被忽略。
   # - Source
 excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高。
-  - Dependences/GachaMIMTServer
+  - Packages/GachaMIMTServer
   - Build/

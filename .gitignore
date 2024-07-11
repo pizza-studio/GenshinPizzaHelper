@@ -437,3 +437,4 @@ _UpgradeReport_Files/
 __pycache__/
 ~$*
 GenshinPizzaHelper.xcodeproj/xcshareddata/xcschemes/ResinStatusWidgetExtension.xcscheme
+*.resolved
