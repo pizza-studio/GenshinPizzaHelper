@@ -17,8 +17,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/sindresorhus/Defaults", from: "7.3.1"),
-        .package(url: "./Packages/DefaultsKeys", from: "1.0.0"),
-        .package(url: "./Packages/HoYoKit", from: "1.0.0"),
+        .package(path: "../DefaultsKeys"),
+        .package(path: "../HoYoKit"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.

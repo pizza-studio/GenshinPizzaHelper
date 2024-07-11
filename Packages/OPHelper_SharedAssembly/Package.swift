@@ -17,12 +17,12 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        // .package(url: /* package url */),
         .package(url: "https://github.com/sindresorhus/Defaults", from: "7.3.1"),
-        .package(url: "./Packages/HBMihoyoAPI", from: "1.0.0"),
-        .package(url: "./Packages/GIPizzaKit", from: "1.0.0"),
-        .package(url: "./Packages/DefaultsKeys", from: "1.0.0"),
-        .package(url: "./Packages/SwiftPieChart-1.0.61", from: "1.0.61"),
+        .package(path: "../HBMihoyoAPI"),
+        .package(path: "../GIPizzaKit"),
+        .package(path: "../DefaultsKeys"),
+        .package(path: "../SwiftPieChart-1.0.61"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
