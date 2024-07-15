@@ -1,4 +1,4 @@
-Key,SymbolName,EnkaID,filename,ascensionMaterial,en,chs,cht,jp,kr,fr,it,ru,de,vi
+﻿Key,SymbolName,EnkaID,filename,ascensionMaterial,en,chs,cht,jp,kr,fr,it,ru,de,vi
 $asset.weapon:DullBlade,DullBlade,11101,UI_EquipIcon_Sword_Blunt,weaponDecarabian,Dull Blade,无锋剑,無鋒劍,無鋒の剣,무인검,Épée émoussée,Lama smussata,Тупой меч,Stumpfes Schwert,Vô Phong Kiếm
 $asset.weapon:SilverSword,SilverSword,11201,UI_EquipIcon_Sword_Silver,weaponDecarabian,Silver Sword,银剑,銀劍,銀の剣,실버 소드,Épée en argent,Spada d'argento,Серебряный меч,Silberschwert,Kiếm Bạc
 $asset.weapon:CoolSteel,CoolSteel,11301,UI_EquipIcon_Sword_Steel,weaponDecarabian,Cool Steel,冷刃,冷刃,冷刃,차가운 칼날,Lame froide,Lama fredda,Холодное лезвие,Kühle Klinge,Lãnh Nhẫn
@@ -108,6 +108,7 @@ $asset.weapon:CalamityQueller,CalamityQueller,13507,UI_EquipIcon_Pole_Santika,we
 $asset.weapon:EngulfingLightning,EngulfingLightning,13509,UI_EquipIcon_Pole_Narukami,weaponKijinMask,Engulfing Lightning,薙草之稻光,薙草之稻光,草薙の稲光,예초의 번개,Lumière du faucheur,Fulmine fagocitante,Сияющая жатва,Grasschnittstrahl,Đoạn Thảo Trường Đao
 $asset.weapon:StaffOfTheScarletSands,StaffOfTheScarletSands,13511,UI_EquipIcon_Pole_Deshret,weaponOasisGarden,Staff of the Scarlet Sands,赤沙之杖,赤沙之杖,赤砂の杖,적색 사막의 지팡이,Bâton des sables écarlates,Bastone delle sabbie scarlatte,Посох алых песков,Stab der roten Sande,Quyền Trượng Cát Đỏ
 $asset.weapon:CrimsonMoonSemblance,CrimsonMoonSemblance,13512,  UI_EquipIcon_Pole_BloodMoon,weaponPristineSea,Crimson Moon's Semblance,赤月之形,赤月之形,赤月のシルエット,붉은 달의 형상,Semblance de la lune écarlate,Forma della Luna cremisi,Очертания алой луны,Form des scharlachroten Mondes,Hình Thái Xích Nguyệt
+$asset.weapon:LumidouceElegy,LumidouceElegy,13513,UI_EquipIcon_LumidouceElegy,weaponPristineSea,Lumidouce Elegy,柔灯挽歌,柔燈輓歌,ルミドゥースの挽歌,등방울꽃의 애가,Élégie de Lumidouce,Elegia di Lumidouce,Элегия Люмидус,Lumidouce-Elegie,Bi Ca Lumidouce
 $asset.weapon:ApprenticesNotes,ApprenticesNotes,14101,UI_EquipIcon_Catalyst_Apprentice,weaponDecarabian,Apprentice's Notes,学徒笔记,學徒筆記,生徒ノート,학도의 노트,Notes de l'apprenti,Appunti dell'apprendista,Записи ученика,Aufzeichnungen eines Lehrlings,Nhật Ký Học Sinh
 $asset.weapon:PocketGrimoire,PocketGrimoire,14201,UI_EquipIcon_Catalyst_Pocket,weaponDecarabian,Pocket Grimoire,口袋魔导书,口袋魔導書,ポケット魔導書,포켓 주술서,Grimoire de poche,Grimorio tascabile,Карманный гримуар,Taschenzauberbuch,Sổ Tay Ma Pháp
 $asset.weapon:MagicGuide,MagicGuide,14301,UI_EquipIcon_Catalyst_Intro,weaponDecarabian,Magic Guide,魔导绪论,魔導緒論,魔導緒論,마도 서론,Guide de magie,Manuale di magia,Руководство по магии,Magieführer,Tóm Tắt Ma Pháp

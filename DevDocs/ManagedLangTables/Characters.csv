@@ -1,4 +1,4 @@
-seq,Key,SymbolName,EnkaID,codename,filename-photo,filename-namecard,talentMaterial,en,chs,cht,jp,kr,fr,it,ru,de,vi
+﻿seq,Key,SymbolName,EnkaID,codename,filename-photo,filename-namecard,talentMaterial,en,chs,cht,jp,kr,fr,it,ru,de,vi
 1,$asset.character:Hotaru,Hotaru,10000007,PlayerGirl,UI_AvatarIcon_PlayerGirl,UI_NameCardPic_Bp2_P,all,Lumine,荧,熒,蛍,루미네,Lumine,Lumine,Люмин,Lumine,Lumine
 2,$asset.character:Sora,Sora,10000005,PlayerBoy,UI_AvatarIcon_PlayerBoy,UI_NameCardPic_Bp2_P,all,Aether,空,空,空,아이테르,Aether,Aether,Итэр,Aether,Aether
 3,$asset.character:Sucrose,Sucrose,10000043,Sucrose,UI_AvatarIcon_Sucrose,UI_NameCardPic_Sucrose_P,talentFreedom,Sucrose,砂糖,砂糖,スクロース,설탕,Sucrose,Sucrose,Сахароза,Saccharose,Sucrose
@@ -84,3 +84,4 @@ seq,Key,SymbolName,EnkaID,codename,filename-photo,filename-namecard,talentMateri
 83,$asset.character:Arlecchino,Arlecchino,10000096,Arlecchino,UI_AvatarIcon_Arlecchino,UI_NameCardPic_Arlecchino_P,talentOrder,Arlecchino,阿蕾奇诺,阿蕾奇諾,アルレッキーノ,아를레키노,Arlecchino,Arlecchino,Арлекино,Arlecchino,Arlecchino
 84,$asset.character:Sethos,Sethos,10000097,Sethos,UI_AvatarIcon_Sethos,UI_NameCardPic_Sethos_P,talentPraxis,Sethos,赛索斯,賽索斯,セトス,세토스,Sethos,Sethos,Сетос,Sethos,Sethos
 85,$asset.character:Clorinde,Clorinde,10000098,Clorinde,UI_AvatarIcon_Clorinde,UI_NameCardPic_Clorinde_P,talentJustice,Clorinde,克洛琳德,克洛琳德,クロリンデ,클로린드,Clorinde,Clorinde,Клоринда,Clorinde,Clorinde
+86,$asset.character:Emilie,Emilie,10000099,Emilie,UI_AvatarIcon_Emilie,UI_NameCardPic_Emilie_P,talentOrder,Emilie,艾梅莉埃,艾梅莉埃,エミリエ,에밀리,Émilie,Émilie,Эмилия,Émilie,Emilie

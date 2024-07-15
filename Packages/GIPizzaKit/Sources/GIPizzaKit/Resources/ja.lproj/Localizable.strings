@@ -127,6 +127,7 @@
 "$asset.character:Arlecchino" = "アルレッキーノ";
 "$asset.character:Sethos" = "セトス";
 "$asset.character:Clorinde" = "クロリンデ";
+"$asset.character:Emilie" = "エミリエ";
 
 // MARK: - Weapon Names
 
@@ -239,6 +240,7 @@
 "$asset.weapon:EngulfingLightning" = "草薙の稲光";
 "$asset.weapon:StaffOfTheScarletSands" = "赤砂の杖";
 "$asset.weapon:CrimsonMoonSemblance" = "赤月のシルエット";
+"$asset.weapon:LumidouceElegy" = "ルミドゥースの挽歌";
 "$asset.weapon:ApprenticesNotes" = "生徒ノート";
 "$asset.weapon:PocketGrimoire" = "ポケット魔導書";
 "$asset.weapon:MagicGuide" = "魔導緒論";
@@ -519,3 +521,6 @@
 "$asset.nameCard:UI_NameCardPic_Sethos_P" = "セトス·跋霊";
 "$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "アチーブメント·詩のページ";
 "$asset.nameCard:UI_NameCardPic_Bp33_P" = "紀行·演習";
+"$asset.nameCard:UI_NameCardPic_Emilie_P" = "エミリエ·ラストノート";
+"$asset.nameCard:UI_NameCardPic_Bp34_P" = "紀行·彫刻";
+"$asset.nameCard:UI_NameCardPic_RedandWhite2_P" = "祭典·宴会·2";

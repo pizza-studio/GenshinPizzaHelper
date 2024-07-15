@@ -127,6 +127,7 @@
 "$asset.character:Arlecchino" = "Арлекино";
 "$asset.character:Sethos" = "Сетос";
 "$asset.character:Clorinde" = "Клоринда";
+"$asset.character:Emilie" = "Эмилия";
 
 // MARK: - Weapon Names
 
@@ -239,6 +240,7 @@
 "$asset.weapon:EngulfingLightning" = "Сияющая жатва";
 "$asset.weapon:StaffOfTheScarletSands" = "Посох алых песков";
 "$asset.weapon:CrimsonMoonSemblance" = "Очертания алой луны";
+"$asset.weapon:LumidouceElegy" = "Элегия Люмидус";
 "$asset.weapon:ApprenticesNotes" = "Записи ученика";
 "$asset.weapon:PocketGrimoire" = "Карманный гримуар";
 "$asset.weapon:MagicGuide" = "Руководство по магии";
@@ -521,3 +523,6 @@
 "$asset.nameCard:UI_NameCardPic_Sethos_P" = "Осколок Ба";
 "$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "Поэтичные страницы";
 "$asset.nameCard:UI_NameCardPic_Bp33_P" = "Симуляция";
+"$asset.nameCard:UI_NameCardPic_Emilie_P" = "Конечная нота";
+"$asset.nameCard:UI_NameCardPic_Bp34_P" = "Чудесные творения";
+"$asset.nameCard:UI_NameCardPic_RedandWhite2_P" = "Великое пиршество II";

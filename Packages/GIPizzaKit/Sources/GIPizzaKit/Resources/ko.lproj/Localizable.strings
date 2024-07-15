@@ -127,6 +127,7 @@
 "$asset.character:Arlecchino" = "아를레키노";
 "$asset.character:Sethos" = "세토스";
 "$asset.character:Clorinde" = "클로린드";
+"$asset.character:Emilie" = "에밀리";
 
 // MARK: - Weapon Names
 
@@ -239,6 +240,7 @@
 "$asset.weapon:EngulfingLightning" = "예초의 번개";
 "$asset.weapon:StaffOfTheScarletSands" = "적색 사막의 지팡이";
 "$asset.weapon:CrimsonMoonSemblance" = "붉은 달의 형상";
+"$asset.weapon:LumidouceElegy" = "등방울꽃의 애가";
 "$asset.weapon:ApprenticesNotes" = "학도의 노트";
 "$asset.weapon:PocketGrimoire" = "포켓 주술서";
 "$asset.weapon:MagicGuide" = "마도 서론";
@@ -519,3 +521,6 @@
 "$asset.nameCard:UI_NameCardPic_Sethos_P" = "세토스·바";
 "$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "업적·환상 시편";
 "$asset.nameCard:UI_NameCardPic_Bp33_P" = "기행·모의전";
+"$asset.nameCard:UI_NameCardPic_Emilie_P" = "에밀리·베이스 노트";
+"$asset.nameCard:UI_NameCardPic_Bp34_P" = "기행·모형";
+"$asset.nameCard:UI_NameCardPic_RedandWhite2_P" = "축제·연회·두 번째";

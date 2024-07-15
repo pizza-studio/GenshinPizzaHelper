@@ -127,6 +127,7 @@
 "$asset.character:Arlecchino" = "Arlecchino";
 "$asset.character:Sethos" = "Sethos";
 "$asset.character:Clorinde" = "Clorinde";
+"$asset.character:Emilie" = "Émilie";
 
 // MARK: - Weapon Names
 
@@ -239,6 +240,7 @@
 "$asset.weapon:EngulfingLightning" = "Lumière du faucheur";
 "$asset.weapon:StaffOfTheScarletSands" = "Bâton des sables écarlates";
 "$asset.weapon:CrimsonMoonSemblance" = "Semblance de la lune écarlate";
+"$asset.weapon:LumidouceElegy" = "Élégie de Lumidouce";
 "$asset.weapon:ApprenticesNotes" = "Notes de l'apprenti";
 "$asset.weapon:PocketGrimoire" = "Grimoire de poche";
 "$asset.weapon:MagicGuide" = "Guide de magie";
@@ -519,3 +521,6 @@
 "$asset.nameCard:UI_NameCardPic_Sethos_P" = "Sethos - Fragment de Ba";
 "$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "Succès - Poésie";
 "$asset.nameCard:UI_NameCardPic_Bp33_P" = "PB - Simulnation";
+"$asset.nameCard:UI_NameCardPic_Emilie_P" = "Émilie - Note de fond";
+"$asset.nameCard:UI_NameCardPic_Bp34_P" = "PB - Ersatz";
+"$asset.nameCard:UI_NameCardPic_RedandWhite2_P" = "Célébration - Festin (2)";

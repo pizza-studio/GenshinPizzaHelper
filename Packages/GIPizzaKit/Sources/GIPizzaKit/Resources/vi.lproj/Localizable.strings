@@ -127,6 +127,7 @@
 "$asset.character:Arlecchino" = "Arlecchino";
 "$asset.character:Sethos" = "Sethos";
 "$asset.character:Clorinde" = "Clorinde";
+"$asset.character:Emilie" = "Emilie";
 
 // MARK: - Weapon Names
 
@@ -239,6 +240,7 @@
 "$asset.weapon:EngulfingLightning" = "Đoạn Thảo Trường Đao";
 "$asset.weapon:StaffOfTheScarletSands" = "Quyền Trượng Cát Đỏ";
 "$asset.weapon:CrimsonMoonSemblance" = "Hình Thái Xích Nguyệt";
+"$asset.weapon:LumidouceElegy" = "Bi Ca Lumidouce";
 "$asset.weapon:ApprenticesNotes" = "Nhật Ký Học Sinh";
 "$asset.weapon:PocketGrimoire" = "Sổ Tay Ma Pháp";
 "$asset.weapon:MagicGuide" = "Tóm Tắt Ma Pháp";
@@ -521,3 +523,6 @@
 "$asset.nameCard:UI_NameCardPic_Sethos_P" = "Sethos - Bạt Linh";
 "$asset.nameCard:UI_NameCardPic_RoleCombat_P" = "Thành Tựu - Trang Thơ";
 "$asset.nameCard:UI_NameCardPic_Bp33_P" = "Nhật Ký Hành Trình - Mô Phỏng";
+"$asset.nameCard:UI_NameCardPic_Emilie_P" = "Emilie - Làn Hương Cuối";
+"$asset.nameCard:UI_NameCardPic_Bp34_P" = "Nhật Ký Hành Trình - Mô Phỏng";
+"$asset.nameCard:UI_NameCardPic_RedandWhite2_P" = "Lễ Hội - Tiệc Lớn (II)";

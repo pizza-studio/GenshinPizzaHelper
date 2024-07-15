@@ -1,4 +1,4 @@
-Key,filename & rawValue,enkaId,sortId,en,chs,cht,jp,kr,fr,it,ru,de,vi
+﻿Key,filename & rawValue,enkaId,sortId,en,chs,cht,jp,kr,fr,it,ru,de,vi
 $asset.nameCard:UI_NameCardPic_0_P,UI_NameCardPic_0_P,210001,1,Genshin Impact: A New World,原神·印象,原神·印象,原神·印象,원신·인상,Genshin Impact - Un monde nouveau,Genshin Impact: Un mondo nuovo,Новый мир,Genshin Impact – Eindrücke,Nguyên Thần - Ấn Tượng
 $asset.nameCard:UI_NameCardPic_Bp1_P,UI_NameCardPic_Bp1_P,210002,2,Travel Notes: Catch the Wind,纪行·捕风,紀行·補風,紀行·風捕り,기행·바람을 잡다,PB - Attrape-vent,Appunti di viaggio: Catturavento,Ловец ветра,Erlebnispass – Windfänger,Nhật Ký Hành Trình Của Gió
 $asset.nameCard:UI_NameCardPic_Ambor_P,UI_NameCardPic_Ambor_P,210003,3,Amber: Bunny,安柏·兔兔,安柏·兔兔,アンバー·ウサギ,엠버·토끼,Amber - Baron Lapinou,Amber: Baron Coniglio,Барон Зайчик,Amber – Hoppel,Amber - Con Thỏ
@@ -199,3 +199,6 @@ $asset.nameCard:UI_NameCardPic_Sigewinne_P,UI_NameCardPic_Sigewinne_P,210201,197
 $asset.nameCard:UI_NameCardPic_Sethos_P,UI_NameCardPic_Sethos_P,210202,198,Sethos: Ba Fragment,塞索斯·跋灵,塞索斯·跋靈,セトス·跋霊,세토스·바,Sethos - Fragment de Ba,Sethos: Frammento di Ba,Осколок Ба,Sethos – Ba-Fragment,Sethos - Bạt Linh
 $asset.nameCard:UI_NameCardPic_RoleCombat_P,UI_NameCardPic_RoleCombat_P,210203,199,Achievement: Poetic Pages,成就·诗页,成就·詩頁,アチーブメント·詩のページ,업적·환상 시편,Succès - Poésie,Obiettivo: Pagine poetiche,Поэтичные страницы,Errungenschaften: Gedichtseiten,Thành Tựu - Trang Thơ
 $asset.nameCard:UI_NameCardPic_Bp33_P,UI_NameCardPic_Bp33_P,210204,200,Travel Notes: Simulnation,纪行·衍演,紀行·衍演,紀行·演習,기행·모의전,PB - Simulnation,Appunti di viaggio: Politeama,Симуляция,Erlebnispass – Szenarien,Nhật Ký Hành Trình - Mô Phỏng
+$asset.nameCard:UI_NameCardPic_Emilie_P,UI_NameCardPic_Emilie_P,210205,201,Emilie: Base Note,艾梅莉埃·后调,艾梅莉埃·後調,エミリエ·ラストノート,에밀리·베이스 노트,Émilie - Note de fond,Émilie: Nota di fondo,Конечная нота,Émilie – Basisnote,Emilie - Làn Hương Cuối
+$asset.nameCard:UI_NameCardPic_Bp34_P,UI_NameCardPic_Bp34_P,210206,202,Travel Notes: Fanciful Fabrication,纪行·拟像,紀行·擬像,紀行·彫刻,기행·모형,PB - Ersatz,Appunti di viaggio: Produzione estrosa,Чудесные творения,Erlebnispass – Märchen,Nhật Ký Hành Trình - Mô Phỏng
+$asset.nameCard:UI_NameCardPic_RedandWhite2_P,UI_NameCardPic_RedandWhite2_P,210207,203,Celebration: Feast (II),庆典·盛宴·其二,慶典·盛宴·其二,祭典·宴会·2,축제·연회·두 번째,Célébration - Festin (2),Celebrazione: Banchetto (II),Великое пиршество II,Feierlichkeit – Gelage II,Lễ Hội - Tiệc Lớn (II)
