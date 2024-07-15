@@ -96,6 +96,7 @@ public enum CharacterAsset: Int, CaseIterable, Hashable {
     case Arlecchino = 10000096
     case Sethos = 10000097
     case Clorinde = 10000098
+    case Emilie = 10000099
 }
 
 extension CharacterAsset {
@@ -227,6 +228,7 @@ extension CharacterAsset {
         case .Arlecchino: return "UI_AvatarIcon_Arlecchino"
         case .Sethos: return "UI_AvatarIcon_Sethos"
         case .Clorinde: return "UI_AvatarIcon_Clorinde"
+        case .Emilie: return "UI_AvatarIcon_Emilie"
         }
     }
 
@@ -321,6 +323,7 @@ extension CharacterAsset {
         case .Arlecchino: return .UI_NameCardPic_Arlecchino_P
         case .Sethos: return .UI_NameCardPic_Sethos_P
         case .Clorinde: return .UI_NameCardPic_Clorinde_P
+        case .Emilie: return .UI_NameCardPic_Emilie_P
         }
     }
 }
@@ -416,6 +419,7 @@ extension CharacterAsset {
         case .Arlecchino: return [8000]
         case .Sethos: return [8200]
         case .Clorinde: return [8100]
+        case .Emilie: return [8400]
         }
     }
 }
@@ -511,6 +515,7 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Arlecchino: return .talentOrder
         case .Sethos: return .talentPraxis
         case .Clorinde: return .talentJustice
+        case .Emilie: return .talentOrder.available(since: .Specify(day: 17, month: 7, year: 2024))
         }
     }
 }
@@ -606,6 +611,7 @@ extension CharacterAsset {
         case .Arlecchino: return .pyro
         case .Sethos: return .electro
         case .Clorinde: return .electro
+        case .Emilie: return .dendro
         }
     }
 }

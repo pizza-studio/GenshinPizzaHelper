@@ -1098,6 +1098,20 @@ extension CharacterAsset {
                 .defAmp: .none,
                 .def: .none,
             ]
+        case .Emilie:
+            // By ShikiSuen.
+            return [
+                .cr: .highest,
+                .cd: .highest,
+                .er: .medium,
+                .em: .higher,
+                .atkAmp: .higher,
+                .atk: .medium,
+                .hpAmp: .none,
+                .hp: .none,
+                .defAmp: .none,
+                .def: .none,
+            ]
         }
     }
 }

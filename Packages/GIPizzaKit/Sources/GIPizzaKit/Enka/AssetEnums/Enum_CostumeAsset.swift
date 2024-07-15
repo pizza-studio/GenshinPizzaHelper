@@ -24,6 +24,8 @@ public enum CostumeAsset: Int, CaseIterable, Hashable {
     case ShenheCostumeDai = 206301
     case XingqiuCostumeBamboo = 202501
     case GanyuCostumeYu = 203701
+    case NilouCostumeFairy = 207001
+    case MomokaCostumeErrantry = 206101
 }
 
 extension CostumeAsset {
@@ -50,6 +52,8 @@ extension CostumeAsset {
         case .ShenheCostumeDai: return .Shenhe
         case .XingqiuCostumeBamboo: return .Xingqiu
         case .GanyuCostumeYu: return .Ganyu
+        case .NilouCostumeFairy: return .Nilou
+        case .MomokaCostumeErrantry: return .Kirara
         }
     }
 
@@ -76,6 +80,8 @@ extension CostumeAsset {
         case .ShenheCostumeDai: return 4501
         case .XingqiuCostumeBamboo: return 801
         case .GanyuCostumeYu: return 2701
+        case .NilouCostumeFairy: return 5601
+        case .MomokaCostumeErrantry: return 6701
         }
     }
 
@@ -98,6 +104,8 @@ extension CostumeAsset {
         case .ShenheCostumeDai: return .UI_NameCardPic_Bp21_P
         case .XingqiuCostumeBamboo: return .UI_NameCardPic_Bp30_P
         case .GanyuCostumeYu: return .UI_NameCardPic_OST4_P
+        case .NilouCostumeFairy: return .UI_NameCardPic_Bp28_P
+        case .MomokaCostumeErrantry: return .UI_NameCardPic_Bp34_P
         }
     }
 }

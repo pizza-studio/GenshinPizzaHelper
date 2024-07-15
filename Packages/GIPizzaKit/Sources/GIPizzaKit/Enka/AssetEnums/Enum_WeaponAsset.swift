@@ -117,6 +117,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case EngulfingLightning = 13509
     case StaffOfTheScarletSands = 13511
     case CrimsonMoonSemblance = 13512
+    case LumidouceElegy = 13513
     case ApprenticesNotes = 14101
     case PocketGrimoire = 14201
     case MagicGuide = 14301
@@ -327,6 +328,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .EngulfingLightning: return .weaponKijinMask
         case .StaffOfTheScarletSands: return .weaponOasisGarden
         case .CrimsonMoonSemblance: return .weaponPristineSea
+        case .LumidouceElegy: return .weaponPristineSea
         case .ApprenticesNotes: return .weaponDecarabian
         case .PocketGrimoire: return .weaponDecarabian
         case .MagicGuide: return .weaponDecarabian
@@ -521,6 +523,7 @@ extension WeaponAsset {
         case .EngulfingLightning: return "UI_EquipIcon_Pole_Narukami"
         case .StaffOfTheScarletSands: return "UI_EquipIcon_Pole_Deshret"
         case .CrimsonMoonSemblance: return "UI_EquipIcon_Pole_BloodMoon"
+        case .LumidouceElegy: return "UI_EquipIcon_LumidouceElegy"
         case .ApprenticesNotes: return "UI_EquipIcon_Catalyst_Apprentice"
         case .PocketGrimoire: return "UI_EquipIcon_Catalyst_Pocket"
         case .MagicGuide: return "UI_EquipIcon_Catalyst_Intro"
