@@ -1747,8 +1747,25 @@ extension Array where Element == BasicInfos.WorldExploration {
     public var sortedDataWithDeduplication: [BasicInfos.WorldExploration] {
         var offered: Set<BasicInfos.WorldExploration.Offering> = .init()
         var result = [BasicInfos.WorldExploration]()
+        let chenyuValePercent: Int = reversed().compactMap { this in
+            if this.icon.contains("ChenYuVale") || this.innerIcon.contains("ChenYuVale") {
+                return !this.offerings.isEmpty ? 0 : this.explorationPercentage
+            } else {
+                return nil
+            }
+        }.reduce(0, +)
+        var chenyuValeAlreadyAdded = false
         forEach { this in
             var this = this
+            let chenyuStr = "ChenYuVale"
+            chenyu: if this.icon.contains(chenyuStr) || this.innerIcon.contains(chenyuStr) {
+                if !chenyuValeAlreadyAdded, !this.offerings.isEmpty {
+                    chenyuValeAlreadyAdded = true
+                    this.explorationPercentage = Int(floor(Double(chenyuValePercent) / 3))
+                    break chenyu
+                }
+                return
+            }
             let oldOfferings = this.offerings
             this.offerings.removeAll()
             oldOfferings.forEach { offering in
