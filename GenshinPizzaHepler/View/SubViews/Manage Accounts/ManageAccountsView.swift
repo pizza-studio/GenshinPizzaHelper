@@ -36,6 +36,7 @@ struct ManageAccountsView: View {
                 } label: {
                     Text("account.withdraw.entrylink.title")
                         .font(.footnote)
+                        .multilineTextAlignment(.leading)
                 }
             }
             Section {
