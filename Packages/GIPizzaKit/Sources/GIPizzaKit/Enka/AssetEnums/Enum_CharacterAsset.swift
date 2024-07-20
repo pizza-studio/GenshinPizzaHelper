@@ -523,7 +523,7 @@ extension CharacterAsset: DailyMaterialConsumer {
 // MARK: - Elements
 
 extension CharacterAsset {
-    public var element: PlayerDetail.Avatar.TeyvatElement? {
+    public var element: EnkaGI.QueryRelated.Avatar.TeyvatElement? {
         switch self {
         case .Paimon: return nil
         case .Hotaru: return nil // 主角可能对应多个属性，得单独判断

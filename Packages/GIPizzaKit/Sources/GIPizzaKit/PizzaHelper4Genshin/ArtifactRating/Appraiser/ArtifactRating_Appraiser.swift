@@ -33,7 +33,7 @@ extension ArtifactRating {
             case hp
             case defAmp
             case def
-            case dmgAmp(PlayerDetail.Avatar.TeyvatElement) // 元素伤害加成或物理伤害加成
+            case dmgAmp(EnkaGI.QueryRelated.Avatar.TeyvatElement) // 元素伤害加成或物理伤害加成
             case heal // 治疗加成
         }
 
@@ -139,7 +139,7 @@ extension ArtifactRating.RatingRequest.Artifact {
                     // 但是优菈、雷泽、辛焱这三位物理角色被专门指定优先尊重物理伤害加成。
                     // 然后再检查杯子的伤害加成元素种类是否与被尊重的伤害加成元素一致。
                     // 不一致的话，则这个杯子的主词条将不再参与计分。
-                    var predefinedElement: PlayerDetail.Avatar.TeyvatElement?
+                    var predefinedElement: EnkaGI.QueryRelated.Avatar.TeyvatElement?
                     ratingModel.keys.forEach { currentParam in
                         switch currentParam {
                         case let .dmgAmp(predefinedValue): predefinedElement = predefinedValue
@@ -148,7 +148,7 @@ extension ArtifactRating.RatingRequest.Artifact {
                     }
                     guard let avatar = CharacterAsset(rawValue: request.cid) else { break checkMainProps }
                     let avatarElement = avatar.element
-                    let fallbackElement = PlayerDetail.Avatar.TeyvatElement(id: request.characterElement)
+                    let fallbackElement = EnkaGI.QueryRelated.Avatar.TeyvatElement(id: request.characterElement)
                     predefinedElement = predefinedElement ?? avatarElement ?? fallbackElement
 
                     // 特殊处理：风系角色的扩散伤害。比如说如雷万叶要打雷伤，此时带雷伤杯。
@@ -196,7 +196,7 @@ extension ArtifactRating.Appraiser {
             let hyperbloomSets4: Set<Int> = [15028, 15026, 15025, 10007]
             var sumDict: [Int: Int] = [:]
             guard let avatar = CharacterAsset(rawValue: request.cid) else { break checkHyperBloomElectro }
-            let element = avatar.element ?? PlayerDetail.Avatar.TeyvatElement(id: request.characterElement)
+            let element = avatar.element ?? EnkaGI.QueryRelated.Avatar.TeyvatElement(id: request.characterElement)
             guard element == .electro else { break checkHyperBloomElectro }
             request.allValidArtifacts.forEach { artifact in
                 sumDict[artifact.setId, default: 0] += hyperbloomSets4.contains(artifact.setId) ? 1 : 0

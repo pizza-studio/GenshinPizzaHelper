@@ -39,7 +39,7 @@ final class DetailPortalViewModel: ObservableObject {
         case succeed(T)
     }
 
-    typealias PlayerDetailStatus = Status<(PlayerDetail, nextRefreshableDate: Date)>
+    typealias PlayerDetailStatus = Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)>
     typealias BasicInfoStatus = Status<BasicInfos>
     typealias SpiralAbyssDetailStatus = Status<SpiralAbyssDetail>
     typealias LedgerDataStatus = Status<LedgerData>
@@ -66,7 +66,7 @@ final class DetailPortalViewModel: ObservableObject {
     var characterInventoryStatus: CharInventoryStatus = .progress(nil)
 
     @Published
-    var currentBasicInfo: PlayerDetail.PlayerBasicInfo?
+    var currentBasicInfo: EnkaGI.QueryRelated.PlayerBasicInfo?
 
     @Published
     var selectedAccount: AccountConfiguration? {
@@ -126,14 +126,14 @@ final class DetailPortalViewModel: ObservableObject {
         if case let .progress(task) = playerDetailStatus { task?.cancel() }
         let task = Task.detached { @MainActor [self] in
             do {
-                let fetchedModel = try await API.OpenAPIs.fetchPlayerDetail(
+                let fetchedModel = try await API.OpenAPIs.fetchQueriableEnkaProfile(
                     selectedAccount.safeUid,
                     dateWhenNextRefreshable: nil
                 )
                 let theDB = try await EnkaGI.Sputnik.getEnkaDB {
                     $0.checkValidity(against: fetchedModel)
                 }
-                let playerDetail = PlayerDetail(
+                let playerDetail = EnkaGI.QueryRelated.ProfileTranslated(
                     fetchedModel: fetchedModel,
                     localizedDictionary: theDB.locTable,
                     characterMap: theDB.characters
@@ -284,7 +284,7 @@ final class DetailPortalViewModel: ObservableObject {
     }
 
     /// 同步时装设定至全局预设值。
-    func refreshCostumeMap(playerDetail: PlayerDetail) {
+    func refreshCostumeMap(playerDetail: EnkaGI.QueryRelated.ProfileTranslated) {
         guard !playerDetail.avatars.isEmpty else { return }
         CharacterAsset.costumeMap.removeAll()
         let assetPairs = playerDetail.avatars.map { ($0.characterAsset, $0.costumeAsset) }
@@ -589,8 +589,8 @@ private struct SelectAccountSection: View {
 
     @ViewBuilder
     func normalAccountPickerView(
-        playerDetail: PlayerDetail,
-        basicInfo: PlayerDetail.PlayerBasicInfo,
+        playerDetail: EnkaGI.QueryRelated.ProfileTranslated,
+        basicInfo: EnkaGI.QueryRelated.PlayerBasicInfo,
         selectedAccount: AccountConfiguration
     )
         -> some View {
@@ -761,7 +761,7 @@ private struct PlayerDetailSection: View {
 
         typealias ID = Int
 
-        let playerDetail: PlayerDetail
+        let playerDetail: EnkaGI.QueryRelated.ProfileTranslated
         let account: AccountConfiguration
 
         @State
@@ -829,7 +829,7 @@ private struct PlayerDetailSection: View {
     let account: AccountConfiguration
 
     var playerDetailStatus: DetailPortalViewModel
-        .Status<(PlayerDetail, nextRefreshableDate: Date)> { vmDPV.playerDetailStatus }
+        .Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)> { vmDPV.playerDetailStatus }
 
     var body: some View {
         Section {

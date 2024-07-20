@@ -2,12 +2,12 @@
 // ====================
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
-extension PlayerDetail.Avatar {
-    public var baseDMGBoostIntel: EnkaGI.FightPropMap.PairedDamageAmpIntel {
+extension EnkaGI.QueryRelated.Avatar {
+    public var baseDMGBoostIntel: EnkaGI.QueryRelated.FightPropMap.PairedDamageAmpIntel {
         fightPropMap.getPairedDamageAmpIntel(for: element)
     }
 
-    public var highestDMGBoostIntel: EnkaGI.FightPropMap.PairedDamageAmpIntel {
+    public var highestDMGBoostIntel: EnkaGI.QueryRelated.FightPropMap.PairedDamageAmpIntel {
         fightPropMap.highestDMGBoostIntel(for: element)
     }
 
@@ -17,13 +17,13 @@ extension PlayerDetail.Avatar {
     }
 }
 
-extension PlayerDetail.Avatar.Skill {
+extension EnkaGI.QueryRelated.Avatar.Skill {
     public var isLevelAdjusted: Bool {
         levelAdjusted != level
     }
 }
 
-extension PlayerDetail.Avatar.TeyvatElement {
+extension EnkaGI.QueryRelated.Avatar.TeyvatElement {
     public var dmgBonusLabel: (text: String, icon: String) {
         switch self {
         case .cryo: return ("detailPortal.EASV.bonus.cryo", "UI_Icon_Element_Cryo")

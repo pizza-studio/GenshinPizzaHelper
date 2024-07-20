@@ -4,7 +4,7 @@
 
 // MARK: - Artifact Rating Support
 
-extension PlayerDetail.Avatar {
+extension EnkaGI.QueryRelated.Avatar {
     public func convert2ArtifactRatingModel() -> ArtifactRating.RatingRequest {
         let extractedData = extractArtifactSetData()
         return ArtifactRating.RatingRequest(

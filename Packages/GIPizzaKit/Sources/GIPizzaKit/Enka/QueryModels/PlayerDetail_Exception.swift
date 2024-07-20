@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension PlayerDetail {
+extension EnkaGI.QueryRelated {
     public enum Exception: Error {
         case failToGetLocalizedDictionary
         case failToGetCharacterDictionary

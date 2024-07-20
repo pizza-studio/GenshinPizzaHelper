@@ -10,14 +10,6 @@ import Foundation
 #if !os(watchOS)
 extension EnkaGI {
     public enum Sputnik {
-        public typealias CharLoc = EnkaGI.CharacterLoc.LocDict
-        public typealias CharMap = EnkaGI.CharacterMap
-
-        public struct DataSet {
-            public let charLoc: CharLoc
-            public let charMap: CharMap
-        }
-
         public static var sharedDB: EnkaGI.EnkaDB = {
             let result = Defaults[.enkaDBData]
             return result
@@ -27,7 +19,7 @@ extension EnkaGI {
             Defaults.reset(.enkaDBData)
         }
 
-        public static func getEnkaDB(updateCheck: ((CharMap) -> Bool)? = nil) async throws
+        public static func getEnkaDB(updateCheck: ((EnkaGI.DBModels.CharacterDict) -> Bool)? = nil) async throws
             -> EnkaDB {
             var enkaDataExpired = Calendar.current.date(
                 byAdding: .hour,
@@ -86,15 +78,6 @@ extension EnkaGI {
                 return newDB
             }
         }
-    }
-}
-
-// MARK: - Fetch Errors
-
-extension EnkaGI.Sputnik {
-    public enum DataFetchError: Error {
-        case charMapInvalid
-        case charLocInvalid
     }
 }
 

@@ -49,16 +49,16 @@ extension API {
         /// - Parameters:
         ///     - uid: 用户UID
         ///     - completion: 数据
-        public static func fetchPlayerDetail(
+        public static func fetchQueriableEnkaProfile(
             _ uid: String,
             dateWhenNextRefreshable: Date?
         ) async throws
-            -> EnkaGI.PlayerDetailFetchModel {
+            -> EnkaGI.QueryRelated.FetchModel {
             if let date = dateWhenNextRefreshable, date > Date() {
                 print(
                     "PLAYER DETAIL FETCH 刷新太快了，请在\(date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)秒后刷新"
                 )
-                throw PlayerDetail.Exception.refreshTooFast(dateWhenRefreshable: date)
+                throw EnkaGI.QueryRelated.Exception.refreshTooFast(dateWhenRefreshable: date)
             } else {
                 let isMiyousheUID = Self.isMiyousheUID(uid: uid)
                 let enkaMirror = "https://profile.microgg.cn/api/uid/" + uid
@@ -70,7 +70,7 @@ extension API {
                     do {
                         let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
                         let requestResult = try JSONDecoder().decode(
-                            EnkaGI.PlayerDetailFetchModel.self,
+                            EnkaGI.QueryRelated.FetchModel.self,
                             from: data
                         )
                         return requestResult
@@ -78,7 +78,7 @@ extension API {
                         let (data, _) = try await URLSession.shared
                             .data(for: URLRequest(url: URL(string: enkaOfficial)!))
                         let requestResult = try JSONDecoder().decode(
-                            EnkaGI.PlayerDetailFetchModel.self,
+                            EnkaGI.QueryRelated.FetchModel.self,
                             from: data
                         )
                         return requestResult
@@ -86,7 +86,7 @@ extension API {
                 } else {
                     let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
                     let requestResult = try JSONDecoder().decode(
-                        EnkaGI.PlayerDetailFetchModel.self,
+                        EnkaGI.QueryRelated.FetchModel.self,
                         from: data
                     )
                     return requestResult
@@ -98,11 +98,11 @@ extension API {
         /// - Parameters:
         ///     - uid: 用户UID
         ///     - completion: 数据
-        public static func fetchPlayerDetail(
+        public static func fetchQueriableEnkaProfile(
             _ uid: String,
             dateWhenNextRefreshable: Date?,
             completion: @escaping (
-                Result<EnkaGI.PlayerDetailFetchModel, PlayerDetail.Exception>
+                Result<EnkaGI.QueryRelated.FetchModel, EnkaGI.QueryRelated.Exception>
             ) -> ()
         ) {
             if let date = dateWhenNextRefreshable, date > Date() {
@@ -193,7 +193,7 @@ extension API {
         private static func fetchPlayerDatas(
             _ uid: String,
             completion: @escaping (
-                PlayerDetail.FetchResult
+                EnkaGI.QueryRelated.FetchResult
             ) -> ()
         ) {
             let isMiyousheUID = Self.isMiyousheUID(uid: uid)
@@ -203,7 +203,7 @@ extension API {
             let url = URL(string: urlStr)!
 
             // 请求
-            HttpMethod<EnkaGI.PlayerDetailFetchModel>
+            HttpMethod<EnkaGI.QueryRelated.FetchModel>
                 .openRequest(
                     .get,
                     url
@@ -217,7 +217,7 @@ extension API {
                             completion(.failure(requestError))
                         } else {
                             // microgg 的 enka 服务使用出错的时候，会尝试从 enka 官网存取国服 uid 的资料。
-                            HttpMethod<EnkaGI.PlayerDetailFetchModel>
+                            HttpMethod<EnkaGI.QueryRelated.FetchModel>
                                 .openRequest(
                                     .get,
                                     URL(string: enkaOfficial)!

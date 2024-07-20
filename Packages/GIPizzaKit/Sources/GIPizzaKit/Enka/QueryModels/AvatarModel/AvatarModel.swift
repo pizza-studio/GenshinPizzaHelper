@@ -5,17 +5,17 @@
 import Foundation
 import HBMihoyoAPI
 
-// MARK: - PlayerDetail.Avatar
+// MARK: - EnkaGI.QueryRelated.Avatar
 
-extension PlayerDetail {
+extension EnkaGI.QueryRelated {
     /// 游戏角色
     public class Avatar {
         // MARK: Lifecycle
 
         public init?(
-            avatarInfo: EnkaGI.PlayerDetailFetchModel.AvatarInfo,
-            localizedDictionary: EnkaGI.CharacterLoc.LocDict,
-            characterDictionary: EnkaGI.CharacterMap,
+            avatarInfo: EnkaGI.QueryRelated.FetchModel.AvatarInfo,
+            localizedDictionary: EnkaGI.DBModels.LocTable,
+            characterDictionary: EnkaGI.DBModels.CharacterDict,
             uid: String?
         ) {
             guard let character =
@@ -33,7 +33,7 @@ extension PlayerDetail {
                 .nameFromHashMap(character.NameTextMapHash)
 
             self
-                .element = PlayerDetail.Avatar.TeyvatElement(rawValue: character.Element) ??
+                .element = EnkaGI.QueryRelated.Avatar.TeyvatElement(rawValue: character.Element) ??
                 .physico
 
             if let talentIdList = avatarInfo.talentIdList {
@@ -127,7 +127,7 @@ extension PlayerDetail {
         public var artifactScoreRank: String?
 
         /// 角色属性
-        public let fightPropMap: EnkaGI.FightPropMap
+        public let fightPropMap: EnkaGI.QueryRelated.FightPropMap
 
         /// 正脸图
         public let iconString: String
@@ -258,9 +258,9 @@ extension PlayerDetail {
     }
 }
 
-// MARK: - PlayerDetail.Avatar + Hashable, Equatable, Identifiable
+// MARK: - EnkaGI.QueryRelated.Avatar + Hashable, Equatable, Identifiable
 
-extension PlayerDetail.Avatar: Hashable, Equatable, Identifiable {
+extension EnkaGI.QueryRelated.Avatar: Hashable, Equatable, Identifiable {
     /// Avatar 只会出现在一个展柜内。同一个展柜在理论上不会出现重复的角色。
     /// 所以在这里用用 name 当 id 已经足够了。
     public var id: String { name }
@@ -287,8 +287,8 @@ extension PlayerDetail.Avatar: Hashable, Equatable, Identifiable {
     }
 
     public static func == (
-        lhs: PlayerDetail.Avatar,
-        rhs: PlayerDetail.Avatar
+        lhs: EnkaGI.QueryRelated.Avatar,
+        rhs: EnkaGI.QueryRelated.Avatar
     )
         -> Bool {
         lhs.hashValue == rhs.hashValue

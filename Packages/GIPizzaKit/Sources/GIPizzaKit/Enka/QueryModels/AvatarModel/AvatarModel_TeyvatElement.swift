@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
-extension PlayerDetail.Avatar {
+extension EnkaGI.QueryRelated.Avatar {
     /// 提瓦特大陆元素类型
     public enum TeyvatElement: String, CaseIterable, Hashable, Codable {
         /// 原人

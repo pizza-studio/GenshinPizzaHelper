@@ -4,13 +4,13 @@
 
 import Foundation.NSUUID
 
-extension PlayerDetail.Avatar {
+extension EnkaGI.QueryRelated.Avatar {
     /// 圣遗物
     public struct Artifact: Identifiable, Equatable, Hashable {
         // MARK: Lifecycle
 
         init?(
-            artifactEquipment: EnkaGI.PlayerDetailFetchModel.AvatarInfo.EquipList,
+            artifactEquipment: EnkaGI.QueryRelated.FetchModel.AvatarInfo.EquipList,
             localizedDictionary: [String: String],
             score: Double?
         ) {
@@ -119,8 +119,8 @@ extension PlayerDetail.Avatar {
         }
 
         public static func == (
-            lhs: PlayerDetail.Avatar.Artifact,
-            rhs: PlayerDetail.Avatar.Artifact
+            lhs: EnkaGI.QueryRelated.Avatar.Artifact,
+            rhs: EnkaGI.QueryRelated.Avatar.Artifact
         )
             -> Bool {
             lhs.id == rhs.id

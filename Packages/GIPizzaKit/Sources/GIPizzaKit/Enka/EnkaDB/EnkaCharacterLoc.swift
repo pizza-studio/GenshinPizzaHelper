@@ -48,7 +48,7 @@ extension EnkaGI.CharacterLoc {
     }
 }
 
-extension EnkaGI.CharacterLoc.LocDict {
+extension EnkaGI.DBModels.LocTable {
     public func nameFromHashMap(_ hashID: Int) -> String {
         self["\(hashID)"] ?? "unknown"
     }

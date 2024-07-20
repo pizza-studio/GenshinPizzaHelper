@@ -7,7 +7,7 @@
 import Defaults
 import Foundation
 
-extension PlayerDetail.Avatar {
+extension EnkaGI.QueryRelated.Avatar {
     public struct ProbBackendData: Codable, Hashable, Identifiable {
         // MARK: Lifecycle
 

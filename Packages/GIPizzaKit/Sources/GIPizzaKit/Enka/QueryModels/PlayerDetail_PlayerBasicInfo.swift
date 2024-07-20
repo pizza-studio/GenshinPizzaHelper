@@ -2,14 +2,14 @@
 // ====================
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
-extension PlayerDetail {
+extension EnkaGI.QueryRelated {
     /// 账号基本信息
     public struct PlayerBasicInfo {
         // MARK: Lifecycle
 
         public init?(
-            playerInfo: EnkaGI.PlayerDetailFetchModel.PlayerInfo?,
-            characterMap: EnkaGI.CharacterMap
+            playerInfo: EnkaGI.QueryRelated.FetchModel.PlayerInfo?,
+            characterMap: EnkaGI.DBModels.CharacterDict
         ) {
             guard let playerInfo = playerInfo else { return nil }
             self.nickname = playerInfo.nickname

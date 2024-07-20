@@ -29,14 +29,14 @@ public enum DecoratedIconCutType: CGFloat {
 
 extension EnkaGI.Character {
     var elementColor: Color {
-        guard let element = PlayerDetail.Avatar.TeyvatElement(rawValue: Element) else {
+        guard let element = EnkaGI.QueryRelated.Avatar.TeyvatElement(rawValue: Element) else {
             return .pink
         }
         return element.color
     }
 }
 
-extension PlayerDetail.Avatar.TeyvatElement {
+extension EnkaGI.QueryRelated.Avatar.TeyvatElement {
     var color: Color {
         switch self {
         case .cryo:
@@ -61,7 +61,7 @@ extension PlayerDetail.Avatar.TeyvatElement {
 
 // MARK: - Profile Picture Icons
 
-extension PlayerDetail.PlayerBasicInfo {
+extension EnkaGI.QueryRelated.PlayerBasicInfo {
     @ViewBuilder
     public func accountProfileIcon(_ size: CGFloat) -> some View {
         if let dataSet = costumedCharAssetDataSet {

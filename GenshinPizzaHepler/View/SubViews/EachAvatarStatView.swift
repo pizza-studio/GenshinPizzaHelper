@@ -14,7 +14,7 @@ import SwiftUI
 struct EachAvatarStatView: View {
     // MARK: Lifecycle
 
-    init(avatar: PlayerDetail.Avatar) {
+    init(avatar: EnkaGI.QueryRelated.Avatar) {
         self.avatar = avatar
     }
 
@@ -24,7 +24,7 @@ struct EachAvatarStatView: View {
         ThisDevice.useAdaptiveSpacing ? spacingDeltaAmount : 0
     }
 
-    var avatar: PlayerDetail.Avatar
+    var avatar: EnkaGI.QueryRelated.Avatar
 
     var body: some View {
         LazyVStack(spacing: 6.5 + Self.spacingDelta) {
@@ -138,7 +138,7 @@ struct EachAvatarStatView: View {
 
     @ViewBuilder
     func perArtifactDetailView(
-        _ artifact: PlayerDetail.Avatar.Artifact,
+        _ artifact: EnkaGI.QueryRelated.Avatar.Artifact,
         seqIndex: Int,
         fontSize: CGFloat = 25
     )
@@ -333,7 +333,7 @@ struct AttributeLabel: View {
 private struct AvatarAndSkillView: View {
     // MARK: Internal
 
-    let avatar: PlayerDetail.Avatar
+    let avatar: EnkaGI.QueryRelated.Avatar
     let fontSize: CGFloat
 
     var body: some View {
@@ -414,7 +414,7 @@ private struct AvatarAndSkillView: View {
 
 // MARK: - Artifact Extension (SwiftUI)
 
-extension PlayerDetail.Avatar.Artifact {
+extension EnkaGI.QueryRelated.Avatar.Artifact {
     var rankedBackgroundColor: Color {
         switch rankLevel {
         case .five: return .orange
@@ -427,7 +427,7 @@ extension PlayerDetail.Avatar.Artifact {
 
 // MARK: - Skill Extension (SwiftUI)
 
-extension PlayerDetail.Avatar.Skill {
+extension EnkaGI.QueryRelated.Avatar.Skill {
     func levelDisplay(size: CGFloat) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
             Text("\(level)").font(.system(size: size * 0.93, weight: .heavy))

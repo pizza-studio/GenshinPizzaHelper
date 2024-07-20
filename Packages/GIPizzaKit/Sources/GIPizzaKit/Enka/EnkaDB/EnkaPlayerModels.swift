@@ -4,10 +4,10 @@
 
 import Foundation
 
-// MARK: - EnkaGI.PlayerDetailFetchModel
+// MARK: - EnkaGI.QueryRelated.FetchModel
 
-extension EnkaGI {
-    public struct PlayerDetailFetchModel: Codable {
+extension EnkaGI.QueryRelated {
+    public struct FetchModel: Codable {
         public struct PlayerInfo: Codable {
             public struct ShowAvatarInfo: Codable {
                 /// 角色ID

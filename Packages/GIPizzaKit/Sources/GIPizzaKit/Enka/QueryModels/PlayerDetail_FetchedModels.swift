@@ -4,13 +4,13 @@
 
 import HBMihoyoAPI
 
-extension PlayerDetail {
+extension EnkaGI.QueryRelated {
     public typealias FetchResult = Result<
-        EnkaGI.PlayerDetailFetchModel,
+        EnkaGI.QueryRelated.FetchModel,
         RequestError
     >
     public typealias FetchedResult = Result<
-        PlayerDetail,
-        PlayerDetail.Exception
+        EnkaGI.QueryRelated,
+        EnkaGI.QueryRelated.Exception
     >
 }

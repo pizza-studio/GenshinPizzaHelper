@@ -2,13 +2,13 @@
 // ====================
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
-extension PlayerDetail.Avatar {
+extension EnkaGI.QueryRelated.Avatar {
     /// 武器
     public struct Weapon: Hashable {
         // MARK: Lifecycle
 
         init?(
-            weaponEquipment: EnkaGI.PlayerDetailFetchModel.AvatarInfo.EquipList,
+            weaponEquipment: EnkaGI.QueryRelated.FetchModel.AvatarInfo.EquipList,
             localizedDictionary: [String: String]
         ) {
             guard weaponEquipment.flat.itemType == "ITEM_WEAPON"

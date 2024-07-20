@@ -7,8 +7,8 @@ import DefaultsKeys
 import Foundation
 
 #if !os(watchOS)
-extension PlayerDetail.Avatar {
-    public func summarize(locMap: EnkaGI.Sputnik.CharLoc, useMarkDown: Bool = false) -> String {
+extension EnkaGI.QueryRelated.Avatar {
+    public func summarize(locMap: EnkaGI.DBModels.LocTable, useMarkDown: Bool = false) -> String {
         var resultLines = useMarkDown ? [] : ["//====================="]
 
         func addSeparator(finalLine: Bool = false) {

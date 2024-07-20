@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
-extension PlayerDetail.Avatar {
+extension EnkaGI.QueryRelated.Avatar {
     /// 天赋
     public struct Skill: Hashable {
         /// 天赋名字(字典没有，暂时无法使用)

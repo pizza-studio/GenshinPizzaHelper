@@ -4,7 +4,7 @@
 
 import Foundation
 
-// MARK: - EnkaGI.CharacterMap
+// MARK: - EnkaGI.DBModels.CharacterDict
 
 extension EnkaGI {
     public typealias CharacterMap = [String: Character]
@@ -69,7 +69,7 @@ extension EnkaGI {
     }
 }
 
-extension EnkaGI.CharacterMap {
+extension EnkaGI.DBModels.CharacterDict {
     public func getIconString(id: String) -> String {
         self[id]?.iconString ?? ""
     }

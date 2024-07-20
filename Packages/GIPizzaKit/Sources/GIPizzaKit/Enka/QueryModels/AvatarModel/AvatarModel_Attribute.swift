@@ -4,7 +4,7 @@
 
 import Darwin
 
-extension PlayerDetail.Avatar {
+extension EnkaGI.QueryRelated.Avatar {
     /// 任意属性
     public struct Attribute: Hashable {
         // MARK: Lifecycle

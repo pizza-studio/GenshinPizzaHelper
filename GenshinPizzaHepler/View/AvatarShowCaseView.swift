@@ -23,11 +23,11 @@ struct AvatarShowCaseView: View {
     @State
     var showWaterMark: Bool = true
 
-    var playerDetail: PlayerDetail
+    var playerDetail: EnkaGI.QueryRelated.ProfileTranslated
 
     let closeView: () -> ()
 
-    var avatar: PlayerDetail.Avatar? {
+    var avatar: EnkaGI.QueryRelated.Avatar? {
         playerDetail.avatars.first(where: { avatar in
             avatar.enkaID == showingCharacterIdentifier
         })
@@ -50,7 +50,7 @@ struct AvatarShowCaseView: View {
     }
 
     @ViewBuilder
-    func coreBody(detail playerDetail: PlayerDetail) -> some View {
+    func coreBody(detail playerDetail: EnkaGI.QueryRelated.ProfileTranslated) -> some View {
         TabView(selection: $showingCharacterIdentifier.animation()) {
             // TabView 以 EnkaID 为依据。
             ForEach(playerDetail.avatars, id: \.enkaID) { avatar in
@@ -140,8 +140,7 @@ struct AvatarShowCaseView: View {
 
     @ViewBuilder
     func framedCoreView(
-        _ avatar: PlayerDetail
-            .Avatar
+        _ avatar: EnkaGI.QueryRelated.Avatar
     )
         -> some View {
         VStack {
