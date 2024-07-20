@@ -16,15 +16,13 @@ extension Defaults.Keys {
         default: .init(timeIntervalSince1970: 0),
         suite: .enkaSuite
     )
-    public static let enkaMapLoc = Key<Data>(
-        "enkaMapLoc",
-        default: try! Data(contentsOf: Bundle.module.url(forResource: "loc", withExtension: "json")!),
-        suite: .enkaSuite
-    )
-    public static let enkaMapCharacters = Key<Data>(
-        "enkaMapLoc",
-        default: try! Data(contentsOf: Bundle.module.url(forResource: "characters", withExtension: "json")!),
+    public static let enkaDBData = Key<EnkaGI.EnkaDB>(
+        "enkaDBData",
+        default: EnkaGI.EnkaDB(locTag: Locale.langCodeForEnkaAPI)!,
         suite: .enkaSuite
     )
 }
+
+extension EnkaGI.EnkaDB: _DefaultsSerializable {}
+
 #endif

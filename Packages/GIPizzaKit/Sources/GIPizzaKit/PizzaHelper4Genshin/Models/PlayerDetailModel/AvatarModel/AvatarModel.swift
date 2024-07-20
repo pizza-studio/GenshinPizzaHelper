@@ -13,9 +13,9 @@ extension PlayerDetail {
         // MARK: Lifecycle
 
         public init?(
-            avatarInfo: Enka.PlayerDetailFetchModel.AvatarInfo,
-            localizedDictionary: Enka.CharacterLoc.LocDict,
-            characterDictionary: Enka.CharacterMap,
+            avatarInfo: EnkaGI.PlayerDetailFetchModel.AvatarInfo,
+            localizedDictionary: EnkaGI.CharacterLoc.LocDict,
+            characterDictionary: EnkaGI.CharacterMap,
             uid: String?
         ) {
             guard let character =
@@ -127,7 +127,7 @@ extension PlayerDetail {
         public var artifactScoreRank: String?
 
         /// 角色属性
-        public let fightPropMap: Enka.FightPropMap
+        public let fightPropMap: EnkaGI.FightPropMap
 
         /// 正脸图
         public let iconString: String
@@ -141,7 +141,7 @@ extension PlayerDetail {
         public let uid: String
 
         /// 原始 character 資料備份。
-        public let character: Enka.Character
+        public let character: EnkaGI.Character
 
         /// 经过错字订正处理的角色姓名
         public var nameCorrected: String {

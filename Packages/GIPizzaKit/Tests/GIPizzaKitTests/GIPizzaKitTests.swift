@@ -23,7 +23,7 @@ final class GIPizzaKitTests: XCTestCase {
     }
 
     func testPFPQuery() throws {
-        let x = Enka.queryProfilePictureURL(pfpID: "100050")
+        let x = EnkaGI.queryProfilePictureURL(pfpID: "100050")
         XCTAssertNotNil(x)
         if let x = x {
             print(x)

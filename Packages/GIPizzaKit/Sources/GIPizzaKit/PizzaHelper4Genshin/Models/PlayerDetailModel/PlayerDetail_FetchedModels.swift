@@ -6,7 +6,7 @@ import HBMihoyoAPI
 
 extension PlayerDetail {
     public typealias FetchResult = Result<
-        Enka.PlayerDetailFetchModel,
+        EnkaGI.PlayerDetailFetchModel,
         RequestError
     >
     public typealias FetchedResult = Result<

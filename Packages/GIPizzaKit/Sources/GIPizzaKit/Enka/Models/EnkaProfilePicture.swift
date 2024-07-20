@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension Enka {
+extension EnkaGI {
     typealias PFPDict = [String: [String: String]]
     private static let pfpDict: PFPDict = {
         try! JSONDecoder().decode(

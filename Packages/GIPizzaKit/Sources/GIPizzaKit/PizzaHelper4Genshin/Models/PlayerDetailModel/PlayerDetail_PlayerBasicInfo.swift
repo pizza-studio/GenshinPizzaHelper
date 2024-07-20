@@ -8,8 +8,8 @@ extension PlayerDetail {
         // MARK: Lifecycle
 
         public init?(
-            playerInfo: Enka.PlayerDetailFetchModel.PlayerInfo?,
-            characterMap: Enka.CharacterMap
+            playerInfo: EnkaGI.PlayerDetailFetchModel.PlayerInfo?,
+            characterMap: EnkaGI.CharacterMap
         ) {
             guard let playerInfo = playerInfo else { return nil }
             self.nickname = playerInfo.nickname

@@ -48,9 +48,9 @@ public enum PizzaHelperAPI {
     /// - Parameters:
     ///     - completion: 数据
     public static func fetchENCharacterDetailData(
-        from serverType: Enka.JSONGitServerType? = nil
+        from serverType: EnkaGI.JSONGitServerType? = nil
     ) async throws
-        -> Enka.CharacterMap {
+        -> EnkaGI.CharacterMap {
         // 请求类别
         let urlPrefix: String = {
             switch serverType {
@@ -66,12 +66,12 @@ public enum PizzaHelperAPI {
             case nil: return .generalHost
             }
         }()
-        let urlStr = Enka.ResourceType.characters.subURLComponents(serverType: serverType)
+        let urlStr = EnkaGI.ResourceType.characters.subURLComponents(serverType: serverType)
         print("Fetching: \(urlPrefix + urlStr)")
 
         // 请求
         return try await withCheckedThrowingContinuation { continuation in
-            HttpMethod<Enka.CharacterMap>
+            HttpMethod<EnkaGI.CharacterMap>
                 .homeRequest(
                     .get,
                     urlStr,
@@ -96,9 +96,9 @@ public enum PizzaHelperAPI {
     /// - Parameters:
     ///     - completion: 数据
     public static func fetchCharacterLocData(
-        from serverType: Enka.JSONGitServerType? = nil
+        from serverType: EnkaGI.JSONGitServerType? = nil
     ) async throws
-        -> Enka.CharacterLoc {
+        -> EnkaGI.CharacterLoc {
         // 请求类别
         let urlPrefix: String = {
             switch serverType {
@@ -114,12 +114,12 @@ public enum PizzaHelperAPI {
             case nil: return .generalHost
             }
         }()
-        let urlStr = Enka.ResourceType.loc.subURLComponents(serverType: serverType)
+        let urlStr = EnkaGI.ResourceType.loc.subURLComponents(serverType: serverType)
         print("Fetching: \(urlPrefix + urlStr)")
 
         // 请求
         return try await withCheckedThrowingContinuation { continuation in
-            HttpMethod<Enka.CharacterLoc>
+            HttpMethod<EnkaGI.CharacterLoc>
                 .homeRequest(
                     .get,
                     urlStr,

@@ -8,7 +8,7 @@ extension PlayerDetail.Avatar {
         // MARK: Lifecycle
 
         init?(
-            weaponEquipment: Enka.PlayerDetailFetchModel.AvatarInfo.EquipList,
+            weaponEquipment: EnkaGI.PlayerDetailFetchModel.AvatarInfo.EquipList,
             localizedDictionary: [String: String]
         ) {
             guard weaponEquipment.flat.itemType == "ITEM_WEAPON"

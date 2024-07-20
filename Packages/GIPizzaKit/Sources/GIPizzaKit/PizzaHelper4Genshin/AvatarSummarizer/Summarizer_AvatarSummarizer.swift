@@ -8,7 +8,7 @@ import Foundation
 
 #if !os(watchOS)
 extension PlayerDetail.Avatar {
-    public func summarize(locMap: Enka.Sputnik.CharLoc, useMarkDown: Bool = false) -> String {
+    public func summarize(locMap: EnkaGI.Sputnik.CharLoc, useMarkDown: Bool = false) -> String {
         var resultLines = useMarkDown ? [] : ["//====================="]
 
         func addSeparator(finalLine: Bool = false) {

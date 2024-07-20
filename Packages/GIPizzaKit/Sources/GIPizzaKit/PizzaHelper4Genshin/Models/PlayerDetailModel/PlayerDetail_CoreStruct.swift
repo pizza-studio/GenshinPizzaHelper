@@ -13,9 +13,9 @@ public struct PlayerDetail {
     // MARK: - 初始化
 
     public init(
-        fetchedModel: Enka.PlayerDetailFetchModel,
+        fetchedModel: EnkaGI.PlayerDetailFetchModel,
         localizedDictionary: [String: String],
-        characterMap: Enka.CharacterMap
+        characterMap: EnkaGI.CharacterMap
     ) {
         self.rawFetchedData = fetchedModel
         var rawResultTXT = [Int: String]()
@@ -55,7 +55,7 @@ public struct PlayerDetail {
 
     // MARK: Public
 
-    public let rawFetchedData: Enka.PlayerDetailFetchModel
+    public let rawFetchedData: EnkaGI.PlayerDetailFetchModel
 
     public let nextRefreshableDate: Date
 
@@ -70,8 +70,8 @@ public struct PlayerDetail {
     public let enkaMessage: String?
 }
 
-extension Enka.CharacterMap {
-    public func checkValidity(against fetchedProfile: Enka.PlayerDetailFetchModel) -> Bool {
+extension EnkaGI.CharacterMap {
+    public func checkValidity(against fetchedProfile: EnkaGI.PlayerDetailFetchModel) -> Bool {
         let fetchedIDs = Set<String>(fetchedProfile.avatarInfoList?.map(\.avatarId.description) ?? [])
         let allSelfIDs = Set<String>(keys)
         return fetchedIDs.isSubset(of: allSelfIDs)

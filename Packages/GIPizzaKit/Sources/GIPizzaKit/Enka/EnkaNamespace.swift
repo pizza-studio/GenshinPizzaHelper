@@ -4,4 +4,4 @@
 
 import Foundation
 
-public enum Enka {}
+public enum EnkaGI {}

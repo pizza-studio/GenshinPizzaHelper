@@ -3,11 +3,11 @@
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 extension PlayerDetail.Avatar {
-    public var baseDMGBoostIntel: Enka.FightPropMap.PairedDamageAmpIntel {
+    public var baseDMGBoostIntel: EnkaGI.FightPropMap.PairedDamageAmpIntel {
         fightPropMap.getPairedDamageAmpIntel(for: element)
     }
 
-    public var highestDMGBoostIntel: Enka.FightPropMap.PairedDamageAmpIntel {
+    public var highestDMGBoostIntel: EnkaGI.FightPropMap.PairedDamageAmpIntel {
         fightPropMap.highestDMGBoostIntel(for: element)
     }
 

@@ -637,9 +637,9 @@ extension CharacterAsset {
     }
 }
 
-// MARK: - Extending Enka.Character
+// MARK: - Extending EnkaGI.Character
 
-extension Enka.Character {
+extension EnkaGI.Character {
     public var enkaID: Int {
         CharacterAsset.allCases.filter { currentChar in
             currentChar.frontPhotoFileName == iconString

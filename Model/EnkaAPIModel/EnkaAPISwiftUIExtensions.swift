@@ -27,7 +27,7 @@ public enum DecoratedIconCutType: CGFloat {
     }
 }
 
-extension Enka.Character {
+extension EnkaGI.Character {
     var elementColor: Color {
         guard let element = PlayerDetail.Avatar.TeyvatElement(rawValue: Element) else {
             return .pink
@@ -73,7 +73,7 @@ extension PlayerDetail.PlayerBasicInfo {
             )
         } else {
             let placeholder = CharacterAsset.fallbackedValue.decoratedIcon(size, cutTo: .head)
-            if let url = Enka.queryProfilePictureURL(pfpID: neutralPFPID.description) {
+            if let url = EnkaGI.queryProfilePictureURL(pfpID: neutralPFPID.description) {
                 AsyncImage(url: url) { image in
                     image
                         .resizable()

@@ -16,7 +16,7 @@ import HBMihoyoAPI
 
 #if !os(watchOS)
 //    typealias PlayerDetail.FetchResult = Result<
-//        Enka.PlayerDetailFetchModel,
+//        EnkaGI.PlayerDetailFetchModel,
 //        RequestError
 //    >
 //    typealias PlayerDetail.FetchedResult = Result<

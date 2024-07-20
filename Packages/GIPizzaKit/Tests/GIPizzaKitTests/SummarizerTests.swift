@@ -2,17 +2,17 @@
 import XCTest
 
 final class SummarizerTests: XCTestCase {
-    let mapEnkaChar: Enka.Sputnik.CharMap = {
+    let mapEnkaChar: EnkaGI.Sputnik.CharMap = {
         try! JSONDecoder().decode(
-            Enka.Sputnik.CharMap.self, from: Data(
+            EnkaGI.Sputnik.CharMap.self, from: Data(
                 contentsOf: Bundle.module.url(forResource: "characters", withExtension: "json")!
             )
         )
     }()
 
-    let mapEnkaLoc: Enka.Sputnik.CharLoc = {
+    let mapEnkaLoc: EnkaGI.Sputnik.CharLoc = {
         try! JSONDecoder().decode(
-            Enka.CharacterLoc.self, from: Data(
+            EnkaGI.CharacterLoc.self, from: Data(
                 contentsOf: Bundle.module.url(forResource: "loc", withExtension: "json")!
             )
         )["ja"]!
@@ -21,7 +21,10 @@ final class SummarizerTests: XCTestCase {
     /// 测试本地化
     func testAvatarInitiation() throws {
         let theAvatarRaw = try? JSONDecoder()
-            .decode(Enka.PlayerDetailFetchModel.AvatarInfo.self, from: jsnYukuakiAvatar.data(using: .utf8) ?? .init([]))
+            .decode(
+                EnkaGI.PlayerDetailFetchModel.AvatarInfo.self,
+                from: jsnYukuakiAvatar.data(using: .utf8) ?? .init([])
+            )
         XCTAssertNotNil(theAvatarRaw)
         guard let theAvatarRaw = theAvatarRaw else { exit(1) }
         let theAvatar = PlayerDetail.Avatar(

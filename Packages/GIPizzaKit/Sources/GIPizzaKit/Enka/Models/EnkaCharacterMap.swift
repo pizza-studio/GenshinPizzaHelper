@@ -4,9 +4,9 @@
 
 import Foundation
 
-// MARK: - Enka.CharacterMap
+// MARK: - EnkaGI.CharacterMap
 
-extension Enka {
+extension EnkaGI {
     public typealias CharacterMap = [String: Character]
 
     public struct Costume: Codable, Hashable {
@@ -69,7 +69,7 @@ extension Enka {
     }
 }
 
-extension Enka.CharacterMap {
+extension EnkaGI.CharacterMap {
     public func getIconString(id: String) -> String {
         self[id]?.iconString ?? ""
     }

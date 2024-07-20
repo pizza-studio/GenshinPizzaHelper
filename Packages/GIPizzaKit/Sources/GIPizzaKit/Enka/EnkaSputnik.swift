@@ -8,57 +8,45 @@ import Foundation
 // MARK: - Enka Sputnik
 
 #if !os(watchOS)
-extension Enka {
-    public class Sputnik {
-        // MARK: Lifecycle
-
-        private init() {}
-
-        // MARK: Public
-
-        public typealias CharLoc = Enka.CharacterLoc.LocDict
-        public typealias CharMap = Enka.CharacterMap
+extension EnkaGI {
+    public enum Sputnik {
+        public typealias CharLoc = EnkaGI.CharacterLoc.LocDict
+        public typealias CharMap = EnkaGI.CharacterMap
 
         public struct DataSet {
             public let charLoc: CharLoc
             public let charMap: CharMap
         }
 
-        public static let shared = Enka.Sputnik()
+        public static var sharedDB: EnkaGI.EnkaDB = {
+            let result = Defaults[.enkaDBData]
+            return result
+        }()
 
-        public func resetLocalEnkaStorage() {
-            Defaults.reset(.enkaMapLoc)
-            Defaults.reset(.enkaMapCharacters)
+        public static func resetLocalEnkaStorage() {
+            Defaults.reset(.enkaDBData)
         }
 
-        public func getEnkaDataSet(updateCheck: ((CharMap) -> Bool)? = nil) async throws
-            -> (charLoc: CharLoc, charMap: CharMap) {
-            // Read charloc and charmap from UserDefault
-            let storedCharLoc = try? JSONDecoder().decode(Enka.CharacterLoc.self, from: Defaults[.enkaMapLoc])
-                .getLocalizedDictionary()
-            let storedCharMap = try? JSONDecoder()
-                .decode(Enka.CharacterMap.self, from: Defaults[.enkaMapCharacters])
-
-            let enkaDataWrecked = storedCharLoc == nil || storedCharMap == nil || (storedCharLoc?.count ?? 0) *
-                (storedCharMap?.count ?? 0) == 0
-            if enkaDataWrecked { resetLocalEnkaStorage() }
-
+        public static func getEnkaDB(updateCheck: ((CharMap) -> Bool)? = nil) async throws
+            -> EnkaDB {
             var enkaDataExpired = Calendar.current.date(
                 byAdding: .hour,
                 value: 2,
                 to: Defaults[.lastEnkaDataCheckDate]
             )! < Date()
 
-            if let updateCheck = updateCheck,
-               let storedCharMap = storedCharMap,
-               !updateCheck(storedCharMap) {
+            if Locale.langCodeForEnkaAPI != sharedDB.langTag {
                 enkaDataExpired = true
             }
 
-            let needUpdate = enkaDataWrecked || enkaDataExpired
+            if let updateCheck = updateCheck, !updateCheck(sharedDB.characters) {
+                enkaDataExpired = true
+            }
 
-            if !needUpdate, let storedCharLoc, let storedCharMap {
-                return (storedCharLoc, storedCharMap)
+            let needUpdate = enkaDataExpired
+
+            if !needUpdate {
+                return sharedDB
             } else {
                 // fetch data
                 async let charLocRaw = try await Task {
@@ -76,18 +64,26 @@ extension Enka {
                     }
                 }.value
 
+                let locTag = Locale.langCodeForEnkaAPI
                 // save charLoc and charMap to UserDefault
-                if let newMapLoc = try? await JSONEncoder().encode(charLocRaw) {
-                    Defaults[.enkaMapLoc] = newMapLoc
+                guard let newMapLoc = try await charLocRaw[locTag],
+                      let newMapCharacters = try? await charMapRaw
+                else {
+                    throw EnkaGI.Exception
+                        .enkaDBOnlineFetchFailure(details: "Language Tag Matching Error.")
                 }
 
-                if let newMapCharacters = try? await JSONEncoder().encode(charMapRaw) {
-                    Defaults[.enkaMapCharacters] = newMapCharacters
-                }
+                let newDB = EnkaGI.EnkaDB(
+                    locTag: locTag,
+                    locTable: newMapLoc,
+                    characters: newMapCharacters
+                )
 
+                Defaults[.enkaDBData] = newDB
+                Self.sharedDB.update(new: newDB)
                 Defaults[.lastEnkaDataCheckDate] = Date()
 
-                return try await (charLocRaw.getLocalizedDictionary(), charMapRaw)
+                return newDB
             }
         }
     }
@@ -95,7 +91,7 @@ extension Enka {
 
 // MARK: - Fetch Errors
 
-extension Enka.Sputnik {
+extension EnkaGI.Sputnik {
     public enum DataFetchError: Error {
         case charMapInvalid
         case charLocInvalid

@@ -4,9 +4,9 @@
 
 import Foundation
 
-// MARK: - Enka.PlayerDetailFetchModel
+// MARK: - EnkaGI.PlayerDetailFetchModel
 
-extension Enka {
+extension EnkaGI {
     public struct PlayerDetailFetchModel: Codable {
         public struct PlayerInfo: Codable {
             public struct ShowAvatarInfo: Codable {

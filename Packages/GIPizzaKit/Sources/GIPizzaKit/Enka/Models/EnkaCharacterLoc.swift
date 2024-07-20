@@ -4,13 +4,13 @@
 
 import Foundation
 
-// MARK: - Enka.CharacterLoc
+// MARK: - EnkaGI.CharacterLoc
 
-extension Enka {
+extension EnkaGI {
     public typealias CharacterLoc = [String: [String: String]]
 }
 
-extension Enka.CharacterLoc {
+extension EnkaGI.CharacterLoc {
     public typealias LocDict = [String: String]
     public var en: LocDict { self["en"] ?? [:] }
     public var ru: LocDict { self["ru"] ?? [:] }
@@ -48,7 +48,7 @@ extension Enka.CharacterLoc {
     }
 }
 
-extension Enka.CharacterLoc.LocDict {
+extension EnkaGI.CharacterLoc.LocDict {
     public func nameFromHashMap(_ hashID: Int) -> String {
         self["\(hashID)"] ?? "unknown"
     }

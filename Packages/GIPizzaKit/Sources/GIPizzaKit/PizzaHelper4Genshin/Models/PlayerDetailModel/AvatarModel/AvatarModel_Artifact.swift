@@ -10,7 +10,7 @@ extension PlayerDetail.Avatar {
         // MARK: Lifecycle
 
         init?(
-            artifactEquipment: Enka.PlayerDetailFetchModel.AvatarInfo.EquipList,
+            artifactEquipment: EnkaGI.PlayerDetailFetchModel.AvatarInfo.EquipList,
             localizedDictionary: [String: String],
             score: Double?
         ) {

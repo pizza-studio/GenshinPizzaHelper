@@ -14,8 +14,6 @@ import SFSafeSymbols
 import SwiftPieChart
 import SwiftUI
 
-let detailPortalRefreshSubject: PassthroughSubject<(), Never> = .init()
-
 // MARK: - DetailPortalViewModel
 
 @MainActor
@@ -46,6 +44,8 @@ final class DetailPortalViewModel: ObservableObject {
     typealias SpiralAbyssDetailStatus = Status<SpiralAbyssDetail>
     typealias LedgerDataStatus = Status<LedgerData>
     typealias CharInventoryStatus = Status<CharacterInventoryModel>
+
+    static let refreshSubject: PassthroughSubject<(), Never> = .init()
 
     @Published
     var playerDetailStatus: PlayerDetailStatus = .progress(nil)
@@ -86,7 +86,7 @@ final class DetailPortalViewModel: ObservableObject {
             await fetchLedgerData()
             await fetchCharacterInventoryList()
             await uploadData()
-            detailPortalRefreshSubject.send(())
+            Self.refreshSubject.send(())
         }
     }
 
@@ -130,13 +130,13 @@ final class DetailPortalViewModel: ObservableObject {
                     selectedAccount.safeUid,
                     dateWhenNextRefreshable: nil
                 )
-                let (charLoc, charMap) = try await Enka.Sputnik.shared.getEnkaDataSet {
+                let theDB = try await EnkaGI.Sputnik.getEnkaDB {
                     $0.checkValidity(against: fetchedModel)
                 }
                 let playerDetail = PlayerDetail(
                     fetchedModel: fetchedModel,
-                    localizedDictionary: charLoc,
-                    characterMap: charMap
+                    localizedDictionary: theDB.locTable,
+                    characterMap: theDB.characters
                 )
                 refreshCostumeMap(playerDetail: playerDetail)
                 currentBasicInfo = playerDetail.basicInfo
