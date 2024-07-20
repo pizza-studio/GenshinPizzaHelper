@@ -4,7 +4,7 @@
 
 extension EnkaGI.QueryRelated {
     /// 账号基本信息
-    public struct PlayerBasicInfo {
+    public struct PlayerInfoTranslated {
         // MARK: Lifecycle
 
         public init?(

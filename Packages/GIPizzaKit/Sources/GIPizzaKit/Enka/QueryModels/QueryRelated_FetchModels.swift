@@ -7,9 +7,9 @@ import Foundation
 // MARK: - EnkaGI.QueryRelated.FetchModel
 
 extension EnkaGI.QueryRelated {
-    public struct FetchModel: Codable {
-        public struct PlayerInfo: Codable {
-            public struct ShowAvatarInfo: Codable {
+    public struct FetchModel: Codable, Hashable {
+        public struct PlayerInfo: Codable, Hashable {
+            public struct ShowAvatarInfo: Codable, Hashable {
                 /// 角色ID
                 public var avatarId: Int
                 /// 角色等级
@@ -18,7 +18,7 @@ extension EnkaGI.QueryRelated {
                 public var costumeId: Int?
             }
 
-            public struct ProfilePicture: Codable {
+            public struct ProfilePicture: Codable, Hashable {
                 /// 在 ProfilePictureExcelConfigData.json 当中的检索用 ID。
                 /// Ref: https://twitter.com/EnkaNetwork/status/1708819830693077325
                 public let id: Int?
@@ -52,22 +52,22 @@ extension EnkaGI.QueryRelated {
             public var profilePicture: ProfilePicture
         }
 
-        public struct AvatarInfo: Codable {
-            public struct PropMap: Codable {
+        public struct AvatarInfo: Codable, Hashable {
+            public struct PropMap: Codable, Hashable {
                 // MARK: Public
 
-                public struct Exp: Codable {
+                public struct Exp: Codable, Hashable {
                     public var type: Int
                     public var ival: String
                 }
 
-                public struct LevelStage: Codable {
+                public struct LevelStage: Codable, Hashable {
                     public var type: Int
                     public var ival: String
                     public var val: String?
                 }
 
-                public struct Level: Codable {
+                public struct Level: Codable, Hashable {
                     public var type: Int
                     public var ival: String
                     public var val: String
@@ -89,9 +89,9 @@ extension EnkaGI.QueryRelated {
             }
 
             /// 装备列表的一项，包括武器和圣遗物
-            public struct EquipList: Codable {
+            public struct EquipList: Codable, Hashable {
                 /// 圣遗物
-                public struct Reliquary: Codable {
+                public struct Reliquary: Codable, Hashable {
                     /// 圣遗物等级
                     public var level: Int
                     /// 圣遗物主属性ID
@@ -100,7 +100,7 @@ extension EnkaGI.QueryRelated {
                     public var appendPropIdList: [Int]?
                 }
 
-                public struct Weapon: Codable {
+                public struct Weapon: Codable, Hashable {
                     /// 武器等级
                     public var level: Int
                     /// 武器突破等级
@@ -109,8 +109,8 @@ extension EnkaGI.QueryRelated {
                     public var affixMap: [String: Int]?
                 }
 
-                public struct Flat: Codable {
-                    public struct ReliquaryMainstat: Codable {
+                public struct Flat: Codable, Hashable {
+                    public struct ReliquaryMainstat: Codable, Hashable {
                         public var mainPropId: String
                         public var statValue: Double
                     }
@@ -120,7 +120,7 @@ extension EnkaGI.QueryRelated {
                         public var statValue: Double
                     }
 
-                    public struct WeaponStat: Codable {
+                    public struct WeaponStat: Codable, Hashable {
                         public var appendPropId: String
                         public var statValue: Double
                     }
@@ -154,7 +154,7 @@ extension EnkaGI.QueryRelated {
                 public var flat: Flat
             }
 
-            public struct FetterInfo: Codable {
+            public struct FetterInfo: Codable, Hashable {
                 public var expLevel: Int
             }
 

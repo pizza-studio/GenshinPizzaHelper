@@ -66,7 +66,7 @@ final class DetailPortalViewModel: ObservableObject {
     var characterInventoryStatus: CharInventoryStatus = .progress(nil)
 
     @Published
-    var currentBasicInfo: EnkaGI.QueryRelated.PlayerBasicInfo?
+    var currentBasicInfo: EnkaGI.QueryRelated.PlayerInfoTranslated?
 
     @Published
     var selectedAccount: AccountConfiguration? {
@@ -590,7 +590,7 @@ private struct SelectAccountSection: View {
     @ViewBuilder
     func normalAccountPickerView(
         playerDetail: EnkaGI.QueryRelated.ProfileTranslated,
-        basicInfo: EnkaGI.QueryRelated.PlayerBasicInfo,
+        basicInfo: EnkaGI.QueryRelated.PlayerInfoTranslated,
         selectedAccount: AccountConfiguration
     )
         -> some View {

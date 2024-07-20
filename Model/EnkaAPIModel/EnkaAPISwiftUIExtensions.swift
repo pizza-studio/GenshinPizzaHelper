@@ -61,7 +61,7 @@ extension EnkaGI.QueryRelated.Avatar.TeyvatElement {
 
 // MARK: - Profile Picture Icons
 
-extension EnkaGI.QueryRelated.PlayerBasicInfo {
+extension EnkaGI.QueryRelated.PlayerInfoTranslated {
     @ViewBuilder
     public func accountProfileIcon(_ size: CGFloat) -> some View {
         if let dataSet = costumedCharAssetDataSet {
