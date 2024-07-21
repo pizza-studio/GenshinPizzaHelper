@@ -6,6 +6,7 @@
 //
 
 import AlertToast
+import Defaults
 import SwiftUI
 
 // MARK: - AlertToastVariable
@@ -140,7 +141,22 @@ struct ManageAccountsView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { accounts[$0] }.forEach(viewContext.delete)
+            var idsToDrop: [String] = []
+            offsets.map {
+                let returned = accounts[$0]
+                idsToDrop.append(returned.safeUid)
+                return returned
+            }.forEach(viewContext.delete)
+
+            defer {
+                // 特殊处理：当且仅当当前删掉的帐号不是重复的帐号的时候，才清空展柜缓存。
+                let remainingUIDs = accounts.map(\.uid)
+                idsToDrop.forEach { currentUID in
+                    if !remainingUIDs.contains(currentUID) {
+                        Defaults[.queriedEnkaProfiles].removeValue(forKey: currentUID)
+                    }
+                }
+            }
 
             do {
                 try viewContext.save()
