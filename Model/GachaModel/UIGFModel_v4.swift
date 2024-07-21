@@ -8,9 +8,9 @@
 import CoreData
 import Foundation
 
-// MARK: - UIGFJson
+// MARK: - UIGFv4
 
-struct UIGFJson: Codable {
+struct UIGFv4: Codable {
     struct Info: Codable {
         // MARK: Lifecycle
 
@@ -86,7 +86,7 @@ struct UIGFGachaItem: Codable {
     // MARK: Lifecycle
 
     init(
-        gachaType: _GachaType,
+        gachaType: MihoyoGachaType,
         itemId: String,
         count: String,
         time: Date,
@@ -112,7 +112,7 @@ struct UIGFGachaItem: Codable {
             try container
                 .decode(String.self, forKey: .gachaType)
         ),
-            let gcTypeEnum = _GachaType(rawValue: gcTypeInt) {
+            let gcTypeEnum = MihoyoGachaType(rawValue: gcTypeInt) {
             self.gachaType = gcTypeEnum
         } else {
             throw DecodingError.dataCorrupted(.init(
@@ -183,7 +183,7 @@ struct UIGFGachaItem: Codable {
              uigfGachaType
     }
 
-    var gachaType: _GachaType
+    var gachaType: MihoyoGachaType
     var itemId: String
     var count: String
     var time: Date
@@ -219,18 +219,6 @@ extension UIGFGachaItem {
         id = newId
     }
 
-    mutating func translateToZHCN(from languageCode: GachaLanguageCode) {
-        let manager = GachaTranslateManager.shared
-        name = manager.translateToZHCN(name, from: languageCode) ?? name
-        itemType = manager.translateItemTypeToZHCN(itemType) ?? "武器"
-    }
-
-    mutating func translate(to languageCode: GachaLanguageCode) {
-        let manager = GachaTranslateManager.shared
-        name = manager.translateFromZHCN(name, to: languageCode) ?? name
-        itemType = manager.translateItemType(itemType, to: languageCode) ?? "武器"
-    }
-
     public func toGachaItemMO(
         context: NSManagedObjectContext,
         uid: String,
@@ -239,9 +227,6 @@ extension UIGFGachaItem {
         -> GachaItemMO {
         let model = GachaItemMO(context: context)
         var item = self
-        if lang != .zhCN {
-            item.translateToZHCN(from: lang)
-        }
         model.uid = uid
         model.gachaType = Int16(exactly: item.gachaType.rawValue)!
         model.itemId = item.itemId
@@ -268,7 +253,6 @@ extension GachaItemMO {
             rankType: .init(rawValue: Int(rankType))!,
             id: id!
         )
-        item.translate(to: languageCode)
         return item
     }
 }

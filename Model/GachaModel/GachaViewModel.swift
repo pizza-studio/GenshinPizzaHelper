@@ -193,7 +193,7 @@ class GachaViewModel: ObservableObject {
     }
 
     func importGachaFromUIGFJson(
-        uigfJson: UIGFJson
+        uigfJson: UIGFv4
     )
         -> (uid: String, totalCount: Int, newCount: Int) {
         let info = uigfJson.info
@@ -255,7 +255,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     @Published
     var page: Int = 0
     @Published
-    var gachaType: _GachaType = .standard
+    var gachaType: MihoyoGachaType = .standard
     @Published
     var currentItems: [GachaItem_FM] = []
     @Published
@@ -275,7 +275,7 @@ public class GachaFetchProgressObserver: ObservableObject {
         }
     }
 
-    func fetching(page: Int, gachaType: _GachaType) {
+    func fetching(page: Int, gachaType: MihoyoGachaType) {
         Task.detached { @MainActor in
             withAnimation {
                 self.page = page

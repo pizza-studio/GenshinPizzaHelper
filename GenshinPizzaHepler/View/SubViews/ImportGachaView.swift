@@ -93,9 +93,9 @@ struct ImportGachaView: View {
                         .keyDecodingStrategy =
                         .convertFromSnakeCase
                     let data: Data = try Data(contentsOf: url)
-                    let uigfModel: UIGFJson = try decoder
+                    let uigfModel: UIGFv4 = try decoder
                         .decode(
-                            UIGFJson.self,
+                            UIGFv4.self,
                             from: data
                         )
                     let result = gachaViewModel
@@ -201,7 +201,7 @@ struct ImportGachaView: View {
                            let langCode = GachaLanguageCode(rawValue: langString) {
                             lang = langCode
                         } else {
-                            lang = GachaTranslateManager.shared.getLanguageCode(for: name) ?? .zhCN
+                            lang = .zhCN
                         }
 
                         let rankType: String

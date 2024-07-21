@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import GIPizzaKit
 
 // MARK: - GachaResult_FM
 
@@ -57,19 +58,5 @@ extension GachaResult_FM {
 extension GachaItem_FM {
     mutating func editId(_ newId: String) {
         id = newId
-    }
-
-    mutating func translateToZHCN() {
-        let manager = GachaTranslateManager.shared
-        name = manager.translateToZHCN(name, from: lang) ?? name
-        itemType = manager.translateItemTypeToZHCN(itemType) ?? "武器"
-        lang = .zhCN
-    }
-
-    mutating func translate(to languageCode: GachaLanguageCode) {
-        let manager = GachaTranslateManager.shared
-        name = manager.translateFromZHCN(name, to: languageCode) ?? name
-        itemType = manager.translateItemType(itemType, to: languageCode) ?? "武器"
-        lang = languageCode
     }
 }

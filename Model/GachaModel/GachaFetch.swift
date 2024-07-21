@@ -77,7 +77,7 @@ extension MihoyoAPI {
     private static func innerGetGachaLogAndSave(
         server: Server,
         authkey: GenAuthKeyResult.GenAuthKeyData,
-        gachaType: _GachaType = .standard,
+        gachaType: MihoyoGachaType = .standard,
         page: Int = 1,
         endId: String = "0",
         manager: GachaModelManager,

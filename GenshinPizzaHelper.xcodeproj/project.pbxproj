@@ -61,7 +61,7 @@
 		5BCBAEF52C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBAEF42C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift */; };
 		5BCBAEF62C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBAEF42C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift */; };
 		5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210628B33D8300A6BBA9 /* AppDelegate.swift */; };
-		5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */; };
+		5BD1C5CB2A2A1FC90043C2B1 /* GachaLanguageCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaLanguageCode.swift */; };
 		5BD1C5CC2A2A1FC90043C2B1 /* EachAvatarStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7500D728DEA80700CDA64E /* EachAvatarStatView.swift */; };
 		5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A9DB229D4812300CF4230 /* GachaChartView.swift */; };
 		5BD1C5CE2A2A1FC90043C2B1 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8F29D28D3D0075F780 /* GachaView.swift */; };
@@ -119,7 +119,7 @@
 		5BD1C60F2A2A1FC90043C2B1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210A28B3910800A6BBA9 /* HomeView.swift */; };
 		5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C8C2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift */; };
 		5BD1C6112A2A1FC90043C2B1 /* NotificationSettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB771528B256E300314974 /* NotificationSettingNavigator.swift */; };
-		5BD1C6122A2A1FC90043C2B1 /* UIGFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488E29D9A8730059DEBF /* UIGFModel.swift */; };
+		5BD1C6122A2A1FC90043C2B1 /* UIGFModel_v4.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488E29D9A8730059DEBF /* UIGFModel_v4.swift */; };
 		5BD1C6132A2A1FC90043C2B1 /* CurrentEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB101E228D6C277000DC631 /* CurrentEventNavigator.swift */; };
 		5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CCE28B518FC00770BBB /* ExpeditionsView.swift */; };
 		5BD1C6172A2A1FC90043C2B1 /* GenshinPizzaHeplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD7DB92886B2D200B7F0FD /* GenshinPizzaHeplerApp.swift */; };
@@ -398,12 +398,12 @@
 		EA09FDF32B2BB30200862DFB /* DailyNoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09FDED2B2BB16800862DFB /* DailyNoteExtension.swift */; };
 		EA09FDF42B2BB30200862DFB /* DailyNoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09FDED2B2BB16800862DFB /* DailyNoteExtension.swift */; };
 		EA09FDF52B2BB32000862DFB /* WidgetRefreshTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09FDEB2B2BB07A00862DFB /* WidgetRefreshTime.swift */; };
-		EA0A6D0B29DDC74000A356A4 /* GachaTranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */; };
+		EA0A6D0B29DDC74000A356A4 /* GachaLanguageCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0A6D0A29DDC74000A356A4 /* GachaLanguageCode.swift */; };
 		EA0FD98A28CB287E005F99C7 /* WatchResinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */; };
 		EA0FD98D28CB3531005F99C7 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD823528A680E000616CE1 /* WebImageView.swift */; };
 		EA10A66429D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA10A66229D1EF5300A341F3 /* PizzaGachaLog.xcdatamodeld */; };
 		EA11488D29D99B590059DEBF /* GetGachaClipboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */; };
-		EA11488F29D9A8730059DEBF /* UIGFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488E29D9A8730059DEBF /* UIGFModel.swift */; };
+		EA11488F29D9A8730059DEBF /* UIGFModel_v4.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11488E29D9A8730059DEBF /* UIGFModel_v4.swift */; };
 		EA11489129D9D1430059DEBF /* ImportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA11489029D9D1430059DEBF /* ImportGachaView.swift */; };
 		EA185F26292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
 		EA185F27292F1ACC003E7E32 /* ResinRecoveryActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA498C962928732A00E7D2D7 /* ResinRecoveryActivityController.swift */; };
@@ -955,13 +955,13 @@
 		EA09A02428A2C2E60023B4AF /* IntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		EA09FDEB2B2BB07A00862DFB /* WidgetRefreshTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRefreshTime.swift; sourceTree = "<group>"; };
 		EA09FDED2B2BB16800862DFB /* DailyNoteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoteExtension.swift; sourceTree = "<group>"; };
-		EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaTranslateManager.swift; sourceTree = "<group>"; };
+		EA0A6D0A29DDC74000A356A4 /* GachaLanguageCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaLanguageCode.swift; sourceTree = "<group>"; };
 		EA0F91DA2886B5F900AE7A62 /* ResinStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResinStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		EA0F91DB2886B60700AE7A62 /* GenshinPizzaHepler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GenshinPizzaHepler.entitlements; sourceTree = "<group>"; };
 		EA0FD98928CB287E005F99C7 /* WatchResinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchResinDetailView.swift; sourceTree = "<group>"; };
 		EA10A66329D1EF5300A341F3 /* GachaLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GachaLog.xcdatamodel; sourceTree = "<group>"; };
 		EA11488C29D99B590059DEBF /* GetGachaClipboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGachaClipboardView.swift; sourceTree = "<group>"; };
-		EA11488E29D9A8730059DEBF /* UIGFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGFModel.swift; sourceTree = "<group>"; };
+		EA11488E29D9A8730059DEBF /* UIGFModel_v4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGFModel_v4.swift; sourceTree = "<group>"; };
 		EA11489029D9D1430059DEBF /* ImportGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportGachaView.swift; sourceTree = "<group>"; };
 		EA1B76762886B89F007A5216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EA1C2CE028F0464D00E4C28A /* OverflowContentViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowContentViewModifier.swift; sourceTree = "<group>"; };
@@ -1518,8 +1518,8 @@
 				EAAD03E529D2FD88007D5C80 /* GachaItem.swift */,
 				EA4C005829D2FFD100637B19 /* GachaFetch.swift */,
 				EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */,
-				EA11488E29D9A8730059DEBF /* UIGFModel.swift */,
-				EA0A6D0A29DDC74000A356A4 /* GachaTranslateManager.swift */,
+				EA11488E29D9A8730059DEBF /* UIGFModel_v4.swift */,
+				EA0A6D0A29DDC74000A356A4 /* GachaLanguageCode.swift */,
 				EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */,
 			);
 			path = GachaModel;
@@ -2429,7 +2429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD1C5C82A2A1FC90043C2B1 /* AppDelegate.swift in Sources */,
-				5BD1C5CB2A2A1FC90043C2B1 /* GachaTranslateManager.swift in Sources */,
+				5BD1C5CB2A2A1FC90043C2B1 /* GachaLanguageCode.swift in Sources */,
 				EA759D6C2B19989A0080C775 /* AccountDetailView.swift in Sources */,
 				5BD1C5CC2A2A1FC90043C2B1 /* EachAvatarStatView.swift in Sources */,
 				5BD1C5CD2A2A1FC90043C2B1 /* GachaChartView.swift in Sources */,
@@ -2510,7 +2510,7 @@
 				BFF6840A2A3753C8005470EA /* Icon.swift in Sources */,
 				5BD1C6102A2A1FC90043C2B1 /* ResinRecoveryAttributes.swift in Sources */,
 				5BD1C6112A2A1FC90043C2B1 /* NotificationSettingNavigator.swift in Sources */,
-				5BD1C6122A2A1FC90043C2B1 /* UIGFModel.swift in Sources */,
+				5BD1C6122A2A1FC90043C2B1 /* UIGFModel_v4.swift in Sources */,
 				5BD1C6132A2A1FC90043C2B1 /* CurrentEventNavigator.swift in Sources */,
 				BFF684122A375487005470EA /* IconView.swift in Sources */,
 				5BD1C6142A2A1FC90043C2B1 /* ExpeditionsView.swift in Sources */,
@@ -2823,7 +2823,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF70210728B33D8300A6BBA9 /* AppDelegate.swift in Sources */,
-				EA0A6D0B29DDC74000A356A4 /* GachaTranslateManager.swift in Sources */,
+				EA0A6D0B29DDC74000A356A4 /* GachaLanguageCode.swift in Sources */,
 				BF7500D828DEA80700CDA64E /* EachAvatarStatView.swift in Sources */,
 				EA3A9DB329D4812300CF4230 /* GachaChartView.swift in Sources */,
 				EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */,
@@ -2903,7 +2903,7 @@
 				BFF684092A3753C8005470EA /* Icon.swift in Sources */,
 				EA498C8D2927D4A600E7D2D7 /* ResinRecoveryAttributes.swift in Sources */,
 				EAFB771628B256E300314974 /* NotificationSettingNavigator.swift in Sources */,
-				EA11488F29D9A8730059DEBF /* UIGFModel.swift in Sources */,
+				EA11488F29D9A8730059DEBF /* UIGFModel_v4.swift in Sources */,
 				BFB101E328D6C277000DC631 /* CurrentEventNavigator.swift in Sources */,
 				BFF684112A375487005470EA /* IconView.swift in Sources */,
 				EAFC5CCF28B518FC00770BBB /* ExpeditionsView.swift in Sources */,

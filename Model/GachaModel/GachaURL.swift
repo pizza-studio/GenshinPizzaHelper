@@ -13,7 +13,7 @@ import HoYoKit
 func genGachaURL(
     server: Server,
     authkey: GenAuthKeyResult.GenAuthKeyData,
-    gachaType: _GachaType,
+    gachaType: MihoyoGachaType,
     page: Int,
     endId: String
 )
@@ -84,7 +84,7 @@ func genGachaURL(
 func genGachaURLString(
     server: Server,
     authkey: GenAuthKeyResult.GenAuthKeyData,
-    gachaType: _GachaType,
+    gachaType: MihoyoGachaType,
     page: Int,
     endId: String
 )

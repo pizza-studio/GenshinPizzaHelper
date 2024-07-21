@@ -31,7 +31,7 @@ struct ExportGachaView: View {
     private var isExporterPresented: Bool = false
 
     @State
-    private var uigfJson: UIGFJson?
+    private var uigfJson: UIGFv4?
 
     @State
     fileprivate var alert: AlertType? {
@@ -203,12 +203,12 @@ private struct JsonFile: FileDocument {
     init(configuration: ReadConfiguration) throws {
         self.model = try JSONDecoder()
             .decode(
-                UIGFJson.self,
+                UIGFv4.self,
                 from: configuration.file.regularFileContents!
             )
     }
 
-    init(model: UIGFJson) {
+    init(model: UIGFv4) {
         self.model = model
     }
 
@@ -216,7 +216,7 @@ private struct JsonFile: FileDocument {
 
     static var readableContentTypes: [UTType] = [.json]
 
-    let model: UIGFJson
+    let model: UIGFv4
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         let encoder = JSONEncoder()

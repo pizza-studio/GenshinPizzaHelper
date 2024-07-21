@@ -28,9 +28,6 @@ extension GachaItemMO {
 extension GachaItem_FM {
     public func toGachaItemMO(context: NSManagedObjectContext) -> GachaItemMO {
         var item = self
-        if item.lang != .zhCN {
-            item.translateToZHCN()
-        }
         let model = GachaItemMO(context: context)
         model.uid = item.uid
         model.gachaType = Int16(item.gachaType)!

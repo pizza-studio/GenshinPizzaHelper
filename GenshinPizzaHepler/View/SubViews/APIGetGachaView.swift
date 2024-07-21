@@ -284,7 +284,7 @@ private struct GachaItemBar: View {
                 Spacer()
                 VStack(alignment: .trailing) {
                     Text(
-                        _GachaType(rawValue: Int(item.gachaType)!)!
+                        MihoyoGachaType(rawValue: Int(item.gachaType)!)!
                             .localizedDescription()
                     )
                     .font(.caption)

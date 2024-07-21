@@ -27,7 +27,7 @@ public struct GachaItem: Identifiable {
 
     public init(
         uid: String,
-        gachaType: _GachaType,
+        gachaType: MihoyoGachaType,
         itemId: String,
         count: Int,
         time: Date,
@@ -38,7 +38,7 @@ public struct GachaItem: Identifiable {
         id: String
     ) {
         self.uid = uid
-        self._gachaType = gachaType
+        self.mihoyoGachaType = gachaType
         self.itemId = itemId
         self.count = count
         self.time = time
@@ -59,7 +59,7 @@ public struct GachaItem: Identifiable {
 
     public let uid: String
     /// 祈愿类型。显示时因为两个角色祈愿混合现实，因此应当使用gachaType
-    public let _gachaType: _GachaType
+    public let mihoyoGachaType: MihoyoGachaType
     public let itemId: String
     public let count: Int
     public let time: Date
@@ -70,7 +70,7 @@ public struct GachaItem: Identifiable {
     public let id: String
 
     public var gachaType: GachaType {
-        .from(_gachaType)
+        .from(mihoyoGachaType)
     }
 }
 
@@ -119,10 +119,10 @@ extension GetGachaError: LocalizedError {
     }
 }
 
-// MARK: - _GachaType
+// MARK: - MihoyoGachaType
 
 /// 祈愿池记录。区分两个不同角色池，仅用于储存
-public enum _GachaType: Int, CaseIterable {
+public enum MihoyoGachaType: Int, CaseIterable {
     case newPlayer = 100
     case standard = 200
     case character = 301
@@ -131,7 +131,7 @@ public enum _GachaType: Int, CaseIterable {
     case chronicled = 500
 }
 
-extension _GachaType {
+extension MihoyoGachaType {
     func localizedDescription() -> String {
         switch self {
         case .newPlayer:
@@ -192,7 +192,7 @@ public enum GachaType: Int {
 // }
 
 extension GachaType {
-    static func from(_ innerGachaType: _GachaType) -> Self {
+    static func from(_ innerGachaType: MihoyoGachaType) -> Self {
         switch innerGachaType {
         case .character, .character2: return .character
         case .standard: return .standard
@@ -222,7 +222,7 @@ extension GachaType {
     }
 
     static func from(_ id: String) -> Self {
-        .from(_GachaType(rawValue: Int(id)!)!)
+        .from(MihoyoGachaType(rawValue: Int(id)!)!)
     }
 }
 
@@ -232,7 +232,7 @@ extension GachaType: Identifiable {
     public var id: Int { rawValue }
 }
 
-extension _GachaType {
+extension MihoyoGachaType {
     public func first() -> Self {
         .standard
     }
