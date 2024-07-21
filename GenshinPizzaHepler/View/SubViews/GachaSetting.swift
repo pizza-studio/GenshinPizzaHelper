@@ -194,7 +194,9 @@ struct GachaSetting: View {
     func duplicatedCleanCompletedAlertMessage(_ thisAlert: AlertType) -> some View {
         switch thisAlert {
         case let .duplicatedCleanCompleted(count):
-            let deleteContent = String(format: "app.gacha.data.clean.complete.info.duplicated:%lld", count).localized
+            let deleteContent = String(
+                format: "app.gacha.data.clean.complete.info.duplicated:%lld".localized, count
+            )
             Text(deleteContent)
         default:
             EmptyView()
