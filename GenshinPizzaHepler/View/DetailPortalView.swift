@@ -45,7 +45,7 @@ final class DetailPortalViewModel: ObservableObject {
         case succeed(T)
     }
 
-    typealias PlayerDetailStatus = Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)>
+    typealias EnkaProfileStatus = Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)>
     typealias BasicInfoStatus = Status<BasicInfos>
     typealias SpiralAbyssDetailStatus = Status<SpiralAbyssDetail>
     typealias LedgerDataStatus = Status<LedgerData>
@@ -54,7 +54,7 @@ final class DetailPortalViewModel: ObservableObject {
     static let refreshSubject: PassthroughSubject<(), Never> = .init()
 
     @Published
-    var playerDetailStatus: PlayerDetailStatus = .progress(nil)
+    var enkaProfileStatus: EnkaProfileStatus = .progress(nil)
 
     @Published
     var basicInfoStatus: BasicInfoStatus = .progress(nil)
@@ -145,10 +145,10 @@ final class DetailPortalViewModel: ObservableObject {
 
     func fetchEnkaPlayerProfile() async {
         guard let selectedAccount, !selectedAccount.safeUid.isEmpty else { return }
-        if case let .succeed((_, refreshableDate)) = playerDetailStatus {
+        if case let .succeed((_, refreshableDate)) = enkaProfileStatus {
             guard Date() > refreshableDate else { return }
         }
-        if case let .progress(task) = playerDetailStatus { task?.cancel() }
+        if case let .progress(task) = enkaProfileStatus { task?.cancel() }
         let task = Task.detached { @MainActor [self] in
             do {
                 let fetchedModel = try await API.OpenAPIs.fetchQueriableEnkaProfile(
@@ -167,7 +167,7 @@ final class DetailPortalViewModel: ObservableObject {
                 currentEnkaProfile?.update(newRawInfo: fetchedModel, dropExistingData: false)
                 Task.detached { @MainActor in
                     withAnimation {
-                        self.playerDetailStatus = .succeed((
+                        self.enkaProfileStatus = .succeed((
                             playerDetail,
                             Date()
                         ))
@@ -175,13 +175,13 @@ final class DetailPortalViewModel: ObservableObject {
                 }
             } catch {
                 Task.detached { @MainActor in
-                    self.playerDetailStatus = .fail(error)
+                    self.enkaProfileStatus = .fail(error)
                 }
             }
         }
         Task.detached { @MainActor in
             withAnimation {
-                self.playerDetailStatus = .progress(task)
+                self.enkaProfileStatus = .progress(task)
             }
         }
     }
@@ -597,7 +597,7 @@ private struct SelectAccountSection: View {
 
     var body: some View {
         if let selectedAccount {
-            if case let .succeed((playerDetail, _)) = vmDPV.playerDetailStatus,
+            if case let .succeed((playerDetail, _)) = vmDPV.enkaProfileStatus,
                let basicInfo = playerDetail.basicInfo {
                 normalAccountPickerView(
                     playerDetail: playerDetail,
@@ -846,8 +846,8 @@ private struct PlayerDetailSection: View {
 
     let account: AccountConfiguration
 
-    var playerDetailStatus: DetailPortalViewModel
-        .Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)> { vmDPV.playerDetailStatus }
+    var enkaProfileStatus: DetailPortalViewModel
+        .Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)> { vmDPV.enkaProfileStatus }
 
     @ViewBuilder
     var currentShowCase: some View {
@@ -859,7 +859,7 @@ private struct PlayerDetailSection: View {
     var body: some View {
         Section {
             let theCase = currentShowCase
-            switch playerDetailStatus {
+            switch enkaProfileStatus {
             case .progress:
                 VStack {
                     theCase
