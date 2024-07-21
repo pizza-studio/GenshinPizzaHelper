@@ -25,7 +25,13 @@ final class DetailPortalViewModel: ObservableObject {
         request.sortDescriptors = [.init(keyPath: \AccountConfiguration.priority, ascending: true)]
         let accounts = try? AccountConfigurationModel.shared.container.viewContext.fetch(request)
         if let accounts, let account = accounts.first {
-            self.selectedAccount = account
+            self._selectedAccount = .init(initialValue: account)
+            if let basicInfoRAW = Defaults[.queriedEnkaProfiles][account.safeUid] {
+                self.currentEnkaProfile = EnkaGI.QueryRelated.ProfileTranslated(
+                    fetchedModel: basicInfoRAW,
+                    theDB: EnkaGI.Sputnik.sharedDB
+                )
+            }
         } else {
             self.selectedAccount = nil
         }
@@ -66,7 +72,7 @@ final class DetailPortalViewModel: ObservableObject {
     var characterInventoryStatus: CharInventoryStatus = .progress(nil)
 
     @Published
-    var currentBasicInfo: EnkaGI.QueryRelated.PlayerInfoTranslated?
+    var currentEnkaProfile: EnkaGI.QueryRelated.ProfileTranslated?
 
     @Published
     var selectedAccount: AccountConfiguration? {
@@ -74,7 +80,10 @@ final class DetailPortalViewModel: ObservableObject {
     }
 
     var currentAccountNamecardFileName: String {
-        (NameCard(rawValue: currentBasicInfo?.nameCardId ?? 0) ?? NameCard.currentValueForAppBackground).fileName
+        (
+            NameCard(rawValue: currentEnkaProfile?.basicInfo?.nameCardId ?? 0)
+                ?? NameCard.currentValueForAppBackground
+        ).fileName
     }
 
     func refresh() {
@@ -138,7 +147,7 @@ final class DetailPortalViewModel: ObservableObject {
                     theDB: theDB
                 )
                 refreshCostumeMap(playerDetail: playerDetail)
-                currentBasicInfo = playerDetail.basicInfo
+                currentEnkaProfile = playerDetail
                 Task.detached { @MainActor in
                     withAnimation {
                         self.playerDetailStatus = .succeed((
