@@ -83,6 +83,7 @@ extension EnkaGI.DBModels.CharacterDict {
     }
 
     public func checkValidity(against fetchedProfile: EnkaGI.QueryRelated.ProfileRAW) -> Bool {
+        // The contents of EnkaDB for Genshin is currently unable to list all supported weapons / artifacts.
         let fetchedIDs = Set<String>(fetchedProfile.avatarInfoList?.map(\.avatarId.description) ?? [])
         let allSelfIDs = Set<String>(keys)
         return fetchedIDs.isSubset(of: allSelfIDs)
