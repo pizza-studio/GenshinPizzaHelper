@@ -10,7 +10,7 @@ extension EnkaGI.QueryRelated.Avatar {
         // MARK: Lifecycle
 
         init?(
-            artifactEquipment: EnkaGI.QueryRelated.FetchModel.AvatarInfo.EquipList,
+            artifactEquipment: EnkaGI.QueryRelated.ProfileRAW.AvatarInfoRAW.EquipListRAW,
             localizedDictionary: [String: String],
             score: Double?
         ) {

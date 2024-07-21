@@ -3,11 +3,11 @@
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 extension EnkaGI.QueryRelated.Avatar {
-    public var baseDMGBoostIntel: EnkaGI.QueryRelated.FightPropMap.PairedDamageAmpIntel {
+    public var baseDMGBoostIntel: EnkaGI.QueryRelated.FightPropMapRAW.PairedDamageAmpIntel {
         fightPropMap.getPairedDamageAmpIntel(for: element)
     }
 
-    public var highestDMGBoostIntel: EnkaGI.QueryRelated.FightPropMap.PairedDamageAmpIntel {
+    public var highestDMGBoostIntel: EnkaGI.QueryRelated.FightPropMapRAW.PairedDamageAmpIntel {
         fightPropMap.highestDMGBoostIntel(for: element)
     }
 

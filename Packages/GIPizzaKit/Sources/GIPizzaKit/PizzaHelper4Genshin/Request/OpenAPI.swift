@@ -53,7 +53,7 @@ extension API {
             _ uid: String,
             dateWhenNextRefreshable: Date?
         ) async throws
-            -> EnkaGI.QueryRelated.FetchModel {
+            -> EnkaGI.QueryRelated.ProfileRAW {
             if let date = dateWhenNextRefreshable, date > Date() {
                 print(
                     "PLAYER DETAIL FETCH 刷新太快了，请在\(date.timeIntervalSinceReferenceDate - Date().timeIntervalSinceReferenceDate)秒后刷新"
@@ -70,7 +70,7 @@ extension API {
                     do {
                         let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
                         let requestResult = try JSONDecoder().decode(
-                            EnkaGI.QueryRelated.FetchModel.self,
+                            EnkaGI.QueryRelated.ProfileRAW.self,
                             from: data
                         )
                         return requestResult
@@ -78,7 +78,7 @@ extension API {
                         let (data, _) = try await URLSession.shared
                             .data(for: URLRequest(url: URL(string: enkaOfficial)!))
                         let requestResult = try JSONDecoder().decode(
-                            EnkaGI.QueryRelated.FetchModel.self,
+                            EnkaGI.QueryRelated.ProfileRAW.self,
                             from: data
                         )
                         return requestResult
@@ -86,7 +86,7 @@ extension API {
                 } else {
                     let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
                     let requestResult = try JSONDecoder().decode(
-                        EnkaGI.QueryRelated.FetchModel.self,
+                        EnkaGI.QueryRelated.ProfileRAW.self,
                         from: data
                     )
                     return requestResult
@@ -102,7 +102,7 @@ extension API {
             _ uid: String,
             dateWhenNextRefreshable: Date?,
             completion: @escaping (
-                Result<EnkaGI.QueryRelated.FetchModel, EnkaGI.QueryRelated.Exception>
+                Result<EnkaGI.QueryRelated.ProfileRAW, EnkaGI.QueryRelated.Exception>
             ) -> ()
         ) {
             if let date = dateWhenNextRefreshable, date > Date() {
@@ -203,7 +203,7 @@ extension API {
             let url = URL(string: urlStr)!
 
             // 请求
-            HttpMethod<EnkaGI.QueryRelated.FetchModel>
+            HttpMethod<EnkaGI.QueryRelated.ProfileRAW>
                 .openRequest(
                     .get,
                     url
@@ -217,7 +217,7 @@ extension API {
                             completion(.failure(requestError))
                         } else {
                             // microgg 的 enka 服务使用出错的时候，会尝试从 enka 官网存取国服 uid 的资料。
-                            HttpMethod<EnkaGI.QueryRelated.FetchModel>
+                            HttpMethod<EnkaGI.QueryRelated.ProfileRAW>
                                 .openRequest(
                                     .get,
                                     URL(string: enkaOfficial)!

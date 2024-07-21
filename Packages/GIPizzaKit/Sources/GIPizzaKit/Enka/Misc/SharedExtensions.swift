@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - Profile Picture JSON Data Interpreter
 
-extension EnkaGI.QueryRelated.FetchModel.PlayerInfo.ProfilePicture {
+extension EnkaGI.QueryRelated.ProfileRAW.PlayerInfoRAW.ProfilePictureRAW {
     public var assetFileName: String? {
         if let avatarId = avatarId {
             return CharacterAsset.match(id: avatarId).frontPhotoFileName

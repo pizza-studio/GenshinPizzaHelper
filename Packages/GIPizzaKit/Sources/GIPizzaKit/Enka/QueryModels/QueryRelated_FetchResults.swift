@@ -6,7 +6,7 @@ import HBMihoyoAPI
 
 extension EnkaGI.QueryRelated {
     public typealias FetchResult = Result<
-        EnkaGI.QueryRelated.FetchModel,
+        EnkaGI.QueryRelated.ProfileRAW,
         RequestError
     >
     public typealias FetchedResult = Result<

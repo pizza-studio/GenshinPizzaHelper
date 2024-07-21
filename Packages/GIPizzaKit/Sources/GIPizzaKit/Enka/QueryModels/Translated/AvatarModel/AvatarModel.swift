@@ -13,7 +13,7 @@ extension EnkaGI.QueryRelated {
         // MARK: Lifecycle
 
         public init?(
-            avatarInfo: EnkaGI.QueryRelated.FetchModel.AvatarInfo,
+            avatarInfo: EnkaGI.QueryRelated.ProfileRAW.AvatarInfoRAW,
             localizedDictionary: EnkaGI.DBModels.LocTable,
             characterDictionary: EnkaGI.DBModels.CharacterDict,
             uid: String?
@@ -80,7 +80,7 @@ extension EnkaGI.QueryRelated {
             self.artifacts = avatarInfo.equipList.filter { equip in
                 equip.flat.itemType == "ITEM_RELIQUARY"
             }.compactMap { artifactEquipment in
-                .init(
+                Artifact(
                     artifactEquipment: artifactEquipment,
                     localizedDictionary: localizedDictionary,
                     score: nil
@@ -127,7 +127,7 @@ extension EnkaGI.QueryRelated {
         public var artifactScoreRank: String?
 
         /// 角色属性
-        public let fightPropMap: EnkaGI.QueryRelated.FightPropMap
+        public let fightPropMap: EnkaGI.QueryRelated.FightPropMapRAW
 
         /// 正脸图
         public let iconString: String

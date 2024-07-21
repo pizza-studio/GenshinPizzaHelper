@@ -6,7 +6,7 @@ final class SummarizerTests: XCTestCase {
     func testAvatarInitiation() throws {
         let theAvatarRaw = try? JSONDecoder()
             .decode(
-                EnkaGI.QueryRelated.FetchModel.AvatarInfo.self,
+                EnkaGI.QueryRelated.ProfileRAW.AvatarInfoRAW.self,
                 from: jsnYukuakiAvatar.data(using: .utf8) ?? .init([])
             )
         XCTAssertNotNil(theAvatarRaw)

@@ -4,12 +4,12 @@
 
 import Foundation
 
-// MARK: - EnkaGI.QueryRelated.FetchModel
+// MARK: - EnkaGI.QueryRelated.ProfileRAW
 
 extension EnkaGI.QueryRelated {
-    public struct FetchModel: Codable, Hashable {
-        public struct PlayerInfo: Codable, Hashable {
-            public struct ShowAvatarInfo: Codable, Hashable {
+    public struct ProfileRAW: Codable, Hashable {
+        public struct PlayerInfoRAW: Codable, Hashable {
+            public struct ShowAvatarInfoRAW: Codable, Hashable {
                 /// 角色ID
                 public var avatarId: Int
                 /// 角色等级
@@ -18,7 +18,7 @@ extension EnkaGI.QueryRelated {
                 public var costumeId: Int?
             }
 
-            public struct ProfilePicture: Codable, Hashable {
+            public struct ProfilePictureRAW: Codable, Hashable {
                 /// 在 ProfilePictureExcelConfigData.json 当中的检索用 ID。
                 /// Ref: https://twitter.com/EnkaNetwork/status/1708819830693077325
                 public let id: Int?
@@ -45,39 +45,39 @@ extension EnkaGI.QueryRelated {
             /// 本期深境螺旋间数
             public var towerLevelIndex: Int?
             /// 正在展示角色信息列表（ID与等级）
-            public var showAvatarInfoList: [ShowAvatarInfo]?
+            public var showAvatarInfoList: [ShowAvatarInfoRAW]?
             /// 正在展示名片ID的列表
             public var showNameCardIdList: [Int]?
             /// 玩家头像编号，需要据此在 ProfilePictureExcelConfigData.json 单独查询。
-            public var profilePicture: ProfilePicture
+            public var profilePicture: ProfilePictureRAW
         }
 
-        public struct AvatarInfo: Codable, Hashable {
-            public struct PropMap: Codable, Hashable {
+        public struct AvatarInfoRAW: Codable, Hashable {
+            public struct PropMapRAW: Codable, Hashable {
                 // MARK: Public
 
-                public struct Exp: Codable, Hashable {
+                public struct ExpRAW: Codable, Hashable {
                     public var type: Int
                     public var ival: String
                 }
 
-                public struct LevelStage: Codable, Hashable {
+                public struct LevelStageRAW: Codable, Hashable {
                     public var type: Int
                     public var ival: String
                     public var val: String?
                 }
 
-                public struct Level: Codable, Hashable {
+                public struct LevelRAW: Codable, Hashable {
                     public var type: Int
                     public var ival: String
                     public var val: String
                 }
 
-                public var exp: Exp
+                public var exp: ExpRAW
                 /// 等级突破
-                public var levelStage: LevelStage
+                public var levelStage: LevelStageRAW
                 /// 等级
-                public var level: Level
+                public var level: LevelRAW
 
                 // MARK: Private
 
@@ -89,7 +89,7 @@ extension EnkaGI.QueryRelated {
             }
 
             /// 装备列表的一项，包括武器和圣遗物
-            public struct EquipList: Codable, Hashable {
+            public struct EquipListRAW: Codable, Hashable {
                 /// 圣遗物
                 public struct Reliquary: Codable, Hashable {
                     /// 圣遗物等级
@@ -100,7 +100,7 @@ extension EnkaGI.QueryRelated {
                     public var appendPropIdList: [Int]?
                 }
 
-                public struct Weapon: Codable, Hashable {
+                public struct WeaponRAW: Codable, Hashable {
                     /// 武器等级
                     public var level: Int
                     /// 武器突破等级
@@ -109,7 +109,7 @@ extension EnkaGI.QueryRelated {
                     public var affixMap: [String: Int]?
                 }
 
-                public struct Flat: Codable, Hashable {
+                public struct PreCalculatedFlat: Codable, Hashable {
                     public struct ReliquaryMainstat: Codable, Hashable {
                         public var mainPropId: String
                         public var statValue: Double
@@ -150,11 +150,11 @@ extension EnkaGI.QueryRelated {
                 /// 圣遗物
                 public var reliquary: Reliquary?
                 /// 武器
-                public var weapon: Weapon?
-                public var flat: Flat
+                public var weapon: WeaponRAW?
+                public var flat: PreCalculatedFlat
             }
 
-            public struct FetterInfo: Codable, Hashable {
+            public struct FetterInfoRAW: Codable, Hashable {
                 public var expLevel: Int
             }
 
@@ -163,9 +163,9 @@ extension EnkaGI.QueryRelated {
             /// 命之座ID列表
             public let talentIdList: [Int]?
             /// 角色属性
-            public var propMap: PropMap
+            public var propMap: PropMapRAW
             /// 角色战斗属性
-            public var fightPropMap: FightPropMap
+            public var fightPropMap: FightPropMapRAW
             /// 角色天赋技能组ID
             public var skillDepotId: Int
             /// 所有固定天赋ID的列表
@@ -173,9 +173,9 @@ extension EnkaGI.QueryRelated {
             /// 天赋等级的字典，skillLevelMap.skillLevel: [天赋ID(String) : 等级(Int)]
             public var skillLevelMap: [String: Int]
             /// 装备列表，包括武器和圣遗物
-            public var equipList: [EquipList]
+            public var equipList: [EquipListRAW]
             /// 角色好感等级，fetterInfo.expLevel
-            public var fetterInfo: FetterInfo
+            public var fetterInfo: FetterInfoRAW
             /// 角色时装编号（nullable）
             public var costumeId: Int?
             /// 命之座带来的额外技能等级加成
@@ -183,9 +183,9 @@ extension EnkaGI.QueryRelated {
         }
 
         /// 账号基本信息
-        public var playerInfo: PlayerInfo?
+        public var playerInfo: PlayerInfoRAW?
         /// 正在展示的角色的详细信息
-        public var avatarInfoList: [AvatarInfo]?
+        public var avatarInfoList: [AvatarInfoRAW]?
         public var ttl: Int?
         public var uid: String?
         /// Enka 偶尔会返回错误讯息。
@@ -194,7 +194,7 @@ extension EnkaGI.QueryRelated {
 
     // MARK: - FightPropMap
 
-    public struct FightPropMap: Codable, Hashable {
+    public struct FightPropMapRAW: Codable, Hashable {
         // MARK: Public
 
         /// 基础生命

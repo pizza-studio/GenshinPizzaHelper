@@ -8,7 +8,7 @@ extension EnkaGI.QueryRelated.Avatar {
         // MARK: Lifecycle
 
         init?(
-            weaponEquipment: EnkaGI.QueryRelated.FetchModel.AvatarInfo.EquipList,
+            weaponEquipment: EnkaGI.QueryRelated.ProfileRAW.AvatarInfoRAW.EquipListRAW,
             localizedDictionary: [String: String]
         ) {
             guard weaponEquipment.flat.itemType == "ITEM_WEAPON"

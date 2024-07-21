@@ -5,28 +5,7 @@
 import Foundation
 import HBMihoyoAPI
 
-// public typealias FetchResult = Result<UserData, FetchError>
-// public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
-// public typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
-// public typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
-// public typealias AllAvatarDetailFetchResult = Result<
-//    CharacterInventoryModel,
-//    FetchError
-// >
-
 #if !os(watchOS)
-//    typealias EnkaGI.QueryRelated.FetchResult = Result<
-//        EnkaGI.QueryRelated.FetchModel,
-//        RequestError
-//    >
-//    typealias EnkaGI.QueryRelated.FetchedResult = Result<
-//        EnkaGI.QueryRelated,
-//        EnkaGI.QueryRelated.Exceptions
-//    >
-//    public typealias SpiralAbyssDetailFetchResult = Result<
-//        SpiralAbyssDetail,
-//        FetchError
-//    >
 #endif
 
 private let isMac: Bool = {

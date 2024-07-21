@@ -2,7 +2,7 @@
 // ====================
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
-extension EnkaGI.QueryRelated.FightPropMap {
+extension EnkaGI.QueryRelated.FightPropMapRAW {
     public typealias PairedDamageAmpIntel = (amount: Double, element: EnkaGI.QueryRelated.Avatar.TeyvatElement)
 
     /// 给所有伤害加成做排序，最高加成得以排在最开头。

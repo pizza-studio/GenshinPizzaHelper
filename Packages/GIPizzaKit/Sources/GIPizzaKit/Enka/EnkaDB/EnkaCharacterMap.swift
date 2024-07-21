@@ -81,4 +81,10 @@ extension EnkaGI.DBModels.CharacterDict {
     public func getNameID(id: String) -> String {
         self[id]?.nameID ?? ""
     }
+
+    public func checkValidity(against fetchedProfile: EnkaGI.QueryRelated.ProfileRAW) -> Bool {
+        let fetchedIDs = Set<String>(fetchedProfile.avatarInfoList?.map(\.avatarId.description) ?? [])
+        let allSelfIDs = Set<String>(keys)
+        return fetchedIDs.isSubset(of: allSelfIDs)
+    }
 }

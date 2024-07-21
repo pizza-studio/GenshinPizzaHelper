@@ -8,7 +8,7 @@ extension EnkaGI.QueryRelated {
         // MARK: Lifecycle
 
         public init?(
-            playerInfo: EnkaGI.QueryRelated.FetchModel.PlayerInfo?,
+            playerInfo: EnkaGI.QueryRelated.ProfileRAW.PlayerInfoRAW?,
             characterMap: EnkaGI.DBModels.CharacterDict
         ) {
             guard let playerInfo = playerInfo else { return nil }

@@ -14,7 +14,7 @@ extension EnkaGI.QueryRelated {
         // MARK: - 初始化
 
         public init(
-            fetchedModel: EnkaGI.QueryRelated.FetchModel,
+            fetchedModel: EnkaGI.QueryRelated.ProfileRAW,
             localizedDictionary: [String: String],
             characterMap: EnkaGI.DBModels.CharacterDict
         ) {
@@ -59,7 +59,7 @@ extension EnkaGI.QueryRelated {
 
         // MARK: Public
 
-        public let rawFetchedData: EnkaGI.QueryRelated.FetchModel
+        public let rawFetchedData: EnkaGI.QueryRelated.ProfileRAW
 
         public let nextRefreshableDate: Date
 
@@ -72,13 +72,5 @@ extension EnkaGI.QueryRelated {
         public let summariesMarkDown: [Int: String]
 
         public let enkaMessage: String?
-    }
-}
-
-extension EnkaGI.DBModels.CharacterDict {
-    public func checkValidity(against fetchedProfile: EnkaGI.QueryRelated.FetchModel) -> Bool {
-        let fetchedIDs = Set<String>(fetchedProfile.avatarInfoList?.map(\.avatarId.description) ?? [])
-        let allSelfIDs = Set<String>(keys)
-        return fetchedIDs.isSubset(of: allSelfIDs)
     }
 }
