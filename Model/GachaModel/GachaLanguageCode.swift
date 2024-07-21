@@ -107,7 +107,7 @@ extension GachaLanguageCode {
     }
 
     public var localized: String {
-        NSLocalizedString("\(localizedKey)", comment: "")
+        NSLocalizedString(localizedKey, comment: "")
     }
 }
 
