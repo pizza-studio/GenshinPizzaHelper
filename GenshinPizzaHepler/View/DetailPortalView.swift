@@ -154,7 +154,8 @@ final class DetailPortalViewModel: ObservableObject {
                 let fetchedModel = try await API.OpenAPIs.fetchQueriableEnkaProfile(
                     selectedAccount.safeUid,
                     dateWhenNextRefreshable: nil
-                )
+                ).merge(old: currentEnkaProfile?.rawInfo)
+                Defaults[.queriedEnkaProfiles][selectedAccount.safeUid] = fetchedModel
                 let theDB = try await EnkaGI.Sputnik.getEnkaDB {
                     $0.checkValidity(against: fetchedModel)
                 }
@@ -163,11 +164,7 @@ final class DetailPortalViewModel: ObservableObject {
                     theDB: theDB
                 )
                 refreshCostumeMap(playerDetail: playerDetail)
-                if let currentEnkaProfile = currentEnkaProfile {
-                    playerDetail.update(newRawInfo: currentEnkaProfile.rawInfo, dropExistingData: false)
-                }
-                Defaults[.queriedEnkaProfiles][selectedAccount.safeUid] = playerDetail.rawInfo
-                currentEnkaProfile = playerDetail
+                currentEnkaProfile?.update(newRawInfo: fetchedModel, dropExistingData: false)
                 Task.detached { @MainActor in
                     withAnimation {
                         self.playerDetailStatus = .succeed((
