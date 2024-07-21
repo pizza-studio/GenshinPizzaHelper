@@ -76,7 +76,23 @@ final class DetailPortalViewModel: ObservableObject {
 
     @Published
     var selectedAccount: AccountConfiguration? {
-        didSet { refresh() }
+        willSet {
+            if let newValue, let currentProfileRAW = Defaults[.queriedEnkaProfiles][newValue.safeUid] {
+                currentEnkaProfile = .init(
+                    fetchedModel: currentProfileRAW,
+                    theDB: EnkaGI.Sputnik.sharedDB
+                )
+            } else {
+                currentEnkaProfile = nil
+            }
+        }
+        didSet {
+            refresh()
+        }
+    }
+
+    var enkaDB: EnkaGI.EnkaDB {
+        EnkaGI.Sputnik.sharedDB
     }
 
     var currentAccountNamecardFileName: String {
@@ -128,7 +144,7 @@ final class DetailPortalViewModel: ObservableObject {
     }
 
     func fetchEnkaPlayerProfile() async {
-        guard let selectedAccount else { return }
+        guard let selectedAccount, !selectedAccount.safeUid.isEmpty else { return }
         if case let .succeed((_, refreshableDate)) = playerDetailStatus {
             guard Date() > refreshableDate else { return }
         }
@@ -147,6 +163,10 @@ final class DetailPortalViewModel: ObservableObject {
                     theDB: theDB
                 )
                 refreshCostumeMap(playerDetail: playerDetail)
+                if let currentEnkaProfile = currentEnkaProfile {
+                    playerDetail.update(newRawInfo: currentEnkaProfile.rawInfo, dropExistingData: false)
+                }
+                Defaults[.queriedEnkaProfiles][selectedAccount.safeUid] = playerDetail.rawInfo
                 currentEnkaProfile = playerDetail
                 Task.detached { @MainActor in
                     withAnimation {
@@ -832,47 +852,69 @@ private struct PlayerDetailSection: View {
     var playerDetailStatus: DetailPortalViewModel
         .Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)> { vmDPV.playerDetailStatus }
 
+    @ViewBuilder
+    var currentShowCase: some View {
+        if let playerDetail = vmDPV.currentEnkaProfile {
+            DataFetchedView(playerDetail: playerDetail, account: account)
+        }
+    }
+
     var body: some View {
         Section {
+            let theCase = currentShowCase
             switch playerDetailStatus {
             case .progress:
-                InfiniteProgressBar().id(UUID())
+                VStack {
+                    theCase
+                        .disabled(true)
+                        .saturation(0)
+                    InfiniteProgressBar().id(UUID())
+                }
             case let .fail(error):
+                theCase
                 DPVErrorView(account: account, apiPath: "", error: error) {
                     Task.detached { @MainActor in
                         await vmDPV.fetchEnkaPlayerProfile()
                     }
                 }
             case let .succeed((playerDetail, _)):
-                if playerDetail.avatars.isEmpty {
-                    Button(action: {
-                        vmDPV.refresh()
-                    }, label: {
-                        Label {
-                            VStack {
-                                Text(
-                                    playerDetail
-                                        .basicInfo != nil
-                                        ? "account.PlayerDetail.FetchedResult.message.characterShowCaseClassified"
-                                        :
-                                        "account.PlayerDetail.FetchedResult.message.enkaGotNulledResultFromCelestiaServer"
-                                )
-                                .foregroundColor(.secondary)
-                                if let msg = playerDetail.enkaMessage {
-                                    Text(msg).foregroundColor(.secondary).controlSize(.small).font(.footnote)
-                                }
-                            }
-                        } icon: {
-                            Image(systemSymbol: .xmarkCircle)
-                                .foregroundColor(.red)
-                        }
-                    })
-                } else {
-                    DataFetchedView(playerDetail: playerDetail, account: account)
-                }
+                theCase
+                errorViewForBlankAvatars(playerDetail: playerDetail)
             }
             CharInventoryNavigator(account: account, status: vmDPV.characterInventoryStatus)
         }
+    }
+
+    @ViewBuilder
+    private func errorViewForBlankAvatars(
+        playerDetail: EnkaGI.QueryRelated.ProfileTranslated
+    )
+        -> some View {
+        if playerDetail.avatars.isEmpty {
+            Button(action: {
+                vmDPV.refresh()
+            }, label: {
+                Label {
+                    VStack {
+                        Text(errorTextForBlankAvatars(hasBasicInfo: playerDetail.basicInfo != nil))
+                            .foregroundColor(.secondary)
+                        if let msg = playerDetail.enkaMessage {
+                            Text(msg).foregroundColor(.secondary).controlSize(.small).font(.footnote)
+                        }
+                    }
+                } icon: {
+                    Image(systemSymbol: .xmarkCircle)
+                        .foregroundColor(.red)
+                }
+            })
+        }
+    }
+
+    private func errorTextForBlankAvatars(hasBasicInfo: Bool) -> String {
+        let raw = hasBasicInfo
+            ? "account.PlayerDetail.FetchedResult.message.characterShowCaseClassified"
+            : "account.PlayerDetail.FetchedResult.message.enkaGotNulledResultFromCelestiaServer"
+        return raw.localized
     }
 }
 
