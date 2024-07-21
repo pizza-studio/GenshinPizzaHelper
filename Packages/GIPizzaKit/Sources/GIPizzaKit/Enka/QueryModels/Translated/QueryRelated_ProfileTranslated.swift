@@ -2,75 +2,104 @@
 // ====================
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
+import Combine
+import Defaults
+import DefaultsKeys
 import Foundation
 import HBMihoyoAPI
 
 // MARK: - EnkaGI.QueryRelated.ProfileTranslated
 
 extension EnkaGI.QueryRelated {
-    public struct ProfileTranslated {
+    public class ProfileTranslated: ObservableObject {
         // MARK: Lifecycle
 
         // MARK: - 初始化
 
         public init(
             fetchedModel: EnkaGI.QueryRelated.ProfileRAW,
-            localizedDictionary: [String: String],
-            characterMap: EnkaGI.DBModels.CharacterDict
+            theDB: EnkaGI.EnkaDB
         ) {
-            self.rawFetchedData = fetchedModel
-            var rawResultTXT = [Int: String]()
-            var rawResultMD = [Int: String]()
+            self.theDB = theDB
+            self.rawInfo = fetchedModel
 
             self.basicInfo = .init(
                 playerInfo: fetchedModel.playerInfo,
-                characterMap: characterMap
+                characterMap: theDB.characters
             )
             self.enkaMessage = fetchedModel.message
-            if let avatarInfoList = fetchedModel.avatarInfoList {
-                self.avatars = avatarInfoList.compactMap { avatarInfo in
-                    let newAvatar = Avatar(
-                        avatarInfo: avatarInfo,
-                        localizedDictionary: localizedDictionary,
-                        characterDictionary: characterMap,
-                        uid: fetchedModel.uid
-                    )
-                    #if !os(watchOS)
-                    if let newAvatar = newAvatar {
-                        rawResultTXT[newAvatar.enkaID] = newAvatar
-                            .summarize(locMap: localizedDictionary, useMarkDown: false)
-                        rawResultMD[newAvatar.enkaID] = newAvatar.summarize(
-                            locMap: localizedDictionary,
-                            useMarkDown: true
-                        )
-                    }
-                    #endif
-                    return newAvatar
-                }
-            } else { self.avatars = .init() }
             self.nextRefreshableDate = Calendar.current.date(
                 byAdding: .second,
                 value: fetchedModel.ttl ?? 30,
                 to: Date()
             )!
-            self.summariesText = rawResultTXT
-            self.summariesMarkDown = rawResultMD
+            reinit(firstRun: true) // This updates Avatars.
+            cancellables.append(
+                theDB.objectWillChange.sink {
+                    self.update(newRawInfo: self.rawInfo)
+                }
+            )
+            cancellables.append(
+                Defaults.publisher(.artifactRatingOptions).sink { _ in
+                    self.reinit(firstRun: false)
+                }
+            )
         }
 
         // MARK: Public
 
-        public let rawFetchedData: EnkaGI.QueryRelated.ProfileRAW
+        public private(set) var theDB: EnkaGI.EnkaDB
 
-        public let nextRefreshableDate: Date
+        @Published
+        public var rawInfo: EnkaGI.QueryRelated.ProfileRAW
 
-        public let basicInfo: PlayerInfoTranslated?
+        @Published
+        public var basicInfo: PlayerInfoTranslated?
 
-        public let avatars: [Avatar]
+        @Published
+        public var enkaMessage: String?
 
-        public let summariesText: [Int: String]
+        @Published
+        public var avatars: [Avatar] = []
 
-        public let summariesMarkDown: [Int: String]
+        @Published
+        public var nextRefreshableDate: Date
 
-        public let enkaMessage: String?
+        // MARK: Private
+
+        private var cancellables: [AnyCancellable] = []
+    }
+}
+
+extension EnkaGI.QueryRelated.ProfileTranslated {
+    public func update(
+        newRawInfo: EnkaGI.QueryRelated.ProfileRAW, dropExistingData: Bool = false
+    ) {
+        rawInfo = dropExistingData ? newRawInfo : rawInfo.merge(new: newRawInfo)
+        reinit(firstRun: false)
+    }
+
+    internal func reinit(firstRun: Bool = false) {
+        if let avatarInfoList = rawInfo.avatarInfoList {
+            avatars = avatarInfoList.compactMap { avatarInfo in
+                let newAvatar = EnkaGI.QueryRelated.Avatar(
+                    avatarInfo: avatarInfo,
+                    theDB: theDB,
+                    uid: rawInfo.uid
+                )
+                return newAvatar
+            }
+        }
+        guard firstRun else { return }
+        basicInfo = .init(
+            playerInfo: rawInfo.playerInfo,
+            characterMap: theDB.characters
+        )
+        enkaMessage = rawInfo.message
+        nextRefreshableDate = Calendar.current.date(
+            byAdding: .second,
+            value: rawInfo.ttl ?? 30,
+            to: Date()
+        )!
     }
 }

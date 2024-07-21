@@ -786,13 +786,6 @@ private struct PlayerDetailSection: View {
                             } label: {
                                 avatar.characterAsset.cardIcon(75)
                             }
-                            .onChange(of: artifactRatingOptions) { _ in
-                                Task.detached { @MainActor in
-                                    withAnimation {
-                                        avatar.fetchArtifactRatings()
-                                    }
-                                }
-                            }
                         }
                     }
                 }

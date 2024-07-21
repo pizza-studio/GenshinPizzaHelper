@@ -9,28 +9,26 @@ import HBMihoyoAPI
 
 extension EnkaGI.QueryRelated {
     /// 游戏角色
-    public class Avatar {
+    public struct Avatar {
         // MARK: Lifecycle
 
         public init?(
             avatarInfo: EnkaGI.QueryRelated.ProfileRAW.AvatarInfoRAW,
-            localizedDictionary: EnkaGI.DBModels.LocTable,
-            characterDictionary: EnkaGI.DBModels.CharacterDict,
+            theDB: EnkaGI.EnkaDB,
             uid: String?
         ) {
             guard let character =
-                characterDictionary[
+                theDB.characters[
                     "\(avatarInfo.avatarId)-\(avatarInfo.skillDepotId)"
                 ] ??
-                characterDictionary["\(avatarInfo.avatarId)"]
+                theDB.characters["\(avatarInfo.avatarId)"]
             else { return nil }
             self.character = character
             self.enkaID = avatarInfo.avatarId
             self.characterAsset = CharacterAsset.match(id: avatarInfo.avatarId)
             self.costumeAsset = .init(rawValue: avatarInfo.costumeId ?? -213)
 
-            self.name = localizedDictionary
-                .nameFromHashMap(character.NameTextMapHash)
+            self.name = theDB.locTable.nameFromHashMap(character.NameTextMapHash)
 
             self
                 .element = EnkaGI.QueryRelated.Avatar.TeyvatElement(rawValue: character.Element) ??
@@ -61,7 +59,7 @@ extension EnkaGI.QueryRelated {
                 // 对该笔天赋等级加成数据做去余处理，以图仅保留命之座天赋加成。
                 adjustedDelta = adjustedDelta - adjustedDelta % 3
                 return Skill(
-                    name: localizedDictionary.nameFromHashMap(skillID),
+                    name: theDB.locTable.nameFromHashMap(skillID),
                     level: rawLevel,
                     levelAdjusted: rawLevel + adjustedDelta,
                     iconString: icon
@@ -74,7 +72,7 @@ extension EnkaGI.QueryRelated {
                 }) else { return nil }
             self.weapon = .init(
                 weaponEquipment: weaponEquipment,
-                localizedDictionary: localizedDictionary
+                localizedDictionary: theDB.locTable
             )!
 
             self.artifacts = avatarInfo.equipList.filter { equip in
@@ -82,7 +80,7 @@ extension EnkaGI.QueryRelated {
             }.compactMap { artifactEquipment in
                 Artifact(
                     artifactEquipment: artifactEquipment,
-                    localizedDictionary: localizedDictionary,
+                    localizedDictionary: theDB.locTable,
                     score: nil
                 )
             }
@@ -96,6 +94,9 @@ extension EnkaGI.QueryRelated {
                 "\(uid)\(uid.md5)\(AppConfig.uidSalt)"
             self.uid = String(obfuscatedUid.md5)
             fetchArtifactRatings(collect: true)
+
+            self.summaryAsText = summarize(locMap: theDB.locTable, useMarkDown: false)
+            self.summaryAsMarkdown = summarize(locMap: theDB.locTable, useMarkDown: true)
         }
 
         // MARK: Public
@@ -143,6 +144,9 @@ extension EnkaGI.QueryRelated {
         /// 原始 character 資料備份。
         public let character: EnkaGI.Character
 
+        public private(set) var summaryAsText: String = ""
+        public private(set) var summaryAsMarkdown: String = ""
+
         /// 经过错字订正处理的角色姓名
         public var nameCorrected: String {
             CharacterAsset.match(id: enkaID).localized.localizedWithFix
@@ -184,7 +188,7 @@ extension EnkaGI.QueryRelated {
             }
         }
 
-        public func fetchArtifactRatings(collect: Bool = false) {
+        public mutating func fetchArtifactRatings(collect: Bool = false) {
             print("Get artifact rating of \(name)")
             let artifactsModel = convert2ArtifactRatingModel()
             if let artifactScores = ArtifactRating.Appraiser(request: artifactsModel).evaluate() {
@@ -210,16 +214,18 @@ extension EnkaGI.QueryRelated {
                     }
                 }
             }
-            DispatchQueue.global(qos: .background).async {
-                guard collect else { return }
-                // 要上传的记录资料得忽略掉任何评分加成选项。
-                let retrieved = ArtifactRating.Appraiser(request: artifactsModel, options: .allDisabled).evaluate()
-                guard let retrieved = retrieved else { return }
-                print("Uploading artifact rating for \(self.name)")
+
+            // MARK: - Handling Data Collection of Spiral Abyss.
+
+            guard collect else { return }
+            // 要上传的记录资料得忽略掉任何评分加成选项。
+            let retrieved = ArtifactRating.Appraiser(request: artifactsModel, options: .allDisabled).evaluate()
+            if let retrieved = retrieved {
+                print("Uploading artifact rating for \(name)")
                 // upload data to opserver
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = .sortedKeys
-                let dataToCollect = retrieved.convertToCollectionModel(uid: self.uid, charId: String(self.enkaID))
+                let dataToCollect = retrieved.convertToCollectionModel(uid: uid, charId: String(enkaID))
                 let data = try! encoder.encode(dataToCollect)
                 let md5 = String(data: data, encoding: .utf8)!.md5
                 guard !UPLOAD_HOLDING_DATA_LOCKED
@@ -227,22 +233,24 @@ extension EnkaGI.QueryRelated {
                     print("uploadArtifactScoreDataLocked is locked")
                     return
                 }
-                API.PSAServer.uploadUserData(
-                    path: "/artifact_rank/upload",
-                    data: data
-                ) { result in
-                    switch result {
-                    case .success:
-                        print("uploadArtifactData SUCCEED")
-                        print(md5)
-                    case let .failure(error):
-                        switch error {
-                        case let .uploadError(message):
-                            if message == "Insert Failed" {
-                                print(message)
+                DispatchQueue.global(qos: .background).async {
+                    API.PSAServer.uploadUserData(
+                        path: "/artifact_rank/upload",
+                        data: data
+                    ) { result in
+                        switch result {
+                        case .success:
+                            print("uploadArtifactData SUCCEED")
+                            print(md5)
+                        case let .failure(error):
+                            switch error {
+                            case let .uploadError(message):
+                                if message == "Insert Failed" {
+                                    print(message)
+                                }
+                            default:
+                                break
                             }
-                        default:
-                            break
                         }
                     }
                 }

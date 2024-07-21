@@ -79,15 +79,11 @@ struct AvatarShowCaseView: View {
         .contextMenu {
             if let avatar = avatar {
                 Group {
-                    if let textSummary = playerDetail.summariesText[avatar.enkaID] {
-                        Button("app.detailPortal.avatar.summarzeToClipboard.asText") {
-                            UIPasteboard.general.string = textSummary
-                        }
+                    Button("app.detailPortal.avatar.summarzeToClipboard.asText") {
+                        UIPasteboard.general.string = avatar.summaryAsText
                     }
-                    if let mdSummary = playerDetail.summariesMarkDown[avatar.enkaID] {
-                        Button("app.detailPortal.avatar.summarzeToClipboard.asMD") {
-                            UIPasteboard.general.string = mdSummary
-                        }
+                    Button("app.detailPortal.avatar.summarzeToClipboard.asMD") {
+                        UIPasteboard.general.string = avatar.summaryAsMarkdown
                     }
                     #if os(OSX) || targetEnvironment(macCatalyst)
                     Divider()
