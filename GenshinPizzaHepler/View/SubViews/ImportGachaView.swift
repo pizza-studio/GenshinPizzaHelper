@@ -107,7 +107,9 @@ struct ImportGachaView: View {
                         totalCount: result.totalCount,
                         newCount: result.newCount,
                         app: uigfModel.info.exportApp,
-                        exportDate: uigfModel.info.exportTime
+                        exportDate: Date(
+                            timeIntervalSince1970: Double(uigfModel.info.exportTimestamp) ?? -1
+                        )
                     ))
                     isCompleteAlertShow.toggle()
                 } catch {

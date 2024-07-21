@@ -27,7 +27,7 @@ extension GachaItemMO {
 
 extension GachaItemFetched {
     public func toGachaItemMO(context: NSManagedObjectContext) -> GachaItemMO {
-        var item = self
+        let item = self
         let model = GachaItemMO(context: context)
         model.uid = item.uid
         model.gachaType = Int16(item.gachaType)!

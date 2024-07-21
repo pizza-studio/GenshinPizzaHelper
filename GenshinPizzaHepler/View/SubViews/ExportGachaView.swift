@@ -8,6 +8,8 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+private typealias JsonFile = UIGFv4.Document
+
 // MARK: - ExportGachaView
 
 @available(iOS 15.0, *)
@@ -53,7 +55,8 @@ struct ExportGachaView: View {
     var defaultFileName: String {
         let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyyMMddHHmm"
-        return "UIGF_\(uigfJson?.info.uid ?? "")_\(dateFormatter.string(from: uigfJson?.info.exportTime ?? Date()))"
+        // 导出时间戳直接用 Date() 生成也无妨，误差在五秒钟之内。
+        return "UIGFv4_GI_\(params.uid ?? "")_\(dateFormatter.string(from: Date()))"
     }
 
     fileprivate var file: JsonFile? {
@@ -116,14 +119,7 @@ struct ExportGachaView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("导出") {
-                            let uid = params.uid!
-                            let items = gachaViewModel.manager.fetchAllMO(uid: uid)
-                                .map { $0.toUIGFGachaItem(params.lang) }
-                            uigfJson = .init(
-                                info: .init(uid: uid, lang: params.lang),
-                                list: items
-                            )
-                            isExporterPresented.toggle()
+                            exportButtonDidClick()
                         }
                         .disabled(params.uid == nil)
                     }
@@ -180,6 +176,19 @@ struct ExportGachaView: View {
         }
     }
 
+    private func exportButtonDidClick() {
+        let uid = params.uid!
+        let items = gachaViewModel.manager.fetchAllMO(uid: uid).map { $0.toUIGFGachaItem(params.lang) }
+        let newProfile: UIGFGachaProfile = .init(
+            lang: .zhHans,
+            list: items,
+            timezone: GachaItem.getServerTimeZoneDelta(uid),
+            uid: uid
+        )
+        uigfJson = .init(info: .init(), giProfiles: [newProfile])
+        isExporterPresented.toggle()
+    }
+
     @State
     private var isSucceedAlertShow: Bool = false
     @State
@@ -193,40 +202,6 @@ private class ExportGachaParams: ObservableObject {
     var uid: String?
     @Published
     var lang: GachaLanguageCode = .zhHans
-}
-
-// MARK: - JsonFile
-
-private struct JsonFile: FileDocument {
-    // MARK: Lifecycle
-
-    init(configuration: ReadConfiguration) throws {
-        self.model = try JSONDecoder()
-            .decode(
-                UIGFv4.self,
-                from: configuration.file.regularFileContents!
-            )
-    }
-
-    init(model: UIGFv4) {
-        self.model = model
-    }
-
-    // MARK: Internal
-
-    static var readableContentTypes: [UTType] = [.json]
-
-    let model: UIGFv4
-
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let encoder = JSONEncoder()
-        let dateFormatter = DateFormatter.Gregorian()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        encoder.dateEncodingStrategy = .formatted(dateFormatter)
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        let data = try encoder.encode(model)
-        return FileWrapper(regularFileWithContents: data)
-    }
 }
 
 // MARK: - AlertType

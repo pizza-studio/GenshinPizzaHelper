@@ -137,7 +137,7 @@ public class GachaModelManager {
     func addRecordItems(
         _ items: [UIGFGachaItem],
         uid: String,
-        lang: GachaLanguageCode
+        profile: UIGFGachaProfile
     )
         -> Int {
         var count = 0
@@ -151,7 +151,7 @@ public class GachaModelManager {
                     _ = item.toGachaItemMO(
                         context: container.viewContext,
                         uid: uid,
-                        lang: lang
+                        profile: profile
                     )
                     count += 1
                 }

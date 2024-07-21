@@ -196,15 +196,24 @@ class GachaViewModel: ObservableObject {
         uigfJson: UIGFv4
     )
         -> (uid: String, totalCount: Int, newCount: Int) {
-        let info = uigfJson.info
-        let items = uigfJson.list
-        let newCount = manager.addRecordItems(
-            items,
-            uid: info.uid,
-            lang: info.lang
-        )
+        let profiles = uigfJson.giProfiles?.compactMap { $0 }
+        var theUIDs = [String]()
+        var (x, y, z) = ("", 0, 0)
+        profiles?.forEach { theProfile in
+            let info = uigfJson.info
+            let items = theProfile.list
+            let newCount = manager.addRecordItems(
+                items,
+                uid: theProfile.uid,
+                profile: theProfile
+            )
+            y += items.count
+            z += newCount
+            theUIDs.append(theProfile.uid)
+        }
+        x = theUIDs.joined(separator: ", ")
         refetchGachaItems()
-        return (info.uid, items.count, newCount)
+        return (x, y, z)
     }
 }
 

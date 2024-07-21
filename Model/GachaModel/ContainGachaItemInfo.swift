@@ -37,22 +37,25 @@ extension GachaItemType {
         }
     }
 
-    static func fromRaw(_ string: String) -> Self? {
+    public init(itemIdStr: String) {
+        self = itemIdStr.count > 6 ? .character : .weapon
+    }
+
+    public init(itemId: Int) {
+        self = itemId > 114_514 ? .character : .weapon
+    }
+
+    public init(rawString: String) {
         let weaponStrings: [String] = [
             "อาวุธ", "무기", "Arma", "武器",
             "武器", "Senjata", "Arma", "Waffe",
             "Arme", "武器", "Оружие", "Weapon", "Vũ Khí",
         ]
-        if weaponStrings.contains(string) {
-            return .weapon
+        if weaponStrings.contains(rawString) {
+            self = .weapon
         } else {
-            return .character
+            self = .character
         }
-    }
-
-    // TODO: find by name
-    static func findByName(_ name: String) -> Self {
-        .weapon
     }
 }
 

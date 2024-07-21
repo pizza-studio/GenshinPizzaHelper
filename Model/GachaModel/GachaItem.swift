@@ -22,6 +22,7 @@ public typealias GetGachaResult = Result<[GachaItem], GetGachaError>
 
 // MARK: - GachaItem
 
+/// 该 struct 等价于穹披助手的 GachaEntry。
 public struct GachaItem: Identifiable {
     // MARK: Lifecycle
 
