@@ -32,6 +32,7 @@ final class DetailPortalViewModel: ObservableObject {
                     theDB: EnkaGI.Sputnik.sharedDB
                 )
             }
+            refresh()
         } else {
             self.selectedAccount = nil
         }
@@ -43,6 +44,16 @@ final class DetailPortalViewModel: ObservableObject {
         case progress(Task<(), Never>?)
         case fail(Error)
         case succeed(T)
+        case standby
+
+        // MARK: Internal
+
+        var isBusy: Bool {
+            switch self {
+            case .progress: return true
+            default: return false
+            }
+        }
     }
 
     typealias EnkaProfileStatus = Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)>
@@ -54,22 +65,22 @@ final class DetailPortalViewModel: ObservableObject {
     static let refreshSubject: PassthroughSubject<(), Never> = .init()
 
     @Published
-    var enkaProfileStatus: EnkaProfileStatus = .progress(nil)
+    var enkaProfileStatus: EnkaProfileStatus = .standby
 
     @Published
-    var basicInfoStatus: BasicInfoStatus = .progress(nil)
+    var basicInfoStatus: BasicInfoStatus = .standby
 
     @Published
-    var spiralAbyssDetailStatusCurrent: SpiralAbyssDetailStatus = .progress(nil)
+    var spiralAbyssDetailStatusCurrent: SpiralAbyssDetailStatus = .standby
 
     @Published
-    var spiralAbyssDetailStatusPrevious: SpiralAbyssDetailStatus = .progress(nil)
+    var spiralAbyssDetailStatusPrevious: SpiralAbyssDetailStatus = .standby
 
     @Published
-    var ledgerDataStatus: LedgerDataStatus = .progress(nil)
+    var ledgerDataStatus: LedgerDataStatus = .standby
 
     @Published
-    var characterInventoryStatus: CharInventoryStatus = .progress(nil)
+    var characterInventoryStatus: CharInventoryStatus = .standby
 
     @Published
     var currentEnkaProfile: EnkaGI.QueryRelated.ProfileTranslated?
@@ -874,6 +885,8 @@ private struct PlayerDetailSection: View {
                         await vmDPV.fetchEnkaPlayerProfile()
                     }
                 }
+            case .standby:
+                theCase
             case let .succeed((playerDetail, _)):
                 theCase
                 errorViewForBlankAvatars(playerDetail: playerDetail)
@@ -965,6 +978,8 @@ private struct CharInventoryNavigator: View {
                     }
                 }
             }
+        case .standby:
+            EmptyView()
         }
     }
 
@@ -1006,6 +1021,8 @@ private struct LedgerDataNavigator: View {
                 }
             case let .succeed(data):
                 LedgerDataView(ledgerData: data)
+            case .standby:
+                EmptyView()
             }
         }
     }
@@ -1084,6 +1101,8 @@ private struct AbyssInfoNavigator: View {
                 }
             case let .succeed(data):
                 AbyssInfoView(abyssInfo: data)
+            case .standby:
+                EmptyView()
             }
         }
     }
@@ -1356,6 +1375,8 @@ private struct BasicInfoNavigator: View {
                     }
                 }
             }
+        case .standby:
+            EmptyView()
         }
     }
 
