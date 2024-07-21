@@ -66,12 +66,6 @@ extension EnkaGI {
     }
 }
 
-#if hasFeature(RetroactiveAttribute)
-extension EnkaGI.Exception: @retroactive LocalizedError {}
-#else
-extension EnkaGI.Exception: LocalizedError {}
-#endif
-
 extension EnkaGI.Exception {
     public var errorDescription: String? {
         switch self {
