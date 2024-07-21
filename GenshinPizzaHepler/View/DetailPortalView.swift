@@ -79,7 +79,7 @@ final class DetailPortalViewModel: ObservableObject {
 
     func refresh() {
         Task.detached { @MainActor [self] in
-            await fetchPlayerDetail()
+            await fetchEnkaPlayerProfile()
             await fetchBasicInfo()
             await fetchSpiralAbyssInfoCurrent()
             await fetchSpiralAbyssInfoPrevious()
@@ -118,7 +118,7 @@ final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    func fetchPlayerDetail() async {
+    func fetchEnkaPlayerProfile() async {
         guard let selectedAccount else { return }
         if case let .succeed((_, refreshableDate)) = playerDetailStatus {
             guard Date() > refreshableDate else { return }
@@ -831,7 +831,7 @@ private struct PlayerDetailSection: View {
             case let .fail(error):
                 DPVErrorView(account: account, apiPath: "", error: error) {
                     Task.detached { @MainActor in
-                        await vmDPV.fetchPlayerDetail()
+                        await vmDPV.fetchEnkaPlayerProfile()
                     }
                 }
             case let .succeed((playerDetail, _)):
