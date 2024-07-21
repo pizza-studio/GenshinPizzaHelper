@@ -95,8 +95,10 @@ extension EnkaGI.QueryRelated {
             self.uid = String(obfuscatedUid.md5)
             fetchArtifactRatings(collect: true)
 
+            #if !os(watchOS)
             self.summaryAsText = summarize(locMap: theDB.locTable, useMarkDown: false)
             self.summaryAsMarkdown = summarize(locMap: theDB.locTable, useMarkDown: true)
+            #endif
         }
 
         // MARK: Public
