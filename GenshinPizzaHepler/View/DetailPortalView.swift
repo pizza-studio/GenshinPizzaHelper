@@ -135,8 +135,7 @@ final class DetailPortalViewModel: ObservableObject {
                 }
                 let playerDetail = EnkaGI.QueryRelated.ProfileTranslated(
                     fetchedModel: fetchedModel,
-                    localizedDictionary: theDB.locTable,
-                    characterMap: theDB.characters
+                    theDB: theDB
                 )
                 refreshCostumeMap(playerDetail: playerDetail)
                 currentBasicInfo = playerDetail.basicInfo
