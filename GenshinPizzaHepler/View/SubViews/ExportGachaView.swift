@@ -192,7 +192,7 @@ private class ExportGachaParams: ObservableObject {
     @Published
     var uid: String?
     @Published
-    var lang: GachaLanguageCode = .zhCN
+    var lang: GachaLanguageCode = .zhHans
 }
 
 // MARK: - JsonFile

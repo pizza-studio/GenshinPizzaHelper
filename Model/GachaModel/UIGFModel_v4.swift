@@ -25,7 +25,7 @@ struct UIGFv4: Codable {
                 Bundle.main
                     .infoDictionary!["CFBundleShortVersionString"] as! String
             )
-            self.uigfVersion = (lang == .zhCN) ? "v2.2" : "v2.3"
+            self.uigfVersion = (lang == .zhHans) ? "v2.2" : "v2.3"
         }
 
         init(from decoder: Decoder) throws {
@@ -233,7 +233,7 @@ extension UIGFGachaItem {
         model.count = Int16(item.count)!
         model.time = item.time
         model.name = item.name
-        model.lang = GachaLanguageCode.zhCN.rawValue
+        model.lang = GachaLanguageCode.zhHans.rawValue
         model.itemType = GachaItemType.fromRaw(itemType)!.cnRaw
         model.rankType = Int16(exactly: item.rankType.rawValue)!
         model.id = item.id

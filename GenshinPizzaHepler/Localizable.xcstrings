@@ -25621,7 +25621,7 @@
         }
       }
     },
-    "gacha.languageCode.zhCN" : {
+    "gacha.languageCode.zhHans" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -25686,7 +25686,7 @@
         }
       }
     },
-    "gacha.languageCode.zhTW" : {
+    "gacha.languageCode.zhHant" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

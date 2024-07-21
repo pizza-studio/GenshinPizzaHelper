@@ -201,7 +201,7 @@ struct ImportGachaView: View {
                            let langCode = GachaLanguageCode(rawValue: langString) {
                             lang = langCode
                         } else {
-                            lang = .zhCN
+                            lang = .zhHans
                         }
 
                         let rankType: String
