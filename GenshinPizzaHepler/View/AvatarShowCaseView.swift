@@ -85,7 +85,6 @@ struct AvatarShowCaseView: View {
                     Button("app.detailPortal.avatar.summarzeToClipboard.asMD") {
                         UIPasteboard.general.string = avatar.summaryAsMarkdown
                     }
-                    #if os(OSX) || targetEnvironment(macCatalyst)
                     Divider()
                     ForEach(playerDetail.avatars) { theAvatar in
                         Button(theAvatar.nameCorrected) {
@@ -94,7 +93,6 @@ struct AvatarShowCaseView: View {
                             }
                         }
                     }
-                    #endif
                 }
             }
         }
