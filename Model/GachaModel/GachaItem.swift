@@ -74,6 +74,31 @@ public struct GachaItem: Identifiable {
     }
 }
 
+extension GachaItem {
+    public var isWeapon: Bool {
+        (Int(itemId) ?? -1) < 114_514
+    }
+
+    public var isCharacter: Bool {
+        (Int(itemId) ?? -1) > 114_514
+    }
+
+    public static func getServerTimeZoneDelta(_ uid: String) -> Int {
+        // 抽卡记录的网页固定显示伺服器时间。
+        guard (9 ... 10).contains(uid.count) else { return 8 }
+        var uid = uid
+        if uid.count == 10 {
+            uid.remove(at: uid.indices.first ?? .init(utf16Offset: 0, in: uid))
+        }
+        guard let firstDigit = uid.first else { return 8 }
+        switch firstDigit {
+        case "6": return -5
+        case "7": return 1
+        default: return 8
+        }
+    }
+}
+
 extension GachaItem.RankType {
     // TODO: find by name
     static func findByName(_ name: String) -> Self {
