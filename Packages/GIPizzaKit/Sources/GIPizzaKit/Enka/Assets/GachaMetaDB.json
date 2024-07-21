@@ -1,0 +1,1662 @@
+{
+  "10002" : {
+    "id" : 10002,
+    "nameTextMapHash" : 2719832059,
+    "rank" : 1
+  },
+  "10003" : {
+    "id" : 10003,
+    "nameTextMapHash" : 500987603,
+    "rank" : 1
+  },
+  "10004" : {
+    "id" : 10004,
+    "nameTextMapHash" : 1595734083,
+    "rank" : 1
+  },
+  "10005" : {
+    "id" : 10005,
+    "nameTextMapHash" : 2009975571,
+    "rank" : 1
+  },
+  "10006" : {
+    "id" : 10006,
+    "nameTextMapHash" : 4162981171,
+    "rank" : 1
+  },
+  "10008" : {
+    "id" : 10008,
+    "nameTextMapHash" : 3762437019,
+    "rank" : 1
+  },
+  "11101" : {
+    "id" : 11101,
+    "nameTextMapHash" : 2410593283,
+    "rank" : 1
+  },
+  "11201" : {
+    "id" : 11201,
+    "nameTextMapHash" : 2125206395,
+    "rank" : 2
+  },
+  "11301" : {
+    "id" : 11301,
+    "nameTextMapHash" : 479076483,
+    "rank" : 3
+  },
+  "11302" : {
+    "id" : 11302,
+    "nameTextMapHash" : 1608953539,
+    "rank" : 3
+  },
+  "11303" : {
+    "id" : 11303,
+    "nameTextMapHash" : 3673792067,
+    "rank" : 3
+  },
+  "11304" : {
+    "id" : 11304,
+    "nameTextMapHash" : 160493219,
+    "rank" : 3
+  },
+  "11305" : {
+    "id" : 11305,
+    "nameTextMapHash" : 3421967235,
+    "rank" : 3
+  },
+  "11306" : {
+    "id" : 11306,
+    "nameTextMapHash" : 1388004931,
+    "rank" : 3
+  },
+  "11401" : {
+    "id" : 11401,
+    "nameTextMapHash" : 2474354867,
+    "rank" : 4
+  },
+  "11402" : {
+    "id" : 11402,
+    "nameTextMapHash" : 3587621259,
+    "rank" : 4
+  },
+  "11403" : {
+    "id" : 11403,
+    "nameTextMapHash" : 1990641987,
+    "rank" : 4
+  },
+  "11404" : {
+    "id" : 11404,
+    "nameTextMapHash" : 2375993851,
+    "rank" : 4
+  },
+  "11405" : {
+    "id" : 11405,
+    "nameTextMapHash" : 1321135667,
+    "rank" : 4
+  },
+  "11406" : {
+    "id" : 11406,
+    "nameTextMapHash" : 1991707099,
+    "rank" : 4
+  },
+  "11407" : {
+    "id" : 11407,
+    "nameTextMapHash" : 4103022435,
+    "rank" : 4
+  },
+  "11408" : {
+    "id" : 11408,
+    "nameTextMapHash" : 3378007475,
+    "rank" : 4
+  },
+  "11409" : {
+    "id" : 11409,
+    "nameTextMapHash" : 3796905611,
+    "rank" : 4
+  },
+  "11410" : {
+    "id" : 11410,
+    "nameTextMapHash" : 2947140987,
+    "rank" : 4
+  },
+  "11411" : {
+    "id" : 11411,
+    "nameTextMapHash" : 1135130229,
+    "rank" : 4
+  },
+  "11412" : {
+    "id" : 11412,
+    "nameTextMapHash" : 1773425155,
+    "rank" : 4
+  },
+  "11413" : {
+    "id" : 11413,
+    "nameTextMapHash" : 2749853923,
+    "rank" : 4
+  },
+  "11414" : {
+    "id" : 11414,
+    "nameTextMapHash" : 1990820123,
+    "rank" : 4
+  },
+  "11415" : {
+    "id" : 11415,
+    "nameTextMapHash" : 342097547,
+    "rank" : 4
+  },
+  "11416" : {
+    "id" : 11416,
+    "nameTextMapHash" : 1012170803,
+    "rank" : 4
+  },
+  "11417" : {
+    "id" : 11417,
+    "nameTextMapHash" : 313300315,
+    "rank" : 4
+  },
+  "11418" : {
+    "id" : 11418,
+    "nameTextMapHash" : 143051931,
+    "rank" : 4
+  },
+  "11419" : {
+    "id" : 11419,
+    "nameTextMapHash" : 1499745907,
+    "rank" : 4
+  },
+  "11420" : {
+    "id" : 11420,
+    "nameTextMapHash" : 1538092267,
+    "rank" : 4
+  },
+  "11421" : {
+    "id" : 11421,
+    "nameTextMapHash" : 3464027035,
+    "rank" : 4
+  },
+  "11422" : {
+    "id" : 11422,
+    "nameTextMapHash" : 2448629019,
+    "rank" : 4
+  },
+  "11424" : {
+    "id" : 11424,
+    "nameTextMapHash" : 2265792579,
+    "rank" : 4
+  },
+  "11425" : {
+    "id" : 11425,
+    "nameTextMapHash" : 800766043,
+    "rank" : 4
+  },
+  "11426" : {
+    "id" : 11426,
+    "nameTextMapHash" : 1921306659,
+    "rank" : 4
+  },
+  "11427" : {
+    "id" : 11427,
+    "nameTextMapHash" : 1790067483,
+    "rank" : 4
+  },
+  "11428" : {
+    "id" : 11428,
+    "nameTextMapHash" : 3016493955,
+    "rank" : 4
+  },
+  "11429" : {
+    "id" : 11429,
+    "nameTextMapHash" : 594850707,
+    "rank" : 4
+  },
+  "11501" : {
+    "id" : 11501,
+    "nameTextMapHash" : 902264035,
+    "rank" : 5
+  },
+  "11502" : {
+    "id" : 11502,
+    "nameTextMapHash" : 4055003299,
+    "rank" : 5
+  },
+  "11503" : {
+    "id" : 11503,
+    "nameTextMapHash" : 2949448555,
+    "rank" : 5
+  },
+  "11504" : {
+    "id" : 11504,
+    "nameTextMapHash" : 944332883,
+    "rank" : 5
+  },
+  "11505" : {
+    "id" : 11505,
+    "nameTextMapHash" : 1345343763,
+    "rank" : 5
+  },
+  "11506" : {
+    "id" : 11506,
+    "nameTextMapHash" : 231836963,
+    "rank" : 5
+  },
+  "11507" : {
+    "id" : 11507,
+    "nameTextMapHash" : 3780343147,
+    "rank" : 5
+  },
+  "11508" : {
+    "id" : 11508,
+    "nameTextMapHash" : 1664039091,
+    "rank" : 5
+  },
+  "11509" : {
+    "id" : 11509,
+    "nameTextMapHash" : 4124851547,
+    "rank" : 5
+  },
+  "11510" : {
+    "id" : 11510,
+    "nameTextMapHash" : 1600275315,
+    "rank" : 5
+  },
+  "11511" : {
+    "id" : 11511,
+    "nameTextMapHash" : 454086795,
+    "rank" : 5
+  },
+  "11512" : {
+    "id" : 11512,
+    "nameTextMapHash" : 275622963,
+    "rank" : 5
+  },
+  "11513" : {
+    "id" : 11513,
+    "nameTextMapHash" : 1473399443,
+    "rank" : 5
+  },
+  "11514" : {
+    "id" : 11514,
+    "nameTextMapHash" : 1818340435,
+    "rank" : 5
+  },
+  "11515" : {
+    "id" : 11515,
+    "nameTextMapHash" : 1009471939,
+    "rank" : 5
+  },
+  "12101" : {
+    "id" : 12101,
+    "nameTextMapHash" : 2666951267,
+    "rank" : 1
+  },
+  "12201" : {
+    "id" : 12201,
+    "nameTextMapHash" : 1182966603,
+    "rank" : 2
+  },
+  "12301" : {
+    "id" : 12301,
+    "nameTextMapHash" : 1479961579,
+    "rank" : 3
+  },
+  "12302" : {
+    "id" : 12302,
+    "nameTextMapHash" : 4090429643,
+    "rank" : 3
+  },
+  "12303" : {
+    "id" : 12303,
+    "nameTextMapHash" : 850802171,
+    "rank" : 3
+  },
+  "12304" : {
+    "id" : 12304,
+    "nameTextMapHash" : 1516554699,
+    "rank" : 3
+  },
+  "12305" : {
+    "id" : 12305,
+    "nameTextMapHash" : 3097441915,
+    "rank" : 3
+  },
+  "12306" : {
+    "id" : 12306,
+    "nameTextMapHash" : 2614170427,
+    "rank" : 3
+  },
+  "12401" : {
+    "id" : 12401,
+    "nameTextMapHash" : 735056795,
+    "rank" : 4
+  },
+  "12402" : {
+    "id" : 12402,
+    "nameTextMapHash" : 930640955,
+    "rank" : 4
+  },
+  "12403" : {
+    "id" : 12403,
+    "nameTextMapHash" : 1675686363,
+    "rank" : 4
+  },
+  "12404" : {
+    "id" : 12404,
+    "nameTextMapHash" : 877751435,
+    "rank" : 4
+  },
+  "12405" : {
+    "id" : 12405,
+    "nameTextMapHash" : 3684723963,
+    "rank" : 4
+  },
+  "12406" : {
+    "id" : 12406,
+    "nameTextMapHash" : 3722933411,
+    "rank" : 4
+  },
+  "12407" : {
+    "id" : 12407,
+    "nameTextMapHash" : 680510411,
+    "rank" : 4
+  },
+  "12408" : {
+    "id" : 12408,
+    "nameTextMapHash" : 20848859,
+    "rank" : 4
+  },
+  "12409" : {
+    "id" : 12409,
+    "nameTextMapHash" : 1437658243,
+    "rank" : 4
+  },
+  "12410" : {
+    "id" : 12410,
+    "nameTextMapHash" : 2006422931,
+    "rank" : 4
+  },
+  "12411" : {
+    "id" : 12411,
+    "nameTextMapHash" : 2753539619,
+    "rank" : 4
+  },
+  "12412" : {
+    "id" : 12412,
+    "nameTextMapHash" : 346510395,
+    "rank" : 4
+  },
+  "12414" : {
+    "id" : 12414,
+    "nameTextMapHash" : 4193089947,
+    "rank" : 4
+  },
+  "12415" : {
+    "id" : 12415,
+    "nameTextMapHash" : 3073454867,
+    "rank" : 4
+  },
+  "12416" : {
+    "id" : 12416,
+    "nameTextMapHash" : 2359799475,
+    "rank" : 4
+  },
+  "12417" : {
+    "id" : 12417,
+    "nameTextMapHash" : 902184579,
+    "rank" : 4
+  },
+  "12418" : {
+    "id" : 12418,
+    "nameTextMapHash" : 1200948859,
+    "rank" : 4
+  },
+  "12424" : {
+    "id" : 12424,
+    "nameTextMapHash" : 3459616011,
+    "rank" : 4
+  },
+  "12425" : {
+    "id" : 12425,
+    "nameTextMapHash" : 2077869763,
+    "rank" : 4
+  },
+  "12426" : {
+    "id" : 12426,
+    "nameTextMapHash" : 933442195,
+    "rank" : 4
+  },
+  "12427" : {
+    "id" : 12427,
+    "nameTextMapHash" : 3693117451,
+    "rank" : 4
+  },
+  "12501" : {
+    "id" : 12501,
+    "nameTextMapHash" : 1089950259,
+    "rank" : 5
+  },
+  "12502" : {
+    "id" : 12502,
+    "nameTextMapHash" : 3995710363,
+    "rank" : 5
+  },
+  "12503" : {
+    "id" : 12503,
+    "nameTextMapHash" : 1075647299,
+    "rank" : 5
+  },
+  "12504" : {
+    "id" : 12504,
+    "nameTextMapHash" : 2792766467,
+    "rank" : 5
+  },
+  "12505" : {
+    "id" : 12505,
+    "nameTextMapHash" : 977648923,
+    "rank" : 5
+  },
+  "12506" : {
+    "id" : 12506,
+    "nameTextMapHash" : 2597527627,
+    "rank" : 5
+  },
+  "12508" : {
+    "id" : 12508,
+    "nameTextMapHash" : 759708203,
+    "rank" : 5
+  },
+  "12509" : {
+    "id" : 12509,
+    "nameTextMapHash" : 2507837467,
+    "rank" : 5
+  },
+  "12510" : {
+    "id" : 12510,
+    "nameTextMapHash" : 3914951691,
+    "rank" : 5
+  },
+  "12511" : {
+    "id" : 12511,
+    "nameTextMapHash" : 2834063555,
+    "rank" : 5
+  },
+  "12512" : {
+    "id" : 12512,
+    "nameTextMapHash" : 3812523339,
+    "rank" : 5
+  },
+  "13101" : {
+    "id" : 13101,
+    "nameTextMapHash" : 2796697027,
+    "rank" : 1
+  },
+  "13201" : {
+    "id" : 13201,
+    "nameTextMapHash" : 3070169307,
+    "rank" : 2
+  },
+  "13301" : {
+    "id" : 13301,
+    "nameTextMapHash" : 1390797107,
+    "rank" : 3
+  },
+  "13302" : {
+    "id" : 13302,
+    "nameTextMapHash" : 618786571,
+    "rank" : 3
+  },
+  "13303" : {
+    "id" : 13303,
+    "nameTextMapHash" : 4103766499,
+    "rank" : 3
+  },
+  "13304" : {
+    "id" : 13304,
+    "nameTextMapHash" : 500612819,
+    "rank" : 3
+  },
+  "13401" : {
+    "id" : 13401,
+    "nameTextMapHash" : 2664629131,
+    "rank" : 4
+  },
+  "13402" : {
+    "id" : 13402,
+    "nameTextMapHash" : 1154009435,
+    "rank" : 4
+  },
+  "13403" : {
+    "id" : 13403,
+    "nameTextMapHash" : 578575283,
+    "rank" : 4
+  },
+  "13404" : {
+    "id" : 13404,
+    "nameTextMapHash" : 481755219,
+    "rank" : 4
+  },
+  "13405" : {
+    "id" : 13405,
+    "nameTextMapHash" : 4049410651,
+    "rank" : 4
+  },
+  "13406" : {
+    "id" : 13406,
+    "nameTextMapHash" : 716252627,
+    "rank" : 4
+  },
+  "13407" : {
+    "id" : 13407,
+    "nameTextMapHash" : 3755004051,
+    "rank" : 4
+  },
+  "13408" : {
+    "id" : 13408,
+    "nameTextMapHash" : 2935286715,
+    "rank" : 4
+  },
+  "13409" : {
+    "id" : 13409,
+    "nameTextMapHash" : 3443142923,
+    "rank" : 4
+  },
+  "13414" : {
+    "id" : 13414,
+    "nameTextMapHash" : 2491797315,
+    "rank" : 4
+  },
+  "13415" : {
+    "id" : 13415,
+    "nameTextMapHash" : 1148024603,
+    "rank" : 4
+  },
+  "13416" : {
+    "id" : 13416,
+    "nameTextMapHash" : 4122509083,
+    "rank" : 4
+  },
+  "13417" : {
+    "id" : 13417,
+    "nameTextMapHash" : 452357939,
+    "rank" : 4
+  },
+  "13419" : {
+    "id" : 13419,
+    "nameTextMapHash" : 1470442731,
+    "rank" : 4
+  },
+  "13424" : {
+    "id" : 13424,
+    "nameTextMapHash" : 449192923,
+    "rank" : 4
+  },
+  "13425" : {
+    "id" : 13425,
+    "nameTextMapHash" : 4158971171,
+    "rank" : 4
+  },
+  "13426" : {
+    "id" : 13426,
+    "nameTextMapHash" : 2847771107,
+    "rank" : 4
+  },
+  "13427" : {
+    "id" : 13427,
+    "nameTextMapHash" : 882305891,
+    "rank" : 4
+  },
+  "13501" : {
+    "id" : 13501,
+    "nameTextMapHash" : 3235324891,
+    "rank" : 5
+  },
+  "13502" : {
+    "id" : 13502,
+    "nameTextMapHash" : 4158505619,
+    "rank" : 5
+  },
+  "13503" : {
+    "id" : 13503,
+    "nameTextMapHash" : 469555475,
+    "rank" : 5
+  },
+  "13504" : {
+    "id" : 13504,
+    "nameTextMapHash" : 197755235,
+    "rank" : 5
+  },
+  "13505" : {
+    "id" : 13505,
+    "nameTextMapHash" : 1997709467,
+    "rank" : 5
+  },
+  "13506" : {
+    "id" : 13506,
+    "nameTextMapHash" : 3532343811,
+    "rank" : 5
+  },
+  "13507" : {
+    "id" : 13507,
+    "nameTextMapHash" : 688991243,
+    "rank" : 5
+  },
+  "13509" : {
+    "id" : 13509,
+    "nameTextMapHash" : 3717849275,
+    "rank" : 5
+  },
+  "13511" : {
+    "id" : 13511,
+    "nameTextMapHash" : 4238339131,
+    "rank" : 5
+  },
+  "13512" : {
+    "id" : 13512,
+    "nameTextMapHash" : 2944936683,
+    "rank" : 5
+  },
+  "13513" : {
+    "id" : 13513,
+    "nameTextMapHash" : 1948935171,
+    "rank" : 5
+  },
+  "14101" : {
+    "id" : 14101,
+    "nameTextMapHash" : 3584825427,
+    "rank" : 1
+  },
+  "14201" : {
+    "id" : 14201,
+    "nameTextMapHash" : 2705029563,
+    "rank" : 2
+  },
+  "14301" : {
+    "id" : 14301,
+    "nameTextMapHash" : 2279290283,
+    "rank" : 3
+  },
+  "14302" : {
+    "id" : 14302,
+    "nameTextMapHash" : 3500935003,
+    "rank" : 3
+  },
+  "14303" : {
+    "id" : 14303,
+    "nameTextMapHash" : 1406746947,
+    "rank" : 3
+  },
+  "14304" : {
+    "id" : 14304,
+    "nameTextMapHash" : 2963220587,
+    "rank" : 3
+  },
+  "14305" : {
+    "id" : 14305,
+    "nameTextMapHash" : 3719372715,
+    "rank" : 3
+  },
+  "14306" : {
+    "id" : 14306,
+    "nameTextMapHash" : 302691299,
+    "rank" : 3
+  },
+  "14401" : {
+    "id" : 14401,
+    "nameTextMapHash" : 623534363,
+    "rank" : 4
+  },
+  "14402" : {
+    "id" : 14402,
+    "nameTextMapHash" : 1163263227,
+    "rank" : 4
+  },
+  "14403" : {
+    "id" : 14403,
+    "nameTextMapHash" : 2195665683,
+    "rank" : 4
+  },
+  "14404" : {
+    "id" : 14404,
+    "nameTextMapHash" : 3827789435,
+    "rank" : 4
+  },
+  "14405" : {
+    "id" : 14405,
+    "nameTextMapHash" : 37147251,
+    "rank" : 4
+  },
+  "14406" : {
+    "id" : 14406,
+    "nameTextMapHash" : 2521338131,
+    "rank" : 4
+  },
+  "14407" : {
+    "id" : 14407,
+    "nameTextMapHash" : 1072884907,
+    "rank" : 4
+  },
+  "14408" : {
+    "id" : 14408,
+    "nameTextMapHash" : 3273999011,
+    "rank" : 4
+  },
+  "14409" : {
+    "id" : 14409,
+    "nameTextMapHash" : 3156385731,
+    "rank" : 4
+  },
+  "14410" : {
+    "id" : 14410,
+    "nameTextMapHash" : 3090373787,
+    "rank" : 4
+  },
+  "14411" : {
+    "id" : 14411,
+    "nameTextMapHash" : 415851979,
+    "rank" : 4
+  },
+  "14412" : {
+    "id" : 14412,
+    "nameTextMapHash" : 2587614459,
+    "rank" : 4
+  },
+  "14413" : {
+    "id" : 14413,
+    "nameTextMapHash" : 3456986819,
+    "rank" : 4
+  },
+  "14414" : {
+    "id" : 14414,
+    "nameTextMapHash" : 2324146259,
+    "rank" : 4
+  },
+  "14415" : {
+    "id" : 14415,
+    "nameTextMapHash" : 2539208459,
+    "rank" : 4
+  },
+  "14416" : {
+    "id" : 14416,
+    "nameTextMapHash" : 426363739,
+    "rank" : 4
+  },
+  "14417" : {
+    "id" : 14417,
+    "nameTextMapHash" : 2267978875,
+    "rank" : 4
+  },
+  "14424" : {
+    "id" : 14424,
+    "nameTextMapHash" : 2275710883,
+    "rank" : 4
+  },
+  "14425" : {
+    "id" : 14425,
+    "nameTextMapHash" : 2432865507,
+    "rank" : 4
+  },
+  "14426" : {
+    "id" : 14426,
+    "nameTextMapHash" : 2722902043,
+    "rank" : 4
+  },
+  "14501" : {
+    "id" : 14501,
+    "nameTextMapHash" : 807607555,
+    "rank" : 5
+  },
+  "14502" : {
+    "id" : 14502,
+    "nameTextMapHash" : 1455107995,
+    "rank" : 5
+  },
+  "14503" : {
+    "id" : 14503,
+    "nameTextMapHash" : 452043283,
+    "rank" : 5
+  },
+  "14504" : {
+    "id" : 14504,
+    "nameTextMapHash" : 693354267,
+    "rank" : 5
+  },
+  "14505" : {
+    "id" : 14505,
+    "nameTextMapHash" : 4007372867,
+    "rank" : 5
+  },
+  "14506" : {
+    "id" : 14506,
+    "nameTextMapHash" : 1890163363,
+    "rank" : 5
+  },
+  "14508" : {
+    "id" : 14508,
+    "nameTextMapHash" : 4123950051,
+    "rank" : 5
+  },
+  "14509" : {
+    "id" : 14509,
+    "nameTextMapHash" : 310247243,
+    "rank" : 5
+  },
+  "14511" : {
+    "id" : 14511,
+    "nameTextMapHash" : 1201790667,
+    "rank" : 5
+  },
+  "14512" : {
+    "id" : 14512,
+    "nameTextMapHash" : 359484419,
+    "rank" : 5
+  },
+  "14513" : {
+    "id" : 14513,
+    "nameTextMapHash" : 724881171,
+    "rank" : 5
+  },
+  "14514" : {
+    "id" : 14514,
+    "nameTextMapHash" : 4176923379,
+    "rank" : 5
+  },
+  "14515" : {
+    "id" : 14515,
+    "nameTextMapHash" : 3660626387,
+    "rank" : 5
+  },
+  "15101" : {
+    "id" : 15101,
+    "nameTextMapHash" : 3600623979,
+    "rank" : 1
+  },
+  "15201" : {
+    "id" : 15201,
+    "nameTextMapHash" : 2340970067,
+    "rank" : 2
+  },
+  "15301" : {
+    "id" : 15301,
+    "nameTextMapHash" : 3975746731,
+    "rank" : 3
+  },
+  "15302" : {
+    "id" : 15302,
+    "nameTextMapHash" : 656120259,
+    "rank" : 3
+  },
+  "15303" : {
+    "id" : 15303,
+    "nameTextMapHash" : 4267718859,
+    "rank" : 3
+  },
+  "15304" : {
+    "id" : 15304,
+    "nameTextMapHash" : 1021898539,
+    "rank" : 3
+  },
+  "15305" : {
+    "id" : 15305,
+    "nameTextMapHash" : 4139294531,
+    "rank" : 3
+  },
+  "15306" : {
+    "id" : 15306,
+    "nameTextMapHash" : 2242027395,
+    "rank" : 3
+  },
+  "15401" : {
+    "id" : 15401,
+    "nameTextMapHash" : 1240067179,
+    "rank" : 4
+  },
+  "15402" : {
+    "id" : 15402,
+    "nameTextMapHash" : 2556914683,
+    "rank" : 4
+  },
+  "15403" : {
+    "id" : 15403,
+    "nameTextMapHash" : 2400012995,
+    "rank" : 4
+  },
+  "15404" : {
+    "id" : 15404,
+    "nameTextMapHash" : 2832648187,
+    "rank" : 4
+  },
+  "15405" : {
+    "id" : 15405,
+    "nameTextMapHash" : 3169209451,
+    "rank" : 4
+  },
+  "15406" : {
+    "id" : 15406,
+    "nameTextMapHash" : 3625393819,
+    "rank" : 4
+  },
+  "15407" : {
+    "id" : 15407,
+    "nameTextMapHash" : 411685275,
+    "rank" : 4
+  },
+  "15408" : {
+    "id" : 15408,
+    "nameTextMapHash" : 3447737235,
+    "rank" : 4
+  },
+  "15409" : {
+    "id" : 15409,
+    "nameTextMapHash" : 3439749859,
+    "rank" : 4
+  },
+  "15410" : {
+    "id" : 15410,
+    "nameTextMapHash" : 2417717595,
+    "rank" : 4
+  },
+  "15411" : {
+    "id" : 15411,
+    "nameTextMapHash" : 2425414923,
+    "rank" : 4
+  },
+  "15412" : {
+    "id" : 15412,
+    "nameTextMapHash" : 3949653579,
+    "rank" : 4
+  },
+  "15413" : {
+    "id" : 15413,
+    "nameTextMapHash" : 650049651,
+    "rank" : 4
+  },
+  "15414" : {
+    "id" : 15414,
+    "nameTextMapHash" : 4186179883,
+    "rank" : 4
+  },
+  "15415" : {
+    "id" : 15415,
+    "nameTextMapHash" : 540938627,
+    "rank" : 4
+  },
+  "15416" : {
+    "id" : 15416,
+    "nameTextMapHash" : 1860795787,
+    "rank" : 4
+  },
+  "15417" : {
+    "id" : 15417,
+    "nameTextMapHash" : 3176599083,
+    "rank" : 4
+  },
+  "15418" : {
+    "id" : 15418,
+    "nameTextMapHash" : 3063191787,
+    "rank" : 4
+  },
+  "15419" : {
+    "id" : 15419,
+    "nameTextMapHash" : 316078811,
+    "rank" : 4
+  },
+  "15424" : {
+    "id" : 15424,
+    "nameTextMapHash" : 2958179435,
+    "rank" : 4
+  },
+  "15425" : {
+    "id" : 15425,
+    "nameTextMapHash" : 2600875323,
+    "rank" : 4
+  },
+  "15426" : {
+    "id" : 15426,
+    "nameTextMapHash" : 4038676067,
+    "rank" : 4
+  },
+  "15427" : {
+    "id" : 15427,
+    "nameTextMapHash" : 1055195035,
+    "rank" : 4
+  },
+  "15501" : {
+    "id" : 15501,
+    "nameTextMapHash" : 3933622347,
+    "rank" : 5
+  },
+  "15502" : {
+    "id" : 15502,
+    "nameTextMapHash" : 828711395,
+    "rank" : 5
+  },
+  "15503" : {
+    "id" : 15503,
+    "nameTextMapHash" : 3112679155,
+    "rank" : 5
+  },
+  "15504" : {
+    "id" : 15504,
+    "nameTextMapHash" : 565329475,
+    "rank" : 5
+  },
+  "15505" : {
+    "id" : 15505,
+    "nameTextMapHash" : 1994081075,
+    "rank" : 5
+  },
+  "15506" : {
+    "id" : 15506,
+    "nameTextMapHash" : 2824690859,
+    "rank" : 5
+  },
+  "15507" : {
+    "id" : 15507,
+    "nameTextMapHash" : 1901973075,
+    "rank" : 5
+  },
+  "15508" : {
+    "id" : 15508,
+    "nameTextMapHash" : 4230231107,
+    "rank" : 5
+  },
+  "15509" : {
+    "id" : 15509,
+    "nameTextMapHash" : 2918525947,
+    "rank" : 5
+  },
+  "15511" : {
+    "id" : 15511,
+    "nameTextMapHash" : 1348687251,
+    "rank" : 5
+  },
+  "15512" : {
+    "id" : 15512,
+    "nameTextMapHash" : 2988480723,
+    "rank" : 5
+  },
+  "15513" : {
+    "id" : 15513,
+    "nameTextMapHash" : 1257396043,
+    "rank" : 5
+  },
+  "20001" : {
+    "id" : 20001,
+    "nameTextMapHash" : 4137694339,
+    "rank" : 5
+  },
+  "10000001" : {
+    "id" : 10000001,
+    "nameTextMapHash" : 1857915418,
+    "rank" : 4
+  },
+  "10000002" : {
+    "id" : 10000002,
+    "nameTextMapHash" : 1006042610,
+    "rank" : 5
+  },
+  "10000003" : {
+    "id" : 10000003,
+    "nameTextMapHash" : 3221566250,
+    "rank" : 5
+  },
+  "10000005" : {
+    "id" : 10000005,
+    "nameTextMapHash" : 1533656818,
+    "rank" : 5
+  },
+  "10000006" : {
+    "id" : 10000006,
+    "nameTextMapHash" : 3344622722,
+    "rank" : 4
+  },
+  "10000007" : {
+    "id" : 10000007,
+    "nameTextMapHash" : 3816664530,
+    "rank" : 5
+  },
+  "10000014" : {
+    "id" : 10000014,
+    "nameTextMapHash" : 3775299170,
+    "rank" : 4
+  },
+  "10000015" : {
+    "id" : 10000015,
+    "nameTextMapHash" : 4119663210,
+    "rank" : 4
+  },
+  "10000016" : {
+    "id" : 10000016,
+    "nameTextMapHash" : 3608180322,
+    "rank" : 5
+  },
+  "10000020" : {
+    "id" : 10000020,
+    "nameTextMapHash" : 4160147242,
+    "rank" : 4
+  },
+  "10000021" : {
+    "id" : 10000021,
+    "nameTextMapHash" : 1966438658,
+    "rank" : 4
+  },
+  "10000022" : {
+    "id" : 10000022,
+    "nameTextMapHash" : 2466140362,
+    "rank" : 5
+  },
+  "10000023" : {
+    "id" : 10000023,
+    "nameTextMapHash" : 1130996346,
+    "rank" : 4
+  },
+  "10000024" : {
+    "id" : 10000024,
+    "nameTextMapHash" : 2646367730,
+    "rank" : 4
+  },
+  "10000025" : {
+    "id" : 10000025,
+    "nameTextMapHash" : 4197635682,
+    "rank" : 4
+  },
+  "10000026" : {
+    "id" : 10000026,
+    "nameTextMapHash" : 1021947690,
+    "rank" : 5
+  },
+  "10000027" : {
+    "id" : 10000027,
+    "nameTextMapHash" : 4127888970,
+    "rank" : 4
+  },
+  "10000029" : {
+    "id" : 10000029,
+    "nameTextMapHash" : 3339083250,
+    "rank" : 5
+  },
+  "10000030" : {
+    "id" : 10000030,
+    "nameTextMapHash" : 3862787418,
+    "rank" : 5
+  },
+  "10000031" : {
+    "id" : 10000031,
+    "nameTextMapHash" : 3277782506,
+    "rank" : 4
+  },
+  "10000032" : {
+    "id" : 10000032,
+    "nameTextMapHash" : 968893378,
+    "rank" : 4
+  },
+  "10000033" : {
+    "id" : 10000033,
+    "nameTextMapHash" : 3847143266,
+    "rank" : 5
+  },
+  "10000034" : {
+    "id" : 10000034,
+    "nameTextMapHash" : 1921418842,
+    "rank" : 4
+  },
+  "10000035" : {
+    "id" : 10000035,
+    "nameTextMapHash" : 168956722,
+    "rank" : 5
+  },
+  "10000036" : {
+    "id" : 10000036,
+    "nameTextMapHash" : 2876340530,
+    "rank" : 4
+  },
+  "10000037" : {
+    "id" : 10000037,
+    "nameTextMapHash" : 2679781122,
+    "rank" : 5
+  },
+  "10000038" : {
+    "id" : 10000038,
+    "nameTextMapHash" : 4108620722,
+    "rank" : 5
+  },
+  "10000039" : {
+    "id" : 10000039,
+    "nameTextMapHash" : 1468367538,
+    "rank" : 4
+  },
+  "10000041" : {
+    "id" : 10000041,
+    "nameTextMapHash" : 1113306282,
+    "rank" : 5
+  },
+  "10000042" : {
+    "id" : 10000042,
+    "nameTextMapHash" : 1864015138,
+    "rank" : 5
+  },
+  "10000043" : {
+    "id" : 10000043,
+    "nameTextMapHash" : 1053433018,
+    "rank" : 4
+  },
+  "10000044" : {
+    "id" : 10000044,
+    "nameTextMapHash" : 4273845410,
+    "rank" : 4
+  },
+  "10000045" : {
+    "id" : 10000045,
+    "nameTextMapHash" : 4260733330,
+    "rank" : 4
+  },
+  "10000046" : {
+    "id" : 10000046,
+    "nameTextMapHash" : 1940919994,
+    "rank" : 5
+  },
+  "10000047" : {
+    "id" : 10000047,
+    "nameTextMapHash" : 88505754,
+    "rank" : 5
+  },
+  "10000048" : {
+    "id" : 10000048,
+    "nameTextMapHash" : 697277554,
+    "rank" : 4
+  },
+  "10000049" : {
+    "id" : 10000049,
+    "nameTextMapHash" : 2504399314,
+    "rank" : 5
+  },
+  "10000050" : {
+    "id" : 10000050,
+    "nameTextMapHash" : 3555115602,
+    "rank" : 4
+  },
+  "10000051" : {
+    "id" : 10000051,
+    "nameTextMapHash" : 3717667418,
+    "rank" : 5
+  },
+  "10000052" : {
+    "id" : 10000052,
+    "nameTextMapHash" : 3024507506,
+    "rank" : 5
+  },
+  "10000053" : {
+    "id" : 10000053,
+    "nameTextMapHash" : 2388785242,
+    "rank" : 4
+  },
+  "10000054" : {
+    "id" : 10000054,
+    "nameTextMapHash" : 3914045794,
+    "rank" : 5
+  },
+  "10000055" : {
+    "id" : 10000055,
+    "nameTextMapHash" : 3400133546,
+    "rank" : 4
+  },
+  "10000056" : {
+    "id" : 10000056,
+    "nameTextMapHash" : 1483922610,
+    "rank" : 4
+  },
+  "10000057" : {
+    "id" : 10000057,
+    "nameTextMapHash" : 3068316954,
+    "rank" : 5
+  },
+  "10000058" : {
+    "id" : 10000058,
+    "nameTextMapHash" : 2713453234,
+    "rank" : 5
+  },
+  "10000059" : {
+    "id" : 10000059,
+    "nameTextMapHash" : 646032090,
+    "rank" : 4
+  },
+  "10000060" : {
+    "id" : 10000060,
+    "nameTextMapHash" : 2848374378,
+    "rank" : 5
+  },
+  "10000061" : {
+    "id" : 10000061,
+    "nameTextMapHash" : 1456643042,
+    "rank" : 4
+  },
+  "10000062" : {
+    "id" : 10000062,
+    "nameTextMapHash" : 3689108098,
+    "rank" : 5
+  },
+  "10000063" : {
+    "id" : 10000063,
+    "nameTextMapHash" : 334242634,
+    "rank" : 5
+  },
+  "10000064" : {
+    "id" : 10000064,
+    "nameTextMapHash" : 655825874,
+    "rank" : 4
+  },
+  "10000065" : {
+    "id" : 10000065,
+    "nameTextMapHash" : 1940821986,
+    "rank" : 4
+  },
+  "10000066" : {
+    "id" : 10000066,
+    "nameTextMapHash" : 1588620330,
+    "rank" : 5
+  },
+  "10000067" : {
+    "id" : 10000067,
+    "nameTextMapHash" : 2948362178,
+    "rank" : 4
+  },
+  "10000068" : {
+    "id" : 10000068,
+    "nameTextMapHash" : 388272194,
+    "rank" : 4
+  },
+  "10000069" : {
+    "id" : 10000069,
+    "nameTextMapHash" : 2506955778,
+    "rank" : 5
+  },
+  "10000070" : {
+    "id" : 10000070,
+    "nameTextMapHash" : 3850149970,
+    "rank" : 5
+  },
+  "10000071" : {
+    "id" : 10000071,
+    "nameTextMapHash" : 1049891906,
+    "rank" : 5
+  },
+  "10000072" : {
+    "id" : 10000072,
+    "nameTextMapHash" : 3092975658,
+    "rank" : 4
+  },
+  "10000073" : {
+    "id" : 10000073,
+    "nameTextMapHash" : 712501082,
+    "rank" : 5
+  },
+  "10000074" : {
+    "id" : 10000074,
+    "nameTextMapHash" : 2889777514,
+    "rank" : 4
+  },
+  "10000075" : {
+    "id" : 10000075,
+    "nameTextMapHash" : 3230559562,
+    "rank" : 5
+  },
+  "10000076" : {
+    "id" : 10000076,
+    "nameTextMapHash" : 2387711994,
+    "rank" : 4
+  },
+  "10000077" : {
+    "id" : 10000077,
+    "nameTextMapHash" : 1732418482,
+    "rank" : 4
+  },
+  "10000078" : {
+    "id" : 10000078,
+    "nameTextMapHash" : 4002157418,
+    "rank" : 5
+  },
+  "10000079" : {
+    "id" : 10000079,
+    "nameTextMapHash" : 2360533154,
+    "rank" : 5
+  },
+  "10000080" : {
+    "id" : 10000080,
+    "nameTextMapHash" : 231911858,
+    "rank" : 4
+  },
+  "10000081" : {
+    "id" : 10000081,
+    "nameTextMapHash" : 466355514,
+    "rank" : 4
+  },
+  "10000082" : {
+    "id" : 10000082,
+    "nameTextMapHash" : 2984815066,
+    "rank" : 5
+  },
+  "10000083" : {
+    "id" : 10000083,
+    "nameTextMapHash" : 1225226258,
+    "rank" : 4
+  },
+  "10000084" : {
+    "id" : 10000084,
+    "nameTextMapHash" : 2472444970,
+    "rank" : 5
+  },
+  "10000085" : {
+    "id" : 10000085,
+    "nameTextMapHash" : 4201964354,
+    "rank" : 4
+  },
+  "10000086" : {
+    "id" : 10000086,
+    "nameTextMapHash" : 370151050,
+    "rank" : 5
+  },
+  "10000087" : {
+    "id" : 10000087,
+    "nameTextMapHash" : 1504902330,
+    "rank" : 5
+  },
+  "10000088" : {
+    "id" : 10000088,
+    "nameTextMapHash" : 3831162130,
+    "rank" : 4
+  },
+  "10000089" : {
+    "id" : 10000089,
+    "nameTextMapHash" : 2180900234,
+    "rank" : 5
+  },
+  "10000090" : {
+    "id" : 10000090,
+    "nameTextMapHash" : 540313842,
+    "rank" : 4
+  },
+  "10000091" : {
+    "id" : 10000091,
+    "nameTextMapHash" : 2877588578,
+    "rank" : 5
+  },
+  "10000092" : {
+    "id" : 10000092,
+    "nameTextMapHash" : 2822240322,
+    "rank" : 4
+  },
+  "10000093" : {
+    "id" : 10000093,
+    "nameTextMapHash" : 3648220770,
+    "rank" : 5
+  },
+  "10000094" : {
+    "id" : 10000094,
+    "nameTextMapHash" : 1944606922,
+    "rank" : 5
+  },
+  "10000095" : {
+    "id" : 10000095,
+    "nameTextMapHash" : 781488962,
+    "rank" : 5
+  },
+  "10000096" : {
+    "id" : 10000096,
+    "nameTextMapHash" : 167199474,
+    "rank" : 5
+  },
+  "10000097" : {
+    "id" : 10000097,
+    "nameTextMapHash" : 1431322346,
+    "rank" : 4
+  },
+  "10000098" : {
+    "id" : 10000098,
+    "nameTextMapHash" : 2745369298,
+    "rank" : 5
+  },
+  "10000099" : {
+    "id" : 10000099,
+    "nameTextMapHash" : 1705786122,
+    "rank" : 5
+  },
+  "11000008" : {
+    "id" : 11000008,
+    "nameTextMapHash" : 3525263658,
+    "rank" : 4
+  },
+  "11000009" : {
+    "id" : 11000009,
+    "nameTextMapHash" : 3719770402,
+    "rank" : 4
+  },
+  "11000010" : {
+    "id" : 11000010,
+    "nameTextMapHash" : 2646377570,
+    "rank" : 4
+  },
+  "11000011" : {
+    "id" : 11000011,
+    "nameTextMapHash" : 3630849682,
+    "rank" : 4
+  },
+  "11000013" : {
+    "id" : 11000013,
+    "nameTextMapHash" : 1904921362,
+    "rank" : 4
+  },
+  "11000017" : {
+    "id" : 11000017,
+    "nameTextMapHash" : 2161552122,
+    "rank" : 4
+  },
+  "11000018" : {
+    "id" : 11000018,
+    "nameTextMapHash" : 281153370,
+    "rank" : 4
+  },
+  "11000019" : {
+    "id" : 11000019,
+    "nameTextMapHash" : 556091050,
+    "rank" : 4
+  },
+  "11000025" : {
+    "id" : 11000025,
+    "nameTextMapHash" : 2454769378,
+    "rank" : 4
+  },
+  "11000026" : {
+    "id" : 11000026,
+    "nameTextMapHash" : 2413150418,
+    "rank" : 4
+  },
+  "11000027" : {
+    "id" : 11000027,
+    "nameTextMapHash" : 2402432058,
+    "rank" : 4
+  },
+  "11000028" : {
+    "id" : 11000028,
+    "nameTextMapHash" : 3413685882,
+    "rank" : 4
+  },
+  "11000030" : {
+    "id" : 11000030,
+    "nameTextMapHash" : 2955554858,
+    "rank" : 4
+  },
+  "11000031" : {
+    "id" : 11000031,
+    "nameTextMapHash" : 2536892626,
+    "rank" : 4
+  },
+  "11000032" : {
+    "id" : 11000032,
+    "nameTextMapHash" : 1807340018,
+    "rank" : 4
+  },
+  "11000033" : {
+    "id" : 11000033,
+    "nameTextMapHash" : 3912257050,
+    "rank" : 4
+  },
+  "11000034" : {
+    "id" : 11000034,
+    "nameTextMapHash" : 934545010,
+    "rank" : 4
+  },
+  "11000035" : {
+    "id" : 11000035,
+    "nameTextMapHash" : 1030006682,
+    "rank" : 4
+  },
+  "11000036" : {
+    "id" : 11000036,
+    "nameTextMapHash" : 2849814274,
+    "rank" : 4
+  },
+  "11000037" : {
+    "id" : 11000037,
+    "nameTextMapHash" : 2151605170,
+    "rank" : 4
+  },
+  "11000038" : {
+    "id" : 11000038,
+    "nameTextMapHash" : 3973360514,
+    "rank" : 4
+  },
+  "11000039" : {
+    "id" : 11000039,
+    "nameTextMapHash" : 1823283130,
+    "rank" : 4
+  },
+  "11000040" : {
+    "id" : 11000040,
+    "nameTextMapHash" : 1811000906,
+    "rank" : 5
+  },
+  "11000041" : {
+    "id" : 11000041,
+    "nameTextMapHash" : 4198235314,
+    "rank" : 4
+  },
+  "11000042" : {
+    "id" : 11000042,
+    "nameTextMapHash" : 1272638962,
+    "rank" : 4
+  },
+  "11000043" : {
+    "id" : 11000043,
+    "nameTextMapHash" : 1786994050,
+    "rank" : 4
+  },
+  "11000044" : {
+    "id" : 11000044,
+    "nameTextMapHash" : 1732288986,
+    "rank" : 4
+  },
+  "11000045" : {
+    "id" : 11000045,
+    "nameTextMapHash" : 1907871458,
+    "rank" : 4
+  }
+}
