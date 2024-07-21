@@ -21,8 +21,15 @@ extension Defaults.Keys {
         default: EnkaGI.EnkaDB(locTag: Locale.langCodeForEnkaAPI)!,
         suite: .enkaSuite
     )
+    public static let queriedEnkaProfiles = Key<[String: EnkaGI.QueryRelated.ProfileRAW]>(
+        "queriedEnkaProfiles",
+        default: [:],
+        suite: .enkaSuite
+    )
 }
 
 extension EnkaGI.EnkaDB: _DefaultsSerializable {}
+
+extension EnkaGI.QueryRelated.ProfileRAW: _DefaultsSerializable {}
 
 #endif
