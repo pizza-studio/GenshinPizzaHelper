@@ -9,27 +9,27 @@ import CoreData
 import Foundation
 import GIPizzaKit
 
-// MARK: - GachaResult_FM
+// MARK: - GachaResultFetched
 
-public struct GachaResult_FM: Codable {
+public struct GachaResultFetched: Codable {
     let retcode: Int
     let message: String
-    let data: GachaPage_FM?
+    let data: GachaPageFetched?
 }
 
-// MARK: - GachaPage_FM
+// MARK: - GachaPageFetched
 
-struct GachaPage_FM: Codable {
+struct GachaPageFetched: Codable {
     let page: String
     let size: String
     let total: String
     let region: String
-    let list: [GachaItem_FM]
+    let list: [GachaItemFetched]
 }
 
-// MARK: - GachaItem_FM
+// MARK: - GachaItemFetched
 
-struct GachaItem_FM: Codable, Identifiable {
+struct GachaItemFetched: Codable, Identifiable {
     let uid: String
     let gachaType: String
     let itemId: String
@@ -42,8 +42,8 @@ struct GachaItem_FM: Codable, Identifiable {
     var id: String
 }
 
-extension GachaResult_FM {
-    func toGachaItemArray() throws -> [GachaItem_FM] {
+extension GachaResultFetched {
+    func toGachaItemArray() throws -> [GachaItemFetched] {
         switch retcode {
         case 0: return data!.list
         case -100: throw GetGachaError.incorrectAuthkey
@@ -55,7 +55,7 @@ extension GachaResult_FM {
     }
 }
 
-extension GachaItem_FM {
+extension GachaItemFetched {
     mutating func editId(_ newId: String) {
         id = newId
     }

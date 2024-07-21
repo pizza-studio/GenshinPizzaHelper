@@ -271,7 +271,7 @@ private struct GetGachaURLByAPIButton: View {
 // MARK: - GachaItemBar
 
 private struct GachaItemBar: View {
-    let item: GachaItem_FM
+    let item: GachaItemFetched
 
     var body: some View {
         VStack(spacing: 1) {
@@ -301,7 +301,7 @@ private struct GachaItemBar: View {
 
 @available(iOS 16.0, *)
 private struct GetGachaChart: View {
-    let items: [GachaItem_FM]
+    let items: [GachaItemFetched]
 
     let data: [GachaTypeDateCount]
 

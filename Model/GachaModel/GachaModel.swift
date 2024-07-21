@@ -25,7 +25,7 @@ extension GachaItemMO {
     }
 }
 
-extension GachaItem_FM {
+extension GachaItemFetched {
     public func toGachaItemMO(context: NSManagedObjectContext) -> GachaItemMO {
         var item = self
         let model = GachaItemMO(context: context)

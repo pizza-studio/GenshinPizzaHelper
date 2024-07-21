@@ -280,9 +280,9 @@ extension GachaItem: ContainGachaItemInfo {
     }
 }
 
-// MARK: - GachaItem_FM + ContainGachaItemInfo
+// MARK: - GachaItemFetched + ContainGachaItemInfo
 
-extension GachaItem_FM: ContainGachaItemInfo {
+extension GachaItemFetched: ContainGachaItemInfo {
     var _rankLevel: GachaItem.RankType {
         .init(rawValue: Int(rankType)!)!
     }

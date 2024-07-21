@@ -117,7 +117,7 @@ extension MihoyoAPI {
             let deadline: DispatchTime = .now() + randomTime
             do {
                 let result = try decoder.decode(
-                    GachaResult_FM.self,
+                    GachaResultFetched.self,
                     from: data!
                 )
                 let items = try result.toGachaItemArray()

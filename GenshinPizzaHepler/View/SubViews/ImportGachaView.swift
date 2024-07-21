@@ -155,7 +155,7 @@ struct ImportGachaView: View {
                     let langIndex = head.firstIndex(where: { $0 == "lang" })
                     let rankTypeIndex = head.firstIndex(where: { $0 == "rank_type" })
                     let countIndex = head.firstIndex(where: { $0 == "count" })
-                    let items: [GachaItem_FM] = rows.compactMap { cells in
+                    let items: [GachaItemFetched] = rows.compactMap { cells in
                         guard let uid = cells[uidIndex],
                               let gachaType = cells[gachaTypeIndex],
                               let itemType = cells[itemTypeIndex],

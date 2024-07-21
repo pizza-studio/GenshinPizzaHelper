@@ -257,7 +257,7 @@ public class GachaFetchProgressObserver: ObservableObject {
     @Published
     var gachaType: MihoyoGachaType = .standard
     @Published
-    var currentItems: [GachaItem_FM] = []
+    var currentItems: [GachaItemFetched] = []
     @Published
     var newItemCount: Int = 0
     @Published
@@ -284,7 +284,7 @@ public class GachaFetchProgressObserver: ObservableObject {
         }
     }
 
-    func got(_ items: [GachaItem_FM]) {
+    func got(_ items: [GachaItemFetched]) {
         cancellables.append(
             Publishers.Zip(
                 items.publisher,
@@ -307,7 +307,7 @@ public class GachaFetchProgressObserver: ObservableObject {
 //        self.currentItems.append(contentsOf: items)
     }
 
-    func updateGachaItemCount(item: GachaItem_FM) {
+    func updateGachaItemCount(item: GachaItemFetched) {
         let dateFormatter = DateFormatter.Gregorian()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -317,7 +317,7 @@ public class GachaFetchProgressObserver: ObservableObject {
             ($0.date == date) && ($0.type == type)
         }
         if filteredGTDC.isEmpty {
-            let filteredFM: [GachaItem_FM] = currentItems.filter {
+            let filteredFM: [GachaItemFetched] = currentItems.filter {
                 ($0.time <= date) && (GachaType.from($0.gachaType) == type)
             }
             let count = GachaTypeDateCount(

@@ -113,7 +113,7 @@ public class GachaModelManager {
     }
 
     func addRecordItems(
-        _ items: [GachaItem_FM],
+        _ items: [GachaItemFetched],
         isNew: @escaping ((Bool) -> ())
     ) {
         container.viewContext.perform { [self] in
@@ -124,7 +124,7 @@ public class GachaModelManager {
         }
     }
 
-    func addRecordItem(_ item: GachaItem_FM, isNew: @escaping ((Bool) -> ())) {
+    func addRecordItem(_ item: GachaItemFetched, isNew: @escaping ((Bool) -> ())) {
         if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
             _ = item.toGachaItemMO(context: container.viewContext)
             isNew(true)
@@ -162,7 +162,7 @@ public class GachaModelManager {
     }
 
     func addRecordItems(
-        _ items: [GachaItem_FM]
+        _ items: [GachaItemFetched]
     )
         -> Int {
         let newCount = items.enumerated().map { index, item in
@@ -176,7 +176,7 @@ public class GachaModelManager {
         return newCount
     }
 
-    func addRecordItem(_ item: GachaItem_FM) -> Bool {
+    func addRecordItem(_ item: GachaItemFetched) -> Bool {
         if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
             _ = item.toGachaItemMO(context: container.viewContext)
             return true
