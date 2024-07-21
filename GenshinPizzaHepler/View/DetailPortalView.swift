@@ -864,6 +864,8 @@ private struct PlayerDetailSection: View {
     var currentShowCase: some View {
         if let playerDetail = vmDPV.currentEnkaProfile {
             DataFetchedView(playerDetail: playerDetail, account: account)
+        } else if case let .succeed((playerDetail, _)) = enkaProfileStatus {
+            DataFetchedView(playerDetail: playerDetail, account: account)
         }
     }
 
