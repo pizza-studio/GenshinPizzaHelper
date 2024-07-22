@@ -33,7 +33,7 @@ jobs:
                 base: master
                 title: "Update GachaMetaDB Assets"
                 body: |
-                  This PR updates the EnkaDB Asset JSON files.
+                  This PR updates the Gacha Meta DB JSON files.
                 delete-branch: true
                 assignees: ShikiSuen
                 reviewers: CanglongCl
