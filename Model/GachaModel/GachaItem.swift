@@ -189,7 +189,7 @@ extension MihoyoGachaType {
 // MARK: - GachaType
 
 /// 祈愿池记录，不区分两个角色池，用于UI
-public enum GachaType: Int {
+public enum GachaType: Int, CaseIterable, Sendable, Hashable {
     case newPlayer = 100
     case standard = 200
     case character = 301
@@ -236,7 +236,7 @@ extension GachaType {
         }
     }
 
-    static func allAvaliableGachaType() -> [Self] {
+    static var allAvailableCases: [Self] {
         [.character, .weapon, .standard, .chronicled]
     }
 

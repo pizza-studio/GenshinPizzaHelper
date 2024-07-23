@@ -36,34 +36,17 @@ struct GachaView: View {
     var body: some View {
         mainView()
             .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Menu {
-                        ForEach(
-                            GachaType
-                                .allAvaliableGachaType()
-                        ) { gachaType in
-                            Button(gachaType.localizedDescription()) {
-                                withAnimation {
-                                    gachaViewModel.filter
-                                        .gachaType = gachaType
-                                }
-                            }
-                        }
-                    } label: {
-                        Text(
-                            gachaViewModel.filter.gachaType
-                                .localizedDescription()
-                        )
-                    }
-                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     GetGachaNavigationMenu(
                         showByAPI: mainlandChinaAccountDetected,
                         isHelpSheetShow: $isHelpSheetShow
                     )
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    ExportGachaView(compactLayout: true, uid: gachaViewModel.filter.uid)
+
+                if !gachaViewModel.allAvaliableAccountUID.isEmpty {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        ExportGachaView(compactLayout: true, uid: gachaViewModel.filter.uid)
+                    }
                 }
 
                 ToolbarItem(placement: .principal) {
@@ -109,49 +92,50 @@ struct GachaView: View {
     func mainView() -> some View {
         List {
             if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
-                if #available(iOS 16.0, *) {
-                    Section {
-                        VStack(alignment: .leading) {
-                            GachaChart(
-                                items: gachaViewModel
-                                    .filteredGachaItemsWithCount
-                            )
-                            HelpTextForScrollingOnDesktopComputer(.horizontal)
-                        }
-                        NavigationLink {
-                            GachaChartView()
-                                .navigationBarTitleDisplayMode(.inline)
-                                .environmentObject(gachaViewModel)
+                Section {
+                    LabeledContent("gacha.account_detail.gacha_type") {
+                        Menu {
+                            ForEach(
+                                GachaType.allAvailableCases
+                            ) { gachaType in
+                                Button(gachaType.localizedDescription()) {
+                                    withAnimation {
+                                        gachaViewModel.filter
+                                            .gachaType = gachaType
+                                    }
+                                }
+                            }
                         } label: {
-                            Label("app.gacha.chart.more.button", systemSymbol: .chartBarXaxis)
+                            Text(
+                                gachaViewModel.filter.gachaType
+                                    .localizedDescription()
+                            )
                         }
+                    }
+                }
+                Section {
+                    VStack(alignment: .leading) {
+                        GachaChart(
+                            items: gachaViewModel
+                                .filteredGachaItemsWithCount
+                        )
+                        HelpTextForScrollingOnDesktopComputer(.horizontal)
+                    }
+                    NavigationLink {
+                        GachaChartView()
+                            .navigationBarTitleDisplayMode(.inline)
+                            .environmentObject(gachaViewModel)
+                    } label: {
+                        Label("app.gacha.chart.more.button", systemSymbol: .chartBarXaxis)
                     }
                 }
                 GachaStatisticSectionView()
             } else {
                 Text("gacha.records.noQuintapleStarRecordsFound").foregroundColor(.gray)
             }
-            if #available(iOS 16.0, *) {
-                Section {
-                    NavigationLink("app.gacha.details.button") {
-                        GachaDetailView()
-                    }
-                }
-            } else {
-                Section {
-                    ForEach(
-                        gachaViewModel.filteredGachaItemsWithCount,
-                        id: \.0.id
-                    ) { item, count in
-                        VStack(spacing: 1) {
-                            GachaItemBar(
-                                item: item,
-                                count: count,
-                                showTime: showTime,
-                                showingType: gachaViewModel.filter.rank
-                            )
-                        }
-                    }
+            Section {
+                NavigationLink("app.gacha.details.button") {
+                    GachaDetailView()
                 }
             }
         }
@@ -393,52 +377,6 @@ extension GachaStatisticSectionView.Rank {
             }
         default:
             return .one
-        }
-    }
-}
-
-// MARK: - FilterEditor
-
-private struct FilterEditor: View {
-    @Binding
-    var filter: GachaFilter
-    @Binding
-    var showTime: Bool
-
-    var body: some View {
-        Menu {
-            ForEach(GachaType.allAvaliableGachaType()) { gachaType in
-                Button(gachaType.localizedDescription()) {
-                    withAnimation {
-                        filter.gachaType = gachaType
-                    }
-                }
-            }
-        } label: {
-            Text(filter.gachaType.localizedDescription())
-        }
-        Spacer()
-        Button {
-            withAnimation {
-                showTime.toggle()
-            }
-        } label: {
-            Image(
-                systemName: showTime ? "calendar.circle.fill" :
-                    "calendar.circle"
-            )
-        }
-        Spacer()
-        Menu {
-            ForEach(GachaFilter.Rank.allCases) { rank in
-                Button(rank.description) {
-                    withAnimation {
-                        filter.rank = rank
-                    }
-                }
-            }
-        } label: {
-            Text(filter.rank.description)
         }
     }
 }
@@ -803,6 +741,43 @@ private struct GachaDetailView: View {
 
     var body: some View {
         List {
+            Section {
+                LabeledContent("gacha.account_detail.detail.filter.gacha_type") {
+                    Menu {
+                        ForEach(GachaType.allAvailableCases) { gachaType in
+                            Button(gachaType.localizedDescription()) {
+                                withAnimation {
+                                    gachaViewModel.filter.gachaType = gachaType
+                                }
+                            }
+                        }
+                    } label: {
+                        Text(gachaViewModel.filter.gachaType.localizedDescription())
+                    }
+                }
+
+                LabeledContent("gacha.account_detail.detail.filter.rank") {
+                    Menu {
+                        ForEach(GachaFilter.Rank.allCases) { rank in
+                            Button(rank.description) {
+                                withAnimation {
+                                    gachaViewModel.filter.rank = rank
+                                }
+                            }
+                        }
+                    } label: {
+                        Text(gachaViewModel.filter.rank.description)
+                    }
+                }
+
+                Toggle(
+                    "gacha.account_detail.detail.filter.display_option.show_time",
+                    isOn: $showTime.animation()
+                )
+            } header: {
+                Text("gacha.account_detail.detail.filter.display_option.title")
+            }
+
             ForEach(
                 gachaViewModel.filteredGachaItemsWithCount,
                 id: \.0.id
@@ -819,12 +794,6 @@ private struct GachaDetailView: View {
         }
         .navigationTitle("抽取记录")
         .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
-                FilterEditor(
-                    filter: $gachaViewModel.filter,
-                    showTime: $showTime
-                )
-            }
             ToolbarItem(placement: .principal) {
                 Menu {
                     ForEach(
