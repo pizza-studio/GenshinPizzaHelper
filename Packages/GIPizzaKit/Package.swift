@@ -39,7 +39,6 @@ let package = Package(
                 .process("Enka/Assets/characters.json"),
                 .process("Enka/Assets/loc.json"),
                 .process("Enka/Assets/pfps.json"),
-                .process("Enka/Assets/GachaMetaDB.json"),
             ]
         ),
         .testTarget(
