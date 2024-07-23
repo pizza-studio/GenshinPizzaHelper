@@ -158,21 +158,21 @@ struct GachaSetting: View {
             }
         })
         .alert(
-            "gacha.prompt.dataRemoval",
+            "gacha.prompt.dataRemoval".localized,
             isPresented: $isDeleteConfirmAlertShow,
             presenting: alert,
             actions: deleteConfirmAlertButton,
             message: deleteConfirmAlertMessage
         )
         .alert(
-            "gacha.notice.succeededInRemovingData",
+            "gacha.notice.succeededInRemovingData".localized,
             isPresented: $isDeleteCompletedAlertShow,
             presenting: alert,
             actions: defaultDismissButton,
             message: deleteCompletedAlertMessage
         )
         .alert(
-            "gacha.notice.succeededInDeduplicatingData",
+            "gacha.notice.succeededInDeduplicatingData".localized,
             isPresented: $isDuplicatedCleanCompletedAlertShow,
             presenting: alert,
             actions: defaultDismissButton,
@@ -209,7 +209,7 @@ struct GachaSetting: View {
     func deleteCompletedAlertMessage(_ thisAlert: AlertType) -> some View {
         switch thisAlert {
         case let .deleteCompleted(count):
-            let deleteContent = String(format: "app.gacha.data.clean.complete.info:%lld", count).localized
+            let deleteContent = String(format: "app.gacha.data.clean.complete.info:%lld".localized, count)
             Text(deleteContent)
         default:
             EmptyView()

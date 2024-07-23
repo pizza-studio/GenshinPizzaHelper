@@ -400,6 +400,8 @@ private struct HelpSheet: View {
                     }
                 } footer: {
                     Text("app.gacha.explainBetaUIGF")
+                        + Text(verbatim: "\n\n")
+                        + Text("app.gacha.uigf.affLink.[UIGF](https://uigf.org/)")
                 }
             }
             .navigationTitle("sys.help")
@@ -563,7 +565,8 @@ private struct ImportView: View {
     var body: some View {
         StatusView(status: $status) {
             Section {
-                PopFileButton(title: "app.gacha.import.uigf.json", allowedContentTypes: [.json]) { result in
+                let titleUIGF = "app.gacha.import.uigf.json".localized + " (Beta)"
+                PopFileButton(title: titleUIGF, allowedContentTypes: [.json]) { result in
                     switch result {
                     case let .success(url):
                         alert = .readyToStartJson(url: url, obsoleteFormat: false)
@@ -573,6 +576,8 @@ private struct ImportView: View {
                 }
             } footer: {
                 Text("app.gacha.explainBetaUIGF")
+                    + Text(verbatim: "\n\n")
+                    + Text("app.gacha.uigf.affLink.[UIGF](https://uigf.org/)")
                     + Text(verbatim: "\n\n")
                     + Text("app.gacha.import.uigf.verified.note.1")
             }
