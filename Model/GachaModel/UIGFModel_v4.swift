@@ -427,7 +427,9 @@ extension UIGFGachaItem {
         ).date(from: time)
 
         model.time = timeTyped
-        model.name = name
+        model.name = GachaMetaDBExposed.shared.mainDB.plainQueryForNames(
+            itemID: itemID, langID: GachaLanguageCode.zhHans.rawValue
+        ) ?? name
         model.lang = GachaLanguageCode.zhHans.rawValue
         if let itemType = itemType {
             model.itemType = GachaItemType(rawString: itemType).cnRaw
@@ -455,9 +457,6 @@ extension UIGFGachaItem {
 }
 
 extension GachaItemMO {
-    // Lazy 变数，仅会在用到的时候载入。
-    private static let enkaCNDB = EnkaGI.EnkaDB(locTag: "zh-cn")!
-
     func toUIGFGachaItem(_ languageCode: GachaLanguageCode) -> UIGFGachaItem {
         let timeZoneDelta: Int = GachaItem.getServerTimeZoneDelta(uid!.description)
         var theItemID = itemId ?? ""
@@ -465,11 +464,9 @@ extension GachaItemMO {
            let newItemID = GachaMetaDBExposed.shared.reverseQuery(for: name!) {
             theItemID = newItemID.description
         }
-        let newName = Self.enkaCNDB.queryLocalizedNameForChar(
-            id: theItemID, officialNameOnly: true
-        ) {
-            self.name!
-        }
+        let newName = GachaMetaDBExposed.shared.mainDB.plainQueryForNames(
+            itemID: theItemID, langID: GachaLanguageCode.zhHans.rawValue
+        ) ?? name!
         let gachaTypeNew = UIGFGachaItem.GachaTypeGI(
             rawValue: gachaType.description
         )!
