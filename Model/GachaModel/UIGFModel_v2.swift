@@ -49,12 +49,21 @@ struct UIGFv2: Decodable {
                 String.self,
                 forKey: .uigfVersion
             )
+            self.regionTimeZone = try container.decodeIfPresent(
+                Int.self,
+                forKey: .regionTimeZone
+            )
         }
 
         // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
-            case uid, lang, exportTime, exportApp, exportAppVersion, uigfVersion
+            case uid, lang
+            case exportTime = "export_time"
+            case exportApp = "export_app"
+            case exportAppVersion = "export_app_version"
+            case uigfVersion = "uigf_version"
+            case regionTimeZone = "region_time_zone"
         }
 
         let uid: String
@@ -64,6 +73,7 @@ struct UIGFv2: Decodable {
         let exportApp: String?
         let exportAppVersion: String?
         let uigfVersion: String?
+        let regionTimeZone: Int?
     }
 
     let info: Info
@@ -158,7 +168,7 @@ extension UIGFv2 {
         var newInfo = UIGFv4.ProfileGI(
             lang: info.lang,
             list: [],
-            timezone: GachaItem.getServerTimeZoneDelta(info.uid),
+            timezone: info.regionTimeZone ?? GachaItem.getServerTimeZoneDelta(info.uid),
             uid: info.uid
         )
 
