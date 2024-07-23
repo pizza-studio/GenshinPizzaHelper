@@ -177,33 +177,36 @@ extension UIGFv4 {
 
             public init(from decoder: any Decoder) throws {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
+                var error: Error?
 
                 self.count = try container.decodeIfPresent(String.self, forKey: .count)
-                if Int(count ?? "") == nil { throw UIGFv4.makeDecodingError(CodingKeys.count) }
+                if Int(count ?? "") == nil { error = UIGFv4.makeDecodingError(CodingKeys.count) }
 
                 self.gachaType = try container.decode(GachaTypeGI.self, forKey: .gachaType)
 
                 self.id = try container.decode(String.self, forKey: .id)
-                if Int(id) == nil { throw UIGFv4.makeDecodingError(CodingKeys.id) }
+                if Int(id) == nil { error = UIGFv4.makeDecodingError(CodingKeys.id) }
 
                 self.itemID = try container.decode(String.self, forKey: .itemID)
-                if Int(itemID) == nil { throw UIGFv4.makeDecodingError(CodingKeys.itemID) }
+                if Int(itemID) == nil { error = UIGFv4.makeDecodingError(CodingKeys.itemID) }
 
                 self.itemType = try container.decodeIfPresent(String.self, forKey: .itemType)
-                if itemType?.isEmpty ?? false { throw UIGFv4.makeDecodingError(CodingKeys.itemType) }
+                if itemType?.isEmpty ?? false { error = UIGFv4.makeDecodingError(CodingKeys.itemType) }
 
                 self.name = try container.decodeIfPresent(String.self, forKey: .name)
-                if name?.isEmpty ?? false { throw UIGFv4.makeDecodingError(CodingKeys.name) }
+                if name?.isEmpty ?? false { error = UIGFv4.makeDecodingError(CodingKeys.name) }
 
                 self.rankType = try container.decodeIfPresent(String.self, forKey: .rankType)
-                if Int(rankType ?? "") == nil { throw UIGFv4.makeDecodingError(CodingKeys.rankType) }
+                if Int(rankType ?? "") == nil { error = UIGFv4.makeDecodingError(CodingKeys.rankType) }
 
                 self.time = try container.decode(String.self, forKey: .time)
                 if DateFormatter.forUIGFEntry(timeZoneDelta: 0).date(from: time) == nil {
-                    throw UIGFv4.makeDecodingError(CodingKeys.time)
+                    error = UIGFv4.makeDecodingError(CodingKeys.time)
                 }
 
                 self.uigfGachaType = try container.decode(UIGFGachaTypeGI.self, forKey: .uigfGachaType)
+
+                if let error = error { throw error }
             }
 
             // MARK: Public
