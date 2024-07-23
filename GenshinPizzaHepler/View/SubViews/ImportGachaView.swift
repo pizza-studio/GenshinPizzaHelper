@@ -30,11 +30,7 @@ struct ImportGachaView: View {
 
     var body: some View {
         Group {
-            if #available(iOS 16, *) {
-                ImportView(status: $status, alert: $alert)
-            } else {
-                ImportViewIOS15(status: $status, alert: $alert)
-            }
+            ImportView(status: $status, alert: $alert)
         }
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -68,8 +64,8 @@ struct ImportGachaView: View {
             actions: { thisAlert in
                 Button("sys.start", role: .destructive, action: {
                     switch thisAlert {
-                    case let .readyToStartJson(url: url):
-                        processJson(url: url)
+                    case let .readyToStartJson(url: url, obsoleteFormat: obsoleteFormat):
+                        processJson(url: url, obsoleteFormat: obsoleteFormat)
                     case let .readyToStartXlsx(url: url):
                         processXlsx(url: url)
                     }
@@ -83,7 +79,7 @@ struct ImportGachaView: View {
         )
     }
 
-    func processJson(url: URL) {
+    func processJson(url: URL, obsoleteFormat: Bool) {
         DispatchQueue.global(qos: .userInteractive).async {
             status = .reading
         }
@@ -95,15 +91,17 @@ struct ImportGachaView: View {
                         .keyDecodingStrategy =
                         .convertFromSnakeCase
                     let data: Data = try Data(contentsOf: url)
-                    let uigfModel: UIGFv4 = try decoder
-                        .decode(
-                            UIGFv4.self,
-                            from: data
+                    let uigfModel: UIGFv4
+                    if !obsoleteFormat {
+                        uigfModel = try decoder.decode(UIGFv4.self, from: data)
+                    } else {
+                        let uigfObsolete = try decoder.decode(UIGFv2.self, from: data)
+                        uigfModel = .init(
+                            info: .init(),
+                            giProfiles: [uigfObsolete.upgradeTo4thGenerationProfile()]
                         )
-                    let result = gachaViewModel
-                        .importGachaFromUIGFJson(
-                            uigfJson: uigfModel
-                        )
+                    }
+                    let result = gachaViewModel.importGachaFromUIGFJson(uigfJson: uigfModel)
                     status = .succeed(ImportSucceedInfo(
                         uid: result.uid,
                         totalCount: result.totalCount,
@@ -279,7 +277,7 @@ struct ImportGachaView: View {
 // MARK: - AlertType
 
 private enum AlertType: Identifiable {
-    case readyToStartJson(url: URL)
+    case readyToStartJson(url: URL, obsoleteFormat: Bool)
     case readyToStartXlsx(url: URL)
 
     // MARK: Internal
@@ -401,21 +399,7 @@ private struct HelpSheet: View {
                         }
                     }
                 } footer: {
-                    Text("app.gacha.import.uigf.verified.note.2")
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                Section(header: Text("app.gacha.import.uigf.verified.json").textCase(.none)) {
-                    Link("提瓦特小助手", destination: URL(string: "https://api.lelaer.com/ys/uploadGacha.php")!)
-                    Link(
-                        "genshin-wish-export",
-                        destination: URL(string: "https://github.com/biuuu/genshin-wish-export")!
-                    )
-                    Link("寻空", destination: URL(string: "https://xunkong.cc")!)
-                    Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
-                }
-                Section(header: Text("app.gacha.import.uigf.verified.xlsx").textCase(.none)) {
-                    Link("寻空", destination: URL(string: "https://xunkong.cc")!)
-                    Link("Yunzai-Bot", destination: URL(string: "https://gitee.com/Le-niao/Yunzai-Bot")!)
+                    Text("app.gacha.explainBetaUIGF")
                 }
             }
             .navigationTitle("sys.help")
@@ -582,12 +566,26 @@ private struct ImportView: View {
                 PopFileButton(title: "app.gacha.import.uigf.json", allowedContentTypes: [.json]) { result in
                     switch result {
                     case let .success(url):
-                        alert = .readyToStartJson(url: url)
+                        alert = .readyToStartJson(url: url, obsoleteFormat: false)
                     case let .failure(error):
                         status = .failure(error.localizedDescription)
                     }
                 }
-                PopFileButton(title: "app.gacha.import.uigf.xlsx", allowedContentTypes: [.xlsx]) { result in
+            } footer: {
+                Text("app.gacha.explainBetaUIGF")
+                    + Text(verbatim: "\n\n")
+                    + Text("app.gacha.import.uigf.verified.note.1")
+            }
+            Section {
+                PopFileButton(title: "app.gacha.import.gigf.json", allowedContentTypes: [.json]) { result in
+                    switch result {
+                    case let .success(url):
+                        alert = .readyToStartJson(url: url, obsoleteFormat: true)
+                    case let .failure(error):
+                        status = .failure(error.localizedDescription)
+                    }
+                }
+                PopFileButton(title: "app.gacha.import.gigf.xlsx", allowedContentTypes: [.xlsx]) { result in
                     switch result {
                     case let .success(url):
                         alert = .readyToStartXlsx(url: url)
@@ -595,55 +593,10 @@ private struct ImportView: View {
                         status = .failure(error.localizedDescription)
                     }
                 }
+            } header: {
+                Text("app.gacha.import.uigf.deprecatedFormats.header")
             } footer: {
-                Text(
-                    "app.gacha.import.uigf.verified.note.1"
-                )
-            }
-        }
-    }
-}
-
-// MARK: - ImportViewIOS15
-
-private struct ImportViewIOS15: View {
-    @Binding
-    var status: ImportStatus
-    @Binding
-    var alert: AlertType?
-    @State
-    var isImportSheetShow: Bool = false
-
-    var body: some View {
-        StatusView(status: $status) {
-            Section {
-                Button("app.gacha.import.uigf") {
-                    isImportSheetShow.toggle()
-                }
-            } footer: {
-                Text(
-                    "app.gacha.import.uigf.verified.note.1"
-                )
-                .fixedSize(horizontal: false, vertical: true)
-            }
-        }
-        .fileImporter(isPresented: $isImportSheetShow, allowedContentTypes: [.xlsx, .json]) { result in
-            do {
-                let url = try result.get()
-                if let type = UTType(filenameExtension: url.pathExtension) {
-                    switch type {
-                    case .xlsx:
-                        alert = .readyToStartXlsx(url: url)
-                    case .json:
-                        alert = .readyToStartJson(url: url)
-                    default:
-                        status = .failure("\(url.pathExtension) is not supported")
-                    }
-                } else {
-                    status = .failure("\(url.pathExtension) is not supported")
-                }
-            } catch {
-                status = .failure(error.localizedDescription)
+                Text("app.gacha.import.uigf.deprecatedFormats.whySupported")
             }
         }
     }

@@ -102,6 +102,8 @@ struct ExportGachaView: View {
                 .disabled(true)
             } footer: {
                 Text("gacha.uigf.notice.pendingMultilingualSupport")
+                    + Text(verbatim: "\n\n")
+                    + Text("app.gacha.explainBetaUIGF")
             }
         }
     }

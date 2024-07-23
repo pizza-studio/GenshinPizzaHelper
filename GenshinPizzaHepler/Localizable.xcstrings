@@ -10768,6 +10768,34 @@
         }
       }
     },
+    "app.gacha.explainBetaUIGF" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGFv4, established by the UIGF committee, is a coalescent exchangeable format for gacha records of many games produced by Cognosphere and MiHoYo. The current implementation regarding the support of UIGFv4 in this app is only for Genshin Impact and is considered final. However, its support for ZZZ is still pending review for possible amendment, hence the beta tags annotated in this app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGF委員会によって確立されたUIGFv4フォーマット規格は、CognosphereとMiHoYoによって制作された多くのゲームのガチャレコードのために作った統合交換可能なフォーマットです。弊アプリでのUIGFv4のサポートに関する現在の実作は「原神」のみのためであり、最終実作と見なされています。ただし、UIGFv4の「ZZZ（ゼンレスゾーンゼロ）」に対するサポートは、修正の可能性についてまだレビューが保留中であるため、弊アプリの数箇所では「UIGFv4」その文字に Beta タグ追記されています。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGFv4 是由 UIGF 委员会制定的聚合型资讯交换格式，用于多款由 Cognosphere 和米哈遊制作发行的的电玩们的抽卡记录的交换。敝 App 中有关 UIGFv4 支援的目前实作仅适用于《原神》，并被视为最终实作。然而，UIGFv4 对《绝区零》的格式规定部分仍在检讨中、可能会有其他修改。出于该原因，敝 App 的部分位置会对 UIGFv4 追加 beta 注记。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠︎ UIGFv4 是由 UIGF 委員會制定的聚合型資訊交換格式，用於多款由 Cognosphere 和米哈遊製作發行的的電玩們的抽卡記錄的交換。敝 App 中有關 UIGFv4 支援的目前實作僅適用於《原神》，並被視為最終實作。然而，UIGFv4 對《絕區零》的格式規定部分仍在檢討中、可能會有其他修改。出於該原因，敝 App 的部分位置會對 UIGFv4 追加 beta 註記。"
+          }
+        }
+      }
+    },
     "app.gacha.export.title" : {
       "comment" : "gacha data management",
       "localizations" : {
@@ -13017,6 +13045,136 @@
         }
       }
     },
+    "app.gacha.import.gigf.json" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import UIGFv2 JSON wish records"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import UIGFv2 JSON wish records"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer les enregistrements de vœux au format JSON UIGFv2"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import UIGFv2 JSON wish records"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UIGFv2（JSON）フォーマットの祈願履歴を読み込む"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import UIGFv2 JSON wish records"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импортировать UIGFv2 JSON записи молитв"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhập bản ghi UIGFv2 JSON"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入UIGFv2 JSON格式祈愿记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯入UIGFv2 JSON格式祈願記錄"
+          }
+        }
+      }
+    },
+    "app.gacha.import.gigf.xlsx" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import UIGFv2 XLSX wish records"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import UIGFv2 XLSX wish records"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importer les enregistrements de vœux au format XLSX UIGFv2"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import UIGFv2 XLSX wish records"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UIGFv2（XLSX）フォーマットの祈願履歴を読み込む"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import UIGFv2 XLSX wish records"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импортировать UIGFv2 XLSX записи молитв"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhập bản ghi UIGFv2 XLSX"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入UIGFv2 XLSX格式祈愿记录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯入UIGFv2 XLSX格式祈願記錄"
+          }
+        }
+      }
+    },
     "app.gacha.import.help" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14239,72 +14397,129 @@
         }
       }
     },
+    "app.gacha.import.uigf.deprecatedFormats.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obsolete Standards"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "廃止済みの規格"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已被淘汰的规格"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已被淘汰的規格"
+          }
+        }
+      }
+    },
+    "app.gacha.import.uigf.deprecatedFormats.whySupported" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The feature of importing obsolete formats are only considered for importing old backup files generated by this app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "廃止された規格に準じたファイルをインポートする機能は、「このアプリによって生成された」古いバックアップ ファイルを読み込むだけのためである。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对已淘汰规格的导入支援仅为满足用户导入既有备份资料之目的。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "對已淘汰規格的匯入支援僅為滿足使用者匯入既有備份資料之目的。"
+          }
+        }
+      }
+    },
     "app.gacha.import.uigf.json" : {
       "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import UIGF JSON wish records"
+            "value" : "Import UIGFv4 JSON wish records"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import UIGF JSON wish records"
+            "value" : "Import UIGFv4 JSON wish records"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importer les enregistrements de vœux au format JSON UIGF"
+            "value" : "Importer les enregistrements de vœux au format JSON UIGFv4"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import UIGF JSON wish records"
+            "value" : "Import UIGFv4 JSON wish records"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UIGF（JSON）フォーマットの祈願履歴を読み込む"
+            "value" : "UIGFv4（JSON）フォーマットの祈願履歴を読み込む"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import UIGF JSON wish records"
+            "value" : "Import UIGFv4 JSON wish records"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Импортировать UIGF JSON записи молитв"
+            "value" : "Импортировать UIGFv4 JSON записи молитв"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập bản ghi UIGF JSON"
+            "value" : "Nhập bản ghi UIGFv4 JSON"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "导入UIGF JSON格式祈愿记录"
+            "value" : "导入UIGFv4 JSON格式祈愿记录"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "匯入UIGF JSON格式祈願記錄"
+            "value" : "匯入UIGFv4 JSON格式祈願記錄"
           }
         }
       }
     },
     "app.gacha.import.uigf.verified.json" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -14373,130 +14588,67 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We support all export files that strictly comply with the UIGF standard. For a list of supported apps and corresponding export formats, please click on the top right corner to open help page."
+            "value" : "We support all export files that strictly comply with the UIGFv4 standard. For a list of supported apps and corresponding export formats, please click on the top right corner to open help page."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sinusuportahan namin ang lahat ng mga export files na mahigpit na sumunod sa pamantayan ng UIGF. Para sa isang listahan ng mga suportadong apps at kaukulang mga format ng pag-export, mangyaring mag-click sa kanang tuktok na sulok upang buksan ang pahina ng tulong."
+            "value" : "Sinusuportahan namin ang lahat ng mga export files na mahigpit na sumunod sa pamantayan ng UIGFv4. Para sa isang listahan ng mga suportadong apps at kaukulang mga format ng pag-export, mangyaring mag-click sa kanang tuktok na sulok upang buksan ang pahina ng tulong."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nous prenons en charge tous les fichiers d'exportation qui respectent strictement la norme UIGF. Pour une liste des applications prises en charge et des formats d'exportation correspondants, veuillez cliquer sur le coin supérieur droit pour ouvrir la page d'aide."
+            "value" : "Nous prenons en charge tous les fichiers d'exportation qui respectent strictement la norme UIGFv4. Pour une liste des applications prises en charge et des formats d'exportation correspondants, veuillez cliquer sur le coin supérieur droit pour ouvrir la page d'aide."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We support all export files that strictly comply with the UIGF standard. For a list of supported apps and corresponding export formats, please click on the top right corner to open help page."
+            "value" : "We support all export files that strictly comply with the UIGFv4 standard. For a list of supported apps and corresponding export formats, please click on the top right corner to open help page."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UIGFフォーマット標準を厳しくしたアプリ・サービスから書き出したそのファイルデータ限り、ここで読み込めます。その標準をサポートしたアプリ・サービスとそれに応ずるフォーマットについての情報は、画面の右上をタップしてから参考説明ページに記されております。"
+            "value" : "UIGFv4 フォーマット規格を厳しくしたアプリ・サービスから書き出したそのファイルデータ限り、ここで読み込めます。その標準をサポートしたアプリ・サービスとそれに応ずるフォーマットについての情報は、画面の右上をタップしてから参考説明ページに記されております。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We support all export files that strictly comply with the UIGF standard. For a list of supported apps and corresponding export formats, please click on the top right corner to open help page."
+            "value" : "We support all export files that strictly comply with the UIGFv4 standard. For a list of supported apps and corresponding export formats, please click on the top right corner to open help page."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Мы поддерживаем все файлы экспорта, которые строго соответствуют стандарту UIGF. Чтобы просмотреть список поддерживаемых приложений и соответствующих форматов экспорта, нажмите в правом верхнем углу, чтобы открыть страницу справки."
+            "value" : "Мы поддерживаем все файлы экспорта, которые строго соответствуют стандарту UIGFv4. Чтобы просмотреть список поддерживаемых приложений и соответствующих форматов экспорта, нажмите в правом верхнем углу, чтобы открыть страницу справки."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chúng tôi hỗ trợ tất cả các tệp xuất tuân thủ nghiêm ngặt tiêu chuẩn UIGF. Để biết danh sách các ứng dụng được hỗ trợ và các định dạng xuất tương ứng, vui lòng nhấp vào góc trên cùng bên phải để mở trang trợ giúp."
+            "value" : "Chúng tôi hỗ trợ tất cả các tệp xuất tuân thủ nghiêm ngặt tiêu chuẩn UIGFv4. Để biết danh sách các ứng dụng được hỗ trợ và các định dạng xuất tương ứng, vui lòng nhấp vào góc trên cùng bên phải để mở trang trợ giúp."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们支持所有严格遵守UIGF标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。"
+            "value" : "我们支持所有严格遵守 UIGFv4 标准的导出文件。受支持的App及对应导出格式请点击右上角参阅帮助页面。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我們支援所有嚴格遵守UIGF標準的匯出檔案。受支援的App及對應匯出格式請點擊右上角參閱說明頁面。"
-          }
-        }
-      }
-    },
-    "app.gacha.import.uigf.verified.note.2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We support importing all files that comply with the UIGF format, but we have found that some software that claims to support UIGF that do not meet the standard. The following software has been verified to be able to import smoothly into this App."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sinusuportahan namin ang pag-import ng lahat ng mga file na sumunod sa format ng UIGF, ngunit natagpuan namin na ang ilang software na nagsasabing suportahan ang UIGF na hindi nakakatugon sa pamantayan. Ang sumusunod na software ay napatunayan upang ma-import nang maayos sa app na ito."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nous prenons en charge l'importation de tous les fichiers conformes au format UIGF, mais nous avons constaté que certains logiciels qui prétendent prendre en charge UIGF ne respectent pas la norme. Les logiciels suivants ont été vérifiés pour pouvoir être importés sans problème dans cette application."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We support importing all files that comply with the UIGF format, but we have found that some software that claims to support UIGF that do not meet the standard. The following software has been verified to be able to import smoothly into this App."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UIGFフォーマット標準を厳しくしたアプリ・サービスから書き出したそのファイルデータ限り、ここで読み込めます。ですが、一部のアプリ・サービスはそれを宣言したとしても、互換性のないファイルを書き出したことはございます。下記のは「書き出したファイルはここで利用可能」だと検証済みのアプリ・サービス。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We support importing all files that comply with the UIGF format, but we have found that some software that claims to support UIGF that do not meet the standard. The following software has been verified to be able to import smoothly into this App."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мы поддерживаем импорт всех файлов, соответствующих формату UIGF, но обнаружили, что некоторые программы, заявленные как поддерживающие UIGF, не соответствуют этому. Следующее ПО было проверено на возможность беспрепятственного импорта в GIPH."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chúng tôi hỗ trợ nhập tất cả các tệp tuân thủ định dạng UIGF, nhưng chúng tôi đã phát hiện ra rằng một số phần mềm tuyên bố hỗ trợ UIGF không đáp ứng tiêu chuẩn. Phần mềm sau đã được xác minh để có thể nhập trơn tru vào ứng dụng này."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我们支持导入所有符合UIGF格式的文件，但我们仍发现部分宣称已支持UIGF的软件导出的记录不合标准。以下为经验证能够顺利导入本App的软件。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我們支援匯入所有符合UIGF格式的檔案，但我們仍發現部分宣稱已支援UIGF的軟體匯出的記錄不合標準。以下為經驗證能夠順利匯入本App的軟體。"
+            "value" : "我們支援所有嚴格遵守 UIGFv4 標準的匯出檔案。受支援的App及對應匯出格式請點擊右上角參閱說明頁面。"
           }
         }
       }
     },
     "app.gacha.import.uigf.verified.xlsx" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -14556,71 +14708,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "以下程式或平臺的XLSX匯出格式已通過可用性驗證"
-          }
-        }
-      }
-    },
-    "app.gacha.import.uigf.xlsx" : {
-      "extractionState" : "migrated",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Import UIGF XLSX wish records"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Import UIGF XLSX wish records"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importer les enregistrements de vœux au format XLSX UIGF"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Import UIGF XLSX wish records"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UIGF（XLSX）フォーマットの祈願履歴を読み込む"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Import UIGF XLSX wish records"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Импортировать UIGF XLSX записи молитв"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nhập bản ghi UIGF XLSX"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "导入UIGF XLSX格式祈愿记录"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "匯入UIGF XLSX格式祈願記錄"
           }
         }
       }
@@ -27097,6 +27184,7 @@
       }
     },
     "genshin-wish-export" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -44832,6 +44920,7 @@
       }
     },
     "Yunzai-Bot" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -44988,6 +45077,7 @@
       }
     },
     "寻空" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -45128,6 +45218,7 @@
       }
     },
     "提瓦特小助手" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
