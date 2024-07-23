@@ -57,6 +57,37 @@ extension GachaItemType {
             self = .character
         }
     }
+
+    public func translatedRaw(for lang: GachaLanguageCode) -> String {
+        switch (self, lang) {
+        case (.character, .de): return "Figur"
+        case (.character, .enUS): return "Character"
+        case (.character, .es): return "Personaje"
+        case (.character, .fr): return "Personnage"
+        case (.character, .id): return "Karakter"
+        case (.character, .ja): return "キャラクター"
+        case (.character, .ko): return "캐릭터"
+        case (.character, .pt): return "Personagem"
+        case (.character, .ru): return "Персонаж"
+        case (.character, .th): return "ตัวละคร"
+        case (.character, .vi): return "Nhân Vật"
+        case (.character, .zhHans): return "角色"
+        case (.character, .zhHant): return "角色"
+        case (.weapon, .de): return "Waffe"
+        case (.weapon, .enUS): return "Weapons"
+        case (.weapon, .es): return "Arma"
+        case (.weapon, .fr): return "Arme"
+        case (.weapon, .id): return "Senjata"
+        case (.weapon, .ja): return "武器"
+        case (.weapon, .ko): return "무기"
+        case (.weapon, .pt): return "Arma"
+        case (.weapon, .ru): return "Оружие"
+        case (.weapon, .th): return "อาวุธ"
+        case (.weapon, .vi): return "Vũ Khí"
+        case (.weapon, .zhHans): return "武器"
+        case (.weapon, .zhHant): return "武器"
+        }
+    }
 }
 
 extension ContainGachaItemInfo {
