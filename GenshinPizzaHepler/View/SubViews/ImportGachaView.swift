@@ -473,7 +473,7 @@ private struct FailureView: View {
 
     var body: some View {
         Text("app.gacha.import.fail")
-        let errorContent = String(format: "app.gacha.import.errorContent:%@", errorMessage).localized
+        let errorContent = String(format: "app.gacha.import.errorContent:%@".localized, errorMessage)
         Text(errorContent)
         Button("app.gacha.import.retry") {
             status = .pending

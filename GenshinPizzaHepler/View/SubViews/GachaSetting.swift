@@ -242,7 +242,7 @@ struct GachaSetting: View {
             Self.rangeFormatter.string(from: startDate, to: endDate)
         let nameDesc: String = accounts.first(where: { $0.uid! == account! })?
             .name ?? account ?? ""
-        let messageContent = String(format: "app.gacha.data.clean.confirm:%@%@", nameDesc, rangeDesc).localized
+        let messageContent = String(format: "app.gacha.data.clean.confirm:%@%@".localized, nameDesc, rangeDesc)
         Text(messageContent)
     }
 

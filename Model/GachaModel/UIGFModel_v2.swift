@@ -98,9 +98,9 @@ struct GIGFGachaItem: Decodable {
             ))
         }
 
-        self.itemId = try container.decodeIfPresent(
+        self.itemID = try container.decodeIfPresent(
             String.self,
-            forKey: .itemId
+            forKey: .itemID
         ) ?? ""
         self.count = try container
             .decodeIfPresent(String.self, forKey: .count) ?? "1"
@@ -144,12 +144,19 @@ struct GIGFGachaItem: Decodable {
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case gachaType, itemId, count, time, name, itemType, rankType, id,
-             uigfGachaType
+        case gachaType = "gacha_type"
+        case itemID = "item_id"
+        case count
+        case time
+        case name
+        case itemType = "item_type"
+        case rankType = "rank_type"
+        case id
+        case uigfGachaType = "uigf_gacha_type"
     }
 
     var gachaType: UIGFv4.ProfileGI.GachaItemGI.GachaTypeGI
-    var itemId: String
+    var itemID: String
     var count: String
     var time: String
     var name: String
@@ -176,7 +183,7 @@ extension UIGFv2 {
         let revDB = mainDB.generateHotReverseQueryDict(for: info.lang.rawValue) ?? [:]
 
         list.forEach { v2Item in
-            var newItemID = v2Item.itemId
+            var newItemID = v2Item.itemID
             var newName = v2Item.name
             if newItemID.isEmpty {
                 if let newItemIDInt = revDB[v2Item.name] {

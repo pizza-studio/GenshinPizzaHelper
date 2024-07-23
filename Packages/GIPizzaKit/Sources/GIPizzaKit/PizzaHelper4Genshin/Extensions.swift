@@ -11,11 +11,11 @@ import Foundation
 
 extension String {
     public var localized: String {
-        String(format: NSLocalizedString(self, comment: ""))
+        NSLocalizedString(self, comment: "")
     }
 
     public var spmLocalized: String {
-        String(format: NSLocalizedString(self, bundle: Bundle.module, comment: ""))
+        NSLocalizedString(self, bundle: Bundle.module, comment: "")
     }
 }
 

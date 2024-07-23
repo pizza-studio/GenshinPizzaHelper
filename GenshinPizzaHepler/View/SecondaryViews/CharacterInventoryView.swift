@@ -423,7 +423,7 @@ private struct AvatarListItemShare: View {
                             Text(verbatim: "Lv. \(avatar.weapon.level)")
                                 .font(.callout)
                                 .fixedSize()
-                            let affix = String(format: "weapon.affix:%lld", avatar.weapon.affixLevel).localized
+                            let affix = String(format: "weapon.affix:%lld".localized, avatar.weapon.affixLevel)
                             Text(affix)
                                 .font(.caption)
                                 .padding(.horizontal, 5)

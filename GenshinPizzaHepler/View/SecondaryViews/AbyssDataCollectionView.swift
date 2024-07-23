@@ -433,12 +433,12 @@ struct AbyssDataCollectionView: View {
                         return formatter.string(from: Date())
                     }()
                     let statInfo = String(
-                        format: "app.abyss.stat.1:%lld%@%@%@",
+                        format: "app.abyss.stat.1:%lld%@%@%@".localized,
                         abyssDataCollectionViewModel.totalDataCount,
                         abyssDataCollectionViewModel.paramsDescription,
                         abyssDataCollectionViewModel.paramsDetailDescription,
                         date
-                    ).localized
+                    )
                     Text(statInfo)
                         .font(.footnote)
                         .minimumScaleFactor(0.5)
