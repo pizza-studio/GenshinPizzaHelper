@@ -427,6 +427,7 @@ extension UIGFGachaItem {
         ).date(from: time)
 
         model.time = timeTyped
+        // 此处严格使用简体中文。
         model.name = GachaMetaDBExposed.shared.mainDB.plainQueryForNames(
             itemID: itemID, langID: GachaLanguageCode.zhHans.rawValue
         ) ?? name
@@ -465,22 +466,43 @@ extension GachaItemMO {
             theItemID = newItemID.description
         }
         let newName = GachaMetaDBExposed.shared.mainDB.plainQueryForNames(
-            itemID: theItemID, langID: GachaLanguageCode.zhHans.rawValue
+            itemID: theItemID, langID: languageCode.rawValue
         ) ?? name!
         let gachaTypeNew = UIGFGachaItem.GachaTypeGI(
             rawValue: gachaType.description
         )!
+        let itemTypeRaw: GachaItemType = .init(itemIdStr: theItemID)
         let newItem = UIGFGachaItem(
             count: count.description,
             gachaType: gachaTypeNew,
             id: id!,
             itemID: theItemID,
-            itemType: itemType,
+            itemType: itemTypeRaw.translatedRaw(for: languageCode),
             name: newName,
             rankType: rankType.description,
             time: time!.asUIGFDate(timeZoneDelta: timeZoneDelta),
             uigfGachaType: gachaTypeNew.uigfGachaType
         )
         return newItem
+    }
+}
+
+extension [UIGFGachaItem] {
+    /// 将当前 UIGFGachaItem 的物品分类与名称转换成给定的语言。
+    /// - Parameter lang: 给定的语言。
+    mutating func updateLanguage(_ lang: GachaLanguageCode) {
+        var newItemContainer = [UIGFGachaItem]()
+        // 君子协定：这里要求 UIGFGachaItem 的 itemID 必须是有效值，否则会出现灾难性的后果。
+        self.forEach { currentItem in
+            let theDB = GachaMetaDBExposed.shared.mainDB
+            var newItem = currentItem
+            let itemTypeRaw: GachaItemType = .init(itemIdStr: newItem.itemID)
+            newItem.itemType = itemTypeRaw.translatedRaw(for: lang)
+            if let newName = theDB.plainQueryForNames(itemID: newItem.itemID, langID: lang.rawValue) {
+                newItem.name = newName
+            }
+            newItemContainer.append(newItem)
+        }
+        self = newItemContainer
     }
 }

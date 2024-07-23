@@ -9109,6 +9109,34 @@
         }
       }
     },
+    "app.gacha.account.select.selectAll" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select All"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部書き出す"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部账号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部帳號"
+          }
+        }
+      }
+    },
     "app.gacha.account.select.title" : {
       "localizations" : {
         "en" : {
@@ -15672,6 +15700,34 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "總消耗原石數"
+          }
+        }
+      }
+    },
+    "app.gacha.uigf.affLink.[UIGF](https://uigf.org/)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[About UIGF v4.0 format, a UIGF standard.](https://uigf.org/)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[UIGF 委員会の UIGF v4.0 ガチャ記録規格について](https://uigf.org/)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[关于 UIGF 组织所规范的「米哈游游戏统一抽卡记录交换标准 UIGF v4.0」格式](https://uigf.org/)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[關於 UIGF 組織所規範的「米哈遊遊戲統一抽卡記錄交換標準 UIGF v4.0」格式](https://uigf.org/)"
           }
         }
       }
@@ -25967,6 +26023,34 @@
         }
       }
     },
+    "gacha.manage.uigf.export.toolbarTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出す"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导出"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匯出"
+          }
+        }
+      }
+    },
     "gacha.messages.newEntriesSaved:%lld" : {
       "localizations" : {
         "en" : {
@@ -26475,70 +26559,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "教程"
-          }
-        }
-      }
-    },
-    "gacha.uigf.notice.pendingMultilingualSupport" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The multi-language support for UIGF is still under discussion, and the export function currently only supports Simplified Chinese. We will add support for multiple languages as soon as it is completed."
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ang suporta ng masmaraming wika para sa UIGF ay nasa ilalim pa rin ng diskusyon, at ang pag-export ng pag-export ay kasalukuyang sumusuporta lamang ng Simplified Chinese. Magdaragdag kami ng suporta para sa masmaraming wika kapag nakumpleto na ito."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le support multilingue pour UIGF est encore en discussion et la fonction d'exportation ne prend actuellement en charge que le chinois simplifié. Nous ajouterons le support de plusieurs langues dès qu'il sera terminé."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The multi-language support for UIGF is still under discussion, and the export function currently only supports Simplified Chinese. We will add support for multiple languages as soon as it is completed."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UIGFの多言語サポートはまだ決めておりませんので、現時点で簡体中国語のファイルだけが書き出せます。いずれUIGFの多言語サポートは正式に決めたら、こちらは他の言語のファイルの書き出し機能を実作します。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The multi-language support for UIGF is still under discussion, and the export function currently only supports Simplified Chinese. We will add support for multiple languages as soon as it is completed."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поддержка многих языков для UIGF все еще обсуждается, а функция экспорта в настоящее время поддерживает только упрощенный китайский. Мы добавим поддержку нескольких языков сразу после ее завершения."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hỗ trợ nhiều ngôn ngữ cho UIGF vẫn đang được thảo luận và chức năng xuất chỉ hỗ trợ tiếng Trung giản thể hiện tại. Chúng tôi sẽ thêm hỗ trợ cho nhiều ngôn ngữ ngay khi nó được hoàn thành."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UIGF多语言支持仍在讨论中，导出功能目前仅支持简体中文。我们会在其完成的第一时间添加对多语言的支持。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "UIGF多語言支援仍在討論中，匯出功能目前僅支援簡體中文。我們會在其完成的第一時間添加對多語言的支援。"
           }
         }
       }

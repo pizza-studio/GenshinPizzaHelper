@@ -14,6 +14,20 @@ private typealias JsonFile = UIGFv4.Document
 
 @available(iOS 15.0, *)
 struct ExportGachaView: View {
+    // MARK: Lifecycle
+
+    public init(
+        compactLayout: Bool = false,
+        uid: String? = nil,
+        dismissHandler newHandler: @escaping (() -> ()) = {}
+    ) {
+        self.compactLayout = compactLayout
+        self.dismissHandler = newHandler
+        params.uid = uid
+    }
+
+    // MARK: Internal
+
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
         ascending: true
@@ -23,17 +37,115 @@ struct ExportGachaView: View {
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
 
-    @Binding
-    var isSheetShow: Bool
+    let dismissHandler: () -> ()
+
+    var defaultFileName: String {
+        let dateFormatter = DateFormatter.Gregorian()
+        dateFormatter.dateFormat = "yyyyMMddHHmm"
+        // 导出时间戳直接用 Date() 生成也无妨，误差在五秒钟之内。
+        return "UIGFv4_GI_\(params.uid ?? "")_\(dateFormatter.string(from: Date()))"
+    }
+
+    var body: some View {
+        Group {
+            if compactLayout {
+                compactMain()
+            } else {
+                NavigationStack {
+                    main()
+                        .navigationTitle("app.gacha.data.export.button")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button("sys.cancel") {
+                                    dismissHandler()
+                                }
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("导出") {
+                                    exportButtonDidClick()
+                                }
+                            }
+                        }
+                }
+            }
+        }
+        .alert(
+            "gacha.export.succeededInSavingToFile",
+            isPresented: $isSucceedAlertShow,
+            presenting: alert,
+            actions: { _ in
+                Button("button.okay") {
+                    isSucceedAlertShow = false
+                }
+            },
+            message: { _ in
+                messageView
+            }
+        )
+        .alert(
+            "gacha.export.failedInSavingToFile",
+            isPresented: $isFailureAlertShow,
+            presenting: alert,
+            actions: { _ in
+                Button("button.okay") {
+                    isFailureAlertShow = false
+                }
+            },
+            message: { _ in
+                messageView
+            }
+        )
+        .fileExporter(
+            isPresented: $isExporterPresented,
+            document: file,
+            contentType: .json,
+            defaultFilename: defaultFileName
+        ) { result in
+            handleFileExportResult(for: result)
+        }
+    }
+
+    @ViewBuilder
+    func main() -> some View {
+        List {
+            Section {
+                accountPicker()
+            }
+            Section {
+                Picker("gacha.export.chooseLanguage", selection: $params.lang) {
+                    ForEach(GachaLanguageCode.allCases, id: \.rawValue) { code in
+                        Text(code.localized).tag(code)
+                    }
+                }
+            } footer: {
+                Text("app.gacha.uigf.affLink.[UIGF](https://uigf.org/)")
+            }
+        }
+    }
+
+    @ViewBuilder
+    func compactMain() -> some View {
+        Menu {
+            Menu {
+                ForEach(GachaLanguageCode.allCases, id: \.rawValue) { code in
+                    Button(code.localized) {
+                        params.lang = code
+                        exportButtonDidClick()
+                    }
+                }
+            } label: {
+                Text(verbatim: "UIGFv4 (beta)")
+            }
+        } label: {
+            Label("gacha.manage.uigf.export.toolbarTitle", systemSymbol: .squareAndArrowUpOnSquare)
+        }
+    }
+
+    // MARK: Fileprivate
 
     @ObservedObject
     fileprivate var params: ExportGachaParams = .init()
-
-    @State
-    private var isExporterPresented: Bool = false
-
-    @State
-    private var uigfJson: UIGFv4?
 
     @State
     fileprivate var alert: AlertType? {
@@ -52,13 +164,6 @@ struct ExportGachaView: View {
         }
     }
 
-    var defaultFileName: String {
-        let dateFormatter = DateFormatter.Gregorian()
-        dateFormatter.dateFormat = "yyyyMMddHHmm"
-        // 导出时间戳直接用 Date() 生成也无妨，误差在五秒钟之内。
-        return "UIGFv4_GI_\(params.uid ?? "")_\(dateFormatter.string(from: Date()))"
-    }
-
     fileprivate var file: JsonFile? {
         if let json = uigfJson {
             return .init(model: json)
@@ -67,100 +172,36 @@ struct ExportGachaView: View {
         }
     }
 
-    @ViewBuilder
-    func main() -> some View {
-        List {
-            Section {
-                Picker("app.gacha.account.select.title", selection: $params.uid) {
-                    Group {
-                        if params.uid == nil {
-                            Text("app.gacha.account.select.notSelected").tag(String?(nil))
-                        }
-                        ForEach(
-                            gachaViewModel.allAvaliableAccountUID,
-                            id: \.self
-                        ) { uid in
-                            if let name = accounts
-                                .first(where: { $0.uid! == uid })?
-                                .name {
-                                Text("\(name) (\(uid))")
-                                    .tag(Optional(uid))
-                            } else {
-                                Text("\(uid)")
-                                    .tag(Optional(uid))
-                            }
-                        }
-                    }
-                }
-            }
-            Section {
-                Picker("gacha.export.chooseLanguage", selection: $params.lang) {
-                    ForEach(GachaLanguageCode.allCases, id: \.rawValue) { code in
-                        Text(code.localized).tag(code)
-                    }
-                }
-                .disabled(true)
-            } footer: {
-                Text("gacha.uigf.notice.pendingMultilingualSupport")
-                    + Text(verbatim: "\n\n")
-                    + Text("app.gacha.explainBetaUIGF")
-            }
-        }
-    }
+    // MARK: Private
 
-    var body: some View {
-        NavigationStack {
-            main()
-                .navigationTitle("app.gacha.data.export.button")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("sys.cancel") {
-                            isSheetShow.toggle()
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("导出") {
-                            exportButtonDidClick()
-                        }
-                        .disabled(params.uid == nil)
-                    }
-                }
-                .alert(
-                    "gacha.export.succeededInSavingToFile",
-                    isPresented: $isSucceedAlertShow,
-                    presenting: alert,
-                    actions: { _ in
-                        Button("button.okay") {
-                            isSucceedAlertShow = false
-                        }
-                    },
-                    message: { _ in
-                        messageView
-                    }
-                )
-                .alert(
-                    "gacha.export.failedInSavingToFile",
-                    isPresented: $isFailureAlertShow,
-                    presenting: alert,
-                    actions: { _ in
-                        Button("button.okay") {
-                            isFailureAlertShow = false
-                        }
-                    },
-                    message: { _ in
-                        messageView
-                    }
-                )
-                .fileExporter(
-                    isPresented: $isExporterPresented,
-                    document: file,
-                    contentType: .json,
-                    defaultFilename: defaultFileName
-                ) { result in
-                    handleFileExportResult(for: result)
-                }
+    @State
+    private var isExporterPresented: Bool = false
+
+    @State
+    private var uigfJson: UIGFv4?
+
+    private let compactLayout: Bool
+
+    @State
+    private var isSucceedAlertShow: Bool = false
+    @State
+    private var isFailureAlertShow: Bool = false
+
+    private var accountPickerPairs: [(value: String, tag: String?)] {
+        var result = [(value: String, tag: String?)]()
+        if params.uid == nil {
+            var i18nKey = "app.gacha.account.select.selectAll"
+            let i18nStr = String(localized: .init(stringLiteral: i18nKey))
+            result.append((i18nStr, nil))
         }
+        result.append(contentsOf: gachaViewModel.allAvaliableAccountUID.map { uid in
+            if let name = firstAccount(uid: uid)?.name {
+                return (value: "\(name) (\(uid))", tag: uid)
+            } else {
+                return (value: "UID: \(uid)", tag: uid)
+            }
+        })
+        return result
     }
 
     @ViewBuilder
@@ -175,6 +216,21 @@ struct ExportGachaView: View {
         }
     }
 
+    private func firstAccount(uid: String) -> AccountConfiguration? {
+        accounts.first(where: { $0.uid == uid })
+    }
+
+    @ViewBuilder
+    private func accountPicker() -> some View {
+        Picker("app.gacha.account.select.title", selection: $params.uid) {
+            Group {
+                ForEach(accountPickerPairs, id: \.tag) { value, tag in
+                    Text(value).tag(tag)
+                }
+            }
+        }
+    }
+
     @MainActor
     private func handleFileExportResult(for result: Result<URL, any Error>) {
         switch result {
@@ -186,22 +242,29 @@ struct ExportGachaView: View {
     }
 
     private func exportButtonDidClick() {
-        let uid = params.uid!
-        let items = gachaViewModel.manager.fetchAllMO(uid: uid).map { $0.toUIGFGachaItem(params.lang) }
-        let newProfile: UIGFGachaProfile = .init(
-            lang: .zhHans,
-            list: items,
-            timezone: GachaItem.getServerTimeZoneDelta(uid),
-            uid: uid
-        )
-        uigfJson = .init(info: .init(), giProfiles: [newProfile])
+        var profiles = [UIGFGachaProfile]()
+        var uids = [String]()
+        if let uid = params.uid {
+            uids.append(uid)
+        } else {
+            uids.append(contentsOf: accounts.compactMap(\.uid))
+        }
+        uids.forEach { uid in
+            let items = gachaViewModel.manager.fetchAllMO(uid: uid).map {
+                $0.toUIGFGachaItem(params.lang)
+            }
+            // items.updateLanguage(params.lang) 这句或许用不到了。
+            let newProfile: UIGFGachaProfile = .init(
+                lang: params.lang,
+                list: items,
+                timezone: GachaItem.getServerTimeZoneDelta(uid),
+                uid: uid
+            )
+            profiles.append(newProfile)
+        }
+        uigfJson = .init(info: .init(), giProfiles: profiles)
         isExporterPresented.toggle()
     }
-
-    @State
-    private var isSucceedAlertShow: Bool = false
-    @State
-    private var isFailureAlertShow: Bool = false
 }
 
 // MARK: - ExportGachaParams

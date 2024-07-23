@@ -153,7 +153,9 @@ struct GachaSetting: View {
         .navigationTitle("app.gacha.data.management.title")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isExportSheetShow, content: {
-            ExportGachaView(isSheetShow: $isExportSheetShow)
+            ExportGachaView {
+                isExportSheetShow.toggle()
+            }
         })
         .alert(
             "gacha.prompt.dataRemoval",

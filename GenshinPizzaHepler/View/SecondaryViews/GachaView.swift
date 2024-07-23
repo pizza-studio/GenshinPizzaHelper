@@ -16,6 +16,8 @@ import SwiftUI
 
 @available(iOS 15.0, *)
 struct GachaView: View {
+    // MARK: Internal
+
     @FetchRequest(sortDescriptors: [.init(
         keyPath: \AccountConfiguration.priority,
         ascending: true
@@ -56,11 +58,12 @@ struct GachaView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     GetGachaNavigationMenu(
-                        showByAPI: accounts
-                            .first(where: { $0.server.region == .mainlandChina }) !=
-                            nil,
+                        showByAPI: mainlandChinaAccountDetected,
                         isHelpSheetShow: $isHelpSheetShow
                     )
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    ExportGachaView(compactLayout: true, uid: gachaViewModel.filter.uid)
                 }
 
                 ToolbarItem(placement: .principal) {
@@ -70,9 +73,7 @@ struct GachaView: View {
                             id: \.self
                         ) { uid in
                             Group {
-                                if let name: String = accounts
-                                    .first(where: { $0.uid == uid })?
-                                    .name {
+                                if let name: String = firstAccount(uid: uid)?.name {
                                     Button(name) {
                                         gachaViewModel.filter.uid = uid
                                     }
@@ -87,9 +88,7 @@ struct GachaView: View {
                         HStack {
                             Image(systemSymbol: .arrowLeftArrowRightCircle)
                             if let uid: String = gachaViewModel.filter.uid {
-                                if let name: String = accounts
-                                    .first(where: { $0.uid == uid })?
-                                    .name {
+                                if let name: String = firstAccount(uid: uid)?.name {
                                     Text(name)
                                 } else {
                                     Text(uid)
@@ -159,6 +158,16 @@ struct GachaView: View {
         .sheet(isPresented: $isHelpSheetShow, content: {
             HelpSheet(isShow: $isHelpSheetShow)
         })
+    }
+
+    // MARK: Private
+
+    private var mainlandChinaAccountDetected: Bool {
+        accounts.first(where: { $0.server.region == .mainlandChina }) != nil
+    }
+
+    private func firstAccount(uid: String) -> AccountConfiguration? {
+        accounts.first(where: { $0.uid == uid })
     }
 }
 
