@@ -106,10 +106,10 @@ public struct ThirdPartyToolsView: View {
     // MARK: Internal
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     var availableRegions: [Region] {
         [Region](Set<Region>(accounts.compactMap { $0.server.region }))
@@ -129,10 +129,10 @@ struct GenshinCalculatorLink: View {
     // MARK: Internal
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     @State
     var isAlertShow: Bool = false

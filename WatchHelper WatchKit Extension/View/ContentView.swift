@@ -25,10 +25,10 @@ struct ContentView: View {
     // MARK: Internal
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     @Environment(\.scenePhase)
     var scenePhase
@@ -82,7 +82,7 @@ struct ContentView: View {
             )
         }
 //        .onAppear {
-//            let account = AccountConfiguration(context: viewContext)
+//            let account = Account(context: viewContext)
 //            account.name = "Lava"
 //            account.server = .china
 //            account.cookie = testCookie
@@ -100,7 +100,7 @@ struct ContentView: View {
 private struct DetailNavigator: View {
     // MARK: Lifecycle
 
-    init(account: AccountConfiguration) {
+    init(account: Account) {
         self._dailyNoteViewModel = .init(wrappedValue: DailyNoteViewModel(account: account))
     }
 
@@ -109,7 +109,7 @@ private struct DetailNavigator: View {
     @Environment(\.scenePhase)
     var scenePhase
 
-    var account: AccountConfiguration { dailyNoteViewModel.account }
+    var account: Account { dailyNoteViewModel.account }
 
     var body: some View {
         Group {
@@ -169,7 +169,7 @@ class DailyNoteViewModel: ObservableObject {
     /// Initializes a new instance of the view model.
     ///
     /// - Parameter account: The account for which the daily note will be fetched.
-    init(account: AccountConfiguration) {
+    init(account: Account) {
         self.account = account
         Task {
             await getDailyNoteUncheck()
@@ -189,7 +189,7 @@ class DailyNoteViewModel: ObservableObject {
     private(set) var dailyNoteStatus: Status = .progress(nil)
 
     /// The account for which the daily note is being fetched.
-    let account: AccountConfiguration
+    let account: Account
 
     /// Fetches the daily note and updates the published `dailyNote` property accordingly.
     @MainActor

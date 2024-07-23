@@ -27,7 +27,7 @@ struct ManageAccountsView: View {
         List {
             Section {
                 Button {
-                    sheetType = .createNewAccount(AccountConfiguration(context: viewContext))
+                    sheetType = .createNewAccount(Account(context: viewContext))
                 } label: {
                     Label("settings.account.addAccount", systemSymbol: .plusCircle)
                 }
@@ -107,8 +107,8 @@ struct ManageAccountsView: View {
     // MARK: Private
 
     private enum SheetType: Identifiable {
-        case createNewAccount(AccountConfiguration)
-        case editExistedAccount(AccountConfiguration)
+        case createNewAccount(Account)
+        case editExistedAccount(Account)
 
         // MARK: Internal
 
@@ -130,11 +130,11 @@ struct ManageAccountsView: View {
 
     @FetchRequest(
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \AccountConfiguration.priority, ascending: true),
+            NSSortDescriptor(keyPath: \Account.priority, ascending: true),
         ],
         animation: .default
     )
-    private var accounts: FetchedResults<AccountConfiguration>
+    private var accounts: FetchedResults<Account>
 
     @State
     private var sheetType: SheetType?
@@ -168,7 +168,7 @@ struct ManageAccountsView: View {
 
     private func moveItems(from source: IndexSet, to destination: Int) {
         withAnimation {
-            var revisedAccounts: [AccountConfiguration] = accounts.map { $0 }
+            var revisedAccounts: [Account] = accounts.map { $0 }
             revisedAccounts.move(fromOffsets: source, toOffset: destination)
 
             for (index, account) in revisedAccounts.enumerated() {

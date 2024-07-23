@@ -30,7 +30,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
 
     @available(iOSApplicationExtension 16.0, *)
     func recommendations() -> [IntentRecommendation<SelectOnlyAccountIntent>] {
-        let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
+        let configs = AccountModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectOnlyAccountIntent()
             intent.account = .init(
@@ -85,7 +85,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
             )!
         }
 
-        let accountConfigurationModel = AccountConfigurationModel.shared
+        let accountConfigurationModel = AccountModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
 
         guard !configs.isEmpty else {
@@ -132,7 +132,7 @@ struct LockScreenWidgetProvider: IntentTimelineProvider {
 
         getTimelineEntries(config: config)
 
-        func getTimelineEntries(config: AccountConfiguration) {
+        func getTimelineEntries(config: Account) {
             Task {
                 do {
                     let data = try await config.dailyNote()

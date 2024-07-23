@@ -41,7 +41,7 @@ extension MihoyoAPI {
     }
 
     public static func getGachaLogAndSave(
-        account: AccountConfiguration,
+        account: Account,
         manager: GachaModelManager,
         observer: GachaFetchProgressObserver,
         completion: @escaping (

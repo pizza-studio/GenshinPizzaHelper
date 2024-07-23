@@ -137,7 +137,7 @@ class GachaViewModel: ObservableObject {
     }
 
     func getGachaAndSaveFor(
-        _ account: AccountConfiguration,
+        _ account: Account,
         observer: GachaFetchProgressObserver,
         completion: @escaping (
             (Result<(), GetGachaError>)

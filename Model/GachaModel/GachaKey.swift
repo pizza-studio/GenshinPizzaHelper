@@ -14,7 +14,7 @@ import UIKit
 @available(iOS 13, *)
 extension MihoyoAPI {
     public static func genAuthKey(
-        account: AccountConfiguration,
+        account: Account,
         completion: @escaping (
             (Result<GenAuthKeyResult, GetGachaError>) -> ()
         )

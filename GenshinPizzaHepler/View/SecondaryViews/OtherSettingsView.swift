@@ -125,10 +125,10 @@ struct OtherSettingsView: View {
     private var useEnkaJSONFromGitHosts: Bool
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \AccountConfiguration.priority, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Account.priority, ascending: true)],
         animation: .default
     )
-    private var accounts: FetchedResults<AccountConfiguration>
+    private var accounts: FetchedResults<Account>
 
     private var buttonLabelForCleaningCache: Text {
         Text("settings.more.cleanCacheFilesOfMBs:\(String(format: "%.2f", viewModel.fileSize))")

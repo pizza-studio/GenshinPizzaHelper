@@ -17,10 +17,10 @@ struct APIGetGachaView: View {
     // MARK: Internal
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
     @StateObject
@@ -36,7 +36,7 @@ struct APIGetGachaView: View {
     @State
     var isErrorGetGachaRecordAlertShow: Bool = false
 
-    var acountConfigsFiltered: [AccountConfiguration] {
+    var acountConfigsFiltered: [Account] {
         accounts.compactMap {
             guard $0.server.region == .mainlandChina else { return nil }
             return $0
@@ -194,10 +194,10 @@ private struct GetGachaURLByAPIButton: View {
     var status: Status = .ready
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     var body: some View {
         Button {
@@ -240,7 +240,7 @@ private struct GetGachaURLByAPIButton: View {
     }
 
     func genGachaURLByAPI(
-        account: AccountConfiguration,
+        account: Account,
         completion: @escaping (
             (Result<String, GenGachaURLError>) -> ()
         )

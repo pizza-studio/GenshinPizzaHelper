@@ -17,7 +17,7 @@ let globalDailyNoteCardRefreshSubject: PassthroughSubject<(), Never> = .init()
 struct CreateAccountSheetView: View {
     // MARK: Lifecycle
 
-    init(account: AccountConfiguration, isShown: Binding<Bool>) {
+    init(account: Account, isShown: Binding<Bool>) {
         self._isShown = isShown
         self._account = StateObject(wrappedValue: account)
     }
@@ -183,7 +183,7 @@ struct CreateAccountSheetView: View {
     private var isShown: Bool
 
     @StateObject
-    private var account: AccountConfiguration
+    private var account: Account
 
     @Environment(\.managedObjectContext)
     private var viewContext

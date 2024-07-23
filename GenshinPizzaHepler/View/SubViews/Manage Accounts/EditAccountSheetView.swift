@@ -13,7 +13,7 @@ import WidgetKit
 struct EditAccountSheetView: View {
     // MARK: Lifecycle
 
-    init(account: AccountConfiguration, isShown: Binding<Bool>) {
+    init(account: Account, isShown: Binding<Bool>) {
         self._account = StateObject(wrappedValue: account)
         self._isShown = isShown
     }
@@ -68,7 +68,7 @@ struct EditAccountSheetView: View {
     private var viewContext
 
     @StateObject
-    private var account: AccountConfiguration
+    private var account: Account
 
     @Binding
     private var isShown: Bool

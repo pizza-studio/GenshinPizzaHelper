@@ -11,27 +11,31 @@ import Foundation
 import HBMihoyoAPI
 import HoYoKit
 
+// MARK: - Account
+
+public typealias Account = AccountConfiguration
+
 // MARK: - AccountConfiguration
 
 @objc(AccountConfiguration)
 public class AccountConfiguration: NSManagedObject {
     public override func awakeFromInsert() {
         super.awakeFromInsert()
-        setPrimitiveValue(UUID(), forKey: #keyPath(AccountConfiguration.uuid))
-        setPrimitiveValue(Server.china.rawValue, forKey: #keyPath(AccountConfiguration.serverRawValue))
-        setPrimitiveValue("", forKey: #keyPath(AccountConfiguration.name))
-        setPrimitiveValue("", forKey: #keyPath(AccountConfiguration.cookie))
-        setPrimitiveValue("", forKey: #keyPath(AccountConfiguration.uid))
-        setPrimitiveValue("", forKey: #keyPath(AccountConfiguration.deviceFingerPrint))
-        setPrimitiveValue(0, forKey: #keyPath(AccountConfiguration.priority))
-        setPrimitiveValue(nil, forKey: #keyPath(AccountConfiguration.sTokenV2))
+        setPrimitiveValue(UUID(), forKey: #keyPath(Account.uuid))
+        setPrimitiveValue(Server.china.rawValue, forKey: #keyPath(Account.serverRawValue))
+        setPrimitiveValue("", forKey: #keyPath(Account.name))
+        setPrimitiveValue("", forKey: #keyPath(Account.cookie))
+        setPrimitiveValue("", forKey: #keyPath(Account.uid))
+        setPrimitiveValue("", forKey: #keyPath(Account.deviceFingerPrint))
+        setPrimitiveValue(0, forKey: #keyPath(Account.priority))
+        setPrimitiveValue(nil, forKey: #keyPath(Account.sTokenV2))
     }
 }
 
-extension AccountConfiguration {
+extension Account {
     @nonobjc
-    public class func fetchRequest() -> NSFetchRequest<AccountConfiguration> {
-        NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
+    public class func fetchRequest() -> NSFetchRequest<Account> {
+        NSFetchRequest<Account>(entityName: "AccountConfiguration")
     }
 
     @NSManaged
@@ -97,13 +101,13 @@ extension AccountConfiguration {
     public var sTokenV2: String?
 }
 
-// MARK: Identifiable
+// MARK: - Account + Identifiable
 
-extension AccountConfiguration: Identifiable {
+extension Account: Identifiable {
     public var id: UUID { uuid ?? UUID() }
 }
 
-extension AccountConfiguration {
+extension Account {
     func isValid() -> Bool {
         let fingerPrintValid = if server.region == .mainlandChina {
             deviceFingerPrint != nil && deviceFingerPrint != ""

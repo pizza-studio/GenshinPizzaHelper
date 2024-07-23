@@ -12,7 +12,7 @@ import SwiftUI
 struct TestAccountSectionView: View {
     // MARK: Internal
 
-    let account: AccountConfiguration
+    let account: Account
 
     var body: some View {
         Section {
@@ -133,7 +133,7 @@ struct TestAccountSectionView: View {
     private struct VerificationNeededView: View {
         // MARK: Internal
 
-        let account: AccountConfiguration
+        let account: Account
         @State
         var shouldRefreshAccount: () -> ()
 

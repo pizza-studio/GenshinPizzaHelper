@@ -9,7 +9,7 @@ import Defaults
 import Foundation
 import HoYoKit
 
-extension AccountConfiguration {
+extension Account {
     func dailyNote() async throws -> any DailyNote {
         if server.region == .mainlandChina, sTokenV2 == nil {
             sTokenV2 = try await MiHoYoAPI.sTokenV2(cookie: safeCookie)

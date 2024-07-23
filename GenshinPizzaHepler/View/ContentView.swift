@@ -60,13 +60,13 @@ struct ContentView: View {
     )!
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     @State
-    var settingForAccount: AccountConfiguration?
+    var settingForAccount: Account?
 
     var index: Binding<Int> { Binding(
         get: { selection },

@@ -12,7 +12,7 @@ import HoYoKit
 import Intents
 import UIKit
 
-class AccountConfigurationModel {
+class AccountModel {
     // MARK: Lifecycle
 
     private init() {
@@ -54,16 +54,16 @@ class AccountConfigurationModel {
 
     // CoreData
 
-    static let shared: AccountConfigurationModel = .init()
+    static let shared: AccountModel = .init()
 
     let container: NSPersistentCloudKitContainer
 
-    func fetchAccountConfigs() -> [AccountConfiguration] {
+    func fetchAccountConfigs() -> [Account] {
         // 从Core Data更新账号信息
         container.viewContext.refreshAllObjects()
         let request =
-            NSFetchRequest<AccountConfiguration>(entityName: "AccountConfiguration")
-        request.sortDescriptors = [.init(keyPath: \AccountConfiguration.priority, ascending: true)]
+            NSFetchRequest<Account>(entityName: "AccountConfiguration")
+        request.sortDescriptors = [.init(keyPath: \Account.priority, ascending: true)]
         do {
             let accountConfigs = try container.viewContext.fetch(request)
             return accountConfigs

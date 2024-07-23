@@ -13,7 +13,7 @@ import SwiftUI
 struct AvatarShowCaseView: View {
     // MARK: Internal
 
-    var account: AccountConfiguration
+    var account: Account
 
     @State
     var showingCharacterIdentifier: Int

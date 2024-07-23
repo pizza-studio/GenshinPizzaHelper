@@ -61,7 +61,7 @@ class ResinRecoveryActivityController {
         }
     }
 
-    func createResinRecoveryTimerActivity(for account: AccountConfiguration, data: some DailyNote) throws {
+    func createResinRecoveryTimerActivity(for account: Account, data: some DailyNote) throws {
         guard allowLiveActivity else {
             throw CreateLiveActivityError.notAllowed
         }
@@ -117,7 +117,7 @@ class ResinRecoveryActivityController {
         }
     }
 
-    func updateResinRecoveryTimerActivity(for account: AccountConfiguration, data: some DailyNote) {
+    func updateResinRecoveryTimerActivity(for account: Account, data: some DailyNote) {
         currentActivities.filter { activity in
             activity.attributes.accountUUID == account.uuid ?? UUID()
         }.forEach { activity in
@@ -141,7 +141,7 @@ class ResinRecoveryActivityController {
         }
     }
 
-    func endActivity(for account: AccountConfiguration) {
+    func endActivity(for account: Account) {
         currentActivities.filter { activity in
             activity.attributes.accountUUID == account.uuid ?? UUID()
         }.forEach { activity in

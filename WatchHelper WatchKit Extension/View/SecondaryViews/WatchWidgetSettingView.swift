@@ -16,10 +16,10 @@ struct WatchWidgetSettingView: View {
     // MARK: Internal
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
     @Default(.lockscreenWidgetSyncFrequencyInMinute)
     var lockscreenWidgetSyncFrequencyInMinute: Double
     @Default(.homeCoinRefreshFrequencyInHour)

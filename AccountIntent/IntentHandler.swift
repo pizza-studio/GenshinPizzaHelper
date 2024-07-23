@@ -49,8 +49,8 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
             -> ()
     ) {
         print("handling intent")
-        let accountConfigurationModel = AccountConfigurationModel.shared
-        let accountConfigs: [AccountConfiguration] = accountConfigurationModel
+        let accountConfigurationModel = AccountModel.shared
+        let accountConfigs: [Account] = accountConfigurationModel
             .fetchAccountConfigs()
 
         let accountIntents: [AccountIntent] = accountConfigs.map { config in
@@ -74,8 +74,8 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
         with completion: @escaping (INObjectCollection<AccountIntent>?, Error?)
             -> ()
     ) {
-        let accountConfigurationModel = AccountConfigurationModel.shared
-        let accountConfigs: [AccountConfiguration] = accountConfigurationModel
+        let accountConfigurationModel = AccountModel.shared
+        let accountConfigs: [Account] = accountConfigurationModel
             .fetchAccountConfigs()
 
         let accountIntents: [AccountIntent] = accountConfigs.map { config in
@@ -99,8 +99,8 @@ class IntentHandler: INExtension, SelectAccountIntentHandling,
         with completion: @escaping (INObjectCollection<AccountIntent>?, Error?)
             -> ()
     ) {
-        let accountConfigurationModel = AccountConfigurationModel.shared
-        let accountConfigs: [AccountConfiguration] = accountConfigurationModel
+        let accountConfigurationModel = AccountModel.shared
+        let accountConfigs: [Account] = accountConfigurationModel
             .fetchAccountConfigs()
 
         let accountIntents: [AccountIntent] = accountConfigs.map { config in

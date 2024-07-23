@@ -46,7 +46,7 @@ struct GenshinPizzaHeplerApp: App {
         #if os(watchOS)
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, AccountConfigurationModel.shared.container.viewContext)
+                .environment(\.managedObjectContext, AccountModel.shared.container.viewContext)
         }
         #else
         WindowGroup {
@@ -68,7 +68,7 @@ struct GenshinPizzaHeplerApp: App {
                     SKPaymentQueue.default().add(storeManager)
                     storeManager.getProducts(productIDs: productIDs)
                 }
-                .environment(\.managedObjectContext, AccountConfigurationModel.shared.container.viewContext)
+                .environment(\.managedObjectContext, AccountModel.shared.container.viewContext)
         }
         #endif
     }

@@ -10,7 +10,7 @@ import HBMihoyoAPI
 import HoYoKit
 
 // extention for CoreData to save Server
-extension AccountConfiguration {
+extension Account {
     var server: Server {
         get {
             Server(rawValue: serverRawValue ?? "") ?? fallbackServer

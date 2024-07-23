@@ -15,7 +15,7 @@ struct EditAccountView: View {
     // MARK: Internal
 
     @StateObject
-    var account: AccountConfiguration
+    var account: Account
 
     var accountsForSelected: [FetchedAccount]?
     @State
@@ -108,7 +108,7 @@ private struct RequireLoginView: View {
 private struct SelectAccountView: View {
     // MARK: Lifecycle
 
-    init(account: AccountConfiguration, accountsForSelected: [FetchedAccount]) {
+    init(account: Account, accountsForSelected: [FetchedAccount]) {
         self._account = ObservedObject(wrappedValue: account)
         self.accountsForSelected = accountsForSelected
     }
@@ -116,7 +116,7 @@ private struct SelectAccountView: View {
     // MARK: Internal
 
     @ObservedObject
-    var account: AccountConfiguration
+    var account: Account
 
     let accountsForSelected: [FetchedAccount]
 

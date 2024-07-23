@@ -36,10 +36,10 @@ struct HomeView: View {
     }
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     var body: some View {
         NavigationStack {
@@ -75,7 +75,7 @@ struct HomeView: View {
 struct AccountInfoCardView: View {
     // MARK: Lifecycle
 
-    init(account: AccountConfiguration) {
+    init(account: Account) {
         self._dailyNoteViewModel = .init(wrappedValue: DailyNoteViewModel(account: account))
     }
 
@@ -84,7 +84,7 @@ struct AccountInfoCardView: View {
     @Environment(\.scenePhase)
     var scenePhase
 
-    var account: AccountConfiguration { dailyNoteViewModel.account }
+    var account: Account { dailyNoteViewModel.account }
 
     var status: DailyNoteViewModel.Status { dailyNoteViewModel.dailyNoteStatus }
 
@@ -140,7 +140,7 @@ struct AccountInfoCardView: View {
 
         // MARK: Internal
 
-        let account: AccountConfiguration
+        let account: Account
 
         var body: some View {
             Button("app.home.pinToTop") {
@@ -154,16 +154,16 @@ struct AccountInfoCardView: View {
         // MARK: Private
 
         @FetchRequest(sortDescriptors: [.init(
-            keyPath: \AccountConfiguration.priority,
+            keyPath: \Account.priority,
             ascending: true
         )])
-        private var accounts: FetchedResults<AccountConfiguration>
+        private var accounts: FetchedResults<Account>
     }
 
     private struct EditAccountButton: View {
         // MARK: Internal
 
-        let account: AccountConfiguration
+        let account: Account
 
         var body: some View {
             Button("app.home.editAccount") {
@@ -187,7 +187,7 @@ struct AccountInfoCardView: View {
     private struct EnableLiveActivityButton: View {
         // MARK: Internal
 
-        let account: AccountConfiguration
+        let account: Account
         let dailyNote: any DailyNote
 
         var body: some View {
@@ -221,7 +221,7 @@ struct AccountInfoCardView: View {
         // MARK: Internal
 
         let dailyNote: any DailyNote
-        let account: AccountConfiguration
+        let account: Account
 
         var body: some View {
             // Resin
@@ -376,7 +376,7 @@ class DailyNoteViewModel: ObservableObject {
     /// Initializes a new instance of the view model.
     ///
     /// - Parameter account: The account for which the daily note will be fetched.
-    init(account: AccountConfiguration) {
+    init(account: Account) {
         self.account = account
         Task {
             await getDailyNoteUncheck()
@@ -396,7 +396,7 @@ class DailyNoteViewModel: ObservableObject {
     private(set) var dailyNoteStatus: Status = .progress(nil)
 
     /// The account for which the daily note is being fetched.
-    let account: AccountConfiguration
+    let account: Account
 
     /// Fetches the daily note and updates the published `dailyNote` property accordingly.
     @MainActor
@@ -432,7 +432,7 @@ class DailyNoteViewModel: ObservableObject {
                 if #available(iOS 16.1, *),
                    Defaults[.autoDeliveryResinTimerLiveActivity] {
                     Task {
-                        // let accounts = AccountConfigurationModel.shared.fetchAccountConfigs()
+                        // let accounts = AccountModel.shared.fetchAccountConfigs()
                         try? ResinRecoveryActivityController.shared.createResinRecoveryTimerActivity(
                             for: account,
                             data: result
@@ -522,7 +522,7 @@ private struct AddNewAccountButton: View {
         .listRowMaterialBackground()
         .sheet(isPresented: $isNewAccountSheetShow) {
             CreateAccountSheetView(
-                account: AccountConfiguration(context: viewContext),
+                account: Account(context: viewContext),
                 isShown: $isNewAccountSheetShow
             )
             .scrollContentBackground(.visible)
@@ -541,7 +541,7 @@ private struct AddNewAccountButton: View {
 private struct ErrorView: View {
     // MARK: Internal
 
-    let account: AccountConfiguration
+    let account: Account
     var error: Error
 
     var body: some View {

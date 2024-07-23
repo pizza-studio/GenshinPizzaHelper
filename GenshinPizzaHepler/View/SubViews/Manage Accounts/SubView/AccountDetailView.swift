@@ -13,14 +13,14 @@ import SwiftUI
 struct AccountDetailView: View {
     // MARK: Lifecycle
 
-    init(account: AccountConfiguration) {
+    init(account: Account) {
         self._account = ObservedObject(wrappedValue: account)
     }
 
     // MARK: Internal
 
     @ObservedObject
-    var account: AccountConfiguration
+    var account: Account
 
     var body: some View {
         List {
@@ -91,7 +91,7 @@ struct AccountDetailView: View {
 private struct RegenerateSTokenV2Button: View {
     // MARK: Lifecycle
 
-    init(account: AccountConfiguration) {
+    init(account: Account) {
         self._account = ObservedObject(wrappedValue: account)
     }
 
@@ -105,7 +105,7 @@ private struct RegenerateSTokenV2Button: View {
     }
 
     @ObservedObject
-    var account: AccountConfiguration
+    var account: Account
 
     @State
     var isErrorAlertShown: Bool = false
@@ -166,7 +166,7 @@ private struct RegenerateSTokenV2Button: View {
 private struct RegenerateDeviceFingerPrintButton: View {
     // MARK: Lifecycle
 
-    init(account: AccountConfiguration) {
+    init(account: Account) {
         self._account = ObservedObject(wrappedValue: account)
     }
 
@@ -180,7 +180,7 @@ private struct RegenerateDeviceFingerPrintButton: View {
     }
 
     @ObservedObject
-    var account: AccountConfiguration
+    var account: Account
 
     @State
     var isErrorAlertShown: Bool = false

@@ -304,7 +304,7 @@ struct ResinTimerRefreshIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         let activities = ResinRecoveryActivityController.shared.currentActivities
-        let accounts = AccountConfigurationModel.shared.fetchAccountConfigs()
+        let accounts = AccountModel.shared.fetchAccountConfigs()
         await withThrowingTaskGroup(of: Void.self) { taskGroup in
             activities.forEach { activity in
                 taskGroup.addTask {

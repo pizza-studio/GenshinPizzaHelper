@@ -29,10 +29,10 @@ struct ExportGachaView: View {
     // MARK: Internal
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
@@ -216,7 +216,7 @@ struct ExportGachaView: View {
         }
     }
 
-    private func firstAccount(uid: String) -> AccountConfiguration? {
+    private func firstAccount(uid: String) -> Account? {
         accounts.first(where: { $0.uid == uid })
     }
 

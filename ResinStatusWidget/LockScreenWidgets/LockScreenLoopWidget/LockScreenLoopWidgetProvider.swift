@@ -35,7 +35,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
     @available(iOSApplicationExtension 16.0, *)
     func recommendations()
         -> [IntentRecommendation<SelectAccountAndShowWhichInfoIntent>] {
-        let configs = AccountConfigurationModel.shared.fetchAccountConfigs()
+        let configs = AccountModel.shared.fetchAccountConfigs()
         return configs.map { config in
             let intent = SelectAccountAndShowWhichInfoIntent()
             intent.account = .init(
@@ -94,7 +94,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
             )!
         }
 
-        let accountConfigurationModel = AccountConfigurationModel.shared
+        let accountConfigurationModel = AccountModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
 
         let style = configuration.usingResinStyle
@@ -146,7 +146,7 @@ struct LockScreenLoopWidgetProvider: IntentTimelineProvider {
 
         getTimelineEntries(config: config)
 
-        func getTimelineEntries(config: AccountConfiguration) {
+        func getTimelineEntries(config: Account) {
             Task {
                 do {
                     let data = try await config.dailyNote()

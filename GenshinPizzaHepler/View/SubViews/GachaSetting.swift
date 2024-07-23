@@ -32,10 +32,10 @@ struct GachaSetting: View {
     }
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     @StateObject
     var gachaViewModel: GachaViewModel = .shared

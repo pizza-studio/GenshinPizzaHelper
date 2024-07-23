@@ -21,9 +21,9 @@ final class DetailPortalViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {
-        let request = AccountConfiguration.fetchRequest()
-        request.sortDescriptors = [.init(keyPath: \AccountConfiguration.priority, ascending: true)]
-        let accounts = try? AccountConfigurationModel.shared.container.viewContext.fetch(request)
+        let request = Account.fetchRequest()
+        request.sortDescriptors = [.init(keyPath: \Account.priority, ascending: true)]
+        let accounts = try? AccountModel.shared.container.viewContext.fetch(request)
         if let accounts, let account = accounts.first {
             self._selectedAccount = .init(initialValue: account)
             if let basicInfoRAW = Defaults[.queriedEnkaProfiles][account.safeUid] {
@@ -86,7 +86,7 @@ final class DetailPortalViewModel: ObservableObject {
     var currentEnkaProfile: EnkaGI.QueryRelated.ProfileTranslated?
 
     @Published
-    var selectedAccount: AccountConfiguration? {
+    var selectedAccount: Account? {
         willSet {
             if let newValue, let currentProfileRAW = Defaults[.queriedEnkaProfiles][newValue.safeUid] {
                 currentEnkaProfile = .init(
@@ -359,7 +359,7 @@ final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    func uploadAbyssData(account: AccountConfiguration, abyssData: SpiralAbyssDetail, basicInfo: BasicInfos) async {
+    func uploadAbyssData(account: Account, abyssData: SpiralAbyssDetail, basicInfo: BasicInfos) async {
         guard Defaults[.allowAbyssDataCollection] else { return }
         guard let uploadData = AbyssData(
             accountUID: account.safeUid,
@@ -411,7 +411,7 @@ final class DetailPortalViewModel: ObservableObject {
         }
     }
 
-    func uploadHoldingData(account: AccountConfiguration, basicInfo: BasicInfos) async {
+    func uploadHoldingData(account: Account, basicInfo: BasicInfos) async {
         print("uploadHoldingData START")
         guard Defaults[.allowAbyssDataCollection]
         else { print("not allowed"); return }
@@ -467,7 +467,7 @@ final class DetailPortalViewModel: ObservableObject {
     }
 
     func uploadHuTaoDBAbyssData(
-        account: AccountConfiguration,
+        account: Account,
         abyssData: SpiralAbyssDetail,
         basicInfo: BasicInfos,
         allAvatarInfo: CharacterInventoryModel
@@ -604,7 +604,7 @@ private struct SelectAccountSection: View {
     // MARK: Internal
 
     @Binding
-    var selectedAccount: AccountConfiguration?
+    var selectedAccount: Account?
 
     var body: some View {
         if let selectedAccount {
@@ -627,7 +627,7 @@ private struct SelectAccountSection: View {
     func normalAccountPickerView(
         playerDetail: EnkaGI.QueryRelated.ProfileTranslated,
         basicInfo: EnkaGI.QueryRelated.PlayerInfoTranslated,
-        selectedAccount: AccountConfiguration
+        selectedAccount: Account
     )
         -> some View {
         Section {
@@ -691,7 +691,7 @@ private struct SelectAccountSection: View {
     }
 
     @ViewBuilder
-    func noBasicInfoFallBackView(selectedAccount: AccountConfiguration) -> some View {
+    func noBasicInfoFallBackView(selectedAccount: Account) -> some View {
         Section {
             HStack(spacing: 0) {
                 HStack {
@@ -751,14 +751,14 @@ private struct SelectAccountSection: View {
 
     private struct SelectAccountMenu<T: View>: View {
         @FetchRequest(sortDescriptors: [.init(
-            keyPath: \AccountConfiguration.priority,
+            keyPath: \Account.priority,
             ascending: true
         )])
-        var accounts: FetchedResults<AccountConfiguration>
+        var accounts: FetchedResults<Account>
 
         let label: () -> T
 
-        let completion: (AccountConfiguration) -> ()
+        let completion: (Account) -> ()
 
         var body: some View {
             Menu {
@@ -798,7 +798,7 @@ private struct PlayerDetailSection: View {
         typealias ID = Int
 
         let playerDetail: EnkaGI.QueryRelated.ProfileTranslated
-        let account: AccountConfiguration
+        let account: Account
 
         @State
         var showingCharacterIdentifier: ID?
@@ -855,7 +855,7 @@ private struct PlayerDetailSection: View {
         private var artifactRatingOptions: ArtifactRatingOptions
     }
 
-    let account: AccountConfiguration
+    let account: Account
 
     var enkaProfileStatus: DetailPortalViewModel
         .Status<(EnkaGI.QueryRelated.ProfileTranslated, nextRefreshableDate: Date)> { vmDPV.enkaProfileStatus }
@@ -938,7 +938,7 @@ private struct CharInventoryNavigator: View {
 
     // MARK: Internal
 
-    let account: AccountConfiguration
+    let account: Account
     var status: DetailPortalViewModel.Status<CharacterInventoryModel>
 
     var body: some View {
@@ -999,7 +999,7 @@ private struct LedgerDataNavigator: View {
 
     // MARK: Internal
 
-    let account: AccountConfiguration
+    let account: Account
     let status: DetailPortalViewModel.Status<LedgerData>
 
     var body: some View {
@@ -1079,7 +1079,7 @@ private struct AbyssInfoNavigator: View {
 
     // MARK: Internal
 
-    let account: AccountConfiguration
+    let account: Account
     let status: DetailPortalViewModel.Status<SpiralAbyssDetail>
 
     var body: some View {
@@ -1331,7 +1331,7 @@ private struct BasicInfoNavigator: View {
 
     // MARK: Internal
 
-    let account: AccountConfiguration
+    let account: Account
     let status: DetailPortalViewModel.Status<BasicInfos>
 
     var body: some View {
@@ -1594,7 +1594,7 @@ private struct DPVErrorView: View {
     @EnvironmentObject
     private var vmDPV: DetailPortalViewModel
 
-    let account: AccountConfiguration
+    let account: Account
     let apiPath: String
     let error: Error
 
@@ -1631,7 +1631,7 @@ private struct DPVErrorView: View {
 private struct VerificationNeededView: View {
     // MARK: Internal
 
-    let account: AccountConfiguration
+    let account: Account
     let challengePath: String
     let completion: () -> ()
 

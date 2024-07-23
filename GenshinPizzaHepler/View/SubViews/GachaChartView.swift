@@ -21,10 +21,10 @@ struct GachaChartView: View {
     var gachaViewModel: GachaViewModel
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     @ViewBuilder
     var listHeader: some View {

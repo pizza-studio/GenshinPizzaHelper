@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountInfoView: View {
-    var account: AccountConfiguration
+    var account: Account
 
     var body: some View {
         VStack(alignment: .leading) {

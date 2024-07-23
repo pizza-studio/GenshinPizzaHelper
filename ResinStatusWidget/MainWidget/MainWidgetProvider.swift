@@ -68,7 +68,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
             to: currentDate
         )!
 
-        let accountConfigurationModel = AccountConfigurationModel.shared
+        let accountConfigurationModel = AccountModel.shared
         let configs = accountConfigurationModel.fetchAccountConfigs()
 
         var viewConfig: WidgetViewConfiguration = .defaultConfig
@@ -144,7 +144,7 @@ struct MainWidgetProvider: IntentTimelineProvider {
 
         getTimelineEntries(config: config, viewConfig: viewConfig)
 
-        func getTimelineEntries(config: AccountConfiguration, viewConfig: WidgetViewConfiguration) {
+        func getTimelineEntries(config: Account, viewConfig: WidgetViewConfiguration) {
             Task {
                 do {
                     let data = try await config.dailyNote()

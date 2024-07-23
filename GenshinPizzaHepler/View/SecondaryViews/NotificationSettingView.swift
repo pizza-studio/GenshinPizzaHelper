@@ -266,10 +266,10 @@ struct NotificationSettingView: View {
 
 struct IgnoreNotificationAccountView: View {
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var configs: FetchedResults<AccountConfiguration>
+    var configs: FetchedResults<Account>
 
     @Default(.notificationIgnoreUidsData)
     var data: Data
@@ -302,7 +302,7 @@ private struct IgnoreNotificationAccountItem: View {
     var isOn: Bool
     @Binding
     var ignoreUids: [String]
-    var config: AccountConfiguration
+    var config: Account
 
     var body: some View {
         Toggle(isOn: $isOn) {

@@ -19,10 +19,10 @@ struct GachaView: View {
     // MARK: Internal
 
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     @StateObject
     var gachaViewModel: GachaViewModel = .shared
@@ -166,7 +166,7 @@ struct GachaView: View {
         accounts.first(where: { $0.server.region == .mainlandChina }) != nil
     }
 
-    private func firstAccount(uid: String) -> AccountConfiguration? {
+    private func firstAccount(uid: String) -> Account? {
         accounts.first(where: { $0.uid == uid })
     }
 }
@@ -790,10 +790,10 @@ extension GachaItem {
 
 private struct GachaDetailView: View {
     @FetchRequest(sortDescriptors: [.init(
-        keyPath: \AccountConfiguration.priority,
+        keyPath: \Account.priority,
         ascending: true
     )])
-    var accounts: FetchedResults<AccountConfiguration>
+    var accounts: FetchedResults<Account>
 
     @StateObject
     var gachaViewModel: GachaViewModel = .shared

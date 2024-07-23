@@ -43,7 +43,7 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
     @Published
     var notificationMessage: NotificationMessage?
     @Published
-    var sharedAccounts = [AccountConfiguration]()
+    var sharedAccounts = [Account]()
 
     func send(_ message: String) {
         print("Send message")
@@ -65,7 +65,7 @@ final class WatchConnectivityManager: NSObject, ObservableObject {
         }
     }
 
-    func sendAccounts(_ account: AccountConfiguration, _ message: String) {
+    func sendAccounts(_ account: Account, _ message: String) {
         print("Send account")
         guard WCSession.default.activationState == .activated else {
             return
@@ -111,7 +111,7 @@ extension WatchConnectivityManager: WCSessionDelegate {
             }
         }
         print("Received accounts")
-        let accountReceived = AccountConfiguration(context: AccountConfigurationModel.shared.container.viewContext)
+        let accountReceived = Account(context: AccountModel.shared.container.viewContext)
         let accountReceivedDict = message
         if let cookie = accountReceivedDict["cookie"] as? String,
            let deviceFingerPrintInner = accountReceivedDict["deviceFingerPrint"] as? String,
