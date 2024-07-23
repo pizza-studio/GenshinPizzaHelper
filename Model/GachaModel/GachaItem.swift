@@ -100,13 +100,6 @@ extension GachaItem {
     }
 }
 
-extension GachaItem.RankType {
-    // TODO: find by name
-    static func findByName(_ name: String) -> Self {
-        .three
-    }
-}
-
 // MARK: - GetGachaError
 
 public enum GetGachaError: Error, Equatable {

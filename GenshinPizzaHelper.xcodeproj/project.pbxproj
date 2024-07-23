@@ -12,6 +12,8 @@
 		5B11A26D2C020152006B0BF9 /* CGImageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11A26B2C020151006B0BF9 /* CGImageImpl.swift */; };
 		5B18C5422AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
 		5B18C5432AD091C100C745BA /* WKWebViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */; };
+		5B2D1F792C4FDB4600B1C6D6 /* UIGFModel_v2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D1F782C4FDB4600B1C6D6 /* UIGFModel_v2.swift */; };
+		5B2D1F7A2C4FDB4600B1C6D6 /* UIGFModel_v2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D1F782C4FDB4600B1C6D6 /* UIGFModel_v2.swift */; };
 		5B41C1822AD3011700CDF2C5 /* HBMihoyoAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17E2AD3010600CDF2C5 /* HBMihoyoAPI */; };
 		5B41C1832AD3011700CDF2C5 /* GIPizzaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B41C17F2AD3010600CDF2C5 /* GIPizzaKit */; };
 		5B4A251F2BD8F6E500614070 /* LinearProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */; };
@@ -829,6 +831,7 @@
 /* Begin PBXFileReference section */
 		5B11A26B2C020151006B0BF9 /* CGImageImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageImpl.swift; sourceTree = "<group>"; };
 		5B18C5412AD091C100C745BA /* WKWebViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewExtension.swift; sourceTree = "<group>"; };
+		5B2D1F782C4FDB4600B1C6D6 /* UIGFModel_v2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGFModel_v2.swift; sourceTree = "<group>"; };
 		5B3DF7BF2BA49C040015ACC9 /* DevDocs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DevDocs; sourceTree = "<group>"; };
 		5B41C1812AD3010700CDF2C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B4A251E2BD8F6E500614070 /* LinearProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearProgressView.swift; sourceTree = "<group>"; };
@@ -1521,6 +1524,7 @@
 				EA11488E29D9A8730059DEBF /* UIGFModel_v4.swift */,
 				EA0A6D0A29DDC74000A356A4 /* GachaLanguageCode.swift */,
 				EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */,
+				5B2D1F782C4FDB4600B1C6D6 /* UIGFModel_v2.swift */,
 			);
 			path = GachaModel;
 			sourceTree = "<group>";
@@ -2541,6 +2545,7 @@
 				5BD1C6372A2A1FC90043C2B1 /* WidgetUserData.swift in Sources */,
 				5BD1C6382A2A1FC90043C2B1 /* ExportGachaView.swift in Sources */,
 				5BD1C6392A2A1FC90043C2B1 /* NotificationSettingView.swift in Sources */,
+				5B2D1F7A2C4FDB4600B1C6D6 /* UIGFModel_v2.swift in Sources */,
 				EA0281122B79DE99003FE7AF /* GIDictionaryView.swift in Sources */,
 				5BD1C63A2A2A1FC90043C2B1 /* AvatarShowCaseView.swift in Sources */,
 				5BD1C63B2A2A1FC90043C2B1 /* IntentHandler.swift in Sources */,
@@ -2935,6 +2940,7 @@
 				EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */,
 				EA07C65628B11DB40030E338 /* NotificationSettingView.swift in Sources */,
 				EADE317028EB31EA00CB7354 /* AvatarShowCaseView.swift in Sources */,
+				5B2D1F792C4FDB4600B1C6D6 /* UIGFModel_v2.swift in Sources */,
 				EA0281112B79DE98003FE7AF /* GIDictionaryView.swift in Sources */,
 				EA759D732B19989A0080C775 /* CreateAccountSheetView.swift in Sources */,
 				EA709DD928AA0B2F00274425 /* IntentHandler.swift in Sources */,
