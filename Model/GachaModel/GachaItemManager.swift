@@ -171,7 +171,7 @@ public class GachaModelManager {
                 item.editId(String(index))
             }
             return self.addRecordItem(item)
-        }.map { $0 ? 1 : 0 }.reduce(0) { $0 + $1 }
+        }.map { $0 ? 1 : 0 }.reduce(0, +)
         save()
         return newCount
     }
