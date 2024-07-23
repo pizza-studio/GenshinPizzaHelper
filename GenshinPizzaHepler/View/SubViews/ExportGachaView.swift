@@ -133,13 +133,8 @@ struct ExportGachaView: View {
                             isSucceedAlertShow = false
                         }
                     },
-                    message: { thisAlert in
-                        switch thisAlert {
-                        case let .succeed(url):
-                            Text("gacha.export.fileSavedTo:\(url)")
-                        default:
-                            EmptyView()
-                        }
+                    message: { _ in
+                        messageView
                     }
                 )
                 .alert(
@@ -151,13 +146,8 @@ struct ExportGachaView: View {
                             isFailureAlertShow = false
                         }
                     },
-                    message: { thisAlert in
-                        switch thisAlert {
-                        case let .failure(error):
-                            Text("错误信息：\(error)")
-                        default:
-                            EmptyView()
-                        }
+                    message: { _ in
+                        messageView
                     }
                 )
                 .fileExporter(
@@ -166,13 +156,30 @@ struct ExportGachaView: View {
                     contentType: .json,
                     defaultFilename: defaultFileName
                 ) { result in
-                    switch result {
-                    case let .success(url):
-                        alert = .succeed(url: url.absoluteString)
-                    case let .failure(failure):
-                        alert = .failure(message: failure.localizedDescription)
-                    }
+                    handleFileExportResult(for: result)
                 }
+        }
+    }
+
+    @ViewBuilder
+    private var messageView: some View {
+        switch alert {
+        case let .failure(error):
+            Text("错误信息：\(error)")
+        case let .succeed(url):
+            Text("gacha.export.fileSavedTo:\(url)")
+        default:
+            EmptyView()
+        }
+    }
+
+    @MainActor
+    private func handleFileExportResult(for result: Result<URL, any Error>) {
+        switch result {
+        case let .success(url):
+            alert = .succeed(url: url.absoluteString)
+        case let .failure(failure):
+            alert = .failure(message: failure.localizedDescription)
         }
     }
 
