@@ -200,7 +200,6 @@ class GachaViewModel: ObservableObject {
         var theUIDs = [String]()
         var (x, y, z) = ("", 0, 0)
         profiles?.forEach { theProfile in
-            let info = uigfJson.info
             let items = theProfile.list
             let newCount = manager.addRecordItems(
                 items,
