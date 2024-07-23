@@ -32,7 +32,6 @@ extension GachaItemFetched {
         let model = GachaItemMO(context: context)
         model.uid = item.uid
         model.gachaType = Int16(item.gachaType)!
-        model.itemId = item.itemId
         model.count = Int16(item.count)!
         model.time = item.time
         model.name = item.name
@@ -40,6 +39,12 @@ extension GachaItemFetched {
         model.itemType = item.itemType
         model.rankType = Int16(item.rankType)!
         model.id = item.id
+        if item.itemId.isEmpty,
+           let itemId = GachaMetaDBExposed.shared.reverseQuery(for: item.name) {
+            model.itemId = itemId.description
+        } else {
+            model.itemId = item.itemId
+        }
         return model
     }
 }

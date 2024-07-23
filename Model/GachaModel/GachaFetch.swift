@@ -122,6 +122,17 @@ extension MihoyoAPI {
                     from: data!
                 )
                 let items = try result.toGachaItemArray()
+
+                /// Check whether GachaItemDB is expired.
+                if GachaMetaDBExposed.shared.mainDB.checkIfExpired(against: Set<String>(items.map(\.itemId))) {
+                    defer {
+                        Task.detached { @MainActor in
+                            try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()
+                        }
+                    }
+                    throw GachaMetaDBExposed.GMDBError.databaseExpired
+                }
+
                 Task.detached { @MainActor in
                     observer.got(items)
                 }

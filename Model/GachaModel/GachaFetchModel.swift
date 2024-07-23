@@ -58,6 +58,25 @@ struct GachaItemFetched: Codable, Identifiable {
         self.id = id
     }
 
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.uid = try container.decode(String.self, forKey: .uid)
+        self.gachaType = try container.decode(String.self, forKey: .gachaType)
+        self.count = try container.decode(String.self, forKey: .count)
+        self.time = try container.decode(Date.self, forKey: .time)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.lang = try container.decode(GachaLanguageCode.self, forKey: .lang)
+        self.itemType = try container.decode(String.self, forKey: .itemType)
+        self.rankType = try container.decode(String.self, forKey: .rankType)
+        self.id = try container.decode(String.self, forKey: .id)
+        var theItemID = (try? container.decode(String?.self, forKey: .itemId)) ?? ""
+        if theItemID.isEmpty,
+           let newItemID = GachaMetaDBExposed.shared.reverseQuery(for: name) {
+            theItemID = newItemID.description
+        }
+        self.itemId = theItemID
+    }
+
     // MARK: Internal
 
     let uid: String

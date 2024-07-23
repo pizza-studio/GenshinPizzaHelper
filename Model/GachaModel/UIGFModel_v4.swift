@@ -42,6 +42,16 @@ public struct UIGFv4: Codable, Hashable, Sendable {
     public var info: Info
 }
 
+extension UIGFv4 {
+    fileprivate static func makeDecodingError(_ key: CodingKey) -> Error {
+        let keyName = key.description
+        var msg = "\(keyName) value is invalid or empty. "
+        msg += "// \(keyName) 不得是空值或不可用值。 "
+        msg += "// \(keyName) は必ず有効な値しか処理できません。"
+        return DecodingError.dataCorrupted(.init(codingPath: [key], debugDescription: msg))
+    }
+}
+
 // MARK: UIGFv4.Info
 
 extension UIGFv4 {
@@ -116,7 +126,7 @@ extension UIGFv4 {
             self.lang = try container.decode(GachaLanguageCode.self, forKey: .lang)
             self.timezone = try container.decode(Int.self, forKey: .timezone)
 
-            if let x = try? container.decode(String.self, forKey: .uid) {
+            if let x = try? container.decode(String.self, forKey: .uid), !x.isEmpty {
                 self.uid = x
             } else if let x = try? container.decode(Int.self, forKey: .uid) {
                 self.uid = x.description
@@ -169,45 +179,34 @@ extension UIGFv4 {
             }
 
             public init(from decoder: any Decoder) throws {
-                let container: KeyedDecodingContainer<UIGFv4.ProfileGI.GachaItemGI.CodingKeys> = try decoder
-                    .container(keyedBy: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.self)
-                self.count = try container.decodeIfPresent(
-                    String.self,
-                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.count
-                )
-                self.gachaType = try container.decode(
-                    UIGFv4.ProfileGI.GachaItemGI.GachaTypeGI.self,
-                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.gachaType
-                )
-                self.id = try container.decode(String.self, forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.id)
-                if id.isEmpty {
-                    throw DecodingError.dataCorrupted(
-                        .init(
-                            codingPath: [CodingKeys.id],
-                            debugDescription: """
-                            itemID shall not be empty. // itemID 不得是空值。 // itemID は必ず有効な値しか処理できません。
-                            """
-                        )
-                    )
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+
+                self.count = try container.decodeIfPresent(String.self, forKey: .count)
+                if Int(count ?? "") == nil { throw UIGFv4.makeDecodingError(CodingKeys.count) }
+
+                self.gachaType = try container.decode(GachaTypeGI.self, forKey: .gachaType)
+
+                self.id = try container.decode(String.self, forKey: .id)
+                if Int(id) == nil { throw UIGFv4.makeDecodingError(CodingKeys.id) }
+
+                self.itemID = try container.decode(String.self, forKey: .itemID)
+                if Int(itemID) == nil { throw UIGFv4.makeDecodingError(CodingKeys.itemID) }
+
+                self.itemType = try container.decodeIfPresent(String.self, forKey: .itemType)
+                if itemType?.isEmpty ?? false { throw UIGFv4.makeDecodingError(CodingKeys.itemType) }
+
+                self.name = try container.decodeIfPresent(String.self, forKey: .name)
+                if name?.isEmpty ?? false { throw UIGFv4.makeDecodingError(CodingKeys.name) }
+
+                self.rankType = try container.decodeIfPresent(String.self, forKey: .rankType)
+                if Int(rankType ?? "") == nil { throw UIGFv4.makeDecodingError(CodingKeys.rankType) }
+
+                self.time = try container.decode(String.self, forKey: .time)
+                if DateFormatter.forUIGFEntry(timeZoneDelta: 0).date(from: time) == nil {
+                    throw UIGFv4.makeDecodingError(CodingKeys.time)
                 }
-                self.itemID = try container.decode(String.self, forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.itemID)
-                self.itemType = try container.decodeIfPresent(
-                    String.self,
-                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.itemType
-                )
-                self.name = try container.decodeIfPresent(
-                    String.self,
-                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.name
-                )
-                self.rankType = try container.decodeIfPresent(
-                    String.self,
-                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.rankType
-                )
-                self.time = try container.decode(String.self, forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.time)
-                self.uigfGachaType = try container.decode(
-                    UIGFv4.ProfileGI.GachaItemGI.UIGFGachaTypeGI.self,
-                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.uigfGachaType
-                )
+
+                self.uigfGachaType = try container.decode(UIGFGachaTypeGI.self, forKey: .uigfGachaType)
             }
 
             // MARK: Public
@@ -435,8 +434,21 @@ extension UIGFGachaItem {
         } else {
             model.itemType = GachaItemType(itemIdStr: itemID).cnRaw
         }
-        // Sabotaged.
-        model.rankType = Int16(rankType ?? "4") ?? 4
+
+        // 处理 RankType。
+        // 此处的 Int -> Int16 转换应该不会有任何问题。
+        let maybeRankType: Int16?
+        if let intMaybeRankType = GachaMetaDBExposed.shared.mainDB.plainQueryForRarity(itemID: itemID) {
+            maybeRankType = Int16(intMaybeRankType)
+        } else {
+            maybeRankType = nil
+        }
+        if let rankType = rankType {
+            model.rankType = Int16(rankType) ?? maybeRankType ?? 4
+        } else {
+            model.rankType = maybeRankType ?? 4
+        }
+
         model.id = id
         return model
     }
@@ -448,7 +460,11 @@ extension GachaItemMO {
 
     func toUIGFGachaItem(_ languageCode: GachaLanguageCode) -> UIGFGachaItem {
         let timeZoneDelta: Int = GachaItem.getServerTimeZoneDelta(uid!.description)
-        let theItemID = itemId!
+        var theItemID = itemId ?? ""
+        if theItemID.isEmpty,
+           let newItemID = GachaMetaDBExposed.shared.reverseQuery(for: name!) {
+            theItemID = newItemID.description
+        }
         let newName = Self.enkaCNDB.queryLocalizedNameForChar(
             id: theItemID, officialNameOnly: true
         ) {

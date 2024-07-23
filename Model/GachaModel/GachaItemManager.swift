@@ -174,15 +174,6 @@ public class GachaModelManager {
         }
     }
 
-    func addRecordItem(_ item: GachaItemFetched, isNew: @escaping ((Bool) -> ())) {
-        if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
-            _ = item.toGachaItemMO(context: container.viewContext)
-            isNew(true)
-        } else {
-            isNew(false)
-        }
-    }
-
     /// 返回已保存的新数据数量
     func addRecordItems(
         _ items: [UIGFGachaItem],
@@ -224,15 +215,6 @@ public class GachaModelManager {
         }.map { $0 ? 1 : 0 }.reduce(0, +)
         save()
         return newCount
-    }
-
-    func addRecordItem(_ item: GachaItemFetched) -> Bool {
-        if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
-            _ = item.toGachaItemMO(context: container.viewContext)
-            return true
-        } else {
-            return false
-        }
     }
 
     func save() {
@@ -329,4 +311,22 @@ public class GachaModelManager {
         label: "com.GenshinPizzaHepler.SaveGacha",
         qos: .background
     )
+
+    private func addRecordItem(_ item: GachaItemFetched, isNew: @escaping ((Bool) -> ())) {
+        if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
+            _ = item.toGachaItemMO(context: container.viewContext)
+            isNew(true)
+        } else {
+            isNew(false)
+        }
+    }
+
+    private func addRecordItem(_ item: GachaItemFetched) -> Bool {
+        if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
+            _ = item.toGachaItemMO(context: container.viewContext)
+            return true
+        } else {
+            return false
+        }
+    }
 }
