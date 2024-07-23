@@ -518,6 +518,8 @@ private struct GetGachaNavigationMenu: View {
                 Label("app.gacha.import.which", systemSymbol: .questionmarkDiamond)
             }
 
+            Divider()
+
             if showByAPI {
                 NavigationLink(
                     destination: APIGetGachaView()
