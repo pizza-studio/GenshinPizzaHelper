@@ -138,7 +138,7 @@ extension UIGFv4 {
             }
 
             /// Check whether GachaItemDB is expired.
-            if GachaMetaDBExposed.shared.mainDB.checkIfExpired(against: Set<String>(list.map(\.id))) {
+            if GachaMetaDBExposed.shared.mainDB.checkIfExpired(against: Set<String>(list.map(\.itemID))) {
                 defer {
                     Task.detached { @MainActor in
                         try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()

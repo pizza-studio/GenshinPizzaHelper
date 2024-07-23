@@ -267,15 +267,24 @@ public class GachaModelManager {
     }
 
     /// 删除数据，并返回删除的数据条数
-    func deleteData(for uid: String, startDate: Date, endData: Date) -> Int {
+    func deleteData(
+        for uid: String,
+        startDate: Date,
+        endData: Date,
+        removeAll: Bool
+    )
+        -> Int {
         container.viewContext.refreshAllObjects()
         let request = GachaItemMO.fetchRequest()
-        let predicate = NSPredicate(
+        var predicate = NSPredicate(
             format: "(uid = %@) AND (time >= %@) AND (time <= %@)",
             uid,
             startDate as NSDate,
             endData as NSDate
         )
+        if removeAll {
+            predicate = NSPredicate(format: "(uid = %@)", uid)
+        }
         request.predicate = predicate
         do {
             let items = try container.viewContext.fetch(request)

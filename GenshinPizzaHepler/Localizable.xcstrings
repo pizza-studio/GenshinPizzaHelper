@@ -26532,7 +26532,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "gacha.prompt.dataRemoval"
+            "value" : "確定要刪除嗎？"
           }
         }
       }

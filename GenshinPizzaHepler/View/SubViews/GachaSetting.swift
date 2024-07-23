@@ -225,7 +225,8 @@ struct GachaSetting: View {
                     .deleteData(
                         for: account!,
                         startDate: startDate,
-                        endData: endDate
+                        endData: endDate,
+                        removeAll: deleteAll
                     )
             )
             withAnimation {
