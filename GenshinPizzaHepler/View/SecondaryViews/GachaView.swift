@@ -233,7 +233,7 @@ private struct GachaStatisticSectionView: View {
                 )
                 Spacer()
                 let number = fiveStarItemsWithCount.map { $0.count }
-                    .reduce(0) { $0 + $1 } /
+                    .reduce(0, +) /
                     max(fiveStarItemsWithCount.count, 1)
                 Text("\(showDrawingNumber ? number : number * 160)")
             }
@@ -477,6 +477,7 @@ private struct GachaChart: View {
     }
 
     var body: some View {
+        let averageValue = fiveStarItems.map(\.count).reduce(0, +) / max(fiveStarItems.count, 1)
         ScrollView(.horizontal) {
             Chart {
                 ForEach(fiveStarItems, id: \.0.id) { item in
@@ -491,13 +492,9 @@ private struct GachaChart: View {
                     .foregroundStyle(by: .value("sys.pull", item.0.id))
                 }
                 if !fiveStarItems.isEmpty {
-                    RuleMark(y: .value(
-                        "平均",
-                        fiveStarItems.map { $0.count }
-                            .reduce(0) { $0 + $1 } / max(fiveStarItems.count, 1)
-                    ))
-                    .foregroundStyle(.gray)
-                    .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
+                    RuleMark(y: .value("平均", averageValue))
+                        .foregroundStyle(.gray)
+                        .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
                 }
             }
             .chartXAxis(content: {
