@@ -442,11 +442,25 @@ private struct GachaItemBar: View {
     let showTime: Bool
     let showingType: GachaFilter.Rank
 
+    var isItemIDMissing: Bool {
+        item.itemId.isEmpty
+    }
+
+    @MainActor
+    var itemIDText: Text {
+        if showTime {
+            Text(verbatim: isItemIDMissing ? "  !! Item ID Missing" : "  (ID: \(item.itemId))")
+                .font(.caption).foregroundColor(isItemIDMissing ? .red : .secondary)
+        } else {
+            Text(verbatim: "")
+        }
+    }
+
     var width: CGFloat { showingType == .five ? 35 : 30 }
     var body: some View {
         HStack {
             Label {
-                Text(item.localizedName)
+                Text(item.localizedName) + itemIDText
             } icon: {
                 item.decoratedIconView(width, cutTo: .face)
             }

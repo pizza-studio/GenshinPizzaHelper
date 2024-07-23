@@ -7,6 +7,8 @@
 
 import AlertToast
 import CoreXLSX
+import Defaults
+import GIPizzaKit
 import SFSafeSymbols
 import SwiftUI
 import UniformTypeIdentifiers
@@ -161,7 +163,8 @@ struct ImportGachaView: View {
                         guard let uid = cells[uidIndex],
                               let gachaType = cells[gachaTypeIndex],
                               let itemType = cells[itemTypeIndex],
-                              let name = cells[nameIndex] else {
+                              let name = cells[nameIndex]
+                        else {
                             return nil
                         }
                         let id: String
@@ -173,11 +176,13 @@ struct ImportGachaView: View {
                         }
                         let itemId: String
                         if let itemIdIndex = itemIdIndex,
-                           let itemIdString = cells[itemIdIndex] {
+                           let itemIdString = cells[itemIdIndex],
+                           !itemIdString.isEmpty {
                             itemId = itemIdString
                         } else {
                             itemId = ""
                         }
+
                         let count: String
                         if let countIndex = countIndex,
                            let countString = cells[countIndex] {
@@ -214,7 +219,7 @@ struct ImportGachaView: View {
                             rankType = "3"
                         }
 
-                        return .init(
+                        return GachaItemFetched(
                             uid: uid,
                             gachaType: gachaType,
                             itemId: itemId,
@@ -509,18 +514,29 @@ private struct SucceedView: View {
             }
             Text(verbatim: "UID: \(info.uid)")
             if let app = info.app {
-                let sourceInfo = String(format: "app.gacha.import.info.source:%@", app).localized
+                let sourceInfo = String(
+                    format: "app.gacha.import.info.source:%@".localized,
+                    app
+                )
                 Text(sourceInfo)
             }
             if let date = info.exportDate {
-                let timeInfo = String(format: "app.gacha.import.info.time:%@", dateFormatter.string(from: date))
-                    .localized
+                let timeInfo = String(
+                    format: "app.gacha.import.info.time:%@".localized,
+                    dateFormatter.string(from: date)
+                )
                 Text(timeInfo)
             }
         }
         Section {
-            let importInfo = String(format: "app.gacha.import.info.import:%lld", info.totalCount).localized
-            let storageInfo = String(format: "app.gacha.import.info.storage:%lld", info.newCount).localized
+            let importInfo = String(
+                format: "app.gacha.import.info.import:%lld".localized,
+                info.totalCount
+            )
+            let storageInfo = String(
+                format: "app.gacha.import.info.storage:%lld".localized,
+                info.newCount
+            )
             Text(importInfo)
             Text(storageInfo)
         }

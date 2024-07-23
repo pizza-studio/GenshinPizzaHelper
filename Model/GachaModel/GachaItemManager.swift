@@ -6,7 +6,9 @@
 //
 
 import CoreData
+import Defaults
 import Foundation
+import GIPizzaKit
 
 public class GachaModelManager {
     // MARK: Lifecycle
@@ -44,6 +46,10 @@ public class GachaModelManager {
             .mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 
         container.viewContext.refreshAllObjects()
+
+        Task.detached { @MainActor in
+            self.fixEmptyItemIDs()
+        }
     }
 
     // MARK: Internal
@@ -112,13 +118,57 @@ public class GachaModelManager {
         }
     }
 
+    @MainActor
+    func fixEmptyItemIDs(refreshAll: Bool = false) {
+        if refreshAll {
+            container.viewContext.performAndWait {
+                container.viewContext.refreshAllObjects()
+            }
+        }
+        let request = GachaItemMO.fetchRequest()
+        request.predicate = NSPredicate(format: #"(itemId = "") OR (itemId = NULL)"#)
+        var errorHappened = false
+        let fetched: [GachaItemMO]
+        do {
+            fetched = try container.viewContext.fetch(request)
+        } catch {
+            let errTxt = error.localizedDescription
+            print(errTxt)
+            fetched = []
+        }
+        fetched.forEach { target in
+            if let targetName = target.name,
+               let queriedID = GachaMetaDBExposed.shared.reverseQuery(for: targetName) {
+                target.itemId = queriedID.description
+            } else {
+                errorHappened = true
+            }
+        }
+        save()
+        if errorHappened {
+            Task.detached { @MainActor in
+                try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()
+                self.fixEmptyItemIDs()
+            }
+        }
+    }
+
     func addRecordItems(
         _ items: [GachaItemFetched],
         isNew: @escaping ((Bool) -> ())
     ) {
         container.viewContext.perform { [self] in
+            var needsIDFix = false
             items.forEach { item in
+                if item.itemId.isEmpty {
+                    needsIDFix = true
+                }
                 self.addRecordItem(item, isNew: isNew)
+            }
+            if needsIDFix {
+                Task.detached { @MainActor in
+                    self.fixEmptyItemIDs()
+                }
             }
             save()
         }

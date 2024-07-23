@@ -6,6 +6,7 @@ import Defaults
 
 // MARK: - Local Query APIs.
 
+#if !os(watchOS)
 extension EnkaGI.EnkaDB {
     public func queryLocalizedNameForChar(
         id: String,
@@ -31,3 +32,5 @@ extension EnkaGI.EnkaDB {
         }
     }
 }
+
+#endif

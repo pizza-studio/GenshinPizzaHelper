@@ -8,6 +8,7 @@
 import Combine
 import CoreData
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
 import HoYoKit
 import SwiftUI

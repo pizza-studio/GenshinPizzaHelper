@@ -20,6 +20,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/sindresorhus/Defaults", from: "7.3.1"),
+        .package(url: "https://github.com/pizza-studio/GachaMetaGenerator", from: "2.0.2"),
         .package(path: "../HBMihoyoAPI"),
         .package(path: "../DefaultsKeys"),
         .package(path: "../HoYoKit"),
@@ -32,6 +33,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Defaults", package: "Defaults"),
                 .product(name: "DefaultsKeys", package: "DefaultsKeys"),
+                .product(name: "GachaMetaDB", package: "GachaMetaGenerator"),
                 .product(name: "HBMihoyoAPI", package: "HBMihoyoAPI"),
                 .product(name: "HoYoKit", package: "HoYoKit"),
             ],

@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Defaults
 import Foundation
 import GIPizzaKit
 import SwiftUI
@@ -128,6 +129,16 @@ extension UIGFv4 {
                     )
                 )
             }
+
+            /// Check whether GachaItemDB is expired.
+            if GachaMetaDBExposed.shared.mainDB.checkIfExpired(against: Set<String>(list.map(\.id))) {
+                defer {
+                    Task.detached { @MainActor in
+                        try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()
+                    }
+                }
+                throw GachaMetaDBExposed.GMDBError.databaseExpired
+            }
         }
 
         // MARK: Public
@@ -155,6 +166,48 @@ extension UIGFv4 {
                 self.rankType = rankType
                 self.time = time
                 self.uigfGachaType = uigfGachaType
+            }
+
+            public init(from decoder: any Decoder) throws {
+                let container: KeyedDecodingContainer<UIGFv4.ProfileGI.GachaItemGI.CodingKeys> = try decoder
+                    .container(keyedBy: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.self)
+                self.count = try container.decodeIfPresent(
+                    String.self,
+                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.count
+                )
+                self.gachaType = try container.decode(
+                    UIGFv4.ProfileGI.GachaItemGI.GachaTypeGI.self,
+                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.gachaType
+                )
+                self.id = try container.decode(String.self, forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.id)
+                if id.isEmpty {
+                    throw DecodingError.dataCorrupted(
+                        .init(
+                            codingPath: [CodingKeys.id],
+                            debugDescription: """
+                            itemID shall not be empty. // itemID 不得是空值。 // itemID は必ず有効な値しか処理できません。
+                            """
+                        )
+                    )
+                }
+                self.itemID = try container.decode(String.self, forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.itemID)
+                self.itemType = try container.decodeIfPresent(
+                    String.self,
+                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.itemType
+                )
+                self.name = try container.decodeIfPresent(
+                    String.self,
+                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.name
+                )
+                self.rankType = try container.decodeIfPresent(
+                    String.self,
+                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.rankType
+                )
+                self.time = try container.decode(String.self, forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.time)
+                self.uigfGachaType = try container.decode(
+                    UIGFv4.ProfileGI.GachaItemGI.UIGFGachaTypeGI.self,
+                    forKey: UIGFv4.ProfileGI.GachaItemGI.CodingKeys.uigfGachaType
+                )
             }
 
             // MARK: Public

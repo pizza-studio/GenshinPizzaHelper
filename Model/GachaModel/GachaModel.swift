@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import GIPizzaKit
 
 extension GachaItemMO {
     public func toGachaItem() -> GachaItem {

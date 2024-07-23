@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import GIPizzaKit
 import HBMihoyoAPI
 import HoYoKit
 
@@ -165,6 +166,13 @@ extension MihoyoAPI {
             } catch let error as GetGachaError {
                 completion(.failure(error))
             } catch {
+                checkDBExpiry: switch error {
+                case GachaMetaDBExposed.GMDBError.databaseExpired:
+                    Task.detached { @MainActor in
+                        try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()
+                    }
+                default: break checkDBExpiry
+                }
                 print(error.localizedDescription)
                 completion(
                     .failure(

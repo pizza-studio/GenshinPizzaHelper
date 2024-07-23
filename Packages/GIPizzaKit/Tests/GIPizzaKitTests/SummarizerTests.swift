@@ -14,8 +14,7 @@ final class SummarizerTests: XCTestCase {
         let enkaDB = EnkaGI.Sputnik.sharedDB
         let theAvatar = EnkaGI.QueryRelated.Avatar(
             avatarInfo: theAvatarRaw,
-            localizedDictionary: enkaDB.locTable,
-            characterDictionary: enkaDB.characters,
+            theDB: enkaDB,
             uid: "1145141919810"
         )
         XCTAssertNotNil(theAvatar)

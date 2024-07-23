@@ -6,15 +6,17 @@
 //
 
 import CoreData
+import Defaults
 import Foundation
 import GIPizzaKit
 
 // MARK: - GachaResultFetched
 
+/// 拿到的每一页的原始资料结构。
 public struct GachaResultFetched: Codable {
     let retcode: Int
     let message: String
-    let data: GachaPageFetched?
+    var data: GachaPageFetched?
 }
 
 // MARK: - GachaPageFetched
@@ -24,15 +26,43 @@ struct GachaPageFetched: Codable {
     let size: String
     let total: String
     let region: String
-    let list: [GachaItemFetched]
+    var list: [GachaItemFetched]
 }
 
 // MARK: - GachaItemFetched
 
 struct GachaItemFetched: Codable, Identifiable {
+    // MARK: Lifecycle
+
+    init(
+        uid: String,
+        gachaType: String,
+        itemId: String,
+        count: String,
+        time: Date,
+        name: String,
+        lang: GachaLanguageCode,
+        itemType: String,
+        rankType: String,
+        id: String
+    ) {
+        self.uid = uid
+        self.gachaType = gachaType
+        self.itemId = itemId
+        self.count = count
+        self.time = time
+        self.name = name
+        self.lang = lang
+        self.itemType = itemType
+        self.rankType = rankType
+        self.id = id
+    }
+
+    // MARK: Internal
+
     let uid: String
     let gachaType: String
-    let itemId: String
+    var itemId: String
     let count: String
     let time: Date
     var name: String
@@ -45,7 +75,12 @@ struct GachaItemFetched: Codable, Identifiable {
 extension GachaResultFetched {
     func toGachaItemArray() throws -> [GachaItemFetched] {
         switch retcode {
-        case 0: return data!.list
+        case 0:
+            guard let data = data else {
+                throw GetGachaError
+                    .unknowError(retcode: 114_514, message: "Data is Nil.")
+            }
+            return data.list
         case -100: throw GetGachaError.incorrectAuthkey
         case -101: throw GetGachaError.authkeyTimeout
         case -110: throw GetGachaError.visitTooFrequently
