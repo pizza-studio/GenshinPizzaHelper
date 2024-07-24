@@ -119,7 +119,7 @@ struct ExportGachaView: View {
                     }
                 }
             } footer: {
-                Text("app.gacha.explainBetaUIGF")
+                Text("app.gacha.explainUIGF")
                     + Text(verbatim: "\n\n")
                     + Text("app.gacha.uigf.affLink.[UIGF](https://uigf.org/)")
             }
@@ -137,7 +137,7 @@ struct ExportGachaView: View {
                     }
                 }
             } label: {
-                Text(verbatim: "UIGFv4 (beta)")
+                Text(verbatim: "UIGFv4")
             }
         } label: {
             Label("gacha.manage.uigf.export.toolbarTitle", systemSymbol: .squareAndArrowUpOnSquare)
