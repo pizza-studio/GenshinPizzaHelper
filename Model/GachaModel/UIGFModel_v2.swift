@@ -12,9 +12,17 @@ import UniformTypeIdentifiers
 
 // MARK: - UIGFv2
 
-// 原披助手不再提供 UIGFv2~v3 格式（也就是 GIGF 格式）的导出支援，而是仅保留导入的功能。
-// 没写明 lang 的一律按照简体中文来处理；有写明 lang 的则将 name 转译成简体中文。
-
+/// UIGFv2~v3 格式（也就是 GIGF 格式）。
+///
+/// 原披助手不再提供 UIGFv2~v3 格式（也就是 GIGF 格式）的导出支援，而是仅保留导入的功能。
+///
+/// 没写明 lang 的一律先侦测语言、且拿简体中文当垫底语言来处理。
+///
+/// 原披助手不图 GIGF 格式所承载的资料的完美性，GIGF 的所有内容都会被先转换成 UIGFv4 再利用。
+///
+/// 最终写入 App 自身的 CoreData 资料库的内容一定是简体中文，这个步骤由 UIGFv4 把关。
+///
+/// Ref: [UIGF](https://uigf.org/zh/standards/uigf.html)
 struct UIGFv2: Decodable {
     // MARK: Lifecycle
 

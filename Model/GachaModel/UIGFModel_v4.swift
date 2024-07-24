@@ -11,12 +11,14 @@ import UniformTypeIdentifiers
 
 // MARK: - UIGFv4
 
-// 原披助手现阶段引入的 UIGFv4 不会考虑对任何来自除了原神以外的游戏的资料处理。
-// 出于实作成本等原因，目前原披助手仅处理被 UIGF 认定为 required 的字段。
-// 你们可能会在穹披助手的源码仓库看到除了星穹铁道以外的游戏的资料结构，
-// 但穹披助手也只会处理星穹铁道的资料而已。
-// Ref: https://uigf.org/zh/standards/uigf.html
-
+/// UIGFv4 格式。
+///
+/// 原披助手现阶段引入的 UIGFv4 不会考虑对任何来自除了原神以外的游戏的资料处理。
+///
+/// 你们可能会在穹披助手的源码仓库看到除了星穹铁道以外的游戏的资料结构，
+/// 但穹披助手也只会处理星穹铁道的资料而已。
+///
+/// Ref: [UIGF](https://uigf.org/zh/standards/uigf.html)
 public struct UIGFv4: Codable, Hashable, Sendable {
     // MARK: Lifecycle
 
