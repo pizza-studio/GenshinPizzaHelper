@@ -137,7 +137,7 @@ struct ExportGachaView: View {
                     }
                 }
             } label: {
-                Text(verbatim: "UIGFv4")
+                Text(verbatim: "UIGFv4.0")
             }
         } label: {
             Label("gacha.manage.uigf.export.toolbarTitle", systemSymbol: .squareAndArrowUpOnSquare)
