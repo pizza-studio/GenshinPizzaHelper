@@ -6,6 +6,7 @@ import CoreData
 import Defaults
 import Foundation
 import GIPizzaKit
+import NaturalLanguage
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -15,13 +16,37 @@ import UniformTypeIdentifiers
 // 没写明 lang 的一律按照简体中文来处理；有写明 lang 的则将 name 转译成简体中文。
 
 struct UIGFv2: Decodable {
+    // MARK: Lifecycle
+
+    public init(info: Info, list: [GIGFGachaItem]) {
+        self.info = info
+        self.list = list
+    }
+
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.info = try container.decode(UIGFv2.Info.self, forKey: .info)
+        self.list = try container.decode([GIGFGachaItem].self, forKey: .list)
+        fixItemIDs()
+    }
+
+    // MARK: Public
+
+    public let info: Info
+    public internal(set) var list: [GIGFGachaItem]
+
+    public var needsItemIDFix: Bool {
+        !list.filter { $0.itemID.isEmpty }.isEmpty
+    }
+
+    // MARK: Internal
+
     struct Info: Decodable {
         // MARK: Lifecycle
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.uid = try container.decode(String.self, forKey: .uid)
-            self.lang = try container.decodeIfPresent(GachaLanguageCode.self, forKey: .lang) ?? .zhHans
 
             let dateFormatter = DateFormatter.Gregorian()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -53,6 +78,8 @@ struct UIGFv2: Decodable {
                 Int.self,
                 forKey: .regionTimeZone
             )
+
+            self.lang = (try? container.decodeIfPresent(GachaLanguageCode.self, forKey: .lang)) ?? .zhHans
         }
 
         // MARK: Internal
@@ -67,7 +94,7 @@ struct UIGFv2: Decodable {
         }
 
         let uid: String
-        let lang: GachaLanguageCode
+        var lang: GachaLanguageCode
         let exportTime: Date?
         let exportTimestamp: Int?
         let exportApp: String?
@@ -76,8 +103,10 @@ struct UIGFv2: Decodable {
         let regionTimeZone: Int?
     }
 
-    let info: Info
-    let list: [GIGFGachaItem]
+    enum CodingKeys: CodingKey {
+        case info
+        case list
+    }
 }
 
 // MARK: - GIGFGachaItem
@@ -98,10 +127,7 @@ struct GIGFGachaItem: Decodable {
             ))
         }
 
-        self.itemID = try container.decodeIfPresent(
-            String.self,
-            forKey: .itemID
-        ) ?? ""
+        self.itemID = try container.decodeIfPresent(String.self, forKey: .itemID) ?? ""
         self.count = try container
             .decodeIfPresent(String.self, forKey: .count) ?? "1"
 
@@ -217,5 +243,87 @@ extension UIGFv2 {
         }
 
         return newInfo
+    }
+}
+
+// MARK: - Language Detection Feature
+
+extension UIGFv2 {
+    private static let recognizer = NLLanguageRecognizer()
+
+    private static func guessLanguages(for text: String) -> [GachaLanguageCode] {
+        Self.recognizer.processString(text)
+        return Self.recognizer.languageHypotheses(withMaximum: 114_514).sorted {
+            $0.value > $1.value
+        }.compactMap { tag in
+            GachaLanguageCode(langTag: tag.key.rawValue)
+        }
+    }
+
+    private var lingualDataForAnalysis: String {
+        var result = Set<String>()
+        list.forEach { currentItem in
+            result.insert(currentItem.name)
+            result.insert(currentItem.itemType)
+        }
+        return result.joined(separator: "\n")
+    }
+
+    public var possibleLanguages: [GachaLanguageCode] {
+        Self.guessLanguages(for: lingualDataForAnalysis)
+    }
+
+    public var mightHaveWrongLanguageTag: Bool {
+        guard !list.isEmpty, let maybeLang = possibleLanguages.first else { return false }
+        return maybeLang != info.lang
+    }
+
+    public mutating func fixItemIDs(with givenLanguage: GachaLanguageCode? = nil) {
+        guard !list.isEmpty, needsItemIDFix else { return }
+        var languages = [info.lang]
+        if mightHaveWrongLanguageTag, !possibleLanguages.isEmpty {
+            languages = possibleLanguages
+        }
+        if let givenLanguage {
+            languages.removeAll { $0 == givenLanguage }
+            languages.insert(givenLanguage, at: 0)
+        }
+
+        if !languages.contains(.zhHans) {
+            languages.append(.zhHans) // 垫底语言。
+        }
+
+        let sharedDBSet = GachaMetaDBExposed.shared
+        var revDB = [String: Int]()
+        let listBackup = list
+        languageEnumeration: while !languages.isEmpty, let language = languages.first {
+            var languageMismatchDetected = false
+            switch language {
+            case .zhHans: revDB = sharedDBSet.reversedDB
+            default: revDB = language.makeRevDB()
+            }
+
+            listItemEnumeration: for listIndex in 0 ..< list.count {
+                guard Int(list[listIndex].itemID) == nil else { continue }
+                /// 只要没查到结果，就可以认定当前的语言匹配有误。
+                guard let newItemID = revDB[list[listIndex].name] else {
+                    languageMismatchDetected = true
+                    break listItemEnumeration
+                }
+                list[listIndex].itemID = newItemID.description
+            }
+
+            /// 检测无误的话，就退出处理。
+            guard languageMismatchDetected else { break languageEnumeration }
+            /// 处理语言有误时的情况：将 list 还原成修改前的状态，再测试下一个语言。
+            languages.removeFirst()
+            if !languages.isEmpty { list = listBackup }
+        }
+    }
+}
+
+extension GachaLanguageCode {
+    fileprivate func makeRevDB() -> [String: Int] {
+        GachaMetaDBExposed.shared.mainDB.generateHotReverseQueryDict(for: rawValue) ?? [:]
     }
 }
