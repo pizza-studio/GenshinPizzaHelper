@@ -38,6 +38,10 @@ class GachaViewModel: ObservableObject {
 
     // MARK: Internal
 
+    struct GachaImportReport {
+        let uid: String, totalCount: Int, newCount: Int
+    }
+
     static let shared: GachaViewModel = .init()
 
     let manager = GachaModelManager.shared
@@ -203,24 +207,21 @@ class GachaViewModel: ObservableObject {
     func importGachaFromUIGFJson(
         uigfJson: UIGFv4
     )
-        -> (uid: String, totalCount: Int, newCount: Int) {
-        let profiles = uigfJson.giProfiles?.compactMap { $0 }
-        var theUIDs = [String]()
-        var (x, y, z) = ("", 0, 0)
-        profiles?.forEach { theProfile in
-            let items = theProfile.list
+        -> [GachaImportReport] {
+        defer { refetchGachaItems() }
+        var resultStack = [GachaImportReport]()
+        uigfJson.giProfiles?.forEach { profile in
+            let items = profile.list
             let newCount = manager.addRecordItems(
                 items,
-                uid: theProfile.uid,
-                profile: theProfile
+                uid: profile.uid,
+                profile: profile
             )
-            y += items.count
-            z += newCount
-            theUIDs.append(theProfile.uid)
+            resultStack.append(
+                .init(uid: profile.uid, totalCount: items.count, newCount: newCount)
+            )
         }
-        x = theUIDs.joined(separator: ", ")
-        refetchGachaItems()
-        return (x, y, z)
+        return resultStack
     }
 }
 

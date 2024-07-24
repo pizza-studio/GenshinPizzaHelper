@@ -98,16 +98,24 @@ struct ImportGachaView: View {
                             giProfiles: [uigfObsolete.upgradeTo4thGenerationProfile()]
                         )
                     }
-                    let result = gachaViewModel.importGachaFromUIGFJson(uigfJson: uigfModel)
-                    status = .succeed(ImportSucceedInfo(
-                        uid: result.uid,
-                        totalCount: result.totalCount,
-                        newCount: result.newCount,
-                        app: uigfModel.info.exportApp,
-                        exportDate: Date(
-                            timeIntervalSince1970: Double(uigfModel.info.exportTimestamp) ?? -1
+                    let appMeta = uigfModel.info.exportApp
+                    let dateMeta = uigfModel.info.maybeDateExported
+                    let results = gachaViewModel.importGachaFromUIGFJson(uigfJson: uigfModel)
+
+                    var succeededMessages: [ImportSucceedInfo] = []
+                    results.forEach { currentMsg in
+                        succeededMessages.append(
+                            ImportSucceedInfo(
+                                uid: currentMsg.uid,
+                                totalCount: currentMsg.totalCount,
+                                newCount: currentMsg.newCount,
+                                app: appMeta,
+                                exportDate: dateMeta,
+                                timeZone: GachaItem.getServerTimeZoneDelta(currentMsg.uid)
+                            )
                         )
-                    ))
+                    }
+                    status = .succeed(succeededMessages)
                     isCompleteAlertShow.toggle()
                 } catch {
                     status = .failure(error.localizedDescription)
@@ -228,8 +236,15 @@ struct ImportGachaView: View {
                         )
                     }
                     let newCount = gachaViewModel.manager.addRecordItems(items)
-                    if !items.isEmpty {
-                        status = .succeed(.init(uid: items.first!.uid, totalCount: items.count, newCount: newCount))
+                    if let firstItem = items.first {
+                        status = .succeed([
+                            .init(
+                                uid: firstItem.uid,
+                                totalCount: items.count,
+                                newCount: newCount,
+                                timeZone: GachaItem.getServerTimeZoneDelta(firstItem.uid)
+                            ),
+                        ])
                     } else {
                         status = .failure("app.gacha.import.fail.decodeError".localized)
                     }
@@ -294,7 +309,7 @@ private enum AlertType: Identifiable {
 private enum ImportStatus {
     case pending
     case reading
-    case succeed(ImportSucceedInfo)
+    case succeed([ImportSucceedInfo])
     case failure(String)
 }
 
@@ -321,24 +336,95 @@ extension ImportStatus: Identifiable {
 
 // MARK: - ImportSucceedInfo
 
-private struct ImportSucceedInfo: Equatable {
+private struct ImportSucceedInfo: Equatable, Identifiable {
     // MARK: Lifecycle
 
-    init(uid: String, totalCount: Int, newCount: Int, app: String? = nil, exportDate: Date? = nil) {
+    init(
+        uid: String,
+        totalCount: Int,
+        newCount: Int,
+        app: String? = nil,
+        exportDate: Date? = nil,
+        timeZone: Int
+    ) {
         self.uid = uid
         self.totalCount = totalCount
         self.newCount = newCount
         self.app = app
         self.exportDate = exportDate
+        self.timeZoneDelta = timeZone
     }
 
     // MARK: Internal
 
+    let id = UUID().uuidString
     let uid: String
     let totalCount: Int
     let newCount: Int
     let app: String?
     let exportDate: Date?
+    let timeZoneDelta: Int
+
+    @ViewBuilder
+    var timeView: some View {
+        if let date = exportDate {
+            VStack(alignment: .leading) {
+                let timeInfo = String(
+                    format: "app.gacha.import.info.time:%@".localized,
+                    dateFormatterCurrent.string(from: date)
+                )
+                Text(timeInfo)
+                if importedTimeZone.secondsFromGMT() != TimeZone.autoupdatingCurrent.secondsFromGMT() {
+                    let timeInfo2 = "UTC\(timeZoneDeltaValueText): " + dateFormatterAsImported.string(from: date)
+                    Text(timeInfo2).font(.caption).foregroundStyle(.secondary)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    var timeViewSimple: some View {
+        if let date = exportDate {
+            let timeInfo = String(
+                format: "app.gacha.import.info.time:%@".localized,
+                dateFormatterCurrent.string(from: date)
+            )
+            Text(timeInfo)
+        }
+    }
+
+    @ViewBuilder
+    var timeZoneView: some View {
+        Text(verbatim: "UTC\(timeZoneDeltaValueText)")
+    }
+
+    // MARK: Private
+
+    private var timeZoneDeltaValueText: String {
+        switch timeZoneDelta {
+        case 0...: return "+\(timeZoneDelta)"
+        default: return "\(timeZoneDelta)"
+        }
+    }
+
+    private var importedTimeZone: TimeZone {
+        .init(secondsFromGMT: 3600 * timeZoneDelta) ?? .autoupdatingCurrent
+    }
+
+    private var dateFormatterAsImported: DateFormatter {
+        let fmt = DateFormatter()
+        fmt.dateStyle = .medium
+        fmt.timeStyle = .medium
+        return fmt
+    }
+
+    private var dateFormatterCurrent: DateFormatter {
+        let fmt = DateFormatter()
+        fmt.dateStyle = .medium
+        fmt.timeStyle = .medium
+        fmt.timeZone = .init(secondsFromGMT: 3600 * timeZoneDelta)
+        return fmt
+    }
 }
 
 extension UTType {
@@ -453,7 +539,7 @@ private struct StatusView<V: View>: View {
             case .reading:
                 ReadingView()
             case let .succeed(info):
-                SucceedView(status: $status, info: info)
+                SucceedView(status: $status, infoMsgs: info)
             case let .failure(string):
                 FailureView(status: $status, errorMessage: string)
             }
@@ -481,11 +567,9 @@ private struct FailureView: View {
 // MARK: - SucceedView
 
 private struct SucceedView: View {
-    // MARK: Internal
-
     @Binding
     var status: ImportStatus
-    let info: ImportSucceedInfo
+    let infoMsgs: [ImportSucceedInfo]
 
     var body: some View {
         Section {
@@ -495,46 +579,32 @@ private struct SucceedView: View {
                 Image(systemSymbol: .checkmarkCircle)
                     .foregroundColor(.green)
             }
-            Text(verbatim: "UID: \(info.uid)")
-            if let app = info.app {
-                let sourceInfo = String(
-                    format: "app.gacha.import.info.source:%@".localized,
-                    app
-                )
+            if let app = infoMsgs.first?.app {
+                let sourceInfo = String(format: "app.gacha.import.info.source:%@".localized, app)
                 Text(sourceInfo)
             }
-            if let date = info.exportDate {
-                let timeInfo = String(
-                    format: "app.gacha.import.info.time:%@".localized,
-                    dateFormatter.string(from: date)
-                )
-                Text(timeInfo)
+        } footer: {
+            if let firstInfo = infoMsgs.first {
+                firstInfo.timeViewSimple
             }
         }
-        Section {
-            let importInfo = String(
-                format: "app.gacha.import.info.import:%lld".localized,
-                info.totalCount
-            )
-            let storageInfo = String(
-                format: "app.gacha.import.info.storage:%lld".localized,
-                info.newCount
-            )
-            Text(importInfo)
-            Text(storageInfo)
+        ForEach(infoMsgs, id: \.id) { info in
+            Section {
+                let importInfo = String(format: "app.gacha.import.info.import:%lld".localized, info.totalCount)
+                let storageInfo = String(format: "app.gacha.import.info.storage:%lld".localized, info.newCount)
+                Text(importInfo)
+                Text(storageInfo)
+            } header: {
+                HStack {
+                    Text(verbatim: "UID: \(info.uid)")
+                    Spacer()
+                    info.timeZoneView
+                }
+            }
         }
         Button("app.gacha.import.continue") {
             status = .pending
         }
-    }
-
-    // MARK: Private
-
-    private var dateFormatter: DateFormatter {
-        let fmt = DateFormatter()
-        fmt.dateStyle = .medium
-        fmt.timeStyle = .medium
-        return fmt
     }
 }
 
