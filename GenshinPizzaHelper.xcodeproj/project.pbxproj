@@ -1518,9 +1518,9 @@
 				EAAD03E529D2FD88007D5C80 /* GachaItem.swift */,
 				EA4C005829D2FFD100637B19 /* GachaFetch.swift */,
 				EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */,
+				5B2D1F782C4FDB4600B1C6D6 /* UIGFModel_v2.swift */,
 				EA11488E29D9A8730059DEBF /* UIGFModel_v4.swift */,
 				EA0A6D0A29DDC74000A356A4 /* GachaLanguageCode.swift */,
-				5B2D1F782C4FDB4600B1C6D6 /* UIGFModel_v2.swift */,
 			);
 			path = GachaModel;
 			sourceTree = "<group>";

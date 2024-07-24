@@ -3,6 +3,7 @@
 // This code is released under the GPL v3.0 License (SPDX-License-Identifier: GPL-3.0)
 
 import CoreData
+import CoreXLSX
 import Defaults
 import Foundation
 import GIPizzaKit
@@ -51,6 +52,26 @@ struct UIGFv2: Decodable {
 
     struct Info: Decodable {
         // MARK: Lifecycle
+
+        init(
+            uid: String,
+            lang: GachaLanguageCode,
+            exportTime: Date? = nil,
+            exportTimestamp: Int? = nil,
+            exportApp: String? = nil,
+            exportAppVersion: String? = nil,
+            uigfVersion: String? = nil,
+            regionTimeZone: Int? = nil
+        ) {
+            self.uid = uid
+            self.lang = lang
+            self.exportTime = exportTime
+            self.exportTimestamp = exportTimestamp
+            self.exportApp = exportApp
+            self.exportAppVersion = exportAppVersion
+            self.uigfVersion = uigfVersion
+            self.regionTimeZone = regionTimeZone
+        }
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -122,6 +143,28 @@ struct UIGFv2: Decodable {
 /// UIGFv2~v3 格式（也就是 GIGF 格式）的 GachaItem。
 struct GIGFGachaItem: Decodable {
     // MARK: Lifecycle
+
+    fileprivate init(
+        gachaType: UIGFv4.ProfileGI.GachaItemGI.GachaTypeGI,
+        itemID: String,
+        count: String,
+        time: String,
+        name: String,
+        itemType: String,
+        rankType: GachaItem.RankType?,
+        id: String,
+        uigfGachaType: UIGFv4.ProfileGI.GachaItemGI.UIGFGachaTypeGI
+    ) {
+        self.gachaType = gachaType
+        self.itemID = itemID
+        self.count = count
+        self.time = time
+        self.name = name
+        self.itemType = itemType
+        self.rankType = rankType
+        self.id = id
+        self.uigfGachaType = uigfGachaType
+    }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -333,5 +376,165 @@ extension UIGFv2 {
 extension GachaLanguageCode {
     fileprivate func makeRevDB() -> [String: Int] {
         GachaMetaDBExposed.shared.mainDB.generateHotReverseQueryDict(for: rawValue) ?? [:]
+    }
+}
+
+// MARK: - UIGFv2 XLSX Parsing
+
+extension XLSXFile {
+    enum GIGFExcelError: Error, LocalizedError {
+        case errorWithMessage(msg: String)
+        case rawDataMissing
+        case tableDataMissing
+
+        // MARK: Public
+
+        public var errorDescription: String? {
+            switch self {
+            case let .errorWithMessage(msg): return msg
+            case .rawDataMissing: return "app.gacha.import.fail.rawDataNotExist".localized
+            case .tableDataMissing: return "app.gacha.import.fail.dataTableMissingData".localized
+            }
+        }
+    }
+
+    private struct ParsedRow {
+        let lang: GachaLanguageCode
+        let uid: String
+        let item: GIGFGachaItem
+    }
+
+    func parseItems() throws -> UIGFv4 {
+        let extracted = try parseRawItems()
+        var giProfiles = [UIGFv4.ProfileGI]()
+
+        GachaLanguageCode.allCases.forEach { langCode in
+            let rows = extracted.filter { $0.lang == langCode }
+            guard !rows.isEmpty else { return }
+            // UID: Items
+            var map = [String: [GIGFGachaItem]]()
+            rows.forEach { row in
+                map[row.uid, default: []].append(row.item)
+            }
+            map.forEach { uid, item in
+                let info = UIGFv2.Info(
+                    uid: uid,
+                    lang: langCode,
+                    uigfVersion: "v2.2",
+                    regionTimeZone: GachaItem.getServerTimeZoneDelta(uid)
+                )
+                var newFile = UIGFv2(info: info, list: item)
+                newFile.fixItemIDs()
+                giProfiles.append(newFile.upgradeTo4thGenerationProfile())
+            }
+        }
+
+        var newMap = [String: [UIGFv4.ProfileGI.GachaItemGI]]()
+        for iii in 0 ..< giProfiles.count {
+            giProfiles[iii].list.updateLanguage(.zhHans)
+            newMap[giProfiles[iii].uid, default: []].append(contentsOf: giProfiles[iii].list)
+        }
+
+        let newProfiles: [UIGFv4.ProfileGI] = newMap.map { uid, list in
+            .init(lang: .zhHans, list: list, timezone: GachaItem.getServerTimeZoneDelta(uid), uid: uid)
+        }
+
+        return UIGFv4(info: .init(), giProfiles: newProfiles)
+    }
+
+    private func parseRawItems() throws -> [ParsedRow] {
+        let file = self
+        let dateFormatter = DateFormatter.Gregorian()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        let errRDM = GIGFExcelError.rawDataMissing
+        guard let workbook = try file.parseWorkbooks().first else { throw errRDM }
+        let pathsAndNames = try file.parseWorksheetPathsAndNames(workbook: workbook)
+        guard let (_, path) = pathsAndNames.first(where: { $0.name == "原始数据" }) else { throw errRDM }
+        guard let worksheet = try? file.parseWorksheet(at: path) else { throw errRDM }
+        guard let sharedStrings = try file.parseSharedStrings() else { throw errRDM }
+
+        let errTDM = GIGFExcelError.tableDataMissing
+        guard let rawRows = worksheet.data?.rows else { throw errTDM }
+        guard let firstRowCells = rawRows.first?.cells else { throw errTDM }
+        let head = firstRowCells.map { $0.stringValue(sharedStrings) }
+        let rows = rawRows[1...].map { $0.cells.map { $0.stringValue(sharedStrings) }}
+        guard let gachaTypeIndex = head.firstIndex(where: { $0 == "gacha_type" }) else { throw errTDM }
+        guard let itemTypeIndex = head.firstIndex(where: { $0 == "item_type" }) else { throw errTDM }
+        guard let nameIndex = head.firstIndex(where: { $0 == "name" }) else { throw errTDM }
+        guard let uidIndex = head.firstIndex(where: { $0 == "uid" }) else { throw errTDM }
+        guard let idIndex = head.firstIndex(where: { $0 == "id" }) else { throw errTDM }
+
+        let itemIdIndex = head.firstIndex(where: { $0 == "item_id" })
+        let timeIndex = head.firstIndex(where: { $0 == "time" })
+        let langIndex = head.firstIndex(where: { $0 == "lang" })
+        let rankTypeIndex = head.firstIndex(where: { $0 == "rank_type" })
+        let countIndex = head.firstIndex(where: { $0 == "count" })
+
+        var extracted: [ParsedRow] = []
+
+        rows.forEach { cells in
+            guard let id = cells[idIndex] else { return }
+            guard let uid = cells[uidIndex] else { return }
+            guard let gachaTypeRAW = cells[gachaTypeIndex] else { return }
+            guard let itemType = cells[itemTypeIndex] else { return }
+            guard let name = cells[nameIndex] else { return }
+
+            guard let gachaType = UIGFv4.ProfileGI.GachaItemGI.GachaTypeGI(
+                rawValue: gachaTypeRAW
+            ) else { return }
+
+            var itemID = ""
+            if let itemIdIndex = itemIdIndex, let itemIdString = cells[itemIdIndex] {
+                itemID = itemIdString
+            }
+
+            var count = "1"
+            if let countIndex = countIndex, let countString = cells[countIndex] {
+                count = countString
+            }
+
+            /// GIGF XLSX 格式的时间原则上得认为是伺服器时间，
+            /// 不存在 JSON 那种在导出时改变时区的可能。
+            var time: Date = .distantPast
+            let timeZoneDelta = GachaItem.getServerTimeZoneDelta(uid)
+            if let timeIndex = timeIndex, let timeString = cells[timeIndex] {
+                time = DateFormatter.forUIGFEntry(
+                    timeZoneDelta: timeZoneDelta
+                ).date(from: timeString) ?? .distantPast
+            }
+
+            var lang: GachaLanguageCode = .zhHans
+            if let langIndex = langIndex, let langString = cells[langIndex],
+               let langCode = GachaLanguageCode(rawValue: langString) {
+                lang = langCode
+            }
+
+            let rankType: Int
+            if let rankTypeIndex = rankTypeIndex,
+               let rankTypeString = cells[rankTypeIndex],
+               let rankTypeInt = Int(rankTypeString) {
+                rankType = rankTypeInt
+            } else {
+                rankType = 3
+            }
+
+            let newItem = GIGFGachaItem(
+                gachaType: gachaType,
+                itemID: itemID,
+                count: count,
+                time: time.asUIGFDate(timeZoneDelta: timeZoneDelta),
+                name: name,
+                itemType: itemType,
+                rankType: GachaItem.RankType(rawValue: rankType) ?? .three,
+                id: id,
+                uigfGachaType: gachaType.uigfGachaType
+            )
+
+            let newRow = ParsedRow(lang: lang, uid: uid, item: newItem)
+            extracted.append(newRow)
+        }
+
+        return extracted
     }
 }

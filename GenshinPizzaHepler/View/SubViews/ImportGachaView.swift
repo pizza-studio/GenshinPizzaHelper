@@ -9,6 +9,7 @@ import AlertToast
 import CoreXLSX
 import Defaults
 import GIPizzaKit
+import NaturalLanguage
 import SFSafeSymbols
 import SwiftUI
 import UniformTypeIdentifiers
@@ -128,123 +129,28 @@ struct ImportGachaView: View {
     }
 
     func processXlsx(url: URL) {
-        DispatchQueue.global(qos: .userInteractive).async {
-            status = .reading
-        }
-
+        DispatchQueue.global(qos: .userInteractive).async { status = .reading }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if url.startAccessingSecurityScopedResource() {
                 do {
-                    guard let file = XLSXFile(filepath: url.relativePath),
-                          let workbook = try file.parseWorkbooks().first,
-                          let (_, path) = try file.parseWorksheetPathsAndNames(workbook: workbook)
-                          .first(where: { name, _ in
-                              name == "原始数据"
-                          }),
-                          let worksheet = try? file.parseWorksheet(at: path),
-                          let sharedStrings = try file.parseSharedStrings()
-                    else {
+                    guard let file = XLSXFile(filepath: url.relativePath) else {
                         status = .failure("app.gacha.import.fail.rawDataNotExist".localized); return
                     }
-                    guard let head = worksheet.data?.rows.first?.cells
-                        .map({ $0.stringValue(sharedStrings) }),
-                        let rows = worksheet.data?.rows[1...]
-                        .map({ $0.cells.map { $0.stringValue(sharedStrings) }}),
-                        let gachaTypeIndex = head.firstIndex(where: { $0 == "gacha_type" }),
-                        let itemTypeIndex = head.firstIndex(where: { $0 == "item_type" }),
-                        let nameIndex = head.firstIndex(where: { $0 == "name" }),
-                        let uidIndex = head.firstIndex(where: { $0 == "uid" }) else {
-                        status = .failure("app.gacha.import.fail.dataTableMissingData".localized); return
-                    }
-                    let idIndex = head.firstIndex(where: { $0 == "id" })
-                    let itemIdIndex = head.firstIndex(where: { $0 == "item_id" })
-                    let timeIndex = head.firstIndex(where: { $0 == "time" })
-                    let langIndex = head.firstIndex(where: { $0 == "lang" })
-                    let rankTypeIndex = head.firstIndex(where: { $0 == "rank_type" })
-                    let countIndex = head.firstIndex(where: { $0 == "count" })
-                    let items: [GachaItemFetched] = rows.compactMap { cells in
-                        guard let uid = cells[uidIndex],
-                              let gachaType = cells[gachaTypeIndex],
-                              let itemType = cells[itemTypeIndex],
-                              let name = cells[nameIndex]
-                        else {
-                            return nil
-                        }
-                        let id: String
-                        if let idIndex = idIndex,
-                           let idString = cells[idIndex] {
-                            id = idString
-                        } else {
-                            id = ""
-                        }
-                        let itemId: String
-                        if let itemIdIndex = itemIdIndex,
-                           let itemIdString = cells[itemIdIndex],
-                           !itemIdString.isEmpty {
-                            itemId = itemIdString
-                        } else {
-                            itemId = ""
-                        }
-
-                        let count: String
-                        if let countIndex = countIndex,
-                           let countString = cells[countIndex] {
-                            count = countString
-                        } else {
-                            count = "1"
-                        }
-
-                        let dateFormatter = DateFormatter.Gregorian()
-                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                        let time: Date
-                        if let timeIndex = timeIndex,
-                           let timeString = cells[timeIndex],
-                           let timeDate = dateFormatter.date(from: timeString) {
-                            time = timeDate
-                        } else {
-                            time = .distantPast
-                        }
-
-                        let lang: GachaLanguageCode
-                        if let langIndex = langIndex,
-                           let langString = cells[langIndex],
-                           let langCode = GachaLanguageCode(rawValue: langString) {
-                            lang = langCode
-                        } else {
-                            lang = .zhHans
-                        }
-
-                        let rankType: String
-                        if let rankTypeIndex = rankTypeIndex,
-                           let rankTypeString = cells[rankTypeIndex] {
-                            rankType = rankTypeString
-                        } else {
-                            rankType = "3"
-                        }
-
-                        return GachaItemFetched(
-                            uid: uid,
-                            gachaType: gachaType,
-                            itemId: itemId,
-                            count: count,
-                            time: time,
-                            name: name,
-                            lang: lang,
-                            itemType: itemType,
-                            rankType: rankType,
-                            id: id
+                    let uigfModel = try file.parseItems()
+                    let results = gachaViewModel.importGachaFromUIGFJson(uigfJson: uigfModel)
+                    var succeededMessages: [ImportSucceedInfo] = []
+                    results.forEach { currentMsg in
+                        succeededMessages.append(
+                            ImportSucceedInfo(
+                                uid: currentMsg.uid,
+                                totalCount: currentMsg.totalCount,
+                                newCount: currentMsg.newCount,
+                                timeZone: GachaItem.getServerTimeZoneDelta(currentMsg.uid)
+                            )
                         )
                     }
-                    let newCount = gachaViewModel.manager.addRecordItems(items)
-                    if let firstItem = items.first {
-                        status = .succeed([
-                            .init(
-                                uid: firstItem.uid,
-                                totalCount: items.count,
-                                newCount: newCount,
-                                timeZone: GachaItem.getServerTimeZoneDelta(firstItem.uid)
-                            ),
-                        ])
+                    if !results.isEmpty {
+                        status = .succeed(succeededMessages)
                     } else {
                         status = .failure("app.gacha.import.fail.decodeError".localized)
                     }
