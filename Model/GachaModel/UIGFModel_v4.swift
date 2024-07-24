@@ -122,7 +122,7 @@ extension UIGFv4 {
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.list = try container.decode([GachaItemGI].self, forKey: .list)
-            self.lang = try container.decode(GachaLanguageCode.self, forKey: .lang)
+            self.lang = try container.decodeIfPresent(GachaLanguageCode.self, forKey: .lang)
             self.timezone = try container.decode(Int.self, forKey: .timezone)
 
             if let x = try? container.decode(String.self, forKey: .uid), !x.isEmpty {
@@ -182,7 +182,7 @@ extension UIGFv4 {
                 var error: Error?
 
                 self.count = try container.decodeIfPresent(String.self, forKey: .count)
-                if Int(count ?? "") == nil { error = UIGFv4.makeDecodingError(CodingKeys.count) }
+                if Int(count ?? "1") == nil { error = UIGFv4.makeDecodingError(CodingKeys.count) }
 
                 self.gachaType = try container.decode(GachaTypeGI.self, forKey: .gachaType)
 
@@ -199,7 +199,7 @@ extension UIGFv4 {
                 if name?.isEmpty ?? false { error = UIGFv4.makeDecodingError(CodingKeys.name) }
 
                 self.rankType = try container.decodeIfPresent(String.self, forKey: .rankType)
-                if Int(rankType ?? "") == nil { error = UIGFv4.makeDecodingError(CodingKeys.rankType) }
+                if Int(rankType ?? "3") == nil { error = UIGFv4.makeDecodingError(CodingKeys.rankType) }
 
                 self.time = try container.decode(String.self, forKey: .time)
                 if DateFormatter.forUIGFEntry(timeZoneDelta: 0).date(from: time) == nil {
