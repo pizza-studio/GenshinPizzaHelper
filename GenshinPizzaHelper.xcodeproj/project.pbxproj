@@ -195,7 +195,6 @@
 		5BD1C6702A2A1FC90043C2B1 /* 周本.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F528B0994C0056D182 /* 周本.png */; };
 		5BD1C6712A2A1FC90043C2B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EABD7DC02886B2D300B7F0FD /* Preview Assets.xcassets */; };
 		5BD1C6722A2A1FC90043C2B1 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BAF708C29E5764E0096228B /* RobotoCondensed-Light.ttf */; };
-		5BD1C6742A2A1FC90043C2B1 /* gacha_lang_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */; };
 		5BD1C6752A2A1FC90043C2B1 /* 树脂.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEC41F428B0994C0056D182 /* 树脂.png */; };
 		5BD1C6762A2A1FC90043C2B1 /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
 		5BD1C6772A2A1FC90043C2B1 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
@@ -524,7 +523,6 @@
 		EA887D372B1EAF63006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
 		EA887D382B1EAF64006EDAB8 /* DailyNoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C33B12B19C42100E9531C /* DailyNoteAPI.swift */; };
 		EA8978D829DA716400E0903E /* ExportGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8978D729DA716400E0903E /* ExportGachaView.swift */; };
-		EA8C85EB29DE928500FBAADF /* gacha_lang_dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */; };
 		EA94CD0D28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA94CD0E28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */; };
 		EA99A1D2291DEF5600F900DE /* WidgetSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */; };
@@ -1029,7 +1027,6 @@
 		EA7FF4832930A41700128A5C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AccountIntents.strings"; sourceTree = "<group>"; };
 		EA8445EB29DBFFD700CB8C9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA8978D729DA716400E0903E /* ExportGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportGachaView.swift; sourceTree = "<group>"; };
-		EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gacha_lang_dictionary.json; sourceTree = "<group>"; };
 		EA94CD0C28A5F7BB00F0C3AC /* WeeklyBossesInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyBossesInfoBar.swift; sourceTree = "<group>"; };
 		EA99A1D1291DEF5600F900DE /* WidgetSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingView.swift; sourceTree = "<group>"; };
 		EA9BE57E2B200B9400143817 /* AlwaysShowSideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysShowSideBar.swift; sourceTree = "<group>"; };
@@ -1523,7 +1520,6 @@
 				EAE2AD4729D3D06900FF9612 /* ContainGachaItemInfo.swift */,
 				EA11488E29D9A8730059DEBF /* UIGFModel_v4.swift */,
 				EA0A6D0A29DDC74000A356A4 /* GachaLanguageCode.swift */,
-				EA8C85EA29DE928500FBAADF /* gacha_lang_dictionary.json */,
 				5B2D1F782C4FDB4600B1C6D6 /* UIGFModel_v2.swift */,
 			);
 			path = GachaModel;
@@ -2254,7 +2250,6 @@
 				5BD1C6702A2A1FC90043C2B1 /* 周本.png in Resources */,
 				5BD1C6712A2A1FC90043C2B1 /* Preview Assets.xcassets in Resources */,
 				5BD1C6722A2A1FC90043C2B1 /* RobotoCondensed-Light.ttf in Resources */,
-				5BD1C6742A2A1FC90043C2B1 /* gacha_lang_dictionary.json in Resources */,
 				5BD1C6752A2A1FC90043C2B1 /* 树脂.png in Resources */,
 				5BD1C6762A2A1FC90043C2B1 /* article.html in Resources */,
 				5BD1C6772A2A1FC90043C2B1 /* Assets-NoWatch.xcassets in Resources */,
@@ -2362,7 +2357,6 @@
 				EAEC41FD28B0994C0056D182 /* 周本.png in Resources */,
 				EABD7DC12886B2D300B7F0FD /* Preview Assets.xcassets in Resources */,
 				5BAF709529E5764E0096228B /* RobotoCondensed-Light.ttf in Resources */,
-				EA8C85EB29DE928500FBAADF /* gacha_lang_dictionary.json in Resources */,
 				EAEC41FA28B0994C0056D182 /* 树脂.png in Resources */,
 				BF75010028E0452C00CDA64E /* article.html in Resources */,
 				EA0718C329059602009D4730 /* Assets-NoWatch.xcassets in Resources */,
