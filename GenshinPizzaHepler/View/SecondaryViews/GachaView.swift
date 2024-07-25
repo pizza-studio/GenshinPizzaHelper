@@ -396,7 +396,7 @@ private struct GachaItemBar: View {
     @MainActor
     var itemIDText: Text {
         if showTime {
-            Text(verbatim: isItemIDMissing ? "  !! Item ID Missing" : "  (ID: \(item.itemId))")
+            Text(verbatim: isItemIDMissing ? "  !! Item ID Missing" : "  \(item.itemId)")
                 .font(.caption).foregroundColor(isItemIDMissing ? .red : .secondary)
         } else {
             Text(verbatim: "")
