@@ -249,7 +249,7 @@ struct ExportGachaView: View {
         if let uid = params.uid {
             uids.append(uid)
         } else {
-            uids.append(contentsOf: accounts.compactMap(\.uid))
+            uids.append(contentsOf: gachaViewModel.manager.allAvaliableUID())
         }
         uids.forEach { uid in
             let items = gachaViewModel.manager.fetchAllMO(uid: uid).map {
