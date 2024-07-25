@@ -192,7 +192,7 @@ struct ExportGachaView: View {
     private var accountPickerPairs: [(value: String, tag: String?)] {
         var result = [(value: String, tag: String?)]()
         if params.uid == nil {
-            var i18nKey = "app.gacha.account.select.selectAll"
+            let i18nKey = "app.gacha.account.select.selectAll"
             let i18nStr = String(localized: .init(stringLiteral: i18nKey))
             result.append((i18nStr, nil))
         }
