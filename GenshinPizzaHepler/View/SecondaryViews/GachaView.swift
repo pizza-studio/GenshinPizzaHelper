@@ -93,7 +93,7 @@ struct GachaView: View {
         List {
             if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
                 Section {
-                    LabeledContent("gacha.account_detail.gacha_type") {
+                    LabeledContent("gacha.account_detail.detail.filter.gacha_type") {
                         Menu {
                             ForEach(
                                 GachaType.allAvailableCases

@@ -24504,43 +24504,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warp Type"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp Type"
+            "value" : "Wish Type"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "跳躍タイプ"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp Type"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp Type"
+            "value" : "祈願タイプ"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "跃迁类型"
+            "value" : "祈願类型"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "躍遷類型"
+            "value" : "祈願類型"
           }
         }
       }
@@ -24587,52 +24569,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "稀有程度"
-          }
-        }
-      }
-    },
-    "gacha.account_detail.gacha_type" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp Type"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp Type"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "跳躍タイプ"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp Type"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warp Type"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "跃迁类型"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "躍遷類型"
           }
         }
       }
