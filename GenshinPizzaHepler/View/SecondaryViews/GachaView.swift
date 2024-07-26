@@ -93,23 +93,12 @@ struct GachaView: View {
         List {
             if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
                 Section {
-                    LabeledContent("gacha.account_detail.detail.filter.gacha_type") {
-                        Menu {
-                            ForEach(
-                                GachaType.allAvailableCases
-                            ) { gachaType in
-                                Button(gachaType.localizedDescription()) {
-                                    withAnimation {
-                                        gachaViewModel.filter
-                                            .gachaType = gachaType
-                                    }
-                                }
-                            }
-                        } label: {
-                            Text(
-                                gachaViewModel.filter.gachaType
-                                    .localizedDescription()
-                            )
+                    Picker(
+                        "gacha.account_detail.detail.filter.gacha_type",
+                        selection: $gachaViewModel.filter.gachaType.animation()
+                    ) {
+                        ForEach(GachaType.allAvailableCases, id: \.rawValue) { type in
+                            Text(type.localizedDescription()).tag(type)
                         }
                     }
                 }
@@ -744,31 +733,21 @@ private struct GachaDetailView: View {
     var body: some View {
         List {
             Section {
-                LabeledContent("gacha.account_detail.detail.filter.gacha_type") {
-                    Menu {
-                        ForEach(GachaType.allAvailableCases) { gachaType in
-                            Button(gachaType.localizedDescription()) {
-                                withAnimation {
-                                    gachaViewModel.filter.gachaType = gachaType
-                                }
-                            }
-                        }
-                    } label: {
-                        Text(gachaViewModel.filter.gachaType.localizedDescription())
+                Picker(
+                    "gacha.account_detail.detail.filter.gacha_type",
+                    selection: $gachaViewModel.filter.gachaType.animation()
+                ) {
+                    ForEach(GachaType.allAvailableCases, id: \.rawValue) { type in
+                        Text(type.localizedDescription()).tag(type)
                     }
                 }
 
-                LabeledContent("gacha.account_detail.detail.filter.rank") {
-                    Menu {
-                        ForEach(GachaFilter.Rank.allCases) { rank in
-                            Button(rank.description) {
-                                withAnimation {
-                                    gachaViewModel.filter.rank = rank
-                                }
-                            }
-                        }
-                    } label: {
-                        Text(gachaViewModel.filter.rank.description)
+                Picker(
+                    "gacha.account_detail.detail.filter.rank",
+                    selection: $gachaViewModel.filter.rank.animation()
+                ) {
+                    ForEach(GachaFilter.Rank.allCases, id: \.rawValue) { type in
+                        Text(type.description).tag(type)
                     }
                 }
 

@@ -52,13 +52,6 @@ class GachaViewModel: ObservableObject {
     @Published
     var allAvaliableAccountUID: [String] = []
 
-    lazy var bindedGachaType: Binding<GachaType> = {
-        .init(
-            get: { self.filter.gachaType },
-            set: { self.filter.gachaType = $0 }
-        )
-    }()
-
 //    {
 //        didSet {
 //            filterGachaItem()
