@@ -2,8 +2,10 @@
 
 "$asset.character:Peruere" = "佩露薇利";
 "$asset.character:RaidenKunikuzushi" = "雷电国崩";
+"$asset.character:NaganoharaYoimiya" = "长野原宵宫";
 "$asset.nameCard:UI_NameCardPic_Peruere_P" = "佩露薇利·法度";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "雷电国崩・浮歌";
+"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "长野原宵宫·琉金火花";
 
 // MARK: - Daily Materials
 
@@ -78,7 +80,6 @@
 "$asset.character:Kazuha" = "枫原万叶";
 "$asset.character:Ayaka" = "神里绫华";
 "$asset.character:Sayu" = "早柚";
-"$asset.character:NaganoharaYoimiya" = "长野原宵宫";
 "$asset.character:Yoimiya" = "宵宫";
 "$asset.character:Aloy" = "埃洛伊";
 "$asset.character:Sara" = "九条裟罗";
@@ -397,7 +398,6 @@
 "$asset.nameCard:UI_NameCardPic_Oraionokami_P" = "稻妻·神樱";
 "$asset.nameCard:UI_NameCardPic_Bp8_P" = "纪行·鸣神大社";
 "$asset.nameCard:UI_NameCardPic_Ayaka_P" = "神里绫华·扇子";
-"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "长野原宵宫·琉金火花";
 "$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "宵宫·琉金火花";
 "$asset.nameCard:UI_NameCardPic_Sayu_P" = "早柚·不倒貉貉";
 "$asset.nameCard:UI_NameCardPic_Dq1_P" = "稻妻·雷电之纹";

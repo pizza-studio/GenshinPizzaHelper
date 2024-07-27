@@ -2,8 +2,10 @@
 
 "$asset.character:Peruere" = "페르엘";
 "$asset.character:RaidenKunikuzushi" = "라이덴 쿠니쿠즈시";
+"$asset.character:NaganoharaYoimiya" = "나가노하라 요이미야";
 "$asset.nameCard:UI_NameCardPic_Peruere_P" = "페르엘·규칙";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "라이덴 쿠니쿠즈시·떠도는 자의 노래";
+"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "나가노하라 요이미야·유금불꽃";
 
 // MARK: - Daily Materials
 
@@ -78,7 +80,6 @@
 "$asset.character:Kazuha" = "카에데하라 카즈하";
 "$asset.character:Ayaka" = "카미사토 아야카";
 "$asset.character:Sayu" = "사유";
-"$asset.character:NaganoharaYoimiya" = "나가노하라 요이미야";
 "$asset.character:Yoimiya" = "요이미야";
 "$asset.character:Aloy" = "에일로이";
 "$asset.character:Sara" = "쿠죠 사라";
@@ -397,7 +398,6 @@
 "$asset.nameCard:UI_NameCardPic_Oraionokami_P" = "이나즈마·신성한 벚나무";
 "$asset.nameCard:UI_NameCardPic_Bp8_P" = "기행·나루카미 다이샤";
 "$asset.nameCard:UI_NameCardPic_Ayaka_P" = "카미사토 아야카·부채";
-"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "나가노하라 요이미야·유금불꽃";
 "$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "요이미야·유금불꽃";
 "$asset.nameCard:UI_NameCardPic_Sayu_P" = "사유·너구리 오뚝이";
 "$asset.nameCard:UI_NameCardPic_Dq1_P" = "이나즈마·번개의 문양";

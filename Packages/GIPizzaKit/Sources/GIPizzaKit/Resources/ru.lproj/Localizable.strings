@@ -2,8 +2,10 @@
 
 "$asset.character:Peruere" = "Перуэр";
 "$asset.character:RaidenKunikuzushi" = "Куникудзуси";
+"$asset.character:NaganoharaYoimiya" = "Наганохара Ёимия";
 "$asset.nameCard:UI_NameCardPic_Peruere_P" = "Правила";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Баллада скитальца";
+"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "Искры золотой рыбки";
 
 // MARK: - Daily Materials
 
@@ -78,7 +80,6 @@
 "$asset.character:Kazuha" = "Кадзуха";
 "$asset.character:Ayaka" = "Аяка";
 "$asset.character:Sayu" = "Саю";
-"$asset.character:NaganoharaYoimiya" = "Наганохара Ёимия";
 "$asset.character:Yoimiya" = "Ёимия";
 "$asset.character:Aloy" = "Элой";
 "$asset.character:Sara" = "Сара";
@@ -397,7 +398,6 @@
 "$asset.nameCard:UI_NameCardPic_Oraionokami_P" = "Священная сакура";
 "$asset.nameCard:UI_NameCardPic_Bp8_P" = "Великий храм Наруками";
 "$asset.nameCard:UI_NameCardPic_Ayaka_P" = "Веер";
-"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "Искры золотой рыбки";
 "$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "Искры золотой рыбки";
 "$asset.nameCard:UI_NameCardPic_Sayu_P" = "Мудзи-Мудзи Дарума";
 "$asset.nameCard:UI_NameCardPic_Dq1_P" = "Эмблема Райдэн";

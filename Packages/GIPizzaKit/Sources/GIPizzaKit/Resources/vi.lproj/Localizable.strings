@@ -2,8 +2,10 @@
 
 "$asset.character:Peruere" = "Peruere";
 "$asset.character:RaidenKunikuzushi" = "Raiden Kunikuzushi";
+"$asset.character:NaganoharaYoimiya" = "Naganohara Yoimiya";
 "$asset.nameCard:UI_NameCardPic_Peruere_P" = "Правила - Sắc Lệnh";
 "$asset.nameCard:UI_NameCardPic_Kunikuzushi_P" = "Raiden Kunikuzushi - Phù Ca";
+"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "Naganohara Yoimiya - Hoa Lửa Kim Lưu";
 
 // MARK: - Daily Materials
 
@@ -78,7 +80,6 @@
 "$asset.character:Kazuha" = "Kaedehara Kazuha";
 "$asset.character:Ayaka" = "Kamisato Ayaka";
 "$asset.character:Sayu" = "Sayu";
-"$asset.character:NaganoharaYoimiya" = "Naganohara Yoimiya";
 "$asset.character:Yoimiya" = "Yoimiya";
 "$asset.character:Aloy" = "Aloy";
 "$asset.character:Sara" = "Kujou Sara";
@@ -397,7 +398,6 @@
 "$asset.nameCard:UI_NameCardPic_Oraionokami_P" = "Inazuma - Anh Đào Thần";
 "$asset.nameCard:UI_NameCardPic_Bp8_P" = "Nhật Ký Hành Trình - Đền Narukami";
 "$asset.nameCard:UI_NameCardPic_Ayaka_P" = "Kamisato Ayaka - Cây Quạt";
-"$asset.nameCard:UI_NameCardPic_NaganoharaYoimiya_P" = "Naganohara Yoimiya - Hoa Lửa Kim Lưu";
 "$asset.nameCard:UI_NameCardPic_Yoimiya_P" = "Yoimiya - Hoa Lửa Kim Lưu";
 "$asset.nameCard:UI_NameCardPic_Sayu_P" = "Sayu - Muji-Muji Daruma";
 "$asset.nameCard:UI_NameCardPic_Dq1_P" = "Inazuma - Hoa Văn Lôi Điện";
