@@ -299,10 +299,31 @@ extension UIGFv2 {
 
 // MARK: - Language Detection Feature
 
+extension GachaLanguageCode {
+    var nlLanguage: NLLanguage {
+        switch self {
+        case .th: return .thai
+        case .ko: return .korean
+        case .es: return .spanish
+        case .ja: return .japanese
+        case .zhHans: return .simplifiedChinese
+        case .id: return .indonesian
+        case .pt: return .portuguese
+        case .de: return .german
+        case .fr: return .french
+        case .zhHant: return .traditionalChinese
+        case .ru: return .russian
+        case .enUS: return .english
+        case .vi: return .vietnamese
+        }
+    }
+}
+
 extension UIGFv2 {
     private static let recognizer = NLLanguageRecognizer()
 
     private static func guessLanguages(for text: String) -> [GachaLanguageCode] {
+        recognizer.languageConstraints = GachaLanguageCode.allCases.compactMap { $0.nlLanguage }
         Self.recognizer.processString(text)
         return Self.recognizer.languageHypotheses(withMaximum: 114_514).sorted {
             $0.value > $1.value
