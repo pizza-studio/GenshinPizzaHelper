@@ -14,13 +14,17 @@ enum ThisDevice {
     // MARK: Public
 
     public static var basicWindowSize: CGSize {
-        .init(
+        var result = CGSize(
             // width: 375,
             // height: useAdaptiveSpacing ? 812 : 667
             // 新的基准尺寸是原有的 1.66 倍：620x1344 与 620x1104。
             width: 620 + 2,
             height: useAdaptiveSpacing ? 1344 + 2 : 1104 + 2
         )
+        if OS.isCatalyst {
+            result.height += useAdaptiveSpacing ? 90 : 150
+        }
+        return result
     }
 
     public static var isScreenLandScape: Bool {
