@@ -547,11 +547,11 @@ private struct ImportView: View {
                     }
                 }
             } footer: {
-                Text("app.gacha.explainUIGF")
-                    + Text(verbatim: "\n\n")
-                    + Text("app.gacha.uigf.affLink.[UIGF](https://uigf.org/)")
-                    + Text(verbatim: "\n\n")
-                    + Text("app.gacha.import.uigf.verified.note.1")
+                VStack(alignment: .leading, spacing: 11) {
+                    Text("app.gacha.explainUIGF")
+                    Text("app.gacha.uigf.affLink.[UIGF](https://uigf.org/)")
+                    Text("app.gacha.import.uigf.verified.note.1")
+                }.multilineTextAlignment(.leading)
             }
             Section {
                 PopFileButton(title: "app.gacha.import.gigf.json", allowedContentTypes: [.json]) { result in
@@ -570,11 +570,51 @@ private struct ImportView: View {
                         status = .failure(error.localizedDescription)
                     }
                 }
+                FallbackTimeZonePicker()
             } header: {
-                Text("app.gacha.import.uigf.deprecatedFormats.header")
+                Text("app.gacha.import.gigf.header")
             } footer: {
-                Text("app.gacha.import.uigf.deprecatedFormats.whySupported")
+                VStack(alignment: .leading, spacing: 11) {
+                    Text("app.gacha.import.gigf.whySupported")
+                    Text("app.gacha.import.gigf.whySupported.timeZone")
+                    Text("app.gacha.import.gigf.minimumSupportedVersion")
+                }.multilineTextAlignment(.leading)
             }
         }
+    }
+}
+
+// MARK: - FallbackTimeZonePicker
+
+private struct FallbackTimeZonePicker: View {
+    @Default(.fallbackTimeForGIGFFileImport)
+    var fallbackTimeForGIGFFileImport: TimeZone?
+
+    var body: some View {
+        Picker("app.gacha.import.gigf.fallbackTimeZone", selection: $fallbackTimeForGIGFFileImport) {
+            Text("app.gacha.import.gigf.fallbackTimeZone.autoDeduct").tag(TimeZone?.none)
+            ForEach(tagPairs, id: \.1) { timeZoneName, identifier, timeZone in
+                Text(verbatim: "\(timeZoneName) \(identifier)").monospacedDigit().tag(timeZone)
+            }
+        }
+        .pickerStyle(.navigationLink)
+    }
+
+    var tagPairs: [(timeZoneName: String, identifier: String, timeZone: TimeZone?)] {
+        var results: [(timeZoneName: String, identifier: String, timeZone: TimeZone)] = []
+        TimeZone.knownTimeZoneIdentifiers.forEach { identifier in
+            guard identifier != "GMT", let zone = TimeZone(identifier: identifier) else { return }
+            let initialName = zone.localizedName(for: .shortDaylightSaving, locale: .autoupdatingCurrent) ?? "N/A"
+            var timeZoneName: String = initialName == "GMT" ? "GMT+0" : initialName
+            timeZoneName = timeZoneName.replacingOccurrences(of: "GMT", with: "UTC")
+            var identifierCells = identifier.split(separator: "/")
+            if identifierCells.count > 2 {
+                identifierCells.remove(at: 0)
+            }
+            let newEntry = (timeZoneName, identifierCells.joined(separator: " / "), zone)
+            results.append(newEntry)
+        }
+        results.insert(("UTC+0", "Snap Hutao Deprecated & GMT", TimeZone.gmt), at: 0)
+        return results
     }
 }

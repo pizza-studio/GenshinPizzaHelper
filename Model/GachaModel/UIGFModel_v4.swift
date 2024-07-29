@@ -390,6 +390,17 @@ extension DateFormatter {
         return dateFormatter
     }
 
+    public static func forUIGFEntry(
+        timeZoneDeltaAsSeconds: Int
+    )
+        -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddHHmm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = .init(secondsFromGMT: timeZoneDeltaAsSeconds)
+        return dateFormatter
+    }
+
     public static var forUIGFFileName: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmm"

@@ -37,11 +37,12 @@ struct UIGFv2: Decodable {
         self.info = try container.decode(UIGFv2.Info.self, forKey: .info)
         self.list = try container.decode([GIGFGachaItem].self, forKey: .list)
         fixItemIDs()
+        fixTimeZoneIfNil()
     }
 
     // MARK: Public
 
-    public let info: Info
+    public var info: Info
     public internal(set) var list: [GIGFGachaItem]
 
     public var needsItemIDFix: Bool {
@@ -111,6 +112,10 @@ struct UIGFv2: Decodable {
             self.lang = (try? container.decodeIfPresent(GachaLanguageCode.self, forKey: .lang)) ?? .zhHans
         }
 
+        // MARK: Public
+
+        public internal(set) var regionTimeZone: Int?
+
         // MARK: Internal
 
         enum CodingKeys: String, CodingKey {
@@ -129,7 +134,6 @@ struct UIGFv2: Decodable {
         let exportApp: String?
         let exportAppVersion: String?
         let uigfVersion: String?
-        let regionTimeZone: Int?
     }
 
     enum CodingKeys: CodingKey {
@@ -243,9 +247,38 @@ struct GIGFGachaItem: Decodable {
     var uigfGachaType: UIGFv4.ProfileGI.GachaItemGI.UIGFGachaTypeGI
 }
 
-// MARK: - Translator to UIGFv4 Gacha Item
+// MARK: - Time Zone Fixer
 
 extension UIGFv2 {
+    mutating func fixTimeZoneIfNil() {
+        guard info.regionTimeZone == nil else { return }
+        let fallbackTimeZone = Defaults[.fallbackTimeForGIGFFileImport]
+        let newTimeZoneDelta = GachaItem.getServerTimeZoneDelta(info.uid)
+
+        let timeZoneDeltaAsSeconds: Int = {
+            var timeZoneSeconds = newTimeZoneDelta * 3600
+            if let fallbackTimeZone {
+                timeZoneSeconds = fallbackTimeZone.secondsFromGMT()
+            }
+            return timeZoneSeconds
+        }()
+
+        guard newTimeZoneDelta * 3600 != fallbackTimeZone?.secondsFromGMT() else { return }
+
+        for i in 0 ..< list.count {
+            if let timeTyped: Date = DateFormatter.forUIGFEntry(
+                timeZoneDeltaAsSeconds: timeZoneDeltaAsSeconds
+            ).date(from: list[i].time) {
+                list[i].time = timeTyped.asUIGFDate(timeZoneDelta: newTimeZoneDelta)
+            }
+        }
+    }
+}
+
+// MARK: - Translator to UIGFv4 Profile
+
+extension UIGFv2 {
+    /// 注意：这个方法不会自动尝试修复 UIGFv2.2 & v2.3 的时区资讯。
     func upgradeTo4thGenerationProfile() -> UIGFv4.ProfileGI {
         // MARK: Info
 
@@ -442,10 +475,11 @@ extension XLSXFile {
                     uid: uid,
                     lang: langCode,
                     uigfVersion: "v2.2",
-                    regionTimeZone: GachaItem.getServerTimeZoneDelta(uid)
+                    regionTimeZone: nil
                 )
                 var newFile = UIGFv2(info: info, list: item)
                 newFile.fixItemIDs()
+                newFile.fixTimeZoneIfNil()
                 giProfiles.append(newFile.upgradeTo4thGenerationProfile())
             }
         }
