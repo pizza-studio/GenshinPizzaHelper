@@ -37,8 +37,15 @@ extension Defaults.Keys {
         default: false,
         suite: .gmdbSuite
     )
+    /// 针对 UIGF v2.3 及之前版本的文件导入时所使用的垫底时区，预设值为 nil。
+    public static let fallbackTimeForGIGFFileImport = Key<TimeZone?>(
+        "fallbackTimeForGIGFFileImport",
+        default: nil,
+        suite: .gmdbSuite
+    )
 }
 
 extension GachaItemMetadata: _DefaultsSerializable {}
+extension TimeZone: _DefaultsSerializable {}
 
 #endif
