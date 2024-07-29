@@ -36,6 +36,15 @@ struct GachaView: View {
     var body: some View {
         mainView()
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Picker(selection: $gachaViewModel.filter.uid) {
+                        gachaViewModel.choicesForAccountPicker(accounts: accounts)
+                    } label: {
+                        Image(systemSymbol: .arrowLeftArrowRightCircle)
+                    }
+                    .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
+                }
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     GetGachaNavigationMenu(
                         showByAPI: mainlandChinaAccountDetected,
@@ -47,41 +56,6 @@ struct GachaView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         ExportGachaView(compactLayout: true, uid: gachaViewModel.filter.uid)
                     }
-                }
-
-                ToolbarItem(placement: .principal) {
-                    Menu {
-                        ForEach(
-                            gachaViewModel.allAvaliableAccountUID,
-                            id: \.self
-                        ) { uid in
-                            Group {
-                                if let name: String = firstAccount(uid: uid)?.name {
-                                    Button(name) {
-                                        gachaViewModel.filter.uid = uid
-                                    }
-                                } else {
-                                    Button(uid) {
-                                        gachaViewModel.filter.uid = uid
-                                    }
-                                }
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemSymbol: .arrowLeftArrowRightCircle)
-                            if let uid: String = gachaViewModel.filter.uid {
-                                if let name: String = firstAccount(uid: uid)?.name {
-                                    Text(name)
-                                } else {
-                                    Text(uid)
-                                }
-                            } else {
-                                Text("app.gacha.get.button")
-                            }
-                        }
-                    }
-                    .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
                 }
             }
             .environmentObject(gachaViewModel)
@@ -137,10 +111,6 @@ struct GachaView: View {
 
     private var mainlandChinaAccountDetected: Bool {
         accounts.first(where: { $0.server.region == .mainlandChina }) != nil
-    }
-
-    private func firstAccount(uid: String) -> Account? {
-        accounts.first(where: { $0.uid == uid })
     }
 }
 
@@ -775,41 +745,11 @@ private struct GachaDetailView: View {
         }
         .navigationTitle("抽取记录")
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                Menu {
-                    ForEach(
-                        gachaViewModel.allAvaliableAccountUID,
-                        id: \.self
-                    ) { uid in
-                        Group {
-                            if let name: String = accounts
-                                .first(where: { $0.uid == uid })?
-                                .name {
-                                Button(name) {
-                                    gachaViewModel.filter.uid = uid
-                                }
-                            } else {
-                                Button(uid) {
-                                    gachaViewModel.filter.uid = uid
-                                }
-                            }
-                        }
-                    }
+            ToolbarItem(placement: .topBarTrailing) {
+                Picker(selection: $gachaViewModel.filter.uid) {
+                    gachaViewModel.choicesForAccountPicker(accounts: accounts)
                 } label: {
-                    HStack {
-                        Image(systemSymbol: .arrowLeftArrowRightCircle)
-                        if let uid: String = gachaViewModel.filter.uid {
-                            if let name: String = accounts
-                                .first(where: { $0.uid == uid })?
-                                .name {
-                                Text(name)
-                            } else {
-                                Text(uid)
-                            }
-                        } else {
-                            Text("app.gacha.get.button")
-                        }
-                    }
+                    Image(systemSymbol: .arrowLeftArrowRightCircle)
                 }
                 .disabled(gachaViewModel.allAvaliableAccountUID.isEmpty)
             }

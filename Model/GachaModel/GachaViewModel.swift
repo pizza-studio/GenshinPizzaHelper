@@ -383,3 +383,34 @@ struct GachaTypeDateCount: Hashable, Identifiable {
         hasher.combine(type)
     }
 }
+
+// MARK: - GachaViewModel SwiftUI APIs.
+
+extension GachaViewModel {
+    @ViewBuilder
+    func choicesForAccountPicker(accounts: FetchedResults<Account>) -> some View {
+        if allAvaliableAccountUID.isEmpty {
+            pickerText(accounts: accounts).tag(String?.none) // nil
+        }
+        ForEach(allAvaliableAccountUID, id: \.self) { uid in
+            self.pickerText(uid: uid, accounts: accounts).tag(uid as String?)
+        }
+    }
+
+    func firstAccount(uid: String, from accounts: FetchedResults<Account>) -> Account? {
+        accounts.first(where: { $0.uid == uid })
+    }
+
+    @ViewBuilder
+    func pickerText(uid: String? = nil, accounts: FetchedResults<Account>) -> some View {
+        if let uid: String = uid ?? filter.uid {
+            if let name: String = firstAccount(uid: uid, from: accounts)?.name {
+                Text(verbatim: "\(name) (\(uid))")
+            } else {
+                Text(uid)
+            }
+        } else {
+            Text("app.gacha.get.button")
+        }
+    }
+}
