@@ -8,6 +8,7 @@
 import Combine
 import CoreData
 import Foundation
+import GachaMetaDB
 import GIPizzaKit
 import HBMihoyoAPI
 import HoYoKit
@@ -34,6 +35,20 @@ class GachaViewModel: ObservableObject {
         )
         _ = manager.cleanDuplicatedItems()
         manager.viewModel = self
+        cancellables.append(
+            enkaDB.objectWillChange.sink(
+                receiveValue: { [weak self] _ in
+                    self?.objectWillChange.send()
+                }
+            )
+        )
+        cancellables.append(
+            metaDB.objectWillChange.sink(
+                receiveValue: { [weak self] _ in
+                    self?.objectWillChange.send()
+                }
+            )
+        )
     }
 
     // MARK: Internal
@@ -216,6 +231,15 @@ class GachaViewModel: ObservableObject {
         }
         return resultStack
     }
+
+    // MARK: Private
+
+    @ObservedObject
+    private var enkaDB = EnkaGI.Sputnik.sharedDB
+    @ObservedObject
+    private var metaDB = GachaMetaDBExposed.shared
+
+    private var cancellables: [AnyCancellable] = []
 }
 
 // MARK: - GachaFilter
