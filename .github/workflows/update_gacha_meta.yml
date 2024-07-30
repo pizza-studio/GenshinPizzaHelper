@@ -26,7 +26,7 @@ jobs:
               with:
                 token: ${{ secrets.GITHUB_TOKEN }}
                 branch: update-assets-${{ github.run_number }}
-                base: dev
+                base: master
                 title: "Update Gacha Meta"
                 body: |
                   This PR updates the GachaMetaDB SPM Tag.
