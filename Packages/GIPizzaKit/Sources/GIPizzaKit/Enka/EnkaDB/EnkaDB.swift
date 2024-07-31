@@ -50,25 +50,25 @@ extension EnkaGI {
 
         public var langTag: String {
             didSet {
-                objectWillChange.send()
+                asyncSendObjWillChange()
             }
         }
 
         public var locTable: EnkaGI.DBModels.LocTable {
             didSet {
-                objectWillChange.send()
+                asyncSendObjWillChange()
             }
         }
 
         public var characters: EnkaGI.DBModels.CharacterDict {
             didSet {
-                objectWillChange.send()
+                asyncSendObjWillChange()
             }
         }
 
         public var isExpired: Bool = false {
             didSet {
-                objectWillChange.send()
+                asyncSendObjWillChange()
             }
         }
 
@@ -93,6 +93,14 @@ extension EnkaGI {
             locTable = new.locTable
             characters = new.characters
             isExpired = false
+        }
+
+        // MARK: Private
+
+        private func asyncSendObjWillChange() {
+            Task.detached { @MainActor in
+                self.objectWillChange.send()
+            }
         }
     }
 }
