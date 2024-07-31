@@ -19,6 +19,7 @@ extension EnkaGI {
             Defaults.reset(.enkaDBData)
         }
 
+        @MainActor
         public static func getEnkaDB(updateCheck: ((EnkaGI.DBModels.CharacterDict) -> Bool)? = nil) async throws
             -> EnkaDB {
             var enkaDataExpired = Calendar.current.date(

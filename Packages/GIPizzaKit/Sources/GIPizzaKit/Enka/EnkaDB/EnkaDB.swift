@@ -87,6 +87,7 @@ extension EnkaGI {
             return target
         }
 
+        @MainActor
         public func update(new: EnkaGI.EnkaDB) {
             langTag = new.langTag
             locTable = new.locTable
