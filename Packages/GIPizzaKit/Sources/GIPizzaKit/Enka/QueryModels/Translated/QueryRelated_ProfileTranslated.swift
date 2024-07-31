@@ -33,15 +33,21 @@ extension EnkaGI.QueryRelated {
                 value: fetchedModel.ttl ?? 30,
                 to: Date()
             )!
-            reinit(firstRun: true) // This updates Avatars.
+            Task.detached { @MainActor in
+                self.reinit(firstRun: true) // This updates Avatars.
+            }
             cancellables.append(
                 theDB.objectWillChange.sink {
-                    self.update(newRawInfo: self.rawInfo)
+                    Task.detached { @MainActor in
+                        self.update(newRawInfo: self.rawInfo)
+                    }
                 }
             )
             cancellables.append(
                 Defaults.publisher(.artifactRatingOptions).sink { _ in
-                    self.reinit(firstRun: false)
+                    Task.detached { @MainActor in
+                        self.reinit(firstRun: false)
+                    }
                 }
             )
         }
@@ -72,6 +78,7 @@ extension EnkaGI.QueryRelated {
 }
 
 extension EnkaGI.QueryRelated.ProfileTranslated {
+    @MainActor
     public func update(
         newRawInfo: EnkaGI.QueryRelated.ProfileRAW, dropExistingData: Bool = false
     ) {
@@ -79,6 +86,7 @@ extension EnkaGI.QueryRelated.ProfileTranslated {
         reinit(firstRun: false)
     }
 
+    @MainActor
     internal func reinit(firstRun: Bool = false) {
         if let avatarInfoList = rawInfo.avatarInfoList {
             avatars = avatarInfoList.compactMap { avatarInfo in
