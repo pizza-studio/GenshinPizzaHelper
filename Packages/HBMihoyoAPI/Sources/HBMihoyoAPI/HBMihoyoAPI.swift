@@ -4,7 +4,6 @@ import Foundation
 import HoYoKit
 import UIKit
 
-@available(iOS 13, watchOS 8, *)
 public enum MihoyoAPI {
     /// 获取信息
     /// - Parameters:

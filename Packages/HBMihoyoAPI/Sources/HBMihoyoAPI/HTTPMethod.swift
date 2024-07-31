@@ -13,7 +13,6 @@ import UIKit
 
 // MARK: - HttpMethod
 
-@available(iOS 13, watchOS 6, *)
 public struct HttpMethod<T: Decodable> {
     // MARK: - Method
 

@@ -6,7 +6,6 @@ import Defaults
 import Foundation
 import HBMihoyoAPI
 
-@available(iOS 13, watchOS 7, *)
 public enum PizzaHelperAPI {
     /// 获取最新系统版本
     /// - Parameters:

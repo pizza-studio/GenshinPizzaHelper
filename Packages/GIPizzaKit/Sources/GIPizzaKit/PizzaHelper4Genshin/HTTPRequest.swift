@@ -15,7 +15,6 @@ enum Method {
 
 // MARK: - HttpMethod
 
-@available(iOS 13, watchOS 6, *)
 extension HttpMethod {
     /// 返回自己的后台的结果接口
     /// - Parameters:
