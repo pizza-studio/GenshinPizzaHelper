@@ -315,6 +315,7 @@ public class GachaModelManager {
 
     // MARK: Private
 
+    @MainActor
     private let container: NSPersistentCloudKitContainer
     private let queue = DispatchQueue(
         label: "com.GenshinPizzaHepler.SaveGacha",

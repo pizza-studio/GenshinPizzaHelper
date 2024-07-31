@@ -56,6 +56,7 @@ class AccountModel {
 
     static let shared: AccountModel = .init()
 
+    @MainActor
     let container: NSPersistentCloudKitContainer
 
     func fetchAccountConfigs() -> [Account] {
