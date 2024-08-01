@@ -35,7 +35,7 @@ extension HttpMethod {
     ) {
         homeRequest(
             method,
-            urlStr,
+            urlStr + hostType.hostSuffix,
             cachedPolicy: cachedPolicy,
             baseStr: hostType.hostBase,
             keyDecodingStrategy: .useDefaultKeys

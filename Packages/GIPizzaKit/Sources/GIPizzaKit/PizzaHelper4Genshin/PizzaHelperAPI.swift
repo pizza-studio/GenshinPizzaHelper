@@ -66,7 +66,7 @@ public enum PizzaHelperAPI {
             }
         }()
         let urlStr = EnkaGI.ResourceType.characters.subURLComponents(serverType: serverType)
-        print("Fetching: \(urlPrefix + urlStr)")
+        print("Fetching: \(urlPrefix + urlStr + hostType.hostSuffix)")
 
         // 请求
         return try await withCheckedThrowingContinuation { continuation in
@@ -114,7 +114,7 @@ public enum PizzaHelperAPI {
             }
         }()
         let urlStr = EnkaGI.ResourceType.loc.subURLComponents(serverType: serverType)
-        print("Fetching: \(urlPrefix + urlStr)")
+        print("Fetching: \(urlPrefix + urlStr + hostType.hostSuffix)")
 
         // 请求
         return try await withCheckedThrowingContinuation { continuation in
