@@ -97,12 +97,26 @@ public struct SpiralAbyssDetailRequestResult: Codable {
 
 // MARK: - RequestError
 
-public enum RequestError: Error {
+public enum RequestError: Error, LocalizedError {
     case dataTaskError(String)
     case noResponseData
     case responseError
     case decodeError(String)
     case errorWithCode(Int)
+
+    // MARK: Public
+
+    public var localizedDescription: String {
+        switch self {
+        case let .dataTaskError(string):
+            return "[PZReqErr] Data Task Error:\n=======\n\(string)\n=======\n"
+        case .noResponseData: return "[PZReqErr] Data is not attached in the HTTP response."
+        case .responseError: return "[PZReqErr] HTTP Response Error. (RequestError.responseError)"
+        case let .decodeError(string):
+            return "[PZReqErr] JSON Decode Error. Raw Contents:\n=======\n\(string)\n=======\n"
+        case let .errorWithCode(int): return "[PZReqErr] Request Error (Code \(int))."
+        }
+    }
 }
 
 // MARK: - ErrorCode
