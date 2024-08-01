@@ -1601,8 +1601,7 @@ private struct DPVErrorView: View {
     let completion: () -> ()
 
     var body: some View {
-        if let miHoYoAPIError = error as? MiHoYoAPIError,
-           case .verificationNeeded = miHoYoAPIError {
+        if case .verificationNeeded = error as? MiHoYoAPIError {
             VerificationNeededView(account: account, challengePath: apiPath) {
                 vmDPV.refresh()
             }
