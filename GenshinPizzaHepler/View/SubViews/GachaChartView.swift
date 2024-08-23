@@ -26,26 +26,24 @@ struct GachaChartView: View {
 
     @ViewBuilder
     var listHeader: some View {
-        HStack {
-            Text(
-                gachaViewModel.filter.gachaType.localizedDescription()
-            )
-            Spacer()
-            Button(
-                "app.gacha.chart.switch.button:\(gachaViewModel.filter.gachaType.nextOne().localizedDescription())"
-            ) {
-                withAnimation {
-                    gachaViewModel.filter.gachaType = gachaViewModel
-                        .filter.gachaType.nextOne()
-                }
-            }
-            .font(.caption)
-        }
+        Text(
+            gachaViewModel.filter.gachaType.localizedDescription()
+        )
         .textCase(.none)
     }
 
     var body: some View {
         List {
+            Section {
+                Picker(
+                    "gacha.account_detail.detail.filter.gacha_type",
+                    selection: $gachaViewModel.filter.gachaType.animation()
+                ) {
+                    ForEach(GachaType.allAvailableCases, id: \.rawValue) { type in
+                        Text(type.localizedDescription()).tag(type)
+                    }
+                }
+            }
             Section {
                 GachaItemChart(items: gachaViewModel.filteredGachaItemsWithCount)
                     .environmentObject(gachaViewModel)

@@ -24625,13 +24625,13 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "祈願タイプ"
+            "value" : "祈願種類"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "祈願类型"
+            "value" : "祈愿类型"
           }
         },
         "zh-Hant" : {

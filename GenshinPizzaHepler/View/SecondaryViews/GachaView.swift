@@ -65,17 +65,17 @@ struct GachaView: View {
     @ViewBuilder
     func mainView() -> some View {
         List {
-            if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
-                Section {
-                    Picker(
-                        "gacha.account_detail.detail.filter.gacha_type",
-                        selection: $gachaViewModel.filter.gachaType.animation()
-                    ) {
-                        ForEach(GachaType.allAvailableCases, id: \.rawValue) { type in
-                            Text(type.localizedDescription()).tag(type)
-                        }
+            Section {
+                Picker(
+                    "gacha.account_detail.detail.filter.gacha_type",
+                    selection: $gachaViewModel.filter.gachaType.animation()
+                ) {
+                    ForEach(GachaType.allAvailableCases, id: \.rawValue) { type in
+                        Text(type.localizedDescription()).tag(type)
                     }
                 }
+            }
+            if !gachaViewModel.filteredGachaItemsWithCount.isEmpty {
                 Section {
                     VStack(alignment: .leading) {
                         GachaChart(
