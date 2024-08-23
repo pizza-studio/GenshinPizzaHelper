@@ -39953,7 +39953,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "国服"
+            "value" : "中国内地服务器"
           }
         },
         "zh-Hant" : {
@@ -39981,7 +39981,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "国际服"
+            "value" : "全球服务器"
           }
         },
         "zh-Hant" : {
