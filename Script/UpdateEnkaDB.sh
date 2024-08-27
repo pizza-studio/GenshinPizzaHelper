@@ -2,9 +2,9 @@
 
 rm -rf /var/tmp/temporaryJSON4Enka/ || true
 mkdir /var/tmp/temporaryJSON4Enka/
-git clone https://github.com/EnkaNetwork/API-docs.git /var/tmp/temporaryJSON4Enka/
+git clone https://github.com/pizza-studio/EnkaDBGenerator.git /var/tmp/temporaryJSON4Enka/
 
-cp /var/tmp/temporaryJSON4Enka/store/*.json ./Packages/GIPizzaKit/Sources/GIPizzaKit/Enka/Assets/
+cp /var/tmp/temporaryJSON4Enka/Sources/EnkaDBFiles/Resources/Specimen/GI/*.json ./Packages/GIPizzaKit/Sources/GIPizzaKit/Enka/Assets/
 
 rm -rf /var/tmp/temporaryJSON4Enka/
 
