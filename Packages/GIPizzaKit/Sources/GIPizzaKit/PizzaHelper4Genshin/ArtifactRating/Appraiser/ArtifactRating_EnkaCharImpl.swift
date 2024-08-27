@@ -1112,6 +1112,48 @@ extension CharacterAsset {
                 .defAmp: .none,
                 .def: .none,
             ]
+        case .Kachina:
+            // By ShikiSuen.
+            return [
+                .cr: .highest,
+                .cd: .highest,
+                .er: .none,
+                .em: .none,
+                .atkAmp: .medium,
+                .atk: .lower,
+                .hpAmp: .none,
+                .hp: .none,
+                .defAmp: .high,
+                .def: .none,
+            ]
+        case .Kinich:
+            // By ShikiSuen.
+            return [
+                .cr: .highest,
+                .cd: .highest,
+                .er: .none,
+                .em: .higher,
+                .atkAmp: .high,
+                .atk: .low,
+                .hpAmp: .none,
+                .hp: .none,
+                .defAmp: .none,
+                .def: .none,
+            ]
+        case .Mualani:
+            // By ShikiSuen.
+            return [
+                .cr: .highest,
+                .cd: .highest,
+                .er: .low,
+                .em: .none,
+                .atkAmp: .none,
+                .atk: .none,
+                .hpAmp: .highest,
+                .hp: .medium,
+                .defAmp: .none,
+                .def: .none,
+            ]
         }
     }
 }

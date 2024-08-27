@@ -135,6 +135,9 @@
 "$asset.character:Sethos" = "Sethos";
 "$asset.character:Clorinde" = "Clorinde";
 "$asset.character:Emilie" = "Emilie";
+"$asset.character:Kachina" = "Kachina";
+"$asset.character:Kinich" = "Kinich";
+"$asset.character:Mualani" = "Mualani";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Ống Đồng Fleuve Cendre";
 "$asset.weapon:TheDockhandsAssistant" = "Kiếm Bến Tàu";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Lưỡi Kiếm Narzissenkreuz";
+"$asset.weapon:FluteOfEzpitzal" = "Sáo Ezpitzal";
 "$asset.weapon:AquilaFavonia" = "Phong Ưng Kiếm";
 "$asset.weapon:SkywardBlade" = "Thiên Không Kiếm";
 "$asset.weapon:FreedomSworn" = "Lời Thề Tự Do Cổ Xưa";
@@ -209,6 +213,7 @@
 "$asset.weapon:TidalShadow" = "Bóng Tối Thủy Triều";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Bá Vương Tối Thượng Siêu Cấp Ma Kiếm";
 "$asset.weapon:PortablePowerSaw" = "Máy Cưa Cầm Tay";
+"$asset.weapon:EarthShaker" = "Đao Chấn Động";
 "$asset.weapon:SkywardPride" = "Thiên Không Kiêu Ngạo";
 "$asset.weapon:WolfsGravestone" = "Đường Cùng Của Sói";
 "$asset.weapon:SongOfBrokenPines" = "Tiếng Gió Trong Rừng Thông";
@@ -216,6 +221,7 @@
 "$asset.weapon:RedhornStonethresher" = "Xích Giác Phá Thạch Đao";
 "$asset.weapon:BeaconOfTheReedSea" = "Hải Đăng Bờ Biển Lau";
 "$asset.weapon:ConsideredJudgement" = "Lời Phán Quyết";
+"$asset.weapon:FangOfTheMountainKing" = "Nanh Sơn Vương";
 "$asset.weapon:BeginnersProtector" = "Thương Tân Thủ";
 "$asset.weapon:IronPoint" = "Thương Sắt";
 "$asset.weapon:WhiteTassel" = "Thương Bạch Anh";
@@ -239,6 +245,7 @@
 "$asset.weapon:RightfulReward" = "Thù Lao Của Chính Nghĩa";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Đối Thoại Của Hiền Giả Sa Mạc";
 "$asset.weapon:ProspectorsDrill" = "Mũi Khoan Thăm Dò";
+"$asset.weapon:FootprintOfTheRainbow" = "Vết Tích Cầu Vồng";
 "$asset.weapon:StaffOfHoma" = "Trượng Hộ Ma";
 "$asset.weapon:SkywardSpine" = "Xương Sống Thiên Không";
 "$asset.weapon:VortexVanquisher" = "Giáo Nịnh Thần";
@@ -274,6 +281,8 @@
 "$asset.weapon:SacrificialJade" = "Ngọc Bích Hiến Tế";
 "$asset.weapon:FlowingPurity" = "Dòng Chảy Tinh Khiết";
 "$asset.weapon:BalladOfTheBoundlessBlue" = "Khúc Ca Xanh Bao La";
+"$asset.weapon:AshGravenDrinkingHorn" = "Sừng Rượu Vân Xanh";
+"$asset.weapon:RingOfYaxche" = "Vòng Yaxche";
 "$asset.weapon:SkywardAtlas" = "Quyển Thiên Không";
 "$asset.weapon:LostPrayerToTheSacredWinds" = "Điển Tích Tây Phong";
 "$asset.weapon:MemoryOfDust" = "Khóa Trần Thế";
@@ -285,6 +294,7 @@
 "$asset.weapon:CashflowSupervision" = "Quản Đốc Vàng Ròng";
 "$asset.weapon:TomeOfTheEternalFlow" = "Nghi Thức Dòng Chảy Vĩnh Hằng";
 "$asset.weapon:CranesEchoingCall" = "Dư Âm Tiếng Hạc";
+"$asset.weapon:SurfsUp" = "Thời Khắc Lướt Sóng";
 "$asset.weapon:HuntersBow" = "Cung Săn Bắn";
 "$asset.weapon:SeasonedHuntersBow" = "Cung Săn Bắn Tôi Luyện";
 "$asset.weapon:RavenBow" = "Cung Lông Quạ";
@@ -315,6 +325,7 @@
 "$asset.weapon:SongOfStillness" = "Khúc Ca Tĩnh Lặng";
 "$asset.weapon:Cloudforged" = "Trúc Vân";
 "$asset.weapon:RangeGauge" = "Máy Đo Cự Ly";
+"$asset.weapon:ChainBreaker" = "Phá Xích";
 "$asset.weapon:SkywardHarp" = "Cánh Thiên Không";
 "$asset.weapon:AmosBow" = "Cung Amos";
 "$asset.weapon:ElegyForTheEnd" = "Tiếng Thở Dài Vô Tận";

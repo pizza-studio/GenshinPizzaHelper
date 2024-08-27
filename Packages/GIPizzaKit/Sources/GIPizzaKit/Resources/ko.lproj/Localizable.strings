@@ -135,6 +135,9 @@
 "$asset.character:Sethos" = "세토스";
 "$asset.character:Clorinde" = "클로린드";
 "$asset.character:Emilie" = "에밀리";
+"$asset.character:Kachina" = "카치나";
+"$asset.character:Kinich" = "키니치";
+"$asset.character:Mualani" = "말라니";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "잿빛의 강 뱃사공";
 "$asset.weapon:TheDockhandsAssistant" = "뱃도랑 장검";
 "$asset.weapon:SwordOfNarzissenkreuz" = "수선화 십자 성검";
+"$asset.weapon:FluteOfEzpitzal" = "에스피찰의 피리";
 "$asset.weapon:AquilaFavonia" = "매의 검";
 "$asset.weapon:SkywardBlade" = "천공의 검";
 "$asset.weapon:FreedomSworn" = "오래된 자유의 서약";
@@ -209,6 +213,7 @@
 "$asset.weapon:TidalShadow" = "파도 그림자 대검";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "궁극의 패왕 특급 마검";
 "$asset.weapon:PortablePowerSaw" = "휴대용 체인톱";
+"$asset.weapon:EarthShaker" = "대지를 울리는 자";
 "$asset.weapon:SkywardPride" = "천공의 긍지";
 "$asset.weapon:WolfsGravestone" = "늑대의 말로";
 "$asset.weapon:SongOfBrokenPines" = "송뢰가 울릴 무렵";
@@ -216,6 +221,7 @@
 "$asset.weapon:RedhornStonethresher" = "쇄석의 붉은 뿔";
 "$asset.weapon:BeaconOfTheReedSea" = "갈대 바다의 등대";
 "$asset.weapon:ConsideredJudgement" = "판단";
+"$asset.weapon:FangOfTheMountainKing" = "산왕의 엄니";
 "$asset.weapon:BeginnersProtector" = "초보자의 장창";
 "$asset.weapon:IronPoint" = "철촉창";
 "$asset.weapon:WhiteTassel" = "백술창";
@@ -239,6 +245,7 @@
 "$asset.weapon:RightfulReward" = "공의의 보상";
 "$asset.weapon:DialoguesOfTheDesertSages" = "위대한 사막 현자의 대답";
 "$asset.weapon:ProspectorsDrill" = "탐사용 드릴";
+"$asset.weapon:FootprintOfTheRainbow" = "무지개의 행적";
 "$asset.weapon:StaffOfHoma" = "호마의 지팡이";
 "$asset.weapon:SkywardSpine" = "천공의 마루";
 "$asset.weapon:VortexVanquisher" = "관홍의 창";
@@ -274,6 +281,8 @@
 "$asset.weapon:SacrificialJade" = "제사의 옥";
 "$asset.weapon:FlowingPurity" = "순수한 달빛 물결";
 "$asset.weapon:BalladOfTheBoundlessBlue" = "끝없는 쪽빛의 노래";
+"$asset.weapon:AshGravenDrinkingHorn" = "푸른 문양 뿔잔";
+"$asset.weapon:RingOfYaxche" = "약스체의 고리";
 "$asset.weapon:SkywardAtlas" = "천공의 두루마리";
 "$asset.weapon:LostPrayerToTheSacredWinds" = "사풍 원서";
 "$asset.weapon:MemoryOfDust" = "속세의 자물쇠";
@@ -285,6 +294,7 @@
 "$asset.weapon:CashflowSupervision" = "현금 흐름 감독";
 "$asset.weapon:TomeOfTheEternalFlow" = "영원히 샘솟는 법전";
 "$asset.weapon:CranesEchoingCall" = "학의 여음";
+"$asset.weapon:SurfsUp" = "서핑 타임";
 "$asset.weapon:HuntersBow" = "사냥활";
 "$asset.weapon:SeasonedHuntersBow" = "노련의 사냥활";
 "$asset.weapon:RavenBow" = "까마귀깃 활";
@@ -315,6 +325,7 @@
 "$asset.weapon:SongOfStillness" = "고요한 노래";
 "$asset.weapon:Cloudforged" = "축운";
 "$asset.weapon:RangeGauge" = "거리 측정기";
+"$asset.weapon:ChainBreaker" = "사슬 파괴자";
 "$asset.weapon:SkywardHarp" = "천공의 날개";
 "$asset.weapon:AmosBow" = "아모스의 활";
 "$asset.weapon:ElegyForTheEnd" = "종말 탄식의 노래";

@@ -135,6 +135,9 @@
 "$asset.character:Sethos" = "Сетос";
 "$asset.character:Clorinde" = "Клоринда";
 "$asset.character:Emilie" = "Эмилия";
+"$asset.character:Kachina" = "Качина";
+"$asset.character:Kinich" = "Кинич";
+"$asset.character:Mualani" = "Муалани";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Перевозчик Флёв Сандр";
 "$asset.weapon:TheDockhandsAssistant" = "Верфь";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Меч Нарциссенкрейца";
+"$asset.weapon:FluteOfEzpitzal" = "Флейта Эспицаль";
 "$asset.weapon:AquilaFavonia" = "Меч Сокола";
 "$asset.weapon:SkywardBlade" = "Небесный меч";
 "$asset.weapon:FreedomSworn" = "Клятва свободы";
@@ -209,6 +213,7 @@
 "$asset.weapon:TidalShadow" = "Тень волны";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Магический супермеч высшего владыки";
 "$asset.weapon:PortablePowerSaw" = "Переносная мотопила";
+"$asset.weapon:EarthShaker" = "Сотрясающий землю";
 "$asset.weapon:SkywardPride" = "Небесное величие";
 "$asset.weapon:WolfsGravestone" = "Волчья погибель";
 "$asset.weapon:SongOfBrokenPines" = "Песнь разбитых сосен";
@@ -216,6 +221,7 @@
 "$asset.weapon:RedhornStonethresher" = "Краснорогий камнеруб";
 "$asset.weapon:BeaconOfTheReedSea" = "Маяк тростникового моря";
 "$asset.weapon:ConsideredJudgement" = "Обдуманное суждение";
+"$asset.weapon:FangOfTheMountainKing" = "Клык Горного короля";
 "$asset.weapon:BeginnersProtector" = "Копьё новичка";
 "$asset.weapon:IronPoint" = "Железный наконечник";
 "$asset.weapon:WhiteTassel" = "Белая кисть";
@@ -239,6 +245,7 @@
 "$asset.weapon:RightfulReward" = "Справедливая награда";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Диалог пустынных мудрецов";
 "$asset.weapon:ProspectorsDrill" = "Бур рудоискателя";
+"$asset.weapon:FootprintOfTheRainbow" = "След радуги";
 "$asset.weapon:StaffOfHoma" = "Посох Хомы";
 "$asset.weapon:SkywardSpine" = "Небесная ось";
 "$asset.weapon:VortexVanquisher" = "Покоритель вихря";
@@ -274,6 +281,8 @@
 "$asset.weapon:SacrificialJade" = "Жертвенный нефрит";
 "$asset.weapon:FlowingPurity" = "Сверкание чистых вод";
 "$asset.weapon:BalladOfTheBoundlessBlue" = "Песнь необъятной лазури";
+"$asset.weapon:AshGravenDrinkingHorn" = "Пепельный рог";
+"$asset.weapon:RingOfYaxche" = "Кольцо Яшче";
 "$asset.weapon:SkywardAtlas" = "Небесный атлас";
 "$asset.weapon:LostPrayerToTheSacredWinds" = "Молитва святым ветрам";
 "$asset.weapon:MemoryOfDust" = "Память о пыли";
@@ -285,6 +294,7 @@
 "$asset.weapon:CashflowSupervision" = "Казначейский надзор";
 "$asset.weapon:TomeOfTheEternalFlow" = "Обряд вечного течения";
 "$asset.weapon:CranesEchoingCall" = "Звонкий клич журавля";
+"$asset.weapon:SurfsUp" = "Лови волну";
 "$asset.weapon:HuntersBow" = "Лук охотника";
 "$asset.weapon:SeasonedHuntersBow" = "Лук опытного охотника";
 "$asset.weapon:RavenBow" = "Лук ворона";
@@ -315,6 +325,7 @@
 "$asset.weapon:SongOfStillness" = "Мелодия покоя";
 "$asset.weapon:Cloudforged" = "Выкованный из облаков";
 "$asset.weapon:RangeGauge" = "Дальномер";
+"$asset.weapon:ChainBreaker" = "Разбивающий цепи";
 "$asset.weapon:SkywardHarp" = "Небесное крыло";
 "$asset.weapon:AmosBow" = "Лук Амоса";
 "$asset.weapon:ElegyForTheEnd" = "Элегия погибели";

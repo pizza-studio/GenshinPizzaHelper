@@ -39,6 +39,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case FleuveCendreFerryman = 11426
     case TheDockhandsAssistant = 11427
     case SwordOfNarzissenkreuz = 11428
+    case FluteOfEzpitzal = 11431
     case AquilaFavonia = 11501
     case SkywardBlade = 11502
     case FreedomSworn = 11503
@@ -79,6 +80,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case TidalShadow = 12425
     case UltimateOverloardsMegaMagicSword = 12426
     case PortablePowerSaw = 12427
+    case EarthShaker = 12431
     case SkywardPride = 12501
     case WolfsGravestone = 12502
     case SongOfBrokenPines = 12503
@@ -86,6 +88,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case RedhornStonethresher = 12510
     case BeaconOfTheReedSea = 12511
     case ConsideredJudgement = 12512
+    case FangOfTheMountainKing = 12513
     case BeginnersProtector = 13101
     case IronPoint = 13201
     case WhiteTassel = 13301
@@ -109,6 +112,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case RightfulReward = 13425
     case DialoguesOfTheDesertSages = 13426
     case ProspectorsDrill = 13427
+    case FootprintOfTheRainbow = 13431
     case StaffOfHoma = 13501
     case SkywardSpine = 13502
     case VortexVanquisher = 13504
@@ -144,6 +148,8 @@ public enum WeaponAsset: Int, CaseIterable {
     case SacrificialJade = 14424
     case FlowingPurity = 14425
     case BalladOfTheBoundlessBlue = 14426
+    case AshGravenDrinkingHorn = 14427
+    case RingOfYaxche = 14431
     case SkywardAtlas = 14501
     case LostPrayerToTheSacredWinds = 14502
     case MemoryOfDust = 14504
@@ -155,6 +161,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case CashflowSupervision = 14513
     case TomeOfTheEternalFlow = 14514
     case CranesEchoingCall = 14515
+    case SurfsUp = 14516
     case HuntersBow = 15101
     case SeasonedHuntersBow = 15201
     case RavenBow = 15301
@@ -185,6 +192,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case SongOfStillness = 15425
     case Cloudforged = 15426
     case RangeGauge = 15427
+    case ChainBreaker = 15431
     case SkywardHarp = 15501
     case AmosBow = 15502
     case ElegyForTheEnd = 15503
@@ -219,387 +227,207 @@ extension WeaponAsset {
 extension WeaponAsset: DailyMaterialConsumer {
     public var dailyMaterial: DailyMaterialAsset? {
         switch self {
-        case .DullBlade: return .weaponDecarabian
-        case .SilverSword: return .weaponDecarabian
-        case .CoolSteel: return .weaponDecarabian
-        case .HarbingerOfDawn: return .weaponBorealWolf
-        case .TravelersHandySword: return .weaponGladiator
-        case .DarkIronSword: return .weaponGuyun
-        case .FilletBlade: return .weaponElixir
-        case .SkyriderSword: return .weaponAerosiderite
-        case .FavoniusSword: return .weaponDecarabian
-        case .TheFlute: return .weaponBorealWolf
-        case .SacrificialSword: return .weaponGladiator
-        case .RoyalLongsword: return .weaponDecarabian
-        case .LionsRoar: return .weaponGuyun
-        case .PrototypeRancour: return .weaponElixir
-        case .IronSting: return .weaponAerosiderite
-        case .BlackcliffLongsword: return .weaponGuyun
-        case .TheBlackSword: return .weaponBorealWolf
-        case .TheAlleyFlash: return .weaponDecarabian
-        case .SwordOfDescension: return .weaponBorealWolf
-        case .FesteringDesire: return .weaponGladiator
-        case .AmenomaKageuchi: return .weaponDistantSea
-        case .CinnabarSpindle: return .weaponDecarabian
-        case .KagotsurubeIsshin: return .weaponKijinMask
-        case .SapwoodBlade: return .weaponTalisman
-        case .XiphosMoonlight: return .weaponTalisman
-        case .ToukabouShigure: return .weaponNarukami
-        case .WolfFang: return .weaponDecarabian
-        case .FinaleOfTheDeep: return .weaponDewdrop
-        case .FleuveCendreFerryman: return .weaponAncientChord
-        case .TheDockhandsAssistant: return .weaponDewdrop
-        case .SwordOfNarzissenkreuz: return .weaponAncientChord
-        case .AquilaFavonia: return .weaponDecarabian
-        case .SkywardBlade: return .weaponBorealWolf
-        case .FreedomSworn: return .weaponGladiator
-        case .SummitShaper: return .weaponGuyun
-        case .PrimordialJadeCutter: return .weaponElixir
-        case .MistsplitterReforged: return .weaponDistantSea
-        case .HaranGeppakuFutsu: return .weaponNarukami
-        case .KeyOfKhajNisut: return .weaponTalisman
-        case .LightOfFoliarIncision: return .weaponTalisman
-        case .SplendorOfStillWaters: return .weaponDewdrop
-        case .UrakuMisugiri: return .talentLight
-        case .Absolution: return .weaponAncientChord
-        case .WasterGreatsword: return .weaponBorealWolf
-        case .OldMercsPal: return .weaponBorealWolf
-        case .FerrousShadow: return .weaponDecarabian
-        case .BloodtaintedGreatsword: return .weaponBorealWolf
-        case .WhiteIronGreatsword: return .weaponGladiator
-        case .DebateClub: return .weaponElixir
-        case .SkyriderGreatsword: return .weaponAerosiderite
-        case .FavoniusGreatsword: return .weaponGladiator
-        case .TheBell: return .weaponDecarabian
-        case .SacrificialGreatsword: return .weaponBorealWolf
-        case .RoyalGreatsword: return .weaponGladiator
-        case .Rainslasher: return .weaponElixir
-        case .PrototypeArchaic: return .weaponAerosiderite
-        case .Whiteblind: return .weaponGuyun
-        case .BlackcliffSlasher: return .weaponElixir
-        case .SerpentSpine: return .weaponAerosiderite
-        case .LithicBlade: return .weaponGuyun
-        case .SnowTombedStarsilver: return .weaponDecarabian
-        case .LuxuriousSeaLord: return .weaponAerosiderite
-        case .KatsuragikiriNagamasa: return .weaponNarukami
-        case .MakhairaAquamarine: return .weaponScorchingMight
-        case .Akuoumaru: return .weaponDistantSea
-        case .ForestRegalia: return .weaponTalisman
-        case .MailedFlower: return .weaponGladiator
-        case .TalkingStick: return .weaponOasisGarden
-        case .TidalShadow: return .weaponPristineSea
-        case .UltimateOverloardsMegaMagicSword: return .weaponPristineSea
-        case .PortablePowerSaw: return .weaponPristineSea
-        case .SkywardPride: return .weaponBorealWolf
-        case .WolfsGravestone: return .weaponGladiator
-        case .SongOfBrokenPines: return .weaponDecarabian
-        case .TheUnforged: return .weaponElixir
-        case .RedhornStonethresher: return .weaponNarukami
-        case .BeaconOfTheReedSea: return .weaponScorchingMight
-        case .ConsideredJudgement: return .weaponAncientChord
-        case .BeginnersProtector: return .weaponGladiator
-        case .IronPoint: return .weaponGladiator
-        case .WhiteTassel: return .weaponGuyun
-        case .Halberd: return .weaponElixir
-        case .BlackTassel: return .weaponAerosiderite
-        case .DragonsBane: return .weaponElixir
-        case .PrototypeStarglitter: return .weaponAerosiderite
-        case .CrescentPike: return .weaponGuyun
-        case .BlackcliffPole: return .weaponElixir
-        case .Deathmatch: return .weaponBorealWolf
-        case .LithicSpear: return .weaponAerosiderite
-        case .FavoniusLance: return .weaponGladiator
-        case .RoyalSpear: return .weaponElixir
-        case .DragonspineSpear: return .weaponBorealWolf
-        case .KitainCrossSpear: return .weaponKijinMask
-        case .TheCatch: return .weaponKijinMask
-        case .WavebreakersFin: return .weaponKijinMask
-        case .Moonpiercer: return .weaponOasisGarden
-        case .MissiveWindspear: return .weaponBorealWolf
-        case .BalladOfTheFjords: return .weaponPristineSea
-        case .RightfulReward: return .weaponPristineSea
-        case .DialoguesOfTheDesertSages: return .weaponTalisman
-        case .ProspectorsDrill: return .weaponAncientChord
-        case .StaffOfHoma: return .weaponAerosiderite
-        case .SkywardSpine: return .weaponGladiator
-        case .VortexVanquisher: return .weaponAerosiderite
-        case .PrimordialJadeWingedSpear: return .weaponGuyun
-        case .CalamityQueller: return .weaponElixir
-        case .EngulfingLightning: return .weaponKijinMask
-        case .StaffOfTheScarletSands: return .weaponOasisGarden
-        case .CrimsonMoonSemblance: return .weaponPristineSea
-        case .LumidouceElegy: return .weaponPristineSea
-        case .ApprenticesNotes: return .weaponDecarabian
-        case .PocketGrimoire: return .weaponDecarabian
-        case .MagicGuide: return .weaponDecarabian
-        case .ThrillingTalesOfDragonSlayers: return .weaponBorealWolf
-        case .OtherworldlyStory: return .weaponGladiator
-        case .EmeraldOrb: return .weaponGuyun
-        case .TwinNephrite: return .weaponElixir
-        case .FavoniusCodex: return .weaponDecarabian
-        case .TheWidsith: return .weaponBorealWolf
-        case .SacrificialFragments: return .weaponGladiator
-        case .RoyalGrimoire: return .weaponDecarabian
-        case .SolarPearl: return .weaponGuyun
-        case .PrototypeAmber: return .weaponElixir
-        case .MappaMare: return .weaponAerosiderite
-        case .BlackcliffAgate: return .weaponGuyun
-        case .EyeOfPerception: return .weaponElixir
-        case .WineAndSong: return .weaponBorealWolf
-        case .Frostbearer: return .weaponGladiator
-        case .DodocoTales: return .weaponBorealWolf
-        case .HakushinRing: return .weaponDistantSea
-        case .OathswornEye: return .weaponDistantSea
-        case .WanderingEvenstar: return .weaponOasisGarden
-        case .FruitOfFulfillment: return .weaponOasisGarden
-        case .SacrificialJade: return .weaponGuyun
-        case .FlowingPurity: return .weaponDewdrop
-        case .BalladOfTheBoundlessBlue: return .weaponBorealWolf
-        case .SkywardAtlas: return .weaponBorealWolf
-        case .LostPrayerToTheSacredWinds: return .weaponGladiator
-        case .MemoryOfDust: return .weaponAerosiderite
-        case .JadefallsSplendor: return .weaponGuyun
-        case .EverlastingMoonglow: return .weaponDistantSea
-        case .KagurasVerity: return .weaponKijinMask
-        case .AThousandFloatingDreams: return .weaponOasisGarden
-        case .TulaytullahsRemembrance: return .weaponScorchingMight
-        case .CashflowSupervision: return .weaponPristineSea
-        case .TomeOfTheEternalFlow: return .weaponDewdrop
-        case .CranesEchoingCall: return .weaponElixir
-        case .HuntersBow: return .weaponBorealWolf
-        case .SeasonedHuntersBow: return .weaponBorealWolf
-        case .RavenBow: return .weaponDecarabian
-        case .SharpshootersOath: return .weaponBorealWolf
-        case .RecurveBow: return .weaponGladiator
-        case .Slingshot: return .weaponGuyun
-        case .Messenger: return .weaponElixir
-        case .FavoniusWarbow: return .weaponGladiator
-        case .TheStringless: return .weaponDecarabian
-        case .SacrificialBow: return .weaponBorealWolf
-        case .RoyalBow: return .weaponGladiator
-        case .Rust: return .weaponGuyun
-        case .PrototypeCrescent: return .weaponElixir
-        case .CompoundBow: return .weaponAerosiderite
-        case .BlackcliffWarbow: return .weaponGuyun
-        case .TheViridescentHunt: return .weaponDecarabian
-        case .AlleyHunter: return .weaponGladiator
-        case .FadingTwilight: return .weaponAerosiderite
-        case .MitternachtsWaltz: return .weaponDecarabian
-        case .WindblumeOde: return .weaponGladiator
-        case .Hamayumi: return .weaponNarukami
-        case .Predator: return .weaponNarukami
-        case .MouunsMoon: return .weaponNarukami
-        case .KingsSquire: return .weaponScorchingMight
-        case .EndOfTheLine: return .weaponScorchingMight
-        case .IbisPiercer: return .weaponTalisman
-        case .ScionOfTheBlazingSun: return .weaponScorchingMight
-        case .SongOfStillness: return .weaponAncientChord
-        case .Cloudforged: return .weaponAerosiderite
-        case .RangeGauge: return .weaponAncientChord
-        case .SkywardHarp: return .weaponBorealWolf
-        case .AmosBow: return .weaponGladiator
-        case .ElegyForTheEnd: return .weaponBorealWolf
-        case .PolarStar: return .weaponKijinMask
-        case .AquaSimulacra: return .weaponGuyun
-        case .ThunderingPulse: return .weaponNarukami
-        case .HuntersPath: return .weaponScorchingMight
-        case .TheFirstGreatMagic: return .weaponAncientChord
-        case .SilverShowerHeartStrings: return .weaponDewdrop
+        case .DullBlade: .weaponDecarabian
+        case .SilverSword: .weaponDecarabian
+        case .CoolSteel: .weaponDecarabian
+        case .HarbingerOfDawn: .weaponBorealWolf
+        case .TravelersHandySword: .weaponGladiator
+        case .DarkIronSword: .weaponGuyun
+        case .FilletBlade: .weaponElixir
+        case .SkyriderSword: .weaponAerosiderite
+        case .FavoniusSword: .weaponDecarabian
+        case .TheFlute: .weaponBorealWolf
+        case .SacrificialSword: .weaponGladiator
+        case .RoyalLongsword: .weaponDecarabian
+        case .LionsRoar: .weaponGuyun
+        case .PrototypeRancour: .weaponElixir
+        case .IronSting: .weaponAerosiderite
+        case .BlackcliffLongsword: .weaponGuyun
+        case .TheBlackSword: .weaponBorealWolf
+        case .TheAlleyFlash: .weaponDecarabian
+        case .SwordOfDescension: .weaponBorealWolf
+        case .FesteringDesire: .weaponGladiator
+        case .AmenomaKageuchi: .weaponDistantSea
+        case .CinnabarSpindle: .weaponDecarabian
+        case .KagotsurubeIsshin: .weaponKijinMask
+        case .SapwoodBlade: .weaponTalisman
+        case .XiphosMoonlight: .weaponTalisman
+        case .ToukabouShigure: .weaponNarukami
+        case .WolfFang: .weaponDecarabian
+        case .FinaleOfTheDeep: .weaponDewdrop
+        case .FleuveCendreFerryman: .weaponAncientChord
+        case .TheDockhandsAssistant: .weaponDewdrop
+        case .SwordOfNarzissenkreuz: .weaponAncientChord
+        case .FluteOfEzpitzal: .weaponSacrificialHeart.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .AquilaFavonia: .weaponDecarabian
+        case .SkywardBlade: .weaponBorealWolf
+        case .FreedomSworn: .weaponGladiator
+        case .SummitShaper: .weaponGuyun
+        case .PrimordialJadeCutter: .weaponElixir
+        case .MistsplitterReforged: .weaponDistantSea
+        case .HaranGeppakuFutsu: .weaponNarukami
+        case .KeyOfKhajNisut: .weaponTalisman
+        case .LightOfFoliarIncision: .weaponTalisman
+        case .SplendorOfStillWaters: .weaponDewdrop
+        case .UrakuMisugiri: .weaponDistantSea
+        case .Absolution: .weaponAncientChord
+        case .WasterGreatsword: .weaponBorealWolf
+        case .OldMercsPal: .weaponBorealWolf
+        case .FerrousShadow: .weaponDecarabian
+        case .BloodtaintedGreatsword: .weaponBorealWolf
+        case .WhiteIronGreatsword: .weaponGladiator
+        case .DebateClub: .weaponElixir
+        case .SkyriderGreatsword: .weaponAerosiderite
+        case .FavoniusGreatsword: .weaponGladiator
+        case .TheBell: .weaponDecarabian
+        case .SacrificialGreatsword: .weaponBorealWolf
+        case .RoyalGreatsword: .weaponGladiator
+        case .Rainslasher: .weaponElixir
+        case .PrototypeArchaic: .weaponAerosiderite
+        case .Whiteblind: .weaponGuyun
+        case .BlackcliffSlasher: .weaponElixir
+        case .SerpentSpine: .weaponAerosiderite
+        case .LithicBlade: .weaponGuyun
+        case .SnowTombedStarsilver: .weaponDecarabian
+        case .LuxuriousSeaLord: .weaponAerosiderite
+        case .KatsuragikiriNagamasa: .weaponNarukami
+        case .MakhairaAquamarine: .weaponScorchingMight
+        case .Akuoumaru: .weaponDistantSea
+        case .ForestRegalia: .weaponTalisman
+        case .MailedFlower: .weaponGladiator
+        case .TalkingStick: .weaponOasisGarden
+        case .TidalShadow: .weaponPristineSea
+        case .UltimateOverloardsMegaMagicSword: .weaponPristineSea
+        case .PortablePowerSaw: .weaponPristineSea
+        case .EarthShaker: .weaponSacrificialHeart.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .SkywardPride: .weaponBorealWolf
+        case .WolfsGravestone: .weaponGladiator
+        case .SongOfBrokenPines: .weaponDecarabian
+        case .TheUnforged: .weaponElixir
+        case .RedhornStonethresher: .weaponNarukami
+        case .BeaconOfTheReedSea: .weaponScorchingMight
+        case .ConsideredJudgement: .weaponAncientChord
+        case .FangOfTheMountainKing: .weaponSacredLord.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .BeginnersProtector: .weaponGladiator
+        case .IronPoint: .weaponGladiator
+        case .WhiteTassel: .weaponGuyun
+        case .Halberd: .weaponElixir
+        case .BlackTassel: .weaponAerosiderite
+        case .DragonsBane: .weaponElixir
+        case .PrototypeStarglitter: .weaponAerosiderite
+        case .CrescentPike: .weaponGuyun
+        case .BlackcliffPole: .weaponElixir
+        case .Deathmatch: .weaponBorealWolf
+        case .LithicSpear: .weaponAerosiderite
+        case .FavoniusLance: .weaponGladiator
+        case .RoyalSpear: .weaponElixir
+        case .DragonspineSpear: .weaponBorealWolf
+        case .KitainCrossSpear: .weaponKijinMask
+        case .TheCatch: .weaponKijinMask
+        case .WavebreakersFin: .weaponKijinMask
+        case .Moonpiercer: .weaponOasisGarden
+        case .MissiveWindspear: .weaponBorealWolf
+        case .BalladOfTheFjords: .weaponPristineSea
+        case .RightfulReward: .weaponPristineSea
+        case .DialoguesOfTheDesertSages: .weaponTalisman
+        case .ProspectorsDrill: .weaponAncientChord
+        case .FootprintOfTheRainbow: .weaponSacredLord.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .StaffOfHoma: .weaponAerosiderite
+        case .SkywardSpine: .weaponGladiator
+        case .VortexVanquisher: .weaponAerosiderite
+        case .PrimordialJadeWingedSpear: .weaponGuyun
+        case .CalamityQueller: .weaponElixir
+        case .EngulfingLightning: .weaponKijinMask
+        case .StaffOfTheScarletSands: .weaponOasisGarden
+        case .CrimsonMoonSemblance: .weaponPristineSea
+        case .LumidouceElegy: .weaponPristineSea
+        case .ApprenticesNotes: .weaponDecarabian
+        case .PocketGrimoire: .weaponDecarabian
+        case .MagicGuide: .weaponDecarabian
+        case .ThrillingTalesOfDragonSlayers: .weaponBorealWolf
+        case .OtherworldlyStory: .weaponGladiator
+        case .EmeraldOrb: .weaponGuyun
+        case .TwinNephrite: .weaponElixir
+        case .FavoniusCodex: .weaponDecarabian
+        case .TheWidsith: .weaponBorealWolf
+        case .SacrificialFragments: .weaponGladiator
+        case .RoyalGrimoire: .weaponDecarabian
+        case .SolarPearl: .weaponGuyun
+        case .PrototypeAmber: .weaponElixir
+        case .MappaMare: .weaponAerosiderite
+        case .BlackcliffAgate: .weaponGuyun
+        case .EyeOfPerception: .weaponElixir
+        case .WineAndSong: .weaponBorealWolf
+        case .Frostbearer: .weaponGladiator
+        case .DodocoTales: .weaponBorealWolf
+        case .HakushinRing: .weaponDistantSea
+        case .OathswornEye: .weaponDistantSea
+        case .WanderingEvenstar: .weaponOasisGarden
+        case .FruitOfFulfillment: .weaponOasisGarden
+        case .SacrificialJade: .weaponGuyun
+        case .FlowingPurity: .weaponDewdrop
+        case .BalladOfTheBoundlessBlue: .weaponBorealWolf
+        case .AshGravenDrinkingHorn: .weaponNightWind.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .RingOfYaxche: .weaponSacredLord.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .SkywardAtlas: .weaponBorealWolf
+        case .LostPrayerToTheSacredWinds: .weaponGladiator
+        case .MemoryOfDust: .weaponAerosiderite
+        case .JadefallsSplendor: .weaponGuyun
+        case .EverlastingMoonglow: .weaponDistantSea
+        case .KagurasVerity: .weaponKijinMask
+        case .AThousandFloatingDreams: .weaponOasisGarden
+        case .TulaytullahsRemembrance: .weaponScorchingMight
+        case .CashflowSupervision: .weaponPristineSea
+        case .TomeOfTheEternalFlow: .weaponDewdrop
+        case .CranesEchoingCall: .weaponElixir
+        case .SurfsUp: .weaponSacrificialHeart.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .HuntersBow: .weaponBorealWolf
+        case .SeasonedHuntersBow: .weaponBorealWolf
+        case .RavenBow: .weaponDecarabian
+        case .SharpshootersOath: .weaponBorealWolf
+        case .RecurveBow: .weaponGladiator
+        case .Slingshot: .weaponGuyun
+        case .Messenger: .weaponElixir
+        case .FavoniusWarbow: .weaponGladiator
+        case .TheStringless: .weaponDecarabian
+        case .SacrificialBow: .weaponBorealWolf
+        case .RoyalBow: .weaponGladiator
+        case .Rust: .weaponGuyun
+        case .PrototypeCrescent: .weaponElixir
+        case .CompoundBow: .weaponAerosiderite
+        case .BlackcliffWarbow: .weaponGuyun
+        case .TheViridescentHunt: .weaponDecarabian
+        case .AlleyHunter: .weaponGladiator
+        case .FadingTwilight: .weaponAerosiderite
+        case .MitternachtsWaltz: .weaponDecarabian
+        case .WindblumeOde: .weaponGladiator
+        case .Hamayumi: .weaponNarukami
+        case .Predator: .weaponNarukami
+        case .MouunsMoon: .weaponNarukami
+        case .KingsSquire: .weaponScorchingMight
+        case .EndOfTheLine: .weaponScorchingMight
+        case .IbisPiercer: .weaponTalisman
+        case .ScionOfTheBlazingSun: .weaponScorchingMight
+        case .SongOfStillness: .weaponAncientChord
+        case .Cloudforged: .weaponAerosiderite
+        case .RangeGauge: .weaponAncientChord
+        case .ChainBreaker: .weaponNightWind.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .SkywardHarp: .weaponBorealWolf
+        case .AmosBow: .weaponGladiator
+        case .ElegyForTheEnd: .weaponBorealWolf
+        case .PolarStar: .weaponKijinMask
+        case .AquaSimulacra: .weaponGuyun
+        case .ThunderingPulse: .weaponNarukami
+        case .HuntersPath: .weaponScorchingMight
+        case .TheFirstGreatMagic: .weaponAncientChord
+        case .SilverShowerHeartStrings: .weaponDewdrop
         }
     }
 }
 
-extension WeaponAsset {
-    public var fileName: String { fileNameNotAwaken + "_Awaken" }
+// MARK: Identifiable
 
-    public var fileNameNotAwaken: String {
-        switch self {
-        case .DullBlade: return "UI_EquipIcon_Sword_Blunt"
-        case .SilverSword: return "UI_EquipIcon_Sword_Silver"
-        case .CoolSteel: return "UI_EquipIcon_Sword_Steel"
-        case .HarbingerOfDawn: return "UI_EquipIcon_Sword_Dawn"
-        case .TravelersHandySword: return "UI_EquipIcon_Sword_Traveler"
-        case .DarkIronSword: return "UI_EquipIcon_Sword_Darker"
-        case .FilletBlade: return "UI_EquipIcon_Sword_Sashimi"
-        case .SkyriderSword: return "UI_EquipIcon_Sword_Mitsurugi"
-        case .FavoniusSword: return "UI_EquipIcon_Sword_Zephyrus"
-        case .TheFlute: return "UI_EquipIcon_Sword_Troupe"
-        case .SacrificialSword: return "UI_EquipIcon_Sword_Fossil"
-        case .RoyalLongsword: return "UI_EquipIcon_Sword_Theocrat"
-        case .LionsRoar: return "UI_EquipIcon_Sword_Rockkiller"
-        case .PrototypeRancour: return "UI_EquipIcon_Sword_Proto"
-        case .IronSting: return "UI_EquipIcon_Sword_Exotic"
-        case .BlackcliffLongsword: return "UI_EquipIcon_Sword_Blackrock"
-        case .TheBlackSword: return "UI_EquipIcon_Sword_Bloodstained"
-        case .TheAlleyFlash: return "UI_EquipIcon_Sword_Outlaw"
-        case .SwordOfDescension: return "UI_EquipIcon_Sword_Psalmus"
-        case .FesteringDesire: return "UI_EquipIcon_Sword_Magnum"
-        case .AmenomaKageuchi: return "UI_EquipIcon_Sword_Bakufu"
-        case .CinnabarSpindle: return "UI_EquipIcon_Sword_Opus"
-        case .KagotsurubeIsshin: return "UI_EquipIcon_Sword_Youtou"
-        case .SapwoodBlade: return "UI_EquipIcon_Sword_Arakalari"
-        case .XiphosMoonlight: return "UI_EquipIcon_Sword_Pleroma"
-        case .ToukabouShigure: return "UI_EquipIcon_Sword_Kasabouzu"
-        case .WolfFang: return "UI_EquipIcon_Sword_Boreas"
-        case .FinaleOfTheDeep: return "UI_EquipIcon_Sword_Vorpal"
-        case .FleuveCendreFerryman: return "UI_EquipIcon_Sword_Machination"
-        case .TheDockhandsAssistant: return "UI_EquipIcon_Sword_Mechanic"
-        case .SwordOfNarzissenkreuz: return "UI_EquipIcon_Sword_Purewill"
-        case .AquilaFavonia: return "UI_EquipIcon_Sword_Falcon"
-        case .SkywardBlade: return "UI_EquipIcon_Sword_Dvalin"
-        case .FreedomSworn: return "UI_EquipIcon_Sword_Widsith"
-        case .SummitShaper: return "UI_EquipIcon_Sword_Kunwu"
-        case .PrimordialJadeCutter: return "UI_EquipIcon_Sword_Morax"
-        case .MistsplitterReforged: return "UI_EquipIcon_Sword_Narukami"
-        case .HaranGeppakuFutsu: return "UI_EquipIcon_Sword_Amenoma"
-        case .KeyOfKhajNisut: return "UI_EquipIcon_Sword_Deshret"
-        case .LightOfFoliarIncision: return "UI_EquipIcon_Sword_Ayus"
-        case .SplendorOfStillWaters: return "UI_EquipIcon_Sword_Regalis"
-        case .UrakuMisugiri: return "UI_EquipIcon_Sword_Needle"
-        case .Absolution: return "UI_EquipIcon_Sword_Estoc"
-        case .WasterGreatsword: return "UI_EquipIcon_Claymore_Aniki"
-        case .OldMercsPal: return "UI_EquipIcon_Claymore_Oyaji"
-        case .FerrousShadow: return "UI_EquipIcon_Claymore_Glaive"
-        case .BloodtaintedGreatsword: return "UI_EquipIcon_Claymore_Siegfry"
-        case .WhiteIronGreatsword: return "UI_EquipIcon_Claymore_Tin"
-        case .DebateClub: return "UI_EquipIcon_Claymore_Reasoning"
-        case .SkyriderGreatsword: return "UI_EquipIcon_Claymore_Mitsurugi"
-        case .FavoniusGreatsword: return "UI_EquipIcon_Claymore_Zephyrus"
-        case .TheBell: return "UI_EquipIcon_Claymore_Troupe"
-        case .SacrificialGreatsword: return "UI_EquipIcon_Claymore_Fossil"
-        case .RoyalGreatsword: return "UI_EquipIcon_Claymore_Theocrat"
-        case .Rainslasher: return "UI_EquipIcon_Claymore_Perdue"
-        case .PrototypeArchaic: return "UI_EquipIcon_Claymore_Proto"
-        case .Whiteblind: return "UI_EquipIcon_Claymore_Exotic"
-        case .BlackcliffSlasher: return "UI_EquipIcon_Claymore_Blackrock"
-        case .SerpentSpine: return "UI_EquipIcon_Claymore_Kione"
-        case .LithicBlade: return "UI_EquipIcon_Claymore_Lapis"
-        case .SnowTombedStarsilver: return "UI_EquipIcon_Claymore_Dragonfell"
-        case .LuxuriousSeaLord: return "UI_EquipIcon_Claymore_MillenniaTuna"
-        case .KatsuragikiriNagamasa: return "UI_EquipIcon_Claymore_Bakufu"
-        case .MakhairaAquamarine: return "UI_EquipIcon_Claymore_Pleroma"
-        case .Akuoumaru: return "UI_EquipIcon_Claymore_Maria"
-        case .ForestRegalia: return "UI_EquipIcon_Claymore_Arakalari"
-        case .MailedFlower: return "UI_EquipIcon_Claymore_Fleurfair"
-        case .TalkingStick: return "UI_EquipIcon_Claymore_BeastTamer"
-        case .TidalShadow: return "UI_EquipIcon_Claymore_Vorpal"
-        case .UltimateOverloardsMegaMagicSword: return "UI_EquipIcon_Claymore_Champion"
-        case .PortablePowerSaw: return "UI_EquipIcon_Claymore_Mechanic"
-        case .SkywardPride: return "UI_EquipIcon_Claymore_Dvalin"
-        case .WolfsGravestone: return "UI_EquipIcon_Claymore_Wolfmound"
-        case .SongOfBrokenPines: return "UI_EquipIcon_Claymore_Widsith"
-        case .TheUnforged: return "UI_EquipIcon_Claymore_Kunwu"
-        case .RedhornStonethresher: return "UI_EquipIcon_Claymore_Itadorimaru"
-        case .BeaconOfTheReedSea: return "UI_EquipIcon_Claymore_Deshret"
-        case .ConsideredJudgement: return "UI_EquipIcon_Claymore_GoldenVerdict"
-        case .BeginnersProtector: return "UI_EquipIcon_Pole_Gewalt"
-        case .IronPoint: return "UI_EquipIcon_Pole_Rod"
-        case .WhiteTassel: return "UI_EquipIcon_Pole_Ruby"
-        case .Halberd: return "UI_EquipIcon_Pole_Halberd"
-        case .BlackTassel: return "UI_EquipIcon_Pole_Noire"
-        case .DragonsBane: return "UI_EquipIcon_Pole_Stardust"
-        case .PrototypeStarglitter: return "UI_EquipIcon_Pole_Proto"
-        case .CrescentPike: return "UI_EquipIcon_Pole_Exotic"
-        case .BlackcliffPole: return "UI_EquipIcon_Pole_Blackrock"
-        case .Deathmatch: return "UI_EquipIcon_Pole_Gladiator"
-        case .LithicSpear: return "UI_EquipIcon_Pole_Lapis"
-        case .FavoniusLance: return "UI_EquipIcon_Pole_Zephyrus"
-        case .RoyalSpear: return "UI_EquipIcon_Pole_Theocrat"
-        case .DragonspineSpear: return "UI_EquipIcon_Pole_Everfrost"
-        case .KitainCrossSpear: return "UI_EquipIcon_Pole_Bakufu"
-        case .TheCatch: return "UI_EquipIcon_Pole_Mori"
-        case .WavebreakersFin: return "UI_EquipIcon_Pole_Maria"
-        case .Moonpiercer: return "UI_EquipIcon_Pole_Arakalari"
-        case .MissiveWindspear: return "UI_EquipIcon_Pole_Windvane"
-        case .BalladOfTheFjords: return "UI_EquipIcon_Pole_Shanty"
-        case .RightfulReward: return "UI_EquipIcon_Pole_Vorpal"
-        case .DialoguesOfTheDesertSages: return "UI_EquipIcon_Pole_Caduceus"
-        case .ProspectorsDrill: return "UI_EquipIcon_Pole_Mechanic"
-        case .StaffOfHoma: return "UI_EquipIcon_Pole_Homa"
-        case .SkywardSpine: return "UI_EquipIcon_Pole_Dvalin"
-        case .VortexVanquisher: return "UI_EquipIcon_Pole_Kunwu"
-        case .PrimordialJadeWingedSpear: return "UI_EquipIcon_Pole_Morax"
-        case .CalamityQueller: return "UI_EquipIcon_Pole_Santika"
-        case .EngulfingLightning: return "UI_EquipIcon_Pole_Narukami"
-        case .StaffOfTheScarletSands: return "UI_EquipIcon_Pole_Deshret"
-        case .CrimsonMoonSemblance: return "UI_EquipIcon_Pole_BloodMoon"
-        case .LumidouceElegy: return "UI_EquipIcon_LumidouceElegy"
-        case .ApprenticesNotes: return "UI_EquipIcon_Catalyst_Apprentice"
-        case .PocketGrimoire: return "UI_EquipIcon_Catalyst_Pocket"
-        case .MagicGuide: return "UI_EquipIcon_Catalyst_Intro"
-        case .ThrillingTalesOfDragonSlayers: return "UI_EquipIcon_Catalyst_Pulpfic"
-        case .OtherworldlyStory: return "UI_EquipIcon_Catalyst_Lightnov"
-        case .EmeraldOrb: return "UI_EquipIcon_Catalyst_Jade"
-        case .TwinNephrite: return "UI_EquipIcon_Catalyst_Phoney"
-        case .FavoniusCodex: return "UI_EquipIcon_Catalyst_Zephyrus"
-        case .TheWidsith: return "UI_EquipIcon_Catalyst_Troupe"
-        case .SacrificialFragments: return "UI_EquipIcon_Catalyst_Fossil"
-        case .RoyalGrimoire: return "UI_EquipIcon_Catalyst_Theocrat"
-        case .SolarPearl: return "UI_EquipIcon_Catalyst_Resurrection"
-        case .PrototypeAmber: return "UI_EquipIcon_Catalyst_Proto"
-        case .MappaMare: return "UI_EquipIcon_Catalyst_Exotic"
-        case .BlackcliffAgate: return "UI_EquipIcon_Catalyst_Blackrock"
-        case .EyeOfPerception: return "UI_EquipIcon_Catalyst_Truelens"
-        case .WineAndSong: return "UI_EquipIcon_Catalyst_Outlaw"
-        case .Frostbearer: return "UI_EquipIcon_Catalyst_Everfrost"
-        case .DodocoTales: return "UI_EquipIcon_Catalyst_Ludiharpastum"
-        case .HakushinRing: return "UI_EquipIcon_Catalyst_Bakufu"
-        case .OathswornEye: return "UI_EquipIcon_Catalyst_Jyanome"
-        case .WanderingEvenstar: return "UI_EquipIcon_Catalyst_Pleroma"
-        case .FruitOfFulfillment: return "UI_EquipIcon_Catalyst_Arakalari"
-        case .SacrificialJade: return "UI_EquipIcon_Catalyst_Yue"
-        case .FlowingPurity: return "UI_EquipIcon_Catalyst_Vorpal"
-        case .BalladOfTheBoundlessBlue: return "UI_EquipIcon_Catalyst_DandelionPoem"
-        case .SkywardAtlas: return "UI_EquipIcon_Catalyst_Dvalin"
-        case .LostPrayerToTheSacredWinds: return "UI_EquipIcon_Catalyst_Fourwinds"
-        case .MemoryOfDust: return "UI_EquipIcon_Catalyst_Kunwu"
-        case .JadefallsSplendor: return "UI_EquipIcon_Catalyst_Morax"
-        case .EverlastingMoonglow: return "UI_EquipIcon_Catalyst_Kaleido"
-        case .KagurasVerity: return "UI_EquipIcon_Catalyst_Narukami"
-        case .AThousandFloatingDreams: return "UI_EquipIcon_Catalyst_Ayus"
-        case .TulaytullahsRemembrance: return "UI_EquipIcon_Catalyst_Alaya"
-        case .CashflowSupervision: return "UI_EquipIcon_Catalyst_Wheatley"
-        case .TomeOfTheEternalFlow: return "UI_EquipIcon_Catalyst_Iudex"
-        case .CranesEchoingCall: return "UI_EquipIcon_Catalyst_MountainGale"
-        case .HuntersBow: return "UI_EquipIcon_Bow_Hunters"
-        case .SeasonedHuntersBow: return "UI_EquipIcon_Bow_Old"
-        case .RavenBow: return "UI_EquipIcon_Bow_Crowfeather"
-        case .SharpshootersOath: return "UI_EquipIcon_Bow_Arjuna"
-        case .RecurveBow: return "UI_EquipIcon_Bow_Curve"
-        case .Slingshot: return "UI_EquipIcon_Bow_Sling"
-        case .Messenger: return "UI_EquipIcon_Bow_Msg"
-        case .FavoniusWarbow: return "UI_EquipIcon_Bow_Zephyrus"
-        case .TheStringless: return "UI_EquipIcon_Bow_Troupe"
-        case .SacrificialBow: return "UI_EquipIcon_Bow_Fossil"
-        case .RoyalBow: return "UI_EquipIcon_Bow_Theocrat"
-        case .Rust: return "UI_EquipIcon_Bow_Recluse"
-        case .PrototypeCrescent: return "UI_EquipIcon_Bow_Proto"
-        case .CompoundBow: return "UI_EquipIcon_Bow_Exotic"
-        case .BlackcliffWarbow: return "UI_EquipIcon_Bow_Blackrock"
-        case .TheViridescentHunt: return "UI_EquipIcon_Bow_Viridescent"
-        case .AlleyHunter: return "UI_EquipIcon_Bow_Outlaw"
-        case .FadingTwilight: return "UI_EquipIcon_Bow_Fallensun"
-        case .MitternachtsWaltz: return "UI_EquipIcon_Bow_Nachtblind"
-        case .WindblumeOde: return "UI_EquipIcon_Bow_Fleurfair"
-        case .Hamayumi: return "UI_EquipIcon_Bow_Bakufu"
-        case .Predator: return "UI_EquipIcon_Bow_Predator"
-        case .MouunsMoon: return "UI_EquipIcon_Bow_Maria"
-        case .KingsSquire: return "UI_EquipIcon_Bow_Arakalari"
-        case .EndOfTheLine: return "UI_EquipIcon_Bow_Fin"
-        case .IbisPiercer: return "UI_EquipIcon_Bow_Ibis"
-        case .ScionOfTheBlazingSun: return "UI_EquipIcon_Bow_Gurabad"
-        case .SongOfStillness: return "UI_EquipIcon_Bow_Vorpal"
-        case .Cloudforged: return "UI_EquipIcon_Bow_Ultimatum"
-        case .RangeGauge: return "UI_EquipIcon_Bow_Mechanic"
-        case .SkywardHarp: return "UI_EquipIcon_Bow_Dvalin"
-        case .AmosBow: return "UI_EquipIcon_Bow_Amos"
-        case .ElegyForTheEnd: return "UI_EquipIcon_Bow_Widsith"
-        case .PolarStar: return "UI_EquipIcon_Bow_Worldbane"
-        case .AquaSimulacra: return "UI_EquipIcon_Bow_Kirin"
-        case .ThunderingPulse: return "UI_EquipIcon_Bow_Narukami"
-        case .HuntersPath: return "UI_EquipIcon_Bow_Ayus"
-        case .TheFirstGreatMagic: return "UI_EquipIcon_Bow_Pledge"
-        case .SilverShowerHeartStrings: return "UI_EquipIcon_Bow_Arcdange"
-        }
-    }
+extension WeaponAsset: Identifiable {
+    public var fileName: String { "gi_weapon_\(id)" }
+    public var id: Int { rawValue }
 }

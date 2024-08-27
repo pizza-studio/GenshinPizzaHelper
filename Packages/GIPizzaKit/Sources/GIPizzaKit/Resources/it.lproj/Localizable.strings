@@ -135,6 +135,9 @@
 "$asset.character:Sethos" = "Sethos";
 "$asset.character:Clorinde" = "Clorinde";
 "$asset.character:Emilie" = "Émilie";
+"$asset.character:Kachina" = "Kachina";
+"$asset.character:Kinich" = "Kinich";
+"$asset.character:Mualani" = "Mualani";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Traghettatore del Fleuve Cendre";
 "$asset.weapon:TheDockhandsAssistant" = "Aiutante del porto";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Spada di Narzissenkreuz";
+"$asset.weapon:FluteOfEzpitzal" = "Flauto di Ezpitzal";
 "$asset.weapon:AquilaFavonia" = "Aquila Favonia";
 "$asset.weapon:SkywardBlade" = "Lama celeste";
 "$asset.weapon:FreedomSworn" = "Giuramento di libertà";
@@ -209,6 +213,7 @@
 "$asset.weapon:TidalShadow" = "Mareombra";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Spada magica del Super Signore Supremo";
 "$asset.weapon:PortablePowerSaw" = "Sega elettrica portatile";
+"$asset.weapon:EarthShaker" = "Sisma";
 "$asset.weapon:SkywardPride" = "Orgoglio celeste";
 "$asset.weapon:WolfsGravestone" = "Trapasso ululante";
 "$asset.weapon:SongOfBrokenPines" = "Canzone silvestre";
@@ -216,6 +221,7 @@
 "$asset.weapon:RedhornStonethresher" = "Spaccarocce Cornorosso";
 "$asset.weapon:BeaconOfTheReedSea" = "Faro del Mare dei Giunchi";
 "$asset.weapon:ConsideredJudgement" = "Giudizio ponderato";
+"$asset.weapon:FangOfTheMountainKing" = "Zanna del Re della Montagna";
 "$asset.weapon:BeginnersProtector" = "Lancia del principiante";
 "$asset.weapon:IronPoint" = "Punta di ferro";
 "$asset.weapon:WhiteTassel" = "Pennacchio bianco";
@@ -239,6 +245,7 @@
 "$asset.weapon:RightfulReward" = "Equa ricompensa";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Dialoghi dei saggi del deserto";
 "$asset.weapon:ProspectorsDrill" = "Trivella mineraria";
+"$asset.weapon:FootprintOfTheRainbow" = "Orme iridate";
 "$asset.weapon:StaffOfHoma" = "Bastone di Homa";
 "$asset.weapon:SkywardSpine" = "Lancia d'osso celeste";
 "$asset.weapon:VortexVanquisher" = "Squarciavortice";
@@ -274,6 +281,8 @@
 "$asset.weapon:SacrificialJade" = "Giada sacrificale";
 "$asset.weapon:FlowingPurity" = "Corrente d'acqua pura";
 "$asset.weapon:BalladOfTheBoundlessBlue" = "Ballata del blu sempiterno";
+"$asset.weapon:AshGravenDrinkingHorn" = "Corno cinereo";
+"$asset.weapon:RingOfYaxche" = "Anello di Yaxche";
 "$asset.weapon:SkywardAtlas" = "Atlante celeste";
 "$asset.weapon:LostPrayerToTheSacredWinds" = "Origine dei venti sacri";
 "$asset.weapon:MemoryOfDust" = "Memorie terrene";
@@ -285,6 +294,7 @@
 "$asset.weapon:CashflowSupervision" = "Supervisione pecuniaria";
 "$asset.weapon:TomeOfTheEternalFlow" = "Tomo del flusso perenne";
 "$asset.weapon:CranesEchoingCall" = "Canto della gru echeggiante";
+"$asset.weapon:SurfsUp" = "Vai col surf";
 "$asset.weapon:HuntersBow" = "Arco da caccia";
 "$asset.weapon:SeasonedHuntersBow" = "Arco da caccia per esperti";
 "$asset.weapon:RavenBow" = "Arco corvino";
@@ -315,6 +325,7 @@
 "$asset.weapon:SongOfStillness" = "Canto del silenzio";
 "$asset.weapon:Cloudforged" = "Forgianuvole";
 "$asset.weapon:RangeGauge" = "Indicatore distanziometrico";
+"$asset.weapon:ChainBreaker" = "Spezzacatene";
 "$asset.weapon:SkywardHarp" = "Arpa celeste";
 "$asset.weapon:AmosBow" = "Arco di Amos";
 "$asset.weapon:ElegyForTheEnd" = "Elegia finale";

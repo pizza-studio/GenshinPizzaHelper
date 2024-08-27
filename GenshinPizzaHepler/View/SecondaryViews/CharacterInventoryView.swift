@@ -406,16 +406,9 @@ private struct AvatarListItemShare: View {
                             .scaledToFit()
                             .scaleEffect(1.1)
                             .clipShape(Circle())
-                            if let iconString = URL(string: avatar.weapon.icon)?
-                                .lastPathComponent.split(separator: ".").first {
-                                EnkaWebIcon(
-                                    iconString: String(iconString) +
-                                        "_Awaken"
-                                ).scaledToFit()
-                            } else {
-                                WebImage(urlStr: avatar.weapon.icon)
-                                    .scaledToFit()
-                            }
+                            EnkaWebIcon(
+                                iconString: "gi_weapon_\(avatar.weapon.id)"
+                            ).scaledToFit()
                         }
                         .frame(width: 25, height: 25)
                         .padding(.trailing, 3)

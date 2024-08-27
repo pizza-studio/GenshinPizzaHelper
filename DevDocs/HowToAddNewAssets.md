@@ -67,8 +67,7 @@
 
 1. 全专案搜寻 `enum WeaponAsset` ，找到这个 Enum 之后、在末端添入 `case Tsurugi = 10001` 这种格式的新角色情报。数字对应该武器的 Enka Character ID。
 2. 之后 Xcode 会报错、引导你填写一些其他内容：
-    1. `WeaponAsset.fileNameNotAwaken` 变数需要你填入「尚未觉醒的武器档案名称」。
-        1. 对应的素材则为觉醒过的武器图片，放置在 `Assets-NoWatch` 当中的对应目录即可。Ambr.Top 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请转换格式至 HEIC。
+    1. 对应的素材则为觉醒过的武器图片，放置在 `Assets-NoWatch` 当中的对应目录即可。Ambr.Top 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请转换格式至 HEIC。
     2. `WeaponAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil、或者用 `.available(since:.specify(day:month:year:))` 限时封印： 
     ```
     case .JadefallsSplendor: 
@@ -88,6 +87,6 @@
 
 ⚠️注意：如果导入素材时暂时没有手段使用 Waifu2x 等 AI 放大手段的话，可以直接上传原始 256x256 档案，但必须开 issue 备忘。
 
-请一定从 SnapGenshin 或 Ambr.Top 获取照片，因为这些照片的图像尺寸是正方形、不会造成排版上的故障。**当且仅当您怎样知道编辑 HoneyHunterWorld 的素材、使之不会出现跑版的问题的时候，HoneyHunterWorld 的素材可以临时一用。**
+请一定从 SnapGenshin 或 Ambr.Top 获取照片，因为这些照片的图像尺寸是正方形、不会造成排版上的故障。**当且仅当您知道怎样编辑 HoneyHunterWorld 的素材、使之不会出现跑版的问题的时候，HoneyHunterWorld 的素材可以临时一用。**
 
 $ EOF.

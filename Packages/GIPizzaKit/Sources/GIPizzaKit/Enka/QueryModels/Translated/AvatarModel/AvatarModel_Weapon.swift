@@ -4,7 +4,7 @@
 
 extension EnkaGI.QueryRelated.Avatar {
     /// 武器
-    public struct Weapon: Hashable {
+    public struct Weapon: Hashable, Identifiable {
         // MARK: Lifecycle
 
         init?(
@@ -13,6 +13,7 @@ extension EnkaGI.QueryRelated.Avatar {
         ) {
             guard weaponEquipment.flat.itemType == "ITEM_WEAPON"
             else { return nil }
+            self.id = weaponEquipment.itemId.description
             self.name = localizedDictionary.nameFromHashMap(weaponEquipment.flat.nameTextMapHash)
             self.level = weaponEquipment.weapon!.level
             self.refinementRank = (weaponEquipment.weapon?.affixMap?.first?.value ?? 0) + 1
@@ -47,6 +48,7 @@ extension EnkaGI.QueryRelated.Avatar {
 
         // MARK: Public
 
+        public let id: String
         /// 武器名字
         public let name: String
         /// 武器等级
@@ -63,7 +65,7 @@ extension EnkaGI.QueryRelated.Avatar {
         public let rankLevel: RankLevel
 
         /// 突破后武器图标ID
-        public var awakenedIconString: String { "\(iconString)_Awaken" }
+        public var awakenedIconString: String { "gi_weapon_\(id)" }
         /// 经过错字订正处理的武器名称
         public var nameCorrected: String {
             name.localizedWithFix

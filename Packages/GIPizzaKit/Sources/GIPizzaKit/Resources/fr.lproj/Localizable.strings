@@ -135,6 +135,9 @@
 "$asset.character:Sethos" = "Sethos";
 "$asset.character:Clorinde" = "Clorinde";
 "$asset.character:Emilie" = "Émilie";
+"$asset.character:Kachina" = "Kachina";
+"$asset.character:Kinich" = "Kinich";
+"$asset.character:Mualani" = "Mualani";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Passeur du Fleuve cendré";
 "$asset.weapon:TheDockhandsAssistant" = "L'assistant du docker";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Lame du Narzissenkreuz";
+"$asset.weapon:FluteOfEzpitzal" = "Flûte d'ezpitzal";
 "$asset.weapon:AquilaFavonia" = "Épée du faucon";
 "$asset.weapon:SkywardBlade" = "Lame de la Voûte d'Azur";
 "$asset.weapon:FreedomSworn" = "Serment de la liberté";
@@ -209,6 +213,7 @@
 "$asset.weapon:TidalShadow" = "Ombre tidale";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Méga épée magique du suzerain ultime";
 "$asset.weapon:PortablePowerSaw" = "Scie électrique portative";
+"$asset.weapon:EarthShaker" = "Trembleur de terre";
 "$asset.weapon:SkywardPride" = "Fierté de la Voûte d'Azur";
 "$asset.weapon:WolfsGravestone" = "Mort-du-loup";
 "$asset.weapon:SongOfBrokenPines" = "Ode au chant du vent";
@@ -216,6 +221,7 @@
 "$asset.weapon:RedhornStonethresher" = "Brise-pierre de corne rouge";
 "$asset.weapon:BeaconOfTheReedSea" = "Balise de la mer de roseaux";
 "$asset.weapon:ConsideredJudgement" = "Condamneur";
+"$asset.weapon:FangOfTheMountainKing" = "Croc du roi de la montagne";
 "$asset.weapon:BeginnersProtector" = "Lance du débutant";
 "$asset.weapon:IronPoint" = "Pointe de fer";
 "$asset.weapon:WhiteTassel" = "Pampille blanche";
@@ -239,6 +245,7 @@
 "$asset.weapon:RightfulReward" = "Récompense légitime";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Dialogues des sages du désert";
 "$asset.weapon:ProspectorsDrill" = "Foret de prospecteur";
+"$asset.weapon:FootprintOfTheRainbow" = "Trace d'arc-en-ciel";
 "$asset.weapon:StaffOfHoma" = "Bâton de Homa";
 "$asset.weapon:SkywardSpine" = "Berge de la Voûte d'Azur";
 "$asset.weapon:VortexVanquisher" = "Perceur prismatique";
@@ -274,6 +281,8 @@
 "$asset.weapon:SacrificialJade" = "Jade sacrificiel";
 "$asset.weapon:FlowingPurity" = "Pureté fluide";
 "$asset.weapon:BalladOfTheBoundlessBlue" = "Ballade d'un azur infini";
+"$asset.weapon:AshGravenDrinkingHorn" = "Corne à boire cendrée";
+"$asset.weapon:RingOfYaxche" = "Anneau de Yaxche";
 "$asset.weapon:SkywardAtlas" = "Atlas de la Voûte d'Azur";
 "$asset.weapon:LostPrayerToTheSacredWinds" = "L'origine des Quatre Vents";
 "$asset.weapon:MemoryOfDust" = "Chaînes mortelles";
@@ -285,6 +294,7 @@
 "$asset.weapon:CashflowSupervision" = "Supervision de trésorerie";
 "$asset.weapon:TomeOfTheEternalFlow" = "Tome du flux éternel";
 "$asset.weapon:CranesEchoingCall" = "Écho de la grue";
+"$asset.weapon:SurfsUp" = "Instant surfant";
 "$asset.weapon:HuntersBow" = "Arc de chasse";
 "$asset.weapon:SeasonedHuntersBow" = "Arc de chasse aguerri";
 "$asset.weapon:RavenBow" = "Arc du corbeau";
@@ -315,6 +325,7 @@
 "$asset.weapon:SongOfStillness" = "Chant de quiétude";
 "$asset.weapon:Cloudforged" = "Nimbus-forgé";
 "$asset.weapon:RangeGauge" = "Jauge de portée";
+"$asset.weapon:ChainBreaker" = "Brise-chaîne";
 "$asset.weapon:SkywardHarp" = "Ailes de la Voûte d'Azur";
 "$asset.weapon:AmosBow" = "Arc d'Amos";
 "$asset.weapon:ElegyForTheEnd" = "Ultime soupir";

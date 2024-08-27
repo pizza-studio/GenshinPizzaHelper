@@ -135,6 +135,9 @@
 "$asset.character:Sethos" = "Sethos";
 "$asset.character:Clorinde" = "Clorinde";
 "$asset.character:Emilie" = "Emilie";
+"$asset.character:Kachina" = "Kachina";
+"$asset.character:Kinich" = "Kinich";
+"$asset.character:Mualani" = "Mualani";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Fleuve Cendre Ferryman";
 "$asset.weapon:TheDockhandsAssistant" = "The Dockhand's Assistant";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Sword of Narzissenkreuz";
+"$asset.weapon:FluteOfEzpitzal" = "Flute of Ezpitzal";
 "$asset.weapon:AquilaFavonia" = "Aquila Favonia";
 "$asset.weapon:SkywardBlade" = "Skyward Blade";
 "$asset.weapon:FreedomSworn" = "Freedom-Sworn";
@@ -209,6 +213,7 @@
 "$asset.weapon:TidalShadow" = "Tidal Shadow";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Ultimate Overlord's Mega Magic Sword";
 "$asset.weapon:PortablePowerSaw" = "Portable Power Saw";
+"$asset.weapon:EarthShaker" = "Earth Shaker";
 "$asset.weapon:SkywardPride" = "Skyward Pride";
 "$asset.weapon:WolfsGravestone" = "Wolf's Gravestone";
 "$asset.weapon:SongOfBrokenPines" = "Song of Broken Pines";
@@ -216,6 +221,7 @@
 "$asset.weapon:RedhornStonethresher" = "Redhorn Stonethresher";
 "$asset.weapon:BeaconOfTheReedSea" = "Beacon of the Reed Sea";
 "$asset.weapon:ConsideredJudgement" = "Considered Judgment";
+"$asset.weapon:FangOfTheMountainKing" = "Fang of the Mountain King";
 "$asset.weapon:BeginnersProtector" = "Beginner's Protector";
 "$asset.weapon:IronPoint" = "Iron Point";
 "$asset.weapon:WhiteTassel" = "White Tassel";
@@ -239,6 +245,7 @@
 "$asset.weapon:RightfulReward" = "Rightful Reward";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Dialogues of the Desert Sages";
 "$asset.weapon:ProspectorsDrill" = "Prospector's Drill";
+"$asset.weapon:FootprintOfTheRainbow" = "Footprint of the Rainbow";
 "$asset.weapon:StaffOfHoma" = "Staff of Homa";
 "$asset.weapon:SkywardSpine" = "Skyward Spine";
 "$asset.weapon:VortexVanquisher" = "Vortex Vanquisher";
@@ -274,6 +281,8 @@
 "$asset.weapon:SacrificialJade" = "Sacrificial Jade";
 "$asset.weapon:FlowingPurity" = "Flowing Purity";
 "$asset.weapon:BalladOfTheBoundlessBlue" = "Ballad of the Boundless Blue";
+"$asset.weapon:AshGravenDrinkingHorn" = "Ash-Graven Drinking Horn";
+"$asset.weapon:RingOfYaxche" = "Ring of Yaxche";
 "$asset.weapon:SkywardAtlas" = "Skyward Atlas";
 "$asset.weapon:LostPrayerToTheSacredWinds" = "Lost Prayer to the Sacred Winds";
 "$asset.weapon:MemoryOfDust" = "Memory of Dust";
@@ -285,6 +294,7 @@
 "$asset.weapon:CashflowSupervision" = "Cashflow Supervision";
 "$asset.weapon:TomeOfTheEternalFlow" = "Tome of the Eternal Flow";
 "$asset.weapon:CranesEchoingCall" = "Crane's Echoing Call";
+"$asset.weapon:SurfsUp" = "Surf's Up";
 "$asset.weapon:HuntersBow" = "Hunter's Bow";
 "$asset.weapon:SeasonedHuntersBow" = "Seasoned Hunter's Bow";
 "$asset.weapon:RavenBow" = "Raven Bow";
@@ -315,6 +325,7 @@
 "$asset.weapon:SongOfStillness" = "Song of Stillness";
 "$asset.weapon:Cloudforged" = "Cloudforged";
 "$asset.weapon:RangeGauge" = "Range Gauge";
+"$asset.weapon:ChainBreaker" = "Chain Breaker";
 "$asset.weapon:SkywardHarp" = "Skyward Harp";
 "$asset.weapon:AmosBow" = "Amos' Bow";
 "$asset.weapon:ElegyForTheEnd" = "Elegy for the End";

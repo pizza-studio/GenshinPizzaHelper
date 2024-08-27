@@ -135,6 +135,9 @@
 "$asset.character:Sethos" = "セトス";
 "$asset.character:Clorinde" = "クロリンデ";
 "$asset.character:Emilie" = "エミリエ";
+"$asset.character:Kachina" = "カチーナ";
+"$asset.character:Kinich" = "キィニチ";
+"$asset.character:Mualani" = "ムアラニ";
 
 // MARK: - Weapon Names
 
@@ -169,6 +172,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "サーンドルの渡し守";
 "$asset.weapon:TheDockhandsAssistant" = "船渠剣";
 "$asset.weapon:SwordOfNarzissenkreuz" = "水仙十字の剣";
+"$asset.weapon:FluteOfEzpitzal" = "エズピツァルの笛";
 "$asset.weapon:AquilaFavonia" = "風鷹剣";
 "$asset.weapon:SkywardBlade" = "天空の刃";
 "$asset.weapon:FreedomSworn" = "蒼古なる自由への誓い";
@@ -209,6 +213,7 @@
 "$asset.weapon:TidalShadow" = "タイダル·シャドー";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "究極覇王スーパー魔剣";
 "$asset.weapon:PortablePowerSaw" = "携帯型チェーンソー";
+"$asset.weapon:EarthShaker" = "アースシェイカー";
 "$asset.weapon:SkywardPride" = "天空の傲";
 "$asset.weapon:WolfsGravestone" = "狼の末路";
 "$asset.weapon:SongOfBrokenPines" = "松韻の響く頃";
@@ -216,6 +221,7 @@
 "$asset.weapon:RedhornStonethresher" = "赤角石塵滅砕";
 "$asset.weapon:BeaconOfTheReedSea" = "葦海の標";
 "$asset.weapon:ConsideredJudgement" = "裁断";
+"$asset.weapon:FangOfTheMountainKing" = "山の王の長牙";
 "$asset.weapon:BeginnersProtector" = "新米の長槍";
 "$asset.weapon:IronPoint" = "鉄尖槍";
 "$asset.weapon:WhiteTassel" = "白纓槍";
@@ -239,6 +245,7 @@
 "$asset.weapon:RightfulReward" = "正義の報酬";
 "$asset.weapon:DialoguesOfTheDesertSages" = "砂中の賢者達の問答";
 "$asset.weapon:ProspectorsDrill" = "プロスペクタードリル";
+"$asset.weapon:FootprintOfTheRainbow" = "虹の行方";
 "$asset.weapon:StaffOfHoma" = "護摩の杖";
 "$asset.weapon:SkywardSpine" = "天空の脊";
 "$asset.weapon:VortexVanquisher" = "破天の槍";
@@ -274,6 +281,8 @@
 "$asset.weapon:SacrificialJade" = "古祠の瓏";
 "$asset.weapon:FlowingPurity" = "純水流華";
 "$asset.weapon:BalladOfTheBoundlessBlue" = "果てなき紺碧の唄";
+"$asset.weapon:AshGravenDrinkingHorn" = "蒼紋の角杯";
+"$asset.weapon:RingOfYaxche" = "ヤシュチェの環";
 "$asset.weapon:SkywardAtlas" = "天空の巻";
 "$asset.weapon:LostPrayerToTheSacredWinds" = "四風原典";
 "$asset.weapon:MemoryOfDust" = "浮世の錠";
@@ -285,6 +294,7 @@
 "$asset.weapon:CashflowSupervision" = "凛流の監視者";
 "$asset.weapon:TomeOfTheEternalFlow" = "久遠流転の大典";
 "$asset.weapon:CranesEchoingCall" = "鶴鳴の余韻";
+"$asset.weapon:SurfsUp" = "サーフィンタイム";
 "$asset.weapon:HuntersBow" = "狩猟弓";
 "$asset.weapon:SeasonedHuntersBow" = "歴戦の狩猟弓";
 "$asset.weapon:RavenBow" = "鴉羽の弓";
@@ -315,6 +325,7 @@
 "$asset.weapon:SongOfStillness" = "静寂の唄";
 "$asset.weapon:Cloudforged" = "築雲";
 "$asset.weapon:RangeGauge" = "レンジゲージ";
+"$asset.weapon:ChainBreaker" = "チェーンブレイカー";
 "$asset.weapon:SkywardHarp" = "天空の翼";
 "$asset.weapon:AmosBow" = "アモスの弓";
 "$asset.weapon:ElegyForTheEnd" = "終焉を嘆く詩";
