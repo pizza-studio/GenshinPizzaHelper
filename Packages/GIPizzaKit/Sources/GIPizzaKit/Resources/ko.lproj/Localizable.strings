@@ -24,6 +24,9 @@
 "$asset.dailyMaterial:talentEquity" = "「공평」";
 "$asset.dailyMaterial:talentJustice" = "「정의」";
 "$asset.dailyMaterial:talentOrder" = "「질서」";
+"$asset.dailyMaterial:talentContention" = "「각축」";
+"$asset.dailyMaterial:talentKindling" = "「소각」";
+"$asset.dailyMaterial:talentConflict" = "「분쟁」";
 "$asset.dailyMaterial:weaponDecarabian" = "고탑 왕의 깨진 꿈";
 "$asset.dailyMaterial:weaponBorealWolf" = "칼바람 울프의 그리운 고향";
 "$asset.dailyMaterial:weaponGladiator" = "라이언 투사의 이념";
@@ -39,6 +42,9 @@
 "$asset.dailyMaterial:weaponAncientChord" = "오래된 현악의 울림";
 "$asset.dailyMaterial:weaponDewdrop" = "성스러운 이슬의 정수";
 "$asset.dailyMaterial:weaponPristineSea" = "순결한 바다의 금잔";
+"$asset.dailyMaterial:weaponSacrificialHeart" = "뜨거운 심장 공양의";
+"$asset.dailyMaterial:weaponSacredLord" = "실성한 왕의";
+"$asset.dailyMaterial:weaponNightWind" = "신이 깃든 연기의";
 
 // MARK: - Character Names
 

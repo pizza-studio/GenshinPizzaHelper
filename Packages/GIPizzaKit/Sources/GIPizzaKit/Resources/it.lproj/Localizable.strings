@@ -24,6 +24,9 @@
 "$asset.dailyMaterial:talentEquity" = "Filosofie Di Equità";
 "$asset.dailyMaterial:talentJustice" = "Giustizia";
 "$asset.dailyMaterial:talentOrder" = "Ordine";
+"$asset.dailyMaterial:talentContention" = "Disputa";
+"$asset.dailyMaterial:talentKindling" = "Combustione";
+"$asset.dailyMaterial:talentConflict" = "Conflitto";
 "$asset.dailyMaterial:weaponDecarabian" = "Decarabian";
 "$asset.dailyMaterial:weaponBorealWolf" = "Lupo Boreale";
 "$asset.dailyMaterial:weaponGladiator" = "Gladiatore";
@@ -39,6 +42,9 @@
 "$asset.dailyMaterial:weaponAncientChord" = "Un Antico Accordo";
 "$asset.dailyMaterial:weaponDewdrop" = "Goccia Di Rugiada Sacra Pura";
 "$asset.dailyMaterial:weaponPristineSea" = "Calice Del Mare Immacolato";
+"$asset.dailyMaterial:weaponSacrificialHeart" = "Cacrificale ardente";
+"$asset.dailyMaterial:weaponSacredLord" = "Sacro Signore";
+"$asset.dailyMaterial:weaponNightWind" = "Vento della Notte";
 
 // MARK: - Character Names
 

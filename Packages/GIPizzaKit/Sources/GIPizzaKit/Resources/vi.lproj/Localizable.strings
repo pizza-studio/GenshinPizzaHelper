@@ -24,6 +24,9 @@
 "$asset.dailyMaterial:talentEquity" = "Công Bằng";
 "$asset.dailyMaterial:talentJustice" = "Chính Nghĩa";
 "$asset.dailyMaterial:talentOrder" = "Trật Tự";
+"$asset.dailyMaterial:talentContention" = "Tranh Đấu";
+"$asset.dailyMaterial:talentKindling" = "Thiêu Đốt";
+"$asset.dailyMaterial:talentConflict" = "Xung Đột";
 "$asset.dailyMaterial:weaponDecarabian" = "Xác Tàu Tháp Cô Vương";
 "$asset.dailyMaterial:weaponBorealWolf" = "Nỗi Nhớ Của Sói Bão";
 "$asset.dailyMaterial:weaponGladiator" = "Lí Tưởng Của Đấu Sĩ Nanh Sư Tử";
@@ -39,6 +42,9 @@
 "$asset.dailyMaterial:weaponAncientChord" = "Cung Đàn Cổ Xưa";
 "$asset.dailyMaterial:weaponDewdrop" = "Giọt Sương Thánh Thuần";
 "$asset.dailyMaterial:weaponPristineSea" = "Của Biển Nguyên Sơ";
+"$asset.dailyMaterial:weaponSacrificialHeart" = "Trái Tim Hiến Tế";
+"$asset.dailyMaterial:weaponSacredLord" = "Thánh Chủ Mê Sảng";
+"$asset.dailyMaterial:weaponNightWind" = "Làn Khói Thần Bí";
 
 // MARK: - Character Names
 

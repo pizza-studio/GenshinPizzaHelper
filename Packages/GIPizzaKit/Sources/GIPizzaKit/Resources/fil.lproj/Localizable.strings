@@ -24,6 +24,9 @@
 "$asset.dailyMaterial:talentEquity" = "Equity";
 "$asset.dailyMaterial:talentJustice" = "Justice";
 "$asset.dailyMaterial:talentOrder" = "Order";
+"$asset.dailyMaterial:talentContention" = "Contention";
+"$asset.dailyMaterial:talentKindling" = "Kindling";
+"$asset.dailyMaterial:talentConflict" = "Conflict";
 "$asset.dailyMaterial:weaponDecarabian" = "Decarabian";
 "$asset.dailyMaterial:weaponBorealWolf" = "Boreal Wolf";
 "$asset.dailyMaterial:weaponGladiator" = "Dandelion Gladiator";
@@ -39,6 +42,9 @@
 "$asset.dailyMaterial:weaponAncientChord" = "Ancient Chord";
 "$asset.dailyMaterial:weaponDewdrop" = "Pure Sacred Dewdrop";
 "$asset.dailyMaterial:weaponPristineSea" = "Goblet of the Pristine Sea";
+"$asset.dailyMaterial:weaponSacrificialHeart" = "Sacrificial Heart";
+"$asset.dailyMaterial:weaponSacredLord" = "Sacred Lord";
+"$asset.dailyMaterial:weaponNightWind" = "Night-Wind";
 
 // MARK: - Character Names
 

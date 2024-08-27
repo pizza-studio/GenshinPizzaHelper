@@ -24,6 +24,9 @@
 "$asset.dailyMaterial:talentEquity" = "Беспристрастии";
 "$asset.dailyMaterial:talentJustice" = "Справедливости";
 "$asset.dailyMaterial:talentOrder" = "Порядке";
+"$asset.dailyMaterial:talentContention" = "Соперничестве";
+"$asset.dailyMaterial:talentKindling" = "Сжигании";
+"$asset.dailyMaterial:talentConflict" = "Раздоре";
 "$asset.dailyMaterial:weaponDecarabian" = "Декабриан";
 "$asset.dailyMaterial:weaponBorealWolf" = "Арктический Волк";
 "$asset.dailyMaterial:weaponGladiator" = "Львиный Клык";
@@ -39,6 +42,9 @@
 "$asset.dailyMaterial:weaponAncientChord" = "Древней Струны";
 "$asset.dailyMaterial:weaponDewdrop" = "Чистой Капли Росы";
 "$asset.dailyMaterial:weaponPristineSea" = "Чаша Непорочного Моря";
+"$asset.dailyMaterial:weaponSacrificialHeart" = "Жертвенного Сердца";
+"$asset.dailyMaterial:weaponSacredLord" = "Святого Мудреца";
+"$asset.dailyMaterial:weaponNightWind" = "Ночного Ветра";
 
 // MARK: - Character Names
 

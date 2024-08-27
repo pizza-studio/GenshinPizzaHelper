@@ -24,6 +24,9 @@
 "$asset.dailyMaterial:talentEquity" = "L'equité";
 "$asset.dailyMaterial:talentJustice" = "La Justice";
 "$asset.dailyMaterial:talentOrder" = "L'ordre";
+"$asset.dailyMaterial:talentContention" = "La Compétition";
+"$asset.dailyMaterial:talentKindling" = "Petit bois";
+"$asset.dailyMaterial:talentConflict" = "Conflit";
 "$asset.dailyMaterial:weaponDecarabian" = "Décabarian";
 "$asset.dailyMaterial:weaponBorealWolf" = "Loup Boréal";
 "$asset.dailyMaterial:weaponGladiator" = "Chevalier Du Croc De Lion";
@@ -39,6 +42,9 @@
 "$asset.dailyMaterial:weaponAncientChord" = "Accord Ancien";
 "$asset.dailyMaterial:weaponDewdrop" = "Rosée Sacrée Pure";
 "$asset.dailyMaterial:weaponPristineSea" = "Gobelet De La Mer Immaculée";
+"$asset.dailyMaterial:weaponSacrificialHeart" = "Sacrificiel Flamboyant";
+"$asset.dailyMaterial:weaponSacredLord" = "Seigneur Sacré";
+"$asset.dailyMaterial:weaponNightWind" = "Vent Nocturne";
 
 // MARK: - Character Names
 

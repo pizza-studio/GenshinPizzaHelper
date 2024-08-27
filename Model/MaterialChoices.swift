@@ -12,7 +12,7 @@ extension WeaponOrTalentMaterial {
     // MARK: - Weapon Material choices
 
     // 所有材料
-    static let allWeaponMaterials: [WeaponOrTalentMaterial] = DailyMaterialAsset.allCases.compactMap { asset in
+    static let allWeaponMaterials: [WeaponOrTalentMaterial] = DailyMaterialAsset.allLegalCases.compactMap { asset in
         guard String(describing: asset).starts(with: "weapon") else { return nil }
         var weekday: MaterialWeekday = .sunday
         if let availableWeekday = asset.availableWeekDay {
@@ -57,7 +57,7 @@ extension WeaponOrTalentMaterial {
     // MARK: - Talent Material choices
 
     // 所有天赋材料
-    static let allTalentMaterials: [WeaponOrTalentMaterial] = DailyMaterialAsset.allCases.compactMap { asset in
+    static let allTalentMaterials: [WeaponOrTalentMaterial] = DailyMaterialAsset.allLegalCases.compactMap { asset in
         guard String(describing: asset).starts(with: "talent") else { return nil }
         var weekday: MaterialWeekday = .sunday
         if let availableWeekday = asset.availableWeekDay {

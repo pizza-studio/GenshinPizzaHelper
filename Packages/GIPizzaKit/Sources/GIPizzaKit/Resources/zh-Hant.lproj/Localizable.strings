@@ -24,6 +24,9 @@
 "$asset.dailyMaterial:talentEquity" = "「公平」";
 "$asset.dailyMaterial:talentJustice" = "「正義」";
 "$asset.dailyMaterial:talentOrder" = "「秩序」";
+"$asset.dailyMaterial:talentContention" = "「角逐」";
+"$asset.dailyMaterial:talentKindling" = "「焚燔」";
+"$asset.dailyMaterial:talentConflict" = "「紛爭」";
 "$asset.dailyMaterial:weaponDecarabian" = "「高塔孤王」";
 "$asset.dailyMaterial:weaponBorealWolf" = "「凜風奔狼」";
 "$asset.dailyMaterial:weaponGladiator" = "「獅牙鬥士」";
@@ -39,6 +42,9 @@
 "$asset.dailyMaterial:weaponAncientChord" = "「悠古弦音」";
 "$asset.dailyMaterial:weaponDewdrop" = "「純聖露滴」";
 "$asset.dailyMaterial:weaponPristineSea" = "「無垢之海」";
+"$asset.dailyMaterial:weaponSacrificialHeart" = "「貢祭熾心」";
+"$asset.dailyMaterial:weaponSacredLord" = "「譫妄聖主」";
+"$asset.dailyMaterial:weaponNightWind" = "「神合秘煙」";
 
 // MARK: - Character Names
 

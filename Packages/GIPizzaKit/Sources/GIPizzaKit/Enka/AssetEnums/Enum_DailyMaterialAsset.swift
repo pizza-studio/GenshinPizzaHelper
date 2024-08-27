@@ -30,6 +30,9 @@ public enum DailyMaterialAsset: Int, CaseIterable {
     case talentEquity
     case talentJustice
     case talentOrder
+    case talentContention
+    case talentKindling
+    case talentConflict
     case weaponDecarabian
     case weaponBorealWolf
     case weaponGladiator
@@ -45,6 +48,9 @@ public enum DailyMaterialAsset: Int, CaseIterable {
     case weaponAncientChord
     case weaponDewdrop
     case weaponPristineSea
+    case weaponSacrificialHeart
+    case weaponSacredLord
+    case weaponNightWind
 }
 
 extension DailyMaterialAsset {
@@ -52,6 +58,23 @@ extension DailyMaterialAsset {
         case MonThu = 0
         case TueFri = 1
         case WedSat = 2
+    }
+
+    public static var allLegalCases: [Self] {
+        allCases.filter(\.isLegal)
+    }
+
+    public var availableDate: Date? {
+        switch self {
+        case .talentConflict, .talentContention, .talentKindling: .specify(day: 28, month: 8, year: 2024)
+        case .weaponNightWind, .weaponSacredLord, .weaponSacrificialHeart: .specify(day: 28, month: 8, year: 2024)
+        default: nil
+        }
+    }
+
+    public var isLegal: Bool {
+        guard let availableDate else { return true }
+        return availableDate.timeIntervalSince1970 <= Date.now.timeIntervalSince1970
     }
 
     public var availableWeekDay: AvailableWeekDay? {
@@ -69,7 +92,7 @@ extension DailyMaterialAsset {
     /// - Remark:之所以仅对名片与材料这么做，
     /// 是因为角色往往会提前一个月被米哈游官方借由「天外卫星通信」公开。
     /// 该函式可用于 CharacterAsset 与 WeaponAsset 身为 DailyMaterialConsumer 时的 .dailyMaterial 返回值。
-    /// 例：`case .Baizhu: return .talentGold.available(since: .Specify(day: 11, month: 4, year: 2023))`。
+    /// 例：`case .Baizhu: return .talentGold.available(since: .specify(day: 11, month: 4, year: 2023))`。
     /// - Parameter date: 解除禁令的时间，建议设定为新版发行之前的纪行的结束日之后的那天。
     /// - Returns: 如果还没到解禁时间的话，会返回 nil；否则会返回本体。
     public func available(since date: Date?) -> DailyMaterialAsset? {
