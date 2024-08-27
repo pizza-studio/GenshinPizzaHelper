@@ -219,6 +219,17 @@ public enum NameCard: Int, CaseIterable, _DefaultsSerializable {
     case UI_NameCardPic_Emilie_P = 210205
     case UI_NameCardPic_Bp34_P = 210206
     case UI_NameCardPic_RedandWhite2_P = 210207
+    case UI_NameCardPic_Kinich_P = 210208
+    case UI_NameCardPic_Mualani_P = 210209
+    case UI_NameCardPic_Kachina_P = 210210
+    case UI_NameCardPic_NatlanSW1_P = 210211
+    case UI_NameCardPic_NatlanSW2_P = 210212
+    case UI_NameCardPic_Ysxf5_P = 210213
+    case UI_NameCardPic_RoleCombat2_P = 210214
+    case UI_NameCardPic_Natlan1_P = 210215
+    case UI_NameCardPic_Dfcq1_P = 210216
+    case UI_NameCardPic_Bp35_P = 210217
+    case UI_NameCardPic_Yellow_P = 210218
 }
 
 // MARK: Identifiable, Hashable
@@ -230,14 +241,22 @@ extension NameCard: Identifiable, Hashable {
 extension NameCard {
     /// 此变数用来屏蔽某些正式发行前的内容。
     /// 之所以仅对名片与材料这么做，是因为角色往往会提前一个月被米哈游官方借由「天外卫星通信」公开。
-    /// 加上 .release(since:.Specify(day:month:year:)) 后缀可以使禁令定时消除。
+    /// 加上 .release(since:.specify(day:month:year:)) 后缀可以使禁令定时消除。
     /// 建议消除的时间为新版发行之前的纪行的结束日起再加两天。
     public static var blacklist: [NameCard] {
         [
-            // 此处插入的内容的范例：.UI_NameCardPic_Furina_P.release(since: .Specify(day: 7, month: 11, year: 2023)),
-            .UI_NameCardPic_Emilie_P.release(since: .Specify(day: 17, month: 7, year: 2024)),
-            .UI_NameCardPic_Bp34_P.release(since: .Specify(day: 17, month: 7, year: 2024)),
-            .UI_NameCardPic_RedandWhite2_P.release(since: .Specify(day: 17, month: 7, year: 2024)),
+            // 此处插入的内容的范例：.UI_NameCardPic_Furina_P.release(since: .specify(day: 7, month: 11, year: 2023)),
+            .UI_NameCardPic_Kinich_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_Mualani_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_Kachina_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_NatlanSW1_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_NatlanSW2_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_Ysxf5_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_RoleCombat2_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_Natlan1_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_Dfcq1_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_Bp35_P.release(since: .specify(day: 28, month: 8, year: 2024)),
+            .UI_NameCardPic_Yellow_P.release(since: .specify(day: 28, month: 8, year: 2024)),
         ].compactMap { $0 }
     }
 
