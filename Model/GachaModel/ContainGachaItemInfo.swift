@@ -14,6 +14,7 @@ import SwiftUI
 
 protocol ContainGachaItemInfo {
     var name: String { get }
+    var itemId: String { get }
     var lang: GachaLanguageCode { get }
     var itemType: String { get }
     var _rankLevel: GachaItem.RankType { get }
@@ -102,14 +103,14 @@ extension ContainGachaItemInfo {
     var iconImageName: String {
         switch type {
         case .character:
-            if let asset = CharacterAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
+            if let intItemID = Int(itemId), let asset = CharacterAsset(rawValue: intItemID) {
                 return asset.frontPhotoFileName
             } else {
                 // TODO: 找不到时的默认图片
                 return ""
             }
         case .weapon:
-            if let asset = WeaponAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
+            if let intItemID = Int(itemId), let asset = WeaponAsset(rawValue: intItemID) {
                 return asset.fileName
             } else {
                 // TODO: 找不到时的默认图片
@@ -121,6 +122,7 @@ extension ContainGachaItemInfo {
     var backgroundImageView: some View {
         GachaItemBackgroundImage(
             name: name,
+            itemId: itemId,
             _itemType: type,
             _rankLevel: _rankLevel
         )
@@ -131,11 +133,11 @@ extension ContainGachaItemInfo {
         // TODO: 翻译为其他语言
         switch type {
         case .character:
-            if let asset = CharacterAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
+            if let intItemID = Int(itemId), let asset = CharacterAsset(rawValue: intItemID) {
                 return asset.localized.localizedWithFix
             }
         case .weapon:
-            if let asset = WeaponAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
+            if let intItemID = Int(itemId), let asset = WeaponAsset(rawValue: intItemID) {
                 return asset.localized.localizedWithFix
             }
         }
@@ -163,8 +165,7 @@ extension ContainGachaItemInfo {
         if !Defaults[.cutShouldersForSmallAvatarPhotos] {
             cutType = .shoulder
         }
-        let asset = CharacterAsset.allCases.filter { $0.officialSimplifiedChineseName == name }.first
-        if let asset = asset {
+        if let intItemID = Int(itemId), let asset = CharacterAsset(rawValue: intItemID) {
             return AnyView(asset.decoratedIcon(size, cutTo: cutType))
         }
         // 下述内容是垫底内容，通常情况下不该被触发。
@@ -186,13 +187,14 @@ extension ContainGachaItemInfo {
 
 struct GachaItemBackgroundImage: View {
     let name: String
+    let itemId: String
     let _itemType: GachaItemType
     let _rankLevel: GachaItem.RankType
 
     var imageString: String {
         switch _itemType {
         case .character:
-            if let asset = CharacterAsset.allCases.filter({ $0.officialSimplifiedChineseName == name }).first {
+            if let intItemID = Int(itemId), let asset = CharacterAsset(rawValue: intItemID) {
                 return asset.namecard.fileName
             } else {
                 // TODO: 找不到时的默认图片
