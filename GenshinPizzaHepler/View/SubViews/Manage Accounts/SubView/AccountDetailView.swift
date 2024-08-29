@@ -68,18 +68,19 @@ struct AccountDetailView: View {
                     Text("settings.account.deviceFingerprint")
                         .textCase(.none)
                 }
-                Section {
-                    TextField("settings.account.stokenV2", text: .init(get: {
-                        account.sTokenV2 ?? ""
-                    }, set: { newValue in
-                        account.sTokenV2 = newValue
-                    }))
-                    .multilineTextAlignment(.leading)
-                    RegenerateSTokenV2Button(account: account)
-                } header: {
-                    Text(verbatim: "STokenV2")
-                        .textCase(.none)
-                }
+//               StokenV2 栏目作废：
+//                Section {
+//                    TextField("settings.account.stokenV2", text: .init(get: {
+//                        account.sTokenV2 ?? ""
+//                    }, set: { newValue in
+//                        account.sTokenV2 = newValue
+//                    }))
+//                    .multilineTextAlignment(.leading)
+//                    RegenerateSTokenV2Button(account: account)
+//                } header: {
+//                    Text(verbatim: "STokenV2")
+//                        .textCase(.none)
+//                }
             }
         }
         .navigationBarTitle("settings.account.accountDetails", displayMode: .inline)

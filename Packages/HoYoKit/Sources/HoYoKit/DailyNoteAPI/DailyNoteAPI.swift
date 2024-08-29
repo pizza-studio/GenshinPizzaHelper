@@ -27,6 +27,12 @@ extension MiHoYoAPI {
                     deviceFingerPrint: deviceFingerPrint,
                     deviceId: deviceId
                 )
+            } else if cookie.contains("stoken=v2_") {
+                return try await widgetDailyNote(
+                    cookie: cookie,
+                    deviceFingerPrint: deviceFingerPrint,
+                    deviceId: deviceId
+                )
             } else {
                 throw MiHoYoAPIError.noStokenV2
             }
@@ -80,12 +86,15 @@ extension MiHoYoAPI {
 
     static func widgetDailyNote(
         cookie: String,
-        sTokenV2: String,
+        sTokenV2: String = "",
         deviceFingerPrint: String?,
         deviceId: UUID?
     ) async throws
         -> WidgetDailyNote {
-        let cookie = cookie + "stoken: \(sTokenV2)"
+        var cookie = cookie
+        if !cookie.contains("stoken=v2_"), !sTokenV2.isEmpty {
+            cookie += "stoken: \(sTokenV2)"
+        }
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
                 return [
