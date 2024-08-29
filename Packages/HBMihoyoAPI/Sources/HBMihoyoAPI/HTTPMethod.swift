@@ -141,16 +141,16 @@ public struct HttpMethod<T: Decodable> {
                 switch region {
                 case .mainlandChina:
                     baseStr = "https://api-takumi-record.mihoyo.com/"
-                    appVersion = "2.51.1"
+                    appVersion = "2.55.0"
                     userAgent =
-                        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.51.1"
+                        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.55.0"
                     clientType = "5"
                 case .global:
                     let reverseProxyURL = Defaults[.reverseProxyHost1]
                     baseStr = reverseProxyURL.isEmpty ? "https://bbs-api-os.hoyolab.com/" : reverseProxyURL
-                    appVersion = "2.9.1"
+                    appVersion = "2.55.0"
                     userAgent =
-                        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
+                        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.55.0"
                     clientType = "2"
                 }
                 // 由前缀和后缀共同组成的url
@@ -355,7 +355,7 @@ public struct HttpMethod<T: Decodable> {
 //                    clientType = "2"
 //                case .global:
 //                    baseStr = "https://bbs-api-os.hoyolab.com/"
-//                    appVersion = "2.9.1"
+//                    appVersion = "2.55.0"
 //                    userAgent = "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
 //                    clientType = "2"
 //                }
@@ -532,7 +532,7 @@ public struct HttpMethod<T: Decodable> {
 //                    clientType = "2"
 //                case .global:
 //                    baseStr = "https://bbs-api-os.hoyolab.com/"
-//                    appVersion = "2.9.1"
+//                    appVersion = "2.55.0"
 //                    userAgent = "WidgetExtension/264 CFNetwork/1399 Darwin/22.1.0"
 //                    clientType = "2"
 //                }
@@ -735,9 +735,9 @@ public struct HttpMethod<T: Decodable> {
                 case .global:
                     let reverseProxyURL = Defaults[.reverseProxyHost1]
                     baseStr = reverseProxyURL.isEmpty ? "https://bbs-api-os.hoyolab.com/" : reverseProxyURL
-                    appVersion = "2.9.1"
+                    appVersion = "2.55.0"
                     userAgent =
-                        "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
+                        "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.55.0"
                     clientType = "2"
                 }
                 // 由前缀和后缀共同组成的url
@@ -956,7 +956,7 @@ public struct HttpMethod<T: Decodable> {
                         .isEmpty ? "https://bbs-api-os.hoyoverse.com/game_record/app/" :
                         "\(reverseProxyURL)game_record/app/"
                     print("Use Reverse Proxy: \(reverseProxyURL.isEmpty ? "Null" : reverseProxyURL)")
-                    appVersion = "2.9.1"
+                    appVersion = "2.55.0"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.11."
                     clientType = "2"
@@ -1085,9 +1085,9 @@ public struct HttpMethod<T: Decodable> {
                 case .global:
                     let reverseProxyURL = Defaults[.reverseProxyHost2]
                     baseStr = reverseProxyURL.isEmpty ? "https://api-account-os.hoyolab.com/" : reverseProxyURL
-                    appVersion = "2.9.1"
+                    appVersion = "2.55.0"
                     userAgent =
-                        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.9.1"
+                        "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBS/2.55.0"
                 }
                 // 由前缀和后缀共同组成的url
                 var url = URLComponents(string: baseStr + urlStr)!
@@ -1408,7 +1408,7 @@ public struct HttpMethod<T: Decodable> {
                 case .global:
                     let reverseProxyURL = Defaults[.reverseProxyHost3]
                     baseStr = reverseProxyURL.isEmpty ? "https://sg-hk4e-api.hoyolab.com/" : reverseProxyURL
-                    appVersion = "2.9.1"
+                    appVersion = "2.55.0"
                     userAgent =
                         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) miHoYoBBSOversea/2.20.0"
                     clientType = "2"
@@ -1703,7 +1703,7 @@ public struct HttpMethod<T: Decodable> {
                             forHTTPHeaderField: "User-Agent"
                         )
                         request.setValue(
-                            "2.9.1",
+                            "2.55.0",
                             forHTTPHeaderField: "x-rpc-app_version"
                         )
                         request.setValue(
