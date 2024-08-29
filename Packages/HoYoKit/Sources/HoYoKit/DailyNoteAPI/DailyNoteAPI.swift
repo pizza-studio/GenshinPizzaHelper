@@ -13,21 +13,13 @@ extension MiHoYoAPI {
         server: Server,
         uid: String,
         cookie: String,
-        sTokenV2: String?,
         deviceFingerPrint: String?,
         deviceId: UUID?
     ) async throws
         -> any DailyNote {
         switch server.region {
         case .mainlandChina:
-            if let sTokenV2 {
-                return try await widgetDailyNote(
-                    cookie: cookie,
-                    sTokenV2: sTokenV2,
-                    deviceFingerPrint: deviceFingerPrint,
-                    deviceId: deviceId
-                )
-            } else if cookie.contains("stoken=v2_") {
+            if cookie.contains("stoken=v2_") {
                 return try await widgetDailyNote(
                     cookie: cookie,
                     deviceFingerPrint: deviceFingerPrint,
@@ -86,15 +78,10 @@ extension MiHoYoAPI {
 
     static func widgetDailyNote(
         cookie: String,
-        sTokenV2: String = "",
         deviceFingerPrint: String?,
         deviceId: UUID?
     ) async throws
         -> WidgetDailyNote {
-        var cookie = cookie
-        if !cookie.contains("stoken=v2_"), !sTokenV2.isEmpty {
-            cookie += "stoken: \(sTokenV2)"
-        }
         let additionalHeaders: [String: String]? = {
             if let deviceFingerPrint, !deviceFingerPrint.isEmpty, let deviceId {
                 return [

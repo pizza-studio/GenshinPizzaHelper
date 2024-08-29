@@ -69,10 +69,6 @@ final class APITests: XCTestCase {
 //        )
 //    }
 
-    func testGetSTokenV2API() async throws {
-        _ = try await MiHoYoAPI.sTokenV2(cookie: TestData.China.testCookie)
-    }
-
     func testGetCookieTokenAPI() async throws {
         _ = try await MiHoYoAPI.cookieToken(cookie: TestData.China.testCookie)
     }

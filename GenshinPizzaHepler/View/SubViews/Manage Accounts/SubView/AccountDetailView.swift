@@ -58,107 +58,17 @@ struct AccountDetailView: View {
                     .textCase(.none)
             }
 
-            if account.server.region == .mainlandChina {
-                Section {
-                    TextField("settings.account.deviceFingerprint", text: $account.safeDeviceFingerPrint)
-                        .multilineTextAlignment(.leading)
-                    RegenerateDeviceFingerPrintButton(account: account)
+            Section {
+                TextField("settings.account.deviceFingerprint", text: $account.safeDeviceFingerPrint)
+                    .multilineTextAlignment(.leading)
+                RegenerateDeviceFingerPrintButton(account: account)
 
-                } header: {
-                    Text("settings.account.deviceFingerprint")
-                        .textCase(.none)
-                }
-//               StokenV2 栏目作废：
-//                Section {
-//                    TextField("settings.account.stokenV2", text: .init(get: {
-//                        account.sTokenV2 ?? ""
-//                    }, set: { newValue in
-//                        account.sTokenV2 = newValue
-//                    }))
-//                    .multilineTextAlignment(.leading)
-//                    RegenerateSTokenV2Button(account: account)
-//                } header: {
-//                    Text(verbatim: "STokenV2")
-//                        .textCase(.none)
-//                }
+            } header: {
+                Text("settings.account.deviceFingerprint")
+                    .textCase(.none)
             }
         }
         .navigationBarTitle("settings.account.accountDetails", displayMode: .inline)
-    }
-}
-
-// MARK: - RegenerateSTokenV2Button
-
-private struct RegenerateSTokenV2Button: View {
-    // MARK: Lifecycle
-
-    init(account: Account) {
-        self._account = ObservedObject(wrappedValue: account)
-    }
-
-    // MARK: Internal
-
-    enum Status {
-        case pending
-        case progress(Task<(), Never>)
-        case succeed
-        case fail(Error)
-    }
-
-    @ObservedObject
-    var account: Account
-
-    @State
-    var isErrorAlertShown: Bool = false
-    @State
-    var error: AnyLocalizedError?
-
-    @State
-    var status: Status = .pending
-
-    var body: some View {
-        Button {
-            if case let .progress(task) = status {
-                task.cancel()
-            }
-            let task = Task {
-                do {
-                    account.sTokenV2 = try await MiHoYoAPI.sTokenV2(cookie: account.safeCookie)
-                    status = .succeed
-                } catch {
-                    status = .fail(error)
-                    self.error = AnyLocalizedError(error)
-                }
-            }
-            status = .progress(task)
-        } label: {
-            switch status {
-            case .pending:
-                Text("settings.account.regenerateSTokenV2.label")
-            case .progress:
-                ProgressView()
-            case .succeed:
-                Label {
-                    Text("settings.account.regenerateSTokenV2.label")
-                } icon: {
-                    Image(systemSymbol: .checkmarkCircle)
-                        .foregroundStyle(.green)
-                }
-            case .fail:
-                Label {
-                    Text("settings.account.regenerateSTokenV2.label")
-                } icon: {
-                    Image(systemSymbol: .xmarkCircle)
-                        .foregroundStyle(.red)
-                }
-            }
-        }
-        .disabled({ if case .progress = status { true } else { false }}())
-        .alert(isPresented: $isErrorAlertShown, error: error) { _ in
-            Button("sys.done") { isErrorAlertShown = false }
-        } message: { error in
-            Text(error.localizedDescription)
-        }
     }
 }
 
