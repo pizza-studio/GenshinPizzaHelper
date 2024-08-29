@@ -28748,90 +28748,6 @@
         }
       }
     },
-    "MiHoYoAPIError.fingerPrintNeeded.errorDescription" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Device fingerprint is missing. Delete your account in the app and log in again to get it."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイス指紋が欠けている。再ログインください"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "缺少设备指纹信息。请尝试删除账号后重新登陆以获取指纹"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "缺少裝置指紋資訊。請嘗試刪除賬號後重新登陸以獲取指紋"
-          }
-        }
-      }
-    },
-    "MiHoYoAPIError.noStokenV2.errorDescription" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "StokenV2 is missing in your Cookie. Delete your account in the app and log in again."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CookieのStokenV2がかけている。再ログインください"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cookie缺少StokenV2字段。请尝试删除账号后重新登陆"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cookie缺少StokenV2欄位。請嘗試刪除賬號後重新登陸"
-          }
-        }
-      }
-    },
-    "MiHoYoAPIError.verificationNeeded.errorDescription" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verification is needed."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "人間認証が必要"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "需要通过验证"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "需要通過驗證"
-          }
-        }
-      }
-    },
     "nav.category.settings.name" : {
       "localizations" : {
         "en" : {
@@ -32413,6 +32329,7 @@
       }
     },
     "settings.account.regenerateSTokenV2.label" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

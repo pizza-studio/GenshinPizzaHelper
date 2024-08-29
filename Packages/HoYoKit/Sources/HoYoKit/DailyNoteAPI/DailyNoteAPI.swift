@@ -26,7 +26,7 @@ extension MiHoYoAPI {
                     deviceId: deviceId
                 )
             } else {
-                throw MiHoYoAPIError.noStokenV2
+                throw MiHoYoAPIError.sTokenV2InvalidOrMissing
             }
         case .global:
             return try await generalDailyNote(
