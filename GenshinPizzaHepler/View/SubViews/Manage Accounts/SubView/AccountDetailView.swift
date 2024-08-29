@@ -197,7 +197,9 @@ private struct RegenerateDeviceFingerPrintButton: View {
             }
             let task = Task {
                 do {
-                    account.deviceFingerPrint = try await MiHoYoAPI.getDeviceFingerPrint(deviceId: account.safeUuid)
+                    account.deviceFingerPrint = try await MiHoYoAPI.getDeviceFingerPrint(
+                        region: account.server.region
+                    ).deviceFP
                     status = .succeed
                 } catch {
                     status = .fail(error)

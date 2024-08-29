@@ -6,7 +6,7 @@ import XCTest
 
 final class APITests: XCTestCase {
     func testGetFingerPrint() async throws {
-        _ = try await MiHoYoAPI.getDeviceFingerPrint(deviceId: UUID())
+        _ = try await MiHoYoAPI.getDeviceFingerPrint(region: .mainlandChina)
     }
 
     func testGeneralDailyNoteAPIChina() async throws {
