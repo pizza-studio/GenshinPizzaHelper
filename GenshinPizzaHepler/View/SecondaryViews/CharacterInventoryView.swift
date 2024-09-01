@@ -5,7 +5,6 @@
 //  Created by 戴藏龙 on 2022/10/22.
 //
 
-import Flow
 import GIPizzaKit
 import HoYoKit
 import SFSafeSymbols
@@ -118,12 +117,6 @@ struct CharacterInventoryView: View {
             }
         }
     }
-
-    #if !os(OSX) && !targetEnvironment(macCatalyst)
-    let flowSpacing: CGFloat = 4
-    #else
-    let flowSpacing: CGFloat = 2
-    #endif
 
     func goldNum(data: CharacterInventoryModel)
         -> (allGold: Int, charGold: Int, weaponGold: Int) {
