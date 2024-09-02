@@ -188,7 +188,13 @@ extension MihoyoAPI {
                 completion(
                     .failure(
                         .decodeError(
-                            message: "DECODE ITEM: \(String(data: data!, encoding: .utf8)!)"
+                            message: """
+                            DECODE ITEM: \(String(data: data!, encoding: .utf8)!)
+
+                            rawError: 
+                            \(error)
+                            \(error.localizedDescription)
+                            """
                         )
                     )
                 )
