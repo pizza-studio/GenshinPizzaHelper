@@ -103,13 +103,16 @@ func genGachaURLString(
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
     switch server.region {
-    case .mainlandChina: urlComponents.host = "hk4e-api.mihoyo.com"
+    case .mainlandChina: urlComponents.host = "public-operation-hk4e.mihoyo.com"
     case .global:
         let reverseProxyURL = Defaults[.reverseProxyHost5]
-        urlComponents.host = reverseProxyURL.isEmpty ? "hk4e-api-os.hoyoverse.com" : reverseProxyURL
-            .replacingOccurrences(of: "https://", with: "").replacingOccurrences(of: "/", with: "")
+        urlComponents.host = reverseProxyURL.isEmpty
+            ? "public-operation-hk4e-sg.hoyoverse.com"
+            : reverseProxyURL
+            .replacingOccurrences(of: "https://", with: "")
+            .replacingOccurrences(of: "/", with: "")
     }
-    urlComponents.path = "/event/gacha_info/api/getGachaLog"
+    urlComponents.path = "/gacha_info/api/getGachaLog"
 
     let gameVersion: String
     switch server.region {
