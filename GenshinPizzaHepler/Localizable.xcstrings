@@ -16637,7 +16637,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "app.ledger.primogem.income.title:%lld"
+            "value" : "%lld月原石收入"
           }
         }
       }
