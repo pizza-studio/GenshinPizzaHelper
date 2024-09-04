@@ -191,7 +191,7 @@ extension MihoyoAPI {
                             message: """
                             DECODE ITEM: \(String(data: data!, encoding: .utf8)!)
 
-                            rawError: 
+                            rawError:
                             \(error)
                             \(error.localizedDescription)
                             """

@@ -619,68 +619,49 @@ private struct GachaHelpVideoLink: View {
 extension GachaItem {
     /// 是否歪了
     func isLose5050() -> Bool {
+        guard rankType == .five else { return true }
         guard ![GachaType]([.standard, .chronicled]).contains(gachaType) else { return false }
-        guard ![
-            "阿莫斯之弓",
-            "天空之翼",
-            "四风原典",
-            "天空之卷",
-            "和璞鸢",
-            "天空之脊",
-            "狼的末路",
-            "天空之傲",
-            "风鹰剑",
-            "天空之刃",
-            "迪卢克",
-            "琴",
-            "七七",
-            "莫娜"
-        ].contains(name) else {
-            return true
+        return switch itemId {
+        case "15502": true // 阿莫斯之弓
+        case "15501": true // 天空之翼
+        case "14502": true // 四风原典
+        case "14501": true // 天空之卷
+        case "13505": true // 和璞鸢
+        case "13502": true // 天空之脊
+        case "12502": true // 狼的末路
+        case "12501": true // 天空之傲
+        case "11501": true // 风鹰剑
+        case "11502": true // 天空之刃
+        case "10000016": true // Diluc
+        case "10000003": true // Jean
+        case "10000035": true // Qiqi
+        case "10000041": true // Mona
+        case "10000042": // Keqing
+            checkSurinukeByTime(
+                from: .init(year: 2021, month: 2, day: 17),
+                to: .init(year: 2021, month: 3, day: 2)
+            )
+        case "10000069": // Tighnari
+            checkSurinukeByTime(
+                from: .init(year: 2022, month: 8, day: 24),
+                to: .init(year: 2022, month: 9, day: 9)
+            )
+        case "10000079": // Dehya
+            checkSurinukeByTime(
+                from: .init(year: 2023, month: 3, day: 1),
+                to: .init(year: 2023, month: 3, day: 21)
+            )
+        default: false
         }
+    }
+
+    /// 处理一开始是限定五星、后来变成常驻五星的角色。
+    private func checkSurinukeByTime(from startDate: DateComponents, to endDate: DateComponents) -> Bool {
         let calendar = Calendar(identifier: .gregorian)
-        if name == "刻晴",
-           !(
-               calendar.date(
-                   from: DateComponents(year: 2021, month: 2, day: 17)
-               )! ... calendar.date(from: DateComponents(
-                   year: 2021,
-                   month: 3,
-                   day: 2
-               ))!
-           ).contains(time) {
-            return true
-        } else if name == "提纳里",
-                  !(
-                      calendar
-                          .date(
-                              from: DateComponents(
-                                  year: 2022,
-                                  month: 8,
-                                  day: 24
-                              )
-                          )! ... calendar.date(from: DateComponents(
-                              year: 2022,
-                              month: 9,
-                              day: 9
-                          ))!
-                  ).contains(time) {
-            return true
-        } else if name == "迪希雅",
-                  !(
-                      calendar
-                          .date(
-                              from: DateComponents(year: 2023, month: 3, day: 1)
-                          )! ... calendar.date(from: DateComponents(
-                              year: 2023,
-                              month: 3,
-                              day: 21
-                          ))!
-                  ).contains(time) {
-            return true
-        } else {
-            return false
-        }
+        let dateStarted = calendar.date(from: startDate)!
+        let dateEnded = calendar.date(from: endDate)!
+        guard dateStarted <= dateEnded else { return false } // 不这样处理的话，会 runtime error。
+        return !(dateStarted ... dateEnded).contains(time)
     }
 }
 
