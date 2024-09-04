@@ -1461,6 +1461,11 @@ private struct BasicInfoView: View {
                     label: "app.account.basicInfo.hydro",
                     value: "\(data.stats.hydroculusNumber)"
                 )
+                DataDisplayView(
+                    symbol: Image("Item_Pyroculus"),
+                    label: "app.account.basicInfo.pyro",
+                    value: "\(data.stats.pyroculusNumber)"
+                )
             }
             .listRowMaterialBackground()
 
@@ -1538,14 +1543,25 @@ private struct BasicInfoView: View {
                 } icon: {
                     if let url = URL(string: worldData.icon) {
                         AsyncImage(url: url, content: { image in
-                            let basicResponse = image.resizable().scaledToFit().frame(height: 30)
+                            let basicResponse = image
+                                .resizable().scaledToFit().frame(height: 30)
                             if colorScheme == .light {
                                 basicResponse.colorInvert()
                             } else {
                                 basicResponse
                             }
                         }) {
-                            ProgressView()
+                            ForEach(Array(countryIconConversionMap), id: \.key) { key, value in
+                                if url.absoluteString.contains(key) {
+                                    let basicResponse = Image(value)
+                                        .resizable().scaledToFit().frame(height: 30)
+                                    if colorScheme == .light {
+                                        basicResponse.colorInvert()
+                                    } else {
+                                        basicResponse
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -1841,3 +1857,17 @@ extension Array where Element == BasicInfos.WorldExploration {
         return result
     }
 }
+
+private let countryIconConversionMap: [String: String] = [
+    "UI_ChapterIcon_Nata": "Emblem_Natlan_White",
+    "UI_ChapterIcon_TheOldSea": "Emblem_Sea_of_Bygone_Eras_White",
+    "UI_ChapterIcon_Fengdan": "Emblem_Fontaine_White",
+    "UI_ChapterIcon_Xumi": "Emblem_Sumeru_White",
+    "UI_ChapterIcon_ChasmsMaw": "Emblem_The_Chasm_White",
+    "UI_ChapterIcon_Enkanomiya": "Emblem_Enkanomiya_White",
+    "UI_ChapterIcon_Daoqi": "Emblem_Inazuma_White",
+    "UI_ChapterIcon_Dragonspine": "Emblem_Dragonspine_White",
+    "UI_ChapterIcon_Liyue": "Emblem_Liyue_White",
+    "UI_ChapterIcon_Mengde": "Emblem_Mondstadt_White",
+    "UI_ChapterIcon_ChenYuVale": "Emblem_Chenyu_Vale_White",
+]

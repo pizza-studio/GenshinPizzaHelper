@@ -39,6 +39,8 @@ public struct BasicInfos: Codable, DecodableFromMiHoYoAPIJSONResult, Hashable {
         public var electroculusNumber: Int
         /// 水神瞳
         public var hydroculusNumber: Int
+        /// 火神瞳
+        public var pyroculusNumber: Int
         /// 珍贵宝箱数
         public var preciousChestNumber: Int
         /// 深境螺旋
@@ -62,6 +64,7 @@ public struct BasicInfos: Codable, DecodableFromMiHoYoAPIJSONResult, Hashable {
             case luxuriousChestNumber = "luxurious_chest_number"
             case electroculusNumber = "electroculus_number"
             case hydroculusNumber = "hydroculus_number"
+            case pyroculusNumber = "pyroculus_number"
             case preciousChestNumber = "precious_chest_number"
             case spiralAbyss = "spiral_abyss"
             case magicChestNumber = "magic_chest_number"
