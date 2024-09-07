@@ -26,7 +26,7 @@ class AbyssDataCollectionViewModel: ObservableObject {
 
     enum ShowingData: String, CaseIterable, Identifiable {
         case abyssAvatarsUtilization = "app.abyss.rank.usageRate.characters"
-        case pvpUtilization = "abyssDataCollection.usageRate.characterSansRestart"
+        case pvpUtilization = "app.abyss.rank.usageRate.characterSansRestart"
         case teamUtilization = "app.abyss.rank.usageRate.teams"
         case fullStarHoldingRate = "app.abyss.rank.holdingRate.36star"
         case holdingRate = "app.abyss.rank.holdingRate.all"
@@ -627,7 +627,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
                         VStack(alignment: .leading) {
                             Text("app.abyss.stat.2:\(data.totalUsers)\(abyssDataCollectionViewModel.paramsDescription)")
                                 .padding(.bottom, 5)
-                            Text("abyssDataCollection.usageRate.disclaimer")
+                            Text("app.abyss.rank.usageRate.disclaimer")
                         }
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
@@ -643,7 +643,7 @@ private struct ShowAvatarPercentageViewWithSection: View {
                                     let rawStr = Text(
                                         String(
                                             localized: .init(
-                                                stringLiteral: "abyssDataCollection.usageRate.recommended.t\(i)"
+                                                stringLiteral: "app.abyss.rank.usageRate.recommended.t\(i)"
                                             )
                                         )
                                     )
