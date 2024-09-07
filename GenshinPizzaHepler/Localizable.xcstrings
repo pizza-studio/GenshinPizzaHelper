@@ -24242,7 +24242,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error code %@lld HoYoLAB account does not match UID"
+            "value" : "Error code %lld: HoYoLAB account does not match UID"
           }
         },
         "ko" : {
