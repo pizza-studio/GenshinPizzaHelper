@@ -104,6 +104,19 @@ public class GachaModelManager {
         }
     }
 
+    func findExistingDuplicatedEntry(uid: String, id: String) -> [GachaItemMO] {
+        let request = GachaItemMO.fetchRequest()
+        let predicate = NSPredicate(format: "(id = %@) AND (uid = %@)", id, uid)
+        request.predicate = predicate
+
+        do {
+            return try container.viewContext.fetch(request)
+        } catch {
+            print("ERROR FETCHING CONFIGURATION. \(error.localizedDescription)")
+            return []
+        }
+    }
+
     func checkIDAndUIDExists(uid: String, id: String) -> Bool {
         let request = GachaItemMO.fetchRequest()
         let predicate = NSPredicate(format: "(id = %@) AND (uid = %@)", id, uid)
@@ -322,21 +335,27 @@ public class GachaModelManager {
         qos: .background
     )
 
-    private func addRecordItem(_ item: GachaItemFetched, isNew: @escaping ((Bool) -> ())) {
-        if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
-            _ = item.toGachaItemMO(context: container.viewContext)
-            isNew(true)
-        } else {
-            isNew(false)
+    @discardableResult
+    private func addRecordItem(
+        _ item: GachaItemFetched,
+        isNew: ((Bool) -> ())? = nil
+    )
+        -> Bool {
+        var foundExistingRecords = findExistingDuplicatedEntry(uid: item.uid, id: item.id)
+        /// 删掉既有重复记录。
+        while foundExistingRecords.count > 1, let firstEntry = foundExistingRecords.first {
+            container.viewContext.delete(firstEntry)
+            foundExistingRecords.removeFirst()
         }
-    }
-
-    private func addRecordItem(_ item: GachaItemFetched) -> Bool {
-        if !checkIDAndUIDExists(uid: item.uid, id: item.id) {
-            _ = item.toGachaItemMO(context: container.viewContext)
-            return true
-        } else {
+        if let existingRecord = foundExistingRecords.first {
+            // 修复错误的时区资讯。
+            existingRecord.time = item.time
+            isNew?(false)
             return false
+        } else {
+            _ = item.toGachaItemMO(context: container.viewContext)
+            isNew?(true)
+            return true
         }
     }
 }
