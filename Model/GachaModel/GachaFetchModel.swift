@@ -63,7 +63,12 @@ struct GachaItemFetched: Codable, Identifiable {
         self.uid = try container.decode(String.self, forKey: .uid)
         self.gachaType = try container.decode(String.self, forKey: .gachaType)
         self.count = try container.decode(String.self, forKey: .count)
-        self.time = try container.decode(Date.self, forKey: .time)
+        let rawTimeString = try container.decode(String.self, forKey: .time)
+        let dateFormatter = DateFormatter.Gregorian()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = .init(secondsFromGMT: GachaItem.getServerTimeZoneDelta(uid) * 3600)
+        self.time = dateFormatter.date(from: rawTimeString)!
         self.name = try container.decode(String.self, forKey: .name)
         self.lang = try container.decode(GachaLanguageCode.self, forKey: .lang)
         self.itemType = try container.decode(String.self, forKey: .itemType)
