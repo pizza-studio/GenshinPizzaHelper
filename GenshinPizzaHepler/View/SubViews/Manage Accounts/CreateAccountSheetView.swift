@@ -222,8 +222,6 @@ struct CreateAccountSheetView: View {
 private struct RequireLoginView: View {
     // MARK: Internal
 
-    @State
-    var getCookieWebViewRegion: Region?
     @Binding
     var unsavedCookie: String?
     @Binding
@@ -232,38 +230,26 @@ private struct RequireLoginView: View {
     var region: Region
 
     var body: some View {
-        Menu {
-            Button("sys.server.cn") {
-                assign(region: .mainlandChina)
-            }
-            Button("sys.server.os") {
-                assign(region: .global)
-            }
+        Picker("".description, selection: $region) {
+            Text("sys.server.cn").tag(Region.mainlandChina)
+            Text("sys.server.os").tag(Region.global)
+        }
+        .labelsHidden()
+        .pickerStyle(.segmented)
+        NavigationLink {
+            handleSheetNavigation()
         } label: {
-            Group {
-                if isUnsavedCookieInvalid {
-                    Text("settings.account.loginViaMiyousheOrHoyoLab")
-                } else {
-                    Text("settings.account.loginViaMiyousheOrHoyoLab.relogin")
-                }
-            }
+            Text(
+                isUnsavedCookieInvalid
+                    ? "settings.account.loginViaMiyousheOrHoyoLab"
+                    : "settings.account.loginViaMiyousheOrHoyoLab.relogin"
+            )
             .frame(
                 maxWidth: .infinity,
                 maxHeight: .infinity
             )
         }
-        .sheet(item: $getCookieWebViewRegion, content: { region in
-            switch region {
-            case .mainlandChina:
-                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP)
-            case .global:
-                GetCookieWebView(
-                    isShown: isCookieWebViewShown,
-                    cookie: $unsavedCookie,
-                    region: region
-                )
-            }
-        })
+        .foregroundColor(.accentColor)
     }
 
     // MARK: Private
@@ -272,19 +258,23 @@ private struct RequireLoginView: View {
         (unsavedCookie ?? "").isEmpty
     }
 
-    private var isCookieWebViewShown: Binding<Bool> {
-        .init(get: {
-            getCookieWebViewRegion != nil
-        }, set: { newValue in
-            if !newValue {
-                getCookieWebViewRegion = nil
+    private func handleSheetNavigation() -> some View {
+        Group {
+            switch region {
+            case .mainlandChina:
+                GetCookieQRCodeView(cookie: $unsavedCookie, deviceFP: $unsavedFP)
+            case .global:
+                GetCookieWebView(cookie: $unsavedCookie, region: region)
             }
-        })
-    }
-
-    private func assign(region givenRegion: Region) {
-        getCookieWebViewRegion = givenRegion
-        region = givenRegion
+        }
+        // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        .toolbar(.hidden, for: .tabBar)
+        #endif
+        // 逼着用户改用自订的后退按钮。
+        // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
+        // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
+        .navigationBarBackButtonHidden(true)
     }
 }
 
