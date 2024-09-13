@@ -69,6 +69,10 @@ struct GenshinPizzaHeplerApp: App {
                     storeManager.getProducts(productIDs: productIDs)
                 }
                 .environment(\.managedObjectContext, AccountModel.shared.container.viewContext)
+                .environment(\.horizontalSizeClass, .compact)
+            #if targetEnvironment(macCatalyst)
+                .frame(minWidth: 600, minHeight: 800)
+            #endif
         }
         #endif
     }
