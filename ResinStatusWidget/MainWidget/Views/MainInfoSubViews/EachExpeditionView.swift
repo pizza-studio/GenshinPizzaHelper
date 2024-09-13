@@ -52,10 +52,14 @@ struct EachExpeditionView: View {
                     .scaledToFit()
                     .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
             } else {
-                NetworkImage(url: expedition.iconURL)
-                    .scaleEffect(1.5)
-                    .scaledToFit()
-                    .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
+                AsyncImage(url: expedition.iconURL) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .scaleEffect(1.5)
+                .scaledToFit()
+                .offset(x: -g.size.width * 0.06, y: -g.size.height * 0.25)
             }
         }
         .frame(maxWidth: 50, maxHeight: 50)
