@@ -45,7 +45,10 @@ let package = Package(
         ),
         .testTarget(
             name: "GIPizzaKitTests",
-            dependencies: ["GIPizzaKit"]
+            dependencies: [
+                "GIPizzaKit",
+                .product(name: "GachaMetaDB", package: "GachaMetaGenerator"),
+            ]
         ),
     ]
 )

@@ -10,22 +10,19 @@ import GachaMetaGeneratorModule
 import HoYoKit
 
 #if !os(watchOS)
-// Swift 5 预设情况下不允许 SPM 的间接 import。
-// Swift 6 允许，所以回头换 Swift 6 的时候得修改这个地方。
-public typealias GachaMetaDBExposed = GachaMetaDB
 
-// MARK: - GachaMetaDB.Sputnik
+// MARK: - GachaMeta.Sputnik
 
-extension GachaMetaDB {
+extension GachaMeta {
     public enum Sputnik {}
 
     /// 拿传入的简体中文翻译「是否在库」来检查资料库是否过期。
     public func checkIfExpired(againstTranslation names: Set<String>) -> Bool {
-        !names.subtracting(Set<String>(GachaMetaDBExposed.shared.reversedDB.keys)).isEmpty
+        !names.subtracting(Set<String>(GachaMeta.MetaDB.shared.reversedDB.keys)).isEmpty
     }
 }
 
-extension GachaMetaDB {
+extension GachaMeta.MetaDB {
     public static let shared = SharedDBSet()
 
     public class SharedDBSet: ObservableObject {
@@ -65,7 +62,7 @@ extension GachaMetaDB {
     }
 }
 
-extension GachaMetaDB.Sputnik {
+extension GachaMeta.Sputnik {
     @MainActor
     public static func updateLocalGachaMetaDB() async throws {
         do {
@@ -73,7 +70,7 @@ extension GachaMetaDB.Sputnik {
             Defaults[.localGachaMetaDB] = newDB
             Defaults[.localGachaMetaDBReversed] = newDB.generateHotReverseQueryDict(for: "zh-cn") ?? [:]
         } catch {
-            throw GachaMetaDB.GMDBError.resultFetchFailure(subError: error)
+            throw GachaMeta.GMDBError.resultFetchFailure(subError: error)
         }
     }
 
@@ -89,29 +86,29 @@ extension GachaMetaDB.Sputnik {
             dataToParse = data
         } catch {
             print(error.localizedDescription)
-            print("// [GachaMetaDB.fetchPreCompiledData] Attempt using alternative JSON server source.")
+            print("// [GachaMeta.MetaDB.fetchPreCompiledData] Attempt using alternative JSON server source.")
             do {
                 let (data, _) = try await URLSession.shared.data(
                     for: URLRequest(url: serverType.gmdbServerViceVersa.gachaMetaDBRemoteURL)
                 )
                 dataToParse = data
                 // 如果这次成功的话，就自动修改偏好设定、今后就用这个资料源。
-                let successMsg = "// [GachaMetaDB.fetchPreCompiledData] 2nd attempt succeeded."
+                let successMsg = "// [GachaMeta.MetaDB.fetchPreCompiledData] 2nd attempt succeeded."
                 print(successMsg)
             } catch {
-                print("// [GachaMetaDB.fetchPreCompiledData] Final attempt failed:")
+                print("// [GachaMeta.MetaDB.fetchPreCompiledData] Final attempt failed:")
                 print(error.localizedDescription)
                 throw error
             }
         }
-        let requestResult = try JSONDecoder().decode(GachaMetaDB.self, from: dataToParse)
+        let requestResult = try JSONDecoder().decode(GachaMeta.MetaDB.self, from: dataToParse)
         return requestResult
     }
 }
 
-// MARK: - GachaMetaDB.GMDBError
+// MARK: - GachaMeta.GMDBError
 
-extension GachaMetaDB {
+extension GachaMeta {
     public enum GMDBError: Error, LocalizedError {
         case emptyFetchResult
         case resultFetchFailure(subError: Error)

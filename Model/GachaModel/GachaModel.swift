@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import GachaMetaDB
 import GIPizzaKit
 
 extension GachaItemMO {
@@ -40,7 +41,7 @@ extension GachaItemFetched {
         model.rankType = Int16(item.rankType)!
         model.id = item.id
         if item.itemId.isEmpty,
-           let itemId = GachaMetaDBExposed.shared.reverseQuery(for: item.name) {
+           let itemId = GachaMeta.MetaDB.shared.reverseQuery(for: item.name) {
             model.itemId = itemId.description
         } else {
             model.itemId = item.itemId

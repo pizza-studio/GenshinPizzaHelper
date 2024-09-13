@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import GachaMetaDB
 import GIPizzaKit
 import HBMihoyoAPI
 import HoYoKit
@@ -124,13 +125,13 @@ extension MihoyoAPI {
                 let items = try result.toGachaItemArray()
 
                 /// Check whether GachaItemDB is expired.
-                if GachaMetaDBExposed.shared.mainDB.checkIfExpired(against: Set<String>(items.map(\.itemId))) {
+                if GachaMeta.MetaDB.shared.mainDB.checkIfExpired(against: Set<String>(items.map(\.itemId))) {
                     defer {
                         Task.detached { @MainActor in
-                            try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()
+                            try? await GachaMeta.Sputnik.updateLocalGachaMetaDB()
                         }
                     }
-                    throw GachaMetaDBExposed.GMDBError.databaseExpired
+                    throw GachaMeta.GMDBError.databaseExpired
                 }
 
                 Task.detached { @MainActor in
@@ -178,9 +179,9 @@ extension MihoyoAPI {
                 completion(.failure(error))
             } catch {
                 checkDBExpiry: switch error {
-                case GachaMetaDBExposed.GMDBError.databaseExpired:
+                case GachaMeta.GMDBError.databaseExpired:
                     Task.detached { @MainActor in
-                        try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()
+                        try? await GachaMeta.Sputnik.updateLocalGachaMetaDB()
                     }
                 default: break checkDBExpiry
                 }

@@ -5,6 +5,7 @@
 import CoreData
 import Defaults
 import Foundation
+import GachaMetaDB
 import GIPizzaKit
 import SwiftUI
 import UniformTypeIdentifiers
@@ -140,13 +141,13 @@ extension UIGFv4 {
             }
 
             /// Check whether GachaItemDB is expired.
-            if GachaMetaDBExposed.shared.mainDB.checkIfExpired(against: Set<String>(list.map(\.itemID))) {
+            if GachaMeta.MetaDB.shared.mainDB.checkIfExpired(against: Set<String>(list.map(\.itemID))) {
                 defer {
                     Task.detached { @MainActor in
-                        try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()
+                        try? await GachaMeta.Sputnik.updateLocalGachaMetaDB()
                     }
                 }
-                throw GachaMetaDBExposed.GMDBError.databaseExpired
+                throw GachaMeta.GMDBError.databaseExpired
             }
         }
 
@@ -441,7 +442,7 @@ extension UIGFGachaItem {
 
         model.time = timeTyped
         // 此处严格使用简体中文。
-        model.name = GachaMetaDBExposed.shared.mainDB.plainQueryForNames(
+        model.name = GachaMeta.MetaDB.shared.mainDB.plainQueryForNames(
             itemID: itemID, langID: GachaLanguageCode.zhHans.rawValue
         ) ?? name
         model.lang = GachaLanguageCode.zhHans.rawValue
@@ -454,7 +455,7 @@ extension UIGFGachaItem {
         // 处理 RankType。
         // 此处的 Int -> Int16 转换应该不会有任何问题。
         let maybeRankType: Int16?
-        if let intMaybeRankType = GachaMetaDBExposed.shared.mainDB.plainQueryForRarity(itemID: itemID) {
+        if let intMaybeRankType = GachaMeta.MetaDB.shared.mainDB.plainQueryForRarity(itemID: itemID) {
             maybeRankType = Int16(intMaybeRankType)
         } else {
             maybeRankType = nil
@@ -475,10 +476,10 @@ extension GachaItemMO {
         let timeZoneDelta: Int = GachaItem.getServerTimeZoneDelta(uid!.description)
         var theItemID = itemId ?? ""
         if theItemID.isEmpty,
-           let newItemID = GachaMetaDBExposed.shared.reverseQuery(for: name!) {
+           let newItemID = GachaMeta.MetaDB.shared.reverseQuery(for: name!) {
             theItemID = newItemID.description
         }
-        let newName = GachaMetaDBExposed.shared.mainDB.plainQueryForNames(
+        let newName = GachaMeta.MetaDB.shared.mainDB.plainQueryForNames(
             itemID: theItemID, langID: languageCode.rawValue
         ) ?? name!
         let gachaTypeNew = UIGFGachaItem.GachaTypeGI(
@@ -507,7 +508,7 @@ extension [UIGFGachaItem] {
         var newItemContainer = [UIGFGachaItem]()
         // 君子协定：这里要求 UIGFGachaItem 的 itemID 必须是有效值，否则会出现灾难性的后果。
         self.forEach { currentItem in
-            let theDB = GachaMetaDBExposed.shared.mainDB
+            let theDB = GachaMeta.MetaDB.shared.mainDB
             var newItem = currentItem
             let itemTypeRaw: GachaItemType = .init(itemIdStr: newItem.itemID)
             newItem.itemType = itemTypeRaw.translatedRaw(for: lang)

@@ -8,6 +8,7 @@
 import CoreData
 import Defaults
 import Foundation
+import GachaMetaDB
 import GIPizzaKit
 
 // MARK: - GachaResultFetched
@@ -76,7 +77,7 @@ struct GachaItemFetched: Codable, Identifiable {
         self.id = try container.decode(String.self, forKey: .id)
         var theItemID = (try? container.decode(String?.self, forKey: .itemId)) ?? ""
         if theItemID.isEmpty,
-           let newItemID = GachaMetaDBExposed.shared.reverseQuery(for: name) {
+           let newItemID = GachaMeta.MetaDB.shared.reverseQuery(for: name) {
             theItemID = newItemID.description
         }
         self.itemId = theItemID

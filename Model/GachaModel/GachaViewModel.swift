@@ -237,7 +237,7 @@ class GachaViewModel: ObservableObject {
     @ObservedObject
     private var enkaDB = EnkaGI.Sputnik.sharedDB
     @ObservedObject
-    private var metaDB = GachaMetaDBExposed.shared
+    private var metaDB = GachaMeta.MetaDB.shared
 
     private var cancellables: [AnyCancellable] = []
 }

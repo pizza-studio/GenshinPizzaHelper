@@ -17,16 +17,16 @@ extension Defaults.Keys {
         default: .init(timeIntervalSince1970: 0),
         suite: .gmdbSuite
     )
-    public static let localGachaMetaDB = Key<GachaMetaDB>(
+    public static let localGachaMetaDB = Key<GachaMeta.MetaDB>(
         "localGachaMetaDB",
-        default: try! GachaMetaDB.getBundledDefault(for: .genshinImpact)!,
+        default: try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!,
         suite: .gmdbSuite
     )
     /// 反向查询专用资料库，供原披助手所特需。必须是简体中文。
     public static let localGachaMetaDBReversed = Key<[String: Int]>(
         "localGachaMetaDBReversed",
         default: {
-            try! GachaMetaDB.getBundledDefault(for: .genshinImpact)!
+            try! GachaMeta.MetaDB.getBundledDefault(for: .genshinImpact)!
                 .generateHotReverseQueryDict(for: "zh-cn")!
         }(),
         suite: .gmdbSuite

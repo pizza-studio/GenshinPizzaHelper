@@ -8,6 +8,7 @@
 import CoreData
 import Defaults
 import Foundation
+import GachaMetaDB
 import GIPizzaKit
 
 public class GachaModelManager {
@@ -151,7 +152,7 @@ public class GachaModelManager {
         }
         fetched.forEach { target in
             if let targetName = target.name,
-               let queriedID = GachaMetaDBExposed.shared.reverseQuery(for: targetName) {
+               let queriedID = GachaMeta.MetaDB.shared.reverseQuery(for: targetName) {
                 target.itemId = queriedID.description
             } else {
                 errorHappened = true
@@ -160,7 +161,7 @@ public class GachaModelManager {
         save()
         if errorHappened {
             Task.detached { @MainActor in
-                try? await GachaMetaDBExposed.Sputnik.updateLocalGachaMetaDB()
+                try? await GachaMeta.Sputnik.updateLocalGachaMetaDB()
                 self.fixEmptyItemIDs()
             }
         }
