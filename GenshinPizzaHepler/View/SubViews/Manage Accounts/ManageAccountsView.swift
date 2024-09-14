@@ -67,14 +67,22 @@ struct ManageAccountsView: View {
         }
         .navigationTitle("settings.account.manage.title")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(item: $sheetType, content: { type in
-            switch type {
-            case let .createNewAccount(newAccount):
-                CreateAccountSheetView(account: newAccount, isShown: isShown)
-            case let .editExistedAccount(account):
-                EditAccountSheetView(account: account, isShown: isShown)
+        .apply { currentContent in
+            if #available(iOS 18, *) {
+                currentContent
+                    .navigationDestination(item: $sheetType, destination: handleSheetNavigation)
+            } else {
+                currentContent
+                    .sheet(item: $sheetType, content: { type in
+                        switch type {
+                        case let .createNewAccount(newAccount):
+                            CreateAccountSheetView(account: newAccount, isShown: isShown)
+                        case let .editExistedAccount(account):
+                            EditAccountSheetView(account: account, isShown: isShown)
+                        }
+                    })
             }
-        })
+        }
         .onAppear {
             accounts.forEach { account in
                 if !account.isValid() {
@@ -106,7 +114,7 @@ struct ManageAccountsView: View {
 
     // MARK: Private
 
-    private enum SheetType: Identifiable {
+    private enum SheetType: Identifiable, Hashable {
         case createNewAccount(Account)
         case editExistedAccount(Account)
 
@@ -138,6 +146,28 @@ struct ManageAccountsView: View {
 
     @State
     private var sheetType: SheetType?
+
+    @MainActor @ViewBuilder
+    private func handleSheetNavigation(_ sheetType: SheetType) -> some View {
+        Group {
+            switch sheetType {
+            case let .createNewAccount(newAccount):
+                CreateAccountSheetView(account: newAccount, isShown: isShown)
+                    .environmentObject(alertToastVariable)
+            case let .editExistedAccount(account):
+                EditAccountSheetView(account: account, isShown: isShown)
+                    .environmentObject(alertToastVariable)
+            }
+        }
+        // 保证用户只能在结束编辑、关掉该画面之后才能切到别的 Tab。
+        #if os(iOS) || targetEnvironment(macCatalyst)
+        .toolbar(.hidden, for: .tabBar)
+        #endif
+        // 逼着用户改用自订的后退按钮。
+        // 这也防止 iPhone / iPad 用户以横扫手势将当前画面失手关掉。
+        // 当且仅当用户点了后退按钮或完成按钮，这个画面才会关闭。
+        .navigationBarBackButtonHidden(true)
+    }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
