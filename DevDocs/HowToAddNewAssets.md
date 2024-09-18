@@ -11,7 +11,7 @@
         - 新角色的每日素材：`CharacterAsset.dailyMaterial` 当中将对应的内容设为 nil。
         - 新武器的每日素材：`WeaponAsset.dailyMaterial` 当中将对应的内容设为 nil。
         - 新武器：添加了也无妨，只要每日素材填 nil 就行、直到官方正式公布。这样就可以防止新武器提前在 App 内显示出来。
-- 新情报与新图片素材的**正式服版本**优先从 Ambr.Top 获取。
+- 新情报与新图片素材的**正式服版本**优先从 Yatta.moe 获取。
     - 从 2024 年 2 月 8 日起，任何针对原神新版本做的提前适配**均得使用自制 PS 素材、直至该版本正式开服才可以换上官方素材**。
     - 角色证件照片的前期替代版本可由米游社官方「天外卫星通信」文章当中的插图剪裁制作。
 - 虽然现在已经有了 EnkaDB 资料的本地寄存机制，但也请勿忘更新 `gi.pizzastudio.org` 伺服器当中的各种 JSON 档案。
@@ -31,7 +31,7 @@
 ##### 1. 名片。
 
 - 名片更新的时机在新版本发布前几天，官方会借由微信公众号等社群媒体途径公式相关内容。
-- 注意：名片档案的名称无法推断，请以 Ambr.Top 下载来的原始素材档案名称为准（以 `_P` 结尾）。
+- 注意：名片档案的名称无法推断，请以 Yatta.moe 下载来的原始素材档案名称为准（以 `_P` 结尾）。
 - 名片素材请放到 `Assets -> bgNamecards` 内。
     - 名片素材尺寸必须是 **420x200 **，否则 ActivityKit View 会拒绝载入之。
     - **素材格式一律 JPEG**，否则 ActivityKit View 会崩溃（至少 HEIC 一定会崩）。
@@ -52,7 +52,7 @@
 
 1. 全专案搜寻 `enum CharacterAsset` ，找到这个 Enum 之后、在末端添入 `case Tadokoro = 10114514` 这种格式的新角色情报。数字对应该角色的 Enka Character ID。
 2. 之后 Xcode 会报错、引导你填写一些其他内容：
-    1. `CharacterAsset.frontPhotoFileName` 变数需要你填入新角色的正面肖像（证件照）的档案名称。该肖像档案放置在 `Assets-NoWatch` 当中的对应目录内即可。Ambr.Top 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请用 Waifu2x 等 AI 手段放大至 512x512（可保证 iPad Pro 高清显示）、再存为 HEIC。详情请洽下文「证件照处理方法」。
+    1. `CharacterAsset.frontPhotoFileName` 变数需要你填入新角色的正面肖像（证件照）的档案名称。该肖像档案放置在 `Assets-NoWatch` 当中的对应目录内即可。Yatta.moe 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请用 Waifu2x 等 AI 手段放大至 512x512（可保证 iPad Pro 高清显示）、再存为 HEIC。详情请洽下文「证件照处理方法」。
     2. `CharacterAsset.namecard` 变数需要你填入新角色的名片。这里按照真实情况填写即可。
     3. `CharacterAsset.possibleProfilePictureIdentifiers` 用来填写每个角色对应的 profilePicture 编号。每个角色可能拥有多个编号。请依照 [ProfilePictureExcelConfigData.json](https://gitlab.com/Dimbreath/AnimeGameData/-/blob/main/ExcelBinOutput/ProfilePictureExcelConfigData.json) 的内容查询到新角色对应的 profilePicture 编号（不超过五位数）。
 3. `CharacterAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil、或者用 `.available(since:.specify(day:month:year:))` 限时封印： 
@@ -61,13 +61,13 @@
       return .talentGold.available(since: .specify(day: 11, month: 4, year: 2023))
     ```
 4. 角色名称翻译 Key："$asset.character:\(case 名称)"。例：`"$asset.character:Keqing"`。
-5. 角色的技能图示：直接从 Ambr.top 将技能图示 png 自浏览器拖到本地，然后转成 HEIC。
+5. 角色的技能图示：直接从 Yatta.moe 将技能图示 png 自浏览器拖到本地，然后转成 HEIC。
 
 ##### 3. 武器
 
 1. 全专案搜寻 `enum WeaponAsset` ，找到这个 Enum 之后、在末端添入 `case Tsurugi = 10001` 这种格式的新角色情报。数字对应该武器的 Enka Character ID。
 2. 之后 Xcode 会报错、引导你填写一些其他内容：
-    1. 对应的素材则为觉醒过的武器图片，放置在 `Assets-NoWatch` 当中的对应目录即可。Ambr.Top 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请转换格式至 HEIC。
+    1. 对应的素材则为觉醒过的武器图片，放置在 `Assets-NoWatch` 当中的对应目录即可。Yatta.moe 也好、Snap Genshin 也好，原始素材必须得是正方形、而不是 HoneyHunterWorld 那种擅自去掉空白边的东西（否则会在 App 内产生对齐故障）。拿到原始素材 256x256 之后，请转换格式至 HEIC。
     2. `WeaponAsset.dailyMaterial` 指定其每日材料之种类。不想泄密的内容一律填 nil、或者用 `.available(since:.specify(day:month:year:))` 限时封印： 
     ```
     case .JadefallsSplendor: 
@@ -87,6 +87,6 @@
 
 ⚠️注意：如果导入素材时暂时没有手段使用 Waifu2x 等 AI 放大手段的话，可以直接上传原始 256x256 档案，但必须开 issue 备忘。
 
-请一定从 SnapGenshin 或 Ambr.Top 获取照片，因为这些照片的图像尺寸是正方形、不会造成排版上的故障。**当且仅当您知道怎样编辑 HoneyHunterWorld 的素材、使之不会出现跑版的问题的时候，HoneyHunterWorld 的素材可以临时一用。**
+请一定从 SnapGenshin 或 Yatta.moe 获取照片，因为这些照片的图像尺寸是正方形、不会造成排版上的故障。**当且仅当您知道怎样编辑 HoneyHunterWorld 的素材、使之不会出现跑版的问题的时候，HoneyHunterWorld 的素材可以临时一用。**
 
 $ EOF.

@@ -22,7 +22,7 @@ struct ThanksView: View {
             Divider()
             Group {
                 Text("Game Account Data API - 米游社 (CN) / HoYoLAB (OS)")
-                Text("Events API - Project Amber (https://gi.yatta.top)")
+                Text("Events API - Project Yatta (https://gi.yatta.moe)")
                 Text(
                     "Character Showcase API - Enka Network (https://enka.network)"
                 )

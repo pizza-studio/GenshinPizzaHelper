@@ -19,7 +19,7 @@ extension API {
             ) -> ()
         ) {
             // 请求类别
-            let urlStr = "https://gi.yatta.top/assets/data/event.json"
+            let urlStr = "https://gi.yatta.moe/assets/data/event.json"
             let url = URL(string: urlStr)!
 
             // 请求

@@ -14,7 +14,7 @@ extension Defaults.Keys {
 
 // MARK: - NameCard
 
-/// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
+/// 原神名片清单，按照 Yatta.moe 网页陈列顺序排列。
 public enum NameCard: Int, CaseIterable, _DefaultsSerializable {
     case UI_NameCardPic_0_P = 210001
     case UI_NameCardPic_Bp1_P = 210002

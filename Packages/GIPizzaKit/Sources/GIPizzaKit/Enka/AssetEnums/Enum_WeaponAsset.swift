@@ -6,7 +6,7 @@ import Foundation
 
 // MARK: - WeaponAsset
 
-/// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
+/// 原神名片清单，按照 Yatta.moe 网页陈列顺序排列。
 public enum WeaponAsset: Int, CaseIterable {
     case DullBlade = 11101
     case SilverSword = 11201

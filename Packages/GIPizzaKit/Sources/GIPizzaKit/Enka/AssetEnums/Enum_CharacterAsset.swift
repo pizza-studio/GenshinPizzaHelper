@@ -8,7 +8,7 @@ import HoYoKit
 
 // MARK: - CharacterAsset
 
-/// 原神名片清单，按照 Ambr.top 网页陈列顺序排列。
+/// 原神名片清单，按照 Yatta.moe 网页陈列顺序排列。
 public enum CharacterAsset: Int, CaseIterable, Hashable {
     case Paimon = -213
     case Hotaru = 10000007

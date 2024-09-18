@@ -24401,12 +24401,12 @@
         }
       }
     },
-    "Events API - Project Amber (https://gi.yatta.top)" : {
+    "Events API - Project Yatta (https://gi.yatta.moe)" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Events API - Project Amber (https://gi.yatta.top)"
+            "value" : "Events API - Project Yatta (https://gi.yatta.moe)"
           }
         },
         "ja" : {
@@ -24418,13 +24418,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Events API - Project Amber (https://gi.yatta.top)"
+            "value" : "Events API - Project Yatta (https://gi.yatta.moe)"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "活動 API - 安柏專案 (https://gi.yatta.top)"
+            "value" : "活動 API - 安柏專案 (https://gi.yatta.moe)"
           }
         }
       }
@@ -27333,61 +27333,61 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genshin Impact event informations are provided by [Project Amber](https://gi.yatta.top/)"
+            "value" : "Genshin Impact event informations are provided by [Project Yatta](https://gi.yatta.moe/)"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang impormasyon tungkol sa events sa Genshin Impact ay ibinigay ng [Project Amber](https://gi.yatta.top/)"
+            "value" : "Ang impormasyon tungkol sa events sa Genshin Impact ay ibinigay ng [Project Yatta](https://gi.yatta.moe/)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les informations sur les événements de Genshin Impact sont fournies par [Project Amber](https://gi.yatta.top/)"
+            "value" : "Les informations sur les événements de Genshin Impact sont fournies par [Project Yatta](https://gi.yatta.moe/)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genshin Impact event informations are provided by [Project Amber](https://gi.yatta.top/)"
+            "value" : "Genshin Impact event informations are provided by [Project Yatta](https://gi.yatta.moe/)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "原神のイベントの情報は[Project Amber](https://gi.yatta.top/)が提供しています"
+            "value" : "原神のイベントの情報は[Project Yatta](https://gi.yatta.moe/)が提供しています"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genshin Impact event informations are provided by [Project Amber](https://gi.yatta.top/)"
+            "value" : "Genshin Impact event informations are provided by [Project Yatta](https://gi.yatta.moe/)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Информация о мероприятиях в игре Genshin Impact предоставляется [Project Amber](https://gi.yatta.top/)"
+            "value" : "Информация о мероприятиях в игре Genshin Impact предоставляется [Project Yatta](https://gi.yatta.moe/)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Amber](https://gi.yatta.top/)"
+            "value" : "Thông tin sự kiện Genshin Impact được cung cấp bởi [Project Yatta](https://gi.yatta.moe/)"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "原神活动信息由[Project Amber](https://gi.yatta.top/)提供"
+            "value" : "原神活动信息由[Project Yatta](https://gi.yatta.moe/)提供"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "原神活動資訊由[Project Amber](https://gi.yatta.top/)提供"
+            "value" : "原神活動資訊由[Project Yatta](https://gi.yatta.moe/)提供"
           }
         }
       }
