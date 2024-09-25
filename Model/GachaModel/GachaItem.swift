@@ -8,16 +8,6 @@
 import Charts
 import Foundation
 
-// public func getGacha(url: String) throws -> GetGachaResult {
-//    let decoder = JSONDecoder()
-//    decoder.keyDecodingStrategy = .convertFromSnakeCase
-//    if let data = try? decoder.decode(ConvertToGetGacha.self, from: get_gacha(url).toString().data(using: .utf8)!) {
-//        return GetGachaResult.from(data)
-//    } else {
-//        return .failure(.decodeError)
-//    }
-// }
-
 public typealias GetGachaResult = Result<[GachaItem], GetGachaError>
 
 // MARK: - GachaItem

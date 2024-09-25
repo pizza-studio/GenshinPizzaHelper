@@ -138,7 +138,7 @@
 		5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE42541289E520A00FEFA49 /* RecoveryTimeTextView.swift */; };
 		5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9EA04528B77DED00000227 /* InAppMaterialNavigator.swift */; };
 		5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70210C28B3967A00A6BBA9 /* TapticSupport.swift */; };
-		5BD1C6312A2A1FC90043C2B1 /* GachaKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8729D287970075F780 /* GachaKey.swift */; };
+		5BD1C6312A2A1FC90043C2B1 /* GachaGenAuthKeyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8729D287970075F780 /* GachaGenAuthKeyResult.swift */; };
 		5BD1C6322A2A1FC90043C2B1 /* EachExpeditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC5CD128B5190500770BBB /* EachExpeditionView.swift */; };
 		5BD1C6332A2A1FC90043C2B1 /* MaterialChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE606028D9F6970018CAF6 /* MaterialChoices.swift */; };
 		5BD1C6342A2A1FC90043C2B1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4258728A0AE2700FEFA49 /* AboutView.swift */; };
@@ -360,7 +360,7 @@
 		EA025C8229D280FD0075F780 /* GachaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8129D280FD0075F780 /* GachaModel.swift */; };
 		EA025C8429D2834E0075F780 /* GachaItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8329D2834E0075F780 /* GachaItemManager.swift */; };
 		EA025C8629D286540075F780 /* GachaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8529D286540075F780 /* GachaViewModel.swift */; };
-		EA025C8829D287970075F780 /* GachaKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8729D287970075F780 /* GachaKey.swift */; };
+		EA025C8829D287970075F780 /* GachaGenAuthKeyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8729D287970075F780 /* GachaGenAuthKeyResult.swift */; };
 		EA025C8A29D2883A0075F780 /* GachaURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8929D2883A0075F780 /* GachaURL.swift */; };
 		EA025C8E29D28D150075F780 /* APIGetGachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8D29D28D150075F780 /* APIGetGachaView.swift */; };
 		EA025C9029D28D3D0075F780 /* GachaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA025C8F29D28D3D0075F780 /* GachaView.swift */; };
@@ -935,7 +935,7 @@
 		EA025C8129D280FD0075F780 /* GachaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaModel.swift; sourceTree = "<group>"; };
 		EA025C8329D2834E0075F780 /* GachaItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaItemManager.swift; sourceTree = "<group>"; };
 		EA025C8529D286540075F780 /* GachaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaViewModel.swift; sourceTree = "<group>"; };
-		EA025C8729D287970075F780 /* GachaKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaKey.swift; sourceTree = "<group>"; };
+		EA025C8729D287970075F780 /* GachaGenAuthKeyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaGenAuthKeyResult.swift; sourceTree = "<group>"; };
 		EA025C8929D2883A0075F780 /* GachaURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaURL.swift; sourceTree = "<group>"; };
 		EA025C8D29D28D150075F780 /* APIGetGachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGetGachaView.swift; sourceTree = "<group>"; };
 		EA025C8F29D28D3D0075F780 /* GachaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GachaView.swift; sourceTree = "<group>"; };
@@ -1510,7 +1510,7 @@
 				EA025C8129D280FD0075F780 /* GachaModel.swift */,
 				EA025C8329D2834E0075F780 /* GachaItemManager.swift */,
 				EA025C8529D286540075F780 /* GachaViewModel.swift */,
-				EA025C8729D287970075F780 /* GachaKey.swift */,
+				EA025C8729D287970075F780 /* GachaGenAuthKeyResult.swift */,
 				EA025C8929D2883A0075F780 /* GachaURL.swift */,
 				EAAD03E529D2FD88007D5C80 /* GachaItem.swift */,
 				EA4C005829D2FFD100637B19 /* GachaFetch.swift */,
@@ -2525,7 +2525,7 @@
 				5BD1C62C2A2A1FC90043C2B1 /* RecoveryTimeTextView.swift in Sources */,
 				5BD1C62D2A2A1FC90043C2B1 /* InAppMaterialNavigator.swift in Sources */,
 				5BD1C62E2A2A1FC90043C2B1 /* TapticSupport.swift in Sources */,
-				5BD1C6312A2A1FC90043C2B1 /* GachaKey.swift in Sources */,
+				5BD1C6312A2A1FC90043C2B1 /* GachaGenAuthKeyResult.swift in Sources */,
 				5BD1C6322A2A1FC90043C2B1 /* EachExpeditionView.swift in Sources */,
 				5BEF4B872B60D78C007FB100 /* StaggeredGrid.swift in Sources */,
 				5BD1C6332A2A1FC90043C2B1 /* MaterialChoices.swift in Sources */,
@@ -2918,7 +2918,7 @@
 				5BCBAEF52C29BC4D00BAF156 /* GetCookieQRCodeView_Genshin.swift in Sources */,
 				EA9EA04628B77DED00000227 /* InAppMaterialNavigator.swift in Sources */,
 				BF70210D28B3967A00A6BBA9 /* TapticSupport.swift in Sources */,
-				EA025C8829D287970075F780 /* GachaKey.swift in Sources */,
+				EA025C8829D287970075F780 /* GachaGenAuthKeyResult.swift in Sources */,
 				EAFC5CD228B5190500770BBB /* EachExpeditionView.swift in Sources */,
 				EABE606128D9F6970018CAF6 /* MaterialChoices.swift in Sources */,
 				5BEF4B862B60D711007FB100 /* StaggeredGrid.swift in Sources */,
