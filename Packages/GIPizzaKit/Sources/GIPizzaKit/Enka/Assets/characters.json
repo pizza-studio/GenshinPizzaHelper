@@ -3118,5 +3118,65 @@
       "30007" : "Skill_E_Mualani_01"
     },
     "WeaponType" : "WEAPON_CATALYST"
+  },
+  "10000103" : {
+    "Consts" : [
+      "UI_Talent_S_Xilonen_01",
+      "UI_Talent_S_Xilonen_02",
+      "UI_Talent_U_Xilonen_01",
+      "UI_Talent_S_Xilonen_03",
+      "UI_Talent_U_Xilonen_02",
+      "UI_Talent_S_Xilonen_04"
+    ],
+    "Element" : "Rock",
+    "NameTextMapHash" : 2515292882,
+    "ProudMap" : {
+      "11031" : 10331,
+      "11032" : 10332,
+      "11035" : 10339
+    },
+    "QualityType" : "QUALITY_ORANGE",
+    "SideIconName" : "UI_AvatarIcon_Side_Xilonen",
+    "SkillOrder" : [
+      11031,
+      11032,
+      11035
+    ],
+    "Skills" : {
+      "11031" : "Skill_A_01",
+      "11032" : "Skill_S_Xilonen_01",
+      "11035" : "Skill_E_Xilonen_01"
+    },
+    "WeaponType" : "WEAPON_SWORD_ONE_HAND"
+  },
+  "10000901" : {
+    "Consts" : [
+      "UI_Talent_S_Xiangling_01",
+      "UI_Talent_S_Xiangling_02",
+      "UI_Talent_U_Xiangling_02",
+      "UI_Talent_S_Xiangling_03",
+      "UI_Talent_U_Xiangling_01",
+      "UI_Talent_S_Xiangling_04"
+    ],
+    "Element" : "Fire",
+    "NameTextMapHash" : 3293134650,
+    "ProudMap" : {
+      "10231" : 2331,
+      "10232" : 2332,
+      "10235" : 2339
+    },
+    "QualityType" : "QUALITY_ORANGE",
+    "SideIconName" : "UI_AvatarIcon_Side_Mavuika",
+    "SkillOrder" : [
+      10231,
+      10232,
+      10235
+    ],
+    "Skills" : {
+      "10231" : "Skill_A_03",
+      "10232" : "Skill_S_Xiangling_01",
+      "10235" : "Skill_E_Xiangling_01"
+    },
+    "WeaponType" : "WEAPON_CLAYMORE"
   }
 }
