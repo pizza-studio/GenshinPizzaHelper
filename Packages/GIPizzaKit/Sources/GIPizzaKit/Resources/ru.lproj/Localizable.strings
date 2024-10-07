@@ -138,6 +138,7 @@
 "$asset.character:Kachina" = "Качина";
 "$asset.character:Kinich" = "Кинич";
 "$asset.character:Mualani" = "Муалани";
+"$asset.character:Xilonen" = "Шилонен";
 
 // MARK: - Weapon Names
 
@@ -172,6 +173,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Перевозчик Флёв Сандр";
 "$asset.weapon:TheDockhandsAssistant" = "Верфь";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Меч Нарциссенкрейца";
+"$asset.weapon:SturdyBone" = "Крепкая кость";
 "$asset.weapon:FluteOfEzpitzal" = "Флейта Эспицаль";
 "$asset.weapon:AquilaFavonia" = "Меч Сокола";
 "$asset.weapon:SkywardBlade" = "Небесный меч";
@@ -185,6 +187,7 @@
 "$asset.weapon:SplendorOfStillWaters" = "Блеск тихих вод";
 "$asset.weapon:UrakuMisugiri" = "Ураку мисугири";
 "$asset.weapon:Absolution" = "Отпущение грехов";
+"$asset.weapon:PeakPatrolSong" = "Песнь патруля пиков";
 "$asset.weapon:WasterGreatsword" = "Двуручный меч богатыря";
 "$asset.weapon:OldMercsPal" = "Лучший друг наёмника";
 "$asset.weapon:FerrousShadow" = "Металлическая тень";
@@ -213,6 +216,7 @@
 "$asset.weapon:TidalShadow" = "Тень волны";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Магический супермеч высшего владыки";
 "$asset.weapon:PortablePowerSaw" = "Переносная мотопила";
+"$asset.weapon:FruitfulHook" = "Плодотворный крюк";
 "$asset.weapon:EarthShaker" = "Сотрясающий землю";
 "$asset.weapon:SkywardPride" = "Небесное величие";
 "$asset.weapon:WolfsGravestone" = "Волчья погибель";
@@ -245,6 +249,7 @@
 "$asset.weapon:RightfulReward" = "Справедливая награда";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Диалог пустынных мудрецов";
 "$asset.weapon:ProspectorsDrill" = "Бур рудоискателя";
+"$asset.weapon:MountainBracingBolt" = "Крепящий горы шип";
 "$asset.weapon:FootprintOfTheRainbow" = "След радуги";
 "$asset.weapon:StaffOfHoma" = "Посох Хомы";
 "$asset.weapon:SkywardSpine" = "Небесная ось";
@@ -543,3 +548,5 @@
 "$asset.nameCard:UI_NameCardPic_Emilie_P" = "Конечная нота";
 "$asset.nameCard:UI_NameCardPic_Bp34_P" = "Чудесные творения";
 "$asset.nameCard:UI_NameCardPic_RedandWhite2_P" = "Великое пиршество II";
+"$asset.nameCard:UI_NameCardPic_Xilonen_P" = "Ритм";
+"$asset.nameCard:UI_NameCardPic_Bp36_P" = "Сабзеруз";

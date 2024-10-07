@@ -138,6 +138,7 @@
 "$asset.character:Kachina" = "Kachina";
 "$asset.character:Kinich" = "Kinich";
 "$asset.character:Mualani" = "Mualani";
+"$asset.character:Xilonen" = "Xilonen";
 
 // MARK: - Weapon Names
 
@@ -172,6 +173,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Passeur du Fleuve cendré";
 "$asset.weapon:TheDockhandsAssistant" = "L'assistant du docker";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Lame du Narzissenkreuz";
+"$asset.weapon:SturdyBone" = "Os robuste";
 "$asset.weapon:FluteOfEzpitzal" = "Flûte d'ezpitzal";
 "$asset.weapon:AquilaFavonia" = "Épée du faucon";
 "$asset.weapon:SkywardBlade" = "Lame de la Voûte d'Azur";
@@ -185,6 +187,7 @@
 "$asset.weapon:SplendorOfStillWaters" = "Splendeur des eaux calmes";
 "$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
 "$asset.weapon:Absolution" = "Absolution";
+"$asset.weapon:PeakPatrolSong" = "Chanson de patrouille de sommet";
 "$asset.weapon:WasterGreatsword" = "Épée d'entraînement";
 "$asset.weapon:OldMercsPal" = "Lame du mercenaire";
 "$asset.weapon:FerrousShadow" = "Ombre ferreuse";
@@ -213,6 +216,7 @@
 "$asset.weapon:TidalShadow" = "Ombre tidale";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Méga épée magique du suzerain ultime";
 "$asset.weapon:PortablePowerSaw" = "Scie électrique portative";
+"$asset.weapon:FruitfulHook" = "Crochet fructueux";
 "$asset.weapon:EarthShaker" = "Trembleur de terre";
 "$asset.weapon:SkywardPride" = "Fierté de la Voûte d'Azur";
 "$asset.weapon:WolfsGravestone" = "Mort-du-loup";
@@ -245,6 +249,7 @@
 "$asset.weapon:RightfulReward" = "Récompense légitime";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Dialogues des sages du désert";
 "$asset.weapon:ProspectorsDrill" = "Foret de prospecteur";
+"$asset.weapon:MountainBracingBolt" = "Clou soutenant les montagnes";
 "$asset.weapon:FootprintOfTheRainbow" = "Trace d'arc-en-ciel";
 "$asset.weapon:StaffOfHoma" = "Bâton de Homa";
 "$asset.weapon:SkywardSpine" = "Berge de la Voûte d'Azur";
@@ -552,3 +557,5 @@
 "$asset.nameCard:UI_NameCardPic_Dfcq1_P" = "Succès - Seigneur de la nuit";
 "$asset.nameCard:UI_NameCardPic_Bp35_P" = "PB - Feu primaire";
 "$asset.nameCard:UI_NameCardPic_Yellow_P" = "Célébration - Doux et croquant";
+"$asset.nameCard:UI_NameCardPic_Xilonen_P" = "Xilonen - En rythme";
+"$asset.nameCard:UI_NameCardPic_Bp36_P" = "PB - Sabzeruz";

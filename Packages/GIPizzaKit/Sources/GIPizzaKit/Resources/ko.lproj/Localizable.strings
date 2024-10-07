@@ -138,6 +138,7 @@
 "$asset.character:Kachina" = "카치나";
 "$asset.character:Kinich" = "키니치";
 "$asset.character:Mualani" = "말라니";
+"$asset.character:Xilonen" = "실로닌";
 
 // MARK: - Weapon Names
 
@@ -172,6 +173,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "잿빛의 강 뱃사공";
 "$asset.weapon:TheDockhandsAssistant" = "뱃도랑 장검";
 "$asset.weapon:SwordOfNarzissenkreuz" = "수선화 십자 성검";
+"$asset.weapon:SturdyBone" = "견고한 골검";
 "$asset.weapon:FluteOfEzpitzal" = "에스피찰의 피리";
 "$asset.weapon:AquilaFavonia" = "매의 검";
 "$asset.weapon:SkywardBlade" = "천공의 검";
@@ -185,6 +187,7 @@
 "$asset.weapon:SplendorOfStillWaters" = "조용히 샘솟는 빛";
 "$asset.weapon:UrakuMisugiri" = "우라쿠의 미스기리";
 "$asset.weapon:Absolution" = "사면";
+"$asset.weapon:PeakPatrolSong" = "바위산을 맴도는 노래";
 "$asset.weapon:WasterGreatsword" = "훈련용 대검";
 "$asset.weapon:OldMercsPal" = "용병 중검";
 "$asset.weapon:FerrousShadow" = "강철의 그림자";
@@ -213,6 +216,7 @@
 "$asset.weapon:TidalShadow" = "파도 그림자 대검";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "궁극의 패왕 특급 마검";
 "$asset.weapon:PortablePowerSaw" = "휴대용 체인톱";
+"$asset.weapon:FruitfulHook" = "수확의 갈고리";
 "$asset.weapon:EarthShaker" = "대지를 울리는 자";
 "$asset.weapon:SkywardPride" = "천공의 긍지";
 "$asset.weapon:WolfsGravestone" = "늑대의 말로";
@@ -245,6 +249,7 @@
 "$asset.weapon:RightfulReward" = "공의의 보상";
 "$asset.weapon:DialoguesOfTheDesertSages" = "위대한 사막 현자의 대답";
 "$asset.weapon:ProspectorsDrill" = "탐사용 드릴";
+"$asset.weapon:MountainBracingBolt" = "산을 고정하는 못";
 "$asset.weapon:FootprintOfTheRainbow" = "무지개의 행적";
 "$asset.weapon:StaffOfHoma" = "호마의 지팡이";
 "$asset.weapon:SkywardSpine" = "천공의 마루";
@@ -552,3 +557,5 @@
 "$asset.nameCard:UI_NameCardPic_Dfcq1_P" = "업적·밤의 주인";
 "$asset.nameCard:UI_NameCardPic_Bp35_P" = "기행·불의 근원";
 "$asset.nameCard:UI_NameCardPic_Yellow_P" = "축전·바삭바삭";
+"$asset.nameCard:UI_NameCardPic_Xilonen_P" = "실로닌·리듬";
+"$asset.nameCard:UI_NameCardPic_Bp36_P" = "기행·탄신";

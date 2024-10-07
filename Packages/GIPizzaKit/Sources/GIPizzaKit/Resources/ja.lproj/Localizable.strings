@@ -138,6 +138,7 @@
 "$asset.character:Kachina" = "カチーナ";
 "$asset.character:Kinich" = "キィニチ";
 "$asset.character:Mualani" = "ムアラニ";
+"$asset.character:Xilonen" = "シロネン";
 
 // MARK: - Weapon Names
 
@@ -172,6 +173,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "サーンドルの渡し守";
 "$asset.weapon:TheDockhandsAssistant" = "船渠剣";
 "$asset.weapon:SwordOfNarzissenkreuz" = "水仙十字の剣";
+"$asset.weapon:SturdyBone" = "ストロング・ボーン";
 "$asset.weapon:FluteOfEzpitzal" = "エズピツァルの笛";
 "$asset.weapon:AquilaFavonia" = "風鷹剣";
 "$asset.weapon:SkywardBlade" = "天空の刃";
@@ -185,6 +187,7 @@
 "$asset.weapon:SplendorOfStillWaters" = "静水流転の輝き";
 "$asset.weapon:UrakuMisugiri" = "有楽御簾切";
 "$asset.weapon:Absolution" = "赦罪";
+"$asset.weapon:PeakPatrolSong" = "岩峰を巡る歌";
 "$asset.weapon:WasterGreatsword" = "訓練用大剣";
 "$asset.weapon:OldMercsPal" = "傭兵の重剣";
 "$asset.weapon:FerrousShadow" = "鉄影段平";
@@ -213,6 +216,7 @@
 "$asset.weapon:TidalShadow" = "タイダル·シャドー";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "究極覇王スーパー魔剣";
 "$asset.weapon:PortablePowerSaw" = "携帯型チェーンソー";
+"$asset.weapon:FruitfulHook" = "実りの鉤鉈";
 "$asset.weapon:EarthShaker" = "アースシェイカー";
 "$asset.weapon:SkywardPride" = "天空の傲";
 "$asset.weapon:WolfsGravestone" = "狼の末路";
@@ -245,6 +249,7 @@
 "$asset.weapon:RightfulReward" = "正義の報酬";
 "$asset.weapon:DialoguesOfTheDesertSages" = "砂中の賢者達の問答";
 "$asset.weapon:ProspectorsDrill" = "プロスペクタードリル";
+"$asset.weapon:MountainBracingBolt" = "鎮山の釘";
 "$asset.weapon:FootprintOfTheRainbow" = "虹の行方";
 "$asset.weapon:StaffOfHoma" = "護摩の杖";
 "$asset.weapon:SkywardSpine" = "天空の脊";
@@ -552,3 +557,5 @@
 "$asset.nameCard:UI_NameCardPic_Dfcq1_P" = "アチーブメント·夜の主";
 "$asset.nameCard:UI_NameCardPic_Bp35_P" = "紀行·源火";
 "$asset.nameCard:UI_NameCardPic_Yellow_P" = "祭典·あまあまサクサク";
+"$asset.nameCard:UI_NameCardPic_Xilonen_P" = "シロネン・律動";
+"$asset.nameCard:UI_NameCardPic_Bp36_P" = "紀行・神誕";

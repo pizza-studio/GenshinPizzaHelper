@@ -138,6 +138,7 @@
 "$asset.character:Kachina" = "Kachina";
 "$asset.character:Kinich" = "Kinich";
 "$asset.character:Mualani" = "Mualani";
+"$asset.character:Xilonen" = "Xilonen";
 
 // MARK: - Weapon Names
 
@@ -172,6 +173,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Ống Đồng Fleuve Cendre";
 "$asset.weapon:TheDockhandsAssistant" = "Kiếm Bến Tàu";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Lưỡi Kiếm Narzissenkreuz";
+"$asset.weapon:SturdyBone" = "Xương Cứng";
 "$asset.weapon:FluteOfEzpitzal" = "Sáo Ezpitzal";
 "$asset.weapon:AquilaFavonia" = "Phong Ưng Kiếm";
 "$asset.weapon:SkywardBlade" = "Thiên Không Kiếm";
@@ -185,6 +187,7 @@
 "$asset.weapon:SplendorOfStillWaters" = "Sắc Nước Lộng Lẫy";
 "$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
 "$asset.weapon:Absolution" = "Xá Tội";
+"$asset.weapon:PeakPatrolSong" = "Khúc Ca Núi Đá";
 "$asset.weapon:WasterGreatsword" = "Kiếm Huấn Luyện";
 "$asset.weapon:OldMercsPal" = "Kiếm Dụng Binh";
 "$asset.weapon:FerrousShadow" = "Kiếm Thiết Ảnh";
@@ -213,6 +216,7 @@
 "$asset.weapon:TidalShadow" = "Bóng Tối Thủy Triều";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Bá Vương Tối Thượng Siêu Cấp Ma Kiếm";
 "$asset.weapon:PortablePowerSaw" = "Máy Cưa Cầm Tay";
+"$asset.weapon:FruitfulHook" = "Móc Trĩu Quả";
 "$asset.weapon:EarthShaker" = "Đao Chấn Động";
 "$asset.weapon:SkywardPride" = "Thiên Không Kiêu Ngạo";
 "$asset.weapon:WolfsGravestone" = "Đường Cùng Của Sói";
@@ -245,6 +249,7 @@
 "$asset.weapon:RightfulReward" = "Thù Lao Của Chính Nghĩa";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Đối Thoại Của Hiền Giả Sa Mạc";
 "$asset.weapon:ProspectorsDrill" = "Mũi Khoan Thăm Dò";
+"$asset.weapon:MountainBracingBolt" = "Mũi Đinh Trấn Núi";
 "$asset.weapon:FootprintOfTheRainbow" = "Vết Tích Cầu Vồng";
 "$asset.weapon:StaffOfHoma" = "Trượng Hộ Ma";
 "$asset.weapon:SkywardSpine" = "Xương Sống Thiên Không";
@@ -332,9 +337,6 @@
 "$asset.weapon:PolarStar" = "Ngôi Sao Cực Đông";
 "$asset.weapon:AquaSimulacra" = "Nhược Thủy";
 "$asset.weapon:ThunderingPulse" = "Sấm Sét Rung Động";
-"$asset.weapon:HuntersPath" = "Con Đường Thợ Săn";
-"$asset.weapon:TheFirstGreatMagic" = "Màn Ảo Thuật Đầu Tiên";
-"$asset.weapon:SilverShowerHeartStrings" = "Màn Mưa Tơ Lòng";
 
 // MARK: - Namecard Icons
 
@@ -565,3 +567,5 @@
 "$asset.nameCard:UI_NameCardPic_Dfcq1_P" = "Владыка ночи";
 "$asset.nameCard:UI_NameCardPic_Bp35_P" = "Первозданный огонь";
 "$asset.nameCard:UI_NameCardPic_Yellow_P" = "Хрустящие и сладкие";
+"$asset.nameCard:UI_NameCardPic_Xilonen_P" = "Xilonen - Nhịp Điệu";
+"$asset.nameCard:UI_NameCardPic_Bp36_P" = "Nhật Ký Hành Trình - Sabzeruz";

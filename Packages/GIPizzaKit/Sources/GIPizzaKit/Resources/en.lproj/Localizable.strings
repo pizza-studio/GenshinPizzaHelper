@@ -138,6 +138,7 @@
 "$asset.character:Kachina" = "Kachina";
 "$asset.character:Kinich" = "Kinich";
 "$asset.character:Mualani" = "Mualani";
+"$asset.character:Xilonen" = "Xilonen";
 
 // MARK: - Weapon Names
 
@@ -172,6 +173,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Fleuve Cendre Ferryman";
 "$asset.weapon:TheDockhandsAssistant" = "The Dockhand's Assistant";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Sword of Narzissenkreuz";
+"$asset.weapon:SturdyBone" = "Sturdy Bone";
 "$asset.weapon:FluteOfEzpitzal" = "Flute of Ezpitzal";
 "$asset.weapon:AquilaFavonia" = "Aquila Favonia";
 "$asset.weapon:SkywardBlade" = "Skyward Blade";
@@ -185,6 +187,7 @@
 "$asset.weapon:SplendorOfStillWaters" = "Splendor of Still Waters";
 "$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
 "$asset.weapon:Absolution" = "Absolution";
+"$asset.weapon:PeakPatrolSong" = "Peak Patrol Song";
 "$asset.weapon:WasterGreatsword" = "Waster Greatsword";
 "$asset.weapon:OldMercsPal" = "Old Merc's Pal";
 "$asset.weapon:FerrousShadow" = "Ferrous Shadow";
@@ -213,6 +216,7 @@
 "$asset.weapon:TidalShadow" = "Tidal Shadow";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Ultimate Overlord's Mega Magic Sword";
 "$asset.weapon:PortablePowerSaw" = "Portable Power Saw";
+"$asset.weapon:FruitfulHook" = "Fruitful Hook";
 "$asset.weapon:EarthShaker" = "Earth Shaker";
 "$asset.weapon:SkywardPride" = "Skyward Pride";
 "$asset.weapon:WolfsGravestone" = "Wolf's Gravestone";
@@ -245,6 +249,7 @@
 "$asset.weapon:RightfulReward" = "Rightful Reward";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Dialogues of the Desert Sages";
 "$asset.weapon:ProspectorsDrill" = "Prospector's Drill";
+"$asset.weapon:MountainBracingBolt" = "Mountain-Bracing Bolt";
 "$asset.weapon:FootprintOfTheRainbow" = "Footprint of the Rainbow";
 "$asset.weapon:StaffOfHoma" = "Staff of Homa";
 "$asset.weapon:SkywardSpine" = "Skyward Spine";
@@ -552,3 +557,5 @@
 "$asset.nameCard:UI_NameCardPic_Dfcq1_P" = "Achievement: Lord of the Night";
 "$asset.nameCard:UI_NameCardPic_Bp35_P" = "Travel Notes: Primal Fire";
 "$asset.nameCard:UI_NameCardPic_Yellow_P" = "Celebration: Crispy and Sweet";
+"$asset.nameCard:UI_NameCardPic_Xilonen_P" = "Xilonen: Cue Point";
+"$asset.nameCard:UI_NameCardPic_Bp36_P" = "Travel Notes: Sabzeruz";

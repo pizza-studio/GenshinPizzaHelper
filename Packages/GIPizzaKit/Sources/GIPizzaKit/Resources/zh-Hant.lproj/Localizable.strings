@@ -138,6 +138,7 @@
 "$asset.character:Kachina" = "卡齊娜";
 "$asset.character:Kinich" = "基尼奇";
 "$asset.character:Mualani" = "瑪拉妮";
+"$asset.character:Xilonen" = "希諾寧";
 
 // MARK: - Weapon Names
 
@@ -172,6 +173,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "灰河渡手";
 "$asset.weapon:TheDockhandsAssistant" = "船塢長劍";
 "$asset.weapon:SwordOfNarzissenkreuz" = "水仙十字之劍";
+"$asset.weapon:SturdyBone" = "彌堅骨";
 "$asset.weapon:FluteOfEzpitzal" = "息燧之笛";
 "$asset.weapon:AquilaFavonia" = "風鷹劍";
 "$asset.weapon:SkywardBlade" = "天空之刃";
@@ -185,6 +187,7 @@
 "$asset.weapon:SplendorOfStillWaters" = "靜水流湧之輝";
 "$asset.weapon:UrakuMisugiri" = "有樂御簾切";
 "$asset.weapon:Absolution" = "赦罪";
+"$asset.weapon:PeakPatrolSong" = "岩峰巡歌";
 "$asset.weapon:WasterGreatsword" = "訓練大劍";
 "$asset.weapon:OldMercsPal" = "傭兵重劍";
 "$asset.weapon:FerrousShadow" = "鐵影闊劍";
@@ -213,6 +216,7 @@
 "$asset.weapon:TidalShadow" = "浪影闊劍";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "究極霸王超級魔劍";
 "$asset.weapon:PortablePowerSaw" = "便攜動力鋸";
+"$asset.weapon:FruitfulHook" = "碩果鉤";
 "$asset.weapon:EarthShaker" = "撼地者";
 "$asset.weapon:SkywardPride" = "天空之傲";
 "$asset.weapon:WolfsGravestone" = "狼的末路";
@@ -245,6 +249,7 @@
 "$asset.weapon:RightfulReward" = "公義的酬報";
 "$asset.weapon:DialoguesOfTheDesertSages" = "沙中偉賢的對答";
 "$asset.weapon:ProspectorsDrill" = "勘探鑽機";
+"$asset.weapon:MountainBracingBolt" = "鎮山之釘";
 "$asset.weapon:FootprintOfTheRainbow" = "虹的行跡";
 "$asset.weapon:StaffOfHoma" = "護摩之杖";
 "$asset.weapon:SkywardSpine" = "天空之脊";
@@ -552,3 +557,5 @@
 "$asset.nameCard:UI_NameCardPic_Dfcq1_P" = "成就·夜主";
 "$asset.nameCard:UI_NameCardPic_Bp35_P" = "紀行·源火";
 "$asset.nameCard:UI_NameCardPic_Yellow_P" = "慶典·甘脆";
+"$asset.nameCard:UI_NameCardPic_Xilonen_P" = "希諾寧·律動";
+"$asset.nameCard:UI_NameCardPic_Bp36_P" = "紀行·神誕";

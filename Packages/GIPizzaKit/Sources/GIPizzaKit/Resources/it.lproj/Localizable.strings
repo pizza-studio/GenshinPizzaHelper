@@ -138,6 +138,7 @@
 "$asset.character:Kachina" = "Kachina";
 "$asset.character:Kinich" = "Kinich";
 "$asset.character:Mualani" = "Mualani";
+"$asset.character:Xilonen" = "Xilonen";
 
 // MARK: - Weapon Names
 
@@ -172,6 +173,7 @@
 "$asset.weapon:FleuveCendreFerryman" = "Traghettatore del Fleuve Cendre";
 "$asset.weapon:TheDockhandsAssistant" = "Aiutante del porto";
 "$asset.weapon:SwordOfNarzissenkreuz" = "Spada di Narzissenkreuz";
+"$asset.weapon:SturdyBone" = "Osso tenace";
 "$asset.weapon:FluteOfEzpitzal" = "Flauto di Ezpitzal";
 "$asset.weapon:AquilaFavonia" = "Aquila Favonia";
 "$asset.weapon:SkywardBlade" = "Lama celeste";
@@ -185,6 +187,7 @@
 "$asset.weapon:SplendorOfStillWaters" = "Fulgore delle placide acque";
 "$asset.weapon:UrakuMisugiri" = "Uraku Misugiri";
 "$asset.weapon:Absolution" = "Assoluzione";
+"$asset.weapon:PeakPatrolSong" = "Canzone della Pattuglia delle Sommità";
 "$asset.weapon:WasterGreatsword" = "Spadone dell'incapace";
 "$asset.weapon:OldMercsPal" = "Lama del mercenario";
 "$asset.weapon:FerrousShadow" = "Ombra di ferro";
@@ -213,6 +216,7 @@
 "$asset.weapon:TidalShadow" = "Mareombra";
 "$asset.weapon:UltimateOverloardsMegaMagicSword" = "Spada magica del Super Signore Supremo";
 "$asset.weapon:PortablePowerSaw" = "Sega elettrica portatile";
+"$asset.weapon:FruitfulHook" = "Gancio fruttuoso";
 "$asset.weapon:EarthShaker" = "Sisma";
 "$asset.weapon:SkywardPride" = "Orgoglio celeste";
 "$asset.weapon:WolfsGravestone" = "Trapasso ululante";
@@ -245,6 +249,7 @@
 "$asset.weapon:RightfulReward" = "Equa ricompensa";
 "$asset.weapon:DialoguesOfTheDesertSages" = "Dialoghi dei saggi del deserto";
 "$asset.weapon:ProspectorsDrill" = "Trivella mineraria";
+"$asset.weapon:MountainBracingBolt" = "Chiodo reggimonti";
 "$asset.weapon:FootprintOfTheRainbow" = "Orme iridate";
 "$asset.weapon:StaffOfHoma" = "Bastone di Homa";
 "$asset.weapon:SkywardSpine" = "Lancia d'osso celeste";
@@ -554,3 +559,5 @@
 "$asset.nameCard:UI_NameCardPic_Dfcq1_P" = "Obiettivo: Signore della Notte";
 "$asset.nameCard:UI_NameCardPic_Bp35_P" = "Appunti di viaggio: Fiamma primordiale";
 "$asset.nameCard:UI_NameCardPic_Yellow_P" = "Celebrazione: Croccante e dolce";
+"$asset.nameCard:UI_NameCardPic_Xilonen_P" = "Xilonen: Ritmo";
+"$asset.nameCard:UI_NameCardPic_Bp36_P" = "Appunti di viaggio: Sabzeruz";
