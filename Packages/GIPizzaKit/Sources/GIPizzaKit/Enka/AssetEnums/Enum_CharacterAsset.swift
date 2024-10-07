@@ -100,6 +100,7 @@ public enum CharacterAsset: Int, CaseIterable, Hashable {
     case Kachina = 10000100
     case Kinich = 10000101
     case Mualani = 10000102
+    case Xilonen = 10000103
 }
 
 extension CharacterAsset {
@@ -235,6 +236,7 @@ extension CharacterAsset {
         case .Kachina: return "UI_AvatarIcon_Kachina"
         case .Kinich: return "UI_AvatarIcon_Kinich"
         case .Mualani: return "UI_AvatarIcon_Mualani"
+        case .Xilonen: return "UI_AvatarIcon_Xilonen"
         }
     }
 
@@ -333,6 +335,7 @@ extension CharacterAsset {
         case .Kachina: return .UI_NameCardPic_Kachina_P
         case .Kinich: return .UI_NameCardPic_Kinich_P
         case .Mualani: return .UI_NameCardPic_Mualani_P
+        case .Xilonen: return .UI_NameCardPic_Xilonen_P
         }
     }
 }
@@ -432,6 +435,7 @@ extension CharacterAsset {
         case .Kachina: return [8500]
         case .Kinich: return [8700]
         case .Mualani: return [8600]
+        case .Xilonen: return [8800]
         }
     }
 }
@@ -528,9 +532,10 @@ extension CharacterAsset: DailyMaterialConsumer {
         case .Sethos: return .talentPraxis
         case .Clorinde: return .talentJustice
         case .Emilie: return .talentOrder
-        case .Kachina: return .talentConflict.available(since: .specify(day: 28, month: 8, year: 2024))
-        case .Kinich: return .talentKindling.available(since: .specify(day: 28, month: 8, year: 2024))
-        case .Mualani: return .talentContention.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .Kachina: return .talentConflict
+        case .Kinich: return .talentKindling
+        case .Mualani: return .talentContention
+        case .Xilonen: return .talentKindling.available(since: .specify(day: 9, month: 10, year: 2024))
         }
     }
 }
@@ -630,6 +635,7 @@ extension CharacterAsset {
         case .Kachina: return .geo
         case .Kinich: return .dendro
         case .Mualani: return .hydro
+        case .Xilonen: return .geo
         }
     }
 }

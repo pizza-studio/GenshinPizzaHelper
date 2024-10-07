@@ -39,6 +39,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case FleuveCendreFerryman = 11426
     case TheDockhandsAssistant = 11427
     case SwordOfNarzissenkreuz = 11428
+    case SturdyBone = 11430
     case FluteOfEzpitzal = 11431
     case AquilaFavonia = 11501
     case SkywardBlade = 11502
@@ -52,6 +53,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case SplendorOfStillWaters = 11513
     case UrakuMisugiri = 11514
     case Absolution = 11515
+    case PeakPatrolSong = 11516
     case WasterGreatsword = 12101
     case OldMercsPal = 12201
     case FerrousShadow = 12301
@@ -80,6 +82,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case TidalShadow = 12425
     case UltimateOverloardsMegaMagicSword = 12426
     case PortablePowerSaw = 12427
+    case FruitfulHook = 12430
     case EarthShaker = 12431
     case SkywardPride = 12501
     case WolfsGravestone = 12502
@@ -112,6 +115,7 @@ public enum WeaponAsset: Int, CaseIterable {
     case RightfulReward = 13425
     case DialoguesOfTheDesertSages = 13426
     case ProspectorsDrill = 13427
+    case MountainBracingBolt = 13430
     case FootprintOfTheRainbow = 13431
     case StaffOfHoma = 13501
     case SkywardSpine = 13502
@@ -258,7 +262,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .FleuveCendreFerryman: .weaponAncientChord
         case .TheDockhandsAssistant: .weaponDewdrop
         case .SwordOfNarzissenkreuz: .weaponAncientChord
-        case .FluteOfEzpitzal: .weaponSacrificialHeart.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .SturdyBone: .weaponSacrificialHeart.available(since: .specify(day: 9, month: 10, year: 2024))
+        case .FluteOfEzpitzal: .weaponSacrificialHeart
         case .AquilaFavonia: .weaponDecarabian
         case .SkywardBlade: .weaponBorealWolf
         case .FreedomSworn: .weaponGladiator
@@ -271,6 +276,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .SplendorOfStillWaters: .weaponDewdrop
         case .UrakuMisugiri: .weaponDistantSea
         case .Absolution: .weaponAncientChord
+        case .PeakPatrolSong: .weaponNightWind.available(since: .specify(day: 9, month: 10, year: 2024))
         case .WasterGreatsword: .weaponBorealWolf
         case .OldMercsPal: .weaponBorealWolf
         case .FerrousShadow: .weaponDecarabian
@@ -299,7 +305,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .TidalShadow: .weaponPristineSea
         case .UltimateOverloardsMegaMagicSword: .weaponPristineSea
         case .PortablePowerSaw: .weaponPristineSea
-        case .EarthShaker: .weaponSacrificialHeart.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .FruitfulHook: .weaponNightWind.available(since: .specify(day: 9, month: 10, year: 2024))
+        case .EarthShaker: .weaponSacrificialHeart
         case .SkywardPride: .weaponBorealWolf
         case .WolfsGravestone: .weaponGladiator
         case .SongOfBrokenPines: .weaponDecarabian
@@ -307,7 +314,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .RedhornStonethresher: .weaponNarukami
         case .BeaconOfTheReedSea: .weaponScorchingMight
         case .ConsideredJudgement: .weaponAncientChord
-        case .FangOfTheMountainKing: .weaponSacredLord.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .FangOfTheMountainKing: .weaponSacredLord
         case .BeginnersProtector: .weaponGladiator
         case .IronPoint: .weaponGladiator
         case .WhiteTassel: .weaponGuyun
@@ -331,7 +338,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .RightfulReward: .weaponPristineSea
         case .DialoguesOfTheDesertSages: .weaponTalisman
         case .ProspectorsDrill: .weaponAncientChord
-        case .FootprintOfTheRainbow: .weaponSacredLord.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .MountainBracingBolt: .weaponSacredLord.available(since: .specify(day: 9, month: 10, year: 2024))
+        case .FootprintOfTheRainbow: .weaponSacredLord
         case .StaffOfHoma: .weaponAerosiderite
         case .SkywardSpine: .weaponGladiator
         case .VortexVanquisher: .weaponAerosiderite
@@ -367,8 +375,8 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .SacrificialJade: .weaponGuyun
         case .FlowingPurity: .weaponDewdrop
         case .BalladOfTheBoundlessBlue: .weaponBorealWolf
-        case .AshGravenDrinkingHorn: .weaponNightWind.available(since: .specify(day: 28, month: 8, year: 2024))
-        case .RingOfYaxche: .weaponSacredLord.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .AshGravenDrinkingHorn: .weaponNightWind
+        case .RingOfYaxche: .weaponSacredLord
         case .SkywardAtlas: .weaponBorealWolf
         case .LostPrayerToTheSacredWinds: .weaponGladiator
         case .MemoryOfDust: .weaponAerosiderite
@@ -380,7 +388,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .CashflowSupervision: .weaponPristineSea
         case .TomeOfTheEternalFlow: .weaponDewdrop
         case .CranesEchoingCall: .weaponElixir
-        case .SurfsUp: .weaponSacrificialHeart.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .SurfsUp: .weaponSacrificialHeart
         case .HuntersBow: .weaponBorealWolf
         case .SeasonedHuntersBow: .weaponBorealWolf
         case .RavenBow: .weaponDecarabian
@@ -411,7 +419,7 @@ extension WeaponAsset: DailyMaterialConsumer {
         case .SongOfStillness: .weaponAncientChord
         case .Cloudforged: .weaponAerosiderite
         case .RangeGauge: .weaponAncientChord
-        case .ChainBreaker: .weaponNightWind.available(since: .specify(day: 28, month: 8, year: 2024))
+        case .ChainBreaker: .weaponNightWind
         case .SkywardHarp: .weaponBorealWolf
         case .AmosBow: .weaponGladiator
         case .ElegyForTheEnd: .weaponBorealWolf

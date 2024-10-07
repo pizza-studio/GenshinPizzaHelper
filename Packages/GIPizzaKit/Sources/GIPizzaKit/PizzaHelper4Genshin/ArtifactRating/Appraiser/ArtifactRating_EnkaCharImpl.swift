@@ -1154,6 +1154,20 @@ extension CharacterAsset {
                 .defAmp: .none,
                 .def: .none,
             ]
+        case .Xilonen:
+            // By ShikiSuen.
+            return [
+                .cr: .highest,
+                .cd: .highest,
+                .er: .none,
+                .em: .none,
+                .atkAmp: .medium,
+                .atk: .lower,
+                .hpAmp: .none,
+                .hp: .none,
+                .defAmp: .high,
+                .def: .none,
+            ]
         }
     }
 }
