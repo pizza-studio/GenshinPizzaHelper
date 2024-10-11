@@ -64,10 +64,6 @@ struct OtherSettingsView: View {
             }
 
             Section {
-                Toggle("settings.more.useEnkaJSONFromGitHosts", isOn: $useEnkaJSONFromGitHosts)
-            }
-
-            Section {
                 let urlStr = "https://www.icloud.com/shortcuts/fe68f22c624949c9ad8959993239e19c"
                 Link("gacha.term.scriptForFetchingCookies", destination: URL(string: urlStr)!)
             }
@@ -120,9 +116,6 @@ struct OtherSettingsView: View {
 
     @Default(.defaultServer)
     private var defaultServer: String
-
-    @Default(.useEnkaJSONFromGitHosts)
-    private var useEnkaJSONFromGitHosts: Bool
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Account.priority, ascending: true)],

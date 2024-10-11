@@ -21,7 +21,6 @@ extension Defaults.Keys {
     public static let checkedUpdateVersions = Key<[Int]>("checkedUpdateVersions", default: .init(), suite: .opSuite)
     public static let defaultServer = Key<String>("defaultServer", default: "Asia", suite: .opSuite)
     public static let pinToTopAccountUUIDString = Key<String>("pinToTopAccountUUIDString", default: "", suite: .opSuite)
-    public static let useEnkaJSONFromGitHosts = Key<Bool>("useEnkaJSONFromGitHosts", default: true, suite: .opSuite)
     public static let lastVersionPromptedForReviewKey = Key<String?>(
         "lastVersionPromptedForReviewKey",
         default: nil,
