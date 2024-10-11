@@ -349,8 +349,9 @@ public class GachaModelManager {
             foundExistingRecords.removeFirst()
         }
         if let existingRecord = foundExistingRecords.first {
-            // 修复错误的时区资讯。
+            // 修复错误的时区资讯，同时修复 itemID。
             existingRecord.time = item.time
+            existingRecord.itemId = item.itemId
             isNew?(false)
             return false
         } else {
