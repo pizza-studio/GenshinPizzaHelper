@@ -31,12 +31,6 @@ extension Defaults.Keys {
         }(),
         suite: .gmdbSuite
     )
-    /// 用来标记当前 App 本地的抽卡记录是否有做过系统性的 ItemID 修复工作。
-    public static let localGachaRecordItemIDsFixed = Key<Bool>(
-        "localGachaRecordItemIDsFixed",
-        default: false,
-        suite: .gmdbSuite
-    )
     /// 针对 UIGF v2.3 及之前版本的文件导入时所使用的垫底时区，预设值为 nil。
     public static let fallbackTimeForGIGFFileImport = Key<TimeZone?>(
         "fallbackTimeForGIGFFileImport",
