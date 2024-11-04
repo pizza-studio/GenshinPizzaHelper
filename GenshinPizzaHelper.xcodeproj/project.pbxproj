@@ -199,7 +199,6 @@
 		5BD1C6762A2A1FC90043C2B1 /* article.html in Resources */ = {isa = PBXBuildFile; fileRef = BF7500FD28E0452C00CDA64E /* article.html */; };
 		5BD1C6772A2A1FC90043C2B1 /* Assets-NoWatch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0718C229059602009D4730 /* Assets-NoWatch.xcassets */; };
 		5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA099FF328A2B7220023B4AF /* AccountIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EA30F9A12886B49200AE7BEA /* ResinStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BEF4B862B60D711007FB100 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */; };
 		5BEF4B872B60D78C007FB100 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF4B852B60D711007FB100 /* StaggeredGrid.swift */; };
 		BF0130A029220E7800074450 /* WidgetUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01309F29220E7800074450 /* WidgetUserData.swift */; };
@@ -720,13 +719,6 @@
 			remoteGlobalIDString = EAE95CE028CE10A000D975CB;
 			remoteInfo = WatchIntent;
 		};
-		5BD1C5BA2A2A1FC90043C2B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA30F9A02886B49200AE7BEA;
-			remoteInfo = ResinStatusWidgetExtension;
-		};
 		5BD1C5BC2A2A1FC90043C2B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EABD7DAE2886B2D200B7F0FD /* Project object */;
@@ -772,7 +764,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				5BD1C6792A2A1FC90043C2B1 /* AccountIntent.appex in Embed Foundation Extensions */,
-				5BD1C67A2A2A1FC90043C2B1 /* ResinStatusWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1966,7 +1957,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				5BD1C5B92A2A1FC90043C2B1 /* PBXTargetDependency */,
 				5BD1C5BB2A2A1FC90043C2B1 /* PBXTargetDependency */,
 			);
 			name = GenshinPizzaHelperSansWatch;
@@ -3003,11 +2993,6 @@
 			isa = PBXTargetDependency;
 			target = EAE95CE028CE10A000D975CB /* WatchIntent */;
 			targetProxy = 5B41C17C2AD3010600CDF2C5 /* PBXContainerItemProxy */;
-		};
-		5BD1C5B92A2A1FC90043C2B1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA30F9A02886B49200AE7BEA /* ResinStatusWidgetExtension */;
-			targetProxy = 5BD1C5BA2A2A1FC90043C2B1 /* PBXContainerItemProxy */;
 		};
 		5BD1C5BB2A2A1FC90043C2B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
