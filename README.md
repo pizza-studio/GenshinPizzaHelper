@@ -1,3 +1,7 @@
+**[NOTICE]** This repository has been archived and this project is succeeded by **The Pizza Helper** powered by our in-house United Pizza Engine. The new repository is here under AGPLv3 License: https://github.com/pizza-studio/PizzaHelperUnited
+
+---
+
 # Pizza Helper for Genshin
 
 ![Logo](https://gi.pizzastudio.org/img/ophelper_post_title_horizontal_with_name.png)
